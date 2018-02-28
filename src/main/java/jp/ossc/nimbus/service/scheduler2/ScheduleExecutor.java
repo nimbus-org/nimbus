@@ -32,55 +32,55 @@
 package jp.ossc.nimbus.service.scheduler2;
 
 /**
- * ƒXƒPƒWƒ…[ƒ‹ÀsB<p>
- * Às‚ğˆË—Š‚³‚ê‚½ƒ^ƒXƒN‚ğÀs‚µAƒXƒPƒWƒ…[ƒ‹‚Ìó‘Ô‘JˆÚ‚ğ{@link ScheduleManager}‚É’Ê’m‚·‚éB<br>
- * ‚Ü‚½AƒXƒPƒWƒ…[ƒ‹‚ÌÀsŒãA{@link Schedule#isRetry()}‚ªtrue‚Ìê‡‚ÍAƒXƒPƒWƒ…[ƒ‹‚ÌƒŠƒgƒ‰ƒCŠÔŠu‚É]‚Á‚ÄAŸ‚ÌƒXƒPƒWƒ…[ƒ‹‚ÉÄƒXƒPƒWƒ…[ƒ‹‚·‚éB<br>
+ * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å®Ÿè¡Œã€‚<p>
+ * å®Ÿè¡Œã‚’ä¾é ¼ã•ã‚ŒãŸã‚¿ã‚¹ã‚¯ã‚’å®Ÿè¡Œã—ã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹é·ç§»ã‚’{@link ScheduleManager}ã«é€šçŸ¥ã™ã‚‹ã€‚<br>
+ * ã¾ãŸã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å®Ÿè¡Œå¾Œã€{@link Schedule#isRetry()}ãŒtrueã®å ´åˆã¯ã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒªãƒˆãƒ©ã‚¤é–“éš”ã«å¾“ã£ã¦ã€æ¬¡ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«æ™‚åˆ»ã«å†ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã™ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
 public interface ScheduleExecutor{
     
     /**
-     * ‚±‚ÌƒXƒPƒWƒ…[ƒ‹Às‚ğ“Á’è‚·‚éƒL[‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å®Ÿè¡Œã‚’ç‰¹å®šã™ã‚‹ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[
+     * @return ã‚­ãƒ¼
      */
     public String getKey();
     
     /**
-     * ‚±‚ÌƒXƒPƒWƒ…[ƒ‹Às‚Ìí—Ş‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å®Ÿè¡Œã®ç¨®é¡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹Às‚Ìí—Ş
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å®Ÿè¡Œã®ç¨®é¡
      */
     public String getType();
     
     /**
-     * w’è‚³‚ê‚½ƒXƒPƒWƒ…[ƒ‹‚ğÀs‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å®Ÿè¡Œã™ã‚‹ã€‚<p>
      *
-     * @param schedule ƒXƒPƒWƒ…[ƒ‹
-     * @return ƒXƒPƒWƒ…[ƒ‹
+     * @param schedule ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«
      */
     public Schedule execute(Schedule schedule);
     
     /**
-     * Às’†‚Ìw’è‚³‚ê‚½ƒXƒPƒWƒ…[ƒ‹‚ğAw’è‚³‚ê‚½Àsó‘Ô‚É§Œä‚·‚éB<p>
+     * å®Ÿè¡Œä¸­ã®æŒ‡å®šã•ã‚ŒãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ã€æŒ‡å®šã•ã‚ŒãŸå®Ÿè¡ŒçŠ¶æ…‹ã«åˆ¶å¾¡ã™ã‚‹ã€‚<p>
      * 
-     * @param id ƒXƒPƒWƒ…[ƒ‹ID
-     * @param cntrolState Àsó‘Ô
-     * @return Àsó‘Ô‚Ì‚ª•ÏX‚³‚ê‚½ê‡true
-     * @exception ScheduleStateControlException Às’†‚ÌƒXƒPƒWƒ…[ƒ‹‚Ìó‘Ô•ÏX‚É¸”s‚µ‚½ê‡
+     * @param id ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ID
+     * @param cntrolState å®Ÿè¡ŒçŠ¶æ…‹
+     * @return å®Ÿè¡ŒçŠ¶æ…‹ã®ãŒå¤‰æ›´ã•ã‚ŒãŸå ´åˆtrue
+     * @exception ScheduleStateControlException å®Ÿè¡Œä¸­ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹å¤‰æ›´ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean controlState(String id, int cntrolState) throws ScheduleStateControlException;
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğŠÇ—‚·‚é{@link ScheduleManager}‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ç®¡ç†ã™ã‚‹{@link ScheduleManager}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return ScheduleManager
      */
     public ScheduleManager getScheduleManager();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğŠÇ—‚·‚é{@link ScheduleManager}‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ç®¡ç†ã™ã‚‹{@link ScheduleManager}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param manager ScheduleManager
      */

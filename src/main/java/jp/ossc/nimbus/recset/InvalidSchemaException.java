@@ -29,13 +29,13 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.recset;
 
 /**
- * ƒXƒL[ƒ}•s³‚ğ•\‚·—áŠO<p>
- * ƒf[ƒ^‚ÌŒ^‚ª•s³‚Èê‡‚ÉƒXƒ[‚³‚ê‚Ü‚·B
+ * ã‚¹ã‚­ãƒ¼ãƒä¸æ­£ã‚’è¡¨ã™ä¾‹å¤–<p>
+ * ãƒ‡ãƒ¼ã‚¿ã®å‹ãŒä¸æ­£ãªå ´åˆã«ã‚¹ãƒ­ãƒ¼ã•ã‚Œã¾ã™ã€‚
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -45,15 +45,15 @@ public class InvalidSchemaException extends RuntimeException {
     private static final long serialVersionUID = -7993416189949669510L;
     
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	 */
 	public InvalidSchemaException() {
 		super();
 	}
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
-	 * @param message Ú×ƒƒbƒZ[ƒW
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
+	 * @param message è©³ç´°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
 	 */
 	public InvalidSchemaException(String message) {
 		super(message);

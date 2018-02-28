@@ -36,7 +36,7 @@ import java.util.Map;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link HttpClientFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link HttpClientFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see HttpClientFactoryService
@@ -60,375 +60,375 @@ public interface HttpClientFactoryServiceMBean extends ServiceBaseMBean{
     public static final String JOURNAL_RESPONSE_OBJECT = "OutputObject";
     
     /**
-     * HTTP‚Ìƒ\ƒPƒbƒg‚ğÚ‘±‚·‚éÛ‚Ìƒ^ƒCƒ€ƒAƒEƒg‚ğİ’è‚·‚éB<p>
+     * HTTPã®ã‚½ã‚±ãƒƒãƒˆã‚’æ¥ç¶šã™ã‚‹éš›ã®ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param millis ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @param millis ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public void setConnectionTimeout(int millis);
     
     /**
-     * HTTP‚Ìƒ\ƒPƒbƒg‚ğÚ‘±‚·‚éÛ‚Ìƒ^ƒCƒ€ƒAƒEƒg‚ğæ“¾‚·‚éB<p>
+     * HTTPã®ã‚½ã‚±ãƒƒãƒˆã‚’æ¥ç¶šã™ã‚‹éš›ã®ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @return ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public int getConnectionTimeout();
     
     /**
-     * HTTP‚Ìƒ\ƒPƒbƒg‚ª•Â‚¶‚ç‚ê‚½ê‡‚ÉAƒ\ƒPƒbƒg‚Éc‚Á‚Ä‚éƒf[ƒ^‚Ì‘—M‚ğ‘Ò‹@‚·‚éƒ^ƒCƒ€ƒAƒEƒg‚ğİ’è‚·‚éB<p>
+     * HTTPã®ã‚½ã‚±ãƒƒãƒˆãŒé–‰ã˜ã‚‰ã‚ŒãŸå ´åˆã«ã€ã‚½ã‚±ãƒƒãƒˆã«æ®‹ã£ã¦ã‚‹ãƒ‡ãƒ¼ã‚¿ã®é€ä¿¡ã‚’å¾…æ©Ÿã™ã‚‹ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param millis ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @param millis ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public void setLinger(int millis);
     
     /**
-     * HTTP‚Ìƒ\ƒPƒbƒg‚ª•Â‚¶‚ç‚ê‚½ê‡‚ÉAƒ\ƒPƒbƒg‚Éc‚Á‚Ä‚éƒf[ƒ^‚Ì‘—M‚ğ‘Ò‹@‚·‚éƒ^ƒCƒ€ƒAƒEƒg‚ğæ“¾‚·‚éB<p>
+     * HTTPã®ã‚½ã‚±ãƒƒãƒˆãŒé–‰ã˜ã‚‰ã‚ŒãŸå ´åˆã«ã€ã‚½ã‚±ãƒƒãƒˆã«æ®‹ã£ã¦ã‚‹ãƒ‡ãƒ¼ã‚¿ã®é€ä¿¡ã‚’å¾…æ©Ÿã™ã‚‹ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @return ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public int getLinger();
     
     /**
-     * HTTP‚Ìƒ\ƒPƒbƒg‚ÌóMƒoƒbƒtƒ@ƒTƒCƒY‚ğİ’è‚·‚éB<p>
+     * HTTPã®ã‚½ã‚±ãƒƒãƒˆã®å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param size HTTP‚Ìƒ\ƒPƒbƒg‚ÌóMƒoƒbƒtƒ@ƒTƒCƒY
+     * @param size HTTPã®ã‚½ã‚±ãƒƒãƒˆã®å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public void setReceiveBufferSize(int size);
     
     /**
-     * HTTP‚Ìƒ\ƒPƒbƒg‚ÌóMƒoƒbƒtƒ@ƒTƒCƒY‚ğæ“¾‚·‚éB<p>
+     * HTTPã®ã‚½ã‚±ãƒƒãƒˆã®å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HTTP‚Ìƒ\ƒPƒbƒg‚ÌóMƒoƒbƒtƒ@ƒTƒCƒY
+     * @return HTTPã®ã‚½ã‚±ãƒƒãƒˆã®å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public int getReceiveBufferSize();
     
     /**
-     * HTTP‚Ìƒ\ƒPƒbƒg‚Ì‘—Mƒoƒbƒtƒ@ƒTƒCƒY‚ğİ’è‚·‚éB<p>
+     * HTTPã®ã‚½ã‚±ãƒƒãƒˆã®é€ä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param size HTTP‚Ìƒ\ƒPƒbƒg‚Ì‘—Mƒoƒbƒtƒ@ƒTƒCƒY
+     * @param size HTTPã®ã‚½ã‚±ãƒƒãƒˆã®é€ä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public void setSendBufferSize(int size);
     
     /**
-     * HTTP‚Ìƒ\ƒPƒbƒg‚Ì‘—Mƒoƒbƒtƒ@ƒTƒCƒY‚ğæ“¾‚·‚éB<p>
+     * HTTPã®ã‚½ã‚±ãƒƒãƒˆã®é€ä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HTTP‚Ìƒ\ƒPƒbƒg‚Ì‘—Mƒoƒbƒtƒ@ƒTƒCƒY
+     * @return HTTPã®ã‚½ã‚±ãƒƒãƒˆã®é€ä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public int getSendBufferSize();
     
     /**
-     * HTTP‚Ìƒ\ƒPƒbƒg‚ÌóMƒ^ƒCƒ€ƒAƒEƒg‚ğİ’è‚·‚éB<p>
+     * HTTPã®ã‚½ã‚±ãƒƒãƒˆã®å—ä¿¡ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param millis HTTP‚Ìƒ\ƒPƒbƒg‚ÌóMƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @param millis HTTPã®ã‚½ã‚±ãƒƒãƒˆã®å—ä¿¡ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public void setSoTimeout(int millis);
     
     /**
-     * HTTP‚Ìƒ\ƒPƒbƒg‚ÌóMƒ^ƒCƒ€ƒAƒEƒg‚ğæ“¾‚·‚éB<p>
+     * HTTPã®ã‚½ã‚±ãƒƒãƒˆã®å—ä¿¡ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HTTP‚Ìƒ\ƒPƒbƒg‚ÌóMƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @return HTTPã®ã‚½ã‚±ãƒƒãƒˆã®å—ä¿¡ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public int getSoTimeout();
     
     /**
-     * ƒŠƒNƒGƒXƒg‚ÌƒRƒ“ƒeƒ“ƒgƒ^ƒCƒv‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ã‚³ãƒ³ãƒ†ãƒ³ãƒˆã‚¿ã‚¤ãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒRƒ“ƒeƒ“ƒgƒ^ƒCƒv
+     * @return ã‚³ãƒ³ãƒ†ãƒ³ãƒˆã‚¿ã‚¤ãƒ—
      */
     public String getRequestContentType();
     
     /**
-     * ƒŠƒNƒGƒXƒg‚ÌƒRƒ“ƒeƒ“ƒgƒ^ƒCƒv‚ğİ’è‚·‚éB<p>
-     * HTTPƒŠƒNƒGƒXƒg‚ÉŠù‚Éİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍA‚»‚¿‚ç‚ª—Dæ‚³‚ê‚éB<br>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ã‚³ãƒ³ãƒ†ãƒ³ãƒˆã‚¿ã‚¤ãƒ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã«æ—¢ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€ãã¡ã‚‰ãŒå„ªå…ˆã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param type ƒRƒ“ƒeƒ“ƒgƒ^ƒCƒv
+     * @param type ã‚³ãƒ³ãƒ†ãƒ³ãƒˆã‚¿ã‚¤ãƒ—
      */
     public void setRequestContentType(String type);
     
     /**
-     * ƒŠƒNƒGƒXƒg‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getRequestCharacterEncoding();
     
     /**
-     * ƒŠƒNƒGƒXƒg‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
-     * HTTPƒŠƒNƒGƒXƒg‚ÉŠù‚Éİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍA‚»‚¿‚ç‚ª—Dæ‚³‚ê‚éB<br>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã«æ—¢ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€ãã¡ã‚‰ãŒå„ªå…ˆã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setRequestCharacterEncoding(String encoding);
     
     /**
-     * HTTP‚Ìƒo[ƒWƒ‡ƒ“‚ğæ“¾‚·‚éB<p>
+     * HTTPã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HTTP‚Ìƒo[ƒWƒ‡ƒ“
+     * @return HTTPã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³
      */
     public String getHttpVersion();
     
     /**
-     * HTTP‚Ìƒo[ƒWƒ‡ƒ“‚ğİ’è‚·‚éB<p>
-     * HTTPƒŠƒNƒGƒXƒg‚ÉŠù‚Éİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍA‚»‚¿‚ç‚ª—Dæ‚³‚ê‚éB<br>
+     * HTTPã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã«æ—¢ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€ãã¡ã‚‰ãŒå„ªå…ˆã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param version HTTP‚Ìƒo[ƒWƒ‡ƒ“
+     * @param version HTTPã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³
      */
     public void setHttpVersion(String version);
     
     /**
-     * ƒŠƒNƒGƒXƒg‚Ìƒwƒbƒ_‚ğİ’è‚·‚éB<p>
-     * HTTPƒŠƒNƒGƒXƒg‚ÉŠù‚Éİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍA‚»‚¿‚ç‚ª—Dæ‚³‚ê‚éB<br>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ãƒ˜ãƒƒãƒ€ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã«æ—¢ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€ãã¡ã‚‰ãŒå„ªå…ˆã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param name ƒwƒbƒ_–¼
-     * @param values ƒwƒbƒ_’l‚Ì”z—ñ
+     * @param name ãƒ˜ãƒƒãƒ€å
+     * @param values ãƒ˜ãƒƒãƒ€å€¤ã®é…åˆ—
      */
     public void setRequestHeaders(String name, String[] values);
     
     /**
-     * ƒŠƒNƒGƒXƒg‚Ìƒwƒbƒ_‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ãƒ˜ãƒƒãƒ€ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒwƒbƒ_–¼
-     * @return ƒwƒbƒ_’l‚Ì”z—ñ
+     * @param name ãƒ˜ãƒƒãƒ€å
+     * @return ãƒ˜ãƒƒãƒ€å€¤ã®é…åˆ—
      */
     public String[] getRequestHeaders(String name);
     
     /**
-     * ƒvƒƒLƒV‚ÌƒzƒXƒg–¼‚Æƒ|[ƒg”Ô†‚ğİ’è‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã®ãƒ›ã‚¹ãƒˆåã¨ãƒãƒ¼ãƒˆç•ªå·ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param proxy ƒzƒXƒg–¼:ƒ|[ƒg”Ô†
+     * @param proxy ãƒ›ã‚¹ãƒˆå:ãƒãƒ¼ãƒˆç•ªå·
      */
     public void setProxy(String proxy);
     
     /**
-     * ƒvƒƒLƒV‚ÌƒzƒXƒg–¼‚Æƒ|[ƒg”Ô†‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã®ãƒ›ã‚¹ãƒˆåã¨ãƒãƒ¼ãƒˆç•ªå·ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒzƒXƒg–¼:ƒ|[ƒg”Ô†
+     * @return ãƒ›ã‚¹ãƒˆå:ãƒãƒ¼ãƒˆç•ªå·
      */
     public String getProxy();
     
     /**
-     * ƒ[ƒJƒ‹ƒAƒhƒŒƒX‚ğİ’è‚·‚éB<p>
+     * ãƒ­ãƒ¼ã‚«ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param address ƒ[ƒJƒ‹ƒAƒhƒŒƒX
-     * @exception java.net.UnknownHostException w’è‚³‚ê‚½ƒAƒhƒŒƒX‚ª•s³‚Èê‡
+     * @param address ãƒ­ãƒ¼ã‚«ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹
+     * @exception java.net.UnknownHostException æŒ‡å®šã•ã‚ŒãŸã‚¢ãƒ‰ãƒ¬ã‚¹ãŒä¸æ­£ãªå ´åˆ
      */
     public void setLocalAddress(String address)
      throws java.net.UnknownHostException;
     
     /**
-     * ƒ[ƒJƒ‹ƒAƒhƒŒƒX‚ğæ“¾‚·‚éB<p>
+     * ãƒ­ãƒ¼ã‚«ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ[ƒJƒ‹ƒAƒhƒŒƒX
+     * @return ãƒ­ãƒ¼ã‚«ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹
      */
     public String getLocalAddress();
     
     /**
-     * Jakarta HttpClient‚Ìƒpƒ‰ƒ[ƒ^‚ğİ’è‚·‚éB<p>
+     * Jakarta HttpClientã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒpƒ‰ƒ[ƒ^–¼
-     * @param value ’l
+     * @param name ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å
+     * @param value å€¤
      */
     public void setHttpClientParam(String name, Object value);
     
     /**
-     * Jakarta HttpClient‚Ìƒpƒ‰ƒ[ƒ^‚ğæ“¾‚·‚éB<p>
+     * Jakarta HttpClientã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒpƒ‰ƒ[ƒ^–¼
-     * @return ’l
+     * @param name ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å
+     * @return å€¤
      */
     public Object getHttpClientParam(String name);
     
     /**
-     * Jakarta HttpClient‚Ìƒpƒ‰ƒ[ƒ^‚Ìƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
+     * Jakarta HttpClientã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Jakarta HttpClient‚Ìƒpƒ‰ƒ[ƒ^‚Ìƒ}ƒbƒv
+     * @return Jakarta HttpClientã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ãƒãƒƒãƒ—
      */
     public Map getHttpClientParamMap();
     
     /**
-     * ƒŠƒNƒGƒXƒg‚ÌƒXƒgƒŠ[ƒ€‚ğˆ³k‚·‚éê‡‚Ìè‡’l[byte]‚ğİ’è‚·‚éB<p>
-     * İ’è‚µ‚È‚¢ê‡‚ÍAƒXƒgƒŠ[ƒ€‚ÌƒTƒCƒY‚ÉŠÖ‚í‚ç‚¸ˆ³k‚·‚éB<br>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’åœ§ç¸®ã™ã‚‹å ´åˆã®é–¾å€¤[byte]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã—ãªã„å ´åˆã¯ã€ã‚¹ãƒˆãƒªãƒ¼ãƒ ã®ã‚µã‚¤ã‚ºã«é–¢ã‚ã‚‰ãšåœ§ç¸®ã™ã‚‹ã€‚<br>
      *
-     * @param length è‡’l[byte]
+     * @param length é–¾å€¤[byte]
      */
     public void setRequestDeflateLength(int length);
     
     /**
-     * ƒŠƒNƒGƒXƒg‚ÌƒXƒgƒŠ[ƒ€‚ğˆ³k‚·‚éê‡‚Ìè‡’l[byte]‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’åœ§ç¸®ã™ã‚‹å ´åˆã®é–¾å€¤[byte]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return è‡’l[byte]
+     * @return é–¾å€¤[byte]
      */
     public int getRequestDeflateLength();
     
     /**
-     * HTTPƒŠƒNƒGƒXƒg‚Éİ’è‚³‚ê‚½“ü—ÍƒIƒuƒWƒFƒNƒg‚ğƒXƒgƒŠ[ƒ€‚É•ÏŠ·‚·‚é{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * HTTPƒŠƒNƒGƒXƒg‚ÉŠù‚Éİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍA‚»‚¿‚ç‚ª—Dæ‚³‚ê‚éB<br>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã«è¨­å®šã•ã‚ŒãŸå…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«å¤‰æ›ã™ã‚‹{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã«æ—¢ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€ãã¡ã‚‰ãŒå„ªå…ˆã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param name StreamConverterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name StreamConverterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setRequestStreamConverterServiceName(ServiceName name);
     
     /**
-     * HTTPƒŠƒNƒGƒXƒg‚Éİ’è‚³‚ê‚½“ü—ÍƒIƒuƒWƒFƒNƒg‚ğƒXƒgƒŠ[ƒ€‚É•ÏŠ·‚·‚é{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã«è¨­å®šã•ã‚ŒãŸå…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«å¤‰æ›ã™ã‚‹{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return StreamConverterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return StreamConverterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getRequestStreamConverterServiceName();
     
     /**
-     * HTTPƒŒƒXƒ|ƒ“ƒX‚ÌƒXƒgƒŠ[ƒ€‚ğo—ÍƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚é{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * HTTPƒŒƒXƒ|ƒ“ƒX‚ÉŠù‚Éİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍA‚»‚¿‚ç‚ª—Dæ‚³‚ê‚éB<br>
+     * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã«æ—¢ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€ãã¡ã‚‰ãŒå„ªå…ˆã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param name StreamConverterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name StreamConverterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setResponseStreamConverterServiceName(ServiceName name);
     
     /**
-     * HTTPƒŒƒXƒ|ƒ“ƒX‚ÌƒXƒgƒŠ[ƒ€‚ğo—ÍƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚é{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return StreamConverterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return StreamConverterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getResponseStreamConverterServiceName();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚ğo—Í‚·‚é{@link jp.ossc.nimbus.service.journal.Journal Journal}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’å‡ºåŠ›ã™ã‚‹{@link jp.ossc.nimbus.service.journal.Journal Journal}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name JournalƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Journalã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJournalServiceName(ServiceName name);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚ğo—Í‚·‚é{@link jp.ossc.nimbus.service.journal.Journal Journal}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’å‡ºåŠ›ã™ã‚‹{@link jp.ossc.nimbus.service.journal.Journal Journal}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JournalƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Journalã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJournalServiceName();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Éİ’è‚·‚é’Ê”Ô‚ğ”­s‚·‚é{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«è¨­å®šã™ã‚‹é€šç•ªã‚’ç™ºè¡Œã™ã‚‹{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name SequenceƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Sequenceã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setSequenceServiceName(ServiceName name);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Éİ’è‚·‚é’Ê”Ô‚ğ”­s‚·‚é{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«è¨­å®šã™ã‚‹é€šç•ªã‚’ç™ºè¡Œã™ã‚‹{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return SequenceƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Sequenceã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getSequenceServiceName();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Éİ’è‚·‚é’Ê”Ô‚ğæ“¾‚·‚é{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«è¨­å®šã™ã‚‹é€šç•ªã‚’å–å¾—ã™ã‚‹{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setThreadContextServiceName(ServiceName name);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Éİ’è‚·‚é’Ê”Ô‚ğæ“¾‚·‚é{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«è¨­å®šã™ã‚‹é€šç•ªã‚’å–å¾—ã™ã‚‹{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getThreadContextServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.http.HttpClient HttpClient}‚ğ¶¬‚·‚éÛ‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.semaphore.Semaphore Semaphore}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.http.HttpClient HttpClient}ã‚’ç”Ÿæˆã™ã‚‹éš›ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.semaphore.Semaphore Semaphore}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name SemaphoreƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Semaphoreã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setSemaphoreServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.http.HttpClient HttpClient}‚ğ¶¬‚·‚éÛ‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.semaphore.Semaphore Semaphore}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.http.HttpClient HttpClient}ã‚’ç”Ÿæˆã™ã‚‹éš›ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.semaphore.Semaphore Semaphore}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return SemaphoreƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Semaphoreã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getSemaphoreServiceName();
     
     /**
-     * ƒpƒtƒH[ƒ}ƒ“ƒX‚ğ‹L˜^‚·‚é{@link jp.ossc.nimbus.service.performance.PerformanceRecorder PerformanceRecorder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’è¨˜éŒ²ã™ã‚‹{@link jp.ossc.nimbus.service.performance.PerformanceRecorder PerformanceRecorder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒpƒtƒH[ƒ}ƒ“ƒX‚ğ‹L˜^‚·‚éPerformanceRecorderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’è¨˜éŒ²ã™ã‚‹PerformanceRecorderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setPerformanceRecorderServiceName(ServiceName name);
     
     /**
-     * ƒpƒtƒH[ƒ}ƒ“ƒX‚ğ‹L˜^‚·‚é{@link jp.ossc.nimbus.service.performance.PerformanceRecorder PerformanceRecorder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’è¨˜éŒ²ã™ã‚‹{@link jp.ossc.nimbus.service.performance.PerformanceRecorder PerformanceRecorder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒpƒtƒH[ƒ}ƒ“ƒX‚ğ‹L˜^‚·‚éPerformanceRecorderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’è¨˜éŒ²ã™ã‚‹PerformanceRecorderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getPerformanceRecorderServiceName();
     
     /**
-     * org.apache.commons.httpclient.HttpConnectionManager‚ÌƒNƒ‰ƒX‚ğİ’è‚·‚éB<p>
+     * org.apache.commons.httpclient.HttpConnectionManagerã®ã‚¯ãƒ©ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param clazz HttpConnectionManager‚ÌƒNƒ‰ƒX
+     * @param clazz HttpConnectionManagerã®ã‚¯ãƒ©ã‚¹
      */
     public void setHttpConnectionManagerClass(Class clazz);
     
     /**
-     * org.apache.commons.httpclient.HttpConnectionManager‚ÌƒNƒ‰ƒX‚ğæ“¾‚·‚éB<p>
+     * org.apache.commons.httpclient.HttpConnectionManagerã®ã‚¯ãƒ©ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HttpConnectionManager‚ÌƒNƒ‰ƒX
+     * @return HttpConnectionManagerã®ã‚¯ãƒ©ã‚¹
      */
     public Class getHttpConnectionManagerClass();
     
     /**
-     * org.apache.commons.httpclient.HttpConnectionManager‚ğg‚Á‚ÄƒRƒlƒNƒVƒ‡ƒ“‚ğƒv[ƒ‹‚·‚éê‡‚ÉA‘Ò‹@ó‘Ô‚ÌƒRƒlƒNƒVƒ‡ƒ“‚ğ•Â‚¶‚é‚Ü‚Å‚Ìƒ^ƒCƒ€ƒAƒEƒg[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0‚Å‘Ò‹@ó‘Ô‚ÌƒRƒlƒNƒVƒ‡ƒ“‚Í•Â‚¶‚È‚¢B<br>
+     * org.apache.commons.httpclient.HttpConnectionManagerã‚’ä½¿ã£ã¦ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ãƒ—ãƒ¼ãƒ«ã™ã‚‹å ´åˆã«ã€å¾…æ©ŸçŠ¶æ…‹ã®ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’é–‰ã˜ã‚‹ã¾ã§ã®ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã§å¾…æ©ŸçŠ¶æ…‹ã®ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã¯é–‰ã˜ãªã„ã€‚<br>
      *
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public void setIdleConnectionTimeout(long timeout);
     
     /**
-     * org.apache.commons.httpclient.HttpConnectionManager‚ğg‚Á‚ÄƒRƒlƒNƒVƒ‡ƒ“‚ğƒv[ƒ‹‚·‚éê‡‚ÉA‘Ò‹@ó‘Ô‚ÌƒRƒlƒNƒVƒ‡ƒ“‚ğ•Â‚¶‚é‚Ü‚Å‚Ìƒ^ƒCƒ€ƒAƒEƒg[ms]‚ğæ“¾‚·‚éB<p>
+     * org.apache.commons.httpclient.HttpConnectionManagerã‚’ä½¿ã£ã¦ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ãƒ—ãƒ¼ãƒ«ã™ã‚‹å ´åˆã«ã€å¾…æ©ŸçŠ¶æ…‹ã®ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’é–‰ã˜ã‚‹ã¾ã§ã®ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @return ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public long getIdleConnectionTimeout();
     
     /**
-     * org.apache.commons.httpclient.HttpConnectionManager‚ğg‚Á‚ÄƒRƒlƒNƒVƒ‡ƒ“‚ğƒv[ƒ‹‚·‚éê‡‚ÉA‘Ò‹@ó‘Ô‚ÌƒRƒlƒNƒVƒ‡ƒ“‚Ì‘Ò‹@ŠÔ‚ğƒ`ƒFƒbƒN‚·‚éŠÔŠu[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0‚Åorg.apache.commons.httpclient.util.IdleConnectionTimeoutThread‚ÌƒfƒtƒHƒ‹ƒg’l‚É€‚¶‚éB<br>
+     * org.apache.commons.httpclient.HttpConnectionManagerã‚’ä½¿ã£ã¦ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ãƒ—ãƒ¼ãƒ«ã™ã‚‹å ´åˆã«ã€å¾…æ©ŸçŠ¶æ…‹ã®ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã®å¾…æ©Ÿæ™‚é–“ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹é–“éš”[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã§org.apache.commons.httpclient.util.IdleConnectionTimeoutThreadã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã«æº–ã˜ã‚‹ã€‚<br>
      *
-     * @param interval ƒ`ƒFƒbƒNŠÔŠu[ms]
+     * @param interval ãƒã‚§ãƒƒã‚¯é–“éš”[ms]
      */
     public void setIdleConnectionCheckInterval(long interval);
     
     /**
-     * org.apache.commons.httpclient.HttpConnectionManager‚ğg‚Á‚ÄƒRƒlƒNƒVƒ‡ƒ“‚ğƒv[ƒ‹‚·‚éê‡‚ÉA‘Ò‹@ó‘Ô‚ÌƒRƒlƒNƒVƒ‡ƒ“‚Ì‘Ò‹@ŠÔ‚ğƒ`ƒFƒbƒN‚·‚éŠÔŠu[ms]‚ğæ“¾‚·‚éB<p>
+     * org.apache.commons.httpclient.HttpConnectionManagerã‚’ä½¿ã£ã¦ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ãƒ—ãƒ¼ãƒ«ã™ã‚‹å ´åˆã«ã€å¾…æ©ŸçŠ¶æ…‹ã®ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã®å¾…æ©Ÿæ™‚é–“ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹é–“éš”[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ`ƒFƒbƒNŠÔŠu[ms]
+     * @return ãƒã‚§ãƒƒã‚¯é–“éš”[ms]
      */
     public long getIdleConnectionCheckInterval();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚É{@link jp.ossc.nimbus.service.http.HttpResponse#getObject()}‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åo—Í‚·‚éB{@link jp.ossc.nimbus.service.http.HttpResponse#getObject(Object)}‚ğg—p‚·‚éê‡‚ÍAfalse‚É‚·‚é•K—v‚ª‚ ‚éB<br>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«{@link jp.ossc.nimbus.service.http.HttpResponse#getObject()}ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§å‡ºåŠ›ã™ã‚‹ã€‚{@link jp.ossc.nimbus.service.http.HttpResponse#getObject(Object)}ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€falseã«ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡Atrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã€true
      */
     public void setOutputJournalResponseObject(boolean isOutput);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚É{@link jp.ossc.nimbus.service.http.HttpResponse#getObject()}‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«{@link jp.ossc.nimbus.service.http.HttpResponse#getObject()}ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputJournalResponseObject();
     
     /**
-     * org.apache.commons.httpclient.MultiThreadedHttpConnectionManager‚ğg—p‚µ‚Ä‚¢‚éê‡‚ÌŒ»İ‚ÌƒRƒlƒNƒVƒ‡ƒ“ƒv[ƒ‹”‚ğæ“¾‚·‚éB<p>
+     * org.apache.commons.httpclient.MultiThreadedHttpConnectionManagerã‚’ä½¿ç”¨ã—ã¦ã„ã‚‹å ´åˆã®ç¾åœ¨ã®ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ—ãƒ¼ãƒ«æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒRƒlƒNƒVƒ‡ƒ“ƒv[ƒ‹”
+     * @return ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ—ãƒ¼ãƒ«æ•°
      */
     public int getConnectionsInPool();
     
     /**
-     * org.apache.commons.httpclient.MultiThreadedHttpConnectionManager‚ğg—p‚µ‚Ä‚¢‚éê‡‚ÌŒ»İ‚ÌƒRƒlƒNƒVƒ‡ƒ“ƒv[ƒ‹g—p”‚ğæ“¾‚·‚éB<p>
+     * org.apache.commons.httpclient.MultiThreadedHttpConnectionManagerã‚’ä½¿ç”¨ã—ã¦ã„ã‚‹å ´åˆã®ç¾åœ¨ã®ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ—ãƒ¼ãƒ«ä½¿ç”¨æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒRƒlƒNƒVƒ‡ƒ“ƒv[ƒ‹g—p”
+     * @return ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ—ãƒ¼ãƒ«ä½¿ç”¨æ•°
      */
     public int getConnectionsInUse();
 }

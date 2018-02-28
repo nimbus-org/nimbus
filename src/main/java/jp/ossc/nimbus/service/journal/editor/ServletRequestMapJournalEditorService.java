@@ -38,33 +38,33 @@ import javax.servlet.ServletRequest;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * ServletRequestƒIƒuƒWƒFƒNƒg‚ğMapƒtƒH[ƒ}ƒbƒg‚·‚éƒGƒfƒBƒ^B<p>
- * ‚±‚ÌƒGƒfƒBƒ^‚É‚æ‚Á‚Ä•ÒW‚³‚ê‚½Map‚ÍAˆÈ‰º‚Ì\‘¢‚ğ‚ÂB<br>
+ * ServletRequestã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’Mapãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã€‚<p>
+ * ã“ã®ã‚¨ãƒ‡ã‚£ã‚¿ã«ã‚ˆã£ã¦ç·¨é›†ã•ã‚ŒãŸMapã¯ã€ä»¥ä¸‹ã®æ§‹é€ ã‚’æŒã¤ã€‚<br>
  * <table broder="1">
- *   <tr bgcolor="#CCCCFF"><th colspan="2">ƒL[</th><th colspan="5">’l</th></tr>
- *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th><th>Œ^</th><th colspan="4">“à—e</th></tr>
- *   <tr><td rowspan="3">java.lang.String</td><td rowspan="3">{@link #ATTRIBUTES_KEY}</td><td rowspan="3">java.util.Map</td><td colspan="4">‘®«‚Ìƒ}ƒbƒv</td></tr>
- *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th><th>Œ^</th><th>“à—e</th></tr>
- *   <tr><td>java.lang.String</td><td>‘®«–¼</td><td>java.lang.Object</td><td>‘®«’l</td></tr>
- *   <tr><td rowspan="3">java.lang.String</td><td rowspan="3">{@link #PARAMETERS_KEY}</td><td rowspan="3">java.util.Map</td><td colspan="4">ƒpƒ‰ƒ[ƒ^‚Ìƒ}ƒbƒv</td></tr>
- *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th><th>Œ^</th><th>“à—e</th></tr>
- *   <tr><td>java.lang.String</td><td>ƒpƒ‰ƒ[ƒ^–¼</td><td>java.lang.Object</td><td>ƒpƒ‰ƒ[ƒ^’l</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #CHARACTER_ENCODING_KEY}</td><td>java.lang.String</td><td colspan="4">•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO–¼</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #CONTENT_LENGTH_KEY}</td><td>java.lang.Integer</td><td colspan="4">ƒRƒ“ƒeƒ“ƒg’·</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #CONTENT_TYPE_KEY}</td><td>java.lang.String</td><td colspan="4">ƒRƒ“ƒeƒ“ƒgí•Ê</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #REMOTE_ADDRESS_KEY}</td><td>java.lang.String</td><td colspan="4">ƒŠƒNƒGƒXƒgŒ³‚ÌƒNƒ‰ƒCƒAƒ“ƒg‚ÌIPƒAƒhƒŒƒXB–”‚ÍAÅŒã‚É’Ê‚Á‚½ƒvƒƒLƒV‚ÌIPƒAƒhƒŒƒXB</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #REMOTE_PORT_KEY}</td><td>java.lang.Integer</td><td colspan="4">ƒŠƒNƒGƒXƒgŒ³‚ÌƒNƒ‰ƒCƒAƒ“ƒg‚Ìƒ|[ƒg”Ô†B–”‚ÍAÅŒã‚É’Ê‚Á‚½ƒvƒƒLƒV‚Ìƒ|[ƒg”Ô†B</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #REMOTE_HOST_KEY}</td><td>java.lang.String</td><td colspan="4">ƒŠƒNƒGƒXƒgŒ³‚ÌƒNƒ‰ƒCƒAƒ“ƒg‚ÌŠ®‘SŒÀ’è–¼B–”‚ÍAÅŒã‚É’Ê‚Á‚½ƒvƒƒLƒV‚ÌŠ®‘SŒÀ’è–¼B</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #LOCAL_ADDRESS_KEY}</td><td>java.lang.String</td><td colspan="4">ƒŠƒNƒGƒXƒg‚ğó‚¯æ‚Á‚½ƒT[ƒo‚ÌIPƒAƒhƒŒƒX</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #LOCAL_PORT_KEY}</td><td>java.lang.Integer</td><td colspan="4">ƒŠƒNƒGƒXƒg‚ğó‚¯æ‚Á‚½ƒT[ƒo‚Ìƒ|[ƒg”Ô†</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #LOCAL_NAME_KEY}</td><td>java.lang.String</td><td colspan="4">ƒŠƒNƒGƒXƒg‚ğó‚¯æ‚Á‚½ƒT[ƒo‚ÌŠ®‘SŒÀ’è–¼</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #SERVER_NAME_KEY}</td><td>java.lang.String</td><td colspan="4">ƒŠƒNƒGƒXƒg‚Ì‘—‚èæ‚ÌƒT[ƒo‚ÌƒzƒXƒg–¼</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #SERVER_PORT_KEY}</td><td>java.lang.Integer</td><td colspan="4">ƒŠƒNƒGƒXƒg‚Ì‘—‚èæ‚ÌƒT[ƒo‚Ìƒ|[ƒg”Ô†</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #PROTPCOL_KEY}</td><td>java.lang.String</td><td colspan="4">ƒvƒƒgƒRƒ‹–¼</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #SCHEME_KEY}</td><td>java.lang.String</td><td colspan="4">ƒXƒL[ƒ}–¼</td></tr>
- *   <tr><td>java.lang.String</td><td>{@link #LOCALE_KEY}</td><td>java.util.Locale</td><td colspan="4">ƒƒP[ƒ‹</td></tr>
+ *   <tr bgcolor="#CCCCFF"><th colspan="2">ã‚­ãƒ¼</th><th colspan="5">å€¤</th></tr>
+ *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th><th>å‹</th><th colspan="4">å†…å®¹</th></tr>
+ *   <tr><td rowspan="3">java.lang.String</td><td rowspan="3">{@link #ATTRIBUTES_KEY}</td><td rowspan="3">java.util.Map</td><td colspan="4">å±æ€§ã®ãƒãƒƒãƒ—</td></tr>
+ *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th><th>å‹</th><th>å†…å®¹</th></tr>
+ *   <tr><td>java.lang.String</td><td>å±æ€§å</td><td>java.lang.Object</td><td>å±æ€§å€¤</td></tr>
+ *   <tr><td rowspan="3">java.lang.String</td><td rowspan="3">{@link #PARAMETERS_KEY}</td><td rowspan="3">java.util.Map</td><td colspan="4">ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ãƒãƒƒãƒ—</td></tr>
+ *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th><th>å‹</th><th>å†…å®¹</th></tr>
+ *   <tr><td>java.lang.String</td><td>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å</td><td>java.lang.Object</td><td>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å€¤</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #CHARACTER_ENCODING_KEY}</td><td>java.lang.String</td><td colspan="4">æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°å</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #CONTENT_LENGTH_KEY}</td><td>java.lang.Integer</td><td colspan="4">ã‚³ãƒ³ãƒ†ãƒ³ãƒˆé•·</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #CONTENT_TYPE_KEY}</td><td>java.lang.String</td><td colspan="4">ã‚³ãƒ³ãƒ†ãƒ³ãƒˆç¨®åˆ¥</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #REMOTE_ADDRESS_KEY}</td><td>java.lang.String</td><td colspan="4">ãƒªã‚¯ã‚¨ã‚¹ãƒˆå…ƒã®ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®IPã‚¢ãƒ‰ãƒ¬ã‚¹ã€‚åˆã¯ã€æœ€å¾Œã«é€šã£ãŸãƒ—ãƒ­ã‚­ã‚·ã®IPã‚¢ãƒ‰ãƒ¬ã‚¹ã€‚</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #REMOTE_PORT_KEY}</td><td>java.lang.Integer</td><td colspan="4">ãƒªã‚¯ã‚¨ã‚¹ãƒˆå…ƒã®ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®ãƒãƒ¼ãƒˆç•ªå·ã€‚åˆã¯ã€æœ€å¾Œã«é€šã£ãŸãƒ—ãƒ­ã‚­ã‚·ã®ãƒãƒ¼ãƒˆç•ªå·ã€‚</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #REMOTE_HOST_KEY}</td><td>java.lang.String</td><td colspan="4">ãƒªã‚¯ã‚¨ã‚¹ãƒˆå…ƒã®ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®å®Œå…¨é™å®šåã€‚åˆã¯ã€æœ€å¾Œã«é€šã£ãŸãƒ—ãƒ­ã‚­ã‚·ã®å®Œå…¨é™å®šåã€‚</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #LOCAL_ADDRESS_KEY}</td><td>java.lang.String</td><td colspan="4">ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’å—ã‘å–ã£ãŸã‚µãƒ¼ãƒã®IPã‚¢ãƒ‰ãƒ¬ã‚¹</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #LOCAL_PORT_KEY}</td><td>java.lang.Integer</td><td colspan="4">ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’å—ã‘å–ã£ãŸã‚µãƒ¼ãƒã®ãƒãƒ¼ãƒˆç•ªå·</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #LOCAL_NAME_KEY}</td><td>java.lang.String</td><td colspan="4">ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’å—ã‘å–ã£ãŸã‚µãƒ¼ãƒã®å®Œå…¨é™å®šå</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #SERVER_NAME_KEY}</td><td>java.lang.String</td><td colspan="4">ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®é€ã‚Šå…ˆã®ã‚µãƒ¼ãƒã®ãƒ›ã‚¹ãƒˆå</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #SERVER_PORT_KEY}</td><td>java.lang.Integer</td><td colspan="4">ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®é€ã‚Šå…ˆã®ã‚µãƒ¼ãƒã®ãƒãƒ¼ãƒˆç•ªå·</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #PROTPCOL_KEY}</td><td>java.lang.String</td><td colspan="4">ãƒ—ãƒ­ãƒˆã‚³ãƒ«å</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #SCHEME_KEY}</td><td>java.lang.String</td><td colspan="4">ã‚¹ã‚­ãƒ¼ãƒå</td></tr>
+ *   <tr><td>java.lang.String</td><td>{@link #LOCALE_KEY}</td><td>java.util.Locale</td><td colspan="4">ãƒ­ã‚±ãƒ¼ãƒ«</td></tr>
  * </table>
- * ’A‚µAo—Í‚µ‚È‚¢‚æ‚¤‚Éİ’è‚³‚ê‚Ä‚¢‚é‚à‚Ì‚âAŒ³‚ÌServletRequest‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚È‚©‚Á‚½î•ñAJ2EE‚Ìƒo[ƒWƒ‡ƒ“‚É‚æ‚Á‚Äæ“¾‚Å‚«‚È‚¢î•ñ‚ÍŠÜ‚Ü‚ê‚È‚¢B<br>
+ * ä½†ã—ã€å‡ºåŠ›ã—ãªã„ã‚ˆã†ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹ã‚‚ã®ã‚„ã€å…ƒã®ServletRequestã«å«ã¾ã‚Œã¦ã„ãªã‹ã£ãŸæƒ…å ±ã€J2EEã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã«ã‚ˆã£ã¦å–å¾—ã§ããªã„æƒ…å ±ã¯å«ã¾ã‚Œãªã„ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -305,12 +305,12 @@ public class ServletRequestMapJournalEditorService
     }
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Ä—^‚¦‚ç‚ê‚½ServletRequestŒ^‚Ìî•ñ‚ğƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Äo—Í‚·‚éMapî•ñ‚É•ÏŠ·‚·‚éB<br>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦ä¸ãˆã‚‰ã‚ŒãŸServletRequestå‹ã®æƒ…å ±ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹Mapæƒ…å ±ã«å¤‰æ›ã™ã‚‹ã€‚<br>
      * 
-     * @param finder “KØ‚ÈJournalEditor‚ğ’ñ‹Ÿ‚·‚éEditorFinder
-     * @param key ƒWƒƒ[ƒiƒ‹‚ÌƒL[î•ñ
-     * @param value ƒWƒƒ[ƒiƒ‹î•ñ
-     * @return ƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Äo—Í‚·‚éMapî•ñ
+     * @param finder é©åˆ‡ãªJournalEditorã‚’æä¾›ã™ã‚‹EditorFinder
+     * @param key ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ã‚­ãƒ¼æƒ…å ±
+     * @param value ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹Mapæƒ…å ±
      */
     public Map toMap(EditorFinder finder, Object key, Object value){
         final ServletRequest request = (ServletRequest)value;

@@ -40,11 +40,11 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.io.*;
 
 /**
- * �A�X�y�N�g�R���p�C���B<p>
- * {@link NimbusClassLoader}�ɓo�^���ꂽ{@link AspectTranslator}���g���āA�N���X�t�@�C���ɃA�X�y�N�g��D�荞�ރR���p�C���ł���B<br>
- * NimbusClassLoader�ɂ���āA�N���X���[�h���ɃA�X�y�N�g��D�荞�ޓ��I�A�X�y�N�g�ɑ΂��āA���̃R���p�C���ŃA�v���P�[�V���������s����O�Ɏ��O�ɃA�X�y�N�g��D�荞�񂾃N���X�t�@�C���𐶐����Ă����̂��ÓI�A�X�y�N�g�ł���B<br>
- * ���I�A�X�y�N�g�́A���O�ɃR���p�C�������Ԃ͕K�v�Ȃ����A�A�v���P�[�V�����T�[�o���̕��G�ȃN���X���[�_�\�������V�X�e���ɂ����ẮA�N���X�̃����N�G���[�������댯������B����ɑ΂��āA�ÓI�A�X�y�N�g�́A���O�ɃR���p�C�������Ԃ��K�v�����A���O�ɃR���p�C�����邽�߃N���X���[�_�Ɉˑ����鎖�͂Ȃ��A���S�ɃA�X�y�N�g��D�荞�ގ����ł���B<br>
- * �R���p�C���R�}���h�̏ڍׂ́A{@link #main(String[])}���Q�ƁB<br>
+ * アスペクトコンパイラ。<p>
+ * {@link NimbusClassLoader}に登録された{@link AspectTranslator}を使って、クラスファイルにアスペクトを織り込むコンパイラである。<br>
+ * NimbusClassLoaderによって、クラスロード時にアスペクトを織り込む動的アスペクトに対して、このコンパイラでアプリケーションを実行する前に事前にアスペクトを織り込んだクラスファイルを生成しておくのが静的アスペクトである。<br>
+ * 動的アスペクトは、事前にコンパイルする手間は必要ないが、アプリケーションサーバ等の複雑なクラスローダ構成を持つシステムにおいては、クラスのリンクエラーを招く危険がある。それに対して、静的アスペクトは、事前にコンパイルする手間が必要だが、事前にコンパイルするためクラスローダに依存する事はなく、安全にアスペクトを織り込む事ができる。<br>
+ * コンパイルコマンドの詳細は、{@link #main(String[])}を参照。<br>
  *
  * @author M.Takata
  */
@@ -61,16 +61,16 @@ public class Compiler implements java.io.Serializable{
     private boolean isVerbose;
     
     /**
-     * ��̃C���X�^���X�𐶐�����B<p>
+     * 空のインスタンスを生成する。<p>
      */
     public Compiler(){
     }
     
     /**
-     * �w�肳�ꂽ�f�B���N�g���ɃR���p�C�����ʂ��o�͂���R���p�C���𐶐�����B<p>
+     * 指定されたディレクトリにコンパイル結果を出力するコンパイラを生成する。<p>
      *
-     * @param dest �o�̓f�B���N�g��
-     * @param verbose �R���p�C���̏ڍׂ�\�����邩�ǂ����̃t���O�Btrue�̏ꍇ�A�ڍׂ��o�͂���B
+     * @param dest 出力ディレクトリ
+     * @param verbose コンパイルの詳細を表示するかどうかのフラグ。trueの場合、詳細を出力する。
      */
     public Compiler(String dest, boolean verbose){
         destPath = dest;
@@ -78,45 +78,45 @@ public class Compiler implements java.io.Serializable{
     }
     
     /**
-     * �o�̓f�B���N�g����ݒ肷��B<p>
+     * 出力ディレクトリを設定する。<p>
      *
-     * @param dest �o�̓f�B���N�g��
+     * @param dest 出力ディレクトリ
      */
     public void setDestinationDirectory(String dest){
         destPath = dest;
     }
     
     /**
-     * �o�̓f�B���N�g�����擾����B<p>
+     * 出力ディレクトリを取得する。<p>
      *
-     * @return �o�̓f�B���N�g��
+     * @return 出力ディレクトリ
      */
     public String getDestinationDirectory(){
         return destPath;
     }
     
     /**
-     * �R���p�C���̏ڍׂ��R���\�[���ɏo�͂��邩�ǂ�����ݒ肷��B<p>
+     * コンパイルの詳細をコンソールに出力するかどうかを設定する。<p>
      *
-     * @param verbose �R���p�C���̏ڍׂ�\�����邩�ǂ����̃t���O�Btrue�̏ꍇ�A�ڍׂ��o�͂���B
+     * @param verbose コンパイルの詳細を表示するかどうかのフラグ。trueの場合、詳細を出力する。
      */
     public void setVerbose(boolean verbose){
         isVerbose = verbose;
     }
     
     /**
-     * �R���p�C���̏ڍׂ��R���\�[���ɏo�͂��邩�ǂ����𔻒肷��B<p>
+     * コンパイルの詳細をコンソールに出力するかどうかを判定する。<p>
      *
-     * @return �R���p�C���̏ڍׂ�\�����邩�ǂ����̃t���O�Btrue�̏ꍇ�A�ڍׂ��o�͂���B
+     * @return コンパイルの詳細を表示するかどうかのフラグ。trueの場合、詳細を出力する。
      */
     public boolean isVerbose(){
         return isVerbose;
     }
     
     /**
-     * �w�肵���T�[�r�X��`�t�@�C���p�X���X�g�̃T�[�r�X��`�����[�h����B<p>
+     * 指定したサービス定義ファイルパスリストのサービス定義をロードする。<p>
      *
-     * @param servicePaths �T�[�r�X��`�t�@�C���p�X���X�g
+     * @param servicePaths サービス定義ファイルパスリスト
      */
     public static void loadServices(List servicePaths){
         if(servicePaths != null){
@@ -128,9 +128,9 @@ public class Compiler implements java.io.Serializable{
     }
     
     /**
-     * �w�肵���T�[�r�X��`�t�@�C���p�X���X�g�̃T�[�r�X��`���A�����[�h����B<p>
+     * 指定したサービス定義ファイルパスリストのサービス定義をアンロードする。<p>
      *
-     * @param servicePaths �T�[�r�X��`�t�@�C���p�X���X�g
+     * @param servicePaths サービス定義ファイルパスリスト
      */
     public static void unloadServices(List servicePaths){
         if(servicePaths != null){
@@ -142,11 +142,11 @@ public class Compiler implements java.io.Serializable{
     }
     
     /**
-     * �w�肵���N���X�����X�g�̃N���X���R���p�C������B<p>
+     * 指定したクラス名リストのクラスをコンパイルする。<p>
      *
-     * @param classNames �N���X�����X�g
-     * @return �w�肳�ꂽ�S�ẴN���X�̃R���p�C�������������ꍇ��true
-     * @exception IOException �N���X�t�@�C���̓ǂݍ��݋y�я������݂Ɏ��s�����ꍇ
+     * @param classNames クラス名リスト
+     * @return 指定された全てのクラスのコンパイルが成功した場合はtrue
+     * @exception IOException クラスファイルの読み込み及び書き込みに失敗した場合
      * @see #compile(String)
      */
     public boolean compile(List classNames) throws IOException{
@@ -161,13 +161,13 @@ public class Compiler implements java.io.Serializable{
     }
     
     /**
-     * �w�肵���N���X���̃N���X���R���p�C������B<p>
-     * �N���X���̎w��́A������"*"��t���鎖�ŁA�w�肳�ꂽ�N���X������n�܂镡���̃N���X�����w�肷�鎖���ł���B<br>
-     * �܂��A�w�肵���N���X�́A�N���X�p�X���猟�������B
+     * 指定したクラス名のクラスをコンパイルする。<p>
+     * クラス名の指定は、末尾に"*"を付ける事で、指定されたクラス名から始まる複数のクラス名を指定する事ができる。<br>
+     * また、指定したクラスは、クラスパスから検索される。
      *
-     * @param className �N���X��
-     * @return �w�肳�ꂽ�S�ẴN���X�̃R���p�C�������������ꍇ��true
-     * @exception IOException �N���X�t�@�C���̓ǂݍ��݋y�я������݂Ɏ��s�����ꍇ
+     * @param className クラス名
+     * @return 指定された全てのクラスのコンパイルが成功した場合はtrue
+     * @exception IOException クラスファイルの読み込み及び書き込みに失敗した場合
      */
     public boolean compile(String className) throws IOException{
         final String[] clazz = getClassNames(className);
@@ -458,7 +458,7 @@ public class Compiler implements java.io.Serializable{
     }
     
     /**
-     * �g�p���@��W���o�͂ɕ\������B<p>
+     * 使用方法を標準出力に表示する。<p>
      */
     private static void usage(){
         try{
@@ -470,18 +470,18 @@ public class Compiler implements java.io.Serializable{
         }
     }
     /**
-     * ���\�[�X�𕶎���Ƃ��ēǂݍ��ށB<p>
+     * リソースを文字列として読み込む。<p>
      *
-     * @param name ���\�[�X��
-     * @exception IOException ���\�[�X�����݂��Ȃ��ꍇ
+     * @param name リソース名
+     * @exception IOException リソースが存在しない場合
      */
     private static String getResourceString(String name) throws IOException{
         
-        // ���\�[�X�̓��̓X�g���[�����擾
+        // リソースの入力ストリームを取得
         InputStream is = Compiler.class.getClassLoader()
             .getResourceAsStream(name);
         
-        // ���b�Z�[�W�̓ǂݍ���
+        // メッセージの読み込み
         StringBuilder buf = new StringBuilder();
         BufferedReader reader = null;
         final String separator = System.getProperty("line.separator");
@@ -503,10 +503,10 @@ public class Compiler implements java.io.Serializable{
     }
     
     /**
-     * ���j�R�[�h�G�X�P�[�v��������܂�ł���\���̂��镶������f�t�H���g�G���R�[�f�B���O�̕�����ɕϊ�����B<p>
+     * ユニコードエスケープ文字列を含んでいる可能性のある文字列をデフォルトエンコーディングの文字列に変換する。<p>
      *
-     * @param str ���j�R�[�h�G�X�P�[�v��������܂�ł���\���̂��镶����
-     * @return �f�t�H���g�G���R�[�f�B���O�̕�����
+     * @param str ユニコードエスケープ文字列を含んでいる可能性のある文字列
+     * @return デフォルトエンコーディングの文字列
      */
     private static String unicodeConvert(String str){
         char c;
@@ -610,23 +610,23 @@ public class Compiler implements java.io.Serializable{
     }
     
     /**
-     * �ϊ��ΏۂƂȂ�Ȃ��N���X�𔻒肷��B<p>
-     * �ȉ��̃N���X�́A�@���Ȃ�ꍇ���ϊ��ΏۂƂȂ�Ȃ��B<br>
+     * 変換対象とならないクラスを判定する。<p>
+     * 以下のクラスは、如何なる場合も変換対象とならない。<br>
      * <ul>
-     *   <li>"javassist."����n�܂�N���X</li>
-     *   <li>"org.omg."����n�܂�N���X</li>
-     *   <li>"org.w3c."����n�܂�N���X</li>
-     *   <li>"org.xml.sax."����n�܂�N���X</li>
-     *   <li>"sunw."����n�܂�N���X</li>
-     *   <li>"sun."����n�܂�N���X</li>
-     *   <li>"java."����n�܂�N���X</li>
-     *   <li>"javax."����n�܂�N���X</li>
-     *   <li>"com.sun."����n�܂�N���X</li>
-     *   <li>"jp.ossc.nimbus.service.aop."����n�܂�N���X</li>
+     *   <li>"javassist."から始まるクラス</li>
+     *   <li>"org.omg."から始まるクラス</li>
+     *   <li>"org.w3c."から始まるクラス</li>
+     *   <li>"org.xml.sax."から始まるクラス</li>
+     *   <li>"sunw."から始まるクラス</li>
+     *   <li>"sun."から始まるクラス</li>
+     *   <li>"java."から始まるクラス</li>
+     *   <li>"javax."から始まるクラス</li>
+     *   <li>"com.sun."から始まるクラス</li>
+     *   <li>"jp.ossc.nimbus.service.aop."から始まるクラス</li>
      * </ul>
      * 
-     * @param classname �N���X��
-     * @return �ϊ��ΏۂƂȂ�Ȃ��N���X�̏ꍇ�Atrue
+     * @param classname クラス名
+     * @return 変換対象とならないクラスの場合、true
      */
     protected boolean isNonTranslatableClassName(String classname){
       return classname.startsWith("javassist.")
@@ -642,44 +642,44 @@ public class Compiler implements java.io.Serializable{
     }
     
     /**
-     * �R���p�C���R�}���h�����s����B<p>
+     * コンパイルコマンドを実行する。<p>
      * <pre>
-     * �R�}���h�g�p���@�F
+     * コマンド使用方法：
      *   java jp.ossc.nimbus.service.aop.Compiler [options] [class files]
      * 
      * [options]
      * 
      *  [-servicepath paths]
-     *    �R���p�C���ɕK�v�ȃA�X�y�N�g���`�����T�[�r�X��`�t�@�C���̃p�X���w�肵�܂��B
-     *    ���̎w��͕K�{�ł��B
-     *    �Z�~�R����(;)��؂�ŕ����w��\�ł��B
+     *    コンパイルに必要なアスペクトを定義したサービス定義ファイルのパスを指定します。
+     *    この指定は必須です。
+     *    セミコロン(;)区切りで複数指定可能です。
      * 
      *  [-d directory]
-     *    �o�͐�̃f�B���N�g�����w�肵�܂��B
-     *    ���̃I�v�V�����̎w�肪�Ȃ��ꍇ�́A���s���̃J�����g�ɏo�͂��܂��B
+     *    出力先のディレクトリを指定します。
+     *    このオプションの指定がない場合は、実行時のカレントに出力します。
      * 
      *  [-v]
-     *    ���s�̏ڍׂ�\�����܂��B
+     *    実行の詳細を表示します。
      * 
      *  [-help]
-     *    �w���v��\�����܂��B
+     *    ヘルプを表示します。
      * 
      *  [class names]
-     *    �R���p�C������N���X�����w�肵�܂��B
-     *    �����Ŏw�肷��N���X�́A�N���X�p�X�ɑ��݂��Ȃ���΂Ȃ�܂���B
-     *    �X�y�[�X��؂�ŕ����w��\�ł��B
+     *    コンパイルするクラス名を指定します。
+     *    ここで指定するクラスは、クラスパスに存在しなければなりません。
+     *    スペース区切りで複数指定可能です。
      * 
-     * �g�p�� : 
+     * 使用例 : 
      *    java -classpath classes;lib/javassist-3.0.jar;lib/nimbus.jar jp.ossc.nimbus.service.aop.Compiler -servicepath aspect-service.xml sample.Sample1 sample.Sample2 hoge.Fuga*
      * </pre>
      *
-     * @param args �R�}���h����
-     * @exception Exception �R���p�C�����ɖ�肪���������ꍇ
+     * @param args コマンド引数
+     * @exception Exception コンパイル中に問題が発生した場合
      */
     public static void main(String[] args) throws Exception{
         
         if(args.length != 0 && args[0].equals("-help")){
-            // �g�p���@��\������
+            // 使用方法を表示する
             usage();
             return;
         }

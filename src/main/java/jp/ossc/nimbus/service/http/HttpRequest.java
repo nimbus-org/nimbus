@@ -35,216 +35,216 @@ import java.io.*;
 import java.util.*;
 
 /**
- * HTTPƒŠƒNƒGƒXƒgB<p>
+ * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã€‚<p>
  *
  * @author M.Takata
  */
 public interface HttpRequest{
     
     /**
-     * ƒŠƒNƒGƒXƒg‚ğˆêˆÓ‚É¯•Ê‚·‚é˜_—ƒAƒNƒVƒ‡ƒ“–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’ä¸€æ„ã«è­˜åˆ¥ã™ã‚‹è«–ç†ã‚¢ã‚¯ã‚·ãƒ§ãƒ³åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒAƒNƒVƒ‡ƒ“–¼
+     * @return ã‚¢ã‚¯ã‚·ãƒ§ãƒ³å
      */
     public String getActionName();
     
     /**
-     * ƒŠƒNƒGƒXƒg‚·‚éURL‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã™ã‚‹URLã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return URL
      */
     public String getURL();
     
     /**
-     * ƒŠƒNƒGƒXƒg‚·‚éURL‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã™ã‚‹URLã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param url URL
      */
     public void setURL(String url);
     
     /**
-     * ƒŠƒNƒGƒXƒg‚·‚éHTTP‚Ìƒo[ƒWƒ‡ƒ“‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã™ã‚‹HTTPã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HTTP‚Ìƒo[ƒWƒ‡ƒ“
+     * @return HTTPã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³
      */
     public String getHttpVersion();
     
     /**
-     * ƒŠƒNƒGƒXƒg‚·‚éHTTP‚Ìƒo[ƒWƒ‡ƒ“‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã™ã‚‹HTTPã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param version HTTP‚Ìƒo[ƒWƒ‡ƒ“
+     * @param version HTTPã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³
      */
     public void setHttpVersion(String version);
     
     /**
-     * ƒŠƒNƒGƒXƒg‚·‚éHTTPƒwƒbƒ_–¼‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã™ã‚‹HTTPãƒ˜ãƒƒãƒ€åã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HTTPƒwƒbƒ_–¼‚ÌW‡
+     * @return HTTPãƒ˜ãƒƒãƒ€åã®é›†åˆ
      */
     public Set getHeaderNameSet();
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌHTTPƒwƒbƒ_‚ğæ“¾‚·‚éB<p>
-     * “¯ˆêƒwƒbƒ_–¼‚Å•¡”‚Ì’l‚ª‚ ‚éê‡‚ÍAÅ‰‚Ì’lB<br>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®HTTPãƒ˜ãƒƒãƒ€ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * åŒä¸€ãƒ˜ãƒƒãƒ€åã§è¤‡æ•°ã®å€¤ãŒã‚ã‚‹å ´åˆã¯ã€æœ€åˆã®å€¤ã€‚<br>
      *
-     * @return HTTPƒwƒbƒ_
+     * @return HTTPãƒ˜ãƒƒãƒ€
      */
     public String getHeader(String name);
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌHTTPƒwƒbƒ_‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®HTTPãƒ˜ãƒƒãƒ€ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HTTPƒwƒbƒ_”z—ñ
+     * @return HTTPãƒ˜ãƒƒãƒ€é…åˆ—
      */
     public String[] getHeaders(String name);
     
     /**
-     * HTTPƒwƒbƒ_‚ğİ’è‚·‚éB<p>
+     * HTTPãƒ˜ãƒƒãƒ€ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name HTTPƒwƒbƒ_–¼
-     * @param value HTTPƒwƒbƒ_
+     * @param name HTTPãƒ˜ãƒƒãƒ€å
+     * @param value HTTPãƒ˜ãƒƒãƒ€
      */
     public void setHeader(String name, String value);
     
     /**
-     * HTTPƒwƒbƒ_‚ğİ’è‚·‚éB<p>
+     * HTTPãƒ˜ãƒƒãƒ€ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name HTTPƒwƒbƒ_–¼
-     * @param value HTTPƒwƒbƒ_”z—ñ
+     * @param name HTTPãƒ˜ãƒƒãƒ€å
+     * @param value HTTPãƒ˜ãƒƒãƒ€é…åˆ—
      */
     public void setHeaders(String name, String[] value);
     
     /**
-     * HTTPƒwƒbƒ_‚ğ’Ç‰Á‚·‚éB<p>
+     * HTTPãƒ˜ãƒƒãƒ€ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param name HTTPƒwƒbƒ_–¼
-     * @param value HTTPƒwƒbƒ_
+     * @param name HTTPãƒ˜ãƒƒãƒ€å
+     * @param value HTTPãƒ˜ãƒƒãƒ€
      */
     public void addHeader(String name, String value);
     
     /**
-     * ƒŠƒNƒGƒXƒg‚ÌƒRƒ“ƒeƒ“ƒgƒ^ƒCƒv‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ã‚³ãƒ³ãƒ†ãƒ³ãƒˆã‚¿ã‚¤ãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒRƒ“ƒeƒ“ƒgƒ^ƒCƒv
+     * @return ã‚³ãƒ³ãƒ†ãƒ³ãƒˆã‚¿ã‚¤ãƒ—
      */
     public String getContentType();
     
     /**
-     * ƒŠƒNƒGƒXƒg‚ÌƒRƒ“ƒeƒ“ƒgƒ^ƒCƒv‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ã‚³ãƒ³ãƒ†ãƒ³ãƒˆã‚¿ã‚¤ãƒ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type ƒRƒ“ƒeƒ“ƒgƒ^ƒCƒv
+     * @param type ã‚³ãƒ³ãƒ†ãƒ³ãƒˆã‚¿ã‚¤ãƒ—
      */
     public void setContentType(String type);
     
     /**
-     * ƒŠƒNƒGƒXƒg‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getCharacterEncoding();
     
     /**
-     * ƒŠƒNƒGƒXƒg‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setCharacterEncoding(String encoding);
     
     /**
-     * ƒŠƒNƒGƒXƒg‚ÌƒNƒGƒŠ‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ã‚¯ã‚¨ãƒªã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒNƒGƒŠ•¶š—ñ
+     * @return ã‚¯ã‚¨ãƒªæ–‡å­—åˆ—
      */
     public String getQueryString();
     
     /**
-     * ƒŠƒNƒGƒXƒg‚ÌƒNƒGƒŠ‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ã‚¯ã‚¨ãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param query ƒNƒGƒŠ•¶š—ñ
+     * @param query ã‚¯ã‚¨ãƒªæ–‡å­—åˆ—
      */
     public void setQueryString(String query);
     
     /**
-     * ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^–¼‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^–¼‚ÌW‡
+     * @return ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã®é›†åˆ
      */
     public Set getParameterNameSet();
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚ğæ“¾‚·‚éB<p>
-     * “¯ˆêƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^–¼‚Å•¡”‚Ì’l‚ª‚ ‚éê‡‚ÍAÅ‰‚Ì’lB<br>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * åŒä¸€ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã§è¤‡æ•°ã®å€¤ãŒã‚ã‚‹å ´åˆã¯ã€æœ€åˆã®å€¤ã€‚<br>
      *
-     * @return ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^
+     * @return ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public String getParameter(String name);
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÌƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^
+     * @return ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public String[] getParameters(String name);
     
     /**
-     * ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^–¼
-     * @param value ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^
+     * @param name ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å
+     * @param value ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public void setParameter(String name, String value);
     
     /**
-     * ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^–¼
-     * @param value ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^
+     * @param name ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å
+     * @param value ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public void setParameters(String name, String[] value);
     
     /**
-     * ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^–¼
-     * @param file ‘—Mƒtƒ@ƒCƒ‹
+     * @param name ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å
+     * @param file é€ä¿¡ãƒ•ã‚¡ã‚¤ãƒ«
      */
     public void setFileParameter(String name, File file) throws java.io.FileNotFoundException;
     
     /**
-     * ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^–¼
-     * @param file ‘—Mƒtƒ@ƒCƒ‹
-     * @param fileName ‘—Mƒtƒ@ƒCƒ‹–¼
-     * @param contentType ƒRƒ“ƒeƒ“ƒgƒ^ƒCƒv
+     * @param name ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å
+     * @param file é€ä¿¡ãƒ•ã‚¡ã‚¤ãƒ«
+     * @param fileName é€ä¿¡ãƒ•ã‚¡ã‚¤ãƒ«å
+     * @param contentType ã‚³ãƒ³ãƒ†ãƒ³ãƒˆã‚¿ã‚¤ãƒ—
      */
     public void setFileParameter(String name, File file, String fileName, String contentType) throws java.io.FileNotFoundException;
     
     /**
-     * ƒŠƒNƒGƒXƒgƒXƒgƒŠ[ƒ€‚É‘‚«‚Ş‚½‚ß‚Ì“ü—ÍƒXƒgƒŠ[ƒ€‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚¹ãƒˆãƒªãƒ¼ãƒ ã«æ›¸ãè¾¼ã‚€ãŸã‚ã®å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param is “ü—ÍƒXƒgƒŠ[ƒ€
+     * @param is å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
      */
     public void setInputStream(InputStream is);
     
     /**
-     * ƒŠƒNƒGƒXƒgƒXƒgƒŠ[ƒ€‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒNƒGƒXƒgƒXƒgƒŠ[ƒ€
+     * @return ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚¹ãƒˆãƒªãƒ¼ãƒ 
      */
     public OutputStream getOutputStream();
     
     /**
-     * ƒŠƒNƒGƒXƒgƒXƒgƒŠ[ƒ€‚É‘‚«‚Ş‚½‚ß‚Ì“ü—ÍƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚¹ãƒˆãƒªãƒ¼ãƒ ã«æ›¸ãè¾¼ã‚€ãŸã‚ã®å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param input “ü—ÍƒIƒuƒWƒFƒNƒg
+     * @param input å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void setObject(Object input);
     
     /**
-     * ƒŠƒNƒGƒXƒgƒXƒgƒŠ[ƒ€‚É‘‚«‚Ş‚½‚ß‚Ì“ü—ÍƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚¹ãƒˆãƒªãƒ¼ãƒ ã«æ›¸ãè¾¼ã‚€ãŸã‚ã®å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “ü—ÍƒIƒuƒWƒFƒNƒg
+     * @return å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object getObject();
 }

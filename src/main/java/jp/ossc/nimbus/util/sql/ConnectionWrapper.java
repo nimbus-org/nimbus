@@ -40,7 +40,7 @@ import java.lang.reflect.*;
 import jp.ossc.nimbus.beans.*;
 
 /**
- * Connectionƒ‰ƒbƒp[B<p>
+ * Connectionãƒ©ãƒƒãƒ‘ãƒ¼ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -67,37 +67,37 @@ public class ConnectionWrapper implements Connection, Serializable {
     protected Map resultSetProperties;
     
     /**
-     * w’è‚µ‚½ƒRƒlƒNƒVƒ‡ƒ“‚ğƒ‰ƒbƒv‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param con ƒ‰ƒbƒv‚·‚éƒRƒlƒNƒVƒ‡ƒ“
+     * @param con ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
      */
     public ConnectionWrapper(Connection con){
         connection = con;
     }
     
     /**
-     * ƒ‰ƒbƒv‚µ‚Ä‚¢‚éƒRƒlƒNƒVƒ‡ƒ“‚ğæ“¾‚·‚éB<p>
+     * ãƒ©ãƒƒãƒ—ã—ã¦ã„ã‚‹ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ‰ƒbƒv‚µ‚Ä‚¢‚éƒRƒlƒNƒVƒ‡ƒ“
+     * @return ãƒ©ãƒƒãƒ—ã—ã¦ã„ã‚‹ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
      */
     public Connection getConnection(){
         return connection;
     }
     
     /**
-     * ƒ‰ƒbƒv‚·‚éƒRƒlƒNƒVƒ‡ƒ“‚ğİ’è‚·‚éB<p>
+     * ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param con ƒ‰ƒbƒv‚·‚éƒRƒlƒNƒVƒ‡ƒ“
+     * @param con ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
      */
     public void setConnection(Connection con){
         connection = con;
     }
     
     /**
-     * ƒ‰ƒbƒv‚·‚é{@link StatementWrapper}‚ÌÀ‘•ƒNƒ‰ƒX‚ğİ’è‚·‚éB<p>
+     * ãƒ©ãƒƒãƒ—ã™ã‚‹{@link StatementWrapper}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param clazz ƒ‰ƒbƒv‚·‚éStatementWrapper‚ÌÀ‘•ƒNƒ‰ƒX
-     * @exception IllegalArgumentException w’è‚µ‚½ƒNƒ‰ƒX‚ªStatementWrapper‚ÌƒTƒuƒNƒ‰ƒX‚Å‚È‚¢ê‡
+     * @param clazz ãƒ©ãƒƒãƒ—ã™ã‚‹StatementWrapperã®å®Ÿè£…ã‚¯ãƒ©ã‚¹
+     * @exception IllegalArgumentException æŒ‡å®šã—ãŸã‚¯ãƒ©ã‚¹ãŒStatementWrapperã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã§ãªã„å ´åˆ
      */
     public void setStatementWrapperClass(Class clazz)
      throws IllegalArgumentException{
@@ -111,19 +111,19 @@ public class ConnectionWrapper implements Connection, Serializable {
     }
     
     /**
-     * ƒ‰ƒbƒv‚·‚é{@link StatementWrapper}‚ÌÀ‘•ƒNƒ‰ƒX‚ğæ“¾‚·‚éB<p>
+     * ãƒ©ãƒƒãƒ—ã™ã‚‹{@link StatementWrapper}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ‰ƒbƒv‚·‚éStatementWrapper‚ÌÀ‘•ƒNƒ‰ƒX
+     * @return ãƒ©ãƒƒãƒ—ã™ã‚‹StatementWrapperã®å®Ÿè£…ã‚¯ãƒ©ã‚¹
      */
     public Class getStatementWrapperClass(){
         return statementWrapperClass;
     }
     
     /**
-     * ƒ‰ƒbƒv‚·‚é{@link CallableStatement}‚ÌÀ‘•ƒNƒ‰ƒX‚ğİ’è‚·‚éB<p>
+     * ãƒ©ãƒƒãƒ—ã™ã‚‹{@link CallableStatement}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param clazz ƒ‰ƒbƒv‚·‚éCallableStatement‚ÌÀ‘•ƒNƒ‰ƒX
-     * @exception IllegalArgumentException w’è‚µ‚½ƒNƒ‰ƒX‚ªCallableStatement‚ÌÀ‘•ƒNƒ‰ƒX‚Å‚È‚¢A‚Ü‚½‚ÍStatementWrapper‚ÌƒTƒuƒNƒ‰ƒX‚Å‚Í‚È‚¢ê‡
+     * @param clazz ãƒ©ãƒƒãƒ—ã™ã‚‹CallableStatementã®å®Ÿè£…ã‚¯ãƒ©ã‚¹
+     * @exception IllegalArgumentException æŒ‡å®šã—ãŸã‚¯ãƒ©ã‚¹ãŒCallableStatementã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã§ãªã„ã€ã¾ãŸã¯StatementWrapperã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã§ã¯ãªã„å ´åˆ
      */
     public void setCallableStatementWrapperClass(Class clazz)
      throws IllegalArgumentException{
@@ -139,19 +139,19 @@ public class ConnectionWrapper implements Connection, Serializable {
     }
     
     /**
-     * ƒ‰ƒbƒv‚·‚é{@link CallableStatementWrapper}‚ÌÀ‘•ƒNƒ‰ƒX‚ğæ“¾‚·‚éB<p>
+     * ãƒ©ãƒƒãƒ—ã™ã‚‹{@link CallableStatementWrapper}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ‰ƒbƒv‚·‚éCallableStatementWrapper‚ÌÀ‘•ƒNƒ‰ƒX
+     * @return ãƒ©ãƒƒãƒ—ã™ã‚‹CallableStatementWrapperã®å®Ÿè£…ã‚¯ãƒ©ã‚¹
      */
     public Class getCallableStatementWrapperClass(){
         return callableStatementWrapperClass;
     }
     
     /**
-     * ƒ‰ƒbƒv‚·‚é{@link PreparedStatement}‚ÌÀ‘•ƒNƒ‰ƒX‚ğİ’è‚·‚éB<p>
+     * ãƒ©ãƒƒãƒ—ã™ã‚‹{@link PreparedStatement}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param clazz ƒ‰ƒbƒv‚·‚éPreparedStatement‚ÌÀ‘•ƒNƒ‰ƒX
-     * @exception IllegalArgumentException w’è‚µ‚½ƒNƒ‰ƒX‚ªPreparedStatement‚ÌÀ‘•ƒNƒ‰ƒX‚Å‚È‚¢A‚Ü‚½‚ÍStatementWrapper‚ÌƒTƒuƒNƒ‰ƒX‚Å‚Í‚È‚¢ê‡
+     * @param clazz ãƒ©ãƒƒãƒ—ã™ã‚‹PreparedStatementã®å®Ÿè£…ã‚¯ãƒ©ã‚¹
+     * @exception IllegalArgumentException æŒ‡å®šã—ãŸã‚¯ãƒ©ã‚¹ãŒPreparedStatementã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã§ãªã„ã€ã¾ãŸã¯StatementWrapperã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã§ã¯ãªã„å ´åˆ
      */
     public void setPreparedStatementWrapperClass(Class clazz)
      throws IllegalArgumentException{
@@ -167,19 +167,19 @@ public class ConnectionWrapper implements Connection, Serializable {
     }
     
     /**
-     * ƒ‰ƒbƒv‚·‚é{@link PreparedStatementWrapper}‚ÌÀ‘•ƒNƒ‰ƒX‚ğæ“¾‚·‚éB<p>
+     * ãƒ©ãƒƒãƒ—ã™ã‚‹{@link PreparedStatementWrapper}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ‰ƒbƒv‚·‚éPreparedStatementWrapper‚ÌÀ‘•ƒNƒ‰ƒX
+     * @return ãƒ©ãƒƒãƒ—ã™ã‚‹PreparedStatementWrapperã®å®Ÿè£…ã‚¯ãƒ©ã‚¹
      */
     public Class getPreparedStatementWrapperClass(){
         return preparedStatementWrapperClass;
     }
     
     /**
-     * ƒ‰ƒbƒv‚·‚é{@link ResultSetWrapper}‚ÌÀ‘•ƒNƒ‰ƒX‚ğİ’è‚·‚éB<p>
+     * ãƒ©ãƒƒãƒ—ã™ã‚‹{@link ResultSetWrapper}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param clazz ƒ‰ƒbƒv‚·‚éResultSetWrapper‚ÌÀ‘•ƒNƒ‰ƒX
-     * @exception IllegalArgumentException w’è‚µ‚½ƒNƒ‰ƒX‚ªResultSetWrapper‚ÌƒTƒuƒNƒ‰ƒX‚Å‚È‚¢ê‡
+     * @param clazz ãƒ©ãƒƒãƒ—ã™ã‚‹ResultSetWrapperã®å®Ÿè£…ã‚¯ãƒ©ã‚¹
+     * @exception IllegalArgumentException æŒ‡å®šã—ãŸã‚¯ãƒ©ã‚¹ãŒResultSetWrapperã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã§ãªã„å ´åˆ
      */
     public void setResultSetWrapperClass(Class clazz)
      throws IllegalArgumentException{
@@ -194,19 +194,19 @@ public class ConnectionWrapper implements Connection, Serializable {
     }
     
     /**
-     * ƒ‰ƒbƒv‚·‚é{@link ResultSetWrapper}‚ÌÀ‘•ƒNƒ‰ƒX‚ğæ“¾‚·‚éB<p>
+     * ãƒ©ãƒƒãƒ—ã™ã‚‹{@link ResultSetWrapper}ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ‰ƒbƒv‚·‚éResultSetWrapper‚ÌÀ‘•ƒNƒ‰ƒX
+     * @return ãƒ©ãƒƒãƒ—ã™ã‚‹ResultSetWrapperã®å®Ÿè£…ã‚¯ãƒ©ã‚¹
      */
     public Class getResultSetWrapperClass(){
         return resultSetWrapperClass;
     }
     
     /**
-     * ‘S‚Ä‚ÌStatement‚ÉƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
-     * {@link #setStatementProperties(Map)}A{@link #setCallableStatementProperties(Map)}A{@link #setPreparedStatementProperties(Map)}‚ğŒÄ‚Ño‚·B<br>
+     * å…¨ã¦ã®Statementã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setStatementProperties(Map)}ã€{@link #setCallableStatementProperties(Map)}ã€{@link #setPreparedStatementProperties(Map)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param props ƒvƒƒpƒeƒBƒ}ƒbƒv
+     * @param props ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒãƒƒãƒ—
      */
     public void setAllStatementProperties(Map props){
         setStatementProperties(props);
@@ -215,11 +215,11 @@ public class ConnectionWrapper implements Connection, Serializable {
     }
     
     /**
-     * ‘S‚Ä‚ÌStatement‚ÉƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
-     * {@link #setStatementProperty(String, Object)}A{@link #setCallableStatementProperty(String, Object)}A{@link #setPreparedStatementProperty(String, Object)}‚ğŒÄ‚Ño‚·B<br>
+     * å…¨ã¦ã®Statementã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #setStatementProperty(String, Object)}ã€{@link #setCallableStatementProperty(String, Object)}ã€{@link #setPreparedStatementProperty(String, Object)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param value ’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param value å€¤
      */
     public void setAllStatementProperty(String name, Object value){
         setStatementProperty(name, value);
@@ -228,9 +228,9 @@ public class ConnectionWrapper implements Connection, Serializable {
     }
     
     /**
-     * {@link StatementWrapper}‚ÉƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * {@link StatementWrapper}ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param props ƒvƒƒpƒeƒBƒ}ƒbƒv
+     * @param props ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒãƒƒãƒ—
      */
     public void setStatementProperties(Map props){
         if(props == null || props.size() == 0){
@@ -247,10 +247,10 @@ public class ConnectionWrapper implements Connection, Serializable {
     }
     
     /**
-     * {@link StatementWrapper}‚ÉƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * {@link StatementWrapper}ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param value ’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param value å€¤
      */
     public void setStatementProperty(String name, Object value){
         if(statementProperties == null){
@@ -261,10 +261,10 @@ public class ConnectionWrapper implements Connection, Serializable {
     }
     
     /**
-     * {@link StatementWrapper}‚ÌƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * {@link StatementWrapper}ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return å€¤
      */
     public Object getStatementProperty(String name){
         if(statementProperties == null){
@@ -281,9 +281,9 @@ public class ConnectionWrapper implements Connection, Serializable {
     }
     
     /**
-     * {@link CallableStatementWrapper}‚ÉƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * {@link CallableStatementWrapper}ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param props ƒvƒƒpƒeƒBƒ}ƒbƒv
+     * @param props ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒãƒƒãƒ—
      */
     public void setCallableStatementProperties(Map props){
         if(props == null || props.size() == 0){
@@ -300,10 +300,10 @@ public class ConnectionWrapper implements Connection, Serializable {
     }
     
     /**
-     * {@link CallableStatementWrapper}‚ÉƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * {@link CallableStatementWrapper}ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param value ’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param value å€¤
      */
     public void setCallableStatementProperty(String name, Object value){
         if(callableStatementProperties == null){
@@ -314,10 +314,10 @@ public class ConnectionWrapper implements Connection, Serializable {
     }
     
     /**
-     * {@link CallableStatementWrapper}‚ÌƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * {@link CallableStatementWrapper}ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return å€¤
      */
     public Object getCallableStatementProperty(String name){
         if(callableStatementProperties == null){
@@ -334,9 +334,9 @@ public class ConnectionWrapper implements Connection, Serializable {
     }
     
     /**
-     * {@link PreparedStatementWrapper}‚ÉƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * {@link PreparedStatementWrapper}ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param props ƒvƒƒpƒeƒBƒ}ƒbƒv
+     * @param props ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒãƒƒãƒ—
      */
     public void setPreparedStatementProperties(Map props){
         if(props == null || props.size() == 0){
@@ -353,10 +353,10 @@ public class ConnectionWrapper implements Connection, Serializable {
     }
     
     /**
-     * {@link PreparedStatementWrapper}‚ÉƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * {@link PreparedStatementWrapper}ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param value ’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param value å€¤
      */
     public void setPreparedStatementProperty(String name, Object value){
         if(preparedStatementProperties == null){
@@ -367,10 +367,10 @@ public class ConnectionWrapper implements Connection, Serializable {
     }
     
     /**
-     * {@link PreparedStatementWrapper}‚ÌƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * {@link PreparedStatementWrapper}ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return å€¤
      */
     public Object getPreparedStatementProperty(String name){
         if(preparedStatementProperties == null){
@@ -387,9 +387,9 @@ public class ConnectionWrapper implements Connection, Serializable {
     }
     
     /**
-     * {@link ResultSetWrapper}‚ÉƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * {@link ResultSetWrapper}ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param props ƒvƒƒpƒeƒBƒ}ƒbƒv
+     * @param props ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒãƒƒãƒ—
      */
     public void setResultSetProperties(Map props){
         if(props == null || props.size() == 0){
@@ -406,10 +406,10 @@ public class ConnectionWrapper implements Connection, Serializable {
     }
     
     /**
-     * {@link ResultSetWrapper}‚ÉƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * {@link ResultSetWrapper}ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param value ’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param value å€¤
      */
     public void setResultSetProperty(String name, Object value){
         if(resultSetProperties == null){
@@ -419,10 +419,10 @@ public class ConnectionWrapper implements Connection, Serializable {
     }
     
     /**
-     * {@link ResultSetWrapper}‚ÌƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * {@link ResultSetWrapper}ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return å€¤
      */
     public Object getResultSetProperty(String name){
         if(resultSetProperties == null){

@@ -35,342 +35,342 @@ import java.sql.Connection;
 import java.util.Map;
 
 /**
- * ‰i‘±ŠÇ—B<p>
+ * æ°¸ç¶šç®¡ç†ã€‚<p>
  *
  * @author M.Takata
  */
 public interface PersistentManager{
     
     /**
-     * ƒf[ƒ^ƒx[ƒX‚©‚ç“Ç‚İ‚ŞB<p>
-     * w’è‚³‚ê‚½query‚Éw’è‚³‚ê‚½input‚Ìî•ñ‚ğ–„‚ß‚İÀs‚µ‚ÄAÀsŒ‹‰Ê‚ÌResultSet‚ğw’è‚³‚ê‚½output‚É‹l‚ß‚Ä•Ô‚·B<br>
-     * ƒpƒ‰ƒ[ƒ^query‚ÍA–„‚ß‚İƒNƒGƒŠ‚ÅASQL‚Éinput‚ğ‚Ç‚¤“n‚µ‚Äoutput‚É‚Ç‚¤‹l‚ß‚Ä•Ô‚·‚©‚ğw’è‚·‚éBƒpƒ‰ƒ[ƒ^input‚Ìî•ñ‚ğ–„‚ß‚Şê‡‚ÍA"<-{ƒvƒƒpƒeƒB–¼}"‚Å–„‚ß‚ŞB‚Ü‚½AÀsŒ‹‰Ê‚ÌResultSet‚©‚çAo—ÍBean‚É‹l‚ß‚é‚É‚ÍA"->{ƒvƒƒpƒeƒB–¼}"‚Å–„‚ß‚ŞB<br>
+     * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰èª­ã¿è¾¼ã‚€ã€‚<p>
+     * æŒ‡å®šã•ã‚ŒãŸqueryã«æŒ‡å®šã•ã‚ŒãŸinputã®æƒ…å ±ã‚’åŸ‹ã‚è¾¼ã¿å®Ÿè¡Œã—ã¦ã€å®Ÿè¡Œçµæœã®ResultSetã‚’æŒ‡å®šã•ã‚ŒãŸoutputã«è©°ã‚ã¦è¿”ã™ã€‚<br>
+     * ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿queryã¯ã€åŸ‹ã‚è¾¼ã¿ã‚¯ã‚¨ãƒªã§ã€SQLã«inputã‚’ã©ã†æ¸¡ã—ã¦outputã«ã©ã†è©°ã‚ã¦è¿”ã™ã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿inputã®æƒ…å ±ã‚’åŸ‹ã‚è¾¼ã‚€å ´åˆã¯ã€"<-{ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å}"ã§åŸ‹ã‚è¾¼ã‚€ã€‚ã¾ãŸã€å®Ÿè¡Œçµæœã®ResultSetã‹ã‚‰ã€å‡ºåŠ›Beanã«è©°ã‚ã‚‹ã«ã¯ã€"->{ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å}"ã§åŸ‹ã‚è¾¼ã‚€ã€‚<br>
      * <pre>
-     *   —áFselect USER.NAME->{Header(user).name}, MAIL.ADDRESS->{RecordList(mail).address}, from USER, MAIL where USER.ID = ?<-{Id} and USER.ID = MAIL.ID
+     *   ä¾‹ï¼šselect USER.NAME->{Header(user).name}, MAIL.ADDRESS->{RecordList(mail).address}, from USER, MAIL where USER.ID = ?<-{Id} and USER.ID = MAIL.ID
      * </pre>
      *
-     * @param con ƒRƒlƒNƒVƒ‡ƒ“
-     * @param query –„‚ß‚İƒNƒGƒŠ
-     * @param input “ü—ÍBean
-     * @param output o—ÍBean
-     * @return ƒf[ƒ^ƒx[ƒX‚©‚ç“Ç‚İ‚ñ‚¾o—ÍBean
-     * @exception PersistentException “Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+     * @param con ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
+     * @param query åŸ‹ã‚è¾¼ã¿ã‚¯ã‚¨ãƒª
+     * @param input å…¥åŠ›Bean
+     * @param output å‡ºåŠ›Bean
+     * @return ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰èª­ã¿è¾¼ã‚“ã å‡ºåŠ›Bean
+     * @exception PersistentException èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object loadQuery(Connection con, String query, Object input, Object output) throws PersistentException;
     
     /**
-     * ƒf[ƒ^ƒx[ƒX‚©‚ç“Ç‚İ‚ŞB<p>
-     * w’è‚³‚ê‚½query‚Éw’è‚³‚ê‚½input‚Ìî•ñ‚ğ–„‚ß‚İÀs‚µ‚ÄAÀsŒ‹‰Ê‚ÌResultSet‚ğw’è‚³‚ê‚½output‚É‹l‚ß‚Ä•Ô‚·B<br>
-     * ƒpƒ‰ƒ[ƒ^query‚ÍA–„‚ß‚İƒNƒGƒŠ‚ÅASQL‚Éinput‚ğ‚Ç‚¤“n‚µ‚Äoutput‚É‚Ç‚¤‹l‚ß‚Ä•Ô‚·‚©‚ğw’è‚·‚éBƒpƒ‰ƒ[ƒ^input‚Ìî•ñ‚ğ–„‚ß‚Şê‡‚ÍA"<-{ƒvƒƒpƒeƒB–¼}"‚Å–„‚ß‚ŞB‚Ü‚½AÀsŒ‹‰Ê‚ÌResultSet‚©‚çAo—ÍBean‚É‹l‚ß‚é‚É‚ÍA"->{ƒvƒƒpƒeƒB–¼}"‚Å–„‚ß‚ŞB<br>
+     * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰èª­ã¿è¾¼ã‚€ã€‚<p>
+     * æŒ‡å®šã•ã‚ŒãŸqueryã«æŒ‡å®šã•ã‚ŒãŸinputã®æƒ…å ±ã‚’åŸ‹ã‚è¾¼ã¿å®Ÿè¡Œã—ã¦ã€å®Ÿè¡Œçµæœã®ResultSetã‚’æŒ‡å®šã•ã‚ŒãŸoutputã«è©°ã‚ã¦è¿”ã™ã€‚<br>
+     * ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿queryã¯ã€åŸ‹ã‚è¾¼ã¿ã‚¯ã‚¨ãƒªã§ã€SQLã«inputã‚’ã©ã†æ¸¡ã—ã¦outputã«ã©ã†è©°ã‚ã¦è¿”ã™ã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿inputã®æƒ…å ±ã‚’åŸ‹ã‚è¾¼ã‚€å ´åˆã¯ã€"<-{ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å}"ã§åŸ‹ã‚è¾¼ã‚€ã€‚ã¾ãŸã€å®Ÿè¡Œçµæœã®ResultSetã‹ã‚‰ã€å‡ºåŠ›Beanã«è©°ã‚ã‚‹ã«ã¯ã€"->{ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å}"ã§åŸ‹ã‚è¾¼ã‚€ã€‚<br>
      * <pre>
-     *   —áFselect USER.NAME->{Header(user).name}, MAIL.ADDRESS->{RecordList(mail).address}, from USER, MAIL where USER.ID = ?<-{Id} and USER.ID = MAIL.ID
+     *   ä¾‹ï¼šselect USER.NAME->{Header(user).name}, MAIL.ADDRESS->{RecordList(mail).address}, from USER, MAIL where USER.ID = ?<-{Id} and USER.ID = MAIL.ID
      * </pre>
      *
-     * @param con ƒRƒlƒNƒVƒ‡ƒ“
-     * @param query –„‚ß‚İƒNƒGƒŠ
-     * @param input “ü—ÍBean
-     * @param output o—ÍBean
-     * @param statementProps java.sql.Statement‚É‘Î‚·‚éƒvƒƒpƒeƒB‚Ìƒ}ƒbƒv
-     * @param resultSetProps java.sql.ResultSet‚É‘Î‚·‚éƒvƒƒpƒeƒB‚Ìƒ}ƒbƒv
-     * @return ƒf[ƒ^ƒx[ƒX‚©‚ç“Ç‚İ‚ñ‚¾o—ÍBean
-     * @exception PersistentException “Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+     * @param con ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
+     * @param query åŸ‹ã‚è¾¼ã¿ã‚¯ã‚¨ãƒª
+     * @param input å…¥åŠ›Bean
+     * @param output å‡ºåŠ›Bean
+     * @param statementProps java.sql.Statementã«å¯¾ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ãƒãƒƒãƒ—
+     * @param resultSetProps java.sql.ResultSetã«å¯¾ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ãƒãƒƒãƒ—
+     * @return ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰èª­ã¿è¾¼ã‚“ã å‡ºåŠ›Bean
+     * @exception PersistentException èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object loadQuery(Connection con, String query, Object input, Object output, Map statementProps, Map resultSetProps) throws PersistentException;
     
     /**
-     * ƒf[ƒ^ƒx[ƒX‚©‚ç“Ç‚İ‚ŞB<p>
+     * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰èª­ã¿è¾¼ã‚€ã€‚<p>
      *
-     * @param con ƒRƒlƒNƒVƒ‡ƒ“
-     * @param sql –„‚ß‚İSQL
-     * @param input “ü—ÍBean
-     * @param inputProps “ü—ÍBean‚Æ“ü—Íƒpƒ‰ƒ[ƒ^‚Ìƒ}ƒbƒsƒ“ƒOBƒvƒƒpƒeƒB•¶š—ñ‚ÌStringAString[]A‚Ü‚½‚ÍList<String>
-     * @param output o—ÍBean
-     * @param outputProps o—ÍBean‚Æ—ñ–¼‚Ìƒ}ƒbƒsƒ“ƒOBƒvƒƒpƒeƒB•¶š—ñ‚ÌStringAString[]A‚Ü‚½‚ÍList<String>A‚Ü‚½‚ÍƒL[‚ª—ñ–¼‚Å’l‚ªƒvƒƒpƒeƒB•¶š—ñ‚Æ‚È‚éMap<String, String>
-     * @return ƒf[ƒ^ƒx[ƒX‚©‚ç“Ç‚İ‚ñ‚¾o—ÍBean
-     * @exception PersistentException “Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+     * @param con ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
+     * @param sql åŸ‹ã‚è¾¼ã¿SQL
+     * @param input å…¥åŠ›Bean
+     * @param inputProps å…¥åŠ›Beanã¨å…¥åŠ›ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã®Stringã€String[]ã€ã¾ãŸã¯List<String>
+     * @param output å‡ºåŠ›Bean
+     * @param outputProps å‡ºåŠ›Beanã¨åˆ—åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã®Stringã€String[]ã€ã¾ãŸã¯List<String>ã€ã¾ãŸã¯ã‚­ãƒ¼ãŒåˆ—åã§å€¤ãŒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã¨ãªã‚‹Map<String, String>
+     * @return ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰èª­ã¿è¾¼ã‚“ã å‡ºåŠ›Bean
+     * @exception PersistentException èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object load(Connection con, String sql, Object input, Object inputProps, Object output, Object outputProps) throws PersistentException;
     
     /**
-     * ƒf[ƒ^ƒx[ƒX‚©‚ç“Ç‚İ‚ŞB<p>
+     * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰èª­ã¿è¾¼ã‚€ã€‚<p>
      *
-     * @param con ƒRƒlƒNƒVƒ‡ƒ“
-     * @param sql –„‚ß‚İSQL
-     * @param input “ü—ÍBean
-     * @param inputProps “ü—ÍBean‚Æ“ü—Íƒpƒ‰ƒ[ƒ^‚Ìƒ}ƒbƒsƒ“ƒOBƒvƒƒpƒeƒB•¶š—ñ‚ÌStringAString[]A‚Ü‚½‚ÍList<String>
-     * @param output o—ÍBean
-     * @param outputProps o—ÍBean‚Æ—ñ–¼‚Ìƒ}ƒbƒsƒ“ƒOBƒvƒƒpƒeƒB•¶š—ñ‚ÌStringAString[]A‚Ü‚½‚ÍList<String>A‚Ü‚½‚ÍƒL[‚ª—ñ–¼‚Å’l‚ªƒvƒƒpƒeƒB•¶š—ñ‚Æ‚È‚éMap<String, String>
-     * @param statementProps java.sql.Statement‚É‘Î‚·‚éƒvƒƒpƒeƒB‚Ìƒ}ƒbƒv
-     * @param resultSetProps java.sql.ResultSet‚É‘Î‚·‚éƒvƒƒpƒeƒB‚Ìƒ}ƒbƒv
-     * @return ƒf[ƒ^ƒx[ƒX‚©‚ç“Ç‚İ‚ñ‚¾o—ÍBean
-     * @exception PersistentException “Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+     * @param con ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
+     * @param sql åŸ‹ã‚è¾¼ã¿SQL
+     * @param input å…¥åŠ›Bean
+     * @param inputProps å…¥åŠ›Beanã¨å…¥åŠ›ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã®Stringã€String[]ã€ã¾ãŸã¯List<String>
+     * @param output å‡ºåŠ›Bean
+     * @param outputProps å‡ºåŠ›Beanã¨åˆ—åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã®Stringã€String[]ã€ã¾ãŸã¯List<String>ã€ã¾ãŸã¯ã‚­ãƒ¼ãŒåˆ—åã§å€¤ãŒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã¨ãªã‚‹Map<String, String>
+     * @param statementProps java.sql.Statementã«å¯¾ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ãƒãƒƒãƒ—
+     * @param resultSetProps java.sql.ResultSetã«å¯¾ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ãƒãƒƒãƒ—
+     * @return ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰èª­ã¿è¾¼ã‚“ã å‡ºåŠ›Bean
+     * @exception PersistentException èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object load(Connection con, String sql, Object input, Object inputProps, Object output, Object outputProps, Map statementProps, Map resultSetProps) throws PersistentException;
     
     /**
-     * ƒf[ƒ^ƒx[ƒX‚©‚ç“Ç‚İ‚ŞƒJ[ƒ\ƒ‹‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰èª­ã¿è¾¼ã‚€ã‚«ãƒ¼ã‚½ãƒ«ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param con ƒRƒlƒNƒVƒ‡ƒ“
-     * @param query –„‚ß‚İƒNƒGƒŠ
-     * @param input “ü—ÍBean
-     * @return ƒJ[ƒ\ƒ‹
-     * @exception PersistentException ƒJ[ƒ\ƒ‹‚Ìì¬‚É¸”s‚µ‚½ê‡
+     * @param con ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
+     * @param query åŸ‹ã‚è¾¼ã¿ã‚¯ã‚¨ãƒª
+     * @param input å…¥åŠ›Bean
+     * @return ã‚«ãƒ¼ã‚½ãƒ«
+     * @exception PersistentException ã‚«ãƒ¼ã‚½ãƒ«ã®ä½œæˆã«å¤±æ•—ã—ãŸå ´åˆ
      * @see #loadQuery(Connection, String, Object, Object)
      */
     public Cursor createQueryCursor(Connection con, String query, Object input) throws PersistentException;
     
     /**
-     * ƒf[ƒ^ƒx[ƒX‚©‚ç“Ç‚İ‚ŞƒJ[ƒ\ƒ‹‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰èª­ã¿è¾¼ã‚€ã‚«ãƒ¼ã‚½ãƒ«ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param con ƒRƒlƒNƒVƒ‡ƒ“
-     * @param query –„‚ß‚İƒNƒGƒŠ
-     * @param input “ü—ÍBean
-     * @param statementProps java.sql.Statement‚É‘Î‚·‚éƒvƒƒpƒeƒB‚Ìƒ}ƒbƒv
-     * @param resultSetProps java.sql.ResultSet‚É‘Î‚·‚éƒvƒƒpƒeƒB‚Ìƒ}ƒbƒv
-     * @return ƒJ[ƒ\ƒ‹
-     * @exception PersistentException ƒJ[ƒ\ƒ‹‚Ìì¬‚É¸”s‚µ‚½ê‡
+     * @param con ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
+     * @param query åŸ‹ã‚è¾¼ã¿ã‚¯ã‚¨ãƒª
+     * @param input å…¥åŠ›Bean
+     * @param statementProps java.sql.Statementã«å¯¾ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ãƒãƒƒãƒ—
+     * @param resultSetProps java.sql.ResultSetã«å¯¾ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ãƒãƒƒãƒ—
+     * @return ã‚«ãƒ¼ã‚½ãƒ«
+     * @exception PersistentException ã‚«ãƒ¼ã‚½ãƒ«ã®ä½œæˆã«å¤±æ•—ã—ãŸå ´åˆ
      * @see #loadQuery(Connection, String, Object, Object)
      */
     public Cursor createQueryCursor(Connection con, String query, Object input, Map statementProps, Map resultSetProps) throws PersistentException;
     
     /**
-     * ƒf[ƒ^ƒx[ƒX‚©‚ç“Ç‚İ‚ŞƒJ[ƒ\ƒ‹‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰èª­ã¿è¾¼ã‚€ã‚«ãƒ¼ã‚½ãƒ«ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param con ƒRƒlƒNƒVƒ‡ƒ“
-     * @param sql –„‚ß‚İSQL
-     * @param input “ü—ÍBean
-     * @param inputProps “ü—ÍBean‚Æ“ü—Íƒpƒ‰ƒ[ƒ^‚Ìƒ}ƒbƒsƒ“ƒOBƒvƒƒpƒeƒB•¶š—ñ‚ÌStringAString[]A‚Ü‚½‚ÍList<String>
-     * @param outputProps o—ÍBean‚Æ—ñ–¼‚Ìƒ}ƒbƒsƒ“ƒOBƒvƒƒpƒeƒB•¶š—ñ‚ÌStringAString[]A‚Ü‚½‚ÍList<String>A‚Ü‚½‚ÍƒL[‚ª—ñ–¼‚Å’l‚ªƒvƒƒpƒeƒB•¶š—ñ‚Æ‚È‚éMap<String, String>
-     * @return ƒJ[ƒ\ƒ‹
-     * @exception PersistentException ƒJ[ƒ\ƒ‹‚Ìì¬‚É¸”s‚µ‚½ê‡
+     * @param con ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
+     * @param sql åŸ‹ã‚è¾¼ã¿SQL
+     * @param input å…¥åŠ›Bean
+     * @param inputProps å…¥åŠ›Beanã¨å…¥åŠ›ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã®Stringã€String[]ã€ã¾ãŸã¯List<String>
+     * @param outputProps å‡ºåŠ›Beanã¨åˆ—åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã®Stringã€String[]ã€ã¾ãŸã¯List<String>ã€ã¾ãŸã¯ã‚­ãƒ¼ãŒåˆ—åã§å€¤ãŒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã¨ãªã‚‹Map<String, String>
+     * @return ã‚«ãƒ¼ã‚½ãƒ«
+     * @exception PersistentException ã‚«ãƒ¼ã‚½ãƒ«ã®ä½œæˆã«å¤±æ•—ã—ãŸå ´åˆ
      * @see #load(Connection, String, Object, Object, Object, Object)
      */
     public Cursor createCursor(Connection con, String sql, Object input, Object inputProps, Object outputProps) throws PersistentException;
     
     /**
-     * ƒf[ƒ^ƒx[ƒX‚©‚ç“Ç‚İ‚ŞƒJ[ƒ\ƒ‹‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰èª­ã¿è¾¼ã‚€ã‚«ãƒ¼ã‚½ãƒ«ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param con ƒRƒlƒNƒVƒ‡ƒ“
-     * @param sql –„‚ß‚İSQL
-     * @param input “ü—ÍBean
-     * @param inputProps “ü—ÍBean‚Æ“ü—Íƒpƒ‰ƒ[ƒ^‚Ìƒ}ƒbƒsƒ“ƒOBƒvƒƒpƒeƒB•¶š—ñ‚ÌStringAString[]A‚Ü‚½‚ÍList<String>
-     * @param outputProps o—ÍBean‚Æ—ñ–¼‚Ìƒ}ƒbƒsƒ“ƒOBƒvƒƒpƒeƒB•¶š—ñ‚ÌStringAString[]A‚Ü‚½‚ÍList<String>A‚Ü‚½‚ÍƒL[‚ª—ñ–¼‚Å’l‚ªƒvƒƒpƒeƒB•¶š—ñ‚Æ‚È‚éMap<String, String>
-     * @param statementProps java.sql.Statement‚É‘Î‚·‚éƒvƒƒpƒeƒB‚Ìƒ}ƒbƒv
-     * @param resultSetProps java.sql.ResultSet‚É‘Î‚·‚éƒvƒƒpƒeƒB‚Ìƒ}ƒbƒv
-     * @return ƒJ[ƒ\ƒ‹
-     * @exception PersistentException ƒJ[ƒ\ƒ‹‚Ìì¬‚É¸”s‚µ‚½ê‡
+     * @param con ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
+     * @param sql åŸ‹ã‚è¾¼ã¿SQL
+     * @param input å…¥åŠ›Bean
+     * @param inputProps å…¥åŠ›Beanã¨å…¥åŠ›ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã®Stringã€String[]ã€ã¾ãŸã¯List<String>
+     * @param outputProps å‡ºåŠ›Beanã¨åˆ—åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã®Stringã€String[]ã€ã¾ãŸã¯List<String>ã€ã¾ãŸã¯ã‚­ãƒ¼ãŒåˆ—åã§å€¤ãŒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã¨ãªã‚‹Map<String, String>
+     * @param statementProps java.sql.Statementã«å¯¾ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ãƒãƒƒãƒ—
+     * @param resultSetProps java.sql.ResultSetã«å¯¾ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ãƒãƒƒãƒ—
+     * @return ã‚«ãƒ¼ã‚½ãƒ«
+     * @exception PersistentException ã‚«ãƒ¼ã‚½ãƒ«ã®ä½œæˆã«å¤±æ•—ã—ãŸå ´åˆ
      * @see #load(Connection, String, Object, Object, Object, Object)
      */
     public Cursor createCursor(Connection con, String sql, Object input, Object inputProps, Object outputProps, Map statementProps, Map resultSetProps) throws PersistentException;
     
     /**
-     * ƒf[ƒ^ƒx[ƒX‚É‘‚«‚ŞB<p>
-     * w’è‚³‚ê‚½sql‚Éw’è‚³‚ê‚½input‚Ìî•ñ‚ğ–„‚ß‚İÀs‚µ‚ÄAXVŒ”‚ğ•Ô‚·B<br>
-     * ƒpƒ‰ƒ[ƒ^query‚ÍA–„‚ß‚İƒNƒGƒŠ‚ÅASQL‚Éinput‚ğ‚Ç‚¤“n‚·‚©‚ğA"<-{ƒvƒƒpƒeƒB–¼}"‚Å–„‚ß‚ŞB<br>
+     * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«æ›¸ãè¾¼ã‚€ã€‚<p>
+     * æŒ‡å®šã•ã‚ŒãŸsqlã«æŒ‡å®šã•ã‚ŒãŸinputã®æƒ…å ±ã‚’åŸ‹ã‚è¾¼ã¿å®Ÿè¡Œã—ã¦ã€æ›´æ–°ä»¶æ•°ã‚’è¿”ã™ã€‚<br>
+     * ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿queryã¯ã€åŸ‹ã‚è¾¼ã¿ã‚¯ã‚¨ãƒªã§ã€SQLã«inputã‚’ã©ã†æ¸¡ã™ã‹ã‚’ã€"<-{ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å}"ã§åŸ‹ã‚è¾¼ã‚€ã€‚<br>
      * <pre>
-     *   —áFupdate MAIL set ADDRESS = ?<-{RecordList(mail).address} where USER.ID = ?<-{Header(user).Id}
+     *   ä¾‹ï¼šupdate MAIL set ADDRESS = ?<-{RecordList(mail).address} where USER.ID = ?<-{Header(user).Id}
      * </pre>
      *
-     * @param con ƒRƒlƒNƒVƒ‡ƒ“
-     * @param query –„‚ß‚İƒNƒGƒŠ
-     * @param input “ü—ÍBean
-     * @return XVŒ”
-     * @exception PersistentException ‘‚«‚İ‚É¸”s‚µ‚½ê‡
+     * @param con ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
+     * @param query åŸ‹ã‚è¾¼ã¿ã‚¯ã‚¨ãƒª
+     * @param input å…¥åŠ›Bean
+     * @return æ›´æ–°ä»¶æ•°
+     * @exception PersistentException æ›¸ãè¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public int persistQuery(Connection con, String query, Object input) throws PersistentException;
     
     /**
-     * ƒf[ƒ^ƒx[ƒX‚É‘‚«‚ŞB<p>
-     * w’è‚³‚ê‚½sql‚Éw’è‚³‚ê‚½input‚Ìî•ñ‚ğ–„‚ß‚İÀs‚µ‚ÄAXVŒ”‚ğ•Ô‚·B<br>
-     * ƒpƒ‰ƒ[ƒ^query‚ÍA–„‚ß‚İƒNƒGƒŠ‚ÅASQL‚Éinput‚ğ‚Ç‚¤“n‚·‚©‚ğA"<-{ƒvƒƒpƒeƒB–¼}"‚Å–„‚ß‚ŞB<br>
+     * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«æ›¸ãè¾¼ã‚€ã€‚<p>
+     * æŒ‡å®šã•ã‚ŒãŸsqlã«æŒ‡å®šã•ã‚ŒãŸinputã®æƒ…å ±ã‚’åŸ‹ã‚è¾¼ã¿å®Ÿè¡Œã—ã¦ã€æ›´æ–°ä»¶æ•°ã‚’è¿”ã™ã€‚<br>
+     * ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿queryã¯ã€åŸ‹ã‚è¾¼ã¿ã‚¯ã‚¨ãƒªã§ã€SQLã«inputã‚’ã©ã†æ¸¡ã™ã‹ã‚’ã€"<-{ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å}"ã§åŸ‹ã‚è¾¼ã‚€ã€‚<br>
      * <pre>
-     *   —áFupdate MAIL set ADDRESS = ?<-{RecordList(mail).address} where USER.ID = ?<-{Header(user).Id}
+     *   ä¾‹ï¼šupdate MAIL set ADDRESS = ?<-{RecordList(mail).address} where USER.ID = ?<-{Header(user).Id}
      * </pre>
      *
-     * @param con ƒRƒlƒNƒVƒ‡ƒ“
-     * @param query –„‚ß‚İƒNƒGƒŠ
-     * @param input “ü—ÍBean
-     * @param statementProps java.sql.Statement‚É‘Î‚·‚éƒvƒƒpƒeƒB‚Ìƒ}ƒbƒv
-     * @return XVŒ”
-     * @exception PersistentException ‘‚«‚İ‚É¸”s‚µ‚½ê‡
+     * @param con ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
+     * @param query åŸ‹ã‚è¾¼ã¿ã‚¯ã‚¨ãƒª
+     * @param input å…¥åŠ›Bean
+     * @param statementProps java.sql.Statementã«å¯¾ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ãƒãƒƒãƒ—
+     * @return æ›´æ–°ä»¶æ•°
+     * @exception PersistentException æ›¸ãè¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public int persistQuery(Connection con, String query, Object input, Map statementProps) throws PersistentException;
     
     /**
-     * ƒf[ƒ^ƒx[ƒX‚É‘‚«‚ŞB<p>
+     * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«æ›¸ãè¾¼ã‚€ã€‚<p>
      *
-     * @param con ƒRƒlƒNƒVƒ‡ƒ“
-     * @param sql –„‚ß‚İSQL
-     * @param input “ü—Íƒpƒ‰ƒ[ƒ^‚Ì”z—ñ
-     * @param inputProps “ü—ÍBean‚Æ“ü—Íƒpƒ‰ƒ[ƒ^‚Ìƒ}ƒbƒsƒ“ƒOBƒvƒƒpƒeƒB•¶š—ñ‚ÌStringAString[]A‚Ü‚½‚ÍList<String>
-     * @return XVŒ”
-     * @exception PersistentException ‘‚«‚İ‚É¸”s‚µ‚½ê‡
+     * @param con ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
+     * @param sql åŸ‹ã‚è¾¼ã¿SQL
+     * @param input å…¥åŠ›ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®é…åˆ—
+     * @param inputProps å…¥åŠ›Beanã¨å…¥åŠ›ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã®Stringã€String[]ã€ã¾ãŸã¯List<String>
+     * @return æ›´æ–°ä»¶æ•°
+     * @exception PersistentException æ›¸ãè¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public int persist(Connection con, String sql, Object input, Object inputProps) throws PersistentException;
     
     /**
-     * ƒf[ƒ^ƒx[ƒX‚É‘‚«‚ŞB<p>
+     * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«æ›¸ãè¾¼ã‚€ã€‚<p>
      *
-     * @param con ƒRƒlƒNƒVƒ‡ƒ“
-     * @param sql –„‚ß‚İSQL
-     * @param input “ü—Íƒpƒ‰ƒ[ƒ^‚Ì”z—ñ
-     * @param inputProps “ü—ÍBean‚Æ“ü—Íƒpƒ‰ƒ[ƒ^‚Ìƒ}ƒbƒsƒ“ƒOBƒvƒƒpƒeƒB•¶š—ñ‚ÌStringAString[]A‚Ü‚½‚ÍList<String>
-     * @param statementProps java.sql.Statement‚É‘Î‚·‚éƒvƒƒpƒeƒB‚Ìƒ}ƒbƒv
-     * @return XVŒ”
-     * @exception PersistentException ‘‚«‚İ‚É¸”s‚µ‚½ê‡
+     * @param con ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
+     * @param sql åŸ‹ã‚è¾¼ã¿SQL
+     * @param input å…¥åŠ›ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®é…åˆ—
+     * @param inputProps å…¥åŠ›Beanã¨å…¥åŠ›ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã®Stringã€String[]ã€ã¾ãŸã¯List<String>
+     * @param statementProps java.sql.Statementã«å¯¾ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ãƒãƒƒãƒ—
+     * @return æ›´æ–°ä»¶æ•°
+     * @exception PersistentException æ›¸ãè¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public int persist(Connection con, String sql, Object input, Object inputProps, Map statementProps) throws PersistentException;
     
     /**
-     * ƒf[ƒ^ƒx[ƒX‚Éƒoƒbƒ`Às‚ğs‚¤BatchExecutor‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«ãƒãƒƒãƒå®Ÿè¡Œã‚’è¡Œã†BatchExecutorã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param con ƒRƒlƒNƒVƒ‡ƒ“
-     * @param query –„‚ß‚İƒNƒGƒŠ
+     * @param con ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
+     * @param query åŸ‹ã‚è¾¼ã¿ã‚¯ã‚¨ãƒª
      * @return BatchExecutor
-     * @exception PersistentException BatchExecutor‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception PersistentException BatchExecutorã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public BatchExecutor createQueryBatchExecutor(Connection con, String query) throws PersistentException;
     
     /**
-     * ƒf[ƒ^ƒx[ƒX‚Éƒoƒbƒ`Às‚ğs‚¤BatchExecutor‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«ãƒãƒƒãƒå®Ÿè¡Œã‚’è¡Œã†BatchExecutorã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param con ƒRƒlƒNƒVƒ‡ƒ“
-     * @param query –„‚ß‚İƒNƒGƒŠ
-     * @param statementProps java.sql.Statement‚É‘Î‚·‚éƒvƒƒpƒeƒB‚Ìƒ}ƒbƒv
+     * @param con ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
+     * @param query åŸ‹ã‚è¾¼ã¿ã‚¯ã‚¨ãƒª
+     * @param statementProps java.sql.Statementã«å¯¾ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ãƒãƒƒãƒ—
      * @return BatchExecutor
-     * @exception PersistentException BatchExecutor‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception PersistentException BatchExecutorã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public BatchExecutor createQueryBatchExecutor(Connection con, String query, Map statementProps) throws PersistentException;
     
     /**
-     * ƒf[ƒ^ƒx[ƒX‚Éƒoƒbƒ`Às‚ğs‚¤BatchExecutor‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«ãƒãƒƒãƒå®Ÿè¡Œã‚’è¡Œã†BatchExecutorã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param con ƒRƒlƒNƒVƒ‡ƒ“
-     * @param sql –„‚ß‚İSQL
-     * @param inputProps “ü—ÍBean‚Æ“ü—Íƒpƒ‰ƒ[ƒ^‚Ìƒ}ƒbƒsƒ“ƒOBƒvƒƒpƒeƒB•¶š—ñ‚ÌStringAString[]A‚Ü‚½‚ÍList<String>
+     * @param con ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
+     * @param sql åŸ‹ã‚è¾¼ã¿SQL
+     * @param inputProps å…¥åŠ›Beanã¨å…¥åŠ›ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã®Stringã€String[]ã€ã¾ãŸã¯List<String>
      * @return BatchExecutor
-     * @exception PersistentException BatchExecutor‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception PersistentException BatchExecutorã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public BatchExecutor createBatchExecutor(Connection con, String sql, Object inputProps) throws PersistentException;
     
     /**
-     * ƒf[ƒ^ƒx[ƒX‚Éƒoƒbƒ`Às‚ğs‚¤BatchExecutor‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«ãƒãƒƒãƒå®Ÿè¡Œã‚’è¡Œã†BatchExecutorã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param con ƒRƒlƒNƒVƒ‡ƒ“
-     * @param sql –„‚ß‚İSQL
-     * @param statementProps java.sql.Statement‚É‘Î‚·‚éƒvƒƒpƒeƒB‚Ìƒ}ƒbƒv
-     * @param inputProps “ü—ÍBean‚Æ“ü—Íƒpƒ‰ƒ[ƒ^‚Ìƒ}ƒbƒsƒ“ƒOBƒvƒƒpƒeƒB•¶š—ñ‚ÌStringAString[]A‚Ü‚½‚ÍList<String>
+     * @param con ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
+     * @param sql åŸ‹ã‚è¾¼ã¿SQL
+     * @param statementProps java.sql.Statementã«å¯¾ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ãƒãƒƒãƒ—
+     * @param inputProps å…¥åŠ›Beanã¨å…¥åŠ›ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã®Stringã€String[]ã€ã¾ãŸã¯List<String>
      * @return BatchExecutor
-     * @exception PersistentException BatchExecutor‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception PersistentException BatchExecutorã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public BatchExecutor createBatchExecutor(Connection con, String sql, Object inputProps, Map statementProps) throws PersistentException;
     
     /**
-     * “Ç‚İ‚İƒJ[ƒ\ƒ‹B<p>
+     * èª­ã¿è¾¼ã¿ã‚«ãƒ¼ã‚½ãƒ«ã€‚<p>
      *
      * @author M.Takata
      */
     public interface Cursor{
         
         /**
-         * Ÿ‚Ìs‚ÉˆÚ“®‚·‚éB<p>
+         * æ¬¡ã®è¡Œã«ç§»å‹•ã™ã‚‹ã€‚<p>
          *
-         * @return Ÿ‚Ìs‚ª‘¶İ‚µ‚½ê‡‚ÍAtrue
-         * @exception PersistentException ˆÚ“®‚É¸”s‚µ‚½ê‡
+         * @return æ¬¡ã®è¡ŒãŒå­˜åœ¨ã—ãŸå ´åˆã¯ã€true
+         * @exception PersistentException ç§»å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public boolean next() throws PersistentException;
         
         /**
-         * ‘O‚Ìs‚ÉˆÚ“®‚·‚éB<p>
+         * å‰ã®è¡Œã«ç§»å‹•ã™ã‚‹ã€‚<p>
          *
-         * @return ‘O‚Ìs‚ª‘¶İ‚µ‚½ê‡‚ÍAtrue
-         * @exception PersistentException ˆÚ“®‚É¸”s‚µ‚½ê‡
+         * @return å‰ã®è¡ŒãŒå­˜åœ¨ã—ãŸå ´åˆã¯ã€true
+         * @exception PersistentException ç§»å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public boolean previous() throws PersistentException;
         
         /**
-         * æ“ª‚Ìs‚ÉˆÚ“®‚·‚éB<p>
+         * å…ˆé ­ã®è¡Œã«ç§»å‹•ã™ã‚‹ã€‚<p>
          *
-         * @return æ“ª‚Ìs‚ª‘¶İ‚µ‚½ê‡‚ÍAtrue
-         * @exception PersistentException ˆÚ“®‚É¸”s‚µ‚½ê‡
+         * @return å…ˆé ­ã®è¡ŒãŒå­˜åœ¨ã—ãŸå ´åˆã¯ã€true
+         * @exception PersistentException ç§»å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public boolean first() throws PersistentException;
         
         /**
-         * ÅŒã‚Ìs‚ÉˆÚ“®‚·‚éB<p>
+         * æœ€å¾Œã®è¡Œã«ç§»å‹•ã™ã‚‹ã€‚<p>
          *
-         * @return ÅŒã‚Ìs‚ª‘¶İ‚µ‚½ê‡‚ÍAtrue
-         * @exception PersistentException ˆÚ“®‚É¸”s‚µ‚½ê‡
+         * @return æœ€å¾Œã®è¡ŒãŒå­˜åœ¨ã—ãŸå ´åˆã¯ã€true
+         * @exception PersistentException ç§»å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public boolean last() throws PersistentException;
         
         /**
-         * æ“ª‚Ìs‚Ì‘O‚ÉˆÚ“®‚·‚éB<p>
+         * å…ˆé ­ã®è¡Œã®å‰ã«ç§»å‹•ã™ã‚‹ã€‚<p>
          *
-         * @exception PersistentException ˆÚ“®‚É¸”s‚µ‚½ê‡
+         * @exception PersistentException ç§»å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void beforeFirst() throws PersistentException;
         
         /**
-         * ÅŒã‚Ìs‚ÌŒã‚ÉˆÚ“®‚·‚éB<p>
+         * æœ€å¾Œã®è¡Œã®å¾Œã«ç§»å‹•ã™ã‚‹ã€‚<p>
          *
-         * @exception PersistentException ˆÚ“®‚É¸”s‚µ‚½ê‡
+         * @exception PersistentException ç§»å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void afterLast() throws PersistentException;
         
         /**
-         * w’è‚³‚ê‚½s‚ÉˆÚ“®‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸè¡Œã«ç§»å‹•ã™ã‚‹ã€‚<p>
          *
-         * @param row s”Ô†
-         * @exception PersistentException ˆÚ“®‚É¸”s‚µ‚½ê‡
+         * @param row è¡Œç•ªå·
+         * @exception PersistentException ç§»å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public boolean absolute(int row) throws PersistentException;
         
         /**
-         * w’è‚³‚ê‚½s”‚¾‚¯ˆÚ“®‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸè¡Œæ•°ã ã‘ç§»å‹•ã™ã‚‹ã€‚<p>
          *
-         * @param rows s”
-         * @exception PersistentException ˆÚ“®‚É¸”s‚µ‚½ê‡
+         * @param rows è¡Œæ•°
+         * @exception PersistentException ç§»å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public boolean relative(int rows) throws PersistentException;
         
         /**
-         * Œ»İ‚Ìs‚ªæ“ª‚©”»’è‚·‚éB<p>
+         * ç¾åœ¨ã®è¡ŒãŒå…ˆé ­ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return æ“ª‚Ìê‡Atrue
-         * @exception PersistentException ”»’è‚É¸”s‚µ‚½ê‡
+         * @return å…ˆé ­ã®å ´åˆã€true
+         * @exception PersistentException åˆ¤å®šã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public boolean isFirst() throws PersistentException;
         
         /**
-         * Œ»İ‚Ìs‚ªÅŒã‚©”»’è‚·‚éB<p>
+         * ç¾åœ¨ã®è¡ŒãŒæœ€å¾Œã‹åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return ÅŒã‚Ìê‡Atrue
-         * @exception PersistentException ”»’è‚É¸”s‚µ‚½ê‡
+         * @return æœ€å¾Œã®å ´åˆã€true
+         * @exception PersistentException åˆ¤å®šã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public boolean isLast() throws PersistentException;
         
         /**
-         * Œ»İ‚Ìs‚ªæ“ª‚Ì‘O‚©”»’è‚·‚éB<p>
+         * ç¾åœ¨ã®è¡ŒãŒå…ˆé ­ã®å‰ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return æ“ª‚Ì‘O‚Ìê‡Atrue
-         * @exception PersistentException ”»’è‚É¸”s‚µ‚½ê‡
+         * @return å…ˆé ­ã®å‰ã®å ´åˆã€true
+         * @exception PersistentException åˆ¤å®šã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public boolean isBeforeFirst() throws PersistentException;
         
         /**
-         * Œ»İ‚Ìs‚ªÅŒã‚ÌŒã‚©”»’è‚·‚éB<p>
+         * ç¾åœ¨ã®è¡ŒãŒæœ€å¾Œã®å¾Œã‹åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return ÅŒã‚ÌŒã‚Ìê‡Atrue
-         * @exception PersistentException ”»’è‚É¸”s‚µ‚½ê‡
+         * @return æœ€å¾Œã®å¾Œã®å ´åˆã€true
+         * @exception PersistentException åˆ¤å®šã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public boolean isAfterLast() throws PersistentException;
         
         /**
-         * ƒtƒFƒbƒ`‚·‚é•ûŒü‚ğİ’è‚·‚éB<p>
+         * ãƒ•ã‚§ãƒƒãƒã™ã‚‹æ–¹å‘ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param direction ƒtƒFƒbƒ`‚·‚é•ûŒü
-         * @exception PersistentException İ’è‚É¸”s‚µ‚½ê‡
+         * @param direction ãƒ•ã‚§ãƒƒãƒã™ã‚‹æ–¹å‘
+         * @exception PersistentException è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
          * @see java.sql.ResultSet#FETCH_FORWARD
          * @see java.sql.ResultSet#FETCH_REVERSE
          * @see java.sql.ResultSet#FETCH_UNKNOWN
@@ -378,10 +378,10 @@ public interface PersistentManager{
         public void setFetchDirection(int direction) throws PersistentException;
         
         /**
-         * ƒtƒFƒbƒ`‚·‚é•ûŒü‚ğæ“¾‚·‚éB<p>
+         * ãƒ•ã‚§ãƒƒãƒã™ã‚‹æ–¹å‘ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒtƒFƒbƒ`‚·‚é•ûŒü
-         * @exception PersistentException æ“¾‚É¸”s‚µ‚½ê‡
+         * @return ãƒ•ã‚§ãƒƒãƒã™ã‚‹æ–¹å‘
+         * @exception PersistentException å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
          * @see java.sql.ResultSet#FETCH_FORWARD
          * @see java.sql.ResultSet#FETCH_REVERSE
          * @see java.sql.ResultSet#FETCH_UNKNOWN
@@ -389,114 +389,114 @@ public interface PersistentManager{
         public int getFetchDirection() throws PersistentException;
         
         /**
-         * ƒtƒFƒbƒ`‚·‚és”‚ğİ’è‚·‚éB<p>
+         * ãƒ•ã‚§ãƒƒãƒã™ã‚‹è¡Œæ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param rows ƒtƒFƒbƒ`‚·‚és”
-         * @exception PersistentException İ’è‚É¸”s‚µ‚½ê‡
+         * @param rows ãƒ•ã‚§ãƒƒãƒã™ã‚‹è¡Œæ•°
+         * @exception PersistentException è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void setFetchSize(int rows) throws PersistentException;
         
         /**
-         * ƒtƒFƒbƒ`‚·‚és”‚ğæ“¾‚·‚éB<p>
+         * ãƒ•ã‚§ãƒƒãƒã™ã‚‹è¡Œæ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒtƒFƒbƒ`‚·‚és”
-         * @exception PersistentException æ“¾‚É¸”s‚µ‚½ê‡
+         * @return ãƒ•ã‚§ãƒƒãƒã™ã‚‹è¡Œæ•°
+         * @exception PersistentException å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public int getFetchSize() throws PersistentException;
         
         /**
-         * Œ»İ‚Ìs”Ô†‚ğæ“¾‚·‚éB<p>
+         * ç¾åœ¨ã®è¡Œç•ªå·ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return Œ»İ‚Ìs”Ô†
-         * @exception PersistentException æ“¾‚É¸”s‚µ‚½ê‡
+         * @return ç¾åœ¨ã®è¡Œç•ªå·
+         * @exception PersistentException å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public int getRow() throws PersistentException;
         
         /**
-         * ƒf[ƒ^ƒx[ƒX‚©‚ç“Ç‚İ‚ŞB<p>
+         * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰èª­ã¿è¾¼ã‚€ã€‚<p>
          *
-         * @param output o—ÍBean
-         * @return ƒf[ƒ^ƒx[ƒX‚©‚ç“Ç‚İ‚ñ‚¾o—ÍBean
-         * @exception PersistentException “Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+         * @param output å‡ºåŠ›Bean
+         * @return ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰èª­ã¿è¾¼ã‚“ã å‡ºåŠ›Bean
+         * @exception PersistentException èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public Object load(Object output) throws PersistentException;
         
         /**
-         * ƒŠƒ\[ƒX‚ğŠJ•ú‚µ‚½‚©‚Ç‚¤‚©”»’è‚·‚éB<p>
+         * ãƒªã‚½ãƒ¼ã‚¹ã‚’é–‹æ”¾ã—ãŸã‹ã©ã†ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
          * 
-         * @return ƒŠƒ\[ƒX‚ğŠJ•ú‚µ‚Ä‚¢‚½ê‡true
+         * @return ãƒªã‚½ãƒ¼ã‚¹ã‚’é–‹æ”¾ã—ã¦ã„ãŸå ´åˆtrue
          */
         public boolean isClosed();
         
         /**
-         * ƒŠƒ\[ƒX‚ğŠJ•ú‚·‚éB<p>
+         * ãƒªã‚½ãƒ¼ã‚¹ã‚’é–‹æ”¾ã™ã‚‹ã€‚<p>
          */
         public void close();
     }
     
     /**
-     * ƒoƒbƒ`ÀsB<p>
+     * ãƒãƒƒãƒå®Ÿè¡Œã€‚<p>
      *
      * @author M.Takata
      */
     public interface BatchExecutor{
         
         /**
-         * ©“®ƒoƒbƒ`Às‚ÌŒ”‚ğİ’è‚·‚éB<p>
-         * ƒoƒbƒ`Às‚ÉAw’èŒ”‚Ìƒoƒbƒ`“o˜^‚ª—­‚Ü‚é‚Æ©“®“I‚Éƒoƒbƒ`Às‚ğs‚¤B<br>
+         * è‡ªå‹•ãƒãƒƒãƒå®Ÿè¡Œã®ä»¶æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒãƒƒãƒå®Ÿè¡Œæ™‚ã«ã€æŒ‡å®šä»¶æ•°ã®ãƒãƒƒãƒç™»éŒ²ãŒæºœã¾ã‚‹ã¨è‡ªå‹•çš„ã«ãƒãƒƒãƒå®Ÿè¡Œã‚’è¡Œã†ã€‚<br>
          *
-         * @param count ©“®ƒoƒbƒ`ÀsŒ”
+         * @param count è‡ªå‹•ãƒãƒƒãƒå®Ÿè¡Œä»¶æ•°
          */
         public void setAutoBatchPersistCount(int count);
         
         /**
-         * ©“®ƒoƒbƒ`Às‚ÌŒ”‚ğæ“¾‚·‚éB<p>
+         * è‡ªå‹•ãƒãƒƒãƒå®Ÿè¡Œã®ä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ©“®ƒoƒbƒ`ÀsŒ”
+         * @return è‡ªå‹•ãƒãƒƒãƒå®Ÿè¡Œä»¶æ•°
          */
         public int getAutoBatchPersistCount();
         
         /**
-         * ƒoƒbƒ`Às‚ÉA©“®“I‚ÉƒRƒ~ƒbƒg‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-         * ƒfƒtƒHƒ‹ƒg‚Ífalse‚ÅA©“®ƒRƒ~ƒbƒg‚ğs‚í‚È‚¢B<br>
+         * ãƒãƒƒãƒå®Ÿè¡Œæ™‚ã«ã€è‡ªå‹•çš„ã«ã‚³ãƒŸãƒƒãƒˆã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯falseã§ã€è‡ªå‹•ã‚³ãƒŸãƒƒãƒˆã‚’è¡Œã‚ãªã„ã€‚<br>
          *
-         * @param isCommit ©“®“I‚ÉƒRƒ~ƒbƒg‚ğs‚¤ê‡‚Ítrue
+         * @param isCommit è‡ªå‹•çš„ã«ã‚³ãƒŸãƒƒãƒˆã‚’è¡Œã†å ´åˆã¯true
          */
         public void setAutoCommitOnPersist(boolean isCommit);
         
         /**
-         * ƒoƒbƒ`Às‚ÉA©“®“I‚ÉƒRƒ~ƒbƒg‚ğs‚¤‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+         * ãƒãƒƒãƒå®Ÿè¡Œæ™‚ã«ã€è‡ªå‹•çš„ã«ã‚³ãƒŸãƒƒãƒˆã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return true‚Ìê‡A©“®“I‚ÉƒRƒ~ƒbƒg‚ğs‚¤
+         * @return trueã®å ´åˆã€è‡ªå‹•çš„ã«ã‚³ãƒŸãƒƒãƒˆã‚’è¡Œã†
          */
         public boolean isAutoCommitOnPersist();
         
         /**
-         * ƒoƒbƒ`“o˜^‚ğs‚¤B<p>
+         * ãƒãƒƒãƒç™»éŒ²ã‚’è¡Œã†ã€‚<p>
          *
-         * @param input “ü—ÍBean
-         * @return ©“®ƒoƒbƒ`Às‚Ìê‡‚ÅAƒoƒbƒ`Às‚ªs‚í‚ê‚½‚ÌXVŒ”
-         * @exception PersistentException ƒoƒbƒ`“o˜^‚É¸”s‚µ‚½ê‡
+         * @param input å…¥åŠ›Bean
+         * @return è‡ªå‹•ãƒãƒƒãƒå®Ÿè¡Œã®å ´åˆã§ã€ãƒãƒƒãƒå®Ÿè¡ŒãŒè¡Œã‚ã‚ŒãŸæ™‚ã®æ›´æ–°ä»¶æ•°
+         * @exception PersistentException ãƒãƒƒãƒç™»éŒ²ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public int addBatch(Object input) throws PersistentException;
         
         /**
-         * ƒf[ƒ^ƒx[ƒX‚Éƒoƒbƒ`Às‚Å‘‚«‚ŞB<p>
+         * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«ãƒãƒƒãƒå®Ÿè¡Œã§æ›¸ãè¾¼ã‚€ã€‚<p>
          *
-         * @return XVŒ”
-         * @exception PersistentException ƒoƒbƒ`Às‚É¸”s‚µ‚½ê‡
+         * @return æ›´æ–°ä»¶æ•°
+         * @exception PersistentException ãƒãƒƒãƒå®Ÿè¡Œã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public int persist() throws PersistentException;
         
         /**
-         * ƒoƒbƒ`“o˜^‚ğƒNƒŠƒA‚·‚éB<p>
+         * ãƒãƒƒãƒç™»éŒ²ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚<p>
          * 
-         * @exception PersistentException ƒoƒbƒ`“o˜^‚ÌƒNƒŠƒA‚É¸”s‚µ‚½ê‡
+         * @exception PersistentException ãƒãƒƒãƒç™»éŒ²ã®ã‚¯ãƒªã‚¢ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void clearBatch() throws PersistentException;
         
         /**
-         * ƒŠƒ\[ƒX‚ğŠJ•ú‚·‚éB<p>
+         * ãƒªã‚½ãƒ¼ã‚¹ã‚’é–‹æ”¾ã™ã‚‹ã€‚<p>
          */
         public void close();
     }

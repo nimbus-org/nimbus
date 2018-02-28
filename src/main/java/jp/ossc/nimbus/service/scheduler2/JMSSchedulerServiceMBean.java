@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.scheduler2;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link JMSSchedulerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link JMSSchedulerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -42,104 +42,104 @@ public interface JMSSchedulerServiceMBean
  extends AbstractSchedulerServiceMBean{
     
     /**
-     * JMS‚ÌSession‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.jms.JMSSessionFactory JMSSessionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * JMSã®Sessionã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.jms.JMSSessionFactory JMSSessionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name JMSSessionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name JMSSessionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJMSSessionFactoryServiceName(ServiceName name);
     
     /**
-     * JMS‚ÌSession‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.jms.JMSSessionFactory JMSSessionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * JMSã®Sessionã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.jms.JMSSessionFactory JMSSessionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JMSSessionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return JMSSessionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJMSSessionFactoryServiceName();
     
     /**
-     * JMS‚ÌMessageProducer‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.jms.JMSMessageProducerFactory JMSMessageProducerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * JMSã®MessageProducerã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.jms.JMSMessageProducerFactory JMSMessageProducerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name JMSMessageProducerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name JMSMessageProducerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJMSMessageProducerFactoryServiceName(ServiceName name);
     
     /**
-     * JMS‚ÌMessageProducer‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.jms.JMSMessageProducerFactory JMSMessageProducerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * JMSã®MessageProducerã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.jms.JMSMessageProducerFactory JMSMessageProducerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JMSMessageProducerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return JMSMessageProducerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJMSMessageProducerFactoryServiceName();
     
     /**
-     * JMS‚ÌMessageConsumer‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.jms.JMSMessageConsumerFactory JMSMessageConsumerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * JMSã®MessageConsumerã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.jms.JMSMessageConsumerFactory JMSMessageConsumerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name JMSMessageConsumerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name JMSMessageConsumerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJMSMessageConsumerFactoryServiceName(ServiceName name);
     
     /**
-     * JMS‚ÌMessageConsumer‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.jms.JMSMessageConsumerFactory JMSMessageConsumerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * JMSã®MessageConsumerã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.jms.JMSMessageConsumerFactory JMSMessageConsumerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JMSMessageConsumerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return JMSMessageConsumerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJMSMessageConsumerFactoryServiceName();
     
     /**
-     * JMS‚Ìˆ¶æ‚©‚ç“Š“ü‚³‚ê‚½ƒXƒPƒWƒ…[ƒ‹‚ğæ‚èo‚·MessageConsumerƒXƒŒƒbƒh‚Ì”‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA1B<br>
+     * JMSã®å®›å…ˆã‹ã‚‰æŠ•å…¥ã•ã‚ŒãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å–ã‚Šå‡ºã™MessageConsumerã‚¹ãƒ¬ãƒƒãƒ‰ã®æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€1ã€‚<br>
      *
-     * @param size MessageConsumerƒXƒŒƒbƒh‚Ì”
+     * @param size MessageConsumerã‚¹ãƒ¬ãƒƒãƒ‰ã®æ•°
      */
     public void setMessageConsumerSize(int size);
     
     /**
-     * JMS‚Ìˆ¶æ‚©‚ç“Š“ü‚³‚ê‚½ƒXƒPƒWƒ…[ƒ‹‚ğæ‚èo‚·MessageConsumerƒXƒŒƒbƒh‚Ì”‚ğæ“¾‚·‚éB<p>
+     * JMSã®å®›å…ˆã‹ã‚‰æŠ•å…¥ã•ã‚ŒãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å–ã‚Šå‡ºã™MessageConsumerã‚¹ãƒ¬ãƒƒãƒ‰ã®æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return MessageConsumerƒXƒŒƒbƒh‚Ì”
+     * @return MessageConsumerã‚¹ãƒ¬ãƒƒãƒ‰ã®æ•°
      */
     public int getMessageConsumerSize();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğJMS‚Ìˆ¶æ‚É“Š“ü‚·‚é‚Ì”zMƒ‚[ƒh‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link javax.jms.Message#DEFAULT_DELIVERY_MODE}B<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’JMSã®å®›å…ˆã«æŠ•å…¥ã™ã‚‹æ™‚ã®é…ä¿¡ãƒ¢ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link javax.jms.Message#DEFAULT_DELIVERY_MODE}ã€‚<br>
      *
-     * @param mode ”zMƒ‚[ƒh
+     * @param mode é…ä¿¡ãƒ¢ãƒ¼ãƒ‰
      */
     public void setDeliveryMode(int mode);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğJMS‚Ìˆ¶æ‚É“Š“ü‚·‚é‚Ì”zMƒ‚[ƒh‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’JMSã®å®›å…ˆã«æŠ•å…¥ã™ã‚‹æ™‚ã®é…ä¿¡ãƒ¢ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ”zMƒ‚[ƒh
+     * @return é…ä¿¡ãƒ¢ãƒ¼ãƒ‰
      */
     public int getDeliveryMode();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğJMS‚Ìˆ¶æ‚É“Š“ü‚·‚é‚Ì—Dæ‡ˆÊ‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link javax.jms.Message#DEFAULT_PRIORITY}B<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’JMSã®å®›å…ˆã«æŠ•å…¥ã™ã‚‹æ™‚ã®å„ªå…ˆé †ä½ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link javax.jms.Message#DEFAULT_PRIORITY}ã€‚<br>
      *
-     * @param priority —Dæ‡ˆÊ
+     * @param priority å„ªå…ˆé †ä½
      */
     public void setPriority(int priority);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğJMS‚Ìˆ¶æ‚É“Š“ü‚·‚é‚Ì—Dæ‡ˆÊ‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’JMSã®å®›å…ˆã«æŠ•å…¥ã™ã‚‹æ™‚ã®å„ªå…ˆé †ä½ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return —Dæ‡ˆÊ
+     * @return å„ªå…ˆé †ä½
      */
     public int getPriority();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğJMS‚Ìˆ¶æ‚É“Š“ü‚·‚é‚Ì¶‘¶ŠúŠÔ[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link javax.jms.Message#DEFAULT_TIME_TO_LIVE}B<br>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’JMSã®å®›å…ˆã«æŠ•å…¥ã™ã‚‹æ™‚ã®ç”Ÿå­˜æœŸé–“[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link javax.jms.Message#DEFAULT_TIME_TO_LIVE}ã€‚<br>
      *
-     * @param millis ¶‘¶ŠúŠÔ[ms]
+     * @param millis ç”Ÿå­˜æœŸé–“[ms]
      */
     public void setTimeToLive(long millis);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğJMS‚Ìˆ¶æ‚É“Š“ü‚·‚é‚Ì¶‘¶ŠúŠÔ[ms]‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’JMSã®å®›å…ˆã«æŠ•å…¥ã™ã‚‹æ™‚ã®ç”Ÿå­˜æœŸé–“[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ¶‘¶ŠúŠÔ[ms]
+     * @return ç”Ÿå­˜æœŸé–“[ms]
      */
     public long getTimeToLive();
 }

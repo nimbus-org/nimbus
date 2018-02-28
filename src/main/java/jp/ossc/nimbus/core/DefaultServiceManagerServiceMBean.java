@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.core;
 
 /**
- * {@link DefaultServiceManagerService}のMBeanインタフェース<p>
+ * {@link DefaultServiceManagerService}縺ｮMBean繧､繝ｳ繧ｿ繝輔ぉ繝ｼ繧ｹ<p>
  * 
  * @author M.Takata
  * @see DefaultServiceManagerService

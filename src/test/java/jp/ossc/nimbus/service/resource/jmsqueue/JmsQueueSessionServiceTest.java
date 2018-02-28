@@ -37,12 +37,12 @@ import jp.ossc.nimbus.core.*;
 import javax.jms.*;
 
 /**
- *	JmsQueueSessionƒT[ƒrƒXJunitƒeƒXƒgƒR[ƒh
- *  Test‚·‚éê‡‚É‚ÍAQueueConnectionFactory‚Æ‚¢‚¤–¼‘O‚ÌQueueConnectionFactory‚ğJNDI‚Ålookup‚Å‚«‚é‚æ‚¤‚É
- *  ‚·‚é•K—v‚ª‚ ‚éB
+ *	JmsQueueSessionã‚µãƒ¼ãƒ“ã‚¹Junitãƒ†ã‚¹ãƒˆã‚³ãƒ¼ãƒ‰
+ *  Testã™ã‚‹å ´åˆã«ã¯ã€QueueConnectionFactoryã¨ã„ã†åå‰ã®QueueConnectionFactoryã‚’JNDIã§lookupã§ãã‚‹ã‚ˆã†ã«
+ *  ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/11/18| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/11/18ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class JmsQueueSessionServiceTest extends TestCase {
 	private static final String serviceDefFilename = 
@@ -61,7 +61,7 @@ public class JmsQueueSessionServiceTest extends TestCase {
 	}
 	
 	public void testMakeResource() throws Exception{
-		//JmsQueueSessionƒT[ƒrƒX‚ğæ“¾
+		//JmsQueueSessionã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—
 		JmsQueueSession jmsQueSession = (JmsQueueSession)ServiceManagerFactory.getServiceObject("TheManager","JmsQueueSessionService");
 		TransactionResource tran = jmsQueSession.makeResource("QueueConnectionFactory");
 		if( (tran == null) || !(tran instanceof QueueTransanctionResource) ){
@@ -71,7 +71,7 @@ public class JmsQueueSessionServiceTest extends TestCase {
 	}
 	
 	public void testGetObject() throws Exception{
-		//JmsQueueSessionƒT[ƒrƒX‚ğæ“¾
+		//JmsQueueSessionã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—
 		JmsQueueSession jmsQueSession = (JmsQueueSession)ServiceManagerFactory.getServiceObject("TheManager","JmsQueueSessionService");
 		TransactionResource tranRes = jmsQueSession.makeResource("QueueConnectionFactory");
 		Object obj = tranRes.getObject();
@@ -83,7 +83,7 @@ public class JmsQueueSessionServiceTest extends TestCase {
 	}
 
 	public void testGetConnectionObject() throws Exception{
-		//JmsQueueSessionƒT[ƒrƒX‚ğæ“¾
+		//JmsQueueSessionã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—
 		JmsQueueSession jmsQueSession = (JmsQueueSession)ServiceManagerFactory.getServiceObject("TheManager","JmsQueueSessionService");
 		QueueTransanctionResource tranRes = (QueueTransanctionResource)jmsQueSession.makeResource("QueueConnectionFactory");
 		QueueConnection conn = tranRes.getConnectionObject();

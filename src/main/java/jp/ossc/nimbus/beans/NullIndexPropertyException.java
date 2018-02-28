@@ -36,7 +36,7 @@ import java.io.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚ªnull‚Å‚ ‚é–‚ğ¦‚·—áŠOB<p>
+ * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ãŒnullã§ã‚ã‚‹äº‹ã‚’ç¤ºã™ä¾‹å¤–ã€‚<p>
  *
  * @author M.Takata
  * @see IndexedProperty
@@ -47,10 +47,10 @@ public class NullIndexPropertyException
     private static final long serialVersionUID = -7313194028985127208L;
     
     /**
-     * ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½Bean‚ÌƒNƒ‰ƒXAƒvƒƒpƒeƒB–¼‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸBeanã®ã‚¯ãƒ©ã‚¹ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param clazz ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½Bean‚ÌƒNƒ‰ƒX
-     * @param property ƒGƒ‰[‘ÎÛ‚Æ‚È‚Á‚½ƒvƒƒpƒeƒB–¼
+     * @param clazz ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸBeanã®ã‚¯ãƒ©ã‚¹
+     * @param property ã‚¨ãƒ©ãƒ¼å¯¾è±¡ã¨ãªã£ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
      */
     public NullIndexPropertyException(Class clazz, String property){
         super(clazz, property);

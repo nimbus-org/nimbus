@@ -36,8 +36,8 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒƒ‚ƒŠƒTƒCƒY‚ ‚Ó‚êŒŸØƒtƒ@ƒNƒgƒŠB<p>
- * {@link MemorySizeOverflowValidatorService}‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚Å‚ ‚éB<br>
+ * ãƒ¡ãƒ¢ãƒªã‚µã‚¤ã‚ºã‚ãµã‚Œæ¤œè¨¼ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * {@link MemorySizeOverflowValidatorService}ã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  * @see MemorySizeOverflowValidatorService
@@ -52,10 +52,10 @@ public class MemorySizeOverflowValidatorFactoryService
          = new MemorySizeOverflowValidatorService();
     
     /**
-     * {@link MemorySizeOverflowValidatorService}ƒT[ƒrƒX‚ğ¶¬‚·‚éB<p>
+     * {@link MemorySizeOverflowValidatorService}ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return MemorySizeOverflowValidatorServiceƒT[ƒrƒX
-     * @exception Exception MemorySizeOverflowValidatorService‚Ì¶¬E‹N“®‚É¸”s‚µ‚½ê‡
+     * @return MemorySizeOverflowValidatorServiceã‚µãƒ¼ãƒ“ã‚¹
+     * @exception Exception MemorySizeOverflowValidatorServiceã®ç”Ÿæˆãƒ»èµ·å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
      * @see MemorySizeOverflowValidatorService
      */
     protected Service createServiceInstance() throws Exception{
@@ -66,7 +66,7 @@ public class MemorySizeOverflowValidatorFactoryService
         return validator;
     }
     
-    // MemorySizeOverflowValidatorFactoryServiceMBean‚ÌJavaDoc
+    // MemorySizeOverflowValidatorFactoryServiceMBeanã®JavaDoc
     public void setMaxHeapMemorySize(String size)
      throws IllegalArgumentException{
         template.setMaxHeapMemorySize(size);
@@ -79,12 +79,12 @@ public class MemorySizeOverflowValidatorFactoryService
         }
     }
     
-    // MemorySizeOverflowValidatorFactoryServiceMBean‚ÌJavaDoc
+    // MemorySizeOverflowValidatorFactoryServiceMBeanã®JavaDoc
     public String getMaxHeapMemorySize(){
         return template.getMaxHeapMemorySize();
     }
     
-    // MemorySizeOverflowValidatorFactoryServiceMBean‚ÌJavaDoc
+    // MemorySizeOverflowValidatorFactoryServiceMBeanã®JavaDoc
     public void setHighHeapMemorySize(String size)
      throws IllegalArgumentException{
         template.setHighHeapMemorySize(size);
@@ -97,12 +97,12 @@ public class MemorySizeOverflowValidatorFactoryService
         }
     }
     
-    // MemorySizeOverflowValidatorFactoryServiceMBean‚ÌJavaDoc
+    // MemorySizeOverflowValidatorFactoryServiceMBeanã®JavaDoc
     public String getHighHeapMemorySize(){
         return template.getHighHeapMemorySize();
     }
     
-    // MemorySizeOverflowValidatorFactoryServiceMBean‚ÌJavaDoc
+    // MemorySizeOverflowValidatorFactoryServiceMBeanã®JavaDoc
     public void reset(){
         final Set instanceSet = getManagedInstanceSet();
         final Iterator instances = instanceSet.iterator();

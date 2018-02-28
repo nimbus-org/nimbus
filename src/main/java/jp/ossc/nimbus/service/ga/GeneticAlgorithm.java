@@ -34,55 +34,55 @@ package jp.ossc.nimbus.service.ga;
 import java.util.Random;
 
 /**
- * ˆâ“`“IƒAƒ‹ƒSƒŠƒYƒ€B<p>
+ * éºä¼çš„ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã€‚<p>
  *
  * @author M.Takata
  */
 public interface GeneticAlgorithm{
     
     /**
-     * ƒV[ƒh’‡l‚ğæ“¾‚·‚éB<p>
+     * ã‚·ãƒ¼ãƒ‰ä»²äººã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒV[ƒh’‡l
+     * @return ã‚·ãƒ¼ãƒ‰ä»²äºº
      */
     public SeedMatchMaker getSeedMatchMaker();
     
     /**
-     * û‘©ğŒ‚ğæ“¾‚·‚éB<p>
+     * åæŸæ¡ä»¶ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return û‘©ğŒ
+     * @return åæŸæ¡ä»¶
      */
     public ConvergenceCondition getConvergenceCondition();
     
     /**
-     * ‰Šú¢‘ã‚ğ¶¬‚·‚éB<p>
+     * åˆæœŸä¸–ä»£ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param random —”ƒV[ƒh
-     * @param seed ƒeƒ“ƒvƒŒ[ƒg‚Æ‚È‚éƒV[ƒh
-     * @param seedNum 1¢‘ã‚ ‚½‚è‚ÌƒV[ƒh”
-     * @param isAsc “K‰’l‚Ì—Dæ‡ˆÊ‚ğ¸‡‚É‚·‚é‚©‚Ç‚¤‚©
-     * @return ‰Šú¢‘ã
+     * @param random ä¹±æ•°ã‚·ãƒ¼ãƒ‰
+     * @param seed ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã¨ãªã‚‹ã‚·ãƒ¼ãƒ‰
+     * @param seedNum 1ä¸–ä»£ã‚ãŸã‚Šã®ã‚·ãƒ¼ãƒ‰æ•°
+     * @param isAsc é©å¿œå€¤ã®å„ªå…ˆé †ä½ã‚’æ˜‡é †ã«ã™ã‚‹ã‹ã©ã†ã‹
+     * @return åˆæœŸä¸–ä»£
      */
     public Generation createGeneration(Random random, Seed seed, int seedNum, boolean isAsc);
     
     /**
-     * w’è‚³‚ê‚½¢‘ã‚Ì¢‘ã‹£‘ˆ‚ğs‚¢AŸ¢‘ã‚ğ•Ô‚·B<p>
+     * æŒ‡å®šã•ã‚ŒãŸä¸–ä»£ã®ä¸–ä»£ç«¶äº‰ã‚’è¡Œã„ã€æ¬¡ä¸–ä»£ã‚’è¿”ã™ã€‚<p>
      *
-     * @param random —”ƒV[ƒh
-     * @param generation ¢‘ã
-     * @return Ÿ¢‘ãBû‘©ğŒ‚É“’B‚µ‚½ê‡‚ÍAnull
+     * @param random ä¹±æ•°ã‚·ãƒ¼ãƒ‰
+     * @param generation ä¸–ä»£
+     * @return æ¬¡ä¸–ä»£ã€‚åæŸæ¡ä»¶ã«åˆ°é”ã—ãŸå ´åˆã¯ã€null
      */
     public Generation compete(Random random, Generation generation) throws Exception;
     
     /**
-     * w’è‚³‚ê‚½¢‘ã”‚¾‚¯¢‘ã‹£‘ˆ‚ğs‚¢AÅI¢‘ã‚ÌÅ“K‰Ò‚ğ•Ô‚·B<p>
+     * æŒ‡å®šã•ã‚ŒãŸä¸–ä»£æ•°ã ã‘ä¸–ä»£ç«¶äº‰ã‚’è¡Œã„ã€æœ€çµ‚ä¸–ä»£ã®æœ€é©å¿œè€…ã‚’è¿”ã™ã€‚<p>
      *
-     * @param random —”ƒV[ƒh
-     * @param seed ƒeƒ“ƒvƒŒ[ƒg‚Æ‚È‚éƒV[ƒh
-     * @param seedNum 1¢‘ã‚ ‚½‚è‚ÌƒV[ƒh”
-     * @param isAsc “K‰’l‚Ì—Dæ‡ˆÊ‚ğ¸‡‚É‚·‚é‚©‚Ç‚¤‚©
-     * @return ¶‘¶Ò‚½‚éÅ“K‰Ò
-     * @exception Exception ¢‘ã‹£‘ˆ‚É¸”s‚µ‚½ê‡
+     * @param random ä¹±æ•°ã‚·ãƒ¼ãƒ‰
+     * @param seed ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã¨ãªã‚‹ã‚·ãƒ¼ãƒ‰
+     * @param seedNum 1ä¸–ä»£ã‚ãŸã‚Šã®ã‚·ãƒ¼ãƒ‰æ•°
+     * @param isAsc é©å¿œå€¤ã®å„ªå…ˆé †ä½ã‚’æ˜‡é †ã«ã™ã‚‹ã‹ã©ã†ã‹
+     * @return ç”Ÿå­˜è€…ãŸã‚‹æœ€é©å¿œè€…
+     * @exception Exception ä¸–ä»£ç«¶äº‰ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Seed compete(Random random, Seed seed, int seedNum, boolean isAsc) throws Exception;
 }

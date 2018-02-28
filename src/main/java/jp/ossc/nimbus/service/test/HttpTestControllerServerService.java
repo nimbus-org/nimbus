@@ -55,7 +55,7 @@ import jp.ossc.nimbus.service.http.proxy.HttpResponse;
 import jp.ossc.nimbus.util.converter.BeanJSONConverter;
 
 /**
- * HTTPテストコントローラサーバ。
+ * HTTP繝�繧ｹ繝医さ繝ｳ繝医Ο繝ｼ繝ｩ繧ｵ繝ｼ繝舌�
  * <p>
  *
  * @author M.Takata

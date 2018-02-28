@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.journal.editor;
 
 /**
- * {@link MapJournalEditorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link MapJournalEditorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see MapJournalEditorService
@@ -41,129 +41,129 @@ public interface MapJournalEditorServiceMBean
  extends ImmutableJournalEditorServiceBaseMBean{
     
     /**
-     * ŠJn‹æØ‚è•¶š‚ğİ’è‚·‚éB<p>
+     * é–‹å§‹åŒºåˆ‡ã‚Šæ–‡å­—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param delim ‹æØ‚è•¶š
+     * @param delim åŒºåˆ‡ã‚Šæ–‡å­—
      */
     public void setStartDelimiter(String delim);
     
     /**
-     * ŠJn‹æØ‚è•¶š‚ğæ“¾‚·‚éB<p>
+     * é–‹å§‹åŒºåˆ‡ã‚Šæ–‡å­—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‹æØ‚è•¶š
+     * @return åŒºåˆ‡ã‚Šæ–‡å­—
      */
     public String getStartDelimiter();
     
     /**
-     * I—¹‹æØ‚è•¶š‚ğİ’è‚·‚éB<p>
+     * çµ‚äº†åŒºåˆ‡ã‚Šæ–‡å­—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param delim ‹æØ‚è•¶š
+     * @param delim åŒºåˆ‡ã‚Šæ–‡å­—
      */
     public void setEndDelimiter(String delim);
     
     /**
-     * I—¹‹æØ‚è•¶š‚ğæ“¾‚·‚éB<p>
+     * çµ‚äº†åŒºåˆ‡ã‚Šæ–‡å­—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‹æØ‚è•¶š
+     * @return åŒºåˆ‡ã‚Šæ–‡å­—
      */
     public String getEndDelimiter();
     
     /**
-     * ƒ}ƒbƒv‚ÌƒGƒ“ƒgƒŠ‚Ì‹æØ‚è•¶š‚ğİ’è‚·‚éB<p>
+     * ãƒãƒƒãƒ—ã®ã‚¨ãƒ³ãƒˆãƒªã®åŒºåˆ‡ã‚Šæ–‡å­—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param delim ‹æØ‚è•¶š
+     * @param delim åŒºåˆ‡ã‚Šæ–‡å­—
      */
     public void setDelimiter(String delim);
     
     /**
-     * ƒ}ƒbƒv‚ÌƒGƒ“ƒgƒŠ‚Ì‹æØ‚è•¶š‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒƒãƒ—ã®ã‚¨ãƒ³ãƒˆãƒªã®åŒºåˆ‡ã‚Šæ–‡å­—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‹æØ‚è•¶š
+     * @return åŒºåˆ‡ã‚Šæ–‡å­—
      */
     public String getDelimiter();
     
     /**
-     * ƒ}ƒbƒv‚ÌƒL[‚Æ’l‚Ì‹æØ‚è•¶š‚ğİ’è‚·‚éB<p>
+     * ãƒãƒƒãƒ—ã®ã‚­ãƒ¼ã¨å€¤ã®åŒºåˆ‡ã‚Šæ–‡å­—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param delim ‹æØ‚è•¶š
+     * @param delim åŒºåˆ‡ã‚Šæ–‡å­—
      */
     public void setKeyValueDelimiter(String delim);
     
     /**
-     * ƒ}ƒbƒv‚ÌƒL[‚Æ’l‚Ì‹æØ‚è•¶š‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒƒãƒ—ã®ã‚­ãƒ¼ã¨å€¤ã®åŒºåˆ‡ã‚Šæ–‡å­—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‹æØ‚è•¶š
+     * @return åŒºåˆ‡ã‚Šæ–‡å­—
      */
     public String getKeyValueDelimiter();
     
     /**
-     * ƒ}ƒbƒv‚Ì’l‚ÌŠJn‹æØ‚è•¶š‚ğİ’è‚·‚éB<p>
+     * ãƒãƒƒãƒ—ã®å€¤ã®é–‹å§‹åŒºåˆ‡ã‚Šæ–‡å­—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param delim ‹æØ‚è•¶š
+     * @param delim åŒºåˆ‡ã‚Šæ–‡å­—
      */
     public void setStartValueDelimiter(String delim);
     
     /**
-     * ƒ}ƒbƒv‚Ì’l‚ÌŠJn‹æØ‚è•¶š‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒƒãƒ—ã®å€¤ã®é–‹å§‹åŒºåˆ‡ã‚Šæ–‡å­—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‹æØ‚è•¶š
+     * @return åŒºåˆ‡ã‚Šæ–‡å­—
      */
     public String getStartValueDelimiter();
     
     /**
-     * ƒ}ƒbƒv‚Ì’l‚ÌI—¹‹æØ‚è•¶š‚ğİ’è‚·‚éB<p>
+     * ãƒãƒƒãƒ—ã®å€¤ã®çµ‚äº†åŒºåˆ‡ã‚Šæ–‡å­—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param delim ‹æØ‚è•¶š
+     * @param delim åŒºåˆ‡ã‚Šæ–‡å­—
      */
     public void setEndValueDelimiter(String delim);
     
     /**
-     * ƒ}ƒbƒv‚Ì’l‚ÌI—¹‹æØ‚è•¶š‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒƒãƒ—ã®å€¤ã®çµ‚äº†åŒºåˆ‡ã‚Šæ–‡å­—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‹æØ‚è•¶š
+     * @return åŒºåˆ‡ã‚Šæ–‡å­—
      */
     public String getEndValueDelimiter();
     
     /**
-     * ’l‚ğƒ}ƒXƒN‚·‚éÛ‚Ìƒ}ƒXƒN•¶š—ñ‚ğİ’è‚·‚éB<p>
+     * å€¤ã‚’ãƒã‚¹ã‚¯ã™ã‚‹éš›ã®ãƒã‚¹ã‚¯æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param str ƒ}ƒXƒN•¶š—ñ
+     * @param str ãƒã‚¹ã‚¯æ–‡å­—åˆ—
      */
     public void setSecretString(String str);
     
     /**
-     * ’l‚ğƒ}ƒXƒN‚·‚éÛ‚Ìƒ}ƒXƒN•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * å€¤ã‚’ãƒã‚¹ã‚¯ã™ã‚‹éš›ã®ãƒã‚¹ã‚¯æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ}ƒXƒN•¶š—ñ
+     * @return ãƒã‚¹ã‚¯æ–‡å­—åˆ—
      */
     public String getSecretString();
     
     /**
-     * ’l‚ğƒ}ƒXƒN‚·‚éƒL[–¼‚Ì”z—ñ‚ğİ’è‚·‚éB<p>
+     * å€¤ã‚’ãƒã‚¹ã‚¯ã™ã‚‹ã‚­ãƒ¼åã®é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param keys ƒL[–¼‚Ì”z—ñ
+     * @param keys ã‚­ãƒ¼åã®é…åˆ—
      */
     public void setSecretKeys(String[] keys);
     
     /**
-     * ’l‚ğƒ}ƒXƒN‚·‚éƒL[–¼‚Ì”z—ñ‚ğæ“¾‚·‚éB<p>
+     * å€¤ã‚’ãƒã‚¹ã‚¯ã™ã‚‹ã‚­ãƒ¼åã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[–¼‚Ì”z—ñ
+     * @return ã‚­ãƒ¼åã®é…åˆ—
      */
     public String[] getSecretKeys();
     
     /**
-     * ’l‚ğo—Í‚·‚éƒL[–¼‚Ì”z—ñ‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğİ’è‚µ‚È‚¢ê‡‚ÍA‘S‚Ä‚ÌƒL[‚ªo—Í‚³‚ê‚éB<br>
+     * å€¤ã‚’å‡ºåŠ›ã™ã‚‹ã‚­ãƒ¼åã®é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’è¨­å®šã—ãªã„å ´åˆã¯ã€å…¨ã¦ã®ã‚­ãƒ¼ãŒå‡ºåŠ›ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param keys ƒL[–¼‚Ì”z—ñ
+     * @param keys ã‚­ãƒ¼åã®é…åˆ—
      */
     public void setEnabledKeys(String[] keys);
     
     /**
-     * ’l‚ğo—Í‚·‚éƒL[–¼‚Ì”z—ñ‚ğæ“¾‚·‚éB<p>
+     * å€¤ã‚’å‡ºåŠ›ã™ã‚‹ã‚­ãƒ¼åã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[–¼‚Ì”z—ñ
+     * @return ã‚­ãƒ¼åã®é…åˆ—
      */
     public String[] getEnabledKeys();
 }

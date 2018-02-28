@@ -36,7 +36,7 @@ import java.util.Date;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link DefaultTimeService}のMBeanインタフェース<p>
+ * {@link DefaultTimeService}縺ｮMBean繧､繝ｳ繧ｿ繝輔ぉ繝ｼ繧ｹ<p>
  * 
  * @author M.Takata
  * @see DefaultTimeService

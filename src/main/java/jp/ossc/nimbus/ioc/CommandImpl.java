@@ -29,15 +29,15 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.ioc;
 
 import java.io.Serializable;
 
 /**
- * ƒtƒ@ƒCƒ‹‘€ìƒNƒ‰ƒX<p>
- * ƒtƒ@ƒCƒ‹‚ÌƒRƒs[‚âƒŠƒl[ƒ€‚ÆŒ¾‚Á‚½‘€ì‚ğs‚¤
+ * ãƒ•ã‚¡ã‚¤ãƒ«æ“ä½œã‚¯ãƒ©ã‚¹<p>
+ * ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚³ãƒ”ãƒ¼ã‚„ãƒªãƒãƒ¼ãƒ ã¨è¨€ã£ãŸæ“ä½œã‚’è¡Œã†
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -53,36 +53,36 @@ public class CommandImpl
 	private String mFlowKey ;
 	private int mStatus ;
    /**
-	* ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	* ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	*/
 	public CommandImpl() {
 		super();
 		this.mStatus = C_STATUS_BEFORE ;
 	}
 	/*
-	 * Às‚·‚éBeanƒtƒ[‚Ìƒtƒ[ƒL[‚ğo—Í‚·‚é
-	 * @return	ƒtƒ[ƒL[
+	 * å®Ÿè¡Œã™ã‚‹Beanãƒ•ãƒ­ãƒ¼ã®ãƒ•ãƒ­ãƒ¼ã‚­ãƒ¼ã‚’å‡ºåŠ›ã™ã‚‹
+	 * @return	ãƒ•ãƒ­ãƒ¼ã‚­ãƒ¼
 	 */
 	public String getFlowKey() {
 		return this.mFlowKey;
 	}
 	/*
-	 * Às‚·‚éBeanƒtƒ[‚Ìƒtƒ[ƒL[‚ğİ’è‚·‚é
-	 * @param flowKey	ƒtƒ[ƒL[
+	 * å®Ÿè¡Œã™ã‚‹Beanãƒ•ãƒ­ãƒ¼ã®ãƒ•ãƒ­ãƒ¼ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹
+	 * @param flowKey	ãƒ•ãƒ­ãƒ¼ã‚­ãƒ¼
 	 */
 	public void setFlowKey(String flowKey) {
 		this.mFlowKey = flowKey ;
 	}
 
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.ioc.Command#setInputObject(java.lang.Object)
 	 */
 	public void setInputObject(Object obj) {
 		this.mInputObj = obj ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.ioc.Command#setOutObject(java.lang.Object)
 	 */
 	public void setOutObject(Object obj) {
@@ -91,21 +91,21 @@ public class CommandImpl
 
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.ioc.Command#getOutputObject()
 	 */
 	public Object getOutputObject() {
 		return this.mOutputObj;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.ioc.Command#getInputObject()
 	 */
 	public Object getInputObject() {
 		return this.mInputObj;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.ioc.Command#setException(java.lang.Throwable)
 	 */
 	public void setException(Throwable e) {
@@ -115,14 +115,14 @@ public class CommandImpl
     public Throwable getException(){
         return mException;
     }
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.ioc.CommandBase#isCommand()
 	 */
 	public boolean isCommand() {
 		return true;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.ioc.CommandBase#getExceptionCount()
 	 */
 	public int getExceptionCount() {
@@ -132,7 +132,7 @@ public class CommandImpl
 		return 0;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.ioc.CommandBase#getExceptions()
 	 */
 	public Throwable[] getExceptions() {
@@ -146,7 +146,7 @@ public class CommandImpl
 		return ret ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.ioc.CommandBase#findErrorCommand(java.lang.Throwable)
 	 */
 	public Command findErrorCommand(Throwable e) {
@@ -159,14 +159,14 @@ public class CommandImpl
 		return ret;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.ioc.CommandBase#commandSize()
 	 */
 	public int commandSize() {
 		return 1;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.ioc.CommandBase#commandExecuteSize()
 	 */
 	public int commandExecuteSize() {
@@ -177,21 +177,21 @@ public class CommandImpl
 		}
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.ioc.CommandBase#getStatus()
 	 */
 	public int getStatus() {
 		return this.mStatus;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.ioc.CommandBase#unitOfWorkSize()
 	 */
 	public int unitOfWorkSize() {
 		return 0;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.ioc.CommandBase#unitOfWorkExecuteSize()
 	 */
 	public int unitOfWorkExecuteSize() {

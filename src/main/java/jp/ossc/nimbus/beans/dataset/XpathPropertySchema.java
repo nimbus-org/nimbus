@@ -37,10 +37,10 @@ import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
 /**
- * ƒvƒƒpƒeƒB‚É‘Î‰‚·‚éXPath‚ğİ’è‰Â”\‚È{@link PropertySchema}B
+ * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å¯¾å¿œã™ã‚‹XPathã‚’è¨­å®šå¯èƒ½ãª{@link PropertySchema}ã€‚
  * <p>
- *   {@link DefaultPropertySchema}‚ÅƒTƒ|[ƒg‚³‚ê‚éƒXƒL[ƒ}’è‹`‚É‰Á‚¦‚ÄAƒvƒƒpƒeƒB‚É‘Î‰‚·‚éXPath‚ğ’è‹`‚·‚é‚±‚Æ‚ª‚Å‚«‚éB<br/>
- *   ƒtƒH[ƒ}ƒbƒgF–¼‘O,Œ^,“ü—Í•ÏŠ·í—Ş,o—Í•ÏŠ·í—Ş,§–ñ,XPath
+ *   {@link DefaultPropertySchema}ã§ã‚µãƒãƒ¼ãƒˆã•ã‚Œã‚‹ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«åŠ ãˆã¦ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å¯¾å¿œã™ã‚‹XPathã‚’å®šç¾©ã™ã‚‹ã“ã¨ãŒã§ãã‚‹ã€‚<br/>
+ *   ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆï¼šåå‰,å‹,å…¥åŠ›å¤‰æ›ç¨®é¡,å‡ºåŠ›å¤‰æ›ç¨®é¡,åˆ¶ç´„,XPath
  * </p>
  * @author T.Okada
  */
@@ -51,16 +51,16 @@ public class XpathPropertySchema extends DefaultPropertySchema {
     private XPathExpression xpathExpression;
     
     /**
-     * ‹ó‚ÌƒvƒƒpƒeƒBƒXƒL[ƒ}‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public XpathPropertySchema(){
     }
     
     /**
-     * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚ğ¶¬‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public XpathPropertySchema(String schema) throws PropertySchemaDefineException{
         super(schema);
@@ -88,8 +88,8 @@ public class XpathPropertySchema extends DefaultPropertySchema {
     }
     
     /**
-     * •¶š—ñ‚ğ‰ğÍ‚µ‚ÄXPath‚ğ’Šo‚·‚éB
-     * @param value ‰ğÍ‘ÎÛ‚Ì•¶š—ñ
+     * æ–‡å­—åˆ—ã‚’è§£æã—ã¦XPathã‚’æŠ½å‡ºã™ã‚‹ã€‚
+     * @param value è§£æå¯¾è±¡ã®æ–‡å­—åˆ—
      */
     protected void parseXPath(String schema, String value) {
         XPathFactory factory = XPathFactory.newInstance();
@@ -102,7 +102,7 @@ public class XpathPropertySchema extends DefaultPropertySchema {
     }
     
     /**
-     * XPath‚ğæ“¾‚·‚éB
+     * XPathã‚’å–å¾—ã™ã‚‹ã€‚
      */
     public XPathExpression getXpathExpression() {
         return xpathExpression;

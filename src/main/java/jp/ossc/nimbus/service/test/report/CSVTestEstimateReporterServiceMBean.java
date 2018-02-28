@@ -36,7 +36,7 @@ import java.io.File;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link CSVTestEstimateReporterService}のMBeanインタフェース<p>
+ * {@link CSVTestEstimateReporterService}縺ｮMBean繧､繝ｳ繧ｿ繝輔ぉ繝ｼ繧ｹ<p>
  * 
  * @author M.Aono
  * @see CSVTestEstimateReporterService

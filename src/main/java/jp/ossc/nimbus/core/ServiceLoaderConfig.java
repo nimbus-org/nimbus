@@ -32,25 +32,25 @@
 package jp.ossc.nimbus.core;
 
 /**
- * ƒT[ƒrƒXƒ[ƒ_\¬î•ñB<p>
+ * ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€æ§‹æˆæƒ…å ±ã€‚<p>
  *
  * @author M.Takata
  */
 public interface ServiceLoaderConfig{
     
     /**
-     * ƒT[ƒrƒXƒ[ƒ_‚É“n‚·ƒT[ƒrƒXƒ[ƒh—p‚ÌƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€ã«æ¸¡ã™ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ‰ç”¨ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ƒvƒƒpƒeƒB’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
      */
     public String getProperty(String name);
     
     /**
-     * ƒT[ƒrƒXƒ[ƒ_‚ÉƒT[ƒrƒXƒ[ƒh—p‚ÌƒvƒƒpƒeƒB‚ğ“n‚·B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ€ã«ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ãƒ¼ãƒ‰ç”¨ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æ¸¡ã™ã€‚<p>
      * 
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param prop ƒvƒƒpƒeƒB’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param prop ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
      */
     public void setProperty(String name, String prop);
 }

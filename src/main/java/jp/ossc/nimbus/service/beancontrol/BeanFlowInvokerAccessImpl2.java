@@ -80,64 +80,64 @@ import jp.ossc.nimbus.service.queue.Queue;
 import jp.ossc.nimbus.service.queue.DefaultQueueService;
 
 /**
- * ‹Æ–±ƒtƒ[ÀsƒNƒ‰ƒXB<p>
- * ‹Æ–±ƒtƒ[’è‹`ƒtƒ@ƒCƒ‹‚É‚ÄAˆÈ‰º‚Ì‚æ‚¤‚È‹Lq‚ª‰Â”\‚Å‚ ‚éB<br>
+ * æ¥­å‹™ãƒ•ãƒ­ãƒ¼å®Ÿè¡Œã‚¯ãƒ©ã‚¹ã€‚<p>
+ * æ¥­å‹™ãƒ•ãƒ­ãƒ¼å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã«ã¦ã€ä»¥ä¸‹ã®ã‚ˆã†ãªè¨˜è¿°ãŒå¯èƒ½ã§ã‚ã‚‹ã€‚<br>
  * <ul>
- *   <li>POJO‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^ƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“</li>
- *   <li>POJO‚Ö‚ÌƒtƒB[ƒ‹ƒhƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“</li>
- *   <li>POJO‚Ö‚ÌƒvƒƒpƒeƒBƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“</li>
- *   <li>POJO‚Ö‚Ìƒƒ\ƒbƒhƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“</li>
- *   <li>POJO‚Ö‚ÌƒT[ƒrƒXƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“</li>
- *   <li>ğŒ•ªŠò</li>
- *   <li>ŒJ‚è•Ô‚µ</li>
- *   <li>l‘¥‰‰Z</li>
- *   <li>qƒtƒ[ŒÄ‚Ño‚µ</li>
- *   <li>ƒtƒ[‹y‚ÑƒXƒeƒbƒv‚Ì—¬—Ê§Œä</li>
- *   <li>ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒŠƒ\[ƒX‚Ì§Œä</li>
- *   <li>JTA‚É‚æ‚éƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚Ì§Œä</li>
- *   <li>—áŠOˆ—</li>
+ *   <li>POJOã®ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³</li>
+ *   <li>POJOã¸ã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³</li>
+ *   <li>POJOã¸ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³</li>
+ *   <li>POJOã¸ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³</li>
+ *   <li>POJOã¸ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³</li>
+ *   <li>æ¡ä»¶åˆ†å²</li>
+ *   <li>ç¹°ã‚Šè¿”ã—</li>
+ *   <li>å››å‰‡æ¼”ç®—</li>
+ *   <li>å­ãƒ•ãƒ­ãƒ¼å‘¼ã³å‡ºã—</li>
+ *   <li>ãƒ•ãƒ­ãƒ¼åŠã³ã‚¹ãƒ†ãƒƒãƒ—ã®æµé‡åˆ¶å¾¡</li>
+ *   <li>ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒªã‚½ãƒ¼ã‚¹ã®åˆ¶å¾¡</li>
+ *   <li>JTAã«ã‚ˆã‚‹ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®åˆ¶å¾¡</li>
+ *   <li>ä¾‹å¤–å‡¦ç†</li>
  * </ul>
  *
  * @author M.Takata
- * @see <a href="beanflow_1_0.dtd">‹Æ–±ƒtƒ[’è‹`ƒtƒ@ƒCƒ‹DTD</a>
+ * @see <a href="beanflow_1_0.dtd">æ¥­å‹™ãƒ•ãƒ­ãƒ¼å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«DTD</a>
  */
 public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvokerAccess{
 
     private static final long serialVersionUID = -9167347647817538189L;
 
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ^ƒCƒv RequiredB<p>
-     * Šù‘¶ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ª‚È‚¯‚ê‚ÎV‚µ‚­ŠJn‚·‚éB‚ ‚ê‚Î‰½‚à‚µ‚È‚¢B
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚¿ã‚¤ãƒ— Requiredã€‚<p>
+     * æ—¢å­˜ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãŒãªã‘ã‚Œã°æ–°ã—ãé–‹å§‹ã™ã‚‹ã€‚ã‚ã‚Œã°ä½•ã‚‚ã—ãªã„ã€‚
      */
     public static final String REQUIRED = "Required";
 
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ^ƒCƒv RequiresNewB<p>
-     * Šù‘¶ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ª‚È‚¯‚ê‚ÎV‚µ‚­ŠJn‚·‚éB‚ ‚ê‚Îsuspend‚µ‚ÄV‚µ‚­ŠJn‚·‚éB
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚¿ã‚¤ãƒ— RequiresNewã€‚<p>
+     * æ—¢å­˜ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãŒãªã‘ã‚Œã°æ–°ã—ãé–‹å§‹ã™ã‚‹ã€‚ã‚ã‚Œã°suspendã—ã¦æ–°ã—ãé–‹å§‹ã™ã‚‹ã€‚
      */
     public static final String REQUIRESNEW = "RequiresNew";
 
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ^ƒCƒv SupportsB<p>
-     * Šù‘¶ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ª‚ ‚Á‚Ä‚àA‚È‚­‚Ä‚à‰½‚à‚µ‚È‚¢B
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚¿ã‚¤ãƒ— Supportsã€‚<p>
+     * æ—¢å­˜ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãŒã‚ã£ã¦ã‚‚ã€ãªãã¦ã‚‚ä½•ã‚‚ã—ãªã„ã€‚
      */
     public static final String SUPPORTS = "Supports";
 
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ^ƒCƒv MandatoryB<p>
-     * Šù‘¶ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ª‚È‚¯‚ê‚ÎƒGƒ‰[B‚ ‚ê‚Î‰½‚à‚µ‚È‚¢B
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚¿ã‚¤ãƒ— Mandatoryã€‚<p>
+     * æ—¢å­˜ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãŒãªã‘ã‚Œã°ã‚¨ãƒ©ãƒ¼ã€‚ã‚ã‚Œã°ä½•ã‚‚ã—ãªã„ã€‚
      */
     public static final String MANDATORY = "Mandatory";
 
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ^ƒCƒv NeverB<p>
-     * Šù‘¶ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ª‚È‚¯‚ê‚Î‰½‚à‚µ‚È‚¢B‚ ‚ê‚ÎƒGƒ‰[B
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚¿ã‚¤ãƒ— Neverã€‚<p>
+     * æ—¢å­˜ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãŒãªã‘ã‚Œã°ä½•ã‚‚ã—ãªã„ã€‚ã‚ã‚Œã°ã‚¨ãƒ©ãƒ¼ã€‚
      */
     public static final String NEVER = "Never";
 
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ^ƒCƒv NotSupportedB<p>
-     * Šù‘¶ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ª‚È‚¯‚ê‚Î‰½‚à‚µ‚È‚¢B‚ ‚ê‚Î’â~‚·‚éB
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚¿ã‚¤ãƒ— NotSupportedã€‚<p>
+     * æ—¢å­˜ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãŒãªã‘ã‚Œã°ä½•ã‚‚ã—ãªã„ã€‚ã‚ã‚Œã°åœæ­¢ã™ã‚‹ã€‚
      */
     public static final String NOT_SUPPORTED = "NotSupported";
 
@@ -237,38 +237,38 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
     private static final String JOURNAL_KEY_GETASYNCHREPLY = "GetAsynchReply";
 
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ^ƒCƒv RequiredB<p>
-     * Šù‘¶ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ª‚È‚¯‚ê‚ÎV‚µ‚­ŠJn‚·‚éB‚ ‚ê‚Î‰½‚à‚µ‚È‚¢B
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚¿ã‚¤ãƒ— Requiredã€‚<p>
+     * æ—¢å­˜ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãŒãªã‘ã‚Œã°æ–°ã—ãé–‹å§‹ã™ã‚‹ã€‚ã‚ã‚Œã°ä½•ã‚‚ã—ãªã„ã€‚
      */
     private static final int REQUIRED_VALUE = 0;
 
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ^ƒCƒv RequiresNewB<p>
-     * Šù‘¶ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ª‚È‚¯‚ê‚ÎV‚µ‚­ŠJn‚·‚éB‚ ‚ê‚Îsuspend‚µ‚ÄV‚µ‚­ŠJn‚·‚éB
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚¿ã‚¤ãƒ— RequiresNewã€‚<p>
+     * æ—¢å­˜ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãŒãªã‘ã‚Œã°æ–°ã—ãé–‹å§‹ã™ã‚‹ã€‚ã‚ã‚Œã°suspendã—ã¦æ–°ã—ãé–‹å§‹ã™ã‚‹ã€‚
      */
     private static final int REQUIRESNEW_VALUE = 1;
 
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ^ƒCƒv SupportsB<p>
-     * Šù‘¶ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ª‚ ‚Á‚Ä‚àA‚È‚­‚Ä‚à‰½‚à‚µ‚È‚¢B
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚¿ã‚¤ãƒ— Supportsã€‚<p>
+     * æ—¢å­˜ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãŒã‚ã£ã¦ã‚‚ã€ãªãã¦ã‚‚ä½•ã‚‚ã—ãªã„ã€‚
      */
     private static final int SUPPORTS_VALUE = 2;
 
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ^ƒCƒv MandatoryB<p>
-     * Šù‘¶ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ª‚È‚¯‚ê‚ÎƒGƒ‰[B‚ ‚ê‚Î‰½‚à‚µ‚È‚¢B
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚¿ã‚¤ãƒ— Mandatoryã€‚<p>
+     * æ—¢å­˜ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãŒãªã‘ã‚Œã°ã‚¨ãƒ©ãƒ¼ã€‚ã‚ã‚Œã°ä½•ã‚‚ã—ãªã„ã€‚
      */
     private static final int MANDATORY_VALUE = 3;
 
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ^ƒCƒv NeverB<p>
-     * Šù‘¶ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ª‚È‚¯‚ê‚Î‰½‚à‚µ‚È‚¢B‚ ‚ê‚ÎƒGƒ‰[B
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚¿ã‚¤ãƒ— Neverã€‚<p>
+     * æ—¢å­˜ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãŒãªã‘ã‚Œã°ä½•ã‚‚ã—ãªã„ã€‚ã‚ã‚Œã°ã‚¨ãƒ©ãƒ¼ã€‚
      */
     private static final int NEVER_VALUE = 4;
 
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ^ƒCƒv NotSupportedB<p>
-     * Šù‘¶ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ª‚È‚¯‚ê‚Î‰½‚à‚µ‚È‚¢B‚ ‚ê‚Î’â~‚·‚éB
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚¿ã‚¤ãƒ— NotSupportedã€‚<p>
+     * æ—¢å­˜ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãŒãªã‘ã‚Œã°ä½•ã‚‚ã—ãªã„ã€‚ã‚ã‚Œã°åœæ­¢ã™ã‚‹ã€‚
      */
     private static final int NOT_SUPPORTED_VALUE = 5;
 
@@ -320,7 +320,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
     protected String encoding;
 
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“§Œä‚ğs‚¤‚½‚ß‚Élookup‚µ‚½TransactionManagerB<p>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³åˆ¶å¾¡ã‚’è¡Œã†ãŸã‚ã«lookupã—ãŸTransactionManagerã€‚<p>
      */
     protected TransactionManager tranManager;
 
@@ -1134,7 +1134,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
     }
 
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ}ƒl[ƒWƒƒ‚ÌJNDI–¼‚ğæ“¾‚·‚éB
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒãƒãƒ¼ã‚¸ãƒ£ã®JNDIåã‚’å–å¾—ã™ã‚‹ã€‚
      */
     protected String getTransactionManagerJndiName() {
         return null;
@@ -1285,7 +1285,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
     }
 
     /**
-     * ƒŠƒ\[ƒXî•ñŠÇ—ƒNƒ‰ƒXB<p>
+     * ãƒªã‚½ãƒ¼ã‚¹æƒ…å ±ç®¡ç†ã‚¯ãƒ©ã‚¹ã€‚<p>
      */
     private static class ResourceInfo implements Serializable{
 
@@ -4106,6 +4106,12 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                     }
                 }else{
                     stepContext.result = invoker.invokeFlow(input, context.monitor);
+                    if(journal != null){
+                        journal.addInfo(
+                            JOURNAL_KEY_STEP_RESULT,
+                            stepContext.result
+                        );
+                    }
                 }
                 context.put(stepName, stepContext);
             }catch(Exception e){
@@ -6235,7 +6241,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
     }
 
     /**
-     * Beanƒtƒ[‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ‚ğ•Û‚·‚éƒNƒ‰ƒXB<p>
+     * Beanãƒ•ãƒ­ãƒ¼ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã‚’ä¿æŒã™ã‚‹ã‚¯ãƒ©ã‚¹ã€‚<p>
      *
      * @author M.Takata
      */
@@ -6254,11 +6260,11 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
         public Map interpreterContext;
 
         /**
-         * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          *
-         * @param in Beanƒtƒ[‚Ì“ü—Í
-         * @param rm ƒŠƒ\[ƒXƒ}ƒl[ƒWƒƒ
-         * @param monitor ƒ‚ƒjƒ^[
+         * @param in Beanãƒ•ãƒ­ãƒ¼ã®å…¥åŠ›
+         * @param rm ãƒªã‚½ãƒ¼ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£
+         * @param monitor ãƒ¢ãƒ‹ã‚¿ãƒ¼
          */
         public FlowContext(Object in, ResourceManager rm, BeanFlowMonitor monitor, Set stepNames){
             input = in;
@@ -6276,27 +6282,27 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
         }
 
         /**
-         * Às’†‚ÌƒXƒeƒbƒv‚Ì‘ÎÛƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+         * å®Ÿè¡Œä¸­ã®ã‚¹ãƒ†ãƒƒãƒ—ã®å¯¾è±¡ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return Às’†‚ÌƒXƒeƒbƒv‚Ì‘ÎÛƒIƒuƒWƒFƒNƒg
+         * @return å®Ÿè¡Œä¸­ã®ã‚¹ãƒ†ãƒƒãƒ—ã®å¯¾è±¡ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
          */
         public Object getThis(){
             return current == null ? null : current.target;
         }
 
         /**
-         * Beanƒtƒ[‚Ì“ü—ÍƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+         * Beanãƒ•ãƒ­ãƒ¼ã®å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return Beanƒtƒ[‚Ì“ü—ÍƒIƒuƒWƒFƒNƒg
+         * @return Beanãƒ•ãƒ­ãƒ¼ã®å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
          */
         public Object getInput(){
             return input;
         }
         
         /**
-         * w’è‚³‚ê‚½éŒ¾–¼‚Ì“ü—Í•Ï”‚ğæ“¾‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸå®£è¨€åã®å…¥åŠ›å¤‰æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return “ü—Í•Ï”
+         * @return å…¥åŠ›å¤‰æ•°
          */
         public Object getInputDef(String name){
             if(inputDefs == null){
@@ -6306,10 +6312,10 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
         }
         
         /**
-         * w’è‚³‚ê‚½éŒ¾–¼‚Ì“ü—Í•Ï”‚ğİ’è‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸå®£è¨€åã®å…¥åŠ›å¤‰æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param name éŒ¾–¼
-         * @param def “ü—Í•Ï”
+         * @param name å®£è¨€å
+         * @param def å…¥åŠ›å¤‰æ•°
          */
         public void setInputDef(String name, Object def){
             if(inputDefs == null){
@@ -6320,10 +6326,10 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
         }
         
         /**
-         * w’è‚³‚ê‚½ƒXƒeƒbƒv–¼‚ÌŒ‹‰Ê‚ğæ“¾‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸã‚¹ãƒ†ãƒƒãƒ—åã®çµæœã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @param name ƒXƒeƒbƒv–¼
-         * @return ƒXƒeƒbƒv–¼‚ÌŒ‹‰Ê
+         * @param name ã‚¹ãƒ†ãƒƒãƒ—å
+         * @return ã‚¹ãƒ†ãƒƒãƒ—åã®çµæœ
          */
         public Object getStep(String name){
             Object stepObj = super.get(name);
@@ -6334,9 +6340,9 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
         }
 
         /**
-         * w’è‚³‚ê‚½•Ï”–¼‚ÌBeanƒtƒ[“à•Ï”‚ğæ“¾‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸå¤‰æ•°åã®Beanãƒ•ãƒ­ãƒ¼å†…å¤‰æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return Beanƒtƒ[“à•Ï”
+         * @return Beanãƒ•ãƒ­ãƒ¼å†…å¤‰æ•°
          */
         public Object getVar(String name){
             if(vars == null){
@@ -6346,10 +6352,10 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
         }
 
         /**
-         * w’è‚³‚ê‚½•Ï”–¼‚ÌBeanƒtƒ[“à•Ï”‚ğİ’è‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸå¤‰æ•°åã®Beanãƒ•ãƒ­ãƒ¼å†…å¤‰æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param name Beanƒtƒ[“à•Ï”–¼
-         * @param var Beanƒtƒ[“à•Ï”
+         * @param name Beanãƒ•ãƒ­ãƒ¼å†…å¤‰æ•°å
+         * @param var Beanãƒ•ãƒ­ãƒ¼å†…å¤‰æ•°
          */
         public void setVar(String name, Object var){
             if(vars == null){
@@ -6370,7 +6376,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
     }
 
     /**
-     * Beanƒtƒ[‚ÌƒXƒeƒbƒv‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ‚ğ•Û‚·‚éƒNƒ‰ƒXB<p>
+     * Beanãƒ•ãƒ­ãƒ¼ã®ã‚¹ãƒ†ãƒƒãƒ—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã‚’ä¿æŒã™ã‚‹ã‚¯ãƒ©ã‚¹ã€‚<p>
      *
      * @author M.Takata
      */
@@ -6379,38 +6385,38 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
         private static final long serialVersionUID = 5508331194991502651L;
 
         /**
-         * ƒXƒeƒbƒv‚Ì‘ÎÛƒIƒuƒWƒFƒNƒgB<p>
+         * ã‚¹ãƒ†ãƒƒãƒ—ã®å¯¾è±¡ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
          */
         public Object target;
 
         /**
-         * ƒXƒeƒbƒv‚ÌŒ‹‰ÊƒIƒuƒWƒFƒNƒgB<p>
+         * ã‚¹ãƒ†ãƒƒãƒ—ã®çµæœã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
          */
         public Object result;
 
         /**
-         * ƒ‹[ƒv‚³‚¹‚é‚©‚Ç‚¤‚©B<p>
+         * ãƒ«ãƒ¼ãƒ—ã•ã›ã‚‹ã‹ã©ã†ã‹ã€‚<p>
          */
         public boolean isContinue = false;
 
         /**
-         * ƒ‹[ƒv‚ğ’†’f‚³‚¹‚é‚©‚Ç‚¤‚©B<p>
+         * ãƒ«ãƒ¼ãƒ—ã‚’ä¸­æ–­ã•ã›ã‚‹ã‹ã©ã†ã‹ã€‚<p>
          */
         public boolean isBreak = false;
 
         /**
-         * ƒXƒeƒbƒv‚Ì‘ÎÛƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+         * ã‚¹ãƒ†ãƒƒãƒ—ã®å¯¾è±¡ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒXƒeƒbƒv‚Ì‘ÎÛƒIƒuƒWƒFƒNƒg
+         * @return ã‚¹ãƒ†ãƒƒãƒ—ã®å¯¾è±¡ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
          */
         public Object getTarget(){
             return target;
         }
 
         /**
-         * ƒXƒeƒbƒv‚ÌŒ‹‰ÊƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+         * ã‚¹ãƒ†ãƒƒãƒ—ã®çµæœã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒXƒeƒbƒv‚ÌŒ‹‰ÊƒIƒuƒWƒFƒNƒg
+         * @return ã‚¹ãƒ†ãƒƒãƒ—ã®çµæœã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
          */
         public Object getResult(){
             return result;
@@ -6637,7 +6643,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
             try{
                 initCondition(condStr);
             }catch(Exception e){
-                // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                // èµ·ã“ã‚‰ãªã„ã¯ãš
             }
         }
     }

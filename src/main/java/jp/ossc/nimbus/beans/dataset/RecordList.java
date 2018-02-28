@@ -48,18 +48,18 @@ import jp.ossc.nimbus.service.codemaster.PartUpdateRecords;
 import jp.ossc.nimbus.service.codemaster.CodeMasterUpdateKey;
 
 /**
- * ƒŒƒR[ƒhƒŠƒXƒgB<p>
- * ƒf[ƒ^ƒZƒbƒg‚ÌŒJ‚è•Ô‚µ\‘¢ƒf[ƒ^‚ğ•\Œ»‚µ‚½Bean‚ÅA{@link Record ƒŒƒR[ƒh}‚ÌƒŠƒXƒg‚Å‚ ‚éB<br>
- * ŒJ‚è•Ô‚µ\‘¢‚Ì—v‘f‚Å‚ ‚éƒŒƒR[ƒh‚ÍAƒXƒL[ƒ}’è‹`‚É‚æ‚Á‚ÄA‚Ç‚Ì‚æ‚¤‚ÈƒŒƒR[ƒhiƒvƒƒpƒeƒB–¼AŒ^‚È‚Çj‚ªŒJ‚è•Ô‚·‚Ì‚©‚ğ“®“I‚ÉŒˆ’è‚Å‚«‚éB<br>
- * ˆÈ‰º‚ÉƒTƒ“ƒvƒ‹ƒR[ƒh‚ğ¦‚·B<br>
+ * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã€‚<p>
+ * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã®ç¹°ã‚Šè¿”ã—æ§‹é€ ãƒ‡ãƒ¼ã‚¿ã‚’è¡¨ç¾ã—ãŸBeanã§ã€{@link Record ãƒ¬ã‚³ãƒ¼ãƒ‰}ã®ãƒªã‚¹ãƒˆã§ã‚ã‚‹ã€‚<br>
+ * ç¹°ã‚Šè¿”ã—æ§‹é€ ã®è¦ç´ ã§ã‚ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã¯ã€ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«ã‚ˆã£ã¦ã€ã©ã®ã‚ˆã†ãªãƒ¬ã‚³ãƒ¼ãƒ‰ï¼ˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã€å‹ãªã©ï¼‰ãŒç¹°ã‚Šè¿”ã™ã®ã‹ã‚’å‹•çš„ã«æ±ºå®šã§ãã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  *     import jp.ossc.nimbus.beans.dataset.*;
  *     
- *     // ƒŒƒR[ƒhƒŠƒXƒg‚ğ¶¬
+ *     // ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ç”Ÿæˆ
  *     RecordList recordList = new RecordList();
  *     
- *     // ƒŒƒR[ƒhƒŠƒXƒg‚ÌƒXƒL[ƒ}‚ğˆÈ‰º‚Ì‚æ‚¤‚É’è‹`‚·‚é
- *     //   ƒvƒƒpƒeƒB–¼  Œ^
+ *     // ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ã‚¹ã‚­ãƒ¼ãƒã‚’ä»¥ä¸‹ã®ã‚ˆã†ã«å®šç¾©ã™ã‚‹
+ *     //   ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å  å‹
  *     //        A        int
  *     //        B        java.lang.String
  *     //        C        java.lang.String
@@ -69,13 +69,13 @@ import jp.ossc.nimbus.service.codemaster.CodeMasterUpdateKey;
  *             + ":C,java.lang.String"
  *     );
  *     
- *     // ƒŒƒR[ƒh1‚ğ¶¬‚µ‚ÄA’l‚ğİ’è‚·‚é
+ *     // ãƒ¬ã‚³ãƒ¼ãƒ‰1ã‚’ç”Ÿæˆã—ã¦ã€å€¤ã‚’è¨­å®šã™ã‚‹
  *     Record record1 = recordList.createRecord();
  *     record1.setProperty("A", 1);
  *     record1.setProperty("B", "hoge1");
  *     record1.setProperty("C", "fuga1");
  *     recordList.addRecord(record1);
- *     // ƒŒƒR[ƒh2‚ğ¶¬‚µ‚ÄA’l‚ğİ’è‚·‚é
+ *     // ãƒ¬ã‚³ãƒ¼ãƒ‰2ã‚’ç”Ÿæˆã—ã¦ã€å€¤ã‚’è¨­å®šã™ã‚‹
  *     Record record2 = recordList.createRecord();
  *     record2.setProperty("A", 2);
  *     record2.setProperty("B", "hoge2");
@@ -90,39 +90,39 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     private static final long serialVersionUID = 6399184480196775369L;
     
     /**
-     * åƒL[‚É‚æ‚éƒCƒ“ƒfƒbƒNƒX–¼‚ğ•\‚·—\–ñ–¼B<p>
+     * ä¸»ã‚­ãƒ¼ã«ã‚ˆã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹åã‚’è¡¨ã™äºˆç´„åã€‚<p>
      */
     public static final String PRIMARY_KEY_INDEX_NAME = "$PRIMARY_KEY";
     
     /**
-     * ƒŒƒR[ƒh–¼B<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰åã€‚<p>
      */
     protected String name;
     
     /**
-     * ƒXƒL[ƒ}•¶š—ñB<p>
+     * ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã€‚<p>
      */
     protected String schema;
     
     /**
-     * ƒŒƒR[ƒhƒNƒ‰ƒXB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¯ãƒ©ã‚¹ã€‚<p>
      */
     protected Class recordClass;
     
     /**
-     * ƒŒƒR[ƒhƒXƒL[ƒ}B<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒã€‚<p>
      */
     protected RecordSchema recordSchema;
     
     /**
-     * ƒŒƒR[ƒh‚ÌƒŠƒXƒgB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒªã‚¹ãƒˆã€‚<p>
      */
     protected List records = Collections.synchronizedList(new ArrayList());
     
     protected BeanTableIndexManager indexManager;
     
     /**
-     * XVƒJƒEƒ“ƒgB<p>
+     * æ›´æ–°ã‚«ã‚¦ãƒ³ãƒˆã€‚<p>
      */
     protected int modCount = 0;
     
@@ -133,35 +133,35 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     protected boolean isSynchronized = true;
     
     /**
-     * –¢’è‹`‚ÌƒŒƒR[ƒhƒŠƒXƒg‚ğ¶¬‚·‚éB<p>
+     * æœªå®šç¾©ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public RecordList(){
         this(true);
     }
     
     /**
-     * –¢’è‹`‚ÌƒŒƒR[ƒhƒŠƒXƒg‚ğ¶¬‚·‚éB<p>
+     * æœªå®šç¾©ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param isSynch “¯Šú‰»‚·‚éê‡true
+     * @param isSynch åŒæœŸåŒ–ã™ã‚‹å ´åˆtrue
      */
     public RecordList(boolean isSynch){
         this(null, isSynch);
     }
     
     /**
-     * –¢’è‹`‚ÌƒŒƒR[ƒhƒŠƒXƒg‚ğ¶¬‚·‚éB<p>
+     * æœªå®šç¾©ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒh–¼
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰å
      */
     public RecordList(String name){
         this(name, true);
     }
     
     /**
-     * –¢’è‹`‚ÌƒŒƒR[ƒhƒŠƒXƒg‚ğ¶¬‚·‚éB<p>
+     * æœªå®šç¾©ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒh–¼
-     * @param isSynch “¯Šú‰»‚·‚éê‡true
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰å
+     * @param isSynch åŒæœŸåŒ–ã™ã‚‹å ´åˆtrue
      */
     public RecordList(String name, boolean isSynch){
         this.name = name;
@@ -171,11 +171,11 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * ‹ó‚ÌƒŒƒR[ƒhƒŠƒXƒg‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒh–¼
-     * @param schema ƒXƒL[ƒ}•¶š—ñ
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰å
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public RecordList(String name, String schema)
      throws PropertySchemaDefineException{
@@ -183,12 +183,12 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * ‹ó‚ÌƒŒƒR[ƒhƒŠƒXƒg‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒh–¼
-     * @param schema ƒXƒL[ƒ}•¶š—ñ
-     * @param isSynch “¯Šú‰»‚·‚éê‡true
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰å
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—
+     * @param isSynch åŒæœŸåŒ–ã™ã‚‹å ´åˆtrue
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public RecordList(String name, String schema, boolean isSynch)
      throws PropertySchemaDefineException{
@@ -196,11 +196,11 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * ‹ó‚ÌƒŒƒR[ƒhƒŠƒXƒg‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒh–¼
-     * @param schema ƒXƒL[ƒ}
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰å
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒ
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public RecordList(String name, RecordSchema schema)
      throws PropertySchemaDefineException{
@@ -208,12 +208,12 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * ‹ó‚ÌƒŒƒR[ƒhƒŠƒXƒg‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒh–¼
-     * @param schema ƒXƒL[ƒ}
-     * @param isSynch “¯Šú‰»‚·‚éê‡true
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰å
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒ
+     * @param isSynch åŒæœŸåŒ–ã™ã‚‹å ´åˆtrue
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public RecordList(String name, RecordSchema schema, boolean isSynch)
      throws PropertySchemaDefineException{
@@ -225,11 +225,11 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * ‹ó‚ÌƒŒƒR[ƒhƒŠƒXƒg‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒh–¼
-     * @param clazz ƒŒƒR[ƒhƒNƒ‰ƒX
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰å
+     * @param clazz ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¯ãƒ©ã‚¹
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public RecordList(String name, Class clazz)
      throws PropertySchemaDefineException{
@@ -237,12 +237,12 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * ‹ó‚ÌƒŒƒR[ƒhƒŠƒXƒg‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒh–¼
-     * @param clazz ƒŒƒR[ƒhƒNƒ‰ƒX
-     * @param isSynch “¯Šú‰»‚·‚éê‡true
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰å
+     * @param clazz ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¯ãƒ©ã‚¹
+     * @param isSynch åŒæœŸåŒ–ã™ã‚‹å ´åˆtrue
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public RecordList(String name, Class clazz, boolean isSynch)
      throws PropertySchemaDefineException{
@@ -253,47 +253,47 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * ƒŒƒR[ƒh–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŒƒR[ƒh–¼
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰å
      */
     public String getName(){
         return name;
     }
     
     /**
-     * ƒŒƒR[ƒh–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒŒƒR[ƒh–¼
+     * @param name ãƒ¬ã‚³ãƒ¼ãƒ‰å
      */
     public void setName(String name){
         this.name = name;
     }
     
     /**
-     * ƒŒƒR[ƒh‚ÌƒXƒL[ƒ}•¶š—ñ‚ğİ’è‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒŒƒR[ƒh‚ÌƒXƒL[ƒ}•¶š—ñ
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setSchema(String schema) throws PropertySchemaDefineException{
         setRecordSchema(RecordSchema.getInstance(schema));
     }
     
     /**
-     * ƒŒƒR[ƒh‚ÌƒXƒL[ƒ}•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŒƒR[ƒh‚ÌƒXƒL[ƒ}•¶š—ñ
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—
      */
     public String getSchema(){
         return schema;
     }
     
     /**
-     * ƒŒƒR[ƒhƒXƒL[ƒ}‚ğİ’è‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒŒƒR[ƒhƒXƒL[ƒ}
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒ
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setRecordSchema(RecordSchema schema) throws PropertySchemaDefineException{
         if(size() != 0){
@@ -325,20 +325,20 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * ƒŒƒR[ƒhƒXƒL[ƒ}‚ğ’uŠ·‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒã‚’ç½®æ›ã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒŒƒR[ƒh‚ÌƒXƒL[ƒ}•¶š—ñ
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void replaceSchema(String schema) throws PropertySchemaDefineException{
         replaceRecordSchema(RecordSchema.getInstance(schema));
     }
     
     /**
-     * ƒŒƒR[ƒhƒXƒL[ƒ}‚ğ’uŠ·‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒã‚’ç½®æ›ã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒŒƒR[ƒhƒXƒL[ƒ}
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒ
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void replaceRecordSchema(RecordSchema schema) throws PropertySchemaDefineException{
         
@@ -352,10 +352,10 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * ƒŒƒR[ƒhƒXƒL[ƒ}•¶š—ñ‚ğ’Ç‰Á‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒŒƒR[ƒh‚ÌƒXƒL[ƒ}•¶š—ñ
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param schema ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void appendSchema(
         String schema
@@ -370,19 +370,19 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * ƒŒƒR[ƒhƒXƒL[ƒ}‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŒƒR[ƒhƒXƒL[ƒ}
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒ
      */
     public RecordSchema getRecordSchema(){
         return recordSchema;
     }
     
     /**
-     * ƒŒƒR[ƒh‚ÌƒNƒ‰ƒX‚ğİ’è‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¯ãƒ©ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param clazz ƒŒƒR[ƒh‚ÌƒNƒ‰ƒX
-     * @exception PropertySchemaDefineException ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}’è‹`‚É¸”s‚µ‚½ê‡
+     * @param clazz ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¯ãƒ©ã‚¹
+     * @exception PropertySchemaDefineException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setRecordClass(Class clazz) throws PropertySchemaDefineException{
         if(Record.class.equals(clazz)){
@@ -407,18 +407,18 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * ƒŒƒR[ƒh‚ÌƒNƒ‰ƒX‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¯ãƒ©ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŒƒR[ƒh‚ÌƒNƒ‰ƒX
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¯ãƒ©ã‚¹
      */
     public Class getRecordClass(){
         return recordClass == null ? Record.class : recordClass;
     }
     
     /**
-     * V‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚éB<p>
+     * æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return V‚µ‚¢ƒŒƒR[ƒh
+     * @return æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰
      */
     public Record createRecord(){
         if(recordClass == null){
@@ -433,75 +433,75 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒŒƒR[ƒh‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒCƒ“ƒfƒbƒNƒX
-     * @return ƒŒƒR[ƒh
+     * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @return ãƒ¬ã‚³ãƒ¼ãƒ‰
      */
     public Record getRecord(int index){
         return (Record)get(index);
     }
     
     /**
-     * ƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param r ƒŒƒR[ƒh
+     * @param r ãƒ¬ã‚³ãƒ¼ãƒ‰
      */
     public void addRecord(Record r){
         add(r);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÉƒŒƒR[ƒh‚ğ‘}“ü‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æŒ¿å…¥ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒCƒ“ƒfƒbƒNƒX
-     * @param r ƒŒƒR[ƒh
+     * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @param r ãƒ¬ã‚³ãƒ¼ãƒ‰
      */
     public void addRecord(int index, Record r){
         add(index, r);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒŒƒR[ƒh‚ğ’u‚«Š·‚¦‚éB<p>
-     * ’A‚µA‚±‚Ìƒƒ\ƒbƒh‚Å’u‚«Š·‚¦‚ç‚ê‚½ƒŒƒR[ƒh‚ÍAƒCƒ“ƒfƒbƒNƒXŒ^ŒŸõ‚Ì‘ÎÛ‚É‚È‚ç‚È‚¢B<br>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç½®ãæ›ãˆã‚‹ã€‚<p>
+     * ä½†ã—ã€ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã§ç½®ãæ›ãˆã‚‰ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã¯ã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å‹æ¤œç´¢ã®å¯¾è±¡ã«ãªã‚‰ãªã„ã€‚<br>
      *
-     * @param index ƒCƒ“ƒfƒbƒNƒX
-     * @param r ƒŒƒR[ƒh
-     * @return ’u‚«Š·‚¦‚ç‚ê‚½ŒÃ‚¢ƒŒƒR[ƒh
+     * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @param r ãƒ¬ã‚³ãƒ¼ãƒ‰
+     * @return ç½®ãæ›ãˆã‚‰ã‚ŒãŸå¤ã„ãƒ¬ã‚³ãƒ¼ãƒ‰
      */
     public Record setRecord(int index, Record r){
         return (Record)set(index, r);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒŒƒR[ƒh‚ğíœ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param r ƒŒƒR[ƒh
+     * @param r ãƒ¬ã‚³ãƒ¼ãƒ‰
      */
     public void removeRecord(Record r){
         remove(r);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒŒƒR[ƒh‚ğíœ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param index ƒCƒ“ƒfƒbƒNƒX
-     * @return íœ‚³‚ê‚½ƒŒƒR[ƒh
+     * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @return å‰Šé™¤ã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰
      */
     public Record removeRecord(int index){
         return (Record)remove(index);
     }
     
     /**
-     * ƒCƒ“ƒfƒbƒNƒX‚ğ’Ç‰Á‚·‚éB<p>
-     * ƒCƒ“ƒfƒbƒN‚É‚ÍA’Pˆê‚ÌƒvƒƒpƒeƒB‚Å\¬‚³‚ê‚é’PƒƒCƒ“ƒfƒbƒNƒX‚ÆA•¡”‚ÌƒvƒƒpƒeƒB‚Å\¬‚³‚ê‚é•¡‡ƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚·‚éB<br>
-     * •¡‡ƒCƒ“ƒfƒbƒNƒX‚ğ’Ç‰Á‚µ‚½ê‡‚ÍA©“®“I‚É‚»‚Ì—v‘f‚Æ‚È‚é’PˆêƒvƒƒpƒeƒB‚Ì’PƒƒCƒ“ƒfƒbƒNƒX‚à“à•”“I‚É¶¬‚³‚ê‚éB<p>
-     * ’A‚µA©“®¶¬‚³‚ê‚½’PˆêƒCƒ“ƒfƒbƒNƒX‚ÍAƒCƒ“ƒfƒbƒNƒX–¼‚ğ‚½‚È‚¢‚½‚ßAƒCƒ“ƒfƒbƒNƒX–¼‚Å‚Íw’è‚Å‚«‚¸AƒvƒƒpƒeƒB–¼‚Åw’è‚µ‚Äg—p‚·‚éB<br>
-     * ƒCƒ“ƒfƒbƒNƒX‚Ìí—Ş‚É‚æ‚Á‚ÄAg—p‚Å‚«‚éŒŸõ‹@”\‚ªˆÙ‚È‚éB’PƒƒCƒ“ƒfƒbƒNƒX‚ÍAˆê’vŒŸõ‚Æ”ÍˆÍŒŸõ‚Ì—¼•û‚ª‰Â”\‚¾‚ªA•¡‡ƒCƒ“ƒfƒbƒNƒX‚ÍAˆê’vŒŸõ‚Ì‚İ‰Â”\‚Å‚ ‚éB<br>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã«ã¯ã€å˜ä¸€ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§æ§‹æˆã•ã‚Œã‚‹å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¨ã€è¤‡æ•°ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§æ§‹æˆã•ã‚Œã‚‹è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã™ã‚‹ã€‚<br>
+     * è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¿½åŠ ã—ãŸå ´åˆã¯ã€è‡ªå‹•çš„ã«ãã®è¦ç´ ã¨ãªã‚‹å˜ä¸€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚‚å†…éƒ¨çš„ã«ç”Ÿæˆã•ã‚Œã‚‹ã€‚<p>
+     * ä½†ã—ã€è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸå˜ä¸€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¯ã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹åã‚’æŒãŸãªã„ãŸã‚ã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹åã§ã¯æŒ‡å®šã§ããšã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã§æŒ‡å®šã—ã¦ä½¿ç”¨ã™ã‚‹ã€‚<br>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ç¨®é¡ã«ã‚ˆã£ã¦ã€ä½¿ç”¨ã§ãã‚‹æ¤œç´¢æ©Ÿèƒ½ãŒç•°ãªã‚‹ã€‚å˜ç´”ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¯ã€ä¸€è‡´æ¤œç´¢ã¨ç¯„å›²æ¤œç´¢ã®ä¸¡æ–¹ãŒå¯èƒ½ã ãŒã€è¤‡åˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¯ã€ä¸€è‡´æ¤œç´¢ã®ã¿å¯èƒ½ã§ã‚ã‚‹ã€‚<br>
      *
-     * @param name ƒCƒ“ƒfƒbƒNƒX–¼
-     * @param props ƒCƒ“ƒfƒbƒNƒX‚ğ’£‚éRecord‚ÌƒvƒƒpƒeƒB–¼”z—ñ
-     * @exception PropertyGetException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ªRecord‚É‘¶İ‚µ‚È‚¢ê‡
+     * @param name ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @param props ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å¼µã‚‹Recordã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åé…åˆ—
+     * @exception PropertyGetException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒRecordã«å­˜åœ¨ã—ãªã„å ´åˆ
      */
     public void setIndex(String name, String[] props) throws PropertyGetException{
         if(recordSchema == null){
@@ -520,10 +520,10 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * ƒJƒXƒ^ƒ}ƒCƒY‚µ‚½ƒCƒ“ƒfƒbƒNƒX‚ğ’Ç‰Á‚·‚éB<p>
+     * ã‚«ã‚¹ã‚¿ãƒã‚¤ã‚ºã—ãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒCƒ“ƒfƒbƒNƒX–¼
-     * @param keyFactory ƒCƒ“ƒfƒbƒNƒX‚ÌƒL[‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠ
+     * @param name ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
+     * @param keyFactory ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ã‚­ãƒ¼ã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒª
      * @see #setIndex(String, String[])
      */
     public void setIndex(String name, BeanTableIndexKeyFactory keyFactory){
@@ -531,16 +531,16 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * ƒCƒ“ƒfƒbƒNƒX‚ğíœ‚·‚éB<p>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒCƒ“ƒfƒbƒNƒX–¼
+     * @param name ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å
      */
     public void removeIndex(String name){
         indexManager.removeIndex(name);
     }
     
     /**
-     * ƒCƒ“ƒfƒbƒNƒX‚ğÄ‰ğÍ‚·‚éB<p>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å†è§£æã™ã‚‹ã€‚<p>
      */
     public void analyzeIndex(){
         indexManager.clear();
@@ -548,34 +548,34 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * ƒCƒ“ƒfƒbƒNƒX‚ğg‚Á‚½ŒŸõ‚ğs‚¤ƒrƒ…[‚ğì¬‚·‚éB<p>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’ä½¿ã£ãŸæ¤œç´¢ã‚’è¡Œã†ãƒ“ãƒ¥ãƒ¼ã‚’ä½œæˆã™ã‚‹ã€‚<p>
      * 
-     * @return ŒŸõƒrƒ…[
+     * @return æ¤œç´¢ãƒ“ãƒ¥ãƒ¼
      */
     public BeanTableView createView(){
         return new BeanTableView(indexManager);
     }
     
     /**
-     * ƒvƒ‰ƒCƒ}ƒŠƒL[‚ÅŒŸõ‚·‚éB<p>
-     * ƒvƒ‰ƒCƒ}ƒŠƒL[ƒL[ŒŸõ‚ğs‚¤‚½‚ß‚É‚ÍAƒXƒL[ƒ}’è‹`‚É‚¨‚¢‚ÄAƒ†ƒj[ƒNƒL[ƒtƒ‰ƒO‚ğİ’è‚·‚é•K—v‚ª‚ ‚éB<br>
+     * ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼ã§æ¤œç´¢ã™ã‚‹ã€‚<p>
+     * ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼ã‚­ãƒ¼æ¤œç´¢ã‚’è¡Œã†ãŸã‚ã«ã¯ã€ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«ãŠã„ã¦ã€ãƒ¦ãƒ‹ãƒ¼ã‚¯ã‚­ãƒ¼ãƒ•ãƒ©ã‚°ã‚’è¨­å®šã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚<br>
      *
-     * @param key ŒŸõƒL[ƒŒƒR[ƒh
-     * @return ŒŸõŒ‹‰ÊBğŒ‚É‡’v‚µ‚½ƒŒƒR[ƒh
-     * @exception IndexNotFoundException ƒvƒ‰ƒCƒ}ƒŠƒL[‚É‘Î‚·‚éƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception IndexPropertyAccessException ƒvƒ‰ƒCƒ}ƒŠƒL[‚ÌƒvƒƒpƒeƒB‚Ìæ“¾‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param key æ¤œç´¢ã‚­ãƒ¼ãƒ¬ã‚³ãƒ¼ãƒ‰
+     * @return æ¤œç´¢çµæœã€‚æ¡ä»¶ã«åˆè‡´ã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰
+     * @exception IndexNotFoundException ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼ã«å¯¾ã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception IndexPropertyAccessException ãƒ—ãƒ©ã‚¤ãƒãƒªã‚­ãƒ¼ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public Record searchByPrimaryKey(Record key) throws IndexNotFoundException, IndexPropertyAccessException{
         return (Record)indexManager.searchByPrimaryElement(key, PRIMARY_KEY_INDEX_NAME, null);
     }
     
     /**
-     * ƒŠƒAƒ‹Œ^ƒL[ŒŸõ‚ğs‚¤B<p>
-     * ƒŒƒR[ƒhƒŠƒXƒg‚©‚çAw’è‚µ‚½ƒvƒƒpƒeƒB–¼‚Ì’l‚ªAŒŸõƒL[ƒŒƒR[ƒh‚Ì’l‚Æˆê’v‚µ‚½ƒŒƒR[ƒh‚ğŒŸõ‚·‚éB<br>
+     * ãƒªã‚¢ãƒ«å‹ã‚­ãƒ¼æ¤œç´¢ã‚’è¡Œã†ã€‚<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‹ã‚‰ã€æŒ‡å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®å€¤ãŒã€æ¤œç´¢ã‚­ãƒ¼ãƒ¬ã‚³ãƒ¼ãƒ‰ã®å€¤ã¨ä¸€è‡´ã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æ¤œç´¢ã™ã‚‹ã€‚<br>
      *
-     * @param key ŒŸõƒL[ƒŒƒR[ƒh
-     * @param propertyNames ŒŸõƒL[‚Æ‚È‚éƒvƒƒpƒeƒB–¼
-     * @return ŒŸõŒ‹‰ÊBğŒ‚É‡’v‚µ‚½ƒŒƒR[ƒh‚Ì”z—ñ
+     * @param key æ¤œç´¢ã‚­ãƒ¼ãƒ¬ã‚³ãƒ¼ãƒ‰
+     * @param propertyNames æ¤œç´¢ã‚­ãƒ¼ã¨ãªã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return æ¤œç´¢çµæœã€‚æ¡ä»¶ã«åˆè‡´ã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã®é…åˆ—
      */
     public RecordList searchByKey(Record key, String[] propertyNames){
         if(size() == 0){
@@ -595,12 +595,12 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * ƒŠƒAƒ‹Œ^ƒL[ŒŸõ‚ğs‚¤B<p>
-     * ƒŒƒR[ƒhƒŠƒXƒg‚©‚çAw’è‚µ‚½ƒvƒƒpƒeƒB–¼‚Ì’l‚ªAŒŸõƒL[ƒŒƒR[ƒh‚Ì’l‚Æˆê’v‚µ‚½ƒŒƒR[ƒh‚ğŒŸõ‚·‚éB<br>
+     * ãƒªã‚¢ãƒ«å‹ã‚­ãƒ¼æ¤œç´¢ã‚’è¡Œã†ã€‚<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‹ã‚‰ã€æŒ‡å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®å€¤ãŒã€æ¤œç´¢ã‚­ãƒ¼ãƒ¬ã‚³ãƒ¼ãƒ‰ã®å€¤ã¨ä¸€è‡´ã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æ¤œç´¢ã™ã‚‹ã€‚<br>
      *
-     * @param key ŒŸõƒL[ƒŒƒR[ƒh
-     * @param propertyIndexes ŒŸõƒL[‚Æ‚È‚éƒvƒƒpƒeƒB–¼
-     * @return ŒŸõŒ‹‰ÊBğŒ‚É‡’v‚µ‚½ƒŒƒR[ƒh‚Ì”z—ñ
+     * @param key æ¤œç´¢ã‚­ãƒ¼ãƒ¬ã‚³ãƒ¼ãƒ‰
+     * @param propertyIndexes æ¤œç´¢ã‚­ãƒ¼ã¨ãªã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return æ¤œç´¢çµæœã€‚æ¡ä»¶ã«åˆè‡´ã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã®é…åˆ—
      */
     public RecordList searchByKey(Record key, int[] propertyIndexes){
         RecordList result = cloneSchema();
@@ -634,21 +634,21 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * ƒŠƒAƒ‹Œ^ŒŸõ‚ğs‚¤B<p>
-     * ƒŒƒR[ƒhƒŠƒXƒg‚©‚çAğŒ®‚É‡’v‚·‚éƒŒƒR[ƒh‚ğŒŸõ‚·‚éB<br>
-     * ‚Ü‚½AŒŸõ‚É‚ÍAƒŒƒR[ƒh‚ğ’~Ï‚·‚éÛ‚ÉŒŸõ‚·‚éƒCƒ“ƒfƒbƒNƒXŒ^ŒŸõ‚ÆA’~Ï‚³‚ê‚½ƒŒƒR[ƒh‚©‚çƒŠƒAƒ‹‚ÉŒŸõ‚·‚éƒŠƒAƒ‹Œ^ŒŸõ‚ª‚ ‚éB<br>
-     * ƒŠƒAƒ‹Œ^ŒŸõ‚Ì—˜“_‚ÍAğŒ®’†‚ÉA“®“I‚É•Ï‚í‚é•Ï”‚ğw’è‚µA‚»‚Ì•Ï”’l‚ğˆø”valueMap‚Å—^‚¦‚é–‚ª‚Å‚«‚é–‚Å‚ ‚éB<br>
+     * ãƒªã‚¢ãƒ«å‹æ¤œç´¢ã‚’è¡Œã†ã€‚<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‹ã‚‰ã€æ¡ä»¶å¼ã«åˆè‡´ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æ¤œç´¢ã™ã‚‹ã€‚<br>
+     * ã¾ãŸã€æ¤œç´¢ã«ã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è“„ç©ã™ã‚‹éš›ã«æ¤œç´¢ã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å‹æ¤œç´¢ã¨ã€è“„ç©ã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‹ã‚‰ãƒªã‚¢ãƒ«ã«æ¤œç´¢ã™ã‚‹ãƒªã‚¢ãƒ«å‹æ¤œç´¢ãŒã‚ã‚‹ã€‚<br>
+     * ãƒªã‚¢ãƒ«å‹æ¤œç´¢ã®åˆ©ç‚¹ã¯ã€æ¡ä»¶å¼ä¸­ã«ã€å‹•çš„ã«å¤‰ã‚ã‚‹å¤‰æ•°ã‚’æŒ‡å®šã—ã€ãã®å¤‰æ•°å€¤ã‚’å¼•æ•°valueMapã§ä¸ãˆã‚‹äº‹ãŒã§ãã‚‹äº‹ã§ã‚ã‚‹ã€‚<br>
      * <p>
-     * ğŒ®‚ÍA<a href="http://jakarta.apache.org/commons/jexl/">Jakarta Commons Jexl</a>‚Ì®Œ¾Œê‚ğg—p‚·‚éB<br>
-     * ƒŠƒAƒ‹Œ^ŒŸõ‚Å‚ÍAƒŒƒR[ƒh‚Ì—ñ‚Ì’l‚ğA—ñ–¼‚ğw’è‚·‚é–‚ÅA®’†‚ÅQÆ‚·‚é–‚ª‚Å‚«‚é‚Ì‚É‰Á‚¦‚ÄA”CˆÓ‚Ì•Ï”–¼‚ğ®’†‚É’è‹`‚µA‚»‚Ì’l‚ğˆø”valueMap‚Å—^‚¦‚é–‚ª‚Å‚«‚éB<br>
+     * æ¡ä»¶å¼ã¯ã€<a href="http://jakarta.apache.org/commons/jexl/">Jakarta Commons Jexl</a>ã®å¼è¨€èªã‚’ä½¿ç”¨ã™ã‚‹ã€‚<br>
+     * ãƒªã‚¢ãƒ«å‹æ¤œç´¢ã§ã¯ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã®åˆ—ã®å€¤ã‚’ã€åˆ—åã‚’æŒ‡å®šã™ã‚‹äº‹ã§ã€å¼ä¸­ã§å‚ç…§ã™ã‚‹äº‹ãŒã§ãã‚‹ã®ã«åŠ ãˆã¦ã€ä»»æ„ã®å¤‰æ•°åã‚’å¼ä¸­ã«å®šç¾©ã—ã€ãã®å€¤ã‚’å¼•æ•°valueMapã§ä¸ãˆã‚‹äº‹ãŒã§ãã‚‹ã€‚<br>
      * <pre>
-     *  —áFA == '1' and B &gt;= 3
+     *  ä¾‹ï¼šA == '1' and B &gt;= 3
      * </pre>
      *
-     * @param condition ğŒ®
-     * @param valueMap ğŒ®’†‚Ì•Ï”ƒ}ƒbƒv
-     * @return ŒŸõŒ‹‰ÊBğŒ‚É‡’v‚µ‚½ƒŒƒR[ƒh‚ÌƒŠƒXƒg
-     * @exception DataSetException ğŒ®‚ª•s³‚Èê‡
+     * @param condition æ¡ä»¶å¼
+     * @param valueMap æ¡ä»¶å¼ä¸­ã®å¤‰æ•°ãƒãƒƒãƒ—
+     * @return æ¤œç´¢çµæœã€‚æ¡ä»¶ã«åˆè‡´ã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒªã‚¹ãƒˆ
+     * @exception DataSetException æ¡ä»¶å¼ãŒä¸æ­£ãªå ´åˆ
      */
     public RecordList realSearch(String condition, Map valueMap)
      throws DataSetException{
@@ -686,58 +686,58 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * w’è‚³‚ê‚½ƒvƒƒpƒeƒB–¼‚ÌƒvƒƒpƒeƒB‚ğƒ\[ƒgƒL[‚É‚µ‚ÄA¸‡‚Åƒ\[ƒg‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã«ã—ã¦ã€æ˜‡é †ã§ã‚½ãƒ¼ãƒˆã™ã‚‹ã€‚<p>
      *
-     * @param orderBy ƒ\[ƒgƒL[‚Æ‚È‚éƒvƒƒpƒeƒB–¼”z—ñ
+     * @param orderBy ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã¨ãªã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åé…åˆ—
      */
     public void sort(String[] orderBy){
         sort(orderBy, null);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒvƒƒpƒeƒB–¼‚ÌƒvƒƒpƒeƒB‚ğƒ\[ƒgƒL[‚É‚µ‚ÄA¸‡‚Åƒ\[ƒg‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã«ã—ã¦ã€æ˜‡é †ã§ã‚½ãƒ¼ãƒˆã™ã‚‹ã€‚<p>
      *
-     * @param records ƒ\[ƒg‘ÎÛ‚ÌƒŒƒR[ƒh”z—ñ
-     * @param orderBy ƒ\[ƒgƒL[‚Æ‚È‚éƒvƒƒpƒeƒB–¼”z—ñ
+     * @param records ã‚½ãƒ¼ãƒˆå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰é…åˆ—
+     * @param orderBy ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã¨ãªã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åé…åˆ—
      */
     public static void sort(Record[] records, String[] orderBy){
         sort(records, orderBy, null);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒvƒƒpƒeƒB–¼‚ÌƒvƒƒpƒeƒB‚ğƒ\[ƒgƒL[‚É‚µ‚ÄA¸‡‚Åƒ\[ƒg‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã«ã—ã¦ã€æ˜‡é †ã§ã‚½ãƒ¼ãƒˆã™ã‚‹ã€‚<p>
      *
-     * @param records ƒ\[ƒg‘ÎÛ‚ÌƒŒƒR[ƒhƒŠƒXƒg
-     * @param orderBy ƒ\[ƒgƒL[‚Æ‚È‚éƒvƒƒpƒeƒB–¼”z—ñ
+     * @param records ã‚½ãƒ¼ãƒˆå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
+     * @param orderBy ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã¨ãªã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åé…åˆ—
      */
     public static void sort(List records, String[] orderBy){
         sort(records, orderBy, (boolean[])null);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒvƒƒpƒeƒBƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğƒ\[ƒgƒL[‚É‚µ‚ÄA¸‡‚Åƒ\[ƒg‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã«ã—ã¦ã€æ˜‡é †ã§ã‚½ãƒ¼ãƒˆã™ã‚‹ã€‚<p>
      *
-     * @param orderBy ƒ\[ƒgƒL[‚Æ‚È‚éƒvƒƒpƒeƒBƒCƒ“ƒfƒbƒNƒX”z—ñ
+     * @param orderBy ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã¨ãªã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
      */
     public void sort(int[] orderBy){
         sort(orderBy, null);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒvƒƒpƒeƒBƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğƒ\[ƒgƒL[‚É‚µ‚ÄA¸‡‚Åƒ\[ƒg‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã«ã—ã¦ã€æ˜‡é †ã§ã‚½ãƒ¼ãƒˆã™ã‚‹ã€‚<p>
      *
-     * @param records ƒ\[ƒg‘ÎÛ‚ÌƒŒƒR[ƒh”z—ñ
-     * @param orderBy ƒ\[ƒgƒL[‚Æ‚È‚éƒvƒƒpƒeƒBƒCƒ“ƒfƒbƒNƒX”z—ñ
+     * @param records ã‚½ãƒ¼ãƒˆå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰é…åˆ—
+     * @param orderBy ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã¨ãªã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
      */
     public static void sort(Record[] records, int[] orderBy){
         sort(records, orderBy, null);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒvƒƒpƒeƒBƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğƒ\[ƒgƒL[‚É‚µ‚ÄA¸‡‚Åƒ\[ƒg‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã«ã—ã¦ã€æ˜‡é †ã§ã‚½ãƒ¼ãƒˆã™ã‚‹ã€‚<p>
      *
-     * @param records ƒ\[ƒg‘ÎÛ‚ÌƒŒƒR[ƒhƒŠƒXƒg
-     * @param orderBy ƒ\[ƒgƒL[‚Æ‚È‚éƒvƒƒpƒeƒBƒCƒ“ƒfƒbƒNƒX”z—ñ
+     * @param records ã‚½ãƒ¼ãƒˆå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
+     * @param orderBy ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã¨ãªã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
      */
     public static void sort(List records, int[] orderBy){
         sort(records, orderBy, (boolean[])null);
@@ -745,10 +745,10 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     
     
     /**
-     * w’è‚³‚ê‚½ƒvƒƒpƒeƒBƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğƒ\[ƒgƒL[‚É‚µ‚Äƒ\[ƒg‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã«ã—ã¦ã‚½ãƒ¼ãƒˆã™ã‚‹ã€‚<p>
      *
-     * @param orderBy ƒ\[ƒgƒL[‚Æ‚È‚éƒvƒƒpƒeƒBƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @param isAsc ¸‡ƒ\[ƒg‚·‚éê‡‚ÍtrueB~‡ƒ\[ƒg‚·‚éê‡‚ÍAfalse
+     * @param orderBy ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã¨ãªã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @param isAsc æ˜‡é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯trueã€‚é™é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯ã€false
      */
     public void sort(int[] orderBy, boolean[] isAsc){
         if(records.size() < 2){
@@ -758,11 +758,11 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * w’è‚³‚ê‚½ƒvƒƒpƒeƒBƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğƒ\[ƒgƒL[‚É‚µ‚Äƒ\[ƒg‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã«ã—ã¦ã‚½ãƒ¼ãƒˆã™ã‚‹ã€‚<p>
      *
-     * @param records ƒ\[ƒg‘ÎÛ‚ÌƒŒƒR[ƒh”z—ñ
-     * @param orderBy ƒ\[ƒgƒL[‚Æ‚È‚éƒvƒƒpƒeƒBƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @param isAsc ¸‡ƒ\[ƒg‚·‚éê‡‚ÍtrueB~‡ƒ\[ƒg‚·‚éê‡‚ÍAfalse
+     * @param records ã‚½ãƒ¼ãƒˆå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰é…åˆ—
+     * @param orderBy ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã¨ãªã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @param isAsc æ˜‡é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯trueã€‚é™é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯ã€false
      */
     public static void sort(Record[] records, int[] orderBy, boolean[] isAsc){
         if(records == null || records.length < 2){
@@ -772,11 +772,11 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * w’è‚³‚ê‚½ƒvƒƒpƒeƒBƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğƒ\[ƒgƒL[‚É‚µ‚Äƒ\[ƒg‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã«ã—ã¦ã‚½ãƒ¼ãƒˆã™ã‚‹ã€‚<p>
      *
-     * @param records ƒ\[ƒg‘ÎÛ‚ÌƒŒƒR[ƒhƒŠƒXƒg
-     * @param orderBy ƒ\[ƒgƒL[‚Æ‚È‚éƒvƒƒpƒeƒBƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @param isAsc ¸‡ƒ\[ƒg‚·‚éê‡‚ÍtrueB~‡ƒ\[ƒg‚·‚éê‡‚ÍAfalse
+     * @param records ã‚½ãƒ¼ãƒˆå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
+     * @param orderBy ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã¨ãªã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @param isAsc æ˜‡é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯trueã€‚é™é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯ã€false
      */
     public static void sort(List records, int[] orderBy, boolean[] isAsc){
         if(records == null || records.size() < 2){
@@ -786,10 +786,10 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * w’è‚³‚ê‚½ƒvƒƒpƒeƒB–¼‚ÌƒvƒƒpƒeƒB‚ğƒ\[ƒgƒL[‚É‚µ‚Äƒ\[ƒg‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã«ã—ã¦ã‚½ãƒ¼ãƒˆã™ã‚‹ã€‚<p>
      *
-     * @param orderBy ƒ\[ƒgƒL[‚Æ‚È‚éƒvƒƒpƒeƒB–¼”z—ñ
-     * @param isAsc ¸‡ƒ\[ƒg‚·‚éê‡‚ÍtrueB~‡ƒ\[ƒg‚·‚éê‡‚ÍAfalse
+     * @param orderBy ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã¨ãªã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åé…åˆ—
+     * @param isAsc æ˜‡é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯trueã€‚é™é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯ã€false
      */
     public void sort(String[] orderBy, boolean[] isAsc){
         if(records.size() < 2){
@@ -799,11 +799,11 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * w’è‚³‚ê‚½ƒvƒƒpƒeƒB–¼‚ÌƒvƒƒpƒeƒB‚ğƒ\[ƒgƒL[‚É‚µ‚Äƒ\[ƒg‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã«ã—ã¦ã‚½ãƒ¼ãƒˆã™ã‚‹ã€‚<p>
      *
-     * @param records ƒ\[ƒg‘ÎÛ‚ÌƒŒƒR[ƒh”z—ñ
-     * @param orderBy ƒ\[ƒgƒL[‚Æ‚È‚éƒvƒƒpƒeƒB–¼”z—ñ
-     * @param isAsc ¸‡ƒ\[ƒg‚·‚éê‡‚ÍtrueB~‡ƒ\[ƒg‚·‚éê‡‚ÍAfalse
+     * @param records ã‚½ãƒ¼ãƒˆå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰é…åˆ—
+     * @param orderBy ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã¨ãªã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åé…åˆ—
+     * @param isAsc æ˜‡é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯trueã€‚é™é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯ã€false
      */
     public static void sort(Record[] records, String[] orderBy, boolean[] isAsc){
         if(records == null || records.length < 2){
@@ -813,11 +813,11 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * w’è‚³‚ê‚½ƒvƒƒpƒeƒB–¼‚ÌƒvƒƒpƒeƒB‚ğƒ\[ƒgƒL[‚É‚µ‚Äƒ\[ƒg‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã«ã—ã¦ã‚½ãƒ¼ãƒˆã™ã‚‹ã€‚<p>
      *
-     * @param records ƒ\[ƒg‘ÎÛ‚ÌƒŒƒR[ƒhƒŠƒXƒg
-     * @param orderBy ƒ\[ƒgƒL[‚Æ‚È‚éƒvƒƒpƒeƒB–¼”z—ñ
-     * @param isAsc ¸‡ƒ\[ƒg‚·‚éê‡‚ÍtrueB~‡ƒ\[ƒg‚·‚éê‡‚ÍAfalse
+     * @param records ã‚½ãƒ¼ãƒˆå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
+     * @param orderBy ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã¨ãªã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åé…åˆ—
+     * @param isAsc æ˜‡é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯trueã€‚é™é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯ã€false
      */
     public static void sort(List records, String[] orderBy, boolean[] isAsc){
         if(records == null || records.size() < 2){
@@ -826,52 +826,52 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
         Collections.sort(records, new RecordComparator(orderBy, isAsc));
     }
     
-    // java.util.List‚ÌJavaDoc
+    // java.util.Listã®JavaDoc
     public int size(){
         return records.size();
     }
     
-    // java.util.List‚ÌJavaDoc
+    // java.util.Listã®JavaDoc
     public boolean isEmpty(){
         return records.isEmpty();
     }
     
-    // java.util.List‚ÌJavaDoc
+    // java.util.Listã®JavaDoc
     public boolean contains(Object o){
         return records.contains(o);
     }
     
-    // java.util.List‚ÌJavaDoc
+    // java.util.Listã®JavaDoc
     public Iterator iterator(){
         return new RecordIterator();
     }
     
-    // java.util.List‚ÌJavaDoc
+    // java.util.Listã®JavaDoc
     public ListIterator listIterator(){
         return listIterator(0);
     }
     
-    // java.util.List‚ÌJavaDoc
+    // java.util.Listã®JavaDoc
     public ListIterator listIterator(int index){
         return new RecordListIterator(index);
     }
     
-    // java.util.List‚ÌJavaDoc
+    // java.util.Listã®JavaDoc
     public List subList(int fromIndex, int toIndex){
         return records.subList(fromIndex, toIndex);
     }
     
-    // java.util.List‚ÌJavaDoc
+    // java.util.Listã®JavaDoc
     public Object[] toArray(){
         return records.toArray();
     }
     
-    // java.util.List‚ÌJavaDoc
+    // java.util.Listã®JavaDoc
     public Object[] toArray(Object[] a){
         return records.toArray(a);
     }
     
-    // java.util.List‚ÌJavaDoc
+    // java.util.Listã®JavaDoc
     public boolean add(Object o){
         if(o == null){
             return false;
@@ -904,7 +904,7 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
         return isAdd;
     }
     
-    // java.util.List‚ÌJavaDoc
+    // java.util.Listã®JavaDoc
     public void add(int index, Object element){
         if(element == null){
             return;
@@ -940,7 +940,7 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
         modCount++;
     }
     
-    // java.util.List‚ÌJavaDoc
+    // java.util.Listã®JavaDoc
     public Object set(int index, Object element){
         if(element != null && !(element instanceof Record)){
             throw new DataSetException("Not record : " + element);
@@ -971,22 +971,22 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
         return old;
     }
     
-    // java.util.List‚ÌJavaDoc
+    // java.util.Listã®JavaDoc
     public Object get(int index){
         return records.get(index);
     }
     
-    // java.util.List‚ÌJavaDoc
+    // java.util.Listã®JavaDoc
     public int indexOf(Object o){
         return records.indexOf(o);
     }
     
-    // java.util.List‚ÌJavaDoc
+    // java.util.Listã®JavaDoc
     public int lastIndexOf(Object o){
         return records.lastIndexOf(o);
     }
     
-    // java.util.List‚ÌJavaDoc
+    // java.util.Listã®JavaDoc
     public boolean remove(Object o){
         if(isSynchronized){
             synchronized(records){
@@ -1005,7 +1005,7 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
         return index != -1;
     }
     
-    // java.util.List‚ÌJavaDoc
+    // java.util.Listã®JavaDoc
     public Object remove(int index){
         if(isSynchronized){
             synchronized(records){
@@ -1033,12 +1033,12 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
         return old;
     }
     
-    // java.util.List‚ÌJavaDoc
+    // java.util.Listã®JavaDoc
     public boolean containsAll(Collection c){
         return records.containsAll(c);
     }
     
-    // java.util.List‚ÌJavaDoc
+    // java.util.Listã®JavaDoc
     public boolean addAll(Collection c){
         if(c == null || c.size() == 0){
             return false;
@@ -1054,7 +1054,7 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
         return result;
     }
     
-    // java.util.List‚ÌJavaDoc
+    // java.util.Listã®JavaDoc
     public boolean addAll(int index, Collection c){
         if(c == null || c.size() == 0){
             return false;
@@ -1067,7 +1067,7 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
         return true;
     }
     
-    // java.util.List‚ÌJavaDoc
+    // java.util.Listã®JavaDoc
     public boolean removeAll(Collection c){
         boolean isRemoved = false;
         final Iterator itr = c.iterator();
@@ -1080,7 +1080,7 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
         return isRemoved;
     }
     
-    // java.util.List‚ÌJavaDoc
+    // java.util.Listã®JavaDoc
     public boolean retainAll(Collection c){
         boolean isRemoved = false;
         final Iterator itr = iterator();
@@ -1098,7 +1098,7 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * ‘S‚Ä‚ÌƒŒƒR[ƒh‹y‚ÑA‘S‚Ä‚Ì’~ÏŒ^ŒŸõŒ‹‰Ê‚ğíœ‚·‚éB<p>
+     * å…¨ã¦ã®ãƒ¬ã‚³ãƒ¼ãƒ‰åŠã³ã€å…¨ã¦ã®è“„ç©å‹æ¤œç´¢çµæœã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      */
     public void clear(){
         if(isSynchronized){
@@ -1122,8 +1122,8 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * ƒTƒCƒY‚ğƒŠƒXƒg‚ÌŒ»İ‚ÌƒTƒCƒY‚Ék¬‚·‚éB<p>
-     * ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚Å‚ÍA‚±‚ÌƒIƒyƒŒ[ƒVƒ‡ƒ“‚ÅƒTƒCƒY‚ğÅ¬‚É‚·‚é‚±‚Æ‚ª‚Å‚«‚éB <br>
+     * ã‚µã‚¤ã‚ºã‚’ãƒªã‚¹ãƒˆã®ç¾åœ¨ã®ã‚µã‚¤ã‚ºã«ç¸®å°ã™ã‚‹ã€‚<p>
+     * ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã§ã¯ã€ã“ã®ã‚ªãƒšãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã§ã‚µã‚¤ã‚ºã‚’æœ€å°ã«ã™ã‚‹ã“ã¨ãŒã§ãã‚‹ã€‚ <br>
      */
     public void trimToSize(){
         Class clazz = null;
@@ -1159,11 +1159,11 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * ‘S‚Ä‚ÌƒŒƒR[ƒh‚ğŒŸØ‚·‚éB<p>
+     * å…¨ã¦ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @return ŒŸØŒ‹‰ÊBtrue‚Ìê‡AŒŸØ¬Œ÷
-     * @exception PropertyGetException ƒvƒƒpƒeƒB‚Ìæ“¾‚É¸”s‚µ‚½ê‡
-     * @exception PropertyValidateException ƒvƒƒpƒeƒB‚ÌŒŸØ‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @return æ¤œè¨¼çµæœã€‚trueã®å ´åˆã€æ¤œè¨¼æˆåŠŸ
+     * @exception PropertyGetException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception PropertyValidateException ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¤œè¨¼æ™‚ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public boolean validate() throws PropertyGetException, PropertyValidateException{
         if(isSynchronized){
@@ -1186,18 +1186,18 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * ƒŒƒR[ƒhƒŠƒXƒg‚ğ•¡»‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’è¤‡è£½ã™ã‚‹ã€‚<p>
      *
-     * @return •¡»‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg
+     * @return è¤‡è£½ã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
      */
     public Object clone(){
         return cloneRecordList();
     }
     
     /**
-     * “¯‚¶ƒXƒL[ƒ}‚ğ‚¿ƒf[ƒ^‚ğ‚½‚È‚¢‹ó‚ÌƒŒƒR[ƒhƒŠƒXƒg‚ğ•¡»‚·‚éB<p>
+     * åŒã˜ã‚¹ã‚­ãƒ¼ãƒã‚’æŒã¡ãƒ‡ãƒ¼ã‚¿ã‚’æŒãŸãªã„ç©ºã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’è¤‡è£½ã™ã‚‹ã€‚<p>
      *
-     * @return •¡»‚µ‚½‹ó‚ÌƒŒƒR[ƒhƒŠƒXƒg
+     * @return è¤‡è£½ã—ãŸç©ºã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
      */
     public RecordList cloneSchema(){
         RecordList clone = null;
@@ -1233,9 +1233,9 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * ƒŒƒR[ƒhƒŠƒXƒg‚ğ•¡»‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’è¤‡è£½ã™ã‚‹ã€‚<p>
      *
-     * @return •¡»‚µ‚½ƒŒƒR[ƒhƒŠƒXƒg
+     * @return è¤‡è£½ã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
      */
     public RecordList cloneRecordList(){
         final RecordList recList = cloneSchema();
@@ -1259,10 +1259,10 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     *  •”•ªXV‚ÉAw’è‚³‚ê‚½ƒvƒƒpƒeƒB–¼‚Ì—ñ‚ğƒ\[ƒgƒL[‚É‚µ‚Äƒ\[ƒg‚·‚é‚æ‚¤‚Éİ’è‚·‚éB<p>
+     *  éƒ¨åˆ†æ›´æ–°æ™‚ã«ã€æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®åˆ—ã‚’ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã«ã—ã¦ã‚½ãƒ¼ãƒˆã™ã‚‹ã‚ˆã†ã«è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param orderBy ƒ\[ƒgƒL[‚Æ‚È‚éƒvƒƒpƒeƒB–¼”z—ñ
-     * @param isAsc ¸‡ƒ\[ƒg‚·‚éê‡‚ÍtrueB~‡ƒ\[ƒg‚·‚éê‡‚ÍAfalse
+     * @param orderBy ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã¨ãªã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åé…åˆ—
+     * @param isAsc æ˜‡é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯trueã€‚é™é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯ã€false
      */
     public void setPartUpdateSort(String[] orderBy, boolean[] isAsc){
         final int[] propertyIndexes = new int[orderBy.length];
@@ -1276,10 +1276,10 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     *  •”•ªXV‚ÉAw’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğƒ\[ƒgƒL[‚É‚µ‚Äƒ\[ƒg‚·‚é‚æ‚¤‚Éİ’è‚·‚éB<p>
+     *  éƒ¨åˆ†æ›´æ–°æ™‚ã«ã€æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã«ã—ã¦ã‚½ãƒ¼ãƒˆã™ã‚‹ã‚ˆã†ã«è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param orderBy ƒ\[ƒgƒL[‚Æ‚È‚éƒvƒƒpƒeƒBƒCƒ“ƒfƒbƒNƒX”z—ñ
-     * @param isAsc ¸‡ƒ\[ƒg‚·‚éê‡‚ÍtrueB~‡ƒ\[ƒg‚·‚éê‡‚ÍAfalse
+     * @param orderBy ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã¨ãªã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹é…åˆ—
+     * @param isAsc æ˜‡é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯trueã€‚é™é †ã‚½ãƒ¼ãƒˆã™ã‚‹å ´åˆã¯ã€false
      */
     public void setPartUpdateSort(int[] orderBy, boolean[] isAsc){
         if(orderBy == null || orderBy.length == 0){
@@ -1301,12 +1301,12 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * XVî•ñ‚ğŠi”[‚µ‚½ƒR[ƒhƒ}ƒXƒ^•”•ªXVƒŒƒR[ƒh‚ğ¶¬‚·‚éB<p>
+     * æ›´æ–°æƒ…å ±ã‚’æ ¼ç´ã—ãŸã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿éƒ¨åˆ†æ›´æ–°ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param updateType XVƒ^ƒCƒv
-     * @param containsValue XV‚³‚ê‚½Record‚ğƒR[ƒhƒ}ƒXƒ^•”•ªXVƒŒƒR[ƒh‚ÉŠÜ‚ß‚éê‡‚ÍAtrue
-     * @return ƒR[ƒhƒ}ƒXƒ^•”•ªXVƒŒƒR[ƒh
-     * @exception DataSetException ƒR[ƒhƒ}ƒXƒ^•”•ªXVƒŒƒR[ƒh‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @param updateType æ›´æ–°ã‚¿ã‚¤ãƒ—
+     * @param containsValue æ›´æ–°ã•ã‚ŒãŸRecordã‚’ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿éƒ¨åˆ†æ›´æ–°ãƒ¬ã‚³ãƒ¼ãƒ‰ã«å«ã‚ã‚‹å ´åˆã¯ã€true
+     * @return ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿éƒ¨åˆ†æ›´æ–°ãƒ¬ã‚³ãƒ¼ãƒ‰
+     * @exception DataSetException ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿éƒ¨åˆ†æ›´æ–°ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public PartUpdateRecords createPartUpdateRecords(
         PartUpdateRecords records,
@@ -1344,10 +1344,10 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * w’è‚³‚ê‚½ƒR[ƒhƒ}ƒXƒ^XVƒL[‚ÉŠY“–‚·‚éƒŒƒR[ƒh‚ğŠi”[‚µ‚½•”•ªXVî•ñ‚ğì¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿æ›´æ–°ã‚­ãƒ¼ã«è©²å½“ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æ ¼ç´ã—ãŸéƒ¨åˆ†æ›´æ–°æƒ…å ±ã‚’ä½œæˆã™ã‚‹ã€‚<p>
      *
-     * @param key ƒR[ƒhƒ}ƒXƒ^XVƒL[
-     * @return XVƒŒƒR[ƒh‚ğŠÜ‚ñ‚¾•”•ªXVî•ñ
+     * @param key ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿æ›´æ–°ã‚­ãƒ¼
+     * @return æ›´æ–°ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å«ã‚“ã éƒ¨åˆ†æ›´æ–°æƒ…å ±
      */
     public PartUpdateRecords fillPartUpdateRecords(CodeMasterUpdateKey key){
         PartUpdateRecords records = new PartUpdateRecords();
@@ -1356,10 +1356,10 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * w’è‚³‚ê‚½•”•ªXVî•ñ‚ÉŠY“–‚·‚éƒŒƒR[ƒh‚ğŠi”[‚µ‚½•”•ªXVî•ñ‚ğì¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸéƒ¨åˆ†æ›´æ–°æƒ…å ±ã«è©²å½“ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æ ¼ç´ã—ãŸéƒ¨åˆ†æ›´æ–°æƒ…å ±ã‚’ä½œæˆã™ã‚‹ã€‚<p>
      *
-     * @param records •”•ªXVî•ñ
-     * @return XVƒŒƒR[ƒh‚ğŠÜ‚ñ‚¾•”•ªXVî•ñ
+     * @param records éƒ¨åˆ†æ›´æ–°æƒ…å ±
+     * @return æ›´æ–°ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å«ã‚“ã éƒ¨åˆ†æ›´æ–°æƒ…å ±
      */
     public PartUpdateRecords fillPartUpdateRecords(PartUpdateRecords records){
         if(records == null || records.size() == 0
@@ -1375,20 +1375,20 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
             
             records.removeRecord(key);
             
-            // ŒŸõ—p‚ÌRecord‚ÉŒŸõƒL[‚ğİ’è‚·‚é
+            // æ¤œç´¢ç”¨ã®Recordã«æ¤œç´¢ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹
             rec.setCodeMasterUpdateKey(key);
             
-            // ‚±‚ÌRecordSet‚ÌåƒL[‚Ì‚İ‚ğ‚Á‚½CodeMasterUpdateKey‚É•ÏŠ·‚·‚é
+            // ã“ã®RecordSetã®ä¸»ã‚­ãƒ¼ã®ã¿ã‚’æŒã£ãŸCodeMasterUpdateKeyã«å¤‰æ›ã™ã‚‹
             key = rec.createCodeMasterUpdateKey(key);
             key.setUpdateType(updateType);
             
-            // íœ‚Ìê‡‚ÍACodeMasterUpdateKey‚¾‚¯“o˜^‚µ’¼‚·
+            // å‰Šé™¤ã®å ´åˆã¯ã€CodeMasterUpdateKeyã ã‘ç™»éŒ²ã—ç›´ã™
             if(key.isRemove()){
                 records.addRecord(key);
                 continue;
             }
             
-            // ’Ç‰Á‚Ü‚½‚ÍXV‚³‚ê‚½Record‚ğŒŸõ‚·‚é
+            // è¿½åŠ ã¾ãŸã¯æ›´æ–°ã•ã‚ŒãŸRecordã‚’æ¤œç´¢ã™ã‚‹
             final Record searchRec = searchByPrimaryKey(rec);
             records.addRecord(key, searchRec);
         }
@@ -1396,10 +1396,10 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * •”•ªXVî•ñ‚ğæ‚è‚ñ‚¾AƒfƒB[ƒvƒRƒs[ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * éƒ¨åˆ†æ›´æ–°æƒ…å ±ã‚’å–ã‚Šè¾¼ã‚“ã ã€ãƒ‡ã‚£ãƒ¼ãƒ—ã‚³ãƒ”ãƒ¼ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param records •”•ªXVî•ñ
-     * @return •”•ªXVî•ñ‚ğæ‚è‚ñ‚¾AƒfƒB[ƒvƒRƒs[ƒCƒ“ƒXƒ^ƒ“ƒX
+     * @param records éƒ¨åˆ†æ›´æ–°æƒ…å ±
+     * @return éƒ¨åˆ†æ›´æ–°æƒ…å ±ã‚’å–ã‚Šè¾¼ã‚“ã ã€ãƒ‡ã‚£ãƒ¼ãƒ—ã‚³ãƒ”ãƒ¼ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
      */
     public PartUpdate cloneAndUpdate(PartUpdateRecords records){
         if(isSynchronized){

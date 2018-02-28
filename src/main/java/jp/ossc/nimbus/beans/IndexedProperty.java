@@ -38,40 +38,40 @@ import java.io.*;
 import jp.ossc.nimbus.beans.dataset.*;
 
 /**
- * ƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒBB<p>
- * ”CˆÓ‚ÌBean‚ÌA‚ ‚éƒvƒƒpƒeƒB–¼‚ÌƒCƒ“ƒfƒbƒNƒX•t‚«ƒvƒƒpƒeƒB‚ÉƒAƒNƒZƒX‚·‚é‚½‚ß‚Ì{@link Property}B<br>
+ * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã€‚<p>
+ * ä»»æ„ã®Beanã®ã€ã‚ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ããƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãŸã‚ã®{@link Property}ã€‚<br>
  * <p>
- * ˆÈ‰º‚Ì‚æ‚¤‚ÈƒCƒ“ƒfƒbƒNƒX•t‚«ƒvƒƒpƒeƒB‚ÉƒAƒNƒZƒX‚·‚éƒ^ƒCƒvƒZ[ƒt‚ÈƒR[ƒh‚ª‚ ‚éB<br>
+ * ä»¥ä¸‹ã®ã‚ˆã†ãªã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ããƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ã‚¿ã‚¤ãƒ—ã‚»ãƒ¼ãƒ•ãªã‚³ãƒ¼ãƒ‰ãŒã‚ã‚‹ã€‚<br>
  * <pre>
  *   Object propValue = obj.getHoge(0);
  *   obj.setHoge(0, propValue);
  * </pre>
- * ƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ğg‚¤–‚ÅA‚±‚ÌƒR[ƒh‚ğ<br>
+ * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ä½¿ã†äº‹ã§ã€ã“ã®ã‚³ãƒ¼ãƒ‰ã‚’<br>
  * <pre>
  *   IndexedProperty prop = new IndexedProperty();
  *   prop.parse("hoge[0]");
  *   Object propValue = prop.getProperty(obj);
  *   prop.setProperty(obj, propValue);
  * </pre>
- * ‚Æ‚¢‚¤ƒR[ƒh‚É’u‚«Š·‚¦‚é–‚ª‚Å‚«‚éB<br>
- * ‚±‚ÌƒR[ƒh‚ÍAç’·‚É‚È‚Á‚Ä‚¢‚é‚ªA‘ÎÛ‚Æ‚È‚éBean‚ÌŒ^‚âƒƒ\ƒbƒh‚ğƒ^ƒCƒvƒZ[ƒt‚É‘‚©‚È‚¢“®“I‚ÈƒR[ƒh‚É‚È‚Á‚Ä‚¢‚éB<br>
+ * ã¨ã„ã†ã‚³ãƒ¼ãƒ‰ã«ç½®ãæ›ãˆã‚‹äº‹ãŒã§ãã‚‹ã€‚<br>
+ * ã“ã®ã‚³ãƒ¼ãƒ‰ã¯ã€å†—é•·ã«ãªã£ã¦ã„ã‚‹ãŒã€å¯¾è±¡ã¨ãªã‚‹Beanã®å‹ã‚„ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ã‚¿ã‚¤ãƒ—ã‚»ãƒ¼ãƒ•ã«æ›¸ã‹ãªã„å‹•çš„ãªã‚³ãƒ¼ãƒ‰ã«ãªã£ã¦ã„ã‚‹ã€‚<br>
  * <p>
- * ‚±‚ÌƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚Å‚ÍAˆÈ‰º‚Ì‚æ‚¤‚ÈBean‚ÌƒvƒƒpƒeƒB‚É‘Î‚·‚éƒAƒNƒZƒX•û–@‚ª—pˆÓ‚³‚ê‚Ä‚¢‚éB<br>
+ * ã“ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§ã¯ã€ä»¥ä¸‹ã®ã‚ˆã†ãªBeanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å¯¾ã™ã‚‹ã‚¢ã‚¯ã‚»ã‚¹æ–¹æ³•ãŒç”¨æ„ã•ã‚Œã¦ã„ã‚‹ã€‚<br>
  * <table border="1">
- *   <tr bgcolor="#CCCCFF"><th rowspan="3">ƒAƒNƒZƒX•û–@</th><th>Java•\Œ»</th><th rowspan="3">ƒvƒƒpƒeƒB•¶š—ñ•\Œ»</th></tr>
- *   <tr bgcolor="#CCCCFF"><th>ƒvƒƒpƒeƒBæ“¾</th></tr>
- *   <tr bgcolor="#CCCCFF"><th>ƒvƒƒpƒeƒBİ’è</th></tr>
- *   <tr><td rowspan="2">ƒCƒ“ƒfƒbƒNƒX•t‚«ƒvƒƒpƒeƒB</td><td>bean.getHoge(0)</td><td rowspan="2">hoge[0]</td></tr>
+ *   <tr bgcolor="#CCCCFF"><th rowspan="3">ã‚¢ã‚¯ã‚»ã‚¹æ–¹æ³•</th><th>Javaè¡¨ç¾</th><th rowspan="3">ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—è¡¨ç¾</th></tr>
+ *   <tr bgcolor="#CCCCFF"><th>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å–å¾—</th></tr>
+ *   <tr bgcolor="#CCCCFF"><th>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£è¨­å®š</th></tr>
+ *   <tr><td rowspan="2">ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ããƒ—ãƒ­ãƒ‘ãƒ†ã‚£</td><td>bean.getHoge(0)</td><td rowspan="2">hoge[0]</td></tr>
  *   <tr><td>bean.setHoge(0, value)</td></tr>
- *   <tr><td rowspan="2">ƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’li”z—ñŒ^j‚Ì’PƒƒvƒƒpƒeƒB</td><td>((Object[])bean.getHoge())[0]</td><td rowspan="2">hoge[0]</td></tr>
+ *   <tr><td rowspan="2">ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ï¼ˆé…åˆ—å‹ï¼‰ã®å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£</td><td>((Object[])bean.getHoge())[0]</td><td rowspan="2">hoge[0]</td></tr>
  *   <tr><td>((Object[])bean.getHoge())[0] = value</td></tr>
- *   <tr><td rowspan="2">ƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’lijava.util.Listj‚Ì’PƒƒvƒƒpƒeƒB</td><td>((java.util.List)bean.getHoge()).get(0)</td><td rowspan="2">hoge[0]</td></tr>
+ *   <tr><td rowspan="2">ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ï¼ˆjava.util.Listï¼‰ã®å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£</td><td>((java.util.List)bean.getHoge()).get(0)</td><td rowspan="2">hoge[0]</td></tr>
  *   <tr><td>((java.util.List)bean.getHoge()).set(0, value)</td></tr>
- *   <tr><td rowspan="2">ƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’liget(int)Aset(int, “KØ‚ÈŒ^)ƒƒ\ƒbƒh‚ğ‚Â”CˆÓ‚ÌƒNƒ‰ƒXj‚Ì’PƒƒvƒƒpƒeƒB</td><td>bean.getHoge().get(0)</td><td rowspan="2">hoge[0]</td></tr>
+ *   <tr><td rowspan="2">ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ï¼ˆget(int)ã€set(int, é©åˆ‡ãªå‹)ãƒ¡ã‚½ãƒƒãƒ‰ã‚’æŒã¤ä»»æ„ã®ã‚¯ãƒ©ã‚¹ï¼‰ã®å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£</td><td>bean.getHoge().get(0)</td><td rowspan="2">hoge[0]</td></tr>
  *   <tr><td>bean.getHoge().set(0, value)</td></tr>
- *   <tr><td rowspan="2">”z—ñ‚Ì—v‘f</td><td>array[0]</td><td rowspan="2">[0]</td></tr>
+ *   <tr><td rowspan="2">é…åˆ—ã®è¦ç´ </td><td>array[0]</td><td rowspan="2">[0]</td></tr>
  *   <tr><td>array[0] = value</td></tr>
- *   <tr><td rowspan="2">java.util.List‚Ì—v‘f</td><td>bean.get(0)</td><td rowspan="2">[0]</td></tr>
+ *   <tr><td rowspan="2">java.util.Listã®è¦ç´ </td><td>bean.get(0)</td><td rowspan="2">[0]</td></tr>
  *   <tr><td>bean.set(0, value)</td></tr>
  * </table>
  * 
@@ -84,68 +84,68 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     private static final String RECORD_PROP_NAME = "Property";
     
     /**
-     * ƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ÌGetterƒƒ\ƒbƒh–¼B<p>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®Getterãƒ¡ã‚½ãƒƒãƒ‰åã€‚<p>
      */
     protected static final String GET_METHOD_NAME = "get";
     
     /**
-     * ƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ÌGetterƒƒ\ƒbƒh‚Ìˆø”Œ^”z—ñB<p>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®Getterãƒ¡ã‚½ãƒƒãƒ‰ã®å¼•æ•°å‹é…åˆ—ã€‚<p>
      */
     protected static final Class[] GET_METHOD_ARGS = new Class[]{int.class};
     
     /**
-     * ƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ÌSetterƒƒ\ƒbƒh–¼B<p>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®Setterãƒ¡ã‚½ãƒƒãƒ‰åã€‚<p>
      */
     protected static final String SET_METHOD_NAME = "set";
     
     /**
-     * ƒCƒ“ƒfƒbƒNƒXB<p>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚<p>
      */
     protected int index;
     
     /**
-     * ƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ÌGetterƒƒ\ƒbƒhƒLƒƒƒbƒVƒ…B<p>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®Getterãƒ¡ã‚½ãƒƒãƒ‰ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã€‚<p>
      */
     protected transient Map indexedReadMethodCache = Collections.synchronizedMap(new HashMap());
     
     /**
-     * ƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ÌSetterƒƒ\ƒbƒhƒLƒƒƒbƒVƒ…B<p>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®Setterãƒ¡ã‚½ãƒƒãƒ‰ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã€‚<p>
      */
     protected transient Map indexedWriteMethodCache = Collections.synchronizedMap(new HashMap());
     
     /**
-     * ƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg‚ÌƒvƒƒpƒeƒB‚ÌGetterƒƒ\ƒbƒhƒLƒƒƒbƒVƒ…B<p>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®Getterãƒ¡ã‚½ãƒƒãƒ‰ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã€‚<p>
      */
     protected transient Map indexedObjReadMethodCache = Collections.synchronizedMap(new HashMap());
     
     /**
-     * ƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg‚ÌƒvƒƒpƒeƒB‚ÌSetterƒƒ\ƒbƒhƒLƒƒƒbƒVƒ…B<p>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®Setterãƒ¡ã‚½ãƒƒãƒ‰ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã€‚<p>
      */
     protected transient Map indexedObjWriteMethodCache = Collections.synchronizedMap(new HashMap());
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public IndexedProperty(){
         super();
     }
     
     /**
-     * w’è‚µ‚½ƒvƒƒpƒeƒB–¼‚ÅAƒCƒ“ƒfƒbƒNƒX‚ª0‚ÌƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã§ã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒ0ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @exception IllegalArgumentException ˆø”‚Énull‚ğw’è‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @exception IllegalArgumentException å¼•æ•°ã«nullã‚’æŒ‡å®šã—ãŸå ´åˆ
      */
     public IndexedProperty(String name) throws IllegalArgumentException{
         super(name);
     }
     
     /**
-     * w’è‚µ‚½ƒvƒƒpƒeƒB–¼‚ÆƒCƒ“ƒfƒbƒNƒX‚ÌƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã¨ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param index ƒCƒ“ƒfƒbƒNƒX
-     * @exception IllegalArgumentException ˆø”name‚Énull‚ğw’è‚µ‚½ê‡
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @exception IllegalArgumentException å¼•æ•°nameã«nullã‚’æŒ‡å®šã—ãŸå ´åˆ
      */
     public IndexedProperty(String name, int index)
      throws IllegalArgumentException{
@@ -154,32 +154,32 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * ‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒvƒƒpƒeƒB–¼‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒpƒeƒB–¼[ƒCƒ“ƒfƒbƒNƒX]
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å[ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹]
      */
     public String getPropertyName(){
         return (super.getPropertyName() == null ? "" : super.getPropertyName()) + '[' + getIndex() + ']';
     }
     
     /**
-     * ƒvƒƒpƒeƒB–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param prop ƒvƒƒpƒeƒB–¼
+     * @param prop ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
      */
     protected void setPropertyName(String prop){
         property = prop;
     }
     
     /**
-     * w’è‚µ‚½ƒvƒƒpƒeƒB•¶š—ñ‚ğ‰ğÍ‚·‚éB<p>
-     * ‚±‚±‚Åw’è‰Â”\‚È•¶š—ñ‚ÍA<br>
-     * &nbsp;ƒvƒƒpƒeƒB–¼[ƒCƒ“ƒfƒbƒNƒX]<br>
-     * ‚Å‚ ‚éB<br>
-     * ’A‚µAƒvƒƒpƒeƒB–¼‚ÍÈ—ª‰ÂB‚Ü‚½AƒCƒ“ƒfƒbƒNƒX‚Íint’l‚Å‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B<br>
+     * æŒ‡å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã‚’è§£æã™ã‚‹ã€‚<p>
+     * ã“ã“ã§æŒ‡å®šå¯èƒ½ãªæ–‡å­—åˆ—ã¯ã€<br>
+     * &nbsp;ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å[ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹]<br>
+     * ã§ã‚ã‚‹ã€‚<br>
+     * ä½†ã—ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã¯çœç•¥å¯ã€‚ã¾ãŸã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¯intå€¤ã§ãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚<br>
      *
-     * @param prop ƒvƒƒpƒeƒB•¶š—ñ
-     * @exception IllegalArgumentException w’è‚³‚ê‚½ƒvƒƒpƒeƒB•¶š—ñ‚ğ‚±‚ÌƒvƒƒpƒeƒBƒIƒuƒWƒFƒNƒg‚ª‰ğÍ‚Å‚«‚È‚¢ê‡
+     * @param prop ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—
+     * @exception IllegalArgumentException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã‚’ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒè§£æã§ããªã„å ´åˆ
      */
     public void parse(String prop) throws IllegalArgumentException{
         final int startIndexedDelim = prop.indexOf('[');
@@ -203,18 +203,18 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * ƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éB<p>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒCƒ“ƒfƒbƒNƒX
+     * @return ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public int getIndex(){
         return index;
     }
     
     /**
-     * ƒCƒ“ƒfƒbƒNƒX‚ğİ’è‚·‚éB<p>
+     * ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param index ƒCƒ“ƒfƒbƒNƒX
+     * @param index ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public void setIndex(int index){
         this.index = index;
@@ -447,15 +447,15 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚©‚çA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒvƒƒpƒeƒB’l‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @return ƒvƒƒpƒeƒB’l
-     * @exception NoSuchReadablePropertyException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌGetter‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NullIndexPropertyException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚ªAnull‚Ìê‡
-     * @exception NoSuchIndexPropertyException w’è‚³‚ê‚½Bean‚ÉA‚±‚ÌƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ª‚ÂƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
+     * @exception NoSuchReadablePropertyException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®GetterãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NullIndexPropertyException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ãŒã€nullã®å ´åˆ
+     * @exception NoSuchIndexPropertyException æŒ‡å®šã•ã‚ŒãŸBeanã«ã€ã“ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     public Object getProperty(Object obj)
      throws NoSuchPropertyException, InvocationTargetException{
@@ -489,11 +489,11 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒNƒ‰ƒX‚©‚çƒCƒ“ƒfƒbƒNƒX•t‚«GetterigetƒvƒƒpƒeƒB–¼(int)jƒƒ\ƒbƒh‚ğæ“¾‚·‚éB<p>
-     * ƒƒ\ƒbƒh‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B
+     * æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ã‹ã‚‰ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãGetterï¼ˆgetãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å(int)ï¼‰ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ãƒ¡ã‚½ãƒƒãƒ‰ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚
      *
-     * @param clazz ‘ÎÛ‚ÌBean‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @return ƒCƒ“ƒfƒbƒNƒX•t‚«GetterigetƒvƒƒpƒeƒB–¼(int)jƒƒ\ƒbƒh
+     * @param clazz å¯¾è±¡ã®Beanã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãGetterï¼ˆgetãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å(int)ï¼‰ãƒ¡ã‚½ãƒƒãƒ‰
      */
     protected Method getReadIndexedMethod(Class clazz){
         if(indexedReadMethodCache.containsKey(clazz)){
@@ -555,15 +555,15 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ÉA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒvƒƒpƒeƒB’l‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @param value İ’è‚·‚éƒvƒƒpƒeƒB’l
-     * @exception NoSuchReadablePropertyException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌGetter‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NullIndexPropertyException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚ªAnull‚Ìê‡
-     * @exception NoSuchIndexPropertyException w’è‚³‚ê‚½Bean‚ÉA‚±‚ÌƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ª‚ÂƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @param value è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
+     * @exception NoSuchReadablePropertyException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®GetterãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NullIndexPropertyException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ãŒã€nullã®å ´åˆ
+     * @exception NoSuchIndexPropertyException æŒ‡å®šã•ã‚ŒãŸBeanã«ã€ã“ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     public void setProperty(Object obj, Object value)
      throws NoSuchPropertyException, InvocationTargetException{
@@ -571,16 +571,16 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ÉA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒvƒƒpƒeƒB’l‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @param type ƒvƒƒpƒeƒB‚ÌŒ^
-     * @param value İ’è‚·‚éƒvƒƒpƒeƒB’l
-     * @exception NoSuchReadablePropertyException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌGetter‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NullIndexPropertyException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚ªAnull‚Ìê‡
-     * @exception NoSuchIndexPropertyException w’è‚³‚ê‚½Bean‚ÉA‚±‚ÌƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ª‚ÂƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @param type ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹
+     * @param value è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
+     * @exception NoSuchReadablePropertyException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®GetterãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NullIndexPropertyException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ãŒã€nullã®å ´åˆ
+     * @exception NoSuchIndexPropertyException æŒ‡å®šã•ã‚ŒãŸBeanã«ã€ã“ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     public void setProperty(Object obj, Class type, Object value)
      throws NoSuchPropertyException, InvocationTargetException{
@@ -630,12 +630,12 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒNƒ‰ƒX‚©‚çƒCƒ“ƒfƒbƒNƒX•t‚«SetterisetƒvƒƒpƒeƒB–¼(int, ˆø”‚Åw’è‚µ‚½param‚ÌƒNƒ‰ƒXŒ^)jƒƒ\ƒbƒh‚ğæ“¾‚·‚éB<p>
-     * ƒƒ\ƒbƒh‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B
+     * æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ã‹ã‚‰ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãSetterï¼ˆsetãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å(int, å¼•æ•°ã§æŒ‡å®šã—ãŸparamã®ã‚¯ãƒ©ã‚¹å‹)ï¼‰ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ãƒ¡ã‚½ãƒƒãƒ‰ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚
      *
-     * @param clazz ‘ÎÛ‚ÌBean‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @param param İ’è‚·‚é’l‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @return ƒCƒ“ƒfƒbƒNƒX•t‚«SetterisetƒvƒƒpƒeƒB–¼(int, ˆø”‚Åw’è‚µ‚½param‚ÌƒNƒ‰ƒXŒ^)jƒƒ\ƒbƒh
+     * @param clazz å¯¾è±¡ã®Beanã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param param è¨­å®šã™ã‚‹å€¤ã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãSetterï¼ˆsetãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å(int, å¼•æ•°ã§æŒ‡å®šã—ãŸparamã®ã‚¯ãƒ©ã‚¹å‹)ï¼‰ãƒ¡ã‚½ãƒƒãƒ‰
      */
     protected Method getWriteIndexedMethod(Class clazz, Class param){
         if(indexedWriteMethodCache.containsKey(clazz)){
@@ -817,13 +817,13 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ÌƒCƒ“ƒfƒbƒNƒX•t‚«GetterigetƒvƒƒpƒeƒB–¼(int)j‚ğŒÄ‚Ño‚µƒvƒƒpƒeƒB’l‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãGetterï¼ˆgetãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å(int)ï¼‰ã‚’å‘¼ã³å‡ºã—ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @param readMethod ƒCƒ“ƒfƒbƒNƒX•t‚«GetterigetƒvƒƒpƒeƒB–¼(int)j
-     * @return ƒvƒƒpƒeƒB’l
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @param readMethod ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãGetterï¼ˆgetãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å(int)ï¼‰
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     protected Object getIndexedProperty(Object obj, Method readMethod)
      throws NoSuchPropertyException, InvocationTargetException{
@@ -834,14 +834,14 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
                 new Object[]{new Integer(getIndex())}
             );
         }catch(IllegalAccessException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             throw new NoSuchPropertyException(
                 clazz,
                 getPropertyName(),
                 e
             );
         }catch(IllegalArgumentException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             throw new NoSuchPropertyException(
                 clazz,
                 getPropertyName(),
@@ -851,13 +851,13 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ÌƒCƒ“ƒfƒbƒNƒX•t‚«SetterisetƒvƒƒpƒeƒB–¼(int, ”CˆÓ‚ÌƒNƒ‰ƒX)j‚ğŒÄ‚Ño‚µƒvƒƒpƒeƒB’l‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãSetterï¼ˆsetãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å(int, ä»»æ„ã®ã‚¯ãƒ©ã‚¹)ï¼‰ã‚’å‘¼ã³å‡ºã—ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @param writeMethod ƒCƒ“ƒfƒbƒNƒX•t‚«SetterisetƒvƒƒpƒeƒB–¼(int, ”CˆÓ‚ÌƒNƒ‰ƒX)j
-     * @param value İ’è‚·‚éƒvƒƒpƒeƒB’l
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @param writeMethod ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãSetterï¼ˆsetãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å(int, ä»»æ„ã®ã‚¯ãƒ©ã‚¹)ï¼‰
+     * @param value è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     protected void setIndexedProperty(
         Object obj,
@@ -878,14 +878,14 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
                 new Object[]{new Integer(getIndex()), value}
             );
         }catch(IllegalAccessException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             throw new NoSuchPropertyException(
                 clazz,
                 getPropertyName(),
                 e
             );
         }catch(IllegalArgumentException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             throw new NoSuchPropertyException(
                 clazz,
                 getPropertyName(),
@@ -895,13 +895,13 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ÌƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’lGetteriƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg getƒvƒƒpƒeƒB–¼()j‚ğŒÄ‚Ño‚µA‚»‚Ì–ß‚è’l‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤Getterï¼ˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ getãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å()ï¼‰ã‚’å‘¼ã³å‡ºã—ã€ãã®æˆ»ã‚Šå€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @param readMethod ƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’lGetteriƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg getƒvƒƒpƒeƒB–¼()j
-     * @return ƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡A‚Ü‚½‚Í–ß‚è’l‚ªƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚Å‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚Ü‚½‚ÍƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @param readMethod ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤Getterï¼ˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ getãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å()ï¼‰
+     * @return ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆã€ã¾ãŸã¯æˆ»ã‚Šå€¤ãŒã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ã§ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã¾ãŸã¯ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     protected Object getIndexedObject(Object obj, Method readMethod)
      throws NoSuchPropertyException, InvocationTargetException{
@@ -921,7 +921,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
             }
         }catch(IllegalAccessException e){
             if(isThrow){
-                // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                // èµ·ã“ã‚‰ãªã„ã¯ãš
                 throw new NoSuchPropertyException(
                     clazz,
                     getPropertyName(),
@@ -932,7 +932,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
             }
         }catch(IllegalArgumentException e){
             if(isThrow){
-                // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                // èµ·ã“ã‚‰ãªã„ã¯ãš
                 throw new NoSuchPropertyException(
                     clazz,
                     getPropertyName(),
@@ -945,15 +945,15 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ÌƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’lGetteriƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg getƒvƒƒpƒeƒB–¼()j‚ğŒÄ‚Ño‚µA–ß‚è’l‚©‚çƒvƒƒpƒeƒB’l‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤Getterï¼ˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ getãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å()ï¼‰ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã‹ã‚‰ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @param readMethod ƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’lGetteriƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg getƒvƒƒpƒeƒB–¼()j
-     * @return ƒvƒƒpƒeƒB’l
-     * @exception NullIndexPropertyException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚ªAnull‚Ìê‡
-     * @exception NoSuchIndexPropertyException ƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚ÉA‚±‚ÌƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ª‚ÂƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡A‚Ü‚½‚Í–ß‚è’l‚ªƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚Å‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚Ü‚½‚ÍƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @param readMethod ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤Getterï¼ˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ getãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å()ï¼‰
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
+     * @exception NullIndexPropertyException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ãŒã€nullã®å ´åˆ
+     * @exception NoSuchIndexPropertyException ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ã«ã€ã“ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆã€ã¾ãŸã¯æˆ»ã‚Šå€¤ãŒã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ã§ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã¾ãŸã¯ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     protected Object getNoIndexedProperty(Object obj, Method readMethod)
      throws NoSuchPropertyException, InvocationTargetException{
@@ -974,15 +974,15 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ÌƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’lGetteriƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg getƒvƒƒpƒeƒB–¼()j‚ğŒÄ‚Ño‚µA–ß‚è’l‚ÉƒvƒƒpƒeƒB’l‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤Getterï¼ˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ getãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å()ï¼‰ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @param readMethod ƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’lGetteriƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg getƒvƒƒpƒeƒB–¼()j
-     * @param value ƒvƒƒpƒeƒB’l
-     * @exception NullIndexPropertyException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚ªAnull‚Ìê‡
-     * @exception NoSuchIndexPropertyException ƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚ÉA‚±‚ÌƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ª‚ÂƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡A‚Ü‚½‚Í–ß‚è’l‚ªƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚Å‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚Ü‚½‚ÍƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @param readMethod ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤Getterï¼ˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ getãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å()ï¼‰
+     * @param value ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
+     * @exception NullIndexPropertyException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ãŒã€nullã®å ´åˆ
+     * @exception NoSuchIndexPropertyException ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ã«ã€ã“ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆã€ã¾ãŸã¯æˆ»ã‚Šå€¤ãŒã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ã§ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã¾ãŸã¯ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     protected void setNoIndexedProperty(
         Object obj,
@@ -1002,11 +1002,11 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ÌƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’lGetteriƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg getƒvƒƒpƒeƒB–¼()j‚ğŒÄ‚Ño‚µA–ß‚è’l‚©‚çƒvƒƒpƒeƒB’l‚ğæ“¾‰Â”\‚©”»’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤Getterï¼ˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ getãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å()ï¼‰ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã‹ã‚‰ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—å¯èƒ½ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @param readMethod ƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’lGetteriƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg getƒvƒƒpƒeƒB–¼()j
-     * @return ƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚©‚çƒvƒƒpƒeƒB’l‚ğæ“¾‰Â”\‚Èê‡true
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @param readMethod ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤Getterï¼ˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ getãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å()ï¼‰
+     * @return ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ã‹ã‚‰ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—å¯èƒ½ãªå ´åˆtrue
      */
     protected boolean isReadableNoIndexedProperty(Object obj, Method readMethod){
         Object indexedObj = null;
@@ -1023,10 +1023,10 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’lGetteriƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg getƒvƒƒpƒeƒB–¼()j‚ğŒÄ‚Ño‚µA–ß‚è’l‚©‚çƒvƒƒpƒeƒB’l‚ğæ“¾‰Â”\‚©”»’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤Getterï¼ˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ getãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å()ï¼‰ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã‹ã‚‰ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—å¯èƒ½ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @param readMethod ƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’lGetteriƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg getƒvƒƒpƒeƒB–¼()j
-     * @return ƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚©‚çƒvƒƒpƒeƒB’l‚ğæ“¾‰Â”\‚Èê‡true
+     * @param readMethod ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤Getterï¼ˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ getãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å()ï¼‰
+     * @return ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ã‹ã‚‰ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—å¯èƒ½ãªå ´åˆtrue
      */
     protected boolean isReadableNoIndexedProperty(Method readMethod){
         Class indexedClass = readMethod.getReturnType();
@@ -1038,12 +1038,12 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg‚©‚çA‚±‚ÌƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ª‚ÂƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB’l‚ğæ“¾‰Â”\‚©”»’è‚·‚éB<p>
-     * ‚±‚±‚ÅŒ¾‚¤AƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg‚Æ‚ÍA”z—ñA{@link java.util.List}AƒCƒ“ƒfƒbƒNƒX•t‚«Getteriget(int)j‚ğ‚ÂƒIƒuƒWƒFƒNƒg‚Ì‚¢‚¸‚ê‚©‚Å‚ ‚éB
+     * æŒ‡å®šã—ãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ã€ã“ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—å¯èƒ½ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§è¨€ã†ã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã¯ã€é…åˆ—ã€{@link java.util.List}ã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãGetterï¼ˆget(int)ï¼‰ã‚’æŒã¤ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã„ãšã‚Œã‹ã§ã‚ã‚‹ã€‚
      *
-     * @param clazz ƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX‚Ü‚½‚ÍƒCƒ“ƒ^ƒtƒF[ƒX
-     * @param obj ƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg
-     * @return ƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg‚©‚çA‚±‚ÌƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ª‚ÂƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB’l‚ğæ“¾‰Â”\‚Èê‡true
+     * @param clazz ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹ã¾ãŸã¯ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹
+     * @param obj ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ã€ã“ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—å¯èƒ½ãªå ´åˆtrue
      */
     protected boolean isReadableIndexedObjectProperty(Class clazz, Object obj){
         if(clazz.isArray()){
@@ -1103,11 +1103,11 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX‚©‚çA‚±‚ÌƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ª‚ÂƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB’l‚ğæ“¾‰Â”\‚©”»’è‚·‚éB<p>
-     * ‚±‚±‚ÅŒ¾‚¤AƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg‚Æ‚ÍA”z—ñA{@link java.util.List}AƒCƒ“ƒfƒbƒNƒX•t‚«Getteriget(int)j‚ğ‚ÂƒIƒuƒWƒFƒNƒg‚Ì‚¢‚¸‚ê‚©‚Å‚ ‚éB
+     * æŒ‡å®šã—ãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹ã‹ã‚‰ã€ã“ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—å¯èƒ½ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§è¨€ã†ã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã¯ã€é…åˆ—ã€{@link java.util.List}ã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãGetterï¼ˆget(int)ï¼‰ã‚’æŒã¤ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã„ãšã‚Œã‹ã§ã‚ã‚‹ã€‚
      *
-     * @param clazz ƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX‚Ü‚½‚ÍƒCƒ“ƒ^ƒtƒF[ƒX
-     * @return ƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX‚©‚çA‚±‚ÌƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ª‚ÂƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB’l‚ğæ“¾‰Â”\‚Èê‡true
+     * @param clazz ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹ã¾ãŸã¯ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹
+     * @return ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹ã‹ã‚‰ã€ã“ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—å¯èƒ½ãªå ´åˆtrue
      */
     protected boolean isReadableIndexedObjectProperty(Class clazz){
         if(clazz.isArray()){
@@ -1158,12 +1158,12 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ÌƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’lGetteriƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg getƒvƒƒpƒeƒB–¼()j‚ğŒÄ‚Ño‚µA–ß‚è’l‚ÉƒvƒƒpƒeƒB’l‚ğİ’è‰Â”\‚©”»’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤Getterï¼ˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ getãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å()ï¼‰ã‚’å‘¼ã³å‡ºã—ã€æˆ»ã‚Šå€¤ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šå¯èƒ½ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @param readMethod ƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’lGetteriƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg getƒvƒƒpƒeƒB–¼()j
-     * @param clazz ƒvƒƒpƒeƒB‚ÌŒ^
-     * @return ƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚ÉƒvƒƒpƒeƒB’l‚ğİ’è‰Â”\‚Èê‡true
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @param readMethod ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤Getterï¼ˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ getãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å()ï¼‰
+     * @param clazz ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹
+     * @return ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šå¯èƒ½ãªå ´åˆtrue
      */
     protected boolean isWritableNoIndexedProperty(
         Object obj,
@@ -1184,12 +1184,12 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg‚ÉA‚±‚ÌƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ª‚ÂƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB’l‚ğİ’è‰Â”\‚©”»’è‚·‚éB<p>
-     * ‚±‚±‚ÅŒ¾‚¤AƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg‚Æ‚ÍA”z—ñA{@link java.util.List}AƒCƒ“ƒfƒbƒNƒX•t‚«Setteriset(int, ƒvƒƒpƒeƒB’l‚ÌŒ^‚É“K‡‚·‚é”CˆÓ‚ÌƒNƒ‰ƒX)j‚ğ‚ÂƒIƒuƒWƒFƒNƒg‚Ì‚¢‚¸‚ê‚©‚Å‚ ‚éB
+     * æŒ‡å®šã—ãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ã€ã“ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šå¯èƒ½ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§è¨€ã†ã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã¯ã€é…åˆ—ã€{@link java.util.List}ã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãSetterï¼ˆset(int, ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã®å‹ã«é©åˆã™ã‚‹ä»»æ„ã®ã‚¯ãƒ©ã‚¹)ï¼‰ã‚’æŒã¤ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã„ãšã‚Œã‹ã§ã‚ã‚‹ã€‚
      *
-     * @param obj ƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg
-     * @param clazz ƒvƒƒpƒeƒB‚ÌŒ^
-     * @return w’è‚µ‚½ƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg‚ÉA‚±‚ÌƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ª‚ÂƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB’l‚ğİ’è‰Â”\‚Èê‡true
+     * @param obj ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param clazz ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹
+     * @return æŒ‡å®šã—ãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ã€ã“ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šå¯èƒ½ãªå ´åˆtrue
      */
     protected boolean isWritableIndexedObjectProperty(Object obj, Class clazz){
         final Class indexdClazz = obj.getClass();
@@ -1250,12 +1250,12 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg‚ÉA‚±‚ÌƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ª‚ÂƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB’l‚ğİ’è‰Â”\‚©”»’è‚·‚éB<p>
-     * ‚±‚±‚ÅŒ¾‚¤AƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg‚Æ‚ÍA”z—ñA{@link java.util.List}AƒCƒ“ƒfƒbƒNƒX•t‚«Setteriset(int, ƒvƒƒpƒeƒB’l‚ÌŒ^‚É“K‡‚·‚é”CˆÓ‚ÌƒNƒ‰ƒX)j‚ğ‚ÂƒIƒuƒWƒFƒNƒg‚Ì‚¢‚¸‚ê‚©‚Å‚ ‚éB
+     * æŒ‡å®šã—ãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ã€ã“ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šå¯èƒ½ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§è¨€ã†ã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã¯ã€é…åˆ—ã€{@link java.util.List}ã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãSetterï¼ˆset(int, ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã®å‹ã«é©åˆã™ã‚‹ä»»æ„ã®ã‚¯ãƒ©ã‚¹)ï¼‰ã‚’æŒã¤ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã„ãšã‚Œã‹ã§ã‚ã‚‹ã€‚
      *
-     * @param indexdClazz ƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX
-     * @param clazz ƒvƒƒpƒeƒB‚ÌŒ^
-     * @return w’è‚µ‚½ƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg‚ÉA‚±‚ÌƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ª‚ÂƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB’l‚ğİ’è‰Â”\‚Èê‡true
+     * @param indexdClazz ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹
+     * @param clazz ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹
+     * @return æŒ‡å®šã—ãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ã€ã“ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šå¯èƒ½ãªå ´åˆtrue
      */
     protected boolean isWritableIndexedObjectProperty(Class indexdClazz, Class clazz){
         if(indexdClazz.isArray()){
@@ -1311,15 +1311,15 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg‚©‚çA‚±‚ÌƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ª‚ÂƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB’l‚ğæ“¾‚·‚éB<p>
-     * ‚±‚±‚ÅŒ¾‚¤AƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg‚Æ‚ÍA”z—ñA{@link java.util.List}AƒCƒ“ƒfƒbƒNƒX•t‚«Getteriget(int)j‚ğ‚ÂƒIƒuƒWƒFƒNƒg‚Ì‚¢‚¸‚ê‚©‚Å‚ ‚éB
+     * æŒ‡å®šã—ãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ã€ã“ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã“ã“ã§è¨€ã†ã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã¯ã€é…åˆ—ã€{@link java.util.List}ã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãGetterï¼ˆget(int)ï¼‰ã‚’æŒã¤ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã„ãšã‚Œã‹ã§ã‚ã‚‹ã€‚
      *
-     * @param clazz ƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX‚Ü‚½‚ÍƒCƒ“ƒ^ƒtƒF[ƒX
-     * @param obj ƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg
-     * @return ƒvƒƒpƒeƒB’l
-     * @exception NoSuchIndexPropertyException w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚ÉA‚±‚ÌƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ª‚ÂƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚ªAƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚Å‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param clazz ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹ã¾ãŸã¯ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹
+     * @param obj ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
+     * @exception NoSuchIndexPropertyException æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ã«ã€ã“ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ãŒã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ã§ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     protected Object getIndexedObjectProperty(Class clazz, Object obj)
      throws NoSuchPropertyException, InvocationTargetException{
@@ -1413,14 +1413,14 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
                     new Object[]{new Integer(getIndex())}
                 );
             }catch(IllegalAccessException e){
-                // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                // èµ·ã“ã‚‰ãªã„ã¯ãš
                 throw new NoSuchPropertyException(
                     clazz,
                     getPropertyName(),
                     e
                 );
             }catch(IllegalArgumentException e){
-                // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                // èµ·ã“ã‚‰ãªã„ã¯ãš
                 throw new NoSuchPropertyException(
                     clazz,
                     getPropertyName(),
@@ -1431,13 +1431,13 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg‚ÌClass‚©‚çA‚±‚ÌƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ª‚ÂƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒBŒ^‚ğæ“¾‚·‚éB<p>
-     * ‚±‚±‚ÅŒ¾‚¤AƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg‚Æ‚ÍA”z—ñA{@link java.util.List}AƒCƒ“ƒfƒbƒNƒX•t‚«Getteriget(int)j‚ğ‚ÂƒIƒuƒWƒFƒNƒg‚Ì‚¢‚¸‚ê‚©‚Å‚ ‚éB
+     * æŒ‡å®šã—ãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®Classã‹ã‚‰ã€ã“ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã“ã“ã§è¨€ã†ã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã¯ã€é…åˆ—ã€{@link java.util.List}ã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãGetterï¼ˆget(int)ï¼‰ã‚’æŒã¤ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã„ãšã‚Œã‹ã§ã‚ã‚‹ã€‚
      *
-     * @param indexdClazz ƒCƒ“ƒfƒbƒNƒX•t‚«ƒNƒ‰ƒX
-     * @return ƒvƒƒpƒeƒBŒ^
-     * @exception NoSuchIndexPropertyException w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚ÉA‚±‚ÌƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ª‚ÂƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚ªAƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚Å‚È‚¢ê‡
+     * @param indexdClazz ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚¯ãƒ©ã‚¹
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å‹
+     * @exception NoSuchIndexPropertyException æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ã«ã€ã“ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ãŒã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ã§ãªã„å ´åˆ
      */
     protected Class getIndexedObjectPropertyType(Class indexdClazz)
      throws NoSuchPropertyException{
@@ -1517,7 +1517,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
                             setMethod = method;
                         }else{
                             indexedObjWriteMethodCache.put(indexdClazz, null);
-                            // Šm’è‚Å‚«‚È‚¢‚Ì‚ÅƒGƒ‰[
+                            // ç¢ºå®šã§ããªã„ã®ã§ã‚¨ãƒ©ãƒ¼
                             if(isThrow){
                                 throw new NoSuchPropertyException(
                                     indexdClazz,
@@ -1544,14 +1544,14 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚µ‚½ƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg‚ÉA‚±‚ÌƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ª‚ÂƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB’l‚ğİ’è‚·‚éB<p>
-     * ‚±‚±‚ÅŒ¾‚¤AƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg‚Æ‚ÍA”z—ñA{@link java.util.List}AƒCƒ“ƒfƒbƒNƒX•t‚«Setteriset(int, ƒvƒƒpƒeƒB’l‚ÌŒ^‚É“K‡‚·‚é”CˆÓ‚ÌƒNƒ‰ƒX)j‚ğ‚ÂƒIƒuƒWƒFƒNƒg‚Ì‚¢‚¸‚ê‚©‚Å‚ ‚éB
+     * æŒ‡å®šã—ãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ã€ã“ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§è¨€ã†ã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã¯ã€é…åˆ—ã€{@link java.util.List}ã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãSetterï¼ˆset(int, ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã®å‹ã«é©åˆã™ã‚‹ä»»æ„ã®ã‚¯ãƒ©ã‚¹)ï¼‰ã‚’æŒã¤ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã„ãšã‚Œã‹ã§ã‚ã‚‹ã€‚
      *
-     * @param obj ƒCƒ“ƒfƒbƒNƒX•t‚«ƒIƒuƒWƒFƒNƒg
-     * @param value ƒvƒƒpƒeƒB’l
-     * @exception NoSuchIndexPropertyException w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚ÉA‚±‚ÌƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚ª‚ÂƒCƒ“ƒfƒbƒNƒX‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚ªAƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚Å‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX•t‚«–ß‚è’l‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param obj ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param value ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
+     * @exception NoSuchIndexPropertyException æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ã«ã€ã“ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ãŒã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ã§ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ãæˆ»ã‚Šå€¤ã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     protected void setIndexedObjectProperty(Class clazz, Object obj, Object value)
      throws NoSuchPropertyException, InvocationTargetException{
@@ -1655,14 +1655,14 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
                     new Object[]{new Integer(getIndex()), value}
                 );
             }catch(IllegalAccessException e){
-                // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                // èµ·ã“ã‚‰ãªã„ã¯ãš
                 throw new NoSuchPropertyException(
                     clazz,
                     getPropertyName(),
                     e
                 );
             }catch(IllegalArgumentException e){
-                // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                // èµ·ã“ã‚‰ãªã„ã¯ãš
                 throw new NoSuchPropertyException(
                     clazz,
                     getPropertyName(),
@@ -1673,22 +1673,22 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½Bean‚ÌA‘S‚Ä‚ÌƒCƒ“ƒfƒbƒNƒX•t‚«ƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
-     * ’A‚µAƒCƒ“ƒfƒbƒNƒX‚ÍA0B<br>
+     * æŒ‡å®šã•ã‚ŒãŸBeanã®ã€å…¨ã¦ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ããƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¯ã€0ã€‚<br>
      *
-     * @param bean ‘ÎÛ‚Æ‚È‚éBean
-     * @return w’è‚³‚ê‚½Bean‚ÌA‘S‚Ä‚ÌƒCƒ“ƒfƒbƒNƒX•t‚«ƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB
+     * @param bean å¯¾è±¡ã¨ãªã‚‹Bean
+     * @return æŒ‡å®šã•ã‚ŒãŸBeanã®ã€å…¨ã¦ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ããƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚
      */
     public static IndexedProperty[] getIndexedProperties(Object bean){
         return getIndexedProperties(bean.getClass());
     }
     
     /**
-     * w’è‚³‚ê‚½ƒNƒ‰ƒX‚ÌA‘S‚Ä‚ÌƒCƒ“ƒfƒbƒNƒX•t‚«ƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
-     * ’A‚µAƒCƒ“ƒfƒbƒNƒX‚ÍA0B<br>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ã®ã€å…¨ã¦ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ããƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¯ã€0ã€‚<br>
      *
-     * @param clazz ‘ÎÛ‚Æ‚È‚éƒNƒ‰ƒX
-     * @return w’è‚³‚ê‚½Bean‚ÌA‘S‚Ä‚ÌƒCƒ“ƒfƒbƒNƒX•t‚«ƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB
+     * @param clazz å¯¾è±¡ã¨ãªã‚‹ã‚¯ãƒ©ã‚¹
+     * @return æŒ‡å®šã•ã‚ŒãŸBeanã®ã€å…¨ã¦ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ä»˜ããƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚
      */
     public static IndexedProperty[] getIndexedProperties(Class clazz){
         Set props = new HashSet();
@@ -1796,19 +1796,19 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * ‚±‚ÌƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return IndexedProperty{ƒvƒƒpƒeƒB–¼[ƒCƒ“ƒfƒbƒNƒX]}
+     * @return IndexedProperty{ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å[ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹]}
      */
     public String toString(){
         return "IndexedProperty{" + property + '[' + getIndex() + "]}";
     }
     
     /**
-     * ‚±‚ÌƒIƒuƒWƒFƒNƒg‚Æ‘¼‚ÌƒIƒuƒWƒFƒNƒg‚ª“™‚µ‚¢‚©‚Ç‚¤‚©‚ğ¦‚µ‚Ü‚·B <p>
+     * ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ä»–ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒç­‰ã—ã„ã‹ã©ã†ã‹ã‚’ç¤ºã—ã¾ã™ã€‚ <p>
      *
-     * @param obj ”äŠr‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return ˆø”‚Éw’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚Æ‚±‚ÌƒIƒuƒWƒFƒNƒg‚ª“™‚µ‚¢ê‡‚Í trueA‚»‚¤‚Å‚È‚¢ê‡‚Í falseB
+     * @param obj æ¯”è¼ƒå¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¼•æ•°ã«æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒç­‰ã—ã„å ´åˆã¯ trueã€ãã†ã§ãªã„å ´åˆã¯ falseã€‚
      */
     public boolean equals(Object obj){
         if(obj == null){
@@ -1829,19 +1829,19 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     /**
-     * ƒnƒbƒVƒ…’l‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒƒã‚·ãƒ¥å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒnƒbƒVƒ…’l
+     * @return ãƒãƒƒã‚·ãƒ¥å€¤
      */
     public int hashCode(){
         return (property == null ? 0 : property.hashCode()) + getIndex() + 2;
     }
     
     /**
-     * ‚±‚ÌƒIƒuƒWƒFƒNƒg‚Æw’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚Ì‡˜‚ğ”äŠr‚·‚éB<p>
+     * ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®é †åºã‚’æ¯”è¼ƒã™ã‚‹ã€‚<p>
      *
-     * @param obj ”äŠr‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return ‚±‚ÌƒIƒuƒWƒFƒNƒg‚ªw’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚æ‚è¬‚³‚¢ê‡‚Í•‰‚Ì®”A“™‚µ‚¢ê‡‚Íƒ[ƒA‘å‚«‚¢ê‡‚Í³‚Ì®”
+     * @param obj æ¯”è¼ƒå¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒæŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚ˆã‚Šå°ã•ã„å ´åˆã¯è² ã®æ•´æ•°ã€ç­‰ã—ã„å ´åˆã¯ã‚¼ãƒ­ã€å¤§ãã„å ´åˆã¯æ­£ã®æ•´æ•°
      */
     public int compareTo(Object obj){
         if(obj == null){

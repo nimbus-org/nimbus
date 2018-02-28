@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.context;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link GroupContextService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link GroupContextService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see GroupContextService
@@ -42,39 +42,39 @@ import jp.ossc.nimbus.core.*;
 public interface GroupContextServiceMBean extends ServiceBaseMBean, Context {
     
     /**
-     * ƒOƒ‹[ƒsƒ“ƒO‚·‚éƒRƒ“ƒeƒLƒXƒgƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param names ƒOƒ‹[ƒsƒ“ƒO‚·‚éƒRƒ“ƒeƒLƒXƒgƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñ
+     * @param names ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—
      */
     public void setContextServiceNames(ServiceName[] names);
     
     /**
-     * ƒOƒ‹[ƒsƒ“ƒO‚·‚éƒRƒ“ƒeƒLƒXƒgƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒOƒ‹[ƒsƒ“ƒO‚·‚éƒRƒ“ƒeƒLƒXƒgƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñ
+     * @return ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—
      */
     public ServiceName[] getContextServiceNames();
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚ÉŠÖ˜A•t‚¯‚ç‚ê‚½ƒRƒ“ƒeƒLƒXƒgî•ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã«é–¢é€£ä»˜ã‘ã‚‰ã‚ŒãŸã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @return ƒL[‚ÉŠÖ˜A•t‚¯‚ç‚ê‚½ƒRƒ“ƒeƒLƒXƒgî•ñBŠY“–‚·‚éƒRƒ“ƒeƒLƒXƒgî•ñ‚ª‚È‚¢ê‡‚ÍAnull
+     * @param key ã‚­ãƒ¼
+     * @return ã‚­ãƒ¼ã«é–¢é€£ä»˜ã‘ã‚‰ã‚ŒãŸã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã€‚è©²å½“ã™ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ãŒãªã„å ´åˆã¯ã€null
      */
     public Object get(String key);
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚ÉŠÖ˜A•t‚¯‚ç‚ê‚½ƒRƒ“ƒeƒLƒXƒgî•ñ‚ğíœ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã«é–¢é€£ä»˜ã‘ã‚‰ã‚ŒãŸã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @return íœ‚³‚ê‚½ƒRƒ“ƒeƒLƒXƒgî•ñBíœ‚·‚éƒRƒ“ƒeƒLƒXƒgî•ñ‚ª‚È‚¢ê‡‚ÍAnull
+     * @param key ã‚­ãƒ¼
+     * @return å‰Šé™¤ã•ã‚ŒãŸã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã€‚å‰Šé™¤ã™ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ãŒãªã„å ´åˆã¯ã€null
      */
     public Object remove(String key);
     
     /**
-     * u–¼‘O(key‚ÌtoString()) : ’l(value‚ÌtoString()) ‰üsv‚Æ‚¢‚¤Œ`®‚ÅƒŠƒXƒgo—Í‚·‚éB<p>
+     * ã€Œåå‰(keyã®toString()) : å€¤(valueã®toString()) æ”¹è¡Œã€ã¨ã„ã†å½¢å¼ã§ãƒªã‚¹ãƒˆå‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒXƒg•¶š—ñ
+     * @return ãƒªã‚¹ãƒˆæ–‡å­—åˆ—
      */
     public String list();
 }

@@ -32,18 +32,18 @@
 package jp.ossc.nimbus.util.validator;
 
 /**
- * ƒoƒŠƒf[ƒ^B<p>
+ * ãƒãƒªãƒ‡ãƒ¼ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface Validator{
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğŒŸØ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @param obj ŒŸØ‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return ŒŸØŒ‹‰ÊBŒŸØ¬Œ÷‚Ìê‡true
-     * @exception ValidateException ŒŸØ‚É¸”s‚µ‚½ê‡
+     * @param obj æ¤œè¨¼å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return æ¤œè¨¼çµæœã€‚æ¤œè¨¼æˆåŠŸã®å ´åˆtrue
+     * @exception ValidateException æ¤œè¨¼ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean validate(Object obj) throws ValidateException;
 }

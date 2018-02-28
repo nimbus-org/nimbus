@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.journal.editor;
 
 /**
- * {@link DataSetJSONJournalEditorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link DataSetJSONJournalEditorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see DataSetJSONJournalEditorService
@@ -41,49 +41,49 @@ public interface DataSetJSONJournalEditorServiceMBean
  extends ImmutableJournalEditorServiceBaseMBean{
     
     /**
-     * ƒXƒL[ƒ}î•ñ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * JSON‚Éschema—v‘f‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éBtrue‚Ìê‡Ao—Í‚·‚éBƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * JSONã«schemaè¦ç´ ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      *
-     * @param isOutput ƒXƒL[ƒ}î•ñ‚ğo—Í‚·‚éê‡‚Ítrue
+     * @param isOutput ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹å ´åˆã¯true
      */
     public void setOutputSchema(boolean isOutput);
     
     /**
-     * ƒXƒL[ƒ}î•ñ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡ƒXƒL[ƒ}î•ñ‚ğo—Í‚·‚é
+     * @return trueã®å ´åˆã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputSchema();
     
     /**
-     * ƒwƒbƒ_‚ÌƒvƒƒpƒeƒB–¼‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚ÅAo—Í‚·‚éB<br>
-     * false‚É‚·‚é‚ÆAƒwƒbƒ_‚ªJSON‚ÌƒIƒuƒWƒFƒNƒgŒ`®‚Å‚Í‚È‚­A”z—ñŒ`®‚Åo—Í‚³‚ê‚éB<br>
+     * ãƒ˜ãƒƒãƒ€ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§ã€å‡ºåŠ›ã™ã‚‹ã€‚<br>
+     * falseã«ã™ã‚‹ã¨ã€ãƒ˜ãƒƒãƒ€ãŒJSONã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå½¢å¼ã§ã¯ãªãã€é…åˆ—å½¢å¼ã§å‡ºåŠ›ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param isOutput ƒwƒbƒ_‚ÌƒvƒƒpƒeƒB–¼‚ğo—Í‚·‚éê‡‚ÍAtrue
+     * @param isOutput ãƒ˜ãƒƒãƒ€ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å‡ºåŠ›ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setOutputPropertyNameOfHeader(boolean isOutput);
     
     /**
-     * ƒwƒbƒ_‚ÌƒvƒƒpƒeƒB–¼‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ˜ãƒƒãƒ€ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Aƒwƒbƒ_‚ÌƒvƒƒpƒeƒB–¼‚ğo—Í‚·‚é
+     * @return trueã®å ´åˆã€ãƒ˜ãƒƒãƒ€ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputPropertyNameOfHeader();
     
     /**
-     * ƒŒƒR[ƒhƒŠƒXƒg‚ÌƒvƒƒpƒeƒB–¼‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚ÅAo—Í‚·‚éB<br>
-     * false‚É‚·‚é‚ÆAƒŒƒR[ƒhƒŠƒXƒg‚ªJSON‚ÌƒIƒuƒWƒFƒNƒgŒ`®‚Å‚Í‚È‚­A”z—ñŒ`®‚Åo—Í‚³‚ê‚éB<br>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§ã€å‡ºåŠ›ã™ã‚‹ã€‚<br>
+     * falseã«ã™ã‚‹ã¨ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆãŒJSONã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå½¢å¼ã§ã¯ãªãã€é…åˆ—å½¢å¼ã§å‡ºåŠ›ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param isOutput ƒŒƒR[ƒhƒŠƒXƒg‚ÌƒvƒƒpƒeƒB–¼‚ğo—Í‚·‚éê‡‚ÍAtrue
+     * @param isOutput ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å‡ºåŠ›ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setOutputPropertyNameOfRecordList(boolean isOutput);
     
     /**
-     * ƒŒƒR[ƒhƒŠƒXƒg‚ÌƒvƒƒpƒeƒB–¼‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AƒŒƒR[ƒhƒŠƒXƒg‚ÌƒvƒƒpƒeƒB–¼‚ğo—Í‚·‚é
+     * @return trueã®å ´åˆã€ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputPropertyNameOfRecordList();
 }

@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.context;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link SharedContextTransactionManagerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link SharedContextTransactionManagerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see SharedContextTransactionManagerService

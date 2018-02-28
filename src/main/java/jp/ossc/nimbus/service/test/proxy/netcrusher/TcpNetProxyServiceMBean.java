@@ -35,79 +35,79 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.service.test.proxy.TcpNetProxy;
 
 /**
- * {@link TcpNetProxyService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link TcpNetProxyService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Ishida
  */
 public interface TcpNetProxyServiceMBean extends ServiceBaseMBean, TcpNetProxy {
 
     /**
-     * TcpCrusher‚Éİ’è‚·‚éBindAddress‚ğæ“¾‚·‚éB<p>
+     * TcpCrusherã«è¨­å®šã™ã‚‹BindAddressã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return TcpCrusher‚Éİ’è‚·‚éBindAddress
+     * @return TcpCrusherã«è¨­å®šã™ã‚‹BindAddress
      */
     public String getBindAddress();
 
     /**
-     * TcpCrusher‚Éİ’è‚·‚éBindAddress‚ğİ’è‚·‚éB<p>
+     * TcpCrusherã«è¨­å®šã™ã‚‹BindAddressã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param address TcpCrusher‚Éİ’è‚·‚éBindAddress
+     * @param address TcpCrusherã«è¨­å®šã™ã‚‹BindAddress
      */
     public void setBindAddress(String address);
 
     /**
-     * TcpCrusher‚Éİ’è‚·‚éBindPort‚ğæ“¾‚·‚éB<p>
+     * TcpCrusherã«è¨­å®šã™ã‚‹BindPortã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return TcpCrusher‚Éİ’è‚·‚éBindPort
+     * @return TcpCrusherã«è¨­å®šã™ã‚‹BindPort
      */
     public int getBindPort();
 
     /**
-     * TcpCrusher‚Éİ’è‚·‚éBindPort‚ğİ’è‚·‚éB<p>
+     * TcpCrusherã«è¨­å®šã™ã‚‹BindPortã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param port TcpCrusher‚Éİ’è‚·‚éBindPort
+     * @param port TcpCrusherã«è¨­å®šã™ã‚‹BindPort
      */
     public void setBindPort(int port);
 
     /**
-     * ƒvƒƒLƒV‚ÌÚ‘±æƒAƒhƒŒƒX‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã®æ¥ç¶šå…ˆã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒLƒV‚ÌÚ‘±æƒAƒhƒŒƒX
+     * @return ãƒ—ãƒ­ã‚­ã‚·ã®æ¥ç¶šå…ˆã‚¢ãƒ‰ãƒ¬ã‚¹
      */
     public String getConnectAddress();
 
     /**
-     * ƒvƒƒLƒV‚ÌÚ‘±æƒAƒhƒŒƒX‚ğİ’è‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã®æ¥ç¶šå…ˆã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param address ƒvƒƒLƒV‚ÌÚ‘±æƒAƒhƒŒƒX
+     * @param address ãƒ—ãƒ­ã‚­ã‚·ã®æ¥ç¶šå…ˆã‚¢ãƒ‰ãƒ¬ã‚¹
      */
     public void setConnectAddress(String address);
 
     /**
-     * ƒvƒƒLƒV‚ÌÚ‘±æPort‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã®æ¥ç¶šå…ˆPortã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒLƒV‚ÌÚ‘±æPort
+     * @return ãƒ—ãƒ­ã‚­ã‚·ã®æ¥ç¶šå…ˆPort
      */
     public int getConnectPort();
 
     /**
-     * ƒvƒƒLƒV‚ÌÚ‘±æPort‚ğİ’è‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã®æ¥ç¶šå…ˆPortã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param port ƒvƒƒLƒV‚ÌÚ‘±æPort
+     * @param port ãƒ—ãƒ­ã‚­ã‚·ã®æ¥ç¶šå…ˆPort
      */
     public void setConnectPort(int port);
 
     /**
-     * ƒT[ƒrƒXŠJn‚ÉƒI[ƒvƒ“‚·‚é‚©‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹é–‹å§‹æ™‚ã«ã‚ªãƒ¼ãƒ—ãƒ³ã™ã‚‹ã‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒT[ƒrƒXŠJn‚ÉƒI[ƒvƒ“‚·‚éê‡Atrue
+     * @return ã‚µãƒ¼ãƒ“ã‚¹é–‹å§‹æ™‚ã«ã‚ªãƒ¼ãƒ—ãƒ³ã™ã‚‹å ´åˆã€true
      */
     public boolean isOpenOnStart();
 
     /**
-     * ƒT[ƒrƒXŠJn‚ÉƒI[ƒvƒ“‚·‚é‚©‚ğİ’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹é–‹å§‹æ™‚ã«ã‚ªãƒ¼ãƒ—ãƒ³ã™ã‚‹ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isOpenOnStart ƒT[ƒrƒXŠJn‚ÉƒI[ƒvƒ“‚·‚éê‡Atrue
+     * @param isOpenOnStart ã‚µãƒ¼ãƒ“ã‚¹é–‹å§‹æ™‚ã«ã‚ªãƒ¼ãƒ—ãƒ³ã™ã‚‹å ´åˆã€true
      */
     public void setOpenOnStart(boolean isOpenOnStart);
 }

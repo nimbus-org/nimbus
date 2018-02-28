@@ -37,7 +37,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link JFreeChartFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link JFreeChartFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author k2-taniguchi
  */
@@ -45,30 +45,30 @@ public interface JFreeChartFactoryServiceMBean
     extends ServiceBaseMBean {
 
     /**
-     * ƒvƒƒbƒgƒtƒ@ƒNƒgƒŠƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param serviceName ƒvƒƒbƒgƒtƒ@ƒNƒgƒŠƒT[ƒrƒX–¼
+     * @param serviceName ãƒ—ãƒ­ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setPlotFactoryServiceName(ServiceName serviceName);
 
     /**
-     * ƒvƒƒbƒgƒtƒ@ƒNƒgƒŠƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒbƒgƒtƒ@ƒNƒgƒŠƒT[ƒrƒX–¼
+     * @return ãƒ—ãƒ­ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getPlotFactoryServiceName();
     
     /**
-     * ƒTƒuƒ^ƒCƒgƒ‹‚ğ’Ç‰Á‚·‚éB<p>
+     * ã‚µãƒ–ã‚¿ã‚¤ãƒˆãƒ«ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      * 
-     * @param title ƒTƒuƒ^ƒCƒgƒ‹
+     * @param title ã‚µãƒ–ã‚¿ã‚¤ãƒˆãƒ«
      */
     public void addSubtitle(Title title);
     
     /**
-     * ƒŒƒWƒFƒ“ƒh‚ğ¶¬‚·‚é‚©‚Ç‚¤‚©İ’è‚·‚éB<p>
+     * ãƒ¬ã‚¸ã‚§ãƒ³ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹ã‹ã©ã†ã‹è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param createLegend true:ƒŒƒWƒFƒ“ƒh¶¬/false:ƒŒƒWƒFƒ“ƒh¶¬‚µ‚È‚¢
+     * @param createLegend true:ãƒ¬ã‚¸ã‚§ãƒ³ãƒ‰ç”Ÿæˆ/false:ãƒ¬ã‚¸ã‚§ãƒ³ãƒ‰ç”Ÿæˆã—ãªã„
      */
     public void setCreateLegend(boolean createLegend);
 }

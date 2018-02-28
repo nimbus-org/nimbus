@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aop.interceptor;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link ExceptionThrowInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link ExceptionThrowInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see ExceptionThrowInterceptorService
@@ -42,101 +42,101 @@ import jp.ossc.nimbus.core.*;
 public interface ExceptionThrowInterceptorServiceMBean extends ServiceBaseMBean{
     
     /**
-     * —áŠO‚ğthrow‚·‚é/‚µ‚È‚¢‚ğİ’è‚·‚éB<p>
+     * ä¾‹å¤–ã‚’throwã™ã‚‹/ã—ãªã„ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param enabled throw‚·‚éê‡‚ÍAtrue
+     * @param enabled throwã™ã‚‹å ´åˆã¯ã€true
      */
     public void setEnabled(boolean enabled);
     
     /**
-     * —áŠO‚ğthrow‚·‚é/‚µ‚È‚¢‚ğ”»’è‚·‚éB<p>
+     * ä¾‹å¤–ã‚’throwã™ã‚‹/ã—ãªã„ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A—LŒø
+     * @return trueã®å ´åˆã€æœ‰åŠ¹
      */
     public boolean isEnabled();
     
     /**
-     * throw‚·‚é—áŠO‚ÌƒNƒ‰ƒX–¼‚ğİ’è‚·‚éB<p>
+     * throwã™ã‚‹ä¾‹å¤–ã®ã‚¯ãƒ©ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param className throw‚·‚é—áŠO‚ÌƒNƒ‰ƒX–¼
+     * @param className throwã™ã‚‹ä¾‹å¤–ã®ã‚¯ãƒ©ã‚¹å
      */
     public void setExceptionClassName(String className);
     
     /**
-     * throw‚·‚é—áŠO‚ÌƒNƒ‰ƒX–¼‚ğæ“¾‚·‚éB<p>
+     * throwã™ã‚‹ä¾‹å¤–ã®ã‚¯ãƒ©ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return throw‚·‚é—áŠO‚ÌƒNƒ‰ƒX–¼
+     * @return throwã™ã‚‹ä¾‹å¤–ã®ã‚¯ãƒ©ã‚¹å
      */
     public String getExceptionClassName();
     
     /**
-     * throw‚·‚é—áŠO‚ÌƒƒbƒZ[ƒW‚ğİ’è‚·‚éB<p>
+     * throwã™ã‚‹ä¾‹å¤–ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param msg throw‚·‚é—áŠO‚ÌƒƒbƒZ[ƒW
+     * @param msg throwã™ã‚‹ä¾‹å¤–ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public void setMessage(String msg);
     
     /**
-     * throw‚·‚é—áŠO‚ÌƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * throwã™ã‚‹ä¾‹å¤–ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return throw‚·‚é—áŠO‚ÌƒƒbƒZ[ƒW
+     * @return throwã™ã‚‹ä¾‹å¤–ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String getMessage();
     
     /**
-     * throw‚·‚é—áŠO‚ÌƒƒbƒZ[ƒW‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.message.MessageRecordFactory MessageRecordFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * throwã™ã‚‹ä¾‹å¤–ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.message.MessageRecordFactory MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name MessageRecordFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name MessageRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setMessageRecordFactoryServiceName(ServiceName name);
     
     /**
-     * throw‚·‚é—áŠO‚ÌƒƒbƒZ[ƒW‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.message.MessageRecordFactory MessageRecordFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * throwã™ã‚‹ä¾‹å¤–ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.message.MessageRecordFactory MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return MessageRecordFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return MessageRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getMessageRecordFactoryServiceName();
     
     /**
-     * throw‚·‚é—áŠO‚ÌƒƒbƒZ[ƒW‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.message.MessageRecordFactory MessageRecordFactory}ƒT[ƒrƒX‚©‚çƒƒbƒZ[ƒW‚ğæ“¾‚·‚é‚ÌƒL[‚ğİ’è‚·‚éB<p>
+     * throwã™ã‚‹ä¾‹å¤–ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.message.MessageRecordFactory MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹æ™‚ã®ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key MessageRecordFactoryƒT[ƒrƒX‚©‚çƒƒbƒZ[ƒW‚ğæ“¾‚·‚é‚ÌƒL[
+     * @param key MessageRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹æ™‚ã®ã‚­ãƒ¼
      */
     public void setMessageKey(String key);
     
     /**
-     * throw‚·‚é—áŠO‚ÌƒƒbƒZ[ƒW‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.message.MessageRecordFactory MessageRecordFactory}ƒT[ƒrƒX‚©‚çƒƒbƒZ[ƒW‚ğæ“¾‚·‚é‚ÌƒL[‚ğæ“¾‚·‚éB<p>
+     * throwã™ã‚‹ä¾‹å¤–ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.message.MessageRecordFactory MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹æ™‚ã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return MessageRecordFactoryƒT[ƒrƒX‚©‚çƒƒbƒZ[ƒW‚ğæ“¾‚·‚é‚ÌƒL[
+     * @return MessageRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹æ™‚ã®ã‚­ãƒ¼
      */
     public String getMessageKey();
     
     /**
-     * throw‚·‚é—áŠO‚ÌƒƒbƒZ[ƒW‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.message.MessageRecordFactory MessageRecordFactory}ƒT[ƒrƒX‚©‚çƒƒbƒZ[ƒW‚ğæ“¾‚·‚é‚ÌƒƒbƒZ[ƒW‚Ö‚Ì–„‚ß‚İ•¶š—ñ‚ğİ’è‚·‚éB<p>
+     * throwã™ã‚‹ä¾‹å¤–ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.message.MessageRecordFactory MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹æ™‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¸ã®åŸ‹ã‚è¾¼ã¿æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param args MessageRecordFactoryƒT[ƒrƒX‚©‚çƒƒbƒZ[ƒW‚ğæ“¾‚·‚é‚ÌƒƒbƒZ[ƒW‚Ö‚Ì–„‚ß‚İ•¶š—ñ
+     * @param args MessageRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹æ™‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¸ã®åŸ‹ã‚è¾¼ã¿æ–‡å­—åˆ—
      */
     public void setMessageArgs(String[] args);
     
     /**
-     * throw‚·‚é—áŠO‚ÌƒƒbƒZ[ƒW‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.message.MessageRecordFactory MessageRecordFactory}ƒT[ƒrƒX‚©‚çƒƒbƒZ[ƒW‚ğæ“¾‚·‚é‚ÌƒƒbƒZ[ƒW‚Ö‚Ì–„‚ß‚İ•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * throwã™ã‚‹ä¾‹å¤–ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.message.MessageRecordFactory MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹æ™‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¸ã®åŸ‹ã‚è¾¼ã¿æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return MessageRecordFactoryƒT[ƒrƒX‚©‚çƒƒbƒZ[ƒW‚ğæ“¾‚·‚é‚ÌƒƒbƒZ[ƒW‚Ö‚Ì–„‚ß‚İ•¶š—ñ
+     * @return MessageRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹æ™‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¸ã®åŸ‹ã‚è¾¼ã¿æ–‡å­—åˆ—
      */
     public String[] getMessageArgs();
     
     
     /**
-     * throw‚·‚é—áŠO‚ÌƒƒbƒZ[ƒW‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.message.MessageRecordFactory MessageRecordFactory}ƒT[ƒrƒX‚©‚çƒƒbƒZ[ƒW‚ğæ“¾‚·‚é‚ÌƒƒbƒZ[ƒW‚ÌƒƒP[ƒ‹‚ğİ’è‚·‚éB<p>
+     * throwã™ã‚‹ä¾‹å¤–ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.message.MessageRecordFactory MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹æ™‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒ­ã‚±ãƒ¼ãƒ«ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param locale MessageRecordFactoryƒT[ƒrƒX‚©‚çƒƒbƒZ[ƒW‚ğæ“¾‚·‚é‚ÌƒƒbƒZ[ƒW‚ÌƒƒP[ƒ‹
+     * @param locale MessageRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹æ™‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒ­ã‚±ãƒ¼ãƒ«
      */
     public void setMessageLocale(java.util.Locale locale);
     
     /**
-     * throw‚·‚é—áŠO‚ÌƒƒbƒZ[ƒW‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.message.MessageRecordFactory MessageRecordFactory}ƒT[ƒrƒX‚©‚çƒƒbƒZ[ƒW‚ğæ“¾‚·‚é‚ÌƒƒbƒZ[ƒW‚ÌƒƒP[ƒ‹‚ğæ“¾‚·‚éB<p>
+     * throwã™ã‚‹ä¾‹å¤–ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.message.MessageRecordFactory MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹æ™‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒ­ã‚±ãƒ¼ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return MessageRecordFactoryƒT[ƒrƒX‚©‚çƒƒbƒZ[ƒW‚ğæ“¾‚·‚é‚ÌƒƒbƒZ[ƒW‚ÌƒƒP[ƒ‹
+     * @return MessageRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹æ™‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒ­ã‚±ãƒ¼ãƒ«
      */
     public java.util.Locale getMessageLocale();
 }

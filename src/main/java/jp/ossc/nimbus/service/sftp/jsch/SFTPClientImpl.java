@@ -48,8 +48,8 @@ import jp.ossc.nimbus.service.sftp.SFTPException;
 import jp.ossc.nimbus.service.semaphore.Semaphore;
 
 /**
- * SFTPƒNƒ‰ƒCƒAƒ“ƒgB<p>
- * <a href="http://www.jcraft.com/jsch/">JSch - Java Secure Channel</a>‚ÌSFTPƒ‰ƒCƒuƒ‰ƒŠ‚ğg—p‚µ‚½{@link jp.ossc.nimbus.service.sftp.SFTPClient SFTPClient}À‘•ƒNƒ‰ƒX‚Å‚ ‚éB<br>
+ * SFTPã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã€‚<p>
+ * <a href="http://www.jcraft.com/jsch/">JSch - Java Secure Channel</a>ã®SFTPãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ä½¿ç”¨ã—ãŸ{@link jp.ossc.nimbus.service.sftp.SFTPClient SFTPClient}å®Ÿè£…ã‚¯ãƒ©ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */

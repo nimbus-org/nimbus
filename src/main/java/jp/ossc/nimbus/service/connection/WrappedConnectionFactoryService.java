@@ -40,10 +40,10 @@ import jp.ossc.nimbus.beans.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒ‰ƒbƒvƒRƒlƒNƒVƒ‡ƒ“ƒtƒ@ƒNƒgƒŠB<p>
- * w’è‚³‚ê‚½ƒRƒlƒNƒVƒ‡ƒ“ƒtƒ@ƒNƒgƒŠ‚ª¶¬‚µ‚½ƒRƒlƒNƒVƒ‡ƒ“‚ğƒRƒlƒNƒVƒ‡ƒ“ƒ‰ƒbƒp‚Åƒ‰ƒbƒv‚µ‚Ä•Ô‚·B<br>
- * ƒRƒlƒNƒVƒ‡ƒ“ƒ‰ƒbƒpƒNƒ‰ƒX‚ÍAjava.sql.ConnectionƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µAˆø”‚Éjava.sql.Connection‚ğ‚ÂƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ğ‚½‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B<br>
- * ˆÈ‰º‚ÉAƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ãƒ©ãƒƒãƒ—ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * æŒ‡å®šã•ã‚ŒãŸã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒç”Ÿæˆã—ãŸã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ©ãƒƒãƒ‘ã§ãƒ©ãƒƒãƒ—ã—ã¦è¿”ã™ã€‚<br>
+ * ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ©ãƒƒãƒ‘ã‚¯ãƒ©ã‚¹ã¯ã€java.sql.Connectionã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ã€å¼•æ•°ã«java.sql.Connectionã‚’æŒã¤ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã‚’æŒãŸãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚<br>
+ * ä»¥ä¸‹ã«ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -79,23 +79,23 @@ public class WrappedConnectionFactoryService extends ServiceBase
     private static final long serialVersionUID = -7525550711109470382L;
     
     /**
-     * ƒ‰ƒbƒv‚·‚éConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼B<p>
+     * ãƒ©ãƒƒãƒ—ã™ã‚‹ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName connectionFactoryServiceName;
     
     /**
-     * ƒ‰ƒbƒv‚·‚éConnectionFactoryƒT[ƒrƒXB<p>
+     * ãƒ©ãƒƒãƒ—ã™ã‚‹ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
      */
     private ConnectionFactory connectionFactory;
     
     /**
-     * {@link java.sql.Connection}‚ğƒ‰ƒbƒv‚·‚éƒNƒ‰ƒX‚ÌƒNƒ‰ƒX–¼B<p>
-     * ‚±‚±‚Åw’è‚Å‚«‚éƒNƒ‰ƒX‚ÍAjava.sql.ConnectionƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚Ä‚¨‚èAˆø”‚Éjava.sql.Connection‚ğ‚ÂƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ğÀ‘•‚µ‚Ä‚¢‚éƒNƒ‰ƒX‚Å‚ ‚éB<br>
+     * {@link java.sql.Connection}ã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¯ãƒ©ã‚¹ã®ã‚¯ãƒ©ã‚¹åã€‚<p>
+     * ã“ã“ã§æŒ‡å®šã§ãã‚‹ã‚¯ãƒ©ã‚¹ã¯ã€java.sql.Connectionã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ã¦ãŠã‚Šã€å¼•æ•°ã«java.sql.Connectionã‚’æŒã¤ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã‚’å®Ÿè£…ã—ã¦ã„ã‚‹ã‚¯ãƒ©ã‚¹ã§ã‚ã‚‹ã€‚<br>
      */
     private String connectionWrapperClassName;
     
     /**
-     * {@link java.sql.Connection}‚ğƒ‰ƒbƒv‚·‚éƒNƒ‰ƒXB<p>
+     * {@link java.sql.Connection}ã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¯ãƒ©ã‚¹ã€‚<p>
      */
     private Class connectionWrapperClass;
     
@@ -104,9 +104,9 @@ public class WrappedConnectionFactoryService extends ServiceBase
     private Map properties;
     
     /**
-     * ŠJnˆ—‚ğs‚¤B<p>
+     * é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         
@@ -144,9 +144,9 @@ public class WrappedConnectionFactoryService extends ServiceBase
     }
     
     /**
-     * ’â~ˆ—‚ğs‚¤B<p>
+     * åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         connectionFactory = null;
@@ -154,7 +154,7 @@ public class WrappedConnectionFactoryService extends ServiceBase
         properties = null;
     }
     
-    // ConnectionFactory‚ÌJavaDoc
+    // ConnectionFactoryã®JavaDoc
     public Connection getConnection() throws ConnectionFactoryException{
         Connection con = connectionFactory.getConnection();
         if(con != null && connectionWrapperClass != null){
@@ -187,32 +187,32 @@ public class WrappedConnectionFactoryService extends ServiceBase
         return con;
     }
     
-    // WrappedConnectionFactoryServiceMBean‚ÌJavaDoc
+    // WrappedConnectionFactoryServiceMBeanã®JavaDoc
     public void setConnectionFactoryServiceName(ServiceName name){
         connectionFactoryServiceName = name;
     }
     
-    // WrappedConnectionFactoryServiceMBean‚ÌJavaDoc
+    // WrappedConnectionFactoryServiceMBeanã®JavaDoc
     public ServiceName getConnectionFactoryServiceName(){
         return connectionFactoryServiceName;
     }
     
-    // WrappedConnectionFactoryServiceMBean‚ÌJavaDoc
+    // WrappedConnectionFactoryServiceMBeanã®JavaDoc
     public void setConnectionWrapperClassName(String className){
         connectionWrapperClassName = className;
     }
     
-    // WrappedConnectionFactoryServiceMBean‚ÌJavaDoc
+    // WrappedConnectionFactoryServiceMBeanã®JavaDoc
     public String getConnectionWrapperClassName(){
         return connectionWrapperClassName;
     }
     
-    // WrappedConnectionFactoryServiceMBean‚ÌJavaDoc
+    // WrappedConnectionFactoryServiceMBeanã®JavaDoc
     public void setConnectionWrapperProperties(Map prop){
         connectionWrapperProperties = prop;
     }
     
-    // WrappedConnectionFactoryServiceMBean‚ÌJavaDoc
+    // WrappedConnectionFactoryServiceMBeanã®JavaDoc
     public Map getConnectionWrapperProperties(){
         return connectionWrapperProperties;
     }

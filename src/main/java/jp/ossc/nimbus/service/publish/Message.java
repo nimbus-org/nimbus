@@ -34,136 +34,136 @@ package jp.ossc.nimbus.service.publish;
 import java.util.Set;
 
 /**
- * ƒƒbƒZ[ƒWƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface Message{
     
     /**
-     * ƒTƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<br>
+     * ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<br>
      *
-     * @return ƒTƒuƒWƒFƒNƒg
+     * @return ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public String getSubject();
     
     /**
-     * ƒTƒuƒWƒFƒNƒgW‡‚ğæ“¾‚·‚éB<br>
+     * ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆé›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<br>
      *
-     * @return ƒTƒuƒWƒFƒNƒgW‡
+     * @return ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆé›†åˆ
      */
     public Set getSubjects();
     
     /**
-     * ƒTƒuƒWƒFƒNƒg‚ğİ’è‚·‚éB<br>
+     * ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param sbj ƒTƒuƒWƒFƒNƒg
-     * @param key ƒL[
+     * @param sbj ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param key ã‚­ãƒ¼
      */
     public void setSubject(String sbj, String key);
     
     /**
-     * ƒL[‚ğæ“¾‚·‚éB<br>
+     * ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<br>
      *
-     * @return ƒL[
+     * @return ã‚­ãƒ¼
      */
     public String getKey();
     
     /**
-     * ƒL[‚ğæ“¾‚·‚éB<br>
+     * ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<br>
      *
-     * @param sbj ƒTƒuƒWƒFƒNƒg
-     * @return ƒL[
+     * @param sbj ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ã‚­ãƒ¼
      */
     public String getKey(String sbj);
     
     /**
-     * ƒƒbƒZ[ƒW‚Ìƒf[ƒ^‚ğİ’è‚·‚éB<br>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param obj ƒƒbƒZ[ƒW‚Ìƒf[ƒ^ƒIƒuƒWƒFƒNƒg
-     * @exception MessageException ƒf[ƒ^ƒIƒuƒWƒFƒNƒg‚Ìİ’è‚É¸”s‚µ‚½ê‡
+     * @param obj ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒ‡ãƒ¼ã‚¿ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception MessageException ãƒ‡ãƒ¼ã‚¿ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è¨­å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void setObject(Object obj) throws MessageException;
     
     /**
-     * ƒƒbƒZ[ƒW‚Ìƒf[ƒ^‚ğæ“¾‚·‚éB<br>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<br>
      *
-     * @return ƒf[ƒ^ƒIƒuƒWƒFƒNƒg
-     * @exception MessageException ƒf[ƒ^ƒIƒuƒWƒFƒNƒg‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @return ãƒ‡ãƒ¼ã‚¿ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception MessageException ãƒ‡ãƒ¼ã‚¿ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object getObject() throws MessageException;
     
     /**
-     * ƒƒbƒZ[ƒW‚Ì’¼—ñ‰»ƒoƒCƒg”z—ñ‚ğİ’è‚·‚éB<br>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ç›´åˆ—åŒ–ãƒã‚¤ãƒˆé…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param bytes ƒƒbƒZ[ƒW‚Ì’¼—ñ‰»ƒoƒCƒg”z—ñ
+     * @param bytes ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ç›´åˆ—åŒ–ãƒã‚¤ãƒˆé…åˆ—
      */
     public void setSerializedBytes(byte[] bytes);
     
     /**
-     * ƒƒbƒZ[ƒW‚Ì’¼—ñ‰»ƒoƒCƒg”z—ñ‚ğæ“¾‚·‚éB<br>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ç›´åˆ—åŒ–ãƒã‚¤ãƒˆé…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<br>
      *
-     * @return ƒƒbƒZ[ƒW‚Ì’¼—ñ‰»ƒoƒCƒg”z—ñ
+     * @return ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ç›´åˆ—åŒ–ãƒã‚¤ãƒˆé…åˆ—
      */
     public byte[] getSerializedBytes();
     
     /**
-     * ‘—M‚ğæ“¾‚·‚éB<p>
+     * é€ä¿¡æ™‚åˆ»ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘—M
+     * @return é€ä¿¡æ™‚åˆ»
      */
     public long getSendTime();
     
     /**
-     * óM‚ğæ“¾‚·‚éB<p>
+     * å—ä¿¡æ™‚åˆ»ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return óM
+     * @return å—ä¿¡æ™‚åˆ»
      */
     public long getReceiveTime();
     
     /**
-     * ‘—MæID‚ÌW‡‚ğæ“¾‚·‚éB<br>
+     * é€ä¿¡å…ˆIDã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<br>
      *
-     * @return ‘—MæID‚ÌW‡
+     * @return é€ä¿¡å…ˆIDã®é›†åˆ
      */
     public Set getDestinationIds();
     
     /**
-     * ‘—MæID‚ÌW‡‚ğİ’è‚·‚éB<br>
+     * é€ä¿¡å…ˆIDã®é›†åˆã‚’è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param ids ‘—MæID‚ÌW‡
+     * @param ids é€ä¿¡å…ˆIDã®é›†åˆ
      */
     public void setDestinationIds(Set ids);
     
     /**
-     * ‘—MæID‚ğ’Ç‰Á‚·‚éB<br>
+     * é€ä¿¡å…ˆIDã‚’è¿½åŠ ã™ã‚‹ã€‚<br>
      *
-     * @param id ‘—MæID
+     * @param id é€ä¿¡å…ˆID
      */
     public void addDestinationId(Object id);
     
     /**
-     * ‘—MæID‚ğíœ‚·‚éB<br>
+     * é€ä¿¡å…ˆIDã‚’å‰Šé™¤ã™ã‚‹ã€‚<br>
      *
-     * @param id ‘—MæID
+     * @param id é€ä¿¡å…ˆID
      */
     public void removeDestinationId(Object id);
     
     /**
-     * ‘—MæID‚ğƒNƒŠƒA‚·‚éB<br>
+     * é€ä¿¡å…ˆIDã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚<br>
      */
     public void clearDestinationIds();
     
     /**
-     * w’è‚µ‚½ID‚ª‘—MæID‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚é‚©”»’è‚·‚éB<br>
+     * æŒ‡å®šã—ãŸIDãŒé€ä¿¡å…ˆIDã«å«ã¾ã‚Œã¦ã„ã‚‹ã‹åˆ¤å®šã™ã‚‹ã€‚<br>
      *
      * @param id ID
-     * @return ‘—MæID‚ÉŠÜ‚Ü‚ê‚éê‡true
+     * @return é€ä¿¡å…ˆIDã«å«ã¾ã‚Œã‚‹å ´åˆtrue
      */
     public boolean containsDestinationId(Object id);
     
     /**
-     * ‚±‚ÌƒIƒuƒWƒFƒNƒg‚ğÄ—˜—p‚·‚é‚æ‚¤‚É‘£‚·B<br>
+     * ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å†åˆ©ç”¨ã™ã‚‹ã‚ˆã†ã«ä¿ƒã™ã€‚<br>
      */
     public void recycle();
 }

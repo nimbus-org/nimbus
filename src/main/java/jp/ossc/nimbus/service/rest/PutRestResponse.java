@@ -34,23 +34,23 @@ package jp.ossc.nimbus.service.rest;
 import javax.servlet.http.*;
 
 /**
- * PUTƒƒ\ƒbƒhRESTƒŒƒXƒ|ƒ“ƒXB<p>
+ * PUTãƒ¡ã‚½ãƒƒãƒ‰RESTãƒ¬ã‚¹ãƒãƒ³ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
 public class PutRestResponse extends BodyRestResponse{
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public PutRestResponse(){
     }
     
     /**
-     * w’è‚³‚ê‚½HTTPƒŒƒXƒ|ƒ“ƒX‚É•R‚Ã‚­ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
-     * HTTPƒXƒe[ƒ^ƒX‚Ì‰Šú’l‚ÍAHttpServletResponse.SC_OKB<br>
+     * æŒ‡å®šã•ã‚ŒãŸHTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã«ç´ã¥ãã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * HTTPã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã®åˆæœŸå€¤ã¯ã€HttpServletResponse.SC_OKã€‚<br>
      *
-     * @param response HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param response HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      */
     public PutRestResponse(HttpServletResponse response){
         super(response);
@@ -58,8 +58,8 @@ public class PutRestResponse extends BodyRestResponse{
     }
     
     /**
-     * XV‘ÎÛ‚ÌƒŠƒ\[ƒX‚ªŒ©‚Â‚©‚ç‚È‚¢|‚Ìˆ—Œ‹‰Ê‚ğİ’è‚·‚éB<p>
-     * HttpServletResponse.SC_NO_CONTENT‚Éİ’è‚·‚éB<br>
+     * æ›´æ–°å¯¾è±¡ã®ãƒªã‚½ãƒ¼ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„æ—¨ã®å‡¦ç†çµæœã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * HttpServletResponse.SC_NO_CONTENTã«è¨­å®šã™ã‚‹ã€‚<br>
      */
     public void setResultOfNotFound(){
         setResult(HttpServletResponse.SC_NO_CONTENT);

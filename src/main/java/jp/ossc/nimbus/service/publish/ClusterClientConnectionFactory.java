@@ -34,19 +34,19 @@ package jp.ossc.nimbus.service.publish;
 import java.rmi.RemoteException;
 
 /**
- * ƒNƒ‰ƒXƒ^‰»‚³‚ê‚½ƒƒbƒZ[ƒWŽóM—p‚ÌƒNƒ‰ƒCƒAƒ“ƒgƒRƒlƒNƒVƒ‡ƒ“¶¬ƒCƒ“ƒ^ƒtƒF[ƒXB<p>
- * ƒNƒ‰ƒXƒ^‰»‚³‚ê‚½ƒƒbƒZ[ƒWŽóM‚ðs‚¤{@link ClientConnection}‚ð¶¬‚·‚éƒtƒ@ƒNƒgƒŠƒCƒ“ƒ^ƒtƒF[ƒXB<br>
+ * ã‚¯ãƒ©ã‚¹ã‚¿åŒ–ã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å—ä¿¡ç”¨ã®ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ç”Ÿæˆã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
+ * ã‚¯ãƒ©ã‚¹ã‚¿åŒ–ã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å—ä¿¡ã‚’è¡Œã†{@link ClientConnection}ã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<br>
  * 
  * @author M.Takata
  */
 public interface ClusterClientConnectionFactory extends ClientConnectionFactory{
     
     /**
-     * ƒNƒ‰ƒXƒ^‚ÌŽÀ‘Ì‚Æ‚È‚éƒNƒ‰ƒCƒAƒ“ƒgƒRƒlƒNƒVƒ‡ƒ“‚ðŽæ“¾‚·‚éB<br>
+     * ã‚¯ãƒ©ã‚¹ã‚¿ã®å®Ÿä½“ã¨ãªã‚‹ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<br>
      * 
-     * @return ƒNƒ‰ƒXƒ^‚ÌŽÀ‘Ì‚Æ‚È‚éƒNƒ‰ƒCƒAƒ“ƒgƒRƒlƒNƒVƒ‡ƒ“
-     * @exception ConnectionCreateException ƒNƒ‰ƒCƒAƒ“ƒgƒRƒlƒNƒVƒ‡ƒ“‚Ì¶¬‚ÉŽ¸”s‚µ‚½ê‡
-     * @exception RemoteException ƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚ÉŽ¸”s‚µ‚½ê‡
+     * @return ã‚¯ãƒ©ã‚¹ã‚¿ã®å®Ÿä½“ã¨ãªã‚‹ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
+     * @exception ConnectionCreateException ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception RemoteException ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public ClientConnection getInnerClientConnection() throws ConnectionCreateException, RemoteException;
 }

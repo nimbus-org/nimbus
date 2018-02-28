@@ -37,8 +37,8 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.scp.*;
 
 /**
- * SCPƒNƒ‰ƒCƒAƒ“ƒgƒtƒ@ƒNƒgƒŠB<p>
- * <a href="http://www.ganymed.ethz.ch/ssh2/">Ganymed SSH-2 for Java</a>‚ÌSCPƒ‰ƒCƒuƒ‰ƒŠ‚ğg—p‚µ‚½{@link SCPClientFactory}ƒT[ƒrƒX‚Å‚ ‚éB<br>
+ * SCPã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * <a href="http://www.ganymed.ethz.ch/ssh2/">Ganymed SSH-2 for Java</a>ã®SCPãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ä½¿ç”¨ã—ãŸ{@link SCPClientFactory}ã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */

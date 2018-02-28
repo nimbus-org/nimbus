@@ -52,8 +52,8 @@ import jp.ossc.nimbus.util.SynchronizeMonitor;
 import jp.ossc.nimbus.util.WaitSynchronizeMonitor;
 
 /**
- * ƒƒbƒZ[ƒW‘—óM—p‚ÌƒT[ƒoƒRƒlƒNƒVƒ‡ƒ“¶¬ƒT[ƒrƒXB<p>
- * ƒƒbƒZ[ƒW‘—óM‚ğs‚¤{@link RequestServerConnection}‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠ‚©‚Â{@link RequestMessageListener}‚ğ“o˜^‚Å‚«‚é{@link MessageReceiver}‚Ì‹@”\‚ğ‚ÂB<br>
+ * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€å—ä¿¡ç”¨ã®ã‚µãƒ¼ãƒã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ç”Ÿæˆã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€å—ä¿¡ã‚’è¡Œã†{@link RequestServerConnection}ã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‹ã¤{@link RequestMessageListener}ã‚’ç™»éŒ²ã§ãã‚‹{@link MessageReceiver}ã®æ©Ÿèƒ½ã‚’æŒã¤ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -801,7 +801,7 @@ public class RequestConnectionFactoryService extends ServiceBase
                     try{
                         message.setObject(requestObj);
                     }catch(MessageException e){
-                        // ”­¶‚µ‚È‚¢‚Í‚¸
+                        // ç™ºç”Ÿã—ãªã„ã¯ãš
                         e.printStackTrace();
                         return;
                     }
@@ -884,7 +884,7 @@ public class RequestConnectionFactoryService extends ServiceBase
                     try{
                         message.setObject(responseObj);
                     }catch(MessageException e){
-                        // ”­¶‚µ‚È‚¢‚Í‚¸
+                        // ç™ºç”Ÿã—ãªã„ã¯ãš
                         e.printStackTrace();
                         return;
                     }

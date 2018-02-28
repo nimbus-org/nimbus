@@ -36,7 +36,7 @@ import java.util.Enumeration;
 import javax.jms.*;
 
 /**
- * �Đڑ��\QueueBrowser�B<p>
+ * 再接続可能QueueBrowser。<p>
  *
  * @author M.Takata
  */

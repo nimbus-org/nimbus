@@ -39,7 +39,7 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.util.*;
 
 /**
- * ƒƒbƒZ[ƒWƒŒƒR[ƒh‚ÌƒfƒtƒHƒ‹ƒgÀ‘•B<p>
+ * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå®Ÿè£…ã€‚<p>
  *
  * @author H.Nakano
  */
@@ -48,45 +48,45 @@ public class MessageRecordImpl
     
     private static final long serialVersionUID = -1519744660770872465L;
     
-    //## ƒƒ“ƒo[•Ï”éŒ¾     ##
+    //## ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°å®£è¨€     ##
     
-    /** ƒƒbƒZ[ƒWID */
+    /** ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID */
     protected String mMessageCode;
     
-    /** ƒƒP[ƒ‹ƒƒbƒZ[ƒWƒ}ƒbƒv */
+    /** ãƒ­ã‚±ãƒ¼ãƒ«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒãƒƒãƒ— */
     protected HashMap mMessageHash = new HashMap();
     
-    /** ‰Šú‰»‰»ƒtƒ‰ƒO */
+    /** åˆæœŸåŒ–åŒ–ãƒ•ãƒ©ã‚° */
     protected boolean mIsInitialized = false;
     
-    /** ÅIg—p */
+    /** æœ€çµ‚ä½¿ç”¨æ™‚åˆ» */
     protected long mLastOccur = -1;
     
-    /** ”é–§•¶šƒtƒ‰ƒO */
+    /** ç§˜å¯†æ–‡å­—ãƒ•ãƒ©ã‚° */
     protected boolean mIsSecret = false;
     
-    /** ”é–§•¶š */
+    /** ç§˜å¯†æ–‡å­— */
     protected String secretString;
     
-    /** g—p‰ñ” */
+    /** ä½¿ç”¨å›æ•° */
     protected long mUsedCount;
     
-    /** ƒ[ƒhÏ‚İƒƒP°ƒ‹ƒ}ƒbƒv */
+    /** ãƒ­ãƒ¼ãƒ‰æ¸ˆã¿ãƒ­ã‚±ï½°ãƒ«ãƒãƒƒãƒ— */
     protected Hashtable mLocaleHash = new Hashtable();
     
     /** MessageRecordFactory */
     private transient MessageRecordFactory mFac;
     
-    /** MessageRecordFactoryƒT[ƒrƒX–¼ */
+    /** MessageRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å */
     private ServiceName mFacName;
     
-    //## ’è”’è‹` ##
-    /** ƒfƒtƒHƒ‹ƒgƒJƒeƒSƒŠ[ */
+    //## å®šæ•°å®šç¾© ##
+    /** ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚«ãƒ†ã‚´ãƒªãƒ¼ */
     private static final String C_DFAUTL_LOCALE = "default";
     private static final String C_UNDER_SCORE = "_";
     private static final String C_DELIMETER = "," ;
     
-    /** –„‚ß‚İ•¶š */
+    /** åŸ‹ã‚è¾¼ã¿æ–‡å­— */
     private static final String EMBED_STRING = "@";
     private static final String SECRET_EMBED_STRING = "#";
     private static final String SINGLE_EMBED_STRING = "@0";
@@ -94,18 +94,18 @@ public class MessageRecordImpl
     private static final String SECRET_EMBED_SEARCH_STRING = "#[0-9]+";
     private static final String DATE_FORMAT = "yyyy-MM-dd hh-mm-ss";
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(Locale lo){
         increment() ;
         return this.getMessageTemplate(lo) ;
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(){
         return this.makeMessage(Locale.getDefault()) ;
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(Locale lo,Object embed){
         increment();
         String tmp = getMessageTemplate(lo);
@@ -129,92 +129,92 @@ public class MessageRecordImpl
         return retStr;
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(Locale lo, byte embed){
         return makeMessage(lo, Byte.toString(embed));
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(Locale lo, short embed){
         return makeMessage(lo, Short.toString(embed));
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(Locale lo, char embed){
         return makeMessage(lo, new Character(embed));
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(Locale lo, int embed){
         return makeMessage(lo, Integer.toString(embed));
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(Locale lo, long embed){
         return makeMessage(lo, Long.toString(embed));
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(Locale lo, float embed){
         return makeMessage(lo, Float.toString(embed));
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(Locale lo, double embed){
         return makeMessage(lo, Double.toString(embed));
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(Locale lo, boolean embed){
         return makeMessage(lo, Boolean.toString(embed));
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(Object embed){
         return makeMessage(Locale.getDefault(),embed) ;
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(byte embed){
         return makeMessage(Byte.toString(embed));
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(short embed){
         return makeMessage(Short.toString(embed));
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(char embed){
         return makeMessage(new Character(embed));
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(int embed){
         return makeMessage(Integer.toString(embed));
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(long embed){
         return makeMessage(Long.toString(embed));
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(float embed){
         return makeMessage(Float.toString(embed));
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(double embed){
         return makeMessage(Double.toString(embed));
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(boolean embed){
         return makeMessage(Boolean.toString(embed));
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(Locale lo,Object[] embeds){
         increment();
         String tmp = getMessageTemplate(lo);
@@ -236,7 +236,7 @@ public class MessageRecordImpl
         return retStr;
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(Locale lo, byte[] embeds){
         if(embeds == null){
             return makeMessage(lo, (Object[])null);
@@ -248,7 +248,7 @@ public class MessageRecordImpl
         return makeMessage(lo, strs);
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(Locale lo, short[] embeds){
         if(embeds == null){
             return makeMessage(lo, (Object[])null);
@@ -260,7 +260,7 @@ public class MessageRecordImpl
         return makeMessage(lo, strs);
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(Locale lo, char[] embeds){
         if(embeds == null){
             return makeMessage(lo, (Object[])null);
@@ -272,7 +272,7 @@ public class MessageRecordImpl
         return makeMessage(lo, strs);
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(Locale lo, int[] embeds){
         if(embeds == null){
             return makeMessage(lo, (Object[])null);
@@ -284,7 +284,7 @@ public class MessageRecordImpl
         return makeMessage(lo, strs);
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(Locale lo, long[] embeds){
         if(embeds == null){
             return makeMessage(lo, (Object[])null);
@@ -296,7 +296,7 @@ public class MessageRecordImpl
         return makeMessage(lo, strs);
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(Locale lo, float[] embeds){
         if(embeds == null){
             return makeMessage(lo, (Object[])null);
@@ -308,7 +308,7 @@ public class MessageRecordImpl
         return makeMessage(lo, strs);
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(Locale lo, double[] embeds){
         if(embeds == null){
             return makeMessage(lo, (Object[])null);
@@ -320,7 +320,7 @@ public class MessageRecordImpl
         return makeMessage(lo, strs);
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(Locale lo, boolean[] embeds){
         if(embeds == null){
             return makeMessage(lo, (Object[])null);
@@ -332,12 +332,12 @@ public class MessageRecordImpl
         return makeMessage(lo, strs);
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(Object[] embeds){
         return makeMessage(Locale.getDefault(),embeds) ;
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(byte[] embeds){
         if(embeds == null){
             return makeMessage((Object[])null);
@@ -349,7 +349,7 @@ public class MessageRecordImpl
         return makeMessage(strs);
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(short[] embeds){
         if(embeds == null){
             return makeMessage((Object[])null);
@@ -361,7 +361,7 @@ public class MessageRecordImpl
         return makeMessage(strs);
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(char[] embeds){
         if(embeds == null){
             return makeMessage((Object[])null);
@@ -373,7 +373,7 @@ public class MessageRecordImpl
         return makeMessage(strs);
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(int[] embeds){
         if(embeds == null){
             return makeMessage((Object[])null);
@@ -385,7 +385,7 @@ public class MessageRecordImpl
         return makeMessage(strs);
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(long[] embeds){
         if(embeds == null){
             return makeMessage((Object[])null);
@@ -397,7 +397,7 @@ public class MessageRecordImpl
         return makeMessage(strs);
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(float[] embeds){
         if(embeds == null){
             return makeMessage((Object[])null);
@@ -409,7 +409,7 @@ public class MessageRecordImpl
         return makeMessage(strs);
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(double[] embeds){
         if(embeds == null){
             return makeMessage((Object[])null);
@@ -421,7 +421,7 @@ public class MessageRecordImpl
         return makeMessage(strs);
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String makeMessage(boolean[] embeds){
         if(embeds == null){
             return makeMessage((Object[])null);
@@ -433,29 +433,29 @@ public class MessageRecordImpl
         return makeMessage(strs);
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String getMessageTemplate(Locale lo){
         return this.getMessage(lo == null ? Locale.getDefault() : lo) ;
     }
     
-    // MessageRecord‚ÌJavaDoc
+    // MessageRecordã®JavaDoc
     public String getMessageTemplate(){
         return getMessageTemplate(Locale.getDefault()) ;
     }
     
     /**
-     * ƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚Ì1s‚ğ“Ç‚İ‚ŞB<p>
-     * ƒtƒH[ƒ}ƒbƒg : ƒƒbƒZ[ƒWID,ƒƒbƒZ[ƒW<br>
-     * ƒGƒXƒP[ƒv•¶š : \\<br>
-     * –„‚ß‚İ•¶š : @˜A”Ô<br>
-     * ƒV[ƒNƒŒƒbƒg–„‚ß‚İ•¶š : #˜A”Ô<br>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®1è¡Œã‚’èª­ã¿è¾¼ã‚€ã€‚<p>
+     * ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ : ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID,ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸<br>
+     * ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­— : \\<br>
+     * åŸ‹ã‚è¾¼ã¿æ–‡å­— : @é€£ç•ª<br>
+     * ã‚·ãƒ¼ã‚¯ãƒ¬ãƒƒãƒˆåŸ‹ã‚è¾¼ã¿æ–‡å­— : #é€£ç•ª<br>
      *
-     * @param defString ƒƒbƒZ[ƒW’è‹`ƒtƒ@ƒCƒ‹‚Ì1s‚Ì•¶š—ñ
+     * @param defString ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®1è¡Œã®æ–‡å­—åˆ—
      */
     public void rec2Obj(String defString) throws MessageRecordParseException{
-        // ƒCƒjƒVƒƒƒ‹Ï‚İ‚©”»’è
+        // ã‚¤ãƒ‹ã‚·ãƒ£ãƒ«æ¸ˆã¿ã‹åˆ¤å®š
         if(!mIsInitialized){
-            // ƒfƒtƒ@ƒCƒ“•¶š•ªŠ„
+            // ãƒ‡ãƒ•ã‚¡ã‚¤ãƒ³æ–‡å­—åˆ†å‰²
             CsvArrayList parser = new CsvArrayList();
             parser.split(defString, C_DELIMETER);
             if(parser.size() < 2){
@@ -463,39 +463,39 @@ public class MessageRecordImpl
                     "Message define error message is " + defString
                 ) ;
             }else{
-                // Šî–{ƒf[ƒ^Ši”[
+                // åŸºæœ¬ãƒ‡ãƒ¼ã‚¿æ ¼ç´
                 this.mMessageCode = parser.getStr(0);
                 this.mMessageHash.put(C_DFAUTL_LOCALE, parser.getStr(1));
             }
         }
     }
     
-    // MessageRecordOperator ‚ÌJavaDoc
+    // MessageRecordOperator ã®JavaDoc
     public String getMessageCode(){
         return this.mMessageCode;
     }
     
     /**
-     * ƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param code ƒƒbƒZ[ƒWID
+     * @param code ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setMessageCode(String code){
         this.mMessageCode = code;
     }
     
-    // MessageRecordOperator ‚ÌJavaDoc
+    // MessageRecordOperator ã®JavaDoc
     public synchronized long getUsedCount(){
         return this.mUsedCount;
     }
     
-    // MessageRecordOperator ‚ÌJavaDoc
+    // MessageRecordOperator ã®JavaDoc
     public synchronized void clearUsedCount(){
         this.mUsedCount = 0;
     }
     
     /**
-     * g—p‰ñ”‚ğƒJƒEƒ“ƒgƒAƒbƒv‚·‚éB<p>
+     * ä½¿ç”¨å›æ•°ã‚’ã‚«ã‚¦ãƒ³ãƒˆã‚¢ãƒƒãƒ—ã™ã‚‹ã€‚<p>
      */
     protected synchronized void increment(){
         this.mUsedCount++;
@@ -503,9 +503,9 @@ public class MessageRecordImpl
     }
     
     /**
-     * •¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+     * æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒƒbƒZ[ƒWID;ƒƒbƒZ[ƒW;g—p‰ñ”;ÅIg—p“ú
+     * @return ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID;ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸;ä½¿ç”¨å›æ•°;æœ€çµ‚ä½¿ç”¨æ—¥æ™‚
      */
     public String toString(){
         StringBuilder ret = new StringBuilder() ;
@@ -522,35 +522,35 @@ public class MessageRecordImpl
         return ret.toString();
     }
     
-    // MessageRecordOperator ‚ÌJavaDoc
+    // MessageRecordOperator ã®JavaDoc
     public Date getLastUsedDate(){
         return new Date(mLastOccur);
     }
     
-    // MessageRecordOperator ‚ÌJavaDoc
+    // MessageRecordOperator ã®JavaDoc
     public void setSecret(boolean flg){
         mIsSecret = flg ;
     }
     
-    // MessageRecordOperator ‚ÌJavaDoc
+    // MessageRecordOperator ã®JavaDoc
     public void setSecretString(String secret){
         secretString = secret ;
     }
-    // MessageRecordOperator ‚ÌJavaDoc
+    // MessageRecordOperator ã®JavaDoc
     public void addMessage(String message,String locale){
         this.mMessageHash.put(locale,message) ;
         
     }
-    // MessageRecordOperator ‚ÌJavaDoc
+    // MessageRecordOperator ã®JavaDoc
     public void addMessage(String message){
         this.mMessageHash.put(C_DFAUTL_LOCALE,message) ;
     }
     
     /**
-     * w’è‚µ‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param lo ƒƒP[ƒ‹
-     * @return w’è‚µ‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @return æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     protected String getMessage(Locale lo){
         MessageRecordFactory fac = null;
@@ -625,7 +625,7 @@ public class MessageRecordImpl
         return key;
     }
     
-    // MessageRecordOperator ‚ÌJavaDoc
+    // MessageRecordOperator ã®JavaDoc
     public void setFactory(MessageRecordFactory fac){
         mFac = fac;
         if(mFac instanceof ServiceBase){

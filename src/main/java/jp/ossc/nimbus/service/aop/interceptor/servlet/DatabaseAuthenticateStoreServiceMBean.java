@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link DatabaseAuthenticateStoreService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB
+ * {@link DatabaseAuthenticateStoreService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚
  * <p>
  *
  * @author M.Takata
@@ -44,256 +44,256 @@ import jp.ossc.nimbus.core.ServiceName;
 public interface DatabaseAuthenticateStoreServiceMBean extends ServiceBaseMBean {
     
     /**
-     * PersistentManager‚Ö‚Ì“ü—ÍƒIƒuƒWƒFƒNƒg‚Å‚ ‚éƒ}ƒbƒv‚ÉŠi”[‚³‚ê‚é”FØî•ñ‚Ü‚½‚Í”FØƒL[‚ÌƒL[–¼B
+     * PersistentManagerã¸ã®å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã§ã‚ã‚‹ãƒãƒƒãƒ—ã«æ ¼ç´ã•ã‚Œã‚‹èªè¨¼æƒ…å ±ã¾ãŸã¯èªè¨¼ã‚­ãƒ¼ã®ã‚­ãƒ¼åã€‚
      * <p>
      */
     public static final String INPUT_KEY_AUTH = "Auth";
     
     /**
-     * PersistentManager‚Ö‚Ì“ü—ÍƒIƒuƒWƒFƒNƒg‚Å‚ ‚éƒ}ƒbƒv‚ÉŠi”[‚³‚ê‚éHTTPƒZƒbƒVƒ‡ƒ“ID‚ÌƒL[–¼B
+     * PersistentManagerã¸ã®å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã§ã‚ã‚‹ãƒãƒƒãƒ—ã«æ ¼ç´ã•ã‚Œã‚‹HTTPã‚»ãƒƒã‚·ãƒ§ãƒ³IDã®ã‚­ãƒ¼åã€‚
      * <p>
      */
     public static final String INPUT_KEY_HTTP_SESSION_ID = "SessionId";
     
     /**
-     * PersistentManager‚Ö‚Ì“ü—ÍƒIƒuƒWƒFƒNƒg‚Å‚ ‚éƒ}ƒbƒv‚ÉŠi”[‚³‚ê‚éƒ^ƒCƒ€ƒXƒ^ƒ“ƒv‚ÌƒL[–¼B
+     * PersistentManagerã¸ã®å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã§ã‚ã‚‹ãƒãƒƒãƒ—ã«æ ¼ç´ã•ã‚Œã‚‹ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—ã®ã‚­ãƒ¼åã€‚
      * <p>
      */
     public static final String INPUT_KEY_TIMESTAMP = "Timestamp";
     
     /**
-     * PersistentManager‚Ö‚Ì“ü—ÍƒIƒuƒWƒFƒNƒg‚Å‚ ‚éƒ}ƒbƒv‚ÉŠi”[‚³‚ê‚éƒzƒXƒg–¼‚ÌƒL[–¼B
+     * PersistentManagerã¸ã®å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã§ã‚ã‚‹ãƒãƒƒãƒ—ã«æ ¼ç´ã•ã‚Œã‚‹ãƒ›ã‚¹ãƒˆåã®ã‚­ãƒ¼åã€‚
      * <p>
      */
     public static final String INPUT_KEY_HOST = "Host";
     
     /**
      * {@link jp.ossc.nimbus.service.connection.ConnectionFactory
-     * ConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB
+     * ConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param name ConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setConnectionFactoryServiceName(ServiceName name);
     
     /**
      * {@link jp.ossc.nimbus.service.connection.ConnectionFactory
-     * ConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB
+     * ConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getConnectionFactoryServiceName();
     
     /**
      * {@link jp.ossc.nimbus.service.connection.PersistentManager
-     * PersistentManager}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB
+     * PersistentManager}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param name PersistentManagerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name PersistentManagerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setPersistentManagerServiceName(ServiceName name);
     
     /**
      * {@link jp.ossc.nimbus.service.connection.PersistentManager
-     * PersistentManager}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB
+     * PersistentManager}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return PersistentManagerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return PersistentManagerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getPersistentManagerServiceName();
     
     /**
-     * ƒf[ƒ^ƒx[ƒX‚©‚ç•œŒ³‚·‚é”FØî•ñ‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚éB
+     * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰å¾©å…ƒã™ã‚‹èªè¨¼æƒ…å ±ã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param clazz ”FØî•ñ‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
+     * @param clazz èªè¨¼æƒ…å ±ã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void setAuthenticatedInfoClass(Class clazz);
     
     /**
-     * ƒf[ƒ^ƒx[ƒX‚©‚ç•œŒ³‚·‚é”FØî•ñ‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB
+     * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰å¾©å…ƒã™ã‚‹èªè¨¼æƒ…å ±ã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ”FØî•ñ‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
+     * @return èªè¨¼æƒ…å ±ã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Class getAuthenticatedInfoClass();
     
     /**
-     * ƒf[ƒ^ƒx[ƒX‚©‚ç•œŒ³‚·‚é”FØî•ñ‚ÌƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚éB
+     * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰å¾©å…ƒã™ã‚‹èªè¨¼æƒ…å ±ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
-     * ‚±‚ÌƒIƒuƒWƒFƒNƒg‚ÍACloneable‚Åpublic‚Èclone()ƒƒ\ƒbƒh‚ğÀ‘•‚·‚é•K—v‚ª‚ ‚éB<br>
+     * ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¯ã€Cloneableã§publicãªclone()ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®Ÿè£…ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚<br>
      *
-     * @param template ”FØî•ñ‚ÌƒIƒuƒWƒFƒNƒg
+     * @param template èªè¨¼æƒ…å ±ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void setAuthenticatedInfoTemplate(Object template);
     
     /**
-     * ƒf[ƒ^ƒx[ƒX‚©‚ç•œŒ³‚·‚é”FØî•ñ‚ÌƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB
+     * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰å¾©å…ƒã™ã‚‹èªè¨¼æƒ…å ±ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ”FØî•ñ‚ÌƒIƒuƒWƒFƒNƒg
+     * @return èªè¨¼æƒ…å ±ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object getAuthenticatedInfoTemplate();
     
     /**
-     * PersistentManager‚Ö‚Ì“ü—ÍƒIƒuƒWƒFƒNƒg‚Å‚ ‚éƒ}ƒbƒv‚ÉŠi”[‚·‚éƒzƒXƒg–¼‚ğİ’è‚·‚éB
+     * PersistentManagerã¸ã®å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã§ã‚ã‚‹ãƒãƒƒãƒ—ã«æ ¼ç´ã™ã‚‹ãƒ›ã‚¹ãƒˆåã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
-     * İ’è‚µ‚È‚¢ê‡A©“®“I‚Éƒ[ƒJƒ‹ƒzƒXƒg‚ÌƒzƒXƒg–¼‚ªg—p‚³‚ê‚éB<br>
+     * è¨­å®šã—ãªã„å ´åˆã€è‡ªå‹•çš„ã«ãƒ­ãƒ¼ã‚«ãƒ«ãƒ›ã‚¹ãƒˆã®ãƒ›ã‚¹ãƒˆåãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param name ƒzƒXƒg–¼
+     * @param name ãƒ›ã‚¹ãƒˆå
      */
     public void setHostName(String name);
     
     /**
-     * PersistentManager‚Ö‚Ì“ü—ÍƒIƒuƒWƒFƒNƒg‚Å‚ ‚éƒ}ƒbƒv‚ÉŠi”[‚·‚éƒzƒXƒg–¼‚ğæ“¾‚·‚éB
+     * PersistentManagerã¸ã®å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã§ã‚ã‚‹ãƒãƒƒãƒ—ã«æ ¼ç´ã™ã‚‹ãƒ›ã‚¹ãƒˆåã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ƒzƒXƒg–¼
+     * @return ãƒ›ã‚¹ãƒˆå
      */
     public String getHostName();
     
     /**
-     * ”FØî•ñ‚ğ¶¬‚µ‚Ä—Ç‚¢‚©‚ğŒŸõ‚·‚éƒNƒGƒŠ‚ğİ’è‚·‚éB
+     * èªè¨¼æƒ…å ±ã‚’ç”Ÿæˆã—ã¦è‰¯ã„ã‹ã‚’æ¤œç´¢ã™ã‚‹ã‚¯ã‚¨ãƒªã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param query ƒNƒGƒŠ
+     * @param query ã‚¯ã‚¨ãƒª
      */
     public void setSelectQueryOnCreateUser(String query);
     
     /**
-     * ”FØî•ñ‚ğ¶¬‚µ‚Ä—Ç‚¢‚©‚ğŒŸõ‚·‚éƒNƒGƒŠ‚ğæ“¾‚·‚éB
+     * èªè¨¼æƒ…å ±ã‚’ç”Ÿæˆã—ã¦è‰¯ã„ã‹ã‚’æ¤œç´¢ã™ã‚‹ã‚¯ã‚¨ãƒªã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ƒNƒGƒŠ
+     * @return ã‚¯ã‚¨ãƒª
      */
     public String getSelectQueryOnCreateUser();
     
     /**
-     * ”FØî•ñ‚ğŒŸõ‚·‚éƒNƒGƒŠ‚ğİ’è‚·‚éB
+     * èªè¨¼æƒ…å ±ã‚’æ¤œç´¢ã™ã‚‹ã‚¯ã‚¨ãƒªã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param query ƒNƒGƒŠ
+     * @param query ã‚¯ã‚¨ãƒª
      */
     public void setSelectQueryOnFindUser(String query);
     
     /**
-     * ”FØî•ñ‚ğŒŸõ‚·‚éƒNƒGƒŠ‚ğæ“¾‚·‚éB
+     * èªè¨¼æƒ…å ±ã‚’æ¤œç´¢ã™ã‚‹ã‚¯ã‚¨ãƒªã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ƒNƒGƒŠ
+     * @return ã‚¯ã‚¨ãƒª
      */
     public String getSelectQueryOnFindUser();
     
     /**
-     * ”FØî•ñ‚ğ‘}“ü‚·‚éƒNƒGƒŠ‚ğİ’è‚·‚éB
+     * èªè¨¼æƒ…å ±ã‚’æŒ¿å…¥ã™ã‚‹ã‚¯ã‚¨ãƒªã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param query ƒNƒGƒŠ
+     * @param query ã‚¯ã‚¨ãƒª
      */
     public void setInsertQuery(String query);
     
     /**
-     * ”FØî•ñ‚ğ‘}“ü‚·‚éƒNƒGƒŠ‚ğæ“¾‚·‚éB
+     * èªè¨¼æƒ…å ±ã‚’æŒ¿å…¥ã™ã‚‹ã‚¯ã‚¨ãƒªã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ƒNƒGƒŠ
+     * @return ã‚¯ã‚¨ãƒª
      */
     public String getInsertQuery();
     
     /**
-     * ”FØî•ñ‚ğƒXƒgƒA‚·‚éÛ‚ÉAŠù‚ÉŠY“–‚·‚é”FØî•ñ‚ª‘¶İ‚·‚éê‡‚ÉA”FØî•ñ‚ğXV‚·‚éƒNƒGƒŠ‚ğİ’è‚·‚éB
+     * èªè¨¼æƒ…å ±ã‚’ã‚¹ãƒˆã‚¢ã™ã‚‹éš›ã«ã€æ—¢ã«è©²å½“ã™ã‚‹èªè¨¼æƒ…å ±ãŒå­˜åœ¨ã™ã‚‹å ´åˆã«ã€èªè¨¼æƒ…å ±ã‚’æ›´æ–°ã™ã‚‹ã‚¯ã‚¨ãƒªã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param query ƒNƒGƒŠ
+     * @param query ã‚¯ã‚¨ãƒª
      */
     public void setUpdateQueryOnCreate(String query);
     
     /**
-     * ”FØî•ñ‚ğƒXƒgƒA‚·‚éÛ‚ÉAŠù‚ÉŠY“–‚·‚é”FØî•ñ‚ª‘¶İ‚·‚éê‡‚ÉA”FØî•ñ‚ğXV‚·‚éƒNƒGƒŠ‚ğæ“¾‚·‚éB
+     * èªè¨¼æƒ…å ±ã‚’ã‚¹ãƒˆã‚¢ã™ã‚‹éš›ã«ã€æ—¢ã«è©²å½“ã™ã‚‹èªè¨¼æƒ…å ±ãŒå­˜åœ¨ã™ã‚‹å ´åˆã«ã€èªè¨¼æƒ…å ±ã‚’æ›´æ–°ã™ã‚‹ã‚¯ã‚¨ãƒªã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ƒNƒGƒŠ
+     * @return ã‚¯ã‚¨ãƒª
      */
     public String getUpdateQueryOnCreate();
     
     /**
-     * ”FØî•ñ‚ğƒXƒgƒA‚·‚éÛ‚ÉAŠù‚ÉŠY“–‚·‚é”FØî•ñ‚ª‘¶İ‚·‚éê‡‚ÉA”FØî•ñ‚ğíœ‚·‚éƒNƒGƒŠ‚ğİ’è‚·‚éB
+     * èªè¨¼æƒ…å ±ã‚’ã‚¹ãƒˆã‚¢ã™ã‚‹éš›ã«ã€æ—¢ã«è©²å½“ã™ã‚‹èªè¨¼æƒ…å ±ãŒå­˜åœ¨ã™ã‚‹å ´åˆã«ã€èªè¨¼æƒ…å ±ã‚’å‰Šé™¤ã™ã‚‹ã‚¯ã‚¨ãƒªã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param query ƒNƒGƒŠ
+     * @param query ã‚¯ã‚¨ãƒª
      */
     public void setDeleteQueryOnCreate(String query);
     
     /**
-     * ”FØî•ñ‚ğƒXƒgƒA‚·‚éÛ‚ÉAŠù‚ÉŠY“–‚·‚é”FØî•ñ‚ª‘¶İ‚·‚éê‡‚ÉA”FØî•ñ‚ğíœ‚·‚éƒNƒGƒŠ‚ğæ“¾‚·‚éB
+     * èªè¨¼æƒ…å ±ã‚’ã‚¹ãƒˆã‚¢ã™ã‚‹éš›ã«ã€æ—¢ã«è©²å½“ã™ã‚‹èªè¨¼æƒ…å ±ãŒå­˜åœ¨ã™ã‚‹å ´åˆã«ã€èªè¨¼æƒ…å ±ã‚’å‰Šé™¤ã™ã‚‹ã‚¯ã‚¨ãƒªã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ƒNƒGƒŠ
+     * @return ã‚¯ã‚¨ãƒª
      */
     public String getDeleteQueryOnCreate();
     
     /**
-     * ”FØî•ñ‚ğ•œŒ³‚·‚éÛ‚ÉA”FØî•ñ‚ğXV‚·‚éƒNƒGƒŠ‚ğİ’è‚·‚éB
+     * èªè¨¼æƒ…å ±ã‚’å¾©å…ƒã™ã‚‹éš›ã«ã€èªè¨¼æƒ…å ±ã‚’æ›´æ–°ã™ã‚‹ã‚¯ã‚¨ãƒªã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param query ƒNƒGƒŠ
+     * @param query ã‚¯ã‚¨ãƒª
      */
     public void setUpdateQueryOnActivate(String query);
     
     /**
-     * ”FØî•ñ‚ğ•œŒ³‚·‚éÛ‚ÉA”FØî•ñ‚ğXV‚·‚éƒNƒGƒŠ‚ğæ“¾‚·‚éB
+     * èªè¨¼æƒ…å ±ã‚’å¾©å…ƒã™ã‚‹éš›ã«ã€èªè¨¼æƒ…å ±ã‚’æ›´æ–°ã™ã‚‹ã‚¯ã‚¨ãƒªã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ƒNƒGƒŠ
+     * @return ã‚¯ã‚¨ãƒª
      */
     public String getUpdateQueryOnActivate();
     
     /**
-     * ”FØî•ñ‚ğ”ñŠˆ«‰»‚·‚éÛ‚ÉA”FØî•ñ‚ğXV‚·‚éƒNƒGƒŠ‚ğİ’è‚·‚éB
+     * èªè¨¼æƒ…å ±ã‚’éæ´»æ€§åŒ–ã™ã‚‹éš›ã«ã€èªè¨¼æƒ…å ±ã‚’æ›´æ–°ã™ã‚‹ã‚¯ã‚¨ãƒªã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param query ƒNƒGƒŠ
+     * @param query ã‚¯ã‚¨ãƒª
      */
     public void setUpdateQueryOnDeactivate(String query);
     
     /**
-     * ”FØî•ñ‚ğ”ñŠˆ«‰»‚·‚éÛ‚ÉA”FØî•ñ‚ğXV‚·‚éƒNƒGƒŠ‚ğæ“¾‚·‚éB
+     * èªè¨¼æƒ…å ±ã‚’éæ´»æ€§åŒ–ã™ã‚‹éš›ã«ã€èªè¨¼æƒ…å ±ã‚’æ›´æ–°ã™ã‚‹ã‚¯ã‚¨ãƒªã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ƒNƒGƒŠ
+     * @return ã‚¯ã‚¨ãƒª
      */
     public String getUpdateQueryOnDeactivate();
     
     /**
-     * ”FØî•ñ‚ğíœ‚·‚éƒNƒGƒŠ‚ğİ’è‚·‚éB
+     * èªè¨¼æƒ…å ±ã‚’å‰Šé™¤ã™ã‚‹ã‚¯ã‚¨ãƒªã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param query ƒNƒGƒŠ
+     * @param query ã‚¯ã‚¨ãƒª
      */
     public void setDeleteQuery(String query);
     
     /**
-     * ”FØî•ñ‚ğíœ‚·‚éƒNƒGƒŠ‚ğæ“¾‚·‚éB
+     * èªè¨¼æƒ…å ±ã‚’å‰Šé™¤ã™ã‚‹ã‚¯ã‚¨ãƒªã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ƒNƒGƒŠ
+     * @return ã‚¯ã‚¨ãƒª
      */
     public String getDeleteQuery();
     
     /**
-     * ”FØî•ñ‚ğƒXƒgƒA‚·‚éÛ‚ÉAŠù‚ÉŠY“–‚·‚é”FØî•ñ‚ª‘¶İ‚·‚éê‡‚ÉA”FØî•ñ‚ğíœ‚·‚é‚©‚ğİ’è‚·‚éB
+     * èªè¨¼æƒ…å ±ã‚’ã‚¹ãƒˆã‚¢ã™ã‚‹éš›ã«ã€æ—¢ã«è©²å½“ã™ã‚‹èªè¨¼æƒ…å ±ãŒå­˜åœ¨ã™ã‚‹å ´åˆã«ã€èªè¨¼æƒ…å ±ã‚’å‰Šé™¤ã™ã‚‹ã‹ã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param isDelete íœ—v”Û
+     * @param isDelete å‰Šé™¤è¦å¦
      */
     public void setDeleteFindUser(boolean isDelete);
     
     /**
-     * ”FØî•ñ‚ğƒXƒgƒA‚·‚éÛ‚ÉAŠù‚ÉŠY“–‚·‚é”FØî•ñ‚ª‘¶İ‚·‚éê‡‚ÉA”FØî•ñ‚ğíœ‚·‚é‚©‚ğæ“¾‚·‚éB
+     * èªè¨¼æƒ…å ±ã‚’ã‚¹ãƒˆã‚¢ã™ã‚‹éš›ã«ã€æ—¢ã«è©²å½“ã™ã‚‹èªè¨¼æƒ…å ±ãŒå­˜åœ¨ã™ã‚‹å ´åˆã«ã€èªè¨¼æƒ…å ±ã‚’å‰Šé™¤ã™ã‚‹ã‹ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return íœ—v”Û
+     * @return å‰Šé™¤è¦å¦
      */
     public boolean isDeleteFindUser();
     

@@ -34,27 +34,27 @@ package jp.ossc.nimbus.service.jms;
 import javax.jms.*;
 
 /**
- * JMSƒRƒlƒNƒVƒ‡ƒ“ƒtƒ@ƒNƒgƒŠB<p>
+ * JMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
  * 
  * @author M.Takata
  */
 public interface JMSConnectionFactory{
     
     /**
-     * JMSƒRƒlƒNƒVƒ‡ƒ“‚ğæ“¾‚·‚éB<p>
+     * JMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JMSƒRƒlƒNƒVƒ‡ƒ“
-     * @exception JMSConnectionCreateException JMSƒRƒlƒNƒVƒ‡ƒ“‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @return JMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
+     * @exception JMSConnectionCreateException JMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Connection getConnection() throws JMSConnectionCreateException;
     
     /**
-     * JMSƒRƒlƒNƒVƒ‡ƒ“‚ğæ“¾‚·‚éB<p>
+     * JMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param user JMSÚ‘±ƒ†[ƒU
-     * @param pwd JMSÚ‘±ƒpƒXƒ[ƒh
-     * @return JMSƒRƒlƒNƒVƒ‡ƒ“
-     * @exception JMSConnectionCreateException JMSƒRƒlƒNƒVƒ‡ƒ“‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @param user JMSæ¥ç¶šãƒ¦ãƒ¼ã‚¶
+     * @param pwd JMSæ¥ç¶šãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
+     * @return JMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
+     * @exception JMSConnectionCreateException JMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Connection getConnection(String user, String pwd)
      throws JMSConnectionCreateException;

@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aspect;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link AOPInterceptorAdaptorInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link AOPInterceptorAdaptorInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -42,16 +42,16 @@ public interface AOPInterceptorAdaptorInterceptorServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * ƒAƒ_ƒvƒ^‚·‚é{@link jp.ossc.nimbus.service.aop.Interceptor}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚¢ãƒ€ãƒ—ã‚¿ã™ã‚‹{@link jp.ossc.nimbus.service.aop.Interceptor}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name jp.ossc.nimbus.service.aop.InterceptorƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name jp.ossc.nimbus.service.aop.Interceptorã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setInterceptorServiceName(ServiceName name);
     
     /**
-     * ƒAƒ_ƒvƒ^‚·‚é{@link jp.ossc.nimbus.service.aop.Interceptor}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¢ãƒ€ãƒ—ã‚¿ã™ã‚‹{@link jp.ossc.nimbus.service.aop.Interceptor}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return jp.ossc.nimbus.service.aop.InterceptorƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return jp.ossc.nimbus.service.aop.Interceptorã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getInterceptorServiceName();
  }

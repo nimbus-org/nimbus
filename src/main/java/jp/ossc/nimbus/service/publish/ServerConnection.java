@@ -34,103 +34,103 @@ package jp.ossc.nimbus.service.publish;
 import java.util.Set;
 
 /**
- * ƒƒbƒZ[ƒW‘—M—p‚ÌƒT[ƒoƒRƒlƒNƒVƒ‡ƒ“ƒCƒ“ƒ^ƒtƒF[ƒXB<p>
- * ƒƒbƒZ[ƒW‘—M‚ğs‚¤ƒT[ƒo‘¤‚ÌƒRƒlƒNƒVƒ‡ƒ“ƒCƒ“ƒ^ƒtƒF[ƒXB<br>
+ * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ç”¨ã®ã‚µãƒ¼ãƒã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
+ * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã‚’è¡Œã†ã‚µãƒ¼ãƒå´ã®ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<br>
  *
  * @author M.Takata
  */
 public interface ServerConnection{
     
     /**
-     * ƒƒbƒZ[ƒW‚ğ¶¬‚·‚éB<br>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç”Ÿæˆã™ã‚‹ã€‚<br>
      *
-     * @param subject ƒTƒuƒWƒFƒNƒg
-     * @param key ƒL[
-     * @return ƒƒbƒZ[ƒW
-     * @exception MessageCreateException ƒƒbƒZ[ƒW‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @param subject ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param key ã‚­ãƒ¼
+     * @return ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @exception MessageCreateException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Message createMessage(String subject, String key) throws MessageCreateException;
     
     /**
-     * w’è‚³‚ê‚½ƒƒbƒZ[ƒW‚ğ‚±‚ÌÚ‘±‚Å‘—M‰Â”\‚ÈƒƒbƒZ[ƒW‚ÉƒLƒƒƒXƒg‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ã“ã®æ¥ç¶šã§é€ä¿¡å¯èƒ½ãªãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«ã‚­ãƒ£ã‚¹ãƒˆã™ã‚‹ã€‚<p>
      *
-     * @param message ƒƒbƒZ[ƒW
-     * @return ƒLƒƒƒXƒg‚³‚ê‚½ƒƒbƒZ[ƒW
-     * @exception MessageException ƒƒbƒZ[ƒW‚ÌƒLƒƒƒXƒg‚É¸”s‚µ‚½ê‡
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @return ã‚­ãƒ£ã‚¹ãƒˆã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @exception MessageException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã‚­ãƒ£ã‚¹ãƒˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Message castMessage(Message message) throws MessageException;
     
     /**
-     * ƒƒbƒZ[ƒW‚ğ‘—M‚·‚éB<br>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é€ä¿¡ã™ã‚‹ã€‚<br>
      *
-     * @param message ƒƒbƒZ[ƒW
-     * @exception MessageSendException ƒƒbƒZ[ƒW‚Ì‘—M‚É¸”s‚µ‚½ê‡
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @exception MessageSendException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void send(Message message) throws MessageSendException;
     
     /**
-     * ƒƒbƒZ[ƒW‚ğ”ñ“¯Šú‘—M‚·‚éB<br>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’éåŒæœŸé€ä¿¡ã™ã‚‹ã€‚<br>
      *
-     * @param message ƒƒbƒZ[ƒW
-     * @exception MessageSendException ƒƒbƒZ[ƒW‚Ì”ñ“¯Šú‘—M‚É¸”s‚µ‚½ê‡
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @exception MessageSendException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®éåŒæœŸé€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void sendAsynch(Message message) throws MessageSendException;
     
     /**
-     * ƒNƒ‰ƒCƒAƒ“ƒg‚Ìó‘Ô•Ï‰»‚Ì’Ê’mæ‚Å‚ ‚é{@link ServerConnectionListener ƒT[ƒoƒRƒlƒNƒVƒ‡ƒ“ƒŠƒXƒi}‚ğ’Ç‰Á‚·‚éB<br>
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®çŠ¶æ…‹å¤‰åŒ–ã®é€šçŸ¥å…ˆã§ã‚ã‚‹{@link ServerConnectionListener ã‚µãƒ¼ãƒã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒªã‚¹ãƒŠ}ã‚’è¿½åŠ ã™ã‚‹ã€‚<br>
      *
-     * @param listener ƒT[ƒoƒRƒlƒNƒVƒ‡ƒ“ƒŠƒXƒi
+     * @param listener ã‚µãƒ¼ãƒã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒªã‚¹ãƒŠ
      */
     public void addServerConnectionListener(ServerConnectionListener listener);
     
     /**
-     * ƒNƒ‰ƒCƒAƒ“ƒg‚Ìó‘Ô•Ï‰»‚Ì’Ê’mæ‚Å‚ ‚é{@link ServerConnectionListener ƒT[ƒoƒRƒlƒNƒVƒ‡ƒ“ƒŠƒXƒi}‚ğíœ‚·‚éB<br>
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®çŠ¶æ…‹å¤‰åŒ–ã®é€šçŸ¥å…ˆã§ã‚ã‚‹{@link ServerConnectionListener ã‚µãƒ¼ãƒã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒªã‚¹ãƒŠ}ã‚’å‰Šé™¤ã™ã‚‹ã€‚<br>
      *
-     * @param listener ƒT[ƒoƒRƒlƒNƒVƒ‡ƒ“ƒŠƒXƒi
+     * @param listener ã‚µãƒ¼ãƒã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒªã‚¹ãƒŠ
      */
     public void removeServerConnectionListener(ServerConnectionListener listener);
     
     /**
-     * Œ»İÚ‘±‚µ‚Ä‚¢‚éƒNƒ‰ƒCƒAƒ“ƒg”‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨æ¥ç¶šã—ã¦ã„ã‚‹ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆæ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒNƒ‰ƒCƒAƒ“ƒg”
+     * @return ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆæ•°
      */
     public int getClientCount();
     
     /**
-     * ƒNƒ‰ƒCƒAƒ“ƒg‚ÌIDW‡‚ğæ“¾‚·‚éB<p>
+     * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®IDé›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒNƒ‰ƒCƒAƒ“ƒg‚ÌIDW‡
+     * @return ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®IDé›†åˆ
      */
     public Set getClientIds();
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒW‚ğóM‚·‚éƒNƒ‰ƒCƒAƒ“ƒg‚ÌIDW‡‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å—ä¿¡ã™ã‚‹ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®IDé›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param message ‘—M‚·‚éƒƒbƒZ[ƒW
-     * @return ƒNƒ‰ƒCƒAƒ“ƒg‚ÌIDW‡
+     * @param message é€ä¿¡ã™ã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @return ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®IDé›†åˆ
      */
     public Set getReceiveClientIds(Message message);
     
     /**
-     * w’è‚µ‚½ID‚ÌƒNƒ‰ƒCƒAƒ“ƒg‚ª“o˜^‚µ‚Ä‚¢‚éƒTƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸIDã®ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãŒç™»éŒ²ã—ã¦ã„ã‚‹ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param id ƒNƒ‰ƒCƒAƒ“ƒgID
-     * @return ƒTƒuƒWƒFƒNƒg‚ÌW‡
+     * @param id ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆID
+     * @return ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®é›†åˆ
      */
     public Set getSubjects(Object id);
     
     /**
-     * w’è‚µ‚½ID‚ÌƒNƒ‰ƒCƒAƒ“ƒg‚ªAw’è‚µ‚½ƒTƒuƒWƒFƒNƒg‚É‘Î‚µ‚Ä“o˜^‚µ‚Ä‚¢‚éƒL[‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸIDã®ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãŒã€æŒ‡å®šã—ãŸã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¯¾ã—ã¦ç™»éŒ²ã—ã¦ã„ã‚‹ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param id ƒNƒ‰ƒCƒAƒ“ƒgID
-     * @param subject ƒTƒuƒWƒFƒNƒg
-     * @return ƒL[‚ÌW‡
+     * @param id ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆID
+     * @param subject ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ã‚­ãƒ¼ã®é›†åˆ
      */
     public Set getKeys(Object id, String subject);
     
     /**
-     * ‰Šú‰»‚·‚éB<p>
+     * åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
      */
     public void reset();
 }

@@ -36,7 +36,7 @@ import java.lang.reflect.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link ReflectionTransactionManagerFactoryService}��MBean�C���^�t�F�[�X<p>
+ * {@link ReflectionTransactionManagerFactoryService}のMBeanインタフェース<p>
  * 
  * @author M.Takata
  * @see ReflectionTransactionManagerFactoryService
@@ -45,102 +45,102 @@ public interface ReflectionTransactionManagerFactoryServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * TransactionManager�𐶐�����t�@�N�g���N���X�̃R���X�g���N�^��ݒ肷��B<p>
-     * �t�@�N�g���N���X��static���\�b�h���Ăԏꍇ�́A�w�肷��K�v�͂Ȃ��B<br>
+     * TransactionManagerを生成するファクトリクラスのコンストラクタを設定する。<p>
+     * ファクトリクラスのstaticメソッドを呼ぶ場合は、指定する必要はない。<br>
      * 
-     * @param c �t�@�N�g���N���X�̃R���X�g���N�^
+     * @param c ファクトリクラスのコンストラクタ
      */
     public void setFactoryConstructor(Constructor c);
     
     /**
-     * TransactionManager�𐶐�����t�@�N�g���N���X�̃R���X�g���N�^���擾����B<p>
+     * TransactionManagerを生成するファクトリクラスのコンストラクタを取得する。<p>
      * 
-     * @return �t�@�N�g���N���X�̃R���X�g���N�^
+     * @return ファクトリクラスのコンストラクタ
      */
     public Constructor getFactoryConstructor();
     
     /**
-     * TransactionManager�𐶐�����t�@�N�g���N���X�̃R���X�g���N�^�̈�����ݒ肷��B<p>
+     * TransactionManagerを生成するファクトリクラスのコンストラクタの引数を設定する。<p>
      * 
-     * @param params �t�@�N�g���N���X�̃R���X�g���N�^�̈���
+     * @param params ファクトリクラスのコンストラクタの引数
      */
     public void setFactoryConstructorParameters(Object[] params);
     
     /**
-     * TransactionManager�𐶐�����t�@�N�g���N���X�̃R���X�g���N�^�̈������擾����B<p>
+     * TransactionManagerを生成するファクトリクラスのコンストラクタの引数を取得する。<p>
      * 
-     * @return �t�@�N�g���N���X�̃R���X�g���N�^�̈���
+     * @return ファクトリクラスのコンストラクタの引数
      */
     public Object[] getFactoryConstructorParameters();
     
     /**
-     * TransactionManager�𐶐�����t�@�N�g���N���X�̃t�@�N�g�����\�b�h��ݒ肷��B<p>
+     * TransactionManagerを生成するファクトリクラスのファクトリメソッドを設定する。<p>
      * 
-     * @param m �t�@�N�g���N���X�̃t�@�N�g�����\�b�h
+     * @param m ファクトリクラスのファクトリメソッド
      */
     public void setFactoryMethod(Method m);
     
     /**
-     * TransactionManager�𐶐�����t�@�N�g���N���X�̃t�@�N�g�����\�b�h���擾����B<p>
+     * TransactionManagerを生成するファクトリクラスのファクトリメソッドを取得する。<p>
      * 
-     * @return �t�@�N�g���N���X�̃t�@�N�g�����\�b�h
+     * @return ファクトリクラスのファクトリメソッド
      */
     public Method getFactoryMethod();
     
     /**
-     * TransactionManager�𐶐�����t�@�N�g���N���X�̃t�@�N�g�����\�b�h�̈�����ݒ肷��B<p>
+     * TransactionManagerを生成するファクトリクラスのファクトリメソッドの引数を設定する。<p>
      * 
-     * @param params �t�@�N�g���N���X�̃t�@�N�g�����\�b�h�̈���
+     * @param params ファクトリクラスのファクトリメソッドの引数
      */
     public void setFactoryMethodParameters(Object[] params);
     
     /**
-     * TransactionManager�𐶐�����t�@�N�g���N���X�̃t�@�N�g�����\�b�h�̈������擾����B<p>
+     * TransactionManagerを生成するファクトリクラスのファクトリメソッドの引数を取得する。<p>
      * 
-     * @return �t�@�N�g���N���X�̃t�@�N�g�����\�b�h�̈���
+     * @return ファクトリクラスのファクトリメソッドの引数
      */
     public Object[] getFactoryMethodParameters();
     
     /**
-     * �t�@�N�g���̃C���X�^���X��ݒ肷��B<p>
+     * ファクトリのインスタンスを設定する。<p>
      *
-     * @param fac �t�@�N�g��
+     * @param fac ファクトリ
      */
     public void setFactory(Object fac);
     
     /**
-     * �t�@�N�g���̃C���X�^���X���擾����B<p>
+     * ファクトリのインスタンスを取得する。<p>
      *
-     * @return �t�@�N�g��
+     * @return ファクトリ
      */
     public Object getFactory();
     
     /**
-     * TransactionManager�N���X�̃R���X�g���N�^��ݒ肷��B<p>
-     * static���\�b�h���Ăԏꍇ�́A�w�肷��K�v�͂Ȃ��B<br>
+     * TransactionManagerクラスのコンストラクタを設定する。<p>
+     * staticメソッドを呼ぶ場合は、指定する必要はない。<br>
      * 
-     * @param c �R���X�g���N�^
+     * @param c コンストラクタ
      */
     public void setTransactionManagerConstructor(Constructor c);
     
     /**
-     * TransactionManager�N���X�̃R���X�g���N�^���擾����B<p>
+     * TransactionManagerクラスのコンストラクタを取得する。<p>
      * 
-     * @return �R���X�g���N�^
+     * @return コンストラクタ
      */
     public Constructor getTransactionManagerConstructor();
     
     /**
-     * TransactionManager�N���X�̃R���X�g���N�^�̈�����ݒ肷��B<p>
+     * TransactionManagerクラスのコンストラクタの引数を設定する。<p>
      * 
-     * @param params �R���X�g���N�^�̈���
+     * @param params コンストラクタの引数
      */
     public void setTransactionManagerConstructorParameters(Object[] params);
     
     /**
-     * TransactionManager�N���X�̃R���X�g���N�^�̈������擾����B<p>
+     * TransactionManagerクラスのコンストラクタの引数を取得する。<p>
      * 
-     * @return �R���X�g���N�^�̈���
+     * @return コンストラクタの引数
      */
     public Object[] getTransactionManagerConstructorParameters();
 }

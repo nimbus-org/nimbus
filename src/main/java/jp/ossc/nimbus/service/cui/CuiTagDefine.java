@@ -32,52 +32,52 @@
 package jp.ossc.nimbus.service.cui;
 
 /**
- *	Cui’è”’è‹`ƒNƒ‰ƒX
+ *	Cuiå®šæ•°å®šç¾©ã‚¯ãƒ©ã‚¹
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/10/31| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/10/31ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public interface CuiTagDefine {
-	/** Å‰‚©‚ç‚â‚è’¼‚µ‚ğ•\‚·—\–ñŒê iStep–¼‚É‚Íg‚¦‚È‚¢j*/
+	/** æœ€åˆã‹ã‚‰ã‚„ã‚Šç›´ã—ã‚’è¡¨ã™äºˆç´„èª ï¼ˆStepåã«ã¯ä½¿ãˆãªã„ï¼‰*/
 	public static final String REDO ="Redo";
-	/** ’†’f‚ğ•\‚·—\–ñŒê (Step–¼‚É‚Íg‚¦‚È‚¢j*/
+	/** ä¸­æ–­ã‚’è¡¨ã™äºˆç´„èª (Stepåã«ã¯ä½¿ãˆãªã„ï¼‰*/
 	public static final String INTERRUPT = "Interrupt";
-	/** I—¹‚ğ•\‚·—\–ñŒê iStep–¼‚É‚Íg‚¦‚È‚¢j */
+	/** çµ‚äº†ã‚’è¡¨ã™äºˆç´„èª ï¼ˆStepåã«ã¯ä½¿ãˆãªã„ï¼‰ */
 	public static final String END = "End";
-	/** dataInputƒ^ƒO@q—v‘f‚Éstep‚ğ‚Â*/
+	/** dataInputã‚¿ã‚°ã€€å­è¦ç´ ã«stepã‚’æŒã¤*/
 	public static final String DATAINPUT_TAG = "dataInput";
-	/** stepƒ^ƒO@q—v‘f‚ÉAdisplay,input,goto,end‚ğ‚Â */
+	/** stepã‚¿ã‚°ã€€å­è¦ç´ ã«ã€display,input,goto,endã‚’æŒã¤ */
 	public static final String STEP_TAG ="step";
-	/** displayƒ^ƒO@*/
+	/** displayã‚¿ã‚°ã€€*/
 	public static final String DISPLAY_TAG = "display";
-	/** inputƒ^ƒO@“ü—Íƒ`ƒFƒbƒN‚ğ’è‹`‚·‚éB*/
+	/** inputã‚¿ã‚°ã€€å…¥åŠ›ãƒã‚§ãƒƒã‚¯ã‚’å®šç¾©ã™ã‚‹ã€‚*/
 	public static final String INPUT_TAG ="input";
-	/** inputƒ^ƒO‚Ìtype‘®«B’l‚Æ‚µ‚ÄA"text","service"‚ª‚ ‚é */
+	/** inputã‚¿ã‚°ã®typeå±æ€§ã€‚å€¤ã¨ã—ã¦ã€"text","service"ãŒã‚ã‚‹ */
 	public static final String INPUT_TAG_TYPE_ATT = "type";
-	/** inputƒ^ƒO‘®«‚ÅAƒT[ƒrƒX‚ğw’è‚·‚é‚Æ‚«‚Ì•¶š—ñ */
+	/** inputã‚¿ã‚°å±æ€§ã§ã€ã‚µãƒ¼ãƒ“ã‚¹ã‚’æŒ‡å®šã™ã‚‹ã¨ãã®æ–‡å­—åˆ— */
 	public static final String INPUT_TYPE_SERVICE = "service";
-	/** I—¹ƒ^ƒO */
+	/** çµ‚äº†ã‚¿ã‚° */
 	public static final String END_TAG = "end";
-	/** gotoƒ^ƒO */
+	/** gotoã‚¿ã‚° */
 	public static final String GOTO_TAG = "goto";
-	/** dataInputƒ^ƒO‚ÌAƒL[‘®« */
+	/** dataInputã‚¿ã‚°ã®ã€ã‚­ãƒ¼å±æ€§ */
 	public static final String DATAINPUT_TAG_KEY_ATT = "key";
-	/** displayƒ^ƒO‚Ìƒ^ƒCƒv‘®«B "service"‚Ü‚½‚Í"text"‚ğw’è‚·‚é */
+	/** displayã‚¿ã‚°ã®ã‚¿ã‚¤ãƒ—å±æ€§ã€‚ "service"ã¾ãŸã¯"text"ã‚’æŒ‡å®šã™ã‚‹ */
 	public static final String DISPLAY_TAG_TYPE_ATT = "type";
-	/** stepƒ^ƒO‚Ìname‘®« */
+	/** stepã‚¿ã‚°ã®nameå±æ€§ */
 	public static final String STEP_TAG_NAME_ATT = "name";
-	/** gotoƒ^ƒO‚Ìvalue‘®« */
+	/** gotoã‚¿ã‚°ã®valueå±æ€§ */
 	public static final String GOTO_TAG_VALUE_ATT = "value";
-	/** displayƒ^ƒO‚Ì ƒ^ƒCƒv‘®«‚ÉAƒT[ƒrƒX‚ğw’è‚·‚éê‡ */
+	/** displayã‚¿ã‚°ã® ã‚¿ã‚¤ãƒ—å±æ€§ã«ã€ã‚µãƒ¼ãƒ“ã‚¹ã‚’æŒ‡å®šã™ã‚‹å ´åˆ */
 	public static final String DISPLAY_TYPE_SERVICE = "service";
-	/** “¯ˆêstep’†‚ÉAinput‚ª•¡”w’è‚³‚ê‚½ê‡‚ÌƒGƒ‰[ƒƒbƒZ[ƒW */
+	/** åŒä¸€stepä¸­ã«ã€inputãŒè¤‡æ•°æŒ‡å®šã•ã‚ŒãŸå ´åˆã®ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ */
 	public static final String INPUT_MULTIDEF_ERR = "input multi defined (in a step ) err";
-	/** ’è‹`‚³‚ê‚Ä‚¢‚È‚¢Step‚É‘JˆÚ‚µ‚æ‚¤‚Æ‚µ‚½ê‡‚ÌƒGƒ‰[ƒƒbƒZ[ƒW */
+	/** å®šç¾©ã•ã‚Œã¦ã„ãªã„Stepã«é·ç§»ã—ã‚ˆã†ã¨ã—ãŸå ´åˆã®ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ */
 	public static final String NOT_DEF_GOTODIST = "not defined goto distination.";
-	/** “¯ˆêstep’†‚ÉI—¹ƒ^ƒO‚ª•¡”‘¶İ‚µ‚½ê‡‚ÌƒGƒ‰[ƒƒbƒZ[ƒW */
+	/** åŒä¸€stepä¸­ã«çµ‚äº†ã‚¿ã‚°ãŒè¤‡æ•°å­˜åœ¨ã—ãŸå ´åˆã®ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ */
 	public static final String END_MULTI_DEF_ERR = "end multi defined (in a step) err";
-	/** I—¹ƒ^ƒO‚Ìƒ^ƒCƒv‘®« */
+	/** çµ‚äº†ã‚¿ã‚°ã®ã‚¿ã‚¤ãƒ—å±æ€§ */
 	public static final String END_TAG_TYPE_ATT = "type";
-	/** I—¹ƒ^ƒO‚Ìƒ^ƒCƒv‘®«‚Éw’è‚·‚é’li‹­§I—¹j*/
+	/** çµ‚äº†ã‚¿ã‚°ã®ã‚¿ã‚¤ãƒ—å±æ€§ã«æŒ‡å®šã™ã‚‹å€¤ï¼ˆå¼·åˆ¶çµ‚äº†ï¼‰*/
 	public static final String END_FORCE = "force";
 }

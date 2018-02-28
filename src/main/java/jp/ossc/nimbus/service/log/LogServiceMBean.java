@@ -37,85 +37,85 @@ import jp.ossc.nimbus.service.queue.*;
 import jp.ossc.nimbus.service.context.*;
 
 /**
- * {@link LogService}ƒT[ƒrƒXMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link LogService}ã‚µãƒ¼ãƒ“ã‚¹MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author Y.Tokuda
  */
 public interface LogServiceMBean extends ServiceBaseMBean {
     
-    /** debugƒƒ\ƒbƒhƒJƒeƒSƒŠ–¼ */
+    /** debugãƒ¡ã‚½ãƒƒãƒ‰ã‚«ãƒ†ã‚´ãƒªå */
     public static final String DEBUG_METHOD_CATEGORY
          = "jp.ossc.nimbus.service.log.DEBUG_METHOD_CATEGORY";
-    /** debugƒƒ\ƒbƒhƒJƒeƒSƒŠ‚Ì—Dæ“x”ÍˆÍ‚ÌÅ¬’l */
+    /** debugãƒ¡ã‚½ãƒƒãƒ‰ã‚«ãƒ†ã‚´ãƒªã®å„ªå…ˆåº¦ç¯„å›²ã®æœ€å°å€¤ */
     public static final int DEBUG_METHOD_CATEGORY_PRIORITY_MIN = -1;
-    /** debugƒƒ\ƒbƒhƒJƒeƒSƒŠ‚Ì—Dæ“x”ÍˆÍ‚ÌÅ‘å’l */
+    /** debugãƒ¡ã‚½ãƒƒãƒ‰ã‚«ãƒ†ã‚´ãƒªã®å„ªå…ˆåº¦ç¯„å›²ã®æœ€å¤§å€¤ */
     public static final int DEBUG_METHOD_CATEGORY_PRIORITY_MAX = -1;
-    /** debugƒƒ\ƒbƒhƒJƒeƒSƒŠ‚Ì‚Ìo—Íƒ‰ƒxƒ‹ */
+    /** debugãƒ¡ã‚½ãƒƒãƒ‰ã‚«ãƒ†ã‚´ãƒªã®ã®å‡ºåŠ›ãƒ©ãƒ™ãƒ« */
     public static final String DEBUG_METHOD_CATEGORY_LABEL = "DEBUG";
     
-    /** ƒVƒXƒeƒ€DEBUGƒJƒeƒSƒŠ–¼ */
+    /** ã‚·ã‚¹ãƒ†ãƒ DEBUGã‚«ãƒ†ã‚´ãƒªå */
     public static final String SYSTEM_DEBUG_CATEGORY
          = "jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY";
-    /** ƒVƒXƒeƒ€DEBUGƒJƒeƒSƒŠ‚Ì—Dæ“x”ÍˆÍ‚ÌÅ¬’l */
+    /** ã‚·ã‚¹ãƒ†ãƒ DEBUGã‚«ãƒ†ã‚´ãƒªã®å„ªå…ˆåº¦ç¯„å›²ã®æœ€å°å€¤ */
     public static final int SYSTEM_DEBUG_CATEGORY_PRIORITY_MIN = 0;
-    /** ƒVƒXƒeƒ€DEBUGƒJƒeƒSƒŠ‚Ì—Dæ“x”ÍˆÍ‚ÌÅ‘å’l */
+    /** ã‚·ã‚¹ãƒ†ãƒ DEBUGã‚«ãƒ†ã‚´ãƒªã®å„ªå…ˆåº¦ç¯„å›²ã®æœ€å¤§å€¤ */
     public static final int SYSTEM_DEBUG_CATEGORY_PRIORITY_MAX = 49;
-    /** ƒVƒXƒeƒ€DEBUGƒJƒeƒSƒŠ‚Ìo—Íƒ‰ƒxƒ‹ */
+    /** ã‚·ã‚¹ãƒ†ãƒ DEBUGã‚«ãƒ†ã‚´ãƒªã®å‡ºåŠ›ãƒ©ãƒ™ãƒ« */
     public static final String SYSTEM_DEBUG_CATEGORY_LABEL = "SYSTEM_DEBUG";
     
-    /** ƒVƒXƒeƒ€INFOƒJƒeƒSƒŠ–¼ */
+    /** ã‚·ã‚¹ãƒ†ãƒ INFOã‚«ãƒ†ã‚´ãƒªå */
     public static final String SYSTEM_INFO_CATEGORY
          = "jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY";
-    /** ƒVƒXƒeƒ€INFOƒJƒeƒSƒŠ‚Ì—Dæ“x”ÍˆÍ‚ÌÅ¬’l */
+    /** ã‚·ã‚¹ãƒ†ãƒ INFOã‚«ãƒ†ã‚´ãƒªã®å„ªå…ˆåº¦ç¯„å›²ã®æœ€å°å€¤ */
     public static final int SYSTEM_INFO_CATEGORY_PRIORITY_MIN = 50;
-    /** ƒVƒXƒeƒ€INFOƒJƒeƒSƒŠ‚Ì—Dæ“x”ÍˆÍ‚ÌÅ‘å’l */
+    /** ã‚·ã‚¹ãƒ†ãƒ INFOã‚«ãƒ†ã‚´ãƒªã®å„ªå…ˆåº¦ç¯„å›²ã®æœ€å¤§å€¤ */
     public static final int SYSTEM_INFO_CATEGORY_PRIORITY_MAX = 99;
-    /** ƒVƒXƒeƒ€DEBUGƒJƒeƒSƒŠ‚Ìo—Íƒ‰ƒxƒ‹ */
+    /** ã‚·ã‚¹ãƒ†ãƒ DEBUGã‚«ãƒ†ã‚´ãƒªã®å‡ºåŠ›ãƒ©ãƒ™ãƒ« */
     public static final String SYSTEM_INFO_CATEGORY_LABEL = "SYSTEM_INFO";
     
-    /** ƒVƒXƒeƒ€WARNƒJƒeƒSƒŠ–¼ */
+    /** ã‚·ã‚¹ãƒ†ãƒ WARNã‚«ãƒ†ã‚´ãƒªå */
     public static final String SYSTEM_WARN_CATEGORY
          = "jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY";
-    /** ƒVƒXƒeƒ€WARNƒJƒeƒSƒŠ‚Ì—Dæ“x”ÍˆÍ‚ÌÅ¬’l */
+    /** ã‚·ã‚¹ãƒ†ãƒ WARNã‚«ãƒ†ã‚´ãƒªã®å„ªå…ˆåº¦ç¯„å›²ã®æœ€å°å€¤ */
     public static final int SYSTEM_WARN_CATEGORY_PRIORITY_MIN = 100;
-    /** ƒVƒXƒeƒ€WARNƒJƒeƒSƒŠ‚Ì—Dæ“x”ÍˆÍ‚ÌÅ‘å’l */
+    /** ã‚·ã‚¹ãƒ†ãƒ WARNã‚«ãƒ†ã‚´ãƒªã®å„ªå…ˆåº¦ç¯„å›²ã®æœ€å¤§å€¤ */
     public static final int SYSTEM_WARN_CATEGORY_PRIORITY_MAX = 149;
-    /** ƒVƒXƒeƒ€WARNƒJƒeƒSƒŠ‚Ìo—Íƒ‰ƒxƒ‹ */
+    /** ã‚·ã‚¹ãƒ†ãƒ WARNã‚«ãƒ†ã‚´ãƒªã®å‡ºåŠ›ãƒ©ãƒ™ãƒ« */
     public static final String SYSTEM_WARN_CATEGORY_LABEL = "SYSTEM_WARN";
     
-    /** ƒVƒXƒeƒ€ERRORƒJƒeƒSƒŠ–¼ */
+    /** ã‚·ã‚¹ãƒ†ãƒ ERRORã‚«ãƒ†ã‚´ãƒªå */
     public static final String SYSTEM_ERROR_CATEGORY
          = "jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY";
-    /** ƒVƒXƒeƒ€ERRORƒJƒeƒSƒŠ‚Ì—Dæ“x”ÍˆÍ‚ÌÅ¬’l */
+    /** ã‚·ã‚¹ãƒ†ãƒ ERRORã‚«ãƒ†ã‚´ãƒªã®å„ªå…ˆåº¦ç¯„å›²ã®æœ€å°å€¤ */
     public static final int SYSTEM_ERROR_CATEGORY_PRIORITY_MIN = 150;
-    /** ƒVƒXƒeƒ€ERRORƒJƒeƒSƒŠ‚Ì—Dæ“x”ÍˆÍ‚ÌÅ‘å’l */
+    /** ã‚·ã‚¹ãƒ†ãƒ ERRORã‚«ãƒ†ã‚´ãƒªã®å„ªå…ˆåº¦ç¯„å›²ã®æœ€å¤§å€¤ */
     public static final int SYSTEM_ERROR_CATEGORY_PRIORITY_MAX = 199;
-    /** ƒVƒXƒeƒ€ERRORƒJƒeƒSƒŠ‚Ìo—Íƒ‰ƒxƒ‹ */
+    /** ã‚·ã‚¹ãƒ†ãƒ ERRORã‚«ãƒ†ã‚´ãƒªã®å‡ºåŠ›ãƒ©ãƒ™ãƒ« */
     public static final String SYSTEM_ERROR_CATEGORY_LABEL = "SYSTEM_ERROR";
     
-    /** ƒVƒXƒeƒ€FATALƒJƒeƒSƒŠ–¼ */
+    /** ã‚·ã‚¹ãƒ†ãƒ FATALã‚«ãƒ†ã‚´ãƒªå */
     public static final String SYSTEM_FATAL_CATEGORY
          = "jp.ossc.nimbus.service.log.SYSTEM_FATAL_CATEGORY";
-    /** ƒVƒXƒeƒ€FATALƒJƒeƒSƒŠ‚Ì—Dæ“x”ÍˆÍ‚ÌÅ¬’l */
+    /** ã‚·ã‚¹ãƒ†ãƒ FATALã‚«ãƒ†ã‚´ãƒªã®å„ªå…ˆåº¦ç¯„å›²ã®æœ€å°å€¤ */
     public static final int SYSTEM_FATAL_CATEGORY_PRIORITY_MIN = 200;
-    /** ƒVƒXƒeƒ€FATALƒJƒeƒSƒŠ‚Ì—Dæ“x”ÍˆÍ‚ÌÅ‘å’l */
+    /** ã‚·ã‚¹ãƒ†ãƒ FATALã‚«ãƒ†ã‚´ãƒªã®å„ªå…ˆåº¦ç¯„å›²ã®æœ€å¤§å€¤ */
     public static final int SYSTEM_FATAL_CATEGORY_PRIORITY_MAX = 249;
-    /** ƒVƒXƒeƒ€FATALƒJƒeƒSƒŠ‚Ìo—Íƒ‰ƒxƒ‹ */
+    /** ã‚·ã‚¹ãƒ†ãƒ FATALã‚«ãƒ†ã‚´ãƒªã®å‡ºåŠ›ãƒ©ãƒ™ãƒ« */
     public static final String SYSTEM_FATAL_CATEGORY_LABEL = "SYSTEM_FATAL";
     
-    /** ƒJƒeƒSƒŠ‚ğ•\‚·o—ÍƒtƒH[ƒ}ƒbƒg‚ÌƒL[ */
+    /** ã‚«ãƒ†ã‚´ãƒªã‚’è¡¨ã™å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã®ã‚­ãƒ¼ */
     public static final String FORMAT_CATEGORY_KEY = "CATEGORY";
-    /** ƒR[ƒh‚ğ•\‚·o—ÍƒtƒH[ƒ}ƒbƒg‚ÌƒL[ */
+    /** ã‚³ãƒ¼ãƒ‰ã‚’è¡¨ã™å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã®ã‚­ãƒ¼ */
     public static final String FORMAT_CODE_KEY = "CODE";
-    /** “ú•t‚ğ•\‚·o—ÍƒtƒH[ƒ}ƒbƒg‚ÌƒL[ */
+    /** æ—¥ä»˜ã‚’è¡¨ã™å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã®ã‚­ãƒ¼ */
     public static final String FORMAT_DATE_KEY = "DATE";
-    /** —Dæ“x‚ğ•\‚·o—ÍƒtƒH[ƒ}ƒbƒg‚ÌƒL[ */
+    /** å„ªå…ˆåº¦ã‚’è¡¨ã™å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã®ã‚­ãƒ¼ */
     public static final String FORMAT_PRIORITY_KEY = "PRIORITY";
-    /** ƒƒbƒZ[ƒW‚ğ•\‚·o—ÍƒtƒH[ƒ}ƒbƒg‚ÌƒL[ */
+    /** ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ã™å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã®ã‚­ãƒ¼ */
     public static final String FORMAT_MESSAGE_KEY = "MESSAGE";
     
     /**
-     * ƒfƒtƒHƒ‹ƒgƒtƒH[ƒ}ƒbƒgB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã€‚<p>
      * "%DATE%,%PRIORITY%,[%CODE%]%MESSAGE%"
      */
     public static final String DEFAULT_FORMAT
@@ -123,469 +123,469 @@ public interface LogServiceMBean extends ServiceBaseMBean {
              + FORMAT_CODE_KEY + "%]%" + FORMAT_MESSAGE_KEY + '%';
     
     /**
-     * o—Í‚·‚éƒƒO‚ÌƒJƒeƒSƒŠ‚ğ’è‹`‚·‚é{@link LogCategory}ƒT[ƒrƒX‚Ì–¼‘O‚ğİ’è‚·‚éB<p>
+     * å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ã‚«ãƒ†ã‚´ãƒªã‚’å®šç¾©ã™ã‚‹{@link LogCategory}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param names LogCategoryƒT[ƒrƒX–¼‚Ì”z—ñ
+     * @param names LogCategoryã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—
      */
     public void setCategoryServiceNames(ServiceName[] names);
     
     /**
-     * o—Í‚·‚éƒƒO‚ÌƒJƒeƒSƒŠ‚ğ’è‹`‚·‚é{@link LogCategory}ƒT[ƒrƒX‚Ì–¼‘O‚ğæ“¾‚·‚éB<p>
+     * å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ã‚«ãƒ†ã‚´ãƒªã‚’å®šç¾©ã™ã‚‹{@link LogCategory}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return LogCategoryƒT[ƒrƒX–¼‚Ì”z—ñ
+     * @return LogCategoryã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—
      */
     public ServiceName[] getCategoryServiceNames();
     
     /**
-     * o—Í‚·‚éƒƒO‚ÌƒJƒeƒSƒŠ‚ğ’è‹`‚·‚é{@link LogCategory}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ã‚«ãƒ†ã‚´ãƒªã‚’å®šç¾©ã™ã‚‹{@link LogCategory}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param categories LogCategoryƒT[ƒrƒX‚Ì”z—ñ
+     * @param categories LogCategoryã‚µãƒ¼ãƒ“ã‚¹ã®é…åˆ—
      */
     public void setCategoryServices(LogCategory[] categories);
     
     /**
-     * o—Í‚·‚éƒƒO‚ÌƒJƒeƒSƒŠ‚ğ’è‹`‚·‚é{@link LogCategory}ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ã‚«ãƒ†ã‚´ãƒªã‚’å®šç¾©ã™ã‚‹{@link LogCategory}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return LogCategoryƒT[ƒrƒX‚Ì”z—ñ
+     * @return LogCategoryã‚µãƒ¼ãƒ“ã‚¹ã®é…åˆ—
      */
     public LogCategory[] getCategoryServices();
     
     /**
-     * o—Í‚·‚éƒƒO‚ÌƒJƒeƒSƒŠ‚ğ’è‹`‚·‚é{@link LogCategory}ƒT[ƒrƒX‚ğ’Ç‰Á‚·‚éB<p>
+     * å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ã‚«ãƒ†ã‚´ãƒªã‚’å®šç¾©ã™ã‚‹{@link LogCategory}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      * 
-     * @param category LogCategoryƒT[ƒrƒX
+     * @param category LogCategoryã‚µãƒ¼ãƒ“ã‚¹
      */
     public void addCategoryService(LogCategory category);
     
     /**
-     * w’è‚³‚ê‚½ƒJƒeƒSƒŠ–¼‚ğ‚ÂƒJƒeƒSƒŠ‚ğ’è‹`‚·‚é{@link LogCategory}ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚«ãƒ†ã‚´ãƒªåã‚’æŒã¤ã‚«ãƒ†ã‚´ãƒªã‚’å®šç¾©ã™ã‚‹{@link LogCategory}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param name ƒJƒeƒSƒŠ–¼
-     * @return LogCategoryƒT[ƒrƒX
+     * @param name ã‚«ãƒ†ã‚´ãƒªå
+     * @return LogCategoryã‚µãƒ¼ãƒ“ã‚¹
      */
     public LogCategory getCategoryService(String name);
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒJƒeƒSƒŠ‚ÌMessageWriterƒT[ƒrƒX‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Ég—p‚·‚éB<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚«ãƒ†ã‚´ãƒªã®MessageWriterã‚µãƒ¼ãƒ“ã‚¹ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã«ä½¿ç”¨ã™ã‚‹ã€‚<br>
      *
-     * @param name MessageWriterƒT[ƒrƒX–¼
+     * @param name MessageWriterã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setDefaultMessageWriterServiceName(ServiceName name);
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒJƒeƒSƒŠ‚ÌMessageWriterƒT[ƒrƒX‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Ég—p‚·‚éB<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚«ãƒ†ã‚´ãƒªã®MessageWriterã‚µãƒ¼ãƒ“ã‚¹ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã«ä½¿ç”¨ã™ã‚‹ã€‚<br>
      *
-     * @return MessageWriterƒT[ƒrƒX–¼
+     * @return MessageWriterã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getDefaultMessageWriterServiceName();
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒJƒeƒSƒŠ‚ÌWritableRecordFactoryƒT[ƒrƒX‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Ég—p‚·‚éB<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚«ãƒ†ã‚´ãƒªã®WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã«ä½¿ç”¨ã™ã‚‹ã€‚<br>
      *
-     * @param name WritableRecordFactoryƒT[ƒrƒX–¼
+     * @param name WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setDefaultWritableRecordFactoryServiceName(ServiceName name);
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒJƒeƒSƒŠ‚ÌWritableRecordFactoryƒT[ƒrƒX‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Ég—p‚·‚éB<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚«ãƒ†ã‚´ãƒªã®WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã«ä½¿ç”¨ã™ã‚‹ã€‚<br>
      *
-     * @return WritableRecordFactoryƒT[ƒrƒX–¼
+     * @return WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getDefaultWritableRecordFactoryServiceName();
     
     /**
-     * ƒƒOo—Í‚Ég—p‚·‚éƒƒbƒZ[ƒW‚ğŠÇ—‚·‚é{@link MessageRecordFactory}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã™ã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç®¡ç†ã™ã‚‹{@link MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name MessageRecordFactoryƒT[ƒrƒX–¼
+     * @param name MessageRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setMessageRecordFactoryServiceName(ServiceName name);
     
     /**
-     * ƒƒOo—Í‚Ég—p‚·‚éƒƒbƒZ[ƒW‚ğŠÇ—‚·‚é{@link MessageRecordFactory}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã™ã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç®¡ç†ã™ã‚‹{@link MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param message MessageRecordFactoryƒT[ƒrƒX
+     * @param message MessageRecordFactoryã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setMessageRecordFactoryService(MessageRecordFactory message);
     
     /**
-     * ƒƒOo—Í‚Ég—p‚·‚éƒƒbƒZ[ƒW‚ğŠÇ—‚·‚é{@link MessageRecordFactory}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã™ã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç®¡ç†ã™ã‚‹{@link MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return MessageRecordFactoryƒT[ƒrƒX–¼
+     * @return MessageRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getMessageRecordFactoryServiceName();
     
     /**
-     * ƒƒOo—Í‚Ég—p‚·‚éƒƒbƒZ[ƒW‚ğŠÇ—‚·‚é{@link MessageRecordFactory}ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã™ã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç®¡ç†ã™ã‚‹{@link MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return MessageRecordFactoryƒT[ƒrƒX
+     * @return MessageRecordFactoryã‚µãƒ¼ãƒ“ã‚¹
      */
     public MessageRecordFactory getMessageRecordFactoryService();
     
     /**
-     * ˆË—Š‚³‚ê‚½ƒƒOo—Í‚ğˆê’UƒLƒ…[ƒCƒ“ƒO‚·‚é{@link Queue}‚ğ¶¬‚·‚é{@link Queue}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ä¾é ¼ã•ã‚ŒãŸãƒ­ã‚°å‡ºåŠ›ã‚’ä¸€æ—¦ã‚­ãƒ¥ãƒ¼ã‚¤ãƒ³ã‚°ã™ã‚‹{@link Queue}ã‚’ç”Ÿæˆã™ã‚‹{@link Queue}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name QueueƒT[ƒrƒX–¼
+     * @param name Queueã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setQueueServiceName(ServiceName name);
     
     /**
-     * ˆË—Š‚³‚ê‚½ƒƒOo—Í‚ğˆê’UƒLƒ…[ƒCƒ“ƒO‚·‚é{@link Queue}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * ä¾é ¼ã•ã‚ŒãŸãƒ­ã‚°å‡ºåŠ›ã‚’ä¸€æ—¦ã‚­ãƒ¥ãƒ¼ã‚¤ãƒ³ã‚°ã™ã‚‹{@link Queue}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param queue QueueƒT[ƒrƒX–¼
+     * @param queue Queueã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setQueueService(Queue queue);
     
     /**
-     * ˆË—Š‚³‚ê‚½ƒƒOo—Í‚ğˆê’UƒLƒ…[ƒCƒ“ƒO‚·‚é{@link Queue}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ä¾é ¼ã•ã‚ŒãŸãƒ­ã‚°å‡ºåŠ›ã‚’ä¸€æ—¦ã‚­ãƒ¥ãƒ¼ã‚¤ãƒ³ã‚°ã™ã‚‹{@link Queue}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return QueueƒT[ƒrƒX–¼
+     * @return Queueã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getQueueServiceName();
     
     /**
-     * ˆË—Š‚³‚ê‚½ƒƒOo—Í‚ğˆê’UƒLƒ…[ƒCƒ“ƒO‚·‚é{@link Queue}‚ğ¶¬‚·‚é{@link Queue}ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * ä¾é ¼ã•ã‚ŒãŸãƒ­ã‚°å‡ºåŠ›ã‚’ä¸€æ—¦ã‚­ãƒ¥ãƒ¼ã‚¤ãƒ³ã‚°ã™ã‚‹{@link Queue}ã‚’ç”Ÿæˆã™ã‚‹{@link Queue}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return QueueƒT[ƒrƒX
+     * @return Queueã‚µãƒ¼ãƒ“ã‚¹
      */
     public Queue getQueueService();
     
     /**
-     * ƒƒO‚Ì¯•Êî•ñ‚ğ•Û‚·‚é{@link Context}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ­ã‚°ã®è­˜åˆ¥æƒ…å ±ã‚’ä¿æŒã™ã‚‹{@link Context}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name ContextƒT[ƒrƒX–¼
+     * @param name Contextã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setContextServiceName(ServiceName name);
     
     /**
-     * ƒƒO‚Ì¯•Êî•ñ‚ğ•Û‚·‚é{@link Context}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * ãƒ­ã‚°ã®è­˜åˆ¥æƒ…å ±ã‚’ä¿æŒã™ã‚‹{@link Context}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param context ContextƒT[ƒrƒX
+     * @param context Contextã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setContextService(Context context);
     
     /**
-     * ƒƒO‚Ì¯•Êî•ñ‚ğ•Û‚·‚é{@link Context}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ­ã‚°ã®è­˜åˆ¥æƒ…å ±ã‚’ä¿æŒã™ã‚‹{@link Context}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ContextƒT[ƒrƒX–¼
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getContextServiceName();
     
     /**
-     * ƒƒO‚Ì¯•Êî•ñ‚ğ•Û‚·‚é{@link Context}ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * ãƒ­ã‚°ã®è­˜åˆ¥æƒ…å ±ã‚’ä¿æŒã™ã‚‹{@link Context}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ContextƒT[ƒrƒX
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹
      */
     public Context getContextService();
     
     /**
-     * {@link Context}ƒT[ƒrƒX‚©‚çæ“¾‚·‚éƒtƒH[ƒ}ƒbƒgî•ñ‚ÌƒL[–¼‚ğİ’è‚·‚éB<p>
+     * {@link Context}ã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰å–å¾—ã™ã‚‹ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæƒ…å ±ã®ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param keys ContextƒT[ƒrƒX‚©‚çæ“¾‚·‚éƒtƒH[ƒ}ƒbƒgî•ñ‚ÌƒL[–¼”z—ñ
+     * @param keys Contextã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰å–å¾—ã™ã‚‹ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæƒ…å ±ã®ã‚­ãƒ¼åé…åˆ—
      */
     public void setContextFormatKeys(String[] keys);
     
     /**
-     * {@link Context}ƒT[ƒrƒX‚©‚çæ“¾‚·‚éƒtƒH[ƒ}ƒbƒgî•ñ‚ÌƒL[–¼‚ğ’Ç‰Á‚·‚éB<p>
+     * {@link Context}ã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰å–å¾—ã™ã‚‹ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæƒ…å ±ã®ã‚­ãƒ¼åã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      * 
-     * @param key ContextƒT[ƒrƒX‚©‚çæ“¾‚·‚éƒtƒH[ƒ}ƒbƒgî•ñ‚ÌƒL[–¼
+     * @param key Contextã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰å–å¾—ã™ã‚‹ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæƒ…å ±ã®ã‚­ãƒ¼å
      */
     public void addContextFormatKey(String key);
     
     /**
-     * {@link Context}ƒT[ƒrƒX‚©‚çæ“¾‚·‚éƒtƒH[ƒ}ƒbƒgî•ñ‚ÌƒL[–¼‚ğíœ‚·‚éB<p>
+     * {@link Context}ã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰å–å¾—ã™ã‚‹ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæƒ…å ±ã®ã‚­ãƒ¼åã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      * 
-     * @param key ContextƒT[ƒrƒX‚©‚çæ“¾‚·‚éƒtƒH[ƒ}ƒbƒgî•ñ‚ÌƒL[–¼
+     * @param key Contextã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰å–å¾—ã™ã‚‹ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæƒ…å ±ã®ã‚­ãƒ¼å
      */
     public void removeContextFormatKey(String key);
     
     /**
-     * {@link Context}ƒT[ƒrƒX‚©‚çæ“¾‚·‚éƒtƒH[ƒ}ƒbƒgî•ñ‚ÌƒL[–¼‚ğ‘S‚Äíœ‚·‚éB<p>
+     * {@link Context}ã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰å–å¾—ã™ã‚‹ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæƒ…å ±ã®ã‚­ãƒ¼åã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      */
     public void clearContextFormatKeys();
     
     /**
-     * {@link Context}ƒT[ƒrƒX‚©‚çæ“¾‚·‚éƒtƒH[ƒ}ƒbƒgî•ñ‚ÌƒL[–¼‚ğæ“¾‚·‚éB<p>
+     * {@link Context}ã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰å–å¾—ã™ã‚‹ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæƒ…å ±ã®ã‚­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ContextƒT[ƒrƒX‚©‚çæ“¾‚·‚éƒtƒH[ƒ}ƒbƒgî•ñ‚ÌƒL[–¼
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰å–å¾—ã™ã‚‹ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæƒ…å ±ã®ã‚­ãƒ¼å
      */
     public String[] getContextFormatKeys();
     
     /**
-     * {@link Logger#debug(Object)}ƒƒ\ƒbƒh‚ÌƒƒO‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * {@link Logger#debug(Object)}ãƒ¡ã‚½ãƒƒãƒ‰ã®ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param isEnabled o—Í‚·‚éê‡ true
+     * @param isEnabled å‡ºåŠ›ã™ã‚‹å ´åˆ true
      */
     public void setDebugEnabled(boolean isEnabled);
     
     /**
-     * {@link Logger#debug(Object)}ƒƒ\ƒbƒh‚ÌƒƒO‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ’²‚×‚éB<p>
+     * {@link Logger#debug(Object)}ãƒ¡ã‚½ãƒƒãƒ‰ã®ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’èª¿ã¹ã‚‹ã€‚<p>
      * 
-     * @return o—Í‚·‚éê‡ true
+     * @return å‡ºåŠ›ã™ã‚‹å ´åˆ true
      */
     public boolean isDebugEnabled();
     
     /**
-     * {@link #SYSTEM_DEBUG_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * {@link #SYSTEM_DEBUG_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isEnabled o—Í‚·‚éê‡ true
+     * @param isEnabled å‡ºåŠ›ã™ã‚‹å ´åˆ true
      */
     public void setSystemDebugEnabled(boolean isEnabled);
     
     /**
-     * {@link #SYSTEM_DEBUG_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤‚©‚Ç‚¤‚©‚ğ’²‚×‚éB<p>
+     * {@link #SYSTEM_DEBUG_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @return o—Í‚·‚éê‡ true
+     * @return å‡ºåŠ›ã™ã‚‹å ´åˆ true
      */
     public boolean isSystemDebugEnabled();
     
     /**
-     * {@link #SYSTEM_INFO_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * {@link #SYSTEM_INFO_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isEnabled o—Í‚·‚éê‡ true
+     * @param isEnabled å‡ºåŠ›ã™ã‚‹å ´åˆ true
      */
     public void setSystemInfoEnabled(boolean isEnabled);
     
     /**
-     * {@link #SYSTEM_INFO_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤‚©‚Ç‚¤‚©‚ğ’²‚×‚éB<p>
+     * {@link #SYSTEM_INFO_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @return o—Í‚·‚éê‡ true
+     * @return å‡ºåŠ›ã™ã‚‹å ´åˆ true
      */
     public boolean isSystemInfoEnabled();
     
     /**
-     * {@link #SYSTEM_WARN_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * {@link #SYSTEM_WARN_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isEnabled o—Í‚·‚éê‡ true
+     * @param isEnabled å‡ºåŠ›ã™ã‚‹å ´åˆ true
      */
     public void setSystemWarnEnabled(boolean isEnabled);
     
     /**
-     * {@link #SYSTEM_WARN_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤‚©‚Ç‚¤‚©‚ğ’²‚×‚éB<p>
+     * {@link #SYSTEM_WARN_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @return o—Í‚·‚éê‡ true
+     * @return å‡ºåŠ›ã™ã‚‹å ´åˆ true
      */
     public boolean isSystemWarnEnabled();
     
     /**
-     * {@link #SYSTEM_ERROR_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * {@link #SYSTEM_ERROR_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isEnabled o—Í‚·‚éê‡ true
+     * @param isEnabled å‡ºåŠ›ã™ã‚‹å ´åˆ true
      */
     public void setSystemErrorEnabled(boolean isEnabled);
     
     /**
-     * {@link #SYSTEM_ERROR_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤‚©‚Ç‚¤‚©‚ğ’²‚×‚éB<p>
+     * {@link #SYSTEM_ERROR_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @return o—Í‚·‚éê‡ true
+     * @return å‡ºåŠ›ã™ã‚‹å ´åˆ true
      */
     public boolean isSystemErrorEnabled();
     
     /**
-     * {@link #SYSTEM_FATAL_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * {@link #SYSTEM_FATAL_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isEnabled o—Í‚·‚éê‡ true
+     * @param isEnabled å‡ºåŠ›ã™ã‚‹å ´åˆ true
      */
     public void setSystemFatalEnabled(boolean isEnabled);
     
     /**
-     * {@link #SYSTEM_FATAL_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤‚©‚Ç‚¤‚©‚ğ’²‚×‚éB<p>
+     * {@link #SYSTEM_FATAL_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @return o—Í‚·‚éê‡ true
+     * @return å‡ºåŠ›ã™ã‚‹å ´åˆ true
      */
     public boolean isSystemFatalEnabled();
     
     /**
-     * {@link #DEBUG_METHOD_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link #DEBUG_METHOD_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name MessageWriterƒT[ƒrƒX–¼
+     * @param name MessageWriterã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setDebugMessageWriterServiceName(ServiceName name);
     
     /**
-     * {@link #DEBUG_METHOD_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link #DEBUG_METHOD_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return MessageWriterƒT[ƒrƒX–¼
+     * @return MessageWriterã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getDebugMessageWriterServiceName();
     
     /**
-     * {@link #SYSTEM_DEBUG_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link #SYSTEM_DEBUG_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name MessageWriterƒT[ƒrƒX–¼
+     * @param name MessageWriterã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setSystemDebugMessageWriterServiceName(ServiceName name);
     
     /**
-     * {@link #SYSTEM_DEBUG_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link #SYSTEM_DEBUG_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return MessageWriterƒT[ƒrƒX–¼
+     * @return MessageWriterã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getSystemDebugMessageWriterServiceName();
     
     /**
-     * {@link #SYSTEM_INFO_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link #SYSTEM_INFO_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name MessageWriterƒT[ƒrƒX–¼
+     * @param name MessageWriterã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setSystemInfoMessageWriterServiceName(ServiceName name);
     
     /**
-     * {@link #SYSTEM_INFO_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link #SYSTEM_INFO_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return MessageWriterƒT[ƒrƒX–¼
+     * @return MessageWriterã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getSystemInfoMessageWriterServiceName();
     
     /**
-     * {@link #SYSTEM_WARN_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link #SYSTEM_WARN_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name MessageWriterƒT[ƒrƒX–¼
+     * @param name MessageWriterã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setSystemWarnMessageWriterServiceName(ServiceName name);
     
     /**
-     * {@link #SYSTEM_WARN_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link #SYSTEM_WARN_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return MessageWriterƒT[ƒrƒX–¼
+     * @return MessageWriterã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getSystemWarnMessageWriterServiceName();
     
     /**
-     * {@link #SYSTEM_ERROR_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link #SYSTEM_ERROR_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name MessageWriterƒT[ƒrƒX–¼
+     * @param name MessageWriterã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setSystemErrorMessageWriterServiceName(ServiceName name);
     
     /**
-     * {@link #SYSTEM_ERROR_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link #SYSTEM_ERROR_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return MessageWriterƒT[ƒrƒX–¼
+     * @return MessageWriterã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getSystemErrorMessageWriterServiceName();
     
     /**
-     * {@link #SYSTEM_FATAL_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link #SYSTEM_FATAL_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name MessageWriterƒT[ƒrƒX–¼
+     * @param name MessageWriterã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setSystemFatalMessageWriterServiceName(ServiceName name);
     
     /**
-     * {@link #SYSTEM_FATAL_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link #SYSTEM_FATAL_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return MessageWriterƒT[ƒrƒX–¼
+     * @return MessageWriterã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getSystemFatalMessageWriterServiceName();
     
     /**
-     * {@link #DEBUG_METHOD_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link #DEBUG_METHOD_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name WritableRecordFactoryƒT[ƒrƒX–¼
+     * @param name WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setDebugWritableRecordFactoryServiceName(
         ServiceName name
     );
     
     /**
-     * {@link #DEBUG_METHOD_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link #DEBUG_METHOD_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecordFactoryƒT[ƒrƒX–¼
+     * @return WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getDebugWritableRecordFactoryServiceName();
     
     /**
-     * {@link #SYSTEM_DEBUG_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link #SYSTEM_DEBUG_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name WritableRecordFactoryƒT[ƒrƒX–¼
+     * @param name WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setSystemDebugWritableRecordFactoryServiceName(
         ServiceName name
     );
     
     /**
-     * {@link #SYSTEM_DEBUG_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link #SYSTEM_DEBUG_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecordFactoryƒT[ƒrƒX–¼
+     * @return WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getSystemDebugWritableRecordFactoryServiceName();
     
     /**
-     * {@link #SYSTEM_INFO_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link #SYSTEM_INFO_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name WritableRecordFactoryƒT[ƒrƒX–¼
+     * @param name WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setSystemInfoWritableRecordFactoryServiceName(ServiceName name);
     
     /**
-     * {@link #SYSTEM_INFO_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link #SYSTEM_INFO_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecordFactoryƒT[ƒrƒX–¼
+     * @return WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getSystemInfoWritableRecordFactoryServiceName();
     
     /**
-     * {@link #SYSTEM_WARN_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link #SYSTEM_WARN_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name WritableRecordFactoryƒT[ƒrƒX–¼
+     * @param name WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setSystemWarnWritableRecordFactoryServiceName(ServiceName name);
     
     /**
-     * {@link #SYSTEM_WARN_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link #SYSTEM_WARN_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecordFactoryƒT[ƒrƒX–¼
+     * @return WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getSystemWarnWritableRecordFactoryServiceName();
     
     /**
-     * {@link #SYSTEM_ERROR_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link #SYSTEM_ERROR_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name WritableRecordFactoryƒT[ƒrƒX–¼
+     * @param name WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setSystemErrorWritableRecordFactoryServiceName(
         ServiceName name
     );
     
     /**
-     * {@link #SYSTEM_ERROR_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link #SYSTEM_ERROR_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecordFactoryƒT[ƒrƒX–¼
+     * @return WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getSystemErrorWritableRecordFactoryServiceName();
     
     /**
-     * {@link #SYSTEM_FATAL_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link #SYSTEM_FATAL_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name WritableRecordFactoryƒT[ƒrƒX–¼
+     * @param name WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setSystemFatalWritableRecordFactoryServiceName(
         ServiceName name
     );
     
     /**
-     * {@link #SYSTEM_FATAL_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link #SYSTEM_FATAL_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link jp.ossc.nimbus.service.writer.WritableRecordFactory WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return WritableRecordFactoryƒT[ƒrƒX–¼
+     * @return WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getSystemFatalWritableRecordFactoryServiceName();
     
     /**
-     * ƒƒOo—ÍƒXƒŒƒbƒh‚ğƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚É‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * ãƒ­ã‚°å‡ºåŠ›ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      *
-     * @param isDaemon ƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚É‚·‚éê‡true
+     * @param isDaemon ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã«ã™ã‚‹å ´åˆtrue
      */
     public void setDaemon(boolean isDaemon);
     
     /**
-     * ƒƒOo—ÍƒXƒŒƒbƒh‚ªƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ­ã‚°å‡ºåŠ›ã‚¹ãƒ¬ãƒƒãƒ‰ãŒãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍAƒf[ƒ‚ƒ“ƒXƒŒƒbƒh
+     * @return trueã®å ´åˆã¯ã€ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰
      */
     public boolean isDaemon();
 }

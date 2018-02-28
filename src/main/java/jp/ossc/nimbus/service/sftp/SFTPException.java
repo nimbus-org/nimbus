@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.sftp;
 
 /**
- * SFTP—áŠOB<p>
+ * SFTPä¾‹å¤–ã€‚<p>
  *
  * @author M.Takata
  */
@@ -41,35 +41,35 @@ public class SFTPException extends RuntimeException {
     private static final long serialVersionUID = -4491684364750536034L;
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      */
     public SFTPException() {
         super();
     }
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      * 
-     * @param message ƒƒbƒZ[ƒW
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public SFTPException(String message) {
         super(message);
     }
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      * 
-     * @param message ƒƒbƒZ[ƒW
-     * @param cause Œ´ˆö
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param cause åŽŸå› 
      */
     public SFTPException(String message, Throwable cause) {
         super(message, cause);
     }
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      * 
-     * @param cause Œ´ˆö
+     * @param cause åŽŸå› 
      */
     public SFTPException(Throwable cause) {
         super(cause);

@@ -35,7 +35,7 @@ import java.util.*;
 import java.text.SimpleDateFormat;
 
 /**
- * ƒfƒtƒHƒ‹ƒgƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^B<p>
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã€‚<p>
  *
  * @author M.Takata
  */
@@ -83,26 +83,26 @@ public class DefaultScheduleMaster
     protected boolean isTemplate;
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public DefaultScheduleMaster(){
     }
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param id ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ID
-     * @param groupIds ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ƒOƒ‹[ƒvID
-     * @param taskName ƒ^ƒXƒN–¼
-     * @param scheduleType ƒ^ƒXƒNí•Ê
-     * @param input “ü—Íƒf[ƒ^
-     * @param startTime ŠJn
-     * @param isEnabled —LŒø/–³Œøƒtƒ‰ƒO
-     * @param depends ƒXƒPƒWƒ…[ƒ‹ˆË‘¶î•ñ‚Ì”z—ñ
-     * @param dependsOnGroup ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvˆË‘¶î•ñ‚Ì”z—ñ
-     * @param executorKey ScheduleExecutor‚ğ“Á’è‚·‚éƒL[
-     * @param executorType ScheduleExecutor‚Ìí—Ş
-     * @param isTemplate ƒeƒ“ƒvƒŒ[ƒg‚©‚Ç‚¤‚©Bƒeƒ“ƒvƒŒ[ƒg‚Ìê‡Atrue
+     * @param id ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ID
+     * @param groupIds ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param taskName ã‚¿ã‚¹ã‚¯å
+     * @param scheduleType ã‚¿ã‚¹ã‚¯ç¨®åˆ¥
+     * @param input å…¥åŠ›ãƒ‡ãƒ¼ã‚¿
+     * @param startTime é–‹å§‹æ™‚åˆ»
+     * @param isEnabled æœ‰åŠ¹/ç„¡åŠ¹ãƒ•ãƒ©ã‚°
+     * @param depends ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜æƒ…å ±ã®é…åˆ—
+     * @param dependsOnGroup ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ä¾å­˜æƒ…å ±ã®é…åˆ—
+     * @param executorKey ScheduleExecutorã‚’ç‰¹å®šã™ã‚‹ã‚­ãƒ¼
+     * @param executorType ScheduleExecutorã®ç¨®é¡
+     * @param isTemplate ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‹ã©ã†ã‹ã€‚ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã®å ´åˆã€true
      */
     public DefaultScheduleMaster(
         String id,
@@ -140,23 +140,23 @@ public class DefaultScheduleMaster
     }
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param id ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ID
-     * @param groupIds ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ƒOƒ‹[ƒvID
-     * @param taskName ƒ^ƒXƒN–¼
-     * @param scheduleType ƒ^ƒXƒNí•Ê
-     * @param input “ü—Íƒf[ƒ^
-     * @param startTime ŠJn
-     * @param retryInterval ƒŠƒgƒ‰ƒCÀsŠÔŠu[ms]
-     * @param retryEndTime ƒŠƒgƒ‰ƒCI—¹
-     * @param maxDelayTime Å‘å’x‰„ŠÔ[ms]
-     * @param isEnabled —LŒø/–³Œøƒtƒ‰ƒO
-     * @param depends ƒXƒPƒWƒ…[ƒ‹ˆË‘¶î•ñ‚Ì”z—ñ
-     * @param dependsOnGroup ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvˆË‘¶î•ñ‚Ì”z—ñ
-     * @param executorKey ScheduleExecutor‚ğ“Á’è‚·‚éƒL[
-     * @param executorType ScheduleExecutor‚Ìí—Ş
-     * @param isTemplate ƒeƒ“ƒvƒŒ[ƒg‚©‚Ç‚¤‚©Bƒeƒ“ƒvƒŒ[ƒg‚Ìê‡Atrue
+     * @param id ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ID
+     * @param groupIds ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param taskName ã‚¿ã‚¹ã‚¯å
+     * @param scheduleType ã‚¿ã‚¹ã‚¯ç¨®åˆ¥
+     * @param input å…¥åŠ›ãƒ‡ãƒ¼ã‚¿
+     * @param startTime é–‹å§‹æ™‚åˆ»
+     * @param retryInterval ãƒªãƒˆãƒ©ã‚¤å®Ÿè¡Œé–“éš”[ms]
+     * @param retryEndTime ãƒªãƒˆãƒ©ã‚¤çµ‚äº†æ™‚åˆ»
+     * @param maxDelayTime æœ€å¤§é…å»¶æ™‚é–“[ms]
+     * @param isEnabled æœ‰åŠ¹/ç„¡åŠ¹ãƒ•ãƒ©ã‚°
+     * @param depends ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜æƒ…å ±ã®é…åˆ—
+     * @param dependsOnGroup ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ä¾å­˜æƒ…å ±ã®é…åˆ—
+     * @param executorKey ScheduleExecutorã‚’ç‰¹å®šã™ã‚‹ã‚­ãƒ¼
+     * @param executorType ScheduleExecutorã®ç¨®é¡
+     * @param isTemplate ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‹ã©ã†ã‹ã€‚ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã®å ´åˆã€true
      */
     public DefaultScheduleMaster(
         String id,
@@ -197,25 +197,25 @@ public class DefaultScheduleMaster
     }
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param id ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ID
-     * @param groupIds ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ƒOƒ‹[ƒvID
-     * @param taskName ƒ^ƒXƒN–¼
-     * @param scheduleType ƒ^ƒXƒNí•Ê
-     * @param input “ü—Íƒf[ƒ^
-     * @param startTime ŠJn
-     * @param endTime I—¹
-     * @param repeatInterval ŒJ‚è•Ô‚µÀsŠÔŠu[ms]
-     * @param retryInterval ƒŠƒgƒ‰ƒCÀsŠÔŠu[ms]
-     * @param retryEndTime ƒŠƒgƒ‰ƒCI—¹
-     * @param maxDelayTime Å‘å’x‰„ŠÔ[ms]
-     * @param isEnabled —LŒø/–³Œøƒtƒ‰ƒO
-     * @param depends ƒXƒPƒWƒ…[ƒ‹ˆË‘¶î•ñ‚Ì”z—ñ
-     * @param dependsOnGroup ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvˆË‘¶î•ñ‚Ì”z—ñ
-     * @param executorKey ScheduleExecutor‚ğ“Á’è‚·‚éƒL[
-     * @param executorType ScheduleExecutor‚Ìí—Ş
-     * @param isTemplate ƒeƒ“ƒvƒŒ[ƒg‚©‚Ç‚¤‚©Bƒeƒ“ƒvƒŒ[ƒg‚Ìê‡Atrue
+     * @param id ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ID
+     * @param groupIds ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param taskName ã‚¿ã‚¹ã‚¯å
+     * @param scheduleType ã‚¿ã‚¹ã‚¯ç¨®åˆ¥
+     * @param input å…¥åŠ›ãƒ‡ãƒ¼ã‚¿
+     * @param startTime é–‹å§‹æ™‚åˆ»
+     * @param endTime çµ‚äº†æ™‚åˆ»
+     * @param repeatInterval ç¹°ã‚Šè¿”ã—å®Ÿè¡Œé–“éš”[ms]
+     * @param retryInterval ãƒªãƒˆãƒ©ã‚¤å®Ÿè¡Œé–“éš”[ms]
+     * @param retryEndTime ãƒªãƒˆãƒ©ã‚¤çµ‚äº†æ™‚åˆ»
+     * @param maxDelayTime æœ€å¤§é…å»¶æ™‚é–“[ms]
+     * @param isEnabled æœ‰åŠ¹/ç„¡åŠ¹ãƒ•ãƒ©ã‚°
+     * @param depends ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜æƒ…å ±ã®é…åˆ—
+     * @param dependsOnGroup ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ä¾å­˜æƒ…å ±ã®é…åˆ—
+     * @param executorKey ScheduleExecutorã‚’ç‰¹å®šã™ã‚‹ã‚­ãƒ¼
+     * @param executorType ScheduleExecutorã®ç¨®é¡
+     * @param isTemplate ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‹ã©ã†ã‹ã€‚ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã®å ´åˆã€true
      */
     public DefaultScheduleMaster(
         String id,
@@ -255,241 +255,241 @@ public class DefaultScheduleMaster
         setTemplate(isTemplate);
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public String getId(){
         return id;
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ÌID‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã®IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param id ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ÌID
+     * @param id ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã®ID
      */
     public void setId(String id){
         this.id = id;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public String[] getGroupIds(){
         return groupIds;
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ÌƒOƒ‹[ƒvID‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã®ã‚°ãƒ«ãƒ¼ãƒ—IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param id ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ÌƒOƒ‹[ƒvID
+     * @param id ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã®ã‚°ãƒ«ãƒ¼ãƒ—ID
      */
     public void setGroupIds(String[] id){
         this.groupIds = id;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public String getTaskName(){
         return taskName;
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚³‚ê‚½ƒ^ƒXƒN–¼‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã•ã‚ŒãŸã‚¿ã‚¹ã‚¯åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒ^ƒXƒN–¼
+     * @param name ã‚¿ã‚¹ã‚¯å
      */
     public void setTaskName(String name){
         taskName = name;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public String getScheduleType(){
         return scheduleType;
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚³‚ê‚½ƒXƒPƒWƒ…[ƒ‹í•Ê‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã•ã‚ŒãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ç¨®åˆ¥ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type ƒXƒPƒWƒ…[ƒ‹í•Ê
+     * @param type ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ç¨®åˆ¥
      */
     public void setScheduleType(String type){
         scheduleType = type;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public Object getInput(){
         return input;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public void setInput(Object data){
         input = data;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public Date getStartTime(){
         return startTime;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public void setStartTime(Date time){
         startTime = time;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public Date getEndTime(){
         return endTime;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public void setEndTime(Date time){
         endTime = time;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public long getRepeatInterval(){
         return repeatInterval;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public void setRepeatInterval(long interval){
         repeatInterval = interval;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public long getRetryInterval(){
         return retryInterval;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public void setRetryInterval(long interval){
         retryInterval = interval;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public Date getRetryEndTime(){
         return retryEndTime;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public void setRetryEndTime(Date time){
         retryEndTime = time;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public long getMaxDelayTime(){
         return maxDelayTime;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public void setMaxDelayTime(long time){
         maxDelayTime = time;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public boolean isEnabled(){
         return isEnabled;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public void setEnabled(boolean isEnabled){
         this.isEnabled = isEnabled;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public ScheduleDepends[] getDepends(){
         return depends;
     }
     
     /**
-     * ˆË‘¶î•ñ‚ğİ’è‚·‚éB<p>
+     * ä¾å­˜æƒ…å ±ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param deps ƒXƒPƒWƒ…[ƒ‹ˆË‘¶î•ñ‚Ì”z—ñ
+     * @param deps ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜æƒ…å ±ã®é…åˆ—
      */
     public void setDepends(ScheduleDepends[] deps){
         depends = deps;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public ScheduleDepends[] getDependsInGroup(String groupId){
         return (ScheduleDepends[])dependsInGroupMap.get(groupId);
     }
     
     /**
-     * ƒOƒ‹[ƒv“à‚Å‚ÌƒXƒPƒWƒ…[ƒ‹‚ÌˆË‘¶î•ñ‚ğİ’è‚·‚éB<p>
+     * ã‚°ãƒ«ãƒ¼ãƒ—å†…ã§ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ä¾å­˜æƒ…å ±ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param groupId ƒOƒ‹[ƒvID
-     * @param depends ƒXƒPƒWƒ…[ƒ‹ˆË‘¶î•ñ‚Ì”z—ñ
+     * @param groupId ã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param depends ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜æƒ…å ±ã®é…åˆ—
      */
     public void setDependsInGroup(String groupId, ScheduleDepends[] depends){
         dependsInGroupMap.put(groupId, depends);
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public Map getDependsInGroupMap(){
         return dependsInGroupMap;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public ScheduleDepends[] getDependsOnGroup(){
         return dependsOnGroup;
     }
     
     /**
-     * ƒOƒ‹[ƒvˆË‘¶î•ñ‚ğİ’è‚·‚éB<p>
+     * ã‚°ãƒ«ãƒ¼ãƒ—ä¾å­˜æƒ…å ±ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param deps ˆË‘¶î•ñ‚Ì”z—ñ
+     * @param deps ä¾å­˜æƒ…å ±ã®é…åˆ—
      */
     public void setDependsOnGroup(ScheduleDepends[] deps){
         dependsOnGroup = deps;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public ScheduleDepends[] getGroupDependsOnGroup(String groupId){
         return (ScheduleDepends[])groupDependsOnGroupMap.get(groupId);
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ª‘®‚·‚éƒOƒ‹[ƒv‚ÆˆË‘¶‚·‚éƒOƒ‹[ƒv‚ÌˆË‘¶î•ñ‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒå±ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã¨ä¾å­˜ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã®ä¾å­˜æƒ…å ±ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param groupId ƒXƒPƒWƒ…[ƒ‹‚ª‘®‚·‚éƒOƒ‹[ƒvID
-     * @param depends ˆË‘¶‚·‚éƒOƒ‹[ƒv‚ÌˆË‘¶î•ñ‚Ì”z—ñ
+     * @param groupId ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒå±ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param depends ä¾å­˜ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã®ä¾å­˜æƒ…å ±ã®é…åˆ—
      */
     public void setGroupDependsOnGroup(String groupId, ScheduleDepends[] depends){
         groupDependsOnGroupMap.put(groupId, depends);
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public Map getGroupDependsOnGroupMap(){
         return groupDependsOnGroupMap;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public void setExecutorKey(String key){
         executorKey = key;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public String getExecutorKey(){
         return executorKey;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public void setExecutorType(String type){
         executorType = type;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public String getExecutorType(){
         return executorType;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public boolean isTemplate(){
         return isTemplate;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public void setTemplate(boolean isTemplate){
         this.isTemplate = isTemplate;
     }
     
-    // ScheduleMaster‚ÌJavaDoc
+    // ScheduleMasterã®JavaDoc
     public void applyDate(Date date){
         final Calendar cal = Calendar.getInstance();
         if(startTime != null){
@@ -504,12 +504,12 @@ public class DefaultScheduleMaster
     }
     
     /**
-     * time‚Édate‚Ì“ú•t‚ğ“K—p‚·‚éB<p>
+     * timeã«dateã®æ—¥ä»˜ã‚’é©ç”¨ã™ã‚‹ã€‚<p>
      *
-     * @param date “ú•t
-     * @param time 
-     * @param work ì‹Æ—pƒJƒŒƒ“ƒ_[
-     * @return date‚Ì“ú•t‚Ætime‚Ì‚ğ‚Á‚½Date
+     * @param date æ—¥ä»˜
+     * @param time æ™‚åˆ»
+     * @param work ä½œæ¥­ç”¨ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼
+     * @return dateã®æ—¥ä»˜ã¨timeã®æ™‚åˆ»ã‚’æŒã£ãŸDate
      */
     protected Date applyDateToTime(Date date, Date time, Calendar work){
         work.clear();
@@ -527,19 +527,19 @@ public class DefaultScheduleMaster
     }
     
     /**
-     * ƒnƒbƒVƒ…’l‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒƒã‚·ãƒ¥å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒnƒbƒVƒ…’l
+     * @return ãƒãƒƒã‚·ãƒ¥å€¤
      */
     public int hashCode(){
         return id == null ? 0 : id.hashCode();
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ª‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Æ“™‚µ‚¢‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¨ç­‰ã—ã„ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @param obj ”äŠr‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ª‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Æ“™‚µ‚¢ê‡true
+     * @param obj æ¯”è¼ƒå¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¨ç­‰ã—ã„å ´åˆtrue
      */
     public boolean equals(Object obj){
         if(obj == null){
@@ -556,7 +556,7 @@ public class DefaultScheduleMaster
             || (id != null && id.equals(cmp.getId()));
     }
     
-    // Comparable‚ÌJavaDoc
+    // Comparableã®JavaDoc
     public int compareTo(Object o){
         if(o == null || !(o instanceof ScheduleMaster)){
             return -1;
@@ -590,9 +590,9 @@ public class DefaultScheduleMaster
     }
     
     /**
-     * ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶š—ñ•\Œ»
+     * @return æ–‡å­—åˆ—è¡¨ç¾
      */
     public String toString(){
         final SimpleDateFormat format

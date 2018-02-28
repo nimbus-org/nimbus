@@ -32,20 +32,20 @@
 package jp.ossc.nimbus.service.cache;
 
 /**
- * ƒLƒƒƒbƒVƒ…•ÏXƒŠƒXƒiB<p>
- * ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ª•ÏX‚³‚ê‚½–‚ğŒŸ’m‚·‚éƒŠƒXƒiB<br>
- * ‚±‚ÌƒŠƒXƒi‚ğ“o˜^‚µ‚½{@link CachedReference}‚Ì{@link CachedReference#set(Object)}‚âA{@link CachedReference#set(Object, Object)}‚ÅAƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ª•ÏX‚³‚ê‚é‚ÆA{@link #changed(CachedReference, Object)}‚ªŒÄ‚Ño‚³‚ê‚éB<br>
+ * ã‚­ãƒ£ãƒƒã‚·ãƒ¥å¤‰æ›´ãƒªã‚¹ãƒŠã€‚<p>
+ * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå¤‰æ›´ã•ã‚ŒãŸäº‹ã‚’æ¤œçŸ¥ã™ã‚‹ãƒªã‚¹ãƒŠã€‚<br>
+ * ã“ã®ãƒªã‚¹ãƒŠã‚’ç™»éŒ²ã—ãŸ{@link CachedReference}ã®{@link CachedReference#set(Object)}ã‚„ã€{@link CachedReference#set(Object, Object)}ã§ã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå¤‰æ›´ã•ã‚Œã‚‹ã¨ã€{@link #changed(CachedReference, Object)}ãŒå‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
 public interface CacheChangeListener{
     
     /**
-     * {@link CachedReference}‚ÌƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ª•ÏX‚³‚ê‚½ê‡‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
-     * {@link CachedReference#set(Object, Object)}‚ªŒÄ‚Ño‚³‚ê‚½ê‡‚ÉA{@link CachedReference#addCacheChangeListener(CacheChangeListener)}‚Å“o˜^‚³‚ê‚½CacheChangeListener‚ÌA‚±‚Ìƒƒ\ƒbƒh‚ªŒÄ‚Ño‚³‚ê‚éB<br>
+     * {@link CachedReference}ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå¤‰æ›´ã•ã‚ŒãŸå ´åˆã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
+     * {@link CachedReference#set(Object, Object)}ãŒå‘¼ã³å‡ºã•ã‚ŒãŸå ´åˆã«ã€{@link CachedReference#addCacheChangeListener(CacheChangeListener)}ã§ç™»éŒ²ã•ã‚ŒãŸCacheChangeListenerã®ã€ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ãŒå‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param ref •ÏX‚³‚ê‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ÌƒLƒƒƒbƒVƒ…QÆ
-     * @param obj •ÏXŒã‚ÌƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
+     * @param ref å¤‰æ›´ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
+     * @param obj å¤‰æ›´å¾Œã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void changed(CachedReference ref, Object obj);
 }

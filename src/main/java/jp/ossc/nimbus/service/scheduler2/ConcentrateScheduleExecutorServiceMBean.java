@@ -34,28 +34,28 @@ package jp.ossc.nimbus.service.scheduler2;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link ConcentrateScheduleExecutorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link ConcentrateScheduleExecutorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface ConcentrateScheduleExecutorServiceMBean extends BeanFlowScheduleExecutorServiceMBean{
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒXƒPƒWƒ…[ƒ‹Àsí•ÊB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å®Ÿè¡Œç¨®åˆ¥ã€‚<p>
      */
     public static final String DEFAULT_EXECUTOR_TYPE = "CONCENTRATE";
     
     /**
-     * {@link ConcentrateBackupManager}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link ConcentrateBackupManager}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ConcentrateBackupManagerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ConcentrateBackupManagerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setConcentrateBackupManagerServiceName(ServiceName name);
     
     /**
-     * {@link ConcentrateBackupManager}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link ConcentrateBackupManager}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ConcentrateBackupManagerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ConcentrateBackupManagerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getConcentrateBackupManagerServiceName();
 }

@@ -48,9 +48,9 @@ import jp.ossc.nimbus.core.Utility;
 import jp.ossc.nimbus.service.context.Context;
 
 /**
- * {@link Configurator}‚ğŒp³‚µ‚½ConfiguratorƒT[ƒrƒXƒNƒ‰ƒXB
+ * {@link Configurator}ã‚’ç¶™æ‰¿ã—ãŸConfiguratorã‚µãƒ¼ãƒ“ã‚¹ã‚¯ãƒ©ã‚¹ã€‚
  * <p>
- * ƒGƒ“ƒhƒ|ƒCƒ“ƒgƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX¶¬AƒZƒbƒVƒ‡ƒ“ƒI[ƒvƒ“‚Ìƒnƒ“ƒhƒVƒFƒCƒN–‘Oˆ—‚ğs‚¤B
+ * ã‚¨ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ç”Ÿæˆã€ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚ªãƒ¼ãƒ—ãƒ³æ™‚ã®ãƒãƒ³ãƒ‰ã‚·ã‚§ã‚¤ã‚¯äº‹å‰å‡¦ç†ã‚’è¡Œã†ã€‚
  *
  * @author M.Ishida
  */
@@ -177,7 +177,7 @@ public class DefaultConfiguratorService extends Configurator implements ServiceB
 
     @Override
     public <T> T getEndpointInstance(Class<T> endpointClass) throws InstantiationException {
-        // EndpointƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚ğ•Ô‹p‚·‚éB
+        // Endpointã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿”å´ã™ã‚‹ã€‚
         return (T) ServiceManagerFactory.getServiceObject(endpointServiceName);
     }
 
@@ -190,7 +190,7 @@ public class DefaultConfiguratorService extends Configurator implements ServiceB
         String port = null;
         List list = null;
 
-        // Header‚à‚µ‚­‚ÍAƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚©‚çID‚Æƒ`ƒPƒbƒg‚Ìî•ñ‚ğæ“¾‚µAServerEndpointConfig‚ÌUserProperties‚ÉŠi”[‚·‚éB
+        // Headerã‚‚ã—ãã¯ã€ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‹ã‚‰IDã¨ãƒã‚±ãƒƒãƒˆã®æƒ…å ±ã‚’å–å¾—ã—ã€ServerEndpointConfigã®UserPropertiesã«æ ¼ç´ã™ã‚‹ã€‚
         if (request.getHeaders().containsKey(idKey) && request.getHeaders().containsKey(ticketKey)) {
             list = request.getHeaders().get(idKey);
             if (list != null && list.size() > 0) {

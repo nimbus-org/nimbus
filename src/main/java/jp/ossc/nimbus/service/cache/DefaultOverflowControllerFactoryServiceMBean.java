@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.FactoryServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link DefaultOverflowControllerFactoryService}��MBean�C���^�t�F�[�X<p>
+ * {@link DefaultOverflowControllerFactoryService}のMBeanインタフェース<p>
  * 
  * @author M.Takata
  * @see DefaultOverflowControllerFactoryService
@@ -44,82 +44,82 @@ public interface DefaultOverflowControllerFactoryServiceMBean
  extends FactoryServiceBaseMBean{
     
     /**
-     * ���ӂꌟ�؂��s��OverflowValidator�T�[�r�X�̃T�[�r�X����ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�́A���ӂꐧ�䂪�s���Ȃ��B<br>
+     * あふれ検証を行うOverflowValidatorサービスのサービス名を設定する。<p>
+     * 設定しない場合は、あふれ制御が行われない。<br>
      *
-     * @param name �T�[�r�X��
+     * @param name サービス名
      */
     public void setOverflowValidatorServiceName(ServiceName name);
     
     /**
-     * ���ӂꌟ�؂��s��OverflowValidator�T�[�r�X�̃T�[�r�X�����擾����B<p>
+     * あふれ検証を行うOverflowValidatorサービスのサービス名を取得する。<p>
      *
-     * @return �T�[�r�X��
+     * @return サービス名
      */
     public ServiceName getOverflowValidatorServiceName();
     
     /**
-     * ���ӂꌟ�،��ʂɏ]���Ă��ӂ��L���b�V���I�u�W�F�N�g�����肷��OverflowAlgorithm�T�[�r�X�̃T�[�r�X����ݒ肷��B<p>
-     * {@link #setOverflowValidatorServiceName(ServiceName)}�ł��ӂꌟ�؃T�[�r�X���ݒ肳��Ă���ꍇ�́A���̑������K���ݒ肵�Ȃ���΂Ȃ�Ȃ��B<br>
+     * あふれ検証結果に従ってあふれるキャッシュオブジェクトを決定するOverflowAlgorithmサービスのサービス名を設定する。<p>
+     * {@link #setOverflowValidatorServiceName(ServiceName)}であふれ検証サービスが設定されている場合は、この属性も必ず設定しなければならない。<br>
      *
-     * @param name �T�[�r�X��
+     * @param name サービス名
      */
     public void setOverflowAlgorithmServiceName(ServiceName name);
     
     /**
-     * ���ӂꌟ�،��ʂɏ]���Ă��ӂ��L���b�V���I�u�W�F�N�g�����肷��OverflowAlgorithm�T�[�r�X�̃T�[�r�X�����擾����B<p>
+     * あふれ検証結果に従ってあふれるキャッシュオブジェクトを決定するOverflowAlgorithmサービスのサービス名を取得する。<p>
      *
-     * @return �T�[�r�X��
+     * @return サービス名
      */
     public ServiceName getOverflowAlgorithmServiceName();
     
     /**
-     * ���ӂ�A���S���Y���ɂ���Č��肳�ꂽ���ӂ�L���b�V���I�u�W�F�N�g�����ӂꂳ����OverflowAction�T�[�r�X�̃T�[�r�X����ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�ɂ́A{@link RemoveOverflowActionService}���g�p�����B<br>
+     * あふれアルゴリズムによって決定されたあふれキャッシュオブジェクトをあふれさせるOverflowActionサービスのサービス名を設定する。<p>
+     * 設定しない場合には、{@link RemoveOverflowActionService}が使用される。<br>
      *
-     * @param name �T�[�r�X��
+     * @param name サービス名
      */
     public void setOverflowActionServiceName(ServiceName name);
     
     /**
-     * ���ӂ�A���S���Y���ɂ���Č��肳�ꂽ���ӂ�L���b�V���I�u�W�F�N�g�����ӂꂳ����OverflowAction�T�[�r�X�̃T�[�r�X�����擾����B<p>
+     * あふれアルゴリズムによって決定されたあふれキャッシュオブジェクトをあふれさせるOverflowActionサービスのサービス名を取得する。<p>
      *
-     * @return �T�[�r�X��
+     * @return サービス名
      */
     public ServiceName getOverflowActionServiceName();
     
     /**
-     * ���ӂꐧ��̗v����ʃX���b�h�ŏ������邽�߂ɁA��U�L���[�ɗ��߂邽�߂�Queue�T�[�r�X�̃T�[�r�X����ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�ɂ́A{@link jp.ossc.nimbus.service.queue.DefaultQueueService DefaultQueueService}���g�p�����B<br>
+     * あふれ制御の要求を別スレッドで処理するために、一旦キューに溜めるためのQueueサービスのサービス名を設定する。<p>
+     * 設定しない場合には、{@link jp.ossc.nimbus.service.queue.DefaultQueueService DefaultQueueService}が使用される。<br>
      *
-     * @param name �T�[�r�X��
+     * @param name サービス名
      */
     public void setQueueServiceName(ServiceName name);
     
     /**
-     * ���ӂꐧ��̗v����ʃX���b�h�ŏ������邽�߂ɁA��U�L���[�ɗ��߂邽�߂�Queue�T�[�r�X�̃T�[�r�X�����擾����B<p>
+     * あふれ制御の要求を別スレッドで処理するために、一旦キューに溜めるためのQueueサービスのサービス名を取得する。<p>
      *
-     * @return �T�[�r�X��
+     * @return サービス名
      */
     public ServiceName getQueueServiceName();
     
     /**
-     * ����I�ɂ��ӂꐧ����s�����ԊԊu[ms]��ݒ肷��B<p>
-     * �f�t�H���g��0�ŁA����I�Ȃ��ӂꐧ��͍s��Ȃ��B<br>
+     * 定期的にあふれ制御を行う時間間隔[ms]を設定する。<p>
+     * デフォルトは0で、定期的なあふれ制御は行わない。<br>
      *
-     * @param time ����I�ɂ��ӂꐧ����s�����ԊԊu[ms]
+     * @param time 定期的にあふれ制御を行う時間間隔[ms]
      */
     public void setPeriodicOverflowIntervalTime(long time);
     
     /**
-     * ����I�ɂ��ӂꐧ����s�����ԊԊu[ms]���擾����B<p>
+     * 定期的にあふれ制御を行う時間間隔[ms]を取得する。<p>
      *
-     * @return ����I�ɂ��ӂꐧ����s�����ԊԊu[ms]
+     * @return 定期的にあふれ制御を行う時間間隔[ms]
      */
     public long getPeriodicOverflowIntervalTime();
     
     /**
-     * ���ӂꐧ����s�����߂ɕێ����Ă����������������B<p>
+     * あふれ制御を行うために保持している情報を初期化する。<p>
      */
     public void reset();
 }

@@ -38,7 +38,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import jp.ossc.nimbus.core.*;
 
 /**
- * É`ÉFÉbÉNÉ|ÉCÉìÉgÉgÉåÅ[ÉTÅ[ÅB<p>
+ * „ÉÅ„Çß„ÉÉ„ÇØ„Éù„Ç§„É≥„Éà„Éà„É¨„Éº„Çµ„Éº„ÄÇ<p>
  *
  * @author M.Takata
  */
@@ -49,12 +49,12 @@ public class CheckPointTracerService extends ServiceBase
     private boolean isEnabled = true;
     private ConcurrentMap checkPointTraceMap;
     
-    // CheckPointTracerServiceMBeanÇÃJavaDoc
+    // CheckPointTracerServiceMBean„ÅÆJavaDoc
     public void setEnabled(boolean enabled){
         isEnabled = enabled;
     }
     
-    // CheckPointTracerServiceMBeanÇÃJavaDoc
+    // CheckPointTracerServiceMBean„ÅÆJavaDoc
     public boolean isEnabled(){
         return isEnabled;
     }
@@ -66,7 +66,7 @@ public class CheckPointTracerService extends ServiceBase
         clear();
     }
     
-    // CheckPointTracerServiceMBeanÇÃJavaDoc
+    // CheckPointTracerServiceMBean„ÅÆJavaDoc
     public CheckPoint[] getCheckPointTrace(String threadName){
         if(getState() != STARTED){
             return new CheckPoint[0];
@@ -80,7 +80,7 @@ public class CheckPointTracerService extends ServiceBase
         }
     }
     
-    // CheckPointTracerServiceMBeanÇÃJavaDoc
+    // CheckPointTracerServiceMBean„ÅÆJavaDoc
     public void clear(String threadName){
         if(getState() != STARTED){
             return;
@@ -94,7 +94,7 @@ public class CheckPointTracerService extends ServiceBase
         }
     }
     
-    // CheckPointTracerServiceMBeanÇÃJavaDoc
+    // CheckPointTracerServiceMBean„ÅÆJavaDoc
     public void clear(){
         if(getState() != STARTED){
             return;
@@ -102,7 +102,7 @@ public class CheckPointTracerService extends ServiceBase
         checkPointTraceMap.clear();
     }
     
-    // CheckPointTracerServiceMBeanÇÃJavaDoc
+    // CheckPointTracerServiceMBean„ÅÆJavaDoc
     public void passedCheckPoint(String threadName, CheckPoint point){
         if(getState() != STARTED || !isEnabled){
             return;

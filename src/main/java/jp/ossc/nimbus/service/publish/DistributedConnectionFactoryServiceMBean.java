@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link DistributedConnectionFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link DistributedConnectionFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see DistributedConnectionFactoryService
@@ -43,76 +43,76 @@ import jp.ossc.nimbus.core.ServiceName;
 public interface DistributedConnectionFactoryServiceMBean extends ServiceBaseMBean{
     
     /**
-     * •ªU‚·‚é•¨—ƒRƒlƒNƒVƒ‡ƒ“”‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA1‚Å•ªU‚µ‚È‚¢B<br>
+     * åˆ†æ•£ã™ã‚‹ç‰©ç†ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€1ã§åˆ†æ•£ã—ãªã„ã€‚<br>
      *
-     * @param size •¨—ƒRƒlƒNƒVƒ‡ƒ“”
+     * @param size ç‰©ç†ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³æ•°
      */
     public void setDistributedSize(int size);
     
     /**
-     * •ªU‚·‚é•¨—ƒRƒlƒNƒVƒ‡ƒ“”‚ğæ“¾‚·‚éB<p>
+     * åˆ†æ•£ã™ã‚‹ç‰©ç†ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¨—ƒRƒlƒNƒVƒ‡ƒ“”
+     * @return ç‰©ç†ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³æ•°
      */
     public int getDistributedSize();
     
     /**
-     * •¨—ƒRƒlƒNƒVƒ‡ƒ“‚ğ¶¬‚·‚é{@link ServerConnectionFactory}ƒT[ƒrƒX‚Ìƒtƒ@ƒNƒgƒŠƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ç‰©ç†ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ç”Ÿæˆã™ã‚‹{@link ServerConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ServerConnectionFactoryƒT[ƒrƒX‚Ìƒtƒ@ƒNƒgƒŠƒT[ƒrƒX–¼
+     * @param name ServerConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setConnectionFactoryFactoryServiceName(ServiceName name);
     
     /**
-     * •¨—ƒRƒlƒNƒVƒ‡ƒ“‚ğ¶¬‚·‚é{@link ServerConnectionFactory}ƒT[ƒrƒX‚Ìƒtƒ@ƒNƒgƒŠƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ç‰©ç†ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ç”Ÿæˆã™ã‚‹{@link ServerConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ServerConnectionFactoryƒT[ƒrƒX‚Ìƒtƒ@ƒNƒgƒŠƒT[ƒrƒX–¼
+     * @return ServerConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getConnectionFactoryFactoryServiceName();
     
     /**
-     * •ªU‚³‚¹‚½•¨—ƒRƒlƒNƒVƒ‡ƒ“‚ğ‚Ü‚Æ‚ß‚½˜_—ƒRƒlƒNƒVƒ‡ƒ“‚ğ¶¬‚·‚é{@link ClientConnectionFactory}‚ğƒoƒCƒ“ƒh‚·‚éJNDI–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link ClientConnectionFactory#DEFAULT_JNDI_NAME}B<br>
+     * åˆ†æ•£ã•ã›ãŸç‰©ç†ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ã¾ã¨ã‚ãŸè«–ç†ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ç”Ÿæˆã™ã‚‹{@link ClientConnectionFactory}ã‚’ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹JNDIåã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link ClientConnectionFactory#DEFAULT_JNDI_NAME}ã€‚<br>
      *
-     * @param name JNDI–¼
+     * @param name JNDIå
      * @see ClientConnectionFactory#DEFAULT_JNDI_NAME
      */
     public void setJndiName(String name);
     
     /**
-     * •ªU‚³‚¹‚½•¨—ƒRƒlƒNƒVƒ‡ƒ“‚ğ‚Ü‚Æ‚ß‚½˜_—ƒRƒlƒNƒVƒ‡ƒ“‚ğ¶¬‚·‚é{@link ClientConnectionFactory}‚ğƒoƒCƒ“ƒh‚·‚éJNDI–¼‚ğæ“¾‚·‚éB<p>
+     * åˆ†æ•£ã•ã›ãŸç‰©ç†ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ã¾ã¨ã‚ãŸè«–ç†ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ç”Ÿæˆã™ã‚‹{@link ClientConnectionFactory}ã‚’ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹JNDIåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JNDI–¼
+     * @return JNDIå
      */
     public String getJndiName();
     
     /**
-     * •ªU‚³‚¹‚½•¨—ƒRƒlƒNƒVƒ‡ƒ“‚ğ‚Ü‚Æ‚ß‚½˜_—ƒRƒlƒNƒVƒ‡ƒ“‚ğ¶¬‚·‚é{@link ClientConnectionFactory}‚ğƒoƒCƒ“ƒh‚·‚é{@link jp.ossc.nimbus.service.repository.Repository Repository}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * åˆ†æ•£ã•ã›ãŸç‰©ç†ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ã¾ã¨ã‚ãŸè«–ç†ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ç”Ÿæˆã™ã‚‹{@link ClientConnectionFactory}ã‚’ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹{@link jp.ossc.nimbus.service.repository.Repository Repository}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name RepositoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Repositoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJndiRepositoryServiceName(ServiceName name);
     
     /**
-     * •ªU‚³‚¹‚½•¨—ƒRƒlƒNƒVƒ‡ƒ“‚ğ‚Ü‚Æ‚ß‚½˜_—ƒRƒlƒNƒVƒ‡ƒ“‚ğ¶¬‚·‚é{@link ClientConnectionFactory}‚ğƒoƒCƒ“ƒh‚·‚é{@link jp.ossc.nimbus.service.repository.Repository Repository}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * åˆ†æ•£ã•ã›ãŸç‰©ç†ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ã¾ã¨ã‚ãŸè«–ç†ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ç”Ÿæˆã™ã‚‹{@link ClientConnectionFactory}ã‚’ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹{@link jp.ossc.nimbus.service.repository.Repository Repository}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return RepositoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Repositoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJndiRepositoryServiceName();
     
     /**
-     * ƒŠƒ‚[ƒgƒIƒuƒWƒFƒNƒg‚ªŒÄ‚Ño‚µ‚ğóM‚·‚éƒ|[ƒg”Ô†‚ğİ’è‚·‚éB<p>
-     * w’è‚µ‚È‚¢ê‡‚ÍA“½–¼ƒ|[ƒg‚ªg—p‚³‚ê‚éB<br>
+     * ãƒªãƒ¢ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå‘¼ã³å‡ºã—ã‚’å—ä¿¡ã™ã‚‹ãƒãƒ¼ãƒˆç•ªå·ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãªã„å ´åˆã¯ã€åŒ¿åãƒãƒ¼ãƒˆãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param port ƒ|[ƒg”Ô†
+     * @param port ãƒãƒ¼ãƒˆç•ªå·
      */
     public void setRMIPort(int port);
     
     /**
-     * ƒŠƒ‚[ƒgƒIƒuƒWƒFƒNƒg‚ªŒÄ‚Ño‚µ‚ğóM‚·‚éƒ|[ƒg”Ô†‚ğæ“¾‚·‚éB<p>
+     * ãƒªãƒ¢ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå‘¼ã³å‡ºã—ã‚’å—ä¿¡ã™ã‚‹ãƒãƒ¼ãƒˆç•ªå·ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ|[ƒg”Ô†
+     * @return ãƒãƒ¼ãƒˆç•ªå·
      */
     public int getRMIPort();
 }

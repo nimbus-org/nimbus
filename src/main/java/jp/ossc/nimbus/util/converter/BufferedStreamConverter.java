@@ -39,7 +39,7 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
 /**
- * ƒIƒuƒWƒFƒNƒg¨ƒXƒgƒŠ[ƒ€‚É•ÏŠ·‚·‚éÛ‚ÉA•ÏŠ·Œ‹‰Ê‚ðƒoƒbƒtƒ@ƒŠƒ“ƒO‚·‚éƒXƒgƒŠ[ƒ€ƒRƒ“ƒo[ƒ^‚Ì’ŠÛƒNƒ‰ƒXB<p>
+ * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«å¤‰æ›ã™ã‚‹éš›ã«ã€å¤‰æ›çµæžœã‚’ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°ã™ã‚‹ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®æŠ½è±¡ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */

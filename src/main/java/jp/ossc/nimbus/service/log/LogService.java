@@ -43,7 +43,7 @@ import jp.ossc.nimbus.service.message.*;
 import jp.ossc.nimbus.service.writer.*;
 
 /**
- * ƒƒOƒT[ƒrƒXB<p>
+ * ãƒ­ã‚°ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author H.Nakano
  */
@@ -52,9 +52,9 @@ public class LogService extends ServiceBase
     
     private static final long serialVersionUID = -4145738242582933541L;
     
-    /** ‹ó•¶š’è” */
+    /** ç©ºæ–‡å­—å®šæ•° */
     protected static final String EMPTY_STRING = "";
-    /** ¯•Êî•ñContextƒL[‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Ì¯•Êî•ñ•¶š—ñ */
+    /** è­˜åˆ¥æƒ…å ±Contextã‚­ãƒ¼ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã®è­˜åˆ¥æƒ…å ±æ–‡å­—åˆ— */
     protected static final String NONE_ID = "NONE";
     
     private static final String LINE_SEP = System.getProperty("line.separator");
@@ -65,186 +65,186 @@ public class LogService extends ServiceBase
     private static final String GET_LINKED_EXCEPTION_METHOD = "getLinkedException";
     
     /**
-     * ƒJƒeƒSƒŠ–¼‚Æ{@link LogCategory}ƒT[ƒrƒX‚Ìƒ}ƒbƒsƒ“ƒOB<p>
+     * ã‚«ãƒ†ã‚´ãƒªåã¨{@link LogCategory}ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚<p>
      * <table border="1">
-     *   <tr bgcolor="#CCCCFF"><th colspan="2">ƒL[</th><th colspan="2">’l</th></tr>
-     *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th><th>Œ^</th><th>“à—e</th></tr>
-     *   <tr><td>String</td><td>ƒJƒeƒSƒŠ–¼</td><td>LogCategory</td><td>ƒJƒeƒSƒŠƒT[ƒrƒX</td></tr>
+     *   <tr bgcolor="#CCCCFF"><th colspan="2">ã‚­ãƒ¼</th><th colspan="2">å€¤</th></tr>
+     *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th><th>å‹</th><th>å†…å®¹</th></tr>
+     *   <tr><td>String</td><td>ã‚«ãƒ†ã‚´ãƒªå</td><td>LogCategory</td><td>ã‚«ãƒ†ã‚´ãƒªã‚µãƒ¼ãƒ“ã‚¹</td></tr>
      * </table>
      */
     private Map categoryMap;
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌƒJƒeƒSƒŠ–¼‚Æ{@link LogCategory}ƒT[ƒrƒX‚Ìƒ}ƒbƒsƒ“ƒOB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚«ãƒ†ã‚´ãƒªåã¨{@link LogCategory}ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚<p>
      * <table border="1">
-     *   <tr bgcolor="#CCCCFF"><th colspan="2">ƒL[</th><th colspan="2">’l</th></tr>
-     *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th><th>Œ^</th><th>“à—e</th></tr>
-     *   <tr><td>String</td><td>ƒJƒeƒSƒŠ–¼</td><td>LogCategory</td><td>ƒJƒeƒSƒŠƒT[ƒrƒX</td></tr>
+     *   <tr bgcolor="#CCCCFF"><th colspan="2">ã‚­ãƒ¼</th><th colspan="2">å€¤</th></tr>
+     *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th><th>å‹</th><th>å†…å®¹</th></tr>
+     *   <tr><td>String</td><td>ã‚«ãƒ†ã‚´ãƒªå</td><td>LogCategory</td><td>ã‚«ãƒ†ã‚´ãƒªã‚µãƒ¼ãƒ“ã‚¹</td></tr>
      * </table>
      */
     private Map defaultCategoryMap;
     
     /**
-     * ƒJƒeƒSƒŠƒT[ƒrƒX–¼”z—ñB<p>
+     * ã‚«ãƒ†ã‚´ãƒªã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—ã€‚<p>
      */
     private ServiceName[] categoryNames;
     
     /**
-     * {@link Queue}ƒT[ƒrƒX–¼B<p>
+     * {@link Queue}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName queueServiceName;
     
     /**
-     * {@link #getQueueServiceName()}‚ªnull‚Ìê‡AƒfƒtƒHƒ‹ƒg‚Ì{@link Queue}ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚·‚é{@link DefaultQueueService}ƒT[ƒrƒXB<p>
+     * {@link #getQueueServiceName()}ãŒnullã®å ´åˆã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link Queue}ã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã™ã‚‹{@link DefaultQueueService}ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
      */
     private DefaultQueueService defaultQueue;
     
     /**
-     * {@link Queue}ƒIƒuƒWƒFƒNƒgB<p>
+     * {@link Queue}ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     private Queue queue;
     
     /**
-     * {@link MessageRecordFactory}ƒT[ƒrƒX–¼B<p>
+     * {@link MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName messageFactoryServiceName;
     
     /**
-     * {@link MessageRecordFactory}ƒT[ƒrƒXB<p>
+     * {@link MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
      */
     private MessageRecordFactory messageFactory;
     
     /**
-     * {@link #getMessageRecordFactoryServiceName()}‚ªnull‚Ìê‡AƒfƒtƒHƒ‹ƒg‚Ì{@link MessageRecordFactory}ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚·‚é{@link MessageRecordFactoryService}ƒT[ƒrƒXB<p>
+     * {@link #getMessageRecordFactoryServiceName()}ãŒnullã®å ´åˆã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã™ã‚‹{@link MessageRecordFactoryService}ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
      */
     private MessageRecordFactoryService defaultMessageFactory;
     
     /**
-     * {@link Context}ƒT[ƒrƒX–¼B<p>
+     * {@link Context}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName contextServiceName;
     
     /**
-     * {@link Context}ƒT[ƒrƒXB<p>
+     * {@link Context}ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
      */
     private Context context;
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì{@link MessageWriter}ƒT[ƒrƒX–¼B<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName defaultMessageWriterServiceName;
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì{@link MessageWriter}ƒT[ƒrƒXB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
      */
     private MessageWriter defaultMessageWriter;
     
     /**
-     * {@link #getDefaultMessageWriterServiceName()}‚ªnull‚Ìê‡AƒfƒtƒHƒ‹ƒg‚Ì{@link MessageWriter}ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚·‚é{@link ConsoleWriterService}ƒT[ƒrƒXB<p>
+     * {@link #getDefaultMessageWriterServiceName()}ãŒnullã®å ´åˆã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã™ã‚‹{@link ConsoleWriterService}ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
      */
     private ConsoleWriterService consoleWriter;
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì{@link WritableRecordFactory}ƒT[ƒrƒX–¼B<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName defaultWritableRecordFactoryServiceName;
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì{@link WritableRecordFactory}ƒT[ƒrƒXB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
      */
     private WritableRecordFactory defaultWritableRecordFactory;
     
     /**
-     * {@link #getDefaultWritableRecordFactoryServiceName()}‚ªnull‚Ìê‡AƒfƒtƒHƒ‹ƒg‚Ì{@link WritableRecordFactory}ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚·‚é{@link LogWritableRecordFactoryService}ƒT[ƒrƒXB<p>
+     * {@link #getDefaultWritableRecordFactoryServiceName()}ãŒnullã®å ´åˆã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã™ã‚‹{@link LogWritableRecordFactoryService}ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
      */
     private LogWritableRecordFactoryService logWritableRecordFactory;
     
     /**
-     * {@link #DEBUG_METHOD_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤{@link MessageWriter}ƒT[ƒrƒX–¼B<p>
+     * {@link #DEBUG_METHOD_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName debugMessageWriterServiceName;
     
     /**
-     * {@link #SYSTEM_DEBUG_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤{@link MessageWriter}ƒT[ƒrƒX–¼B<p>
+     * {@link #SYSTEM_DEBUG_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName systemDebugMessageWriterServiceName;
     
     /**
-     * {@link #SYSTEM_INFO_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤{@link MessageWriter}ƒT[ƒrƒX–¼B<p>
+     * {@link #SYSTEM_INFO_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName systemInfoMessageWriterServiceName;
     
     /**
-     * {@link #SYSTEM_WARN_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤{@link MessageWriter}ƒT[ƒrƒX–¼B<p>
+     * {@link #SYSTEM_WARN_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName systemWarnMessageWriterServiceName;
     
     /**
-     * {@link #SYSTEM_ERROR_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤{@link MessageWriter}ƒT[ƒrƒX–¼B<p>
+     * {@link #SYSTEM_ERROR_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName systemErrorMessageWriterServiceName;
     
     /**
-     * {@link #SYSTEM_FATAL_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—Í‚ğs‚¤{@link MessageWriter}ƒT[ƒrƒX–¼B<p>
+     * {@link #SYSTEM_FATAL_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName systemFatalMessageWriterServiceName;
     
     /**
-     * {@link #DEBUG_METHOD_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link WritableRecordFactory}ƒT[ƒrƒX–¼B<p>
+     * {@link #DEBUG_METHOD_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName debugRecordFactoryServiceName;
     
     /**
-     * {@link #SYSTEM_DEBUG_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link WritableRecordFactory}ƒT[ƒrƒX–¼B<p>
+     * {@link #SYSTEM_DEBUG_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName systemDebugRecordFactoryServiceName;
     
     /**
-     * {@link #SYSTEM_INFO_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link WritableRecordFactory}ƒT[ƒrƒX–¼B<p>
+     * {@link #SYSTEM_INFO_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName systemInfoRecordFactoryServiceName;
     
     /**
-     * {@link #SYSTEM_WARN_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link WritableRecordFactory}ƒT[ƒrƒX–¼B<p>
+     * {@link #SYSTEM_WARN_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName systemWarnRecordFactoryServiceName;
     
     /**
-     * {@link #SYSTEM_ERROR_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link WritableRecordFactory}ƒT[ƒrƒX–¼B<p>
+     * {@link #SYSTEM_ERROR_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName systemErrorRecordFactoryServiceName;
     
     /**
-     * {@link #SYSTEM_FATAL_CATEGORY}ƒJƒeƒSƒŠ‚ÌƒƒOo—ÍƒtƒH[ƒ}ƒbƒg‚ğs‚¤{@link WritableRecordFactory}ƒT[ƒrƒX–¼B<p>
+     * {@link #SYSTEM_FATAL_CATEGORY}ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡Œã†{@link WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private ServiceName systemFatalRecordFactoryServiceName;
     
     /**
-     * {@link Daemon}ƒIƒuƒWƒFƒNƒgB<p>
+     * {@link Daemon}ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     private Daemon daemon;
     
     /**
-     * ƒtƒH[ƒ}ƒbƒgî•ñContextƒL[î•ñ‚ğŠi”[‚·‚éW‡B<p>
+     * ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæƒ…å ±Contextã‚­ãƒ¼æƒ…å ±ã‚’æ ¼ç´ã™ã‚‹é›†åˆã€‚<p>
      */
     private Set contextKeys = new HashSet();
     
-    /** {@link #debug(Object)}ƒƒ\ƒbƒh‚ÌƒƒOo—Íƒtƒ‰ƒO */
+    /** {@link #debug(Object)}ãƒ¡ã‚½ãƒƒãƒ‰ã®ãƒ­ã‚°å‡ºåŠ›ãƒ•ãƒ©ã‚° */
     private boolean isDebugEnabled = false;
     
-    /** ƒVƒXƒeƒ€ƒƒO‚ÌDEBUGƒƒOo—Íƒtƒ‰ƒO */
+    /** ã‚·ã‚¹ãƒ†ãƒ ãƒ­ã‚°ã®DEBUGãƒ­ã‚°å‡ºåŠ›ãƒ•ãƒ©ã‚° */
     private boolean isSystemDebugEnabled = false;
     
-    /** ƒVƒXƒeƒ€ƒƒO‚ÌINFOƒƒOo—Íƒtƒ‰ƒO */
+    /** ã‚·ã‚¹ãƒ†ãƒ ãƒ­ã‚°ã®INFOãƒ­ã‚°å‡ºåŠ›ãƒ•ãƒ©ã‚° */
     private boolean isSystemInfoEnabled = true;
     
-    /** ƒVƒXƒeƒ€ƒƒO‚ÌWARNƒƒOo—Íƒtƒ‰ƒO */
+    /** ã‚·ã‚¹ãƒ†ãƒ ãƒ­ã‚°ã®WARNãƒ­ã‚°å‡ºåŠ›ãƒ•ãƒ©ã‚° */
     private boolean isSystemWarnEnabled = true;
     
-    /** ƒVƒXƒeƒ€ƒƒO‚ÌERRORƒƒOo—Íƒtƒ‰ƒO */
+    /** ã‚·ã‚¹ãƒ†ãƒ ãƒ­ã‚°ã®ERRORãƒ­ã‚°å‡ºåŠ›ãƒ•ãƒ©ã‚° */
     private boolean isSystemErrorEnabled = true;
     
-    /** ƒVƒXƒeƒ€ƒƒO‚ÌFATALƒƒOo—Íƒtƒ‰ƒO */
+    /** ã‚·ã‚¹ãƒ†ãƒ ãƒ­ã‚°ã®FATALãƒ­ã‚°å‡ºåŠ›ãƒ•ãƒ©ã‚° */
     private boolean isSystemFatalEnabled = true;
     
     protected String defaultFormat = DEFAULT_FORMAT;
@@ -252,14 +252,14 @@ public class LogService extends ServiceBase
     private boolean isDaemon = true;
     
     /**
-     * ¶¬ˆ—‚ğs‚¤B<p>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>{@link Daemon}ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB</li>
-     *   <li>ƒJƒeƒSƒŠŠÇ——pMapƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB</li>
+     *   <li>{@link Daemon}ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚</li>
+     *   <li>ã‚«ãƒ†ã‚´ãƒªç®¡ç†ç”¨Mapã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚</li>
      * </ol>
      * 
-     * @exception Exception ¶¬ˆ—‚É¸”s‚µ‚½ê‡B
+     * @exception Exception ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆã€‚
      */
     public void createService() throws Exception{
         daemon = new Daemon(this);
@@ -269,18 +269,18 @@ public class LogService extends ServiceBase
     }
     
     /**
-     * ‚±‚ÌƒƒOƒT[ƒrƒX‚ÅƒfƒtƒHƒ‹ƒg‚Å‚Â{@link LogCategory}‚ğ¶¬‚µ‚Ä“o˜^‚·‚éB<p>
+     * ã“ã®ãƒ­ã‚°ã‚µãƒ¼ãƒ“ã‚¹ã§ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§æŒã¤{@link LogCategory}ã‚’ç”Ÿæˆã—ã¦ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
-     * @param defaultMessageWriter ƒfƒtƒHƒ‹ƒg‚ÌMessageWriterBmessageWriterName‚É—LŒø‚ÈƒT[ƒrƒX–¼‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÉLogCategory‚Åg—p‚³‚ê‚éB
-     * @param defaultRecordFactory ƒfƒtƒHƒ‹ƒg‚ÌWritableRecordFactoryBrecordFactoryName‚É—LŒø‚ÈƒT[ƒrƒX–¼‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÉLogCategory‚Åg—p‚³‚ê‚éB
-     * @param messageWriterName LogCategory‚Åg—p‚³‚ê‚éMessageWriterƒT[ƒrƒX–¼
-     * @param recordFactoryName LogCategory‚Åg—p‚³‚ê‚éWritableRecordFactoryƒT[ƒrƒX–¼
-     * @param categoryName ƒJƒeƒSƒŠ–¼
-     * @param priorityMin —Dæ‡ˆÊ”ÍˆÍ‚ÌÅ¬’l
-     * @param priorityMax —Dæ‡ˆÊ”ÍˆÍ‚ÌÅ‘å’l
-     * @param label ƒJƒeƒSƒŠ‚Ì—Dæ‡ˆÊ”ÍˆÍ‚Ìƒ‰ƒxƒ‹
-     * @param isEnabled o—Í‚ğ—LŒø‚É‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOBo—Í‚·‚éó‘Ô‚É‚µ‚½‚¢ê‡‚Í true
-     * @exception Exception ƒJƒeƒSƒŠƒT[ƒrƒX‚Ì¶¬EŠJn‚É¸”s‚µ‚½ê‡
+     * @param defaultMessageWriter ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®MessageWriterã€‚messageWriterNameã«æœ‰åŠ¹ãªã‚µãƒ¼ãƒ“ã‚¹åãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã«LogCategoryã§ä½¿ç”¨ã•ã‚Œã‚‹ã€‚
+     * @param defaultRecordFactory ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®WritableRecordFactoryã€‚recordFactoryNameã«æœ‰åŠ¹ãªã‚µãƒ¼ãƒ“ã‚¹åãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã«LogCategoryã§ä½¿ç”¨ã•ã‚Œã‚‹ã€‚
+     * @param messageWriterName LogCategoryã§ä½¿ç”¨ã•ã‚Œã‚‹MessageWriterã‚µãƒ¼ãƒ“ã‚¹å
+     * @param recordFactoryName LogCategoryã§ä½¿ç”¨ã•ã‚Œã‚‹WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹å
+     * @param categoryName ã‚«ãƒ†ã‚´ãƒªå
+     * @param priorityMin å„ªå…ˆé †ä½ç¯„å›²ã®æœ€å°å€¤
+     * @param priorityMax å„ªå…ˆé †ä½ç¯„å›²ã®æœ€å¤§å€¤
+     * @param label ã‚«ãƒ†ã‚´ãƒªã®å„ªå…ˆé †ä½ç¯„å›²ã®ãƒ©ãƒ™ãƒ«
+     * @param isEnabled å‡ºåŠ›ã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚å‡ºåŠ›ã™ã‚‹çŠ¶æ…‹ã«ã—ãŸã„å ´åˆã¯ true
+     * @exception Exception ã‚«ãƒ†ã‚´ãƒªã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆãƒ»é–‹å§‹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void addDefaultCategory(
         MessageWriter defaultMessageWriter,
@@ -319,24 +319,24 @@ public class LogService extends ServiceBase
     }
     
     /**
-     * ŠJnˆ—‚ğs‚¤B<p>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>{@link #setDefaultMessageWriterServiceName(ServiceName)}‚ÅƒfƒtƒHƒ‹ƒg‚Ì{@link MessageWriter}ƒT[ƒrƒX‚Ì–¼‘O‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍA{@link ServiceManager}‚©‚çMessageWriter‚ğæ“¾‚µ‚Ä{@link #setDefaultMessageWriterService(MessageWriter)}‚Åİ’è‚·‚éB‚Ü‚½AƒfƒtƒHƒ‹ƒg‚ÌMessageWriterƒT[ƒrƒX‚Ì–¼‘O‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA{@link ConsoleWriterService}‚ğ¶¬‚µ‚Ä{@link #setDefaultMessageWriterService(MessageWriter)}‚Åİ’è‚·‚éB</li>
-     *   <li>{@link #setDefaultWritableRecordFactoryServiceName(ServiceName)}‚ÅƒfƒtƒHƒ‹ƒg‚Ì{@link WritableRecordFactory}ƒT[ƒrƒX‚Ì–¼‘O‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍA{@link ServiceManager}‚©‚çWritableRecordFactory‚ğæ“¾‚µ‚Ä{@link #setDefaultWritableRecordFactoryService(WritableRecordFactory)}‚Åİ’è‚·‚éB‚Ü‚½AƒfƒtƒHƒ‹ƒg‚ÌWritableRecordFactoryƒT[ƒrƒX‚Ì–¼‘O‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA{@link LogWritableRecordFactoryService}‚ğ¶¬‚µ‚Ä{@link #setDefaultWritableRecordFactoryService(WritableRecordFactory)}‚Åİ’è‚·‚éB</li>
-     *   <li>ƒVƒXƒeƒ€ƒJƒeƒSƒŠ‚ğ¶¬‚µ‚Ä“o˜^‚·‚éB</li>
-     *   <li>{@link #setCategoryServiceNames(ServiceName[])}‚Åİ’è‚³‚ê‚½ƒJƒeƒSƒŠ‚ğ“o˜^‚·‚éB</li>
-     *   <li>{@link #setQueueServiceName(ServiceName)}‚Å{@link Queue}ƒT[ƒrƒX‚Ì–¼‘O‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍA{@link ServiceManager}‚©‚çQueue‚ğæ“¾‚µ‚Ä{@link #setQueueService(Queue)}‚Åİ’è‚·‚éB‚Ü‚½AQueueƒT[ƒrƒX‚Ì–¼‘O‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA{@link DefaultQueueService}‚ğ¶¬‚µ‚Ä{@link #setQueueService(Queue)}‚Åİ’è‚·‚éB</li>
-     *   <li>{@link #setMessageRecordFactoryServiceName(ServiceName)}‚Å{@link MessageRecordFactory}ƒT[ƒrƒX‚Ì–¼‘O‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍA{@link ServiceManager}‚©‚çMessageRecordFactory‚ğæ“¾‚µ‚Ä{@link #setMessageRecordFactoryService(MessageRecordFactory)}‚Åİ’è‚·‚éB‚Ü‚½AMessageRecordFactoryƒT[ƒrƒX‚Ì–¼‘O‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA{@link MessageRecordFactoryService}‚ğ¶¬‚µ‚Ä{@link #setMessageRecordFactoryService(MessageRecordFactory)}‚Åİ’è‚·‚éB</li>
-     *   <li>{@link #setContextServiceName(ServiceName)}‚Å{@link Context}ƒT[ƒrƒX‚Ì–¼‘O‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍA{@link ServiceManager}‚©‚çContext‚ğæ“¾‚µ‚Ä{@link #setContextService(Context)}‚Åİ’è‚·‚éB</li>
-     *   <li>{@link Daemon}‚ğ‹N“®‚·‚éB</li>
+     *   <li>{@link #setDefaultMessageWriterServiceName(ServiceName)}ã§ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€{@link ServiceManager}ã‹ã‚‰MessageWriterã‚’å–å¾—ã—ã¦{@link #setDefaultMessageWriterService(MessageWriter)}ã§è¨­å®šã™ã‚‹ã€‚ã¾ãŸã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®MessageWriterã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ãŒè¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€{@link ConsoleWriterService}ã‚’ç”Ÿæˆã—ã¦{@link #setDefaultMessageWriterService(MessageWriter)}ã§è¨­å®šã™ã‚‹ã€‚</li>
+     *   <li>{@link #setDefaultWritableRecordFactoryServiceName(ServiceName)}ã§ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€{@link ServiceManager}ã‹ã‚‰WritableRecordFactoryã‚’å–å¾—ã—ã¦{@link #setDefaultWritableRecordFactoryService(WritableRecordFactory)}ã§è¨­å®šã™ã‚‹ã€‚ã¾ãŸã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ãŒè¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€{@link LogWritableRecordFactoryService}ã‚’ç”Ÿæˆã—ã¦{@link #setDefaultWritableRecordFactoryService(WritableRecordFactory)}ã§è¨­å®šã™ã‚‹ã€‚</li>
+     *   <li>ã‚·ã‚¹ãƒ†ãƒ ã‚«ãƒ†ã‚´ãƒªã‚’ç”Ÿæˆã—ã¦ç™»éŒ²ã™ã‚‹ã€‚</li>
+     *   <li>{@link #setCategoryServiceNames(ServiceName[])}ã§è¨­å®šã•ã‚ŒãŸã‚«ãƒ†ã‚´ãƒªã‚’ç™»éŒ²ã™ã‚‹ã€‚</li>
+     *   <li>{@link #setQueueServiceName(ServiceName)}ã§{@link Queue}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€{@link ServiceManager}ã‹ã‚‰Queueã‚’å–å¾—ã—ã¦{@link #setQueueService(Queue)}ã§è¨­å®šã™ã‚‹ã€‚ã¾ãŸã€Queueã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ãŒè¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€{@link DefaultQueueService}ã‚’ç”Ÿæˆã—ã¦{@link #setQueueService(Queue)}ã§è¨­å®šã™ã‚‹ã€‚</li>
+     *   <li>{@link #setMessageRecordFactoryServiceName(ServiceName)}ã§{@link MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€{@link ServiceManager}ã‹ã‚‰MessageRecordFactoryã‚’å–å¾—ã—ã¦{@link #setMessageRecordFactoryService(MessageRecordFactory)}ã§è¨­å®šã™ã‚‹ã€‚ã¾ãŸã€MessageRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ãŒè¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€{@link MessageRecordFactoryService}ã‚’ç”Ÿæˆã—ã¦{@link #setMessageRecordFactoryService(MessageRecordFactory)}ã§è¨­å®šã™ã‚‹ã€‚</li>
+     *   <li>{@link #setContextServiceName(ServiceName)}ã§{@link Context}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€{@link ServiceManager}ã‹ã‚‰Contextã‚’å–å¾—ã—ã¦{@link #setContextService(Context)}ã§è¨­å®šã™ã‚‹ã€‚</li>
+     *   <li>{@link Daemon}ã‚’èµ·å‹•ã™ã‚‹ã€‚</li>
      * </ol>
      * 
-     * @exception Exception ŠJnˆ—‚É¸”s‚µ‚½ê‡B
+     * @exception Exception é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆã€‚
      */
     public void startService() throws Exception{
         
-        // ƒfƒtƒHƒ‹ƒgMessageWriterƒT[ƒrƒX‚Ì¶¬‚Ü‚½‚Íæ“¾
+        // ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆMessageWriterã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆã¾ãŸã¯å–å¾—
         if(getDefaultMessageWriterServiceName() == null){
             if(getConsoleWriterService() == null){
                 final ConsoleWriterService consoleWriter
@@ -356,7 +356,7 @@ public class LogService extends ServiceBase
             );
         }
         
-        // ƒfƒtƒHƒ‹ƒgWritableRecordFactoryƒT[ƒrƒX‚Ì¶¬‚Ü‚½‚Íæ“¾
+        // ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆWritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆã¾ãŸã¯å–å¾—
         if(getDefaultWritableRecordFactoryServiceName() == null){
             if(getLogWritableRecordFactoryService() == null){
                 final LogWritableRecordFactoryService recordFactory
@@ -379,10 +379,10 @@ public class LogService extends ServiceBase
             );
         }
         
-        // ƒVƒXƒeƒ€ƒJƒeƒSƒŠ‚Ì“o˜^
+        // ã‚·ã‚¹ãƒ†ãƒ ã‚«ãƒ†ã‚´ãƒªã®ç™»éŒ²
         initDefaultCategory();
         
-        // ƒ†[ƒU’è‹`ƒJƒeƒSƒŠ‚Ì“o˜^
+        // ãƒ¦ãƒ¼ã‚¶å®šç¾©ã‚«ãƒ†ã‚´ãƒªã®ç™»éŒ²
         final ServiceName[] categoryNames = getCategoryServiceNames();
         if(categoryNames != null){
             for(int i = 0; i < categoryNames.length; i++){
@@ -393,7 +393,7 @@ public class LogService extends ServiceBase
             }
         }
         
-        // QueueƒT[ƒrƒX‚Ì¶¬‚Ü‚½‚Íæ“¾
+        // Queueã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆã¾ãŸã¯å–å¾—
         if(getQueueServiceName() == null){
             if(getDefaultQueueService() == null){
                 final DefaultQueueService defaultQueue
@@ -411,7 +411,7 @@ public class LogService extends ServiceBase
             );
         }
         
-        // MessageRecordFactoryƒT[ƒrƒX‚Ì¶¬‚Ü‚½‚Íæ“¾
+        // MessageRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆã¾ãŸã¯å–å¾—
         if(getMessageRecordFactoryServiceName() == null){
             if(getDefaultMessageRecordFactoryService() == null){
                 final MessageRecordFactoryService defaultMessageFactory
@@ -433,19 +433,19 @@ public class LogService extends ServiceBase
             );
         }
         
-        // ContextƒT[ƒrƒX‚Ìæ“¾
+        // Contextã‚µãƒ¼ãƒ“ã‚¹ã®å–å¾—
         if(getContextServiceName() != null){
             setContextService((Context)ServiceManagerFactory
                     .getServiceObject(getContextServiceName())
             );
         }
         
-        // ƒLƒ…[æ“¾‘Ò‚¿‚ğŠJn‚·‚é
+        // ã‚­ãƒ¥ãƒ¼å–å¾—å¾…ã¡ã‚’é–‹å§‹ã™ã‚‹
         queue.accept();
         
         daemon.setDaemon(isDaemon);
         
-        // ƒf[ƒ‚ƒ“‹N“®
+        // ãƒ‡ãƒ¼ãƒ¢ãƒ³èµ·å‹•
         daemon.start();
     }
     
@@ -519,88 +519,88 @@ public class LogService extends ServiceBase
     }
     
     /**
-     * ’â~ˆ—‚ğs‚¤B<p>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>ƒfƒtƒHƒ‹ƒg‚ÌMessageWriterƒT[ƒrƒX‚ğ–³–¼ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚µ‚Ä‚¢‚éê‡A‚»‚ÌƒT[ƒrƒX‚ğ’â~‚·‚éB</li>
-     *   <li>ƒfƒtƒHƒ‹ƒg‚ÌWritableRecordFactoryƒT[ƒrƒX‚ğ–³–¼ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚µ‚Ä‚¢‚éê‡A‚»‚ÌƒT[ƒrƒX‚ğ’â~‚·‚éB</li>
-     *   <li>QueueƒT[ƒrƒX‚ğ–³–¼ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚µ‚Ä‚¢‚éê‡A
-        ‚»‚ÌƒT[ƒrƒX‚ğ’â~‚·‚éB</li>
-     *   <li>MessageRecordFactoryƒT[ƒrƒX‚ğ–³–¼ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚µ‚Ä‚¢‚éê‡A
-        ‚»‚ÌƒT[ƒrƒX‚ğ’â~‚·‚éB</li>
-     *   <li>ƒJƒeƒSƒŠ‚ğíœ‚·‚éB</li>
-     *   <li>{@link Daemon}‚ğ’â~‚·‚éB</li>
+     *   <li>ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®MessageWriterã‚µãƒ¼ãƒ“ã‚¹ã‚’ç„¡åã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã—ã¦ã„ã‚‹å ´åˆã€ãã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’åœæ­¢ã™ã‚‹ã€‚</li>
+     *   <li>ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ã‚’ç„¡åã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã—ã¦ã„ã‚‹å ´åˆã€ãã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’åœæ­¢ã™ã‚‹ã€‚</li>
+     *   <li>Queueã‚µãƒ¼ãƒ“ã‚¹ã‚’ç„¡åã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã—ã¦ã„ã‚‹å ´åˆã€
+        ãã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’åœæ­¢ã™ã‚‹ã€‚</li>
+     *   <li>MessageRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ã‚’ç„¡åã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã—ã¦ã„ã‚‹å ´åˆã€
+        ãã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’åœæ­¢ã™ã‚‹ã€‚</li>
+     *   <li>ã‚«ãƒ†ã‚´ãƒªã‚’å‰Šé™¤ã™ã‚‹ã€‚</li>
+     *   <li>{@link Daemon}ã‚’åœæ­¢ã™ã‚‹ã€‚</li>
      * </ol>
      * 
-     * @exception Exception ’â~ˆ—‚É¸”s‚µ‚½ê‡B
+     * @exception Exception åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆã€‚
      */
     public void stopService(){
         
-        // ƒf[ƒ‚ƒ“’â~
+        // ãƒ‡ãƒ¼ãƒ¢ãƒ³åœæ­¢
         daemon.stop();
         
-        // ƒLƒ…[æ“¾‘Ò‚¿‚ğŠJ•ú‚·‚é
+        // ã‚­ãƒ¥ãƒ¼å–å¾—å¾…ã¡ã‚’é–‹æ”¾ã™ã‚‹
         queue.release();
         
-        // ƒfƒtƒHƒ‹ƒg‚ÌMessageWriterƒT[ƒrƒX‚ğ–³–¼ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚µ‚Ä
-        // ‚¢‚éê‡A‚»‚ÌƒT[ƒrƒX‚ğ’â~‚·‚é
+        // ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®MessageWriterã‚µãƒ¼ãƒ“ã‚¹ã‚’ç„¡åã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã—ã¦
+        // ã„ã‚‹å ´åˆã€ãã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’åœæ­¢ã™ã‚‹
         if(getDefaultMessageWriterService() == getConsoleWriterService()){
             getConsoleWriterService().stop();
         }
         
-        // ƒfƒtƒHƒ‹ƒg‚ÌWritableRecordFactoryƒT[ƒrƒX‚ğ–³–¼ƒT[ƒrƒX‚Æ‚µ‚Ä
-        // ¶¬‚µ‚Ä‚¢‚éê‡A‚»‚ÌƒT[ƒrƒX‚ğ’â~‚·‚é
+        // ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ã‚’ç„¡åã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦
+        // ç”Ÿæˆã—ã¦ã„ã‚‹å ´åˆã€ãã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’åœæ­¢ã™ã‚‹
         if(getDefaultWritableRecordFactoryService()
              == getLogWritableRecordFactoryService()){
             getLogWritableRecordFactoryService().stop();
         }
         
-        // QueueƒT[ƒrƒX‚ğ–³–¼ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚µ‚Ä‚¢‚éê‡A
-        // ‚»‚ÌƒT[ƒrƒX‚ğ’â~‚·‚é
+        // Queueã‚µãƒ¼ãƒ“ã‚¹ã‚’ç„¡åã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã—ã¦ã„ã‚‹å ´åˆã€
+        // ãã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’åœæ­¢ã™ã‚‹
         if(getQueueService() == getDefaultQueueService()){
             getDefaultQueueService().stop();
         }
         
-        // MessageRecordFactoryƒT[ƒrƒX‚ğ–³–¼ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚µ‚Ä‚¢‚éê‡A
-        // ‚»‚ÌƒT[ƒrƒX‚ğ’â~‚·‚é
+        // MessageRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ã‚’ç„¡åã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã—ã¦ã„ã‚‹å ´åˆã€
+        // ãã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’åœæ­¢ã™ã‚‹
         if(getMessageRecordFactoryService()
              == getDefaultMessageRecordFactoryService()){
             getDefaultMessageRecordFactoryService().stop();
         }
         
-        // ƒJƒeƒSƒŠ‚ğíœ‚·‚é
+        // ã‚«ãƒ†ã‚´ãƒªã‚’å‰Šé™¤ã™ã‚‹
         categoryMap.clear();
         defaultCategoryMap.clear();
     }
     
     /**
-     * ”jŠüˆ—‚ğs‚¤B<p>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     *   <li>ƒfƒtƒHƒ‹ƒg‚ÌMessageWriterƒT[ƒrƒX‚ğ–³–¼ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚µ‚Ä‚¢‚éê‡A‚»‚ÌƒT[ƒrƒX‚ğ”jŠü‚·‚éB</li>
-     *   <li>ƒfƒtƒHƒ‹ƒg‚ÌWritableRecordFactoryƒT[ƒrƒX‚ğ–³–¼ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚µ‚Ä‚¢‚éê‡A‚»‚ÌƒT[ƒrƒX‚ğ”jŠü‚·‚éB</li>
-     *   <li>QueueƒT[ƒrƒX‚ğ–³–¼ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚µ‚Ä‚¢‚éê‡A
-        ‚»‚ÌƒT[ƒrƒX‚ğ”jŠü‚·‚éB</li>
-     *   <li>MessageRecordFactoryƒT[ƒrƒX‚ğ–³–¼ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚µ‚Ä‚¢‚éê‡A
-        ‚»‚ÌƒT[ƒrƒX‚ğ”jŠü‚·‚éB</li>
-     *   <li>ƒJƒeƒSƒŠ‚ğ”jŠü‚·‚éB</li>
-     *   <li>{@link Daemon}‚ğ”jŠü‚·‚éB</li>
+     *   <li>ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®MessageWriterã‚µãƒ¼ãƒ“ã‚¹ã‚’ç„¡åã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã—ã¦ã„ã‚‹å ´åˆã€ãã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç ´æ£„ã™ã‚‹ã€‚</li>
+     *   <li>ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ã‚’ç„¡åã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã—ã¦ã„ã‚‹å ´åˆã€ãã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç ´æ£„ã™ã‚‹ã€‚</li>
+     *   <li>Queueã‚µãƒ¼ãƒ“ã‚¹ã‚’ç„¡åã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã—ã¦ã„ã‚‹å ´åˆã€
+        ãã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç ´æ£„ã™ã‚‹ã€‚</li>
+     *   <li>MessageRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ã‚’ç„¡åã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã—ã¦ã„ã‚‹å ´åˆã€
+        ãã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç ´æ£„ã™ã‚‹ã€‚</li>
+     *   <li>ã‚«ãƒ†ã‚´ãƒªã‚’ç ´æ£„ã™ã‚‹ã€‚</li>
+     *   <li>{@link Daemon}ã‚’ç ´æ£„ã™ã‚‹ã€‚</li>
      * </ol>
      * 
-     * @exception Exception ”jŠüˆ—‚É¸”s‚µ‚½ê‡B
+     * @exception Exception ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆã€‚
      */
     public void destroyService(){
         
-        // ƒfƒtƒHƒ‹ƒg‚ÌMessageWriterƒT[ƒrƒX‚ğ–³–¼ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚µ‚Ä
-        // ‚¢‚éê‡A‚»‚ÌƒT[ƒrƒX‚ğ”jŠü‚·‚é
+        // ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®MessageWriterã‚µãƒ¼ãƒ“ã‚¹ã‚’ç„¡åã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã—ã¦
+        // ã„ã‚‹å ´åˆã€ãã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç ´æ£„ã™ã‚‹
         if(getDefaultMessageWriterService() == getConsoleWriterService()
             && getConsoleWriterService() != null){
             getConsoleWriterService().destroy();
             setConsoleWriterService(null);
         }
         
-        // ƒfƒtƒHƒ‹ƒg‚ÌWritableRecordFactoryƒT[ƒrƒX‚ğ–³–¼ƒT[ƒrƒX‚Æ‚µ‚Ä
-        // ¶¬‚µ‚Ä‚¢‚éê‡A‚»‚ÌƒT[ƒrƒX‚ğ”jŠü‚·‚é
+        // ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®WritableRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ã‚’ç„¡åã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦
+        // ç”Ÿæˆã—ã¦ã„ã‚‹å ´åˆã€ãã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç ´æ£„ã™ã‚‹
         if(getDefaultWritableRecordFactoryService()
              == getLogWritableRecordFactoryService()
              && getLogWritableRecordFactoryService() != null){
@@ -608,16 +608,16 @@ public class LogService extends ServiceBase
             setLogWritableRecordFactoryService(null);
         }
         
-        // QueueƒT[ƒrƒX‚ğ–³–¼ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚µ‚Ä‚¢‚éê‡A
-        // ‚»‚ÌƒT[ƒrƒX‚ğ”jŠü‚·‚é
+        // Queueã‚µãƒ¼ãƒ“ã‚¹ã‚’ç„¡åã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã—ã¦ã„ã‚‹å ´åˆã€
+        // ãã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç ´æ£„ã™ã‚‹
         if(getQueueService() == getDefaultQueueService()
             && getDefaultQueueService() != null){
             getDefaultQueueService().destroy();
             setDefaultQueueService(null);
         }
         
-        // MessageRecordFactoryƒT[ƒrƒX‚ğ–³–¼ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚µ‚Ä‚¢‚éê‡A
-        // ‚»‚ÌƒT[ƒrƒX‚ğ”jŠü‚·‚é
+        // MessageRecordFactoryã‚µãƒ¼ãƒ“ã‚¹ã‚’ç„¡åã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã—ã¦ã„ã‚‹å ´åˆã€
+        // ãã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç ´æ£„ã™ã‚‹
         if(getMessageRecordFactoryService()
              == getDefaultMessageRecordFactoryService()
             && getDefaultMessageRecordFactoryService() != null){
@@ -625,98 +625,98 @@ public class LogService extends ServiceBase
             setDefaultMessageRecordFactoryService(null);
         }
         
-        // ƒJƒeƒSƒŠŠÇ—Map‚ğ”jŠü‚·‚é
+        // ã‚«ãƒ†ã‚´ãƒªç®¡ç†Mapã‚’ç ´æ£„ã™ã‚‹
         categoryMap = null;
         defaultCategoryMap = null;
         
-        // ƒf[ƒ‚ƒ“‚ğ”jŠü‚·‚é
+        // ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚’ç ´æ£„ã™ã‚‹
         daemon = null;
     }
     
     /**
-     * ƒJƒeƒSƒŠ–¼‚Æ{@link LogCategory}‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * ã‚«ãƒ†ã‚´ãƒªåã¨{@link LogCategory}ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒJƒeƒSƒŠ–¼‚Æ{@link LogCategory}‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return ã‚«ãƒ†ã‚´ãƒªåã¨{@link LogCategory}ã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     protected Map getCategoryMap(){
         return categoryMap;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setDefaultMessageWriterServiceName(ServiceName name){
         defaultMessageWriterServiceName = name;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public ServiceName getDefaultMessageWriterServiceName(){
         return defaultMessageWriterServiceName;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setDefaultMessageWriterService(MessageWriter writer){
         defaultMessageWriter = writer;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public MessageWriter getDefaultMessageWriterService(){
         return defaultMessageWriter;
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌMessageWriter‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Ég—p‚·‚é{@link ConsoleWriterService}‚ğæ“¾‚·‚éB<p>
-     * ‚±‚ÌConsoleWriterService‚ÍA–³–¼ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚³‚ê‚éB‚Ü‚½A{@link #setDefaultMessageWriterServiceName(ServiceName)}‚ÅƒfƒtƒHƒ‹ƒg‚ÌMessageWriter‚ªw’è‚³‚ê‚Ä‚¢‚éê‡‚ÍAnull‚ğ•Ô‚·ê‡‚ª‚ ‚éB<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®MessageWriterãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã«ä½¿ç”¨ã™ã‚‹{@link ConsoleWriterService}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã“ã®ConsoleWriterServiceã¯ã€ç„¡åã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã•ã‚Œã‚‹ã€‚ã¾ãŸã€{@link #setDefaultMessageWriterServiceName(ServiceName)}ã§ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®MessageWriterãŒæŒ‡å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€nullã‚’è¿”ã™å ´åˆãŒã‚ã‚‹ã€‚<br>
      *
-     * @return ConsoleWriterServiceƒIƒuƒWƒFƒNƒgB¶¬‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B
+     * @return ConsoleWriterServiceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚ç”Ÿæˆã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚
      */
     protected ConsoleWriterService getConsoleWriterService(){
         return consoleWriter;
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌMessageWriter‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Ég—p‚·‚é{@link ConsoleWriterService}‚ğİ’è‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®MessageWriterãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã«ä½¿ç”¨ã™ã‚‹{@link ConsoleWriterService}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param consoleWriter ConsoleWriterServiceƒIƒuƒWƒFƒNƒg
+     * @param consoleWriter ConsoleWriterServiceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     protected void setConsoleWriterService(ConsoleWriterService consoleWriter){
         this.consoleWriter = consoleWriter;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setDefaultWritableRecordFactoryServiceName(ServiceName name){
         defaultWritableRecordFactoryServiceName = name;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public ServiceName getDefaultWritableRecordFactoryServiceName(){
         return defaultWritableRecordFactoryServiceName;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setDefaultWritableRecordFactoryService(
         WritableRecordFactory recordFactory
     ){
         defaultWritableRecordFactory = recordFactory;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public WritableRecordFactory getDefaultWritableRecordFactoryService(){
         return defaultWritableRecordFactory;
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌWritableRecordFactory‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Ég—p‚·‚é{@link LogWritableRecordFactoryService}‚ğæ“¾‚·‚éB<p>
-     * ‚±‚ÌLogWritableRecordFactory‚ÍA–³–¼ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚³‚ê‚éB‚Ü‚½A{@link #setDefaultWritableRecordFactoryServiceName(ServiceName)}‚ÅƒfƒtƒHƒ‹ƒg‚ÌWritableRecordFactory‚ªw’è‚³‚ê‚Ä‚¢‚éê‡‚ÍAnull‚ğ•Ô‚·ê‡‚ª‚ ‚éB<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®WritableRecordFactoryãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã«ä½¿ç”¨ã™ã‚‹{@link LogWritableRecordFactoryService}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã“ã®LogWritableRecordFactoryã¯ã€ç„¡åã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã•ã‚Œã‚‹ã€‚ã¾ãŸã€{@link #setDefaultWritableRecordFactoryServiceName(ServiceName)}ã§ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®WritableRecordFactoryãŒæŒ‡å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€nullã‚’è¿”ã™å ´åˆãŒã‚ã‚‹ã€‚<br>
      *
-     * @return LogWritableRecordFactoryƒIƒuƒWƒFƒNƒgB¶¬‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B
+     * @return LogWritableRecordFactoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚ç”Ÿæˆã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚
      */
     protected LogWritableRecordFactoryService getLogWritableRecordFactoryService(){
         return logWritableRecordFactory;
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚ÌWritableRecordFactory‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Ég—p‚·‚é{@link LogWritableRecordFactoryService}‚ğİ’è‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®WritableRecordFactoryãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã«ä½¿ç”¨ã™ã‚‹{@link LogWritableRecordFactoryService}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param logRecordFactory LogWritableRecordFactoryƒIƒuƒWƒFƒNƒg
+     * @param logRecordFactory LogWritableRecordFactoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     protected void setLogWritableRecordFactoryService(
         LogWritableRecordFactoryService logRecordFactory
@@ -724,28 +724,28 @@ public class LogService extends ServiceBase
         this.logWritableRecordFactory = logRecordFactory;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setCategoryServiceNames(ServiceName[] names){
         categoryNames = names;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public ServiceName[] getCategoryServiceNames(){
         return categoryNames;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setCategoryServices(LogCategory[] categories){
         if(categoryMap != null){
             
-            // ƒfƒtƒHƒ‹ƒgƒJƒeƒSƒŠ‚Ì–¼‘OW‡‚ğ¶¬
+            // ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚«ãƒ†ã‚´ãƒªã®åå‰é›†åˆã‚’ç”Ÿæˆ
             final Set defaultCategoryNames = defaultCategoryMap.keySet();
             
-            // Œ»İ•Û‚µ‚Ä‚¢‚éƒJƒeƒSƒŠ‚©‚çAƒVƒXƒeƒ€ƒJƒeƒSƒŠˆÈŠO‚ğíœ‚·‚é
+            // ç¾åœ¨ä¿æŒã—ã¦ã„ã‚‹ã‚«ãƒ†ã‚´ãƒªã‹ã‚‰ã€ã‚·ã‚¹ãƒ†ãƒ ã‚«ãƒ†ã‚´ãƒªä»¥å¤–ã‚’å‰Šé™¤ã™ã‚‹
             final Set categoryNames = categoryMap.keySet();
             categoryNames.retainAll(defaultCategoryNames);
             
-            // w’è‚³‚ê‚½ƒJƒeƒSƒŠ‚ğ“o˜^‚·‚é
+            // æŒ‡å®šã•ã‚ŒãŸã‚«ãƒ†ã‚´ãƒªã‚’ç™»éŒ²ã™ã‚‹
             if(categories != null){
                 for(int i = 0; i < categories.length; i++){
                     final LogCategory category = categories[i];
@@ -757,7 +757,7 @@ public class LogService extends ServiceBase
         }
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public LogCategory[] getCategoryServices(){
         if(categoryMap != null){
             return (LogCategory[])categoryMap.values().toArray(
@@ -767,7 +767,7 @@ public class LogService extends ServiceBase
         return new LogCategory[0];
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void addCategoryService(LogCategory category){
         if(categoryMap != null && category != null){
             categoryMap.put(category.getCategoryName(), category);
@@ -775,9 +775,9 @@ public class LogService extends ServiceBase
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì{@link LogCategory}ƒT[ƒrƒX‚ğ’Ç‰Á‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link LogCategory}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @parma category LogCategoryƒT[ƒrƒX
+     * @parma category LogCategoryã‚µãƒ¼ãƒ“ã‚¹
      */
     private void addDefaultCategoryService(LogCategory category){
         if(defaultCategoryMap != null && category != null){
@@ -785,7 +785,7 @@ public class LogService extends ServiceBase
         }
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public LogCategory getCategoryService(String name){
         if(categoryMap != null && name != null){
             return (LogCategory)categoryMap.get(name);
@@ -793,79 +793,79 @@ public class LogService extends ServiceBase
         return null;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setQueueServiceName(ServiceName name){
         queueServiceName = name;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setQueueService(Queue queue){
         this.queue = queue;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public ServiceName getQueueServiceName(){
         return queueServiceName;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public Queue getQueueService(){
         return queue;
     }
     
     /**
-     * Queue‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Ég—p‚·‚é{@link DefaultQueueService}‚ğæ“¾‚·‚éB<p>
-     * ‚±‚ÌDefaultQueueService‚ÍA–³–¼ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚³‚ê‚éB‚Ü‚½A{@link #setQueueServiceName(ServiceName)}‚ÅQueue‚ªw’è‚³‚ê‚Ä‚¢‚éê‡‚ÍAnull‚ğ•Ô‚·ê‡‚ª‚ ‚éB<br>
+     * QueueãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã«ä½¿ç”¨ã™ã‚‹{@link DefaultQueueService}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã“ã®DefaultQueueServiceã¯ã€ç„¡åã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã•ã‚Œã‚‹ã€‚ã¾ãŸã€{@link #setQueueServiceName(ServiceName)}ã§QueueãŒæŒ‡å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€nullã‚’è¿”ã™å ´åˆãŒã‚ã‚‹ã€‚<br>
      *
-     * @return DefaultQueueServiceƒIƒuƒWƒFƒNƒgB¶¬‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Ínull‚ğ•Ô‚·B
+     * @return DefaultQueueServiceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚ç”Ÿæˆã•ã‚Œã¦ã„ãªã„å ´åˆã¯nullã‚’è¿”ã™ã€‚
      */
     protected DefaultQueueService getDefaultQueueService(){
         return defaultQueue;
     }
     
     /**
-     * Queue‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Ég—p‚·‚é{@link DefaultQueueService}‚ğİ’è‚·‚éB<p>
+     * QueueãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã«ä½¿ç”¨ã™ã‚‹{@link DefaultQueueService}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param queue DefaultQueueServiceƒIƒuƒWƒFƒNƒg
+     * @param queue DefaultQueueServiceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     protected void setDefaultQueueService(DefaultQueueService queue){
         defaultQueue = queue;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setMessageRecordFactoryServiceName(ServiceName name){
         messageFactoryServiceName = name;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setMessageRecordFactoryService(MessageRecordFactory message){
         messageFactory = message;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public ServiceName getMessageRecordFactoryServiceName(){
         return messageFactoryServiceName;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public MessageRecordFactory getMessageRecordFactoryService(){
         return messageFactory;
     }
     
     /**
-     * MessageRecordFactory‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Ég—p‚·‚é{@link MessageRecordFactoryService}‚ğæ“¾‚·‚éB<p>
-     * ‚±‚ÌMessageRecordFactoryService‚ÍA–³–¼ƒT[ƒrƒX‚Æ‚µ‚Ä¶¬‚³‚ê‚éB‚Ü‚½A{@link #setMessageRecordFactoryServiceName(ServiceName)}‚ÅMessageRecordFactory‚ªw’è‚³‚ê‚Ä‚¢‚éê‡‚ÍAnull‚ğ•Ô‚·ê‡‚ª‚ ‚éB<br>
+     * MessageRecordFactoryãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã«ä½¿ç”¨ã™ã‚‹{@link MessageRecordFactoryService}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã“ã®MessageRecordFactoryServiceã¯ã€ç„¡åã‚µãƒ¼ãƒ“ã‚¹ã¨ã—ã¦ç”Ÿæˆã•ã‚Œã‚‹ã€‚ã¾ãŸã€{@link #setMessageRecordFactoryServiceName(ServiceName)}ã§MessageRecordFactoryãŒæŒ‡å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€nullã‚’è¿”ã™å ´åˆãŒã‚ã‚‹ã€‚<br>
      *
-     * @return MessageRecordFactoryServiceƒIƒuƒWƒFƒNƒgB¶¬‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Ínull‚ğ•Ô‚·B
+     * @return MessageRecordFactoryServiceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚ç”Ÿæˆã•ã‚Œã¦ã„ãªã„å ´åˆã¯nullã‚’è¿”ã™ã€‚
      */
     protected MessageRecordFactoryService getDefaultMessageRecordFactoryService(){
         return defaultMessageFactory;
     }
     
     /**
-     * MessageRecordFactory‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.message.MessageRecordFactoryService MessageRecordFactoryService}‚ğİ’è‚·‚éB<p>
+     * MessageRecordFactoryãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.message.MessageRecordFactoryService MessageRecordFactoryService}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param message MessageRecordFactoryServiceƒIƒuƒWƒFƒNƒg
+     * @param message MessageRecordFactoryServiceã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     protected void setDefaultMessageRecordFactoryService(
         MessageRecordFactoryService message
@@ -873,27 +873,27 @@ public class LogService extends ServiceBase
         defaultMessageFactory = message;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setContextServiceName(ServiceName name){
         contextServiceName = name;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setContextService(Context context){
         this.context = context;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public ServiceName getContextServiceName(){
         return contextServiceName;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public Context getContextService(){
         return context;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setContextFormatKeys(String[] keys){
         if(keys != null){
             for(int i = 0; i < keys.length; i++){
@@ -904,26 +904,26 @@ public class LogService extends ServiceBase
         }
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void addContextFormatKey(String key){
         if(key != null){
             contextKeys.add(key);
         }
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void removeContextFormatKey(String key){
         if(key != null){
             contextKeys.remove(key);
         }
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void clearContextFormatKeys(){
         contextKeys.clear();
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public String[] getContextFormatKeys(){
         return (String[])contextKeys.toArray(new String[contextKeys.size()]);
     }
@@ -933,10 +933,10 @@ public class LogService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ğƒL[‚É{@link Context}ƒT[ƒrƒX‚©‚ç’l‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’ã‚­ãƒ¼ã«{@link Context}ã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @return {@link Context}ƒT[ƒrƒX‚©‚çæ“¾‚µ‚½’l
+     * @param key ã‚­ãƒ¼
+     * @return {@link Context}ã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰å–å¾—ã—ãŸå€¤
      */
     protected Object getContextFormatValue(String key){
         final Context context = getContextService();
@@ -947,10 +947,10 @@ public class LogService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½{@link LogMessageRecord}‚ªo—Í‚³‚ê‚é‚©”»’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸ{@link LogMessageRecord}ãŒå‡ºåŠ›ã•ã‚Œã‚‹ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
      *
      * @param messageRecord LogMessageRecord
-     * @return o—Í‚³‚ê‚éê‡ true
+     * @return å‡ºåŠ›ã•ã‚Œã‚‹å ´åˆ true
      */
     protected boolean isWrite(LogMessageRecord messageRecord){
         final int priority = messageRecord.getPriority();
@@ -969,14 +969,14 @@ public class LogService extends ServiceBase
     }
     
     /**
-     * ƒƒO‚ÌƒLƒ…[‚É‘}“ü‚·‚é{@link LogEnqueuedRecord}‚ğ¶¬‚·‚éB<p>
-     * {@link #write(LogMessageRecord, Locale, String, Throwable)}‚©‚çŒÄ‚Ño‚³‚ê‚éB<br>
+     * ãƒ­ã‚°ã®ã‚­ãƒ¥ãƒ¼ã«æŒ¿å…¥ã™ã‚‹{@link LogEnqueuedRecord}ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * {@link #write(LogMessageRecord, Locale, String, Throwable)}ã‹ã‚‰å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param messageRecord ƒƒOo—Í—v‹‚Ì‚ ‚Á‚½LogMessageRecordƒIƒuƒWƒFƒNƒg
-     * @param locale ƒƒOo—Í‚Ég—p‚³‚ê‚éƒƒbƒZ[ƒW‚ÌƒƒP[ƒ‹
-     * @param embed ƒƒOo—Í‚ÌƒƒbƒZ[ƒW‚Ég—p‚³‚ê‚é–„‚ß‚İ•¶š—ñB–„‚ß‚İ‚Ì‚È‚¢ƒƒbƒZ[ƒW‚Ìê‡‚ÍAnullB
-     * @param throwable ƒƒOo—Í‚Ég—p‚³‚ê‚é—áŠO
-     * @return ƒƒO‚ÌƒLƒ…[‚É‘}“ü‚·‚éLogEnqueuedRecord
+     * @param messageRecord ãƒ­ã‚°å‡ºåŠ›è¦æ±‚ã®ã‚ã£ãŸLogMessageRecordã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param locale ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã•ã‚Œã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param embed ãƒ­ã‚°å‡ºåŠ›ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«ä½¿ç”¨ã•ã‚Œã‚‹åŸ‹ã‚è¾¼ã¿æ–‡å­—åˆ—ã€‚åŸ‹ã‚è¾¼ã¿ã®ãªã„ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å ´åˆã¯ã€nullã€‚
+     * @param throwable ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã•ã‚Œã‚‹ä¾‹å¤–
+     * @return ãƒ­ã‚°ã®ã‚­ãƒ¥ãƒ¼ã«æŒ¿å…¥ã™ã‚‹LogEnqueuedRecord
      */
     protected LogEnqueuedRecord createLogEnqueuedRecord(
         LogMessageRecord messageRecord,
@@ -988,14 +988,14 @@ public class LogService extends ServiceBase
     }
     
     /**
-     * ƒƒO‚ÌƒLƒ…[‚É‘}“ü‚·‚é{@link LogEnqueuedRecord}‚ğ¶¬‚·‚éB<p>
-     * {@link #write(LogMessageRecord, Locale, String[], Throwable)}‚©‚çŒÄ‚Ño‚³‚ê‚éB<br>
+     * ãƒ­ã‚°ã®ã‚­ãƒ¥ãƒ¼ã«æŒ¿å…¥ã™ã‚‹{@link LogEnqueuedRecord}ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * {@link #write(LogMessageRecord, Locale, String[], Throwable)}ã‹ã‚‰å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param messageRecord ƒƒOo—Í—v‹‚Ì‚ ‚Á‚½LogMessageRecordƒIƒuƒWƒFƒNƒg
-     * @param locale ƒƒOo—Í‚Ég—p‚³‚ê‚éƒƒbƒZ[ƒW‚ÌƒƒP[ƒ‹
-     * @param embeds ƒƒOo—Í‚ÌƒƒbƒZ[ƒW‚Ég—p‚³‚ê‚é–„‚ß‚İ•¶š—ñB–„‚ß‚İ‚Ì‚È‚¢ƒƒbƒZ[ƒW‚Ìê‡‚ÍAnullB
-     * @param throwable ƒƒOo—Í‚Ég—p‚³‚ê‚é—áŠOB—áŠOƒƒbƒZ[ƒW‚Å‚È‚¢ê‡‚ÍAnullB
-     * @return ƒƒO‚ÌƒLƒ…[‚É‘}“ü‚·‚éLogEnqueuedRecord
+     * @param messageRecord ãƒ­ã‚°å‡ºåŠ›è¦æ±‚ã®ã‚ã£ãŸLogMessageRecordã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param locale ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã•ã‚Œã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param embeds ãƒ­ã‚°å‡ºåŠ›ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«ä½¿ç”¨ã•ã‚Œã‚‹åŸ‹ã‚è¾¼ã¿æ–‡å­—åˆ—ã€‚åŸ‹ã‚è¾¼ã¿ã®ãªã„ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å ´åˆã¯ã€nullã€‚
+     * @param throwable ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã•ã‚Œã‚‹ä¾‹å¤–ã€‚ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã§ãªã„å ´åˆã¯ã€nullã€‚
+     * @return ãƒ­ã‚°ã®ã‚­ãƒ¥ãƒ¼ã«æŒ¿å…¥ã™ã‚‹LogEnqueuedRecord
      */
     protected LogEnqueuedRecord createLogEnqueuedRecord(
         LogMessageRecord messageRecord,
@@ -1007,13 +1007,13 @@ public class LogService extends ServiceBase
     }
     
     /**
-     * ƒfƒoƒbƒOƒƒO—p‚Ì{@link LogMessageRecord}‚ğ¶¬‚·‚éB<p>
-     * {@link #debug(Object)}A{@link #debug(Object, Throwable)}‚©‚çŒÄ‚Ño‚³‚êA{@link MessageRecordFactory}‚É’è‹`‚³‚ê‚Ä‚¢‚È‚¢ƒƒbƒZ[ƒW—p‚ÌLogMessageRecord‚ğ¶¬‚·‚éB<br>
+     * ãƒ‡ãƒãƒƒã‚°ãƒ­ã‚°ç”¨ã®{@link LogMessageRecord}ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * {@link #debug(Object)}ã€{@link #debug(Object, Throwable)}ã‹ã‚‰å‘¼ã³å‡ºã•ã‚Œã€{@link MessageRecordFactory}ã«å®šç¾©ã•ã‚Œã¦ã„ãªã„ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ç”¨ã®LogMessageRecordã‚’ç”Ÿæˆã™ã‚‹ã€‚<br>
      *
-     * @param category ƒJƒeƒSƒŠ–¼
-     * @param priority —Dæ‡ˆÊ
-     * @param message ƒƒbƒZ[ƒW
-     * @return ƒfƒoƒbƒOƒƒO—p‚ÌLogMessageRecord
+     * @param category ã‚«ãƒ†ã‚´ãƒªå
+     * @param priority å„ªå…ˆé †ä½
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @return ãƒ‡ãƒãƒƒã‚°ãƒ­ã‚°ç”¨ã®LogMessageRecord
      */
     protected LogMessageRecord createDebugLogMessageRecord(
         String category,
@@ -1030,14 +1030,14 @@ public class LogService extends ServiceBase
     }
     
     /**
-     * ƒƒO‚ÌƒLƒ…[‚É‘}“ü‚·‚é{@link LogEnqueuedRecord}‚ğ¶¬‚µ‚ÄƒLƒ…[‚É‘}“ü‚·‚éB<p>
-     * LogEnqueuedRecord‚Ì¶¬‚ÍA{@link #createLogEnqueuedRecord(LogMessageRecord, Locale, String, Throwable)}‚ğŒÄ‚Ño‚µ‚Äs‚¤B<br>
-     * ƒLƒ…[‚Ö‚Ì‘}“ü‚ÍA{@link #enqueue(LogEnqueuedRecord)}‚ğŒÄ‚Ño‚µ‚Äs‚¤B<br>
+     * ãƒ­ã‚°ã®ã‚­ãƒ¥ãƒ¼ã«æŒ¿å…¥ã™ã‚‹{@link LogEnqueuedRecord}ã‚’ç”Ÿæˆã—ã¦ã‚­ãƒ¥ãƒ¼ã«æŒ¿å…¥ã™ã‚‹ã€‚<p>
+     * LogEnqueuedRecordã®ç”Ÿæˆã¯ã€{@link #createLogEnqueuedRecord(LogMessageRecord, Locale, String, Throwable)}ã‚’å‘¼ã³å‡ºã—ã¦è¡Œã†ã€‚<br>
+     * ã‚­ãƒ¥ãƒ¼ã¸ã®æŒ¿å…¥ã¯ã€{@link #enqueue(LogEnqueuedRecord)}ã‚’å‘¼ã³å‡ºã—ã¦è¡Œã†ã€‚<br>
      *
-     * @param messageRecord o—Í‚·‚éLogMessageRecord
-     * @param locale ƒƒOo—Í‚Ég—p‚³‚ê‚éƒƒbƒZ[ƒW‚ÌƒƒP[ƒ‹
-     * @param embed ƒƒOo—Í‚ÌƒƒbƒZ[ƒW‚Ég—p‚³‚ê‚é–„‚ß‚İ•¶š—ñB–„‚ß‚İ‚Ì‚È‚¢ƒƒbƒZ[ƒW‚Ìê‡‚ÍAnullB
-     * @param throwable ƒƒOo—Í‚Ég—p‚³‚ê‚é—áŠOB—áŠOƒƒbƒZ[ƒW‚Å‚È‚¢ê‡‚ÍAnullB
+     * @param messageRecord å‡ºåŠ›ã™ã‚‹LogMessageRecord
+     * @param locale ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã•ã‚Œã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param embed ãƒ­ã‚°å‡ºåŠ›ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«ä½¿ç”¨ã•ã‚Œã‚‹åŸ‹ã‚è¾¼ã¿æ–‡å­—åˆ—ã€‚åŸ‹ã‚è¾¼ã¿ã®ãªã„ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å ´åˆã¯ã€nullã€‚
+     * @param throwable ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã•ã‚Œã‚‹ä¾‹å¤–ã€‚ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã§ãªã„å ´åˆã¯ã€nullã€‚
      */
     protected void write(
         LogMessageRecord messageRecord,
@@ -1058,14 +1058,14 @@ public class LogService extends ServiceBase
     }
     
     /**
-     * ƒƒO‚ÌƒLƒ…[‚É‘}“ü‚·‚é{@link LogEnqueuedRecord}‚ğ¶¬‚µ‚ÄƒLƒ…[‚É‘}“ü‚·‚éB<p>
-     * LogEnqueuedRecord‚Ì¶¬‚ÍA{@link #createLogEnqueuedRecord(LogMessageRecord, Locale, String, Throwable)}‚ğŒÄ‚Ño‚µ‚Äs‚¤B<br>
-     * ƒLƒ…[‚Ö‚Ì‘}“ü‚ÍA{@link #enqueue(LogEnqueuedRecord)}‚ğŒÄ‚Ño‚µ‚Äs‚¤B<br>
+     * ãƒ­ã‚°ã®ã‚­ãƒ¥ãƒ¼ã«æŒ¿å…¥ã™ã‚‹{@link LogEnqueuedRecord}ã‚’ç”Ÿæˆã—ã¦ã‚­ãƒ¥ãƒ¼ã«æŒ¿å…¥ã™ã‚‹ã€‚<p>
+     * LogEnqueuedRecordã®ç”Ÿæˆã¯ã€{@link #createLogEnqueuedRecord(LogMessageRecord, Locale, String, Throwable)}ã‚’å‘¼ã³å‡ºã—ã¦è¡Œã†ã€‚<br>
+     * ã‚­ãƒ¥ãƒ¼ã¸ã®æŒ¿å…¥ã¯ã€{@link #enqueue(LogEnqueuedRecord)}ã‚’å‘¼ã³å‡ºã—ã¦è¡Œã†ã€‚<br>
      *
-     * @param messageRecord o—Í‚·‚éLogMessageRecord
-     * @param locale ƒƒOo—Í‚Ég—p‚³‚ê‚éƒƒbƒZ[ƒW‚ÌƒƒP[ƒ‹
-     * @param embeds ƒƒOo—Í‚ÌƒƒbƒZ[ƒW‚Ég—p‚³‚ê‚é–„‚ß‚İ•¶š—ñB–„‚ß‚İ‚Ì‚È‚¢ƒƒbƒZ[ƒW‚Ìê‡‚ÍAnullB
-     * @param throwable ƒƒOo—Í‚Ég—p‚³‚ê‚é—áŠOB—áŠOƒƒbƒZ[ƒW‚Å‚È‚¢ê‡‚ÍAnullB
+     * @param messageRecord å‡ºåŠ›ã™ã‚‹LogMessageRecord
+     * @param locale ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã•ã‚Œã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param embeds ãƒ­ã‚°å‡ºåŠ›ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«ä½¿ç”¨ã•ã‚Œã‚‹åŸ‹ã‚è¾¼ã¿æ–‡å­—åˆ—ã€‚åŸ‹ã‚è¾¼ã¿ã®ãªã„ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å ´åˆã¯ã€nullã€‚
+     * @param throwable ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã•ã‚Œã‚‹ä¾‹å¤–ã€‚ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã§ãªã„å ´åˆã¯ã€nullã€‚
      */
     protected void write(
         LogMessageRecord messageRecord,
@@ -1083,11 +1083,11 @@ public class LogService extends ServiceBase
     }
     
     /**
-     * ƒƒO‚ÌƒLƒ…[‚É‘}“ü‚·‚é‘Oˆ—‚ğs‚¤B<p>
-     * {@link #FORMAT_DATE_KEY}‚É‘Î‰‚·‚é{@link Date}ƒIƒuƒWƒFƒNƒg‚ğ¶¬‚µ‚ÄA{@link LogEnqueuedRecord#addWritableElement(Object, Object)}‚Å{@link jp.ossc.nimbus.service.writer.WritableElement WritableElement}‚Æ‚µ‚Ä’Ç‰Á‚·‚éB<br>
-     * ‚Ü‚½A{@link #setContextFormatKeys(String[])}‚Åİ’è‚³‚ê‚½ƒL[‚ğg‚Á‚ÄA{@link #setContextServiceName(ServiceName)}‚Åw’è‚³‚ê‚½{@link Context}ƒT[ƒrƒX‚©‚çƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB‚»‚ÌƒIƒuƒWƒFƒNƒg‚ğAƒRƒ“ƒeƒLƒXƒgƒtƒH[ƒ}ƒbƒgî•ñ‚Æ‚µ‚Ä{@link LogEnqueuedRecord#addWritableElement(Object, Object)}‚Å{@link jp.ossc.nimbus.service.writer.WritableElement WritableElement}‚Æ‚µ‚Ä’Ç‰Á‚·‚éB<br>
+     * ãƒ­ã‚°ã®ã‚­ãƒ¥ãƒ¼ã«æŒ¿å…¥ã™ã‚‹å‰å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * {@link #FORMAT_DATE_KEY}ã«å¯¾å¿œã™ã‚‹{@link Date}ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã—ã¦ã€{@link LogEnqueuedRecord#addWritableElement(Object, Object)}ã§{@link jp.ossc.nimbus.service.writer.WritableElement WritableElement}ã¨ã—ã¦è¿½åŠ ã™ã‚‹ã€‚<br>
+     * ã¾ãŸã€{@link #setContextFormatKeys(String[])}ã§è¨­å®šã•ã‚ŒãŸã‚­ãƒ¼ã‚’ä½¿ã£ã¦ã€{@link #setContextServiceName(ServiceName)}ã§æŒ‡å®šã•ã‚ŒãŸ{@link Context}ã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚ãã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã€ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæƒ…å ±ã¨ã—ã¦{@link LogEnqueuedRecord#addWritableElement(Object, Object)}ã§{@link jp.ossc.nimbus.service.writer.WritableElement WritableElement}ã¨ã—ã¦è¿½åŠ ã™ã‚‹ã€‚<br>
      *
-     * @param enqueuedRecord ƒLƒ…[‚É‘}“ü‚·‚éLogEnqueuedRecord
+     * @param enqueuedRecord ã‚­ãƒ¥ãƒ¼ã«æŒ¿å…¥ã™ã‚‹LogEnqueuedRecord
      */
     protected void preEnqueue(LogEnqueuedRecord enqueuedRecord){
         enqueuedRecord.addWritableElement(
@@ -1111,10 +1111,10 @@ public class LogService extends ServiceBase
     }
     
     /**
-     * ƒƒO‚ÌƒLƒ…[‚É‘}“ü‚·‚éB<p>
-     * ƒLƒ…[‘}“ü‘O‚ÉA{@link #preEnqueue(LogEnqueuedRecord)}‚ğŒÄ‚Ño‚·B<br>
+     * ãƒ­ã‚°ã®ã‚­ãƒ¥ãƒ¼ã«æŒ¿å…¥ã™ã‚‹ã€‚<p>
+     * ã‚­ãƒ¥ãƒ¼æŒ¿å…¥å‰ã«ã€{@link #preEnqueue(LogEnqueuedRecord)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      * 
-     * @param enqueuedRecord LogEnqueuedRecordƒIƒuƒWƒFƒNƒg
+     * @param enqueuedRecord LogEnqueuedRecordã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     protected void enqueue(LogEnqueuedRecord enqueuedRecord){
         preEnqueue(enqueuedRecord);
@@ -1122,11 +1122,11 @@ public class LogService extends ServiceBase
     }
     
     /**
-     * ƒƒO‚ÌƒLƒ…[æ‚èo‚µŒã‚Ìˆ—‚ğs‚¤B<p>
-     * {@link LogMessageRecord#makeMessage(Locale, Object[])}‚Åo—ÍƒƒbƒZ[ƒW‚ğ¶¬‚·‚éB¶¬‚µ‚½ƒƒbƒZ[ƒW‚ğ{@link #FORMAT_MESSAGE_KEY}‚É‘Î‰‚·‚éƒƒbƒZ[ƒW‚Æ‚µ‚ÄA{@link LogEnqueuedRecord#addWritableElement(Object, Object)}‚Å{@link jp.ossc.nimbus.service.writer.WritableElement WritableElement}‚Æ‚µ‚Ä’Ç‰Á‚·‚éB<br>
-     * ‚Ü‚½A{@link #FORMAT_CODE_KEY}‚É‘Î‰‚·‚éƒƒbƒZ[ƒWƒR[ƒh‚ğæ“¾‚µ‚ÄA{@link LogEnqueuedRecord#addWritableElement(Object, Object)}‚Å{@link jp.ossc.nimbus.service.writer.WritableElement WritableElement}‚Æ‚µ‚Ä’Ç‰Á‚·‚éB<br>
+     * ãƒ­ã‚°ã®ã‚­ãƒ¥ãƒ¼å–ã‚Šå‡ºã—å¾Œã®å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * {@link LogMessageRecord#makeMessage(Locale, Object[])}ã§å‡ºåŠ›ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç”Ÿæˆã™ã‚‹ã€‚ç”Ÿæˆã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’{@link #FORMAT_MESSAGE_KEY}ã«å¯¾å¿œã™ã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¨ã—ã¦ã€{@link LogEnqueuedRecord#addWritableElement(Object, Object)}ã§{@link jp.ossc.nimbus.service.writer.WritableElement WritableElement}ã¨ã—ã¦è¿½åŠ ã™ã‚‹ã€‚<br>
+     * ã¾ãŸã€{@link #FORMAT_CODE_KEY}ã«å¯¾å¿œã™ã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã—ã¦ã€{@link LogEnqueuedRecord#addWritableElement(Object, Object)}ã§{@link jp.ossc.nimbus.service.writer.WritableElement WritableElement}ã¨ã—ã¦è¿½åŠ ã™ã‚‹ã€‚<br>
      *
-     * @param dequeuedRecord LogEnqueuedRecordƒIƒuƒWƒFƒNƒg
+     * @param dequeuedRecord LogEnqueuedRecordã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     protected void postDequeue(LogEnqueuedRecord dequeuedRecord){
         final LogMessageRecord messageRecord
@@ -1152,10 +1152,10 @@ public class LogService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½{@link LogMessageRecord}‚ªo—Í‚³‚ê‚é{@link LogCategory}‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸ{@link LogMessageRecord}ãŒå‡ºåŠ›ã•ã‚Œã‚‹{@link LogCategory}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @param messageRecord LogMessageRecord
-     * @return o—Í‚³‚ê‚éLogCategory‚Ì”z—ñ
+     * @return å‡ºåŠ›ã•ã‚Œã‚‹LogCategoryã®é…åˆ—
      */
     protected LogCategory[] getWriteCategories(LogMessageRecord messageRecord){
         final List result = new ArrayList();
@@ -1173,11 +1173,11 @@ public class LogService extends ServiceBase
     }
     
     /**
-     * ƒLƒ…[æ‚èo‚µŒã‚ÉAƒJƒeƒSƒŠ–ˆ‚Ì{@link WritableRecord}‚ğ¶¬‚·‚éB<p>
-     * {@link #dequeue(LogEnqueuedRecord)}‚©‚çŒÄ‚Ño‚³‚ê‚éB<br>
+     * ã‚­ãƒ¥ãƒ¼å–ã‚Šå‡ºã—å¾Œã«ã€ã‚«ãƒ†ã‚´ãƒªæ¯ã®{@link WritableRecord}ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * {@link #dequeue(LogEnqueuedRecord)}ã‹ã‚‰å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param dequeuedRecord ƒLƒ…[‚©‚çæ‚èo‚µ‚½LogEnqueuedRecordƒIƒuƒWƒFƒNƒg
-     * @param category LogCategoryƒIƒuƒWƒFƒNƒg
+     * @param dequeuedRecord ã‚­ãƒ¥ãƒ¼ã‹ã‚‰å–ã‚Šå‡ºã—ãŸLogEnqueuedRecordã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param category LogCategoryã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     protected Map createWritableElementMap(
         LogEnqueuedRecord dequeuedRecord,
@@ -1197,11 +1197,11 @@ public class LogService extends ServiceBase
     }
     
     /**
-     * ƒLƒ…[‚©‚çæ‚èo‚³‚ê‚½{@link LogEnqueuedRecord}‚©‚çƒJƒeƒSƒŠ–ˆ‚É{@link WritableRecord}‚ğ¶¬‚µ‚Ä{@link MessageWriter}‚Éo—Í‚ğˆË—Š‚·‚éB<p>
-     * {@link #postDequeue(LogEnqueuedRecord)}‚ğŒÄ‚Ño‚µ‚ÄAƒLƒ…[æ‚èo‚µŒã‚Ìˆ—‚ğs‚¤B<br>
-     * ‚Ü‚½A{@link #getWriteCategories(LogMessageRecord)}‚Åo—Í‚·‚×‚«{@link LogCategory}‚ğæ“¾‚µ‚ÄAƒJƒeƒSƒŠ–ˆ‚É{@link #createWritableElementMap(LogEnqueuedRecord, LogCategory)}‚ÅMap‚ğ¶¬‚·‚éB‚»‚ÌMap‚ğƒJƒeƒSƒŠ‚Ì{@link LogCategory#write(int, Map)}‚ğg‚Á‚ÄAo—Í‚ğˆË—Š‚·‚éB<br>
+     * ã‚­ãƒ¥ãƒ¼ã‹ã‚‰å–ã‚Šå‡ºã•ã‚ŒãŸ{@link LogEnqueuedRecord}ã‹ã‚‰ã‚«ãƒ†ã‚´ãƒªæ¯ã«{@link WritableRecord}ã‚’ç”Ÿæˆã—ã¦{@link MessageWriter}ã«å‡ºåŠ›ã‚’ä¾é ¼ã™ã‚‹ã€‚<p>
+     * {@link #postDequeue(LogEnqueuedRecord)}ã‚’å‘¼ã³å‡ºã—ã¦ã€ã‚­ãƒ¥ãƒ¼å–ã‚Šå‡ºã—å¾Œã®å‡¦ç†ã‚’è¡Œã†ã€‚<br>
+     * ã¾ãŸã€{@link #getWriteCategories(LogMessageRecord)}ã§å‡ºåŠ›ã™ã¹ã{@link LogCategory}ã‚’å–å¾—ã—ã¦ã€ã‚«ãƒ†ã‚´ãƒªæ¯ã«{@link #createWritableElementMap(LogEnqueuedRecord, LogCategory)}ã§Mapã‚’ç”Ÿæˆã™ã‚‹ã€‚ãã®Mapã‚’ã‚«ãƒ†ã‚´ãƒªã®{@link LogCategory#write(int, Map)}ã‚’ä½¿ã£ã¦ã€å‡ºåŠ›ã‚’ä¾é ¼ã™ã‚‹ã€‚<br>
      *
-     * @param dequeuedRecord ƒLƒ…[‚©‚çæ‚èo‚µ‚½LogEnqueuedRecordƒIƒuƒWƒFƒNƒg
+     * @param dequeuedRecord ã‚­ãƒ¥ãƒ¼ã‹ã‚‰å–ã‚Šå‡ºã—ãŸLogEnqueuedRecordã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     protected void dequeue(LogEnqueuedRecord dequeuedRecord){
         postDequeue(dequeuedRecord);
@@ -1216,63 +1216,63 @@ public class LogService extends ServiceBase
                     createWritableElementMap(dequeuedRecord, category)
                 );
             }catch(MessageWriteException e){
-                // –³‹‚·‚é
+                // ç„¡è¦–ã™ã‚‹
             }
         }
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ªŠJn‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒé–‹å§‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onStart() {
         return true;
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ª’â~‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒåœæ­¢ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onStop() {
         return true;
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ª’†’f‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒä¸­æ–­ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onSuspend() {
         return true;
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ªÄŠJ‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒå†é–‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onResume() {
         return true;
     }
     
     /**
-     * ƒLƒ…[‚©‚ç‚P‚Âæ‚èo‚µ‚Ä•Ô‚·B<p>
+     * ã‚­ãƒ¥ãƒ¼ã‹ã‚‰ï¼‘ã¤å–ã‚Šå‡ºã—ã¦è¿”ã™ã€‚<p>
      * 
-     * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
-     * @return {@link LogEnqueuedRecord}ƒIƒuƒWƒFƒNƒg
+     * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return {@link LogEnqueuedRecord}ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object provide(DaemonControl ctrl){
         return queue.get(5000);
     }
     
     /**
-     * ˆø”dequeued‚Å“n‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğÁ”ï‚·‚éB<p>
-     * ˆø”dequeued‚Å“n‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğ{@link LogEnqueuedRecord}‚ÉƒLƒƒƒXƒg‚µ‚Ä{@link #dequeue(LogEnqueuedRecord)}‚ğŒÄ‚Ño‚·B<br>
+     * å¼•æ•°dequeuedã§æ¸¡ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ¶ˆè²»ã™ã‚‹ã€‚<p>
+     * å¼•æ•°dequeuedã§æ¸¡ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’{@link LogEnqueuedRecord}ã«ã‚­ãƒ£ã‚¹ãƒˆã—ã¦{@link #dequeue(LogEnqueuedRecord)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param dequeued ƒLƒ…[‚©‚çæ‚èo‚³‚ê‚½ƒIƒuƒWƒFƒNƒg
-     * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
+     * @param dequeued ã‚­ãƒ¥ãƒ¼ã‹ã‚‰å–ã‚Šå‡ºã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void consume(Object dequeued, DaemonControl ctrl){
         if(dequeued == null){
@@ -1286,7 +1286,7 @@ public class LogService extends ServiceBase
     }
     
     /**
-     * ƒLƒ…[‚Ì’†g‚ğ“f‚«o‚·B<p>
+     * ã‚­ãƒ¥ãƒ¼ã®ä¸­èº«ã‚’åãå‡ºã™ã€‚<p>
      */
     public void garbage(){
         if(queue != null){
@@ -1296,7 +1296,7 @@ public class LogService extends ServiceBase
         }
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void debug(Object msg){
         final LogMessageRecord messageRecord = createDebugLogMessageRecord(
             DEBUG_METHOD_CATEGORY,
@@ -1309,7 +1309,7 @@ public class LogService extends ServiceBase
         write(messageRecord, null, (String)null, null);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void debug(Object msg, Throwable oException){
         final LogMessageRecord messageRecord = createDebugLogMessageRecord(
             DEBUG_METHOD_CATEGORY,
@@ -1322,52 +1322,52 @@ public class LogService extends ServiceBase
         write(messageRecord, null, (String)null, oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, Object embed){
         write(Locale.getDefault(), logCode, embed);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, byte embed){
         write(Locale.getDefault(), logCode, embed);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, short embed){
         write(Locale.getDefault(), logCode, embed);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, char embed){
         write(Locale.getDefault(), logCode, embed);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, int embed){
         write(Locale.getDefault(), logCode, embed);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, long embed){
         write(Locale.getDefault(), logCode, embed);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, float embed){
         write(Locale.getDefault(), logCode, embed);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, double embed){
         write(Locale.getDefault(), logCode, embed);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, boolean embed){
         write(Locale.getDefault(), logCode, embed);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(Locale lo, String logCode, Object embed){
         final LogMessageRecord  messageRecord
              = (LogMessageRecord)messageFactory.findMessageRecord(logCode);
@@ -1382,7 +1382,7 @@ public class LogService extends ServiceBase
         );
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(Locale lo, String logCode, byte embed){
         final LogMessageRecord  messageRecord
              = (LogMessageRecord)messageFactory.findMessageRecord(logCode);
@@ -1392,7 +1392,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, Byte.toString(embed), null);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(Locale lo, String logCode, short embed){
         final LogMessageRecord  messageRecord
              = (LogMessageRecord)messageFactory.findMessageRecord(logCode);
@@ -1402,7 +1402,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, Short.toString(embed), null);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(Locale lo, String logCode, char embed){
         final LogMessageRecord  messageRecord
              = (LogMessageRecord)messageFactory.findMessageRecord(logCode);
@@ -1412,7 +1412,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, new Character(embed).toString(), null);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(Locale lo, String logCode, int embed){
         final LogMessageRecord  messageRecord
              = (LogMessageRecord)messageFactory.findMessageRecord(logCode);
@@ -1422,7 +1422,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, Integer.toString(embed), null);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(Locale lo, String logCode, long embed){
         final LogMessageRecord  messageRecord
              = (LogMessageRecord)messageFactory.findMessageRecord(logCode);
@@ -1432,7 +1432,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, Long.toString(embed), null);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(Locale lo, String logCode, float embed){
         final LogMessageRecord  messageRecord
              = (LogMessageRecord)messageFactory.findMessageRecord(logCode);
@@ -1442,7 +1442,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, Float.toString(embed), null);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(Locale lo, String logCode, double embed){
         final LogMessageRecord  messageRecord
              = (LogMessageRecord)messageFactory.findMessageRecord(logCode);
@@ -1452,7 +1452,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, Double.toString(embed), null);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(Locale lo, String logCode, boolean embed){
         final LogMessageRecord  messageRecord
              = (LogMessageRecord)messageFactory.findMessageRecord(logCode);
@@ -1462,56 +1462,56 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, Boolean.toString(embed), null);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, Object[] embeds) {
         write(Locale.getDefault(), logCode, embeds);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, byte[] embeds){
         write(Locale.getDefault(), logCode, embeds);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, short[] embeds){
         write(Locale.getDefault(), logCode, embeds);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, char[] embeds){
         write(Locale.getDefault(), logCode, embeds);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, int[] embeds){
         write(Locale.getDefault(), logCode, embeds);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, long[] embeds){
         write(Locale.getDefault(), logCode, embeds);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, float[] embeds){
         write(Locale.getDefault(), logCode, embeds);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, double[] embeds){
         write(Locale.getDefault(), logCode, embeds);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, boolean[] embeds){
         write(Locale.getDefault(), logCode, embeds);
     }
     
     /**
-     * Object”z—ñ‚ğString”z—ñ‚É•ÏŠ·‚·‚éB<p>
+     * Objecté…åˆ—ã‚’Stringé…åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param vals Object”z—ñ
-     * @return String”z—ñ
+     * @param vals Objecté…åˆ—
+     * @return Stringé…åˆ—
      */
     protected static String[] convertStringArray(Object[] vals){
         String[] strings = null;
@@ -1527,10 +1527,10 @@ public class LogService extends ServiceBase
     }
     
     /**
-     * byte”z—ñ‚ğString”z—ñ‚É•ÏŠ·‚·‚éB<p>
+     * byteé…åˆ—ã‚’Stringé…åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param vals byte”z—ñ
-     * @return String”z—ñ
+     * @param vals byteé…åˆ—
+     * @return Stringé…åˆ—
      */
     protected static String[] convertStringArray(byte[] vals){
         String[] strings = null;
@@ -1544,10 +1544,10 @@ public class LogService extends ServiceBase
     }
     
     /**
-     * short”z—ñ‚ğString”z—ñ‚É•ÏŠ·‚·‚éB<p>
+     * shorté…åˆ—ã‚’Stringé…åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param vals short”z—ñ
-     * @return String”z—ñ
+     * @param vals shorté…åˆ—
+     * @return Stringé…åˆ—
      */
     protected static String[] convertStringArray(short[] vals){
         String[] strings = null;
@@ -1561,10 +1561,10 @@ public class LogService extends ServiceBase
     }
     
     /**
-     * char”z—ñ‚ğString”z—ñ‚É•ÏŠ·‚·‚éB<p>
+     * charé…åˆ—ã‚’Stringé…åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param vals char”z—ñ
-     * @return String”z—ñ
+     * @param vals charé…åˆ—
+     * @return Stringé…åˆ—
      */
     protected static String[] convertStringArray(char[] vals){
         String[] strings = null;
@@ -1578,10 +1578,10 @@ public class LogService extends ServiceBase
     }
     
     /**
-     * int”z—ñ‚ğString”z—ñ‚É•ÏŠ·‚·‚éB<p>
+     * inté…åˆ—ã‚’Stringé…åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param vals int”z—ñ
-     * @return String”z—ñ
+     * @param vals inté…åˆ—
+     * @return Stringé…åˆ—
      */
     protected static String[] convertStringArray(int[] vals){
         String[] strings = null;
@@ -1595,10 +1595,10 @@ public class LogService extends ServiceBase
     }
     
     /**
-     * long”z—ñ‚ğString”z—ñ‚É•ÏŠ·‚·‚éB<p>
+     * longé…åˆ—ã‚’Stringé…åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param vals long”z—ñ
-     * @return String”z—ñ
+     * @param vals longé…åˆ—
+     * @return Stringé…åˆ—
      */
     protected static String[] convertStringArray(long[] vals){
         String[] strings = null;
@@ -1612,10 +1612,10 @@ public class LogService extends ServiceBase
     }
     
     /**
-     * float”z—ñ‚ğString”z—ñ‚É•ÏŠ·‚·‚éB<p>
+     * floaté…åˆ—ã‚’Stringé…åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param vals float”z—ñ
-     * @return String”z—ñ
+     * @param vals floaté…åˆ—
+     * @return Stringé…åˆ—
      */
     protected static String[] convertStringArray(float[] vals){
         String[] strings = null;
@@ -1629,10 +1629,10 @@ public class LogService extends ServiceBase
     }
     
     /**
-     * double”z—ñ‚ğString”z—ñ‚É•ÏŠ·‚·‚éB<p>
+     * doubleé…åˆ—ã‚’Stringé…åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param vals double”z—ñ
-     * @return String”z—ñ
+     * @param vals doubleé…åˆ—
+     * @return Stringé…åˆ—
      */
     protected static String[] convertStringArray(double[] vals){
         String[] strings = null;
@@ -1646,10 +1646,10 @@ public class LogService extends ServiceBase
     }
     
     /**
-     * boolean”z—ñ‚ğString”z—ñ‚É•ÏŠ·‚·‚éB<p>
+     * booleané…åˆ—ã‚’Stringé…åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param vals boolean”z—ñ
-     * @return String”z—ñ
+     * @param vals booleané…åˆ—
+     * @return Stringé…åˆ—
      */
     protected static String[] convertStringArray(boolean[] vals){
         String[] strings = null;
@@ -1662,7 +1662,7 @@ public class LogService extends ServiceBase
         return strings;
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(Locale lo, String logCode, Object[] embeds){
         final LogMessageRecord  messageRecord
              = (LogMessageRecord)messageFactory.findMessageRecord(logCode);
@@ -1672,7 +1672,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, convertStringArray(embeds), null);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(Locale lo, String logCode, byte[] embeds){
         final LogMessageRecord  messageRecord
              = (LogMessageRecord)messageFactory.findMessageRecord(logCode);
@@ -1682,7 +1682,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, convertStringArray(embeds), null);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(Locale lo,String logCode,short[] embeds){
         final LogMessageRecord  messageRecord
              = (LogMessageRecord)messageFactory.findMessageRecord(logCode);
@@ -1692,7 +1692,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, convertStringArray(embeds), null);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(Locale lo,String logCode,char[] embeds){
         final LogMessageRecord  messageRecord
              = (LogMessageRecord)messageFactory.findMessageRecord(logCode);
@@ -1702,7 +1702,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, convertStringArray(embeds), null);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(Locale lo,String logCode,int[] embeds){
         final LogMessageRecord  messageRecord
              = (LogMessageRecord)messageFactory.findMessageRecord(logCode);
@@ -1712,7 +1712,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, convertStringArray(embeds), null);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(Locale lo,String logCode,long[] embeds){
         final LogMessageRecord  messageRecord
              = (LogMessageRecord)messageFactory.findMessageRecord(logCode);
@@ -1722,7 +1722,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, convertStringArray(embeds), null);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(Locale lo,String logCode,float[] embeds){
         final LogMessageRecord  messageRecord
              = (LogMessageRecord)messageFactory.findMessageRecord(logCode);
@@ -1732,7 +1732,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, convertStringArray(embeds), null);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(Locale lo, String logCode, double[] embeds){
         final LogMessageRecord  messageRecord
              = (LogMessageRecord)messageFactory.findMessageRecord(logCode);
@@ -1742,7 +1742,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, convertStringArray(embeds), null);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(Locale lo, String logCode, boolean[] embeds){
         final LogMessageRecord  messageRecord
              = (LogMessageRecord)messageFactory.findMessageRecord(logCode);
@@ -1752,12 +1752,12 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, convertStringArray(embeds), null);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode){
         write(Locale.getDefault(), logCode);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(Locale lo, String logCode){
         final LogMessageRecord  messageRecord
              = (LogMessageRecord)messageFactory.findMessageRecord(logCode);
@@ -1767,12 +1767,12 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, (String)null, null);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, Throwable oException) {
         write(Locale.getDefault(), logCode, oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(Locale lo, String logCode, Throwable oException){
         final LogMessageRecord  messageRecord
              = (LogMessageRecord)messageFactory.findMessageRecord(logCode);
@@ -1782,52 +1782,52 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, (String)null, oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, Object embed, Throwable oException){
         write(Locale.getDefault(), logCode, embed, oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, byte embed, Throwable oException){
         write(Locale.getDefault(), logCode, embed, oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, short embed, Throwable oException){
         write(Locale.getDefault(), logCode, embed, oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, char embed, Throwable oException){
         write(Locale.getDefault(), logCode, embed, oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, int embed, Throwable oException){
         write(Locale.getDefault(), logCode, embed, oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, long embed, Throwable oException){
         write(Locale.getDefault(), logCode, embed, oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, float embed, Throwable oException){
         write(Locale.getDefault(), logCode, embed, oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, double embed, Throwable oException){
         write(Locale.getDefault(), logCode, embed, oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, boolean embed, Throwable oException){
         write(Locale.getDefault(), logCode, embed, oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(
         Locale lo,
         String logCode,
@@ -1847,7 +1847,7 @@ public class LogService extends ServiceBase
         );
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(
         Locale lo,
         String logCode,
@@ -1862,7 +1862,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, Byte.toString(embed), oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(
         Locale lo,
         String logCode,
@@ -1877,7 +1877,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, Short.toString(embed), oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(
         Locale lo,
         String logCode,
@@ -1892,7 +1892,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, new Character(embed).toString(), oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(
         Locale lo,
         String logCode,
@@ -1907,7 +1907,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, Integer.toString(embed), oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(
         Locale lo,
         String logCode,
@@ -1922,7 +1922,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, Long.toString(embed), oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(
         Locale lo,
         String logCode,
@@ -1937,7 +1937,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, Float.toString(embed), oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(
         Locale lo,
         String logCode,
@@ -1952,7 +1952,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, Double.toString(embed), oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(
         Locale lo,
         String logCode,
@@ -1967,52 +1967,52 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, Boolean.toString(embed), oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, Object[] embeds, Throwable oException) {
         write(Locale.getDefault(), logCode, embeds, oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, byte[] embeds, Throwable oException){
         write(Locale.getDefault(), logCode, embeds, oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, short[] embeds, Throwable oException){
         write(Locale.getDefault(), logCode, embeds, oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, char[] embeds, Throwable oException){
         write(Locale.getDefault(), logCode, embeds, oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, int[] embeds, Throwable oException){
         write(Locale.getDefault(), logCode, embeds, oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, long[] embeds, Throwable oException){
         write(Locale.getDefault(), logCode, embeds, oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, float[] embeds, Throwable oException){
         write(Locale.getDefault(), logCode, embeds, oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, double[] embeds, Throwable oException){
         write(Locale.getDefault(), logCode, embeds, oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(String logCode, boolean[] embeds, Throwable oException){
         write(Locale.getDefault(), logCode, embeds, oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(
         Locale lo,
         String logCode,
@@ -2027,7 +2027,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, convertStringArray(embeds), oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(
         Locale lo,
         String logCode,
@@ -2042,7 +2042,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, convertStringArray(embeds), oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(
         Locale lo,
         String logCode,
@@ -2057,7 +2057,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, convertStringArray(embeds), oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(
         Locale lo,
         String logCode,
@@ -2072,7 +2072,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, convertStringArray(embeds), oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(
         Locale lo,
         String logCode,
@@ -2087,7 +2087,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, convertStringArray(embeds), oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(
         Locale lo,
         String logCode,
@@ -2102,7 +2102,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, convertStringArray(embeds), oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(
         Locale lo,
         String logCode,
@@ -2117,7 +2117,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, convertStringArray(embeds), oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(
         Locale lo,
         String logCode,
@@ -2132,7 +2132,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, convertStringArray(embeds), oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(
         Locale lo,
         String logCode,
@@ -2147,19 +2147,19 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, convertStringArray(embeds), oException);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(AppException e){
         write(Locale.getDefault(), e);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public void write(Locale lo, AppException e) {
         final MessageRecord  tmp = (MessageRecord)e.getMessageRecord();
         LogMessageRecord  messageRecord = null;
         if(tmp instanceof LogMessageRecord){
             messageRecord = (LogMessageRecord)tmp;
         }else{
-            // TODO ‚Ç‚¤‚·‚éH
+            // TODO ã©ã†ã™ã‚‹ï¼Ÿ
         }
         if(messageRecord == null || !isWrite(messageRecord)){
             return;
@@ -2167,7 +2167,7 @@ public class LogService extends ServiceBase
         write(messageRecord, lo, (String)null, e);
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public boolean isWrite(String logCode){
         final LogMessageRecord  messageRecord
              = (LogMessageRecord)messageFactory.findMessageRecord(logCode);
@@ -2177,16 +2177,16 @@ public class LogService extends ServiceBase
         return true;
     }
     
-    // Logger‚ÌJavaDoc
+    // Loggerã®JavaDoc
     public boolean isDebugWrite(){
         return isDebugEnabled;
     }
     
     /**
-     * —áŠO‚ÌƒXƒ^ƒbƒNƒgƒŒ[ƒX•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ä¾‹å¤–ã®ã‚¹ã‚¿ãƒƒã‚¯ãƒˆãƒ¬ãƒ¼ã‚¹æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param e —áŠO
-     * @return ƒXƒ^ƒbƒNƒgƒŒ[ƒX•¶š—ñ
+     * @param e ä¾‹å¤–
+     * @return ã‚¹ã‚¿ãƒƒã‚¯ãƒˆãƒ¬ãƒ¼ã‚¹æ–‡å­—åˆ—
      */
     protected static String getStackTraceString(Throwable e){
         final StringBuilder buf = new StringBuilder();
@@ -2222,7 +2222,7 @@ public class LogService extends ServiceBase
         Throwable cause = null;
         String thClassName = th.getClass().getName();
         if(thClassName.equals(SERVLET_EXCEPTION_NAME)){
-            // —áŠO‚ªServletException‚Ìê‡‚ÍAƒ‹[ƒg‚ÌŒ´ˆö‚ğæ“¾
+            // ä¾‹å¤–ãŒServletExceptionã®å ´åˆã¯ã€ãƒ«ãƒ¼ãƒˆã®åŸå› ã‚’å–å¾—
             try{
                 cause = (Throwable)th.getClass()
                     .getMethod(GET_ROOT_CAUSE_METHOD, (Class[])null).invoke(th, (Object[])null);
@@ -2231,7 +2231,7 @@ public class LogService extends ServiceBase
             }catch(java.lang.reflect.InvocationTargetException e){
             }
         }else if(thClassName.equals(JMS_EXCEPTION_NAME)){
-            // —áŠO‚ªJMSException‚Ìê‡‚ÍAƒŠƒ“ƒN—áŠO‚ğæ“¾
+            // ä¾‹å¤–ãŒJMSExceptionã®å ´åˆã¯ã€ãƒªãƒ³ã‚¯ä¾‹å¤–ã‚’å–å¾—
             try{
                 cause = (Exception)th.getClass()
                     .getMethod(GET_LINKED_EXCEPTION_METHOD, (Class[])null).invoke(th, (Object[])null);
@@ -2246,10 +2246,10 @@ public class LogService extends ServiceBase
     }
     
     /**
-     * w’èƒJƒeƒSƒŠ‚Ì—Dæ‡ˆÊ”ÍˆÍ‚Ì—LŒø/–³Œø‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã‚«ãƒ†ã‚´ãƒªã®å„ªå…ˆé †ä½ç¯„å›²ã®æœ‰åŠ¹/ç„¡åŠ¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param categoryName ƒJƒeƒSƒŠ–¼
-     * @param isEnabled —LŒø‚É‚·‚éê‡ true
+     * @param categoryName ã‚«ãƒ†ã‚´ãƒªå
+     * @param isEnabled æœ‰åŠ¹ã«ã™ã‚‹å ´åˆ true
      */
     protected void setEnabled(
         String categoryName,
@@ -2263,10 +2263,10 @@ public class LogService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½ƒJƒeƒSƒŠ‚Ì—Dæ‡ˆÊ”ÍˆÍ‚ª—LŒø‚©–³Œø‚©‚ğ’²‚×‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚«ãƒ†ã‚´ãƒªã®å„ªå…ˆé †ä½ç¯„å›²ãŒæœ‰åŠ¹ã‹ç„¡åŠ¹ã‹ã‚’èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @param categoryName ƒJƒeƒSƒŠ–¼
-     * @param defaultEnabled ƒJƒeƒSƒŠ‚ª‘¶İ‚µ‚È‚¢ê‡‚Ì–ß‚è’l
+     * @param categoryName ã‚«ãƒ†ã‚´ãƒªå
+     * @param defaultEnabled ã‚«ãƒ†ã‚´ãƒªãŒå­˜åœ¨ã—ãªã„å ´åˆã®æˆ»ã‚Šå€¤
      */
     protected boolean isEnabled(
         String categoryName,
@@ -2279,7 +2279,7 @@ public class LogService extends ServiceBase
         return category.isEnabled();
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setDebugEnabled(boolean isEnabled){
         isDebugEnabled = isEnabled;
         setEnabled(
@@ -2288,7 +2288,7 @@ public class LogService extends ServiceBase
         );
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public boolean isDebugEnabled(){
         return isEnabled(
             DEBUG_METHOD_CATEGORY,
@@ -2296,7 +2296,7 @@ public class LogService extends ServiceBase
         );
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setSystemDebugEnabled(boolean isEnabled){
         isSystemDebugEnabled = isEnabled;
         setEnabled(
@@ -2305,7 +2305,7 @@ public class LogService extends ServiceBase
         );
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public boolean isSystemDebugEnabled(){
         return isEnabled(
             SYSTEM_DEBUG_CATEGORY,
@@ -2313,7 +2313,7 @@ public class LogService extends ServiceBase
         );
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setSystemInfoEnabled(boolean isEnabled){
         isSystemInfoEnabled = isEnabled;
         setEnabled(
@@ -2322,7 +2322,7 @@ public class LogService extends ServiceBase
         );
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public boolean isSystemInfoEnabled(){
         return isEnabled(
             SYSTEM_INFO_CATEGORY,
@@ -2330,7 +2330,7 @@ public class LogService extends ServiceBase
         );
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setSystemWarnEnabled(boolean isEnabled){
         isSystemWarnEnabled = isEnabled;
         setEnabled(
@@ -2339,7 +2339,7 @@ public class LogService extends ServiceBase
         );
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public boolean isSystemWarnEnabled(){
         return isEnabled(
             SYSTEM_WARN_CATEGORY,
@@ -2347,7 +2347,7 @@ public class LogService extends ServiceBase
         );
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setSystemErrorEnabled(boolean isEnabled){
         isSystemErrorEnabled = isEnabled;
         setEnabled(
@@ -2356,7 +2356,7 @@ public class LogService extends ServiceBase
         );
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public boolean isSystemErrorEnabled(){
         return isEnabled(
             SYSTEM_ERROR_CATEGORY,
@@ -2364,7 +2364,7 @@ public class LogService extends ServiceBase
         );
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setSystemFatalEnabled(boolean isEnabled){
         isSystemFatalEnabled = isEnabled;
         setEnabled(
@@ -2373,7 +2373,7 @@ public class LogService extends ServiceBase
         );
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public boolean isSystemFatalEnabled(){
         return isEnabled(
             SYSTEM_FATAL_CATEGORY,
@@ -2381,139 +2381,139 @@ public class LogService extends ServiceBase
         );
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setDebugMessageWriterServiceName(ServiceName name){
         debugMessageWriterServiceName = name;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public ServiceName getDebugMessageWriterServiceName(){
         return debugMessageWriterServiceName;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setSystemDebugMessageWriterServiceName(ServiceName name){
         systemDebugMessageWriterServiceName = name;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public ServiceName getSystemDebugMessageWriterServiceName(){
         return systemDebugMessageWriterServiceName;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setSystemInfoMessageWriterServiceName(ServiceName name){
         systemInfoMessageWriterServiceName = name;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public ServiceName getSystemInfoMessageWriterServiceName(){
         return systemInfoMessageWriterServiceName;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setSystemWarnMessageWriterServiceName(ServiceName name){
         systemWarnMessageWriterServiceName = name;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public ServiceName getSystemWarnMessageWriterServiceName(){
         return systemWarnMessageWriterServiceName;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setSystemErrorMessageWriterServiceName(ServiceName name){
         systemErrorMessageWriterServiceName = name;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public ServiceName getSystemErrorMessageWriterServiceName(){
         return systemErrorMessageWriterServiceName;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setSystemFatalMessageWriterServiceName(ServiceName name){
         systemFatalMessageWriterServiceName = name;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public ServiceName getSystemFatalMessageWriterServiceName(){
         return systemFatalMessageWriterServiceName;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setDebugWritableRecordFactoryServiceName(
         ServiceName name
     ){
         debugRecordFactoryServiceName = name;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public ServiceName getDebugWritableRecordFactoryServiceName(){
         return debugRecordFactoryServiceName;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setSystemDebugWritableRecordFactoryServiceName(
         ServiceName name
     ){
         systemDebugRecordFactoryServiceName = name;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public ServiceName getSystemDebugWritableRecordFactoryServiceName(){
         return systemDebugRecordFactoryServiceName;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setSystemInfoWritableRecordFactoryServiceName(ServiceName name){
         systemInfoRecordFactoryServiceName = name;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public ServiceName getSystemInfoWritableRecordFactoryServiceName(){
         return systemInfoRecordFactoryServiceName;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setSystemWarnWritableRecordFactoryServiceName(ServiceName name){
         systemWarnRecordFactoryServiceName = name;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public ServiceName getSystemWarnWritableRecordFactoryServiceName(){
         return systemWarnRecordFactoryServiceName;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setSystemErrorWritableRecordFactoryServiceName(
         ServiceName name
     ){
         systemErrorRecordFactoryServiceName = name;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public ServiceName getSystemErrorWritableRecordFactoryServiceName(){
         return systemErrorRecordFactoryServiceName;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setSystemFatalWritableRecordFactoryServiceName(
         ServiceName name
     ){
         systemFatalRecordFactoryServiceName = name;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public ServiceName getSystemFatalWritableRecordFactoryServiceName(){
         return systemFatalRecordFactoryServiceName;
     }
     
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public void setDaemon(boolean isDaemon){
         this.isDaemon = isDaemon;
     }
-    // LogServiceMBean‚ÌJavaDoc
+    // LogServiceMBeanã®JavaDoc
     public boolean isDaemon(){
         return isDaemon;
     }

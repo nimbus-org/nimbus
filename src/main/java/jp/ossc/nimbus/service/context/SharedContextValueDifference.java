@@ -32,16 +32,16 @@
 package jp.ossc.nimbus.service.context;
 
 /**
- * ‹¤—LƒRƒ“ƒeƒLƒXƒg’l·•ªî•ñB<p>
+ * å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆå€¤å·®åˆ†æƒ…å ±ã€‚<p>
  *
  * @author M.Takata
  */
 public interface SharedContextValueDifference{
     
     /**
-     * XVƒo[ƒWƒ‡ƒ“‚ğæ“¾‚·‚éB<p>
+     * æ›´æ–°ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return XVƒo[ƒWƒ‡ƒ“
+     * @return æ›´æ–°ãƒãƒ¼ã‚¸ãƒ§ãƒ³
      */
     public int getUpdateVersion();
     

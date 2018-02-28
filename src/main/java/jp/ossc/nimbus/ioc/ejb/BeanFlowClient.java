@@ -29,8 +29,8 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.ioc.ejb;
 
 import jp.ossc.nimbus.ioc.Command;
@@ -42,27 +42,27 @@ import jp.ossc.nimbus.service.aop.InterceptorChainFactory;
 import jp.ossc.nimbus.service.aop.InvocationContext;
 
 /**
- * SLSBCommand‚Ìƒr[ƒ“ƒtƒ[ŒÄ‚Ño‚µƒƒWƒbƒN<p>
+ * SLSBCommandã®ãƒ“ãƒ¼ãƒ³ãƒ•ãƒ­ãƒ¼å‘¼ã³å‡ºã—ãƒ­ã‚¸ãƒƒã‚¯<p>
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
  */
 public abstract class BeanFlowClient {
-	/** ƒƒOƒT[ƒrƒX */
+	/** ãƒ­ã‚°ã‚µãƒ¼ãƒ“ã‚¹ */
 	private Logger mLogger = null;
-	/** ƒCƒ“ƒ^[ƒZƒvƒ^[ÀsƒNƒ‰ƒXƒtƒ@ƒNƒgƒŠ[ */
+	/** ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼å®Ÿè¡Œã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ */
 	private InterceptorChainInvokerFactory mIciFactory = null;
 	private InterceptorChainFactory mIcFactory = null;
-	/** Beanƒtƒ[‚Ìƒtƒ@ƒNƒgƒŠ[ */
+	/** Beanãƒ•ãƒ­ãƒ¼ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ */
 	private BeanFlowInvokerFactory mBfFactory = null ;
 	/**
-	 * @return bfFactory ‚ğ–ß‚µ‚Ü‚·B
+	 * @return bfFactory ã‚’æˆ»ã—ã¾ã™ã€‚
 	 */
 	protected BeanFlowInvokerFactory getBfFactory() {
 		return mBfFactory;
 	}
 	/**
-	 * @return icFactory ‚ğ–ß‚µ‚Ü‚·B
+	 * @return icFactory ã‚’æˆ»ã—ã¾ã™ã€‚
 	 */
 	protected InterceptorChainInvokerFactory getIciFactory() {
 		return mIciFactory;
@@ -71,12 +71,12 @@ public abstract class BeanFlowClient {
 		return mIcFactory;
 	}
 	/**
-	 * @return logger ‚ğ–ß‚µ‚Ü‚·B
+	 * @return logger ã‚’æˆ»ã—ã¾ã™ã€‚
 	 */
 	protected Logger getLogger() {
 		return mLogger;
 	}
-	/** ƒRƒ“ƒeƒLƒXƒg */
+	/** ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ */
 	//private jp.ossc.nimbus.service.context.Context mContext ;
 	//protected static final String C_SAVE_FLOW_KEY = "key";
 
@@ -93,9 +93,9 @@ public abstract class BeanFlowClient {
 		mBfFactory = bfFactory ;
 	}
 	/**
-	 * BeanFlow‚ğÀs‚·‚éB
-	 * @param input “ü—ÍƒIƒuƒWƒFƒNƒg
-	 * @return o—ÍƒIƒuƒWƒFƒNƒg
+	 * BeanFlowã‚’å®Ÿè¡Œã™ã‚‹ã€‚
+	 * @param input å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	 * @return å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 */
 	public Object invokeBeanFlow(Command input) throws Exception{
 		if(mLogger != null){

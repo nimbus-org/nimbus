@@ -41,7 +41,7 @@ import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.service.jms.JMSMessageConsumerFactory;
 
 /**
- * JMSƒƒbƒZ[ƒW‚ğóM‚·‚é‚½‚ß‚ÌƒƒbƒZ[ƒWƒfƒBƒXƒpƒbƒ`ƒƒ[ƒT[ƒrƒX’ŠÛƒNƒ‰ƒXB
+ * JMSãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å—ä¿¡ã™ã‚‹ãŸã‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ‡ã‚£ã‚¹ãƒ‘ãƒƒãƒãƒ£ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹æŠ½è±¡ã‚¯ãƒ©ã‚¹ã€‚
  * <p>
  *
  * @author M.Ishida

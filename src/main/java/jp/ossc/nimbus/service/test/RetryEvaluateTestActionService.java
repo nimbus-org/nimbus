@@ -41,8 +41,8 @@ import java.util.List;
 import jp.ossc.nimbus.core.ServiceBase;
 
 /**
- * {@link RetryEvaluateTestAction ƒŠƒgƒ‰ƒC•]‰¿ƒeƒXƒgƒAƒNƒVƒ‡ƒ“}ŽÀ‘•ƒT[ƒrƒXB<p>
- * ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ð˜A½‚³‚¹‚ÄŽÀs‚µ‚ÄAŽÀsŒ‹‰Ê‚Ì•]‰¿‚ªŽ¸”s‚µ‚½ê‡‚ÉAƒŠƒgƒ‰ƒC‚·‚éƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚Å‚ ‚éB<br>
+ * {@link RetryEvaluateTestAction ãƒªãƒˆãƒ©ã‚¤è©•ä¾¡ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³}å®Ÿè£…ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’é€£éŽ–ã•ã›ã¦å®Ÿè¡Œã—ã¦ã€å®Ÿè¡Œçµæžœã®è©•ä¾¡ãŒå¤±æ•—ã—ãŸå ´åˆã«ã€ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã§ã‚ã‚‹ã€‚<br>
  * 
  * @author M.Ishida
  */

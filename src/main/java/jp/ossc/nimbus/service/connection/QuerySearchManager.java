@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.connection;
 
 /**
- * ŒŸõŠÇ—B<p>
+ * æ¤œç´¢ç®¡ç†ã€‚<p>
  *
  * @author M.Takata
  */

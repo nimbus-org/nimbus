@@ -61,7 +61,7 @@ import jp.ossc.nimbus.service.beancontrol.interfaces.*;
 import jp.ossc.nimbus.service.performance.ResourceUsage;
 
 /**
- * ‹Æ–±ƒtƒ[ÀsƒT[ƒoƒT[ƒrƒXB<p>
+ * æ¥­å‹™ãƒ•ãƒ­ãƒ¼å®Ÿè¡Œã‚µãƒ¼ãƒã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -91,11 +91,11 @@ public class BeanFlowInvokerServerService extends ServiceBase
     private ServiceName serverSocketFactoryServiceName;
     private RMIServerSocketFactory serverSocketFactory;
     
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public void setBeanFlowInvokerFactoryServiceName(ServiceName name){
         beanFlowInvokerFactoryServiceName = name;
     }
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public ServiceName getBeanFlowInvokerFactoryServiceName(){
         return beanFlowInvokerFactoryServiceName;
     }
@@ -109,101 +109,101 @@ public class BeanFlowInvokerServerService extends ServiceBase
         return interceptorChainFactoryServiceName;
     }
     
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public void setContextServiceName(ServiceName name){
         contextServiceName = name;
     }
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public ServiceName getContextServiceName(){
         return contextServiceName;
     }
     
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public void setResourceUsageServiceName(ServiceName name){
         resourceUsageServiceName = name;
     }
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public ServiceName getResourceUsageServiceName(){
         return resourceUsageServiceName;
     }
     
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public void setJndiName(String name){
         jndiName = name;
     }
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public String getJndiName(){
         return jndiName;
     }
     
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public void setJndiRepositoryServiceName(ServiceName name){
         jndiRepositoryServiceName = name;
     }
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public ServiceName getJndiRepositoryServiceName(){
         return jndiRepositoryServiceName;
     }
     
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public void setRMIPort(int port){
         rmiPort = port;
     }
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public int getRMIPort(){
         return rmiPort;
     }
     
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public void setClusterServiceName(ServiceName name){
         clusterServiceName = name;
     }
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public ServiceName getClusterServiceName(){
         return clusterServiceName;
     }
     
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public void setClusterOptionKey(String key){
         clusterOptionKey = key;
     }
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public String getClusterOptionKey(){
         return clusterOptionKey;
     }
     
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public void setClusterJoin(boolean isJoin){
         isClusterJoin = isJoin;
     }
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public boolean isClusterJoin(){
         return isClusterJoin;
     }
     
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public void setSequenceTimestampFormat(String format){
         sequenceTimestampFormat = format;
     }
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public String getSequenceTimestampFormat(){
         return sequenceTimestampFormat;
     }
     
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public void setSequenceDigit(int digit){
         sequenceDigit = digit;
     }
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public int getSequenceDigit(){
         return sequenceDigit;
     }
     
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public boolean isAcceptable(){
         return server == null ? false : server.isAcceptable();
     }
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public void setAcceptable(boolean isAcceptable){
         if(server == null){
             return;
@@ -211,22 +211,22 @@ public class BeanFlowInvokerServerService extends ServiceBase
         server.setAcceptable(isAcceptable);
     }
     
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public int getCurrentFlowCount(){
         return server == null ? 0 : server.getCurrentFlowCount();
     }
     
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public Comparable getResourceUsage(){
         return server == null ? null : server.getResourceUsage();
     }
     
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public Set getCurrentFlowIdSet(){
         return server == null ? new HashSet() : server.getIdSet();
     }
     
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public Date getFlowStartTime(String id){
         try{
             return server == null ? null : (server.getFlowStartTime(id) >= 0 ? new Date(server.getFlowStartTime(id)) : null);
@@ -235,7 +235,7 @@ public class BeanFlowInvokerServerService extends ServiceBase
         }
     }
     
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public long getFlowCurrentProcessTime(String id){
         try{
             return server == null ? -1 : server.getFlowCurrentProcessTime(id);
@@ -244,22 +244,22 @@ public class BeanFlowInvokerServerService extends ServiceBase
         }
     }
     
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public void setRMIClientSocketFactoryServiceName(ServiceName name){
         clientSocketFactoryServiceName = name;
     }
     
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public ServiceName getRMIClientSocketFactoryServiceName(){
         return clientSocketFactoryServiceName;
     }
     
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public void setRMIServerSocketFactoryServiceName(ServiceName name){
         serverSocketFactoryServiceName = name;
     }
     
-    // BeanFlowInvokerServerServiceMBean‚ÌJavaDoc
+    // BeanFlowInvokerServerServiceMBeanã®JavaDoc
     public ServiceName getRMIServerSocketFactoryServiceName(){
         return serverSocketFactoryServiceName;
     }
@@ -277,9 +277,9 @@ public class BeanFlowInvokerServerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         
@@ -341,9 +341,9 @@ public class BeanFlowInvokerServerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         if(cluster != null){
@@ -369,7 +369,7 @@ public class BeanFlowInvokerServerService extends ServiceBase
     }
     
     /**
-     * {@link BeanFlowInvokerServer}À‘•ƒNƒ‰ƒXB<p>
+     * {@link BeanFlowInvokerServer}å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
      *
      * @author M.Takata
      */
@@ -405,17 +405,17 @@ public class BeanFlowInvokerServerService extends ServiceBase
         private boolean isAcceptable = true;
         
         /**
-         * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          *
-         * @param beanFlowInvokerFactoryServiceName BeanFlowInvokerFactoryƒT[ƒrƒX–¼
-         * @param interceptorChainFactoryServiceName InterceptorChainFactoryƒT[ƒrƒX–¼
-         * @param contextServiceName ContextƒT[ƒrƒX–¼
-         * @param sequence SequenceƒT[ƒrƒX
-         * @param resourceUsage ResourceUsageƒT[ƒrƒX
-         * @param port RMIƒ|[ƒg”Ô†
+         * @param beanFlowInvokerFactoryServiceName BeanFlowInvokerFactoryã‚µãƒ¼ãƒ“ã‚¹å
+         * @param interceptorChainFactoryServiceName InterceptorChainFactoryã‚µãƒ¼ãƒ“ã‚¹å
+         * @param contextServiceName Contextã‚µãƒ¼ãƒ“ã‚¹å
+         * @param sequence Sequenceã‚µãƒ¼ãƒ“ã‚¹
+         * @param resourceUsage ResourceUsageã‚µãƒ¼ãƒ“ã‚¹
+         * @param port RMIãƒãƒ¼ãƒˆç•ªå·
          * @param csf RMIClientSocketFactory
          * @param ssf RMIServerSocketFactory
-         * @exception java.rmi.RemoteException ƒIƒuƒWƒFƒNƒg‚ÌƒGƒNƒXƒ|[ƒg‚ª¸”s‚µ‚½ê‡
+         * @exception java.rmi.RemoteException ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¨ã‚¯ã‚¹ãƒãƒ¼ãƒˆãŒå¤±æ•—ã—ãŸå ´åˆ
          */
         public BeanFlowInvokerServerImpl(
             ServiceName beanFlowInvokerFactoryServiceName,
@@ -708,7 +708,7 @@ public class BeanFlowInvokerServerService extends ServiceBase
             return new HashSet(flowMap.keySet());
         }
         
-        // KeepAliveCheckInvoker‚ÌJavaDoc
+        // KeepAliveCheckInvokerã®JavaDoc
         public Object invoke(InvocationContext context) throws Throwable{
             MethodInvocationContext mic = (MethodInvocationContext)context;
             Method method = mic.getTargetMethod();
@@ -716,7 +716,7 @@ public class BeanFlowInvokerServerService extends ServiceBase
             return method.invoke(this, params);
         }
         
-        // KeepAliveCheckInvoker‚ÌJavaDoc
+        // KeepAliveCheckInvokerã®JavaDoc
         public boolean isAlive(){
             try{
                 BeanFlowInvokerFactory factory = getBeanFlowInvokerFactory();
@@ -730,22 +730,22 @@ public class BeanFlowInvokerServerService extends ServiceBase
             }
         }
         
-        // KeepAliveCheckInvoker‚ÌJavaDoc
+        // KeepAliveCheckInvokerã®JavaDoc
         public void addKeepAliveListener(KeepAliveListener listener){
             throw new UnsupportedOperationException();
         }
         
-        // KeepAliveCheckInvoker‚ÌJavaDoc
+        // KeepAliveCheckInvokerã®JavaDoc
         public void removeKeepAliveListener(KeepAliveListener listener){
             throw new UnsupportedOperationException();
         }
         
-        // KeepAliveCheckInvoker‚ÌJavaDoc
+        // KeepAliveCheckInvokerã®JavaDoc
         public void clearKeepAliveListener(){
             throw new UnsupportedOperationException();
         }
         
-        // KeepAliveCheckInvoker‚ÌJavaDoc
+        // KeepAliveCheckInvokerã®JavaDoc
         public Object getHostInfo() {
             return serverAddress;
         }

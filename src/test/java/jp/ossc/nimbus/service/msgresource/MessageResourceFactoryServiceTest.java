@@ -41,12 +41,12 @@ import javax.jms.Queue;
 import java.util.*;
 
 /**
- *	BytesOrStreamMessageFormat‚ğƒeƒXƒg‚·‚éB<BR>
- *	MessageResourceFactoryTest‚Å‘—M‚µA<BR>
- *@MessageResourceFactoryTest2‚ÅóM‚·‚éB<BR>
+ *	BytesOrStreamMessageFormatã‚’ãƒ†ã‚¹ãƒˆã™ã‚‹ã€‚<BR>
+ *	MessageResourceFactoryTestã§é€ä¿¡ã—ã€<BR>
+ *ã€€MessageResourceFactoryTest2ã§å—ä¿¡ã™ã‚‹ã€‚<BR>
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/11/17| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/11/17ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class MessageResourceFactoryServiceTest extends TestCase {
 	private static final String serviceDefFilename = 
@@ -81,11 +81,11 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 	public MessageResourceFactoryServiceTest(String arg0) {
 		super(arg0);
 		ServiceManagerFactory.loadManager(serviceDefFilename);
-		//ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ÅAQueueSession,Sender‚Ì¶¬‚Ü‚Ås‚¤
+		//ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã€QueueSession,Senderã®ç”Ÿæˆã¾ã§è¡Œã†
 		
 		mMessageResourceFactory = (MessageResourceFactory)ServiceManagerFactory.getServiceObject("TheManager","MessageResourceFactoryService");
 		JmsQueueSession jmsQueSession = (JmsQueueSession)ServiceManagerFactory.getServiceObject("TheManager","JmsQueueSessionService");
-		//QueueSession‚ğæ“¾
+		//QueueSessionã‚’å–å¾—
 		try{
 			QueueTransanctionResource tranRes = (QueueTransanctionResource)jmsQueSession.makeResource(QueueConnectionFactoryName);
 			mSession = (QueueSession)tranRes.getObject();
@@ -95,10 +95,10 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 		}
 		
 		JndiFinder finder = (JndiFinder)ServiceManagerFactory.getServiceObject("TheManager","JndiFinderService");
-		//Queue‚ğæ“¾
+		//Queueã‚’å–å¾—
 		try{
 			mQueue = (Queue)finder.lookup(QueueName);
-			//QueueSenderì¬
+			//QueueSenderä½œæˆ
 			mSender = mSession.createSender(mQueue);
 		}
 		catch(Exception e){
@@ -121,13 +121,13 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 	public void testMakeTextMessage() throws Exception {
 		MessageResourceFactory msgResourceFactory = (MessageResourceFactory)ServiceManagerFactory.getServiceObject("TheManager","MessageResourceFactoryService");
 		JmsQueueSession jmsQueSession = (JmsQueueSession)ServiceManagerFactory.getServiceObject("TheManager","JmsQueueSessionService");
-		//ƒƒbƒZ[ƒWƒŠƒ\[ƒX‚ğæ“¾
+		//ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒªã‚½ãƒ¼ã‚¹ã‚’å–å¾—
 		MessageResource msgResource = msgResourceFactory.findInstance("1");
-		//QueueSession‚ğæ“¾
+		//QueueSessionã‚’å–å¾—
 		QueueSession session = jmsQueSession.makeQueueSession(QueueConnectionFactoryName);
 		TextMessage msg = (TextMessage)msgResource.makeMessage(session);
 		
-		//1‰ñ–Ú‚ÌmakeMessage
+		//1å›ç›®ã®makeMessage
 		if(msg.getText().equals("This is test.")){
 			System.out.println(msg.getText());
 			dumpProp(msg);
@@ -135,7 +135,7 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 		else{
 			throw new Exception();
 		}
-		//2‰ñ–Ú‚ÌmakeMessage
+		//2å›ç›®ã®makeMessage
 		msg = (TextMessage)msgResource.makeMessage(session);
 		if(msg.getText().equals("That's good.")){
 			System.out.println(msg.getText());
@@ -145,7 +145,7 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 			throw new Exception();
 		}
 		
-		//3‰ñ–Ú‚ÌmakeMessage
+		//3å›ç›®ã®makeMessage
 		msg = (TextMessage)msgResource.makeMessage(session);
 		if(msg.getText().equals("What's wrong?")){
 			System.out.println(msg.getText());
@@ -155,8 +155,8 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 			throw new Exception();
 		}
 		
-		//4‰ñ–Ú‚ÌmakeMessage
-		//ƒf[ƒ^ƒtƒ@ƒCƒ‹‚Ì1s–Ú‚É–ß‚éB
+		//4å›ç›®ã®makeMessage
+		//ãƒ‡ãƒ¼ã‚¿ãƒ•ã‚¡ã‚¤ãƒ«ã®1è¡Œç›®ã«æˆ»ã‚‹ã€‚
 		msg = (TextMessage)msgResource.makeMessage(session);
 		if(msg.getText().equals("This is test.")){
 			System.out.println(msg.getText());
@@ -171,12 +171,12 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 	public void testSendBytesMessageByte() throws Exception {
 		System.out.println("BytesMessage. set Payload Byte");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("2");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		BytesMessage msg = (BytesMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//“Ç‚Ş‚½‚ß‚ÉƒŠƒZƒbƒg
+		//èª­ã‚€ãŸã‚ã«ãƒªã‚»ãƒƒãƒˆ
 		msg.reset();
-		//byte ‚Ì 0x30 = 48 ‚ª“ü‚Á‚Ä‚¢‚é”¤
+		//byte ã® 0x30 = 48 ãŒå…¥ã£ã¦ã„ã‚‹ç­ˆ
 		byte val = msg.readByte();
 		byte expected = 48;
 		if( val == expected ){
@@ -191,12 +191,12 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 	public void testSendStreamMessageByte() throws Exception {
 		System.out.println("StreamMessage. set Payload Byte");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("12");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		StreamMessage msg = (StreamMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//“Ç‚Ş‚½‚ß‚ÉƒŠƒZƒbƒg
+		//èª­ã‚€ãŸã‚ã«ãƒªã‚»ãƒƒãƒˆ
 		msg.reset();
-		//byte ‚Ì 0x30 = 48 ‚ª“ü‚Á‚Ä‚¢‚é”¤
+		//byte ã® 0x30 = 48 ãŒå…¥ã£ã¦ã„ã‚‹ç­ˆ
 		byte val = msg.readByte();
 		byte expected = 48;
 		if( val == expected ){
@@ -211,12 +211,12 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 	public void testSendBytesMessageBytes() throws Exception {
 		System.out.println("BytesMessage. set Payload Bytes.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("3");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		BytesMessage msg = (BytesMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//“Ç‚Ş‚½‚ß‚ÉƒŠƒZƒbƒg
+		//èª­ã‚€ãŸã‚ã«ãƒªã‚»ãƒƒãƒˆ
 		msg.reset();
-		//boolean ‚Ì false ‚ª“ü‚Á‚Ä‚¢‚é”¤
+		//boolean ã® false ãŒå…¥ã£ã¦ã„ã‚‹ç­ˆ
 		byte[] buf = new byte[6];
 		msg.readBytes(buf);		
 		byte expected = 48;
@@ -234,12 +234,12 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 	public void testStreamMessageBytes() throws Exception {
 		System.out.println("StreamMessage. set Payload Bytes.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("13");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		StreamMessage msg = (StreamMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//“Ç‚Ş‚½‚ß‚ÉƒŠƒZƒbƒg
+		//èª­ã‚€ãŸã‚ã«ãƒªã‚»ãƒƒãƒˆ
 		msg.reset();
-		//boolean ‚Ì false ‚ª“ü‚Á‚Ä‚¢‚é”¤
+		//boolean ã® false ãŒå…¥ã£ã¦ã„ã‚‹ç­ˆ
 		byte[] buf = new byte[6];
 		msg.readBytes(buf);		
 		byte expected = 48;
@@ -258,12 +258,12 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 	public void testSendBytesMessageBoolean() throws Exception {
 		System.out.println("BytesMessage. set Payload Boolean.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("4");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		BytesMessage msg = (BytesMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//“Ç‚Ş‚½‚ß‚ÉƒŠƒZƒbƒg
+		//èª­ã‚€ãŸã‚ã«ãƒªã‚»ãƒƒãƒˆ
 		msg.reset();
-		//boolean ‚Ì false ‚ª“ü‚Á‚Ä‚¢‚é”¤
+		//boolean ã® false ãŒå…¥ã£ã¦ã„ã‚‹ç­ˆ
 		boolean val = msg.readBoolean();
 		if(val == false){
 			write("OK");
@@ -277,12 +277,12 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 	public void testSendStreamMessageBoolean() throws Exception {
 		System.out.println("BytesMessage. set Payload Boolean.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("14");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		StreamMessage msg = (StreamMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//“Ç‚Ş‚½‚ß‚ÉƒŠƒZƒbƒg
+		//èª­ã‚€ãŸã‚ã«ãƒªã‚»ãƒƒãƒˆ
 		msg.reset();
-		//boolean ‚Ì false ‚ª“ü‚Á‚Ä‚¢‚é”¤
+		//boolean ã® false ãŒå…¥ã£ã¦ã„ã‚‹ç­ˆ
 		boolean val = msg.readBoolean();
 		if(val == false){
 			write("OK");
@@ -297,14 +297,14 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 	public void testSendBytesMessageChar() throws Exception {
 		System.out.println("BytesMessage. set Payload Char.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("5");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		BytesMessage msg = (BytesMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//“Ç‚Ş‚½‚ß‚ÉƒŠƒZƒbƒg
+		//èª­ã‚€ãŸã‚ã«ãƒªã‚»ãƒƒãƒˆ
 		msg.reset();
-		//char‚Ì99‚ª“ü‚Á‚Ä‚¢‚é”¤
+		//charã®99ãŒå…¥ã£ã¦ã„ã‚‹ç­ˆ
 		char val = msg.readChar();
-		if(val == '“Á'){
+		if(val == 'ç‰¹'){
 			write("OK");
 		}
 		else{
@@ -317,14 +317,14 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 	public void testSendStreamMessageChar() throws Exception {
 		System.out.println("StreamMessage. set Payload Char.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("15");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		StreamMessage msg = (StreamMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//“Ç‚Ş‚½‚ß‚ÉƒŠƒZƒbƒg
+		//èª­ã‚€ãŸã‚ã«ãƒªã‚»ãƒƒãƒˆ
 		msg.reset();
-		//char‚Ì99‚ª“ü‚Á‚Ä‚¢‚é”¤
+		//charã®99ãŒå…¥ã£ã¦ã„ã‚‹ç­ˆ
 		char val = msg.readChar();
-		if(val == '“Á'){
+		if(val == 'ç‰¹'){
 			write("OK");
 		}
 		else{
@@ -338,12 +338,12 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 	public void testSendBytesMessageInt() throws Exception {
 		System.out.println("BytesMessage. set Payload Int.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("6");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		BytesMessage msg = (BytesMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//“Ç‚Ş‚½‚ß‚ÉƒŠƒZƒbƒg
+		//èª­ã‚€ãŸã‚ã«ãƒªã‚»ãƒƒãƒˆ
 		msg.reset();
-		//int‚Ì999‚ª“ü‚Á‚Ä‚¢‚é”¤
+		//intã®999ãŒå…¥ã£ã¦ã„ã‚‹ç­ˆ
 		int val = msg.readInt();
 		if(val == 999){
 			write("OK");
@@ -357,12 +357,12 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 	public void testSendStreamMessageInt() throws Exception {
 		System.out.println("BytesMessage. set Payload Int.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("16");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		StreamMessage msg = (StreamMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//“Ç‚Ş‚½‚ß‚ÉƒŠƒZƒbƒg
+		//èª­ã‚€ãŸã‚ã«ãƒªã‚»ãƒƒãƒˆ
 		msg.reset();
-		//int‚Ì999‚ª“ü‚Á‚Ä‚¢‚é”¤
+		//intã®999ãŒå…¥ã£ã¦ã„ã‚‹ç­ˆ
 		int val = msg.readInt();
 		if(val == 999){
 			write("OK");
@@ -376,12 +376,12 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 	public void testSendBytesMessageShort() throws Exception {
 		System.out.println("BytesMessage. set Payload Short.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("7");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		BytesMessage msg = (BytesMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//“Ç‚Ş‚½‚ß‚ÉƒŠƒZƒbƒg
+		//èª­ã‚€ãŸã‚ã«ãƒªã‚»ãƒƒãƒˆ
 		msg.reset();
-		//Short‚Ì999‚ª“ü‚Á‚Ä‚¢‚é”¤
+		//Shortã®999ãŒå…¥ã£ã¦ã„ã‚‹ç­ˆ
 		short val = msg.readShort();
 		if(val == 999){
 			write("OK");
@@ -395,12 +395,12 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 	public void testSendStreamMessageShort() throws Exception {
 		System.out.println("StreamMessage. set Payload Short.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("17");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		StreamMessage msg = (StreamMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//“Ç‚Ş‚½‚ß‚ÉƒŠƒZƒbƒg
+		//èª­ã‚€ãŸã‚ã«ãƒªã‚»ãƒƒãƒˆ
 		msg.reset();
-		//Short‚Ì999‚ª“ü‚Á‚Ä‚¢‚é”¤
+		//Shortã®999ãŒå…¥ã£ã¦ã„ã‚‹ç­ˆ
 		short val = msg.readShort();
 		if(val == 999){
 			write("OK");
@@ -414,12 +414,12 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 	public void testSendBytesMessageLong() throws Exception {
 		System.out.println("BytesMessage. set Payload Long.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("8");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		BytesMessage msg = (BytesMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//“Ç‚Ş‚½‚ß‚ÉƒŠƒZƒbƒg
+		//èª­ã‚€ãŸã‚ã«ãƒªã‚»ãƒƒãƒˆ
 		msg.reset();
-		//long‚Ì999‚ª“ü‚Á‚Ä‚¢‚é”¤
+		//longã®999ãŒå…¥ã£ã¦ã„ã‚‹ç­ˆ
 		long val = msg.readLong();
 		if(val == 999){
 			write("OK");
@@ -433,12 +433,12 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 	public void testSendStreamMessageLong() throws Exception {
 		System.out.println("StreamMessage. set Payload Long.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("18");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		StreamMessage msg = (StreamMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//“Ç‚Ş‚½‚ß‚ÉƒŠƒZƒbƒg
+		//èª­ã‚€ãŸã‚ã«ãƒªã‚»ãƒƒãƒˆ
 		msg.reset();
-		//long‚Ì999‚ª“ü‚Á‚Ä‚¢‚é”¤
+		//longã®999ãŒå…¥ã£ã¦ã„ã‚‹ç­ˆ
 		long val = msg.readLong();
 		if(val == 999){
 			write("OK");
@@ -452,12 +452,12 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 	public void testSendBytesMessageFloat() throws Exception {
 		System.out.println("BytesMessage. set Payload Float.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("9");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		BytesMessage msg = (BytesMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//“Ç‚Ş‚½‚ß‚ÉƒŠƒZƒbƒg
+		//èª­ã‚€ãŸã‚ã«ãƒªã‚»ãƒƒãƒˆ
 		msg.reset();
-		//float‚Ì1.2345F‚ª“ü‚Á‚Ä‚¢‚é‚Í‚¸
+		//floatã®1.2345FãŒå…¥ã£ã¦ã„ã‚‹ã¯ãš
 		float val = msg.readFloat();
 		float expectedVal = 1.2345F;
 		if(val == expectedVal){
@@ -472,12 +472,12 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 	public void testSendStreamMessageFloat() throws Exception {
 		System.out.println("StreamMessage. set Payload Float.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("19");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		StreamMessage msg = (StreamMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//“Ç‚Ş‚½‚ß‚ÉƒŠƒZƒbƒg
+		//èª­ã‚€ãŸã‚ã«ãƒªã‚»ãƒƒãƒˆ
 		msg.reset();
-		//float‚Ì1.2345F‚ª“ü‚Á‚Ä‚¢‚é‚Í‚¸
+		//floatã®1.2345FãŒå…¥ã£ã¦ã„ã‚‹ã¯ãš
 		float val = msg.readFloat();
 		float expectedVal = 1.2345F;
 		if(val == expectedVal){
@@ -492,12 +492,12 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 	public void testSendBytesMessageDouble() throws Exception {
 		System.out.println("BytesMessage. set Payload Double.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("10");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		BytesMessage msg = (BytesMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//“Ç‚Ş‚½‚ß‚ÉƒŠƒZƒbƒg
+		//èª­ã‚€ãŸã‚ã«ãƒªã‚»ãƒƒãƒˆ
 		msg.reset();
-		//double‚Ì2.3456‚ª“ü‚Á‚Ä‚¢‚é‚Í‚¸
+		//doubleã®2.3456ãŒå…¥ã£ã¦ã„ã‚‹ã¯ãš
 		double val = msg.readDouble();
 		double expectedVal = 2.3456;
 		if(val == expectedVal){
@@ -512,12 +512,12 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 	public void testSendStreamMessageDouble() throws Exception {
 		System.out.println("StreamMessage. set Payload Double.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("20");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		StreamMessage msg = (StreamMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//“Ç‚Ş‚½‚ß‚ÉƒŠƒZƒbƒg
+		//èª­ã‚€ãŸã‚ã«ãƒªã‚»ãƒƒãƒˆ
 		msg.reset();
-		//double‚Ì2.3456‚ª“ü‚Á‚Ä‚¢‚é‚Í‚¸
+		//doubleã®2.3456ãŒå…¥ã£ã¦ã„ã‚‹ã¯ãš
 		double val = msg.readDouble();
 		double expectedVal = 2.3456;
 		if(val == expectedVal){
@@ -532,12 +532,12 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 	public void testSendBytesMessageUTF() throws Exception {
 		System.out.println("BytesMessage. set Payload UTF.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("11");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		BytesMessage msg = (BytesMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//“Ç‚Ş‚½‚ß‚ÉƒŠƒZƒbƒg
+		//èª­ã‚€ãŸã‚ã«ãƒªã‚»ãƒƒãƒˆ
 		msg.reset();
-		//"Hello World"‚ª“ü‚Á‚Ä‚¢‚é”¤
+		//"Hello World"ãŒå…¥ã£ã¦ã„ã‚‹ç­ˆ
 		String val = msg.readUTF();
 		if(val.equals("Hello World")){
 			write("OK");
@@ -551,12 +551,12 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 	public void testSendStreamMessageString() throws Exception {
 		System.out.println("StreamMessage. set Payload String.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("21");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		StreamMessage msg = (StreamMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//“Ç‚Şˆ×‚ÉƒŠƒZƒbƒg
+		//èª­ã‚€ç‚ºã«ãƒªã‚»ãƒƒãƒˆ
 		msg.reset();
-		//"Hello World"‚ª“ü‚Á‚Ä‚¢‚é”¤
+		//"Hello World"ãŒå…¥ã£ã¦ã„ã‚‹ç­ˆ
 		String val = msg.readString();
 		if(val.equals("Hello World")){
 			write("OK");
@@ -570,12 +570,12 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 	public void testSendBytesMessageObject() throws Exception {
 		System.out.println("BytesMessage. set Payload Object.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("22");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		BytesMessage msg = (BytesMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//“Ç‚Ş‚½‚ß‚ÉƒŠƒZƒbƒg
+		//èª­ã‚€ãŸã‚ã«ãƒªã‚»ãƒƒãƒˆ
 		msg.reset();
-		//"Hello World"‚ª“ü‚Á‚Ä‚¢‚é”¤
+		//"Hello World"ãŒå…¥ã£ã¦ã„ã‚‹ç­ˆ
 		int val = msg.readInt();
 		if(val == 777){
 			write("OK");
@@ -589,12 +589,12 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 	public void testSendStreamMessageObject() throws Exception {
 		System.out.println("StreamMessage. set Payload Object.");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("23");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		StreamMessage msg = (StreamMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//“Ç‚Ş‚½‚ß‚ÉƒŠƒZƒbƒg
+		//èª­ã‚€ãŸã‚ã«ãƒªã‚»ãƒƒãƒˆ
 		msg.reset();
-		//"Hello World"‚ª“ü‚Á‚Ä‚¢‚é”¤
+		//"Hello World"ãŒå…¥ã£ã¦ã„ã‚‹ç­ˆ
 		Integer val = (Integer)msg.readObject();
 		if(val.intValue() == 777){
 			write("OK");
@@ -608,12 +608,12 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 	public void testSendStreamMessageIntUseFileData() throws Exception {
 		System.out.println("StreamMessage. set Payload Int");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("24");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		StreamMessage msg = (StreamMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//“Ç‚Ş‚½‚ß‚ÉƒŠƒZƒbƒg
+		//èª­ã‚€ãŸã‚ã«ãƒªã‚»ãƒƒãƒˆ
 		msg.reset();
-		//555‚ª“ü‚Á‚Ä‚¢‚é‚Í‚¸B
+		//555ãŒå…¥ã£ã¦ã„ã‚‹ã¯ãšã€‚
 		int val1 = msg.readInt();
 		int val2 = msg.readInt();
 		int val3 = msg.readInt();		
@@ -629,10 +629,10 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 	public void testSendBytesMessageObjectAllType() throws Exception {
 		System.out.println("BytesMessage. set Payload Object.(All type)");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("57");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		BytesMessage msg = (BytesMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//“Ç‚Ş‚½‚ß‚ÉƒŠƒZƒbƒg
+		//èª­ã‚€ãŸã‚ã«ãƒªã‚»ãƒƒãƒˆ
 		msg.reset();
 		//Byte 0x30
 		byte payload1 = msg.readByte();
@@ -647,9 +647,9 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 		//Boolean false
 		boolean payload3 = msg.readBoolean();	
 		assertEquals(false,payload3);
-		//Char "‹Z"
+		//Char "æŠ€"
 		char payload4 = msg.readChar();
-		assertEquals('‹Z',payload4);
+		assertEquals('æŠ€',payload4);
 		//Short 555
 		short payload5 = msg.readShort();
 		assertEquals(555,payload5);
@@ -661,11 +661,11 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 		assertEquals(5555555,payload7);
 		//Float 1.2345F
 		float payload8 = msg.readFloat();
-		//‚±‚Ìê‡Aƒfƒ‹ƒ^‚Í0‚Å‚æ‚¢‚¾‚ë‚¤B
+		//ã“ã®å ´åˆã€ãƒ‡ãƒ«ã‚¿ã¯0ã§ã‚ˆã„ã ã‚ã†ã€‚
 		assertEquals(1.2345F,payload8,0.0F);
 		//Double 2.3456
 		double payload9 = msg.readDouble();
-		//‚±‚Ìê‡Aƒfƒ‹ƒ^‚Í0‚Å‚æ‚¢‚¾‚ë‚¤B
+		//ã“ã®å ´åˆã€ãƒ‡ãƒ«ã‚¿ã¯0ã§ã‚ˆã„ã ã‚ã†ã€‚
 		assertEquals(2.3456,payload9,0.0);
 		//String "Hello"
 		String payload10 = msg.readUTF();
@@ -675,10 +675,10 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 	public void testSendStreamMessageObjectAllType() throws Exception {
 		System.out.println("StreamMessage. set Payload Object.(All type)");
 		MessageResource msgResource = mMessageResourceFactory.findInstance("58");
-		//makeMessage‚µ‚Ä‘—M‚·‚éB
+		//makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		StreamMessage msg = (StreamMessage)msgResource.makeMessage(mSession);
 		mSender.send(msg);
-		//“Ç‚Ş‚½‚ß‚ÉƒŠƒZƒbƒg
+		//èª­ã‚€ãŸã‚ã«ãƒªã‚»ãƒƒãƒˆ
 		msg.reset();
 		//Byte 0x30
 		byte payload1 = msg.readByte();
@@ -693,9 +693,9 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 		//Boolean false
 		boolean payload3 = msg.readBoolean();	
 		assertEquals(false,payload3);
-		//Char "‹Z"
+		//Char "æŠ€"
 		char payload4 = msg.readChar();
-		assertEquals('‹Z',payload4);
+		assertEquals('æŠ€',payload4);
 		//Short 555
 		short payload5 = msg.readShort();
 		assertEquals(555,payload5);
@@ -707,11 +707,11 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 		assertEquals(5555555,payload7);
 		//Float 1.2345F
 		float payload8 = msg.readFloat();
-		//‚±‚Ìê‡Aƒfƒ‹ƒ^‚Í0‚Å‚æ‚¢‚¾‚ë‚¤B
+		//ã“ã®å ´åˆã€ãƒ‡ãƒ«ã‚¿ã¯0ã§ã‚ˆã„ã ã‚ã†ã€‚
 		assertEquals(1.2345F,payload8,0.0F);
 		//Double 2.3456
 		double payload9 = msg.readDouble();
-		//‚±‚Ìê‡Aƒfƒ‹ƒ^‚Í0‚Å‚æ‚¢‚¾‚ë‚¤B
+		//ã“ã®å ´åˆã€ãƒ‡ãƒ«ã‚¿ã¯0ã§ã‚ˆã„ã ã‚ã†ã€‚
 		assertEquals(2.3456,payload9,0.0);
 		//String "Hello"
 		String payload10 = msg.readString();
@@ -723,39 +723,39 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 	public void testSendStreamMessage() throws Exception {
 		MessageResourceFactory msgResourceFactory = (MessageResourceFactory)ServiceManagerFactory.getServiceObject("TheManager","MessageResourceFactoryService");
 		JmsQueueSession jmsQueSession = (JmsQueueSession)ServiceManagerFactory.getServiceObject("TheManager","JmsQueueSessionService");
-		//ƒƒbƒZ[ƒWƒŠƒ\[ƒX‚ğæ“¾
+		//ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒªã‚½ãƒ¼ã‚¹ã‚’å–å¾—
 		MessageResource msgResource = msgResourceFactory.findInstance("3");
-		//QueueSession‚ğæ“¾
+		//QueueSessionã‚’å–å¾—
 		QueueSession session = jmsQueSession.makeQueueSession(QueueConnectionFactoryName);
 		JndiFinder finder = (JndiFinder)ServiceManagerFactory.getServiceObject("TheManager","JndiFinderService");
-		//Queue‚ğæ“¾
+		//Queueã‚’å–å¾—
 		Queue queue = (Queue)finder.lookup(QueueName);
-		//QueueSenderì¬
+		//QueueSenderä½œæˆ
 		QueueSender sender = session.createSender(queue);
-		//4‰ñmakeMessage‚µ‚Ä‘—M‚·‚éB
+		//4å›makeMessageã—ã¦é€ä¿¡ã™ã‚‹ã€‚
 		for(int rCnt=0;rCnt<4;rCnt++){
 			StreamMessage msg = (StreamMessage)msgResource.makeMessage(session);
-			//‘—M
+			//é€ä¿¡
 			sender.send(msg);			
 		}
 	}
 	
 	
-	//TextMessage‚ğ‘—M‚·‚éB
+	//TextMessageã‚’é€ä¿¡ã™ã‚‹ã€‚
 	public void testSendTextMessage() throws Exception{
 		MessageResourceFactory msgResourceFactory = (MessageResourceFactory)ServiceManagerFactory.getServiceObject("TheManager","MessageResourceFactoryService");
 		JmsQueueSession jmsQueSession = (JmsQueueSession)ServiceManagerFactory.getServiceObject("TheManager","JmsQueueSessionService");
 		JndiFinder finder = (JndiFinder)ServiceManagerFactory.getServiceObject("TheManager","JndiFinderService");
-		//ƒƒbƒZ[ƒWƒŠƒ\[ƒX‚ğæ“¾
+		//ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒªã‚½ãƒ¼ã‚¹ã‚’å–å¾—
 		MessageResource msgResource = msgResourceFactory.findInstance("1");
-		//QueueSession‚ğæ“¾
+		//QueueSessionã‚’å–å¾—
 		QueueSession session = jmsQueSession.makeQueueSession(QueueConnectionFactoryName);
 		TextMessage msg = (TextMessage)msgResource.makeMessage(session);
-		//Queue‚ğæ“¾
+		//Queueã‚’å–å¾—
 		Queue queue = (Queue)finder.lookup(QueueName);
-		//QueueSenderì¬
+		//QueueSenderä½œæˆ
 		QueueSender sender = session.createSender(queue);
-		//‘—M
+		//é€ä¿¡
 		sender.send(msg);
 	}
 
@@ -763,16 +763,16 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 		MessageResourceFactory msgResourceFactory = (MessageResourceFactory)ServiceManagerFactory.getServiceObject("TheManager","MessageResourceFactoryService");
 		JmsQueueSession jmsQueSession = (JmsQueueSession)ServiceManagerFactory.getServiceObject("TheManager","JmsQueueSessionService");
 		JndiFinder finder = (JndiFinder)ServiceManagerFactory.getServiceObject("TheManager","JndiFinderService");
-		//ƒƒbƒZ[ƒWƒŠƒ\[ƒX‚ğæ“¾
+		//ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒªã‚½ãƒ¼ã‚¹ã‚’å–å¾—
 		MessageResource msgResource = msgResourceFactory.findInstance("4");
-		//QueueSession‚ğæ“¾
+		//QueueSessionã‚’å–å¾—
 		QueueSession session = jmsQueSession.makeQueueSession(QueueConnectionFactoryName);
 		MapMessage msg = (MapMessage)msgResource.makeMessage(session);
-		//Queue‚ğæ“¾
+		//Queueã‚’å–å¾—
 		Queue queue = (Queue)finder.lookup(QueueName);
-		//QueueSenderì¬
+		//QueueSenderä½œæˆ
 		QueueSender sender = session.createSender(queue);
-		//‘—M
+		//é€ä¿¡
 		sender.send(msg);
 	}
 	
@@ -780,16 +780,16 @@ public class MessageResourceFactoryServiceTest extends TestCase {
 		MessageResourceFactory msgResourceFactory = (MessageResourceFactory)ServiceManagerFactory.getServiceObject("TheManager","MessageResourceFactoryService");
 		JmsQueueSession jmsQueSession = (JmsQueueSession)ServiceManagerFactory.getServiceObject("TheManager","JmsQueueSessionService");
 		JndiFinder finder = (JndiFinder)ServiceManagerFactory.getServiceObject("TheManager","JndiFinderService");
-		//ƒƒbƒZ[ƒWƒŠƒ\[ƒX‚ğæ“¾
+		//ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒªã‚½ãƒ¼ã‚¹ã‚’å–å¾—
 		MessageResource msgResource = msgResourceFactory.findInstance("5");
-		//QueueSession‚ğæ“¾
+		//QueueSessionã‚’å–å¾—
 		QueueSession session = jmsQueSession.makeQueueSession(QueueConnectionFactoryName);
 		
-		//Queue‚ğæ“¾
+		//Queueã‚’å–å¾—
 		Queue queue = (Queue)finder.lookup(QueueName);
-		//QueueSenderì¬
+		//QueueSenderä½œæˆ
 		QueueSender sender = session.createSender(queue);
-		//‘—M
+		//é€ä¿¡
 		for(int rCnt=0;rCnt<4;rCnt++){
 			ObjectMessage msg = (ObjectMessage)msgResource.makeMessage(session);
 			sender.send(msg);

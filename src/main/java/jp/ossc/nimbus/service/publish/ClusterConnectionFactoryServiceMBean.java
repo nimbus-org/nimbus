@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link ClusterConnectionFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link ClusterConnectionFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see ClusterConnectionFactoryService
@@ -48,195 +48,195 @@ public interface ClusterConnectionFactoryServiceMBean extends ServiceBaseMBean{
     public static final String MSG_ID_CONNECTION_GET_ERROR = "PCCF_00005";
     
     /**
-     * {@link ClientConnectionFactory ClientConnectionFactory}ƒŠƒ‚[ƒgƒIƒuƒWƒFƒNƒg‚ÌJNDI–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link ClientConnectionFactory#DEFAULT_JNDI_NAME}B<br>
+     * {@link ClientConnectionFactory ClientConnectionFactory}ãƒªãƒ¢ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®JNDIåã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link ClientConnectionFactory#DEFAULT_JNDI_NAME}ã€‚<br>
      *
-     * @param name JNDI–¼
+     * @param name JNDIå
      */
     public void setJndiName(String name);
     
     /**
-     * {@link ClientConnectionFactory}ƒŠƒ‚[ƒgƒIƒuƒWƒFƒNƒg‚ÌJNDI–¼‚ğæ“¾‚·‚éB<p>
+     * {@link ClientConnectionFactory}ãƒªãƒ¢ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®JNDIåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JNDI–¼
+     * @return JNDIå
      */
     public String getJndiName();
     
     /**
-     * {@link ClientConnectionFactory}ƒŠƒ‚[ƒgƒIƒuƒWƒFƒNƒg‚ğƒoƒCƒ“ƒh‚·‚é{@link jp.ossc.nimbus.service.repository.Repository Repository}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link ClientConnectionFactory}ãƒªãƒ¢ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹{@link jp.ossc.nimbus.service.repository.Repository Repository}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name RepositoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Repositoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJndiRepositoryServiceName(ServiceName name);
     
     /**
-     * {@link ClientConnectionFactory}ƒŠƒ‚[ƒgƒIƒuƒWƒFƒNƒg‚ğƒoƒCƒ“ƒh‚·‚é{@link jp.ossc.nimbus.service.repository.Repository Repository}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link ClientConnectionFactory}ãƒªãƒ¢ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹{@link jp.ossc.nimbus.service.repository.Repository Repository}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return RepositoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Repositoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJndiRepositoryServiceName();
     
     /**
-     * {@link ClientConnectionFactory}ƒŠƒ‚[ƒgƒIƒuƒWƒFƒNƒg‚ÌRMI’ÊMƒ|[ƒg”Ô†‚ğİ’è‚·‚éB<p>
+     * {@link ClientConnectionFactory}ãƒªãƒ¢ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®RMIé€šä¿¡ãƒãƒ¼ãƒˆç•ªå·ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param port ƒ|[ƒg”Ô†
+     * @param port ãƒãƒ¼ãƒˆç•ªå·
      */
     public void setRMIPort(int port);
     
     /**
-     * {@link ClientConnectionFactory}ƒŠƒ‚[ƒgƒIƒuƒWƒFƒNƒg‚ÌRMI’ÊMƒ|[ƒg”Ô†‚ğæ“¾‚·‚éB<p>
+     * {@link ClientConnectionFactory}ãƒªãƒ¢ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®RMIé€šä¿¡ãƒãƒ¼ãƒˆç•ªå·ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ|[ƒg”Ô†
+     * @return ãƒãƒ¼ãƒˆç•ªå·
      */
     public int getRMIPort();
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ClusterService}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ƒNƒ‰ƒXƒ^‚Ìƒƒ“ƒo[î•ñ‚ÉA{@link ClientConnectionFactory}ƒŠƒ‚[ƒgƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚é–‚ÅAƒNƒ‰ƒXƒ^‚ÉQ‰Á‚µ‚Ä‚¢‚éClientConnectionFactory‚ğƒNƒ‰ƒCƒAƒ“ƒg‘¤‚Å‹¤—L‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ClusterService}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã‚¯ãƒ©ã‚¹ã‚¿ã®ãƒ¡ãƒ³ãƒãƒ¼æƒ…å ±ã«ã€{@link ClientConnectionFactory}ãƒªãƒ¢ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹äº‹ã§ã€ã‚¯ãƒ©ã‚¹ã‚¿ã«å‚åŠ ã—ã¦ã„ã‚‹ClientConnectionFactoryã‚’ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆå´ã§å…±æœ‰ã™ã‚‹ã€‚<br>
      *
-     * @param name ClusterServiceƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ClusterServiceã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setClusterServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ClusterService}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ClusterService}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ClusterServiceƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ClusterServiceã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getClusterServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚Ìƒƒ“ƒo[î•ñ‚ÌƒIƒvƒVƒ‡ƒ“ƒL[‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ¡ãƒ³ãƒãƒ¼æƒ…å ±ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key ƒIƒvƒVƒ‡ƒ“ƒL[
+     * @param key ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚­ãƒ¼
      */
     public void setClusterOptionKey(String key);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚Ìƒƒ“ƒo[î•ñ‚ÌƒIƒvƒVƒ‡ƒ“ƒL[‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ¡ãƒ³ãƒãƒ¼æƒ…å ±ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒIƒvƒVƒ‡ƒ“ƒL[
+     * @return ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚­ãƒ¼
      */
     public String getClusterOptionKey();
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚ÌƒNƒ‰ƒXƒ^Q‰Á‚ğ§Œä‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Å§Œä‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚¯ãƒ©ã‚¹ã‚¿å‚åŠ ã‚’åˆ¶å¾¡ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§åˆ¶å¾¡ã™ã‚‹ã€‚<br>
      *
-     * @param isJoin §Œä‚·‚éê‡Atrue
+     * @param isJoin åˆ¶å¾¡ã™ã‚‹å ´åˆã€true
      */
     public void setClusterJoin(boolean isJoin);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚ÌƒNƒ‰ƒXƒ^Q‰Á‚ğ§Œä‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚¯ãƒ©ã‚¹ã‚¿å‚åŠ ã‚’åˆ¶å¾¡ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A§Œä‚·‚é
+     * @return trueã®å ´åˆã€åˆ¶å¾¡ã™ã‚‹
      */
     public boolean isClusterJoin();
     
     /**
-     * ƒNƒ‰ƒXƒ^‰»‚µ‚½‚¢{@link ClientConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚¯ãƒ©ã‚¹ã‚¿åŒ–ã—ãŸã„{@link ClientConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ClientConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ClientConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setClientConnectionFactoryServiceName(ServiceName name);
     
     /**
-     * ƒNƒ‰ƒXƒ^‰»‚µ‚½‚¢{@link ClientConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¯ãƒ©ã‚¹ã‚¿åŒ–ã—ãŸã„{@link ClientConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ClientConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ClientConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getClientConnectionFactoryServiceName();
     
     /**
-     * •ªUƒNƒ‰ƒXƒ^‚É‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * true‚É‚·‚é‚Æ•ªUƒNƒ‰ƒXƒ^‚Æ‚È‚èAƒNƒ‰ƒCƒAƒ“ƒg‚ÍAÚ‘±‘ä”‚Ì­‚È‚¢ƒNƒ‰ƒXƒ^ƒƒ“ƒo‚ÉÚ‘±‚µAƒT[ƒo‚É‘Î‚µ‚Ä•ªU‚µ‚ÄÚ‘±‚·‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚Ífalse‚ÅA‘S‚Ä‚ÌƒNƒ‰ƒCƒAƒ“ƒg‚ªåŒn‚Æ‚È‚Á‚Ä‚¢‚éƒNƒ‰ƒXƒ^ƒƒ“ƒo‚ÉÚ‘±‚·‚éB<br>
+     * åˆ†æ•£ã‚¯ãƒ©ã‚¹ã‚¿ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * trueã«ã™ã‚‹ã¨åˆ†æ•£ã‚¯ãƒ©ã‚¹ã‚¿ã¨ãªã‚Šã€ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã¯ã€æ¥ç¶šå°æ•°ã®å°‘ãªã„ã‚¯ãƒ©ã‚¹ã‚¿ãƒ¡ãƒ³ãƒã«æ¥ç¶šã—ã€ã‚µãƒ¼ãƒã«å¯¾ã—ã¦åˆ†æ•£ã—ã¦æ¥ç¶šã™ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯falseã§ã€å…¨ã¦ã®ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãŒä¸»ç³»ã¨ãªã£ã¦ã„ã‚‹ã‚¯ãƒ©ã‚¹ã‚¿ãƒ¡ãƒ³ãƒã«æ¥ç¶šã™ã‚‹ã€‚<br>
      *
-     * @param isDistribute •ªUƒNƒ‰ƒXƒ^‚É‚·‚éê‡true
+     * @param isDistribute åˆ†æ•£ã‚¯ãƒ©ã‚¹ã‚¿ã«ã™ã‚‹å ´åˆtrue
      */
     public void setDistribute(boolean isDistribute);
     
     /**
-     * •ªUƒNƒ‰ƒXƒ^‚É‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * åˆ†æ•£ã‚¯ãƒ©ã‚¹ã‚¿ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A•ªUƒNƒ‰ƒXƒ^
+     * @return trueã®å ´åˆã€åˆ†æ•£ã‚¯ãƒ©ã‚¹ã‚¿
      */
     public boolean isDistribute();
     
     /**
-     * ‘½dƒT[ƒo”zM‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * true‚É‚·‚é‚Æ‘½dƒT[ƒo”zM‚Æ‚È‚èAƒNƒ‰ƒCƒAƒ“ƒg‚Í•¡”‚ÌƒT[ƒo‚©‚çƒƒbƒZ[ƒW‚ğ“¯‚ÉóM‚·‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚Ífalse‚ÅAƒNƒ‰ƒCƒAƒ“ƒg‚ÍA‚Ç‚±‚©‚P‚Â‚ÌƒT[ƒo‚©‚çóM‚·‚éB<br>
+     * å¤šé‡ã‚µãƒ¼ãƒé…ä¿¡ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * trueã«ã™ã‚‹ã¨å¤šé‡ã‚µãƒ¼ãƒé…ä¿¡ã¨ãªã‚Šã€ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã¯è¤‡æ•°ã®ã‚µãƒ¼ãƒã‹ã‚‰ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’åŒæ™‚ã«å—ä¿¡ã™ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯falseã§ã€ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã¯ã€ã©ã“ã‹ï¼‘ã¤ã®ã‚µãƒ¼ãƒã‹ã‚‰å—ä¿¡ã™ã‚‹ã€‚<br>
      *
-     * @param isMultiple ‘½dƒT[ƒo”zM‚·‚éê‡Atrue
+     * @param isMultiple å¤šé‡ã‚µãƒ¼ãƒé…ä¿¡ã™ã‚‹å ´åˆã€true
      */
     public void setMultiple(boolean isMultiple);
     
     /**
-     * ‘½dƒT[ƒo”zM‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å¤šé‡ã‚µãƒ¼ãƒé…ä¿¡ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A‘½dƒT[ƒo”zM‚·‚é
+     * @return trueã®å ´åˆã€å¤šé‡ã‚µãƒ¼ãƒé…ä¿¡ã™ã‚‹
      */
     public boolean isMultiple();
     
     /**
-     * ©•ª©g‚©‚ç‚ÌƒƒbƒZ[ƒW‚ğóM‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅóM‚µ‚È‚¢B<br>
+     * è‡ªåˆ†è‡ªèº«ã‹ã‚‰ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å—ä¿¡ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§å—ä¿¡ã—ãªã„ã€‚<br>
      * 
-     * @param isReceive óM‚·‚éê‡true
+     * @param isReceive å—ä¿¡ã™ã‚‹å ´åˆtrue
      */
     public void setReceiveOwnMessage(boolean isReceive);
     
     /**
-     * ©•ª©g‚©‚ç‚ÌƒƒbƒZ[ƒW‚ğóM‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * è‡ªåˆ†è‡ªèº«ã‹ã‚‰ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å—ä¿¡ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡AóM‚·‚é
+     * @return trueã®å ´åˆã€å—ä¿¡ã™ã‚‹
      */
     public boolean isReceiveOwnMessage();
     
     /**
-     * {@link ClientConnection#connect()}Às‚ÉAƒNƒ‰ƒXƒ^ƒƒ“ƒo‚ª‘¶İ‚µ‚È‚­‚Ä‚àÚ‘±‰Â”\‚È_“î‚ÈÚ‘±‚Æ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅAƒNƒ‰ƒXƒ^ƒƒ“ƒo‚ª‘¶İ‚µ‚È‚¢ê‡‚ÍAÚ‘±‚Å‚«‚È‚¢B<br>
+     * {@link ClientConnection#connect()}å®Ÿè¡Œæ™‚ã«ã€ã‚¯ãƒ©ã‚¹ã‚¿ãƒ¡ãƒ³ãƒãŒå­˜åœ¨ã—ãªãã¦ã‚‚æ¥ç¶šå¯èƒ½ãªæŸ”è»Ÿãªæ¥ç¶šã¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€ã‚¯ãƒ©ã‚¹ã‚¿ãƒ¡ãƒ³ãƒãŒå­˜åœ¨ã—ãªã„å ´åˆã¯ã€æ¥ç¶šã§ããªã„ã€‚<br>
      *
-     * @param isFlexible _“î‚ÈÚ‘±‚Æ‚·‚éê‡Atrue
+     * @param isFlexible æŸ”è»Ÿãªæ¥ç¶šã¨ã™ã‚‹å ´åˆã€true
      */
     public void setFlexibleConnect(boolean isFlexible);
     
     /**
-     * {@link ClientConnection#connect()}Às‚ÉAƒNƒ‰ƒXƒ^ƒƒ“ƒo‚ª‘¶İ‚µ‚È‚­‚Ä‚àÚ‘±‰Â”\‚È_“î‚ÈÚ‘±‚Æ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link ClientConnection#connect()}å®Ÿè¡Œæ™‚ã«ã€ã‚¯ãƒ©ã‚¹ã‚¿ãƒ¡ãƒ³ãƒãŒå­˜åœ¨ã—ãªãã¦ã‚‚æ¥ç¶šå¯èƒ½ãªæŸ”è»Ÿãªæ¥ç¶šã¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A_“î‚ÈÚ‘±
+     * @return trueã®å ´åˆã€æŸ”è»Ÿãªæ¥ç¶š
      */
     public boolean isFlexibleConnect();
     
     /**
-     * ƒtƒFƒCƒ‹ƒI[ƒo[‚ÉA‚Ç‚Ì‚­‚ç‚¢‚ÌŠÔ[ms]‚¾‚¯‘k‚Á‚ÄÄ‘——v‹‚ğo‚·‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0[ms]‚Å‘k‚ç‚¸Ä‘——v‹‚·‚éB<br>
+     * ãƒ•ã‚§ã‚¤ãƒ«ã‚ªãƒ¼ãƒãƒ¼æ™‚ã«ã€ã©ã®ãã‚‰ã„ã®æ™‚é–“[ms]ã ã‘é¡ã£ã¦å†é€è¦æ±‚ã‚’å‡ºã™ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0[ms]ã§é¡ã‚‰ãšå†é€è¦æ±‚ã™ã‚‹ã€‚<br>
      *
-     * @param time ‘k‚éŠÔ[ms]
+     * @param time é¡ã‚‹æ™‚é–“[ms]
      */
     public void setFailoverBufferTime(long time);
     
     /**
-     * ƒtƒFƒCƒ‹ƒI[ƒo[‚ÉA‚Ç‚Ì‚­‚ç‚¢‚ÌŠÔ[ms]‚¾‚¯‘k‚Á‚ÄÄ‘——v‹‚ğo‚·‚©‚ğæ“¾‚·‚éB<p>
+     * ãƒ•ã‚§ã‚¤ãƒ«ã‚ªãƒ¼ãƒãƒ¼æ™‚ã«ã€ã©ã®ãã‚‰ã„ã®æ™‚é–“[ms]ã ã‘é¡ã£ã¦å†é€è¦æ±‚ã‚’å‡ºã™ã‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘k‚éŠÔ[ms]
+     * @return é¡ã‚‹æ™‚é–“[ms]
      */
     public long getFailoverBufferTime();
     
     /**
-     * ƒtƒFƒCƒ‹ƒI[ƒo[‚ÉAÅŒã‚ÉóM‚µ‚½ƒƒbƒZ[ƒW‚ÌóM‚ğ‹N“_‚ÉAÄ‘——v‹‚ğ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚ÅAÅŒã‚ÉóM‚µ‚½ƒƒbƒZ[ƒW‚ÌóM‚ğ‹N“_‚ÉAÄ‘——v‹‚ğ‚·‚éBfalse‚É‚·‚é‚ÆAŒ»İ‚ğ‹N“_‚É‚·‚éB<br>
+     * ãƒ•ã‚§ã‚¤ãƒ«ã‚ªãƒ¼ãƒãƒ¼æ™‚ã«ã€æœ€å¾Œã«å—ä¿¡ã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å—ä¿¡æ™‚åˆ»ã‚’èµ·ç‚¹ã«ã€å†é€è¦æ±‚ã‚’ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§ã€æœ€å¾Œã«å—ä¿¡ã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å—ä¿¡æ™‚åˆ»ã‚’èµ·ç‚¹ã«ã€å†é€è¦æ±‚ã‚’ã™ã‚‹ã€‚falseã«ã™ã‚‹ã¨ã€ç¾åœ¨æ™‚åˆ»ã‚’èµ·ç‚¹ã«ã™ã‚‹ã€‚<br>
      * 
-     * @param isStartReceive ÅŒã‚ÉóM‚µ‚½ƒƒbƒZ[ƒW‚ÌóM‚ğ‹N“_‚É‚·‚éê‡Atrue
+     * @param isStartReceive æœ€å¾Œã«å—ä¿¡ã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å—ä¿¡æ™‚åˆ»ã‚’èµ·ç‚¹ã«ã™ã‚‹å ´åˆã€true
      */
     public void setStartReceiveFromLastReceiveTime(boolean isStartReceive);
     
     /**
-     * ƒtƒFƒCƒ‹ƒI[ƒo[‚ÉAÅŒã‚ÉóM‚µ‚½ƒƒbƒZ[ƒW‚ÌóM‚ğ‹N“_‚ÉAÄ‘——v‹‚ğ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ•ã‚§ã‚¤ãƒ«ã‚ªãƒ¼ãƒãƒ¼æ™‚ã«ã€æœ€å¾Œã«å—ä¿¡ã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å—ä¿¡æ™‚åˆ»ã‚’èµ·ç‚¹ã«ã€å†é€è¦æ±‚ã‚’ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡AÅŒã‚ÉóM‚µ‚½ƒƒbƒZ[ƒW‚ÌóM‚ğ‹N“_‚É‚·‚é
+     * @return trueã®å ´åˆã€æœ€å¾Œã«å—ä¿¡ã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å—ä¿¡æ™‚åˆ»ã‚’èµ·ç‚¹ã«ã™ã‚‹
      */
     public boolean isStartReceiveFromLastReceiveTime();
     

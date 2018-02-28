@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.jms;
 import javax.jms.*;
 
 /**
- * �Đڑ��\TopicPublisher�B<p>
+ * 再接続可能TopicPublisher。<p>
  *
  * @author M.Takata
  */

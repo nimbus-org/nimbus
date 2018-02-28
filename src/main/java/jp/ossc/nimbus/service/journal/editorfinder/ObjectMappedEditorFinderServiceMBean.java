@@ -35,25 +35,25 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 //
 /**
- * ƒGƒfƒBƒ^[ƒtƒ@ƒCƒ“ƒ_[ŠÇ—ƒƒ\ƒbƒhƒCƒ“ƒ^[ƒtƒFƒCƒX 
+ * ã‚¨ãƒ‡ã‚£ã‚¿ãƒ¼ãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ãƒ¼ç®¡ç†ãƒ¡ã‚½ãƒƒãƒ‰ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ 
  * @author   nakano
- * @version  1.00 ì¬: 2003/11/07 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/11/07 -ã€€H.Nakano
  */
 public interface ObjectMappedEditorFinderServiceMBean 
 extends ServiceBaseMBean {
 	/**
 	 * setParentEditorfinderServiceName<BR>
-	 * ãˆÊƒŠƒ|ƒWƒgƒŠƒT[ƒrƒX‚ğw’è‚ğs‚¤<BR>
-	 * ‚±‚ÌƒZƒbƒ^[‚ğw’è‚µ‚È‚¢ê‡‚Í©g‚Ì‚İ‚ÌŒŸõ‚ğs‚¤B<BR>
-	 * @param name ƒT[ƒrƒX–¼
+	 * ä¸Šä½ãƒªãƒã‚¸ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã‚’æŒ‡å®šã‚’è¡Œã†<BR>
+	 * ã“ã®ã‚»ãƒƒã‚¿ãƒ¼ã‚’æŒ‡å®šã—ãªã„å ´åˆã¯è‡ªèº«ã®ã¿ã®æ¤œç´¢ã‚’è¡Œã†ã€‚<BR>
+	 * @param name ã‚µãƒ¼ãƒ“ã‚¹å
 	 */
 	public void setParentEditorfinderServiceName(ServiceName name) ;
 	public ServiceName getParentEditorfinderServiceName() ;
 	/**
 	 * setEditorProperties
-	 * ƒNƒ‰ƒX–¼‚Æ‚»‚ê‚ğ‰ğß‚·‚éƒGƒfƒBƒ^[ƒT[ƒrƒX–¼‚ğƒvƒƒpƒeƒBŒ`®‚Å
-	 * w’è‚·‚éB
-	 * @param name@(ex) java.lang.Object=HOGE#HOGEHOGE
+	 * ã‚¯ãƒ©ã‚¹åã¨ãã‚Œã‚’è§£é‡ˆã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹åã‚’ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å½¢å¼ã§
+	 * æŒ‡å®šã™ã‚‹ã€‚
+	 * @param nameã€€(ex) java.lang.Object=HOGE#HOGEHOGE
 	 */
 	public void setEditorProperties(Properties name) ;
 	public Properties getEditorProperties() ;

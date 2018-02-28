@@ -29,55 +29,55 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.ioc;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 
 /**
- * EJBÀsƒRƒ}ƒ“ƒhƒCƒ“ƒ^[ƒtƒFƒCƒX<p>
+ * EJBå®Ÿè¡Œã‚³ãƒãƒ³ãƒ‰ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹<p>
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
  */
 public interface Command extends CommandBase {
 	/**
-	 * “ü—ÍƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚é
-	 * @param obj@“ü—ÍƒIƒuƒWƒFƒNƒg
+	 * å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹
+	 * @param objã€€å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 */
 	public void setInputObject(Object obj) ;
 	/**
-	 * o—ÍƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚é
-	 * @param obj	o—ÍƒIƒuƒWƒFƒNƒg
+	 * å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹
+	 * @param obj	å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 */
 	public void setOutObject(Object obj) ;
 	/**
-	 * o—ÍƒIƒuƒWƒFƒNƒg‚ğo—Í‚·‚é
-	 * @return	o—ÍƒIƒuƒWƒFƒNƒg
+	 * å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å‡ºåŠ›ã™ã‚‹
+	 * @return	å‡ºåŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 */
 	public Object getOutputObject() ;	
 	/**
-	 * “ü—ÍƒIƒuƒWƒFƒNƒg‚ğ“ü—Í‚·‚é
-	 * @return	“ü—ÍƒIƒuƒWƒFƒNƒg
+	 * å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å…¥åŠ›ã™ã‚‹
+	 * @return	å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 */
 	public Object getInputObject() ;
 	/**
-	 * ”­¶—áŠO‚ğİ’è‚·‚é
+	 * ç™ºç”Ÿä¾‹å¤–ã‚’è¨­å®šã™ã‚‹
 	 * @param e
 	 */
 	public void setException(Throwable e) ;	
 	/**
-	 * ”­¶—áŠO‚ğæ“¾‚·‚é
-	 * @return ”­¶—áŠO
+	 * ç™ºç”Ÿä¾‹å¤–ã‚’å–å¾—ã™ã‚‹
+	 * @return ç™ºç”Ÿä¾‹å¤–
 	 */
 	public Throwable getException() ;	
 	/**
-	 * Às‚·‚éBeanƒtƒ[‚Ìƒtƒ[ƒL[‚ğo—Í‚·‚é
-	 * @return	ƒtƒ[ƒL[
+	 * å®Ÿè¡Œã™ã‚‹Beanãƒ•ãƒ­ãƒ¼ã®ãƒ•ãƒ­ãƒ¼ã‚­ãƒ¼ã‚’å‡ºåŠ›ã™ã‚‹
+	 * @return	ãƒ•ãƒ­ãƒ¼ã‚­ãƒ¼
 	 */
 	public String getFlowKey() ;
 	/**
-	 * Às‚·‚éBeanƒtƒ[‚Ìƒtƒ[ƒL[‚ğİ’è‚·‚é
-	 * @param flowKey	ƒtƒ[ƒL[
+	 * å®Ÿè¡Œã™ã‚‹Beanãƒ•ãƒ­ãƒ¼ã®ãƒ•ãƒ­ãƒ¼ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹
+	 * @param flowKey	ãƒ•ãƒ­ãƒ¼ã‚­ãƒ¼
 	 */
 	public void setFlowKey(String flowKey) ;
 }

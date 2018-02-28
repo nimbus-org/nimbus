@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.publish.websocket;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link AbstractJMSMessageDispatcherService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX
+ * {@link AbstractJMSMessageDispatcherService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹
  * <p>
  *
  * @author M.Ishida
@@ -42,46 +42,46 @@ import jp.ossc.nimbus.core.ServiceName;
 public interface AbstractJMSMessageDispatcherServiceMBean extends AbstractPublishMessageDispatcherServiceMBean {
 
     /**
-     * JMSƒƒbƒZ[ƒW‚ğóM‚·‚é‚½‚ß‚ÌJmsMessageConsumerFactoryService‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB
+     * JMSãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å—ä¿¡ã™ã‚‹ãŸã‚ã®JmsMessageConsumerFactoryServiceã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return JmsMessageConsumerFactoryService‚ÌƒT[ƒrƒX–¼
+     * @return JmsMessageConsumerFactoryServiceã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName[] getJmsMessageConsumerFactoryServiceNames();
 
     /**
-     * JMSƒƒbƒZ[ƒW‚ğóM‚·‚é‚½‚ß‚ÌJmsMessageConsumerFactoryService‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB
+     * JMSãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å—ä¿¡ã™ã‚‹ãŸã‚ã®JmsMessageConsumerFactoryServiceã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param names JmsMessageConsumerFactoryService‚ÌƒT[ƒrƒX–¼
+     * @param names JmsMessageConsumerFactoryServiceã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJmsMessageConsumerFactoryServiceNames(ServiceName[] names);
 
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉAóM‚ğŠJn‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã€å—ä¿¡ã‚’é–‹å§‹ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @return true‚Ìê‡AóM‚ğŠJn‚·‚é
+     * @return trueã®å ´åˆã€å—ä¿¡ã‚’é–‹å§‹ã™ã‚‹
      */
     public boolean isStartReceiveOnStart();
 
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‚ÉAóM‚ğŠJn‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã€å—ä¿¡ã‚’é–‹å§‹ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param isStart óM‚ğŠJn‚·‚éê‡Atrue
+     * @param isStart å—ä¿¡ã‚’é–‹å§‹ã™ã‚‹å ´åˆã€true
      */
     public void setStartReceiveOnStart(boolean isStart);
 
     /**
-     * ƒƒbƒZ[ƒW‚ÌóMŒ”‚ğæ“¾‚·‚éB
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å—ä¿¡ä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚
      *
-     * @return ƒƒbƒZ[ƒW‚ÌóMŒ”
+     * @return ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å—ä¿¡ä»¶æ•°
      */
     public long getMessageReceiveCount();
 
     /**
-     * óM‚ğŠJn‚·‚éB
+     * å—ä¿¡ã‚’é–‹å§‹ã™ã‚‹ã€‚
      * <p>
      *
      * @throws Exception
@@ -89,7 +89,7 @@ public interface AbstractJMSMessageDispatcherServiceMBean extends AbstractPublis
     public void startReceive() throws Exception;
 
     /**
-     * óM‚ğ’â~‚·‚éB
+     * å—ä¿¡ã‚’åœæ­¢ã™ã‚‹ã€‚
      * <p>
      *
      * @throws Exception

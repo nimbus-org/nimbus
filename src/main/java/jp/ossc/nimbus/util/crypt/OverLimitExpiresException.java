@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.util.crypt;
 
 /**
- * —LŒøŠúŒÀ‚ª‰ß‚¬‚Ä‚µ‚Ü‚Á‚½–‚ğ¦‚·—áŠOƒNƒ‰ƒXB<p>
+ * æœ‰åŠ¹æœŸé™ãŒéãã¦ã—ã¾ã£ãŸäº‹ã‚’ç¤ºã™ä¾‹å¤–ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -41,16 +41,16 @@ public class OverLimitExpiresException extends Exception{
     private static final long serialVersionUID = -4194168020512092039L;
 
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public OverLimitExpiresException(){
         super();
     }
 
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param message ƒƒbƒZ[ƒW
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public OverLimitExpiresException(String message){
         super(message);

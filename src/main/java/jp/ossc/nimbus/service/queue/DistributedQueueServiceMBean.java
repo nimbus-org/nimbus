@@ -36,7 +36,7 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link DistributedQueueService}��MBean�C���^�t�F�[�X<p>
+ * {@link DistributedQueueService}のMBeanインタフェース<p>
  * 
  * @author M.Takata
  * @see DistributedQueueService
@@ -48,95 +48,95 @@ public interface DistributedQueueServiceMBean extends ServiceBaseMBean{
     public ServiceName getDistributedQueueSelectorServiceName();
     
     /**
-     * �L���[�ɑ΂��Ė����擾�҂�������X���b�h��sleep���鎞�Ԃ�ݒ肷��B<p>
-     * �������L���[�҂��̐擪�łȂ��ꍇ��A�L���[�ɗ��܂��ĂȂ��ꍇ�́A�Ă�sleep����B<br>
-     * �f�t�H���g�́A10�b�B
+     * キューに対して無限取得待ちをするスレッドがsleepする時間を設定する。<p>
+     * 自分がキュー待ちの先頭でない場合や、キューに溜まってない場合は、再びsleepする。<br>
+     * デフォルトは、10秒。
      *
-     * @param millis �L���[�ɑ΂��Ė����擾�҂�������X���b�h��sleep���鎞��[ms]
+     * @param millis キューに対して無限取得待ちをするスレッドがsleepする時間[ms]
      */
     public void setSleepTime(long millis);
     
     /**
-     * �L���[�ɑ΂��Ė����擾�҂�������X���b�h��sleep���鎞�Ԃ��擾����B<p>
+     * キューに対して無限取得待ちをするスレッドがsleepする時間を取得する。<p>
      *
-     * @return �L���[�ɑ΂��Ė����擾�҂�������X���b�h��sleep���鎞��[ms]
+     * @return キューに対して無限取得待ちをするスレッドがsleepする時間[ms]
      */
     public long getSleepTime();
     
     /**
-     * �L���[�̍ő�臒l��ݒ肷��B<p>
-     * �L���[�̐[�����ő�臒l�ɓ��B����ƁA�L���[�ւ̓����͑҂�����A�L���[����̈��������Ɠ��������B<br>
-     * �f�t�H���g�́A-1�ŁA�ő�臒l�Ȃ��̏�Ԃł���B<br>
+     * キューの最大閾値を設定する。<p>
+     * キューの深さが最大閾値に到達すると、キューへの投入は待たされ、キューからの引き抜きと同期される。<br>
+     * デフォルトは、-1で、最大閾値なしの状態である。<br>
      *
-     * @param size �L���[�̍ő�臒l
+     * @param size キューの最大閾値
      */
     public void setMaxThresholdSize(int size);
     
     /**
-     * �L���[�̍ő�臒l���擾����B<p>
+     * キューの最大閾値を取得する。<p>
      *
-     * @return �L���[�̍ő�臒l
+     * @return キューの最大閾値
      */
     public int getMaxThresholdSize();
     
     /**
-     * �����Ŏg�p����{@link jp.ossc.nimbus.util.SynchronizeMonitor SynchronizeMonitor}�̎����N���X��ݒ肷��B<p>
+     * 内部で使用する{@link jp.ossc.nimbus.util.SynchronizeMonitor SynchronizeMonitor}の実装クラスを設定する。<p>
      *
-     * @param clazz SynchronizeMonitor�̎����N���X
+     * @param clazz SynchronizeMonitorの実装クラス
      */
     public void setSynchronizeMonitorClass(Class clazz);
     
     /**
-     * �����Ŏg�p����{@link jp.ossc.nimbus.util.SynchronizeMonitor SynchronizeMonitor}�̎����N���X���擾����B<p>
+     * 内部で使用する{@link jp.ossc.nimbus.util.SynchronizeMonitor SynchronizeMonitor}の実装クラスを取得する。<p>
      *
-     * @return SynchronizeMonitor�̎����N���X
+     * @return SynchronizeMonitorの実装クラス
      */
     public Class getSynchronizeMonitorClass();
     
     /**
-     * �L���[������������B <p>
+     * キューを初期化する。 <p>
      */
     public void clear();
     
     /**
-     * ����܂łɃL���[�Ɋi�[���ꂽ�����擾����B<p>
+     * これまでにキューに格納された数を取得する。<p>
      *
-     * @return ����܂łɃL���[�Ɋi�[���ꂽ��
+     * @return これまでにキューに格納された数
      */
     public long getCount();
     
     /**
-     * �O��₢���킹����L���[�Ɋi�[���ꂽ�����擾����B<p>
+     * 前回問い合わせからキューに格納された数を取得する。<p>
      *
-     * @return �O��₢���킹����L���[�Ɋi�[���ꂽ��
+     * @return 前回問い合わせからキューに格納された数
      */
     public long getCountDelta();
     
     /**
-     * �Ō�ɃL���[�Ɋi�[���ꂽ�������擾����B<p>
+     * 最後にキューに格納された時刻を取得する。<p>
      *
-     * @return �Ō�ɃL���[�Ɋi�[���ꂽ����
+     * @return 最後にキューに格納された時刻
      */
     public long getLastPushedTimeMillis();
     
     /**
-     * �Ō�ɃL���[�Ɋi�[���ꂽ�������擾����B<p>
+     * 最後にキューに格納された時刻を取得する。<p>
      *
-     * @return �Ō�ɃL���[�Ɋi�[���ꂽ����
+     * @return 最後にキューに格納された時刻
      */
     public Date getLastPushedTime();
     
     /**
-     * ���݂̃L���[�̐[�����擾����B<p>
+     * 現在のキューの深さを取得する。<p>
      *
-     * @return ���݂̃L���[�̐[��
+     * @return 現在のキューの深さ
      */
     public long getDepth();
     
     /**
-     * �O��₢���킹����̃L���[�̐[�����擾����B<p>
+     * 前回問い合わせからのキューの深さを取得する。<p>
      *
-     * @return �O��₢���킹����̃L���[�̐[��
+     * @return 前回問い合わせからのキューの深さ
      */
     public long getDepthDelta();
 }

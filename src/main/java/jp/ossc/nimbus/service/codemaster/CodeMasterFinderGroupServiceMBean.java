@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.codemaster;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link CodeMasterFinderGroupService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link CodeMasterFinderGroupService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -42,31 +42,31 @@ public interface CodeMasterFinderGroupServiceMBean
  extends ServiceBaseMBean{
 
     /**
-     * ƒOƒ‹[ƒsƒ“ƒO‚·‚éCodeMasterFinder‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹CodeMasterFinderã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param names ƒOƒ‹[ƒsƒ“ƒO‚·‚éCodeMasterFinder‚ÌƒT[ƒrƒX–¼”z—ñ
+     * @param names ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹CodeMasterFinderã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—
      */
     public void setCodeMasterFinderServiceNames(ServiceName[] names);
 
     /**
-     * ƒOƒ‹[ƒsƒ“ƒO‚·‚éCodeMasterFinder‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹CodeMasterFinderã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒOƒ‹[ƒsƒ“ƒO‚·‚éCodeMasterFinder‚ÌƒT[ƒrƒX–¼”z—ñ
+     * @return ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹CodeMasterFinderã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—
      */
     public ServiceName[] getCodeMasterFinderServiceNames();
 
     /**
-     * ‘SƒR[ƒhƒ}ƒXƒ^‚ğXV‚·‚é‚ÉXV‚µ‚È‚¢ƒ}ƒXƒ^‚Ìƒ}ƒXƒ^–¼”z—ñ‚ğİ’è‚·‚éB<p>
-     * w’è‚µ‚È‚¢ê‡‚ÍA‘S‚Ä‚Ìƒ}ƒXƒ^‚ª‘SƒR[ƒhƒ}ƒXƒ^XV‚Éæ“¾‚³‚ê‚éB<br>
+     * å…¨ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‚’æ›´æ–°ã™ã‚‹æ™‚ã«æ›´æ–°ã—ãªã„ãƒã‚¹ã‚¿ã®ãƒã‚¹ã‚¿åé…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãªã„å ´åˆã¯ã€å…¨ã¦ã®ãƒã‚¹ã‚¿ãŒå…¨ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿æ›´æ–°æ™‚ã«å–å¾—ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param names ƒ}ƒXƒ^–¼”z—ñ
+     * @param names ãƒã‚¹ã‚¿åé…åˆ—
      */
     public void setNotUpdateAllMasterNames(String[] names);
 
     /**
-     * ‘SƒR[ƒhƒ}ƒXƒ^‚ğXV‚·‚é‚ÉXV‚µ‚È‚¢ƒ}ƒXƒ^‚Ìƒ}ƒXƒ^–¼”z—ñ‚ğæ“¾‚·‚éB<p>
+     * å…¨ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‚’æ›´æ–°ã™ã‚‹æ™‚ã«æ›´æ–°ã—ãªã„ãƒã‚¹ã‚¿ã®ãƒã‚¹ã‚¿åé…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ}ƒXƒ^–¼”z—ñ
+     * @return ãƒã‚¹ã‚¿åé…åˆ—
      */
     public String[] getNotUpdateAllMasterNames();
 }

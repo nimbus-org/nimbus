@@ -37,7 +37,7 @@ import java.io.IOException;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link CSVTestReporterService}��MBean�C���^�t�F�[�X<p>
+ * {@link CSVTestReporterService}のMBeanインタフェース<p>
  * 
  * @author M.Takata
  * @see CSVTestReporterService
@@ -45,47 +45,47 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 public interface CSVTestReporterServiceMBean extends ServiceBaseMBean{
     
     /**
-     * �o�͂��郌�|�[�gCSV�t�@�C����ݒ肷��B<p>
+     * 出力するレポートCSVファイルを設定する。<p>
      *
-     * @param file �o�͂��郌�|�[�gCSV�t�@�C��
-     * @Exception IOException �w�肵���t�@�C���̃p�X���擾�ł��Ȃ��ꍇ
+     * @param file 出力するレポートCSVファイル
+     * @Exception IOException 指定したファイルのパスが取得できない場合
      */
     public void setOutputFile(File file) throws IOException;
     
     /**
-     * �o�͂��郌�|�[�gCSV�t�@�C�����擾����B<p>
+     * 出力するレポートCSVファイルを取得する。<p>
      *
-     * @param file �o�͂��郌�|�[�gCSV�t�@�C��
+     * @param file 出力するレポートCSVファイル
      */
     public File getOutputFile();
     
     /**
-     * �o�͂��郌�|�[�gCSV�t�@�C���̕����G���R�[�f�B���O��ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�́AOS�̕����G���R�[�f�B���O�ɏ]���B<br>
+     * 出力するレポートCSVファイルの文字エンコーディングを設定する。<p>
+     * 設定しない場合は、OSの文字エンコーディングに従う。<br>
      *
-     * @param encoding �����G���R�[�f�B���O
+     * @param encoding 文字エンコーディング
      */
     public void setEncoding(String encoding);
     
     /**
-     * �o�͂��郌�|�[�gCSV�t�@�C���̕����G���R�[�f�B���O���擾����B<p>
+     * 出力するレポートCSVファイルの文字エンコーディングを取得する。<p>
      *
-     * @return �����G���R�[�f�B���O
+     * @return 文字エンコーディング
      */
     public String getEncoding();
     
     /**
-     * ���|�[�gCSV�t�@�C���ɏo�͂���������̃t�H�[�}�b�g��ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�́Ayyyy/MM/dd HH:mm:ss.SSS�B<br>
+     * レポートCSVファイルに出力する日時情報のフォーマットを設定する。<p>
+     * 設定しない場合は、yyyy/MM/dd HH:mm:ss.SSS。<br>
      *
-     * @param format �������̃t�H�[�}�b�g
+     * @param format 日時情報のフォーマット
      */
     public void setDateFormat(String format);
     
     /**
-     * ���|�[�gCSV�t�@�C���ɏo�͂���������̃t�H�[�}�b�g���擾����B<p>
+     * レポートCSVファイルに出力する日時情報のフォーマットを取得する。<p>
      *
-     * @return �������̃t�H�[�}�b�g
+     * @return 日時情報のフォーマット
      */
     public String getDateFormat();
 }

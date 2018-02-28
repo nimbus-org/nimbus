@@ -35,8 +35,8 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.aop.*;
 
 /**
- * ƒT[ƒuƒŒƒbƒgƒtƒBƒ‹ƒ^ƒCƒ“ƒ^[ƒZƒvƒ^ƒAƒ_ƒvƒ^B<p>
- * {@link Interceptor}‚ÉA{@link ServletFilterInterceptorService}‚Ì‹@”\‚ğ•t‰Á‚·‚éƒAƒ_ƒvƒ^‚Å‚ ‚éB<br>
+ * ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ•ã‚£ãƒ«ã‚¿ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚¢ãƒ€ãƒ—ã‚¿ã€‚<p>
+ * {@link Interceptor}ã«ã€{@link ServletFilterInterceptorService}ã®æ©Ÿèƒ½ã‚’ä»˜åŠ ã™ã‚‹ã‚¢ãƒ€ãƒ—ã‚¿ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -49,11 +49,11 @@ public class ServletFilterInterceptorAdapterService
     private ServiceName interceptorServiceName;
     private Interceptor interceptor;
     
-    // ServletFilterInterceptorAdapterServiceMBean‚ÌJavaDoc
+    // ServletFilterInterceptorAdapterServiceMBeanã®JavaDoc
     public void setInterceptorServiceName(ServiceName name){
         interceptorServiceName = name;
     }
-    // ServletFilterInterceptorAdapterServiceMBean‚ÌJavaDoc
+    // ServletFilterInterceptorAdapterServiceMBeanã®JavaDoc
     public ServiceName getInterceptorServiceName(){
         return interceptorServiceName;
     }
@@ -80,12 +80,12 @@ public class ServletFilterInterceptorAdapterService
     }
     
     /**
-     * ƒT[ƒuƒŒƒbƒgŒÄ‚Ño‚µ‚ğƒCƒ“ƒ^[ƒZƒvƒg‚µ‚ÄAƒAƒ_ƒvƒ^‚µ‚Ä‚¢‚éƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<p>
+     * ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆå‘¼ã³å‡ºã—ã‚’ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ãƒˆã—ã¦ã€ã‚¢ãƒ€ãƒ—ã‚¿ã—ã¦ã„ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<p>
      *
-     * @param context ƒT[ƒuƒŒƒbƒgƒtƒBƒ‹ƒ^ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param chain Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·‚½‚ß‚Ìƒ`ƒF[ƒ“
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable ŒÄ‚Ño‚µæ‚Å—áŠO‚ª”­¶‚µ‚½ê‡A‚Ü‚½‚Í‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚Å”CˆÓ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param context ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ•ã‚£ãƒ«ã‚¿å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param chain æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ãŸã‚ã®ãƒã‚§ãƒ¼ãƒ³
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable å‘¼ã³å‡ºã—å…ˆã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€ã¾ãŸã¯ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ä»»æ„ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public Object invokeFilter(
         ServletFilterInvocationContext context,

@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.writer;
 
 /**
- * ‰üsƒR[ƒh‚ğíœ‚µ‚Ä•¡”s‚Ì•¶š—ñ‚ğ1s‚Ì•¶š—ñ‚É•ÏŠ·‚·‚é{@link WritableElement}À‘•ƒNƒ‰ƒXB<p>
+ * æ”¹è¡Œã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã—ã¦è¤‡æ•°è¡Œã®æ–‡å­—åˆ—ã‚’1è¡Œã®æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹{@link WritableElement}å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -43,53 +43,53 @@ public class LineSimpleElement extends SimpleElement {
     private boolean isTrim;
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public LineSimpleElement(){
     }
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param value •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
+     * @param value å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public LineSimpleElement(Object value){
         super(value);
     }
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @param value •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
+     * @param key ã‚­ãƒ¼
+     * @param value å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public LineSimpleElement(Object key, Object value){
         super(key, value);
     }
     
     /**
-     * ‰üs’¼Œã‚Ì‹ó”’•¶š‚ğƒgƒŠƒ€‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅƒgƒŠƒ€‚µ‚È‚¢B<br>
+     * æ”¹è¡Œç›´å¾Œã®ç©ºç™½æ–‡å­—ã‚’ãƒˆãƒªãƒ ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ãƒˆãƒªãƒ ã—ãªã„ã€‚<br>
      * 
-     * @param trim ƒgƒŠƒ€‚·‚éê‡‚ÍAtrue
+     * @param trim ãƒˆãƒªãƒ ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setTrim(boolean trim){
         isTrim = trim;
     }
     
     /**
-     * ‰üs’¼Œã‚Ì‹ó”’•¶š‚ğƒgƒŠƒ€‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * æ”¹è¡Œç›´å¾Œã®ç©ºç™½æ–‡å­—ã‚’ãƒˆãƒªãƒ ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡‚ÍƒgƒŠƒ€‚·‚é
+     * @return trueã®å ´åˆã¯ãƒˆãƒªãƒ ã™ã‚‹
      */
     public boolean isTrim(){
         return isTrim;
     }
     
     /**
-     * ‰üsƒR[ƒh‚ğíœ‚µ‚Ä•¡”s‚Ì•¶š—ñ‚ğ1s‚Ì•¶š—ñ‚É•ÏŠ·‚·‚éB<p>
+     * æ”¹è¡Œã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã—ã¦è¤‡æ•°è¡Œã®æ–‡å­—åˆ—ã‚’1è¡Œã®æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      * 
-     * @return •ÏŠ·Œã•¶š—ñ
+     * @return å¤‰æ›å¾Œæ–‡å­—åˆ—
      */
     public String toString(){
         final String str = super.toString();

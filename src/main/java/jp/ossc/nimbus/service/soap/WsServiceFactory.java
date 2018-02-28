@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.soap;
 import javax.xml.ws.Service;
 
 /**
- * WebƒT[ƒrƒXƒtƒ@ƒNƒgƒŠ[ƒCƒ“ƒ^[ƒtƒF[ƒXB
+ * Webã‚µãƒ¼ãƒ“ã‚¹ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã€‚
  * <p>
  *
  * @author M.Ishida
@@ -42,27 +42,27 @@ import javax.xml.ws.Service;
 public interface WsServiceFactory {
 
     /**
-     * WebƒT[ƒrƒX‚ğ¶¬‚µ‚Ü‚·B
+     * Webã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
      * <p>
      *
-     * @return WebƒT[ƒrƒX
+     * @return Webã‚µãƒ¼ãƒ“ã‚¹
      * @exception WsServiceException
      */
     public Service getService() throws WsServiceException;
 
     /**
-     * ƒl[ƒ€ƒXƒy[ƒX–¼‚ğæ“¾‚·‚éB
+     * ãƒãƒ¼ãƒ ã‚¹ãƒšãƒ¼ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ƒl[ƒ€ƒXƒy[ƒX–¼
+     * @return ãƒãƒ¼ãƒ ã‚¹ãƒšãƒ¼ã‚¹å
      */
     public String getNameSpace();
 
     /**
-     * ƒ[ƒJƒ‹ƒp[ƒg‚ğæ“¾‚·‚éB
+     * ãƒ­ãƒ¼ã‚«ãƒ«ãƒ‘ãƒ¼ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ƒl[ƒ€ƒXƒy[ƒX–¼
+     * @return ãƒãƒ¼ãƒ ã‚¹ãƒšãƒ¼ã‚¹å
      */
     public String getLocalPart();
 

@@ -43,12 +43,12 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 /**
- * {@link DataSet}��XPath�ŕ\�����ꂽHTML�f�[�^�Ƃ̕ϊ����s��{@link Converter}�B
+ * {@link DataSet}とXPathで表現されたHTMLデータとの変換を行う{@link Converter}。
  * <p>
  *     <ul>
- *         <li>�v���p�e�B�X�L�[�}��{@link XpathPropertySchema}�ł���v���p�e�B�ɑ΂��ĕϊ����s���B</li>
- *         <li>XPath�́AXML�m�[�h�܂���XML�m�[�h���X�g��Ԃ��悤�ɐݒ肵�Ȃ���΂Ȃ�Ȃ��B</li>
- *         <li>���ׂĂ�HTML�^�O�͑啶���ŕ\�����Ȃ���΂Ȃ�Ȃ��B</li>
+ *         <li>プロパティスキーマが{@link XpathPropertySchema}であるプロパティに対して変換を行う。</li>
+ *         <li>XPathは、XMLノードまたはXMLノードリストを返すように設定しなければならない。</li>
+ *         <li>すべてのHTMLタグは大文字で表現しなければならない。</li>
  *     </ul>
  * </p>
  * @author T.Okada

@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.system;
 import java.net.InetAddress;
 
 /**
- * ƒzƒXƒgî•ñŽæ“¾B
+ * ãƒ›ã‚¹ãƒˆæƒ…å ±å–å¾—ã€‚
  * <p>
  *
  * @author M.Ishida
@@ -42,19 +42,19 @@ import java.net.InetAddress;
 public interface HostResolver {
     
     /**
-     * Ž©ƒzƒXƒg‚ÌƒzƒXƒgIPƒAƒhƒŒƒXî•ñ‚ðŽæ“¾‚·‚éB
+     * è‡ªãƒ›ã‚¹ãƒˆã®ãƒ›ã‚¹ãƒˆIPã‚¢ãƒ‰ãƒ¬ã‚¹æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      * 
-     * @return ƒzƒXƒgIPƒAƒhƒŒƒXî•ñ
+     * @return ãƒ›ã‚¹ãƒˆIPã‚¢ãƒ‰ãƒ¬ã‚¹æƒ…å ±
      */
     public InetAddress getLocalHost();
     
     /**
-     * ƒzƒXƒg–¼‚©‚çƒzƒXƒgIPƒAƒhƒŒƒXî•ñ‚ðŽæ“¾‚·‚éB
+     * ãƒ›ã‚¹ãƒˆåã‹ã‚‰ãƒ›ã‚¹ãƒˆIPã‚¢ãƒ‰ãƒ¬ã‚¹æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      * 
-     * @param hostName ƒzƒXƒg–¼
-     * @return ƒzƒXƒgIPƒAƒhƒŒƒXî•ñ
+     * @param hostName ãƒ›ã‚¹ãƒˆå
+     * @return ãƒ›ã‚¹ãƒˆIPã‚¢ãƒ‰ãƒ¬ã‚¹æƒ…å ±
      */
     public InetAddress getHost(String hostName);
     

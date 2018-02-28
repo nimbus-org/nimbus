@@ -32,18 +32,18 @@
 package jp.ossc.nimbus.service.publish;
 
 /**
- * ƒƒbƒZ[ƒW‘—M—p‚ÌƒT[ƒoƒRƒlƒNƒVƒ‡ƒ“¶¬ƒCƒ“ƒ^ƒtƒF[ƒXB<p>
- * ƒƒbƒZ[ƒW‘—M‚ğs‚¤{@link ServerConnection}‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠƒCƒ“ƒ^ƒtƒF[ƒXB<br>
+ * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ç”¨ã®ã‚µãƒ¼ãƒã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ç”Ÿæˆã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
+ * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã‚’è¡Œã†{@link ServerConnection}ã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<br>
  * 
  * @author M.Takata
  */
 public interface ServerConnectionFactory{
     
     /**
-     * ƒT[ƒoƒRƒlƒNƒVƒ‡ƒ“‚ğæ“¾‚·‚éB<br>
+     * ã‚µãƒ¼ãƒã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<br>
      * 
-     * @return ƒT[ƒoƒRƒlƒNƒVƒ‡ƒ“
-     * @exception ConnectionCreateException ƒT[ƒoƒRƒlƒNƒVƒ‡ƒ“‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @return ã‚µãƒ¼ãƒã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
+     * @exception ConnectionCreateException ã‚µãƒ¼ãƒã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public ServerConnection getServerConnection() throws ConnectionCreateException;
 }

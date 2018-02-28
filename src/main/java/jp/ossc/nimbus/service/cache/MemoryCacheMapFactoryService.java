@@ -34,8 +34,8 @@ package jp.ossc.nimbus.service.cache;
 import java.io.Serializable;
 
 /**
- * ƒƒ‚ƒŠƒLƒƒƒbƒVƒ…ƒ}ƒbƒvƒtƒ@ƒNƒgƒŠB<p>
- * {@link MemoryCacheMapService}‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚Å‚ ‚éB<br>
+ * ãƒ¡ãƒ¢ãƒªã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * {@link MemoryCacheMapService}ã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  * @see MemoryCacheMapService
@@ -46,10 +46,10 @@ public class MemoryCacheMapFactoryService
     private static final long serialVersionUID = 830214564353160091L;
     
     /**
-     * {@link MemoryCacheMapService}ƒT[ƒrƒX‚ğ¶¬‚·‚éB<p>
+     * {@link MemoryCacheMapService}ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return MemoryCacheMapServiceƒT[ƒrƒX
-     * @exception Exception MemoryCacheMapService‚Ì¶¬E‹N“®‚É¸”s‚µ‚½ê‡
+     * @return MemoryCacheMapServiceã‚µãƒ¼ãƒ“ã‚¹
+     * @exception Exception MemoryCacheMapServiceã®ç”Ÿæˆãƒ»èµ·å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
      * @see MemoryCacheMapService
      */
     protected AbstractCacheMapService createAbstractCacheMapService()

@@ -37,11 +37,11 @@ import jp.ossc.nimbus.daemon.*;
 import jp.ossc.nimbus.service.queue.*;
 
 /**
- * ƒƒ\ƒbƒh”ñ“¯ŠúŒÄ‚Ño‚µƒCƒ“ƒ^[ƒZƒvƒ^B<p>
- * ƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µ‚É‘Î‚·‚éˆ—‚ğ”ñ“¯Šú‚É‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^‚Å‚ ‚éB<br>
- * ‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚Ì”ñ“¯ŠúŒÄ‚Ño‚µ‚É‚ÍA3í—Ş‚Ì”ñ“¯ŠúŒÄ‚Ño‚µ‚ª‚ ‚éB<br>
- * ‚P‚Â‚ß‚ÍA–ß‚è’l‚ğ•K—v‚Æ‚µ‚È‚¢”ñ“¯ŠúŒÄ‚Ño‚µB‚±‚Ìê‡‚ÍA–ß‚è’l‚Í•K‚¸null‚ğ•Ô‚·B<br>
- * ˆÈ‰º‚ÉA‚»‚Ìê‡‚Ì”ñ“¯ŠúŒÄ‚Ño‚µƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ãƒ¡ã‚½ãƒƒãƒ‰éåŒæœŸå‘¼ã³å‡ºã—ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã€‚<p>
+ * ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—ã«å¯¾ã™ã‚‹å‡¦ç†ã‚’éåŒæœŸã«ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ã‚ã‚‹ã€‚<br>
+ * ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®éåŒæœŸå‘¼ã³å‡ºã—ã«ã¯ã€3ç¨®é¡ã®éåŒæœŸå‘¼ã³å‡ºã—ãŒã‚ã‚‹ã€‚<br>
+ * ï¼‘ã¤ã‚ã¯ã€æˆ»ã‚Šå€¤ã‚’å¿…è¦ã¨ã—ãªã„éåŒæœŸå‘¼ã³å‡ºã—ã€‚ã“ã®å ´åˆã¯ã€æˆ»ã‚Šå€¤ã¯å¿…ãšnullã‚’è¿”ã™ã€‚<br>
+ * ä»¥ä¸‹ã«ã€ãã®å ´åˆã®éåŒæœŸå‘¼ã³å‡ºã—ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -56,8 +56,8 @@ import jp.ossc.nimbus.service.queue.*;
  *     
  * &lt;/server&gt;
  * </pre>
- * ‚Q‚Â‚ß‚ÍA”CˆÓ‚ÌŠÔ‚¾‚¯”ñ“¯ŠúŒÄ‚Ño‚µ‚Ì‰“š‚ğ‘Ò‚Â”ñ“¯ŠúŒÄ‚Ño‚µBŠÔ“à‚É‰“š‚ª•Ô‚Á‚Ä‚­‚ê‚Î–ß‚è’l‚Ü‚½‚Í—áŠO‚ğ•Ô‚µAŠÔ“à‚É‰“š‚ª•Ô‚Á‚Ä‚±‚È‚¯‚ê‚Înull‚ğ•Ô‚·B’A‚µA{@link #setFailToWaitResponseTimeout(boolean) setFailToWaitResponseTimeout(true)}‚Éİ’è‚·‚é‚ÆA{@link AsynchronousTimeoutException}‚ğthrow‚·‚éB<br>
- * ˆÈ‰º‚ÉA‚»‚Ìê‡‚Ì”ñ“¯ŠúŒÄ‚Ño‚µƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ï¼’ã¤ã‚ã¯ã€ä»»æ„ã®æ™‚é–“ã ã‘éåŒæœŸå‘¼ã³å‡ºã—ã®å¿œç­”ã‚’å¾…ã¤éåŒæœŸå‘¼ã³å‡ºã—ã€‚æ™‚é–“å†…ã«å¿œç­”ãŒè¿”ã£ã¦ãã‚Œã°æˆ»ã‚Šå€¤ã¾ãŸã¯ä¾‹å¤–ã‚’è¿”ã—ã€æ™‚é–“å†…ã«å¿œç­”ãŒè¿”ã£ã¦ã“ãªã‘ã‚Œã°nullã‚’è¿”ã™ã€‚ä½†ã—ã€{@link #setFailToWaitResponseTimeout(boolean) setFailToWaitResponseTimeout(true)}ã«è¨­å®šã™ã‚‹ã¨ã€{@link AsynchronousTimeoutException}ã‚’throwã™ã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã€ãã®å ´åˆã®éåŒæœŸå‘¼ã³å‡ºã—ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -74,8 +74,8 @@ import jp.ossc.nimbus.service.queue.*;
  *     
  * &lt;/server&gt;
  * </pre>
- * ‚R‚Â‚ß‚ÍAƒƒ\ƒbƒh‚Ì–ß‚è’l‚âthrow‚³‚ê‚½—áŠO‚ğ”CˆÓ‚Ìƒ^ƒCƒ~ƒ“ƒO‚Åæ“¾‚·‚é”ñ“¯ŠúŒÄ‚Ño‚µB‚±‚Ìê‡‚ÍAƒŒƒXƒ|ƒ“ƒX‚ğŠi”[‚·‚é{@link Queue}ƒT[ƒrƒX‚ğ‚±‚ÌƒT[ƒrƒX‚Ì‘®«‚Éİ’è‚µA‚»‚ÌQueueƒT[ƒrƒX‚©‚ç–ß‚è’l‚âthrow‚³‚ê‚½—áŠO‚ğŠi”[‚µ‚½{@link AsynchronousResponse}‚ğæ“¾‚Å‚«‚éB<br>
- * ˆÈ‰º‚ÉA‚»‚Ìê‡‚Ì”ñ“¯ŠúŒÄ‚Ño‚µƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ï¼“ã¤ã‚ã¯ã€ãƒ¡ã‚½ãƒƒãƒ‰ã®æˆ»ã‚Šå€¤ã‚„throwã•ã‚ŒãŸä¾‹å¤–ã‚’ä»»æ„ã®ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã§å–å¾—ã™ã‚‹éåŒæœŸå‘¼ã³å‡ºã—ã€‚ã“ã®å ´åˆã¯ã€ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚’æ ¼ç´ã™ã‚‹{@link Queue}ã‚µãƒ¼ãƒ“ã‚¹ã‚’ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®å±æ€§ã«è¨­å®šã—ã€ãã®Queueã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰æˆ»ã‚Šå€¤ã‚„throwã•ã‚ŒãŸä¾‹å¤–ã‚’æ ¼ç´ã—ãŸ{@link AsynchronousResponse}ã‚’å–å¾—ã§ãã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã€ãã®å ´åˆã®éåŒæœŸå‘¼ã³å‡ºã—ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -118,67 +118,67 @@ public class MethodAsynchronousInterceptorService extends ServiceBase
     private int invokerThreadSize = 1;
     private boolean isInvokerThreadDaemon = true;
     
-    // MethodAsynchronousInterceptorServiceMBean‚ÌJavaDoc
+    // MethodAsynchronousInterceptorServiceMBeanã®JavaDoc
     public void setRequestQueueServiceName(ServiceName name){
         requestQueueServiceName = name;
     }
     
-    // MethodAsynchronousInterceptorServiceMBean‚ÌJavaDoc
+    // MethodAsynchronousInterceptorServiceMBeanã®JavaDoc
     public ServiceName getRequestQueueServiceName(){
         return requestQueueServiceName;
     }
     
-    // MethodAsynchronousInterceptorServiceMBean‚ÌJavaDoc
+    // MethodAsynchronousInterceptorServiceMBeanã®JavaDoc
     public void setResponseQueueServiceName(ServiceName name){
         responseQueueServiceName = name;
     }
     
-    // MethodAsynchronousInterceptorServiceMBean‚ÌJavaDoc
+    // MethodAsynchronousInterceptorServiceMBeanã®JavaDoc
     public ServiceName getResponseQueueServiceName(){
         return responseQueueServiceName;
     }
     
-    // MethodAsynchronousInterceptorServiceMBean‚ÌJavaDoc
+    // MethodAsynchronousInterceptorServiceMBeanã®JavaDoc
     public void setResponseTimeout(long timeout){
         responseTimeout = timeout;
     }
     
-    // MethodAsynchronousInterceptorServiceMBean‚ÌJavaDoc
+    // MethodAsynchronousInterceptorServiceMBeanã®JavaDoc
     public long getResponseTimeout(){
         return responseTimeout;
     }
     
-    // MethodAsynchronousInterceptorServiceMBean‚ÌJavaDoc
+    // MethodAsynchronousInterceptorServiceMBeanã®JavaDoc
     public void setFailToWaitResponseTimeout(boolean isThrow){
         isFailToWaitResponseTimeout = isThrow;
     }
     
-    // MethodAsynchronousInterceptorServiceMBean‚ÌJavaDoc
+    // MethodAsynchronousInterceptorServiceMBeanã®JavaDoc
     public boolean isFailToWaitResponseTimeout(){
         return isFailToWaitResponseTimeout;
     }
     
-    // MethodAsynchronousInterceptorServiceMBean‚ÌJavaDoc
+    // MethodAsynchronousInterceptorServiceMBeanã®JavaDoc
     public void setInvokerThreadSize(int size){
         invokerThreadSize = size;
     }
     
-    // MethodAsynchronousInterceptorServiceMBean‚ÌJavaDoc
+    // MethodAsynchronousInterceptorServiceMBeanã®JavaDoc
     public int getInvokerThreadSize(){
         return invokerThreadSize;
     }
     
-    // MethodAsynchronousInterceptorServiceMBean‚ÌJavaDoc
+    // MethodAsynchronousInterceptorServiceMBeanã®JavaDoc
     public void setInvokerThreadDaemon(boolean isDaemon){
         isInvokerThreadDaemon = isDaemon;
     }
     
-    // MethodAsynchronousInterceptorServiceMBean‚ÌJavaDoc
+    // MethodAsynchronousInterceptorServiceMBeanã®JavaDoc
     public boolean isInvokerThreadDaemon(){
         return isInvokerThreadDaemon;
     }
     
-    // MethodAsynchronousInterceptorServiceMBean‚ÌJavaDoc
+    // MethodAsynchronousInterceptorServiceMBeanã®JavaDoc
     public int getActiveInvokerThreadSize(){
         if(invokers == null){
             return 0;
@@ -192,20 +192,20 @@ public class MethodAsynchronousInterceptorService extends ServiceBase
         return count;
     }
     
-    // MethodAsynchronousInterceptorServiceMBean‚ÌJavaDoc
+    // MethodAsynchronousInterceptorServiceMBeanã®JavaDoc
     public void setReturnResponse(boolean isReturn){
         isReturnResponse = isReturn;
     }
     
-    // MethodAsynchronousInterceptorServiceMBean‚ÌJavaDoc
+    // MethodAsynchronousInterceptorServiceMBeanã®JavaDoc
     public boolean isReturnResponse(){
         return isReturnResponse;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception QueueƒT[ƒrƒX‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @exception Exception Queueã‚µãƒ¼ãƒ“ã‚¹ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(getRequestQueueServiceName() == null){
@@ -227,10 +227,10 @@ public class MethodAsynchronousInterceptorService extends ServiceBase
             );
         }
         
-        // ƒLƒ…[ó•tŠJn
+        // ã‚­ãƒ¥ãƒ¼å—ä»˜é–‹å§‹
         getRequestQueueService().accept();
         
-        // ƒf[ƒ‚ƒ“‹N“®
+        // ãƒ‡ãƒ¼ãƒ¢ãƒ³èµ·å‹•
         if(invokerThreadSize < 0){
             throw new IllegalArgumentException("invokerThreadSize < 0.");
         }
@@ -246,20 +246,20 @@ public class MethodAsynchronousInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         
-        // ƒf[ƒ‚ƒ“’â~
+        // ãƒ‡ãƒ¼ãƒ¢ãƒ³åœæ­¢
         for(int i = 0; i < daemons.length; i++){
             daemons[i].stop();
             daemons[i] = null;
             invokers[i] = null;
         }
         
-        // ƒLƒ…[ó•t’â~
+        // ã‚­ãƒ¥ãƒ¼å—ä»˜åœæ­¢
         getRequestQueueService().release();
         
         daemons = null;
@@ -271,9 +271,9 @@ public class MethodAsynchronousInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService(){
         
@@ -285,15 +285,15 @@ public class MethodAsynchronousInterceptorService extends ServiceBase
     }
     
     /**
-     * ”ñ“¯ŠúŒÄ‚Ño‚µ‚ğ‚µ‚ÄAnull‚ğ•Ô‚·B<p>
-     * –{—ˆ‚Ìƒƒ\ƒbƒhŒÄ‚Ño‚µ‚Ì–ß‚è‚ÍA{@link #setResponseQueueServiceName(ServiceName)}‚Å{@link Queue}ƒT[ƒrƒX‚ªİ’è‚³‚ê‚Ä‚¢‚ê‚ÎA‚»‚ÌQueue‚ÉA{@link AsynchronousResponse}‚Æ‚µ‚ÄƒLƒ…[‚³‚ê‚Ä‚¢‚é‚Ì‚ÅA‚»‚±‚©‚çæ“¾‚Å‚«‚éB<br>
-     * ƒT[ƒrƒX‚ªŠJn‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA”ñ“¯ŠúŒÄ‚Ño‚µ‚ğs‚í‚¸‚ÉŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<br>
+     * éåŒæœŸå‘¼ã³å‡ºã—ã‚’ã—ã¦ã€nullã‚’è¿”ã™ã€‚<p>
+     * æœ¬æ¥ã®ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã®æˆ»ã‚Šã¯ã€{@link #setResponseQueueServiceName(ServiceName)}ã§{@link Queue}ã‚µãƒ¼ãƒ“ã‚¹ãŒè¨­å®šã•ã‚Œã¦ã„ã‚Œã°ã€ãã®Queueã«ã€{@link AsynchronousResponse}ã¨ã—ã¦ã‚­ãƒ¥ãƒ¼ã•ã‚Œã¦ã„ã‚‹ã®ã§ã€ãã“ã‹ã‚‰å–å¾—ã§ãã‚‹ã€‚<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãŒé–‹å§‹ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€éåŒæœŸå‘¼ã³å‡ºã—ã‚’è¡Œã‚ãšã«æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      * 
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param chain Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·‚½‚ß‚Ìƒ`ƒF[ƒ“
-     * @return null‚ğ•Ô‚·
-     * @exception Throwable ŒÄ‚Ño‚µæ‚Å—áŠO‚ª”­¶‚µ‚½ê‡A‚Ü‚½‚Í‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚Å”CˆÓ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡B’A‚µA–{—ˆŒÄ‚Ño‚³‚ê‚éˆ—‚ªthrow‚µ‚È‚¢RuntimeExceptionˆÈŠO‚Ì—áŠO‚ğthrow‚µ‚Ä‚àAŒÄ‚Ño‚µŒ³‚É‚Í“`”d‚³‚ê‚È‚¢B
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param chain æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ãŸã‚ã®ãƒã‚§ãƒ¼ãƒ³
+     * @return nullã‚’è¿”ã™
+     * @exception Throwable å‘¼ã³å‡ºã—å…ˆã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€ã¾ãŸã¯ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ä»»æ„ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€‚ä½†ã—ã€æœ¬æ¥å‘¼ã³å‡ºã•ã‚Œã‚‹å‡¦ç†ãŒthrowã—ãªã„RuntimeExceptionä»¥å¤–ã®ä¾‹å¤–ã‚’throwã—ã¦ã‚‚ã€å‘¼ã³å‡ºã—å…ƒã«ã¯ä¼æ’­ã•ã‚Œãªã„ã€‚
      */
     public Object invoke(
         InvocationContext context,
@@ -350,54 +350,54 @@ public class MethodAsynchronousInterceptorService extends ServiceBase
     }
     
     /**
-     * ŒÄ‚Ño‚µ‚ğ”ñ“¯Šú‚É‚·‚é‚½‚ß‚Ì{@link Queue}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * å‘¼ã³å‡ºã—ã‚’éåŒæœŸã«ã™ã‚‹ãŸã‚ã®{@link Queue}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param queue QueueƒT[ƒrƒX
+     * @param queue Queueã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setRequestQueueService(Queue queue){
         this.requestQueue = queue;
     }
     
     /**
-     * ŒÄ‚Ño‚µ‚ğ”ñ“¯Šú‚É‚·‚é‚½‚ß‚Ì{@link Queue}ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * å‘¼ã³å‡ºã—ã‚’éåŒæœŸã«ã™ã‚‹ãŸã‚ã®{@link Queue}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return QueueƒT[ƒrƒX
+     * @return Queueã‚µãƒ¼ãƒ“ã‚¹
      */
     protected Queue getRequestQueueService(){
         return requestQueue;
     }
     
     /**
-     * ŒÄ‚Ño‚µ‚ğ”ñ“¯Šú‚É‚·‚é‚½‚ß‚ÌƒfƒtƒHƒ‹ƒg‚Ì{@link Queue}ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * å‘¼ã³å‡ºã—ã‚’éåŒæœŸã«ã™ã‚‹ãŸã‚ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link Queue}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒfƒtƒHƒ‹ƒg‚ÌQueueƒT[ƒrƒX
+     * @return ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®Queueã‚µãƒ¼ãƒ“ã‚¹
      */
     protected DefaultQueueService getDefaultRequestQueueService(){
         return defaultRequestQueue;
     }
     
     /**
-     * ŒÄ‚Ño‚µ‚ğ”ñ“¯Šú‚É‚·‚é‚½‚ß‚ÌƒfƒtƒHƒ‹ƒg‚Ì{@link Queue}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * å‘¼ã³å‡ºã—ã‚’éåŒæœŸã«ã™ã‚‹ãŸã‚ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link Queue}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param queue ƒfƒtƒHƒ‹ƒg‚ÌQueueƒT[ƒrƒX
+     * @param queue ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®Queueã‚µãƒ¼ãƒ“ã‚¹
      */
     protected void setDefaultRequestQueueService(DefaultQueueService queue){
         defaultRequestQueue = queue;
     }
     
     /**
-     * ”ñ“¯ŠúŒÄ‚Ño‚µ‚Ì–ß‚è‚ğŠi”[‚·‚é‚½‚ß‚Ì{@link Queue}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * éåŒæœŸå‘¼ã³å‡ºã—ã®æˆ»ã‚Šã‚’æ ¼ç´ã™ã‚‹ãŸã‚ã®{@link Queue}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param queue QueueƒT[ƒrƒX
+     * @param queue Queueã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setResponseQueue(Queue queue){
         this.responseQueue = queue;
     }
     
     /**
-     * ”ñ“¯ŠúŒÄ‚Ño‚µ‚Ì–ß‚è‚ğŠi”[‚·‚é{‚½‚ß‚Ì@link Queue}ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * éåŒæœŸå‘¼ã³å‡ºã—ã®æˆ»ã‚Šã‚’æ ¼ç´ã™ã‚‹{ãŸã‚ã®@link Queue}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return QueueƒT[ƒrƒX
+     * @return Queueã‚µãƒ¼ãƒ“ã‚¹
      */
     protected Queue getResponseQueue(){
         if(responseQueue != null){
@@ -413,7 +413,7 @@ public class MethodAsynchronousInterceptorService extends ServiceBase
                 tmpQueue.create();
                 tmpQueue.start();
             }catch(Exception e){
-                // ”­¶‚µ‚È‚¢‚Í‚¸
+                // ç™ºç”Ÿã—ãªã„ã¯ãš
             }
             return tmpQueue;
         }
@@ -423,62 +423,62 @@ public class MethodAsynchronousInterceptorService extends ServiceBase
     protected class Invoker implements DaemonRunnable{
         
         /**
-         * Às’†‚©‚Ç‚¤‚©‚ğ¦‚·ƒtƒ‰ƒOB<p>
+         * å®Ÿè¡Œä¸­ã‹ã©ã†ã‹ã‚’ç¤ºã™ãƒ•ãƒ©ã‚°ã€‚<p>
          */
         public boolean isActive;
         
         /**
-         * ƒf[ƒ‚ƒ“‚ªŠJn‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒé–‹å§‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          * 
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onStart() {
             return true;
         }
         
         /**
-         * ƒf[ƒ‚ƒ“‚ª’â~‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒåœæ­¢ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          * 
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onStop() {
             return true;
         }
         
         /**
-         * ƒf[ƒ‚ƒ“‚ª’†’f‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒä¸­æ–­ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          * 
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onSuspend() {
             return true;
         }
         
         /**
-         * ƒf[ƒ‚ƒ“‚ªÄŠJ‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒå†é–‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          * 
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onResume() {
             return true;
         }
         
         /**
-         * ƒLƒ…[‚©‚ç‚P‚Âæ‚èo‚µ‚Ä•Ô‚·B<p>
+         * ã‚­ãƒ¥ãƒ¼ã‹ã‚‰ï¼‘ã¤å–ã‚Šå‡ºã—ã¦è¿”ã™ã€‚<p>
          * 
-         * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
-         * @return ŒÄ‚Ño‚µî•ñ‚ğŠi”[‚µ‚½{@link MethodAsynchronousInterceptorService.InvocationInfo}ƒIƒuƒWƒFƒNƒg
+         * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @return å‘¼ã³å‡ºã—æƒ…å ±ã‚’æ ¼ç´ã—ãŸ{@link MethodAsynchronousInterceptorService.InvocationInfo}ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
          */
         public Object provide(DaemonControl ctrl){
             return getRequestQueueService().get();
         }
         
         /**
-         * ˆø”dequeued‚Å“n‚³‚ê‚½{@link MethodAsynchronousInterceptorService.InvocationInfo}ƒIƒuƒWƒFƒNƒg‚ğg‚Á‚ÄAŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<p>
-         * ŒÄ‚Ño‚µ‚Ì–ß‚èi–ß‚è’l‚Ü‚½‚Íthrow‚³‚ê‚½—áŠOj‚ÍA{@link #setResponseQueueServiceName(ServiceName)}‚Å{@link Queue}ƒT[ƒrƒX‚ªİ’è‚³‚ê‚Ä‚¢‚ê‚ÎA‚»‚ÌQueue‚ÉA{@link AsynchronousResponse}‚Æ‚µ‚Ä‹l‚ß‚éB<br>
+         * å¼•æ•°dequeuedã§æ¸¡ã•ã‚ŒãŸ{@link MethodAsynchronousInterceptorService.InvocationInfo}ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½¿ã£ã¦ã€æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<p>
+         * å‘¼ã³å‡ºã—ã®æˆ»ã‚Šï¼ˆæˆ»ã‚Šå€¤ã¾ãŸã¯throwã•ã‚ŒãŸä¾‹å¤–ï¼‰ã¯ã€{@link #setResponseQueueServiceName(ServiceName)}ã§{@link Queue}ã‚µãƒ¼ãƒ“ã‚¹ãŒè¨­å®šã•ã‚Œã¦ã„ã‚Œã°ã€ãã®Queueã«ã€{@link AsynchronousResponse}ã¨ã—ã¦è©°ã‚ã‚‹ã€‚<br>
          *
-         * @param dequeued ƒLƒ…[‚©‚çæ‚èo‚³‚ê‚½ƒIƒuƒWƒFƒNƒg
-         * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
+         * @param dequeued ã‚­ãƒ¥ãƒ¼ã‹ã‚‰å–ã‚Šå‡ºã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
          */
         public void consume(Object dequeued, DaemonControl ctrl){
             if(dequeued == null){
@@ -534,7 +534,7 @@ public class MethodAsynchronousInterceptorService extends ServiceBase
         }
         
         /**
-         * ƒLƒ…[‚Ì’†g‚ğ“f‚«o‚·B<p>
+         * ã‚­ãƒ¥ãƒ¼ã®ä¸­èº«ã‚’åãå‡ºã™ã€‚<p>
          */
         public void garbage(){
             if(getRequestQueueService() != null){
@@ -546,7 +546,7 @@ public class MethodAsynchronousInterceptorService extends ServiceBase
     }
     
     /**
-     * ŒÄ‚Ño‚µî•ñB<p>
+     * å‘¼ã³å‡ºã—æƒ…å ±ã€‚<p>
      *
      * @author M.Takata
      */
@@ -555,31 +555,31 @@ public class MethodAsynchronousInterceptorService extends ServiceBase
         private static final long serialVersionUID = 7784186054966609415L;
         
         /**
-         * {@link Interceptor}‚Ìƒƒ\ƒbƒhŒÄ‚Ño‚µî•ñB<p>
+         * {@link Interceptor}ã®ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—æƒ…å ±ã€‚<p>
          */
         public MethodInvocationContext context;
         
         /**
-         * ƒCƒ“ƒ^[ƒZƒvƒ^‚Ìƒ`ƒF[ƒ“B<p>
+         * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ãƒã‚§ãƒ¼ãƒ³ã€‚<p>
          */
         public InterceptorChain chain;
         
         /**
-         * ƒŒƒXƒ|ƒ“ƒX‘Ò‚¿‚ğ‚µ‚Äƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡
+         * ãƒ¬ã‚¹ãƒãƒ³ã‚¹å¾…ã¡ã‚’ã—ã¦ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆ
          */
         public volatile boolean isTimeout;
         
         /**
-         * ‰“šQueueB<p>
+         * å¿œç­”Queueã€‚<p>
          */
         public Queue responseQueue;
         
         /**
-         * ŒÄ‚Ño‚µî•ñ‚ğ¶¬‚·‚éB<p>
+         * å‘¼ã³å‡ºã—æƒ…å ±ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          *
-         * @param context {@link Interceptor}‚Ìƒƒ\ƒbƒhŒÄ‚Ño‚µî•ñ
-         * @param chain ƒCƒ“ƒ^[ƒZƒvƒ^‚Ìƒ`ƒF[ƒ“
-         * @param resQueue ‰“šQueue
+         * @param context {@link Interceptor}ã®ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—æƒ…å ±
+         * @param chain ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ãƒã‚§ãƒ¼ãƒ³
+         * @param resQueue å¿œç­”Queue
          */
         public InvocationInfo(
             MethodInvocationContext context,

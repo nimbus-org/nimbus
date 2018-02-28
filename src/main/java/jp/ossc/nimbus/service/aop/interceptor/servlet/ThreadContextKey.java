@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.aop.interceptor.servlet;
 
 /**
- * ƒXƒŒƒbƒh’PˆÊ‚Ì{@link jp.ossc.nimbus.service.context.Context Context}‚ÌƒL[’è”‚ğ’è‹`‚µ‚½ƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * ã‚¹ãƒ¬ãƒƒãƒ‰å˜ä½ã®{@link jp.ossc.nimbus.service.context.Context Context}ã®ã‚­ãƒ¼å®šæ•°ã‚’å®šç¾©ã—ãŸã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -40,15 +40,15 @@ public interface ThreadContextKey
  extends jp.ossc.nimbus.service.aop.interceptor.ThreadContextKey{
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒgƒpƒXID‚ÌƒL[B<p>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆãƒ‘ã‚¹IDã®ã‚­ãƒ¼ã€‚<p>
      */
     public static final String CONTEXT_PATH = "CONTEXT_PATH";
     /**
-     * ƒT[ƒuƒŒƒbƒgƒpƒXID‚ÌƒL[B<p>
+     * ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ‘ã‚¹IDã®ã‚­ãƒ¼ã€‚<p>
      */
     public static final String SERVLET_PATH = "SERVLET_PATH";
     /**
-     * ƒZƒbƒVƒ‡ƒ“ID‚ÌƒL[B<p>
+     * ã‚»ãƒƒã‚·ãƒ§ãƒ³IDã®ã‚­ãƒ¼ã€‚<p>
      */
     public static final String SESSION_ID = "SESSION_ID";
 }

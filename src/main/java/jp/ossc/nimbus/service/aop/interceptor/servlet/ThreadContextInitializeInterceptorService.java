@@ -42,7 +42,7 @@ import jp.ossc.nimbus.service.sequence.*;
 import jp.ossc.nimbus.service.codemaster.*;
 
 /**
- * ƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒg‰Šú‰»ƒCƒ“ƒ^[ƒZƒvƒ^B<p>
+ * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆåˆæœŸåŒ–ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã€‚<p>
  *
  * @author M.Takata
  */
@@ -73,67 +73,67 @@ public class ThreadContextInitializeInterceptorService
     
     protected ThreadLocal callStack;
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public void setThreadContextServiceName(ServiceName name){
         threadContextServiceName = name;
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public ServiceName getThreadContextServiceName(){
         return threadContextServiceName;
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public void setCodeMasterFinderServiceName(ServiceName name){
         codeMasterFinderServiceName = name;
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public ServiceName getCodeMasterFinderServiceName(){
         return codeMasterFinderServiceName;
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public void setSequenceServiceName(ServiceName name){
         sequenceServiceName = name;
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public ServiceName getSequenceServiceName(){
         return sequenceServiceName;
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public void setContextValueServiceNames(ServiceNameRef[] names){
         contextValueServiceNames = names;
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public ServiceNameRef[] getContextValueServiceNames(){
         return contextValueServiceNames;
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public void setContextValueRequestParameter(Properties map){
         contextValueRequestParameter = map;
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public Properties getContextValueRequestParameter(){
         return contextValueRequestParameter;
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public void setContextValueMapping(Map mapping){
         contextValueMapping = mapping;
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public Map getContextValueMapping(){
         return contextValueMapping;
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public void setContextValue(String key, Object value){
         if(contextValueMapping == null){
             contextValueMapping = new HashMap();
@@ -141,7 +141,7 @@ public class ThreadContextInitializeInterceptorService
         contextValueMapping.put(key, value);
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public Object getContextValue(String key){
         if(contextValueMapping == null){
             return null;
@@ -149,90 +149,90 @@ public class ThreadContextInitializeInterceptorService
         return contextValueMapping.get(key);
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public void setOutputContextPath(boolean isOutput){
         isOutputContextPath = isOutput;
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public boolean isOutputContextPath(){
         return isOutputContextPath;
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public void setOutputServletPath(boolean isOutput){
         isOutputServletPath = isOutput;
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public boolean isOutputServletPath(){
         return isOutputServletPath;
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public void setOutputSessionID(boolean isOutput){
         isOutputSessionID = isOutput;
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public boolean isOutputSessionID(){
         return isOutputSessionID;
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public void setOutputThreadName(boolean isOutput){
         isOutputThreadName = isOutput;
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public boolean isOutputThreadName(){
         return isOutputThreadName;
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public void setOutputThreadGroupName(boolean isOutput){
         isOutputThreadGroupName = isOutput;
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public boolean isOutputThreadGroupName(){
         return isOutputThreadGroupName;
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public void setNewSession(boolean isNew){
         isNewSession = isNew;
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public boolean isNewSession(){
         return isNewSession;
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public boolean isInitializeRecursiveCall(){
         return isInitializeRecursiveCall;
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public void setInitializeRecursiveCall(boolean isInitialize){
         isInitializeRecursiveCall = isInitialize;
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public boolean isClear(){
         return isClear;
     }
     
-    // ThreadContextInitializeInterceptorServiceMBean‚ÌJavaDoc
+    // ThreadContextInitializeInterceptorServiceMBeanã®JavaDoc
     public void setClear(boolean isClear){
         this.isClear = isClear;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJn‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(threadContextServiceName == null){
@@ -260,22 +260,22 @@ public class ThreadContextInitializeInterceptorService
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         callStack = null;
     }
     
     /**
-     * ƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒg‚ğ‰Šú‰»‚µ‚ÄAŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<p>
-     * ƒT[ƒrƒX‚ªŠJn‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‰½‚à‚¹‚¸‚ÉŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<br>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’åˆæœŸåŒ–ã—ã¦ã€æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãŒé–‹å§‹ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ä½•ã‚‚ã›ãšã«æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param chain Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·‚½‚ß‚Ìƒ`ƒF[ƒ“
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable ŒÄ‚Ño‚µæ‚Å—áŠO‚ª”­¶‚µ‚½ê‡A‚Ü‚½‚Í‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚Å”CˆÓ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡B’A‚µA–{—ˆŒÄ‚Ño‚³‚ê‚éˆ—‚ªthrow‚µ‚È‚¢RuntimeExceptionˆÈŠO‚Ì—áŠO‚ğthrow‚µ‚Ä‚àAŒÄ‚Ño‚µŒ³‚É‚Í“`”d‚³‚ê‚È‚¢B
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param chain æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ãŸã‚ã®ãƒã‚§ãƒ¼ãƒ³
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable å‘¼ã³å‡ºã—å…ˆã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€ã¾ãŸã¯ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ä»»æ„ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€‚ä½†ã—ã€æœ¬æ¥å‘¼ã³å‡ºã•ã‚Œã‚‹å‡¦ç†ãŒthrowã—ãªã„RuntimeExceptionä»¥å¤–ã®ä¾‹å¤–ã‚’throwã—ã¦ã‚‚ã€å‘¼ã³å‡ºã—å…ƒã«ã¯ä¼æ’­ã•ã‚Œãªã„ã€‚
      */
     public Object invokeFilter(
         ServletFilterInvocationContext context,
@@ -408,14 +408,14 @@ public class ThreadContextInitializeInterceptorService
     }
     
     /**
-     * ƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒgŒÄ‚Ño‚µƒXƒ^ƒbƒNB<p>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆå‘¼ã³å‡ºã—ã‚¹ã‚¿ãƒƒã‚¯ã€‚<p>
      *
      * @author M.Takata
      */
     protected static class CallStack{
         
         /**
-         * ƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒg‰Šú‰»ƒCƒ“ƒ^[ƒZƒvƒ^‚ª“ü‚êq‚ÅŒÄ‚Ño‚³‚ê‚½ê‡‚ÉA‚»‚Ì“ü‚êq‚Ì[‚³‚ğ¦‚·ƒCƒ“ƒfƒbƒNƒXB<p>
+         * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆåˆæœŸåŒ–ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãŒå…¥ã‚Œå­ã§å‘¼ã³å‡ºã•ã‚ŒãŸå ´åˆã«ã€ãã®å…¥ã‚Œå­ã®æ·±ã•ã‚’ç¤ºã™ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚<p>
          */
         public int stackIndex;
     }

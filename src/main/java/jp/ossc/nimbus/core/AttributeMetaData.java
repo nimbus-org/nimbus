@@ -35,11 +35,11 @@ import java.io.*;
 import org.w3c.dom.*;
 
 /**
- * ‘®«’è‹`&lt;attribute&gt;—v‘fƒƒ^ƒf[ƒ^B<p>
- * ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚Ì&lt;attribute&gt;—v‘f‚É‹Lq‚³‚ê‚½“à—e‚ğŠi”[‚·‚éƒƒ^ƒf[ƒ^ƒRƒ“ƒeƒi‚Å‚ ‚éB<p>
+ * å±æ€§å®šç¾©&lt;attribute&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
+ * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®&lt;attribute&gt;è¦ç´ ã«è¨˜è¿°ã•ã‚ŒãŸå†…å®¹ã‚’æ ¼ç´ã™ã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠã§ã‚ã‚‹ã€‚<p>
  *
  * @author M.Takata
- * @see <a href="nimbus-service_1_0.dtd">ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹DTD</a>
+ * @see <a href="nimbus-service_1_0.dtd">ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«DTD</a>
  */
 public class AttributeMetaData extends MetaData
  implements Serializable{
@@ -47,7 +47,7 @@ public class AttributeMetaData extends MetaData
     private static final long serialVersionUID = 1989664413173523795L;
     
     /**
-     * &lt;service&gt;—v‘f‚Ìq—v‘f&lt;attribute&gt;—v‘f‚Ì—v‘f–¼•¶š—ñB<p>
+     * &lt;service&gt;è¦ç´ ã®å­è¦ç´ &lt;attribute&gt;è¦ç´ ã®è¦ç´ åæ–‡å­—åˆ—ã€‚<p>
      */
     public static final String ATTRIBUTE_TAG_NAME = "attribute";
     
@@ -64,91 +64,91 @@ public class AttributeMetaData extends MetaData
     protected boolean isNullValue;
     
     /**
-     * e—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      * 
-     * @param parent e—v‘f‚Ìƒƒ^ƒf[ƒ^
+     * @param parent è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public AttributeMetaData(MetaData parent){
         super(parent);
     }
     
     /**
-     * ‚±‚Ì&lt;attribute&gt;—v‘f‚Ìname‘®«‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;attribute&gt;è¦ç´ ã®nameå±æ€§ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return name‘®«‚Ì’l
+     * @return nameå±æ€§ã®å€¤
      */
     public String getName(){
         return name;
     }
     
     /**
-     * ‚±‚Ì&lt;attribute&gt;—v‘f‚Ìname‘®«‚Ì’l‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;attribute&gt;è¦ç´ ã®nameå±æ€§ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name name‘®«‚Ì’l
+     * @param name nameå±æ€§ã®å€¤
      */
     public void setName(String name){
         this.name = name;
     }
     
     /**
-     * ‚±‚Ì&lt;attribute&gt;—v‘f‚Ìtype‘®«‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;attribute&gt;è¦ç´ ã®typeå±æ€§ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return type‘®«‚Ì’l
+     * @return typeå±æ€§ã®å€¤
      */
     public String getType(){
         return type;
     }
     
     /**
-     * ‚±‚Ì&lt;attribute&gt;—v‘f‚Ìtype‘®«‚Ì’l‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;attribute&gt;è¦ç´ ã®typeå±æ€§ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param type type‘®«‚Ì’l
+     * @param type typeå±æ€§ã®å€¤
      */
     public void setType(String type){
         this.type = type;
     }
     
     /**
-     * ‚±‚Ì&lt;attribute&gt;—v‘f‚Ì“à—e‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;attribute&gt;è¦ç´ ã®å†…å®¹ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return &lt;attribute&gt;—v‘f‚Ì“à—e
+     * @return &lt;attribute&gt;è¦ç´ ã®å†…å®¹
      */
     public Object getValue(){
         return value;
     }
     
     /**
-     * ‚±‚Ì&lt;attribute&gt;—v‘f‚Ì“à—e‚Ì’l‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;attribute&gt;è¦ç´ ã®å†…å®¹ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param value &lt;attribute&gt;—v‘f‚Ì“à—e
+     * @param value &lt;attribute&gt;è¦ç´ ã®å†…å®¹
      */
     public void setValue(Object value){
         this.value = value;
     }
     
     /**
-     * ‚±‚Ì&lt;attribute&gt;—v‘f‚ÌnullValue‘®«‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;attribute&gt;è¦ç´ ã®nullValueå±æ€§ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return nullValue‘®«‚Ì’l
+     * @return nullValueå±æ€§ã®å€¤
      */
     public boolean isNullValue(){
         return isNullValue;
     }
     
     /**
-     * ‚±‚Ì&lt;attribute&gt;—v‘f‚ÌnullValue‘®«‚Ì’l‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;attribute&gt;è¦ç´ ã®nullValueå±æ€§ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param flg nullValue‘®«‚Ì’l
+     * @param flg nullValueå±æ€§ã®å€¤
      */
     public void setNullValue(boolean flg){
         isNullValue = flg;
     }
     
     /**
-     * &lt;attribute&gt;—v‘f‚ÌElement‚ğƒp[ƒX‚µ‚ÄA©•ª©g‚Ì‰Šú‰»A‹y‚Ñq—v‘f‚Ìƒƒ^ƒf[ƒ^‚Ì¶¬‚ğs‚¤B<p>
+     * &lt;attribute&gt;è¦ç´ ã®Elementã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦ã€è‡ªåˆ†è‡ªèº«ã®åˆæœŸåŒ–ã€åŠã³å­è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã‚’è¡Œã†ã€‚<p>
      *
-     * @param element &lt;attribute&gt;—v‘f‚ÌElement
-     * @exception DeploymentException &lt;attribute&gt;—v‘f‚Ì‰ğÍA‚»‚ÌŒ‹‰Ê‚É‚æ‚éƒƒ^ƒf[ƒ^‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @param element &lt;attribute&gt;è¦ç´ ã®Element
+     * @exception DeploymentException &lt;attribute&gt;è¦ç´ ã®è§£æã€ãã®çµæœã«ã‚ˆã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void importXML(Element element) throws DeploymentException{
         super.importXML(element);

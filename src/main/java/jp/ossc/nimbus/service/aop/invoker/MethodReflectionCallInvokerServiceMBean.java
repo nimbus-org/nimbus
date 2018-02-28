@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aop.invoker;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link MethodReflectionCallInvokerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link MethodReflectionCallInvokerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see MethodReflectionCallInvokerService
@@ -42,17 +42,17 @@ import jp.ossc.nimbus.core.*;
 public interface MethodReflectionCallInvokerServiceMBean extends ServiceBaseMBean{
     
     /**
-     * {@link jp.ossc.nimbus.service.performance.ResourceUsage}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * İ’è‚µ‚È‚¢ê‡‚ÍA{@link MethodReflectionCallInvokerService#getResourceUsage() getResourceUsage()}‚Ì–ß‚è’l‚ÍAnullB<br>
+     * {@link jp.ossc.nimbus.service.performance.ResourceUsage}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã—ãªã„å ´åˆã¯ã€{@link MethodReflectionCallInvokerService#getResourceUsage() getResourceUsage()}ã®æˆ»ã‚Šå€¤ã¯ã€nullã€‚<br>
      *
-     * @param name ResourceUsageƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ResourceUsageã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setResourceUsageServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.performance.ResourceUsage}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.performance.ResourceUsage}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ResourceUsageƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ResourceUsageã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getResourceUsageServiceName();
 }

@@ -34,69 +34,69 @@ package jp.ossc.nimbus.service.aop.interceptor;
 import java.util.List;
 
 /**
- * ƒuƒŒƒCƒNƒ|ƒCƒ“ƒgB<p>
+ * ãƒ–ãƒ¬ã‚¤ã‚¯ãƒã‚¤ãƒ³ãƒˆã€‚<p>
  *
  * @author M.Takata
  */
 public interface BreakPoint{
     
     /**
-     * ƒuƒŒƒCƒNƒ|ƒCƒ“ƒg‚Ì—LŒø/–³Œø‚ğİ’è‚·‚éB<p>
+     * ãƒ–ãƒ¬ã‚¤ã‚¯ãƒã‚¤ãƒ³ãƒˆã®æœ‰åŠ¹/ç„¡åŠ¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param enabled —LŒø‚É‚·‚éê‡‚ÍAtrue
+     * @param enabled æœ‰åŠ¹ã«ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setEnabled(boolean enabled);
     
     /**
-     * ƒuƒŒƒCƒNƒ|ƒCƒ“ƒg‚Ì—LŒø/–³Œø‚ğ”»’è‚·‚éB<p>
+     * ãƒ–ãƒ¬ã‚¤ã‚¯ãƒã‚¤ãƒ³ãƒˆã®æœ‰åŠ¹/ç„¡åŠ¹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A—LŒø
+     * @return trueã®å ´åˆã€æœ‰åŠ¹
      */
     public boolean isEnabled();
     
     /**
-     * ƒuƒŒƒCƒNƒ|ƒCƒ“ƒg‚Å‘Ò‹@‚µ‚Ä‚¢‚éƒXƒŒƒbƒh‚ğÄŠJ‚·‚éB<p>
+     * ãƒ–ãƒ¬ã‚¤ã‚¯ãƒã‚¤ãƒ³ãƒˆã§å¾…æ©Ÿã—ã¦ã„ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’å†é–‹ã™ã‚‹ã€‚<p>
      */
     public void resume();
     
     /**
-     * ƒuƒŒƒCƒNƒ|ƒCƒ“ƒg‚Å‘Ò‹@‚µ‚Ä‚¢‚éƒXƒŒƒbƒh‚ğ‘S‚ÄÄŠJ‚·‚éB<p>
+     * ãƒ–ãƒ¬ã‚¤ã‚¯ãƒã‚¤ãƒ³ãƒˆã§å¾…æ©Ÿã—ã¦ã„ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’å…¨ã¦å†é–‹ã™ã‚‹ã€‚<p>
      */
     public void resumeAll();
     
     /**
-     * ƒuƒŒƒCƒNƒ|ƒCƒ“ƒg‚Å‘Ò‹@‚µ‚Ä‚¢‚éƒXƒŒƒbƒh–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ–ãƒ¬ã‚¤ã‚¯ãƒã‚¤ãƒ³ãƒˆã§å¾…æ©Ÿã—ã¦ã„ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒuƒŒƒCƒNƒ|ƒCƒ“ƒg‚Å‘Ò‹@‚µ‚Ä‚¢‚éƒXƒŒƒbƒh–¼‚ÌƒŠƒXƒg
+     * @return ãƒ–ãƒ¬ã‚¤ã‚¯ãƒã‚¤ãƒ³ãƒˆã§å¾…æ©Ÿã—ã¦ã„ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰åã®ãƒªã‚¹ãƒˆ
      */
     public List suspendThreads();
     
     /**
-     * ƒuƒŒƒCƒNƒ|ƒCƒ“ƒg‚ÉƒXƒŒƒbƒh‚ª“ü‚Á‚Ä‚­‚é‚Ü‚Å‘Ò‹@‚·‚éB<p>
+     * ãƒ–ãƒ¬ã‚¤ã‚¯ãƒã‚¤ãƒ³ãƒˆã«ã‚¹ãƒ¬ãƒƒãƒ‰ãŒå…¥ã£ã¦ãã‚‹ã¾ã§å¾…æ©Ÿã™ã‚‹ã€‚<p>
      */
     public void waitSuspend() throws InterruptedException;
     
     /**
-     * ƒuƒŒƒCƒNƒ|ƒCƒ“ƒg‚ÉƒXƒŒƒbƒh‚ª“ü‚Á‚Ä‚­‚é‚Ü‚Å‘Ò‹@‚·‚éB<p>
+     * ãƒ–ãƒ¬ã‚¤ã‚¯ãƒã‚¤ãƒ³ãƒˆã«ã‚¹ãƒ¬ãƒƒãƒ‰ãŒå…¥ã£ã¦ãã‚‹ã¾ã§å¾…æ©Ÿã™ã‚‹ã€‚<p>
      *
-     * @param timeout ‘Ò‹@Å‘åŠÔ[ms]
-     * @return ƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡‚ÍAfalse
+     * @param timeout å¾…æ©Ÿæœ€å¤§æ™‚é–“[ms]
+     * @return ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆã¯ã€false
      */
     public boolean waitSuspend(long timeout) throws InterruptedException;
     
     /**
-     * ƒuƒŒƒCƒNƒ|ƒCƒ“ƒg‚Éw’è‚³‚ê‚½ƒXƒŒƒbƒh‚ª“ü‚Á‚Ä‚­‚é‚Ü‚Å‘Ò‹@‚·‚éB<p>
+     * ãƒ–ãƒ¬ã‚¤ã‚¯ãƒã‚¤ãƒ³ãƒˆã«æŒ‡å®šã•ã‚ŒãŸã‚¹ãƒ¬ãƒƒãƒ‰ãŒå…¥ã£ã¦ãã‚‹ã¾ã§å¾…æ©Ÿã™ã‚‹ã€‚<p>
      *
-     * @param threadName ƒXƒŒƒbƒh–¼
+     * @param threadName ã‚¹ãƒ¬ãƒƒãƒ‰å
      */
     public void waitSuspend(String threadName) throws InterruptedException;
     
     /**
-     * ƒuƒŒƒCƒNƒ|ƒCƒ“ƒg‚Éw’è‚³‚ê‚½ƒXƒŒƒbƒh‚ª“ü‚Á‚Ä‚­‚é‚Ü‚Å‘Ò‹@‚·‚éB<p>
+     * ãƒ–ãƒ¬ã‚¤ã‚¯ãƒã‚¤ãƒ³ãƒˆã«æŒ‡å®šã•ã‚ŒãŸã‚¹ãƒ¬ãƒƒãƒ‰ãŒå…¥ã£ã¦ãã‚‹ã¾ã§å¾…æ©Ÿã™ã‚‹ã€‚<p>
      *
-     * @param threadName ƒXƒŒƒbƒh–¼
-     * @param timeout ‘Ò‹@Å‘åŠÔ[ms]
-     * @return ƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡‚ÍAfalse
+     * @param threadName ã‚¹ãƒ¬ãƒƒãƒ‰å
+     * @param timeout å¾…æ©Ÿæœ€å¤§æ™‚é–“[ms]
+     * @return ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆã¯ã€false
      */
     public boolean waitSuspend(String threadName, long timeout) throws InterruptedException;
 }

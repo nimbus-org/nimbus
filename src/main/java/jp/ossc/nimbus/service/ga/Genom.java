@@ -35,60 +35,60 @@ import java.util.Random;
 import java.util.Map;
 
 /**
- * ˆâ“`î•ñB<p>
+ * éºä¼æƒ…å ±ã€‚<p>
  *
  * @author M.Takata
  */
 public interface Genom{
     
     /**
-     * w’è‚µ‚½–¼‘O‚Ìˆâ“`q‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸåå‰ã®éºä¼å­ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ˆâ“`q–¼
-     * @return ˆâ“`q
+     * @param name éºä¼å­å
+     * @return éºä¼å­
      */
     public Gene getGene(String name);
     
     /**
-     * ˆâ“`qƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
+     * éºä¼å­ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ˆâ“`qƒ}ƒbƒvBƒL[‚ªˆâ“`q–¼A’l‚ª{@link Gene ˆâ“`q}
+     * @return éºä¼å­ãƒãƒƒãƒ—ã€‚ã‚­ãƒ¼ãŒéºä¼å­åã€å€¤ãŒ{@link Gene éºä¼å­}
      */
     public Map getGeneMap();
     
     /**
-     * ˆâ“`î•ñ‚ğ—””­¶‚³‚¹‚éB<p>
+     * éºä¼æƒ…å ±ã‚’ä¹±æ•°ç™ºç”Ÿã•ã›ã‚‹ã€‚<p>
      *
-     * @param random —”ƒV[ƒh
+     * @param random ä¹±æ•°ã‚·ãƒ¼ãƒ‰
      */
     public void random(Random random);
     
     /**
-     * ‚±‚Ìˆâ“`î•ñ‚Æw’è‚³‚ê‚½ˆâ“`î•ñ‚ğŒğ³‚³‚¹‚éB<p>
+     * ã“ã®éºä¼æƒ…å ±ã¨æŒ‡å®šã•ã‚ŒãŸéºä¼æƒ…å ±ã‚’äº¤å‰ã•ã›ã‚‹ã€‚<p>
      *
-     * @param random —”ƒV[ƒh
-     * @param genom Œğ³‘ÎÛ‚Ìˆâ“`î•ñ
+     * @param random ä¹±æ•°ã‚·ãƒ¼ãƒ‰
+     * @param genom äº¤å‰å¯¾è±¡ã®éºä¼æƒ…å ±
      */
     public void crossover(Random random, Genom genom);
     
     /**
-     * ‚±‚Ìˆâ“`î•ñ‚Ì•¡»‚ğì¬‚·‚éB<p>
+     * ã“ã®éºä¼æƒ…å ±ã®è¤‡è£½ã‚’ä½œæˆã™ã‚‹ã€‚<p>
      *
-     * @return •¡»‚³‚ê‚½ˆâ“`î•ñ
+     * @return è¤‡è£½ã•ã‚ŒãŸéºä¼æƒ…å ±
      */
     public Genom cloneGenom();
     
     /**
-     * ‚±‚Ìˆâ“`î•ñ‚ªŒğ³‚³‚ê‚½‚©‚Ç‚¤‚©B<p>
+     * ã“ã®éºä¼æƒ…å ±ãŒäº¤å‰ã•ã‚ŒãŸã‹ã©ã†ã‹ã€‚<p>
      *
-     * @return true‚Ìê‡AŒğ³‚³‚ê‚Ä‚¢‚é
+     * @return trueã®å ´åˆã€äº¤å‰ã•ã‚Œã¦ã„ã‚‹
      */
     public boolean isCrossover();
     
     /**
-     * ‚±‚Ìˆâ“`î•ñ‚ª•ÏˆÙ‚³‚ê‚½‚©‚Ç‚¤‚©B<p>
+     * ã“ã®éºä¼æƒ…å ±ãŒå¤‰ç•°ã•ã‚ŒãŸã‹ã©ã†ã‹ã€‚<p>
      *
-     * @return true‚Ìê‡A•ÏˆÙ‚³‚ê‚Ä‚¢‚é
+     * @return trueã®å ´åˆã€å¤‰ç•°ã•ã‚Œã¦ã„ã‚‹
      */
     public boolean isMutate();
 }

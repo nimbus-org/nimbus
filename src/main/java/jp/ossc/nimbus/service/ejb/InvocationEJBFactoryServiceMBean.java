@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.ejb;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link InvocationEJBFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link InvocationEJBFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see InvocationEJBFactoryService
@@ -42,40 +42,40 @@ import jp.ossc.nimbus.core.*;
 public interface InvocationEJBFactoryServiceMBean extends Service, EJBFactory{
     
     /**
-     * EJBObject‚ğƒLƒƒƒbƒVƒ…‚·‚é{@link jp.ossc.nimbus.service.cache.CacheMap CacheMap}‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
-     * ƒLƒƒƒbƒVƒ…‚ğg—p‚µ‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B<br>
+     * EJBObjectã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹{@link jp.ossc.nimbus.service.cache.CacheMap CacheMap}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’ä½¿ç”¨ã—ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚<br>
      *
-     * @return CacheMap‚ÌƒT[ƒrƒX–¼
+     * @return CacheMapã®ã‚µãƒ¼ãƒ“ã‚¹å
      * @see jp.ossc.nimbus.service.cache.CacheMap CacheMap
      * @see #setRemoteCacheMapServiceName(ServiceName)
      */
     public ServiceName getRemoteCacheMapServiceName();
     
     /**
-     * EJBObject‚ğƒLƒƒƒbƒVƒ…‚·‚é{@link jp.ossc.nimbus.service.cache.CacheMap CacheMap}‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * İ’è‚µ‚È‚¢ê‡‚É‚ÍAEJBObject‚ÌƒLƒƒƒbƒVƒ…‚ğs‚í‚È‚¢B<br>
+     * EJBObjectã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹{@link jp.ossc.nimbus.service.cache.CacheMap CacheMap}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã—ãªã„å ´åˆã«ã¯ã€EJBObjectã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’è¡Œã‚ãªã„ã€‚<br>
      * 
-     * @param serviceName CacheMap‚ÌƒT[ƒrƒX–¼
+     * @param serviceName CacheMapã®ã‚µãƒ¼ãƒ“ã‚¹å
      * @see jp.ossc.nimbus.service.cache.CacheMap CacheMap
      * @see #getRemoteCacheMapServiceName()
      */
     public void setRemoteCacheMapServiceName(ServiceName serviceName);
     
     /**
-     * EJBHome‚ğlookup‚·‚é{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
-     * JndiFinderƒT[ƒrƒX‚ğg—p‚µ‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B<br>
+     * EJBHomeã‚’lookupã™ã‚‹{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã‚’ä½¿ç”¨ã—ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚<br>
      *
-     * @return JndiFinder‚ÌƒT[ƒrƒX–¼
+     * @return JndiFinderã®ã‚µãƒ¼ãƒ“ã‚¹å
      * @see jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder
      * @see #setJndiFinderServiceName(ServiceName)
      */
     public ServiceName getJndiFinderServiceName();
     
     /**
-     * EJBHome‚ğlookup‚·‚é{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * •K‚¸İ’è‚·‚é•K—v‚ª‚ ‚éB—LŒø‚ÈƒT[ƒrƒX–¼‚ªİ’è‚µ‚Ä‚¢‚È‚¢ê‡‚É‚ÍAƒT[ƒrƒX‚Ì¶¬ˆ—‚Å—áŠO‚ğthrow‚·‚éê‡‚ª‚ ‚éB<br>
+     * EJBHomeã‚’lookupã™ã‚‹{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * å¿…ãšè¨­å®šã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚æœ‰åŠ¹ãªã‚µãƒ¼ãƒ“ã‚¹åãŒè¨­å®šã—ã¦ã„ãªã„å ´åˆã«ã¯ã€ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã§ä¾‹å¤–ã‚’throwã™ã‚‹å ´åˆãŒã‚ã‚‹ã€‚<br>
      * 
-     * @param serviceName JndiFinder‚ÌƒT[ƒrƒX–¼
+     * @param serviceName JndiFinderã®ã‚µãƒ¼ãƒ“ã‚¹å
      * @see jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder
      * @see #getJndiFinderServiceName()
      */

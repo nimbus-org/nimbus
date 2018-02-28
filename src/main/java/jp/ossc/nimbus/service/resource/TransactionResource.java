@@ -32,30 +32,30 @@
 package jp.ossc.nimbus.service.resource;
 
 /**
- *	ƒgƒ‰ƒ“ƒUƒ“ƒNƒVƒ‡ƒ“ƒIƒuƒWƒFƒNƒgƒCƒ“ƒ^[ƒtƒFƒCƒX
+ *	ãƒˆãƒ©ãƒ³ã‚¶ãƒ³ã‚¯ã‚·ãƒ§ãƒ³ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/10/24| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/10/24ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public interface TransactionResource {
 	/**
-	 * ƒRƒ~ƒbƒg
+	 * ã‚³ãƒŸãƒƒãƒˆ
 	 *
 	 */
 	public void commit() throws Exception;
 	/**
-	 * ƒ[ƒ‹ƒoƒbƒN
+	 * ãƒ­ãƒ¼ãƒ«ãƒãƒƒã‚¯
 	 *
 	 */
 	public void rollback() throws Exception;
 	/**
-	 * ƒNƒ[ƒY
+	 * ã‚¯ãƒ­ãƒ¼ã‚º
 	 *
 	 */
 	public void close() throws Exception;
 	/**
-	 * “à•ïƒCƒ“ƒXƒ^ƒ“ƒX‚ÌƒQƒbƒ^[
-	 * @return “à•ïƒCƒ“ƒXƒ^ƒ“ƒX
+	 * å†…åŒ…ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ã‚²ãƒƒã‚¿ãƒ¼
+	 * @return å†…åŒ…ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
 	 */
 	public Object getObject();
 }

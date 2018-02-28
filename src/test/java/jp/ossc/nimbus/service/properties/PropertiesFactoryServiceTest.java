@@ -44,7 +44,7 @@ import org.apache.commons.io.FileUtils;
 /**
  * 
  * @author   NRI. Hirotaka Nakano
- * @version  1.00 ì¬: 2003/10/27 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/10/27 -ã€€H.Nakano
  */
 public class PropertiesFactoryServiceTest extends TestCase {
 
@@ -77,13 +77,13 @@ public class PropertiesFactoryServiceTest extends TestCase {
 		Properties p = pf.loadProperties("jp.ossc.nimbus.service.properties.test1") ;
 		assertNotNull(p);
 		String val = p.getProperty("test") ;
-		assertEquals(val,"ƒ\ƒtƒB[‚Ì\¿");
+		assertEquals(val,"ã‚½ãƒ•ã‚£ãƒ¼ã®ç”³è«‹");
 		
 		FileUtils.copyFile(new File("target/test-classes/jp/ossc/nimbus/service/properties/test1.properties.new"),new File("target/test-classes/jp/ossc/nimbus/service/properties/test1.properties"));
 		p = pf.loadProperties("jp.ossc.nimbus.service.properties.test1") ;
 		assertNotNull(p);
 		val = p.getProperty("test") ;
-		assertEquals(val,"ƒ\ƒtƒB[‚Ì\¿");
+		assertEquals(val,"ã‚½ãƒ•ã‚£ãƒ¼ã®ç”³è«‹");
 
 		//"yyyy.MM.DD hh:mm:ss"
 		ResourceBundlePropertiesFactoryServiceMBean m = (ResourceBundlePropertiesFactoryServiceMBean)pf ;
@@ -96,7 +96,7 @@ public class PropertiesFactoryServiceTest extends TestCase {
 		p = pf.loadProperties("jp.ossc.nimbus.service.properties.test1") ;
 		assertNotNull(p);
 		val = p.getProperty("test") ;
-		assertNotSame(val,"ƒ\ƒtƒB[‚Ì\¿");
+		assertNotSame(val,"ã‚½ãƒ•ã‚£ãƒ¼ã®ç”³è«‹");
 	}
 
 }

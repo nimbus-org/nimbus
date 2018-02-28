@@ -29,9 +29,9 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.beancontrol;
-// ƒCƒ“ƒ|[ƒg
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
@@ -42,38 +42,38 @@ import jp.ossc.nimbus.service.beancontrol.resource.*;
 import jp.ossc.nimbus.service.journal.*;
 import jp.ossc.nimbus.service.log.*;
 /**
- *	1Stepî•ñ‚ğŠÇ—‚·‚éB
+ *	1Stepæƒ…å ±ã‚’ç®¡ç†ã™ã‚‹ã€‚
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
  */
 public class JobStep {
-	//## ƒNƒ‰ƒXƒƒ“ƒo[•Ï”éŒ¾ ##
-	/**	JOBƒXƒeƒbƒv–¼					*/	
+	//## ã‚¯ãƒ©ã‚¹ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°å®£è¨€ ##
+	/**	JOBã‚¹ãƒ†ãƒƒãƒ—å					*/	
 	private String	mStepName = null;
-	/**	ƒNƒ‰ƒX–¼						*/	
+	/**	ã‚¯ãƒ©ã‚¹å						*/	
 	private String	mClassName = null;
-	/**	ƒƒ\ƒbƒh–¼						*/	
+	/**	ãƒ¡ã‚½ãƒƒãƒ‰å						*/	
 	private String mMethodName = null;
-	/**	ƒQƒbƒ^[ƒƒ\ƒbƒh–¼				*/	
+	/**	ã‚²ãƒƒã‚¿ãƒ¼ãƒ¡ã‚½ãƒƒãƒ‰å				*/	
 	private String mGetterMethodName = null;
-	/**	ƒƒ\ƒbƒhƒpƒ‰ƒ[ƒ^ŠÇ—Array		*/	
+	/**	ãƒ¡ã‚½ãƒƒãƒ‰ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ç®¡ç†Array		*/	
 	private ArrayList	mStepParamInfoAry = null;
-	/**	ƒŠƒtƒŒƒNƒVƒ‡ƒ“ƒIƒuƒuƒWƒFƒNƒg	*/	
+	/**	ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚ªãƒ–ãƒ–ã‚¸ã‚§ã‚¯ãƒˆ	*/	
 	private Object mBeanObj = null;
-	/**	ƒŠƒtƒŒƒNƒVƒ‡ƒ“ƒƒ\ƒbƒh			*/	
+	/**	ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ãƒ¡ã‚½ãƒƒãƒ‰			*/	
 	private Method	mBlMethod = null;
-	/**	ƒŠƒtƒŒƒNƒVƒ‡ƒ“Getterƒƒ\ƒbƒh	*/	
+	/**	ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³Getterãƒ¡ã‚½ãƒƒãƒ‰	*/	
 	private Method	mGetterMethod = null;
-	/**	ƒtƒ@ƒNƒgƒŠ[ƒR[ƒ‹ƒoƒbƒN		*/	
+	/**	ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯		*/	
 	private BeanFlowInvokerFactoryCallBack	mFactoryCallBack = null;	
-	/**	BLƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg			*/	
+	/**	BLã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ			*/	
 	private Class	mBeanClass = null;
 	private int mIncetanceType = 0;
 	private String mIncetanceStepName = null;
 	private BeanFlowInvokerAccessImpl invoker;
-	//## ƒƒ“ƒo[’è”éŒ¾ 	##
-	/**	tag•¶Œ¾	*/
+	//## ãƒ¡ãƒ³ãƒãƒ¼å®šæ•°å®£è¨€ 	##
+	/**	tagæ–‡è¨€	*/
 	private	static final String C_STEP = "step" ;
 	private	static final String C_STEP_NAME = "name" ;
 	private	static final String C_CLASS_NAME = "className" ;
@@ -83,14 +83,14 @@ public class JobStep {
 	private	static final String C_ATTRIBUTE_NAME = "attribute" ;
 	private	static final String C_NOP = "" ;
 	private	static final String C_OWN = "this" ;
-	/** ƒCƒ“ƒXƒ^ƒ“ƒXƒ^ƒCƒv */
+	/** ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚¿ã‚¤ãƒ— */
 	private	static final int C_INSTACE_TYPE_NEW=0 ;
 	private	static final int C_INSTACE_TYPE_INPUT=1 ;
 	private	static final int C_INSTACE_TYPE_STEP=2 ;	
 	private	static final String C_TYPE_NAME_NEW = "new" ;
 	private	static final String C_TYPE_NAME_INPUT = "input" ;
 	private	static final String C_TYPE_NAME_STEP = "step." ;
-	/** JOURNAL•¶Œ¾ */
+	/** JOURNALæ–‡è¨€ */
 	private	static final String C_END_STATUS = "endStatus" ;
 	private	static final String C_RESULT = "result" ;
 	private	static final String C_NORMAL_END = "normal end" ;
@@ -99,7 +99,7 @@ public class JobStep {
 	
 	//
 	/**
-	 *	ƒRƒ“ƒXƒgƒ‰ƒNƒ^<br>
+	 *	ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿<br>
 	 */
 	public JobStep(BeanFlowInvokerAccessImpl impl){
 	    invoker = impl;
@@ -114,24 +114,24 @@ public class JobStep {
 	}
 	
 	/**
-	 * ƒXƒeƒbƒv\¬—v‘f‚ğXML‚©‚ç’Šo‚·‚é
-	 * @param element	XML—v‘f
-	 * @param callBack	ƒtƒ@ƒNƒgƒŠ[ƒR[ƒ‹ƒoƒbƒNƒIƒuƒWƒFƒNƒg
+	 * ã‚¹ãƒ†ãƒƒãƒ—æ§‹æˆè¦ç´ ã‚’XMLã‹ã‚‰æŠ½å‡ºã™ã‚‹
+	 * @param element	XMLè¦ç´ 
+	 * @param callBack	ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 * @throws InvalidConfigurationException
 	 */
 	public void fillElement(Element element,
 							 BeanFlowInvokerFactoryCallBack callBack,
 							 List jobSteps) 
 		throws InvalidConfigurationException{
-		//ƒR[ƒ‹ƒoƒbƒNİ’è
+		//ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯è¨­å®š
 		mFactoryCallBack = callBack ; 
-		//ƒXƒeƒbƒv–¼İ’è
+		//ã‚¹ãƒ†ãƒƒãƒ—åè¨­å®š
 		String name = element.getAttribute(C_STEP_NAME) ;	
 		if(name == null || C_NOP.endsWith(name)){
 			throw new InvalidConfigurationException("stepname none") ;
 		}
 		this.setStepName(name) ;
-		//ƒNƒ‰ƒX–¼İ’è
+		//ã‚¯ãƒ©ã‚¹åè¨­å®š
 		String className = element.getAttribute(C_CLASS_NAME) ;
 		if(className == null || C_NOP.endsWith(className)){
 			throw new InvalidConfigurationException("classname none") ;
@@ -146,14 +146,14 @@ public class JobStep {
 		} catch (ClassNotFoundException e) {
 			throw new InvalidConfigurationException("classname invalid" + this.mClassName ,e) ;
 		}
-		//ƒƒ\ƒbƒh–¼İ’è
+		//ãƒ¡ã‚½ãƒƒãƒ‰åè¨­å®š
 		String methodName = element.getAttribute(C_METHOD_NAME) ;
 		if(methodName == null || C_NOP.endsWith(methodName)){
 			throw new InvalidConfigurationException("methodname none") ;
 		}
 		this.setMethodName(methodName) ;
 		try {
-			//ƒŠƒtƒŒƒNƒVƒ‡ƒ“ƒƒ\ƒbƒhæ“¾
+			//ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ãƒ¡ã‚½ãƒƒãƒ‰å–å¾—
 			mBlMethod = mBeanClass.getMethod(this.mMethodName,(Class[])null);
 		} catch (SecurityException e1) {
 			throw new InvalidConfigurationException("methodname invalid " +className + "#" + this.mMethodName ,e1) ;
@@ -187,7 +187,7 @@ public class JobStep {
 		if(mGetterMethodName != null && 
 			!C_NOP.endsWith(mGetterMethodName) &&
 			!C_OWN.equals(mGetterMethodName)){
-			//ƒQƒbƒ^[–¼Ì‚ª"this"‚Å‚Í‚È‚¢ê‡
+			//ã‚²ãƒƒã‚¿ãƒ¼åç§°ãŒ"this"ã§ã¯ãªã„å ´åˆ
 			try {
 				mGetterMethod = mBeanClass.getMethod(this.mGetterMethodName,(Class[])null);
 				if(logger != null){
@@ -222,7 +222,7 @@ public class JobStep {
 		}
 	}
 	/**
-	 *	JOBƒXƒeƒbƒv‚ğÀs‚·‚éB<br>
+	 *	JOBã‚¹ãƒ†ãƒƒãƒ—ã‚’å®Ÿè¡Œã™ã‚‹ã€‚<br>
 	 */
 	public Object invokeStep(Object input,
 							HashMap execBlHash,
@@ -246,10 +246,10 @@ public class JobStep {
 				try{
 					blObj = mBeanClass.newInstance();
 				}catch(InstantiationException iex){
-					// BLI—¹‹L˜^
+					// BLçµ‚äº†è¨˜éŒ²
 					throw new InvalidConfigurationException("NOT_CLASS_INSTANCE",iex);
 				}catch(IllegalAccessException ilex){
-					// BLI—¹‹L˜^
+					// BLçµ‚äº†è¨˜éŒ²
 					throw new InvalidConfigurationException("NOT_ILLEGAL_ACCESS",ilex);
 				}
 				break ;
@@ -262,9 +262,9 @@ public class JobStep {
 			}
 
 			execBlHash.put(this.getStepName(),blObj) ;
-			// Às‚a‚k ƒƒ\ƒbƒhƒCƒ“ƒ{[ƒN
+			// å®Ÿè¡Œï¼¢ï¼¬ ãƒ¡ã‚½ãƒƒãƒ‰ã‚¤ãƒ³ãƒœãƒ¼ã‚¯
 			try{
-				// Às‚a‚kƒZƒbƒ^ˆ—
+				// å®Ÿè¡Œï¼¢ï¼¬ã‚»ãƒƒã‚¿å‡¦ç†
 				this.setParam(blObj,execBlHash,rm,input);
 				this.mBlMethod.invoke(blObj,(Object[])null);
 			}catch(IllegalAccessException iex){
@@ -291,10 +291,10 @@ public class JobStep {
 					ret = blObj ;
 				}else{
 					try{
-						//mGetterMethodName‚ªnull‚Å‚È‚­AŠ‚ÂA"This"‚Å‚à
-						//‚È‚¢‚È‚ç‚ÎAmGetterMethod‚Í—LŒø‚È’l‚ª“ü‚Á‚Ä‚¢‚é‚Æ
-						//”»’f‚µ‚Ä‚æ‚¢B‚»‚¤‚Å‚È‚¯‚ê‚ÎAfillElement‚Å—áŠO
-						//‚ª”­¶‚·‚éB
+						//mGetterMethodNameãŒnullã§ãªãã€ä¸”ã¤ã€"This"ã§ã‚‚
+						//ãªã„ãªã‚‰ã°ã€mGetterMethodã¯æœ‰åŠ¹ãªå€¤ãŒå…¥ã£ã¦ã„ã‚‹ã¨
+						//åˆ¤æ–­ã—ã¦ã‚ˆã„ã€‚ãã†ã§ãªã‘ã‚Œã°ã€fillElementã§ä¾‹å¤–
+						//ãŒç™ºç”Ÿã™ã‚‹ã€‚
 						ret = mGetterMethod.invoke(blObj,(Object[])null) ;
 					}catch(IllegalAccessException iex){
 						if(jnl!=null){
@@ -327,7 +327,7 @@ public class JobStep {
 		return ret ;
 	}
 	/**
-	 *	‘O‰ñ‚a‚k‚ÌƒQƒbƒ^ƒƒ\ƒbƒh‚à‚µ‚­‚Í•¶š—ñ‚ğ¡‰ñ‚a‚k‚ÌƒZƒbƒ^‚ÉŠi”[‚·‚éB<br>
+	 *	å‰å›ï¼¢ï¼¬ã®ã‚²ãƒƒã‚¿ãƒ¡ã‚½ãƒƒãƒ‰ã‚‚ã—ãã¯æ–‡å­—åˆ—ã‚’ä»Šå›ï¼¢ï¼¬ã®ã‚»ãƒƒã‚¿ã«æ ¼ç´ã™ã‚‹ã€‚<br>
 	 * @throws JclException
 	 * @throws BLException
 	 */
@@ -338,7 +338,7 @@ public class JobStep {
 		throws NoSuchMethodException, 
 				InvocationTargetException, 
 				IllegalAccessException{
-		// ‘SPARAM‘®«‚É‘Î‚µ‚ÄƒZƒbƒ^ƒƒ\ƒbƒhÀs
+		// å…¨PARAMå±æ€§ã«å¯¾ã—ã¦ã‚»ãƒƒã‚¿ãƒ¡ã‚½ãƒƒãƒ‰å®Ÿè¡Œ
 		for(int i =0, max = mStepParamInfoAry.size(); i < max; i++){
 			StepParamInformation jclParamObj = (StepParamInformation)mStepParamInfoAry.get(i);
 				jclParamObj.invokeParameter(blInstance,
@@ -348,49 +348,49 @@ public class JobStep {
 		}
 	}
 	/**
-	 *	JOBƒXƒeƒbƒv–¼‚ğİ’è‚·‚éB<br>
-	 *	@param stepName	ƒXƒeƒbƒv–¼
+	 *	JOBã‚¹ãƒ†ãƒƒãƒ—åã‚’è¨­å®šã™ã‚‹ã€‚<br>
+	 *	@param stepName	ã‚¹ãƒ†ãƒƒãƒ—å
 	 */
 	public void setStepName(String stepName){
 		this.mStepName = stepName;
 	}
 	/**
-	 *	ƒNƒ‰ƒX–¼‚ğİ’è‚·‚éB<br>
-	 *	@param className	ƒNƒ‰ƒX–¼
+	 *	ã‚¯ãƒ©ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<br>
+	 *	@param className	ã‚¯ãƒ©ã‚¹å
 	 */
 	public void setClassName(String className){
 		this.mClassName = className;
 	}
 	/**
-	 *	ƒƒ\ƒbƒh–¼‚ğİ’è‚·‚éB<br>
-	 *	@param methodName	ƒNƒ‰ƒX–¼
+	 *	ãƒ¡ã‚½ãƒƒãƒ‰åã‚’è¨­å®šã™ã‚‹ã€‚<br>
+	 *	@param methodName	ã‚¯ãƒ©ã‚¹å
 	 */
 	public void setMethodName(String methodName){
 		this.mMethodName = methodName;
 	}
 	/**
-	 *	JOBƒXƒeƒbƒv–¼‚ğæ“¾‚·‚éB<br>
-	 *	@return String	ƒXƒeƒbƒv–¼
+	 *	JOBã‚¹ãƒ†ãƒƒãƒ—åã‚’å–å¾—ã™ã‚‹ã€‚<br>
+	 *	@return String	ã‚¹ãƒ†ãƒƒãƒ—å
 	 */
 	public String getStepName(){
 		return this.mStepName;
 	}
 	/**
-	 *	ƒNƒ‰ƒX–¼‚ğæ“¾‚·‚éB<br>
-	 *	@return String	ƒNƒ‰ƒX–¼
+	 *	ã‚¯ãƒ©ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<br>
+	 *	@return String	ã‚¯ãƒ©ã‚¹å
 	 */
 	public String getClassName(){
 		return this.mClassName;
 	}
 	/**
-	 *	ƒƒ\ƒbƒh–¼‚ğæ“¾‚·‚éB<br>
-	 *	@return	ƒƒ\ƒbƒh–¼
+	 *	ãƒ¡ã‚½ãƒƒãƒ‰åã‚’å–å¾—ã™ã‚‹ã€‚<br>
+	 *	@return	ãƒ¡ã‚½ãƒƒãƒ‰å
 	 */
 	public String getMethodName(){
 		return this.mMethodName;
 	}
 	/**
-	 * Às‚·‚éBean‚ÌƒNƒ‰ƒX‚ğo—Í‚·‚éB
+	 * å®Ÿè¡Œã™ã‚‹Beanã®ã‚¯ãƒ©ã‚¹ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
 	 * @return Class
 	 */
 	public Class getBeanClass(){

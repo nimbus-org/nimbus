@@ -35,8 +35,8 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * ƒT[ƒuƒŒƒbƒgƒtƒBƒ‹ƒ^ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñB<p>
- * {@link jp.ossc.nimbus.servlet.InterceptorChainCallFilter}‚©‚çŒÄ‚Ño‚³‚ê‚½{@link Interceptor}‚É“n‚³‚ê‚éƒRƒ“ƒeƒLƒXƒgî•ñ‚Å‚ ‚éB<br>
+ * ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãƒ•ã‚£ãƒ«ã‚¿å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã€‚<p>
+ * {@link jp.ossc.nimbus.servlet.InterceptorChainCallFilter}ã‹ã‚‰å‘¼ã³å‡ºã•ã‚ŒãŸ{@link Interceptor}ã«æ¸¡ã•ã‚Œã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -48,11 +48,11 @@ public class ServletFilterInvocationContext
     private static final String METHOD_NAME = "doFilter";
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param request ƒŠƒNƒGƒXƒgî•ñ
-     * @param response ƒŒƒXƒ|ƒ“ƒXî•ñ
-     * @param chain ƒtƒBƒ‹ƒ^ƒ`ƒF[ƒ“
+     * @param request ãƒªã‚¯ã‚¨ã‚¹ãƒˆæƒ…å ±
+     * @param response ãƒ¬ã‚¹ãƒãƒ³ã‚¹æƒ…å ±
+     * @param chain ãƒ•ã‚£ãƒ«ã‚¿ãƒã‚§ãƒ¼ãƒ³
      */
     public ServletFilterInvocationContext(
         ServletRequest request,
@@ -76,45 +76,45 @@ public class ServletFilterInvocationContext
     }
     
     /**
-     * ƒtƒBƒ‹ƒ^ƒ`ƒF[ƒ“‚ğæ“¾‚·‚éB<p>
+     * ãƒ•ã‚£ãƒ«ã‚¿ãƒã‚§ãƒ¼ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒtƒBƒ‹ƒ^ƒ`ƒF[ƒ“
+     * @return ãƒ•ã‚£ãƒ«ã‚¿ãƒã‚§ãƒ¼ãƒ³
      */
     public FilterChain getFilterChain(){
         return (FilterChain)getTargetObject();
     }
     
     /**
-     * ƒŠƒNƒGƒXƒgî•ñ‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆæƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒNƒGƒXƒgî•ñ
+     * @return ãƒªã‚¯ã‚¨ã‚¹ãƒˆæƒ…å ±
      */
     public ServletRequest getServletRequest(){
         return (ServletRequest)getParameters()[0];
     }
     
     /**
-     * ƒŠƒNƒGƒXƒgî•ñ‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆæƒ…å ±ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param request ƒŠƒNƒGƒXƒgî•ñ
+     * @param request ãƒªã‚¯ã‚¨ã‚¹ãƒˆæƒ…å ±
      */
     public void setServletRequest(ServletRequest request){
         getParameters()[0] = request;
     }
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒXî•ñ‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŒƒXƒ|ƒ“ƒXî•ñ
+     * @return ãƒ¬ã‚¹ãƒãƒ³ã‚¹æƒ…å ±
      */
     public ServletResponse getServletResponse(){
         return (ServletResponse)getParameters()[1];
     }
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒXî•ñ‚ğİ’è‚·‚éB<p>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹æƒ…å ±ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param response ƒŒƒXƒ|ƒ“ƒXî•ñ
+     * @param response ãƒ¬ã‚¹ãƒãƒ³ã‚¹æƒ…å ±
      */
     public void setServletResponse(ServletResponse response){
         getParameters()[1] = response;

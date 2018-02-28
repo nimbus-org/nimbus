@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link DefaultExceptionHandlerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link DefaultExceptionHandlerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see DefaultExceptionHandlerService
@@ -44,111 +44,111 @@ public interface DefaultExceptionHandlerServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * ”­¶‚µ‚½—áŠO‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚éÛ‚ÌƒWƒƒ[ƒiƒ‹ƒL[‚ÌƒfƒtƒHƒ‹ƒg’lB<p>
+     * ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹éš›ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚­ãƒ¼ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<p>
      */
     public static final String DEFAULT_EXCEPTION_JOURNAL_KEY = "Exception";
     
     /**
-     * ”­¶‚µ‚½—áŠO‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é{@link jp.ossc.nimbus.service.journal.Journal Journal}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * İ’è‚µ‚È‚¢ê‡‚ÍAƒWƒƒ[ƒiƒ‹o—Í‚µ‚È‚¢B<br>
+     * ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹{@link jp.ossc.nimbus.service.journal.Journal Journal}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã—ãªã„å ´åˆã¯ã€ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«å‡ºåŠ›ã—ãªã„ã€‚<br>
      *
-     * @param name JournalƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Journalã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJournalServiceName(ServiceName name);
     
     /**
-     * ”­¶‚µ‚½—áŠO‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é{@link jp.ossc.nimbus.service.journal.Journal Journal}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹{@link jp.ossc.nimbus.service.journal.Journal Journal}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JournalƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Journalã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJournalServiceName();
     
     /**
-     * ”­¶‚µ‚½—áŠO‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚éÛ‚ÌƒWƒƒ[ƒiƒ‹‚ÌƒL[‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍA{@link #DEFAULT_EXCEPTION_JOURNAL_KEY}B<br>
+     * ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹éš›ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€{@link #DEFAULT_EXCEPTION_JOURNAL_KEY}ã€‚<br>
      *
-     * @param key ”­¶‚µ‚½—áŠO‚ÌƒWƒƒ[ƒiƒ‹ƒL[
+     * @param key ç™ºç”Ÿã—ãŸä¾‹å¤–ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚­ãƒ¼
      */
     public void setExceptionJournalKey(String key);
     
     /**
-     * ”­¶‚µ‚½—áŠO‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚éÛ‚ÌƒWƒƒ[ƒiƒ‹‚ÌƒL[‚ğæ“¾‚·‚éB<p>
+     * ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹éš›ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ”­¶‚µ‚½—áŠO‚ÌƒWƒƒ[ƒiƒ‹ƒL[
+     * @return ç™ºç”Ÿã—ãŸä¾‹å¤–ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚­ãƒ¼
      */
     public String getExceptionJournalKey();
     
     /**
-     * ”­¶‚µ‚½—áŠO‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚éÛ‚Ì{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * İ’è‚µ‚È‚¢ê‡‚ÍAƒWƒƒ[ƒiƒ‹ƒT[ƒrƒX‚Éİ’è‚³‚ê‚Ä‚¢‚éEditorFinder‚ª“K—p‚³‚ê‚éB<br>
+     * ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹éš›ã®{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã—ãªã„å ´åˆã¯ã€ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹EditorFinderãŒé©ç”¨ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param name EditorFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name EditorFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setExceptionEditorFinderServiceName(ServiceName name);
     
     /**
-     * ”­¶‚µ‚½—áŠO‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚éÛ‚Ì{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹éš›ã®{@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return EditorFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return EditorFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getExceptionEditorFinderServiceName();
     
     /**
-     * ”­¶‚µ‚½—áŠO‚ğƒƒO‚Éo—Í‚·‚éÛ‚ÌƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
-     * İ’è‚µ‚È‚¢ê‡‚ÍAƒƒOo—Í‚µ‚È‚¢B<br>
+     * ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹éš›ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã—ãªã„å ´åˆã¯ã€ãƒ­ã‚°å‡ºåŠ›ã—ãªã„ã€‚<br>
      *
-     * @param id ”­¶‚µ‚½—áŠO‚ğƒƒO‚Éo—Í‚·‚éÛ‚ÌƒƒbƒZ[ƒWID
+     * @param id ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹éš›ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setLogMessageCode(String id);
     
     /**
-     * ”­¶‚µ‚½—áŠO‚ğƒƒO‚Éo—Í‚·‚éÛ‚ÌƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB<p>
+     * ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹éš›ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ”­¶‚µ‚½—áŠO‚ğƒƒO‚Éo—Í‚·‚éÛ‚ÌƒƒbƒZ[ƒWID
+     * @return ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹éš›ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getLogMessageCode();
     
     /**
-     * ”­¶‚µ‚½—áŠO‚ğƒƒO‚Éo—Í‚·‚éÛ‚Ì–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ğİ’è‚·‚éB<p>
+     * ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹éš›ã®åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param args ”­¶‚µ‚½—áŠO‚ğƒƒO‚Éo—Í‚·‚éÛ‚Ì–„‚ß‚İƒpƒ‰ƒ[ƒ^
+     * @param args ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹éš›ã®åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public void setLogMessageArguments(String[] args);
     
     /**
-     * ”­¶‚µ‚½—áŠO‚ğƒƒO‚Éo—Í‚·‚éÛ‚Ì–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ğæ“¾‚·‚éB<p>
+     * ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹éš›ã®åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ”­¶‚µ‚½—áŠO‚ğƒƒO‚Éo—Í‚·‚éÛ‚Ì–„‚ß‚İƒpƒ‰ƒ[ƒ^
+     * @return ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹éš›ã®åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public String[] getLogMessageArguments();
     
     /**
-     * ”­¶‚µ‚½—áŠO‚ğƒƒO‚Éo—Í‚·‚éÛ‚ÉA—áŠO‚ÌƒXƒ^ƒbƒNƒgƒŒ[ƒX‚ğƒƒO‚Éo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍAtrueB<br>
+     * ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹éš›ã«ã€ä¾‹å¤–ã®ã‚¹ã‚¿ãƒƒã‚¯ãƒˆãƒ¬ãƒ¼ã‚¹ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€trueã€‚<br>
      *
-     * @param isOutput —áŠO‚ÌƒXƒ^ƒbƒNƒgƒŒ[ƒX‚ğƒƒO‚Éo—Í‚·‚éê‡true
+     * @param isOutput ä¾‹å¤–ã®ã‚¹ã‚¿ãƒƒã‚¯ãƒˆãƒ¬ãƒ¼ã‚¹ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹å ´åˆtrue
      */
     public void setOutputStackTraceLog(boolean isOutput);
     
     /**
-     * ”­¶‚µ‚½—áŠO‚ğƒƒO‚Éo—Í‚·‚éÛ‚ÉA—áŠO‚ÌƒXƒ^ƒbƒNƒgƒŒ[ƒX‚ğƒƒO‚Éo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹éš›ã«ã€ä¾‹å¤–ã®ã‚¹ã‚¿ãƒƒã‚¯ãƒˆãƒ¬ãƒ¼ã‚¹ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A—áŠO‚ÌƒXƒ^ƒbƒNƒgƒŒ[ƒX‚ğƒƒO‚Éo—Í‚·‚é
+     * @return trueã®å ´åˆã€ä¾‹å¤–ã®ã‚¹ã‚¿ãƒƒã‚¯ãƒˆãƒ¬ãƒ¼ã‚¹ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputStackTraceLog();
     
     /**
-     * —áŠO‚ğthrow‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * ä¾‹å¤–ã‚’throwã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      *
-     * @param isThrow throw‚·‚éê‡‚ÍAtrue
+     * @param isThrow throwã™ã‚‹å ´åˆã¯ã€true
      */
     public void setThrowException(boolean isThrow);
     
     /**
-     * —áŠO‚ğthrow‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ä¾‹å¤–ã‚’throwã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍAthrow‚·‚é
+     * @return trueã®å ´åˆã¯ã€throwã™ã‚‹
      */
     public boolean isThrowException();
 }

@@ -34,39 +34,39 @@ package jp.ossc.nimbus.service.scheduler;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link KeyMappingScheduleFactoryService}ƒT[ƒrƒX‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link KeyMappingScheduleFactoryService}ã‚µãƒ¼ãƒ“ã‚¹ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface KeyMappingScheduleFactoryServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ƒL[‚Æ{@link ScheduleFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
-     * uƒL[=ScheduleFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼v‚ÌƒtƒH[ƒ}ƒbƒg‚Åw’è‚·‚éB<br>
+     * ã‚­ãƒ¼ã¨{@link ScheduleFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã€Œã‚­ãƒ¼=ScheduleFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã€ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã§æŒ‡å®šã™ã‚‹ã€‚<br>
      *
-     * @param mapping ƒL[‚ÆScheduleFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO
+     * @param mapping ã‚­ãƒ¼ã¨ScheduleFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public void setKeyAndScheduleFactoryServiceName(String[] mapping);
     
     /**
-     * ƒL[‚Æ{@link ScheduleFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ¼ã¨{@link ScheduleFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[‚ÆScheduleFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return ã‚­ãƒ¼ã¨ScheduleFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public String[] getKeyAndScheduleFactoryServiceName();
     
     /**
-     * ƒL[ƒ}ƒbƒsƒ“ƒO‚ÉŠY“–‚µ‚È‚¢ƒXƒPƒWƒ…[ƒ‹‚ğæ“¾‚·‚é{@link ScheduleFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğİ’è‚µ‚Ä‚¢‚È‚¢ê‡‚ÍAw’è‚³‚ê‚½ƒL[‚ÉŠY“–‚·‚éƒXƒPƒWƒ…[ƒ‹‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚ÍA’·‚³0‚ÌƒXƒPƒWƒ…[ƒ‹”z—ñ‚ğ•Ô‚·B<br>
+     * ã‚­ãƒ¼ãƒãƒƒãƒ”ãƒ³ã‚°ã«è©²å½“ã—ãªã„ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å–å¾—ã™ã‚‹{@link ScheduleFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’è¨­å®šã—ã¦ã„ãªã„å ´åˆã¯ã€æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã«è©²å½“ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã¯ã€é•·ã•0ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«é…åˆ—ã‚’è¿”ã™ã€‚<br>
      *
-     * @param name ScheduleFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ScheduleFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setDefaultScheduleFactoryServiceName(ServiceName name);
     
     /**
-     * ƒL[ƒ}ƒbƒsƒ“ƒO‚ÉŠY“–‚µ‚È‚¢ƒXƒPƒWƒ…[ƒ‹‚ğæ“¾‚·‚é{@link ScheduleFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ¼ãƒãƒƒãƒ”ãƒ³ã‚°ã«è©²å½“ã—ãªã„ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å–å¾—ã™ã‚‹{@link ScheduleFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ScheduleFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ScheduleFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getDefaultScheduleFactoryServiceName();
 }

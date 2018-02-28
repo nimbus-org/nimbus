@@ -35,91 +35,91 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link AbstractTickUnitAdjusterService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link AbstractTickUnitAdjusterService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  */
 public interface AbstractTickUnitAdjusterServiceMBean
     extends ServiceBaseMBean {
     /**
-     * •\¦–Ú·‚è”‚ğİ’è‚·‚éB<p>
+     * è¡¨ç¤ºç›®ç››ã‚Šæ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param count •\¦–Ú·‚è”
+     * @param count è¡¨ç¤ºç›®ç››ã‚Šæ•°
      */
     public void setDisplayGraduationCount(int count);
 
     /**
-     * •\¦–Ú·‚è”‚ğæ“¾‚·‚éB<p>
+     * è¡¨ç¤ºç›®ç››ã‚Šæ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •\¦–Ú·‚è”
+     * @return è¡¨ç¤ºç›®ç››ã‚Šæ•°
      */
     public int getDisplayGraduationCount();
 
     /**
-     * ƒ†ƒjƒbƒgƒJƒEƒ“ƒg‚ÌŒö–ñ”‚ğİ’è‚·‚éB<p>
+     * ãƒ¦ãƒ‹ãƒƒãƒˆã‚«ã‚¦ãƒ³ãƒˆã®å…¬ç´„æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param divisor ƒ†ƒjƒbƒgƒJƒEƒ“ƒg‚ÌŒö–ñ”
+     * @param divisor ãƒ¦ãƒ‹ãƒƒãƒˆã‚«ã‚¦ãƒ³ãƒˆã®å…¬ç´„æ•°
      */
     public void setUnitCountCommonDivisor(double divisor);
 
     /**
-     * ƒ†ƒjƒbƒgƒJƒEƒ“ƒg‚ÌŒö–ñ”‚ğæ“¾‚·‚éB<p>
+     * ãƒ¦ãƒ‹ãƒƒãƒˆã‚«ã‚¦ãƒ³ãƒˆã®å…¬ç´„æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ†ƒjƒbƒgƒJƒEƒ“ƒg‚ÌŒö–ñ”
+     * @return ãƒ¦ãƒ‹ãƒƒãƒˆã‚«ã‚¦ãƒ³ãƒˆã®å…¬ç´„æ•°
      */
     public double getUnitCountCommonDivisor();
 
     /**
-     * c²‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * ç¸¦è»¸ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isDomain true:c²/false:‰¡²
+     * @param isDomain true:ç¸¦è»¸/false:æ¨ªè»¸
      */
     public void setDomain(boolean isDomain);
 
     /**
-     * c²‚©‚Ç‚¤‚©‚ğæ“¾‚·‚éB<p>
+     * ç¸¦è»¸ã‹ã©ã†ã‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return true:c²/false:‰¡²
+     * @return true:ç¸¦è»¸/false:æ¨ªè»¸
      */
     public boolean isDomain();
 
     /**
-     * ²‚ÌƒCƒ“ƒfƒbƒNƒX‚ğİ’è‚·‚éB<p>
+     * è»¸ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param index ²‚ÌƒCƒ“ƒfƒbƒNƒX
+     * @param index è»¸ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public void setAxisIndex(int index);
 
     /**
-     * ²‚ÌƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éB<p>
+     * è»¸ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ²‚ÌƒCƒ“ƒfƒbƒNƒX
+     * @return è»¸ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
      */
     public int getAxisIndex();
 
     /**
-     * TickUnit’²ßŒö–ñ”ƒ}ƒbƒvƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * TickUnitèª¿ç¯€å…¬ç´„æ•°ãƒãƒƒãƒ—ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param serviceName TickUnit’²ßŒö–ñ”ƒ}ƒbƒvƒT[ƒrƒX–¼
+     * @param serviceName TickUnitèª¿ç¯€å…¬ç´„æ•°ãƒãƒƒãƒ—ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setTickUnitAdjustCommonDivisorMapServiceName(ServiceName serviceName);
     
     /**
-     * TickUnit’²ßŒö–ñ”ƒ}ƒbƒvƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * TickUnitèª¿ç¯€å…¬ç´„æ•°ãƒãƒƒãƒ—ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return TickUnit’²ßŒö–ñ”ƒ}ƒbƒvƒT[ƒrƒX–¼
+     * @return TickUnitèª¿ç¯€å…¬ç´„æ•°ãƒãƒƒãƒ—ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getTickUnitAdjustCommonDivisorMapServiceName();
     
     /**
-     * ©“®Å¬”ÍˆÍƒTƒCƒYİ’è‚ğ—LŒø‚Ü‚½‚Í–³Œø‚É‚·‚éB<p>
+     * è‡ªå‹•æœ€å°ç¯„å›²ã‚µã‚¤ã‚ºè¨­å®šã‚’æœ‰åŠ¹ã¾ãŸã¯ç„¡åŠ¹ã«ã™ã‚‹ã€‚<p>
      * 
-     * @param enabled true:—LŒø/false:–³Œø
+     * @param enabled true:æœ‰åŠ¹/false:ç„¡åŠ¹
      */
     public void setAutoRangeMinimumSizeEnabled(boolean enabled);
     
     /**
-     * ©“®Å¬”ÍˆÍƒTƒCƒYİ’è‚ª—LŒø‚©–³Œø‚©‚ğæ“¾‚·‚éB<p>
+     * è‡ªå‹•æœ€å°ç¯„å›²ã‚µã‚¤ã‚ºè¨­å®šãŒæœ‰åŠ¹ã‹ç„¡åŠ¹ã‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return true:—LŒø/false:–³Œø
+     * @return true:æœ‰åŠ¹/false:ç„¡åŠ¹
      */
     public boolean getAutoRangeMinimumSizeEnabled();
     

@@ -37,9 +37,9 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.aop.*;
 
 /**
- * ���\�b�h�����C���^�[�Z�v�^�B<p>
- * ���\�b�h�̌Ăяo���ɑ΂��āAVM�P�ʁA�N���X�P�ʁA���\�b�h�P�ʁA�C���X�^���X�P�ʂɓ��������C���^�[�Z�v�^�ł���B<br>
- * �ȉ��ɁA�C���X�^���X�P�ʂœ�������C���^�[�Z�v�^�̃T�[�r�X��`��������B<br>
+ * メソッド同期インターセプタ。<p>
+ * メソッドの呼び出しに対して、VM単位、クラス単位、メソッド単位、インスタンス単位に同期を取るインターセプタである。<br>
+ * 以下に、インスタンス単位で同期するインターセプタのサービス定義例を示す。<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -75,33 +75,33 @@ public class MethodSynchronizeInterceptorService extends ServiceBase
     private Map methods;
     
     /**
-     * �T�[�r�X�̐����������s���B<p>
+     * サービスの生成処理を行う。<p>
      *
-     * @exception Exception ���������Ɏ��s�����ꍇ
+     * @exception Exception 生成処理に失敗した場合
      */
     public void createService() throws Exception{
         methods = new HashMap();
     }
     
     /**
-     * �T�[�r�X�̒�~�������s���B<p>
+     * サービスの停止処理を行う。<p>
      *
-     * @exception Exception ��~�����Ɏ��s�����ꍇ
+     * @exception Exception 停止処理に失敗した場合
      */
     public void stopService() throws Exception{
         methods.clear();
     }
     
     /**
-     * �T�[�r�X�̔j���������s���B<p>
+     * サービスの破棄処理を行う。<p>
      *
-     * @exception Exception �j�������Ɏ��s�����ꍇ
+     * @exception Exception 破棄処理に失敗した場合
      */
     public void destroyService() throws Exception{
         methods = null;
     }
     
-    // MethodSynchronizeInterceptorServiceMBean��JavaDoc
+    // MethodSynchronizeInterceptorServiceMBeanのJavaDoc
     public void setScope(String scope) throws IllegalArgumentException{
         if(SCOPE_VM.equals(scope)){
             scopeValue = SCOPE_VALUE_VM;
@@ -118,19 +118,19 @@ public class MethodSynchronizeInterceptorService extends ServiceBase
         }
         synchronizeScope = scope;
     }
-    // MethodSynchronizeInterceptorServiceMBean��JavaDoc
+    // MethodSynchronizeInterceptorServiceMBeanのJavaDoc
     public String getScope(){
         return synchronizeScope;
     }
     
     /**
-     * {@link #setScope(String)}�Ŏw�肳�ꂽ�X�R�[�v�ɑ΂��ē������āA���̃C���^�[�Z�v�^���Ăяo���B<p>
-     * �T�[�r�X���J�n����Ă��Ȃ��ꍇ�́A�������s�킸�Ɏ��̃C���^�[�Z�v�^���Ăяo���B<br>
+     * {@link #setScope(String)}で指定されたスコープに対して同期して、次のインターセプタを呼び出す。<p>
+     * サービスが開始されていない場合は、同期を行わずに次のインターセプタを呼び出す。<br>
      *
-     * @param context �Ăяo���̃R���e�L�X�g���
-     * @param chain ���̃C���^�[�Z�v�^���Ăяo�����߂̃`�F�[��
-     * @return �Ăяo�����ʂ̖߂�l
-     * @exception Throwable �Ăяo����ŗ�O�����������ꍇ�A�܂��͂��̃C���^�[�Z�v�^�ŔC�ӂ̗�O�����������ꍇ�B�A���A�{���Ăяo����鏈����throw���Ȃ�RuntimeException�ȊO�̗�O��throw���Ă��A�Ăяo�����ɂ͓`�d����Ȃ��B
+     * @param context 呼び出しのコンテキスト情報
+     * @param chain 次のインターセプタを呼び出すためのチェーン
+     * @return 呼び出し結果の戻り値
+     * @exception Throwable 呼び出し先で例外が発生した場合、またはこのインターセプタで任意の例外が発生した場合。但し、本来呼び出される処理がthrowしないRuntimeException以外の例外をthrowしても、呼び出し元には伝播されない。
      */
     public Object invoke(
         InvocationContext context,

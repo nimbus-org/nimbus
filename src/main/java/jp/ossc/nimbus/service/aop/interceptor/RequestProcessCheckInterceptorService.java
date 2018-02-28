@@ -41,10 +41,10 @@ import jp.ossc.nimbus.service.aop.*;
 import jp.ossc.nimbus.service.log.*;
 
 /**
- * ƒŠƒNƒGƒXƒgˆ—ƒ`ƒFƒbƒNƒCƒ“ƒ^[ƒZƒvƒ^B<p>
- * ƒŠƒNƒGƒXƒg’†‚ÌƒXƒŒƒbƒh‚ğŠÄ‹‚µ‚½‚èA’†’f‚µ‚½‚è§Œä‚·‚é–‚ª‚Å‚«‚éB<br>
- * ‚Ü‚½AƒŠƒNƒGƒXƒg’†‚ÌƒXƒŒƒbƒh‚ÌŒo‰ßŠÔ‚ğƒ`ƒFƒbƒN‚µ‚Äè‡’l‚ğ’´‚¦‚é‚ÆƒƒOo—Í‚ğs‚¤B<br>
- * ˆÈ‰º‚ÉAƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã€‚<p>
+ * ãƒªã‚¯ã‚¨ã‚¹ãƒˆä¸­ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’ç›£è¦–ã—ãŸã‚Šã€ä¸­æ–­ã—ãŸã‚Šåˆ¶å¾¡ã™ã‚‹äº‹ãŒã§ãã‚‹ã€‚<br>
+ * ã¾ãŸã€ãƒªã‚¯ã‚¨ã‚¹ãƒˆä¸­ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã®çµŒéæ™‚é–“ã‚’ãƒã‚§ãƒƒã‚¯ã—ã¦é–¾å€¤ã‚’è¶…ãˆã‚‹ã¨ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†ã€‚<br>
+ * ä»¥ä¸‹ã«ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -82,25 +82,25 @@ public class RequestProcessCheckInterceptorService extends ServiceBase
     protected long checkInterval = 1000l;
     protected transient Daemon checker;
     
-    // RequestProcessCheckInterceptorServiceMBean‚ÌJavaDoc
+    // RequestProcessCheckInterceptorServiceMBeanã®JavaDoc
     public void setReportingLoggerServiceName(ServiceName name){
         reportingLoggerServiceName = name;
     }
-    // RequestProcessCheckInterceptorServiceMBean‚ÌJavaDoc
+    // RequestProcessCheckInterceptorServiceMBeanã®JavaDoc
     public ServiceName getReportingLoggerServiceName(){
         return reportingLoggerServiceName;
     }
     
-    // RequestProcessCheckInterceptorServiceMBean‚ÌJavaDoc
+    // RequestProcessCheckInterceptorServiceMBeanã®JavaDoc
     public void setThreshold(Map threshold){
         thresholdMap = threshold;
     }
-    // RequestProcessCheckInterceptorServiceMBean‚ÌJavaDoc
+    // RequestProcessCheckInterceptorServiceMBeanã®JavaDoc
     public Map getThreshold(){
         return thresholdMap;
     }
     
-    // RequestProcessCheckInterceptorServiceMBean‚ÌJavaDoc
+    // RequestProcessCheckInterceptorServiceMBeanã®JavaDoc
     public void setCheckInterval(long interval){
         if(interval <= 0){
             throw new IllegalArgumentException("CheckInterval must be larger than 0.");
@@ -108,12 +108,12 @@ public class RequestProcessCheckInterceptorService extends ServiceBase
         checkInterval = interval;
     }
     
-    // RequestProcessCheckInterceptorServiceMBean‚ÌJavaDoc
+    // RequestProcessCheckInterceptorServiceMBeanã®JavaDoc
     public long getCheckInterval(){
         return checkInterval;
     }
     
-    // RequestProcessCheckInterceptorServiceMBean‚ÌJavaDoc
+    // RequestProcessCheckInterceptorServiceMBeanã®JavaDoc
     public String displayCurrentReport(){
         final StringWriter buf = new StringWriter();
         final PrintWriter pw = new PrintWriter(buf);
@@ -145,21 +145,21 @@ public class RequestProcessCheckInterceptorService extends ServiceBase
         return buf.toString();
     }
     
-    // RequestProcessCheckInterceptorServiceMBean‚ÌJavaDoc
+    // RequestProcessCheckInterceptorServiceMBeanã®JavaDoc
     public void suspendChecker(){
         if(checker != null){
             checker.suspend();
         }
     }
     
-    // RequestProcessCheckInterceptorServiceMBean‚ÌJavaDoc
+    // RequestProcessCheckInterceptorServiceMBeanã®JavaDoc
     public void resumeChecker(){
         if(checker != null){
             checker.resume();
         }
     }
     
-    // RequestProcessCheckInterceptorServiceMBean‚ÌJavaDoc
+    // RequestProcessCheckInterceptorServiceMBeanã®JavaDoc
     public boolean interruptRequest(String groupName, String threadName){
         boolean isInterrupt = false;
         final Iterator itr = requests.iterator();
@@ -179,7 +179,7 @@ public class RequestProcessCheckInterceptorService extends ServiceBase
         return isInterrupt;
     }
     
-    // RequestProcessCheckInterceptorServiceMBean‚ÌJavaDoc
+    // RequestProcessCheckInterceptorServiceMBeanã®JavaDoc
     public boolean removeRequest(String groupName, String threadName){
         boolean isRemove = false;
         final Iterator itr = requests.iterator();
@@ -197,20 +197,20 @@ public class RequestProcessCheckInterceptorService extends ServiceBase
         return isRemove;
     }
     
-    // RequestProcessCheckInterceptorServiceMBean‚ÌJavaDoc
+    // RequestProcessCheckInterceptorServiceMBeanã®JavaDoc
     public void clearRequest(){
         requests.clear();
     }
     
-    // RequestProcessCheckInterceptorServiceMBean‚ÌJavaDoc
+    // RequestProcessCheckInterceptorServiceMBeanã®JavaDoc
     public int getRequestCount(){
         return requests == null ? 0 : requests.size();
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         requests = new ConcurrentSkipListSet();
@@ -242,9 +242,9 @@ public class RequestProcessCheckInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         if(checker != null){
@@ -254,7 +254,7 @@ public class RequestProcessCheckInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒƒOo—Í‚ğs‚¤{@link Logger}‚ğİ’è‚·‚éB<p>
+     * ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link Logger}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param log Logger
      */
@@ -263,7 +263,7 @@ public class RequestProcessCheckInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒƒOo—Í‚ğs‚¤{@link Logger}‚ğæ“¾‚·‚éB<p>
+     * ãƒ­ã‚°å‡ºåŠ›ã‚’è¡Œã†{@link Logger}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return Logger
      */
@@ -283,13 +283,13 @@ public class RequestProcessCheckInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒŠƒNƒGƒXƒgî•ñ‚ğƒXƒ^ƒbƒN‚µ‚ÄAŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<p>
-     * ƒT[ƒrƒX‚ªŠJn‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‰½‚à‚¹‚¸‚ÉŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<br>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆæƒ…å ±ã‚’ã‚¹ã‚¿ãƒƒã‚¯ã—ã¦ã€æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãŒé–‹å§‹ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ä½•ã‚‚ã›ãšã«æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param chain Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·‚½‚ß‚Ìƒ`ƒF[ƒ“
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable ŒÄ‚Ño‚µæ‚Å—áŠO‚ª”­¶‚µ‚½ê‡A‚Ü‚½‚Í‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚Å”CˆÓ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡B’A‚µA–{—ˆŒÄ‚Ño‚³‚ê‚éˆ—‚ªthrow‚µ‚È‚¢RuntimeExceptionˆÈŠO‚Ì—áŠO‚ğthrow‚µ‚Ä‚àAŒÄ‚Ño‚µŒ³‚É‚Í“`”d‚³‚ê‚È‚¢B
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param chain æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ãŸã‚ã®ãƒã‚§ãƒ¼ãƒ³
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable å‘¼ã³å‡ºã—å…ˆã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€ã¾ãŸã¯ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ä»»æ„ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€‚ä½†ã—ã€æœ¬æ¥å‘¼ã³å‡ºã•ã‚Œã‚‹å‡¦ç†ãŒthrowã—ãªã„RuntimeExceptionä»¥å¤–ã®ä¾‹å¤–ã‚’throwã—ã¦ã‚‚ã€å‘¼ã³å‡ºã—å…ƒã«ã¯ä¼æ’­ã•ã‚Œãªã„ã€‚
      */
     public Object invoke(
         InvocationContext context,
@@ -308,33 +308,33 @@ public class RequestProcessCheckInterceptorService extends ServiceBase
         }
     }
     
-    // DaemonRunnable‚ÌJavaDoc
+    // DaemonRunnableã®JavaDoc
     public boolean onStart(){
         return true;
     }
     
-    // DaemonRunnable‚ÌJavaDoc
+    // DaemonRunnableã®JavaDoc
     public boolean onStop(){
         return true;
     }
     
-    // DaemonRunnable‚ÌJavaDoc
+    // DaemonRunnableã®JavaDoc
     public boolean onSuspend(){
         return true;
     }
     
-    // DaemonRunnable‚ÌJavaDoc
+    // DaemonRunnableã®JavaDoc
     public boolean onResume(){
         return true;
     }
     
-    // DaemonRunnable‚ÌJavaDoc
+    // DaemonRunnableã®JavaDoc
     public Object provide(DaemonControl ctrl) throws Throwable{
         ctrl.sleep(checkInterval, true);
         return requests.size() == 0 ? null : requests;
     }
     
-    // DaemonRunnable‚ÌJavaDoc
+    // DaemonRunnableã®JavaDoc
     public void consume(Object paramObj, DaemonControl ctrl) throws Throwable{
         final Set requestSet = (Set)paramObj;
         if(requestSet == null || requestSet.size() == 0){
@@ -370,11 +370,11 @@ public class RequestProcessCheckInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒƒO‚Éo—Í‚·‚é–„‚ß‚İƒpƒ‰ƒ[ƒ^‚ğ¶¬‚·‚éB<p>
+     * ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param request ƒŠƒNƒGƒXƒgî•ñ
-     * @param performance Œo‰ßŠÔ[ms]
-     * @return ƒƒO‚Éo—Í‚·‚é–„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
+     * @param request ãƒªã‚¯ã‚¨ã‚¹ãƒˆæƒ…å ±
+     * @param performance çµŒéæ™‚é–“[ms]
+     * @return ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
      */
     protected Object[] createReport(Request request, long performance){
         String stackTrace = null;
@@ -408,7 +408,7 @@ public class RequestProcessCheckInterceptorService extends ServiceBase
         };
     }
     
-    // DaemonRunnable‚ÌJavaDoc
+    // DaemonRunnableã®JavaDoc
     public void garbage(){
     }
     
@@ -426,25 +426,25 @@ public class RequestProcessCheckInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒŠƒNƒGƒXƒgî•ñB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆæƒ…å ±ã€‚<p>
      *
      * @author M.Takata
      */
     protected static class Request implements Comparable{
-        /** ƒXƒŒƒbƒh */
+        /** ã‚¹ãƒ¬ãƒƒãƒ‰ */
         public final Thread thread;
-        /** ÀsƒRƒ“ƒeƒLƒXƒg */
+        /** å®Ÿè¡Œã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ */
         public final InvocationContext context;
-        /** ŠJn */
+        /** é–‹å§‹æ™‚åˆ» */
         public final long time;
-        /** I—¹ƒtƒ‰ƒO */
+        /** çµ‚äº†ãƒ•ãƒ©ã‚° */
         public boolean isEnd = false;
         protected Map reports;
         
         /**
-         * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          *
-         * @param context ÀsƒRƒ“ƒeƒLƒXƒg
+         * @param context å®Ÿè¡Œã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
          */
         public Request(InvocationContext context){
             this.context = context;
@@ -470,17 +470,17 @@ public class RequestProcessCheckInterceptorService extends ServiceBase
     }
     
     /**
-     * ƒŒƒ|[ƒgî•ñB<p>
+     * ãƒ¬ãƒãƒ¼ãƒˆæƒ…å ±ã€‚<p>
      *
      * @author M.Takata
      */
     protected static class Report implements Serializable, Comparable{
         private static final long serialVersionUID = 8777262126828754237L;
-        /** è‡’l */
+        /** é–¾å€¤ */
         public long threshold;
-        /** ƒƒbƒZ[ƒWID */
+        /** ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID */
         public final String messageId;
-        /** •ñŠÔŠu */
+        /** å ±å‘Šé–“éš” */
         public long reportInterval = 0;
         
         public Report(long threshold, String report) throws Exception{

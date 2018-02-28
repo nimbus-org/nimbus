@@ -50,7 +50,7 @@ import jp.ossc.nimbus.service.queue.QueueHandlerContainer;
 
 
 /**
- * ƒpƒuƒŠƒbƒVƒƒ[ƒT[ƒrƒX
+ * ãƒ‘ãƒ–ãƒªãƒƒã‚·ãƒ£ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -76,51 +76,51 @@ public class DefaultPublisherService extends ServiceBase
     protected String serverBindAddress;
 
     /**
-     * Port”Ô†
+     * Portç•ªå·
      */
     protected int port = 0;
 
     /**
-     * ƒRƒ“ƒeƒi[”
+     * ã‚³ãƒ³ãƒ†ãƒŠãƒ¼æ•°
      */
     protected int containerNum = 0;
 
     /**
-     * ƒZƒŒƒNƒ^[
+     * ã‚»ãƒ¬ã‚¯ã‚¿ãƒ¼
      */
     protected Selector selector;
 
     /**
-     * ƒf[ƒ‚ƒ“ƒNƒ‰ƒXƒCƒ“ƒXƒ^ƒ“ƒX
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¯ãƒ©ã‚¹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
      */
     protected Daemon socketReader;
 
     /**
-     * Servant‚Ìƒ}ƒbƒvB
+     * Servantã®ãƒãƒƒãƒ—ã€‚
      */
     protected Map servants;
 
     /**
-     * PublichContainer‚ÌƒŠƒXƒgB
+     * PublichContainerã®ãƒªã‚¹ãƒˆã€‚
      */
     protected List containerList;
 
     /**
-     * PublishContainerFactoryƒT[ƒrƒX–¼
+     * PublishContainerFactoryã‚µãƒ¼ãƒ“ã‚¹å
      */
     protected ServiceName publishContainerFactoryServiceName;
 
     /**
-     * PublishContainerFactoryƒT[ƒrƒX
+     * PublishContainerFactoryã‚µãƒ¼ãƒ“ã‚¹
      */
     protected PublishContainerFactory publishContainerFactory;
 
     /**
-     * ƒvƒƒgƒRƒ‹ƒT[ƒrƒX–¼
+     * ãƒ—ãƒ­ãƒˆã‚³ãƒ«ã‚µãƒ¼ãƒ“ã‚¹å
      */
     protected ServiceName protocolServiceName;
 
-    /** ƒvƒƒgƒRƒ‹ƒT[ƒrƒX */
+    /** ãƒ—ãƒ­ãƒˆã‚³ãƒ«ã‚µãƒ¼ãƒ“ã‚¹ */
     protected Protocol protocol;
 
     protected ServerSocketChannel serverSocketChannel;
@@ -170,221 +170,221 @@ public class DefaultPublisherService extends ServiceBase
     protected ServiceName messageReceiverServiceName;
     protected MessageReceiver messageReceiver;
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public void setProtocolServiceName(ServiceName name){
         protocolServiceName = name;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public ServiceName getProtocolServiceName(){
         return protocolServiceName;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public ServiceName getPublishContainerFactoryServiceName(){
         return publishContainerFactoryServiceName;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public void setPublishContainerFactoryServiceName(ServiceName name) {
         publishContainerFactoryServiceName = name ;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public void setJMSMessageConsumerFactoryServiceNames(ServiceName[] names){
         jmsMessageConsumerFactoryServiceNames = names;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public ServiceName[] getJMSMessageConsumerFactoryServiceNames(){
         return jmsMessageConsumerFactoryServiceNames;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public void setMessageFilterServiceNames(ServiceName[] names){
         messageFilterServiceNames = names;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public ServiceName[] getMessageFilterServiceNames(){
         return messageFilterServiceNames;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public void setServerBindAddress(String address){
         serverBindAddress = address;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public String getServerBindAddress(){
         return serverBindAddress;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public void setPort(int port){
         this.port = port;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public int getPort(){
         return port;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public void setContainerNum(int num){
         containerNum = num;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public int getContainerNum(){
         return containerNum;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public boolean isServerSocketChannelBlocking(){
         return isServerSocketChannelBlocking;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public void setServerSocketChannelBlocking(boolean isBlocking){
         isServerSocketChannelBlocking = isBlocking;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public boolean isSocketChannelBlocking(){
         return isSocketChannelBlocking;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public void setSocketChannelBlocking(boolean isBlocking){
         isSocketChannelBlocking = isBlocking;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public void setServerSocketSoTimeout(int timeout){
         serverSocketSoTimeout = timeout;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public int getServerSocketSoTimeout(){
         return serverSocketSoTimeout;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public void setServerSocketReceiveBufferSize(int size){
         serverSocketReceiveBufferSize = size;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public int getServerSocketReceiveBufferSize(){
         return serverSocketReceiveBufferSize;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public void setSocketSoTimeout(int timeout){
         socketSoTimeout = timeout;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public int getSocketSoTimeout(){
         return socketSoTimeout;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public void setSocketReceiveBufferSize(int size){
         socketReceiveBufferSize = size;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public int getSocketReceiveBufferSize(){
         return socketReceiveBufferSize;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public void setSocketSendBufferSize(int size){
         socketSendBufferSize = size;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public int getSocketSendBufferSize(){
         return socketSendBufferSize;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public void setSocketTcpNoDelay(boolean noDelay){
         socketTcpNoDelay = noDelay ? Boolean.TRUE : Boolean.FALSE;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public boolean isSocketTcpNoDelay(){
         return socketTcpNoDelay == null ? false : socketTcpNoDelay.booleanValue();
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public void setSocketSoLinger(int time){
         socketSoLinger = new Integer(time);
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public int getSocketSoLinger(){
         return socketSoLinger == null ? -1 : socketSoLinger.intValue();
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public boolean isKeepAlive(){
         return isKeepAlive;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public void setKeepAlive(boolean isKeepAlive){
         this.isKeepAlive = isKeepAlive;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public void setServantGarbageInterval(long millis){
         servantGarbageInterval = millis;
     }
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public long getServantGarbageInterval(){
         return servantGarbageInterval;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public void setQueueServiceNames(ServiceName[] names){
         queueServiceNames = names;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public ServiceName[] getQueueServiceNames(){
         return queueServiceNames;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public void setAnalyzeQueueServiceName(ServiceName name){
         analyzeQueueServiceName = name;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public ServiceName getAnalyzeQueueServiceName(){
         return analyzeQueueServiceName;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public void setAnalyzeThreadSize(int size){
         analyzeThreadSize = size;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public int getAnalyzeThreadSize(){
         return analyzeThreadSize;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public void setMessageReceiverServiceName(ServiceName name){
         messageReceiverServiceName = name;
     }
 
-    // DefaultPublisherServiceMBean ‚ÌJavaDoc
+    // DefaultPublisherServiceMBean ã®JavaDoc
     public ServiceName getMessageReceiverServiceName(){
         return messageReceiverServiceName;
     }
@@ -424,9 +424,9 @@ public class DefaultPublisherService extends ServiceBase
     }
 
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         servants = Collections.synchronizedMap(new HashMap());
@@ -434,9 +434,9 @@ public class DefaultPublisherService extends ServiceBase
     }
 
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(protocolServiceName != null) {
@@ -473,7 +473,7 @@ public class DefaultPublisherService extends ServiceBase
             messageReceiver = (MessageReceiver)ServiceManagerFactory.getServiceObject(messageReceiverServiceName);
         }
 
-        //ƒRƒ“ƒeƒiì¬
+        //ã‚³ãƒ³ãƒ†ãƒŠä½œæˆ
         containerList = new ArrayList(containerNum);
         for(int i = 0; i < containerNum; i++){
             final PublishContainer publishContainer
@@ -490,7 +490,7 @@ public class DefaultPublisherService extends ServiceBase
             servantGarbager.start();
         }
 
-        // Chanel‚ğì¬‚·‚é
+        // Chanelã‚’ä½œæˆã™ã‚‹
         initSelector();
         socketReader = new Daemon(new SocketReader());
         socketReader.setName("Nimbus PublisherSocketReaderDaemon " + getServiceNameObject());
@@ -616,7 +616,7 @@ public class DefaultPublisherService extends ServiceBase
             serverSocketChannel.socket().setReceiveBufferSize(serverSocketReceiveBufferSize);
         }
 
-        // Selector‚Ö‚Ì“o˜^
+        // Selectorã¸ã®ç™»éŒ²
         serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
     }
 
@@ -643,9 +643,9 @@ public class DefaultPublisherService extends ServiceBase
     }
 
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         final Iterator cons = consumers.iterator();
@@ -709,9 +709,9 @@ public class DefaultPublisherService extends ServiceBase
     }
 
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService(){
         protocol = null;
@@ -757,7 +757,7 @@ public class DefaultPublisherService extends ServiceBase
         }
     }
 
-    // Publisher ‚ÌJavaDoc
+    // Publisher ã®JavaDoc
     public synchronized boolean entryServant(Servant svt){
         String key = svt.getID() ;
         int maxVacantNum = 0;
@@ -804,7 +804,7 @@ public class DefaultPublisherService extends ServiceBase
         return true;
     }
 
-    // Publisher ‚ÌJavaDoc
+    // Publisher ã®JavaDoc
     public Servant findServant(String key){
         return (Servant)servants.get(key);
     }
@@ -837,7 +837,7 @@ public class DefaultPublisherService extends ServiceBase
     }
 
     protected class JMSMessageQueueHandler implements QueueHandler{
-        // QueueHandler ‚ÌJavaDoc
+        // QueueHandler ã®JavaDoc
         public void handleDequeuedObject(Object obj) throws Throwable{
             if(obj == null){
                 return;
@@ -845,12 +845,12 @@ public class DefaultPublisherService extends ServiceBase
             handleMessage((Message)obj);
         }
 
-        // QueueHandler ‚ÌJavaDoc
+        // QueueHandler ã®JavaDoc
         public boolean handleError(Object obj, Throwable th) throws Throwable{
             return true;
         }
 
-        // QueueHandler ‚ÌJavaDoc
+        // QueueHandler ã®JavaDoc
         public void handleRetryOver(Object obj, Throwable th) throws Throwable{
         }
     }
@@ -894,27 +894,27 @@ public class DefaultPublisherService extends ServiceBase
             this.queue = queue;
         }
 
-        // Daemon ‚ÌJavaDoc
+        // Daemon ã®JavaDoc
         public boolean onStart(){
             return true;
         }
 
-        // Daemon ‚ÌJavaDoc
+        // Daemon ã®JavaDoc
         public boolean onStop(){
             return true;
         }
 
-        // Daemon ‚ÌJavaDoc
+        // Daemon ã®JavaDoc
         public boolean onSuspend(){
             return true;
         }
 
-        // Daemon ‚ÌJavaDoc
+        // Daemon ã®JavaDoc
         public boolean onResume(){
             return true;
         }
 
-        // Daemon ‚ÌJavaDoc
+        // Daemon ã®JavaDoc
         public Object provide(DaemonControl ctrl) throws Throwable{
             if(queue == null){
                 return null;
@@ -922,7 +922,7 @@ public class DefaultPublisherService extends ServiceBase
             return queue.get(1000);
         }
 
-        // Daemon ‚ÌJavaDoc
+        // Daemon ã®JavaDoc
         public void consume(Object paramObj, DaemonControl ctrl){
             if(paramObj == null){
                 return;
@@ -930,7 +930,7 @@ public class DefaultPublisherService extends ServiceBase
             handleMessage((Message)paramObj);
         }
 
-        // Daemon ‚ÌJavaDoc
+        // Daemon ã®JavaDoc
         public void garbage(){
             if(queue != null){
                 while(queue.size() > 0){
@@ -944,27 +944,27 @@ public class DefaultPublisherService extends ServiceBase
 
         private static final long serialVersionUID = 8199251823294812508L;
 
-        // Daemon ‚ÌJavaDoc
+        // Daemon ã®JavaDoc
         public boolean onStart(){
             return true;
         }
 
-        // Daemon ‚ÌJavaDoc
+        // Daemon ã®JavaDoc
         public boolean onStop(){
             return true;
         }
 
-        // Daemon ‚ÌJavaDoc
+        // Daemon ã®JavaDoc
         public boolean onSuspend(){
             return true;
         }
 
-        // Daemon ‚ÌJavaDoc
+        // Daemon ã®JavaDoc
         public boolean onResume(){
             return true;
         }
 
-        // Daemon ‚ÌJavaDoc
+        // Daemon ã®JavaDoc
         public Object provide(DaemonControl ctrl) throws Throwable{
             try{
                 int count = selector.select(1000);
@@ -990,7 +990,7 @@ public class DefaultPublisherService extends ServiceBase
             }
         }
 
-        // Daemon ‚ÌJavaDoc
+        // Daemon ã®JavaDoc
         public void consume(Object paramObj, DaemonControl ctrl) throws Throwable{
             if(paramObj == null){
                 return;
@@ -998,14 +998,14 @@ public class DefaultPublisherService extends ServiceBase
             SelectionKey key = null;
             final Set selected = (Set)paramObj;
             try{
-                // ƒZƒŒƒNƒg‚³‚ê‚½ SelectionKey ƒIƒuƒWƒFƒNƒg‚ğ‚Ü‚Æ‚ß‚Äæ“¾‚·‚é
+                // ã‚»ãƒ¬ã‚¯ãƒˆã•ã‚ŒãŸ SelectionKey ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã¾ã¨ã‚ã¦å–å¾—ã™ã‚‹
                 final Iterator keyIterator = selected.iterator();
                 while(keyIterator.hasNext()){
                     try{
                         key = (SelectionKey)keyIterator.next();
-                        // ƒZƒŒƒNƒg‚³‚ê‚½ SelectionKey ‚Ìó‘Ô‚É‰‚¶‚Äˆ—‚ğŒˆ‚ß‚é
+                        // ã‚»ãƒ¬ã‚¯ãƒˆã•ã‚ŒãŸ SelectionKey ã®çŠ¶æ…‹ã«å¿œã˜ã¦å‡¦ç†ã‚’æ±ºã‚ã‚‹
                         if(key.isAcceptable()){
-                            // accept ‚Ìê‡
+                            // accept ã®å ´åˆ
                             final ServerSocketChannel serverSocketChannel
                                  = (ServerSocketChannel)key.channel();
                             try{
@@ -1014,7 +1014,7 @@ public class DefaultPublisherService extends ServiceBase
                                 getLogger().write(MSG_ID_00001, e);
                             }
                         }else if(key.isReadable()){
-                            // ƒf[ƒ^‚ª‘—‚ç‚ê‚Ä‚«‚½‚Æ‚«
+                            // ãƒ‡ãƒ¼ã‚¿ãŒé€ã‚‰ã‚Œã¦ããŸã¨ã
                             final SocketChannel socketChannel
                                  = (SocketChannel)key.channel();
                             if(analyzeQueue == null){
@@ -1048,13 +1048,13 @@ public class DefaultPublisherService extends ServiceBase
             }
         }
 
-        // Daemon ‚ÌJavaDoc
+        // Daemon ã®JavaDoc
         public void garbage(){
         }
 
         private void accept(ServerSocketChannel serverSocketChannel)
          throws IOException{
-            // SocketChannelæ“¾
+            // SocketChannelå–å¾—
             final SocketChannel socketChannel = serverSocketChannel.accept();
             socketChannel.configureBlocking(isSocketChannelBlocking);
             socketChannel.socket().setKeepAlive(isKeepAlive);
@@ -1145,7 +1145,7 @@ public class DefaultPublisherService extends ServiceBase
         }
 
         public Object provide(DaemonControl ctrl) throws Throwable{
-            //ˆê’èŠÔƒXƒŠ[ƒv
+            //ä¸€å®šæ™‚é–“ã‚¹ãƒªãƒ¼ãƒ—
             ctrl.sleep(servantGarbageInterval, true);
             return null;
         }

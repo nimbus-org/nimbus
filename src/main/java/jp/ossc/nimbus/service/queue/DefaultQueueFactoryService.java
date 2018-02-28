@@ -36,8 +36,8 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒfƒtƒHƒ‹ƒgƒLƒ…[ƒtƒ@ƒNƒgƒŠB<p>
- * {@link DefaultQueueService}‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚Å‚ ‚éB<br>
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚­ãƒ¥ãƒ¼ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * {@link DefaultQueueService}ã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  * @see DefaultQueueService
@@ -51,10 +51,10 @@ public class DefaultQueueFactoryService
     protected final DefaultQueueService template = new DefaultQueueService();
     
     /**
-     * {@link DefaultQueueService}ƒT[ƒrƒX‚ğ¶¬‚·‚éB<p>
+     * {@link DefaultQueueService}ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return DefaultQueueServiceƒT[ƒrƒX
-     * @exception Exception DefaultQueueService‚Ì¶¬E‹N“®‚É¸”s‚µ‚½ê‡
+     * @return DefaultQueueServiceã‚µãƒ¼ãƒ“ã‚¹
+     * @exception Exception DefaultQueueServiceã®ç”Ÿæˆãƒ»èµ·å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
      * @see DefaultQueueService
      */
     protected Service createServiceInstance() throws Exception{
@@ -65,7 +65,7 @@ public class DefaultQueueFactoryService
         return queue;
     }
     
-    // DefaultQueueFactoryServiceMBean‚ÌJavaDoc
+    // DefaultQueueFactoryServiceMBeanã®JavaDoc
     public void setInitialCapacity(int initial){
         template.setInitialCapacity(initial);
         final Set instanceSet = getManagedInstanceSet();
@@ -77,12 +77,12 @@ public class DefaultQueueFactoryService
         }
     }
     
-    // DefaultQueueFactoryServiceMBean‚ÌJavaDoc
+    // DefaultQueueFactoryServiceMBeanã®JavaDoc
     public int getInitialCapacity(){
         return template.getInitialCapacity();
     }
     
-    // DefaultQueueFactoryServiceMBean‚ÌJavaDoc
+    // DefaultQueueFactoryServiceMBeanã®JavaDoc
     public void setCapacityIncrement(int increment){
         template.setCapacityIncrement(increment);
         final Set instanceSet = getManagedInstanceSet();
@@ -94,12 +94,12 @@ public class DefaultQueueFactoryService
         }
     }
     
-    // DefaultQueueFactoryServiceMBean‚ÌJavaDoc
+    // DefaultQueueFactoryServiceMBeanã®JavaDoc
     public int getCapacityIncrement(){
         return template.getCapacityIncrement();
     }
     
-    // DefaultQueueFactoryServiceMBean‚ÌJavaDoc
+    // DefaultQueueFactoryServiceMBeanã®JavaDoc
     public void setCacheServiceName(ServiceName name){
          template.setCacheServiceName(name);
         final Set instanceSet = getManagedInstanceSet();
@@ -111,12 +111,12 @@ public class DefaultQueueFactoryService
         }
     }
     
-    // DefaultQueueFactoryServiceMBean‚ÌJavaDoc
+    // DefaultQueueFactoryServiceMBeanã®JavaDoc
     public ServiceName getCacheServiceName(){
         return template.getCacheServiceName();
     }
     
-    // DefaultQueueFactoryServiceMBean‚ÌJavaDoc
+    // DefaultQueueFactoryServiceMBeanã®JavaDoc
     public void clear(){
         final Set instanceSet = getManagedInstanceSet();
         final Iterator instances = instanceSet.iterator();

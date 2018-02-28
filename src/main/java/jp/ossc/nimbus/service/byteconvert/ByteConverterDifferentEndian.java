@@ -32,19 +32,19 @@
 package jp.ossc.nimbus.service.byteconvert;
 
 /**
- *	byte”z—ñ‚ÌƒoƒCƒiƒŠƒf[ƒ^‚ğŠeŒ^‚Ì’l‚É•ÏŠ·‚·‚é
+ *	byteé…åˆ—ã®ãƒã‚¤ãƒŠãƒªãƒ‡ãƒ¼ã‚¿ã‚’å„å‹ã®å€¤ã«å¤‰æ›ã™ã‚‹
  *	@author		Hirotaka.Nakano
- *	@version	1.00 ì¬F2001.06.21 | H.Nakano<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2001.06.21 ï¼ H.Nakano<BR>
+ *				æ›´æ–°ï¼š
  */
 public class ByteConverterDifferentEndian implements ByteConverter {
 	//
 	//
 	/**
-	 * byte[] ‚©‚ç char ‚É•ÏŠ·‚·‚é
-	 * @param  b   ƒoƒCƒg”z—ñ
-	 * @param  off ƒIƒtƒZƒbƒg
-	 * @return •ÏŠ·‚³‚ê‚½’l
+	 * byte[] ã‹ã‚‰ char ã«å¤‰æ›ã™ã‚‹
+	 * @param  b   ãƒã‚¤ãƒˆé…åˆ—
+	 * @param  off ã‚ªãƒ•ã‚»ãƒƒãƒˆ
+	 * @return å¤‰æ›ã•ã‚ŒãŸå€¤
 	*/
 	public char toChar(byte[] b, int off){
 		char v;
@@ -54,10 +54,10 @@ public class ByteConverterDifferentEndian implements ByteConverter {
 	}
 	//
 	/**
-	 * byte[] ‚©‚ç short ‚É•ÏŠ·‚·‚é
-	 * @param  b   ƒoƒCƒg”z—ñ
-	 * @param  off ƒIƒtƒZƒbƒg
-	 * @return •ÏŠ·‚³‚ê‚½’l
+	 * byte[] ã‹ã‚‰ short ã«å¤‰æ›ã™ã‚‹
+	 * @param  b   ãƒã‚¤ãƒˆé…åˆ—
+	 * @param  off ã‚ªãƒ•ã‚»ãƒƒãƒˆ
+	 * @return å¤‰æ›ã•ã‚ŒãŸå€¤
 	*/
 	public short toShort(byte[] b, int off){
 		short v;
@@ -67,10 +67,10 @@ public class ByteConverterDifferentEndian implements ByteConverter {
   	}
 	//
 	/**
-	 * byte[] ‚©‚ç int ‚É•ÏŠ·‚·‚é
-	 * @param  b   ƒoƒCƒg”z—ñ
-	 * @param  off ƒIƒtƒZƒbƒg
-	 * @return •ÏŠ·‚³‚ê‚½’l
+	 * byte[] ã‹ã‚‰ int ã«å¤‰æ›ã™ã‚‹
+	 * @param  b   ãƒã‚¤ãƒˆé…åˆ—
+	 * @param  off ã‚ªãƒ•ã‚»ãƒƒãƒˆ
+	 * @return å¤‰æ›ã•ã‚ŒãŸå€¤
 	 */
   	public int toInt(byte[] b, int off){
 		int v;
@@ -82,10 +82,10 @@ public class ByteConverterDifferentEndian implements ByteConverter {
   	}
 	//
   	/**
-	 * byte[] ‚©‚ç long ‚É•ÏŠ·‚·‚é
-	 * @param  b   ƒoƒCƒg”z—ñ
-	 * @param  off ƒIƒtƒZƒbƒg
-	 * @return •ÏŠ·‚³‚ê‚½’l
+	 * byte[] ã‹ã‚‰ long ã«å¤‰æ›ã™ã‚‹
+	 * @param  b   ãƒã‚¤ãƒˆé…åˆ—
+	 * @param  off ã‚ªãƒ•ã‚»ãƒƒãƒˆ
+	 * @return å¤‰æ›ã•ã‚ŒãŸå€¤
 	 */
 	public long toLong(byte[] b, int off){
 		long v;
@@ -101,10 +101,10 @@ public class ByteConverterDifferentEndian implements ByteConverter {
   	}
 	//
   	/**
-	 * char ‚©‚ç byte[] ‚É•ÏŠ·‚·‚é
-	 * @param  s  ’l
-	 * @param  b  ’l
-	 * @param  off ƒIƒtƒZƒbƒg
+	 * char ã‹ã‚‰ byte[] ã«å¤‰æ›ã™ã‚‹
+	 * @param  s  å€¤
+	 * @param  b  å€¤
+	 * @param  off ã‚ªãƒ•ã‚»ãƒƒãƒˆ
 	 */
   	public void toByte(char c, byte[] b, int off){
 		char v;
@@ -115,10 +115,10 @@ public class ByteConverterDifferentEndian implements ByteConverter {
   	}
 	//
 	/**
-	 * short ‚©‚ç byte[] ‚É•ÏŠ·‚·‚é
-	 * @param  s	’l
-	 * @param  b	’l
-	 * @param  off ƒIƒtƒZƒbƒg
+	 * short ã‹ã‚‰ byte[] ã«å¤‰æ›ã™ã‚‹
+	 * @param  s	å€¤
+	 * @param  b	å€¤
+	 * @param  off ã‚ªãƒ•ã‚»ãƒƒãƒˆ
 	 */
 	public void toByte(short s, byte[] b, int off){
 		short v;
@@ -129,10 +129,10 @@ public class ByteConverterDifferentEndian implements ByteConverter {
 	}
 	//
 	/**
-	 * int ‚©‚ç byte[] ‚É•ÏŠ·‚·‚é
-	 * @param  i	’l
-	 * @param  b	’l
-	 * @param  off ƒIƒtƒZƒbƒg
+	 * int ã‹ã‚‰ byte[] ã«å¤‰æ›ã™ã‚‹
+	 * @param  i	å€¤
+	 * @param  b	å€¤
+	 * @param  off ã‚ªãƒ•ã‚»ãƒƒãƒˆ
 	 */
 	public void toByte(int i, byte[] b, int off){
 		int v;
@@ -147,10 +147,10 @@ public class ByteConverterDifferentEndian implements ByteConverter {
 	}
 	//
 	/**
-	 * long ‚©‚ç byte[] ‚É•ÏŠ·‚·‚é
-	 * @param  l	’l
-	 * @param  b	’l
-	 * @param  off ƒIƒtƒZƒbƒg
+	 * long ã‹ã‚‰ byte[] ã«å¤‰æ›ã™ã‚‹
+	 * @param  l	å€¤
+	 * @param  b	å€¤
+	 * @param  off ã‚ªãƒ•ã‚»ãƒƒãƒˆ
 	 */
 	public void toByte(long l, byte[] b, int off){
 		long v;
@@ -174,9 +174,9 @@ public class ByteConverterDifferentEndian implements ByteConverter {
 	//
 	//
 	/**
-	 *	ƒoƒCƒg”z—ñ‚ğ16iƒ_ƒ“ƒv•¶š—ñ‚Æ‚µ‚Äo—Í‚·‚éB
-	 *	@param		inBytes		ƒoƒCƒg”z—ñ
-	 *	@return		String		16iƒ_ƒ“ƒv
+	 *	ãƒã‚¤ãƒˆé…åˆ—ã‚’16é€²ãƒ€ãƒ³ãƒ—æ–‡å­—åˆ—ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹ã€‚
+	 *	@param		inBytes		ãƒã‚¤ãƒˆé…åˆ—
+	 *	@return		String		16é€²ãƒ€ãƒ³ãƒ—
 	 */
 	public String byte2hex(byte[] inBytes){
 		char[] hexTable = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
@@ -186,18 +186,18 @@ public class ByteConverterDifferentEndian implements ByteConverter {
 		}
 		// 
 		for(int i = 0 ; i < inBytes.length ; i++){
-			// ãˆÊ4BIT‚ğ¶¬
+			// ä¸Šä½4BITã‚’ç”Ÿæˆ
 			retStr.append( hexTable[(byte)((inBytes[i] & 0x0F) >>> 4)] );
-			// ‰ºˆÊ4BIT‚ğ¶¬
+			// ä¸‹ä½4BITã‚’ç”Ÿæˆ
 			retStr.append( hexTable[inBytes[i] & 0xFF] );
 		}
 		return retStr.toString();
 	}
 	//
 	/**
-	 *	16iƒ_ƒ“ƒv•¶š—ñ‚ğƒoƒCƒg”z—ñ‚Æ‚µ‚Äo—Í‚·‚éB
-	 *	@param		inStr		16iƒ_ƒ“ƒv
-	 *	@return		String		ƒoƒCƒg”z—ñ
+	 *	16é€²ãƒ€ãƒ³ãƒ—æ–‡å­—åˆ—ã‚’ãƒã‚¤ãƒˆé…åˆ—ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹ã€‚
+	 *	@param		inStr		16é€²ãƒ€ãƒ³ãƒ—
+	 *	@return		String		ãƒã‚¤ãƒˆé…åˆ—
 	 */
 	public byte[] hex2byte(String inStr){
 		byte[] retBytes = new byte[inStr.length() / 2];

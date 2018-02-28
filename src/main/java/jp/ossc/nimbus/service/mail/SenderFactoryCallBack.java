@@ -33,9 +33,9 @@ package jp.ossc.nimbus.service.mail;
 import jp.ossc.nimbus.core.*;
 //
 /**
- * コールバック用の送信インターフェイス
+ * 繧ｳ繝ｼ繝ｫ繝舌ャ繧ｯ逕ｨ縺ｮ騾∽ｿ｡繧､繝ｳ繧ｿ繝ｼ繝輔ぉ繧､繧ｹ
  * @author   NRI. Hirotaka Nakano
- * @version  1.00 作成: 2003/10/09 -　H.Nakano
+ * @version  1.00 菴懈��: 2003/10/09 -縲H.Nakano
  */
 public interface SenderFactoryCallBack {
 	/**

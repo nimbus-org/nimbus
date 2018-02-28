@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.resource;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link PooledResourceFactoryService}��MBean�C���^�t�F�[�X<p>
+ * {@link PooledResourceFactoryService}のMBeanインタフェース<p>
  * 
  * @author M.Takata
  * @see PooledResourceFactoryService
@@ -42,211 +42,211 @@ import jp.ossc.nimbus.core.*;
 public interface PooledResourceFactoryServiceMBean extends ServiceBaseMBean{
     
     /**
-     * �v�[�����g���s���ꂽ���̏����̎�ʂŁA�V���ȃI�u�W�F�N�g�����p�ł���܂ł܂��� �ő�ҋ@���� �ɒB����܂ŁA�v�[�����o���v�����ҋ@�����B<p>
+     * プールが使い尽された時の処理の種別で、新たなオブジェクトが利用できるまでまたは 最大待機時間 に達するまで、プール取り出し要求が待機される。<p>
      */
     public static final String WHEN_EXHAUSTED_BLOCK = "WHEN_EXHAUSTED_BLOCK";
     
     /**
-     * �v�[�����g���s���ꂽ���̏����̎�ʂŁA�v�[�����o���v�������s���A{@link java.util.NoSuchElementException}�𓊂���B<p>
+     * プールが使い尽された時の処理の種別で、プール取り出し要求が失敗し、{@link java.util.NoSuchElementException}を投げる。<p>
      */
     public static final String WHEN_EXHAUSTED_FAIL = "WHEN_EXHAUSTED_FAIL";
     
     /**
-     * �v�[�����g���s���ꂽ���̏����̎�ʂŁA�V���ȃI�u�W�F�N�g�����������B<p>
+     * プールが使い尽された時の処理の種別で、新たなオブジェクトが生成される。<p>
      */
     public static final String WHEN_EXHAUSTED_GROW = "WHEN_EXHAUSTED_GROW";
     
     /**
-     * �v�[������I�u�W�F�N�g�𐶐�����{@link org.apache.commons.pool.PoolableObjectFactory PoolableObjectFactory}�C���^�t�F�[�X�̎����N���X���w�肷��B<p>
+     * プールするオブジェクトを生成する{@link org.apache.commons.pool.PoolableObjectFactory PoolableObjectFactory}インタフェースの実装クラスを指定する。<p>
      *
-     * @param clazz {@link org.apache.commons.pool.PoolableObjectFactory PoolableObjectFactory}�C���^�t�F�[�X�̎����N���X
+     * @param clazz {@link org.apache.commons.pool.PoolableObjectFactory PoolableObjectFactory}インタフェースの実装クラス
      */
     public void setPoolableObjectFactoryClass(Class clazz);
     
     /**
-     * �v�[������I�u�W�F�N�g�𐶐�����{@link org.apache.commons.pool.PoolableObjectFactory PoolableObjectFactory}�C���^�t�F�[�X�̎����N���X���擾����B<p>
+     * プールするオブジェクトを生成する{@link org.apache.commons.pool.PoolableObjectFactory PoolableObjectFactory}インタフェースの実装クラスを取得する。<p>
      *
-     * @return {@link org.apache.commons.pool.PoolableObjectFactory PoolableObjectFactory}�C���^�t�F�[�X�̎����N���X
+     * @return {@link org.apache.commons.pool.PoolableObjectFactory PoolableObjectFactory}インタフェースの実装クラス
      */
     public Class getPoolableObjectFactoryClass();
     
     /**
-     * �v�[������I�u�W�F�N�g�𐶐�����{@link org.apache.commons.pool.PoolableObjectFactory PoolableObjectFactory}�C���^�t�F�[�X�̎����T�[�r�X�����w�肷��B<p>
+     * プールするオブジェクトを生成する{@link org.apache.commons.pool.PoolableObjectFactory PoolableObjectFactory}インタフェースの実装サービス名を指定する。<p>
      *
-     * @param name {@link org.apache.commons.pool.PoolableObjectFactory PoolableObjectFactory}�C���^�t�F�[�X�̎����T�[�r�X��
+     * @param name {@link org.apache.commons.pool.PoolableObjectFactory PoolableObjectFactory}インタフェースの実装サービス名
      */
     public void setPoolableObjectFactoryServiceName(ServiceName name);
     
     /**
-     * �v�[������I�u�W�F�N�g�𐶐�����{@link org.apache.commons.pool.PoolableObjectFactory PoolableObjectFactory}�C���^�t�F�[�X�̎����T�[�r�X�����擾����B<p>
+     * プールするオブジェクトを生成する{@link org.apache.commons.pool.PoolableObjectFactory PoolableObjectFactory}インタフェースの実装サービス名を取得する。<p>
      *
-     * @return {@link org.apache.commons.pool.PoolableObjectFactory PoolableObjectFactory}�C���^�t�F�[�X�̎����T�[�r�X��
+     * @return {@link org.apache.commons.pool.PoolableObjectFactory PoolableObjectFactory}インタフェースの実装サービス名
      */
     public ServiceName getPoolableObjectFactoryServiceName();
     
     /**
-     * �����Ƀv�[��������o�����Ƃ̂ł���I�u�W�F�N�g�̍ő吔��ݒ肷��B<p>
-     * �f�t�H���g�́A{@link org.apache.commons.pool.impl.GenericObjectPool#DEFAULT_MAX_ACTIVE DEFAULT_MAX_ACTIVE}�B<br>
+     * 同時にプールから取り出すことのできるオブジェクトの最大数を設定する。<p>
+     * デフォルトは、{@link org.apache.commons.pool.impl.GenericObjectPool#DEFAULT_MAX_ACTIVE DEFAULT_MAX_ACTIVE}。<br>
      *
-     * @param max �����Ƀv�[��������o�����Ƃ̂ł���I�u�W�F�N�g�̍ő吔
+     * @param max 同時にプールから取り出すことのできるオブジェクトの最大数
      */
     public void setMaxActive(int max);
     
     /**
-     * �����Ƀv�[��������o�����Ƃ̂ł���I�u�W�F�N�g�̍ő吔���擾����B<p>
+     * 同時にプールから取り出すことのできるオブジェクトの最大数を取得する。<p>
      *
-     * @return �����Ƀv�[��������o�����Ƃ̂ł���I�u�W�F�N�g�̍ő吔
+     * @return 同時にプールから取り出すことのできるオブジェクトの最大数
      */
     public int getMaxActive();
     
     /**
-     * �v�[�����ɕێ��ł��関�g�p�̃I�u�W�F�N�g�̍ő吔��ݒ肷��B<p>
-     * �f�t�H���g�́A{@link org.apache.commons.pool.impl.GenericObjectPool#DEFAULT_MAX_IDLE DEFAULT_MAX_IDLE}�B<br>
+     * プール内に保持できる未使用のオブジェクトの最大数を設定する。<p>
+     * デフォルトは、{@link org.apache.commons.pool.impl.GenericObjectPool#DEFAULT_MAX_IDLE DEFAULT_MAX_IDLE}。<br>
      *
-     * @param max �v�[�����ɕێ��ł��関�g�p�̃I�u�W�F�N�g�̍ő吔
+     * @param max プール内に保持できる未使用のオブジェクトの最大数
      */
     public void setMaxIdle(int max);
     
     /**
-     * �v�[�����ɕێ��ł��関�g�p�̃I�u�W�F�N�g�̍ő吔���擾����B<p>
+     * プール内に保持できる未使用のオブジェクトの最大数を取得する。<p>
      *
-     * @return �v�[�����ɕێ��ł��関�g�p�̃I�u�W�F�N�g�̍ő吔
+     * @return プール内に保持できる未使用のオブジェクトの最大数
      */
     public int getMaxIdle();
     
     /**
-     * �v�[�����ɕێ�����関�g�p�̃I�u�W�F�N�g�̍ŏ�����ݒ肷��B<p>
-     * ���̒l�ɒB���Ȃ��ꍇ�ɂ͔r�������X���b�h�ɂĐV���ȃI�u�W�F�N�g�̐������s���B<br>
-     * �f�t�H���g�́A{@link org.apache.commons.pool.impl.GenericObjectPool#DEFAULT_MIN_IDLE DEFAULT_MIN_IDLE}�B<br>
+     * プール内に保持される未使用のオブジェクトの最小数を設定する。<p>
+     * この値に達しない場合には排除処理スレッドにて新たなオブジェクトの生成を行う。<br>
+     * デフォルトは、{@link org.apache.commons.pool.impl.GenericObjectPool#DEFAULT_MIN_IDLE DEFAULT_MIN_IDLE}。<br>
      *
-     * @param min �v�[�����ɕێ�����関�g�p�̃I�u�W�F�N�g�̍ŏ���
+     * @param min プール内に保持される未使用のオブジェクトの最小数
      */
     public void setMinIdle(int min);
     
     /**
-     * �v�[�����ɕێ�����関�g�p�̃I�u�W�F�N�g�̍ŏ������擾����B<p>
+     * プール内に保持される未使用のオブジェクトの最小数を取得する。<p>
      *
-     * @return �v�[�����ɕێ�����関�g�p�̃I�u�W�F�N�g�̍ŏ���
+     * @return プール内に保持される未使用のオブジェクトの最小数
      */
     public int getMinIdle();
     
     /**
-     * �v�[�����g���s����Ă��āA{@link #setWhenExhaustedAction(String) setWhenExhaustedAction(WHEN_EXHAUSTED_BLOCK)}���ݒ肳��Ă���ꍇ�� {@link PooledResourceFactoryService#makeResource(String) makeResource(String)}���\�b�h����O�𓊂���܂ł̍Œ��ҋ@����(�~���b)��ݒ肷��B<p>
-     * 0��菬���Ȓl���ݒ肳�ꂽ�ꍇ�AmakeResource(String)���\�b�h�͖������ɑҋ@����B<br>
-     * �f�t�H���g�́A{@link org.apache.commons.pool.impl.GenericObjectPool#DEFAULT_MAX_WAIT DEFAULT_MAX_WAIT}�B<br>
+     * プールが使い尽されていて、{@link #setWhenExhaustedAction(String) setWhenExhaustedAction(WHEN_EXHAUSTED_BLOCK)}が設定されている場合の {@link PooledResourceFactoryService#makeResource(String) makeResource(String)}メソッドが例外を投げるまでの最長待機時間(ミリ秒)を設定する。<p>
+     * 0より小さな値が設定された場合、makeResource(String)メソッドは無期限に待機する。<br>
+     * デフォルトは、{@link org.apache.commons.pool.impl.GenericObjectPool#DEFAULT_MAX_WAIT DEFAULT_MAX_WAIT}。<br>
      *
-     * @param maxMillis �v�[�����g���s���ꂽ�ꍇ�̎擾�ł̍Œ��ҋ@����(�~���b)
+     * @param maxMillis プールが使い尽された場合の取得での最長待機時間(ミリ秒)
      */
     public void setMaxWaitTime(long maxMillis);
     
     /**
-     * �v�[�����g���s����Ă��āA{@link #setWhenExhaustedAction(String) setWhenExhaustedAction(WHEN_EXHAUSTED_BLOCK)}���ݒ肳��Ă���ꍇ�� {@link PooledResourceFactoryService#makeResource(String) makeResource(String)}���\�b�h����O�𓊂���܂ł̍Œ��ҋ@����(�~���b)���擾����B<p>
+     * プールが使い尽されていて、{@link #setWhenExhaustedAction(String) setWhenExhaustedAction(WHEN_EXHAUSTED_BLOCK)}が設定されている場合の {@link PooledResourceFactoryService#makeResource(String) makeResource(String)}メソッドが例外を投げるまでの最長待機時間(ミリ秒)を取得する。<p>
      *
-     * @return �v�[�����g���s���ꂽ�ꍇ�̎擾�ł̍Œ��ҋ@����(�~���b)
+     * @return プールが使い尽された場合の取得での最長待機時間(ミリ秒)
      */
     public long getMaxWaitTime();
     
     /**
-     * �I�u�W�F�N�g���v�[�����ɖ��g�p��Ԃł����鎞�Ԃ̍ŏ��l��ݒ肷��B<p>
-     * ���g�p��Ԃł��鎞�Ԃ��A���̒l�ɒB����Ɣr�������̑ΏۂƂȂ�B<br>
-     * �f�t�H���g�́A{@link org.apache.commons.pool.impl.GenericObjectPool#DEFAULT_MIN_EVICTABLE_IDLE_TIME_MILLIS DEFAULT_MIN_EVICTABLE_IDLE_TIME_MILLIS}�B<br>
+     * オブジェクトがプール内に未使用状態でいられる時間の最小値を設定する。<p>
+     * 未使用状態でいる時間が、この値に達すると排除処理の対象となる。<br>
+     * デフォルトは、{@link org.apache.commons.pool.impl.GenericObjectPool#DEFAULT_MIN_EVICTABLE_IDLE_TIME_MILLIS DEFAULT_MIN_EVICTABLE_IDLE_TIME_MILLIS}。<br>
      *
-     * @param minMillis �I�u�W�F�N�g���v�[�����ɖ��g�p��Ԃł����鎞�Ԃ̍ŏ��l
+     * @param minMillis オブジェクトがプール内に未使用状態でいられる時間の最小値
      */
     public void setMinEvictableIdleTime(long minMillis);
     
     /**
-     * �I�u�W�F�N�g���v�[�����ɖ��g�p��Ԃł����鎞�Ԃ̍ŏ��l���擾����B<p>
+     * オブジェクトがプール内に未使用状態でいられる時間の最小値を取得する。<p>
      *
-     * @return �I�u�W�F�N�g���v�[�����ɖ��g�p��Ԃł����鎞�Ԃ̍ŏ��l
+     * @return オブジェクトがプール内に未使用状態でいられる時間の最小値
      */
     public long getMinEvictableIdleTime();
     
     /**
-     * 1�x�̃I�u�W�F�N�g�r�������Ŕr���X���b�h�Ƀ`�F�b�N�����I�u�W�F�N�g�̐���ݒ肷��B<p> 
-     * ���̒l���ݒ肳�ꂽ�ꍇ�Aceil(getNumIdle())/abs(getNumTestsPerEvictionRun()) ��̃`�F�b�N�����{����B�Ⴆ�� -n ���ݒ肳�ꂽ�ꍇ�ɂ́A1/n �̖��g�p�I�u�W�F�N�g��1�x�̃I�u�W�F�N�g�r�������Ń`�F�b�N�����B<br>
-     * �f�t�H���g�́A{@link org.apache.commons.pool.impl.GenericObjectPool#DEFAULT_NUM_TESTS_PER_EVICTION_RUN DEFAULT_NUM_TESTS_PER_EVICTION_RUN}�B<br>
+     * 1度のオブジェクト排除処理で排除スレッドにチェックされるオブジェクトの数を設定する。<p> 
+     * 負の値が設定された場合、ceil(getNumIdle())/abs(getNumTestsPerEvictionRun()) 回のチェックを実施する。例えば -n が設定された場合には、1/n の未使用オブジェクトが1度のオブジェクト排除処理でチェックされる。<br>
+     * デフォルトは、{@link org.apache.commons.pool.impl.GenericObjectPool#DEFAULT_NUM_TESTS_PER_EVICTION_RUN DEFAULT_NUM_TESTS_PER_EVICTION_RUN}。<br>
      *
-     * @param num 1�x�̃I�u�W�F�N�g�r�������Ŕr���X���b�h�Ƀ`�F�b�N�����I�u�W�F�N�g�̐�
+     * @param num 1度のオブジェクト排除処理で排除スレッドにチェックされるオブジェクトの数
      */
     public void setNumTestsPerEvictionRun(int num);
     
     /**
-     * 1�x�̃I�u�W�F�N�g�r�������Ŕr���X���b�h�Ƀ`�F�b�N�����I�u�W�F�N�g�̐����擾����B<p> 
+     * 1度のオブジェクト排除処理で排除スレッドにチェックされるオブジェクトの数を取得する。<p> 
      *
-     * @return 1�x�̃I�u�W�F�N�g�r�������Ŕr���X���b�h�Ƀ`�F�b�N�����I�u�W�F�N�g�̐�
+     * @return 1度のオブジェクト排除処理で排除スレッドにチェックされるオブジェクトの数
      */
     public int getNumTestsPerEvictionRun();
     
     /**
-     * �v�[��������o�����O�� �v�[�����̃I�u�W�F�N�g���L�����ǂ����̊m�F���s�����ǂ�����ݒ肷��B<p>
-     * �L���łȂ��Ɣ��f���ꂽ�ꍇ�A�I�u�W�F�N�g�̓v�[������j������A���̃I�u�W�F�N�g�����o�����B<br>
-     * �f�t�H���g�́A{@link org.apache.commons.pool.impl.GenericObjectPool#DEFAULT_TEST_ON_BORROW DEFAULT_TEST_ON_BORROW}�B<br>
+     * プールから取り出される前に プール内のオブジェクトが有効かどうかの確認を行うかどうかを設定する。<p>
+     * 有効でないと判断された場合、オブジェクトはプールから破棄され、他のオブジェクトが取り出される。<br>
+     * デフォルトは、{@link org.apache.commons.pool.impl.GenericObjectPool#DEFAULT_TEST_ON_BORROW DEFAULT_TEST_ON_BORROW}。<br>
      *
-     * @param isTest true�̏ꍇ�A�L�����ǂ����̊m�F���s��
+     * @param isTest trueの場合、有効かどうかの確認を行う
      */
     public void setTestOnBorrow(boolean isTest);
     
     /**
-     * �v�[��������o�����O�� �v�[�����̃I�u�W�F�N�g���L�����ǂ����̊m�F���s�����ǂ����𔻒肷��B<p>
+     * プールから取り出される前に プール内のオブジェクトが有効かどうかの確認を行うかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A�L�����ǂ����̊m�F���s��
+     * @return trueの場合、有効かどうかの確認を行う
      */
     public boolean isTestOnBorrow();
     
     /**
-     * �v�[���ɖ߂��O�� �I�u�W�F�N�g���L�����ǂ����̊m�F���s�����ǂ�����ݒ肷��B<p>
-     * �L���łȂ��Ɣ��f���ꂽ�ꍇ�A�I�u�W�F�N�g�̓v�[������j�������B<br>
-     * �f�t�H���g�́A{@link org.apache.commons.pool.impl.GenericObjectPool#DEFAULT_TEST_ON_RETURN DEFAULT_TEST_ON_RETURN}�B<br>
+     * プールに戻す前に オブジェクトが有効かどうかの確認を行うかどうかを設定する。<p>
+     * 有効でないと判断された場合、オブジェクトはプールから破棄される。<br>
+     * デフォルトは、{@link org.apache.commons.pool.impl.GenericObjectPool#DEFAULT_TEST_ON_RETURN DEFAULT_TEST_ON_RETURN}。<br>
      *
-     * @param isTest true�̏ꍇ�A�L�����ǂ����̊m�F���s��
+     * @param isTest trueの場合、有効かどうかの確認を行う
      */
     public void setTestOnReturn(boolean isTest);
     
     /**
-     * �v�[���ɖ߂��O�� �I�u�W�F�N�g���L�����ǂ����̊m�F���s�����ǂ����𔻒肷��B<p>
+     * プールに戻す前に オブジェクトが有効かどうかの確認を行うかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A�L�����ǂ����̊m�F���s��
+     * @return trueの場合、有効かどうかの確認を行う
      */
     public boolean isTestOnReturn();
     
     /**
-     * �I�u�W�F�N�g�r���������Ƀv�[�����̃I�u�W�F�N�g���L�����ǂ����̊m�F���s�����ǂ�����ݒ肷��B<p>
-     * �L���łȂ��Ɣ��f���ꂽ�I�u�W�F�N�g�̓v�[������j�������B<br>
-     * �f�t�H���g�́A{@link org.apache.commons.pool.impl.GenericObjectPool#DEFAULT_TEST_WHILE_IDLE DEFAULT_TEST_WHILE_IDLE}�B<br>
+     * オブジェクト排除処理時にプール内のオブジェクトが有効かどうかの確認を行うかどうかを設定する。<p>
+     * 有効でないと判断されたオブジェクトはプールから破棄される。<br>
+     * デフォルトは、{@link org.apache.commons.pool.impl.GenericObjectPool#DEFAULT_TEST_WHILE_IDLE DEFAULT_TEST_WHILE_IDLE}。<br>
      *
-     * @param isTest true�̏ꍇ�A�L�����ǂ����̊m�F���s��
+     * @param isTest trueの場合、有効かどうかの確認を行う
      */
     public void setTestWhileIdle(boolean isTest);
     
     /**
-     * �I�u�W�F�N�g�r���������Ƀv�[�����̃I�u�W�F�N�g���L�����ǂ����̊m�F���s�����ǂ����𔻒肷��B<p>
+     * オブジェクト排除処理時にプール内のオブジェクトが有効かどうかの確認を行うかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A�L�����ǂ����̊m�F���s��
+     * @return trueの場合、有効かどうかの確認を行う
      */
     public boolean isTestWhileIdle();
     
     /**
-     * ���g�p�I�u�W�F�N�g�r�����������̎��s�܂ł̊ԃX���[�v���鎞��(�~���b)��ݒ肷��B<p>
-     * ���̒l���ݒ肳�ꂽ�ꍇ�A�r���X���b�h�͋N�����Ȃ��B<br>
-     * �f�t�H���g�́A{@link org.apache.commons.pool.impl.GenericObjectPool#DEFAULT_TIME_BETWEEN_EVICTION_RUNS_MILLIS DEFAULT_TIME_BETWEEN_EVICTION_RUNS_MILLIS}�B<br>
+     * 未使用オブジェクト排除処理が次の実行までの間スリープする時間(ミリ秒)を設定する。<p>
+     * 負の値が設定された場合、排除スレッドは起動しない。<br>
+     * デフォルトは、{@link org.apache.commons.pool.impl.GenericObjectPool#DEFAULT_TIME_BETWEEN_EVICTION_RUNS_MILLIS DEFAULT_TIME_BETWEEN_EVICTION_RUNS_MILLIS}。<br>
      *
-     * @param millis ���g�p�I�u�W�F�N�g�r�����������̎��s�܂ł̊ԃX���[�v���鎞��(�~���b)
+     * @param millis 未使用オブジェクト排除処理が次の実行までの間スリープする時間(ミリ秒)
      */
     public void setTimeBetweenEvictionRuns(long millis);
     
     /**
-     * ���g�p�I�u�W�F�N�g�r�����������̎��s�܂ł̊ԃX���[�v���鎞��(�~���b)���擾����B<p>
+     * 未使用オブジェクト排除処理が次の実行までの間スリープする時間(ミリ秒)を取得する。<p>
      *
-     * @return ���g�p�I�u�W�F�N�g�r�����������̎��s�܂ł̊ԃX���[�v���鎞��(�~���b)
+     * @return 未使用オブジェクト排除処理が次の実行までの間スリープする時間(ミリ秒)
      */
     public long getTimeBetweenEvictionRuns();
     
     /**
-     * �v�[�����g���s����Ă���ꍇ(���o�����Ƃ̂ł���I�u�W�F�N�g���ő吔�ɒB�����ꍇ)�ɍs�������̎�ʂ�ݒ肷��B<p>
+     * プールが使い尽されている場合(取り出すことのできるオブジェクトが最大数に達した場合)に行う処理の種別を設定する。<p>
      *
-     * @param action �v�[�����g���s����Ă���ꍇ(���o�����Ƃ̂ł���I�u�W�F�N�g���ő吔�ɒB�����ꍇ)�ɍs�������̎��
-     * @exception IllegalArgumentException �������s���Ȏ�ʂ̏ꍇ
+     * @param action プールが使い尽されている場合(取り出すことのできるオブジェクトが最大数に達した場合)に行う処理の種別
+     * @exception IllegalArgumentException 引数が不正な種別の場合
      * @see #WHEN_EXHAUSTED_BLOCK
      * @see #WHEN_EXHAUSTED_FAIL
      * @see #WHEN_EXHAUSTED_GROW
@@ -255,30 +255,30 @@ public interface PooledResourceFactoryServiceMBean extends ServiceBaseMBean{
      throws IllegalArgumentException;
     
     /**
-     * �v�[�����g���s����Ă���ꍇ(���o�����Ƃ̂ł���I�u�W�F�N�g���ő吔�ɒB�����ꍇ)�ɍs�������̎�ʂ��擾����B<p>
+     * プールが使い尽されている場合(取り出すことのできるオブジェクトが最大数に達した場合)に行う処理の種別を取得する。<p>
      *
-     * @return �v�[�����g���s����Ă���ꍇ(���o�����Ƃ̂ł���I�u�W�F�N�g���ő吔�ɒB�����ꍇ)�ɍs�������̎��
+     * @return プールが使い尽されている場合(取り出すことのできるオブジェクトが最大数に達した場合)に行う処理の種別
      */
     public String getWhenExhaustedAction();
     
     /**
-     * �v�[�����ɂ���g�p����Ă��Ȃ��I�u�W�F�N�g���폜���A�֘A���郊�\�[�X���J������B<p>
+     * プール内にある使用されていないオブジェクトを削除し、関連するリソースを開放する。<p>
      *
-     * @exception Exception ���炩�̗��R�Ŏ��s�����ꍇ
+     * @exception Exception 何らかの理由で失敗した場合
      */
     public void clear() throws Exception;
     
     /**
-     * ���݃v�[��������o����Ďg�p���̃I�u�W�F�N�g�̐����擾����B<p>
+     * 現在プールから取り出されて使用中のオブジェクトの数を取得する。<p>
      *
-     * @return ���݃v�[��������o����Ďg�p���̃I�u�W�F�N�g�̐�
+     * @return 現在プールから取り出されて使用中のオブジェクトの数
      */
     public int getActiveNum();
     
     /**
-     * ���݃v�[������Ă��āA���g�p�̃I�u�W�F�N�g�̐����擾����B<p>
+     * 現在プールされていて、未使用のオブジェクトの数を取得する。<p>
      *
-     * @return ���݃v�[������Ă��āA���g�p�̃I�u�W�F�N�g�̐�
+     * @return 現在プールされていて、未使用のオブジェクトの数
      */
     public int getIdleNum();
 }

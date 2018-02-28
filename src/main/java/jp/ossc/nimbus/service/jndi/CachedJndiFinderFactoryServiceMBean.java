@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.jndi;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link CachedJndiFinderFactoryService}のMBeanインタフェース<p>
+ * {@link CachedJndiFinderFactoryService}縺ｮMBean繧､繝ｳ繧ｿ繝輔ぉ繝ｼ繧ｹ<p>
  * 
  * @author M.Takata
  * @see CachedJndiFinderFactoryService

@@ -41,8 +41,8 @@ import jp.ossc.nimbus.service.semaphore.Semaphore;
 import com.jcraft.jsch.Proxy;
 
 /**
- * SFTPƒNƒ‰ƒCƒAƒ“ƒgƒtƒ@ƒNƒgƒŠB<p>
- * <a href="http://www.jcraft.com/jsch/">JSch - Java Secure Channel</a>‚ÌSFTPƒ‰ƒCƒuƒ‰ƒŠ‚ğg—p‚µ‚½{@link SFTPClientFactory}ƒT[ƒrƒX‚Å‚ ‚éB<br>
+ * SFTPã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * <a href="http://www.jcraft.com/jsch/">JSch - Java Secure Channel</a>ã®SFTPãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ä½¿ç”¨ã—ãŸ{@link SFTPClientFactory}ã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -160,9 +160,9 @@ public class SFTPClientFactoryService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJn‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(semaphoreServiceName != null){
@@ -174,9 +174,9 @@ public class SFTPClientFactoryService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         if(semaphore != null){

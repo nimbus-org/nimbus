@@ -36,7 +36,7 @@ import java.util.*;
 import junit.framework.*;
 
 /**
- * LRU‚ ‚Ó‚êƒAƒ‹ƒSƒŠƒYƒ€ƒT[ƒrƒXƒeƒXƒgB<p>
+ * LRUã‚ãµã‚Œã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚µãƒ¼ãƒ“ã‚¹ãƒ†ã‚¹ãƒˆã€‚<p>
  *
  * @author M.Takata
  */

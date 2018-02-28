@@ -51,21 +51,21 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
 /**
- * ƒfƒtƒHƒ‹ƒgTestControllerƒT[ƒrƒX
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆTestControllerã‚µãƒ¼ãƒ“ã‚¹
  * <p>
- * ƒeƒXƒg‚Ì‘S‘Ì‚ğŠÇ—‚·‚éƒRƒ“ƒgƒ[ƒ‰[B<br>
- * ƒeƒXƒg‚ÍƒVƒiƒŠƒIƒOƒ‹[ƒv-&gt;ƒVƒiƒŠƒI-&gt;ƒeƒXƒgƒP[ƒX‚Ì\¬‚Æ‚È‚Á‚Ä‚¨‚è‹Æ–±‚â‹@”\‚Å‚Ì’PˆÊ‚ÅƒOƒ‹[ƒsƒ“ƒO‚ğs‚¢ƒeƒXƒg‚ğs‚¤B<br>
- * ƒRƒ“ƒgƒ[ƒ‰[‚Å‚ÍƒVƒiƒŠƒIƒOƒ‹[ƒv‚ÌŠJnAƒVƒiƒŠƒI‚ÌŠJnI—¹AƒeƒXƒgƒP[ƒX‚ÌŠJnI—¹‚É
- * {@link jp.ossc.nimbus.service.test.TestEventListener TestEventListener}A
- * {@link jp.ossc.nimbus.service.test.TestStub TestStub}A Action
+ * ãƒ†ã‚¹ãƒˆã®å…¨ä½“ã‚’ç®¡ç†ã™ã‚‹ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼ã€‚<br>
+ * ãƒ†ã‚¹ãƒˆã¯ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—-&gt;ã‚·ãƒŠãƒªã‚ª-&gt;ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®æ§‹æˆã¨ãªã£ã¦ãŠã‚Šæ¥­å‹™ã‚„æ©Ÿèƒ½ã§ã®å˜ä½ã§ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã‚’è¡Œã„ãƒ†ã‚¹ãƒˆã‚’è¡Œã†ã€‚<br>
+ * ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼ã§ã¯ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã®é–‹å§‹æ™‚ã€ã‚·ãƒŠãƒªã‚ªã®é–‹å§‹çµ‚äº†æ™‚ã€ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®é–‹å§‹æ™‚çµ‚äº†æ™‚ã«
+ * {@link jp.ossc.nimbus.service.test.TestEventListener TestEventListener}ã€
+ * {@link jp.ossc.nimbus.service.test.TestStub TestStub}ã€ Action
  * {@link jp.ossc.nimbus.service.test.TestAction TestAction},
  * {@link jp.ossc.nimbus.service.test.EvaluateTestAction EvaluateTestAction}
- * ‚È‚Ç‚ğÀs‚·‚éB<br>
- * ‚Ü‚½A{@link jp.ossc.nimbus.service.test.TestResourceManager
- * TestResourceManager} ‚©‚ç{@link jp.ossc.nimbus.service.test.TestStub TestStub}‚â
- * {@link jp.ossc.nimbus.service.test.TestAction TestAction}‚â
+ * ãªã©ã‚’å®Ÿè¡Œã™ã‚‹ã€‚<br>
+ * ã¾ãŸã€{@link jp.ossc.nimbus.service.test.TestResourceManager
+ * TestResourceManager} ã‹ã‚‰{@link jp.ossc.nimbus.service.test.TestStub TestStub}ã‚„
+ * {@link jp.ossc.nimbus.service.test.TestAction TestAction}ã‚„
  * {@link jp.ossc.nimbus.service.test.EvaluateTestAction EvaluateTestAction}
- * ‚È‚Ç‚ªƒeƒXƒg‚Åg—p‚·‚éƒŠƒ\[ƒX‚ğæ“¾‚µA‚»‚ê‚¼‚ê‚Ö˜AŒg‚·‚éB<br>
+ * ãªã©ãŒãƒ†ã‚¹ãƒˆã§ä½¿ç”¨ã™ã‚‹ãƒªã‚½ãƒ¼ã‚¹ã‚’å–å¾—ã—ã€ãã‚Œãã‚Œã¸é€£æºã™ã‚‹ã€‚<br>
  *
  * @author M.Ishida
  */

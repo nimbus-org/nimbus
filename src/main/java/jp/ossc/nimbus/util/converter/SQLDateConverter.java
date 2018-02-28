@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.util.converter;
 
 /**
- * SQL DATEŒ^ƒRƒ“ƒo[ƒ^B<p>
+ * SQL DATEå‹ã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -41,41 +41,41 @@ public class SQLDateConverter implements ReversibleConverter, java.io.Serializab
     private static final long serialVersionUID = -3345638749436216905L;
 
     /**
-     * java.util.Date‚©‚çjava.sql.DateƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚é•ÏŠ·í•Ê’è”B<p>
+     * java.util.Dateã‹ã‚‰java.sql.Dateã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int DATE_TO_SQL_DATE = 1;
     
     /**
-     * java.util.Date‚©‚çjava.sql.TimeƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚é•ÏŠ·í•Ê’è”B<p>
+     * java.util.Dateã‹ã‚‰java.sql.Timeã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int DATE_TO_SQL_TIME = 2;
     
     /**
-     * java.util.Date‚©‚çjava.sql.TimestampƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚é•ÏŠ·í•Ê’è”B<p>
+     * java.util.Dateã‹ã‚‰java.sql.Timestampã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int DATE_TO_SQL_TIMESTAMP = 3;
     
     /**
-     * java.util.Date‚©‚çjava.sql.DateƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚é•ÏŠ·í•Ê’è”B<p>
+     * java.util.Dateã‹ã‚‰java.sql.Dateã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int SQL_DATE_TO_DATE = -1;
     
     /**
-     * java.util.Date‚©‚çjava.sql.TimeƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚é•ÏŠ·í•Ê’è”B<p>
+     * java.util.Dateã‹ã‚‰java.sql.Timeã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int SQL_TIME_TO_DATE = -2;
     
     /**
-     * java.util.Date‚©‚çjava.sql.TimestampƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚é•ÏŠ·í•Ê’è”B<p>
+     * java.util.Dateã‹ã‚‰java.sql.Timestampã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int SQL_TIMESTAMP_TO_DATE = -3;
     
     protected int convertType;
     
     /**
-     * •ÏŠ·í•Ê‚ğİ’è‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see #DATE_TO_SQL_DATE
      * @see #DATE_TO_SQL_TIME
      * @see #DATE_TO_SQL_TIMESTAMP
@@ -88,9 +88,9 @@ public class SQLDateConverter implements ReversibleConverter, java.io.Serializab
     }
     
     /**
-     * •ÏŠ·í•Ê‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·í•Ê
+     * @return å¤‰æ›ç¨®åˆ¥
      */
     public int getConvertType(){
         return convertType;

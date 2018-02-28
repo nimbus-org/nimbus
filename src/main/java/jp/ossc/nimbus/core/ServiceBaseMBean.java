@@ -32,9 +32,9 @@
 package jp.ossc.nimbus.core;
 
 /**
- * ƒT[ƒrƒXŠî’êƒNƒ‰ƒXMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
- * {@link ServiceBase}ƒNƒ‰ƒX‚ğMBean‚Æ‚µ‚ÄÀ‘•‚·‚é‚½‚ß‚ÌƒCƒ“ƒ^ƒtƒF[ƒX‚Å‚ ‚éB<br>
- * ‚±‚ÌƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒNƒ‰ƒX‚ÍA{@link Service}ƒCƒ“ƒ^ƒtƒF[ƒX‚ªMBeanƒCƒ“ƒ^ƒtƒF[ƒX‚Æ‚µ‚Ä”F¯‚³‚ê‚éB<br>
+ * ã‚µãƒ¼ãƒ“ã‚¹åŸºåº•ã‚¯ãƒ©ã‚¹MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
+ * {@link ServiceBase}ã‚¯ãƒ©ã‚¹ã‚’MBeanã¨ã—ã¦å®Ÿè£…ã™ã‚‹ãŸã‚ã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã§ã‚ã‚‹ã€‚<br>
+ * ã“ã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚¯ãƒ©ã‚¹ã¯ã€{@link Service}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ãŒMBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã¨ã—ã¦èªè­˜ã•ã‚Œã‚‹ã€‚<br>
  * 
  * @author M.Takata
  * @see ServiceBase
@@ -42,43 +42,43 @@ package jp.ossc.nimbus.core;
 public interface ServiceBaseMBean extends Service{
     
     /**
-     * ƒT[ƒrƒX‚ğÄ‹N“®‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã‚’å†èµ·å‹•ã™ã‚‹ã€‚<p>
      *
-     * @exception IllegalStateException ƒT[ƒrƒXó‘Ôƒ`ƒFƒbƒN‚É¸”s‚µ‚½ê‡
-     * @exception Exception start()Astop()‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @exception IllegalStateException ã‚µãƒ¼ãƒ“ã‚¹çŠ¶æ…‹ãƒã‚§ãƒƒã‚¯ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception Exception start()ã€stop()ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      * @see #start()
      * @see #stop()
      */
     public void restart() throws Exception;
     
     /**
-     * Service“à‚ÌƒƒOo—Í‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.log.Logger}ƒT[ƒrƒX‚Ì–¼‘O‚ğİ’è‚·‚éB<p>
+     * Serviceå†…ã®ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.log.Logger}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name Service“à‚ÌƒƒOo—Í‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.log.Logger}ƒT[ƒrƒX‚Ì–¼‘O
+     * @param name Serviceå†…ã®ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.log.Logger}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰
      * @see #getSystemLoggerServiceName()
      */
     public void setSystemLoggerServiceName(ServiceName name);
     
     /**
-     * Service“à‚ÌƒƒOo—Í‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.log.Logger}ƒT[ƒrƒX‚Ì–¼‘O‚ğæ“¾‚·‚éB<p>
+     * Serviceå†…ã®ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.log.Logger}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Service“à‚ÌƒƒOo—Í‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.log.Logger}ƒT[ƒrƒX‚Ì–¼‘O
+     * @return Serviceå†…ã®ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.log.Logger}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰
      * @see #setSystemLoggerServiceName(ServiceName)
      */
     public ServiceName getSystemLoggerServiceName();
     
     /**
-     * Service“à‚Å‚ÌƒƒbƒZ[ƒWæ“¾‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ƒT[ƒrƒX‚Ì–¼‘O‚ğİ’è‚·‚éB<p>
+     * Serviceå†…ã§ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å–å¾—ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name Service“à‚Å‚ÌƒƒbƒZ[ƒWæ“¾‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ƒT[ƒrƒX‚Ì–¼‘O
+     * @param name Serviceå†…ã§ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å–å¾—ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰
      * @see #getSystemMessageRecordFactoryServiceName()
      */
     public void setSystemMessageRecordFactoryServiceName(ServiceName name);
     
     /**
-     * Service“à‚Å‚ÌƒƒbƒZ[ƒWæ“¾‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ƒT[ƒrƒX‚Ì–¼‘O‚ğæ“¾‚·‚éB<p>
+     * Serviceå†…ã§ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å–å¾—ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Service“à‚Å‚ÌƒƒbƒZ[ƒWæ“¾‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ƒT[ƒrƒX‚Ì–¼‘O
+     * @return Serviceå†…ã§ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å–å¾—ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰
      * @see #setSystemMessageRecordFactoryServiceName(ServiceName)
      */
     public ServiceName getSystemMessageRecordFactoryServiceName();

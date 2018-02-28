@@ -43,9 +43,9 @@ import jp.ossc.nimbus.service.cui.*;
 
 /**
  * @author y-tokuda
- * “d•¶ƒŠƒ\[ƒXƒtƒ@ƒNƒgƒŠƒT[ƒrƒX
- * ‚±‚Ì¶¬‚³‚ê‚½ƒRƒƒ“ƒg‚Ì‘}“ü‚³‚ê‚éƒeƒ“ƒvƒŒ[ƒg‚ğ•ÏX‚·‚é‚½‚ß
- * ƒEƒBƒ“ƒhƒE > İ’è > Java > ƒR[ƒh¶¬ > ƒR[ƒh‚ÆƒRƒƒ“ƒg
+ * é›»æ–‡ãƒªã‚½ãƒ¼ã‚¹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹
+ * ã“ã®ç”Ÿæˆã•ã‚ŒãŸã‚³ãƒ¡ãƒ³ãƒˆã®æŒ¿å…¥ã•ã‚Œã‚‹ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚’å¤‰æ›´ã™ã‚‹ãŸã‚
+ * ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ > è¨­å®š > Java > ã‚³ãƒ¼ãƒ‰ç”Ÿæˆ > ã‚³ãƒ¼ãƒ‰ã¨ã‚³ãƒ¡ãƒ³ãƒˆ
  */
 public class MessageResourceFactoryService
 	extends ServiceBase
@@ -55,37 +55,37 @@ public class MessageResourceFactoryService
 	
     private static final long serialVersionUID = -9078293076843372913L;
     
-    //ƒƒ“ƒo•Ï”
-	/** “d•¶ƒŠƒ\[ƒX’è‹`ƒtƒ@ƒCƒ‹Ši”[ƒfƒBƒŒƒNƒgƒŠ */
+    //ãƒ¡ãƒ³ãƒå¤‰æ•°
+	/** é›»æ–‡ãƒªã‚½ãƒ¼ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«æ ¼ç´ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª */
 	private String mDefineFileDir = null;
-	/** “d•¶ƒŠƒ\[ƒX’è‹`ƒtƒ@ƒCƒ‹Šg’£q */
+	/** é›»æ–‡ãƒªã‚½ãƒ¼ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«æ‹¡å¼µå­ */
 	private String mDefFileExt = null;
-	/** “d•¶ƒŠƒ\[ƒXƒIƒuƒWƒFƒNƒg‚ğ•Û‚·‚éƒnƒbƒVƒ… */
+	/** é›»æ–‡ãƒªã‚½ãƒ¼ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä¿æŒã™ã‚‹ãƒãƒƒã‚·ãƒ¥ */
 	private HashMap mMsgResObjectHash = null;
-	/** ƒfƒBƒXƒvƒŒƒC–¼Ì‚ÌArrayList */
+	/** ãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤åç§°ã®ArrayList */
 	private ArrayList mMsgResArrayList = null;
-	/** ByteConverterFactory‚Ì–¼‘O */
+	/** ByteConverterFactoryã®åå‰ */
 	private ServiceName mByteConverterFactoryName = null;
     /** ByteConverterFactory */
     private ByteConverterFactory mByteConverterFactory = null;
 	/** ByteConverter */
 	private ByteConverter mByteConverter = null;
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	 */
 	public MessageResourceFactoryService(){
 		mMsgResObjectHash = new HashMap();
 		mMsgResArrayList = new ArrayList();
 	}
 	/** 
-	 * “d•¶ƒŠƒ\[ƒXƒIƒuƒWƒFƒNƒgæ“¾ƒƒ\ƒbƒh
+	 * é›»æ–‡ãƒªã‚½ãƒ¼ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå–å¾—ãƒ¡ã‚½ãƒƒãƒ‰
 	 */
 	public MessageResource findInstance(String key) {
 		return (MessageResource)mMsgResObjectHash.get(key);
 	}
 	/**
-	 * “d•¶ƒŠƒ\[ƒXƒT[ƒrƒX‚©‚ç“d•¶ƒŠƒ\[ƒXƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚é
-	 * Û‚ÌƒL[‚Æ‚µ‚Ä—LŒø‚Å‚ ‚ê‚ÎAtrue‚ğ•Ô‚·B
+	 * é›»æ–‡ãƒªã‚½ãƒ¼ã‚¹ã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰é›»æ–‡ãƒªã‚½ãƒ¼ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹
+	 * éš›ã®ã‚­ãƒ¼ã¨ã—ã¦æœ‰åŠ¹ã§ã‚ã‚Œã°ã€trueã‚’è¿”ã™ã€‚
 	 */
 	public String check(String val){
 		if(mMsgResObjectHash.containsKey(val)){
@@ -94,12 +94,12 @@ public class MessageResourceFactoryService
 		else return null;
 	}
 	/**
-	 * “d•¶ƒŠƒ\[ƒXƒT[ƒrƒX‚ª•Û‚·‚é“d•¶ƒŠƒ\[ƒXˆê——‚Ì•\¦ƒƒ\ƒbƒh
+	 * é›»æ–‡ãƒªã‚½ãƒ¼ã‚¹ã‚µãƒ¼ãƒ“ã‚¹ãŒä¿æŒã™ã‚‹é›»æ–‡ãƒªã‚½ãƒ¼ã‚¹ä¸€è¦§ã®è¡¨ç¤ºãƒ¡ã‚½ãƒƒãƒ‰
 	 * @return
 	 */
 	public String display(){
 		StringBuilder ret = new StringBuilder();
-		//À‘•‚·‚éB
+		//å®Ÿè£…ã™ã‚‹ã€‚
 		Iterator msgResObjects = mMsgResArrayList.iterator();
 		while(msgResObjects.hasNext()){
 			MessageResourceOperator msgResObj = (MessageResourceOperator)msgResObjects.next();
@@ -111,14 +111,14 @@ public class MessageResourceFactoryService
 		return ret.toString();
 	}
 	/**
-	 * ’è‹`ƒtƒ@ƒCƒ‹Ši”[ƒfƒBƒŒƒNƒgƒŠ‚ÌƒZƒbƒ^[
+	 * å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«æ ¼ç´ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ã‚»ãƒƒã‚¿ãƒ¼
 	 * @param dir
 	 */
 	public void setDefineFileDir(String dir){
 		mDefineFileDir = dir;
 	}
 	/** 
-	 * ’è‹`ƒtƒ@ƒCƒ‹Ši”[ƒfƒBƒŒƒNƒgƒŠ‚ÌƒQƒbƒ^[
+	 * å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«æ ¼ç´ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ã‚²ãƒƒã‚¿ãƒ¼
 	 * 
 	 * @return
 	 */
@@ -126,14 +126,14 @@ public class MessageResourceFactoryService
 		return mDefineFileDir;
 	}
 	/**
-	 * ’è‹`ƒtƒ@ƒCƒ‹Šg’£q‚ÌƒZƒbƒ^[
+	 * å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«æ‹¡å¼µå­ã®ã‚»ãƒƒã‚¿ãƒ¼
 	 *
 	 */
 	public void setDefineFileExt(String ext){
 		mDefFileExt = ext;
 	}
 	/**
-	 * ’è‹`ƒtƒ@ƒCƒ‹Šg’£q‚ÌƒQƒbƒ^[
+	 * å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«æ‹¡å¼µå­ã®ã‚²ãƒƒã‚¿ãƒ¼
 	 *
 	 */
 	public String getDefineFileExt(){
@@ -141,7 +141,7 @@ public class MessageResourceFactoryService
 	}
 	
 	/**
-	 * ƒoƒCƒgƒRƒ“ƒo[ƒ^ƒT[ƒrƒX–¼‚ÌƒZƒbƒ^[
+	 * ãƒã‚¤ãƒˆã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚µãƒ¼ãƒ“ã‚¹åã®ã‚»ãƒƒã‚¿ãƒ¼
 	 * 
 	 */
 	public void setByteConverterServiceName(ServiceName name){
@@ -149,29 +149,29 @@ public class MessageResourceFactoryService
 	}
 	
     /**
-     * ByteConverterFactory‚ğİ’è‚µ‚Ü‚·B
+     * ByteConverterFactoryã‚’è¨­å®šã—ã¾ã™ã€‚
      */
 	public void setByteConverterFactory(ByteConverterFactory byteConverterFactory) {
         mByteConverterFactory = byteConverterFactory;
     }
     
     /**
-	 * ƒT[ƒrƒX‹N“®
-	 * 1.ƒoƒCƒgƒRƒ“ƒo[ƒ^ƒT[ƒrƒXæ“¾
-	 * 2.“d•¶ƒŠƒ\[ƒX’è‹`ƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚Ş
+	 * ã‚µãƒ¼ãƒ“ã‚¹èµ·å‹•
+	 * 1.ãƒã‚¤ãƒˆã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚µãƒ¼ãƒ“ã‚¹å–å¾—
+	 * 2.é›»æ–‡ãƒªã‚½ãƒ¼ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã‚€
 	 * 
 	 */	
 	public void startService(){
-		//ƒoƒCƒgƒRƒ“ƒo[ƒ^[ƒT[ƒrƒXæ“¾
+		//ãƒã‚¤ãƒˆã‚³ãƒ³ãƒãƒ¼ã‚¿ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹å–å¾—
         if(mByteConverterFactoryName != null) {
             mByteConverterFactory = (ByteConverterFactory)ServiceManagerFactory.getService(mByteConverterFactoryName);
         }
         mByteConverter = mByteConverterFactory.findConverter(0);
-		//ƒtƒ@ƒCƒ‹ƒŠƒXƒgì¬
+		//ãƒ•ã‚¡ã‚¤ãƒ«ãƒªã‚¹ãƒˆä½œæˆ
 		File DefDir = new File(mDefineFileDir);
 		ExtentionFileFilter filter = new ExtentionFileFilter(mDefFileExt);
 		File[] defFileList = DefDir.listFiles(filter);
-		//‚·‚×‚Ä‚Ì’è‹`ƒtƒ@ƒCƒ‹‚ğOpen
+		//ã™ã¹ã¦ã®å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’Open
 		if(defFileList != null){
 			for(int rCnt=0;rCnt<defFileList.length;rCnt++){
 					loadXMLDefinition(defFileList[rCnt]);
@@ -179,11 +179,11 @@ public class MessageResourceFactoryService
 		}
 	}
 	/**
-	 * XML’è‹`ƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚Ş
+	 * XMLå®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã‚€
 	 * @param xmlfile
 	 */
 	protected void loadXMLDefinition(File xmlfile){
-		//rootƒGƒŒƒƒ“ƒg‚ğæ“¾
+		//rootã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã‚’å–å¾—
 		Element root = null;
 		try{
 			root = getRoot(xmlfile);
@@ -192,30 +192,30 @@ public class MessageResourceFactoryService
 			e.printStackTrace();
 			throw new ServiceException("MESSAGERESOURCEFACTORY001","Fail to get Root Element.",e) ;				
 		}
-		// MessageƒGƒŒƒƒ“ƒg‚ğæ“¾
+		// Messageã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã‚’å–å¾—
 		NodeList MessageList = root.getElementsByTagName(MESSAGE_TAG_NAME);
-		// ’è‹`‚³‚ê‚Ä‚¢‚éƒƒbƒZ[ƒW‚Ì”ƒ‹[ƒv‚·‚éB
+		// å®šç¾©ã•ã‚Œã¦ã„ã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®æ•°ãƒ«ãƒ¼ãƒ—ã™ã‚‹ã€‚
 		for(int rCnt=0;rCnt<MessageList.getLength();rCnt++){
 			Element msgElement = (Element)MessageList.item(rCnt);
-			//display‘®«‚ğæ“¾
+			//displayå±æ€§ã‚’å–å¾—
 			String disp = MessageResourceUtil.getAttMustBeSpecified(msgElement,DISP_ATT);
-			//selectKey‘®«‚ğæ“¾
+			//selectKeyå±æ€§ã‚’å–å¾—
 			String key = MessageResourceUtil.getAttMustBeSpecified(msgElement,SELECT_KEY_ATT);
-			//ƒƒbƒZ[ƒWƒŠƒ\[ƒXƒIƒuƒWƒFƒNƒg‚ğ¶¬		
+			//ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒªã‚½ãƒ¼ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆ		
 			MessageResourceOperator msgResource = new MessageResourceImpl();
-			//ƒL[‘®«‚ğİ’è
+			//ã‚­ãƒ¼å±æ€§ã‚’è¨­å®š
 			msgResource.setKey(key);
-			//ƒfƒBƒXƒvƒŒƒC—p•¶š—ñ‚ğİ’è
+			//ãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤ç”¨æ–‡å­—åˆ—ã‚’è¨­å®š
 			msgResource.setDisplayMessage(disp);
-			//ƒƒbƒZ[ƒWƒŠƒ\[ƒXƒIƒuƒWƒFƒNƒg‚ÉABLƒtƒ[ƒL[‚ğİ’è
+			//ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒªã‚½ãƒ¼ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ã€BLãƒ•ãƒ­ãƒ¼ã‚­ãƒ¼ã‚’è¨­å®š
 			setMsgResBLFlowKeys(msgResource,msgElement);
-			//SendDataİ’è
+			//SendDataè¨­å®š
 			setMsgResFormatData(msgResource,msgElement,"send");
-			//RecvDataİ’è
+			//RecvDataè¨­å®š
 			setMsgResFormatData(msgResource,msgElement,"recv");
-			//“d•¶ƒŠƒ\[ƒXƒIƒuƒWƒFƒNƒg‚ğƒnƒbƒVƒ…‚É“o˜^
+			//é›»æ–‡ãƒªã‚½ãƒ¼ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒãƒƒã‚·ãƒ¥ã«ç™»éŒ²
 			mMsgResObjectHash.put(key,msgResource);
-			//Display–¼ÌƒnƒbƒVƒ…‚ÉAdisplay–¼Ì‚ğ“o˜^
+			//Displayåç§°ãƒãƒƒã‚·ãƒ¥ã«ã€displayåç§°ã‚’ç™»éŒ²
 			mMsgResArrayList.add(msgResource);		
 		}
 	}
@@ -223,30 +223,30 @@ public class MessageResourceFactoryService
 	
 
 	/**
-	 * ƒ‹[ƒgƒGƒŒƒƒ“ƒg‚ğæ“¾‚·‚éƒƒ\ƒbƒh
+	 * ãƒ«ãƒ¼ãƒˆã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã‚’å–å¾—ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
 	 */
 	protected Element getRoot(File xmlfile) throws Exception{
-		// ƒhƒLƒ…ƒƒ“ƒgƒrƒ‹ƒ_[ƒtƒ@ƒNƒgƒŠ‚ğ¶¬
+		// ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆãƒ“ãƒ«ãƒ€ãƒ¼ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚’ç”Ÿæˆ
 		DocumentBuilderFactory dbfactory = DocumentBuilderFactory.newInstance();
-		// ƒhƒLƒ…ƒƒ“ƒgƒrƒ‹ƒ_[‚ğ¶¬
+		// ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆãƒ“ãƒ«ãƒ€ãƒ¼ã‚’ç”Ÿæˆ
 		DocumentBuilder builder = dbfactory.newDocumentBuilder();
-		// ƒp[ƒX‚ğÀs‚µ‚ÄDocumentƒIƒuƒWƒFƒNƒg‚ğæ“¾
+		// ãƒ‘ãƒ¼ã‚¹ã‚’å®Ÿè¡Œã—ã¦Documentã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—
 		Document doc = builder.parse(xmlfile);
-		// ƒ‹[ƒg—v‘f‚ğæ“¾
+		// ãƒ«ãƒ¼ãƒˆè¦ç´ ã‚’å–å¾—
 		return doc.getDocumentElement();
 	}
 	
 	
 	protected void setMsgResBLFlowKeys(MessageResourceOperator msg,Element element){
-		//BLFlowƒGƒŒƒƒ“ƒg‚ğæ“¾
+		//BLFlowã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã‚’å–å¾—
 		NodeList blFlowList = element.getElementsByTagName(MessageResourceDefine.BLFLOW_TAG_NAME);
 		for(int rCnt=0;rCnt<blFlowList.getLength();rCnt++){
 			Element blFlow = (Element)blFlowList.item(rCnt);
-			//ƒnƒbƒVƒ…‚Ö‚Ì“o˜^ƒL[‚ğæ“¾
+			//ãƒãƒƒã‚·ãƒ¥ã¸ã®ç™»éŒ²ã‚­ãƒ¼ã‚’å–å¾—
 			String name = MessageResourceUtil.getAttMustBeSpecified(blFlow,BLFLOW_ATT_NAME);
-			//BLƒtƒ[ƒL[‚ğæ“¾
+			//BLãƒ•ãƒ­ãƒ¼ã‚­ãƒ¼ã‚’å–å¾—
 			String value = MessageResourceUtil.getValueMustbeSpecified(blFlow);
-			//ƒnƒbƒVƒ…‚É’Ç‰Á
+			//ãƒãƒƒã‚·ãƒ¥ã«è¿½åŠ 
 			msg.addBLFlowKey(name,value);
 		}
 	}
@@ -254,7 +254,7 @@ public class MessageResourceFactoryService
 	protected void setMsgResFormatData(MessageResourceOperator msg,
 										Element element,
 										String kind){
-		//‘—óM”»’è
+		//é€å—ä¿¡åˆ¤å®š
 		String tag = null;
 		if(kind.equals("send")){
 			tag = SENDDATA_TAG_NAME;
@@ -266,7 +266,7 @@ public class MessageResourceFactoryService
 		int definedNum = DataList.getLength();
 		
 		if ( definedNum > 1){
-			//2ŒÂˆÈã’è‹`‚ª‚ ‚é‚Ì‚Í‚¨‚©‚µ‚¢
+			//2å€‹ä»¥ä¸Šå®šç¾©ãŒã‚ã‚‹ã®ã¯ãŠã‹ã—ã„
 			throw new ServiceException("MESSAGERESOURCEFACTORY005",tag + 
 											" must be specified only one or not be specified.");
 		}	
@@ -276,33 +276,33 @@ public class MessageResourceFactoryService
 			String JmsMsgType = MessageResourceUtil.getAttMustBeSpecified(Data,DATATAG_ATT_NAME);
 			MessageFormat messageFormat = null;
 			if(JmsMsgType.equals(JMSTEXTMSG)){
-				//TextMessageFormat‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬	
+				//TextMessageFormatã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆ	
 				messageFormat = new TextMessageFormat(mByteConverter);
 			}
 			else if(JmsMsgType.equals(JMSBYTESMSG)){
-				//BytesMessageFormat‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬
+				//BytesMessageFormatã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆ
 				messageFormat = new BytesOrStreamMessageFormat(mByteConverter,"Bytes");
 			}
 			else if(JmsMsgType.equals(JMSOBJECTMSG)){
-				//ObjectMessageFormat‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬
+				//ObjectMessageFormatã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆ
 				messageFormat = new ObjectMessageFormat(mByteConverter);
 			}
 			else if(JmsMsgType.equals(JMSSTREAMMSG)){
-				//StreamMessageFormat‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬
+				//StreamMessageFormatã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆ
 				messageFormat = new BytesOrStreamMessageFormat(mByteConverter,"Stream");
 			}
 			else if(JmsMsgType.equals(JMSMAPMSG)){
-				///MapMessageFormat‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬
+				///MapMessageFormatã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆ
 				messageFormat = new MapMessageFormat(mByteConverter);
 			}
 			else{
-				//•s³‚È‘®«w’è
+				//ä¸æ­£ãªå±æ€§æŒ‡å®š
 				throw new ServiceException("MESSAGERESOURCEFACTORY004","[" + JmsMsgType + "]  is invalid as JMS Message Type.");
 
 			}
-			//¶¬‚µ‚½MessageFormatÀ‘•ƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Éƒp[ƒX‚³‚¹‚éB
+			//ç”Ÿæˆã—ãŸMessageFormatå®Ÿè£…ã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«ãƒ‘ãƒ¼ã‚¹ã•ã›ã‚‹ã€‚
 			messageFormat.parse(Data);
-			//MessageFormatÀ‘•ƒNƒ‰ƒX‚ğ“d•¶ƒŠƒ\[ƒXƒIƒuƒWƒFƒNƒg‚Éadd‚·‚éB
+			//MessageFormatå®Ÿè£…ã‚¯ãƒ©ã‚¹ã‚’é›»æ–‡ãƒªã‚½ãƒ¼ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«addã™ã‚‹ã€‚
 			msg.setMessageFormat(messageFormat,kind);
 		}
 		

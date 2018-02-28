@@ -29,26 +29,26 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.aspect.interfaces;
 
 
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 
 /**
- * ƒCƒ“ƒ^[ƒZƒvƒ^[ÀsƒCƒ“ƒ^[ƒtƒFƒCƒX<p>
- * ƒL[‚ğŒ³‚ÉInterceptorInvokerFactory‚©‚çì¬‚³‚ê‚éB
+ * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼å®Ÿè¡Œã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹<p>
+ * ã‚­ãƒ¼ã‚’å…ƒã«InterceptorInvokerFactoryã‹ã‚‰ä½œæˆã•ã‚Œã‚‹ã€‚
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
  */
 public interface InterceptorChainInvoker extends InterceptorChain {
 	/**
-	 * ƒ`ƒFƒCƒ“ŠJnƒƒ\ƒbƒh<br>
-	 * ƒR[ƒ‹ƒoƒbƒN—pƒIƒuƒWƒFƒNƒg‚ğ•Û‚µAinvokeChain‚ğÀs‚·‚éB
-	 * @param callBackObject	ƒ‹[ƒgÀs—pƒR[ƒ‹ƒoƒbƒNƒIƒuƒWƒFƒNƒg
-	 * @param inputObj		“ü—ÍƒIƒuƒWƒFƒNƒg
-	 * @return	ƒŠƒ^[ƒ“ƒIƒuƒWƒFƒNƒg
+	 * ãƒã‚§ã‚¤ãƒ³é–‹å§‹ãƒ¡ã‚½ãƒƒãƒ‰<br>
+	 * ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ç”¨ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä¿æŒã—ã€invokeChainã‚’å®Ÿè¡Œã™ã‚‹ã€‚
+	 * @param callBackObject	ãƒ«ãƒ¼ãƒˆå®Ÿè¡Œç”¨ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	 * @param inputObj		å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	 * @return	ãƒªã‚¿ãƒ¼ãƒ³ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 * @throws InterceptorException
 	 * @throws TargetCheckedException
 	 * @throws TargetUncheckedException

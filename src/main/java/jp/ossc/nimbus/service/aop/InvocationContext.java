@@ -32,46 +32,46 @@
 package jp.ossc.nimbus.service.aop;
 
 /**
- * ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñB<p>
+ * å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã€‚<p>
  *
  * @author M.Takata
  */
 public interface InvocationContext{
     
     /**
-     * ŒÄ‚Ño‚µ‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * å‘¼ã³å‡ºã—å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ŒÄ‚Ño‚µ‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
+     * @return å‘¼ã³å‡ºã—å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object getTargetObject();
     
     /**
-     * ŒÄ‚Ño‚µ‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚éB<p>
+     * å‘¼ã³å‡ºã—å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param target ŒÄ‚Ño‚µ‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
+     * @param target å‘¼ã³å‡ºã—å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void setTargetObject(Object target);
     
     /**
-     * ‘®«‚ğİ’è‚·‚éB<p>
+     * å±æ€§ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name ‘®«–¼
-     * @param value ’l
+     * @param name å±æ€§å
+     * @param value å€¤
      */
     public void setAttribute(String name, Object value);
     
     /**
-     * ‘®«‚ğæ“¾‚·‚éB<p>
+     * å±æ€§ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param name ‘®«–¼
-     * @return ’l
+     * @param name å±æ€§å
+     * @return å€¤
      */
     public Object getAttribute(String name);
     
     /**
-     * ‘®«‚Ì–¼‘O‚ğæ“¾‚·‚éB<p>
+     * å±æ€§ã®åå‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‘®«–¼”z—ñ
+     * @return å±æ€§åé…åˆ—
      */
     public String[] getAttributeNames();
 }

@@ -75,7 +75,7 @@ import jp.ossc.nimbus.util.SynchronizeMonitor;
 import jp.ossc.nimbus.util.WaitSynchronizeMonitor;
 
 /**
- * TCPƒvƒƒgƒRƒ‹—p‚Ì{@link ClientConnection}ƒCƒ“ƒ^ƒtƒF[ƒXÀ‘•ƒNƒ‰ƒXB<p>
+ * TCPãƒ—ãƒ­ãƒˆã‚³ãƒ«ç”¨ã®{@link ClientConnection}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -832,7 +832,7 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
     }
     
     /**
-     * TCPƒvƒƒgƒRƒ‹—p‚Ì{@link ClientConnection}‚ÌŠÇ—ƒT[ƒrƒXB<p>
+     * TCPãƒ—ãƒ­ãƒˆã‚³ãƒ«ç”¨ã®{@link ClientConnection}ã®ç®¡ç†ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
      *
      * @author M.Takata
      */
@@ -939,183 +939,183 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
     }
     
     /**
-     * TCPƒvƒƒgƒRƒ‹—p‚Ì{@link ClientConnection}‚ÌŠÇ—ƒT[ƒrƒX‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+     * TCPãƒ—ãƒ­ãƒˆã‚³ãƒ«ç”¨ã®{@link ClientConnection}ã®ç®¡ç†ã‚µãƒ¼ãƒ“ã‚¹ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
      *
      * @author M.Takata
      */
     public interface ClientConnectionServiceMBean extends ServiceBaseMBean{
         
         /**
-         * óMƒƒbƒZ[ƒW‚ğÄ—˜—p‚·‚éÛ‚ÌóMƒƒbƒZ[ƒWƒoƒbƒtƒ@”‚ğİ’è‚·‚éB<p>
-         * ƒfƒtƒHƒ‹ƒg‚ÍA100B<br>
+         * å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å†åˆ©ç”¨ã™ã‚‹éš›ã®å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒãƒƒãƒ•ã‚¡æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€100ã€‚<br>
          *
-         * @param size óMƒƒbƒZ[ƒWƒoƒbƒtƒ@”
+         * @param size å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒãƒƒãƒ•ã‚¡æ•°
          */
         public void setMessageRecycleBufferSize(int size);
         
         /**
-         * óMƒƒbƒZ[ƒWƒoƒbƒtƒ@‚ğÄ—˜—p‚·‚éÛ‚ÌóMƒƒbƒZ[ƒWƒoƒbƒtƒ@ƒoƒbƒtƒ@”‚ğæ“¾‚·‚éB<p>
+         * å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒãƒƒãƒ•ã‚¡ã‚’å†åˆ©ç”¨ã™ã‚‹éš›ã®å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒãƒƒãƒ•ã‚¡ãƒãƒƒãƒ•ã‚¡æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return óMƒƒbƒZ[ƒWƒoƒbƒtƒ@ƒoƒbƒtƒ@”
+         * @return å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒãƒƒãƒ•ã‚¡ãƒãƒƒãƒ•ã‚¡æ•°
          */
         public int getMessageRecycleBufferSize();
         
         /**
-         * óM‘¤‚Ìƒ[ƒJƒ‹ƒ\ƒPƒbƒgƒAƒhƒŒƒX‚ğæ“¾‚·‚éB<p>
+         * å—ä¿¡å´ã®ãƒ­ãƒ¼ã‚«ãƒ«ã‚½ã‚±ãƒƒãƒˆã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒ[ƒJƒ‹ƒ\ƒPƒbƒgƒAƒhƒŒƒX
+         * @return ãƒ­ãƒ¼ã‚«ãƒ«ã‚½ã‚±ãƒƒãƒˆã‚¢ãƒ‰ãƒ¬ã‚¹
          */
         public SocketAddress getLocalSocketAddress();
         
         /**
-         * ‘—M‘¤‚ÌƒŠƒ‚[ƒgƒ\ƒPƒbƒgƒAƒhƒŒƒX‚ğæ“¾‚·‚éB<p>
+         * é€ä¿¡å´ã®ãƒªãƒ¢ãƒ¼ãƒˆã‚½ã‚±ãƒƒãƒˆã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒŠƒ‚[ƒgƒ\ƒPƒbƒgƒAƒhƒŒƒX
+         * @return ãƒªãƒ¢ãƒ¼ãƒˆã‚½ã‚±ãƒƒãƒˆã‚¢ãƒ‰ãƒ¬ã‚¹
          */
         public SocketAddress getRemoteSocketAddress();
         
         /**
-         * “o˜^‚³‚ê‚Ä‚¢‚éƒTƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+         * ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return “o˜^‚³‚ê‚Ä‚¢‚éƒTƒuƒWƒFƒNƒg‚ÌW‡
+         * @return ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®é›†åˆ
          */
         public Set getSubjects();
         
         /**
-         * w’è‚µ‚½ƒTƒuƒWƒFƒNƒg‚É“o˜^‚³‚ê‚Ä‚¢‚éƒL[‚ğæ“¾‚·‚éB<p>
+         * æŒ‡å®šã—ãŸã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return “o˜^‚³‚ê‚Ä‚¢‚éƒL[‚ÌW‡
+         * @return ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚­ãƒ¼ã®é›†åˆ
          */
         public Set getKeys(String subject);
         
         /**
-         * óMŒ”‚ğæ“¾‚·‚éB<p>
+         * å—ä¿¡ä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return óMŒ”
+         * @return å—ä¿¡ä»¶æ•°
          */
         public long getReceiveCount();
         
         /**
-         * •½‹ÏóMˆ—ŠÔ‚ğæ“¾‚·‚éB<p>
+         * å¹³å‡å—ä¿¡å‡¦ç†æ™‚é–“ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return •½‹ÏóMˆ—ŠÔ[ms]
+         * @return å¹³å‡å—ä¿¡å‡¦ç†æ™‚é–“[ms]
          */
         public long getAverageReceiveProcessTime();
         
         /**
-         * •½‹ÏƒƒbƒZ[ƒWˆ—ŠÔ‚ğæ“¾‚·‚éB<p>
+         * å¹³å‡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å‡¦ç†æ™‚é–“ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return •½‹ÏƒƒbƒZ[ƒWˆ—ŠÔ[ms]
+         * @return å¹³å‡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å‡¦ç†æ™‚é–“[ms]
          */
         public long getAverageOnMessageProcessTime();
         
         /**
-         * ƒJƒEƒ“ƒg‚ğƒŠƒZƒbƒg‚·‚éB<p>
+         * ã‚«ã‚¦ãƒ³ãƒˆã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã€‚<p>
          */
         public void resetCount();
         
         /**
-         * ƒT[ƒo‚ÆÚ‘±‚·‚éB<p>
+         * ã‚µãƒ¼ãƒã¨æ¥ç¶šã™ã‚‹ã€‚<p>
          *
-         * @exception ConnectException ƒT[ƒo‚Æ‚ÌÚ‘±‚É¸”s‚µ‚½ê‡
+         * @exception ConnectException ã‚µãƒ¼ãƒã¨ã®æ¥ç¶šã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void connect() throws ConnectException;
         
         /**
-         * ƒT[ƒo‚ÆÚ‘±‚·‚éB<p>
+         * ã‚µãƒ¼ãƒã¨æ¥ç¶šã™ã‚‹ã€‚<p>
          *
-         * @param id ƒNƒ‰ƒCƒAƒ“ƒg‚ğ¯•Ê‚·‚éID
-         * @exception ConnectException ƒT[ƒo‚Æ‚ÌÚ‘±‚É¸”s‚µ‚½ê‡
+         * @param id ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚’è­˜åˆ¥ã™ã‚‹ID
+         * @exception ConnectException ã‚µãƒ¼ãƒã¨ã®æ¥ç¶šã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void connect(Object id) throws ConnectException;
         
         /**
-         * ”zMŠJn‚ğƒT[ƒo‚É—v‹‚·‚éB<br>
+         * é…ä¿¡é–‹å§‹ã‚’ã‚µãƒ¼ãƒã«è¦æ±‚ã™ã‚‹ã€‚<br>
          *
-         * @exception MessageSendException ƒT[ƒo‚Ö‚Ì—v‹‚É¸”s‚µ‚½ê‡
+         * @exception MessageSendException ã‚µãƒ¼ãƒã¸ã®è¦æ±‚ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void startReceive() throws MessageSendException;
         
         /**
-         * w’è‚µ‚½‰ß‹‚ÌŠÔ‚Ìƒf[ƒ^‚©‚ç”zMŠJn‚ğƒT[ƒo‚É—v‹‚·‚éB<br>
+         * æŒ‡å®šã—ãŸéå»ã®æ™‚é–“ã®ãƒ‡ãƒ¼ã‚¿ã‹ã‚‰é…ä¿¡é–‹å§‹ã‚’ã‚µãƒ¼ãƒã«è¦æ±‚ã™ã‚‹ã€‚<br>
          *
-         * @param from ŠJnŠÔ
-         * @exception MessageSendException ƒT[ƒo‚Ö‚Ì—v‹‚É¸”s‚µ‚½ê‡
+         * @param from é–‹å§‹æ™‚é–“
+         * @exception MessageSendException ã‚µãƒ¼ãƒã¸ã®è¦æ±‚ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void startReceive(long from) throws MessageSendException;
         
         /**
-         * ”zM’â~‚ğƒT[ƒo‚É—v‹‚·‚éB<br>
+         * é…ä¿¡åœæ­¢ã‚’ã‚µãƒ¼ãƒã«è¦æ±‚ã™ã‚‹ã€‚<br>
          *
-         * @exception MessageSendException ƒT[ƒo‚Ö‚Ì—v‹‚É¸”s‚µ‚½ê‡
+         * @exception MessageSendException ã‚µãƒ¼ãƒã¸ã®è¦æ±‚ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void stopReceive() throws MessageSendException;
         
         /**
-         * ”zMŠJn‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<br>
+         * é…ä¿¡é–‹å§‹ã—ã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<br>
          *
-         * @return ”zMŠJn‚µ‚Ä‚¢‚éê‡true
+         * @return é…ä¿¡é–‹å§‹ã—ã¦ã„ã‚‹å ´åˆtrue
          */
         public boolean isStartReceive();
         
         /**
-         * ”zM‚µ‚Ä—~‚µ‚¢ƒTƒuƒWƒFƒNƒg‚ğƒT[ƒo‚É—v‹‚·‚éB<br>
+         * é…ä¿¡ã—ã¦æ¬²ã—ã„ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚µãƒ¼ãƒã«è¦æ±‚ã™ã‚‹ã€‚<br>
          *
-         * @param subject ƒTƒuƒWƒFƒNƒg
-         * @exception MessageSendException ƒT[ƒo‚Ö‚Ì—v‹‚É¸”s‚µ‚½ê‡
+         * @param subject ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @exception MessageSendException ã‚µãƒ¼ãƒã¸ã®è¦æ±‚ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void addSubject(String subject) throws MessageSendException;
         
         /**
-         * ”zM‚µ‚Ä—~‚µ‚¢ƒTƒuƒWƒFƒNƒg‚ÆƒL[‚ğƒT[ƒo‚É—v‹‚·‚éB<br>
+         * é…ä¿¡ã—ã¦æ¬²ã—ã„ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã‚­ãƒ¼ã‚’ã‚µãƒ¼ãƒã«è¦æ±‚ã™ã‚‹ã€‚<br>
          *
-         * @param subject ƒTƒuƒWƒFƒNƒg
-         * @param keys ƒL[
-         * @exception MessageSendException ƒT[ƒo‚Ö‚Ì—v‹‚É¸”s‚µ‚½ê‡
+         * @param subject ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @param keys ã‚­ãƒ¼
+         * @exception MessageSendException ã‚µãƒ¼ãƒã¸ã®è¦æ±‚ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void addSubject(String subject, String[] keys) throws MessageSendException;
         
         /**
-         * ”zM‚ğ‰ğœ‚µ‚Ä—~‚µ‚¢ƒTƒuƒWƒFƒNƒg‚ğƒT[ƒo‚É—v‹‚·‚éB<br>
+         * é…ä¿¡ã‚’è§£é™¤ã—ã¦æ¬²ã—ã„ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚µãƒ¼ãƒã«è¦æ±‚ã™ã‚‹ã€‚<br>
          *
-         * @param subject ƒTƒuƒWƒFƒNƒg
-         * @exception MessageSendException ƒT[ƒo‚Ö‚Ì—v‹‚É¸”s‚µ‚½ê‡
+         * @param subject ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @exception MessageSendException ã‚µãƒ¼ãƒã¸ã®è¦æ±‚ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void removeSubject(String subject) throws MessageSendException;
         
         /**
-         * ”zM‚ğ‰ğœ‚µ‚Ä—~‚µ‚¢ƒTƒuƒWƒFƒNƒg‚ÆƒL[‚ğƒT[ƒo‚É—v‹‚·‚éB<br>
+         * é…ä¿¡ã‚’è§£é™¤ã—ã¦æ¬²ã—ã„ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã‚­ãƒ¼ã‚’ã‚µãƒ¼ãƒã«è¦æ±‚ã™ã‚‹ã€‚<br>
          *
-         * @param subject ƒTƒuƒWƒFƒNƒg
-         * @param keys ƒL[
-         * @exception MessageSendException ƒT[ƒo‚Ö‚Ì—v‹‚É¸”s‚µ‚½ê‡
+         * @param subject ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @param keys ã‚­ãƒ¼
+         * @exception MessageSendException ã‚µãƒ¼ãƒã¸ã®è¦æ±‚ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void removeSubject(String subject, String[] keys) throws MessageSendException;
         
         /**
-         * ƒT[ƒo‚ÆÄÚ‘±‚·‚éB<p>
+         * ã‚µãƒ¼ãƒã¨å†æ¥ç¶šã™ã‚‹ã€‚<p>
          *
-         * @exception ConnectException ƒT[ƒo‚Æ‚ÌÚ‘±‚É¸”s‚µ‚½ê‡
-         * @exception MessageSendException ƒT[ƒo‚Ö‚Ì—v‹‚É¸”s‚µ‚½ê‡
+         * @exception ConnectException ã‚µãƒ¼ãƒã¨ã®æ¥ç¶šã«å¤±æ•—ã—ãŸå ´åˆ
+         * @exception MessageSendException ã‚µãƒ¼ãƒã¸ã®è¦æ±‚ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void reconnect() throws ConnectException, MessageSendException;
         
         /**
-         * Ú‘±‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+         * æ¥ç¶šã—ã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return Ú‘±‚µ‚Ä‚¢‚éê‡true
+         * @return æ¥ç¶šã—ã¦ã„ã‚‹å ´åˆtrue
          */
         public boolean isConnected();
         
         /**
-         * ƒT[ƒo‘¤‚©‚çØ’f—v‹‚ğó‚¯‚½‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+         * ã‚µãƒ¼ãƒå´ã‹ã‚‰åˆ‡æ–­è¦æ±‚ã‚’å—ã‘ãŸã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return ƒT[ƒo‘¤‚©‚çØ’f—v‹‚ğó‚¯‚½ê‡true
+         * @return ã‚µãƒ¼ãƒå´ã‹ã‚‰åˆ‡æ–­è¦æ±‚ã‚’å—ã‘ãŸå ´åˆtrue
          */
         public boolean isServerClosed();
         
         /**
-         * ƒT[ƒo‚ÆØ’f‚·‚éB<p>
+         * ã‚µãƒ¼ãƒã¨åˆ‡æ–­ã™ã‚‹ã€‚<p>
          */
         public void close();
     }

@@ -37,9 +37,9 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.resource.TransactionResource;
 //
 /**
- * ƒhƒ‰ƒCƒo[ƒ}ƒl[ƒWƒƒ[‚æ‚èJDBCƒRƒlƒNƒVƒ‡ƒ“‚ğo—Í‚·‚éƒtƒ@ƒNƒgƒŠ[ 
+ * ãƒ‰ãƒ©ã‚¤ãƒãƒ¼ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼ã‚ˆã‚ŠJDBCã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’å‡ºåŠ›ã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ 
  * @author   nakano
- * @version  1.00 ì¬: 2003/12/01 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/12/01 -ã€€H.Nakano
  */
 public class JdbcConnectionFactoryFromDriverService
 	extends ServiceBase
@@ -47,13 +47,13 @@ public class JdbcConnectionFactoryFromDriverService
 	
     private static final long serialVersionUID = 8490173969104394544L;
     
-    /** JDBCƒhƒ‰ƒCƒo[–¼ */
+    /** JDBCãƒ‰ãƒ©ã‚¤ãƒãƒ¼å */
 	private String mDriverName = null ;
-	/** Ú‘±•¶š—ñ */
+	/** æ¥ç¶šæ–‡å­—åˆ— */
 	private String mCondition = null ;
-	/** AutoCommitƒ‚[ƒh*/
+	/** AutoCommitãƒ¢ãƒ¼ãƒ‰*/
 	private boolean mIsAutoCommit = false ;
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.core.ServiceBaseSupport#startService()
 	 */
 	public void startService() throws ClassNotFoundException {
@@ -63,31 +63,31 @@ public class JdbcConnectionFactoryFromDriverService
 			NimbusClassLoader.getInstance()
 		);
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.resource.datasource.JdbcConnectionFactoryFromDriverServiceMBean#setJdbcDriverName(java.lang.String)
 	 */
 	public void setJdbcDriverName(String name) {
 		mDriverName = name ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.resource.datasource.JdbcConnectionFactoryFromDriverServiceMBean#getJdbcDriverName()
 	 */
 	public String getJdbcDriverName() {
 		return mDriverName;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.resource.datasource.JdbcConnectionFactoryFromDriverServiceMBean#setJdbcConnectCondition(java.lang.String)
 	 */
 	public void setJdbcConnectCondition(String condition) {
 		mCondition = condition ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.resource.datasource.JdbcConnectionFactoryFromDriverServiceMBean#getJdbcConnectCondition()
 	 */
 	public String getJdbcConnectCondition() {
 		return mCondition;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.resource.datasource.JdbcConnectionFactory#makeConnection(java.lang.String)
 	 */
 	public Connection makeConnection(String key) throws SQLException {
@@ -101,7 +101,7 @@ public class JdbcConnectionFactoryFromDriverService
 		dbc.setAutoCommit(this.mIsAutoCommit) ;
 		return dbc ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.resource.ResourceFactory#makeResource(java.lang.String)
 	 */
 	public TransactionResource makeResource(String key) throws Exception {
@@ -109,7 +109,7 @@ public class JdbcConnectionFactoryFromDriverService
 		JdbcConnectionTransactionResource ret = new JdbcConnectionTransactionResource(con) ;
 		return ret ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.resource.datasource.JdbcConnectionFactoryFromDriverServiceMBean#setAutoCommit(boolean)
 	 */
 	public void setAutoCommit(boolean isAutoCommit){

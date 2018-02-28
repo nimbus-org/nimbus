@@ -37,7 +37,7 @@ import jp.ossc.nimbus.core.ServiceName;
 
 
 /**
- * {@link HttpServletRequestTransferInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB
+ * {@link HttpServletRequestTransferInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚
  * <p>
  *
  * @author M.Ishida
@@ -46,30 +46,30 @@ import jp.ossc.nimbus.core.ServiceName;
 public interface HttpServletRequestTransferInterceptorServiceMBean extends ServletFilterInterceptorServiceMBean {
 
     /**
-     * ThreadContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ThreadContextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ThreadContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ThreadContextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setThreadContextServiceName(ServiceName name);
 
     /**
-     * ThreadContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ThreadContextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ThreadContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ThreadContextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getThreadContextServiceName();
 
     /**
-     * HttpServletRequestƒIƒuƒWƒFƒNƒg‚ÌƒvƒƒpƒeƒB–¼‚ÆThreadContext‚Éİ’è‚·‚éƒL[–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * HttpServletRequestã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã¨ThreadContextã«è¨­å®šã™ã‚‹ã‚­ãƒ¼åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param mapping ƒ}ƒbƒsƒ“ƒO
+     * @param mapping ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public void setRequestPropertyAndContextKeyMapping(Map mapping);
 
     /**
-     * HttpServletRequestƒIƒuƒWƒFƒNƒg‚ÌƒvƒƒpƒeƒB–¼‚ÆThreadContext‚Éİ’è‚·‚éƒL[–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * HttpServletRequestã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã¨ThreadContextã«è¨­å®šã™ã‚‹ã‚­ãƒ¼åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ}ƒbƒsƒ“ƒO
+     * @return ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Map getRequestPropertyAndContextKeyMapping();
 

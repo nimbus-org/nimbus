@@ -34,80 +34,80 @@ package jp.ossc.nimbus.service.graph;
 import java.util.Iterator;
 
 /**
- * ƒvƒƒbƒgğŒB<p>
+ * ãƒ—ãƒ­ãƒƒãƒˆæ¡ä»¶ã€‚<p>
  *
  * @author k2-taniguchi
  */
 public interface PlotCondition {
 
     /**
-     * ƒvƒƒbƒg–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒƒãƒˆåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒbƒg–¼
+     * @return ãƒ—ãƒ­ãƒƒãƒˆå
      */
     public String getName();
 
     /**
-     * ƒvƒƒbƒg–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒƒãƒˆåã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒbƒg–¼
+     * @param name ãƒ—ãƒ­ãƒƒãƒˆå
      */
     public void setName(String name);
 
     /**
-     * ƒf[ƒ^ƒZƒbƒgğŒ‚ğ’Ç‰Á‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param dsCondition ƒf[ƒ^ƒZƒbƒgğŒ
+     * @param dsCondition ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶
      */
     public void addDatasetCondition(DatasetCondition dsCondition);
 
     /**
-     * w’è‚³‚ê‚½ƒf[ƒ^ƒZƒbƒg–¼‚Ìƒf[ƒ^ƒZƒbƒgğŒ”z—ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param dsName ƒf[ƒ^ƒZƒbƒg–¼
-     * @return ƒf[ƒ^ƒZƒbƒgğŒ”z—ñ
+     * @param dsName ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå
+     * @return ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶é…åˆ—
      */
     public DatasetCondition[] getDatasetConditions(String dsName);
 
     /**
-     * ƒf[ƒ^ƒZƒbƒgğŒ”z—ñ‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒf[ƒ^ƒZƒbƒgğŒ”z—ñ
+     * @return ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶é…åˆ—
      */
     public DatasetCondition[] getDatasetConditions();
 
     /**
-     * ƒf[ƒ^ƒZƒbƒg–¼‚ÌƒCƒeƒŒ[ƒ^‚ğæ“¾‚·‚éB<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã®ã‚¤ãƒ†ãƒ¬ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒf[ƒ^ƒZƒbƒg–¼‚ÌƒCƒeƒŒ[ƒ^
+     * @return ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã®ã‚¤ãƒ†ãƒ¬ãƒ¼ã‚¿
      */
     public Iterator getDatasetNames();
 
     /**
-     * —LŒø‚Èƒf[ƒ^ƒZƒbƒg–¼”z—ñ‚ğæ“¾‚·‚éB<p>
+     * æœ‰åŠ¹ãªãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåé…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return —LŒø‚Èƒf[ƒ^ƒZƒbƒg–¼”z—ñ
+     * @return æœ‰åŠ¹ãªãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåé…åˆ—
      */
     public String[] getEnableDatasetNames();
 
     /**
-     * —LŒø‚Èƒf[ƒ^ƒZƒbƒg–¼‚ğ’Ç‰Á‚·‚éB<p>
+     * æœ‰åŠ¹ãªãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param dsName —LŒø‚Èƒf[ƒ^ƒZƒbƒg–¼
+     * @param dsName æœ‰åŠ¹ãªãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå
      */
     public void addEnableDatasetName(String dsName);
 
     /**
-     * İ’è‡‚Ìƒf[ƒ^ƒZƒbƒg–¼”z—ñ‚ğæ“¾‚·‚éB<p>
+     * è¨­å®šé †ã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåé…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒf[ƒ^ƒZƒbƒg–¼”z—ñ
+     * @return ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåé…åˆ—
      */
     public String[] getDatasetNameOrder();
 
     /**
-     * ”CˆÓ‚Ìİ’è‡‚Åƒf[ƒ^ƒZƒbƒg–¼‚ğ’Ç‰Á‚·‚éB<p>
+     * ä»»æ„ã®è¨­å®šé †ã§ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param dsName ƒf[ƒ^ƒZƒbƒg–¼
+     * @param dsName ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå
      */
     public void addDatasetNameOrder(String dsName);
 

@@ -38,9 +38,9 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * JDBCƒRƒlƒNƒVƒ‡ƒ“ƒtƒ@ƒNƒgƒŠB<p>
- * java.sql.DriverManager‚ğg‚Á‚ÄAƒRƒlƒNƒVƒ‡ƒ“‚ğæ“¾‚·‚éB<br>
- * ˆÈ‰º‚ÉAƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * JDBCã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * java.sql.DriverManagerã‚’ä½¿ã£ã¦ã€ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -69,44 +69,44 @@ public class JDBCConnectionFactoryService extends ServiceBase
     private static final long serialVersionUID = -1395958772628393323L;
     
     /**
-     * JDBCƒhƒ‰ƒCƒo–¼B<p>
+     * JDBCãƒ‰ãƒ©ã‚¤ãƒåã€‚<p>
      */
     private String driverName;
     
     /**
-     * JDBCÚ‘±URLB<p>
+     * JDBCæ¥ç¶šURLã€‚<p>
      */
     private String connectionURL;
     
     /**
-     * JDBCÚ‘±ƒ†[ƒU–¼B<p>
+     * JDBCæ¥ç¶šãƒ¦ãƒ¼ã‚¶åã€‚<p>
      */
     private String userName;
     
     /**
-     * JDBCÚ‘±ƒpƒXƒ[ƒhB<p>
+     * JDBCæ¥ç¶šãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã€‚<p>
      */
     private String password;
     
     /**
-     * JDBCÚ‘±ƒvƒƒpƒeƒBB<p>
+     * JDBCæ¥ç¶šãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã€‚<p>
      */
     private Properties info = new Properties();
     
     /**
-     * ©“®ƒRƒ~ƒbƒgƒtƒ‰ƒOB<p>
-     * ©“®ƒRƒ~ƒbƒg‚Ìê‡AtrueB
+     * è‡ªå‹•ã‚³ãƒŸãƒƒãƒˆãƒ•ãƒ©ã‚°ã€‚<p>
+     * è‡ªå‹•ã‚³ãƒŸãƒƒãƒˆã®å ´åˆã€trueã€‚
      */
     private boolean isAutoCommit = true;
     
     /**
-     * ŠJnˆ—‚ğs‚¤B<p>
-     * ƒhƒ‰ƒCƒo–¼‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Í—áŠO‚ğthrow‚·‚éB<br>
-     * JDBCÚ‘±URL‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Í—áŠO‚ğthrow‚·‚éB<br>
-     * JDBCÚ‘±ƒ†[ƒU–¼‚ÆJDBCÚ‘±ƒpƒXƒ[ƒh‚ª•Ğ•û‚¾‚¯İ’è‚³‚ê‚Ä‚¢‚éê‡‚Í—áŠO‚ğthrow‚·‚éB<br>
-     * JDBCÚ‘±ƒ†[ƒU–¼‚ÆJDBCÚ‘±ƒvƒƒpƒeƒB‚ª“¯‚Éİ’è‚³‚ê‚Ä‚¢‚éê‡‚Í—áŠO‚ğthrow‚·‚éB<br>
+     * é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ãƒ‰ãƒ©ã‚¤ãƒåãŒè¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ä¾‹å¤–ã‚’throwã™ã‚‹ã€‚<br>
+     * JDBCæ¥ç¶šURLãŒè¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ä¾‹å¤–ã‚’throwã™ã‚‹ã€‚<br>
+     * JDBCæ¥ç¶šãƒ¦ãƒ¼ã‚¶åã¨JDBCæ¥ç¶šãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãŒç‰‡æ–¹ã ã‘è¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ä¾‹å¤–ã‚’throwã™ã‚‹ã€‚<br>
+     * JDBCæ¥ç¶šãƒ¦ãƒ¼ã‚¶åã¨JDBCæ¥ç¶šãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒåŒæ™‚ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ä¾‹å¤–ã‚’throwã™ã‚‹ã€‚<br>
      *
-     * @exception Exception ŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(getConnectionURL() == null){
@@ -130,7 +130,7 @@ public class JDBCConnectionFactoryService extends ServiceBase
         }
     }
     
-    // ConnectionFactory‚ÌJavaDoc
+    // ConnectionFactoryã®JavaDoc
     public Connection getConnection() throws ConnectionFactoryException{
         Connection con = null;
         try{
@@ -155,62 +155,62 @@ public class JDBCConnectionFactoryService extends ServiceBase
         return con;
     }
     
-    // JDBCConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JDBCConnectionFactoryServiceMBeanã®JavaDoc
     public void setDriverName(String name){
         driverName = name;
     }
     
-    // JDBCConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JDBCConnectionFactoryServiceMBeanã®JavaDoc
     public String getDriverName(){
         return driverName;
     }
     
-    // JDBCConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JDBCConnectionFactoryServiceMBeanã®JavaDoc
     public void setConnectionURL(String url){
         connectionURL = url;
     }
     
-    // JDBCConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JDBCConnectionFactoryServiceMBeanã®JavaDoc
     public String getConnectionURL(){
         return connectionURL;
     }
     
-    // JDBCConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JDBCConnectionFactoryServiceMBeanã®JavaDoc
     public void setUserName(String name){
         userName = name;
     }
     
-    // JDBCConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JDBCConnectionFactoryServiceMBeanã®JavaDoc
     public String getUserName(){
         return userName;
     }
     
-    // JDBCConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JDBCConnectionFactoryServiceMBeanã®JavaDoc
     public void setPassword(String password){
         this.password = password;
     }
     
-    // JDBCConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JDBCConnectionFactoryServiceMBeanã®JavaDoc
     public String getPassword(){
         return password;
     }
     
-    // JDBCConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JDBCConnectionFactoryServiceMBeanã®JavaDoc
     public void setConnectionProperties(Properties prop){
         info.putAll(prop);
     }
     
-    // JDBCConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JDBCConnectionFactoryServiceMBeanã®JavaDoc
     public Properties getConnectionProperties(){
         return info;
     }
     
-    // JDBCConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JDBCConnectionFactoryServiceMBeanã®JavaDoc
     public void setAutoCommit(boolean isAuto){
         isAutoCommit = isAuto;
     }
     
-    // JDBCConnectionFactoryServiceMBean‚ÌJavaDoc
+    // JDBCConnectionFactoryServiceMBeanã®JavaDoc
     public boolean isAutoCommit(){
         return isAutoCommit;
     }

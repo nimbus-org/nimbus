@@ -36,7 +36,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import java.util.Map;
 
 /**
- * {@link CalculateMemorySizeOverflowValidatorService}��MBean�C���^�t�F�[�X<p>
+ * {@link CalculateMemorySizeOverflowValidatorService}のMBeanインタフェース<p>
  * 
  * @author M.Takata
  * @see CalculateMemorySizeOverflowValidatorService
@@ -45,103 +45,103 @@ public interface CalculateMemorySizeOverflowValidatorServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * �g�p�������̍ő�T�C�Y��ݒ肷��B<p>
-     * �L���Ȓl�͈̔͂́A0�ȏ�B�f�t�H���g��{@link Runtime#maxMemory()}�Ŏ擾�ł���l / 2�B���̃��\�b�h���T�|�[�g����Ă��Ȃ��ꍇ�́A32MByte�B<br>
-     * �P�ʂ��w�肵�Ȃ��ꍇ�́A�o�C�g�P�ʁB�P�ʂ��w�肷��ꍇ�́A"K"�̏ꍇ�̓L���o�C�g�P�ʁB"M"�̏ꍇ�̓��K�o�C�g�P�ʁB"G"�̏ꍇ�̓M�K�o�C�g�P�ʁB
+     * 使用メモリの最大サイズを設定する。<p>
+     * 有効な値の範囲は、0以上。デフォルトは{@link Runtime#maxMemory()}で取得できる値 / 2。そのメソッドがサポートされていない場合は、32MByte。<br>
+     * 単位を指定しない場合は、バイト単位。単位を指定する場合は、"K"の場合はキロバイト単位。"M"の場合はメガバイト単位。"G"の場合はギガバイト単位。
      *
-     * @param size �g�p�������̍ő�T�C�Y
-     * @exception IllegalArgumentException ���l�łȂ�������A���̒l�A���e����Ȃ��P�ʕ������w�肵���ꍇ
+     * @param size 使用メモリの最大サイズ
+     * @exception IllegalArgumentException 数値でない文字列、負の値、許容されない単位文字を指定した場合
      */
     public void setMaxMemorySize(String size) throws IllegalArgumentException;
     
     /**
-     * �g�p�������̍ő�T�C�Y���擾����B<p>
+     * 使用メモリの最大サイズを取得する。<p>
      *
-     * @return �g�p�������̍ő�T�C�Y
+     * @return 使用メモリの最大サイズ
      */
     public String getMaxMemorySize();
     
     /**
-     * �I�u�W�F�N�g�ɐ錾����Ă���getter���\�b�h�Ŏ擾�ł���primitive�^�ȊO�̃I�u�W�F�N�g�̃T�C�Y���v�Z���ĉ��Z���邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g��false�ŉ��Z���Ȃ��B<br>
+     * オブジェクトに宣言されているgetterメソッドで取得できるprimitive型以外のオブジェクトのサイズを計算して加算するかどうかを設定する。<p>
+     * デフォルトはfalseで加算しない。<br>
      *
-     * @param isCalculate ���Z����ꍇ��true
+     * @param isCalculate 加算する場合はtrue
      */
     public void setCalculateProperty(boolean isCalculate);
     
     /**
-     * �I�u�W�F�N�g�ɐ錾����Ă���getter���\�b�h�Ŏ擾�ł���primitive�^�ȊO�̃I�u�W�F�N�g�̃T�C�Y���v�Z���ĉ��Z���邩�ǂ����𔻒肷��B<p>
+     * オブジェクトに宣言されているgetterメソッドで取得できるprimitive型以外のオブジェクトのサイズを計算して加算するかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A���Z����
+     * @return trueの場合、加算する
      */
     public boolean isCalculateProperty();
     
     /**
-     * ���ӂꌟ�؎��Ƀ������g�p�ʂ��v�Z���������ǂ�����ݒ肷��B<p>
-     * �f�t�H���g��false�ŁA�L���b�V�����ꂽ���_�Ń������g�p�ʂ��v�Z����B<br>
-     * ���̏ꍇ�A�L���b�V����Ɏg�p�ʂ��ς���Ă��v�Z����Ȃ��B<br>
+     * あふれ検証時にメモリ使用量を計算し直すかどうかを設定する。<p>
+     * デフォルトはfalseで、キャッシュされた時点でメモリ使用量を計算する。<br>
+     * その場合、キャッシュ後に使用量が変わっても計算されない。<br>
      *
-     * @param isCalculate ���ӂꌟ�؎��Ƀ������g�p�ʂ��v�Z����ꍇ��true
+     * @param isCalculate あふれ検証時にメモリ使用量を計算する場合はtrue
      */
     public void setCalculateOnValidate(boolean isCalculate);
     
     /**
-     * ���ӂꌟ�؎��Ƀ������g�p�ʂ��v�Z���������ǂ����𔻒肷��B<p>
+     * あふれ検証時にメモリ使用量を計算し直すかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A���ӂꌟ�؎��Ƀ������g�p�ʂ��v�Z����
+     * @return trueの場合、あふれ検証時にメモリ使用量を計算する
      */
     public boolean isCalculateOnValidate();
     
     /**
-     * ���ӂꌟ�؂����s���邽�߂ɕێ����Ă����������������B<p>
+     * あふれ検証を実行するために保持している情報を初期化する。<p>
      */
     public void reset();
     
     /**
-     * ���ӂꌟ�؂��s���B<p>
+     * あふれ検証を行う。<p>
      *
-     * @return ���ӂꌟ�؂��s�������ʂ��ӂꂪ��������ꍇ�A���ӂꐔ��Ԃ��B���ӂ�Ȃ��ꍇ�́A0��Ԃ�
+     * @return あふれ検証を行った結果あふれが発生する場合、あふれ数を返す。あふれない場合は、0を返す
      */
     public int validate();
     
     /**
-     * ���ӂꌟ�ؑΏۂɂȂ��Ă���L���b�V�������擾����B<p>
+     * あふれ検証対象になっているキャッシュ数を取得する。<p>
      *
-     * @return �L���b�V����
+     * @return キャッシュ数
      */
     public int size();
     
     /**
-     * ���݂̃������g�p��[byte]���擾����B<p>
+     * 現在のメモリ使用量[byte]を取得する。<p>
      *
-     * @return ���݂̃������g�p��[byte]
+     * @return 現在のメモリ使用量[byte]
      */
     public long getCurrentUsedMemorySize();
     
     /**
-     * �w�肵���N���X�̃������T�C�Y�𗝘_�l�Ƃ��Đݒ肷��B<p>
-     * �P�ʂ��w�肵�Ȃ��ꍇ�́A�o�C�g�P�ʁB�P�ʂ��w�肷��ꍇ�́A"K"�̏ꍇ�̓L���o�C�g�P�ʁB"M"�̏ꍇ�̓��K�o�C�g�P�ʁB"G"�̏ꍇ�̓M�K�o�C�g�P�ʁB
+     * 指定したクラスのメモリサイズを理論値として設定する。<p>
+     * 単位を指定しない場合は、バイト単位。単位を指定する場合は、"K"の場合はキロバイト単位。"M"の場合はメガバイト単位。"G"の場合はギガバイト単位。
      *
-     * @param className �N���X��
-     * @param size �������T�C�Y
-     * @exception ClassNotFoundException �w�肳�ꂽ�N���X��������Ȃ��ꍇ
+     * @param className クラス名
+     * @param size メモリサイズ
+     * @exception ClassNotFoundException 指定されたクラスが見つからない場合
      */
     public void setMemorySize(String className, String size)
      throws ClassNotFoundException;
     
     /**
-     * �w�肵���N���X�̃������T�C�Y�̗��_�l���擾����B<p>
+     * 指定したクラスのメモリサイズの理論値を取得する。<p>
      *
-     * @param className �N���X��
-     * @return ���_�������T�C�Y
-     * @exception ClassNotFoundException �w�肳�ꂽ�N���X��������Ȃ��ꍇ
+     * @param className クラス名
+     * @return 理論メモリサイズ
+     * @exception ClassNotFoundException 指定されたクラスが見つからない場合
      */
     public String getMemorySize(String className) throws ClassNotFoundException;
     
     /**
-     * �o�^����Ă���N���X�ƃ������T�C�Y���_�l�̃}�b�s���O���擾����B<p>
+     * 登録されているクラスとメモリサイズ理論値のマッピングを取得する。<p>
      *
-     * @return �N���X�ƃ������T�C�Y���_�l�̃}�b�s���O
+     * @return クラスとメモリサイズ理論値のマッピング
      */
     public Map getMemorySizeMap();
 }

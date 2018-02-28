@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.journal.editor;
 
 /**
- * {@link DynaBeanJournalEditorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link DynaBeanJournalEditorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see DynaBeanJournalEditorService
@@ -41,79 +41,79 @@ public interface DynaBeanJournalEditorServiceMBean
  extends BlockJournalEditorServiceBaseMBean{
     
     /**
-     * {@link org.apache.commons.beanutils.DynaBean DynaBean}‚ª‚Â{@link org.apache.commons.beanutils.DynaClass DynaClass}‚Ìî•ñ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<p>
+     * {@link org.apache.commons.beanutils.DynaBean DynaBean}ãŒæŒã¤{@link org.apache.commons.beanutils.DynaClass DynaClass}ã®æƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<p>
      * 
-     * @param isOutput o—Í‚·‚éê‡‚ÍAtrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setOutputDynaClass(boolean isOutput);
     
     /**
-     * {@link org.apache.commons.beanutils.DynaBean DynaBean}‚ª‚Â{@link org.apache.commons.beanutils.DynaClass DynaClass}‚Ìî•ñ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link org.apache.commons.beanutils.DynaBean DynaBean}ãŒæŒã¤{@link org.apache.commons.beanutils.DynaClass DynaClass}ã®æƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡‚ÍAo—Í‚·‚é
+     * @return trueã®å ´åˆã¯ã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputDynaClass();
     
     /**
-     * {@link org.apache.commons.beanutils.DynaBean DynaBean}‚ª‚ÂƒvƒƒpƒeƒB‚Ìî•ñ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<p>
+     * {@link org.apache.commons.beanutils.DynaBean DynaBean}ãŒæŒã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<p>
      * 
-     * @param isOutput o—Í‚·‚éê‡‚ÍAtrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setOutputProperties(boolean isOutput);
     
     /**
-     * {@link org.apache.commons.beanutils.DynaBean DynaBean}‚ª‚ÂƒvƒƒpƒeƒB‚Ìî•ñ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link org.apache.commons.beanutils.DynaBean DynaBean}ãŒæŒã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡‚ÍAo—Í‚·‚é
+     * @return trueã®å ´åˆã¯ã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputProperties();
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚ÉA’l‚ğ‰B‚·‚½‚ß‚Ì•¶š—ñ‚ğİ’è‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹æ™‚ã«ã€å€¤ã‚’éš ã™ãŸã‚ã®æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param str ’l‚ğ‰B‚·‚½‚ß‚Ì•¶š—ñ
+     * @param str å€¤ã‚’éš ã™ãŸã‚ã®æ–‡å­—åˆ—
      * @see #getSecretString()
      */
     public void setSecretString(String str);
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚ÉA’l‚ğ‰B‚·‚½‚ß‚Ì•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹æ™‚ã«ã€å€¤ã‚’éš ã™ãŸã‚ã®æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ’l‚ğ‰B‚·‚½‚ß‚Ì•¶š—ñ
+     * @return å€¤ã‚’éš ã™ãŸã‚ã®æ–‡å­—åˆ—
      * @see #setSecretString(String)
      */
     public String getSecretString();
     
     /**
-     * {@link org.apache.commons.beanutils.DynaBean DynaBean}‚ÌƒvƒƒpƒeƒB‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚ÉA’l‚ğ‰B‚·ƒvƒƒpƒeƒB‚Ì–¼‘O”z—ñ‚ğİ’è‚·‚éB<p>
+     * {@link org.apache.commons.beanutils.DynaBean DynaBean}ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹æ™‚ã«ã€å€¤ã‚’éš ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param names ’l‚ğ‰B‚·ƒvƒƒpƒeƒB‚Ì–¼‘O”z—ñ
+     * @param names å€¤ã‚’éš ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰é…åˆ—
      * @see #getSecretString()
      */
     public void setSecretProperties(String[] names);
     
     /**
-     * {@link org.apache.commons.beanutils.DynaBean DynaBean}‚ÌƒvƒƒpƒeƒB‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚ÉA’l‚ğ‰B‚·ƒvƒƒpƒeƒB‚Ì–¼‘O”z—ñ‚ğæ“¾‚·‚éB<p>
+     * {@link org.apache.commons.beanutils.DynaBean DynaBean}ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹æ™‚ã«ã€å€¤ã‚’éš ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ’l‚ğ‰B‚·ƒvƒƒpƒeƒB‚Ì–¼‘O”z—ñ
+     * @return å€¤ã‚’éš ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰é…åˆ—
      * @see #setSecretProperties(String[])
      */
     public String[] getSecretProperties();
     
     /**
-     * {@link org.apache.commons.beanutils.DynaBean DynaBean}‚ÌƒvƒƒpƒeƒB‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚ÉA’l‚ğo—Í‚·‚éƒvƒƒpƒeƒB‚Ì–¼‘O”z—ñ‚ğİ’è‚·‚éB<p>
+     * {@link org.apache.commons.beanutils.DynaBean DynaBean}ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹æ™‚ã«ã€å€¤ã‚’å‡ºåŠ›ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param names ’l‚ğo—Í‚·‚éƒvƒƒpƒeƒB‚Ì–¼‘O”z—ñ
+     * @param names å€¤ã‚’å‡ºåŠ›ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰é…åˆ—
      * @see #getEnabledProperties()
      */
     public void setEnabledProperties(String[] names);
     
     /**
-     * {@link org.apache.commons.beanutils.DynaBean DynaBean}‚ÌƒvƒƒpƒeƒB‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚ÉA’l‚ğo—Í‚·‚éƒvƒƒpƒeƒB‚Ì–¼‘O”z—ñ‚ğæ“¾‚·‚éB<p>
+     * {@link org.apache.commons.beanutils.DynaBean DynaBean}ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹æ™‚ã«ã€å€¤ã‚’å‡ºåŠ›ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ’l‚ğo—Í‚·‚éƒvƒƒpƒeƒB‚Ì–¼‘O”z—ñ
+     * @return å€¤ã‚’å‡ºåŠ›ã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰é…åˆ—
      * @see #setEnabledProperties(String[])
      */
     public String[] getEnabledProperties();

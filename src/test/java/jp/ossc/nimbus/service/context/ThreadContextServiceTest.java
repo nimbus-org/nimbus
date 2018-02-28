@@ -37,7 +37,7 @@ import jp.ossc.nimbus.core.*;
 /**
  * 
  * @author   NRI. Hirotaka Nakano
- * @version  1.00 �쐬: 2003/10/27 -�@H.Nakano
+ * @version  1.00 作成: 2003/10/27 -　H.Nakano
  */
 public class ThreadContextServiceTest extends TestCase {
 

@@ -38,9 +38,9 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.daemon.*;
 
 /**
- * ƒ\ƒtƒgQÆ‚ ‚Ó‚ê“®ìƒT[ƒrƒXB<p>
- * ‚ ‚Ó‚ê‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğA‹­QÆ‚©‚çƒ\ƒtƒgQÆ‚É•ÏX‚µA“¯‚É‰i‘±‰»ƒLƒƒƒbƒVƒ…‚É‰i‘±‰»‚·‚é‚ ‚Ó‚ê“®ì‚Å‚ ‚éB<br>
- * ˆÈ‰º‚ÉA‰i‘±‰»ƒLƒƒƒbƒVƒ…‚Æ‚µ‚Äƒtƒ@ƒCƒ‹ƒLƒƒƒbƒVƒ…‚ğg—p‚·‚éƒ\ƒtƒgQÆ‚ ‚Ó‚ê“®ìƒT[ƒrƒX‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ã‚½ãƒ•ãƒˆå‚ç…§ã‚ãµã‚Œå‹•ä½œã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ã‚ãµã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã€å¼·å‚ç…§ã‹ã‚‰ã‚½ãƒ•ãƒˆå‚ç…§ã«å¤‰æ›´ã—ã€åŒæ™‚ã«æ°¸ç¶šåŒ–ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã«æ°¸ç¶šåŒ–ã™ã‚‹ã‚ãµã‚Œå‹•ä½œã§ã‚ã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã€æ°¸ç¶šåŒ–ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã¨ã—ã¦ãƒ•ã‚¡ã‚¤ãƒ«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’ä½¿ç”¨ã™ã‚‹ã‚½ãƒ•ãƒˆå‚ç…§ã‚ãµã‚Œå‹•ä½œã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -71,7 +71,7 @@ public class SoftReferenceOverflowActionService extends ServiceBase
     
     private static final long serialVersionUID = 6278424846147595060L;
     
-    // ƒƒbƒZ[ƒWID’è‹`
+    // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDå®šç¾©
     private static final String SROA_ = "SROA_";
     private static final String SROA_0 = SROA_ + 0;
     private static final String SROA_00 = SROA_0 + 0;
@@ -93,48 +93,48 @@ public class SoftReferenceOverflowActionService extends ServiceBase
     private ReferenceQueue refQueue;
     
     /**
-     * {@link Daemon}ƒIƒuƒWƒFƒNƒgB<p>
+     * {@link Daemon}ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     protected Daemon daemon;
     
-    // SoftReferenceOverflowActionServiceMBean‚ÌJavaDoc
+    // SoftReferenceOverflowActionServiceMBeanã®JavaDoc
     public void setPersistCacheServiceName(ServiceName name){
         cacheServiceName = name;
     }
     
-    // SoftReferenceOverflowActionServiceMBean‚ÌJavaDoc
+    // SoftReferenceOverflowActionServiceMBeanã®JavaDoc
     public ServiceName getPersistCacheServiceName(){
         return cacheServiceName;
     }
     
-    // SoftReferenceOverflowActionServiceMBean‚ÌJavaDoc
+    // SoftReferenceOverflowActionServiceMBeanã®JavaDoc
     public void setPersistCacheMapServiceName(ServiceName name){
         cacheMapServiceName = name;
     }
     
-    // SoftReferenceOverflowActionServiceMBean‚ÌJavaDoc
+    // SoftReferenceOverflowActionServiceMBeanã®JavaDoc
     public ServiceName getPersistCacheMapServiceName(){
         return cacheMapServiceName;
     }
     
     /**
-     * Cache‚ğİ’è‚·‚éB
+     * Cacheã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setCache(Cache cache) {
         this.cache = cache;
     }
     /**
-     * CacheMap‚ğİ’è‚·‚éB
+     * CacheMapã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setCacheMap(CacheMap cacheMap) {
         this.cacheMap = cacheMap;
     }
 
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
-     * ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚Ì‰Šú‰»‚ğs‚¤B
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã®åˆæœŸåŒ–ã‚’è¡Œã†ã€‚
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         references = Collections.synchronizedMap(new HashMap());
@@ -144,10 +144,10 @@ public class SoftReferenceOverflowActionService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
-     * ‘Ş”ğæ‚ÌƒLƒƒƒbƒVƒ…ƒT[ƒrƒX‚Ìæ“¾A‹y‚Ñƒ\ƒtƒgQÆ‚É‚µ‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ªƒKƒx[ƒWƒRƒŒƒNƒg‚³‚ê‚é‚Ì‚ğŠÄ‹‚·‚éƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚ÌŠJn‚ğs‚¤B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * é€€é¿å…ˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹ã®å–å¾—ã€åŠã³ã‚½ãƒ•ãƒˆå‚ç…§ã«ã—ãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒã‚¬ãƒ™ãƒ¼ã‚¸ã‚³ãƒ¬ã‚¯ãƒˆã•ã‚Œã‚‹ã®ã‚’ç›£è¦–ã™ã‚‹ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã®é–‹å§‹ã‚’è¡Œã†ã€‚<br>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(cacheServiceName != null){
@@ -159,19 +159,19 @@ public class SoftReferenceOverflowActionService extends ServiceBase
                 .getServiceObject(cacheMapServiceName);
         }
         
-        // ƒf[ƒ‚ƒ“‹N“®
+        // ãƒ‡ãƒ¼ãƒ¢ãƒ³èµ·å‹•
         daemon.start();
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
-     * ‘Ş”ğæ‚ÌƒLƒƒƒbƒVƒ…ƒT[ƒrƒXQÆ‚ÌŠJ•úA‹y‚Ñƒ\ƒtƒgQÆ‚É‚µ‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ªƒKƒx[ƒWƒRƒŒƒNƒg‚³‚ê‚é‚Ì‚ğŠÄ‹‚·‚éƒf[ƒ‚ƒ“ƒXƒŒƒbƒh‚Ì’â~‚ğs‚¤B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * é€€é¿å…ˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹å‚ç…§ã®é–‹æ”¾ã€åŠã³ã‚½ãƒ•ãƒˆå‚ç…§ã«ã—ãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒã‚¬ãƒ™ãƒ¼ã‚¸ã‚³ãƒ¬ã‚¯ãƒˆã•ã‚Œã‚‹ã®ã‚’ç›£è¦–ã™ã‚‹ãƒ‡ãƒ¼ãƒ¢ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã®åœæ­¢ã‚’è¡Œã†ã€‚<br>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         
-        // ƒf[ƒ‚ƒ“’â~
+        // ãƒ‡ãƒ¼ãƒ¢ãƒ³åœæ­¢
         daemon.stop();
         
         cache = null;
@@ -179,10 +179,10 @@ public class SoftReferenceOverflowActionService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
-     * ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚ÌŠJ•ú‚ğs‚¤B
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã®é–‹æ”¾ã‚’è¡Œã†ã€‚
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         references = null;
@@ -190,17 +190,17 @@ public class SoftReferenceOverflowActionService extends ServiceBase
         daemon = null;
     }
     
-    // OverflowAction‚ÌJavaDoc
+    // OverflowActionã®JavaDoc
     public void setOverflowController(OverflowController controller){
         this.controller = controller;
     }
     
     /**
-     * ‚ ‚Ó‚ê‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ‹­QÆ‚©‚çƒ\ƒtƒgQÆ‚É•ÏX‚·‚é‚Æ“¯‚ÉA‰i‘±‰»ƒLƒƒƒbƒVƒ…‚É‘Ş”ğ‚·‚éB<p>
+     * ã‚ãµã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¼·å‚ç…§ã‹ã‚‰ã‚½ãƒ•ãƒˆå‚ç…§ã«å¤‰æ›´ã™ã‚‹ã¨åŒæ™‚ã«ã€æ°¸ç¶šåŒ–ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã«é€€é¿ã™ã‚‹ã€‚<p>
      *
-     * @param validator ‚ ‚Ó‚êŒŸØ‚ğs‚Á‚½OverflowValidator
-     * @param algorithm ‚ ‚Ó‚êƒLƒƒƒbƒVƒ…QÆ‚ğŒˆ’è‚µ‚½OverflowAlgorithm
-     * @param ref ‚ ‚Ó‚ê‚½ƒLƒƒƒbƒVƒ…QÆ
+     * @param validator ã‚ãµã‚Œæ¤œè¨¼ã‚’è¡Œã£ãŸOverflowValidator
+     * @param algorithm ã‚ãµã‚Œã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’æ±ºå®šã—ãŸOverflowAlgorithm
+     * @param ref ã‚ãµã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public void action(
         OverflowValidator validator,
@@ -262,7 +262,7 @@ public class SoftReferenceOverflowActionService extends ServiceBase
     }
     
     /**
-     * ‚ ‚Ó‚ê“®ì‚ğÀs‚·‚é‚½‚ß‚É•Û‚µ‚Ä‚¢‚éî•ñ‚ğ‰Šú‰»‚·‚éB<p>
+     * ã‚ãµã‚Œå‹•ä½œã‚’å®Ÿè¡Œã™ã‚‹ãŸã‚ã«ä¿æŒã—ã¦ã„ã‚‹æƒ…å ±ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
      */
     public void reset(){
         if(references != null){
@@ -275,10 +275,10 @@ public class SoftReferenceOverflowActionService extends ServiceBase
     }
     
     /**
-     * ƒ\ƒtƒgQÆ‚Ü‚½‚Í‰i‘±‰»ƒLƒƒƒbƒVƒ…‚©‚çƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * ã‚½ãƒ•ãƒˆå‚ç…§ã¾ãŸã¯æ°¸ç¶šåŒ–ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param ref QÆŒ³‚ÌƒLƒƒƒbƒVƒ…QÆ
-     * @return ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
+     * @param ref å‚ç…§å…ƒã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
+     * @return ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object get(CachedReference ref){
         if(ref == null || references == null){
@@ -309,10 +309,10 @@ public class SoftReferenceOverflowActionService extends ServiceBase
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚©‚çíœ‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚Ì’Ê’m‚ğó‚¯‚éB<p>
-     * íœ‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚ÉƒŠƒ“ƒN‚·‚éƒ\ƒtƒgƒLƒƒƒbƒVƒ…QÆ‚ğíœ‚·‚éB<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰å‰Šé™¤ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã®é€šçŸ¥ã‚’å—ã‘ã‚‹ã€‚<p>
+     * å‰Šé™¤ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã«ãƒªãƒ³ã‚¯ã™ã‚‹ã‚½ãƒ•ãƒˆã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’å‰Šé™¤ã™ã‚‹ã€‚<br>
      *
-     * @param ref ƒLƒƒƒbƒVƒ…‚©‚çíœ‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ
+     * @param ref ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰å‰Šé™¤ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public void removed(CachedReference ref){
         if(references == null){
@@ -331,11 +331,11 @@ public class SoftReferenceOverflowActionService extends ServiceBase
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…QÆ‚ÌƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ª•ÏX‚³‚ê‚½’Ê’m‚ğó‚¯‚éB<p>
-     * •ÏX‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚ÉƒŠƒ“ƒN‚·‚éƒ\ƒtƒgƒLƒƒƒbƒVƒ…QÆ‚ğíœ‚·‚éB<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå¤‰æ›´ã•ã‚ŒãŸé€šçŸ¥ã‚’å—ã‘ã‚‹ã€‚<p>
+     * å¤‰æ›´ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã«ãƒªãƒ³ã‚¯ã™ã‚‹ã‚½ãƒ•ãƒˆã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’å‰Šé™¤ã™ã‚‹ã€‚<br>
      *
-     * @param ref •ÏX‚³‚ê‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ÌƒLƒƒƒbƒVƒ…QÆ
-     * @param obj •ÏXŒã‚ÌƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
+     * @param ref å¤‰æ›´ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
+     * @param obj å¤‰æ›´å¾Œã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void changed(CachedReference ref, Object obj){
         if(references == null){
@@ -354,46 +354,46 @@ public class SoftReferenceOverflowActionService extends ServiceBase
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ªŠJn‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒé–‹å§‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onStart() {
         return true;
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ª’â~‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒåœæ­¢ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onStop() {
         return true;
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ª’†’f‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒä¸­æ–­ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onSuspend() {
         return true;
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ªÄŠJ‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒå†é–‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onResume() {
         return true;
     }
     
     /**
-     * ƒKƒx[ƒW‚³‚ê‚½ƒ\ƒtƒgQÆ‚ª“o˜^‚³‚ê‚éQÆƒLƒ…[‚ğƒLƒ…[‘Ò‚¿‚µ‚ÄA‚P‚Âæ‚èo‚µ‚Ä•Ô‚·B<p>
+     * ã‚¬ãƒ™ãƒ¼ã‚¸ã•ã‚ŒãŸã‚½ãƒ•ãƒˆå‚ç…§ãŒç™»éŒ²ã•ã‚Œã‚‹å‚ç…§ã‚­ãƒ¥ãƒ¼ã‚’ã‚­ãƒ¥ãƒ¼å¾…ã¡ã—ã¦ã€ï¼‘ã¤å–ã‚Šå‡ºã—ã¦è¿”ã™ã€‚<p>
      * 
-     * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
-     * @return ƒKƒx[ƒW‚³‚ê‚½ƒ\ƒtƒgQÆ
+     * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ã‚¬ãƒ™ãƒ¼ã‚¸ã•ã‚ŒãŸã‚½ãƒ•ãƒˆå‚ç…§
      */
     public Object provide(DaemonControl ctrl){
         if(refQueue == null){
@@ -407,10 +407,10 @@ public class SoftReferenceOverflowActionService extends ServiceBase
     }
     
     /**
-     * ƒ\ƒtƒgQÆ‚ªƒKƒx[ƒW‚³‚ê‚é‚ÆAƒƒ‚ƒŠ‚Ìg—pó‹µ‚ª•ÏX‚³‚ê‚Ä‚¢‚é‰Â”\«‚ª‚ ‚é‚½‚ßA‚ ‚Ó‚ê§Œä‚ğÀs‚·‚éB<p>
+     * ã‚½ãƒ•ãƒˆå‚ç…§ãŒã‚¬ãƒ™ãƒ¼ã‚¸ã•ã‚Œã‚‹ã¨ã€ãƒ¡ãƒ¢ãƒªã®ä½¿ç”¨çŠ¶æ³ãŒå¤‰æ›´ã•ã‚Œã¦ã„ã‚‹å¯èƒ½æ€§ãŒã‚ã‚‹ãŸã‚ã€ã‚ãµã‚Œåˆ¶å¾¡ã‚’å®Ÿè¡Œã™ã‚‹ã€‚<p>
      *
-     * @param dequeued ƒKƒx[ƒW‚³‚ê‚½ƒ\ƒtƒgQÆ
-     * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
+     * @param dequeued ã‚¬ãƒ™ãƒ¼ã‚¸ã•ã‚ŒãŸã‚½ãƒ•ãƒˆå‚ç…§
+     * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void consume(Object dequeued, DaemonControl ctrl){
         if(dequeued == null || controller == null){
@@ -424,14 +424,14 @@ public class SoftReferenceOverflowActionService extends ServiceBase
     }
     
     /**
-     * ‰½‚à‚µ‚È‚¢B<p>
+     * ä½•ã‚‚ã—ãªã„ã€‚<p>
      */
     public void garbage(){
     }
     
     /**
-     * ƒ\ƒtƒgƒLƒƒƒbƒVƒ…QÆB<p>
-     * ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğƒ\ƒtƒgQÆ‚É‚·‚é‚Æ“¯‚ÉA‰i‘±‰»ƒLƒƒƒbƒVƒ…‚ÅŠÇ—‚·‚éƒLƒƒƒbƒVƒ…QÆ‚Å‚ ‚éB<br>
+     * ã‚½ãƒ•ãƒˆã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã€‚<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚½ãƒ•ãƒˆå‚ç…§ã«ã™ã‚‹ã¨åŒæ™‚ã«ã€æ°¸ç¶šåŒ–ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã§ç®¡ç†ã™ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã§ã‚ã‚‹ã€‚<br>
      *
      * @author M.Takata
      */
@@ -441,17 +441,17 @@ public class SoftReferenceOverflowActionService extends ServiceBase
         private static final long serialVersionUID = -6567323403396424209L;
         
         /**
-         * ‰i‘±‰»ƒLƒƒƒbƒVƒ…‚ÉƒLƒƒƒbƒVƒ…‚µ‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ÌƒLƒƒƒbƒVƒ…QÆB<p>
+         * æ°¸ç¶šåŒ–ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã€‚<p>
          */
         protected CachedReference persistRef;
         
         /**
-         * ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğƒ\ƒtƒgQÆ‚É‚·‚é‚Æ“¯‚ÉA‰i‘±‰»ƒLƒƒƒbƒVƒ…‚ÅŠÇ—‚·‚éƒLƒƒƒbƒVƒ…QÆ‚ğ¶¬‚·‚éB<p>
+         * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚½ãƒ•ãƒˆå‚ç…§ã«ã™ã‚‹ã¨åŒæ™‚ã«ã€æ°¸ç¶šåŒ–ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã§ç®¡ç†ã™ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          *
-         * @param obj ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
-         * @param source ‚ ‚Ó‚ê‘ÎÛ‚Æ‚È‚Á‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ÌƒLƒƒƒbƒVƒ…QÆ
-         * @param persist ‰i‘±‰»ƒLƒƒƒbƒVƒ…‚ÉƒLƒƒƒbƒVƒ…‚µ‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ÌƒLƒƒƒbƒVƒ…QÆ
-         * @param refQueue QÆƒLƒ…[
+         * @param obj ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @param source ã‚ãµã‚Œå¯¾è±¡ã¨ãªã£ãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
+         * @param persist æ°¸ç¶šåŒ–ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
+         * @param refQueue å‚ç…§ã‚­ãƒ¥ãƒ¼
          */
         public SoftCachedReference(Object obj, CachedReference source, CachedReference persist, ReferenceQueue refQueue){
             super(new CachedSoftReference(source, persist, obj, refQueue));
@@ -459,13 +459,13 @@ public class SoftReferenceOverflowActionService extends ServiceBase
         }
         
         /**
-         * ƒLƒƒƒbƒVƒ…‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
-         * ‘æ“ñˆø”‚ªtrue‚Ìê‡‚ÍA{@link #addCacheAccessListener(CacheAccessListener)}‚Å“o˜^‚³‚ê‚½{@link CacheAccessListener}‚É’Ê’m‚·‚éB’A‚µA‘æˆêˆø”‚Å“n‚³‚ê‚½ŒÄ‚Ño‚µŒ³ƒIƒuƒWƒFƒNƒg‚ª’Ê’mæ‚ÌCacheAccessListener‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Æ“™‚µ‚¢ê‡‚ÍA’Ê’m‚µ‚È‚¢B<br>
-         * ©g‚ª•Û‚·‚éƒ\ƒtƒgQÆ‚ªƒKƒx[ƒW‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‚»‚ê‚ğ•Ô‚·BƒKƒx[ƒW‚³‚ê‚Ä‚¢‚éê‡‚ÍA‰i‘±‰»ƒLƒƒƒbƒVƒ…‚©‚çæ“¾‚µ‚Ä•Ô‚·B‰i‘±‰»ƒLƒƒƒbƒVƒ…‚©‚ç‚àæ“¾‚Å‚«‚È‚¢ê‡‚ÍA{@link #addLinkedReference(LinkedReference)}‚Å“o˜^‚³‚ê‚½{@link LinkedReference}‚©‚çæ“¾‚ğ‚İ‚éB<br>
+         * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * ç¬¬äºŒå¼•æ•°ãŒtrueã®å ´åˆã¯ã€{@link #addCacheAccessListener(CacheAccessListener)}ã§ç™»éŒ²ã•ã‚ŒãŸ{@link CacheAccessListener}ã«é€šçŸ¥ã™ã‚‹ã€‚ä½†ã—ã€ç¬¬ä¸€å¼•æ•°ã§æ¸¡ã•ã‚ŒãŸå‘¼ã³å‡ºã—å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒé€šçŸ¥å…ˆã®CacheAccessListenerã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¨ç­‰ã—ã„å ´åˆã¯ã€é€šçŸ¥ã—ãªã„ã€‚<br>
+         * è‡ªèº«ãŒä¿æŒã™ã‚‹ã‚½ãƒ•ãƒˆå‚ç…§ãŒã‚¬ãƒ™ãƒ¼ã‚¸ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ãã‚Œã‚’è¿”ã™ã€‚ã‚¬ãƒ™ãƒ¼ã‚¸ã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€æ°¸ç¶šåŒ–ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰å–å¾—ã—ã¦è¿”ã™ã€‚æ°¸ç¶šåŒ–ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰ã‚‚å–å¾—ã§ããªã„å ´åˆã¯ã€{@link #addLinkedReference(LinkedReference)}ã§ç™»éŒ²ã•ã‚ŒãŸ{@link LinkedReference}ã‹ã‚‰å–å¾—ã‚’è©¦ã¿ã‚‹ã€‚<br>
          *
-         * @param source ƒLƒƒƒbƒVƒ…‚ğæ“¾‚·‚é‚±‚Ìƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µŒ³ƒIƒuƒWƒFƒNƒg
-         * @param notify ƒLƒƒƒbƒVƒ…ƒAƒNƒZƒXƒŠƒXƒi‚É’Ê’m‚·‚éê‡‚Ítrue
-         * @return ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
+         * @param source ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’å–å¾—ã™ã‚‹ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @param notify ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚¢ã‚¯ã‚»ã‚¹ãƒªã‚¹ãƒŠã«é€šçŸ¥ã™ã‚‹å ´åˆã¯true
+         * @return ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
          */
         public Object get(Object source, boolean notify){
             Object obj = ((SoftReference)cacheObj).get();
@@ -479,23 +479,23 @@ public class SoftReferenceOverflowActionService extends ServiceBase
         }
         
         /**
-         * ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚éB<p>
-         * ƒTƒ|[ƒg‚µ‚È‚¢B<br>
+         * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
+         * ã‚µãƒãƒ¼ãƒˆã—ãªã„ã€‚<br>
          *
-         * @param source ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğ•ÏX‚·‚é‚±‚Ìƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µŒ³ƒIƒuƒWƒFƒNƒg
-         * @param obj İ’è‚·‚éƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
-         * @exception UnsupportedOperationException –¢ƒTƒ|[ƒg‚Ì‚½‚ß•K‚¸throw‚·‚é
+         * @param source ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¤‰æ›´ã™ã‚‹ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @param obj è¨­å®šã™ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @exception UnsupportedOperationException æœªã‚µãƒãƒ¼ãƒˆã®ãŸã‚å¿…ãšthrowã™ã‚‹
          */
         public void set(Object source, Object obj){
             throw new UnsupportedOperationException();
         }
         
         /**
-         * ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğíœ‚·‚éB<p>
-         * ƒ\ƒtƒgQÆ‚ÆA‰i‘±‰»ƒLƒƒƒbƒVƒ…‚Ì—¼•û‚ğíœ‚·‚éB<br>
-         * {@link #addCacheRemoveListener(CacheRemoveListener)}‚Å“o˜^‚³‚ê‚½{@link CacheRemoveListener}‚É’Ê’m‚·‚éB’A‚µA‘æˆêˆø”‚Å“n‚³‚ê‚½ŒÄ‚Ño‚µŒ³ƒIƒuƒWƒFƒNƒg‚ª’Ê’mæ‚ÌCacheChangeListener‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Æ“™‚µ‚¢ê‡‚ÍA’Ê’m‚µ‚È‚¢B<br>
+         * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
+         * ã‚½ãƒ•ãƒˆå‚ç…§ã¨ã€æ°¸ç¶šåŒ–ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®ä¸¡æ–¹ã‚’å‰Šé™¤ã™ã‚‹ã€‚<br>
+         * {@link #addCacheRemoveListener(CacheRemoveListener)}ã§ç™»éŒ²ã•ã‚ŒãŸ{@link CacheRemoveListener}ã«é€šçŸ¥ã™ã‚‹ã€‚ä½†ã—ã€ç¬¬ä¸€å¼•æ•°ã§æ¸¡ã•ã‚ŒãŸå‘¼ã³å‡ºã—å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒé€šçŸ¥å…ˆã®CacheChangeListenerã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¨ç­‰ã—ã„å ´åˆã¯ã€é€šçŸ¥ã—ãªã„ã€‚<br>
          *
-         * @param source ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ğíœ‚·‚é‚±‚Ìƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µŒ³ƒIƒuƒWƒFƒNƒg
+         * @param source ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å‰Šé™¤ã™ã‚‹ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—å…ƒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
          */
         public void remove(Object source){
             super.remove(source);
@@ -507,30 +507,30 @@ public class SoftReferenceOverflowActionService extends ServiceBase
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…ƒ\ƒtƒgQÆB<p>
-     * ƒ\ƒtƒgQÆ‚É‚µ‚½ƒLƒƒƒbƒVƒ…QÆ‚ÆA‚»‚ê‚É‚æ‚è‰i‘±‰»‚³‚ê‚½‰i‘±‰»ƒLƒƒƒbƒVƒ…QÆ‚ğ•Û‚·‚éB<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚½ãƒ•ãƒˆå‚ç…§ã€‚<p>
+     * ã‚½ãƒ•ãƒˆå‚ç…§ã«ã—ãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã¨ã€ãã‚Œã«ã‚ˆã‚Šæ°¸ç¶šåŒ–ã•ã‚ŒãŸæ°¸ç¶šåŒ–ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’ä¿æŒã™ã‚‹ã€‚<br>
      *
      * @author M.Takata
      */
     protected static class CachedSoftReference extends SoftReference{
         
         /**
-         * ƒ\ƒtƒgQÆ‚É‚µ‚½ƒLƒƒƒbƒVƒ…QÆB<p>
+         * ã‚½ãƒ•ãƒˆå‚ç…§ã«ã—ãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã€‚<p>
          */
         protected CachedReference sourceRef;
         
         /**
-         * ‰i‘±‰»‚³‚ê‚½‰i‘±‰»ƒLƒƒƒbƒVƒ…QÆB<p>
+         * æ°¸ç¶šåŒ–ã•ã‚ŒãŸæ°¸ç¶šåŒ–ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã€‚<p>
          */
         protected CachedReference persistRef;
         
         /**
-         * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          *
-         * @param source ‚ ‚Ó‚ê‘ÎÛ‚Æ‚È‚Á‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ÌƒLƒƒƒbƒVƒ…QÆ
-         * @param persist ‰i‘±‰»ƒLƒƒƒbƒVƒ…‚ÉƒLƒƒƒbƒVƒ…‚µ‚½ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg‚ÌƒLƒƒƒbƒVƒ…QÆ
-         * @param obj ƒLƒƒƒbƒVƒ…ƒIƒuƒWƒFƒNƒg
-         * @param refQueue QÆƒLƒ…[
+         * @param source ã‚ãµã‚Œå¯¾è±¡ã¨ãªã£ãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
+         * @param persist æ°¸ç¶šåŒ–ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
+         * @param obj ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @param refQueue å‚ç…§ã‚­ãƒ¥ãƒ¼
          */
         public CachedSoftReference(
             CachedReference source,
@@ -544,18 +544,18 @@ public class SoftReferenceOverflowActionService extends ServiceBase
         }
         
         /**
-         * ƒ\ƒtƒgQÆ‚É‚µ‚½ƒLƒƒƒbƒVƒ…QÆ‚ğæ“¾‚·‚éB<p>
+         * ã‚½ãƒ•ãƒˆå‚ç…§ã«ã—ãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          * 
-         * @return ƒLƒƒƒbƒVƒ…QÆ
+         * @return ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
          */
         public CachedReference getSourceCachedReference(){
             return sourceRef;
         }
         
         /**
-         * ‰i‘±‰»‚³‚ê‚½‰i‘±‰»ƒLƒƒƒbƒVƒ…QÆ‚ğæ“¾‚·‚éB<p>
+         * æ°¸ç¶šåŒ–ã•ã‚ŒãŸæ°¸ç¶šåŒ–ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          * 
-         * @return ƒLƒƒƒbƒVƒ…QÆ
+         * @return ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
          */
         public CachedReference getPersistCachedReference(){
             return persistRef;

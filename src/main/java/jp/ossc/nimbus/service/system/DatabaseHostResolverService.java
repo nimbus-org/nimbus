@@ -45,7 +45,7 @@ import jp.ossc.nimbus.service.connection.ConnectionFactory;
 import jp.ossc.nimbus.service.connection.PersistentManager;
 
 /**
- * DatabaseƒzƒXƒgî•ñæ“¾ƒT[ƒrƒXB
+ * Databaseãƒ›ã‚¹ãƒˆæƒ…å ±å–å¾—ã‚µãƒ¼ãƒ“ã‚¹ã€‚
  * <p>
  *
  * @author M.Ishida
@@ -129,13 +129,13 @@ public class DatabaseHostResolverService extends ServiceBase implements HostReso
         }
     }
     
-    // HostResolver‚ÌJavaDoc
+    // HostResolverã®JavaDoc
     public InetAddress getLocalHost() {
         InetAddress localhost = null;
         try {
             localhost = InetAddress.getLocalHost();
         } catch (UnknownHostException e) {
-            // æ“¾‚Å‚«‚È‚¢ê‡‚ÍNull‚ğ•Ô‹p
+            // å–å¾—ã§ããªã„å ´åˆã¯Nullã‚’è¿”å´
             return null;
         }
         InetAddress result = getHost(localhost.getHostName()) != null ? getHost(localhost.getHostName()) : getHost(localhost.getHostAddress());
@@ -145,7 +145,7 @@ public class DatabaseHostResolverService extends ServiceBase implements HostReso
         return result;
     }
     
-    // HostResolver‚ÌJavaDoc
+    // HostResolverã®JavaDoc
     public InetAddress getHost(String hostName) {
         return (InetAddress) hostMap.get(hostName);
     }

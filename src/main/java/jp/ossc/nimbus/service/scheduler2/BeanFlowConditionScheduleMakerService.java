@@ -39,8 +39,8 @@ import jp.ossc.nimbus.service.beancontrol.interfaces.*;
 
 
 /**
- * BeanFlowğŒƒXƒPƒWƒ…[ƒ‹ì¬ƒT[ƒrƒXB<p>
- * ƒXƒPƒWƒ…[ƒ‹‚Ìì¬—L–³‚Ì”»’è‚ğBeanFlow‚ÉˆÏ÷‚·‚éB<br>
+ * BeanFlowæ¡ä»¶ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä½œæˆã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ä½œæˆæœ‰ç„¡ã®åˆ¤å®šã‚’BeanFlowã«å§”è­²ã™ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -54,28 +54,28 @@ public class BeanFlowConditionScheduleMakerService
     
     protected String flowName;
     
-    // BeanFlowConditionScheduleMakerServiceMBean‚ÌJavaDoc
+    // BeanFlowConditionScheduleMakerServiceMBeanã®JavaDoc
     public void setBeanFlowInvokerFactoryServiceName(ServiceName name){
         beanFlowInvokerFactoryServiceName = name;
     }
-    // BeanFlowConditionScheduleMakerServiceMBean‚ÌJavaDoc
+    // BeanFlowConditionScheduleMakerServiceMBeanã®JavaDoc
     public ServiceName getBeanFlowInvokerFactoryServiceName(){
         return beanFlowInvokerFactoryServiceName;
     }
     
-    // BeanFlowConditionScheduleMakerServiceMBean‚ÌJavaDoc
+    // BeanFlowConditionScheduleMakerServiceMBeanã®JavaDoc
     public void setFlowName(String name){
         flowName = name;
     }
-    // BeanFlowConditionScheduleMakerServiceMBean‚ÌJavaDoc
+    // BeanFlowConditionScheduleMakerServiceMBeanã®JavaDoc
     public String getFlowName(){
         return flowName;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         
@@ -89,7 +89,7 @@ public class BeanFlowConditionScheduleMakerService
     }
     
     /**
-     * {@link BeanFlowInvokerFactory}‚ğİ’è‚·‚éB<p>
+     * {@link BeanFlowInvokerFactory}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param factory BeanFlowInvokerFactory
      */
@@ -98,7 +98,7 @@ public class BeanFlowConditionScheduleMakerService
     }
     
     /**
-     * {@link BeanFlowInvokerFactory}‚ğæ“¾‚·‚éB<p>
+     * {@link BeanFlowInvokerFactory}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return BeanFlowInvokerFactory
      */
@@ -107,14 +107,14 @@ public class BeanFlowConditionScheduleMakerService
     }
     
     /**
-     * ‚±‚Ì“ú•t‚ÅAƒXƒPƒWƒ…[ƒ‹‚ğì¬‚·‚é•K—v‚ª‚ ‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
-     * {@link #setFlowName(String)}‚Åİ’è‚³‚ê‚½BeanFlow–¼‚Ü‚½‚ÍA{@link ScheduleMaster#getScheduleType()}‚Åæ“¾‚³‚ê‚éƒXƒPƒWƒ…[ƒ‹í•Ê–¼‚ÌBeanFlow‚ğÀs‚µ‚ÄA‚»‚Ì–ß‚è’l‚ÅƒXƒPƒWƒ…[ƒ‹‚Ìì¬—L–³‚ğ”»’f‚·‚éB<br>
-     * BeanFlow‚Ìˆø”‚É‚ÍA”z—ñ‚ÅA‚±‚Ìƒƒ\ƒbƒh‚Ìˆø”‚Å‚ ‚édate‚Æmaster‚ğ“n‚·B<br>
+     * ã“ã®æ—¥ä»˜ã§ã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ä½œæˆã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
+     * {@link #setFlowName(String)}ã§è¨­å®šã•ã‚ŒãŸBeanFlowåã¾ãŸã¯ã€{@link ScheduleMaster#getScheduleType()}ã§å–å¾—ã•ã‚Œã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ç¨®åˆ¥åã®BeanFlowã‚’å®Ÿè¡Œã—ã¦ã€ãã®æˆ»ã‚Šå€¤ã§ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ä½œæˆæœ‰ç„¡ã‚’åˆ¤æ–­ã™ã‚‹ã€‚<br>
+     * BeanFlowã®å¼•æ•°ã«ã¯ã€é…åˆ—ã§ã€ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®å¼•æ•°ã§ã‚ã‚‹dateã¨masterã‚’æ¸¡ã™ã€‚<br>
      *
-     * @param date ì¬“ú
-     * @param master ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^
-     * @return true‚Ìê‡Aì‚é•K—v‚ª‚ ‚é
-     * @exception ScheduleMakeException ”»’è‚É¸”s‚µ‚½ê‡
+     * @param date ä½œæˆæ—¥
+     * @param master ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿
+     * @return trueã®å ´åˆã€ä½œã‚‹å¿…è¦ãŒã‚ã‚‹
+     * @exception ScheduleMakeException åˆ¤å®šã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected boolean isNecessaryMake(Date date, ScheduleMaster master)
      throws ScheduleMakeException{

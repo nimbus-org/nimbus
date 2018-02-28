@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aop.interceptor;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link MethodAsynchronousInterceptorFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link MethodAsynchronousInterceptorFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see MethodAsynchronousInterceptorFactoryService
@@ -43,32 +43,32 @@ public interface MethodAsynchronousInterceptorFactoryServiceMBean
  extends FactoryServiceBaseMBean{
     
     /**
-     * ƒŠƒNƒGƒXƒg‚ğŠi”[‚·‚é{@link jp.ossc.nimbus.service.queue.Queue Queue}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÅA{@link jp.ossc.nimbus.service.queue.DefaultQueueService DefaultQueueService}‚ğ¶¬‚µAg—p‚·‚éB
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’æ ¼ç´ã™ã‚‹{@link jp.ossc.nimbus.service.queue.Queue Queue}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã€{@link jp.ossc.nimbus.service.queue.DefaultQueueService DefaultQueueService}ã‚’ç”Ÿæˆã—ã€ä½¿ç”¨ã™ã‚‹ã€‚
      *
-     * @param name QueueƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Queueã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setRequestQueueServiceName(ServiceName name);
     
     /**
-     * ƒŠƒNƒGƒXƒg‚ğŠi”[‚·‚é{@link jp.ossc.nimbus.service.queue.Queue Queue}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’æ ¼ç´ã™ã‚‹{@link jp.ossc.nimbus.service.queue.Queue Queue}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return QueueƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Queueã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getRequestQueueServiceName();
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒX‚ğŠi”[‚·‚é{@link jp.ossc.nimbus.service.queue.Queue Queue}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍAƒŒƒXƒ|ƒ“ƒXƒLƒ…[‚Í‚È‚µ‚ÅAƒŒƒXƒ|ƒ“ƒX‚ÍÌ‚Ä‚ç‚ê‚éB
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚’æ ¼ç´ã™ã‚‹{@link jp.ossc.nimbus.service.queue.Queue Queue}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚­ãƒ¥ãƒ¼ã¯ãªã—ã§ã€ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã¯æ¨ã¦ã‚‰ã‚Œã‚‹ã€‚
      *
-     * @param name QueueƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Queueã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setResponseQueueServiceName(ServiceName name);
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒX‚ğŠi”[‚·‚é{@link jp.ossc.nimbus.service.queue.Queue Queue}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚’æ ¼ç´ã™ã‚‹{@link jp.ossc.nimbus.service.queue.Queue Queue}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return QueueƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Queueã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getResponseQueueServiceName();
 }

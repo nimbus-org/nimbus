@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.cache;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link StoreCacheOverflowActionService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link StoreCacheOverflowActionService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see StoreCacheOverflowActionService
@@ -43,35 +43,35 @@ public interface StoreCacheOverflowActionServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * ‘Ş”ğæ‚ÌƒLƒƒƒbƒVƒ…ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * é€€é¿å…ˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ‘Ş”ğæ‚ÌƒLƒƒƒbƒVƒ…ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name é€€é¿å…ˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setCacheServiceName(ServiceName name);
     
     /**
-     * ‘Ş”ğæ‚ÌƒLƒƒƒbƒVƒ…ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * é€€é¿å…ˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘Ş”ğæ‚ÌƒLƒƒƒbƒVƒ…ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return é€€é¿å…ˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getCacheServiceName();
     
     /**
-     * ‘Ş”ğæ‚ÌƒLƒƒƒbƒVƒ…ƒ}ƒbƒvƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * é€€é¿å…ˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ‘Ş”ğæ‚ÌƒLƒƒƒbƒVƒ…ƒ}ƒbƒvƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name é€€é¿å…ˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setCacheMapServiceName(ServiceName name);
     
     /**
-     * ‘Ş”ğæ‚ÌƒLƒƒƒbƒVƒ…ƒ}ƒbƒvƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * é€€é¿å…ˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘Ş”ğæ‚ÌƒLƒƒƒbƒVƒ…ƒ}ƒbƒvƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return é€€é¿å…ˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getCacheMapServiceName();
     
     /**
-     * ‚ ‚Ó‚ê“®ì‚ğÀs‚·‚é‚½‚ß‚É•Û‚µ‚Ä‚¢‚éî•ñ‚ğ‰Šú‰»‚·‚éB<p>
+     * ã‚ãµã‚Œå‹•ä½œã‚’å®Ÿè¡Œã™ã‚‹ãŸã‚ã«ä¿æŒã—ã¦ã„ã‚‹æƒ…å ±ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
      */
     public void reset();
 }

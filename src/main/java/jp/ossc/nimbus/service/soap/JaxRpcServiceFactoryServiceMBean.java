@@ -36,81 +36,81 @@ import java.net.URL;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link JaxRpcServiceFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link JaxRpcServiceFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
 public interface JaxRpcServiceFactoryServiceMBean extends ServiceBaseMBean {
     
     /**
-     * WSDL URL‚ğæ“¾‚·‚éB<p>
+     * WSDL URLã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
      * @return WSDL URL
      */
     public URL getWsdlURL();
     
     /**
-     * WSDL URL‚ğİ’è‚·‚éB<p>
+     * WSDL URLã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param url WSDL‚ÌURL
+     * @param url WSDLã®URL
      */
     public void setWsdlURL(URL url);
     
     /**
-     * WSDLƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğæ“¾‚·‚éB<p>
+     * WSDLãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return WSDLƒtƒ@ƒCƒ‹‚ÌƒpƒX
+     * @return WSDLãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
      */
     public String getWsdlPath();
     
     /**
-     * WSDLƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğİ’è‚·‚éB<p>
+     * WSDLãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param path WSDLƒtƒ@ƒCƒ‹‚ÌƒpƒX
+     * @param path WSDLãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
      */
     public void setWsdlPath(String path);
     
     /**
-     * JAX-RPCƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB
+     * JAX-RPCã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚
      * 
-     * @return JAX-RPCƒT[ƒrƒX–¼
+     * @return JAX-RPCã‚µãƒ¼ãƒ“ã‚¹å
      */
     public String getJaxRpcServiceName();
 
     /**
-     * JAX-RPCƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * JAX-RPCã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param jaxRpcServiceName JAX-RPCƒT[ƒrƒX–¼
+     * @param jaxRpcServiceName JAX-RPCã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJaxRpcServiceName(String jaxRpcServiceName);
     
     /**
-     * ƒl[ƒ€ƒXƒy[ƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒ¼ãƒ ã‚¹ãƒšãƒ¼ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒl[ƒ€ƒXƒy[ƒX–¼
+     * @return ãƒãƒ¼ãƒ ã‚¹ãƒšãƒ¼ã‚¹å
      */
     public String getNameSpace();
     
     /**
-     * ƒl[ƒ€ƒXƒy[ƒX‚ğİ’è‚·‚éB<p>
+     * ãƒãƒ¼ãƒ ã‚¹ãƒšãƒ¼ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param nameSpace ƒl[ƒ€ƒXƒy[ƒX
+     * @param nameSpace ãƒãƒ¼ãƒ ã‚¹ãƒšãƒ¼ã‚¹
      */
     public void setNameSpace(String nameSpace);
     
     /**
-     * JAX-RPCƒT[ƒrƒX‚É“o˜^‚·‚éŒ^ƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * JAX-RPCã‚µãƒ¼ãƒ“ã‚¹ã«ç™»éŒ²ã™ã‚‹å‹ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param encodingStyleURI ƒGƒ“ƒR[ƒh‚ğ“Á’è‚·‚éURI
-     * @param mapping Œ^ƒ}ƒbƒsƒ“ƒO
+     * @param encodingStyleURI ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã‚’ç‰¹å®šã™ã‚‹URI
+     * @param mapping å‹ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public void setTypeMapping(String encodingStyleURI, TypeMapping mapping);
     
     /**
-     * w’è‚µ‚½URI‚Å“Á’è‚³‚ê‚éJAX-RPCƒT[ƒrƒX‚É“o˜^‚·‚éŒ^ƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸURIã§ç‰¹å®šã•ã‚Œã‚‹JAX-RPCã‚µãƒ¼ãƒ“ã‚¹ã«ç™»éŒ²ã™ã‚‹å‹ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param encodingStyleURI ƒGƒ“ƒR[ƒh‚ğ“Á’è‚·‚éURI
-     * @return Œ^ƒ}ƒbƒsƒ“ƒO
+     * @param encodingStyleURI ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã‚’ç‰¹å®šã™ã‚‹URI
+     * @return å‹ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public TypeMapping getTypeMapping(String encodingStyleURI);
     

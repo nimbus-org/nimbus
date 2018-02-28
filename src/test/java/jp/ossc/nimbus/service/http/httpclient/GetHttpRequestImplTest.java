@@ -16,26 +16,26 @@ public class GetHttpRequestImplTest extends TestCase {
 
 	
 	/**
-	 * ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚ğƒNƒGƒŠ‚Æ‚µ‚Äİ’è‚·‚éƒeƒXƒgB
+	 * ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ã‚¯ã‚¨ãƒªã¨ã—ã¦è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì“à—e‚Ì’è‹`ƒtƒ@ƒCƒ‹‚ğƒ[ƒh‚µAHttpClientFactoryServiceƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚é</li>
-	 * <li>RequestContentTypeFapplication/xml</li>
-	 * <li>RequestCharacterEncodingFShift_JIS</li>
-	 * <li>RequestStreamConverterServiceNameF#DataSetXMLConverter</li>
-	 * <li>ResponseStreamConverterServiceNameF#ResponseStreamConverter</li>
-	 * <li>ProxyF#localhost:8280</li>
-	 * <li>Ÿ‚Ìƒpƒ‰ƒ[ƒ^’è‹`‚Æ•¹‚¹‚Ä˜_—ƒAƒNƒVƒ‡ƒ“–¼"login"‚ÌƒŠƒNƒGƒXƒgî•ñ‚ğ’è‹`<BR>
+	 * <li>æ¬¡ã®å†…å®¹ã®å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰ã—ã€HttpClientFactoryServiceã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>RequestContentTypeï¼šapplication/xml</li>
+	 * <li>RequestCharacterEncodingï¼šShift_JIS</li>
+	 * <li>RequestStreamConverterServiceNameï¼š#DataSetXMLConverter</li>
+	 * <li>ResponseStreamConverterServiceNameï¼š#ResponseStreamConverter</li>
+	 * <li>Proxyï¼š#localhost:8280</li>
+	 * <li>æ¬¡ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å®šç¾©ã¨ä½µã›ã¦è«–ç†ã‚¢ã‚¯ã‚·ãƒ§ãƒ³å"login"ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆæƒ…å ±ã‚’å®šç¾©<BR>
 	 * sectionCode=22,account=05961,password=05961</li>
-	 * <li>HttpClientFactoryService#createHttpClient()‚ğÀs‚µAHttpClient‚ğ¶¬</li>
-	 * <li>HttpRequestImpl#createRequest(˜_—ƒAƒNƒVƒ‡ƒ“–¼)‚ğÀs‚µAHttpRequest‚ğ¶¬</li>
-	 * <li>¶¬‚µ‚½HttpRequest‚ğw’è‚µ‚ÄAHttpClientImpl#createHttpMethod()‚ğÀs</li>
-	 * <li>¶¬‚µ‚½HttpMethodAƒpƒ‰ƒ[ƒ^ƒ}ƒbƒv‚ğw’è‚µ‚ÄAGetHttpClientImpl#initParameter()‚ğÀs</li>
+	 * <li>HttpClientFactoryService#createHttpClient()ã‚’å®Ÿè¡Œã—ã€HttpClientã‚’ç”Ÿæˆ</li>
+	 * <li>HttpRequestImpl#createRequest(è«–ç†ã‚¢ã‚¯ã‚·ãƒ§ãƒ³å)ã‚’å®Ÿè¡Œã—ã€HttpRequestã‚’ç”Ÿæˆ</li>
+	 * <li>ç”Ÿæˆã—ãŸHttpRequestã‚’æŒ‡å®šã—ã¦ã€HttpClientImpl#createHttpMethod()ã‚’å®Ÿè¡Œ</li>
+	 * <li>ç”Ÿæˆã—ãŸHttpMethodã€ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒãƒƒãƒ—ã‚’æŒ‡å®šã—ã¦ã€GetHttpClientImpl#initParameter()ã‚’å®Ÿè¡Œ</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>w’è‚µ‚½ƒpƒ‰ƒ[ƒ^‚ªƒNƒGƒŠ‚Æ‚µ‚Äİ’è‚³‚ê‚é‚±‚Æ‚ğGetHttpClientImpl#getQueryString()‚ÅŠm”F</li>
+	 * <li>æŒ‡å®šã—ãŸãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒã‚¯ã‚¨ãƒªã¨ã—ã¦è¨­å®šã•ã‚Œã‚‹ã“ã¨ã‚’GetHttpClientImpl#getQueryString()ã§ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testExecuteRequestGET() {
@@ -51,24 +51,24 @@ public class GetHttpRequestImplTest extends TestCase {
 	        GetHttpRequestImpl request = (GetHttpRequestImpl)factory.createRequest("login");
 	        
 	        HttpMethodBase method = request.createHttpMethod();
-	        //ƒpƒ‰ƒ[ƒ^î•ñİ’è
+	        //ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿æƒ…å ±è¨­å®š
 	        request.setParameter("nameA","valueA");
 	        
 	        String[] vals = new String[]{"valueB1","valueB2"};
 	        request.setParameters("nameB", vals);
 	        
-	        //ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^‚ğƒNƒGƒŠ‚Æ‚µ‚Äİ’è
+	        //ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ã‚¯ã‚¨ãƒªã¨ã—ã¦è¨­å®š
 	        request.initParameter(method, request.getParameterMap());
-	        //³‚µ‚­İ’è‚³‚ê‚Ä‚¢‚é‚©Šm”F
+	        //æ­£ã—ãè¨­å®šã•ã‚Œã¦ã„ã‚‹ã‹ç¢ºèª
 	        assertEquals("nameA=valueA&nameB=valueB1&nameB=valueB2", method.getQueryString());
 	        
 
 		} catch (HttpRequestCreateException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} catch (Exception e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		} finally {
 			ServiceManagerFactory
 					.unloadManager("jp/ossc/nimbus/service/http/httpclient/service-clientTestGET.xml");

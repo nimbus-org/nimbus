@@ -42,7 +42,7 @@ import jp.ossc.nimbus.util.WaitSynchronizeMonitor;
 import jp.ossc.nimbus.service.queue.BeanFlowAsynchContext;
 
 /**
- * Beanƒtƒ[ŠÄ‹B<p>
+ * Beanãƒ•ãƒ­ãƒ¼ç›£è¦–ã€‚<p>
  * 
  * @author M.Takata
  */

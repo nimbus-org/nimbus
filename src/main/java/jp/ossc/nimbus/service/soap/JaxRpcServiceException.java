@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.soap;
 
 /**
- * JAX-RPCƒT[ƒrƒXŠÖ˜A—áŠOƒNƒ‰ƒXB<p>
+ * JAX-RPCã‚µãƒ¼ãƒ“ã‚¹é–¢é€£ä¾‹å¤–ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -41,35 +41,35 @@ public class JaxRpcServiceException extends Exception {
     private static final long serialVersionUID = 8920265046972837041L;
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      */
     public JaxRpcServiceException() {
         super();
     }
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      * 
-     * @param message ƒƒbƒZ[ƒW
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public JaxRpcServiceException(String message) {
         super(message);
     }
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      * 
-     * @param message ƒƒbƒZ[ƒW
-     * @param cause Œ´ˆö
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param cause åŸå› 
      */
     public JaxRpcServiceException(String message, Throwable cause) {
         super(message, cause);
     }
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      * 
-     * @param cause Œ´ˆö
+     * @param cause åŸå› 
      */
     public JaxRpcServiceException(Throwable cause) {
         super(cause);

@@ -36,8 +36,8 @@ import java.util.*;
 import jp.ossc.nimbus.core.ServiceBase;
 
 /**
- * ƒƒ‚ƒŠƒTƒCƒY‚ ‚Ó‚êŒŸØƒT[ƒrƒXB<p>
- * ˆÈ‰º‚ÉAƒq[ƒvƒƒ‚ƒŠ‚Ìg—pƒTƒCƒY‚ªÅ‘åƒq[ƒvƒƒ‚ƒŠ‚Ì”¼•ª‚ğ’´‚¦‚é‚Æ‚ ‚Ó‚ê‚é‚ ‚Ó‚êŒŸØƒT[ƒrƒX‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ãƒ¡ãƒ¢ãƒªã‚µã‚¤ã‚ºã‚ãµã‚Œæ¤œè¨¼ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ä»¥ä¸‹ã«ã€ãƒ’ãƒ¼ãƒ—ãƒ¡ãƒ¢ãƒªã®ä½¿ç”¨ã‚µã‚¤ã‚ºãŒæœ€å¤§ãƒ’ãƒ¼ãƒ—ãƒ¡ãƒ¢ãƒªã®åŠåˆ†ã‚’è¶…ãˆã‚‹ã¨ã‚ãµã‚Œã‚‹ã‚ãµã‚Œæ¤œè¨¼ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -89,20 +89,20 @@ public class MemorySizeOverflowValidatorService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
-     * ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚Ì‰Šú‰»‚ğs‚¤B
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã®åˆæœŸåŒ–ã‚’è¡Œã†ã€‚
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         references = Collections.synchronizedSet(new HashSet());
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
-     * ‘®«‚Ì‘Ã“–«ƒ`ƒFƒbƒN‚ğs‚¤B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * å±æ€§ã®å¦¥å½“æ€§ãƒã‚§ãƒƒã‚¯ã‚’è¡Œã†ã€‚<br>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(maxHeapMemorySize <= highHeapMemorySize){
@@ -113,41 +113,41 @@ public class MemorySizeOverflowValidatorService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
-     * ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚ÌŠJ•ú‚ğs‚¤B
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã®é–‹æ”¾ã‚’è¡Œã†ã€‚
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         reset();
         references = null;
     }
     
-    // MemorySizeOverflowValidatorServiceMBean‚ÌJavaDoc
+    // MemorySizeOverflowValidatorServiceMBeanã®JavaDoc
     public void setMaxHeapMemorySize(String size)
      throws IllegalArgumentException{
         maxHeapMemorySize = convertMemorySize(size);
         maxHeapMemorySizeStr = size;
     }
     
-    // MemorySizeOverflowValidatorServiceMBean‚ÌJavaDoc
+    // MemorySizeOverflowValidatorServiceMBeanã®JavaDoc
     public String getMaxHeapMemorySize(){
         return maxHeapMemorySizeStr;
     }
     
-    // MemorySizeOverflowValidatorServiceMBean‚ÌJavaDoc
+    // MemorySizeOverflowValidatorServiceMBeanã®JavaDoc
     public void setHighHeapMemorySize(String size)
      throws IllegalArgumentException{
         highHeapMemorySize = convertMemorySize(size);
         highHeapMemorySizeStr = size;
     }
     
-    // MemorySizeOverflowValidatorServiceMBean‚ÌJavaDoc
+    // MemorySizeOverflowValidatorServiceMBeanã®JavaDoc
     public String getHighHeapMemorySize(){
         return highHeapMemorySizeStr;
     }
     
-    // MemorySizeOverflowValidatorServiceMBean‚ÌJavaDoc
+    // MemorySizeOverflowValidatorServiceMBeanã®JavaDoc
     public int size(){
         return references == null ? 0 : references.size();
     }
@@ -203,28 +203,28 @@ public class MemorySizeOverflowValidatorService extends ServiceBase
     }
     
     /**
-     * ‚•‰‰×ƒq[ƒvƒƒ‚ƒŠƒTƒCƒY‚ğæ“¾‚·‚éB<p>
+     * é«˜è² è·ãƒ’ãƒ¼ãƒ—ãƒ¡ãƒ¢ãƒªã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‚•‰‰×ƒq[ƒvƒƒ‚ƒŠƒTƒCƒY
+     * @return é«˜è² è·ãƒ’ãƒ¼ãƒ—ãƒ¡ãƒ¢ãƒªã‚µã‚¤ã‚º
      */
     protected long getHighHeapMemorySizeValue(){
         return highHeapMemorySize;
     }
     
     /**
-     * Å‘åƒq[ƒvƒƒ‚ƒŠƒTƒCƒY‚ğæ“¾‚·‚éB<p>
+     * æœ€å¤§ãƒ’ãƒ¼ãƒ—ãƒ¡ãƒ¢ãƒªã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Å‘åƒq[ƒvƒƒ‚ƒŠƒTƒCƒY
+     * @return æœ€å¤§ãƒ’ãƒ¼ãƒ—ãƒ¡ãƒ¢ãƒªã‚µã‚¤ã‚º
      */
     protected long getMaxHeapMemorySizeValue(){
         return maxHeapMemorySize;
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…QÆ‚ğ’Ç‰Á‚·‚éB<p>
-     * ˆø”‚Å“n‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚ğ•Û‚·‚éB“¯‚ÉA{@link CachedReference#addCacheRemoveListener(CacheRemoveListener)}‚ÅA{@link CacheRemoveListener}‚Æ‚µ‚Ä©•ª©g‚ğ“o˜^‚·‚éB<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
+     * å¼•æ•°ã§æ¸¡ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’ä¿æŒã™ã‚‹ã€‚åŒæ™‚ã«ã€{@link CachedReference#addCacheRemoveListener(CacheRemoveListener)}ã§ã€{@link CacheRemoveListener}ã¨ã—ã¦è‡ªåˆ†è‡ªèº«ã‚’ç™»éŒ²ã™ã‚‹ã€‚<br>
      *
-     * @param ref ƒLƒƒƒbƒVƒ…QÆ
+     * @param ref ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public void add(CachedReference ref){
         if(references == null || ref == null){
@@ -239,10 +239,10 @@ public class MemorySizeOverflowValidatorService extends ServiceBase
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…QÆ‚ğíœ‚·‚éB<p>
-     * ˆø”‚Å“n‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚ğ“à•”‚Å•Û‚µ‚Ä‚¢‚éê‡‚ÍA”jŠü‚·‚éB“¯‚ÉA{@link CachedReference#removeCacheRemoveListener(CacheRemoveListener)}‚ÅA{@link CacheRemoveListener}‚Æ‚µ‚Ä©•ª©g‚ğ“o˜^‰ğœ‚·‚éB<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
+     * å¼•æ•°ã§æ¸¡ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’å†…éƒ¨ã§ä¿æŒã—ã¦ã„ã‚‹å ´åˆã¯ã€ç ´æ£„ã™ã‚‹ã€‚åŒæ™‚ã«ã€{@link CachedReference#removeCacheRemoveListener(CacheRemoveListener)}ã§ã€{@link CacheRemoveListener}ã¨ã—ã¦è‡ªåˆ†è‡ªèº«ã‚’ç™»éŒ²è§£é™¤ã™ã‚‹ã€‚<br>
      *
-     * @param ref ƒLƒƒƒbƒVƒ…QÆ
+     * @param ref ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public void remove(CachedReference ref){
         if(references == null || ref == null){
@@ -257,11 +257,11 @@ public class MemorySizeOverflowValidatorService extends ServiceBase
     }
     
     /**
-     * ƒq[ƒvƒƒ‚ƒŠ‚Ìg—p—¦‚Å‚ ‚Ó‚êŒŸØ‚ğs‚¤B<p>
-     * ˆÈ‰º‚ÌŒvZ®‚ÅA‚ ‚Ó‚ê”‚ğŒvZ‚·‚éB’A‚µAŒvZŒ‹‰Ê‚ª•‰‚Ìê‡‚ÍA0‚Æ‚·‚éB<br>
-     * ƒLƒƒƒbƒVƒ…ƒTƒCƒY~ig—pƒq[ƒvƒƒ‚ƒŠ]‚•‰‰×ƒq[ƒvƒƒ‚ƒŠj€iÅ‘åƒq[ƒvƒƒ‚ƒŠ]‚•‰‰×ƒq[ƒvƒƒ‚ƒŠj
+     * ãƒ’ãƒ¼ãƒ—ãƒ¡ãƒ¢ãƒªã®ä½¿ç”¨ç‡ã§ã‚ãµã‚Œæ¤œè¨¼ã‚’è¡Œã†ã€‚<p>
+     * ä»¥ä¸‹ã®è¨ˆç®—å¼ã§ã€ã‚ãµã‚Œæ•°ã‚’è¨ˆç®—ã™ã‚‹ã€‚ä½†ã—ã€è¨ˆç®—çµæœãŒè² ã®å ´åˆã¯ã€0ã¨ã™ã‚‹ã€‚<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µã‚¤ã‚ºÃ—ï¼ˆä½¿ç”¨ãƒ’ãƒ¼ãƒ—ãƒ¡ãƒ¢ãƒªâ€é«˜è² è·ãƒ’ãƒ¼ãƒ—ãƒ¡ãƒ¢ãƒªï¼‰Ã·ï¼ˆæœ€å¤§ãƒ’ãƒ¼ãƒ—ãƒ¡ãƒ¢ãƒªâ€é«˜è² è·ãƒ’ãƒ¼ãƒ—ãƒ¡ãƒ¢ãƒªï¼‰
      *
-     * @return ‚ ‚Ó‚êŒŸØ‚ğs‚Á‚½Œ‹‰Ê‚ ‚Ó‚ê‚ª”­¶‚·‚éê‡A‚ ‚Ó‚ê”‚ğ•Ô‚·B‚ ‚Ó‚ê‚È‚¢ê‡‚ÍA0‚ğ•Ô‚·
+     * @return ã‚ãµã‚Œæ¤œè¨¼ã‚’è¡Œã£ãŸçµæœã‚ãµã‚ŒãŒç™ºç”Ÿã™ã‚‹å ´åˆã€ã‚ãµã‚Œæ•°ã‚’è¿”ã™ã€‚ã‚ãµã‚Œãªã„å ´åˆã¯ã€0ã‚’è¿”ã™
      */
     public int validate(){
         if(references == null || references.size() == 0){
@@ -278,8 +278,8 @@ public class MemorySizeOverflowValidatorService extends ServiceBase
     }
     
     /**
-     * ‚ ‚Ó‚êŒŸØ‚ğÀs‚·‚é‚½‚ß‚É•Û‚µ‚Ä‚¢‚éî•ñ‚ğ‰Šú‰»‚·‚éB<p>
-     * {@link #add(CachedReference)}‚Å“n‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚ğ‘S‚Ä”jŠü‚·‚éB<br>
+     * ã‚ãµã‚Œæ¤œè¨¼ã‚’å®Ÿè¡Œã™ã‚‹ãŸã‚ã«ä¿æŒã—ã¦ã„ã‚‹æƒ…å ±ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
+     * {@link #add(CachedReference)}ã§æ¸¡ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’å…¨ã¦ç ´æ£„ã™ã‚‹ã€‚<br>
      */
     public void reset(){
         if(references != null){
@@ -304,10 +304,10 @@ public class MemorySizeOverflowValidatorService extends ServiceBase
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚©‚çíœ‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ‚Ì’Ê’m‚ğó‚¯‚éB<p>
-     * {@link #remove(CachedReference)}‚ğŒÄ‚Ño‚·B<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰å‰Šé™¤ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã®é€šçŸ¥ã‚’å—ã‘ã‚‹ã€‚<p>
+     * {@link #remove(CachedReference)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param ref ƒLƒƒƒbƒVƒ…‚©‚çíœ‚³‚ê‚½ƒLƒƒƒbƒVƒ…QÆ
+     * @param ref ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‹ã‚‰å‰Šé™¤ã•ã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     public void removed(CachedReference ref){
         remove(ref);

@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aop.interceptor.servlet;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link HttpResponseCacheInterceptorService}ÇÃMBeanÉCÉìÉ^ÉtÉFÅ[ÉXÅB<p>
+ * {@link HttpResponseCacheInterceptorService}„ÅÆMBean„Ç§„É≥„Çø„Éï„Çß„Éº„Çπ„ÄÇ<p>
  * 
  * @author M.Takata
  * @see HttpResponseCacheInterceptorService

@@ -34,21 +34,21 @@ package jp.ossc.nimbus.service.test;
 import java.io.Reader;
 
 /**
- * ƒeƒXƒgƒAƒNƒVƒ‡ƒ“B<p>
- * ƒeƒXƒg‚ğÀs‚·‚éƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚Å‚ ‚éB<br>
+ * ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
+ * ãƒ†ã‚¹ãƒˆã‚’å®Ÿè¡Œã™ã‚‹ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã§ã‚ã‚‹ã€‚<br>
  * 
  * @author M.Ishida
  */
 public interface TestAction{
     
     /**
-     * ƒeƒXƒgÀs‚µ‚Ä‚»‚ÌŒ‹‰Ê‚ğ•Ô‚·B<p>
+     * ãƒ†ã‚¹ãƒˆå®Ÿè¡Œã—ã¦ãã®çµæœã‚’è¿”ã™ã€‚<p>
      *
-     * @param context ƒeƒXƒgƒRƒ“ƒeƒLƒXƒg
-     * @param actionId ‚±‚ÌƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ÌID
-     * @param resource ‚±‚ÌƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚Ö‚ÌƒŠƒ\[ƒX
-     * @return ÀsŒ‹‰Ê
-     * @exception Exception ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ÌÀs‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param context ãƒ†ã‚¹ãƒˆã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+     * @param actionId ã“ã®ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ID
+     * @param resource ã“ã®ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã¸ã®ãƒªã‚½ãƒ¼ã‚¹
+     * @return å®Ÿè¡Œçµæœ
+     * @exception Exception ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®å®Ÿè¡Œã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public Object execute(TestContext context, String actionId, Reader resource) throws Exception;
 }

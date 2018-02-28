@@ -3,37 +3,37 @@ package jp.ossc.nimbus.service.writer;
 import jp.ossc.nimbus.service.crypt.Crypt;
 
 /**
- * ”CˆÓ‚Ì•¶š—ñ‚ğˆÃ†‰»‚·‚é{@link WritableElement}À‘•ƒNƒ‰ƒXB<p>
+ * ä»»æ„ã®æ–‡å­—åˆ—ã‚’æš—å·åŒ–ã™ã‚‹{@link WritableElement}å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
  */
 public class CryptElement extends SimpleElement {
     
     private static final long serialVersionUID = -1736395385754458771L;
     
-    /** ˆÃ†‰»ƒT[ƒrƒX */
+    /** æš—å·åŒ–ã‚µãƒ¼ãƒ“ã‚¹ */
     private Crypt crypt;
     
     /**
-     * ˆÃ†‰»ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * æš—å·åŒ–ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param crypt ˆÃ†‰»ƒT[ƒrƒX
+     * @param crypt æš—å·åŒ–ã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setCrypt(Crypt crypt){
         this.crypt = crypt;
     }
     
     /**
-     * ˆÃ†‰»ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * æš—å·åŒ–ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ˆÃ†‰»ƒT[ƒrƒX
+     * @return æš—å·åŒ–ã‚µãƒ¼ãƒ“ã‚¹
      */
     public Crypt getCrypt(){
         return crypt;
     }
     
     /**
-     * ‚±‚Ì—v‘f(•¶š—ñ)‚ğˆÃ†‰»‚µ‚Äæ“¾‚·‚éB<p>
+     * ã“ã®è¦ç´ (æ–‡å­—åˆ—)ã‚’æš—å·åŒ–ã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‚±‚Ì—v‘f(•¶š—ñ)‚ğˆÃ†‰»‚µ‚½‚à‚Ì
+     * @return ã“ã®è¦ç´ (æ–‡å­—åˆ—)ã‚’æš—å·åŒ–ã—ãŸã‚‚ã®
      */
     public String toString(){
         if(mValue == null){
@@ -50,10 +50,10 @@ public class CryptElement extends SimpleElement {
     }
 
     /**
-     * ‚±‚Ì—v‘f(•¶š—ñ)‚ğˆÃ†‰»‚µ‚Äæ“¾‚·‚éB<p>
-     * {@link #toString()}‚Æ“¯‚¶’l‚ğ•Ô‚·B<br>
+     * ã“ã®è¦ç´ (æ–‡å­—åˆ—)ã‚’æš—å·åŒ–ã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
+     * {@link #toString()}ã¨åŒã˜å€¤ã‚’è¿”ã™ã€‚<br>
      * 
-     * @return ‚±‚Ì—v‘f(•¶š—ñ)‚ğˆÃ†‰»‚µ‚½‚à‚Ì
+     * @return ã“ã®è¦ç´ (æ–‡å­—åˆ—)ã‚’æš—å·åŒ–ã—ãŸã‚‚ã®
      */
     public Object toObject(){
         return toString();

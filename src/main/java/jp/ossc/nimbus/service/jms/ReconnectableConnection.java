@@ -41,7 +41,7 @@ import jp.ossc.nimbus.service.keepalive.KeepAliveChecker;
 import jp.ossc.nimbus.service.log.Logger;
 
 /**
- * ÄÚ‘±‰Â”\ƒRƒlƒNƒVƒ‡ƒ“B<p>
+ * å†æ¥ç¶šå¯èƒ½ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
  *
  * @author M.Takata
  */

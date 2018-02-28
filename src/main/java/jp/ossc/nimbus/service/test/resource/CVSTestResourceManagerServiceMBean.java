@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.test.resource;
 import java.io.File;
 
 /**
- * {@link CVSTestResourceManagerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX
+ * {@link CVSTestResourceManagerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹
  * <p>
  *
  * @author M.Ishida
@@ -43,248 +43,248 @@ import java.io.File;
 public interface CVSTestResourceManagerServiceMBean {
 
     /**
-     * CVSƒT[ƒo‚ÖÚ‘±‚·‚éÛ‚Ìextƒƒ\ƒbƒh—p’è”B
+     * CVSã‚µãƒ¼ãƒã¸æ¥ç¶šã™ã‚‹éš›ã®extãƒ¡ã‚½ãƒƒãƒ‰ç”¨å®šæ•°ã€‚
      * <p>
      */
     public static String METHOD_EXT = "ext";
 
     /**
-     * CVSƒT[ƒo‚ÖÚ‘±‚·‚éÛ‚Ìlocalƒƒ\ƒbƒh—p’è”B
+     * CVSã‚µãƒ¼ãƒã¸æ¥ç¶šã™ã‚‹éš›ã®localãƒ¡ã‚½ãƒƒãƒ‰ç”¨å®šæ•°ã€‚
      * <p>
      */
     public static String METHOD_LOCAL = "local";
 
     /**
-     * CVSƒT[ƒo‚ÖÚ‘±‚·‚éÛ‚Ìlserverƒƒ\ƒbƒh—p’è”B
+     * CVSã‚µãƒ¼ãƒã¸æ¥ç¶šã™ã‚‹éš›ã®lserverãƒ¡ã‚½ãƒƒãƒ‰ç”¨å®šæ•°ã€‚
      * <p>
      */
     public static String METHOD_LSERVER = "lserver";
 
     /**
-     * CVSƒT[ƒo‚ÖÚ‘±‚·‚éÛ‚Ìpserverƒƒ\ƒbƒh—p’è”B
+     * CVSã‚µãƒ¼ãƒã¸æ¥ç¶šã™ã‚‹éš›ã®pserverãƒ¡ã‚½ãƒƒãƒ‰ç”¨å®šæ•°ã€‚
      * <p>
      */
     public static String METHOD_PSERVER = "pserver";
 
     /**
-     * CVSƒT[ƒo‚ÖÚ‘±‚·‚éÛ‚Ìsspiƒƒ\ƒbƒh—p’è”B
+     * CVSã‚µãƒ¼ãƒã¸æ¥ç¶šã™ã‚‹éš›ã®sspiãƒ¡ã‚½ãƒƒãƒ‰ç”¨å®šæ•°ã€‚
      * <p>
      */
     public static String METHOD_SSPI = "sspi";
 
     /**
-     * CVSƒT[ƒo‚ÖÚ‘±‚·‚éÛ‚Ìƒƒ\ƒbƒh‚ğæ“¾‚·‚éB
+     * CVSã‚µãƒ¼ãƒã¸æ¥ç¶šã™ã‚‹éš›ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ƒƒ\ƒbƒh
+     * @return ãƒ¡ã‚½ãƒƒãƒ‰
      */
     public String getMethod();
 
     /**
-     * CVSƒT[ƒo‚ÖÚ‘±‚·‚éÛ‚Ìƒƒ\ƒbƒh‚ğİ’è‚·‚éB
+     * CVSã‚µãƒ¼ãƒã¸æ¥ç¶šã™ã‚‹éš›ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param method ƒƒ\ƒbƒh
+     * @param method ãƒ¡ã‚½ãƒƒãƒ‰
      */
     public void setMethod(String method);
 
     /**
-     * CVSƒT[ƒo‚ÖÚ‘±‚·‚éÛ‚Ìƒ†[ƒU–¼‚ğæ“¾‚·‚éB
+     * CVSã‚µãƒ¼ãƒã¸æ¥ç¶šã™ã‚‹éš›ã®ãƒ¦ãƒ¼ã‚¶åã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ƒ†[ƒU–¼
+     * @return ãƒ¦ãƒ¼ã‚¶å
      */
     public String getUserName();
 
     /**
-     * CVSƒT[ƒo‚ÖÚ‘±‚·‚éÛ‚Ìƒ†[ƒU–¼‚ğİ’è‚·‚éB
+     * CVSã‚µãƒ¼ãƒã¸æ¥ç¶šã™ã‚‹éš›ã®ãƒ¦ãƒ¼ã‚¶åã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param user ƒ†[ƒU–¼
+     * @param user ãƒ¦ãƒ¼ã‚¶å
      */
     public void setUserName(String user);
 
     /**
-     * CVSƒT[ƒo‚ÖÚ‘±‚·‚éÛ‚ÌƒpƒXƒ[ƒh‚ğæ“¾‚·‚éB
+     * CVSã‚µãƒ¼ãƒã¸æ¥ç¶šã™ã‚‹éš›ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ƒpƒXƒ[ƒh
+     * @return ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
      */
     public String getPassword();
 
     /**
-     * CVSƒT[ƒo‚ÖÚ‘±‚·‚éÛ‚ÌƒpƒXƒ[ƒh‚ğİ’è‚·‚éB
+     * CVSã‚µãƒ¼ãƒã¸æ¥ç¶šã™ã‚‹éš›ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param str ƒpƒXƒ[ƒh
+     * @param str ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
      */
     public void setPassword(String str);
 
     /**
-     * CVSƒT[ƒo‚ÖÚ‘±‚·‚éÛ‚ÌƒT[ƒo–¼‚ğæ“¾‚·‚éB
+     * CVSã‚µãƒ¼ãƒã¸æ¥ç¶šã™ã‚‹éš›ã®ã‚µãƒ¼ãƒåã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ƒT[ƒo–¼
+     * @return ã‚µãƒ¼ãƒå
      */
     public String getServerName();
 
     /**
-     * CVSƒT[ƒo‚ÖÚ‘±‚·‚éÛ‚ÌƒT[ƒo–¼‚ğİ’è‚·‚éB
+     * CVSã‚µãƒ¼ãƒã¸æ¥ç¶šã™ã‚‹éš›ã®ã‚µãƒ¼ãƒåã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param server ƒT[ƒo–¼
+     * @param server ã‚µãƒ¼ãƒå
      */
     public void setServerName(String server);
 
     /**
-     * CVSƒT[ƒo‚ÖÚ‘±‚·‚éÛ‚Ìƒ|[ƒg‚ğæ“¾‚·‚éB
+     * CVSã‚µãƒ¼ãƒã¸æ¥ç¶šã™ã‚‹éš›ã®ãƒãƒ¼ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ƒ|[ƒg
+     * @return ãƒãƒ¼ãƒˆ
      */
     public int getPort();
 
     /**
-     * CVSƒT[ƒo‚ÖÚ‘±‚·‚éÛ‚Ìƒ|[ƒg‚ğİ’è‚·‚éB
+     * CVSã‚µãƒ¼ãƒã¸æ¥ç¶šã™ã‚‹éš›ã®ãƒãƒ¼ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param port ƒ|[ƒg
+     * @param port ãƒãƒ¼ãƒˆ
      */
     public void setPort(int port);
 
     /**
-     * CVSƒT[ƒo‚ÖÚ‘±‚·‚éÛ‚ÌƒŠƒ|ƒWƒgƒŠƒpƒX‚ğæ“¾‚·‚éB
+     * CVSã‚µãƒ¼ãƒã¸æ¥ç¶šã™ã‚‹éš›ã®ãƒªãƒã‚¸ãƒˆãƒªãƒ‘ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ƒŠƒ|ƒWƒgƒŠƒpƒX
+     * @return ãƒªãƒã‚¸ãƒˆãƒªãƒ‘ã‚¹
      */
     public String getRepositoryPath();
 
     /**
-     * CVSƒT[ƒo‚ÖÚ‘±‚·‚éÛ‚ÌƒŠƒ|ƒWƒgƒŠƒpƒX‚ğİ’è‚·‚éB
+     * CVSã‚µãƒ¼ãƒã¸æ¥ç¶šã™ã‚‹éš›ã®ãƒªãƒã‚¸ãƒˆãƒªãƒ‘ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param path ƒŠƒ|ƒWƒgƒŠƒpƒX
+     * @param path ãƒªãƒã‚¸ãƒˆãƒªãƒ‘ã‚¹
      */
     public void setRepositoryPath(String path);
 
     /**
-     * CVSƒT[ƒo‚ÖÚ‘±‚·‚éÛ‚Ìƒ‚ƒWƒ…[ƒ‹ƒpƒX‚ğæ“¾‚·‚éB
+     * CVSã‚µãƒ¼ãƒã¸æ¥ç¶šã™ã‚‹éš›ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ‘ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ƒ‚ƒWƒ…[ƒ‹ƒpƒX
+     * @return ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ‘ã‚¹
      */
     public String getModulePath();
 
     /**
-     * CVSƒT[ƒo‚ÖÚ‘±‚·‚éÛ‚Ìƒ‚ƒWƒ…[ƒ‹ƒpƒX‚ğİ’è‚·‚éB
+     * CVSã‚µãƒ¼ãƒã¸æ¥ç¶šã™ã‚‹éš›ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ‘ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param module ƒ‚ƒWƒ…[ƒ‹ƒpƒX
+     * @param module ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ‘ã‚¹
      */
     public void setModulePath(String module);
 
     /**
-     * CVSƒT[ƒo‚©‚çƒ‚ƒWƒ…[ƒ‹‚ğƒ`ƒFƒbƒNƒAƒEƒg‚·‚éƒfƒBƒŒƒNƒgƒŠ‚ğæ“¾‚·‚éB
+     * CVSã‚µãƒ¼ãƒã‹ã‚‰ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ãƒã‚§ãƒƒã‚¯ã‚¢ã‚¦ãƒˆã™ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ƒ‚ƒWƒ…[ƒ‹‚ğƒ`ƒFƒbƒNƒAƒEƒg‚·‚éƒfƒBƒŒƒNƒgƒŠ
+     * @return ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ãƒã‚§ãƒƒã‚¯ã‚¢ã‚¦ãƒˆã™ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
      */
     public File getCvsCheckOutDirectory();
 
     /**
-     * CVSƒT[ƒo‚©‚çƒ‚ƒWƒ…[ƒ‹‚ğƒ`ƒFƒbƒNƒAƒEƒg‚·‚éƒfƒBƒŒƒNƒgƒŠ‚ğİ’è‚·‚éB
+     * CVSã‚µãƒ¼ãƒã‹ã‚‰ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ãƒã‚§ãƒƒã‚¯ã‚¢ã‚¦ãƒˆã™ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param directory ƒ‚ƒWƒ…[ƒ‹‚ğƒ`ƒFƒbƒNƒAƒEƒg‚·‚éƒfƒBƒŒƒNƒgƒŠ
+     * @param directory ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ãƒã‚§ãƒƒã‚¯ã‚¢ã‚¦ãƒˆã™ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
      */
     public void setCvsCheckOutDirectory(File directory);
 
     /**
-     * CVSƒT[ƒo‚ÖÚ‘±‚·‚éÛ‚Ìƒuƒ‰ƒ“ƒ`–¼‚ğæ“¾‚·‚éB
+     * CVSã‚µãƒ¼ãƒã¸æ¥ç¶šã™ã‚‹éš›ã®ãƒ–ãƒ©ãƒ³ãƒåã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ƒuƒ‰ƒ“ƒ`–¼
+     * @return ãƒ–ãƒ©ãƒ³ãƒå
      */
     public String getTargetBranch();
 
     /**
-     * CVSƒT[ƒo‚ÖÚ‘±‚·‚éÛ‚Ìƒuƒ‰ƒ“ƒ`–¼‚ğİ’è‚·‚éB
+     * CVSã‚µãƒ¼ãƒã¸æ¥ç¶šã™ã‚‹éš›ã®ãƒ–ãƒ©ãƒ³ãƒåã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param branch ƒuƒ‰ƒ“ƒ`–¼
+     * @param branch ãƒ–ãƒ©ãƒ³ãƒå
      */
     public void setTargetBranch(String branch);
 
     /**
-     * CVSƒT[ƒo‚ÖÚ‘±‚·‚éÛ‚Ìƒ^ƒO–¼‚ğæ“¾‚·‚éB
+     * CVSã‚µãƒ¼ãƒã¸æ¥ç¶šã™ã‚‹éš›ã®ã‚¿ã‚°åã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ƒ^ƒO–¼
+     * @return ã‚¿ã‚°å
      */
     public String getTargetTag();
 
     /**
-     * CVSƒT[ƒo‚ÖÚ‘±‚·‚éÛ‚Ìƒ^ƒO–¼‚ğİ’è‚·‚éB
+     * CVSã‚µãƒ¼ãƒã¸æ¥ç¶šã™ã‚‹éš›ã®ã‚¿ã‚°åã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param tag ƒ^ƒO–¼
+     * @param tag ã‚¿ã‚°å
      */
     public void setTargetTag(String tag);
 
     /**
-     * CVSƒRƒ}ƒ“ƒhÀs‚ÌDebugƒƒO—LŒø/–³Œø‚ğ•Ô‹p‚·‚éB
+     * CVSã‚³ãƒãƒ³ãƒ‰å®Ÿè¡Œæ™‚ã®Debugãƒ­ã‚°æœ‰åŠ¹/ç„¡åŠ¹ã‚’è¿”å´ã™ã‚‹ã€‚
      *
-     * @return DebugƒƒO—LŒø/–³Œø
+     * @return Debugãƒ­ã‚°æœ‰åŠ¹/ç„¡åŠ¹
      */
     public boolean isDebugEnabled();
 
     /**
-     * CVSƒRƒ}ƒ“ƒhÀs‚ÌDebugƒƒO—LŒø/–³Œø‚ğİ’è‚·‚éB
+     * CVSã‚³ãƒãƒ³ãƒ‰å®Ÿè¡Œæ™‚ã®Debugãƒ­ã‚°æœ‰åŠ¹/ç„¡åŠ¹ã‚’è¨­å®šã™ã‚‹ã€‚
      *
-     * @param enabled DebugƒƒO—LŒø/–³Œø
+     * @param enabled Debugãƒ­ã‚°æœ‰åŠ¹/ç„¡åŠ¹
      */
     public void setDebugEnabled(boolean enabled);
 
     /**
-     * CVSƒRƒ}ƒ“ƒhÀs‚ÌInfoƒƒO—LŒø/–³Œø‚ğ•Ô‹p‚·‚éB
+     * CVSã‚³ãƒãƒ³ãƒ‰å®Ÿè¡Œæ™‚ã®Infoãƒ­ã‚°æœ‰åŠ¹/ç„¡åŠ¹ã‚’è¿”å´ã™ã‚‹ã€‚
      *
-     * @return InfoƒƒO—LŒø/–³Œø
+     * @return Infoãƒ­ã‚°æœ‰åŠ¹/ç„¡åŠ¹
      */
     public boolean isInfoEnabled();
 
     /**
-     * CVSƒRƒ}ƒ“ƒhÀs‚ÌInfoƒƒO—LŒø/–³Œø‚ğİ’è‚·‚éB
+     * CVSã‚³ãƒãƒ³ãƒ‰å®Ÿè¡Œæ™‚ã®Infoãƒ­ã‚°æœ‰åŠ¹/ç„¡åŠ¹ã‚’è¨­å®šã™ã‚‹ã€‚
      *
-     * @param enabled InfoƒƒO—LŒø/–³Œø
+     * @param enabled Infoãƒ­ã‚°æœ‰åŠ¹/ç„¡åŠ¹
      */
     public void setInfoEnabled(boolean enabled);
 
     /**
-     * CVSƒRƒ}ƒ“ƒhÀs‚ÌWarnƒƒO—LŒø/–³Œø‚ğ•Ô‹p‚·‚éB
+     * CVSã‚³ãƒãƒ³ãƒ‰å®Ÿè¡Œæ™‚ã®Warnãƒ­ã‚°æœ‰åŠ¹/ç„¡åŠ¹ã‚’è¿”å´ã™ã‚‹ã€‚
      *
-     * @return WarnƒƒO—LŒø/–³Œø
+     * @return Warnãƒ­ã‚°æœ‰åŠ¹/ç„¡åŠ¹
      */
     public boolean isWarnEnabled();
 
     /**
-     * CVSƒRƒ}ƒ“ƒhÀs‚ÌWarnƒƒO—LŒø/–³Œø‚ğİ’è‚·‚éB
+     * CVSã‚³ãƒãƒ³ãƒ‰å®Ÿè¡Œæ™‚ã®Warnãƒ­ã‚°æœ‰åŠ¹/ç„¡åŠ¹ã‚’è¨­å®šã™ã‚‹ã€‚
      *
-     * @param enabled WarnƒƒO—LŒø/–³Œø
+     * @param enabled Warnãƒ­ã‚°æœ‰åŠ¹/ç„¡åŠ¹
      */
     public void setWarnEnabled(boolean enabled);
 
     /**
-     * CVSƒRƒ}ƒ“ƒhÀs‚ÌErrorƒƒO—LŒø/–³Œø‚ğ•Ô‹p‚·‚éB
+     * CVSã‚³ãƒãƒ³ãƒ‰å®Ÿè¡Œæ™‚ã®Errorãƒ­ã‚°æœ‰åŠ¹/ç„¡åŠ¹ã‚’è¿”å´ã™ã‚‹ã€‚
      *
-     * @return ErrorƒƒO—LŒø/–³Œø
+     * @return Errorãƒ­ã‚°æœ‰åŠ¹/ç„¡åŠ¹
      */
     public boolean isErrorEnabled();
 
     /**
-     * CVSƒRƒ}ƒ“ƒhÀs‚ÌErrorƒƒO—LŒø/–³Œø‚ğİ’è‚·‚éB
+     * CVSã‚³ãƒãƒ³ãƒ‰å®Ÿè¡Œæ™‚ã®Errorãƒ­ã‚°æœ‰åŠ¹/ç„¡åŠ¹ã‚’è¨­å®šã™ã‚‹ã€‚
      *
-     * @param enabled ErrorƒƒO—LŒø/–³Œø
+     * @param enabled Errorãƒ­ã‚°æœ‰åŠ¹/ç„¡åŠ¹
      */
     public void setErrorEnabled(boolean enabled);
 }

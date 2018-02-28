@@ -36,7 +36,7 @@ import java.util.*;
 import java.io.*;
 
 /**
- * ƒƒ\ƒbƒhƒIƒuƒWƒFƒNƒg‚ğ’¼—ñ‰»‚·‚éƒNƒ‰ƒXB<p>
+ * ãƒ¡ã‚½ãƒƒãƒ‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç›´åˆ—åŒ–ã™ã‚‹ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -50,9 +50,9 @@ public class SerializableMethod implements java.io.Serializable{
     private transient Method method;
     
     /**
-     * w’è‚³‚ê‚½ƒƒ\ƒbƒhƒIƒuƒWƒFƒNƒg‚ğ’¼—ñ‰»‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç›´åˆ—åŒ–ã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param method ƒƒ\ƒbƒhƒIƒuƒWƒFƒNƒg
+     * @param method ãƒ¡ã‚½ãƒƒãƒ‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public SerializableMethod(Method method){
         declaringClassName = method.getDeclaringClass().getName();
@@ -68,9 +68,9 @@ public class SerializableMethod implements java.io.Serializable{
     }
     
     /**
-     * ƒƒ\ƒbƒhƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * ãƒ¡ã‚½ãƒƒãƒ‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒ\ƒbƒh
+     * @return ãƒ¡ã‚½ãƒƒãƒ‰
      */
     public Method getMethod(){
         return method;

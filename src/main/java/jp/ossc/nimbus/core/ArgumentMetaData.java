@@ -35,11 +35,11 @@ import java.io.*;
 import org.w3c.dom.*;
 
 /**
- * ˆø”’è‹`&lt;argument&gt;—v‘fƒƒ^ƒf[ƒ^B<p>
- * ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚Ì&lt;argument&gt;—v‘f‚É‹Lq‚³‚ê‚½“à—e‚ğŠi”[‚·‚éƒƒ^ƒf[ƒ^ƒRƒ“ƒeƒi‚Å‚ ‚éB<p>
+ * å¼•æ•°å®šç¾©&lt;argument&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
+ * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®&lt;argument&gt;è¦ç´ ã«è¨˜è¿°ã•ã‚ŒãŸå†…å®¹ã‚’æ ¼ç´ã™ã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠã§ã‚ã‚‹ã€‚<p>
  *
  * @author M.Takata
- * @see <a href="nimbus-service_1_0.dtd">ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹DTD</a>
+ * @see <a href="nimbus-service_1_0.dtd">ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«DTD</a>
  */
 public class ArgumentMetaData extends MetaData
  implements Serializable{
@@ -47,7 +47,7 @@ public class ArgumentMetaData extends MetaData
     private static final long serialVersionUID = 8109261601541836493L;
     
     /**
-     * &lt;argument&gt;—v‘f‚Ì—v‘f–¼•¶š—ñB<p>
+     * &lt;argument&gt;è¦ç´ ã®è¦ç´ åæ–‡å­—åˆ—ã€‚<p>
      */
     public static final String ARGUMENT_TAG_NAME = "argument";
     
@@ -68,10 +68,10 @@ public class ArgumentMetaData extends MetaData
     protected boolean isNullValue;
     
     /**
-     * e—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      * 
-     * @param parent e—v‘f‚Ìƒƒ^ƒf[ƒ^
-     * @param objData ƒT[ƒrƒX‚ª“o˜^‚³‚ê‚é{@link ServiceManager}‚Ì–¼‘O
+     * @param parent è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
+     * @param objData ã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã‚‹{@link ServiceManager}ã®åå‰
      */
     public ArgumentMetaData(MetaData parent, ObjectMetaData objData){
         super(parent);
@@ -83,82 +83,82 @@ public class ArgumentMetaData extends MetaData
     }
     
     /**
-     * ‚±‚Ì&lt;argument&gt;—v‘f‚Ìtype‘®«‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;argument&gt;è¦ç´ ã®typeå±æ€§ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return type‘®«‚Ì’l
+     * @return typeå±æ€§ã®å€¤
      */
     public String getType(){
         return type;
     }
     
     /**
-     * ‚±‚Ì&lt;argument&gt;—v‘f‚Ìtype‘®«‚Ì’l‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;argument&gt;è¦ç´ ã®typeå±æ€§ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param type type‘®«‚Ì’l
+     * @param type typeå±æ€§ã®å€¤
      */
     public void setType(String type){
         this.type = type;
     }
     
     /**
-     * ‚±‚Ì&lt;argument&gt;—v‘f‚ÌvalueType‘®«‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;argument&gt;è¦ç´ ã®valueTypeå±æ€§ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return valueType‘®«‚Ì’l
+     * @return valueTypeå±æ€§ã®å€¤
      */
     public String getValueType(){
         return valueType;
     }
     
     /**
-     * ‚±‚Ì&lt;argument&gt;—v‘f‚ÌvalueType‘®«‚Ì’l‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;argument&gt;è¦ç´ ã®valueTypeå±æ€§ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param type valueType‘®«‚Ì’l
+     * @param type valueTypeå±æ€§ã®å€¤
      */
     public void setValueType(String type){
         this.valueType = type;
     }
     
     /**
-     * ‚±‚Ì&lt;argument&gt;—v‘f‚ÌnullValue‘®«‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;argument&gt;è¦ç´ ã®nullValueå±æ€§ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return nullValue‘®«‚Ì’l
+     * @return nullValueå±æ€§ã®å€¤
      */
     public boolean isNullValue(){
         return isNullValue;
     }
     
     /**
-     * ‚±‚Ì&lt;argument&gt;—v‘f‚ÌnullValue‘®«‚Ì’l‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;argument&gt;è¦ç´ ã®nullValueå±æ€§ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param flg nullValue‘®«‚Ì’l
+     * @param flg nullValueå±æ€§ã®å€¤
      */
     public void setNullValue(boolean flg){
         isNullValue = flg;
     }
     
     /**
-     * ‚±‚Ì&lt;argument&gt;—v‘f‚Ì“à—e‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;argument&gt;è¦ç´ ã®å†…å®¹ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return &lt;argument&gt;—v‘f‚Ì“à—e
+     * @return &lt;argument&gt;è¦ç´ ã®å†…å®¹
      */
     public Object getValue(){
         return value;
     }
     
     /**
-     * ‚±‚Ì&lt;argument&gt;—v‘f‚Ì“à—e‚Ì’l‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;argument&gt;è¦ç´ ã®å†…å®¹ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param value &lt;argument&gt;—v‘f‚Ì“à—e
+     * @param value &lt;argument&gt;è¦ç´ ã®å†…å®¹
      */
     public void setValue(Object value){
         this.value = value;
     }
     
     /**
-     * &lt;argument&gt;—v‘f‚ÌElement‚ğƒp[ƒX‚µ‚ÄA©•ª©g‚Ì‰Šú‰»A‹y‚Ñq—v‘f‚Ìƒƒ^ƒf[ƒ^‚Ì¶¬‚ğs‚¤B<p>
+     * &lt;argument&gt;è¦ç´ ã®Elementã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦ã€è‡ªåˆ†è‡ªèº«ã®åˆæœŸåŒ–ã€åŠã³å­è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã‚’è¡Œã†ã€‚<p>
      *
-     * @param element &lt;argument&gt;—v‘f‚ÌElement
-     * @exception DeploymentException &lt;argument&gt;—v‘f‚Ì‰ğÍA‚»‚ÌŒ‹‰Ê‚É‚æ‚éƒƒ^ƒf[ƒ^‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @param element &lt;argument&gt;è¦ç´ ã®Element
+     * @exception DeploymentException &lt;argument&gt;è¦ç´ ã®è§£æã€ãã®çµæœã«ã‚ˆã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void importXML(Element element) throws DeploymentException{
         super.importXML(element);
@@ -250,9 +250,9 @@ public class ArgumentMetaData extends MetaData
     }
     
     /**
-     * ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶š—ñ•\Œ»
+     * @return æ–‡å­—åˆ—è¡¨ç¾
      */
     public String toString(){
         final StringBuilder buf = new StringBuilder();

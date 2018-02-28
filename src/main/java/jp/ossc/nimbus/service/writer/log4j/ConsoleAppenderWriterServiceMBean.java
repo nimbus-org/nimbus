@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.writer.log4j;
 
 /**
- * {@link ConsoleAppenderWriterService}ƒT[ƒrƒX‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link ConsoleAppenderWriterService}ã‚µãƒ¼ãƒ“ã‚¹ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -40,16 +40,16 @@ public interface ConsoleAppenderWriterServiceMBean
  extends WriterAppenderWriterServiceMBean{
     
     /**
-     * o—Íæ‚ğ•\‚·•¶š—ñ’è”‚ğİ’è‚·‚éB<p>
+     * å‡ºåŠ›å…ˆã‚’è¡¨ã™æ–‡å­—åˆ—å®šæ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param target o—Íæ‚ğ•\‚·•¶š—ñ’è”B•W€o—Í‚Éo—Í‚·‚éê‡{@link org.apache.log4j.ConsoleAppender#SYSTEM_OUT}("System.out")BƒGƒ‰[o—Í‚Éo—Í‚·‚éê‡{@link org.apache.log4j.ConsoleAppender#SYSTEM_ERR}("System.err")B
+     * @param target å‡ºåŠ›å…ˆã‚’è¡¨ã™æ–‡å­—åˆ—å®šæ•°ã€‚æ¨™æº–å‡ºåŠ›ã«å‡ºåŠ›ã™ã‚‹å ´åˆ{@link org.apache.log4j.ConsoleAppender#SYSTEM_OUT}("System.out")ã€‚ã‚¨ãƒ©ãƒ¼å‡ºåŠ›ã«å‡ºåŠ›ã™ã‚‹å ´åˆ{@link org.apache.log4j.ConsoleAppender#SYSTEM_ERR}("System.err")ã€‚
      */
     public void setOutTarget(String target);
     
     /**
-     * o—Íæ‚ğ•\‚·•¶š—ñ’è”‚ğæ“¾‚·‚éB<p>
+     * å‡ºåŠ›å…ˆã‚’è¡¨ã™æ–‡å­—åˆ—å®šæ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return o—Íæ‚ğ•\‚·•¶š—ñ’è”
+     * @return å‡ºåŠ›å…ˆã‚’è¡¨ã™æ–‡å­—åˆ—å®šæ•°
      */
     public String getOutTarget();
 }

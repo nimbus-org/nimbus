@@ -34,10 +34,10 @@ package jp.ossc.nimbus.service.msgresource;
 import java.io.*;
 
 /**
- *	JMS ObjectMessage‚ÉƒZƒbƒg‚µ‚Ä‘—‚éƒNƒ‰ƒX‚ÌƒTƒ“ƒvƒ‹
+ *	JMS ObjectMessageã«ã‚»ãƒƒãƒˆã—ã¦é€ã‚‹ã‚¯ãƒ©ã‚¹ã®ã‚µãƒ³ãƒ—ãƒ«
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/11/19| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/11/19ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class PayloadObjectForTest implements Serializable{
 	

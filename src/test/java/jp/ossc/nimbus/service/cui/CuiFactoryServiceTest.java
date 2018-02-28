@@ -38,8 +38,8 @@ import java.util.*;
 /**
  *	
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/10/30| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/10/30ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class CuiFactoryServiceTest extends TestCase {
 
@@ -105,7 +105,7 @@ public class CuiFactoryServiceTest extends TestCase {
 			cui.invoke(list);
 		}catch(Exception e){
             e.printStackTrace();
-			System.out.println("Exception –³Œø‚È’lİ’è‚Ìˆ×ˆ—I—¹[testInvoke3() End]");
+			System.out.println("Exception ç„¡åŠ¹ãªå€¤è¨­å®šã®ç‚ºå‡¦ç†çµ‚äº†[testInvoke3() End]");
 		}
 		System.out.println(cui.getResult());
 	}

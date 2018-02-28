@@ -36,7 +36,7 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.writer.MessageWriter;
 
 /**
- * {@link DestinationWriterService}ƒT[ƒrƒXMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link DestinationWriterService}ã‚µãƒ¼ãƒ“ã‚¹MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */

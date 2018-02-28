@@ -35,538 +35,538 @@ import jp.ossc.nimbus.lang.*;
 import java.util.*;
 
 /**
- * ƒƒOƒCƒ“ƒ^[ƒtƒFƒCƒXB<p>
+ * ãƒ­ã‚°ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã€‚<p>
  * 
  * @author Y.Tokuda
  */
 public interface Logger {
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚ÌƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void write(String messageId);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public void write(String messageId, Object embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public void write(String messageId, byte embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public void write(String messageId, short embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public void write(String messageId, char embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public void write(String messageId, int embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public void write(String messageId, long embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public void write(String messageId, float embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public void write(String messageId, double embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public void write(String messageId, boolean embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
      */
     public void write(String messageId, Object[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
      */
     public void write(String messageId, byte[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
      */
     public void write(String messageId, short[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
      */
     public void write(String messageId, char[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
      */
     public void write(String messageId, int[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
      */
     public void write(String messageId, long[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
      */
     public void write(String messageId, float[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
      */
     public void write(String messageId, double[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
      */
     public void write(String messageId, boolean[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«ƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ããƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param oException —áŠO
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param oException ä¾‹å¤–
      */
     public void write(String messageId, Throwable oException);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãåŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @param oException —áŠO
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @param oException ä¾‹å¤–
      */
     public void write(String messageId, Object embed, Throwable oException);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãåŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @param oException —áŠO
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @param oException ä¾‹å¤–
      */
     public void write(String messageId, byte embed, Throwable oException);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãåŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @param oException —áŠO
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @param oException ä¾‹å¤–
      */
     public void write(String messageId, short embed, Throwable oException);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãåŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @param oException —áŠO
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @param oException ä¾‹å¤–
      */
     public void write(String messageId, char embed, Throwable oException);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãåŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @param oException —áŠO
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @param oException ä¾‹å¤–
      */
     public void write(String messageId, int embed, Throwable oException);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãåŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @param oException —áŠO
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @param oException ä¾‹å¤–
      */
     public void write(String messageId, long embed, Throwable oException);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãåŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @param oException —áŠO
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @param oException ä¾‹å¤–
      */
     public void write(String messageId, float embed, Throwable oException);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãåŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @param oException —áŠO
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @param oException ä¾‹å¤–
      */
     public void write(String messageId, double embed, Throwable oException);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãåŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @param oException —áŠO
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @param oException ä¾‹å¤–
      */
     public void write(String messageId, boolean embed, Throwable oException);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãåŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @param oException —áŠO
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @param oException ä¾‹å¤–
      */
     public void write(String messageId, Object[] embeds, Throwable oException) ;
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãåŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @param oException —áŠO
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @param oException ä¾‹å¤–
      */
     public void write(String messageId, byte[] embeds, Throwable oException);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãåŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @param oException —áŠO
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @param oException ä¾‹å¤–
      */
     public void write(String messageId, short[] embeds, Throwable oException);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãåŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @param oException —áŠO
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @param oException ä¾‹å¤–
      */
     public void write(String messageId, char[] embeds, Throwable oException);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãåŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @param oException —áŠO
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @param oException ä¾‹å¤–
      */
     public void write(String messageId, int[] embeds, Throwable oException);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãåŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @param oException —áŠO
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @param oException ä¾‹å¤–
      */
     public void write(String messageId, long[] embeds, Throwable oException);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãåŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @param oException —áŠO
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @param oException ä¾‹å¤–
      */
     public void write(String messageId, float[] embeds, Throwable oException);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãåŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @param oException —áŠO
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @param oException ä¾‹å¤–
      */
     public void write(String messageId, double[] embeds, Throwable oException);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãåŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @param oException —áŠO
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @param oException ä¾‹å¤–
      */
     public void write(String messageId, boolean[] embeds, Throwable oException);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹ƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
-     * w’è‚µ‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚É‚ÍA‚æ‚è‹ß‚¢ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ğo—Í‚·‚éB<br>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã«ã¯ã€ã‚ˆã‚Šè¿‘ã„ãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void write(Locale lo, String messageId);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
-     * w’è‚µ‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚É‚ÍA‚æ‚è‹ß‚¢ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ğo—Í‚·‚éB<br>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã«ã¯ã€ã‚ˆã‚Šè¿‘ã„ãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public void write(Locale lo, String messageId, Object embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
-     * w’è‚µ‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚É‚ÍA‚æ‚è‹ß‚¢ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ğo—Í‚·‚éB<br>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã«ã¯ã€ã‚ˆã‚Šè¿‘ã„ãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public void write(Locale lo, String messageId, byte embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
-     * w’è‚µ‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚É‚ÍA‚æ‚è‹ß‚¢ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ğo—Í‚·‚éB<br>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã«ã¯ã€ã‚ˆã‚Šè¿‘ã„ãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public void write(Locale lo, String messageId, short embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
-     * w’è‚µ‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚É‚ÍA‚æ‚è‹ß‚¢ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ğo—Í‚·‚éB<br>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã«ã¯ã€ã‚ˆã‚Šè¿‘ã„ãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public void write(Locale lo, String messageId, char embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
-     * w’è‚µ‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚É‚ÍA‚æ‚è‹ß‚¢ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ğo—Í‚·‚éB<br>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã«ã¯ã€ã‚ˆã‚Šè¿‘ã„ãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public void write(Locale lo, String messageId, int embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
-     * w’è‚µ‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚É‚ÍA‚æ‚è‹ß‚¢ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ğo—Í‚·‚éB<br>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã«ã¯ã€ã‚ˆã‚Šè¿‘ã„ãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public void write(Locale lo, String messageId, long embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
-     * w’è‚µ‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚É‚ÍA‚æ‚è‹ß‚¢ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ğo—Í‚·‚éB<br>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã«ã¯ã€ã‚ˆã‚Šè¿‘ã„ãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public void write(Locale lo, String messageId, float embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
-     * w’è‚µ‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚É‚ÍA‚æ‚è‹ß‚¢ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ğo—Í‚·‚éB<br>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã«ã¯ã€ã‚ˆã‚Šè¿‘ã„ãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public void write(Locale lo, String messageId, double embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
-     * w’è‚µ‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚É‚ÍA‚æ‚è‹ß‚¢ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ğo—Í‚·‚éB<br>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã«ã¯ã€ã‚ˆã‚Šè¿‘ã„ãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
      */
     public void write(Locale lo, String messageId, boolean embed);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
-     * w’è‚µ‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚É‚ÍA‚æ‚è‹ß‚¢ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ğo—Í‚·‚éB<br>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã«ã¯ã€ã‚ˆã‚Šè¿‘ã„ãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
      */
     public void write(Locale lo, String messageId, Object[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
-     * w’è‚µ‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚É‚ÍA‚æ‚è‹ß‚¢ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ğo—Í‚·‚éB<br>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã«ã¯ã€ã‚ˆã‚Šè¿‘ã„ãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
      */
     public void write(Locale lo, String messageId, byte[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
-     * w’è‚µ‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚É‚ÍA‚æ‚è‹ß‚¢ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ğo—Í‚·‚éB<br>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã«ã¯ã€ã‚ˆã‚Šè¿‘ã„ãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
      */
     public void write(Locale lo, String messageId, short[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
-     * w’è‚µ‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚É‚ÍA‚æ‚è‹ß‚¢ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ğo—Í‚·‚éB<br>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã«ã¯ã€ã‚ˆã‚Šè¿‘ã„ãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
      */
     public void write(Locale lo, String messageId, char[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
-     * w’è‚µ‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚É‚ÍA‚æ‚è‹ß‚¢ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ğo—Í‚·‚éB<br>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã«ã¯ã€ã‚ˆã‚Šè¿‘ã„ãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
      */
     public void write(Locale lo, String messageId, int[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
-     * w’è‚µ‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚É‚ÍA‚æ‚è‹ß‚¢ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ğo—Í‚·‚éB<br>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã«ã¯ã€ã‚ˆã‚Šè¿‘ã„ãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
      */
     public void write(Locale lo, String messageId, long[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
-     * w’è‚µ‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚É‚ÍA‚æ‚è‹ß‚¢ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ğo—Í‚·‚éB<br>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã«ã¯ã€ã‚ˆã‚Šè¿‘ã„ãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
      */
     public void write(Locale lo, String messageId, float[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
-     * w’è‚µ‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚É‚ÍA‚æ‚è‹ß‚¢ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ğo—Í‚·‚éB<br>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã«ã¯ã€ã‚ˆã‚Šè¿‘ã„ãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
      */
     public void write(Locale lo, String messageId, double[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ìw’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
-     * w’è‚µ‚½ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚É‚ÍA‚æ‚è‹ß‚¢ƒƒP[ƒ‹‚ÌƒƒbƒZ[ƒW‚ğo—Í‚·‚éB<br>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®æŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã«ã¯ã€ã‚ˆã‚Šè¿‘ã„ãƒ­ã‚±ãƒ¼ãƒ«ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
      */
     public void write(Locale lo, String messageId, boolean[] embeds);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«w’èƒƒP[ƒ‹ƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãæŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param oException —áŠO
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param oException ä¾‹å¤–
      */
     public void write(Locale lo, String messageId, Throwable oException);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãæŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @param oException —áŠO
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @param oException ä¾‹å¤–
      */
     public void write(
         Locale lo,
@@ -576,12 +576,12 @@ public interface Logger {
     );
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãæŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @param oException —áŠO
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @param oException ä¾‹å¤–
      */
     public void write(
         Locale lo,
@@ -591,12 +591,12 @@ public interface Logger {
     );
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãæŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @param oException —áŠO
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @param oException ä¾‹å¤–
      */
     public void write(
         Locale lo,
@@ -606,12 +606,12 @@ public interface Logger {
     );
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãæŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @param oException —áŠO
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @param oException ä¾‹å¤–
      */
     public void write(
         Locale lo,
@@ -621,12 +621,12 @@ public interface Logger {
     );
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãæŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @param oException —áŠO
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @param oException ä¾‹å¤–
      */
     public void write(
         Locale lo,
@@ -636,12 +636,12 @@ public interface Logger {
     );
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãæŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @param oException —áŠO
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @param oException ä¾‹å¤–
      */
     public void write(
         Locale lo,
@@ -651,12 +651,12 @@ public interface Logger {
     );
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãæŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @param oException —áŠO
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @param oException ä¾‹å¤–
      */
     public void write(
         Locale lo,
@@ -666,12 +666,12 @@ public interface Logger {
     );
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãæŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @param oException —áŠO
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @param oException ä¾‹å¤–
      */
     public void write(
         Locale lo,
@@ -681,12 +681,12 @@ public interface Logger {
     );
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãæŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embed –„‚ß‚İƒpƒ‰ƒ[ƒ^
-     * @param oException —áŠO
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embed åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+     * @param oException ä¾‹å¤–
      */
     public void write(
         Locale lo,
@@ -696,12 +696,12 @@ public interface Logger {
     );
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãæŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @param oException —áŠO
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @param oException ä¾‹å¤–
      */
     public void write(
         Locale lo,
@@ -711,12 +711,12 @@ public interface Logger {
     );
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãæŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @param oException —áŠO
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @param oException ä¾‹å¤–
      */
     public void write(
         Locale lo,
@@ -726,12 +726,12 @@ public interface Logger {
     );
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãæŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @param oException —áŠO
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @param oException ä¾‹å¤–
      */
     public void write(
         Locale lo,
@@ -741,12 +741,12 @@ public interface Logger {
     );
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãæŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @param oException —áŠO
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @param oException ä¾‹å¤–
      */
     public void write(
         Locale lo,
@@ -756,12 +756,12 @@ public interface Logger {
     );
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãæŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @param oException —áŠO
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @param oException ä¾‹å¤–
      */
     public void write(
         Locale lo,
@@ -771,12 +771,12 @@ public interface Logger {
     );
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãæŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @param oException —áŠO
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @param oException ä¾‹å¤–
      */
     public void write(
         Locale lo,
@@ -786,12 +786,12 @@ public interface Logger {
     );
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãæŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @param oException —áŠO
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @param oException ä¾‹å¤–
      */
     public void write(
         Locale lo,
@@ -801,12 +801,12 @@ public interface Logger {
     );
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãæŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @param oException —áŠO
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @param oException ä¾‹å¤–
      */
     public void write(
         Locale lo,
@@ -816,12 +816,12 @@ public interface Logger {
     );
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID‚Ì—áŠO•t‚«w’èƒƒP[ƒ‹–„‚ß‚İƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ä¾‹å¤–ä»˜ãæŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«åŸ‹ã‚è¾¼ã¿ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @param embeds –„‚ß‚İƒpƒ‰ƒ[ƒ^”z—ñ
-     * @param oException —áŠO
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @param embeds åŸ‹ã‚è¾¼ã¿ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é…åˆ—
+     * @param oException ä¾‹å¤–
      */
     public void write(
         Locale lo,
@@ -831,47 +831,47 @@ public interface Logger {
     );
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID•t‚«—áŠO‚Ì—áŠO•t‚«ƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDä»˜ãä¾‹å¤–ã®ä¾‹å¤–ä»˜ããƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param e ƒƒbƒZ[ƒWID•t‚«—áŠO
+     * @param e ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDä»˜ãä¾‹å¤–
      */
     public void write(AppException e);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒWID•t‚«—áŠO‚Ì—áŠO•t‚«w’èƒƒP[ƒ‹ƒƒbƒZ[ƒW‚ğƒƒO‚Éo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDä»˜ãä¾‹å¤–ã®ä¾‹å¤–ä»˜ãæŒ‡å®šãƒ­ã‚±ãƒ¼ãƒ«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒ­ã‚°ã«å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param lo ƒƒP[ƒ‹
-     * @param e ƒƒbƒZ[ƒWID•t‚«—áŠO
+     * @param lo ãƒ­ã‚±ãƒ¼ãƒ«
+     * @param e ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDä»˜ãä¾‹å¤–
      */
     public void write(Locale lo, AppException e);
     
     /**
-     * w’è‚³‚ê‚½ƒƒbƒZ[ƒWID‚ÌƒƒbƒZ[ƒW‚ªƒƒOo—Í‚³‚ê‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒãƒ­ã‚°å‡ºåŠ›ã•ã‚Œã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @param messageId ƒƒbƒZ[ƒWID
-     * @return w’è‚³‚ê‚½ƒƒbƒZ[ƒWID‚ÌƒƒbƒZ[ƒW‚ªƒƒOo—Í‚³‚ê‚éê‡true
+     * @param messageId ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
+     * @return æŒ‡å®šã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒãƒ­ã‚°å‡ºåŠ›ã•ã‚Œã‚‹å ´åˆtrue
      */
     public boolean isWrite(String messageId);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒW‚ÌƒfƒoƒbƒOƒƒO‚ğo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒ‡ãƒãƒƒã‚°ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param msg ƒƒbƒZ[ƒW
+     * @param msg ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public void debug(Object msg);
     
     /**
-     * w’è‚µ‚½ƒƒbƒZ[ƒW‚Ì—áŠO•t‚«ƒfƒoƒbƒOƒƒO‚ğo—Í‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ä¾‹å¤–ä»˜ããƒ‡ãƒãƒƒã‚°ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param msg ƒƒbƒZ[ƒW
-     * @param oException —áŠO
+     * @param msg ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param oException ä¾‹å¤–
      */
     public void debug(Object msg, Throwable oException);
     
     /**
-     * ƒfƒoƒbƒOƒƒO‚ªo—Í‚³‚ê‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ‡ãƒãƒƒã‚°ãƒ­ã‚°ãŒå‡ºåŠ›ã•ã‚Œã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ƒfƒoƒbƒOƒƒO‚ªo—Í‚³‚ê‚éê‡true
+     * @return ãƒ‡ãƒãƒƒã‚°ãƒ­ã‚°ãŒå‡ºåŠ›ã•ã‚Œã‚‹å ´åˆtrue
      */
     public boolean isDebugWrite();
 }

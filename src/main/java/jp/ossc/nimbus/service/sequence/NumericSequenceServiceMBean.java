@@ -34,38 +34,38 @@ package jp.ossc.nimbus.service.sequence;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link NumericSequenceService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link NumericSequenceService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author H.Nakano
  */
 public interface NumericSequenceServiceMBean extends ServiceBaseMBean {
     
     /**
-     * ”­”Ô‚·‚é”Ô†‚ÌƒtƒH[ƒ}ƒbƒg‚ğİ’è‚·‚éB<p>
-     * ƒtƒH[ƒ}ƒbƒg‚Ìw’è•û–@‚ÍA"Å¬’l;Å‘å’l"‚Åw’è‚·‚éB
+     * ç™ºç•ªã™ã‚‹ç•ªå·ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã®æŒ‡å®šæ–¹æ³•ã¯ã€"æœ€å°å€¤;æœ€å¤§å€¤"ã§æŒ‡å®šã™ã‚‹ã€‚
      * 
-     * @param format ”­”Ô‚·‚é”Ô†‚ÌƒtƒH[ƒ}ƒbƒg•¶š—ñ
+     * @param format ç™ºç•ªã™ã‚‹ç•ªå·ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæ–‡å­—åˆ—
      */
     public void setFormat(String format);
     
     /**
-     * ”­”Ô‚·‚é”Ô†‚ÌƒtƒH[ƒ}ƒbƒg‚ğæ“¾‚·‚éB<p>
+     * ç™ºç•ªã™ã‚‹ç•ªå·ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ”­”Ô‚·‚é”Ô†‚ÌƒtƒH[ƒ}ƒbƒg•¶š—ñ
+     * @return ç™ºç•ªã™ã‚‹ç•ªå·ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæ–‡å­—åˆ—
      */
     public String getFormat();
     
     /**
-     * ”­”Ô‚³‚ê‚é”Ô†‚ÌÅ¬’l‚ğæ“¾‚·‚éB<p>
+     * ç™ºç•ªã•ã‚Œã‚‹ç•ªå·ã®æœ€å°å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return Å¬’l
+     * @return æœ€å°å€¤
      */
     public String getMinValue();
     
     /**
-     * ”­”Ô‚³‚ê‚é”Ô†‚ÌÅ‘å’l‚ğæ“¾‚·‚éB<p>
+     * ç™ºç•ªã•ã‚Œã‚‹ç•ªå·ã®æœ€å¤§å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return Å‘å’l
+     * @return æœ€å¤§å€¤
      */
     public String getMaxValue();
 }

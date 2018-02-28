@@ -39,7 +39,7 @@ import jp.ossc.nimbus.service.writer.WritableRecord;
 import jp.ossc.nimbus.service.writer.WritableElement;
 
 /**
- * MessageWriter‚Ì“ü—Í‚Å‚ ‚éWritableRecord‚©‚çJMS‚ÌObjectMessage‚ğ¶¬‚·‚éJMSMessageCreatorÀ‘•ƒNƒ‰ƒXB<p>
+ * MessageWriterã®å…¥åŠ›ã§ã‚ã‚‹WritableRecordã‹ã‚‰JMSã®ObjectMessageã‚’ç”Ÿæˆã™ã‚‹JMSMessageCreatorå®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */

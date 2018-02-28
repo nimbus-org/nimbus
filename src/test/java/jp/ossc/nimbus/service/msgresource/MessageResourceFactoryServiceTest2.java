@@ -42,12 +42,12 @@ import jp.ossc.nimbus.service.jndi.*;
 
 /**
  *	
- *	BytesOrStreamMessageFormat‚ğƒeƒXƒg‚·‚éB<BR>
- *	MessageResourceFactoryTest‚Å‘—M‚µA<BR>
- *@MessageResourceFactoryTest2‚ÅóM‚·‚éB<BR>
+ *	BytesOrStreamMessageFormatã‚’ãƒ†ã‚¹ãƒˆã™ã‚‹ã€‚<BR>
+ *	MessageResourceFactoryTestã§é€ä¿¡ã—ã€<BR>
+ *ã€€MessageResourceFactoryTest2ã§å—ä¿¡ã™ã‚‹ã€‚<BR>
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/11/17| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/11/17ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class MessageResourceFactoryServiceTest2 extends TestCase {
 	private static final String serviceDefFilename = 
@@ -78,14 +78,14 @@ public class MessageResourceFactoryServiceTest2 extends TestCase {
 	}
 
 
-	//TextMessageóME‰ğÍ‚·‚éB
+	//TextMessageå—ä¿¡ãƒ»è§£æã™ã‚‹ã€‚
 	
 	
 	public void testToString() throws Exception{
 		MessageResourceFactory msgResourceFactory = (MessageResourceFactory)ServiceManagerFactory.getServiceObject("TheManager","MessageResourceFactoryService");
 		JmsQueueSession jmsQueSession = (JmsQueueSession)ServiceManagerFactory.getServiceObject("TheManager","JmsQueueSessionService");
 		JndiFinder finder = (JndiFinder)ServiceManagerFactory.getServiceObject("TheManager","JndiFinderService");
-		//ƒƒbƒZ[ƒWƒŠƒ\[ƒX‚ğæ“¾
+		//ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒªã‚½ãƒ¼ã‚¹ã‚’å–å¾—
 		ArrayList resources = new ArrayList();
 		resources.add(msgResourceFactory.findInstance("2"));
 		resources.add(msgResourceFactory.findInstance("12"));
@@ -111,10 +111,10 @@ public class MessageResourceFactoryServiceTest2 extends TestCase {
 		resources.add(msgResourceFactory.findInstance("23"));
 		resources.add(msgResourceFactory.findInstance("24"));	
 		resources.add(msgResourceFactory.findInstance("57"));	
-		//QueueSession‚ğæ“¾
+		//QueueSessionã‚’å–å¾—
 		QueueTransanctionResource tranRes = (QueueTransanctionResource)jmsQueSession.makeResource(QueueConnectionFactoryName);
 		QueueSession session = (QueueSession)tranRes.getObject();
-		//óMŠJn
+		//å—ä¿¡é–‹å§‹
 		Queue queue = (Queue)finder.lookup(QueueName);
 		QueueReceiver receiver = session.createReceiver(queue);
 		tranRes.getConnectionObject().start();		

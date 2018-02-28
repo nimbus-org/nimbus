@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.context;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link MD5HashSharedContextKeyDistributorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link MD5HashSharedContextKeyDistributorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see MD5HashSharedContextKeyDistributorService
@@ -42,17 +42,17 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 public interface MD5HashSharedContextKeyDistributorServiceMBean extends ServiceBaseMBean{
     
     /**
-     * •ªU‚ğŒˆ’è‚·‚éƒL[‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
-     * İ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAƒL[‚»‚Ì‚à‚Ì‚Å•ªU‚ğŒˆ’è‚·‚éB<br>
+     * åˆ†æ•£ã‚’æ±ºå®šã™ã‚‹ã‚­ãƒ¼ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ã‚­ãƒ¼ãã®ã‚‚ã®ã§åˆ†æ•£ã‚’æ±ºå®šã™ã‚‹ã€‚<br>
      * 
-     * @param prop ƒL[‚ÌƒvƒƒpƒeƒB
+     * @param prop ã‚­ãƒ¼ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public void setKeyProperty(String prop);
     
     /**
-     * •ªU‚ğŒˆ’è‚·‚éƒL[‚ÌƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * åˆ†æ•£ã‚’æ±ºå®šã™ã‚‹ã‚­ãƒ¼ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒL[‚ÌƒvƒƒpƒeƒB
+     * @return ã‚­ãƒ¼ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public String getKeyProperty();
 }

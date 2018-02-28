@@ -34,14 +34,14 @@ package jp.ossc.nimbus.service.cui;
 
 
 /**
- *	FactoryŒü‚¯Interface
+ *	Factoryå‘ã‘Interface
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/10/31| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/10/31ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public interface CuiOperator extends Cui {
 	/**
-	 * DataInputStep‚ğ’Ç‰Á‚·‚éƒƒ\ƒbƒh
+	 * DataInputStepã‚’è¿½åŠ ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
 	 * @param step
 	 */
 	public void addStep(String key,DataInputStep step);

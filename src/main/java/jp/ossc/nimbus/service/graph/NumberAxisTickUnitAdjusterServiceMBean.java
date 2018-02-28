@@ -34,22 +34,22 @@ package jp.ossc.nimbus.service.graph;
 import java.text.NumberFormat;
 
 /**
- * {@link NumberAxisTickUnitAdjusterService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link NumberAxisTickUnitAdjusterService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  */
 public interface NumberAxisTickUnitAdjusterServiceMBean
     extends AbstractTickUnitAdjusterServiceMBean {
     
     /**
-     * ”’lƒtƒH[ƒ}ƒbƒg‚ğİ’è‚·‚éB<p>
+     * æ•°å€¤ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param format ”’lƒtƒH[ƒ}ƒbƒg
+     * @param format æ•°å€¤ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
      */
     public void setFormat(NumberFormat format);
     
     /**
-     * ”’lƒtƒH[ƒ}ƒbƒg‚ğæ“¾‚·‚éB<p>
+     * æ•°å€¤ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ”’lƒtƒH[ƒ}ƒbƒg
+     * @return æ•°å€¤ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
      */
     public NumberFormat getFormat();
 

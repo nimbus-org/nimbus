@@ -34,9 +34,9 @@ package jp.ossc.nimbus.service.writer;
 import java.text.*;
 
 /**
- * “ú•tƒIƒuƒWƒFƒNƒg‚ğ•¶š—ñ‚ÉƒtƒH[ƒ}ƒbƒg‚·‚é{@link WritableElement}À‘•ƒNƒ‰ƒXB<p>
- * İ’è‚³‚ê‚½{@link java.util.Date}ƒIƒuƒWƒFƒNƒg‚ğAw’è‚³‚ê‚½ƒtƒH[ƒ}ƒbƒg‚Åæ‚èo‚·‹Lq—v‘fƒNƒ‰ƒX‚Å‚ ‚éB<br>
- * ’ÊíAjava.util.DateŒ^‚Éƒ}ƒbƒsƒ“ƒO‚µ‚Äg—p‚·‚éB<br>
+ * æ—¥ä»˜ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ–‡å­—åˆ—ã«ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã™ã‚‹{@link WritableElement}å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
+ * è¨­å®šã•ã‚ŒãŸ{@link java.util.Date}ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã€æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã§å–ã‚Šå‡ºã™è¨˜è¿°è¦ç´ ã‚¯ãƒ©ã‚¹ã§ã‚ã‚‹ã€‚<br>
+ * é€šå¸¸ã€java.util.Dateå‹ã«ãƒãƒƒãƒ”ãƒ³ã‚°ã—ã¦ä½¿ç”¨ã™ã‚‹ã€‚<br>
  *
  * @author y-tokuda
  */
@@ -44,25 +44,25 @@ public class DateElement extends SimpleElement {
     
     private static final long serialVersionUID = -4106652777620891747L;
     
-    //ƒƒ“ƒo•Ï”
-    /** ƒtƒH[ƒ}ƒbƒg—pString */
+    //ãƒ¡ãƒ³ãƒå¤‰æ•°
+    /** ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆç”¨String */
     private String mFormatStr;
     
-    /** ƒfƒtƒHƒ‹ƒgƒtƒH[ƒ}ƒbƒg */
+    /** ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ */
     protected static final String DEFAULT_FORMAT = "yyyy.MM.dd HH:mm:ss.SSS";
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public DateElement(){
-        //ƒfƒtƒHƒ‹ƒg‚ÌƒtƒH[ƒ}ƒbƒg‚ğİ’è
+        //ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¨­å®š
         mFormatStr = DEFAULT_FORMAT;
     }
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param value “ú•tƒIƒuƒWƒFƒNƒg
+     * @param value æ—¥ä»˜ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public DateElement(java.util.Date value){
         super(value);
@@ -70,10 +70,10 @@ public class DateElement extends SimpleElement {
     }
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @param value “ú•tƒIƒuƒWƒFƒNƒg
+     * @param key ã‚­ãƒ¼
+     * @param value æ—¥ä»˜ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public DateElement(Object key, java.util.Date value){
         super(key, value);
@@ -81,10 +81,10 @@ public class DateElement extends SimpleElement {
     }
     
     /**
-     * “ú•tƒtƒH[ƒ}ƒbƒg‚ğİ’è‚·‚éB<p>
-     * ƒtƒH[ƒ}ƒbƒ^‚É‚ÍA{@link java.text.SimpleDateFormat}‚ğg—p‚µ‚Ä‚¢‚é‚Ì‚ÅAƒtƒH[ƒ}ƒbƒg•¶š—ñ‚ÍA‚»‚Ì‘®‚É]‚¤B<br>
+     * æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ•ã‚©ãƒ¼ãƒãƒƒã‚¿ã«ã¯ã€{@link java.text.SimpleDateFormat}ã‚’ä½¿ç”¨ã—ã¦ã„ã‚‹ã®ã§ã€ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæ–‡å­—åˆ—ã¯ã€ãã®æ›¸å¼ã«å¾“ã†ã€‚<br>
      *
-     * @param fmt ƒtƒH[ƒ}ƒbƒg•¶š—ñ
+     * @param fmt ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæ–‡å­—åˆ—
      */
     public void setFormat(String fmt){
         if(fmt != null){
@@ -93,9 +93,9 @@ public class DateElement extends SimpleElement {
     }
     
     /**
-     * ‚±‚Ì—v‘f‚Ì‚ÂDateƒIƒuƒWƒFƒNƒg‚ğ“ú•t•¶š—ñ‚ÉƒtƒH[ƒ}ƒbƒg‚µ‚Äæ“¾‚·‚éB<p>
+     * ã“ã®è¦ç´ ã®æŒã¤Dateã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ—¥ä»˜æ–‡å­—åˆ—ã«ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‚±‚Ì—v‘f‚Ì“ú•t•¶š—ñ
+     * @return ã“ã®è¦ç´ ã®æ—¥ä»˜æ–‡å­—åˆ—
      */
     public String toString(){
         if(mValue == null){
@@ -114,10 +114,10 @@ public class DateElement extends SimpleElement {
     }
     
     /**
-     * ‚±‚Ì—v‘f‚Ì‚ÂDateƒIƒuƒWƒFƒNƒg‚ğ“ú•t•¶š—ñ‚ÉƒtƒH[ƒ}ƒbƒg‚µ‚Äæ“¾‚·‚éB<p>
-     * {@link #toString()}‚Æ“¯‚¶’l‚ğ•Ô‚·B<br>
+     * ã“ã®è¦ç´ ã®æŒã¤Dateã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ—¥ä»˜æ–‡å­—åˆ—ã«ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã—ã¦å–å¾—ã™ã‚‹ã€‚<p>
+     * {@link #toString()}ã¨åŒã˜å€¤ã‚’è¿”ã™ã€‚<br>
      * 
-     * @return ‚±‚Ì—v‘f‚Ì“ú•t•¶š—ñ
+     * @return ã“ã®è¦ç´ ã®æ—¥ä»˜æ–‡å­—åˆ—
      */
     public Object toObject(){
         return toString();

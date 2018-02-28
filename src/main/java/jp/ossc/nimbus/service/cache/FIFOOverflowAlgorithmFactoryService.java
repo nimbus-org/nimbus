@@ -37,8 +37,8 @@ import jp.ossc.nimbus.core.Service;
 import jp.ossc.nimbus.core.ServiceFactoryServiceBase;
 
 /**
- * FIFO‚ ‚Ó‚êƒAƒ‹ƒSƒŠƒYƒ€ƒtƒ@ƒNƒgƒŠB<p>
- * {@link FIFOOverflowAlgorithmService}‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚Å‚ ‚éB<br>
+ * FIFOã‚ãµã‚Œã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * {@link FIFOOverflowAlgorithmService}ã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  * @see FIFOOverflowAlgorithmService
@@ -50,17 +50,17 @@ public class FIFOOverflowAlgorithmFactoryService
     private static final long serialVersionUID = -899886850555878260L;
     
     /**
-     * {@link FIFOOverflowAlgorithmService}ƒT[ƒrƒX‚ğ¶¬‚·‚éB<p>
+     * {@link FIFOOverflowAlgorithmService}ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return FIFOOverflowAlgorithmServiceƒT[ƒrƒX
-     * @exception Exception FIFOOverflowAlgorithmService‚Ì¶¬E‹N“®‚É¸”s‚µ‚½ê‡
+     * @return FIFOOverflowAlgorithmServiceã‚µãƒ¼ãƒ“ã‚¹
+     * @exception Exception FIFOOverflowAlgorithmServiceã®ç”Ÿæˆãƒ»èµ·å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
      * @see FIFOOverflowAlgorithmService
      */
     protected Service createServiceInstance() throws Exception{
         return new FIFOOverflowAlgorithmService();
     }
     
-    // FIFOOverflowAlgorithmFactoryServiceMBean‚ÌJavaDoc
+    // FIFOOverflowAlgorithmFactoryServiceMBeanã®JavaDoc
     public void reset(){
         final Set instanceSet = getManagedInstanceSet();
         final Iterator instances = instanceSet.iterator();

@@ -36,7 +36,7 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link DefaultQueueService}��MBean�C���^�t�F�[�X<p>
+ * {@link DefaultQueueService}のMBeanインタフェース<p>
  * 
  * @author M.Takata
  * @see DefaultQueueService
@@ -44,172 +44,172 @@ import jp.ossc.nimbus.core.*;
 public interface DefaultQueueServiceMBean extends ServiceBaseMBean{
     
     /**
-     * �L���[�̏����e�ʂ�ݒ肷��B<p>
-     * �T�[�r�X�̐������Ɏg�p����鑮���Ȃ̂ŁA������̕ύX�͂ł��Ȃ��B<br>
-     * 0�ȏ�̒l��ݒ肷��ƗL���ɂȂ�B�f�t�H���g�l�́A-1�Łu�����e�ʂ��w�肵�Ȃ��v�ł���B<br>
+     * キューの初期容量を設定する。<p>
+     * サービスの生成時に使用される属性なので、生成後の変更はできない。<br>
+     * 0以上の値を設定すると有効になる。デフォルト値は、-1で「初期容量を指定しない」である。<br>
      *
-     * @param initial �L���[�̏����e��
+     * @param initial キューの初期容量
      */
     public void setInitialCapacity(int initial);
     
     /**
-     * �L���[�̏����e�ʂ��擾����B<p>
+     * キューの初期容量を取得する。<p>
      *
-     * @return �L���[�̏����e��
+     * @return キューの初期容量
      */
     public int getInitialCapacity();
     
     /**
-     * �L���[�̗v�f�����e�ʂ��z�������ɁA����������e�ʂ�ݒ肷��B<p>
-     * �T�[�r�X�̐������Ɏg�p����鑮���Ȃ̂ŁA������̕ύX�͂ł��Ȃ��B<br>
-     * 0�ȏ�̒l��ݒ肷��ƗL���ɂȂ�B�܂��A�L���ȏ����e�ʂ��ݒ肳��Ă��Ȃ��ꍇ�́A�����ƂȂ�B�f�t�H���g�l�́A-1�Łu�����e�ʂ��w�肵�Ȃ��v�ł���B<br>
+     * キューの要素数が容量を越えた時に、増加させる容量を設定する。<p>
+     * サービスの生成時に使用される属性なので、生成後の変更はできない。<br>
+     * 0以上の値を設定すると有効になる。また、有効な初期容量が設定されていない場合は、無効となる。デフォルト値は、-1で「増加容量を指定しない」である。<br>
      *
-     * @param increment �����e��
+     * @param increment 増加容量
      */
     public void setCapacityIncrement(int increment);
     
     /**
-     * �L���[�̗v�f�����e�ʂ��z�������ɁA����������e�ʂ��擾����B<p>
+     * キューの要素数が容量を越えた時に、増加させる容量を取得する。<p>
      *
-     * @return �����e��
+     * @return 増加容量
      */
     public int getCapacityIncrement();
     
     /**
-     * �L���[�v�f���L���b�V������L���b�V���T�[�r�X����ݒ肷��B<p>
-     * ���̑������ݒ肳��Ă���ꍇ�A�w�肳�ꂽ�L���b�V���T�[�r�X�ɁA�L���[�v�f���L���b�V������B�L���[�����ɂ́A{@link jp.ossc.nimbus.service.cache.CachedReference CachedReference}���ێ�����邽�߁A�L���[�v�f�̐����̓L���b�V���T�[�r�X�Ɉς˂���B<br>
+     * キュー要素をキャッシュするキャッシュサービス名を設定する。<p>
+     * この属性が設定されている場合、指定されたキャッシュサービスに、キュー要素をキャッシュする。キュー内部には、{@link jp.ossc.nimbus.service.cache.CachedReference CachedReference}が保持されるため、キュー要素の性質はキャッシュサービスに委ねられる。<br>
      *
-     * @param name {@link jp.ossc.nimbus.service.cache.Cache Cache}�T�[�r�X��
+     * @param name {@link jp.ossc.nimbus.service.cache.Cache Cache}サービス名
      */
     public void setCacheServiceName(ServiceName name);
     
     /**
-     * �L���[�v�f���L���b�V������L���b�V���T�[�r�X�����擾����B<p>
+     * キュー要素をキャッシュするキャッシュサービス名を取得する。<p>
      *
-     * @return {@link jp.ossc.nimbus.service.cache.Cache Cache}�T�[�r�X��
+     * @return {@link jp.ossc.nimbus.service.cache.Cache Cache}サービス名
      */
     public ServiceName getCacheServiceName();
     
     /**
-     * �L���[�ɑ΂��Ė����擾�҂�������X���b�h��sleep���鎞�Ԃ�ݒ肷��B<p>
-     * �������L���[�҂��̐擪�łȂ��ꍇ��A�L���[�ɗ��܂��ĂȂ��ꍇ�́A�Ă�sleep����B<br>
-     * �f�t�H���g�́A10�b�B
+     * キューに対して無限取得待ちをするスレッドがsleepする時間を設定する。<p>
+     * 自分がキュー待ちの先頭でない場合や、キューに溜まってない場合は、再びsleepする。<br>
+     * デフォルトは、10秒。
      *
-     * @param millis �L���[�ɑ΂��Ė����擾�҂�������X���b�h��sleep���鎞��[ms]
+     * @param millis キューに対して無限取得待ちをするスレッドがsleepする時間[ms]
      */
     public void setSleepTime(long millis);
     
     /**
-     * �L���[�ɑ΂��Ė����擾�҂�������X���b�h��sleep���鎞�Ԃ��擾����B<p>
+     * キューに対して無限取得待ちをするスレッドがsleepする時間を取得する。<p>
      *
-     * @return �L���[�ɑ΂��Ė����擾�҂�������X���b�h��sleep���鎞��[ms]
+     * @return キューに対して無限取得待ちをするスレッドがsleepする時間[ms]
      */
     public long getSleepTime();
     
     /**
-     * �L���[�̍ő�臒l��ݒ肷��B<p>
-     * �L���[�̐[�����ő�臒l�ɓ��B����ƁA�L���[�ւ̓����͑҂�����A�L���[����̈��������Ɠ��������B<br>
-     * �f�t�H���g�́A-1�ŁA�ő�臒l�Ȃ��̏�Ԃł���B<br>
+     * キューの最大閾値を設定する。<p>
+     * キューの深さが最大閾値に到達すると、キューへの投入は待たされ、キューからの引き抜きと同期される。<br>
+     * デフォルトは、-1で、最大閾値なしの状態である。<br>
      *
-     * @param size �L���[�̍ő�臒l
+     * @param size キューの最大閾値
      */
     public void setMaxThresholdSize(int size);
     
     /**
-     * �L���[�̍ő�臒l���擾����B<p>
+     * キューの最大閾値を取得する。<p>
      *
-     * @return �L���[�̍ő�臒l
+     * @return キューの最大閾値
      */
     public int getMaxThresholdSize();
     
     /**
-     * �L���[�v�f���擾���ɗ��������ǂ���ɓn������ۏ؂��邩�ǂ����𔻒肷��B<p>
+     * キュー要素を取得しに来た順序どおりに渡す事を保証するかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A�ۏ؂���
+     * @return trueの場合、保証する
      */
     public boolean isSafeGetOrder();
     
     /**
-     * �L���[�v�f���擾���ɗ��������ǂ���ɓn������ۏ؂��邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Atrue�ŕۏ؂���B<br>
+     * キュー要素を取得しに来た順序どおりに渡す事を保証するかどうかを設定する。<p>
+     * デフォルトは、trueで保証する。<br>
      *
-     * @param isSafe �ۏ؂���ꍇ�Atrue
+     * @param isSafe 保証する場合、true
      */
     public void setSafeGetOrder(boolean isSafe);
     
     /**
-     * �����Ŏg�p����{@link jp.ossc.nimbus.util.SynchronizeMonitor SynchronizeMonitor}�̎����N���X��ݒ肷��B<p>
+     * 内部で使用する{@link jp.ossc.nimbus.util.SynchronizeMonitor SynchronizeMonitor}の実装クラスを設定する。<p>
      *
-     * @param clazz SynchronizeMonitor�̎����N���X
+     * @param clazz SynchronizeMonitorの実装クラス
      */
     public void setSynchronizeMonitorClass(Class clazz);
     
     /**
-     * �����Ŏg�p����{@link jp.ossc.nimbus.util.SynchronizeMonitor SynchronizeMonitor}�̎����N���X���擾����B<p>
+     * 内部で使用する{@link jp.ossc.nimbus.util.SynchronizeMonitor SynchronizeMonitor}の実装クラスを取得する。<p>
      *
-     * @return SynchronizeMonitor�̎����N���X
+     * @return SynchronizeMonitorの実装クラス
      */
     public Class getSynchronizeMonitorClass();
     
     /**
-     * �L���[�̌��݂̗v�f���X�g���擾����B<p>
-     * �����Ŏ擾���ꂽ�L���[�v�f�́A���̑���ł̓L���[����폜����Ȃ��B<br>
+     * キューの現在の要素リストを取得する。<p>
+     * ここで取得されたキュー要素は、この操作ではキューから削除されない。<br>
      *
-     * @return �L���[�̌��݂̗v�f���X�g
+     * @return キューの現在の要素リスト
      */
     public List elements();
     
     /**
-     * �L���[������������B <p>
+     * キューを初期化する。 <p>
      */
     public void clear();
     
     /**
-     * ����܂łɃL���[�Ɋi�[���ꂽ�����擾����B<p>
+     * これまでにキューに格納された数を取得する。<p>
      *
-     * @return ����܂łɃL���[�Ɋi�[���ꂽ��
+     * @return これまでにキューに格納された数
      */
     public long getCount();
     
     /**
-     * �O��₢���킹����L���[�Ɋi�[���ꂽ�����擾����B<p>
+     * 前回問い合わせからキューに格納された数を取得する。<p>
      *
-     * @return �O��₢���킹����L���[�Ɋi�[���ꂽ��
+     * @return 前回問い合わせからキューに格納された数
      */
     public long getCountDelta();
     
     /**
-     * �Ō�ɃL���[�Ɋi�[���ꂽ�������擾����B<p>
+     * 最後にキューに格納された時刻を取得する。<p>
      *
-     * @return �Ō�ɃL���[�Ɋi�[���ꂽ����
+     * @return 最後にキューに格納された時刻
      */
     public long getLastPushedTimeMillis();
     
     /**
-     * �Ō�ɃL���[�Ɋi�[���ꂽ�������擾����B<p>
+     * 最後にキューに格納された時刻を取得する。<p>
      *
-     * @return �Ō�ɃL���[�Ɋi�[���ꂽ����
+     * @return 最後にキューに格納された時刻
      */
     public Date getLastPushedTime();
     
     /**
-     * ���݂̃L���[�̐[�����擾����B<p>
+     * 現在のキューの深さを取得する。<p>
      *
-     * @return ���݂̃L���[�̐[��
+     * @return 現在のキューの深さ
      */
     public long getDepth();
     
     /**
-     * �O��₢���킹����̃L���[�̐[�����擾����B<p>
+     * 前回問い合わせからのキューの深さを取得する。<p>
      *
-     * @return �O��₢���킹����̃L���[�̐[��
+     * @return 前回問い合わせからのキューの深さ
      */
     public long getDepthDelta();
     
     /**
-     * �ő哞�B���̃L���[�̐[�����擾����B<p>
+     * 最大到達時のキューの深さを取得する。<p>
      *
-     * @return �ő哞�B���̃L���[�̐[��
+     * @return 最大到達時のキューの深さ
      */
     public long getMaxDepth();
     

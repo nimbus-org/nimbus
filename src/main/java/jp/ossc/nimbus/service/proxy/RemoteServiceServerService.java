@@ -32,9 +32,15 @@
 package jp.ossc.nimbus.service.proxy;
 
 import java.io.Serializable;
+import java.io.Externalizable;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutput;
+import java.io.ObjectInput;
+import java.io.InputStream;
+import java.io.PipedInputStream;
+import java.io.PipedOutputStream;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.NoSuchObjectException;
@@ -52,15 +58,16 @@ import jp.ossc.nimbus.service.keepalive.KeepAliveChecker;
 import jp.ossc.nimbus.service.keepalive.KeepAliveListener;
 import jp.ossc.nimbus.service.proxy.invoker.KeepAliveCheckInvoker;
 import jp.ossc.nimbus.service.performance.ResourceUsage;
+import jp.ossc.nimbus.service.queue.*;
 import jp.ossc.nimbus.service.log.Logger;
 import jp.ossc.nimbus.service.io.Externalizer;
 
 /**
- * ƒŠƒ‚[ƒgŒÄ‚Ño‚µƒT[ƒoƒT[ƒrƒXB<p>
- * {@link RemoteServerInvoker}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğJNDI‚ÉƒoƒCƒ“ƒh‚·‚éB<br>
- * {@link RemoteServerInvoker}ƒCƒ“ƒ^ƒtƒF[ƒX‚ÌÀ‘•ƒNƒ‰ƒX‚ÍAƒCƒ“ƒ^[ƒZƒvƒ^‚ğ‹²‚İ‚Ş‹@”\‚âAÀƒT[ƒrƒX‚ÌŒÄ‚Ño‚µ•û–@‚ğƒJƒXƒ^ƒ}ƒCƒY‚·‚é‹@”\‚ğ‚ÂB<br>
- * ÀƒT[ƒrƒX‚ÌŒÄ‚Ño‚µ‚ğs‚¤{@link Invoker}‚ÌƒfƒtƒHƒ‹ƒgÀ‘•ƒNƒ‰ƒX‚ÍA{@link MethodReflectionCallInvokerService}‚ÅAŒÄ‚Ño‚µƒRƒ“ƒeƒLƒXƒg‚Ì{@link jp.ossc.nimbus.service.aop.InvocationContext#getTargetObject() InvocationContext.getTargetObject()}‚Åæ“¾‚µ‚½ƒT[ƒrƒX–¼‚ÌƒT[ƒrƒX‚ğŒÄ‚Ño‚·B<br>
- * InvocationContext.getTargetObject()‚ÅƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚È‚¢ê‡‚ÍA{@link #setRemoteServiceName(ServiceName)}‚Åİ’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌƒT[ƒrƒX‚ğŒÄ‚Ño‚·B<br>
+ * ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã‚µãƒ¼ãƒã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * {@link RemoteServerInvoker}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’JNDIã«ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹ã€‚<br>
+ * {@link RemoteServerInvoker}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã¯ã€ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’æŒŸã¿è¾¼ã‚€æ©Ÿèƒ½ã‚„ã€å®Ÿã‚µãƒ¼ãƒ“ã‚¹ã®å‘¼ã³å‡ºã—æ–¹æ³•ã‚’ã‚«ã‚¹ã‚¿ãƒã‚¤ã‚ºã™ã‚‹æ©Ÿèƒ½ã‚’æŒã¤ã€‚<br>
+ * å®Ÿã‚µãƒ¼ãƒ“ã‚¹ã®å‘¼ã³å‡ºã—ã‚’è¡Œã†{@link Invoker}ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå®Ÿè£…ã‚¯ãƒ©ã‚¹ã¯ã€{@link MethodReflectionCallInvokerService}ã§ã€å‘¼ã³å‡ºã—ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®{@link jp.ossc.nimbus.service.aop.InvocationContext#getTargetObject() InvocationContext.getTargetObject()}ã§å–å¾—ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’å‘¼ã³å‡ºã™ã€‚<br>
+ * InvocationContext.getTargetObject()ã§ã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ããªã„å ´åˆã¯ã€{@link #setRemoteServiceName(ServiceName)}ã§è¨­å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’å‘¼ã³å‡ºã™ã€‚<br>
  *
  * @author M.Takata
  */
@@ -92,30 +99,33 @@ public class RemoteServiceServerService extends ServiceBase
     private RemoteServerInvokerImpl remoteServerInvoker;
     private ServiceName externalizerServiceName;
     private Externalizer externalizer;
+    private int asynchWriteExternalThreadSize;
+    private ServiceName asynchWriteExternalQueueServiceName;
+    private int asynchWriteExternalBufferSize = 1024;
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public void setRemoteServiceName(ServiceName name){
         remoteServiceName = name;
     }
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public ServiceName getRemoteServiceName(){
         return remoteServiceName;
     }
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public void setInterceptorChainListServiceName(ServiceName name){
         interceptorChainListServiceName = name;
     }
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public ServiceName getInterceptorChainListServiceName(){
         return interceptorChainListServiceName;
     }
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public void setInvokerServiceName(ServiceName name){
         invokerServiceName = name;
     }
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public ServiceName getInvokerServiceName(){
         return invokerServiceName;
     }
@@ -129,96 +139,123 @@ public class RemoteServiceServerService extends ServiceBase
         return interceptorChainFactoryServiceName;
     }
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public void setJndiName(String name){
         jndiName = name;
     }
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public String getJndiName(){
         return jndiName;
     }
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public void setJndiRepositoryServiceName(ServiceName name){
         jndiRepositoryServiceName = name;
     }
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public ServiceName getJndiRepositoryServiceName(){
         return jndiRepositoryServiceName;
     }
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public void setRMIPort(int port){
         rmiPort = port;
     }
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public int getRMIPort(){
         return rmiPort;
     }
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public void setClusterServiceName(ServiceName name){
         clusterServiceName = name;
     }
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public ServiceName getClusterServiceName(){
         return clusterServiceName;
     }
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public void setClusterOptionKey(String key){
         clusterOptionKey = key;
     }
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public String getClusterOptionKey(){
         return clusterOptionKey;
     }
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public void setClusterJoin(boolean isJoin){
         isClusterJoin = isJoin;
     }
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public boolean isClusterJoin(){
         return isClusterJoin;
     }
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public void setResourceUsageServiceName(ServiceName name){
         resourceUsageServiceName = name;
     }
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public ServiceName getResourceUsageServiceName(){
         return resourceUsageServiceName;
     }
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public void setRMIClientSocketFactoryServiceName(ServiceName name){
         clientSocketFactoryServiceName = name;
     }
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public ServiceName getRMIClientSocketFactoryServiceName(){
         return clientSocketFactoryServiceName;
     }
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public void setRMIServerSocketFactoryServiceName(ServiceName name){
         serverSocketFactoryServiceName = name;
     }
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public ServiceName getRMIServerSocketFactoryServiceName(){
         return serverSocketFactoryServiceName;
     }
     
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public void setExternalizerServiceName(ServiceName name){
         externalizerServiceName = name;
     }
-    // RemoteServiceServerServiceMBean‚ÌJavaDoc
+    // RemoteServiceServerServiceMBeanã®JavaDoc
     public ServiceName getExternalizerServiceName(){
         return externalizerServiceName;
+    }
+    
+    // RemoteServiceServerServiceMBeanã®JavaDoc
+    public void setAsynchWriteExternalThreadSize(int size){
+        asynchWriteExternalThreadSize = size;
+    }
+    // RemoteServiceServerServiceMBeanã®JavaDoc
+    public int getAsynchWriteExternalThreadSize(){
+        return asynchWriteExternalThreadSize;
+    }
+    
+    // RemoteServiceServerServiceMBeanã®JavaDoc
+    public void setAsynchWriteExternalQueueServiceName(ServiceName name){
+        asynchWriteExternalQueueServiceName = name;
+    }
+    // RemoteServiceServerServiceMBeanã®JavaDoc
+    public ServiceName getAsynchWriteExternalQueueServiceName(){
+        return asynchWriteExternalQueueServiceName;
+    }
+    
+    // RemoteServiceServerServiceMBeanã®JavaDoc
+    public void setAsynchWriteExternalBufferSize(int size){
+        asynchWriteExternalBufferSize = size;
+    }
+    // RemoteServiceServerServiceMBeanã®JavaDoc
+    public int getAsynchWriteExternalBufferSize(){
+        return asynchWriteExternalBufferSize;
     }
     
     public void setRMIClientSocketFactory(RMIClientSocketFactory csf){
@@ -238,9 +275,9 @@ public class RemoteServiceServerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(resourceUsage == null && resourceUsageServiceName != null){
@@ -273,6 +310,7 @@ public class RemoteServiceServerService extends ServiceBase
             externalizer = (Externalizer)ServiceManagerFactory
                 .getServiceObject(externalizerServiceName);
         }
+        
         if(interceptorChainFactory == null){
             remoteServerInvoker = new RemoteServerInvokerImpl(
                 interceptorChainListServiceName,
@@ -288,7 +326,10 @@ public class RemoteServiceServerService extends ServiceBase
                     : (serverSocketFactoryServiceName != null ? (RMIServerSocketFactory)ServiceManagerFactory.getServiceObject(serverSocketFactoryServiceName)
                         : null),
                 getLogger(),
-                externalizer
+                externalizer,
+                asynchWriteExternalThreadSize,
+                asynchWriteExternalQueueServiceName,
+                asynchWriteExternalBufferSize
             );
         }else{
             remoteServerInvoker = new RemoteServerInvokerImpl(
@@ -303,7 +344,10 @@ public class RemoteServiceServerService extends ServiceBase
                     : (serverSocketFactoryServiceName != null ? (RMIServerSocketFactory)ServiceManagerFactory.getServiceObject(serverSocketFactoryServiceName)
                         : null),
                 getLogger(),
-                externalizer
+                externalizer,
+                asynchWriteExternalThreadSize,
+                asynchWriteExternalQueueServiceName,
+                asynchWriteExternalBufferSize
             );
         }
         if(jndiRepositoryServiceName != null){
@@ -345,9 +389,9 @@ public class RemoteServiceServerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         if(defaultInvoker != null){
@@ -371,9 +415,9 @@ public class RemoteServiceServerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         if(defaultInvoker != null){
@@ -383,9 +427,9 @@ public class RemoteServiceServerService extends ServiceBase
     }
     
     /**
-     * {@link RemoteServerInvoker}À‘•ƒNƒ‰ƒXB<p>
-     * ŒÄ‚Ño‚µƒRƒ“ƒeƒLƒXƒgA‚Ü‚½‚ÍA{@link RemoteServiceServerService#getRemoteServiceName()}‚ÅAŒÄ‚Ño‚µ‘ÎÛ‚ÌƒT[ƒrƒX‚ğ“Á’è‚µ‚ÄAƒ[ƒJƒ‹‚Ì{@link ServiceManager}‚©‚çŒÄ‚Ño‚µ‘ÎÛ‚ÌƒT[ƒrƒX‚ğæ“¾‚µ‚ÄAŒÄ‚Ño‚·B<br>
-     * ‚Ü‚½AƒCƒ“ƒ^[ƒZƒvƒ^‚ğ‹²‚İ‚Ş‹@”\‚âAÀƒT[ƒrƒX‚ÌŒÄ‚Ño‚µ•û–@‚ğƒJƒXƒ^ƒ}ƒCƒY‚·‚é‹@”\‚ğ‚ÂB<br>
+     * {@link RemoteServerInvoker}å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
+     * å‘¼ã³å‡ºã—ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã€ã¾ãŸã¯ã€{@link RemoteServiceServerService#getRemoteServiceName()}ã§ã€å‘¼ã³å‡ºã—å¯¾è±¡ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç‰¹å®šã—ã¦ã€ãƒ­ãƒ¼ã‚«ãƒ«ã®{@link ServiceManager}ã‹ã‚‰å‘¼ã³å‡ºã—å¯¾è±¡ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã—ã¦ã€å‘¼ã³å‡ºã™ã€‚<br>
+     * ã¾ãŸã€ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’æŒŸã¿è¾¼ã‚€æ©Ÿèƒ½ã‚„ã€å®Ÿã‚µãƒ¼ãƒ“ã‚¹ã®å‘¼ã³å‡ºã—æ–¹æ³•ã‚’ã‚«ã‚¹ã‚¿ãƒã‚¤ã‚ºã™ã‚‹æ©Ÿèƒ½ã‚’æŒã¤ã€‚<br>
      *
      * @author M.Takata
      */
@@ -403,17 +447,25 @@ public class RemoteServiceServerService extends ServiceBase
         private ResourceUsage resourceUsage;
         private Logger logger;
         private Externalizer externalizer;
+        private final int asynchWriteExternalThreadSize;
+        private final ServiceName asynchWriteExternalQueueServiceName;
+        private transient QueueHandlerContainerService asynchWriteExternalQueueHandlerContainer;
+        private final int asynchWriteExternalBufferSize;
         
         /**
-         * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          *
-         * @param interceptorChainFactory {@link InterceptorChainFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
-         * @param remoteServiceName ƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚³‚ê‚éƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
-         * @param port RMIƒ|[ƒg”Ô†
+         * @param interceptorChainFactory {@link InterceptorChainFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
+         * @param remoteServiceName ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
+         * @param port RMIãƒãƒ¼ãƒˆç•ªå·
          * @param csf RMIClientSocketFactory
          * @param ssf RMIServerSocketFactory
          * @param log Logger
-         * @exception java.rmi.RemoteException ƒIƒuƒWƒFƒNƒg‚ÌƒGƒNƒXƒ|[ƒg‚ª¸”s‚µ‚½ê‡
+         * @param ext Externalizer
+         * @param asynchWriteExternalThreadSize éåŒæœŸæ›¸ãè¾¼ã¿ã‚¹ãƒ¬ãƒƒãƒ‰æ•°
+         * @param asynchWriteExternalQueueServiceName éåŒæœŸæ›¸ãè¾¼ã¿ã‚­ãƒ¥ãƒ¼ã®ã‚µãƒ¼ãƒ“ã‚¹å
+         * @param bufferSize éåŒæœŸæ›¸ãè¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
+         * @exception java.rmi.RemoteException ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¨ã‚¯ã‚¹ãƒãƒ¼ãƒˆãŒå¤±æ•—ã—ãŸå ´åˆ
          */
         public RemoteServerInvokerImpl(
             InterceptorChainFactory interceptorChainFactory,
@@ -423,7 +475,10 @@ public class RemoteServiceServerService extends ServiceBase
             RMIClientSocketFactory csf,
             RMIServerSocketFactory ssf,
             Logger log,
-            Externalizer ext
+            Externalizer ext,
+            int asynchWriteExternalThreadSize,
+            ServiceName asynchWriteExternalQueueServiceName,
+            int bufferSize
         ) throws java.rmi.RemoteException{
             stub = UnicastRemoteObject.exportObject(this, port, csf, ssf);
             this.interceptorChainListServiceName = null;
@@ -434,20 +489,28 @@ public class RemoteServiceServerService extends ServiceBase
             resourceUsage = usage;
             logger = log;
             externalizer = ext;
+            this.asynchWriteExternalThreadSize = asynchWriteExternalThreadSize;
+            this.asynchWriteExternalQueueServiceName = asynchWriteExternalQueueServiceName;
+            this.asynchWriteExternalBufferSize = bufferSize;
+            initAsynchWriteExternal();
         }
         
         /**
-         * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          *
-         * @param interceptorChainListServiceName {@link InterceptorChainList}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
-         * @param invokerServiceName {@link Invoker}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
-         * @param defaultInvoker ƒfƒtƒHƒ‹ƒg‚Ì{@link Invoker}ƒT[ƒrƒX
-         * @param remoteServiceName ƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚³‚ê‚éƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
-         * @param port RMIƒ|[ƒg”Ô†
+         * @param interceptorChainListServiceName {@link InterceptorChainList}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
+         * @param invokerServiceName {@link Invoker}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
+         * @param defaultInvoker ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®{@link Invoker}ã‚µãƒ¼ãƒ“ã‚¹
+         * @param remoteServiceName ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
+         * @param port RMIãƒãƒ¼ãƒˆç•ªå·
          * @param csf RMIClientSocketFactory
          * @param ssf RMIServerSocketFactory
          * @param log Logger
-         * @exception java.rmi.RemoteException ƒIƒuƒWƒFƒNƒg‚ÌƒGƒNƒXƒ|[ƒg‚ª¸”s‚µ‚½ê‡
+         * @param ext Externalizer
+         * @param asynchWriteExternalThreadSize éåŒæœŸæ›¸ãè¾¼ã¿ã‚¹ãƒ¬ãƒƒãƒ‰æ•°
+         * @param asynchWriteExternalQueueServiceName éåŒæœŸæ›¸ãè¾¼ã¿ã‚­ãƒ¥ãƒ¼ã®ã‚µãƒ¼ãƒ“ã‚¹å
+         * @param bufferSize éåŒæœŸæ›¸ãè¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
+         * @exception java.rmi.RemoteException ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¨ã‚¯ã‚¹ãƒãƒ¼ãƒˆãŒå¤±æ•—ã—ãŸå ´åˆ
          */
         public RemoteServerInvokerImpl(
             ServiceName interceptorChainListServiceName,
@@ -459,7 +522,10 @@ public class RemoteServiceServerService extends ServiceBase
             RMIClientSocketFactory csf,
             RMIServerSocketFactory ssf,
             Logger log,
-            Externalizer ext
+            Externalizer ext,
+            int asynchWriteExternalThreadSize,
+            ServiceName asynchWriteExternalQueueServiceName,
+            int bufferSize
         ) throws java.rmi.RemoteException{
             stub = UnicastRemoteObject.exportObject(this, port, csf, ssf);
             this.interceptorChainListServiceName = interceptorChainListServiceName;
@@ -470,17 +536,40 @@ public class RemoteServiceServerService extends ServiceBase
             resourceUsage = usage;
             logger = log;
             externalizer = ext;
+            this.asynchWriteExternalThreadSize = asynchWriteExternalThreadSize;
+            this.asynchWriteExternalQueueServiceName = asynchWriteExternalQueueServiceName;
+            this.asynchWriteExternalBufferSize = bufferSize;
+            initAsynchWriteExternal();
+        }
+        
+        private void initAsynchWriteExternal() throws java.rmi.RemoteException{
+            if(asynchWriteExternalThreadSize > 0){
+                try{
+                    QueueHandlerContainerService queueHandlerContainer = new QueueHandlerContainerService();
+                    queueHandlerContainer.create();
+                    queueHandlerContainer.setQueueHandlerSize(asynchWriteExternalThreadSize);
+                    queueHandlerContainer.setQueueServiceName(asynchWriteExternalQueueServiceName);
+                    queueHandlerContainer.setQueueHandler(new AsynchWriteExternalQueueHandler());
+                    queueHandlerContainer.setIgnoreNullElement(true);
+                    queueHandlerContainer.setWaitTimeout(1000l);
+                    queueHandlerContainer.setQueueHandlerNowaitOnStop(true);
+                    queueHandlerContainer.start();
+                    asynchWriteExternalQueueHandlerContainer = queueHandlerContainer;
+                }catch(Exception e){
+                    throw new java.rmi.RemoteException("Unexpected exception.", e);
+                }
+            }
         }
         
         /**
-         * ƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚³‚ê‚éƒT[ƒrƒX‚ğŒÄ‚Ño‚·B<p>
-         * ŒÄ‚Ño‚µƒRƒ“ƒeƒLƒXƒg‚Ì{@link jp.ossc.nimbus.service.aop.InvocationContext#getTargetObject() InvocationContext.getTargetObject()}‚Åæ“¾‚µ‚½ƒT[ƒrƒX–¼‚ÌƒT[ƒrƒX‚ğƒ[ƒJƒ‹‚Ì{@link ServiceManager}‚©‚çæ“¾‚µ‚ÄA{@link jp.ossc.nimbus.service.aop.InvocationContext#setTargetObject(Object) InvocationContext.setTargetObject(Object)}‚ÅAŒÄ‚Ño‚µƒRƒ“ƒeƒLƒXƒg‚Éİ’è‚·‚éB<br>
-         * InvocationContext.getTargetObject()‚ÅƒT[ƒrƒX–¼‚ªæ“¾‚Å‚«‚È‚¢ê‡‚ÍA{@link RemoteServiceServerService#setRemoteServiceName(ServiceName)}‚Åİ’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÌƒT[ƒrƒX‚ğæ“¾‚µ‚ÄAŒÄ‚Ño‚µƒRƒ“ƒeƒLƒXƒg‚Éİ’è‚·‚éB<br>
-         * ‚»‚ÌŒãAƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Åw’è‚³‚ê‚½{@link InterceptorChainList}‚Æ{@link Invoker}‚ğ‚Á‚½A{@link InterceptorChain}‚ğ¶¬‚µ‚ÄAŒÄ‚Ño‚·B<br>
+         * ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’å‘¼ã³å‡ºã™ã€‚<p>
+         * å‘¼ã³å‡ºã—ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®{@link jp.ossc.nimbus.service.aop.InvocationContext#getTargetObject() InvocationContext.getTargetObject()}ã§å–å¾—ã—ãŸã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’ãƒ­ãƒ¼ã‚«ãƒ«ã®{@link ServiceManager}ã‹ã‚‰å–å¾—ã—ã¦ã€{@link jp.ossc.nimbus.service.aop.InvocationContext#setTargetObject(Object) InvocationContext.setTargetObject(Object)}ã§ã€å‘¼ã³å‡ºã—ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«è¨­å®šã™ã‚‹ã€‚<br>
+         * InvocationContext.getTargetObject()ã§ã‚µãƒ¼ãƒ“ã‚¹åãŒå–å¾—ã§ããªã„å ´åˆã¯ã€{@link RemoteServiceServerService#setRemoteServiceName(ServiceName)}ã§è¨­å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã—ã¦ã€å‘¼ã³å‡ºã—ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«è¨­å®šã™ã‚‹ã€‚<br>
+         * ãã®å¾Œã€ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§æŒ‡å®šã•ã‚ŒãŸ{@link InterceptorChainList}ã¨{@link Invoker}ã‚’æŒã£ãŸã€{@link InterceptorChain}ã‚’ç”Ÿæˆã—ã¦ã€å‘¼ã³å‡ºã™ã€‚<br>
          * 
-         * @param context ŒÄ‚Ño‚µƒRƒ“ƒeƒLƒXƒg
-         * @return ƒT[ƒrƒX‚ÌŒÄ‚Ño‚µŒ‹‰Ê
-         * @exception Exception ƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚³‚ê‚éƒT[ƒrƒX‚ÌŒÄ‚Ño‚µ‚É¸”s‚µ‚½ê‡
+         * @param context å‘¼ã³å‡ºã—ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+         * @return ã‚µãƒ¼ãƒ“ã‚¹ã®å‘¼ã³å‡ºã—çµæœ
+         * @exception Exception ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®å‘¼ã³å‡ºã—ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public Object invoke(InvocationContext context) throws Exception{
             
@@ -540,16 +629,26 @@ public class RemoteServiceServerService extends ServiceBase
                     chain.setCurrentInterceptorIndex(-1);
                     Object ret = chain.invokeNext(context);
                     if(externalizer != null && ret != null){
-                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                        externalizer.writeExternal(ret, baos);
-                        ret = baos.toByteArray();
+                        if(asynchWriteExternalQueueHandlerContainer == null){
+                            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                            externalizer.writeExternal(ret, baos);
+                            ret = baos.toByteArray();
+                        }else{
+                            AsynchWriteExternalContainer container = new AsynchWriteExternalContainer(
+                                ret,
+                                externalizer,
+                                asynchWriteExternalBufferSize
+                            );
+                            asynchWriteExternalQueueHandlerContainer.push(container);
+                            ret = container;
+                        }
                     }
                     return ret;
                 }catch(Exception e){
                     throw e;
                 }catch(Throwable e){
                     if(logger != null){
-                        logger.write("RSS__00001", e);
+                        logger.write("RSS__00001", context + "->" + serviceName, e);
                     }
                     return null;
                 }finally{
@@ -582,7 +681,7 @@ public class RemoteServiceServerService extends ServiceBase
                     }
                 }catch(Throwable e){
                     if(logger != null){
-                        logger.write("RSS__00001", e);
+                        logger.write("RSS__00001", "isAlive()->" + serviceName, e);
                     }
                     return false;
                 }
@@ -595,6 +694,38 @@ public class RemoteServiceServerService extends ServiceBase
         
         public Remote getStub(){
             return stub;
+        }
+        
+        protected void finalize() throws Throwable{
+            if(asynchWriteExternalQueueHandlerContainer != null){
+                asynchWriteExternalQueueHandlerContainer.stop();
+                asynchWriteExternalQueueHandlerContainer.destroy();
+                asynchWriteExternalQueueHandlerContainer = null;
+            }
+        }
+        
+        private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException{
+            in.defaultReadObject();
+            initAsynchWriteExternal();
+        }
+        
+        private class AsynchWriteExternalQueueHandler implements QueueHandler{
+            
+            public void handleDequeuedObject(Object obj) throws Throwable{
+                if(obj == null){
+                    return;
+                }
+                AsynchWriteExternalContainer container = (AsynchWriteExternalContainer)obj;
+                container.write();
+            }
+            
+            public boolean handleError(Object obj, Throwable th) throws Throwable{
+                return false;
+            }
+            
+            public void handleRetryOver(Object obj, Throwable th) throws Throwable{
+                ServiceManagerFactory.getLogger().write("RSS__00001", "AsynchWriteExternalContainer#write()", th);
+            }
         }
     }
     
@@ -620,7 +751,7 @@ public class RemoteServiceServerService extends ServiceBase
             this.externalizer = externalizer;
         }
         
-        // KeepAliveCheckInvoker‚ÌJavaDoc
+        // KeepAliveCheckInvokerã®JavaDoc
         public Object invoke(InvocationContext context) throws Throwable{
             Object[] params = null;
             try{
@@ -637,7 +768,11 @@ public class RemoteServiceServerService extends ServiceBase
                 }
                 Object ret = serverInvoker.invoke(context);
                 if(externalizer != null && ret != null){
-                    ret = externalizer.readExternal(new ByteArrayInputStream((byte[])ret));
+                    if(ret instanceof AsynchWriteExternalContainer){
+                        ret = externalizer.readExternal(((AsynchWriteExternalContainer)ret).getInputStream());
+                    }else{
+                        ret = externalizer.readExternal(new ByteArrayInputStream((byte[])ret));
+                    }
                 }
                 return ret;
             }catch(java.rmi.RemoteException e){
@@ -651,48 +786,48 @@ public class RemoteServiceServerService extends ServiceBase
             }
         }
         
-        // KeepAliveCheckInvoker‚ÌJavaDoc
+        // KeepAliveCheckInvokerã®JavaDoc
         public boolean isAlive(){
             try{
                 return serverInvoker.isAlive(null);
             }catch(RemoteException e){
-                ServiceManagerFactory.getLogger().write("RSS__00002", e);
+                ServiceManagerFactory.getLogger().write("RSS__00002", "isAlive()->" + serverAddress, e);
                 return false;
             }catch(Throwable e){
-                ServiceManagerFactory.getLogger().write("RSS__00001", e);
+                ServiceManagerFactory.getLogger().write("RSS__00001", "isAlive()->" + serverAddress, e);
                 return false;
             }
         }
         
-        // KeepAliveCheckInvoker‚ÌJavaDoc
+        // KeepAliveCheckInvokerã®JavaDoc
         public void addKeepAliveListener(KeepAliveListener listener){
             throw new UnsupportedOperationException();
         }
         
-        // KeepAliveCheckInvoker‚ÌJavaDoc
+        // KeepAliveCheckInvokerã®JavaDoc
         public void removeKeepAliveListener(KeepAliveListener listener){
             throw new UnsupportedOperationException();
         }
         
-        // KeepAliveCheckInvoker‚ÌJavaDoc
+        // KeepAliveCheckInvokerã®JavaDoc
         public void clearKeepAliveListener(){
             throw new UnsupportedOperationException();
         }
         
-        // KeepAliveCheckInvoker‚ÌJavaDoc
+        // KeepAliveCheckInvokerã®JavaDoc
         public Object getHostInfo() {
             return serverAddress;
         }
         
-        // KeepAliveCheckInvoker‚ÌJavaDoc
+        // KeepAliveCheckInvokerã®JavaDoc
         public Comparable getResourceUsage(){
             try{
                 return serverInvoker.getResourceUsage();
             }catch(RemoteException e){
-                ServiceManagerFactory.getLogger().write("RSS__00002", e);
+                ServiceManagerFactory.getLogger().write("RSS__00002", "getResourceUsage()->" + serverAddress, e);
                 return null;
             }catch(Throwable e){
-                ServiceManagerFactory.getLogger().write("RSS__00001", e);
+                ServiceManagerFactory.getLogger().write("RSS__00001", "getResourceUsage()->" + serverAddress, e);
                 return null;
             }
         }
@@ -700,6 +835,77 @@ public class RemoteServiceServerService extends ServiceBase
         private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException{
             in.defaultReadObject();
             clientAddress = InetAddress.getLocalHost();
+        }
+    }
+    
+    public static class AsynchWriteExternalContainer implements Externalizable{
+        
+        private static final long serialVersionUID = -8227222269734459993L;
+        
+        private transient Object obj;
+        private transient PipedInputStream pis;
+        private transient PipedOutputStream pos;
+        private transient Externalizer externalizer;
+        private transient ByteArrayInputStream bais;
+        private transient int bufferSize;
+        
+        public AsynchWriteExternalContainer(){}
+        
+        public AsynchWriteExternalContainer(
+            Object obj,
+            Externalizer externalizer,
+            int bufferSize
+        ) throws IOException{
+            this.obj = obj;
+            this.externalizer = externalizer;
+            this.bufferSize = bufferSize;
+            pis = new PipedInputStream(bufferSize);
+            pos = new PipedOutputStream(pis);
+        }
+        
+        public void write() throws Exception{
+            try{
+                externalizer.writeExternal(obj, pos);
+            }finally{
+                pos.flush();
+                pos.close();
+            }
+        }
+        public InputStream getInputStream(){
+            return bais;
+        }
+        
+        public void writeExternal(ObjectOutput out) throws IOException{
+            out.writeInt(bufferSize);
+            final byte[] buf = new byte[bufferSize];
+            int len = 0;
+            while((len = pis.read(buf, 0, buf.length)) > 0){
+                out.writeInt(len);
+                out.write(buf, 0, len);
+            }
+            out.writeInt(0);
+            out.flush();
+        }
+        public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException{
+            bufferSize = in.readInt();
+            byte[] buf = new byte[bufferSize];
+            ByteArrayOutputStream baos = new ByteArrayOutputStream(bufferSize);
+            int len = 0;
+            int readLen = 0;
+            while((len = in.readInt()) > 0){
+                readLen = in.read(buf, 0, Math.min(len, buf.length));
+                baos.write(buf, 0, readLen);
+                if(len > buf.length){
+                    buf = new byte[len];
+                }
+                len -= readLen;
+                while(len > 0){
+                    readLen = in.read(buf, 0, Math.min(len, buf.length));
+                    baos.write(buf, 0, readLen);
+                    len -= readLen;
+                }
+            }
+            bais = new ByteArrayInputStream(baos.toByteArray());
         }
     }
 }

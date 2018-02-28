@@ -37,8 +37,8 @@ import java.util.*;
 import org.xml.sax.*;
 
 /**
- * Nimbus—pEntityResolverB<p>
- * ŠO•”ƒGƒ“ƒeƒBƒeƒB‚ÌŒöŠJ¯•Êq"-//Nimbus//DTD Nimbus 1.0//JA"‚É‘Î‚µ‚ÄA<a href="nimbus-service_1_0.dtd">"jp/ossc/nimbus/core/nimbus-service_1_0.dtd"</a>‚ğƒ}ƒbƒsƒ“ƒO‚·‚éEntityResolver‚Å‚ ‚éB
+ * Nimbusç”¨EntityResolverã€‚<p>
+ * å¤–éƒ¨ã‚¨ãƒ³ãƒ†ã‚£ãƒ†ã‚£ã®å…¬é–‹è­˜åˆ¥å­"-//Nimbus//DTD Nimbus 1.0//JA"ã«å¯¾ã—ã¦ã€<a href="nimbus-service_1_0.dtd">"jp/ossc/nimbus/core/nimbus-service_1_0.dtd"</a>ã‚’ãƒãƒƒãƒ”ãƒ³ã‚°ã™ã‚‹EntityResolverã§ã‚ã‚‹ã€‚
  *
  * @author M.Takata
  */
@@ -54,40 +54,40 @@ public class NimbusEntityResolver implements EntityResolver{
     }
     
     /**
-     * w’è‚µ‚½ŠO•”ƒGƒ“ƒeƒBƒeƒB‚ÌŒöŠJ¯•Êq‚É‘Î‚µ‚ÄADTD‚ÌƒŠƒ\[ƒX–¼‚ğ“o˜^‚·‚éB<p>
+     * æŒ‡å®šã—ãŸå¤–éƒ¨ã‚¨ãƒ³ãƒ†ã‚£ãƒ†ã‚£ã®å…¬é–‹è­˜åˆ¥å­ã«å¯¾ã—ã¦ã€DTDã®ãƒªã‚½ãƒ¼ã‚¹åã‚’ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
-     * @param publicId ŠO•”ƒGƒ“ƒeƒBƒeƒB‚ÌŒöŠJ¯•Êq
-     * @param resource DTD‚ÌƒŠƒ\[ƒX–¼
+     * @param publicId å¤–éƒ¨ã‚¨ãƒ³ãƒ†ã‚£ãƒ†ã‚£ã®å…¬é–‹è­˜åˆ¥å­
+     * @param resource DTDã®ãƒªã‚½ãƒ¼ã‚¹å
      */
     public static void registerDTD(String publicId, String resource){
         dtds.put(publicId, resource);
     }
     
     /**
-     * w’è‚µ‚½ŠO•”ƒGƒ“ƒeƒBƒeƒB‚ÌŒöŠJ¯•Êq‚Ì“o˜^‚ğ‰ğœ‚·‚éB<p>
+     * æŒ‡å®šã—ãŸå¤–éƒ¨ã‚¨ãƒ³ãƒ†ã‚£ãƒ†ã‚£ã®å…¬é–‹è­˜åˆ¥å­ã®ç™»éŒ²ã‚’è§£é™¤ã™ã‚‹ã€‚<p>
      *
-     * @param publicId ŠO•”ƒGƒ“ƒeƒBƒeƒB‚ÌŒöŠJ¯•Êq
+     * @param publicId å¤–éƒ¨ã‚¨ãƒ³ãƒ†ã‚£ãƒ†ã‚£ã®å…¬é–‹è­˜åˆ¥å­
      */
     public static void unregisterDTD(String publicId){
         dtds.remove(publicId);
     }
     
     /**
-     * w’è‚µ‚½ŠO•”ƒGƒ“ƒeƒBƒeƒB‚ÌŒöŠJ¯•Êq‚ª“o˜^‚³‚ê‚Ä‚¢‚é‚©’²‚×‚éB<p>
+     * æŒ‡å®šã—ãŸå¤–éƒ¨ã‚¨ãƒ³ãƒ†ã‚£ãƒ†ã‚£ã®å…¬é–‹è­˜åˆ¥å­ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‹èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @param publicId ŠO•”ƒGƒ“ƒeƒBƒeƒB‚ÌŒöŠJ¯•Êq
-     * @return “o˜^‚³‚ê‚Ä‚¢‚éê‡Atrue
+     * @param publicId å¤–éƒ¨ã‚¨ãƒ³ãƒ†ã‚£ãƒ†ã‚£ã®å…¬é–‹è­˜åˆ¥å­
+     * @return ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å ´åˆã€true
      */
     public static boolean isRegisteredDTD(String publicId){
         return dtds.containsKey(publicId);
     }
     
     /**
-     * ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ªŠO•”ƒGƒ“ƒeƒBƒeƒB‚ğ‰ğŒˆ‚Å‚«‚é‚æ‚¤‚É‚·‚éB<p>
-     * w’è‚³‚ê‚½ŒöŠJ¯•Êq‚ª{@link #registerDTD(String, String)}‚Å“o˜^‚³‚ê‚½ŒöŠJ¯•Êq‚Å‚ ‚Á‚½ê‡‚ÍA“o˜^‚³‚ê‚½ƒŠƒ\[ƒX–¼‚ÅƒNƒ‰ƒXƒpƒXã‚©‚çDTDƒtƒ@ƒCƒ‹‚ğ‰ğŒˆ‚·‚éB‚»‚¤‚Å‚È‚¢ê‡‚ÍAƒVƒXƒeƒ€¯•Êq‚Åw’è‚³‚ê‚½URL‚ÅDTDƒtƒ@ƒCƒ‹‚ğ‰ğŒˆ‚·‚éB<br>
+     * ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ãŒå¤–éƒ¨ã‚¨ãƒ³ãƒ†ã‚£ãƒ†ã‚£ã‚’è§£æ±ºã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã•ã‚ŒãŸå…¬é–‹è­˜åˆ¥å­ãŒ{@link #registerDTD(String, String)}ã§ç™»éŒ²ã•ã‚ŒãŸå…¬é–‹è­˜åˆ¥å­ã§ã‚ã£ãŸå ´åˆã¯ã€ç™»éŒ²ã•ã‚ŒãŸãƒªã‚½ãƒ¼ã‚¹åã§ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ä¸Šã‹ã‚‰DTDãƒ•ã‚¡ã‚¤ãƒ«ã‚’è§£æ±ºã™ã‚‹ã€‚ãã†ã§ãªã„å ´åˆã¯ã€ã‚·ã‚¹ãƒ†ãƒ è­˜åˆ¥å­ã§æŒ‡å®šã•ã‚ŒãŸURLã§DTDãƒ•ã‚¡ã‚¤ãƒ«ã‚’è§£æ±ºã™ã‚‹ã€‚<br>
      * 
-     * @param publicId QÆ‚³‚ê‚éŠO•”ƒGƒ“ƒeƒBƒeƒB‚ÌŒöŠJ¯•ÊqB’ñ‹Ÿ‚³‚ê‚È‚©‚Á‚½ê‡‚Í null
-     * @param systemId QÆ‚³‚ê‚éŠO•”ƒGƒ“ƒeƒBƒeƒB‚ÌƒVƒXƒeƒ€¯•Êq
+     * @param publicId å‚ç…§ã•ã‚Œã‚‹å¤–éƒ¨ã‚¨ãƒ³ãƒ†ã‚£ãƒ†ã‚£ã®å…¬é–‹è­˜åˆ¥å­ã€‚æä¾›ã•ã‚Œãªã‹ã£ãŸå ´åˆã¯ null
+     * @param systemId å‚ç…§ã•ã‚Œã‚‹å¤–éƒ¨ã‚¨ãƒ³ãƒ†ã‚£ãƒ†ã‚£ã®ã‚·ã‚¹ãƒ†ãƒ è­˜åˆ¥å­
      */
     public InputSource resolveEntity(String publicId, String systemId){
         if(publicId == null || !dtds.containsKey(publicId)){
@@ -117,9 +117,9 @@ public class NimbusEntityResolver implements EntityResolver{
             final InputSource inputSource = new InputSource(dtdStream);
             return inputSource;
         }catch(MalformedURLException e){
-            // –³‹‚·‚é
+            // ç„¡è¦–ã™ã‚‹
         }catch(IOException e){
-            // –³‹‚·‚é
+            // ç„¡è¦–ã™ã‚‹
         }
         return null;
    }

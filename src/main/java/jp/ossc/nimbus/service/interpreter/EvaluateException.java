@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.interpreter;
 import java.io.*;
 
 /**
- * ƒR[ƒh‚Ì•]‰¿’†‚É—áŠO‚ª”­¶‚µ‚½–‚ğ¦‚·—áŠOB<p>
+ * ã‚³ãƒ¼ãƒ‰ã®è©•ä¾¡ä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸäº‹ã‚’ç¤ºã™ä¾‹å¤–ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -45,16 +45,16 @@ public class EvaluateException extends RuntimeException implements Externalizabl
     private String message;
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^B<p>
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<p>
      */
     public EvaluateException(){
         super();
     }
     
     /**
-     * ƒGƒ‰[ƒƒbƒZ[ƒW‚ğ‚Á‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éƒRƒ“ƒXƒgƒ‰ƒNƒ^B<p>
+     * ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’æŒã£ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<p>
      *
-     * @param message ƒGƒ‰[ƒƒbƒZ[ƒW
+     * @param message ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public EvaluateException(String message){
         super();
@@ -62,19 +62,19 @@ public class EvaluateException extends RuntimeException implements Externalizabl
     }
     
     /**
-     * ‚±‚Ì—áŠO‚ÌŒ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğ‚Á‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éƒRƒ“ƒXƒgƒ‰ƒNƒ^B<p>
+     * ã“ã®ä¾‹å¤–ã®åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’æŒã£ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<p>
      *
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public EvaluateException(Throwable cause){
         super(cause);
     }
     
     /**
-     * ƒGƒ‰[ƒƒbƒZ[ƒW‚ÆA‚±‚Ì—áŠO‚ÌŒ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğ‚Á‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éƒRƒ“ƒXƒgƒ‰ƒNƒ^B<p>
+     * ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¨ã€ã“ã®ä¾‹å¤–ã®åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’æŒã£ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<p>
      *
-     * @param message ƒGƒ‰[ƒƒbƒZ[ƒW
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param message ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public EvaluateException(String message, Throwable cause){
         super(cause);

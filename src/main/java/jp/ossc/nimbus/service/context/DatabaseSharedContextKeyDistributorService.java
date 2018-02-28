@@ -49,7 +49,7 @@ import jp.ossc.nimbus.service.connection.ConnectionFactory;
 import jp.ossc.nimbus.service.connection.PersistentManager;
 
 /**
- * ƒf[ƒ^ƒx[ƒX‹¤—LƒRƒ“ƒeƒLƒXƒgƒL[•ªUB<p>
+ * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚­ãƒ¼åˆ†æ•£ã€‚<p>
  *
  * @author M.Takata
  */

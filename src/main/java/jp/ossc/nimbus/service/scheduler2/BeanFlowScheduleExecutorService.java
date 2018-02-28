@@ -38,8 +38,8 @@ import jp.ossc.nimbus.service.beancontrol.*;
 import jp.ossc.nimbus.service.beancontrol.interfaces.*;
 
 /**
- * BeanFlowƒXƒPƒWƒ…[ƒ‹ÀsB<p>
- * Às‚ğˆË—Š‚³‚ê‚½ƒ^ƒXƒN‚ğBeanFlow‚Æ‚µ‚ÄÀs‚·‚éB<br>
+ * BeanFlowã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å®Ÿè¡Œã€‚<p>
+ * å®Ÿè¡Œã‚’ä¾é ¼ã•ã‚ŒãŸã‚¿ã‚¹ã‚¯ã‚’BeanFlowã¨ã—ã¦å®Ÿè¡Œã™ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -82,18 +82,18 @@ public class BeanFlowScheduleExecutorService
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         monitors = Collections.synchronizedMap(new HashMap());
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         
@@ -107,25 +107,25 @@ public class BeanFlowScheduleExecutorService
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         monitors.clear();
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         monitors = null;
     }
     
     /**
-     * {@link BeanFlowInvokerFactory}‚ğİ’è‚·‚éB<p>
+     * {@link BeanFlowInvokerFactory}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param factory BeanFlowInvokerFactory
      */
@@ -134,7 +134,7 @@ public class BeanFlowScheduleExecutorService
     }
     
     /**
-     * {@link BeanFlowInvokerFactory}‚ğæ“¾‚·‚éB<p>
+     * {@link BeanFlowInvokerFactory}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return BeanFlowInvokerFactory
      */
@@ -143,10 +143,10 @@ public class BeanFlowScheduleExecutorService
     }
     
     /**
-     * w’è‚³‚ê‚½ƒXƒPƒWƒ…[ƒ‹‚Ìƒ^ƒXƒN‚ªABeanFlow‚Æ‚µ‚Ä‘¶İ‚·‚é‚©ƒ`ƒFƒbƒN‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚¿ã‚¹ã‚¯ãŒã€BeanFlowã¨ã—ã¦å­˜åœ¨ã™ã‚‹ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã€‚<p>
      *
-     * @param schedule ƒXƒPƒWƒ…[ƒ‹
-     * @exception Exception w’è‚³‚ê‚½ƒXƒPƒWƒ…[ƒ‹‚Ìƒ^ƒXƒN‚ªABeanFlow‚Æ‚µ‚Ä‘¶İ‚µ‚È‚¢ê‡
+     * @param schedule ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«
+     * @exception Exception æŒ‡å®šã•ã‚ŒãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚¿ã‚¹ã‚¯ãŒã€BeanFlowã¨ã—ã¦å­˜åœ¨ã—ãªã„å ´åˆ
      */
     protected void checkPreExecute(Schedule schedule) throws Exception{
         if(!beanFlowInvokerFactory.containsFlow(schedule.getTaskName())){
@@ -155,11 +155,11 @@ public class BeanFlowScheduleExecutorService
     }
     
     /**
-     * w’è‚³‚ê‚½ƒXƒPƒWƒ…[ƒ‹‚Ìƒ^ƒXƒN‚ğBeanFlow‚Æ‚µ‚ÄÀs‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã‚¿ã‚¹ã‚¯ã‚’BeanFlowã¨ã—ã¦å®Ÿè¡Œã™ã‚‹ã€‚<p>
      *
-     * @param schedule ƒXƒPƒWƒ…[ƒ‹
-     * @return ÀsŒ‹‰Ê‚ğŠÜ‚ŞƒXƒPƒWƒ…[ƒ‹
-     * @exception Throwable w’è‚³‚ê‚½ƒXƒPƒWƒ…[ƒ‹‚ÌÀs‚É¸”s‚µ‚½ê‡
+     * @param schedule ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«
+     * @return å®Ÿè¡Œçµæœã‚’å«ã‚€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«
+     * @exception Throwable æŒ‡å®šã•ã‚ŒãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å®Ÿè¡Œã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected Schedule executeInternal(Schedule schedule) throws Throwable{
         final BeanFlowInvoker invoker = getBeanFlowInvoker(schedule);
@@ -187,7 +187,7 @@ public class BeanFlowScheduleExecutorService
         return beanFlowInvokerFactory.createFlow(schedule.getTaskName());
     }
     
-    // ScheduleExecutor‚ÌJavaDoc
+    // ScheduleExecutorã®JavaDoc
     public boolean controlState(String id, int cntrolState)
      throws ScheduleStateControlException{
         final BeanFlowMonitor monitor = (BeanFlowMonitor)monitors.get(id);

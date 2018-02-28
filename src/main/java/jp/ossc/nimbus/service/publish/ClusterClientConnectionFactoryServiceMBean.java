@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link ClusterClientConnectionFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link ClusterClientConnectionFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see ClusterClientConnectionFactoryService
@@ -45,46 +45,46 @@ public interface ClusterClientConnectionFactoryServiceMBean extends ServiceBaseM
     public static final String MSG_ID_CONNECT_ERROR = "PCCF_00001";
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ClusterService}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ƒNƒ‰ƒXƒ^‚Ìƒƒ“ƒo[î•ñ‚©‚çA{@link ClientConnectionFactory}ƒŠƒ‚[ƒgƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚é–‚ÅAƒNƒ‰ƒXƒ^‚ÉQ‰Á‚µ‚Ä‚¢‚éClientConnectionFactory‚ğƒNƒ‰ƒCƒAƒ“ƒg‘¤‚Å‹¤—L‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ClusterService}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã‚¯ãƒ©ã‚¹ã‚¿ã®ãƒ¡ãƒ³ãƒãƒ¼æƒ…å ±ã‹ã‚‰ã€{@link ClientConnectionFactory}ãƒªãƒ¢ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹äº‹ã§ã€ã‚¯ãƒ©ã‚¹ã‚¿ã«å‚åŠ ã—ã¦ã„ã‚‹ClientConnectionFactoryã‚’ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆå´ã§å…±æœ‰ã™ã‚‹ã€‚<br>
      *
-     * @param name ClusterServiceƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ClusterServiceã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setClusterServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ClusterService}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ClusterService}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ClusterServiceƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ClusterServiceã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getClusterServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚Ìƒƒ“ƒo[î•ñ‚ÌƒIƒvƒVƒ‡ƒ“ƒL[‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ¡ãƒ³ãƒãƒ¼æƒ…å ±ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key ƒIƒvƒVƒ‡ƒ“ƒL[
+     * @param key ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚­ãƒ¼
      */
     public void setClusterOptionKey(String key);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚Ìƒƒ“ƒo[î•ñ‚ÌƒIƒvƒVƒ‡ƒ“ƒL[‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ¡ãƒ³ãƒãƒ¼æƒ…å ±ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒIƒvƒVƒ‡ƒ“ƒL[
+     * @return ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚­ãƒ¼
      */
     public String getClusterOptionKey();
     
     /**
-     * {@link ClientConnection#connect()}Às‚ÉAƒNƒ‰ƒXƒ^ƒƒ“ƒo‚ª‘¶İ‚µ‚È‚­‚Ä‚àÚ‘±‰Â”\‚È_“î‚ÈÚ‘±‚Æ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅAƒNƒ‰ƒXƒ^ƒƒ“ƒo‚ª‘¶İ‚µ‚È‚¢ê‡‚ÍAÚ‘±‚Å‚«‚È‚¢B<br>
+     * {@link ClientConnection#connect()}å®Ÿè¡Œæ™‚ã«ã€ã‚¯ãƒ©ã‚¹ã‚¿ãƒ¡ãƒ³ãƒãŒå­˜åœ¨ã—ãªãã¦ã‚‚æ¥ç¶šå¯èƒ½ãªæŸ”è»Ÿãªæ¥ç¶šã¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€ã‚¯ãƒ©ã‚¹ã‚¿ãƒ¡ãƒ³ãƒãŒå­˜åœ¨ã—ãªã„å ´åˆã¯ã€æ¥ç¶šã§ããªã„ã€‚<br>
      *
-     * @param isFlexible _“î‚ÈÚ‘±‚Æ‚·‚éê‡Atrue
+     * @param isFlexible æŸ”è»Ÿãªæ¥ç¶šã¨ã™ã‚‹å ´åˆã€true
      */
     public void setFlexibleConnect(boolean isFlexible);
     
     /**
-     * {@link ClientConnection#connect()}Às‚ÉAƒNƒ‰ƒXƒ^ƒƒ“ƒo‚ª‘¶İ‚µ‚È‚­‚Ä‚àÚ‘±‰Â”\‚È_“î‚ÈÚ‘±‚Æ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link ClientConnection#connect()}å®Ÿè¡Œæ™‚ã«ã€ã‚¯ãƒ©ã‚¹ã‚¿ãƒ¡ãƒ³ãƒãŒå­˜åœ¨ã—ãªãã¦ã‚‚æ¥ç¶šå¯èƒ½ãªæŸ”è»Ÿãªæ¥ç¶šã¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A_“î‚ÈÚ‘±
+     * @return trueã®å ´åˆã€æŸ”è»Ÿãªæ¥ç¶š
      */
     public boolean isFlexibleConnect();
     

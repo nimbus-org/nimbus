@@ -38,7 +38,7 @@ import java.util.*;
 import java.io.Serializable;
 
 /**
- * java.util.Map‚ğWritableRecord‚É•ÏŠ·‚·‚é{@link WritableRecordFactory}ƒT[ƒrƒXB<p>
+ * java.util.Mapã‚’WritableRecordã«å¤‰æ›ã™ã‚‹{@link WritableRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author Y.Tokuda
  */
@@ -48,58 +48,58 @@ public class WritableRecordFactoryService extends ServiceBase
     
     private static final long serialVersionUID = 5249532509800152052L;
     
-    //ƒƒ“ƒo•Ï”
-    /** ƒVƒ“ƒvƒ‹ƒGƒŒƒƒ“ƒgÀ‘•ƒNƒ‰ƒX–¼ */
+    //ãƒ¡ãƒ³ãƒå¤‰æ•°
+    /** ã‚·ãƒ³ãƒ—ãƒ«ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆå®Ÿè£…ã‚¯ãƒ©ã‚¹å */
     protected static final String SIMPLE_ELEMENT_NAME
          = SimpleElement.class.getName();
-    /** ƒtƒH[ƒ}ƒbƒg’è‹`•¶š—ñ */
+    /** ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆå®šç¾©æ–‡å­—åˆ— */
     protected String mFormat;
-    /** ƒtƒH[ƒ}ƒbƒg’è‹`•¶š—ñ‚©‚ç¶¬‚³‚ê‚éParsedElementŒ^‚ÌArrayList */
+    /** ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆå®šç¾©æ–‡å­—åˆ—ã‹ã‚‰ç”Ÿæˆã•ã‚Œã‚‹ParsedElementå‹ã®ArrayList */
     protected List mParsedElements;
-    /** WritableElement‚ÌÀ‘•ƒNƒ‰ƒX–¼ƒnƒbƒVƒ… */
+    /** WritableElementã®å®Ÿè£…ã‚¯ãƒ©ã‚¹åãƒãƒƒã‚·ãƒ¥ */
     protected Properties mImplClasses;
-    /** WritableElement‚ÌÀ‘•ƒT[ƒrƒX–¼ƒnƒbƒVƒ… */
+    /** WritableElementã®å®Ÿè£…ã‚µãƒ¼ãƒ“ã‚¹åãƒãƒƒã‚·ãƒ¥ */
     protected Properties mImplServiceNames;
     protected Map mImplServiceNameMap;
     
-    // WritableRecordFactoryServiceMBean‚ÌJavaDoc
+    // WritableRecordFactoryServiceMBeanã®JavaDoc
     public void setImplementClasses(Properties prop){
         mImplClasses = prop;
     }
     
-    // WritableRecordFactoryServiceMBean‚ÌJavaDoc
+    // WritableRecordFactoryServiceMBeanã®JavaDoc
     public Properties getImplementClasses(){
         return mImplClasses;
     }
     
-    // WritableRecordFactoryServiceMBean‚ÌJavaDoc
+    // WritableRecordFactoryServiceMBeanã®JavaDoc
     public void setImplementServiceNames(Properties prop){
         mImplServiceNames = prop;
     }
     
-    // WritableRecordFactoryServiceMBean‚ÌJavaDoc
+    // WritableRecordFactoryServiceMBeanã®JavaDoc
     public Properties getImplementServiceNames(){
         return mImplServiceNames;
     }
     
-    // WritableRecordFactoryServiceMBean‚ÌJavaDoc
+    // WritableRecordFactoryServiceMBeanã®JavaDoc
     public void setFormat(String fmt){
         mFormat = fmt;
     }
     
-    // WritableRecordFactoryServiceMBean‚ÌJavaDoc
+    // WritableRecordFactoryServiceMBeanã®JavaDoc
     public String getFormat(){
         return mFormat;
     }
     
     /**
-     * ¶¬ˆ—‚ğs‚¤B<p>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ªs‚í‚ê‚Ä‚¢‚éB<br>
+     * ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     * <li> ƒZƒbƒ^[‚ÅƒL[ƒ[ƒh,WritableElement‚ÌÀ‘•ƒNƒ‰ƒX–¼‚Ì‘g‚ğŠi”[‚µ‚½Properties‚ª—^‚¦‚ç‚ê‚È‚©‚Á‚½ê‡A‹ó‚ÌProperties‚ğƒƒ“ƒo•Ï”mImplClasses‚ÉƒZƒbƒg‚·‚éB<br>
+     * <li> ã‚»ãƒƒã‚¿ãƒ¼ã§ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰,WritableElementã®å®Ÿè£…ã‚¯ãƒ©ã‚¹åã®çµ„ã‚’æ ¼ç´ã—ãŸPropertiesãŒä¸ãˆã‚‰ã‚Œãªã‹ã£ãŸå ´åˆã€ç©ºã®Propertiesã‚’ãƒ¡ãƒ³ãƒå¤‰æ•°mImplClassesã«ã‚»ãƒƒãƒˆã™ã‚‹ã€‚<br>
      * </ol>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception {
         if(mImplClasses == null){
@@ -109,25 +109,25 @@ public class WritableRecordFactoryService extends ServiceBase
     }
     
     /**
-     * ŠJnˆ—‚ğs‚¤B<p>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ª‚¨‚±‚È‚í‚ê‚Ä‚¢‚éB<br>
+     * é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒãŠã“ãªã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     * <li>ƒtƒH[ƒ}ƒbƒg•¶š—ñ‚ğƒp[ƒX‚·‚éB</li>
-     * <li>WritableElement‚ÌÀ‘•ƒNƒ‰ƒX‚ªƒCƒ“ƒXƒ^ƒ“ƒX‰»‰Â”\‚©ƒ`ƒFƒbƒN‚·‚éB</li>
+     * <li>ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæ–‡å­—åˆ—ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ã€‚</li>
+     * <li>WritableElementã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ãŒã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–å¯èƒ½ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã€‚</li>
      * </ol>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */    
     public void startService()throws Exception {
         try{
             mParsedElements = parseFormat(mFormat);
         }
         catch(IllegalArgumentException ex){
-            //•s³ƒtƒH[ƒ}ƒbƒg‚Ìê‡
+            //ä¸æ­£ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã®å ´åˆ
             getLogger().write("SSWRF00001",mFormat,ex);
             throw ex;        
         }
-        //—^‚¦‚ç‚ê‚½À‘•ƒNƒ‰ƒX–¼‚ÅƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚Å‚«‚é‚©‚Ç‚¤‚©Šm”F
+        //ä¸ãˆã‚‰ã‚ŒãŸå®Ÿè£…ã‚¯ãƒ©ã‚¹åã§ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã§ãã‚‹ã‹ã©ã†ã‹ç¢ºèª
         Collection implClasses = mImplClasses.values();
         Iterator it = implClasses.iterator();
         while(it.hasNext()){
@@ -136,7 +136,7 @@ public class WritableRecordFactoryService extends ServiceBase
                 getInstance(implClassName);    
             }
             catch(ServiceException e){
-                //•s³À‘•ƒNƒ‰ƒX–¼‚Ìê‡
+                //ä¸æ­£å®Ÿè£…ã‚¯ãƒ©ã‚¹åã®å ´åˆ
                 getLogger().write("SSWRF00002",implClassName,e);
                 throw e;    
             }
@@ -159,37 +159,37 @@ public class WritableRecordFactoryService extends ServiceBase
     }
     
     /**
-     * ’â~ˆ—‚ğs‚¤B<p>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ª‚¨‚±‚È‚í‚ê‚Ä‚¢‚éB<br>
+     * åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒãŠã“ãªã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     * <li>mParsedElement‚ğ”jŠü‚·‚é</li>
+     * <li>mParsedElementã‚’ç ´æ£„ã™ã‚‹</li>
      * </ol>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */    
     public void stopService() throws Exception {
         mParsedElements = null;
     }
     /**
-     * ”jŠüˆ—‚ğs‚¤B<p>
-     * ‚±‚Ìƒƒ\ƒbƒh‚É‚ÍAˆÈ‰º‚ÌÀ‘•‚ª‚¨‚±‚È‚í‚ê‚Ä‚¢‚éB<br>
+     * ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¯ã€ä»¥ä¸‹ã®å®Ÿè£…ãŒãŠã“ãªã‚ã‚Œã¦ã„ã‚‹ã€‚<br>
      * <ol>
-     * <li>mImplClasses‚ğ”jŠü‚·‚é</li>
+     * <li>mImplClassesã‚’ç ´æ£„ã™ã‚‹</li>
      * </ol>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */            
     public void destroyService() throws Exception {
         mImplClasses = null;
     }
     
     /**
-     * w’è‚³‚ê‚½o—Í—v‘f‚ÌMap‚©‚ç{@link WritableRecord}‚ğ¶¬‚·‚éB<p>
-     * {@link #setFormat(String)}‚Åw’è‚³‚ê‚½ƒtƒH[ƒ}ƒbƒg‚É]‚Á‚ÄA{@link WritableElement}‚ğ¶¬‚µA‚»‚ê‚ğ‡ŸŠi”[‚µ‚½WritableRecord‚ğ•Ô‚·B<br>
-     * setFormat(String)‚Åw’è‚³‚ê‚½ƒtƒH[ƒ}ƒbƒg“à‚ÉAƒL[‚ªw’è‚³‚ê‚Ä‚¢‚éê‡‚ÍAo—Í—v‘f‚ÌMap‚©‚ç’l‚ğæ‚èo‚µ‚ÄA{@link #setImplementClasses(Properties)}‚Ü‚½‚Í{@link #setImplementServiceNames(Properties)}‚Åƒ}ƒbƒsƒ“ƒO‚³‚ê‚½WritableElementƒCƒ“ƒXƒ^ƒ“ƒX‚ÉŠi”[‚·‚éB<br>
+     * æŒ‡å®šã•ã‚ŒãŸå‡ºåŠ›è¦ç´ ã®Mapã‹ã‚‰{@link WritableRecord}ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * {@link #setFormat(String)}ã§æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã«å¾“ã£ã¦ã€{@link WritableElement}ã‚’ç”Ÿæˆã—ã€ãã‚Œã‚’é †æ¬¡æ ¼ç´ã—ãŸWritableRecordã‚’è¿”ã™ã€‚<br>
+     * setFormat(String)ã§æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆå†…ã«ã€ã‚­ãƒ¼ãŒæŒ‡å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€å‡ºåŠ›è¦ç´ ã®Mapã‹ã‚‰å€¤ã‚’å–ã‚Šå‡ºã—ã¦ã€{@link #setImplementClasses(Properties)}ã¾ãŸã¯{@link #setImplementServiceNames(Properties)}ã§ãƒãƒƒãƒ”ãƒ³ã‚°ã•ã‚ŒãŸWritableElementã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«æ ¼ç´ã™ã‚‹ã€‚<br>
      * 
-     * @param elements o—Í—v‘f‚ÌMapƒIƒuƒWƒFƒNƒg
-     * @return MessageWriterƒT[ƒrƒX‚Ì“ü—ÍƒIƒuƒWƒFƒNƒg‚Æ‚È‚éWritableRecord
+     * @param elements å‡ºåŠ›è¦ç´ ã®Mapã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return MessageWriterã‚µãƒ¼ãƒ“ã‚¹ã®å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ãªã‚‹WritableRecord
      */
     public WritableRecord createRecord(Object elements){
         if(getState() != STARTED){
@@ -197,7 +197,7 @@ public class WritableRecordFactoryService extends ServiceBase
         }
         WritableRecord writableRec = new WritableRecord();
         if(mFormat == null || mFormat.length() == 0){
-            //’P‚Éelements‚Ì“à—e‚ğWritableRecord‚Éadd
+            //å˜ã«elementsã®å†…å®¹ã‚’WritableRecordã«add
             final Iterator keys = getElementKeys(elements).iterator();
             while(keys.hasNext()){
                 final String key = keys.next().toString();
@@ -209,11 +209,11 @@ public class WritableRecordFactoryService extends ServiceBase
             }
         }
         else{
-            //ƒtƒH[ƒ}ƒbƒg‚É]‚Á‚ÄWritableRecord‚ğ¶¬
+            //ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã«å¾“ã£ã¦WritableRecordã‚’ç”Ÿæˆ
             for(int rCnt=0, max = mParsedElements.size();rCnt < max;rCnt++){
                 ParsedElement parsedElem = (ParsedElement)mParsedElements.get(rCnt);
                 if(parsedElem.isKeyElement()){
-                    //ƒL[‚È‚Ì‚ÅAŠY“–ƒL[‚ğ‚à‚Â€–Ú‚ğelements‚©‚ç’T‚µAWritableRecord‚Éadd‚·‚éB
+                    //ã‚­ãƒ¼ãªã®ã§ã€è©²å½“ã‚­ãƒ¼ã‚’ã‚‚ã¤é …ç›®ã‚’elementsã‹ã‚‰æ¢ã—ã€WritableRecordã«addã™ã‚‹ã€‚
                     final String key = parsedElem.getValue();
                     WritableElement elem = createElement(
                         key,
@@ -224,7 +224,7 @@ public class WritableRecordFactoryService extends ServiceBase
                     }
                 }
                 else{
-                    //•\¦—p•¶š—ñ—v‘f‚ğwritableRecord‚Éadd
+                    //è¡¨ç¤ºç”¨æ–‡å­—åˆ—è¦ç´ ã‚’writableRecordã«add
                     SimpleElement simpleElem = new SimpleElement();
                     simpleElem.setKey(simpleElem);
                     simpleElem.setValue(parsedElem.getValue());
@@ -236,29 +236,29 @@ public class WritableRecordFactoryService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½o—Í—v‘f‚ÌMap‚ª‚ÂƒL[–¼‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå‡ºåŠ›è¦ç´ ã®MapãŒæŒã¤ã‚­ãƒ¼åã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param elements o—Í—v‘f‚Ìƒ}ƒbƒv
-     * @return ƒL[–¼‚ÌW‡
+     * @param elements å‡ºåŠ›è¦ç´ ã®ãƒãƒƒãƒ—
+     * @return ã‚­ãƒ¼åã®é›†åˆ
      */
     protected Set getElementKeys(Object elements){
         return ((Map)elements).keySet();
     }
     
     /**
-     * o—Í—v‘f‚©‚çw’è‚³‚ê‚½ƒL[‚Ì’l‚ğæ‚èo‚µ‚ÄA‘Î‰‚·‚é{@link WritableElement}‚ğ¶¬‚·‚éB<p>
-     * {@link #getElementValue(String, Object)}‚ÅAo—Í—v‘f‚©‚çw’è‚³‚ê‚½ƒL[‚Ì’l‚ğæ‚èo‚·B{@link #getImplementClass(String)}‚Ü‚½‚Í{@link #getImplementServiceName(String)}‚ÅAƒL[‚ÉŠY“–‚·‚é{@link WritableElement}‚ğ“Á’è‚µA‚»‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚µ‚ÄAƒL[‚Æ’l‚ğİ’è‚µ‚Ä•Ô‚·B<br>
-     * ƒL[‚ÉŠY“–‚·‚é{@link WritableElement}‚ª“Á’è‚Å‚«‚È‚¢ê‡‚ÍA{@link SimpleElement}ƒNƒ‰ƒX‚ğg—p‚·‚éB<br>
+     * å‡ºåŠ›è¦ç´ ã‹ã‚‰æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã®å€¤ã‚’å–ã‚Šå‡ºã—ã¦ã€å¯¾å¿œã™ã‚‹{@link WritableElement}ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * {@link #getElementValue(String, Object)}ã§ã€å‡ºåŠ›è¦ç´ ã‹ã‚‰æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã®å€¤ã‚’å–ã‚Šå‡ºã™ã€‚{@link #getImplementClass(String)}ã¾ãŸã¯{@link #getImplementServiceName(String)}ã§ã€ã‚­ãƒ¼ã«è©²å½“ã™ã‚‹{@link WritableElement}ã‚’ç‰¹å®šã—ã€ãã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã—ã¦ã€ã‚­ãƒ¼ã¨å€¤ã‚’è¨­å®šã—ã¦è¿”ã™ã€‚<br>
+     * ã‚­ãƒ¼ã«è©²å½“ã™ã‚‹{@link WritableElement}ãŒç‰¹å®šã§ããªã„å ´åˆã¯ã€{@link SimpleElement}ã‚¯ãƒ©ã‚¹ã‚’ä½¿ç”¨ã™ã‚‹ã€‚<br>
      * 
-     * @param key ƒL[
-     * @param val o—Í—v‘f
-     * @return WritableElementƒCƒ“ƒXƒ^ƒ“ƒX
+     * @param key ã‚­ãƒ¼
+     * @param val å‡ºåŠ›è¦ç´ 
+     * @return WritableElementã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
      */
     protected WritableElement createElement(String key, Object val){
         WritableElement writableElem = null;
         if(getImplementClass(key) == null){
             if(getImplementServiceName(key) == null){
-                //À‘•ƒNƒ‰ƒX–¼‚ªæ“¾‚Å‚«‚È‚¢‚ÍSimpleElement‚É‚·‚éB
+                //å®Ÿè£…ã‚¯ãƒ©ã‚¹åãŒå–å¾—ã§ããªã„æ™‚ã¯SimpleElementã«ã™ã‚‹ã€‚
                 writableElem = getInstance(SIMPLE_ELEMENT_NAME);
             }else{
                 try{
@@ -272,7 +272,7 @@ public class WritableRecordFactoryService extends ServiceBase
             String implClassName = getImplementClass(key);
             writableElem = getInstance(implClassName);
         }
-        //ƒL[‚Æ’l‚ğİ’è
+        //ã‚­ãƒ¼ã¨å€¤ã‚’è¨­å®š
         writableElem.setKey(key);
         writableElem.setValue(val);
         postCreateElement(writableElem);
@@ -280,63 +280,63 @@ public class WritableRecordFactoryService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚É‘Î‚µ‚Äw’è‚³‚ê‚½ƒNƒ‰ƒX–¼‚Ì{@link WritableElement}À‘•ƒNƒ‰ƒX‚ğƒ}ƒbƒsƒ“ƒO‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã«å¯¾ã—ã¦æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹åã®{@link WritableElement}å®Ÿè£…ã‚¯ãƒ©ã‚¹ã‚’ãƒãƒƒãƒ”ãƒ³ã‚°ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @param className WritableElementÀ‘•ƒNƒ‰ƒX–¼
+     * @param key ã‚­ãƒ¼
+     * @param className WritableElementå®Ÿè£…ã‚¯ãƒ©ã‚¹å
      */
     protected void setImplementClass(String key, String className){
         mImplClasses.put(key, className);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚É‘Î‚·‚é{@link WritableElement}À‘•ƒNƒ‰ƒX–¼‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã«å¯¾ã™ã‚‹{@link WritableElement}å®Ÿè£…ã‚¯ãƒ©ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @return WritableElementÀ‘•ƒNƒ‰ƒX–¼
+     * @param key ã‚­ãƒ¼
+     * @return WritableElementå®Ÿè£…ã‚¯ãƒ©ã‚¹å
      */
     protected String getImplementClass(String key){
         return (String)mImplClasses.get(key);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚É‘Î‚·‚é{@link WritableElement}À‘•ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã«å¯¾ã™ã‚‹{@link WritableElement}å®Ÿè£…ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @return WritableElementÀ‘•ƒT[ƒrƒX–¼
+     * @param key ã‚­ãƒ¼
+     * @return WritableElementå®Ÿè£…ã‚µãƒ¼ãƒ“ã‚¹å
      */
     protected ServiceName getImplementServiceName(String key){
         return (ServiceName)mImplServiceNameMap.get(key);
     }
     
     /**
-     * {@link WritableElement}‚ğ¶¬‚µ‚½Œã‚Ìˆ—‚ğs‚¤B<p>
-     * {@link #createElement(String, Object)}‚Å¶¬‚µ‚½WritableElement‚É‘Î‚µ‚Ä”CˆÓ‚Ìˆ—‚ğs‚¤B<br>
-     * ‚±‚ÌƒNƒ‰ƒX‚ğŒp³‚·‚éƒNƒ‰ƒX‚Å•K—v‚ÈÀ‘•‚ğs‚¤B‚±‚±‚Å‚Í‹óÀ‘•B<br>
+     * {@link WritableElement}ã‚’ç”Ÿæˆã—ãŸå¾Œã®å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * {@link #createElement(String, Object)}ã§ç”Ÿæˆã—ãŸWritableElementã«å¯¾ã—ã¦ä»»æ„ã®å‡¦ç†ã‚’è¡Œã†ã€‚<br>
+     * ã“ã®ã‚¯ãƒ©ã‚¹ã‚’ç¶™æ‰¿ã™ã‚‹ã‚¯ãƒ©ã‚¹ã§å¿…è¦ãªå®Ÿè£…ã‚’è¡Œã†ã€‚ã“ã“ã§ã¯ç©ºå®Ÿè£…ã€‚<br>
      * 
-     * @param elem ˆ—‘ÎÛ‚ÌWritableElement
+     * @param elem å‡¦ç†å¯¾è±¡ã®WritableElement
      */
     protected void postCreateElement(WritableElement elem){
-        //‹óÀ‘•
+        //ç©ºå®Ÿè£…
         ;
     }
     
     /**
-     * w’è‚³‚ê‚½o—Í—v‘f‚Ìƒ}ƒbƒv‚©‚çAw’è‚³‚ê‚½ƒL[‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå‡ºåŠ›è¦ç´ ã®ãƒãƒƒãƒ—ã‹ã‚‰ã€æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param key o—Í—v‘fƒ}ƒbƒv“à‚ÌƒL[
-     * @param elements o—Í—v‘fƒ}ƒbƒv
-     * @return o—Í—v‘f“à‚ÌƒL[‚ÉŠY“–‚·‚é’l
+     * @param key å‡ºåŠ›è¦ç´ ãƒãƒƒãƒ—å†…ã®ã‚­ãƒ¼
+     * @param elements å‡ºåŠ›è¦ç´ ãƒãƒƒãƒ—
+     * @return å‡ºåŠ›è¦ç´ å†…ã®ã‚­ãƒ¼ã«è©²å½“ã™ã‚‹å€¤
      */
     protected Object getElementValue(String key, Object elements){
         return ((Map)elements).get(key);
     }
     
     /**
-     * w’è‚µ‚½ƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param className ƒCƒ“ƒXƒ^ƒ“ƒX‰»‚·‚éƒNƒ‰ƒX‚Ì–¼‘O
-     * @return ƒCƒ“ƒXƒ^ƒ“ƒX
+     * @param className ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã™ã‚‹ã‚¯ãƒ©ã‚¹ã®åå‰
+     * @return ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
      */
     protected WritableElement getInstance(String className){
         WritableElement writableElem = null;
@@ -370,29 +370,29 @@ public class WritableRecordFactoryService extends ServiceBase
     }
     
     /**
-     * ƒtƒH[ƒ}ƒbƒg•¶š—ñƒp[ƒXƒƒ\ƒbƒhB<p>
-     * setFormat(String)‚ÅAƒZƒbƒg‚³‚ê‚½ƒtƒH[ƒ}ƒbƒg•¶š—ñmFormat‚ğƒp[ƒX‚µAParsedElement‚ÌList‚ğ•Ô‚·
+     * ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæ–‡å­—åˆ—ãƒ‘ãƒ¼ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰ã€‚<p>
+     * setFormat(String)ã§ã€ã‚»ãƒƒãƒˆã•ã‚ŒãŸãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæ–‡å­—åˆ—mFormatã‚’ãƒ‘ãƒ¼ã‚¹ã—ã€ParsedElementã®Listã‚’è¿”ã™
      * <ol>
-     * <li>'%'‚ÅˆÍ‚ñ‚¾•¶š—ñ‚ğƒL[ƒ[ƒh‚Æ”F¯‚·‚éB</li>
-     * <li>'\%'‹Lq‚·‚é‚ÆA•¶š—ñ‚Ì'%'‚Æ‚µ‚Ä”F¯‚³‚ê‚éB</li>
-     * <li>'\\'‚Æ‹Lq‚·‚é‚ÆA•¶š—ñ‚Ì'\'‚Æ‚µ‚Ä”F¯‚³‚ê‚éB</li>
-     * <li>ƒtƒH[ƒ}ƒbƒg•¶š—ñ‚ªnull‚Ü‚½‚Í‹ó•¶š‚Ì‚Æ‚«Anull‚ğ•Ô‚·B</li>
-     * <li>ƒtƒH[ƒ}ƒbƒg•¶š—ñ‚É‚¨‚¢‚ÄA"%"‚Ån‚ß‚½ƒL[ƒ[ƒh‚Ì‹Lq‚ª%‚Å•Â‚¶‚ç‚ê‚Ä‚¢‚È‚¢ê‡AIllegalArgumentException‚ğthrow‚·‚éB</li>
-     * <li>(—á) ƒtƒH[ƒ}ƒbƒg•¶š—ñ‚ª"¡“ú‚Í %D% ‚Å‚·B"‚Ìê‡A3‚Â‚ÌParsedElement‚ğŠÜ‚ŞList‚ª•Ô‹p‚³‚ê‚éB</li> 
+     * <li>'%'ã§å›²ã‚“ã æ–‡å­—åˆ—ã‚’ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã¨èªè­˜ã™ã‚‹ã€‚</li>
+     * <li>'\%'è¨˜è¿°ã™ã‚‹ã¨ã€æ–‡å­—åˆ—ã®'%'ã¨ã—ã¦èªè­˜ã•ã‚Œã‚‹ã€‚</li>
+     * <li>'\\'ã¨è¨˜è¿°ã™ã‚‹ã¨ã€æ–‡å­—åˆ—ã®'\'ã¨ã—ã¦èªè­˜ã•ã‚Œã‚‹ã€‚</li>
+     * <li>ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæ–‡å­—åˆ—ãŒnullã¾ãŸã¯ç©ºæ–‡å­—ã®ã¨ãã€nullã‚’è¿”ã™ã€‚</li>
+     * <li>ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæ–‡å­—åˆ—ã«ãŠã„ã¦ã€"%"ã§å§‹ã‚ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®è¨˜è¿°ãŒ%ã§é–‰ã˜ã‚‰ã‚Œã¦ã„ãªã„å ´åˆã€IllegalArgumentExceptionã‚’throwã™ã‚‹ã€‚</li>
+     * <li>(ä¾‹) ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæ–‡å­—åˆ—ãŒ"ä»Šæ—¥ã¯ %D% ã§ã™ã€‚"ã®å ´åˆã€3ã¤ã®ParsedElementã‚’å«ã‚€ListãŒè¿”å´ã•ã‚Œã‚‹ã€‚</li> 
      *         <ul>
-     *            <li>Å‰‚ÌParsedElement‚ÌmValue‚Í"¡“ú‚Í "AmIsKeyWord‚Ífalse</li>
-     *            <li>2”Ô–Ú‚ÌParsedElement‚ÌmValue‚Í"D"AmIsKeyWord‚Ítrue</li>
-     *            <li>3”Ô–Ú‚ÌParsedElement‚ÌmValue‚Í" ‚Å‚·B"AmIsKeyWord‚Ífalse</li>
+     *            <li>æœ€åˆã®ParsedElementã®mValueã¯"ä»Šæ—¥ã¯ "ã€mIsKeyWordã¯false</li>
+     *            <li>2ç•ªç›®ã®ParsedElementã®mValueã¯"D"ã€mIsKeyWordã¯true</li>
+     *            <li>3ç•ªç›®ã®ParsedElementã®mValueã¯" ã§ã™ã€‚"ã€mIsKeyWordã¯false</li>
      *         </ul>
-     * <li>ƒtƒH[ƒ}ƒbƒg•¶š—ñ‚ªnull‚à‚µ‚­‚Í‹ó•¶š‚Ìê‡Anull‚ğ•Ô‚·B</li>
+     * <li>ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæ–‡å­—åˆ—ãŒnullã‚‚ã—ãã¯ç©ºæ–‡å­—ã®å ´åˆã€nullã‚’è¿”ã™ã€‚</li>
      * </ol>
      * 
-     * @return ParsedElement‚ÌList
+     * @return ParsedElementã®List
      */
     protected List parseFormat(String format){
-        //‰Šú‰»
+        //åˆæœŸåŒ–
         if(format == null || format.length() == 0 ){
-            //null‚ğ•Ô‚·
+            //nullã‚’è¿”ã™
             return null;
         }
         List result = new ArrayList();
@@ -408,7 +408,7 @@ public class WritableRecordFactoryService extends ServiceBase
                     isEscape = false;
                 }else if(isStartKey){
                     if(word.length() != 0){
-                        //ƒL[ƒ[ƒh‚Æ‚µ‚Ä’Ç‰Á
+                        //ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã¨ã—ã¦è¿½åŠ 
                         final ParsedElement elem = new ParsedElement(
                             word.toString(),
                             true
@@ -423,7 +423,7 @@ public class WritableRecordFactoryService extends ServiceBase
                     }
                 }else{
                     if(word.length() > 0){
-                        //ŒÅ’èƒƒbƒZ[ƒW‚Æ‚µ‚Ä’Ç‰Á
+                        //å›ºå®šãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¨ã—ã¦è¿½åŠ 
                         final ParsedElement elem = new ParsedElement(
                             word.toString(),
                             false
@@ -464,7 +464,7 @@ public class WritableRecordFactoryService extends ServiceBase
             );
         }
         if(word.length() > 0){
-            //ŒÅ’èƒƒbƒZ[ƒW‚Æ‚µ‚Ä’Ç‰Á
+            //å›ºå®šãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¨ã—ã¦è¿½åŠ 
             final ParsedElement elem = new ParsedElement(
                 word.toString(),
                 false
@@ -476,8 +476,8 @@ public class WritableRecordFactoryService extends ServiceBase
     }
     
     /**
-     * ƒp[ƒX‚³‚ê‚½ƒtƒH[ƒ}ƒbƒg‚Ì—v‘f‚ğ•\‚·ƒNƒ‰ƒXB<p>
-     * String‚Ì’l‚ÆAkey‚©”Û‚©‚Ì¯•Ê(boolean)’l‚ğ‚ÂB
+     * ãƒ‘ãƒ¼ã‚¹ã•ã‚ŒãŸãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã®è¦ç´ ã‚’è¡¨ã™ã‚¯ãƒ©ã‚¹ã€‚<p>
+     * Stringã®å€¤ã¨ã€keyã‹å¦ã‹ã®è­˜åˆ¥(boolean)å€¤ã‚’æŒã¤ã€‚
      * 
      * @author Y.Tokuda
      */
@@ -485,15 +485,15 @@ public class WritableRecordFactoryService extends ServiceBase
         
         private static final long serialVersionUID = 6554326776504636150L;
         
-        //ƒƒ“ƒo•Ï”
+        //ãƒ¡ãƒ³ãƒå¤‰æ•°
         protected String mVal;
         protected boolean mIsKeyWord;
         
         /**
-         * ƒRƒ“ƒXƒgƒ‰ƒNƒ^B<p>
+         * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<p>
          *
-         * @param val ƒtƒH[ƒ}ƒbƒg‚Ì—v‘f•¶š—ñ
-         * @param isKey ƒL[‚©‚Ç‚¤‚©‚ğ¦‚·ƒtƒ‰ƒO
+         * @param val ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã®è¦ç´ æ–‡å­—åˆ—
+         * @param isKey ã‚­ãƒ¼ã‹ã©ã†ã‹ã‚’ç¤ºã™ãƒ•ãƒ©ã‚°
          */
         public ParsedElement(String val, boolean isKey){
             mVal = val;
@@ -501,18 +501,18 @@ public class WritableRecordFactoryService extends ServiceBase
         }
         
         /**
-         * ƒtƒH[ƒ}ƒbƒg‚Ì—v‘f•¶š—ñ‚ğæ“¾‚·‚éB<p>
+         * ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã®è¦ç´ æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return ƒtƒH[ƒ}ƒbƒg‚Ì—v‘f•¶š—ñ
+         * @return ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã®è¦ç´ æ–‡å­—åˆ—
          */
         public String getValue(){
             return mVal;
         }
         
         /**
-         * ‚±‚Ì—v‘f‚ªƒL[‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+         * ã“ã®è¦ç´ ãŒã‚­ãƒ¼ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return ‚±‚Ì—v‘f‚ªƒL[‚Ìê‡true
+         * @return ã“ã®è¦ç´ ãŒã‚­ãƒ¼ã®å ´åˆtrue
          */
         public boolean isKeyElement(){
             return mIsKeyWord ;

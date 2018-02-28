@@ -35,8 +35,8 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 /**
- * NullƒRƒ“ƒo[ƒ^B<p>
- * nullQÆ‚ğ”CˆÓ‚ÌƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚éB<br>
+ * Nullã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
+ * nullå‚ç…§ã‚’ä»»æ„ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -45,36 +45,36 @@ public class NullConverter implements ReversibleConverter, java.io.Serializable{
     private static final long serialVersionUID = -5603437969416832007L;
     
     /**
-     * null¨ƒIƒuƒWƒFƒNƒg‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * nullâ†’ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int NULL_TO_OBJECT = POSITIVE_CONVERT;
     
     /**
-     * ƒIƒuƒWƒFƒNƒg¨null‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆâ†’nullã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int OBJECT_TO_NULL = REVERSE_CONVERT;
     
     /**
-     * •ÏŠ·í•ÊB<p>
+     * å¤‰æ›ç¨®åˆ¥ã€‚<p>
      */
     protected int convertType;
     
     /**
-     * nullQÆ‚É‘Î‰‚·‚éƒIƒuƒWƒFƒNƒgB<p>
+     * nullå‚ç…§ã«å¯¾å¿œã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€‚<p>
      */
     protected Object nullObject;
     
     /**
-     * null¨ƒIƒuƒWƒFƒNƒg•ÏŠ·‚ÌƒLƒƒƒ‰ƒNƒ^ƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * nullâ†’ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå¤‰æ›ã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public NullConverter(){
         this(NULL_TO_OBJECT);
     }
     
     /**
-     * w’è‚³‚ê‚½•ÏŠ·í•Ê‚Ì•¶š—ñƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå¤‰æ›ç¨®åˆ¥ã®æ–‡å­—åˆ—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see #NULL_TO_OBJECT
      * @see #OBJECT_TO_NULL
      */
@@ -83,9 +83,9 @@ public class NullConverter implements ReversibleConverter, java.io.Serializable{
     }
     
     /**
-     * •ÏŠ·í•Ê‚ğİ’è‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see #getConvertType()
      * @see #NULL_TO_OBJECT
      * @see #OBJECT_TO_NULL
@@ -104,9 +104,9 @@ public class NullConverter implements ReversibleConverter, java.io.Serializable{
     }
     
     /**
-     * •ÏŠ·í•Ê‚ğæ“¾‚·‚éB<p>
+     * å¤‰æ›ç¨®åˆ¥ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÏŠ·í•Ê
+     * @return å¤‰æ›ç¨®åˆ¥
      * @see #setConvertType(int)
      */
     public int getConvertType(){
@@ -114,119 +114,119 @@ public class NullConverter implements ReversibleConverter, java.io.Serializable{
     }
     
     /**
-     * nullQÆ‚É‘Î‰‚·‚éƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚éB<p>
+     * nullå‚ç…§ã«å¯¾å¿œã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param obj ƒIƒuƒWƒFƒNƒg
+     * @param obj ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void setNullObject(Object obj){
         nullObject = obj;
     }
     
     /**
-     * nullQÆ‚É‘Î‰‚·‚éƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * nullå‚ç…§ã«å¯¾å¿œã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒIƒuƒWƒFƒNƒg
+     * @return ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object getNullObject(){
         return nullObject;
     }
     
     /**
-     * nullQÆ‚É‘Î‰‚·‚éboolean‚ğİ’è‚·‚éB<p>
+     * nullå‚ç…§ã«å¯¾å¿œã™ã‚‹booleanã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param na nullQÆ‚É‘Î‰‚·‚éboolean
+     * @param na nullå‚ç…§ã«å¯¾å¿œã™ã‚‹boolean
      */
     public void setNullBoolean(Boolean na){
         nullObject = na;
     }
     
     /**
-     * nullQÆ‚É‘Î‰‚·‚échar‚ğİ’è‚·‚éB<p>
+     * nullå‚ç…§ã«å¯¾å¿œã™ã‚‹charã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param na nullQÆ‚É‘Î‰‚·‚échar
+     * @param na nullå‚ç…§ã«å¯¾å¿œã™ã‚‹char
      */
     public void setNullChar(Character na){
         nullObject = na;
     }
     
     /**
-     * nullQÆ‚É‘Î‰‚·‚ébyte‚ğİ’è‚·‚éB<p>
+     * nullå‚ç…§ã«å¯¾å¿œã™ã‚‹byteã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param na nullQÆ‚É‘Î‰‚·‚ébyte
+     * @param na nullå‚ç…§ã«å¯¾å¿œã™ã‚‹byte
      */
     public void setNullByte(Byte na){
         nullObject = na;
     }
     
     /**
-     * nullQÆ‚É‘Î‰‚·‚éshort‚ğİ’è‚·‚éB<p>
+     * nullå‚ç…§ã«å¯¾å¿œã™ã‚‹shortã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param na nullQÆ‚É‘Î‰‚·‚éshort
+     * @param na nullå‚ç…§ã«å¯¾å¿œã™ã‚‹short
      */
     public void setNullShort(Short na){
         nullObject = na;
     }
     
     /**
-     * nullQÆ‚É‘Î‰‚·‚éint‚ğİ’è‚·‚éB<p>
+     * nullå‚ç…§ã«å¯¾å¿œã™ã‚‹intã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param na nullQÆ‚É‘Î‰‚·‚éint
+     * @param na nullå‚ç…§ã«å¯¾å¿œã™ã‚‹int
      */
     public void setNullInt(Integer na){
         nullObject = na;
     }
     
     /**
-     * nullQÆ‚É‘Î‰‚·‚élong‚ğİ’è‚·‚éB<p>
+     * nullå‚ç…§ã«å¯¾å¿œã™ã‚‹longã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param na nullQÆ‚É‘Î‰‚·‚élong
+     * @param na nullå‚ç…§ã«å¯¾å¿œã™ã‚‹long
      */
     public void setNullLong(Long na){
         nullObject = na;
     }
     
     /**
-     * nullQÆ‚É‘Î‰‚·‚éfloat‚ğİ’è‚·‚éB<p>
+     * nullå‚ç…§ã«å¯¾å¿œã™ã‚‹floatã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param na nullQÆ‚É‘Î‰‚·‚éfloat
+     * @param na nullå‚ç…§ã«å¯¾å¿œã™ã‚‹float
      */
     public void setNullFloat(Float na){
         nullObject = na;
     }
     
     /**
-     * nullQÆ‚É‘Î‰‚·‚édouble‚ğİ’è‚·‚éB<p>
+     * nullå‚ç…§ã«å¯¾å¿œã™ã‚‹doubleã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param na nullQÆ‚É‘Î‰‚·‚édouble
+     * @param na nullå‚ç…§ã«å¯¾å¿œã™ã‚‹double
      */
     public void setNullDouble(Double na){
         nullObject = na;
     }
     
     /**
-     * nullQÆ‚É‘Î‰‚·‚éBigInteger‚ğİ’è‚·‚éB<p>
+     * nullå‚ç…§ã«å¯¾å¿œã™ã‚‹BigIntegerã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param na nullQÆ‚É‘Î‰‚·‚éBigInteger
+     * @param na nullå‚ç…§ã«å¯¾å¿œã™ã‚‹BigInteger
      */
     public void setNullBigInteger(BigInteger na){
         nullObject = na;
     }
     
     /**
-     * nullQÆ‚É‘Î‰‚·‚éBigDecimal‚ğİ’è‚·‚éB<p>
+     * nullå‚ç…§ã«å¯¾å¿œã™ã‚‹BigDecimalã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param na nullQÆ‚É‘Î‰‚·‚éBigDecimal
+     * @param na nullå‚ç…§ã«å¯¾å¿œã™ã‚‹BigDecimal
      */
     public void setNullBigDecimal(BigDecimal na){
         nullObject = na;
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğ•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param obj •ÏŠ·‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return •ÏŠ·Œã‚ÌƒIƒuƒWƒFƒNƒg
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param obj å¤‰æ›å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¤‰æ›å¾Œã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Object convert(Object obj) throws ConvertException{
         switch(convertType){

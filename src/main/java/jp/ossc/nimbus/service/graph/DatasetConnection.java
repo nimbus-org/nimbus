@@ -35,7 +35,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
- * ƒf[ƒ^ƒZƒbƒgƒRƒlƒNƒVƒ‡ƒ“B<p>
+ * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã€‚<p>
  *
  * @author M.Takata
  */

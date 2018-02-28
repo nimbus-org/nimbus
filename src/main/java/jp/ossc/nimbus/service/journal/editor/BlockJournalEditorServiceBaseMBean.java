@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.journal.editor;
 
 /**
- * {@link BlockJournalEditorServiceBase}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link BlockJournalEditorServiceBase}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see BlockJournalEditorServiceBase
@@ -41,78 +41,78 @@ public interface BlockJournalEditorServiceBaseMBean
  extends ImmutableJournalEditorServiceBaseMBean{
     
     /**
-     * ƒwƒbƒ_[•¶š—ñ‚ğİ’è‚·‚éB<p>
+     * ãƒ˜ãƒƒãƒ€ãƒ¼æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param header ƒwƒbƒ_[•¶š—ñ
+     * @param header ãƒ˜ãƒƒãƒ€ãƒ¼æ–‡å­—åˆ—
      * @see #getHeader()
      */
     public void setHeader(String header);
     
     /**
-     * ƒwƒbƒ_[•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ãƒ˜ãƒƒãƒ€ãƒ¼æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒwƒbƒ_[•¶š—ñ
+     * @return ãƒ˜ãƒƒãƒ€ãƒ¼æ–‡å­—åˆ—
      * @see #setHeader(String)
      */
     public String getHeader();
     
     /**
-     * ƒwƒbƒ_[•¶š—ñ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * ãƒ˜ãƒƒãƒ€ãƒ¼æ–‡å­—åˆ—ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isOutput true‚Ìê‡Aƒwƒbƒ_[•¶š—ñ‚ğo—Í‚·‚é
+     * @param isOutput trueã®å ´åˆã€ãƒ˜ãƒƒãƒ€ãƒ¼æ–‡å­—åˆ—ã‚’å‡ºåŠ›ã™ã‚‹
      */
     public void setOutputHeader(boolean isOutput);
     
     /**
-     * ƒwƒbƒ_[•¶š—ñ‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ˜ãƒƒãƒ€ãƒ¼æ–‡å­—åˆ—ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Aƒwƒbƒ_[•¶š—ñ‚ğo—Í‚·‚é
+     * @return trueã®å ´åˆã€ãƒ˜ãƒƒãƒ€ãƒ¼æ–‡å­—åˆ—ã‚’å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputHeader();
     
     /**
-     * ƒuƒƒbƒN‚ÌŠJn‹y‚ÑI—¹‚Å‰üs‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Ítrue‚ÅAo—Í‚·‚éB<p>
+     * ãƒ–ãƒ­ãƒƒã‚¯ã®é–‹å§‹åŠã³çµ‚äº†ã§æ”¹è¡Œã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯trueã§ã€å‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @param isOutput ‰üs‚ğo—Í‚·‚éê‡‚Ítrue
+     * @param isOutput æ”¹è¡Œã‚’å‡ºåŠ›ã™ã‚‹å ´åˆã¯true
      */
     public void setOutputBlockLineSeparator(boolean isOutput);
     
     /**
-     * ƒuƒƒbƒN‚ÌŠJn‹y‚ÑI—¹‚Å‰üs‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ–ãƒ­ãƒƒã‚¯ã®é–‹å§‹åŠã³çµ‚äº†ã§æ”¹è¡Œã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A‰üs‚ğo—Í‚·‚é
+     * @return trueã®å ´åˆã€æ”¹è¡Œã‚’å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputBlockLineSeparator();
     
     /**
-     * ƒuƒƒbƒNŠJnƒZƒpƒŒ[ƒ^•¶š—ñ‚ğİ’è‚·‚éB<p>
+     * ãƒ–ãƒ­ãƒƒã‚¯é–‹å§‹ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param start ƒuƒƒbƒNŠJnƒZƒpƒŒ[ƒ^•¶š—ñ
+     * @param start ãƒ–ãƒ­ãƒƒã‚¯é–‹å§‹ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿æ–‡å­—åˆ—
      * @see #getStartBlockSeparator()
      */
     public void setStartBlockSeparator(String start);
     
     /**
-     * ƒuƒƒbƒNŠJnƒZƒpƒŒ[ƒ^•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ãƒ–ãƒ­ãƒƒã‚¯é–‹å§‹ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒuƒƒbƒNŠJnƒZƒpƒŒ[ƒ^•¶š—ñ
+     * @return ãƒ–ãƒ­ãƒƒã‚¯é–‹å§‹ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿æ–‡å­—åˆ—
      * @see #setStartBlockSeparator(String)
      */
     public String getStartBlockSeparator();
     
     /**
-     * ƒuƒƒbƒNI—¹ƒZƒpƒŒ[ƒ^•¶š—ñ‚ğİ’è‚·‚éB<p>
+     * ãƒ–ãƒ­ãƒƒã‚¯çµ‚äº†ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param end ƒuƒƒbƒNI—¹ƒZƒpƒŒ[ƒ^•¶š—ñ
+     * @param end ãƒ–ãƒ­ãƒƒã‚¯çµ‚äº†ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿æ–‡å­—åˆ—
      * @see #getEndBlockSeparator()
      */
     public void setEndBlockSeparator(String end);
     
     /**
-     * ƒuƒƒbƒNI—¹ƒZƒpƒŒ[ƒ^•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ãƒ–ãƒ­ãƒƒã‚¯çµ‚äº†ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒuƒƒbƒNI—¹ƒZƒpƒŒ[ƒ^•¶š—ñ
+     * @return ãƒ–ãƒ­ãƒƒã‚¯çµ‚äº†ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿æ–‡å­—åˆ—
      * @see #setEndBlockSeparator(String)
      */
     public String getEndBlockSeparator();

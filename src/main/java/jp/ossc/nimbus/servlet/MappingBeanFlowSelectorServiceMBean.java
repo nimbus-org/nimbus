@@ -36,7 +36,7 @@ import java.util.Properties;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link MappingBeanFlowSelectorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link MappingBeanFlowSelectorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see MappingBeanFlowSelectorService
@@ -44,40 +44,40 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 public interface MappingBeanFlowSelectorServiceMBean extends DefaultBeanFlowSelectorServiceMBean{
     
     /**
-     * ƒŠƒNƒGƒXƒgƒpƒX‚ÆƒAƒNƒVƒ‡ƒ“ƒtƒ[–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ã‚¹ã¨ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãƒ•ãƒ­ãƒ¼åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param mapping ƒŠƒNƒGƒXƒgƒpƒX‚ÆƒAƒNƒVƒ‡ƒ“ƒtƒ[–¼‚Ìƒ}ƒbƒsƒ“ƒOBƒŠƒNƒGƒXƒgƒpƒX=ƒAƒNƒVƒ‡ƒ“ƒtƒ[–¼
+     * @param mapping ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ã‚¹ã¨ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãƒ•ãƒ­ãƒ¼åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ã‚¹=ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãƒ•ãƒ­ãƒ¼å
      */
     public void setMapping(Properties mapping);
     
     /**
-     * ƒŠƒNƒGƒXƒgƒpƒX‚ÆƒAƒNƒVƒ‡ƒ“ƒtƒ[–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ã‚¹ã¨ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãƒ•ãƒ­ãƒ¼åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒNƒGƒXƒgƒpƒX‚ÆƒAƒNƒVƒ‡ƒ“ƒtƒ[–¼‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ã‚¹ã¨ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãƒ•ãƒ­ãƒ¼åã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Properties getMapping();
     
     /**
-     * ƒŠƒNƒGƒXƒgƒpƒX‚ÆƒAƒNƒVƒ‡ƒ“ƒtƒ[–¼‚Ìƒ}ƒbƒsƒ“ƒO‚É‚¨‚¢‚ÄAƒŠƒNƒGƒXƒgƒpƒX‚É³‹K•\Œ»‚ğw’è‚Å‚«‚é‚æ‚¤‚É‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Å³‹K•\Œ»‚ğg—p‚µ‚È‚¢B<br>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ã‚¹ã¨ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãƒ•ãƒ­ãƒ¼åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã«ãŠã„ã¦ã€ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ã‚¹ã«æ­£è¦è¡¨ç¾ã‚’æŒ‡å®šã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§æ­£è¦è¡¨ç¾ã‚’ä½¿ç”¨ã—ãªã„ã€‚<br>
      *
-     * @param isEnable ³‹K•\Œ»‚ğg—p‚·‚éê‡‚ÍAtrue
+     * @param isEnable æ­£è¦è¡¨ç¾ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setRegexEnabled(boolean isEnable);
     
     /**
-     * ƒŠƒNƒGƒXƒgƒpƒX‚ÆƒAƒNƒVƒ‡ƒ“ƒtƒ[–¼‚Ìƒ}ƒbƒsƒ“ƒO‚É‚¨‚¢‚ÄAƒŠƒNƒGƒXƒgƒpƒX‚É³‹K•\Œ»‚ğw’è‚Å‚«‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ã‚¹ã¨ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãƒ•ãƒ­ãƒ¼åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã«ãŠã„ã¦ã€ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ã‚¹ã«æ­£è¦è¡¨ç¾ã‚’æŒ‡å®šã§ãã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A³‹K•\Œ»‚ğg—p‚·‚é
+     * @return trueã®å ´åˆã€æ­£è¦è¡¨ç¾ã‚’ä½¿ç”¨ã™ã‚‹
      */
     public boolean isRegexEnabled();
     
     /**
-     * ³‹K•\Œ»”äŠr‚ğs‚¤ê‡‚Ég—p‚·‚éƒ}ƒbƒ`ƒtƒ‰ƒO‚ğİ’è‚·‚éB<p>
-     * ’A‚µA{@link #isRegexEnabled()}‚ªtrue‚Ìê‡‚Ì‚İ—LŒø‚Å‚ ‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0B<br>
+     * æ­£è¦è¡¨ç¾æ¯”è¼ƒã‚’è¡Œã†å ´åˆã«ä½¿ç”¨ã™ã‚‹ãƒãƒƒãƒãƒ•ãƒ©ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€{@link #isRegexEnabled()}ãŒtrueã®å ´åˆã®ã¿æœ‰åŠ¹ã§ã‚ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã€‚<br>
      *
-     * @param flag ƒ}ƒbƒ`ƒtƒ‰ƒO
+     * @param flag ãƒãƒƒãƒãƒ•ãƒ©ã‚°
      * @see java.util.regex.Pattern#CANON_EQ
      * @see java.util.regex.Pattern#CASE_INSENSITIVE
      * @see java.util.regex.Pattern#DOTALL
@@ -88,9 +88,9 @@ public interface MappingBeanFlowSelectorServiceMBean extends DefaultBeanFlowSele
     public void setRegexMatchFlag(int flag);
     
     /**
-     * ³‹K•\Œ»”äŠr‚ğs‚¤ê‡‚Ég—p‚·‚éƒ}ƒbƒ`ƒtƒ‰ƒO‚ğæ“¾‚·‚éB<p>
+     * æ­£è¦è¡¨ç¾æ¯”è¼ƒã‚’è¡Œã†å ´åˆã«ä½¿ç”¨ã™ã‚‹ãƒãƒƒãƒãƒ•ãƒ©ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ}ƒbƒ`ƒtƒ‰ƒO
+     * @return ãƒãƒƒãƒãƒ•ãƒ©ã‚°
      */
     public int getRegexMatchFlag();
 }

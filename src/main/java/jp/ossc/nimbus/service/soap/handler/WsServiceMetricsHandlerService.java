@@ -64,7 +64,7 @@ import jp.ossc.nimbus.service.writer.Category;
 import jp.ossc.nimbus.service.writer.MessageWriteException;
 
 /**
- * WebƒT[ƒrƒXƒƒgƒŠƒNƒXƒnƒ“ƒhƒ‰ƒT[ƒrƒXB
+ * Webã‚µãƒ¼ãƒ“ã‚¹ãƒ¡ãƒˆãƒªã‚¯ã‚¹ãƒãƒ³ãƒ‰ãƒ©ã‚µãƒ¼ãƒ“ã‚¹ã€‚
  * <p>
  *
  * @author M.Takata
@@ -100,34 +100,34 @@ public class WsServiceMetricsHandlerService extends ServiceBase
     private boolean isOutputAveragePerformance = true;
     private PerformanceThreadLocal performance;
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public void setEnabled(boolean enable){
         isEnabled = enable;
     }
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public boolean isEnabled(){
         return isEnabled;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public void setCalculateOnlyNormal(boolean isCalc){
         isCalculateOnlyNormal = isCalc;
     }
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public boolean isCalculateOnlyNormal(){
         return isCalculateOnlyNormal;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public void setDateFormat(String format){
         dateFormat = format;
     }
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public String getDateFormat(){
         return dateFormat;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public String displayMetricsInfo(){
         final MetricsInfo[] infos = (MetricsInfo[])metricsInfos.values()
             .toArray(new MetricsInfo[metricsInfos.size()]);
@@ -251,17 +251,17 @@ public class WsServiceMetricsHandlerService extends ServiceBase
         return buf.toString();
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public void reset(){
         metricsInfos.clear();
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public MetricsInfo getMetricsInfo(String key){
         return (MetricsInfo)metricsInfos.get(key);
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public Map getMetricsInfos(){
         if(metricsInfos == null){
             return new HashMap();
@@ -269,12 +269,12 @@ public class WsServiceMetricsHandlerService extends ServiceBase
         return new HashMap(metricsInfos);
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public void setOutputInterval(long interval){
         outputInterval = interval;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public long getOutputInterval(){
         return outputInterval;
     }
@@ -287,149 +287,149 @@ public class WsServiceMetricsHandlerService extends ServiceBase
         return isResetByOutput;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public void setKeyAndCategoryServiceNameMapping(Properties mapping){
         keyAndCategoryServiceNameMapping = mapping;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public Properties getKeyAndCategoryServiceNameMapping(){
         return keyAndCategoryServiceNameMapping;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public void setCategoryServiceName(ServiceName name){
         categoryServiceName = name;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public ServiceName getCategoryServiceName(){
         return categoryServiceName;
     }
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public void setOutputCount(boolean isOutput){
         isOutputCount = isOutput;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public boolean isOutputCount(){
         return isOutputCount;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public void setOutputExceptionCount(boolean isOutput){
         isOutputExceptionCount = isOutput;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public boolean isOutputExceptionCount(){
         return isOutputExceptionCount;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public void setOutputErrorCount(boolean isOutput){
         isOutputErrorCount = isOutput;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public boolean isOutputErrorCount(){
         return isOutputErrorCount;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public void setOutputLastTime(boolean isOutput){
         isOutputLastTime = isOutput;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public boolean isOutputLastTime(){
         return isOutputLastTime;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public void setOutputLastExceptionTime(boolean isOutput){
         isOutputLastExceptionTime = isOutput;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public boolean isOutputLastExceptionTime(){
         return isOutputLastExceptionTime;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public void setOutputLastErrorTime(boolean isOutput){
         isOutputLastErrorTime = isOutput;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public boolean isOutputLastErrorTime(){
         return isOutputLastErrorTime;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public void setOutputBestPerformance(boolean isOutput){
         isOutputBestPerformance = isOutput;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public boolean isOutputBestPerformance(){
         return isOutputBestPerformance;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public void setOutputBestPerformanceTime(boolean isOutput){
         isOutputBestPerformanceTime = isOutput;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public boolean isOutputBestPerformanceTime(){
         return isOutputBestPerformanceTime;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public void setOutputWorstPerformance(boolean isOutput){
         isOutputWorstPerformance = isOutput;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public boolean isOutputWorstPerformance(){
         return isOutputWorstPerformance;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public void setOutputWorstPerformanceTime(boolean isOutput){
         isOutputWorstPerformanceTime = isOutput;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public boolean isOutputWorstPerformanceTime(){
         return isOutputWorstPerformanceTime;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public void setOutputAveragePerformance(boolean isOutput){
         isOutputAveragePerformance = isOutput;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public boolean isOutputAveragePerformance(){
         return isOutputAveragePerformance;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public void setOutputTimestamp(boolean isOutput){
         isOutputTimestamp = isOutput;
     }
     
-    // WsServiceMetricsHandlerServiceMBean‚ÌJavaDoc
+    // WsServiceMetricsHandlerServiceMBeanã®JavaDoc
     public boolean isOutputTimestamp(){
         return isOutputTimestamp;
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         metricsInfos = new ConcurrentHashMap();
@@ -437,9 +437,9 @@ public class WsServiceMetricsHandlerService extends ServiceBase
         keyAndCategoryMap = new HashMap();
     }
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         metricsInfos.clear();
@@ -474,10 +474,10 @@ public class WsServiceMetricsHandlerService extends ServiceBase
         }
     }
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
-     * æ“¾‚µ‚½ƒƒgƒŠƒNƒX‚ğA•W€o—Í‚Éo—Í‚·‚éB
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * å–å¾—ã—ãŸãƒ¡ãƒˆãƒªã‚¯ã‚¹ã‚’ã€æ¨™æº–å‡ºåŠ›ã«å‡ºåŠ›ã™ã‚‹ã€‚
      *
-     * @exception Exception ’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         System.out.println(displayMetricsInfo());
@@ -490,9 +490,9 @@ public class WsServiceMetricsHandlerService extends ServiceBase
         keyAndCategoryMap.clear();
     }
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         metricsInfos = null;
@@ -557,45 +557,45 @@ public class WsServiceMetricsHandlerService extends ServiceBase
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ªŠJn‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒé–‹å§‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onStart() {
         return true;
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ª’â~‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒåœæ­¢ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onStop() {
         return true;
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ª’†’f‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒä¸­æ–­ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onSuspend() {
         return true;
     }
     
     /**
-     * ƒf[ƒ‚ƒ“‚ªÄŠJ‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒå†é–‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      * 
-     * @return í‚Étrue‚ğ•Ô‚·
+     * @return å¸¸ã«trueã‚’è¿”ã™
      */
     public boolean onResume() {
         return true;
     }
     
     /**
-     * o—ÍŠÔŠu‚¾‚¯ƒXƒŠ[ƒv‚·‚éB<p>
+     * å‡ºåŠ›é–“éš”ã ã‘ã‚¹ãƒªãƒ¼ãƒ—ã™ã‚‹ã€‚<p>
      * 
-     * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
+     * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      * @return null
      */
     public Object provide(DaemonControl ctrl){
@@ -607,10 +607,10 @@ public class WsServiceMetricsHandlerService extends ServiceBase
     }
     
     /**
-     * o—Íæ‚ªİ’è‚³‚ê‚Ä‚¢‚ê‚ÎAB<p>
+     * å‡ºåŠ›å…ˆãŒè¨­å®šã•ã‚Œã¦ã„ã‚Œã°ã€ã€‚<p>
      *
      * @param dequeued null
-     * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
+     * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void consume(Object dequeued, DaemonControl ctrl){
         Date timestamp = new Date();
@@ -625,7 +625,7 @@ public class WsServiceMetricsHandlerService extends ServiceBase
                     try{
                         category.write(createRecord(timestamp, info));
                     }catch(MessageWriteException e){
-                        // TODO ƒƒOo—Í
+                        // TODO ãƒ­ã‚°å‡ºåŠ›
                     }
                 }
             }
@@ -638,7 +638,7 @@ public class WsServiceMetricsHandlerService extends ServiceBase
                 try{
                     metricsCategory.write(createRecord(timestamp, i + 1, infos[i]));
                 }catch(MessageWriteException e){
-                    // TODO ƒƒOo—Í
+                    // TODO ãƒ­ã‚°å‡ºåŠ›
                 }
             }
         }
@@ -734,7 +734,7 @@ public class WsServiceMetricsHandlerService extends ServiceBase
     }
     
     /**
-     * ‰½‚à‚µ‚È‚¢B<p>
+     * ä½•ã‚‚ã—ãªã„ã€‚<p>
      */
     public void garbage(){
     }

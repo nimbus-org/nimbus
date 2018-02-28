@@ -37,45 +37,45 @@ import java.text.SimpleDateFormat;
 
 
 /**
- * {@link Date}�^��PropertyEditor�N���X�B<p>
- * ���t������iyyyy/MM/dd HH:mm:ss SSS�j��java.util.Date�^�̃I�u�W�F�N�g�ɕϊ�����B<br>
- * "${"��"}"�Ɉ͂܂ꂽ������́A�����̃V�X�e���v���p�e�B�ƒu�������B<br>
+ * {@link Date}型のPropertyEditorクラス。<p>
+ * 日付文字列（yyyy/MM/dd HH:mm:ss SSS）をjava.util.Date型のオブジェクトに変換する。<br>
+ * "${"と"}"に囲まれた文字列は、同名のシステムプロパティと置換される。<br>
  * <p>
- * ��F<br>
+ * 例：<br>
  * &nbsp;&nbsp;2006/08/15 15:20:11 100<br>
  * <br>
- * �̂悤�ȕ�����<br>
+ * のような文字列が<br>
  * <br>
  * &nbsp;&nbsp;new SimpleDateFormat("yyyy/MM/dd HH:mm:ss SSS").parse("2006/08/15 15:20:11 100")<br>
  * <br>
- * �̂悤�ɕϊ������B<br>
- * �܂��A�ݒ肷��K�v�̂Ȃ��t�B�[���h�͋�ɂ���ƁA���̃t�B�[���h�̍ŏ��l�ɐݒ肳���B<br>
- * ��F<br>
+ * のように変換される。<br>
+ * また、設定する必要のないフィールドは空にすると、そのフィールドの最小値に設定される。<br>
+ * 例：<br>
  * &nbsp;&nbsp;//15 15::11<br>
  * <br>
- * �̂悤�ȕ�����<br>
+ * のような文字列が<br>
  * <br>
  * &nbsp;&nbsp;new SimpleDateFormat("yyyy/MM/dd HH:mm:ss SSS").parse("1970/01/15 15:00:11 000")<br>
  * <br>
- * �̂悤�ɕϊ������B<br>
- * �܂��A���ݎ�������ݒ肵�����ꍇ�́A�e�t�B�[���h��"NOW"��ݒ肷��B<br>
- * ��F<br>
+ * のように変換される。<br>
+ * また、現在時刻から設定したい場合は、各フィールドに"NOW"を設定する。<br>
+ * 例：<br>
  * &nbsp;&nbsp;NOW/NOW/15 15:NOW:11 NOW<br>
  * <br>
- * �̂悤�ȕ����񂪁A���ݓ��t��2006/09/01 13:59:40 150�Ƃ����<br>
+ * のような文字列が、現在日付を2006/09/01 13:59:40 150とすると<br>
  * <br>
  * &nbsp;&nbsp;new SimpleDateFormat("yyyy/MM/dd HH:mm:ss SSS").parse("2006/09/15 15:59:11 150")<br>
  * <br>
- * �̂悤�ɕϊ������B<br>
- * �܂��A�P���Ɍ��ݎ�����ݒ肵�����ꍇ�́A"NOW"��ݒ肷��B<br>
- * ��F<br>
+ * のように変換される。<br>
+ * また、単純に現在時刻を設定したい場合は、"NOW"を設定する。<br>
+ * 例：<br>
  * &nbsp;&nbsp;NOW<br>
  * <br>
- * �̂悤�ȕ����񂪁A<br>
+ * のような文字列が、<br>
  * <br>
  * &nbsp;&nbsp;new Date()<br>
  * <br>
- * �̂悤�ɕϊ������B<br>
+ * のように変換される。<br>
  *
  * @author M.Takata
  */
@@ -90,9 +90,9 @@ public class DateEditor extends PropertyEditorSupport
     private SimpleDateFormat format;
     
     /**
-     * �w�肳�ꂽ���������͂��ăv���p�e�B�l��ݒ肷��B<p>
+     * 指定された文字列を解析してプロパティ値を設定する。<p>
      *
-     * @param text ��͂���镶����
+     * @param text 解析される文字列
      */
     public void setAsText(String text){
         if(text == null){
@@ -374,9 +374,9 @@ public class DateEditor extends PropertyEditorSupport
     }
     
     /**
-     * �v���p�e�B��������擾����B<p>
+     * プロパティ文字列を取得する。<p>
      *
-     * @return �v���p�e�B������
+     * @return プロパティ文字列
      */
     public String getAsText(){
         final Date date = (Date)getValue();

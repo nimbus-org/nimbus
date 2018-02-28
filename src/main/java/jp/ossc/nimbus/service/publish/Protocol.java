@@ -36,7 +36,7 @@ import java.nio.channels.SocketChannel;
 import java.nio.channels.SelectionKey;
 
 /**
- * プロトコルインターフェース
+ * 繝励Ο繝医さ繝ｫ繧､繝ｳ繧ｿ繝ｼ繝輔ぉ繝ｼ繧ｹ
  * @version $Name:  $
  * @author A.Kokubu
  * @since 1.0

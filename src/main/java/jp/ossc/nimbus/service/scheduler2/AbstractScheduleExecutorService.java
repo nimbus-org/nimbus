@@ -42,8 +42,8 @@ import jp.ossc.nimbus.service.context.Context;
 import jp.ossc.nimbus.service.aop.interceptor.ThreadContextKey;
 
 /**
- * ���ۃX�P�W���[�����s�B<p>
- * ���s���˗����ꂽ�^�X�N�����s����B<br>
+ * 抽象スケジュール実行。<p>
+ * 実行を依頼されたタスクを実行する。<br>
  *
  * @author M.Takata
  */
@@ -126,9 +126,9 @@ public abstract class AbstractScheduleExecutorService extends ServiceBase
     }
     
     /**
-     * �T�[�r�X�̊J�n�O�������s���B<p>
+     * サービスの開始前処理を行う。<p>
      *
-     * @exception Exception �T�[�r�X�̊J�n�O�����Ɏ��s�����ꍇ
+     * @exception Exception サービスの開始前処理に失敗した場合
      */
     public void preStartService() throws Exception{
         
@@ -160,65 +160,65 @@ public abstract class AbstractScheduleExecutorService extends ServiceBase
         }
     }
     
-    // ScheduleExecutor��JavaDoc
+    // ScheduleExecutorのJavaDoc
     public ScheduleManager getScheduleManager(){
         return scheduleManager;
     }
     
-    // ScheduleExecutor��JavaDoc
+    // ScheduleExecutorのJavaDoc
     public void setScheduleManager(ScheduleManager manager){
         scheduleManager = manager;
     }
     
-    // ScheduleExecutor��JavaDoc
+    // ScheduleExecutorのJavaDoc
     public String getKey(){
         return key == null ? hostName : key;
     }
     
-    // ScheduleExecutor��JavaDoc
+    // ScheduleExecutorのJavaDoc
     public String getType(){
         return type;
     }
     
     /**
-     * �w�肳�ꂽ�X�P�W���[���̃^�X�N�����s�\���`�F�b�N����B<p>
-     * �����ł́A�����������Ȃ��̂ŁA�K�v�ɉ����ăI�[�o�[���C�h���邱�ƁB<br>
+     * 指定されたスケジュールのタスクが実行可能かチェックする。<p>
+     * ここでは、何も実装しないので、必要に応じてオーバーライドすること。<br>
      *
-     * @param schedule �X�P�W���[��
-     * @exception Exception �w�肳�ꂽ�X�P�W���[���̃^�X�N�����s�ł��Ȃ��ꍇ
+     * @param schedule スケジュール
+     * @exception Exception 指定されたスケジュールのタスクが実行できない場合
      */
     protected void checkPreExecute(Schedule schedule) throws Exception{
     }
     
     /**
-     * �w�肳�ꂽ�X�P�W���[���̃^�X�N�����s����B<p>
+     * 指定されたスケジュールのタスクを実行する。<p>
      *
-     * @param schedule �X�P�W���[��
-     * @return ���s���ʂ��܂ރX�P�W���[��
-     * @exception Throwable �w�肳�ꂽ�X�P�W���[���̎��s�Ɏ��s�����ꍇ
+     * @param schedule スケジュール
+     * @return 実行結果を含むスケジュール
+     * @exception Throwable 指定されたスケジュールの実行に失敗した場合
      */
     protected abstract Schedule executeInternal(Schedule schedule)
      throws Throwable;
     
     /**
-     * �w�肳�ꂽ�X�P�W���[�������s����B<p>
+     * 指定されたスケジュールを実行する。<p>
      * <ol>
-     *   <li>{@link #checkPreExecute(Schedule)}�ŃX�P�W���[���̃^�X�N�����s�ł��邩�ǂ������`�F�b�N����B<br>�`�F�b�N�G���[�̏ꍇ�́A���O{@link #MSG_ID_EXECUTE_ERROR}���o�͂��A�X�P�W���[���̏�Ԃ�{@link Schedule#STATE_FAILED}�ɑJ�ڂ�����B<br>�X�P�W���[���̏�ԑJ�ڂɎ��s�����ꍇ�́A���O{@link #MSG_ID_STATE_CHANGE_ERROR}���o�͂���B</li>
-     *   <li>�X�P�W���[���̏�Ԃ�{@link Schedule#STATE_RUN}�ɑJ�ڂ����A���O{@link #MSG_ID_RUN}���o�͂���B<br>�X�P�W���[���̏�ԑJ�ڂɎ��s�����ꍇ�́A���O{@link #MSG_ID_STATE_CHANGE_ERROR}���o�͂���B</li>
-     *   <li>{@link #executeInternal(Schedule)}���Ăяo���A�X�P�W���[�������s����B</li>
+     *   <li>{@link #checkPreExecute(Schedule)}でスケジュールのタスクが実行できるかどうかをチェックする。<br>チェックエラーの場合は、ログ{@link #MSG_ID_EXECUTE_ERROR}を出力し、スケジュールの状態を{@link Schedule#STATE_FAILED}に遷移させる。<br>スケジュールの状態遷移に失敗した場合は、ログ{@link #MSG_ID_STATE_CHANGE_ERROR}を出力する。</li>
+     *   <li>スケジュールの状態を{@link Schedule#STATE_RUN}に遷移させ、ログ{@link #MSG_ID_RUN}を出力する。<br>スケジュールの状態遷移に失敗した場合は、ログ{@link #MSG_ID_STATE_CHANGE_ERROR}を出力する。</li>
+     *   <li>{@link #executeInternal(Schedule)}を呼び出し、スケジュールを実行する。</li>
      *   <li>
-     *     �X�P�W���[���̎��s���ʂɏ]���āA�ȉ��̏������s���B<br>
+     *     スケジュールの実行結果に従って、以下の処理を行う。<br>
      *     <ul>
-     *       <li>�X�P�W���[��������ɏI�������ꍇ�A���O{@link #MSG_ID_RUN}���o�͂��A�X�P�W���[���̏�Ԃ�{@link Schedule#STATE_END}�ɑJ�ڂ�����B<br>�X�P�W���[���̏�ԑJ�ڂɎ��s�����ꍇ�́A���O{@link #MSG_ID_STATE_CHANGE_ERROR}���o�͂���B</li>
-     *       <li>�X�P�W���[���̎��s�ŗ�O�����������ꍇ�A���O{@link #MSG_ID_EXECUTE_ERROR}���o�͂��A�X�P�W���[���̏�Ԃ�{@link Schedule#STATE_FAILED}�ɑJ�ڂ�����B<br>�X�P�W���[���̏�ԑJ�ڂɎ��s�����ꍇ�́A���O{@link #MSG_ID_STATE_CHANGE_ERROR}���o�͂���B</li>
-     *       <li>�X�P�W���[���������I�����ꂽ�ꍇ�A���O{@link #MSG_ID_ABORT}���o�͂��A�X�P�W���[���̏�Ԃ�{@link Schedule#STATE_ABORT}�ɑJ�ڂ�����B<br>�X�P�W���[���̏�ԑJ�ڂɎ��s�����ꍇ�́A���O{@link #MSG_ID_STATE_CHANGE_ERROR}���o�͂���B</li>
-     *       <li>�X�P�W���[�������g���C�v�����ꂽ�ꍇ�A���̃��g���C�����ɍăX�P�W���[�����āA�X�P�W���[���̏�Ԃ�{@link Schedule#STATE_RETRY}�ɑJ�ڂ�����B<br>�A���A���̃��g���C���������g���C�I���������z���Ă����ꍇ�́A���O{@link #MSG_ID_RETRY_END_ERROR}���o�͂��A�X�P�W���[���̏�Ԃ�{@link Schedule#STATE_FAILED}�ɑJ�ڂ�����B<br>�X�P�W���[���̏�ԑJ�ڂɎ��s�����ꍇ�́A���O{@link #MSG_ID_STATE_CHANGE_ERROR}���o�͂���B</li>
+     *       <li>スケジュールが正常に終了した場合、ログ{@link #MSG_ID_RUN}を出力し、スケジュールの状態を{@link Schedule#STATE_END}に遷移させる。<br>スケジュールの状態遷移に失敗した場合は、ログ{@link #MSG_ID_STATE_CHANGE_ERROR}を出力する。</li>
+     *       <li>スケジュールの実行で例外が発生した場合、ログ{@link #MSG_ID_EXECUTE_ERROR}を出力し、スケジュールの状態を{@link Schedule#STATE_FAILED}に遷移させる。<br>スケジュールの状態遷移に失敗した場合は、ログ{@link #MSG_ID_STATE_CHANGE_ERROR}を出力する。</li>
+     *       <li>スケジュールが強制終了された場合、ログ{@link #MSG_ID_ABORT}を出力し、スケジュールの状態を{@link Schedule#STATE_ABORT}に遷移させる。<br>スケジュールの状態遷移に失敗した場合は、ログ{@link #MSG_ID_STATE_CHANGE_ERROR}を出力する。</li>
+     *       <li>スケジュールがリトライ要求された場合、次のリトライ時刻に再スケジュールして、スケジュールの状態を{@link Schedule#STATE_RETRY}に遷移させる。<br>但し、次のリトライ時刻がリトライ終了時刻を越えていた場合は、ログ{@link #MSG_ID_RETRY_END_ERROR}を出力し、スケジュールの状態を{@link Schedule#STATE_FAILED}に遷移させる。<br>スケジュールの状態遷移に失敗した場合は、ログ{@link #MSG_ID_STATE_CHANGE_ERROR}を出力する。</li>
      *     </ul>
      *   </li>
      * </ol>
      *
-     * @param schedule �X�P�W���[��
-     * @return �X�P�W���[��
+     * @param schedule スケジュール
+     * @return スケジュール
      */
     public Schedule execute(Schedule schedule){
         
@@ -596,11 +596,11 @@ public abstract class AbstractScheduleExecutorService extends ServiceBase
     }
     
     /**
-     * ���g���C�������v�Z����B<p>
+     * リトライ日時を計算する。<p>
      *
-     * @param interval ���g���C���s�Ԋu
-     * @param endTime ���g���C�I������
-     * @return ���g���C�����B���g���C�I���������߂��Ă���ꍇ�́Anull
+     * @param interval リトライ実行間隔
+     * @param endTime リトライ終了時刻
+     * @return リトライ日時。リトライ終了時刻を過ぎている場合は、null
      */
     protected Date calculateRetryTime(
         long interval,

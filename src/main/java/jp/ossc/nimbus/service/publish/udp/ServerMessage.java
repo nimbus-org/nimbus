@@ -37,7 +37,7 @@ import java.io.ObjectInput;
 import java.io.Externalizable;
 
 /**
- * ƒT[ƒo‚©‚ç‚ÌƒƒbƒZ[ƒWƒNƒ‰ƒXB<p>
+ * ã‚µãƒ¼ãƒã‹ã‚‰ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */

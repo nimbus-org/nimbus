@@ -39,7 +39,7 @@ import java.io.*;
 /**
  * 
  * @author   NRI. Hirotaka Nakano
- * @version  1.00 ì¬: 2003/09/30 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/09/30 -ã€€H.Nakano
  */
 public class CsvArrayListTest extends TestCase {
 
@@ -131,7 +131,7 @@ public class CsvArrayListTest extends TestCase {
 	}
 
 	/*
-	 * int split ‚ÌƒeƒXƒg(String, String)
+	 * int split ã®ãƒ†ã‚¹ãƒˆ(String, String)
 	 */
 	public void testSplitStringString() throws Exception {
 		CsvArrayList ary = new CsvArrayList() ;
@@ -152,7 +152,7 @@ public class CsvArrayListTest extends TestCase {
 	}
 
 	/*
-	 * int splitExcelFile ‚ÌƒeƒXƒg(String)
+	 * int splitExcelFile ã®ãƒ†ã‚¹ãƒˆ(String)
 	 */
 	public void testSplitExcel() throws Exception {
 		CsvArrayList ary = new CsvArrayList() ;
@@ -163,16 +163,16 @@ public class CsvArrayListTest extends TestCase {
 
 		String line = in.readLine();
 		ary.splitExcelFile(line);
-		assertEquals(ary.get(0), "‚ ‚¢‚¤‚¦‚¨");
-		assertEquals(ary.get(1), "‚ \"‚¢\"‚¤\"‚¦\"‚¨\"");
+		assertEquals(ary.get(0), "ã‚ã„ã†ãˆãŠ");
+		assertEquals(ary.get(1), "ã‚\"ã„\"ã†\"ãˆ\"ãŠ\"");
 		if(ary.size() != 3) {
 			throw new Exception() ;
 		}
 
 		line = in.readLine();
 		ary.splitExcelFile(line);
-		assertEquals(ary.get(0), "‚©‚«‚­‚¯‚±");
-		assertEquals(ary.get(1), "‚©\"‚«\"‚­\"‚¯\"‚±\"");
+		assertEquals(ary.get(0), "ã‹ããã‘ã“");
+		assertEquals(ary.get(1), "ã‹\"ã\"ã\"ã‘\"ã“\"");
 		if(ary.size() != 3) {
 			throw new Exception() ;
 		}
@@ -182,20 +182,20 @@ public class CsvArrayListTest extends TestCase {
 	}
 
 	/*
-	 * CsvExcelArrayList ƒNƒ‰ƒX‚ÌƒeƒXƒg
+	 * CsvExcelArrayList ã‚¯ãƒ©ã‚¹ã®ãƒ†ã‚¹ãƒˆ
 	 */
 	public void testCsvExcelArrayList() throws Exception {
 		FileReader file = new FileReader("src/test/resources/jp/ossc/nimbus/util/test1.csv") ;
 		CsvExcelArrayList excelArray = new CsvExcelArrayList(file);
 		
-		assertEquals(excelArray.getStr(0, 0), "‚ ‚¢‚¤‚¦‚¨");
-		assertEquals(excelArray.getStr(0, 1), "‚ \"‚¢\"‚¤\"‚¦\"‚¨\"");
+		assertEquals(excelArray.getStr(0, 0), "ã‚ã„ã†ãˆãŠ");
+		assertEquals(excelArray.getStr(0, 1), "ã‚\"ã„\"ã†\"ãˆ\"ãŠ\"");
 		if(excelArray.size(0) != 3) {
 			throw new Exception() ;
 		}
 
-		assertEquals(excelArray.getStr(1, 0), "‚©‚«‚­‚¯‚±");
-		assertEquals(excelArray.getStr(1, 1), "‚©\"‚«\"‚­\"‚¯\"‚±\"");
+		assertEquals(excelArray.getStr(1, 0), "ã‹ããã‘ã“");
+		assertEquals(excelArray.getStr(1, 1), "ã‹\"ã\"ã\"ã‘\"ã“\"");
 		if(excelArray.size(1) != 3) {
 			throw new Exception() ;
 		}
@@ -203,7 +203,7 @@ public class CsvArrayListTest extends TestCase {
 		file.close();
 	}
 	/*
-	 * String join ‚ÌƒeƒXƒg()
+	 * String join ã®ãƒ†ã‚¹ãƒˆ()
 	 */
 	public void testJoin() throws Exception {
 		CsvArrayList ary = new CsvArrayList() ;

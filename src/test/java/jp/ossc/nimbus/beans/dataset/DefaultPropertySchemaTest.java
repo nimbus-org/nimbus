@@ -13,7 +13,7 @@ import junit.framework.TestCase;
 /**
  * 
  * @author S.Teshima
- * @version 1.00 ì¬: 2008/01/18 - S.Teshima
+ * @version 1.00 ä½œæˆ: 2008/01/18 - S.Teshima
  */
 
 public class DefaultPropertySchemaTest extends TestCase {
@@ -28,17 +28,17 @@ public class DefaultPropertySchemaTest extends TestCase {
 	 
 
 	/**
-	 * ƒXƒL[ƒ}‚ğİ’è‚·‚éƒeƒXƒgB
+	 * ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>"A,java.lang.String,,,"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>ƒXƒL[ƒ}‚ª³í‚Éİ’è‚Å‚«‚é</li>
-	 * <li>—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒãŒæ­£å¸¸ã«è¨­å®šã§ãã‚‹</li>
+	 * <li>ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetSchema1() {
@@ -48,22 +48,22 @@ public class DefaultPropertySchemaTest extends TestCase {
 			dps.setSchema(schema);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 
 	}
 
 	/**
-	 * ƒXƒL[ƒ}‚ğİ’è‚·‚éƒeƒXƒgB
+	 * ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>null•¶šA‹ó•¶š‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
+	 * <li>nullæ–‡å­—ã€ç©ºæ–‡å­—ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySchemaDefineException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
-	 * <li>—áŠOƒƒbƒZ[ƒW"The schema is insufficient."‚ğ•Ô‚·</li>
+	 * <li>ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"The schema is insufficient."ã‚’è¿”ã™</li>
 	 * </ul>
 	 */
 	public void testSetSchema2() {
@@ -71,7 +71,7 @@ public class DefaultPropertySchemaTest extends TestCase {
 			DefaultPropertySchema dps = new DefaultPropertySchema();
 			String schema = null;
 			dps.setSchema(schema);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•—");
 		} catch (PropertySchemaDefineException e) {
 			assertEquals("null:The schema is insufficient.", e.getMessage());
 		}
@@ -79,23 +79,23 @@ public class DefaultPropertySchemaTest extends TestCase {
 			DefaultPropertySchema dps = new DefaultPropertySchema();
 			String schema = "";
 			dps.setSchema(schema);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySchemaDefineException e) {
 			assertEquals(":The schema is insufficient.", e.getMessage());
 		}
 	}
 
 	/**
-	 * ƒXƒL[ƒ}•¶š—ñ‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>"A,java.lang.String,,,"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>getSchema()‚Åæ“¾‚µ‚½ƒŒƒR[ƒhƒXƒL[ƒ}‚ª’è‹`‚µ‚½“à—e‚Æˆê’v‚µ‚Ä‚¢‚é</li>
+	 * <li>getSchema()ã§å–å¾—ã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒãŒå®šç¾©ã—ãŸå†…å®¹ã¨ä¸€è‡´ã—ã¦ã„ã‚‹</li>
 	 * </ul>
 	 */
 	public void testGetSchema() {
@@ -106,23 +106,23 @@ public class DefaultPropertySchemaTest extends TestCase {
 			assertEquals("A,java.lang.String,,,", dps.getSchema());
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒXƒL[ƒ}•¶š—ñ‚ğ‰ğÍ‚·‚éƒeƒXƒgB
+	 * ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã‚’è§£æã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄparseCSV(String text)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦parseCSV(String text)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>"A,java.lang.String,,,"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>•Ô‚è’l‚ÌList‚Ì—v‘f”‚ª4</li>
-	 * <li>•Ô‚è’l‚ÌList‚Ì1”Ô–Ú‚Ì—v‘f‚ª"A"</li>
-	 * <li>•Ô‚è’l‚ÌList‚Ì2”Ô–Ú‚Ì—v‘f‚ª"java.lang.String"</li>
+	 * <li>è¿”ã‚Šå€¤ã®Listã®è¦ç´ æ•°ãŒ4</li>
+	 * <li>è¿”ã‚Šå€¤ã®Listã®1ç•ªç›®ã®è¦ç´ ãŒ"A"</li>
+	 * <li>è¿”ã‚Šå€¤ã®Listã®2ç•ªç›®ã®è¦ç´ ãŒ"java.lang.String"</li>
 	 * </ul>
 	 */
 	public void testParseCSV1() {
@@ -134,20 +134,20 @@ public class DefaultPropertySchemaTest extends TestCase {
 	}
 
 	/**
-	 * ƒXƒL[ƒ}•¶š—ñ‚ğ‰ğÍ‚·‚éƒeƒXƒgB
+	 * ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã‚’è§£æã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒuƒƒbƒNƒGƒXƒP[ƒvu"v‚ğŠÜ‚ŞƒXƒL[ƒ}‚ğw’è‚µ‚ÄparseCSV(String text)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ãƒ–ãƒ­ãƒƒã‚¯ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã€Œ"ã€ã‚’å«ã‚€ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦parseCSV(String text)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>"A,java.lang.String,"jp.ossc.nimbus.util.converter.PaddingStringConverter<BR>
 	 * {1,1,1,*}",,"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>•Ô‚è’l‚ÌList‚Ì1—v‘f”‚ª4</li>
-	 * <li>•Ô‚è’l‚ÌList‚Ì1”Ô–Ú‚Ì—v‘f‚ª"A"</li>
-	 * <li>•Ô‚è’l‚ÌList‚Ì2”Ô–Ú‚Ì—v‘f‚ª"java.lang.String"</li>
-	 * <li>•Ô‚è’l‚ÌList‚Ì3”Ô–Ú‚Ì—v‘f‚ª"jp.ossc.nimbus.util.converter.PaddingStringConverter{ConvertType=1;PaddingLength=1;PaddingLiteral=*}"</li>
+	 * <li>è¿”ã‚Šå€¤ã®Listã®1è¦ç´ æ•°ãŒ4</li>
+	 * <li>è¿”ã‚Šå€¤ã®Listã®1ç•ªç›®ã®è¦ç´ ãŒ"A"</li>
+	 * <li>è¿”ã‚Šå€¤ã®Listã®2ç•ªç›®ã®è¦ç´ ãŒ"java.lang.String"</li>
+	 * <li>è¿”ã‚Šå€¤ã®Listã®3ç•ªç›®ã®è¦ç´ ãŒ"jp.ossc.nimbus.util.converter.PaddingStringConverter{ConvertType=1;PaddingLength=1;PaddingLiteral=*}"</li>
 	 * </ul>
 	 */
 	public void testParseCSV2() {
@@ -161,18 +161,18 @@ public class DefaultPropertySchemaTest extends TestCase {
 	}
 
 	/**
-	 * ƒXƒL[ƒ}•¶š—ñ‚ğ‰ğÍ‚·‚éƒeƒXƒgB
+	 * ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã‚’è§£æã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒuƒƒbƒNƒGƒXƒP[ƒvu"v‚ª‘±‚­ƒpƒ^[ƒ“‚ğŠÜ‚ŞƒXƒL[ƒ}‚ğw’è‚µ‚ÄparseCSV(String text)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ãƒ–ãƒ­ãƒƒã‚¯ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã€Œ"ã€ãŒç¶šããƒ‘ã‚¿ãƒ¼ãƒ³ã‚’å«ã‚€ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦parseCSV(String text)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>"A,java.lang.String,"",,"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>•Ô‚è’l‚ÌList‚Ì1—v‘f”‚ª4</li>
-	 * <li>•Ô‚è’l‚ÌList‚Ì1”Ô–Ú‚Ì—v‘f‚ª"A"</li>
-	 * <li>•Ô‚è’l‚ÌList‚Ì2”Ô–Ú‚Ì—v‘f‚ª"java.lang.String"</li>
+	 * <li>è¿”ã‚Šå€¤ã®Listã®1è¦ç´ æ•°ãŒ4</li>
+	 * <li>è¿”ã‚Šå€¤ã®Listã®1ç•ªç›®ã®è¦ç´ ãŒ"A"</li>
+	 * <li>è¿”ã‚Šå€¤ã®Listã®2ç•ªç›®ã®è¦ç´ ãŒ"java.lang.String"</li>
 	 * </ul>
 	 */
 	public void testParseCSV3() {
@@ -184,20 +184,20 @@ public class DefaultPropertySchemaTest extends TestCase {
 	}
 
 	/**
-	 * ƒXƒL[ƒ}•¶š—ñ‚ğ‰ğÍ‚·‚éƒeƒXƒgB
+	 * ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã‚’è§£æã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒGƒXƒP[ƒvu\v‚ğŠÜ‚ŞƒXƒL[ƒ}‚ğw’è‚µ‚ÄparseCSV(String text)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã€Œ\ã€ã‚’å«ã‚€ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦parseCSV(String text)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>"A,java.lang.String,jp.ossc.nimbus.util.converter.PaddingStringConverter,<BR>
 	 * {1\,1\,1\,*},,"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>•Ô‚è’l‚ÌList‚Ì1—v‘f”‚ª4</li>
-	 * <li>•Ô‚è’l‚ÌList‚Ì1”Ô–Ú‚Ì—v‘f‚ª"A"</li>
-	 * <li>•Ô‚è’l‚ÌList‚Ì2”Ô–Ú‚Ì—v‘f‚ª"java.lang.String"</li>
-	 * <li>•Ô‚è’l‚ÌList‚Ì3”Ô–Ú‚Ì—v‘f‚ª"jp.ossc.nimbus.util.converter.PaddingStringConverter{1,1,1,*}"</li>
+	 * <li>è¿”ã‚Šå€¤ã®Listã®1è¦ç´ æ•°ãŒ4</li>
+	 * <li>è¿”ã‚Šå€¤ã®Listã®1ç•ªç›®ã®è¦ç´ ãŒ"A"</li>
+	 * <li>è¿”ã‚Šå€¤ã®Listã®2ç•ªç›®ã®è¦ç´ ãŒ"java.lang.String"</li>
+	 * <li>è¿”ã‚Šå€¤ã®Listã®3ç•ªç›®ã®è¦ç´ ãŒ"jp.ossc.nimbus.util.converter.PaddingStringConverter{1,1,1,*}"</li>
 	 * </ul>
 	 */
 	public void testParseCSV4() {
@@ -211,18 +211,18 @@ public class DefaultPropertySchemaTest extends TestCase {
 	}
 
 	/**
-	 * ƒXƒL[ƒ}•¶š—ñ‚ğ‰ğÍ‚·‚éƒeƒXƒgB
+	 * ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã‚’è§£æã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒGƒXƒP[ƒvu\v‚ª‘±‚­ƒpƒ^[ƒ“‚ğŠÜ‚ŞƒXƒL[ƒ}‚ğw’è‚µ‚ÄparseCSV(String text)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã€Œ\ã€ãŒç¶šããƒ‘ã‚¿ãƒ¼ãƒ³ã‚’å«ã‚€ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦parseCSV(String text)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>"A\\,java.lang.String,,,"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>•Ô‚è’l‚ÌList‚Ì1—v‘f”‚ª4</li>
-	 * <li>•Ô‚è’l‚ÌList‚Ì1”Ô–Ú‚Ì—v‘f‚ª"A\"</li>
-	 * <li>•Ô‚è’l‚ÌList‚Ì2”Ô–Ú‚Ì—v‘f‚ª"java.lang.String"</li>
+	 * <li>è¿”ã‚Šå€¤ã®Listã®1è¦ç´ æ•°ãŒ4</li>
+	 * <li>è¿”ã‚Šå€¤ã®Listã®1ç•ªç›®ã®è¦ç´ ãŒ"A\"</li>
+	 * <li>è¿”ã‚Šå€¤ã®Listã®2ç•ªç›®ã®è¦ç´ ãŒ"java.lang.String"</li>
 	 * </ul>
 	 */
 	public void testParseCSV5() {
@@ -234,19 +234,19 @@ public class DefaultPropertySchemaTest extends TestCase {
 	}
 
 	/**
-	 * ƒXƒL[ƒ}•¶š—ñ‚ğ‰ğÍ‚·‚éƒeƒXƒgB
+	 * ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã‚’è§£æã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒGƒXƒP[ƒvu\v‚ÌŒã‚ÉƒuƒƒbƒNƒGƒXƒP[ƒvu"v‚ª‘±‚­ƒpƒ^[ƒ“‚ğŠÜ‚ŞƒXƒL[ƒ}‚ğw’è‚µ‚Ä<BR>
-	 * parseCSV(String text)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã€Œ\ã€ã®å¾Œã«ãƒ–ãƒ­ãƒƒã‚¯ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã€Œ"ã€ãŒç¶šããƒ‘ã‚¿ãƒ¼ãƒ³ã‚’å«ã‚€ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦<BR>
+	 * parseCSV(String text)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>"A\"A,java.lang.String,,,"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>•Ô‚è’l‚ÌList‚Ì1—v‘f”‚ª4</li>
-	 * <li>•Ô‚è’l‚ÌList‚Ì1”Ô–Ú‚Ì—v‘f‚ª"A"A"</li>
-	 * <li>•Ô‚è’l‚ÌList‚Ì2”Ô–Ú‚Ì—v‘f‚ª"java.lang.String"</li>
+	 * <li>è¿”ã‚Šå€¤ã®Listã®1è¦ç´ æ•°ãŒ4</li>
+	 * <li>è¿”ã‚Šå€¤ã®Listã®1ç•ªç›®ã®è¦ç´ ãŒ"A"A"</li>
+	 * <li>è¿”ã‚Šå€¤ã®Listã®2ç•ªç›®ã®è¦ç´ ãŒ"java.lang.String"</li>
 	 * </ul>
 	 */
 	public void testParseCSV6() {
@@ -258,19 +258,19 @@ public class DefaultPropertySchemaTest extends TestCase {
 	}
 
 	/**
-	 * ƒXƒL[ƒ}•¶š—ñ‚ğ‰ğÍ‚·‚éƒeƒXƒgB
+	 * ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã‚’è§£æã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒGƒXƒP[ƒvu\v‚ÌŒã‚É’Êí•¶š‚ª‘±‚­ƒpƒ^[ƒ“‚ğŠÜ‚ŞƒXƒL[ƒ}‚ğw’è‚µ‚Ä<BR>
-	 * parseCSV(String text)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã€Œ\ã€ã®å¾Œã«é€šå¸¸æ–‡å­—ãŒç¶šããƒ‘ã‚¿ãƒ¼ãƒ³ã‚’å«ã‚€ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦<BR>
+	 * parseCSV(String text)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>"A\A,java.lang.String,,,"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>•Ô‚è’l‚ÌList‚Ì1—v‘f”‚ª4</li>
-	 * <li>•Ô‚è’l‚ÌList‚Ì1”Ô–Ú‚Ì—v‘f‚ª"A\A"</li>
-	 * <li>•Ô‚è’l‚ÌList‚Ì2”Ô–Ú‚Ì—v‘f‚ª"java.lang.String"</li>
+	 * <li>è¿”ã‚Šå€¤ã®Listã®1è¦ç´ æ•°ãŒ4</li>
+	 * <li>è¿”ã‚Šå€¤ã®Listã®1ç•ªç›®ã®è¦ç´ ãŒ"A\A"</li>
+	 * <li>è¿”ã‚Šå€¤ã®Listã®2ç•ªç›®ã®è¦ç´ ãŒ"java.lang.String"</li>
 	 * </ul>
 	 */
 	public void testParseCSV7() {
@@ -282,19 +282,19 @@ public class DefaultPropertySchemaTest extends TestCase {
 	}
 
 	/**
-	 * ƒXƒL[ƒ}•¶š—ñ‚ğ‰ğÍ‚·‚éƒeƒXƒgB
+	 * ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã‚’è§£æã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒuƒƒbƒNƒGƒXƒP[ƒvu"v‚ÌŒã‚ÉƒGƒXƒP[ƒvu\v‚ª‘±‚­ƒpƒ^[ƒ“‚ğŠÜ‚ŞƒXƒL[ƒ}‚ğw’è‚µ‚Ä<BR>
-	 * parseCSV(String text)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ãƒ–ãƒ­ãƒƒã‚¯ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã€Œ"ã€ã®å¾Œã«ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã€Œ\ã€ãŒç¶šããƒ‘ã‚¿ãƒ¼ãƒ³ã‚’å«ã‚€ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦<BR>
+	 * parseCSV(String text)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>"A"\A,java.lang.String,,,"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>•Ô‚è’l‚ÌList‚Ì1—v‘f”‚ª4</li>
-	 * <li>•Ô‚è’l‚ÌList‚Ì1”Ô–Ú‚Ì—v‘f‚ª"A"\A"</li>
-	 * <li>•Ô‚è’l‚ÌList‚Ì2”Ô–Ú‚Ì—v‘f‚ª"java.lang.String"</li>
+	 * <li>è¿”ã‚Šå€¤ã®Listã®1è¦ç´ æ•°ãŒ4</li>
+	 * <li>è¿”ã‚Šå€¤ã®Listã®1ç•ªç›®ã®è¦ç´ ãŒ"A"\A"</li>
+	 * <li>è¿”ã‚Šå€¤ã®Listã®2ç•ªç›®ã®è¦ç´ ãŒ"java.lang.String"</li>
 	 * </ul>
 	 */
 	public void testParseCSV8() {
@@ -306,20 +306,20 @@ public class DefaultPropertySchemaTest extends TestCase {
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚ÌŠe€–Ú‚ğƒp[ƒX‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®å„é …ç›®ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄparseSchemata(String schema, List schemata)‚ğÀs‚·‚é<BR>
-	 * schemata‚É‚ÍparseCSV(schema)‚ğw’è</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦parseSchemata(String schema, List schemata)ã‚’å®Ÿè¡Œã™ã‚‹<BR>
+	 * schemataã«ã¯parseCSV(schema)ã‚’æŒ‡å®š</li>
 	 * <li>"A,java.lang.String,"jp.ossc.nimbus.util.converter.PaddingStringConverter
 	 * {ConvertType=1;PaddingLength=1;PaddingLiteral=*}","jp.ossc.nimbus.util.converter.PaddingStringConverter{ConvertType=1;PaddingLength=1;PaddingLiteral=*}","@value@ !=
 	 * null""</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>ƒXƒL[ƒ}‚ª³í‚Éİ’è‚Å‚«‚é</li>
-	 * <li>—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒãŒæ­£å¸¸ã«è¨­å®šã§ãã‚‹</li>
+	 * <li>ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testParseSchemata() {
@@ -332,22 +332,22 @@ public class DefaultPropertySchemaTest extends TestCase {
 			dps.parseSchemata(schema, DefaultPropertySchema.parseCSV(schema));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚ÌŒ^‚ğƒp[ƒX‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®å‹ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄparseType(String schema, String val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦parseType(String schema, String val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>schema:"A,java.lang.String,,," val:"java.lang.String"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„</li>
 	 * </ul>
 	 */
 	public void testParseType1() {
@@ -358,21 +358,21 @@ public class DefaultPropertySchemaTest extends TestCase {
 			dps.parseType(schema, val);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚ÌŒ^‚ğƒp[ƒX‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®å‹ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄparseType(String schema, String val)‚ğÀs‚·‚é</li>
-	 * <li>schema:"A,java.lang.String,,," val:null•¶š</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦parseType(String schema, String val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>schema:"A,java.lang.String,,," val:nullæ–‡å­—</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„</li>
 	 * </ul>
 	 */
 	public void testParseType2() {
@@ -383,22 +383,22 @@ public class DefaultPropertySchemaTest extends TestCase {
 			dps.parseType(schema, val);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚ÌŒ^‚ğƒp[ƒX‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®å‹ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄparseType(String schema, String val)‚ğÀs‚·‚é</li>
-	 * <li>schema:"A,DUMMYCLASS,,," val:"DUMMYCLASS"i‘¶İ‚µ‚È‚¢ƒNƒ‰ƒXj</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦parseType(String schema, String val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>schema:"A,DUMMYCLASS,,," val:"DUMMYCLASS"ï¼ˆå­˜åœ¨ã—ãªã„ã‚¯ãƒ©ã‚¹ï¼‰</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySchemaDefineException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F<BR>
-	 * —áŠOƒƒbƒZ[ƒW"The type is illegal."‚ğ•Ô‚·</li>
+	 * <li>ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª<BR>
+	 * ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"The type is illegal."ã‚’è¿”ã™</li>
 	 * </ul>
 	 */
 	public void testParseType3() {
@@ -407,28 +407,28 @@ public class DefaultPropertySchemaTest extends TestCase {
 			String schema = "A,DUMMYCLASS,,,";
 			String val = "DUMMYCLASS";
 			dps.parseType(schema, val);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySchemaDefineException e) {
 			assertEquals("A,DUMMYCLASS,,,:The type is illegal.", e.getMessage());
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚Ì“ü—Í•ÏŠ·‚Ì€–Ú‚ğƒp[ƒX‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®å…¥åŠ›å¤‰æ›ã®é …ç›®ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚Æ•ÏŠ·€–Ú•¶š—ñ‚ğw’è‚µ‚ÄparseParseConverter(String schema, String
-	 * val)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,jp.ossc.nimbus.util.converter.DataSetXMLConverter,<BR>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã¨å¤‰æ›é …ç›®æ–‡å­—åˆ—ã‚’æŒ‡å®šã—ã¦parseParseConverter(String schema, String
+	 * val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,jp.ossc.nimbus.util.converter.DataSetXMLConverter,<BR>
 	 * jp.ossc.nimbus.util.converter.DataSetXMLConverter,"@value@ != null""</li>
-	 * <li>•ÏŠ·€–Ú
-	 * "jp.ossc.nimbus.util.converter.DataSetXMLConverter"(ConverterƒNƒ‰ƒXw’è)</li>
+	 * <li>å¤‰æ›é …ç›®
+	 * "jp.ossc.nimbus.util.converter.DataSetXMLConverter"(Converterã‚¯ãƒ©ã‚¹æŒ‡å®š)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢</li>
-	 * <li>parseConverter‚Éw’è‚µ‚½ConverterƒNƒ‰ƒX‚ªİ’è‚³‚ê‚Ä‚¢‚é</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„</li>
+	 * <li>parseConverterã«æŒ‡å®šã—ãŸConverterã‚¯ãƒ©ã‚¹ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹</li>
 	 * </ul>
 	 */
 	public void testParseParseConverter1() {
@@ -441,25 +441,25 @@ public class DefaultPropertySchemaTest extends TestCase {
 			assertTrue(dps.parseConverter instanceof jp.ossc.nimbus.util.converter.DataSetXMLConverter);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚Ì“ü—Í•ÏŠ·‚Ì€–Ú‚ğƒp[ƒX‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®å…¥åŠ›å¤‰æ›ã®é …ç›®ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚Æ•ÏŠ·€–Ú•¶š—ñ‚ğw’è‚µ‚ÄparseParseConverter(String schema, String
-	 * val)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,Nimbus#DataSetXMLConverter,<BR>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã¨å¤‰æ›é …ç›®æ–‡å­—åˆ—ã‚’æŒ‡å®šã—ã¦parseParseConverter(String schema, String
+	 * val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,Nimbus#DataSetXMLConverter,<BR>
 	 * Nimbus#DataSetXMLConverter,"@value@ != null""</li>
-	 * <li>•ÏŠ·€–Ú "Nimbus#DataSetXMLConverter"(ƒT[ƒrƒX–¼)</li>
+	 * <li>å¤‰æ›é …ç›® "Nimbus#DataSetXMLConverter"(ã‚µãƒ¼ãƒ“ã‚¹å)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢</li>
-	 * <li>parseConverterName‚Éw’è‚µ‚½ServiceNameƒIƒuƒWƒFƒNƒg‚ªİ’è‚³‚ê‚Ä‚¢‚é</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„</li>
+	 * <li>parseConverterNameã«æŒ‡å®šã—ãŸServiceNameã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹</li>
 	 * </ul>
 	 */
 	public void testParseParseConverter2() {
@@ -475,24 +475,24 @@ public class DefaultPropertySchemaTest extends TestCase {
 					"DataSetXMLConverter");
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚Ì“ü—Í•ÏŠ·‚Ì€–Ú‚ğƒp[ƒX‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®å…¥åŠ›å¤‰æ›ã®é …ç›®ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚Æ•ÏŠ·€–Ú•¶š—ñ‚ğw’è‚µ‚ÄparseParseConverter(String schema, String
-	 * val)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,#TestService,<BR>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã¨å¤‰æ›é …ç›®æ–‡å­—åˆ—ã‚’æŒ‡å®šã—ã¦parseParseConverter(String schema, String
+	 * val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,#TestService,<BR>
 	 * #TestService,"@value@ != null""</li>
-	 * <li>•ÏŠ·€–Ú "#TestService"(ƒ}ƒl[ƒWƒƒ[–¼‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢•s³‚ÈƒT[ƒrƒX–¼)</li>
+	 * <li>å¤‰æ›é …ç›® "#TestService"(ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼åãŒè¨­å®šã•ã‚Œã¦ã„ãªã„ä¸æ­£ãªã‚µãƒ¼ãƒ“ã‚¹å)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySchemaDefineException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F<BR>
+	 * <li>ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª<BR>
 	 * </ul>
 	 */
 	public void testParseParseConverter3() {
@@ -502,28 +502,28 @@ public class DefaultPropertySchemaTest extends TestCase {
 					+ "#TestService,\"@value@ != null\"";
 			String val = "#TestService";
 			dps.parseParseConverter(schema, val);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySchemaDefineException e) {
 
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚Ìo—Í•ÏŠ·‚Ì€–Ú‚ğƒp[ƒX‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®å‡ºåŠ›å¤‰æ›ã®é …ç›®ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚Æ•ÏŠ·€–Ú•¶š—ñ‚ğw’è‚µ‚ÄparseFormatConverter(String schema, String
-	 * val)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,jp.ossc.nimbus.util.converter.DataSetXMLConverter,<BR>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã¨å¤‰æ›é …ç›®æ–‡å­—åˆ—ã‚’æŒ‡å®šã—ã¦parseFormatConverter(String schema, String
+	 * val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,jp.ossc.nimbus.util.converter.DataSetXMLConverter,<BR>
 	 * jp.ossc.nimbus.util.converter.DataSetXMLConverter,"@value@ != null""</li>
-	 * <li>•ÏŠ·€–Ú
-	 * "jp.ossc.nimbus.util.converter.DataSetXMLConverter"(ConverterƒNƒ‰ƒXw’è)</li>
+	 * <li>å¤‰æ›é …ç›®
+	 * "jp.ossc.nimbus.util.converter.DataSetXMLConverter"(Converterã‚¯ãƒ©ã‚¹æŒ‡å®š)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢</li>
-	 * <li>formatConverter‚Éw’è‚µ‚½ConverterƒNƒ‰ƒX‚ªİ’è‚³‚ê‚Ä‚¢‚é</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„</li>
+	 * <li>formatConverterã«æŒ‡å®šã—ãŸConverterã‚¯ãƒ©ã‚¹ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹</li>
 	 * </ul>
 	 */
 	public void testParseFormatConverter1() {
@@ -536,25 +536,25 @@ public class DefaultPropertySchemaTest extends TestCase {
 			assertTrue(dps.formatConverter instanceof jp.ossc.nimbus.util.converter.DataSetXMLConverter);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚Ìo—Í•ÏŠ·‚Ì€–Ú‚ğƒp[ƒX‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®å‡ºåŠ›å¤‰æ›ã®é …ç›®ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚Æ•ÏŠ·€–Ú•¶š—ñ‚ğw’è‚µ‚ÄparseFormatConverter(String schema, String
-	 * val)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,Nimbus#DataSetXMLConverter,<BR>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã¨å¤‰æ›é …ç›®æ–‡å­—åˆ—ã‚’æŒ‡å®šã—ã¦parseFormatConverter(String schema, String
+	 * val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,Nimbus#DataSetXMLConverter,<BR>
 	 * Nimbus#DataSetXMLConverter,"@value@ != null""</li>
-	 * <li>•ÏŠ·€–Ú "Nimbus#DataSetXMLConverter"(ƒT[ƒrƒX–¼)</li>
+	 * <li>å¤‰æ›é …ç›® "Nimbus#DataSetXMLConverter"(ã‚µãƒ¼ãƒ“ã‚¹å)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢</li>
-	 * <li>formatConverterName‚ÉServiceNameƒIƒuƒWƒFƒNƒg‚ªİ’è‚³‚ê‚Ä‚¢‚é</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„</li>
+	 * <li>formatConverterNameã«ServiceNameã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹</li>
 	 * </ul>
 	 */
 	public void testParseFormatConverter2() {
@@ -570,25 +570,25 @@ public class DefaultPropertySchemaTest extends TestCase {
 					"DataSetXMLConverter");
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚Ìo—Í•ÏŠ·‚Ì€–Ú‚ğƒp[ƒX‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®å‡ºåŠ›å¤‰æ›ã®é …ç›®ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚Æ•ÏŠ·€–Ú•¶š—ñ‚ğw’è‚µ‚ÄparseFormatConverter(String schema, String
-	 * val)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,"jp.ossc.nimbus.util.converter.PaddingStringConverter,<BR>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã¨å¤‰æ›é …ç›®æ–‡å­—åˆ—ã‚’æŒ‡å®šã—ã¦parseFormatConverter(String schema, String
+	 * val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,"jp.ossc.nimbus.util.converter.PaddingStringConverter,<BR>
 	 * {1,1,1,*}","jp.ossc.nimbus.util.converter.PaddingStringConverter,{1,1,1,*}","@value@ !=
 	 * null""</li>
-	 * <li>•ÏŠ·€–Ú "#TestService"(ƒ}ƒl[ƒWƒƒ[–¼‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢•s³‚ÈƒT[ƒrƒX–¼)</li>
+	 * <li>å¤‰æ›é …ç›® "#TestService"(ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼åãŒè¨­å®šã•ã‚Œã¦ã„ãªã„ä¸æ­£ãªã‚µãƒ¼ãƒ“ã‚¹å)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySchemaDefineException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F<BR>
+	 * <li>ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª<BR>
 	 * </ul>
 	 */
 	public void testParseFormatConverter3() {
@@ -598,25 +598,25 @@ public class DefaultPropertySchemaTest extends TestCase {
 					+ "#TestService,\"@value@ != null\"";
 			String val = "#TestService";
 			dps.parseFormatConverter(schema, val);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySchemaDefineException e) {
 
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚Ì•ÏŠ·€–Ú‚ğƒp[ƒX‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®å¤‰æ›é …ç›®ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚Æ•ÏŠ·€–Ú•¶š—ñ‚ğw’è‚µ‚ÄparseConverter(String schema, String val)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,jp.ossc.nimbus.util.converter.DataSetXMLConverter,<BR>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã¨å¤‰æ›é …ç›®æ–‡å­—åˆ—ã‚’æŒ‡å®šã—ã¦parseConverter(String schema, String val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,jp.ossc.nimbus.util.converter.DataSetXMLConverter,<BR>
 	 * jp.ossc.nimbus.util.converter.DataSetXMLConverter,"@value@ != null""</li>
-	 * <li>•ÏŠ·€–Ú "jp.ossc.nimbus.util.converter.DataSetXMLConverter"(ƒvƒƒpƒeƒB‚È‚µ)</li>
+	 * <li>å¤‰æ›é …ç›® "jp.ossc.nimbus.util.converter.DataSetXMLConverter"(ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãªã—)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„</li>
 	 * </ul>
 	 */
 	public void testParseConverter1() {
@@ -628,25 +628,25 @@ public class DefaultPropertySchemaTest extends TestCase {
 			dps.parseConverter(schema, val);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚Ì•ÏŠ·€–Ú‚ğƒp[ƒX‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®å¤‰æ›é …ç›®ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚Æ•ÏŠ·€–Ú•¶š—ñ‚ğw’è‚µ‚ÄparseConverter(String schema, String val)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,"jp.ossc.nimbus.util.converter.PaddingStringConverter<BR>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã¨å¤‰æ›é …ç›®æ–‡å­—åˆ—ã‚’æŒ‡å®šã—ã¦parseConverter(String schema, String val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,"jp.ossc.nimbus.util.converter.PaddingStringConverter<BR>
 	 * {1,1,1,*}","jp.ossc.nimbus.util.converter.PaddingStringConverter{1,1,1,*}","@value@ !=
 	 * null""</li>
-	 * <li>•ÏŠ·€–Ú
-	 * "jp.ossc.nimbus.util.converter.PaddingStringConverter,{1,1,1,*}"(ƒvƒƒpƒeƒB‚ ‚è)</li>
+	 * <li>å¤‰æ›é …ç›®
+	 * "jp.ossc.nimbus.util.converter.PaddingStringConverter,{1,1,1,*}"(ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚ã‚Š)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„</li>
 	 * </ul>
 	 */
 	public void testParseConverter2() {
@@ -660,23 +660,23 @@ public class DefaultPropertySchemaTest extends TestCase {
 			dps.parseConverter(schema, val);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚Ì•ÏŠ·€–Ú‚ğƒp[ƒX‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®å¤‰æ›é …ç›®ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚Æ•ÏŠ·€–Ú•¶š—ñ‚ğw’è‚µ‚ÄparseConverter(String schema, String val)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,Nimbus#DataSetXMLConverter,<BR>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã¨å¤‰æ›é …ç›®æ–‡å­—åˆ—ã‚’æŒ‡å®šã—ã¦parseConverter(String schema, String val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,Nimbus#DataSetXMLConverter,<BR>
 	 * Nimbus#DataSetXMLConverter,"@value@ != null""</li>
-	 * <li>•ÏŠ·€–Ú "Nimbus#DataSetXMLConverter"(ƒT[ƒrƒX–¼)</li>
+	 * <li>å¤‰æ›é …ç›® "Nimbus#DataSetXMLConverter"(ã‚µãƒ¼ãƒ“ã‚¹å)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„</li>
 	 * </ul>
 	 */
 	public void testParseConverter3() {
@@ -689,24 +689,24 @@ public class DefaultPropertySchemaTest extends TestCase {
 			dps.parseConverter(schema, val);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚Ì•ÏŠ·€–Ú‚ğƒp[ƒX‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®å¤‰æ›é …ç›®ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚Æ•ÏŠ·€–Ú•¶š—ñ‚ğw’è‚µ‚ÄparseConverter(String schema, String val)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,#TestService<BR>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã¨å¤‰æ›é …ç›®æ–‡å­—åˆ—ã‚’æŒ‡å®šã—ã¦parseConverter(String schema, String val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,#TestService<BR>
 	 * #TestService,"@value@ != null""</li>
-	 * <li>•ÏŠ·€–Ú "#TestService"(ƒ}ƒl[ƒWƒƒ[–¼‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢•s³‚ÈƒT[ƒrƒX–¼)</li>
+	 * <li>å¤‰æ›é …ç›® "#TestService"(ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼åãŒè¨­å®šã•ã‚Œã¦ã„ãªã„ä¸æ­£ãªã‚µãƒ¼ãƒ“ã‚¹å)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySchemaDefineException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F<BR>
-	 * —áŠOƒƒbƒZ[ƒW"Converter is illegal."‚ğ•Ô‚·</li>
+	 * <li>ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª<BR>
+	 * ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"Converter is illegal."ã‚’è¿”ã™</li>
 	 * </ul>
 	 */
 	public void testParseConverter4() {
@@ -716,7 +716,7 @@ public class DefaultPropertySchemaTest extends TestCase {
 					+ "#TestService,\"@value@ != null\"";
 			String val = "#TestService";
 			dps.parseConverter(schema, val);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySchemaDefineException e) {
 			assertEquals(
 					"A,java.lang.String,#TestService,#TestService,\"@value@ != null\""
@@ -725,19 +725,19 @@ public class DefaultPropertySchemaTest extends TestCase {
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚Ì•ÏŠ·€–Ú‚ğƒp[ƒX‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®å¤‰æ›é …ç›®ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚Æ•ÏŠ·€–Ú•¶š—ñ‚ğw’è‚µ‚ÄparseConverter(String schema, String val)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,"jp.ossc.nimbus.beans.dataset.DataSet,<BR>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã¨å¤‰æ›é …ç›®æ–‡å­—åˆ—ã‚’æŒ‡å®šã—ã¦parseConverter(String schema, String val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,"jp.ossc.nimbus.beans.dataset.DataSet,<BR>
 	 * jp.ossc.nimbus.beans.dataset.DataSet,"@value@ != null""</li>
-	 * <li>•ÏŠ·€–Ú "jp.ossc.nimbus.beans.dataset.DataSet"(ƒRƒ“ƒo[ƒ^‚Æ‚µ‚ÄÀ‘•‚³‚ê‚Ä‚¢‚È‚¢ƒNƒ‰ƒX)</li>
+	 * <li>å¤‰æ›é …ç›® "jp.ossc.nimbus.beans.dataset.DataSet"(ã‚³ãƒ³ãƒãƒ¼ã‚¿ã¨ã—ã¦å®Ÿè£…ã•ã‚Œã¦ã„ãªã„ã‚¯ãƒ©ã‚¹)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySchemaDefineException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F<BR>
-	 * —áŠOƒƒbƒZ[ƒW"Converter dose not implement Converter."‚ğ•Ô‚·</li>
+	 * <li>ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª<BR>
+	 * ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"Converter dose not implement Converter."ã‚’è¿”ã™</li>
 	 * </ul>
 	 */
 	public void testParseConverter5() {
@@ -747,7 +747,7 @@ public class DefaultPropertySchemaTest extends TestCase {
 					+ "jp.ossc.nimbus.beans.dataset.DataSet,\"@value@ != null\"";
 			String val = "jp.ossc.nimbus.beans.dataset.DataSet";
 			dps.parseConverter(schema, val);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySchemaDefineException e) {
 			assertEquals(
 					"A,java.lang.String,jp.ossc.nimbus.beans.dataset.DataSet,"
@@ -758,19 +758,19 @@ public class DefaultPropertySchemaTest extends TestCase {
 	}
 
 	/**
-	 * ƒRƒ“ƒo[ƒ^‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éƒeƒXƒgB
+	 * ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚Æ•ÏŠ·€–Ú•¶š—ñ‚ğw’è‚µ‚ÄparseConverter(String schema, String val)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,"jp.ossc.nimbus.util.converter.CustomConverter{1}",,"</li>
-	 * <li>•ÏŠ·€–Ú
-	 * "jp.ossc.nimbus.util.converter.CustomConverter,{1}"(ƒvƒƒpƒeƒBw’è‚ª•s•K—v‚ÈƒRƒ“ƒo[ƒ^‚ğŒë‚Á‚Äw’è)</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã¨å¤‰æ›é …ç›®æ–‡å­—åˆ—ã‚’æŒ‡å®šã—ã¦parseConverter(String schema, String val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,"jp.ossc.nimbus.util.converter.CustomConverter{1}",,"</li>
+	 * <li>å¤‰æ›é …ç›®
+	 * "jp.ossc.nimbus.util.converter.CustomConverter,{1}"(ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æŒ‡å®šãŒä¸å¿…è¦ãªã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’èª¤ã£ã¦æŒ‡å®š)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySchemaDefineException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F<BR>
-	 * —áŠOƒƒbƒZ[ƒW"The property injection of this converter is not supported."‚ğ•Ô‚·</li>
+	 * <li>ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª<BR>
+	 * ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"The property injection of this converter is not supported."ã‚’è¿”ã™</li>
 	 * </ul>
 	 */
 	public void testInitConverter() {
@@ -779,27 +779,27 @@ public class DefaultPropertySchemaTest extends TestCase {
 			String schema = "A,java.lang.String,\"jp.ossc.nimbus.util.converter.CustomConverter{1}\",,";
 			String val = "jp.ossc.nimbus.util.converter.CustomConverter{1}";
 			dps.parseConverter(schema, val);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySchemaDefineException e) {
 		}
 	}
 
 	/**
-	 * ƒtƒH[ƒ}ƒbƒgƒRƒ“ƒo[ƒ^‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éƒeƒXƒgB
+	 * ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚³ãƒ³ãƒãƒ¼ã‚¿ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚Æ•ÏŠ·€–Ú•¶š—ñ‚ğw’è‚µ‚ÄparseParseConverter(String schema, String
-	 * val)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,"jp.ossc.nimbus.util.converter.DateFormatConverter<BR>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã¨å¤‰æ›é …ç›®æ–‡å­—åˆ—ã‚’æŒ‡å®šã—ã¦parseParseConverter(String schema, String
+	 * val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,"jp.ossc.nimbus.util.converter.DateFormatConverter<BR>
 	 * {1,"YYYY-MM-DD"}",,"</li>
-	 * <li>•ÏŠ·€–Ú
+	 * <li>å¤‰æ›é …ç›®
 	 * "jp.ossc.nimbus.util.converter.DateFormatConverter,{1,"YYYY-MM-DD"}"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢</li>
-	 * <li>ƒRƒ“ƒo[ƒ^‚Ìgetterƒƒ\ƒbƒh‚Åæ“¾‚µ‚½’l‚ªİ’è’l‚Æ“™‚µ‚¢</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„</li>
+	 * <li>ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®getterãƒ¡ã‚½ãƒƒãƒ‰ã§å–å¾—ã—ãŸå€¤ãŒè¨­å®šå€¤ã¨ç­‰ã—ã„</li>
 	 * </ul>
 	 */
 
@@ -815,26 +815,26 @@ public class DefaultPropertySchemaTest extends TestCase {
 			assertEquals(dfc.getFormat(), "YYYY-MM-DD");
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒtƒH[ƒ}ƒbƒgƒRƒ“ƒo[ƒ^‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éƒeƒXƒgB
+	 * ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚³ãƒ³ãƒãƒ¼ã‚¿ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚Æ•ÏŠ·€–Ú•¶š—ñ‚ğw’è‚µ‚ÄparseConverter(String schema, String val)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,"jp.ossc.nimbus.util.converter.DateFormatConverter<BR> {"
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã¨å¤‰æ›é …ç›®æ–‡å­—åˆ—ã‚’æŒ‡å®šã—ã¦parseConverter(String schema, String val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,"jp.ossc.nimbus.util.converter.DateFormatConverter<BR> {"
 	 * ","YYYY-MM-DD"}",,"</li>
-	 * <li>•ÏŠ·€–Ú "jp.ossc.nimbus.util.converter.DateFormatConverter{"
-	 * ","YYYY-MM-DD"}" (”šˆÈŠO‚ğw’è)</li>
+	 * <li>å¤‰æ›é …ç›® "jp.ossc.nimbus.util.converter.DateFormatConverter{"
+	 * ","YYYY-MM-DD"}" (æ•°å­—ä»¥å¤–ã‚’æŒ‡å®š)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySchemaDefineException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F<BR>
-	 * —áŠOƒƒbƒZ[ƒW"The property injection of this converter is
-	 * "convertType,format""‚ğ•Ô‚·</li>
+	 * <li>ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª<BR>
+	 * ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"The property injection of this converter is
+	 * "convertType,format""ã‚’è¿”ã™</li>
 	 * </ul>
 	 */
 	public void testInitFormatConverter2() {
@@ -844,25 +844,25 @@ public class DefaultPropertySchemaTest extends TestCase {
 					+ "{ConvertType=\" \";Format=\"YYYY-MM-DD\"}\",,";
 			String val = "jp.ossc.nimbus.util.converter.DateFormatConverter{\" \",\"YYYY-MM-DD\"}";
 			dps.parseConverter(schema, val);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySchemaDefineException e) {
 		}
 	}
 
 	/**
-	 * ƒpƒfƒBƒ“ƒOƒRƒ“ƒo[ƒ^‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éƒeƒXƒgB
+	 * ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚Æ•ÏŠ·€–Ú•¶š—ñ‚ğw’è‚µ‚ÄparseConverter(String schema, String val)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,"jp.ossc.nimbus.util.converter.PaddingStringConverter<BR>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã¨å¤‰æ›é …ç›®æ–‡å­—åˆ—ã‚’æŒ‡å®šã—ã¦parseConverter(String schema, String val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,"jp.ossc.nimbus.util.converter.PaddingStringConverter<BR>
 	 * {ConvertType=1;PaddingDirection=1;PaddingLength=1;PaddingLiteral=*}",,"</li>
-	 * <li>•ÏŠ·€–Ú "jp.ossc.nimbus.util.converter.PaddingStringConverter{ConvertType=1;PaddingDirection=1;PaddingLength=1;PaddingLiteral=*}"</li>
+	 * <li>å¤‰æ›é …ç›® "jp.ossc.nimbus.util.converter.PaddingStringConverter{ConvertType=1;PaddingDirection=1;PaddingLength=1;PaddingLiteral=*}"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢</li>
-	 * <li>ƒRƒ“ƒo[ƒ^‚Ìgetterƒƒ\ƒbƒh‚Åæ“¾‚µ‚½’l‚ªİ’è’l‚Æ“™‚µ‚¢</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„</li>
+	 * <li>ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®getterãƒ¡ã‚½ãƒƒãƒ‰ã§å–å¾—ã—ãŸå€¤ãŒè¨­å®šå€¤ã¨ç­‰ã—ã„</li>
 	 * </ul>
 	 */
 	public void testInitPaddingConverter1() {
@@ -879,26 +879,26 @@ public class DefaultPropertySchemaTest extends TestCase {
 			assertEquals(psc.getPaddingLiteral(), '*');
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒpƒfƒBƒ“ƒOƒRƒ“ƒo[ƒ^‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éƒeƒXƒgB
+	 * ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚Æ•ÏŠ·€–Ú•¶š—ñ‚ğw’è‚µ‚ÄparseConverter(String schema, String val)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,"jp.ossc.nimbus.util.converter.PaddingStringConverter<BR> {"
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã¨å¤‰æ›é …ç›®æ–‡å­—åˆ—ã‚’æŒ‡å®šã—ã¦parseConverter(String schema, String val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,"jp.ossc.nimbus.util.converter.PaddingStringConverter<BR> {"
 	 * ",1,1,*}",,"</li>
-	 * <li>•ÏŠ·€–Ú "jp.ossc.nimbus.util.converter.PaddingStringConverter{"
-	 * ",1,1,*}"(ƒvƒƒpƒeƒBw’è‚ÌŒë‚èB”šˆÈŠO‚ğw’è)</li>
+	 * <li>å¤‰æ›é …ç›® "jp.ossc.nimbus.util.converter.PaddingStringConverter{"
+	 * ",1,1,*}"(ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æŒ‡å®šã®èª¤ã‚Šã€‚æ•°å­—ä»¥å¤–ã‚’æŒ‡å®š)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySchemaDefineException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F<BR>
-	 * —áŠOƒƒbƒZ[ƒW"The property injection of this converter is
-	 * "convertType,paddingLength,paddingDirection,paddingLiteral""‚ğ•Ô‚·</li>
+	 * <li>ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª<BR>
+	 * ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"The property injection of this converter is
+	 * "convertType,paddingLength,paddingDirection,paddingLiteral""ã‚’è¿”ã™</li>
 	 * </ul>
 	 */
 	public void testInitPaddingConverter2() {
@@ -908,26 +908,26 @@ public class DefaultPropertySchemaTest extends TestCase {
 					+ "{\" \",1,1,*}\",,";
 			String val = "jp.ossc.nimbus.util.converter.PaddingStringConverter{ConvertType=\" \";PaddingDirection=1;PaddingLength=1;PaddingLiteral=*}";
 			dps.parseConverter(schema, val);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySchemaDefineException e) {
 		}
 	}
 
 	/**
-	 * ‰Â‹tƒRƒ“ƒo[ƒ^‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éƒeƒXƒgB
+	 * å¯é€†ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚Æ•ÏŠ·€–Ú•¶š—ñ‚ğw’è‚µ‚ÄparseParseConverter(String schema, String
-	 * val)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,"jp.ossc.nimbus.util.converter.DataSetXMLConverter<BR>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã¨å¤‰æ›é …ç›®æ–‡å­—åˆ—ã‚’æŒ‡å®šã—ã¦parseParseConverter(String schema, String
+	 * val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,"jp.ossc.nimbus.util.converter.DataSetXMLConverter<BR>
 	 * {1}",,"</li>
-	 * <li>•ÏŠ·€–Ú "jp.ossc.nimbus.util.converter.DataSetXMLConverter{ConvertType=1}"</li>
+	 * <li>å¤‰æ›é …ç›® "jp.ossc.nimbus.util.converter.DataSetXMLConverter{ConvertType=1}"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢</li>
-	 * <li>ƒRƒ“ƒo[ƒ^‚Ìgetterƒƒ\ƒbƒh‚Åæ“¾‚µ‚½’l‚ªİ’è’l‚Æ“™‚µ‚¢</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„</li>
+	 * <li>ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®getterãƒ¡ã‚½ãƒƒãƒ‰ã§å–å¾—ã—ãŸå€¤ãŒè¨­å®šå€¤ã¨ç­‰ã—ã„</li>
 	 * </ul>
 	 */
 	public void testInitReversibleConverter1() {
@@ -941,25 +941,25 @@ public class DefaultPropertySchemaTest extends TestCase {
 			assertEquals(dxc.getConvertType(), 1);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ‰Â‹tƒRƒ“ƒo[ƒ^‚ÌƒvƒƒpƒeƒB‚ğİ’è‚·‚éƒeƒXƒgB
+	 * å¯é€†ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚Æ•ÏŠ·€–Ú•¶š—ñ‚ğw’è‚µ‚ÄparseConverter(String schema, String val)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,"jp.ossc.nimbus.util.converter.DataSetXMLConverter<BR> {"
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã¨å¤‰æ›é …ç›®æ–‡å­—åˆ—ã‚’æŒ‡å®šã—ã¦parseConverter(String schema, String val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,"jp.ossc.nimbus.util.converter.DataSetXMLConverter<BR> {"
 	 * "}",,"</li>
-	 * <li>•ÏŠ·€–Ú "jp.ossc.nimbus.util.converter.DateFormatConverter{"
-	 * "}"(ƒvƒƒpƒeƒBw’è‚ÌŒë‚èB”šˆÈŠO‚ğw’è)</li>
+	 * <li>å¤‰æ›é …ç›® "jp.ossc.nimbus.util.converter.DateFormatConverter{"
+	 * "}"(ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æŒ‡å®šã®èª¤ã‚Šã€‚æ•°å­—ä»¥å¤–ã‚’æŒ‡å®š)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySchemaDefineException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F<BR>
-	 * —áŠOƒƒbƒZ[ƒW"The property injection of this converter is "convertType""‚ğ•Ô‚·</li>
+	 * <li>ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª<BR>
+	 * ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"The property injection of this converter is "convertType""ã‚’è¿”ã™</li>
 	 * </ul>
 	 */
 	public void testInitReversibleConverter3() {
@@ -969,24 +969,24 @@ public class DefaultPropertySchemaTest extends TestCase {
 					+ "{\" \"}\",,";
 			String val = "jp.ossc.nimbus.util.converter.DataSetXMLConverter{ConvertType=\" \"}";
 			dps.parseConverter(schema, val);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySchemaDefineException e) {
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚Ì§–ñ‚Ì€–Ú‚ğƒp[ƒX‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®åˆ¶ç´„ã®é …ç›®ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚Æ§–ñ•¶š—ñ‚ğw’è‚µ‚ÄparseConstrain(String schema, String val)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,"jp.ossc.nimbus.util.converter.DataSetXMLConverter<BR>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã¨åˆ¶ç´„æ–‡å­—åˆ—ã‚’æŒ‡å®šã—ã¦parseConstrain(String schema, String val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,"jp.ossc.nimbus.util.converter.DataSetXMLConverter<BR>
 	 * {1}",,"</li>
-	 * <li>§–ñ•¶š—ñ ""(‰½‚àw’è‚µ‚È‚¢)</li>
+	 * <li>åˆ¶ç´„æ–‡å­—åˆ— ""(ä½•ã‚‚æŒ‡å®šã—ãªã„)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„</li>
 	 * </ul>
 	 */
 	public void testParseConstrain1() {
@@ -997,23 +997,23 @@ public class DefaultPropertySchemaTest extends TestCase {
 			dps.parseConstrain(schema, val);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚Ì§–ñ‚Ì€–Ú‚ğƒp[ƒX‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®åˆ¶ç´„ã®é …ç›®ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚Æ§–ñ•¶š—ñ‚ğw’è‚µ‚ÄparseConstrain(String schema, String val)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,"jp.ossc.nimbus.util.converter.DataSetXMLConverter<BR>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã¨åˆ¶ç´„æ–‡å­—åˆ—ã‚’æŒ‡å®šã—ã¦parseConstrain(String schema, String val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,"jp.ossc.nimbus.util.converter.DataSetXMLConverter<BR>
 	 * {1}",,"@value@ != null""</li>
-	 * <li>§–ñ•¶š—ñ "@value@ != nul"</li>
+	 * <li>åˆ¶ç´„æ–‡å­—åˆ— "@value@ != nul"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„</li>
 	 * </ul>
 	 */
 	public void testParseConstrain2() {
@@ -1025,23 +1025,23 @@ public class DefaultPropertySchemaTest extends TestCase {
 			dps.parseConstrain(schema, val);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚Ì§–ñ‚Ì€–Ú‚ğƒp[ƒX‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®åˆ¶ç´„ã®é …ç›®ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚Æ§–ñ•¶š—ñ‚ğw’è‚µ‚ÄparseConstrain(String schema, String val)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,"jp.ossc.nimbus.util.converter.DataSetXMLConverter<BR>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã¨åˆ¶ç´„æ–‡å­—åˆ—ã‚’æŒ‡å®šã—ã¦parseConstrain(String schema, String val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,"jp.ossc.nimbus.util.converter.DataSetXMLConverter<BR>
 	 * {1}",,"@value.length@ != 0""</li>
-	 * <li>§–ñ•¶š—ñ "@value.length@ != 0"</li>
+	 * <li>åˆ¶ç´„æ–‡å­—åˆ— "@value.length@ != 0"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„</li>
 	 * </ul>
 	 */
 	public void testParseConstrain3() {
@@ -1053,26 +1053,26 @@ public class DefaultPropertySchemaTest extends TestCase {
 			dps.parseConstrain(schema, val);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒBƒXƒL[ƒ}‚Ì§–ñ‚Ì€–Ú‚ğƒp[ƒX‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒã®åˆ¶ç´„ã®é …ç›®ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚Æ§–ñ•¶š—ñ‚ğw’è‚µ‚ÄparseConstrain(String schema, String val)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,"jp.ossc.nimbus.util.converter.DataSetXMLConverter<BR>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã¨åˆ¶ç´„æ–‡å­—åˆ—ã‚’æŒ‡å®šã—ã¦parseConstrain(String schema, String val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,"jp.ossc.nimbus.util.converter.DataSetXMLConverter<BR>
 	 * {1}",,"@valu@ != nul""</li>
-	 * <li>§–ñ•¶š—ñ "@valu@ != nul"("value"‚Ì’Ô‚è‚ª³‚µ‚­‚È‚¢)</li>
+	 * <li>åˆ¶ç´„æ–‡å­—åˆ— "@valu@ != nul"("value"ã®ç¶´ã‚ŠãŒæ­£ã—ããªã„)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySchemaDefineException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F<BR>
-	 * —áŠOƒƒbƒZ[ƒW""Illegal constrain :
+	 * <li>ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª<BR>
+	 * ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸""Illegal constrain :
 	 * 
-	 * @valu@ != nul"‚ğ•Ô‚·</li>
+	 * @valu@ != nul"ã‚’è¿”ã™</li>
 	 *        </ul>
 	 */
 	public void testParseConstrain4() {
@@ -1082,7 +1082,7 @@ public class DefaultPropertySchemaTest extends TestCase {
 					+ ",\"@valu@ != nul\"";
 			String val = "@valu@ != nul";
 			dps.parseConstrain(schema, val);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySchemaDefineException e) {
 			assertEquals(
 					"jp.ossc.nimbus.beans.dataset.DefaultPropertySchema{name=null,type=null,parseConverter=null,"
@@ -1092,16 +1092,16 @@ public class DefaultPropertySchemaTest extends TestCase {
 	}
 
 	/**
-	 * ƒXƒL[ƒ}‚Éw’è‚µ‚½–¼‘O‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ã‚¹ã‚­ãƒ¼ãƒã«æŒ‡å®šã—ãŸåå‰ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>"A,java.lang.String,,,"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>getName()‚Åæ“¾‚µ‚½–¼‘O‚ª’è‹`‚µ‚½“à—e‚Æˆê’v‚µ‚Ä‚¢‚é</li>
+	 * <li>getName()ã§å–å¾—ã—ãŸåå‰ãŒå®šç¾©ã—ãŸå†…å®¹ã¨ä¸€è‡´ã—ã¦ã„ã‚‹</li>
 	 * </ul>
 	 */
 	public void testGetName() {
@@ -1112,21 +1112,21 @@ public class DefaultPropertySchemaTest extends TestCase {
 			assertEquals(dps.getName(), "A");
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒXƒL[ƒ}‚Éw’è‚µ‚½Œ^‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ã‚¹ã‚­ãƒ¼ãƒã«æŒ‡å®šã—ãŸå‹ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>"A,java.lang.String,,,"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>getType()‚Åæ“¾‚µ‚½–¼‘O‚ª’è‹`‚µ‚½“à—e‚Æˆê’v‚µ‚Ä‚¢‚é</li>
+	 * <li>getType()ã§å–å¾—ã—ãŸåå‰ãŒå®šç¾©ã—ãŸå†…å®¹ã¨ä¸€è‡´ã—ã¦ã„ã‚‹</li>
 	 * </ul>
 	 */
 	public void testGetType() {
@@ -1137,22 +1137,22 @@ public class DefaultPropertySchemaTest extends TestCase {
 			assertTrue(dps.getType() == java.lang.String.class);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒXƒL[ƒ}‚Éw’è‚µ‚½ƒp[ƒX—pƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ã‚¹ã‚­ãƒ¼ãƒã«æŒ‡å®šã—ãŸãƒ‘ãƒ¼ã‚¹ç”¨ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,"jp.ossc.nimbus.util.converter.DataSetXMLConverter<BR>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,"jp.ossc.nimbus.util.converter.DataSetXMLConverter<BR>
 	 * {ConvertType=1}",,"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>getParseConverter()‚Åæ“¾‚µ‚½Converter‚ª’è‹`‚µ‚½“à—e‚Æˆê’v‚µ‚Ä‚¢‚é</li>
+	 * <li>getParseConverter()ã§å–å¾—ã—ãŸConverterãŒå®šç¾©ã—ãŸå†…å®¹ã¨ä¸€è‡´ã—ã¦ã„ã‚‹</li>
 	 * </ul>
 	 */
 	public void testGetParseConverter() {
@@ -1165,21 +1165,21 @@ public class DefaultPropertySchemaTest extends TestCase {
 					jp.ossc.nimbus.util.converter.DataSetXMLConverter); 
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒXƒL[ƒ}‚Éw’è‚µ‚½ƒp[ƒX—pƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ã‚¹ã‚­ãƒ¼ãƒã«æŒ‡å®šã—ãŸãƒ‘ãƒ¼ã‚¹ç”¨ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,Nimbus#DataSetXMLConverter,,"</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,Nimbus#DataSetXMLConverter,,"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>parseConverterName‚Éw’è‚µ‚½ServiceNameƒIƒuƒWƒFƒNƒg‚ªİ’è‚³‚ê‚Ä‚¢‚é</li>
+	 * <li>parseConverterNameã«æŒ‡å®šã—ãŸServiceNameã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹</li>
 	 * </ul>
 	 */
 	public void testGetParseConverterService() {
@@ -1193,22 +1193,22 @@ public class DefaultPropertySchemaTest extends TestCase {
 					"DataSetXMLConverter");
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒXƒL[ƒ}‚Éw’è‚µ‚½ƒtƒH[ƒ}ƒbƒg—pƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ã‚¹ã‚­ãƒ¼ãƒã«æŒ‡å®šã—ãŸãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆç”¨ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,<BR>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,<BR>
 	 * ,"jp.ossc.nimbus.util.converter.DataSetXMLConverter,{ConvertType=1}","</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>getFormatConverter()‚Åæ“¾‚µ‚½Converter‚ª’è‹`‚µ‚½“à—e‚Æˆê’v‚µ‚Ä‚¢‚é</li>
+	 * <li>getFormatConverter()ã§å–å¾—ã—ãŸConverterãŒå®šç¾©ã—ãŸå†…å®¹ã¨ä¸€è‡´ã—ã¦ã„ã‚‹</li>
 	 * </ul>
 	 */
 	public void testGetFormatConverter() {
@@ -1221,21 +1221,21 @@ public class DefaultPropertySchemaTest extends TestCase {
 					jp.ossc.nimbus.util.converter.DataSetXMLConverter); 
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒXƒL[ƒ}‚Éw’è‚µ‚½ƒtƒH[ƒ}ƒbƒg—pƒRƒ“ƒo[ƒ^‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ã‚¹ã‚­ãƒ¼ãƒã«æŒ‡å®šã—ãŸãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆç”¨ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,,"Nimbus#DataSetXMLConverter,"</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,,"Nimbus#DataSetXMLConverter,"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>formatConverterName‚ÉServiceNameƒIƒuƒWƒFƒNƒg‚ªİ’è‚³‚ê‚Ä‚¢‚é</li>
+	 * <li>formatConverterNameã«ServiceNameã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹</li>
 	 * </ul>
 	 */
 	public void testGetFormatConverterService() {
@@ -1249,22 +1249,22 @@ public class DefaultPropertySchemaTest extends TestCase {
 			"DataSetXMLConverter");
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒXƒL[ƒ}‚Éw’è‚µ‚½§–ñ®‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ã‚¹ã‚­ãƒ¼ãƒã«æŒ‡å®šã—ãŸåˆ¶ç´„å¼ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,"jp.ossc.nimbus.util.converter.DataSetXMLConverter<BR> {"
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,"jp.ossc.nimbus.util.converter.DataSetXMLConverter<BR> {"
 	 * "}",,"@value@ != null""</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>getConstrain()‚Åæ“¾‚µ‚½•¶š—ñ‚ª"@value@ != null"‚Æˆê’v‚µ‚Ä‚¢‚é</li>
+	 * <li>getConstrain()ã§å–å¾—ã—ãŸæ–‡å­—åˆ—ãŒ"@value@ != null"ã¨ä¸€è‡´ã—ã¦ã„ã‚‹</li>
 	 * </ul>
 	 */
 	public void testGetConstrain() {
@@ -1276,22 +1276,22 @@ public class DefaultPropertySchemaTest extends TestCase {
 			assertEquals(dps.getConstrain(), "@value@ != null");
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒXƒL[ƒ}‚Éw’è‚µ‚½§–ñ®‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ã‚¹ã‚­ãƒ¼ãƒã«æŒ‡å®šã—ãŸåˆ¶ç´„å¼ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,"jp.ossc.nimbus.util.converter.DataSetXMLConverter<BR> {"
-	 * "}",,"(§–ñw’è‚È‚µ)</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,"jp.ossc.nimbus.util.converter.DataSetXMLConverter<BR> {"
+	 * "}",,"(åˆ¶ç´„æŒ‡å®šãªã—)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>getConstrain()‚Åæ“¾‚µ‚½•¶š—ñ‚ªNull</li>
+	 * <li>getConstrain()ã§å–å¾—ã—ãŸæ–‡å­—åˆ—ãŒNull</li>
 	 * </ul>
 	 */
 	public void testGetConstrainNull() {
@@ -1303,24 +1303,24 @@ public class DefaultPropertySchemaTest extends TestCase {
 			assertEquals(dps.getConstrain(), null);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒB‚Ì’l‚Ìİ’èƒ`ƒFƒbƒNƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã®è¨­å®šãƒã‚§ãƒƒã‚¯ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚Äset(Object val)‚ğÀs‚·‚é</li>
-	 * <li>"•¶š—ñ"</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,,,"</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦set(Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>"æ–‡å­—åˆ—"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOClassNotFoundException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>•Ô‚è’l‚Æİ’è’l‚ª“¯‚¶‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–ClassNotFoundExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>è¿”ã‚Šå€¤ã¨è¨­å®šå€¤ãŒåŒã˜ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSet() {
@@ -1328,27 +1328,27 @@ public class DefaultPropertySchemaTest extends TestCase {
 			DefaultPropertySchema dps = new DefaultPropertySchema();
 			String schema = "A,java.lang.String,,,";
 			dps.setSchema(schema);
-			String val = "•¶š—ñ";
+			String val = "æ–‡å­—åˆ—";
 			assertEquals(dps.set(val), val);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒB‚Ì’l‚Ìİ’èƒ`ƒFƒbƒNƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã®è¨­å®šãƒã‚§ãƒƒã‚¯ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,int,,,</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚Äset(Object val)‚ğÀs‚·‚é</li>
-	 * <li>MapŒ^‚Ì’l (Œ^‚Ì•sˆê’v)</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,int,,,</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦set(Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>Mapå‹ã®å€¤ (å‹ã®ä¸ä¸€è‡´)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySchemaCheckException‚ª”­¶‚·‚é‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertySchemaCheckExceptionãŒç™ºç”Ÿã™ã‚‹ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetBadValue() {
@@ -1358,26 +1358,26 @@ public class DefaultPropertySchemaTest extends TestCase {
 			dps.setSchema(schema);
 			Map val = new HashMap();
 			assertEquals(dps.set(val), val);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySchemaCheckException e) {
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒB’l‚ğƒtƒH[ƒ}ƒbƒg‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.util.Date,,"jp.ossc.nimbus.util.converter.DateFormatConverter<BR>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.util.Date,,"jp.ossc.nimbus.util.converter.DateFormatConverter<BR>
 	 * {ConvertType=1;Format="yyyy-MM-DD"}","</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚Äformat(Object val)‚ğÀs‚·‚é</li>
-	 * <li>DateŒ^ƒIƒuƒWƒFƒNƒg</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦format(Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>Dateå‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>•Ô‚è’l‚ªw’è‚µ‚½ƒtƒH[ƒ}ƒbƒg"yyyy-MM-DD"‚Å³‚µ‚­•ÏŠ·‚³‚ê‚é‚±‚Æ‚ğŠm”F
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>è¿”ã‚Šå€¤ãŒæŒ‡å®šã—ãŸãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ"yyyy-MM-DD"ã§æ­£ã—ãå¤‰æ›ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª
 	 */
 	public void testFormat() {
 		try {
@@ -1391,25 +1391,25 @@ public class DefaultPropertySchemaTest extends TestCase {
 			assertEquals(dps.format(date), "2008-01-22");
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * ƒvƒƒpƒeƒB‚Ì’l‚Ìİ’èƒ`ƒFƒbƒNƒeƒXƒg(Date)B
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã®è¨­å®šãƒã‚§ãƒƒã‚¯ãƒ†ã‚¹ãƒˆ(Date)ã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.util.Date,,,"(o—Í•ÏŠ·w’è‚È‚µ)</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚Äformat(Object val)‚ğÀs‚·‚é</li>
-	 * <li>DateŒ^ƒIƒuƒWƒFƒNƒg</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.util.Date,,,"(å‡ºåŠ›å¤‰æ›æŒ‡å®šãªã—)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦format(Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>Dateå‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOClassNotFoundException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>•Ô‚è’l‚ªw’è‚µ‚½’l‚Æ“¯‚¶‚Å"yyyy/MM/dd"‚ÌŒ`®‚Å•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–ClassNotFoundExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>è¿”ã‚Šå€¤ãŒæŒ‡å®šã—ãŸå€¤ã¨åŒã˜ã§"yyyy/MM/dd"ã®å½¢å¼ã§è¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª
 	 */
 	public void testFormatNullDate() {
 		try {
@@ -1423,23 +1423,23 @@ public class DefaultPropertySchemaTest extends TestCase {
 			assertTrue(s.startsWith("2008/01/22"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒB‚Ì’l‚Ìİ’èƒ`ƒFƒbƒNƒeƒXƒg(BigDecimal)B
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã®è¨­å®šãƒã‚§ãƒƒã‚¯ãƒ†ã‚¹ãƒˆ(BigDecimal)ã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.math.BigDecimal,,,"(o—Í•ÏŠ·w’è‚È‚µ)</li>
-	 * <li>’l‚ğw’è‚µ‚Äformat(Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.math.BigDecimal,,,"(å‡ºåŠ›å¤‰æ›æŒ‡å®šãªã—)</li>
+	 * <li>å€¤ã‚’æŒ‡å®šã—ã¦format(Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOClassNotFoundException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>•Ô‚è’l‚ªw’è‚µ‚½’l‚ğ•¶š—ñ‰»‚µ‚½‚à‚Ì‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–ClassNotFoundExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>è¿”ã‚Šå€¤ãŒæŒ‡å®šã—ãŸå€¤ã‚’æ–‡å­—åˆ—åŒ–ã—ãŸã‚‚ã®ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª
 	 */
 	public void testFormatNullBigDecimal() {
 		try {
@@ -1450,23 +1450,23 @@ public class DefaultPropertySchemaTest extends TestCase {
 			assertEquals("12345678901234567890.12345678", (String)dps.format(val));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒB‚Ì’l‚Ìİ’èƒ`ƒFƒbƒNƒeƒXƒg(BigDecimal”z—ñ)B
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã®è¨­å®šãƒã‚§ãƒƒã‚¯ãƒ†ã‚¹ãƒˆ(BigDecimalé…åˆ—)ã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.math.BigDecimal[],,,"(o—Í•ÏŠ·w’è‚È‚µ)</li>
-	 * <li>’l‚ğw’è‚µ‚Äformat(Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.math.BigDecimal[],,,"(å‡ºåŠ›å¤‰æ›æŒ‡å®šãªã—)</li>
+	 * <li>å€¤ã‚’æŒ‡å®šã—ã¦format(Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOClassNotFoundException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>•Ô‚è’l‚ªw’è‚µ‚½’l‚ğ•¶š—ñ‰»‚µ‚½‚à‚Ì‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–ClassNotFoundExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>è¿”ã‚Šå€¤ãŒæŒ‡å®šã—ãŸå€¤ã‚’æ–‡å­—åˆ—åŒ–ã—ãŸã‚‚ã®ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª
 	 */
 	public void testFormatNullBigDecimalArray() {
 		try {
@@ -1479,23 +1479,23 @@ public class DefaultPropertySchemaTest extends TestCase {
 					"99945678901234567890.12345678", (String)dps.format(val));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒB‚Ì’l‚Ìİ’èƒ`ƒFƒbƒNƒeƒXƒg(BigInteger)B
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã®è¨­å®šãƒã‚§ãƒƒã‚¯ãƒ†ã‚¹ãƒˆ(BigInteger)ã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.math.BigInteger,,,"(o—Í•ÏŠ·w’è‚È‚µ)</li>
-	 * <li>’l‚ğw’è‚µ‚Äformat(Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.math.BigInteger,,,"(å‡ºåŠ›å¤‰æ›æŒ‡å®šãªã—)</li>
+	 * <li>å€¤ã‚’æŒ‡å®šã—ã¦format(Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOClassNotFoundException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>•Ô‚è’l‚ªw’è‚µ‚½’l‚ğ•¶š—ñ‰»‚µ‚½‚à‚Ì‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–ClassNotFoundExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>è¿”ã‚Šå€¤ãŒæŒ‡å®šã—ãŸå€¤ã‚’æ–‡å­—åˆ—åŒ–ã—ãŸã‚‚ã®ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª
 	 */
 	public void testFormatNullBigInteger() {
 		try {
@@ -1506,23 +1506,23 @@ public class DefaultPropertySchemaTest extends TestCase {
 			assertEquals("12345678901234567890", (String)dps.format(val));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒB‚Ì’l‚Ìİ’èƒ`ƒFƒbƒNƒeƒXƒg(BigInteger”z—ñ)B
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã®è¨­å®šãƒã‚§ãƒƒã‚¯ãƒ†ã‚¹ãƒˆ(BigIntegeré…åˆ—)ã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.math.BigInteger[],,,"(o—Í•ÏŠ·w’è‚È‚µ)</li>
-	 * <li>’l‚ğw’è‚µ‚Äformat(Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.math.BigInteger[],,,"(å‡ºåŠ›å¤‰æ›æŒ‡å®šãªã—)</li>
+	 * <li>å€¤ã‚’æŒ‡å®šã—ã¦format(Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOClassNotFoundException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>•Ô‚è’l‚ªw’è‚µ‚½’l‚ğ•¶š—ñ‰»‚µ‚½‚à‚Ì‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–ClassNotFoundExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>è¿”ã‚Šå€¤ãŒæŒ‡å®šã—ãŸå€¤ã‚’æ–‡å­—åˆ—åŒ–ã—ãŸã‚‚ã®ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª
 	 */
 	public void testFormatNullBigIntegerArray() {
 		try {
@@ -1535,26 +1535,26 @@ public class DefaultPropertySchemaTest extends TestCase {
 					"99945678901234567890", (String)dps.format(val));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * ƒvƒƒpƒeƒB‚Ì’l‚Ìİ’èƒ`ƒFƒbƒNƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã®è¨­å®šãƒã‚§ãƒƒã‚¯ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.util.Date,<BR>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.util.Date,<BR>
 	 * "jp.ossc.nimbus.util.converter.DateFormatConverter,{ConvertType=1,Format="yyyy-MM-DD"}",,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚Äparse(Object val)‚ğÀs‚·‚é</li>
-	 * <li>"yyyy-MM-DD"‚ÌƒtƒH[ƒ}ƒbƒg‚Ì“ú•t‚ğ•\‚µ‚½•¶š—ñ</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦parse(Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>"yyyy-MM-DD"ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã®æ—¥ä»˜ã‚’è¡¨ã—ãŸæ–‡å­—åˆ—</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOClassNotFoundException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>•Ô‚è’l‚ªDateŒ^ƒIƒuƒWƒFƒNƒg‚Å³‚µ‚­•ÏŠ·‚³‚ê‚é‚±‚Æ‚ğŠm”F
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–ClassNotFoundExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>è¿”ã‚Šå€¤ãŒDateå‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã§æ­£ã—ãå¤‰æ›ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª
 	 */
 	public void testParse() {
 		try {
@@ -1568,24 +1568,24 @@ public class DefaultPropertySchemaTest extends TestCase {
 			assertEquals(dps.parse(date), "2008-01-22");
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒB‚Ì’l‚Ìİ’èƒ`ƒFƒbƒNƒeƒXƒgB(Date)
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã®è¨­å®šãƒã‚§ãƒƒã‚¯ãƒ†ã‚¹ãƒˆã€‚(Date)
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.util.Date,,,"(“ü—Í•ÏŠ·w’è‚È‚µ)</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚Äparse(Object val)‚ğÀs‚·‚é</li>
-	 * <li>DateŒ^ƒIƒuƒWƒFƒNƒg</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.util.Date,,,"(å…¥åŠ›å¤‰æ›æŒ‡å®šãªã—)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦parse(Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>Dateå‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOClassNotFoundException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>•Ô‚è’l‚ªw’è‚µ‚½’l‚Æ“¯‚¶‚±‚Æ‚ğŠm”F
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–ClassNotFoundExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>è¿”ã‚Šå€¤ãŒæŒ‡å®šã—ãŸå€¤ã¨åŒã˜ã“ã¨ã‚’ç¢ºèª
 	 */
 	public void testParseNullDate() {
 		try {
@@ -1597,27 +1597,27 @@ public class DefaultPropertySchemaTest extends TestCase {
 			assertEquals(val, (Date)dps.parse(vals));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}catch (java.text.ParseException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 
 	}
 	
 	/**
-	 * ƒvƒƒpƒeƒB‚Ì’l‚Ìİ’èƒ`ƒFƒbƒNƒeƒXƒg(BigDecimal)B
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã®è¨­å®šãƒã‚§ãƒƒã‚¯ãƒ†ã‚¹ãƒˆ(BigDecimal)ã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.math.BigDecimal,,,"(“ü—Í•ÏŠ·w’è‚È‚µ)</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚Äparse(Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.math.BigDecimal,,,"(å…¥åŠ›å¤‰æ›æŒ‡å®šãªã—)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦parse(Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOClassNotFoundException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>•Ô‚è’l‚ªw’è‚µ‚½’l‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–ClassNotFoundExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>è¿”ã‚Šå€¤ãŒæŒ‡å®šã—ãŸå€¤ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª
 	 */
 	public void testParseNullBigDecimal() {
 		try {
@@ -1629,24 +1629,24 @@ public class DefaultPropertySchemaTest extends TestCase {
 			assertEquals(val, (BigDecimal)dps.parse(vals));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	
 	/**
-	 * ƒvƒƒpƒeƒB‚Ì’l‚Ìİ’èƒ`ƒFƒbƒNƒeƒXƒg(BigDecimal”z—ñ)B
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã®è¨­å®šãƒã‚§ãƒƒã‚¯ãƒ†ã‚¹ãƒˆ(BigDecimalé…åˆ—)ã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.math.BigDecimal[],,,"(“ü—Í•ÏŠ·w’è‚È‚µ)</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚Äparse(Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.math.BigDecimal[],,,"(å…¥åŠ›å¤‰æ›æŒ‡å®šãªã—)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦parse(Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOClassNotFoundException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>•Ô‚è’l‚ªw’è‚µ‚½’l‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–ClassNotFoundExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>è¿”ã‚Šå€¤ãŒæŒ‡å®šã—ãŸå€¤ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª
 	 */
 	public void testParseNullBigDecimalArray() {
 		try {
@@ -1661,24 +1661,24 @@ public class DefaultPropertySchemaTest extends TestCase {
 			assertEquals(val[1], pval[1]);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	
 	/**
-	 * ƒvƒƒpƒeƒB‚Ì’l‚Ìİ’èƒ`ƒFƒbƒNƒeƒXƒg(BigInteger)B
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã®è¨­å®šãƒã‚§ãƒƒã‚¯ãƒ†ã‚¹ãƒˆ(BigInteger)ã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.math.BigInteger,,,"(“ü—Í•ÏŠ·w’è‚È‚µ)</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚Äparse(Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.math.BigInteger,,,"(å…¥åŠ›å¤‰æ›æŒ‡å®šãªã—)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦parse(Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOClassNotFoundException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>•Ô‚è’l‚ªw’è‚µ‚½’l‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–ClassNotFoundExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>è¿”ã‚Šå€¤ãŒæŒ‡å®šã—ãŸå€¤ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª
 	 */
 	public void testParseNullBigInteger() {
 		try {
@@ -1690,24 +1690,24 @@ public class DefaultPropertySchemaTest extends TestCase {
 			assertEquals(val, (BigInteger)dps.parse(vals));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	
 	/**
-	 * ƒvƒƒpƒeƒB‚Ì’l‚Ìİ’èƒ`ƒFƒbƒNƒeƒXƒg(BigInteger”z—ñ)B
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã®è¨­å®šãƒã‚§ãƒƒã‚¯ãƒ†ã‚¹ãƒˆ(BigIntegeré…åˆ—)ã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.math.BigInteger[],,,"(“ü—Í•ÏŠ·w’è‚È‚µ)</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚Äparse(Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.math.BigInteger[],,,"(å…¥åŠ›å¤‰æ›æŒ‡å®šãªã—)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦parse(Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOClassNotFoundException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>•Ô‚è’l‚ªw’è‚µ‚½’l‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–ClassNotFoundExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>è¿”ã‚Šå€¤ãŒæŒ‡å®šã—ãŸå€¤ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª
 	 */
 	public void testParseNullBigIntegerArray() {
 		try {
@@ -1722,25 +1722,25 @@ public class DefaultPropertySchemaTest extends TestCase {
 			assertEquals(val[1], pval[1]);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 	
 	
 	
 	/**
-	 * ƒvƒƒpƒeƒB‚Ì’l‚Ìƒ`ƒFƒbƒNƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã®ãƒã‚§ãƒƒã‚¯ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄcheckSchema(Object val)‚ğÀs‚·‚é</li>
-	 * <li>"•¶š—ñ"</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,,,"</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦checkSchema(Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>"æ–‡å­—åˆ—"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOClassNotFoundException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–ClassNotFoundExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testCheckSchema() {
@@ -1748,27 +1748,27 @@ public class DefaultPropertySchemaTest extends TestCase {
 			DefaultPropertySchema dps = new DefaultPropertySchema();
 			String schema = "A,java.lang.String,,,";
 			dps.setSchema(schema);
-			String val = "•¶š—ñ";
+			String val = "æ–‡å­—åˆ—";
 			dps.checkSchema(val);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒB‚Ì’l‚Ìƒ`ƒFƒbƒNƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã®ãƒã‚§ãƒƒã‚¯ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,int,,,</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄcheckSchema(Object val)‚ğÀs‚·‚é</li>
-	 * <li>MapŒ^‚Ì’l (Œ^‚Ì•sˆê’v)</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,int,,,</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦checkSchema(Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>Mapå‹ã®å€¤ (å‹ã®ä¸ä¸€è‡´)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySchemaCheckException‚ª”­¶‚·‚é‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertySchemaCheckExceptionãŒç™ºç”Ÿã™ã‚‹ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testCheckSchemaInvalidValue() {
@@ -1778,24 +1778,24 @@ public class DefaultPropertySchemaTest extends TestCase {
 			dps.setSchema(schema);
 			Map val = new HashMap();
 			dps.checkSchema(val);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySchemaCheckException e) {
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒB‚Ì’l‚ªƒXƒL[ƒ}’è‹`‚ÌŒ^‚É“K‡‚µ‚Ä‚¢‚é‚©‚Ìƒ`ƒFƒbƒNƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ãŒã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã®å‹ã«é©åˆã—ã¦ã„ã‚‹ã‹ã®ãƒã‚§ãƒƒã‚¯ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,,,</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄcheckType(Object val)‚ğÀs‚·‚é</li>
-	 * <li>"•¶š—ñ"</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,,,</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦checkType(Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>"æ–‡å­—åˆ—"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOClassNotFoundException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–ClassNotFoundExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testCheckTypeStr() {
@@ -1803,27 +1803,27 @@ public class DefaultPropertySchemaTest extends TestCase {
 			DefaultPropertySchema dps = new DefaultPropertySchema();
 			String schema = "A,java.lang.String,,,";
 			dps.setSchema(schema);
-			String val = "•¶š—ñ";
+			String val = "æ–‡å­—åˆ—";
 			dps.checkType(val);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒB‚Ì’l‚ªƒXƒL[ƒ}’è‹`‚ÌŒ^‚É“K‡‚µ‚Ä‚¢‚é‚©‚Ìƒ`ƒFƒbƒNƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ãŒã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã®å‹ã«é©åˆã—ã¦ã„ã‚‹ã‹ã®ãƒã‚§ãƒƒã‚¯ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,int,,,</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄcheckType(Object val)‚ğÀs‚·‚é</li>
-	 * <li>IntegerŒ^‚Ì’l</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,int,,,</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦checkType(Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>Integerå‹ã®å€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOClassNotFoundException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–ClassNotFoundExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testCheckTypeInt() {
@@ -1835,23 +1835,23 @@ public class DefaultPropertySchemaTest extends TestCase {
 			dps.checkType(new Integer(val));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒB‚Ì’l‚ªƒXƒL[ƒ}’è‹`‚ÌŒ^‚É“K‡‚µ‚Ä‚¢‚é‚©‚Ìƒ`ƒFƒbƒNƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ãŒã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã®å‹ã«é©åˆã—ã¦ã„ã‚‹ã‹ã®ãƒã‚§ãƒƒã‚¯ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,int,,,</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄcheckType(Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,int,,,</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦checkType(Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>null</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOClassNotFoundException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–ClassNotFoundExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testCheckTypeNull1() {
@@ -1862,24 +1862,24 @@ public class DefaultPropertySchemaTest extends TestCase {
 			dps.checkType(null);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒB‚Ì’l‚ªƒXƒL[ƒ}’è‹`‚Ì§–ñ‚É“K‡‚µ‚Ä‚¢‚é‚©ƒ`ƒFƒbƒN‚Ìƒ`ƒFƒbƒNƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ãŒã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã®åˆ¶ç´„ã«é©åˆã—ã¦ã„ã‚‹ã‹ãƒã‚§ãƒƒã‚¯ã®ãƒã‚§ãƒƒã‚¯ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,"jp.ossc.nimbus.util.converter.DataSetXMLConverter<BR>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,"jp.ossc.nimbus.util.converter.DataSetXMLConverter<BR>
 	 * {1}",,"@value@ != null""</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄcheckConstrain(Object val)‚ğÀs‚·‚é</li>
-	 * <li>null‚Å‚È‚¢•¶š—ñ</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦checkConstrain(Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>nullã§ãªã„æ–‡å­—åˆ—</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaCheckException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaCheckExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testCheckConstrain() {
@@ -1891,24 +1891,24 @@ public class DefaultPropertySchemaTest extends TestCase {
 			dps.validate("test");
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒB‚Ì’l‚ªƒXƒL[ƒ}’è‹`‚Ì§–ñ‚É“K‡‚µ‚Ä‚¢‚é‚©ƒ`ƒFƒbƒN‚Ìƒ`ƒFƒbƒNƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ãŒã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã®åˆ¶ç´„ã«é©åˆã—ã¦ã„ã‚‹ã‹ãƒã‚§ãƒƒã‚¯ã®ãƒã‚§ãƒƒã‚¯ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,"jp.ossc.nimbus.util.converter.DataSetXMLConverter<BR>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,"jp.ossc.nimbus.util.converter.DataSetXMLConverter<BR>
 	 * {1}",,"@value.length@ > 5""</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚Ävalidate(Object val)‚ğÀs‚·‚é</li>
-	 * <li>1234 i§–ñ‚É”½‚·‚éj</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦validate(Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>1234 ï¼ˆåˆ¶ç´„ã«åã™ã‚‹ï¼‰</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>–ß‚è’l‚ªfalse‚Å‚ ‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æˆ»ã‚Šå€¤ãŒfalseã§ã‚ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testCheckConstrainNull() {
@@ -1920,21 +1920,21 @@ public class DefaultPropertySchemaTest extends TestCase {
 	}
 
 	/**
-	 * ƒXƒL[ƒ}‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ã‚¹ã‚­ãƒ¼ãƒã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄsetSchema(String schema)‚ğÀs‚·‚é</li>
-	 * <li>ƒXƒL[ƒ}F"A,java.lang.String,"jp.ossc.nimbus.util.converter.DataSetXMLConverter<BR>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦setSchema(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒï¼š"A,java.lang.String,"jp.ossc.nimbus.util.converter.DataSetXMLConverter<BR>
 	 * {1}","jp.ossc.nimbus.util.converter.DataSetXMLConverter{1}","@value.length@ > 5""</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄtoString()‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦toString()ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì•¶š—ñ‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ¬¡ã®æ–‡å­—åˆ—ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * <li>"jp.ossc.nimbus.beans.dataset.DefaultPropertySchema{name=A,<BR>
 	 * type=java.lang.String,parseConverter=jp.ossc.nimbus.util.converter.DataSetXMLConverter<BR>
-	 * ‚Ån‚Ü‚é•¶š—ñ‚Å‚ ‚é‚±‚Æ‚ğŠm”F
+	 * ã§å§‹ã¾ã‚‹æ–‡å­—åˆ—ã§ã‚ã‚‹ã“ã¨ã‚’ç¢ºèª
 	 * 
 	 * constrain=null}"</li>
 	 * </ul>
@@ -1952,7 +1952,7 @@ public class DefaultPropertySchemaTest extends TestCase {
 					"parseConverter=jp.ossc.nimbus.util.converter.DataSetXMLConverter")); 
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 

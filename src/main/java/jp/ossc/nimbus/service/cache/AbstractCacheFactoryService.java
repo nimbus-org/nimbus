@@ -36,8 +36,8 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ’ŠÛƒLƒƒƒbƒVƒ…ƒtƒ@ƒNƒgƒŠB<p>
- * {@link AbstractCacheService}‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚Å‚ ‚éB<br>
+ * æŠ½è±¡ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * {@link AbstractCacheService}ã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  * @see AbstractCacheService
@@ -51,20 +51,20 @@ public abstract class AbstractCacheFactoryService
     private AbstractCacheService template;;
     
     /**
-     * {@link AbstractCacheService}ƒT[ƒrƒX‚ğ¶¬‚·‚éB<p>
+     * {@link AbstractCacheService}ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return AbstractCacheServiceƒT[ƒrƒX
-     * @exception Exception AbstractCacheService‚Ì¶¬E‹N“®‚É¸”s‚µ‚½ê‡
+     * @return AbstractCacheServiceã‚µãƒ¼ãƒ“ã‚¹
+     * @exception Exception AbstractCacheServiceã®ç”Ÿæˆãƒ»èµ·å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
      * @see AbstractCacheService
      */
     protected abstract AbstractCacheService createAbstractCacheService()
      throws Exception;
     
     /**
-     * {@link AbstractCacheService}ƒT[ƒrƒX‚ğ¶¬‚·‚éB<p>
+     * {@link AbstractCacheService}ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return AbstractCacheServiceƒT[ƒrƒX
-     * @exception Exception AbstractCacheService‚Ì¶¬E‹N“®‚É¸”s‚µ‚½ê‡
+     * @return AbstractCacheServiceã‚µãƒ¼ãƒ“ã‚¹
+     * @exception Exception AbstractCacheServiceã®ç”Ÿæˆãƒ»èµ·å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
      * @see AbstractCacheService
      */
     protected Service createServiceInstance() throws Exception{
@@ -85,7 +85,7 @@ public abstract class AbstractCacheFactoryService
         return cache;
     }
     
-    // AbstractCacheFactoryServiceMBean‚ÌJavaDoc
+    // AbstractCacheFactoryServiceMBeanã®JavaDoc
     public void setOverflowControllerServiceNames(ServiceName[] names){
         final AbstractCacheService templateCache = getTemplate();
         if(templateCache == null){
@@ -101,7 +101,7 @@ public abstract class AbstractCacheFactoryService
         }
     }
     
-    // AbstractCacheFactoryServiceMBean‚ÌJavaDoc
+    // AbstractCacheFactoryServiceMBeanã®JavaDoc
     public ServiceName[] getOverflowControllerServiceNames(){
         final AbstractCacheService templateCache = getTemplate();
         if(templateCache == null){
@@ -110,7 +110,7 @@ public abstract class AbstractCacheFactoryService
         return templateCache.getOverflowControllerServiceNames();
     }
     
-    // AbstractCacheFactoryServiceMBean‚ÌJavaDoc
+    // AbstractCacheFactoryServiceMBeanã®JavaDoc
     public void setClearOnStop(boolean isClear){
         final AbstractCacheService templateCache = getTemplate();
         if(templateCache == null){
@@ -126,7 +126,7 @@ public abstract class AbstractCacheFactoryService
         }
     }
     
-    // AbstractCacheFactoryServiceMBean‚ÌJavaDoc
+    // AbstractCacheFactoryServiceMBeanã®JavaDoc
     public boolean isClearOnStop(){
         final AbstractCacheService templateCache = getTemplate();
         if(templateCache == null){
@@ -135,7 +135,7 @@ public abstract class AbstractCacheFactoryService
         return templateCache.isClearOnStop();
     }
     
-    // AbstractCacheFactoryServiceMBean‚ÌJavaDoc
+    // AbstractCacheFactoryServiceMBeanã®JavaDoc
     public void setClearOnDestroy(boolean isClear){
         final AbstractCacheService templateCache = getTemplate();
         if(templateCache == null){
@@ -151,7 +151,7 @@ public abstract class AbstractCacheFactoryService
         }
     }
     
-    // AbstractCacheFactoryServiceMBean‚ÌJavaDoc
+    // AbstractCacheFactoryServiceMBeanã®JavaDoc
     public boolean isClearOnDestroy(){
         final AbstractCacheService templateCache = getTemplate();
         if(templateCache == null){
@@ -160,7 +160,7 @@ public abstract class AbstractCacheFactoryService
         return templateCache.isClearOnDestroy();
     }
     
-    // AbstractCacheFactoryServiceMBean‚ÌJavaDoc
+    // AbstractCacheFactoryServiceMBeanã®JavaDoc
     public void clear(){
         final Set instanceSet = getManagedInstanceSet();
         final Iterator instances = instanceSet.iterator();
@@ -172,9 +172,9 @@ public abstract class AbstractCacheFactoryService
     }
     
     /**
-     * ƒeƒ“ƒvƒŒ[ƒg‚Æ‚È‚éƒLƒƒƒbƒVƒ…ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã¨ãªã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒeƒ“ƒvƒŒ[ƒg‚Æ‚È‚éƒLƒƒƒbƒVƒ…ƒT[ƒrƒX
+     * @return ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã¨ãªã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µãƒ¼ãƒ“ã‚¹
      */
     protected synchronized AbstractCacheService getTemplate(){
         if(template == null){

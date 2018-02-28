@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.cache;
 import junit.framework.*;
 
 /**
- * FIFO‚ ‚Ó‚êƒAƒ‹ƒSƒŠƒYƒ€ƒT[ƒrƒXƒeƒXƒgB<p>
+ * FIFOã‚ãµã‚Œã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚µãƒ¼ãƒ“ã‚¹ãƒ†ã‚¹ãƒˆã€‚<p>
  *
  * @author M.Takata
  */

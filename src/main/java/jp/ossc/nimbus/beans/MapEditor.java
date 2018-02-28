@@ -36,28 +36,28 @@ import java.util.*;
 import java.io.*;
 
 /**
- * {@link Map}Œ^‚ÌPropertyEditorƒNƒ‰ƒXB<p>
- * ƒL[=’lŒ`®‚Ì•¶š—ñ‚ğjava.util.LinkedHashMap‚É•ÏŠ·‚·‚éB<br>
- * Šes‚Ì‘OŒã‚Ì‹ó”’‚ªƒgƒŠƒ€‚³‚ê‚éB‹ó”’‚ÍAjava.lang.Character#isWhitespace(char)‚Å”»’è‚³‚ê‚éB‚Ü‚½A"&lt;!--"‚Æ"--&gt;"‚ÉˆÍ‚Ü‚ê‚½•¶š—ñ‚ÍƒRƒƒ“ƒg‚Æ‰ğß‚³‚ê–³‹‚³‚ê‚éB‚Ü‚½A"${"‚Æ"}"‚ÉˆÍ‚Ü‚ê‚½•¶š—ñ‚ÍA“¯–¼‚ÌƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Æ’uŠ·‚³‚ê‚éB<br>
- * "${\t}"A"${\n}"A"${\r}"A"${\f}"‚ÍAƒGƒXƒP[ƒvƒV[ƒPƒ“ƒX‚Æ‚µ‚Ä’uŠ·‚³‚ê‚éB<br>
- * "u"‚©‚çn‚Ü‚é‚U•¶š‚ÍAƒ†ƒjƒR[ƒh•¶š—ñ‚Æ‚µ‚Ä’uŠ·‚³‚ê‚éB<br>
- * ‚Ü‚½A‹ó”’‚ğ•¶š—ñ‚Ì‘OŒã‚É•t‰Á‚µ‚½‚¢ê‡‚É‚ÍA"‚ÅˆÍ‚ŞB"‚ğƒGƒXƒP[ƒv‚·‚é‚É‚ÍA\"‚Æ‹Lq‚·‚éB<br>
+ * {@link Map}å‹ã®PropertyEditorã‚¯ãƒ©ã‚¹ã€‚<p>
+ * ã‚­ãƒ¼=å€¤å½¢å¼ã®æ–‡å­—åˆ—ã‚’java.util.LinkedHashMapã«å¤‰æ›ã™ã‚‹ã€‚<br>
+ * å„è¡Œã®å‰å¾Œã®ç©ºç™½ãŒãƒˆãƒªãƒ ã•ã‚Œã‚‹ã€‚ç©ºç™½ã¯ã€java.lang.Character#isWhitespace(char)ã§åˆ¤å®šã•ã‚Œã‚‹ã€‚ã¾ãŸã€"&lt;!--"ã¨"--&gt;"ã«å›²ã¾ã‚ŒãŸæ–‡å­—åˆ—ã¯ã‚³ãƒ¡ãƒ³ãƒˆã¨è§£é‡ˆã•ã‚Œç„¡è¦–ã•ã‚Œã‚‹ã€‚ã¾ãŸã€"${"ã¨"}"ã«å›²ã¾ã‚ŒãŸæ–‡å­—åˆ—ã¯ã€åŒåã®ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ç½®æ›ã•ã‚Œã‚‹ã€‚<br>
+ * "${\t}"ã€"${\n}"ã€"${\r}"ã€"${\f}"ã¯ã€ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã¨ã—ã¦ç½®æ›ã•ã‚Œã‚‹ã€‚<br>
+ * "ï¿¥u"ã‹ã‚‰å§‹ã¾ã‚‹ï¼–æ–‡å­—ã¯ã€ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—ã¨ã—ã¦ç½®æ›ã•ã‚Œã‚‹ã€‚<br>
+ * ã¾ãŸã€ç©ºç™½ã‚’æ–‡å­—åˆ—ã®å‰å¾Œã«ä»˜åŠ ã—ãŸã„å ´åˆã«ã¯ã€"ã§å›²ã‚€ã€‚"ã‚’ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹ã«ã¯ã€\"ã¨è¨˜è¿°ã™ã‚‹ã€‚<br>
  * <p>
- * —áF<br>
+ * ä¾‹ï¼š<br>
  * &nbsp;&nbsp;A=a<br>
  * &nbsp;&nbsp;B=b<br>
  * &nbsp;&nbsp;C="c "<br>
  * &nbsp;&nbsp;&lt;!--D=d<br>
  * &nbsp;&nbsp;E=e--&gt;<br>
  * <br>
- * ‚Ì‚æ‚¤‚È•¶š—ñ‚ª<br>
+ * ã®ã‚ˆã†ãªæ–‡å­—åˆ—ãŒ<br>
  * <br>
  * &nbsp;&nbsp;Map map = new LinkedHashMap();<br>
  * &nbsp;&nbsp;map.put("A", "a");<br>
  * &nbsp;&nbsp;map.put("B", "b");<br>
  * &nbsp;&nbsp;map.put("C", "c ");<br>
  * <br>
- * ‚Ì‚æ‚¤‚É•ÏŠ·‚³‚ê‚éB<br>
+ * ã®ã‚ˆã†ã«å¤‰æ›ã•ã‚Œã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -71,9 +71,9 @@ public class MapEditor extends PropertyEditorSupport
     private static final String DOUBLE_QUOTE = "\"";
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ğ‰ğÍ‚µ‚ÄƒvƒƒpƒeƒB’l‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’è§£æã—ã¦ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param text ‰ğÍ‚³‚ê‚é•¶š—ñ
+     * @param text è§£æã•ã‚Œã‚‹æ–‡å­—åˆ—
      */
     public void setAsText(String text){
         if(text == null){
@@ -149,13 +149,13 @@ public class MapEditor extends PropertyEditorSupport
                 }
             }
         }catch(IOException e){
-            // ‹N‚«‚È‚¢‚Í‚¸
+            // èµ·ããªã„ã¯ãš
             e.printStackTrace();
         }finally{
             try{
                 br.close();
             }catch(IOException e){
-                // ‹N‚«‚È‚¢‚Í‚¸
+                // èµ·ããªã„ã¯ãš
                 e.printStackTrace();
             }
             sr.close();
@@ -164,9 +164,9 @@ public class MapEditor extends PropertyEditorSupport
     }
     
     /**
-     * ƒvƒƒpƒeƒB•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒpƒeƒB•¶š—ñ
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—
      */
     public String getAsText(){
         final Map linkedMap = (Map)getValue();

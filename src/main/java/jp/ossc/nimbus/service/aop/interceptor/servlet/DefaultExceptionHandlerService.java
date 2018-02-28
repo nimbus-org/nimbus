@@ -49,16 +49,16 @@ import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 import jp.ossc.nimbus.service.log.Logger;
 
 /**
- * ƒfƒtƒHƒ‹ƒg—áŠOƒnƒ“ƒhƒ‰ƒT[ƒrƒXB<p>
- * ˆÈ‰º‚Ì—áŠOˆ—‹@”\‚ðŽ‚Á‚Ä‚¢‚éB<br>
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆä¾‹å¤–ãƒãƒ³ãƒ‰ãƒ©ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ä»¥ä¸‹ã®ä¾‹å¤–å‡¦ç†æ©Ÿèƒ½ã‚’æŒã£ã¦ã„ã‚‹ã€‚<br>
  * <ul>
- *     <li>—áŠO‚ðƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚éB</li>
- *     <li>ƒƒO‚ðo—Í‚·‚éB</li>
- *     <li>HTTPƒXƒe[ƒ^ƒX‚ð•ÏX‚·‚éB</li>
- *     <li>‘¼‚ÌƒT[ƒuƒŒƒbƒg‚ÉƒtƒHƒ[ƒh‚·‚éB</li>
- *     <li>—áŠO‚ðthrow‚·‚éA‚Ü‚½‚Íthrow‚µ‚È‚¢B</li>
+ *     <li>ä¾‹å¤–ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹ã€‚</li>
+ *     <li>ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹ã€‚</li>
+ *     <li>HTTPã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’å¤‰æ›´ã™ã‚‹ã€‚</li>
+ *     <li>ä»–ã®ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã«ãƒ•ã‚©ãƒ¯ãƒ¼ãƒ‰ã™ã‚‹ã€‚</li>
+ *     <li>ä¾‹å¤–ã‚’throwã™ã‚‹ã€ã¾ãŸã¯throwã—ãªã„ã€‚</li>
  * </ul>
- * ˆÈ‰º‚ÉA”­¶‚µ‚½—áŠO‚ÌƒƒO‚ðo—Í‚µAHTTPƒXƒe[ƒ^ƒX‚Ì500‚ð‰ž“š‚·‚éƒfƒtƒHƒ‹ƒg—áŠOƒnƒ“ƒhƒ‰‚ÌƒT[ƒrƒX’è‹`—á‚ðŽ¦‚·B<br>
+ * ä»¥ä¸‹ã«ã€ç™ºç”Ÿã—ãŸä¾‹å¤–ã®ãƒ­ã‚°ã‚’å‡ºåŠ›ã—ã€HTTPã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã®500ã‚’å¿œç­”ã™ã‚‹ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆä¾‹å¤–ãƒãƒ³ãƒ‰ãƒ©ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -85,7 +85,7 @@ public class DefaultExceptionHandlerService extends ServiceBase
     private static final long serialVersionUID = -7679217558033186068L;
     
     /**
-     * ”­¶‚µ‚½—áŠO‚ðƒtƒHƒ[ƒhæ‚É’m‚ç‚¹‚é‚½‚ß‚ÉƒŠƒNƒGƒXƒg‘®«‚É—áŠO‚ðÝ’è‚·‚éŽž‚Ì‘®«–¼B<p>
+     * ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’ãƒ•ã‚©ãƒ¯ãƒ¼ãƒ‰å…ˆã«çŸ¥ã‚‰ã›ã‚‹ãŸã‚ã«ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±žæ€§ã«ä¾‹å¤–ã‚’è¨­å®šã™ã‚‹æ™‚ã®å±žæ€§åã€‚<p>
      */
     public static final String REQUEST_ATTIBUTE_EXCEPTION_KEY = DefaultExceptionHandlerService.class.getName().replace('.', '_') + "_EXCEPTION";
     
@@ -215,9 +215,9 @@ public class DefaultExceptionHandlerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ðs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬‚ÉŽ¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         propertyAccess = new PropertyAccess();
@@ -225,9 +225,9 @@ public class DefaultExceptionHandlerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJŽnˆ—‚ðs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJŽn‚ÉŽ¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(journalServiceName != null){
@@ -242,9 +242,9 @@ public class DefaultExceptionHandlerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ðs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠü‚ÉŽ¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         propertyAccess = null;

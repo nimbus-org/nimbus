@@ -34,20 +34,20 @@ package jp.ossc.nimbus.service.journal;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * •s•ÏƒWƒƒ[ƒiƒ‹ƒGƒfƒBƒ^[B<p>
- * ƒWƒƒ[ƒiƒ‹î•ñ‚ğ“o˜^‚µ‚½“_‚Ì’l‚ğ•¶š—ñ‚Æ‚µ‚Ä•Û‚µ‚Ä‚¨‚«A’ñ‹Ÿ‚·‚éƒWƒƒ[ƒiƒ‹ƒGƒfƒBƒ^‚ÌƒCƒ“ƒ^ƒtƒF[ƒX‚Å‚ ‚éB<br>
+ * ä¸å¤‰ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚¨ãƒ‡ã‚£ã‚¿ãƒ¼ã€‚<p>
+ * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±ã‚’ç™»éŒ²ã—ãŸæ™‚ç‚¹ã®å€¤ã‚’æ–‡å­—åˆ—ã¨ã—ã¦ä¿æŒã—ã¦ãŠãã€æä¾›ã™ã‚‹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚¨ãƒ‡ã‚£ã‚¿ã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
 public interface ImmutableJournalEditor extends JournalEditor{
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Ä—^‚¦‚ç‚ê‚½‚ ‚éŒ^‚Ìî•ñ‚ğƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Äo—Í‚·‚é•¶š—ñ‚É•ÏŠ·‚·‚éB<br>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦ä¸ãˆã‚‰ã‚ŒãŸã‚ã‚‹å‹ã®æƒ…å ±ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<br>
      * 
-     * @param finder “KØ‚ÈJournalEditor‚ğ’ñ‹Ÿ‚·‚éEditorFinder
-     * @param key ƒWƒƒ[ƒiƒ‹‚ÌƒL[î•ñ
-     * @param value ƒWƒƒ[ƒiƒ‹î•ñ
-     * @return ƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Äo—Í‚·‚é•¶š—ñ
+     * @param finder é©åˆ‡ãªJournalEditorã‚’æä¾›ã™ã‚‹EditorFinder
+     * @param key ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ã‚­ãƒ¼æƒ…å ±
+     * @param value ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹æ–‡å­—åˆ—
      */
     public String toString(EditorFinder finder, Object key, Object value);
 }

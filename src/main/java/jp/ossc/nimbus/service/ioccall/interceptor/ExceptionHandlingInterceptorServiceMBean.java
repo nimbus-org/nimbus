@@ -36,7 +36,7 @@ import java.util.Properties;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link ExceptionHandlingInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link ExceptionHandlingInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see ExceptionHandlingInterceptorService
@@ -45,30 +45,30 @@ public interface ExceptionHandlingInterceptorServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * —áŠOƒNƒ‰ƒX–¼‚Æ{@link ExceptionHandler}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * ä¾‹å¤–ã‚¯ãƒ©ã‚¹åã¨{@link ExceptionHandler}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param map —áŠOƒNƒ‰ƒX–¼‚ÆExceptionHandlerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒOB—áŠOƒNƒ‰ƒX–¼=ExceptionHandlerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param map ä¾‹å¤–ã‚¯ãƒ©ã‚¹åã¨ExceptionHandlerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚ä¾‹å¤–ã‚¯ãƒ©ã‚¹å=ExceptionHandlerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setExceptionAndHandlerMapping(Properties map);
     
     /**
-     * —áŠOƒNƒ‰ƒX–¼‚Æ{@link ExceptionHandler}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * ä¾‹å¤–ã‚¯ãƒ©ã‚¹åã¨{@link ExceptionHandler}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return —áŠOƒNƒ‰ƒX–¼‚ÆExceptionHandlerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ìƒ}ƒbƒsƒ“ƒO
+     * @return ä¾‹å¤–ã‚¯ãƒ©ã‚¹åã¨ExceptionHandlerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®ãƒãƒƒãƒ”ãƒ³ã‚°
      */
     public Properties getExceptionAndHandlerMapping();
     
     /**
-     * ”­¶‚µ‚½—áŠO‚Éƒ}ƒbƒsƒ“ƒO‚³‚ê‚½{@link ExceptionHandler}ƒT[ƒrƒX‚ª‚È‚¢ê‡‚Ég—p‚³‚ê‚éExceptionHandlerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ç™ºç”Ÿã—ãŸä¾‹å¤–ã«ãƒãƒƒãƒ”ãƒ³ã‚°ã•ã‚ŒãŸ{@link ExceptionHandler}ã‚µãƒ¼ãƒ“ã‚¹ãŒãªã„å ´åˆã«ä½¿ç”¨ã•ã‚Œã‚‹ExceptionHandlerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ExceptionHandlerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ExceptionHandlerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setDefaultExceptionHandlerServiceName(ServiceName name);
     
     /**
-     * ”­¶‚µ‚½—áŠO‚Éƒ}ƒbƒsƒ“ƒO‚³‚ê‚½{@link ExceptionHandler}ƒT[ƒrƒX‚ª‚È‚¢ê‡‚Ég—p‚³‚ê‚éExceptionHandlerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ç™ºç”Ÿã—ãŸä¾‹å¤–ã«ãƒãƒƒãƒ”ãƒ³ã‚°ã•ã‚ŒãŸ{@link ExceptionHandler}ã‚µãƒ¼ãƒ“ã‚¹ãŒãªã„å ´åˆã«ä½¿ç”¨ã•ã‚Œã‚‹ExceptionHandlerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ExceptionHandlerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ExceptionHandlerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getDefaultExceptionHandlerServiceName();
 }

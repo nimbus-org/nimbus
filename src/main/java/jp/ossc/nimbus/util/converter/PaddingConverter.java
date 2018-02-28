@@ -32,55 +32,55 @@
 package jp.ossc.nimbus.util.converter;
 
 /**
- * ƒpƒfƒBƒ“ƒOƒRƒ“ƒo[ƒ^‚ÌƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface PaddingConverter extends ReversibleConverter{
     
     /**
-     * ƒpƒfƒBƒ“ƒO•ÏŠ·‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°å¤‰æ›ã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int PADDING = POSITIVE_CONVERT;
     
     /**
-     * ƒp[ƒX•ÏŠ·‚ğ•\‚·•ÏŠ·í•Ê’è”B<p>
+     * ãƒ‘ãƒ¼ã‚¹å¤‰æ›ã‚’è¡¨ã™å¤‰æ›ç¨®åˆ¥å®šæ•°ã€‚<p>
      */
     public static final int PARSE = REVERSE_CONVERT;
     
     /**
-     * ¶Šñ‚¹‚ğ•\‚·ƒpƒfƒBƒ“ƒO•ûŒü’è”B<p>
+     * å·¦å¯„ã›ã‚’è¡¨ã™ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°æ–¹å‘å®šæ•°ã€‚<p>
      */
     public static final int DIRECTION_LEFT = 1;
     
     /**
-     * ‰EŠñ‚¹‚ğ•\‚·ƒpƒfƒBƒ“ƒO•ûŒü’è”B<p>
+     * å³å¯„ã›ã‚’è¡¨ã™ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°æ–¹å‘å®šæ•°ã€‚<p>
      */
     public static final int DIRECTION_RIGHT = 2;
     
     /**
-     * ’†‰›Šñ‚¹‚ğ•\‚·ƒpƒfƒBƒ“ƒO•ûŒü’è”B<p>
+     * ä¸­å¤®å¯„ã›ã‚’è¡¨ã™ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°æ–¹å‘å®šæ•°ã€‚<p>
      */
     public static final int DIRECTION_CENTER = 3;
     
     /**
-     * ƒpƒfƒBƒ“ƒO•¶š‚ğİ’è‚·‚éB<p>
+     * ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°æ–‡å­—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param literal ƒpƒfƒBƒ“ƒO•¶š
+     * @param literal ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°æ–‡å­—
      */
     public void setPaddingLiteral(char literal);
     
     /**
-     * ƒpƒfƒBƒ“ƒO’·‚ğİ’è‚·‚éB<p>
+     * ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°é•·ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param length ƒpƒfƒBƒ“ƒO’·
+     * @param length ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°é•·
      */
     public void setPaddingLength(int length);
     
     /**
-     * ƒpƒfƒBƒ“ƒO•ûŒü‚ğİ’è‚·‚éB<p>
+     * ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°æ–¹å‘ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param direct ƒpƒfƒBƒ“ƒO•ûŒü
+     * @param direct ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°æ–¹å‘
      */
     public void setPaddingDirection(int direct);
 }

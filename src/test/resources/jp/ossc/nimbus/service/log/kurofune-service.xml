@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Shift_JIS" ?> 
+<?xml version="1.0" encoding="UTF-8" ?> 
 <server>
     <manager name="TheManager">
        
@@ -32,7 +32,7 @@
             <attribute name="MaximumFileSize">2048</attribute>
         </service>
        
-      <!-- V’è‹` -->
+      <!-- æ–°å®šç¾© -->
       <service code="jp.ossc.nimbus.service.log.LogService" name="LogService">
        		<attribute name="CategoryServiceNames">#ApplicationCategory</attribute>
        		<attribute name="QueueServiceName">#BusinessJournalQueue</attribute>
@@ -42,7 +42,7 @@
        		<depends>ApplicationCategory</depends>
        </service>
        
-      <!-- V’è‹` MessageRecordFactory‚ÌŽw’è‚È‚µ-->
+      <!-- æ–°å®šç¾© MessageRecordFactoryã®æŒ‡å®šãªã—-->
       <service code="jp.ossc.nimbus.service.log.LogService" name="LogServiceNoMessageRecordService">
        		<attribute name="CategoryServiceNames">#ApplicationCategory</attribute>
        		<attribute name="QueueServiceName">#BusinessJournalQueue</attribute>
@@ -50,7 +50,7 @@
        		<depends>ApplicationCategory</depends>
        </service>
        
-      <!-- V’è‹`(setDefaultMessageWriterServiceName()‚ÌƒeƒXƒg) -->
+      <!-- æ–°å®šç¾©(setDefaultMessageWriterServiceName()ã®ãƒ†ã‚¹ãƒˆ) -->
       <service code="jp.ossc.nimbus.service.log.LogService" name="LogServiceForSetDefaultMessageWriterServiceTest">
        		<attribute name="CategoryServiceNames">#ApplicationCategory</attribute>
        		<attribute name="QueueServiceName">#BusinessJournalQueue</attribute>
@@ -62,7 +62,7 @@
        		<depends>Writer3</depends>
        </service>
        
-      <!-- V’è‹`(—lX‚Èwrite()ƒƒ\ƒbƒh‚ðŽŽ‚·ƒeƒXƒg) -->
+      <!-- æ–°å®šç¾©(æ§˜ã€…ãªwrite()ãƒ¡ã‚½ãƒƒãƒ‰ã‚’è©¦ã™ãƒ†ã‚¹ãƒˆ) -->
       <service code="jp.ossc.nimbus.service.log.LogService" name="LogServiceForWriteMethodsTst">
        		<attribute name="CategoryServiceNames">#ApplicationCategory</attribute>
        		<attribute name="QueueServiceName">#BusinessJournalQueue</attribute>
@@ -77,7 +77,7 @@
        
        LogServiceForWriteMethodsTst
        
-      <!-- V’è‹`(setDefaultWritableRecordFactoryServiceName()‚ÌƒeƒXƒg) -->
+      <!-- æ–°å®šç¾©(setDefaultWritableRecordFactoryServiceName()ã®ãƒ†ã‚¹ãƒˆ) -->
       <service code="jp.ossc.nimbus.service.log.LogService" name="LogServiceForsetDefaultWritableRecordFactoryServiceName">
        		<attribute name="CategoryServiceNames">#ApplicationCategory</attribute>
        		<attribute name="QueueServiceName">#BusinessJournalQueue</attribute>
@@ -91,14 +91,14 @@
        		<depends>Writer3</depends>
        </service>
        
-      <!-- V’è‹`(setContextServiceName‚ÌƒeƒXƒg) -->
+      <!-- æ–°å®šç¾©(setContextServiceNameã®ãƒ†ã‚¹ãƒˆ) -->
       <service code="jp.ossc.nimbus.service.log.LogService" name="LogServiceForsetContextServiceName">
        		<attribute name="CategoryServiceNames">#ApplicationCategory</attribute>
        		<attribute name="QueueServiceName">#BusinessJournalQueue</attribute>
        		<attribute name="MessageRecordFactoryServiceName">#MessageService</attribute>
        		<attribute name="DefaultWritableRecordFactoryServiceName">#LogWritableRecordFactoryDefaultChTst</attribute>
        		<attribute name="DefaultMessageWriterServiceName">#Writer3</attribute>
-       		<!-- ContextƒT[ƒrƒX‚ðƒZƒbƒg -->
+       		<!-- Contextã‚µãƒ¼ãƒ“ã‚¹ã‚’ã‚»ãƒƒãƒˆ -->
        		<attribute name="ContextServiceName">#ThreadContextService</attribute>
        		<depends>BusinessJournalQueue</depends>
        		<depends>MessageService</depends>
@@ -175,7 +175,7 @@
 		    <attribute name="Format">LogWritableRecordFactoryDefaultChTst:%MESSAGE%  Date:%DATE%</attribute>
         </service>
         
-        <!-- CategoryƒT[ƒrƒX -->
+        <!-- Categoryã‚µãƒ¼ãƒ“ã‚¹ -->
         <service code="jp.ossc.nimbus.service.log.SimpleCategoryService" name="ApplicationCategory">
             <attribute name="CategoryName">CATEGORY1</attribute>
             <attribute name="MessageWriterServiceName">#Writer1</attribute>
@@ -191,7 +191,7 @@
             <depends>Writer1</depends>
             <depends>LogWritableRecordFactory</depends>
         </service>
-       <!-- VƒƒbƒZ[ƒWƒŒƒR[ƒhƒtƒ@ƒNƒgƒŠ[ƒT[ƒrƒX’è‹` -->
+       <!-- æ–°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ã‚µãƒ¼ãƒ“ã‚¹å®šç¾© -->
        
        
        <service code="jp.ossc.nimbus.service.message.MessageRecordFactoryService" name="ApplicationMessage">

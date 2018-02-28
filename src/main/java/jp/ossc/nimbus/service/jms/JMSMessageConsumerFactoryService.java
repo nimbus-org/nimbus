@@ -37,9 +37,9 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.jndi.*;
 
 /**
- * JMSƒƒbƒZ[ƒWƒRƒ“ƒVƒ…[ƒ}ƒtƒ@ƒNƒgƒŠB<p>
- * javax.jms.Session‚ğƒ‰ƒbƒv‚µAMessageConsumer‚Ì¶¬‚ğŠÈ—ª‰»‚·‚éB<br>
- * Queue‚ÆTopi‚ÌƒCƒ“ƒ^ƒtƒF[ƒX‚ª“‡‚³‚ê‚½JMS 1.1‚É‘Î‰‚µ‚Ä‚¢‚Ü‚·BJMS 1.1ˆÈ‘O‚Ìƒo[ƒWƒ‡ƒ“‚Åg—p‚·‚éê‡‚É‚ÍAƒTƒuƒNƒ‰ƒX‚Ì{@link JMSQueueReceiverFactoryService}‚âA{@link JMSTopicSubscriberFactoryService}‚ğg—p‚µ‚Ä‰º‚³‚¢B<br>
+ * JMSãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * javax.jms.Sessionã‚’ãƒ©ãƒƒãƒ—ã—ã€MessageConsumerã®ç”Ÿæˆã‚’ç°¡ç•¥åŒ–ã™ã‚‹ã€‚<br>
+ * Queueã¨Topiã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ãŒçµ±åˆã•ã‚ŒãŸJMS 1.1ã«å¯¾å¿œã—ã¦ã„ã¾ã™ã€‚JMS 1.1ä»¥å‰ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã§ä½¿ç”¨ã™ã‚‹å ´åˆã«ã¯ã€ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã®{@link JMSQueueReceiverFactoryService}ã‚„ã€{@link JMSTopicSubscriberFactoryService}ã‚’ä½¿ç”¨ã—ã¦ä¸‹ã•ã„ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -65,93 +65,93 @@ public class JMSMessageConsumerFactoryService extends ServiceBase
     protected boolean isSessionCreate;
     protected boolean isCloseSession;
     
-    // JMSMessageConsumerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageConsumerFactoryServiceMBeanã®JavaDoc
     public void setJMSSessionFactoryServiceName(ServiceName name){
         jmsSessionFactoryServiceName = name;
     }
-    // JMSMessageConsumerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageConsumerFactoryServiceMBeanã®JavaDoc
     public ServiceName getJMSSessionFactoryServiceName(){
         return jmsSessionFactoryServiceName;
     }
     
-    // JMSMessageConsumerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageConsumerFactoryServiceMBeanã®JavaDoc
     public void setDestinationFinderServiceName(ServiceName name){
         destinationFinderServiceName = name;
     }
-    // JMSMessageConsumerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageConsumerFactoryServiceMBeanã®JavaDoc
     public ServiceName getDestinationFinderServiceName(){
         return destinationFinderServiceName;
     }
     
-    // JMSMessageConsumerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageConsumerFactoryServiceMBeanã®JavaDoc
     public void setDestinationName(String name){
         destinationName = name;
     }
-    // JMSMessageConsumerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageConsumerFactoryServiceMBeanã®JavaDoc
     public String getDestinationName(){
         return destinationName;
     }
     
-    // JMSMessageConsumerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageConsumerFactoryServiceMBeanã®JavaDoc
     public void setMessageSelector(String selector){
         messageSelector = selector;
     }
-    // JMSMessageConsumerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageConsumerFactoryServiceMBeanã®JavaDoc
     public String getMessageSelector(){
         return messageSelector;
     }
     
-    // JMSMessageConsumerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageConsumerFactoryServiceMBeanã®JavaDoc
     public void setNoLocal(boolean isNoLocal){
         this.isNoLocal = isNoLocal;
     }
-    // JMSMessageConsumerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageConsumerFactoryServiceMBeanã®JavaDoc
     public boolean isNoLocal(){
         return isNoLocal;
     }
     
-    // JMSMessageConsumerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageConsumerFactoryServiceMBeanã®JavaDoc
     public void setSessionCreate(boolean isCreate){
         isSessionCreate = isCreate;
     }
-    // JMSMessageConsumerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageConsumerFactoryServiceMBeanã®JavaDoc
     public boolean isSessionCreate(){
         return isSessionCreate;
     }
     
-    // JMSMessageConsumerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageConsumerFactoryServiceMBeanã®JavaDoc
     public void setCloseSession(boolean isClose){
         isCloseSession = isClose;
     }
-    // JMSMessageConsumerFactoryServiceMBean‚ÌJavaDoc
+    // JMSMessageConsumerFactoryServiceMBeanã®JavaDoc
     public boolean isCloseSession(){
         return isCloseSession;
     }
     
     /**
-     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
-     * ‚±‚±‚Åİ’è‚³‚ê‚½JndiFinderƒT[ƒrƒX‚ğg‚Á‚ÄAJNDIƒT[ƒo‚©‚çjavax.jms.Destination‚ğlookup‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§è¨­å®šã•ã‚ŒãŸJndiFinderã‚µãƒ¼ãƒ“ã‚¹ã‚’ä½¿ã£ã¦ã€JNDIã‚µãƒ¼ãƒã‹ã‚‰javax.jms.Destinationã‚’lookupã™ã‚‹ã€‚<br>
      *
-     * @param destinationFinder JndiFinderƒT[ƒrƒX
+     * @param destinationFinder JndiFinderã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setJndiFinder(JndiFinder destinationFinder) {
         this.destinationFinder = destinationFinder;
     }
     
     /**
-     * {@link JMSSessionFactory}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
-     * SessionCreate‘®«‚ªtrue‚Ìê‡AƒT[ƒrƒX‚ÌŠJn‚ÉA‚±‚±‚Åİ’è‚³‚ê‚½JMSSessionFactoryƒT[ƒrƒX‚ğg‚Á‚ÄASession‚ğ¶¬‚µ•Û‚·‚éB<br>
+     * {@link JMSSessionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * SessionCreateå±æ€§ãŒtrueã®å ´åˆã€ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹æ™‚ã«ã€ã“ã“ã§è¨­å®šã•ã‚ŒãŸJMSSessionFactoryã‚µãƒ¼ãƒ“ã‚¹ã‚’ä½¿ã£ã¦ã€Sessionã‚’ç”Ÿæˆã—ä¿æŒã™ã‚‹ã€‚<br>
      *
-     * @param jmsSessionFactory JMSSessionFactoryƒT[ƒrƒX‚Ì
+     * @param jmsSessionFactory JMSSessionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®
      */
     public void setJMSSessionFactory(JMSSessionFactory jmsSessionFactory) {
         this.jmsSessionFactory = jmsSessionFactory;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         
@@ -183,9 +183,9 @@ public class JMSMessageConsumerFactoryService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         if(isCloseSession && session != null){
@@ -198,28 +198,28 @@ public class JMSMessageConsumerFactoryService extends ServiceBase
         destination = null;
     }
     
-    // JMSMessageConsumerFactory‚ÌJavaDoc
+    // JMSMessageConsumerFactoryã®JavaDoc
     public Session getSession(){
         return session;
     }
     
-    // JMSMessageConsumerFactory‚ÌJavaDoc
+    // JMSMessageConsumerFactoryã®JavaDoc
     public Destination getDestination(){
         return destination;
     }
     
-    // JMSMessageConsumerFactory‚ÌJavaDoc
+    // JMSMessageConsumerFactoryã®JavaDoc
     public JMSSessionFactory getSessionFactory(){
         return jmsSessionFactory;
     }
     
-    // JMSMessageConsumerFactory‚ÌJavaDoc
+    // JMSMessageConsumerFactoryã®JavaDoc
     public MessageConsumer createConsumer()
      throws JMSMessageConsumerCreateException{
         return createConsumer(messageSelector);
     }
     
-    // JMSMessageConsumerFactory‚ÌJavaDoc
+    // JMSMessageConsumerFactoryã®JavaDoc
     public MessageConsumer createConsumer(
         String messageSelector
     ) throws JMSMessageConsumerCreateException{
@@ -234,7 +234,7 @@ public class JMSMessageConsumerFactoryService extends ServiceBase
         return createConsumer(session, messageSelector);
     }
     
-    // JMSMessageConsumerFactory‚ÌJavaDoc
+    // JMSMessageConsumerFactoryã®JavaDoc
     public MessageConsumer createConsumer(
         String messageSelector,
         boolean noLocal
@@ -250,13 +250,13 @@ public class JMSMessageConsumerFactoryService extends ServiceBase
         return createConsumer(session, messageSelector, noLocal);
     }
     
-    // JMSMessageConsumerFactory‚ÌJavaDoc
+    // JMSMessageConsumerFactoryã®JavaDoc
     public MessageConsumer createConsumer(Destination destination)
      throws JMSMessageConsumerCreateException{
         return createConsumer(destination, messageSelector);
     }
     
-    // JMSMessageConsumerFactory‚ÌJavaDoc
+    // JMSMessageConsumerFactoryã®JavaDoc
     public MessageConsumer createConsumer(
         Destination destination,
         String messageSelector
@@ -272,7 +272,7 @@ public class JMSMessageConsumerFactoryService extends ServiceBase
         return createConsumer(session, destination, messageSelector);
     }
     
-    // JMSMessageConsumerFactory‚ÌJavaDoc
+    // JMSMessageConsumerFactoryã®JavaDoc
     public MessageConsumer createConsumer(
         Destination destination,
         String messageSelector,
@@ -289,13 +289,13 @@ public class JMSMessageConsumerFactoryService extends ServiceBase
         return createConsumer(session, destination, messageSelector, noLocal);
     }
     
-    // JMSMessageConsumerFactory‚ÌJavaDoc
+    // JMSMessageConsumerFactoryã®JavaDoc
     public MessageConsumer createConsumer(Session session)
      throws JMSMessageConsumerCreateException{
         return createConsumer(session, destination);
     }
     
-    // JMSMessageConsumerFactory‚ÌJavaDoc
+    // JMSMessageConsumerFactoryã®JavaDoc
     public MessageConsumer createConsumer(
         Session session,
         String messageSelector
@@ -303,7 +303,7 @@ public class JMSMessageConsumerFactoryService extends ServiceBase
         return createConsumer(session, destination, messageSelector);
     }
     
-    // JMSMessageConsumerFactory‚ÌJavaDoc
+    // JMSMessageConsumerFactoryã®JavaDoc
     public MessageConsumer createConsumer(
         Session session,
         String messageSelector,
@@ -312,7 +312,7 @@ public class JMSMessageConsumerFactoryService extends ServiceBase
         return createConsumer(session, destination, messageSelector, noLocal);
     }
     
-    // JMSMessageConsumerFactory‚ÌJavaDoc
+    // JMSMessageConsumerFactoryã®JavaDoc
     public MessageConsumer createConsumer(
         Session session,
         Destination destination
@@ -320,7 +320,7 @@ public class JMSMessageConsumerFactoryService extends ServiceBase
         return createConsumer(session, destination, messageSelector);
     }
     
-    // JMSMessageConsumerFactory‚ÌJavaDoc
+    // JMSMessageConsumerFactoryã®JavaDoc
     public MessageConsumer createConsumer(
         Session session,
         Destination destination,
@@ -342,7 +342,7 @@ public class JMSMessageConsumerFactoryService extends ServiceBase
         }
     }
     
-    // JMSMessageConsumerFactory‚ÌJavaDoc
+    // JMSMessageConsumerFactoryã®JavaDoc
     public MessageConsumer createConsumer(
         Session session,
         Destination destination,
@@ -366,7 +366,7 @@ public class JMSMessageConsumerFactoryService extends ServiceBase
         }
     }
     
-    // JMSMessageConsumerFactory‚ÌJavaDoc
+    // JMSMessageConsumerFactoryã®JavaDoc
     public TopicSubscriber createDurableSubscriber(String name)
      throws JMSMessageConsumerCreateException{
         return createDurableSubscriber(
@@ -375,7 +375,7 @@ public class JMSMessageConsumerFactoryService extends ServiceBase
         );
     }
     
-    // JMSMessageConsumerFactory‚ÌJavaDoc
+    // JMSMessageConsumerFactoryã®JavaDoc
     public TopicSubscriber createDurableSubscriber(
         Topic topic,
         String name
@@ -395,7 +395,7 @@ public class JMSMessageConsumerFactoryService extends ServiceBase
         );
     }
     
-    // JMSMessageConsumerFactory‚ÌJavaDoc
+    // JMSMessageConsumerFactoryã®JavaDoc
     public TopicSubscriber createDurableSubscriber(
         Session session,
         String name
@@ -413,7 +413,7 @@ public class JMSMessageConsumerFactoryService extends ServiceBase
         );
     }
     
-    // JMSMessageConsumerFactory‚ÌJavaDoc
+    // JMSMessageConsumerFactoryã®JavaDoc
     public TopicSubscriber createDurableSubscriber(
         Session session,
         Topic topic,
@@ -432,7 +432,7 @@ public class JMSMessageConsumerFactoryService extends ServiceBase
         }
     }
     
-    // JMSMessageConsumerFactory‚ÌJavaDoc
+    // JMSMessageConsumerFactoryã®JavaDoc
     public TopicSubscriber createDurableSubscriber(
         String name,
         String messageSelector,
@@ -454,7 +454,7 @@ public class JMSMessageConsumerFactoryService extends ServiceBase
         );
     }
     
-    // JMSMessageConsumerFactory‚ÌJavaDoc
+    // JMSMessageConsumerFactoryã®JavaDoc
     public TopicSubscriber createDurableSubscriber(
         Topic topic,
         String name,
@@ -478,7 +478,7 @@ public class JMSMessageConsumerFactoryService extends ServiceBase
         );
     }
     
-    // JMSMessageConsumerFactory‚ÌJavaDoc
+    // JMSMessageConsumerFactoryã®JavaDoc
     public TopicSubscriber createDurableSubscriber(
         Session session,
         String name,
@@ -500,7 +500,7 @@ public class JMSMessageConsumerFactoryService extends ServiceBase
         );
     }
     
-    // JMSMessageConsumerFactory‚ÌJavaDoc
+    // JMSMessageConsumerFactoryã®JavaDoc
     public TopicSubscriber createDurableSubscriber(
         Session session,
         Topic topic,

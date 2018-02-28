@@ -31,7 +31,7 @@ package jp.ossc.nimbus.service.resource.datasource;
  * policies, either expressed or implied, of the Nimbus Project.
  */
 
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.lang.reflect.Constructor;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -49,9 +49,9 @@ import jp.ossc.nimbus.service.log.*;
 import java.util.*;
 //
 /**
- * ƒf[ƒ^ƒ\[ƒX‚©‚çJDBCƒRƒlƒNƒVƒ‡ƒ“‚ğo—Í‚·‚éƒtƒ@ƒNƒgƒŠ[ 
+ * ãƒ‡ãƒ¼ã‚¿ã‚½ãƒ¼ã‚¹ã‹ã‚‰JDBCã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’å‡ºåŠ›ã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ 
  * @author   H.Nakano
- * @version  1.00 ì¬: 2003/11/30 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/11/30 -ã€€H.Nakano
  */
 public class JdbcConnectionFactoryFromDataSourceService
 	extends ServiceBase
@@ -69,57 +69,57 @@ public class JdbcConnectionFactoryFromDataSourceService
 	final static String JDBCR000 = JDBCR00 + 0;
 	final static String JDBCR0000 = JDBCR000 + 0;
 	final static String JDBCR00001 = JDBCR0000 + 1;//
-	final static String JDBCR00002 = JDBCR0000 + 2;//Connectionì¬¸”s
+	final static String JDBCR00002 = JDBCR0000 + 2;//Connectionä½œæˆå¤±æ•—æ™‚
 	final static String JDBCR00003 = JDBCR0000 + 3;//
-	final static String JDBCR00004 = JDBCR0000 + 4;//ConnectionƒCƒ“ƒXƒ^ƒ“ƒXì¬¸”s
+	final static String JDBCR00004 = JDBCR0000 + 4;//Connectionã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ä½œæˆå¤±æ•—æ™‚
 	
-	//DataSourceì¬‚ÉŠÖ‚í‚éƒpƒ‰ƒƒ^
-	/** JNDIƒtƒ@ƒCƒ“ƒ_[ƒT[ƒrƒX */
+	//DataSourceä½œæˆã«é–¢ã‚ã‚‹ãƒ‘ãƒ©ãƒ¡ã‚¿
+	/** JNDIãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹ */
 	private JndiFinder  mJndiFinder = null ;
-	/** JNDIƒtƒ@ƒCƒ“ƒ_[ƒT[ƒrƒX–¼ */
+	/** JNDIãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ãƒ¼ã‚µãƒ¼ãƒ“ã‚¹å */
 	private ServiceName mJndiFinderServiceName = null ;
 
-	//ƒƒOŠÖ˜A
-	/** ƒƒOƒT[ƒrƒX–¼ */
+	//ãƒ­ã‚°é–¢é€£
+	/** ãƒ­ã‚°ã‚µãƒ¼ãƒ“ã‚¹å */
 	private ServiceName mLogServiceName = null;
-	/** ƒƒK[ */
+	/** ãƒ­ã‚¬ãƒ¼ */
 	private Logger mLogger = null;	
 	private Map mDsMap = null ;
-	/** AutoCommitƒ‚[ƒh */
+	/** AutoCommitãƒ¢ãƒ¼ãƒ‰ */
 	private boolean mIsAutoCommit = false ;
 	private boolean mIsManagedResource = true ;
-	/** Connectionƒ‚[ƒh */
+	/** Connectionãƒ¢ãƒ¼ãƒ‰ */
 	private int mConnectionMode = CONNECTION_MODE_NORMAL;
 
-	//ƒRƒlƒNƒVƒ‡ƒ“ì¬‚ÉŠÖ‚í‚éƒpƒ‰ƒƒ^
-	/** Connection‚Éİ’è‚·‚éJournalƒT[ƒrƒX–¼ */
+	//ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ä½œæˆã«é–¢ã‚ã‚‹ãƒ‘ãƒ©ãƒ¡ã‚¿
+	/** Connectionã«è¨­å®šã™ã‚‹Journalã‚µãƒ¼ãƒ“ã‚¹å */
 	private ServiceName mJournalServiceName = null;
-	/** Journal ƒŒƒxƒ‹ **/
+	/** Journal ãƒ¬ãƒ™ãƒ« **/
 	private int mJournalLevel=0;
-	/** Connection‚Éİ’è‚·‚éPerformance“ŒvƒT[ƒrƒX–¼ */
+	/** Connectionã«è¨­å®šã™ã‚‹Performanceçµ±è¨ˆã‚µãƒ¼ãƒ“ã‚¹å */
 	private ServiceName mPerformanceServiceName = null;
-	/** Connection‚Éİ’è‚·‚éƒV[ƒPƒ“ƒXƒT[ƒrƒX–¼ */
+	/** Connectionã«è¨­å®šã™ã‚‹ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã‚µãƒ¼ãƒ“ã‚¹å */
 	private ServiceName mSequenceServiceName = null;
 	
-	/** JournalƒT[ƒrƒX*/
+	/** Journalã‚µãƒ¼ãƒ“ã‚¹*/
 	private Journal mJournalService = null;
-	/** PerformanceƒT[ƒrƒX*/
+	/** Performanceã‚µãƒ¼ãƒ“ã‚¹*/
 	private PerformanceStatistics mPerformanceService = null;
-	/** SequenceƒT[ƒrƒX*/
+	/** Sequenceã‚µãƒ¼ãƒ“ã‚¹*/
 	private Sequence mSequenceService = null;
 
-	/** ì¬‚³‚ê‚éƒRƒlƒNƒVƒ‡ƒ“ƒNƒ‰ƒX–¼B
-	 *@NimbusJdbcConnection‚à‚µ‚­‚Í‚»‚ÌƒTƒuƒNƒ‰ƒX‚Å‚ ‚é•K—v‚ª‚ ‚é  
+	/** ä½œæˆã•ã‚Œã‚‹ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚¯ãƒ©ã‚¹åã€‚
+	 *ã€€NimbusJdbcConnectionã‚‚ã—ãã¯ãã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã§ã‚ã‚‹å¿…è¦ãŒã‚ã‚‹  
 	 */
 	private String mConnectionClassName = null;
-	/**ƒRƒlƒNƒVƒ‡ƒ“ƒNƒ‰ƒXBƒfƒtƒHƒ‹ƒg‚ÍNimbusConnection*/
+	/**ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚¯ãƒ©ã‚¹ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯NimbusConnection*/
 	private Class mConnectionClass ;
-	/**ƒRƒlƒNƒVƒ‡ƒ“ƒNƒ‰ƒXƒRƒ“ƒXƒgƒ‰ƒNƒ^BƒfƒtƒHƒ‹ƒg‚ÍNimbusConnection‚ÌConnectionˆø”‚Ì‚à‚Ì*/
+	/**ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚¯ãƒ©ã‚¹ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯NimbusConnectionã®Connectionå¼•æ•°ã®ã‚‚ã®*/
 	private Constructor mConnectionConstructor;
 	private String dataSourceName = "";
 	
-    //###### ƒT[ƒrƒX‰Šú‰»`ƒT[ƒrƒX”jŠü######
-	/* (”ñ Javadoc)
+    //###### ã‚µãƒ¼ãƒ“ã‚¹åˆæœŸåŒ–ï½ã‚µãƒ¼ãƒ“ã‚¹ç ´æ£„######
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.core.ServiceBaseSupport#startService()
 	 */
 	public void startService(){
@@ -131,10 +131,10 @@ public class JdbcConnectionFactoryFromDataSourceService
 			mLogger = getLogger();
 		}
 		mDsMap = new Hashtable() ;
-		//Connection–¼‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡‚»‚ÌƒNƒ‰ƒX‚ğg—p
+		//ConnectionåãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆãã®ã‚¯ãƒ©ã‚¹ã‚’ä½¿ç”¨
 		if( mConnectionClassName != null ){
 			try {
-			    //ƒRƒlƒNƒVƒ‡ƒ“ƒNƒ‰ƒX‚ª‘¶İ‚µ‚Ä‚¢‚é‚©‚ğƒ`ƒFƒbƒN
+			    //ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚¯ãƒ©ã‚¹ãŒå­˜åœ¨ã—ã¦ã„ã‚‹ã‹ã‚’ãƒã‚§ãƒƒã‚¯
 				mConnectionClass = Class.forName(mConnectionClassName);
 			} catch (ClassNotFoundException e) {
 				throw new IllegalArgumentException("Connection class :"+mConnectionClassName+" not found.");
@@ -143,29 +143,29 @@ public class JdbcConnectionFactoryFromDataSourceService
 				throw new IllegalArgumentException("Connection class  :"+mConnectionClassName+" must be derived class of "+ DEFAULT_CONNECTION_CLASS);				
 			}
 		} else {
-			//Default‚ÍNimbusJdbcConnection
+			//Defaultã¯NimbusJdbcConnection
 			mConnectionClass = DEFAULT_CONNECTION_CLASS;
 		}
-		//Constractor‘¶İƒ`ƒFƒbƒN
+		//Constractorå­˜åœ¨ãƒã‚§ãƒƒã‚¯
 		try {
 			mConnectionConstructor  = mConnectionClass.getDeclaredConstructor(new Class[]{Connection.class});
 		} catch( NoSuchMethodException e ){
 			throw new IllegalArgumentException("Connection class must have constructor : " + mConnectionClassName +"("+Connection.class+")" );				                
 		}
 		
-		//JournalƒT[ƒrƒX–¼‚æ‚èJournalƒT[ƒrƒX‚ğæ“¾
+		//Journalã‚µãƒ¼ãƒ“ã‚¹åã‚ˆã‚ŠJournalã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—
 		if( mJournalServiceName != null ) {
-			//ƒWƒƒ[ƒiƒ‹ƒT[ƒrƒX‚Ìæ“¾
+			//ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚µãƒ¼ãƒ“ã‚¹ã®å–å¾—
 		    try {
 		        mJournalService = (Journal) ServiceManagerFactory.getServiceObject(mJournalServiceName);
-		        //JournalƒT[ƒrƒX–¼‚ğw’è‚µ‚Ä‚©‚ÂƒGƒ‰[‚Ìê‡—áŠO
+		        //Journalã‚µãƒ¼ãƒ“ã‚¹åã‚’æŒ‡å®šã—ã¦ã‹ã¤ã‚¨ãƒ©ãƒ¼ã®å ´åˆä¾‹å¤–
 		    } catch ( ServiceNotFoundException e ){
 				throw new IllegalArgumentException("Cannot resolve Journal Service : "+ mJournalServiceName+".");														        
 		    }
 			if( mJournalService == null ){
 				throw new IllegalArgumentException("Cannot resolve Journal Service");												
 			}
-			//ƒV[ƒPƒ“ƒXƒT[ƒrƒX‚Ìæ“¾
+			//ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã‚µãƒ¼ãƒ“ã‚¹ã®å–å¾—
 		    try {
 		        mSequenceService = (Sequence) ServiceManagerFactory.getServiceObject(mSequenceServiceName);
 		    } catch ( ServiceNotFoundException e ){
@@ -175,35 +175,35 @@ public class JdbcConnectionFactoryFromDataSourceService
 				throw new IllegalArgumentException("Cannot resolve Sequence Service");															    
 			}
 		}
-		//PerformanceƒT[ƒrƒX–¼‚æ‚èJournalƒT[ƒrƒX‚ğæ“¾
+		//Performanceã‚µãƒ¼ãƒ“ã‚¹åã‚ˆã‚ŠJournalã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—
 		if( mPerformanceServiceName != null ){
 		    try {
 		        mPerformanceService = (PerformanceStatistics) ServiceManagerFactory.getServiceObject(mPerformanceServiceName);
 		    } catch ( ServiceNotFoundException e ){
 				throw new IllegalArgumentException("Cannot resolve Performance Service : "+ mPerformanceServiceName+".");														        
 		    }
-			//PerformanceƒT[ƒrƒX–¼‚ğw’è‚µ‚Ä‚©‚ÂƒGƒ‰[‚Ìê‡—áŠO
+			//Performanceã‚µãƒ¼ãƒ“ã‚¹åã‚’æŒ‡å®šã—ã¦ã‹ã¤ã‚¨ãƒ©ãƒ¼ã®å ´åˆä¾‹å¤–
 			if( mPerformanceService == null ){
 				throw new IllegalArgumentException("Cannot resolve PerformanceService");												
 			}
 		}
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.core.ServiceBaseSupport#stopService()
 	 */
 	public void stopService(){
 		mJndiFinder = null;
 		mLogger = null;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.resource.datasource.JdbcConnectionFactory#makeConnection(java.lang.String)
 	 */
 	
-	//#####“à•”ƒwƒ‹ƒpŠÖ”#####
+	//#####å†…éƒ¨ãƒ˜ãƒ«ãƒ‘é–¢æ•°#####
 	/**
 	 * 
-	 * @param conClass g—p‚µ‚æ‚¤‚Æ‚µ‚Ä‚¢‚éƒNƒ‰ƒX–¼
-	 * @return NimbusConnection‚ÌŒp³ƒNƒ‰ƒX‚©‚Ç‚¤‚©
+	 * @param conClass ä½¿ç”¨ã—ã‚ˆã†ã¨ã—ã¦ã„ã‚‹ã‚¯ãƒ©ã‚¹å
+	 * @return NimbusConnectionã®ç¶™æ‰¿ã‚¯ãƒ©ã‚¹ã‹ã©ã†ã‹
 	 */
 	private boolean isValidConnectionClass(Class conClass){
 		if( DEFAULT_CONNECTION_CLASS.equals(conClass) ) return true;
@@ -211,17 +211,17 @@ public class JdbcConnectionFactoryFromDataSourceService
 	}
 
 	
-	//#####APŒü‚¯ƒCƒ“ƒ^[ƒtƒFƒCƒX#####
+	//#####APå‘ã‘ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹#####
 	public Connection makeConnection(String key) {
 		DataSource ds = null ;
 		NimbusJdbcConnection con = null ;
 		if(key == null || key.length() == 0){
 			key = dataSourceName ;
 		}
-		//ƒf[ƒ^ƒ\[ƒX‚ÌMAP‚æ‚èƒf[ƒ^ƒ\[ƒX‚ğæ“¾
+		//ãƒ‡ãƒ¼ã‚¿ã‚½ãƒ¼ã‚¹ã®MAPã‚ˆã‚Šãƒ‡ãƒ¼ã‚¿ã‚½ãƒ¼ã‚¹ã‚’å–å¾—
 		ds = (DataSource)this.mDsMap.get(key) ;
 		if(ds == null){
-		    //‰‰ñƒAƒNƒZƒX‚Í‚±‚¿‚ç
+		    //åˆå›ã‚¢ã‚¯ã‚»ã‚¹æ™‚ã¯ã“ã¡ã‚‰
 			try {
 				ds = (DataSource)this.mJndiFinder.lookup(key) ;
 			} catch (NamingException e) {
@@ -231,7 +231,7 @@ public class JdbcConnectionFactoryFromDataSourceService
 		}
 		Connection fromCon=null;
 		try {
-		    //ƒf[ƒ^[ƒ\[ƒX‚æ‚èƒRƒlƒNƒVƒ‡ƒ“‚ğæ“¾
+		    //ãƒ‡ãƒ¼ã‚¿ãƒ¼ã‚½ãƒ¼ã‚¹ã‚ˆã‚Šã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’å–å¾—
 			fromCon = ds.getConnection();
 		} catch (SQLException e1) {
 			if(mLogger != null){
@@ -247,18 +247,18 @@ public class JdbcConnectionFactoryFromDataSourceService
 			}
 			throw new ServiceException("JdbcConnectionFactoryFromDataSourceService002","Connection get Error",e);
 		}
-		//ƒpƒtƒH[ƒ}ƒ“ƒXƒT[ƒrƒX‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡‚»‚ÌƒT[ƒrƒX‚ğİ’è
+		//ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚µãƒ¼ãƒ“ã‚¹ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆãã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®š
 		if( mPerformanceService != null ){
 			con.setPerformanceService(mPerformanceService);
 		}
-		//ƒWƒƒ[ƒiƒ‹ƒT[ƒrƒX‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡‚»‚ÌƒT[ƒrƒX‚ğİ’è
+		//ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚µãƒ¼ãƒ“ã‚¹ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆãã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®š
 		if( mJournalService != null ){
 			con.setJournalService(mJournalService);
 			con.setJournalLevel(mJournalLevel);
 			con.setSequenceService(mSequenceService);
 		}
 		if( mConnectionMode == CONNECTION_MODE_FAKE ){
-		    //Fakeƒ‚[ƒh‚Éİ’è
+		    //Fakeãƒ¢ãƒ¼ãƒ‰ã«è¨­å®š
 		    con.setFakeMode(true);
 		} else {
 		    con.setFakeMode(false);
@@ -281,37 +281,37 @@ public class JdbcConnectionFactoryFromDataSourceService
 		}
 		return con ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.resource.datasource.JdbcConnectionFactoryFromDataSourceServiceMBean#setJndiFinderServiceName(jp.ossc.nimbus.core.ServiceName)
 	 */
 	public void setLogServiceName(ServiceName name) {
 		mLogServiceName = name ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.resource.datasource.JdbcConnectionFactoryFromDataSourceServiceMBean#getJndiFinderServiceName()
 	 */
 	public ServiceName getLogServiceName() {
 		return mLogServiceName;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.resource.datasource.JdbcConnectionFactoryFromDataSourceServiceMBean#setJndiFinderServiceName(jp.ossc.nimbus.core.ServiceName)
 	 */
 	public void setJndiFinderServiceName(ServiceName name) {
 		mJndiFinderServiceName = name ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.resource.datasource.JdbcConnectionFactoryFromDataSourceServiceMBean#getJndiFinderServiceName()
 	 */
 	public ServiceName getJndiFinderServiceName() {
 		return mJndiFinderServiceName;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.resource.datasource.JdbcConnectionFactoryFromDataSourceServiceMBean#setAutoCommit(boolean)
 	 */
 	public void setAutoCommit(boolean isAutoCommit) {
 		this.mIsAutoCommit = isAutoCommit ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.resource.ResourceFactory#makeResource(java.lang.String)
 	 */
 	public TransactionResource makeResource(String key) throws SQLException {
@@ -319,75 +319,75 @@ public class JdbcConnectionFactoryFromDataSourceService
 		JdbcConnectionTransactionResource ret = new JdbcConnectionTransactionResource(con) ;
 		return ret ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.resource.datasource.JdbcConnectionFactoryFromDataSourceServiceMBean#setManagedResourcre(boolean)
 	 */
 	public void setManagedResource(boolean isManaged) {
 		this.mIsManagedResource = isManaged ;
 		
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.resource.datasource.JdbcConnectionFactoryFromDataSourceServiceMBean#setConnectionClassName(java.lang.String)
 	 */
 	public void setConnectionClassName(String name) {
 		mConnectionClassName = name;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.resource.datasource.JdbcConnectionFactoryFromDataSourceServiceMBean#setPreformanceLogServiceName(jp.ossc.nimbus.core.ServiceName)
 	 */
 	public void setPerformanceServiceName(ServiceName serviceName) {
 		mPerformanceServiceName = serviceName;
 		
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.resource.datasource.JdbcConnectionFactoryFromDataSourceServiceMBean#setJournalServiceName(jp.ossc.nimbus.core.ServiceName)
 	 */
 	public ServiceName getPerformanceServiceName(  ){
 	    return mPerformanceServiceName;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.resource.datasource.JdbcConnectionFactoryFromDataSourceServiceMBean#setJournalServiceName(jp.ossc.nimbus.core.ServiceName)
 	 */
 	public void setJournalServiceName(ServiceName serviceName) {
 		mJournalServiceName = serviceName;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.resource.datasource.JdbcConnectionFactoryFromDataSourceServiceMBean#setJournalServiceName(jp.ossc.nimbus.core.ServiceName)
 	 */
 	public ServiceName getJournalServiceName(  ){
 	    return mJournalServiceName;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.resource.datasource.JdbcConnectionFactoryFromDataSourceServiceMBean#setJournalServiceName(jp.ossc.nimbus.core.ServiceName)
 	 */
 	public void setSequenceServiceName(ServiceName serviceName) {
 		mSequenceServiceName = serviceName;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.resource.datasource.JdbcConnectionFactoryFromDataSourceServiceMBean#setJournalServiceName(jp.ossc.nimbus.core.ServiceName)
 	 */
 	public ServiceName getSequenceServiceName(  ){
 	    return mSequenceServiceName;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.resource.datasource.JdbcConnectionFactoryFromDataSourceServiceMBean#setJournalServiceName(jp.ossc.nimbus.core.ServiceName)
 	 */
 	public void setJournalLevel( int level ){
 	    this.mJournalLevel = level;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see jp.ossc.nimbus.service.resource.datasource.JdbcConnectionFactoryFromDataSourceServiceMBean#setJournalServiceName(jp.ossc.nimbus.core.ServiceName)
 	 */
 	public int getJournalLevel() {
 	    return mJournalLevel;
 	}
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.resource.datasource.JdbcConnectionFactoryFromDataSourceServiceMBean#getConnectionMode()
      */
     public int getConnectionMode() {
         return mConnectionMode;
     }
-    /* (”ñ Javadoc)
+    /* (é Javadoc)
      * @see jp.ossc.nimbus.service.resource.datasource.JdbcConnectionFactoryFromDataSourceServiceMBean#setConnectionMode(int)
      */
     public void setConnectionMode(int mode) {

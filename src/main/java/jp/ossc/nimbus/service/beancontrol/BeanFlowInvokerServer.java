@@ -38,247 +38,247 @@ import java.util.Map;
 import jp.ossc.nimbus.service.beancontrol.interfaces.InvalidConfigurationException;
 
 /**
- * �Ɩ��t���[���s�T�[�o�B<p>
+ * 業務フロー実行サーバ。<p>
  *
  * @author M.Takata
  */
 public interface BeanFlowInvokerServer extends Remote{
     
     /**
-     * ���̃T�[�o�����N�G�X�g��t�\���𔻒肷��B<p>
+     * このサーバがリクエスト受付可能かを判定する。<p>
      *
-     * @return ���N�G�X�g��t�\�ȏꍇtrue
-     * @exception RemoteException �����[�g�Ăяo���Ɏ��s�����ꍇ
+     * @return リクエスト受付可能な場合true
+     * @exception RemoteException リモート呼び出しに失敗した場合
      */
     public boolean isAcceptable() throws RemoteException;
     
     /**
-     * ���̃T�[�o�ɐ�������Ă���Bean�t���[�̐����擾����B<p>
+     * このサーバに生成されているBeanフローの数を取得する。<p>
      *
-     * @return ��������Ă���Bean�t���[�̐�
-     * @exception RemoteException �����[�g�Ăяo���Ɏ��s�����ꍇ
+     * @return 生成されているBeanフローの数
+     * @exception RemoteException リモート呼び出しに失敗した場合
      */
     public int getCurrentFlowCount() throws RemoteException;
     
     /**
-     * ���̃T�[�o�̃��\�[�X���p�ʂ��擾����B<p>
+     * このサーバのリソース利用量を取得する。<p>
      *
-     * @return ���\�[�X���p��
-     * @exception RemoteException �����[�g�Ăяo���Ɏ��s�����ꍇ
+     * @return リソース利用量
+     * @exception RemoteException リモート呼び出しに失敗した場合
      */
     public Comparable getResourceUsage() throws RemoteException;
     
     /**
-     * ���̋Ɩ��t���[���s�T�[�o���ێ����Ă���Bean�t���[���̏W�����擾����B<p>
+     * この業務フロー実行サーバが保持しているBeanフロー名の集合を取得する。<p>
      *
-     * @return Bean�t���[���̏W��
-     * @exception RemoteException �����[�g�Ăяo���Ɏ��s�����ꍇ
+     * @return Beanフロー名の集合
+     * @exception RemoteException リモート呼び出しに失敗した場合
      */
     public Set getBeanFlowNameSet() throws RemoteException;
     
     /**
-     * �w�肳�ꂽBean�t���[�����̋Ɩ��t���[���s�T�[�o���ێ����Ă��邩�ǂ����𔻒肷��B<p>
+     * 指定されたBeanフローをこの業務フロー実行サーバが保持しているかどうかを判定する。<p>
      *
-     * @param name Bean�t���[��
-     * @return ���̋Ɩ��t���[���s�T�[�o���ێ����Ă���ꍇtrue
-     * @exception RemoteException �����[�g�Ăяo���Ɏ��s�����ꍇ
+     * @param name Beanフロー名
+     * @return この業務フロー実行サーバが保持している場合true
+     * @exception RemoteException リモート呼び出しに失敗した場合
      */
     public boolean containsFlow(String name) throws RemoteException;
     
     /**
-     * �T�[�o���Bean�t���[�𐶐�����B<p>
+     * サーバ上にBeanフローを生成する。<p>
      *
-     * @param flowName Bean�t���[��
-     * @param caller �Ăяo������Bean�t���[��
-     * @param isOverwride �I�[�o�[���C�h����Ă��邩�ǂ���
-     * @return Bean�t���[�����s����ۂ̎��sID
-     * @exception RemoteException �����[�g�Ăяo���Ɏ��s�����ꍇ
-     * @exception InvalidConfigurationException �w�肳�ꂽBean�t���[�����݂��Ȃ��ꍇ
+     * @param flowName Beanフロー名
+     * @param caller 呼び出し元のBeanフロー名
+     * @param isOverwride オーバーライドされているかどうか
+     * @return Beanフローを実行する際の実行ID
+     * @exception RemoteException リモート呼び出しに失敗した場合
+     * @exception InvalidConfigurationException 指定されたBeanフローが存在しない場合
      */
     public Object createFlow(String flowName, String caller, boolean isOverwride) throws RemoteException, InvalidConfigurationException;
     
     /**
-     * �w�肳�ꂽ���sID��Bean�t���[���T�[�o��ɐ�������Ă��邩�𔻒肷��B<p>
+     * 指定された実行IDのBeanフローがサーバ上に生成されているかを判定する。<p>
      *
-     * @param id ���sID
-     * @return Bean�t���[����������Ă���ꍇtrue
-     * @exception RemoteException �����[�g�Ăяo���Ɏ��s�����ꍇ
+     * @param id 実行ID
+     * @return Beanフローが生成されている場合true
+     * @exception RemoteException リモート呼び出しに失敗した場合
      */
     public boolean isExistsFlow(Object id) throws RemoteException;
     
     /**
-     * �w�肳�ꂽ���sID��Bean�t���[�̏㏑���t���[�����擾����B<p>
+     * 指定された実行IDのBeanフローの上書きフロー名を取得する。<p>
      *
-     * @param id ���sID
-     * @return �㏑���t���[���̔z��
-     * @exception RemoteException �����[�g�Ăяo���Ɏ��s�����ꍇ
-     * @exception NoSuchBeanFlowIdException �w�肳�ꂽ���sID��Bean�t���[�����݂��Ȃ��ꍇ
+     * @param id 実行ID
+     * @return 上書きフロー名の配列
+     * @exception RemoteException リモート呼び出しに失敗した場合
+     * @exception NoSuchBeanFlowIdException 指定された実行IDのBeanフローが存在しない場合
      */
     public String[] getOverwrideFlowNames(Object id) throws RemoteException, NoSuchBeanFlowIdException;
     
     /**
-     * �J�o���b�W���擾����B<p>
+     * カバレッジを取得する。<p>
      *
-     * @param id ���sID
-     * @return �J�o���b�W
-     * @exception RemoteException �����[�g�Ăяo���Ɏ��s�����ꍇ
-     * @exception NoSuchBeanFlowIdException �w�肳�ꂽ���sID��Bean�t���[�����݂��Ȃ��ꍇ
+     * @param id 実行ID
+     * @return カバレッジ
+     * @exception RemoteException リモート呼び出しに失敗した場合
+     * @exception NoSuchBeanFlowIdException 指定された実行IDのBeanフローが存在しない場合
      */
     public BeanFlowCoverage getBeanFlowCoverage(Object id) throws RemoteException, NoSuchBeanFlowIdException;
     
     /**
-     * Bean�t���[����`����Ă��郊�\�[�X�p�X���擾����B<p>
+     * Beanフローが定義されているリソースパスを取得する。<p>
      *
-     * @param id ���sID
-     * @return ���\�[�X�p�X
-     * @exception RemoteException �����[�g�Ăяo���Ɏ��s�����ꍇ
-     * @exception NoSuchBeanFlowIdException �w�肳�ꂽ���sID��Bean�t���[�����݂��Ȃ��ꍇ
+     * @param id 実行ID
+     * @return リソースパス
+     * @exception RemoteException リモート呼び出しに失敗した場合
+     * @exception NoSuchBeanFlowIdException 指定された実行IDのBeanフローが存在しない場合
      */
     public String getResourcePath(Object id) throws RemoteException, NoSuchBeanFlowIdException;
     
     /**
-     * Bean�t���[�����s����B<p>
+     * Beanフローを実行する。<p>
      * 
-     * @param id ���sID
-     * @param input Bean�t���[�ւ̈���
-     * @param context �R���e�L�X�g���
-     * @return Bean�t���[�̎��s����
-     * @exception RemoteException �����[�g�Ăяo���Ɏ��s�����ꍇ
-     * @exception NoSuchBeanFlowIdException �w�肳�ꂽ���sID��Bean�t���[�����݂��Ȃ��ꍇ
-     * @exception Exception Bean�t���[�̎��s���ɗ�O�����������ꍇ
+     * @param id 実行ID
+     * @param input Beanフローへの引数
+     * @param context コンテキスト情報
+     * @return Beanフローの実行結果
+     * @exception RemoteException リモート呼び出しに失敗した場合
+     * @exception NoSuchBeanFlowIdException 指定された実行IDのBeanフローが存在しない場合
+     * @exception Exception Beanフローの実行中に例外が発生した場合
      */
     public Object invokeFlow(Object id, Object input, Map context) throws NoSuchBeanFlowIdException, RemoteException, Exception;
     
     /**
-     * Bean�t���[��񓯊����s����B<p>
+     * Beanフローを非同期実行する。<p>
      * 
-     * @param id ���sID
-     * @param input Bean�t���[�ւ̈���
-     * @param context �R���e�L�X�g���
-     * @param callback �R�[���o�b�N
-     * @param maxAsynchWait �ő�񓯊����s�ҋ@��
-     * @exception RemoteException �����[�g�Ăяo���Ɏ��s�����ꍇ
-     * @exception NoSuchBeanFlowIdException �w�肳�ꂽ���sID��Bean�t���[�����݂��Ȃ��ꍇ
-     * @exception Exception Bean�t���[�̎��s���ɗ�O�����������ꍇ
+     * @param id 実行ID
+     * @param input Beanフローへの引数
+     * @param context コンテキスト情報
+     * @param callback コールバック
+     * @param maxAsynchWait 最大非同期実行待機数
+     * @exception RemoteException リモート呼び出しに失敗した場合
+     * @exception NoSuchBeanFlowIdException 指定された実行IDのBeanフローが存在しない場合
+     * @exception Exception Beanフローの実行中に例外が発生した場合
      */
     public void invokeAsynchFlow(Object id, Object input, Map context, BeanFlowAsynchInvokeCallback callback, int maxAsynchWait) throws NoSuchBeanFlowIdException, RemoteException, Exception;
     
     /**
-     * �w�肳�ꂽ���sID��Bean�t���[���ꎞ��~������B<p>
+     * 指定された実行IDのBeanフローを一時停止させる。<p>
      *
-     * @param id ���sID
-     * @exception RemoteException �����[�g�Ăяo���Ɏ��s�����ꍇ
-     * @exception NoSuchBeanFlowIdException �w�肳�ꂽ���sID��Bean�t���[�����݂��Ȃ��ꍇ
+     * @param id 実行ID
+     * @exception RemoteException リモート呼び出しに失敗した場合
+     * @exception NoSuchBeanFlowIdException 指定された実行IDのBeanフローが存在しない場合
      */
     public void suspendFlow(Object id) throws RemoteException, NoSuchBeanFlowIdException;
     
     /**
-     * �w�肳�ꂽ���sID��Bean�t���[���ꎞ��~���߂��󂯂Ă��邩�𔻒肷��B<p>
+     * 指定された実行IDのBeanフローが一時停止命令を受けているかを判定する。<p>
      *
-     * @param id ���sID
-     * @return �ꎞ��~���߂��󂯂Ă���ꍇ�Atrue
-     * @exception RemoteException �����[�g�Ăяo���Ɏ��s�����ꍇ
-     * @exception NoSuchBeanFlowIdException �w�肳�ꂽ���sID��Bean�t���[�����݂��Ȃ��ꍇ
+     * @param id 実行ID
+     * @return 一時停止命令を受けている場合、true
+     * @exception RemoteException リモート呼び出しに失敗した場合
+     * @exception NoSuchBeanFlowIdException 指定された実行IDのBeanフローが存在しない場合
      */
     public boolean isSuspendFlow(Object id) throws RemoteException, NoSuchBeanFlowIdException;
     
     /**
-     * �w�肳�ꂽ���sID��Bean�t���[���ꎞ��~���Ă��邩�𔻒肷��B<p>
+     * 指定された実行IDのBeanフローが一時停止しているかを判定する。<p>
      *
-     * @param id ���sID
-     * @return �ꎞ��~���Ă���ꍇ�Atrue
-     * @exception RemoteException �����[�g�Ăяo���Ɏ��s�����ꍇ
-     * @exception NoSuchBeanFlowIdException �w�肳�ꂽ���sID��Bean�t���[�����݂��Ȃ��ꍇ
+     * @param id 実行ID
+     * @return 一時停止している場合、true
+     * @exception RemoteException リモート呼び出しに失敗した場合
+     * @exception NoSuchBeanFlowIdException 指定された実行IDのBeanフローが存在しない場合
      */
     public boolean isSuspendedFlow(Object id) throws RemoteException, NoSuchBeanFlowIdException;
     
     /**
-     * �w�肳�ꂽ���sID��Bean�t���[���ĊJ������B<p>
+     * 指定された実行IDのBeanフローを再開させる。<p>
      *
-     * @param id ���sID
-     * @exception RemoteException �����[�g�Ăяo���Ɏ��s�����ꍇ
-     * @exception NoSuchBeanFlowIdException �w�肳�ꂽ���sID��Bean�t���[�����݂��Ȃ��ꍇ
+     * @param id 実行ID
+     * @exception RemoteException リモート呼び出しに失敗した場合
+     * @exception NoSuchBeanFlowIdException 指定された実行IDのBeanフローが存在しない場合
      */
     public void resumeFlow(Object id) throws RemoteException, NoSuchBeanFlowIdException;
     
     /**
-     * �w�肳�ꂽ���sID��Bean�t���[���~������B<p>
+     * 指定された実行IDのBeanフローを停止させる。<p>
      *
-     * @param id ���sID
-     * @exception RemoteException �����[�g�Ăяo���Ɏ��s�����ꍇ
+     * @param id 実行ID
+     * @exception RemoteException リモート呼び出しに失敗した場合
      */
     public void stopFlow(Object id) throws RemoteException;
     
     /**
-     * �w�肳�ꂽ���sID��Bean�t���[����~���߂��󂯂Ă��邩�𔻒肷��B<p>
+     * 指定された実行IDのBeanフローが停止命令を受けているかを判定する。<p>
      *
-     * @param id ���sID
-     * @return ��~���߂��󂯂Ă���ꍇ�Atrue
-     * @exception RemoteException �����[�g�Ăяo���Ɏ��s�����ꍇ
+     * @param id 実行ID
+     * @return 停止命令を受けている場合、true
+     * @exception RemoteException リモート呼び出しに失敗した場合
      */
     public boolean isStopFlow(Object id) throws RemoteException;
     
     /**
-     * �w�肳�ꂽ���sID��Bean�t���[����~���Ă��邩�𔻒肷��B<p>
+     * 指定された実行IDのBeanフローが停止しているかを判定する。<p>
      *
-     * @param id ���sID
-     * @return ��~���Ă���ꍇ�Atrue
-     * @exception RemoteException �����[�g�Ăяo���Ɏ��s�����ꍇ
+     * @param id 実行ID
+     * @return 停止している場合、true
+     * @exception RemoteException リモート呼び出しに失敗した場合
      */
     public boolean isStoppedFlow(Object id) throws RemoteException;
     
     /**
-     * �w�肳�ꂽ���sID��Bean�t���[�̃t���[�����擾����B<p>
+     * 指定された実行IDのBeanフローのフロー名を取得する。<p>
      *
-     * @param id ���sID
-     * @return �t���[��
-     * @exception RemoteException �����[�g�Ăяo���Ɏ��s�����ꍇ
-     * @exception NoSuchBeanFlowIdException �w�肳�ꂽ���sID��Bean�t���[�����݂��Ȃ��ꍇ
+     * @param id 実行ID
+     * @return フロー名
+     * @exception RemoteException リモート呼び出しに失敗した場合
+     * @exception NoSuchBeanFlowIdException 指定された実行IDのBeanフローが存在しない場合
      */
     public String getFlowName(Object id) throws RemoteException, NoSuchBeanFlowIdException;
     
     /**
-     * �w�肳�ꂽ���sID��Bean�t���[�����ݎ��s���Ă���t���[�����擾����B<p>
+     * 指定された実行IDのBeanフローが現在実行しているフロー名を取得する。<p>
      *
-     * @param id ���sID
-     * @return ���ݎ��s���Ă���t���[��
-     * @exception RemoteException �����[�g�Ăяo���Ɏ��s�����ꍇ
-     * @exception NoSuchBeanFlowIdException �w�肳�ꂽ���sID��Bean�t���[�����݂��Ȃ��ꍇ
+     * @param id 実行ID
+     * @return 現在実行しているフロー名
+     * @exception RemoteException リモート呼び出しに失敗した場合
+     * @exception NoSuchBeanFlowIdException 指定された実行IDのBeanフローが存在しない場合
      */
     public String getCurrentFlowName(Object id) throws RemoteException, NoSuchBeanFlowIdException;
     
     /**
-     * �w�肳�ꂽ���sID��Bean�t���[�����ݎ��s���Ă���X�e�b�v�����擾����B<p>
+     * 指定された実行IDのBeanフローが現在実行しているステップ名を取得する。<p>
      *
-     * @param id ���sID
-     * @return ���ݎ��s���Ă���X�e�b�v��
-     * @exception RemoteException �����[�g�Ăяo���Ɏ��s�����ꍇ
-     * @exception NoSuchBeanFlowIdException �w�肳�ꂽ���sID��Bean�t���[�����݂��Ȃ��ꍇ
+     * @param id 実行ID
+     * @return 現在実行しているステップ名
+     * @exception RemoteException リモート呼び出しに失敗した場合
+     * @exception NoSuchBeanFlowIdException 指定された実行IDのBeanフローが存在しない場合
      */
     public String getCurrentStepName(Object id) throws RemoteException, NoSuchBeanFlowIdException;
     
     /**
-     * �w�肳�ꂽ���sID��Bean�t���[�̃��j�^������������B<p>
+     * 指定された実行IDのBeanフローのモニタを初期化する。<p>
      *
-     * @param id ���sID
-     * @exception RemoteException �����[�g�Ăяo���Ɏ��s�����ꍇ
-     * @exception NoSuchBeanFlowIdException �w�肳�ꂽ���sID��Bean�t���[�����݂��Ȃ��ꍇ
+     * @param id 実行ID
+     * @exception RemoteException リモート呼び出しに失敗した場合
+     * @exception NoSuchBeanFlowIdException 指定された実行IDのBeanフローが存在しない場合
      */
     public void clearMonitor(Object id) throws RemoteException, NoSuchBeanFlowIdException;
     
     /**
-     * �w�肳�ꂽ���sID��Bean�t���[�̎��s���������B<p>
+     * 指定された実行IDのBeanフローの実行を取り消す。<p>
      *
-     * @param id ���sID
-     * @exception RemoteException �����[�g�Ăяo���Ɏ��s�����ꍇ
+     * @param id 実行ID
+     * @exception RemoteException リモート呼び出しに失敗した場合
      */
     public void cancel(Object id) throws RemoteException;
     
     /**
-     * �w�肳�ꂽ���sID��Bean�t���[���I������B<p>
+     * 指定された実行IDのBeanフローを終了する。<p>
      *
-     * @param id ���sID
-     * @exception RemoteException �����[�g�Ăяo���Ɏ��s�����ꍇ
+     * @param id 実行ID
+     * @exception RemoteException リモート呼び出しに失敗した場合
      */
     public void end(Object id) throws RemoteException;
 }

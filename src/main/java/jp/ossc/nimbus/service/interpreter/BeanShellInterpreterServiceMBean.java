@@ -36,171 +36,171 @@ import java.util.Map;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link BeanShellInterpreterService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link BeanShellInterpreterService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface BeanShellInterpreterServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ƒCƒ“ƒ^[ƒvƒŠƒ^‚ÉAƒT[ƒrƒX•Ï”‚ğİ’è‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿ã«ã€ã‚µãƒ¼ãƒ“ã‚¹å¤‰æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name •Ï”–¼
-     * @param serviceName ƒT[ƒrƒX–¼
+     * @param name å¤‰æ•°å
+     * @param serviceName ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setVariableServiceName(String name, ServiceName serviceName);
     
     /**
-     * ƒCƒ“ƒ^[ƒvƒŠƒ^‚Éİ’è‚·‚éƒT[ƒrƒX•Ï”‚ğæ“¾‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿ã«è¨­å®šã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹å¤‰æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name •Ï”–¼
-     * @return ƒT[ƒrƒX–¼
+     * @param name å¤‰æ•°å
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getVariableServiceName(String name);
     
     /**
-     * ƒCƒ“ƒ^[ƒvƒŠƒ^‚ÉA•Ï”‚ğİ’è‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿ã«ã€å¤‰æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name •Ï”–¼
-     * @param val •Ï”
+     * @param name å¤‰æ•°å
+     * @param val å¤‰æ•°
      */
     public void setVariableObject(String name, Object val);
     
     /**
-     * ƒCƒ“ƒ^[ƒvƒŠƒ^‚Éİ’è‚·‚é•Ï”‚ğæ“¾‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿ã«è¨­å®šã™ã‚‹å¤‰æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name •Ï”–¼
-     * @return •Ï”
+     * @param name å¤‰æ•°å
+     * @return å¤‰æ•°
      */
     public Object getVariableObject(String name);
     
     /**
-     * ƒCƒ“ƒ^[ƒvƒŠƒ^‚ÉA•Ï”‚ğİ’è‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿ã«ã€å¤‰æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name •Ï”–¼
-     * @param val •Ï”
+     * @param name å¤‰æ•°å
+     * @param val å¤‰æ•°
      */
     public void setVariableInt(String name, int val);
     
     /**
-     * ƒCƒ“ƒ^[ƒvƒŠƒ^‚Éİ’è‚·‚é•Ï”‚ğæ“¾‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿ã«è¨­å®šã™ã‚‹å¤‰æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name •Ï”–¼
-     * @return •Ï”
+     * @param name å¤‰æ•°å
+     * @return å¤‰æ•°
      */
     public int getVariableInt(String name);
     
     /**
-     * ƒCƒ“ƒ^[ƒvƒŠƒ^‚ÉA•Ï”‚ğİ’è‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿ã«ã€å¤‰æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name •Ï”–¼
-     * @param val •Ï”
+     * @param name å¤‰æ•°å
+     * @param val å¤‰æ•°
      */
     public void setVariableLong(String name, long val);
     
     /**
-     * ƒCƒ“ƒ^[ƒvƒŠƒ^‚Éİ’è‚·‚é•Ï”‚ğæ“¾‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿ã«è¨­å®šã™ã‚‹å¤‰æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name •Ï”–¼
-     * @return •Ï”
+     * @param name å¤‰æ•°å
+     * @return å¤‰æ•°
      */
     public long getVariableLong(String name);
     
     /**
-     * ƒCƒ“ƒ^[ƒvƒŠƒ^‚ÉA•Ï”‚ğİ’è‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿ã«ã€å¤‰æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name •Ï”–¼
-     * @param val •Ï”
+     * @param name å¤‰æ•°å
+     * @param val å¤‰æ•°
      */
     public void setVariableFloat(String name, float val);
     
     /**
-     * ƒCƒ“ƒ^[ƒvƒŠƒ^‚Éİ’è‚·‚é•Ï”‚ğæ“¾‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿ã«è¨­å®šã™ã‚‹å¤‰æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name •Ï”–¼
-     * @return •Ï”
+     * @param name å¤‰æ•°å
+     * @return å¤‰æ•°
      */
     public float getVariableFloat(String name);
     
     /**
-     * ƒCƒ“ƒ^[ƒvƒŠƒ^‚ÉA•Ï”‚ğİ’è‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿ã«ã€å¤‰æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name •Ï”–¼
-     * @param val •Ï”
+     * @param name å¤‰æ•°å
+     * @param val å¤‰æ•°
      */
     public void setVariableDouble(String name, double val);
     
     /**
-     * ƒCƒ“ƒ^[ƒvƒŠƒ^‚Éİ’è‚·‚é•Ï”‚ğæ“¾‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿ã«è¨­å®šã™ã‚‹å¤‰æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name •Ï”–¼
-     * @return •Ï”
+     * @param name å¤‰æ•°å
+     * @return å¤‰æ•°
      */
     public double getVariableDouble(String name);
     
     /**
-     * ƒCƒ“ƒ^[ƒvƒŠƒ^‚ÉA•Ï”‚ğİ’è‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿ã«ã€å¤‰æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name •Ï”–¼
-     * @param val •Ï”
+     * @param name å¤‰æ•°å
+     * @param val å¤‰æ•°
      */
     public void setVariableBoolean(String name, boolean val);
     
     /**
-     * ƒCƒ“ƒ^[ƒvƒŠƒ^‚Éİ’è‚·‚é•Ï”‚ğæ“¾‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿ã«è¨­å®šã™ã‚‹å¤‰æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name •Ï”–¼
-     * @return •Ï”
+     * @param name å¤‰æ•°å
+     * @return å¤‰æ•°
      */
     public boolean getVariableBoolean(String name);
     
     /**
-     * ƒCƒ“ƒ^[ƒvƒŠƒ^‚Éİ’è‚·‚é•Ï”ƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿ã«è¨­å®šã™ã‚‹å¤‰æ•°ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •Ï”ƒ}ƒbƒv
+     * @return å¤‰æ•°ãƒãƒƒãƒ—
      */
     public Map getVariables();
     
     /**
-     * ƒCƒ“ƒ^[ƒvƒŠƒ^‚ªƒR[ƒh‚ğ•]‰¿‚·‚éÛ‚Ég—p‚·‚éƒNƒ‰ƒXƒ[ƒ_‚ğİ’è‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿ãŒã‚³ãƒ¼ãƒ‰ã‚’è©•ä¾¡ã™ã‚‹éš›ã«ä½¿ç”¨ã™ã‚‹ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param loader ƒNƒ‰ƒXƒ[ƒ_
+     * @param loader ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€
      */
     public void setClassLoader(ClassLoader loader);
     
     /**
-     * ƒCƒ“ƒ^[ƒvƒŠƒ^‚ªƒR[ƒh‚ğ•]‰¿‚·‚éÛ‚Ég—p‚·‚éƒNƒ‰ƒXƒ[ƒ_‚ğæ“¾‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿ãŒã‚³ãƒ¼ãƒ‰ã‚’è©•ä¾¡ã™ã‚‹éš›ã«ä½¿ç”¨ã™ã‚‹ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒNƒ‰ƒXƒ[ƒ_
+     * @return ã‚¯ãƒ©ã‚¹ãƒ­ãƒ¼ãƒ€
      */
     public ClassLoader getClassLoader();
     
     /**
-     * ƒCƒ“ƒ^[ƒvƒŠƒ^‚É“Ç‚İ‚Ü‚¹‚½‚¢ƒ\[ƒXƒtƒ@ƒCƒ‹–¼‚ğİ’è‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿ã«èª­ã¿è¾¼ã¾ã›ãŸã„ã‚½ãƒ¼ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param names ƒ\[ƒXƒtƒ@ƒCƒ‹–¼
+     * @param names ã‚½ãƒ¼ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«å
      */
     public void setSourceFileNames(String[] names);
     
     /**
-     * ƒCƒ“ƒ^[ƒvƒŠƒ^‚É“Ç‚İ‚Ü‚¹‚½‚¢ƒ\[ƒXƒtƒ@ƒCƒ‹–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿ã«èª­ã¿è¾¼ã¾ã›ãŸã„ã‚½ãƒ¼ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒ\[ƒXƒtƒ@ƒCƒ‹–¼
+     * @return ã‚½ãƒ¼ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«å
      */
     public String[] getSourceFileNames();
     
     /**
-     * {@link Interpreter#evaluate(String)}‚Ì‚½‚Ñ‚ÉƒCƒ“ƒ^[ƒvƒŠƒ^‚ğ¶¬‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Å–ˆ‰ñ¶¬‚·‚éB<br>
+     * {@link Interpreter#evaluate(String)}ã®ãŸã³ã«ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§æ¯å›ç”Ÿæˆã™ã‚‹ã€‚<br>
      * 
-     * @param isNew ¶¬‚·‚éê‡true
+     * @param isNew ç”Ÿæˆã™ã‚‹å ´åˆtrue
      */
     public void setNewInterpreterByEvaluate(boolean isNew);
     
     /**
-     * {@link Interpreter#evaluate(String)}‚Ì‚½‚Ñ‚ÉƒCƒ“ƒ^[ƒvƒŠƒ^‚ğ¶¬‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link Interpreter#evaluate(String)}ã®ãŸã³ã«ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return ¶¬‚·‚éê‡true
+     * @return ç”Ÿæˆã™ã‚‹å ´åˆtrue
      */
     public boolean isNewInterpreterByEvaluate();
     

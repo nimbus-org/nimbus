@@ -37,29 +37,29 @@ import java.util.Iterator;
 import java.util.Random;
 
 /**
- * •¡‡Œ^ˆâ“`qB<p>
+ * è¤‡åˆå‹éºä¼å­ã€‚<p>
  *
  * @author M.Takata
  */
 public class ComplexGene extends AbstractGene{
     
     /**
-     * Œğ³í•ÊFˆê“_Œğ³B<p>
+     * äº¤å‰ç¨®åˆ¥ï¼šä¸€ç‚¹äº¤å‰ã€‚<p>
      */
     public static final int CROSSOVER_SINGLE_POINT  = 1;
     
     /**
-     * Œğ³í•ÊF“ñ“_Œğ³B<p>
+     * äº¤å‰ç¨®åˆ¥ï¼šäºŒç‚¹äº¤å‰ã€‚<p>
      */
     public static final int CROSSOVER_TWO_POINT     = 2;
     
     /**
-     * Œğ³í•ÊFˆê—lŒğ³B<p>
+     * äº¤å‰ç¨®åˆ¥ï¼šä¸€æ§˜äº¤å‰ã€‚<p>
      */
     public static final int CROSSOVER_UNIFORM_POINT = 3;
     
     /**
-     * Œğ³í•ÊF‘SŒğ³B<p>
+     * äº¤å‰ç¨®åˆ¥ï¼šå…¨äº¤å‰ã€‚<p>
      */
     public static final int CROSSOVER_ALL_POINT     = 4;
     

@@ -36,7 +36,7 @@ import java.util.Map;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link WrappedConnectionFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link WrappedConnectionFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see WrappedConnectionFactoryService
@@ -45,46 +45,46 @@ public interface WrappedConnectionFactoryServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * ƒ‰ƒbƒv‚·‚éConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ©ãƒƒãƒ—ã™ã‚‹ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒ‰ƒbƒv‚·‚éConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ãƒ©ãƒƒãƒ—ã™ã‚‹ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setConnectionFactoryServiceName(ServiceName name);
     
     /**
-     * ƒ‰ƒbƒv‚·‚éConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ©ãƒƒãƒ—ã™ã‚‹ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ‰ƒbƒv‚·‚éConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ãƒ©ãƒƒãƒ—ã™ã‚‹ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getConnectionFactoryServiceName();
     
     /**
-     * {@link java.sql.Connection}‚ğƒ‰ƒbƒv‚·‚éƒNƒ‰ƒX‚ÌƒNƒ‰ƒX–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚±‚Åw’è‚Å‚«‚éƒNƒ‰ƒX‚ÍAjava.sql.ConnectionƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚Ä‚¨‚èAˆø”‚Éjava.sql.Connection‚ğ‚ÂƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ğÀ‘•‚µ‚Ä‚¢‚éƒNƒ‰ƒX‚Å‚ ‚éB<br>
+     * {@link java.sql.Connection}ã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¯ãƒ©ã‚¹ã®ã‚¯ãƒ©ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§æŒ‡å®šã§ãã‚‹ã‚¯ãƒ©ã‚¹ã¯ã€java.sql.Connectionã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ã¦ãŠã‚Šã€å¼•æ•°ã«java.sql.Connectionã‚’æŒã¤ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã‚’å®Ÿè£…ã—ã¦ã„ã‚‹ã‚¯ãƒ©ã‚¹ã§ã‚ã‚‹ã€‚<br>
      *
-     * @param className ƒNƒ‰ƒX–¼
+     * @param className ã‚¯ãƒ©ã‚¹å
      */
     public void setConnectionWrapperClassName(String className);
     
     /**
-     * {@link java.sql.Connection}‚ğƒ‰ƒbƒv‚·‚éƒNƒ‰ƒX‚ÌƒNƒ‰ƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link java.sql.Connection}ã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¯ãƒ©ã‚¹ã®ã‚¯ãƒ©ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒNƒ‰ƒX–¼
+     * @return ã‚¯ãƒ©ã‚¹å
      */
     public String getConnectionWrapperClassName();
     
     /**
-     * {@link java.sql.Connection}‚ğƒ‰ƒbƒv‚·‚éƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Éİ’è‚·‚éƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
-     * Connection‚ğƒ‰ƒbƒv‚·‚éƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ÌAw’è‚³‚ê‚½ƒ}ƒbƒv‚ÌƒL[–¼‚ÉŠY“–‚·‚ésetter‚ğg‚Á‚ÄAƒL[–¼‚ÉŠY“–‚·‚é’l‚ğİ’è‚·‚éB<br>
+     * {@link java.sql.Connection}ã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * Connectionã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ã€æŒ‡å®šã•ã‚ŒãŸãƒãƒƒãƒ—ã®ã‚­ãƒ¼åã«è©²å½“ã™ã‚‹setterã‚’ä½¿ã£ã¦ã€ã‚­ãƒ¼åã«è©²å½“ã™ã‚‹å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param prop Connection‚ğƒ‰ƒbƒv‚·‚éƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Éİ’è‚·‚éƒvƒƒpƒeƒBƒ}ƒbƒv
+     * @param prop Connectionã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒãƒƒãƒ—
      */
     public void setConnectionWrapperProperties(Map prop);
     
     /**
-     * {@link java.sql.Connection}‚ğƒ‰ƒbƒv‚·‚éƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Éİ’è‚·‚éƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * {@link java.sql.Connection}ã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Connection‚ğƒ‰ƒbƒv‚·‚éƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Éİ’è‚·‚éƒvƒƒpƒeƒBƒ}ƒbƒv
+     * @return Connectionã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒãƒƒãƒ—
      */
     public Map getConnectionWrapperProperties();
 }

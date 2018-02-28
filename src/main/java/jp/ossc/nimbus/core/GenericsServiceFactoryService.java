@@ -34,7 +34,7 @@ package jp.ossc.nimbus.core;
 import java.util.*;
 
 /**
- * ”Ä—pƒT[ƒrƒXƒtƒ@ƒNƒgƒŠƒT[ƒrƒXB<p>
+ * æ±ç”¨ã‚µãƒ¼ãƒ“ã‚¹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -43,10 +43,10 @@ public class GenericsServiceFactoryService extends GenericsFactoryService{
     private static final long serialVersionUID = 2328082601184640004L;
     
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ÌŠJnˆ—‚ğs‚¤B<p>
-     * {@link #getManagedInstanceSet()}‚ğŒÄ‚Ño‚µ‚ÄA‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ªŠÇ—‚µ‚Ä‚¢‚éƒT[ƒrƒX‚ğæ“¾‚µAŠJn‚³‚¹‚éB<br>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * {@link #getManagedInstanceSet()}ã‚’å‘¼ã³å‡ºã—ã¦ã€ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒç®¡ç†ã—ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã—ã€é–‹å§‹ã•ã›ã‚‹ã€‚<br>
      * 
-     * @exception Exception ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ªŠÇ—‚µ‚Ä‚¢‚éƒT[ƒrƒX‚ÌŠJn‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒç®¡ç†ã—ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         
@@ -63,10 +63,10 @@ public class GenericsServiceFactoryService extends GenericsFactoryService{
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚Ì’â~ˆ—‚ğs‚¤B<p>
-     * {@link #getManagedInstanceSet()}‚ğŒÄ‚Ño‚µ‚ÄA‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ªŠÇ—‚µ‚Ä‚¢‚éƒT[ƒrƒX‚ğæ“¾‚µA’â~‚³‚¹‚éB<br>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * {@link #getManagedInstanceSet()}ã‚’å‘¼ã³å‡ºã—ã¦ã€ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒç®¡ç†ã—ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã—ã€åœæ­¢ã•ã›ã‚‹ã€‚<br>
      * 
-     * @exception Exception ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ªŠÇ—‚µ‚Ä‚¢‚éƒT[ƒrƒX‚Ì’â~‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒç®¡ç†ã—ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         final Set managedInstances = getManagedInstanceSet();
@@ -81,10 +81,10 @@ public class GenericsServiceFactoryService extends GenericsFactoryService{
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚Ì”jŠüˆ—‚ğs‚¤B<p>
-     * {@link #getManagedInstanceSet()}‚ğŒÄ‚Ño‚µ‚ÄA‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ªŠÇ—‚µ‚Ä‚¢‚éƒT[ƒrƒX‚ğæ“¾‚µA”jŠü‚³‚¹‚éB<br>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * {@link #getManagedInstanceSet()}ã‚’å‘¼ã³å‡ºã—ã¦ã€ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒç®¡ç†ã—ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã—ã€ç ´æ£„ã•ã›ã‚‹ã€‚<br>
      * 
-     * @exception Exception ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ªŠÇ—‚µ‚Ä‚¢‚éƒT[ƒrƒX‚Ì”jŠü‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒç®¡ç†ã—ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         final Set managedInstances = getManagedInstanceSet();
@@ -99,10 +99,10 @@ public class GenericsServiceFactoryService extends GenericsFactoryService{
     }
     
     /**
-     * Service“à‚ÌƒƒOo—Í‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.log.Logger}ƒT[ƒrƒX‚Ì–¼‘O‚ğİ’è‚·‚éB<p>
-     * {@link #getManagedInstanceSet()}‚ğŒÄ‚Ño‚µ‚ÄA‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ªŠÇ—‚µ‚Ä‚¢‚éƒT[ƒrƒX‚ğæ“¾‚µAƒT[ƒrƒX‚ª{@link ServiceBase}‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Å‚ ‚ê‚ÎA{@link ServiceBase#setSystemLoggerServiceName(ServiceName)}‚ğŒÄ‚Ño‚·B<br>
+     * Serviceå†…ã®ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.log.Logger}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #getManagedInstanceSet()}ã‚’å‘¼ã³å‡ºã—ã¦ã€ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒç®¡ç†ã—ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã—ã€ã‚µãƒ¼ãƒ“ã‚¹ãŒ{@link ServiceBase}ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã§ã‚ã‚Œã°ã€{@link ServiceBase#setSystemLoggerServiceName(ServiceName)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param name Service“à‚ÌƒƒOo—Í‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.log.Logger}ƒT[ƒrƒX‚Ì–¼‘O
+     * @param name Serviceå†…ã®ãƒ­ã‚°å‡ºåŠ›ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.log.Logger}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰
      * @see #getSystemLoggerServiceName()
      */
     public void setSystemLoggerServiceName(ServiceName name){
@@ -120,10 +120,10 @@ public class GenericsServiceFactoryService extends GenericsFactoryService{
     }
     
     /**
-     * Service“à‚Å‚ÌƒƒbƒZ[ƒWæ“¾‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ƒT[ƒrƒX‚Ì–¼‘O‚ğİ’è‚·‚éB<p>
-     * {@link #getManagedInstanceSet()}‚ğŒÄ‚Ño‚µ‚ÄA‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ªŠÇ—‚µ‚Ä‚¢‚éƒT[ƒrƒX‚ğæ“¾‚µAƒT[ƒrƒX‚ª{@link ServiceBase}‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Å‚ ‚ê‚ÎA{@link ServiceBase#setSystemMessageRecordFactoryServiceName(ServiceName)}‚ğŒÄ‚Ño‚·B<br>
+     * Serviceå†…ã§ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å–å¾—ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #getManagedInstanceSet()}ã‚’å‘¼ã³å‡ºã—ã¦ã€ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒç®¡ç†ã—ã¦ã„ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã—ã€ã‚µãƒ¼ãƒ“ã‚¹ãŒ{@link ServiceBase}ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã§ã‚ã‚Œã°ã€{@link ServiceBase#setSystemMessageRecordFactoryServiceName(ServiceName)}ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param name Service“à‚Å‚ÌƒƒbƒZ[ƒWæ“¾‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ƒT[ƒrƒX‚Ì–¼‘O
+     * @param name Serviceå†…ã§ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å–å¾—ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.message.MessageRecordFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®åå‰
      * @see #getSystemMessageRecordFactoryServiceName()
      */
     public void setSystemMessageRecordFactoryServiceName(
@@ -144,10 +144,10 @@ public class GenericsServiceFactoryService extends GenericsFactoryService{
     }
     
     /**
-     * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ª’ñ‹Ÿ‚·‚éƒIƒuƒWƒFƒNƒg‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒæä¾›ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚ª’ñ‹Ÿ‚·‚éƒIƒuƒWƒFƒNƒg‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
-     * @exception Exception ¶¬’†‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @return ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãŒæä¾›ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+     * @exception Exception ç”Ÿæˆä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     protected Object createInstance() throws Exception{
         final Service service = (Service)instantiateClass.newInstance();

@@ -34,8 +34,8 @@ package jp.ossc.nimbus.service.jms;
 import javax.jms.*;
 
 /**
- * JMS Topic ƒTƒuƒXƒNƒ‰ƒCƒoƒtƒ@ƒNƒgƒŠB<p>
- * JMS1.0‚Å‚ÍAQueueSession‚ÆTopicSession‚ÌƒCƒ“ƒ^ƒtƒF[ƒX‚ª“ˆê‚³‚ê‚Ä‚¢‚È‚©‚Á‚½‚½‚ßATopicSession‚©‚ç‚ÌTopicSubscriber¶¬‚ğs‚¤B<br>
+ * JMS Topic ã‚µãƒ–ã‚¹ã‚¯ãƒ©ã‚¤ãƒãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * JMS1.0ã§ã¯ã€QueueSessionã¨TopicSessionã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ãŒçµ±ä¸€ã•ã‚Œã¦ã„ãªã‹ã£ãŸãŸã‚ã€TopicSessionã‹ã‚‰ã®TopicSubscriberç”Ÿæˆã‚’è¡Œã†ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -45,14 +45,14 @@ public class JMSTopicSubscriberFactoryService
     private static final long serialVersionUID = -8754717063746944540L;
     
     /**
-     * TopicSubscriber‚ğ¶¬‚·‚éB<p>
-     * {@link #createConsumer(Session, Destination, String, boolean)}ƒƒ\ƒbƒh‚ğŒÄ‚Ño‚·‚Ì‚Æ“™‰¿B‘æ‚Sˆø”‚ÍANoLocal‘®«‚Ì’l‚ª“K—p‚³‚ê‚éB<br>
+     * TopicSubscriberã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * {@link #createConsumer(Session, Destination, String, boolean)}ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã™ã®ã¨ç­‰ä¾¡ã€‚ç¬¬ï¼”å¼•æ•°ã¯ã€NoLocalå±æ€§ã®å€¤ãŒé©ç”¨ã•ã‚Œã‚‹ã€‚<br>
      *
      * @param session TopicSession
-     * @param destination ”zMŒ³‚ÌTopic
-     * @param messageSelector óMƒƒbƒZ[ƒW‚ğ‘I‘ğ‚·‚é‚½‚ß‚ÌƒƒbƒZ[ƒWƒZƒŒƒNƒ^•¶š—ñ
+     * @param destination é…ä¿¡å…ƒã®Topic
+     * @param messageSelector å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é¸æŠã™ã‚‹ãŸã‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚»ãƒ¬ã‚¯ã‚¿æ–‡å­—åˆ—
      * @return TopicSubscriber
-     * @exception JMSMessageConsumerCreateException TopicSubscriber‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException TopicSubscriberã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public MessageConsumer createConsumer(
         Session session,
@@ -63,15 +63,15 @@ public class JMSTopicSubscriberFactoryService
     }
     
     /**
-     * TopicSubscriber‚ğ¶¬‚·‚éB<p>
-     * w’è‚³‚ê‚½TopicSession‚Ì{@link TopicSession#createSubscriber(Topic, String, boolean)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
+     * TopicSubscriberã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã•ã‚ŒãŸTopicSessionã®{@link TopicSession#createSubscriber(Topic, String, boolean)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
      *
      * @param session TopicSession
-     * @param destination ”zMŒ³‚ÌTopic
-     * @param messageSelector óMƒƒbƒZ[ƒW‚ğ‘I‘ğ‚·‚é‚½‚ß‚ÌƒƒbƒZ[ƒWƒZƒŒƒNƒ^•¶š—ñ
-     * @param noLocal true‚ğİ’è‚µ‚½ê‡Aƒ[ƒJƒ‹‚©‚ç‘—M‚³‚ê‚½ƒƒbƒZ[ƒW‚ÍóM‚µ‚È‚¢‚æ‚¤‚É‚È‚é
+     * @param destination é…ä¿¡å…ƒã®Topic
+     * @param messageSelector å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é¸æŠã™ã‚‹ãŸã‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚»ãƒ¬ã‚¯ã‚¿æ–‡å­—åˆ—
+     * @param noLocal trueã‚’è¨­å®šã—ãŸå ´åˆã€ãƒ­ãƒ¼ã‚«ãƒ«ã‹ã‚‰é€ä¿¡ã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¯å—ä¿¡ã—ãªã„ã‚ˆã†ã«ãªã‚‹
      * @return TopicSubscriber
-     * @exception JMSMessageConsumerCreateException TopicSubscriber‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException TopicSubscriberã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public MessageConsumer createConsumer(
         Session session,
@@ -103,14 +103,14 @@ public class JMSTopicSubscriberFactoryService
     }
     
     /**
-     * TopicSubscriber‚ğ¶¬‚·‚éB<p>
-     * w’è‚³‚ê‚½Session‚©‚çA{@link TopicSession#createDurableSubscriber(Topic, String)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
+     * TopicSubscriberã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã•ã‚ŒãŸSessionã‹ã‚‰ã€{@link TopicSession#createDurableSubscriber(Topic, String)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
      *
      * @param session TopicSession
-     * @param topic ”zMŒ³‚ÌTopic
-     * @param name TopicSubscriber‚ğ¯•Ê‚·‚é–¼‘O
+     * @param topic é…ä¿¡å…ƒã®Topic
+     * @param name TopicSubscriberã‚’è­˜åˆ¥ã™ã‚‹åå‰
      * @return TopicSubscriber
-     * @exception JMSMessageConsumerCreateException TopicSubscriber‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException TopicSubscriberã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public TopicSubscriber createDurableSubscriber(
         Session session,
@@ -134,16 +134,16 @@ public class JMSTopicSubscriberFactoryService
     }
     
     /**
-     * TopicSubscriber‚ğ¶¬‚·‚éB<p>
-     * w’è‚³‚ê‚½TopicSession‚©‚çA{@link TopicSession#createDurableSubscriber(Topic, String, String, boolean)}ƒƒ\ƒbƒh‚Å¶¬‚·‚éB<br>
+     * TopicSubscriberã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã•ã‚ŒãŸTopicSessionã‹ã‚‰ã€{@link TopicSession#createDurableSubscriber(Topic, String, String, boolean)}ãƒ¡ã‚½ãƒƒãƒ‰ã§ç”Ÿæˆã™ã‚‹ã€‚<br>
      *
      * @param session TopicSession
-     * @param topic ”zMŒ³‚ÌTopic
-     * @param name TopicSubscriber‚ğ¯•Ê‚·‚é–¼‘O
-     * @param messageSelector óMƒƒbƒZ[ƒW‚ğ‘I‘ğ‚·‚é‚½‚ß‚ÌƒƒbƒZ[ƒWƒZƒŒƒNƒ^•¶š—ñ
-     * @param noLocal true‚ğİ’è‚µ‚½ê‡Aƒ[ƒJƒ‹‚©‚ç‘—M‚³‚ê‚½ƒƒbƒZ[ƒW‚ÍóM‚µ‚È‚¢‚æ‚¤‚É‚È‚éB
+     * @param topic é…ä¿¡å…ƒã®Topic
+     * @param name TopicSubscriberã‚’è­˜åˆ¥ã™ã‚‹åå‰
+     * @param messageSelector å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é¸æŠã™ã‚‹ãŸã‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚»ãƒ¬ã‚¯ã‚¿æ–‡å­—åˆ—
+     * @param noLocal trueã‚’è¨­å®šã—ãŸå ´åˆã€ãƒ­ãƒ¼ã‚«ãƒ«ã‹ã‚‰é€ä¿¡ã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¯å—ä¿¡ã—ãªã„ã‚ˆã†ã«ãªã‚‹ã€‚
      * @return TopicSubscriber
-     * @exception JMSMessageConsumerCreateException TopicSubscriber‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSMessageConsumerCreateException TopicSubscriberã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public TopicSubscriber createDurableSubscriber(
         Session session,

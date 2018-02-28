@@ -34,8 +34,8 @@ package jp.ossc.nimbus.core;
 import java.util.*;
 
 /**
- * ƒT[ƒrƒXó‘Ô•ÏXƒCƒxƒ“ƒgB<p>
- * {@link ServiceStateBroadcaster}‚ªŠÇ—‚·‚éƒT[ƒrƒX‚Ìó‘Ô‚ª•ÏX‚³‚ê‚½–‚ğAServiceStateBroadcaster‚É“o˜^‚³‚ê‚½{@link ServiceStateListener}‚É’Ê’m‚·‚é‚½‚ß‚ÌƒCƒxƒ“ƒg‚Å‚ ‚éB<br>
+ * ã‚µãƒ¼ãƒ“ã‚¹çŠ¶æ…‹å¤‰æ›´ã‚¤ãƒ™ãƒ³ãƒˆã€‚<p>
+ * {@link ServiceStateBroadcaster}ãŒç®¡ç†ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸäº‹ã‚’ã€ServiceStateBroadcasterã«ç™»éŒ²ã•ã‚ŒãŸ{@link ServiceStateListener}ã«é€šçŸ¥ã™ã‚‹ãŸã‚ã®ã‚¤ãƒ™ãƒ³ãƒˆã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -44,18 +44,18 @@ public class ServiceStateChangeEvent extends EventObject{
     private static final long serialVersionUID = 1712986199430366100L;
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^B<p>
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<p>
      *
-     * @param service ó‘Ô‚ª•ÏX‚³‚ê‚½ƒT[ƒrƒX
+     * @param service çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹
      */
     public ServiceStateChangeEvent(Service service){
         super(service);
     }
     
     /**
-     * ó‘Ô‚ª•ÏX‚³‚ê‚½ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * çŠ¶æ…‹ãŒå¤‰æ›´ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒT[ƒrƒX
+     * @return ã‚µãƒ¼ãƒ“ã‚¹
      */
     public Service getService(){
         return (Service)source;

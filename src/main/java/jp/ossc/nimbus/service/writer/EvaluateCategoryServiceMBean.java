@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.writer;
 import jp.ossc.nimbus.service.writer.SimpleCategoryServiceMBean;
 
 /**
- * {@link EvaluateCategoryService}ƒT[ƒrƒXMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link EvaluateCategoryService}ã‚µãƒ¼ãƒ“ã‚¹MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Kameda
  */
@@ -42,14 +42,14 @@ public interface EvaluateCategoryServiceMBean
  extends SimpleCategoryServiceMBean{
     
     /**
-     * ƒJƒeƒSƒŠ‚ğg—p‚·‚éÛ‚ÌğŒ®‚ğİ’è
+     * ã‚«ãƒ†ã‚´ãƒªã‚’ä½¿ç”¨ã™ã‚‹éš›ã®æ¡ä»¶å¼ã‚’è¨­å®š
      * @param conditions
      */
     public void setWritableConditions(String conditions[]);
     
     /**
-     * İ’è‚³‚ê‚½ğŒ®‚ğæ“¾
-     * @return İ’è‚³‚ê‚½ğŒ®
+     * è¨­å®šã•ã‚ŒãŸæ¡ä»¶å¼ã‚’å–å¾—
+     * @return è¨­å®šã•ã‚ŒãŸæ¡ä»¶å¼
      */
     public String[] getWritableConditions();
 }

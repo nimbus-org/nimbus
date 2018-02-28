@@ -34,8 +34,8 @@ package jp.ossc.nimbus.service.sequence;
 import jp.ossc.nimbus.util.CsvArrayList;
 
 /**
- * ’PƒŒ…”ŠÇ—ƒNƒ‰ƒXB<p>
- * ŠeŒ…•¶š‚ÌŠJn•¶šAI—¹•¶š‚ğŠÇ—‚µ‚ÄƒJƒŒƒ“ƒg•¶š‚ÌŒ…ã‚ª‚è‘€ì‚ğs‚¤B<br>
+ * å˜ç´”æ¡æ•°ç®¡ç†ã‚¯ãƒ©ã‚¹ã€‚<p>
+ * å„æ¡æ–‡å­—ã®é–‹å§‹æ–‡å­—ã€çµ‚äº†æ–‡å­—ã‚’ç®¡ç†ã—ã¦ã‚«ãƒ¬ãƒ³ãƒˆæ–‡å­—ã®æ¡ä¸ŠãŒã‚Šæ“ä½œã‚’è¡Œã†ã€‚<br>
  * 
  * @author H.Nakano
  */
@@ -46,50 +46,50 @@ public class SimpleSequenceVariable
     
     public static final String DELIMITER = "," ; //$NON-NLS-1$
     
-    //## ƒƒ“ƒo[•Ï”éŒ¾ ##
+    //## ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°å®£è¨€ ##
     
-    /** ŠJn’l */
+    /** é–‹å§‹å€¤ */
     private String mStartVal;
-    /** I—¹’l */
+    /** çµ‚äº†å€¤ */
     private String mEndVal;
-    /** ƒJƒŒƒ“ƒg”Ô† */
+    /** ã‚«ãƒ¬ãƒ³ãƒˆç•ªå· */
     private String mCurrentVal;
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^B<p>
-     * ŠJn’lAI—¹’l‚ğƒp[ƒX‚µ‚Äƒƒ“ƒo•Ï”‚ÉƒZƒbƒg‚µ‚ÄŒ»İ’l‚ÉŠJn’l‚ğƒZƒbƒg‚·‚éB<br>
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<p>
+     * é–‹å§‹å€¤ã€çµ‚äº†å€¤ã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦ãƒ¡ãƒ³ãƒå¤‰æ•°ã«ã‚»ãƒƒãƒˆã—ã¦ç¾åœ¨å€¤ã«é–‹å§‹å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ã€‚<br>
      * 
-     * @param format ŠJn•¶š,I—¹•¶š Œ`®‚Ì•¶š—ñ
+     * @param format é–‹å§‹æ–‡å­—,çµ‚äº†æ–‡å­— å½¢å¼ã®æ–‡å­—åˆ—
      */
     public SimpleSequenceVariable(String format){
         this(format, null);
     }
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^B<p>
-     * ŠJn’lAI—¹’l‚ğƒp[ƒX‚µ‚Äƒƒ“ƒo•Ï”‚ÉƒZƒbƒg‚·‚éB‚Ü‚½Aw’è‚³‚ê‚½Œ»İ’l‚ğƒƒ“ƒo•Ï”‚ÉƒZƒbƒg‚·‚éB<br>
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<p>
+     * é–‹å§‹å€¤ã€çµ‚äº†å€¤ã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦ãƒ¡ãƒ³ãƒå¤‰æ•°ã«ã‚»ãƒƒãƒˆã™ã‚‹ã€‚ã¾ãŸã€æŒ‡å®šã•ã‚ŒãŸç¾åœ¨å€¤ã‚’ãƒ¡ãƒ³ãƒå¤‰æ•°ã«ã‚»ãƒƒãƒˆã™ã‚‹ã€‚<br>
      * 
-     * @param format ŠJn•¶š,I—¹•¶š Œ`®‚Ì•¶š—ñ
-     * @param current Œ»İ’l
+     * @param format é–‹å§‹æ–‡å­—,çµ‚äº†æ–‡å­— å½¢å¼ã®æ–‡å­—åˆ—
+     * @param current ç¾åœ¨å€¤
      */
     public SimpleSequenceVariable(String format, String current){
-        // format‚ğŠJn’l‚ÆI—¹’l‚É•ª‰ğ‚·‚é
+        // formatã‚’é–‹å§‹å€¤ã¨çµ‚äº†å€¤ã«åˆ†è§£ã™ã‚‹
         CsvArrayList parser = new CsvArrayList();
         parser.split(format,DELIMITER);
         
-        // ŠJn’lAI—¹’lAŒ»İ’l‚ğƒƒ“ƒo•Ï”‚ÉƒZƒbƒg‚·‚é
+        // é–‹å§‹å€¤ã€çµ‚äº†å€¤ã€ç¾åœ¨å€¤ã‚’ãƒ¡ãƒ³ãƒå¤‰æ•°ã«ã‚»ãƒƒãƒˆã™ã‚‹
         this.mStartVal=parser.getStr(0);
         this.mEndVal=parser.getStr(1);
         this.mCurrentVal=current == null ? this.mStartVal : current;
     }
     
-    // SequenceVariable ‚ÌJavaDoc
+    // SequenceVariable ã®JavaDoc
     public boolean increment(){
-        // Œ»İ’l‚ğƒCƒ“ƒNƒŠƒƒ“ƒg‚·‚éB
+        // ç¾åœ¨å€¤ã‚’ã‚¤ãƒ³ã‚¯ãƒªãƒ¡ãƒ³ãƒˆã™ã‚‹ã€‚
         char [] cValtmp = this.mCurrentVal.toCharArray();
         cValtmp[0]++;
         String incVal = new String(cValtmp);
-        // ƒCƒ“ƒNƒŠƒƒ“ƒg‚µ‚½Œ‹‰Ê‚ªI—¹’l‚ğ’´‚¦‚Ä‚¢‚È‚¢‚©ƒ`ƒFƒbƒN‚·‚é
+        // ã‚¤ãƒ³ã‚¯ãƒªãƒ¡ãƒ³ãƒˆã—ãŸçµæœãŒçµ‚äº†å€¤ã‚’è¶…ãˆã¦ã„ãªã„ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹
         if(incVal.compareTo(mEndVal) > 0){
             mCurrentVal = mStartVal;
             return true;
@@ -99,12 +99,12 @@ public class SimpleSequenceVariable
         return false;
     }
     
-    // SequenceVariable ‚ÌJavaDoc
+    // SequenceVariable ã®JavaDoc
     public void clear(){
         mCurrentVal = mStartVal;
     }
     
-    // SequenceVariable ‚ÌJavaDoc
+    // SequenceVariable ã®JavaDoc
     public String getCurrent(){
         return this.mCurrentVal;
     }

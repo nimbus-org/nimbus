@@ -36,18 +36,18 @@ import java.util.*;
 import org.w3c.dom.*;
 
 /**
- * ƒIƒuƒWƒFƒNƒg’è‹`&lt;object&gt;—v‘fƒƒ^ƒf[ƒ^B<p>
- * ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚Ì&lt;object&gt;—v‘f‚É‹Lq‚³‚ê‚½“à—e‚ğŠi”[‚·‚éƒƒ^ƒf[ƒ^ƒRƒ“ƒeƒi‚Å‚ ‚éB<p>
+ * ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå®šç¾©&lt;object&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
+ * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®&lt;object&gt;è¦ç´ ã«è¨˜è¿°ã•ã‚ŒãŸå†…å®¹ã‚’æ ¼ç´ã™ã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠã§ã‚ã‚‹ã€‚<p>
  *
  * @author M.Takata
- * @see <a href="nimbus-service_1_0.dtd">ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹DTD</a>
+ * @see <a href="nimbus-service_1_0.dtd">ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«DTD</a>
  */
 public class ObjectMetaData extends MetaData implements Serializable{
     
     private static final long serialVersionUID = 1822804096588017217L;
     
     /**
-     * &lt;object&gt;—v‘f‚Ì—v‘f–¼•¶š—ñB<p>
+     * &lt;object&gt;è¦ç´ ã®è¦ç´ åæ–‡å­—åˆ—ã€‚<p>
      */
     public static final String OBJECT_TAG_NAME = "object";
     
@@ -66,24 +66,24 @@ public class ObjectMetaData extends MetaData implements Serializable{
     protected List invokes = new ArrayList();
     
     /**
-     * ©•ª‚ğƒ[ƒh‚µ‚½ServiceLoader
+     * è‡ªåˆ†ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸServiceLoader
      */
     protected ServiceLoader myLoader;
     
     protected List ifDefMetaDataList;
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public ObjectMetaData(){
     }
     
     /**
-     * e—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      * 
-     * @param loader ©•ª‚ğƒ[ƒh‚µ‚½ServiceLoader
-     * @param parent e—v‘f‚Ìƒƒ^ƒf[ƒ^
-     * @param manager ƒT[ƒrƒX‚ª“o˜^‚³‚ê‚é{@link ServiceManager}‚Ì–¼‘O
+     * @param loader è‡ªåˆ†ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸServiceLoader
+     * @param parent è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
+     * @param manager ã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã‚‹{@link ServiceManager}ã®åå‰
      */
     public ObjectMetaData(
         ServiceLoader loader,
@@ -96,204 +96,204 @@ public class ObjectMetaData extends MetaData implements Serializable{
     }
     
     /**
-     * ©•ª‚ğƒ[ƒh‚µ‚½{@link ServiceLoader}‚ğæ“¾‚·‚éB<p>
+     * è‡ªåˆ†ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸ{@link ServiceLoader}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ©•ª‚ğƒ[ƒh‚µ‚½ServiceLoader 
+     * @return è‡ªåˆ†ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸServiceLoader 
      */
     public ServiceLoader getServiceLoader(){
         return myLoader;
     }
     
     /**
-     * ©•ª‚ğƒ[ƒh‚µ‚½{@link ServiceLoader}‚ğİ’è‚·‚éB<p>
+     * è‡ªåˆ†ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸ{@link ServiceLoader}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param loader ©•ª‚ğƒ[ƒh‚µ‚½ServiceLoader 
+     * @param loader è‡ªåˆ†ã‚’ãƒ­ãƒ¼ãƒ‰ã—ãŸServiceLoader 
      */
     public void setServiceLoader(ServiceLoader loader){
         myLoader = loader;
     }
     
     /**
-     * ‚±‚Ì&lt;object&gt;—v‘f‚Ìcode‘®«‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;object&gt;è¦ç´ ã®codeå±æ€§ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return code‘®«‚Ì’l
+     * @return codeå±æ€§ã®å€¤
      */
     public String getCode(){
         return code;
     }
     
     /**
-     * ‚±‚Ì&lt;object&gt;—v‘f‚Ìcode‘®«‚Ì’l‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;object&gt;è¦ç´ ã®codeå±æ€§ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param code code‘®«‚Ì’l
+     * @param code codeå±æ€§ã®å€¤
      */
     public void setCode(String code){
         this.code = code;
     }
     
     /**
-     * ‚±‚Ì&lt;object&gt;—v‘f‚Ìq—v‘f&lt;constructor&gt;—v‘f‚ğ•\‚·{@link ConstructorMetaData}‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;object&gt;è¦ç´ ã®å­è¦ç´ &lt;constructor&gt;è¦ç´ ã‚’è¡¨ã™{@link ConstructorMetaData}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return q—v‘f&lt;constructor&gt;—v‘f‚ğ•\‚·ConstructorMetaData
+     * @return å­è¦ç´ &lt;constructor&gt;è¦ç´ ã‚’è¡¨ã™ConstructorMetaData
      */
     public ConstructorMetaData getConstructor(){
         return constructor;
     }
     
     /**
-     * ‚±‚Ì&lt;object&gt;—v‘f‚Ìq—v‘f&lt;constructor&gt;—v‘f‚ğ•\‚·{@link ConstructorMetaData}‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;object&gt;è¦ç´ ã®å­è¦ç´ &lt;constructor&gt;è¦ç´ ã‚’è¡¨ã™{@link ConstructorMetaData}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param constructor q—v‘f&lt;constructor&gt;—v‘f‚ğ•\‚·ConstructorMetaData
+     * @param constructor å­è¦ç´ &lt;constructor&gt;è¦ç´ ã‚’è¡¨ã™ConstructorMetaData
      */
     public void setConstructor(ConstructorMetaData constructor){
         this.constructor = constructor;
     }
     
     /**
-     * ‚±‚Ì&lt;object&gt;—v‘f‚ªŠÖ˜A‚·‚é&lt;manager&gt;—v‘f‚Ìname‘®«‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;object&gt;è¦ç´ ãŒé–¢é€£ã™ã‚‹&lt;manager&gt;è¦ç´ ã®nameå±æ€§ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‚±‚Ì&lt;object&gt;—v‘f‚ªŠÖ˜A‚·‚é&lt;manager&gt;—v‘f‚Ìname‘®«‚Ì’l
+     * @return ã“ã®&lt;object&gt;è¦ç´ ãŒé–¢é€£ã™ã‚‹&lt;manager&gt;è¦ç´ ã®nameå±æ€§ã®å€¤
      */
     public String getManagerName(){
         return managerName;
     }
     
     /**
-     * ‚±‚Ì&lt;object&gt;—v‘f‚ªŠÖ˜A‚·‚é&lt;manager&gt;—v‘f‚Ìname‘®«‚Ì’l‚ğİ’è‚·‚éB<p>
+     * ã“ã®&lt;object&gt;è¦ç´ ãŒé–¢é€£ã™ã‚‹&lt;manager&gt;è¦ç´ ã®nameå±æ€§ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name ‚±‚Ì&lt;object&gt;—v‘f‚ªŠÖ˜A‚·‚é&lt;manager&gt;—v‘f‚Ìname‘®«‚Ì’l
+     * @param name ã“ã®&lt;object&gt;è¦ç´ ãŒé–¢é€£ã™ã‚‹&lt;manager&gt;è¦ç´ ã®nameå±æ€§ã®å€¤
      */
     public void setManagerName(String name){
         managerName = name;
     }
     
     /**
-     * ‚±‚Ì&lt;object&gt;—v‘f‚Ìq—v‘f&lt;field&gt;—v‘f‚ğ•\‚·{@link FieldMetaData}‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;object&gt;è¦ç´ ã®å­è¦ç´ &lt;field&gt;è¦ç´ ã‚’è¡¨ã™{@link FieldMetaData}ã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return q—v‘f&lt;field&gt;—v‘f‚ğ•\‚·FieldMetaData‚ÌW‡
+     * @return å­è¦ç´ &lt;field&gt;è¦ç´ ã‚’è¡¨ã™FieldMetaDataã®é›†åˆ
      */
     public Collection getFields(){
         return fields.values();
     }
     
     /**
-     * w’è‚³‚ê‚½–¼‘O‚ÉŠY“–‚·‚é&lt;object&gt;—v‘f‚Ìq—v‘f&lt;field&gt;—v‘f‚ğ•\‚·{@link FieldMetaData}‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸåå‰ã«è©²å½“ã™ã‚‹&lt;object&gt;è¦ç´ ã®å­è¦ç´ &lt;field&gt;è¦ç´ ã‚’è¡¨ã™{@link FieldMetaData}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name q—v‘f&lt;field&gt;—v‘f‚Ìname‘®«‚Ì’l
-     * @return q—v‘f&lt;field&gt;—v‘f‚ğ•\‚·FieldMetaData
+     * @param name å­è¦ç´ &lt;field&gt;è¦ç´ ã®nameå±æ€§ã®å€¤
+     * @return å­è¦ç´ &lt;field&gt;è¦ç´ ã‚’è¡¨ã™FieldMetaData
      */
     public FieldMetaData getField(String name){
         return (FieldMetaData)fields.get(name);
     }
     
     /**
-     * ‚±‚Ì&lt;object&gt;—v‘f‚Ìq—v‘f&lt;field&gt;—v‘f‚ğ•\‚·{@link FieldMetaData}‚ğ’Ç‰Á‚·‚éB<p>
+     * ã“ã®&lt;object&gt;è¦ç´ ã®å­è¦ç´ &lt;field&gt;è¦ç´ ã‚’è¡¨ã™{@link FieldMetaData}ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param field q—v‘f&lt;field&gt;—v‘f‚ğ•\‚·FieldMetaData
+     * @param field å­è¦ç´ &lt;field&gt;è¦ç´ ã‚’è¡¨ã™FieldMetaData
      */
     public void addField(FieldMetaData field){
         fields.put(field.getName(), field);
     }
     
     /**
-     * ‚±‚Ì&lt;object&gt;—v‘f‚Ìq—v‘f&lt;field&gt;—v‘f‚ğ•\‚·{@link FieldMetaData}‚ğíœ‚·‚éB<p>
+     * ã“ã®&lt;object&gt;è¦ç´ ã®å­è¦ç´ &lt;field&gt;è¦ç´ ã‚’è¡¨ã™{@link FieldMetaData}ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param name q—v‘f&lt;field&gt;—v‘f‚Ìname‘®«‚Ì’l
+     * @param name å­è¦ç´ &lt;field&gt;è¦ç´ ã®nameå±æ€§ã®å€¤
      */
     public void removeField(String name){
         fields.remove(name);
     }
     
     /**
-     * ‚±‚Ì&lt;object&gt;—v‘f‚Ìq—v‘f&lt;field&gt;—v‘f‚ğ•\‚·{@link FieldMetaData}‚ğ‘S‚Äíœ‚·‚éB<p>
+     * ã“ã®&lt;object&gt;è¦ç´ ã®å­è¦ç´ &lt;field&gt;è¦ç´ ã‚’è¡¨ã™{@link FieldMetaData}ã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      */
     public void clearFields(){
         fields.clear();
     }
     
     /**
-     * ‚±‚Ì&lt;object&gt;—v‘f‚Ìq—v‘f&lt;attribute&gt;—v‘f‚ğ•\‚·{@link AttributeMetaData}‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;object&gt;è¦ç´ ã®å­è¦ç´ &lt;attribute&gt;è¦ç´ ã‚’è¡¨ã™{@link AttributeMetaData}ã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return q—v‘f&lt;attribute&gt;—v‘f‚ğ•\‚·AttributeMetaData‚ÌW‡
+     * @return å­è¦ç´ &lt;attribute&gt;è¦ç´ ã‚’è¡¨ã™AttributeMetaDataã®é›†åˆ
      */
     public Collection getAttributes(){
         return attributes.values();
     }
     
     /**
-     * ‚±‚Ì&lt;object&gt;—v‘f‚Ìq—v‘f&lt;attribute&gt;—v‘f‚Ì‚¤‚¿‚ÅAw’è‚³‚ê‚½name‘®«‚Ì’l‚ğ‚Â&lt;attribute&gt;—v‘f‚ğ•\‚·{@link AttributeMetaData}‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;object&gt;è¦ç´ ã®å­è¦ç´ &lt;attribute&gt;è¦ç´ ã®ã†ã¡ã§ã€æŒ‡å®šã•ã‚ŒãŸnameå±æ€§ã®å€¤ã‚’æŒã¤&lt;attribute&gt;è¦ç´ ã‚’è¡¨ã™{@link AttributeMetaData}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name q—v‘f&lt;attribute&gt;—v‘f‚Ìname‘®«‚Ì’l
-     * @return q—v‘f&lt;attribute&gt;—v‘f‚ğ•\‚·AttributeMetaData
+     * @param name å­è¦ç´ &lt;attribute&gt;è¦ç´ ã®nameå±æ€§ã®å€¤
+     * @return å­è¦ç´ &lt;attribute&gt;è¦ç´ ã‚’è¡¨ã™AttributeMetaData
      */
     public AttributeMetaData getAttribute(String name){
         return (AttributeMetaData)attributes.get(name);
     }
     
     /**
-     * ‚±‚Ì&lt;object&gt;—v‘f‚Ìq—v‘f&lt;attribute&gt;—v‘f‚ğ•\‚·{@link AttributeMetaData}‚ğ’Ç‰Á‚·‚éB<p>
+     * ã“ã®&lt;object&gt;è¦ç´ ã®å­è¦ç´ &lt;attribute&gt;è¦ç´ ã‚’è¡¨ã™{@link AttributeMetaData}ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param attribute q—v‘f&lt;attribute&gt;—v‘f‚ğ•\‚·AttributeMetaData
+     * @param attribute å­è¦ç´ &lt;attribute&gt;è¦ç´ ã‚’è¡¨ã™AttributeMetaData
      */
     public void addAttribute(AttributeMetaData attribute){
         attributes.put(attribute.getName(), attribute);
     }
     
     /**
-     * ‚±‚Ì&lt;object&gt;—v‘f‚Ìq—v‘f&lt;attribute&gt;—v‘f‚ğ•\‚·{@link AttributeMetaData}‚ğíœ‚·‚éB<p>
+     * ã“ã®&lt;object&gt;è¦ç´ ã®å­è¦ç´ &lt;attribute&gt;è¦ç´ ã‚’è¡¨ã™{@link AttributeMetaData}ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param name q—v‘f&lt;attribute&gt;—v‘f‚Ìname‘®«‚Ì’l
+     * @param name å­è¦ç´ &lt;attribute&gt;è¦ç´ ã®nameå±æ€§ã®å€¤
      */
     public void removeAttribute(String name){
         attributes.remove(name);
     }
     
     /**
-     * ‚±‚Ì&lt;object&gt;—v‘f‚Ìq—v‘f&lt;attribute&gt;—v‘f‚ğ•\‚·{@link AttributeMetaData}‚ğíœ‚·‚éB<p>
+     * ã“ã®&lt;object&gt;è¦ç´ ã®å­è¦ç´ &lt;attribute&gt;è¦ç´ ã‚’è¡¨ã™{@link AttributeMetaData}ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      */
     public void clearAttributes(){
         attributes.clear();
     }
     
     /**
-     * ‚±‚Ì&lt;object&gt;—v‘f‚Ìq—v‘f&lt;invoke&gt;—v‘f‚ğ•\‚·{@link InvokeMetaData}‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ã“ã®&lt;object&gt;è¦ç´ ã®å­è¦ç´ &lt;invoke&gt;è¦ç´ ã‚’è¡¨ã™{@link InvokeMetaData}ã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return q—v‘f&lt;invoke&gt;—v‘f‚ğ•\‚·InvokeMetaData‚ÌW‡
+     * @return å­è¦ç´ &lt;invoke&gt;è¦ç´ ã‚’è¡¨ã™InvokeMetaDataã®é›†åˆ
      */
     public Collection getInvokes(){
         return invokes;
     }
     
     /**
-     * ‚±‚Ì&lt;object&gt;—v‘f‚Ìq—v‘f&lt;invoke&gt;—v‘f‚ğ•\‚·{@link InvokeMetaData}‚ğ’Ç‰Á‚·‚éB<p>
+     * ã“ã®&lt;object&gt;è¦ç´ ã®å­è¦ç´ &lt;invoke&gt;è¦ç´ ã‚’è¡¨ã™{@link InvokeMetaData}ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param invoke q—v‘f&lt;invoke&gt;—v‘f‚ğ•\‚·InvokeMetaData
+     * @param invoke å­è¦ç´ &lt;invoke&gt;è¦ç´ ã‚’è¡¨ã™InvokeMetaData
      */
     public void addInvoke(InvokeMetaData invoke){
         invokes.add(invoke);
     }
     
     /**
-     * ‚±‚Ì&lt;object&gt;—v‘f‚Ìq—v‘f&lt;invoke&gt;—v‘f‚ğ•\‚·{@link InvokeMetaData}‚ğíœ‚·‚éB<p>
+     * ã“ã®&lt;object&gt;è¦ç´ ã®å­è¦ç´ &lt;invoke&gt;è¦ç´ ã‚’è¡¨ã™{@link InvokeMetaData}ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param invoke q—v‘f&lt;invoke&gt;—v‘f‚ğ•\‚·InvokeMetaData
+     * @param invoke å­è¦ç´ &lt;invoke&gt;è¦ç´ ã‚’è¡¨ã™InvokeMetaData
      */
     public void removeInvoke(InvokeMetaData invoke){
         invokes.remove(invoke);
     }
     
     /**
-     * ‚±‚Ì&lt;object&gt;—v‘f‚Ìq—v‘f&lt;invoke&gt;—v‘f‚ğ•\‚·{@link InvokeMetaData}‚ğ‘S‚Äíœ‚·‚éB<p>
+     * ã“ã®&lt;object&gt;è¦ç´ ã®å­è¦ç´ &lt;invoke&gt;è¦ç´ ã‚’è¡¨ã™{@link InvokeMetaData}ã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      */
     public void clearInvokes(){
         invokes.clear();
     }
     
     /**
-     * —v‘f–¼‚ªobject‚Å‚ ‚é–‚ğƒ`ƒFƒbƒN‚·‚éB<p>
+     * è¦ç´ åãŒobjectã§ã‚ã‚‹äº‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã€‚<p>
      *
-     * @param element object—v‘f
-     * @exception DeploymentException —v‘f–¼‚ªobject‚Å‚È‚¢ê‡
+     * @param element objectè¦ç´ 
+     * @exception DeploymentException è¦ç´ åãŒobjectã§ãªã„å ´åˆ
      */
     protected void checkTagName(Element element) throws DeploymentException{
         if(!element.getTagName().equals(OBJECT_TAG_NAME)){
@@ -305,10 +305,10 @@ public class ObjectMetaData extends MetaData implements Serializable{
     }
     
     /**
-     * &lt;object&gt;—v‘f‚ÌElement‚ğƒp[ƒX‚µ‚ÄA©•ª©g‚Ì‰Šú‰»A‹y‚Ñq—v‘f‚Ìƒƒ^ƒf[ƒ^‚Ì¶¬‚ğs‚¤B<p>
+     * &lt;object&gt;è¦ç´ ã®Elementã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦ã€è‡ªåˆ†è‡ªèº«ã®åˆæœŸåŒ–ã€åŠã³å­è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã‚’è¡Œã†ã€‚<p>
      *
-     * @param element &lt;object&gt;—v‘f‚ÌElement
-     * @exception DeploymentException &lt;object&gt;—v‘f‚Ì‰ğÍA‚»‚ÌŒ‹‰Ê‚É‚æ‚éƒƒ^ƒf[ƒ^‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @param element &lt;object&gt;è¦ç´ ã®Element
+     * @exception DeploymentException &lt;object&gt;è¦ç´ ã®è§£æã€ãã®çµæœã«ã‚ˆã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void importXML(Element element) throws DeploymentException{
         super.importXML(element);
@@ -514,9 +514,9 @@ public class ObjectMetaData extends MetaData implements Serializable{
     }
     
     /**
-     * ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Ì•¡»‚ğ¶¬‚·‚éB<p>
+     * ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®è¤‡è£½ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Ì•¡»
+     * @return ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®è¤‡è£½
      */
     public Object clone(){
         ObjectMetaData clone = (ObjectMetaData)super.clone();
@@ -527,9 +527,9 @@ public class ObjectMetaData extends MetaData implements Serializable{
     }
     
     /**
-     * ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶š—ñ•\Œ»
+     * @return æ–‡å­—åˆ—è¡¨ç¾
      */
     public String toString(){
         final StringBuilder buf = new StringBuilder();

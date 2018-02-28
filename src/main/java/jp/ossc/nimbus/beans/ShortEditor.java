@@ -34,20 +34,20 @@ package jp.ossc.nimbus.beans;
 import java.beans.*;
 
 /**
- * short�^��PropertyEditor�N���X�B<p>
- * ���l�������short�^�̃I�u�W�F�N�g�ɕϊ�����B<br>
- * "${"��"}"�Ɉ͂܂ꂽ������́A�����̃V�X�e���v���p�e�B�ƒu�������B<br>
- * short�^��static�萔�����Q�Ƃ��鎖���ł���B<br>
- * �܂��A����l�Ƃ��āAMAX_VALUE�AMIN_VALUE���T�|�[�g����B<br>
+ * short型のPropertyEditorクラス。<p>
+ * 数値文字列をshort型のオブジェクトに変換する。<br>
+ * "${"と"}"に囲まれた文字列は、同名のシステムプロパティと置換される。<br>
+ * short型のstatic定数名を参照する事もできる。<br>
+ * また、特殊値として、MAX_VALUE、MIN_VALUEをサポートする。<br>
  * <p>
- * ��F<br>
+ * 例：<br>
  * &nbsp;&nbsp;1234<br>
  * <br>
- * �̂悤�ȕ�����<br>
+ * のような文字列が<br>
  * <br>
  * &nbsp;&nbsp;Short.parseShort("1234")<br>
  * <br>
- * �̂悤�ɕϊ������B<br>
+ * のように変換される。<br>
  *
  * @author M.Takata
  */
@@ -57,9 +57,9 @@ public class ShortEditor extends PropertyEditorSupport
     private static final long serialVersionUID = -6292923961921734360L;
     
     /**
-     * �w�肳�ꂽ���������͂��ăv���p�e�B�l��ݒ肷��B<p>
+     * 指定された文字列を解析してプロパティ値を設定する。<p>
      *
-     * @param text ��͂���镶����
+     * @param text 解析される文字列
      */
     public void setAsText(String text){
         if(text == null){
@@ -107,9 +107,9 @@ public class ShortEditor extends PropertyEditorSupport
     }
     
     /**
-     * �v���p�e�B��������擾����B<p>
+     * プロパティ文字列を取得する。<p>
      *
-     * @return �v���p�e�B������
+     * @return プロパティ文字列
      */
     public String getAsText(){
         final Short val = (Short)getValue();

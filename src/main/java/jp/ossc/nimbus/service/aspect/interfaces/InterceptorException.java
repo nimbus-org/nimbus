@@ -29,13 +29,13 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.service.aspect.interfaces;
 
 /**
- * ƒCƒ“ƒ^[ƒZƒvƒ^[—áŠOƒNƒ‰ƒX<p>
- * ƒCƒ“ƒ^[ƒZƒvƒ^[“à‚Å”­¶‚µ‚½—áŠO‚ğ¦‚·ƒx[ƒXƒNƒ‰ƒX
+ * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼ä¾‹å¤–ã‚¯ãƒ©ã‚¹<p>
+ * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼å†…ã§ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’ç¤ºã™ãƒ™ãƒ¼ã‚¹ã‚¯ãƒ©ã‚¹
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -45,32 +45,32 @@ public class InterceptorException extends Exception {
     private static final long serialVersionUID = -5915119677379118209L;
     
     /**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	 */
 	public InterceptorException() {
 		super();
 	}
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
-	 * @param mesage	—áŠOƒƒbƒZ[ƒW	
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
+	 * @param mesage	ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸	
 	 */
 	public InterceptorException(String mesage) {
 		super(mesage);
 	}
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
-	 * @param e	ª–{—áŠO
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
+	 * @param e	æ ¹æœ¬ä¾‹å¤–
 	 */
 	public InterceptorException(Throwable e) {
 		super(e);
 	}
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
-	 * @param mesage	—áŠOƒƒbƒZ[ƒW	
-	 * @param e	ª–{—áŠO
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
+	 * @param mesage	ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸	
+	 * @param e	æ ¹æœ¬ä¾‹å¤–
 	 */
 	public InterceptorException(String message, Throwable e) {
 		super(message, e);

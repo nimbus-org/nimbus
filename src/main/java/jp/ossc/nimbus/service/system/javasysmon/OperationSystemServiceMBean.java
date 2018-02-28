@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.system.*;
 
 /**
- * {@link OperationSystemService}のMBeanインタフェース<p>
+ * {@link OperationSystemService}縺ｮMBean繧､繝ｳ繧ｿ繝輔ぉ繝ｼ繧ｹ<p>
  * 
  * @author M.Takata
  * @see OperationSystemService

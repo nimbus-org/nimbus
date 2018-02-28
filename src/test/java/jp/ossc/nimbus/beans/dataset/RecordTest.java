@@ -9,7 +9,7 @@ import java.math.*;
 /**
  * 
  * @author S.Teshima
- * @version 1.00 ì¬: 2008/01/17 - S.Teshima
+ * @version 1.00 ä½œæˆ: 2008/01/17 - S.Teshima
  */
 
 public class RecordTest extends TestCase {
@@ -22,16 +22,16 @@ public class RecordTest extends TestCase {
 	 junit.textui.TestRunner.run(RecordTest.class); }
 	 
 	/**
-	 * ƒXƒL[ƒ}•¶š—ñw’è‚µ‚ÄAƒŒƒR[ƒh‚ğ¶¬‚·‚éƒeƒXƒgB
+	 * ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—æŒ‡å®šã—ã¦ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 
@@ -41,21 +41,21 @@ public class RecordTest extends TestCase {
 			new Record(schema);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒXƒL[ƒ}•¶š—ñw’è‚µ‚ÄAƒŒƒR[ƒh‚ğ¶¬‚·‚éƒeƒXƒgB
+	 * ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—æŒ‡å®šã—ã¦ã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
-	 * <li>"A,java.lang.String,,," (‹æØ‚è•¶šF‚ğw’è‚µ‚È‚¢)</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>"A,java.lang.String,,," (åŒºåˆ‡ã‚Šæ–‡å­—ï¼šã‚’æŒ‡å®šã—ãªã„)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySchemaDefineException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 
@@ -63,22 +63,22 @@ public class RecordTest extends TestCase {
 		try {
 			String schema = "A,java.lang.String,,,";
 			new Record(schema);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySchemaDefineException e) {
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒXƒL[ƒ}•¶š—ñ‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>getSchema()‚ğÀs‚µ‚Ä•Ô‚³‚ê‚é•¶š—ñ‚ªw’è‚µ‚½‚à‚Ì‚Æ“¯‚¶‚±‚Æ‚ğŠm”F</li>
+	 * <li>getSchema()ã‚’å®Ÿè¡Œã—ã¦è¿”ã•ã‚Œã‚‹æ–‡å­—åˆ—ãŒæŒ‡å®šã—ãŸã‚‚ã®ã¨åŒã˜ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetSchema() {
@@ -88,22 +88,22 @@ public class RecordTest extends TestCase {
 			assertEquals(":A,java.lang.String,,,", rec.getSchema());
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒXƒL[ƒ}•¶š—ñ‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¹ã‚­ãƒ¼ãƒæ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğg‚Á‚Ä‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’ä½¿ã£ã¦ã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>getRecordSchema()‚ğÀs‚µ‚Ä•Ô‚³‚ê‚éƒŒƒR[ƒhƒXƒL[ƒ}‚ª<BR>
-	 * RecordSchema.getInstance(w’è‚µ‚½ƒXƒL[ƒ})‚Æ“¯‚¶‚±‚Æ‚ğŠm”F</li>
+	 * <li>getRecordSchema()ã‚’å®Ÿè¡Œã—ã¦è¿”ã•ã‚Œã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒãŒ<BR>
+	 * RecordSchema.getInstance(æŒ‡å®šã—ãŸã‚¹ã‚­ãƒ¼ãƒ)ã¨åŒã˜ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetRecordSchema() {
@@ -114,25 +114,25 @@ public class RecordTest extends TestCase {
 					.getRecordSchema());
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>Object:"a"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>values.get(name)‚Åw’è‚µ‚½’l‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>values.get(name)ã§æŒ‡å®šã—ãŸå€¤ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyStringObject1() {
@@ -143,25 +143,25 @@ public class RecordTest extends TestCase {
 			assertEquals("a", rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
-	 * <li>name :"B"(‘¶İ‚µ‚È‚¢–¼‘O)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>name :"B"(å­˜åœ¨ã—ãªã„åå‰)</li>
 	 * <li>Object:"a"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
-	 * <li>—áŠOƒƒbƒZ[ƒW‚É"No such property : B"‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«"No such property : B"ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyStringObject2() {
@@ -169,26 +169,26 @@ public class RecordTest extends TestCase {
 			String schema = ":A,java.lang.String,,,";
 			Record rec = new Record(schema);
 			rec.setProperty("B", "a");
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySetException e) {
 			assertEquals("No such property : B", e.getMessage());
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(int index, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(int index, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>index : 0</li>
 	 * <li>Object:"a"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyIntObject1() {
@@ -199,24 +199,24 @@ public class RecordTest extends TestCase {
 			assertEquals("a", rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(int index, Object val)‚ğÀs‚·‚é</li>
-	 * <li>index : 1 (‘¶İ‚µ‚È‚¢ƒCƒ“ƒfƒbƒNƒX)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(int index, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>index : 1 (å­˜åœ¨ã—ãªã„ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹)</li>
 	 * <li>Object:"a"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyIntObject2() {
@@ -224,25 +224,25 @@ public class RecordTest extends TestCase {
 			String schema = ":A,java.lang.String,,,";
 			Record rec = new Record(schema);
 			rec.setProperty(1, "a");
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySetException e) {
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,boolean,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, boolean val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, boolean val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>Object:Boolean’l</li>
+	 * <li>Object:Booleanå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyStringBoolean1() {
@@ -253,24 +253,24 @@ public class RecordTest extends TestCase {
 			assertEquals(new Boolean(true), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,boolean,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, boolean val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, boolean val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"B"</li>
-	 * <li>val:Boolean’l</li>
+	 * <li>val:Booleanå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyStringBoolean2() {
@@ -278,25 +278,25 @@ public class RecordTest extends TestCase {
 			String schema = ":A,boolean,,,";
 			Record rec = new Record(schema);
 			rec.setProperty("B", true);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySetException e) {
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,boolean,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(int index, boolean val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(int index, boolean val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>index : 0</li>
-	 * <li>val:Boolean’l</li>
+	 * <li>val:Booleanå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyIntBoolean1() {
@@ -307,24 +307,24 @@ public class RecordTest extends TestCase {
 			assertEquals(new Boolean(true), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,boolean,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(int index, boolean val)‚ğÀs‚·‚é</li>
-	 * <li>index : 1 (‘¶İ‚µ‚È‚¢ƒCƒ“ƒfƒbƒNƒX)</li>
-	 * <li>val:Boolean’l</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(int index, boolean val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>index : 1 (å­˜åœ¨ã—ãªã„ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹)</li>
+	 * <li>val:Booleanå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyIntBoolean2() {
@@ -332,25 +332,25 @@ public class RecordTest extends TestCase {
 			String schema = ":A,boolean,,,";
 			Record rec = new Record(schema);
 			rec.setProperty(1, true);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySetException e) {
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,byte,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, byte val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, byte val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:byte’l</li>
+	 * <li>val:byteå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyStringByte1() {
@@ -361,24 +361,24 @@ public class RecordTest extends TestCase {
 			assertEquals(new Byte((byte) 1), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,byte,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, byte val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, byte val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"B"</li>
-	 * <li>val:byte’l</li>
+	 * <li>val:byteå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyStringByte2() {
@@ -386,25 +386,25 @@ public class RecordTest extends TestCase {
 			String schema = ":A,byte,,,";
 			Record rec = new Record(schema);
 			rec.setProperty("B", (byte) 1);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySetException e) {
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,byte,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(int index, byte val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(int index, byte val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>index : 0</li>
-	 * <li>val:Byte’l</li>
+	 * <li>val:Byteå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyIntByte1() {
@@ -415,24 +415,24 @@ public class RecordTest extends TestCase {
 			assertEquals(new Byte((byte) 1), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,byte,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(int index, byte val)‚ğÀs‚·‚é</li>
-	 * <li>index : 1 (‘¶İ‚µ‚È‚¢ƒCƒ“ƒfƒbƒNƒX)</li>
-	 * <li>val:byte’l</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(int index, byte val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>index : 1 (å­˜åœ¨ã—ãªã„ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹)</li>
+	 * <li>val:byteå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyIntByte2() {
@@ -440,25 +440,25 @@ public class RecordTest extends TestCase {
 			String schema = ":A,byte,,,";
 			Record rec = new Record(schema);
 			rec.setProperty(1, (byte) 1);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySetException e) {
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,char,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, char val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, char val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:char’l</li>
+	 * <li>val:charå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyStringChar1() {
@@ -469,24 +469,24 @@ public class RecordTest extends TestCase {
 			assertEquals(new Character('a'), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,char,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, char val)‚ğÀs‚·‚é</li>
-	 * <li>name :"B"i‘¶İ‚µ‚È‚¢–¼‘Oj</li>
-	 * <li>val:char’l</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, char val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>name :"B"ï¼ˆå­˜åœ¨ã—ãªã„åå‰ï¼‰</li>
+	 * <li>val:charå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyStringChar2() {
@@ -494,25 +494,25 @@ public class RecordTest extends TestCase {
 			String schema = ":A,char,,,";
 			Record rec = new Record(schema);
 			rec.setProperty("B", 'a');
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySetException e) {
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,char,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(int index, char val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(int index, char val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>index : 0</li>
-	 * <li>val:char’l</li>
+	 * <li>val:charå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyIntChar1() {
@@ -523,24 +523,24 @@ public class RecordTest extends TestCase {
 			assertEquals(new Character('a'), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,char,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(int index, char val)‚ğÀs‚·‚é</li>
-	 * <li>index : 1 (‘¶İ‚µ‚È‚¢ƒCƒ“ƒfƒbƒNƒX)</li>
-	 * <li>val:char’l</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(int index, char val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>index : 1 (å­˜åœ¨ã—ãªã„ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹)</li>
+	 * <li>val:charå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyIntChar2() {
@@ -548,7 +548,7 @@ public class RecordTest extends TestCase {
 			String schema = ":A,char,,,";
 			Record rec = new Record(schema);
 			rec.setProperty(1, 'a');
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySetException e) {
 
 		}
@@ -556,20 +556,20 @@ public class RecordTest extends TestCase {
 
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB(Byte->Short)
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚(Byte->Short)
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,short,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Byte val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Byte val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:byte’l</li>
+	 * <li>val:byteå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty()‚Åshort’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty()ã§shortå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyByteToShort() {
@@ -580,25 +580,25 @@ public class RecordTest extends TestCase {
 			assertEquals(new Short((byte) 1), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB(Byte->int)
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚(Byte->int)
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,int,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Byte val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Byte val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:byte’l</li>
+	 * <li>val:byteå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty()‚Åint’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty()ã§intå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyByteToInt() {
@@ -609,25 +609,25 @@ public class RecordTest extends TestCase {
 			assertEquals(new Integer((byte) 1), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB(short->int)
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚(short->int)
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,int,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, short val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, short val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:short’l</li>
+	 * <li>val:shortå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty()‚Åint’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty()ã§intå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyShortToInt() {
@@ -638,26 +638,26 @@ public class RecordTest extends TestCase {
 			assertEquals(new Integer((short) 1), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB(Byte->long)
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚(Byte->long)
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,long,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Byte val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Byte val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:byte’l</li>
+	 * <li>val:byteå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty()‚Ålong’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty()ã§longå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyByteToLong() {
@@ -668,25 +668,25 @@ public class RecordTest extends TestCase {
 			assertEquals(new Long((byte) 1), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB(short->long)
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚(short->long)
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,long,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, short val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, short val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:short’l</li>
+	 * <li>val:shortå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty()‚Ålong’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty()ã§longå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyShortToLong() {
@@ -697,26 +697,26 @@ public class RecordTest extends TestCase {
 			assertEquals(new Long((short) 1), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB(intt->long)
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚(intt->long)
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,long,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, int val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, int val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:int’l</li>
+	 * <li>val:intå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty()‚Ålong’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty()ã§longå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyIntToLong() {
@@ -727,27 +727,27 @@ public class RecordTest extends TestCase {
 			assertEquals(new Long((int) 1), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB(Byte->BigInteger)
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚(Byte->BigInteger)
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.math.BigInteger,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Byte val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Byte val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:byte’l</li>
+	 * <li>val:byteå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty()‚ÅBigInteger’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty()ã§BigIntegerå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyByteToBigInteger() {
@@ -758,25 +758,25 @@ public class RecordTest extends TestCase {
 			assertEquals(new BigInteger("1"), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB(short->BigInteger)
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚(short->BigInteger)
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.math.BigInteger,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, short val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, short val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:short’l</li>
+	 * <li>val:shortå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty()‚ÅBigInteger’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty()ã§BigIntegerå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyShortToBigInteger() {
@@ -787,26 +787,26 @@ public class RecordTest extends TestCase {
 			assertEquals(new BigInteger("1"), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB(int->BigInteger)
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚(int->BigInteger)
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.math.BigInteger,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, int val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, int val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:int’l</li>
+	 * <li>val:intå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty()‚ÅBigInteger’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty()ã§BigIntegerå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyIntToBigInteger() {
@@ -817,26 +817,26 @@ public class RecordTest extends TestCase {
 			assertEquals(new BigInteger("1"), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB(long->BigInteger)
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚(long->BigInteger)
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.math.BigInteger,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, long val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, long val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:long’l</li>
+	 * <li>val:longå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty()‚ÅBigInteger’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty()ã§BigIntegerå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyLongToBigInteger() {
@@ -847,25 +847,25 @@ public class RecordTest extends TestCase {
 			assertEquals(new BigInteger("1"), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB(BigInteger->BigInteger)
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚(BigInteger->BigInteger)
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.math.BigInteger,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, BigInteger val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, BigInteger val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:BigInteger’l</li>
+	 * <li>val:BigIntegerå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty()‚ÅBigInteger’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty()ã§BigIntegerå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyBigInteger() {
@@ -876,26 +876,26 @@ public class RecordTest extends TestCase {
 			assertEquals(new BigInteger("1"), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB(Byte->float)
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚(Byte->float)
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,float,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Byte val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Byte val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:byte’l</li>
+	 * <li>val:byteå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty()‚Åfloat’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty()ã§floatå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyByteToFloat() {
@@ -906,25 +906,25 @@ public class RecordTest extends TestCase {
 			assertEquals(new Float((byte)1), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB(short->float)
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚(short->float)
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,float,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, short val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, short val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:short’l</li>
+	 * <li>val:shortå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty()‚Åfloat’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty()ã§floatå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyShortToFloat() {
@@ -935,26 +935,26 @@ public class RecordTest extends TestCase {
 			assertEquals(new Float((short) 1), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB(int->float)
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚(int->float)
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,javafloat,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, int val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, int val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:int’l</li>
+	 * <li>val:intå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty()‚Åfloat’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty()ã§floatå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyIntToFloat() {
@@ -965,26 +965,26 @@ public class RecordTest extends TestCase {
 			assertEquals(new Float((int) 1), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB(long->float)
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚(long->float)
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,float,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, long val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, long val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:long’l</li>
+	 * <li>val:longå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty()‚Åfloat’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty()ã§floatå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyLongToFloat() {
@@ -995,25 +995,25 @@ public class RecordTest extends TestCase {
 			assertEquals(new Float((long) 1), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB(Byte->double)
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚(Byte->double)
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,double,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Byte val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Byte val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:byte’l</li>
+	 * <li>val:byteå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty()‚Ådouble’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty()ã§doubleå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyByteToDouble() {
@@ -1024,25 +1024,25 @@ public class RecordTest extends TestCase {
 			assertEquals(new Double((byte)1), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB(short->double)
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚(short->double)
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,double,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, short val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, short val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:short’l</li>
+	 * <li>val:shortå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty()‚Ådouble’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty()ã§doubleå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyShortToDouble() {
@@ -1053,26 +1053,26 @@ public class RecordTest extends TestCase {
 			assertEquals(new Double((short) 1), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB(int->double)
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚(int->double)
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,double,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, int val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, int val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:int’l</li>
+	 * <li>val:intå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty()‚Åfloat’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty()ã§floatå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyIntToDouble() {
@@ -1083,26 +1083,26 @@ public class RecordTest extends TestCase {
 			assertEquals(new Double((int) 1), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB(long->double)
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚(long->double)
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,double,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, long val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, long val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:long’l</li>
+	 * <li>val:longå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty()‚Ådouble’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty()ã§doubleå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyLongToDouble() {
@@ -1113,26 +1113,26 @@ public class RecordTest extends TestCase {
 			assertEquals(new Double((long) 1), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB(float->double)
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚(float->double)
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,double,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, float val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, float val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:float’l</li>
+	 * <li>val:floatå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty()‚Ådouble’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty()ã§doubleå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyFloatToDouble() {
@@ -1143,27 +1143,27 @@ public class RecordTest extends TestCase {
 			assertEquals(new Double((float) 1), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB(Byte->BigDecimal)
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚(Byte->BigDecimal)
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.math.BigDecimal,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Byte val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Byte val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:byte’l</li>
+	 * <li>val:byteå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty()‚ÅBigDecimal’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty()ã§BigDecimalå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyByteToBigDecimal() {
@@ -1174,25 +1174,25 @@ public class RecordTest extends TestCase {
 			assertEquals(new BigDecimal("1"), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB(short->BigDecimal)
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚(short->BigDecimal)
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.math.BigDecimal,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, short val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, short val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:short’l</li>
+	 * <li>val:shortå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty()‚ÅBigDecimal’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty()ã§BigDecimalå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyShortToBigDecimal() {
@@ -1203,26 +1203,26 @@ public class RecordTest extends TestCase {
 			assertEquals(new BigDecimal("1"), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB(int->BigDecimal)
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚(int->BigDecimal)
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.math.BigDecimal,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, int val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, int val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:int’l</li>
+	 * <li>val:intå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty()‚ÅBigDecimal’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty()ã§BigDecimalå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyIntToBigDecimal() {
@@ -1233,26 +1233,26 @@ public class RecordTest extends TestCase {
 			assertEquals(new BigDecimal("1"), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB(long->BigDecimal)
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚(long->BigDecimal)
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.math.BigDecimal,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, long val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, long val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:long’l</li>
+	 * <li>val:longå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty()‚ÅBigDecimal’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty()ã§BigDecimalå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyLongToBigDecimal() {
@@ -1263,25 +1263,25 @@ public class RecordTest extends TestCase {
 			assertEquals(new BigDecimal("1"), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB(float->BigDecimal)
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚(float->BigDecimal)
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.math.BigDecimal,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, float val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, float val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:float’l</li>
+	 * <li>val:floatå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty()‚ÅBigDecimal’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty()ã§BigDecimalå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyFloatToBigDecimal() {
@@ -1292,26 +1292,26 @@ public class RecordTest extends TestCase {
 			assertEquals(new BigDecimal("1"), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB(double->BigDecimal)
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚(double->BigDecimal)
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.math.BigDecimal,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, double val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, double val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:double’l</li>
+	 * <li>val:doubleå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty()‚ÅBigDecimal’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty()ã§BigDecimalå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyDoubleToBigDecimal() {
@@ -1322,25 +1322,25 @@ public class RecordTest extends TestCase {
 			assertEquals(new BigDecimal("1"), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 	
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB(BigDecimal->BigDecimal)
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚(BigDecimal->BigDecimal)
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.math.BigDecimal,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, BigInteger val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, BigInteger val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:BigInteger’l</li>
+	 * <li>val:BigIntegerå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty()‚ÅBigDecimal’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty()ã§BigDecimalå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyBigDecimal() {
@@ -1351,7 +1351,7 @@ public class RecordTest extends TestCase {
 			assertEquals(new BigDecimal("1"), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
@@ -1360,19 +1360,19 @@ public class RecordTest extends TestCase {
 	
 	
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,short,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, short val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, short val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:short’l</li>
+	 * <li>val:shortå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyStringShort1() {
@@ -1383,24 +1383,24 @@ public class RecordTest extends TestCase {
 			assertEquals(new Short((short) 1), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,short,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, short val)‚ğÀs‚·‚é</li>
-	 * <li>name :"B"i‘¶İ‚µ‚È‚¢–¼‘Oj</li>
-	 * <li>val:short’l</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, short val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>name :"B"ï¼ˆå­˜åœ¨ã—ãªã„åå‰ï¼‰</li>
+	 * <li>val:shortå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyStringShort2() {
@@ -1408,25 +1408,25 @@ public class RecordTest extends TestCase {
 			String schema = ":A,short,,,";
 			Record rec = new Record(schema);
 			rec.setProperty("B", (short) 1);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySetException e) {
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,short,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(int index, short val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(int index, short val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>index : 0</li>
-	 * <li>val:short’l</li>
+	 * <li>val:shortå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyIntShort1() {
@@ -1437,24 +1437,24 @@ public class RecordTest extends TestCase {
 			assertEquals(new Short((short) 1), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,short,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(int index, short val)‚ğÀs‚·‚é</li>
-	 * <li>index : 1 (‘¶İ‚µ‚È‚¢ƒCƒ“ƒfƒbƒNƒX)</li>
-	 * <li>val:short’l</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(int index, short val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>index : 1 (å­˜åœ¨ã—ãªã„ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹)</li>
+	 * <li>val:shortå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyIntShort2() {
@@ -1462,25 +1462,25 @@ public class RecordTest extends TestCase {
 			String schema = ":A,short,,,";
 			Record rec = new Record(schema);
 			rec.setProperty(1, (short) 1);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySetException e) {
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,int,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, int val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, int val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:int’l</li>
+	 * <li>val:intå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyStringInt1() {
@@ -1491,24 +1491,24 @@ public class RecordTest extends TestCase {
 			assertEquals(new Integer((int) 1), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,int,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, int val)‚ğÀs‚·‚é</li>
-	 * <li>name :"B"i‘¶İ‚µ‚È‚¢–¼‘Oj</li>
-	 * <li>val:int’l</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, int val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>name :"B"ï¼ˆå­˜åœ¨ã—ãªã„åå‰ï¼‰</li>
+	 * <li>val:intå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyStringInt2() {
@@ -1516,25 +1516,25 @@ public class RecordTest extends TestCase {
 			String schema = ":A,int,,,";
 			Record rec = new Record(schema);
 			rec.setProperty("B", (int) 1);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySetException e) {
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,int,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(int index, int val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(int index, int val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>index : 0</li>
-	 * <li>val:int’l</li>
+	 * <li>val:intå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyIntInt1() {
@@ -1545,24 +1545,24 @@ public class RecordTest extends TestCase {
 			assertEquals(new Integer((int) 1), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,int,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(int index, int val)‚ğÀs‚·‚é</li>
-	 * <li>index : 1 (‘¶İ‚µ‚È‚¢ƒCƒ“ƒfƒbƒNƒX)</li>
-	 * <li>val:int’l</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(int index, int val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>index : 1 (å­˜åœ¨ã—ãªã„ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹)</li>
+	 * <li>val:intå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyIntInt2() {
@@ -1570,25 +1570,25 @@ public class RecordTest extends TestCase {
 			String schema = ":A,int,,,";
 			Record rec = new Record(schema);
 			rec.setProperty(1, (int) 1);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySetException e) {
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,long,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, long val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, long val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:long’l</li>
+	 * <li>val:longå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyStringLong1() {
@@ -1599,24 +1599,24 @@ public class RecordTest extends TestCase {
 			assertEquals(new Long((long) 1), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,long,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, long val)‚ğÀs‚·‚é</li>
-	 * <li>name :"B"i‘¶İ‚µ‚È‚¢–¼‘Oj</li>
-	 * <li>val:long’l</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, long val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>name :"B"ï¼ˆå­˜åœ¨ã—ãªã„åå‰ï¼‰</li>
+	 * <li>val:longå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyStringLong2() {
@@ -1624,25 +1624,25 @@ public class RecordTest extends TestCase {
 			String schema = ":A,long,,,";
 			Record rec = new Record(schema);
 			rec.setProperty("B", (long) 1);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySetException e) {
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,long,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(int index, long val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(int index, long val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>index : 0</li>
-	 * <li>val:long’l</li>
+	 * <li>val:longå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyIntLong1() {
@@ -1653,24 +1653,24 @@ public class RecordTest extends TestCase {
 			assertEquals(new Long((long) 1), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,long,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(int index, long val)‚ğÀs‚·‚é</li>
-	 * <li>index : 1 (‘¶İ‚µ‚È‚¢ƒCƒ“ƒfƒbƒNƒX)</li>
-	 * <li>val:long’l</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(int index, long val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>index : 1 (å­˜åœ¨ã—ãªã„ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹)</li>
+	 * <li>val:longå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyIntLong2() {
@@ -1678,25 +1678,25 @@ public class RecordTest extends TestCase {
 			String schema = ":A,long,,,";
 			Record rec = new Record(schema);
 			rec.setProperty(1, (long) 1);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySetException e) {
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,float,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, float val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, float val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:float’l</li>
+	 * <li>val:floatå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyStringFloat1() {
@@ -1707,24 +1707,24 @@ public class RecordTest extends TestCase {
 			assertEquals(new Float((float) 1), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,float,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, float val)‚ğÀs‚·‚é</li>
-	 * <li>name :"B"i‘¶İ‚µ‚È‚¢–¼‘Oj</li>
-	 * <li>val:float’l</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, float val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>name :"B"ï¼ˆå­˜åœ¨ã—ãªã„åå‰ï¼‰</li>
+	 * <li>val:floatå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyStringFloat2() {
@@ -1732,25 +1732,25 @@ public class RecordTest extends TestCase {
 			String schema = ":A,float,,,";
 			Record rec = new Record(schema);
 			rec.setProperty("B", (float) 1);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySetException e) {
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,float,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(int index, float val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(int index, float val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>index : 0</li>
-	 * <li>val:float’l</li>
+	 * <li>val:floatå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyIntFloat1() {
@@ -1761,24 +1761,24 @@ public class RecordTest extends TestCase {
 			assertEquals(new Float((float) 1), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,float,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(int index, float val)‚ğÀs‚·‚é</li>
-	 * <li>index : 1 (‘¶İ‚µ‚È‚¢ƒCƒ“ƒfƒbƒNƒX)</li>
-	 * <li>val:float’l</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(int index, float val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>index : 1 (å­˜åœ¨ã—ãªã„ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹)</li>
+	 * <li>val:floatå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyIntFloat2() {
@@ -1786,25 +1786,25 @@ public class RecordTest extends TestCase {
 			String schema = ":A,float,,,";
 			Record rec = new Record(schema);
 			rec.setProperty(1, (float) 1);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySetException e) {
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,double,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, double val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, double val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:double’l</li>
+	 * <li>val:doubleå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyStringDouble1() {
@@ -1815,24 +1815,24 @@ public class RecordTest extends TestCase {
 			assertEquals(new Double((double) 1), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,double,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, double val)‚ğÀs‚·‚é</li>
-	 * <li>name :"B"i‘¶İ‚µ‚È‚¢–¼‘Oj</li>
-	 * <li>val:double’l</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, double val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>name :"B"ï¼ˆå­˜åœ¨ã—ãªã„åå‰ï¼‰</li>
+	 * <li>val:doubleå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyStringDouble2() {
@@ -1840,25 +1840,25 @@ public class RecordTest extends TestCase {
 			String schema = ":A,double,,,";
 			Record rec = new Record(schema);
 			rec.setProperty("B", (double) 1);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySetException e) {
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,double,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(int index, double val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(int index, double val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>index : 0</li>
-	 * <li>val:double’l</li>
+	 * <li>val:doubleå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyIntDouble1() {
@@ -1869,24 +1869,24 @@ public class RecordTest extends TestCase {
 			assertEquals(new Double((double) 1), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ÌƒvƒƒpƒeƒB‚É’l‚ğƒZƒbƒg‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,double,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(int index, float val)‚ğÀs‚·‚é</li>
-	 * <li>index : 1 (‘¶İ‚µ‚È‚¢ƒCƒ“ƒfƒbƒNƒX)</li>
-	 * <li>val:double’l</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(int index, float val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>index : 1 (å­˜åœ¨ã—ãªã„ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹)</li>
+	 * <li>val:doubleå€¤</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetPropertyIntDouble2() {
@@ -1894,28 +1894,28 @@ public class RecordTest extends TestCase {
 			String schema = ":A,double,,,";
 			Record rec = new Record(schema);
 			rec.setProperty(1, (double) 1);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySetException e) {
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒB‚Ì’l‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>Object:"a"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty("A")‚ğÀs‚µ‚ÄA"a"‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty("A")ã‚’å®Ÿè¡Œã—ã¦ã€"a"ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetPropertyString1() {
@@ -1926,23 +1926,23 @@ public class RecordTest extends TestCase {
 			assertEquals("a", rec.getProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒB‚Ì’l‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>i’lw’è‚È‚µj</li>
+	 * <li>ï¼ˆå€¤æŒ‡å®šãªã—ï¼‰</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty("A")‚ğÀs‚µ‚ÄAnull‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty("A")ã‚’å®Ÿè¡Œã—ã¦ã€nullãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetPropertyString2() {
@@ -1952,27 +1952,27 @@ public class RecordTest extends TestCase {
 			assertNull(rec.getProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒB‚Ì’l‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>Object:"a"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetProperty(String name)‚ğÀs‚·‚é</li>
-	 * <li>name :"B"(‘¶İ‚µ‚È‚¢–¼‘O‚ğw’è)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>name :"B"(å­˜åœ¨ã—ãªã„åå‰ã‚’æŒ‡å®š)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertyGetException‚ª”­¶</li>
-	 * <li>—áŠOƒƒbƒZ[ƒW"No such property : B"‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertyGetExceptionãŒç™ºç”Ÿ</li>
+	 * <li>ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"No such property : B"ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetPropertyString3() {
@@ -1981,29 +1981,29 @@ public class RecordTest extends TestCase {
 			Record rec = new Record(schema);
 			rec.setProperty("A", "a");
 			rec.getProperty("B");
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertyGetException e) {
 			assertEquals("No such property : B", e.getMessage());
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒB‚Ì’l‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>Object:"a"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetProperty(int index)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getProperty(int index)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>int :0</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty(0)‚ğÀs‚µ‚ÄA"a"‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty(0)ã‚’å®Ÿè¡Œã—ã¦ã€"a"ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetPropertyInt1() {
@@ -2014,26 +2014,26 @@ public class RecordTest extends TestCase {
 			assertEquals("a", rec.getProperty(0));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒB‚Ì’l‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>Object:"a"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetProperty(int index)‚ğÀs‚·‚é</li>
-	 * <li>int :1(‘¶İ‚µ‚È‚¢ƒCƒ“ƒfƒbƒNƒX)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getProperty(int index)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>int :1(å­˜åœ¨ã—ãªã„ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertyGetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertyGetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetPropertyInt2() {
@@ -2042,25 +2042,25 @@ public class RecordTest extends TestCase {
 			Record rec = new Record(schema);
 			rec.setProperty("A", "a");
 			assertEquals("a", rec.getProperty(1));
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertyGetException e) {
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğboolean‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’booleanã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,boolean,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetBooleanProperty(String name)‚ğÀs‚·‚é</li>
-	 * <li>name :A (’l‚È‚µ)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getBooleanProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>name :A (å€¤ãªã—)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>false‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>falseãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetBooleanPropertyString1() {
@@ -2070,27 +2070,27 @@ public class RecordTest extends TestCase {
 			assertEquals(false, rec.getBooleanProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğboolean‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’booleanã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,boolean,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>Object:true</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetBooleanProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getBooleanProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>true‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>trueãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetBooleanPropertyString2() {
@@ -2101,27 +2101,27 @@ public class RecordTest extends TestCase {
 			assertEquals(true, rec.getBooleanProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚Ì•¶šŒ^ƒvƒƒpƒeƒB‚ğboolean‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®æ–‡å­—å‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’booleanã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>Object:"1"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetBooleanProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getBooleanProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>true‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>trueãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetBooleanPropertyString3() {
@@ -2132,27 +2132,27 @@ public class RecordTest extends TestCase {
 			assertEquals(true, rec.getBooleanProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚Ì•¶šŒ^ƒvƒƒpƒeƒB‚ğboolean‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®æ–‡å­—å‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’booleanã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>Object:”šˆÈŠO‚Ì’l</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetBooleanProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>Object:æ•°å­—ä»¥å¤–ã®å€¤</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getBooleanProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>Boolean.valueOf((String)ret).booleanValue()‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>Boolean.valueOf((String)ret).booleanValue()ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetBooleanPropertyString4() {
@@ -2164,27 +2164,27 @@ public class RecordTest extends TestCase {
 					.getBooleanProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌintŒ^ƒvƒƒpƒeƒB‚ğboolean‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®intå‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’booleanã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,int,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, int val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, int val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>val:100</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetBooleanProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getBooleanProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>true‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>trueãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetBooleanPropertyString5() {
@@ -2195,26 +2195,26 @@ public class RecordTest extends TestCase {
 			assertEquals(true, rec.getBooleanProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğboolean‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’booleanã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.util.Date,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:DateŒ^‚Ì’l (Boolean’l‚Æ‚µ‚Äæ“¾‚Å‚«‚È‚¢Œ^)</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetBooleanProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>val:Dateå‹ã®å€¤ (Booleanå€¤ã¨ã—ã¦å–å¾—ã§ããªã„å‹)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getBooleanProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertyGetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertyGetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetBooleanPropertyString6() {
@@ -2223,28 +2223,28 @@ public class RecordTest extends TestCase {
 			Record rec = new Record(schema);
 			rec.setProperty("A", new Date());
 			rec.getBooleanProperty("A");
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertyGetException e) {
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğboolean‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’booleanã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,boolean,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, boolean val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, boolean val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>value:true</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetBooleanProperty(int index)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getBooleanProperty(int index)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>int :0</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty(0)‚ğÀs‚µ‚ÄAtrue‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty(0)ã‚’å®Ÿè¡Œã—ã¦ã€trueãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetBooleanPropertyInt1() {
@@ -2255,26 +2255,26 @@ public class RecordTest extends TestCase {
 			assertEquals(true, rec.getBooleanProperty(0));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğboolean‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’booleanã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,boolean,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, boolean val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, boolean val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>value:true</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetBooleanProperty(int index)‚ğÀs‚·‚é</li>
-	 * <li>int :1(‘¶İ‚µ‚È‚¢ƒCƒ“ƒfƒbƒNƒX)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getBooleanProperty(int index)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>int :1(å­˜åœ¨ã—ãªã„ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertyGetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertyGetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetBooleanPropertyInt2() {
@@ -2283,25 +2283,25 @@ public class RecordTest extends TestCase {
 			Record rec = new Record(schema);
 			rec.setProperty("A", true);
 			rec.getBooleanProperty(1);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertyGetException e) {
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğbyte‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’byteã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,byte,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetByteProperty(String name)‚ğÀs‚·‚é</li>
-	 * <li>name :A (’l‚È‚µ)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getByteProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>name :A (å€¤ãªã—)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>0‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>0ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetBytePropertyString1() {
@@ -2311,27 +2311,27 @@ public class RecordTest extends TestCase {
 			assertEquals((byte) 0, rec.getByteProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğbyte‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’byteã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,byte,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>value:(byte)1</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetByteProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getByteProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>w’è‚µ‚½Byte’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>æŒ‡å®šã—ãŸByteå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetBytePropertyString2() {
@@ -2342,27 +2342,27 @@ public class RecordTest extends TestCase {
 			assertEquals((byte) 1, rec.getByteProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚Ì•¶šŒ^ƒvƒƒpƒeƒB‚ğbyte‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®æ–‡å­—å‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’byteã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>Object:"1"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetByteProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getByteProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>1‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>1ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetBytePropertyString3() {
@@ -2373,27 +2373,27 @@ public class RecordTest extends TestCase {
 			assertEquals((byte) 1, rec.getByteProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌintŒ^ƒvƒƒpƒeƒB‚ğbyte‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®intå‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’byteã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,int,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, int val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, int val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>val:100</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetByteProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getByteProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>100‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>100ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetBytePropertyString4() {
@@ -2404,27 +2404,27 @@ public class RecordTest extends TestCase {
 			assertEquals((byte) 100, rec.getByteProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌbooleanŒ^ƒvƒƒpƒeƒB‚ğbyte‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®booleanå‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’byteã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,boolean,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, boolean val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, boolean val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>val:true</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetByteProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getByteProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>1‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>1ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetBytePropertyString5() {
@@ -2435,27 +2435,27 @@ public class RecordTest extends TestCase {
 			assertEquals((byte) 1, rec.getByteProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğbyte‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’byteã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.util.Date,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:DateŒ^‚Ì’l (Byte’l‚Æ‚µ‚Äæ“¾‚Å‚«‚È‚¢Œ^)</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetByteProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>val:Dateå‹ã®å€¤ (Byteå€¤ã¨ã—ã¦å–å¾—ã§ããªã„å‹)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getByteProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertyGetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
-	 * <li>—áŠOƒƒbƒZ[ƒW‚É"The type is unmatch. value=" + ret"‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertyGetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«"The type is unmatch. value=" + ret"ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetBytePropertyString6() {
@@ -2464,28 +2464,28 @@ public class RecordTest extends TestCase {
 			Record rec = new Record(schema);
 			rec.setProperty("A", new Date());
 			rec.getByteProperty("A");
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertyGetException e) {
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğbyte‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’byteã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,byte,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, byte val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, byte val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>value:1</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetByteProperty(int index)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getByteProperty(int index)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>int :0</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>getProperty(0)‚ğÀs‚µ‚ÄA1‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>getProperty(0)ã‚’å®Ÿè¡Œã—ã¦ã€1ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetBytePropertyInt1() {
@@ -2496,26 +2496,26 @@ public class RecordTest extends TestCase {
 			assertEquals((byte) 1, rec.getByteProperty(0));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğbyte‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’byteã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,byte,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, byte val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, byte val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>value:1</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetByteProperty(int index)‚ğÀs‚·‚é</li>
-	 * <li>int :1(‘¶İ‚µ‚È‚¢ƒCƒ“ƒfƒbƒNƒX)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getByteProperty(int index)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>int :1(å­˜åœ¨ã—ãªã„ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertyGetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertyGetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetBytePropertyInt2() {
@@ -2524,25 +2524,25 @@ public class RecordTest extends TestCase {
 			Record rec = new Record(schema);
 			rec.setProperty("A", (byte) 1);
 			rec.getByteProperty(1);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertyGetException e) {
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğshort‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’shortã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,short,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetShortProperty(String name)‚ğÀs‚·‚é</li>
-	 * <li>name :A (’l‚È‚µ)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getShortProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>name :A (å€¤ãªã—)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>0‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>0ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetShortPropertyString1() {
@@ -2552,27 +2552,27 @@ public class RecordTest extends TestCase {
 			assertEquals((short) 0, rec.getShortProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğshort‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’shortã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,short,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, short val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, short val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>value:(short)1</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetShortProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getShortProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>w’è‚µ‚½Short’l‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>æŒ‡å®šã—ãŸShortå€¤ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetShortPropertyString2() {
@@ -2583,27 +2583,27 @@ public class RecordTest extends TestCase {
 			assertEquals((short) 1, rec.getShortProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚Ì•¶šŒ^ƒvƒƒpƒeƒB‚ğshort‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®æ–‡å­—å‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’shortã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>Object:"1"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetShortProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getShortProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>int :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>1‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>1ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetShortPropertyString3() {
@@ -2614,27 +2614,27 @@ public class RecordTest extends TestCase {
 			assertEquals((short) 1, rec.getShortProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌintƒvƒƒpƒeƒB‚ğshort‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®intãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’shortã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,int,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, int val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, int val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>val:100</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetShortProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getShortProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>100‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>100ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetShortPropertyString4() {
@@ -2645,27 +2645,27 @@ public class RecordTest extends TestCase {
 			assertEquals((short) 100, rec.getShortProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌbooleanƒvƒƒpƒeƒB‚ğshort‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®booleanãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’shortã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,boolean,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, boolean val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, boolean val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>val:true</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetShortProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getShortProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>1‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>1ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetShortPropertyString5() {
@@ -2676,27 +2676,27 @@ public class RecordTest extends TestCase {
 			assertEquals((short) 1, rec.getShortProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğshort‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’shortã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.util.Date,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:DateŒ^‚Ì’l (short’l‚Æ‚µ‚Äæ“¾‚Å‚«‚È‚¢Œ^)</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetShortProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>val:Dateå‹ã®å€¤ (shortå€¤ã¨ã—ã¦å–å¾—ã§ããªã„å‹)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getShortProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertyGetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
-	 * <li>—áŠOƒƒbƒZ[ƒW‚É"The type is unmatch. value=" + ret"‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertyGetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«"The type is unmatch. value=" + ret"ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetShortPropertyString6() {
@@ -2705,28 +2705,28 @@ public class RecordTest extends TestCase {
 			Record rec = new Record(schema);
 			rec.setProperty("A", new Date());
 			rec.getShortProperty("A");
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertyGetException e) {
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğshort‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’shortã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,short,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, short val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, short val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>value:1</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetShortProperty(int index)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getShortProperty(int index)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>int :0</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>1‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>1ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetShortPropertyInt1() {
@@ -2737,26 +2737,26 @@ public class RecordTest extends TestCase {
 			assertEquals((short) 1, rec.getShortProperty(0));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğshort‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’shortã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,short,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, short val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, short val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>value:1</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetShortProperty(int index)‚ğÀs‚·‚é</li>
-	 * <li>int :1(‘¶İ‚µ‚È‚¢ƒCƒ“ƒfƒbƒNƒX)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getShortProperty(int index)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>int :1(å­˜åœ¨ã—ãªã„ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertyGetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertyGetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetShortPropertyInt2() {
@@ -2765,25 +2765,25 @@ public class RecordTest extends TestCase {
 			Record rec = new Record(schema);
 			rec.setProperty("A", (short) 1);
 			rec.getShortProperty(1);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertyGetException e) {
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğint‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’intã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,int,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetIntProperty(String name)‚ğÀs‚·‚é</li>
-	 * <li>name :A (’l‚È‚µ)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getIntProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>name :A (å€¤ãªã—)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>0‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>0ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetIntPropertyString1() {
@@ -2793,27 +2793,27 @@ public class RecordTest extends TestCase {
 			assertEquals((int) 0, rec.getIntProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğint‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’intã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,int,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, int val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, int val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>value:1</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetIntProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getIntProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>1‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>1ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetIntPropertyString2() {
@@ -2824,27 +2824,27 @@ public class RecordTest extends TestCase {
 			assertEquals((int) 1, rec.getIntProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌstringƒvƒƒpƒeƒB‚ğint‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®stringãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’intã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>Object:"1"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetIntProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getIntProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>1‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>1ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetIntPropertyString3() {
@@ -2855,27 +2855,27 @@ public class RecordTest extends TestCase {
 			assertEquals((int) 1, rec.getIntProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌshortƒvƒƒpƒeƒB‚ğint‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®shortãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’intã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,short,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, short val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, short val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>val:100</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetIntProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getIntProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>100‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>100ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetIntPropertyString4() {
@@ -2886,27 +2886,27 @@ public class RecordTest extends TestCase {
 			assertEquals(100, rec.getIntProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌbooleanƒvƒƒpƒeƒB‚ğint‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®booleanãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’intã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,boolean,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, boolean val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, boolean val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>val:true</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetIntProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getIntProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>1‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>1ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetIntPropertyString5() {
@@ -2917,27 +2917,27 @@ public class RecordTest extends TestCase {
 			assertEquals(1, rec.getIntProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğint‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’intã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.util.Date,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:DateŒ^‚Ì’l (int’l‚Æ‚µ‚Äæ“¾‚Å‚«‚È‚¢Œ^)</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetIntProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>val:Dateå‹ã®å€¤ (intå€¤ã¨ã—ã¦å–å¾—ã§ããªã„å‹)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getIntProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertyGetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
-	 * <li>—áŠOƒƒbƒZ[ƒW‚É"The type is unmatch. value=" + ret"‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertyGetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«"The type is unmatch. value=" + ret"ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetIntPropertyString6() {
@@ -2946,28 +2946,28 @@ public class RecordTest extends TestCase {
 			Record rec = new Record(schema);
 			rec.setProperty("A", new Date());
 			rec.getIntProperty("A");
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertyGetException e) {
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğint‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’intã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,int,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, int val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, int val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>value:1</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetIntProperty(int index)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getIntProperty(int index)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>int :0</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>1‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>1ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetIntPropertyInt1() {
@@ -2978,26 +2978,26 @@ public class RecordTest extends TestCase {
 			assertEquals(1, rec.getIntProperty(0));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğint‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’intã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,int,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, int val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, int val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>value:1</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetIntProperty(int index)‚ğÀs‚·‚é</li>
-	 * <li>int :1(‘¶İ‚µ‚È‚¢ƒCƒ“ƒfƒbƒNƒX)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getIntProperty(int index)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>int :1(å­˜åœ¨ã—ãªã„ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertyGetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertyGetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetIntPropertyInt2() {
@@ -3006,25 +3006,25 @@ public class RecordTest extends TestCase {
 			Record rec = new Record(schema);
 			rec.setProperty("A", 1);
 			rec.getIntProperty(1);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertyGetException e) {
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğlong‚Æ‚µ‚Äæ“¾‚·‚éB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’longã¨ã—ã¦å–å¾—ã™ã‚‹ã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,long,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetLongProperty(String name)‚ğÀs‚·‚é</li>
-	 * <li>name :A (’l‚È‚µ)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getLongProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>name :A (å€¤ãªã—)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>0‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>0ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetLongPropertyString1() {
@@ -3034,27 +3034,27 @@ public class RecordTest extends TestCase {
 			assertEquals((long) 0, rec.getLongProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğlong‚Æ‚µ‚Äæ“¾‚·‚éB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’longã¨ã—ã¦å–å¾—ã™ã‚‹ã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,long,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, long val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, long val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>value:1</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetLongProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getLongProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>1‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>1ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetLongPropertyString2() {
@@ -3065,27 +3065,27 @@ public class RecordTest extends TestCase {
 			assertEquals((long) 1, rec.getLongProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌstringƒvƒƒpƒeƒB‚ğlong‚Æ‚µ‚Äæ“¾‚·‚éB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®stringãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’longã¨ã—ã¦å–å¾—ã™ã‚‹ã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>Object:"1"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetLongProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getLongProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>1‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>1ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetLongPropertyString3() {
@@ -3096,27 +3096,27 @@ public class RecordTest extends TestCase {
 			assertEquals((long) 1, rec.getLongProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌintƒvƒƒpƒeƒB‚ğlong‚Æ‚µ‚Äæ“¾‚·‚éB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®intãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’longã¨ã—ã¦å–å¾—ã™ã‚‹ã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,int,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, int val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, int val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>val:100</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetLongProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getLongProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>100‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>100ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetLongPropertyString4() {
@@ -3127,27 +3127,27 @@ public class RecordTest extends TestCase {
 			assertEquals((long) 100, rec.getLongProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌbooleanƒvƒƒpƒeƒB‚ğlong‚Æ‚µ‚Äæ“¾‚·‚éB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®booleanãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’longã¨ã—ã¦å–å¾—ã™ã‚‹ã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,boolean,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, boolean val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, boolean val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>val:true</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetLongProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getLongProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>1‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>1ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetLongPropertyString5() {
@@ -3158,27 +3158,27 @@ public class RecordTest extends TestCase {
 			assertEquals((long) 1, rec.getLongProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğlong‚Æ‚µ‚Äæ“¾‚·‚éB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’longã¨ã—ã¦å–å¾—ã™ã‚‹ã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.util.Date,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:DateŒ^‚Ì’l (long’l‚Æ‚µ‚Äæ“¾‚Å‚«‚È‚¢Œ^)</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetLongProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>val:Dateå‹ã®å€¤ (longå€¤ã¨ã—ã¦å–å¾—ã§ããªã„å‹)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getLongProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertyGetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
-	 * <li>—áŠOƒƒbƒZ[ƒW‚É"The type is unmatch. value=" + ret"‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertyGetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«"The type is unmatch. value=" + ret"ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetLongPropertyString6() {
@@ -3187,28 +3187,28 @@ public class RecordTest extends TestCase {
 			Record rec = new Record(schema);
 			rec.setProperty("A", new Date());
 			rec.getLongProperty("A");
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertyGetException e) {
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğlong‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’longã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,long,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, long val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, long val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>value:1</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetLongProperty(int index)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getLongProperty(int index)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>int :0</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>1‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>1ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetLongPropertyInt1() {
@@ -3219,26 +3219,26 @@ public class RecordTest extends TestCase {
 			assertEquals((long) 1, rec.getLongProperty(0));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğlong‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’longã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,long,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, long val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, long val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>value:1</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetLongProperty(int index)‚ğÀs‚·‚é</li>
-	 * <li>int :1(‘¶İ‚µ‚È‚¢ƒCƒ“ƒfƒbƒNƒX)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getLongProperty(int index)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>int :1(å­˜åœ¨ã—ãªã„ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertyGetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertyGetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetLongPropertyInt2() {
@@ -3247,25 +3247,25 @@ public class RecordTest extends TestCase {
 			Record rec = new Record(schema);
 			rec.setProperty("A", (long) 1);
 			rec.getLongProperty(1);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertyGetException e) {
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğfloat‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’floatã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,float,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetFloatProperty(String name)‚ğÀs‚·‚é</li>
-	 * <li>name :A (’l‚È‚µ)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getFloatProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>name :A (å€¤ãªã—)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>0‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>0ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetFloatPropertyString1() {
@@ -3275,27 +3275,27 @@ public class RecordTest extends TestCase {
 			assertEquals((float) 0, rec.getFloatProperty("A"), (float) 0);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğfloat‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’floatã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,float,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, float val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, float val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>value:1</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetFloatProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getFloatProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>1‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>1ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetFloatPropertyString2() {
@@ -3306,27 +3306,27 @@ public class RecordTest extends TestCase {
 			assertEquals((float) 1, rec.getFloatProperty("A"), (float) 0);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌstringƒvƒƒpƒeƒB‚ğfloat‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®stringãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’floatã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>Object:"1"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetFloatProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getFloatProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>1‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>1ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetFloatPropertyString3() {
@@ -3337,27 +3337,27 @@ public class RecordTest extends TestCase {
 			assertEquals((float) 1, rec.getFloatProperty("A"), (float) 0);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌintƒvƒƒpƒeƒB‚ğfloat‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®intãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’floatã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,int,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, int val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, int val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>val:100</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetFloatProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getFloatProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>100‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>100ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetFloatPropertyString4() {
@@ -3368,27 +3368,27 @@ public class RecordTest extends TestCase {
 			assertEquals((float) 100, rec.getFloatProperty("A"), (float) 0);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌbooleanƒvƒƒpƒeƒB‚ğfloat‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®booleanãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’floatã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,boolean,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, boolean val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, boolean val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>val:true</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetFloatProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getFloatProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>1‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>1ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetFloatPropertyString5() {
@@ -3399,27 +3399,27 @@ public class RecordTest extends TestCase {
 			assertEquals((float) 1, rec.getFloatProperty("A"), (float) 0);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğfloat‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’floatã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.util.Date,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:DateŒ^‚Ì’l (float’l‚Æ‚µ‚Äæ“¾‚Å‚«‚È‚¢Œ^)</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetFloatProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>val:Dateå‹ã®å€¤ (floatå€¤ã¨ã—ã¦å–å¾—ã§ããªã„å‹)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getFloatProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertyGetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
-	 * <li>—áŠOƒƒbƒZ[ƒW‚É"The type is unmatch. value=" + ret"‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertyGetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«"The type is unmatch. value=" + ret"ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetFloatPropertyString6() {
@@ -3428,28 +3428,28 @@ public class RecordTest extends TestCase {
 			Record rec = new Record(schema);
 			rec.setProperty("A", new Date());
 			rec.getFloatProperty("A");
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertyGetException e) {
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğfloat‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’floatã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,float,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, float val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, float val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>value:1</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetLongProperty(int index)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getLongProperty(int index)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>int :0</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>1‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>1ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetFloatPropertyInt1() {
@@ -3460,26 +3460,26 @@ public class RecordTest extends TestCase {
 			assertEquals((float) 1, rec.getFloatProperty(0), (float) 0);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğfloat‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’floatã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,long,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, long val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, long val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>value:1</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetLongProperty(int index)‚ğÀs‚·‚é</li>
-	 * <li>int :1(‘¶İ‚µ‚È‚¢ƒCƒ“ƒfƒbƒNƒX)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getLongProperty(int index)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>int :1(å­˜åœ¨ã—ãªã„ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertyGetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertyGetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetFloatPropertyInt2() {
@@ -3488,25 +3488,25 @@ public class RecordTest extends TestCase {
 			Record rec = new Record(schema);
 			rec.setProperty("A", (float) 1);
 			rec.getFloatProperty(1);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertyGetException e) {
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğdouble‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’doubleã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,double,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetDoubleProperty(String name)‚ğÀs‚·‚é</li>
-	 * <li>name :A (’l‚È‚µ)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getDoubleProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>name :A (å€¤ãªã—)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>0‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>0ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetDoublePropertyString1() {
@@ -3516,27 +3516,27 @@ public class RecordTest extends TestCase {
 			assertEquals((double) 0, rec.getDoubleProperty("A"), (double) 0);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğdouble‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’doubleã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,double,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, double val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, double val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>value:1</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetDoubleProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getDoubleProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>1‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>1ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetDoublePropertyString2() {
@@ -3547,27 +3547,27 @@ public class RecordTest extends TestCase {
 			assertEquals((double) 1, rec.getDoubleProperty("A"), (double) 0);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌstringƒvƒƒpƒeƒB‚ğdouble‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®stringãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’doubleã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>Object:"1"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetDoubleProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getDoubleProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>1‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>1ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetDoublePropertyString3() {
@@ -3578,27 +3578,27 @@ public class RecordTest extends TestCase {
 			assertEquals((double) 1, rec.getDoubleProperty("A"), (double) 0);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌintƒvƒƒpƒeƒB‚ğdouble‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®intãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’doubleã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,int,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, int val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, int val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>val:100</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetDoubleProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getDoubleProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>100‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>100ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetDoublePropertyString4() {
@@ -3609,27 +3609,27 @@ public class RecordTest extends TestCase {
 			assertEquals((double) 100, rec.getDoubleProperty("A"), (double) 0);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌbooleanƒvƒƒpƒeƒB‚ğdouble‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®booleanãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’doubleã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,boolean,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, boolean val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, boolean val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>val:true</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetDoubleProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getDoubleProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>1‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>1ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetDoublePropertyString5() {
@@ -3640,27 +3640,27 @@ public class RecordTest extends TestCase {
 			assertEquals((double) 1, rec.getDoubleProperty("A"), (double) 0);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğdouble‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’doubleã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.util.Date,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>val:DateŒ^‚Ì’l (float’l‚Æ‚µ‚Äæ“¾‚Å‚«‚È‚¢Œ^)</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetDoubleProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>val:Dateå‹ã®å€¤ (floatå€¤ã¨ã—ã¦å–å¾—ã§ããªã„å‹)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getDoubleProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertyGetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
-	 * <li>—áŠOƒƒbƒZ[ƒW‚É"The type is unmatch. value=" + ret"‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertyGetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>ä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«"The type is unmatch. value=" + ret"ãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetDoublePropertyString6() {
@@ -3669,27 +3669,27 @@ public class RecordTest extends TestCase {
 			Record rec = new Record(schema);
 			rec.setProperty("A", new Date());
 			rec.getDoubleProperty("A");
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertyGetException e) {
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌstringƒvƒƒpƒeƒB‚ğdouble‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®stringãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’doubleã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>Object:"aaa"i”’l•ÏŠ·‚Å‚«‚È‚¢•¶šj</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetDoubleProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>Object:"aaa"ï¼ˆæ•°å€¤å¤‰æ›ã§ããªã„æ–‡å­—ï¼‰</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getDoubleProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertyGetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertyGetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetDoublePropertyString7() {
@@ -3698,29 +3698,29 @@ public class RecordTest extends TestCase {
 			Record rec = new Record(schema);
 			rec.setProperty("A", "0.0.0.0");
 			rec.getDoubleProperty("A");
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertyGetException e) {
 		}
 	}
 
 
 	/**
-	 * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğdouble‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’doubleã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,double,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, float val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, float val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>value:1</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetDoubleProperty(int index)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getDoubleProperty(int index)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>int :0</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>1‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>1ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetDoublePropertyInt1() {
@@ -3731,26 +3731,26 @@ public class RecordTest extends TestCase {
 			assertEquals((float) 1, rec.getDoubleProperty(0), (float) 0);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğdouble‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’doubleã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,double,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, long val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, long val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>value:1</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetDoubleProperty(int index)‚ğÀs‚·‚é</li>
-	 * <li>int :1(‘¶İ‚µ‚È‚¢ƒCƒ“ƒfƒbƒNƒX)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getDoubleProperty(int index)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>int :1(å­˜åœ¨ã—ãªã„ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertyGetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertyGetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetDoublePropertyInt2() {
@@ -3759,25 +3759,25 @@ public class RecordTest extends TestCase {
 			Record rec = new Record(schema);
 			rec.setProperty("A", (float) 1);
 			rec.getDoubleProperty(1);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertyGetException e) {
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğ•¶š—ñ‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æ–‡å­—åˆ—ã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetStringProperty(String name)‚ğÀs‚·‚é</li>
-	 * <li>name :A (’l‚È‚µ)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getStringProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>name :A (å€¤ãªã—)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>null‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>nullãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetStringPropertyString1() {
@@ -3787,27 +3787,27 @@ public class RecordTest extends TestCase {
 			assertNull(rec.getStringProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğ•¶š—ñ‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æ–‡å­—åˆ—ã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, String val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, String val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>value:"B"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetStringProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getStringProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>"B"‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>"B"ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetStringPropertyString2() {
@@ -3818,27 +3818,27 @@ public class RecordTest extends TestCase {
 			assertEquals("B", rec.getStringProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌintƒvƒƒpƒeƒB‚ğ•¶š—ñ‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®intãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æ–‡å­—åˆ—ã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,int,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, String val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, String val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>value:1</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetStringProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getStringProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>"1"‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>"1"ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetStringPropertyString3() {
@@ -3849,27 +3849,27 @@ public class RecordTest extends TestCase {
 			assertEquals("1", rec.getStringProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğ•¶š—ñ‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æ–‡å­—åˆ—ã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, String val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, String val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>value:"B"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetStringProperty(int index)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getStringProperty(int index)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>int :0</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>"B"‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>"B"ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetStringPropertyInt1() {
@@ -3880,26 +3880,26 @@ public class RecordTest extends TestCase {
 			assertEquals("B", rec.getStringProperty(0));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğ•¶š—ñ‚Æ‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æ–‡å­—åˆ—ã¨ã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, String val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, String val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>value:"B"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetProperty(int index)‚ğÀs‚·‚é</li>
-	 * <li>int :1(‘¶İ‚µ‚È‚¢ƒCƒ“ƒfƒbƒNƒX)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getProperty(int index)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>int :1(å­˜åœ¨ã—ãªã„ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertyGetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertyGetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetStringPropertyInt2() {
@@ -3908,29 +3908,29 @@ public class RecordTest extends TestCase {
 			Record rec = new Record(schema);
 			rec.setProperty("A", "B");
 			rec.getStringProperty(1);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertyGetException e) {
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğƒtƒH[ƒ}ƒbƒg‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.util.Date,,"jp.ossc.nimbus.util.converter.DateFormatConverter<BR>
 	 * {ConvertType=1;Format="yyyy-MM-DD"}","</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, String val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, String val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>DateŒ^‚Ì’l </li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetFormatProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>Dateå‹ã®å€¤ </li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getFormatProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A </li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>³‚µ‚­“ú•tƒtƒH[ƒ}ƒbƒg(yyyy-MM-DD)‚³‚ê‚Ä•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>æ­£ã—ãæ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ(yyyy-MM-DD)ã•ã‚Œã¦è¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetFormatPropertyString1() {
@@ -3947,29 +3947,29 @@ public class RecordTest extends TestCase {
 			assertEquals("2008-01-22", rec.getFormatProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğƒtƒH[ƒ}ƒbƒg‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.util.Date,,"jp.ossc.nimbus.util.converter.DateFormatConverter<BR>
 	 * {ConvertType=1;Format="yyyy-MM-DD"}","</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, String val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, String val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>DateŒ^‚Ì’l </li>
-	 * <li>val:DateŒ^‚Ì’l </li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetFormatProperty(String name)‚ğÀs‚·‚é</li>
-	 * <li>name :B i‘¶İ‚µ‚È‚¢ƒvƒƒpƒeƒBj </li>
+	 * <li>Dateå‹ã®å€¤ </li>
+	 * <li>val:Dateå‹ã®å€¤ </li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getFormatProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>name :B ï¼ˆå­˜åœ¨ã—ãªã„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ï¼‰ </li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertyGetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
-	 * <li>ƒƒbƒZ[ƒW"No such property : B"‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertyGetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"No such property : B"ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetFormatPropertyString2() {
@@ -3984,30 +3984,30 @@ public class RecordTest extends TestCase {
 
 			rec.setProperty("A", date);
 			rec.getFormatProperty("B");
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertyGetException e) {
 			assertEquals("No such property : B", e.getMessage());
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğƒtƒH[ƒ}ƒbƒg‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.util.Date,,"jp.ossc.nimbus.util.converter.DateFormatConverter<BR>
 	 * {ConvertType=1;Format="yyyy-MM-DD"}","</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, String val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, String val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>DateŒ^‚Ì’l </li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetFormatProperty(int index)‚ğÀs‚·‚é</li>
+	 * <li>Dateå‹ã®å€¤ </li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getFormatProperty(int index)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>index :0 </li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>³‚µ‚­“ú•tƒtƒH[ƒ}ƒbƒg(yyyy-MM-DD)‚³‚ê‚Ä•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>æ­£ã—ãæ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ(yyyy-MM-DD)ã•ã‚Œã¦è¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetFormatPropertyInt1() {
@@ -4024,27 +4024,27 @@ public class RecordTest extends TestCase {
 			assertEquals("2008-01-22", rec.getFormatProperty(0));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ğƒtƒH[ƒ}ƒbƒg‚µ‚Äæ“¾‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã—ã¦å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.util.Date,,"jp.ossc.nimbus.util.converter.DateFormatConverter<BR>
 	 * {ConvertType=1;Format="yyyy-MM-DD"}","</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, String val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, String val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
-	 * <li>DateŒ^‚Ì’l </li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetFormatProperty(int index)‚ğÀs‚·‚é</li>
-	 * <li>index :1 (•s³‚ÈƒCƒ“ƒfƒbƒNƒX) </li>
+	 * <li>Dateå‹ã®å€¤ </li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getFormatProperty(int index)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>index :1 (ä¸æ­£ãªã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹) </li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertyGetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertyGetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testGetFormatPropertyInt2() {
@@ -4059,29 +4059,29 @@ public class RecordTest extends TestCase {
 
 			rec.setProperty("A", date);
 			rec.getFormatProperty(1);
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertyGetException e) {
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ÉAw’è‚³‚ê‚½’l‚ğƒp[ƒX‚µ‚Äİ’è‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã€æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.util.Date,<BR>
 	 * "jp.ossc.nimbus.util.converter.DateFormatConverter{ConvertType=2;Format="yyyy-MM-DD"}",,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetParseProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setParseProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name:"A" </li>
-	 * <li>val: "yyyy-MM-DD"‚ÌƒtƒH[ƒ}ƒbƒg‚Ì“ú•t‚ğ•\‚µ‚½•¶š—ñ</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>val: "yyyy-MM-DD"ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã®æ—¥ä»˜ã‚’è¡¨ã—ãŸæ–‡å­—åˆ—</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :A </li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>w’è‚µ‚½“ú•t‚ÌDateŒ^ƒIƒuƒWƒFƒNƒg‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>æŒ‡å®šã—ãŸæ—¥ä»˜ã®Dateå‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetParsePropertyStringObject1() {
@@ -4101,28 +4101,28 @@ public class RecordTest extends TestCase {
 			assertEquals(d1, d2);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ÉAw’è‚³‚ê‚½’l‚ğƒp[ƒX‚µ‚Äİ’è‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã€æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.util.Date,<BR>
 	 * "jp.ossc.nimbus.util.converter.DateFormatConverter{ConvertType=2;Format="yyyy-MM-DD"}",,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetParseProperty(String name, Object val)‚ğÀs‚·‚é</li>
-	 * <li>name:"B" (‘¶İ‚µ‚È‚¢ƒvƒƒpƒeƒB)</li>
-	 * <li>val: "yyyy-MM-DD"‚ÌƒtƒH[ƒ}ƒbƒg‚Ì“ú•t‚ğ•\‚µ‚½•¶š—ñ</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetFormatProperty(String name)‚ğÀs‚·‚é</li>
-	 * <li>name :B i‘¶İ‚µ‚È‚¢ƒvƒƒpƒeƒBj </li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setParseProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>name:"B" (å­˜åœ¨ã—ãªã„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£)</li>
+	 * <li>val: "yyyy-MM-DD"ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã®æ—¥ä»˜ã‚’è¡¨ã—ãŸæ–‡å­—åˆ—</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getFormatProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>name :B ï¼ˆå­˜åœ¨ã—ãªã„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ï¼‰ </li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
-	 * <li>ƒƒbƒZ[ƒW"No such property : B"‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"No such property : B"ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetParsePropertyStringObject2() {
@@ -4131,30 +4131,30 @@ public class RecordTest extends TestCase {
 					+ "\"jp.ossc.nimbus.util.converter.DateFormatConverter{ConvertType=2;Format=\"yyyy-MM-DD\"}\",,";
 			Record rec = new Record(schema);
 			rec.setParseProperty("B", "2008-01-22");
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySetException e) {
 			assertEquals("No such property : B", e.getMessage());
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ÉAw’è‚³‚ê‚½’l‚ğƒp[ƒX‚µ‚Äİ’è‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã€æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.util.Date,<BR>
 	 * "jp.ossc.nimbus.util.converter.DateFormatConverter{ConvertType=2;Format="yyyy-MM-DD"}",,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetParseProperty(int index, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setParseProperty(int index, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>index:0 </li>
-	 * <li>val: "yyyy-MM-DD"‚ÌƒtƒH[ƒ}ƒbƒg‚Ì“ú•t‚ğ•\‚µ‚½•¶š—ñ</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetProperty(int index)‚ğÀs‚·‚é</li>
+	 * <li>val: "yyyy-MM-DD"ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã®æ—¥ä»˜ã‚’è¡¨ã—ãŸæ–‡å­—åˆ—</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getProperty(int index)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>int :0</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-	 * <li>w’è‚µ‚½“ú•t‚ÌDateŒ^ƒIƒuƒWƒFƒNƒg‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+	 * <li>æŒ‡å®šã—ãŸæ—¥ä»˜ã®Dateå‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetParsePropertyIntObject1() {
@@ -4174,24 +4174,24 @@ public class RecordTest extends TestCase {
 			assertEquals(d1, d2);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½–¼‘O‚ÌƒvƒƒpƒeƒB‚ÉAw’è‚³‚ê‚½’l‚ğƒp[ƒX‚µ‚Äİ’è‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸåå‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã€æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.util.Date,<BR>
 	 * ,"jp.ossc.nimbus.util.converter.DateFormatConverter,{ConvertType=2;Format="yyyy-MM-DD"}","</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetParseProperty(int index, Object val)‚ğÀs‚·‚é</li>
-	 * <li>int :1(‘¶İ‚µ‚È‚¢ƒCƒ“ƒfƒbƒNƒX)</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setParseProperty(int index, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>int :1(å­˜åœ¨ã—ãªã„ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySetException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertySetExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetParsePropertyIntObject2() {
@@ -4200,26 +4200,26 @@ public class RecordTest extends TestCase {
 					+ "\"jp.ossc.nimbus.util.converter.DateFormatConverter{ConvertType=2;Format=\"yyyy-MM-DD\"}\",,";
 			Record rec = new Record(schema);
 			rec.setParseProperty(1, "2008-01-22");
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySetException e) {
 		}
 	}
 
 	/**
-	 * ‘S‚Ä‚ÌƒvƒƒpƒeƒB‚ğƒNƒŠƒA‚·‚éƒeƒXƒgB
+	 * å…¨ã¦ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>Object:"a"</li>
-	 * <li>clear()Às‚·‚é</li>
+	 * <li>clear()å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹BgetProperty("A")‚ªnull‚Å‚ ‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚getProperty("A")ãŒnullã§ã‚ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testClear() {
@@ -4231,23 +4231,23 @@ public class RecordTest extends TestCase {
 			assertTrue(rec.getProperty("A") == null);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * “¯‚¶ƒXƒL[ƒ}‚ğ‚¿ƒf[ƒ^‚ğ‚½‚È‚¢‹ó‚ÌƒŒƒR[ƒh‚ğ•¡»‚·‚éƒeƒXƒgB
+	 * åŒã˜ã‚¹ã‚­ãƒ¼ãƒã‚’æŒã¡ãƒ‡ãƒ¼ã‚¿ã‚’æŒãŸãªã„ç©ºã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¤‡è£½ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>cloneSchema()‚ğÀs‚µ‚ÄƒŒƒR[ƒh‚Ì•¡»‚ğ¶¬‚·‚é</li>
-	 * <li>‘o•û‚ÌƒŒƒR[ƒh‚É‘Î‚µ‚ÄgetSchema()‚ğÀs‚·‚é</li>
+	 * <li>cloneSchema()ã‚’å®Ÿè¡Œã—ã¦ãƒ¬ã‚³ãƒ¼ãƒ‰ã®è¤‡è£½ã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>åŒæ–¹ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã«å¯¾ã—ã¦getSchema()ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>Œ³ƒŒƒR[ƒh‚Æ•¡»ƒŒƒR[ƒh‚ÌƒXƒL[ƒ}î•ñ‚ª“™‚µ‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>å…ƒãƒ¬ã‚³ãƒ¼ãƒ‰ã¨è¤‡è£½ãƒ¬ã‚³ãƒ¼ãƒ‰ã®ã‚¹ã‚­ãƒ¼ãƒæƒ…å ±ãŒç­‰ã—ã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testCloneSchema() {
@@ -4258,27 +4258,27 @@ public class RecordTest extends TestCase {
 			assertEquals(rec.getSchema(), rec2.getSchema());
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ğ•¡»‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¤‡è£½ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>Object:"a"</li>
-	 * <li>cloneRecord()‚ğÀs‚µ‚ÄƒŒƒR[ƒh‚Ì•¡»‚ğ¶¬‚·‚é</li>
-	 * <li>‘o•û‚ÌƒŒƒR[ƒh‚É‘Î‚µ‚ÄAŸ‚Ì’l‚ğw’è‚µ‚ÄgetProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>cloneRecord()ã‚’å®Ÿè¡Œã—ã¦ãƒ¬ã‚³ãƒ¼ãƒ‰ã®è¤‡è£½ã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>åŒæ–¹ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã«å¯¾ã—ã¦ã€æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>Œ³ƒŒƒR[ƒh‚Æ•¡»ƒŒƒR[ƒh‚Åæ“¾‚µ‚½’l‚ª“™‚µ‚¢‚±‚Æ‚ğŠm”F</li>
+	 * <li>å…ƒãƒ¬ã‚³ãƒ¼ãƒ‰ã¨è¤‡è£½ãƒ¬ã‚³ãƒ¼ãƒ‰ã§å–å¾—ã—ãŸå€¤ãŒç­‰ã—ã„ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testCloneRecord() {
@@ -4290,25 +4290,25 @@ public class RecordTest extends TestCase {
 			assertEquals(rec.getProperty("A"), rec2.getProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ğ•¶š—ñ•\Œ»‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æ–‡å­—åˆ—è¡¨ç¾ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>val:"a"</li>
-	 * <li>toString()‚ğÀs‚·‚é</li>
+	 * <li>toString()ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³‚µ‚­•¶š—ñ•\Œ»‚³‚ê‚Ä‚¢‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£ã—ãæ–‡å­—åˆ—è¡¨ç¾ã•ã‚Œã¦ã„ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testToString1() {
@@ -4319,22 +4319,22 @@ public class RecordTest extends TestCase {
 			assertEquals("{A=a}", rec.toString());
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ğ•¶š—ñ•\Œ»‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æ–‡å­—åˆ—è¡¨ç¾ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>’l‚ğİ’è‚¹‚¸‚ÉtoString()‚ğÀs‚·‚é</li>
+	 * <li>å€¤ã‚’è¨­å®šã›ãšã«toString()ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>•Ô‚è•¶š—ñ‚ª"{}"‚Å‚ ‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>è¿”ã‚Šæ–‡å­—åˆ—ãŒ"{}"ã§ã‚ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testToString2() {
@@ -4344,25 +4344,25 @@ public class RecordTest extends TestCase {
 			assertEquals("{}", rec.toString());
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒhƒTƒCƒY(’l‚ÌŒÂ”)‚ğŒvZ‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚µã‚¤ã‚º(å€¤ã®å€‹æ•°)ã‚’è¨ˆç®—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>val:"a"</li>
-	 * <li>size()‚ğÀs‚·‚é</li>
+	 * <li>size()ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>•Ô‚è’l‚ª‚P‚Å‚ ‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>è¿”ã‚Šå€¤ãŒï¼‘ã§ã‚ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSize() {
@@ -4373,25 +4373,25 @@ public class RecordTest extends TestCase {
 			assertEquals(1, rec.size());
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ª‹ó‚©‚Ç‚¤‚©‚ğƒ`ƒFƒbƒN‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ãŒç©ºã‹ã©ã†ã‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>isEmpty()‚ğÀs‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
-	 * <li>""(‹ó•¶š)</li>
-	 * <li>isEmpty()‚ğÀs‚·‚é</li>
+	 * <li>isEmpty()ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>""(ç©ºæ–‡å­—)</li>
+	 * <li>isEmpty()ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>1‰ñ–Ú‚Ì•Ô‚è’l‚ªfalseA2‰ñ–Ú‚Ì•Ô‚è’l‚ªtrue‚Å‚ ‚é‚±‚Æ‚ğŠm”F‚·‚é</li>
+	 * <li>1å›ç›®ã®è¿”ã‚Šå€¤ãŒfalseã€2å›ç›®ã®è¿”ã‚Šå€¤ãŒtrueã§ã‚ã‚‹ã“ã¨ã‚’ç¢ºèªã™ã‚‹</li>
 	 * </ul>
 	 */
 	public void testIsEmpty() {
@@ -4404,25 +4404,25 @@ public class RecordTest extends TestCase {
 			assertTrue(rec2.isEmpty());
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒB’l‚ğŠi”[‚·‚émap‚Ékey‚ª‘¶İ‚·‚é‚©‚ğƒ`ƒFƒbƒN‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’æ ¼ç´ã™ã‚‹mapã«keyãŒå­˜åœ¨ã™ã‚‹ã‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>containsKey(Object key)‚ğÀs‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
-	 * <li>""(‹ó•¶š)</li>
-	 * <li>containsKey(Object key)‚ğÀs‚·‚é</li>
+	 * <li>containsKey(Object key)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>""(ç©ºæ–‡å­—)</li>
+	 * <li>containsKey(Object key)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>1‰ñ–Ú‚Ì•Ô‚è’l‚ªtrueA2‰ñ–Ú‚Ì•Ô‚è’l‚ªfalse‚Å‚ ‚é‚±‚Æ‚ğŠm”F‚·‚é</li>
+	 * <li>1å›ç›®ã®è¿”ã‚Šå€¤ãŒtrueã€2å›ç›®ã®è¿”ã‚Šå€¤ãŒfalseã§ã‚ã‚‹ã“ã¨ã‚’ç¢ºèªã™ã‚‹</li>
 	 * </ul>
 	 */
 	public void testContainsKey() {
@@ -4435,26 +4435,26 @@ public class RecordTest extends TestCase {
 			assertFalse(rec2.containsKey("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒB’l‚ğŠi”[‚·‚émap‚Évalue‚ª‘¶İ‚·‚é‚©‚ğƒ`ƒFƒbƒN‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’æ ¼ç´ã™ã‚‹mapã«valueãŒå­˜åœ¨ã™ã‚‹ã‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>’l‚ğİ’è‚µ‚È‚¢‚ÅcontainsValue(Object value)‚ğÀs‚·‚é</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>å€¤ã‚’è¨­å®šã—ãªã„ã§containsValue(Object value)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>Object:"a"</li>
-	 * <li>containsValue(Object value)‚ğÀs‚·‚é</li>
+	 * <li>containsValue(Object value)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>1‰ñ–Ú‚Ì•Ô‚è’l‚ªfalseA2‰ñ–Ú‚Ì•Ô‚è’l‚ªtrue‚Å‚ ‚é‚±‚Æ‚ğŠm”F‚·‚é</li>
+	 * <li>1å›ç›®ã®è¿”ã‚Šå€¤ãŒfalseã€2å›ç›®ã®è¿”ã‚Šå€¤ãŒtrueã§ã‚ã‚‹ã“ã¨ã‚’ç¢ºèªã™ã‚‹</li>
 	 * </ul>
 	 */
 	public void testContainsValue() {
@@ -4466,25 +4466,25 @@ public class RecordTest extends TestCase {
 			assertTrue(rec.containsValue("a"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒB’l‚ğæ“¾‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>val:"a"</li>
-	 * <li>get("A")‚ğÀs‚·‚é</li>
+	 * <li>get("A")ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>•Ô‚è’l‚ªgetProperty("A")‚Æ“™‚µ‚¢‚±‚Æ‚ğŠm”F‚·‚é</li>
+	 * <li>è¿”ã‚Šå€¤ãŒgetProperty("A")ã¨ç­‰ã—ã„ã“ã¨ã‚’ç¢ºèªã™ã‚‹</li>
 	 * </ul>
 	 */
 	public void testGet() {
@@ -4495,28 +4495,28 @@ public class RecordTest extends TestCase {
 			assertEquals(rec.getProperty("A"), rec.get("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒB’l‚ğİ’è‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚Äput(Object key, Object value)‚ğÀs‚·‚éi‚P‰ñ–Új</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦put(Object key, Object value)ã‚’å®Ÿè¡Œã™ã‚‹ï¼ˆï¼‘å›ç›®ï¼‰</li>
 	 * <li>name :"A"</li>
 	 * <li>val  :"a"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚Äput(Object key, Object value)‚ğÀs‚·‚éi‚Q‰ñ–Új</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦put(Object key, Object value)ã‚’å®Ÿè¡Œã™ã‚‹ï¼ˆï¼’å›ç›®ï¼‰</li>
 	 * <li>name :"A"</li>
 	 * <li>val  :"b"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>1‰ñ–Ú‚Ì•Ô‚è’l‚ªnullA2‰ñ–Ú‚Ì•Ô‚è’l‚ª"a"(•ÏX‘O‚Ì’l)‚Å‚ ‚é‚±‚Æ‚ğŠm”F‚·‚é</li>
-	 * <li>getProperty("A")‚Ì•Ô‚è’l‚ª"b"‚Å‚ ‚é‚±‚Æ‚ğŠm”F‚·‚é</li>
+	 * <li>1å›ç›®ã®è¿”ã‚Šå€¤ãŒnullã€2å›ç›®ã®è¿”ã‚Šå€¤ãŒ"a"(å¤‰æ›´å‰ã®å€¤)ã§ã‚ã‚‹ã“ã¨ã‚’ç¢ºèªã™ã‚‹</li>
+	 * <li>getProperty("A")ã®è¿”ã‚Šå€¤ãŒ"b"ã§ã‚ã‚‹ã“ã¨ã‚’ç¢ºèªã™ã‚‹</li>
 	 * </ul>
 	 */
 	public void testPut() {
@@ -4528,26 +4528,26 @@ public class RecordTest extends TestCase {
 			assertEquals("b", rec.getProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒB’l‚ğíœ‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å‰Šé™¤ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>val:"a"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚Äremove(Object key)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦remove(Object key)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>key :"A"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>getProperty("A")‚ğÀs‚µ‚Ä’l‚ªíœ‚³‚ê‚Ä‚¢‚éinull‚Å‚ ‚éj‚±‚Æ‚ğŠm”F</li>
+	 * <li>getProperty("A")ã‚’å®Ÿè¡Œã—ã¦å€¤ãŒå‰Šé™¤ã•ã‚Œã¦ã„ã‚‹ï¼ˆnullã§ã‚ã‚‹ï¼‰ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testRemove() {
@@ -4559,26 +4559,26 @@ public class RecordTest extends TestCase {
 			assertNull(rec.getProperty("A"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * ƒvƒƒpƒeƒB’l‚ğíœ‚·‚éƒeƒXƒgB
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å‰Šé™¤ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>val:"a"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚Äremove(Object key)‚ğÀs‚·‚é</li>
-	 * <li>key :"B"i‘¶İ‚µ‚È‚¢–¼‘Oj</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦remove(Object key)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>key :"B"ï¼ˆå­˜åœ¨ã—ãªã„åå‰ï¼‰</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>null‚ª•Ô‚³‚ê‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>nullãŒè¿”ã•ã‚Œã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testRemoveInvallid() {
@@ -4589,28 +4589,28 @@ public class RecordTest extends TestCase {
 			assertNull(rec.remove("B"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * void putAll(Map t)‚ÌƒeƒXƒg
+	 * void putAll(Map t)ã®ãƒ†ã‚¹ãƒˆ
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,\n:B,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
-	 * <li>Ÿ‚Ì‚Q‘g‚ÌƒL[‚Æ’l‚ªƒZƒbƒg‚³‚ê‚Ä‚¢‚émap‚ğw’è‚µ‚ÄputAll(Map t)‚ğÀs‚·‚é</li>
-	 * <li>ƒL[ F"A" ’lF"a"</li>
-	 * <li>ƒL[ F"B" ’lF"b"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄgetProperty(String name)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>æ¬¡ã®ï¼’çµ„ã®ã‚­ãƒ¼ã¨å€¤ãŒã‚»ãƒƒãƒˆã•ã‚Œã¦ã„ã‚‹mapã‚’æŒ‡å®šã—ã¦putAll(Map t)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ã‚­ãƒ¼ ï¼š"A" å€¤ï¼š"a"</li>
+	 * <li>ã‚­ãƒ¼ ï¼š"B" å€¤ï¼š"b"</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦getProperty(String name)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>getProperty("A")‚Ì•Ô‚è’l‚ª"a"</li>
-	 * <li>getProperty("B")‚Ì•Ô‚è’l‚ª"b"</li>
+	 * <li>getProperty("A")ã®è¿”ã‚Šå€¤ãŒ"a"</li>
+	 * <li>getProperty("B")ã®è¿”ã‚Šå€¤ãŒ"b"</li>
 	 * </ul>
 	 */
 	public void testPutAll() {
@@ -4627,22 +4627,22 @@ public class RecordTest extends TestCase {
 			assertEquals("b", rec.getProperty("B"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 	/**
-	 * void putAll(Map t)‚ÌƒeƒXƒg
+	 * void putAll(Map t)ã®ãƒ†ã‚¹ãƒˆ
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,\n:B,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
-	 * <li>null‚ğw’è‚µ‚ÄputAll(Map t)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>nullã‚’æŒ‡å®šã—ã¦putAll(Map t)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testPutAllNull() {
@@ -4653,22 +4653,22 @@ public class RecordTest extends TestCase {
 			rec.putAll(null);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * Set keySet()‚ÌƒeƒXƒg
+	 * Set keySet()ã®ãƒ†ã‚¹ãƒˆ
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,\n:B,java.lang.String,,,"</li>
-	 * <li>keySet()‚ğÀs‚·‚é</li>
+	 * <li>keySet()ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>•Ô‚è’l‚Ì—v‘f‚Éİ’è‚µ‚½ƒvƒƒpƒeƒB–¼("A","B")‚ªƒZƒbƒg‚³‚ê‚Ä‚¢‚é</li>
+	 * <li>è¿”ã‚Šå€¤ã®è¦ç´ ã«è¨­å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å("A","B")ãŒã‚»ãƒƒãƒˆã•ã‚Œã¦ã„ã‚‹</li>
 	 * </ul>
 	 */
 	public void testKetSet() {
@@ -4681,26 +4681,26 @@ public class RecordTest extends TestCase {
 			assertEquals("B", s.toArray()[1]);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 	
 
 	/**
-	 * Collection values()‚ÌƒeƒXƒg
+	 * Collection values()ã®ãƒ†ã‚¹ãƒˆ
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,\n:B,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì‚Q‘g‚Ì–¼‘O‚Æ’l‚ğw’è‚µ‚ÄsetProperty‚ğÀs‚·‚é</li>
-	 * <li>–¼‘O F"A" ’lF"a"</li>
-	 * <li>–¼‘O F"B" ’lF"b"</li>
-	 * <li>values()‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ï¼’çµ„ã®åå‰ã¨å€¤ã‚’æŒ‡å®šã—ã¦setPropertyã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>åå‰ ï¼š"A" å€¤ï¼š"a"</li>
+	 * <li>åå‰ ï¼š"B" å€¤ï¼š"b"</li>
+	 * <li>values()ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>•Ô‚è’l‚Ì—v‘f‚Éİ’è‚µ‚½ƒvƒƒpƒeƒB’li"a","b"j‚ªƒZƒbƒg‚³‚ê‚Ä‚¢‚é</li>
+	 * <li>è¿”ã‚Šå€¤ã®è¦ç´ ã«è¨­å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ï¼ˆ"a","b"ï¼‰ãŒã‚»ãƒƒãƒˆã•ã‚Œã¦ã„ã‚‹</li>
 	 * </ul>
 	 */
 	public void testValues() {
@@ -4715,23 +4715,23 @@ public class RecordTest extends TestCase {
 			assertEquals("b", v.toArray()[1]);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * Set entrySet()‚ÌƒeƒXƒg
+	 * Set entrySet()ã®ãƒ†ã‚¹ãƒˆ
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,\n:B,java.lang.String,,,"</li>
-	 * <li>entrySet()‚ğÀs‚·‚é</li>
+	 * <li>entrySet()ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>•Ô‚è’l‚Ì—v‘f‚Éİ’è‚µ‚½ƒvƒƒpƒeƒB–¼("A","B")‚ªƒZƒbƒg‚³‚ê‚Ä‚¢‚é</li>
+	 * <li>è¿”ã‚Šå€¤ã®è¦ç´ ã«è¨­å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å("A","B")ãŒã‚»ãƒƒãƒˆã•ã‚Œã¦ã„ã‚‹</li>
 	 * </ul>
 	 */
 	public void testEntrySet() {
@@ -4744,22 +4744,22 @@ public class RecordTest extends TestCase {
 			assertEquals("B", e.toArray()[1]);
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * boolean equals(Object o)‚ÌƒeƒXƒg
+	 * boolean equals(Object o)ã®ãƒ†ã‚¹ãƒˆ
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,\n:B,java.lang.String,,,"</li>
-	 * <li>null‚ğw’è‚µ‚Äequals()‚ğÀs‚·‚é</li>
+	 * <li>nullã‚’æŒ‡å®šã—ã¦equals()ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>false‚ª•Ô‚Á‚Ä‚­‚é</li>
+	 * <li>falseãŒè¿”ã£ã¦ãã‚‹</li>
 	 * </ul>
 	 */
 	public void testEquals1() {
@@ -4770,22 +4770,22 @@ public class RecordTest extends TestCase {
 			assertFalse(rec.equals(null));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * boolean equals(Object o)‚ÌƒeƒXƒg
+	 * boolean equals(Object o)ã®ãƒ†ã‚¹ãƒˆ
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,\n:B,java.lang.String,,,"</li>
-	 * <li>©•ª©g‚ğw’è‚µ‚Äequals()‚ğÀs‚·‚é</li>
+	 * <li>è‡ªåˆ†è‡ªèº«ã‚’æŒ‡å®šã—ã¦equals()ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>true‚ª•Ô‚Á‚Ä‚­‚é</li>
+	 * <li>trueãŒè¿”ã£ã¦ãã‚‹</li>
 	 * </ul>
 	 */
 	public void testEquals2() {
@@ -4796,23 +4796,23 @@ public class RecordTest extends TestCase {
 			assertTrue(rec.equals(rec));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * boolean equals(Object o)‚ÌƒeƒXƒg
+	 * boolean equals(Object o)ã®ãƒ†ã‚¹ãƒˆ
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,\n:B,java.lang.String,,,"</li>
-	 * <li>RecordŒ^‚Å‚È‚¢ƒIƒuƒWƒFƒNƒgw’è‚µ‚Äequals()‚ğÀs‚·‚é</li>
+	 * <li>Recordå‹ã§ãªã„ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆæŒ‡å®šã—ã¦equals()ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>false‚ª•Ô‚Á‚Ä‚­‚é</li>
+	 * <li>falseãŒè¿”ã£ã¦ãã‚‹</li>
 	 * </ul>
 	 */
 	public void testEquals3() {
@@ -4823,23 +4823,23 @@ public class RecordTest extends TestCase {
 			assertFalse(rec.equals("aaa"));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * boolean equals(Object o)‚ÌƒeƒXƒg
+	 * boolean equals(Object o)ã®ãƒ†ã‚¹ãƒˆ
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,\n:B,java.lang.String,,,"</li>
-	 * <liŸ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚½RecordƒIƒuƒWƒFƒNƒg‚ğw’è‚µ‚Äequals()‚ğÀs‚·‚é</li>
+	 * <liæ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ãŸRecordã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒ‡å®šã—ã¦equals()ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":C,java.lang.String,,,\n:D,java.lang.String,,,"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>false‚ª•Ô‚Á‚Ä‚­‚é</li>
+	 * <li>falseãŒè¿”ã£ã¦ãã‚‹</li>
 	 * </ul>
 	 */
 	public void testEquals4() {
@@ -4852,28 +4852,28 @@ public class RecordTest extends TestCase {
 			assertFalse(rec1.equals(rec2));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * boolean equals(Object o)‚ÌƒeƒXƒg
+	 * boolean equals(Object o)ã®ãƒ†ã‚¹ãƒˆ
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,\n:B,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì–¼‘O‚Æ’l‚ğw’è‚µ‚ÄsetProperty‚ğÀs‚·‚é</li>
-	 * <li>–¼‘O F"A" ’lF"a"</li>
-	 * <liŸ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚½RecordƒIƒuƒWƒFƒNƒg‚ğw’è‚µ‚Äequals()‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨å€¤ã‚’æŒ‡å®šã—ã¦setPropertyã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>åå‰ ï¼š"A" å€¤ï¼š"a"</li>
+	 * <liæ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ãŸRecordã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒ‡å®šã—ã¦equals()ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,\n:B,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì–¼‘O‚Æ’l‚ğw’è‚µ‚ÄsetProperty‚ğÀs‚·‚é</li>
-	 * <li>–¼‘O F"A" ’lF"a"</li>
+	 * <li>æ¬¡ã®åå‰ã¨å€¤ã‚’æŒ‡å®šã—ã¦setPropertyã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>åå‰ ï¼š"A" å€¤ï¼š"a"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>ƒXƒL[ƒ}A’l‚ª“¯‚¶‚È‚Ì‚Åtrue‚ª•Ô‚Á‚Ä‚­‚é</li>
+	 * <li>ã‚¹ã‚­ãƒ¼ãƒã€å€¤ãŒåŒã˜ãªã®ã§trueãŒè¿”ã£ã¦ãã‚‹</li>
 	 * </ul>
 	 */
 	public void testEquals5() {
@@ -4888,26 +4888,26 @@ public class RecordTest extends TestCase {
 			assertTrue(rec1.equals(rec2));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	/**
-	 * boolean equals(Object o)‚ÌƒeƒXƒg
+	 * boolean equals(Object o)ã®ãƒ†ã‚¹ãƒˆ
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,\n:B,java.lang.String,,,"</li>
-	 * <li>’l–¢İ’è</li>
-	 * <liŸ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚½RecordƒIƒuƒWƒFƒNƒg‚ğw’è‚µ‚Äequals()‚ğÀs‚·‚é</li>
+	 * <li>å€¤æœªè¨­å®š</li>
+	 * <liæ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ãŸRecordã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒ‡å®šã—ã¦equals()ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,\n:B,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì–¼‘O‚Æ’l‚ğw’è‚µ‚ÄsetProperty‚ğÀs‚·‚é</li>
-	 * <li>–¼‘O F"A" ’lF"a"</li>
+	 * <li>æ¬¡ã®åå‰ã¨å€¤ã‚’æŒ‡å®šã—ã¦setPropertyã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>åå‰ ï¼š"A" å€¤ï¼š"a"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>’l‚ªˆÙ‚È‚é‚Ì‚Åfalse‚ª•Ô‚Á‚Ä‚­‚é</li>
+	 * <li>å€¤ãŒç•°ãªã‚‹ã®ã§falseãŒè¿”ã£ã¦ãã‚‹</li>
 	 * </ul>
 	 */
 	public void testEquals6() {
@@ -4921,27 +4921,27 @@ public class RecordTest extends TestCase {
 			assertFalse(rec1.equals(rec2));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * boolean equals(Object o)‚ÌƒeƒXƒg
+	 * boolean equals(Object o)ã®ãƒ†ã‚¹ãƒˆ
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,\n:B,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì–¼‘O‚Æ’l‚ğw’è‚µ‚ÄsetProperty‚ğÀs‚·‚é</li>
-	 * <li>–¼‘O F"A" ’lF"a"</li>
-	 * <liŸ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚½RecordƒIƒuƒWƒFƒNƒg‚ğw’è‚µ‚Äequals()‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨å€¤ã‚’æŒ‡å®šã—ã¦setPropertyã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>åå‰ ï¼š"A" å€¤ï¼š"a"</li>
+	 * <liæ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ãŸRecordã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒ‡å®šã—ã¦equals()ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,\n:B,java.lang.String,,,"</li>
-	 * <li>’l–¢İ’è</li>
+	 * <li>å€¤æœªè¨­å®š</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>’l‚ªˆÙ‚È‚é‚Ì‚Åfalse‚ª•Ô‚Á‚Ä‚­‚é</li>
+	 * <li>å€¤ãŒç•°ãªã‚‹ã®ã§falseãŒè¿”ã£ã¦ãã‚‹</li>
 	 * </ul>
 	 */
 	public void testEquals7() {
@@ -4955,25 +4955,25 @@ public class RecordTest extends TestCase {
 			assertFalse(rec1.equals(rec2));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 
 	/**
-	 * int hashCode()‚ÌƒeƒXƒg
+	 * int hashCode()ã®ãƒ†ã‚¹ãƒˆ
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>":A,java.lang.String,,,\n:B,java.lang.String,,,"</li>
-	 * <li>Ÿ‚Ì–¼‘O‚Æ’l‚ğw’è‚µ‚ÄsetProperty‚ğÀs‚·‚é</li>
-	 * <li>–¼‘O F"A" ’lF"a"</li>
-	 * <li>hashCode()‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨å€¤ã‚’æŒ‡å®šã—ã¦setPropertyã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>åå‰ ï¼š"A" å€¤ï¼š"a"</li>
+	 * <li>hashCode()ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>•Ô‚è’l‚ªrecordSchema.hashCode()+values.hashCode()</li>
+	 * <li>è¿”ã‚Šå€¤ãŒrecordSchema.hashCode()+values.hashCode()</li>
 	 * </ul>
 	 */
 	public void testHashCode1() {
@@ -4987,27 +4987,27 @@ public class RecordTest extends TestCase {
 			assertEquals(rec1.hashCode(), rec2.hashCode());
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 
 	
 	
 	/**
-	 * ƒŒƒR[ƒhƒIƒuƒWƒFƒNƒg‚ğ”äŠr‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ¯”è¼ƒã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğ2‰ñÀs</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’2å›å®Ÿè¡Œ</li>
 	 * <li>":A,java.lang.String,,,"</li>
-	 * <li>‘o•û‚ÌRecord‚É‘Î‚µAŸ‚Ì’l‚ğw’è‚µ‚ÄsetProperty(String name, Object val)‚ğÀs‚·‚é</li>
+	 * <li>åŒæ–¹ã®Recordã«å¯¾ã—ã€æ¬¡ã®å€¤ã‚’æŒ‡å®šã—ã¦setProperty(String name, Object val)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name :"A"</li>
 	 * <li>Object:"B"</li>
-	 * <li>equalsƒƒ\ƒbƒh‚ğÀs‚·‚é</li>
+	 * <li>equalsãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>‘o•û‚ÌRecord‚ª“™‚µ‚¢(equalsƒƒ\ƒbƒh‚ªtrue)‚±‚Æ‚ğŠm”F</li>
+	 * <li>åŒæ–¹ã®RecordãŒç­‰ã—ã„(equalsãƒ¡ã‚½ãƒƒãƒ‰ãŒtrue)ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testEqualsObject() {
@@ -5020,7 +5020,7 @@ public class RecordTest extends TestCase {
 			assertTrue(rec1.equals(rec2));
 		} catch (PropertySchemaDefineException e) {
 			e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
 		}
 	}
 

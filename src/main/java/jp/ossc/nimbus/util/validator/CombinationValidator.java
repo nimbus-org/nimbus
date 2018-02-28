@@ -34,8 +34,8 @@ package jp.ossc.nimbus.util.validator;
 import java.util.*;
 
 /**
- * ‘g‚İ‡‚í‚¹ƒoƒŠƒf[ƒ^B<p>
- * •¡”‚ÌƒoƒŠƒf[ƒ^‚ğ˜_—‰‰Zq‚Å˜AŒ‹‚µ‚ÄŒŸØ‚·‚éB<br>
+ * çµ„ã¿åˆã‚ã›ãƒãƒªãƒ‡ãƒ¼ã‚¿ã€‚<p>
+ * è¤‡æ•°ã®ãƒãƒªãƒ‡ãƒ¼ã‚¿ã‚’è«–ç†æ¼”ç®—å­ã§é€£çµã—ã¦æ¤œè¨¼ã™ã‚‹ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -44,16 +44,16 @@ public class CombinationValidator implements Validator, java.io.Serializable{
     private static final long serialVersionUID = 1695449609101701493L;
     
     /**
-     * ‘g‚İ‡‚í‚¹‚ç‚ê‚½ƒoƒŠƒf[ƒ^‚Æ˜_—‰‰Zq‚ÌƒŠƒXƒgB<p>
-     * ValidatorWithCondition‚ÌƒŠƒXƒgB<br>
+     * çµ„ã¿åˆã‚ã›ã‚‰ã‚ŒãŸãƒãƒªãƒ‡ãƒ¼ã‚¿ã¨è«–ç†æ¼”ç®—å­ã®ãƒªã‚¹ãƒˆã€‚<p>
+     * ValidatorWithConditionã®ãƒªã‚¹ãƒˆã€‚<br>
      */
     protected List validators = new ArrayList();
     
     /**
-     * Å‰‚ÌƒoƒŠƒf[ƒ^‚ğ’Ç‰Á‚·‚éB<p>
+     * æœ€åˆã®ãƒãƒªãƒ‡ãƒ¼ã‚¿ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param validator ƒoƒŠƒf[ƒ^
-     * @exception ValidateException Šù‚ÉƒoƒŠƒf[ƒ^‚ª“o˜^‚³‚ê‚Ä‚¢‚éê‡
+     * @param validator ãƒãƒªãƒ‡ãƒ¼ã‚¿
+     * @exception ValidateException æ—¢ã«ãƒãƒªãƒ‡ãƒ¼ã‚¿ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å ´åˆ
      */
     public void add(Validator validator) throws ValidateException{
         if(validators.size() != 0){
@@ -65,10 +65,10 @@ public class CombinationValidator implements Validator, java.io.Serializable{
     }
     
     /**
-     * Å‰‚ÌƒoƒŠƒf[ƒ^‚ğNOT‰‰Zq•t‚«‚Å’Ç‰Á‚·‚éB<p>
+     * æœ€åˆã®ãƒãƒªãƒ‡ãƒ¼ã‚¿ã‚’NOTæ¼”ç®—å­ä»˜ãã§è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param validator ƒoƒŠƒf[ƒ^
-     * @exception ValidateException Šù‚ÉƒoƒŠƒf[ƒ^‚ª“o˜^‚³‚ê‚Ä‚¢‚éê‡
+     * @param validator ãƒãƒªãƒ‡ãƒ¼ã‚¿
+     * @exception ValidateException æ—¢ã«ãƒãƒªãƒ‡ãƒ¼ã‚¿ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å ´åˆ
      */
     public void addNot(Validator validator) throws ValidateException{
         if(validators.size() != 0){
@@ -81,9 +81,9 @@ public class CombinationValidator implements Validator, java.io.Serializable{
     }
     
     /**
-     * ƒoƒŠƒf[ƒ^‚ğOR‰‰Zq•t‚«‚Å˜AŒ‹‚·‚éB<p>
+     * ãƒãƒªãƒ‡ãƒ¼ã‚¿ã‚’ORæ¼”ç®—å­ä»˜ãã§é€£çµã™ã‚‹ã€‚<p>
      *
-     * @param validator ƒoƒŠƒf[ƒ^
+     * @param validator ãƒãƒªãƒ‡ãƒ¼ã‚¿
      */
     public void or(Validator validator){
         final ValidatorWithCondition cond
@@ -93,9 +93,9 @@ public class CombinationValidator implements Validator, java.io.Serializable{
     }
     
     /**
-     * ƒoƒŠƒf[ƒ^‚ğAND‰‰Zq•t‚«‚Å˜AŒ‹‚·‚éB<p>
+     * ãƒãƒªãƒ‡ãƒ¼ã‚¿ã‚’ANDæ¼”ç®—å­ä»˜ãã§é€£çµã™ã‚‹ã€‚<p>
      *
-     * @param validator ƒoƒŠƒf[ƒ^
+     * @param validator ãƒãƒªãƒ‡ãƒ¼ã‚¿
      */
     public void and(Validator validator){
         final ValidatorWithCondition cond
@@ -105,9 +105,9 @@ public class CombinationValidator implements Validator, java.io.Serializable{
     }
     
     /**
-     * ƒoƒŠƒf[ƒ^‚ğOR NOT‰‰Zq•t‚«‚Å˜AŒ‹‚·‚éB<p>
+     * ãƒãƒªãƒ‡ãƒ¼ã‚¿ã‚’OR NOTæ¼”ç®—å­ä»˜ãã§é€£çµã™ã‚‹ã€‚<p>
      *
-     * @param validator ƒoƒŠƒf[ƒ^
+     * @param validator ãƒãƒªãƒ‡ãƒ¼ã‚¿
      */
     public void orNot(Validator validator){
         final ValidatorWithCondition cond
@@ -118,9 +118,9 @@ public class CombinationValidator implements Validator, java.io.Serializable{
     }
     
     /**
-     * ƒoƒŠƒf[ƒ^‚ğAND NOT‰‰Zq•t‚«‚Å˜AŒ‹‚·‚éB<p>
+     * ãƒãƒªãƒ‡ãƒ¼ã‚¿ã‚’AND NOTæ¼”ç®—å­ä»˜ãã§é€£çµã™ã‚‹ã€‚<p>
      *
-     * @param validator ƒoƒŠƒf[ƒ^
+     * @param validator ãƒãƒªãƒ‡ãƒ¼ã‚¿
      */
     public void andNot(Validator validator){
         final ValidatorWithCondition cond
@@ -131,18 +131,18 @@ public class CombinationValidator implements Validator, java.io.Serializable{
     }
     
     /**
-     * ƒoƒŠƒf[ƒ^‚ğ‘S‚Äíœ‚·‚éB<p>
+     * ãƒãƒªãƒ‡ãƒ¼ã‚¿ã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹ã€‚<p>
      */
     public void clear(){
         validators.clear();
     }
     
     /**
-     * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğ˜_—‰‰Zq‚Å˜AŒ‹‚³‚ê‚½ƒoƒŠƒf[ƒ^‚ğg‚Á‚ÄŒŸØ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è«–ç†æ¼”ç®—å­ã§é€£çµã•ã‚ŒãŸãƒãƒªãƒ‡ãƒ¼ã‚¿ã‚’ä½¿ã£ã¦æ¤œè¨¼ã™ã‚‹ã€‚<p>
      *
-     * @param obj ŒŸØ‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return ŒŸØŒ‹‰ÊBŒŸØ¬Œ÷‚Ìê‡true
-     * @exception ValidateException ŒŸØ‚É¸”s‚µ‚½ê‡
+     * @param obj æ¤œè¨¼å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return æ¤œè¨¼çµæœã€‚æ¤œè¨¼æˆåŠŸã®å ´åˆtrue
+     * @exception ValidateException æ¤œè¨¼ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public boolean validate(Object obj) throws ValidateException{
         if(validators.size() == 0){
@@ -158,7 +158,7 @@ public class CombinationValidator implements Validator, java.io.Serializable{
     }
     
     /**
-     * ˜_—‰‰Zq•t‚«ƒoƒŠƒf[ƒ^B<p>
+     * è«–ç†æ¼”ç®—å­ä»˜ããƒãƒªãƒ‡ãƒ¼ã‚¿ã€‚<p>
      *
      * @author M.Takata
      */
@@ -168,41 +168,41 @@ public class CombinationValidator implements Validator, java.io.Serializable{
         private static final long serialVersionUID = 924450733620787066L;
         
         /**
-         * NOT‰‰Zq•t‚«‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
+         * NOTæ¼”ç®—å­ä»˜ãã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
          */
         protected boolean isNot;
         
         /**
-         * OR‰‰Zq•t‚«‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
+         * ORæ¼”ç®—å­ä»˜ãã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
          */
         protected boolean isOr;
         
         /**
-         * AND‰‰Zq•t‚«‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
+         * ANDæ¼”ç®—å­ä»˜ãã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
          */
         protected boolean isAnd;
         
         /**
-         * ƒoƒŠƒf[ƒ^B<p>
+         * ãƒãƒªãƒ‡ãƒ¼ã‚¿ã€‚<p>
          */
         protected Validator validator;
         
         /**
-         * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          *
-         * @param validator ƒoƒŠƒf[ƒ^
+         * @param validator ãƒãƒªãƒ‡ãƒ¼ã‚¿
          */
         public ValidatorWithCondition(Validator validator){
             this.validator = validator;
         }
         
         /**
-         * w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğƒoƒŠƒf[ƒ^‚ÅŒŸØ‚µA‚»‚ÌŒŸØŒ‹‰Ê‚Æ‚±‚±‚Ü‚Å‚ÌŒŸØŒ‹‰Ê‚Ì˜_—‰‰Z‚ğs‚¤B<p>
+         * æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒãƒªãƒ‡ãƒ¼ã‚¿ã§æ¤œè¨¼ã—ã€ãã®æ¤œè¨¼çµæœã¨ã“ã“ã¾ã§ã®æ¤œè¨¼çµæœã®è«–ç†æ¼”ç®—ã‚’è¡Œã†ã€‚<p>
          *
-         * @param preResult ‚±‚±‚Ü‚Å‚ÌŒŸØŒ‹‰Ê
-         * @param obj ŒŸØ‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-         * @return ŒŸØŒ‹‰ÊBŒŸØ¬Œ÷‚Ìê‡true
-         * @exception ValidateException ŒŸØ‚É¸”s‚µ‚½ê‡
+         * @param preResult ã“ã“ã¾ã§ã®æ¤œè¨¼çµæœ
+         * @param obj æ¤œè¨¼å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @return æ¤œè¨¼çµæœã€‚æ¤œè¨¼æˆåŠŸã®å ´åˆtrue
+         * @exception ValidateException æ¤œè¨¼ã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public boolean validate(Boolean preResult, Object obj)
          throws ValidateException{

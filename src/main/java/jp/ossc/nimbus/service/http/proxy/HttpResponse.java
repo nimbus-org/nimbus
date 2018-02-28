@@ -37,7 +37,7 @@ import java.util.zip.*;
 import java.text.*;
 
 /**
- * HTTPƒŒƒXƒ|ƒ“ƒXB<p>
+ * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -69,73 +69,73 @@ public class HttpResponse{
     private ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public HttpResponse(){
     }
     
     /**
-     * HTTP‚Ìƒo[ƒWƒ‡ƒ“‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAHTTP/1.1B<br>
+     * HTTPã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€HTTP/1.1ã€‚<br>
      *
-     * @param version HTTP‚Ìƒo[ƒWƒ‡ƒ“
+     * @param version HTTPã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³
      */
     public void setVersion(String version){
         this.version = version;
     }
     
     /**
-     * HTTP‚Ìƒo[ƒWƒ‡ƒ“‚ğæ“¾‚·‚éB<p>
+     * HTTPã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HTTP‚Ìƒo[ƒWƒ‡ƒ“
+     * @return HTTPã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³
      */
     public String getVersion(){
         return version;
     }
     
     /**
-     * HTTP‚ÌƒXƒe[ƒ^ƒXƒR[ƒh‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA200B<br>
+     * HTTPã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚³ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€200ã€‚<br>
      *
-     * @param code HTTP‚ÌƒXƒe[ƒ^ƒXƒR[ƒh
+     * @param code HTTPã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚³ãƒ¼ãƒ‰
      */
     public void setStatusCode(int code){
        statusCode = code;
     }
     
     /**
-     * HTTP‚ÌƒXƒe[ƒ^ƒXƒR[ƒh‚ğæ“¾‚·‚éB<p>
+     * HTTPã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HTTP‚ÌƒXƒe[ƒ^ƒXƒR[ƒh
+     * @return HTTPã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚³ãƒ¼ãƒ‰
      */
     public int getStatusCode(){
        return statusCode;
     }
     
     /**
-     * HTTP‚ÌƒXƒe[ƒ^ƒXƒƒbƒZ[ƒW‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA"OK"B<br>
+     * HTTPã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€"OK"ã€‚<br>
      *
-     * @param message HTTP‚ÌƒXƒe[ƒ^ƒXƒƒbƒZ[ƒW
+     * @param message HTTPã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public void setStatusMessage(String message){
         statusMessage = message;
     }
     
     /**
-     * HTTP‚ÌƒXƒe[ƒ^ƒXƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
+     * HTTPã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HTTP‚ÌƒXƒe[ƒ^ƒXƒƒbƒZ[ƒW
+     * @return HTTPã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String getStatusMessage(){
         return statusMessage;
     }
     
     /**
-     * ƒwƒbƒ_‚ğİ’è‚·‚éB<p>
+     * ãƒ˜ãƒƒãƒ€ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒwƒbƒ_–¼
-     * @param val ƒwƒbƒ_’l
+     * @param name ãƒ˜ãƒƒãƒ€å
+     * @param val ãƒ˜ãƒƒãƒ€å€¤
      */
     public void setHeader(String name, String val){
         String[] vals = (String[])headerMap.get(name);
@@ -152,10 +152,10 @@ public class HttpResponse{
     }
     
     /**
-     * “úƒwƒbƒ_‚ğİ’è‚·‚éB<p>
+     * æ—¥æ™‚ãƒ˜ãƒƒãƒ€ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒwƒbƒ_–¼
-     * @param date “ú
+     * @param name ãƒ˜ãƒƒãƒ€å
+     * @param date æ—¥æ™‚
      */
     public void setDateHeader(String name, Date date){
         SimpleDateFormat format = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz", Locale.ENGLISH);
@@ -163,29 +163,29 @@ public class HttpResponse{
     }
     
     /**
-     * ƒwƒbƒ_‚ğİ’è‚·‚éB<p>
+     * ãƒ˜ãƒƒãƒ€ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒwƒbƒ_–¼
-     * @param vals ƒwƒbƒ_’l”z—ñ
+     * @param name ãƒ˜ãƒƒãƒ€å
+     * @param vals ãƒ˜ãƒƒãƒ€å€¤é…åˆ—
      */
     public void setHeaders(String name, String[] vals){
         headerMap.put(name, vals);
     }
     
     /**
-     * ƒwƒbƒ_–¼‚ÌW‡‚ğæ“¾‚·‚éB<p>
+     * ãƒ˜ãƒƒãƒ€åã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒwƒbƒ_–¼‚ÌW‡
+     * @return ãƒ˜ãƒƒãƒ€åã®é›†åˆ
      */
     public Set getHeaderNameSet(){
         return headerMap.keySet();
     }
     
     /**
-     * ƒwƒbƒ_‚ğæ“¾‚·‚éB<p>
+     * ãƒ˜ãƒƒãƒ€ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒwƒbƒ_–¼
-     * @return ƒwƒbƒ_’l
+     * @param name ãƒ˜ãƒƒãƒ€å
+     * @return ãƒ˜ãƒƒãƒ€å€¤
      */
     public String getHeader(String name){
         final String[] vals = (String[])headerMap.get(name);
@@ -193,28 +193,28 @@ public class HttpResponse{
     }
     
     /**
-     * ƒwƒbƒ_‚ğæ“¾‚·‚éB<p>
+     * ãƒ˜ãƒƒãƒ€ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒwƒbƒ_–¼
-     * @return ƒwƒbƒ_’l”z—ñ
+     * @param name ãƒ˜ãƒƒãƒ€å
+     * @return ãƒ˜ãƒƒãƒ€å€¤é…åˆ—
      */
     public String[] getHeaders(String name){
         return (String[])headerMap.get(name);
     }
     
     /**
-     * ƒwƒbƒ_‚ğíœ‚·‚éB<p>
+     * ãƒ˜ãƒƒãƒ€ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒwƒbƒ_–¼
+     * @param name ãƒ˜ãƒƒãƒ€å
      */
     public void removeHeader(String name){
         headerMap.remove(name);
     }
     
     /**
-     * Content-Lengthƒwƒbƒ_‚ğæ“¾‚·‚éB<p>
+     * Content-Lengthãƒ˜ãƒƒãƒ€ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Content-Lengthƒwƒbƒ_‚Ì’lB‘¶İ‚µ‚È‚¢ê‡‚ÍA-1
+     * @return Content-Lengthãƒ˜ãƒƒãƒ€ã®å€¤ã€‚å­˜åœ¨ã—ãªã„å ´åˆã¯ã€-1
      */
     public int getContentLength(){
         final String contentLengthStr
@@ -231,9 +231,9 @@ public class HttpResponse{
     }
     
     /**
-     * Content-Typeƒwƒbƒ_‚Ìcharset‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * Content-Typeãƒ˜ãƒƒãƒ€ã®charsetã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Content-Typeƒwƒbƒ_‚Ìcharset‚Ì’lB‘¶İ‚µ‚È‚¢ê‡‚ÍAISO8859_1
+     * @return Content-Typeãƒ˜ãƒƒãƒ€ã®charsetã®å€¤ã€‚å­˜åœ¨ã—ãªã„å ´åˆã¯ã€ISO8859_1
      */
     public String getCharacterEncoding(){
         String characterEncoding = DEFAULT_CHARACTER_ENCODING;
@@ -263,9 +263,9 @@ public class HttpResponse{
     }
     
     /**
-     * Content-Encodingƒwƒbƒ_‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * Content-Encodingãƒ˜ãƒƒãƒ€ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Content-Encodingƒwƒbƒ_‚Ì’l
+     * @return Content-Encodingãƒ˜ãƒƒãƒ€ã®å€¤
      */
     public String getContentEncoding(){
         final String contentEncoding
@@ -274,9 +274,9 @@ public class HttpResponse{
     }
     
     /**
-     * Transfer-Encodingƒwƒbƒ_‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * Transfer-Encodingãƒ˜ãƒƒãƒ€ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Transfer-Encodingƒwƒbƒ_‚Ì’l
+     * @return Transfer-Encodingãƒ˜ãƒƒãƒ€ã®å€¤
      */
     public String getTransferEncoding(){
         final String transferEncoding
@@ -285,9 +285,9 @@ public class HttpResponse{
     }
     
     /**
-     * Connectionƒwƒbƒ_‚Ü‚½‚ÍProxy-Connectionƒwƒbƒ_‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * Connectionãƒ˜ãƒƒãƒ€ã¾ãŸã¯Proxy-Connectionãƒ˜ãƒƒãƒ€ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Connectionƒwƒbƒ_‚Ü‚½‚ÍProxy-Connectionƒwƒbƒ_‚Ì’l
+     * @return Connectionãƒ˜ãƒƒãƒ€ã¾ãŸã¯Proxy-Connectionãƒ˜ãƒƒãƒ€ã®å€¤
      */
     public String getConnection(){
         String connection = getHeader(HEADER_NAME_CONNECTION);
@@ -298,20 +298,20 @@ public class HttpResponse{
     }
     
     /**
-     * HTTPƒŒƒXƒ|ƒ“ƒX‚Ìƒ{ƒfƒB‚Ìo—ÍƒXƒgƒŠ[ƒ€‚ğæ“¾‚·‚éB<p>
+     * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®ãƒœãƒ‡ã‚£ã®å‡ºåŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HTTPƒŒƒXƒ|ƒ“ƒX‚Ìƒ{ƒfƒB‚Ìo—ÍƒXƒgƒŠ[ƒ€
+     * @return HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®ãƒœãƒ‡ã‚£ã®å‡ºåŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
      */
     public OutputStream getOutputStream(){
         return outputStream;
     }
     
     /**
-     * HTTPƒŒƒXƒ|ƒ“ƒX‚ÌHTTPƒwƒbƒ_‚Éw’è‚³‚ê‚½Content-Encoding‚ªAHTTPƒŠƒNƒGƒXƒg‚ÌHTTPƒwƒbƒ_‚Éw’è‚³‚ê‚½Accept-Encoding‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚é‚©‚ğ”»’è‚·‚éB<p>
+     * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®HTTPãƒ˜ãƒƒãƒ€ã«æŒ‡å®šã•ã‚ŒãŸContent-EncodingãŒã€HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®HTTPãƒ˜ãƒƒãƒ€ã«æŒ‡å®šã•ã‚ŒãŸAccept-Encodingã«å«ã¾ã‚Œã¦ã„ã‚‹ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @param contentEncoding HTTPƒŒƒXƒ|ƒ“ƒX‚ÌHTTPƒwƒbƒ_‚Éw’è‚³‚ê‚½Content-Encoding
-     * @param acceptEncoding HTTPƒŠƒNƒGƒXƒg‚ÌHTTPƒwƒbƒ_‚Éw’è‚³‚ê‚½Accept-Encoding
-     * @return ŠÜ‚Ü‚ê‚Ä‚¢‚éê‡‚ÍAtrue
+     * @param contentEncoding HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®HTTPãƒ˜ãƒƒãƒ€ã«æŒ‡å®šã•ã‚ŒãŸContent-Encoding
+     * @param acceptEncoding HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®HTTPãƒ˜ãƒƒãƒ€ã«æŒ‡å®šã•ã‚ŒãŸAccept-Encoding
+     * @return å«ã¾ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€true
      */
     protected boolean isAppropriateEncoding(
         String contentEncoding,
@@ -363,11 +363,11 @@ public class HttpResponse{
     }
     
     /**
-     * ‚±‚ÌHTTPƒŒƒXƒ|ƒ“ƒX‚Ìƒwƒbƒ_‹y‚Ñƒ{ƒfƒB‚ğo—ÍƒXƒgƒŠ[ƒ€‚É‘‚«‚ŞB<p>
+     * ã“ã®HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®ãƒ˜ãƒƒãƒ€åŠã³ãƒœãƒ‡ã‚£ã‚’å‡ºåŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«æ›¸ãè¾¼ã‚€ã€‚<p>
      *
-     * @param request HTTPƒŠƒNƒGƒXƒg
-     * @param os HTTPƒŒƒXƒ|ƒ“ƒXo—ÍƒXƒgƒŠ[ƒ€
-     * @exception IOException ‘‚«‚İ‚É¸”s‚µ‚½ê‡
+     * @param request HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param os HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹å‡ºåŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @exception IOException æ›¸ãè¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void writeResponse(HttpRequest request, OutputStream os) throws IOException{
         byte[] bodyBytes = outputStream.toByteArray();
@@ -443,13 +443,13 @@ public class HttpResponse{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒoƒCƒg”z—ñ‚ğw’è‚³‚ê‚½Content-Encoding‚Åˆ³k‚·‚éB<p>
-     * ‘Î‰‚µ‚Ä‚¢‚éContent-Encoding‚ÍAdeflateAgzipAx-gzip‚Å‚ ‚éB<br>
+     * æŒ‡å®šã•ã‚ŒãŸãƒã‚¤ãƒˆé…åˆ—ã‚’æŒ‡å®šã•ã‚ŒãŸContent-Encodingã§åœ§ç¸®ã™ã‚‹ã€‚<p>
+     * å¯¾å¿œã—ã¦ã„ã‚‹Content-Encodingã¯ã€deflateã€gzipã€x-gzipã§ã‚ã‚‹ã€‚<br>
      *
-     * @param bytes “ü—ÍƒoƒCƒg”z—ñ
-     * @param contentEncoding Content-Encodingƒwƒbƒ_
-     * @return ˆ³k‚³‚ê‚½ƒoƒCƒg”z—ñBˆ³k‚·‚é•K—v‚ª‚È‚¢ê‡‚ÍA‚»‚Ì‚Ü‚Ü•Ô‚·
-     * @exception IOExceptioon ˆ³k‚É¸”s‚µ‚½ê‡B‘Î‰‚µ‚Ä‚¢‚È‚¢Content-Encoding‚ªw’è‚³‚ê‚Ä‚¢‚½ê‡B
+     * @param bytes å…¥åŠ›ãƒã‚¤ãƒˆé…åˆ—
+     * @param contentEncoding Content-Encodingãƒ˜ãƒƒãƒ€
+     * @return åœ§ç¸®ã•ã‚ŒãŸãƒã‚¤ãƒˆé…åˆ—ã€‚åœ§ç¸®ã™ã‚‹å¿…è¦ãŒãªã„å ´åˆã¯ã€ãã®ã¾ã¾è¿”ã™
+     * @exception IOExceptioon åœ§ç¸®ã«å¤±æ•—ã—ãŸå ´åˆã€‚å¯¾å¿œã—ã¦ã„ãªã„Content-EncodingãŒæŒ‡å®šã•ã‚Œã¦ã„ãŸå ´åˆã€‚
      */
     protected byte[] compress(
         byte[] bytes,
@@ -461,11 +461,11 @@ public class HttpResponse{
         final ByteArrayOutputStream baos = new ByteArrayOutputStream();
         OutputStream out = baos;
         if(contentEncoding.indexOf(CONTENT_ENCODING_DEFLATE) != -1){
-            // deflateˆ³k
+            // deflateåœ§ç¸®
             out = new DeflaterOutputStream(out);
         }else if(contentEncoding.indexOf(CONTENT_ENCODING_GZIP) != -1
                     || contentEncoding.indexOf(CONTENT_ENCODING_X_GZIP) != -1){
-            // gzipˆ³k
+            // gzipåœ§ç¸®
             out = new GZIPOutputStream(out);
         }else{
             throw new IOException("Can not compress. [" + contentEncoding + "]");

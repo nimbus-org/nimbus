@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.resource.http;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link HttpClientFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link HttpClientFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see HttpClientFactoryService
@@ -42,16 +42,16 @@ import jp.ossc.nimbus.core.*;
 public interface HttpClientFactoryServiceMBean extends ServiceBaseMBean{
     
     /**
-     * {@link jp.ossc.nimbus.service.http.HttpClientFactory HttpClientFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.http.HttpClientFactory HttpClientFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name HttpClientFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name HttpClientFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setHttpClientFactoryServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.http.HttpClientFactory HttpClientFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.http.HttpClientFactory HttpClientFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return HttpClientFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return HttpClientFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getHttpClientFactoryServiceName();
 }

@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.cache;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link DefaultOverflowControllerService}��MBean�C���^�t�F�[�X<p>
+ * {@link DefaultOverflowControllerService}のMBeanインタフェース<p>
  * 
  * @author M.Takata
  * @see DefaultOverflowControllerService
@@ -42,127 +42,127 @@ import jp.ossc.nimbus.core.*;
 public interface DefaultOverflowControllerServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ���ӂꌟ�؂��s��OverflowValidator�T�[�r�X�̃T�[�r�X����ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�́A���ӂꐧ�䂪�s���Ȃ��B<br>
+     * あふれ検証を行うOverflowValidatorサービスのサービス名を設定する。<p>
+     * 設定しない場合は、あふれ制御が行われない。<br>
      *
-     * @param name �T�[�r�X��
+     * @param name サービス名
      */
     public void setOverflowValidatorServiceName(ServiceName name);
     
     /**
-     * ���ӂꌟ�؂��s��OverflowValidator�T�[�r�X�̃T�[�r�X�����擾����B<p>
+     * あふれ検証を行うOverflowValidatorサービスのサービス名を取得する。<p>
      *
-     * @return �T�[�r�X��
+     * @return サービス名
      */
     public ServiceName getOverflowValidatorServiceName();
     
     /**
-     * ���ӂꌟ�،��ʂɏ]���Ă��ӂ��L���b�V���I�u�W�F�N�g�����肷��OverflowAlgorithm�T�[�r�X�̃T�[�r�X����ݒ肷��B<p>
-     * {@link #setOverflowValidatorServiceName(ServiceName)}�ł��ӂꌟ�؃T�[�r�X���ݒ肳��Ă���ꍇ�́A���̑������K���ݒ肵�Ȃ���΂Ȃ�Ȃ��B<br>
+     * あふれ検証結果に従ってあふれるキャッシュオブジェクトを決定するOverflowAlgorithmサービスのサービス名を設定する。<p>
+     * {@link #setOverflowValidatorServiceName(ServiceName)}であふれ検証サービスが設定されている場合は、この属性も必ず設定しなければならない。<br>
      *
-     * @param name �T�[�r�X��
+     * @param name サービス名
      */
     public void setOverflowAlgorithmServiceName(ServiceName name);
     
     /**
-     * ���ӂꌟ�،��ʂɏ]���Ă��ӂ��L���b�V���I�u�W�F�N�g�����肷��OverflowAlgorithm�T�[�r�X�̃T�[�r�X�����擾����B<p>
+     * あふれ検証結果に従ってあふれるキャッシュオブジェクトを決定するOverflowAlgorithmサービスのサービス名を取得する。<p>
      *
-     * @return �T�[�r�X��
+     * @return サービス名
      */
     public ServiceName getOverflowAlgorithmServiceName();
     
     /**
-     * ���ӂ�A���S���Y���ɂ���Č��肳�ꂽ���ӂ�L���b�V���I�u�W�F�N�g�����ӂꂳ����OverflowAction�T�[�r�X�̃T�[�r�X����ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�ɂ́A{@link RemoveOverflowActionService}���g�p�����B<br>
+     * あふれアルゴリズムによって決定されたあふれキャッシュオブジェクトをあふれさせるOverflowActionサービスのサービス名を設定する。<p>
+     * 設定しない場合には、{@link RemoveOverflowActionService}が使用される。<br>
      *
-     * @param name �T�[�r�X��
+     * @param name サービス名
      */
     public void setOverflowActionServiceName(ServiceName name);
     
     /**
-     * ���ӂ�A���S���Y���ɂ���Č��肳�ꂽ���ӂ�L���b�V���I�u�W�F�N�g�����ӂꂳ����OverflowAction�T�[�r�X�̃T�[�r�X�����擾����B<p>
+     * あふれアルゴリズムによって決定されたあふれキャッシュオブジェクトをあふれさせるOverflowActionサービスのサービス名を取得する。<p>
      *
-     * @return �T�[�r�X��
+     * @return サービス名
      */
     public ServiceName getOverflowActionServiceName();
     
     /**
-     * ���ӂꐧ��̗v����ʃX���b�h�ŏ������邽�߂ɁA��U�L���[�ɗ��߂邽�߂�Queue�T�[�r�X�̃T�[�r�X����ݒ肷��B<p>
-     * �ݒ肵�Ȃ��ꍇ�ɂ́A�����I�ɂ��ӂꐧ�䂪�s����B<br>
+     * あふれ制御の要求を別スレッドで処理するために、一旦キューに溜めるためのQueueサービスのサービス名を設定する。<p>
+     * 設定しない場合には、同期的にあふれ制御が行われる。<br>
      *
-     * @param name �T�[�r�X��
+     * @param name サービス名
      */
     public void setQueueServiceName(ServiceName name);
     
     /**
-     * ���ӂꐧ��̗v����ʃX���b�h�ŏ������邽�߂ɁA��U�L���[�ɗ��߂邽�߂�Queue�T�[�r�X�̃T�[�r�X�����擾����B<p>
+     * あふれ制御の要求を別スレッドで処理するために、一旦キューに溜めるためのQueueサービスのサービス名を取得する。<p>
      *
-     * @return �T�[�r�X��
+     * @return サービス名
      */
     public ServiceName getQueueServiceName();
     
     /**
-     * ����I�ɂ��ӂꐧ����s�����ԊԊu[ms]��ݒ肷��B<p>
-     * �f�t�H���g��0�ŁA����I�Ȃ��ӂꐧ��͍s��Ȃ��B<br>
+     * 定期的にあふれ制御を行う時間間隔[ms]を設定する。<p>
+     * デフォルトは0で、定期的なあふれ制御は行わない。<br>
      *
-     * @param time ����I�ɂ��ӂꐧ����s�����ԊԊu[ms]
+     * @param time 定期的にあふれ制御を行う時間間隔[ms]
      */
     public void setPeriodicOverflowIntervalTime(long time);
     
     /**
-     * ����I�ɂ��ӂꐧ����s�����ԊԊu[ms]���擾����B<p>
+     * 定期的にあふれ制御を行う時間間隔[ms]を取得する。<p>
      *
-     * @return ����I�ɂ��ӂꐧ����s�����ԊԊu[ms]
+     * @return 定期的にあふれ制御を行う時間間隔[ms]
      */
     public long getPeriodicOverflowIntervalTime();
     
     /**
-     * �L���b�V���Q�Ƃ��ǉ�����邽�тɂ��ӂꐧ����s�����ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Atrue�ŁA�ǉ��̂��тɂ��ӂꐧ����s���B<br>
+     * キャッシュ参照が追加されるたびにあふれ制御を行うかどうかを設定する。<p>
+     * デフォルトは、trueで、追加のたびにあふれ制御を行う。<br>
      *
-     * @param isOverflow �ǉ��̂��тɂ��ӂꐧ����s���ꍇ�́Atrue
+     * @param isOverflow 追加のたびにあふれ制御を行う場合は、true
      */
     public void setOverflowByAdding(boolean isOverflow);
     
     /**
-     * �L���b�V���Q�Ƃ��ǉ�����邽�тɂ��ӂꐧ����s�����ǂ����𔻒肷��B<p>
+     * キャッシュ参照が追加されるたびにあふれ制御を行うかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A�ǉ��̂��тɂ��ӂꐧ����s��
+     * @return trueの場合、追加のたびにあふれ制御を行う
      */
     public boolean isOverflowByAdding();
     
     /**
-     * ���ӂꐧ����s�����тɂ��ӂꌟ�؂��s�����ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Atrue�ŁA���ӂꐧ����s�����тɂ��ӂꌟ�؂��s���B<br>
+     * あふれ制御を行うたびにあふれ検証を行うかどうかを設定する。<p>
+     * デフォルトは、trueで、あふれ制御を行うたびにあふれ検証を行う。<br>
      *
-     * @param isValidate ���ӂꐧ����s�����тɂ��ӂꌟ�؂��s���ꍇ�́Atrue
+     * @param isValidate あふれ制御を行うたびにあふれ検証を行う場合は、true
      */
     public void setValidateByOverflow(boolean isValidate);
     
     /**
-     * ���ӂꐧ����s�����тɂ��ӂꌟ�؂��s�����ǂ����𔻒肷��B<p>
+     * あふれ制御を行うたびにあふれ検証を行うかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A���ӂꐧ����s�����тɂ��ӂꌟ�؂��s��
+     * @return trueの場合、あふれ制御を行うたびにあふれ検証を行う
      */
     public boolean isValidateByOverflow();
     
     /**
-     * �V�K�ǉ������L���b�V���Q�Ƃ����ӂ�Ώۂɉ����邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Afalse�ŁA�V�K�ǉ������L���b�V���Q�Ƃ͂��ӂ�Ώۂɉ����Ȃ��B<br>
+     * 新規追加されるキャッシュ参照をあふれ対象に加えるかどうかを設定する。<p>
+     * デフォルトは、falseで、新規追加されるキャッシュ参照はあふれ対象に加えない。<br>
      *
-     * @param isOverflow �V�K�ǉ������L���b�V���Q�Ƃ����ӂ�Ώۂɉ�����ꍇ�́Atrue
+     * @param isOverflow 新規追加されるキャッシュ参照をあふれ対象に加える場合は、true
      */
     public void setOverflowNewAdding(boolean isOverflow);
     
     /**
-     * �V�K�ǉ������L���b�V���Q�Ƃ����ӂ�Ώۂɉ����邩�ǂ����𔻒肷��B<p>
+     * 新規追加されるキャッシュ参照をあふれ対象に加えるかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A�V�K�ǉ������L���b�V���Q�Ƃ����ӂ�Ώۂɉ�����
+     * @return trueの場合、新規追加されるキャッシュ参照をあふれ対象に加える
      */
     public boolean isOverflowNewAdding();
     
     /**
-     * ���ӂꐧ����s�����߂ɕێ����Ă����������������B<p>
+     * あふれ制御を行うために保持している情報を初期化する。<p>
      */
     public void reset();
 }

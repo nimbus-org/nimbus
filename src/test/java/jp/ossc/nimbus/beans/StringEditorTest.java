@@ -71,7 +71,7 @@ public class StringEditorTest extends TestCase{
         StringEditor editor = new StringEditor();
         System.setProperty("test.StringEditor.value", "abc");
         editor.setAsText("\\u3042${test.StringEditor.value}");
-        assertEquals(new String("Ç†abc"), editor.getValue());
+        assertEquals(new String("„ÅÇabc"), editor.getValue());
     }
     
     public void testSetValue1() throws Exception {

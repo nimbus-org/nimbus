@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Shift_JIS" ?> 
+<?xml version="1.0" encoding="UTF-8" ?> 
 <server>
 
     <default-log>
@@ -11,7 +11,7 @@
 
     <manager name="TheManager">
   <!--
-ƒT[ƒrƒX‚ðMBeanServer‚É“o˜^‚µ‚½‚¢ê‡‚ÉŽw’è‚·‚éB
+ã‚µãƒ¼ãƒ“ã‚¹ã‚’MBeanServerã«ç™»éŒ²ã—ãŸã„å ´åˆã«æŒ‡å®šã™ã‚‹ã€‚
 -->
        <repository>ServiceRepository</repository>
        <service code="jp.ossc.nimbus.service.message.MessageRecordFactoryService" name="MessageService1">

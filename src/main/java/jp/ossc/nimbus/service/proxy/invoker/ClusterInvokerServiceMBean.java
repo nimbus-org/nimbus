@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.proxy.invoker;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link ClusterInvokerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link ClusterInvokerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see ClusterInvokerService
@@ -43,104 +43,104 @@ public interface ClusterInvokerServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * ŒÄ‚Ño‚µ‘ÎÛ‚ğƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒg‚Åw’è‚µ‚ÄŒÄ‚Ño‚·Û‚ÉAŒÄ‚Ño‚µ‘ÎÛ‚ğw’è‚·‚éƒRƒ“ƒeƒLƒXƒgƒL[B<p>
-     * ƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒg‚Ì’l‚ÍA{@link jp.ossc.nimbus.service.proxy.invoker.KeepAliveCheckInvoker KeepAliveCheckInvoker}‚ÌƒT[ƒrƒX–¼A‚Ü‚½‚ÍA{@link jp.ossc.nimbus.service.proxy.invoker.KeepAliveCheckInvoker#getHostInfo() KeepAliveCheckInvoker.getHostInfo()}‚Ì’lB<br>
+     * å‘¼ã³å‡ºã—å¯¾è±¡ã‚’ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§æŒ‡å®šã—ã¦å‘¼ã³å‡ºã™éš›ã«ã€å‘¼ã³å‡ºã—å¯¾è±¡ã‚’æŒ‡å®šã™ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚­ãƒ¼ã€‚<p>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®å€¤ã¯ã€{@link jp.ossc.nimbus.service.proxy.invoker.KeepAliveCheckInvoker KeepAliveCheckInvoker}ã®ã‚µãƒ¼ãƒ“ã‚¹åã€ã¾ãŸã¯ã€{@link jp.ossc.nimbus.service.proxy.invoker.KeepAliveCheckInvoker#getHostInfo() KeepAliveCheckInvoker.getHostInfo()}ã®å€¤ã€‚<br>
      */
     public static final String CONTEXT_KEY_INVOKE_TARGET = ClusterInvokerServiceMBean.class.getName().replace('.', '_') + "_TARGET";
     
     /**
-     * ŒÄ‚Ño‚µ“_‚Å¶‘¶‚µ‚Ä‚¢‚é‘S‚Ä‚ÌŒÄ‚Ño‚µ‘ÎÛ‚ğƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒg‚Åw’è‚µ‚ÄŒÄ‚Ño‚·Û‚ÉAw’è‚·‚éƒRƒ“ƒeƒLƒXƒgƒL[B<p>
-     * ƒXƒŒƒbƒhƒRƒ“ƒeƒLƒXƒg‚Ì’l‚ÍABoolean.TRUE‚Ü‚½‚ÍBoolean.valueOf(String)‚ªtrue‚ğ•Ô‚·•¶š—ñB<br>
+     * å‘¼ã³å‡ºã—æ™‚ç‚¹ã§ç”Ÿå­˜ã—ã¦ã„ã‚‹å…¨ã¦ã®å‘¼ã³å‡ºã—å¯¾è±¡ã‚’ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã§æŒ‡å®šã—ã¦å‘¼ã³å‡ºã™éš›ã«ã€æŒ‡å®šã™ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚­ãƒ¼ã€‚<p>
+     * ã‚¹ãƒ¬ãƒƒãƒ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®å€¤ã¯ã€Boolean.TRUEã¾ãŸã¯Boolean.valueOf(String)ãŒtrueã‚’è¿”ã™æ–‡å­—åˆ—ã€‚<br>
      */
     public static final String CONTEXT_KEY_INVOKE_BROADCAST = ClusterInvokerServiceMBean.class.getName().replace('.', '_') + "_BROADCAST";
     
     /**
-     * {@link jp.ossc.nimbus.service.proxy.invoker.KeepAliveCheckInvoker KeepAliveCheckInvoker}‚ğ‘I‘ğ‚·‚é{@link jp.ossc.nimbus.service.keepalive.KeepAliveCheckerSelector KeepAliveCheckerSelector}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.proxy.invoker.KeepAliveCheckInvoker KeepAliveCheckInvoker}ã‚’é¸æŠã™ã‚‹{@link jp.ossc.nimbus.service.keepalive.KeepAliveCheckerSelector KeepAliveCheckerSelector}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name KeepAliveCheckerSelectorƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name KeepAliveCheckerSelectorã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setKeepAliveCheckerSelectorServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.proxy.invoker.KeepAliveCheckInvoker KeepAliveCheckInvoker}‚ğ‘I‘ğ‚·‚é{@link jp.ossc.nimbus.service.keepalive.KeepAliveCheckerSelector KeepAliveCheckerSelector}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.proxy.invoker.KeepAliveCheckInvoker KeepAliveCheckInvoker}ã‚’é¸æŠã™ã‚‹{@link jp.ossc.nimbus.service.keepalive.KeepAliveCheckerSelector KeepAliveCheckerSelector}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @return KeepAliveCheckerSelectorƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return KeepAliveCheckerSelectorã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getKeepAliveCheckerSelectorServiceName();
     
     /**
-     * ƒŠƒgƒ‰ƒC‚·‚é—áŠO‚ÌƒNƒ‰ƒX–¼‚Æ‚»‚ÌğŒ‚ğİ’è‚·‚éB<p>
-     * ‚±‚ÌğŒ‚ğİ’è‚µ‚È‚¢ê‡‚ÍA{@link jp.ossc.nimbus.service.proxy.RemoteServiceCallException}‚ğƒLƒƒƒbƒ`‚µ‚½ê‡‚ÉƒŠƒgƒ‰ƒC‚·‚éB<br>
-     * ğŒ®‚ÍAThe Apache Jakarta Project‚Ì Commons Jexl(http://jakarta.apache.org/commons/jexl/)‚ğg—p‚·‚éB<br>
-     * —áŠO‚ÌƒvƒƒpƒeƒB‚ğQÆ‚·‚éê‡‚ÍAƒvƒƒpƒeƒB‚ğ•\Œ»‚·‚é•¶š—ñ‚ğ"@"‚ÅˆÍ‚ñ‚Åw’è‚·‚éB‚±‚±‚ÅŒ¾‚¤AƒvƒƒpƒeƒB‚ÌŠT”O‚ÍAJava Beans‚ÌƒvƒƒpƒeƒB‚ÌŠT”O‚æ‚èL‚­A{@link jp.ossc.nimbus.beans.PropertyFactory PropertyFactory}‚Ì‹K–ñ‚É]‚¤B<br>
+     * ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹ä¾‹å¤–ã®ã‚¯ãƒ©ã‚¹åã¨ãã®æ¡ä»¶ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®æ¡ä»¶ã‚’è¨­å®šã—ãªã„å ´åˆã¯ã€{@link jp.ossc.nimbus.service.proxy.RemoteServiceCallException}ã‚’ã‚­ãƒ£ãƒƒãƒã—ãŸå ´åˆã«ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹ã€‚<br>
+     * æ¡ä»¶å¼ã¯ã€The Apache Jakarta Projectã® Commons Jexl(http://jakarta.apache.org/commons/jexl/)ã‚’ä½¿ç”¨ã™ã‚‹ã€‚<br>
+     * ä¾‹å¤–ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å‚ç…§ã™ã‚‹å ´åˆã¯ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¡¨ç¾ã™ã‚‹æ–‡å­—åˆ—ã‚’"@"ã§å›²ã‚“ã§æŒ‡å®šã™ã‚‹ã€‚ã“ã“ã§è¨€ã†ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¦‚å¿µã¯ã€Java Beansã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¦‚å¿µã‚ˆã‚Šåºƒãã€{@link jp.ossc.nimbus.beans.PropertyFactory PropertyFactory}ã®è¦ç´„ã«å¾“ã†ã€‚<br>
      *
-     * @param conditions —áŠOƒNƒ‰ƒX–¼:ğŒ®iğŒ‚ª•K—v‚È‚¢ê‡‚ÍA:ˆÈ‰º‚ğÈ—ª‰Â”\j‚Ì•¶š—ñ”z—ñ
+     * @param conditions ä¾‹å¤–ã‚¯ãƒ©ã‚¹å:æ¡ä»¶å¼ï¼ˆæ¡ä»¶ãŒå¿…è¦ãªã„å ´åˆã¯ã€:ä»¥ä¸‹ã‚’çœç•¥å¯èƒ½ï¼‰ã®æ–‡å­—åˆ—é…åˆ—
      */
     public void setExceptionConditions(String[] conditions);
     
     /**
-     * ƒŠƒgƒ‰ƒC‚·‚é—áŠO‚ÌƒNƒ‰ƒX–¼‚Æ‚»‚ÌğŒ‚ğæ“¾‚·‚éB<p>
+     * ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹ä¾‹å¤–ã®ã‚¯ãƒ©ã‚¹åã¨ãã®æ¡ä»¶ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return —áŠOƒNƒ‰ƒX–¼:ğŒ®iğŒ‚ª•K—v‚È‚¢ê‡‚ÍA:ˆÈ‰º‚ğÈ—ª‰Â”\j‚Ì•¶š—ñ”z—ñ
+     * @return ä¾‹å¤–ã‚¯ãƒ©ã‚¹å:æ¡ä»¶å¼ï¼ˆæ¡ä»¶ãŒå¿…è¦ãªã„å ´åˆã¯ã€:ä»¥ä¸‹ã‚’çœç•¥å¯èƒ½ï¼‰ã®æ–‡å­—åˆ—é…åˆ—
      */
     public String[] getExceptionConditions();
     
     /**
-     * ƒŠƒgƒ‰ƒC‚·‚é‰ñ”‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0‚ÅƒŠƒgƒ‰ƒC‚µ‚È‚¢B<br>
+     * ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹å›æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã§ãƒªãƒˆãƒ©ã‚¤ã—ãªã„ã€‚<br>
      *
-     * @param count ƒŠƒgƒ‰ƒC‚·‚é‰ñ”
+     * @param count ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹å›æ•°
      */
     public void setMaxRetryCount(int count);
     
     /**
-     * ƒŠƒgƒ‰ƒC‚·‚é‰ñ”‚ğæ“¾‚·‚éB<p>
+     * ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹å›æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒgƒ‰ƒC‚·‚é‰ñ”
+     * @return ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹å›æ•°
      */
     public int getMaxRetryCount();
     
     /**
-     * ƒŠƒgƒ‰ƒC‚·‚éŠÔŠu[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0‚ÅŠÔŠu‚ğ‚ ‚¯‚¸‚ÉƒŠƒgƒ‰ƒC‚·‚éB<br>
+     * ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹é–“éš”[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã§é–“éš”ã‚’ã‚ã‘ãšã«ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹ã€‚<br>
      *
-     * @param interval ƒŠƒgƒ‰ƒC‚·‚éŠÔŠu[ms]
+     * @param interval ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹é–“éš”[ms]
      */
     public void setRetryInterval(long interval);
     
     /**
-     * ƒŠƒgƒ‰ƒC‚·‚éŠÔŠu[ms]‚ğæ“¾‚·‚éB<p>
+     * ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹é–“éš”[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒgƒ‰ƒC‚·‚éŠÔŠu[ms]
+     * @return ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹é–“éš”[ms]
      */
     public long getRetryInterval();
     
     /**
-     * ŒÄ‚Ño‚µ“_‚Å¶‘¶‚µ‚Ä‚¢‚é‘S‚Ä‚Ì{@link jp.ossc.nimbus.service.proxy.invoker.KeepAliveCheckInvoker KeepAliveCheckInvoker}‚ğŒÄ‚Ño‚·‚æ‚¤‚É‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * true‚Ìê‡AŒÄ‚Ño‚µ“_‚Å¶‘¶‚µ‚Ä‚¢‚é‘S‚Ä‚ÌKeepAliveCheckInvoker‚ğ‡ŸŒÄ‚Ño‚·B‚»‚ÌÛAƒŠƒgƒ‰ƒC‹@”\‚Í–³Œø‚Æ‚È‚èA‚Ç‚ê‚©‚P‚Â‚ÌKeepAliveCheckInvoker‚ÌŒÄ‚Ño‚µ‚Å—áŠO‚ª”­¶‚·‚é‚ÆA‚»‚±‚ÅI—¹‚·‚éB<br>
+     * å‘¼ã³å‡ºã—æ™‚ç‚¹ã§ç”Ÿå­˜ã—ã¦ã„ã‚‹å…¨ã¦ã®{@link jp.ossc.nimbus.service.proxy.invoker.KeepAliveCheckInvoker KeepAliveCheckInvoker}ã‚’å‘¼ã³å‡ºã™ã‚ˆã†ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * trueã®å ´åˆã€å‘¼ã³å‡ºã—æ™‚ç‚¹ã§ç”Ÿå­˜ã—ã¦ã„ã‚‹å…¨ã¦ã®KeepAliveCheckInvokerã‚’é †æ¬¡å‘¼ã³å‡ºã™ã€‚ãã®éš›ã€ãƒªãƒˆãƒ©ã‚¤æ©Ÿèƒ½ã¯ç„¡åŠ¹ã¨ãªã‚Šã€ã©ã‚Œã‹ï¼‘ã¤ã®KeepAliveCheckInvokerã®å‘¼ã³å‡ºã—ã§ä¾‹å¤–ãŒç™ºç”Ÿã™ã‚‹ã¨ã€ãã“ã§çµ‚äº†ã™ã‚‹ã€‚<br>
      *
-     * @param isBroadcast ‘S‚Ä‚ÌKeepAliveCheckInvoker‚ğŒÄ‚Ño‚·ê‡‚ÍAtrue
+     * @param isBroadcast å…¨ã¦ã®KeepAliveCheckInvokerã‚’å‘¼ã³å‡ºã™å ´åˆã¯ã€true
      */
     public void setBroadcast(boolean isBroadcast);
     
     /**
-     * ŒÄ‚Ño‚µ“_‚Å¶‘¶‚µ‚Ä‚¢‚é‘S‚Ä‚Ì{@link jp.ossc.nimbus.service.proxy.invoker.KeepAliveCheckInvoker KeepAliveCheckInvoker}‚ğŒÄ‚Ño‚·‚æ‚¤‚É‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å‘¼ã³å‡ºã—æ™‚ç‚¹ã§ç”Ÿå­˜ã—ã¦ã„ã‚‹å…¨ã¦ã®{@link jp.ossc.nimbus.service.proxy.invoker.KeepAliveCheckInvoker KeepAliveCheckInvoker}ã‚’å‘¼ã³å‡ºã™ã‚ˆã†ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A‘S‚Ä‚ÌKeepAliveCheckInvoker‚ğŒÄ‚Ño‚·
+     * @return trueã®å ´åˆã€å…¨ã¦ã®KeepAliveCheckInvokerã‚’å‘¼ã³å‡ºã™
      */
     public boolean isBroadcast();
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setThreadContextServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getThreadContextServiceName();
 }

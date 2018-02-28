@@ -39,10 +39,10 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 /**
- * ‘Ò‹@“¯Šúƒ‚ƒjƒ^B<p>
- * Object.wait()‚É‚ÍA’Ê’mAŠ„‚è‚İAƒ^ƒCƒ€ƒAƒEƒg‚È‚µ‚ÉÄŠJ‚³‚ê‚éuƒXƒvƒŠƒAƒXƒEƒFƒCƒNƒAƒbƒvv‚Æ‚¢‚¤Œ»Û‚ª‘¶İ‚·‚éB<br>
- * ‚±‚ê‚ÍAwaitAnotifyƒ‚ƒfƒ‹‚ğg‚¢‚½‚¢ƒvƒƒOƒ‰ƒ}[‚É‚Æ‚Á‚ÄA‚â‚Á‚©‚¢‚È–â‘è‚Å‚ ‚éB<br>
- * ‚±‚ÌƒNƒ‰ƒX‚ÍA‚»‚Ì–â‘è‚ğ‰ñ”ğ‚·‚éÀ‘•‚ğ‚Á‚½Aƒ†[ƒeƒBƒŠƒeƒBƒNƒ‰ƒX‚Å‚ ‚éB<br>
+ * å¾…æ©ŸåŒæœŸãƒ¢ãƒ‹ã‚¿ã€‚<p>
+ * Object.wait()ã«ã¯ã€é€šçŸ¥ã€å‰²ã‚Šè¾¼ã¿ã€ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆãªã—ã«å†é–‹ã•ã‚Œã‚‹ã€Œã‚¹ãƒ—ãƒªã‚¢ã‚¹ã‚¦ã‚§ã‚¤ã‚¯ã‚¢ãƒƒãƒ—ã€ã¨ã„ã†ç¾è±¡ãŒå­˜åœ¨ã™ã‚‹ã€‚<br>
+ * ã“ã‚Œã¯ã€waitã€notifyãƒ¢ãƒ‡ãƒ«ã‚’ä½¿ã„ãŸã„ãƒ—ãƒ­ã‚°ãƒ©ãƒãƒ¼ã«ã¨ã£ã¦ã€ã‚„ã£ã‹ã„ãªå•é¡Œã§ã‚ã‚‹ã€‚<br>
+ * ã“ã®ã‚¯ãƒ©ã‚¹ã¯ã€ãã®å•é¡Œã‚’å›é¿ã™ã‚‹å®Ÿè£…ã‚’æŒã£ãŸã€ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ã‚¯ãƒ©ã‚¹ã§ã‚ã‚‹ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -55,27 +55,27 @@ public class WaitSynchronizeMonitor implements SynchronizeMonitor, java.io.Seria
     protected boolean isClosed;
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public WaitSynchronizeMonitor(){
     }
     
     /**
-     * ŒÄ‚Ño‚µƒXƒŒƒbƒh‚É‘Î‚·‚éƒ‚ƒjƒ^‚ğ‰Šú‰»‚·‚éB<p>
-     * {@link #waitMonitor()}A{@link #waitMonitor(long)}‚ğŒÄ‚Ño‚·‘O‚ÉA‚±‚Ìƒƒ\ƒbƒh‚ğŒÄ‚Ô•K—v‚ª‚ ‚éB<br>
+     * å‘¼ã³å‡ºã—ã‚¹ãƒ¬ãƒƒãƒ‰ã«å¯¾ã™ã‚‹ãƒ¢ãƒ‹ã‚¿ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
+     * {@link #waitMonitor()}ã€{@link #waitMonitor(long)}ã‚’å‘¼ã³å‡ºã™å‰ã«ã€ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã¶å¿…è¦ãŒã‚ã‚‹ã€‚<br>
      *
-     * @return ƒ‚ƒjƒ^‚ğ‰Šú‰»‚·‚é‘O‚É’Ê’m‚³‚ê‚Ä‚¢‚ê‚Îtrue
+     * @return ãƒ¢ãƒ‹ã‚¿ã‚’åˆæœŸåŒ–ã™ã‚‹å‰ã«é€šçŸ¥ã•ã‚Œã¦ã„ã‚Œã°true
      */
     public synchronized boolean initMonitor(){
         return initMonitor(Thread.currentThread());
     }
     
     /**
-     * w’è‚µ‚½ƒXƒŒƒbƒh‚É‘Î‚·‚éƒ‚ƒjƒ^‚ğ‰Šú‰»‚·‚éB<p>
-     * w’è‚µ‚½ƒXƒŒƒbƒh‚ªA{@link #waitMonitor()}A{@link #waitMonitor(long)}‚ğŒÄ‚Ño‚·‘O‚ÉA‚±‚Ìƒƒ\ƒbƒh‚ğŒÄ‚Ô•K—v‚ª‚ ‚éB<br>
+     * æŒ‡å®šã—ãŸã‚¹ãƒ¬ãƒƒãƒ‰ã«å¯¾ã™ã‚‹ãƒ¢ãƒ‹ã‚¿ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã—ãŸã‚¹ãƒ¬ãƒƒãƒ‰ãŒã€{@link #waitMonitor()}ã€{@link #waitMonitor(long)}ã‚’å‘¼ã³å‡ºã™å‰ã«ã€ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã¶å¿…è¦ãŒã‚ã‚‹ã€‚<br>
      *
-     * @param thread ‚±‚Ìƒ‚ƒjƒ^‚É‘Î‚µ‚Ä‘Ò‹@‚·‚éƒXƒŒƒbƒh
-     * @return ƒ‚ƒjƒ^‚ğ‰Šú‰»‚·‚é‘O‚É’Ê’m‚³‚ê‚Ä‚¢‚ê‚Îtrue
+     * @param thread ã“ã®ãƒ¢ãƒ‹ã‚¿ã«å¯¾ã—ã¦å¾…æ©Ÿã™ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰
+     * @return ãƒ¢ãƒ‹ã‚¿ã‚’åˆæœŸåŒ–ã™ã‚‹å‰ã«é€šçŸ¥ã•ã‚Œã¦ã„ã‚Œã°true
      */
     public synchronized boolean initMonitor(Thread thread){
         if(isClosed){
@@ -93,8 +93,8 @@ public class WaitSynchronizeMonitor implements SynchronizeMonitor, java.io.Seria
     }
     
     /**
-     * ŒÄ‚Ño‚µƒXƒŒƒbƒh‚É‘Î‚·‚éƒ‚ƒjƒ^‚ğ‰ğ•ú‚·‚éB<p>
-     * “¯ˆêƒXƒŒƒbƒh‚Å‚±‚Ìƒ‚ƒjƒ^‚ğÄ—˜—p‚·‚éê‡‚É‚ÍA‚±‚Ìƒƒ\ƒbƒh‚ğŒÄ‚Ño‚³‚È‚­‚Ä‚à—Ç‚¢B<br>
+     * å‘¼ã³å‡ºã—ã‚¹ãƒ¬ãƒƒãƒ‰ã«å¯¾ã™ã‚‹ãƒ¢ãƒ‹ã‚¿ã‚’è§£æ”¾ã™ã‚‹ã€‚<p>
+     * åŒä¸€ã‚¹ãƒ¬ãƒƒãƒ‰ã§ã“ã®ãƒ¢ãƒ‹ã‚¿ã‚’å†åˆ©ç”¨ã™ã‚‹å ´åˆã«ã¯ã€ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã•ãªãã¦ã‚‚è‰¯ã„ã€‚<br>
      */
     public synchronized void releaseMonitor(){
         final Thread currentThread = Thread.currentThread();
@@ -102,49 +102,49 @@ public class WaitSynchronizeMonitor implements SynchronizeMonitor, java.io.Seria
     }
     
     /**
-     * ‘S‚Ä‚Ìƒ‚ƒjƒ^‚ğ‰ğ•ú‚·‚éB<p>
+     * å…¨ã¦ã®ãƒ¢ãƒ‹ã‚¿ã‚’è§£æ”¾ã™ã‚‹ã€‚<p>
      */
     public synchronized void releaseAllMonitor(){
         monitorFlagMap.clear();
     }
     
     /**
-     * ’Ê’m‚ª—ˆ‚é‚Ü‚Å‘Ò‹@‚·‚éB<p>
-     * {@link #notifyMonitor()}A{@link #notifyAllMonitor()}‚É‚æ‚Á‚Ä’Ê’m‚³‚ê‚é‚Ü‚Å‘Ò‹@‚·‚éB<br>
+     * é€šçŸ¥ãŒæ¥ã‚‹ã¾ã§å¾…æ©Ÿã™ã‚‹ã€‚<p>
+     * {@link #notifyMonitor()}ã€{@link #notifyAllMonitor()}ã«ã‚ˆã£ã¦é€šçŸ¥ã•ã‚Œã‚‹ã¾ã§å¾…æ©Ÿã™ã‚‹ã€‚<br>
      *
-     * @exception InterruptedException Š„‚è‚±‚Ü‚ê‚½ê‡
+     * @exception InterruptedException å‰²ã‚Šã“ã¾ã‚ŒãŸå ´åˆ
      */
     public synchronized void initAndWaitMonitor() throws InterruptedException{
         initAndWaitMonitor(-1);
     }
     
     /**
-     * ’Ê’m‚ª—ˆ‚é‚©Aw’è‚³‚ê‚½ŠÔ‚ªŒo‰ß‚·‚é‚Ü‚Å‘Ò‹@‚·‚éB<p>
-     * {@link #notifyMonitor()}A{@link #notifyAllMonitor()}‚É‚æ‚Á‚Ä’Ê’m‚³‚ê‚é‚Ü‚Å‘Ò‹@‚·‚éB<br>
+     * é€šçŸ¥ãŒæ¥ã‚‹ã‹ã€æŒ‡å®šã•ã‚ŒãŸæ™‚é–“ãŒçµŒéã™ã‚‹ã¾ã§å¾…æ©Ÿã™ã‚‹ã€‚<p>
+     * {@link #notifyMonitor()}ã€{@link #notifyAllMonitor()}ã«ã‚ˆã£ã¦é€šçŸ¥ã•ã‚Œã‚‹ã¾ã§å¾…æ©Ÿã™ã‚‹ã€‚<br>
      *
-     * @return ’Ê’m‚É‚æ‚Á‚Ä‹N‚±‚³‚ê‚½ê‡trueBƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡false
-     * @exception InterruptedException Š„‚è‚±‚Ü‚ê‚½ê‡
+     * @return é€šçŸ¥ã«ã‚ˆã£ã¦èµ·ã“ã•ã‚ŒãŸå ´åˆtrueã€‚ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆfalse
+     * @exception InterruptedException å‰²ã‚Šã“ã¾ã‚ŒãŸå ´åˆ
      */
     public synchronized boolean initAndWaitMonitor(long timeout) throws InterruptedException{
         return !initMonitor() ? waitMonitor(timeout) : true;
     }
     
     /**
-     * ’Ê’m‚ª—ˆ‚é‚Ü‚Å‘Ò‹@‚·‚éB<p>
-     * {@link #notifyMonitor()}A{@link #notifyAllMonitor()}‚É‚æ‚Á‚Ä’Ê’m‚³‚ê‚é‚Ü‚Å‘Ò‹@‚·‚éB<br>
+     * é€šçŸ¥ãŒæ¥ã‚‹ã¾ã§å¾…æ©Ÿã™ã‚‹ã€‚<p>
+     * {@link #notifyMonitor()}ã€{@link #notifyAllMonitor()}ã«ã‚ˆã£ã¦é€šçŸ¥ã•ã‚Œã‚‹ã¾ã§å¾…æ©Ÿã™ã‚‹ã€‚<br>
      *
-     * @exception InterruptedException Š„‚è‚±‚Ü‚ê‚½ê‡
+     * @exception InterruptedException å‰²ã‚Šã“ã¾ã‚ŒãŸå ´åˆ
      */
     public synchronized void waitMonitor() throws InterruptedException{
         waitMonitor(-1);
     }
     
     /**
-     * ’Ê’m‚ª—ˆ‚é‚©Aw’è‚³‚ê‚½ŠÔ‚ªŒo‰ß‚·‚é‚Ü‚Å‘Ò‹@‚·‚éB<p>
-     * {@link #notifyMonitor()}A{@link #notifyAllMonitor()}‚É‚æ‚Á‚Ä’Ê’m‚³‚ê‚é‚Ü‚Å‘Ò‹@‚·‚éB<br>
+     * é€šçŸ¥ãŒæ¥ã‚‹ã‹ã€æŒ‡å®šã•ã‚ŒãŸæ™‚é–“ãŒçµŒéã™ã‚‹ã¾ã§å¾…æ©Ÿã™ã‚‹ã€‚<p>
+     * {@link #notifyMonitor()}ã€{@link #notifyAllMonitor()}ã«ã‚ˆã£ã¦é€šçŸ¥ã•ã‚Œã‚‹ã¾ã§å¾…æ©Ÿã™ã‚‹ã€‚<br>
      *
-     * @return ’Ê’m‚É‚æ‚Á‚Ä‹N‚±‚³‚ê‚½ê‡trueBƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡false
-     * @exception InterruptedException Š„‚è‚±‚Ü‚ê‚½ê‡
+     * @return é€šçŸ¥ã«ã‚ˆã£ã¦èµ·ã“ã•ã‚ŒãŸå ´åˆtrueã€‚ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆfalse
+     * @exception InterruptedException å‰²ã‚Šã“ã¾ã‚ŒãŸå ´åˆ
      */
     public synchronized boolean waitMonitor(long timeout) throws InterruptedException{
         if(isClosed){
@@ -187,7 +187,7 @@ public class WaitSynchronizeMonitor implements SynchronizeMonitor, java.io.Seria
     }
     
     /**
-     * ‘Ò‹@‚µ‚Ä‚¢‚éÅ‰‚ÌƒXƒŒƒbƒh‚É’Ê’m‚·‚éB<p>
+     * å¾…æ©Ÿã—ã¦ã„ã‚‹æœ€åˆã®ã‚¹ãƒ¬ãƒƒãƒ‰ã«é€šçŸ¥ã™ã‚‹ã€‚<p>
      */
     public synchronized void notifyMonitor(){
         if(monitorFlagMap.size() != 0){
@@ -197,7 +197,7 @@ public class WaitSynchronizeMonitor implements SynchronizeMonitor, java.io.Seria
     }
     
     /**
-     * ‘Ò‹@‚µ‚Ä‚¢‚é‘S‚Ä‚ÌƒXƒŒƒbƒh‚É’Ê’m‚·‚éB<p>
+     * å¾…æ©Ÿã—ã¦ã„ã‚‹å…¨ã¦ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã«é€šçŸ¥ã™ã‚‹ã€‚<p>
      */
     public synchronized void notifyAllMonitor(){
         if(monitorFlagMap.size() != 0){
@@ -210,9 +210,9 @@ public class WaitSynchronizeMonitor implements SynchronizeMonitor, java.io.Seria
     }
     
     /**
-     * ‚±‚ÌƒXƒŒƒbƒh‚ª’Ê’m‚É‚æ‚Á‚Ä‹N‚±‚³‚ê‚½‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã“ã®ã‚¹ãƒ¬ãƒƒãƒ‰ãŒé€šçŸ¥ã«ã‚ˆã£ã¦èµ·ã“ã•ã‚ŒãŸã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return ’Ê’m‚É‚æ‚Á‚Ä‹N‚±‚³‚ê‚½ê‡‚Ítrue
+     * @return é€šçŸ¥ã«ã‚ˆã£ã¦èµ·ã“ã•ã‚ŒãŸå ´åˆã¯true
      */
     public synchronized boolean isNotify(){
         if(isClosed){
@@ -224,9 +224,9 @@ public class WaitSynchronizeMonitor implements SynchronizeMonitor, java.io.Seria
     }
     
     /**
-     * Å‰‚É‘Ò‹@‚µ‚Ä‚¢‚éƒXƒŒƒbƒh‚ªŒ»İ‚ÌƒXƒŒƒbƒh‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * æœ€åˆã«å¾…æ©Ÿã—ã¦ã„ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ãŒç¾åœ¨ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return Å‰‚É‘Ò‹@‚µ‚Ä‚¢‚éƒXƒŒƒbƒh‚ªŒ»İ‚ÌƒXƒŒƒbƒh‚Å‚ ‚éê‡‚Ítrue
+     * @return æœ€åˆã«å¾…æ©Ÿã—ã¦ã„ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ãŒç¾åœ¨ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã§ã‚ã‚‹å ´åˆã¯true
      */
     public synchronized boolean isFirst(){
         if(monitorFlagMap.size() == 0){
@@ -241,9 +241,9 @@ public class WaitSynchronizeMonitor implements SynchronizeMonitor, java.io.Seria
     }
     
     /**
-     * ‘Ò‹@‚µ‚Ä‚¢‚éƒXƒŒƒbƒh‚ª‘¶İ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * å¾…æ©Ÿã—ã¦ã„ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ãŒå­˜åœ¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return ‘Ò‹@‚µ‚Ä‚¢‚éƒXƒŒƒbƒh‚ª‘¶İ‚·‚éê‡‚Ítrue
+     * @return å¾…æ©Ÿã—ã¦ã„ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯true
      */
     public synchronized boolean isWait(){
         if(monitorFlagMap.size() != 0){
@@ -258,9 +258,9 @@ public class WaitSynchronizeMonitor implements SynchronizeMonitor, java.io.Seria
     }
     
     /**
-     * ‘Ò‹@‚µ‚Ä‚¢‚éƒXƒŒƒbƒh‚Ì”‚ğæ“¾‚·‚éB<p>
+     * å¾…æ©Ÿã—ã¦ã„ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ã®æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‘Ò‹@‚µ‚Ä‚¢‚éƒXƒŒƒbƒh‚Ì”
+     * @return å¾…æ©Ÿã—ã¦ã„ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ã®æ•°
      */
     public synchronized int getWaitCount(){
         int count = 0;
@@ -276,9 +276,9 @@ public class WaitSynchronizeMonitor implements SynchronizeMonitor, java.io.Seria
     }
     
     /**
-     * ‘Ò‹@‚µ‚Ä‚¢‚éƒXƒŒƒbƒh‚ğæ“¾‚·‚éB<p>
+     * å¾…æ©Ÿã—ã¦ã„ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‘Ò‹@‚µ‚Ä‚¢‚éƒXƒŒƒbƒh‚Ì”z—ñ
+     * @return å¾…æ©Ÿã—ã¦ã„ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ã®é…åˆ—
      */
     public synchronized Thread[] getWaitThreads(){
         final List result = new ArrayList();

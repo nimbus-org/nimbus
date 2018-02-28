@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link NetProxyControlActionService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX
+ * {@link NetProxyControlActionService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹
  * <p>
  *
  * @author M.Ishida
@@ -44,61 +44,61 @@ import jp.ossc.nimbus.core.ServiceName;
 public interface NetProxyControlActionServiceMBean extends ServiceBaseMBean {
 
     /**
-     * NetProxy‚ğopen‚·‚é‚½‚ß‚Ì’è”
+     * NetProxyã‚’openã™ã‚‹ãŸã‚ã®å®šæ•°
      */
     public static final String OPERATION_OPEN = "open";
 
     /**
-     * NetProxy‚ğclose‚·‚é‚½‚ß‚Ì’è”
+     * NetProxyã‚’closeã™ã‚‹ãŸã‚ã®å®šæ•°
      */
     public static final String OPERATION_CLOSE = "close";
 
     /**
-     * NetProxy‚ğreopen‚·‚é‚½‚ß‚Ì’è”
+     * NetProxyã‚’reopenã™ã‚‹ãŸã‚ã®å®šæ•°
      */
     public static final String OPERATION_REOPEN = "reopen";
 
     /**
-     * NetProxy‚ğfreeze‚·‚é‚½‚ß‚Ì’è”
+     * NetProxyã‚’freezeã™ã‚‹ãŸã‚ã®å®šæ•°
      */
     public static final String OPERATION_FREEZE = "freeze";
 
     /**
-     * NetProxy‚ğunfreeze‚·‚é‚½‚ß‚Ì’è”
+     * NetProxyã‚’unfreezeã™ã‚‹ãŸã‚ã®å®šæ•°
      */
     public static final String OPERATION_UNFREEZE = "unfreeze";
 
     /**
      * {@link jp.ossc.nimbus.service.test.proxy.NetProxy NetProxy}
-     * ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param name NetProxyƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name NetProxyã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setNetProxyServiceName(ServiceName name);
 
     /**
      * {@link jp.ossc.nimbus.service.test.proxy.NetProxy NetProxy}
-     * ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return NetProxyƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return NetProxyã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getNetProxyServiceName();
 
     /**
-     * ‚±‚ÌƒAƒNƒVƒ‡ƒ“‚ÌƒŠƒ\[ƒX’è‹`‚ğì¬‚·‚éÛ‚ÌƒfƒtƒHƒ‹ƒg‚Ì‘z’èƒRƒXƒg‚ğİ’è‚·‚éB
+     * ã“ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚½ãƒ¼ã‚¹å®šç¾©ã‚’ä½œæˆã™ã‚‹éš›ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æƒ³å®šã‚³ã‚¹ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param cost ‘z’èƒRƒXƒg
+     * @param cost æƒ³å®šã‚³ã‚¹ãƒˆ
      */
     public void setExpectedCost(double cost);
 
     /**
-     * ‚±‚ÌƒAƒNƒVƒ‡ƒ“‚ÌƒŠƒ\[ƒX’è‹`‚ğì¬‚·‚éÛ‚ÌƒfƒtƒHƒ‹ƒg‚Ì‘z’èƒRƒXƒg‚ğæ“¾‚·‚éB
+     * ã“ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚½ãƒ¼ã‚¹å®šç¾©ã‚’ä½œæˆã™ã‚‹éš›ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æƒ³å®šã‚³ã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ‘z’èƒRƒXƒg
+     * @return æƒ³å®šã‚³ã‚¹ãƒˆ
      */
     public double getExpectedCost();
 }

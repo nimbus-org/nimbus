@@ -37,13 +37,13 @@ import java.beans.*;
 import java.io.*;
 
 /**
- * ”z—ñŒ^‚ÌPropertyEditor’ŠÛƒNƒ‰ƒXB<p>
- * ƒJƒ“ƒ}‹æØ‚è‚Ì•¶š—ñ‚ğ”z—ñŒ^‚ÌƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚éB<br>
- * Å‰‚ÆÅŒã‚Ì‹ó”’‚Æ‰üs‘OŒã‚Ì‹ó”’‚ÍƒgƒŠƒ€‚³‚ê‚éB
- * ‹ó”’‚ÍA{@link java.lang.Character#isWhitespace(char)}‚Å”»’è‚³‚ê‚éB
- * ‚Ü‚½A"&lt;!--"‚Æ"--&gt;"‚ÉˆÍ‚Ü‚ê‚½•¶š—ñ‚ÍƒRƒƒ“ƒg‚Æ‰ğß‚³‚ê–³‹‚³‚ê‚éB
- * ‚Ü‚½A"${"‚Æ"}"‚ÉˆÍ‚Ü‚ê‚½•¶š—ñ‚ÍA“¯–¼‚ÌƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Æ’uŠ·‚³‚ê‚éB<br>
- * "${\t}"A"${\n}"A"${\r}"A"${\f}"‚ÍAƒGƒXƒP[ƒvƒV[ƒPƒ“ƒX‚Æ‚µ‚Ä’uŠ·‚³‚ê‚éB<br>
+ * é…åˆ—å‹ã®PropertyEditoræŠ½è±¡ã‚¯ãƒ©ã‚¹ã€‚<p>
+ * ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šã®æ–‡å­—åˆ—ã‚’é…åˆ—å‹ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹ã€‚<br>
+ * æœ€åˆã¨æœ€å¾Œã®ç©ºç™½ã¨æ”¹è¡Œå‰å¾Œã®ç©ºç™½ã¯ãƒˆãƒªãƒ ã•ã‚Œã‚‹ã€‚
+ * ç©ºç™½ã¯ã€{@link java.lang.Character#isWhitespace(char)}ã§åˆ¤å®šã•ã‚Œã‚‹ã€‚
+ * ã¾ãŸã€"&lt;!--"ã¨"--&gt;"ã«å›²ã¾ã‚ŒãŸæ–‡å­—åˆ—ã¯ã‚³ãƒ¡ãƒ³ãƒˆã¨è§£é‡ˆã•ã‚Œç„¡è¦–ã•ã‚Œã‚‹ã€‚
+ * ã¾ãŸã€"${"ã¨"}"ã«å›²ã¾ã‚ŒãŸæ–‡å­—åˆ—ã¯ã€åŒåã®ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ç½®æ›ã•ã‚Œã‚‹ã€‚<br>
+ * "${\t}"ã€"${\n}"ã€"${\r}"ã€"${\f}"ã¯ã€ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã¨ã—ã¦ç½®æ›ã•ã‚Œã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -53,9 +53,9 @@ public abstract class ArrayEditor extends PropertyEditorSupport
     private static final long serialVersionUID = 2353798267181943054L;
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ğ‰ğÍ‚µ‚ÄƒvƒƒpƒeƒB’l‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’è§£æã—ã¦ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param text ‰ğÍ‚³‚ê‚é•¶š—ñ
+     * @param text è§£æã•ã‚Œã‚‹æ–‡å­—åˆ—
      */
     public void setAsText(String text){
         if(text == null){
@@ -111,13 +111,13 @@ public abstract class ArrayEditor extends PropertyEditorSupport
                 buf.setLength(0);
             }
         }catch(IOException e){
-            // ‹N‚«‚È‚¢‚Í‚¸
+            // èµ·ããªã„ã¯ãš
             e.printStackTrace();
         }finally{
             try{
                 br.close();
             }catch(IOException e){
-                // ‹N‚«‚È‚¢‚Í‚¸
+                // èµ·ããªã„ã¯ãš
                 e.printStackTrace();
             }
             sr.close();
@@ -128,9 +128,9 @@ public abstract class ArrayEditor extends PropertyEditorSupport
     protected abstract Object createArray(List strList);
     
     /**
-     * ƒvƒƒpƒeƒB•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒpƒeƒB•¶š—ñ
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—
      */
     public String getAsText(){
         final Object array = (Object)getValue();

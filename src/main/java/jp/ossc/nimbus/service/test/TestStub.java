@@ -32,55 +32,55 @@
 package jp.ossc.nimbus.service.test;
 
 /**
- * ƒeƒXƒgƒXƒ^ƒuB<p>
+ * ãƒ†ã‚¹ãƒˆã‚¹ã‚¿ãƒ–ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface TestStub{
     
     /**
-     * ƒXƒ^ƒu‚ÌID‚ðŽæ“¾‚·‚éB<p>
+     * ã‚¹ã‚¿ãƒ–ã®IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒ^ƒu‚ÌID
+     * @return ã‚¹ã‚¿ãƒ–ã®ID
      */
     public String getId();
     
     /**
-     * ƒVƒiƒŠƒI‚ÌƒeƒXƒg‚ðŠJŽn‚·‚éB<p>
+     * ã‚·ãƒŠãƒªã‚ªã®ãƒ†ã‚¹ãƒˆã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
      *
-     * @param userId ƒ†[ƒUID
-     * @param scenarioGroupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
-     * @param scenarioId ƒVƒiƒŠƒIID
-     * @exception Exception ƒVƒiƒŠƒI‚ÌƒeƒXƒgŽÀs’†‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param userId ãƒ¦ãƒ¼ã‚¶ID
+     * @param scenarioGroupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param scenarioId ã‚·ãƒŠãƒªã‚ªID
+     * @exception Exception ã‚·ãƒŠãƒªã‚ªã®ãƒ†ã‚¹ãƒˆå®Ÿè¡Œä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public void startScenario(String userId, String scenarioGroupId, String scenarioId) throws Exception;
     
     /**
-     * ƒVƒiƒŠƒI‚ÌƒeƒXƒg‚ðŽæ‚èÁ‚·B<p>
+     * ã‚·ãƒŠãƒªã‚ªã®ãƒ†ã‚¹ãƒˆã‚’å–ã‚Šæ¶ˆã™ã€‚<p>
      *
-     * @exception Exception ƒVƒiƒŠƒI‚ÌƒeƒXƒgŽæÁ’†‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @exception Exception ã‚·ãƒŠãƒªã‚ªã®ãƒ†ã‚¹ãƒˆå–æ¶ˆä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public void cancelScenario() throws Exception;
     
     /**
-     * ƒVƒiƒŠƒI‚ÌƒeƒXƒg‚ðI—¹‚·‚éB<p>
+     * ã‚·ãƒŠãƒªã‚ªã®ãƒ†ã‚¹ãƒˆã‚’çµ‚äº†ã™ã‚‹ã€‚<p>
      *
-     * @exception Exception ƒVƒiƒŠƒI‚ÌƒeƒXƒgI—¹’†‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @exception Exception ã‚·ãƒŠãƒªã‚ªã®ãƒ†ã‚¹ãƒˆçµ‚äº†ä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public void endScenario() throws Exception;
     
     /**
-     * ƒeƒXƒgƒP[ƒX‚ÌƒeƒXƒg‚ðŠJŽn‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®ãƒ†ã‚¹ãƒˆã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
      *
-     * @param testcaseId ƒeƒXƒgƒP[ƒXID
-     * @exception Exception ƒeƒXƒgƒP[ƒX‚ÌƒeƒXƒgŽÀs’†‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param testcaseId ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ID
+     * @exception Exception ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®ãƒ†ã‚¹ãƒˆå®Ÿè¡Œä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public void startTestCase(String testcaseId) throws Exception;
     
     /**
-     * ƒeƒXƒgƒP[ƒX‚ÌƒeƒXƒg‚ðI—¹‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®ãƒ†ã‚¹ãƒˆã‚’çµ‚äº†ã™ã‚‹ã€‚<p>
      *
-     * @exception Exception ƒeƒXƒgƒP[ƒX‚ÌƒeƒXƒgI—¹’†‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @exception Exception ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®ãƒ†ã‚¹ãƒˆçµ‚äº†ä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public void endTestCase() throws Exception;
 }

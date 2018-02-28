@@ -36,30 +36,30 @@ import javax.naming.*;
 import javax.ejb.*;
 
 /**
- * EJB�t�@�N�g���B<p>
- * EJBHome��JNDI�ɑ΂���lookup�A�y��EJBHome����EJBObject�̐������s���B�܂��A��������EJBObject���L���b�V������B<br>
- * EJBLocalHome��JNDI�ɑ΂���lookup�A�y��EJBLocalHome����EJBLocalObject�̐������s���B<br>
+ * EJBファクトリ。<p>
+ * EJBHomeのJNDIに対するlookup、及びEJBHomeからEJBObjectの生成を行う。また、生成したEJBObjectをキャッシュする。<br>
+ * EJBLocalHomeのJNDIに対するlookup、及びEJBLocalHomeからEJBLocalObjectの生成を行う。<br>
  *
  * @author  M.Takata
  */
 public interface EJBFactory{
     
     /**
-     * EJBHome��create���\�b�h�̃��\�b�h���B<p>
+     * EJBHomeのcreateメソッドのメソッド名。<p>
      */
     public static final String EJB_CREATE_METHOD_NAME = "create";
     
     /**
-     * EJB��JNDI�����w�肵�āAEJBObject���擾����B<p>
-     * �w�肳�ꂽJNDI����lookup����EJBHome�ɑ΂��āA�����Ȃ���create���\�b�h���Ăяo����EJBObject���擾����B<br>
+     * EJBのJNDI名を指定して、EJBObjectを取得する。<p>
+     * 指定されたJNDI名でlookupしたEJBHomeに対して、引数なしのcreateメソッドを呼び出してEJBObjectを取得する。<br>
      *
-     * @param name EJB��JNDI��
-     * @return �w�肵��JNDI���ɑΉ�����EJBObject
-     * @exception NamingException EJBHome��lookup�Ɏ��s�����ꍇ
-     * @exception CreateException EJBHome��create���\�b�h���Ăяo�����ۂɗ�O�����������ꍇ
-     * @exception NoSuchMethodException EJBHome��create���\�b�h��������Ȃ��ꍇ
-     * @exception IllegalAccessException EJBHome��create���\�b�h���Ăяo�������ɁA�A�N�Z�X�C���q�ɂ��A�N�Z�X�������s���ȏꍇ
-     * @exception InvocationTargetException EJBHome��create���\�b�h���Ăяo�������ɁA�Ăяo����ŉ��炩�̗�O�����������ꍇ
+     * @param name EJBのJNDI名
+     * @return 指定したJNDI名に対応するEJBObject
+     * @exception NamingException EJBHomeのlookupに失敗した場合
+     * @exception CreateException EJBHomeのcreateメソッドを呼び出した際に例外が発生した場合
+     * @exception NoSuchMethodException EJBHomeのcreateメソッドが見つからない場合
+     * @exception IllegalAccessException EJBHomeのcreateメソッドを呼び出した時に、アクセス修飾子によるアクセス権限が不正な場合
+     * @exception InvocationTargetException EJBHomeのcreateメソッドを呼び出した時に、呼び出し先で何らかの例外が発生した場合
      */
     public EJBObject get(
         String name
@@ -67,16 +67,16 @@ public interface EJBFactory{
              IllegalAccessException, InvocationTargetException;
     
     /**
-     * EJB��JNDI�����w�肵�āAEJBLocalObject���擾����B<p>
-     * �w�肳�ꂽJNDI����lookup����EJBLocalHome�ɑ΂��āA�����Ȃ���create���\�b�h���Ăяo����EJBLocalObject���擾����B<br>
+     * EJBのJNDI名を指定して、EJBLocalObjectを取得する。<p>
+     * 指定されたJNDI名でlookupしたEJBLocalHomeに対して、引数なしのcreateメソッドを呼び出してEJBLocalObjectを取得する。<br>
      *
-     * @param name EJB��JNDI��
-     * @return �w�肵��JNDI���ɑΉ�����EJBLocalObject
-     * @exception NamingException EJBLocalHome��lookup�Ɏ��s�����ꍇ
-     * @exception CreateException EJBLocalHome��create���\�b�h���Ăяo�����ۂɗ�O�����������ꍇ
-     * @exception NoSuchMethodException EJBLocalHome��create���\�b�h��������Ȃ��ꍇ
-     * @exception IllegalAccessException EJBLocalHome��create���\�b�h���Ăяo�������ɁA�A�N�Z�X�C���q�ɂ��A�N�Z�X�������s���ȏꍇ
-     * @exception InvocationTargetException EJBLocalHome��create���\�b�h���Ăяo�������ɁA�Ăяo����ŉ��炩�̗�O�����������ꍇ
+     * @param name EJBのJNDI名
+     * @return 指定したJNDI名に対応するEJBLocalObject
+     * @exception NamingException EJBLocalHomeのlookupに失敗した場合
+     * @exception CreateException EJBLocalHomeのcreateメソッドを呼び出した際に例外が発生した場合
+     * @exception NoSuchMethodException EJBLocalHomeのcreateメソッドが見つからない場合
+     * @exception IllegalAccessException EJBLocalHomeのcreateメソッドを呼び出した時に、アクセス修飾子によるアクセス権限が不正な場合
+     * @exception InvocationTargetException EJBLocalHomeのcreateメソッドを呼び出した時に、呼び出し先で何らかの例外が発生した場合
      */
     public EJBLocalObject getLocal(
         String name
@@ -84,17 +84,17 @@ public interface EJBFactory{
              IllegalAccessException, InvocationTargetException;
     
     /**
-     * EJB��JNDI�����w�肵�āAEJBObject���擾����B<p>
-     * �w�肳�ꂽJNDI����lookup����EJBHome�ɑ΂��āA�w�肵��������create���\�b�h���Ăяo����EJBObject���擾����B<br>
+     * EJBのJNDI名を指定して、EJBObjectを取得する。<p>
+     * 指定されたJNDI名でlookupしたEJBHomeに対して、指定した引数のcreateメソッドを呼び出してEJBObjectを取得する。<br>
      *
-     * @param name EJB��JNDI��
-     * @param params �����̔z��
-     * @return �w�肵��JNDI���ɑΉ�����EJBObject
-     * @exception NamingException EJBHome��lookup�Ɏ��s�����ꍇ
-     * @exception CreateException EJBHome��create���\�b�h���Ăяo�����ۂɗ�O�����������ꍇ
-     * @exception NoSuchMethodException EJBHome��create���\�b�h��������Ȃ��ꍇ
-     * @exception IllegalAccessException EJBHome��create���\�b�h���Ăяo�������ɁA�A�N�Z�X�C���q�ɂ��A�N�Z�X�������s���ȏꍇ
-     * @exception InvocationTargetException EJBHome��create���\�b�h���Ăяo�������ɁA�Ăяo����ŉ��炩�̗�O�����������ꍇ
+     * @param name EJBのJNDI名
+     * @param params 引数の配列
+     * @return 指定したJNDI名に対応するEJBObject
+     * @exception NamingException EJBHomeのlookupに失敗した場合
+     * @exception CreateException EJBHomeのcreateメソッドを呼び出した際に例外が発生した場合
+     * @exception NoSuchMethodException EJBHomeのcreateメソッドが見つからない場合
+     * @exception IllegalAccessException EJBHomeのcreateメソッドを呼び出した時に、アクセス修飾子によるアクセス権限が不正な場合
+     * @exception InvocationTargetException EJBHomeのcreateメソッドを呼び出した時に、呼び出し先で何らかの例外が発生した場合
      */
     public EJBObject get(
         String name,
@@ -103,17 +103,17 @@ public interface EJBFactory{
              IllegalAccessException, InvocationTargetException;
     
     /**
-     * EJB��JNDI�����w�肵�āAEJBLocalObject���擾����B<p>
-     * �w�肳�ꂽJNDI����lookup����EJBLocalHome�ɑ΂��āA�w�肵��������create���\�b�h���Ăяo����EJBLocalObject���擾����B<br>
+     * EJBのJNDI名を指定して、EJBLocalObjectを取得する。<p>
+     * 指定されたJNDI名でlookupしたEJBLocalHomeに対して、指定した引数のcreateメソッドを呼び出してEJBLocalObjectを取得する。<br>
      *
-     * @param name EJB��JNDI��
-     * @param params �����̔z��
-     * @return �w�肵��JNDI���ɑΉ�����EJBLocalObject
-     * @exception NamingException EJBLocalHome��lookup�Ɏ��s�����ꍇ
-     * @exception CreateException EJBLocalHome��create���\�b�h���Ăяo�����ۂɗ�O�����������ꍇ
-     * @exception NoSuchMethodException EJBLocalHome��create���\�b�h��������Ȃ��ꍇ
-     * @exception IllegalAccessException EJBLocalHome��create���\�b�h���Ăяo�������ɁA�A�N�Z�X�C���q�ɂ��A�N�Z�X�������s���ȏꍇ
-     * @exception InvocationTargetException EJBLocalHome��create���\�b�h���Ăяo�������ɁA�Ăяo����ŉ��炩�̗�O�����������ꍇ
+     * @param name EJBのJNDI名
+     * @param params 引数の配列
+     * @return 指定したJNDI名に対応するEJBLocalObject
+     * @exception NamingException EJBLocalHomeのlookupに失敗した場合
+     * @exception CreateException EJBLocalHomeのcreateメソッドを呼び出した際に例外が発生した場合
+     * @exception NoSuchMethodException EJBLocalHomeのcreateメソッドが見つからない場合
+     * @exception IllegalAccessException EJBLocalHomeのcreateメソッドを呼び出した時に、アクセス修飾子によるアクセス権限が不正な場合
+     * @exception InvocationTargetException EJBLocalHomeのcreateメソッドを呼び出した時に、呼び出し先で何らかの例外が発生した場合
      */
     public EJBLocalObject getLocal(
         String name,
@@ -122,17 +122,17 @@ public interface EJBFactory{
              IllegalAccessException, InvocationTargetException;
     
     /**
-     * EJB��JNDI�����w�肵�āAEJBObject���擾����B<p>
-     * �w�肳�ꂽJNDI����lookup����EJBHome�ɑ΂��āA�����Ȃ���create���\�b�h���Ăяo����EJBObject���擾����B<br>
+     * EJBのJNDI名を指定して、EJBObjectを取得する。<p>
+     * 指定されたJNDI名でlookupしたEJBHomeに対して、引数なしのcreateメソッドを呼び出してEJBObjectを取得する。<br>
      *
-     * @param name EJB��JNDI��
-     * @param homeType EJBHome�̃N���X�I�u�W�F�N�g
-     * @return �w�肵��JNDI���ɑΉ�����EJBObject
-     * @exception NamingException EJBHome��lookup�Ɏ��s�����ꍇ
-     * @exception CreateException EJBHome��create���\�b�h���Ăяo�����ۂɗ�O�����������ꍇ
-     * @exception NoSuchMethodException EJBHome��create���\�b�h��������Ȃ��ꍇ
-     * @exception IllegalAccessException EJBHome��create���\�b�h���Ăяo�������ɁA�A�N�Z�X�C���q�ɂ��A�N�Z�X�������s���ȏꍇ
-     * @exception InvocationTargetException EJBHome��create���\�b�h���Ăяo�������ɁA�Ăяo����ŉ��炩�̗�O�����������ꍇ
+     * @param name EJBのJNDI名
+     * @param homeType EJBHomeのクラスオブジェクト
+     * @return 指定したJNDI名に対応するEJBObject
+     * @exception NamingException EJBHomeのlookupに失敗した場合
+     * @exception CreateException EJBHomeのcreateメソッドを呼び出した際に例外が発生した場合
+     * @exception NoSuchMethodException EJBHomeのcreateメソッドが見つからない場合
+     * @exception IllegalAccessException EJBHomeのcreateメソッドを呼び出した時に、アクセス修飾子によるアクセス権限が不正な場合
+     * @exception InvocationTargetException EJBHomeのcreateメソッドを呼び出した時に、呼び出し先で何らかの例外が発生した場合
      */
     public EJBObject get(
         String name,
@@ -141,17 +141,17 @@ public interface EJBFactory{
              IllegalAccessException, InvocationTargetException;
     
     /**
-     * EJB��JNDI�����w�肵�āAEJBLocalObject���擾����B<p>
-     * �w�肳�ꂽJNDI����lookup����EJBLocalHome�ɑ΂��āA�����Ȃ���create���\�b�h���Ăяo����EJBLocalObject���擾����B<br>
+     * EJBのJNDI名を指定して、EJBLocalObjectを取得する。<p>
+     * 指定されたJNDI名でlookupしたEJBLocalHomeに対して、引数なしのcreateメソッドを呼び出してEJBLocalObjectを取得する。<br>
      *
-     * @param name EJB��JNDI��
-     * @param homeType EJBLocalHome�̃N���X�I�u�W�F�N�g
-     * @return �w�肵��JNDI���ɑΉ�����EJBLocalObject
-     * @exception NamingException EJBLocalHome��lookup�Ɏ��s�����ꍇ
-     * @exception CreateException EJBLocalHome��create���\�b�h���Ăяo�����ۂɗ�O�����������ꍇ
-     * @exception NoSuchMethodException EJBLocalHome��create���\�b�h��������Ȃ��ꍇ
-     * @exception IllegalAccessException EJBLocalHome��create���\�b�h���Ăяo�������ɁA�A�N�Z�X�C���q�ɂ��A�N�Z�X�������s���ȏꍇ
-     * @exception InvocationTargetException EJBLocalHome��create���\�b�h���Ăяo�������ɁA�Ăяo����ŉ��炩�̗�O�����������ꍇ
+     * @param name EJBのJNDI名
+     * @param homeType EJBLocalHomeのクラスオブジェクト
+     * @return 指定したJNDI名に対応するEJBLocalObject
+     * @exception NamingException EJBLocalHomeのlookupに失敗した場合
+     * @exception CreateException EJBLocalHomeのcreateメソッドを呼び出した際に例外が発生した場合
+     * @exception NoSuchMethodException EJBLocalHomeのcreateメソッドが見つからない場合
+     * @exception IllegalAccessException EJBLocalHomeのcreateメソッドを呼び出した時に、アクセス修飾子によるアクセス権限が不正な場合
+     * @exception InvocationTargetException EJBLocalHomeのcreateメソッドを呼び出した時に、呼び出し先で何らかの例外が発生した場合
      */
     public EJBLocalObject getLocal(
         String name,
@@ -160,19 +160,19 @@ public interface EJBFactory{
              IllegalAccessException, InvocationTargetException;
     
     /**
-     * EJB��JNDI�����w�肵�āAEJBObject���擾����B<p>
-     * �w�肳�ꂽJNDI����lookup����EJBHome�ɑ΂��āA�w�肵��������create���\�b�h���Ăяo����EJBObject���擾����B<br>
+     * EJBのJNDI名を指定して、EJBObjectを取得する。<p>
+     * 指定されたJNDI名でlookupしたEJBHomeに対して、指定した引数のcreateメソッドを呼び出してEJBObjectを取得する。<br>
      *
-     * @param name EJB��JNDI��
-     * @param homeType EJBHome�̃N���X�I�u�W�F�N�g
-     * @param paramTypes �����̌^�z��
-     * @param params �����̔z��
-     * @return �w�肵��JNDI���ɑΉ�����EJBObject
-     * @exception NamingException EJBHome��lookup�Ɏ��s�����ꍇ
-     * @exception CreateException EJBHome��create���\�b�h���Ăяo�����ۂɗ�O�����������ꍇ
-     * @exception NoSuchMethodException EJBHome��create���\�b�h��������Ȃ��ꍇ
-     * @exception IllegalAccessException EJBHome��create���\�b�h���Ăяo�������ɁA�A�N�Z�X�C���q�ɂ��A�N�Z�X�������s���ȏꍇ
-     * @exception InvocationTargetException EJBHome��create���\�b�h���Ăяo�������ɁA�Ăяo����ŉ��炩�̗�O�����������ꍇ
+     * @param name EJBのJNDI名
+     * @param homeType EJBHomeのクラスオブジェクト
+     * @param paramTypes 引数の型配列
+     * @param params 引数の配列
+     * @return 指定したJNDI名に対応するEJBObject
+     * @exception NamingException EJBHomeのlookupに失敗した場合
+     * @exception CreateException EJBHomeのcreateメソッドを呼び出した際に例外が発生した場合
+     * @exception NoSuchMethodException EJBHomeのcreateメソッドが見つからない場合
+     * @exception IllegalAccessException EJBHomeのcreateメソッドを呼び出した時に、アクセス修飾子によるアクセス権限が不正な場合
+     * @exception InvocationTargetException EJBHomeのcreateメソッドを呼び出した時に、呼び出し先で何らかの例外が発生した場合
      */
     public EJBObject get(
         String name,
@@ -183,19 +183,19 @@ public interface EJBFactory{
              IllegalAccessException, InvocationTargetException;
     
     /**
-     * EJB��JNDI�����w�肵�āAEJBLocalObject���擾����B<p>
-     * �w�肳�ꂽJNDI����lookup����EJBLocalHome�ɑ΂��āA�w�肵��������create���\�b�h���Ăяo����EJBLocalObject���擾����B<br>
+     * EJBのJNDI名を指定して、EJBLocalObjectを取得する。<p>
+     * 指定されたJNDI名でlookupしたEJBLocalHomeに対して、指定した引数のcreateメソッドを呼び出してEJBLocalObjectを取得する。<br>
      *
-     * @param name EJB��JNDI��
-     * @param homeType EJBLocalHome�̃N���X�I�u�W�F�N�g
-     * @param paramTypes �����̌^�z��
-     * @param params �����̔z��
-     * @return �w�肵��JNDI���ɑΉ�����EJBLocalObject
-     * @exception NamingException EJBLocalHome��lookup�Ɏ��s�����ꍇ
-     * @exception CreateException EJBLocalHome��create���\�b�h���Ăяo�����ۂɗ�O�����������ꍇ
-     * @exception NoSuchMethodException EJBLocalHome��create���\�b�h��������Ȃ��ꍇ
-     * @exception IllegalAccessException EJBLocalHome��create���\�b�h���Ăяo�������ɁA�A�N�Z�X�C���q�ɂ��A�N�Z�X�������s���ȏꍇ
-     * @exception InvocationTargetException EJBLocalHome��create���\�b�h���Ăяo�������ɁA�Ăяo����ŉ��炩�̗�O�����������ꍇ
+     * @param name EJBのJNDI名
+     * @param homeType EJBLocalHomeのクラスオブジェクト
+     * @param paramTypes 引数の型配列
+     * @param params 引数の配列
+     * @return 指定したJNDI名に対応するEJBLocalObject
+     * @exception NamingException EJBLocalHomeのlookupに失敗した場合
+     * @exception CreateException EJBLocalHomeのcreateメソッドを呼び出した際に例外が発生した場合
+     * @exception NoSuchMethodException EJBLocalHomeのcreateメソッドが見つからない場合
+     * @exception IllegalAccessException EJBLocalHomeのcreateメソッドを呼び出した時に、アクセス修飾子によるアクセス権限が不正な場合
+     * @exception InvocationTargetException EJBLocalHomeのcreateメソッドを呼び出した時に、呼び出し先で何らかの例外が発生した場合
      */
     public EJBLocalObject getLocal(
         String name,
@@ -206,20 +206,20 @@ public interface EJBFactory{
              IllegalAccessException, InvocationTargetException;
     
     /**
-     * EJB��JNDI�����w�肵�āAEJBObject���擾����B<p>
-     * �w�肳�ꂽJNDI����lookup����EJBHome�ɑ΂��āA�w�肵��������create���\�b�h���Ăяo����EJBObject���擾����B�܂��A�擾����EJBObject��ړI�̃^�C�v�ɃL���X�g���ĕԂ��B<br>
+     * EJBのJNDI名を指定して、EJBObjectを取得する。<p>
+     * 指定されたJNDI名でlookupしたEJBHomeに対して、指定した引数のcreateメソッドを呼び出してEJBObjectを取得する。また、取得したEJBObjectを目的のタイプにキャストして返す。<br>
      *
-     * @param name EJB��JNDI��
-     * @param homeType EJBHome�̃N���X�I�u�W�F�N�g
-     * @param remoteType EJBObject�̃N���X�I�u�W�F�N�g
-     * @param paramTypes �����̌^�z��
-     * @param params �����̔z��
-     * @return �w�肵��JNDI���ɑΉ�����EJBObject
-     * @exception NamingException EJBHome��lookup�Ɏ��s�����ꍇ
-     * @exception CreateException EJBHome��create���\�b�h���Ăяo�����ۂɗ�O�����������ꍇ
-     * @exception NoSuchMethodException EJBHome��create���\�b�h��������Ȃ��ꍇ
-     * @exception IllegalAccessException EJBHome��create���\�b�h���Ăяo�������ɁA�A�N�Z�X�C���q�ɂ��A�N�Z�X�������s���ȏꍇ
-     * @exception InvocationTargetException EJBHome��create���\�b�h���Ăяo�������ɁA�Ăяo����ŉ��炩�̗�O�����������ꍇ
+     * @param name EJBのJNDI名
+     * @param homeType EJBHomeのクラスオブジェクト
+     * @param remoteType EJBObjectのクラスオブジェクト
+     * @param paramTypes 引数の型配列
+     * @param params 引数の配列
+     * @return 指定したJNDI名に対応するEJBObject
+     * @exception NamingException EJBHomeのlookupに失敗した場合
+     * @exception CreateException EJBHomeのcreateメソッドを呼び出した際に例外が発生した場合
+     * @exception NoSuchMethodException EJBHomeのcreateメソッドが見つからない場合
+     * @exception IllegalAccessException EJBHomeのcreateメソッドを呼び出した時に、アクセス修飾子によるアクセス権限が不正な場合
+     * @exception InvocationTargetException EJBHomeのcreateメソッドを呼び出した時に、呼び出し先で何らかの例外が発生した場合
      */
     public EJBObject get(
         String name,
@@ -231,20 +231,20 @@ public interface EJBFactory{
              IllegalAccessException, InvocationTargetException;
     
     /**
-     * EJB��JNDI�����w�肵�āAEJBLocalObject���擾����B<p>
-     * �w�肳�ꂽJNDI����lookup����EJBLocalHome�ɑ΂��āA�w�肵��������create���\�b�h���Ăяo����EJBLocalObject���擾����B�܂��A�擾����EJBLocalObject��ړI�̃^�C�v�ɃL���X�g���ĕԂ��B<br>
+     * EJBのJNDI名を指定して、EJBLocalObjectを取得する。<p>
+     * 指定されたJNDI名でlookupしたEJBLocalHomeに対して、指定した引数のcreateメソッドを呼び出してEJBLocalObjectを取得する。また、取得したEJBLocalObjectを目的のタイプにキャストして返す。<br>
      *
-     * @param name EJB��JNDI��
-     * @param homeType EJBLocalHome�̃N���X�I�u�W�F�N�g
-     * @param localType EJBLocalObject�̃N���X�I�u�W�F�N�g
-     * @param paramTypes �����̌^�z��
-     * @param params �����̔z��
-     * @return �w�肵��JNDI���ɑΉ�����EJBLocalObject
-     * @exception NamingException EJBLocalHome��lookup�Ɏ��s�����ꍇ
-     * @exception CreateException EJBLocalHome��create���\�b�h���Ăяo�����ۂɗ�O�����������ꍇ
-     * @exception NoSuchMethodException EJBLocalHome��create���\�b�h��������Ȃ��ꍇ
-     * @exception IllegalAccessException EJBLocalHome��create���\�b�h���Ăяo�������ɁA�A�N�Z�X�C���q�ɂ��A�N�Z�X�������s���ȏꍇ
-     * @exception InvocationTargetException EJBLocalHome��create���\�b�h���Ăяo�������ɁA�Ăяo����ŉ��炩�̗�O�����������ꍇ
+     * @param name EJBのJNDI名
+     * @param homeType EJBLocalHomeのクラスオブジェクト
+     * @param localType EJBLocalObjectのクラスオブジェクト
+     * @param paramTypes 引数の型配列
+     * @param params 引数の配列
+     * @return 指定したJNDI名に対応するEJBLocalObject
+     * @exception NamingException EJBLocalHomeのlookupに失敗した場合
+     * @exception CreateException EJBLocalHomeのcreateメソッドを呼び出した際に例外が発生した場合
+     * @exception NoSuchMethodException EJBLocalHomeのcreateメソッドが見つからない場合
+     * @exception IllegalAccessException EJBLocalHomeのcreateメソッドを呼び出した時に、アクセス修飾子によるアクセス権限が不正な場合
+     * @exception InvocationTargetException EJBLocalHomeのcreateメソッドを呼び出した時に、呼び出し先で何らかの例外が発生した場合
      */
     public EJBLocalObject getLocal(
         String name,
@@ -256,14 +256,14 @@ public interface EJBFactory{
              IllegalAccessException, InvocationTargetException;
     
     /**
-     * �w�肵��JNDI����EJB�̃L���b�V���𖳌�������B<p>
+     * 指定したJNDI名のEJBのキャッシュを無効化する。<p>
      * 
-     * @param name EJB��JNDI��
+     * @param name EJBのJNDI名
      */
     public void invalidate(String name);
     
     /**
-     * EJB�̃L���b�V���𖳌�������B<p>
+     * EJBのキャッシュを無効化する。<p>
      */
     public void invalidate();
 }

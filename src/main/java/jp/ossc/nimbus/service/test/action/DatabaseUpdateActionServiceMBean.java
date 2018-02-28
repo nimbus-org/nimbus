@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link DatabaseUpdateActionService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link DatabaseUpdateActionService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see DatabaseUpdateActionService
@@ -43,73 +43,73 @@ import jp.ossc.nimbus.core.ServiceName;
 public interface DatabaseUpdateActionServiceMBean extends ServiceBaseMBean{
     
     /**
-     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setConnectionFactoryServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.connection.ConnectionFactory ConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getConnectionFactoryServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.connection.PersistentManager PersistentManager}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.connection.PersistentManager PersistentManager}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name PersistentManagerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name PersistentManagerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setPersistentManagerServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.connection.PersistentManager PersistentManager}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.connection.PersistentManager PersistentManager}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return PersistentManagerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return PersistentManagerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getPersistentManagerServiceName();
     
     /**
-     * ƒoƒbƒ`Às‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Ífalse‚ÅAƒoƒbƒ`Às‚µ‚È‚¢B<br>
+     * ãƒãƒƒãƒå®Ÿè¡Œã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯falseã§ã€ãƒãƒƒãƒå®Ÿè¡Œã—ãªã„ã€‚<br>
      *
-     * @param isBatch ƒoƒbƒ`Às‚ğs‚¤ê‡‚ÍAtrue
+     * @param isBatch ãƒãƒƒãƒå®Ÿè¡Œã‚’è¡Œã†å ´åˆã¯ã€true
      */
     public void setBatchExecute(boolean isBatch);
     
     /**
-     * ƒoƒbƒ`Às‚ğs‚¤‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒãƒƒãƒå®Ÿè¡Œã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍAƒoƒbƒ`Às‚ğs‚¤
+     * @return trueã®å ´åˆã¯ã€ãƒãƒƒãƒå®Ÿè¡Œã‚’è¡Œã†
      */
     public boolean isBatchExecute();
     
     /**
-     * ƒoƒbƒ`Às‚ğs‚¤ê‡‚Ìƒoƒbƒ`ÀsŒ”‚ğİ’è‚·‚éB<p>
+     * ãƒãƒƒãƒå®Ÿè¡Œã‚’è¡Œã†å ´åˆã®ãƒãƒƒãƒå®Ÿè¡Œä»¶æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param count ƒoƒbƒ`ÀsŒ”
+     * @param count ãƒãƒƒãƒå®Ÿè¡Œä»¶æ•°
      */
     public void setBatchExecuteCount(int count);
     
     /**
-     * ƒoƒbƒ`Às‚ğs‚¤ê‡‚Ìƒoƒbƒ`ÀsŒ”‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒƒãƒå®Ÿè¡Œã‚’è¡Œã†å ´åˆã®ãƒãƒƒãƒå®Ÿè¡Œä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒoƒbƒ`ÀsŒ”
+     * @return ãƒãƒƒãƒå®Ÿè¡Œä»¶æ•°
      */
     public int getBatchExecuteCount();
     
     /**
-     * ‚±‚ÌƒAƒNƒVƒ‡ƒ“‚ÌƒŠƒ\[ƒX’è‹`‚ğì¬‚·‚éÛ‚ÌƒfƒtƒHƒ‹ƒg‚Ì‘z’èƒRƒXƒg‚ğİ’è‚·‚éB<p>
+     * ã“ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚½ãƒ¼ã‚¹å®šç¾©ã‚’ä½œæˆã™ã‚‹éš›ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æƒ³å®šã‚³ã‚¹ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param cost ‘z’èƒRƒXƒg
+     * @param cost æƒ³å®šã‚³ã‚¹ãƒˆ
      */
     public void setExpectedCost(double cost);
     
     /**
-     * ‚±‚ÌƒAƒNƒVƒ‡ƒ“‚ÌƒŠƒ\[ƒX’è‹`‚ğì¬‚·‚éÛ‚ÌƒfƒtƒHƒ‹ƒg‚Ì‘z’èƒRƒXƒg‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚½ãƒ¼ã‚¹å®šç¾©ã‚’ä½œæˆã™ã‚‹éš›ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æƒ³å®šã‚³ã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‘z’èƒRƒXƒg
+     * @return æƒ³å®šã‚³ã‚¹ãƒˆ
      */
     public double getExpectedCost();
 }

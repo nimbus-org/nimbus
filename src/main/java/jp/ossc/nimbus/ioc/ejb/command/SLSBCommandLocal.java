@@ -29,13 +29,13 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.ioc.ejb.command;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import javax.ejb.EJBLocalObject;
 import jp.ossc.nimbus.ioc.*;
 /**
- * Command‚ğÀs‚·‚éEJBƒ[ƒJƒ‹ƒCƒ“ƒ^[ƒtƒFƒCƒX<p>
+ * Commandã‚’å®Ÿè¡Œã™ã‚‹EJBãƒ­ãƒ¼ã‚«ãƒ«ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹<p>
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0

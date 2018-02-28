@@ -29,16 +29,16 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.aspect.metadata;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.io.*;
 import org.w3c.dom.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒRƒ“ƒ|[ƒlƒ“ƒg’è‹`&lt;pattern&gt;—v‘fƒƒ^ƒf[ƒ^B<br>
- * ƒRƒ“ƒ|[ƒlƒ“ƒg’è‹`ƒtƒ@ƒCƒ‹‚Ì&lt;pattern&gt;—v‘f‚É‹Lq‚³‚ê‚½“à—e‚ğŠi”[‚·‚éƒƒ^ƒf[ƒ^ƒRƒ“ƒeƒi‚Å‚ ‚éB
+ * ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå®šç¾©&lt;pattern&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<br>
+ * ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®&lt;pattern&gt;è¦ç´ ã«è¨˜è¿°ã•ã‚ŒãŸå†…å®¹ã‚’æ ¼ç´ã™ã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠã§ã‚ã‚‹ã€‚
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -48,36 +48,36 @@ public class PatternMetaData extends MetaData implements Serializable {
     private static final long serialVersionUID = -381300837581852951L;
     
     /**
-	 * &lt;pattern&gt;—v‘f‚Ì—v‘f–¼•¶š—ñB
+	 * &lt;pattern&gt;è¦ç´ ã®è¦ç´ åæ–‡å­—åˆ—ã€‚
 	 */
 	public static final String PATTERN_TAG_NAME = "pattern";
 	/**
-	 * &lt;pattern&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^B
+	 * &lt;pattern&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚
 	 * @see #getPattern()
 	 */
 	private String pattern;
 	/**
-	 * e—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<br>
-	 * PatternMetaData‚Ìe—v‘f‚ÍA&lt;patterns&gt;—v‘f‚ğ•\‚·PatternsMetaData‚Å‚ ‚éB
-	 * @param parent e—v‘f‚Ìƒƒ^ƒf[ƒ^
+	 * è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<br>
+	 * PatternMetaDataã®è¦ªè¦ç´ ã¯ã€&lt;patterns&gt;è¦ç´ ã‚’è¡¨ã™PatternsMetaDataã§ã‚ã‚‹ã€‚
+	 * @param parent è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
 	 * @see PatternsMetaData
 	 */
 	public PatternMetaData(MetaData parent){
 		super(parent);
 	}
 	/**
-	 * ƒpƒ^[ƒ“‚ğ•\‚·—v‘f‚Ì“à—e‚Åw’è‚³‚ê‚½ƒpƒ^[ƒ“‚ğæ“¾‚·‚éB<br>
-	 * “à—e‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B
-	 * @return ƒpƒ^[ƒ“‚ğ•\‚·—v‘f‚Ì“à—e
+	 * ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’è¡¨ã™è¦ç´ ã®å†…å®¹ã§æŒ‡å®šã•ã‚ŒãŸãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’å–å¾—ã™ã‚‹ã€‚<br>
+	 * å†…å®¹ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚
+	 * @return ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’è¡¨ã™è¦ç´ ã®å†…å®¹
 	 */
 	public String getPattern(){
 		return pattern;
 	}
 	/**
-	 * &lt;pattern&gt;—v‘f‚ÌElement‚ğƒp[ƒX‚µ‚ÄA©•ª©g‚Ì‰Šú‰»A‹y‚Ñq—v‘f‚Ìƒƒ^ƒf[ƒ^‚Ì¶¬‚ğs‚¤B<br>
+	 * &lt;pattern&gt;è¦ç´ ã®Elementã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦ã€è‡ªåˆ†è‡ªèº«ã®åˆæœŸåŒ–ã€åŠã³å­è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã‚’è¡Œã†ã€‚<br>
 	 *
-	 * @param element &lt;pattern&gt;—v‘f‚ÌElement
-	 * @exception DeploymentException &lt;pattern&gt;—v‘f‚Ì‰ğÍA‚»‚ÌŒ‹‰Ê‚É‚æ‚éƒƒ^ƒf[ƒ^‚Ì¶¬‚É¸”s‚µ‚½ê‡
+	 * @param element &lt;pattern&gt;è¦ç´ ã®Element
+	 * @exception DeploymentException &lt;pattern&gt;è¦ç´ ã®è§£æã€ãã®çµæœã«ã‚ˆã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
 	 */
 	public void importXML(Element element) throws DeploymentException{
 		super.importXML(element);

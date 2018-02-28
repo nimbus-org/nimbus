@@ -35,186 +35,186 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link MessageRecordFactoryService}�T�[�r�XMBean�C���^�t�F�[�X�B<p>
+ * {@link MessageRecordFactoryService}サービスMBeanインタフェース。<p>
  *
  * @author H.Nakano
  */
 public interface MessageRecordFactoryServiceMBean extends ServiceBaseMBean{
     
     /**
-     * {@link MessageRecord}�C���^�t�F�[�X�̎����N���X����ݒ肷��B<p>
-     * �f�t�H���g�́A{@link MessageRecordImpl}�B<br>
+     * {@link MessageRecord}インタフェースの実装クラス名を設定する。<p>
+     * デフォルトは、{@link MessageRecordImpl}。<br>
      * 
-     * @param className MessageRecord�C���^�t�F�[�X�̎����N���X��
+     * @param className MessageRecordインタフェースの実装クラス名
      */
     public void setMessageRecordClassName(String className);
     
     /**
-     * {@link MessageRecord}�C���^�t�F�[�X�̎����N���X�����擾����B<p>
+     * {@link MessageRecord}インタフェースの実装クラス名を取得する。<p>
      * 
-     * @return MessageRecord�C���^�t�F�[�X�̎����N���X��
+     * @return MessageRecordインタフェースの実装クラス名
      */
     public String getMessageRecordClassName();
     
     /**
-     * �閧���ߍ��݃��b�Z�[�W��閧�����Ń}�X�N���邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Afalse�B<br>
+     * 秘密埋め込みメッセージを秘密文字でマスクするかどうかを設定する。<p>
+     * デフォルトは、false。<br>
      * 
-     * @param flg �閧�����Ń}�X�N����ꍇtrue
+     * @param flg 秘密文字でマスクする場合true
      */
     public void setSecretMode(boolean flg);
     
     /**
-     * �閧���ߍ��݃��b�Z�[�W��閧�����Ń}�X�N���邩�ǂ����𔻒肷��B<p>
+     * 秘密埋め込みメッセージを秘密文字でマスクするかどうかを判定する。<p>
      * 
-     * @return true�̏ꍇ�A�閧�����Ń}�X�N����
+     * @return trueの場合、秘密文字でマスクする
      */
     public boolean isSecretMode();
     
     /**
-     * �閧������ݒ肷��B<p>
-     * �f�t�H���g�́Anull�ŁA���b�Z�[�W��`�̂܂܂ŏo�͂����B<br>
+     * 秘密文字を設定する。<p>
+     * デフォルトは、nullで、メッセージ定義のままで出力される。<br>
      * 
-     * @param secret �閧����
+     * @param secret 秘密文字
      */
     public void setSecretString(String secret);
     
     /**
-     * �閧�������擾����B<p>
+     * 秘密文字を取得する。<p>
      * 
-     * @return �閧����
+     * @return 秘密文字
      */
     public String getSecretString();
     
     /**
-     * ���b�Z�[�W��`�t�@�C���̔z�u�f�B���N�g����ݒ肷��B<p>
-     * �w�肵���f�B���N�g���̒����ɁA�f�t�H���g���P�[���p�̃��b�Z�[�W��`�t�@�C����z�u����B<br>
-     * ���ۉ��Ή�����ꍇ�́A�w�肵���f�B���N�g���̒����Ƀ��P�[�����̃f�B���N�g�����쐬���āA���̔z���ɑΉ����郁�b�Z�[�W��`�t�@�C����z�u����B<br>
+     * メッセージ定義ファイルの配置ディレクトリを設定する。<p>
+     * 指定したディレクトリの直下に、デフォルトロケール用のメッセージ定義ファイルを配置する。<br>
+     * 国際化対応する場合は、指定したディレクトリの直下にロケール名のディレクトリを作成して、その配下に対応するメッセージ定義ファイルを配置する。<br>
      *
-     * @param dirPaths �f�B���N�g���p�X�z��
+     * @param dirPaths ディレクトリパス配列
      */
     public void setMessageDirPaths(String[] dirPaths);
     
     /**
-     * ���b�Z�[�W��`�t�@�C���̔z�u�f�B���N�g�����擾����B<p>
+     * メッセージ定義ファイルの配置ディレクトリを取得する。<p>
      *
-     * @return �f�B���N�g���p�X�z��
+     * @return ディレクトリパス配列
      */
     public String[] getMessageDirPaths();
     
     /**
-     * ���b�Z�[�W��`�t�@�C���̃N���X�p�X���̃��\�[�X�p�X��ݒ肷��B<p>
-     * �N���X�p�X�Ƀ��b�Z�[�W��`�t�@�C����z�u����B<br>
-     * ���ۉ��Ή�����ꍇ�́A�g���q�̑O�Ƀ��P�[������t�^����B�i�v���p�e�B�t�@�C���Ɠ��l�j<br>
-     * �f�t�H���g�ŁAjp.ossc.nimbus.resource.Nimbus��K���܂ށB<br>
+     * メッセージ定義ファイルのクラスパス内のリソースパスを設定する。<p>
+     * クラスパスにメッセージ定義ファイルを配置する。<br>
+     * 国際化対応する場合は、拡張子の前にロケール名を付与する。（プロパティファイルと同様）<br>
+     * デフォルトで、jp.ossc.nimbus.resource.Nimbusを必ず含む。<br>
      * 
-     * @param paths ���b�Z�[�W��`�t�@�C���̃N���X�p�X���̃��\�[�X�p�X�z��
+     * @param paths メッセージ定義ファイルのクラスパス内のリソースパス配列
      */
     public void setMessageFiles(String[] paths);
     
     /**
-     * ���b�Z�[�W��`�t�@�C���̃N���X�p�X���̃��\�[�X�p�X���擾����B<p>
+     * メッセージ定義ファイルのクラスパス内のリソースパスを取得する。<p>
      * 
-     * @return ���b�Z�[�W��`�t�@�C���̃N���X�p�X���̃��\�[�X�p�X�z��
+     * @return メッセージ定義ファイルのクラスパス内のリソースパス配列
      */
     public String[] getMessageFiles();
     
     /**
-     * ���b�Z�[�W��`�̃t�@�C���g���q��ݒ肷��B<p>
-     * �f�t�H���g�́A"def"�B<br>
+     * メッセージ定義のファイル拡張子を設定する。<p>
+     * デフォルトは、"def"。<br>
      * 
-     * @param name �g���q������iex "hogeho")
+     * @param name 拡張子文字列（ex "hogeho")
      */
     public void setExtentionOfMessageFile(String name);
     
     /**
-     * ���b�Z�[�W��`�̃t�@�C���g���q���擾����B<p>
+     * メッセージ定義のファイル拡張子を取得する。<p>
      * 
-     * @return �g���q������
+     * @return 拡張子文字列
      */
     public String getExtentionOfMessageFile();
     
     /**
-     * �����ǂݍ��݂��郁�b�Z�[�W��`�t�@�C���̃��P�[����ݒ肷��B<p>
-     * �����Őݒ肵�Ȃ����P�[���̃��b�Z�[�W��`�t�@�C���́A���߂Ă��̃��P�[���̃��b�Z�[�W���K�v�ƂȂ����ꍇ�Ƀ��[�h�����B
-     * �A���A�f�t�H���g���P�[���́A�T�[�r�X�J�n���Ƀ��[�h�����B<br>
+     * 初期読み込みするメッセージ定義ファイルのロケールを設定する。<p>
+     * ここで設定しないロケールのメッセージ定義ファイルは、初めてそのロケールのメッセージが必要となった場合にロードされる。
+     * 但し、デフォルトロケールは、サービス開始時にロードされる。<br>
      * 
-     * @param locales ���P�[�������z��
+     * @param locales ロケール文字配列
      */
     public void setLocaleStrings(String[] locales);
     
     /**
-     * �����ǂݍ��݂��郁�b�Z�[�W��`�t�@�C���̃��P�[�����擾����B<p>
+     * 初期読み込みするメッセージ定義ファイルのロケールを取得する。<p>
      * 
-     * @return ���P�[�������z��
+     * @return ロケール文字配列
      */
     public String[] getLocaleStrings();
     
     /**
-     * ���b�Z�[�W�̏㏑����`�����e���邩�ǂ�����ݒ肷��B<p>
+     * メッセージの上書き定義を許容するかどうかを設定する。<p>
      *
-     * @param isAllow ���e����ꍇ�Atrue
+     * @param isAllow 許容する場合、true
      */
     public void setAllowOverrideMessage(boolean isAllow);
     
     /**
-     * ���b�Z�[�W�̏㏑����`�����e���邩�ǂ����𔻒肷��B<p>
+     * メッセージの上書き定義を許容するかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A���e����
+     * @return trueの場合、許容する
      */
     public boolean isAllowOverrideMessage();
     
     /**
-     * Nimbus���g�̃��b�Z�[�W�t�@�C����ǂݍ��ނ��ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Atrue�œǂݍ��ށB<br>
+     * Nimbus自身のメッセージファイルを読み込むかどうかを設定する。<p>
+     * デフォルトは、trueで読み込む。<br>
      *
-     * @param isLoad �ǂݍ��ޏꍇ�́Atrue
+     * @param isLoad 読み込む場合は、true
      */
     public void setLoadNimbusMessageFile(boolean isLoad);
     
     /**
-     * Nimbus���g�̃��b�Z�[�W�t�@�C����ǂݍ��ނ��ǂ����𔻒肷��B<p>
+     * Nimbus自身のメッセージファイルを読み込むかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A�ǂݍ���
+     * @return trueの場合、読み込む
      */
     public boolean isLoadNimbusMessageFile();
     
     /**
-     * ���I�Ƀ��b�Z�[�W��`�t�@�C���̔z�u�f�B���N�g����ǉ�����B<p>
-     * �����ɕ����ǉ�����ꍇ�́A;��؂�ŕ����w�肷�邱�Ƃ��\�B<br>
-     * ���̃��\�b�h�́A�T�[�r�X�J�n��ɓ��I�Ƀ��b�Z�[�W��`��ǉ�����ꍇ�Ɏg�p����B<br>
+     * 動的にメッセージ定義ファイルの配置ディレクトリを追加する。<p>
+     * 同時に複数追加する場合は、;区切りで複数指定することが可能。<br>
+     * このメソッドは、サービス開始後に動的にメッセージ定義を追加する場合に使用する。<br>
      * 
-     * @param dirPaths  �f�B���N�g���w�蕶����
-     * @exception Exception ���b�Z�[�W��`�̓��I���[�h�Ɏ��s�����ꍇ
+     * @param dirPaths  ディレクトリ指定文字列
+     * @exception Exception メッセージ定義の動的ロードに失敗した場合
      */
     public void addMessageDirPaths(String dirPaths) throws Exception;
     
     /**
-     * ���I�Ƀ��b�Z�[�W��`�t�@�C���̃N���X�p�X���̃��\�[�X�p�X��ǉ�����B<p>
-     * �����ɕ����ǉ�����ꍇ�́A;��؂�ŕ����w�肷�邱�Ƃ��\�B<br>
-     * ���̃��\�b�h�́A�T�[�r�X�J�n��ɓ��I�Ƀ��b�Z�[�W��`��ǉ�����ꍇ�Ɏg�p����B<br>
+     * 動的にメッセージ定義ファイルのクラスパス内のリソースパスを追加する。<p>
+     * 同時に複数追加する場合は、;区切りで複数指定することが可能。<br>
+     * このメソッドは、サービス開始後に動的にメッセージ定義を追加する場合に使用する。<br>
      * 
-     * @param paths ���b�Z�[�W��`�t�@�C���̃N���X�p�X���̃��\�[�X�p�X������
-     * @exception Exception ���b�Z�[�W��`�̓��I���[�h�Ɏ��s�����ꍇ
+     * @param paths メッセージ定義ファイルのクラスパス内のリソースパス文字列
+     * @exception Exception メッセージ定義の動的ロードに失敗した場合
      */
     public void addMessageFiles(String paths) throws Exception;
     
     /**
-     * ���b�Z�[�W�ꗗ���擾����B<p>
+     * メッセージ一覧を取得する。<p>
      * 
-     * @return ���b�Z�[�W�ꗗ
+     * @return メッセージ一覧
      */
     public ArrayList getMessgaeList();
     
     /**
-     * �g�p���ꂽ���b�Z�[�W�̈ꗗ���擾����B<p>
+     * 使用されたメッセージの一覧を取得する。<p>
      * 
-     * @return �g�p���ꂽ���b�Z�[�W�ꗗ
+     * @return 使用されたメッセージ一覧
      */
     public ArrayList getUsedMessgaeList();
     
     /**
-     * ���b�Z�[�W�̎g�p�J�E���g������������B<p>
+     * メッセージの使用カウントを初期化する。<p>
      */
     public void initUsedCount();
 

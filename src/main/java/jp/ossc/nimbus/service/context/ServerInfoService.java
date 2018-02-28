@@ -34,8 +34,8 @@ package jp.ossc.nimbus.service.context;
 import java.util.*;
 
 /**
- * ƒT[ƒoî•ñƒT[ƒrƒXB<p>
- * ˆÈ‰º‚ÉAƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ã‚µãƒ¼ãƒæƒ…å ±ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ä»¥ä¸‹ã«ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -82,9 +82,9 @@ public class ServerInfoService extends DefaultContextService
     };
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         super.startService();
@@ -132,11 +132,11 @@ public class ServerInfoService extends DefaultContextService
     }
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚ÉŠÖ˜A•t‚¯‚ç‚ê‚½ƒRƒ“ƒeƒLƒXƒgî•ñ‚ğæ“¾‚·‚éB<p>
-     * ’A‚µAƒL[‚É{@link #TOTAL_MEMORY_KEY}A{@link #USED_MEMORY_KEY}A{@link #FREE_MEMORY_KEY}A{@link #ACTIVE_THREAD_COUNT_KEY}A{@link #ACTIVE_THREAD_GROUP_COUNT_KEY}‚Ì‚¢‚¸‚ê‚©‚ğw’è‚µ‚½ê‡‚É‚ÍAƒRƒ“ƒeƒLƒXƒgî•ñ‚Æ‚µ‚ÄÃ“I‚ÉŠi”[‚³‚ê‚Ä‚¢‚é’l‚Å‚Í‚È‚­A“®“I‚É’l‚ğæ“¾‚·‚éB<br>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã«é–¢é€£ä»˜ã‘ã‚‰ã‚ŒãŸã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€ã‚­ãƒ¼ã«{@link #TOTAL_MEMORY_KEY}ã€{@link #USED_MEMORY_KEY}ã€{@link #FREE_MEMORY_KEY}ã€{@link #ACTIVE_THREAD_COUNT_KEY}ã€{@link #ACTIVE_THREAD_GROUP_COUNT_KEY}ã®ã„ãšã‚Œã‹ã‚’æŒ‡å®šã—ãŸå ´åˆã«ã¯ã€ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã¨ã—ã¦é™çš„ã«æ ¼ç´ã•ã‚Œã¦ã„ã‚‹å€¤ã§ã¯ãªãã€å‹•çš„ã«å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<br>
      *
-     * @param key ƒL[
-     * @return ƒL[‚ÉŠÖ˜A•t‚¯‚ç‚ê‚½ƒRƒ“ƒeƒLƒXƒgî•ñBŠY“–‚·‚éƒRƒ“ƒeƒLƒXƒgî•ñ‚ª‚È‚¢ê‡‚ÍAnull
+     * @param key ã‚­ãƒ¼
+     * @return ã‚­ãƒ¼ã«é–¢é€£ä»˜ã‘ã‚‰ã‚ŒãŸã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã€‚è©²å½“ã™ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ãŒãªã„å ´åˆã¯ã€null
      */
     public Object get(Object key){
         if(key != null){
@@ -167,13 +167,13 @@ public class ServerInfoService extends DefaultContextService
     }
     
     /**
-     * w’è‚³‚ê‚½ƒRƒ“ƒeƒLƒXƒgî•ñ‚ğw’è‚³‚ê‚½ƒL[î•ñ‚ÉŠÖ˜A•t‚¯‚Äİ’è‚·‚éB<p>
-     * ’A‚µA’è”‚Å—\–ñ‚³‚ê‚Ä‚¢‚éƒL[‚ğw’è‚·‚é‚ÆA—áŠO‚ğthrow‚·‚éB<br>
+     * æŒ‡å®šã•ã‚ŒãŸã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã‚’æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼æƒ…å ±ã«é–¢é€£ä»˜ã‘ã¦è¨­å®šã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€å®šæ•°ã§äºˆç´„ã•ã‚Œã¦ã„ã‚‹ã‚­ãƒ¼ã‚’æŒ‡å®šã™ã‚‹ã¨ã€ä¾‹å¤–ã‚’throwã™ã‚‹ã€‚<br>
      *
-     * @param key ƒL[
-     * @param value ƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @return w’è‚³‚ê‚½ƒL[‚ÉŠÖ˜A•t‚¯‚ç‚ê‚Ä‚¢‚½ƒRƒ“ƒeƒLƒXƒgî•ñB‘¶İ‚µ‚È‚¢ê‡‚ÍAnull
-     * @exception IllegalArgumentException ’è”‚Å—\–ñ‚³‚ê‚Ä‚¢‚éƒL[‚ğw’è‚µ‚½ê‡
+     * @param key ã‚­ãƒ¼
+     * @param value ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @return æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã«é–¢é€£ä»˜ã‘ã‚‰ã‚Œã¦ã„ãŸã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã€‚å­˜åœ¨ã—ãªã„å ´åˆã¯ã€null
+     * @exception IllegalArgumentException å®šæ•°ã§äºˆç´„ã•ã‚Œã¦ã„ã‚‹ã‚­ãƒ¼ã‚’æŒ‡å®šã—ãŸå ´åˆ
      */
     public Object put(Object key, Object value) throws IllegalArgumentException{
         if(!isModifiableKey(key)){
@@ -183,10 +183,10 @@ public class ServerInfoService extends DefaultContextService
     }
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒgî•ñ‚ÌƒL[W‡‚ğæ“¾‚·‚éB<p>
-     * ’A‚µA‚±‚ÌƒL[W‡‚ÍA•ÏX•s‰Â‚Å‚ ‚éB<br>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã®ã‚­ãƒ¼é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€ã“ã®ã‚­ãƒ¼é›†åˆã¯ã€å¤‰æ›´ä¸å¯ã§ã‚ã‚‹ã€‚<br>
      *
-     * @return ƒRƒ“ƒeƒLƒXƒgî•ñ‚ÌƒL[W‡
+     * @return ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã®ã‚­ãƒ¼é›†åˆ
      */
     public Set keySet(){
         final Set result = new HashSet(super.keySet());
@@ -199,10 +199,10 @@ public class ServerInfoService extends DefaultContextService
     }
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒgî•ñ‚ÌW‡‚ğæ“¾‚·‚éB<p>
-     * ’A‚µA‚±‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ‚ÌW‡‚ÍA•ÏX•s‰Â‚Å‚ ‚éB<br>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã®é›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€ã“ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã®é›†åˆã¯ã€å¤‰æ›´ä¸å¯ã§ã‚ã‚‹ã€‚<br>
      *
-     * @return ƒRƒ“ƒeƒLƒXƒgî•ñ‚ÌW‡
+     * @return ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã®é›†åˆ
      */
     public Collection values(){
         final Set result = new HashSet(super.values());
@@ -215,12 +215,12 @@ public class ServerInfoService extends DefaultContextService
     }
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚ÉŠÖ˜A•t‚¯‚ç‚ê‚½ƒRƒ“ƒeƒLƒXƒgî•ñ‚ğíœ‚·‚éB<p>
-     * ’A‚µA’è”‚Å—\–ñ‚³‚ê‚Ä‚¢‚éƒL[‚ğw’è‚·‚é‚ÆA—áŠO‚ğthrow‚·‚éB<br>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã«é–¢é€£ä»˜ã‘ã‚‰ã‚ŒãŸã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€å®šæ•°ã§äºˆç´„ã•ã‚Œã¦ã„ã‚‹ã‚­ãƒ¼ã‚’æŒ‡å®šã™ã‚‹ã¨ã€ä¾‹å¤–ã‚’throwã™ã‚‹ã€‚<br>
      *
-     * @param key ƒL[
-     * @return íœ‚³‚ê‚½ƒRƒ“ƒeƒLƒXƒgî•ñBíœ‚·‚éƒRƒ“ƒeƒLƒXƒgî•ñ‚ª‚È‚¢ê‡‚ÍAnull
-     * @exception IllegalArgumentException ’è”‚Å—\–ñ‚³‚ê‚Ä‚¢‚éƒL[‚ğw’è‚µ‚½ê‡
+     * @param key ã‚­ãƒ¼
+     * @return å‰Šé™¤ã•ã‚ŒãŸã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã€‚å‰Šé™¤ã™ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ãŒãªã„å ´åˆã¯ã€null
+     * @exception IllegalArgumentException å®šæ•°ã§äºˆç´„ã•ã‚Œã¦ã„ã‚‹ã‚­ãƒ¼ã‚’æŒ‡å®šã—ãŸå ´åˆ
      */
     public Object remove(Object key){
         if(!isModifiableKey(key)){
@@ -230,7 +230,7 @@ public class ServerInfoService extends DefaultContextService
     }
     
     /**
-     * —\–ñƒL[ˆÈŠO‚Ì‘S‚Ä‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ‚ğíœ‚·‚éB<p>
+     * äºˆç´„ã‚­ãƒ¼ä»¥å¤–ã®å…¨ã¦ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      */
     public void clear(){
         final Iterator keys  = super.keySet().iterator();
@@ -243,10 +243,10 @@ public class ServerInfoService extends DefaultContextService
     }
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚ÉŠÖ˜A•t‚¯‚ç‚ê‚½ƒRƒ“ƒeƒLƒXƒgî•ñ‚ª‘¶İ‚·‚é‚©’²‚×‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã«é–¢é€£ä»˜ã‘ã‚‰ã‚ŒãŸã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ãŒå­˜åœ¨ã™ã‚‹ã‹èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @param key ƒL[
-     * @return w’è‚³‚ê‚½ƒL[‚ÉŠÖ˜A•t‚¯‚ç‚ê‚½ƒRƒ“ƒeƒLƒXƒgî•ñ‚ª‘¶İ‚·‚éê‡true
+     * @param key ã‚­ãƒ¼
+     * @return æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã«é–¢é€£ä»˜ã‘ã‚‰ã‚ŒãŸã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ãŒå­˜åœ¨ã™ã‚‹å ´åˆtrue
      */
     public boolean containsKey(Object key){
         if(key != null){
@@ -266,10 +266,10 @@ public class ServerInfoService extends DefaultContextService
     }
     
     /**
-     * w’è‚³‚ê‚½ƒRƒ“ƒeƒLƒXƒgî•ñ‚ª‘¶İ‚·‚é‚©’²‚×‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ãŒå­˜åœ¨ã™ã‚‹ã‹èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @param value ƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @return w’è‚³‚ê‚½ƒRƒ“ƒeƒLƒXƒgî•ñ‚ª‘¶İ‚·‚éê‡true
+     * @param value ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @return æŒ‡å®šã•ã‚ŒãŸã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ãŒå­˜åœ¨ã™ã‚‹å ´åˆtrue
      */
     public boolean containsValue(Object value){
         if(value != null){
@@ -294,10 +294,10 @@ public class ServerInfoService extends DefaultContextService
     }
     
     /**
-     * ƒRƒ“ƒeƒLƒXƒgî•ñ‚ÌƒGƒ“ƒgƒŠW‡‚ğæ“¾‚·‚éB<p>
-     * ’A‚µA—\–ñƒL[‚ÌƒGƒ“ƒgƒŠ‚ÍA•ÏX•s‰Â‚Å‚ ‚éB‚Ü‚½AW‡‚É‘Î‚·‚é•ÏX‚à•s‰Â‚Å‚ ‚éB<br>
+     * ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã®ã‚¨ãƒ³ãƒˆãƒªé›†åˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€äºˆç´„ã‚­ãƒ¼ã®ã‚¨ãƒ³ãƒˆãƒªã¯ã€å¤‰æ›´ä¸å¯ã§ã‚ã‚‹ã€‚ã¾ãŸã€é›†åˆã«å¯¾ã™ã‚‹å¤‰æ›´ã‚‚ä¸å¯ã§ã‚ã‚‹ã€‚<br>
      *
-     * @return ƒRƒ“ƒeƒLƒXƒgî•ñ‚ÌƒGƒ“ƒgƒŠW‡
+     * @return ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã®ã‚¨ãƒ³ãƒˆãƒªé›†åˆ
      */
     public Set entrySet(){
         final Set result = new HashSet();
@@ -314,20 +314,20 @@ public class ServerInfoService extends DefaultContextService
     }
     
     /**
-     * •Û‚µ‚Ä‚¢‚éƒRƒ“ƒeƒLƒXƒgî•ñ‚Ì”‚ğæ“¾‚·‚éB<p>
+     * ä¿æŒã—ã¦ã„ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã®æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •Û‚µ‚Ä‚¢‚éƒRƒ“ƒeƒLƒXƒgî•ñ‚Ì”
+     * @return ä¿æŒã—ã¦ã„ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã®æ•°
      */
     public int size(){
         return super.size() + 5;
     }
     
     /**
-     * w’è‚³‚ê‚½ƒ}ƒbƒv‚ÉŠÜ‚Ü‚ê‚é‘S‚Ä‚ÌƒL[‚Æ’l‚ğƒRƒ“ƒeƒLƒXƒgî•ñ‚Æ‚µ‚Äİ’è‚·‚éB<p>
-     * ’A‚µA’è”‚Å—\–ñ‚³‚ê‚Ä‚¢‚éƒL[‚ªŠÜ‚Ü‚ê‚Ä‚¢‚éê‡A—áŠO‚ğthrow‚·‚éB<br>
+     * æŒ‡å®šã•ã‚ŒãŸãƒãƒƒãƒ—ã«å«ã¾ã‚Œã‚‹å…¨ã¦ã®ã‚­ãƒ¼ã¨å€¤ã‚’ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã¨ã—ã¦è¨­å®šã™ã‚‹ã€‚<p>
+     * ä½†ã—ã€å®šæ•°ã§äºˆç´„ã•ã‚Œã¦ã„ã‚‹ã‚­ãƒ¼ãŒå«ã¾ã‚Œã¦ã„ã‚‹å ´åˆã€ä¾‹å¤–ã‚’throwã™ã‚‹ã€‚<br>
      *
-     * @param t ƒRƒ“ƒeƒLƒXƒgî•ñ‚Æ‚µ‚Äİ’è‚·‚éƒ}ƒbƒv
-     * @exception IllegalArgumentException ’è”‚Å—\–ñ‚³‚ê‚Ä‚¢‚éƒL[‚ªŠÜ‚Ü‚ê‚Ä‚¢‚éê‡
+     * @param t ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã¨ã—ã¦è¨­å®šã™ã‚‹ãƒãƒƒãƒ—
+     * @exception IllegalArgumentException å®šæ•°ã§äºˆç´„ã•ã‚Œã¦ã„ã‚‹ã‚­ãƒ¼ãŒå«ã¾ã‚Œã¦ã„ã‚‹å ´åˆ
      */
     public void putAll(Map t) throws IllegalArgumentException{
         final Iterator keys = t.keySet().iterator();
@@ -338,9 +338,9 @@ public class ServerInfoService extends DefaultContextService
     }
     
     /**
-     * u–¼‘O(key‚ÌtoString()) : ’l(value‚ÌtoString()) ‰üsv‚Æ‚¢‚¤Œ`®‚ÅƒŠƒXƒgo—Í‚·‚éB<p>
+     * ã€Œåå‰(keyã®toString()) : å€¤(valueã®toString()) æ”¹è¡Œã€ã¨ã„ã†å½¢å¼ã§ãƒªã‚¹ãƒˆå‡ºåŠ›ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒXƒg•¶š—ñ
+     * @return ãƒªã‚¹ãƒˆæ–‡å­—åˆ—
      */
     public String list(){
         final StringBuilder buf = new StringBuilder();
@@ -374,62 +374,62 @@ public class ServerInfoService extends DefaultContextService
         return buf.toString();
     }
     
-    // ServerInfo‚ÌJavaDoc
+    // ServerInfoã®JavaDoc
     public String getJavaVersion(){
         return (String)get(JAVA_VERSION_KEY);
     }
     
-    // ServerInfo‚ÌJavaDoc
+    // ServerInfoã®JavaDoc
     public String getJavaVendor(){
         return (String)get(JAVA_VENDOR_KEY);
     }
     
-    // ServerInfo‚ÌJavaDoc
+    // ServerInfoã®JavaDoc
     public String getJavaVMName(){
         return (String)get(JAVA_VM_NAME_KEY);
     }
     
-    // ServerInfo‚ÌJavaDoc
+    // ServerInfoã®JavaDoc
     public String getJavaVMVersion(){
         return (String)get(JAVA_VM_VERSION_KEY);
     }
     
-    // ServerInfo‚ÌJavaDoc
+    // ServerInfoã®JavaDoc
     public String getJavaVMVendor(){
         return (String)get(JAVA_VM_VENDOR_KEY);
     }
     
-    // ServerInfo‚ÌJavaDoc
+    // ServerInfoã®JavaDoc
     public String getOSName(){
         return (String)get(OS_NAME_KEY);
     }
     
-    // ServerInfo‚ÌJavaDoc
+    // ServerInfoã®JavaDoc
     public String getOSVersion(){
         return (String)get(OS_VERSION_KEY);
     }
     
-    // ServerInfo‚ÌJavaDoc
+    // ServerInfoã®JavaDoc
     public String getOSArch(){
         return (String)get(OS_ARCH_KEY);
     }
     
-    // ServerInfo‚ÌJavaDoc
+    // ServerInfoã®JavaDoc
     public long getTotalMemory(){
         return Runtime.getRuntime().totalMemory();
     }
     
-    // ServerInfo‚ÌJavaDoc
+    // ServerInfoã®JavaDoc
     public long getUsedMemory(){
         return getTotalMemory() - getFreeMemory();
     }
     
-    // ServerInfo‚ÌJavaDoc
+    // ServerInfoã®JavaDoc
     public long getFreeMemory(){
         return Runtime.getRuntime().freeMemory();
     }
     
-    // ServerInfo‚ÌJavaDoc
+    // ServerInfoã®JavaDoc
     public long getMaxMemory(){
         final Long maxMemory = (Long)get(MAX_MEMORY_KEY);
         if(maxMemory == null){
@@ -439,7 +439,7 @@ public class ServerInfoService extends DefaultContextService
         }
     }
     
-    // ServerInfo‚ÌJavaDoc
+    // ServerInfoã®JavaDoc
     public int getAvailableProcessors(){
         final Integer availableProcessors
              = (Integer)get(AVAILABLE_PROCESSORS_KEY);
@@ -450,17 +450,17 @@ public class ServerInfoService extends DefaultContextService
         }
     }
     
-    // ServerInfo‚ÌJavaDoc
+    // ServerInfoã®JavaDoc
     public String getHostName(){
         return (String)get(HOST_NAME_KEY);
     }
     
-    // ServerInfo‚ÌJavaDoc
+    // ServerInfoã®JavaDoc
     public String getHostAddress(){
         return (String)get(HOST_ADDRESS_KEY);
     }
     
-    // ServerInfoServiceMBean‚ÌJavaDoc
+    // ServerInfoServiceMBeanã®JavaDoc
     public String listSystemProperties(){
         final Properties prop = System.getProperties();
         final String sep = System.getProperty("line.separator");
@@ -483,12 +483,12 @@ public class ServerInfoService extends DefaultContextService
         return group;
     }
     
-    // ServerInfo‚ÌJavaDoc
+    // ServerInfoã®JavaDoc
     public int getActiveThreadCount(){
         return getRootThreadGroup().activeCount();
     }
     
-    // ServerInfo‚ÌJavaDoc
+    // ServerInfoã®JavaDoc
     public int getActiveThreadGroupCount(){
         return getRootThreadGroup().activeGroupCount();
     }

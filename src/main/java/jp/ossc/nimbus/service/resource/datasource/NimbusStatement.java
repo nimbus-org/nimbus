@@ -30,32 +30,32 @@ package jp.ossc.nimbus.service.resource.datasource;
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
 
 /**
- * Statementƒ‰ƒbƒp[ƒNƒ‰ƒX<p>
- * ©g‚ªì¬‚µ‚½ƒŠƒUƒ‹ƒgƒZƒbƒg‚Ü‚ÅÓ”C‚ğ‚à‚Á‚ÄƒNƒ[ƒY‚·‚éB
+ * Statementãƒ©ãƒƒãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹<p>
+ * è‡ªèº«ãŒä½œæˆã—ãŸãƒªã‚¶ãƒ«ãƒˆã‚»ãƒƒãƒˆã¾ã§è²¬ä»»ã‚’ã‚‚ã£ã¦ã‚¯ãƒ­ãƒ¼ã‚ºã™ã‚‹ã€‚
  * @version $Name:  $
  * @author K.Nagai
  * @since 1.0
  */
 public class NimbusStatement extends AbstNimbusStatement implements Statement {
 
-    //Open‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©
+    //Openã—ã¦ã„ã‚‹ã‹ã©ã†ã‹
     protected boolean mIsOpen = true ;
-    //BatchSQL‚ÌƒZƒpƒŒƒ^
+    //BatchSQLã®ã‚»ãƒ‘ãƒ¬ã‚¿
     final String BATCH_SEPARATOR=System.getProperty("line.separator");
-    //[ms]•\¦
+    //[ms]è¡¨ç¤º
     final protected String PF_FOOTER = "[ms]";
-    //ƒL[‚É•t‚¯‰Á‚¦‚é’l
+    //ã‚­ãƒ¼ã«ä»˜ã‘åŠ ãˆã‚‹å€¤
     final protected String PF_KEY_HEADER = ":Performance";
     
  
-	//ƒoƒbƒ`’u‚«Š·‚¦Œã‚ÌSQL•Û‘¶—p
+	//ãƒãƒƒãƒç½®ãæ›ãˆå¾Œã®SQLä¿å­˜ç”¨
 	protected ArrayList mBatchArray = new ArrayList();
 		
 	/**
@@ -67,41 +67,41 @@ public class NimbusStatement extends AbstNimbusStatement implements Statement {
 	}
 
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#cancel()
 	 */
 	public void cancel() throws SQLException {
 		mStatement.cancel() ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#clearBatch()
 	 */
 	public void clearBatch() throws SQLException {
 		mStatement.clearBatch() ;
-		//ƒoƒbƒ`—p‚É•Û‘¶‚µ‚Ä‚¨‚¢‚½“à—e‚ğƒNƒŠƒA
+		//ãƒãƒƒãƒç”¨ã«ä¿å­˜ã—ã¦ãŠã„ãŸå†…å®¹ã‚’ã‚¯ãƒªã‚¢
 		if(journalService != null){		    
 		    mBatchArray.clear();
 		}
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#close()
 	 */
 	public void close() throws SQLException {
-		//”z‰º‚ÌResultSet‚ğ•Â‚¶‚é
+		//é…ä¸‹ã®ResultSetã‚’é–‰ã˜ã‚‹
 		for(int cnt = 0; cnt<this.mResultSetList.size();cnt++){
 			ResultSet tmp = (ResultSet)mResultSetList.get(cnt) ;
 			tmp.close() ;
 		}
 		
 		mResultSetList.clear() ;
-		//©g‚ª‚Æ‚¶‚Ä‚¢‚È‚¯‚ê‚Î•Â‚¶‚éB
+		//è‡ªèº«ãŒã¨ã˜ã¦ã„ãªã‘ã‚Œã°é–‰ã˜ã‚‹ã€‚
 		if(this.mIsOpen){
 			this.mStatement.close() ;
 			mIsOpen = false; 
 		}
-		//Batch—pSQL‚ÌŒãˆ—
+		//Batchç”¨SQLã®å¾Œå‡¦ç†
 		if( journalService != null ){
 		    mBatchArray.clear();
 		}
@@ -109,7 +109,7 @@ public class NimbusStatement extends AbstNimbusStatement implements Statement {
 
 	
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#executeBatch()
 	 */
 	public int[] executeBatch() throws SQLException {
@@ -118,18 +118,18 @@ public class NimbusStatement extends AbstNimbusStatement implements Statement {
 	    long endTime = 0;
 	    String sqlID=null;
 	    if( journalService != null ){
-	        //SQL’PˆÊ‚Ì’Ê”Ô‚ğæ“¾
+	        //SQLå˜ä½ã®é€šç•ªã‚’å–å¾—
 	        sqlID = getSequenceNo();
-            //”­s‚·‚éSQL•¶‚ğ‰Á‚¦‚Ä‚¢‚­
+            //ç™ºè¡Œã™ã‚‹SQLæ–‡ã‚’åŠ ãˆã¦ã„ã
             final StringBuilder buff = new StringBuilder();
 	        for( int i = 0 ; i < mBatchArray.size() ; i++ ){
 	            final String sql = (String) mBatchArray.get(i); 
 	            buff.append(sql);
 	            buff.append(BATCH_SEPARATOR);
 	        }
-	        //ƒWƒƒ[ƒiƒ‹‚É“o˜^
+	        //ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«ç™»éŒ²
 	        journalService.addInfo(sqlID,buff.toString(),journalLevel);
-	        //ƒoƒbƒ`“o˜^“à—e‚ğÁ‹
+	        //ãƒãƒƒãƒç™»éŒ²å†…å®¹ã‚’æ¶ˆå»
 	        mBatchArray.clear();
 	    }
 	    int[] ret = null;
@@ -156,7 +156,7 @@ public class NimbusStatement extends AbstNimbusStatement implements Statement {
 	    return buff.toString();
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#executeUpdate(java.lang.String)
 	 */
 	public int executeUpdate(String arg0) throws SQLException {
@@ -164,7 +164,7 @@ public class NimbusStatement extends AbstNimbusStatement implements Statement {
 	    long endTime = 0;
 	    String sqlID = null;
 	    if( journalService != null ){
-	        //SQL•¶‚ğ‹L˜^
+	        //SQLæ–‡ã‚’è¨˜éŒ²
 	        sqlID = getSequenceNo();
 	        journalService.addInfo(sqlID,arg0,journalLevel);
 	    }
@@ -182,7 +182,7 @@ public class NimbusStatement extends AbstNimbusStatement implements Statement {
 	    }
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#addBatch(java.lang.String)
 	 */
 	public void addBatch(String arg0) throws SQLException {
@@ -191,7 +191,7 @@ public class NimbusStatement extends AbstNimbusStatement implements Statement {
 	    }
 		mStatement.addBatch(arg0) ;
 	}
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#execute(java.lang.String)
 	 */
 	public boolean execute(String arg0) throws SQLException {
@@ -199,7 +199,7 @@ public class NimbusStatement extends AbstNimbusStatement implements Statement {
 	    long endTime = 0;
 	    String sqlID=null;
 	    if( journalService != null ){
-	        //SQL•¶‚ğ‹L˜^
+	        //SQLæ–‡ã‚’è¨˜éŒ²
 	        sqlID = getSequenceNo();
 	        journalService.addInfo(sqlID,arg0,journalLevel);
 	    }
@@ -218,7 +218,7 @@ public class NimbusStatement extends AbstNimbusStatement implements Statement {
 	    }
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#executeUpdate(java.lang.String, int)
 	 */
 	public int executeUpdate(String arg0, int arg1) throws SQLException {
@@ -243,7 +243,7 @@ public class NimbusStatement extends AbstNimbusStatement implements Statement {
 	    }
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#execute(java.lang.String, int)
 	 */
 	public boolean execute(String arg0, int arg1) throws SQLException {
@@ -252,7 +252,7 @@ public class NimbusStatement extends AbstNimbusStatement implements Statement {
 	    long endTime = 0;
 	    String sqlID = null;
 	    if( journalService != null ){
-	        //SQL•¶‚ğ‹L˜^
+	        //SQLæ–‡ã‚’è¨˜éŒ²
 	        sqlID = getSequenceNo();
 	        journalService.addInfo(sqlID,arg0,journalLevel);
 	    }
@@ -270,7 +270,7 @@ public class NimbusStatement extends AbstNimbusStatement implements Statement {
 	    }
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#executeUpdate(java.lang.String, int[])
 	 */
 	public int executeUpdate(String arg0, int[] arg1) throws SQLException {
@@ -278,7 +278,7 @@ public class NimbusStatement extends AbstNimbusStatement implements Statement {
 	    long endTime = 0;
 	    String sqlID = null;
 	    if( journalService != null ){
-	        //SQL•¶‚ğ‹L˜^
+	        //SQLæ–‡ã‚’è¨˜éŒ²
 	        sqlID = getSequenceNo();
 	        journalService.addInfo(sqlID,arg0,journalLevel);
 	    }
@@ -296,7 +296,7 @@ public class NimbusStatement extends AbstNimbusStatement implements Statement {
 	    }
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#execute(java.lang.String, int[])
 	 */
 	public boolean execute(String arg0, int[] arg1) throws SQLException {
@@ -305,7 +305,7 @@ public class NimbusStatement extends AbstNimbusStatement implements Statement {
 	    String sqlID = null;
 	    if( journalService != null ){
 		    sqlID = getSequenceNo();
-	        //SQL•¶‚ğ‹L˜^
+	        //SQLæ–‡ã‚’è¨˜éŒ²
 	        journalService.addInfo(sqlID,arg0,journalLevel);
 	    }
 	    startTime = System.currentTimeMillis();
@@ -323,7 +323,7 @@ public class NimbusStatement extends AbstNimbusStatement implements Statement {
 	    }
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#executeUpdate(java.lang.String, java.lang.String[])
 	 */
 	public int executeUpdate(String arg0, String[] arg1) throws SQLException {
@@ -331,7 +331,7 @@ public class NimbusStatement extends AbstNimbusStatement implements Statement {
 	    long endTime = 0;
 	    String sqlID = null;
 	    if( journalService != null ){
-	        //SQL•¶‚ğ‹L˜^
+	        //SQLæ–‡ã‚’è¨˜éŒ²
 	        sqlID = getSequenceNo();
 	        journalService.addInfo(sqlID,arg0,journalLevel);
 	    }
@@ -349,7 +349,7 @@ public class NimbusStatement extends AbstNimbusStatement implements Statement {
 	    }
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#execute(java.lang.String, java.lang.String[])
 	 */
 	public boolean execute(String arg0, String[] arg1) throws SQLException {
@@ -358,7 +358,7 @@ public class NimbusStatement extends AbstNimbusStatement implements Statement {
 	    String sqlID = null;
 		if( journalService != null ){
 		    sqlID = getSequenceNo();
-	        //SQL•¶‚ğ‹L˜^
+	        //SQLæ–‡ã‚’è¨˜éŒ²
 	        journalService.addInfo(sqlID,arg0,journalLevel);
 	    }
 	    startTime = System.currentTimeMillis();
@@ -375,7 +375,7 @@ public class NimbusStatement extends AbstNimbusStatement implements Statement {
 		}
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see java.sql.Statement#executeQuery(java.lang.String)
 	 */
 	public ResultSet executeQuery(String arg0) throws SQLException {
@@ -386,13 +386,13 @@ public class NimbusStatement extends AbstNimbusStatement implements Statement {
 	        sqlID = getSequenceNo();
 	        journalService.addInfo(sqlID,arg0,journalLevel);
 	    }
-		// ƒŠƒNƒGƒXƒgŠJnæ“¾
+		// ãƒªã‚¯ã‚¨ã‚¹ãƒˆé–‹å§‹æ™‚åˆ»å–å¾—
 		startTime = System.currentTimeMillis();
 	    NimbusResultSet nret=null;
 	    try {
 	        ResultSet ret =  mStatement.executeQuery(arg0);
 	        nret = new NimbusResultSet(ret);
-		    //ResultSet‚ğŠÇ—
+		    //ResultSetã‚’ç®¡ç†
 		    mResultSetList.add(nret);
 	    } finally {
 			endTime = System.currentTimeMillis();

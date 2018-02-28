@@ -32,36 +32,36 @@
 package jp.ossc.nimbus.service.cache;
 
 /**
- * ���ӂꌟ�؁B<p>
- * �L���b�V�����ǉ����ꂽ���ɂ���Ă��ӂꂪ�������邩�ǂ��������؂���@�\���������邽�߂̃C���^�t�F�[�X�ł���B<br>
+ * あふれ検証。<p>
+ * キャッシュが追加された事によってあふれが発生するかどうかを検証する機能を実装するためのインタフェースである。<br>
  *
  * @author M.Takata
  */
 public interface OverflowValidator{
     
     /**
-     * �L���b�V���Q�Ƃ�ǉ�����B<p>
+     * キャッシュ参照を追加する。<p>
      *
-     * @param ref �L���b�V���Q��
+     * @param ref キャッシュ参照
      */
     public void add(CachedReference ref);
     
     /**
-     * �L���b�V���Q�Ƃ��폜����B<p>
+     * キャッシュ参照を削除する。<p>
      *
-     * @param ref �L���b�V���Q��
+     * @param ref キャッシュ参照
      */
     public void remove(CachedReference ref);
     
     /**
-     * ���ӂꌟ�؂��s���B<p>
+     * あふれ検証を行う。<p>
      *
-     * @return ���ӂꌟ�؂��s�������ʂ��ӂꂪ��������ꍇ�A���ӂꐔ��Ԃ��B���ӂ�Ȃ��ꍇ�́A0��Ԃ�
+     * @return あふれ検証を行った結果あふれが発生する場合、あふれ数を返す。あふれない場合は、0を返す
      */
     public int validate();
     
     /**
-     * ���ӂꌟ�؂��s�����߂ɕێ����Ă����������������B<p>
+     * あふれ検証を行うために保持している情報を初期化する。<p>
      */
     public void reset();
 }

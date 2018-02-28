@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aop.interceptor;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link RetryInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link RetryInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see RetryInterceptorService
@@ -46,80 +46,80 @@ public interface RetryInterceptorServiceMBean
          = RetryInterceptorService.class.getName().replaceAll("\\.", "_") + "_RETRY_COUNT";
     
     /**
-     * ƒŠƒgƒ‰ƒC‚·‚é–ß‚è’l‚ÌğŒ‚ğİ’è‚·‚éB<p>
-     * ğŒ®‚ÍAThe Apache Jakarta Project‚Ì Commons Jexl(http://jakarta.apache.org/commons/jexl/)‚ğg—p‚·‚éB<br>
-     * –ß‚è’l©‘Ì‚ğQÆ‚·‚éê‡‚ÍA"value"‚Æ‚¢‚¤—\–ñŒê‚ğg—p‚·‚éB<br>
-     * –ß‚è’l‚ÌƒvƒƒpƒeƒB‚ğQÆ‚·‚éê‡‚ÍAƒvƒƒpƒeƒB‚ğ•\Œ»‚·‚é•¶š—ñ‚ğ"@"‚ÅˆÍ‚ñ‚Åw’è‚·‚éB‚±‚±‚ÅŒ¾‚¤AƒvƒƒpƒeƒB‚ÌŠT”O‚ÍAJava Beans‚ÌƒvƒƒpƒeƒB‚ÌŠT”O‚æ‚èL‚­A{@link jp.ossc.nimbus.beans.PropertyFactory PropertyFactory}‚Ì‹K–ñ‚É]‚¤B<br>
+     * ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹æˆ»ã‚Šå€¤ã®æ¡ä»¶ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æ¡ä»¶å¼ã¯ã€The Apache Jakarta Projectã® Commons Jexl(http://jakarta.apache.org/commons/jexl/)ã‚’ä½¿ç”¨ã™ã‚‹ã€‚<br>
+     * æˆ»ã‚Šå€¤è‡ªä½“ã‚’å‚ç…§ã™ã‚‹å ´åˆã¯ã€"value"ã¨ã„ã†äºˆç´„èªã‚’ä½¿ç”¨ã™ã‚‹ã€‚<br>
+     * æˆ»ã‚Šå€¤ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å‚ç…§ã™ã‚‹å ´åˆã¯ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¡¨ç¾ã™ã‚‹æ–‡å­—åˆ—ã‚’"@"ã§å›²ã‚“ã§æŒ‡å®šã™ã‚‹ã€‚ã“ã“ã§è¨€ã†ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¦‚å¿µã¯ã€Java Beansã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¦‚å¿µã‚ˆã‚Šåºƒãã€{@link jp.ossc.nimbus.beans.PropertyFactory PropertyFactory}ã®è¦ç´„ã«å¾“ã†ã€‚<br>
      *
-     * @param conditions ğŒ®”z—ñ
+     * @param conditions æ¡ä»¶å¼é…åˆ—
      */
     public void setReturnConditions(String[] conditions);
     
     /**
-     * ƒŠƒgƒ‰ƒC‚·‚é–ß‚è’l‚ÌğŒ‚ğæ“¾‚·‚éB<p>
+     * ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹æˆ»ã‚Šå€¤ã®æ¡ä»¶ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ğŒ®”z—ñ
+     * @return æ¡ä»¶å¼é…åˆ—
      */
     public String[] getReturnConditions();
     
     /**
-     * ƒŠƒgƒ‰ƒC‚·‚é—áŠO‚ÌƒNƒ‰ƒX–¼‚Æ‚»‚ÌğŒ‚ğİ’è‚·‚éB<p>
-     * ğŒ®‚ÍAThe Apache Jakarta Project‚Ì Commons Jexl(http://jakarta.apache.org/commons/jexl/)‚ğg—p‚·‚éB<br>
-     * —áŠO‚ÌƒvƒƒpƒeƒB‚ğQÆ‚·‚éê‡‚ÍAƒvƒƒpƒeƒB‚ğ•\Œ»‚·‚é•¶š—ñ‚ğ"@"‚ÅˆÍ‚ñ‚Åw’è‚·‚éB‚±‚±‚ÅŒ¾‚¤AƒvƒƒpƒeƒB‚ÌŠT”O‚ÍAJava Beans‚ÌƒvƒƒpƒeƒB‚ÌŠT”O‚æ‚èL‚­A{@link jp.ossc.nimbus.beans.PropertyFactory PropertyFactory}‚Ì‹K–ñ‚É]‚¤B<br>
+     * ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹ä¾‹å¤–ã®ã‚¯ãƒ©ã‚¹åã¨ãã®æ¡ä»¶ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æ¡ä»¶å¼ã¯ã€The Apache Jakarta Projectã® Commons Jexl(http://jakarta.apache.org/commons/jexl/)ã‚’ä½¿ç”¨ã™ã‚‹ã€‚<br>
+     * ä¾‹å¤–ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å‚ç…§ã™ã‚‹å ´åˆã¯ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¡¨ç¾ã™ã‚‹æ–‡å­—åˆ—ã‚’"@"ã§å›²ã‚“ã§æŒ‡å®šã™ã‚‹ã€‚ã“ã“ã§è¨€ã†ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¦‚å¿µã¯ã€Java Beansã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¦‚å¿µã‚ˆã‚Šåºƒãã€{@link jp.ossc.nimbus.beans.PropertyFactory PropertyFactory}ã®è¦ç´„ã«å¾“ã†ã€‚<br>
      *
-     * @param conditions —áŠOƒNƒ‰ƒX–¼:ğŒ®iğŒ‚ª•K—v‚È‚¢ê‡‚ÍA:ˆÈ‰º‚ğÈ—ª‰Â”\j‚Ì•¶š—ñ”z—ñ
+     * @param conditions ä¾‹å¤–ã‚¯ãƒ©ã‚¹å:æ¡ä»¶å¼ï¼ˆæ¡ä»¶ãŒå¿…è¦ãªã„å ´åˆã¯ã€:ä»¥ä¸‹ã‚’çœç•¥å¯èƒ½ï¼‰ã®æ–‡å­—åˆ—é…åˆ—
      */
     public void setExceptionConditions(String[] conditions);
     
     /**
-     * ƒŠƒgƒ‰ƒC‚·‚é—áŠO‚ÌƒNƒ‰ƒX–¼‚Æ‚»‚ÌğŒ‚ğæ“¾‚·‚éB<p>
+     * ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹ä¾‹å¤–ã®ã‚¯ãƒ©ã‚¹åã¨ãã®æ¡ä»¶ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return —áŠOƒNƒ‰ƒX–¼:ğŒ®iğŒ‚ª•K—v‚È‚¢ê‡‚ÍA:ˆÈ‰º‚ğÈ—ª‰Â”\j‚Ì•¶š—ñ”z—ñ
+     * @return ä¾‹å¤–ã‚¯ãƒ©ã‚¹å:æ¡ä»¶å¼ï¼ˆæ¡ä»¶ãŒå¿…è¦ãªã„å ´åˆã¯ã€:ä»¥ä¸‹ã‚’çœç•¥å¯èƒ½ï¼‰ã®æ–‡å­—åˆ—é…åˆ—
      */
     public String[] getExceptionConditions();
     
     /**
-     * ƒŠƒgƒ‰ƒC‚·‚é‰ñ”‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA1B<br>
+     * ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹å›æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€1ã€‚<br>
      *
-     * @param count ƒŠƒgƒ‰ƒC‚·‚é‰ñ”
+     * @param count ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹å›æ•°
      */
     public void setMaxRetryCount(int count);
     
     /**
-     * ƒŠƒgƒ‰ƒC‚·‚é‰ñ”‚ğæ“¾‚·‚éB<p>
+     * ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹å›æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒgƒ‰ƒC‚·‚é‰ñ”
+     * @return ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹å›æ•°
      */
     public int getMaxRetryCount();
     
     /**
-     * Œ»İ‚ÌƒŠƒgƒ‰ƒC‰ñ”‚ğ•Û‚·‚é{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}‚Ì‘®«–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_RETRY_COUNT_ATTRIBUTE_NAME}B<br>
+     * ç¾åœ¨ã®ãƒªãƒˆãƒ©ã‚¤å›æ•°ã‚’ä¿æŒã™ã‚‹{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}ã®å±æ€§åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_RETRY_COUNT_ATTRIBUTE_NAME}ã€‚<br>
      *
-     * @param name Œ»İ‚ÌƒŠƒgƒ‰ƒC‰ñ”‚ğ•Û‚·‚éInvocationContext‚Ì‘®«–¼
+     * @param name ç¾åœ¨ã®ãƒªãƒˆãƒ©ã‚¤å›æ•°ã‚’ä¿æŒã™ã‚‹InvocationContextã®å±æ€§å
      */
     public void setRetryCountAttributeName(String name);
     
     /**
-     * Œ»İ‚ÌƒŠƒgƒ‰ƒC‰ñ”‚ğ•Û‚·‚é{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}‚Ì‘®«–¼‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨ã®ãƒªãƒˆãƒ©ã‚¤å›æ•°ã‚’ä¿æŒã™ã‚‹{@link jp.ossc.nimbus.service.aop.InvocationContext InvocationContext}ã®å±æ€§åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Œ»İ‚ÌƒŠƒgƒ‰ƒC‰ñ”‚ğ•Û‚·‚éInvocationContext‚Ì‘®«–¼
+     * @return ç¾åœ¨ã®ãƒªãƒˆãƒ©ã‚¤å›æ•°ã‚’ä¿æŒã™ã‚‹InvocationContextã®å±æ€§å
      */
     public String getRetryCountAttributeName();
     
     /**
-     * ƒŠƒgƒ‰ƒC‚·‚éŠÔŠu[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0‚ÅŠÔŠu‚ğ‚ ‚¯‚¸‚ÉƒŠƒgƒ‰ƒC‚·‚éB<br>
+     * ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹é–“éš”[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã§é–“éš”ã‚’ã‚ã‘ãšã«ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹ã€‚<br>
      *
-     * @param millis ƒŠƒgƒ‰ƒC‚·‚éŠÔŠu[ms]
+     * @param millis ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹é–“éš”[ms]
      */
     public void setRetryInterval(long millis);
     
     /**
-     * ƒŠƒgƒ‰ƒC‚·‚éŠÔŠu[ms]‚ğæ“¾‚·‚éB<p>
+     * ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹é–“éš”[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒgƒ‰ƒC‚·‚éŠÔŠu[ms]
+     * @return ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹é–“éš”[ms]
      */
     public long getRetryInterval();
 }

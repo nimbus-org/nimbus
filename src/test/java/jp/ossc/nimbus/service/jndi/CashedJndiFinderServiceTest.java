@@ -38,8 +38,8 @@ import javax.jms.*;
 /**
  *	
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/11/18| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/11/18ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public class CashedJndiFinderServiceTest extends TestCase {
 	private static final String serviceDefFilename = 
@@ -56,14 +56,14 @@ public class CashedJndiFinderServiceTest extends TestCase {
 	public static void main(String[] args) {
 		junit.textui.TestRunner.run(CashedJndiFinderServiceTest.class);
 	}
-	//QueueConnectionFactory,Queue‚ğlookup‚·‚éB
+	//QueueConnectionFactory,Queueã‚’lookupã™ã‚‹ã€‚
 	public void testLookUp() throws Exception{
 		JndiFinder finder = (JndiFinder)ServiceManagerFactory.getServiceObject("TheManager","JndiFinderService");
 		if(finder == null){
 			System.out.println("Can't get JndiFinder");
 			throw new Exception();
 		}
-		//QueueConnectionFactory‚ğlookup‚·‚éB
+		//QueueConnectionFactoryã‚’lookupã™ã‚‹ã€‚
 		QueueConnectionFactory queueConnectionFactory = (QueueConnectionFactory)finder.lookup("QueueConnectionFactory");
 		Queue queue = (Queue)finder.lookup("MyQueue");
 		

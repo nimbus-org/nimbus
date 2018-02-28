@@ -37,9 +37,9 @@ import jp.ossc.nimbus.service.aop.*;
 import java.util.*;
 
 /**
- * ƒ`ƒFƒbƒNƒ|ƒCƒ“ƒgƒCƒ“ƒ^[ƒZƒvƒ^B<p>
- * ƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µ‚É‘Î‚µ‚ÄA’Ê‰ß‚µ‚½ƒXƒŒƒbƒh‚ğ‹L˜^‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^‚Å‚ ‚éB<br>
- * ˆÈ‰º‚ÉAƒ`ƒFƒbƒNƒ|ƒCƒ“ƒgƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ãƒã‚§ãƒƒã‚¯ãƒã‚¤ãƒ³ãƒˆã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã€‚<p>
+ * ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—ã«å¯¾ã—ã¦ã€é€šéã—ãŸã‚¹ãƒ¬ãƒƒãƒ‰ã‚’è¨˜éŒ²ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ã‚ã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã€ãƒã‚§ãƒƒã‚¯ãƒã‚¤ãƒ³ãƒˆã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -68,35 +68,35 @@ public class CheckPointInterceptorService extends ServiceBase
     private ServiceName checkPointTracerServiceName;
     private CheckPointTracer checkPointTracer;
     
-    // CheckPointInterceptorServiceMBean‚ÌJavaDoc
+    // CheckPointInterceptorServiceMBeanã®JavaDoc
     public void setEnabled(boolean enabled){
         this.enabled = enabled;
     }
-    // CheckPointInterceptorServiceMBean‚ÌJavaDoc
+    // CheckPointInterceptorServiceMBeanã®JavaDoc
     public boolean isEnabled(){
         return enabled;
     }
     
-    // CheckPointInterceptorServiceMBean‚ÌJavaDoc
+    // CheckPointInterceptorServiceMBeanã®JavaDoc
     public List passOverThreads(){
         synchronized(passOverThreads){
             return new ArrayList(passOverThreads);
         }
     }
     
-    // CheckPointInterceptorServiceMBean‚ÌJavaDoc
+    // CheckPointInterceptorServiceMBeanã®JavaDoc
     public void clear(){
         if(passOverThreads != null){
             passOverThreads.clear();
         }
     }
     
-    // CheckPointInterceptorServiceMBean‚ÌJavaDoc
+    // CheckPointInterceptorServiceMBeanã®JavaDoc
     public void setCheckPointName(String name){
         checkPointName = name;
     }
     
-    // CheckPointInterceptorServiceMBean‚ÌJavaDoc
+    // CheckPointInterceptorServiceMBeanã®JavaDoc
     public String getCheckPointName(){
         if(checkPointName == null && getServiceNameObject() != null){
             return getServiceNameObject().toString();
@@ -104,18 +104,18 @@ public class CheckPointInterceptorService extends ServiceBase
         return checkPointName;
     }
     
-    // CheckPointInterceptorServiceMBean‚ÌJavaDoc
+    // CheckPointInterceptorServiceMBeanã®JavaDoc
     public void setCheckPointTracerServiceName(ServiceName name){
         checkPointTracerServiceName = name;
     }
     
-    // CheckPointInterceptorServiceMBean‚ÌJavaDoc
+    // CheckPointInterceptorServiceMBeanã®JavaDoc
     public ServiceName getCheckPointTracerServiceName(){
         return checkPointTracerServiceName;
     }
     
     /**
-     * {@link CheckPointTracer}‚ğİ’è‚·‚éB<p>
+     * {@link CheckPointTracer}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param tracer CheckPointTracer
      */
@@ -134,13 +134,13 @@ public class CheckPointInterceptorService extends ServiceBase
     }
     
     /**
-     * ’Ê‰ß‚µ‚½ƒXƒŒƒbƒh–¼‚ğ‹L˜^‚µ‚ÄAŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<p>
-     * ƒT[ƒrƒX‚ªŠJn‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‰½‚à‚¹‚¸‚ÉŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<br>
+     * é€šéã—ãŸã‚¹ãƒ¬ãƒƒãƒ‰åã‚’è¨˜éŒ²ã—ã¦ã€æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãŒé–‹å§‹ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ä½•ã‚‚ã›ãšã«æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param chain Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·‚½‚ß‚Ìƒ`ƒF[ƒ“
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable ŒÄ‚Ño‚µæ‚Å—áŠO‚ª”­¶‚µ‚½ê‡A‚Ü‚½‚Í‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚Å”CˆÓ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡B’A‚µA–{—ˆŒÄ‚Ño‚³‚ê‚éˆ—‚ªthrow‚µ‚È‚¢RuntimeExceptionˆÈŠO‚Ì—áŠO‚ğthrow‚µ‚Ä‚àAŒÄ‚Ño‚µŒ³‚É‚Í“`”d‚³‚ê‚È‚¢B
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param chain æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ãŸã‚ã®ãƒã‚§ãƒ¼ãƒ³
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable å‘¼ã³å‡ºã—å…ˆã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€ã¾ãŸã¯ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ä»»æ„ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€‚ä½†ã—ã€æœ¬æ¥å‘¼ã³å‡ºã•ã‚Œã‚‹å‡¦ç†ãŒthrowã—ãªã„RuntimeExceptionä»¥å¤–ã®ä¾‹å¤–ã‚’throwã—ã¦ã‚‚ã€å‘¼ã³å‡ºã—å…ƒã«ã¯ä¼æ’­ã•ã‚Œãªã„ã€‚
      */
     public Object invoke(
         InvocationContext context,

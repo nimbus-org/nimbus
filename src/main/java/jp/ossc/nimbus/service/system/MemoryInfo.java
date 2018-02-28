@@ -32,30 +32,30 @@
 package jp.ossc.nimbus.service.system;
 
 /**
- * ƒƒ‚ƒŠŽg—pó‹µB<p>
+ * ãƒ¡ãƒ¢ãƒªä½¿ç”¨çŠ¶æ³ã€‚<p>
  *
  * @author M.Takata
  */
 public interface MemoryInfo{
     
     /**
-     * ‹ó‚«ƒƒ‚ƒŠ‚ðŽæ“¾‚·‚éB<p>
+     * ç©ºããƒ¡ãƒ¢ãƒªã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‹ó‚«ƒƒ‚ƒŠ[byte]
+     * @return ç©ºããƒ¡ãƒ¢ãƒª[byte]
      */
     public long getFreeBytes();
     
     /**
-     * Žg—pƒƒ‚ƒŠ‚ðŽæ“¾‚·‚éB<p>
+     * ä½¿ç”¨ãƒ¡ãƒ¢ãƒªã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return Žg—pƒƒ‚ƒŠ[byte]
+     * @return ä½¿ç”¨ãƒ¡ãƒ¢ãƒª[byte]
      */
     public long getUsedBytes();
     
     /**
-     * ‘ƒƒ‚ƒŠ‚ðŽæ“¾‚·‚éB<p>
+     * ç·ãƒ¡ãƒ¢ãƒªã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ‘ƒƒ‚ƒŠ[byte]
+     * @return ç·ãƒ¡ãƒ¢ãƒª[byte]
      */
     public long getTotalBytes();
 }

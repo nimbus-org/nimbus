@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.test.action;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link FileOperateActionService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link FileOperateActionService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see FileOperateActionService
@@ -42,16 +42,16 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 public interface FileOperateActionServiceMBean extends ServiceBaseMBean{
     
     /**
-    * ‚±‚ÌƒAƒNƒVƒ‡ƒ“‚ÌƒŠƒ\[ƒX’è‹`‚ğì¬‚·‚éÛ‚ÌƒfƒtƒHƒ‹ƒg‚Ì‘z’èƒRƒXƒg‚ğİ’è‚·‚éB<p>
+    * ã“ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚½ãƒ¼ã‚¹å®šç¾©ã‚’ä½œæˆã™ã‚‹éš›ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æƒ³å®šã‚³ã‚¹ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
     * 
-    * @param cost ‘z’èƒRƒXƒg
+    * @param cost æƒ³å®šã‚³ã‚¹ãƒˆ
     */
    public void setExpectedCost(double cost);
    
    /**
-    * ‚±‚ÌƒAƒNƒVƒ‡ƒ“‚ÌƒŠƒ\[ƒX’è‹`‚ğì¬‚·‚éÛ‚ÌƒfƒtƒHƒ‹ƒg‚Ì‘z’èƒRƒXƒg‚ğæ“¾‚·‚éB<p>
+    * ã“ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚½ãƒ¼ã‚¹å®šç¾©ã‚’ä½œæˆã™ã‚‹éš›ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æƒ³å®šã‚³ã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
     * 
-    * @return ‘z’èƒRƒXƒg
+    * @return æƒ³å®šã‚³ã‚¹ãƒˆ
     */
    public double getExpectedCost();
 }

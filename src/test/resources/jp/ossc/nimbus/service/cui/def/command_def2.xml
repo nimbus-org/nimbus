@@ -1,46 +1,46 @@
-<?xml version = "1.0" encoding="Shift_JIS"?>
+<?xml version = "1.0" encoding="UTF-8"?>
 <dataInputDefine>
 <dataInput key="shimuke2">
 <step name="RushPatternSelect">
 	<display type="text">/****** Hub Simulator Main Menu ******/</display>
-	<display type="text">ƒ‰ƒbƒVƒ…ƒpƒ^[ƒ“‚ð‘I‘ð‚µ‚Ä‚­‚¾‚³‚¢B</display>
-	<display type="text">1 ƒq[ƒgƒ‰ƒbƒVƒ… </display>
-	<display type="text">2 ƒgƒ‰ƒ“ƒUƒ“ƒNƒVƒ‡ƒ“ƒ‰ƒbƒVƒ…</display>
+	<display type="text">ãƒ©ãƒƒã‚·ãƒ¥ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’é¸æŠžã—ã¦ãã ã•ã„ã€‚</display>
+	<display type="text">1 ãƒ’ãƒ¼ãƒˆãƒ©ãƒƒã‚·ãƒ¥ </display>
+	<display type="text">2 ãƒˆãƒ©ãƒ³ã‚¶ãƒ³ã‚¯ã‚·ãƒ§ãƒ³ãƒ©ãƒƒã‚·ãƒ¥</display>
 	<input type="text">1,2</input>
 	<goto value="1">ThreadCntInput</goto>
 	<goto value="2">JMSRequestSelect</goto>
 </step>
 <step name="TrnNumInput">
-	<display type="text">ƒgƒ‰ƒ“ƒUƒ“ƒNƒVƒ‡ƒ“”‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢</display>
+	<display type="text">ãƒˆãƒ©ãƒ³ã‚¶ãƒ³ã‚¯ã‚·ãƒ§ãƒ³æ•°ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„</display>
 	<display type="text"> </display>
 	<input type="text">1-99999</input>
 </step>
 <step name="JMSRequestSelect">
-	<display type="text">JMSƒŠƒNƒGƒXƒgŽí•Ê‚ð‘I‘ð‚µ‚Ä‚­‚¾‚³‚¢</display>
+	<display type="text">JMSãƒªã‚¯ã‚¨ã‚¹ãƒˆç¨®åˆ¥ã‚’é¸æŠžã—ã¦ãã ã•ã„</display>
 	<display type="text">Request</display>
 	<display type="text">RequestReply</display>
 	<input type="text">Request,RequestReply</input>
 </step>
 <step name="MessageSelect">
-	<display type="text"> “d•¶Ží•Ê‚ð‘I‘ð‚µ‚Ä‚­‚¾‚³‚¢ </display>
-	<display type="text">1.ƒeƒXƒg“d•¶‚»‚Ì1</display>
-	<display type="text">2.ƒeƒXƒg“d•¶‚»‚Ì2</display>
-	<display type="text">3.ƒeƒXƒg“d•¶‚»‚Ì3</display>
-	<display type="text">4.ƒeƒXƒg“d•¶‚»‚Ì4</display>
+	<display type="text"> é›»æ–‡ç¨®åˆ¥ã‚’é¸æŠžã—ã¦ãã ã•ã„ </display>
+	<display type="text">1.ãƒ†ã‚¹ãƒˆé›»æ–‡ãã®1</display>
+	<display type="text">2.ãƒ†ã‚¹ãƒˆé›»æ–‡ãã®2</display>
+	<display type="text">3.ãƒ†ã‚¹ãƒˆé›»æ–‡ãã®3</display>
+	<display type="text">4.ãƒ†ã‚¹ãƒˆé›»æ–‡ãã®4</display>
 	<input type="text">1,2,3,4</input>
 </step>
 <step name="Confirm">
-     <display type="text">Ý’èŠ®—¹‚µ‚Ü‚µ‚½</display>
-     <display type="text">ŽÀs‚µ‚Ü‚·B‚æ‚ë‚µ‚¢‚Å‚·‚©H</display>
-     <display type="text">1.ŽÀs 2.ƒLƒƒƒ“ƒZƒ‹ 3.Å‰‚©‚ç‚â‚è‚È‚¨‚·</display>
+     <display type="text">è¨­å®šå®Œäº†ã—ã¾ã—ãŸ</display>
+     <display type="text">å®Ÿè¡Œã—ã¾ã™ã€‚ã‚ˆã‚ã—ã„ã§ã™ã‹ï¼Ÿ</display>
+     <display type="text">1.å®Ÿè¡Œ 2.ã‚­ãƒ£ãƒ³ã‚»ãƒ« 3.æœ€åˆã‹ã‚‰ã‚„ã‚ŠãªãŠã™</display>
      <input type="text">1,2,3</input>
      <goto value="3">Redo</goto>
      <goto value="2">Interrupt</goto>
      <goto value="1">End</goto>
-     <end type="normal">ŽÀs‚µ‚Ü‚·</end>
+     <end type="normal">å®Ÿè¡Œã—ã¾ã™</end>
 </step>
 <step name="ThreadCntInput">
-	<display type="text">ŽÀsƒXƒŒƒbƒh”‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢</display>
+	<display type="text">å®Ÿè¡Œã‚¹ãƒ¬ãƒƒãƒ‰æ•°ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„</display>
 	<display type="text">1-100</display>
 	<input type="text">1-100</input>
 	<goto>MessageSelect</goto>

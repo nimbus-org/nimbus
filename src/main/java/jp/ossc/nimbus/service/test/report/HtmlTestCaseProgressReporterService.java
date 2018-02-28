@@ -54,7 +54,7 @@ import jp.ossc.nimbus.service.test.TestScenarioGroup;
 import jp.ossc.nimbus.service.test.TestScenarioGroup.TestScenarioGroupResource;
 
 /**
- * HTMLŒ`®‚ÅƒeƒXƒgì¬ó‹µ‚ğƒŒƒ|[ƒg‚·‚éB
+ * HTMLå½¢å¼ã§ãƒ†ã‚¹ãƒˆä½œæˆçŠ¶æ³ã‚’ãƒ¬ãƒãƒ¼ãƒˆã™ã‚‹ã€‚
  * <p>
  * 
  * @author M.Aono
@@ -101,29 +101,29 @@ public class HtmlTestCaseProgressReporterService extends ServiceBase implements 
             pw.println("</tr>");
             pw.println("<tr bgcolor=\"#cccccc\">");
             pw.println("<th scope=\"col\">ID</th>");
-            pw.println("<th scope=\"col\">à–¾</th>");
-            pw.println("<th scope=\"col\">ì¬’S“–Ò</th>");
-            pw.println("<th scope=\"col\">ŠJn—\’è“ú</th>");
-            pw.println("<th scope=\"col\">ŠJn“ú</th>");
-            pw.println("<th scope=\"col\">I—¹—\’è“ú</th>");
-            pw.println("<th scope=\"col\">I—¹“ú</th>");
-            pw.println("<th scope=\"col\">i’»</th>");
+            pw.println("<th scope=\"col\">èª¬æ˜</th>");
+            pw.println("<th scope=\"col\">ä½œæˆæ‹…å½“è€…</th>");
+            pw.println("<th scope=\"col\">é–‹å§‹äºˆå®šæ—¥</th>");
+            pw.println("<th scope=\"col\">é–‹å§‹æ—¥</th>");
+            pw.println("<th scope=\"col\">çµ‚äº†äºˆå®šæ—¥</th>");
+            pw.println("<th scope=\"col\">çµ‚äº†æ—¥</th>");
+            pw.println("<th scope=\"col\">é€²æ—</th>");
             pw.println("<th scope=\"col\">ID</th>");
-            pw.println("<th scope=\"col\">à–¾</th>");
-            pw.println("<th scope=\"col\">ì¬’S“–Ò</th>");
-            pw.println("<th scope=\"col\">ŠJn—\’è“ú</th>");
-            pw.println("<th scope=\"col\">ŠJn“ú</th>");
-            pw.println("<th scope=\"col\">I—¹—\’è“ú</th>");
-            pw.println("<th scope=\"col\">I—¹“ú</th>");
-            pw.println("<th scope=\"col\">i’»</th>");
+            pw.println("<th scope=\"col\">èª¬æ˜</th>");
+            pw.println("<th scope=\"col\">ä½œæˆæ‹…å½“è€…</th>");
+            pw.println("<th scope=\"col\">é–‹å§‹äºˆå®šæ—¥</th>");
+            pw.println("<th scope=\"col\">é–‹å§‹æ—¥</th>");
+            pw.println("<th scope=\"col\">çµ‚äº†äºˆå®šæ—¥</th>");
+            pw.println("<th scope=\"col\">çµ‚äº†æ—¥</th>");
+            pw.println("<th scope=\"col\">é€²æ—</th>");
             pw.println("<th scope=\"col\">ID</th>");
-            pw.println("<th scope=\"col\">à–¾</th>");
-            pw.println("<th scope=\"col\">ì¬’S“–Ò</th>");
-            pw.println("<th scope=\"col\">ŠJn—\’è“ú</th>");
-            pw.println("<th scope=\"col\">ŠJn“ú</th>");
-            pw.println("<th scope=\"col\">I—¹—\’è“ú</th>");
-            pw.println("<th scope=\"col\">I—¹“ú</th>");
-            pw.println("<th scope=\"col\">i’»</th>");
+            pw.println("<th scope=\"col\">èª¬æ˜</th>");
+            pw.println("<th scope=\"col\">ä½œæˆæ‹…å½“è€…</th>");
+            pw.println("<th scope=\"col\">é–‹å§‹äºˆå®šæ—¥</th>");
+            pw.println("<th scope=\"col\">é–‹å§‹æ—¥</th>");
+            pw.println("<th scope=\"col\">çµ‚äº†äºˆå®šæ—¥</th>");
+            pw.println("<th scope=\"col\">çµ‚äº†æ—¥</th>");
+            pw.println("<th scope=\"col\">é€²æ—</th>");
             pw.println("</tr>");
             for (int index = 0; index < groups.length; index++) {
                 TestScenarioGroup.TestScenarioGroupResource resource = groups[index].getTestScenarioGroupResource();

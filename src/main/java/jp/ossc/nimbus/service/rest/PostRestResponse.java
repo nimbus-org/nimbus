@@ -34,23 +34,23 @@ package jp.ossc.nimbus.service.rest;
 import javax.servlet.http.*;
 
 /**
- * POSTƒƒ\ƒbƒhRESTƒŒƒXƒ|ƒ“ƒXB<p>
+ * POSTãƒ¡ã‚½ãƒƒãƒ‰RESTãƒ¬ã‚¹ãƒãƒ³ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
 public class PostRestResponse extends BodyRestResponse{
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public PostRestResponse(){
     }
     
     /**
-     * w’è‚³‚ê‚½HTTPƒŒƒXƒ|ƒ“ƒX‚É•R‚Ã‚­ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
-     * HTTPƒXƒe[ƒ^ƒX‚Ì‰Šú’l‚ÍAHttpServletResponse.SC_CREATEDB<br>
+     * æŒ‡å®šã•ã‚ŒãŸHTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã«ç´ã¥ãã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * HTTPã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã®åˆæœŸå€¤ã¯ã€HttpServletResponse.SC_CREATEDã€‚<br>
      *
-     * @param response HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param response HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      */
     public PostRestResponse(HttpServletResponse response){
         super(response);
@@ -58,16 +58,16 @@ public class PostRestResponse extends BodyRestResponse{
     }
     
     /**
-     * ƒŠƒ\[ƒX‚Ìì¬‚É¬Œ÷‚µ‚½|‚Ìˆ—Œ‹‰Ê‚ğİ’è‚·‚éB<p>
-     * HttpServletResponse.SC_CREATED‚Éİ’è‚·‚éB<br>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®ä½œæˆã«æˆåŠŸã—ãŸæ—¨ã®å‡¦ç†çµæœã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * HttpServletResponse.SC_CREATEDã«è¨­å®šã™ã‚‹ã€‚<br>
      */
     public void setResultOfCreated(){
         setResult(HttpServletResponse.SC_CREATED);
     }
     
     /**
-     * ƒŠƒ\[ƒX‚Ìì¬‚Åd•¡‚ª”­¶‚µ‚½|‚Ìˆ—Œ‹‰Ê‚ğİ’è‚·‚éB<p>
-     * HttpServletResponse.SC_CONFLICT‚Éİ’è‚·‚éB<br>
+     * ãƒªã‚½ãƒ¼ã‚¹ã®ä½œæˆã§é‡è¤‡ãŒç™ºç”Ÿã—ãŸæ—¨ã®å‡¦ç†çµæœã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * HttpServletResponse.SC_CONFLICTã«è¨­å®šã™ã‚‹ã€‚<br>
      */
     public void setResultOfConflict(){
         setResult(HttpServletResponse.SC_CONFLICT);

@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link DefaultContextService}��MBean�C���^�t�F�[�X�B<p>
+ * {@link DefaultContextService}のMBeanインタフェース。<p>
  * 
  * @author H.Nakano
  * @see DefaultContextService
@@ -43,143 +43,143 @@ import jp.ossc.nimbus.core.ServiceName;
 public interface DefaultContextServiceMBean extends ServiceBaseMBean, Context{
     
     /**
-     * {@link ContextStore}�T�[�r�X�̃T�[�r�X����ݒ肷��B<p>
+     * {@link ContextStore}サービスのサービス名を設定する。<p>
      *
-     * @param name ContextStore�T�[�r�X�̃T�[�r�X��
+     * @param name ContextStoreサービスのサービス名
      */
     public void setContextStoreServiceName(ServiceName name);
     
     /**
-     * {@link ContextStore}�T�[�r�X�̃T�[�r�X�����擾����B<p>
+     * {@link ContextStore}サービスのサービス名を取得する。<p>
      *
-     * @return ContextStore�T�[�r�X�̃T�[�r�X��
+     * @return ContextStoreサービスのサービス名
      */
     public ServiceName getContextStoreServiceName();
     
     /**
-     * �T�[�r�X�̊J�n���ɁA{@link ContextStore}�T�[�r�X���g���ēǂݍ��ݏ������s�����ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Afalse�B<br>
+     * サービスの開始時に、{@link ContextStore}サービスを使って読み込み処理を行うかどうかを設定する。<p>
+     * デフォルトは、false。<br>
      *
-     * @param isLoad �ǂݍ��ݏ������s���ꍇ�Atrue
+     * @param isLoad 読み込み処理を行う場合、true
      */
     public void setLoadOnStart(boolean isLoad);
     
     /**
-     * �T�[�r�X�̊J�n���ɁA{@link ContextStore}�T�[�r�X���g���ēǂݍ��ݏ������s�����ǂ����𔻒肷��B<p>
+     * サービスの開始時に、{@link ContextStore}サービスを使って読み込み処理を行うかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A�ǂݍ��ݏ������s��
+     * @return trueの場合、読み込み処理を行う
      */
     public boolean isLoadOnStart();
     
     /**
-     * �T�[�r�X�̊J�n���ɁA{@link ContextStore}�T�[�r�X���g���ăL�[�̓ǂݍ��ݏ������s�����ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Afalse�B<br>
+     * サービスの開始時に、{@link ContextStore}サービスを使ってキーの読み込み処理を行うかどうかを設定する。<p>
+     * デフォルトは、false。<br>
      *
-     * @param isLoad �ǂݍ��ݏ������s���ꍇ�Atrue
+     * @param isLoad 読み込み処理を行う場合、true
      */
     public void setLoadKeyOnStart(boolean isLoad);
     
     /**
-     * �T�[�r�X�̊J�n���ɁA{@link ContextStore}�T�[�r�X���g���ăL�[�̓ǂݍ��ݏ������s�����ǂ����𔻒肷��B<p>
+     * サービスの開始時に、{@link ContextStore}サービスを使ってキーの読み込み処理を行うかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A�ǂݍ��ݏ������s��
+     * @return trueの場合、読み込み処理を行う
      */
     public boolean isLoadKeyOnStart();
     
     /**
-     * �T�[�r�X�̒�~���ɁA{@link ContextStore}�T�[�r�X���g���ď������ݏ������s�����ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Afalse�B<br>
+     * サービスの停止時に、{@link ContextStore}サービスを使って書き込み処理を行うかどうかを設定する。<p>
+     * デフォルトは、false。<br>
      *
-     * @param isSave �������ݏ������s���ꍇ�Atrue
+     * @param isSave 書き込み処理を行う場合、true
      */
     public void setSaveOnStop(boolean isSave);
     
     /**
-     * �T�[�r�X�̊J�n���ɁA{@link ContextStore}�T�[�r�X���g���ď������ݏ������s�����ǂ����𔻒肷��B<p>
+     * サービスの開始時に、{@link ContextStore}サービスを使って書き込み処理を行うかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A�������ݏ������s��
+     * @return trueの場合、書き込み処理を行う
      */
     public boolean isSaveOnStop();
     
     /**
-     * �R���e�L�X�g�̏������ݏ����̑O�ɃX�g�A���N���A���邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Atrue�ŃN���A����B<br>
+     * コンテキストの書き込み処理の前にストアをクリアするかどうかを設定する。<p>
+     * デフォルトは、trueでクリアする。<br>
      *
-     * @param isClear �N���A����ꍇ�Atrue
+     * @param isClear クリアする場合、true
      */
     public void setClearBeforeSave(boolean isClear);
     
     /**
-     * �R���e�L�X�g�̏������ݏ����̑O�ɃX�g�A���N���A���邩�ǂ����𔻒肷��B<p>
+     * コンテキストの書き込み処理の前にストアをクリアするかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A�N���A����
+     * @return trueの場合、クリアする
      */
     public boolean isClearBeforeSave();
     
     /**
-     * �w�肳�ꂽ�L�[�Ɋ֘A�t����ꂽ�R���e�L�X�g�����擾����B<p>
+     * 指定されたキーに関連付けられたコンテキスト情報を取得する。<p>
      *
-     * @param key �L�[
-     * @return �L�[�Ɋ֘A�t����ꂽ�R���e�L�X�g���B�Y������R���e�L�X�g��񂪂Ȃ��ꍇ�́Anull
+     * @param key キー
+     * @return キーに関連付けられたコンテキスト情報。該当するコンテキスト情報がない場合は、null
      */
     public Object get(String key);
     
     /**
-     * �w�肳�ꂽ�L�[�Ɋ֘A�t����ꂽ�R���e�L�X�g�����폜����B<p>
+     * 指定されたキーに関連付けられたコンテキスト情報を削除する。<p>
      *
-     * @param key �L�[
-     * @return �폜���ꂽ�R���e�L�X�g���B�폜����R���e�L�X�g��񂪂Ȃ��ꍇ�́Anull
+     * @param key キー
+     * @return 削除されたコンテキスト情報。削除するコンテキスト情報がない場合は、null
      */
     public Object remove(String key);
     
     /**
-     * �u���O(key��toString()) : �l(value��toString()) ���s�v�Ƃ����`���Ń��X�g�o�͂���B<p>
+     * 「名前(keyのtoString()) : 値(valueのtoString()) 改行」という形式でリスト出力する。<p>
      *
-     * @return ���X�g������
+     * @return リスト文字列
      */
     public String list();
     
     /**
-     * {@link ContextStore}�T�[�r�X���g���ēǂݍ��ݏ������s���B<p>
+     * {@link ContextStore}サービスを使って読み込み処理を行う。<p>
      *
-     * @exception Exception �ǂݍ��ݏ����Ɏ��s�����ꍇ
+     * @exception Exception 読み込み処理に失敗した場合
      */
     public void load() throws Exception;
     
     /**
-     * {@link ContextStore}�T�[�r�X���g���ăL�[�̓ǂݍ��ݏ������s���B<p>
+     * {@link ContextStore}サービスを使ってキーの読み込み処理を行う。<p>
      *
-     * @exception Exception �ǂݍ��ݏ����Ɏ��s�����ꍇ
+     * @exception Exception 読み込み処理に失敗した場合
      */
     public void loadKey() throws Exception;
     
     /**
-     * �w�肳�ꂽ�L�[�ɊY������l��{@link ContextStore}�T�[�r�X���g���ēǂݍ��ݏ������s���B<p>
+     * 指定されたキーに該当する値を{@link ContextStore}サービスを使って読み込み処理を行う。<p>
      *
-     * @exception Exception �ǂݍ��ݏ����Ɏ��s�����ꍇ
+     * @exception Exception 読み込み処理に失敗した場合
      */
     public void load(Object key) throws Exception;
     
     /**
-     * {@link ContextStore}�T�[�r�X���g���ď������ݏ������s���B<p>
+     * {@link ContextStore}サービスを使って書き込み処理を行う。<p>
      *
-     * @exception Exception �������ݏ����Ɏ��s�����ꍇ
+     * @exception Exception 書き込み処理に失敗した場合
      */
     public void save() throws Exception;
     
     /**
-     * �w�肳�ꂽ�L�[�ɊY������l��{@link ContextStore}�T�[�r�X���g���ď������ݏ������s���B<p>
+     * 指定されたキーに該当する値を{@link ContextStore}サービスを使って書き込み処理を行う。<p>
      *
-     * @exception Exception �������ݏ����Ɏ��s�����ꍇ
+     * @exception Exception 書き込み処理に失敗した場合
      */
     public void save(Object key) throws Exception;
     
     /**
-     * �w�肳�ꂽ�R���e�L�X�g�����w�肳�ꂽ�L�[���Ɋ֘A�t���Đݒ肷��B<p>
+     * 指定されたコンテキスト情報を指定されたキー情報に関連付けて設定する。<p>
      * 
-     * @param key �L�[
-     * @param value �R���e�L�X�g���
-     * @return �w�肳�ꂽ�L�[�Ɋ֘A�t�����Ă����R���e�L�X�g���B���݂��Ȃ��ꍇ�́Anull
+     * @param key キー
+     * @param value コンテキスト情報
+     * @return 指定されたキーに関連付けられていたコンテキスト情報。存在しない場合は、null
      */
     public Object put(String key, String value);
     

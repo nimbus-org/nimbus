@@ -36,8 +36,8 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒLƒƒƒbƒVƒ…ƒTƒCƒY‚ ‚Ó‚êŒŸØƒtƒ@ƒNƒgƒŠB<p>
- * {@link SoftReferenceOverflowActionService}‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚Å‚ ‚éB<br>
+ * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µã‚¤ã‚ºã‚ãµã‚Œæ¤œè¨¼ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * {@link SoftReferenceOverflowActionService}ã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  * @see SoftReferenceOverflowActionService
@@ -52,10 +52,10 @@ public class SoftReferenceOverflowActionFactoryService
          = new SoftReferenceOverflowActionService();
     
     /**
-     * {@link SoftReferenceOverflowActionService}ƒT[ƒrƒX‚ğ¶¬‚·‚éB<p>
+     * {@link SoftReferenceOverflowActionService}ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return SoftReferenceOverflowActionServiceƒT[ƒrƒX
-     * @exception Exception SoftReferenceOverflowActionService‚Ì¶¬E‹N“®‚É¸”s‚µ‚½ê‡
+     * @return SoftReferenceOverflowActionServiceã‚µãƒ¼ãƒ“ã‚¹
+     * @exception Exception SoftReferenceOverflowActionServiceã®ç”Ÿæˆãƒ»èµ·å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
      * @see SoftReferenceOverflowActionService
      */
     protected Service createServiceInstance() throws Exception{
@@ -70,7 +70,7 @@ public class SoftReferenceOverflowActionFactoryService
         return action;
     }
     
-    // SoftReferenceOverflowActionFactoryServiceMBean‚ÌJavaDoc
+    // SoftReferenceOverflowActionFactoryServiceMBeanã®JavaDoc
     public void setPersistCacheServiceName(ServiceName name){
         template.setPersistCacheServiceName(name);
         final Set instanceSet = getManagedInstanceSet();
@@ -82,12 +82,12 @@ public class SoftReferenceOverflowActionFactoryService
         }
     }
     
-    // SoftReferenceOverflowActionFactoryServiceMBean‚ÌJavaDoc
+    // SoftReferenceOverflowActionFactoryServiceMBeanã®JavaDoc
     public ServiceName getPersistCacheServiceName(){
         return template.getPersistCacheServiceName();
     }
     
-    // SoftReferenceOverflowActionFactoryServiceMBean‚ÌJavaDoc
+    // SoftReferenceOverflowActionFactoryServiceMBeanã®JavaDoc
     public void setPersistCacheMapServiceName(ServiceName name){
         template.setPersistCacheMapServiceName(name);
         final Set instanceSet = getManagedInstanceSet();
@@ -99,12 +99,12 @@ public class SoftReferenceOverflowActionFactoryService
         }
     }
     
-    // SoftReferenceOverflowActionFactoryServiceMBean‚ÌJavaDoc
+    // SoftReferenceOverflowActionFactoryServiceMBeanã®JavaDoc
     public ServiceName getPersistCacheMapServiceName(){
         return template.getPersistCacheMapServiceName();
     }
     
-    // SoftReferenceOverflowActionFactoryServiceMBean‚ÌJavaDoc
+    // SoftReferenceOverflowActionFactoryServiceMBeanã®JavaDoc
     public void reset(){
         final Set instanceSet = getManagedInstanceSet();
         final Iterator instances = instanceSet.iterator();

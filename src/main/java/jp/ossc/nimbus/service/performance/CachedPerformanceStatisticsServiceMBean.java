@@ -35,42 +35,42 @@ import java.util.ArrayList;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 //
 /**
- *	ƒXƒ^ƒeƒBƒXƒeƒBƒNƒXŠÇ—ƒNƒ‰ƒXB<BR>
- *	ƒXƒ^ƒeƒBƒXƒeƒBƒNƒX‚ÌŒŸõA“o˜^‚ğs‚¤B<BR>
+ *	ã‚¹ã‚¿ãƒ†ã‚£ã‚¹ãƒ†ã‚£ã‚¯ã‚¹ç®¡ç†ã‚¯ãƒ©ã‚¹ã€‚<BR>
+ *	ã‚¹ã‚¿ãƒ†ã‚£ã‚¹ãƒ†ã‚£ã‚¯ã‚¹ã®æ¤œç´¢ã€ç™»éŒ²ã‚’è¡Œã†ã€‚<BR>
  *	@author 	NRI Hirotaka.Nakano
- *				XVF
+ *				æ›´æ–°ï¼š
  */
 public interface CachedPerformanceStatisticsServiceMBean extends ServiceBaseMBean{
-	/**	ƒL[–¼ƒ\[ƒg						*/		
+	/**	ã‚­ãƒ¼åã‚½ãƒ¼ãƒˆ						*/		
 	static public final int C_NAME = 0;
-	/**	ƒxƒXƒgƒpƒtƒH[ƒ}ƒ“ƒXƒ\[ƒg			*/
+	/**	ãƒ™ã‚¹ãƒˆãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚½ãƒ¼ãƒˆ			*/
 	static public final int	C_BEST = 1;
-	/**	ƒ[ƒXƒgƒpƒtƒH[ƒ}ƒ“ƒXƒ\[ƒg		*/	
+	/**	ãƒ¯ãƒ¼ã‚¹ãƒˆãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚½ãƒ¼ãƒˆ		*/	
 	static public final int C_WORST = 2;
-	/**	•½‹ÏƒpƒtƒH[ƒ}ƒ“ƒXƒ\[ƒg			*/	
+	/**	å¹³å‡ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚½ãƒ¼ãƒˆ			*/	
 	static public final int C_AVERAGE = 3;
-	/**	ƒR[ƒ‹‰ñ”ƒ\[ƒg					*/	
+	/**	ã‚³ãƒ¼ãƒ«å›æ•°ã‚½ãƒ¼ãƒˆ					*/	
 	static public final int C_COUNT = 4;
 	//
 	/**
-	 *	ƒpƒtƒH[ƒ}ƒ“ƒXHASH‚ğƒNƒŠƒA‚·‚éB
+	 *	ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹HASHã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚
 	 */
 	public void clear() ;
 	//
 	/**
-	 *	•¶šo—Íƒƒ\ƒbƒh<BR>
-	 *	w’è‚Ìƒ\[ƒgƒL[‚Åƒ\[ƒg‚ğs‚¤B<BR>
-	 * @param sortKey	ƒ\[ƒgƒL[
-	 * @param isUpset		¸‡A~‡‚Ìw’è
-	 * @return String[] ƒ\[ƒgŒ‹‰Ê
+	 *	æ–‡å­—å‡ºåŠ›ãƒ¡ã‚½ãƒƒãƒ‰<BR>
+	 *	æŒ‡å®šã®ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã§ã‚½ãƒ¼ãƒˆã‚’è¡Œã†ã€‚<BR>
+	 * @param sortKey	ã‚½ãƒ¼ãƒˆã‚­ãƒ¼
+	 * @param isUpset		æ˜‡é †ã€é™é †ã®æŒ‡å®š
+	 * @return String[] ã‚½ãƒ¼ãƒˆçµæœ
 	 */
 	public String[] toStringAry (int sortKey,boolean isUpset);
 	/**
-	 *	Listƒf[ƒ^æ“¾<BR>
-	 *	w’è‚Ìƒ\[ƒgƒL[‚Åƒ\[ƒg‚ğs‚¤B<BR>
-	 * @param sortKey	ƒ\[ƒgƒL[
-	 * @param isUpset	¸‡A~‡‚Ìw’è
-	 * @return ArrayList	ƒ\[ƒg“Œvî•ñ(PerformanceRecord‚Ì”z—ñ)
+	 *	Listãƒ‡ãƒ¼ã‚¿å–å¾—<BR>
+	 *	æŒ‡å®šã®ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã§ã‚½ãƒ¼ãƒˆã‚’è¡Œã†ã€‚<BR>
+	 * @param sortKey	ã‚½ãƒ¼ãƒˆã‚­ãƒ¼
+	 * @param isUpset	æ˜‡é †ã€é™é †ã®æŒ‡å®š
+	 * @return ArrayList	ã‚½ãƒ¼ãƒˆçµ±è¨ˆæƒ…å ±(PerformanceRecordã®é…åˆ—)
 	 */
 	public ArrayList toAry (int sortKey,boolean isUpset);
 	/**

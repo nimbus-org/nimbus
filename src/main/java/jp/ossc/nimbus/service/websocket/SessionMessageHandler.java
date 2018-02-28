@@ -36,7 +36,7 @@ import javax.websocket.EndpointConfig;
 import javax.websocket.Session;
 
 /**
- * WebSocket‚ÌSessionƒCƒxƒ“ƒg—pƒCƒ“ƒ^[ƒtƒFƒCƒXB
+ * WebSocketã®Sessionã‚¤ãƒ™ãƒ³ãƒˆç”¨ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã€‚
  * <p>
  *
  * @author M.Ishida
@@ -44,26 +44,26 @@ import javax.websocket.Session;
 public interface SessionMessageHandler {
 
     /**
-     * ƒZƒbƒVƒ‡ƒ“ƒI[ƒvƒ“ˆ—
+     * ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚ªãƒ¼ãƒ—ãƒ³å‡¦ç†
      *
-     * @param session WebSocketƒZƒbƒVƒ‡ƒ“
+     * @param session WebSocketã‚»ãƒƒã‚·ãƒ§ãƒ³
      * @param config EndpointConfig
      */
     public void onOpen(Session session, EndpointConfig config);
 
     /**
-     * ƒZƒbƒVƒ‡ƒ“ƒNƒ[ƒYˆ—
+     * ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚¯ãƒ­ãƒ¼ã‚ºå‡¦ç†
      *
-     * @param session WebSocketƒZƒbƒVƒ‡ƒ“
+     * @param session WebSocketã‚»ãƒƒã‚·ãƒ§ãƒ³
      * @param closeReason CloseReason
      */
     public void onClose(Session session, CloseReason closeReason);
 
     /**
-     * —áŠO”­¶ˆ—
+     * ä¾‹å¤–ç™ºç”Ÿæ™‚å‡¦ç†
      *
-     * @param session WebSocketƒZƒbƒVƒ‡ƒ“
-     * @param thr ”­¶‚µ‚½—áŠO
+     * @param session WebSocketã‚»ãƒƒã‚·ãƒ§ãƒ³
+     * @param thr ç™ºç”Ÿã—ãŸä¾‹å¤–
      */
     public void onError(Session session, Throwable thr);
 }

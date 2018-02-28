@@ -34,34 +34,34 @@ package jp.ossc.nimbus.service.ga;
 import java.util.Random;
 
 /**
- * ƒV[ƒh’‡lB<p>
+ * ã‚·ãƒ¼ãƒ‰ä»²äººã€‚<p>
  *
  * @author M.Takata
  */
 public interface SeedMatchMaker{
     
     /**
-     * Œğ³‘ÎÛ‚Æ‚È‚é‚Q‚Â‚ÌƒV[ƒh‚ğ‘Io‚·‚éB<p>
+     * äº¤å‰å¯¾è±¡ã¨ãªã‚‹ï¼’ã¤ã®ã‚·ãƒ¼ãƒ‰ã‚’é¸å‡ºã™ã‚‹ã€‚<p>
      *
-     * @param random —”ƒV[ƒh
-     * @param generation ¢‘ã
-     * @param index Œ»İ‚ÌŒğ³‰ñ”
-     * @param result Œğ³‘ÎÛŒ‹‰ÊBÄ—˜—p‹y‚ÑŒp‘±ˆ——p‚ÌƒoƒPƒbƒg‚Æ‚µ‚Äˆø‚«‰ñ‚·
-     * @return Œğ³‘ÎÛ‘IoŒ‹‰Ê
+     * @param random ä¹±æ•°ã‚·ãƒ¼ãƒ‰
+     * @param generation ä¸–ä»£
+     * @param index ç¾åœ¨ã®äº¤å‰å›æ•°
+     * @param result äº¤å‰å¯¾è±¡çµæœã€‚å†åˆ©ç”¨åŠã³ç¶™ç¶šå‡¦ç†ç”¨ã®ãƒã‚±ãƒƒãƒˆã¨ã—ã¦å¼•ãå›ã™
+     * @return äº¤å‰å¯¾è±¡é¸å‡ºçµæœ
      */
     public MatchMakeResult matchMake(Random random, Generation generation, int index, MatchMakeResult result);
     
     /**
-     * Œğ³‘ÎÛ‘IoŒ‹‰ÊB<p>
+     * äº¤å‰å¯¾è±¡é¸å‡ºçµæœã€‚<p>
      *
      * @author M.Takata
      */
     public interface MatchMakeResult{
         
         /**
-         * Œğ³‘ÎÛ‚Æ‚µ‚Ä‘I‚Î‚ê‚½ƒV[ƒh”z—ñ‚ğæ“¾‚·‚éB<p>
+         * äº¤å‰å¯¾è±¡ã¨ã—ã¦é¸ã°ã‚ŒãŸã‚·ãƒ¼ãƒ‰é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
          *
-         * @return Œğ³‘ÎÛ‚Æ‚µ‚Ä‘I‚Î‚ê‚½ƒV[ƒh”z—ñBŒğ³‚³‚¹‚¸‚É‚»‚Ì‚Ü‚Ü‚ÌƒV[ƒh‚ğc‚·ê‡‚ÍA—v‘f0‚Éc‚·ƒV[ƒhA—v‘f1‚Énull‚ğŠi”[‚µ‚Ä•Ô‚·BŒğ³‘ÎÛ‚ª‘I‘ğ‚Å‚«‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B
+         * @return äº¤å‰å¯¾è±¡ã¨ã—ã¦é¸ã°ã‚ŒãŸã‚·ãƒ¼ãƒ‰é…åˆ—ã€‚äº¤å‰ã•ã›ãšã«ãã®ã¾ã¾ã®ã‚·ãƒ¼ãƒ‰ã‚’æ®‹ã™å ´åˆã¯ã€è¦ç´ 0ã«æ®‹ã™ã‚·ãƒ¼ãƒ‰ã€è¦ç´ 1ã«nullã‚’æ ¼ç´ã—ã¦è¿”ã™ã€‚äº¤å‰å¯¾è±¡ãŒé¸æŠã§ããªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚
          */
         public Seed[] getPair();
     }

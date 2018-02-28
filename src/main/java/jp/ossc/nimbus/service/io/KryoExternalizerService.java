@@ -43,7 +43,7 @@ import com.esotericsoftware.kryo.Serializer;
 import com.esotericsoftware.kryo.KryoException;
 
 /**
- * Kryo’¼—ñ‰»ƒT[ƒrƒXB<p>
+ * Kryoç›´åˆ—åŒ–ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -73,10 +73,10 @@ public class KryoExternalizerService extends SerializableExternalizerService
     }
     
     /**
-     * “Á’è‚ÌƒNƒ‰ƒX‚Ì’¼—ñ‰»‚ğs‚¤com.esotericsoftware.kryo.Serializer‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * ç‰¹å®šã®ã‚¯ãƒ©ã‚¹ã®ç›´åˆ—åŒ–ã‚’è¡Œã†com.esotericsoftware.kryo.Serializerã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param typeName ‘ÎÛ‚ÌƒNƒ‰ƒX–¼
-     * @param serializer ’¼—ñ‰»‚ğs‚¤Serializer
+     * @param typeName å¯¾è±¡ã®ã‚¯ãƒ©ã‚¹å
+     * @param serializer ç›´åˆ—åŒ–ã‚’è¡Œã†Serializer
      */
     public void setDefaultSerializer(String typeName, Serializer serializer) throws ClassNotFoundException{
         setDefaultSerializer(
@@ -86,10 +86,10 @@ public class KryoExternalizerService extends SerializableExternalizerService
     }
     
     /**
-     * “Á’è‚ÌƒNƒ‰ƒX‚Ì’¼—ñ‰»‚ğs‚¤com.esotericsoftware.kryo.Serializer‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * ç‰¹å®šã®ã‚¯ãƒ©ã‚¹ã®ç›´åˆ—åŒ–ã‚’è¡Œã†com.esotericsoftware.kryo.Serializerã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type ‘ÎÛ‚ÌƒNƒ‰ƒX
-     * @param serializer ’¼—ñ‰»‚ğs‚¤Serializer
+     * @param type å¯¾è±¡ã®ã‚¯ãƒ©ã‚¹
+     * @param serializer ç›´åˆ—åŒ–ã‚’è¡Œã†Serializer
      */
     public void setDefaultSerializer(Class type, Serializer serializer) throws ClassNotFoundException{
         defaultSerializerMap.put(type, serializer);

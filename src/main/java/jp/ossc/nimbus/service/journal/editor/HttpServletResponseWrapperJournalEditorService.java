@@ -38,7 +38,7 @@ import javax.servlet.http.Cookie;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * JournalHttpServletResponseWrapperƒIƒuƒWƒFƒNƒg‚ğƒtƒH[ƒ}ƒbƒg‚·‚éƒGƒfƒBƒ^B<p>
+ * JournalHttpServletResponseWrapperã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */

@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.writer;
 import java.util.*;
 
 /**
- * {@link PropertyWritableRecordFactoryService}のMBeanインタフェース<p>
+ * {@link PropertyWritableRecordFactoryService}縺ｮMBean繧､繝ｳ繧ｿ繝輔ぉ繝ｼ繧ｹ<p>
  * 
  * @author M.Takata
  * @see PropertyWritableRecordFactoryService

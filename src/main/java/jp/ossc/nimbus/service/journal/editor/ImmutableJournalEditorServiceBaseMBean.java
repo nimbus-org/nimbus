@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.service.journal.ImmutableJournalEditor;
 
 /**
- * {@link ImmutableJournalEditorServiceBase}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link ImmutableJournalEditorServiceBase}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see ImmutableJournalEditorServiceBase
@@ -44,62 +44,62 @@ public interface ImmutableJournalEditorServiceBaseMBean
  extends ServiceBaseMBean, ImmutableJournalEditor{
     
     /**
-     * ƒL[‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * ã‚­ãƒ¼ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param isOutput true‚Ìê‡AƒL[•¶š—ñ‚ğo—Í‚·‚é
+     * @param isOutput trueã®å ´åˆã€ã‚­ãƒ¼æ–‡å­—åˆ—ã‚’å‡ºåŠ›ã™ã‚‹
      */
     public void setOutputKey(boolean isOutput);
     
     /**
-     * ƒL[‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚­ãƒ¼ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AƒL[•¶š—ñ‚ğo—Í‚·‚é
+     * @return trueã®å ´åˆã€ã‚­ãƒ¼æ–‡å­—åˆ—ã‚’å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputKey();
     
     /**
-     * ƒCƒ“ƒfƒ“ƒg‚ğo—Í‚·‚é‚©‚µ‚È‚¢‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Ítrue‚ÅAo—Í‚·‚éB<br>
+     * ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã‚’å‡ºåŠ›ã™ã‚‹ã‹ã—ãªã„ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯trueã§ã€å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param isOutput ƒCƒ“ƒfƒ“ƒg‚ğo—Í‚·‚éê‡true
+     * @param isOutput ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã‚’å‡ºåŠ›ã™ã‚‹å ´åˆtrue
      */
     public void setOutputIndent(boolean isOutput);
     
     /**
-     * ƒCƒ“ƒfƒ“ƒg‚ğo—Í‚·‚é‚©‚µ‚È‚¢‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã‚’å‡ºåŠ›ã™ã‚‹ã‹ã—ãªã„ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AƒCƒ“ƒfƒ“ƒg‚ğo—Í‚·‚é
+     * @return trueã®å ´åˆã€ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã‚’å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputIndent();
     
     /**
-     * ‰üs•¶š—ñ‚ğİ’è‚·‚éB<p>
+     * æ”¹è¡Œæ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param separator ‰üs•¶š—ñ
+     * @param separator æ”¹è¡Œæ–‡å­—åˆ—
      * @see #getLineSeparator()
      */
     public void setLineSeparator(String separator);
     
     /**
-     * ‰üs•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * æ”¹è¡Œæ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‰üs•¶š—ñ
+     * @return æ”¹è¡Œæ–‡å­—åˆ—
      * @see #setLineSeparator(String)
      */
     public String getLineSeparator();
     
     /**
-     * ƒCƒ“ƒfƒ“ƒg•¶š—ñ‚ğİ’è‚·‚éB<p>
+     * ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆæ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param indent ƒCƒ“ƒfƒ“ƒg•¶š—ñ
+     * @param indent ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆæ–‡å­—åˆ—
      * @see #getIndent()
      */
     public void setIndent(String indent);
     
     /**
-     * ƒCƒ“ƒfƒ“ƒg•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆæ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒCƒ“ƒfƒ“ƒg•¶š—ñ
+     * @return ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆæ–‡å­—åˆ—
      * @see #setIndent(String)
      */
     public String getIndent();

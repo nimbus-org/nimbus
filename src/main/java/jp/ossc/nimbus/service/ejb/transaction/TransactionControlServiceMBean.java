@@ -34,18 +34,18 @@ package jp.ossc.nimbus.service.ejb.transaction;
 import jp.ossc.nimbus.core.*;
 //
 /**
- * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒRƒ“ƒgƒ[ƒ‹ƒT[ƒrƒXŠÇ—ƒCƒ“ƒ^[ƒtƒFƒCƒX<p> 
+ * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã‚µãƒ¼ãƒ“ã‚¹ç®¡ç†ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹<p> 
  * @author   H.Nakano
- * @version  1.00 ì¬: 2003/11/28 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/11/28 -ã€€H.Nakano
  */
 public interface TransactionControlServiceMBean extends ServiceBaseMBean{
 	/**
-	 * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ}ƒl[ƒWƒƒ[‚ÌŽæ“¾ƒ‚[ƒh‚ðÝ’è‚·‚éB<p>
+	 * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒžãƒãƒ¼ã‚¸ãƒ£ãƒ¼ã®å–å¾—ãƒ¢ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
 	 * @param isJNDIMode
 	 */
 	public void setJNDIMode(boolean isJNDIMode) ;
 	/**
-	 * JNDIService–¼‚ðÝ’è‚·‚éB<p>
+	 * JNDIServiceåã‚’è¨­å®šã™ã‚‹ã€‚<p>
 	 * @param name
 	 */
 	public void setJNDIServiceName(ServiceName name) ;

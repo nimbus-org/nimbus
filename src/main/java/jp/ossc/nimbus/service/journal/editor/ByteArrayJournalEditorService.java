@@ -36,7 +36,7 @@ import java.io.Serializable;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * ƒoƒCƒg”z—ñ‚ğ•¶š—ñ‚ÉƒtƒH[ƒ}ƒbƒg‚·‚éƒGƒfƒBƒ^B<p>
+ * ãƒã‚¤ãƒˆé…åˆ—ã‚’æ–‡å­—åˆ—ã«ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -174,7 +174,7 @@ public class ByteArrayJournalEditorService
         try{
             buf.append(new String(bytes, encode));
         }catch(java.io.UnsupportedEncodingException e){
-            // ‹N‚±‚ç‚È‚¢
+            // èµ·ã“ã‚‰ãªã„
         }
         return buf;
     }

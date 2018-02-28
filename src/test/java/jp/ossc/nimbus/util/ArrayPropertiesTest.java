@@ -41,7 +41,7 @@ import junit.framework.TestCase;
 /**
  * 
  * @author   NRI. Hirotaka Nakano
- * @version  1.00 ì¬: 2003/09/30 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/09/30 -ã€€H.Nakano
  */
 public class ArrayPropertiesTest extends TestCase {
 	ArrayProperties prop = null ;
@@ -58,7 +58,7 @@ public class ArrayPropertiesTest extends TestCase {
 	}
 
 	/*
-	 * void ArrayProperties ‚ÌƒeƒXƒg(EncodedProperties)
+	 * void ArrayProperties ã®ãƒ†ã‚¹ãƒˆ(EncodedProperties)
 	 */
 	public void testArrayPropertiesEncodedProperties() throws IOException {
 		prop = new ArrayProperties() ;

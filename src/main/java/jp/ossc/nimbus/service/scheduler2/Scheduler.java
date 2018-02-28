@@ -34,74 +34,74 @@ package jp.ossc.nimbus.service.scheduler2;
 import java.util.Map;
 
 /**
- * ƒXƒPƒWƒ…[ƒ‰B<p>
- * ƒXƒPƒWƒ…[ƒ‹‚ÌŠÄ‹‚ÆÀsˆË—Š‚ğs‚¤B<p>
- * ƒXƒPƒWƒ…[ƒ‹‚ÌŠÄ‹‚ÆÀsˆË—Š‚ÍA‚»‚ê‚¼‚ê‚ª“Æ—§‚µ‚Ä“®ì‚·‚×‚«‚Å‚ ‚é‚½‚ßA•ÊƒXƒŒƒbƒh‚Åˆ—‚³‚ê‚é‚×‚«‚Å‚ ‚éB<br>
- * ƒXƒPƒWƒ…[ƒ‹ŠÄ‹ƒXƒŒƒbƒh‚ÍA’èŠú“I‚É{@link ScheduleManager}‚©‚çÀs‚·‚×‚«{@link Schedule}‚ğæ“¾‚µ‚ÄAƒXƒPƒWƒ…[ƒ‹ÀsˆË—ŠƒLƒ…[‚É“Š“ü‚·‚éB<br>
- * ‚Ü‚½A‚»‚ÌÛ‚ÉA{@link ScheduleManager#changeState(String, int) ScheduleManager#changeState(id, Schedule.STATE_ENTRY)}‚ğŒÄ‚Ño‚µAƒXƒPƒWƒ…[ƒ‹‚Ìó‘Ô‚ğ‘JˆÚ‚³‚¹‚éB<br>
- * ƒXƒPƒWƒ…[ƒ‹ÀsƒXƒŒƒbƒh‚ÍAƒXƒPƒWƒ…[ƒ‹ÀsˆË—ŠƒLƒ…[‚©‚çƒXƒPƒWƒ…[ƒ‹‚ğæ‚èo‚µ‚ÄA{@link ScheduleExecutor}‚ÉÀs‚ğˆË—Š‚·‚éB<br>
+ * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ©ã€‚<p>
+ * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ç›£è¦–ã¨å®Ÿè¡Œä¾é ¼ã‚’è¡Œã†ã€‚<p>
+ * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ç›£è¦–ã¨å®Ÿè¡Œä¾é ¼ã¯ã€ãã‚Œãã‚ŒãŒç‹¬ç«‹ã—ã¦å‹•ä½œã™ã¹ãã§ã‚ã‚‹ãŸã‚ã€åˆ¥ã‚¹ãƒ¬ãƒƒãƒ‰ã§å‡¦ç†ã•ã‚Œã‚‹ã¹ãã§ã‚ã‚‹ã€‚<br>
+ * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ç›£è¦–ã‚¹ãƒ¬ãƒƒãƒ‰ã¯ã€å®šæœŸçš„ã«{@link ScheduleManager}ã‹ã‚‰å®Ÿè¡Œã™ã¹ã{@link Schedule}ã‚’å–å¾—ã—ã¦ã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å®Ÿè¡Œä¾é ¼ã‚­ãƒ¥ãƒ¼ã«æŠ•å…¥ã™ã‚‹ã€‚<br>
+ * ã¾ãŸã€ãã®éš›ã«ã€{@link ScheduleManager#changeState(String, int) ScheduleManager#changeState(id, Schedule.STATE_ENTRY)}ã‚’å‘¼ã³å‡ºã—ã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ã‚’é·ç§»ã•ã›ã‚‹ã€‚<br>
+ * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å®Ÿè¡Œã‚¹ãƒ¬ãƒƒãƒ‰ã¯ã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å®Ÿè¡Œä¾é ¼ã‚­ãƒ¥ãƒ¼ã‹ã‚‰ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å–ã‚Šå‡ºã—ã¦ã€{@link ScheduleExecutor}ã«å®Ÿè¡Œã‚’ä¾é ¼ã™ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
 public interface Scheduler extends ScheduleControlListener{
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ì“Š“ü‚ğŠJn‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æŠ•å…¥ã‚’é–‹å§‹ã™ã‚‹ã€‚<p>
      */
     public void startEntry();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ì“Š“ü‚ğŠJn‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æŠ•å…¥ã‚’é–‹å§‹ã—ã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return ƒXƒPƒWƒ…[ƒ‹‚Ì“Š“ü‚ğŠJn‚µ‚Ä‚¢‚éê‡true
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æŠ•å…¥ã‚’é–‹å§‹ã—ã¦ã„ã‚‹å ´åˆtrue
      */
     public boolean isStartEntry();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚Ì“Š“ü‚ğ’â~‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æŠ•å…¥ã‚’åœæ­¢ã™ã‚‹ã€‚<p>
      */
     public void stopEntry();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğŠÇ—‚·‚é{@link ScheduleManager}‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ç®¡ç†ã™ã‚‹{@link ScheduleManager}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return ScheduleManager
      */
     public ScheduleManager getScheduleManager();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğŠÇ—‚·‚é{@link ScheduleManager}‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ç®¡ç†ã™ã‚‹{@link ScheduleManager}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param manager ScheduleManager
      */
     public void setScheduleManager(ScheduleManager manager);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğÀs‚·‚é{@link ScheduleExecutor}‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å®Ÿè¡Œã™ã‚‹{@link ScheduleExecutor}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param type ScheduleExecutor‚Ìí—Ş
+     * @param type ScheduleExecutorã®ç¨®é¡
      * @return ScheduleExecutor
      */
     public ScheduleExecutor getScheduleExecutor(String type);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğÀs‚·‚é{@link ScheduleExecutor}‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å®Ÿè¡Œã™ã‚‹{@link ScheduleExecutor}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param executor ScheduleExecutor
      */
     public void setScheduleExecutor(ScheduleExecutor executor);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğÀs‚·‚é{@link ScheduleExecutor}‚Ìƒ}ƒbƒsƒ“ƒOæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å®Ÿè¡Œã™ã‚‹{@link ScheduleExecutor}ã®ãƒãƒƒãƒ”ãƒ³ã‚°å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[‚ªScheduleExecutor‚Ìí—ŞA’l‚ªScheduleExecutor‚Ìƒ}ƒbƒv
+     * @return ã‚­ãƒ¼ãŒScheduleExecutorã®ç¨®é¡ã€å€¤ãŒScheduleExecutorã®ãƒãƒƒãƒ—
      */
     public Map getScheduleExecutors();
     
     /**
-     * ‚±‚ÌƒXƒPƒWƒ…[ƒ‹Às‚ğ“Á’è‚·‚éƒL[‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å®Ÿè¡Œã‚’ç‰¹å®šã™ã‚‹ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[
+     * @return ã‚­ãƒ¼
      */
     public String getExecutorKey();
 }

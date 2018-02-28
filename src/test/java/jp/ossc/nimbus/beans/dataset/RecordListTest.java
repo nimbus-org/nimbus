@@ -7,7 +7,7 @@ import junit.framework.TestCase;
 /**
  * 
  * @author S.Teshima
- * @version 1.00 ì¬: 2008/01/22 - S.Teshima
+ * @version 1.00 ä½œæˆ: 2008/01/22 - S.Teshima
  */
 
 public class RecordListTest extends TestCase {
@@ -21,21 +21,21 @@ public class RecordListTest extends TestCase {
 	}
 
 	/**
-	 * ‹ó‚ÌƒŒƒR[ƒhƒŠƒXƒg‚ğ¶¬‚·‚éƒeƒXƒgB
+	 * ç©ºã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>³íI—¹B—áŠOPropertySchemaDefineException‚ª”­¶‚µ‚È‚¢‚±‚Æ‚ğŠm”F</li>
-     * <li>RecordList#getname()‚ª"TestRecordList"‚ğ•Ô‚·B</li>
-     * <li>RecordList#getSchema()‚ª":A,java.lang.String,,,"‚ğ•Ô‚·B</li>
-     * <li>RecordList#getRecordSchema()‚ªRecordSchema.getInstance(w’è‚µ‚½ƒXƒL[ƒ})‚ğ•Ô‚·B</li>
-     * <li>RecordList#isEmpty()‚ªtrue‚ğ•Ô‚·B</li>
+	 * <li>æ­£å¸¸çµ‚äº†ã€‚ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã—ãªã„ã“ã¨ã‚’ç¢ºèª</li>
+     * <li>RecordList#getname()ãŒ"TestRecordList"ã‚’è¿”ã™ã€‚</li>
+     * <li>RecordList#getSchema()ãŒ":A,java.lang.String,,,"ã‚’è¿”ã™ã€‚</li>
+     * <li>RecordList#getRecordSchema()ãŒRecordSchema.getInstance(æŒ‡å®šã—ãŸã‚¹ã‚­ãƒ¼ãƒ)ã‚’è¿”ã™ã€‚</li>
+     * <li>RecordList#isEmpty()ãŒtrueã‚’è¿”ã™ã€‚</li>
 	 * </ul>
 	 */
 	public void testRecordList() {
@@ -47,48 +47,48 @@ public class RecordListTest extends TestCase {
 	    	assertTrue(rlist.isEmpty());
     	}catch(PropertySchemaDefineException e){
     		e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
     	}
 	}
 
 	/**
-	 * ‹ó‚ÌƒŒƒR[ƒhƒŠƒXƒg‚ğ¶¬‚·‚éƒeƒXƒgB
+	 * ç©ºã®ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
-	 * <li>schema  : "A,java.lang.String,,," (‹æØ‚è•¶šF‚ğw’è‚µ‚È‚¢)</li>
+	 * <li>schema  : "A,java.lang.String,,," (åŒºåˆ‡ã‚Šæ–‡å­—ï¼šã‚’æŒ‡å®šã—ãªã„)</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>—áŠOPropertySchemaDefineException‚ª”­¶‚·‚é‚±‚Æ‚ğŠm”F</li>
+	 * <li>ä¾‹å¤–PropertySchemaDefineExceptionãŒç™ºç”Ÿã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testRecordListInvalid() {
 	    try{
 	    	new RecordList("TestRecordList", "A,java.lang.String,,,");
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
 		} catch (PropertySchemaDefineException e) {
 		}
 	}
 
 	/**
-	 * ƒŒƒR[ƒh‚ğ’Ç‰Á‚µAæ“¾‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã—ã€å–å¾—ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é</li>
-	 * <li>RecordList#addRecord(int index, Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>RecordList#addRecord(int index, Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-     * <li>RecordList#getRecord(int index)‚Å’Ç‰Á‚µ‚½ƒŒƒR[ƒh‚ğæ“¾B</li>
+     * <li>RecordList#getRecord(int index)ã§è¿½åŠ ã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã€‚</li>
 	 * </ul>
 	 */
 	public void testAddRecord() {
@@ -102,27 +102,27 @@ public class RecordListTest extends TestCase {
 	    	assertEquals(rec2, rlist.getRecord(1));
     	}catch(PropertySchemaDefineException e){
     		e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
     	}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒŒƒR[ƒh‚ğ’u‚«Š·‚¦‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç½®ãæ›ãˆã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é</li>
-	 * <li>RecordList#addRecord(int index, Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>Ÿ‚ÌƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecord(String schema)‚ğ¶¬‚·‚é</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>RecordList#addRecord(int index, Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>æ¬¡ã®ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦Record(String schema)ã‚’ç”Ÿæˆã™ã‚‹</li>
 	 * <li>":B,int,,," </li>
-	 * <li>RecordList#setRecord(int index, Record r)‚ÅƒŒƒR[ƒh‚ğ’u‚«Š·‚¦‚é</li>
+	 * <li>RecordList#setRecord(int index, Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç½®ãæ›ãˆã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-	 * <li>RecordList#getRecord(int index)‚ÅƒŒƒR[ƒh‚ğæ“¾‚µA’u‚«Š·‚¦‚ç‚ê‚Ä‚¢‚é‚©Šm”F</li>
+	 * <li>RecordList#getRecord(int index)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã—ã€ç½®ãæ›ãˆã‚‰ã‚Œã¦ã„ã‚‹ã‹ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSetRecord() {
@@ -135,26 +135,26 @@ public class RecordListTest extends TestCase {
 	    	assertEquals(rec2, rlist.getRecord(0));
     	}catch(PropertySchemaDefineException e){
     		e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
     	}
 	}
 
 
 	/**
-	 * w’è‚³‚ê‚½ƒŒƒR[ƒh‚ğíœ‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#removeRecord(Record r)‚ÅƒŒƒR[ƒhw’èíœ‚ğ‚·‚é</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#removeRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰æŒ‡å®šå‰Šé™¤ã‚’ã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-     * <li>RecordList#size()‚ª0</li>
+     * <li>RecordList#size()ãŒ0</li>
 	 * </ul>
 	 */
 	public void testRemoveRecordRecord() {
@@ -166,26 +166,26 @@ public class RecordListTest extends TestCase {
 	    	assertEquals(0, rlist.size());
     	}catch(PropertySchemaDefineException e){
     		e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
     	}
 	}
 
 
 	/**
-	 * w’è‚³‚ê‚½ƒCƒ“ƒfƒbƒNƒX‚ÌƒŒƒR[ƒh‚ğíœ‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é</li>
-	 * <li>RecordList#addRecord(int index, Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#removeRecord(int index)‚ÅƒŒƒR[ƒhw’èíœ‚ğ‚·‚é</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹</li>
+	 * <li>RecordList#addRecord(int index, Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#removeRecord(int index)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰æŒ‡å®šå‰Šé™¤ã‚’ã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-     * <li>RecordList#size()‚ª0</li>
+     * <li>RecordList#size()ãŒ0</li>
 	 * </ul>
 	 */
 	public void testRemoveRecordInt() {
@@ -197,36 +197,36 @@ public class RecordListTest extends TestCase {
 	    	assertEquals(0, rlist.size());
     	}catch(PropertySchemaDefineException e){
     		e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
     	}
 	}
 
 
 	/**
-	 * w’è‚³‚ê‚½ƒvƒƒpƒeƒB–¼‚ÌƒvƒƒpƒeƒB‚ğƒ\[ƒgƒL[‚É‚µ‚ÄA¸‡‚Åƒ\[ƒg‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã«ã—ã¦ã€æ˜‡é †ã§ã‚½ãƒ¼ãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"<BR>      ":B,java.lang.String,,,"</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚P‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "2")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "2")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚Q‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "3")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "3")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚R‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "1")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "1")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#sort(String[] orderBy)‚ÅƒvƒƒpƒeƒB–¼"A"‚ğw’è‚µ‚Äƒ\[ƒg‚·‚é</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼‘ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼’ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼“ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#sort(String[] orderBy)ã§ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å"A"ã‚’æŒ‡å®šã—ã¦ã‚½ãƒ¼ãƒˆã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-     * <li>Record‚ªƒvƒƒpƒeƒBA‚Ì’l‚Å¸‡‚ÉŠi”[‚³‚ê‚Ä‚¢‚é‚±‚Æ‚ğŠm”F‚·‚é</li>
+     * <li>RecordãŒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£Aã®å€¤ã§æ˜‡é †ã«æ ¼ç´ã•ã‚Œã¦ã„ã‚‹ã“ã¨ã‚’ç¢ºèªã™ã‚‹</li>
 	 * </ul>
 	 */
 	public void testSortStringArray() {
@@ -257,36 +257,36 @@ public class RecordListTest extends TestCase {
 	    	assertEquals(rec2, rlist.getRecord(2));
     	}catch(PropertySchemaDefineException e){
     		e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
     	}
 	}
 
 
 	/**
-	 * w’è‚³‚ê‚½ƒvƒƒpƒeƒBƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğƒ\[ƒgƒL[‚É‚µ‚ÄA¸‡‚Åƒ\[ƒg‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã«ã—ã¦ã€æ˜‡é †ã§ã‚½ãƒ¼ãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"<BR>      ":B,java.lang.String,,,"</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚P‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "2")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "2")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚Q‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "3")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "3")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚R‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "1")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "1")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#sort(int[] orderBy)‚ÅƒvƒƒpƒeƒB–¼"A"‚Ìindex(0)‚ğw’è‚µ‚Äƒ\[ƒg‚·‚é</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼‘ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼’ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼“ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#sort(int[] orderBy)ã§ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å"A"ã®index(0)ã‚’æŒ‡å®šã—ã¦ã‚½ãƒ¼ãƒˆã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-     * <li>Record‚ªƒvƒƒpƒeƒBA‚Ì’l‚Å¸‡‚ÉŠi”[‚³‚ê‚Ä‚¢‚é‚±‚Æ‚ğŠm”F‚·‚é</li>
+     * <li>RecordãŒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£Aã®å€¤ã§æ˜‡é †ã«æ ¼ç´ã•ã‚Œã¦ã„ã‚‹ã“ã¨ã‚’ç¢ºèªã™ã‚‹</li>
 	 * </ul>
 	 */
 	public void testSortIntArray() {
@@ -317,49 +317,49 @@ public class RecordListTest extends TestCase {
 	    	assertEquals(rec2, rlist.getRecord(2));
     	}catch(PropertySchemaDefineException e){
     		e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
     	}
 	}
 
 
 	/**
-	 * w’è‚³‚ê‚½ƒvƒƒpƒeƒBƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğƒ\[ƒgƒL[‚É‚µ‚Äƒ\[ƒg‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã«ã—ã¦ã‚½ãƒ¼ãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"<BR>      ":B,java.lang.String,,,"</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚P‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "1")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "1")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚Q‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "1")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "2")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚R‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "2")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "1")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚S‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "2")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "2")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚T‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "3")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "1")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚U‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "3")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "2")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#sort(int[] orderBy, boolean[] isAsc)‚ÅƒvƒƒpƒeƒB–¼"A"‚ª~‡A<BR>
-	 * ƒvƒƒpƒeƒB–¼"B"‚ª¸‡‚É‚È‚éw’è‚ğ‚µ‚Äƒ\[ƒg‚·‚é</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼‘ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼’ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼“ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼”ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼•ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼–ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#sort(int[] orderBy, boolean[] isAsc)ã§ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å"A"ãŒé™é †ã€<BR>
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å"B"ãŒæ˜‡é †ã«ãªã‚‹æŒ‡å®šã‚’ã—ã¦ã‚½ãƒ¼ãƒˆã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-     * <li>Record‚ªw’è‚µ‚½’Ê‚è‚Éƒ\[ƒg‚³‚ê‚ÄŠi”[‚³‚ê‚Ä‚¢‚é‚±‚Æ‚ğŠm”F‚·‚é</li>
+     * <li>RecordãŒæŒ‡å®šã—ãŸé€šã‚Šã«ã‚½ãƒ¼ãƒˆã•ã‚Œã¦æ ¼ç´ã•ã‚Œã¦ã„ã‚‹ã“ã¨ã‚’ç¢ºèªã™ã‚‹</li>
 	 * </ul>
 	 */
 	public void testSortIntArrayBooleanArray() {
@@ -409,29 +409,29 @@ public class RecordListTest extends TestCase {
 	    	assertEquals(rec2, rlist.getRecord(5));
     	}catch(PropertySchemaDefineException e){
     		e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
     	}
 	}
 
 
 	/**
-	 * w’è‚³‚ê‚½ƒvƒƒpƒeƒBƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğƒ\[ƒgƒL[‚É‚µ‚Äƒ\[ƒg‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã«ã—ã¦ã‚½ãƒ¼ãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"<BR>      ":B,java.lang.String,,,"</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚P‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "1")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "1")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#sort(int[] orderBy, boolean[] isAsc)‚ÅƒvƒƒpƒeƒB–¼"A"‚ª~‡A<BR>
-	 * ƒvƒƒpƒeƒB–¼"B"‚ª¸‡‚É‚È‚éw’è‚ğ‚µ‚Äƒ\[ƒg‚·‚é</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼‘ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#sort(int[] orderBy, boolean[] isAsc)ã§ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å"A"ãŒé™é †ã€<BR>
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å"B"ãŒæ˜‡é †ã«ãªã‚‹æŒ‡å®šã‚’ã—ã¦ã‚½ãƒ¼ãƒˆã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-     * <li>³íI—¹‚·‚é‚±‚Æ‚ğŠm”F</li>
+     * <li>æ­£å¸¸çµ‚äº†ã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSortIntArrayBooleanArrayOneValue() {
@@ -451,50 +451,50 @@ public class RecordListTest extends TestCase {
 
     	}catch(PropertySchemaDefineException e){
     		e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
     	}
 	}
 
 
 
 	/**
-	 * w’è‚³‚ê‚½ƒvƒƒpƒeƒBƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğƒ\[ƒgƒL[‚É‚µ‚Äƒ\[ƒg‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã«ã—ã¦ã‚½ãƒ¼ãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"<BR>      ":B,java.lang.String,,,"</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚P‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "1")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "1")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚Q‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "1")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "2")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚R‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "2")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "1")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚S‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "2")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "2")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚T‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "3")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "1")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚U‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "3")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "2")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#sort(String[] orderBy, boolean[] isAsc)‚ÅƒvƒƒpƒeƒB–¼"A"‚ª~‡A<BR>
-	 * ƒvƒƒpƒeƒB–¼"B"‚ª¸‡‚É‚È‚éw’è‚ğ‚µ‚Äƒ\[ƒg‚·‚é</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼‘ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼’ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼“ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼”ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼•ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼–ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#sort(String[] orderBy, boolean[] isAsc)ã§ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å"A"ãŒé™é †ã€<BR>
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å"B"ãŒæ˜‡é †ã«ãªã‚‹æŒ‡å®šã‚’ã—ã¦ã‚½ãƒ¼ãƒˆã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-     * <li>Record‚ªw’è‚µ‚½’Ê‚è‚Éƒ\[ƒg‚³‚ê‚ÄŠi”[‚³‚ê‚Ä‚¢‚é‚±‚Æ‚ğŠm”F‚·‚é</li>
+     * <li>RecordãŒæŒ‡å®šã—ãŸé€šã‚Šã«ã‚½ãƒ¼ãƒˆã•ã‚Œã¦æ ¼ç´ã•ã‚Œã¦ã„ã‚‹ã“ã¨ã‚’ç¢ºèªã™ã‚‹</li>
 	 * </ul>
 	 */
 	public void testSortStringArrayBooleanArray() {
@@ -544,28 +544,28 @@ public class RecordListTest extends TestCase {
 	    	assertEquals(rec2, rlist.getRecord(5));
     	}catch(PropertySchemaDefineException e){
     		e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
     	}
 	}
 
 	/**
-	 * w’è‚³‚ê‚½ƒvƒƒpƒeƒBƒCƒ“ƒfƒbƒNƒX‚ÌƒvƒƒpƒeƒB‚ğƒ\[ƒgƒL[‚É‚µ‚Äƒ\[ƒg‚·‚éƒeƒXƒgB
+	 * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚½ãƒ¼ãƒˆã‚­ãƒ¼ã«ã—ã¦ã‚½ãƒ¼ãƒˆã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"<BR>      ":B,java.lang.String,,,"</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚P‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "1")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "1")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#sort(String[] orderBy, boolean[] isAsc)‚ÅƒvƒƒpƒeƒB–¼"A"‚ª~‡A<BR>
-	 * ƒvƒƒpƒeƒB–¼"B"‚ª¸‡‚É‚È‚éw’è‚ğ‚µ‚Äƒ\[ƒg‚·‚é</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼‘ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#sort(String[] orderBy, boolean[] isAsc)ã§ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å"A"ãŒé™é †ã€<BR>
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å"B"ãŒæ˜‡é †ã«ãªã‚‹æŒ‡å®šã‚’ã—ã¦ã‚½ãƒ¼ãƒˆã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-     * <li>³íI—¹‚·‚é‚±‚Æ‚ğŠm”F</li>
+     * <li>æ­£å¸¸çµ‚äº†ã™ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testSortStringArrayBooleanArrayOneValue() {
@@ -584,35 +584,35 @@ public class RecordListTest extends TestCase {
 
     	}catch(PropertySchemaDefineException e){
     		e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
     	}
 	}
 
 	/**
-	 * boolean contains(Object o)‚ÌƒeƒXƒgB
+	 * boolean contains(Object o)ã®ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"<BR>      ":B,java.lang.String,,,"</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚P‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "1")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "1")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚Q‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "2")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "2")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚R‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "3")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "3")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>ŠeƒŒƒR[ƒh‚ğw’è‚µ‚ÄRecordList#contains(Object o)‚ğÀs‚·‚é</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼‘ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼’ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼“ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>å„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’æŒ‡å®šã—ã¦RecordList#contains(Object o)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-     * <li>true‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+     * <li>trueãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testContains() {
@@ -640,38 +640,38 @@ public class RecordListTest extends TestCase {
 	    	assertTrue(rlist.contains(rec3));
     	}catch(PropertySchemaDefineException e){
     		e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
     	}
 	}
 
 
 	/**
-	 * MapÀ‘•‚ÌƒeƒXƒgB
+	 * Mapå®Ÿè£…ã®ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"<BR>      ":B,java.lang.String,,,"</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚P‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "1")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "1")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚Q‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "2")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "2")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚R‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "3")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "3")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼‘ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼’ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼“ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-     * <li>subList(int fromIndex, int toIndex)‚Ì•Ô‚è’l‚ªrecords.subList(fromIndex, toIndex)</li>
-     * <li>Object[] toArray()‚Ì•Ô‚è’l‚ªrecords.toArray()</li>
-     * <li>indexOf(Object o)‚Ì•Ô‚è’l‚ªrecords.indexOf(o)</li>
-     * <li>lastIndexOf(Object o)‚Ì•Ô‚è’l‚ªrecords.lastIndexOf(o)</li>
+     * <li>subList(int fromIndex, int toIndex)ã®è¿”ã‚Šå€¤ãŒrecords.subList(fromIndex, toIndex)</li>
+     * <li>Object[] toArray()ã®è¿”ã‚Šå€¤ãŒrecords.toArray()</li>
+     * <li>indexOf(Object o)ã®è¿”ã‚Šå€¤ãŒrecords.indexOf(o)</li>
+     * <li>lastIndexOf(Object o)ã®è¿”ã‚Šå€¤ãŒrecords.lastIndexOf(o)</li>
 	 * </ul>
 	 */
 	public void testMap() {
@@ -700,27 +700,27 @@ public class RecordListTest extends TestCase {
 	    	assertEquals(rlist.lastIndexOf(rec1), rlist.records.lastIndexOf(rec1));
     	}catch(PropertySchemaDefineException e){
     		e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
     	}
 	}
 
 	/**
-	 * add(Object o)‚ÌƒeƒXƒgB
+	 * add(Object o)ã®ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"<BR>      ":B,java.lang.String,,,"</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚P‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "1")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "1")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#add(Object o)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼‘ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#add(Object o)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-     * <li>true‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F‚·‚é</li>
-     * <li>Object get(int index)‚Ì•Ô‚è’l‚ªrecords.get(index)‚Æ“¯‚¶‚±‚Æ‚ğŠm”F‚·‚é</li>
+     * <li>trueãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèªã™ã‚‹</li>
+     * <li>Object get(int index)ã®è¿”ã‚Šå€¤ãŒrecords.get(index)ã¨åŒã˜ã“ã¨ã‚’ç¢ºèªã™ã‚‹</li>
 	 * </ul>
 	 */
 	public void testAdd() {
@@ -736,24 +736,24 @@ public class RecordListTest extends TestCase {
 	    	assertEquals(rlist.get(0), rlist.records.get(0));
     	}catch(PropertySchemaDefineException e){
     		e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
     	}
 	}
 
 
 	/**
-	 * add(Object o)‚ÌƒeƒXƒgB
+	 * add(Object o)ã®ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"<BR>      ":B,java.lang.String,,,"</li>
-	 * <li>RecordList#add(null)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
+	 * <li>RecordList#add(null)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-     * <li>false‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F‚·‚é</li>
+     * <li>falseãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèªã™ã‚‹</li>
 	 * </ul>
 	 */
 	public void testAddNull() {
@@ -763,24 +763,24 @@ public class RecordListTest extends TestCase {
 	    	assertFalse(rlist.add(null));
     	}catch(PropertySchemaDefineException e){
     		e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
     	}
 	}
 
 
 	/**
-	 * add(Object o)‚ÌƒeƒXƒgB
+	 * add(Object o)ã®ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"<BR>      ":B,java.lang.String,,,"</li>
-	 * <li>RecordList#add(RecordŒ^ˆÈŠO)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
+	 * <li>RecordList#add(Recordå‹ä»¥å¤–)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-     * <li>DataSetException("Not record : " + o)‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F‚·‚é</li>
+     * <li>DataSetException("Not record : " + o)ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèªã™ã‚‹</li>
 	 * </ul>
 	 */
 	public void testAddInvalid() {
@@ -788,7 +788,7 @@ public class RecordListTest extends TestCase {
 	    	RecordList rlist = new RecordList("TestRecordList", ":A,java.lang.String,,,\n" +
 	    			":B,java.lang.String,,,");
 	    	assertFalse(rlist.add("ABC"));
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
     	}catch(DataSetException e){
 			assertEquals("Not record : ABC", e.getMessage());
     	}
@@ -796,21 +796,21 @@ public class RecordListTest extends TestCase {
 
 
 	/**
-	 * add(int index, Object o)‚ÌƒeƒXƒgB
+	 * add(int index, Object o)ã®ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"<BR>      ":B,java.lang.String,,,"</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚P‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "1")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "1")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#add(int index,Object o)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼‘ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#add(int index,Object o)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-     * <li>Object get(int index)‚Ì•Ô‚è’l‚ªrecords.get(index)‚Æ“¯‚¶‚±‚Æ‚ğŠm”F‚·‚é</li>
+     * <li>Object get(int index)ã®è¿”ã‚Šå€¤ãŒrecords.get(index)ã¨åŒã˜ã“ã¨ã‚’ç¢ºèªã™ã‚‹</li>
 	 * </ul>
 	 */
 	public void testAddIndex() {
@@ -826,24 +826,24 @@ public class RecordListTest extends TestCase {
 	    	assertEquals(rlist.get(0), rlist.records.get(0));
     	}catch(PropertySchemaDefineException e){
     		e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
     	}
 	}
 
 
 	/**
-	 * add(int index,Object o)‚ÌƒeƒXƒgB
+	 * add(int index,Object o)ã®ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"<BR>      ":B,java.lang.String,,,"</li>
-	 * <li>RecordList#add(int index, null)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
+	 * <li>RecordList#add(int index, null)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-     * <li>³íI—¹‚·‚é‚±‚Æ‚ğŠm”F‚·‚é</li>
+     * <li>æ­£å¸¸çµ‚äº†ã™ã‚‹ã“ã¨ã‚’ç¢ºèªã™ã‚‹</li>
 	 * </ul>
 	 */
 	public void testAddIndexNull() {
@@ -853,24 +853,24 @@ public class RecordListTest extends TestCase {
 	    	rlist.add(0,null);
     	}catch(PropertySchemaDefineException e){
     		e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
     	}
 	}
 
 
 	/**
-	 * add(int index, Object o)‚ÌƒeƒXƒgB
+	 * add(int index, Object o)ã®ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"<BR>      ":B,java.lang.String,,,"</li>
-	 * <li>RecordList#add(int index, RecordŒ^ˆÈŠO)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
+	 * <li>RecordList#add(int index, Recordå‹ä»¥å¤–)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-     * <li>DataSetException("Not record : " + o)‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F‚·‚é</li>
+     * <li>DataSetException("Not record : " + o)ãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèªã™ã‚‹</li>
 	 * </ul>
 	 */
 	public void testAddIndexInvalid() {
@@ -878,7 +878,7 @@ public class RecordListTest extends TestCase {
 	    	RecordList rlist = new RecordList("TestRecordList", ":A,java.lang.String,,,\n" +
 	    			":B,java.lang.String,,,");
 	    	rlist.add(0, "ABC");
-			fail("—áŠO‚ª”­¶‚µ‚È‚¢‚½‚ßƒeƒXƒg¸”s ");
+			fail("ä¾‹å¤–ãŒç™ºç”Ÿã—ãªã„ãŸã‚ãƒ†ã‚¹ãƒˆå¤±æ•— ");
     	}catch(DataSetException e){
 			assertEquals("Not record : ABC", e.getMessage());
     	}
@@ -886,31 +886,31 @@ public class RecordListTest extends TestCase {
 
 
 	/**
-	 * boolean containsAll(Collection c)‚ÌƒeƒXƒgB
+	 * boolean containsAll(Collection c)ã®ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"<BR>      ":B,java.lang.String,,,"</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚P‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "1")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "1")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚Q‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "2")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "2")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚R‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "3")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "3")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>ListŒ^ƒIƒuƒWƒFƒNƒg‚Éã‹LRecordƒIƒuƒWƒFƒNƒg‚ğ’Ç‰Á‚µAcontainsAll(Collection c)<BR>
-	 * ‚Éw’è‚µ‚ÄÀs</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼‘ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼’ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼“ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>Listå‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ä¸Šè¨˜Recordã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿½åŠ ã—ã€containsAll(Collection c)<BR>
+	 * ã«æŒ‡å®šã—ã¦å®Ÿè¡Œ</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-     * <li>true‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+     * <li>trueãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testContainsAll() {
@@ -941,36 +941,36 @@ public class RecordListTest extends TestCase {
 	    	assertTrue(rlist.containsAll(list));
     	}catch(PropertySchemaDefineException e){
     		e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
     	}
 	}
 
 
 	/**
-	 * addAll(Collection c)‚ÌƒeƒXƒgB
+	 * addAll(Collection c)ã®ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"<BR>      ":B,java.lang.String,,,"</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚P‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "1")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "1")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚Q‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "2")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "2")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚R‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "3")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "3")‚ğÀs‚·‚é</li>
-	 * <li>ListŒ^ƒIƒuƒWƒFƒNƒg‚Éã‹LRecordƒIƒuƒWƒFƒNƒg‚ğ’Ç‰Á‚µAcontainsAll(Collection c)<BR>
-	 * ‚Éw’è‚µ‚ÄÀs</li>
-	 * <li>addAll(Collection c)‚Éw’è‚µ‚ÄÀs</li>
-	 * <li>containsAll(Collection c)‚Éw’è‚µ‚ÄÀs</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼‘ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼’ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼“ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>Listå‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ä¸Šè¨˜Recordã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿½åŠ ã—ã€containsAll(Collection c)<BR>
+	 * ã«æŒ‡å®šã—ã¦å®Ÿè¡Œ</li>
+	 * <li>addAll(Collection c)ã«æŒ‡å®šã—ã¦å®Ÿè¡Œ</li>
+	 * <li>containsAll(Collection c)ã«æŒ‡å®šã—ã¦å®Ÿè¡Œ</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-     * <li>Å‰‚ÌcontainsAll‚Å‚ÍfalseA‚»‚êˆÈŠO‚Ítrue‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+     * <li>æœ€åˆã®containsAllã§ã¯falseã€ãã‚Œä»¥å¤–ã¯trueãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testAddAll() {
@@ -1001,32 +1001,32 @@ public class RecordListTest extends TestCase {
 
 	    }catch(PropertySchemaDefineException e){
     		e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
     	}
 	}
 
 	/**
-	 * addAll(Collection c)‚ÌƒeƒXƒgB
+	 * addAll(Collection c)ã®ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"<BR>      ":B,java.lang.String,,,"</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚P‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "1")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "1")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚Q‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "2")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "2")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚R‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "3")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "3")‚ğÀs‚·‚é</li>
-	 * <li>Null‚ÌListŒ^ƒIƒuƒWƒFƒNƒg‚ğaddAll(Collection c)‚Éw’è‚µ‚ÄÀs</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼‘ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼’ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼“ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>Nullã®Listå‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’addAll(Collection c)ã«æŒ‡å®šã—ã¦å®Ÿè¡Œ</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-     * <li>false‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+     * <li>falseãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testAddAllNull() {
@@ -1052,35 +1052,35 @@ public class RecordListTest extends TestCase {
 
 	    }catch(PropertySchemaDefineException e){
     		e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
     	}
 	}
 
 	/**
-	 * addAll(int index, Collection c)‚ÌƒeƒXƒgB
+	 * addAll(int index, Collection c)ã®ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"<BR>      ":B,java.lang.String,,,"</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚P‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "1")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "1")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚Q‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "2")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "2")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚R‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "3")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "3")‚ğÀs‚·‚é</li>
-	 * <li>ListŒ^ƒIƒuƒWƒFƒNƒg‚Éã‹LRecordƒIƒuƒWƒFƒNƒg‚ğ’Ç‰Á‚µAcontainsAll(Collection c)<BR>
-	 * ‚Éw’è‚µ‚ÄÀs</li>
-	 * <li>addAll(int index, Collection c)‚Éw’è‚µ‚ÄÀs</li>
-	 * <li>containsAll(Collection c)‚Éw’è‚µ‚ÄÀs</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼‘ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼’ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼“ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>Listå‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ä¸Šè¨˜Recordã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿½åŠ ã—ã€containsAll(Collection c)<BR>
+	 * ã«æŒ‡å®šã—ã¦å®Ÿè¡Œ</li>
+	 * <li>addAll(int index, Collection c)ã«æŒ‡å®šã—ã¦å®Ÿè¡Œ</li>
+	 * <li>containsAll(Collection c)ã«æŒ‡å®šã—ã¦å®Ÿè¡Œ</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-     * <li>Å‰‚ÌcontainsAll‚Å‚ÍfalseA‚»‚êˆÈŠO‚Ítrue‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+     * <li>æœ€åˆã®containsAllã§ã¯falseã€ãã‚Œä»¥å¤–ã¯trueãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testAddAllIndex() {
@@ -1111,32 +1111,32 @@ public class RecordListTest extends TestCase {
 
 	    }catch(PropertySchemaDefineException e){
     		e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
     	}
 	}
 
 	/**
-	 * addAll(int index, Collection c)‚ÌƒeƒXƒgB
+	 * addAll(int index, Collection c)ã®ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"<BR>      ":B,java.lang.String,,,"</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚P‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "1")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "1")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚Q‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "2")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "2")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚R‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "3")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "3")‚ğÀs‚·‚é</li>
-	 * <li>Null‚ÌListŒ^ƒIƒuƒWƒFƒNƒg‚ğaddAll(int index, Collection c)‚Éw’è‚µ‚ÄÀs</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼‘ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼’ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼“ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>Nullã®Listå‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’addAll(int index, Collection c)ã«æŒ‡å®šã—ã¦å®Ÿè¡Œ</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-     * <li>false‚ª•Ô‚Á‚Ä‚­‚é‚±‚Æ‚ğŠm”F</li>
+     * <li>falseãŒè¿”ã£ã¦ãã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testAddAllIndexNull() {
@@ -1162,36 +1162,36 @@ public class RecordListTest extends TestCase {
 
 	    }catch(PropertySchemaDefineException e){
     		e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
     	}
 	}
 
 	/**
-	 * removeAll(Collection c)‚ÌƒeƒXƒgB
+	 * removeAll(Collection c)ã®ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"<BR>      ":B,java.lang.String,,,"</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚P‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "1")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "1")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚Q‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "2")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "2")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚R‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "3")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "3")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>ListŒ^ƒIƒuƒWƒFƒNƒg‚Éã‹L‚Åì¬‚µ‚½RecordƒIƒuƒWƒFƒNƒg‚ğ’Ç‰Á‚µAremoveAll(Collection c)<BR>
-	 * ‚Éw’è‚µ‚ÄÀs</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼‘ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼’ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼“ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>Listå‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ä¸Šè¨˜ã§ä½œæˆã—ãŸRecordã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿½åŠ ã—ã€removeAll(Collection c)<BR>
+	 * ã«æŒ‡å®šã—ã¦å®Ÿè¡Œ</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-     * <li>removeAllÀs‘O‚Ì—v‘f”‚ª3AÀsŒã0‚É‚È‚é‚±‚Æ‚ğŠm”F</li>
+     * <li>removeAllå®Ÿè¡Œå‰ã®è¦ç´ æ•°ãŒ3ã€å®Ÿè¡Œå¾Œ0ã«ãªã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testRemoveAll() {
@@ -1225,38 +1225,38 @@ public class RecordListTest extends TestCase {
 
 	    }catch(PropertySchemaDefineException e){
     		e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
     	}
 	}
 
 
 	/**
-	 * retainAll(Collection c)‚ÌƒeƒXƒgB
+	 * retainAll(Collection c)ã®ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"<BR>      ":B,java.lang.String,,,"</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚P‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "1")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "1")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚Q‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "2")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "2")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚R‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "3")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "3")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>ListŒ^ƒIƒuƒWƒFƒNƒg‚Éã‹L‚Åì¬‚µ‚½‚R‚Â–Ú‚ÌRecordƒIƒuƒWƒFƒNƒg‚ğ’Ç‰Á‚µAretainAll(Collection c)<BR>
-	 * ‚Éw’è‚µ‚ÄÀs</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼‘ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼’ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼“ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>Listå‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ä¸Šè¨˜ã§ä½œæˆã—ãŸï¼“ã¤ç›®ã®Recordã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿½åŠ ã—ã€retainAll(Collection c)<BR>
+	 * ã«æŒ‡å®šã—ã¦å®Ÿè¡Œ</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-     * <li>removeAllÀs‘O‚Ì—v‘f”‚ª3AÀsŒã1‚É‚È‚é‚±‚Æ‚ğŠm”F</li>
-     * <li>c‚Á‚Ä‚¢‚éƒŒƒR[ƒh‚ªretainAllw’è‚µ‚½‚R‚Â–Ú‚ÌƒŒƒR[ƒh‚Å‚ ‚é‚±‚Æ‚ğŠm”F</li>
+     * <li>removeAllå®Ÿè¡Œå‰ã®è¦ç´ æ•°ãŒ3ã€å®Ÿè¡Œå¾Œ1ã«ãªã‚‹ã“ã¨ã‚’ç¢ºèª</li>
+     * <li>æ®‹ã£ã¦ã„ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ãŒretainAllæŒ‡å®šã—ãŸï¼“ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã§ã‚ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testRetainAll() {
@@ -1289,37 +1289,37 @@ public class RecordListTest extends TestCase {
 
 	    }catch(PropertySchemaDefineException e){
     		e.printStackTrace();
-			fail("—áŠO”­¶");
+			fail("ä¾‹å¤–ç™ºç”Ÿ");
     	}
 	}
 
 
 	
 	/**
-	 * ‘S‚Ä‚ÌƒŒƒR[ƒh‚ğíœ‚·‚éƒeƒXƒgB
+	 * å…¨ã¦ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"<BR>      ":B,java.lang.String,,,"</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚P‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "1")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "1")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚Q‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "2")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "2")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚R‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "3")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "3")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#clear()‚ğÀs‚·‚é</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼‘ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼’ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼“ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#clear()ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-     * <li>RecordList#isEmpty()‚ªtrue‚ğ•Ô‚·B</li>
+     * <li>RecordList#isEmpty()ãŒtrueã‚’è¿”ã™ã€‚</li>
 	 * </ul>
 	 */
 	public void testClear() {
@@ -1352,31 +1352,31 @@ public class RecordListTest extends TestCase {
 
 
 	/**
-	 * ƒŒƒR[ƒhƒŠƒXƒg‚ğ•¡»‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’è¤‡è£½ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"<BR>      ":B,java.lang.String,,,"</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚P‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "1")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "1")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚Q‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "2")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "2")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚R‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "3")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "3")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#cloneSchema()‚ğÀs‚·‚é</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼‘ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼’ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼“ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#cloneSchema()ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-     * <li>RecordList‚ÌƒXƒL[ƒ}‚Ì‚İ•¡»‚³‚ê‚Ä‚¢‚é‚±‚Æ‚ğŠm”F</li>
-     * <li>RecordList#isEmpty()‚ªtrue‚ğ•Ô‚·B</li>
+     * <li>RecordListã®ã‚¹ã‚­ãƒ¼ãƒã®ã¿è¤‡è£½ã•ã‚Œã¦ã„ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
+     * <li>RecordList#isEmpty()ãŒtrueã‚’è¿”ã™ã€‚</li>
 	 * </ul>
 	 */
 	public void testCloneSchema() {
@@ -1410,30 +1410,30 @@ public class RecordListTest extends TestCase {
 
 
 	/**
-	 * ƒŒƒR[ƒhƒŠƒXƒg‚ğ•¡»‚·‚éƒeƒXƒgB
+	 * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’è¤‡è£½ã™ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 	 * <p>
-	 * ğŒF
+	 * æ¡ä»¶ï¼š
 	 * <ul>
-	 * <li>Ÿ‚Ì–¼‘O‚ÆƒXƒL[ƒ}‚ğw’è‚µ‚ÄRecordList(String name, String schema)‚ğÀs‚·‚é</li>
+	 * <li>æ¬¡ã®åå‰ã¨ã‚¹ã‚­ãƒ¼ãƒã‚’æŒ‡å®šã—ã¦RecordList(String name, String schema)ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * <li>name    : "TestRecordList"</li>
 	 * <li>schema  : ":A,java.lang.String,,,"<BR>      ":B,java.lang.String,,,"</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚P‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "1")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "1")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚Q‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "2")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "2")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#createRecord()‚ÅV‚µ‚¢ƒŒƒR[ƒh‚ğ¶¬‚·‚é(‚R‚Â–Ú‚ÌƒŒƒR[ƒhì¬)</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^A‚É’l‚ğİ’è‚·‚éBRecord#setProperty("A", "3")‚ğÀs‚·‚é</li>
-	 * <li>ƒpƒ‰ƒ[ƒ^B‚É’l‚ğİ’è‚·‚éBRecord#setProperty("B", "3")‚ğÀs‚·‚é</li>
-	 * <li>RecordList#addRecord(Record r)‚ÅƒŒƒR[ƒh‚ğ’Ç‰Á‚·‚é</li>
-	 * <li>RecordList#cloneRecordList()‚ğÀs‚·‚é</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼‘ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "1")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼’ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "2")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#createRecord()ã§æ–°ã—ã„ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹(ï¼“ã¤ç›®ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä½œæˆ)</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Aã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("A", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿Bã«å€¤ã‚’è¨­å®šã™ã‚‹ã€‚Record#setProperty("B", "3")ã‚’å®Ÿè¡Œã™ã‚‹</li>
+	 * <li>RecordList#addRecord(Record r)ã§ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹</li>
+	 * <li>RecordList#cloneRecordList()ã‚’å®Ÿè¡Œã™ã‚‹</li>
 	 * </ul>
-	 * Šm”FF
+	 * ç¢ºèªï¼š
 	 * <ul>
-     * <li>RecordList‚ÌƒXƒL[ƒ}AƒŒƒR[ƒh‚ª•¡»‚³‚ê‚Ä‚¢‚é‚±‚Æ‚ğŠm”F</li>
+     * <li>RecordListã®ã‚¹ã‚­ãƒ¼ãƒã€ãƒ¬ã‚³ãƒ¼ãƒ‰ãŒè¤‡è£½ã•ã‚Œã¦ã„ã‚‹ã“ã¨ã‚’ç¢ºèª</li>
 	 * </ul>
 	 */
 	public void testCloneRecordList() {

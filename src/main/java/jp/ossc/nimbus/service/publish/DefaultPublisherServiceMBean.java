@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * パブリッシャーサービスの管理JMXインターフェイス<p>
+ * 繝代ヶ繝ｪ繝�繧ｷ繝｣繝ｼ繧ｵ繝ｼ繝薙せ縺ｮ邂｡逅�JMX繧､繝ｳ繧ｿ繝ｼ繝輔ぉ繧､繧ｹ<p>
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0

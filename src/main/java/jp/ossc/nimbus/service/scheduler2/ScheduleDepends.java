@@ -32,23 +32,23 @@
 package jp.ossc.nimbus.service.scheduler2;
 
 /**
- * ƒXƒPƒWƒ…[ƒ‹ˆË‘¶B<p>
+ * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¾å­˜ã€‚<p>
  *
  * @author M.Takata
  */
 public interface ScheduleDepends{
     
     /**
-     * ˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚Ìƒ}ƒXƒ^ID‚ğæ“¾‚·‚éB<p>
+     * ä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒã‚¹ã‚¿IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚Ìƒ}ƒXƒ^ID
+     * @return ä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ãƒã‚¹ã‚¿ID
      */
     public String getMasterId();
     
     /**
-     * ˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚ªƒGƒ‰[‚Ìê‡A–³‹‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒã‚¨ãƒ©ãƒ¼ã®å ´åˆã€ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A–³‹‚·‚é
+     * @return trueã®å ´åˆã€ç„¡è¦–ã™ã‚‹
      */
     public boolean isIgnoreError();
 }

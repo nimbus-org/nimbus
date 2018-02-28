@@ -41,7 +41,7 @@ import jp.ossc.nimbus.io.RecurciveSearchFile;
 import jp.ossc.nimbus.service.test.StubResourceManager;
 
 /**
- * ƒ[ƒJƒ‹ƒfƒBƒXƒN‚ğŒo—R‚µ‚ÄƒXƒ^ƒuƒŠƒ\[ƒX‚ğŠÇ—‚·‚é{@link StubResourceManager}ƒCƒ“ƒ^ƒtƒF[ƒX‚ÌÀ‘•ƒT[ƒrƒXB<p>
+ * ãƒ­ãƒ¼ã‚«ãƒ«ãƒ‡ã‚£ã‚¹ã‚¯ã‚’çµŒç”±ã—ã¦ã‚¹ã‚¿ãƒ–ãƒªã‚½ãƒ¼ã‚¹ã‚’ç®¡ç†ã™ã‚‹{@link StubResourceManager}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®å®Ÿè£…ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Aono
  */

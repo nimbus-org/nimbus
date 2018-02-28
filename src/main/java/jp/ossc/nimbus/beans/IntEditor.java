@@ -34,20 +34,20 @@ package jp.ossc.nimbus.beans;
 import java.beans.*;
 
 /**
- * intŒ^‚ÌPropertyEditorƒNƒ‰ƒXB<p>
- * ”’l•¶š—ñ‚ğintŒ^‚ÌƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚éB<br>
- * "${"‚Æ"}"‚ÉˆÍ‚Ü‚ê‚½•¶š—ñ‚ÍA“¯–¼‚ÌƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Æ’uŠ·‚³‚ê‚éB<br>
- * intŒ^‚Ìstatic’è”–¼‚ğQÆ‚·‚é–‚à‚Å‚«‚éB<br>
- * ‚Ü‚½A“Áê’l‚Æ‚µ‚ÄAMAX_VALUEAMIN_VALUE‚ğƒTƒ|[ƒg‚·‚éB<br>
+ * intå‹ã®PropertyEditorã‚¯ãƒ©ã‚¹ã€‚<p>
+ * æ•°å€¤æ–‡å­—åˆ—ã‚’intå‹ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹ã€‚<br>
+ * "${"ã¨"}"ã«å›²ã¾ã‚ŒãŸæ–‡å­—åˆ—ã¯ã€åŒåã®ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ç½®æ›ã•ã‚Œã‚‹ã€‚<br>
+ * intå‹ã®staticå®šæ•°åã‚’å‚ç…§ã™ã‚‹äº‹ã‚‚ã§ãã‚‹ã€‚<br>
+ * ã¾ãŸã€ç‰¹æ®Šå€¤ã¨ã—ã¦ã€MAX_VALUEã€MIN_VALUEã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹ã€‚<br>
  * <p>
- * —áF<br>
+ * ä¾‹ï¼š<br>
  * &nbsp;&nbsp;1234<br>
  * <br>
- * ‚Ì‚æ‚¤‚È•¶š—ñ‚ª<br>
+ * ã®ã‚ˆã†ãªæ–‡å­—åˆ—ãŒ<br>
  * <br>
  * &nbsp;&nbsp;Integer.parseInt("1234")<br>
  * <br>
- * ‚Ì‚æ‚¤‚É•ÏŠ·‚³‚ê‚éB<br>
+ * ã®ã‚ˆã†ã«å¤‰æ›ã•ã‚Œã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -57,9 +57,9 @@ public class IntEditor extends PropertyEditorSupport
     private static final long serialVersionUID = -3196165392819498738L;
     
     /**
-     * w’è‚³‚ê‚½•¶š—ñ‚ğ‰ğÍ‚µ‚ÄƒvƒƒpƒeƒB’l‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’è§£æã—ã¦ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param text ‰ğÍ‚³‚ê‚é•¶š—ñ
+     * @param text è§£æã•ã‚Œã‚‹æ–‡å­—åˆ—
      */
     public void setAsText(String text){
         if(text == null){
@@ -107,9 +107,9 @@ public class IntEditor extends PropertyEditorSupport
     }
     
     /**
-     * ƒvƒƒpƒeƒB•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒpƒeƒB•¶š—ñ
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—
      */
     public String getAsText(){
         final Integer val = (Integer)getValue();

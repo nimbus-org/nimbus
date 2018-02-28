@@ -32,19 +32,19 @@
 package jp.ossc.nimbus.util.converter;
 
 /**
- * •¶š—ñƒRƒ“ƒo[ƒ^‚ÌƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * æ–‡å­—åˆ—ã‚³ãƒ³ãƒãƒ¼ã‚¿ã®ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface StringConverter extends Converter{
     
     /**
-     * •¶š—ñ‚ğ•ÏŠ·‚·‚éB<p>
-     * •ÏŠ·•¶š—ñ”z—ñ‚Æ•ÏŠ·ƒLƒƒƒ‰ƒNƒ^”z—ñ‚ğg‚Á‚Ä•ÏŠ·‚·‚éB<br>
+     * æ–‡å­—åˆ—ã‚’å¤‰æ›ã™ã‚‹ã€‚<p>
+     * å¤‰æ›æ–‡å­—åˆ—é…åˆ—ã¨å¤‰æ›ã‚­ãƒ£ãƒ©ã‚¯ã‚¿é…åˆ—ã‚’ä½¿ã£ã¦å¤‰æ›ã™ã‚‹ã€‚<br>
      *
-     * @param str •ÏŠ·‘ÎÛ‚Ì•¶š—ñ 
-     * @return •ÏŠ·Œã‚Ì•¶š—ñ
-     * @exception ConvertException •ÏŠ·‚É¸”s‚µ‚½ê‡
+     * @param str å¤‰æ›å¯¾è±¡ã®æ–‡å­—åˆ— 
+     * @return å¤‰æ›å¾Œã®æ–‡å­—åˆ—
+     * @exception ConvertException å¤‰æ›ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public String convert(String str) throws ConvertException;
 }

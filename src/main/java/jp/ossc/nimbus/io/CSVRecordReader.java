@@ -39,7 +39,7 @@ import jp.ossc.nimbus.beans.dataset.RecordSchema;
 import jp.ossc.nimbus.beans.dataset.PropertySetException;
 
 /**
- * CSVŒ`®‚ÌƒXƒgƒŠ[ƒ€‚ğ{@link Record}‚Æ‚µ‚Ä“Ç‚İ‚ŞReaderƒNƒ‰ƒXB<p>
+ * CSVå½¢å¼ã®ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’{@link Record}ã¨ã—ã¦èª­ã¿è¾¼ã‚€Readerã‚¯ãƒ©ã‚¹ã€‚<p>
  * <pre>
  * import java.io.*;
  * import jp.ossc.nimbus.io.CSVRecordReader;
@@ -70,26 +70,26 @@ public class CSVRecordReader extends CSVReader{
     private List workList;
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public CSVRecordReader(){
         super();
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param reader “Ç‚İ‚İŒ³‚ÌReader
+     * @param reader èª­ã¿è¾¼ã¿å…ƒã®Reader
      */
     public CSVRecordReader(Reader reader){
         super(reader);
     }
     
     /**
-     * ƒfƒtƒHƒ‹ƒg‚Ì“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param reader “Ç‚İ‚İŒ³‚ÌReader
-     * @param schema ƒŒƒR[ƒhƒXƒL[ƒ}
+     * @param reader èª­ã¿è¾¼ã¿å…ƒã®Reader
+     * @param schema ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒ
      */
     public CSVRecordReader(Reader reader, RecordSchema schema){
         super(reader);
@@ -97,30 +97,30 @@ public class CSVRecordReader extends CSVReader{
     }
     
     /**
-     * w’è‚³‚ê‚½“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚Â–¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸèª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param size “Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY
+     * @param size èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public CSVRecordReader(int size){
         super(size);
     }
     
     /**
-     * w’è‚³‚ê‚½“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸèª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param reader “Ç‚İ‚İŒ³‚ÌReader
-     * @param size “Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY
+     * @param reader èª­ã¿è¾¼ã¿å…ƒã®Reader
+     * @param size èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public CSVRecordReader(Reader reader, int size){
         super(reader, size);
     }
     
     /**
-     * w’è‚³‚ê‚½“Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸèª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param reader “Ç‚İ‚İŒ³‚ÌReader
-     * @param schema ƒŒƒR[ƒhƒXƒL[ƒ}
-     * @param size “Ç‚İ‚İƒoƒbƒtƒ@ƒTƒCƒY
+     * @param reader èª­ã¿è¾¼ã¿å…ƒã®Reader
+     * @param schema ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒ
+     * @param size èª­ã¿è¾¼ã¿ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
      */
     public CSVRecordReader(Reader reader, RecordSchema schema, int size){
         super(reader, size);
@@ -128,9 +128,9 @@ public class CSVRecordReader extends CSVReader{
     }
     
     /**
-     * “Ç‚İ‚ŞCSVŒ`®•¶š—ñ‚ÌƒXƒL[ƒ}‚ğİ’è‚·‚éB<p>
+     * èª­ã¿è¾¼ã‚€CSVå½¢å¼æ–‡å­—åˆ—ã®ã‚¹ã‚­ãƒ¼ãƒã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param schema ƒXƒL[ƒ}
+     * @param schema ã‚¹ã‚­ãƒ¼ãƒ
      * @see #readRecord()
      */
     public void setRecordSchema(RecordSchema schema){
@@ -139,20 +139,20 @@ public class CSVRecordReader extends CSVReader{
     }
     
     /**
-     * “Ç‚İ‚ŞCSVŒ`®•¶š—ñ‚ÌƒŒƒR[ƒhƒXƒL[ƒ}‚ğæ“¾‚·‚éB<p>
+     * èª­ã¿è¾¼ã‚€CSVå½¢å¼æ–‡å­—åˆ—ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒL[ƒ}
+     * @return ã‚¹ã‚­ãƒ¼ãƒ
      */
     public RecordSchema getRecordSchema(){
         return schema;
     }
     
     /**
-     * —\‚ßİ’è‚³‚ê‚½ƒŒƒR[ƒhƒXƒL[ƒ}‚ğg‚Á‚ÄACSVs‚ğ1sAƒŒƒR[ƒh‚Æ‚µ‚Ä“Ç‚İ‚ŞB<p>
+     * äºˆã‚è¨­å®šã•ã‚ŒãŸãƒ¬ã‚³ãƒ¼ãƒ‰ã‚¹ã‚­ãƒ¼ãƒã‚’ä½¿ã£ã¦ã€CSVè¡Œã‚’1è¡Œã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã¨ã—ã¦èª­ã¿è¾¼ã‚€ã€‚<p>
      *
-     * @return CSV—v‘f‚ğŠi”[‚µ‚½ƒŒƒR[ƒh
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
-     * @exception PropertySetException CSVŒ`®‚Ì—v‘f•¶š—ñ‚Ìƒp[ƒX‚É¸”s‚µ‚½ê‡
+     * @return CSVè¦ç´ ã‚’æ ¼ç´ã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
+     * @exception PropertySetException CSVå½¢å¼ã®è¦ç´ æ–‡å­—åˆ—ã®ãƒ‘ãƒ¼ã‚¹ã«å¤±æ•—ã—ãŸå ´åˆ
      * @see #setRecordSchema(RecordSchema)
      */
     public Record readRecord() throws IOException, PropertySetException{
@@ -160,13 +160,13 @@ public class CSVRecordReader extends CSVReader{
     }
     
     /**
-     * CSVs‚ğ1sAƒŒƒR[ƒh‚Æ‚µ‚Ä“Ç‚İ‚ŞB<p>
-     * CSV—v‘f‚Ì’l‚ğŠi”[‚·‚éƒŒƒR[ƒh‚ğÄ—˜—p‚·‚é‚½‚ß‚Ìƒƒ\ƒbƒh‚Å‚ ‚éB<br>
+     * CSVè¡Œã‚’1è¡Œã€ãƒ¬ã‚³ãƒ¼ãƒ‰ã¨ã—ã¦èª­ã¿è¾¼ã‚€ã€‚<p>
+     * CSVè¦ç´ ã®å€¤ã‚’æ ¼ç´ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å†åˆ©ç”¨ã™ã‚‹ãŸã‚ã®ãƒ¡ã‚½ãƒƒãƒ‰ã§ã‚ã‚‹ã€‚<br>
      *
-     * @param record CSV—v‘f‚Ì’l‚ğŠi”[‚·‚éƒŒƒR[ƒh
-     * @return CSV—v‘f‚ğŠi”[‚µ‚½ƒŒƒR[ƒh
-     * @exception IOException “üo—ÍƒGƒ‰[‚ª”­¶‚µ‚½ê‡
-     * @exception PropertySetException CSVŒ`®‚Ì—v‘f•¶š—ñ‚Ìƒp[ƒX‚É¸”s‚µ‚½ê‡
+     * @param record CSVè¦ç´ ã®å€¤ã‚’æ ¼ç´ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰
+     * @return CSVè¦ç´ ã‚’æ ¼ç´ã—ãŸãƒ¬ã‚³ãƒ¼ãƒ‰
+     * @exception IOException å…¥å‡ºåŠ›ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆ
+     * @exception PropertySetException CSVå½¢å¼ã®è¦ç´ æ–‡å­—åˆ—ã®ãƒ‘ãƒ¼ã‚¹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public Record readRecord(Record record) throws IOException, PropertySetException{
         if(workList == null){
@@ -189,19 +189,19 @@ public class CSVRecordReader extends CSVReader{
     }
     
     /**
-     * –¢Ú‘±‚Ì•¡»‚ğ¶¬‚·‚éB<p>
+     * æœªæ¥ç¶šã®è¤‡è£½ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return –¢Ú‘±‚Ì•¡»
+     * @return æœªæ¥ç¶šã®è¤‡è£½
      */
     public CSVReader cloneReader(){
         return cloneReader(new CSVRecordReader());
     }
     
     /**
-     * –¢Ú‘±‚Ì•¡»‚ğ¶¬‚·‚éB<p>
+     * æœªæ¥ç¶šã®è¤‡è£½ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param clone –¢Ú‘±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
-     * @return –¢Ú‘±‚Ì•¡»
+     * @param clone æœªæ¥ç¶šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+     * @return æœªæ¥ç¶šã®è¤‡è£½
      */
     protected CSVReader cloneReader(CSVReader clone){
         super.cloneReader(clone);

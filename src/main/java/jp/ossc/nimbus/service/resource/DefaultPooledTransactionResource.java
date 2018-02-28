@@ -34,8 +34,8 @@ package jp.ossc.nimbus.service.resource;
 import org.apache.commons.pool.ObjectPool;
 
 /**
- * {@link PooledTransactionResource}‚ÌƒfƒtƒHƒ‹ƒgÀ‘•ƒNƒ‰ƒXB<p>
- * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ““I‚Èˆ—‚Í‰½‚às‚í‚È‚¢À‘•‚Å‚ ‚éB<br>
+ * {@link PooledTransactionResource}ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
+ * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³çš„ãªå‡¦ç†ã¯ä½•ã‚‚è¡Œã‚ãªã„å®Ÿè£…ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -45,21 +45,21 @@ public class DefaultPooledTransactionResource extends PooledTransactionResource
     private static final long serialVersionUID = 4896488419171059745L;
     
     /**
-     * ˆø”‚Åw’è‚³‚ê‚½ƒv[ƒ‹‚©‚çƒŠƒ\[ƒX‚ğæ“¾‚µ‚ÄAƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * å¼•æ•°ã§æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ¼ãƒ«ã‹ã‚‰ãƒªã‚½ãƒ¼ã‚¹ã‚’å–å¾—ã—ã¦ã€ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param pool ƒv[ƒ‹
+     * @param pool ãƒ—ãƒ¼ãƒ«
      */
     public DefaultPooledTransactionResource(ObjectPool pool) throws Exception{
         super(pool);
     }
     
     /**
-     * ‰½‚à‚µ‚È‚¢B<p>
+     * ä½•ã‚‚ã—ãªã„ã€‚<p>
      */
     public void commit() throws Exception{}
     
     /**
-     * ‰½‚à‚µ‚È‚¢B<p>
+     * ä½•ã‚‚ã—ãªã„ã€‚<p>
      */
     public void rollback() throws Exception{}
 }

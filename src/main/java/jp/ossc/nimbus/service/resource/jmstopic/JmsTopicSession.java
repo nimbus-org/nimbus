@@ -34,10 +34,10 @@ package jp.ossc.nimbus.service.resource.jmstopic;
 import jp.ossc.nimbus.service.resource.*;
 
 /**
- *  JMSƒgƒsƒbƒNƒZƒbƒVƒ‡ƒ“	
+ *  JMSãƒˆãƒ”ãƒƒã‚¯ã‚»ãƒƒã‚·ãƒ§ãƒ³	
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/10/27| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/10/27ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public interface JmsTopicSession 
 	extends ResourceFactory{

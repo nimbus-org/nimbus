@@ -29,14 +29,14 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.service.aspect;
 import java.lang.reflect.*;
 import jp.ossc.nimbus.service.log.* ;
 import jp.ossc.nimbus.service.aspect.interfaces.*;
 /**
- * ƒCƒ“ƒ^[ƒZƒvƒ^[ÀsƒNƒ‰ƒX‘€ìƒCƒ“ƒ^[ƒtƒFƒCƒX<p>
+ * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼å®Ÿè¡Œã‚¯ãƒ©ã‚¹æ“ä½œã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹<p>
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -44,20 +44,20 @@ import jp.ossc.nimbus.service.aspect.interfaces.*;
  */
 public interface InterceptorChainInvokerAccess extends InterceptorChainInvoker {
 	/**
-	 * ƒCƒ“ƒ^[ƒZƒvƒ^ƒŠƒXƒgİ’è<br>
-	 * ƒCƒ“ƒ^[ƒZƒvƒ^ŠÇ—ƒRƒ“ƒ|[ƒlƒ“ƒg‚©‚çŒÄ‚Ño‚³‚ê‚éB
-	 * @param InterceptList			ƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒŠƒXƒg‚ªŠÜ‚Ü‚ê‚éƒIƒuƒWƒFƒNƒg
+	 * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒªã‚¹ãƒˆè¨­å®š<br>
+	 * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ç®¡ç†ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‹ã‚‰å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚
+	 * @param InterceptList			ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ãƒªã‚¹ãƒˆãŒå«ã¾ã‚Œã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 */
 	public void setInterceptorChainList(IntreceptorChainList interceptList);
 	/**
-	 * ƒR[ƒ‹ƒoƒbƒN‘ÎÛ‚Ìƒƒ\ƒbƒh<br>
-	 * ƒCƒ“ƒ^[ƒZƒvƒ^ŠÇ—ƒRƒ“ƒ|[ƒlƒ“ƒg‚©‚çŒÄ‚Ño‚³‚ê‚éB
-	 * @param Method					ƒR[ƒ‹ƒoƒbƒN‘ÎÛ‚Ìƒƒ\ƒbƒh
+	 * ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯å¯¾è±¡ã®ãƒ¡ã‚½ãƒƒãƒ‰<br>
+	 * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ç®¡ç†ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‹ã‚‰å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚
+	 * @param Method					ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯å¯¾è±¡ã®ãƒ¡ã‚½ãƒƒãƒ‰
 	 */
 	public void setCallBackmethod(Method callBackmethod);
 	/**
-	 * ƒƒK[İ’èƒƒ\ƒbƒh<br>
-	 * @param logger@ƒƒK[ƒCƒ“ƒ^[ƒtƒFƒCƒX	
+	 * ãƒ­ã‚¬ãƒ¼è¨­å®šãƒ¡ã‚½ãƒƒãƒ‰<br>
+	 * @param loggerã€€ãƒ­ã‚¬ãƒ¼ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹	
 	 */
 	public void setLogger(Logger logger);
 

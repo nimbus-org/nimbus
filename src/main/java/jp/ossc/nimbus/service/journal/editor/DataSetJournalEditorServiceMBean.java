@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.journal.editor;
 
 /**
- * {@link DataSetJournalEditorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link DataSetJournalEditorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see DataSetJournalEditorService
@@ -41,48 +41,48 @@ public interface DataSetJournalEditorServiceMBean
  extends BlockJournalEditorServiceBaseMBean{
     
     /**
-     * {@link jp.ossc.nimbus.beans.dataset.DataSet DataSet}‚ª‚Â–¼‘O‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<p>
+     * {@link jp.ossc.nimbus.beans.dataset.DataSet DataSet}ãŒæŒã¤åå‰ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<p>
      * 
-     * @param isOutput o—Í‚·‚éê‡‚ÍAtrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setOutputDataSetName(boolean isOutput);
     
     /**
-     * {@link jp.ossc.nimbus.beans.dataset.DataSet DataSet}‚ª‚Â–¼‘O‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.beans.dataset.DataSet DataSet}ãŒæŒã¤åå‰ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡‚ÍAo—Í‚·‚é
+     * @return trueã®å ´åˆã¯ã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputDataSetName();
     
     /**
-     * {@link jp.ossc.nimbus.beans.dataset.DataSet DataSet}‚ª‚Â{@link jp.ossc.nimbus.beans.dataset.Header Header}‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚ÉAo—Í‚·‚éƒwƒbƒ_‚Ì–¼‘O”z—ñ‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.beans.dataset.DataSet DataSet}ãŒæŒã¤{@link jp.ossc.nimbus.beans.dataset.Header Header}ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹æ™‚ã«ã€å‡ºåŠ›ã™ã‚‹ãƒ˜ãƒƒãƒ€ã®åå‰é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param names o—Í‚·‚éƒwƒbƒ_‚Ì–¼‘O”z—ñ
+     * @param names å‡ºåŠ›ã™ã‚‹ãƒ˜ãƒƒãƒ€ã®åå‰é…åˆ—
      * @see #getEnabledHeaders()
      */
     public void setEnabledHeaders(String[] names);
     
     /**
-     * {@link jp.ossc.nimbus.beans.dataset.DataSet DataSet}‚ª‚Â{@link jp.ossc.nimbus.beans.dataset.Header Header}‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚ÉAo—Í‚·‚éƒwƒbƒ_‚Ì–¼‘O”z—ñ‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.beans.dataset.DataSet DataSet}ãŒæŒã¤{@link jp.ossc.nimbus.beans.dataset.Header Header}ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹æ™‚ã«ã€å‡ºåŠ›ã™ã‚‹ãƒ˜ãƒƒãƒ€ã®åå‰é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return o—Í‚·‚éƒwƒbƒ_‚Ì–¼‘O”z—ñ
+     * @return å‡ºåŠ›ã™ã‚‹ãƒ˜ãƒƒãƒ€ã®åå‰é…åˆ—
      * @see #setEnabledHeaders(String[])
      */
     public String[] getEnabledHeaders();
     
     /**
-     * {@link jp.ossc.nimbus.beans.dataset.DataSet DataSet}‚ª‚Â{@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚ÉAo—Í‚·‚éƒŒƒR[ƒhƒŠƒXƒg‚Ì–¼‘O”z—ñ‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.beans.dataset.DataSet DataSet}ãŒæŒã¤{@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹æ™‚ã«ã€å‡ºåŠ›ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®åå‰é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param names o—Í‚·‚éƒŒƒR[ƒhƒŠƒXƒg‚Ì–¼‘O”z—ñ
+     * @param names å‡ºåŠ›ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®åå‰é…åˆ—
      * @see #getEnabledRecordLists()
      */
     public void setEnabledRecordLists(String[] names);
     
     /**
-     * {@link jp.ossc.nimbus.beans.dataset.DataSet DataSet}‚ª‚Â{@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}‚ğƒWƒƒ[ƒiƒ‹‚Éo—Í‚·‚é‚ÉAo—Í‚·‚éƒŒƒR[ƒhƒŠƒXƒg‚Ì–¼‘O”z—ñ‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.beans.dataset.DataSet DataSet}ãŒæŒã¤{@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å‡ºåŠ›ã™ã‚‹æ™‚ã«ã€å‡ºåŠ›ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®åå‰é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return o—Í‚·‚éƒŒƒR[ƒhƒŠƒXƒg‚Ì–¼‘O”z—ñ
+     * @return å‡ºåŠ›ã™ã‚‹ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã®åå‰é…åˆ—
      * @see #setEnabledRecordLists(String[])
      */
     public String[] getEnabledRecordLists();

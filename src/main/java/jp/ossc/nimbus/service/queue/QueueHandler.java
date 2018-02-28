@@ -32,35 +32,35 @@
 package jp.ossc.nimbus.service.queue;
 
 /**
- * QueueHandlerƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * QueueHandlerã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface QueueHandler{
     
     /**
-     * {@link jp.ossc.nimbus.service.queue.Queue Queue}‚©‚çæ‚èo‚µ‚½ƒIƒuƒWƒFƒNƒg‚Ìˆ—‚ğs‚¤B<p>
+     * {@link jp.ossc.nimbus.service.queue.Queue Queue}ã‹ã‚‰å–ã‚Šå‡ºã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param obj {@link jp.ossc.nimbus.service.queue.Queue Queue}‚©‚çæ‚èo‚µ‚½ƒIƒuƒWƒFƒNƒg
+     * @param obj {@link jp.ossc.nimbus.service.queue.Queue Queue}ã‹ã‚‰å–ã‚Šå‡ºã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      * @exception Throwable
      */
     public void handleDequeuedObject(Object obj) throws Throwable;
     
     /**
-     * {@link jp.ossc.nimbus.service.queue.Queue Queue}‚©‚çæ‚èo‚µ‚½ƒIƒuƒWƒFƒNƒg‚Ìˆ—‚Å—áŠO‚ª”­¶‚µ‚½ê‡‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * {@link jp.ossc.nimbus.service.queue.Queue Queue}ã‹ã‚‰å–ã‚Šå‡ºã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å‡¦ç†ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      *
-     * @param obj {@link jp.ossc.nimbus.service.queue.Queue Queue}‚©‚çæ‚èo‚µ‚½ƒIƒuƒWƒFƒNƒg
-     * @param th {@link jp.ossc.nimbus.service.queue.Queue Queue}‚©‚çæ‚èo‚µ‚½ƒIƒuƒWƒFƒNƒg‚Ìˆ—‚Å”­¶‚µ‚½—áŠO
-     * @return ƒŠƒgƒ‰ƒC‚ğ’†’f‚·‚éê‡‚ÍAfalse
+     * @param obj {@link jp.ossc.nimbus.service.queue.Queue Queue}ã‹ã‚‰å–ã‚Šå‡ºã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param th {@link jp.ossc.nimbus.service.queue.Queue Queue}ã‹ã‚‰å–ã‚Šå‡ºã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å‡¦ç†ã§ç™ºç”Ÿã—ãŸä¾‹å¤–
+     * @return ãƒªãƒˆãƒ©ã‚¤ã‚’ä¸­æ–­ã™ã‚‹å ´åˆã¯ã€false
      * @exception Throwable
      */
     public boolean handleError(Object obj, Throwable th) throws Throwable;
     
     /**
-     * {@link jp.ossc.nimbus.service.queue.Queue Queue}‚©‚çæ‚èo‚µ‚½ƒIƒuƒWƒFƒNƒg‚Ìˆ—‚Å—áŠO‚ª”­¶‚µAÅ‘åƒŠƒgƒ‰ƒC‰ñ”‚É‰z‚¦‚½ê‡‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+     * {@link jp.ossc.nimbus.service.queue.Queue Queue}ã‹ã‚‰å–ã‚Šå‡ºã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å‡¦ç†ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ã€æœ€å¤§ãƒªãƒˆãƒ©ã‚¤å›æ•°ã«è¶ŠãˆãŸå ´åˆã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
      *
-     * @param obj {@link jp.ossc.nimbus.service.queue.Queue Queue}‚©‚çæ‚èo‚µ‚½ƒIƒuƒWƒFƒNƒg
-     * @param th {@link jp.ossc.nimbus.service.queue.Queue Queue}‚©‚çæ‚èo‚µ‚½ƒIƒuƒWƒFƒNƒg‚Ìˆ—‚Å”­¶‚µ‚½—áŠO
+     * @param obj {@link jp.ossc.nimbus.service.queue.Queue Queue}ã‹ã‚‰å–ã‚Šå‡ºã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param th {@link jp.ossc.nimbus.service.queue.Queue Queue}ã‹ã‚‰å–ã‚Šå‡ºã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å‡¦ç†ã§ç™ºç”Ÿã—ãŸä¾‹å¤–
      * @exception Throwable
      */
     public void handleRetryOver(Object obj, Throwable th) throws Throwable;

@@ -34,66 +34,66 @@ package jp.ossc.nimbus.service.ga;
 import java.util.Random;
 
 /**
- * ˆâ“`qB<p>
+ * éºä¼å­ã€‚<p>
  *
  * @author M.Takata
  */
 public interface Gene{
     
     /**
-     * ˆâ“`q‚Ì–¼‘O‚ğæ“¾‚·‚éB<p>
+     * éºä¼å­ã®åå‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ˆâ“`q‚Ì–¼‘O
+     * @return éºä¼å­ã®åå‰
      */
     public String getName();
     
     /**
-     * ˆâ“`q‚Ì’l‚ğİ’è‚·‚éB<p>
+     * éºä¼å­ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param value ˆâ“`q‚Ì’l
+     * @param value éºä¼å­ã®å€¤
      */
     public void setValue(Object value);
     
     /**
-     * ˆâ“`q‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * éºä¼å­ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ˆâ“`q‚Ì’l
+     * @return éºä¼å­ã®å€¤
      */
     public Object getValue();
     
     /**
-     * ˆâ“`q‚Ì’l‚ğ—””­¶‚³‚¹‚éB<p>
+     * éºä¼å­ã®å€¤ã‚’ä¹±æ•°ç™ºç”Ÿã•ã›ã‚‹ã€‚<p>
      *
-     * @param random —”ƒV[ƒh
+     * @param random ä¹±æ•°ã‚·ãƒ¼ãƒ‰
      */
     public void random(Random random);
     
     /**
-     * ‚±‚Ìˆâ“`q‚Æw’è‚³‚ê‚½ˆâ“`q‚ğŒğ³‚³‚¹‚éB<p>
+     * ã“ã®éºä¼å­ã¨æŒ‡å®šã•ã‚ŒãŸéºä¼å­ã‚’äº¤å‰ã•ã›ã‚‹ã€‚<p>
      *
-     * @param random —”ƒV[ƒh
-     * @param gene Œğ³‘ÎÛ‚Ìˆâ“`q
+     * @param random ä¹±æ•°ã‚·ãƒ¼ãƒ‰
+     * @param gene äº¤å‰å¯¾è±¡ã®éºä¼å­
      */
     public void crossover(Random random, Gene gene);
     
     /**
-     * ‚±‚Ìˆâ“`q‚ªŒğ³‚³‚ê‚½‚©‚Ç‚¤‚©B<p>
+     * ã“ã®éºä¼å­ãŒäº¤å‰ã•ã‚ŒãŸã‹ã©ã†ã‹ã€‚<p>
      *
-     * @return true‚Ìê‡AŒğ³‚³‚ê‚Ä‚¢‚é
+     * @return trueã®å ´åˆã€äº¤å‰ã•ã‚Œã¦ã„ã‚‹
      */
     public boolean isCrossover();
     
     /**
-     * ‚±‚Ìˆâ“`q‚ª•ÏˆÙ‚³‚ê‚½‚©‚Ç‚¤‚©B<p>
+     * ã“ã®éºä¼å­ãŒå¤‰ç•°ã•ã‚ŒãŸã‹ã©ã†ã‹ã€‚<p>
      *
-     * @return true‚Ìê‡A•ÏˆÙ‚³‚ê‚Ä‚¢‚é
+     * @return trueã®å ´åˆã€å¤‰ç•°ã•ã‚Œã¦ã„ã‚‹
      */
     public boolean isMutate();
     
     /**
-     * ‚±‚Ìˆâ“`î•ñ‚Ì•¡»‚ğì¬‚·‚éB<p>
+     * ã“ã®éºä¼æƒ…å ±ã®è¤‡è£½ã‚’ä½œæˆã™ã‚‹ã€‚<p>
      *
-     * @return •¡»‚³‚ê‚½ˆâ“`î•ñ
+     * @return è¤‡è£½ã•ã‚ŒãŸéºä¼æƒ…å ±
      */
     public Gene cloneGene();
 }

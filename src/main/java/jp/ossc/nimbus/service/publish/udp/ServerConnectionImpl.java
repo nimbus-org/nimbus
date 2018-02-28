@@ -98,7 +98,7 @@ import jp.ossc.nimbus.service.publish.tcp.RemoveMessage;
 import jp.ossc.nimbus.service.publish.tcp.StartReceiveMessage;
 
 /**
- * UDPƒvƒƒgƒRƒ‹—p‚Ì{@link ServerConnection}ƒCƒ“ƒ^ƒtƒF[ƒXÀ‘•ƒNƒ‰ƒXB<p>
+ * UDPãƒ—ãƒ­ãƒˆã‚³ãƒ«ç”¨ã®{@link ServerConnection}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹å®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */

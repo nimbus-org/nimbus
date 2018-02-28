@@ -35,7 +35,7 @@ import java.io.PrintStream;
 import java.io.PrintWriter;
 
 /**
- * •s³ƒLƒƒƒbƒVƒ…QÆ—áŠOB<p>
+ * ä¸æ­£ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ä¾‹å¤–ã€‚<p>
  *
  * @author M.Takata
  */
@@ -54,46 +54,46 @@ public class IllegalCachedReferenceException extends Exception{
         try{
             getCause = Exception.class.getMethod(METHOD_NAME_GET_CAUSE, (Class[])null);
         }catch(NoSuchMethodException e){
-            // –³‹‚·‚é
+            // ç„¡è¦–ã™ã‚‹
         }
         isExistsGetCause = (getCause != null);
     }
     
     /**
-     * ‚±‚Ì—áŠO‚ÌŒ´ˆö‚Æ‚È‚Á‚½—áŠOB<p>
+     * ã“ã®ä¾‹å¤–ã®åŸå› ã¨ãªã£ãŸä¾‹å¤–ã€‚<p>
      */
     private Throwable cause;
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^B<p>
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<p>
      */
     public IllegalCachedReferenceException(){
         super();
     }
     
     /**
-     * ƒGƒ‰[ƒƒbƒZ[ƒW‚ğ‚Á‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éƒRƒ“ƒXƒgƒ‰ƒNƒ^B<p>
+     * ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’æŒã£ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<p>
      *
-     * @param message ƒGƒ‰[ƒƒbƒZ[ƒW
+     * @param message ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public IllegalCachedReferenceException(String message){
         super(message);
     }
     
     /**
-     * ‚±‚Ì—áŠO‚ÌŒ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğ‚Á‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éƒRƒ“ƒXƒgƒ‰ƒNƒ^B<p>
+     * ã“ã®ä¾‹å¤–ã®åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’æŒã£ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<p>
      *
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public IllegalCachedReferenceException(Throwable cause){
         this(cause.getMessage(), cause);
     }
     
     /**
-     * ƒGƒ‰[ƒƒbƒZ[ƒW‚ÆA‚±‚Ì—áŠO‚ÌŒ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğ‚Á‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éƒRƒ“ƒXƒgƒ‰ƒNƒ^B<p>
+     * ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¨ã€ã“ã®ä¾‹å¤–ã®åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’æŒã£ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<p>
      *
-     * @param message ƒGƒ‰[ƒƒbƒZ[ƒW
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param message ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public IllegalCachedReferenceException(String message, Throwable cause){
         super(message);
@@ -101,18 +101,18 @@ public class IllegalCachedReferenceException extends Exception{
     }
     
     /**
-     * ‚±‚Ì—áŠO‚ÌŒ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ä¾‹å¤–ã®åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‚±‚Ì—áŠO‚ÌŒ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @return ã“ã®ä¾‹å¤–ã®åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public Throwable getCause(){
         return cause;
     }
     
     /**
-     * ‚±‚Ì—áŠO‚Æ‚»‚ÌƒoƒbƒNƒgƒŒ[ƒX‚ğw’è‚³‚ê‚½ˆóüƒXƒgƒŠ[ƒ€‚Éo—Í‚µ‚Ü‚·B<p>
+     * ã“ã®ä¾‹å¤–ã¨ãã®ãƒãƒƒã‚¯ãƒˆãƒ¬ãƒ¼ã‚¹ã‚’æŒ‡å®šã•ã‚ŒãŸå°åˆ·ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«å‡ºåŠ›ã—ã¾ã™ã€‚<p>
      *
-     * @param s o—Í‚Ég—p‚·‚éPrintStream
+     * @param s å‡ºåŠ›ã«ä½¿ç”¨ã™ã‚‹PrintStream
      */
     public void printStackTrace(PrintStream s) {
         super.printStackTrace(s);
@@ -123,9 +123,9 @@ public class IllegalCachedReferenceException extends Exception{
     }
     
     /**
-     * ‚±‚Ì—áŠO‚Æ‚»‚ÌƒoƒbƒNƒgƒŒ[ƒX‚ğw’è‚³‚ê‚½ƒvƒŠƒ“ƒgƒ‰ƒCƒ^[‚Éo—Í‚µ‚Ü‚·B<p>
+     * ã“ã®ä¾‹å¤–ã¨ãã®ãƒãƒƒã‚¯ãƒˆãƒ¬ãƒ¼ã‚¹ã‚’æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒªãƒ³ãƒˆãƒ©ã‚¤ã‚¿ãƒ¼ã«å‡ºåŠ›ã—ã¾ã™ã€‚<p>
      *
-     * @param s o—Í‚Ég—p‚·‚éPrintWriter
+     * @param s å‡ºåŠ›ã«ä½¿ç”¨ã™ã‚‹PrintWriter
      */
     public void printStackTrace(PrintWriter s) { 
         super.printStackTrace(s);

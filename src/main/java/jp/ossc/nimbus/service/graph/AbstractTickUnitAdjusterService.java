@@ -39,64 +39,64 @@ import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * –Ú·‚è’²ßƒT[ƒrƒXB<p>
+ * ç›®ç››ã‚Šèª¿ç¯€ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  */
 public abstract class AbstractTickUnitAdjusterService
     extends ServiceBase
     implements TickUnitAdjuster, AbstractTickUnitAdjusterServiceMBean {
     
     private static final long serialVersionUID = 4013207082825995188L;
-    /** •\¦‚·‚é–Ú·‚è‚Ì” */
+    /** è¡¨ç¤ºã™ã‚‹ç›®ç››ã‚Šã®æ•° */
     protected int displayGraduationCount;
-    /** ƒ†ƒjƒbƒgƒJƒEƒ“ƒgŒö–ñ” */
+    /** ãƒ¦ãƒ‹ãƒƒãƒˆã‚«ã‚¦ãƒ³ãƒˆå…¬ç´„æ•° */
     protected double unitCountCommonDivisor = Double.NaN;
-    /** c²‚©‚Ç‚¤‚© */
+    /** ç¸¦è»¸ã‹ã©ã†ã‹ */
     protected boolean isDomain;
-    /** ²‚ÌƒCƒ“ƒfƒbƒNƒX */
+    /** è»¸ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ */
     protected int axisIndex = -1;
-    /** TickUnitŒö–ñ”ƒ}ƒbƒvƒT[ƒrƒX–¼ */
+    /** TickUnitå…¬ç´„æ•°ãƒãƒƒãƒ—ã‚µãƒ¼ãƒ“ã‚¹å */
     protected ServiceName tickUnitAdjustCommonDivisorMapServiceName;
-    /** TickUnitŒö–ñ”ƒ}ƒbƒvƒT[ƒrƒX */
+    /** TickUnitå…¬ç´„æ•°ãƒãƒƒãƒ—ã‚µãƒ¼ãƒ“ã‚¹ */
     protected TickUnitAdjustCommonDivisorMap tickUnitAdjustCommonDivisorMap;
-    /** ©“®Å¬”ÍˆÍƒTƒCƒYİ’è */
+    /** è‡ªå‹•æœ€å°ç¯„å›²ã‚µã‚¤ã‚ºè¨­å®š */
     protected boolean autoRangeMinimumSizeEnabled;
 
-    // AbstractTickUnitAdjusterMBean‚ÌJavaDoc
+    // AbstractTickUnitAdjusterMBeanã®JavaDoc
     public void setDisplayGraduationCount(int count) {
         displayGraduationCount = count;
     }
 
-    // AbstractTickUnitAdjusterMBean‚ÌJavaDoc
+    // AbstractTickUnitAdjusterMBeanã®JavaDoc
     public int getDisplayGraduationCount() {
         return displayGraduationCount;
     }
 
-    // AbstractTickUnitAdjusterMBean‚ÌJavaDoc
+    // AbstractTickUnitAdjusterMBeanã®JavaDoc
     public void setUnitCountCommonDivisor(double divisor) {
         unitCountCommonDivisor = divisor;
     }
 
-    // AbstractTickUnitAdjusterMBean‚ÌJavaDoc
+    // AbstractTickUnitAdjusterMBeanã®JavaDoc
     public double getUnitCountCommonDivisor() {
         return unitCountCommonDivisor;
     }
 
-    // AbstractTickUnitAdjusterMBean‚ÌJavaDoc
+    // AbstractTickUnitAdjusterMBeanã®JavaDoc
     public void setDomain(boolean isDomain) {
         this.isDomain = isDomain;
     }
 
-    // AbstractTickUnitAdjusterMBean‚ÌJavaDoc
+    // AbstractTickUnitAdjusterMBeanã®JavaDoc
     public boolean isDomain() {
         return isDomain;
     }
 
-    // AbstractTickUnitAdjusterMBean‚ÌJavaDoc
+    // AbstractTickUnitAdjusterMBeanã®JavaDoc
     public void setAxisIndex(int index) {
         axisIndex = index;
     }
 
-    // AbstractTickUnitAdjusterMBean‚ÌJavaDoc
+    // AbstractTickUnitAdjusterMBeanã®JavaDoc
     public int getAxisIndex() {
         return axisIndex;
     }
@@ -115,11 +115,11 @@ public abstract class AbstractTickUnitAdjusterService
         return tickUnitAdjustCommonDivisorMapServiceName;
     }
     
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void createService() throws Exception {
     }
 
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void startService() throws Exception {
         if (displayGraduationCount <= 0) {
             throw new IllegalArgumentException(
@@ -141,35 +141,35 @@ public abstract class AbstractTickUnitAdjusterService
         
     }
 
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void stopService() throws Exception {
     }
 
-    // ServiceBase‚ÌJavaDoc
+    // ServiceBaseã®JavaDoc
     public void destroyService() throws Exception {
     }
 
-    // TickUnitAdjuster‚ÌJavaDoc
+    // TickUnitAdjusterã®JavaDoc
     public void adjust(XYPlot xyPlot) {
         ValueAxis axis = null;
         if (isDomain()) {
-            // ‰¡²
+            // æ¨ªè»¸
             axis = xyPlot.getDomainAxis(getAxisIndex());
         } else {
-            // c²
+            // ç¸¦è»¸
             axis = xyPlot.getRangeAxis(getAxisIndex());
         }
 
-        // –Ú·‚è’²ß
+        // ç›®ç››ã‚Šèª¿ç¯€
         adjust(axis);
     }
     
     /**
-     * ƒ†ƒjƒbƒgƒJƒEƒ“ƒg‚ğŒö–ñ”‚É‚æ‚Á‚Ä’²ß‚·‚éB<p>
+     * ãƒ¦ãƒ‹ãƒƒãƒˆã‚«ã‚¦ãƒ³ãƒˆã‚’å…¬ç´„æ•°ã«ã‚ˆã£ã¦èª¿ç¯€ã™ã‚‹ã€‚<p>
      * 
-     * @param axis ²
-     * @param unitCount ƒ†ƒjƒbƒgƒJƒEƒ“ƒg
-     * @return ƒ†ƒjƒbƒgƒJƒEƒ“ƒg
+     * @param axis è»¸
+     * @param unitCount ãƒ¦ãƒ‹ãƒƒãƒˆã‚«ã‚¦ãƒ³ãƒˆ
+     * @return ãƒ¦ãƒ‹ãƒƒãƒˆã‚«ã‚¦ãƒ³ãƒˆ
      */
     protected double adjustUnitCountByCommonDivisor(ValueAxis axis, double unitCount) {
 
@@ -182,9 +182,9 @@ public abstract class AbstractTickUnitAdjusterService
         }
         
         if (!Double.isNaN(commonDivisor)) {
-            // ƒ†ƒjƒbƒgƒJƒEƒ“ƒg‚ª–Ú·‚èŒö–ñ”‚Å‚Í‚È‚¢ê‡
+            // ãƒ¦ãƒ‹ãƒƒãƒˆã‚«ã‚¦ãƒ³ãƒˆãŒç›®ç››ã‚Šå…¬ç´„æ•°ã§ã¯ãªã„å ´åˆ
             if ((unitCount % commonDivisor) != 0d) {
-                // –Ú·‚èŒö–ñ”‚Å’²ß
+                // ç›®ç››ã‚Šå…¬ç´„æ•°ã§èª¿ç¯€
                 unitCount += commonDivisor - (unitCount % commonDivisor);
             }
         }
@@ -193,9 +193,9 @@ public abstract class AbstractTickUnitAdjusterService
     }
 
     /**
-     * w’è‚³‚ê‚½²‚Ì–Ú·‚è‚ğ’²ß‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸè»¸ã®ç›®ç››ã‚Šã‚’èª¿ç¯€ã™ã‚‹ã€‚<p>
      *
-     * @param axis ²
+     * @param axis è»¸
      */
     abstract protected void adjust(ValueAxis axis);
 

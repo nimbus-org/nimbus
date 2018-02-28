@@ -29,12 +29,12 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.ioc;
 import java.util.*;
 /**
- * EJBƒtƒ@ƒT[ƒh‚Ö“n‚·ƒ‹[ƒg‚ÌƒoƒŠƒ…[ƒIƒuƒWƒFƒNƒgƒNƒ‰ƒX<p>
+ * EJBãƒ•ã‚¡ã‚µãƒ¼ãƒ‰ã¸æ¸¡ã™ãƒ«ãƒ¼ãƒˆã®ãƒãƒªãƒ¥ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚¯ãƒ©ã‚¹<p>
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -46,25 +46,25 @@ public class FacadeValueImpl extends UnitOfWorkImpl
 	
     private static final long serialVersionUID = -6246161797805065625L;
     
-    /** ƒwƒbƒ_[î•ñHASH */
+    /** ãƒ˜ãƒƒãƒ€ãƒ¼æƒ…å ±HASH */
 	private HashMap mHeader ;
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	 */
 	public FacadeValueImpl(){
 		super() ;
 		this.mHeader = new HashMap() ;	
 	}
 	/*
-	 * ƒwƒbƒ_[î•ñ‚ÌƒQƒbƒ^[
+	 * ãƒ˜ãƒƒãƒ€ãƒ¼æƒ…å ±ã®ã‚²ãƒƒã‚¿ãƒ¼
 	 * @param key
-	 * @return ƒwƒbƒ_[î•ñ
+	 * @return ãƒ˜ãƒƒãƒ€ãƒ¼æƒ…å ±
 	 */
 	public Object getHeader(String key){
 		return this.mHeader.get(key) ;
 	}
 	/*
-	 * ƒwƒbƒ_[î•ñ‚ÌƒZƒbƒ^[
+	 * ãƒ˜ãƒƒãƒ€ãƒ¼æƒ…å ±ã®ã‚»ãƒƒã‚¿ãƒ¼
 	 * @param key
 	 * @param value
 	 */
@@ -72,8 +72,8 @@ public class FacadeValueImpl extends UnitOfWorkImpl
 		this.mHeader.put(key,value) ;
 	}
 	/*
-	 * ƒwƒbƒ_[ƒL[‚ÌƒQƒbƒ^[
-	 * @return@ƒL[î•ñ‚ÌSet
+	 * ãƒ˜ãƒƒãƒ€ãƒ¼ã‚­ãƒ¼ã®ã‚²ãƒƒã‚¿ãƒ¼
+	 * @returnã€€ã‚­ãƒ¼æƒ…å ±ã®Set
 	 */
 	public Set getHederKeys(){
 		return this.mHeader.keySet() ;

@@ -32,9 +32,9 @@
 package jp.ossc.nimbus.service.journal.editor;
 
 /**
- * ƒWƒƒ[ƒiƒ‹—pƒƒ\ƒbƒh–ß‚èî•ñB<p>
- * ƒƒ\ƒbƒh–ß‚èî•ñ‚ğƒWƒƒ[ƒiƒ‹‚Éæ‚è‚½‚¢‚ÉA‚±‚ÌƒIƒuƒWƒFƒNƒg‚ğ¶¬‚µ‚ÄAƒƒ\ƒbƒh‚Ì–ß‚èî•ñ‚ğŠi”[‚µA{@link jp.ossc.nimbus.service.journal.Journal#addInfo(String key, Object value)}‚Ìvalue‚É“n‚·B<br>
- * MethodReturnJournalData‚ÌƒGƒfƒBƒ^‚ÍA{@link MethodReturnJournalEditorService}‚ª—pˆÓ‚³‚ê‚Ä‚¢‚éB<br>
+ * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ç”¨ãƒ¡ã‚½ãƒƒãƒ‰æˆ»ã‚Šæƒ…å ±ã€‚<p>
+ * ãƒ¡ã‚½ãƒƒãƒ‰æˆ»ã‚Šæƒ…å ±ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã«å–ã‚ŠãŸã„æ™‚ã«ã€ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã—ã¦ã€ãƒ¡ã‚½ãƒƒãƒ‰ã®æˆ»ã‚Šæƒ…å ±ã‚’æ ¼ç´ã—ã€{@link jp.ossc.nimbus.service.journal.Journal#addInfo(String key, Object value)}ã®valueã«æ¸¡ã™ã€‚<br>
+ * MethodReturnJournalDataã®ã‚¨ãƒ‡ã‚£ã‚¿ã¯ã€{@link MethodReturnJournalEditorService}ãŒç”¨æ„ã•ã‚Œã¦ã„ã‚‹ã€‚<br>
  * 
  * @author M.Takata
  * @see MethodReturnJournalEditorService

@@ -44,7 +44,7 @@ import jp.ossc.nimbus.service.queue.DefaultQueueService;
 import jp.ossc.nimbus.service.queue.AsynchContext;
 
 /**
- * ¢‘ãB<p>
+ * ä¸–ä»£ã€‚<p>
  *
  * @author M.Takata
  */
@@ -171,11 +171,11 @@ public class DefaultGeneration implements Generation{
     }
     
     /**
-     * Ÿ¢‘ã‚ğ¶¬‚·‚éB<p>
+     * æ¬¡ä¸–ä»£ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param random —”ƒV[ƒh
-     * @param matchMaker ƒV[ƒh’‡l
-     * @return Ÿ¢‘ã
+     * @param random ä¹±æ•°ã‚·ãƒ¼ãƒ‰
+     * @param matchMaker ã‚·ãƒ¼ãƒ‰ä»²äºº
+     * @return æ¬¡ä¸–ä»£
      */
     public Generation next(Random random, SeedMatchMaker matchMaker){
         convergenceConditionResult = convergenceCondition.checkConvergence(this, convergenceConditionResult);
@@ -221,16 +221,16 @@ public class DefaultGeneration implements Generation{
     }
     
     /**
-     * ¶‘¶Ò‚½‚éÅ“K‰Ò‚ğæ“¾‚·‚éB<p>
+     * ç”Ÿå­˜è€…ãŸã‚‹æœ€é©å¿œè€…ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒV[ƒh
+     * @return ã‚·ãƒ¼ãƒ‰
      */
     public Seed getSurvivor(){
         return seeds == null || seeds.length == 0 ? null : seeds[0];
     }
     
     /**
-     * ƒV[ƒh‚Ì“K‰’lŒvZ‚ğs‚¤{@link QueueHandler}B<p>
+     * ã‚·ãƒ¼ãƒ‰ã®é©å¿œå€¤è¨ˆç®—ã‚’è¡Œã†{@link QueueHandler}ã€‚<p>
      *
      * @author M.Takata
      */
@@ -262,7 +262,7 @@ public class DefaultGeneration implements Generation{
     }
     
     /**
-     * ƒV[ƒh‚Ì“K‰’lƒ\[ƒg‚ğs‚¤ComparatorB<p>
+     * ã‚·ãƒ¼ãƒ‰ã®é©å¿œå€¤ã‚½ãƒ¼ãƒˆã‚’è¡Œã†Comparatorã€‚<p>
      *
      * @author M.Takata
      */

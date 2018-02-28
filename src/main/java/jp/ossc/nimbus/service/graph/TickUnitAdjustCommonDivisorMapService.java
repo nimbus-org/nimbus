@@ -105,7 +105,7 @@ implements TickUnitAdjustCommonDivisorMapServiceMBean
                     return ret.doubleValue();
                 }
             }catch(Exception e){
-                // ãNÇ±ÇËÇ¶Ç»Ç¢
+                // Ëµ∑„Åì„Çä„Åà„Å™„ÅÑ
                 e.printStackTrace();
                 continue;
             }

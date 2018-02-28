@@ -34,38 +34,38 @@ package jp.ossc.nimbus.service.msgresource;
 
 
 /**
- *	FactoryŒü‚¯ƒCƒ“ƒ^[ƒtƒFƒCƒX
+ *	Factoryå‘ã‘ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/11/05| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/11/05ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public interface MessageResourceOperator extends MessageResource {
 	/**
-	 * BLƒtƒ[ƒL[’Ç‰Áƒƒ\ƒbƒh
+	 * BLãƒ•ãƒ­ãƒ¼ã‚­ãƒ¼è¿½åŠ ãƒ¡ã‚½ãƒƒãƒ‰
 	 * @param key
 	 * @param value
 	 */
 	public void addBLFlowKey(String key,String value);
 	/**
-	 * ƒƒbƒZ[ƒWƒtƒH[ƒ}ƒbƒgİ’èƒƒ\ƒbƒh<BR>
-	 * kind = "send"‚ÌA‘—M<BR>
-	 * kind = "recv"‚ÌAóM<BR>
+	 * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆè¨­å®šãƒ¡ã‚½ãƒƒãƒ‰<BR>
+	 * kind = "send"ã®æ™‚ã€é€ä¿¡<BR>
+	 * kind = "recv"ã®æ™‚ã€å—ä¿¡<BR>
 	 */
 	public void setMessageFormat(MessageFormat messageFormat,String kind);
 	/**
-	 * ƒL[‘®«‚ÌƒZƒbƒ^[
+	 * ã‚­ãƒ¼å±æ€§ã®ã‚»ãƒƒã‚¿ãƒ¼
 	 */
 	public void setKey(String key);
 	/**
-	 * ƒL[‘®«‚ÌƒQƒbƒ^[
+	 * ã‚­ãƒ¼å±æ€§ã®ã‚²ãƒƒã‚¿ãƒ¼
 	 */
 	public String getKey();
 	/**
-	 * •\¦—pƒƒbƒZ[ƒW‚ÌƒZƒbƒ^[
+	 * è¡¨ç¤ºç”¨ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã‚»ãƒƒã‚¿ãƒ¼
 	 */
 	public void setDisplayMessage(String msg);
 	/**
-	 * •\¦—pƒƒbƒZ[ƒW‚ÌƒQƒbƒ^[
+	 * è¡¨ç¤ºç”¨ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã‚²ãƒƒã‚¿ãƒ¼
 	 *	
 	 */
 	public String display();

@@ -36,8 +36,8 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒLƒƒƒbƒVƒ…ƒTƒCƒY‚ ‚Ó‚êŒŸØƒtƒ@ƒNƒgƒŠB<p>
- * {@link CacheSizeOverflowValidatorService}‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚Å‚ ‚éB<br>
+ * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚µã‚¤ã‚ºã‚ãµã‚Œæ¤œè¨¼ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * {@link CacheSizeOverflowValidatorService}ã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  * @see CacheSizeOverflowValidatorService
@@ -52,10 +52,10 @@ public class CacheSizeOverflowValidatorFactoryService
          = new CacheSizeOverflowValidatorService();
     
     /**
-     * {@link CacheSizeOverflowValidatorService}ƒT[ƒrƒX‚ğ¶¬‚·‚éB<p>
+     * {@link CacheSizeOverflowValidatorService}ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return CacheSizeOverflowValidatorServiceƒT[ƒrƒX
-     * @exception Exception CacheSizeOverflowValidatorService‚Ì¶¬E‹N“®‚É¸”s‚µ‚½ê‡
+     * @return CacheSizeOverflowValidatorServiceã‚µãƒ¼ãƒ“ã‚¹
+     * @exception Exception CacheSizeOverflowValidatorServiceã®ç”Ÿæˆãƒ»èµ·å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
      * @see CacheSizeOverflowValidatorService
      */
     protected Service createServiceInstance() throws Exception{
@@ -65,7 +65,7 @@ public class CacheSizeOverflowValidatorFactoryService
         return validator;
     }
     
-    // CacheSizeOverflowValidatorFactoryServiceMBean‚ÌJavaDoc
+    // CacheSizeOverflowValidatorFactoryServiceMBeanã®JavaDoc
     public void setMaxSize(int size) throws IllegalArgumentException{
         template.setMaxSize(size);
         final Set instanceSet = getManagedInstanceSet();
@@ -77,12 +77,12 @@ public class CacheSizeOverflowValidatorFactoryService
         }
     }
     
-    // CacheSizeOverflowValidatorFactoryServiceMBean‚ÌJavaDoc
+    // CacheSizeOverflowValidatorFactoryServiceMBeanã®JavaDoc
     public int getMaxSize(){
         return template.getMaxSize();
     }
     
-    // CacheSizeOverflowValidatorFactoryServiceMBean‚ÌJavaDoc
+    // CacheSizeOverflowValidatorFactoryServiceMBeanã®JavaDoc
     public void reset(){
         final Set instanceSet = getManagedInstanceSet();
         final Iterator instances = instanceSet.iterator();

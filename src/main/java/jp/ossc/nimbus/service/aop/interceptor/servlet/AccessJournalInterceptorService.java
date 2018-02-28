@@ -44,8 +44,8 @@ import jp.ossc.nimbus.service.context.Context;
 import jp.ossc.nimbus.service.sequence.Sequence;
 
 /**
- * ƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹ƒCƒ“ƒ^[ƒZƒvƒ^B<p>
- * ˆÈ‰º‚ÉAƒT[ƒuƒŒƒbƒg‚Ö‚ÌƒAƒNƒZƒXƒWƒƒ[ƒiƒ‹‚ğƒRƒ“ƒ\[ƒ‹‚Éo—Í‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã€‚<p>
+ * ä»¥ä¸‹ã«ã€ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã¸ã®ã‚¢ã‚¯ã‚»ã‚¹ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã«å‡ºåŠ›ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -59,7 +59,7 @@ import jp.ossc.nimbus.service.sequence.Sequence;
  *             &lt;depends&gt;Journal&lt;/depends&gt;
  *         &lt;/service&gt;
  *         
- * &lt;!-- ˆÈ‰º‚ÍƒWƒƒ[ƒiƒ‹ƒT[ƒrƒX’è‹` --&gt;
+ * &lt;!-- ä»¥ä¸‹ã¯ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚µãƒ¼ãƒ“ã‚¹å®šç¾© --&gt;
  *         &lt;service name="Journal"
  *                  code="jp.ossc.nimbus.service.journal.ThreadManagedJournalService"&gt;
  *             &lt;attribute name="EditorFinderName"&gt;#JournalEditorFinder&lt;/attribute&gt;
@@ -256,190 +256,190 @@ public class AccessJournalInterceptorService
     protected boolean isOutputRequestSession = false;
     protected boolean isOutputResponseSession = false;
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public void setAccessJournalKey(String key){
         accessJournalKey = key;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public String getAccessJournalKey(){
         return accessJournalKey;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public void setRequestJournalKey(String key){
         requestJournalKey = key;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public String getRequestJournalKey(){
         return requestJournalKey;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public void setResponseJournalKey(String key){
         responseJournalKey = key;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public String getResponseJournalKey(){
         return responseJournalKey;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public void setServletRequestJournalKey(String key){
         servletRequestJournalKey = key;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public String getServletRequestJournalKey(){
         return servletRequestJournalKey;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public void setServletResponseJournalKey(String key){
         servletResponseJournalKey = key;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public String getServletResponseJournalKey(){
         return servletResponseJournalKey;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public void setHttpSessionJournalKey(String key){
         httpSessionJournalKey = key;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public String getHttpSessionJournalKey(){
         return httpSessionJournalKey;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public void setJournalServiceName(ServiceName name){
         journalServiceName = name;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public ServiceName getJournalServiceName(){
         return journalServiceName;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public void setAccessEditorFinderServiceName(ServiceName name){
         accessEditorFinderServiceName = name;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public ServiceName getAccessEditorFinderServiceName(){
         return accessEditorFinderServiceName;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public void setRequestEditorFinderServiceName(ServiceName name){
         requestEditorFinderServiceName = name;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public ServiceName getRequestEditorFinderServiceName(){
         return requestEditorFinderServiceName;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public void setResponseEditorFinderServiceName(ServiceName name){
         responseEditorFinderServiceName = name;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public ServiceName getResponseEditorFinderServiceName(){
         return responseEditorFinderServiceName;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public void setSequenceServiceName(ServiceName name){
         sequenceServiceName = name;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public ServiceName getSequenceServiceName(){
         return sequenceServiceName;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public void setContextServiceName(ServiceName name){
         contextServiceName = name;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public ServiceName getContextServiceName(){
         return contextServiceName;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public void setResponseWrap(boolean isWrap){
         isResponseWrap = isWrap;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public boolean isResponseWrap(){
         return isResponseWrap;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public void setResponseBufferedOutput(boolean isBuffered){
         isResponseBufferedOutput = isBuffered;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public boolean isResponseBufferedOutput(){
         return isResponseBufferedOutput;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public void setBushingRequestBlock(boolean isBlock){
         isBushingRequestBlock = isBlock;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public boolean isBushingRequestBlock(){
         return isBushingRequestBlock;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public void setRequestIDKey(String key){
         requestIdKey = key;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public String getRequestIDKey(){
         return requestIdKey;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public void setOutputRequestSession(boolean isOutput){
         isOutputRequestSession = isOutput;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public boolean isOutputRequestSession(){
         return isOutputRequestSession;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public void setOutputResponseSession(boolean isOutput){
         isOutputResponseSession = isOutput;
     }
     
-    // AccessJournalInterceptorServiceMBean‚ÌJavaDoc
+    // AccessJournalInterceptorServiceMBeanã®JavaDoc
     public boolean isOutputResponseSession(){
         return isOutputResponseSession;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJn‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(journalServiceName == null){
@@ -488,13 +488,13 @@ public class AccessJournalInterceptorService
     }
     
     /**
-     * ƒŠƒNƒGƒXƒg‚ÌƒWƒƒ[ƒiƒ‹‚ğo—Í‚µ‚ÄAŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚µAƒŒƒXƒ|ƒ“ƒX‚ÌƒWƒƒ[ƒiƒ‹‚ğo—Í‚·‚éB<p>
-     * ƒT[ƒrƒX‚ªŠJn‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‰½‚à‚¹‚¸‚ÉŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<br>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’å‡ºåŠ›ã—ã¦ã€æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã—ã€ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’å‡ºåŠ›ã™ã‚‹ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãŒé–‹å§‹ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ä½•ã‚‚ã›ãšã«æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param chain Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·‚½‚ß‚Ìƒ`ƒF[ƒ“
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable ŒÄ‚Ño‚µæ‚Å—áŠO‚ª”­¶‚µ‚½ê‡A‚Ü‚½‚Í‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚Å”CˆÓ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡B’A‚µA–{—ˆŒÄ‚Ño‚³‚ê‚éˆ—‚ªthrow‚µ‚È‚¢RuntimeExceptionˆÈŠO‚Ì—áŠO‚ğthrow‚µ‚Ä‚àAŒÄ‚Ño‚µŒ³‚É‚Í“`”d‚³‚ê‚È‚¢B
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param chain æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ãŸã‚ã®ãƒã‚§ãƒ¼ãƒ³
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable å‘¼ã³å‡ºã—å…ˆã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€ã¾ãŸã¯ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ä»»æ„ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€‚ä½†ã—ã€æœ¬æ¥å‘¼ã³å‡ºã•ã‚Œã‚‹å‡¦ç†ãŒthrowã—ãªã„RuntimeExceptionä»¥å¤–ã®ä¾‹å¤–ã‚’throwã—ã¦ã‚‚ã€å‘¼ã³å‡ºã—å…ƒã«ã¯ä¼æ’­ã•ã‚Œãªã„ã€‚
      */
     public Object invokeFilter(
         ServletFilterInvocationContext context,
@@ -510,7 +510,7 @@ public class AccessJournalInterceptorService
             final String recorded
                  = (String)request.getAttribute(ACCESS_JOURNAL_RECORDED);
             if(recorded != null){
-                // ƒWƒƒ[ƒiƒ‹‹L˜^Ï‚İ‚È‚Ì‚Å‚»‚Ì‚Ü‚ÜŒã‘±ˆ—Às
+                // ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«è¨˜éŒ²æ¸ˆã¿ãªã®ã§ãã®ã¾ã¾å¾Œç¶šå‡¦ç†å®Ÿè¡Œ
                 return chain.invokeNext(context);
             }
             

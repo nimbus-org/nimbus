@@ -34,26 +34,26 @@ package jp.ossc.nimbus.service.resource;
 import org.apache.commons.pool.ObjectPool;
 
 /**
- * {@link PooledResourceFactoryService}‚Åƒv[ƒ‹‰Â”\‚È{@link TransactionResource}‚Ì’ŠÛƒNƒ‰ƒXB<p>
+ * {@link PooledResourceFactoryService}ã§ãƒ—ãƒ¼ãƒ«å¯èƒ½ãª{@link TransactionResource}ã®æŠ½è±¡ã‚¯ãƒ©ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
 public abstract class PooledTransactionResource implements TransactionResource{
     
     /**
-     * ƒv[ƒ‹B<p>
+     * ãƒ—ãƒ¼ãƒ«ã€‚<p>
      */
     protected ObjectPool pool;
     
     /**
-     * ƒv[ƒ‹‚©‚çæ“¾‚µ‚½ƒŠƒ\[ƒXB<p>
+     * ãƒ—ãƒ¼ãƒ«ã‹ã‚‰å–å¾—ã—ãŸãƒªã‚½ãƒ¼ã‚¹ã€‚<p>
      */
     protected Object resource;
     
     /**
-     * ˆø”‚Åw’è‚³‚ê‚½ƒv[ƒ‹‚©‚çƒŠƒ\[ƒX‚ğæ“¾‚µ‚ÄAƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * å¼•æ•°ã§æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ¼ãƒ«ã‹ã‚‰ãƒªã‚½ãƒ¼ã‚¹ã‚’å–å¾—ã—ã¦ã€ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param pool ƒv[ƒ‹
+     * @param pool ãƒ—ãƒ¼ãƒ«
      */
     public PooledTransactionResource(ObjectPool pool) throws Exception{
         this.pool = pool;
@@ -61,9 +61,9 @@ public abstract class PooledTransactionResource implements TransactionResource{
     }
     
     /**
-     * ƒŠƒ\[ƒX‚ğƒv[ƒ‹‚É•Ô‚·B<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ã‚’ãƒ—ãƒ¼ãƒ«ã«è¿”ã™ã€‚<p>
      *
-     * @exception Exception ƒŠƒ\[ƒX‚ğƒv[ƒ‹‚É•Ô‚·ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ãƒªã‚½ãƒ¼ã‚¹ã‚’ãƒ—ãƒ¼ãƒ«ã«è¿”ã™å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void close() throws Exception{
         if(pool != null && resource != null){
@@ -74,9 +74,9 @@ public abstract class PooledTransactionResource implements TransactionResource{
     }
     
     /**
-     * ƒv[ƒ‹‚©‚çæ“¾‚µ‚½ƒŠƒ\[ƒX‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ¼ãƒ«ã‹ã‚‰å–å¾—ã—ãŸãƒªã‚½ãƒ¼ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒv[ƒ‹‚©‚çæ“¾‚µ‚½ƒŠƒ\[ƒX
+     * @return ãƒ—ãƒ¼ãƒ«ã‹ã‚‰å–å¾—ã—ãŸãƒªã‚½ãƒ¼ã‚¹
      */
     public Object getObject(){
         return resource;

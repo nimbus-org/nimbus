@@ -29,11 +29,11 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.service.aspect;
 /**
- * ƒCƒ“ƒ^[ƒZƒvƒ^[’è‹`—áŠOƒNƒ‰ƒX<p>
+ * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼å®šç¾©ä¾‹å¤–ã‚¯ãƒ©ã‚¹<p>
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -43,14 +43,14 @@ public class InvalidConfigurationException extends Exception {
     private static final long serialVersionUID = 5367984406418106381L;
     
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	 */
 	public InvalidConfigurationException() {
 		super();
 	}
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	 * @param arg0
 	 */
 	public InvalidConfigurationException(String arg0) {
@@ -58,7 +58,7 @@ public class InvalidConfigurationException extends Exception {
 	}
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	 * @param arg0
 	 */
 	public InvalidConfigurationException(Throwable arg0) {
@@ -66,7 +66,7 @@ public class InvalidConfigurationException extends Exception {
 	}
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	 * @param arg0
 	 * @param arg1
 	 */

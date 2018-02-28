@@ -32,8 +32,8 @@
 package jp.ossc.nimbus.beans.dataset;
 
 /**
- * ƒvƒƒpƒeƒBƒXƒL[ƒ}ƒ`ƒFƒbƒN—áŠOB<p>
- * ƒvƒƒpƒeƒBƒXƒL[ƒ}’è‹`‚É‡’v‚µ‚Ä‚¢‚È‚¢ê‡‚Éthrow‚³‚ê‚éB<br>
+ * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒãƒã‚§ãƒƒã‚¯ä¾‹å¤–ã€‚<p>
+ * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¹ã‚­ãƒ¼ãƒå®šç¾©ã«åˆè‡´ã—ã¦ã„ãªã„å ´åˆã«throwã•ã‚Œã‚‹ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -42,19 +42,19 @@ public class PropertySchemaCheckException extends PropertySetException{
     private static final long serialVersionUID = 110882026376282168L;
     
     /**
-     * ‹ó‚Ì—áŠO‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param propertySchema ƒ`ƒFƒbƒN‚µ‚½ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}
+     * @param propertySchema ãƒã‚§ãƒƒã‚¯ã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒ
      */
     public PropertySchemaCheckException(PropertySchema propertySchema){
         super(propertySchema);
     }
     
     /**
-     * ƒƒbƒZ[ƒW‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param propertySchema ƒ`ƒFƒbƒN‚µ‚½ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}
-     * @param message ƒƒbƒZ[ƒW
+     * @param propertySchema ãƒã‚§ãƒƒã‚¯ã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒ
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public PropertySchemaCheckException(
         PropertySchema propertySchema,
@@ -64,11 +64,11 @@ public class PropertySchemaCheckException extends PropertySetException{
     }
     
     /**
-     * ƒƒbƒZ[ƒW‚ÆŒ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¨åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param propertySchema ƒ`ƒFƒbƒN‚µ‚½ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}
-     * @param message ƒƒbƒZ[ƒW
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param propertySchema ãƒã‚§ãƒƒã‚¯ã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒ
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public PropertySchemaCheckException(
         PropertySchema propertySchema,
@@ -79,10 +79,10 @@ public class PropertySchemaCheckException extends PropertySetException{
     }
     
     /**
-     * Œ´ˆö‚Æ‚È‚Á‚½—áŠO‚ğ‚Á‚½—áŠO‚ğ¶¬‚·‚éB<p>
+     * åŸå› ã¨ãªã£ãŸä¾‹å¤–ã‚’æŒã£ãŸä¾‹å¤–ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param propertySchema ƒ`ƒFƒbƒN‚µ‚½ƒvƒƒpƒeƒB‚ÌƒXƒL[ƒ}
-     * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+     * @param propertySchema ãƒã‚§ãƒƒã‚¯ã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚­ãƒ¼ãƒ
+     * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
      */
     public PropertySchemaCheckException(
         PropertySchema propertySchema,

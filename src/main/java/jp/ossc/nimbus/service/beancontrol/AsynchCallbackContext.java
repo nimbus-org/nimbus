@@ -36,7 +36,7 @@ import java.util.*;
 import jp.ossc.nimbus.service.context.Context;
 
 /**
- * 業務フロー非同期実行コールバックコンテキスト。<p>
+ * 讌ｭ蜍吶ヵ繝ｭ繝ｼ髱槫酔譛溷ｮ溯｡後さ繝ｼ繝ｫ繝舌ャ繧ｯ繧ｳ繝ｳ繝�繧ｭ繧ｹ繝医�<p>
  *
  * @author M.Takata
  */

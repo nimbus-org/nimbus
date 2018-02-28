@@ -36,7 +36,7 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link NoCalledMethodMetricsInterceptorService}��MBean�C���^�t�F�[�X<p>
+ * {@link NoCalledMethodMetricsInterceptorService}のMBeanインタフェース<p>
  * 
  * @author M.Takata
  * @see NoCalledMethodMetricsInterceptorService
@@ -45,167 +45,167 @@ public interface NoCalledMethodMetricsInterceptorServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * ���v�����Ώۂ̃N���X�̃N���X�C���q���w�肷��B<p>
-     * �����Ŏw�肳�ꂽ�N���X�C���q�̃N���X�����v�����ΏۂƂȂ�B�w�肵�Ȃ��ꍇ�́A�N���X�C���q�͌��肳��Ȃ��B<br>
-     * �C���q��ے肷��ꍇ�́A�e�C���q�̑O��"!"��t�^���邱�ƁB
+     * 統計を取る対象のクラスのクラス修飾子を指定する。<p>
+     * ここで指定されたクラス修飾子のクラスが統計を取る対象となる。指定しない場合は、クラス修飾子は限定されない。<br>
+     * 修飾子を否定する場合は、各修飾子の前に"!"を付与すること。
      *
-     * @param modifiers �N���X�C���q������
+     * @param modifiers クラス修飾子文字列
      */
     public void setTargetClassModifiers(String modifiers);
     
     /**
-     * ���v�����Ώۂ̃N���X�̃N���X�C���q���擾����B<p>
+     * 統計を取る対象のクラスのクラス修飾子を取得する。<p>
      *
-     * @return �N���X�C���q������
+     * @return クラス修飾子文字列
      */
     public String getTargetClassModifiers();
     
     /**
-     * ���v�����Ώۂ̃N���X�����w�肷��B<p>
-     * �����Ŏw�肳�ꂽ�N���X���̃N���X�����v�����ΏۂƂȂ�B�w�肵�Ȃ��ꍇ�́A�N���X���͌��肳��Ȃ��B�܂��A���K�\�����w�肷�鎖���\�ł���B
+     * 統計を取る対象のクラス名を指定する。<p>
+     * ここで指定されたクラス名のクラスが統計を取る対象となる。指定しない場合は、クラス名は限定されない。また、正規表現を指定する事も可能である。
      *
-     * @param name �p�b�P�[�W�����܂ފ��S�C���N���X���B���K�\�����B
+     * @param name パッケージ名を含む完全修飾クラス名。正規表現も可。
      */
     public void setTargetClassName(String name);
     
     /**
-     * ���v�����Ώۂ̃N���X�����擾����B<p>
+     * 統計を取る対象のクラス名を取得する。<p>
      *
-     * @return �p�b�P�[�W�����܂ފ��S�C���N���X���B���K�\�����B
+     * @return パッケージ名を含む完全修飾クラス名。正規表現も可。
      */
     public String getTargetClassName();
     
     /**
-     * ���v�����Ώۂ̃C���X�^���X�̃N���X�����w�肷��B<p>
-     * �����Ŏw�肳�ꂽ�N���X���̃C���X�^���X�����v�����ΏۂƂȂ�B�w�肵�Ȃ��ꍇ�́A�C���X�^���X�͌��肳��Ȃ��B
+     * 統計を取る対象のインスタンスのクラス名を指定する。<p>
+     * ここで指定されたクラス名のインスタンスが統計を取る対象となる。指定しない場合は、インスタンスは限定されない。
      *
-     * @param name �p�b�P�[�W�����܂ފ��S�C���N���X��
+     * @param name パッケージ名を含む完全修飾クラス名
      */
     public void setTargetInstanceClassName(String name);
     
     /**
-     * ���v�����Ώۂ̃C���X�^���X�̃N���X�����擾����B<p>
+     * 統計を取る対象のインスタンスのクラス名を取得する。<p>
      *
-     * @return �p�b�P�[�W�����܂ފ��S�C���N���X���B
+     * @return パッケージ名を含む完全修飾クラス名。
      */
     public String getTargetInstanceClassName();
     
     /**
-     * ���v�����Ώۂ̃��\�b�h�̃��\�b�h�C���q���w�肷��B<p>
-     * �����Ŏw�肳�ꂽ���\�b�h�C���q�̃��\�b�h�����v�����ΏۂƂȂ�B�w�肵�Ȃ��ꍇ�́A���\�b�h�C���q�͌��肳��Ȃ��B<br>
-     * �C���q��ے肷��ꍇ�́A�e�C���q�̑O��"!"��t�^���邱�ƁB
+     * 統計を取る対象のメソッドのメソッド修飾子を指定する。<p>
+     * ここで指定されたメソッド修飾子のメソッドが統計を取る対象となる。指定しない場合は、メソッド修飾子は限定されない。<br>
+     * 修飾子を否定する場合は、各修飾子の前に"!"を付与すること。
      *
-     * @param modifiers ���\�b�h�C���q������
+     * @param modifiers メソッド修飾子文字列
      */
     public void setTargetMethodModifiers(String modifiers);
     
     /**
-     * ���v�����Ώۂ̃��\�b�h�̃��\�b�h�C���q���擾����B<p>
+     * 統計を取る対象のメソッドのメソッド修飾子を取得する。<p>
      *
-     * @return ���\�b�h�C���q������
+     * @return メソッド修飾子文字列
      */
     public String getTargetMethodModifiers();
     
     /**
-     * ���v�����Ώۂ̃��\�b�h�����w�肷��B<p>
-     * �����Ŏw�肳�ꂽ���\�b�h���̃��\�b�h�����v�����ΏۂƂȂ�B�w�肵�Ȃ��ꍇ�́A���\�b�h���͌��肳��Ȃ��B�܂��A���K�\�����w�肷�鎖���\�ł���B
+     * 統計を取る対象のメソッド名を指定する。<p>
+     * ここで指定されたメソッド名のメソッドが統計を取る対象となる。指定しない場合は、メソッド名は限定されない。また、正規表現を指定する事も可能である。
      *
-     * @param name ���\�b�h���B���K�\�����B
+     * @param name メソッド名。正規表現も可。
      */
     public void setTargetMethodName(String name);
     
     /**
-     * ���v�����Ώۂ̃��\�b�h�����擾����B<p>
+     * 統計を取る対象のメソッド名を取得する。<p>
      *
-     * @return ���\�b�h���B���K�\�����B
+     * @return メソッド名。正規表現も可。
      */
     public String getTargetMethodName();
     
     /**
-     * ���v�����Ώۂ̃��\�b�h�̈����̌^��\���N���X�����w�肷��B<p>
-     * �����Ŏw�肳�ꂽ�����^�������\�b�h�����v�����ΏۂƂȂ�B�w�肵�Ȃ��ꍇ�́A�����^�͌��肳��Ȃ��B�܂��A���K�\�����w�肷�鎖���\�ł���B
+     * 統計を取る対象のメソッドの引数の型を表すクラス名を指定する。<p>
+     * ここで指定された引数型を持つメソッドが統計を取る対象となる。指定しない場合は、引数型は限定されない。また、正規表現を指定する事も可能である。
      *
-     * @param paramTypes ���\�b�h�̈����̌^��\���N���X���̔z��B���K�\�����B
+     * @param paramTypes メソッドの引数の型を表すクラス名の配列。正規表現も可。
      */
     public void setTargetParameterTypes(String[] paramTypes);
     
     /**
-     * ���v�����Ώۂ̃��\�b�h�̈����̌^��\���N���X�����擾����B<p>
+     * 統計を取る対象のメソッドの引数の型を表すクラス名を取得する。<p>
      *
-     * @return ���\�b�h�̈����̌^��\���N���X���̔z��B���K�\�����B
+     * @return メソッドの引数の型を表すクラス名の配列。正規表現も可。
      */
     public String[] getTargetParameterTypes();
     
     /**
-     * ���v�����Ώۂ̃N���X�ɐ錾����Ă��郁�\�b�h������Ώۂɂ��邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Afalse�ŁA�p�����ꂽ���\�b�h���Ώۂɂ���
+     * 統計を取る対象のクラスに宣言されているメソッドだけを対象にするかどうかを設定する。<p>
+     * デフォルトは、falseで、継承されたメソッドも対象にする
      *
-     * @param isDeclaring ���v�����Ώۂ̃N���X�ɐ錾����Ă��郁�\�b�h������Ώۂɂ���ꍇ�Atrue
+     * @param isDeclaring 統計を取る対象のクラスに宣言されているメソッドだけを対象にする場合、true
      */
     public void setDeclaringMethod(boolean isDeclaring);
     
     /**
-     * ���v�����Ώۂ̃N���X�ɐ錾����Ă��郁�\�b�h������Ώۂɂ��邩�ǂ����𔻒肷��B<p>
+     * 統計を取る対象のクラスに宣言されているメソッドだけを対象にするかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A���v�����Ώۂ̃N���X�ɐ錾����Ă��郁�\�b�h������Ώۂɂ���
+     * @return trueの場合、統計を取る対象のクラスに宣言されているメソッドだけを対象にする
      */
     public boolean isDeclaringMethod();
     
     /**
-     * JVM�̃N���X�p�X�ɉ����āA�N���X�p�X��ǉ�����B<p>
-     * ���΃p�X���w�肵���ꍇ�́A���s�p�X����̑��΃p�X�ɉ����āA���̃T�[�r�X����`����Ă���T�[�r�X��`�t�@�C������̑��΃p�X�ɂ��p�X�������s���B<br>
+     * JVMのクラスパスに加えて、クラスパスを追加する。<p>
+     * 相対パスを指定した場合は、実行パスからの相対パスに加えて、このサービスが定義されているサービス定義ファイルからの相対パスによるパス検索を行う。<br>
      *
-     * @param paths �N���X�p�X�̔z��
+     * @param paths クラスパスの配列
      */
     public void setClassPaths(String[] paths);
     
     /**
-     * JVM�̃N���X�p�X�ɉ������N���X�p�X���擾����B<p>
+     * JVMのクラスパスに加えたクラスパスを取得する。<p>
      *
-     * @return �N���X�p�X�̔z��
+     * @return クラスパスの配列
      */
     public String[] getClassPaths();
     
     /**
-     * ���v�����Ώۂ̃��\�b�h�W�����擾����B<p>
+     * 統計を取る対象のメソッド集合を取得する。<p>
      *
-     * @return ���v�����Ώۂ�Method�I�u�W�F�N�g�̏W��
+     * @return 統計を取る対象のMethodオブジェクトの集合
      */
     public Set getTargetMethodSet();
     
     /**
-     * ���v�����Ώۂ̃��\�b�h�ꗗ��������擾����B<p>
+     * 統計を取る対象のメソッド一覧文字列を取得する。<p>
      *
-     * @return ���v�����Ώۂ̃��\�b�h�ꗗ������
+     * @return 統計を取る対象のメソッド一覧文字列
      */
     public String getTargetMethodString();
     
     /**
-     * ���v���擾�������ʁA�Ώۂ̃��\�b�h�̂����ŌĂяo����Ă��Ȃ��������\�b�h�W�����擾����B<p>
+     * 統計を取得した結果、対象のメソッドのうちで呼び出されていなかったメソッド集合を取得する。<p>
      *
-     * @return ���v�Ώۂ̃��\�b�h�̂����ŌĂяo����Ă��Ȃ��������\�b�h�W��
+     * @return 統計対象のメソッドのうちで呼び出されていなかったメソッド集合
      */
     public Set getNoCalledMethodSet();
     
     /**
-     * ���v���擾�������ʁA�Ώۂ̃��\�b�h�̂����ŌĂяo����Ă��Ȃ��������\�b�h�ꗗ��������擾����B<p>
+     * 統計を取得した結果、対象のメソッドのうちで呼び出されていなかったメソッド一覧文字列を取得する。<p>
      *
-     * @return ���v�Ώۂ̃��\�b�h�̂����ŌĂяo����Ă��Ȃ��������\�b�h�ꗗ������
+     * @return 統計対象のメソッドのうちで呼び出されていなかったメソッド一覧文字列
      */
     public String getNoCalledMethodString();
     
     /**
-     * ���v���ʂ��T�[�r�X�̒�~���ɕW���o�͂ɏo�͂��邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Atrue�B<br>
+     * 統計結果をサービスの停止時に標準出力に出力するかどうかを設定する。<p>
+     * デフォルトは、true。<br>
      *
-     * @param isOutput �o�͂���ꍇ�́Atrue
+     * @param isOutput 出力する場合は、true
      */
     public void setOutputSystemOut(boolean isOutput);
     
     /**
-     * ���v���ʂ��T�[�r�X�̒�~���ɕW���o�͂ɏo�͂��邩�ǂ����𔻒肷��B<p>
+     * 統計結果をサービスの停止時に標準出力に出力するかどうかを判定する。<p>
      *
-     * @return true�̏ꍇ�A�o�͂���
+     * @return trueの場合、出力する
      */
     public boolean isOutputSystemOut();
 }

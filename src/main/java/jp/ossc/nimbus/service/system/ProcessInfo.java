@@ -32,72 +32,72 @@
 package jp.ossc.nimbus.service.system;
 
 /**
- * ƒvƒƒZƒXî•ñB<p>
+ * ãƒ—ãƒ­ã‚»ã‚¹æƒ…å ±ã€‚<p>
  *
  * @author M.Takata
  */
 public interface ProcessInfo{
     
     /**
-     * ƒvƒƒZƒXID‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚»ã‚¹IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒZƒXID
+     * @return ãƒ—ãƒ­ã‚»ã‚¹ID
      */
     public int getPid();
     
     /**
-     * eƒvƒƒZƒXID‚ğæ“¾‚·‚éB<p>
+     * è¦ªãƒ—ãƒ­ã‚»ã‚¹IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return eƒvƒƒZƒXID
+     * @return è¦ªãƒ—ãƒ­ã‚»ã‚¹ID
      */
     public int getParentPid();
     
     /**
-     * ƒvƒƒZƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚»ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒvƒƒZƒX–¼
+     * @return ãƒ—ãƒ­ã‚»ã‚¹å
      */
     public String getName();
     
     /**
-     * ÀsƒRƒ}ƒ“ƒh‚ğæ“¾‚·‚éB<p>
+     * å®Ÿè¡Œã‚³ãƒãƒ³ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ÀsƒRƒ}ƒ“ƒh
+     * @return å®Ÿè¡Œã‚³ãƒãƒ³ãƒ‰
      */
     public String getCommand();
     
     /**
-     * ƒI[ƒi[‚ğæ“¾‚·‚éB<p>
+     * ã‚ªãƒ¼ãƒŠãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒI[ƒi[
+     * @return ã‚ªãƒ¼ãƒŠãƒ¼
      */
     public String getOwner();
     
     /**
-     * ƒ†[ƒUƒvƒƒZƒX‚ÌCPUg—pŠÔ‚ğæ“¾‚·‚éB<p>
+     * ãƒ¦ãƒ¼ã‚¶ãƒ—ãƒ­ã‚»ã‚¹ã®CPUä½¿ç”¨æ™‚é–“ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return CPUg—pŠÔ[ms]
+     * @return CPUä½¿ç”¨æ™‚é–“[ms]
      */
     public long getUserTimeMillis();
     
     /**
-     * ƒVƒXƒeƒ€‚ÌCPUg—pŠÔ‚ğæ“¾‚·‚éB<p>
+     * ã‚·ã‚¹ãƒ†ãƒ ã®CPUä½¿ç”¨æ™‚é–“ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return CPUg—pŠÔ[ms]
+     * @return CPUä½¿ç”¨æ™‚é–“[ms]
      */
     public long getSystemTimeMillis();
     
     /**
-     * Œ»İ‚Ìƒƒ‚ƒŠg—p—Ê‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨ã®ãƒ¡ãƒ¢ãƒªä½¿ç”¨é‡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒ‚ƒŠg—p—Ê[byte]
+     * @return ãƒ¡ãƒ¢ãƒªä½¿ç”¨é‡[byte]
      */
     public long getCurrentMemoryBytes();
     
     /**
-     * Œ»İ‚Ü‚Å‚Ì‘ƒƒ‚ƒŠg—p—Ê‚ğæ“¾‚·‚éB<p>
+     * ç¾åœ¨ã¾ã§ã®ç·ãƒ¡ãƒ¢ãƒªä½¿ç”¨é‡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒƒ‚ƒŠg—p—Ê[byte]
+     * @return ãƒ¡ãƒ¢ãƒªä½¿ç”¨é‡[byte]
      */
     public long getTotalMemoryBytes();
 }

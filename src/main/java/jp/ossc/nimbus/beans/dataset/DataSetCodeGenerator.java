@@ -44,12 +44,12 @@ import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.core.DeploymentException;
 
 /**
- * ƒf[ƒ^ƒZƒbƒgƒ\[ƒXƒR[ƒh¶¬B<p>
- * ƒf[ƒ^ƒZƒbƒgAƒŒƒR[ƒhƒŠƒXƒgAƒŒƒR[ƒh‚È‚Ç‚Ì”Ä—pBean‚ğŒp³‚µ‚½ƒRƒ“ƒNƒŠ[ƒg‚ÈBean‚Ìƒ\[ƒX‚ğ¶¬‚·‚éB<br>
- * ¶¬‚·‚éƒ\[ƒXƒR[ƒh‚Ì’è‹`‚ÍAƒf[ƒ^ƒZƒbƒg’è‹`XMLƒtƒ@ƒCƒ‹‚Å’è‹`‚µ‚Ü‚·B<br>
+ * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ç”Ÿæˆã€‚<p>
+ * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã€ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã€ãƒ¬ã‚³ãƒ¼ãƒ‰ãªã©ã®æ±ç”¨Beanã‚’ç¶™æ‰¿ã—ãŸã‚³ãƒ³ã‚¯ãƒªãƒ¼ãƒˆãªBeanã®ã‚½ãƒ¼ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<br>
+ * ç”Ÿæˆã™ã‚‹ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã®å®šç¾©ã¯ã€ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå®šç¾©XMLãƒ•ã‚¡ã‚¤ãƒ«ã§å®šç¾©ã—ã¾ã™ã€‚<br>
  *
  * @author M.Takata
- * @see <a href="dataset_1_0.dtd">ƒf[ƒ^ƒZƒbƒg’è‹`ƒtƒ@ƒCƒ‹DTD</a>
+ * @see <a href="dataset_1_0.dtd">ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«DTD</a>
  */
 public class DataSetCodeGenerator{
     
@@ -186,7 +186,7 @@ public class DataSetCodeGenerator{
     }
     
     /**
-     * ƒf[ƒ^ƒZƒbƒgW‡’è‹`ƒf[ƒ^B<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆé›†åˆå®šç¾©ãƒ‡ãƒ¼ã‚¿ã€‚<p>
      *
      * @author M.Takata
      */
@@ -389,7 +389,7 @@ public class DataSetCodeGenerator{
     }
     
     /**
-     * ƒvƒƒpƒeƒB’è‹`ƒf[ƒ^B<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å®šç¾©ãƒ‡ãƒ¼ã‚¿ã€‚<p>
      *
      * @author M.Takata
      */
@@ -408,7 +408,7 @@ public class DataSetCodeGenerator{
     }
     
     /**
-     * ƒ\[ƒX¶¬B<p>
+     * ã‚½ãƒ¼ã‚¹ç”Ÿæˆã€‚<p>
      *
      * @author M.Takata
      */
@@ -418,7 +418,7 @@ public class DataSetCodeGenerator{
     }
     
     /**
-     * ƒŒƒR[ƒh’è‹`ƒf[ƒ^B<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰å®šç¾©ãƒ‡ãƒ¼ã‚¿ã€‚<p>
      *
      * @author M.Takata
      */
@@ -645,7 +645,7 @@ public class DataSetCodeGenerator{
     }
     
     /**
-     * ƒwƒbƒ_’è‹`ƒf[ƒ^B<p>
+     * ãƒ˜ãƒƒãƒ€å®šç¾©ãƒ‡ãƒ¼ã‚¿ã€‚<p>
      *
      * @author M.Takata
      */
@@ -862,7 +862,7 @@ public class DataSetCodeGenerator{
     }
     
     /**
-     * ƒŒƒR[ƒhƒŠƒXƒg’è‹`ƒf[ƒ^B<p>
+     * ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆå®šç¾©ãƒ‡ãƒ¼ã‚¿ã€‚<p>
      *
      * @author M.Takata
      */
@@ -1056,7 +1056,7 @@ public class DataSetCodeGenerator{
     }
     
     /**
-     * ƒlƒXƒgƒŒƒR[ƒhƒŠƒXƒg’è‹`ƒf[ƒ^B<p>
+     * ãƒã‚¹ãƒˆãƒ¬ã‚³ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆå®šç¾©ãƒ‡ãƒ¼ã‚¿ã€‚<p>
      *
      * @author M.Takata
      */
@@ -1109,7 +1109,7 @@ public class DataSetCodeGenerator{
     }
     
     /**
-     * ƒlƒXƒgƒŒƒR[ƒh’è‹`ƒf[ƒ^B<p>
+     * ãƒã‚¹ãƒˆãƒ¬ã‚³ãƒ¼ãƒ‰å®šç¾©ãƒ‡ãƒ¼ã‚¿ã€‚<p>
      *
      * @author M.Takata
      */
@@ -1162,7 +1162,7 @@ public class DataSetCodeGenerator{
     }
     
     /**
-     * ƒf[ƒ^ƒZƒbƒg’è‹`ƒf[ƒ^B<p>
+     * ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆå®šç¾©ãƒ‡ãƒ¼ã‚¿ã€‚<p>
      *
      * @author M.Takata
      */
@@ -1595,7 +1595,7 @@ public class DataSetCodeGenerator{
     }
     
     /**
-     * g—p•û–@‚ğ•W€o—Í‚É•\¦‚·‚éB<p>
+     * ä½¿ç”¨æ–¹æ³•ã‚’æ¨™æº–å‡ºåŠ›ã«è¡¨ç¤ºã™ã‚‹ã€‚<p>
      */
     private static void usage(){
         try{
@@ -1607,18 +1607,18 @@ public class DataSetCodeGenerator{
         }
     }
     /**
-     * ƒŠƒ\[ƒX‚ğ•¶š—ñ‚Æ‚µ‚Ä“Ç‚İ‚ŞB<p>
+     * ãƒªã‚½ãƒ¼ã‚¹ã‚’æ–‡å­—åˆ—ã¨ã—ã¦èª­ã¿è¾¼ã‚€ã€‚<p>
      *
-     * @param name ƒŠƒ\[ƒX–¼
-     * @exception IOException ƒŠƒ\[ƒX‚ª‘¶İ‚µ‚È‚¢ê‡
+     * @param name ãƒªã‚½ãƒ¼ã‚¹å
+     * @exception IOException ãƒªã‚½ãƒ¼ã‚¹ãŒå­˜åœ¨ã—ãªã„å ´åˆ
      */
     private static String getResourceString(String name) throws IOException{
         
-        // ƒŠƒ\[ƒX‚Ì“ü—ÍƒXƒgƒŠ[ƒ€‚ğæ“¾
+        // ãƒªã‚½ãƒ¼ã‚¹ã®å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’å–å¾—
         InputStream is = DataSetCodeGenerator.class.getClassLoader()
             .getResourceAsStream(name);
         
-        // ƒƒbƒZ[ƒW‚Ì“Ç‚İ‚İ
+        // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®èª­ã¿è¾¼ã¿
         StringBuilder buf = new StringBuilder();
         BufferedReader reader = null;
         final String separator = System.getProperty("line.separator");
@@ -1640,10 +1640,10 @@ public class DataSetCodeGenerator{
     }
     
     /**
-     * ƒ†ƒjƒR[ƒhƒGƒXƒP[ƒv•¶š—ñ‚ğŠÜ‚ñ‚Å‚¢‚é‰Â”\«‚Ì‚ ‚é•¶š—ñ‚ğƒfƒtƒHƒ‹ƒgƒGƒ“ƒR[ƒfƒBƒ“ƒO‚Ì•¶š—ñ‚É•ÏŠ·‚·‚éB<p>
+     * ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—åˆ—ã‚’å«ã‚“ã§ã„ã‚‹å¯èƒ½æ€§ã®ã‚ã‚‹æ–‡å­—åˆ—ã‚’ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã®æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param str ƒ†ƒjƒR[ƒhƒGƒXƒP[ƒv•¶š—ñ‚ğŠÜ‚ñ‚Å‚¢‚é‰Â”\«‚Ì‚ ‚é•¶š—ñ
-     * @return ƒfƒtƒHƒ‹ƒgƒGƒ“ƒR[ƒfƒBƒ“ƒO‚Ì•¶š—ñ
+     * @param str ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—æ–‡å­—åˆ—ã‚’å«ã‚“ã§ã„ã‚‹å¯èƒ½æ€§ã®ã‚ã‚‹æ–‡å­—åˆ—
+     * @return ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã®æ–‡å­—åˆ—
      */
     private static String unicodeConvert(String str){
         char c;
@@ -1722,7 +1722,7 @@ public class DataSetCodeGenerator{
     public static void main(String[] args) throws Exception{
         
         if(args.length == 0 || args[0].equals("-help")){
-            // g—p•û–@‚ğ•\¦‚·‚é
+            // ä½¿ç”¨æ–¹æ³•ã‚’è¡¨ç¤ºã™ã‚‹
             usage();
             return;
         }

@@ -29,9 +29,9 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.ioc.ejb.facade;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.rmi.RemoteException;
 import java.lang.reflect.Method;
 
@@ -46,8 +46,8 @@ import jp.ossc.nimbus.service.aop.InvocationContext;
 import jp.ossc.nimbus.service.aop.DefaultMethodInvocationContext;
 
 /**
- * ƒtƒ@ƒT[ƒhEJBƒNƒ‰ƒX<p>
- * ‚±‚ÌEJB‚ÍRiquire‚ÅƒfƒvƒƒC‚³‚ê‚é
+ * ãƒ•ã‚¡ã‚µãƒ¼ãƒ‰EJBã‚¯ãƒ©ã‚¹<p>
+ * ã“ã®EJBã¯Riquireã§ãƒ‡ãƒ—ãƒ­ã‚¤ã•ã‚Œã‚‹
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -74,7 +74,7 @@ public class SLSBFacadeBean
 		super() ;
 	}
 	/**
-	 * EJB‚ğì¬‚·‚éB
+	 * EJBã‚’ä½œæˆã™ã‚‹ã€‚
 	 * @throws javax.ejb.CreateException
 	 */
 	public void ejbCreate()
@@ -96,7 +96,7 @@ public class SLSBFacadeBean
 	}
 	
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see javax.ejb.SessionBean#setSessionContext(javax.ejb.SessionContext)
 	 */
 	public void setSessionContext(SessionContext arg0)
@@ -104,28 +104,28 @@ public class SLSBFacadeBean
 		this.setContext(arg0) ;
 	}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see javax.ejb.SessionBean#ejbRemove()
 	 */
 	public void ejbRemove(){}
 	
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see javax.ejb.SessionBean#ejbActivate()
 	 */
 	public void ejbActivate(){}
 
-	/* (”ñ Javadoc)
+	/* (é Javadoc)
 	 * @see javax.ejb.SessionBean#ejbPassivate()
 	 */
 	public void ejbPassivate() {}
 	
 	/**
-	 * IoCƒRƒ“ƒeƒi‚ÌƒRƒ}ƒ“ƒhó•tƒtƒ@ƒT[ƒh
-	 * –{—ˆƒpƒ‰ƒ[ƒ^‚Æ‚µ‚ÄFacadeValue‚ğó‚¯æ‚é‚ª
-	 * ƒCƒ“ƒ^[ƒZƒvƒ^[‚É‚æ‚è•ÏŠ·‚³‚ê‚éê‡‚ğl—¶‚µ‚Ä
-	 * ‚ä‚é‚¢Interface‚Æ‚µ‚Ä‚¢‚éB
+	 * IoCã‚³ãƒ³ãƒ†ãƒŠã®ã‚³ãƒãƒ³ãƒ‰å—ä»˜ãƒ•ã‚¡ã‚µãƒ¼ãƒ‰
+	 * æœ¬æ¥ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¨ã—ã¦FacadeValueã‚’å—ã‘å–ã‚‹ãŒ
+	 * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼ã«ã‚ˆã‚Šå¤‰æ›ã•ã‚Œã‚‹å ´åˆã‚’è€ƒæ…®ã—ã¦
+	 * ã‚†ã‚‹ã„Interfaceã¨ã—ã¦ã„ã‚‹ã€‚
 	 * @param value
-	 * @return ÀsŒ‹‰Ê
+	 * @return å®Ÿè¡Œçµæœ
 	 * @throws RemoteException
 	 */
 	public Object invoke(Object value) {
@@ -157,9 +157,9 @@ public class SLSBFacadeBean
 	}
 	
 	/**
-	 * IoC‚Ìƒtƒ@ƒT[ƒhƒƒ\ƒbƒh
+	 * IoCã®ãƒ•ã‚¡ã‚µãƒ¼ãƒ‰ãƒ¡ã‚½ãƒƒãƒ‰
 	 * @param fv
-	 * @return@FacadeValue
+	 * @returnã€€FacadeValue
 	 * @throws RemoteException
 	 */
 	public FacadeValue invokeFacade(FacadeValue fv) {
@@ -170,8 +170,8 @@ public class SLSBFacadeBean
 			IOCException ee =  new IOCException("SLSBFacadeBean invokeFacade InterceptorError",e) ;
 			throw ee ;
 		} catch (TargetCheckedException e) {
-			//‚±‚±‚É”ò‚ñ‚Å‚­‚é‚±‚Æ‚Í‚È‚¢B
-			//ƒRƒ}ƒ“ƒh‘w‚ÅƒLƒƒƒbƒ`‚³‚êˆ—Ï‚İ‚Ì‚Í‚¸B
+			//ã“ã“ã«é£›ã‚“ã§ãã‚‹ã“ã¨ã¯ãªã„ã€‚
+			//ã‚³ãƒãƒ³ãƒ‰å±¤ã§ã‚­ãƒ£ãƒƒãƒã•ã‚Œå‡¦ç†æ¸ˆã¿ã®ã¯ãšã€‚
 			IOCException ee =  new IOCException("SLSBFacadeBean invokeFacade CheckedError",e.getCause()) ;
 			throw ee ;
 		} catch (TargetUncheckedException e) {

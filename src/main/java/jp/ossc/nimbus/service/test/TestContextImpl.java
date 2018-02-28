@@ -36,8 +36,8 @@ import java.util.Map;
 import java.io.File;
 
 /**
- * ƒeƒXƒgƒRƒ“ƒeƒLƒXƒgƒNƒ‰ƒXB<p>
- * ƒeƒXƒg‚ğÀs‚µ‚Ä‚¢‚éÛ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ‚ğŠi”[‚·‚éB<br>
+ * ãƒ†ã‚¹ãƒˆã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚¯ãƒ©ã‚¹ã€‚<p>
+ * ãƒ†ã‚¹ãƒˆã‚’å®Ÿè¡Œã—ã¦ã„ã‚‹éš›ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã‚’æ ¼ç´ã™ã‚‹ã€‚<br>
  * 
  * @author M.Ishida
  */
@@ -52,9 +52,9 @@ public class TestContextImpl implements TestContext {
     private Map resultMap = new HashMap();
     
     /**
-     * ƒeƒXƒgƒtƒF[ƒY‚ğİ’è‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆãƒ•ã‚§ãƒ¼ã‚ºã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param phase ƒeƒXƒgƒtƒF[ƒY
+     * @param phase ãƒ†ã‚¹ãƒˆãƒ•ã‚§ãƒ¼ã‚º
      */
     public void setTestPhase(String phase) {
         testPhase = phase;
@@ -69,18 +69,18 @@ public class TestContextImpl implements TestContext {
     }
     
     /**
-     * ÀsƒfƒBƒŒƒNƒgƒŠ‚ğİ’è‚·‚éB<p>
+     * å®Ÿè¡Œãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param dir ÀsƒfƒBƒŒƒNƒgƒŠ
+     * @param dir å®Ÿè¡Œãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
      */
     public void setCurrentDirectory(File dir){
         currentDirectory = dir;
     }
     
     /**
-     * ƒeƒXƒgƒVƒiƒŠƒIƒOƒ‹[ƒv‚ğİ’è‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param testScenarioGroup ƒeƒXƒgƒVƒiƒŠƒIƒOƒ‹[ƒv
+     * @param testScenarioGroup ãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—
      */
     public void setTestScenarioGroup(TestScenarioGroup testScenarioGroup) {
         this.testScenarioGroup = testScenarioGroup;
@@ -93,9 +93,9 @@ public class TestContextImpl implements TestContext {
     }
     
     /**
-     * ƒeƒXƒgƒVƒiƒŠƒI‚ğİ’è‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ªã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param testScenario ƒeƒXƒgƒVƒiƒŠƒI
+     * @param testScenario ãƒ†ã‚¹ãƒˆã‚·ãƒŠãƒªã‚ª
      */
     public void setTestScenario(TestScenario testScenario) {
         this.testScenarioGroup = null;
@@ -108,9 +108,9 @@ public class TestContextImpl implements TestContext {
     }
     
     /**
-     * ƒeƒXƒgƒP[ƒX‚ğİ’è‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param testCase ƒeƒXƒgƒP[ƒX
+     * @param testCase ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹
      */
     public void setTestCase(TestCase testCase) {
         this.testScenarioGroup = null;

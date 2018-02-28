@@ -34,9 +34,9 @@ package jp.ossc.nimbus.util;
 import java.util.*;
 
 /**
- * �N���X�ɑ΂���C�ӂ̃I�u�W�F�N�g�̃}�b�s���O�c���[�B<p>
- * ����N���X�ɑΉ�����C�ӂ̃I�u�W�F�N�g���A�N���X�̌p���֌W�̃c���[�Ń}�b�s���O���ĊǗ�����B<br>
- * {@link #add(Class, Object)}�ŃN���X�ƔC�ӂ̃I�u�W�F�N�g�̃}�b�s���O��o�^�ł���B{@link #getValue(Class)}�ŃN���X���w�肷��ƑΉ�����I�u�W�F�N�g���擾�ł���B�����Ō����Ή�����I�u�W�F�N�g�Ƃ́A�w�肵���N���X�Ɉ�v����N���X�Ƀ}�b�s���O����Ă���I�u�W�F�N�g�A�܂��́A��v����N���X���Ȃ��ꍇ�́A�o�^����Ă���N���X�̒��ōł��߂��p���֌W�ɂ���X�[�p�[�N���X�Ƀ}�b�s���O���ꂽ�I�u�W�F�N�g���w���B�܂��A�����Ō����N���X�ɂ́A�C���^�t�F�[�X���܂܂��B<br>
+ * クラスに対する任意のオブジェクトのマッピングツリー。<p>
+ * あるクラスに対応する任意のオブジェクトを、クラスの継承関係のツリーでマッピングして管理する。<br>
+ * {@link #add(Class, Object)}でクラスと任意のオブジェクトのマッピングを登録できる。{@link #getValue(Class)}でクラスを指定すると対応するオブジェクトを取得できる。ここで言う対応するオブジェクトとは、指定したクラスに一致するクラスにマッピングされているオブジェクト、または、一致するクラスがない場合は、登録されているクラスの中で最も近い継承関係にあるスーパークラスにマッピングされたオブジェクトを指す。また、ここで言うクラスには、インタフェースも含まれる。<br>
  * 
  * @author M.Takata
  */
@@ -49,16 +49,16 @@ public class ClassMappingTree implements java.io.Serializable{
     private final Map classMap = new HashMap();
     
     /**
-     * null��{@link java.lang.Object}�N���X�Ƀ}�b�s���O���āA�}�b�s���O�c���[�̃��[�g�Ƃ��āA���̃N���X�̃C���X�^���X�𐶐�����B<p>
+     * nullを{@link java.lang.Object}クラスにマッピングして、マッピングツリーのルートとして、このクラスのインスタンスを生成する。<p>
      */
     public ClassMappingTree(){
         this(null);
     }
     
     /**
-     * �w�肳�ꂽ�I�u�W�F�N�g��{@link java.lang.Object}�N���X�Ƀ}�b�s���O���āA�}�b�s���O�c���[�̃��[�g�Ƃ��āA���̃N���X�̃C���X�^���X�𐶐�����B<p>
+     * 指定されたオブジェクトを{@link java.lang.Object}クラスにマッピングして、マッピングツリーのルートとして、このクラスのインスタンスを生成する。<p>
      *
-     * @param root java.lang.Object�N���X�ɑΉ�����I�u�W�F�N�g
+     * @param root java.lang.Objectクラスに対応するオブジェクト
      */
     public ClassMappingTree(Object root){
         rootElement = new TreeElement(java.lang.Object.class, root);
@@ -66,21 +66,21 @@ public class ClassMappingTree implements java.io.Serializable{
     }
     
     /**
-     * �N���X�ƔC�ӂ̃I�u�W�F�N�g�̃}�b�s���O��o�^����B<p>
+     * クラスと任意のオブジェクトのマッピングを登録する。<p>
      *
-     * @param clazz �N���X�I�u�W�F�N�g
-     * @param value �C�ӂ̃I�u�W�F�N�g
+     * @param clazz クラスオブジェクト
+     * @param value 任意のオブジェクト
      */
     public void add(Class clazz, Object value){
         add(clazz, value, false);
     }
     
     /**
-     * �N���X�ƔC�ӂ̃I�u�W�F�N�g�̃}�b�s���O��o�^����B<p>
+     * クラスと任意のオブジェクトのマッピングを登録する。<p>
      *
-     * @param clazz �N���X�I�u�W�F�N�g
-     * @param value �C�ӂ̃I�u�W�F�N�g
-     * @param replace ���ɓ����N���X�ɑ΂��ă}�b�s���O���ꂽ�I�u�W�F�N�g������ꍇ�ɁA����ƒu��������ꍇ�́Atrue�B�N���X�ɑ΂��ă}�b�s���O���ꂽ�I�u�W�F�N�g�𕡐����e���āA�ǉ�����ꍇ�́Afalse
+     * @param clazz クラスオブジェクト
+     * @param value 任意のオブジェクト
+     * @param replace 既に同じクラスに対してマッピングされたオブジェクトがある場合に、それと置き換える場合は、true。クラスに対してマッピングされたオブジェクトを複数許容して、追加する場合は、false
      */
     public void add(Class clazz, Object value, boolean replace){
         if(classMap.containsKey(clazz)){
@@ -112,12 +112,12 @@ public class ClassMappingTree implements java.io.Serializable{
     }
     
     /**
-     * �w�肳�ꂽ�N���X�ɑΉ�����I�u�W�F�N�g���擾����B<p>
-     * �����Ō����Ή�����I�u�W�F�N�g�Ƃ́A�w�肵���N���X�Ɉ�v����N���X�Ƀ}�b�s���O����Ă���I�u�W�F�N�g���w���B<br>
-     * �Ή�����I�u�W�F�N�g���������݂���ꍇ�ɂ́A�ŏ��ɓo�^���ꂽ�I�u�W�F�N�g��Ԃ��B<br>
+     * 指定されたクラスに対応するオブジェクトを取得する。<p>
+     * ここで言う対応するオブジェクトとは、指定したクラスに一致するクラスにマッピングされているオブジェクトを指す。<br>
+     * 対応するオブジェクトが複数存在する場合には、最初に登録されたオブジェクトを返す。<br>
      *
-     * @param clazz �N���X�I�u�W�F�N�g
-     * @return �w�肳�ꂽ�N���X�ɑΉ�����I�u�W�F�N�g
+     * @param clazz クラスオブジェクト
+     * @return 指定されたクラスに対応するオブジェクト
      * @see #getValuesOf(Class)
      */
     public Object getValueOf(Class clazz){
@@ -126,10 +126,10 @@ public class ClassMappingTree implements java.io.Serializable{
     }
     
     /**
-     * �w�肳�ꂽ�N���X�ɑΉ�����I�u�W�F�N�g�z����擾����B<p>
+     * 指定されたクラスに対応するオブジェクト配列を取得する。<p>
      *
-     * @param clazz �N���X�I�u�W�F�N�g
-     * @return �w�肳�ꂽ�N���X�ɑΉ�����I�u�W�F�N�g�z��
+     * @param clazz クラスオブジェクト
+     * @return 指定されたクラスに対応するオブジェクト配列
      */
     public Object[] getValuesOf(Class clazz){
         final List list = getValueListOf(clazz);
@@ -137,10 +137,10 @@ public class ClassMappingTree implements java.io.Serializable{
     }
     
     /**
-     * �w�肳�ꂽ�N���X�ɑΉ�����I�u�W�F�N�g���X�g���擾����B<p>
+     * 指定されたクラスに対応するオブジェクトリストを取得する。<p>
      *
-     * @param clazz �N���X�I�u�W�F�N�g
-     * @return �w�肳�ꂽ�N���X�ɑΉ�����I�u�W�F�N�g���X�g
+     * @param clazz クラスオブジェクト
+     * @return 指定されたクラスに対応するオブジェクトリスト
      */
     public List getValueListOf(Class clazz){
         if(classMap.containsKey(clazz)){
@@ -151,12 +151,12 @@ public class ClassMappingTree implements java.io.Serializable{
     }
     
     /**
-     * �w�肳�ꂽ�N���X�ɑΉ�����I�u�W�F�N�g���擾����B<p>
-     * �����Ō����Ή�����I�u�W�F�N�g�Ƃ́A�w�肵���N���X�Ɉ�v����N���X�Ƀ}�b�s���O����Ă���I�u�W�F�N�g�A�܂��́A��v����N���X���Ȃ��ꍇ�́A�o�^����Ă���N���X�̒��ōł��߂��p���֌W�ɂ���X�[�p�[�N���X�Ƀ}�b�s���O���ꂽ�I�u�W�F�N�g���w���B<br>
-     * �Ή�����I�u�W�F�N�g���������݂���ꍇ�ɂ́A�ŏ��ɓo�^���ꂽ�I�u�W�F�N�g��Ԃ��B<br>
+     * 指定されたクラスに対応するオブジェクトを取得する。<p>
+     * ここで言う対応するオブジェクトとは、指定したクラスに一致するクラスにマッピングされているオブジェクト、または、一致するクラスがない場合は、登録されているクラスの中で最も近い継承関係にあるスーパークラスにマッピングされたオブジェクトを指す。<br>
+     * 対応するオブジェクトが複数存在する場合には、最初に登録されたオブジェクトを返す。<br>
      *
-     * @param clazz �N���X�I�u�W�F�N�g
-     * @return �w�肳�ꂽ�N���X�ɑΉ�����I�u�W�F�N�g
+     * @param clazz クラスオブジェクト
+     * @return 指定されたクラスに対応するオブジェクト
      * @see #getValues(Class)
      */
     public Object getValue(Class clazz){
@@ -165,20 +165,20 @@ public class ClassMappingTree implements java.io.Serializable{
     }
     
     /**
-     * �w�肳�ꂽ�N���X�ɑΉ�����I�u�W�F�N�g�z����擾����B<p>
+     * 指定されたクラスに対応するオブジェクト配列を取得する。<p>
      *
-     * @param clazz �N���X�I�u�W�F�N�g
-     * @return �w�肳�ꂽ�N���X�ɑΉ�����I�u�W�F�N�g�z��
+     * @param clazz クラスオブジェクト
+     * @return 指定されたクラスに対応するオブジェクト配列
      */
     public Object[] getValues(Class clazz){
         return getValueList(clazz).toArray();
     }
     
     /**
-     * �w�肳�ꂽ�N���X�ɑΉ�����I�u�W�F�N�g���X�g���擾����B<p>
+     * 指定されたクラスに対応するオブジェクトリストを取得する。<p>
      *
-     * @param clazz �N���X�I�u�W�F�N�g
-     * @return �w�肳�ꂽ�N���X�ɑΉ�����I�u�W�F�N�g���X�g
+     * @param clazz クラスオブジェクト
+     * @return 指定されたクラスに対応するオブジェクトリスト
      */
     public List getValueList(Class clazz){
         if(clazz == null){
@@ -197,10 +197,10 @@ public class ClassMappingTree implements java.io.Serializable{
     }
     
     /**
-     * �w�肳�ꂽ�N���X�Ƀ}�b�s���O����Ă���w��I�u�W�F�N�g���폜����B<p>
+     * 指定されたクラスにマッピングされている指定オブジェクトを削除する。<p>
      *
-     * @param clazz �N���X�I�u�W�F�N�g
-     * @param value �C�ӂ̃I�u�W�F�N�g
+     * @param clazz クラスオブジェクト
+     * @param value 任意のオブジェクト
      */
     public void remove(Class clazz, Object value){
         if(classMap.containsKey(clazz)){
@@ -214,9 +214,9 @@ public class ClassMappingTree implements java.io.Serializable{
     }
     
     /**
-     * �w�肳�ꂽ�N���X�Ƀ}�b�s���O����Ă���S�ẴI�u�W�F�N�g���폜����B<p>
+     * 指定されたクラスにマッピングされている全てのオブジェクトを削除する。<p>
      *
-     * @param clazz �N���X�I�u�W�F�N�g
+     * @param clazz クラスオブジェクト
      */
     public void remove(Class clazz){
         if(!Object.class.equals(clazz) && classMap.containsKey(clazz)){
@@ -229,7 +229,7 @@ public class ClassMappingTree implements java.io.Serializable{
     }
     
     /**
-     * �}�b�s���O����Ă���S�ẴI�u�W�F�N�g���폜����B<p>
+     * マッピングされている全てのオブジェクトを削除する。<p>
      */
     public void clear(){
         final Iterator classes = new HashSet(classMap.keySet()).iterator();
@@ -240,9 +240,9 @@ public class ClassMappingTree implements java.io.Serializable{
     }
     
     /**
-     * �o�^����Ă���N���X�}�b�s���O�̕�����\����Ԃ��B<p>
+     * 登録されているクラスマッピングの文字列表現を返す。<p>
      *
-     * @return �N���X�}�b�s���O�̕�����\��
+     * @return クラスマッピングの文字列表現
      */
     public String toString(){
         return super.toString() + classMap;

@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.server;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link DefaultServerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link DefaultServerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see DefaultServerService
@@ -42,146 +42,146 @@ import jp.ossc.nimbus.core.*;
 public interface DefaultServerServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ƒT[ƒo‚ªƒoƒCƒ“ƒh‚·‚éƒzƒXƒg–¼‚ğİ’è‚·‚éB<p>
-     * İ’è‚µ‚È‚¢ê‡‚ÍAƒ[ƒJƒ‹ƒzƒXƒg‚ÉƒoƒCƒ“ƒh‚·‚éB
+     * ã‚µãƒ¼ãƒãŒãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹ãƒ›ã‚¹ãƒˆåã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã—ãªã„å ´åˆã¯ã€ãƒ­ãƒ¼ã‚«ãƒ«ãƒ›ã‚¹ãƒˆã«ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹ã€‚
      *
-     * @param name ƒzƒXƒg–¼
+     * @param name ãƒ›ã‚¹ãƒˆå
      */
     public void setHostName(String name);
     
     /**
-     * ƒT[ƒo‚ªƒoƒCƒ“ƒh‚·‚éƒzƒXƒg–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ¼ãƒãŒãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹ãƒ›ã‚¹ãƒˆåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒzƒXƒg–¼
+     * @return ãƒ›ã‚¹ãƒˆå
      */
     public String getHostName();
     
     /**
-     * ƒT[ƒo‚ªƒoƒCƒ“ƒh‚·‚éƒ|[ƒg”Ô†‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA10000B
+     * ã‚µãƒ¼ãƒãŒãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹ãƒãƒ¼ãƒˆç•ªå·ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€10000ã€‚
      *
-     * @param port ƒ|[ƒg”Ô†
+     * @param port ãƒãƒ¼ãƒˆç•ªå·
      */
     public void setPort(int port);
     
     /**
-     * ƒT[ƒo‚ªƒoƒCƒ“ƒh‚·‚éƒ|[ƒg”Ô†‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ¼ãƒãŒãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹ãƒãƒ¼ãƒˆç•ªå·ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ|[ƒg”Ô†
+     * @return ãƒãƒ¼ãƒˆç•ªå·
      */
     public int getPort();
     
     /**
-     * SO_REUSEADDR ƒ\ƒPƒbƒgƒIƒvƒVƒ‡ƒ“‚ğ—LŒø‚Ü‚½‚Í–³Œø‚É‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Å—LŒøB
+     * SO_REUSEADDR ã‚½ã‚±ãƒƒãƒˆã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’æœ‰åŠ¹ã¾ãŸã¯ç„¡åŠ¹ã«ã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§æœ‰åŠ¹ã€‚
      *
-     * @param isReuse —LŒø‚É‚·‚éê‡true
+     * @param isReuse æœ‰åŠ¹ã«ã™ã‚‹å ´åˆtrue
      */
     public void setReuseAddress(boolean isReuse);
     
     /**
-     * SO_REUSEADDR ƒ\ƒPƒbƒgƒIƒvƒVƒ‡ƒ“‚ª—LŒø‚©”»’è‚·‚éB<p>
+     * SO_REUSEADDR ã‚½ã‚±ãƒƒãƒˆã‚ªãƒ—ã‚·ãƒ§ãƒ³ãŒæœ‰åŠ¹ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A—LŒø
+     * @return trueã®å ´åˆã€æœ‰åŠ¹
      */
     public boolean isReuseAddress();
     
     /**
-     * óMƒoƒbƒtƒ@ƒoƒCƒg”‚ğİ’è‚·‚éB<p>
+     * å—ä¿¡ãƒãƒƒãƒ•ã‚¡ãƒã‚¤ãƒˆæ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param size óMƒoƒbƒtƒ@ƒoƒCƒg”
+     * @param size å—ä¿¡ãƒãƒƒãƒ•ã‚¡ãƒã‚¤ãƒˆæ•°
      */
     public void setReceiveBufferSize(int size);
     
     /**
-     * óMƒoƒbƒtƒ@ƒoƒCƒg”‚ğæ“¾‚·‚éB<p>
+     * å—ä¿¡ãƒãƒƒãƒ•ã‚¡ãƒã‚¤ãƒˆæ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return óMƒoƒbƒtƒ@ƒoƒCƒg”
+     * @return å—ä¿¡ãƒãƒƒãƒ•ã‚¡ãƒã‚¤ãƒˆæ•°
      */
     public int getReceiveBufferSize();
     
     /**
-     * óMƒ^ƒCƒ€ƒAƒEƒg[ms]‚ğİ’è‚·‚éB<p>
+     * å—ä¿¡ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param timeout óMƒ^ƒCƒ€ƒAƒEƒg
+     * @param timeout å—ä¿¡ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ
      */
     public void setSoTimeout(int timeout);
     
     /**
-     * óMƒ^ƒCƒ€ƒAƒEƒg[ms]‚ğæ“¾‚·‚éB<p>
+     * å—ä¿¡ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return óMƒ^ƒCƒ€ƒAƒEƒg
+     * @return å—ä¿¡ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ
      */
     public int getSoTimeout();
     
     /**
-     * {@link jp.ossc.nimbus.service.queue.QueueHandlerContainer QueueHandlerContainer}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.queue.QueueHandlerContainer QueueHandlerContainer}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name QueueHandlerContainerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name QueueHandlerContainerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setQueueHandlerContainerServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.queue.QueueHandlerContainer QueueHandlerContainer}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.queue.QueueHandlerContainer QueueHandlerContainer}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return QueueHandlerContainerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return QueueHandlerContainerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getQueueHandlerContainerServiceName();
     
     /**
-     * ƒŠƒNƒGƒXƒgID‚ğ”­s‚·‚é{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã‚’ç™ºè¡Œã™ã‚‹{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name SequenceƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Sequenceã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setSequenceServiceName(ServiceName name);
     
     /**
-     * ƒŠƒNƒGƒXƒgID‚ğ”­s‚·‚é{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆIDã‚’ç™ºè¡Œã™ã‚‹{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return SequenceƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Sequenceã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getSequenceServiceName();
     
     /**
-     * ƒT[ƒoƒ\ƒPƒbƒgƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<br>
+     * ã‚µãƒ¼ãƒã‚½ã‚±ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param name ƒT[ƒoƒ\ƒPƒbƒgƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ã‚µãƒ¼ãƒã‚½ã‚±ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setServerSocketFactoryServiceName(ServiceName name);
     
     /**
-     * ƒT[ƒoƒ\ƒPƒbƒgƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<br>
+     * ã‚µãƒ¼ãƒã‚½ã‚±ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<br>
      *
-     * @return ƒT[ƒoƒ\ƒPƒbƒgƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ã‚µãƒ¼ãƒã‚½ã‚±ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getServerSocketFactoryServiceName();
     
     /**
-     * ƒ\ƒPƒbƒgƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<br>
+     * ã‚½ã‚±ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param name ƒ\ƒPƒbƒgƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ã‚½ã‚±ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setSocketFactoryServiceName(ServiceName name);
     
     /**
-     * ƒ\ƒPƒbƒgƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<br>
+     * ã‚½ã‚±ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<br>
      *
-     * @return ƒ\ƒPƒbƒgƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ã‚½ã‚±ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getSocketFactoryServiceName();
     
     /**
-     * ƒ\ƒPƒbƒgó•t‚Ìˆ—‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅAƒ\ƒPƒbƒgó•tŒãAƒNƒ‰ƒCƒAƒ“ƒg‚©‚ç‚Ì‘‚«‚İ‚ğ‘Ò‚ÂB<br>
+     * ã‚½ã‚±ãƒƒãƒˆå—ä»˜æ™‚ã®å‡¦ç†ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€ã‚½ã‚±ãƒƒãƒˆå—ä»˜å¾Œã€ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‹ã‚‰ã®æ›¸ãè¾¼ã¿ã‚’å¾…ã¤ã€‚<br>
      *
-     * @param isHandle ˆ—‚ğs‚¤ê‡Atrue
+     * @param isHandle å‡¦ç†ã‚’è¡Œã†å ´åˆã€true
      */
     public void setHandleAccept(boolean isHandle);
     
     /**
-     * ƒ\ƒPƒbƒgó•t‚Ìˆ—‚ğs‚¤‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ã‚½ã‚±ãƒƒãƒˆå—ä»˜æ™‚ã®å‡¦ç†ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Aˆ—‚ğs‚¤
+     * @return trueã®å ´åˆã€å‡¦ç†ã‚’è¡Œã†
      */
     public boolean isHandleAccept();
 }

@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aop.interceptor.servlet;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link HttpServletRequestTransferInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB
+ * {@link HttpServletRequestTransferInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚
  * <p>
  *
  * @author M.Ishida
@@ -43,50 +43,50 @@ import jp.ossc.nimbus.core.ServiceName;
 public interface HttpServletRequestURLConvertInterceptorServiceMBean extends ServletFilterInterceptorServiceMBean {
 
     /**
-     * ThreadContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB
+     * ThreadContextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param name ThreadContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ThreadContextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setThreadContextServiceName(ServiceName name);
 
     /**
-     * ThreadContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB
+     * ThreadContextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ThreadContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ThreadContextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getThreadContextServiceName();
 
     /**
-     * ƒWƒƒ[ƒiƒ‹ƒT[ƒrƒX–¼‚ğİ’è‚·‚éB
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚
      * <p>
      *
-     * @param name ƒWƒƒ[ƒiƒ‹ƒT[ƒrƒX–¼
+     * @param name ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJournalServiceName(ServiceName name);
 
     /**
-     * ƒWƒƒ[ƒiƒ‹ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚
      * <p>
      *
-     * @return ƒWƒƒ[ƒiƒ‹ƒT[ƒrƒX–¼
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJournalServiceName();
 
     /**
-     * ƒpƒX‚Ìˆê•”‚ğƒpƒ‰ƒ[ƒ^‚Æ‚µ‚Äˆµ‚¤‚½‚ß‚ÌƒpƒX•¶š—ñ’è‹`‚ğİ’è‚·‚éB<p>
-     * ƒpƒX•¶š—ñ‚Æ‚µ‚Ä{}‚ÅŠ‡‚ç‚ê‚Ä‚¢‚éƒpƒX‚ğƒpƒ‰ƒ[ƒ^‚Æ‚µ‚Ä”»’f‚µA<br>
-     * İ’è‚³‚ê‚Ä‚¢‚éThreadContextAJournaal‚Éİ’è‚·‚éB<br>
+     * ãƒ‘ã‚¹ã®ä¸€éƒ¨ã‚’ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¨ã—ã¦æ‰±ã†ãŸã‚ã®ãƒ‘ã‚¹æ–‡å­—åˆ—å®šç¾©ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‘ã‚¹æ–‡å­—åˆ—ã¨ã—ã¦{}ã§æ‹¬ã‚‰ã‚Œã¦ã„ã‚‹ãƒ‘ã‚¹ã‚’ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¨ã—ã¦åˆ¤æ–­ã—ã€<br>
+     * è¨­å®šã•ã‚Œã¦ã„ã‚‹ThreadContextã€Journaalã«è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param paths ƒpƒX•¶š—ñ’è‹`
+     * @param paths ãƒ‘ã‚¹æ–‡å­—åˆ—å®šç¾©
      */
     public void setResourcePaths(String[] paths);
 
     /**
-     * ƒpƒX•¶š—ñ’è‹`‚ğæ“¾‚·‚éB<p>
+     * ãƒ‘ã‚¹æ–‡å­—åˆ—å®šç¾©ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒpƒX•¶š—ñ’è‹`
+     * @return ãƒ‘ã‚¹æ–‡å­—åˆ—å®šç¾©
      */
     public String[] getResourcePaths();
 }

@@ -39,8 +39,8 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.aop.interceptor.MetricsInfo;
 
 /**
- * {@link InterceptorChain}‚ÌƒfƒtƒHƒ‹ƒgÀ‘•B<p>
- * Œ»İŒÄ‚Ño‚³‚ê‚Ä‚¢‚éƒCƒ“ƒ^[ƒZƒvƒ^‚Ìî•ñ‚ğƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚ÉŠi”[‚·‚é‚Ì‚ÅAƒXƒŒƒbƒhƒZ[ƒt‚Å‚Í‚È‚¢ƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒF[ƒ“‚Å‚ ‚éB<br>
+ * {@link InterceptorChain}ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå®Ÿè£…ã€‚<p>
+ * ç¾åœ¨å‘¼ã³å‡ºã•ã‚Œã¦ã„ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®æƒ…å ±ã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã«æ ¼ç´ã™ã‚‹ã®ã§ã€ã‚¹ãƒ¬ãƒƒãƒ‰ã‚»ãƒ¼ãƒ•ã§ã¯ãªã„ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ãƒ¼ãƒ³ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -50,52 +50,52 @@ public class DefaultInterceptorChain
     private static final long serialVersionUID = 3689361711046717596L;
     
     /**
-     * {@link InterceptorChainList}“à‚ÌAŒ»İ‚Ìˆ—’†‚Ì{@link Interceptor}‚ÌƒCƒ“ƒfƒbƒNƒXB<p>
-     * ‰Šú’l‚ÍA-1B
+     * {@link InterceptorChainList}å†…ã®ã€ç¾åœ¨ã®å‡¦ç†ä¸­ã®{@link Interceptor}ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€‚<p>
+     * åˆæœŸå€¤ã¯ã€-1ã€‚
      */
     protected int currentIndex = -1;
     
     /**
-     * ƒ`ƒF[ƒ“‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒŠƒXƒgB<p>
+     * ãƒã‚§ãƒ¼ãƒ³ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ãƒªã‚¹ãƒˆã€‚<p>
      */
     protected transient InterceptorChainList interceptorChainList;
     
     /**
-     * {@link InterceptorChainList}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼B<p>
+     * {@link InterceptorChainList}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     protected ServiceName interceptorChainListServiceName;
     
     /**
-     * –{—ˆ‚ÌŒÄ‚Ño‚µæ‚ğŒÄ‚Ño‚·InvokerB<p>
+     * æœ¬æ¥ã®å‘¼ã³å‡ºã—å…ˆã‚’å‘¼ã³å‡ºã™Invokerã€‚<p>
      */
     protected transient Invoker invoker;
     
     /**
-     * {@link Invoker}ƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼B<p>
+     * {@link Invoker}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     protected ServiceName invokerServiceName;
     
     /**
-     * ƒL[‚ª{@link Interceptor}‚Ü‚½‚Í{@link Invoker}A’l‚ª{@link MetricsInfo}‚Ìƒ}ƒbƒvB<p>
+     * ã‚­ãƒ¼ãŒ{@link Interceptor}ã¾ãŸã¯{@link Invoker}ã€å€¤ãŒ{@link MetricsInfo}ã®ãƒãƒƒãƒ—ã€‚<p>
      */
     protected ConcurrentMap metricsInfos;
     
     /**
-     * ³í‰“š‚ğ•Ô‚µ‚½ê‡‚¾‚¯ˆ—ŠÔ“™‚ÌŒvZ‚ğs‚¤‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Ífalse
+     * æ­£å¸¸å¿œç­”ã‚’è¿”ã—ãŸå ´åˆã ã‘å‡¦ç†æ™‚é–“ç­‰ã®è¨ˆç®—ã‚’è¡Œã†ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯false
      */
     protected boolean isCalculateOnlyNormal;
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒF[ƒ“‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ãƒ¼ãƒ³ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public DefaultInterceptorChain(){}
     
     /**
-     * w’è‚³‚ê‚½{@link InterceptorChainList}‚Æ{@link Invoker}‚ÌƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒF[ƒ“‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸ{@link InterceptorChainList}ã¨{@link Invoker}ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ãƒ¼ãƒ³ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param list ƒ`ƒF[ƒ“‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒŠƒXƒg
-     * @param invoker –{—ˆ‚ÌŒÄ‚Ño‚µæ‚ğŒÄ‚Ño‚·Invoker
+     * @param list ãƒã‚§ãƒ¼ãƒ³ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ãƒªã‚¹ãƒˆ
+     * @param invoker æœ¬æ¥ã®å‘¼ã³å‡ºã—å…ˆã‚’å‘¼ã³å‡ºã™Invoker
      */
     public DefaultInterceptorChain(InterceptorChainList list, Invoker invoker){
         setInterceptorChainList(list);
@@ -103,10 +103,10 @@ public class DefaultInterceptorChain
     }
     
     /**
-     * w’è‚³‚ê‚½{@link InterceptorChainList}ƒT[ƒrƒX‚Æ{@link Invoker}ƒT[ƒrƒX‚ÌƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒF[ƒ“‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸ{@link InterceptorChainList}ã‚µãƒ¼ãƒ“ã‚¹ã¨{@link Invoker}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ãƒ¼ãƒ³ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param listServiceName ƒ`ƒF[ƒ“‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒŠƒXƒgInterceptorChainListƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
-     * @param invokerServiceName –{—ˆ‚ÌŒÄ‚Ño‚µæ‚ğŒÄ‚Ño‚·InvokerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param listServiceName ãƒã‚§ãƒ¼ãƒ³ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ãƒªã‚¹ãƒˆInterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
+     * @param invokerServiceName æœ¬æ¥ã®å‘¼ã³å‡ºã—å…ˆã‚’å‘¼ã³å‡ºã™Invokerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public DefaultInterceptorChain(
         ServiceName listServiceName,
@@ -117,43 +117,43 @@ public class DefaultInterceptorChain
     }
     
     /**
-     * «”\“Œv‚ğŠi”[‚·‚éƒ}ƒbƒv‚ğİ’è‚·‚éB<p>
+     * æ€§èƒ½çµ±è¨ˆã‚’æ ¼ç´ã™ã‚‹ãƒãƒƒãƒ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param infos «”\“Œv‚ğŠi”[‚·‚éƒ}ƒbƒvBƒL[‚ª{@link Interceptor}‚Ü‚½‚Í{@link Invoker}A’l‚ª{@link MetricsInfo}
+     * @param infos æ€§èƒ½çµ±è¨ˆã‚’æ ¼ç´ã™ã‚‹ãƒãƒƒãƒ—ã€‚ã‚­ãƒ¼ãŒ{@link Interceptor}ã¾ãŸã¯{@link Invoker}ã€å€¤ãŒ{@link MetricsInfo}
      */
     public void setMetricsInfoMap(ConcurrentMap infos){
         metricsInfos = infos;
     }
     
     /**
-     * «”\“Œv‚ğŠi”[‚·‚éƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
+     * æ€§èƒ½çµ±è¨ˆã‚’æ ¼ç´ã™ã‚‹ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return «”\“Œv‚ğŠi”[‚·‚éƒ}ƒbƒvBƒL[‚ª{@link Interceptor}‚Ü‚½‚Í{@link Invoker}A’l‚ª{@link MetricsInfo}
+     * @return æ€§èƒ½çµ±è¨ˆã‚’æ ¼ç´ã™ã‚‹ãƒãƒƒãƒ—ã€‚ã‚­ãƒ¼ãŒ{@link Interceptor}ã¾ãŸã¯{@link Invoker}ã€å€¤ãŒ{@link MetricsInfo}
      */
     public ConcurrentMap getMetricsInfoMap(){
         return metricsInfos;
     }
     
     /**
-     * ³í‰“š‚ğ•Ô‚µ‚½ê‡‚¾‚¯ˆ—ŠÔ“™‚ÌŒvZ‚ğs‚¤‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Ífalse
+     * æ­£å¸¸å¿œç­”ã‚’è¿”ã—ãŸå ´åˆã ã‘å‡¦ç†æ™‚é–“ç­‰ã®è¨ˆç®—ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯false
      *
-     * @param isCalc ³í‰“š‚ğ•Ô‚µ‚½ê‡‚¾‚¯ˆ—ŠÔ“™‚ÌŒvZ‚ğs‚¤ê‡‚ÍAtrue
+     * @param isCalc æ­£å¸¸å¿œç­”ã‚’è¿”ã—ãŸå ´åˆã ã‘å‡¦ç†æ™‚é–“ç­‰ã®è¨ˆç®—ã‚’è¡Œã†å ´åˆã¯ã€true
      */
     public void setCalculateOnlyNormal(boolean isCalc){
         isCalculateOnlyNormal = isCalc;
     }
     
     /**
-     * ³í‰“š‚ğ•Ô‚µ‚½ê‡‚¾‚¯ˆ—ŠÔ“™‚ÌŒvZ‚ğs‚¤‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * æ­£å¸¸å¿œç­”ã‚’è¿”ã—ãŸå ´åˆã ã‘å‡¦ç†æ™‚é–“ç­‰ã®è¨ˆç®—ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍA³í‰“š‚ğ•Ô‚µ‚½ê‡‚¾‚¯ˆ—ŠÔ“™‚ÌŒvZ‚ğs‚¤
+     * @return trueã®å ´åˆã¯ã€æ­£å¸¸å¿œç­”ã‚’è¿”ã—ãŸå ´åˆã ã‘å‡¦ç†æ™‚é–“ç­‰ã®è¨ˆç®—ã‚’è¡Œã†
      */
     public boolean isCalculateOnlyNormal(){
         return isCalculateOnlyNormal;
     }
     
-    // InterceptorChain‚ÌJavaDoc
+    // InterceptorChainã®JavaDoc
     public Object invokeNext(InvocationContext context) throws Throwable{
         final InterceptorChainList list = getInterceptorChainList();
         boolean isError = false;
@@ -276,17 +276,17 @@ public class DefaultInterceptorChain
         }
     }
     
-    // InterceptorChain‚ÌJavaDoc
+    // InterceptorChainã®JavaDoc
     public int getCurrentInterceptorIndex(){
         return currentIndex;
     }
     
-    // InterceptorChain‚ÌJavaDoc
+    // InterceptorChainã®JavaDoc
     public void setCurrentInterceptorIndex(int index){
         currentIndex = index;
     }
     
-    // InterceptorChain‚ÌJavaDoc
+    // InterceptorChainã®JavaDoc
     public InterceptorChainList getInterceptorChainList(){
         if(interceptorChainListServiceName != null){
             try{
@@ -299,9 +299,9 @@ public class DefaultInterceptorChain
     }
     
     /**
-     * ‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒF[ƒ“‚ª‚ÂƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒŠƒXƒg‚ğİ’è‚·‚éB<p>
+     * ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ãƒ¼ãƒ³ãŒæŒã¤ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ãƒªã‚¹ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param list ‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒF[ƒ“‚ª‚ÂƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒŠƒXƒg
+     * @param list ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ãƒ¼ãƒ³ãŒæŒã¤ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ãƒªã‚¹ãƒˆ
      */
     public void setInterceptorChainList(InterceptorChainList list){
         if(interceptorChainList instanceof ServiceBase){
@@ -322,15 +322,15 @@ public class DefaultInterceptorChain
     }
     
     /**
-     * ‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒF[ƒ“‚ª‚ÂƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒŠƒXƒgInterceptorChainListƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ãƒ¼ãƒ³ãŒæŒã¤ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ãƒªã‚¹ãƒˆInterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^ƒ`ƒF[ƒ“‚ª‚ÂƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒŠƒXƒgInterceptorChainListƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒã‚§ãƒ¼ãƒ³ãŒæŒã¤ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ãƒªã‚¹ãƒˆInterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setInterceptorChainListServiceName(ServiceName name){
         interceptorChainListServiceName = name;
     }
     
-    // InterceptorChain‚ÌJavaDoc
+    // InterceptorChainã®JavaDoc
     public Invoker getInvoker(){
         if(invokerServiceName != null){
             try{
@@ -343,9 +343,9 @@ public class DefaultInterceptorChain
     }
     
     /**
-     * ÅŒã‚ÌŒÄ‚Ño‚µ‚ğs‚¤Invoker‚ğİ’è‚·‚éB<p>
+     * æœ€å¾Œã®å‘¼ã³å‡ºã—ã‚’è¡Œã†Invokerã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param invoker ÅŒã‚ÌŒÄ‚Ño‚µ‚ğs‚¤Invoker
+     * @param invoker æœ€å¾Œã®å‘¼ã³å‡ºã—ã‚’è¡Œã†Invoker
      */
     public void setInvoker(Invoker invoker){
         if(invoker instanceof ServiceBase){
@@ -365,15 +365,15 @@ public class DefaultInterceptorChain
     }
     
     /**
-     * ÅŒã‚ÌŒÄ‚Ño‚µ‚ğs‚¤InvokerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * æœ€å¾Œã®å‘¼ã³å‡ºã—ã‚’è¡Œã†Invokerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ÅŒã‚ÌŒÄ‚Ño‚µ‚ğs‚¤InvokerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name æœ€å¾Œã®å‘¼ã³å‡ºã—ã‚’è¡Œã†Invokerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setInvokerServiceName(ServiceName name){
         this.invokerServiceName = name;
     }
     
-    // InterceptorChain‚ÌJavaDoc
+    // InterceptorChainã®JavaDoc
     public InterceptorChain cloneChain(){
         try{
             DefaultInterceptorChain clone = (DefaultInterceptorChain)clone();

@@ -47,8 +47,8 @@ import net.jpountz.lz4.LZ4BlockOutputStream;
 
 
 /**
- * HTTPƒŒƒXƒ|ƒ“ƒX‚Ìˆ³k‚ğs‚¤ƒCƒ“ƒ^[ƒZƒvƒ^B<p>
- * ˆÈ‰º‚ÉAHTTPƒŒƒXƒ|ƒ“ƒX‚Ìˆ³k‚ğs‚¤ƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®åœ§ç¸®ã‚’è¡Œã†ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã€‚<p>
+ * ä»¥ä¸‹ã«ã€HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®åœ§ç¸®ã‚’è¡Œã†ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -72,9 +72,9 @@ public class HttpServletResponseDeflateInterceptorService
     
     private static final long serialVersionUID = -8811812672782874906L;
     
-    /** ƒwƒbƒ_[ : Content-Encoding */
+    /** ãƒ˜ãƒƒãƒ€ãƒ¼ : Content-Encoding */
     private static final String HEADER_ACCEPT_ENCODING = "Accept-Encoding";
-    /** ƒwƒbƒ_[ : Content-Encoding */
+    /** ãƒ˜ãƒƒãƒ€ãƒ¼ : Content-Encoding */
     private static final String HEADER_CONTENT_ENCODING = "Content-Encoding";
     /** Content-Encoding : deflate */
     private static final String CONTENT_ENCODING_DEFLATE = "deflate";
@@ -90,7 +90,7 @@ public class HttpServletResponseDeflateInterceptorService
     private static final String CONTENT_ENCODING_IDENTITY = "identity";
     /** Content-Encoding : identity */
     private static final String CONTENT_ENCODING_ALL = "*";
-    /** ƒfƒtƒHƒ‹ƒgƒGƒ“ƒR[ƒfƒBƒ“ƒO */
+    /** ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚° */
     private static final String DEFAULT_ENC = "ISO_8859-1";
     
     private String enabledContentTypes[];
@@ -184,13 +184,13 @@ public class HttpServletResponseDeflateInterceptorService
     }
     
     /**
-     * ƒŒƒXƒ|ƒ“ƒX‚ğˆ³kˆ—‚ğs‚¤ƒ‰ƒbƒp[‚Åƒ‰ƒbƒv‚µ‚ÄAŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<p>
-     * ƒT[ƒrƒX‚ªŠJn‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‰½‚à‚¹‚¸‚ÉŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<br>
+     * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚’åœ§ç¸®å‡¦ç†ã‚’è¡Œã†ãƒ©ãƒƒãƒ‘ãƒ¼ã§ãƒ©ãƒƒãƒ—ã—ã¦ã€æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãŒé–‹å§‹ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ä½•ã‚‚ã›ãšã«æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param chain Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·‚½‚ß‚Ìƒ`ƒF[ƒ“
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable ŒÄ‚Ño‚µæ‚Å—áŠO‚ª”­¶‚µ‚½ê‡A‚Ü‚½‚Í‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚Å”CˆÓ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡B’A‚µA–{—ˆŒÄ‚Ño‚³‚ê‚éˆ—‚ªthrow‚µ‚È‚¢RuntimeExceptionˆÈŠO‚Ì—áŠO‚ğthrow‚µ‚Ä‚àAŒÄ‚Ño‚µŒ³‚É‚Í“`”d‚³‚ê‚È‚¢B
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param chain æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ãŸã‚ã®ãƒã‚§ãƒ¼ãƒ³
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable å‘¼ã³å‡ºã—å…ˆã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€ã¾ãŸã¯ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ä»»æ„ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€‚ä½†ã—ã€æœ¬æ¥å‘¼ã³å‡ºã•ã‚Œã‚‹å‡¦ç†ãŒthrowã—ãªã„RuntimeExceptionä»¥å¤–ã®ä¾‹å¤–ã‚’throwã—ã¦ã‚‚ã€å‘¼ã³å‡ºã—å…ƒã«ã¯ä¼æ’­ã•ã‚Œãªã„ã€‚
      */
     public Object invokeFilter(
         ServletFilterInvocationContext context,
@@ -521,7 +521,7 @@ public class HttpServletResponseDeflateInterceptorService
 
                             DeflaterOutputStream dos = null;
                             if(CONTENT_ENCODING_DEFLATE.equals(encoding)){
-                                // deflateˆ³k
+                                // deflateåœ§ç¸®
                                 dos = new DeflaterOutputStream(baos);
                             }else if(CONTENT_ENCODING_GZIP.equals(encoding)){
                                 dos = new GZIPOutputStream(baos);

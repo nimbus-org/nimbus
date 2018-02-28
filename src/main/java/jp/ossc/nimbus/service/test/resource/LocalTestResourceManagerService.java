@@ -56,7 +56,7 @@ import jp.ossc.nimbus.service.test.TestResourceManager;
 import jp.ossc.nimbus.io.ExtentionFileFilter;
 
 /**
- * ƒ[ƒJƒ‹ƒfƒBƒXƒN‚ÌƒeƒXƒgƒŠƒ\[ƒX‚ğŠÇ—‚·‚é{@link TestResourceManager}ƒCƒ“ƒ^ƒtƒF[ƒX‚ÌÀ‘•ƒT[ƒrƒXB
+ * ãƒ­ãƒ¼ã‚«ãƒ«ãƒ‡ã‚£ã‚¹ã‚¯ã®ãƒ†ã‚¹ãƒˆãƒªã‚½ãƒ¼ã‚¹ã‚’ç®¡ç†ã™ã‚‹{@link TestResourceManager}ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®å®Ÿè£…ã‚µãƒ¼ãƒ“ã‚¹ã€‚
  * <p>
  *
  * @author M.Aono

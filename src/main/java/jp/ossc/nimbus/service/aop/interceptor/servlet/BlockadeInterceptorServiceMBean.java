@@ -36,7 +36,7 @@ import java.util.Map;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link BlockadeInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link BlockadeInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see BlockadeInterceptorService
@@ -49,254 +49,254 @@ public interface BlockadeInterceptorServiceMBean
     public static final String DEFAULT_PROPERTY_NAME_MESSAGE = "message";
     
     /**
-     * •ÂÇó‘ÔFŠJ•úB<p>
+     * é–‰å¡çŠ¶æ…‹ï¼šé–‹æ”¾ã€‚<p>
      */
     public static final int BLOCKADE_STATE_OPEN        = 0;
     
     /**
-     * •ÂÇó‘ÔFŠ®‘S•ÂÇB<p>
-     * ‘S‚Ä‚Ìƒ†[ƒU‚ª•ÂÇ‚³‚ê‚Ä‚¢‚éó‘ÔB<br>
+     * é–‰å¡çŠ¶æ…‹ï¼šå®Œå…¨é–‰å¡ã€‚<p>
+     * å…¨ã¦ã®ãƒ¦ãƒ¼ã‚¶ãŒé–‰å¡ã•ã‚Œã¦ã„ã‚‹çŠ¶æ…‹ã€‚<br>
      */
     public static final int BLOCKADE_STATE_ALL_CLOSE       = 1;
     
     /**
-     * •ÂÇó‘ÔF•”•ª•ÂÇB<p>
-     * ‘S‚Ä‚Ìƒ†[ƒU‚ª•”•ª•ÂÇ‚³‚ê‚Ä‚¢‚éó‘ÔB<br>
+     * é–‰å¡çŠ¶æ…‹ï¼šéƒ¨åˆ†é–‰å¡ã€‚<p>
+     * å…¨ã¦ã®ãƒ¦ãƒ¼ã‚¶ãŒéƒ¨åˆ†é–‰å¡ã•ã‚Œã¦ã„ã‚‹çŠ¶æ…‹ã€‚<br>
      */
     public static final int BLOCKADE_STATE_PART_CLOSE       = 2;
     
     /**
-     * •ÂÇó‘ÔFƒeƒXƒg•ÂÇB<p>
-     * “ÁŒ ƒ†[ƒUˆÈŠO‚Í•ÂÇ‚³‚ê‚Ä‚¢‚éó‘ÔB<br>
+     * é–‰å¡çŠ¶æ…‹ï¼šãƒ†ã‚¹ãƒˆé–‰å¡ã€‚<p>
+     * ç‰¹æ¨©ãƒ¦ãƒ¼ã‚¶ä»¥å¤–ã¯é–‰å¡ã•ã‚Œã¦ã„ã‚‹çŠ¶æ…‹ã€‚<br>
      */
     public static final int BLOCKADE_STATE_TEST_ALL_CLOSE   = 3;
     
     /**
-     * •ÂÇó‘ÔFƒeƒXƒg•”•ª•ÂÇB<p>
-     * “ÁŒ ƒ†[ƒUˆÈŠO‚Í•”•ª•ÂÇ‚³‚ê‚Ä‚¢‚éó‘ÔB<br>
+     * é–‰å¡çŠ¶æ…‹ï¼šãƒ†ã‚¹ãƒˆéƒ¨åˆ†é–‰å¡ã€‚<p>
+     * ç‰¹æ¨©ãƒ¦ãƒ¼ã‚¶ä»¥å¤–ã¯éƒ¨åˆ†é–‰å¡ã•ã‚Œã¦ã„ã‚‹çŠ¶æ…‹ã€‚<br>
      */
     public static final int BLOCKADE_STATE_TEST_PART_CLOSE   = 4;
     
     /**
-     * —v‹ƒIƒuƒWƒFƒNƒg‚ğƒŠƒNƒGƒXƒg‘®«‚©‚çæ“¾‚·‚é‚Ég—p‚·‚é‘®«–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg’l‚ÍA{@link StreamExchangeInterceptorServiceMBean#DEFAULT_REQUEST_OBJECT_ATTRIBUTE_NAME}B<br>
+     * è¦æ±‚ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã‹ã‚‰å–å¾—ã™ã‚‹æ™‚ã«ä½¿ç”¨ã™ã‚‹å±æ€§åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã¯ã€{@link StreamExchangeInterceptorServiceMBean#DEFAULT_REQUEST_OBJECT_ATTRIBUTE_NAME}ã€‚<br>
      *
-     * @param name ‘®«–¼
+     * @param name å±æ€§å
      * @see StreamExchangeInterceptorServiceMBean#DEFAULT_REQUEST_OBJECT_ATTRIBUTE_NAME
      */
     public void setRequestObjectAttributeName(String name);
     
     /**
-     * —v‹ƒIƒuƒWƒFƒNƒg‚ğƒŠƒNƒGƒXƒg‘®«‚©‚çæ“¾‚·‚é‚Ég—p‚·‚é‘®«–¼‚ğæ“¾‚·‚éB<p>
+     * è¦æ±‚ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã‹ã‚‰å–å¾—ã™ã‚‹æ™‚ã«ä½¿ç”¨ã™ã‚‹å±æ€§åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘®«–¼
+     * @return å±æ€§å
      */
     public String getRequestObjectAttributeName();
     
     /**
-     * ƒŠƒNƒGƒXƒg‘®«‚Ìƒ†[ƒU‚ğ“Á’è‚·‚éƒvƒƒpƒeƒB‚ÆA“ÁŒ ƒ†[ƒUƒR[ƒhƒ}ƒXƒ^‚Ìƒ†[ƒU‚ğ“Á’è‚·‚éƒvƒƒpƒeƒB‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
-     * ƒeƒXƒgŠJ•ú‚ğƒTƒ|[ƒg‚·‚éê‡‚ÍAİ’è‚·‚éB<br>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã®ãƒ¦ãƒ¼ã‚¶ã‚’ç‰¹å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ã€ç‰¹æ¨©ãƒ¦ãƒ¼ã‚¶ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã®ãƒ¦ãƒ¼ã‚¶ã‚’ç‰¹å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ†ã‚¹ãƒˆé–‹æ”¾ã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹å ´åˆã¯ã€è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param mapping ƒŠƒNƒGƒXƒg‘®«‚Ìƒ†[ƒU‚ğ“Á’è‚·‚éƒvƒƒpƒeƒB=“ÁŒ ƒ†[ƒUƒR[ƒhƒ}ƒXƒ^‚Ìƒ†[ƒU‚ğ“Á’è‚·‚éƒvƒƒpƒeƒB
+     * @param mapping ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã®ãƒ¦ãƒ¼ã‚¶ã‚’ç‰¹å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£=ç‰¹æ¨©ãƒ¦ãƒ¼ã‚¶ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã®ãƒ¦ãƒ¼ã‚¶ã‚’ç‰¹å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public void setSpecialUserMapping(Map mapping);
     
     /**
-     * ƒŠƒNƒGƒXƒg‘®«‚Ìƒ†[ƒU‚ğ“Á’è‚·‚éƒvƒƒpƒeƒB‚ÆA“ÁŒ ƒ†[ƒUƒR[ƒhƒ}ƒXƒ^‚Ìƒ†[ƒU‚ğ“Á’è‚·‚éƒvƒƒpƒeƒB‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã®ãƒ¦ãƒ¼ã‚¶ã‚’ç‰¹å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ã€ç‰¹æ¨©ãƒ¦ãƒ¼ã‚¶ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã®ãƒ¦ãƒ¼ã‚¶ã‚’ç‰¹å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒNƒGƒXƒg‘®«‚Ìƒ†[ƒU‚ğ“Á’è‚·‚éƒvƒƒpƒeƒB=“ÁŒ ƒ†[ƒUƒR[ƒhƒ}ƒXƒ^‚Ìƒ†[ƒU‚ğ“Á’è‚·‚éƒvƒƒpƒeƒB
+     * @return ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã®ãƒ¦ãƒ¼ã‚¶ã‚’ç‰¹å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£=ç‰¹æ¨©ãƒ¦ãƒ¼ã‚¶ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã®ãƒ¦ãƒ¼ã‚¶ã‚’ç‰¹å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public Map getSpecialUserMapping();
     
     /**
-     * ƒŠƒNƒGƒXƒg‘®«‚Ì•ÂÇƒŒƒR[ƒh‚ğ“Á’è‚·‚éƒvƒƒpƒeƒB‚ÆA•ÂÇƒR[ƒhƒ}ƒXƒ^‚Ì•ÂÇƒŒƒR[ƒh‚ğ“Á’è‚·‚éƒvƒƒpƒeƒB‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
-     * •ÂÇƒR[ƒhƒ}ƒXƒ^‚ğAƒŠƒNƒGƒXƒg‘®«‚©‚çi‚è‚İ‚½‚¢ê‡‚ÉAİ’è‚·‚éB<br>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã®é–‰å¡ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç‰¹å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ã€é–‰å¡ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã®é–‰å¡ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç‰¹å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * é–‰å¡ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‚’ã€ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã‹ã‚‰çµã‚Šè¾¼ã¿ãŸã„å ´åˆã«ã€è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param mapping ƒŠƒNƒGƒXƒg‘®«‚Ì•ÂÇƒŒƒR[ƒh‚ğ“Á’è‚·‚éƒvƒƒpƒeƒB=•ÂÇƒR[ƒhƒ}ƒXƒ^‚Ì•ÂÇƒŒƒR[ƒh‚ğ“Á’è‚·‚éƒvƒƒpƒeƒB
+     * @param mapping ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã®é–‰å¡ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç‰¹å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£=é–‰å¡ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã®é–‰å¡ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç‰¹å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public void setBlockadeMapping(Map mapping);
     
     /**
-     * ƒŠƒNƒGƒXƒg‘®«‚Ì•ÂÇƒŒƒR[ƒh‚ğ“Á’è‚·‚éƒvƒƒpƒeƒB‚ÆA•ÂÇƒR[ƒhƒ}ƒXƒ^‚Ì•ÂÇƒŒƒR[ƒh‚ğ“Á’è‚·‚éƒvƒƒpƒeƒB‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã®é–‰å¡ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç‰¹å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ã€é–‰å¡ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã®é–‰å¡ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç‰¹å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒNƒGƒXƒg‘®«‚Ì•ÂÇƒŒƒR[ƒh‚ğ“Á’è‚·‚éƒvƒƒpƒeƒB=•ÂÇƒR[ƒhƒ}ƒXƒ^‚Ì•ÂÇƒŒƒR[ƒh‚ğ“Á’è‚·‚éƒvƒƒpƒeƒB
+     * @return ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§ã®é–‰å¡ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç‰¹å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£=é–‰å¡ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã®é–‰å¡ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’ç‰¹å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
      */
     public Map getBlockadeMapping();
     
     /**
-     * {@link jp.ossc.nimbus.service.codemaster.CodeMasterFinder CodeMasterFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ƒR[ƒhƒ}ƒXƒ^‚Ì“Ç‚İæ‚èˆêŠÑ«‚ğ•ÛØ‚µ‚½‚¢ê‡‚ÍA‚±‚Ì‘®«‚Ì‘ã‚í‚è‚ÉA{@link #setThreadContextServiceName(ServiceName)}‚ğİ’è‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.codemaster.CodeMasterFinder CodeMasterFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã®èª­ã¿å–ã‚Šä¸€è²«æ€§ã‚’ä¿è¨¼ã—ãŸã„å ´åˆã¯ã€ã“ã®å±æ€§ã®ä»£ã‚ã‚Šã«ã€{@link #setThreadContextServiceName(ServiceName)}ã‚’è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param name CodeMasterFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name CodeMasterFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setCodeMasterFinderServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.codemaster.CodeMasterFinder CodeMasterFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.codemaster.CodeMasterFinder CodeMasterFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return CodeMasterFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return CodeMasterFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getCodeMasterFinderServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.context.ThreadContextService ThreadContextService}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ƒR[ƒhƒ}ƒXƒ^‚Ì“Ç‚İæ‚èˆêŠÑ«‚ğ•ÛØ‚µ‚½‚¢ê‡‚ÍA{@link #setCodeMasterFinderServiceName(ServiceName)}‚Ì‘ã‚í‚è‚É‚±‚Ì‘®«‚ğİ’è‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.context.ThreadContextService ThreadContextService}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã®èª­ã¿å–ã‚Šä¸€è²«æ€§ã‚’ä¿è¨¼ã—ãŸã„å ´åˆã¯ã€{@link #setCodeMasterFinderServiceName(ServiceName)}ã®ä»£ã‚ã‚Šã«ã“ã®å±æ€§ã‚’è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param name ThreadContextServiceƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ThreadContextServiceã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setThreadContextServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.context.ThreadContextService ThreadContextService}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.context.ThreadContextService ThreadContextService}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ThreadContextServiceƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ThreadContextServiceã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getThreadContextServiceName();
     
     /**
-     * •ÂÇƒR[ƒhƒ}ƒXƒ^‚ÌƒR[ƒhƒ}ƒXƒ^ƒL[‚ğİ’è‚·‚éB<p>
+     * é–‰å¡ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã®ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key ƒR[ƒhƒ}ƒXƒ^ƒL[
+     * @param key ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‚­ãƒ¼
      */
     public void setBlockadeCodeMasterKey(String key);
     
     /**
-     * •ÂÇƒR[ƒhƒ}ƒXƒ^‚ÌƒR[ƒhƒ}ƒXƒ^ƒL[‚ğæ“¾‚·‚éB<p>
+     * é–‰å¡ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã®ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒR[ƒhƒ}ƒXƒ^ƒL[
+     * @return ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‚­ãƒ¼
      */
     public String getBlockadeCodeMasterKey();
     
     /**
-     * “ÁŒ ƒ†[ƒUƒR[ƒhƒ}ƒXƒ^‚ÌƒR[ƒhƒ}ƒXƒ^ƒL[‚ğİ’è‚·‚éB<p>
-     * ƒeƒXƒgŠJ•ú‚ğƒTƒ|[ƒg‚·‚éê‡‚ÍAİ’è‚·‚éB<br>
+     * ç‰¹æ¨©ãƒ¦ãƒ¼ã‚¶ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã®ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ†ã‚¹ãƒˆé–‹æ”¾ã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹å ´åˆã¯ã€è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param key ƒR[ƒhƒ}ƒXƒ^ƒL[
+     * @param key ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‚­ãƒ¼
      */
     public void setSpecialUserCodeMasterKey(String key);
     
     /**
-     * “ÁŒ ƒ†[ƒUƒR[ƒhƒ}ƒXƒ^‚ÌƒR[ƒhƒ}ƒXƒ^ƒL[‚ğæ“¾‚·‚éB<p>
+     * ç‰¹æ¨©ãƒ¦ãƒ¼ã‚¶ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã®ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒR[ƒhƒ}ƒXƒ^ƒL[
+     * @return ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã‚­ãƒ¼
      */
     public String getSpecialUserCodeMasterKey();
     
     /**
-     * •ÂÇƒR[ƒhƒ}ƒXƒ^‚ÌƒpƒX‚ğ•\‚·ƒvƒƒpƒeƒB–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_PROPERTY_NAME_PATH}
+     * é–‰å¡ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã®ãƒ‘ã‚¹ã‚’è¡¨ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_PROPERTY_NAME_PATH}
      *
-     * @param name ƒpƒX‚ğ•\‚·ƒvƒƒpƒeƒB–¼
+     * @param name ãƒ‘ã‚¹ã‚’è¡¨ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
      * @see #DEFAULT_PROPERTY_NAME_PATH
      */
     public void setPathPropertyName(String name);
     
     /**
-     * •ÂÇƒR[ƒhƒ}ƒXƒ^‚ÌƒpƒX‚ğ•\‚·ƒvƒƒpƒeƒB–¼‚ğæ“¾‚·‚éB<p>
+     * é–‰å¡ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã®ãƒ‘ã‚¹ã‚’è¡¨ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒpƒX‚ğ•\‚·ƒvƒƒpƒeƒB–¼
+     * @return ãƒ‘ã‚¹ã‚’è¡¨ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
      */
     public String getPathPropertyName();
     
     /**
-     * •ÂÇƒR[ƒhƒ}ƒXƒ^‚Ì•ÂÇó‘Ô‚ğ•\‚·ƒvƒƒpƒeƒB–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_PROPERTY_NAME_STATE}
+     * é–‰å¡ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã®é–‰å¡çŠ¶æ…‹ã‚’è¡¨ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_PROPERTY_NAME_STATE}
      *
-     * @param name •ÂÇó‘Ô‚ğ•\‚·ƒvƒƒpƒeƒB–¼
+     * @param name é–‰å¡çŠ¶æ…‹ã‚’è¡¨ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
      * @see #DEFAULT_PROPERTY_NAME_STATE
      */
     public void setStatePropertyName(String name);
     
     /**
-     * •ÂÇƒR[ƒhƒ}ƒXƒ^‚Ì•ÂÇó‘Ô‚ğ•\‚·ƒvƒƒpƒeƒB–¼‚ğæ“¾‚·‚éB<p>
+     * é–‰å¡ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã®é–‰å¡çŠ¶æ…‹ã‚’è¡¨ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÂÇó‘Ô‚ğ•\‚·ƒvƒƒpƒeƒB–¼
+     * @return é–‰å¡çŠ¶æ…‹ã‚’è¡¨ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
      */
     public String getStatePropertyName();
     
     /**
-     * •ÂÇƒR[ƒhƒ}ƒXƒ^‚Ì•ÂÇƒƒbƒZ[ƒW‚ğ•\‚·ƒvƒƒpƒeƒB–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_PROPERTY_NAME_MESSAGE}
+     * é–‰å¡ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã®é–‰å¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_PROPERTY_NAME_MESSAGE}
      *
-     * @param name •ÂÇƒƒbƒZ[ƒW‚ğ•\‚·ƒvƒƒpƒeƒB–¼
+     * @param name é–‰å¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
      * @see #DEFAULT_PROPERTY_NAME_MESSAGE
      */
     public void setMessagePropertyName(String name);
     
     /**
-     * •ÂÇƒR[ƒhƒ}ƒXƒ^‚Ì•ÂÇƒƒbƒZ[ƒW‚ğ•\‚·ƒvƒƒpƒeƒB–¼‚ğæ“¾‚·‚éB<p>
+     * é–‰å¡ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ã®é–‰å¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •ÂÇƒƒbƒZ[ƒW‚ğ•\‚·ƒvƒƒpƒeƒB–¼
+     * @return é–‰å¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
      */
     public String getMessagePropertyName();
     
     /**
-     * "•ÂÇó‘ÔFŠJ•ú"‚ğ•\‚·ƒXƒe[ƒ^ƒX’l‚ğæ“¾‚·‚éB<p>
+     * "é–‰å¡çŠ¶æ…‹ï¼šé–‹æ”¾"ã‚’è¡¨ã™ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return  "•ÂÇó‘ÔFŠJ•ú"‚ğ•\‚·ƒXƒe[ƒ^ƒX’l
+     * @return  "é–‰å¡çŠ¶æ…‹ï¼šé–‹æ”¾"ã‚’è¡¨ã™ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤
      */
     public int getStateOpen();
     
     /**
-     * "•ÂÇó‘ÔFŠJ•ú"‚ğ•\‚·ƒXƒe[ƒ^ƒX’l‚ğİ’è‚·‚éB<p>
+     * "é–‰å¡çŠ¶æ…‹ï¼šé–‹æ”¾"ã‚’è¡¨ã™ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param state "•ÂÇó‘ÔFŠJ•ú"‚ğ•\‚·ƒXƒe[ƒ^ƒX’l
+     * @param state "é–‰å¡çŠ¶æ…‹ï¼šé–‹æ”¾"ã‚’è¡¨ã™ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤
      */
     public void setStateOpen(int state);
     
     /**
-     * "•ÂÇó‘ÔFŠ®‘S•ÂÇ"‚ğ•\‚·ƒXƒe[ƒ^ƒX’l‚ğæ“¾‚·‚éB<p>
+     * "é–‰å¡çŠ¶æ…‹ï¼šå®Œå…¨é–‰å¡"ã‚’è¡¨ã™ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return  "•ÂÇó‘ÔFŠ®‘S•ÂÇ"‚ğ•\‚·ƒXƒe[ƒ^ƒX’l
+     * @return  "é–‰å¡çŠ¶æ…‹ï¼šå®Œå…¨é–‰å¡"ã‚’è¡¨ã™ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤
      */
     public int getStateAllClose();
     
     /**
-     * "•ÂÇó‘ÔFŠ®‘S•ÂÇ"‚ğ•\‚·ƒXƒe[ƒ^ƒX’l‚ğİ’è‚·‚éB<p>
+     * "é–‰å¡çŠ¶æ…‹ï¼šå®Œå…¨é–‰å¡"ã‚’è¡¨ã™ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param state "•ÂÇó‘ÔFŠ®‘S•ÂÇ"‚ğ•\‚·ƒXƒe[ƒ^ƒX’l
+     * @param state "é–‰å¡çŠ¶æ…‹ï¼šå®Œå…¨é–‰å¡"ã‚’è¡¨ã™ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤
      */
     public void setStateAllClose(int state);
     
     /**
-     * "•ÂÇó‘ÔF•”•ª•ÂÇ"‚ğ•\‚·ƒXƒe[ƒ^ƒX’l‚ğæ“¾‚·‚éB<p>
+     * "é–‰å¡çŠ¶æ…‹ï¼šéƒ¨åˆ†é–‰å¡"ã‚’è¡¨ã™ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return  "•ÂÇó‘ÔF•”•ª•ÂÇ"‚ğ•\‚·ƒXƒe[ƒ^ƒX’l
+     * @return  "é–‰å¡çŠ¶æ…‹ï¼šéƒ¨åˆ†é–‰å¡"ã‚’è¡¨ã™ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤
      */
     public int getStatePartClose();
     
     /**
-     * "•ÂÇó‘ÔF•”•ª•ÂÇ"‚ğ•\‚·ƒXƒe[ƒ^ƒX’l‚ğİ’è‚·‚éB<p>
+     * "é–‰å¡çŠ¶æ…‹ï¼šéƒ¨åˆ†é–‰å¡"ã‚’è¡¨ã™ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param state "•ÂÇó‘ÔF•”•ª•ÂÇ"‚ğ•\‚·ƒXƒe[ƒ^ƒX’l
+     * @param state "é–‰å¡çŠ¶æ…‹ï¼šéƒ¨åˆ†é–‰å¡"ã‚’è¡¨ã™ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤
      */
     public void setStatePartClose(int state);
     
     /**
-     * "•ÂÇó‘ÔFƒeƒXƒg•ÂÇ"‚ğ•\‚·ƒXƒe[ƒ^ƒX’l‚ğæ“¾‚·‚éB<p>
+     * "é–‰å¡çŠ¶æ…‹ï¼šãƒ†ã‚¹ãƒˆé–‰å¡"ã‚’è¡¨ã™ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return  "•ÂÇó‘ÔFƒeƒXƒg•ÂÇ"‚ğ•\‚·ƒXƒe[ƒ^ƒX’l
+     * @return  "é–‰å¡çŠ¶æ…‹ï¼šãƒ†ã‚¹ãƒˆé–‰å¡"ã‚’è¡¨ã™ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤
      */
     public int getStateTestAllClose();
     
     /**
-     * "•ÂÇó‘ÔFƒeƒXƒg•ÂÇ"‚ğ•\‚·ƒXƒe[ƒ^ƒX’l‚ğİ’è‚·‚éB<p>
+     * "é–‰å¡çŠ¶æ…‹ï¼šãƒ†ã‚¹ãƒˆé–‰å¡"ã‚’è¡¨ã™ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param state "•ÂÇó‘ÔFƒeƒXƒg•ÂÇ"‚ğ•\‚·ƒXƒe[ƒ^ƒX’l
+     * @param state "é–‰å¡çŠ¶æ…‹ï¼šãƒ†ã‚¹ãƒˆé–‰å¡"ã‚’è¡¨ã™ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤
      */
     public void setStateTestAllClose(int state);
     
     /**
-     * "•ÂÇó‘ÔFƒeƒXƒg•”•ª•ÂÇ"‚ğ•\‚·ƒXƒe[ƒ^ƒX’l‚ğæ“¾‚·‚éB<p>
+     * "é–‰å¡çŠ¶æ…‹ï¼šãƒ†ã‚¹ãƒˆéƒ¨åˆ†é–‰å¡"ã‚’è¡¨ã™ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return  "•ÂÇó‘ÔFƒeƒXƒg•”•ª•ÂÇ"‚ğ•\‚·ƒXƒe[ƒ^ƒX’l
+     * @return  "é–‰å¡çŠ¶æ…‹ï¼šãƒ†ã‚¹ãƒˆéƒ¨åˆ†é–‰å¡"ã‚’è¡¨ã™ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤
      */
     public int getStateTestPartClose();
     
     /**
-     * "•ÂÇó‘ÔFƒeƒXƒg•”•ª•ÂÇ"‚ğ•\‚·ƒXƒe[ƒ^ƒX’l‚ğİ’è‚·‚éB<p>
+     * "é–‰å¡çŠ¶æ…‹ï¼šãƒ†ã‚¹ãƒˆéƒ¨åˆ†é–‰å¡"ã‚’è¡¨ã™ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param state "•ÂÇó‘ÔFƒeƒXƒg•”•ª•ÂÇ"‚ğ•\‚·ƒXƒe[ƒ^ƒX’l
+     * @param state "é–‰å¡çŠ¶æ…‹ï¼šãƒ†ã‚¹ãƒˆéƒ¨åˆ†é–‰å¡"ã‚’è¡¨ã™ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€¤
      */
     public void setStateTestPartClose(int state);
     

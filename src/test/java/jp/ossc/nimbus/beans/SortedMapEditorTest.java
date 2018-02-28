@@ -93,7 +93,7 @@ public class SortedMapEditorTest extends TestCase{
         Map map = (Map)editor.getValue();
         assertEquals(2, map.size());
         assertEquals("1234", map.get("A"));
-        assertEquals("Ç†", map.get("B"));
+        assertEquals("„ÅÇ", map.get("B"));
     }
     
     public void testSetValue1() throws Exception {

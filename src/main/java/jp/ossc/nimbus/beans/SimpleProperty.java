@@ -40,36 +40,36 @@ import java.io.*;
 import jp.ossc.nimbus.beans.dataset.*;
 
 /**
- * ’PƒƒvƒƒpƒeƒBB<p>
- * ”CˆÓ‚ÌBean‚ÌA‚ ‚é’Pƒ‚ÈƒvƒƒpƒeƒB–¼‚ÌƒvƒƒpƒeƒB‚ÉƒAƒNƒZƒX‚·‚é‚½‚ß‚Ì{@link Property}B<br>
+ * å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã€‚<p>
+ * ä»»æ„ã®Beanã®ã€ã‚ã‚‹å˜ç´”ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãŸã‚ã®{@link Property}ã€‚<br>
  * <p>
- * ˆÈ‰º‚Ì‚æ‚¤‚È’PƒƒvƒƒpƒeƒB‚ÉƒAƒNƒZƒX‚·‚éƒ^ƒCƒvƒZ[ƒt‚ÈƒR[ƒh‚ª‚ ‚éB<br>
+ * ä»¥ä¸‹ã®ã‚ˆã†ãªå˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ã‚¿ã‚¤ãƒ—ã‚»ãƒ¼ãƒ•ãªã‚³ãƒ¼ãƒ‰ãŒã‚ã‚‹ã€‚<br>
  * <pre>
  *   Hoge propValue = obj.getHoge();
  *   obj.setHoge(propValue);
  * </pre>
- * ’PƒƒvƒƒpƒeƒB‚ğg‚¤–‚ÅA‚±‚ÌƒR[ƒh‚ğ<br>
+ * å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ä½¿ã†äº‹ã§ã€ã“ã®ã‚³ãƒ¼ãƒ‰ã‚’<br>
  * <pre>
  *   SimpleProperty prop = new SimpleProperty();
  *   prop.parse("hoge");
  *   Object propValue = prop.getProperty(obj);
  *   prop.setProperty(obj, propValue);
  * </pre>
- * ‚Æ‚¢‚¤ƒR[ƒh‚É’u‚«Š·‚¦‚é–‚ª‚Å‚«‚éB<br>
- * ‚±‚ÌƒR[ƒh‚ÍAç’·‚É‚È‚Á‚Ä‚¢‚é‚ªA‘ÎÛ‚Æ‚È‚éBean‚ÌŒ^‚âƒƒ\ƒbƒh‚ğƒ^ƒCƒvƒZ[ƒt‚É‘‚©‚È‚¢“®“I‚ÈƒR[ƒh‚É‚È‚Á‚Ä‚¢‚éB<br>
+ * ã¨ã„ã†ã‚³ãƒ¼ãƒ‰ã«ç½®ãæ›ãˆã‚‹äº‹ãŒã§ãã‚‹ã€‚<br>
+ * ã“ã®ã‚³ãƒ¼ãƒ‰ã¯ã€å†—é•·ã«ãªã£ã¦ã„ã‚‹ãŒã€å¯¾è±¡ã¨ãªã‚‹Beanã®å‹ã‚„ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ã‚¿ã‚¤ãƒ—ã‚»ãƒ¼ãƒ•ã«æ›¸ã‹ãªã„å‹•çš„ãªã‚³ãƒ¼ãƒ‰ã«ãªã£ã¦ã„ã‚‹ã€‚<br>
  * <p>
- * ‚±‚Ì’PƒƒvƒƒpƒeƒB‚Å‚ÍAˆÈ‰º‚Ì‚æ‚¤‚ÈBean‚ÌƒvƒƒpƒeƒB‚É‘Î‚·‚éƒAƒNƒZƒX•û–@‚ª—pˆÓ‚³‚ê‚Ä‚¢‚éB<br>
+ * ã“ã®å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§ã¯ã€ä»¥ä¸‹ã®ã‚ˆã†ãªBeanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å¯¾ã™ã‚‹ã‚¢ã‚¯ã‚»ã‚¹æ–¹æ³•ãŒç”¨æ„ã•ã‚Œã¦ã„ã‚‹ã€‚<br>
  * <table border="1">
- *   <tr bgcolor="#CCCCFF"><th rowspan="3">ƒAƒNƒZƒX•û–@</th><th>Java•\Œ»</th><th rowspan="3">ƒvƒƒpƒeƒB•¶š—ñ•\Œ»</th></tr>
- *   <tr bgcolor="#CCCCFF"><th>ƒvƒƒpƒeƒBæ“¾</th></tr>
- *   <tr bgcolor="#CCCCFF"><th>ƒvƒƒpƒeƒBİ’è</th></tr>
- *   <tr><td rowspan="2">Java BeansƒvƒƒpƒeƒB</td><td>bean.getHoge()</td><td rowspan="2">hoge</td></tr>
+ *   <tr bgcolor="#CCCCFF"><th rowspan="3">ã‚¢ã‚¯ã‚»ã‚¹æ–¹æ³•</th><th>Javaè¡¨ç¾</th><th rowspan="3">ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—è¡¨ç¾</th></tr>
+ *   <tr bgcolor="#CCCCFF"><th>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å–å¾—</th></tr>
+ *   <tr bgcolor="#CCCCFF"><th>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£è¨­å®š</th></tr>
+ *   <tr><td rowspan="2">Java Beansãƒ—ãƒ­ãƒ‘ãƒ†ã‚£</td><td>bean.getHoge()</td><td rowspan="2">hoge</td></tr>
  *   <tr><td>bean.setHoge(value)</td></tr>
- *   <tr><td rowspan="2">ƒvƒƒpƒeƒBƒƒ\ƒbƒh</td><td>bean.length()</td><td rowspan="2">length</td></tr>
+ *   <tr><td rowspan="2">ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒ¡ã‚½ãƒƒãƒ‰</td><td>bean.length()</td><td rowspan="2">length</td></tr>
  *   <tr><td>bean.length(value)</td></tr>
- *   <tr><td rowspan="2">java.util.MapƒvƒƒpƒeƒB</td><td>((java.util.Map)bean).get("hoge")</td><td rowspan="2">hoge</td></tr>
+ *   <tr><td rowspan="2">java.util.Mapãƒ—ãƒ­ãƒ‘ãƒ†ã‚£</td><td>((java.util.Map)bean).get("hoge")</td><td rowspan="2">hoge</td></tr>
  *   <tr><td>((java.util.Map)bean).put("hoge", value)</td></tr>
- *   <tr><td rowspan="2">ƒpƒuƒŠƒbƒNƒtƒB[ƒ‹ƒh</td><td>bean.hoge</td><td rowspan="2">hoge</td></tr>
+ *   <tr><td rowspan="2">ãƒ‘ãƒ–ãƒªãƒƒã‚¯ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰</td><td>bean.hoge</td><td rowspan="2">hoge</td></tr>
  *   <tr><td>bean.hoge = value</td></tr>
  * </table>
  *
@@ -79,12 +79,12 @@ public class SimpleProperty implements Property, Serializable, Comparable{
     
     private static final long serialVersionUID = 5346194284290420718L;
     
-    // ƒGƒ‰[ƒƒbƒZ[ƒW’è‹`
+    // ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å®šç¾©
     private static final String MSG_00001
         = "Length of property literal must be more than 1.";
     
     /**
-     * ƒŠƒtƒŒƒNƒVƒ‡ƒ“‚Åˆø”‚È‚µ‚Ìgetter‚ğŒÄ‚Ño‚·‚½‚ß‚Ì’·‚³‚O‚ÌƒIƒuƒWƒFƒNƒg”z—ñB<p>
+     * ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã§å¼•æ•°ãªã—ã®getterã‚’å‘¼ã³å‡ºã™ãŸã‚ã®é•·ã•ï¼ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆé…åˆ—ã€‚<p>
      */
     protected static final Object[] NULL_ARGS = new Object[0];
     
@@ -113,71 +113,71 @@ public class SimpleProperty implements Property, Serializable, Comparable{
     }
     
     /**
-     * ƒvƒƒpƒeƒB–¼B<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã€‚<p>
      */
     protected String property;
     
     /**
-     * GETƒƒ\ƒbƒhƒIƒuƒWƒFƒNƒg‚ÌƒLƒƒƒbƒVƒ…B<p>
+     * GETãƒ¡ã‚½ãƒƒãƒ‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã€‚<p>
      */
     protected transient Map getMethodCache = Collections.synchronizedMap(new HashMap());
     
     /**
-     * SETƒƒ\ƒbƒhƒIƒuƒWƒFƒNƒg‚ÌƒLƒƒƒbƒVƒ…B<p>
+     * SETãƒ¡ã‚½ãƒƒãƒ‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã€‚<p>
      */
     protected transient Map setMethodCache = Collections.synchronizedMap(new HashMap());
     
     /**
-     * ƒtƒB[ƒ‹ƒhƒIƒuƒWƒFƒNƒg‚ÌƒLƒƒƒbƒVƒ…B<p>
+     * ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã€‚<p>
      */
     protected transient Map fieldCache = Collections.synchronizedMap(new HashMap());
     
     /**
-     * nullQÆ‚ÌƒvƒƒpƒeƒB‚ğæ“¾g—p‚Æ‚µ‚½ê‡‚ÉA—áŠO‚ğthrow‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * true‚Ìê‡‚ÍA—áŠO‚ğthrow‚µ‚È‚¢BƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * nullå‚ç…§ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ä½¿ç”¨ã¨ã—ãŸå ´åˆã«ã€ä¾‹å¤–ã‚’throwã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * trueã®å ´åˆã¯ã€ä¾‹å¤–ã‚’throwã—ãªã„ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      */
     protected boolean isIgnoreNullProperty;
     
     /**
-     * ƒvƒƒpƒeƒB–¼‚ğ‚½‚È‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
-     * {@link #setPropertyName(String)}‚ÅA—LŒø‚ÈƒvƒƒpƒeƒB–¼‚ğw’è‚µ‚È‚¯‚ê‚ÎA–³Œø‚ÈƒCƒ“ƒXƒ^ƒ“ƒX‚Å‚·B<br>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’æŒãŸãªã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * {@link #setPropertyName(String)}ã§ã€æœ‰åŠ¹ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’æŒ‡å®šã—ãªã‘ã‚Œã°ã€ç„¡åŠ¹ãªã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã§ã™ã€‚<br>
      */
     public SimpleProperty(){
     }
     
     /**
-     * w’è‚³‚ê‚½ƒvƒƒpƒeƒB–¼‚ÌƒvƒƒpƒeƒB‚ÉƒAƒNƒZƒX‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
-     * @param prop ƒvƒƒpƒeƒB–¼
-     * @exception IllegalArgumentException w’è‚³‚ê‚½ƒvƒƒpƒeƒB–¼‚ªnull‚Ü‚½‚ÍA’·‚³‚O‚Ìê‡
+     * æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * @param prop ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @exception IllegalArgumentException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åãŒnullã¾ãŸã¯ã€é•·ã•ï¼ã®å ´åˆ
      */
     public SimpleProperty(String prop) throws IllegalArgumentException{
         setPropertyName(prop);
     }
     
     /**
-     * w’è‚µ‚½ƒvƒƒpƒeƒB•¶š—ñ‚ğ‰ğÍ‚·‚éB<p>
-     * ‚±‚±‚Åw’è‰Â”\‚È•¶š—ñ‚ÍA<br>
-     * &nbsp;ƒvƒƒpƒeƒB–¼<br>
-     * ‚Å‚ ‚éB<br>
-     * ’A‚µAƒvƒƒpƒeƒB–¼‚ÍÈ—ª‰ÂB<br>
+     * æŒ‡å®šã—ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã‚’è§£æã™ã‚‹ã€‚<p>
+     * ã“ã“ã§æŒ‡å®šå¯èƒ½ãªæ–‡å­—åˆ—ã¯ã€<br>
+     * &nbsp;ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å<br>
+     * ã§ã‚ã‚‹ã€‚<br>
+     * ä½†ã—ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã¯çœç•¥å¯ã€‚<br>
      *
-     * @param prop ƒvƒƒpƒeƒB•¶š—ñ
-     * @exception IllegalArgumentException w’è‚³‚ê‚½ƒvƒƒpƒeƒB•¶š—ñ‚ğ‚±‚ÌƒvƒƒpƒeƒBƒIƒuƒWƒFƒNƒg‚ª‰ğÍ‚Å‚«‚È‚¢ê‡
+     * @param prop ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—
+     * @exception IllegalArgumentException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ–‡å­—åˆ—ã‚’ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒè§£æã§ããªã„å ´åˆ
      */
     public void parse(String prop) throws IllegalArgumentException{
         setPropertyName(prop);
     }
     
-    // PropertyƒCƒ“ƒ^ƒtƒF[ƒX‚ÌJavaDoc
+    // Propertyã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®JavaDoc
     public String getPropertyName(){
         return property;
     }
     
     /**
-     * ƒvƒƒpƒeƒB–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param prop ƒvƒƒpƒeƒB–¼
-     * @exception IllegalArgumentException w’è‚³‚ê‚½ƒvƒƒpƒeƒB–¼‚ªnull‚Ü‚½‚ÍA’·‚³‚O‚Ìê‡
+     * @param prop ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @exception IllegalArgumentException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åãŒnullã¾ãŸã¯ã€é•·ã•ï¼ã®å ´åˆ
      */
     protected void setPropertyName(String prop)
      throws IllegalArgumentException{
@@ -383,13 +383,13 @@ public class SimpleProperty implements Property, Serializable, Comparable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚©‚çA‚±‚ÌƒvƒƒpƒeƒB‚ª‚ÂƒvƒƒpƒeƒB–¼‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚ÄƒvƒƒpƒeƒB’l‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ã¦ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @return ƒvƒƒpƒeƒB’l
-     * @exception NoSuchReadablePropertyException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌGetter‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @return ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
+     * @exception NoSuchReadablePropertyException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®GetterãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     public Object getProperty(Object obj)
      throws NoSuchPropertyException, InvocationTargetException{
@@ -427,14 +427,14 @@ public class SimpleProperty implements Property, Serializable, Comparable{
                     return readMethod.invoke(obj, new Object[]{property});
                 }
             }catch(IllegalAccessException e){
-                // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                // èµ·ã“ã‚‰ãªã„ã¯ãš
                 throw new NoSuchPropertyException(
                     clazz,
                     property,
                     e
                 );
             }catch(IllegalArgumentException e){
-                // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                // èµ·ã“ã‚‰ãªã„ã¯ãš
                 throw new NoSuchPropertyException(
                     clazz,
                     property,
@@ -447,14 +447,14 @@ public class SimpleProperty implements Property, Serializable, Comparable{
                 try{
                     return field.get(obj);
                 }catch(IllegalAccessException e2){
-                    // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                    // èµ·ã“ã‚‰ãªã„ã¯ãš
                     throw new NoSuchPropertyException(
                         clazz,
                         property,
                         e2
                     );
                 }catch(IllegalArgumentException e2){
-                    // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                    // èµ·ã“ã‚‰ãªã„ã¯ãš
                     throw new NoSuchPropertyException(
                         clazz,
                         property,
@@ -474,13 +474,13 @@ public class SimpleProperty implements Property, Serializable, Comparable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ÉA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒvƒƒpƒeƒB’l‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @param value İ’è‚·‚éƒvƒƒpƒeƒB’l
-     * @exception NoSuchWritablePropertyException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌSetter‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @param value è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
+     * @exception NoSuchWritablePropertyException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®SetterãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     public void setProperty(Object obj, Object value)
      throws NoSuchPropertyException, InvocationTargetException{
@@ -488,14 +488,14 @@ public class SimpleProperty implements Property, Serializable, Comparable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ÉA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒvƒƒpƒeƒB’l‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @param type ƒvƒƒpƒeƒB‚ÌŒ^
-     * @param value İ’è‚·‚éƒvƒƒpƒeƒB’l
-     * @exception NoSuchWritablePropertyException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌSetter‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @param type ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹
+     * @param value è¨­å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤
+     * @exception NoSuchWritablePropertyException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®SetterãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     public void setProperty(Object obj, Class type, Object value)
      throws NoSuchPropertyException, InvocationTargetException{
@@ -551,14 +551,14 @@ public class SimpleProperty implements Property, Serializable, Comparable{
                     writeMethod.invoke(obj, new Object[]{property, value});
                 }
             }catch(IllegalAccessException e){
-                // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                // èµ·ã“ã‚‰ãªã„ã¯ãš
                 throw new NoSuchPropertyException(
                     clazz,
                     property,
                     e
                 );
             }catch(IllegalArgumentException e){
-                // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                // èµ·ã“ã‚‰ãªã„ã¯ãš
                 throw new NoSuchPropertyException(
                     clazz,
                     property,
@@ -572,7 +572,7 @@ public class SimpleProperty implements Property, Serializable, Comparable{
                     field.set(obj, value);
                     return;
                 }catch(IllegalAccessException e2){
-                    // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                    // èµ·ã“ã‚‰ãªã„ã¯ãš
                     throw new NoSuchPropertyException(
                         clazz,
                         property,
@@ -590,13 +590,13 @@ public class SimpleProperty implements Property, Serializable, Comparable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚©‚çA‚±‚ÌƒvƒƒpƒeƒB‚ª‚ÂƒvƒƒpƒeƒB–¼‚ÌGetterƒƒ\ƒbƒh‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®Getterãƒ¡ã‚½ãƒƒãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @return ‚±‚ÌƒvƒƒpƒeƒB‚ª‚ÂƒvƒƒpƒeƒB–¼‚ÌGetterƒƒ\ƒbƒh
-     * @exception NoSuchReadablePropertyException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌGetter‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @return ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®Getterãƒ¡ã‚½ãƒƒãƒ‰
+     * @exception NoSuchReadablePropertyException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®GetterãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     public Method getReadMethod(Object obj)
      throws NoSuchPropertyException, InvocationTargetException{
@@ -620,13 +620,13 @@ public class SimpleProperty implements Property, Serializable, Comparable{
     }
     
     /**
-     * w’è‚µ‚½ƒNƒ‰ƒX‚©‚çA‚±‚ÌƒvƒƒpƒeƒB‚ª‚ÂƒvƒƒpƒeƒB–¼‚ÌGetterƒƒ\ƒbƒh‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚¯ãƒ©ã‚¹ã‹ã‚‰ã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®Getterãƒ¡ã‚½ãƒƒãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param clazz ‘ÎÛ‚Æ‚È‚éƒNƒ‰ƒX
-     * @return ‚±‚ÌƒvƒƒpƒeƒB‚ª‚ÂƒvƒƒpƒeƒB–¼‚ÌGetterƒƒ\ƒbƒh
-     * @exception NoSuchReadablePropertyException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌGetter‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param clazz å¯¾è±¡ã¨ãªã‚‹ã‚¯ãƒ©ã‚¹
+     * @return ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®Getterãƒ¡ã‚½ãƒƒãƒ‰
+     * @exception NoSuchReadablePropertyException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®GetterãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     public Method getReadMethod(Class clazz)
      throws NoSuchPropertyException, InvocationTargetException{
@@ -634,14 +634,14 @@ public class SimpleProperty implements Property, Serializable, Comparable{
     }
     
     /**
-     * w’è‚µ‚½ƒNƒ‰ƒX‚©‚çA‚±‚ÌƒvƒƒpƒeƒB‚ª‚ÂƒvƒƒpƒeƒB–¼‚ÌGetterƒƒ\ƒbƒh‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚¯ãƒ©ã‚¹ã‹ã‚‰ã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®Getterãƒ¡ã‚½ãƒƒãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param clazz ‘ÎÛ‚Æ‚È‚éƒNƒ‰ƒX
-     * @param isThrow NoSuchPropertyException‚ğthrow‚·‚é‚©‚Ç‚¤‚©Bfalse‚Ìê‡‚ÍAnull‚ğ–ß‚·
-     * @return ‚±‚ÌƒvƒƒpƒeƒB‚ª‚ÂƒvƒƒpƒeƒB–¼‚ÌGetterƒƒ\ƒbƒh
-     * @exception NoSuchReadablePropertyException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌGetter‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param clazz å¯¾è±¡ã¨ãªã‚‹ã‚¯ãƒ©ã‚¹
+     * @param isThrow NoSuchPropertyExceptionã‚’throwã™ã‚‹ã‹ã©ã†ã‹ã€‚falseã®å ´åˆã¯ã€nullã‚’æˆ»ã™
+     * @return ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®Getterãƒ¡ã‚½ãƒƒãƒ‰
+     * @exception NoSuchReadablePropertyException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®GetterãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     protected Method getReadMethod(Class clazz, boolean isThrow)
      throws NoSuchPropertyException, InvocationTargetException{
@@ -768,23 +768,23 @@ public class SimpleProperty implements Property, Serializable, Comparable{
     }
     
     /**
-     * w’è‚µ‚½ƒNƒ‰ƒX‚©‚çA‚±‚ÌƒvƒƒpƒeƒB‚ª‚ÂƒvƒƒpƒeƒB–¼‚ÌƒtƒB[ƒ‹ƒh‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚¯ãƒ©ã‚¹ã‹ã‚‰ã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param clazz ‘ÎÛ‚Æ‚È‚éƒNƒ‰ƒX
-     * @return ‚±‚ÌƒvƒƒpƒeƒB‚ª‚ÂƒvƒƒpƒeƒB–¼‚ÌƒtƒB[ƒ‹ƒh
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡
+     * @param clazz å¯¾è±¡ã¨ãªã‚‹ã‚¯ãƒ©ã‚¹
+     * @return ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆ
      */
     public Field getField(Class clazz) throws NoSuchPropertyException{
         return getField(clazz, true);
     }
     
     /**
-     * w’è‚µ‚½ƒNƒ‰ƒX‚©‚çA‚±‚ÌƒvƒƒpƒeƒB‚ª‚ÂƒvƒƒpƒeƒB–¼‚ÌƒtƒB[ƒ‹ƒh‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚¯ãƒ©ã‚¹ã‹ã‚‰ã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param clazz ‘ÎÛ‚Æ‚È‚éƒNƒ‰ƒX
-     * @param isThrow NoSuchPropertyException‚ğthrow‚·‚é‚©‚Ç‚¤‚©Bfalse‚Ìê‡‚ÍAnull‚ğ–ß‚·
-     * @return ‚±‚ÌƒvƒƒpƒeƒB‚ª‚ÂƒvƒƒpƒeƒB–¼‚ÌƒtƒB[ƒ‹ƒh
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡
+     * @param clazz å¯¾è±¡ã¨ãªã‚‹ã‚¯ãƒ©ã‚¹
+     * @param isThrow NoSuchPropertyExceptionã‚’throwã™ã‚‹ã‹ã©ã†ã‹ã€‚falseã®å ´åˆã¯ã€nullã‚’æˆ»ã™
+     * @return ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆ
      */
     protected Field getField(Class clazz, boolean isThrow) throws NoSuchPropertyException{
         Field field = null;
@@ -827,13 +827,13 @@ public class SimpleProperty implements Property, Serializable, Comparable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚©‚çA‚±‚ÌƒvƒƒpƒeƒB‚ª‚ÂƒvƒƒpƒeƒB–¼‚ÌSetterƒƒ\ƒbƒh‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®Setterãƒ¡ã‚½ãƒƒãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @return ‚±‚ÌƒvƒƒpƒeƒB‚ª‚ÂƒvƒƒpƒeƒB–¼‚ÌSetterƒƒ\ƒbƒh
-     * @exception NoSuchReadablePropertyException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌGetter‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @return ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®Setterãƒ¡ã‚½ãƒƒãƒ‰
+     * @exception NoSuchReadablePropertyException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®GetterãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     public Method getWriteMethod(Object obj)
      throws NoSuchPropertyException, InvocationTargetException{
@@ -857,13 +857,13 @@ public class SimpleProperty implements Property, Serializable, Comparable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚©‚çA‚±‚ÌƒvƒƒpƒeƒB‚ª‚ÂƒvƒƒpƒeƒB–¼‚ÌSetterƒƒ\ƒbƒh‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®Setterãƒ¡ã‚½ãƒƒãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param clazz ‘ÎÛ‚Æ‚È‚éBean‚ÌƒNƒ‰ƒX
-     * @return ‚±‚ÌƒvƒƒpƒeƒB‚ª‚ÂƒvƒƒpƒeƒB–¼‚ÌSetterƒƒ\ƒbƒh
-     * @exception NoSuchWritablePropertyException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌSetter‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param clazz å¯¾è±¡ã¨ãªã‚‹Beanã®ã‚¯ãƒ©ã‚¹
+     * @return ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®Setterãƒ¡ã‚½ãƒƒãƒ‰
+     * @exception NoSuchWritablePropertyException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®SetterãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     public Method getWriteMethod(Class clazz)
      throws NoSuchPropertyException, InvocationTargetException{
@@ -871,14 +871,14 @@ public class SimpleProperty implements Property, Serializable, Comparable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚©‚çA‚±‚ÌƒvƒƒpƒeƒB‚ª‚ÂƒvƒƒpƒeƒB–¼‚ÌSetterƒƒ\ƒbƒh‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®Setterãƒ¡ã‚½ãƒƒãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param clazz ‘ÎÛ‚Æ‚È‚éBean‚ÌƒNƒ‰ƒX
-     * @param valClazz İ’è‚·‚é’l‚ÌƒNƒ‰ƒX
-     * @return ‚±‚ÌƒvƒƒpƒeƒB‚ª‚ÂƒvƒƒpƒeƒB–¼‚ÌSetterƒƒ\ƒbƒh
-     * @exception NoSuchWritablePropertyException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌSetter‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param clazz å¯¾è±¡ã¨ãªã‚‹Beanã®ã‚¯ãƒ©ã‚¹
+     * @param valClazz è¨­å®šã™ã‚‹å€¤ã®ã‚¯ãƒ©ã‚¹
+     * @return ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®Setterãƒ¡ã‚½ãƒƒãƒ‰
+     * @exception NoSuchWritablePropertyException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®SetterãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     public Method getWriteMethod(Class clazz, Class valClazz)
      throws NoSuchPropertyException, InvocationTargetException{
@@ -886,15 +886,15 @@ public class SimpleProperty implements Property, Serializable, Comparable{
     }
     
     /**
-     * w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚©‚çA‚±‚ÌƒvƒƒpƒeƒB‚ª‚ÂƒvƒƒpƒeƒB–¼‚ÌSetterƒƒ\ƒbƒh‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®Setterãƒ¡ã‚½ãƒƒãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param clazz ‘ÎÛ‚Æ‚È‚éBean‚ÌƒNƒ‰ƒX
-     * @param valClazz İ’è‚·‚é’l‚ÌƒNƒ‰ƒX
-     * @param isThrow NoSuchPropertyException‚ğthrow‚·‚é‚©‚Ç‚¤‚©Bfalse‚Ìê‡‚ÍAnull‚ğ–ß‚·
-     * @return ‚±‚ÌƒvƒƒpƒeƒB‚ª‚ÂƒvƒƒpƒeƒB–¼‚ÌSetterƒƒ\ƒbƒh
-     * @exception NoSuchWritablePropertyException w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ÌSetter‚ª‘¶İ‚µ‚È‚¢ê‡
-     * @exception NoSuchPropertyException w’è‚³‚ê‚½Bean‚ªA‚±‚ÌƒvƒƒpƒeƒB‚ª•\‚·ƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‚ğ‚Á‚Ä‚¢‚È‚¢ê‡
-     * @exception InvocationTargetException w’è‚³‚ê‚½Bean‚ÌƒAƒNƒZƒT‚ğŒÄ‚Ño‚µ‚½Œ‹‰ÊA—áŠO‚ªthrow‚³‚ê‚½ê‡
+     * @param clazz å¯¾è±¡ã¨ãªã‚‹Beanã®ã‚¯ãƒ©ã‚¹
+     * @param valClazz è¨­å®šã™ã‚‹å€¤ã®ã‚¯ãƒ©ã‚¹
+     * @param isThrow NoSuchPropertyExceptionã‚’throwã™ã‚‹ã‹ã©ã†ã‹ã€‚falseã®å ´åˆã¯ã€nullã‚’æˆ»ã™
+     * @return ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã®Setterãƒ¡ã‚½ãƒƒãƒ‰
+     * @exception NoSuchWritablePropertyException æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®SetterãŒå­˜åœ¨ã—ãªã„å ´åˆ
+     * @exception NoSuchPropertyException æŒ‡å®šã•ã‚ŒãŸBeanãŒã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¡¨ã™ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒã£ã¦ã„ãªã„å ´åˆ
+     * @exception InvocationTargetException æŒ‡å®šã•ã‚ŒãŸBeanã®ã‚¢ã‚¯ã‚»ã‚µã‚’å‘¼ã³å‡ºã—ãŸçµæœã€ä¾‹å¤–ãŒthrowã•ã‚ŒãŸå ´åˆ
      */
     protected Method getWriteMethod(Class clazz, Class valClazz, boolean isThrow)
      throws NoSuchPropertyException, InvocationTargetException{
@@ -1235,42 +1235,42 @@ public class SimpleProperty implements Property, Serializable, Comparable{
     }
     
     /**
-     * w’è‚³‚ê‚½Bean‚ÌA‘S‚Ä‚Ì’PƒƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸBeanã®ã€å…¨ã¦ã®å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param bean ‘ÎÛ‚Æ‚È‚éBean
-     * @return w’è‚³‚ê‚½Bean‚ÌA‘S‚Ä‚Ì’PƒƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB
+     * @param bean å¯¾è±¡ã¨ãªã‚‹Bean
+     * @return æŒ‡å®šã•ã‚ŒãŸBeanã®ã€å…¨ã¦ã®å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚
      */
     public static SimpleProperty[] getProperties(Object bean){
         return getProperties(bean.getClass());
     }
     
     /**
-     * w’è‚³‚ê‚½ƒNƒ‰ƒX‚ÌA‘S‚Ä‚Ì’PƒƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ã®ã€å…¨ã¦ã®å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param clazz ‘ÎÛ‚Æ‚È‚éƒNƒ‰ƒX
-     * @return w’è‚³‚ê‚½Bean‚ÌA‘S‚Ä‚Ì’PƒƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB
+     * @param clazz å¯¾è±¡ã¨ãªã‚‹ã‚¯ãƒ©ã‚¹
+     * @return æŒ‡å®šã•ã‚ŒãŸBeanã®ã€å…¨ã¦ã®å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚
      */
     public static SimpleProperty[] getProperties(Class clazz){
         return getProperties(clazz, false);
     }
     
     /**
-     * w’è‚³‚ê‚½Bean‚ÌA‘S‚Ä‚Ì’PƒƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸBeanã®ã€å…¨ã¦ã®å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param bean ‘ÎÛ‚Æ‚È‚éBean
-     * @param containsField ƒtƒB[ƒ‹ƒh‚àƒvƒƒpƒeƒB‚Æ‚İ‚È‚·‚©‚Ç‚¤‚©Btrue‚Ìê‡A‚İ‚È‚·
-     * @return w’è‚³‚ê‚½Bean‚ÌA‘S‚Ä‚Ì’PƒƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB
+     * @param bean å¯¾è±¡ã¨ãªã‚‹Bean
+     * @param containsField ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚‚ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ã¿ãªã™ã‹ã©ã†ã‹ã€‚trueã®å ´åˆã€ã¿ãªã™
+     * @return æŒ‡å®šã•ã‚ŒãŸBeanã®ã€å…¨ã¦ã®å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚
      */
     public static SimpleProperty[] getProperties(Object bean, boolean containsField){
         return getProperties(bean.getClass(), containsField);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒNƒ‰ƒX‚ÌA‘S‚Ä‚Ì’PƒƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ã®ã€å…¨ã¦ã®å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param clazz ‘ÎÛ‚Æ‚È‚éƒNƒ‰ƒX
-     * @param containsField ƒtƒB[ƒ‹ƒh‚àƒvƒƒpƒeƒB‚Æ‚İ‚È‚·‚©‚Ç‚¤‚©Btrue‚Ìê‡A‚İ‚È‚·
-     * @return w’è‚³‚ê‚½Bean‚ÌA‘S‚Ä‚Ì’PƒƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB
+     * @param clazz å¯¾è±¡ã¨ãªã‚‹ã‚¯ãƒ©ã‚¹
+     * @param containsField ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚‚ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ã¿ãªã™ã‹ã©ã†ã‹ã€‚trueã®å ´åˆã€ã¿ãªã™
+     * @return æŒ‡å®šã•ã‚ŒãŸBeanã®ã€å…¨ã¦ã®å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚
      */
     public static SimpleProperty[] getProperties(Class clazz, boolean containsField){
         Set props = new HashSet();
@@ -1300,20 +1300,20 @@ public class SimpleProperty implements Property, Serializable, Comparable{
     }
     
     /**
-     * w’è‚³‚ê‚½Bean‚ÌA‘S‚Ä‚ÌƒtƒB[ƒ‹ƒh’PƒƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸBeanã®ã€å…¨ã¦ã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param bean ‘ÎÛ‚Æ‚È‚éBean
-     * @return w’è‚³‚ê‚½Bean‚ÌA‘S‚Ä‚ÌƒtƒB[ƒ‹ƒh’PƒƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB
+     * @param bean å¯¾è±¡ã¨ãªã‚‹Bean
+     * @return æŒ‡å®šã•ã‚ŒãŸBeanã®ã€å…¨ã¦ã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚
      */
     public static SimpleProperty[] getFieldProperties(Object bean){
         return getFieldProperties(bean.getClass());
     }
     
     /**
-     * w’è‚³‚ê‚½ƒNƒ‰ƒX‚ÌA‘S‚Ä‚ÌƒtƒB[ƒ‹ƒh’PƒƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ã®ã€å…¨ã¦ã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param clazz ‘ÎÛ‚Æ‚È‚éƒNƒ‰ƒX
-     * @return w’è‚³‚ê‚½Bean‚ÌA‘S‚Ä‚ÌƒtƒB[ƒ‹ƒh’PƒƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB
+     * @param clazz å¯¾è±¡ã¨ãªã‚‹ã‚¯ãƒ©ã‚¹
+     * @return æŒ‡å®šã•ã‚ŒãŸBeanã®ã€å…¨ã¦ã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚
      */
     public static SimpleProperty[] getFieldProperties(Class clazz){
         Set props = new HashSet();
@@ -1331,42 +1331,42 @@ public class SimpleProperty implements Property, Serializable, Comparable{
     }
     
     /**
-     * w’è‚³‚ê‚½Bean‚ÌA‘S‚Ä‚Ì’PƒƒvƒƒpƒeƒB–¼‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸBeanã®ã€å…¨ã¦ã®å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param bean ‘ÎÛ‚Æ‚È‚éBean
-     * @return w’è‚³‚ê‚½Bean‚ÌA‘S‚Ä‚Ì’PƒƒvƒƒpƒeƒB–¼‚ğæ“¾‚·‚éB
+     * @param bean å¯¾è±¡ã¨ãªã‚‹Bean
+     * @return æŒ‡å®šã•ã‚ŒãŸBeanã®ã€å…¨ã¦ã®å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å–å¾—ã™ã‚‹ã€‚
      */
     public static Set getPropertyNames(Object bean){
         return getPropertyNames(bean.getClass());
     }
     
     /**
-     * w’è‚³‚ê‚½ƒNƒ‰ƒX‚ÌA‘S‚Ä‚Ì’PƒƒvƒƒpƒeƒB–¼‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ã®ã€å…¨ã¦ã®å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param clazz ‘ÎÛ‚Æ‚È‚éƒNƒ‰ƒX
-     * @return w’è‚³‚ê‚½Bean‚ÌA‘S‚Ä‚Ì’PƒƒvƒƒpƒeƒB–¼‚ğæ“¾‚·‚éB
+     * @param clazz å¯¾è±¡ã¨ãªã‚‹ã‚¯ãƒ©ã‚¹
+     * @return æŒ‡å®šã•ã‚ŒãŸBeanã®ã€å…¨ã¦ã®å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å–å¾—ã™ã‚‹ã€‚
      */
     public static Set getPropertyNames(Class clazz){
         return getPropertyNames(clazz, false);
     }
     
     /**
-     * w’è‚³‚ê‚½Bean‚ÌA‘S‚Ä‚Ì’PƒƒvƒƒpƒeƒB–¼‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸBeanã®ã€å…¨ã¦ã®å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param bean ‘ÎÛ‚Æ‚È‚éBean
-     * @param containsField ƒtƒB[ƒ‹ƒh‚àƒvƒƒpƒeƒB‚Æ‚İ‚È‚·‚©‚Ç‚¤‚©Btrue‚Ìê‡A‚İ‚È‚·
-     * @return w’è‚³‚ê‚½Bean‚ÌA‘S‚Ä‚Ì’PƒƒvƒƒpƒeƒB–¼‚ğæ“¾‚·‚éB
+     * @param bean å¯¾è±¡ã¨ãªã‚‹Bean
+     * @param containsField ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚‚ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ã¿ãªã™ã‹ã©ã†ã‹ã€‚trueã®å ´åˆã€ã¿ãªã™
+     * @return æŒ‡å®šã•ã‚ŒãŸBeanã®ã€å…¨ã¦ã®å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å–å¾—ã™ã‚‹ã€‚
      */
     public static Set getPropertyNames(Object bean, boolean containsField){
         return getPropertyNames(bean.getClass(), containsField);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒNƒ‰ƒX‚ÌA‘S‚Ä‚Ì’PƒƒvƒƒpƒeƒB–¼‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ã®ã€å…¨ã¦ã®å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param clazz ‘ÎÛ‚Æ‚È‚éƒNƒ‰ƒX
-     * @param containsField ƒtƒB[ƒ‹ƒh‚àƒvƒƒpƒeƒB‚Æ‚İ‚È‚·‚©‚Ç‚¤‚©Btrue‚Ìê‡A‚İ‚È‚·
-     * @return w’è‚³‚ê‚½Bean‚ÌA‘S‚Ä‚Ì’PƒƒvƒƒpƒeƒB–¼‚ğæ“¾‚·‚éB
+     * @param clazz å¯¾è±¡ã¨ãªã‚‹ã‚¯ãƒ©ã‚¹
+     * @param containsField ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚‚ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ã¿ãªã™ã‹ã©ã†ã‹ã€‚trueã®å ´åˆã€ã¿ãªã™
+     * @return æŒ‡å®šã•ã‚ŒãŸBeanã®ã€å…¨ã¦ã®å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å–å¾—ã™ã‚‹ã€‚
      */
     public static Set getPropertyNames(Class clazz, boolean containsField){
         Set props = new HashSet();
@@ -1393,20 +1393,20 @@ public class SimpleProperty implements Property, Serializable, Comparable{
     }
     
     /**
-     * w’è‚³‚ê‚½Bean‚ÌA‘S‚Ä‚Ì’PƒƒvƒƒpƒeƒB–¼‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸBeanã®ã€å…¨ã¦ã®å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param bean ‘ÎÛ‚Æ‚È‚éBean
-     * @return w’è‚³‚ê‚½Bean‚ÌA‘S‚Ä‚Ì’PƒƒvƒƒpƒeƒB–¼‚ğæ“¾‚·‚éB
+     * @param bean å¯¾è±¡ã¨ãªã‚‹Bean
+     * @return æŒ‡å®šã•ã‚ŒãŸBeanã®ã€å…¨ã¦ã®å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å–å¾—ã™ã‚‹ã€‚
      */
     public static Set getFieldPropertyNames(Object bean){
         return getFieldPropertyNames(bean.getClass());
     }
     
     /**
-     * w’è‚³‚ê‚½ƒNƒ‰ƒX‚ÌA‘S‚Ä‚Ì’PƒƒvƒƒpƒeƒB–¼‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ã®ã€å…¨ã¦ã®å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param clazz ‘ÎÛ‚Æ‚È‚éƒNƒ‰ƒX
-     * @return w’è‚³‚ê‚½Bean‚ÌA‘S‚Ä‚Ì’PƒƒvƒƒpƒeƒB–¼‚ğæ“¾‚·‚éB
+     * @param clazz å¯¾è±¡ã¨ãªã‚‹ã‚¯ãƒ©ã‚¹
+     * @return æŒ‡å®šã•ã‚ŒãŸBeanã®ã€å…¨ã¦ã®å˜ç´”ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’å–å¾—ã™ã‚‹ã€‚
      */
     public static Set getFieldPropertyNames(Class clazz){
         Set props = new HashSet();
@@ -1462,20 +1462,20 @@ public class SimpleProperty implements Property, Serializable, Comparable{
     }
     
     /**
-     * w’è‚³‚ê‚½Bean‚ÌA‚±‚ÌƒvƒƒpƒeƒB‚ª‚ÂƒvƒƒpƒeƒB–¼‚ÉŠY“–‚·‚éƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‹Lqq‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸBeanã®ã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã«è©²å½“ã™ã‚‹ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£è¨˜è¿°å­ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param obj ‘ÎÛ‚Æ‚È‚éBean
-     * @return ‚±‚ÌƒvƒƒpƒeƒB‚ª‚ÂƒvƒƒpƒeƒB–¼‚ÉŠY“–‚·‚éƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‹Lqq
+     * @param obj å¯¾è±¡ã¨ãªã‚‹Bean
+     * @return ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã«è©²å½“ã™ã‚‹ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£è¨˜è¿°å­
      */
     protected PropertyDescriptor getPropertyDescriptor(Object obj){
         return getPropertyDescriptor(obj.getClass());
     }
     
     /**
-     * w’è‚³‚ê‚½ƒNƒ‰ƒX‚ªƒAƒNƒZƒX‰Â”\‚©‚Ç‚¤‚©‚ğ’²‚×‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ãŒã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ã‹ã©ã†ã‹ã‚’èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @param clazz ‘ÎÛ‚Æ‚È‚éƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @return ƒAƒNƒZƒX‰Â”\‚Èê‡true
+     * @param clazz å¯¾è±¡ã¨ãªã‚‹ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªå ´åˆtrue
      */
     protected static boolean isAccessableClass(Class clazz){
         final int modifier = clazz.getModifiers();
@@ -1488,10 +1488,10 @@ public class SimpleProperty implements Property, Serializable, Comparable{
     }
     
     /**
-     * w’è‚³‚ê‚½ƒNƒ‰ƒX‚ÌA‚±‚ÌƒvƒƒpƒeƒB‚ª‚ÂƒvƒƒpƒeƒB–¼‚ÉŠY“–‚·‚éƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‹Lqq‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ã®ã€ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã«è©²å½“ã™ã‚‹ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£è¨˜è¿°å­ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param clazz ‘ÎÛ‚Æ‚È‚éƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @return ‚±‚ÌƒvƒƒpƒeƒB‚ª‚ÂƒvƒƒpƒeƒB–¼‚ÉŠY“–‚·‚éƒAƒNƒZƒX‰Â”\‚ÈƒvƒƒpƒeƒB‹Lqq
+     * @param clazz å¯¾è±¡ã¨ãªã‚‹ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæŒã¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã«è©²å½“ã™ã‚‹ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£è¨˜è¿°å­
      */
     protected PropertyDescriptor getPropertyDescriptor(Class clazz){
         if(!isAccessableClass(clazz)){
@@ -1550,19 +1550,19 @@ public class SimpleProperty implements Property, Serializable, Comparable{
     }
     
     /**
-     * ‚±‚ÌƒCƒ“ƒfƒbƒNƒXƒvƒƒpƒeƒB‚Ì•¶š—ñ•\Œ»‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return SimpleProperty{ƒvƒƒpƒeƒB–¼}
+     * @return SimpleProperty{ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å}
      */
     public String toString(){
         return "SimpleProperty{" + property + "}";
     }
     
     /**
-     * ‚±‚ÌƒIƒuƒWƒFƒNƒg‚Æ‘¼‚ÌƒIƒuƒWƒFƒNƒg‚ª“™‚µ‚¢‚©‚Ç‚¤‚©‚ğ¦‚µ‚Ü‚·B <p>
+     * ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ä»–ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒç­‰ã—ã„ã‹ã©ã†ã‹ã‚’ç¤ºã—ã¾ã™ã€‚ <p>
      *
-     * @param obj ”äŠr‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return ˆø”‚Éw’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚Æ‚±‚ÌƒIƒuƒWƒFƒNƒg‚ª“™‚µ‚¢ê‡‚Í trueA‚»‚¤‚Å‚È‚¢ê‡‚Í falseB
+     * @param obj æ¯”è¼ƒå¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return å¼•æ•°ã«æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒç­‰ã—ã„å ´åˆã¯ trueã€ãã†ã§ãªã„å ´åˆã¯ falseã€‚
      */
     public boolean equals(Object obj){
         if(obj == null){
@@ -1582,19 +1582,19 @@ public class SimpleProperty implements Property, Serializable, Comparable{
     }
     
     /**
-     * ƒnƒbƒVƒ…’l‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒƒã‚·ãƒ¥å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒnƒbƒVƒ…’l
+     * @return ãƒãƒƒã‚·ãƒ¥å€¤
      */
     public int hashCode(){
         return property == null ? 0 : property.hashCode();
     }
     
     /**
-     * ‚±‚ÌƒIƒuƒWƒFƒNƒg‚Æw’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚Ì‡˜‚ğ”äŠr‚·‚éB<p>
+     * ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®é †åºã‚’æ¯”è¼ƒã™ã‚‹ã€‚<p>
      *
-     * @param obj ”äŠr‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @return ‚±‚ÌƒIƒuƒWƒFƒNƒg‚ªw’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚æ‚è¬‚³‚¢ê‡‚Í•‰‚Ì®”A“™‚µ‚¢ê‡‚Íƒ[ƒA‘å‚«‚¢ê‡‚Í³‚Ì®”
+     * @param obj æ¯”è¼ƒå¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ã“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒæŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚ˆã‚Šå°ã•ã„å ´åˆã¯è² ã®æ•´æ•°ã€ç­‰ã—ã„å ´åˆã¯ã‚¼ãƒ­ã€å¤§ãã„å ´åˆã¯æ­£ã®æ•´æ•°
      */
     public int compareTo(Object obj){
         if(obj == null){
@@ -1616,11 +1616,11 @@ public class SimpleProperty implements Property, Serializable, Comparable{
     }
     
     /**
-     * ƒfƒVƒŠƒAƒ‰ƒCƒYˆ—‚ğs‚¤B<p>
+     * ãƒ‡ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param in “ü—ÍƒXƒgƒŠ[ƒ€
-     * @exception IOException ƒfƒVƒŠƒAƒ‰ƒCƒYˆ—’†‚ÉI/O—áŠO‚ª”­¶‚µ‚½ê‡
-     * @exception ClassNotFoundException ƒfƒVƒŠƒAƒ‰ƒCƒYˆ—’†‚ÉƒfƒVƒŠƒAƒ‰ƒCƒY‚µ‚½ƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
+     * @param in å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
+     * @exception IOException ãƒ‡ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºå‡¦ç†ä¸­ã«I/Oä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
+     * @exception ClassNotFoundException ãƒ‡ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºå‡¦ç†ä¸­ã«ãƒ‡ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
      */
     private void readObject(ObjectInputStream in)
      throws IOException, ClassNotFoundException{
@@ -1703,14 +1703,14 @@ public class SimpleProperty implements Property, Serializable, Comparable{
                 try{
                     return readMethod.invoke(obj, NULL_ARGS);
                 }catch(IllegalAccessException e){
-                    // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                    // èµ·ã“ã‚‰ãªã„ã¯ãš
                     throw new NoSuchPropertyException(
                         obj.getClass(),
                         property,
                         e
                     );
                 }catch(IllegalArgumentException e){
-                    // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                    // èµ·ã“ã‚‰ãªã„ã¯ãš
                     throw new NoSuchPropertyException(
                         obj.getClass(),
                         property,
@@ -1737,14 +1737,14 @@ public class SimpleProperty implements Property, Serializable, Comparable{
                     }
                     writeMethod.invoke(obj, new Object[]{value});
                 }catch(IllegalAccessException e){
-                    // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                    // èµ·ã“ã‚‰ãªã„ã¯ãš
                     throw new NoSuchPropertyException(
                         obj.getClass(),
                         property,
                         e
                     );
                 }catch(IllegalArgumentException e){
-                    // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                    // èµ·ã“ã‚‰ãªã„ã¯ãš
                     throw new NoSuchPropertyException(
                         obj.getClass(),
                         property,
@@ -1848,14 +1848,14 @@ public class SimpleProperty implements Property, Serializable, Comparable{
                 try{
                     return field.get(obj);
                 }catch(IllegalAccessException e){
-                    // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                    // èµ·ã“ã‚‰ãªã„ã¯ãš
                     throw new NoSuchPropertyException(
                         clazz,
                         property,
                         e
                     );
                 }catch(IllegalArgumentException e){
-                    // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                    // èµ·ã“ã‚‰ãªã„ã¯ãš
                     throw new NoSuchPropertyException(
                         clazz,
                         property,
@@ -1884,7 +1884,7 @@ public class SimpleProperty implements Property, Serializable, Comparable{
                     field.set(obj, value);
                     return;
                 }catch(IllegalAccessException e){
-                    // ‹N‚±‚ç‚È‚¢‚Í‚¸
+                    // èµ·ã“ã‚‰ãªã„ã¯ãš
                     throw new NoSuchPropertyException(
                         obj.getClass(),
                         property,

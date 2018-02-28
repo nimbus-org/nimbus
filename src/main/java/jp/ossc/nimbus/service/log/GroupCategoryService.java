@@ -39,8 +39,8 @@ import jp.ossc.nimbus.service.message.MessageRecordFactory;
 import jp.ossc.nimbus.service.writer.MessageWriteException;
 
 /**
- * ƒOƒ‹[ƒvƒJƒeƒSƒŠƒT[ƒrƒXB<p>
- * ƒƒOo—Íæ‚ğ•ª—Ş‚·‚éƒJƒeƒSƒŠƒT[ƒrƒX‚ğƒOƒ‹[ƒsƒ“ƒO‚·‚éƒJƒeƒSƒŠÀ‘•ƒNƒ‰ƒXB<br>
+ * ã‚°ãƒ«ãƒ¼ãƒ—ã‚«ãƒ†ã‚´ãƒªã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * ãƒ­ã‚°å‡ºåŠ›å…ˆã‚’åˆ†é¡ã™ã‚‹ã‚«ãƒ†ã‚´ãƒªã‚µãƒ¼ãƒ“ã‚¹ã‚’ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹ã‚«ãƒ†ã‚´ãƒªå®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -50,7 +50,7 @@ public class GroupCategoryService
     
     private static final long serialVersionUID = -725998713313782313L;
     
-    // ƒƒbƒZ[ƒWID’è‹`
+    // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDå®šç¾©
     private static final String SCGRY = "SCGRY";
     private static final String SCGRY0 = SCGRY + 0;
     private static final String SCGRY00 = SCGRY0 + 0;
@@ -64,16 +64,16 @@ public class GroupCategoryService
     private static final String PRIORITY_RANGE_DELIMITER = ":";
     
     /**
-     * ƒJƒeƒSƒŠ–¼B<p>
+     * ã‚«ãƒ†ã‚´ãƒªåã€‚<p>
      */
     protected String categoryName;
     
     /**
-     * —Dæ‡ˆÊ‚Æƒ‰ƒxƒ‹‚Ìƒ}ƒbƒsƒ“ƒOB<p>
+     * å„ªå…ˆé †ä½ã¨ãƒ©ãƒ™ãƒ«ã®ãƒãƒƒãƒ”ãƒ³ã‚°ã€‚<p>
      * <table border="1">
-     *   <tr bgcolor="#CCCCFF"><th colspan="2">ƒL[</th><th colspan="2">’l</th></tr>
-     *   <tr bgcolor="#CCCCFF"><th>Œ^</th><th>“à—e</th><th>Œ^</th><th>“à—e</th></tr>
-     *   <tr><td>Range</td><td>—Dæ‡ˆÊ”ÍˆÍ</td><td>String</td><td>ƒ‰ƒxƒ‹</td></tr>
+     *   <tr bgcolor="#CCCCFF"><th colspan="2">ã‚­ãƒ¼</th><th colspan="2">å€¤</th></tr>
+     *   <tr bgcolor="#CCCCFF"><th>å‹</th><th>å†…å®¹</th><th>å‹</th><th>å†…å®¹</th></tr>
+     *   <tr><td>Range</td><td>å„ªå…ˆé †ä½ç¯„å›²</td><td>String</td><td>ãƒ©ãƒ™ãƒ«</td></tr>
      * </table>
      */
     private Map labelMap = new HashMap();
@@ -89,17 +89,17 @@ public class GroupCategoryService
         }
     }
     
-    // LogCategory‚ÌJavaDoc
+    // LogCategoryã®JavaDoc
     public String getCategoryName(){
         return categoryName;
     }
     
-    // GroupCategoryServiceMBean‚ÌJavaDoc
+    // GroupCategoryServiceMBeanã®JavaDoc
     public void setCategoryName(String name){
         categoryName = name;
     }
     
-    // LogCategory‚ÌJavaDoc
+    // LogCategoryã®JavaDoc
     public boolean isValidPriorityRange(int priority){
         if(categories != null){
             boolean existsCategory = false;
@@ -147,7 +147,7 @@ public class GroupCategoryService
         return new Range(min, max);
     }
     
-    // LogCategory‚ÌJavaDoc
+    // LogCategoryã®JavaDoc
     public String getLabel(int priority){
         final Iterator ranges = labelMap.keySet().iterator();
         while(ranges.hasNext()){
@@ -170,7 +170,7 @@ public class GroupCategoryService
         return null;
     }
     
-    // GroupCategoryServiceMBean‚ÌJavaDoc
+    // GroupCategoryServiceMBeanã®JavaDoc
     public void setLabels(Properties labels) throws IllegalArgumentException{
         final Iterator ranges = labels.keySet().iterator();
         while(ranges.hasNext()){
@@ -187,7 +187,7 @@ public class GroupCategoryService
         }
     }
     
-    // LogCategory‚ÌJavaDoc
+    // LogCategoryã®JavaDoc
     public void write(int priority, Map elements) throws MessageWriteException{
         if(categories != null){
             for(int i = 0, max = categories.length; i < max; i++){

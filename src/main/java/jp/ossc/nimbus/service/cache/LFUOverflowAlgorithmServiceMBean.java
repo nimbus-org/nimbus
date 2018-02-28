@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.cache;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link LFUOverflowAlgorithmService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link LFUOverflowAlgorithmService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see LFUOverflowAlgorithmService
@@ -43,67 +43,67 @@ public interface LFUOverflowAlgorithmServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * ‚ ‚Ó‚êƒAƒ‹ƒSƒŠƒYƒ€‚ğÀs‚·‚é‚½‚ß‚É•Û‚µ‚Ä‚¢‚éî•ñ‚ğ‰Šú‰»‚·‚éB<p>
+     * ã‚ãµã‚Œã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚’å®Ÿè¡Œã™ã‚‹ãŸã‚ã«ä¿æŒã—ã¦ã„ã‚‹æƒ…å ±ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
      */
     public void reset();
     
     /**
-     * ‚ ‚Ó‚êƒAƒ‹ƒSƒŠƒYƒ€‘ÎÛ‚É‚È‚Á‚Ä‚¢‚éƒLƒƒƒbƒVƒ…”‚ğæ“¾‚·‚éB<p>
+     * ã‚ãµã‚Œã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ å¯¾è±¡ã«ãªã£ã¦ã„ã‚‹ã‚­ãƒ£ãƒƒã‚·ãƒ¥æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒLƒƒƒbƒVƒ…”
+     * @return ã‚­ãƒ£ãƒƒã‚·ãƒ¥æ•°
      */
     public int size();
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚³‚ê‚Ä‚¢‚é‚à‚Ì‚ÅÅ‘½‚ÌQÆ‰ñ”‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã•ã‚Œã¦ã„ã‚‹ã‚‚ã®ã§æœ€å¤šã®å‚ç…§å›æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Å‘½QÆ‰ñ”
+     * @return æœ€å¤šå‚ç…§å›æ•°
      */
     public int getMaximumReferenceCount();
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚³‚ê‚Ä‚¢‚é‚à‚Ì‚ÅÅ­‚ÌQÆ‰ñ”‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã•ã‚Œã¦ã„ã‚‹ã‚‚ã®ã§æœ€å°‘ã®å‚ç…§å›æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Å­QÆ‰ñ”
+     * @return æœ€å°‘å‚ç…§å›æ•°
      */
     public int getMinimumReferenceCount();
     
     /**
-     * ‚ ‚Ó‚ê‰ñ”‚ğæ“¾‚·‚éB<p>
+     * ã‚ãµã‚Œå›æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‚ ‚Ó‚ê‰ñ”
+     * @return ã‚ãµã‚Œå›æ•°
      */
     public long getOverflowCount();
     
     /**
-     * ‚ ‚Ó‚ê‚½ƒLƒƒƒbƒVƒ…‚Ì•½‹ÏƒLƒƒƒbƒVƒ…ŠÔ[ms]‚ğæ“¾‚·‚éB<p>
+     * ã‚ãµã‚ŒãŸã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®å¹³å‡ã‚­ãƒ£ãƒƒã‚·ãƒ¥æ™‚é–“[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •½‹ÏƒLƒƒƒbƒVƒ…ŠÔ[ms]
+     * @return å¹³å‡ã‚­ãƒ£ãƒƒã‚·ãƒ¥æ™‚é–“[ms]
      */
     public long getAverageOverflowCachedTime();
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚ÌQÆ‰ñ”ƒOƒ‰ƒt‚ğ•\¦‚·‚éB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®å‚ç…§å›æ•°ã‚°ãƒ©ãƒ•ã‚’è¡¨ç¤ºã™ã‚‹ã€‚<p>
      *
-     * @return QÆ‰ñ”ƒOƒ‰ƒt
+     * @return å‚ç…§å›æ•°ã‚°ãƒ©ãƒ•
      */
     public String displayReferenceCounts();
     
     /**
-     * Š„‡‚Å”äŠr‚·‚é‚©‚ğæ“¾‚·‚éB<p>
-     * @return Š„‡”äŠr‰Â”Û
+     * å‰²åˆã§æ¯”è¼ƒã™ã‚‹ã‹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * @return å‰²åˆæ¯”è¼ƒå¯å¦
      */
     public boolean isCachedRatioCompare();
     
     /**
-     * Š„‡‚Å”äŠr‚·‚é‚©‚ğİ’è‚·‚éB<p>
-     * @param cachedRatioCompare@Š„‡”äŠr‰Â”Û
+     * å‰²åˆã§æ¯”è¼ƒã™ã‚‹ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * @param cachedRatioCompareã€€å‰²åˆæ¯”è¼ƒå¯å¦
      */
     public void setCachedRatioCompare(boolean cachedRatioCompare);
     
     /**
-     * Š„‡‚Å”äŠr‚·‚éê‡‚Ì’PˆÊŠÔ(ms)‚ğİ’è‚·‚éB<p>
-     * @param ratioUnitTime ’PˆÊŠÔ(ms)
+     * å‰²åˆã§æ¯”è¼ƒã™ã‚‹å ´åˆã®å˜ä½æ™‚é–“(ms)ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * @param ratioUnitTime å˜ä½æ™‚é–“(ms)
      */
     public void setRatioUnitTime(long ratioUnitTime);
 }

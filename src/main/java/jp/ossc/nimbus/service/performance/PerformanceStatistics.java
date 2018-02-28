@@ -32,18 +32,18 @@
 package jp.ossc.nimbus.service.performance;
 
 /**
- *	ƒXƒ^ƒeƒBƒXƒeƒBƒNƒXŠÇ—ƒNƒ‰ƒXB<BR>
- *	ƒXƒ^ƒeƒBƒXƒeƒBƒNƒX‚ÌŒŸõA“o˜^‚ğs‚¤B<BR>
+ *	ã‚¹ã‚¿ãƒ†ã‚£ã‚¹ãƒ†ã‚£ã‚¯ã‚¹ç®¡ç†ã‚¯ãƒ©ã‚¹ã€‚<BR>
+ *	ã‚¹ã‚¿ãƒ†ã‚£ã‚¹ãƒ†ã‚£ã‚¯ã‚¹ã®æ¤œç´¢ã€ç™»éŒ²ã‚’è¡Œã†ã€‚<BR>
  *	@author 	NRI Hirotaka.Nakano
- *				XVF
+ *				æ›´æ–°ï¼š
  */
 public interface PerformanceStatistics{
 	//
 	/**
-	 *	ƒpƒtƒH[ƒ}ƒ“ƒXƒGƒ“ƒgƒŠƒƒ\ƒbƒh<BR>
-	 *	ƒpƒtƒH[ƒ}ƒ“ƒXƒIƒuƒWƒFƒNƒg‚ÌƒGƒ“ƒgƒŠ‚ğs‚¤B<BR>
-	 * @param key	ƒXƒ^ƒeƒBƒXƒeƒBƒNƒX–¼
-	 * @param msec	ƒpƒtƒH[ƒ}ƒ“ƒXŠÔ
+	 *	ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚¨ãƒ³ãƒˆãƒªãƒ¡ã‚½ãƒƒãƒ‰<BR>
+	 *	ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¨ãƒ³ãƒˆãƒªã‚’è¡Œã†ã€‚<BR>
+	 * @param key	ã‚¹ã‚¿ãƒ†ã‚£ã‚¹ãƒ†ã‚£ã‚¯ã‚¹å
+	 * @param msec	ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æ™‚é–“
 	 */
 	public void entry (String key,long msec);
 	//

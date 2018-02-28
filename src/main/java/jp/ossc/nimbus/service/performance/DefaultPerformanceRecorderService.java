@@ -53,7 +53,7 @@ import jp.ossc.nimbus.service.writer.Category;
 import jp.ossc.nimbus.service.writer.MessageWriteException;
 
 /**
- * ˆ—ŠÔ‚ğ‹L˜^‚·‚éB<p>
+ * å‡¦ç†æ™‚é–“ã‚’è¨˜éŒ²ã™ã‚‹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -346,7 +346,7 @@ public class DefaultPerformanceRecorderService extends ServiceBase implements Pe
                 try{
                     category.write(record);
                 }catch(MessageWriteException e){
-                    // TODO ƒƒOo—Í
+                    // TODO ãƒ­ã‚°å‡ºåŠ›
                 }
             }
         }

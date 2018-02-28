@@ -43,7 +43,7 @@ import jp.ossc.nimbus.service.connection.ConnectionFactory;
 import jp.ossc.nimbus.service.connection.ConnectionFactoryException;
 
 /**
- * ƒf[ƒ^ƒx[ƒX‚ÅƒXƒPƒWƒ…[ƒ‹ó‘ÔŠÇ—‚ğs‚¤ƒT[ƒrƒXB<p>
+ * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã§ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«çŠ¶æ…‹ç®¡ç†ã‚’è¡Œã†ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -130,7 +130,7 @@ public class DatabaseScheduleStateManagerService extends ServiceBase
         }
     }
     
-    // ScheduleStateManager‚ÌJavaDoc
+    // ScheduleStateManagerã®JavaDoc
     public void changeState(String name, int state){
         Connection con = null;
         PreparedStatement selectPs = null;
@@ -213,7 +213,7 @@ public class DatabaseScheduleStateManagerService extends ServiceBase
         }
     }
     
-    // ScheduleStateManager‚ÌJavaDoc
+    // ScheduleStateManagerã®JavaDoc
     public int getState(String name){
         Connection con = null;
         PreparedStatement selectPs = null;
@@ -260,7 +260,7 @@ public class DatabaseScheduleStateManagerService extends ServiceBase
         }
     }
     
-    // ScheduleStateManager‚ÌJavaDoc
+    // ScheduleStateManagerã®JavaDoc
     public void clearState(String name){
         Connection con = null;
         PreparedStatement updatePs = null;
@@ -315,7 +315,7 @@ public class DatabaseScheduleStateManagerService extends ServiceBase
         }
     }
     
-    // ScheduleStateManager‚ÌJavaDoc
+    // ScheduleStateManagerã®JavaDoc
     public void clearAllStates(){
         Connection con = null;
         Statement st = null;

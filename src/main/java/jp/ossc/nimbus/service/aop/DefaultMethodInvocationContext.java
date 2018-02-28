@@ -35,7 +35,7 @@ import java.lang.reflect.*;
 import java.io.*;
 
 /**
- * {@link MethodInvocationContext}‚ÌƒfƒtƒHƒ‹ƒgÀ‘•ƒNƒ‰ƒXB<p>
+ * {@link MethodInvocationContext}ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå®Ÿè£…ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -45,27 +45,27 @@ public class DefaultMethodInvocationContext extends DefaultInvocationContext
     private static final long serialVersionUID = 7148580138244485932L;
     
     /**
-     * ŒÄ‚Ño‚µ‘ÎÛ‚Ìƒƒ\ƒbƒhB<p>
+     * å‘¼ã³å‡ºã—å¯¾è±¡ã®ãƒ¡ã‚½ãƒƒãƒ‰ã€‚<p>
      */
     protected transient Method targetMethod;
     
     /**
-     * ŒÄ‚Ño‚µ‘ÎÛ‚Ìƒƒ\ƒbƒhˆø”B<p>
+     * å‘¼ã³å‡ºã—å¯¾è±¡ã®ãƒ¡ã‚½ãƒƒãƒ‰å¼•æ•°ã€‚<p>
      */
     protected Object[] parameters;
     
     /**
-     * ‹ó‚ÌŒÄ‚Ño‚µƒRƒ“ƒeƒLƒXƒg‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®å‘¼ã³å‡ºã—ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public DefaultMethodInvocationContext(){
     }
     
     /**
-     * ƒƒ\ƒbƒhŒÄ‚Ño‚µƒRƒ“ƒeƒLƒXƒg‚ğ¶¬‚·‚éB<p>
+     * ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param target ŒÄ‚Ño‚µ‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg
-     * @param method ŒÄ‚Ño‚µ‘ÎÛ‚Ìƒƒ\ƒbƒh
-     * @param params ŒÄ‚Ño‚µ‘ÎÛ‚Ìƒƒ\ƒbƒhˆø”
+     * @param target å‘¼ã³å‡ºã—å¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param method å‘¼ã³å‡ºã—å¯¾è±¡ã®ãƒ¡ã‚½ãƒƒãƒ‰
+     * @param params å‘¼ã³å‡ºã—å¯¾è±¡ã®ãƒ¡ã‚½ãƒƒãƒ‰å¼•æ•°
      */
     public DefaultMethodInvocationContext(
         Object target,
@@ -77,22 +77,22 @@ public class DefaultMethodInvocationContext extends DefaultInvocationContext
         parameters = params;
     }
     
-    // MethodInvocationContext‚ÌJavaDoc
+    // MethodInvocationContextã®JavaDoc
     public Method getTargetMethod(){
         return targetMethod;
     }
     
-    // MethodInvocationContext‚ÌJavaDoc
+    // MethodInvocationContextã®JavaDoc
     public void setTargetMethod(Method method){
         targetMethod = method;
     }
     
-    // MethodInvocationContext‚ÌJavaDoc
+    // MethodInvocationContextã®JavaDoc
     public Object[] getParameters(){
         return parameters;
     }
     
-    // MethodInvocationContext‚ÌJavaDoc
+    // MethodInvocationContextã®JavaDoc
     public void setParameters(Object[] params){
         parameters = params;
     }

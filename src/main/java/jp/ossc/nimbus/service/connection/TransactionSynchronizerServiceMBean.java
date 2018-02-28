@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link TransactionSynchronizerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link TransactionSynchronizerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see TransactionSynchronizerService
@@ -43,206 +43,206 @@ import jp.ossc.nimbus.core.ServiceName;
 public interface TransactionSynchronizerServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒƒOƒe[ƒuƒ‹‚Ì—ñu“¯Šú‚µ‚½‚©‚Ç‚¤‚©‚ðŽ¦‚·ƒtƒ‰ƒOv‚Ì—ñ–¼‚ÌƒfƒtƒHƒ‹ƒg’lB<p>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ­ã‚°ãƒ†ãƒ¼ãƒ–ãƒ«ã®åˆ—ã€ŒåŒæœŸã—ãŸã‹ã©ã†ã‹ã‚’ç¤ºã™ãƒ•ãƒ©ã‚°ã€ã®åˆ—åã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<p>
      */
     public static final String DEFAULT_COLUMN_NAME_SYNCHRONIZE = "SYNC";
     
     /**
-     * “¯ŠúŒ³‚Ì{@link ConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ðÝ’è‚·‚éB<p>
+     * åŒæœŸå…ƒã®{@link ConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setSourceConnectionFactoryServiceName(ServiceName name);
     
     /**
-     * “¯ŠúŒ³‚Ì{@link ConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ðŽæ“¾‚·‚éB<p>
+     * åŒæœŸå…ƒã®{@link ConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getSourceConnectionFactoryServiceName();
     
     /**
-     * “¯Šúæ‚Ì{@link ConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ðÝ’è‚·‚éB<p>
+     * åŒæœŸå…ˆã®{@link ConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setDestinationConnectionFactoryServiceName(ServiceName name);
     
     /**
-     * “¯Šúæ‚Ì{@link ConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ðŽæ“¾‚·‚éB<p>
+     * åŒæœŸå…ˆã®{@link ConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getDestinationConnectionFactoryServiceName();
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒƒOƒe[ƒuƒ‹‚Ìƒe[ƒuƒ‹–¼‚ðÝ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link jp.ossc.nimbus.util.sql.TransactionLoggingConnection#DEFAULT_TRANSACTION_TABLE_NAME}B<br>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ­ã‚°ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ†ãƒ¼ãƒ–ãƒ«åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link jp.ossc.nimbus.util.sql.TransactionLoggingConnection#DEFAULT_TRANSACTION_TABLE_NAME}ã€‚<br>
      *
-     * @param name ƒe[ƒuƒ‹–¼
+     * @param name ãƒ†ãƒ¼ãƒ–ãƒ«å
      */
     public void setTransactionTableName(String name);
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒƒOƒe[ƒuƒ‹‚Ìƒe[ƒuƒ‹–¼‚ðŽæ“¾‚·‚éB<p>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ­ã‚°ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ†ãƒ¼ãƒ–ãƒ«åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒe[ƒuƒ‹–¼
+     * @return ãƒ†ãƒ¼ãƒ–ãƒ«å
      */
     public String getTransactionTableName();
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒpƒ‰ƒ[ƒ^ƒƒOƒe[ƒuƒ‹‚Ìƒe[ƒuƒ‹–¼‚ðÝ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link jp.ossc.nimbus.util.sql.TransactionLoggingConnection#DEFAULT_TRANSACTION_PARAM_TABLE_NAME}B<br>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ­ã‚°ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ†ãƒ¼ãƒ–ãƒ«åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link jp.ossc.nimbus.util.sql.TransactionLoggingConnection#DEFAULT_TRANSACTION_PARAM_TABLE_NAME}ã€‚<br>
      *
-     * @param name ƒe[ƒuƒ‹–¼
+     * @param name ãƒ†ãƒ¼ãƒ–ãƒ«å
      */
     public void setTransactionParamTableName(String name);
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒpƒ‰ƒ[ƒ^ƒƒOƒe[ƒuƒ‹‚Ìƒe[ƒuƒ‹–¼‚ðŽæ“¾‚·‚éB<p>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ­ã‚°ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ†ãƒ¼ãƒ–ãƒ«åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒe[ƒuƒ‹–¼
+     * @return ãƒ†ãƒ¼ãƒ–ãƒ«å
      */
     public String getTransactionParamTableName();
     
     /**
-     * {@link jp.ossc.nimbus.service.transaction.TransactionManagerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ðÝ’è‚·‚éB<p>
-     * Ý’è‚µ‚½ê‡A“¯Šúæ‚Ö‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ŽÀs‚Æ“¯ŠúŒ³‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒƒO‚Ìíœ‚ð“¯ˆêƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÅŽÀs‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.transaction.TransactionManagerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã—ãŸå ´åˆã€åŒæœŸå…ˆã¸ã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³å®Ÿè¡Œã¨åŒæœŸå…ƒã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ­ã‚°ã®å‰Šé™¤ã‚’åŒä¸€ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã§å®Ÿè¡Œã™ã‚‹ã€‚<br>
      *
-     * @param name TransactionManagerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name TransactionManagerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setTransactionManagerFactoryServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.transaction.TransactionManagerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ðŽæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.transaction.TransactionManagerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return TransactionManagerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return TransactionManagerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getTransactionManagerFactoryServiceName();
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒƒOƒe[ƒuƒ‹‚Ì—ñu“¯Šú‚µ‚½‚©‚Ç‚¤‚©‚ðŽ¦‚·ƒtƒ‰ƒOv‚Ì—ñ–¼‚ðÝ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_COLUMN_NAME_SYNCHRONIZE}B<br>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ­ã‚°ãƒ†ãƒ¼ãƒ–ãƒ«ã®åˆ—ã€ŒåŒæœŸã—ãŸã‹ã©ã†ã‹ã‚’ç¤ºã™ãƒ•ãƒ©ã‚°ã€ã®åˆ—åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_COLUMN_NAME_SYNCHRONIZE}ã€‚<br>
      *
-     * @param name —ñ–¼
+     * @param name åˆ—å
      */
     public void setSynchronizeColumnName(String name);
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒƒOƒe[ƒuƒ‹‚Ì—ñu“¯Šú‚µ‚½‚©‚Ç‚¤‚©‚ðŽ¦‚·ƒtƒ‰ƒOv‚Ì—ñ–¼‚ðŽæ“¾‚·‚éB<p>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ­ã‚°ãƒ†ãƒ¼ãƒ–ãƒ«ã®åˆ—ã€ŒåŒæœŸã—ãŸã‹ã©ã†ã‹ã‚’ç¤ºã™ãƒ•ãƒ©ã‚°ã€ã®åˆ—åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return —ñ–¼
+     * @return åˆ—å
      */
     public String getSynchronizeColumnName();
     
     /**
-     * “¯ŠúŽž‚ÉA“¯Šú‚µ‚½ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒƒO‚ðíœ‚·‚é‚©‚Ç‚¤‚©‚ðÝ’è‚·‚éB<p>
-     * íœ‚µ‚È‚¢ê‡‚ÍAƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒƒOƒe[ƒuƒ‹‚Ì—ñu“¯Šú‚µ‚½‚©‚Ç‚¤‚©‚ðŽ¦‚·ƒtƒ‰ƒOv‚ÉA"1"‚ðXV‚·‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åíœ‚·‚éB<br>
+     * åŒæœŸæ™‚ã«ã€åŒæœŸã—ãŸãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ­ã‚°ã‚’å‰Šé™¤ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * å‰Šé™¤ã—ãªã„å ´åˆã¯ã€ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ­ã‚°ãƒ†ãƒ¼ãƒ–ãƒ«ã®åˆ—ã€ŒåŒæœŸã—ãŸã‹ã©ã†ã‹ã‚’ç¤ºã™ãƒ•ãƒ©ã‚°ã€ã«ã€"1"ã‚’æ›´æ–°ã™ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§å‰Šé™¤ã™ã‚‹ã€‚<br>
      * 
-     * @param isDelete íœ‚·‚éê‡‚ÍAtrue
+     * @param isDelete å‰Šé™¤ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setDeleteOnSynchronize(boolean isDelete);
     
     /**
-     * “¯ŠúŽž‚ÉA“¯Šú‚µ‚½ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒƒO‚ðíœ‚·‚é‚©‚Ç‚¤‚©‚ð”»’è‚·‚éB<p>
+     * åŒæœŸæ™‚ã«ã€åŒæœŸã—ãŸãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ­ã‚°ã‚’å‰Šé™¤ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡Aíœ‚·‚é
+     * @return trueã®å ´åˆã€å‰Šé™¤ã™ã‚‹
      */
     public boolean isDeleteOnSynchronize();
     
     /**
-     * “¯Šú‚µ‚½ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒƒO‚ð‘|œ‚·‚éÛ‚ÉAíœðŒ‚Æ‚È‚éƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒƒOƒe[ƒuƒ‹‚Ì—ñu“¯Šú‚µ‚½‚©‚Ç‚¤‚©‚ðŽ¦‚·ƒtƒ‰ƒOv‚Ì—ñ–¼‚ðÝ’è‚·‚éB<p>
-     * Žw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA{@link #getSynchronizeColumnName()}‚Ì‚Ý‚ð‘ÎÛ‚Æ‚·‚éBŽw’è‚³‚ê‚½ê‡‚ÍA{@link #getSynchronizeColumnName()}‚ÆŽw’è‚³‚ê‚½—ñ‚ð‘ÎÛ‚Æ‚·‚éB<br>
+     * åŒæœŸã—ãŸãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ­ã‚°ã‚’æŽƒé™¤ã™ã‚‹éš›ã«ã€å‰Šé™¤æ¡ä»¶ã¨ãªã‚‹ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ­ã‚°ãƒ†ãƒ¼ãƒ–ãƒ«ã®åˆ—ã€ŒåŒæœŸã—ãŸã‹ã©ã†ã‹ã‚’ç¤ºã™ãƒ•ãƒ©ã‚°ã€ã®åˆ—åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€{@link #getSynchronizeColumnName()}ã®ã¿ã‚’å¯¾è±¡ã¨ã™ã‚‹ã€‚æŒ‡å®šã•ã‚ŒãŸå ´åˆã¯ã€{@link #getSynchronizeColumnName()}ã¨æŒ‡å®šã•ã‚ŒãŸåˆ—ã‚’å¯¾è±¡ã¨ã™ã‚‹ã€‚<br>
      *
-     * @param names —ñ–¼‚Ì”z—ñ
+     * @param names åˆ—åã®é…åˆ—
      */
     public void setGarbageSynchronizeColumnNames(String[] names);
     
     /**
-     * “¯Šú‚µ‚½ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒƒO‚ð‘|œ‚·‚éÛ‚ÉAíœðŒ‚Æ‚È‚éƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒƒOƒe[ƒuƒ‹‚Ì—ñu“¯Šú‚µ‚½‚©‚Ç‚¤‚©‚ðŽ¦‚·ƒtƒ‰ƒOv‚Ì—ñ–¼‚ðŽæ“¾‚·‚éB<p>
+     * åŒæœŸã—ãŸãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ­ã‚°ã‚’æŽƒé™¤ã™ã‚‹éš›ã«ã€å‰Šé™¤æ¡ä»¶ã¨ãªã‚‹ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ­ã‚°ãƒ†ãƒ¼ãƒ–ãƒ«ã®åˆ—ã€ŒåŒæœŸã—ãŸã‹ã©ã†ã‹ã‚’ç¤ºã™ãƒ•ãƒ©ã‚°ã€ã®åˆ—åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return —ñ–¼‚Ì”z—ñ
+     * @return åˆ—åã®é…åˆ—
      */
     public String[] getGarbageSynchronizeColumnNames();
     
     /**
-     * “¯Šú‚µ‚½ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒƒO‚Ì—LŒøŽžŠÔ[ms]‚ðÝ’è‚·‚éB<p>
-     * {@link #isDeleteOnSynchronize()}‚ªtrue‚Ìê‡‚Ì‚Ý—LŒø‚ÅAƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒƒO‚ÌXVŽž‚ªŒ»ÝŽž‚æ‚è‚àŽw’èŽžŠÔ[ms]ˆÈã‘O‚ÌƒƒO‚ÅA“¯ŠúÏ‚Ý‚Ì‚à‚Ì‚ðíœ‚·‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA-1‚Å‘|œ‚µ‚È‚¢B<br>
+     * åŒæœŸã—ãŸãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ­ã‚°ã®æœ‰åŠ¹æ™‚é–“[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * {@link #isDeleteOnSynchronize()}ãŒtrueã®å ´åˆã®ã¿æœ‰åŠ¹ã§ã€ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ­ã‚°ã®æ›´æ–°æ™‚åˆ»ãŒç¾åœ¨æ™‚åˆ»ã‚ˆã‚Šã‚‚æŒ‡å®šæ™‚é–“[ms]ä»¥ä¸Šå‰ã®ãƒ­ã‚°ã§ã€åŒæœŸæ¸ˆã¿ã®ã‚‚ã®ã‚’å‰Šé™¤ã™ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€-1ã§æŽƒé™¤ã—ãªã„ã€‚<br>
      * 
-     * @param millis —LŒøŽžŠÔ[ms]
+     * @param millis æœ‰åŠ¹æ™‚é–“[ms]
      */
     public void setGarbageTime(long millis);
     
     /**
-     * “¯Šú‚µ‚½ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒƒO‚Ì—LŒøŽžŠÔ[ms]‚ðŽæ“¾‚·‚éB<p>
+     * åŒæœŸã—ãŸãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ­ã‚°ã®æœ‰åŠ¹æ™‚é–“[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return —LŒøŽžŠÔ[ms]
+     * @return æœ‰åŠ¹æ™‚é–“[ms]
      */
     public long getGarbageTime();
     
     /**
-     * XVƒ†[ƒU–¼‚ðÝ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAƒzƒXƒg–¼B<br>
+     * æ›´æ–°ãƒ¦ãƒ¼ã‚¶åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€ãƒ›ã‚¹ãƒˆåã€‚<br>
      *
-     * @param name XVƒ†[ƒU–¼
+     * @param name æ›´æ–°ãƒ¦ãƒ¼ã‚¶å
      */
     public void setUpdateUser(String name);
     
     /**
-     * XVƒ†[ƒU–¼‚ðŽæ“¾‚·‚éB<p>
+     * æ›´æ–°ãƒ¦ãƒ¼ã‚¶åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return XVƒ†[ƒU–¼
+     * @return æ›´æ–°ãƒ¦ãƒ¼ã‚¶å
      */
     public String getUpdateUser();
     
     /**
-     * ƒT[ƒrƒX‚Ì‹N“®Žž‚É“¯Šú‚ðs‚¤‚©‚Ç‚¤‚©‚ðÝ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚ÅA‹N“®Žž‚É“¯Šú‚µ‚È‚¢B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®èµ·å‹•æ™‚ã«åŒæœŸã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§ã€èµ·å‹•æ™‚ã«åŒæœŸã—ãªã„ã€‚<br>
      * 
-     * @param isSynchronize “¯Šú‚ðs‚¤ê‡‚ÍAtrue
+     * @param isSynchronize åŒæœŸã‚’è¡Œã†å ´åˆã¯ã€true
      */
     public void setSynchronizeOnStart(boolean isSynchronize);
     
     /**
-     * ƒT[ƒrƒX‚Ì‹N“®Žž‚É“¯Šú‚ðs‚¤‚©‚Ç‚¤‚©‚ð”»’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®èµ·å‹•æ™‚ã«åŒæœŸã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @return true‚Ìê‡A“¯Šú‚ðs‚¤
+     * @return trueã®å ´åˆã€åŒæœŸã‚’è¡Œã†
      */
     public boolean isSynchronizeOnStart();
     
     /**
-     * Å‘åƒoƒbƒ`ŽÀsŒ”‚ðÝ’è‚·‚éB<p>
-     * “¯Šúˆ—‚ðs‚¤ê‡‚ÉA“¯‚¶ƒNƒGƒŠ‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ª‘±‚­ŒÀ‚èƒoƒbƒ`ŽÀs‚ðs‚¤‚ªA
-     * ƒ[ƒ‹ƒoƒbƒNƒZƒOƒƒ“ƒg‚ª•s‘«‚·‚é‰Â”\«‚ª‚ ‚é‚Ì‚ÅA‚±‚ÌÅ‘åŒ”‚Ü‚Åƒoƒbƒ`‚ª—­‚Ü‚é‚Æˆê’UƒRƒ~ƒbƒg‚³‚ê‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA10ŒB<br>
+     * æœ€å¤§ãƒãƒƒãƒå®Ÿè¡Œä»¶æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * åŒæœŸå‡¦ç†ã‚’è¡Œã†å ´åˆã«ã€åŒã˜ã‚¯ã‚¨ãƒªã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãŒç¶šãé™ã‚Šãƒãƒƒãƒå®Ÿè¡Œã‚’è¡Œã†ãŒã€
+     * ãƒ­ãƒ¼ãƒ«ãƒãƒƒã‚¯ã‚»ã‚°ãƒ¡ãƒ³ãƒˆãŒä¸è¶³ã™ã‚‹å¯èƒ½æ€§ãŒã‚ã‚‹ã®ã§ã€ã“ã®æœ€å¤§ä»¶æ•°ã¾ã§ãƒãƒƒãƒãŒæºœã¾ã‚‹ã¨ä¸€æ—¦ã‚³ãƒŸãƒƒãƒˆã•ã‚Œã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€10ä»¶ã€‚<br>
      * 
-     * @param max Å‘åƒoƒbƒ`ŽÀsŒ”
+     * @param max æœ€å¤§ãƒãƒƒãƒå®Ÿè¡Œä»¶æ•°
      */
     public void setMaxBatchCount(int max);
     
     /**
-     * Å‘åƒoƒbƒ`ŽÀsŒ”‚ðŽæ“¾‚·‚éB<p>
+     * æœ€å¤§ãƒãƒƒãƒå®Ÿè¡Œä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return Å‘åƒoƒbƒ`ŽÀsŒ”
+     * @return æœ€å¤§ãƒãƒƒãƒå®Ÿè¡Œä»¶æ•°
      */
     public int getMaxBatchCount();
     
     /**
-     * ƒf[ƒ^ƒx[ƒX‚ð“¯Šú‚·‚éB<p>
-     * “¯ŠúŒ³‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒƒO‚ð“Ç‚Ýž‚ñ‚ÅA“¯Šúæ‚Éƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ðŽÀs‚·‚éB‚»‚ÌÛAŽÀs‚µ‚½ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒƒO‚Ííœ‚·‚éB<br>
+     * ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚’åŒæœŸã™ã‚‹ã€‚<p>
+     * åŒæœŸå…ƒã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ­ã‚°ã‚’èª­ã¿è¾¼ã‚“ã§ã€åŒæœŸå…ˆã«ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’å®Ÿè¡Œã™ã‚‹ã€‚ãã®éš›ã€å®Ÿè¡Œã—ãŸãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ­ã‚°ã¯å‰Šé™¤ã™ã‚‹ã€‚<br>
      *
-     * @return “¯Šú‚µ‚½ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÌŒ”
-     * @exception Exception “¯Šú’†‚É—áŠO‚ª”­¶‚µ‚½ê‡
+     * @return åŒæœŸã—ãŸãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®ä»¶æ•°
+     * @exception Exception åŒæœŸä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public int synchronize() throws Exception;
     
     /**
-     * “¯ŠúŒ³‚ÌŒ»Ý‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒƒOŒ”‚ðŽæ“¾‚·‚éB<p>
+     * åŒæœŸå…ƒã®ç¾åœ¨ã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ­ã‚°ä»¶æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒƒOŒ”
-     * @exception Exception ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒƒOŒ”‚ÌŽæ“¾‚ÉŽ¸”s‚µ‚½ê‡
+     * @return ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ­ã‚°ä»¶æ•°
+     * @exception Exception ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãƒ­ã‚°ä»¶æ•°ã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public long countTransactionLog() throws Exception;
 }

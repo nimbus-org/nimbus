@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.cache;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link AbstractCacheMapService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link AbstractCacheMapService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see AbstractCacheMapService
@@ -43,46 +43,46 @@ public interface AbstractCacheMapServiceMBean
  extends ServiceBaseMBean, CacheMap{
     
     /**
-     * ‚ ‚Ó‚ê§Œä‚ğs‚¤OverflowControllerƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ì”z—ñ‚ğİ’è‚·‚éB<p>
+     * ã‚ãµã‚Œåˆ¶å¾¡ã‚’è¡Œã†OverflowControllerã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param names ‚ ‚Ó‚ê§Œä‚ğs‚¤OverflowControllerƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ì”z—ñ
+     * @param names ã‚ãµã‚Œåˆ¶å¾¡ã‚’è¡Œã†OverflowControllerã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—
      */
     public void setOverflowControllerServiceNames(ServiceName[] names);
     
     /**
-     * ‚ ‚Ó‚ê§Œä‚ğs‚¤OverflowControllerƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ì”z—ñ‚ğæ“¾‚·‚éB<p>
+     * ã‚ãµã‚Œåˆ¶å¾¡ã‚’è¡Œã†OverflowControllerã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‚ ‚Ó‚ê§Œä‚ğs‚¤OverflowControllerƒCƒ“ƒ^ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ì”z—ñ
+     * @return ã‚ãµã‚Œåˆ¶å¾¡ã‚’è¡Œã†OverflowControllerã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—
      */
     public ServiceName[] getOverflowControllerServiceNames();
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚ÉƒLƒƒƒbƒVƒ…‚ğƒNƒŠƒA‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      *
-     * @param isClear ƒT[ƒrƒX‚Ì’â~‚ÉƒLƒƒƒbƒVƒ…‚ğƒNƒŠƒA‚·‚éê‡‚ÍAtrue
+     * @param isClear ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setClearOnStop(boolean isClear);
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~‚ÉƒLƒƒƒbƒVƒ…‚ğƒNƒŠƒA‚·‚é‚©‚Ç‚¤‚©‚ğ’²‚×‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã‹ã©ã†ã‹ã‚’èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @return ƒT[ƒrƒX‚Ì’â~‚ÉƒLƒƒƒbƒVƒ…‚ğƒNƒŠƒA‚·‚éê‡‚ÍAtrue
+     * @return ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢æ™‚ã«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹å ´åˆã¯ã€true
      */
     public boolean isClearOnStop();
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠü‚ÉƒLƒƒƒbƒVƒ…‚ğƒNƒŠƒA‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„æ™‚ã«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      *
-     * @param isClear ƒT[ƒrƒX‚Ì”jŠü‚ÉƒLƒƒƒbƒVƒ…‚ğƒNƒŠƒA‚·‚éê‡‚ÍAtrue
+     * @param isClear ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„æ™‚ã«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹å ´åˆã¯ã€true
      */
     public void setClearOnDestroy(boolean isClear);
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠü‚ÉƒLƒƒƒbƒVƒ…‚ğƒNƒŠƒA‚·‚é‚©‚Ç‚¤‚©‚ğ’²‚×‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„æ™‚ã«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã‹ã©ã†ã‹ã‚’èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @return ƒT[ƒrƒX‚Ì”jŠü‚ÉƒLƒƒƒbƒVƒ…‚ğƒNƒŠƒA‚·‚éê‡‚ÍAtrue
+     * @return ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„æ™‚ã«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹å ´åˆã¯ã€true
      */
     public boolean isClearOnDestroy();
 }

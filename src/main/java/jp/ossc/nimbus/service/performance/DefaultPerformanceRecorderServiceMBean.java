@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.performance;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link DefaultPerformanceRecorderService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link DefaultPerformanceRecorderService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see DefaultPerformanceRecorderService
@@ -42,244 +42,244 @@ import jp.ossc.nimbus.core.*;
 public interface DefaultPerformanceRecorderServiceMBean extends ServiceBaseMBean{
     
     /**
-     * o—Í‚·‚éƒpƒtƒH[ƒ}ƒ“ƒXî•ñƒ}ƒbƒv‚ÌƒL[F‹L˜^ŠJnB<p>
+     * å‡ºåŠ›ã™ã‚‹ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±ãƒãƒƒãƒ—ã®ã‚­ãƒ¼ï¼šè¨˜éŒ²é–‹å§‹æ™‚åˆ»ã€‚<p>
      */
     public static final String RECORD_KEY_TIMESTAMP       = "Timestamp";
     
     /**
-     * o—Í‚·‚éƒpƒtƒH[ƒ}ƒ“ƒXî•ñƒ}ƒbƒv‚ÌƒL[F‰‰ñ‹L˜^B<p>
+     * å‡ºåŠ›ã™ã‚‹ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±ãƒãƒƒãƒ—ã®ã‚­ãƒ¼ï¼šåˆå›è¨˜éŒ²æ™‚åˆ»ã€‚<p>
      */
     public static final String RECORD_KEY_FIRST_TIMESTAMP = "FirstTimestamp";
     
     /**
-     * o—Í‚·‚éƒpƒtƒH[ƒ}ƒ“ƒXî•ñƒ}ƒbƒv‚ÌƒL[FÅI‹L˜^B<p>
+     * å‡ºåŠ›ã™ã‚‹ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±ãƒãƒƒãƒ—ã®ã‚­ãƒ¼ï¼šæœ€çµ‚è¨˜éŒ²æ™‚åˆ»ã€‚<p>
      */
     public static final String RECORD_KEY_LAST_TIMESTAMP  = "LastTimestamp";
     
     /**
-     * o—Í‚·‚éƒpƒtƒH[ƒ}ƒ“ƒXî•ñƒ}ƒbƒv‚ÌƒL[F‹L˜^‰ñ”B<p>
+     * å‡ºåŠ›ã™ã‚‹ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±ãƒãƒƒãƒ—ã®ã‚­ãƒ¼ï¼šè¨˜éŒ²å›æ•°ã€‚<p>
      */
     public static final String RECORD_KEY_COUNT           = "Count";
     
     /**
-     * o—Í‚·‚éƒpƒtƒH[ƒ}ƒ“ƒXî•ñƒ}ƒbƒv‚ÌƒL[FÅ‚ˆ—ŠÔB<p>
+     * å‡ºåŠ›ã™ã‚‹ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±ãƒãƒƒãƒ—ã®ã‚­ãƒ¼ï¼šæœ€é«˜å‡¦ç†æ™‚é–“ã€‚<p>
      */
     public static final String RECORD_KEY_BEST            = "Best";
     
     /**
-     * o—Í‚·‚éƒpƒtƒH[ƒ}ƒ“ƒXî•ñƒ}ƒbƒv‚ÌƒL[FÅ’áˆ—ŠÔB<p>
+     * å‡ºåŠ›ã™ã‚‹ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±ãƒãƒƒãƒ—ã®ã‚­ãƒ¼ï¼šæœ€ä½å‡¦ç†æ™‚é–“ã€‚<p>
      */
     public static final String RECORD_KEY_WORST           = "Worst";
     
     /**
-     * o—Í‚·‚éƒpƒtƒH[ƒ}ƒ“ƒXî•ñƒ}ƒbƒv‚ÌƒL[F•½‹Ïˆ—ŠÔB<p>
+     * å‡ºåŠ›ã™ã‚‹ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±ãƒãƒƒãƒ—ã®ã‚­ãƒ¼ï¼šå¹³å‡å‡¦ç†æ™‚é–“ã€‚<p>
      */
     public static final String RECORD_KEY_AVERAGE         = "Average";
     
     /**
-     * o—Í‚·‚éƒpƒtƒH[ƒ}ƒ“ƒXî•ñƒ}ƒbƒv‚ÌƒL[F’†‰›ˆ—ŠÔB<p>
+     * å‡ºåŠ›ã™ã‚‹ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±ãƒãƒƒãƒ—ã®ã‚­ãƒ¼ï¼šä¸­å¤®å‡¦ç†æ™‚é–“ã€‚<p>
      */
     public static final String RECORD_KEY_MEDIAN          = "Median";
     
     /**
-     * ‹L˜^‚µ‚½ƒpƒtƒH[ƒ}ƒ“ƒX‚ğƒŠƒZƒbƒg‚·‚éŠÔŠu[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA60•bB<br>
+     * è¨˜éŒ²ã—ãŸãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹é–“éš”[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€60ç§’ã€‚<br>
      *
-     * @param millis ƒŠƒZƒbƒg‚·‚éŠÔŠu[ms]
+     * @param millis ãƒªã‚»ãƒƒãƒˆã™ã‚‹é–“éš”[ms]
      */
     public void setResetInterval(long millis);
     
     /**
-     * ‹L˜^‚µ‚½ƒpƒtƒH[ƒ}ƒ“ƒX‚ğƒŠƒZƒbƒg‚·‚éŠÔŠu[ms]‚ğæ“¾‚·‚éB<p>
+     * è¨˜éŒ²ã—ãŸãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹é–“éš”[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒZƒbƒg‚·‚éŠÔŠu[ms]
+     * @return ãƒªã‚»ãƒƒãƒˆã™ã‚‹é–“éš”[ms]
      */
     public long getResetInterval();
     
     /**
-     * ƒpƒtƒH[ƒ}ƒ“ƒX‚ğ‹L˜^‚·‚é“à•”ƒoƒbƒtƒ@‚Ì—e—Ê‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA10B<br>
+     * ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’è¨˜éŒ²ã™ã‚‹å†…éƒ¨ãƒãƒƒãƒ•ã‚¡ã®å®¹é‡ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€10ã€‚<br>
      *
-     * @param capa “à•”ƒoƒbƒtƒ@‚Ì—e—Ê
+     * @param capa å†…éƒ¨ãƒãƒƒãƒ•ã‚¡ã®å®¹é‡
      */
     public void setInitialCapacity(int capa);
     
     /**
-     * ƒpƒtƒH[ƒ}ƒ“ƒX‚ğ‹L˜^‚·‚é“à•”ƒoƒbƒtƒ@‚Ì—e—Ê‚ğæ“¾‚·‚éB<p>
+     * ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’è¨˜éŒ²ã™ã‚‹å†…éƒ¨ãƒãƒƒãƒ•ã‚¡ã®å®¹é‡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “à•”ƒoƒbƒtƒ@‚Ì—e—Ê
+     * @return å†…éƒ¨ãƒãƒƒãƒ•ã‚¡ã®å®¹é‡
      */
     public int getInitialCapacity();
     
     /**
-     * ƒpƒtƒH[ƒ}ƒ“ƒX‚ğ‹L˜^‚·‚é‘ÎÛƒXƒŒƒbƒh‚ÌÅ‘å”‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA-1‚Å§ŒÀ‚µ‚È‚¢B<br>
+     * ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’è¨˜éŒ²ã™ã‚‹å¯¾è±¡ã‚¹ãƒ¬ãƒƒãƒ‰ã®æœ€å¤§æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€-1ã§åˆ¶é™ã—ãªã„ã€‚<br>
      *
-     * @param max ‘ÎÛƒXƒŒƒbƒh‚ÌÅ‘å”
+     * @param max å¯¾è±¡ã‚¹ãƒ¬ãƒƒãƒ‰ã®æœ€å¤§æ•°
      */
     public void setMaxThread(int max);
     
     /**
-     * ƒpƒtƒH[ƒ}ƒ“ƒX‚ğ‹L˜^‚·‚é‘ÎÛƒXƒŒƒbƒh‚ÌÅ‘å”‚ğæ“¾‚·‚éB<p>
+     * ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’è¨˜éŒ²ã™ã‚‹å¯¾è±¡ã‚¹ãƒ¬ãƒƒãƒ‰ã®æœ€å¤§æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‘ÎÛƒXƒŒƒbƒh‚ÌÅ‘å”
+     * @return å¯¾è±¡ã‚¹ãƒ¬ãƒƒãƒ‰ã®æœ€å¤§æ•°
      */
     public int getMaxThread();
     
     /**
-     * ƒŠƒZƒbƒg‚Ìƒ^ƒCƒ~ƒ“ƒO‚ÅA‚»‚ÌŠÔ‚ÌƒpƒtƒH[ƒ}ƒ“ƒXî•ñ‚ğo—Í‚·‚é{@link jp.ossc.nimbus.service.writer.Category Category}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * İ’è‚µ‚È‚¢ê‡‚ÍAo—Í‚µ‚È‚¢B<br>
+     * ãƒªã‚»ãƒƒãƒˆã®ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã§ã€ãã®é–“ã®ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹{@link jp.ossc.nimbus.service.writer.Category Category}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã—ãªã„å ´åˆã¯ã€å‡ºåŠ›ã—ãªã„ã€‚<br>
      *
-     * @param name CategoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Categoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setCategoryServiceName(ServiceName name);
     
     /**
-     * ƒŠƒZƒbƒg‚Ìƒ^ƒCƒ~ƒ“ƒO‚ÅA‚»‚ÌŠÔ‚ÌƒpƒtƒH[ƒ}ƒ“ƒXî•ñ‚ğo—Í‚·‚é{@link jp.ossc.nimbus.service.writer.Category Category}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒªã‚»ãƒƒãƒˆã®ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã§ã€ãã®é–“ã®ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹{@link jp.ossc.nimbus.service.writer.Category Category}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return CategoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Categoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getCategoryServiceName();
     
     /**
-     * ƒpƒtƒH[ƒ}ƒ“ƒX‚ª‹L˜^‚³‚ê‚È‚©‚Á‚½ŠÔ‚ÌƒpƒtƒH[ƒ}ƒ“ƒX‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åo—Í‚·‚éB<br>
+     * ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ãŒè¨˜éŒ²ã•ã‚Œãªã‹ã£ãŸé–“ã®ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡Atrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã€true
      */
     public void setOutputNoAccessTime(boolean isOutput);
     
     /**
-     * ƒpƒtƒH[ƒ}ƒ“ƒX‚ª‹L˜^‚³‚ê‚È‚©‚Á‚½ŠÔ‚ÌƒpƒtƒH[ƒ}ƒ“ƒX‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ãŒè¨˜éŒ²ã•ã‚Œãªã‹ã£ãŸé–“ã®ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputNoAccessTime();
     
     /**
-     * {@link jp.ossc.nimbus.service.writer.Category Category}ƒT[ƒrƒX‚Éo—Í‚·‚éƒpƒtƒH[ƒ}ƒ“ƒXî•ñ‚Ì‚¤‚¿A{@link #RECORD_KEY_TIMESTAMP}‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åo—Í‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.writer.Category Category}ã‚µãƒ¼ãƒ“ã‚¹ã«å‡ºåŠ›ã™ã‚‹ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±ã®ã†ã¡ã€{@link #RECORD_KEY_TIMESTAMP}ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡Atrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã€true
      */
     public void setOutputTimestamp(boolean isOutput);
     
     /**
-     * {@link jp.ossc.nimbus.service.writer.Category Category}ƒT[ƒrƒX‚Éo—Í‚·‚éƒpƒtƒH[ƒ}ƒ“ƒXî•ñ‚Ì‚¤‚¿A{@link #RECORD_KEY_TIMESTAMP}‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.writer.Category Category}ã‚µãƒ¼ãƒ“ã‚¹ã«å‡ºåŠ›ã™ã‚‹ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±ã®ã†ã¡ã€{@link #RECORD_KEY_TIMESTAMP}ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputTimestamp();
     
     /**
-     * {@link jp.ossc.nimbus.service.writer.Category Category}ƒT[ƒrƒX‚Éo—Í‚·‚éƒpƒtƒH[ƒ}ƒ“ƒXî•ñ‚Ì‚¤‚¿A{@link #RECORD_KEY_COUNT}‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åo—Í‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.writer.Category Category}ã‚µãƒ¼ãƒ“ã‚¹ã«å‡ºåŠ›ã™ã‚‹ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±ã®ã†ã¡ã€{@link #RECORD_KEY_COUNT}ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡Atrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã€true
      */
     public void setOutputCount(boolean isOutput);
     
     /**
-     * {@link jp.ossc.nimbus.service.writer.Category Category}ƒT[ƒrƒX‚Éo—Í‚·‚éƒpƒtƒH[ƒ}ƒ“ƒXî•ñ‚Ì‚¤‚¿A{@link #RECORD_KEY_COUNT}‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.writer.Category Category}ã‚µãƒ¼ãƒ“ã‚¹ã«å‡ºåŠ›ã™ã‚‹ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±ã®ã†ã¡ã€{@link #RECORD_KEY_COUNT}ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputCount();
     
     /**
-     * {@link jp.ossc.nimbus.service.writer.Category Category}ƒT[ƒrƒX‚Éo—Í‚·‚éƒpƒtƒH[ƒ}ƒ“ƒXî•ñ‚Ì‚¤‚¿A{@link #RECORD_KEY_BEST}‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åo—Í‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.writer.Category Category}ã‚µãƒ¼ãƒ“ã‚¹ã«å‡ºåŠ›ã™ã‚‹ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±ã®ã†ã¡ã€{@link #RECORD_KEY_BEST}ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡Atrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã€true
      */
     public void setOutputBestPerformance(boolean isOutput);
     
     /**
-     * {@link jp.ossc.nimbus.service.writer.Category Category}ƒT[ƒrƒX‚Éo—Í‚·‚éƒpƒtƒH[ƒ}ƒ“ƒXî•ñ‚Ì‚¤‚¿A{@link #RECORD_KEY_BEST}‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.writer.Category Category}ã‚µãƒ¼ãƒ“ã‚¹ã«å‡ºåŠ›ã™ã‚‹ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±ã®ã†ã¡ã€{@link #RECORD_KEY_BEST}ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputBestPerformance();
     
     /**
-     * {@link jp.ossc.nimbus.service.writer.Category Category}ƒT[ƒrƒX‚Éo—Í‚·‚éƒpƒtƒH[ƒ}ƒ“ƒXî•ñ‚Ì‚¤‚¿A{@link #RECORD_KEY_WORST}‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åo—Í‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.writer.Category Category}ã‚µãƒ¼ãƒ“ã‚¹ã«å‡ºåŠ›ã™ã‚‹ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±ã®ã†ã¡ã€{@link #RECORD_KEY_WORST}ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡Atrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã€true
      */
     public void setOutputWorstPerformance(boolean isOutput);
     
     /**
-     * {@link jp.ossc.nimbus.service.writer.Category Category}ƒT[ƒrƒX‚Éo—Í‚·‚éƒpƒtƒH[ƒ}ƒ“ƒXî•ñ‚Ì‚¤‚¿A{@link #RECORD_KEY_WORST}‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.writer.Category Category}ã‚µãƒ¼ãƒ“ã‚¹ã«å‡ºåŠ›ã™ã‚‹ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±ã®ã†ã¡ã€{@link #RECORD_KEY_WORST}ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputWorstPerformance();
     
     /**
-     * {@link jp.ossc.nimbus.service.writer.Category Category}ƒT[ƒrƒX‚Éo—Í‚·‚éƒpƒtƒH[ƒ}ƒ“ƒXî•ñ‚Ì‚¤‚¿A{@link #RECORD_KEY_AVERAGE}‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åo—Í‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.writer.Category Category}ã‚µãƒ¼ãƒ“ã‚¹ã«å‡ºåŠ›ã™ã‚‹ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±ã®ã†ã¡ã€{@link #RECORD_KEY_AVERAGE}ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡Atrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã€true
      */
     public void setOutputAveragePerformance(boolean isOutput);
     
     /**
-     * {@link jp.ossc.nimbus.service.writer.Category Category}ƒT[ƒrƒX‚Éo—Í‚·‚éƒpƒtƒH[ƒ}ƒ“ƒXî•ñ‚Ì‚¤‚¿A{@link #RECORD_KEY_AVERAGE}‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.writer.Category Category}ã‚µãƒ¼ãƒ“ã‚¹ã«å‡ºåŠ›ã™ã‚‹ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±ã®ã†ã¡ã€{@link #RECORD_KEY_AVERAGE}ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputAveragePerformance();
     
     /**
-     * {@link jp.ossc.nimbus.service.writer.Category Category}ƒT[ƒrƒX‚Éo—Í‚·‚éƒpƒtƒH[ƒ}ƒ“ƒXî•ñ‚Ì‚¤‚¿A{@link #RECORD_KEY_MEDIAN}‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åo—Í‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.writer.Category Category}ã‚µãƒ¼ãƒ“ã‚¹ã«å‡ºåŠ›ã™ã‚‹ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±ã®ã†ã¡ã€{@link #RECORD_KEY_MEDIAN}ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡Atrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã€true
      */
     public void setOutputMedianPerformance(boolean isOutput);
     
     /**
-     * {@link jp.ossc.nimbus.service.writer.Category Category}ƒT[ƒrƒX‚Éo—Í‚·‚éƒpƒtƒH[ƒ}ƒ“ƒXî•ñ‚Ì‚¤‚¿A{@link #RECORD_KEY_MEDIAN}‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.writer.Category Category}ã‚µãƒ¼ãƒ“ã‚¹ã«å‡ºåŠ›ã™ã‚‹ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±ã®ã†ã¡ã€{@link #RECORD_KEY_MEDIAN}ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputMedianPerformance();
     
     /**
-     * {@link jp.ossc.nimbus.service.writer.Category Category}ƒT[ƒrƒX‚Éo—Í‚·‚éƒpƒtƒH[ƒ}ƒ“ƒXî•ñ‚Ì‚¤‚¿A{@link #RECORD_KEY_FIRST_TIMESTAMP}‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åo—Í‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.writer.Category Category}ã‚µãƒ¼ãƒ“ã‚¹ã«å‡ºåŠ›ã™ã‚‹ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±ã®ã†ã¡ã€{@link #RECORD_KEY_FIRST_TIMESTAMP}ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡Atrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã€true
      */
     public void setOutputFirstTimestamp(boolean isOutput);
     
     /**
-     * {@link jp.ossc.nimbus.service.writer.Category Category}ƒT[ƒrƒX‚Éo—Í‚·‚éƒpƒtƒH[ƒ}ƒ“ƒXî•ñ‚Ì‚¤‚¿A{@link #RECORD_KEY_FIRST_TIMESTAMP}‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.writer.Category Category}ã‚µãƒ¼ãƒ“ã‚¹ã«å‡ºåŠ›ã™ã‚‹ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±ã®ã†ã¡ã€{@link #RECORD_KEY_FIRST_TIMESTAMP}ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputFirstTimestamp();
     
     /**
-     * {@link jp.ossc.nimbus.service.writer.Category Category}ƒT[ƒrƒX‚Éo—Í‚·‚éƒpƒtƒH[ƒ}ƒ“ƒXî•ñ‚Ì‚¤‚¿A{@link #RECORD_KEY_LAST_TIMESTAMP}‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Åo—Í‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.writer.Category Category}ã‚µãƒ¼ãƒ“ã‚¹ã«å‡ºåŠ›ã™ã‚‹ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±ã®ã†ã¡ã€{@link #RECORD_KEY_LAST_TIMESTAMP}ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§å‡ºåŠ›ã™ã‚‹ã€‚<br>
      *
-     * @param isOutput o—Í‚·‚éê‡Atrue
+     * @param isOutput å‡ºåŠ›ã™ã‚‹å ´åˆã€true
      */
     public void setOutputLastTimestamp(boolean isOutput);
     
     /**
-     * {@link jp.ossc.nimbus.service.writer.Category Category}ƒT[ƒrƒX‚Éo—Í‚·‚éƒpƒtƒH[ƒ}ƒ“ƒXî•ñ‚Ì‚¤‚¿A{@link #RECORD_KEY_LAST_TIMESTAMP}‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.writer.Category Category}ã‚µãƒ¼ãƒ“ã‚¹ã«å‡ºåŠ›ã™ã‚‹ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±ã®ã†ã¡ã€{@link #RECORD_KEY_LAST_TIMESTAMP}ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡Ao—Í‚·‚é
+     * @return trueã®å ´åˆã€å‡ºåŠ›ã™ã‚‹
      */
     public boolean isOutputLastTimestamp();
     
     /**
-     * Œ»İ‚ÌƒpƒtƒH[ƒ}ƒ“ƒXî•ñ‚ğ•\¦‚·‚éB<p>
+     * ç¾åœ¨ã®ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±ã‚’è¡¨ç¤ºã™ã‚‹ã€‚<p>
      *
-     * @return ƒpƒtƒH[ƒ}ƒ“ƒXî•ñ
+     * @return ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹æƒ…å ±
      */
     public String display();
 }

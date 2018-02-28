@@ -32,16 +32,16 @@
 package jp.ossc.nimbus.core;
 
 /**
- * �t�@�N�g���T�[�r�X�C���^�t�F�[�X�B<p>
- * �T�[�r�X��񋟂���I�u�W�F�N�g�𐶐�����t�@�N�g���C���^�t�F�[�X�ł���B<p>
- * {@link Service}�́A�C���X�^���X���P����{@link ServiceManager}�ɓo�^���āA�����̃I�u�W�F�N�g����P�̃C���X�^���X���Q�Ƃ���Ďg����T�[�r�X���`���邽�߂̃C���^�t�F�[�X�ł���B<br>
- * ����ɑ΂��āA���̃C���^�t�F�[�X�́A�C���X�^���X���P����ServiceManager�ɓo�^����Ƃ���͓����ł��邪�A�T�[�r�X���s���I�u�W�F�N�g�́AServiceManager����擾���鎞�ɁA{@link #newInstance()}�ɂ���Ė��񐶐������ʂ̃I�u�W�F�N�g�ƂȂ�B�]���āA�T�[�r�X���g�����́A���ꂼ��قȂ�I�u�W�F�N�g���g�p���鎖�ɂȂ�B<br>
- * ����́A�Ⴆ�΁A�T�[�r�X��`�͂P�����ŁA���̎��̂ƂȂ�T�[�r�X�͕����g�p�������ꍇ�Ȃǂɗp����B<br>
+ * ファクトリサービスインタフェース。<p>
+ * サービスを提供するオブジェクトを生成するファクトリインタフェースである。<p>
+ * {@link Service}は、インスタンスを１つだけ{@link ServiceManager}に登録して、複数のオブジェクトから１つのインスタンスが参照されて使われるサービスを定義するためのインタフェースである。<br>
+ * それに対して、このインタフェースは、インスタンスを１つだけServiceManagerに登録するところは同じであるが、サービスを行うオブジェクトは、ServiceManagerから取得する時に、{@link #newInstance()}によって毎回生成される別のオブジェクトとなる。従って、サービスを使う側は、それぞれ異なるオブジェクトを使用する事になる。<br>
+ * これは、例えば、サービス定義は１つだけで、その実体となるサービスは複数使用したい場合などに用いる。<br>
  * <p>
- * ���̃t�@�N�g���ɂ���Đ������ꂽ�I�u�W�F�N�g�́A�T�[�r�X�Ƃ��ēo�^����Ȃ��B�]���āA���̂܂܂ł͂P�x��������Ă��܂����I�u�W�F�N�g�́A���̃t�@�N�g������؂藣����邽�߁A���̃t�@�N�g���̑�����ύX���Ă��A���f����邱�Ƃ͂Ȃ��B<br>
- * �������A�ꍇ�ɂ���ẮA���̃t�@�N�g���̑�����ς��鎖�ŁA���ɐ������ꂽ�I�u�W�F�N�g�̑�����ς������ꍇ������B���̃t�@�N�g���́A���������I�u�W�F�N�g���Ǘ�����@�\�������A{@link #setManagement(boolean)}�ɂ���Ă��̋@�\��ON/OFF�𐧌�\�ł���B<br>
- * �A���A���ӂ��K�v�Ȃ̂́AsetManagement(true)�ɂ��āA���������I�u�W�F�N�g�́A���̃t�@�N�g�����ŊǗ�����邽�߁A�g�������g���̂ĂĂ��A���̃t�@�N�g���T�[�r�X���j������Ȃ�����A�K�x�[�W����Ȃ��B<br>
- * �]���āA�t�@�N�g���ɊǗ����ꂽ�I�u�W�F�N�g���g�����́A�g���̂ĂŎg�p���ׂ��ł͂Ȃ��B�g���̂ĂŎg�p�������ꍇ�́AsetManagement(false)�ɂ��āA�Ǘ�����Ȃ��I�u�W�F�N�g�Ƃ��Ďg�p���ׂ��ł���B<br>
+ * このファクトリによって生成されたオブジェクトは、サービスとして登録されない。従って、そのままでは１度生成されてしまったオブジェクトは、このファクトリから切り離されるため、このファクトリの属性を変更しても、反映されることはない。<br>
+ * しかし、場合によっては、このファクトリの属性を変える事で、既に生成されたオブジェクトの属性を変えたい場合もある。このファクトリは、生成したオブジェクトを管理する機能を持ち、{@link #setManagement(boolean)}によってその機能のON/OFFを制御可能である。<br>
+ * 但し、注意が必要なのは、setManagement(true)にして、生成したオブジェクトは、このファクトリ内で管理されるため、使う側が使い捨てても、このファクトリサービスが破棄されない限り、ガベージされない。<br>
+ * 従って、ファクトリに管理されたオブジェクトを使う側は、使い捨てで使用すべきではない。使い捨てで使用したい場合は、setManagement(false)にして、管理されないオブジェクトとして使用すべきである。<br>
  * 
  * @author M.Takata
  * @see Service
@@ -49,58 +49,58 @@ package jp.ossc.nimbus.core;
 public interface FactoryService{
     
     /**
-     * ���̃t�@�N�g������������I�u�W�F�N�g���Ǘ����邩�ǂ�����ݒ肷��B<p>
-     * true�ɂ����ꍇ�A���̌�A���̃t�@�N�g���ɂ���Đ��������I�u�W�F�N�g�́A���̃t�@�N�g���̊Ǘ����ɒu�����B�Ǘ�����Ă���I�u�W�F�N�g�́A���̃t�@�N�g���̑����̕ύX�𔽉f�����B�i�ǂ̂悤�ȑ������Ǘ�����邩�́A�����Ɉˑ�����j���̂��߁A���̃t�@�N�g�����Q�Ƃ�ێ�����̂ŁA�g�������Q�Ƃ��̂ĂĂ��A�K�x�[�W����Ȃ��B���̃t�@�N�g�����A�j�����ꂽ�ꍇ�ɂ́A�Ǘ�����Ă���I�u�W�F�N�g�̎Q�Ƃ��j�������B<br>
-     * false�ɂ����ꍇ�A���̌�A���̃t�@�N�g���ɂ���Đ��������I�u�W�F�N�g�́A���̃t�@�N�g���̊Ǘ����ɒu����Ȃ��B�Ǘ�����Ă��Ȃ��I�u�W�F�N�g�́A���̃t�@�N�g���̑����̕ύX�𔽉f����Ȃ��B���̂��߁A���̃t�@�N�g�����Q�Ƃ�ێ����邱�Ƃ͂Ȃ��̂ŁA�g�������Q�Ƃ��̂Ă�ƁA�K�x�[�W�̑ΏۂɂȂ�B<br>
+     * このファクトリが生成するオブジェクトを管理するかどうかを設定する。<p>
+     * trueにした場合、その後、このファクトリによって生成されるオブジェクトは、このファクトリの管理化に置かれる。管理されているオブジェクトは、このファクトリの属性の変更を反映される。（どのような属性が管理されるかは、実装に依存する）そのため、このファクトリが参照を保持するので、使う側が参照を捨てても、ガベージされない。このファクトリが、破棄された場合には、管理されているオブジェクトの参照も破棄される。<br>
+     * falseにした場合、その後、このファクトリによって生成されるオブジェクトは、このファクトリの管理化に置かれない。管理されていないオブジェクトは、このファクトリの属性の変更を反映されない。そのため、このファクトリが参照を保持することはないので、使う側が参照を捨てると、ガベージの対象になる。<br>
      *
-     * @param isManaged �Ǘ�����ꍇ��true�A�Ǘ����Ȃ��ꍇ��false
+     * @param isManaged 管理する場合はtrue、管理しない場合はfalse
      * @see #isManagement()
      */
     public void setManagement(boolean isManaged);
     
     /**
-     * ���̃t�@�N�g���ɂ���āA���̌�ɐ�������I�u�W�F�N�g���A�Ǘ�����邩�ǂ����𒲂ׂ�B<b>
+     * このファクトリによって、この後に生成するオブジェクトが、管理されるかどうかを調べる。<b>
      *
-     * @return �Ǘ�����ꍇ��true�A�Ǘ����Ȃ��ꍇ��false
+     * @return 管理する場合はtrue、管理しない場合はfalse
      * @see #setManagement(boolean)
      */
     public boolean isManagement();
     
     /**
-     * ���̃t�@�N�g������������I�u�W�F�N�g���X���b�h�P�ʂɐ������邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g��false�B
+     * このファクトリが生成するオブジェクトをスレッド単位に生成するかどうかを設定する。<p>
+     * デフォルトはfalse。
      *
-     * @param isThreadLocal �Ǘ�����ꍇ��true�A�Ǘ����Ȃ��ꍇ��false
+     * @param isThreadLocal 管理する場合はtrue、管理しない場合はfalse
      * @see #isThreadLocal()
      */
     public void setThreadLocal(boolean isThreadLocal);
     
     /**
-     * ���̃t�@�N�g������������I�u�W�F�N�g���X���b�h�P�ʂɐ������邩�ǂ����𒲂ׂ�B<b>
+     * このファクトリが生成するオブジェクトをスレッド単位に生成するかどうかを調べる。<b>
      *
-     * @return �X���b�h�P�ʂɐ�������ꍇ��true�A�X���b�h�P�ʂɐ������Ȃ��ꍇ��false
+     * @return スレッド単位に生成する場合はtrue、スレッド単位に生成しない場合はfalse
      * @see #setThreadLocal(boolean)
      */
     public boolean isThreadLocal();
     
     /**
-     * ���̃t�@�N�g�����������Ǘ����Ă���I�u�W�F�N�g��j������B<p>
+     * このファクトリが生成し管理しているオブジェクトを破棄する。<p>
      *
-     * @param service �j������T�[�r�X�I�u�W�F�N�g
+     * @param service 破棄するサービスオブジェクト
      */
     public void release(Object service);
     
     /**
-     * ���̃t�@�N�g�����������Ǘ����Ă���I�u�W�F�N�g��S�Ĕj������B<p>
+     * このファクトリが生成し管理しているオブジェクトを全て破棄する。<p>
      */
     public void release();
     
     /**
-     * �T�[�r�X��񋟂���I�u�W�F�N�g�𐶐�����B<p>
-     * {@link #isManagement()}��true�̏�ԂŁA���̃��\�b�h���Ăяo���ƁA���������I�u�W�F�N�g�́A���̃t�@�N�g���ɂ���ĊǗ�����A�t�@�N�g���̑����ύX�����f�����B<br>
-     * isManagement()��false�̏�ԂŁA���̃��\�b�h���Ăяo���ƁA���������I�u�W�F�N�g�́A���̃t�@�N�g���ɂ���ĊǗ�����Ȃ����߁A�t�@�N�g���̑����ύX�͔��f����Ȃ��B�g���̂ẴI�u�W�F�N�g�ł���B<br>
+     * サービスを提供するオブジェクトを生成する。<p>
+     * {@link #isManagement()}がtrueの状態で、このメソッドを呼び出すと、生成されるオブジェクトは、このファクトリによって管理され、ファクトリの属性変更が反映される。<br>
+     * isManagement()がfalseの状態で、このメソッドを呼び出すと、生成されるオブジェクトは、このファクトリによって管理されないため、ファクトリの属性変更は反映されない。使い捨てのオブジェクトである。<br>
      *
-     * @return �T�[�r�X��񋟂���I�u�W�F�N�g
+     * @return サービスを提供するオブジェクト
      * @see #setManagement(boolean)
      */
     public Object newInstance();

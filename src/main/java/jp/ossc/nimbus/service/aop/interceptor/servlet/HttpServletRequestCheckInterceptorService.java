@@ -40,8 +40,8 @@ import javax.servlet.http.*;
 import jp.ossc.nimbus.service.aop.*;
 
 /**
- * HTTPƒŠƒNƒGƒXƒgƒ`ƒFƒbƒNƒCƒ“ƒ^[ƒZƒvƒ^B<p>
- * ˆÈ‰º‚ÉAHTTPƒŠƒNƒGƒXƒgƒwƒbƒ_‚ÌContent-Type‚ª"application/x-www-form-urlencoded"‚Å‚È‚©‚Á‚½‚èAHTTPƒƒ\ƒbƒh‚ªPOST‚Å‚È‚©‚Á‚½ê‡AHTTPƒXƒe[ƒ^ƒX400‚ğ•Ô‚·HTTPƒŠƒNƒGƒXƒgƒ`ƒFƒbƒNƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã€‚<p>
+ * ä»¥ä¸‹ã«ã€HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ˜ãƒƒãƒ€ã®Content-TypeãŒ"application/x-www-form-urlencoded"ã§ãªã‹ã£ãŸã‚Šã€HTTPãƒ¡ã‚½ãƒƒãƒ‰ãŒPOSTã§ãªã‹ã£ãŸå ´åˆã€HTTPã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹400ã‚’è¿”ã™HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒã‚§ãƒƒã‚¯ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -97,220 +97,220 @@ public class HttpServletRequestCheckInterceptorService
     protected int errorStatus = HttpServletResponse.SC_BAD_REQUEST;
     protected boolean isThrowOnError;
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public void setMaxContentLength(int max){
         maxContentLength = max;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public int getMaxContentLength(){
         return maxContentLength;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public void setMinContentLength(int min){
         minContentLength = min;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public int getMinContentLength(){
         return minContentLength;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public void setAllowNullContentType(boolean isAllow){
         isAllowNullContentType = isAllow;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public boolean isAllowNullContentType(){
         return isAllowNullContentType;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public void setValidContentTypes(String[] types){
         validContentTypes = types;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public String[] getValidContentTypes(){
         return validContentTypes;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public void setInvalidContentTypes(String[] types){
         invalidContentTypes = types;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public String[] getInvalidContentTypes(){
         return invalidContentTypes;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public void setAllowNullCharacterEncoding(boolean isAllow){
         isAllowNullCharacterEncoding = isAllow;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public boolean isAllowNullCharacterEncoding(){
         return isAllowNullCharacterEncoding;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public void setValidCharacterEncodings(String[] encodings){
         validCharacterEncodings = encodings;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public String[] getValidCharacterEncodings(){
         return validCharacterEncodings;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public void setInvalidCharacterEncodings(String[] encodings){
         invalidCharacterEncodings = encodings;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public String[] getInvalidCharacterEncodings(){
         return invalidCharacterEncodings;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public void setAllowNullLocale(boolean isAllow){
         isAllowNullLocale = isAllow;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public boolean isAllowNullLocale(){
         return isAllowNullLocale;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public void setValidLocales(String[] locales){
         validLocales = locales;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public String[] getValidLocales(){
         return validLocales;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public void setValidProtocols(String[] protocols){
         validProtocols = protocols;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public String[] getValidProtocols(){
         return validProtocols;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public void setValidRemoteAddrs(String[] addrs){
         validRemoteAddrs = addrs;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public String[] getValidRemoteAddrs(){
         return validRemoteAddrs;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public void setValidRemoteHosts(String[] hosts){
         validRemoteHosts = hosts;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public String[] getValidRemoteHosts(){
         return validRemoteHosts;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public void setValidRemotePorts(int[] ports){
         validRemotePorts = ports;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public int[] getValidRemotePorts(){
         return validRemotePorts;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public void setValidSchemata(String[] schemata){
         validSchemata = schemata;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public String[] getValidSchemata(){
         return validSchemata;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public void setValidServerNames(String[] names){
         validServerNames = names;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public String[] getValidServerNames(){
         return validServerNames;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public void setValidMethods(String[] methods){
         validMethods = methods;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public String[] getValidMethods(){
         return validMethods;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public void setInvalidMethods(String[] methods){
         invalidMethods = methods;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public String[] getInvalidMethods(){
         return invalidMethods;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public void setHeaderEquals(Properties cond){
         headerEquals = cond;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public Properties getHeaderEquals(){
         return headerEquals;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public void setErrorStatus(int status){
         errorStatus = status;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public int getErrorStatus(){
         return errorStatus;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public void setThrowOnError(boolean isThrow){
         isThrowOnError = isThrow;
     }
     
-    // HttpServletRequestCheckInterceptorServiceMBean‚ÌJavaDoc
+    // HttpServletRequestCheckInterceptorServiceMBeanã®JavaDoc
     public boolean isThrowOnError(){
         return isThrowOnError;
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJn‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(validLocales != null && validLocales.length != 0){
@@ -371,13 +371,13 @@ public class HttpServletRequestCheckInterceptorService
     }
     
     /**
-     * HTTPƒŠƒNƒGƒXƒg‚Ìƒ`ƒFƒbƒN‚ğ‚µ‚ÄAŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<p>
-     * ƒT[ƒrƒX‚ªŠJn‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‰½‚à‚¹‚¸‚ÉŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<br>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ãƒã‚§ãƒƒã‚¯ã‚’ã—ã¦ã€æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãŒé–‹å§‹ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ä½•ã‚‚ã›ãšã«æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param chain Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·‚½‚ß‚Ìƒ`ƒF[ƒ“
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable ŒÄ‚Ño‚µæ‚Å—áŠO‚ª”­¶‚µ‚½ê‡A‚Ü‚½‚Í‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚Å”CˆÓ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡B’A‚µA–{—ˆŒÄ‚Ño‚³‚ê‚éˆ—‚ªthrow‚µ‚È‚¢RuntimeExceptionˆÈŠO‚Ì—áŠO‚ğthrow‚µ‚Ä‚àAŒÄ‚Ño‚µŒ³‚É‚Í“`”d‚³‚ê‚È‚¢B
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param chain æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ãŸã‚ã®ãƒã‚§ãƒ¼ãƒ³
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable å‘¼ã³å‡ºã—å…ˆã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€ã¾ãŸã¯ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ä»»æ„ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€‚ä½†ã—ã€æœ¬æ¥å‘¼ã³å‡ºã•ã‚Œã‚‹å‡¦ç†ãŒthrowã—ãªã„RuntimeExceptionä»¥å¤–ã®ä¾‹å¤–ã‚’throwã—ã¦ã‚‚ã€å‘¼ã³å‡ºã—å…ƒã«ã¯ä¼æ’­ã•ã‚Œãªã„ã€‚
      */
     public Object invokeFilter(
         ServletFilterInvocationContext context,

@@ -41,7 +41,7 @@ import jp.ossc.nimbus.daemon.DaemonRunnable;
 import jp.ossc.nimbus.daemon.DaemonControl;
 
 /**
- * CPU—˜—p—ÊB<p>
+ * CPUåˆ©ç”¨é‡ã€‚<p>
  *
  * @author M.Takata
  */

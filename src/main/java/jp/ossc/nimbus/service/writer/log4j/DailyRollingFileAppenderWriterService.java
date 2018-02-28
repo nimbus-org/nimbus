@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.writer.log4j;
 import org.apache.log4j.*;
 
 /**
- * Log4J‚ÌDailyRollingFileAppender‚ğg‚Á‚½MessageWriterƒT[ƒrƒXB<p>
+ * Log4Jã®DailyRollingFileAppenderã‚’ä½¿ã£ãŸMessageWriterã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -47,35 +47,35 @@ public class DailyRollingFileAppenderWriterService
     private String datePattern;
     
     /**
-     * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public DailyRollingFileAppenderWriterService(){
         super();
     }
     
-    // RollingFileAppenderWriterServiceMBean‚ÌJavaDoc
+    // RollingFileAppenderWriterServiceMBeanã®JavaDoc
     public void setDatePattern(String pattern){
         this.datePattern = pattern;
     }
     
-    // RollingFileAppenderWriterServiceMBean‚ÌJavaDoc
+    // RollingFileAppenderWriterServiceMBeanã®JavaDoc
     public String getDatePattern(){
         return datePattern;
     }
     
     /**
-     * DailyRollingFileAppenderƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚µ‚ÄAƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚Ì{@link #appender}‚ğ‰Šú‰»‚·‚éB<p>
+     * DailyRollingFileAppenderã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã—ã¦ã€ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã®{@link #appender}ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
      *
-     * @exception Exception DailyRollingFileAppender‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception Exception DailyRollingFileAppenderã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected WriterAppender createWriterAppender() throws Exception{
         return new DailyRollingFileAppender();
     }
     
     /**
-     * DailyRollingFileAppender‚ğ‰Šú‰»‚·‚éB<p>
+     * DailyRollingFileAppenderã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
      *
-     * @exception Exception DailyRollingFileAppender‚Ì‰Šú‰»‚É¸”s‚µ‚½ê‡
+     * @exception Exception DailyRollingFileAppenderã®åˆæœŸåŒ–ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void initWriterAppender(WriterAppender appender) throws Exception{
         super.initWriterAppender(appender);

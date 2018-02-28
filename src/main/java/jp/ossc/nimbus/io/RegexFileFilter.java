@@ -35,8 +35,8 @@ import java.io.*;
 import java.util.regex.*;
 
 /**
- * ³‹K•\Œ»ƒtƒ@ƒCƒ‹ƒtƒBƒ‹ƒ^B<p>
- * w’è‚³‚ê‚½³‹K•\Œ»‚É‡’v‚·‚éƒtƒ@ƒCƒ‹‚Ì‚İ‚ğ’Šo‚·‚éƒtƒBƒ‹ƒ^B
+ * æ­£è¦è¡¨ç¾ãƒ•ã‚¡ã‚¤ãƒ«ãƒ•ã‚£ãƒ«ã‚¿ã€‚<p>
+ * æŒ‡å®šã•ã‚ŒãŸæ­£è¦è¡¨ç¾ã«åˆè‡´ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã®ã¿ã‚’æŠ½å‡ºã™ã‚‹ãƒ•ã‚£ãƒ«ã‚¿ã€‚
  * <pre>
  * import java.io.*;
  * import jp.ossc.nimbus.io.RegexFileFilter;
@@ -54,35 +54,35 @@ public class RegexFileFilter implements FilenameFilter, Serializable{
     private Pattern pattern;
     
     /**
-     * ³‹K•\Œ»‚ğw’è‚µ‚È‚¢ƒtƒBƒ‹ƒ^‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æ­£è¦è¡¨ç¾ã‚’æŒ‡å®šã—ãªã„ãƒ•ã‚£ãƒ«ã‚¿ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public RegexFileFilter(){
         this(null);
     }
     
     /**
-     * w’è‚µ‚½³‹K•\Œ»‚Ìƒtƒ@ƒCƒ‹‚Ì‚İ‚ğ’Šo‚·‚éƒtƒBƒ‹ƒ^‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸæ­£è¦è¡¨ç¾ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®ã¿ã‚’æŠ½å‡ºã™ã‚‹ãƒ•ã‚£ãƒ«ã‚¿ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param regex ³‹K•\Œ»
+     * @param regex æ­£è¦è¡¨ç¾
      */
     public RegexFileFilter(String regex){
         this(regex, 0);
     }
     
     /**
-     * w’è‚µ‚½³‹K•\Œ»‚Ìƒtƒ@ƒCƒ‹‚Ì‚İ‚ğ’Šo‚·‚éƒtƒBƒ‹ƒ^‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸæ­£è¦è¡¨ç¾ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®ã¿ã‚’æŠ½å‡ºã™ã‚‹ãƒ•ã‚£ãƒ«ã‚¿ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param regex ³‹K•\Œ»
-     * @param flags ƒ}ƒbƒ`ƒtƒ‰ƒO
+     * @param regex æ­£è¦è¡¨ç¾
+     * @param flags ãƒãƒƒãƒãƒ•ãƒ©ã‚°
      */
     public RegexFileFilter(String regex, int flags){
         setPattern(regex, flags);
     }
     
     /**
-     * w’è‚µ‚½³‹K•\Œ»‚Ìƒtƒ@ƒCƒ‹‚Ì‚İ‚ğ’Šo‚·‚é‚æ‚¤‚Éİ’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸæ­£è¦è¡¨ç¾ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®ã¿ã‚’æŠ½å‡ºã™ã‚‹ã‚ˆã†ã«è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param regex ³‹K•\Œ»
+     * @param regex æ­£è¦è¡¨ç¾
      */
     public void setPattern(String regex){
         if(regex == null){
@@ -93,10 +93,10 @@ public class RegexFileFilter implements FilenameFilter, Serializable{
     }
     
     /**
-     * w’è‚µ‚½³‹K•\Œ»‚Ìƒtƒ@ƒCƒ‹‚Ì‚İ‚ğ’Šo‚·‚é‚æ‚¤‚Éİ’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸæ­£è¦è¡¨ç¾ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®ã¿ã‚’æŠ½å‡ºã™ã‚‹ã‚ˆã†ã«è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param regex ³‹K•\Œ»
-     * @param flags ƒ}ƒbƒ`ƒtƒ‰ƒO
+     * @param regex æ­£è¦è¡¨ç¾
+     * @param flags ãƒãƒƒãƒãƒ•ãƒ©ã‚°
      */
     public void setPattern(String regex, int flags){
         if(regex == null){
@@ -107,11 +107,11 @@ public class RegexFileFilter implements FilenameFilter, Serializable{
     }
     
     /**
-     * w’è‚³‚ê‚½³‹K•\Œ»‚Ìƒtƒ@ƒCƒ‹‚©‚Ç‚¤‚©”»’è‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ­£è¦è¡¨ç¾ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã©ã†ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
      * 
-     * @param dir ƒfƒBƒŒƒNƒgƒŠ
-     * @param fileName ƒtƒ@ƒCƒ‹–¼
-     * @return w’è‚³‚ê‚½ƒvƒŒƒtƒBƒNƒX‚Ìƒtƒ@ƒCƒ‹‚Ìê‡true
+     * @param dir ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
+     * @param fileName ãƒ•ã‚¡ã‚¤ãƒ«å
+     * @return æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ¬ãƒ•ã‚£ã‚¯ã‚¹ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®å ´åˆtrue
      */
     public boolean accept(File dir, String fileName) {
         if(pattern == null){

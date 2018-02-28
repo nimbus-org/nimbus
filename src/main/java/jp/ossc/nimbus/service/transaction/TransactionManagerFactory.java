@@ -34,17 +34,17 @@ package jp.ossc.nimbus.service.transaction;
 import javax.transaction.TransactionManager;
 
 /**
- * TransactionManagerƒtƒ@ƒNƒgƒŠB<p>
+ * TransactionManagerãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
  *
  * @author M.Takata
  */
 public interface TransactionManagerFactory{
     
     /**
-     * TransactionManager‚ğæ“¾‚·‚éB<p>
+     * TransactionManagerã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return TransactionManager
-     * @exception TransactionManagerFactoryException TransactionManager‚Ìæ“¾‚É¸”s‚µ‚½ê‡
+     * @exception TransactionManagerFactoryException TransactionManagerã®å–å¾—ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public TransactionManager getTransactionManager() throws TransactionManagerFactoryException;
 }

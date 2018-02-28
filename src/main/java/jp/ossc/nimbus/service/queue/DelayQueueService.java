@@ -37,7 +37,7 @@ import jp.ossc.nimbus.service.cache.CachedReference;
 import jp.ossc.nimbus.lang.IllegalServiceStateException;
 
 /**
- * ’x‰„QueueƒT[ƒrƒXB<p>
+ * é…å»¶Queueã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -50,20 +50,20 @@ public class DelayQueueService extends DefaultQueueService
     
     private boolean isDelay = true;
     
-    // DelayQueueServiceMBean ‚ÌJavaDoc
+    // DelayQueueServiceMBean ã®JavaDoc
     public void setDelayTime(long millis){
         delayTime = millis;
     }
-    // DelayQueueServiceMBean ‚ÌJavaDoc
+    // DelayQueueServiceMBean ã®JavaDoc
     public long getDelayTime(){
         return delayTime;
     }
     
-    // DelayQueueServiceMBean ‚ÌJavaDoc
+    // DelayQueueServiceMBean ã®JavaDoc
     public boolean isDelay(){
         return isDelay;
     }
-    // DelayQueueServiceMBean ‚ÌJavaDoc
+    // DelayQueueServiceMBean ã®JavaDoc
     public void setDelay(boolean isDelay){
         boolean isChangeNoDelay = this.isDelay && !isDelay;
         this.isDelay = isDelay;
@@ -160,20 +160,20 @@ public class DelayQueueService extends DefaultQueueService
             }else{
                 peekMonitor.initMonitor();
             }
-            // ‹­§I—¹‚Å‚È‚¢ê‡
+            // å¼·åˆ¶çµ‚äº†ã§ãªã„å ´åˆ
             while(!fourceEndFlg){
                 
                 long curSleepTime = 0;
                 
-                // ƒLƒ…[‚É—­‚Ü‚Á‚Ä‚¢‚éê‡
+                // ã‚­ãƒ¥ãƒ¼ã«æºœã¾ã£ã¦ã„ã‚‹å ´åˆ
                 if(size() > 0){
-                    // QÆ‚·‚é‚¾‚¯‚Ìê‡
-                    // ‚Ü‚½‚ÍA‚±‚ÌƒXƒŒƒbƒh‚ªˆê”ÔÅ‰‚É‘Ò‚Á‚Ä‚¢‚½ê‡
+                    // å‚ç…§ã™ã‚‹ã ã‘ã®å ´åˆ
+                    // ã¾ãŸã¯ã€ã“ã®ã‚¹ãƒ¬ãƒƒãƒ‰ãŒä¸€ç•ªæœ€åˆã«å¾…ã£ã¦ã„ãŸå ´åˆ
                     if(!isRemove
                         || !isSafeGetOrder
                         || getMonitor.isFirst()
                     ){
-                        // Å‰‚Ì—v‘f‚ğQÆ‚·‚é
+                        // æœ€åˆã®è¦ç´ ã‚’å‚ç…§ã™ã‚‹
                         Object firstElement = getQueueElement(false);
                         if(firstElement == EMPTY){
                             continue;
@@ -181,17 +181,17 @@ public class DelayQueueService extends DefaultQueueService
                         final long currentTime = System.currentTimeMillis();
                         curSleepTime = delayTime - (currentTime - ((QueueElement)firstElement).pushTime);
                         
-                        // ’x‰„ŠÔ‚ğ‰ß‚¬‚Ä‚¢‚½ê‡
+                        // é…å»¶æ™‚é–“ã‚’éãã¦ã„ãŸå ´åˆ
                         if(!isDelay || curSleepTime <= 0){
-                            // ƒLƒ…[‚©‚çæ“¾‚·‚é
+                            // ã‚­ãƒ¥ãƒ¼ã‹ã‚‰å–å¾—ã™ã‚‹
                             final Object element = getQueueElement(isRemove);
                             if(element == EMPTY){
                                 continue;
                             }
                             getMonitor.releaseMonitor();
                             
-                            // QÆ‚Å‚Í‚È‚­AƒLƒ…[‚É—­‚Ü‚Á‚Ä‚¢‚ÄA
-                            // Ÿ‚É‘Ò‚Á‚Ä‚¢‚éƒXƒŒƒbƒh‚ª‚¢‚éê‡
+                            // å‚ç…§ã§ã¯ãªãã€ã‚­ãƒ¥ãƒ¼ã«æºœã¾ã£ã¦ã„ã¦ã€
+                            // æ¬¡ã«å¾…ã£ã¦ã„ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ãŒã„ã‚‹å ´åˆ
                             if(isRemove && size() > 0 && getMonitor.isWait()){
                                 if(isSafeGetOrder){
                                     getMonitor.notifyMonitor();
@@ -206,29 +206,29 @@ public class DelayQueueService extends DefaultQueueService
                                 return element == null ? null : ((QueueElement)element).rawElement;
                             }
                         }
-                        // QÆ‚Å‚Í‚È‚­A‚±‚ÌƒXƒŒƒbƒh‚æ‚è‚à‘O‚É‘Ò‚Á‚Ä‚¢‚½ƒXƒŒƒbƒh‚ª‚¢‚éê‡
+                        // å‚ç…§ã§ã¯ãªãã€ã“ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã‚ˆã‚Šã‚‚å‰ã«å¾…ã£ã¦ã„ãŸã‚¹ãƒ¬ãƒƒãƒ‰ãŒã„ã‚‹å ´åˆ
                         else if(getMonitor.isWait()){
-                            // ˆê”ÔÅ‰‚É‘Ò‚Á‚Ä‚¢‚éƒXƒŒƒbƒh‚ğ‹N‚±‚·
+                            // ä¸€ç•ªæœ€åˆã«å¾…ã£ã¦ã„ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’èµ·ã“ã™
                             getMonitor.notifyMonitor();
                         }
                     }
                 }
                 
-                // ƒLƒ…[‚É—­‚Ü‚Á‚Ä‚¢‚È‚¢ê‡
-                // ‚Ü‚½‚ÍA‚±‚ÌƒXƒŒƒbƒh‚æ‚è‚à‘O‚É‘Ò‚Á‚Ä‚¢‚½ƒXƒŒƒbƒh‚ª‚¢‚éê‡
+                // ã‚­ãƒ¥ãƒ¼ã«æºœã¾ã£ã¦ã„ãªã„å ´åˆ
+                // ã¾ãŸã¯ã€ã“ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã‚ˆã‚Šã‚‚å‰ã«å¾…ã£ã¦ã„ãŸã‚¹ãƒ¬ãƒƒãƒ‰ãŒã„ã‚‹å ´åˆ
                 if(curSleepTime == 0){
                     curSleepTime = timeOutMs >= 0 ? timeOutMs - processTime : sleepTime;
                 }else{
                     curSleepTime = Math.min(curSleepTime, timeOutMs >= 0 ? timeOutMs - processTime : sleepTime);
                 }
                 
-                // ‹­§I—¹‚Ü‚½‚Íƒ^ƒCƒ€ƒAƒEƒg‚Ìê‡
+                // å¼·åˆ¶çµ‚äº†ã¾ãŸã¯ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã®å ´åˆ
                 if(fourceEndFlg || timeOutMs == 0 || (timeOutMs > 0 && timeOutMs <= processTime)){
                     break;
                 }
                 
-                // ƒ^ƒCƒ€ƒAƒEƒgw’è‚ª‚ ‚éê‡‚ÍAƒ^ƒCƒ€ƒAƒEƒg‚Ü‚Åsleep‚·‚é
-                // ƒ^ƒCƒ€ƒAƒEƒgw’è‚ª‚È‚¢ê‡‚ÍAsleepTime•ªsleep‚µ‚Ä‚İ‚é
+                // ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆæŒ‡å®šãŒã‚ã‚‹å ´åˆã¯ã€ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã¾ã§sleepã™ã‚‹
+                // ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆæŒ‡å®šãŒãªã„å ´åˆã¯ã€sleepTimeåˆ†sleepã—ã¦ã¿ã‚‹
                 long proc = 0;
                 if(timeOutMs >= 0){
                     proc = System.currentTimeMillis();
@@ -263,12 +263,12 @@ public class DelayQueueService extends DefaultQueueService
                 }
             }
             
-            // ‹­§I—¹‚Ìê‡
+            // å¼·åˆ¶çµ‚äº†ã®å ´åˆ
             if(fourceEndFlg){
                 final Object element = getQueueElement(isRemove);
                 return element == null || element == EMPTY ? null : ((QueueElement)element).rawElement;
             }
-            // ƒ^ƒCƒ€ƒAƒEƒg‚Ìê‡
+            // ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã®å ´åˆ
             else{
                 if(isRemove
                     && size() > 0

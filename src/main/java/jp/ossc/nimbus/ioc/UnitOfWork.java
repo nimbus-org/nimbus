@@ -29,38 +29,38 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
-// ƒCƒ“ƒ|[ƒg
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
+// ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 package jp.ossc.nimbus.ioc;
 
 /**
- * ƒ†ƒjƒbƒgƒIƒuƒ[ƒNƒCƒ“ƒ^[ƒtƒFƒCƒX<p>
- * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğ•ª—£‚·‚éƒRƒ}ƒ“ƒhW‡‚ğŠÇ—‚·‚é
+ * ãƒ¦ãƒ‹ãƒƒãƒˆã‚ªãƒ–ãƒ¯ãƒ¼ã‚¯ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹<p>
+ * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’åˆ†é›¢ã™ã‚‹ã‚³ãƒãƒ³ãƒ‰é›†åˆã‚’ç®¡ç†ã™ã‚‹
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
  */
 public interface UnitOfWork extends CommandBase{
 	/**
-	 * ƒRƒ}ƒ“ƒh”z—ñ‚ÌƒTƒCƒY‚ğo—Í‚·‚éB
-	 * @return@ƒRƒ}ƒ“ƒhƒTƒCƒY
+	 * ã‚³ãƒãƒ³ãƒ‰é…åˆ—ã®ã‚µã‚¤ã‚ºã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @returnã€€ã‚³ãƒãƒ³ãƒ‰ã‚µã‚¤ã‚º
 	 */
 	public int size();
 	/**
-	 * ƒRƒ}ƒ“ƒh”z—ñ‚ÉŠi”[‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğo—Í‚·‚éB
-	 * @param index@”z—ñ”Ô†
-	 * @return@CommandBaseƒCƒ“ƒ^[ƒtƒFƒCƒX
+	 * ã‚³ãƒãƒ³ãƒ‰é…åˆ—ã«æ ¼ç´ã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 * @param indexã€€é…åˆ—ç•ªå·
+	 * @returnã€€CommandBaseã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹
 	 * @see CommandBase
 	 */
 	public CommandBase getCommand(int index);
 	/**
-	 * ƒ†ƒjƒbƒgƒIƒuƒ[ƒN‚ğ’Ç‰Á‚·‚é
-	 * @param uow@ƒ†ƒjƒbƒgƒIƒuƒ[ƒNƒIƒuƒWƒFƒNƒg
+	 * ãƒ¦ãƒ‹ãƒƒãƒˆã‚ªãƒ–ãƒ¯ãƒ¼ã‚¯ã‚’è¿½åŠ ã™ã‚‹
+	 * @param uowã€€ãƒ¦ãƒ‹ãƒƒãƒˆã‚ªãƒ–ãƒ¯ãƒ¼ã‚¯ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	 */
 	public void addUnitOfWork(UnitOfWork uow);
 	/**
-	 * ƒRƒ}ƒ“ƒh‚ğ’Ç‰Á‚·‚é
-	 * @param cmd@ƒRƒ}ƒ“ƒhƒIƒuƒWƒFƒNƒg@
+	 * ã‚³ãƒãƒ³ãƒ‰ã‚’è¿½åŠ ã™ã‚‹
+	 * @param cmdã€€ã‚³ãƒãƒ³ãƒ‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã€€
 	 */
 	public void addCommand(Command cmd) ;
 }

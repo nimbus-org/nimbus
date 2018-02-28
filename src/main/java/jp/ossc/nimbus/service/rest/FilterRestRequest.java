@@ -36,52 +36,52 @@ import java.util.Map;
 import javax.servlet.http.*;
 
 /**
- * ƒtƒBƒ‹ƒ^[‚ğ‚ÂRESTƒŠƒNƒGƒXƒgB<p>
- * ƒtƒBƒ‹ƒ^[‚Æ‚ÍAHTTPƒŠƒNƒGƒXƒg‚ÌƒNƒGƒŠƒpƒ‰ƒ[ƒ^‚Å‚ ‚éB<br>
+ * ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼ã‚’æŒã¤RESTãƒªã‚¯ã‚¨ã‚¹ãƒˆã€‚<p>
+ * ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼ã¨ã¯ã€HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ã‚¯ã‚¨ãƒªãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
 public class FilterRestRequest extends RestRequest{
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public FilterRestRequest(){
     }
     
     /**
-     * w’è‚³‚ê‚½HTTPƒŠƒNƒGƒXƒg‚É•R‚Ã‚­ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸHTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã«ç´ã¥ãã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param request HTTPƒŠƒNƒGƒXƒg
+     * @param request HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
      */
     public FilterRestRequest(HttpServletRequest request){
         super(request);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒtƒBƒ‹ƒ^’l‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚£ãƒ«ã‚¿å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒtƒBƒ‹ƒ^–¼
-     * @return ƒtƒBƒ‹ƒ^’l
+     * @param name ãƒ•ã‚£ãƒ«ã‚¿å
+     * @return ãƒ•ã‚£ãƒ«ã‚¿å€¤
      */
     public String getFilterValue(String name){
         return request.getParameter(name);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒtƒBƒ‹ƒ^’l‚Ì”z—ñ‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚£ãƒ«ã‚¿å€¤ã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒtƒBƒ‹ƒ^–¼
-     * @return ƒtƒBƒ‹ƒ^’l”z—ñ
+     * @param name ãƒ•ã‚£ãƒ«ã‚¿å
+     * @return ãƒ•ã‚£ãƒ«ã‚¿å€¤é…åˆ—
      */
     public String[] getFilterValues(String name){
         return request.getParameterValues(name);
     }
     
     /**
-     * ƒtƒBƒ‹ƒ^‚Ìƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
+     * ãƒ•ã‚£ãƒ«ã‚¿ã®ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒtƒBƒ‹ƒ^‚Ìƒ}ƒbƒv
+     * @return ãƒ•ã‚£ãƒ«ã‚¿ã®ãƒãƒƒãƒ—
      */
     public Map getFilterMap(){
         return request.getParameterMap();

@@ -29,34 +29,34 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.debug;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 /**
- * ƒfƒoƒbƒOƒT[ƒrƒXMBeanƒCƒ“ƒ^[ƒtƒFƒCƒX
+ * ãƒ‡ãƒãƒƒã‚°ã‚µãƒ¼ãƒ“ã‚¹MBeanã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹
  * @version $Name:  $
  * @author K.Nagai
  * @since 1.0
  */
 public interface DebugServiceMBean extends ServiceBaseMBean {
-    /**ƒfƒoƒbƒOƒŒƒxƒ‹FƒfƒoƒbƒO*/
+    /**ãƒ‡ãƒãƒƒã‚°ãƒ¬ãƒ™ãƒ«ï¼šãƒ‡ãƒãƒƒã‚°*/
     public final static int DEBUG_LEVEL_DEBUG = 0;
-    /**ƒfƒoƒbƒOƒŒƒxƒ‹Fî•ñ*/
+    /**ãƒ‡ãƒãƒƒã‚°ãƒ¬ãƒ™ãƒ«ï¼šæƒ…å ±*/
     public final static int DEBUG_LEVEL_INFO  = 20;
-    /**ƒfƒoƒbƒOƒŒƒxƒ‹FŒx*/
+    /**ãƒ‡ãƒãƒƒã‚°ãƒ¬ãƒ™ãƒ«ï¼šè­¦å‘Š*/
     public final static int DEBUG_LEVEL_WARN  = 40;
-    /**ƒfƒoƒbƒOƒŒƒxƒ‹FƒGƒ‰[*/
+    /**ãƒ‡ãƒãƒƒã‚°ãƒ¬ãƒ™ãƒ«ï¼šã‚¨ãƒ©ãƒ¼*/
     public final static int DEBUG_LEVEL_ERROR = 60;
-    /**ƒfƒoƒbƒOƒŒƒxƒ‹F’v–½“IƒGƒ‰[*/
+    /**ãƒ‡ãƒãƒƒã‚°ãƒ¬ãƒ™ãƒ«ï¼šè‡´å‘½çš„ã‚¨ãƒ©ãƒ¼*/
     public final static int DEBUG_LEVEL_FATALERROR = 80;
-    /**ƒfƒoƒbƒOƒŒƒxƒ‹F’v–½“IƒGƒ‰[*/
+    /**ãƒ‡ãƒãƒƒã‚°ãƒ¬ãƒ™ãƒ«ï¼šè‡´å‘½çš„ã‚¨ãƒ©ãƒ¼*/
     public final static int DEBUG_LEVEL_NOOUTPUT = 81;
-    //ƒƒO‚ÌƒL[
-    //—áŠO‚Â‚«
+    //ãƒ­ã‚°ã®ã‚­ãƒ¼
+    //ä¾‹å¤–ã¤ã
     public final static String DEBUG_DEBUG_WRITE_KEY1  ="DEBUG00001";    
-    //—áŠO‚È‚µ
+    //ä¾‹å¤–ãªã—
     public final static String DEBUG_DEBUG_WRITE_KEY2  ="DEBUG00002";    
     //DUMP
     public final static String DEBUG_DEBUG_DUMP_KEY1  ="DEBUG00003";    
@@ -66,58 +66,58 @@ public interface DebugServiceMBean extends ServiceBaseMBean {
     public final static String DEBUG_DEBUG_MSG_DUMP_KEY1  ="DEBUG00005";    
     //message + DUMP []
     public final static String DEBUG_DEBUG_MSG_DUMP_KEY2  ="DEBUG00006";    
-	//ƒlƒXƒgƒŒƒxƒ‹ˆÙí”­Œ©
+	//ãƒã‚¹ãƒˆãƒ¬ãƒ™ãƒ«ç•°å¸¸ç™ºè¦‹æ™‚
 	public static final String DEBUG_NESTLEVEL_ERR_KEY = "DEBUG00007";    /**
      * getDebugLevel<p>
-     * ƒfƒoƒbƒOƒŒƒxƒ‹‚ğæ“¾
-     * @return ƒfƒoƒbƒOƒŒƒxƒ‹
+     * ãƒ‡ãƒãƒƒã‚°ãƒ¬ãƒ™ãƒ«ã‚’å–å¾—
+     * @return ãƒ‡ãƒãƒƒã‚°ãƒ¬ãƒ™ãƒ«
      */
     public int getDebugLevel();
     /**
      * setDebugLevel<p>
-     * ƒfƒoƒbƒOƒŒƒxƒ‹‚ğİ’èBİ’è‚Å‚«‚éƒŒƒxƒ‹‚ÉŠÖ‚µ‚Ä‚Í‚±‚ÌƒCƒ“ƒ^[ƒtƒFƒCƒX‚Ì’è”’l‚ğQÆB
-     * @param level ƒfƒoƒbƒOƒŒƒxƒ‹
+     * ãƒ‡ãƒãƒƒã‚°ãƒ¬ãƒ™ãƒ«ã‚’è¨­å®šã€‚è¨­å®šã§ãã‚‹ãƒ¬ãƒ™ãƒ«ã«é–¢ã—ã¦ã¯ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã®å®šæ•°å€¤ã‚’å‚ç…§ã€‚
+     * @param level ãƒ‡ãƒãƒƒã‚°ãƒ¬ãƒ™ãƒ«
      */
     public void setDebugLevel(int level);
     /**
      * setLoggerServiceName<p>
-     * ƒƒOƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB
-     * @return ƒfƒoƒbƒOƒŒƒxƒ‹
+     * ãƒ­ã‚°ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚
+     * @return ãƒ‡ãƒãƒƒã‚°ãƒ¬ãƒ™ãƒ«
      */
     public ServiceName getLogServiceName();
     /**
      * setLoggerServiceName<p>
-     * ƒƒOƒT[ƒrƒX–¼‚ğİ’è‚·‚éB
-     * @param svn ƒƒOƒT[ƒrƒX–¼
+     * ãƒ­ã‚°ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚
+     * @param svn ãƒ­ã‚°ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setLogServiceName(ServiceName svn);
     /**
      * setNestedLevel
-     * @param level ƒR[ƒ‹ƒXƒ^ƒbƒN‚Ì‰½”Ô–Ú‚ğŠÖ”ƒXƒ^ƒbƒN‚Æ‚µ‚Ä
-     * •\¦‚·‚é‚©
+     * @param level ã‚³ãƒ¼ãƒ«ã‚¹ã‚¿ãƒƒã‚¯ã®ä½•ç•ªç›®ã‚’é–¢æ•°ã‚¹ã‚¿ãƒƒã‚¯ã¨ã—ã¦
+     * è¡¨ç¤ºã™ã‚‹ã‹
      */
     public void setNestedLevel(int level);
     /**
      * setEditorFinderServiceName
-     * @param name ƒGƒfƒBƒ^ƒtƒ@ƒCƒ“ƒ_–¼
+     * @param name ã‚¨ãƒ‡ã‚£ã‚¿ãƒ•ã‚¡ã‚¤ãƒ³ãƒ€å
      */
     public void setEditorFinderServiceName(ServiceName name);
     /**
      * getEditorFinderServiceName
-     * @return ƒGƒfƒBƒ^ƒtƒ@ƒCƒ“ƒ_–¼
-     * •\¦‚·‚é‚©
+     * @return ã‚¨ãƒ‡ã‚£ã‚¿ãƒ•ã‚¡ã‚¤ãƒ³ãƒ€å
+     * è¡¨ç¤ºã™ã‚‹ã‹
      */
     public ServiceName getEditorFinderServiceName();
     /**
      * getSeparator
-     * @return ƒZƒpƒŒ[ƒ^[
-     * •\¦‚·‚é‚©
+     * @return ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ãƒ¼
+     * è¡¨ç¤ºã™ã‚‹ã‹
      */
 	public String getSeparator() ;
     /**
      * setSeparator
-     * @param separator ƒZƒpƒŒ[ƒ^[
-     * •\¦‚·‚é‚©
+     * @param separator ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ãƒ¼
+     * è¡¨ç¤ºã™ã‚‹ã‹
      */
 	public void setSeparator(String separator);
 }

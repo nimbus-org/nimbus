@@ -29,12 +29,12 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.aspect;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.util.ArrayList;
 /**
- * ƒL[‚É‘Î‰‚·‚éƒCƒ“ƒ^[ƒZƒvƒ^[‚ÌƒŠƒXƒg‚ğŠÇ—‚·‚éƒNƒ‰ƒX<p>
+ * ã‚­ãƒ¼ã«å¯¾å¿œã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼ã®ãƒªã‚¹ãƒˆã‚’ç®¡ç†ã™ã‚‹ã‚¯ãƒ©ã‚¹<p>
  * @version $Name:  $
  * @author H.Nakano
  * @since 1.0
@@ -46,24 +46,24 @@ public class IntreceptorChainList
     
     private String mChainKey = null ;
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	 */
 	public IntreceptorChainList() {
 		super();
 	}
 	/**
-	 * ƒCƒ“ƒ^[ƒZƒvƒ^[ŒŸõƒL[‚ğ•Ô‹p‚·‚é<br>
-	 * @return String			ƒCƒ“ƒ^[ƒZƒvƒ^[ŒŸõƒL[–¼
+	 * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼æ¤œç´¢ã‚­ãƒ¼ã‚’è¿”å´ã™ã‚‹<br>
+	 * @return String			ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼æ¤œç´¢ã‚­ãƒ¼å
 	 */
 	public String getChainKey(){
 		return mChainKey;
 	}
 	/**
-	 * ƒCƒ“ƒ^[ƒZƒvƒ^[ŒŸõƒL[–¼‚ğİ’è‚·‚é<br>
-	 * @param String			ƒCƒ“ƒ^[ƒZƒvƒ^[ŒŸõƒL[
+	 * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼æ¤œç´¢ã‚­ãƒ¼åã‚’è¨­å®šã™ã‚‹<br>
+	 * @param String			ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãƒ¼æ¤œç´¢ã‚­ãƒ¼
 	 */
 	public void setChainKey(String key){
-		// ƒT[ƒrƒX–¼‚ğ•Û
+		// ã‚µãƒ¼ãƒ“ã‚¹åã‚’ä¿æŒ
 		mChainKey = key;
 	}
 

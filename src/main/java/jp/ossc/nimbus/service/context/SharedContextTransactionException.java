@@ -36,37 +36,37 @@ public class SharedContextTransactionException extends SharedContextException{
     private static final long serialVersionUID = 3114683838194045542L;
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ó‘ÔFŠJŽnB<p>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³çŠ¶æ…‹ï¼šé–‹å§‹ã€‚<p>
      */
     private static final String LABEL_STATE_BEGIN      = "BEGIN";
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ó‘ÔFƒRƒ~ƒbƒgB<p>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³çŠ¶æ…‹ï¼šã‚³ãƒŸãƒƒãƒˆã€‚<p>
      */
     private static final String LABEL_STATE_COMMIT     = "COMMIT";
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ó‘ÔFƒ[ƒ‹ƒoƒbƒNB<p>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³çŠ¶æ…‹ï¼šãƒ­ãƒ¼ãƒ«ãƒãƒƒã‚¯ã€‚<p>
      */
     private static final String LABEL_STATE_ROLLBACK   = "ROLLBACK";
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ó‘ÔFƒRƒ~ƒbƒgŠ®—¹B<p>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³çŠ¶æ…‹ï¼šã‚³ãƒŸãƒƒãƒˆå®Œäº†ã€‚<p>
      */
     private static final String LABEL_STATE_COMMITTED  = "COMMITTED";
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ó‘ÔFƒ[ƒ‹ƒoƒbƒNŠ®—¹B<p>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³çŠ¶æ…‹ï¼šãƒ­ãƒ¼ãƒ«ãƒãƒƒã‚¯å®Œäº†ã€‚<p>
      */
     private static final String LABEL_STATE_ROLLBACKED = "ROLLBACKED";
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ó‘ÔFƒ[ƒ‹ƒoƒbƒNŽ¸”sB<p>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³çŠ¶æ…‹ï¼šãƒ­ãƒ¼ãƒ«ãƒãƒƒã‚¯å¤±æ•—ã€‚<p>
      */
     private static final String LABEL_STATE_ROLLBACK_FAILED = "ROLLBACK_FAILED";
     
     /**
-     * ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ó‘ÔF•s–¾B<p>
+     * ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³çŠ¶æ…‹ï¼šä¸æ˜Žã€‚<p>
      */
     private static final String LABEL_STATE_UNKNOWN = "UNKNOWN";
     

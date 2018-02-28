@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * ƒeƒXƒgƒP[ƒXƒNƒ‰ƒXB<p>
+ * ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Ishida
  */
@@ -21,11 +21,11 @@ public class TestCaseImpl implements TestCase, Serializable {
     private TestCaseResource resource;
     
     /**
-     * w’è‚³‚ê‚½ƒeƒXƒgƒP[ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param scenarioGroupId ƒVƒiƒŠƒIƒOƒ‹[ƒvID
-     * @param scenarioId ƒVƒiƒŠƒIID
-     * @param testCaseId ƒeƒXƒgƒP[ƒXID
+     * @param scenarioGroupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param scenarioId ã‚·ãƒŠãƒªã‚ªID
+     * @param testCaseId ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ID
      */
     public TestCaseImpl(String scenarioGroupId, String scenarioId, String testCaseId) {
         this.scenarioGroupId = scenarioGroupId;
@@ -34,18 +34,18 @@ public class TestCaseImpl implements TestCase, Serializable {
     }
     
     /**
-     * ƒeƒXƒgƒRƒ“ƒgƒ[ƒ‰‚ğæ“¾‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒeƒXƒgƒRƒ“ƒgƒ[ƒ‰
+     * @return ãƒ†ã‚¹ãƒˆã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©
      */
     public TestController getController() {
         return controller;
     }
     
     /**
-     * ƒeƒXƒgƒRƒ“ƒgƒ[ƒ‰‚ğİ’è‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param controller ƒeƒXƒgƒRƒ“ƒgƒ[ƒ‰
+     * @param controller ãƒ†ã‚¹ãƒˆã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©
      */
     public void setController(TestController controller) {
         this.controller = controller;
@@ -56,9 +56,9 @@ public class TestCaseImpl implements TestCase, Serializable {
     }
     
     /**
-     * ƒeƒXƒgƒP[ƒX‚ªŠ‘®‚·‚éƒVƒiƒŠƒIƒOƒ‹[ƒv‚ÌID‚ğİ’è‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ãŒæ‰€å±ã™ã‚‹ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã®IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param scenarioGroupId ƒVƒiƒŠƒIƒOƒ‹[ƒv‚ÌID
+     * @param scenarioGroupId ã‚·ãƒŠãƒªã‚ªã‚°ãƒ«ãƒ¼ãƒ—ã®ID
      */
     public void setScenarioGroupId(String scenarioGroupId) {
         this.scenarioGroupId = scenarioGroupId;
@@ -69,9 +69,9 @@ public class TestCaseImpl implements TestCase, Serializable {
     }
     
     /**
-     * ƒeƒXƒgƒP[ƒX‚ªŠ‘®‚·‚éƒVƒiƒŠƒI‚ÌID‚ğİ’è‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ãŒæ‰€å±ã™ã‚‹ã‚·ãƒŠãƒªã‚ªã®IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param scenarioId ƒVƒiƒŠƒI‚ÌID
+     * @param scenarioId ã‚·ãƒŠãƒªã‚ªã®ID
      */
     public void setScenarioId(String scenarioId) {
         this.scenarioId = scenarioId;
@@ -82,9 +82,9 @@ public class TestCaseImpl implements TestCase, Serializable {
     }
     
     /**
-     * ƒeƒXƒgƒP[ƒX‚ÌID‚ğİ’è‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param testCaseId ƒeƒXƒgƒP[ƒX‚ÌID
+     * @param testCaseId ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®ID
      */
     public void setTestCaseId(String testCaseId) {
         this.testCaseId = testCaseId;
@@ -101,7 +101,7 @@ public class TestCaseImpl implements TestCase, Serializable {
     }
     
     /**
-     * ƒeƒXƒgƒP[ƒX‚ÌƒŠƒ\[ƒXî•ñ‚ğíœ‚·‚éB<p>
+     * ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®ãƒªã‚½ãƒ¼ã‚¹æƒ…å ±ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      */
     public void clearResource(){
         resource = null;
@@ -115,7 +115,7 @@ public class TestCaseImpl implements TestCase, Serializable {
     }
     
     /**
-     * ƒeƒXƒgƒP[ƒX‚ÌƒŠƒ\[ƒXî•ñƒNƒ‰ƒXB<p>
+     * ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®ãƒªã‚½ãƒ¼ã‚¹æƒ…å ±ã‚¯ãƒ©ã‚¹ã€‚<p>
      * 
      * @author M.Ishida
      */
@@ -129,7 +129,7 @@ public class TestCaseImpl implements TestCase, Serializable {
         private String[] finallyActionIds;
         
         /**
-         * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          */
         public TestCaseResourceImpl() {
             super();
@@ -140,9 +140,9 @@ public class TestCaseImpl implements TestCase, Serializable {
         }
         
         /**
-         * –‘OƒAƒNƒVƒ‡ƒ“‚ÌID”z—ñ‚ğİ’è‚·‚éB<p>
+         * äº‹å‰ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®IDé…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param actionIds –‘OƒAƒNƒVƒ‡ƒ“‚ÌID”z—ñ
+         * @param actionIds äº‹å‰ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®IDé…åˆ—
          */
         public void setBeforeActionIds(String[] actionIds) {
             beforeActionIds = actionIds;
@@ -153,9 +153,9 @@ public class TestCaseImpl implements TestCase, Serializable {
         }
         
         /**
-         * ƒAƒNƒVƒ‡ƒ“‚ÌID”z—ñ‚ğİ’è‚·‚éB<p>
+         * ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®IDé…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param actionIds ƒAƒNƒVƒ‡ƒ“‚ÌID”z—ñ
+         * @param actionIds ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®IDé…åˆ—
          */
         public void setActionIds(String[] actionIds) {
             this.actionIds = actionIds;
@@ -166,9 +166,9 @@ public class TestCaseImpl implements TestCase, Serializable {
         }
         
         /**
-         * –ŒãƒAƒNƒVƒ‡ƒ“‚ÌID”z—ñ‚ğİ’è‚·‚éB<p>
+         * äº‹å¾Œã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®IDé…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param actionIds –ŒãƒAƒNƒVƒ‡ƒ“‚ÌID”z—ñ
+         * @param actionIds äº‹å¾Œã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®IDé…åˆ—
          */
         public void setAfterActionIds(String[] actionIds) {
             afterActionIds = actionIds;
@@ -179,9 +179,9 @@ public class TestCaseImpl implements TestCase, Serializable {
         }
         
         /**
-         * ÅIƒAƒNƒVƒ‡ƒ“‚ÌID”z—ñ‚ğİ’è‚·‚éB<p>
+         * æœ€çµ‚ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®IDé…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param actionIds ÅIƒAƒNƒVƒ‡ƒ“‚ÌID”z—ñ
+         * @param actionIds æœ€çµ‚ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®IDé…åˆ—
          */
         public void setFinallyActionIds(String[] actionIds) {
             finallyActionIds = actionIds;
@@ -189,7 +189,7 @@ public class TestCaseImpl implements TestCase, Serializable {
     }
     
     /**
-     * ƒeƒXƒgƒP[ƒX‚ÌÀsƒXƒe[ƒ^ƒXƒNƒ‰ƒXB<p>
+     * ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹ã®å®Ÿè¡Œã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚¯ãƒ©ã‚¹ã€‚<p>
      * 
      * @author M.Ishida
      */
@@ -201,18 +201,18 @@ public class TestCaseImpl implements TestCase, Serializable {
         private Date endTime;
         
         /**
-         * w’è‚³‚ê‚½Àsƒ†[ƒU‚Å‚ÌƒXƒe[ƒ^ƒX‚ğ¶¬‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸå®Ÿè¡Œãƒ¦ãƒ¼ã‚¶ã§ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          *
-         * @param userId Àsƒ†[ƒU
+         * @param userId å®Ÿè¡Œãƒ¦ãƒ¼ã‚¶
          */
         public StatusImpl(String userId) {
             super(userId);
         }
         
         /**
-         * ó‘Ô‚ğİ’è‚·‚éB<p>
+         * çŠ¶æ…‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param state ó‘Ô
+         * @param state çŠ¶æ…‹
          * @see #INITIAL
          * @see #STARTED
          * @see #END
@@ -249,9 +249,9 @@ public class TestCaseImpl implements TestCase, Serializable {
         }
         
         /**
-         * I—¹“ú‚ğİ’è‚·‚éB<p>
+         * çµ‚äº†æ—¥æ™‚ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param time I—¹“ú
+         * @param time çµ‚äº†æ—¥æ™‚
          */
         public void setEndTime(Date time) {
             endTime = time;

@@ -34,31 +34,31 @@ package jp.ossc.nimbus.service.soap;
 import javax.xml.rpc.Service;
 
 /**
- * JAX-RPCƒT[ƒrƒXƒtƒ@ƒNƒgƒŠ[ƒCƒ“ƒ^[ƒtƒF[ƒXB<p>
+ * JAX-RPCã‚µãƒ¼ãƒ“ã‚¹ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
 public interface JaxRpcServiceFactory {
 
     /**
-     * JAX-RPCƒT[ƒrƒX‚ğ¶¬‚µ‚Ü‚·B<p>
+     * JAX-RPCã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã—ã¾ã™ã€‚<p>
      * 
-     * @return JAX-RPCƒT[ƒrƒX
+     * @return JAX-RPCã‚µãƒ¼ãƒ“ã‚¹
      * @exception JaxRpcServiceException
      */
     public Service getService() throws JaxRpcServiceException;
     
     /**
-     * ƒl[ƒ€ƒXƒy[ƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒãƒ¼ãƒ ã‚¹ãƒšãƒ¼ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒl[ƒ€ƒXƒy[ƒX–¼
+     * @return ãƒãƒ¼ãƒ ã‚¹ãƒšãƒ¼ã‚¹å
      */
     public String getNameSpace();
     
     /**
-     * JAX-RPCƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB
+     * JAX-RPCã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚
      * 
-     * @return JAX-RPCƒT[ƒrƒX–¼
+     * @return JAX-RPCã‚µãƒ¼ãƒ“ã‚¹å
      */
     public String getJaxRpcServiceName();
 }

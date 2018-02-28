@@ -32,18 +32,18 @@
 package jp.ossc.nimbus.service.aop;
 
 /**
- * {@link Interceptor}�����ݍ��񂾖{���̌Ăяo���Ώۂ��Ăяo��Invoker�B<p>
+ * {@link Interceptor}を挟み込んだ本来の呼び出し対象を呼び出すInvoker。<p>
  *
  * @author M.Takata
  */
 public interface Invoker{
     
     /**
-     * �Ăяo�����s���B<p>
+     * 呼び出しを行う。<p>
      *
-     * @param context �Ăяo���̃R���e�L�X�g���
-     * @return �Ăяo�����ʂ̖߂�l
-     * @exception Throwable �Ăяo����ŗ�O�����������ꍇ�A�܂��͂����ŔC�ӂ̗�O�����������ꍇ�B�A���A�{���Ăяo����鏈����throw���Ȃ�RuntimeException�ȊO�̗�O��throw���Ă��A�Ăяo�����ɂ͓`�d����Ȃ��B
+     * @param context 呼び出しのコンテキスト情報
+     * @return 呼び出し結果の戻り値
+     * @exception Throwable 呼び出し先で例外が発生した場合、またはここで任意の例外が発生した場合。但し、本来呼び出される処理がthrowしないRuntimeException以外の例外をthrowしても、呼び出し元には伝播されない。
      */
     public Object invoke(InvocationContext context) throws Throwable;
 }

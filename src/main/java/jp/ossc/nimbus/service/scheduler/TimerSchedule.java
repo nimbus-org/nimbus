@@ -34,79 +34,79 @@ package jp.ossc.nimbus.service.scheduler;
 import java.util.*;
 
 /**
- * ƒ^ƒCƒ}[ƒXƒPƒWƒ…[ƒ‹B<p>
- * {@link TimerSchedulerService}‚É“o˜^‚·‚éƒXƒPƒWƒ…[ƒ‹‚ªÀ‘•‚·‚×‚«ƒCƒ“ƒ^ƒtƒF[ƒX‚Å‚ ‚éB<br>
+ * ã‚¿ã‚¤ãƒãƒ¼ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã€‚<p>
+ * {@link TimerSchedulerService}ã«ç™»éŒ²ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒå®Ÿè£…ã™ã¹ãã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
 public interface TimerSchedule extends Schedule{
     
     /**
-     * ˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚ÌI—¹‚ğ‘Ò‹@‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çµ‚äº†ã‚’å¾…æ©Ÿã—ã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚ÌI—¹‚ğ‘Ò‹@‚µ‚Ä‚¢‚éê‡‚Ítrue
+     * @return ä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çµ‚äº†ã‚’å¾…æ©Ÿã—ã¦ã„ã‚‹å ´åˆã¯true
      */
     public boolean isWaiting();
     
     /**
-     * ˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚ÌI—¹‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çµ‚äº†å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return ˆË‘¶‚·‚éƒXƒPƒWƒ…[ƒ‹‚ÌI—¹‘Ò‚¿‚Åƒ^ƒCƒ€ƒAƒEƒg‚µ‚½ê‡‚Ítrue
+     * @return ä¾å­˜ã™ã‚‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çµ‚äº†å¾…ã¡ã§ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸå ´åˆã¯true
      */
     public boolean isTimeout();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‰‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ©ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param scheduler ƒXƒPƒWƒ…[ƒ‰
+     * @param scheduler ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ©
      */
     public void setScheduler(Scheduler scheduler);
     
     /**
-     * ƒ^ƒXƒN‚ğ‹­§Às‚·‚éB<p>
+     * ã‚¿ã‚¹ã‚¯ã‚’å¼·åˆ¶å®Ÿè¡Œã™ã‚‹ã€‚<p>
      */
     public void executeForce();
     
     /**
-     * ƒ^ƒXƒN‚ğ‹­§“I‚É’x‰„Às‚·‚éB<p>
+     * ã‚¿ã‚¹ã‚¯ã‚’å¼·åˆ¶çš„ã«é…å»¶å®Ÿè¡Œã™ã‚‹ã€‚<p>
      * 
-     * @param timer ƒ^ƒCƒ}[
-     * @param delay ’x‰„ŠÔ[ms]
+     * @param timer ã‚¿ã‚¤ãƒãƒ¼
+     * @param delay é…å»¶æ™‚é–“[ms]
      */
     public void executeForce(Timer timer, long delay);
     
     /**
-     * ƒ^ƒXƒN‚ğ‹­§“I‚Éw’èÀs‚·‚éB<p>
+     * ã‚¿ã‚¹ã‚¯ã‚’å¼·åˆ¶çš„ã«æŒ‡å®šæ™‚åˆ»å®Ÿè¡Œã™ã‚‹ã€‚<p>
      * 
-     * @param timer ƒ^ƒCƒ}[
-     * @param time Às
+     * @param timer ã‚¿ã‚¤ãƒãƒ¼
+     * @param time å®Ÿè¡Œæ™‚åˆ»
      */
     public void executeForce(Timer timer, Date time);
     
     /**
-     * ‚±‚ÌƒXƒPƒWƒ…[ƒ‹‚ğƒ^ƒCƒ}[‚É“o˜^‚·‚éB<p>
+     * ã“ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ã‚¿ã‚¤ãƒãƒ¼ã«ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
-     * @param timer ƒ^ƒCƒ}[
+     * @param timer ã‚¿ã‚¤ãƒãƒ¼
      */
     public void schedule(Timer timer);
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğƒLƒƒƒ“ƒZƒ‹‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã™ã‚‹ã€‚<p>
      */
     public void cancel();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ªÅŒã‚ÉÀs‚³‚ê‚½‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒæœ€å¾Œã«å®Ÿè¡Œã•ã‚ŒãŸæ™‚åˆ»ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ÅIÀs
+     * @return æœ€çµ‚å®Ÿè¡Œæ™‚åˆ»
      */
     public Date getLastExecutionTime();
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ªÀs‚³‚ê‚é‚ğæ“¾‚·‚éB<p>
-     * ‚Ü‚¾Às‚³‚ê‚Ä‚¢‚È‚¢ê‡A–ß‚è’l‚Í–¢’è‹`B
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒå®Ÿè¡Œã•ã‚Œã‚‹æ™‚åˆ»ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ã¾ã å®Ÿè¡Œã•ã‚Œã¦ã„ãªã„å ´åˆã€æˆ»ã‚Šå€¤ã¯æœªå®šç¾©ã€‚
      *
-     * @return Às
+     * @return å®Ÿè¡Œæ™‚åˆ»
      */
     public Date getScheduledExecutionTime();
 }

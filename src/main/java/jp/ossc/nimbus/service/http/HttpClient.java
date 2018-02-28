@@ -34,40 +34,40 @@ package jp.ossc.nimbus.service.http;
 import javax.servlet.http.Cookie;
 
 /**
- * HTTPƒNƒ‰ƒCƒAƒ“ƒgB<p>
+ * HTTPã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã€‚<p>
  *
  * @author M.Takata
  */
 public interface HttpClient{
     
     /**
-     * ƒNƒbƒL[‚ğ’Ç‰Á‚·‚éB<p>
+     * ã‚¯ãƒƒã‚­ãƒ¼ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param cookie ƒNƒbƒL[
+     * @param cookie ã‚¯ãƒƒã‚­ãƒ¼
      */
     public void addCookie(Cookie cookie);
     
     /**
-     * ƒNƒbƒL[‚ğæ“¾‚·‚éB<p>
+     * ã‚¯ãƒƒã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒNƒbƒL[”z—ñ
+     * @return ã‚¯ãƒƒã‚­ãƒ¼é…åˆ—
      */
     public Cookie[] getCookies();
     
     /**
-     * HTTPƒŠƒNƒGƒXƒg‚ğ”­s‚·‚éB<p>
+     * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’ç™ºè¡Œã™ã‚‹ã€‚<p>
      *
-     * @param request HTTPƒŠƒNƒGƒXƒg
-     * @return HTTPƒŒƒXƒ|ƒ“ƒX
-     * @exception HttpException HTTPƒŠƒNƒGƒXƒgˆ—‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param request HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @return HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @exception HttpException HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public HttpResponse executeRequest(HttpRequest request)
      throws HttpException;
     
     /**
-     * HTTPƒNƒ‰ƒCƒAƒ“ƒg‚ğI—¹‚·‚éB<p>
+     * HTTPã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚’çµ‚äº†ã™ã‚‹ã€‚<p>
      *
-     * @exception HttpException HTTPƒNƒ‰ƒCƒAƒ“ƒg‚ÌI—¹ˆ—‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @exception HttpException HTTPã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®çµ‚äº†å‡¦ç†ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public void close() throws HttpException;
 }

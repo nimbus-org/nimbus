@@ -36,7 +36,7 @@ import java.io.File;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link SFTPClientFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link SFTPClientFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see SFTPClientFactoryService
@@ -44,167 +44,167 @@ import jp.ossc.nimbus.core.*;
 public interface SFTPClientFactoryServiceMBean extends ServiceBaseMBean{
     
     /**
-     * TCP‚Ì‰“šƒ^ƒCƒ€ƒAƒEƒg[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍAƒ^ƒCƒ€ƒAƒEƒg‚µ‚È‚¢B<br>
+     * TCPã®å¿œç­”ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãªã„ã€‚<br>
      *
-     * @param timeout ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @param timeout ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public void setTimeout(int timeout);
     
     /**
-     * TCP‚Ì‰“šƒ^ƒCƒ€ƒAƒEƒg[ms]‚ğæ“¾‚·‚éB<p>
+     * TCPã®å¿œç­”ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ^ƒCƒ€ƒAƒEƒg[ms]
+     * @return ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ[ms]
      */
     public int getTimeout();
     
     /**
-     * KeepAliveƒƒbƒZ[ƒW‚Ì”­MŠÔŠu[ms]‚ğİ’è‚·‚éB<p>
+     * KeepAliveãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ç™ºä¿¡é–“éš”[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param interval ”­MŠÔŠu[ms]
+     * @param interval ç™ºä¿¡é–“éš”[ms]
      */
     public void setServerAliveInterval(int interval);
     
     /**
-     * KeepAliveƒƒbƒZ[ƒW‚Ì”­MŠÔŠu[ms]‚ğæ“¾‚·‚éB<p>
+     * KeepAliveãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ç™ºä¿¡é–“éš”[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ”­MŠÔŠu[ms]
+     * @return ç™ºä¿¡é–“éš”[ms]
      */
     public int getServerAliveInterval();
     
     /**
-     * KeepAliveƒƒbƒZ[ƒW‚ÌÄ‘—‰ñ”‚ğİ’è‚·‚éB<p>
+     * KeepAliveãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å†é€å›æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param count Ä‘—‰ñ”
+     * @param count å†é€å›æ•°
      */
     public void setServerAliveCountMax(int count);
     
     /**
-     * KeepAliveƒƒbƒZ[ƒW‚ÌÄ‘—‰ñ”‚ğæ“¾‚·‚éB<p>
+     * KeepAliveãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å†é€å›æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Ä‘—‰ñ”
+     * @return å†é€å›æ•°
      */
     public int getServerAliveCountMax();
     
     /**
-     * Ú‘±æƒT[ƒo‚ÌƒzƒXƒg–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğw’è‚µ‚½ê‡A{@link SFTPClientFactoryService#createSFTPClient()}‚Å¶¬‚µ‚½{@link jp.ossc.nimbus.service.sftp.SFTPClient SFTPClient}‚ÍAÚ‘±Ï‚Æ‚È‚éB<br>
+     * æ¥ç¶šå…ˆã‚µãƒ¼ãƒã®ãƒ›ã‚¹ãƒˆåã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’æŒ‡å®šã—ãŸå ´åˆã€{@link SFTPClientFactoryService#createSFTPClient()}ã§ç”Ÿæˆã—ãŸ{@link jp.ossc.nimbus.service.sftp.SFTPClient SFTPClient}ã¯ã€æ¥ç¶šæ¸ˆã¨ãªã‚‹ã€‚<br>
      *
-     * @param addr ƒzƒXƒg–¼
+     * @param addr ãƒ›ã‚¹ãƒˆå
      */
     public void setHostName(String addr);
     
     /**
-     * Ú‘±æƒT[ƒo‚ÌƒzƒXƒg–¼‚ğæ“¾‚·‚éB<p>
+     * æ¥ç¶šå…ˆã‚µãƒ¼ãƒã®ãƒ›ã‚¹ãƒˆåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒzƒXƒg–¼
+     * @return ãƒ›ã‚¹ãƒˆå
      */
     public String getHostName();
     
     /**
-     * Ú‘±æƒT[ƒo‚Ìƒ|[ƒg”Ô†‚ğİ’è‚·‚éB<p>
+     * æ¥ç¶šå…ˆã‚µãƒ¼ãƒã®ãƒãƒ¼ãƒˆç•ªå·ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param port ƒ|[ƒg”Ô†
+     * @param port ãƒãƒ¼ãƒˆç•ªå·
      */
     public void setPort(int port);
     
     /**
-     * Ú‘±æƒT[ƒo‚Ìƒ|[ƒg”Ô†‚ğæ“¾‚·‚éB<p>
+     * æ¥ç¶šå…ˆã‚µãƒ¼ãƒã®ãƒãƒ¼ãƒˆç•ªå·ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ|[ƒg”Ô†
+     * @return ãƒãƒ¼ãƒˆç•ªå·
      */
     public int getPort();
     
     /**
-     * ƒvƒƒLƒV‚ğİ’è‚·‚éB<p>
+     * ãƒ—ãƒ­ã‚­ã‚·ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param proxy ƒvƒƒLƒV
+     * @param proxy ãƒ—ãƒ­ã‚­ã‚·
      */
     public void setProxy(com.jcraft.jsch.Proxy proxy);
     
     /**
-     * ”FØ‚·‚éƒ†[ƒU–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğw’è‚µ‚½ê‡A{@link SFTPClientFactoryService#createSFTPClient()}‚Å¶¬‚µ‚½{@link jp.ossc.nimbus.service.sftp.SFTPClient SFTPClient}‚ÍA”FØÏ‚Æ‚È‚éB<br>
+     * èªè¨¼ã™ã‚‹ãƒ¦ãƒ¼ã‚¶åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’æŒ‡å®šã—ãŸå ´åˆã€{@link SFTPClientFactoryService#createSFTPClient()}ã§ç”Ÿæˆã—ãŸ{@link jp.ossc.nimbus.service.sftp.SFTPClient SFTPClient}ã¯ã€èªè¨¼æ¸ˆã¨ãªã‚‹ã€‚<br>
      *
-     * @param name ƒ†[ƒU–¼
+     * @param name ãƒ¦ãƒ¼ã‚¶å
      */
     public void setUserName(String name);
     
     /**
-     * ”FØ‚·‚éƒ†[ƒU–¼‚ğæ“¾‚·‚éB<p>
+     * èªè¨¼ã™ã‚‹ãƒ¦ãƒ¼ã‚¶åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ†[ƒU–¼
+     * @return ãƒ¦ãƒ¼ã‚¶å
      */
     public String getUserName();
     
     /**
-     * ”FØ‚·‚éƒ†[ƒU‚ÌƒpƒXƒ[ƒh‚Ü‚½‚Í”é–§Œ®‚ÌƒpƒXƒtƒŒ[ƒY‚ğİ’è‚·‚éB<p>
+     * èªè¨¼ã™ã‚‹ãƒ¦ãƒ¼ã‚¶ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã¾ãŸã¯ç§˜å¯†éµã®ãƒ‘ã‚¹ãƒ•ãƒ¬ãƒ¼ã‚ºã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param password ƒpƒXƒ[ƒh‚Ü‚½‚Í”é–§Œ®‚ÌƒpƒXƒtƒŒ[ƒY
+     * @param password ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã¾ãŸã¯ç§˜å¯†éµã®ãƒ‘ã‚¹ãƒ•ãƒ¬ãƒ¼ã‚º
      */
     public void setPassword(String password);
     
     /**
-     * ”FØ‚·‚éƒ†[ƒU‚ÌƒpƒXƒ[ƒh‚Ü‚½‚Í”é–§Œ®‚ÌƒpƒXƒtƒŒ[ƒY‚ğæ“¾‚·‚éB<p>
+     * èªè¨¼ã™ã‚‹ãƒ¦ãƒ¼ã‚¶ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã¾ãŸã¯ç§˜å¯†éµã®ãƒ‘ã‚¹ãƒ•ãƒ¬ãƒ¼ã‚ºã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒpƒXƒ[ƒh‚Ü‚½‚Í”é–§Œ®‚ÌƒpƒXƒtƒŒ[ƒY
+     * @return ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã¾ãŸã¯ç§˜å¯†éµã®ãƒ‘ã‚¹ãƒ•ãƒ¬ãƒ¼ã‚º
      */
     public String getPassword();
     
     /**
-     * ”é–§Œ®ƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğİ’è‚·‚éB<p>
+     * ç§˜å¯†éµãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param path ”é–§Œ®ƒtƒ@ƒCƒ‹‚ÌƒpƒX
+     * @param path ç§˜å¯†éµãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
      */
     public void setPemFile(File path);
     
     /**
-     * ”é–§Œ®ƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğæ“¾‚·‚éB<p>
+     * ç§˜å¯†éµãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ”é–§Œ®ƒtƒ@ƒCƒ‹‚ÌƒpƒX
+     * @return ç§˜å¯†éµãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
      */
     public File getPemFile();
     
     /**
-     * ƒƒOƒCƒ“’¼Œã‚ÌƒNƒ‰ƒCƒAƒ“ƒg‚Ìƒz[ƒ€ƒfƒBƒŒƒNƒgƒŠ‚ğİ’è‚·‚éB<p>
-     * İ’è‚µ‚È‚¢ê‡‚ÍAƒVƒXƒeƒ€ƒvƒƒpƒeƒB"user.home"‚Ì¦‚·ƒfƒBƒŒƒNƒgƒŠ‚Æ‚È‚éB<br>
+     * ãƒ­ã‚°ã‚¤ãƒ³ç›´å¾Œã®ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®ãƒ›ãƒ¼ãƒ ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã—ãªã„å ´åˆã¯ã€ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£"user.home"ã®ç¤ºã™ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã¨ãªã‚‹ã€‚<br>
      * 
-     * @param dir ƒz[ƒ€ƒfƒBƒŒƒNƒgƒŠ
+     * @param dir ãƒ›ãƒ¼ãƒ ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
      */
     public void setHomeDirectory(File dir);
     
     /**
-     * ƒƒOƒCƒ“’¼Œã‚ÌƒNƒ‰ƒCƒAƒ“ƒg‚Ìƒz[ƒ€ƒfƒBƒŒƒNƒgƒŠ‚ğæ“¾‚·‚éB<p>
+     * ãƒ­ã‚°ã‚¤ãƒ³ç›´å¾Œã®ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®ãƒ›ãƒ¼ãƒ ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒz[ƒ€ƒfƒBƒŒƒNƒgƒŠ
+     * @return ãƒ›ãƒ¼ãƒ ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
      */
     public File getHomeDirectory();
     
     /**
-     * ƒtƒ@ƒCƒ‹–¼‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * ãƒ•ã‚¡ã‚¤ãƒ«åã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setFileNameEncoding(String encoding);
     
     /**
-     * ƒtƒ@ƒCƒ‹–¼‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * ãƒ•ã‚¡ã‚¤ãƒ«åã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getFileNameEncoding();
     
     /**
-     * {@link jp.ossc.nimbus.service.sftp.SFTPClient SFTPClient}‚ğ¶¬‚·‚éÛ‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.semaphore.Semaphore Semaphore}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.sftp.SFTPClient SFTPClient}ã‚’ç”Ÿæˆã™ã‚‹éš›ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.semaphore.Semaphore Semaphore}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name SemaphoreƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Semaphoreã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setSemaphoreServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.sftp.SFTPClient SFTPClient}‚ğ¶¬‚·‚éÛ‚Ég—p‚·‚é{@link jp.ossc.nimbus.service.semaphore.Semaphore Semaphore}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.sftp.SFTPClient SFTPClient}ã‚’ç”Ÿæˆã™ã‚‹éš›ã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.semaphore.Semaphore Semaphore}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return SemaphoreƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Semaphoreã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getSemaphoreServiceName();
 }

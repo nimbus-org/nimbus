@@ -40,9 +40,9 @@ import jp.ossc.nimbus.service.proxy.invoker.KeepAliveCheckInvoker;
 import jp.ossc.nimbus.service.performance.ResourceUsage;
 
 /**
- * ƒƒ\ƒbƒhƒŠƒtƒŒƒNƒVƒ‡ƒ“ŒÄ‚Ño‚µƒCƒ“ƒ{[ƒJB<p>
- * ƒŠƒtƒŒƒNƒVƒ‡ƒ“API‚ğg‚Á‚ÄAƒƒ\ƒbƒhŒÄ‚Ño‚µ‚ğs‚¤B<br>
- * ˆÈ‰º‚ÉAƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * ãƒ¡ã‚½ãƒƒãƒ‰ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³å‘¼ã³å‡ºã—ã‚¤ãƒ³ãƒœãƒ¼ã‚«ã€‚<p>
+ * ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³APIã‚’ä½¿ã£ã¦ã€ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã‚’è¡Œã†ã€‚<br>
+ * ä»¥ä¸‹ã«ã€ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * 
@@ -68,11 +68,11 @@ public class MethodReflectionCallInvokerService extends ServiceBase
     private ServiceName resourceUsageServiceName;
     private ResourceUsage resourceUsage;
     
-    // MethodReflectionCallInvokerServiceMBean‚ÌJavaDoc
+    // MethodReflectionCallInvokerServiceMBeanã®JavaDoc
     public void setResourceUsageServiceName(ServiceName name){
         resourceUsageServiceName = name;
     }
-    // MethodReflectionCallInvokerServiceMBean‚ÌJavaDoc
+    // MethodReflectionCallInvokerServiceMBeanã®JavaDoc
     public ServiceName getResourceUsageServiceName(){
         return resourceUsageServiceName;
     }
@@ -89,11 +89,11 @@ public class MethodReflectionCallInvokerService extends ServiceBase
     }
     
     /**
-     * ƒŠƒtƒŒƒNƒVƒ‡ƒ“API‚ğg‚Á‚ÄAƒƒ\ƒbƒhŒÄ‚Ño‚µ‚ğs‚¤B<p>
+     * ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³APIã‚’ä½¿ã£ã¦ã€ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã‚’è¡Œã†ã€‚<p>
      * 
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable ŒÄ‚Ño‚µæ‚Å—áŠO‚ª”­¶‚µ‚½ê‡
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable å‘¼ã³å‡ºã—å…ˆã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆ
      */
     public Object invoke(InvocationContext context) throws Throwable{
         final MethodInvocationContext methodContext
@@ -108,27 +108,27 @@ public class MethodReflectionCallInvokerService extends ServiceBase
         }
     }
     
-    // KeepAliveCheckInvoker‚ÌJavaDoc
+    // KeepAliveCheckInvokerã®JavaDoc
     public boolean isAlive(){
         return getState() == Service.STARTED;
     }
     
-    // KeepAliveCheckInvoker‚ÌJavaDoc
+    // KeepAliveCheckInvokerã®JavaDoc
     public void addKeepAliveListener(KeepAliveListener listener){
         throw new UnsupportedOperationException();
     }
     
-    // KeepAliveCheckInvoker‚ÌJavaDoc
+    // KeepAliveCheckInvokerã®JavaDoc
     public void removeKeepAliveListener(KeepAliveListener listener){
         throw new UnsupportedOperationException();
     }
     
-    // KeepAliveCheckInvoker‚ÌJavaDoc
+    // KeepAliveCheckInvokerã®JavaDoc
     public void clearKeepAliveListener(){
         throw new UnsupportedOperationException();
     }
     
-    // KeepAliveCheckInvoker‚ÌJavaDoc
+    // KeepAliveCheckInvokerã®JavaDoc
     public Object getHostInfo() {
         try{
             return java.net.InetAddress.getLocalHost();
@@ -137,7 +137,7 @@ public class MethodReflectionCallInvokerService extends ServiceBase
         }
     }
     
-    // KeepAliveCheckInvoker‚ÌJavaDoc
+    // KeepAliveCheckInvokerã®JavaDoc
     public Comparable getResourceUsage(){
         return resourceUsage == null ? null : resourceUsage.getUsage();
     }

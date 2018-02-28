@@ -35,38 +35,38 @@ package jp.ossc.nimbus.service.writer;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link GroupCategoryService}ƒT[ƒrƒXMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link GroupCategoryService}ã‚µãƒ¼ãƒ“ã‚¹MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
 public interface GroupCategoryServiceMBean extends Category, ServiceBaseMBean{
     
     /**
-     * ‚±‚ÌƒJƒeƒSƒŠ‚ª—LŒø‚©”»’è‚·‚éB<p>
+     * ã“ã®ã‚«ãƒ†ã‚´ãƒªãŒæœ‰åŠ¹ã‹åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return —LŒø‚Èê‡‚Ítrue
+     * @return æœ‰åŠ¹ãªå ´åˆã¯true
      */
     public boolean isEnabled();
     
     /**
-     * ‚±‚ÌƒJƒeƒSƒŠ‚ª—LŒø‚©İ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍtrueB
+     * ã“ã®ã‚«ãƒ†ã‚´ãƒªãŒæœ‰åŠ¹ã‹è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯trueã€‚
      *
-     * @param enable —LŒø‚Èê‡‚Ítrue
+     * @param enable æœ‰åŠ¹ãªå ´åˆã¯true
      */
     public void setEnabled(boolean enable);
     
     /**
-     * ƒOƒ‹[ƒsƒ“ƒO‚·‚éƒJƒeƒSƒŠƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹ã‚«ãƒ†ã‚´ãƒªã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param names ƒOƒ‹[ƒsƒ“ƒO‚·‚éƒJƒeƒSƒŠƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñ
+     * @param names ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹ã‚«ãƒ†ã‚´ãƒªã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—
      */
     public void setCategoryServiceNames(ServiceName[] names);
     
     /**
-     * ƒOƒ‹[ƒsƒ“ƒO‚·‚éƒJƒeƒSƒŠƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹ã‚«ãƒ†ã‚´ãƒªã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒOƒ‹[ƒsƒ“ƒO‚·‚éƒJƒeƒSƒŠƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñ
+     * @return ã‚°ãƒ«ãƒ¼ãƒ”ãƒ³ã‚°ã™ã‚‹ã‚«ãƒ†ã‚´ãƒªã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—
      */
     public ServiceName[] getCategoryServiceNames();
 }

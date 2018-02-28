@@ -36,10 +36,10 @@ import java.io.Serializable;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒT[ƒrƒXƒIƒuƒWƒFƒNƒgƒl[ƒ~ƒ“ƒOƒT[ƒrƒXB<p>
- * w’è‚µ‚½–¼‘O‚É‘Î‰‚·‚é{@link Service}ƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éƒl[ƒ~ƒ“ƒOƒT[ƒrƒXB<br>
- * w’è‚³‚ê‚½–¼‘O‚É‘Î‰‚·‚éƒT[ƒrƒX‚ª“o˜^‚³‚ê‚Ä‚¢‚é{@link ServiceManager}‚Ì{@link ServiceManager#getServiceObject(String)}‚Åæ“¾‚³‚ê‚éƒIƒuƒWƒFƒNƒg‚ğ•Ô‚·B<br>
- * w’è‚³‚ê‚½–¼‘O‚É‘Î‰‚·‚éƒT[ƒrƒX‚ÌŒŸõ‚ÍA{@link ServiceNamingService}‚Ìd—l‚É]‚¤B<br>
+ * ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãƒãƒ¼ãƒŸãƒ³ã‚°ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
+ * æŒ‡å®šã—ãŸåå‰ã«å¯¾å¿œã™ã‚‹{@link Service}ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ãƒãƒ¼ãƒŸãƒ³ã‚°ã‚µãƒ¼ãƒ“ã‚¹ã€‚<br>
+ * æŒ‡å®šã•ã‚ŒãŸåå‰ã«å¯¾å¿œã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹{@link ServiceManager}ã®{@link ServiceManager#getServiceObject(String)}ã§å–å¾—ã•ã‚Œã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿”ã™ã€‚<br>
+ * æŒ‡å®šã•ã‚ŒãŸåå‰ã«å¯¾å¿œã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®æ¤œç´¢ã¯ã€{@link ServiceNamingService}ã®ä»•æ§˜ã«å¾“ã†ã€‚<br>
  * 
  * @author M.Takata
  */
@@ -49,10 +49,10 @@ public class ServiceObjectNamingService extends ServiceNamingService
     private static final long serialVersionUID = 3253195692766346853L;
     
     /**
-     * ‚±‚ÌƒT[ƒrƒX‚Å•Ô‚·ƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã§è¿”ã™ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @param name ServiceName
-     * @return {@link ServiceName}‚É‘Î‰‚·‚éƒIƒuƒWƒFƒNƒg
+     * @return {@link ServiceName}ã«å¯¾å¿œã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     protected Object findObject(ServiceName name){
         try{
@@ -63,11 +63,11 @@ public class ServiceObjectNamingService extends ServiceNamingService
     }
     
     /**
-     * ‚±‚ÌƒT[ƒrƒX‚Å•Ô‚·ƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã§è¿”ã™ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param manager {@link ServiceManager}‚Ì–¼‘O
-     * @param name {@link Service}‚Ì–¼‘O
-     * @return ˆø”‚ÉŠY“–‚·‚éƒIƒuƒWƒFƒNƒg
+     * @param manager {@link ServiceManager}ã®åå‰
+     * @param name {@link Service}ã®åå‰
+     * @return å¼•æ•°ã«è©²å½“ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     protected Object findObject(String manager, String name){
         try{

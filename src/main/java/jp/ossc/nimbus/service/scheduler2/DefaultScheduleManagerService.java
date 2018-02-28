@@ -46,9 +46,9 @@ import jp.ossc.nimbus.io.*;
 import jp.ossc.nimbus.service.sequence.*;
 
 /**
- * ƒfƒtƒHƒ‹ƒgƒXƒPƒWƒ…[ƒ‹ŠÇ—B<p>
- * ƒƒ‚ƒŠ’†‚ÅƒXƒPƒWƒ…[ƒ‹‚ğì¬EŠÇ—‚µAÀs‚·‚×‚«ƒXƒPƒWƒ…[ƒ‹‚ğ’ñ‹Ÿ‚·‚éB<br>
- * {@link #setPersistDir(String)}‚ğİ’è‚·‚ê‚ÎAƒXƒPƒWƒ…[ƒ‹‚Ìó‘Ô‚ğƒtƒ@ƒCƒ‹‚É‰i‘±‰»‚·‚é–‚ª‚Å‚«‚éB<br>
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ç®¡ç†ã€‚<p>
+ * ãƒ¡ãƒ¢ãƒªä¸­ã§ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ä½œæˆãƒ»ç®¡ç†ã—ã€å®Ÿè¡Œã™ã¹ãã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’æä¾›ã™ã‚‹ã€‚<br>
+ * {@link #setPersistDir(String)}ã‚’è¨­å®šã™ã‚Œã°ã€ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ã‚’ãƒ•ã‚¡ã‚¤ãƒ«ã«æ°¸ç¶šåŒ–ã™ã‚‹äº‹ãŒã§ãã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
@@ -95,82 +95,82 @@ public class DefaultScheduleManagerService extends ServiceBase
     protected long timeoverCheckInterval = 1000l;
     protected Daemon timeoverChecker;
     
-    // DefaultScheduleManagerServiceMBean‚ÌJavaDoc
+    // DefaultScheduleManagerServiceMBeanã®JavaDoc
     public void setDefaultScheduleMakerServiceName(ServiceName name){
         defaultScheduleMakerServiceName = name;
     }
-    // DefaultScheduleManagerServiceMBean‚ÌJavaDoc
+    // DefaultScheduleManagerServiceMBeanã®JavaDoc
     public ServiceName getDefaultScheduleMakerServiceName(){
         return defaultScheduleMakerServiceName;
     }
     
-    // DefaultScheduleManagerServiceMBean‚ÌJavaDoc
+    // DefaultScheduleManagerServiceMBeanã®JavaDoc
     public void setScheduleMasterServiceNames(ServiceName[] names){
         scheduleMasterServiceNames = names;
     }
-    // DefaultScheduleManagerServiceMBean‚ÌJavaDoc
+    // DefaultScheduleManagerServiceMBeanã®JavaDoc
     public ServiceName[] getScheduleMasterServiceNames(){
         return scheduleMasterServiceNames;
     }
     
-    // DefaultScheduleManagerServiceMBean‚ÌJavaDoc
+    // DefaultScheduleManagerServiceMBeanã®JavaDoc
     public void setScheduleMakerTypeMapping(Properties mapping){
         scheduleMakerTypeMapping = mapping;
     }
-    // DefaultScheduleManagerServiceMBean‚ÌJavaDoc
+    // DefaultScheduleManagerServiceMBeanã®JavaDoc
     public Properties getScheduleMakerTypeMapping(){
         return scheduleMakerTypeMapping;
     }
     
-    // DefaultScheduleManagerServiceMBean‚ÌJavaDoc
+    // DefaultScheduleManagerServiceMBeanã®JavaDoc
     public void setScheduleMakerTypeRegexEnabled(boolean isEnable){
         isScheduleMakerTypeRegexEnabled = isEnable;
     }
-    // DefaultScheduleManagerServiceMBean‚ÌJavaDoc
+    // DefaultScheduleManagerServiceMBeanã®JavaDoc
     public boolean isScheduleMakerTypeRegexEnabled(){
         return isScheduleMakerTypeRegexEnabled;
     }
     
-    // DefaultScheduleManagerServiceMBean‚ÌJavaDoc
+    // DefaultScheduleManagerServiceMBeanã®JavaDoc
     public void setMakeScheduleOnStart(boolean isMake){
         isMakeScheduleOnStart = isMake;
     }
-    // DefaultScheduleManagerServiceMBean‚ÌJavaDoc
+    // DefaultScheduleManagerServiceMBeanã®JavaDoc
     public boolean isMakeScheduleOnStart(){
         return isMakeScheduleOnStart;
     }
     
-    // DefaultScheduleManagerServiceMBean‚ÌJavaDoc
+    // DefaultScheduleManagerServiceMBeanã®JavaDoc
     public void setSequenceServiceName(ServiceName name){
         sequenceServiceName = name;
     }
-    // DefaultScheduleManagerServiceMBean‚ÌJavaDoc
+    // DefaultScheduleManagerServiceMBeanã®JavaDoc
     public ServiceName getSequenceServiceName(){
         return sequenceServiceName;
     }
     
-    // DefaultScheduleManagerServiceMBean‚ÌJavaDoc
+    // DefaultScheduleManagerServiceMBeanã®JavaDoc
     public void setPersistDir(String dir){
         persistDir = dir;
     }
-    // DefaultScheduleManagerServiceMBean‚ÌJavaDoc
+    // DefaultScheduleManagerServiceMBeanã®JavaDoc
     public String getPersistDir(){
         return persistDir;
     }
     
-    // DefaultScheduleManagerServiceMBean‚ÌJavaDoc
+    // DefaultScheduleManagerServiceMBeanã®JavaDoc
     public void setTimeoverCheckInterval(long interval){
         timeoverCheckInterval = interval;
     }
-    // DefaultScheduleManagerServiceMBean‚ÌJavaDoc
+    // DefaultScheduleManagerServiceMBeanã®JavaDoc
     public long getTimeoverCheckInterval(){
         return timeoverCheckInterval;
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         scheduleMakerMap = new HashMap();
@@ -189,9 +189,9 @@ public class DefaultScheduleManagerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJnˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         
@@ -287,9 +287,9 @@ public class DefaultScheduleManagerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì’â~ˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void stopService() throws Exception{
         if(timeoverChecker != null){
@@ -346,9 +346,9 @@ public class DefaultScheduleManagerService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠüˆ—‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         scheduleMakerMap = null;
@@ -385,7 +385,7 @@ public class DefaultScheduleManagerService extends ServiceBase
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌID‚ğ¶¬‚·‚é{@link Sequence}‚ğİ’è‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®IDã‚’ç”Ÿæˆã™ã‚‹{@link Sequence}ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
      * @param sequence Sequence
      */
@@ -394,7 +394,7 @@ public class DefaultScheduleManagerService extends ServiceBase
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ÌID‚ğ¶¬‚·‚é{@link Sequence}‚ğæ“¾‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®IDã‚’ç”Ÿæˆã™ã‚‹{@link Sequence}ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return Sequence
      */
@@ -403,9 +403,9 @@ public class DefaultScheduleManagerService extends ServiceBase
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^‚ğ“o˜^‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã‚’ç™»éŒ²ã™ã‚‹ã€‚<p>
      *
-     * @param master ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^
+     * @param master ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿
      */
     public void addScheduleMaster(ScheduleMaster master){
         if(addedScheduleMasters == null){
@@ -419,7 +419,7 @@ public class DefaultScheduleManagerService extends ServiceBase
         addedScheduleMasters.put(master.getId(), master);
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public void setScheduleMaker(String scheduleType, ScheduleMaker maker)
      throws IllegalArgumentException{
         if(addedScheduleMakerMap == null){
@@ -433,7 +433,7 @@ public class DefaultScheduleManagerService extends ServiceBase
         addedScheduleMakerMap.put(scheduleType, maker);
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public ScheduleMaker getScheduleMaker(String scheduleType){
         ScheduleMaker maker = (ScheduleMaker)scheduleMakerMap.get(
             scheduleType
@@ -458,22 +458,22 @@ public class DefaultScheduleManagerService extends ServiceBase
         return maker;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public Map getScheduleMakerMap(){
         return scheduleMakerMap;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public void setDefaultScheduleMaker(ScheduleMaker maker){
         defaultScheduleMaker = maker;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public ScheduleMaker getDefaultScheduleMaker(){
         return defaultScheduleMaker;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List makeSchedule(Date date) throws ScheduleMakeException{
         if(scheduleMasters.size() == 0){
             return new ArrayList();
@@ -485,7 +485,7 @@ public class DefaultScheduleManagerService extends ServiceBase
         return makeSchedule(date, masters);
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List makeSchedule(Date date, ScheduleMaster master) throws ScheduleMakeException{
         if(master == null){
             return new ArrayList();
@@ -495,7 +495,7 @@ public class DefaultScheduleManagerService extends ServiceBase
         return makeSchedule(date, masters);
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List makeSchedule(Date date, List masters) throws ScheduleMakeException{
         if(masters.size() == 0){
             return new ArrayList();
@@ -538,10 +538,10 @@ public class DefaultScheduleManagerService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½“ú•t‚ÅŠî€ŠÔ‚ÌDate‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæ—¥ä»˜ã§åŸºæº–æ™‚é–“ã®Dateã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @param date “ú•t
-     * @return Šî€ŠÔ‚ÌDate
+     * @param date æ—¥ä»˜
+     * @return åŸºæº–æ™‚é–“ã®Date
      */
     protected Date getStandardTimeDate(Date date){
         final Calendar cal = Calendar.getInstance();
@@ -554,10 +554,10 @@ public class DefaultScheduleManagerService extends ServiceBase
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹ID‚ğ”­”Ô‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«IDã‚’ç™ºç•ªã™ã‚‹ã€‚<p>
      *
-     * @return ƒXƒPƒWƒ…[ƒ‹ID
-     * @exception ScheduleManageException ƒXƒPƒWƒ…[ƒ‹ID‚Ì”­”Ô‚É¸”s‚µ‚½ê‡
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ID
+     * @exception ScheduleManageException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«IDã®ç™ºç•ªã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected String createScheduleId() throws ScheduleManageException{
         if(sequence == null){
@@ -609,7 +609,7 @@ public class DefaultScheduleManagerService extends ServiceBase
         }
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List findAllScheduleMasters() throws ScheduleManageException{
         List result = new ArrayList();
         if(scheduleMasters.size() == 0){
@@ -628,7 +628,7 @@ public class DefaultScheduleManagerService extends ServiceBase
         return result;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List findScheduleMasters(String groupId) throws ScheduleManageException{
         List result = new ArrayList();
         Set masters = (Set)scheduleMasterGroupMap.get(groupId);
@@ -648,7 +648,7 @@ public class DefaultScheduleManagerService extends ServiceBase
         return result;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public ScheduleMaster findScheduleMaster(String id) throws ScheduleManageException{
         ScheduleMaster master = (ScheduleMaster)scheduleMasters.get(id);
         if(master != null && master.isTemplate()){
@@ -657,19 +657,19 @@ public class DefaultScheduleManagerService extends ServiceBase
         return master;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List findAllSchedules() throws ScheduleManageException{
         synchronized(scheduleList){
             return new ArrayList(scheduleList);
         }
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public Schedule findSchedule(String id) throws ScheduleManageException{
         return (Schedule)scheduleMap.get(id);
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List findSchedules(String groupId) throws ScheduleManageException{
         final List result = new ArrayList();
         final Set scheduleSet = (Set)scheduleGroupMap.get(groupId);
@@ -683,7 +683,7 @@ public class DefaultScheduleManagerService extends ServiceBase
         return result;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List findSchedules(String masterId, String masterGroupId) throws ScheduleManageException{
         final List result = new ArrayList();
         Set scheduleSet = null;
@@ -702,7 +702,7 @@ public class DefaultScheduleManagerService extends ServiceBase
         return result;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List findSchedules(Date date) throws ScheduleManageException{
         final Date standardDate = getStandardTimeDate(date);
         final List scheduleList = (List)scheduleDateMap.get(standardDate);
@@ -715,13 +715,13 @@ public class DefaultScheduleManagerService extends ServiceBase
         }
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List findSchedules(Date from, Date to)
      throws ScheduleManageException{
         return findSchedules(from, to, null);
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List findSchedules(int[] states) throws ScheduleManageException{
         final List result = new ArrayList();
         
@@ -743,30 +743,30 @@ public class DefaultScheduleManagerService extends ServiceBase
         return result;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List findSchedules(Date from, Date to, int[] states)
      throws ScheduleManageException{
         return findSchedules(from, to, states, null, null, null, null, null);
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List findSchedules(Date from, Date to, int[] states, String masterId, String masterGroupId, String groupId) throws ScheduleManageException{
         return findSchedules(from, to, states, masterId, masterGroupId, groupId, null, null);
     }
     
     /**
-     * w’è‚³‚ê‚½ŠúŠÔAw’è‚³‚ê‚½ó‘ÔAw’è‚³‚ê‚½ÀsƒL[‚ÌƒXƒPƒWƒ…[ƒ‹‚ğŒŸõ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸæœŸé–“ã€æŒ‡å®šã•ã‚ŒãŸçŠ¶æ…‹ã€æŒ‡å®šã•ã‚ŒãŸå®Ÿè¡Œã‚­ãƒ¼ã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’æ¤œç´¢ã™ã‚‹ã€‚<p>
      *
-     * @param from ŠúŠÔ‚ÌŠJn“ú
-     * @param to ŠúŠÔ‚ÌI—¹“ú
-     * @param states ƒXƒPƒWƒ…[ƒ‹ó‘Ô‚Ì”z—ñ
-     * @param masterId ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ID
-     * @param masterGroupId ƒXƒPƒWƒ…[ƒ‹ƒ}ƒXƒ^ƒOƒ‹[ƒvID
-     * @param groupId ƒXƒPƒWƒ…[ƒ‹ƒOƒ‹[ƒvID
-     * @param executorTypes Àsí•Ê”z—ñ
-     * @param executorKey ÀsƒL[
-     * @return ƒXƒPƒWƒ…[ƒ‹ƒŠƒXƒg
-     * @exception ScheduleManageException ƒXƒPƒWƒ…[ƒ‹‚ÌŒŸõ‚É¸”s‚µ‚½ê‡
+     * @param from æœŸé–“ã®é–‹å§‹æ—¥æ™‚
+     * @param to æœŸé–“ã®çµ‚äº†æ—¥æ™‚
+     * @param states ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«çŠ¶æ…‹ã®é…åˆ—
+     * @param masterId ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ID
+     * @param masterGroupId ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒã‚¹ã‚¿ã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param groupId ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ID
+     * @param executorTypes å®Ÿè¡Œç¨®åˆ¥é…åˆ—
+     * @param executorKey å®Ÿè¡Œã‚­ãƒ¼
+     * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒªã‚¹ãƒˆ
+     * @exception ScheduleManageException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æ¤œç´¢ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected List findSchedules(
         Date from,
@@ -909,13 +909,13 @@ public class DefaultScheduleManagerService extends ServiceBase
         return schedules;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List findExecutableSchedules(Date date, String[] executorTypes)
      throws ScheduleManageException{
         return findExecutableSchedules(date, executorTypes, null);
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List findExecutableSchedules(Date date, String[] executorTypes, String executorKey)
      throws ScheduleManageException{
         final List schedules = findSchedules(
@@ -975,7 +975,7 @@ public class DefaultScheduleManagerService extends ServiceBase
         return result;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public List findDependsSchedules(String id) throws ScheduleManageException{
         Schedule schedule = findSchedule(id);
         List result = new ArrayList();
@@ -1054,12 +1054,12 @@ public class DefaultScheduleManagerService extends ServiceBase
         return result;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public void addSchedule(Schedule schedule) throws ScheduleManageException{
         addSchedule(schedule, true, true);
     }
     
-    // DefaultScheduleManagerServiceMBean‚ÌJavaDoc
+    // DefaultScheduleManagerServiceMBeanã®JavaDoc
     public void addSchedule(
         String masterId,
         String[] masterGroupIds,
@@ -1101,12 +1101,12 @@ public class DefaultScheduleManagerService extends ServiceBase
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğ’Ç‰Á‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param schedule ƒXƒPƒWƒ…[ƒ‹
-     * @param isCreateId ƒXƒPƒWƒ…[ƒ‹ID‚ğÄ”­”Ô‚·‚é‚©‚Ç‚¤‚©
-     * @param persist ‰i‘±‰»‚·‚é‚©‚Ç‚¤‚©
-     * @exception ScheduleManageException ƒXƒPƒWƒ…[ƒ‹‚Ì’Ç‰Á‚É¸”s‚µ‚½ê‡
+     * @param schedule ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«
+     * @param isCreateId ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«IDã‚’å†ç™ºç•ªã™ã‚‹ã‹ã©ã†ã‹
+     * @param persist æ°¸ç¶šåŒ–ã™ã‚‹ã‹ã©ã†ã‹
+     * @exception ScheduleManageException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®è¿½åŠ ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void addSchedule(Schedule schedule, boolean isCreateId, boolean persist)
      throws ScheduleManageException{
@@ -1203,10 +1203,10 @@ public class DefaultScheduleManagerService extends ServiceBase
     }
     
     /**
-     * ƒXƒPƒWƒ…[ƒ‹‚ğ‰i‘±‰»‚·‚éB<p>
+     * ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’æ°¸ç¶šåŒ–ã™ã‚‹ã€‚<p>
      *
-     * @param schedule ƒXƒPƒWƒ…[ƒ‹
-     * @exception IOException ƒXƒPƒWƒ…[ƒ‹‚Ì’Ç‰Á‚É¸”s‚µ‚½ê‡
+     * @param schedule ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«
+     * @exception IOException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®è¿½åŠ ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void persistSchedule(Schedule schedule)
      throws IOException{
@@ -1349,9 +1349,9 @@ public class DefaultScheduleManagerService extends ServiceBase
     }
     
     /**
-     * ‰i‘±‰»‚³‚ê‚½ƒ[ƒJƒ‹’Ê”Ô‚ğ“Ç‚İ‚ŞB<p>
+     * æ°¸ç¶šåŒ–ã•ã‚ŒãŸãƒ­ãƒ¼ã‚«ãƒ«é€šç•ªã‚’èª­ã¿è¾¼ã‚€ã€‚<p>
      *
-     * @exception IOException ƒ[ƒJƒ‹’Ê”Ô‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+     * @exception IOException ãƒ­ãƒ¼ã‚«ãƒ«é€šç•ªã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void loadLocalSequenceNumber() throws IOException{
         if(persistDir == null){
@@ -1380,9 +1380,9 @@ public class DefaultScheduleManagerService extends ServiceBase
     }
     
     /**
-     * ‰i‘±‰»‚³‚ê‚½ƒXƒPƒWƒ…[ƒ‹‚ğ“Ç‚İ‚ŞB<p>
+     * æ°¸ç¶šåŒ–ã•ã‚ŒãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’èª­ã¿è¾¼ã‚€ã€‚<p>
      *
-     * @exception IOException ƒXƒPƒWƒ…[ƒ‹‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚½ê‡
+     * @exception IOException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void loadSchedules() throws Exception{
         if(persistDir == null){
@@ -1556,11 +1556,11 @@ public class DefaultScheduleManagerService extends ServiceBase
     }
     
     /**
-     * w’è‚³‚ê‚½ƒNƒ‰ƒX–¼‚©‚çƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹åã‹ã‚‰ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹ã€‚<p>
      *
-     * @param typeStr ƒNƒ‰ƒX–¼
-     * @return ƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg
-     * @exception ClassNotFoundException w’è‚³‚ê‚½ƒNƒ‰ƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
+     * @param typeStr ã‚¯ãƒ©ã‚¹å
+     * @return ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ClassNotFoundException æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
      */
     protected Class convertStringToClass(String typeStr)
      throws ClassNotFoundException{
@@ -1602,10 +1602,10 @@ public class DefaultScheduleManagerService extends ServiceBase
     }
     
     /**
-     * ‰i‘±‰»‚³‚ê‚½ƒXƒPƒWƒ…[ƒ‹‚ğíœ‚·‚éB<p>
+     * æ°¸ç¶šåŒ–ã•ã‚ŒãŸã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å‰Šé™¤ã™ã‚‹ã€‚<p>
      *
-     * @param schedule ƒXƒPƒWƒ…[ƒ‹
-     * @exception IOException ƒXƒPƒWƒ…[ƒ‹‚Ìíœ‚É¸”s‚µ‚½ê‡
+     * @param schedule ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«
+     * @exception IOException ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å‰Šé™¤ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     protected void removePersistSchedule(Schedule schedule)
      throws IOException{
@@ -1638,7 +1638,7 @@ public class DefaultScheduleManagerService extends ServiceBase
         }
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public boolean reschedule(String id, Date time, Object output)
      throws ScheduleManageException{
         final Schedule schedule = (Schedule)scheduleMap.get(id);
@@ -1655,7 +1655,7 @@ public class DefaultScheduleManagerService extends ServiceBase
         return true;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public boolean removeSchedule(String id) throws ScheduleManageException{
         final Schedule schedule = (Schedule)scheduleMap.get(id);
         if(schedule == null){
@@ -1734,7 +1734,7 @@ public class DefaultScheduleManagerService extends ServiceBase
         return true;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public boolean removeScheduleByMasterId(String masterId, String masterGroupId) throws ScheduleManageException{
         Set scheduleSet = null;
         if(masterId != null){
@@ -1758,7 +1758,7 @@ public class DefaultScheduleManagerService extends ServiceBase
         return isRemove;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public boolean removeSchedule(Date date) throws ScheduleManageException{
         final Date standardDate = getStandardTimeDate(date);
         Schedule[] schedules = null;
@@ -1780,7 +1780,7 @@ public class DefaultScheduleManagerService extends ServiceBase
         return isRemove;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public boolean removeSchedule(Date from, Date to, int[] states, String masterId, String masterGroupId, String groupId) throws ScheduleManageException{
         List schedules = findSchedules(from, to, states, masterId, masterGroupId, groupId);
         boolean isRemove = false;
@@ -1790,7 +1790,7 @@ public class DefaultScheduleManagerService extends ServiceBase
         return isRemove;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public void setExecutorKey(String id, String key) throws ScheduleManageException{
         final Schedule schedule = (Schedule)scheduleMap.get(id);
         if(schedule == null){
@@ -1804,7 +1804,7 @@ public class DefaultScheduleManagerService extends ServiceBase
         }
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public void setRetryEndTime(String id, Date time) throws ScheduleManageException{
         final Schedule schedule = (Schedule)scheduleMap.get(id);
         if(schedule == null){
@@ -1818,7 +1818,7 @@ public class DefaultScheduleManagerService extends ServiceBase
         }
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public void setMaxDelayTime(String id, long time) throws ScheduleManageException{
         final Schedule schedule = (Schedule)scheduleMap.get(id);
         if(schedule == null){
@@ -1832,7 +1832,7 @@ public class DefaultScheduleManagerService extends ServiceBase
         }
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public int getState(String id) throws ScheduleStateControlException{
         final Schedule schedule = (Schedule)scheduleMap.get(id);
         if(schedule == null){
@@ -1841,7 +1841,7 @@ public class DefaultScheduleManagerService extends ServiceBase
         return schedule.getState();
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public int getControlState(String id) throws ScheduleStateControlException{
         final Schedule schedule = (Schedule)scheduleMap.get(id);
         if(schedule == null){
@@ -1850,12 +1850,12 @@ public class DefaultScheduleManagerService extends ServiceBase
         return schedule.getControlState();
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public boolean changeState(String id, int state) throws ScheduleStateControlException{
         return changeState(id, state, null);
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public boolean changeState(String id, int oldState, int newState) throws ScheduleStateControlException{
         final Schedule schedule = (Schedule)scheduleMap.get(id);
         if(schedule == null){
@@ -1894,7 +1894,7 @@ public class DefaultScheduleManagerService extends ServiceBase
         return isChange;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public boolean changeState(String id, int oldState, int newState, Object output) throws ScheduleStateControlException{
         final Schedule schedule = (Schedule)scheduleMap.get(id);
         if(schedule == null){
@@ -1934,7 +1934,7 @@ public class DefaultScheduleManagerService extends ServiceBase
         return isChange;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public boolean changeState(String id, int state, Object output) throws ScheduleStateControlException{
         final Schedule schedule = (Schedule)scheduleMap.get(id);
         if(schedule == null){
@@ -1971,7 +1971,7 @@ public class DefaultScheduleManagerService extends ServiceBase
         return isChange;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public boolean changeControlState(String id, int oldState, int newState) throws ScheduleStateControlException{
         final Schedule schedule = (Schedule)scheduleMap.get(id);
         if(schedule == null){
@@ -2028,7 +2028,7 @@ public class DefaultScheduleManagerService extends ServiceBase
         return isChange;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public boolean changeControlState(String id, int state) throws ScheduleStateControlException{
         final Schedule schedule = (Schedule)scheduleMap.get(id);
         if(schedule == null){
@@ -2082,64 +2082,64 @@ public class DefaultScheduleManagerService extends ServiceBase
         return isChange;
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public void addScheduleControlListener(ScheduleControlListener listener){
         scheduleControlListeners.add(listener);
     }
     
-    // ScheduleManager‚ÌJavaDoc
+    // ScheduleManagerã®JavaDoc
     public void removeScheduleControlListener(ScheduleControlListener listener){
         scheduleControlListeners.remove(listener);
     }
     
     /**
-     * ƒ^ƒCƒ€ƒI[ƒo[ŠÄ‹B<p>
+     * ã‚¿ã‚¤ãƒ ã‚ªãƒ¼ãƒãƒ¼ç›£è¦–ã€‚<p>
      *
      * @author M.Takata
      */
     protected class TimeoverChecker implements DaemonRunnable{
         
         /**
-         * ƒf[ƒ‚ƒ“‚ªŠJn‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒé–‹å§‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          * 
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onStart() {
             return true;
         }
         
         /**
-         * ƒf[ƒ‚ƒ“‚ª’â~‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒåœæ­¢ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          * 
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onStop() {
             return true;
         }
         
         /**
-         * ƒf[ƒ‚ƒ“‚ª’†’f‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒä¸­æ–­ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          * 
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onSuspend() {
             return true;
         }
         
         /**
-         * ƒf[ƒ‚ƒ“‚ªÄŠJ‚µ‚½‚ÉŒÄ‚Ño‚³‚ê‚éB<p>
+         * ãƒ‡ãƒ¼ãƒ¢ãƒ³ãŒå†é–‹ã—ãŸæ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚<p>
          * 
-         * @return í‚Étrue‚ğ•Ô‚·
+         * @return å¸¸ã«trueã‚’è¿”ã™
          */
         public boolean onResume() {
             return true;
         }
         
         /**
-         * ˆê’èŠÔ‹ó‚¯‚éB<p>
+         * ä¸€å®šæ™‚é–“ç©ºã‘ã‚‹ã€‚<p>
          * 
-         * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
-         * @return ƒXƒPƒWƒ…[ƒ‹‚Ì”z—ñ
+         * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+         * @return ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®é…åˆ—
          */
         public Object provide(DaemonControl ctrl) throws Throwable{
             ctrl.sleep(getTimeoverCheckInterval(), true);
@@ -2147,10 +2147,10 @@ public class DefaultScheduleManagerService extends ServiceBase
         }
         
         /**
-         * Å‘å’x‰„ŠÔ‚ğƒ`ƒFƒbƒN‚·‚éB<p>
+         * æœ€å¤§é…å»¶æ™‚é–“ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã€‚<p>
          *
          * @param input null
-         * @param ctrl DaemonControlƒIƒuƒWƒFƒNƒg
+         * @param ctrl DaemonControlã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
          */
         public void consume(Object input, DaemonControl ctrl)
          throws Throwable{
@@ -2189,7 +2189,7 @@ public class DefaultScheduleManagerService extends ServiceBase
         }
         
         /**
-         * ‰½‚à‚µ‚È‚¢B<p>
+         * ä½•ã‚‚ã—ãªã„ã€‚<p>
          */
         public void garbage(){
         }

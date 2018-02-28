@@ -33,39 +33,39 @@ package jp.ossc.nimbus.service.mail;
 //
 //
 /**
- *	ƒƒbƒZ[ƒW‘—M‚ÌƒCƒ“ƒ^[ƒtƒFƒCƒX‚ğ‹K’è‚·‚éB<BR>
+ *	ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã‚’è¦å®šã™ã‚‹ã€‚<BR>
  *	@author		Kayo.Marumo
- *	@version	1.00 ì¬F2001.02.22 | K.Marumo<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2001.02.22 ï¼ K.Marumo<BR>
+ *				æ›´æ–°ï¼š
  */
 public interface MailSender {
 	/**
-	 *	ƒƒbƒZ[ƒW‚Ì‘—Mæ‚ğİ’è‚·‚é<BR>
-	 *	@param		to		ˆ¶æ
+	 *	ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é€ä¿¡å…ˆã‚’è¨­å®šã™ã‚‹<BR>
+	 *	@param		to		å®›å…ˆ
 	 */
 	public void setTo(String to);
 	/**
-	 *	ƒƒbƒZ[ƒW‚Ì‘—MŒ³‚ğİ’è‚·‚é<BR>
-	 *	@param		from	·ol
+	 *	ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é€ä¿¡å…ƒã‚’è¨­å®šã™ã‚‹<BR>
+	 *	@param		from	å·®å‡ºäºº
 	 */
 	public void setFrom(String from);
 	/**
-	 *	ƒƒbƒZ[ƒW‚ÌŒ–¼‚ğİ’è‚·‚é<BR>
-	 *	@param		subject	Œ–¼
+	 *	ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ä»¶åã‚’è¨­å®šã™ã‚‹<BR>
+	 *	@param		subject	ä»¶å
 	 */
 	public void setSubject(String subject);
 	/**
-	 *	ƒƒbƒZ[ƒW‚Ì–{•¶‚ğİ’è‚·‚é<BR>
-	 *	@param		body	–{•¶
+	 *	ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®æœ¬æ–‡ã‚’è¨­å®šã™ã‚‹<BR>
+	 *	@param		body	æœ¬æ–‡
 	 */
 	public void setBody(String body);
 	/**
-	 *	ƒƒbƒZ[ƒW‚ğ‘—M‚·‚é<BR>
+	 *	ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é€ä¿¡ã™ã‚‹<BR>
 	 */
 	public void sendMessage() throws Exception;
 	/**
-	 *	ƒ[ƒ‹ƒT[ƒo–¼‚ğo—Í‚·‚éB<BR>
-	 *	@return ƒ[ƒ‹ƒT[ƒo–¼
+	 *	ãƒ¡ãƒ¼ãƒ«ã‚µãƒ¼ãƒåã‚’å‡ºåŠ›ã™ã‚‹ã€‚<BR>
+	 *	@return ãƒ¡ãƒ¼ãƒ«ã‚µãƒ¼ãƒå
 	 */
 	public String getMailServerName() ;
 }

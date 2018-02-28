@@ -32,19 +32,19 @@
 package jp.ossc.nimbus.service.context;
 
 /**
- * ‹¤—LƒRƒ“ƒeƒLƒXƒgƒL[•ªUB<p>
+ * å…±æœ‰ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚­ãƒ¼åˆ†æ•£ã€‚<p>
  *
  * @author M.Takata
  */
 public interface SharedContextKeyDistributor{
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚ÉŠY“–‚·‚é•ªUƒRƒ“ƒeƒLƒXƒg‚ÌƒCƒ“ƒfƒbƒNƒX‚ğ‘I‘ğ‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã«è©²å½“ã™ã‚‹åˆ†æ•£ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’é¸æŠã™ã‚‹ã€‚<p>
      * 
-     * @param key ƒL[
-     * @param distributedSize •ªU‘”
-     * @return •ªUƒRƒ“ƒeƒLƒXƒg‚ÌƒCƒ“ƒfƒbƒNƒX
-     * @exception SharedContextIllegalDistributeException •ªUƒRƒ“ƒeƒLƒXƒg‚ÌƒCƒ“ƒfƒbƒNƒX‚ª³‚µ‚­‘I‘ğ‚Å‚«‚È‚¢ê‡
+     * @param key ã‚­ãƒ¼
+     * @param distributedSize åˆ†æ•£ç·æ•°
+     * @return åˆ†æ•£ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+     * @exception SharedContextIllegalDistributeException åˆ†æ•£ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒæ­£ã—ãé¸æŠã§ããªã„å ´åˆ
      */
     public int selectDataNodeIndex(Object key, int distributedSize) throws SharedContextIllegalDistributeException;
 }

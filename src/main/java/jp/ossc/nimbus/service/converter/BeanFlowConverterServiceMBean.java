@@ -36,68 +36,68 @@ import java.util.Map;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link BeanFlowConverterService}ƒT[ƒrƒXMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link BeanFlowConverterService}ã‚µãƒ¼ãƒ“ã‚¹MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
 public interface BeanFlowConverterServiceMBean extends ServiceBaseMBean {
     
     /**
-     * “ü—ÍBean‚ÌƒNƒ‰ƒX–¼‚É‘Î‚µ‚Äg—p‚·‚éBeanFlow‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * å…¥åŠ›Beanã®ã‚¯ãƒ©ã‚¹åã«å¯¾ã—ã¦ä½¿ç”¨ã™ã‚‹BeanFlowã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param mapping “ü—ÍBean‚ÌƒNƒ‰ƒX–¼=BeanFlow‚ÌƒL[‚Å\¬‚³‚ê‚éƒ}ƒbƒv
+     * @param mapping å…¥åŠ›Beanã®ã‚¯ãƒ©ã‚¹å=BeanFlowã®ã‚­ãƒ¼ã§æ§‹æˆã•ã‚Œã‚‹ãƒãƒƒãƒ—
      */
     public void setClassMapping(Map mapping);
     
     /**
-     * “ü—ÍBean‚ÌƒNƒ‰ƒX–¼‚É‘Î‚µ‚Äg—p‚·‚éBeanFlow‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * å…¥åŠ›Beanã®ã‚¯ãƒ©ã‚¹åã«å¯¾ã—ã¦ä½¿ç”¨ã™ã‚‹BeanFlowã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “ü—ÍBean‚ÌƒNƒ‰ƒX–¼=BeanFlow‚ÌƒL[‚Å\¬‚³‚ê‚éƒ}ƒbƒv
+     * @return å…¥åŠ›Beanã®ã‚¯ãƒ©ã‚¹å=BeanFlowã®ã‚­ãƒ¼ã§æ§‹æˆã•ã‚Œã‚‹ãƒãƒƒãƒ—
      */
     public Map getClassMapping();
     
     /**
-     * “ü—ÍBean‚É‘Î‚·‚éğŒ–ˆ‚Ég—p‚·‚éBeanFlow‚Ìƒ}ƒbƒsƒ“ƒO‚ğİ’è‚·‚éB<p>
-     * ğŒ®‚ÍAThe Apache Jakarta Project‚Ì Commons Jexl(http://jakarta.apache.org/commons/jexl/)‚ğg—p‚·‚éB<br>
-     * “ü—ÍBean©‘Ì‚ğQÆ‚·‚éê‡‚ÍA"value"‚Æ‚¢‚¤—\–ñŒê‚ğg—p‚·‚éB<br>
-     * “ü—ÍBean‚ÌƒvƒƒpƒeƒB‚ğQÆ‚·‚éê‡‚ÍAƒvƒƒpƒeƒB‚ğ•\Œ»‚·‚é•¶š—ñ‚ğ"@"‚ÅˆÍ‚ñ‚Åw’è‚·‚éB‚±‚±‚ÅŒ¾‚¤AƒvƒƒpƒeƒB‚ÌŠT”O‚ÍAJava Beans‚ÌƒvƒƒpƒeƒB‚ÌŠT”O‚æ‚èL‚­A{@link jp.ossc.nimbus.beans.PropertyFactory PropertyFactory}‚Ì‹K–ñ‚É]‚¤B<br>
+     * å…¥åŠ›Beanã«å¯¾ã™ã‚‹æ¡ä»¶æ¯ã«ä½¿ç”¨ã™ã‚‹BeanFlowã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * æ¡ä»¶å¼ã¯ã€The Apache Jakarta Projectã® Commons Jexl(http://jakarta.apache.org/commons/jexl/)ã‚’ä½¿ç”¨ã™ã‚‹ã€‚<br>
+     * å…¥åŠ›Beanè‡ªä½“ã‚’å‚ç…§ã™ã‚‹å ´åˆã¯ã€"value"ã¨ã„ã†äºˆç´„èªã‚’ä½¿ç”¨ã™ã‚‹ã€‚<br>
+     * å…¥åŠ›Beanã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å‚ç…§ã™ã‚‹å ´åˆã¯ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¡¨ç¾ã™ã‚‹æ–‡å­—åˆ—ã‚’"@"ã§å›²ã‚“ã§æŒ‡å®šã™ã‚‹ã€‚ã“ã“ã§è¨€ã†ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¦‚å¿µã¯ã€Java Beansã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ¦‚å¿µã‚ˆã‚Šåºƒãã€{@link jp.ossc.nimbus.beans.PropertyFactory PropertyFactory}ã®è¦ç´„ã«å¾“ã†ã€‚<br>
      *
-     * @param conditions “ü—ÍBean‚É‘Î‚·‚éğŒ®=BeanFlow‚ÌƒL[‚Å\¬‚³‚ê‚éğŒ”z—ñ
+     * @param conditions å…¥åŠ›Beanã«å¯¾ã™ã‚‹æ¡ä»¶å¼=BeanFlowã®ã‚­ãƒ¼ã§æ§‹æˆã•ã‚Œã‚‹æ¡ä»¶é…åˆ—
      */
     public void setConditions(String[] conditions);
     
     /**
-     * “ü—ÍBean‚É‘Î‚·‚éğŒ–ˆ‚Ég—p‚·‚éBeanFlow‚Ìƒ}ƒbƒsƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * å…¥åŠ›Beanã«å¯¾ã™ã‚‹æ¡ä»¶æ¯ã«ä½¿ç”¨ã™ã‚‹BeanFlowã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return “ü—ÍBean‚É‘Î‚·‚éğŒ®=BeanFlow‚ÌƒL[‚Å\¬‚³‚ê‚éğŒ”z—ñ
+     * @return å…¥åŠ›Beanã«å¯¾ã™ã‚‹æ¡ä»¶å¼=BeanFlowã®ã‚­ãƒ¼ã§æ§‹æˆã•ã‚Œã‚‹æ¡ä»¶é…åˆ—
      */
     public String[] getConditions();
     
     /**
-     * ‚Ç‚ÌğŒ‚É‚à‡’v‚µ‚È‚¢ê‡‚Ég—p‚·‚éBeanFlow‚ÌƒL[‚ğİ’è‚·‚éB<p>
+     * ã©ã®æ¡ä»¶ã«ã‚‚åˆè‡´ã—ãªã„å ´åˆã«ä½¿ç”¨ã™ã‚‹BeanFlowã®ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param beanFlowKey BeanFlow‚ÌƒL[
+     * @param beanFlowKey BeanFlowã®ã‚­ãƒ¼
      */
     public void setDefaultBeanFlowKey(String beanFlowKey);
     
     /**
-     * ‚Ç‚ÌğŒ‚É‚à‡’v‚µ‚È‚¢ê‡‚Ég—p‚·‚éBeanFlow‚ÌƒL[‚ğæ“¾‚·‚éB<p>
+     * ã©ã®æ¡ä»¶ã«ã‚‚åˆè‡´ã—ãªã„å ´åˆã«ä½¿ç”¨ã™ã‚‹BeanFlowã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return BeanFlow‚ÌƒL[
+     * @return BeanFlowã®ã‚­ãƒ¼
      */
     public String getDefaultBeanFlowKey();
     
     /**
-     * Bean‚Ì•ÏŠ·‚ğs‚¤BeanFlow‚ğæ“¾‚·‚é{@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * Beanã®å¤‰æ›ã‚’è¡Œã†BeanFlowã‚’å–å¾—ã™ã‚‹{@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name BeanFlowInvokerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name BeanFlowInvokerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setBeanFlowInvokerFactoryServiceName(ServiceName name);
     
     /**
-     * Bean‚Ì•ÏŠ·‚ğs‚¤BeanFlow‚ğæ“¾‚·‚é{@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * Beanã®å¤‰æ›ã‚’è¡Œã†BeanFlowã‚’å–å¾—ã™ã‚‹{@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return BeanFlowInvokerFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return BeanFlowInvokerFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getBeanFlowInvokerFactoryServiceName();
 }

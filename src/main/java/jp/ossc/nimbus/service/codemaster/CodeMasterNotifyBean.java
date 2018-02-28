@@ -29,9 +29,9 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.codemaster;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import java.util.*;
 import java.io.*;
 import javax.jms.*;
@@ -43,7 +43,7 @@ import jp.ossc.nimbus.service.publish.MessageException;
 import jp.ossc.nimbus.service.publish.MessageCreateException;
 
 /**
- * ƒR[ƒhƒ}ƒXƒ^[ŠÇ—‚Éƒ}ƒXƒ^[“ü‚ê‘Ö‚¦‚ğw¦‚·‚éBean
+ * ã‚³ãƒ¼ãƒ‰ãƒã‚¹ã‚¿ãƒ¼ç®¡ç†ã«ãƒã‚¹ã‚¿ãƒ¼å…¥ã‚Œæ›¿ãˆã‚’æŒ‡ç¤ºã™ã‚‹Bean
  * 
  * @version $Name:  $
  * @author H.Nakano
@@ -53,17 +53,17 @@ public class CodeMasterNotifyBean extends HashMap{
     
     private static final long serialVersionUID = 3508475057737920813L;
     
-    /** Topic‚ğƒ‹ƒbƒNƒAƒbƒv‚·‚éFinder */
+    /** Topicã‚’ãƒ«ãƒƒã‚¯ã‚¢ãƒƒãƒ—ã™ã‚‹Finder */
     private JndiFinder mTopicFinder;
-    /** TopicƒŠƒ\[ƒX */
+    /** Topicãƒªã‚½ãƒ¼ã‚¹ */
     private TopicSession mRes;
-    /** ƒtƒ[ƒL[*/
+    /** ãƒ•ãƒ­ãƒ¼ã‚­ãƒ¼*/
     private String mFlowKey;
-    /** XV“ú•t */
+    /** æ›´æ–°æ—¥ä»˜ */
     private Date mDate;
-    /** XV“ú•t */
+    /** æ›´æ–°æ—¥ä»˜ */
     private Object mData;
-    /** Topic –¼ */
+    /** Topic å */
     private String mTopicName;
     
     private String subject;
@@ -79,62 +79,62 @@ public class CodeMasterNotifyBean extends HashMap{
     }
     
     /**
-     * ‘—Mæ‚ÌƒgƒsƒbƒN–¼‚ğİ’è‚·‚éB<p>
+     * é€ä¿¡å…ˆã®ãƒˆãƒ”ãƒƒã‚¯åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param name ƒgƒsƒbƒN–¼
+     * @param name ãƒˆãƒ”ãƒƒã‚¯å
      */
     public void setTopicName(String name){
         this.mTopicName = name;
     }
     
     /**
-     * ƒgƒsƒbƒNƒZƒbƒVƒ‡ƒ“‚ğİ’è‚·‚éB<p>
+     * ãƒˆãƒ”ãƒƒã‚¯ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param rc ƒgƒsƒbƒNƒZƒbƒVƒ‡ƒ“
+     * @param rc ãƒˆãƒ”ãƒƒã‚¯ã‚»ãƒƒã‚·ãƒ§ãƒ³
      */
     public void setResource(TopicSession rc){
         mRes = rc;
     }
     
     /**
-     * XV‚·‚éƒ}ƒXƒ^–¼‚ğİ’è‚·‚éB<p>
+     * æ›´æ–°ã™ã‚‹ãƒã‚¹ã‚¿åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param masterKey ƒ}ƒXƒ^–¼
+     * @param masterKey ãƒã‚¹ã‚¿å
      */
     public void setMasterFlowKey(String masterKey){
         mFlowKey = masterKey;
     }
     
     /**
-     * XV‚·‚éƒ}ƒXƒ^‚ª—LŒø‚É‚È‚éŠJn“ú‚ğİ’è‚·‚éB<p>
-     * İ’è‚µ‚È‚¢ê‡‚ÍAƒgƒsƒbƒN’Ê’m‚ª“’B‚µ‚½“ú‚ªA—LŒøŠJn“ú‚Æ‚È‚éB<br>
+     * æ›´æ–°ã™ã‚‹ãƒã‚¹ã‚¿ãŒæœ‰åŠ¹ã«ãªã‚‹é–‹å§‹æ—¥æ™‚ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã—ãªã„å ´åˆã¯ã€ãƒˆãƒ”ãƒƒã‚¯é€šçŸ¥ãŒåˆ°é”ã—ãŸæ—¥æ™‚ãŒã€æœ‰åŠ¹é–‹å§‹æ—¥æ™‚ã¨ãªã‚‹ã€‚<br>
      *
-     * @param effectiveDate —LŒøŠJn“ú
+     * @param effectiveDate æœ‰åŠ¹é–‹å§‹æ—¥æ™‚
      */
     public void setDate(Date effectiveDate){
         mDate = effectiveDate;
     }
     
     /**
-     * ƒ}ƒXƒ^XVˆ—‚Ö‚Ì“ü—Íî•ñ‚ğİ’è‚·‚éB<p>
+     * ãƒã‚¹ã‚¿æ›´æ–°å‡¦ç†ã¸ã®å…¥åŠ›æƒ…å ±ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param data “ü—Íî•ñ
+     * @param data å…¥åŠ›æƒ…å ±
      */
     public void setData(Object data){
         this.mData = data;
     }
     
     /**
-     * ‘—MæƒgƒsƒbƒN‚ğ’T‚·{@link JndiFinder}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * é€ä¿¡å…ˆãƒˆãƒ”ãƒƒã‚¯ã‚’æ¢ã™{@link JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      * 
-     * @param finder JndiFinderƒT[ƒrƒX
+     * @param finder JndiFinderã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setJndiFinder(JndiFinder finder){
         this.mTopicFinder = finder;
     }
     
     /**
-     * ‘—MƒƒbƒZ[ƒW‚ğì¬‚·‚éB<p>
+     * é€ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ä½œæˆã™ã‚‹ã€‚<p>
      */
     public void addMessage(){
         if(mFlowKey == null){
@@ -151,13 +151,13 @@ public class CodeMasterNotifyBean extends HashMap{
     }
     
     /**
-     * ƒƒbƒZ[ƒW‚ğƒgƒsƒbƒN‚É‘—M‚·‚éB<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ãƒˆãƒ”ãƒƒã‚¯ã«é€ä¿¡ã™ã‚‹ã€‚<p>
      * 
-     * @exception JMSException ‘—M‚É¸”s‚µ‚½ê‡
-     * @exception NamingException ƒgƒsƒbƒN‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
-     * @exception MessageCreateException ƒƒbƒZ[ƒW‚Ì¶¬‚É¸”s‚µ‚½ê‡
-     * @exception MessageSendException ‘—M‚É¸”s‚µ‚½ê‡
-     * @exception MessageException ƒƒbƒZ[ƒW‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSException é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception NamingException ãƒˆãƒ”ãƒƒã‚¯ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
+     * @exception MessageCreateException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception MessageSendException é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception MessageException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void send() throws JMSException, NamingException, MessageCreateException, MessageSendException, MessageException{
         if(size() == 0){
@@ -246,13 +246,13 @@ public class CodeMasterNotifyBean extends HashMap{
     }
     
     /**
-     * ƒƒbƒZ[ƒWì¬‚ÆƒgƒsƒbƒN‚Ö‚Ì‘—M‚Ì—¼•û‚ğs‚¤B<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ä½œæˆã¨ãƒˆãƒ”ãƒƒã‚¯ã¸ã®é€ä¿¡ã®ä¸¡æ–¹ã‚’è¡Œã†ã€‚<p>
      * 
-     * @exception JMSException ‘—M‚É¸”s‚µ‚½ê‡
-     * @exception NamingException ƒgƒsƒbƒN‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
-     * @exception MessageCreateException ƒƒbƒZ[ƒW‚Ì¶¬‚É¸”s‚µ‚½ê‡
-     * @exception MessageSendException ‘—M‚É¸”s‚µ‚½ê‡
-     * @exception MessageException ƒƒbƒZ[ƒW‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception JMSException é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception NamingException ãƒˆãƒ”ãƒƒã‚¯ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
+     * @exception MessageCreateException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception MessageSendException é€ä¿¡ã«å¤±æ•—ã—ãŸå ´åˆ
+     * @exception MessageException ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void addMessageAndSend() throws JMSException, NamingException, MessageCreateException, MessageSendException, MessageException{
         addMessage();

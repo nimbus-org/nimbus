@@ -36,8 +36,8 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ƒfƒtƒHƒ‹ƒg‚ ‚Ó‚ê§Œäƒtƒ@ƒNƒgƒŠB<p>
- * {@link DefaultOverflowControllerService}‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠƒT[ƒrƒX‚Å‚ ‚éB<br>
+ * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚ãµã‚Œåˆ¶å¾¡ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * {@link DefaultOverflowControllerService}ã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã§ã‚ã‚‹ã€‚<br>
  *
  * @author M.Takata
  * @see DefaultOverflowControllerService
@@ -52,10 +52,10 @@ public class DefaultOverflowControllerFactoryService
          = new DefaultOverflowControllerService();
     
     /**
-     * {@link DefaultOverflowControllerService}ƒT[ƒrƒX‚ğ¶¬‚·‚éB<p>
+     * {@link DefaultOverflowControllerService}ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return DefaultOverflowControllerServiceƒT[ƒrƒX
-     * @exception Exception DefaultOverflowControllerService‚Ì¶¬E‹N“®‚É¸”s‚µ‚½ê‡
+     * @return DefaultOverflowControllerServiceã‚µãƒ¼ãƒ“ã‚¹
+     * @exception Exception DefaultOverflowControllerServiceã®ç”Ÿæˆãƒ»èµ·å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
      * @see DefaultOverflowControllerService
      */
     protected Service createServiceInstance() throws Exception{
@@ -73,7 +73,7 @@ public class DefaultOverflowControllerFactoryService
         return controller;
     }
     
-    // DefaultOverflowControllerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultOverflowControllerFactoryServiceMBeanã®JavaDoc
     public void setOverflowValidatorServiceName(ServiceName name){
         template.setOverflowValidatorServiceName(name);
         final Set instanceSet = getManagedInstanceSet();
@@ -85,12 +85,12 @@ public class DefaultOverflowControllerFactoryService
         }
     }
     
-    // DefaultOverflowControllerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultOverflowControllerFactoryServiceMBeanã®JavaDoc
     public ServiceName getOverflowValidatorServiceName(){
         return template.getOverflowValidatorServiceName();
     }
     
-    // DefaultOverflowControllerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultOverflowControllerFactoryServiceMBeanã®JavaDoc
     public void setOverflowAlgorithmServiceName(ServiceName name){
         template.setOverflowAlgorithmServiceName(name);
         final Set instanceSet = getManagedInstanceSet();
@@ -102,12 +102,12 @@ public class DefaultOverflowControllerFactoryService
         }
     }
     
-    // DefaultOverflowControllerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultOverflowControllerFactoryServiceMBeanã®JavaDoc
     public ServiceName getOverflowAlgorithmServiceName(){
         return template.getOverflowAlgorithmServiceName();
     }
     
-    // DefaultOverflowControllerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultOverflowControllerFactoryServiceMBeanã®JavaDoc
     public void setOverflowActionServiceName(ServiceName name){
         template.setOverflowActionServiceName(name);
         final Set instanceSet = getManagedInstanceSet();
@@ -119,12 +119,12 @@ public class DefaultOverflowControllerFactoryService
         }
     }
     
-    // DefaultOverflowControllerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultOverflowControllerFactoryServiceMBeanã®JavaDoc
     public ServiceName getOverflowActionServiceName(){
         return template.getOverflowActionServiceName();
     }
     
-    // DefaultOverflowControllerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultOverflowControllerFactoryServiceMBeanã®JavaDoc
     public void setQueueServiceName(ServiceName name){
         template.setQueueServiceName(name);
         final Set instanceSet = getManagedInstanceSet();
@@ -136,12 +136,12 @@ public class DefaultOverflowControllerFactoryService
         }
     }
     
-    // DefaultOverflowControllerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultOverflowControllerFactoryServiceMBeanã®JavaDoc
     public ServiceName getQueueServiceName(){
         return template.getQueueServiceName();
     }
     
-    // DefaultOverflowControllerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultOverflowControllerFactoryServiceMBeanã®JavaDoc
     public void setPeriodicOverflowIntervalTime(long time){
         template.setPeriodicOverflowIntervalTime(time);
         final Set instanceSet = getManagedInstanceSet();
@@ -153,12 +153,12 @@ public class DefaultOverflowControllerFactoryService
         }
     }
     
-    // DefaultOverflowControllerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultOverflowControllerFactoryServiceMBeanã®JavaDoc
     public long getPeriodicOverflowIntervalTime(){
         return template.getPeriodicOverflowIntervalTime();
     }
     
-    // DefaultOverflowControllerFactoryServiceMBean‚ÌJavaDoc
+    // DefaultOverflowControllerFactoryServiceMBeanã®JavaDoc
     public void reset(){
         final Set instanceSet = getManagedInstanceSet();
         final Iterator instances = instanceSet.iterator();

@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.core;
 
 /**
- * {@link GenericsFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link GenericsFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see GenericsFactoryService
@@ -41,57 +41,57 @@ public interface GenericsFactoryServiceMBean
  extends FactoryServiceBaseMBean{
     
     /**
-     * ¶¬‚·‚éƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX‚ğİ’è‚·‚éB<p>
+     * ç”Ÿæˆã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param clazz ¶¬‚·‚éƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX
+     * @param clazz ç”Ÿæˆã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹
      */
     public void setInstantiateClass(Class clazz);
     
     /**
-     * ¶¬‚·‚éƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX‚ğæ“¾‚·‚éB<p>
+     * ç”Ÿæˆã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ¶¬‚·‚éƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒX
+     * @return ç”Ÿæˆã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹
      */
     public Class getInstantiateClass();
     
     /**
-     * {@link ServiceName}Œ^‚Ì‘®«‚ªİ’è‚³‚ê‚½ê‡‚ÉA¶¬‚·‚éƒIƒuƒWƒFƒNƒg‚ÌŠY“–‚·‚é‘®«‚ÉAŠY“–‚·‚éƒT[ƒrƒX‚ğæ“¾‚µ‚Äİ’è‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
+     * {@link ServiceName}å‹ã®å±æ€§ãŒè¨­å®šã•ã‚ŒãŸå ´åˆã«ã€ç”Ÿæˆã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è©²å½“ã™ã‚‹å±æ€§ã«ã€è©²å½“ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã—ã¦è¨­å®šã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param flg ƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“‚·‚éê‡‚Ítrue
+     * @param flg ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³ã™ã‚‹å ´åˆã¯true
      */
     public void setServiceInjection(boolean flg);
     
     /**
-     * {@link ServiceName}Œ^‚Ì‘®«‚ªİ’è‚³‚ê‚½ê‡‚ÉA¶¬‚·‚éƒIƒuƒWƒFƒNƒg‚ÌŠY“–‚·‚é‘®«‚ÉAŠY“–‚·‚éƒT[ƒrƒX‚ğæ“¾‚µ‚Äİ’è‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link ServiceName}å‹ã®å±æ€§ãŒè¨­å®šã•ã‚ŒãŸå ´åˆã«ã€ç”Ÿæˆã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è©²å½“ã™ã‚‹å±æ€§ã«ã€è©²å½“ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã—ã¦è¨­å®šã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡‚ÍAƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“‚·‚é
+     * @return trueã®å ´åˆã¯ã€ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³ã™ã‚‹
      */
     public boolean isServiceInjection();
     
     /**
-     * w’è‚³‚ê‚½‘®«‚Ì’l‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸå±æ€§ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param attributeName ‘®«–¼
-     * @return w’è‚³‚ê‚½‘®«‚Ì’l
+     * @param attributeName å±æ€§å
+     * @return æŒ‡å®šã•ã‚ŒãŸå±æ€§ã®å€¤
      */
     public Object getAttribute(String attributeName);
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒX–¼‘®«‚ÌƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åå±æ€§ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param attributeName ƒT[ƒrƒX–¼‘®«–¼
-     * @return w’è‚³‚ê‚½ƒT[ƒrƒX–¼‘®«‚ÌƒT[ƒrƒX
-     * @exception ServiceNotFoundException w’è‚³‚ê‚½ƒT[ƒrƒX–¼‘®«‚ÌƒT[ƒrƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
+     * @param attributeName ã‚µãƒ¼ãƒ“ã‚¹åå±æ€§å
+     * @return æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åå±æ€§ã®ã‚µãƒ¼ãƒ“ã‚¹
+     * @exception ServiceNotFoundException æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åå±æ€§ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
      */
     public Service getService(String attributeName)
      throws ServiceNotFoundException;
     
     /**
-     * w’è‚³‚ê‚½ƒT[ƒrƒX–¼‘®«‚ÌƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åå±æ€§ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param attributeName ƒT[ƒrƒX–¼‘®«–¼
-     * @return w’è‚³‚ê‚½ƒT[ƒrƒX–¼‘®«‚ÌƒT[ƒrƒXƒIƒuƒWƒFƒNƒg
-     * @exception ServiceNotFoundException w’è‚³‚ê‚½ƒT[ƒrƒX–¼‘®«‚ÌƒT[ƒrƒXƒIƒuƒWƒFƒNƒg‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡
+     * @param attributeName ã‚µãƒ¼ãƒ“ã‚¹åå±æ€§å
+     * @return æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åå±æ€§ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @exception ServiceNotFoundException æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åå±æ€§ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
      */
     public Object getServiceObject(String attributeName)
      throws ServiceNotFoundException;

@@ -46,35 +46,35 @@ import jp.ossc.nimbus.util.ClassMappingTree;
 import jp.ossc.nimbus.util.converter.*;
 
 /**
- * ServiceManagerFactoryƒT[ƒuƒŒƒbƒgB<p>
- * ƒT[ƒuƒŒƒbƒgƒRƒ“ƒeƒiã‚Å‚ÌƒT[ƒrƒX‚Ìƒ[ƒh‚ğƒTƒ|[ƒg‚·‚éƒT[ƒuƒŒƒbƒg‚Å‚ ‚éB<br>
- * ‚Ü‚½AJMXƒT[ƒo‚ª‘¶İ‚µ‚È‚¢ŠÂ‹«‚Å‚ÌAƒT[ƒrƒX‚ÌŠÇ—‚ğƒTƒ|[ƒg‚·‚é‚½‚ß‚ÉA
- * HTTPŒo—R‚Å‚ÌƒT[ƒrƒX‚ÌŠÇ—‚ğƒTƒ|[ƒg‚·‚éŠÇ—ƒRƒ“ƒ\[ƒ‹‹y‚ÑWebƒT[ƒrƒX‚ğ’ñ‹Ÿ‚·‚éB<br>
- * ‚±‚ÌƒT[ƒuƒŒƒbƒg‚É‚ÍAˆÈ‰º‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^‚ª‚ ‚éB<br>
+ * ServiceManagerFactoryã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã€‚<p>
+ * ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã‚³ãƒ³ãƒ†ãƒŠä¸Šã§ã®ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ­ãƒ¼ãƒ‰ã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã§ã‚ã‚‹ã€‚<br>
+ * ã¾ãŸã€JMXã‚µãƒ¼ãƒãŒå­˜åœ¨ã—ãªã„ç’°å¢ƒã§ã®ã€ã‚µãƒ¼ãƒ“ã‚¹ã®ç®¡ç†ã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹ãŸã‚ã«ã€
+ * HTTPçµŒç”±ã§ã®ã‚µãƒ¼ãƒ“ã‚¹ã®ç®¡ç†ã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹ç®¡ç†ã‚³ãƒ³ã‚½ãƒ¼ãƒ«åŠã³Webã‚µãƒ¼ãƒ“ã‚¹ã‚’æä¾›ã™ã‚‹ã€‚<br>
+ * ã“ã®ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã«ã¯ã€ä»¥ä¸‹ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒã‚ã‚‹ã€‚<br>
  * <table border="1" width="90%">
- *     <tr bgcolor="#cccccc"><th>#</th><th>ƒpƒ‰ƒ[ƒ^–¼</th><th>’l‚Ìà–¾</th><th>ƒfƒtƒHƒ‹ƒg</th></tr>
- *     <tr><td>1</td><td>ServicePaths</td><td>ƒ[ƒh‚·‚éƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğƒJƒ“ƒ}‹æØ‚è‚Åw’è‚·‚éB<br>ƒpƒX‚ÍAâ‘ÎƒpƒXA‘Š‘ÎƒpƒXAƒNƒ‰ƒXƒpƒX‚ªw’è‚Å‚«‚éB<br>‚±‚±‚Åw’è‚³‚ê‚½ƒT[ƒrƒX’è‹`‚ÍAƒT[ƒuƒŒƒbƒg‚Ì‰Šú‰»‚Éw’è‚³‚ê‚½‡”Ô‚Éƒ[ƒh‚³‚êAƒT[ƒuƒŒƒbƒg‚Ì”jŠü‚Éw’è‚³‚ê‚½‡‚Æ‹t‡‚ÅƒAƒ“ƒ[ƒh‚³‚ê‚éB</td><td></td></tr>
- *     <tr><td>2</td><td>CheckLoadManagerCompleted</td><td>ƒT[ƒrƒX’è‹`‚Ìƒ[ƒhŠ®—¹ƒ`ƒFƒbƒN‚ğs‚¤‚©‚Ç‚¤‚©‚ğw’è‚·‚éB<br>ƒ`ƒFƒbƒN‚ğs‚¤ê‡‚ÍAtrue‚ğw’è‚·‚éB</td><td>false</td></tr>
- *     <tr><td>3</td><td>CheckLoadManagerCompletedBy</td><td>ƒT[ƒrƒX’è‹`‚Ìƒ[ƒhŠ®—¹ƒ`ƒFƒbƒN‚ğServiceManager’PˆÊ‚Ås‚¢‚½‚¢ê‡‚ÉAServiceManager‚Ì–¼‘O‚ğw’è‚·‚éB<br>‰Šú‰»ƒpƒ‰ƒ[ƒ^CheckLoadManagerCompleted‚ªtrue‚Ìê‡‚¾‚¯A—LŒø‚Å‚ ‚éB</td><td></td></tr>
- *     <tr><td>4</td><td>Validate</td><td>ƒT[ƒrƒX’è‹`‚ÌŒŸØ‚ğs‚¤‚©‚Ç‚¤‚©‚ğw’è‚·‚éB<br>ŒŸØ‚ğs‚¤ê‡‚ÍAtrue‚ğw’è‚·‚éB</td><td>false</td></tr>
- *     <tr><td>5</td><td>ConsoleEnabled</td><td>‚±‚ÌƒT[ƒuƒŒƒbƒg‚ª’ñ‹Ÿ‚·‚éŠÇ—ƒRƒ“ƒ\[ƒ‹‹y‚ÑWebƒT[ƒrƒX‚ğ—LŒø‚É‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚éB<br>—LŒø‚É‚·‚éê‡‚ÍAtrue‚ğw’è‚·‚éB</td><td>false</td></tr>
- *     <tr><td>6</td><td>AttributeSetEnabled</td><td>‚±‚ÌƒT[ƒuƒŒƒbƒg‚ª’ñ‹Ÿ‚·‚éŠÇ—ƒRƒ“ƒ\[ƒ‹‹y‚ÑWebƒT[ƒrƒX‚ÅAƒT[ƒrƒX‚Ì‘®«‚ğ•ÏX‚·‚é‹@”\‚ğ—LŒø‚É‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚éB<br>—LŒø‚É‚·‚éê‡‚ÍAtrue‚ğw’è‚·‚éB</td><td>false</td></tr>
- *     <tr><td>7</td><td>AttributeMaxLength</td><td>‚±‚ÌƒT[ƒuƒŒƒbƒg‚ª’ñ‹Ÿ‚·‚éŠÇ—ƒRƒ“ƒ\[ƒ‹‚ÅAƒT[ƒrƒX‚Ì‘®«‚ğ•\¦‚·‚éê‡‚É•\¦‚·‚é‘®«’l‚ÌÅ‘å’·‚ğw’è‚·‚éB</td><td>§ŒÀ‚È‚µ</td></tr>
- *     <tr><td>8</td><td>MethodCallEnabled</td><td>‚±‚ÌƒT[ƒuƒŒƒbƒg‚ª’ñ‹Ÿ‚·‚éŠÇ—ƒRƒ“ƒ\[ƒ‹‹y‚ÑWebƒT[ƒrƒX‚ÅAƒT[ƒrƒX‚Ì‘€ì‚ğÀs‚·‚é‹@”\‚ğ—LŒø‚É‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚éB<br>—LŒø‚É‚·‚éê‡‚ÍAtrue‚ğw’è‚·‚éB</td><td>false</td></tr>
- *     <tr><td>9</td><td>IgnoreMethods</td><td>‚±‚ÌƒT[ƒuƒŒƒbƒg‚ª’ñ‹Ÿ‚·‚éŠÇ—ƒRƒ“ƒ\[ƒ‹‹y‚ÑWebƒT[ƒrƒX‚ÅA–³Œø‚É‚µ‚½‚¢ƒT[ƒrƒX‚Ìƒƒ\ƒbƒh‚ğw’è‚·‚éB</td><td>false</td></tr>
- *     <tr><td>10</td><td>JSONConverterServiceName</td><td>JSONŒ`®‚Å‚Ì‰“š‚ğ—v‹‚·‚éê‡‚Ég—p‚·‚é{@link BeanJSONConverter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğw’è‚·‚éB</td><td>w’è‚µ‚È‚¢ê‡‚ÍA“à•”¶¬‚³‚ê‚éB</td></tr>
- *     <tr><td>11</td><td>UnicodeEscape</td><td>JSONŒ`®‚Å‚Ì‰“š‚ğ—v‹‚·‚éê‡‚ÉA‚QƒoƒCƒg•¶š‚ğƒ†ƒjƒR[ƒhƒGƒXƒP[ƒv‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚éB</td><td>true</td></tr>
+ *     <tr bgcolor="#cccccc"><th>#</th><th>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å</th><th>å€¤ã®èª¬æ˜</th><th>ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ</th></tr>
+ *     <tr><td>1</td><td>ServicePaths</td><td>ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šã§æŒ‡å®šã™ã‚‹ã€‚<br>ãƒ‘ã‚¹ã¯ã€çµ¶å¯¾ãƒ‘ã‚¹ã€ç›¸å¯¾ãƒ‘ã‚¹ã€ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ãŒæŒ‡å®šã§ãã‚‹ã€‚<br>ã“ã“ã§æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã¯ã€ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã®åˆæœŸåŒ–æ™‚ã«æŒ‡å®šã•ã‚ŒãŸé †ç•ªã«ãƒ­ãƒ¼ãƒ‰ã•ã‚Œã€ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã®ç ´æ£„æ™‚ã«æŒ‡å®šã•ã‚ŒãŸé †ã¨é€†é †ã§ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰ã•ã‚Œã‚‹ã€‚</td><td></td></tr>
+ *     <tr><td>2</td><td>CheckLoadManagerCompleted</td><td>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®ãƒ­ãƒ¼ãƒ‰å®Œäº†ãƒã‚§ãƒƒã‚¯ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚<br>ãƒã‚§ãƒƒã‚¯ã‚’è¡Œã†å ´åˆã¯ã€trueã‚’æŒ‡å®šã™ã‚‹ã€‚</td><td>false</td></tr>
+ *     <tr><td>3</td><td>CheckLoadManagerCompletedBy</td><td>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®ãƒ­ãƒ¼ãƒ‰å®Œäº†ãƒã‚§ãƒƒã‚¯ã‚’ServiceManagerå˜ä½ã§è¡Œã„ãŸã„å ´åˆã«ã€ServiceManagerã®åå‰ã‚’æŒ‡å®šã™ã‚‹ã€‚<br>åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿CheckLoadManagerCompletedãŒtrueã®å ´åˆã ã‘ã€æœ‰åŠ¹ã§ã‚ã‚‹ã€‚</td><td></td></tr>
+ *     <tr><td>4</td><td>Validate</td><td>ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®æ¤œè¨¼ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚<br>æ¤œè¨¼ã‚’è¡Œã†å ´åˆã¯ã€trueã‚’æŒ‡å®šã™ã‚‹ã€‚</td><td>false</td></tr>
+ *     <tr><td>5</td><td>ConsoleEnabled</td><td>ã“ã®ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãŒæä¾›ã™ã‚‹ç®¡ç†ã‚³ãƒ³ã‚½ãƒ¼ãƒ«åŠã³Webã‚µãƒ¼ãƒ“ã‚¹ã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚<br>æœ‰åŠ¹ã«ã™ã‚‹å ´åˆã¯ã€trueã‚’æŒ‡å®šã™ã‚‹ã€‚</td><td>false</td></tr>
+ *     <tr><td>6</td><td>AttributeSetEnabled</td><td>ã“ã®ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãŒæä¾›ã™ã‚‹ç®¡ç†ã‚³ãƒ³ã‚½ãƒ¼ãƒ«åŠã³Webã‚µãƒ¼ãƒ“ã‚¹ã§ã€ã‚µãƒ¼ãƒ“ã‚¹ã®å±æ€§ã‚’å¤‰æ›´ã™ã‚‹æ©Ÿèƒ½ã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚<br>æœ‰åŠ¹ã«ã™ã‚‹å ´åˆã¯ã€trueã‚’æŒ‡å®šã™ã‚‹ã€‚</td><td>false</td></tr>
+ *     <tr><td>7</td><td>AttributeMaxLength</td><td>ã“ã®ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãŒæä¾›ã™ã‚‹ç®¡ç†ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã§ã€ã‚µãƒ¼ãƒ“ã‚¹ã®å±æ€§ã‚’è¡¨ç¤ºã™ã‚‹å ´åˆã«è¡¨ç¤ºã™ã‚‹å±æ€§å€¤ã®æœ€å¤§é•·ã‚’æŒ‡å®šã™ã‚‹ã€‚</td><td>åˆ¶é™ãªã—</td></tr>
+ *     <tr><td>8</td><td>MethodCallEnabled</td><td>ã“ã®ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãŒæä¾›ã™ã‚‹ç®¡ç†ã‚³ãƒ³ã‚½ãƒ¼ãƒ«åŠã³Webã‚µãƒ¼ãƒ“ã‚¹ã§ã€ã‚µãƒ¼ãƒ“ã‚¹ã®æ“ä½œã‚’å®Ÿè¡Œã™ã‚‹æ©Ÿèƒ½ã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚<br>æœ‰åŠ¹ã«ã™ã‚‹å ´åˆã¯ã€trueã‚’æŒ‡å®šã™ã‚‹ã€‚</td><td>false</td></tr>
+ *     <tr><td>9</td><td>IgnoreMethods</td><td>ã“ã®ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆãŒæä¾›ã™ã‚‹ç®¡ç†ã‚³ãƒ³ã‚½ãƒ¼ãƒ«åŠã³Webã‚µãƒ¼ãƒ“ã‚¹ã§ã€ç„¡åŠ¹ã«ã—ãŸã„ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’æŒ‡å®šã™ã‚‹ã€‚</td><td>false</td></tr>
+ *     <tr><td>10</td><td>JSONConverterServiceName</td><td>JSONå½¢å¼ã§ã®å¿œç­”ã‚’è¦æ±‚ã™ã‚‹å ´åˆã«ä½¿ç”¨ã™ã‚‹{@link BeanJSONConverter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’æŒ‡å®šã™ã‚‹ã€‚</td><td>æŒ‡å®šã—ãªã„å ´åˆã¯ã€å†…éƒ¨ç”Ÿæˆã•ã‚Œã‚‹ã€‚</td></tr>
+ *     <tr><td>11</td><td>UnicodeEscape</td><td>JSONå½¢å¼ã§ã®å¿œç­”ã‚’è¦æ±‚ã™ã‚‹å ´åˆã«ã€ï¼’ãƒã‚¤ãƒˆæ–‡å­—ã‚’ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ã€‚</td><td>true</td></tr>
  * </table>
  * <p>
- * WebƒT[ƒrƒX‚ÍAƒNƒGƒŠw’è‚Å‚ÌGETƒŠƒNƒGƒXƒg‚É‘Î‚µ‚ÄAJSON‚Åƒf[ƒ^‚ğ‰“š‚·‚éB<br>
+ * Webã‚µãƒ¼ãƒ“ã‚¹ã¯ã€ã‚¯ã‚¨ãƒªæŒ‡å®šã§ã®GETãƒªã‚¯ã‚¨ã‚¹ãƒˆã«å¯¾ã—ã¦ã€JSONã§ãƒ‡ãƒ¼ã‚¿ã‚’å¿œç­”ã™ã‚‹ã€‚<br>
  * <table border="1" width="90%">
- *     <tr bgcolor="#cccccc"><th rowspan="2">#</th><th rowspan="2">ƒAƒNƒVƒ‡ƒ“</th><th colspan="2">ƒNƒGƒŠƒpƒ‰ƒ[ƒ^</th><th rowspan="2">‰“šJSON‚Ì—á</th></tr>
- *     <tr bgcolor="#cccccc"><th>ƒpƒ‰ƒ[ƒ^–¼</th><th>’l</th></tr>
- *     <tr><td>1</td><td><nobr>ƒT[ƒrƒXƒ}ƒl[ƒWƒƒ[–¼‚Ìˆê——æ“¾</nobr></td><td>responseType</td><td>json</td><td><code>["Manager1","Manager2"]</code></td></tr>
- *     <tr><td rowspan="3">2</td><td rowspan="3"><nobr>ƒT[ƒrƒX–¼‚Ìˆê——æ“¾</nobr></td><td>responseType</td><td>json</td><td rowspan="3"><code>["Manager1%23Service1","Manager1%23Service2"]</code></td></tr>
+ *     <tr bgcolor="#cccccc"><th rowspan="2">#</th><th rowspan="2">ã‚¢ã‚¯ã‚·ãƒ§ãƒ³</th><th colspan="2">ã‚¯ã‚¨ãƒªãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿</th><th rowspan="2">å¿œç­”JSONã®ä¾‹</th></tr>
+ *     <tr bgcolor="#cccccc"><th>ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å</th><th>å€¤</th></tr>
+ *     <tr><td>1</td><td><nobr>ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼åã®ä¸€è¦§å–å¾—</nobr></td><td>responseType</td><td>json</td><td><code>["Manager1","Manager2"]</code></td></tr>
+ *     <tr><td rowspan="3">2</td><td rowspan="3"><nobr>ã‚µãƒ¼ãƒ“ã‚¹åã®ä¸€è¦§å–å¾—</nobr></td><td>responseType</td><td>json</td><td rowspan="3"><code>["Manager1%23Service1","Manager1%23Service2"]</code></td></tr>
  *     <tr><td>action</td><td>manager</td></tr>
- *     <tr><td>name</td><td>i‚è‚İ‘ÎÛ‚ÌƒT[ƒrƒXƒ}ƒl[ƒWƒƒ[–¼Bw’è‚µ‚È‚¢ê‡‚ÍA‘S‚Ä‚ÌƒT[ƒrƒXƒ}ƒl[ƒWƒƒ‚ª‘ÎÛ‚Æ‚È‚éB</td></tr>
- *     <tr><td rowspan="4">3</td><td rowspan="4"><nobr>ƒT[ƒrƒX‚Ì‘®«‹y‚Ñ‘€ì‚Ìˆê——æ“¾</nobr></td><td>responseType</td><td>json</td><td rowspan="4">
+ *     <tr><td>name</td><td>çµã‚Šè¾¼ã¿å¯¾è±¡ã®ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼åã€‚æŒ‡å®šã—ãªã„å ´åˆã¯ã€å…¨ã¦ã®ã‚µãƒ¼ãƒ“ã‚¹ãƒãƒãƒ¼ã‚¸ãƒ£ãŒå¯¾è±¡ã¨ãªã‚‹ã€‚</td></tr>
+ *     <tr><td rowspan="4">3</td><td rowspan="4"><nobr>ã‚µãƒ¼ãƒ“ã‚¹ã®å±æ€§åŠã³æ“ä½œã®ä¸€è¦§å–å¾—</nobr></td><td>responseType</td><td>json</td><td rowspan="4">
  *     <code><pre>
  *{
  *    "className":"sample.service.POJOService",
@@ -90,26 +90,26 @@ import jp.ossc.nimbus.util.converter.*;
  *}
  *     </pre></code></td></tr>
  *     <tr><td>action</td><td>service</td></tr>
- *     <tr><td>name</td><td>ƒT[ƒrƒX–¼</td></tr>
- *     <tr><td>getAttribute</td><td>‘®«‚Ì’l‚ğæ“¾‚µ‚ÄŒ‹‰Ê‚ÉŠÜ‚ß‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOBw’è‚µ‚È‚¢ê‡A’l‚Íæ“¾‚µ‚È‚¢B</td></tr>
- *     <tr><td rowspan="4">4</td><td rowspan="4"><nobr>ƒT[ƒrƒX‚Ì‘®«’læ“¾</nobr></td><td>responseType</td><td>json</td><td rowspan="4"><code>{"value":null}</code></td></tr>
+ *     <tr><td>name</td><td>ã‚µãƒ¼ãƒ“ã‚¹å</td></tr>
+ *     <tr><td>getAttribute</td><td>å±æ€§ã®å€¤ã‚’å–å¾—ã—ã¦çµæœã«å«ã‚ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚æŒ‡å®šã—ãªã„å ´åˆã€å€¤ã¯å–å¾—ã—ãªã„ã€‚</td></tr>
+ *     <tr><td rowspan="4">4</td><td rowspan="4"><nobr>ã‚µãƒ¼ãƒ“ã‚¹ã®å±æ€§å€¤å–å¾—</nobr></td><td>responseType</td><td>json</td><td rowspan="4"><code>{"value":null}</code></td></tr>
  *     <tr><td>action</td><td>get</td></tr>
- *     <tr><td>name</td><td>ƒT[ƒrƒX–¼</td></tr>
- *     <tr><td>attribute</td><td>‘®«–¼</td></tr>
- *     <tr><td rowspan="5">5</td><td rowspan="5"><nobr>ƒT[ƒrƒX‚Ì‘®«’lİ’è</nobr></td><td>responseType</td><td>json</td><td rowspan="5"><code>{"result":"Success!!"}</code></td></tr>
+ *     <tr><td>name</td><td>ã‚µãƒ¼ãƒ“ã‚¹å</td></tr>
+ *     <tr><td>attribute</td><td>å±æ€§å</td></tr>
+ *     <tr><td rowspan="5">5</td><td rowspan="5"><nobr>ã‚µãƒ¼ãƒ“ã‚¹ã®å±æ€§å€¤è¨­å®š</nobr></td><td>responseType</td><td>json</td><td rowspan="5"><code>{"result":"Success!!"}</code></td></tr>
  *     <tr><td>action</td><td>set</td></tr>
- *     <tr><td>name</td><td>ƒT[ƒrƒX–¼</td></tr>
- *     <tr><td>attribute</td><td>‘®«–¼</td></tr>
- *     <tr><td>value</td><td>‘®«’l</td></tr>
- *     <tr><td rowspan="6">6</td><td rowspan="6"><nobr>ƒT[ƒrƒX‚Ì‘€ìÀs</nobr></td><td>responseType</td><td>json</td><td rowspan="6"><code>{"result":"Success!!","return":"hoge"}</code></td></tr>
+ *     <tr><td>name</td><td>ã‚µãƒ¼ãƒ“ã‚¹å</td></tr>
+ *     <tr><td>attribute</td><td>å±æ€§å</td></tr>
+ *     <tr><td>value</td><td>å±æ€§å€¤</td></tr>
+ *     <tr><td rowspan="6">6</td><td rowspan="6"><nobr>ã‚µãƒ¼ãƒ“ã‚¹ã®æ“ä½œå®Ÿè¡Œ</nobr></td><td>responseType</td><td>json</td><td rowspan="6"><code>{"result":"Success!!","return":"hoge"}</code></td></tr>
  *     <tr><td>action</td><td>call</td></tr>
- *     <tr><td>name</td><td>ƒT[ƒrƒX–¼</td></tr>
- *     <tr><td>method</td><td>ƒƒ\ƒbƒh‚ÌƒVƒOƒjƒ`ƒƒBƒƒ\ƒbƒh–¼(ˆø”‚ÌŒ^,ˆø”‚ÌŒ^,...)</td></tr>
- *     <tr><td>args</td><td>ˆø”‚Ì’lBˆø”‚ª•¡”‘¶İ‚·‚éê‡‚ÍA‚±‚Ìƒpƒ‰ƒ[ƒ^‚ğˆø”‚Ì‡”Ô’Ê‚è‚É•¡”w’è‚·‚éB</td></tr>
- *     <tr><td>argTypes</td><td>args‚Åw’è‚µ‚½ˆø”‚Ì’l‚ğ¦‚·•¶š—ñ‚ğAˆø”‚ÌŒ^‚ÉƒLƒƒƒXƒg‰Â”\‚ÈƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚éPropertyEditor‚ÌŒ^‚ğw’è‚·‚éB‹ó•¶š‚âw’è‚µ‚È‚¢ê‡‚ÍAˆø”‚ÌŒ^‚É‡‚¤PropertyEditor‚Å•ÏŠ·‚·‚éB</td></tr>
+ *     <tr><td>name</td><td>ã‚µãƒ¼ãƒ“ã‚¹å</td></tr>
+ *     <tr><td>method</td><td>ãƒ¡ã‚½ãƒƒãƒ‰ã®ã‚·ã‚°ãƒ‹ãƒãƒ£ã€‚ãƒ¡ã‚½ãƒƒãƒ‰å(å¼•æ•°ã®å‹,å¼•æ•°ã®å‹,...)</td></tr>
+ *     <tr><td>args</td><td>å¼•æ•°ã®å€¤ã€‚å¼•æ•°ãŒè¤‡æ•°å­˜åœ¨ã™ã‚‹å ´åˆã¯ã€ã“ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’å¼•æ•°ã®é †ç•ªé€šã‚Šã«è¤‡æ•°æŒ‡å®šã™ã‚‹ã€‚</td></tr>
+ *     <tr><td>argTypes</td><td>argsã§æŒ‡å®šã—ãŸå¼•æ•°ã®å€¤ã‚’ç¤ºã™æ–‡å­—åˆ—ã‚’ã€å¼•æ•°ã®å‹ã«ã‚­ãƒ£ã‚¹ãƒˆå¯èƒ½ãªã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹PropertyEditorã®å‹ã‚’æŒ‡å®šã™ã‚‹ã€‚ç©ºæ–‡å­—ã‚„æŒ‡å®šã—ãªã„å ´åˆã¯ã€å¼•æ•°ã®å‹ã«åˆã†PropertyEditorã§å¤‰æ›ã™ã‚‹ã€‚</td></tr>
  * </table>
  * <p>
- * ˆÈ‰º‚ÉAƒT[ƒuƒŒƒbƒg‚Ìweb.xml’è‹`—á‚ğ¦‚·B<br>
+ * ä»¥ä¸‹ã«ã€ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã®web.xmlå®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;servlet&gt;
  *     &lt;servlet-name&gt;NimbusServlet&lt;/servlet-name&gt;
@@ -142,57 +142,57 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
     private static final long serialVersionUID = 5668270241695101050L;
     
     /**
-     * ƒ[ƒh‚·‚éƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ğw’è‚·‚é‚½‚ß‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected static final String INIT_PARAM_NAME_SERVICE_PATHS = "ServicePaths";
     
     /**
-     * ƒT[ƒrƒX’è‹`ƒ[ƒhŠ®—¹ƒ`ƒFƒbƒN‚ğs‚¤‚©‚Ç‚¤‚©‚ğw’è‚·‚é‚½‚ß‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ­ãƒ¼ãƒ‰å®Œäº†ãƒã‚§ãƒƒã‚¯ã‚’è¡Œã†ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected static final String INIT_PARAM_NAME_CHECK_LOAD_MNG_CMP = "CheckLoadManagerCompleted";
     
     /**
-     * ƒT[ƒrƒX’è‹`ƒ[ƒhŠ®—¹ƒ`ƒFƒbƒN‚ğServiceManager’PˆÊ‚Ås‚¤ê‡‚ÌServiceManager–¼‚ğw’è‚·‚é‚½‚ß‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ­ãƒ¼ãƒ‰å®Œäº†ãƒã‚§ãƒƒã‚¯ã‚’ServiceManagerå˜ä½ã§è¡Œã†å ´åˆã®ServiceManageråã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected static final String INIT_PARAM_NAME_CHECK_LOAD_MNG_CMP_BY = "CheckLoadManagerCompletedBy";
     
     /**
-     * ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ğŒŸØ‚·‚é‚©‚Ç‚¤‚©‚½‚ß‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ¤œè¨¼ã™ã‚‹ã‹ã©ã†ã‹ãŸã‚ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected static final String INIT_PARAM_NAME_VALIDATE = "Validate";
     
     /**
-     * ŠÇ—ƒRƒ“ƒ\[ƒ‹‚ğ—LŒø‚É‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚é‚½‚ß‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * ç®¡ç†ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected static final String INIT_PARAM_NAME_CONSOLE_ENABLED = "ConsoleEnabled";
     
     /**
-     * ŠÇ—ƒRƒ“ƒ\[ƒ‹‚©‚ç‚Ì‘®«İ’è‚ğ—LŒø‚É‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚é‚½‚ß‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * ç®¡ç†ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã‹ã‚‰ã®å±æ€§è¨­å®šã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected static final String INIT_PARAM_NAME_ATTR_SET_ENABLED = "AttributeSetEnabled";
     
     /**
-     * ŠÇ—ƒRƒ“ƒ\[ƒ‹‚É‘®«‚Ì’l‚ğ•\¦‚·‚éÛ‚Ì•\¦Å‘å’·‚ğw’è‚·‚é‚½‚ß‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * ç®¡ç†ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã«å±æ€§ã®å€¤ã‚’è¡¨ç¤ºã™ã‚‹éš›ã®è¡¨ç¤ºæœ€å¤§é•·ã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected static final String INIT_PARAM_NAME_ATTR_MAX_LENGTH = "AttributeMaxLength";
     
     /**
-     * ŠÇ—ƒRƒ“ƒ\[ƒ‹‚©‚ç‚Ìƒƒ\ƒbƒhŒÄ‚Ño‚µ‚ğ—LŒø‚É‚·‚é‚©‚Ç‚¤‚©‚ğw’è‚·‚é‚½‚ß‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * ç®¡ç†ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã‹ã‚‰ã®ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã‚’æœ‰åŠ¹ã«ã™ã‚‹ã‹ã©ã†ã‹ã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected static final String INIT_PARAM_NAME_METHOD_CALL_ENABLED = "MethodCallEnabled";
     
     /**
-     * –³‹‚·‚éƒƒ\ƒbƒh‚ÌƒVƒOƒjƒ`ƒƒ”z—ñ‚ğw’è‚·‚é‚½‚ß‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * ç„¡è¦–ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã®ã‚·ã‚°ãƒ‹ãƒãƒ£é…åˆ—ã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected static final String INIT_PARAM_NAME_IGNORE_METHODS = "IgnoreMethods";
     
     /**
-     * JSONƒRƒ“ƒo[ƒ^‚ÌƒT[ƒrƒX–¼‚ğw’è‚·‚é‚½‚ß‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * JSONã‚³ãƒ³ãƒãƒ¼ã‚¿ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected static final String INIT_PARAM_NAME_JSON_CONVERTER_SERVICE_NAME = "JSONConverterServiceName";
     
     /**
-     * JSON‰“š‚É‚QƒoƒCƒg•¶š‚ğƒ†ƒjƒR[ƒhƒGƒXƒP[ƒv‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒO‚ğw’è‚·‚é‚½‚ß‚Ì‰Šú‰»ƒpƒ‰ƒ[ƒ^–¼B<p>
+     * JSONå¿œç­”æ™‚ã«ï¼’ãƒã‚¤ãƒˆæ–‡å­—ã‚’ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®åˆæœŸåŒ–ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã€‚<p>
      */
     protected static final String INIT_PARAM_NAME_UNICODE_ESCAPE = "UnicodeEscape";
     
@@ -212,7 +212,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
             );
         }catch(NoClassDefFoundError e){
         }catch(NoSuchMethodException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             e.printStackTrace();
         }
         try{
@@ -223,7 +223,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
             );
         }catch(NoClassDefFoundError e){
         }catch(NoSuchMethodException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             e.printStackTrace();
         }
         try{
@@ -234,7 +234,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
             );
         }catch(NoClassDefFoundError e){
         }catch(NoSuchMethodException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             e.printStackTrace();
         }
         try{
@@ -245,7 +245,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
             );
         }catch(NoClassDefFoundError e){
         }catch(NoSuchMethodException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             e.printStackTrace();
         }
         try{
@@ -257,7 +257,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
             );
         }catch(NoClassDefFoundError e){
         }catch(NoSuchMethodException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             e.printStackTrace();
         }
         try{
@@ -268,7 +268,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
             );
         }catch(NoClassDefFoundError e){
         }catch(NoSuchMethodException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             e.printStackTrace();
         }
         try{
@@ -279,7 +279,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
             );
         }catch(NoClassDefFoundError e){
         }catch(NoSuchMethodException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             e.printStackTrace();
         }
         try{
@@ -290,7 +290,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
             );
         }catch(NoClassDefFoundError e){
         }catch(NoSuchMethodException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             e.printStackTrace();
         }
         try{
@@ -301,7 +301,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
             );
         }catch(NoClassDefFoundError e){
         }catch(NoSuchMethodException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             e.printStackTrace();
         }
         try{
@@ -312,7 +312,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
             );
         }catch(NoClassDefFoundError e){
         }catch(NoSuchMethodException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             e.printStackTrace();
         }
         try{
@@ -321,7 +321,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
             );
         }catch(NoClassDefFoundError e){
         }catch(NoSuchMethodException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             e.printStackTrace();
         }
         try{
@@ -335,7 +335,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
             );
         }catch(NoClassDefFoundError e){
         }catch(NoSuchMethodException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             e.printStackTrace();
         }
         try{
@@ -351,7 +351,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
             );
         }catch(NoClassDefFoundError e){
         }catch(NoSuchMethodException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             e.printStackTrace();
         }
         try{
@@ -365,7 +365,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
             );
         }catch(NoClassDefFoundError e){
         }catch(NoSuchMethodException e){
-            // ‹N‚±‚ç‚È‚¢‚Í‚¸
+            // èµ·ã“ã‚‰ãªã„ã¯ãš
             e.printStackTrace();
         }
         if(methods.size() != 0){
@@ -380,10 +380,10 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
     private StringStreamConverter toStringConverter;
     
     /**
-     * ƒT[ƒuƒŒƒbƒg‚Ì‰Šú‰»‚ğs‚¤B<p>
-     * ƒT[ƒrƒX’è‹`‚Ìƒ[ƒh‹y‚Ñƒ[ƒhŠ®—¹ƒ`ƒFƒbƒN‚ğs‚¤B
+     * ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã®åˆæœŸåŒ–ã‚’è¡Œã†ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®ãƒ­ãƒ¼ãƒ‰åŠã³ãƒ­ãƒ¼ãƒ‰å®Œäº†ãƒã‚§ãƒƒã‚¯ã‚’è¡Œã†ã€‚
      *
-     * @exception ServletException ƒT[ƒuƒŒƒbƒg‚Ì‰Šú‰»‚É¸”s‚µ‚½ê‡
+     * @exception ServletException ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã®åˆæœŸåŒ–ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public synchronized void init() throws ServletException{
         ServiceName jsonConverterServiceName = getJSONConverterServiceName();
@@ -554,10 +554,10 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
     }
     
     /**
-     * POSTƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * POSTãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      * @exception ServletException 
      * @exception IOException 
      */
@@ -569,10 +569,10 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
     }
     
     /**
-     * GETƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * GETãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      * @exception ServletException 
      * @exception IOException 
      */
@@ -584,11 +584,11 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
     }
     
     /**
-     * ƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
-     * ŠÇ—ƒRƒ“ƒ\[ƒ‹ˆ—‚ğs‚¤B
+     * ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ç®¡ç†ã‚³ãƒ³ã‚½ãƒ¼ãƒ«å‡¦ç†ã‚’è¡Œã†ã€‚
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
      * @exception ServletException 
      * @exception IOException 
      */
@@ -631,11 +631,11 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
     }
     
     /**
-     * ŠÇ—ƒRƒ“ƒ\[ƒ‹‚Ìƒgƒbƒv‰æ–ÊƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * ç®¡ç†ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã®ãƒˆãƒƒãƒ—ç”»é¢ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
-     * @param responseType ƒŒƒXƒ|ƒ“ƒXí•Ê
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @param responseType ãƒ¬ã‚¹ãƒãƒ³ã‚¹ç¨®åˆ¥
      * @exception ServletException 
      * @exception IOException 
      */
@@ -720,11 +720,11 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
     }
     
     /**
-     * ŠÇ—ƒRƒ“ƒ\[ƒ‹‚ÌServiceManager‰æ–ÊƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * ç®¡ç†ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã®ServiceManagerç”»é¢ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
-     * @param responseType ƒŒƒXƒ|ƒ“ƒXí•Ê
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @param responseType ãƒ¬ã‚¹ãƒãƒ³ã‚¹ç¨®åˆ¥
      * @exception ServletException 
      * @exception IOException 
      */
@@ -839,11 +839,11 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
     }
     
     /**
-     * ŠÇ—ƒRƒ“ƒ\[ƒ‹‚ÌService‰æ–ÊƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * ç®¡ç†ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã®Serviceç”»é¢ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
-     * @param responseType ƒŒƒXƒ|ƒ“ƒXí•Ê
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @param responseType ãƒ¬ã‚¹ãƒãƒ³ã‚¹ç¨®åˆ¥
      * @exception ServletException 
      * @exception IOException 
      */
@@ -988,7 +988,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
                     || attrType.equals(ATTRIBUTE_WRITE_ONLY)){
                     buf.append("<input type=\"submit\" value=\"apply\">");
                 }else{
-                    buf.append("@");
+                    buf.append("ã€€");
                 }
                 buf.append("</td>");
                 buf.append("</tr>");
@@ -1016,7 +1016,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
                 final Class[] paramTypes
                      = ((Method)methodMap.get(sigs[i])).getParameterTypes();
                 if(paramTypes.length == 0){
-                    buf.append("@");
+                    buf.append("ã€€");
                 }else{
                     for(int j = 0, max = paramTypes.length; j < max; j++){
                         buf.append("<textarea name=\"args\" cols=\"40\" rows=\"2\"></textarea>");
@@ -1028,7 +1028,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
                 buf.append("</td>");
                 buf.append("<td>");
                 if(paramTypes.length == 0){
-                    buf.append("@");
+                    buf.append("ã€€");
                 }else{
                     for(int j = 0, max = paramTypes.length; j < max; j++){
                         buf.append("<input type=\"text\" name=\"argTypes\">");
@@ -1059,11 +1059,11 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
     }
     
     /**
-     * ŠÇ—ƒRƒ“ƒ\[ƒ‹‚ÌƒT[ƒrƒX‘®«æ“¾ƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * ç®¡ç†ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã®ã‚µãƒ¼ãƒ“ã‚¹å±æ€§å–å¾—ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
-     * @param responseType ƒŒƒXƒ|ƒ“ƒXí•Ê
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @param responseType ãƒ¬ã‚¹ãƒãƒ³ã‚¹ç¨®åˆ¥
      * @exception ServletException 
      * @exception IOException 
      */
@@ -1114,11 +1114,11 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
         resp.getWriter().println(buf.toString());
     }
     /**
-     * ŠÇ—ƒRƒ“ƒ\[ƒ‹‚ÌƒT[ƒrƒX‘®«İ’èƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * ç®¡ç†ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã®ã‚µãƒ¼ãƒ“ã‚¹å±æ€§è¨­å®šãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
-     * @param responseType ƒŒƒXƒ|ƒ“ƒXí•Ê
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @param responseType ãƒ¬ã‚¹ãƒãƒ³ã‚¹ç¨®åˆ¥
      * @exception ServletException 
      * @exception IOException 
      */
@@ -1229,11 +1229,11 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
     }
     
     /**
-     * ŠÇ—ƒRƒ“ƒ\[ƒ‹‚ÌƒT[ƒrƒXƒƒ\ƒbƒhŒÄ‚Ño‚µƒŠƒNƒGƒXƒgˆ—‚ğs‚¤B<p>
+     * ç®¡ç†ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã®ã‚µãƒ¼ãƒ“ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @param req HTTPƒŠƒNƒGƒXƒg
-     * @param resp HTTPƒŒƒXƒ|ƒ“ƒX
-     * @param responseType ƒŒƒXƒ|ƒ“ƒXí•Ê
+     * @param req HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆ
+     * @param resp HTTPãƒ¬ã‚¹ãƒãƒ³ã‚¹
+     * @param responseType ãƒ¬ã‚¹ãƒãƒ³ã‚¹ç¨®åˆ¥
      * @exception ServletException 
      * @exception IOException 
      */
@@ -1672,8 +1672,8 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
     }
     
     /**
-     * ƒT[ƒuƒŒƒbƒg‚Ì”jŠüˆ—‚ğs‚¤B<p>
-     * ƒT[ƒrƒX’è‹`‚ÌƒAƒ“ƒ[ƒh‚ğs‚¤B<br>
+     * ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã®ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰ã‚’è¡Œã†ã€‚<br>
      */
     public void destroy(){
         final String[] servicePaths = getServicePaths();

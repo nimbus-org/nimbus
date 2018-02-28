@@ -34,84 +34,84 @@ package jp.ossc.nimbus.service.scheduler;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link IOCCallScheduleTaskService}ƒT[ƒrƒX‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link IOCCallScheduleTaskService}ã‚µãƒ¼ãƒ“ã‚¹ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
 public interface IOCCallScheduleTaskServiceMBean extends ServiceBaseMBean{
     
     /**
-     * IOCŒÄ‚Ño‚µí•ÊƒL[ “¯ŠúˆêŠ‡B<p>
+     * IOCå‘¼ã³å‡ºã—ç¨®åˆ¥ã‚­ãƒ¼ åŒæœŸä¸€æ‹¬ã€‚<p>
      */
     public static final String IOC_CALL_TYPE_SYNCH = "Synch";
     
     /**
-     * IOCŒÄ‚Ño‚µí•ÊƒL[ “¯Šú•À—ñB<p>
+     * IOCå‘¼ã³å‡ºã—ç¨®åˆ¥ã‚­ãƒ¼ åŒæœŸä¸¦åˆ—ã€‚<p>
      */
     public static final String IOC_CALL_TYPE_SYNCH_PARALLEL = "SynchParallel";
     
     /**
-     * IOCŒÄ‚Ño‚µí•ÊƒL[ “¯Šú’¼—ñB<p>
+     * IOCå‘¼ã³å‡ºã—ç¨®åˆ¥ã‚­ãƒ¼ åŒæœŸç›´åˆ—ã€‚<p>
      */
     public static final String IOC_CALL_TYPE_SYNCH_SEQUENCE = "SynchSequence";
     
     /**
-     * IOCŒÄ‚Ño‚µí•ÊƒL[ ”ñ“¯ŠúˆêŠ‡B<p>
+     * IOCå‘¼ã³å‡ºã—ç¨®åˆ¥ã‚­ãƒ¼ éåŒæœŸä¸€æ‹¬ã€‚<p>
      */
     public static final String IOC_CALL_TYPE_ASYNCH = "Asynch";
     
     /**
-     * IOCŒÄ‚Ño‚µí•ÊƒL[ ”ñ“¯Šú’¼—ñB<p>
+     * IOCå‘¼ã³å‡ºã—ç¨®åˆ¥ã‚­ãƒ¼ éåŒæœŸç›´åˆ—ã€‚<p>
      */
     public static final String IOC_CALL_TYPE_ASYNCH_SEQUENCE = "AsynchSequence";
     
     /**
-     * {@link jp.ossc.nimbus.service.ioccall.FacadeCaller FacadeCaller}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.ioccall.FacadeCaller FacadeCaller}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name FacadeCallerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name FacadeCallerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setFacadeCallerServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.ioccall.FacadeCaller FacadeCaller}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.ioccall.FacadeCaller FacadeCaller}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return FacadeCallerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return FacadeCallerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getFacadeCallerServiceName();
     
     /**
-     * Às‚·‚é‹Æ–±ƒtƒ[–¼‚ğİ’è‚·‚éB<p>
+     * å®Ÿè¡Œã™ã‚‹æ¥­å‹™ãƒ•ãƒ­ãƒ¼åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param names ‹Æ–±ƒtƒ[–¼
+     * @param names æ¥­å‹™ãƒ•ãƒ­ãƒ¼å
      */
     public void setBeanFlowNames(String[] names);
     
     /**
-     * Às‚·‚é‹Æ–±ƒtƒ[–¼‚ğæ“¾‚·‚éB<p>
+     * å®Ÿè¡Œã™ã‚‹æ¥­å‹™ãƒ•ãƒ­ãƒ¼åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‹Æ–±ƒtƒ[–¼
+     * @return æ¥­å‹™ãƒ•ãƒ­ãƒ¼å
      */
     public String[] getBeanFlowNames();
     
     /**
-     * Às‚·‚é‹Æ–±ƒtƒ[‚Ö‚Ì“ü—ÍƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚éB<p>
+     * å®Ÿè¡Œã™ã‚‹æ¥­å‹™ãƒ•ãƒ­ãƒ¼ã¸ã®å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param in ‹Æ–±ƒtƒ[‚Ö‚Ì“ü—ÍƒIƒuƒWƒFƒNƒg
+     * @param in æ¥­å‹™ãƒ•ãƒ­ãƒ¼ã¸ã®å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public void setBeanFlowInputs(Object[] in);
     
     /**
-     * Às‚·‚é‹Æ–±ƒtƒ[‚Ö‚Ì“ü—ÍƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éB<p>
+     * å®Ÿè¡Œã™ã‚‹æ¥­å‹™ãƒ•ãƒ­ãƒ¼ã¸ã®å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‹Æ–±ƒtƒ[‚Ö‚Ì“ü—ÍƒIƒuƒWƒFƒNƒg
+     * @return æ¥­å‹™ãƒ•ãƒ­ãƒ¼ã¸ã®å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public Object[] getBeanFlowInputs();
     
     /**
-     * IOCŒÄ‚Ño‚µí•Ê‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍA{@link #IOC_CALL_TYPE_SYNCH}B<br>
+     * IOCå‘¼ã³å‡ºã—ç¨®åˆ¥ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€{@link #IOC_CALL_TYPE_SYNCH}ã€‚<br>
      *
-     * @param type IOCŒÄ‚Ño‚µí•ÊƒL[
+     * @param type IOCå‘¼ã³å‡ºã—ç¨®åˆ¥ã‚­ãƒ¼
      * @see #IOC_CALL_TYPE_SYNCH
      * @see #IOC_CALL_TYPE_SYNCH_PARALLEL
      * @see #IOC_CALL_TYPE_SYNCH_SEQUENCE
@@ -121,9 +121,9 @@ public interface IOCCallScheduleTaskServiceMBean extends ServiceBaseMBean{
     public void setIOCCallType(String type);
     
     /**
-     * IOCŒÄ‚Ño‚µí•Ê‚ğæ“¾‚·‚éB<p>
+     * IOCå‘¼ã³å‡ºã—ç¨®åˆ¥ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return IOCŒÄ‚Ño‚µí•ÊƒL[
+     * @return IOCå‘¼ã³å‡ºã—ç¨®åˆ¥ã‚­ãƒ¼
      */
     public String getIOCCallType();
 }

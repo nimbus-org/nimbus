@@ -32,8 +32,8 @@
 package jp.ossc.nimbus.core;
 
 /**
- * ƒT[ƒrƒX‚ª‚İ‚Â‚©‚ç‚È‚¢–‚ğ¦‚·—áŠOB<p>
- * ƒT[ƒrƒX‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚Éthrow‚³‚ê‚Ü‚·B<br>
+ * ã‚µãƒ¼ãƒ“ã‚¹ãŒã¿ã¤ã‹ã‚‰ãªã„äº‹ã‚’ç¤ºã™ä¾‹å¤–ã€‚<p>
+ * ã‚µãƒ¼ãƒ“ã‚¹ãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã«throwã•ã‚Œã¾ã™ã€‚<br>
  *
  * @author M.Takata
  */
@@ -42,19 +42,19 @@ public class ServiceNotFoundException extends RuntimeException{
     private static final long serialVersionUID = 6536031104339439001L;
     
     /**
-     * ƒ}ƒl[ƒWƒƒ–¼B<p>
+     * ãƒãƒãƒ¼ã‚¸ãƒ£åã€‚<p>
      */
     private final String managerName;
     
     /**
-     * ƒT[ƒrƒX–¼B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹åã€‚<p>
      */
     private final String serviceName;
     
     /**
-     * Œ©‚Â‚©‚ç‚È‚©‚Á‚½ƒT[ƒrƒX–¼‚ğ‚Á‚½—áŠOƒIƒuƒWƒFƒNƒg‚ğ¶¬‚·‚éB<p>
+     * è¦‹ã¤ã‹ã‚‰ãªã‹ã£ãŸã‚µãƒ¼ãƒ“ã‚¹åã‚’æŒã£ãŸä¾‹å¤–ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param name ServiceNameƒIƒuƒWƒFƒNƒg
+     * @param name ServiceNameã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
      */
     public ServiceNotFoundException(ServiceName name){
         this(
@@ -64,10 +64,10 @@ public class ServiceNotFoundException extends RuntimeException{
     }
     
     /**
-     * Œ©‚Â‚©‚ç‚È‚©‚Á‚½ƒT[ƒrƒX–¼‚ğ‚Á‚½—áŠOƒIƒuƒWƒFƒNƒg‚ğ¶¬‚·‚éB<p>
+     * è¦‹ã¤ã‹ã‚‰ãªã‹ã£ãŸã‚µãƒ¼ãƒ“ã‚¹åã‚’æŒã£ãŸä¾‹å¤–ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param manager ƒ}ƒl[ƒWƒƒ–¼
-     * @param service ƒT[ƒrƒX–¼
+     * @param manager ãƒãƒãƒ¼ã‚¸ãƒ£å
+     * @param service ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceNotFoundException(String manager, String service){
         managerName = manager;
@@ -75,28 +75,28 @@ public class ServiceNotFoundException extends RuntimeException{
     }
     
     /**
-     * Œ©‚Â‚©‚ç‚È‚©‚Á‚½ƒT[ƒrƒX‚ª“o˜^‚³‚ê‚Ä‚¢‚é‚Æv‚í‚ê‚Ä‚¢‚½ƒ}ƒl[ƒWƒƒ–¼‚ğæ“¾‚·‚éB<p>
+     * è¦‹ã¤ã‹ã‚‰ãªã‹ã£ãŸã‚µãƒ¼ãƒ“ã‚¹ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã¨æ€ã‚ã‚Œã¦ã„ãŸãƒãƒãƒ¼ã‚¸ãƒ£åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ}ƒl[ƒWƒƒ–¼
+     * @return ãƒãƒãƒ¼ã‚¸ãƒ£å
      */
     public String getServiceManagerName(){
         return managerName;
     }
     
     /**
-     * Œ©‚Â‚©‚ç‚È‚©‚Á‚½ƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * è¦‹ã¤ã‹ã‚‰ãªã‹ã£ãŸã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒT[ƒrƒX–¼
+     * @return ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public String getServiceName(){
         return serviceName;
     }
     
     /**
-     * ƒƒbƒZ[ƒW‚ğæ“¾‚·‚éB<p>
-     * ƒƒbƒZ[ƒW‚ªAƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å–¾¦“I‚Éw’è‚³‚ê‚È‚¢ê‡‚ÍAŒ©‚Â‚©‚ç‚È‚©‚Á‚½ƒT[ƒrƒX–¼‚ğ¦‚·ƒƒbƒZ[ƒW‚ğ•Ô‚·B<br>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒã€ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§æ˜ç¤ºçš„ã«æŒ‡å®šã•ã‚Œãªã„å ´åˆã¯ã€è¦‹ã¤ã‹ã‚‰ãªã‹ã£ãŸã‚µãƒ¼ãƒ“ã‚¹åã‚’ç¤ºã™ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¿”ã™ã€‚<br>
      * 
-     * @return ƒƒbƒZ[ƒW
+     * @return ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public String getMessage(){
         return managerName + '#' + serviceName;

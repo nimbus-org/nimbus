@@ -40,23 +40,23 @@ import jp.ossc.nimbus.service.byteconvert.*;
 
 /**
  *	CommonMessageFormat
- *  Text,Bytes,Stream,Object,MapMessageFormat‚Ì
- *  ãˆÊƒNƒ‰ƒXB‹¤’Ê‚·‚éƒvƒƒpƒeƒB•”‚Ìƒp[ƒX‚â’è”’è‹`‚ğ‚±‚±‚ÉˆÚ‚µ‚½B
+ *  Text,Bytes,Stream,Object,MapMessageFormatã®
+ *  ä¸Šä½ã‚¯ãƒ©ã‚¹ã€‚å…±é€šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£éƒ¨ã®ãƒ‘ãƒ¼ã‚¹ã‚„å®šæ•°å®šç¾©ã‚’ã“ã“ã«ç§»ã—ãŸã€‚
  *	@author	y-tokuda
- *	@version	1.00 ì¬F2003/11/07| y-tokuda<BR>
- *				XVF
+ *	@version	1.00 ä½œæˆï¼š2003/11/07ï¼ y-tokuda<BR>
+ *				æ›´æ–°ï¼š
  */
 public abstract class CommonMessageFormat
 	implements MessageFormat, MessageResourceDefine {
-	//ƒƒ“ƒo•Ï”
-	/** ƒvƒƒpƒeƒB€–Ú•Û */
+	//ãƒ¡ãƒ³ãƒå¤‰æ•°
+	/** ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£é …ç›®ä¿æŒ */
 	protected ArrayList mPropertyItems = null;
-	/** ƒoƒCƒgƒRƒ“ƒo[ƒ^ */
+	/** ãƒã‚¤ãƒˆã‚³ãƒ³ãƒãƒ¼ã‚¿ */
 	protected ByteConverter mByteConverter = null;
-	/** ƒƒbƒZ[ƒWƒCƒ“ƒvƒbƒg */
+	/** ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¤ãƒ³ãƒ—ãƒƒãƒˆ */
 	protected MessageInput mMessageInput;
 	
-	//’è”’è‹`
+	//å®šæ•°å®šç¾©
 	static public final int TYPE_BYTE = 0;
 	static public final String TYPE_BYTE_STR = "Byte";
 	static public final int TYPE_UBYTE = 1;
@@ -87,7 +87,7 @@ public abstract class CommonMessageFormat
 	static public final String TYPE_OBJECT_STR = "Object";	
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	 */
 	public CommonMessageFormat(ByteConverter converter){
 		mByteConverter = converter;
@@ -95,69 +95,69 @@ public abstract class CommonMessageFormat
 	}
 	
 	/**
-	 * JMSƒƒbƒZ[ƒW‚ª•Û‚·‚éî•ñ‚ğString‰»‚·‚éB
-	 * ‰ºˆÊ‚ÌƒNƒ‰ƒX‚ÉÀ‘•‚ğ‹­§‚·‚éB
+	 * JMSãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒä¿æŒã™ã‚‹æƒ…å ±ã‚’StringåŒ–ã™ã‚‹ã€‚
+	 * ä¸‹ä½ã®ã‚¯ãƒ©ã‚¹ã«å®Ÿè£…ã‚’å¼·åˆ¶ã™ã‚‹ã€‚
 	 */
 	public abstract String marshal(Message msg);
 
 	/**
-	 * JMSƒƒbƒZ[ƒW‚ğ¶¬‚·‚éB
-	 * ‰ºˆÊ‚ÌƒNƒ‰ƒX‚ÉÀ‘•‚ğ‹­§‚·‚éB
+	 * JMSãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç”Ÿæˆã™ã‚‹ã€‚
+	 * ä¸‹ä½ã®ã‚¯ãƒ©ã‚¹ã«å®Ÿè£…ã‚’å¼·åˆ¶ã™ã‚‹ã€‚
 	 */
 	public abstract Message unMarshal(QueueSession session);
 
 	/**
-	 * XML’è‹`‚ğƒp[ƒX‚·‚éB
+	 * XMLå®šç¾©ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ã€‚
 	 */
 	public void parse(Element elem){
 		String tagName = elem.getTagName();
 		if(tagName.equals(SENDDATA_TAG_NAME)){
-			//inputfile—v‘f‚Ì‘¶İ‚ğŠm”F‚·‚éB
+			//inputfileè¦ç´ ã®å­˜åœ¨ã‚’ç¢ºèªã™ã‚‹ã€‚
 			boolean inputFileExists = false;
 			NodeList inputElems = elem.getElementsByTagName(INPUT_FILE_TAG);
 			if(inputElems.getLength() > 1){
-				//inputfile—v‘f‚ğ2ŒÂˆÈãw’è‚Í‚Å‚«‚È‚¢B
+				//inputfileè¦ç´ ã‚’2å€‹ä»¥ä¸ŠæŒ‡å®šã¯ã§ããªã„ã€‚
 				throw new ServiceException("MESSAGERESOURCEFACTORY012","<" +INPUT_FILE_TAG + ">" + 
 											"is can be exists only one.");
 			}
 			for(int rCnt=0;rCnt<inputElems.getLength();rCnt++){
-				//inputfile—v‘f’è‹`‚³‚ê‚Ä‚¢‚ê‚Î1‰ñ‚¾‚¯‚±‚Ìƒ‹[ƒv‚ªÀs‚³‚ê‚éB
+				//inputfileè¦ç´ å®šç¾©ã•ã‚Œã¦ã„ã‚Œã°1å›ã ã‘ã“ã®ãƒ«ãƒ¼ãƒ—ãŒå®Ÿè¡Œã•ã‚Œã‚‹ã€‚
 				Element inputElem = (Element)inputElems.item(rCnt);
 				String fileName = MessageResourceUtil.getValueMustbeSpecified(inputElem);
 				mMessageInput = new FileMessageInput(fileName);
 				inputFileExists = true;
 				
 			}
-			//ƒvƒƒpƒeƒB•”
+			//ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£éƒ¨
 			propParse(elem,inputFileExists);
-			//ƒyƒCƒ[ƒh•”
+			//ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰éƒ¨
 			sendPayloadParse(elem,inputFileExists);
 			
 		}
 		else if(tagName.equals(RECVDATA_TAG_NAME)){
-			//óM“d•¶’è‹`ƒ^ƒO
-			//ƒyƒCƒ[ƒh•”
+			//å—ä¿¡é›»æ–‡å®šç¾©ã‚¿ã‚°
+			//ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰éƒ¨
 			recvPayloadParse(elem);
 		}
 	}
 	/**
-	 * ‘—MƒyƒCƒ[ƒh‚Ìƒp[ƒX
+	 * é€ä¿¡ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰ã®ãƒ‘ãƒ¼ã‚¹
 	 */
 	protected abstract void sendPayloadParse(Element elem,boolean fileExists);
 	/**
-	 * óMƒyƒCƒ[ƒh’è‹`‚Ìƒp[ƒX
+	 * å—ä¿¡ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰å®šç¾©ã®ãƒ‘ãƒ¼ã‚¹
 	 */
 	protected abstract void recvPayloadParse(Element elem);
 	
 	
 	/**
-	 * ƒƒ“ƒo•Ï”mPropertyItems‚Épropertyî•ñ‚ğİ’è‚·‚éB
+	 * ãƒ¡ãƒ³ãƒå¤‰æ•°mPropertyItemsã«propertyæƒ…å ±ã‚’è¨­å®šã™ã‚‹ã€‚
 	 */
 	protected void propParse(Element elem,boolean fileSpecifiedFlag){
 		propKindParse(elem,fileSpecifiedFlag,mPropertyItems,PROP_TAG_NAME);
 	}
 	/**
-	 * propParse‚ÆAMapMessageFormat‚ÌAsendMessageParse‚©‚çƒR[ƒ‹‚³‚ê‚éB
+	 * propParseã¨ã€MapMessageFormatã®ã€sendMessageParseã‹ã‚‰ã‚³ãƒ¼ãƒ«ã•ã‚Œã‚‹ã€‚
 	 * @param elem
 	 * @param fileSpecifiedFlag
 	 * @param Items
@@ -166,7 +166,7 @@ public abstract class CommonMessageFormat
 								ArrayList Items,String tagName) {
 		NodeList propList = elem.getElementsByTagName(tagName);
 		if (propList.getLength() > 1){
-			//’è‹`‚ª•¡”‚ ‚é
+			//å®šç¾©ãŒè¤‡æ•°ã‚ã‚‹
 			throw new ServiceException("MESSAGERESOURCEFACTORY013","<" + tagName + 
 										"> can be specified only onece.");
 		}
@@ -175,7 +175,7 @@ public abstract class CommonMessageFormat
 			isAProperty = true;
 		}
 		for(int rCnt=0;rCnt<propList.getLength();rCnt++){
-			//’è‹`‚ª‘¶İ‚·‚ê‚ÎA1‰ñ‚¾‚¯‚±‚Ìƒ‹[ƒv“à•”‚ªÀs‚³‚ê‚éB
+			//å®šç¾©ãŒå­˜åœ¨ã™ã‚Œã°ã€1å›ã ã‘ã“ã®ãƒ«ãƒ¼ãƒ—å†…éƒ¨ãŒå®Ÿè¡Œã•ã‚Œã‚‹ã€‚
 			Element propElem = (Element)propList.item(rCnt);
 			NodeList propItems = propElem.getElementsByTagName(PROP_ITEM);
 			for(int rCount=0;rCount<propItems.getLength();rCount++){
@@ -192,27 +192,27 @@ public abstract class CommonMessageFormat
 					wrappedType = MessageResourceUtil.getAttMustBeSpecified(propItem,PROP_ITEM_WRAPPED_TYPE_ATT);
 					wrappedTypeCode = getWrappedTypeCode(wrappedType,isAProperty);
 					if(wrappedTypeCode < 0){
-						//—LŒø‚ÈŒ^w’è‚Å‚Í‚È‚¢B
+						//æœ‰åŠ¹ãªå‹æŒ‡å®šã§ã¯ãªã„ã€‚
 						throw new ServiceException("MESSAGERESOURCEFACTORY019","Invalid Type :" + wrappedType); 										
 					}			
 				}
-				//’l‚ğæ“¾
+				//å€¤ã‚’å–å¾—
 				val = MessageResourceUtil.getValue(propItem);
-				//ƒtƒ@ƒCƒ‹‚ğQÆ‚·‚é‚©‚Ç‚¤‚©‚ğæ“¾
+				//ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‚ç…§ã™ã‚‹ã‹ã©ã†ã‹ã‚’å–å¾—
 				String resourceType = propItem.getAttribute(PROP_ITEM_RES_TYPE_ATT);
 				if(resourceType.equals(FILE_VAL)){
 					if(fileSpecifiedFlag){
 						itemUseFileFlag = true;
 					}
 					else{
-						//ƒf[ƒ^ƒtƒ@ƒCƒ‹‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡Aƒtƒ@ƒCƒ‹QÆ‚·‚éitem‚Í’è‹`‚Å‚«‚È‚¢
+						//ãƒ‡ãƒ¼ã‚¿ãƒ•ã‚¡ã‚¤ãƒ«ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã€ãƒ•ã‚¡ã‚¤ãƒ«å‚ç…§ã™ã‚‹itemã¯å®šç¾©ã§ããªã„
 						throw new ServiceException("MESSAGERESOURCEFACTORY014","File not specified. But " 
 													+ PROP_ITEM_TYPE_ATT + " has " + FILE_VAL + " attribute.");
 					}
 				}
 				int typeCode = getPropertyTypeCode(type,isAProperty);
 				if(typeCode < 0){
-					//—LŒø‚ÈŒ^w’è‚Å‚Í‚È‚¢B
+					//æœ‰åŠ¹ãªå‹æŒ‡å®šã§ã¯ãªã„ã€‚
 					throw new ServiceException("MESSAGERESOURCEFACTORY018","Invalid Type :" + type); 										
 				}				
 				Items.add(new PropItem(name,typeCode,wrappedTypeCode,val,itemUseFileFlag));	
@@ -220,9 +220,9 @@ public abstract class CommonMessageFormat
 		}
 	}
 	/**
-	 * BytesMessage,StreamMessage‚ÌwriteObject() <BR>
-	 * ‚¨‚æ‚ÑAMessage‚ÌsetObjectProperty<BR>
-	 * ƒƒ\ƒbƒh‚Å‘‚«‚Ş"Œ^"‚ÌƒR[ƒh‚ğ•Ô‚·B<BR>
+	 * BytesMessage,StreamMessageã®writeObject() <BR>
+	 * ãŠã‚ˆã³ã€Messageã®setObjectProperty<BR>
+	 * ãƒ¡ã‚½ãƒƒãƒ‰ã§æ›¸ãè¾¼ã‚€"å‹"ã®ã‚³ãƒ¼ãƒ‰ã‚’è¿”ã™ã€‚<BR>
 	 */
 	protected int getWrappedTypeCode(String type,boolean propertyMode){
 		if(type.equals(TYPE_BYTE_STR)){
@@ -267,7 +267,7 @@ public abstract class CommonMessageFormat
 	}
 	
 	/**
-	 * Œ^ƒR[ƒh‚©‚çŒ^–¼‚ğæ“¾‚·‚éB
+	 * å‹ã‚³ãƒ¼ãƒ‰ã‹ã‚‰å‹åã‚’å–å¾—ã™ã‚‹ã€‚
 	 * @param code
 	 * @return
 	 */
@@ -310,7 +310,7 @@ public abstract class CommonMessageFormat
 	}
 	
 	/**
-	 * ƒvƒƒpƒeƒB‚ÌŒ^ƒR[ƒh‚ğ•Ô‚·B
+	 * ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹ã‚³ãƒ¼ãƒ‰ã‚’è¿”ã™ã€‚
 	 * 
 	 * @return
 	 */
@@ -335,14 +335,14 @@ public abstract class CommonMessageFormat
 		}
 		if(type.equals(TYPE_BYTES_STR)){
 			if(propertyMode){
-				//ƒvƒƒpƒeƒB‚É"Bytes"‚Í‚È‚¢B
+				//ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«"Bytes"ã¯ãªã„ã€‚
 				return -1;
 			}
 			return TYPE_BYTES;
 		}
 		if(type.equals(TYPE_CHAR_STR)){
 			if(propertyMode){
-				//ƒvƒƒpƒeƒB‚É"Char"‚Í‚È‚¢B
+				//ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«"Char"ã¯ãªã„ã€‚
 				return -1;
 			}
 			return TYPE_CHAR;
@@ -361,7 +361,7 @@ public abstract class CommonMessageFormat
 	
 	
 	/**
-	 * ƒyƒCƒ[ƒh‚Ì"Œ^"ƒR[ƒh‚ğ•Ô‚·
+	 * ãƒšã‚¤ãƒ­ãƒ¼ãƒ‰ã®"å‹"ã‚³ãƒ¼ãƒ‰ã‚’è¿”ã™
 	 */
 	protected int getReadTypeCode(String type,String msgType){
 		if(type.equals(TYPE_BYTE_STR)){
@@ -372,7 +372,7 @@ public abstract class CommonMessageFormat
 				return TYPE_UBYTE;
 			}
 			else{
-				//StreamMessage‚ÉreadUnsignedByte‚Í‚È‚¢B
+				//StreamMessageã«readUnsignedByteã¯ãªã„ã€‚
 				return -1;
 			}			
 		}
@@ -396,7 +396,7 @@ public abstract class CommonMessageFormat
 				return TYPE_USHORT;
 			}
 			else{
-				//StreamMesage‚ÉreadUnsignedShort‚Í‚È‚¢B
+				//StreamMesageã«readUnsignedShortã¯ãªã„ã€‚
 				return -1;
 			}
 		}
@@ -414,13 +414,13 @@ public abstract class CommonMessageFormat
 				return TYPE_UTF;
 			}
 			else{
-				//StreamMessage‚ÉAreadUTF‚Í‚È‚¢B
+				//StreamMessageã«ã€readUTFã¯ãªã„ã€‚
 				return -1;
 			}
 		}
 		else if(type.equals(TYPE_STRING_STR)){
 			if(msgType.equals("Bytes")){
-				//BytesMessage‚ÉAreadString‚Í‚È‚¢B
+				//BytesMessageã«ã€readStringã¯ãªã„ã€‚
 				return -1;
 			}
 			else{
@@ -429,7 +429,7 @@ public abstract class CommonMessageFormat
 		}
 		else if(type.equals(TYPE_OBJECT_STR)){
 			if(msgType.equals("Bytes")){
-				//BytesMessage‚ÉAreadObject‚Í‚È‚¢B
+				//BytesMessageã«ã€readObjectã¯ãªã„ã€‚
 				return -1;
 			}
 			else{
@@ -486,7 +486,7 @@ public abstract class CommonMessageFormat
 	}
 	
 	/**
-	 * JMSƒƒbƒZ[ƒW‚ÌƒvƒƒpƒeƒB•”İ’è
+	 * JMSãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£éƒ¨è¨­å®š
 	 */
 	protected void setMessageHeadProperties(Message msg,Properties prop) {
 		Iterator Items = mPropertyItems.iterator();
@@ -497,14 +497,14 @@ public abstract class CommonMessageFormat
 				String valueStr = null;
 				String name = item.getName();
 				if(item.useFile()){
-					//MessageInputæ“¾‚µ‚½PropertiesƒIƒuƒWƒFƒNƒg‚©‚ç’l‚ğˆø‚«o‚·
+					//MessageInputå–å¾—ã—ãŸPropertiesã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰å€¤ã‚’å¼•ãå‡ºã™
 					valueStr = (String)prop.get(name);
 				}
 				else{
-					//‘¦’l
+					//å³å€¤
 					valueStr = item.getVal();
 				}
-				//Œ^‚É‰‚¶‚½ƒvƒƒpƒeƒB•”‚ÌƒZƒbƒ^[‚ğg‚¤B
+				//å‹ã«å¿œã˜ãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£éƒ¨ã®ã‚»ãƒƒã‚¿ãƒ¼ã‚’ä½¿ã†ã€‚
 				switch(type){
 					case TYPE_BYTE:
 						byte[] tmp = mByteConverter.hex2byte(valueStr);
@@ -548,7 +548,7 @@ public abstract class CommonMessageFormat
 		
 	}
 	/**
-	 * ƒvƒŠƒ~ƒeƒBƒu‚Ìƒ‰ƒbƒp[ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éƒƒ\ƒbƒh
+	 * ãƒ—ãƒªãƒŸãƒ†ã‚£ãƒ–ã®ãƒ©ãƒƒãƒ‘ãƒ¼ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
 	 */
 	protected Object createObject(int type,String valueStr){
 		Object ret = null;
@@ -592,7 +592,7 @@ public abstract class CommonMessageFormat
 		return ret;
 	}
 	/**
-	 * JMSƒƒbƒZ[ƒWƒvƒƒpƒeƒB•”‚Ìƒ_ƒ“ƒv
+	 * JMSãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£éƒ¨ã®ãƒ€ãƒ³ãƒ—
 	 * @param msg
 	 * @return
 	 */

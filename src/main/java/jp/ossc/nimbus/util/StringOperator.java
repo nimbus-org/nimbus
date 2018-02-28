@@ -33,67 +33,67 @@ package jp.ossc.nimbus.util;
 
 import java.util.ArrayList;
 /**
-*	ƒXƒgƒŠƒ“ƒO‘€ìƒNƒ‰ƒX
+*	ã‚¹ãƒˆãƒªãƒ³ã‚°æ“ä½œã‚¯ãƒ©ã‚¹
 *	@author		Hirotaka.Nakano
-*	@version	1.00 ì¬F2001.04.04 | H.Nakano<BR>
-*				XVF
+*	@version	1.00 ä½œæˆï¼š2001.04.04 ï¼ H.Nakano<BR>
+*				æ›´æ–°ï¼š
 */
 public class StringOperator {
 	public static final int C_NOAP = -10000 ;
 	public static final String C_SPACE = " " ; //$NON-NLS-1$
 	//
 	/**
-	 *	‹ó”’•¶š—ñ•Ô‹pƒƒ\ƒbƒh<br>
-	 *	w’è‚³‚ê‚½”•ª‚ÌƒXƒy[ƒX•¶š‚ğ˜AŒ‹‚µ‚Äo—Í‚·‚éB
-	 *	@param		spaceNum	•¶š”
-	 *	@return		‹ó”’˜AŒ‹•¶š—ñ
+	 *	ç©ºç™½æ–‡å­—åˆ—è¿”å´ãƒ¡ã‚½ãƒƒãƒ‰<br>
+	 *	æŒ‡å®šã•ã‚ŒãŸæ•°åˆ†ã®ã‚¹ãƒšãƒ¼ã‚¹æ–‡å­—ã‚’é€£çµã—ã¦å‡ºåŠ›ã™ã‚‹ã€‚
+	 *	@param		spaceNum	æ–‡å­—æ•°
+	 *	@return		ç©ºç™½é€£çµæ–‡å­—åˆ—
 	 */
 	public static String makeSpace(int spaceNum)	{
-		//## •Ô‚è’l‰Šú‰» ##
+		//## è¿”ã‚Šå€¤åˆæœŸåŒ– ##
 		StringBuilder strRet = new StringBuilder() ;
 		int rCnt;
-		//## •¶š—ñì¬ ##
+		//## æ–‡å­—åˆ—ä½œæˆ ##
 		for(rCnt=0; rCnt<spaceNum;rCnt++){
 			strRet.append(C_SPACE);
 		}
-		//## •Ô‚è’lƒŠƒ^[ƒ“ ##
+		//## è¿”ã‚Šå€¤ãƒªã‚¿ãƒ¼ãƒ³ ##
 		return strRet.toString()  ;
 	}
 	//
 	/**
-	 *	w’è•¶š—ñ•Ô‹pƒƒ\ƒbƒh
-	 *	@param		strElement	ì¬’PˆÊ•¶š—ñ
-	 *	@param		strNum		•¶š”
-	 *	@return		˜AŒ‹•¶š—ñ
+	 *	æŒ‡å®šæ–‡å­—åˆ—è¿”å´ãƒ¡ã‚½ãƒƒãƒ‰
+	 *	@param		strElement	ä½œæˆå˜ä½æ–‡å­—åˆ—
+	 *	@param		strNum		æ–‡å­—æ•°
+	 *	@return		é€£çµæ–‡å­—åˆ—
 	 */
 	public static String makeString(String strElement,int strNum){
-		//## •Ô‚è’l‰Šú‰» ##
+		//## è¿”ã‚Šå€¤åˆæœŸåŒ– ##
 		StringBuilder strRet = new StringBuilder() ;
 		int rCnt;
-		//## •¶š—ñì¬ ##
+		//## æ–‡å­—åˆ—ä½œæˆ ##
 		for(rCnt=0; rCnt<strNum;rCnt++){
 			strRet.append(strElement) ;
 		}
-		//## •Ô‚è’lƒŠƒ^[ƒ“ ##
+		//## è¿”ã‚Šå€¤ãƒªã‚¿ãƒ¼ãƒ³ ##
 		return strRet.toString()  ;
 	}
 	
 	public static String replaceString(String inDataBuff, String targetChr, Object replace){
-		//## ƒ[ƒJƒ‹éŒ¾ ##
+		//## ãƒ­ãƒ¼ã‚«ãƒ«å®£è¨€ ##
 		StringBuilder strRet = new StringBuilder();
 		String inStr = new String(inDataBuff);
 		int lngFindNum ;
 		int lngStartCnt ;
 		lngStartCnt = 0 ;
-		//## ’u‚«Š·‚¦ˆ— ##
+		//## ç½®ãæ›ãˆå‡¦ç† ##
 		while(true){
-			//== ‘ÎÛ•”•ª•¶š—ñŒŸõ ==
+			//== å¯¾è±¡éƒ¨åˆ†æ–‡å­—åˆ—æ¤œç´¢ ==
 			lngFindNum = inStr.indexOf(targetChr) ;
-			//”­Œ©‚È‚µ‚È‚çƒuƒŒƒCƒN
+			//ç™ºè¦‹ãªã—ãªã‚‰ãƒ–ãƒ¬ã‚¤ã‚¯
 			if (lngFindNum == -1){
 				strRet.append(inStr);
 				break ;
-			//”­Œ©‚µ‚½ê‡‚Í’u‚«Š·‚¦
+			//ç™ºè¦‹ã—ãŸå ´åˆã¯ç½®ãæ›ãˆ
 			}else{
 				strRet.append(inStr.substring(0, lngFindNum ));
 				strRet.append(replace);
@@ -105,27 +105,27 @@ public class StringOperator {
 	}
 	//
 	/**
-	 *	w’è•¶š—ñ’u‚«Š·‚¦ƒƒ\ƒbƒh<br>
-	 *	•ÏŠ·Œ³‚Ì•¶š—ñixxxppqq)ã‚Ì•”•ª•¶š—ñippj‚ğ<br>
-	 *	”CˆÓ‚Ì•¶š—ñitestj‚É’u‚«Š·‚¦‚éê‡•ÏŠ·Œã•¶š—ñixxxtestqqj‚ğo—Í‚·‚éB
-	 *	@param		inDataBuff	•ÏŠ·Œ³“ü—Í•¶š—ñ
-	 *	@param		targetChr	’u‚«Š·‚¦‘ÎÛ•¶š—ñ
-	 *	@param		replaceChr	’u‚«Š·‚¦•¶š—ñ
-	 *	@return		’u‚«Š·‚¦
+	 *	æŒ‡å®šæ–‡å­—åˆ—ç½®ãæ›ãˆãƒ¡ã‚½ãƒƒãƒ‰<br>
+	 *	å¤‰æ›å…ƒã®æ–‡å­—åˆ—ï¼ˆxxxppqq)ä¸Šã®éƒ¨åˆ†æ–‡å­—åˆ—ï¼ˆppï¼‰ã‚’<br>
+	 *	ä»»æ„ã®æ–‡å­—åˆ—ï¼ˆtestï¼‰ã«ç½®ãæ›ãˆã‚‹å ´åˆå¤‰æ›å¾Œæ–‡å­—åˆ—ï¼ˆxxxtestqqï¼‰ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+	 *	@param		inDataBuff	å¤‰æ›å…ƒå…¥åŠ›æ–‡å­—åˆ—
+	 *	@param		targetChr	ç½®ãæ›ãˆå¯¾è±¡æ–‡å­—åˆ—
+	 *	@param		replaceChr	ç½®ãæ›ãˆæ–‡å­—åˆ—
+	 *	@return		ç½®ãæ›ãˆ
 	 */
 	public static String replaceString(String inDataBuff, String targetChr, String replaceChr){
 	    return replaceString(inDataBuff, targetChr, (Object)replaceChr);
 	}
 	
 	public static String replaceString(String inDataBuff, String targetStr, Object[] replaces){
-		/** “ü—Í•¶š”z—ñ‚ªnull‚È‚çƒŠƒ^[ƒ“ */
+		/** å…¥åŠ›æ–‡å­—é…åˆ—ãŒnullãªã‚‰ãƒªã‚¿ãƒ¼ãƒ³ */
 		if(replaces==null){
 			return new String(inDataBuff) ;
 		}
 		String retStr = new String(inDataBuff) ;
-		/** ”z—ñ“à•¶š‚Ì’u‚«Š·‚¦‚ğ‚·‚éB*/
+		/** é…åˆ—å†…æ–‡å­—ã®ç½®ãæ›ãˆã‚’ã™ã‚‹ã€‚*/
 		for(int rCnt = replaces.length -1;rCnt>=0;rCnt--){
-			//ƒ^[ƒQƒbƒg•¶š{”z—ñINDEX‚Å’u‚«Š·‚¦‚ğs‚¤B
+			//ã‚¿ãƒ¼ã‚²ãƒƒãƒˆæ–‡å­—ï¼‹é…åˆ—INDEXã§ç½®ãæ›ãˆã‚’è¡Œã†ã€‚
 			String cntStr = targetStr + new Integer(rCnt).toString()  ;
 			retStr = replaceString(retStr,cntStr,replaces[rCnt]);
 		}
@@ -133,33 +133,33 @@ public class StringOperator {
 	}
 	//
 	/**
-	 *	w’è–„‚ß‚İ•¶š”z—ñ’u‚«Š·‚¦ƒƒ\ƒbƒh<br>
-	 *	@param		inDataBuff	•ÏŠ·Œ³“ü—Í•¶š—ñ
-	 *	@param		targetStr	’u‚«Š·‚¦‘ÎÛ•¶š—ñ
-	 *	@param		replaceStrs	’u‚«Š·‚¦•¶š”z—ñ
-	 *	@return		’u‚«Š·‚¦•¶š
+	 *	æŒ‡å®šåŸ‹ã‚è¾¼ã¿æ–‡å­—é…åˆ—ç½®ãæ›ãˆãƒ¡ã‚½ãƒƒãƒ‰<br>
+	 *	@param		inDataBuff	å¤‰æ›å…ƒå…¥åŠ›æ–‡å­—åˆ—
+	 *	@param		targetStr	ç½®ãæ›ãˆå¯¾è±¡æ–‡å­—åˆ—
+	 *	@param		replaceStrs	ç½®ãæ›ãˆæ–‡å­—é…åˆ—
+	 *	@return		ç½®ãæ›ãˆæ–‡å­—
 	 */
 	public static String replaceString(String inDataBuff, String targetStr, String[] replaceStrs){
 	    return replaceString(inDataBuff, targetStr, (Object[])replaceStrs);
 	}
 	//
 	/**
-	 *	w’è–„‚ß‚İ•¶š”z—ñ’u‚«Š·‚¦ƒƒ\ƒbƒh<br>
-	 *	@param		inDataBuff	•ÏŠ·Œ³“ü—Í•¶š—ñ
-	 *	@param		targetStr	’u‚«Š·‚¦‘ÎÛ•¶š—ñ
-	 *	@param		replaceStrs	’u‚«Š·‚¦•¶š”z—ñ
-	 *	@return		’u‚«Š·‚¦•¶š
+	 *	æŒ‡å®šåŸ‹ã‚è¾¼ã¿æ–‡å­—é…åˆ—ç½®ãæ›ãˆãƒ¡ã‚½ãƒƒãƒ‰<br>
+	 *	@param		inDataBuff	å¤‰æ›å…ƒå…¥åŠ›æ–‡å­—åˆ—
+	 *	@param		targetStr	ç½®ãæ›ãˆå¯¾è±¡æ–‡å­—åˆ—
+	 *	@param		replaceStrs	ç½®ãæ›ãˆæ–‡å­—é…åˆ—
+	 *	@return		ç½®ãæ›ãˆæ–‡å­—
 	 */
 	public static String replaceString(String inDataBuff, String targetStr, ArrayList replaceStrs){
-		/** “ü—Í•¶š”z—ñ‚ªnull‚È‚çƒŠƒ^[ƒ“ */
+		/** å…¥åŠ›æ–‡å­—é…åˆ—ãŒnullãªã‚‰ãƒªã‚¿ãƒ¼ãƒ³ */
 		if(replaceStrs==null){
 			return inDataBuff ;
 		}
 		String retStr = new String(inDataBuff) ;
-		/** ”z—ñ“à•¶š‚Ì’u‚«Š·‚¦‚ğ‚·‚éB*/
+		/** é…åˆ—å†…æ–‡å­—ã®ç½®ãæ›ãˆã‚’ã™ã‚‹ã€‚*/
 		for(int rCnt = replaceStrs.size() -1;
 			rCnt>=0;rCnt--){
-			//ƒ^[ƒQƒbƒg•¶š{”z—ñINDEX‚Å’u‚«Š·‚¦‚ğs‚¤B
+			//ã‚¿ãƒ¼ã‚²ãƒƒãƒˆæ–‡å­—ï¼‹é…åˆ—INDEXã§ç½®ãæ›ãˆã‚’è¡Œã†ã€‚
 			String cntStr = targetStr + new Integer(rCnt).toString()  ;
 			retStr = replaceString(retStr,cntStr,(String)replaceStrs.get(rCnt));
 		}
@@ -167,12 +167,12 @@ public class StringOperator {
 	}
 	//
 	/**
-	 *	•¶š—ñA”’l•ÏŠ·ƒƒ\ƒbƒh<br>
-	 *	@param		inStr		”’l•¶š—ñ
-	 *	@return		•¶š—ñ‚ª•\‚·”’l
+	 *	æ–‡å­—åˆ—ã€æ•°å€¤å¤‰æ›ãƒ¡ã‚½ãƒƒãƒ‰<br>
+	 *	@param		inStr		æ•°å€¤æ–‡å­—åˆ—
+	 *	@return		æ–‡å­—åˆ—ãŒè¡¨ã™æ•°å€¤
 	 */
 	public static int convertInt(String inStr){
-		//## ƒ[ƒJƒ‹éŒ¾ ##
+		//## ãƒ­ãƒ¼ã‚«ãƒ«å®£è¨€ ##
 		int findPriod = inStr.indexOf(".");
 		String mngBuf = inStr ;
 		if(findPriod > -1){
@@ -188,12 +188,12 @@ public class StringOperator {
 	}
 	//
 	/**
-	 *	•¶š—ñA”’l•ÏŠ·ƒƒ\ƒbƒh<br>
-	 *	@param		inStr		”’l•¶š—ñ
-	 *	@return		•¶š—ñ‚ª•\‚·”’l
+	 *	æ–‡å­—åˆ—ã€æ•°å€¤å¤‰æ›ãƒ¡ã‚½ãƒƒãƒ‰<br>
+	 *	@param		inStr		æ•°å€¤æ–‡å­—åˆ—
+	 *	@return		æ–‡å­—åˆ—ãŒè¡¨ã™æ•°å€¤
 	 */
 	public static long convertLong(String inStr){
-		//## ƒ[ƒJƒ‹éŒ¾ ##
+		//## ãƒ­ãƒ¼ã‚«ãƒ«å®£è¨€ ##
 		int findPriod = inStr.indexOf(".");
 		String mngBuf = inStr ;
 		if(findPriod > -1){
@@ -208,9 +208,9 @@ public class StringOperator {
 		return lngRet.longValue();
 	}
 	/**
-	 *	“ü—Í•¶š‚ªASCII•¶š‚Å‚ ‚é‚©”»’è‚·‚éB<BR>
-	 * @param inStr “ü—Í•¶š
-	 *	@return		ƒ`ƒFƒbƒNŒ‹‰Ê
+	 *	å…¥åŠ›æ–‡å­—ãŒASCIIæ–‡å­—ã§ã‚ã‚‹ã‹åˆ¤å®šã™ã‚‹ã€‚<BR>
+	 * @param inStr å…¥åŠ›æ–‡å­—
+	 *	@return		ãƒã‚§ãƒƒã‚¯çµæœ
 	 */
 	public static boolean isAscii (String inStr) {
 		for(int cnt = 0; cnt < inStr.length(); cnt++){
@@ -223,9 +223,9 @@ public class StringOperator {
 	}
 	//
 	/**
-	 *	“ü—Í•¶š‚ª”š‚Å‚ ‚é‚©”»’è‚·‚éB<BR>
-	 * @param inStr “ü—Í•¶š
-	 *	@return	ƒ`ƒFƒbƒNŒ‹‰Ê
+	 *	å…¥åŠ›æ–‡å­—ãŒæ•°å­—ã§ã‚ã‚‹ã‹åˆ¤å®šã™ã‚‹ã€‚<BR>
+	 * @param inStr å…¥åŠ›æ–‡å­—
+	 *	@return	ãƒã‚§ãƒƒã‚¯çµæœ
 	 */
 	public static boolean isNumeric (String inStr) {
 		for(int cnt = 0; cnt < inStr.length(); cnt++){
@@ -238,10 +238,10 @@ public class StringOperator {
 	}
 	//
 	/**
-	 *	¬”ƒ`ƒFƒbƒNƒƒ\ƒbƒh<BR>
-	 *	¬”‚Ì®”•”A¬”“_ˆÈ‰º‚ÌŒ…”ƒ`ƒFƒbƒN‚ğs‚¤B<BR>
-	 * @param getData ƒ`ƒFƒbƒN•¶š
-	 *	@return		ƒ`ƒFƒbƒNŒ‹‰Ê
+	 *	å°æ•°ãƒã‚§ãƒƒã‚¯ãƒ¡ã‚½ãƒƒãƒ‰<BR>
+	 *	å°æ•°ã®æ•´æ•°éƒ¨ã€å°æ•°ç‚¹ä»¥ä¸‹ã®æ¡æ•°ãƒã‚§ãƒƒã‚¯ã‚’è¡Œã†ã€‚<BR>
+	 * @param getData ãƒã‚§ãƒƒã‚¯æ–‡å­—
+	 *	@return		ãƒã‚§ãƒƒã‚¯çµæœ
 	 */
 	public static boolean isDecimal (String getData) {
 		int checkInt = 0 ;
@@ -269,17 +269,17 @@ public class StringOperator {
 	//
 	//
 	/**
-	 *	‘SŠpC”¼ŠpƒXƒy[ƒXíœƒƒ\ƒbƒh<BR>
-	 *	•¶š—ñ‚Ì—¼‘¤‚©‚ç‘SŠpƒXƒy[ƒX,”¼ŠpƒXƒy[ƒX‚ğíœ‚·‚éB<BR>
-	 *	@param		getData		íœ‘ÎÛ•¶š—ñ
-	 *	@return		íœ‚µ‚½•¶š—ñ
+	 *	å…¨è§’ï¼ŒåŠè§’ã‚¹ãƒšãƒ¼ã‚¹å‰Šé™¤ãƒ¡ã‚½ãƒƒãƒ‰<BR>
+	 *	æ–‡å­—åˆ—ã®ä¸¡å´ã‹ã‚‰å…¨è§’ã‚¹ãƒšãƒ¼ã‚¹,åŠè§’ã‚¹ãƒšãƒ¼ã‚¹ã‚’å‰Šé™¤ã™ã‚‹ã€‚<BR>
+	 *	@param		getData		å‰Šé™¤å¯¾è±¡æ–‡å­—åˆ—
+	 *	@return		å‰Šé™¤ã—ãŸæ–‡å­—åˆ—
 	 */
 	public static String trimSpace (String getData) {
 		StringBuilder retBuff = new StringBuilder() ;
 		char [] cValtmp = getData.toCharArray();
 		for(int k = 0 ; k < 2 ; k++) {
 			for(int i=0 ; i < cValtmp.length ; i++) {
-				if(cValtmp[i]!='@' && cValtmp[i]!=' ') {
+				if(cValtmp[i]!='ã€€' && cValtmp[i]!=' ') {
 					try {
 						if(cValtmp[i]==65377 && cValtmp[i+1]==65377){
 							i++ ;
@@ -304,12 +304,12 @@ public class StringOperator {
 	}
 	//
 	/**
-	 *	‘SŠpC”¼ŠpƒXƒy[ƒX,‰üsƒR[ƒhíœƒƒ\ƒbƒh<BR>
-	 *	•¶š—ñ‚Ì—¼‘¤‚©‚ç‘SŠpƒXƒy[ƒX,”¼ŠpƒXƒy[ƒX‚ğíœ‚µA<BR>
-	 *	•¶š—ñ‚©‚ç‘S‚Ä‚Ì‰üsƒR[ƒh‚ğíœ‚·‚éB<BR>
-	 *	@param		getData		íœ‘ÎÛ•¶š—ñ
-	 *	@param dummy ƒI[ƒo[ƒ[ƒh—pƒ_ƒ~[ˆø”
-	 *	@return		íœ‚µ‚½•¶š—ñ
+	 *	å…¨è§’ï¼ŒåŠè§’ã‚¹ãƒšãƒ¼ã‚¹,æ”¹è¡Œã‚³ãƒ¼ãƒ‰å‰Šé™¤ãƒ¡ã‚½ãƒƒãƒ‰<BR>
+	 *	æ–‡å­—åˆ—ã®ä¸¡å´ã‹ã‚‰å…¨è§’ã‚¹ãƒšãƒ¼ã‚¹,åŠè§’ã‚¹ãƒšãƒ¼ã‚¹ã‚’å‰Šé™¤ã—ã€<BR>
+	 *	æ–‡å­—åˆ—ã‹ã‚‰å…¨ã¦ã®æ”¹è¡Œã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹ã€‚<BR>
+	 *	@param		getData		å‰Šé™¤å¯¾è±¡æ–‡å­—åˆ—
+	 *	@param dummy ã‚ªãƒ¼ãƒãƒ¼ãƒ­ãƒ¼ãƒ‰ç”¨ãƒ€ãƒŸãƒ¼å¼•æ•°
+	 *	@return		å‰Šé™¤ã—ãŸæ–‡å­—åˆ—
 	 */
 	public static String trimSpace (String getData,int dummy) {
 		String removeStr = removeReturn(getData) ;
@@ -317,7 +317,7 @@ public class StringOperator {
 		char [] cValtmp = removeStr.toCharArray();
 		for(int k = 0 ; k < 2 ; k++) {
 			for(int i=0 ; i < cValtmp.length ; i++) {
-				if(cValtmp[i]!='@' && cValtmp[i]!=' ') {
+				if(cValtmp[i]!='ã€€' && cValtmp[i]!=' ') {
 					try {
 						if(cValtmp[i]==65377 && cValtmp[i+1]==65377){
 							i++ ;
@@ -342,20 +342,20 @@ public class StringOperator {
 	}
 	//
 	/**
-	 *	‘SŠpƒXƒy[ƒX,”¼ŠpƒXƒy[ƒX,¦,ƒ^ƒuíœƒƒ\ƒbƒh<BR>
-	 *	•¶š—ñ‚Ì—¼‘¤‚©‚ç‘SŠpƒXƒy[ƒX,”¼ŠpƒXƒy[ƒX,¦,ƒ^ƒu<BR>
-	 *	‚ğíœ‚·‚éB<BR>
-	 *	@param		getData		íœ‘ÎÛ•¶š—ñ
-	 *	@return		íœ‚µ‚½•¶š—ñ
+	 *	å…¨è§’ã‚¹ãƒšãƒ¼ã‚¹,åŠè§’ã‚¹ãƒšãƒ¼ã‚¹,â€»,ã‚¿ãƒ–å‰Šé™¤ãƒ¡ã‚½ãƒƒãƒ‰<BR>
+	 *	æ–‡å­—åˆ—ã®ä¸¡å´ã‹ã‚‰å…¨è§’ã‚¹ãƒšãƒ¼ã‚¹,åŠè§’ã‚¹ãƒšãƒ¼ã‚¹,â€»,ã‚¿ãƒ–<BR>
+	 *	ã‚’å‰Šé™¤ã™ã‚‹ã€‚<BR>
+	 *	@param		getData		å‰Šé™¤å¯¾è±¡æ–‡å­—åˆ—
+	 *	@return		å‰Šé™¤ã—ãŸæ–‡å­—åˆ—
 	 */
 	public static String trimNeedlessChara (String getData) {
 		StringBuilder retBuff = new StringBuilder() ;
 		char [] cValtmp = getData.toCharArray();
 		for(int k = 0 ; k < 2 ; k++) {
 			for(int i=0 ; i < cValtmp.length ; i++) {
-				if(cValtmp[i]!='@' 
+				if(cValtmp[i]!='ã€€' 
 					&& cValtmp[i]!=' ' 
-					&& cValtmp[i]!='–' && cValtmp[i]!='\t') {
+					&& cValtmp[i]!='ï¼Š' && cValtmp[i]!='\t') {
 					try {
 						if(cValtmp[i]==65377 && cValtmp[i+1]==65377){
 							i++ ;
@@ -391,12 +391,12 @@ public class StringOperator {
 	}
 	//
 	/**
-	 *	‘SŠpƒXƒy[ƒX,”¼ŠpƒXƒy[ƒX,¦,ƒ^ƒu,‰üsƒR[ƒh íœƒƒ\ƒbƒh<BR>
-	 *	•¶š—ñ‚Ì—¼‘¤‚©‚ç‘SŠpƒXƒy[ƒX,”¼ŠpƒXƒy[ƒX,¦,ƒ^ƒu‚ğíœ‚µA<BR>
-	 *	•¶š—ñ‚Ì’†‚©‚ç‘S‚Ä‚Ì‰üsƒR[ƒh‚ğíœ‚·‚éB<BR>
-	 *	@param		getData		íœ‘ÎÛ•¶š—ñ
-	 *	@param		dummy			ƒI[ƒo[ƒ[ƒh—pƒ_ƒ~[ˆø”
-	 *	@return		íœ‚µ‚½•¶š—ñ
+	 *	å…¨è§’ã‚¹ãƒšãƒ¼ã‚¹,åŠè§’ã‚¹ãƒšãƒ¼ã‚¹,â€»,ã‚¿ãƒ–,æ”¹è¡Œã‚³ãƒ¼ãƒ‰ å‰Šé™¤ãƒ¡ã‚½ãƒƒãƒ‰<BR>
+	 *	æ–‡å­—åˆ—ã®ä¸¡å´ã‹ã‚‰å…¨è§’ã‚¹ãƒšãƒ¼ã‚¹,åŠè§’ã‚¹ãƒšãƒ¼ã‚¹,â€»,ã‚¿ãƒ–ã‚’å‰Šé™¤ã—ã€<BR>
+	 *	æ–‡å­—åˆ—ã®ä¸­ã‹ã‚‰å…¨ã¦ã®æ”¹è¡Œã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹ã€‚<BR>
+	 *	@param		getData		å‰Šé™¤å¯¾è±¡æ–‡å­—åˆ—
+	 *	@param		dummy			ã‚ªãƒ¼ãƒãƒ¼ãƒ­ãƒ¼ãƒ‰ç”¨ãƒ€ãƒŸãƒ¼å¼•æ•°
+	 *	@return		å‰Šé™¤ã—ãŸæ–‡å­—åˆ—
 	 */
 	public static String trimNeedlessChara (String getData,int dummy) {
 		String removeStr = removeReturn(getData) ;
@@ -404,9 +404,9 @@ public class StringOperator {
 		char [] cValtmp = removeStr.toCharArray();
 		for(int k = 0 ; k < 2 ; k++) {
 			for(int i=0 ; i < cValtmp.length ; i++) {
-				if(cValtmp[i]!='@' 
+				if(cValtmp[i]!='ã€€' 
 					&& cValtmp[i]!=' ' 
-					&& cValtmp[i]!='–' 
+					&& cValtmp[i]!='ï¼Š' 
 					&& cValtmp[i]!='\t') {
 					try {
 						if(cValtmp[i]==65377 && cValtmp[i+1]==65377){
@@ -444,11 +444,11 @@ public class StringOperator {
 	//
 		//
 	/**
-	 *	‘SŠpƒXƒy[ƒX,”¼ŠpƒXƒy[ƒX,ƒ^ƒu,‰üsƒR[ƒh íœƒƒ\ƒbƒh<BR>
-	 *	•¶š—ñ‚Ì—¼‘¤‚©‚ç‘SŠpƒXƒy[ƒX,”¼ŠpƒXƒy[ƒX,ƒ^ƒu‚ğíœ‚µA<BR>
-	 *	•¶š—ñ‚Ì’†‚©‚ç‘S‚Ä‚Ì‰üsƒR[ƒh‚ğíœ‚·‚éB<BR>
-	 *	@param		getData		íœ‘ÎÛ•¶š—ñ
-	 *	@return		íœ‚µ‚½•¶š—ñ
+	 *	å…¨è§’ã‚¹ãƒšãƒ¼ã‚¹,åŠè§’ã‚¹ãƒšãƒ¼ã‚¹,ã‚¿ãƒ–,æ”¹è¡Œã‚³ãƒ¼ãƒ‰ å‰Šé™¤ãƒ¡ã‚½ãƒƒãƒ‰<BR>
+	 *	æ–‡å­—åˆ—ã®ä¸¡å´ã‹ã‚‰å…¨è§’ã‚¹ãƒšãƒ¼ã‚¹,åŠè§’ã‚¹ãƒšãƒ¼ã‚¹,ã‚¿ãƒ–ã‚’å‰Šé™¤ã—ã€<BR>
+	 *	æ–‡å­—åˆ—ã®ä¸­ã‹ã‚‰å…¨ã¦ã®æ”¹è¡Œã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹ã€‚<BR>
+	 *	@param		getData		å‰Šé™¤å¯¾è±¡æ–‡å­—åˆ—
+	 *	@return		å‰Šé™¤ã—ãŸæ–‡å­—åˆ—
 	 */
 	public static String trimNeedlessChara2 (String getData) {
 		String removeStr = removeReturn(getData) ;
@@ -456,7 +456,7 @@ public class StringOperator {
 		char [] cValtmp = removeStr.toCharArray();
 		for(int k = 0 ; k < 2 ; k++) {
 			for(int i=0 ; i < cValtmp.length ; i++) {
-				if(cValtmp[i]!='@' 
+				if(cValtmp[i]!='ã€€' 
 					&& cValtmp[i]!=' ' 
 					&& cValtmp[i]!='\t') {
 					try {
@@ -494,20 +494,20 @@ public class StringOperator {
 	}
 	//
 	/**
-	 *	‘SŠpƒXƒy[ƒX,”¼ŠpƒXƒy[ƒX,¦,ƒ^ƒu,‰üsƒR[ƒh íœƒƒ\ƒbƒh<BR>
-	 *	‘SŠpƒXƒy[ƒX,”¼ŠpƒXƒy[ƒX,¦,ƒ^ƒu,‰üsƒR[ƒh<BR>
-	 *	‚ğ•¶š—ñ‚Ì—¼‘¤‚©‚çíœ‚·‚éB<BR>
-	 *	@param		getData		íœ‘ÎÛ•¶š—ñ
-	 *	@return		íœ‚µ‚½•¶š—ñ
+	 *	å…¨è§’ã‚¹ãƒšãƒ¼ã‚¹,åŠè§’ã‚¹ãƒšãƒ¼ã‚¹,â€»,ã‚¿ãƒ–,æ”¹è¡Œã‚³ãƒ¼ãƒ‰ å‰Šé™¤ãƒ¡ã‚½ãƒƒãƒ‰<BR>
+	 *	å…¨è§’ã‚¹ãƒšãƒ¼ã‚¹,åŠè§’ã‚¹ãƒšãƒ¼ã‚¹,â€»,ã‚¿ãƒ–,æ”¹è¡Œã‚³ãƒ¼ãƒ‰<BR>
+	 *	ã‚’æ–‡å­—åˆ—ã®ä¸¡å´ã‹ã‚‰å‰Šé™¤ã™ã‚‹ã€‚<BR>
+	 *	@param		getData		å‰Šé™¤å¯¾è±¡æ–‡å­—åˆ—
+	 *	@return		å‰Šé™¤ã—ãŸæ–‡å­—åˆ—
 	 */
 	public static String trimNeedless (String getData) {
 		StringBuilder retBuff = new StringBuilder() ;
 		char [] cValtmp = getData.toCharArray();
 		for(int k = 0 ; k < 2 ; k++) {
 			for(int i=0 ; i < cValtmp.length ; i++) {
-				if(cValtmp[i]!='@' 
+				if(cValtmp[i]!='ã€€' 
 				&& cValtmp[i]!=' ' 
-				&& cValtmp[i]!='–' 
+				&& cValtmp[i]!='ï¼Š' 
 				&& cValtmp[i]!='\t') {
 					try {
 						if(cValtmp[i]==65377 && cValtmp[i+1]==65377){
@@ -548,20 +548,20 @@ public class StringOperator {
 	}
 	//
 	/**
-	 *	‘SŠpƒXƒy[ƒX,”¼ŠpƒXƒy[ƒX,¦,ƒ^ƒu,‰üsƒR[ƒh íœƒƒ\ƒbƒh<BR>
-	 *	•¶š—ñ‚©‚ç‘S‚Ä‚Ì‘SŠpƒXƒy[ƒX,”¼ŠpƒXƒy[ƒX,¦,ƒ^ƒu,‰üsƒR[ƒh<BR>
-	 *	‚ğíœ‚·‚éB<BR>
-	 *	@param		getData		íœ‘ÎÛ•¶š—ñ
-	 *	@return		íœ‚µ‚½•¶š—ñ
+	 *	å…¨è§’ã‚¹ãƒšãƒ¼ã‚¹,åŠè§’ã‚¹ãƒšãƒ¼ã‚¹,â€»,ã‚¿ãƒ–,æ”¹è¡Œã‚³ãƒ¼ãƒ‰ å‰Šé™¤ãƒ¡ã‚½ãƒƒãƒ‰<BR>
+	 *	æ–‡å­—åˆ—ã‹ã‚‰å…¨ã¦ã®å…¨è§’ã‚¹ãƒšãƒ¼ã‚¹,åŠè§’ã‚¹ãƒšãƒ¼ã‚¹,â€»,ã‚¿ãƒ–,æ”¹è¡Œã‚³ãƒ¼ãƒ‰<BR>
+	 *	ã‚’å‰Šé™¤ã™ã‚‹ã€‚<BR>
+	 *	@param		getData		å‰Šé™¤å¯¾è±¡æ–‡å­—åˆ—
+	 *	@return		å‰Šé™¤ã—ãŸæ–‡å­—åˆ—
 	 */
 	public static String removeNeedlessChara (String getData) {
 		String removeStr = removeReturn(getData) ;
 		StringBuilder retBuff = new StringBuilder() ;
 		char [] cValtmp = removeStr.toCharArray();
 		for(int i=0 ; i < cValtmp.length ; i++) {
-			if(cValtmp[i]!='@' 
+			if(cValtmp[i]!='ã€€' 
 			&& cValtmp[i]!=' ' 
-			&& cValtmp[i]!='–' 
+			&& cValtmp[i]!='ï¼Š' 
 			&& cValtmp[i]!='\t') {
 				try {
 					if(cValtmp[i]==65377 && cValtmp[i+1]==65377){
@@ -586,21 +586,21 @@ public class StringOperator {
 		String retData = retBuff.toString() ;
 		return retData ;
 	}
-	//2001/11/21 Add K.Nakamura ¦‚ğíœ‚µ‚È‚¢ƒƒ\ƒbƒh‚ğ’Ç‰Á
+	//2001/11/21 Add K.Nakamura â€»ã‚’å‰Šé™¤ã—ãªã„ãƒ¡ã‚½ãƒƒãƒ‰ã‚’è¿½åŠ 
 	/**
-	 *	‘SŠpƒXƒy[ƒX,”¼ŠpƒXƒy[ƒX,ƒ^ƒu,‰üsƒR[ƒh íœƒƒ\ƒbƒh<BR>
-	 *	•¶š—ñ‚©‚ç‘S‚Ä‚Ì‘SŠpƒXƒy[ƒX,”¼ŠpƒXƒy[ƒX,ƒ^ƒu,‰üsƒR[ƒh<BR>
-	 *	‚ğíœ‚·‚éB<BR>
-	 *	@param getData íœ‘ÎÛ•¶š—ñ
-	 *	@param dummy ƒI[ƒo[ƒ[ƒh—pƒ_ƒ~[ˆø”
-	 *	@return íœ‚µ‚½•¶š—ñ
+	 *	å…¨è§’ã‚¹ãƒšãƒ¼ã‚¹,åŠè§’ã‚¹ãƒšãƒ¼ã‚¹,ã‚¿ãƒ–,æ”¹è¡Œã‚³ãƒ¼ãƒ‰ å‰Šé™¤ãƒ¡ã‚½ãƒƒãƒ‰<BR>
+	 *	æ–‡å­—åˆ—ã‹ã‚‰å…¨ã¦ã®å…¨è§’ã‚¹ãƒšãƒ¼ã‚¹,åŠè§’ã‚¹ãƒšãƒ¼ã‚¹,ã‚¿ãƒ–,æ”¹è¡Œã‚³ãƒ¼ãƒ‰<BR>
+	 *	ã‚’å‰Šé™¤ã™ã‚‹ã€‚<BR>
+	 *	@param getData å‰Šé™¤å¯¾è±¡æ–‡å­—åˆ—
+	 *	@param dummy ã‚ªãƒ¼ãƒãƒ¼ãƒ­ãƒ¼ãƒ‰ç”¨ãƒ€ãƒŸãƒ¼å¼•æ•°
+	 *	@return å‰Šé™¤ã—ãŸæ–‡å­—åˆ—
 	 */
 	public static String removeNeedlessChara (String getData,int dummy) {
 		String removeStr = removeReturn(getData) ;
 		StringBuilder retBuff = new StringBuilder() ;
 		char [] cValtmp = removeStr.toCharArray();
 		for(int i=0 ; i < cValtmp.length ; i++) {
-			if(cValtmp[i]!='@' 
+			if(cValtmp[i]!='ã€€' 
 			&& cValtmp[i]!=' ' 
 			&& cValtmp[i]!='\t') {
 				try {
@@ -623,10 +623,10 @@ public class StringOperator {
 	}
 	//
 	/**
-	 *	‰üsƒR[ƒhíœƒƒ\ƒbƒh<BR>
-	 *	•¶š—ñ‚©‚ç‰üsƒR[ƒh‚ğíœ‚·‚éB<BR>
-	 *	@param getData íœ‘ÎÛ•¶š—ñ
-	 *	@return íœ‚µ‚½•¶š—ñ
+	 *	æ”¹è¡Œã‚³ãƒ¼ãƒ‰å‰Šé™¤ãƒ¡ã‚½ãƒƒãƒ‰<BR>
+	 *	æ–‡å­—åˆ—ã‹ã‚‰æ”¹è¡Œã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹ã€‚<BR>
+	 *	@param getData å‰Šé™¤å¯¾è±¡æ–‡å­—åˆ—
+	 *	@return å‰Šé™¤ã—ãŸæ–‡å­—åˆ—
 	 */
 	public static String removeReturn (String getData) {
 		String retStr = new String(getData);
@@ -643,15 +643,15 @@ public class StringOperator {
 	}
 	//
 	//2002/02/15 Add K.Nakamura
-	/** •¶š—ñ‚ğw’è‚³‚ê‚½’·‚³–ˆ‚É‘}“ü‚µ‚Ä‚¢‚­B
-	 *	@param	argStr		‘ÎÛ•¶š—ñ
-	 *	@param	argLen		‹æØ‚è’·
-	 *	@param	argLinefeed	‘}“ü•¶š—ñ
-	 *	@param	argUnfeed	‹æØ‚è‘ÎÛŠO•¶š—ñ‚Ì—…—ñ•¶š —á: "ABj)"@‚È‚Ç
-	 *	@return Œ‹‰Ê•¶š—ñ
+	/** æ–‡å­—åˆ—ã‚’æŒ‡å®šã•ã‚ŒãŸé•·ã•æ¯ã«æŒ¿å…¥ã—ã¦ã„ãã€‚
+	 *	@param	argStr		å¯¾è±¡æ–‡å­—åˆ—
+	 *	@param	argLen		åŒºåˆ‡ã‚Šé•·
+	 *	@param	argLinefeed	æŒ¿å…¥æ–‡å­—åˆ—
+	 *	@param	argUnfeed	åŒºåˆ‡ã‚Šå¯¾è±¡å¤–æ–‡å­—åˆ—ã®ç¾…åˆ—æ–‡å­— ä¾‹: "ã€ã€‚ï¼‰)"ã€€ãªã©
+	 *	@return çµæœæ–‡å­—åˆ—
 	 */
 	public static String setLinefeed(String argStr, int argLen, String argLinefeed, String argUnfeed){
-		// ˆø”ƒ`ƒFƒbƒN
+		// å¼•æ•°ãƒã‚§ãƒƒã‚¯
 		if (argStr == null || argStr.equals("")){
 			return argStr;
 		}
@@ -664,39 +664,39 @@ public class StringOperator {
 		if (argStr.length() <= argLen){
 			return argStr;
 		}
-		// •Ô‹p•¶š—ñ
+		// è¿”å´æ–‡å­—åˆ—
 		StringBuilder retStr = new StringBuilder();
-		// ì‹Æ—p•¶š—ñ
+		// ä½œæ¥­ç”¨æ–‡å­—åˆ—
 		String targetStr = argStr;
 		int begine = 0;
 		int end = argLen;
 		while(true){
-			// w’è’·‚¾‚¯’Šo‚·‚éB
+			// æŒ‡å®šé•·ã ã‘æŠ½å‡ºã™ã‚‹ã€‚
 			retStr.append(targetStr.substring(begine,end));
-			// Ÿ‚Ìƒ|ƒCƒ“ƒg‚Éi‚ß‚é
+			// æ¬¡ã®ãƒã‚¤ãƒ³ãƒˆã«é€²ã‚ã‚‹
 			begine = end;
 			end = end + argLen;
 			if (argStr.length() <= begine){
-				// ŠJn“_‚ªEND‚Ü‚Å‚«‚½‚Ì‚ÅI—¹‚·‚é
+				// é–‹å§‹ç‚¹ãŒENDã¾ã§ããŸã®ã§çµ‚äº†ã™ã‚‹
 				break;
 			}else{
-				// ‹å“Ç“_‚È‚Ç‚Í‚»‚Ìs‚ÉŠÜ‚ß‚é
+				// å¥èª­ç‚¹ãªã©ã¯ãã®è¡Œã«å«ã‚ã‚‹
 				if (argUnfeed != null && !argUnfeed.equals("")){
 					if(argUnfeed.indexOf(targetStr.substring(begine,begine + 1)) > -1 ){
-						// ‹æØ‚è‘ÎÛŠO‚È‚Ì‚Å‚»‚Ìs‚É’Ç‰Á
+						// åŒºåˆ‡ã‚Šå¯¾è±¡å¤–ãªã®ã§ãã®è¡Œã«è¿½åŠ 
 						retStr.append(targetStr.substring(begine,begine + 1));
 						begine ++;
 						end ++;
 						if (argStr.length() <= begine){
-							// ŠJn“_‚ªEND‚Ü‚Å‚«‚½‚Ì‚ÅI—¹‚·‚é
+							// é–‹å§‹ç‚¹ãŒENDã¾ã§ããŸã®ã§çµ‚äº†ã™ã‚‹
 							break;
 						}
 					}
 				}
-				// w’è•¶š‚ğ‘}“ü‚·‚é
+				// æŒ‡å®šæ–‡å­—ã‚’æŒ¿å…¥ã™ã‚‹
 				retStr.append(argLinefeed);
 			}
-			// I—¹“_‚ª‘ÎÛ•¶š—ñ’·‚ğ’´‚¦‚½ê‡‚Í‘ÎÛ•¶š—ñ‚ÌEND‚É‚·‚éB
+			// çµ‚äº†ç‚¹ãŒå¯¾è±¡æ–‡å­—åˆ—é•·ã‚’è¶…ãˆãŸå ´åˆã¯å¯¾è±¡æ–‡å­—åˆ—ã®ENDã«ã™ã‚‹ã€‚
 			if (argStr.length() < end){
 				end = argStr.length();
 			}

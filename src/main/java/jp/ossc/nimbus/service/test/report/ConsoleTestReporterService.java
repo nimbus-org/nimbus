@@ -49,7 +49,7 @@ import jp.ossc.nimbus.service.test.TestScenario;
 import jp.ossc.nimbus.service.test.TestCase;
 
 /**
- * �W���o�͂Ƀe�X�g���ʂ����|�[�g����B<p>
+ * 標準出力にテスト結果をレポートする。<p>
  * 
  * @author M.Takata
  */

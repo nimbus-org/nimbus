@@ -36,7 +36,7 @@ import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * DefaultSemaphoreService‚Ìƒtƒ@ƒNƒgƒŠƒT[ƒrƒXB<p>
+ * DefaultSemaphoreServiceã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -50,10 +50,10 @@ public class DefaultSemaphoreServiceFactoryService
          = new DefaultSemaphoreService();
     
     /**
-     * {@link DefaultSemaphoreService}ƒT[ƒrƒX‚ğ¶¬‚·‚éB<p>
+     * {@link DefaultSemaphoreService}ã‚µãƒ¼ãƒ“ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return DefaultSemaphoreServiceƒT[ƒrƒX
-     * @exception Exception DefaultSemaphoreService‚Ì¶¬E‹N“®‚É¸”s‚µ‚½ê‡
+     * @return DefaultSemaphoreServiceã‚µãƒ¼ãƒ“ã‚¹
+     * @exception Exception DefaultSemaphoreServiceã®ç”Ÿæˆãƒ»èµ·å‹•ã«å¤±æ•—ã—ãŸå ´åˆ
      * @see DefaultSemaphoreService
      */
     protected Service createServiceInstance() throws Exception{
@@ -63,7 +63,7 @@ public class DefaultSemaphoreServiceFactoryService
         return semaphore;
     }
     
-    // DefaultSemaphoreServiceMBean‚ÌJavaDoc
+    // DefaultSemaphoreServiceMBeanã®JavaDoc
     public void setSemaphoreClassName(String name){
         template.setSemaphoreClassName(name);
         final Set instanceSet = getManagedInstanceSet();
@@ -75,12 +75,12 @@ public class DefaultSemaphoreServiceFactoryService
         }
     }
     
-    // DefaultSemaphoreServiceMBean‚ÌJavaDoc
+    // DefaultSemaphoreServiceMBeanã®JavaDoc
     public String getSemaphoreClassName(){
         return template.getSemaphoreClassName();
     }
     
-    // DefaultSemaphoreServiceMBean‚ÌJavaDoc
+    // DefaultSemaphoreServiceMBeanã®JavaDoc
     public void setResourceCapacity(int initial){
         template.setResourceCapacity(initial);
         final Set instanceSet = getManagedInstanceSet();
@@ -92,12 +92,12 @@ public class DefaultSemaphoreServiceFactoryService
         }
     }
     
-    // DefaultSemaphoreServiceMBean‚ÌJavaDoc
+    // DefaultSemaphoreServiceMBeanã®JavaDoc
     public int getResourceCapacity(){
         return template.getResourceCapacity();
     }
     
-    // DefaultSemaphoreServiceMBean‚ÌJavaDoc
+    // DefaultSemaphoreServiceMBeanã®JavaDoc
     public void release(){
         final Set instanceSet = getManagedInstanceSet();
         final Iterator instances = instanceSet.iterator();
@@ -107,7 +107,7 @@ public class DefaultSemaphoreServiceFactoryService
             semaphore.release();
         }
     }
-    // DefaultSemaphoreServiceMBean‚ÌJavaDoc
+    // DefaultSemaphoreServiceMBeanã®JavaDoc
     public void accept(){
         final Set instanceSet = getManagedInstanceSet();
         final Iterator instances = instanceSet.iterator();

@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.test;
 import java.io.Reader;
 
 /**
- * ƒeƒXƒgƒAƒNƒVƒ‡ƒ“ƒRƒ“ƒeƒLƒXƒgB<p>
+ * ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã€‚<p>
  * 
  * @author M.Ishida
  */

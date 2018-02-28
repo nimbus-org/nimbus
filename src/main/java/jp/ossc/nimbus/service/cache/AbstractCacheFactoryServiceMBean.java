@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.cache;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link AbstractCacheFactoryService}��MBean�C���^�t�F�[�X<p>
+ * {@link AbstractCacheFactoryService}のMBeanインタフェース<p>
  * 
  * @author M.Takata
  * @see AbstractCacheFactoryService
@@ -43,51 +43,51 @@ public interface AbstractCacheFactoryServiceMBean
  extends FactoryServiceBaseMBean{
     
     /**
-     * ���ӂꐧ����s��OverflowController�C���^�t�F�[�X�����������T�[�r�X�̃T�[�r�X���̔z���ݒ肷��B<p>
+     * あふれ制御を行うOverflowControllerインタフェースを実装したサービスのサービス名の配列を設定する。<p>
      *
-     * @param names ���ӂꐧ����s��OverflowController�C���^�t�F�[�X�����������T�[�r�X�̃T�[�r�X���̔z��
+     * @param names あふれ制御を行うOverflowControllerインタフェースを実装したサービスのサービス名の配列
      */
     public void setOverflowControllerServiceNames(ServiceName[] names);
     
     /**
-     * ���ӂꐧ����s��OverflowController�C���^�t�F�[�X�����������T�[�r�X�̃T�[�r�X���̔z����擾����B<p>
+     * あふれ制御を行うOverflowControllerインタフェースを実装したサービスのサービス名の配列を取得する。<p>
      *
-     * @return ���ӂꐧ����s��OverflowController�C���^�t�F�[�X�����������T�[�r�X�̃T�[�r�X���̔z��
+     * @return あふれ制御を行うOverflowControllerインタフェースを実装したサービスのサービス名の配列
      */
     public ServiceName[] getOverflowControllerServiceNames();
     
     /**
-     * �T�[�r�X�̒�~���ɃL���b�V�����N���A���邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Afalse�B<br>
+     * サービスの停止時にキャッシュをクリアするかどうかを設定する。<p>
+     * デフォルトは、false。<br>
      *
-     * @param isClear �T�[�r�X�̒�~���ɃL���b�V�����N���A����ꍇ�́Atrue
+     * @param isClear サービスの停止時にキャッシュをクリアする場合は、true
      */
     public void setClearOnStop(boolean isClear);
     
     /**
-     * �T�[�r�X�̒�~���ɃL���b�V�����N���A���邩�ǂ����𒲂ׂ�B<p>
+     * サービスの停止時にキャッシュをクリアするかどうかを調べる。<p>
      *
-     * @return �T�[�r�X�̒�~���ɃL���b�V�����N���A����ꍇ�́Atrue
+     * @return サービスの停止時にキャッシュをクリアする場合は、true
      */
     public boolean isClearOnStop();
     
     /**
-     * �T�[�r�X�̔j�����ɃL���b�V�����N���A���邩�ǂ�����ݒ肷��B<p>
-     * �f�t�H���g�́Atrue�B<br>
+     * サービスの破棄時にキャッシュをクリアするかどうかを設定する。<p>
+     * デフォルトは、true。<br>
      *
-     * @param isClear �T�[�r�X�̔j�����ɃL���b�V�����N���A����ꍇ�́Atrue
+     * @param isClear サービスの破棄時にキャッシュをクリアする場合は、true
      */
     public void setClearOnDestroy(boolean isClear);
     
     /**
-     * �T�[�r�X�̔j�����ɃL���b�V�����N���A���邩�ǂ����𒲂ׂ�B<p>
+     * サービスの破棄時にキャッシュをクリアするかどうかを調べる。<p>
      *
-     * @return �T�[�r�X�̔j�����ɃL���b�V�����N���A����ꍇ�́Atrue
+     * @return サービスの破棄時にキャッシュをクリアする場合は、true
      */
     public boolean isClearOnDestroy();
     
     /**
-     * �S�ẴL���b�V���l���A�Ǘ��Ώۂ̑S�ẴL���b�V������폜����B<p>
+     * 全てのキャッシュ値を、管理対象の全てのキャッシュから削除する。<p>
      */
     public void clear();
 }

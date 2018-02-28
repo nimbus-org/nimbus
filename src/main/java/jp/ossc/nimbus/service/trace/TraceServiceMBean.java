@@ -29,48 +29,48 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-// ƒpƒbƒP[ƒW
+// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 package jp.ossc.nimbus.service.trace;
-//ƒCƒ“ƒ|[ƒg
+//ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link TraceService}ƒT[ƒrƒXMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link TraceService}ã‚µãƒ¼ãƒ“ã‚¹MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  *
  * @author K.Nagai
  */
 public interface TraceServiceMBean extends ServiceBaseMBean {
 
-	/**ƒgƒŒ[ƒX—p‚ÌƒƒbƒZ[ƒWƒŒƒR[ƒhƒL[*/
-	//ƒgƒŒ[ƒXæ“¾—v‹ó•t
+	/**ãƒˆãƒ¬ãƒ¼ã‚¹ç”¨ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚­ãƒ¼*/
+	//ãƒˆãƒ¬ãƒ¼ã‚¹å–å¾—è¦æ±‚å—ä»˜æ™‚
 	public static final String TRACE_ENTRY_KEY     = "TRC__00001";
-	//ƒgƒŒ[ƒXæ“¾—v‹I—¹
+	//ãƒˆãƒ¬ãƒ¼ã‚¹å–å¾—è¦æ±‚çµ‚äº†æ™‚
 	public static final String TRACE_EXIT_KEY      = "TRC__00002";
-	//ƒlƒXƒgƒŒƒxƒ‹ˆÙí”­Œ©
+	//ãƒã‚¹ãƒˆãƒ¬ãƒ™ãƒ«ç•°å¸¸ç™ºè¦‹æ™‚
 	public static final String TRACE_NESTLEVEL_ERR = "TRC__00003";
-	/**ƒgƒŒ[ƒXæ“¾ƒŒƒxƒ‹Fo—Í‚È‚µ*/
+	/**ãƒˆãƒ¬ãƒ¼ã‚¹å–å¾—ãƒ¬ãƒ™ãƒ«ï¼šå‡ºåŠ›ãªã—*/
 	public static final int DISABLE_LEVEL   = 21;
-	/**ƒgƒŒ[ƒXæ“¾ƒŒƒxƒ‹FPUBLIC*/
+	/**ãƒˆãƒ¬ãƒ¼ã‚¹å–å¾—ãƒ¬ãƒ™ãƒ«ï¼šPUBLIC*/
 	public static final int PUBLIC_LEVEL    = 20;
-	/**ƒgƒŒ[ƒXæ“¾ƒŒƒxƒ‹FPROTECTED*/
+	/**ãƒˆãƒ¬ãƒ¼ã‚¹å–å¾—ãƒ¬ãƒ™ãƒ«ï¼šPROTECTED*/
 	public static final int PROTECTED_LEVEL = 10;
-	/**ƒgƒŒ[ƒXæ“¾ƒŒƒxƒ‹FPRIVATE*/
+	/**ãƒˆãƒ¬ãƒ¼ã‚¹å–å¾—ãƒ¬ãƒ™ãƒ«ï¼šPRIVATE*/
 	public static final int PRIVATE_LEVEL   = 0;
 	
-	/** “à•”“I‚Ég—p‚·‚éƒƒOƒT[ƒrƒX–¼æ“¾*/
+	/** å†…éƒ¨çš„ã«ä½¿ç”¨ã™ã‚‹ãƒ­ã‚°ã‚µãƒ¼ãƒ“ã‚¹åå–å¾—*/
 	public ServiceName getLogServiceName();
-	/** “à•”“I‚Ég—p‚·‚éƒƒOƒT[ƒrƒX–¼İ’è*/
+	/** å†…éƒ¨çš„ã«ä½¿ç”¨ã™ã‚‹ãƒ­ã‚°ã‚µãƒ¼ãƒ“ã‚¹åè¨­å®š*/
 	public void setLogServiceName(ServiceName name);
 
-	/** “à•”“I‚Ég—p‚·‚éƒGƒfƒBƒ^ƒtƒ@ƒCƒ“ƒ_ƒT[ƒrƒX–¼æ“¾*/
+	/** å†…éƒ¨çš„ã«ä½¿ç”¨ã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ã‚µãƒ¼ãƒ“ã‚¹åå–å¾—*/
 	public ServiceName getEditorFinderServiceName();
-	/** “à•”“I‚Ég—p‚·‚éƒGƒfƒBƒ^ƒtƒ@ƒCƒ“ƒ_ƒT[ƒrƒX–¼İ’è*/
+	/** å†…éƒ¨çš„ã«ä½¿ç”¨ã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ã‚µãƒ¼ãƒ“ã‚¹åè¨­å®š*/
 	public void setEditorFinderServiceName(ServiceName name);
-	/** ƒgƒŒ[ƒXƒŒƒxƒ‹İ’è*/
+	/** ãƒˆãƒ¬ãƒ¼ã‚¹ãƒ¬ãƒ™ãƒ«è¨­å®š*/
 	public void setTraceLevel(int level);
-	/** ƒlƒXƒgƒŒƒxƒ‹İ’è*/
+	/** ãƒã‚¹ãƒˆãƒ¬ãƒ™ãƒ«è¨­å®š*/
 	public void setNestedLevel(int level);
-	/** ƒZƒpƒŒƒ^İ’è*/
+	/** ã‚»ãƒ‘ãƒ¬ã‚¿è¨­å®š*/
 	public void setSeparator(String sep);
 }

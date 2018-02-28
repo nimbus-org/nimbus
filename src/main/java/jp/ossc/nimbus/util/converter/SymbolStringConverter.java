@@ -32,42 +32,42 @@
 package jp.ossc.nimbus.util.converter;
 
 /**
- * ‹L†ƒRƒ“ƒo[ƒ^B<p>
+ * è¨˜å·ã‚³ãƒ³ãƒãƒ¼ã‚¿ã€‚<p>
  * <table border=5>
- *     <tr><th>”¼Šp‹L†</th><th>‘SŠp‹L†</th></tr>
- *     <tr><td>&nbsp;</td><td>@</td></tr>
- *     <tr><td>!</td><td>I</td></tr>
- *     <tr><td>"</td><td>h</td></tr>
- *     <tr><td>#</td><td>”</td></tr>
- *     <tr><td>$</td><td></td></tr>
- *     <tr><td>%</td><td>“</td></tr>
- *     <tr><td>&amp</td><td>•</td></tr>
- *     <tr><td>'</td><td>f</td></tr>
- *     <tr><td>(</td><td>i</td></tr>
- *     <tr><td>)</td><td>j</td></tr>
- *     <tr><td>*</td><td>–</td></tr>
- *     <tr><td>+</td><td>{</td></tr>
- *     <tr><td>,</td><td>C</td></tr>
- *     <tr><td>-</td><td>|(MS932)</td></tr>
- *     <tr><td>.</td><td>D</td></tr>
- *     <tr><td>/</td><td>^</td></tr>
- *     <tr><td>:</td><td>F</td></tr>
- *     <tr><td>;</td><td>G</td></tr>
- *     <tr><td>&lt</td><td>ƒ</td></tr>
- *     <tr><td>=</td><td></td></tr>
- *     <tr><td>&gt</td><td>„</td></tr>
- *     <tr><td>?</td><td>H</td></tr>
- *     <tr><td>@</td><td>—</td></tr>
- *     <tr><td>[</td><td>m</td></tr>
- *     <tr><td>\</td><td>(MS932)</td></tr>
- *     <tr><td>]</td><td>n</td></tr>
- *     <tr><td>^</td><td>O</td></tr>
- *     <tr><td>_</td><td>Q</td></tr>
- *     <tr><td>`</td><td>e</td></tr>
- *     <tr><td>{</td><td>o</td></tr>
- *     <tr><td>|</td><td>b</td></tr>
- *     <tr><td>}</td><td>p</td></tr>
- *     <tr><td>~</td><td>`</td></tr>
+ *     <tr><th>åŠè§’è¨˜å·</th><th>å…¨è§’è¨˜å·</th></tr>
+ *     <tr><td>&nbsp;</td><td>ã€€</td></tr>
+ *     <tr><td>!</td><td>ï¼</td></tr>
+ *     <tr><td>"</td><td>â€</td></tr>
+ *     <tr><td>#</td><td>ï¼ƒ</td></tr>
+ *     <tr><td>$</td><td>ï¼„</td></tr>
+ *     <tr><td>%</td><td>ï¼…</td></tr>
+ *     <tr><td>&amp</td><td>ï¼†</td></tr>
+ *     <tr><td>'</td><td>â€™</td></tr>
+ *     <tr><td>(</td><td>ï¼ˆ</td></tr>
+ *     <tr><td>)</td><td>ï¼‰</td></tr>
+ *     <tr><td>*</td><td>ï¼Š</td></tr>
+ *     <tr><td>+</td><td>ï¼‹</td></tr>
+ *     <tr><td>,</td><td>ï¼Œ</td></tr>
+ *     <tr><td>-</td><td>ï¼(MS932)</td></tr>
+ *     <tr><td>.</td><td>ï¼</td></tr>
+ *     <tr><td>/</td><td>ï¼</td></tr>
+ *     <tr><td>:</td><td>ï¼š</td></tr>
+ *     <tr><td>;</td><td>ï¼›</td></tr>
+ *     <tr><td>&lt</td><td>ï¼œ</td></tr>
+ *     <tr><td>=</td><td>ï¼</td></tr>
+ *     <tr><td>&gt</td><td>ï¼</td></tr>
+ *     <tr><td>?</td><td>ï¼Ÿ</td></tr>
+ *     <tr><td>@</td><td>ï¼ </td></tr>
+ *     <tr><td>[</td><td>ï¼»</td></tr>
+ *     <tr><td>\</td><td>ï¿¥(MS932)</td></tr>
+ *     <tr><td>]</td><td>ï¼½</td></tr>
+ *     <tr><td>^</td><td>ï¼¾</td></tr>
+ *     <tr><td>_</td><td>ï¼¿</td></tr>
+ *     <tr><td>`</td><td>â€˜</td></tr>
+ *     <tr><td>{</td><td>ï½›</td></tr>
+ *     <tr><td>|</td><td>ï½œ</td></tr>
+ *     <tr><td>}</td><td>ï½</td></tr>
+ *     <tr><td>~</td><td>ï½</td></tr>
  * </table>
  *
  * @author M.Takata
@@ -78,16 +78,16 @@ public class SymbolStringConverter extends HankakuZenkakuStringConverter
     private static final long serialVersionUID = 7676178336951918605L;
     
     /**
-     * ”¼Šp¨‘SŠp•ÏŠ·í•Ê‚Ì‹L†ƒRƒ“ƒo[ƒ^‚ğ¶¬‚·‚éB<p>
+     * åŠè§’â†’å…¨è§’å¤‰æ›ç¨®åˆ¥ã®è¨˜å·ã‚³ãƒ³ãƒãƒ¼ã‚¿ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public SymbolStringConverter(){
         super(HANKAKU_TO_ZENKAKU);
     }
     
     /**
-     * ‹L†ƒRƒ“ƒo[ƒ^[‚ğ¶¬‚·‚éB<p>
+     * è¨˜å·ã‚³ãƒ³ãƒãƒ¼ã‚¿ãƒ¼ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param type •ÏŠ·í•Ê
+     * @param type å¤‰æ›ç¨®åˆ¥
      * @see HankakuZenkakuStringConverter#HANKAKU_TO_ZENKAKU
      * @see HankakuZenkakuStringConverter#ZENKAKU_TO_HANKAKU
      */
@@ -96,7 +96,7 @@ public class SymbolStringConverter extends HankakuZenkakuStringConverter
     }
     
     /**
-     * ”¼Šp‘SŠp•ÏŠ·ƒLƒƒƒ‰ƒNƒ^”z—ñ‚ğæ“¾‚·‚éB<p>
+     * åŠè§’å…¨è§’å¤‰æ›ã‚­ãƒ£ãƒ©ã‚¯ã‚¿é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return {@link SymbolCharacterConverter#CONV_CHARS}
      */
@@ -105,7 +105,7 @@ public class SymbolStringConverter extends HankakuZenkakuStringConverter
     }
     
     /**
-     * ”¼Šp‘SŠp•ÏŠ·•¶š—ñ”z—ñ‚ğæ“¾‚·‚éB<p>
+     * åŠè§’å…¨è§’å¤‰æ›æ–‡å­—åˆ—é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
      * @return null
      */

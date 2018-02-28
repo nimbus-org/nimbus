@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.jms;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link JMSConnectionFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link JMSConnectionFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see JMSConnectionFactoryService
@@ -43,185 +43,185 @@ public interface JMSConnectionFactoryServiceMBean
  extends ServiceBaseMBean{
     
     /**
-     * ©“®ÄÚ‘±ƒ‚[ƒhFÄÚ‘±‚µ‚È‚¢B<p>
+     * è‡ªå‹•å†æ¥ç¶šãƒ¢ãƒ¼ãƒ‰ï¼šå†æ¥ç¶šã—ãªã„ã€‚<p>
      */
     public static int AUTO_RECONNECT_MODE_NON = 0;
     
     /**
-     * ©“®ÄÚ‘±ƒ‚[ƒhFJNDIƒT[ƒo‰ñ•œŒŸ’m‚ÉÄÚ‘±‚·‚éB<p>
+     * è‡ªå‹•å†æ¥ç¶šãƒ¢ãƒ¼ãƒ‰ï¼šJNDIã‚µãƒ¼ãƒå›å¾©æ¤œçŸ¥æ™‚ã«å†æ¥ç¶šã™ã‚‹ã€‚<p>
      */
     public static int AUTO_RECONNECT_MODE_ON_RECOVER = ReconnectableConnection.RECONNECT_MODE_ON_RECOVER;
     
     /**
-     * ©“®ÄÚ‘±ƒ‚[ƒhFJNDIƒT[ƒoƒ_ƒEƒ“ŒŸ’m‚ÉÄÚ‘±‚·‚éB<p>
+     * è‡ªå‹•å†æ¥ç¶šãƒ¢ãƒ¼ãƒ‰ï¼šJNDIã‚µãƒ¼ãƒãƒ€ã‚¦ãƒ³æ¤œçŸ¥æ™‚ã«å†æ¥ç¶šã™ã‚‹ã€‚<p>
      */
     public static int AUTO_RECONNECT_MODE_ON_DEAD = ReconnectableConnection.RECONNECT_MODE_ON_DEAD;
     
     /**
-     * ConnectionFactoryName‘®«‚ÌƒfƒtƒHƒ‹ƒg’lB<p>
-     * ƒfƒtƒHƒ‹ƒg‚Å‚ÍAJ2EEƒRƒ“ƒeƒi‚Ìƒ[ƒJƒ‹‚ÌXAÚ‘±‚ğg—p‚·‚éB
+     * ConnectionFactoryNameå±æ€§ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€J2EEã‚³ãƒ³ãƒ†ãƒŠã®ãƒ­ãƒ¼ã‚«ãƒ«ã®XAæ¥ç¶šã‚’ä½¿ç”¨ã™ã‚‹ã€‚
      */
     public static final String DEFAULT_CONNECTION_FACTORY_NAME
          = "java:XAConnectionFactory";
     
     /**
-     * ConnectionKey‘®«‚ÌƒfƒtƒHƒ‹ƒg’lB<p>
+     * ConnectionKeyå±æ€§ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<p>
      */
     public static final String DEFAULT_CONNECTION_KEY
          = "JMSConnection";
     
     /**
-     * JMSƒRƒlƒNƒVƒ‡ƒ“‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‚P‚Â‚¾‚¯¶¬‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * JMSƒRƒlƒNƒVƒ‡ƒ“‚ÍA•¨—“I‚ÈÚ‘±æ‚ğ•\‚·ƒIƒuƒWƒFƒNƒg‚Å‚ ‚é‚½‚ßA’ÊíƒCƒ“ƒXƒ^ƒ“ƒX‚ÍA‚P‚Â‚¾‚¯¶¬‚µ‚Äg—p‚·‚×‚«‚Å‚ ‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * JMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ï¼‘ã¤ã ã‘ç”Ÿæˆã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * JMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã¯ã€ç‰©ç†çš„ãªæ¥ç¶šå…ˆã‚’è¡¨ã™ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã§ã‚ã‚‹ãŸã‚ã€é€šå¸¸ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¯ã€ï¼‘ã¤ã ã‘ç”Ÿæˆã—ã¦ä½¿ç”¨ã™ã¹ãã§ã‚ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      *
-     * @param isSingle JMSƒRƒlƒNƒVƒ‡ƒ“‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‚P‚Â‚¾‚¯¶¬‚·‚éê‡‚Ítrue
+     * @param isSingle JMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ï¼‘ã¤ã ã‘ç”Ÿæˆã™ã‚‹å ´åˆã¯true
      */
     public void setSingleConnection(boolean isSingle);
     
     /**
-     * JMSƒRƒlƒNƒVƒ‡ƒ“‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‚P‚Â‚¾‚¯¶¬‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * JMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ï¼‘ã¤ã ã‘ç”Ÿæˆã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AJMSƒRƒlƒNƒVƒ‡ƒ“‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‚P‚Â‚¾‚¯¶¬‚·‚é
+     * @return trueã®å ´åˆã€JMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ï¼‘ã¤ã ã‘ç”Ÿæˆã™ã‚‹
      */
     public boolean isSingleConnection();
     
     /**
-     * ¶¬‚µ‚½JMSƒRƒlƒNƒVƒ‡ƒ“‚ğŠÇ—‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * true‚ğİ’è‚µ‚½ê‡A¶¬‚µ‚½JMSƒRƒlƒNƒVƒ‡ƒ“‚ÍA‚±‚ÌƒT[ƒrƒX‚É‚æ‚Á‚Ä•Û‚³‚ê‚Ä‚¨‚èAƒT[ƒrƒX‚Ì’â~‚Æ‹¤‚ÉJMSƒRƒlƒNƒVƒ‡ƒ“‚ÌI—¹ˆ—‚ªs‚í‚ê‚éB
-     * ƒŠƒ\[ƒX‚ÌŠJ•ú˜R‚ê‚ğ–h‚®‚½‚ß‚Ì‹@”\‚Å‚ ‚éB<br>
-     * ’A‚µASingleConnection‘®«‚ğtrue‚Éİ’è‚µ‚Ä‚¢‚éê‡‚ÍA‚±‚Ì‘®«‚ğtrue‚É‚µ‚È‚­‚Ä‚à“¯—l‚Ìˆ—‚ªs‚í‚ê‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * ç”Ÿæˆã—ãŸJMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ç®¡ç†ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * trueã‚’è¨­å®šã—ãŸå ´åˆã€ç”Ÿæˆã—ãŸJMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã¯ã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã«ã‚ˆã£ã¦ä¿æŒã•ã‚Œã¦ãŠã‚Šã€ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢ã¨å…±ã«JMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã®çµ‚äº†å‡¦ç†ãŒè¡Œã‚ã‚Œã‚‹ã€‚
+     * ãƒªã‚½ãƒ¼ã‚¹ã®é–‹æ”¾æ¼ã‚Œã‚’é˜²ããŸã‚ã®æ©Ÿèƒ½ã§ã‚ã‚‹ã€‚<br>
+     * ä½†ã—ã€SingleConnectionå±æ€§ã‚’trueã«è¨­å®šã—ã¦ã„ã‚‹å ´åˆã¯ã€ã“ã®å±æ€§ã‚’trueã«ã—ãªãã¦ã‚‚åŒæ§˜ã®å‡¦ç†ãŒè¡Œã‚ã‚Œã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      *
-     * @param isManaged ¶¬‚µ‚½JMSƒRƒlƒNƒVƒ‡ƒ“‚ğŠÇ—‚·‚éê‡true
+     * @param isManaged ç”Ÿæˆã—ãŸJMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ç®¡ç†ã™ã‚‹å ´åˆtrue
      */
     public void setConnectionManagement(boolean isManaged);
     
     /**
-     * ¶¬‚µ‚½JMSƒRƒlƒNƒVƒ‡ƒ“‚ğŠÇ—‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * ç”Ÿæˆã—ãŸJMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ç®¡ç†ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A¶¬‚µ‚½JMSƒRƒlƒNƒVƒ‡ƒ“‚ğŠÇ—‚·‚é
+     * @return trueã®å ´åˆã€ç”Ÿæˆã—ãŸJMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ç®¡ç†ã™ã‚‹
      */
     public boolean isConnectionManagement();
     
     /**
-     * Connection‚ğ¶¬‚·‚é‚ÉConnection‚ÌŠJnˆ—‚ğ‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * Connectionã‚’ç”Ÿæˆã™ã‚‹æ™‚ã«Connectionã®é–‹å§‹å‡¦ç†ã‚’ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      *
-     * @param isStart Connection‚ÌŠJnˆ—‚ğ‚·‚éê‡true
+     * @param isStart Connectionã®é–‹å§‹å‡¦ç†ã‚’ã™ã‚‹å ´åˆtrue
      */
     public void setStartConnection(boolean isStart);
     
     /**
-     * Connection‚ÌŠJnˆ—‚ğ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * Connectionã®é–‹å§‹å‡¦ç†ã‚’ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡AConnection‚ÌŠJnˆ—‚ğ‚·‚é
+     * @return trueã®å ´åˆã€Connectionã®é–‹å§‹å‡¦ç†ã‚’ã™ã‚‹
      */
     public boolean isStartConnection();
     
     /**
-     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚±‚Åİ’è‚³‚ê‚½JndiFinderƒT[ƒrƒX‚ğg‚Á‚ÄAJNDIƒT[ƒo‚©‚çjavax.jms.ConnectionFactory‚ğlookup‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§è¨­å®šã•ã‚ŒãŸJndiFinderã‚µãƒ¼ãƒ“ã‚¹ã‚’ä½¿ã£ã¦ã€JNDIã‚µãƒ¼ãƒã‹ã‚‰javax.jms.ConnectionFactoryã‚’lookupã™ã‚‹ã€‚<br>
      *
-     * @param name JndiFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJndiFinderServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JndiFinderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return JndiFinderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJndiFinderServiceName();
     
     /**
-     * javax.jms.ConnectionFactory‚ÌJNDI–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_CONNECTION_FACTORY_NAME}B<br>
+     * javax.jms.ConnectionFactoryã®JNDIåã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_CONNECTION_FACTORY_NAME}ã€‚<br>
      *
-     * @param name javax.jms.ConnectionFactory‚ÌJNDI–¼
+     * @param name javax.jms.ConnectionFactoryã®JNDIå
      * @see #DEFAULT_CONNECTION_FACTORY_NAME
      */
     public void setConnectionFactoryName(String name);
     
     /**
-     * javax.jms.ConnectionFactory‚ÌJNDI–¼‚ğæ“¾‚·‚éB<p>
+     * javax.jms.ConnectionFactoryã®JNDIåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return javax.jms.ConnectionFactory‚ÌJNDI–¼
+     * @return javax.jms.ConnectionFactoryã®JNDIå
      */
     public String getConnectionFactoryName();
     
     /**
-     * JMSÚ‘±ƒ†[ƒU–¼‚ğİ’è‚·‚éB<p>
-     * J2EEƒRƒ“ƒeƒi‘¤‚ÅJMSÚ‘±‚É‘Î‚µ‚ÄƒZƒLƒ…ƒŠƒeƒBİ’è‚ğs‚Á‚Ä‚¢‚éê‡‚ÉAİ’è‚·‚éB<br>
+     * JMSæ¥ç¶šãƒ¦ãƒ¼ã‚¶åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * J2EEã‚³ãƒ³ãƒ†ãƒŠå´ã§JMSæ¥ç¶šã«å¯¾ã—ã¦ã‚»ã‚­ãƒ¥ãƒªãƒ†ã‚£è¨­å®šã‚’è¡Œã£ã¦ã„ã‚‹å ´åˆã«ã€è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param name JMSÚ‘±ƒ†[ƒU–¼
+     * @param name JMSæ¥ç¶šãƒ¦ãƒ¼ã‚¶å
      */
     public void setUserName(String name);
     
     /**
-     * JMSÚ‘±ƒ†[ƒU–¼‚ğæ“¾‚·‚éB<p>
+     * JMSæ¥ç¶šãƒ¦ãƒ¼ã‚¶åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JMSÚ‘±ƒ†[ƒU–¼
+     * @return JMSæ¥ç¶šãƒ¦ãƒ¼ã‚¶å
      */
     public String getUserName();
     
     /**
-     * JMSÚ‘±ƒpƒXƒ[ƒh‚ğİ’è‚·‚éB<p>
-     * J2EEƒRƒ“ƒeƒi‘¤‚ÅJMSÚ‘±‚É‘Î‚µ‚ÄƒZƒLƒ…ƒŠƒeƒBİ’è‚ğs‚Á‚Ä‚¢‚éê‡‚ÉAİ’è‚·‚éB<br>
+     * JMSæ¥ç¶šãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * J2EEã‚³ãƒ³ãƒ†ãƒŠå´ã§JMSæ¥ç¶šã«å¯¾ã—ã¦ã‚»ã‚­ãƒ¥ãƒªãƒ†ã‚£è¨­å®šã‚’è¡Œã£ã¦ã„ã‚‹å ´åˆã«ã€è¨­å®šã™ã‚‹ã€‚<br>
      *
-     * @param passwd JMSÚ‘±ƒpƒXƒ[ƒh
+     * @param passwd JMSæ¥ç¶šãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
      */
     public void setPassword(String passwd);
     
     /**
-     * JMSÚ‘±ƒpƒXƒ[ƒh‚ğæ“¾‚·‚éB<p>
+     * JMSæ¥ç¶šãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JMSÚ‘±ƒpƒXƒ[ƒh
+     * @return JMSæ¥ç¶šãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
      */
     public String getPassword();
     
     /**
-     * {@link jp.ossc.nimbus.service.cache.CacheMap CacheMap}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * SingleConnection‘®«‚ğtrue‚Éİ’è‚µ‚Ä‚¢‚éê‡‚Ì‚İ—LŒø‚ÅA¶¬‚µ‚½JMSƒRƒlƒNƒVƒ‡ƒ“‚ğA‚±‚±‚Åİ’è‚³‚ê‚½CacheMapƒT[ƒrƒX‚ÉƒLƒƒƒbƒVƒ…‚·‚éB
-     * ‚»‚ÌÛ‚ÌƒLƒƒƒbƒVƒ…ƒL[‚ÍAConnectionKey‘®«‚Ì’l‚ªg—p‚³‚ê‚éB<br>
-     * ƒLƒƒƒbƒVƒ…‚µ‚½JMSƒRƒlƒNƒVƒ‡ƒ“‚ªƒLƒƒƒbƒVƒ…ƒAƒEƒg‚³‚ê‚é‚ÆA‚»‚ê‚ğŒŸ’m‚µ‚ÄJMSƒRƒlƒNƒVƒ‡ƒ“‚ÌI—¹ˆ—‚ğs‚¤B<br>
-     * ’ÊíA{@link jp.ossc.nimbus.service.jndi.CachedJndiFinderService CachedJndiFinderService}‚ÌCacheMapServiceName‘®«‚Åİ’è‚µ‚½CacheMapƒT[ƒrƒX‚ğ‹¤—p‚µACachedJndiFinderService‚ªJNDIƒT[ƒoƒ_ƒEƒ“‚ğŒŸ’m‚µ‚½Û‚ÉAƒLƒƒƒbƒVƒ…‚ğƒNƒŠƒA‚·‚é‹@”\‚ğ—˜—p‚µ‚ÄAJMSƒRƒlƒNƒVƒ‡ƒ“‚ÌÄÚ‘±‚ğs‚¤B<br>
+     * {@link jp.ossc.nimbus.service.cache.CacheMap CacheMap}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * SingleConnectionå±æ€§ã‚’trueã«è¨­å®šã—ã¦ã„ã‚‹å ´åˆã®ã¿æœ‰åŠ¹ã§ã€ç”Ÿæˆã—ãŸJMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ã€ã“ã“ã§è¨­å®šã•ã‚ŒãŸCacheMapã‚µãƒ¼ãƒ“ã‚¹ã«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹ã€‚
+     * ãã®éš›ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚­ãƒ¼ã¯ã€ConnectionKeyå±æ€§ã®å€¤ãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚<br>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ãŸJMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãŒã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚¢ã‚¦ãƒˆã•ã‚Œã‚‹ã¨ã€ãã‚Œã‚’æ¤œçŸ¥ã—ã¦JMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã®çµ‚äº†å‡¦ç†ã‚’è¡Œã†ã€‚<br>
+     * é€šå¸¸ã€{@link jp.ossc.nimbus.service.jndi.CachedJndiFinderService CachedJndiFinderService}ã®CacheMapServiceNameå±æ€§ã§è¨­å®šã—ãŸCacheMapã‚µãƒ¼ãƒ“ã‚¹ã‚’å…±ç”¨ã—ã€CachedJndiFinderServiceãŒJNDIã‚µãƒ¼ãƒãƒ€ã‚¦ãƒ³ã‚’æ¤œçŸ¥ã—ãŸéš›ã«ã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹æ©Ÿèƒ½ã‚’åˆ©ç”¨ã—ã¦ã€JMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã®å†æ¥ç¶šã‚’è¡Œã†ã€‚<br>
      *
-     * @param name CacheMapƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name CacheMapã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setConnectionCacheMapServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.cache.CacheMap CacheMap}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.cache.CacheMap CacheMap}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return CacheMapƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return CacheMapã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getConnectionCacheMapServiceName();
     
     /**
-     * JMSƒRƒlƒNƒVƒ‡ƒ“‚ğƒLƒƒƒbƒVƒ…‚·‚éÛ‚ÌƒLƒƒƒbƒVƒ…ƒL[‚ğİ’è‚·‚éB<p>
-     * SingleConnection‘®«‚ğtrue‚É‚µ‚ÄAConnectionCacheMapServiceName‘®«‚ğİ’è‚µ‚Ä‚¢‚éê‡‚ÉAJMSƒRƒlƒNƒVƒ‡ƒ“‚ğ{@link jp.ossc.nimbus.service.cache.CacheMap CacheMap}ƒT[ƒrƒX‚ÉƒLƒƒƒbƒVƒ…‚·‚éÛ‚ÌƒL[‚ğİ’è‚·‚éB<br>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_CONNECTION_KEY}‚Å‚ ‚éB<br>
+     * JMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹éš›ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * SingleConnectionå±æ€§ã‚’trueã«ã—ã¦ã€ConnectionCacheMapServiceNameå±æ€§ã‚’è¨­å®šã—ã¦ã„ã‚‹å ´åˆã«ã€JMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’{@link jp.ossc.nimbus.service.cache.CacheMap CacheMap}ã‚µãƒ¼ãƒ“ã‚¹ã«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹éš›ã®ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<br>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_CONNECTION_KEY}ã§ã‚ã‚‹ã€‚<br>
      *
-     * @param key JMSƒRƒlƒNƒVƒ‡ƒ“‚ğƒLƒƒƒbƒVƒ…‚·‚éÛ‚ÌƒLƒƒƒbƒVƒ…ƒL[
+     * @param key JMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹éš›ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚­ãƒ¼
      * @see #DEFAULT_CONNECTION_KEY
      */
     public void setConnectionKey(String key);
     
     /**
-     * JMSƒRƒlƒNƒVƒ‡ƒ“‚ğƒLƒƒƒbƒVƒ…‚·‚éÛ‚ÌƒLƒƒƒbƒVƒ…ƒL[‚ğæ“¾‚·‚éB<p>
+     * JMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹éš›ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return JMSƒRƒlƒNƒVƒ‡ƒ“‚ğƒLƒƒƒbƒVƒ…‚·‚éÛ‚ÌƒLƒƒƒbƒVƒ…ƒL[
+     * @return JMSã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹éš›ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚­ãƒ¼
      */
     public String getConnectionKey();
     
     /**
-     * ©“®ÄÚ‘±ƒ‚[ƒh‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #AUTO_RECONNECT_MODE_NON}‚ÅAÄÚ‘±‚µ‚È‚¢B<br>
-     * ÄÚ‘±‚ğs‚¤ƒ‚[ƒh‚Éİ’è‚µ‚½ê‡‚ÍAJNDIƒT[ƒo‚Ì¶€‚ğŒŸ’m‚µ‚ÄA©“®ÄÚ‘±‚ğs‚¤B<br>
-     * ‚Ü‚½‚»‚Ìê‡‚ÍA{@link #setJndiKeepAliveCheckerServiceName(ServiceName)}‚ÅAJNDIƒT[ƒo‚Ì¶€‚ğŒŸ’m‚·‚é{@link jp.ossc.nimbus.service.keepalive.KeepAliveChecker KeepAliveChecker}ƒT[ƒrƒX‚ğİ’è‚µ‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B<br>
+     * è‡ªå‹•å†æ¥ç¶šãƒ¢ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #AUTO_RECONNECT_MODE_NON}ã§ã€å†æ¥ç¶šã—ãªã„ã€‚<br>
+     * å†æ¥ç¶šã‚’è¡Œã†ãƒ¢ãƒ¼ãƒ‰ã«è¨­å®šã—ãŸå ´åˆã¯ã€JNDIã‚µãƒ¼ãƒã®ç”Ÿæ­»ã‚’æ¤œçŸ¥ã—ã¦ã€è‡ªå‹•å†æ¥ç¶šã‚’è¡Œã†ã€‚<br>
+     * ã¾ãŸãã®å ´åˆã¯ã€{@link #setJndiKeepAliveCheckerServiceName(ServiceName)}ã§ã€JNDIã‚µãƒ¼ãƒã®ç”Ÿæ­»ã‚’æ¤œçŸ¥ã™ã‚‹{@link jp.ossc.nimbus.service.keepalive.KeepAliveChecker KeepAliveChecker}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã—ãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚<br>
      *
-     * @param mode ©“®ÄÚ‘±ƒ‚[ƒh
+     * @param mode è‡ªå‹•å†æ¥ç¶šãƒ¢ãƒ¼ãƒ‰
      * @see #AUTO_RECONNECT_MODE_NON
      * @see #AUTO_RECONNECT_MODE_ON_RECOVER
      * @see #AUTO_RECONNECT_MODE_ON_DEAD
@@ -230,68 +230,68 @@ public interface JMSConnectionFactoryServiceMBean
     public void setAutoReconnectMode(int mode);
     
     /**
-     * ©“®ÄÚ‘±ƒ‚[ƒh‚ğİ’è‚·‚éB<p>
+     * è‡ªå‹•å†æ¥ç¶šãƒ¢ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @return ©“®ÄÚ‘±ƒ‚[ƒh
+     * @return è‡ªå‹•å†æ¥ç¶šãƒ¢ãƒ¼ãƒ‰
      */
     public int getAutoReconnectMode();
     
     /**
-     * JNDIƒT[ƒo‚Ì¶€‚ğŒŸ’m‚·‚é{@link jp.ossc.nimbus.service.keepalive.KeepAliveChecker KeepAliveChecker}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * JNDIã‚µãƒ¼ãƒã®ç”Ÿæ­»ã‚’æ¤œçŸ¥ã™ã‚‹{@link jp.ossc.nimbus.service.keepalive.KeepAliveChecker KeepAliveChecker}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name KeepAliveCheckerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name KeepAliveCheckerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJndiKeepAliveCheckerServiceName(ServiceName name);
     
     /**
-     * JNDIƒT[ƒo‚Ì¶€‚ğŒŸ’m‚·‚é{@link jp.ossc.nimbus.service.keepalive.KeepAliveChecker KeepAliveChecker}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * JNDIã‚µãƒ¼ãƒã®ç”Ÿæ­»ã‚’æ¤œçŸ¥ã™ã‚‹{@link jp.ossc.nimbus.service.keepalive.KeepAliveChecker KeepAliveChecker}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return KeepAliveCheckerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return KeepAliveCheckerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJndiKeepAliveCheckerServiceName();
     
     /**
-     * ©“®ÄÚ‘±‚ÉAÚ‘±‚É¸”s‚µ‚½ê‡‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAnull‚ÅAƒƒOo—Í‚Ís‚í‚ê‚È‚¢B<br>
+     * è‡ªå‹•å†æ¥ç¶šæ™‚ã«ã€æ¥ç¶šã«å¤±æ•—ã—ãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€nullã§ã€ãƒ­ã‚°å‡ºåŠ›ã¯è¡Œã‚ã‚Œãªã„ã€‚<br>
      * 
-     * @param id ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @param id ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public void setAutoReconnectErrorLogMessageId(String id);
     
     /**
-     * ©“®ÄÚ‘±‚ÉAÚ‘±‚É¸”s‚µ‚½ê‡‚Éo—Í‚·‚éƒƒO‚ÌƒƒbƒZ[ƒWID‚ğæ“¾‚·‚éB<p>
+     * è‡ªå‹•å†æ¥ç¶šæ™‚ã«ã€æ¥ç¶šã«å¤±æ•—ã—ãŸå ´åˆã«å‡ºåŠ›ã™ã‚‹ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸IDã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒƒO‚ÌƒƒbƒZ[ƒWID
+     * @return ãƒ­ã‚°ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ID
      */
     public String getAutoReconnectErrorLogMessageId();
     
     /**
-     * ©“®ÄÚ‘±‚ÉAÚ‘±‚É¸”s‚µ‚½ê‡‚ÉƒŠƒgƒ‰ƒCˆ—‚ğs‚¤‰ñ”‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0‚ÅƒŠƒgƒ‰ƒC‚µ‚È‚¢B<br>
+     * è‡ªå‹•å†æ¥ç¶šæ™‚ã«ã€æ¥ç¶šã«å¤±æ•—ã—ãŸå ´åˆã«ãƒªãƒˆãƒ©ã‚¤å‡¦ç†ã‚’è¡Œã†å›æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã§ãƒªãƒˆãƒ©ã‚¤ã—ãªã„ã€‚<br>
      *
-     * @param count ƒŠƒgƒ‰ƒC‰ñ”
+     * @param count ãƒªãƒˆãƒ©ã‚¤å›æ•°
      */
     public void setAutoReconnectMaxRetryCount(int count);
     
     /**
-     * ©“®ÄÚ‘±‚ÉAÚ‘±‚É¸”s‚µ‚½ê‡‚ÉƒŠƒgƒ‰ƒCˆ—‚ğs‚¤‰ñ”‚ğæ“¾‚·‚éB<p>
+     * è‡ªå‹•å†æ¥ç¶šæ™‚ã«ã€æ¥ç¶šã«å¤±æ•—ã—ãŸå ´åˆã«ãƒªãƒˆãƒ©ã‚¤å‡¦ç†ã‚’è¡Œã†å›æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒgƒ‰ƒC‰ñ”
+     * @return ãƒªãƒˆãƒ©ã‚¤å›æ•°
      */
     public int getAutoReconnectMaxRetryCount();
     
     /**
-     * ©“®ÄÚ‘±‚ÉAÚ‘±‚É¸”s‚µ‚½ê‡‚ÉƒŠƒgƒ‰ƒCˆ—‚ğs‚¤ŠÔŠu[ms]‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA1000[ms]B<br>
+     * è‡ªå‹•å†æ¥ç¶šæ™‚ã«ã€æ¥ç¶šã«å¤±æ•—ã—ãŸå ´åˆã«ãƒªãƒˆãƒ©ã‚¤å‡¦ç†ã‚’è¡Œã†é–“éš”[ms]ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€1000[ms]ã€‚<br>
      *
-     * @param interval ƒŠƒgƒ‰ƒCŠÔŠu
+     * @param interval ãƒªãƒˆãƒ©ã‚¤é–“éš”
      */
     public void setAutoReconnectRetryInterval(long interval);
     
     /**
-     * ©“®ÄÚ‘±‚ÉAÚ‘±‚É¸”s‚µ‚½ê‡‚ÉƒŠƒgƒ‰ƒCˆ—‚ğs‚¤ŠÔŠu[ms]‚ğæ“¾‚·‚éB<p>
+     * è‡ªå‹•å†æ¥ç¶šæ™‚ã«ã€æ¥ç¶šã«å¤±æ•—ã—ãŸå ´åˆã«ãƒªãƒˆãƒ©ã‚¤å‡¦ç†ã‚’è¡Œã†é–“éš”[ms]ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒŠƒgƒ‰ƒCŠÔŠu
+     * @return ãƒªãƒˆãƒ©ã‚¤é–“éš”
      */
     public long getAutoReconnectRetryInterval();
 }

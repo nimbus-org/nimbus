@@ -32,44 +32,44 @@
 package jp.ossc.nimbus.service.cache;
 
 /**
- * ���ӂ�A���S���Y���B<p>
- * ���ӂꂪ���������ꍇ�ɁA�ǂ̃L���b�V���I�u�W�F�N�g�����ӂ��ׂ��������肷��A���S���Y�����������邽�߂̃C���^�t�F�[�X�ł���B<br>
+ * あふれアルゴリズム。<p>
+ * あふれが発生した場合に、どのキャッシュオブジェクトがあふれるべきかを決定するアルゴリズムを実装するためのインタフェースである。<br>
  *
  * @author M.Takata
  */
 public interface OverflowAlgorithm{
     
     /**
-     * �L���b�V���Q�Ƃ�ǉ�����B<p>
+     * キャッシュ参照を追加する。<p>
      *
-     * @param ref �L���b�V���Q��
+     * @param ref キャッシュ参照
      */
     public void add(CachedReference ref);
     
     /**
-     * �L���b�V���Q�Ƃ��폜����B<p>
+     * キャッシュ参照を削除する。<p>
      *
-     * @param ref �L���b�V���Q��
+     * @param ref キャッシュ参照
      */
     public void remove(CachedReference ref);
     
     /**
-     * ���ӂ�A���S���Y���Œǉ����ꂽ�L���b�V���Q�Ƃ��炠�ӂ��L���b�V���Q�Ƃ����肷��B<p>
+     * あふれアルゴリズムで追加されたキャッシュ参照からあふれるキャッシュ参照を決定する。<p>
      *
-     * @return �A���S���Y���Ō��肳�ꂽ���ӂ�L���b�V���Q��
+     * @return アルゴリズムで決定されたあふれキャッシュ参照
      */
     public CachedReference overflow();
     
     /**
-     * ���ӂ�A���S���Y���Œǉ����ꂽ�L���b�V���Q�Ƃ��炠�ӂ��L���b�V���Q�Ƃ����肷��B<p>
+     * あふれアルゴリズムで追加されたキャッシュ参照からあふれるキャッシュ参照を決定する。<p>
      *
-     * @param size ���ӂꐔ
-     * @return �A���S���Y���Ō��肳�ꂽ���ӂ�L���b�V���Q��
+     * @param size あふれ数
+     * @return アルゴリズムで決定されたあふれキャッシュ参照
      */
     public CachedReference[] overflow(int size);
     
     /**
-     * ���ӂ�A���S���Y�������s���邽�߂ɕێ����Ă����������������B<p>
+     * あふれアルゴリズムを実行するために保持している情報を初期化する。<p>
      */
     public void reset();
 }

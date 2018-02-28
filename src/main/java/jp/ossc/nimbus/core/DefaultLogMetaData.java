@@ -36,91 +36,91 @@ import org.w3c.dom.*;
 
 
 /**
- * &lt;default-log&gt;—v‘fƒƒ^ƒf[ƒ^B<p>
- * ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚Ì&lt;server&gt;‚Ìq—v‘f&lt;default-log&gt;—v‘f‚É‹Lq‚³‚ê‚½“à—e‚ğŠi”[‚·‚éƒƒ^ƒf[ƒ^ƒRƒ“ƒeƒi‚Å‚ ‚éB<p>
+ * &lt;default-log&gt;è¦ç´ ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
+ * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®&lt;server&gt;ã®å­è¦ç´ &lt;default-log&gt;è¦ç´ ã«è¨˜è¿°ã•ã‚ŒãŸå†…å®¹ã‚’æ ¼ç´ã™ã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠã§ã‚ã‚‹ã€‚<p>
  *
  * @author M.Takata
- * @see <a href="nimbus-service_1_0.dtd">ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹DTD</a>
+ * @see <a href="nimbus-service_1_0.dtd">ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«DTD</a>
  */
 public class DefaultLogMetaData extends MetaData implements Serializable{
     
     private static final long serialVersionUID = 154759319695696184L;
     
     /**
-     * &lt;log&gt;—v‘f‚Ì—v‘f–¼•¶š—ñB<p>
+     * &lt;log&gt;è¦ç´ ã®è¦ç´ åæ–‡å­—åˆ—ã€‚<p>
      */
     public static final String DEFAULT_LOG_TAG_NAME = "default-log";
     
     /**
-     * &lt;debug&gt;—v‘f‚Ì—v‘f–¼•¶š—ñB<p>
+     * &lt;debug&gt;è¦ç´ ã®è¦ç´ åæ–‡å­—åˆ—ã€‚<p>
      */
     private static final String DEBUG_TAG_NAME = "debug";
     
     /**
-     * &lt;information&gt;—v‘f‚Ì—v‘f–¼•¶š—ñB<p>
+     * &lt;information&gt;è¦ç´ ã®è¦ç´ åæ–‡å­—åˆ—ã€‚<p>
      */
     private static final String INFORMATION_TAG_NAME = "information";
     
     /**
-     * &lt;warning&gt;—v‘f‚Ì—v‘f–¼•¶š—ñB<p>
+     * &lt;warning&gt;è¦ç´ ã®è¦ç´ åæ–‡å­—åˆ—ã€‚<p>
      */
     private static final String WARNING_TAG_NAME = "warning";
     
     /**
-     * &lt;error&gt;—v‘f‚Ì—v‘f–¼•¶š—ñB<p>
+     * &lt;error&gt;è¦ç´ ã®è¦ç´ åæ–‡å­—åˆ—ã€‚<p>
      */
     private static final String ERROR_TAG_NAME = "error";
     
     /**
-     * &lt;fatal&gt;—v‘f‚Ì—v‘f–¼•¶š—ñB<p>
+     * &lt;fatal&gt;è¦ç´ ã®è¦ç´ åæ–‡å­—åˆ—ã€‚<p>
      */
     private static final String FATAL_TAG_NAME = "fatal";
     
     /**
-     * ƒƒOƒJƒeƒSƒŠ—v‘f‚Ìoutput‘®«‚Ì‘®«–¼•¶š—ñB<p>
+     * ãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªè¦ç´ ã®outputå±æ€§ã®å±æ€§åæ–‡å­—åˆ—ã€‚<p>
      */
     private static final String OUTPUT_ATTRIBUTE_NAME = "output";
     
     /**
-     * &lt;debug&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^B<p>
+     * &lt;debug&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
      *
      * @see #getDebug()
      */
     private LogCategoryMetaData debug;
     
     /**
-     * &lt;information&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^B<p>
+     * &lt;information&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
      *
      * @see #getInformation()
      */
     private LogCategoryMetaData information;
     
     /**
-     * &lt;warning&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^B<p>
+     * &lt;warning&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
      *
      * @see #getWarning()
      */
     private LogCategoryMetaData warning;
     
     /**
-     * &lt;error&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^B<p>
+     * &lt;error&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
      *
      * @see #getError()
      */
     private LogCategoryMetaData error;
     
     /**
-     * &lt;fatal&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^B<p>
+     * &lt;fatal&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
      *
      * @see #getFatal()
      */
     private LogCategoryMetaData fatal;
     
     /**
-     * e—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
-     * DefaultLogMetaData‚Ìe—v‘f‚ÍA&lt;server&gt;—v‘f‚ğ•\‚·ServerMetaData‚Å‚ ‚éB<br>
+     * è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+     * DefaultLogMetaDataã®è¦ªè¦ç´ ã¯ã€&lt;server&gt;è¦ç´ ã‚’è¡¨ã™ServerMetaDataã§ã‚ã‚‹ã€‚<br>
      * 
-     * @param parent e—v‘f‚Ìƒƒ^ƒf[ƒ^
+     * @param parent è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      * @see ServerMetaData
      */
     public DefaultLogMetaData(MetaData parent){
@@ -128,105 +128,105 @@ public class DefaultLogMetaData extends MetaData implements Serializable{
     }
     
     /**
-     * &lt;default-log&gt;—v‘f‚Ìq—v‘f&lt;debug&gt;—v‘f‚Åw’è‚³‚ê‚½ƒƒOƒJƒeƒSƒŠ‚Ìƒƒ^ƒf[ƒ^‚ğæ“¾‚·‚éB<p>
-     * &lt;debug&gt;—v‘f‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B<br>
+     * &lt;default-log&gt;è¦ç´ ã®å­è¦ç´ &lt;debug&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * &lt;debug&gt;è¦ç´ ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚<br>
      *
-     * @return &lt;debug&gt;—v‘f‚Åw’è‚³‚ê‚½ƒƒOƒJƒeƒSƒŠ‚Ìƒƒ^ƒf[ƒ^
+     * @return &lt;debug&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public LogCategoryMetaData getDebug(){
         return debug;
     }
     
     /**
-     * &lt;default-log&gt;—v‘f‚Ìq—v‘f&lt;debug&gt;—v‘f‚Åw’è‚³‚ê‚½ƒƒOƒJƒeƒSƒŠ‚Ìƒƒ^ƒf[ƒ^‚ğİ’è‚·‚éB<p>
+     * &lt;default-log&gt;è¦ç´ ã®å­è¦ç´ &lt;debug&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param data &lt;debug&gt;—v‘f‚Åw’è‚³‚ê‚½ƒƒOƒJƒeƒSƒŠ‚Ìƒƒ^ƒf[ƒ^
+     * @param data &lt;debug&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public void setDebug(LogCategoryMetaData data){
         debug = data;
     }
     
     /**
-     * &lt;default-log&gt;—v‘f‚Ìq—v‘f&lt;information&gt;—v‘f‚Åw’è‚³‚ê‚½ƒƒOƒJƒeƒSƒŠ‚Ìƒƒ^ƒf[ƒ^‚ğæ“¾‚·‚éB<p>
-     * &lt;information&gt;—v‘f‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B<br>
+     * &lt;default-log&gt;è¦ç´ ã®å­è¦ç´ &lt;information&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * &lt;information&gt;è¦ç´ ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚<br>
      *
-     * @return &lt;information&gt;—v‘f‚Åw’è‚³‚ê‚½ƒƒOƒJƒeƒSƒŠ‚Ìƒƒ^ƒf[ƒ^
+     * @return &lt;information&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public LogCategoryMetaData getInformation(){
         return information;
     }
     
     /**
-     * &lt;default-log&gt;—v‘f‚Ìq—v‘f&lt;information&gt;—v‘f‚Åw’è‚³‚ê‚½ƒƒOƒJƒeƒSƒŠ‚Ìƒƒ^ƒf[ƒ^‚ğİ’è‚·‚éB<p>
+     * &lt;default-log&gt;è¦ç´ ã®å­è¦ç´ &lt;information&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param data &lt;information&gt;—v‘f‚Åw’è‚³‚ê‚½ƒƒOƒJƒeƒSƒŠ‚Ìƒƒ^ƒf[ƒ^
+     * @param data &lt;information&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public void setInformation(LogCategoryMetaData data){
         information = data;
     }
     
     /**
-     * &lt;default-log&gt;—v‘f‚Ìq—v‘f&lt;warning&gt;—v‘f‚Åw’è‚³‚ê‚½ƒƒOƒJƒeƒSƒŠ‚Ìƒƒ^ƒf[ƒ^‚ğæ“¾‚·‚éB<p>
-     * &lt;warning&gt;—v‘f‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B<br>
+     * &lt;default-log&gt;è¦ç´ ã®å­è¦ç´ &lt;warning&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * &lt;warning&gt;è¦ç´ ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚<br>
      *
-     * @return &lt;warning&gt;—v‘f‚Åw’è‚³‚ê‚½ƒƒOƒJƒeƒSƒŠ‚Ìƒƒ^ƒf[ƒ^
+     * @return &lt;warning&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public LogCategoryMetaData getWarning(){
         return warning;
     }
     
     /**
-     * &lt;default-log&gt;—v‘f‚Ìq—v‘f&lt;warning&gt;—v‘f‚Åw’è‚³‚ê‚½ƒƒOƒJƒeƒSƒŠ‚Ìƒƒ^ƒf[ƒ^‚ğİ’è‚·‚éB<p>
+     * &lt;default-log&gt;è¦ç´ ã®å­è¦ç´ &lt;warning&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param data &lt;warning&gt;—v‘f‚Åw’è‚³‚ê‚½ƒƒOƒJƒeƒSƒŠ‚Ìƒƒ^ƒf[ƒ^
+     * @param data &lt;warning&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public void setWarning(LogCategoryMetaData data){
         warning = data;
     }
     
     /**
-     * &lt;default-log&gt;—v‘f‚Ìq—v‘f&lt;error&gt;—v‘f‚Åw’è‚³‚ê‚½ƒƒOƒJƒeƒSƒŠ‚Ìƒƒ^ƒf[ƒ^‚ğæ“¾‚·‚éB<p>
-     * &lt;error&gt;—v‘f‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B<br>
+     * &lt;default-log&gt;è¦ç´ ã®å­è¦ç´ &lt;error&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * &lt;error&gt;è¦ç´ ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚<br>
      *
-     * @return &lt;error&gt;—v‘f‚Åw’è‚³‚ê‚½ƒƒOƒJƒeƒSƒŠ‚Ìƒƒ^ƒf[ƒ^
+     * @return &lt;error&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public LogCategoryMetaData getError(){
         return error;
     }
     
     /**
-     * &lt;default-log&gt;—v‘f‚Ìq—v‘f&lt;error&gt;—v‘f‚Åw’è‚³‚ê‚½ƒƒOƒJƒeƒSƒŠ‚Ìƒƒ^ƒf[ƒ^‚ğİ’è‚·‚éB<p>
+     * &lt;default-log&gt;è¦ç´ ã®å­è¦ç´ &lt;error&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param data &lt;error&gt;—v‘f‚Åw’è‚³‚ê‚½ƒƒOƒJƒeƒSƒŠ‚Ìƒƒ^ƒf[ƒ^
+     * @param data &lt;error&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public void setError(LogCategoryMetaData data){
         error = data;
     }
     
     /**
-     * &lt;default-log&gt;—v‘f‚Ìq—v‘f&lt;fatal&gt;—v‘f‚Åw’è‚³‚ê‚½ƒƒOƒJƒeƒSƒŠ‚Ìƒƒ^ƒf[ƒ^‚ğæ“¾‚·‚éB<p>
-     * &lt;fatal&gt;—v‘f‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAnull‚ğ•Ô‚·B<br>
+     * &lt;default-log&gt;è¦ç´ ã®å­è¦ç´ &lt;fatal&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     * &lt;fatal&gt;è¦ç´ ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€nullã‚’è¿”ã™ã€‚<br>
      *
-     * @return &lt;fatal&gt;—v‘f‚Åw’è‚³‚ê‚½ƒƒOƒJƒeƒSƒŠ‚Ìƒƒ^ƒf[ƒ^
+     * @return &lt;fatal&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public LogCategoryMetaData getFatal(){
         return fatal;
     }
     
     /**
-     * &lt;default-log&gt;—v‘f‚Ìq—v‘f&lt;fatal&gt;—v‘f‚Åw’è‚³‚ê‚½ƒƒOƒJƒeƒSƒŠ‚Ìƒƒ^ƒf[ƒ^‚ğİ’è‚·‚éB<p>
+     * &lt;default-log&gt;è¦ç´ ã®å­è¦ç´ &lt;fatal&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param data &lt;fatal&gt;—v‘f‚Åw’è‚³‚ê‚½ƒƒOƒJƒeƒSƒŠ‚Ìƒƒ^ƒf[ƒ^
+     * @param data &lt;fatal&gt;è¦ç´ ã§æŒ‡å®šã•ã‚ŒãŸãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public void setFatal(LogCategoryMetaData data){
         fatal = data;
     }
     
     /**
-     * &lt;log&gt;—v‘f‚ÌElement‚ğƒp[ƒX‚µ‚ÄA©•ª©g‚Ì‰Šú‰»‚ğs‚¤B<p>
+     * &lt;log&gt;è¦ç´ ã®Elementã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦ã€è‡ªåˆ†è‡ªèº«ã®åˆæœŸåŒ–ã‚’è¡Œã†ã€‚<p>
      *
-     * @param element &lt;log&gt;—v‘f‚ÌElement
-     * @exception DeploymentException &lt;log&gt;—v‘f‚Ì‰ğÍ‚É¸”s‚µ‚½ê‡
+     * @param element &lt;log&gt;è¦ç´ ã®Element
+     * @exception DeploymentException &lt;log&gt;è¦ç´ ã®è§£æã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void importXML(Element element) throws DeploymentException{
         super.importXML(element);
@@ -308,56 +308,56 @@ public class DefaultLogMetaData extends MetaData implements Serializable{
     }
     
     /**
-     * &lt;debug&gt;—v‘f‚ğ¶¬‚·‚éB<p>
+     * &lt;debug&gt;è¦ç´ ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return &lt;debug&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^
+     * @return &lt;debug&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public LogCategoryMetaData createDebugLogCategoryMetaData(){
         return new LogCategoryMetaData(this, DEBUG_TAG_NAME);
     }
     
     /**
-     * &lt;information&gt;—v‘f‚ğ¶¬‚·‚éB<p>
+     * &lt;information&gt;è¦ç´ ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return &lt;information&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^
+     * @return &lt;information&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public LogCategoryMetaData createInformationLogCategoryMetaData(){
         return new LogCategoryMetaData(this, INFORMATION_TAG_NAME);
     }
     
     /**
-     * &lt;warning&gt;—v‘f‚ğ¶¬‚·‚éB<p>
+     * &lt;warning&gt;è¦ç´ ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return &lt;warning&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^
+     * @return &lt;warning&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public LogCategoryMetaData createWarningLogCategoryMetaData(){
         return new LogCategoryMetaData(this, WARNING_TAG_NAME);
     }
     
     /**
-     * &lt;error&gt;—v‘f‚ğ¶¬‚·‚éB<p>
+     * &lt;error&gt;è¦ç´ ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return &lt;error&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^
+     * @return &lt;error&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public LogCategoryMetaData createErrorLogCategoryMetaData(){
         return new LogCategoryMetaData(this, ERROR_TAG_NAME);
     }
     
     /**
-     * &lt;fatal&gt;—v‘f‚ğ¶¬‚·‚éB<p>
+     * &lt;fatal&gt;è¦ç´ ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @return &lt;fatal&gt;—v‘f‚Ìƒƒ^ƒf[ƒ^
+     * @return &lt;fatal&gt;è¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
      */
     public LogCategoryMetaData createFatalLogCategoryMetaData(){
         return new LogCategoryMetaData(this, FATAL_TAG_NAME);
     }
     
     /**
-     * &lt;default-log&gt;—v‘f‚Ìq—v‘f‚ÌƒƒOƒJƒeƒSƒŠ‚Ìƒƒ^ƒf[ƒ^B<p>
-     * ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚Ì&lt;default-log&gt;—v‘f‚Ìq—v‘f&lt;debug&gt;A&lt;information&gt;A&lt;warning&gt;A&lt;error&gt;A&lt;fatal&gt;—v‘f‚É‹Lq‚³‚ê‚½“à—e‚ğŠi”[‚·‚éƒƒ^ƒf[ƒ^ƒRƒ“ƒeƒi‚ÌŠî’êƒNƒ‰ƒX‚Å‚ ‚éB<p>
+     * &lt;default-log&gt;è¦ç´ ã®å­è¦ç´ ã®ãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã€‚<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®&lt;default-log&gt;è¦ç´ ã®å­è¦ç´ &lt;debug&gt;ã€&lt;information&gt;ã€&lt;warning&gt;ã€&lt;error&gt;ã€&lt;fatal&gt;è¦ç´ ã«è¨˜è¿°ã•ã‚ŒãŸå†…å®¹ã‚’æ ¼ç´ã™ã‚‹ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠã®åŸºåº•ã‚¯ãƒ©ã‚¹ã§ã‚ã‚‹ã€‚<p>
      *
      * @author M.Takata
-     * @see <a href="nimbus-service_1_0.dtd">ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹DTD</a>
+     * @see <a href="nimbus-service_1_0.dtd">ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«DTD</a>
      */
     public static class LogCategoryMetaData
      extends MetaData implements Serializable{
@@ -365,23 +365,23 @@ public class DefaultLogMetaData extends MetaData implements Serializable{
         private static final long serialVersionUID = 7428020116195385080L;
         
         /**
-         * ‚±‚Ì—v‘f‚Ì–¼‘OB<p>
+         * ã“ã®è¦ç´ ã®åå‰ã€‚<p>
          */
         private String tagName;
         
         /**
-         * output‘®«‚Ì’lB<p>
-         * ŠY“–‚·‚éƒJƒeƒSƒŠ‚ÌƒƒO‚ğo—Í‚·‚é‚©‚Ç‚¤‚©‚ğ¦‚·ƒtƒ‰ƒOB<br>
+         * outputå±æ€§ã®å€¤ã€‚<p>
+         * è©²å½“ã™ã‚‹ã‚«ãƒ†ã‚´ãƒªã®ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹ã‹ã©ã†ã‹ã‚’ç¤ºã™ãƒ•ãƒ©ã‚°ã€‚<br>
          *
          * @see #isOutput()
          */
         private boolean isOutput;
         
         /**
-         * e—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
-         * LogCategoryMetaData‚Ìe—v‘f‚ÍA&lt;log&gt;—v‘f‚ğ•\‚·DefaultLogMetaData‚Å‚ ‚éB<br>
+         * è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+         * LogCategoryMetaDataã®è¦ªè¦ç´ ã¯ã€&lt;log&gt;è¦ç´ ã‚’è¡¨ã™DefaultLogMetaDataã§ã‚ã‚‹ã€‚<br>
          * 
-         * @param parent e—v‘f‚Ìƒƒ^ƒf[ƒ^
+         * @param parent è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
          * @see DefaultLogMetaData
          */
         public LogCategoryMetaData(MetaData parent){
@@ -389,11 +389,11 @@ public class DefaultLogMetaData extends MetaData implements Serializable{
         }
         
         /**
-         * e—v‘f‚Ìƒƒ^ƒf[ƒ^‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
-         * LogCategoryMetaData‚Ìe—v‘f‚ÍA&lt;log&gt;—v‘f‚ğ•\‚·DefaultLogMetaData‚Å‚ ‚éB<br>
+         * è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
+         * LogCategoryMetaDataã®è¦ªè¦ç´ ã¯ã€&lt;log&gt;è¦ç´ ã‚’è¡¨ã™DefaultLogMetaDataã§ã‚ã‚‹ã€‚<br>
          * 
-         * @param parent e—v‘f‚Ìƒƒ^ƒf[ƒ^
-         * @param name ‚±‚Ì—v‘f‚Ì–¼‘O
+         * @param parent è¦ªè¦ç´ ã®ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿
+         * @param name ã“ã®è¦ç´ ã®åå‰
          * @see DefaultLogMetaData
          */
         public LogCategoryMetaData(MetaData parent, String name){
@@ -402,29 +402,29 @@ public class DefaultLogMetaData extends MetaData implements Serializable{
         }
         
         /**
-         * ƒƒOƒJƒeƒSƒŠ—v‘f‚Ìoutput‘®«‚Ì’l‚ğæ“¾‚·‚éB<p>
-         * output‘®«‚ªÈ—ª‚³‚ê‚Ä‚¢‚½ê‡‚ÍAfalse‚ğ•Ô‚·B<br>
+         * ãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªè¦ç´ ã®outputå±æ€§ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+         * outputå±æ€§ãŒçœç•¥ã•ã‚Œã¦ã„ãŸå ´åˆã¯ã€falseã‚’è¿”ã™ã€‚<br>
          * 
-         * @return ƒƒOƒJƒeƒSƒŠ—v‘f‚Ìoutput‘®«‚Ì’l
+         * @return ãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªè¦ç´ ã®outputå±æ€§ã®å€¤
          */
         public boolean isOutput(){
             return isOutput;
         }
         
         /**
-         * ƒƒOƒJƒeƒSƒŠ—v‘f‚Ìoutput‘®«‚Ì’l‚ğİ’è‚·‚éB<p>
+         * ãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªè¦ç´ ã®outputå±æ€§ã®å€¤ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          * 
-         * @param isOutput ƒƒOƒJƒeƒSƒŠ—v‘f‚Ìoutput‘®«‚Ì’l
+         * @param isOutput ãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªè¦ç´ ã®outputå±æ€§ã®å€¤
          */
         public void setOutput(boolean isOutput){
             this.isOutput = isOutput;
         }
         
         /**
-         * ƒƒOƒJƒeƒSƒŠ—v‘f‚ÌElement‚ğƒp[ƒX‚µ‚ÄA©•ª©g‚Ì‰Šú‰»‚ğs‚¤B<p>
+         * ãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªè¦ç´ ã®Elementã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦ã€è‡ªåˆ†è‡ªèº«ã®åˆæœŸåŒ–ã‚’è¡Œã†ã€‚<p>
          *
-         * @param element ƒƒOƒJƒeƒSƒŠ—v‘f‚ÌElement
-         * @exception DeploymentException ƒƒOƒJƒeƒSƒŠ—v‘f‚Ì‰ğÍ‚É¸”s‚µ‚½ê‡
+         * @param element ãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªè¦ç´ ã®Element
+         * @exception DeploymentException ãƒ­ã‚°ã‚«ãƒ†ã‚´ãƒªè¦ç´ ã®è§£æã«å¤±æ•—ã—ãŸå ´åˆ
          */
         public void importXML(Element element) throws DeploymentException{
             super.importXML(element);

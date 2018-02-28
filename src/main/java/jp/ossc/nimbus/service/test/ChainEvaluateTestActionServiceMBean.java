@@ -37,7 +37,7 @@ import jp.ossc.nimbus.service.test.ChainTestAction.TestActionProcess;
 import jp.ossc.nimbus.service.test.ChainEvaluateTestAction.EvaluateTestActionProcess;
 
 /**
- * {@link ChainEvaluateTestActionService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link ChainEvaluateTestActionService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Ishida
  * @see ChainEvaluateTestActionService
@@ -45,15 +45,15 @@ import jp.ossc.nimbus.service.test.ChainEvaluateTestAction.EvaluateTestActionPro
 public interface ChainEvaluateTestActionServiceMBean extends ServiceBaseMBean {
     
     /**
-     * ˜A½‚³‚¹‚éƒeƒXƒgƒAƒNƒVƒ‡ƒ“ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ì”z—ñ‚ğæ“¾‚·‚éB<p>
+     * é€£é–ã•ã›ã‚‹ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒeƒXƒgƒAƒNƒVƒ‡ƒ“ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ì”z—ñ
+     * @return ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—
      */
     public ServiceName[] getActionServiceNames();
     
     /**
-     * ˜A½‚³‚¹‚éƒeƒXƒgƒAƒNƒVƒ‡ƒ“ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ì”z—ñ‚ğİ’è‚·‚éB<p>
-     * ˜A½‰Â”\‚ÈƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ÍAˆÈ‰ºB<br>
+     * é€£é–ã•ã›ã‚‹ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * é€£é–å¯èƒ½ãªãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã¯ã€ä»¥ä¸‹ã€‚<br>
      * <ul>
      *     <li>{@link TestAction}</li>
      *     <li>{@link EvaluateTestAction}</li>
@@ -61,33 +61,33 @@ public interface ChainEvaluateTestActionServiceMBean extends ServiceBaseMBean {
      *     <li>{@link EvaluateTestActionProcess}</li>
      * </ul>
      *
-     * @param names ƒeƒXƒgƒAƒNƒVƒ‡ƒ“ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚Ì”z—ñ
+     * @param names ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã®é…åˆ—
      */
     public void setActionServiceNames(ServiceName[] names);
     
     /**
-     * ˜A½‚ÌÅŒã‚Ì•]‰¿ƒeƒXƒgƒAƒNƒVƒ‡ƒ“ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * é€£é–ã®æœ€å¾Œã®è©•ä¾¡ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •]‰¿ƒeƒXƒgƒAƒNƒVƒ‡ƒ“ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return è©•ä¾¡ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getEndEvaluateTestActionServiceName();
     
     /**
-     * ˜A½‚ÌÅŒã‚Ì•]‰¿ƒeƒXƒgƒAƒNƒVƒ‡ƒ“ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * İ’è‰Â”\‚È•]‰¿ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚ÍAˆÈ‰ºB<br>
+     * é€£é–ã®æœ€å¾Œã®è©•ä¾¡ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šå¯èƒ½ãªè©•ä¾¡ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã¯ã€ä»¥ä¸‹ã€‚<br>
      * <ul>
      *     <li>{@link EvaluateTestAction}</li>
      *     <li>{@link EvaluateTestActionProcess}</li>
      * </ul>
      *
-     * @param name •]‰¿ƒeƒXƒgƒAƒNƒVƒ‡ƒ“ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name è©•ä¾¡ãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setEndEvaluateTestActionServiceName(ServiceName name);
     
     /**
-     * ‚±‚ÌƒAƒNƒVƒ‡ƒ“‚ÌƒŠƒ\[ƒX’è‹`‚ğì¬‚·‚éÛ‚ÌƒfƒtƒHƒ‹ƒg‚Ì‘z’èƒRƒXƒg‚ğæ“¾‚·‚éB<p>
+     * ã“ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®ãƒªã‚½ãƒ¼ã‚¹å®šç¾©ã‚’ä½œæˆã™ã‚‹éš›ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æƒ³å®šã‚³ã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ˜A½‚³‚ê‚½ƒeƒXƒgƒAƒNƒVƒ‡ƒ“‚Ì‘z’èƒRƒXƒg‚Ì‘˜a
+     * @return é€£é–ã•ã‚ŒãŸãƒ†ã‚¹ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®æƒ³å®šã‚³ã‚¹ãƒˆã®ç·å’Œ
      */
     public double getExpectedCost();
 }

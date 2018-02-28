@@ -38,7 +38,7 @@ import java.io.IOException;
 import java.util.Random;
 
 /**
- * ’ŠÛˆâ“`qB<p>
+ * æŠ½è±¡éºä¼å­ã€‚<p>
  *
  * @author M.Takata
  */
@@ -53,9 +53,9 @@ public abstract class AbstractGene implements Gene, Cloneable, Externalizable{
     protected boolean isMutate;
     
     /**
-     * ƒpƒ‰ƒ[ƒ^–¼‚ğİ’è‚·‚éB<p>
+     * ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒpƒ‰ƒ[ƒ^–¼
+     * @param name ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å
      */
     public void setName(String name){
         this.name = name;
@@ -74,18 +74,18 @@ public abstract class AbstractGene implements Gene, Cloneable, Externalizable{
     }
     
     /**
-     * Œğ³í•Ê‚ğİ’è‚·‚éB<p>
+     * äº¤å‰ç¨®åˆ¥ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param type Œğ³í•Ê
+     * @param type äº¤å‰ç¨®åˆ¥
      */
     public void setCrossoverType(int type){
         crossoverType = type;
     }
     
     /**
-     * Œğ³í•Ê‚ğæ“¾‚·‚éB<p>
+     * äº¤å‰ç¨®åˆ¥ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return Œğ³í•Ê
+     * @return äº¤å‰ç¨®åˆ¥
      */
     public int getCrossoverType(){
         return crossoverType;

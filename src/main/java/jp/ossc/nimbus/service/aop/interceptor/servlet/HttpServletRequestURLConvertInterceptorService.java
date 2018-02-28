@@ -53,13 +53,13 @@ import jp.ossc.nimbus.service.context.Context;
 import jp.ossc.nimbus.service.journal.Journal;
 
 /**
- * HttpServletRequest URL�ϊ��C���^�[�Z�v�^�B
+ * HttpServletRequest URL変換インターセプタ。
  * <p>
- * resourcePaths�Ɏw�肳�ꂽ�p�X�\�L�Ƀ}�b�`�������N�G�X�g�ɑ΂��āA�p�X�K�w�̈ꕔ���p�����[�^�Ƃ��Ĉ����B
- * �p�����[�^�Ƃ��Ĉ����p�X��{�p�����[�^��}�Ƃ��ċL�ڂ��邱�ƂŁA�p�����[�^�p�X�Ƃ��ĔF�������B
- * �p�����[�^�Ƃ��Ĉ�����p�X�̒l��ThreadContext�AJounal�ɓo�^����A�p�X�ォ�珜�O�����B ex)
+ * resourcePathsに指定されたパス表記にマッチしたリクエストに対して、パス階層の一部をパラメータとして扱う。
+ * パラメータとして扱うパスは{パラメータ名}として記載することで、パラメータパスとして認識される。
+ * パラメータとして扱われるパスの値はThreadContext、Jounalに登録され、パス上から除外される。 ex)
  * resourcePath=/{ScreenID}/action/.*\\.bf
- * ���ۂ̃T�[�u���b�g�p�X=/Screen001/action/sample.bf �㑱�����ł̃T�[�u���b�g�p�X=/action/sample.bf
+ * 実際のサーブレットパス=/Screen001/action/sample.bf 後続処理でのサーブレットパス=/action/sample.bf
  *
  * @author M.Ishida
  */
@@ -103,10 +103,10 @@ public class HttpServletRequestURLConvertInterceptorService extends ServletFilte
     }
 
     /**
-     * �T�[�r�X�̊J�n�������s���B
+     * サービスの開始処理を行う。
      * <p>
      *
-     * @exception Exception �T�[�r�X�̊J�n�Ɏ��s�����ꍇ
+     * @exception Exception サービスの開始に失敗した場合
      */
     public void startService() throws Exception {
         if (resourcePaths == null) {
@@ -126,15 +126,15 @@ public class HttpServletRequestURLConvertInterceptorService extends ServletFilte
     }
 
     /**
-     * resourcePath�ɐݒ肳�ꂽ���e�ɏ]���AURI���̈ꕔ���p�����[�^�Ƃ��Ĕ��f����B
+     * resourcePathに設定された内容に従い、URI内の一部をパラメータとして判断する。
      * <p>
      *
-     * @param context �Ăяo���̃R���e�L�X�g���
-     * @param chain ���̃C���^�[�Z�v�^���Ăяo�����߂̃`�F�[��
-     * @return �Ăяo�����ʂ̖߂�l
-     * @exception Throwable �Ăяo����ŗ�O�����������ꍇ�A�܂��͂��̃C���^�[�Z�v�^�ŔC�ӂ̗�O�����������ꍇ�B�A���A
-     *                �{���Ăяo����鏈����throw���Ȃ�RuntimeException�ȊO�̗�O��throw���Ă�
-     *                �A�Ăяo�����ɂ͓`�d����Ȃ��B
+     * @param context 呼び出しのコンテキスト情報
+     * @param chain 次のインターセプタを呼び出すためのチェーン
+     * @return 呼び出し結果の戻り値
+     * @exception Throwable 呼び出し先で例外が発生した場合、またはこのインターセプタで任意の例外が発生した場合。但し、
+     *                本来呼び出される処理がthrowしないRuntimeException以外の例外をthrowしても
+     *                、呼び出し元には伝播されない。
      */
     public Object invokeFilter(ServletFilterInvocationContext context, InterceptorChain chain) throws Throwable {
         if (getState() == STARTED) {

@@ -57,26 +57,26 @@ import java.security.cert.X509Certificate;
 import jp.ossc.nimbus.beans.*;
 
 /**
- * SSLƒT[ƒoƒ\ƒPƒbƒgƒtƒ@ƒNƒgƒŠB<p>
- * java.security.KeyStore‚ÌŒ®‚ÆØ–¾‘‚ğg‚Á‚½SSL’ÊM‚ğs‚¤SSLServerSocket‚ğ¶¬‚·‚éƒtƒ@ƒNƒgƒŠB<br>
- * ‚±‚Ìƒtƒ@ƒNƒgƒŠ‚©‚ç¶¬‚³‚ê‚éƒT[ƒoƒ\ƒPƒbƒg‚ÍA{@link #setServerSocketProperty(String, Object)}‚ÅA—\‚ßİ’è‚³‚ê‚½ƒvƒƒpƒeƒB‚ªİ’è‚³‚ê‚éB<br>
+ * SSLã‚µãƒ¼ãƒã‚½ã‚±ãƒƒãƒˆãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<p>
+ * java.security.KeyStoreã®éµã¨è¨¼æ˜æ›¸ã‚’ä½¿ã£ãŸSSLé€šä¿¡ã‚’è¡Œã†SSLServerSocketã‚’ç”Ÿæˆã™ã‚‹ãƒ•ã‚¡ã‚¯ãƒˆãƒªã€‚<br>
+ * ã“ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‹ã‚‰ç”Ÿæˆã•ã‚Œã‚‹ã‚µãƒ¼ãƒã‚½ã‚±ãƒƒãƒˆã¯ã€{@link #setServerSocketProperty(String, Object)}ã§ã€äºˆã‚è¨­å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¨­å®šã•ã‚Œã‚‹ã€‚<br>
  *
  * @author M.Takata
  */
 public class SSLServerSocketFactory extends javax.net.ssl.SSLServerSocketFactory{
     
     /**
-     * g—p‚·‚éƒZƒLƒ…ƒAƒ\ƒPƒbƒgƒvƒƒgƒRƒ‹‚ÌƒfƒtƒHƒ‹ƒg’lB<p>
+     * ä½¿ç”¨ã™ã‚‹ã‚»ã‚­ãƒ¥ã‚¢ã‚½ã‚±ãƒƒãƒˆãƒ—ãƒ­ãƒˆã‚³ãƒ«ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<p>
      */
     public static final String DEFAULT_PROTOCOL = "TLS";
     
     /**
-     * ƒL[ƒXƒgƒAŒ`®‚ÌƒfƒtƒHƒ‹ƒg’lB<p>
+     * ã‚­ãƒ¼ã‚¹ãƒˆã‚¢å½¢å¼ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<p>
      */
     public static final String DEFAULT_KEYSTORE_TYPE = "JKS";
     
     /**
-     * javax.net.ssl.KeyManagerFactory‚Éw’è‚·‚éƒAƒ‹ƒSƒŠƒYƒ€‚ÌƒfƒtƒHƒ‹ƒg’lB<p>
+     * javax.net.ssl.KeyManagerFactoryã«æŒ‡å®šã™ã‚‹ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã€‚<p>
      */
     public static final String DEFAULT_ALGORITHM = "SunX509";
     
@@ -102,217 +102,217 @@ public class SSLServerSocketFactory extends javax.net.ssl.SSLServerSocketFactory
     protected boolean initialized = false;
     
     /**
-     * g—p‚·‚éƒZƒLƒ…ƒAƒ\ƒPƒbƒgƒvƒƒgƒRƒ‹‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_PROTOCOL}B<br>
+     * ä½¿ç”¨ã™ã‚‹ã‚»ã‚­ãƒ¥ã‚¢ã‚½ã‚±ãƒƒãƒˆãƒ—ãƒ­ãƒˆã‚³ãƒ«ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_PROTOCOL}ã€‚<br>
      *
-     * @param protocol ƒZƒLƒ…ƒAƒ\ƒPƒbƒgƒvƒƒgƒRƒ‹
+     * @param protocol ã‚»ã‚­ãƒ¥ã‚¢ã‚½ã‚±ãƒƒãƒˆãƒ—ãƒ­ãƒˆã‚³ãƒ«
      */
     public void setProtocol(String protocol){
         this.protocol = protocol;
     }
     
     /**
-     * g—p‚·‚éƒZƒLƒ…ƒAƒ\ƒPƒbƒgƒvƒƒgƒRƒ‹‚ğæ“¾‚·‚éB<p>
+     * ä½¿ç”¨ã™ã‚‹ã‚»ã‚­ãƒ¥ã‚¢ã‚½ã‚±ãƒƒãƒˆãƒ—ãƒ­ãƒˆã‚³ãƒ«ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒZƒLƒ…ƒAƒ\ƒPƒbƒgƒvƒƒgƒRƒ‹
+     * @return ã‚»ã‚­ãƒ¥ã‚¢ã‚½ã‚±ãƒƒãƒˆãƒ—ãƒ­ãƒˆã‚³ãƒ«
      */
     public String getProtocol(){
         return protocol;
     }
     
     /**
-     * ƒL[ƒXƒgƒAŒ`®‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_KEYSTORE_TYPE}B<br>
+     * ã‚­ãƒ¼ã‚¹ãƒˆã‚¢å½¢å¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_KEYSTORE_TYPE}ã€‚<br>
      *
-     * @param storeType ƒL[ƒXƒgƒAŒ`®
+     * @param storeType ã‚­ãƒ¼ã‚¹ãƒˆã‚¢å½¢å¼
      */
     public void setKeyStoreType(String storeType){
         keyStoreType = storeType;
     }
     
     /**
-     * ƒL[ƒXƒgƒAŒ`®‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ¼ã‚¹ãƒˆã‚¢å½¢å¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[ƒXƒgƒAŒ`®
+     * @return ã‚­ãƒ¼ã‚¹ãƒˆã‚¢å½¢å¼
      */
     public String getKeyStoreType(){
         return keyStoreType;
     }
     
     /**
-     * javax.net.ssl.KeyManagerFactory‚Éw’è‚·‚éƒAƒ‹ƒSƒŠƒYƒ€‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_ALGORITHM}B<br>
+     * javax.net.ssl.KeyManagerFactoryã«æŒ‡å®šã™ã‚‹ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_ALGORITHM}ã€‚<br>
      *
-     * @param algorithm ƒAƒ‹ƒSƒŠƒYƒ€
+     * @param algorithm ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ 
      */
     public void setKeyStoreAlgorithm(String algorithm){
         keyStoreAlgorithm = algorithm;
     }
     
     /**
-     * javax.net.ssl.KeyManagerFactory‚Éw’è‚·‚éƒAƒ‹ƒSƒŠƒYƒ€‚ğæ“¾‚·‚éB<p>
+     * javax.net.ssl.KeyManagerFactoryã«æŒ‡å®šã™ã‚‹ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒAƒ‹ƒSƒŠƒYƒ€
+     * @return ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ 
      */
     public String getKeyStoreAlgorithm(){
         return keyStoreAlgorithm;
     }
     
     /**
-     * ƒL[ƒXƒgƒAƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAƒ†[ƒUƒz[ƒ€ƒfƒBƒŒƒNƒgƒŠ‚Ì.keystoreB<br>
+     * ã‚­ãƒ¼ã‚¹ãƒˆã‚¢ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€ãƒ¦ãƒ¼ã‚¶ãƒ›ãƒ¼ãƒ ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®.keystoreã€‚<br>
      *
-     * @param path ƒL[ƒXƒgƒAƒtƒ@ƒCƒ‹‚ÌƒpƒX
+     * @param path ã‚­ãƒ¼ã‚¹ãƒˆã‚¢ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
      */
     public void setKeyStoreFile(String path){
         keyStoreFile = path;
     }
     
     /**
-     * ƒL[ƒXƒgƒAƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ¼ã‚¹ãƒˆã‚¢ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[ƒXƒgƒAƒtƒ@ƒCƒ‹‚ÌƒpƒX
+     * @return ã‚­ãƒ¼ã‚¹ãƒˆã‚¢ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
      */
     public String getKeyStoreFile(){
         return keyStoreFile;
     }
     
     /**
-     * ƒL[ƒXƒgƒA‚ÌƒpƒXƒ[ƒh‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAchangeitB<br>
+     * ã‚­ãƒ¼ã‚¹ãƒˆã‚¢ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€changeitã€‚<br>
      *
-     * @param password ƒL[ƒXƒgƒA‚ÌƒpƒXƒ[ƒh
+     * @param password ã‚­ãƒ¼ã‚¹ãƒˆã‚¢ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
      */
     public void setKeyStorePassword(String password){
         keyStorePassword = password;
     }
     
     /**
-     * ƒL[ƒXƒgƒA‚ÌƒpƒXƒ[ƒh‚ğæ“¾‚·‚éB<p>
+     * ã‚­ãƒ¼ã‚¹ãƒˆã‚¢ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[ƒXƒgƒA‚ÌƒpƒXƒ[ƒh
+     * @return ã‚­ãƒ¼ã‚¹ãƒˆã‚¢ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
      */
     public String getKeyStorePassword(){
         return keyStorePassword;
     }
     
     /**
-     * ƒT[ƒo[‘¤‚ÌƒZƒLƒ…ƒAƒ\ƒPƒbƒg‚ğ”FØ‚·‚é‚Æ‚«‚Ì”é–§Œ®‚Ì•Ê–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì•Ê–¼‚ğw’è‚µ‚È‚¢ê‡‚ÍAŒöŠJŒ®‚Ìƒ^ƒCƒv‚¨‚æ‚ÑƒsƒA‚É‚æ‚Á‚Ä”F¯‚³‚ê‚éØ–¾‘”­s‹Ç‚ÌƒŠƒXƒg‚ÉŠî‚Ã‚¢‚ÄA”é–§Œ®‚ª‘I‘ğ‚³‚ê‚éB<br>
+     * ã‚µãƒ¼ãƒãƒ¼å´ã®ã‚»ã‚­ãƒ¥ã‚¢ã‚½ã‚±ãƒƒãƒˆã‚’èªè¨¼ã™ã‚‹ã¨ãã®ç§˜å¯†éµã®åˆ¥åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®åˆ¥åã‚’æŒ‡å®šã—ãªã„å ´åˆã¯ã€å…¬é–‹éµã®ã‚¿ã‚¤ãƒ—ãŠã‚ˆã³ãƒ”ã‚¢ã«ã‚ˆã£ã¦èªè­˜ã•ã‚Œã‚‹è¨¼æ˜æ›¸ç™ºè¡Œå±€ã®ãƒªã‚¹ãƒˆã«åŸºã¥ã„ã¦ã€ç§˜å¯†éµãŒé¸æŠã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param alias ”é–§Œ®‚Ì•Ê–¼
+     * @param alias ç§˜å¯†éµã®åˆ¥å
      */
     public void setKeyAlias(String alias){
         this.keyAlias = alias;
     }
     
     /**
-     * ƒT[ƒo[‘¤‚ÌƒZƒLƒ…ƒAƒ\ƒPƒbƒg‚ğ”FØ‚·‚é‚Æ‚«‚Ì”é–§Œ®‚Ì•Ê–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ¼ãƒãƒ¼å´ã®ã‚»ã‚­ãƒ¥ã‚¢ã‚½ã‚±ãƒƒãƒˆã‚’èªè¨¼ã™ã‚‹ã¨ãã®ç§˜å¯†éµã®åˆ¥åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ”é–§Œ®‚Ì•Ê–¼
+     * @return ç§˜å¯†éµã®åˆ¥å
      */
     public String getKeyAlias(){
         return keyAlias;
     }
     
     /**
-     * ”é–§Œ®‚ğƒL[ƒXƒgƒA‚©‚ç“Ç‚İo‚·‚Ég—p‚·‚éA”é–§Œ®‚ÌƒpƒXƒ[ƒh‚ğİ’è‚·‚éB<p>
+     * ç§˜å¯†éµã‚’ã‚­ãƒ¼ã‚¹ãƒˆã‚¢ã‹ã‚‰èª­ã¿å‡ºã™æ™‚ã«ä½¿ç”¨ã™ã‚‹ã€ç§˜å¯†éµã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param password ”é–§Œ®‚ÌƒpƒXƒ[ƒh
+     * @param password ç§˜å¯†éµã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
      */
     public void setKeyPassword(String password){
         keyPassword = password;
     }
     
     /**
-     * ”é–§Œ®‚ğƒL[ƒXƒgƒA‚©‚ç“Ç‚İo‚·‚Ég—p‚·‚éA”é–§Œ®‚ÌƒpƒXƒ[ƒh‚ğæ“¾‚·‚éB<p>
+     * ç§˜å¯†éµã‚’ã‚­ãƒ¼ã‚¹ãƒˆã‚¢ã‹ã‚‰èª­ã¿å‡ºã™æ™‚ã«ä½¿ç”¨ã™ã‚‹ã€ç§˜å¯†éµã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ”é–§Œ®‚ÌƒpƒXƒ[ƒh
+     * @return ç§˜å¯†éµã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
      */
     public String getKeyPassword(){
         return keyPassword;
     }
     
     /**
-     * Ø–¾‘”­s‹Ç‚ÆŠÖ˜A‚·‚éM—Šƒf[ƒ^‚Ìƒ\[ƒX‚Æ‚È‚éƒL[ƒXƒgƒA‚ÌŒ`®‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_KEYSTORE_TYPE}B<br>
+     * è¨¼æ˜æ›¸ç™ºè¡Œå±€ã¨é–¢é€£ã™ã‚‹ä¿¡é ¼ãƒ‡ãƒ¼ã‚¿ã®ã‚½ãƒ¼ã‚¹ã¨ãªã‚‹ã‚­ãƒ¼ã‚¹ãƒˆã‚¢ã®å½¢å¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_KEYSTORE_TYPE}ã€‚<br>
      *
-     * @param storeType ƒL[ƒXƒgƒAŒ`®
+     * @param storeType ã‚­ãƒ¼ã‚¹ãƒˆã‚¢å½¢å¼
      */
     public void setTrustKeyStoreType(String storeType){
         trustKeyStoreType = storeType;
     }
     
     /**
-     * Ø–¾‘”­s‹Ç‚ÆŠÖ˜A‚·‚éM—Šƒf[ƒ^‚Ìƒ\[ƒX‚Æ‚È‚éƒL[ƒXƒgƒA‚ÌŒ`®‚ğæ“¾‚·‚éB<p>
+     * è¨¼æ˜æ›¸ç™ºè¡Œå±€ã¨é–¢é€£ã™ã‚‹ä¿¡é ¼ãƒ‡ãƒ¼ã‚¿ã®ã‚½ãƒ¼ã‚¹ã¨ãªã‚‹ã‚­ãƒ¼ã‚¹ãƒˆã‚¢ã®å½¢å¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[ƒXƒgƒAŒ`®
+     * @return ã‚­ãƒ¼ã‚¹ãƒˆã‚¢å½¢å¼
      */
     public String getTrustKeyStoreType(){
         return trustKeyStoreType;
     }
     
     /**
-     * javax.net.ssl.TrustManagerFactory‚Éw’è‚·‚éƒAƒ‹ƒSƒŠƒYƒ€‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link #DEFAULT_ALGORITHM}B<br>
+     * javax.net.ssl.TrustManagerFactoryã«æŒ‡å®šã™ã‚‹ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link #DEFAULT_ALGORITHM}ã€‚<br>
      *
-     * @param algorithm ƒAƒ‹ƒSƒŠƒYƒ€
+     * @param algorithm ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ 
      */
     public void setTrustKeyStoreAlgorithm(String algorithm){
         trustKeyStoreAlgorithm = algorithm;
     }
     
     /**
-     * javax.net.ssl.TrustManagerFactory‚Éw’è‚·‚éƒAƒ‹ƒSƒŠƒYƒ€‚ğæ“¾‚·‚éB<p>
+     * javax.net.ssl.TrustManagerFactoryã«æŒ‡å®šã™ã‚‹ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒAƒ‹ƒSƒŠƒYƒ€
+     * @return ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ 
      */
     public String getTrustKeyStoreAlgorithm(){
         return trustKeyStoreAlgorithm;
     }
     
     /**
-     * Ø–¾‘”­s‹Ç‚ÆŠÖ˜A‚·‚éM—Šƒf[ƒ^‚Ìƒ\[ƒX‚Æ‚È‚éƒL[ƒXƒgƒAƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAƒVƒXƒeƒ€ƒvƒƒpƒeƒB"javax.net.ssl.trustStore"B<br>
+     * è¨¼æ˜æ›¸ç™ºè¡Œå±€ã¨é–¢é€£ã™ã‚‹ä¿¡é ¼ãƒ‡ãƒ¼ã‚¿ã®ã‚½ãƒ¼ã‚¹ã¨ãªã‚‹ã‚­ãƒ¼ã‚¹ãƒˆã‚¢ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£"javax.net.ssl.trustStore"ã€‚<br>
      *
-     * @param path ƒL[ƒXƒgƒAƒtƒ@ƒCƒ‹‚ÌƒpƒX
+     * @param path ã‚­ãƒ¼ã‚¹ãƒˆã‚¢ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
      */
     public void setTrustKeyStoreFile(String path){
         trustKeyStoreFile = path;
     }
     
     /**
-     * Ø–¾‘”­s‹Ç‚ÆŠÖ˜A‚·‚éM—Šƒf[ƒ^‚Ìƒ\[ƒX‚Æ‚È‚éƒL[ƒXƒgƒAƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğæ“¾‚·‚éB<p>
+     * è¨¼æ˜æ›¸ç™ºè¡Œå±€ã¨é–¢é€£ã™ã‚‹ä¿¡é ¼ãƒ‡ãƒ¼ã‚¿ã®ã‚½ãƒ¼ã‚¹ã¨ãªã‚‹ã‚­ãƒ¼ã‚¹ãƒˆã‚¢ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[ƒXƒgƒAƒtƒ@ƒCƒ‹‚ÌƒpƒX
+     * @return ã‚­ãƒ¼ã‚¹ãƒˆã‚¢ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
      */
     public String getTrustKeyStoreFile(){
         return trustKeyStoreFile;
     }
     
     /**
-     * Ø–¾‘”­s‹Ç‚ÆŠÖ˜A‚·‚éM—Šƒf[ƒ^‚Ìƒ\[ƒX‚Æ‚È‚éƒL[ƒXƒgƒA‚ÌƒpƒXƒ[ƒh‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAƒVƒXƒeƒ€ƒvƒƒpƒeƒB"javax.net.ssl.trustStorePassword"B<br>
+     * è¨¼æ˜æ›¸ç™ºè¡Œå±€ã¨é–¢é€£ã™ã‚‹ä¿¡é ¼ãƒ‡ãƒ¼ã‚¿ã®ã‚½ãƒ¼ã‚¹ã¨ãªã‚‹ã‚­ãƒ¼ã‚¹ãƒˆã‚¢ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€ã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£"javax.net.ssl.trustStorePassword"ã€‚<br>
      *
-     * @param password ƒL[ƒXƒgƒA‚ÌƒpƒXƒ[ƒh
+     * @param password ã‚­ãƒ¼ã‚¹ãƒˆã‚¢ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
      */
     public void setTrustKeyStorePassword(String password){
         trustKeyStorePassword = password;
     }
     
     /**
-     * Ø–¾‘”­s‹Ç‚ÆŠÖ˜A‚·‚éM—Šƒf[ƒ^‚Ìƒ\[ƒX‚Æ‚È‚éƒL[ƒXƒgƒA‚ÌƒpƒXƒ[ƒh‚ğæ“¾‚·‚éB<p>
+     * è¨¼æ˜æ›¸ç™ºè¡Œå±€ã¨é–¢é€£ã™ã‚‹ä¿¡é ¼ãƒ‡ãƒ¼ã‚¿ã®ã‚½ãƒ¼ã‚¹ã¨ãªã‚‹ã‚­ãƒ¼ã‚¹ãƒˆã‚¢ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[ƒXƒgƒA‚ÌƒpƒXƒ[ƒh
+     * @return ã‚­ãƒ¼ã‚¹ãƒˆã‚¢ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
      */
     public String getTrustKeyStorePassword(){
         return trustKeyStorePassword;
     }
     
     /**
-     * {@link SSLServerSocket}‚ÉƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * {@link SSLServerSocket}ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param props ƒvƒƒpƒeƒBƒ}ƒbƒv
+     * @param props ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒãƒƒãƒ—
      */
     public void setServerSocketProperties(Map props){
         if(props == null || props.size() == 0){
@@ -329,10 +329,10 @@ public class SSLServerSocketFactory extends javax.net.ssl.SSLServerSocketFactory
     }
     
     /**
-     * {@link SSLServerSocket}‚ÉƒvƒƒpƒeƒB‚ğİ’è‚·‚éB<p>
+     * {@link SSLServerSocket}ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @param value ’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @param value å€¤
      */
     public void setServerSocketProperty(String name, Object value){
         if(serverSocketProperties == null){
@@ -343,10 +343,10 @@ public class SSLServerSocketFactory extends javax.net.ssl.SSLServerSocketFactory
     }
     
     /**
-     * {@link SSLServerSocket}‚ÌƒvƒƒpƒeƒB‚ğæ“¾‚·‚éB<p>
+     * {@link SSLServerSocket}ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param name ƒvƒƒpƒeƒB–¼
-     * @return ’l
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å
+     * @return å€¤
      */
     public Object getServerSocketProperty(String name){
         if(serverSocketProperties == null){

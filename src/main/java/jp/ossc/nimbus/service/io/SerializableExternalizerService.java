@@ -45,7 +45,7 @@ import net.jpountz.lz4.LZ4BlockInputStream;
 
 
 /**
- * ’¼—ñ‰»‰Â”\ƒIƒuƒWƒFƒNƒg’¼—ñ‰»ƒT[ƒrƒXB<p>
+ * ç›´åˆ—åŒ–å¯èƒ½ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç›´åˆ—åŒ–ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -67,6 +67,8 @@ public class SerializableExternalizerService extends ServiceBase
     protected int outputStreamInitialBufferSize = 1024;
     protected float outputStreamBufferExpandRatio = 2.0f;
     protected int outputStreamMaxBufferSize = 1024 * 10;
+    protected boolean isBufferedInputStream = false;
+    protected int inputStreamInitialBufferSize = 1024;
     
     public void setCompressMode(int mode){
         compressMode = mode;
@@ -134,6 +136,20 @@ public class SerializableExternalizerService extends ServiceBase
         return outputStreamMaxBufferSize;
     }
     
+    public boolean isBufferedInputStream(){
+        return isBufferedInputStream;
+    }
+    public void setBufferedInputStream(boolean isBuffered){
+        isBufferedInputStream = isBuffered;
+    }
+    
+    public void setInputStreamInitialBufferSize(int size){
+        inputStreamInitialBufferSize = size;
+    }
+    public int getInputStreamInitialBufferSize(){
+        return inputStreamInitialBufferSize;
+    }
+    
     public void setObjectOutputClass(Class clazz){
         if(clazz == null){
             objectOutputConstructor = null;
@@ -190,8 +206,62 @@ public class SerializableExternalizerService extends ServiceBase
         if(isBufferedOutputStream && compressMode == COMPRESS_MODE_NONE){
             out = new ExpandableBufferedOutputStream(out);
         }
-        ObjectOutput output = createObjectOutput(out);
-        writeExternal(obj, output);
+        if(compressMode != COMPRESS_MODE_NONE && compressThreshold == -1){
+            DeflaterOutputStream dos = null;
+            Deflater deflater = null;
+            ObjectOutput output = null;
+            switch(compressMode){
+            case COMPRESS_MODE_SNAPPY:
+                SnappyOutputStream sos = new SnappyOutputStream(out);
+                output = createObjectOutput(sos);
+                writeInternal(obj, output);
+                sos.flush();
+                sos.close();
+                break;
+            case COMPRESS_MODE_LZ4:
+                LZ4BlockOutputStream lzos = new LZ4BlockOutputStream(out);
+                output = createObjectOutput(lzos);
+                writeInternal(obj, output);
+                lzos.flush();
+                lzos.finish();
+                lzos.close();
+                break;
+            default:
+                switch(compressMode){
+                case COMPRESS_MODE_ZLIB:
+                    deflater = new Deflater(compressLevel);
+                    dos = bufferSize > 0 ? new DeflaterOutputStream(out, deflater, bufferSize) : new DeflaterOutputStream(out, deflater);
+                    break;
+                case COMPRESS_MODE_ZIP:
+                    ZipOutputStream zos = new ZipOutputStream(out);
+                    zos.setLevel(compressLevel);
+                    zos.setMethod(compressMethod);
+                    zos.putNextEntry(new ZipEntry("a"));
+                    dos = zos;
+                    break;
+                case COMPRESS_MODE_GZIP:
+                    dos = bufferSize > 0 ? new GZIPOutputStream(out, bufferSize) : new GZIPOutputStream(out);
+                    break;
+                default:
+                    throw new IOException("Unknown compress mode : " + compressMode);
+                }
+                output = createObjectOutput(dos);
+                try{
+                    writeInternal(obj, output);
+                    if(compressMode == COMPRESS_MODE_ZIP){
+                        ((ZipOutputStream)dos).closeEntry();
+                    }
+                    dos.finish();
+                }finally{
+                    if(deflater != null){
+                        deflater.end();
+                    }
+                }
+            }
+        }else{
+            ObjectOutput output = createObjectOutput(out);
+            writeExternal(obj, output);
+        }
     }
     
     public void writeExternal(Object obj, ObjectOutput out) throws IOException{
@@ -294,8 +364,45 @@ public class SerializableExternalizerService extends ServiceBase
     }
     
     public Object readExternal(InputStream in) throws IOException, ClassNotFoundException{
-        ObjectInput input = createObjectInput(in);
-        return readExternal(input);
+        if(isBufferedInputStream){
+            in = new BufferedInputStream(in, inputStreamInitialBufferSize);
+        }
+        if(compressMode != COMPRESS_MODE_NONE && compressThreshold == -1){
+            InputStream is = null;
+            Inflater inflater = null;
+            switch(compressMode){
+            case COMPRESS_MODE_ZLIB:
+                inflater = new Inflater();
+                is = bufferSize > 0 ? new InflaterInputStream(in, inflater, bufferSize) : new InflaterInputStream(in);
+                break;
+            case COMPRESS_MODE_ZIP:
+                is = new ZipInputStream(in);
+                ((ZipInputStream)is).getNextEntry();
+                break;
+            case COMPRESS_MODE_GZIP:
+                is = bufferSize > 0 ? new GZIPInputStream(in, bufferSize) : new GZIPInputStream(in);
+                break;
+            case COMPRESS_MODE_SNAPPY:
+                is = new SnappyInputStream(in);
+                break;
+            case COMPRESS_MODE_LZ4:
+                is = new LZ4BlockInputStream(in);
+                break;
+            default:
+                throw new IOException("Unknown compress mode : " + compressMode);
+            }
+            final ObjectInput oi = createObjectInput(is);
+            try{
+                return readInternal(oi);
+            }finally{
+                if(inflater != null){
+                    inflater.end();
+                }
+            }
+        }else{
+            ObjectInput input = createObjectInput(in);
+            return readExternal(input);
+        }
     }
     
     protected ObjectInput createObjectInput(InputStream in) throws IOException{
@@ -411,7 +518,11 @@ public class SerializableExternalizerService extends ServiceBase
                 count = 0;
             }
             if(isInner && buf.length < outputStreamMaxBufferSize){
-                buf = new byte[Math.min((int)(buf.length * outputStreamBufferExpandRatio), outputStreamMaxBufferSize)];
+                int newLength = (int)(buf.length * outputStreamBufferExpandRatio);
+                if(newLength < buf.length){
+                    newLength = Integer.MAX_VALUE;
+                }
+                buf = new byte[Math.min(newLength, outputStreamMaxBufferSize)];
             }
         }
         

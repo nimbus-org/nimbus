@@ -52,7 +52,7 @@ import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.service.jndi.JndiFinder;
 
 /**
- * {@link MBeanServerConnectionFactory}ÉCÉìÉ^ÉtÉFÅ[ÉXÇÃÉfÉtÉHÉãÉgé¿ëïÉTÅ[ÉrÉXÅB<p>
+ * {@link MBeanServerConnectionFactory}„Ç§„É≥„Çø„Éï„Çß„Éº„Çπ„ÅÆ„Éá„Éï„Ç©„É´„ÉàÂÆüË£Ö„Çµ„Éº„Éì„Çπ„ÄÇ<p>
  *
  * @author M.Takata
  */
@@ -68,56 +68,56 @@ public class DefaultMBeanServerConnectionFactoryService extends ServiceBase impl
     protected boolean isConnected;
     protected boolean isNewConnection = true;
     
-    // DefaultMBeanServerConnectionFactoryServiceMBeanÇÃJavaDoc
+    // DefaultMBeanServerConnectionFactoryServiceMBean„ÅÆJavaDoc
     public void setJndiFinderServiceName(ServiceName name){
         jndiFinderServiceName = name;
     }
-    // DefaultMBeanServerConnectionFactoryServiceMBeanÇÃJavaDoc
+    // DefaultMBeanServerConnectionFactoryServiceMBean„ÅÆJavaDoc
     public ServiceName getJndiFinderServiceName(){
         return jndiFinderServiceName;
     }
     
-    // DefaultMBeanServerConnectionFactoryServiceMBeanÇÃJavaDoc
+    // DefaultMBeanServerConnectionFactoryServiceMBean„ÅÆJavaDoc
     public void setRMIAdaptorName(String name){
         rmiAdaptorName = name;
     }
-    // DefaultMBeanServerConnectionFactoryServiceMBeanÇÃJavaDoc
+    // DefaultMBeanServerConnectionFactoryServiceMBean„ÅÆJavaDoc
     public String getRMIAdaptorName(){
         return rmiAdaptorName;
     }
     
-    // DefaultMBeanServerConnectionFactoryServiceMBeanÇÃJavaDoc
+    // DefaultMBeanServerConnectionFactoryServiceMBean„ÅÆJavaDoc
     public void setServiceURL(String url){
         serviceURL = url;
     }
-    // DefaultMBeanServerConnectionFactoryServiceMBeanÇÃJavaDoc
+    // DefaultMBeanServerConnectionFactoryServiceMBean„ÅÆJavaDoc
     public String getServiceURL(){
         return serviceURL;
     }
     
-    // DefaultMBeanServerConnectionFactoryServiceMBeanÇÃJavaDoc
+    // DefaultMBeanServerConnectionFactoryServiceMBean„ÅÆJavaDoc
     public void setJMXConnectorEnvironment(Map env){
         jmxConnectorEnvironment = env;
     }
-    // DefaultMBeanServerConnectionFactoryServiceMBeanÇÃJavaDoc
+    // DefaultMBeanServerConnectionFactoryServiceMBean„ÅÆJavaDoc
     public Map getJMXConnectorEnvironment(){
         return jmxConnectorEnvironment;
     }
     
-    // DefaultMBeanServerConnectionFactoryServiceMBeanÇÃJavaDoc
+    // DefaultMBeanServerConnectionFactoryServiceMBean„ÅÆJavaDoc
     public void setConnectOnStart(boolean isConnect){
         isConnectOnStart = isConnect;
     }
-    // DefaultMBeanServerConnectionFactoryServiceMBeanÇÃJavaDoc
+    // DefaultMBeanServerConnectionFactoryServiceMBean„ÅÆJavaDoc
     public boolean isConnectOnStart(){
         return isConnectOnStart;
     }
     
-    // DefaultMBeanServerConnectionFactoryServiceMBeanÇÃJavaDoc
+    // DefaultMBeanServerConnectionFactoryServiceMBean„ÅÆJavaDoc
     public void setNewConnection(boolean isNew){
         isNewConnection = isNew;
     }
-    // DefaultMBeanServerConnectionFactoryServiceMBeanÇÃJavaDoc
+    // DefaultMBeanServerConnectionFactoryServiceMBean„ÅÆJavaDoc
     public boolean isNewConnection(){
         return isNewConnection;
     }

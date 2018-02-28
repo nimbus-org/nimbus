@@ -34,23 +34,23 @@ package jp.ossc.nimbus.service.journal;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * ƒWƒƒ[ƒiƒ‹ƒGƒfƒBƒ^[B<p>
- * ƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Ä—^‚¦‚ç‚ê‚½‚ ‚éŒ^‚Ìî•ñ‚ğ•ÒW‚µ‚ÄAƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Äo—Í‚·‚éî•ñ‚É•ÏŠ·‚·‚éƒGƒfƒBƒ^ƒNƒ‰ƒX‚Å‚ ‚éB<br>
- * •ÒW‚ª•K—v‚ÈƒIƒuƒWƒFƒNƒg‚ÌŒ^–ˆ‚ÉÀ‘•‚ğ’ñ‹Ÿ‚·‚é•K—v‚ª‚ ‚éB<br>
- * {@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}‚É‚æ‚Á‚ÄA{@link Journal}ƒT[ƒrƒX‚É’ñ‹Ÿ‚³‚ê‚éB<br>
+ * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚¨ãƒ‡ã‚£ã‚¿ãƒ¼ã€‚<p>
+ * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦ä¸ãˆã‚‰ã‚ŒãŸã‚ã‚‹å‹ã®æƒ…å ±ã‚’ç·¨é›†ã—ã¦ã€ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹æƒ…å ±ã«å¤‰æ›ã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã‚¯ãƒ©ã‚¹ã§ã‚ã‚‹ã€‚<br>
+ * ç·¨é›†ãŒå¿…è¦ãªã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å‹æ¯ã«å®Ÿè£…ã‚’æä¾›ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚<br>
+ * {@link jp.ossc.nimbus.service.journal.editorfinder.EditorFinder EditorFinder}ã«ã‚ˆã£ã¦ã€{@link Journal}ã‚µãƒ¼ãƒ“ã‚¹ã«æä¾›ã•ã‚Œã‚‹ã€‚<br>
  *
  * @author   NRI. Hirotaka Nakano
- * @version  1.00 ì¬: 2003/10/10 -@H.Nakano
+ * @version  1.00 ä½œæˆ: 2003/10/10 -ã€€H.Nakano
  */
 public interface JournalEditor {
     
     /**
-     * ƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Ä—^‚¦‚ç‚ê‚½‚ ‚éŒ^‚Ìî•ñ‚ğƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Äo—Í‚·‚éî•ñ‚É•ÏŠ·‚·‚éB<br>
+     * ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦ä¸ãˆã‚‰ã‚ŒãŸã‚ã‚‹å‹ã®æƒ…å ±ã‚’ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹æƒ…å ±ã«å¤‰æ›ã™ã‚‹ã€‚<br>
      * 
-     * @param finder “KØ‚ÈJournalEditor‚ğ’ñ‹Ÿ‚·‚éEditorFinder
-     * @param key ƒWƒƒ[ƒiƒ‹‚ÌƒL[î•ñ
-     * @param value ƒWƒƒ[ƒiƒ‹î•ñ
-     * @return ƒWƒƒ[ƒiƒ‹‚Æ‚µ‚Äo—Í‚·‚éî•ñ
+     * @param finder é©åˆ‡ãªJournalEditorã‚’æä¾›ã™ã‚‹EditorFinder
+     * @param key ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã®ã‚­ãƒ¼æƒ…å ±
+     * @param value ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«æƒ…å ±
+     * @return ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹æƒ…å ±
      */
     public Object toObject(EditorFinder finder, Object key, Object value) ;
 }

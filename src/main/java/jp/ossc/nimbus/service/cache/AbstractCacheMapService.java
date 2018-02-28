@@ -37,7 +37,7 @@ import java.lang.reflect.Array;
 import jp.ossc.nimbus.core.*;
 
 /**
- * ’ŠÛƒLƒƒƒbƒVƒ…ƒ}ƒbƒvƒT[ƒrƒXB<p>
+ * æŠ½è±¡ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã‚µãƒ¼ãƒ“ã‚¹ã€‚<p>
  *
  * @author M.Takata
  */
@@ -47,71 +47,71 @@ public abstract class AbstractCacheMapService extends ServiceBase
     private static final long serialVersionUID = 6779186037980520151L;
     
     /**
-     * ƒLƒƒƒbƒVƒ…‚ÌƒL[‚ÆƒLƒƒƒbƒVƒ…QÆ‚Ìƒ}ƒbƒvB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®ã‚­ãƒ¼ã¨ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã®ãƒãƒƒãƒ—ã€‚<p>
      */
     protected Map references;
     
     /**
-     * OverflowControllerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼”z—ñB<p>
+     * OverflowControllerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åé…åˆ—ã€‚<p>
      */
     protected ServiceName[] overflowControllerServiceNames;
     
     /**
-     * OverflowControllerƒT[ƒrƒX‚ÌƒŠƒXƒgB<p>
+     * OverflowControllerã‚µãƒ¼ãƒ“ã‚¹ã®ãƒªã‚¹ãƒˆã€‚<p>
      */
     protected List overflowControllers;
     
     /**
-     * ƒT[ƒrƒX’â~‚ÉAƒLƒƒƒbƒVƒ…‚ğƒNƒŠƒA‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalseB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹åœæ­¢æ™‚ã«ã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã€‚<br>
      */
     protected boolean isClearOnStop;
     
     /**
-     * ƒT[ƒrƒX”jŠü‚ÉAƒLƒƒƒbƒVƒ…‚ğƒNƒŠƒA‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrueB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ç ´æ£„æ™‚ã«ã€ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã€‚<br>
      */
     protected boolean isClearOnDestroy = true;
     
-    // AbstractCacheMapServiceMBean‚ÌJavaDoc
+    // AbstractCacheMapServiceMBeanã®JavaDoc
     public void setOverflowControllerServiceNames(ServiceName[] names){
         overflowControllerServiceNames = names;
     }
-    // AbstractCacheMapServiceMBean‚ÌJavaDoc
+    // AbstractCacheMapServiceMBeanã®JavaDoc
     public ServiceName[] getOverflowControllerServiceNames(){
         return overflowControllerServiceNames;
     }
     
-    // AbstractCacheMapServiceMBean‚ÌJavaDoc
+    // AbstractCacheMapServiceMBeanã®JavaDoc
     public void setClearOnStop(boolean isClear){
         isClearOnStop = isClear;
     }
-    // AbstractCacheMapServiceMBean‚ÌJavaDoc
+    // AbstractCacheMapServiceMBeanã®JavaDoc
     public boolean isClearOnStop(){
         return isClearOnStop;
     }
     
-    // AbstractCacheMapServiceMBean‚ÌJavaDoc
+    // AbstractCacheMapServiceMBeanã®JavaDoc
     public void setClearOnDestroy(boolean isClear){
         isClearOnDestroy = isClear;
     }
-    // AbstractCacheMapServiceMBean‚ÌJavaDoc
+    // AbstractCacheMapServiceMBeanã®JavaDoc
     public boolean isClearOnDestroy(){
         return isClearOnDestroy;
     }
     
     /**
-     * OverflowController‚ğİ’è‚·‚éB
+     * OverflowControllerã‚’è¨­å®šã™ã‚‹ã€‚
      */
     public void setOverflowControllers(List overflowControllers) {
 		this.overflowControllers = overflowControllers;
 	}
     
 	/**
-     * ƒT[ƒrƒX‚Ì¶¬‘Oˆ—‚ğs‚¤B<p>
-     * ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚Ì‰Šú‰»‚ğs‚¤B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‰å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã®åˆæœŸåŒ–ã‚’è¡Œã†ã€‚<br>
      *
-     * @exception ¶¬‘Oˆ—‚É¸”s‚µ‚½ê‡
+     * @exception ç”Ÿæˆå‰å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void preCreateService() throws Exception{
         super.preCreateService();
@@ -120,10 +120,10 @@ public abstract class AbstractCacheMapService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚ÌŠJn‘Oˆ—‚ğs‚¤B<p>
-     * QverflowControllerƒT[ƒrƒX‚Ìæ“¾‚ğs‚¤B<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‰å‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * QverflowControllerã‚µãƒ¼ãƒ“ã‚¹ã®å–å¾—ã‚’è¡Œã†ã€‚<br>
      *
-     * @exception ŠJn‘Oˆ—‚É¸”s‚µ‚½ê‡
+     * @exception é–‹å§‹å‰å‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void preStartService() throws Exception{
         super.preStartService();
@@ -138,10 +138,10 @@ public abstract class AbstractCacheMapService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì’â~Œãˆ—‚ğs‚¤B<p>
-     * QverflowControllerƒT[ƒrƒX‚ÌQÆ‚ğ”jŠü‚·‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®åœæ­¢å¾Œå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * QverflowControllerã‚µãƒ¼ãƒ“ã‚¹ã®å‚ç…§ã‚’ç ´æ£„ã™ã‚‹ã€‚<br>
      *
-     * @exception ’â~Œãˆ—‚É¸”s‚µ‚½ê‡
+     * @exception åœæ­¢å¾Œå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void postStopService() throws Exception{
         if(isClearOnStop()){
@@ -154,10 +154,10 @@ public abstract class AbstractCacheMapService extends ServiceBase
     }
     
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüŒãˆ—‚ğs‚¤B<p>
-     * ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚ÌQÆ‚ğ”jŠü‚·‚éB<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å¾Œå‡¦ç†ã‚’è¡Œã†ã€‚<p>
+     * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°ã®å‚ç…§ã‚’ç ´æ£„ã™ã‚‹ã€‚<br>
      *
-     * @exception ”jŠüŒãˆ—‚É¸”s‚µ‚½ê‡
+     * @exception ç ´æ£„å¾Œå‡¦ç†ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void postDestroyService() throws Exception{
         if(isClearOnDestroy()){
@@ -168,7 +168,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
         super.postDestroyService();
     }
     
-    // CacheMap‚ÌJavaDoc
+    // CacheMapã®JavaDoc
     public KeyCachedReference getCachedReference(Object key){
         if(references == null){
             return null;
@@ -176,7 +176,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
         return (KeyCachedReference)references.get(key);
     }
     
-    // CacheMap‚ÌJavaDoc
+    // CacheMapã®JavaDoc
     public int size(){
         if(references == null){
             return 0;
@@ -184,7 +184,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
         return references.size();
     }
     
-    // CacheMap‚ÌJavaDoc
+    // CacheMapã®JavaDoc
     public boolean isEmpty(){
         if(references == null){
             return true;
@@ -192,7 +192,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
         return references.isEmpty();
     }
     
-    // CacheMap‚ÌJavaDoc
+    // CacheMapã®JavaDoc
     public boolean containsKey(Object key){
         if(references == null){
             return false;
@@ -200,7 +200,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
         return references.containsKey(key);
     }
     
-    // CacheMap‚ÌJavaDoc
+    // CacheMapã®JavaDoc
     public boolean containsValue(Object value){
         if(references == null){
             return false;
@@ -221,16 +221,16 @@ public abstract class AbstractCacheMapService extends ServiceBase
         return false;
     }
     
-    // CacheMap‚ÌJavaDoc
+    // CacheMapã®JavaDoc
     public Object get(Object key){
         return get(key, true);
     }
     
     /**
-     * w’è‚³‚ê‚½ƒL[‚ÌƒLƒƒƒbƒVƒ…‚ğæ“¾‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒLƒƒƒbƒVƒ…‚ÌƒL[
-     * @param notify ƒLƒƒƒbƒVƒ…‚ÉƒAƒNƒZƒX‚µ‚½–‚ğƒŠƒXƒi‚É’Ê’m‚·‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒOB’Ê’m‚·‚éê‡Atrue
+     * @param key ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®ã‚­ãƒ¼
+     * @param notify ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã«ã‚¢ã‚¯ã‚»ã‚¹ã—ãŸäº‹ã‚’ãƒªã‚¹ãƒŠã«é€šçŸ¥ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°ã€‚é€šçŸ¥ã™ã‚‹å ´åˆã€true
      */
     protected Object get(Object key, boolean notify){
         if(references == null){
@@ -243,7 +243,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
         return ref.get(this, notify);
     }
     
-    // CacheMap‚ÌJavaDoc
+    // CacheMapã®JavaDoc
     public Object put(Object key, Object value){
         if(references == null){
             return null;
@@ -258,10 +258,10 @@ public abstract class AbstractCacheMapService extends ServiceBase
     }
     
     /**
-     * w’è‚µ‚½ƒL[‚ÌƒLƒƒƒbƒVƒ…QÆ‚ğ’Ç‰Á‚·‚éB<p>
+     * æŒ‡å®šã—ãŸã‚­ãƒ¼ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param key ƒLƒƒƒbƒVƒ…‚ÌƒL[
-     * @param ref ƒLƒƒƒbƒVƒ…QÆ
+     * @param key ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®ã‚­ãƒ¼
+     * @param ref ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     protected void put(Object key, KeyCachedReference ref){
         if(references == null || getState() > STOPPED || ref == null){
@@ -280,18 +280,18 @@ public abstract class AbstractCacheMapService extends ServiceBase
     }
     
     /**
-     * ƒL[•t‚«ƒLƒƒƒbƒVƒ…QÆ‚ğ¶¬‚·‚éB<p>
+     * ã‚­ãƒ¼ä»˜ãã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param key ƒLƒƒƒbƒVƒ…‚ÌƒL[
-     * @param obj ƒLƒƒƒbƒVƒ…‚·‚éƒIƒuƒWƒFƒNƒg
-     * @return ƒL[•t‚«ƒLƒƒƒbƒVƒ…QÆ
+     * @param key ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®ã‚­ãƒ¼
+     * @param obj ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @return ã‚­ãƒ¼ä»˜ãã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
      */
     protected abstract KeyCachedReference createKeyCachedReference(
         Object key,
         Object obj
     );
     
-    // CacheMap‚ÌJavaDoc
+    // CacheMapã®JavaDoc
     public Object remove(Object key){
         if(references == null){
             return null;
@@ -306,7 +306,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
         return val;
     }
     
-    // CacheMap‚ÌJavaDoc
+    // CacheMapã®JavaDoc
     public void putAll(Map map){
         if(references == null || map == null || map.size() == 0){
             return;
@@ -318,7 +318,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
         }
     }
     
-    // CacheMap‚ÌJavaDoc
+    // CacheMapã®JavaDoc
     public void clear(){
         if(references == null || references.size() == 0){
             return;
@@ -329,22 +329,22 @@ public abstract class AbstractCacheMapService extends ServiceBase
         }
     }
     
-    // CacheMap‚ÌJavaDoc
+    // CacheMapã®JavaDoc
     public Set keySet(){
         return new KeySet();
     }
     
-    // CacheMap‚ÌJavaDoc
+    // CacheMapã®JavaDoc
     public Collection values(){
         return new ValuesCollection();
     }
     
-    // CacheMap‚ÌJavaDoc
+    // CacheMapã®JavaDoc
     public Set entrySet(){
         return new EntrySet();
     }
     
-    // CacheRemoveListener‚ÌJavaDoc
+    // CacheRemoveListenerã®JavaDoc
     public void removed(CachedReference ref){
         if(references != null && ref instanceof KeyCachedReference){
             final KeyCachedReference keyRef = (KeyCachedReference)ref;
@@ -353,7 +353,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…ƒ}ƒbƒv‚ÌƒL[W‡B<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã®ã‚­ãƒ¼é›†åˆã€‚<p>
      *
      * @author M.Takata
      * @see AbstractCacheMapService#keySet()
@@ -366,7 +366,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
         private Collection collection;
         
         /**
-         * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          */
         public KeySet(){
             if(references != null){
@@ -374,22 +374,22 @@ public abstract class AbstractCacheMapService extends ServiceBase
             }
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public int size(){
             return AbstractCacheMapService.this.size();
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public boolean isEmpty(){
             return AbstractCacheMapService.this.isEmpty();
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public boolean contains(Object o){
             return AbstractCacheMapService.this.containsKey(o);
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public boolean containsAll(Collection c){
             final Iterator keys = c.iterator();
             boolean result = true;
@@ -404,12 +404,12 @@ public abstract class AbstractCacheMapService extends ServiceBase
             return result;
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public Iterator iterator(){
             return new KeyIterator();
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public Object[] toArray(){
             if(references == null || references.size() == 0){
                 return new Object[0];
@@ -426,7 +426,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
             return result;
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public Object[] toArray(Object[] a){
             if(references == null || references.size() == 0){
                 if(a.length == 0){
@@ -458,17 +458,17 @@ public abstract class AbstractCacheMapService extends ServiceBase
             return result;
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public boolean add(Object o){
             throw new UnsupportedOperationException();
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public boolean addAll(Collection c){
             throw new UnsupportedOperationException();
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public boolean remove(Object o){
             if(references == null || references.size() == 0){
                 return false;
@@ -477,7 +477,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
             return removed != null;
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public boolean removeAll(Collection c){
             final Iterator keys = c.iterator();
             boolean result = false;
@@ -487,7 +487,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
             return result;
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public boolean retainAll(Collection c){
             if(references == null || references.size() == 0){
                 return false;
@@ -502,12 +502,12 @@ public abstract class AbstractCacheMapService extends ServiceBase
             return result;
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public void clear(){
             AbstractCacheMapService.this.clear();
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public boolean equals(Object o){
             if(o == null){
                 return false;
@@ -526,7 +526,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
             return false;
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public int hashCode(){
             return collection == null ? 0 : collection.hashCode();
         }
@@ -538,7 +538,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…ƒ}ƒbƒv‚ÌƒL[ŒJ‚è•Ô‚µB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã®ã‚­ãƒ¼ç¹°ã‚Šè¿”ã—ã€‚<p>
      *
      * @author M.Takata
      * @see AbstractCacheMapService.KeySet#iterator()
@@ -552,7 +552,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
         private Object current;
         
         /**
-         * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          */
         public KeyIterator(){
             if(references != null){
@@ -560,12 +560,12 @@ public abstract class AbstractCacheMapService extends ServiceBase
             }
         }
         
-        // Iterator‚ÌJavaDoc
+        // Iteratorã®JavaDoc
         public boolean hasNext(){
             return iterator == null ? false : iterator.hasNext();
         }
         
-        // Iterator‚ÌJavaDoc
+        // Iteratorã®JavaDoc
         public Object next(){
             if(iterator == null){
                 throw new NoSuchElementException();
@@ -575,7 +575,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
             return current;
         }
         
-        // Iterator‚ÌJavaDoc
+        // Iteratorã®JavaDoc
         public void remove(){
             if(current == null){
                 throw new IllegalStateException();
@@ -594,7 +594,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…ƒ}ƒbƒv‚Ì’lW‡B<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã®å€¤é›†åˆã€‚<p>
      *
      * @author M.Takata
      * @see AbstractCacheMapService#values()
@@ -607,7 +607,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
         private Collection collection;
         
         /**
-         * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          */
         public ValuesCollection(){
             if(references != null){
@@ -615,22 +615,22 @@ public abstract class AbstractCacheMapService extends ServiceBase
             }
         }
         
-        // Collection‚ÌJavaDoc
+        // Collectionã®JavaDoc
         public int size(){
             return AbstractCacheMapService.this.size();
         }
         
-        // Collection‚ÌJavaDoc
+        // Collectionã®JavaDoc
         public boolean isEmpty(){
             return AbstractCacheMapService.this.isEmpty();
         }
         
-        // Collection‚ÌJavaDoc
+        // Collectionã®JavaDoc
         public boolean contains(Object o){
             return AbstractCacheMapService.this.containsValue(o);
         }
         
-        // Collection‚ÌJavaDoc
+        // Collectionã®JavaDoc
         public boolean containsAll(Collection c){
             final Iterator values = c.iterator();
             boolean result = true;
@@ -642,12 +642,12 @@ public abstract class AbstractCacheMapService extends ServiceBase
             return result;
         }
         
-        // Collection‚ÌJavaDoc
+        // Collectionã®JavaDoc
         public Iterator iterator(){
             return new ValuesIterator();
         }
         
-        // Collection‚ÌJavaDoc
+        // Collectionã®JavaDoc
         public Object[] toArray(){
             if(references == null || references.size() == 0){
                 return new Object[0];
@@ -669,7 +669,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
             return result;
         }
         
-        // Collection‚ÌJavaDoc
+        // Collectionã®JavaDoc
         public Object[] toArray(Object[] a){
             if(references == null || references.size() == 0){
                 if(a.length == 0){
@@ -706,17 +706,17 @@ public abstract class AbstractCacheMapService extends ServiceBase
             return result;
         }
         
-        // Collection‚ÌJavaDoc
+        // Collectionã®JavaDoc
         public boolean add(Object o){
             throw new UnsupportedOperationException();
         }
         
-        // Collection‚ÌJavaDoc
+        // Collectionã®JavaDoc
         public boolean addAll(Collection c){
             throw new UnsupportedOperationException();
         }
         
-        // Collection‚ÌJavaDoc
+        // Collectionã®JavaDoc
         public boolean remove(Object o){
             if(references == null || references.size() == 0){
                 return false;
@@ -751,7 +751,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
             return result;
         }
         
-        // Collection‚ÌJavaDoc
+        // Collectionã®JavaDoc
         public boolean removeAll(Collection c){
             final Iterator values = c.iterator();
             boolean result = false;
@@ -761,7 +761,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
             return result;
         }
         
-        // Collection‚ÌJavaDoc
+        // Collectionã®JavaDoc
         public boolean retainAll(Collection c){
             if(references == null || references.size() == 0){
                 return false;
@@ -789,12 +789,12 @@ public abstract class AbstractCacheMapService extends ServiceBase
             return result;
         }
         
-        // Collection‚ÌJavaDoc
+        // Collectionã®JavaDoc
         public void clear(){
             AbstractCacheMapService.this.clear();
         }
         
-        // Collection‚ÌJavaDoc
+        // Collectionã®JavaDoc
         public boolean equals(Object o){
             if(o == null){
                 return false;
@@ -813,7 +813,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
             return false;
         }
         
-        // Collection‚ÌJavaDoc
+        // Collectionã®JavaDoc
         public int hashCode(){
             return collection == null ? 0 : collection.hashCode();
         }
@@ -825,7 +825,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…ƒ}ƒbƒv‚Ì’lŒJ‚è•Ô‚µB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã®å€¤ç¹°ã‚Šè¿”ã—ã€‚<p>
      *
      * @author M.Takata
      * @see AbstractCacheMapService.ValuesCollection#iterator()
@@ -839,7 +839,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
         private KeyCachedReference current;
         
         /**
-         * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          */
         public ValuesIterator(){
             if(references != null){
@@ -847,12 +847,12 @@ public abstract class AbstractCacheMapService extends ServiceBase
             }
         }
         
-        // Iterator‚ÌJavaDoc
+        // Iteratorã®JavaDoc
         public boolean hasNext(){
             return iterator == null ? false : iterator.hasNext();
         }
         
-        // Iterator‚ÌJavaDoc
+        // Iteratorã®JavaDoc
         public Object next(){
             if(iterator == null){
                 throw new NoSuchElementException();
@@ -862,7 +862,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
             return current.get(this);
         }
         
-        // Iterator‚ÌJavaDoc
+        // Iteratorã®JavaDoc
         public void remove(){
             if(current == null){
                 throw new IllegalStateException();
@@ -881,7 +881,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…ƒ}ƒbƒv‚Ìƒ}ƒbƒvƒGƒ“ƒgƒŠW‡B<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã®ãƒãƒƒãƒ—ã‚¨ãƒ³ãƒˆãƒªé›†åˆã€‚<p>
      *
      * @author M.Takata
      * @see AbstractCacheMapService#entrySet()
@@ -894,7 +894,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
         private Collection collection;
         
         /**
-         * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          */
         public EntrySet(){
             if(references != null){
@@ -902,17 +902,17 @@ public abstract class AbstractCacheMapService extends ServiceBase
             }
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public int size(){
             return AbstractCacheMapService.this.size();
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public boolean isEmpty(){
             return AbstractCacheMapService.this.isEmpty();
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public boolean contains(Object o){
             if(o instanceof Map.Entry){
                 final Map.Entry entry = (Map.Entry)o;
@@ -921,7 +921,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
             return false;
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public boolean containsAll(Collection c){
             final Iterator keys = c.iterator();
             boolean result = true;
@@ -931,12 +931,12 @@ public abstract class AbstractCacheMapService extends ServiceBase
             return result;
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public Iterator iterator(){
             return new EntryIterator();
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public Object[] toArray(){
             if(references == null || references.size() == 0){
                 return new Object[0];
@@ -953,7 +953,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
             return result;
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public Object[] toArray(Object[] a){
             if(references == null || references.size() == 0){
                 if(a.length == 0){
@@ -985,17 +985,17 @@ public abstract class AbstractCacheMapService extends ServiceBase
             return result;
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public boolean add(Object o){
             throw new UnsupportedOperationException();
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public boolean addAll(Collection c){
             throw new UnsupportedOperationException();
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public boolean remove(Object o){
             if(references == null || references.size() == 0){
                 return false;
@@ -1009,7 +1009,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
             return false;
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public boolean removeAll(Collection c){
             final Iterator entries = c.iterator();
             boolean result = false;
@@ -1019,7 +1019,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
             return result;
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public boolean retainAll(Collection c){
             if(references == null || references.size() == 0){
                 return false;
@@ -1046,12 +1046,12 @@ public abstract class AbstractCacheMapService extends ServiceBase
             return result;
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public void clear(){
             AbstractCacheMapService.this.clear();
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public boolean equals(Object o){
             if(o == null){
                 return false;
@@ -1070,14 +1070,14 @@ public abstract class AbstractCacheMapService extends ServiceBase
             return false;
         }
         
-        // Set‚ÌJavaDoc
+        // Setã®JavaDoc
         public int hashCode(){
             return collection == null ? 0 : collection.hashCode();
         }
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…ƒ}ƒbƒv‚Ìƒ}ƒbƒvƒGƒ“ƒgƒŠŒJ‚è•Ô‚µB<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã®ãƒãƒƒãƒ—ã‚¨ãƒ³ãƒˆãƒªç¹°ã‚Šè¿”ã—ã€‚<p>
      *
      * @author M.Takata
      * @see AbstractCacheMapService.EntrySet#iterator()
@@ -1091,7 +1091,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
         private Object current;
         
         /**
-         * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          */
         public EntryIterator(){
             if(references != null){
@@ -1099,12 +1099,12 @@ public abstract class AbstractCacheMapService extends ServiceBase
             }
         }
         
-        // Iterator‚ÌJavaDoc
+        // Iteratorã®JavaDoc
         public boolean hasNext(){
             return iterator == null ? false : iterator.hasNext();
         }
         
-        // Iterator‚ÌJavaDoc
+        // Iteratorã®JavaDoc
         public Object next(){
             if(iterator == null){
                 throw new NoSuchElementException();
@@ -1114,7 +1114,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
             return new Entry(current);
         }
         
-        // Iterator‚ÌJavaDoc
+        // Iteratorã®JavaDoc
         public void remove(){
             if(current == null){
                 throw new IllegalStateException();
@@ -1128,7 +1128,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
     }
     
     /**
-     * ƒLƒƒƒbƒVƒ…ƒ}ƒbƒv‚Ìƒ}ƒbƒvƒGƒ“ƒgƒŠ<p>
+     * ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒãƒƒãƒ—ã®ãƒãƒƒãƒ—ã‚¨ãƒ³ãƒˆãƒª<p>
      *
      * @author M.Takata
      * @see AbstractCacheMapService.EntryIterator#next()
@@ -1140,30 +1140,30 @@ public abstract class AbstractCacheMapService extends ServiceBase
         private Object key;
         
         /**
-         * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          */
         public Entry(Object key){
             this.key = key;
         }
         
-        // Map.Entry‚ÌJavaDoc
+        // Map.Entryã®JavaDoc
         public Object getKey(){
             return key;
         }
         
-        // Map.Entry‚ÌJavaDoc
+        // Map.Entryã®JavaDoc
         public Object getValue(){
             return AbstractCacheMapService.this.get(key);
         }
         
-        // Map.Entry‚ÌJavaDoc
+        // Map.Entryã®JavaDoc
         public Object setValue(Object value){
             final Object result = AbstractCacheMapService.this.remove(key);
             AbstractCacheMapService.this.put(key, value);
             return result;
         }
         
-        // Map.Entry‚ÌJavaDoc
+        // Map.Entryã®JavaDoc
         public boolean equals(Object o){
             if(o == null){
                 return false;
@@ -1180,7 +1180,7 @@ public abstract class AbstractCacheMapService extends ServiceBase
             return false;
         }
         
-        // Map.Entry‚ÌJavaDoc
+        // Map.Entryã®JavaDoc
         public int hashCode(){
             return key.hashCode();
         }

@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.aop.interceptor.servlet;
 import jp.ossc.nimbus.core.ServiceName;
 
 /**
- * {@link HttpServletResponseDeflateInterceptorService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link HttpServletResponseDeflateInterceptorService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  * @see HttpServletResponseDeflateInterceptorService
@@ -52,86 +52,86 @@ public interface HttpServletResponseDeflateInterceptorServiceMBean
     public int getDeflateLength();
     
     /**
-     * ˆ³kŠÔ‚ğ‹L˜^‚·‚é{@link jp.ossc.nimbus.service.performance.PerformanceRecorder PerformanceRecorder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * åœ§ç¸®æ™‚é–“ã‚’è¨˜éŒ²ã™ã‚‹{@link jp.ossc.nimbus.service.performance.PerformanceRecorder PerformanceRecorder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name PerformanceRecorderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name PerformanceRecorderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setPerformanceRecorderServiceName(ServiceName name);
     
     /**
-     * ˆ³kŠÔ‚ğ‹L˜^‚·‚é{@link jp.ossc.nimbus.service.performance.PerformanceRecorder PerformanceRecorder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * åœ§ç¸®æ™‚é–“ã‚’è¨˜éŒ²ã™ã‚‹{@link jp.ossc.nimbus.service.performance.PerformanceRecorder PerformanceRecorder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return PerformanceRecorderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return PerformanceRecorderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getPerformanceRecorderServiceName();
     
     /**
-     * ˆ³k‘OƒoƒCƒg”‚ğ‹L˜^‚·‚é{@link jp.ossc.nimbus.service.performance.PerformanceRecorder PerformanceRecorder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * åœ§ç¸®å‰ãƒã‚¤ãƒˆæ•°ã‚’è¨˜éŒ²ã™ã‚‹{@link jp.ossc.nimbus.service.performance.PerformanceRecorder PerformanceRecorder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name PerformanceRecorderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name PerformanceRecorderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setBeforeCompressSizePerformanceRecorderServiceName(ServiceName name);
     
     /**
-     * ˆ³k‘OƒoƒCƒg”‚ğ‹L˜^‚·‚é{@link jp.ossc.nimbus.service.performance.PerformanceRecorder PerformanceRecorder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * åœ§ç¸®å‰ãƒã‚¤ãƒˆæ•°ã‚’è¨˜éŒ²ã™ã‚‹{@link jp.ossc.nimbus.service.performance.PerformanceRecorder PerformanceRecorder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return PerformanceRecorderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return PerformanceRecorderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getBeforeCompressSizePerformanceRecorderServiceName();
     
     /**
-     * ˆ³kŒãƒoƒCƒg”‚ğ‹L˜^‚·‚é{@link jp.ossc.nimbus.service.performance.PerformanceRecorder PerformanceRecorder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * åœ§ç¸®å¾Œãƒã‚¤ãƒˆæ•°ã‚’è¨˜éŒ²ã™ã‚‹{@link jp.ossc.nimbus.service.performance.PerformanceRecorder PerformanceRecorder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name PerformanceRecorderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name PerformanceRecorderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setAfterCompressSizePerformanceRecorderServiceName(ServiceName name);
     
     /**
-     * ˆ³kŒãƒoƒCƒg”‚ğ‹L˜^‚·‚é{@link jp.ossc.nimbus.service.performance.PerformanceRecorder PerformanceRecorder}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * åœ§ç¸®å¾Œãƒã‚¤ãƒˆæ•°ã‚’è¨˜éŒ²ã™ã‚‹{@link jp.ossc.nimbus.service.performance.PerformanceRecorder PerformanceRecorder}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return PerformanceRecorderƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return PerformanceRecorderã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getAfterCompressSizePerformanceRecorderServiceName();
     
     /**
-     * ˆ—‚µ‚½‰“š‰ñ”‚ğæ“¾‚·‚éB<p>
+     * å‡¦ç†ã—ãŸå¿œç­”å›æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‰“š‰ñ”
+     * @return å¿œç­”å›æ•°
      */
     public long getResponseCount();
     
     /**
-     * ˆ—‚µ‚½‰“š‰ñ”‚Ì‚¤‚¿Aˆ³k‘ÎÛ‚Æ‚µ‚½‰ñ”‚ğæ“¾‚·‚éB<p>
+     * å‡¦ç†ã—ãŸå¿œç­”å›æ•°ã®ã†ã¡ã€åœ§ç¸®å¯¾è±¡ã¨ã—ãŸå›æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ˆ³k‘ÎÛ‚Æ‚µ‚½‰ñ”
+     * @return åœ§ç¸®å¯¾è±¡ã¨ã—ãŸå›æ•°
      */
     public long getCompressCount();
     
     /**
-     * ˆ³k‘ÎÛ‚Æ‚µ‚½‰ñ”‚Ì‚¤‚¿Aˆ³k‚µ‚½‰ñ”‚ğæ“¾‚·‚éB<p>
+     * åœ§ç¸®å¯¾è±¡ã¨ã—ãŸå›æ•°ã®ã†ã¡ã€åœ§ç¸®ã—ãŸå›æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ˆ³k‚µ‚½‰ñ”
+     * @return åœ§ç¸®ã—ãŸå›æ•°
      */
     public long getCompressedCount();
     
     /**
-     * ˆ—‚µ‚½‰“š‰ñ”‚Ì‚¤‚¿Aˆ³k‘ÎÛ‚Æ‚µ‚½‰ñ”‚Ì”ä—¦‚ğæ“¾‚·‚éB<p>
+     * å‡¦ç†ã—ãŸå¿œç­”å›æ•°ã®ã†ã¡ã€åœ§ç¸®å¯¾è±¡ã¨ã—ãŸå›æ•°ã®æ¯”ç‡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ˆ³k‘ÎÛ‚Æ‚µ‚½‰ñ”‚Ì”ä—¦
+     * @return åœ§ç¸®å¯¾è±¡ã¨ã—ãŸå›æ•°ã®æ¯”ç‡
      */
     public double getCompressRate();
     
     /**
-     * ˆ³k‘ÎÛ‚Æ‚µ‚½‰ñ”‚Ì‚¤‚¿Aˆ³k‚µ‚½‰ñ”‚Ì”ä—¦‚ğæ“¾‚·‚éB<p>
+     * åœ§ç¸®å¯¾è±¡ã¨ã—ãŸå›æ•°ã®ã†ã¡ã€åœ§ç¸®ã—ãŸå›æ•°ã®æ¯”ç‡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ˆ³k‚µ‚½‰ñ”‚Ì”ä—¦
+     * @return åœ§ç¸®ã—ãŸå›æ•°ã®æ¯”ç‡
      */
     public double getCompressedRate();
     
     /**
-     * ˆ³k‚µ‚½‚Ì•½‹Ïˆ³k—¦‚ğæ“¾‚·‚éB<p>
+     * åœ§ç¸®ã—ãŸæ™‚ã®å¹³å‡åœ§ç¸®ç‡ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •½‹Ïˆ³k—¦
+     * @return å¹³å‡åœ§ç¸®ç‡
      */
     public double getAverageCompressionRate();
 }

@@ -38,7 +38,7 @@ import jp.ossc.nimbus.service.journal.JournalEditor;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * CSVŒ`®‚ÌƒWƒƒ[ƒiƒ‹‚ğƒtƒH[ƒ}ƒbƒg‚·‚éƒGƒfƒBƒ^ƒT[ƒrƒX‚ÌŠî’êƒNƒ‰ƒXB<p>
+ * CSVå½¢å¼ã®ã‚¸ãƒ£ãƒ¼ãƒŠãƒ«ã‚’ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®åŸºåº•ã‚¯ãƒ©ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */

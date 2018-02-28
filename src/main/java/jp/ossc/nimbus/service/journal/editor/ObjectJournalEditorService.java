@@ -38,9 +38,9 @@ import jp.ossc.nimbus.service.journal.JournalEditor;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
- * �I�u�W�F�N�g���t�H�[�}�b�g����G�f�B�^�B<p>
- * �n���ꂽ�I�u�W�F�N�g�̌^�����āA{@link EditorFinder}�ɐݒ肳�ꂽ�A�^�ƃG�f�B�^�̃}�b�s���O���g���āA�����𑼂̃G�f�B�^�ɈϏ����āA���̌�{@link Object#toString()}���Ă�ŕ�����ɂ���B�܂��A�n���ꂽ�I�u�W�F�N�g�̌^���z��^�̏ꍇ�A�e�v�f�ɑ΂��ē��l�̏������s���A','�ŋ�؂���������ɘA������B<br>
- * EditorFinder�ŃG�f�B�^���������Ă�������Ȃ��ꍇ�ɂ́A{@link Object#toString()}���Ă�ŕ�����ɂ���B<br>
+ * オブジェクトをフォーマットするエディタ。<p>
+ * 渡されたオブジェクトの型を見て、{@link EditorFinder}に設定された、型とエディタのマッピングを使って、処理を他のエディタに委譲して、その後{@link Object#toString()}を呼んで文字列にする。また、渡されたオブジェクトの型が配列型の場合、各要素に対して同様の処理を行い、','で区切った文字列に連結する。<br>
+ * EditorFinderでエディタを検索しても見つからない場合には、{@link Object#toString()}を呼んで文字列にする。<br>
  * 
  * @author M.Takata
  */

@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.cache;
 import jp.ossc.nimbus.core.FactoryServiceBaseMBean;
 
 /**
- * {@link LRUOverflowAlgorithmFactoryService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link LRUOverflowAlgorithmFactoryService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see LRUOverflowAlgorithmFactoryService
@@ -43,7 +43,7 @@ public interface LRUOverflowAlgorithmFactoryServiceMBean
  extends FactoryServiceBaseMBean{
     
     /**
-     * ‚ ‚Ó‚êƒAƒ‹ƒSƒŠƒYƒ€‚ğÀs‚·‚é‚½‚ß‚É•Û‚µ‚Ä‚¢‚éî•ñ‚ğ‰Šú‰»‚·‚éB<p>
+     * ã‚ãµã‚Œã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚’å®Ÿè¡Œã™ã‚‹ãŸã‚ã«ä¿æŒã—ã¦ã„ã‚‹æƒ…å ±ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚<p>
      */
     public void reset();
 }

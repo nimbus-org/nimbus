@@ -34,7 +34,7 @@ package jp.ossc.nimbus.service.proxy;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link RemoteServiceServerService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link RemoteServiceServerService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see RemoteServiceServerService
@@ -42,209 +42,253 @@ import jp.ossc.nimbus.core.*;
 public interface RemoteServiceServerServiceMBean extends ServiceBaseMBean{
     
     /**
-     * ƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚³‚ê‚éƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚±‚Åw’è‚³‚ê‚½ƒT[ƒrƒX–¼‚ÍA{@link jp.ossc.nimbus.service.aop.InvocationContext#getTargetObject() InvocationContext.getTargetObject()}‚ÅAŒÄ‚Ño‚µ‘ÎÛ‚ÌƒT[ƒrƒX‚ªw’è‚³‚ê‚Ä‚¢‚éê‡‚ÍA‚»‚ÌƒT[ƒrƒX–¼‚Æˆê’v‚·‚é‚©‚Ç‚¤‚©‚Ìƒ`ƒFƒbƒN‚É—p‚¢‚ç‚êAˆê’v‚µ‚È‚¢ê‡‚ÍAIllegalAccessException‚ğthrow‚·‚éB<br>
-     * ‚Ü‚½AInvocationContext.getTargetObject()‚ÅAŒÄ‚Ño‚µ‘ÎÛ‚ÌƒT[ƒrƒX‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‚±‚±‚Åw’è‚³‚ê‚½ƒT[ƒrƒX‚ğŒÄ‚Ño‚·B<br>
+     * ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã“ã§æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹åã¯ã€{@link jp.ossc.nimbus.service.aop.InvocationContext#getTargetObject() InvocationContext.getTargetObject()}ã§ã€å‘¼ã³å‡ºã—å¯¾è±¡ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒæŒ‡å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€ãã®ã‚µãƒ¼ãƒ“ã‚¹åã¨ä¸€è‡´ã™ã‚‹ã‹ã©ã†ã‹ã®ãƒã‚§ãƒƒã‚¯ã«ç”¨ã„ã‚‰ã‚Œã€ä¸€è‡´ã—ãªã„å ´åˆã¯ã€IllegalAccessExceptionã‚’throwã™ã‚‹ã€‚<br>
+     * ã¾ãŸã€InvocationContext.getTargetObject()ã§ã€å‘¼ã³å‡ºã—å¯¾è±¡ã®ã‚µãƒ¼ãƒ“ã‚¹ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ã“ã“ã§æŒ‡å®šã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      * 
-     * @param name ƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚³‚ê‚éƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setRemoteServiceName(ServiceName name);
     
     /**
-     * ƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚³‚ê‚éƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      * 
-     * @return ƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚³‚ê‚éƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getRemoteServiceName();
     
     /**
-     * ƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚³‚ê‚éƒT[ƒrƒX‚É‹²‚İ‚Ş{@link jp.ossc.nimbus.service.aop.InterceptorChainList InterceptorChainList}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ƒCƒ“ƒ^[ƒZƒvƒ^‚ğ‹²‚İ‚Ü‚È‚¢ê‡‚ÍAİ’è‚µ‚È‚­‚Ä‚à—Ç‚¢B<br>
+     * ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã«æŒŸã¿è¾¼ã‚€{@link jp.ossc.nimbus.service.aop.InterceptorChainList InterceptorChainList}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’æŒŸã¿è¾¼ã¾ãªã„å ´åˆã¯ã€è¨­å®šã—ãªãã¦ã‚‚è‰¯ã„ã€‚<br>
      *
-     * @param name InterceptorChainListƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name InterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setInterceptorChainListServiceName(ServiceName name);
     
     /**
-     * ƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚³‚ê‚éƒT[ƒrƒX‚É‹²‚İ‚Ş{@link jp.ossc.nimbus.service.aop.InterceptorChainList InterceptorChainList}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã«æŒŸã¿è¾¼ã‚€{@link jp.ossc.nimbus.service.aop.InterceptorChainList InterceptorChainList}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return InterceptorChainListƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return InterceptorChainListã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getInterceptorChainListServiceName();
     
     /**
-     * ƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚³‚ê‚éƒT[ƒrƒX‚ğŒÄ‚Ño‚·{@link jp.ossc.nimbus.service.aop.Invoker Invoker}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA{@link jp.ossc.nimbus.service.aop.invoker.MethodReflectionCallInvokerService MethodReflectionCallInvokerService}ƒT[ƒrƒX‚ª“à•”‚Å¶¬‚³‚êg—p‚³‚ê‚éB<br>
+     * ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’å‘¼ã³å‡ºã™{@link jp.ossc.nimbus.service.aop.Invoker Invoker}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€{@link jp.ossc.nimbus.service.aop.invoker.MethodReflectionCallInvokerService MethodReflectionCallInvokerService}ã‚µãƒ¼ãƒ“ã‚¹ãŒå†…éƒ¨ã§ç”Ÿæˆã•ã‚Œä½¿ç”¨ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param name InvokerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Invokerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setInvokerServiceName(ServiceName name);
     
     /**
-     * ƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚³‚ê‚éƒT[ƒrƒX‚ğŒÄ‚Ño‚·{@link jp.ossc.nimbus.service.aop.Invoker Invoker}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã‚’å‘¼ã³å‡ºã™{@link jp.ossc.nimbus.service.aop.Invoker Invoker}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return InvokerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Invokerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getInvokerServiceName();
     
     /**
-     * ƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚³‚ê‚éƒT[ƒrƒX‚É‹²‚İ‚Ş{@link jp.ossc.nimbus.service.aop.InterceptorChain InterceptorChain}‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.aop.InterceptorChainFactory InterceptorChainFactory}‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã«æŒŸã¿è¾¼ã‚€{@link jp.ossc.nimbus.service.aop.InterceptorChain InterceptorChain}ã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.aop.InterceptorChainFactory InterceptorChainFactory}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name InterceptorChainFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name InterceptorChainFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setInterceptorChainFactoryServiceName(ServiceName name);
     
     /**
-     * ƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚³‚ê‚éƒT[ƒrƒX‚É‹²‚İ‚Ş{@link jp.ossc.nimbus.service.aop.InterceptorChain InterceptorChain}‚ğ¶¬‚·‚é{@link jp.ossc.nimbus.service.aop.InterceptorChainFactory InterceptorChainFactory}‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã«æŒŸã¿è¾¼ã‚€{@link jp.ossc.nimbus.service.aop.InterceptorChain InterceptorChain}ã‚’ç”Ÿæˆã™ã‚‹{@link jp.ossc.nimbus.service.aop.InterceptorChainFactory InterceptorChainFactory}ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return InterceptorChainFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return InterceptorChainFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getInterceptorChainFactoryServiceName();
     
     /**
-     * {@link RemoteServerInvoker}‚ğJNDI‚ÉƒoƒCƒ“ƒh‚·‚éÛ‚ÌJNDI–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğİ’è‚µ‚Ä‚È‚­A{@link #setRemoteServiceName(ServiceName)}‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍA‚»‚±‚Åİ’è‚³‚ê‚½ƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚³‚ê‚éƒT[ƒrƒX‚Ì{@link ServiceName}‚©‚çA"ƒ}ƒl[ƒWƒƒ–¼/ƒT[ƒrƒX–¼"‚Æ‚¢‚¤JNDI–¼‚ª“K—p‚³‚ê‚éB<br>
-     * ‚Ç‚¿‚ç‚àİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAƒT[ƒrƒX‚ÌŠJn‚Å—áŠO‚ª”­¶‚·‚éB<br>
+     * {@link RemoteServerInvoker}ã‚’JNDIã«ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹éš›ã®JNDIåã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’è¨­å®šã—ã¦ãªãã€{@link #setRemoteServiceName(ServiceName)}ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€ãã“ã§è¨­å®šã•ã‚ŒãŸãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã•ã‚Œã‚‹ã‚µãƒ¼ãƒ“ã‚¹ã®{@link ServiceName}ã‹ã‚‰ã€"ãƒãƒãƒ¼ã‚¸ãƒ£å/ã‚µãƒ¼ãƒ“ã‚¹å"ã¨ã„ã†JNDIåãŒé©ç”¨ã•ã‚Œã‚‹ã€‚<br>
+     * ã©ã¡ã‚‰ã‚‚è¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹ã§ä¾‹å¤–ãŒç™ºç”Ÿã™ã‚‹ã€‚<br>
      *
-     * @param name RemoteServerInvoker‚ğJNDI‚ÉƒoƒCƒ“ƒh‚·‚éÛ‚ÌJNDI–¼
+     * @param name RemoteServerInvokerã‚’JNDIã«ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹éš›ã®JNDIå
      */
     public void setJndiName(String name);
     
     /**
-     * {@link RemoteServerInvoker}‚ğJNDI‚ÉƒoƒCƒ“ƒh‚·‚éÛ‚ÌJNDI–¼‚ğæ“¾‚·‚éB<p>
+     * {@link RemoteServerInvoker}ã‚’JNDIã«ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹éš›ã®JNDIåã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return RemoteServerInvoker‚ğJNDI‚ÉƒoƒCƒ“ƒh‚·‚éÛ‚ÌJNDI–¼
+     * @return RemoteServerInvokerã‚’JNDIã«ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹éš›ã®JNDIå
      */
     public String getJndiName();
     
     /**
-     * {@link RemoteServerInvoker}‚ğJNDI‚ÉƒoƒCƒ“ƒh‚·‚é{@link jp.ossc.nimbus.service.repository.Repository Repository}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * {@link RemoteServerInvoker}ã‚’JNDIã«ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹{@link jp.ossc.nimbus.service.repository.Repository Repository}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name RepositoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Repositoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setJndiRepositoryServiceName(ServiceName name);
     
     /**
-     * {@link RemoteServerInvoker}‚ğJNDI‚ÉƒoƒCƒ“ƒh‚·‚é{@link jp.ossc.nimbus.service.repository.Repository Repository}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link RemoteServerInvoker}ã‚’JNDIã«ãƒã‚¤ãƒ³ãƒ‰ã™ã‚‹{@link jp.ossc.nimbus.service.repository.Repository Repository}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return RepositoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Repositoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getJndiRepositoryServiceName();
     
     /**
-     * {@link RemoteServerInvoker}‚É‘Î‚µ‚ÄRMIŒÄ‚Ño‚µ‚ğ‚·‚é‚Ìƒ|[ƒg”Ô†‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍA0‚Å”CˆÓ‚Ìƒ|[ƒg‚ªg—p‚³‚ê‚éB<br>
+     * {@link RemoteServerInvoker}ã«å¯¾ã—ã¦RMIå‘¼ã³å‡ºã—ã‚’ã™ã‚‹æ™‚ã®ãƒãƒ¼ãƒˆç•ªå·ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã§ä»»æ„ã®ãƒãƒ¼ãƒˆãŒä½¿ç”¨ã•ã‚Œã‚‹ã€‚<br>
      *
-     * @param port ƒ|[ƒg”Ô†
+     * @param port ãƒãƒ¼ãƒˆç•ªå·
      */
     public void setRMIPort(int port);
     
     /**
-     * {@link RemoteServerInvoker}‚É‘Î‚µ‚ÄRMIŒÄ‚Ño‚µ‚ğ‚·‚é‚Ìƒ|[ƒg”Ô†‚ğæ“¾‚·‚éB<p>
+     * {@link RemoteServerInvoker}ã«å¯¾ã—ã¦RMIå‘¼ã³å‡ºã—ã‚’ã™ã‚‹æ™‚ã®ãƒãƒ¼ãƒˆç•ªå·ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒ|[ƒg”Ô†
+     * @return ãƒãƒ¼ãƒˆç•ªå·
      */
     public int getRMIPort();
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * ‚±‚Ì‘®«‚ğİ’è‚µ‚½ê‡‚ÍAƒNƒ‰ƒXƒ^ƒT[ƒrƒX‚Ìƒƒ“ƒo[î•ñ‚ÌƒIƒvƒVƒ‡ƒ“‚É{@link jp.ossc.nimbus.service.proxy.invoker.KeepAliveCheckInvoker KeepAliveCheckInvoker}‚ğİ’è‚·‚é–‚ÅAƒNƒ‰ƒXƒ^ƒT[ƒrƒXŒo—R‚Å‚ÌƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚ğƒTƒ|[ƒg‚·‚éB<br>
-     * ƒNƒ‰ƒXƒ^ƒT[ƒrƒX‚ÌƒNƒ‰ƒXƒ^‚Ö‚ÌQ‰Á‚ÍA‚±‚ÌƒT[ƒrƒX‚Ìó‘Ô‚Æ˜A“®‚·‚é•K—v‚ª‚ ‚é‚½‚ßA{@link jp.ossc.nimbus.service.keepalive.ClusterService#setJoinOnStart(boolean) ClusterService.setJoinOnStart(false)}‚É‚µ‚Ä‚¨‚­•K—v‚ª‚ ‚éB<br>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ã“ã®å±æ€§ã‚’è¨­å®šã—ãŸå ´åˆã¯ã€ã‚¯ãƒ©ã‚¹ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ¡ãƒ³ãƒãƒ¼æƒ…å ±ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã«{@link jp.ossc.nimbus.service.proxy.invoker.KeepAliveCheckInvoker KeepAliveCheckInvoker}ã‚’è¨­å®šã™ã‚‹äº‹ã§ã€ã‚¯ãƒ©ã‚¹ã‚¿ã‚µãƒ¼ãƒ“ã‚¹çµŒç”±ã§ã®ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹ã€‚<br>
+     * ã‚¯ãƒ©ã‚¹ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚¯ãƒ©ã‚¹ã‚¿ã¸ã®å‚åŠ ã¯ã€ã“ã®ã‚µãƒ¼ãƒ“ã‚¹ã®çŠ¶æ…‹ã¨é€£å‹•ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ãŸã‚ã€{@link jp.ossc.nimbus.service.keepalive.ClusterService#setJoinOnStart(boolean) ClusterService.setJoinOnStart(false)}ã«ã—ã¦ãŠãå¿…è¦ãŒã‚ã‚‹ã€‚<br>
      *
-     * @param name ƒNƒ‰ƒXƒ^ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ã‚¯ãƒ©ã‚¹ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setClusterServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒNƒ‰ƒXƒ^ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ã‚¯ãƒ©ã‚¹ã‚¿ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getClusterServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚Ìƒƒ“ƒo[î•ñ‚ÌƒIƒvƒVƒ‡ƒ“ƒL[‚ğİ’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ¡ãƒ³ãƒãƒ¼æƒ…å ±ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param key ƒIƒvƒVƒ‡ƒ“ƒL[
+     * @param key ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚­ãƒ¼
      */
     public void setClusterOptionKey(String key);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚Ìƒƒ“ƒo[î•ñ‚ÌƒIƒvƒVƒ‡ƒ“ƒL[‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒ¡ãƒ³ãƒãƒ¼æƒ…å ±ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒIƒvƒVƒ‡ƒ“ƒL[
+     * @return ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚­ãƒ¼
      */
     public String getClusterOptionKey();
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚ÌƒNƒ‰ƒXƒ^Q‰Á‚ğ§Œä‚·‚é‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAtrue‚Å§Œä‚·‚éB<br>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚¯ãƒ©ã‚¹ã‚¿å‚åŠ ã‚’åˆ¶å¾¡ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€trueã§åˆ¶å¾¡ã™ã‚‹ã€‚<br>
      *
-     * @param isJoin §Œä‚·‚éê‡Atrue
+     * @param isJoin åˆ¶å¾¡ã™ã‚‹å ´åˆã€true
      */
     public void setClusterJoin(boolean isJoin);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ƒNƒ‰ƒXƒ^}ƒT[ƒrƒX‚ÌƒNƒ‰ƒXƒ^Q‰Á‚ğ§Œä‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ã‚¯ãƒ©ã‚¹ã‚¿}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚¯ãƒ©ã‚¹ã‚¿å‚åŠ ã‚’åˆ¶å¾¡ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A§Œä‚·‚é
+     * @return trueã®å ´åˆã€åˆ¶å¾¡ã™ã‚‹
      */
     public boolean isClusterJoin();
     
     /**
-     * {@link jp.ossc.nimbus.service.performance.ResourceUsage}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
-     * İ’è‚µ‚È‚¢ê‡‚ÍA{@link RemoteServerInvoker#getResourceUsage()}‚Ì–ß‚è’l‚ÍAnullB<br>
+     * {@link jp.ossc.nimbus.service.performance.ResourceUsage}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã—ãªã„å ´åˆã¯ã€{@link RemoteServerInvoker#getResourceUsage()}ã®æˆ»ã‚Šå€¤ã¯ã€nullã€‚<br>
      *
-     * @param name ResourceUsageƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ResourceUsageã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setResourceUsageServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.performance.ResourceUsage}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * {@link jp.ossc.nimbus.service.performance.ResourceUsage}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ResourceUsageƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ResourceUsageã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getResourceUsageServiceName();
     
     /**
-     * java.rmi.server.RMIClientSocketFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * java.rmi.server.RMIClientSocketFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name RMIClientSocketFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name RMIClientSocketFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setRMIClientSocketFactoryServiceName(ServiceName name);
     
     /**
-     * java.rmi.server.RMIClientSocketFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * java.rmi.server.RMIClientSocketFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return RMIClientSocketFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return RMIClientSocketFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getRMIClientSocketFactoryServiceName();
     
     /**
-     * java.rmi.server.RMIServerSocketFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * java.rmi.server.RMIServerSocketFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name RMIServerSocketFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name RMIServerSocketFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setRMIServerSocketFactoryServiceName(ServiceName name);
     
     /**
-     * java.rmi.server.RMIServerSocketFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * java.rmi.server.RMIServerSocketFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return RMIServerSocketFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return RMIServerSocketFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getRMIServerSocketFactoryServiceName();
     
     /**
-     * ƒT[ƒrƒX‚ÌƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚ğ‚³‚ê‚é‚ÌAˆø”‹y‚Ñ–ß‚è’l‚ğ’¼—ñ‰»‚·‚é{@link jp.ossc.nimbus.service.io.Externalizer Externalizer}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã‚’ã•ã‚Œã‚‹æ™‚ã®ã€å¼•æ•°åŠã³æˆ»ã‚Šå€¤ã‚’ç›´åˆ—åŒ–ã™ã‚‹{@link jp.ossc.nimbus.service.io.Externalizer Externalizer}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ExternalizerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Externalizerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setExternalizerServiceName(ServiceName name);
     
     /**
-     * ƒT[ƒrƒX‚ÌƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚ğ‚³‚ê‚é‚ÌAˆø”‹y‚Ñ–ß‚è’l‚ğ’¼—ñ‰»‚·‚é{@link jp.ossc.nimbus.service.io.Externalizer Externalizer}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã‚’ã•ã‚Œã‚‹æ™‚ã®ã€å¼•æ•°åŠã³æˆ»ã‚Šå€¤ã‚’ç›´åˆ—åŒ–ã™ã‚‹{@link jp.ossc.nimbus.service.io.Externalizer Externalizer}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ExternalizerƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Externalizerã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getExternalizerServiceName();
+    
+    /**
+     * æˆ»ã‚Šå€¤ã‚’ç›´åˆ—åŒ–ã™ã‚‹æ™‚ã«éåŒæœŸã§ç›´åˆ—åŒ–ã™ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€0ã§åŒæœŸçš„ã«ç›´åˆ—åŒ–ã™ã‚‹ã€‚<br>
+     *
+     * @param size éåŒæœŸã§ç›´åˆ—åŒ–ã™ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰æ•°
+     */
+    public void setAsynchWriteExternalThreadSize(int size);
+    
+    /**
+     * æˆ»ã‚Šå€¤ã‚’ç›´åˆ—åŒ–ã™ã‚‹æ™‚ã«éåŒæœŸã§ç›´åˆ—åŒ–ã™ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰æ•°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     *
+     * @return éåŒæœŸã§ç›´åˆ—åŒ–ã™ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰æ•°
+     */
+    public int getAsynchWriteExternalThreadSize();
+    
+    /**
+     * æˆ»ã‚Šå€¤ã‚’ç›´åˆ—åŒ–ã™ã‚‹æ™‚ã«éåŒæœŸã§ç›´åˆ—åŒ–ã™ã‚‹å ´åˆã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.queue.Queue Queue}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     *
+     * @param name Queueã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
+     */
+    public void setAsynchWriteExternalQueueServiceName(ServiceName name);
+    
+    /**
+     * æˆ»ã‚Šå€¤ã‚’ç›´åˆ—åŒ–ã™ã‚‹æ™‚ã«éåŒæœŸã§ç›´åˆ—åŒ–ã™ã‚‹å ´åˆã«ä½¿ç”¨ã™ã‚‹{@link jp.ossc.nimbus.service.queue.Queue Queue}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     *
+     * @return Queueã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
+     */
+    public ServiceName getAsynchWriteExternalQueueServiceName();
+    
+    /**
+     * æˆ»ã‚Šå€¤ã‚’ç›´åˆ—åŒ–ã™ã‚‹æ™‚ã«éåŒæœŸã§ç›´åˆ—åŒ–ã™ã‚‹éš›ã®ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€1024ã€‚<br>
+     *
+     * @param size ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
+     */
+    public void setAsynchWriteExternalBufferSize(int size);
+    
+    /**
+     * æˆ»ã‚Šå€¤ã‚’ç›´åˆ—åŒ–ã™ã‚‹æ™‚ã«éåŒæœŸã§ç›´åˆ—åŒ–ã™ã‚‹éš›ã®ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹ã€‚<p>
+     *
+     * @return ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
+     */
+    public int getAsynchWriteExternalBufferSize();
 }

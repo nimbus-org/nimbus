@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.service.writer.*;
 
 /**
- * {@link WriterAppenderWriterService}ƒT[ƒrƒX‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒXB<p>
+ * {@link WriterAppenderWriterService}ã‚µãƒ¼ãƒ“ã‚¹ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã€‚<p>
  * 
  * @author M.Takata
  */
@@ -43,73 +43,73 @@ public interface WriterAppenderWriterServiceMBean
  extends ServiceBaseMBean, MessageWriter{
     
     /**
-     * –ˆ‰ñƒtƒ‰ƒbƒVƒ…‚·‚é‚©‚ğİ’è‚·‚éB<p>
+     * æ¯å›ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ã™ã‚‹ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param flush –ˆ‰ñƒtƒ‰ƒbƒVƒ…‚·‚éê‡true
+     * @param flush æ¯å›ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ã™ã‚‹å ´åˆtrue
      */
     public void setImmediateFlush(boolean flush);
     
     /**
-     * –ˆ‰ñƒtƒ‰ƒbƒVƒ…‚·‚é‚©‚ğ’²‚×‚éB<p>
+     * æ¯å›ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ã™ã‚‹ã‹ã‚’èª¿ã¹ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A–ˆ‰ñƒtƒ‰ƒbƒVƒ…‚·‚é
+     * @return trueã®å ´åˆã€æ¯å›ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ã™ã‚‹
      */
     public boolean isImmediateFlush();
     
     /**
-     * o—Íƒtƒ@ƒCƒ‹‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğİ’è‚·‚éB<p>
+     * å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«ã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param encoding •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @param encoding æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public void setEncoding(String encoding);
     
     /**
-     * o—Íƒtƒ@ƒCƒ‹‚Ì•¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğæ“¾‚·‚éB<p>
+     * å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«ã®æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return •¶šƒGƒ“ƒR[ƒfƒBƒ“ƒO
+     * @return æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
      */
     public String getEncoding();
     
     /**
-     * ƒŒƒCƒAƒEƒg‚Ìƒwƒbƒ_•¶š—ñ‚ğİ’è‚·‚éB<p>
+     * ãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆã®ãƒ˜ãƒƒãƒ€æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param header ƒwƒbƒ_•¶š—ñ
+     * @param header ãƒ˜ãƒƒãƒ€æ–‡å­—åˆ—
      */
     public void setHeader(String header);
     
     /**
-     * ƒŒƒCƒAƒEƒg‚Ìƒwƒbƒ_•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆã®ãƒ˜ãƒƒãƒ€æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒwƒbƒ_•¶š—ñ
+     * @return ãƒ˜ãƒƒãƒ€æ–‡å­—åˆ—
      */
     public String getHeader();
     
     /**
-     * ƒŒƒCƒAƒEƒg‚Ìƒtƒbƒ^•¶š—ñ‚ğİ’è‚·‚éB<p>
+     * ãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆã®ãƒ•ãƒƒã‚¿æ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param footer ƒtƒbƒ^•¶š—ñ
+     * @param footer ãƒ•ãƒƒã‚¿æ–‡å­—åˆ—
      */
     public void setFooter(String footer);
     
     /**
-     * ƒŒƒCƒAƒEƒg‚Ìƒtƒbƒ^•¶š—ñ‚ğæ“¾‚·‚éB<p>
+     * ãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆã®ãƒ•ãƒƒã‚¿æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒtƒbƒ^•¶š—ñ
+     * @return ãƒ•ãƒƒã‚¿æ–‡å­—åˆ—
      */
     public String getFooter();
     
     /**
-     * “¯Šú“I‚É‘‚«‚Ş‚©‚Ç‚¤‚©‚ğİ’è‚·‚éB<p>
-     * ƒfƒtƒHƒ‹ƒg‚ÍAfalse‚Å“¯Šú‰»‚µ‚È‚¢B<br>
+     * åŒæœŸçš„ã«æ›¸ãè¾¼ã‚€ã‹ã©ã†ã‹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€falseã§åŒæœŸåŒ–ã—ãªã„ã€‚<br>
      *
-     * @param isSynch “¯Šú“I‚É‘‚«‚Şê‡Atrue
+     * @param isSynch åŒæœŸçš„ã«æ›¸ãè¾¼ã‚€å ´åˆã€true
      */
     public void setSynchronized(boolean isSynch);
     
     /**
-     * “¯Šú“I‚É‘‚«‚Ş‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éB<p>
+     * åŒæœŸçš„ã«æ›¸ãè¾¼ã‚€ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
      *
-     * @return true‚Ìê‡A“¯Šú“I‚É‘‚«‚Ş
+     * @return trueã®å ´åˆã€åŒæœŸçš„ã«æ›¸ãè¾¼ã‚€
      */
     public boolean isSynchronized();
 }

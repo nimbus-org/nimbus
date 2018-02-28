@@ -36,7 +36,7 @@ import java.util.Properties;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link GroupEJBFactoryService}のMBeanインタフェース<p>
+ * {@link GroupEJBFactoryService}縺ｮMBean繧､繝ｳ繧ｿ繝輔ぉ繝ｼ繧ｹ<p>
  * 
  * @author M.Takata
  * @see GroupEJBFactoryService

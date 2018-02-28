@@ -42,7 +42,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * ƒvƒƒbƒgğŒB<p>
+ * ãƒ—ãƒ­ãƒƒãƒˆæ¡ä»¶ã€‚<p>
  *
  * @author k2-taniguchi
  */
@@ -50,34 +50,34 @@ public class PlotConditionImpl implements PlotCondition, java.io.Serializable {
     
     private static final long serialVersionUID = -5120322206925145655L;
     
-    /** ƒvƒƒbƒg–¼ */
+    /** ãƒ—ãƒ­ãƒƒãƒˆå */
     private String name;
-    /** ƒL[‚Éƒf[ƒ^ƒZƒbƒg–¼A’l‚Éƒf[ƒ^ƒZƒbƒgğŒƒŠƒXƒg */
+    /** ã‚­ãƒ¼ã«ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã€å€¤ã«ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶ãƒªã‚¹ãƒˆ */
     private Map dsConditionMap = null;
-    /** ƒf[ƒ^ƒZƒbƒgğŒƒŠƒXƒg */
+    /** ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶ãƒªã‚¹ãƒˆ */
     private List dsConditionList = null;
-    /** İ’è‡‚Ìƒf[ƒ^ƒZƒbƒg–¼ƒZƒbƒg */
+    /** è¨­å®šé †ã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã‚»ãƒƒãƒˆ */
     private LinkedHashSet dsNameOrderSet = null;
-    /** —LŒø‚Èƒf[ƒ^ƒZƒbƒg–¼ƒŠƒXƒg */
+    /** æœ‰åŠ¹ãªãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåãƒªã‚¹ãƒˆ */
     private Set enableDsNameSet = null;
 
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^B<p>
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚<p>
      */
     public PlotConditionImpl() {
     }
 
-    // PlotCondition‚ÌJavaDoc
+    // PlotConditionã®JavaDoc
     public void setName(String name) {
         this.name = name;
     }
 
-    // PlotCondition‚ÌJavaDoc
+    // PlotConditionã®JavaDoc
     public String getName() {
         return name;
     }
 
-    // PlotCondition‚ÌJavaDoc
+    // PlotConditionã®JavaDoc
     public void addDatasetCondition(DatasetCondition dsCondition) {
         if (dsConditionMap == null) {
             dsConditionMap = new HashMap();
@@ -93,13 +93,13 @@ public class PlotConditionImpl implements PlotCondition, java.io.Serializable {
         } else {
             List conditions = new ArrayList();
             conditions.add(dsCondition);
-            // ƒL[‚Éƒf[ƒ^ƒZƒbƒg–¼A’l‚Éƒf[ƒ^ƒZƒbƒgğŒƒŠƒXƒg
+            // ã‚­ãƒ¼ã«ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆåã€å€¤ã«ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆæ¡ä»¶ãƒªã‚¹ãƒˆ
             dsConditionMap.put(dsCondition.getName(), conditions);
             dsConditionList.add(dsCondition);
         }
     }
 
-    // PlotCondition‚ÌJavaDoc
+    // PlotConditionã®JavaDoc
     public DatasetCondition[] getDatasetConditions(String dsName) {
         if (dsConditionMap == null) {
             return new DatasetConditionImpl[0];
@@ -151,7 +151,7 @@ public class PlotConditionImpl implements PlotCondition, java.io.Serializable {
         }
     }
 
-    // PlotCondition‚ÌJavaDoc
+    // PlotConditionã®JavaDoc
     public void addDatasetNameOrder(String dsName) {
         if (dsNameOrderSet == null) {
             dsNameOrderSet = new LinkedHashSet();
@@ -159,7 +159,7 @@ public class PlotConditionImpl implements PlotCondition, java.io.Serializable {
         dsNameOrderSet.add(dsName);
     }
 
-    // PlotCondition‚ÌJavaDoc
+    // PlotConditionã®JavaDoc
     public String[] getDatasetNameOrder() {
         if (dsNameOrderSet == null) {
             return new String[0];
@@ -176,7 +176,7 @@ public class PlotConditionImpl implements PlotCondition, java.io.Serializable {
         return dsNameOrderSet;
     }
     
-    // PlotCondition‚ÌJavaDoc
+    // PlotConditionã®JavaDoc
     public void addEnableDatasetName(String dsName) {
         if (enableDsNameSet == null) {
             enableDsNameSet = new HashSet();
@@ -184,7 +184,7 @@ public class PlotConditionImpl implements PlotCondition, java.io.Serializable {
         enableDsNameSet.add(dsName);
     }
 
-    // PlotCondition‚ÌJavaDoc
+    // PlotConditionã®JavaDoc
     public String[] getEnableDatasetNames() {
         if (enableDsNameSet == null) {
             return new String[0];
@@ -201,7 +201,7 @@ public class PlotConditionImpl implements PlotCondition, java.io.Serializable {
         return enableDsNameSet;
     }
 
-    // PlotCondition‚ÌJavaDoc
+    // PlotConditionã®JavaDoc
     public Iterator getDatasetNames() {
         if (dsConditionMap == null) {
             dsConditionMap = new HashMap();

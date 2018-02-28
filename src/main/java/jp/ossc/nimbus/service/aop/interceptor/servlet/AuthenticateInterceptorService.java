@@ -44,16 +44,16 @@ import jp.ossc.nimbus.service.aop.*;
 import jp.ossc.nimbus.service.context.Context;
 
 /**
- * ”FØƒCƒ“ƒ^[ƒZƒvƒ^B<p>
- * ƒƒOƒCƒ“‚ÌƒŠƒNƒGƒXƒgˆ—‚ğs‚¤ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚Å”FØî•ñ‚ğ¶¬‚µA”FØƒŠƒNƒGƒXƒg‘®«(‘®«–¼‚Í{@link #getAuthenticatedInfoAttributeName()})‚Éİ’è‚·‚é‚ÆA‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ª”FØî•ñ‚ğƒZƒbƒVƒ‡ƒ“‚Ì‘®«‚Æ‚µ‚Äİ’è‚·‚éB<br>
- * ƒƒOƒCƒ“Œã‚ÌƒŠƒNƒGƒXƒgˆ—‚Å‚ÍA“ü—ÍƒŠƒNƒGƒXƒg‘®«(‘®«–¼‚Í{@link #getRequestObjectAttributeName()})‚©‚ç“ü—ÍƒIƒuƒWƒFƒNƒg‚ğæ“¾‚µA”FØƒZƒbƒVƒ‡ƒ“‘®«‚©‚çæ“¾‚µ‚½”FØî•ñ‚Æ‚Ì”äŠr‚ğs‚¢A”FØ‚³‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğƒ`ƒFƒbƒN‚·‚éB“ü—ÍƒIƒuƒWƒFƒNƒg‚Æ”FØî•ñ‚Ì”äŠr‚ğ‚Ç‚Ì‚æ‚¤‚És‚¤‚©‚ÍA{@link #setAuthenticatedInfoMapping(Map)}‚Åİ’è‚·‚éB”FØî•ñ‚Æ‡’v‚µ‚È‚¢ê‡‚ÍA{@link AuthenticateException}‚ğthrow‚·‚éB<br>
- * ƒƒOƒAƒEƒg‚ÌƒŠƒNƒGƒXƒgˆ—‚ªŠ®—¹‚·‚é‚ÆAƒZƒbƒVƒ‡ƒ“‚©‚ç”FØî•ñ‚ğíœ‚·‚éB<br>
+ * èªè¨¼ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã€‚<p>
+ * ãƒ­ã‚°ã‚¤ãƒ³ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã‚’è¡Œã†ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã§èªè¨¼æƒ…å ±ã‚’ç”Ÿæˆã—ã€èªè¨¼ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§(å±æ€§åã¯{@link #getAuthenticatedInfoAttributeName()})ã«è¨­å®šã™ã‚‹ã¨ã€ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ãŒèªè¨¼æƒ…å ±ã‚’ã‚»ãƒƒã‚·ãƒ§ãƒ³ã®å±æ€§ã¨ã—ã¦è¨­å®šã™ã‚‹ã€‚<br>
+ * ãƒ­ã‚°ã‚¤ãƒ³å¾Œã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã§ã¯ã€å…¥åŠ›ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§(å±æ€§åã¯{@link #getRequestObjectAttributeName()})ã‹ã‚‰å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã—ã€èªè¨¼ã‚»ãƒƒã‚·ãƒ§ãƒ³å±æ€§ã‹ã‚‰å–å¾—ã—ãŸèªè¨¼æƒ…å ±ã¨ã®æ¯”è¼ƒã‚’è¡Œã„ã€èªè¨¼ã•ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã€‚å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨èªè¨¼æƒ…å ±ã®æ¯”è¼ƒã‚’ã©ã®ã‚ˆã†ã«è¡Œã†ã‹ã¯ã€{@link #setAuthenticatedInfoMapping(Map)}ã§è¨­å®šã™ã‚‹ã€‚èªè¨¼æƒ…å ±ã¨åˆè‡´ã—ãªã„å ´åˆã¯ã€{@link AuthenticateException}ã‚’throwã™ã‚‹ã€‚<br>
+ * ãƒ­ã‚°ã‚¢ã‚¦ãƒˆã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ãŒå®Œäº†ã™ã‚‹ã¨ã€ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‹ã‚‰èªè¨¼æƒ…å ±ã‚’å‰Šé™¤ã™ã‚‹ã€‚<br>
  * <p>
- * {@link AuthenticateStore}‚ğİ’è‚·‚é‚ÆAƒƒOƒCƒ“‚É‚Í{@link AuthenticateStore#create(HttpServletRequest, Object)}‚ğŒÄ‚Ño‚µA”FØî•ñ‚ğƒXƒgƒA‚·‚éB<br>
- * ƒƒOƒCƒ“Œã‚ÌƒŠƒNƒGƒXƒgˆ—‚ÅA”FØƒZƒbƒVƒ‡ƒ“‘®«‚©‚ç”FØî•ñ‚ªæ“¾‚Å‚«‚È‚¢ê‡A{@link AuthenticateStore#activate(HttpServletRequest, Object)}‚ğŒÄ‚Ño‚µA”FØî•ñ‚ğ•œŒ³‚·‚éB<br>
- * ƒƒOƒAƒEƒg‚ÌƒŠƒNƒGƒXƒgˆ—‚ªŠ®—¹‚·‚é‚ÆA{@link AuthenticateStore#destroy(HttpServletRequest, Object)}‚ğŒÄ‚Ño‚µA”FØî•ñ‚ğíœ‚·‚éB<br>
- * ƒZƒbƒVƒ‡ƒ“ƒ^ƒCƒ€ƒAƒEƒg‚ª”­¶‚·‚é‚ÆA{@link AuthenticateStore#deactivate(HttpSession, Object)}‚ğŒÄ‚Ño‚µA”FØî•ñ‚ğ”ñŠˆ«‰»‚·‚éB<br>
- * ˆÈ‰º‚ÉA”FØƒCƒ“ƒ^[ƒZƒvƒ^‚ÌƒT[ƒrƒX’è‹`—á‚ğ¦‚·B<br>
+ * {@link AuthenticateStore}ã‚’è¨­å®šã™ã‚‹ã¨ã€ãƒ­ã‚°ã‚¤ãƒ³æ™‚ã«ã¯{@link AuthenticateStore#create(HttpServletRequest, Object)}ã‚’å‘¼ã³å‡ºã—ã€èªè¨¼æƒ…å ±ã‚’ã‚¹ãƒˆã‚¢ã™ã‚‹ã€‚<br>
+ * ãƒ­ã‚°ã‚¤ãƒ³å¾Œã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ã§ã€èªè¨¼ã‚»ãƒƒã‚·ãƒ§ãƒ³å±æ€§ã‹ã‚‰èªè¨¼æƒ…å ±ãŒå–å¾—ã§ããªã„å ´åˆã€{@link AuthenticateStore#activate(HttpServletRequest, Object)}ã‚’å‘¼ã³å‡ºã—ã€èªè¨¼æƒ…å ±ã‚’å¾©å…ƒã™ã‚‹ã€‚<br>
+ * ãƒ­ã‚°ã‚¢ã‚¦ãƒˆã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆå‡¦ç†ãŒå®Œäº†ã™ã‚‹ã¨ã€{@link AuthenticateStore#destroy(HttpServletRequest, Object)}ã‚’å‘¼ã³å‡ºã—ã€èªè¨¼æƒ…å ±ã‚’å‰Šé™¤ã™ã‚‹ã€‚<br>
+ * ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆãŒç™ºç”Ÿã™ã‚‹ã¨ã€{@link AuthenticateStore#deactivate(HttpSession, Object)}ã‚’å‘¼ã³å‡ºã—ã€èªè¨¼æƒ…å ±ã‚’éæ´»æ€§åŒ–ã™ã‚‹ã€‚<br>
+ * ä»¥ä¸‹ã«ã€èªè¨¼ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã®ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ä¾‹ã‚’ç¤ºã™ã€‚<br>
  * <pre>
  * &lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
  * &lt;server&gt;
@@ -102,154 +102,154 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
     protected boolean isStoreDestroy = true;
     protected boolean isSessionInvalidate = false;
 
-    // AuthenticateInterceptorServiceMBean ‚ÌJavaDoc
+    // AuthenticateInterceptorServiceMBean ã®JavaDoc
     public void setThreadContextServiceName(ServiceName name){
         threadContextServiceName = name;
     }
-    // AuthenticateInterceptorServiceMBean ‚ÌJavaDoc
+    // AuthenticateInterceptorServiceMBean ã®JavaDoc
     public ServiceName getThreadContextServiceName(){
         return threadContextServiceName;
     }
 
-    // AuthenticateInterceptorServiceMBean ‚ÌJavaDoc
+    // AuthenticateInterceptorServiceMBean ã®JavaDoc
     public void setRequestObjectAttributeName(String name){
         requestObjectAttributeName = name;
     }
-    // AuthenticateInterceptorServiceMBean ‚ÌJavaDoc
+    // AuthenticateInterceptorServiceMBean ã®JavaDoc
     public String getRequestObjectAttributeName(){
         return requestObjectAttributeName;
     }
 
-    // AuthenticateInterceptorServiceMBean ‚ÌJavaDoc
+    // AuthenticateInterceptorServiceMBean ã®JavaDoc
     public void setRequestObjectContextKey(String key){
         requestObjectContextKey = key;
     }
-    // AuthenticateInterceptorServiceMBean ‚ÌJavaDoc
+    // AuthenticateInterceptorServiceMBean ã®JavaDoc
     public String getRequestObjectContextKey(){
         return requestObjectContextKey;
     }
 
-    // AuthenticateInterceptorServiceMBean ‚ÌJavaDoc
+    // AuthenticateInterceptorServiceMBean ã®JavaDoc
     public void setAuthenticatedInfoAttributeName(String name){
         authenticatedInfoAttributeName = name;
     }
-    // AuthenticateInterceptorServiceMBean ‚ÌJavaDoc
+    // AuthenticateInterceptorServiceMBean ã®JavaDoc
     public String getAuthenticatedInfoAttributeName(){
         return authenticatedInfoAttributeName;
     }
 
-    // AuthenticateInterceptorServiceMBean ‚ÌJavaDoc
+    // AuthenticateInterceptorServiceMBean ã®JavaDoc
     public void setAuthenticatedInfoContextKey(String name){
         authenticatedInfoContextKey = name;
     }
-    // AuthenticateInterceptorServiceMBean ‚ÌJavaDoc
+    // AuthenticateInterceptorServiceMBean ã®JavaDoc
     public String getAuthenticatedInfoContextKey(){
         return authenticatedInfoContextKey;
     }
 
-    // AuthenticateInterceptorServiceMBean ‚ÌJavaDoc
+    // AuthenticateInterceptorServiceMBean ã®JavaDoc
     public void setAuthenticatedInfoMapping(Map mapping){
         authenticatedInfoMapping = mapping;
     }
-    // AuthenticateInterceptorServiceMBean ‚ÌJavaDoc
+    // AuthenticateInterceptorServiceMBean ã®JavaDoc
     public Map getAuthenticatedInfoMapping(){
         return authenticatedInfoMapping;
     }
 
-    // AuthenticateInterceptorServiceMBean ‚ÌJavaDoc
+    // AuthenticateInterceptorServiceMBean ã®JavaDoc
     public void setLoginPath(String path){
         loginPath = path;
     }
-    // AuthenticateInterceptorServiceMBean ‚ÌJavaDoc
+    // AuthenticateInterceptorServiceMBean ã®JavaDoc
     public String getLoginPath(){
         return loginPath;
     }
 
-    // AuthenticateInterceptorServiceMBean ‚ÌJavaDoc
+    // AuthenticateInterceptorServiceMBean ã®JavaDoc
     public void setLogoutPath(String path){
         logoutPath = path;
     }
-    // AuthenticateInterceptorServiceMBean ‚ÌJavaDoc
+    // AuthenticateInterceptorServiceMBean ã®JavaDoc
     public String getLogoutPath(){
         return logoutPath;
     }
 
-    // AuthenticateInterceptorServiceMBean ‚ÌJavaDoc
+    // AuthenticateInterceptorServiceMBean ã®JavaDoc
     public void setAuthenticateStoreServiceName(ServiceName name){
         authenticateStoreServiceName = name;
     }
-    // AuthenticateInterceptorServiceMBean ‚ÌJavaDoc
+    // AuthenticateInterceptorServiceMBean ã®JavaDoc
     public ServiceName getAuthenticateStoreServiceName(){
         return authenticateStoreServiceName;
     }
 
-    // AuthenticateInterceptorServiceMBean ‚ÌJavaDoc
+    // AuthenticateInterceptorServiceMBean ã®JavaDoc
     public void setStoreCreate(boolean isCreate){
         isStoreCreate = isCreate;
     }
-    // AuthenticateInterceptorServiceMBean ‚ÌJavaDoc
+    // AuthenticateInterceptorServiceMBean ã®JavaDoc
     public boolean isStoreCreate(){
         return isStoreCreate;
     }
 
-    // AuthenticateInterceptorServiceMBean ‚ÌJavaDoc
+    // AuthenticateInterceptorServiceMBean ã®JavaDoc
     public void setStoreDestroy(boolean isDestroy){
         isStoreDestroy = isDestroy;
     }
-    // AuthenticateInterceptorServiceMBean ‚ÌJavaDoc
+    // AuthenticateInterceptorServiceMBean ã®JavaDoc
     public boolean isStoreDestroy(){
         return isStoreDestroy;
     }
 
-    // AuthenticateInterceptorServiceMBean ‚ÌJavaDoc
+    // AuthenticateInterceptorServiceMBean ã®JavaDoc
     public void setSessionInvalidate(boolean isInvalidate){
         isSessionInvalidate = isInvalidate;
     }
-    // AuthenticateInterceptorServiceMBean ‚ÌJavaDoc
+    // AuthenticateInterceptorServiceMBean ã®JavaDoc
     public boolean isSessionInvalidate(){
         return isSessionInvalidate;
     }
 
     /**
-     * ”FØî•ñƒIƒuƒWƒFƒNƒg‚ğ‰i‘±‰»‚·‚é{@link AuthenticateStore}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * èªè¨¼æƒ…å ±ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ°¸ç¶šåŒ–ã™ã‚‹{@link AuthenticateStore}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param store AuthenticateStoreƒT[ƒrƒX
+     * @param store AuthenticateStoreã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setAuthenticateStore(AuthenticateStore store){
         authenticateStore = store;
     }
 
     /**
-     * ”FØî•ñƒIƒuƒWƒFƒNƒg‚ğ‰i‘±‰»‚·‚é{@link AuthenticateStore}ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * èªè¨¼æƒ…å ±ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ°¸ç¶šåŒ–ã™ã‚‹{@link AuthenticateStore}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return AuthenticateStoreƒT[ƒrƒX
+     * @return AuthenticateStoreã‚µãƒ¼ãƒ“ã‚¹
      */
     public AuthenticateStore getAuthenticateStore(){
         return authenticateStore;
     }
 
     /**
-     * ”FØî•ñƒIƒuƒWƒFƒNƒg‚ğæ‚¹‚é{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚ğİ’è‚·‚éB<p>
+     * èªè¨¼æƒ…å ±ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä¹—ã›ã‚‹{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param context ContextƒT[ƒrƒX
+     * @param context Contextã‚µãƒ¼ãƒ“ã‚¹
      */
     public void setThreadContext(Context context){
         threadContext = context;
     }
 
     /**
-     * ”FØî•ñƒIƒuƒWƒFƒNƒg‚ğæ‚¹‚é{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚ğæ“¾‚·‚éB<p>
+     * èªè¨¼æƒ…å ±ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä¹—ã›ã‚‹{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ContextƒT[ƒrƒX
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹
      */
     public Context getThreadContext(){
         return threadContext;
     }
 
     /**
-     * ƒT[ƒrƒX‚Ì¶¬ˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆå‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì¶¬‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void createService() throws Exception{
         propertyAccess = new PropertyAccess();
@@ -257,9 +257,9 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
     }
 
     /**
-     * ƒT[ƒrƒX‚ÌŠJnˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚ÌŠJn‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®é–‹å§‹ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void startService() throws Exception{
         if(threadContextServiceName != null){
@@ -278,29 +278,29 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
     }
 
     /**
-     * ƒT[ƒrƒX‚Ì”jŠüˆ—‚ğs‚¤B<p>
+     * ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„å‡¦ç†ã‚’è¡Œã†ã€‚<p>
      *
-     * @exception Exception ƒT[ƒrƒX‚Ì”jŠü‚É¸”s‚µ‚½ê‡
+     * @exception Exception ã‚µãƒ¼ãƒ“ã‚¹ã®ç ´æ£„ã«å¤±æ•—ã—ãŸå ´åˆ
      */
     public void destroyService() throws Exception{
         propertyAccess = null;
     }
 
     /**
-     * ”FØî•ñ‚Ì•ÛA”FØî•ñ‚ÌŒŸØA”FØî•ñ‚Ìíœ‚ğs‚¤B<p>
-     * ƒƒOƒCƒ“ƒpƒX‚Ìê‡AŒã‘±‚Ìˆ—‚ªI‚í‚Á‚½ŒãA”FØƒŠƒNƒGƒXƒg‘®«(‘®«–¼‚Í{@link #getAuthenticatedInfoAttributeName()})‚Éİ’è‚³‚ê‚½”FØî•ñ‚ğæ“¾‚µAƒZƒbƒVƒ‡ƒ“‚Ì‘®«‚Æ‚µ‚Äİ’è‚·‚éB<br>
-     * ƒƒOƒAƒEƒgƒpƒX‚Ìê‡A“ü—ÍƒŠƒNƒGƒXƒg‘®«(‘®«–¼‚Í{@link #getRequestObjectAttributeName()})‚©‚ç“ü—ÍƒIƒuƒWƒFƒNƒg‚ğæ“¾‚µA”FØƒZƒbƒVƒ‡ƒ“‘®«‚©‚çæ“¾‚µ‚½”FØî•ñ‚Æ‚Ì”äŠr‚ğs‚¢A”FØ‚³‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğƒ`ƒFƒbƒN‚·‚éB“ü—ÍƒIƒuƒWƒFƒNƒg‚Æ”FØî•ñ‚Ì”äŠr‚ğ‚Ç‚Ì‚æ‚¤‚És‚¤‚©‚ÍA{@link #setAuthenticatedInfoMapping(Map)}‚Åİ’è‚·‚éB”FØî•ñ‚Æ‡’v‚µ‚È‚¢ê‡‚ÍA{@link AuthenticateException}‚ğthrow‚·‚éB‚»‚ÌŒãAŒã‘±‚Ìˆ—‚ªI‚í‚Á‚½ŒãA”FØî•ñ‚ğƒZƒbƒVƒ‡ƒ“‚©‚çíœ‚·‚éB<br>
-     * ã‹LˆÈŠO‚ÌƒpƒX‚Ìê‡A“ü—ÍƒŠƒNƒGƒXƒg‘®«(‘®«–¼‚Í{@link #getRequestObjectAttributeName()})‚©‚ç“ü—ÍƒIƒuƒWƒFƒNƒg‚ğæ“¾‚µA”FØƒZƒbƒVƒ‡ƒ“‘®«‚©‚çæ“¾‚µ‚½”FØî•ñ‚Æ‚Ì”äŠr‚ğs‚¢A”FØ‚³‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğƒ`ƒFƒbƒN‚·‚éB<br>
+     * èªè¨¼æƒ…å ±ã®ä¿æŒã€èªè¨¼æƒ…å ±ã®æ¤œè¨¼ã€èªè¨¼æƒ…å ±ã®å‰Šé™¤ã‚’è¡Œã†ã€‚<p>
+     * ãƒ­ã‚°ã‚¤ãƒ³ãƒ‘ã‚¹ã®å ´åˆã€å¾Œç¶šã®å‡¦ç†ãŒçµ‚ã‚ã£ãŸå¾Œã€èªè¨¼ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§(å±æ€§åã¯{@link #getAuthenticatedInfoAttributeName()})ã«è¨­å®šã•ã‚ŒãŸèªè¨¼æƒ…å ±ã‚’å–å¾—ã—ã€ã‚»ãƒƒã‚·ãƒ§ãƒ³ã®å±æ€§ã¨ã—ã¦è¨­å®šã™ã‚‹ã€‚<br>
+     * ãƒ­ã‚°ã‚¢ã‚¦ãƒˆãƒ‘ã‚¹ã®å ´åˆã€å…¥åŠ›ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§(å±æ€§åã¯{@link #getRequestObjectAttributeName()})ã‹ã‚‰å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã—ã€èªè¨¼ã‚»ãƒƒã‚·ãƒ§ãƒ³å±æ€§ã‹ã‚‰å–å¾—ã—ãŸèªè¨¼æƒ…å ±ã¨ã®æ¯”è¼ƒã‚’è¡Œã„ã€èªè¨¼ã•ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã€‚å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨èªè¨¼æƒ…å ±ã®æ¯”è¼ƒã‚’ã©ã®ã‚ˆã†ã«è¡Œã†ã‹ã¯ã€{@link #setAuthenticatedInfoMapping(Map)}ã§è¨­å®šã™ã‚‹ã€‚èªè¨¼æƒ…å ±ã¨åˆè‡´ã—ãªã„å ´åˆã¯ã€{@link AuthenticateException}ã‚’throwã™ã‚‹ã€‚ãã®å¾Œã€å¾Œç¶šã®å‡¦ç†ãŒçµ‚ã‚ã£ãŸå¾Œã€èªè¨¼æƒ…å ±ã‚’ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‹ã‚‰å‰Šé™¤ã™ã‚‹ã€‚<br>
+     * ä¸Šè¨˜ä»¥å¤–ã®ãƒ‘ã‚¹ã®å ´åˆã€å…¥åŠ›ãƒªã‚¯ã‚¨ã‚¹ãƒˆå±æ€§(å±æ€§åã¯{@link #getRequestObjectAttributeName()})ã‹ã‚‰å…¥åŠ›ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã—ã€èªè¨¼ã‚»ãƒƒã‚·ãƒ§ãƒ³å±æ€§ã‹ã‚‰å–å¾—ã—ãŸèªè¨¼æƒ…å ±ã¨ã®æ¯”è¼ƒã‚’è¡Œã„ã€èªè¨¼ã•ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã€‚<br>
      * <p>
-     * ã‹L‚É‰Á‚¦‚ÄA{@link AuthenticateStore}‚ğİ’è‚·‚é‚ÆAƒƒOƒCƒ“ƒpƒX‚Ìê‡A{@link AuthenticateStore#create(HttpServletRequest, Object)}‚ğŒÄ‚Ño‚µA”FØî•ñ‚ğƒXƒgƒA‚·‚éB<br>
-     * ƒƒOƒAƒEƒgƒpƒX‚Ìê‡AŒã‘±‚Ìˆ—‚ªI‚í‚Á‚½ŒãA{@link AuthenticateStore#destroy(HttpServletRequest, Object)}‚ğŒÄ‚Ño‚µA”FØî•ñ‚ğíœ‚·‚éB<br>
-     * ã‹LˆÈŠO‚ÌƒpƒX‚Ìê‡A”FØƒZƒbƒVƒ‡ƒ“‘®«‚©‚ç”FØî•ñ‚ªæ“¾‚Å‚«‚È‚¢ê‡A{@link AuthenticateStore#activate(HttpServletRequest, Object)}‚ğŒÄ‚Ño‚µA”FØî•ñ‚ğ•œŒ³‚·‚éB<br>
-     * ƒT[ƒrƒX‚ªŠJn‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍA‰½‚à‚¹‚¸‚ÉŸ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·B<br>
+     * ä¸Šè¨˜ã«åŠ ãˆã¦ã€{@link AuthenticateStore}ã‚’è¨­å®šã™ã‚‹ã¨ã€ãƒ­ã‚°ã‚¤ãƒ³ãƒ‘ã‚¹ã®å ´åˆã€{@link AuthenticateStore#create(HttpServletRequest, Object)}ã‚’å‘¼ã³å‡ºã—ã€èªè¨¼æƒ…å ±ã‚’ã‚¹ãƒˆã‚¢ã™ã‚‹ã€‚<br>
+     * ãƒ­ã‚°ã‚¢ã‚¦ãƒˆãƒ‘ã‚¹ã®å ´åˆã€å¾Œç¶šã®å‡¦ç†ãŒçµ‚ã‚ã£ãŸå¾Œã€{@link AuthenticateStore#destroy(HttpServletRequest, Object)}ã‚’å‘¼ã³å‡ºã—ã€èªè¨¼æƒ…å ±ã‚’å‰Šé™¤ã™ã‚‹ã€‚<br>
+     * ä¸Šè¨˜ä»¥å¤–ã®ãƒ‘ã‚¹ã®å ´åˆã€èªè¨¼ã‚»ãƒƒã‚·ãƒ§ãƒ³å±æ€§ã‹ã‚‰èªè¨¼æƒ…å ±ãŒå–å¾—ã§ããªã„å ´åˆã€{@link AuthenticateStore#activate(HttpServletRequest, Object)}ã‚’å‘¼ã³å‡ºã—ã€èªè¨¼æƒ…å ±ã‚’å¾©å…ƒã™ã‚‹ã€‚<br>
+     * ã‚µãƒ¼ãƒ“ã‚¹ãŒé–‹å§‹ã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€ä½•ã‚‚ã›ãšã«æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ã€‚<br>
      *
-     * @param context ŒÄ‚Ño‚µ‚ÌƒRƒ“ƒeƒLƒXƒgî•ñ
-     * @param chain Ÿ‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚ğŒÄ‚Ño‚·‚½‚ß‚Ìƒ`ƒF[ƒ“
-     * @return ŒÄ‚Ño‚µŒ‹‰Ê‚Ì–ß‚è’l
-     * @exception Throwable ŒÄ‚Ño‚µæ‚Å—áŠO‚ª”­¶‚µ‚½ê‡A‚Ü‚½‚Í‚±‚ÌƒCƒ“ƒ^[ƒZƒvƒ^‚Å”CˆÓ‚Ì—áŠO‚ª”­¶‚µ‚½ê‡B’A‚µA–{—ˆŒÄ‚Ño‚³‚ê‚éˆ—‚ªthrow‚µ‚È‚¢RuntimeExceptionˆÈŠO‚Ì—áŠO‚ğthrow‚µ‚Ä‚àAŒÄ‚Ño‚µŒ³‚É‚Í“`”d‚³‚ê‚È‚¢B
+     * @param context å‘¼ã³å‡ºã—ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±
+     * @param chain æ¬¡ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’å‘¼ã³å‡ºã™ãŸã‚ã®ãƒã‚§ãƒ¼ãƒ³
+     * @return å‘¼ã³å‡ºã—çµæœã®æˆ»ã‚Šå€¤
+     * @exception Throwable å‘¼ã³å‡ºã—å…ˆã§ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€ã¾ãŸã¯ã“ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã§ä»»æ„ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã€‚ä½†ã—ã€æœ¬æ¥å‘¼ã³å‡ºã•ã‚Œã‚‹å‡¦ç†ãŒthrowã—ãªã„RuntimeExceptionä»¥å¤–ã®ä¾‹å¤–ã‚’throwã—ã¦ã‚‚ã€å‘¼ã³å‡ºã—å…ƒã«ã¯ä¼æ’­ã•ã‚Œãªã„ã€‚
      */
     public Object invokeFilter(
         ServletFilterInvocationContext context,
@@ -319,14 +319,14 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
             newAuthenticatedInfo(request);
             return ret;
         }else if(logoutPath != null && logoutPath.equals(reqPath)){
-            checkAuthenticated(request);
-            setupAuthenticatedInfo(request);
+            Object authenticatedInfo = checkAuthenticated(request);
+            setupAuthenticatedInfo(request, authenticatedInfo);
             Object ret = chain.invokeNext(context);
             removeAuthenticatedInfo(request);
             return ret;
         }else{
-            checkAuthenticated(request);
-            setupAuthenticatedInfo(request);
+            Object authenticatedInfo = checkAuthenticated(request);
+            setupAuthenticatedInfo(request, authenticatedInfo);
             return chain.invokeNext(context);
         }
     }
@@ -355,17 +355,13 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
         }
     }
 
-    protected void setupAuthenticatedInfo(HttpServletRequest request){
-        HttpSession session = request.getSession(false);
-        if(session != null){
-            AuthenticatedInfo authenticatedInfo = (AuthenticatedInfo)session.getAttribute(authenticatedInfoAttributeName);
-            if(authenticatedInfo != null){
-                if(request.getAttribute(authenticatedInfoAttributeName) == null){
-                    request.setAttribute(authenticatedInfoContextKey, authenticatedInfo.authenticatedInfo);
-                }
-                if(threadContext != null && !threadContext.containsKey(authenticatedInfoContextKey)){
-                    threadContext.put(authenticatedInfoContextKey, authenticatedInfo.authenticatedInfo);
-                }
+    protected void setupAuthenticatedInfo(HttpServletRequest request, Object authenticatedInfo){
+        if(authenticatedInfo != null){
+            if(request.getAttribute(authenticatedInfoAttributeName) == null){
+                request.setAttribute(authenticatedInfoContextKey, authenticatedInfo);
+            }
+            if(threadContext != null && !threadContext.containsKey(authenticatedInfoContextKey)){
+                threadContext.put(authenticatedInfoContextKey, authenticatedInfo);
             }
         }
     }
@@ -392,7 +388,7 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
         }
     }
 
-    protected void checkAuthenticated(HttpServletRequest request) throws AuthenticateException{
+    protected Object checkAuthenticated(HttpServletRequest request) throws AuthenticateException{
         Object requestObject = request.getAttribute(requestObjectAttributeName);
         if(requestObject == null){
             if(threadContext != null){
@@ -453,6 +449,8 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
                 throw new IllegalAuthenticateException("Authenticated value '" + entry.getKey() + "' and '" + entry.getValue() + "' are not in agreement. requestValue=" + requestValue + ", authenticatedValue=" + authenticatedValue);
             }
         }
+        
+        return authenticatedInfo;
     }
 
     public static class AuthenticatedInfo implements HttpSessionBindingListener, Serializable{

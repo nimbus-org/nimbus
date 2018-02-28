@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Shift_JIS" ?> 
+<?xml version="1.0" encoding="UTF-8" ?> 
 <server>
     <default-log>
         <debug output="false"/>
@@ -26,15 +26,15 @@
 		    	SimpleMessage=jp.ossc.nimbus.service.writer.SimpleElement
 		 		SEQ=jp.ossc.nimbus.service.writer.SimpleElement
 		    </attribute>
-		    <attribute name ="Format">%SimpleMessage%Ç≈Ç∑</attribute>
+		    <attribute name ="Format">%SimpleMessage%„Åß„Åô</attribute>
         </service>
-        <!-- ç≈å„Ç…ïsóvÇ»%Ç™óLÇÈèÍçá -->
+        <!-- ÊúÄÂæå„Å´‰∏çË¶Å„Å™%„ÅåÊúâ„ÇãÂ†¥Âêà -->
         <service code="jp.ossc.nimbus.service.writer.WritableRecordFactoryService" name ="WritableRecFactory33">
 		    <attribute name = "ImplementClasses">
 		    	SimpleMessage=jp.ossc.nimbus.service.writer.SimpleElement
 		 		SEQ=jp.ossc.nimbus.service.writer.SimpleElement
 		    </attribute>
-		    <attribute name ="Format">%SimpleMessage%Ç≈Ç∑%</attribute>
+		    <attribute name ="Format">%SimpleMessage%„Åß„Åô%</attribute>
         </service>
         <service code="jp.ossc.nimbus.service.writer.WritableRecordFactoryService" name ="WritableRecFactory4">
 		    <attribute name = "ImplementClasses">

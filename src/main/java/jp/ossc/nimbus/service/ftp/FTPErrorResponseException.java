@@ -32,7 +32,7 @@
 package jp.ossc.nimbus.service.ftp;
 
 /**
- * FTPƒGƒ‰[‰“š—áŠOB<p>
+ * FTPã‚¨ãƒ©ãƒ¼å¿œç­”ä¾‹å¤–ã€‚<p>
  *
  * @author M.Takata
  */
@@ -43,10 +43,10 @@ public class FTPErrorResponseException extends FTPException {
     protected int code;
     
     /**
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
      * 
-     * @param code ƒR[ƒh
-     * @param message ƒƒbƒZ[ƒW
+     * @param code ã‚³ãƒ¼ãƒ‰
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public FTPErrorResponseException(int code, String message) {
         super(message);
@@ -54,9 +54,9 @@ public class FTPErrorResponseException extends FTPException {
     }
     
     /**
-     * ‰“šƒR[ƒh‚ğæ“¾‚·‚éB<p>
+     * å¿œç­”ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ‰“šƒR[ƒh
+     * @return å¿œç­”ã‚³ãƒ¼ãƒ‰
      */
     public int getCode(){
         return code;

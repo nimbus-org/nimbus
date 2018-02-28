@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="Shift_JIS"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE server PUBLIC
   "-//Nimbus//DTD Nimbus 1.0//JA"
   "http://www.nimbus.jp/dtd/nimbus-service_1_0.dtd">
 <server>
 <!--
-    HTTP‚ÅƒŠƒNƒGƒXƒg‚ğ‘—‚Á‚ÄAHTML‚ğDOM‚Æ‚µ‚Äæ“¾‚·‚éƒTƒ“ƒvƒ‹
+    HTTPã§ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’é€ã£ã¦ã€HTMLã‚’DOMã¨ã—ã¦å–å¾—ã™ã‚‹ã‚µãƒ³ãƒ—ãƒ«
 -->
     <default-log>
         <information output="false"/>
@@ -24,7 +24,7 @@
                 <object code="jp.ossc.nimbus.service.http.httpclient.PostHttpRequestImpl">
                     <attribute name="URL">http://10.250.1.12:8180/cds/user_contents/web/html/tilettl_help_actcusemldelaccept_desc.html</attribute>
                     <attribute name="Parameter(param)">sysmgr</attribute>
-                    <attribute name="Parameter(param2)">‚ ‚ ‚ </attribute>
+                    <attribute name="Parameter(param2)">ã‚ã‚ã‚</attribute>
                 </object>
             </attribute>
 <!--
@@ -196,7 +196,7 @@
                 PERFORMANCE=HttpClient.Performance
                 EXCEPTION=HttpClient.JournalRecords.Exception[0]
             </attribute>
-            <attribute name="Format">=%DATE%${line.separator}ƒŠƒNƒGƒXƒg’Ê”Ô=%REQUEST_ID%${line.separator}ƒŠƒNƒGƒXƒgURL=%URL%${line.separator}Cookie=%COOKIE%${line.separator}HTTPƒwƒbƒ_=%HEADER%${line.separator}ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^=%PARAM%${line.separator}ƒŒƒXƒ|ƒ“ƒXƒXƒe[ƒ^ƒX=%STATUS%${line.separator}ƒŒƒXƒ|ƒ“ƒX“à—e=${line.separator}%BODY%${line.separator}ˆ—ŠÔ=%PERFORMANCE%${line.separator}”­¶—áŠO=%EXCEPTION%</attribute>
+            <attribute name="Format">æ™‚åˆ»=%DATE%${line.separator}ãƒªã‚¯ã‚¨ã‚¹ãƒˆé€šç•ª=%REQUEST_ID%${line.separator}ãƒªã‚¯ã‚¨ã‚¹ãƒˆURL=%URL%${line.separator}Cookie=%COOKIE%${line.separator}HTTPãƒ˜ãƒƒãƒ€=%HEADER%${line.separator}ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿=%PARAM%${line.separator}ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹=%STATUS%${line.separator}ãƒ¬ã‚¹ãƒãƒ³ã‚¹å†…å®¹=${line.separator}%BODY%${line.separator}å‡¦ç†æ™‚é–“=%PERFORMANCE%${line.separator}ç™ºç”Ÿä¾‹å¤–=%EXCEPTION%</attribute>
             <attribute name="ImplementServiceNames">
                 DATE=#ErrorDateElement
             </attribute>
