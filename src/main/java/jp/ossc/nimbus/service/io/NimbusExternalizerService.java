@@ -40,6 +40,7 @@ import java.util.concurrent.*;
 import java.lang.reflect.*;
 import java.security.AccessController;
 
+import jp.ossc.nimbus.core.NimbusClassLoader;
 import jp.ossc.nimbus.util.ClassMappingTree;
 
 /**
@@ -1013,6 +1014,8 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                     
                     if(obj instanceof String){
                         oos.writeString((String)obj);
+                    }else if(obj instanceof Class){
+                        oos.writeString(((Class)obj).getName());
                     }else if(isExternalizable){
                         ((Externalizable)obj).writeExternal(oos);
                     }else{
@@ -1074,7 +1077,7 @@ public class NimbusExternalizerService extends SerializableExternalizerService
         public Object newInstance(NimbusObjectInputStream ois) throws IOException, InstantiationException, InvocationTargetException, UnsupportedOperationException{
             if(clazz.isArray()){
                 return Array.newInstance(clazz.getComponentType(), ois.readInt(isDisabledNumberCompression, false));
-            }else if(clazz.equals(String.class)){
+            }else if(clazz.equals(String.class) || clazz.equals(Class.class)){
                 return null;
             }else if(constructor != null){
                 try{
@@ -1158,6 +1161,13 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                 }
                 if(String.class.equals(clazz)){
                     obj = ois.readString();
+                    ois.registerReference(this, referenceId, obj);
+                }else if(Class.class.equals(clazz)){
+                    obj = Class.forName(
+                        ois.readString(),
+                        true,
+                        NimbusClassLoader.getInstance()
+                    );
                     ois.registerReference(this, referenceId, obj);
                 }else if(isExternalizable){
                     ((Externalizable)obj).readExternal(ois);
