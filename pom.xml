@@ -768,7 +768,7 @@
                             <goal>replace</goal>
                         </goals>
                         <configuration>
-                            <javaVersion>9</javaVersion>
+                            <javaVersion>8</javaVersion>
                             <fromDir>${basedir}/src/main/java</fromDir>
                             <toDir>${basedir}/target/gen-src</toDir>
                             <fromFileExtention>javapp</fromFileExtention>
