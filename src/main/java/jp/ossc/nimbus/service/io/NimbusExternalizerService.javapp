@@ -32,7 +32,12 @@
 package jp.ossc.nimbus.service.io;
 
 import sun.misc.Unsafe;
+@START<JAVA9@
 import sun.reflect.ReflectionFactory;
+@END<JAVA9@
+@START=JAVA9@
+import jdk.internal.reflect.ReflectionFactory;
+@END=JAVA9@
 
 import java.io.*;
 import java.util.*;
