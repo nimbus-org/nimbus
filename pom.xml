@@ -506,22 +506,6 @@
                             <goal>run</goal>
                         </goals>
                     </execution>
-                    <execution>
-                        <id>rmiStubCopy</id>
-                        <phase>process-classes</phase>
-                        <configuration>
-                            <tasks>
-                                <copy todir="${basedir}/target/classes" preservelastmodified="true">
-                                    <fileset dir="${basedir}/target/rmi-classes">
-                                        <include name="**/*.class"/>
-                                    </fileset>
-                                </copy>
-                            </tasks>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
                 </executions>
             </plugin>
             <plugin>
@@ -784,7 +768,7 @@
                             <goal>replace</goal>
                         </goals>
                         <configuration>
-                            <javaVersion>6</javaVersion>
+                            <javaVersion>9</javaVersion>
                             <fromDir>${basedir}/src/main/java</fromDir>
                             <toDir>${basedir}/target/gen-src</toDir>
                             <fromFileExtention>javapp</fromFileExtention>
