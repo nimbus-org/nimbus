@@ -1162,7 +1162,12 @@ public class ScheduleManagerServlet extends HttpServlet{
                 buf.append(header(HEADER_SCHEDULE));
                 buf.append("<body>");
                 buf.append(scheduleSearchCondition(getCurrentPath(req), "", "", "", "", null, null, null));
-                buf.append(schedules(getCurrentPath(req), schedules));
+                try {
+                    buf.append(schedules(req, schedules, null));
+                } catch(Exception e) {
+                    resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Parameter is illegal. " + e.getMessage());
+                    return;
+                }
                 buf.append("</body>");
                 buf.append("</html>");
             }
@@ -1184,29 +1189,29 @@ public class ScheduleManagerServlet extends HttpServlet{
         HttpServletResponse resp,
         String responseType
     ) throws ServletException, IOException{
-        String id = getParameter(req, "id");
-        String groupId = getParameter(req, "groupId");
-        String masterId = getParameter(req, "masterId");
-        String masterGroupId = getParameter(req, "masterGroupId");
+        String id = getParameter(req, "search_id");
+        String groupId = getParameter(req, "search_groupId");
+        String masterId = getParameter(req, "search_masterId");
+        String masterGroupId = getParameter(req, "search_masterGroupId");
         Date from = null;
         try{
-            from = getDateParameter(req, "from", "yyyyMMddHHmmssSSS", false);
+            from = getDateParameter(req, "search_from", "yyyyMMddHHmmssSSS", false);
         }catch(ParseException e){
-            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Parameter 'from' is illegal." + e.toString());
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Parameter 'search_from' is illegal." + e.toString());
             return;
         }
         Date to = null;
         try{
-            to = getDateParameter(req, "to", "yyyyMMddHHmmssSSS", false);
+            to = getDateParameter(req, "search_to", "yyyyMMddHHmmssSSS", false);
         }catch(ParseException e){
-            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Parameter 'to' is illegal." + e.toString());
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Parameter 'search_to' is illegal." + e.toString());
             return;
         }
         int[] states = null;
         try{
-            states = getIntParameterValues(req, "state");
+            states = getIntParameterValues(req, "search_state");
         }catch(NumberFormatException e){
-            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Parameter 'state' is illegal." + e.toString());
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Parameter 'search_state' is illegal." + e.toString());
             return;
         }
         Exception exception = null;
@@ -1263,7 +1268,12 @@ public class ScheduleManagerServlet extends HttpServlet{
                 buf.append(header(HEADER_SCHEDULE));
                 buf.append("<body>");
                 buf.append(scheduleSearchCondition(getCurrentPath(req), id, groupId, masterId, masterGroupId, from, to, states));
-                buf.append(schedules(getCurrentPath(req), schedules));
+                try {
+                    buf.append(schedules(req, schedules, states));
+                } catch(Exception e) {
+                    resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Parameter is illegal. " + e.getMessage());
+                    return;
+                }
                 buf.append("</body>");
                 buf.append("</html>");
             }
@@ -1319,10 +1329,20 @@ public class ScheduleManagerServlet extends HttpServlet{
             if(exception != null){
                 buf.append(exception(exception));
             } else {
+                int[] states = null;
+                try{
+                    states = getIntParameterValues(req, "state");
+                }catch(Exception e){
+                }
                 buf.append("<html>");
                 buf.append(header(HEADER_OTHER));
                 buf.append("<body>");
-                buf.append(schedules(getCurrentPath(req), schedules));
+                try {
+                    buf.append(schedules(req, schedules, states));
+                } catch(Exception e) {
+                    resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Parameter is illegal. " + e.getMessage());
+                    return;
+                }
                 buf.append("</body>");
                 buf.append("</html>");
             }
@@ -1378,10 +1398,20 @@ public class ScheduleManagerServlet extends HttpServlet{
             if(exception != null){
                 buf.append(exception(exception));
             } else {
+                int[] states = null;
+                try{
+                    states = getIntParameterValues(req, "state");
+                }catch(Exception e){
+                }
                 buf.append("<html>");
                 buf.append(header(HEADER_OTHER));
                 buf.append("<body>");
-                buf.append(schedules(getCurrentPath(req), schedules));
+                try {
+                    buf.append(schedules(req, schedules, states));
+                } catch(Exception e) {
+                    resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Parameter is illegal. " + e.getMessage());
+                    return;
+                }
                 buf.append("</body>");
                 buf.append("</html>");
             }
@@ -1403,8 +1433,8 @@ public class ScheduleManagerServlet extends HttpServlet{
         HttpServletResponse resp,
         String responseType
     ) throws ServletException, IOException{
-        String masterId = getParameter(req, "masterId");
-        String masterGroupId = getParameter(req, "masterGroupId");
+        String masterId = getParameter(req, "search_masterId");
+        String masterGroupId = getParameter(req, "search_masterGroupId");
         Exception exception = null;
         List scheduleMasters = null;
         if(masterId != null && masterId.length() != 0){
@@ -1456,7 +1486,7 @@ public class ScheduleManagerServlet extends HttpServlet{
                 buf.append(header(HEADER_SCHEDULE_MASTER));
                 buf.append("<body>");
                 buf.append(scheduleMasterSearchCondition(getCurrentPath(req), masterId, masterGroupId));
-                buf.append(scheduleMasters(getCurrentPath(req), scheduleMasters));
+                buf.append(scheduleMasters(req, scheduleMasters));
                 buf.append("</body>");
                 buf.append("</html>");
             }
@@ -1560,7 +1590,7 @@ public class ScheduleManagerServlet extends HttpServlet{
                 resp.setContentType("text/html;charset=UTF-8");
                 buf.append(exception(exception));
             } else {
-                resp.sendRedirect(getCurrentPath(req));
+                processScheduleResponse(req, resp, responseType);
                 return;
             }
         }
@@ -1646,7 +1676,7 @@ public class ScheduleManagerServlet extends HttpServlet{
                 resp.setContentType("text/html;charset=UTF-8");
                 buf.append(exception(exception));
             } else {
-                resp.sendRedirect(getCurrentPath(req));
+                processScheduleResponse(req, resp, responseType);
                 return;
             }
         }
@@ -1724,7 +1754,7 @@ public class ScheduleManagerServlet extends HttpServlet{
                 resp.setContentType("text/html;charset=UTF-8");
                 buf.append(exception(exception));
             } else {
-                resp.sendRedirect(getCurrentPath(req));
+                processScheduleResponse(req, resp, responseType);
                 return;
             }
         }
@@ -1819,7 +1849,7 @@ public class ScheduleManagerServlet extends HttpServlet{
                 resp.setContentType("text/html;charset=UTF-8");
                 buf.append(exception(exception));
             } else {
-                resp.sendRedirect(getCurrentPath(req));
+                processScheduleResponse(req, resp, responseType);
                 return;
             }
         }
@@ -1874,7 +1904,7 @@ public class ScheduleManagerServlet extends HttpServlet{
                 resp.setContentType("text/html;charset=UTF-8");
                 buf.append(exception(exception));
             } else {
-                resp.sendRedirect(getCurrentPath(req));
+                processScheduleResponse(req, resp, responseType);
                 return;
             }
         }
@@ -1939,7 +1969,7 @@ public class ScheduleManagerServlet extends HttpServlet{
                 resp.setContentType("text/html;charset=UTF-8");
                 buf.append(exception(exception));
             } else {
-                resp.sendRedirect(getCurrentPath(req));
+                processScheduleResponse(req, resp, responseType);
                 return;
             }
         }
@@ -2000,7 +2030,7 @@ public class ScheduleManagerServlet extends HttpServlet{
                 resp.setContentType("text/html;charset=UTF-8");
                 buf.append(exception(exception));
             } else {
-                resp.sendRedirect(getCurrentPath(req));
+                processScheduleResponse(req, resp, responseType);
                 return;
             }
         }
@@ -2095,7 +2125,7 @@ public class ScheduleManagerServlet extends HttpServlet{
                 resp.setContentType("text/html;charset=UTF-8");
                 buf.append(exception(exception));
             } else {
-                resp.sendRedirect(getCurrentPath(req));
+                processScheduleResponse(req, resp, responseType);
                 return;
             }
         }
@@ -2224,7 +2254,7 @@ public class ScheduleManagerServlet extends HttpServlet{
                 resp.setContentType("text/html;charset=UTF-8");
                 buf.append(exception(exception));
             } else {
-                resp.sendRedirect(getCurrentPath(req) + "?action=scheduleMaster");
+                processScheduleMasterResponse(req, resp, responseType);
                 return;
             }
         }
@@ -2329,7 +2359,7 @@ public class ScheduleManagerServlet extends HttpServlet{
                 resp.setContentType("text/html;charset=UTF-8");
                 buf.append(exception(exception));
             } else {
-                resp.sendRedirect(getCurrentPath(req) + "?action=scheduleMaster");
+                processScheduleMasterResponse(req, resp, responseType);
                 return;
             }
         }
@@ -2589,7 +2619,7 @@ public class ScheduleManagerServlet extends HttpServlet{
                 toStringConverter.convertToObject(jsonConverter.convertToStream(jsonMap))
             );
         }else{
-            resp.sendRedirect(getCurrentPath(req));
+            processScheduleResponse(req, resp, responseType);
             return;
         }
         resp.getWriter().println(buf.toString());
@@ -2620,7 +2650,7 @@ public class ScheduleManagerServlet extends HttpServlet{
                 toStringConverter.convertToObject(jsonConverter.convertToStream(jsonMap))
             );
         }else{
-            resp.sendRedirect(getCurrentPath(req));
+            processScheduleResponse(req, resp, responseType);
             return;
         }
         resp.getWriter().println(buf.toString());
@@ -2810,7 +2840,7 @@ public class ScheduleManagerServlet extends HttpServlet{
                 buf.append("}else{");
                 buf.append("stateCheckFlg=true;");
                 buf.append("}");
-                buf.append("allCheck('state', stateCheckFlg);");
+                buf.append("allCheck('search_state', stateCheckFlg);");
                 buf.append("}");
                 buf.append("function allCheckTable(){");
                 buf.append("if(tableCheckFlg){");
@@ -2866,52 +2896,27 @@ public class ScheduleManagerServlet extends HttpServlet{
         buf.append("<table border=\"1\">");
         buf.append("<tr>");
         buf.append(th("Id", "left"));
-        buf.append(td(text("id", null, format(id), 30)));
-        buf.append("</tr>");
-        buf.append("<tr>");
+        buf.append(td(text("search_id", null, format(id), 30)));
         buf.append(th("GroupId", "left"));
-        buf.append(td(text("groupId", null, format(groupId), 30)));
-        buf.append("</tr>");
-        buf.append("<tr>");
+        buf.append(td(text("search_groupId", null, format(groupId), 30)));
         buf.append(th("MasterId", "left"));
-        buf.append(td(text("masterId", null, format(masterId), 30)));
-        buf.append("</tr>");
-        buf.append("<tr>");
+        buf.append(td(text("search_masterId", null, format(masterId), 30)));
         buf.append(th("MasterGroupId", "left"));
-        buf.append(td(text("masterGroupId", null, format(masterGroupId), 30)));
+        buf.append(td(text("search_masterGroupId", null, format(masterGroupId), 30)));
         buf.append("</tr>");
         buf.append("<tr>");
         buf.append(th("From [yyyyMMddHHmmssSSS]", "left"));
-        buf.append(td(text("from", null, formatDateTime(from), 30)));
-        buf.append("</tr>");
-        buf.append("<tr>");
+        buf.append(td(text("search_from", null, formatDateTime(from), 30)));
         buf.append(th("To [yyyyMMddHHmmssSSS]", "left"));
-        buf.append(td(text("to", null, formatDateTime(to), 30)));
-        buf.append("</tr>");
+        buf.append(td(text("search_to", null, formatDateTime(to), 30)));
         buf.append(th("State [ <a href=\"#\" onclick=\"allCheckState();return false;\">all</a> ]", "left"));
-        buf.append(td(stateCheckbox(states)));
+        buf.append(td(stateCheckbox(states), null , 3));
         buf.append("</tr>");
         buf.append("<tr>");
-        buf.append(td(button("ScheduleSearch", "document.getElementById('scheduleSearch').submit();"), null, 2));
+        buf.append(td(button("ScheduleSearch", "document.getElementById('scheduleSearch').submit();"), null, 8));
         buf.append("</tr>");
         buf.append("</table>");
         buf.append(hidden("action", null, "schedule"));
-        buf.append("</form>");
-        buf.append("<form name=\"scheduleMaster\" id=\"scheduleMaster\" action=\"" + action + "\" target=\"_blank\" method=\"post\">");
-        buf.append("<table border=\"1\">");
-        buf.append("<tr>");
-        buf.append(th("MasterId", "left"));
-        buf.append(td(text("masterId", null, "", 20)));
-        buf.append("</tr>");
-        buf.append("<tr>");
-        buf.append(th("MasterGroupId", "left"));
-        buf.append(td(text("masterGroupId", null, "", 20)));
-        buf.append("</tr>");
-        buf.append("<tr>");
-        buf.append(td(button("ScheduleMasterSearch", "document.getElementById('scheduleMaster').submit();"), null, 2));
-        buf.append("</tr>");
-        buf.append("</table>");
-        buf.append(hidden("action", null, "scheduleMaster"));
         buf.append("</form>");
         if(isChangeStateEnabled()){
             buf.append("<table border=\"1\" align=\"left\">");
@@ -2988,60 +2993,10 @@ public class ScheduleManagerServlet extends HttpServlet{
             buf.append("</tr>");
             buf.append("</table><br clear=\"left\">");
         }
-        if(isAddEnabled()){
-            buf.append("<form name=\"addSchedule\" id=\"addSchedule\" action=\"" + action + "\" method=\"post\">");
-            buf.append("<table border=\"1\">");
-            buf.append("<tr>");
-            buf.append(th("MasterId", "left"));
-            buf.append(td(text("masterId", "", "", 20)));
-            buf.append("</tr>");
-            buf.append("<tr>");
-            buf.append(th("GroupId", "left"));
-            buf.append(td(text("groupId", "", "", 20)));
-            buf.append("</tr>");
-            buf.append("<tr>");
-            buf.append(th("Time", "left"));
-            buf.append(td(text("time", "", "", 20)));
-            buf.append("</tr>");
-            buf.append("<tr>");
-            buf.append(th("TaskName", "left"));
-            buf.append(td(text("taskName", "", "", 20)));
-            buf.append("</tr>");
-            buf.append("<tr>");
-            buf.append(th("Input", "left"));
-            buf.append(td(textarea("input", "", "", 50, 3, false)));
-            buf.append("</tr>");
-            buf.append("<tr>");
-            buf.append(th("Depends", "left"));
-            buf.append(td(text("depends", "", "", 20)));
-            buf.append("</tr>");
-            buf.append("<tr>");
-            buf.append(th("ExecutorKey", "left"));
-            buf.append(td(text("executorKey", "", "", 20)));
-            buf.append("</tr>");
-            buf.append("<tr>");
-            buf.append(th("ExecutorType", "left"));
-            buf.append(td(text("executorType", "", "", 20)));
-            buf.append("</tr>");
-            buf.append("<tr>");
-            buf.append(th("RetryInterval", "left"));
-            buf.append(td(text("retryInterval", "", "", 20)));
-            buf.append("</tr>");
-            buf.append("<tr>");
-            buf.append(th("RetryEndTime", "left"));
-            buf.append(td(text("retryEndTime", "", "", 20)));
-            buf.append("</tr>");
-            buf.append("<tr>");
-            buf.append(th("MaxDelayTime", "left"));
-            buf.append(td(text("maxDelayTime", "", "", 20)));
-            buf.append("</tr>");
-            buf.append("<tr>");
-            buf.append(td(button("AddSchedule", "javascript:document.getElementById('addSchedule').submit();"), null ,2));
-            buf.append("</tr>");
-            buf.append("</table>");
-            buf.append(hidden("action", null, "add"));
-            buf.append("</form>");
-        }
+        buf.append("<form name=\"scheduleMaster\" id=\"scheduleMaster\" action=\"" + action + "\" target=\"_blank\" method=\"post\">");
+        buf.append(button("ScheduleMasterSearch", "document.getElementById('scheduleMaster').submit();"));
+        buf.append(hidden("action", null, "scheduleMaster"));
+        buf.append("</form>");
         return buf.toString();
     }
     
@@ -3050,10 +3005,11 @@ public class ScheduleManagerServlet extends HttpServlet{
      *
      * @param action サーブレットパス（FormタグのAction文字列）
      * @param schedules スケジュールオブジェクトのリスト
+     * @param states 検索条件値（states）
      * @return スケジュール管理画面HTMLのスケジュールデータ部分HTML
      */
-    private String schedules(String action, List schedules){
-        
+    private String schedules(HttpServletRequest req, List schedules, int[] states) throws Exception{
+        final String action = getCurrentPath(req);
         final StringBuilder buf = new StringBuilder();
         buf.append("<table border=\"1\"><tr>");
         buf.append(th("Legend"));
@@ -3070,8 +3026,14 @@ public class ScheduleManagerServlet extends HttpServlet{
         buf.append(th("<a href=\"#\" onclick=\"allCheckTable();return false;\">#</a>"));
         buf.append(th("Id"));
         buf.append(th("MasterId"));
-        buf.append(th("MasterGroupIds"));
         buf.append(th("Time"));
+        buf.append(th("State"));
+        buf.append(th("ControlState"));
+        buf.append(th("ExecutorKey"));
+        if(isRescheduleEnabled()){
+            buf.append(th("Reschedule"));
+        }
+        buf.append(th("MasterGroupIds"));
         buf.append(th("TaskName"));
         buf.append(th("Input"));
         buf.append(th("Depends"));
@@ -3082,22 +3044,17 @@ public class ScheduleManagerServlet extends HttpServlet{
         buf.append(th("RetryEndTime"));
         buf.append(th("Retry"));
         buf.append(th("MaxDelayTime"));
-        buf.append(th("State"));
-        buf.append(th("ControlState"));
         buf.append(th("CheckState"));
-        buf.append(th("ExecutorKey"));
         buf.append(th("ExecutorType"));
         buf.append(th("ExecuteStartTime"));
         buf.append(th("ExecuteEndTime"));
-        if(isRescheduleEnabled()){
-            buf.append(th("Reschedule"));
-        }
         if(isRemoveEnabled()){
             buf.append(th("Remove"));
         }
         buf.append("</tr>");
         int count = 0;
         
+        final StringBuilder tdBuf = new StringBuilder();
         if(schedules != null){
             for(int i = 0; i < schedules.size(); i++){
                 Schedule schedule = (Schedule)schedules.get(i);
@@ -3129,21 +3086,9 @@ public class ScheduleManagerServlet extends HttpServlet{
                 buf.append(td(checkbox("check",count, null) + hidden("id", "id_" + count, id)+ hidden("state","state_" + count, String.valueOf(state)) + hidden("controlState","controlState_" + count, String.valueOf(controlState))));
                 buf.append(td(format(id)));
                 buf.append(td(format(schedule.getMasterId())));
-                buf.append(td(format(schedule.getMasterGroupIds())));
                 String time = formatDateTime(schedule.getTime());
                 buf.append(td(time));
-                buf.append(td(format(schedule.getTaskName())));
-                buf.append(td(textarea(format(schedule.getInput()), 50, 3)));
-                buf.append(td(button("ShowDepends", "javascript:showDepends('" + id + "');")));
-                buf.append(td(button("ShowDepended", "javascript:showDepended('" + id + "');")));
-                String output = format(schedule.getOutput());
-                buf.append(td(textarea(output, 50, 3)));
-                buf.append(td(formatDateTime(schedule.getInitialTime())));
-                buf.append(td(schedule.getRetryInterval()));
-                buf.append(td(formatDateTime(schedule.getRetryEndTime())));
-                buf.append(td(schedule.isRetry()));
-                buf.append(td(schedule.getMaxDelayTime()));
-                final StringBuilder tdBuf = new StringBuilder();
+                tdBuf.setLength(0);
                 tdBuf.append(getScheduleStateString(state));
                 if(isChangeStateEnabled()){
                     name = "newState_" + count;
@@ -3160,12 +3105,6 @@ public class ScheduleManagerServlet extends HttpServlet{
                 }
                 buf.append(td(tdBuf.toString()));
                 tdBuf.setLength(0);
-                buf.append("<td nowrap");
-                if(Schedule.CHECK_STATE_TIMEOVER == checkState){
-                    buf.append(" bgcolor=\"#ffadff\" title=\"TIMEOVER\"");
-                }
-                buf.append(">" + getScheduleCheckStateString(checkState) + "</td>");
-                
                 String executorKey = format(schedule.getExecutorKey());
                 tdBuf.append(executorKey);
                 if(isChangeExecutorKeyEnabled()){
@@ -3175,9 +3114,7 @@ public class ScheduleManagerServlet extends HttpServlet{
                 }
                 buf.append(td(tdBuf.toString()));
                 tdBuf.setLength(0);
-                buf.append(td(format(schedule.getExecutorType())));
-                buf.append(td(formatDateTime(schedule.getExecuteStartTime())));
-                buf.append(td(formatDateTime(schedule.getExecuteEndTime())));
+                String output = format(schedule.getOutput());
                 if(isRescheduleEnabled()){
                     String timeName = "time_" + count;
                     tdBuf.append("Time:" + text(timeName, timeName, time, 15) + "&nbsp");
@@ -3185,6 +3122,25 @@ public class ScheduleManagerServlet extends HttpServlet{
                     tdBuf.append("Output:" + textarea(outputName, outputName, output, 50, 3, false));
                     buf.append(td(tdBuf.toString() + "&nbsp" +  button("Reschedule", "javascript:rescheduleOne('" + id + "','" + timeName + "','" + outputName + "');")));
                 }
+                buf.append(td(format(schedule.getMasterGroupIds())));
+                buf.append(td(format(schedule.getTaskName())));
+                buf.append(td(textarea(format(schedule.getInput()), 50, 3)));
+                buf.append(td(button("ShowDepends", "javascript:showDepends('" + id + "');")));
+                buf.append(td(button("ShowDepended", "javascript:showDepended('" + id + "');")));
+                buf.append(td(textarea(output, 50, 3)));
+                buf.append(td(formatDateTime(schedule.getInitialTime())));
+                buf.append(td(schedule.getRetryInterval()));
+                buf.append(td(formatDateTime(schedule.getRetryEndTime())));
+                buf.append(td(schedule.isRetry()));
+                buf.append(td(schedule.getMaxDelayTime()));
+                buf.append("<td nowrap");
+                if(Schedule.CHECK_STATE_TIMEOVER == checkState){
+                    buf.append(" bgcolor=\"#ffadff\" title=\"TIMEOVER\"");
+                }
+                buf.append(">" + getScheduleCheckStateString(checkState) + "</td>");
+                buf.append(td(format(schedule.getExecutorType())));
+                buf.append(td(formatDateTime(schedule.getExecuteStartTime())));
+                buf.append(td(formatDateTime(schedule.getExecuteEndTime())));
                 if(isRemoveEnabled()){
                     buf.append(td(button("Remove", "javascript:removeOne('" + id + "');")));
                 }
@@ -3199,6 +3155,7 @@ public class ScheduleManagerServlet extends HttpServlet{
             buf.append(hidden("oldState", null, ""));
             buf.append(hidden("newState", null, ""));
             buf.append(hidden("id", null, ""));
+            buf.append(getSearchForm(req));
             buf.append("</form>");
         }
         if(isChangeControlStateEnabled()){
@@ -3207,12 +3164,14 @@ public class ScheduleManagerServlet extends HttpServlet{
             buf.append(hidden("oldState", null, ""));
             buf.append(hidden("newState", null, ""));
             buf.append(hidden("id", null, ""));
+            buf.append(getSearchForm(req));
             buf.append("</form>");
         }
         if(isRemoveEnabled()){
             buf.append("<form name=\"removeSchedule\" id=\"removeSchedule\" action=\"" + action + "\" method=\"post\"  style=\"display: inline\">");
             buf.append(hidden("action", null, "remove"));
             buf.append(hidden("id", null, ""));
+            buf.append(getSearchForm(req));
             buf.append("</form>");
         }
         if(isRescheduleEnabled()){
@@ -3221,6 +3180,7 @@ public class ScheduleManagerServlet extends HttpServlet{
             buf.append(hidden("id", null, ""));
             buf.append(hidden("time", null, ""));
             buf.append(hidden("output", null, ""));
+            buf.append(getSearchForm(req));
             buf.append("</form>");
         }
         if(isChangeExecutorKeyEnabled()){
@@ -3228,23 +3188,28 @@ public class ScheduleManagerServlet extends HttpServlet{
             buf.append(hidden("action", null, "changeExecutorKey"));
             buf.append(hidden("id", null, ""));
             buf.append(hidden("executorKey", null, ""));
+            buf.append(getSearchForm(req));
             buf.append("</form>");
         }
         if(isStopEntryEnabled()){
             buf.append("<form name=\"stopEntry\" id=\"stopEntry\" action=\"" + action + "\" method=\"post\"  style=\"display: inline\">");
             buf.append(hidden("action", null, "stopEntry"));
+            buf.append(getSearchForm(req));
             buf.append("</form>");
             buf.append("<form name=\"startEntry\" id=\"startEntry\" action=\"" + action + "\" method=\"post\"  style=\"display: inline\">");
             buf.append(hidden("action", null, "startEntry"));
+            buf.append(getSearchForm(req));
             buf.append("</form>");
         }
         buf.append("<form name=\"depends\" id=\"depends\" action=\"" + action + "\" method=\"post\" target=\"_blank\" style=\"display: inline\">");
         buf.append(hidden("action", null, "depends"));
         buf.append(hidden("id", null, ""));
+        buf.append(getSearchForm(req));
         buf.append("</form>");
         buf.append("<form name=\"depended\" id=\"depended\" action=\"" + action + "\" method=\"post\" target=\"_blank\" style=\"display: inline\">");
         buf.append(hidden("action", null, "depended"));
         buf.append(hidden("id", null, ""));
+        buf.append(getSearchForm(req));
         buf.append("</form>");
         return buf.toString();
     }
@@ -3262,64 +3227,16 @@ public class ScheduleManagerServlet extends HttpServlet{
         buf.append("<table border=\"1\">");
         buf.append("<tr>");
         buf.append(th("MasterId", "left"));
-        buf.append(td(text("masterId", null, format(masterId), 20)));
-        buf.append("</tr>");
-        buf.append("<tr>");
+        buf.append(td(text("search_masterId", null, format(masterId), 20)));
         buf.append(th("MasterGroupId", "left"));
-        buf.append(td(text("masterGroupId", null, format(masterGroupId), 20)));
+        buf.append(td(text("search_masterGroupId", null, format(masterGroupId), 20)));
         buf.append("</tr>");
         buf.append("<tr>");
-        buf.append(td(button("ScheduleMasterSearch", "document.getElementById('scheduleMaster').submit();"), null, 2));
+        buf.append(td(button("ScheduleMasterSearch", "document.getElementById('scheduleMaster').submit();"), null, 4));
         buf.append("</tr>");
         buf.append("</table>");
         buf.append(hidden("action", null, "scheduleMaster"));
         buf.append("</form>");
-        if(isAddEnabled()){
-            buf.append("<table border=\"1\" align=\"left\">");
-            buf.append("<form name=\"addFromMaster\" id=\"addFromMaster\" action=\"" + action + "\" method=\"post\">");
-            buf.append("<tr>");
-            buf.append(th("MasterId", "left"));
-            buf.append(td(text("masterId", null, "", 20)));
-            buf.append("</tr>");
-            buf.append("<tr>");
-            buf.append(th("MasterGroupId", "left"));
-            buf.append(td(text("masterGroupId", null, "", 20)));
-            buf.append("</tr>");
-            buf.append("<tr>");
-            buf.append(th("groupId", "left"));
-            buf.append(td(text("groupId", null, "", 20)));
-            buf.append("</tr>");
-            buf.append("<tr>");
-            buf.append(th("Input", "left"));
-            buf.append(td(textarea("input", "", "", 50, 3, false)));
-            buf.append("</tr>");
-            buf.append("<tr>");
-            buf.append(th("Date [yyyyMMdd]", "left"));
-            buf.append(td(text("date", null, "", 10)));
-            buf.append("</tr>");
-            buf.append("<tr>");
-            buf.append(th("StartTime [HHmmssSSS]", "left"));
-            buf.append(td(text("startTime", null, "", 10)));
-            buf.append("</tr>");
-            buf.append("<tr>");
-            buf.append(th("EndTime [HHmmssSSS]", "left"));
-            buf.append(td(text("endTime", null, "", 10)));
-            buf.append("</tr>");
-            buf.append("<tr>");
-            buf.append(th("RetryEndTime [HHmmssSSS]", "left"));
-            buf.append(td(text("retryEndTime", null, "", 10)));
-            buf.append("</tr>");
-            buf.append("<tr>");
-            buf.append(th("ExecutorKey", "left"));
-            buf.append(td(text("executorKey", null, "", 20)));
-            buf.append("</tr>");
-            buf.append("<tr>");
-            buf.append(td(button("AddSchedule", "javascript:document.getElementById('addFromMaster').submit();"), null, 2));
-            buf.append("</tr>");
-            buf.append(hidden("action", null, "addFromMaster"));
-            buf.append("</form>");
-            buf.append("</table>");
-        }
         if(isMakeEnabled()){
             buf.append("<table border=\"1\" align=\"left\">");
             buf.append("<form name=\"makeSchedule\" id=\"makeSchedule\" action=\"" + action + "\" method=\"post\">");
@@ -3339,21 +3256,18 @@ public class ScheduleManagerServlet extends HttpServlet{
         buf.append("<tr>");
         buf.append(th("MasterId", "left"));
         buf.append(td(text("masterId", null, "", 20)));
-        buf.append("</tr>");
-        buf.append("<tr>");
         buf.append(th("From [yyyyMMdd]", "left"));
         buf.append(td(text("from", null, "", 10)));
-        buf.append("</tr>");
-        buf.append("<tr>");
         buf.append(th("To [yyyyMMdd]", "left"));
         buf.append(td(text("to", null, "", 10)));
         buf.append("</tr>");
         buf.append("<tr>");
-        buf.append(td(button("IsMakeSchedule", "javascript:document.getElementById('isMakeSchedule').submit();"), null, 2));
+        buf.append(td(button("IsMakeSchedule", "javascript:document.getElementById('isMakeSchedule').submit();"), null, 6));
         buf.append("</tr>");
         buf.append(hidden("action", null, "isMakeSchedule"));
         buf.append("</form>");
-        buf.append("</table><br clear=\"left\">");
+        buf.append("</table>");
+        buf.append("<br clear=\"left\"><br>");
         return buf.toString();
     }
     
@@ -3364,11 +3278,13 @@ public class ScheduleManagerServlet extends HttpServlet{
      * @param schedules スケジュールオブジェクトのリスト
      * @return スケジュール管理画面HTMLのスケジュールマスタデータ部分HTML
      */
-    private String scheduleMasters(String action, List scheduleMasters){
+    private String scheduleMasters(HttpServletRequest req, List scheduleMasters){
+        String action = getCurrentPath(req);
         final StringBuilder buf = new StringBuilder();
         buf.append("<table border=\"1\">");
         buf.append("<tr bgcolor=\"#cccccc\">");
         buf.append(th("MasterId"));
+        buf.append(th("addSchedule"));
         buf.append(th("MasterGroupIds"));
         buf.append(th("TaskName"));
         buf.append(th("ScheduleType"));
@@ -3383,7 +3299,6 @@ public class ScheduleManagerServlet extends HttpServlet{
         buf.append(th("ExecutorKey"));
         buf.append(th("ExecutorType"));
         buf.append(th("Template"));
-        buf.append(th("addSchedule"));
         buf.append("</tr>");
         if(scheduleMasters != null){
             int count = 0;
@@ -3392,26 +3307,11 @@ public class ScheduleManagerServlet extends HttpServlet{
                 buf.append("<tr>");
                 String masterId = format(scheduleMaster.getId());
                 buf.append(td(masterId));
-                buf.append(td(format(scheduleMaster.getGroupIds())));
-                buf.append(td(format(scheduleMaster.getTaskName())));
-                buf.append(td(format(scheduleMaster.getScheduleType())));
                 String input = format(scheduleMaster.getInput());
-                buf.append(td(textarea(input, 50, 3)));
                 String startTime = formatTime(scheduleMaster.getStartTime());
-                buf.append(td(startTime));
                 String endTime = formatTime(scheduleMaster.getEndTime());
-                buf.append(td(endTime));
-                buf.append(td(scheduleMaster.getRepeatInterval()));
-                buf.append(td(scheduleMaster.getRetryInterval()));
                 String retryEndTime = formatTime(scheduleMaster.getRetryEndTime());
-                buf.append(td(retryEndTime));
-                buf.append(td(scheduleMaster.getMaxDelayTime()));
-                buf.append(td(scheduleMaster.isEnabled()));
                 String executorKey = format(scheduleMaster.getExecutorKey());
-                buf.append(td(executorKey));
-                buf.append(td(format(scheduleMaster.getExecutorType())));
-                buf.append(td(scheduleMaster.isTemplate()));
-
                 final StringBuilder tdBuf = new StringBuilder();
                 if(isAddEnabled()){
                     String dateName = "date_" + count;
@@ -3428,11 +3328,39 @@ public class ScheduleManagerServlet extends HttpServlet{
                     tdBuf.append("ExecutorKey:" + text(executorKeyName, executorKeyName, executorKey, 10) + "&nbsp");
                     buf.append(td(tdBuf.toString() + "&nbsp" +  button("AddSchedule", "javascript:addScheduleOne('" + masterId + "','" + inputName + "','" + dateName + "','" + startTimeName + "','" + endTimeName + "','" + retryEndTimeName + "','" + executorKeyName + "');")));
                 }
+                buf.append(td(format(scheduleMaster.getGroupIds())));
+                buf.append(td(format(scheduleMaster.getTaskName())));
+                buf.append(td(format(scheduleMaster.getScheduleType())));
+                buf.append(td(textarea(input, 50, 3)));
+                buf.append(td(startTime));
+                buf.append(td(endTime));
+                buf.append(td(scheduleMaster.getRepeatInterval()));
+                buf.append(td(scheduleMaster.getRetryInterval()));
+                buf.append(td(retryEndTime));
+                buf.append(td(scheduleMaster.getMaxDelayTime()));
+                buf.append(td(scheduleMaster.isEnabled()));
+                buf.append(td(executorKey));
+                buf.append(td(format(scheduleMaster.getExecutorType())));
+                buf.append(td(scheduleMaster.isTemplate()));
                 buf.append("</tr>");
                 count++;
             }
         }
         buf.append("</table>");
+        if(isAddEnabled()){
+            buf.append("<form name=\"addFromMaster\" id=\"addFromMaster\" action=\"" + action + "\" method=\"post\">");
+            buf.append(hidden("masterId", null, ""));
+            buf.append(hidden("input", null, ""));
+            buf.append(hidden("date", null, ""));
+            buf.append(hidden("startTime", null, ""));
+            buf.append(hidden("endTime", null, ""));
+            buf.append(hidden("retryEndTime", null, ""));
+            buf.append(hidden("executorKey", null, ""));
+            buf.append(hidden("action", null, "addFromMaster"));
+            buf.append(hidden("search_masterId", null, format(getParameter(req, "search_masterId"))));
+            buf.append(hidden("search_masterGroupId", null, format(getParameter(req, "search_masterGroupId"))));
+            buf.append("</form>");
+        }
         return buf.toString();
     }
     
@@ -3727,15 +3655,15 @@ public class ScheduleManagerServlet extends HttpServlet{
      */
     private String stateCheckbox(int[] states){
         final StringBuilder buf = new StringBuilder();
-        buf.append(checkbox("state", Schedule.STATE_INITIAL, states) + "<label for=\"state" + Schedule.STATE_INITIAL + "\">" + getScheduleStateString(Schedule.STATE_INITIAL) + "</label>&nbsp");
-        buf.append(checkbox("state", Schedule.STATE_ENTRY, states) + "<label for=\"state" + Schedule.STATE_ENTRY + "\">" + getScheduleStateString(Schedule.STATE_ENTRY) + "</label>&nbsp");
-        buf.append(checkbox("state", Schedule.STATE_RUN, states) + "<label for=\"state" + Schedule.STATE_RUN + "\">" + getScheduleStateString(Schedule.STATE_RUN) + "</label>&nbsp");
-        buf.append(checkbox("state", Schedule.STATE_END, states) + "<label for=\"state" + Schedule.STATE_END + "\">" + getScheduleStateString(Schedule.STATE_END) + "</label>&nbsp");
-        buf.append(checkbox("state", Schedule.STATE_FAILED, states) + "<label for=\"state" + Schedule.STATE_FAILED + "\">" + getScheduleStateString(Schedule.STATE_FAILED) + "</label>&nbsp");
-        buf.append(checkbox("state", Schedule.STATE_PAUSE, states) + "<label for=\"state" + Schedule.STATE_PAUSE + "\">" + getScheduleStateString(Schedule.STATE_PAUSE) + "</label>&nbsp");
-        buf.append(checkbox("state", Schedule.STATE_ABORT, states) + "<label for=\"state" + Schedule.STATE_ABORT + "\">" + getScheduleStateString(Schedule.STATE_ABORT) + "</label>&nbsp");
-        buf.append(checkbox("state", Schedule.STATE_RETRY, states) + "<label for=\"state" + Schedule.STATE_RETRY + "\">" + getScheduleStateString(Schedule.STATE_RETRY) + "</label>&nbsp");
-        buf.append(checkbox("state", Schedule.STATE_DISABLE, states) + "<label for=\"state" + Schedule.STATE_DISABLE + "\">" + getScheduleStateString(Schedule.STATE_DISABLE) + "</label>&nbsp");
+        buf.append(checkbox("search_state", Schedule.STATE_INITIAL, states) + "<label for=\"state" + Schedule.STATE_INITIAL + "\">" + getScheduleStateString(Schedule.STATE_INITIAL) + "</label>&nbsp");
+        buf.append(checkbox("search_state", Schedule.STATE_ENTRY, states) + "<label for=\"state" + Schedule.STATE_ENTRY + "\">" + getScheduleStateString(Schedule.STATE_ENTRY) + "</label>&nbsp");
+        buf.append(checkbox("search_state", Schedule.STATE_RUN, states) + "<label for=\"state" + Schedule.STATE_RUN + "\">" + getScheduleStateString(Schedule.STATE_RUN) + "</label>&nbsp");
+        buf.append(checkbox("search_state", Schedule.STATE_END, states) + "<label for=\"state" + Schedule.STATE_END + "\">" + getScheduleStateString(Schedule.STATE_END) + "</label>&nbsp");
+        buf.append(checkbox("search_state", Schedule.STATE_FAILED, states) + "<label for=\"state" + Schedule.STATE_FAILED + "\">" + getScheduleStateString(Schedule.STATE_FAILED) + "</label>&nbsp");
+        buf.append(checkbox("search_state", Schedule.STATE_PAUSE, states) + "<label for=\"state" + Schedule.STATE_PAUSE + "\">" + getScheduleStateString(Schedule.STATE_PAUSE) + "</label>&nbsp");
+        buf.append(checkbox("search_state", Schedule.STATE_ABORT, states) + "<label for=\"state" + Schedule.STATE_ABORT + "\">" + getScheduleStateString(Schedule.STATE_ABORT) + "</label>&nbsp");
+        buf.append(checkbox("search_state", Schedule.STATE_RETRY, states) + "<label for=\"state" + Schedule.STATE_RETRY + "\">" + getScheduleStateString(Schedule.STATE_RETRY) + "</label>&nbsp");
+        buf.append(checkbox("search_state", Schedule.STATE_DISABLE, states) + "<label for=\"state" + Schedule.STATE_DISABLE + "\">" + getScheduleStateString(Schedule.STATE_DISABLE) + "</label>&nbsp");
         return buf.toString();
     }
     
@@ -3991,5 +3919,22 @@ public class ScheduleManagerServlet extends HttpServlet{
             buf.append("&nbsp");
         }
         return buf.toString();
+    }
+    
+    private String getSearchForm(HttpServletRequest req) throws Exception {
+        StringBuilder sb = new StringBuilder();
+        sb.append(hidden("search_id", null, format(getParameter(req, "search_id"))));
+        sb.append(hidden("search_groupId", null, format(getParameter(req, "search_groupId"))));
+        sb.append(hidden("search_masterId", null, format(getParameter(req, "search_masterId"))));
+        sb.append(hidden("search_masterGroupId", null, format(getParameter(req, "search_masterGroupId"))));
+        sb.append(hidden("search_from", null, format(getParameter(req, "search_from"))));
+        sb.append(hidden("search_to", null, format(getParameter(req, "search_to"))));
+        int[] states = getIntParameterValues(req, "search_state");
+        if(states != null) {
+            for(int i = 0; i < states.length; i++) {
+                sb.append(hidden("search_state", null, String.valueOf(states[i])));
+            }
+        }
+        return sb.toString();
     }
 }
