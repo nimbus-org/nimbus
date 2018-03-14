@@ -2589,7 +2589,7 @@ public class ScheduleManagerServlet extends HttpServlet{
                 toStringConverter.convertToObject(jsonConverter.convertToStream(jsonMap))
             );
         }else{
-            resp.sendRedirect(getCurrentPath(req));
+            processScheduleResponse(req, resp, responseType);
             return;
         }
         resp.getWriter().println(buf.toString());
@@ -2730,6 +2730,7 @@ public class ScheduleManagerServlet extends HttpServlet{
                 buf.append("}");
                 buf.append("}");
                 buf.append("if(ids.length == 0){");
+                buf.append("alert(\"no selected schedule data.\");");
                 buf.append("return;");
                 buf.append("}");
                 buf.append("_changeState(target, ids.toString(), oldStates.toString(), newStates.toString());");
@@ -2755,6 +2756,7 @@ public class ScheduleManagerServlet extends HttpServlet{
                 buf.append("}");
                 buf.append("}");
                 buf.append("if(ids.length == 0){");
+                buf.append("alert(\"no selected schedule data.\");");
                 buf.append("return;");
                 buf.append("}");
                 buf.append("_remove(ids.toString());");
@@ -2781,6 +2783,7 @@ public class ScheduleManagerServlet extends HttpServlet{
                 buf.append("}");
                 buf.append("}");
                 buf.append("if(ids.length == 0){");
+                buf.append("alert(\"no selected schedule data.\");");
                 buf.append("return;");
                 buf.append("}");
                 buf.append("_changeExecutorKey(ids.toString(),executorKeys.toString());");
@@ -2813,6 +2816,7 @@ public class ScheduleManagerServlet extends HttpServlet{
                 buf.append("}");
                 buf.append("}");
                 buf.append("if(ids.length == 0){");
+                buf.append("alert(\"no selected schedule data.\");");
                 buf.append("return;");
                 buf.append("}");
                 buf.append("_reschedule(ids.toString(),times.toString(),outputs.toString());");
@@ -3061,31 +3065,34 @@ public class ScheduleManagerServlet extends HttpServlet{
                 int state = schedule.getState();
                 int controlState = schedule.getControlState();
                 int checkState = schedule.getCheckState();
+                String id = schedule.getId();
+                String masterId = schedule.getMasterId();
                 String name = null;
-                String tr = "<tr>";
+                String title = " title=\"" + format(id) + "(" + format(masterId) + ")\"";
+                String tr = "<tr" + title + ">";
                 switch(state){
                     case Schedule.STATE_RUN:
-                        tr = "<tr bgcolor=\"#ffffad\" title=\"RUN\">";
+                        tr = "<tr bgcolor=\"#ffffad\" " + title + ">";
                         break;
                     case Schedule.STATE_END:
-                        tr = "<tr bgcolor=\"#a9a9a9\" title=\"END\">";
+                        tr = "<tr bgcolor=\"#a9a9a9\" " + title + ">";
                         break;
                     case Schedule.STATE_FAILED:
-                        tr = "<tr bgcolor=\"#ffadad\" title=\"FAILED\">";
+                        tr = "<tr bgcolor=\"#ffadad\" " + title + ">";
                         break;
                     case Schedule.STATE_DISABLE:
-                        tr = "<tr bgcolor=\"#add6ff\" title=\"DISABLE\">";
+                        tr = "<tr bgcolor=\"#add6ff\" " + title + ">";
                         break;
                     case Schedule.STATE_PAUSE:
                     case Schedule.STATE_ABORT:
-                        tr = "<tr bgcolor=\"#ffd6ad\" title=\"PAUSE or ABORT\">";
+                        tr = "<tr bgcolor=\"#ffd6ad\" " + title + ">";
                         break;
                 }
+                
                 buf.append(tr);
-                String id = schedule.getId();
                 buf.append(td(checkbox("check",count, null) + hidden("id", "id_" + count, id)+ hidden("state","state_" + count, String.valueOf(state)) + hidden("controlState","controlState_" + count, String.valueOf(controlState))));
                 buf.append(td(format(id)));
-                buf.append(td(format(schedule.getMasterId())));
+                buf.append(td(format(masterId)));
                 String time = formatDateTime(schedule.getTime());
                 buf.append(td(time));
                 tdBuf.setLength(0);
@@ -3248,6 +3255,8 @@ public class ScheduleManagerServlet extends HttpServlet{
             buf.append(td(button("MakeSchedule", "javascript:document.getElementById('makeSchedule').submit();"), null, 2));
             buf.append("</tr>");
             buf.append(hidden("action", null, "makeSchedule"));
+            buf.append(hidden("search_masterId", null, format(masterId)));
+            buf.append(hidden("search_masterGroupId", null, format(masterGroupId)));
             buf.append("</form>");
             buf.append("</table>");
         }
@@ -3719,7 +3728,6 @@ public class ScheduleManagerServlet extends HttpServlet{
     private String controlStateSelect(String name, String id, int state){
         final StringBuilder buf = new StringBuilder();
         buf.append("<select name=\"" + name + "\" id=\"" + id + "\" >");
-        buf.append(option(Schedule.CONTROL_STATE_INITIAL, state, 1));
         buf.append(option(Schedule.CONTROL_STATE_PAUSE, state, 1));
         buf.append(option(Schedule.CONTROL_STATE_RESUME, state, 1));
         buf.append(option(Schedule.CONTROL_STATE_ABORT, state, 1));
