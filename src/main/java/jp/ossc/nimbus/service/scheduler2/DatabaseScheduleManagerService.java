@@ -6051,7 +6051,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
         ResultSet rs = null;
         try{
             st = con.prepareStatement(
-                "select " + scheduleTableSchema.controlState + ','
+                "select " + scheduleTableSchema.state + ','
+                    + scheduleTableSchema.controlState + ','
                     + scheduleTableSchema.rowVersion + " from "
                     + scheduleTableSchema.table
                     + " where " + scheduleTableSchema.id + "=?"
@@ -6061,9 +6062,11 @@ public class DatabaseScheduleManagerService extends ServiceBase
             if(!rs.next()){
                 throw new ScheduleStateControlException("Schedule not found : " + id);
             }
-            final String oldStateStr = rs.getString(1);
+            final String state = rs.getString(1);
+            final int nowState = scheduleTableSchema.getState(state);
+            final String oldStateStr = rs.getString(2);
             final int nowOldState = scheduleTableSchema.getControlState(oldStateStr);
-            final int rowVersion = rs.getInt(2);
+            final int rowVersion = rs.getInt(3);
             st.close();
             st = null;
             rs.close();
@@ -6074,17 +6077,17 @@ public class DatabaseScheduleManagerService extends ServiceBase
             }
             switch(newState){
             case Schedule.CONTROL_STATE_PAUSE:
-                if(nowOldState != Schedule.STATE_RUN){
+                if(nowState != Schedule.STATE_RUN){
                     return false;
                 }
                 break;
             case Schedule.CONTROL_STATE_RESUME:
-                if(nowOldState != Schedule.STATE_PAUSE){
+                if(nowOldState != Schedule.CONTROL_STATE_PAUSE){
                     return false;
                 }
                 break;
             case Schedule.CONTROL_STATE_ABORT:
-                if(nowOldState != Schedule.STATE_RUN){
+                if(nowState != Schedule.STATE_RUN){
                     return false;
                 }
                 break;
