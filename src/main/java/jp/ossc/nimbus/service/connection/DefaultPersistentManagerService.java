@@ -489,11 +489,21 @@ public class DefaultPersistentManagerService extends ServiceBase
                         }
                     }
                     final Map record = new LinkedHashMap();
-                    for(int i = 1; i <= colCount; i++){
-                        record.put(
-                            metadata.getColumnName(i),
-                            resultSet.getObject(i)
-                        );
+                    if(outputMapping == null) {
+                        for(int i = 1; i <= colCount; i++){
+                            record.put(
+                                metadata.getColumnName(i),
+                                resultSet.getObject(i)
+                            );
+                        }
+                    } else {
+                        for(int i = 1; i <= colCount; i++){
+                            String key = outputMapping.containsKey(metadata.getColumnName(i)) ? (String)outputMapping.get(metadata.getColumnName(i)) : metadata.getColumnName(i); 
+                            record.put(
+                                key,
+                                resultSet.getObject(i)
+                            );
+                        }
                     }
                     list.add(record);
                     if(isCursor){

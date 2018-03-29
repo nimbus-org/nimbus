@@ -33,7 +33,10 @@ package jp.ossc.nimbus.service.test.bug;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import jp.ossc.nimbus.service.test.TestUniqueId;
 
@@ -43,29 +46,18 @@ import jp.ossc.nimbus.service.test.TestUniqueId;
  * @author m-ishida
  *
  */
-public class BugRecord {
-    
-//    public static final String[] DEFAULT_SEVERITY_ARGS = { "S", "A", "B", "C" };
-//    public static final String[] DEFAULT_PRIORITY_ARGS = { "1", "2", "3" };
-//    public static final String[] DEFAULT_STATUS_ARGS = { "New", "Assigned", "Analyzed", "resolved", "verified", "Closed" };
+public class BugRecord implements Cloneable {
     
     protected String id;
-    protected Date date;
+    protected Date entryDate;
+    protected Date updateDate;
     protected TestUniqueId uniqueId;
-//    protected String title;
-//    protected String severity;
-//    protected String[] severityArgs = DEFAULT_SEVERITY_ARGS;
-//    protected String priority;
-//    protected String[] priorityArgs = DEFAULT_PRIORITY_ARGS;
-//    protected String status;
-//    protected String[] statusArgs = DEFAULT_STATUS_ARGS;
-//    protected String description;
-//    protected Date closedDate;
     
     protected Map<String, BugAttribute<?>> bugAttributeMap;
     
     public BugRecord() {
-        date = new Date();
+        entryDate = new Date();
+        bugAttributeMap = new LinkedHashMap<String, BugRecord.BugAttribute<?>>();
     }
     
     public BugRecord(Date date) {
@@ -76,8 +68,8 @@ public class BugRecord {
         this(null, uniqueId);
     }
     
-    public BugRecord(Date date, TestUniqueId uniqueId) {
-        this.date = date == null ? new Date() : date;
+    public BugRecord(Date entryDate, TestUniqueId uniqueId) {
+        this.entryDate = entryDate == null ? new Date() : entryDate;
         this.uniqueId = uniqueId;
     }
     
@@ -89,12 +81,20 @@ public class BugRecord {
         this.id = id;
     }
     
-    public Date getDate() {
-        return date;
+    public Date getEntryDate() {
+        return entryDate;
     }
     
-    public void setDate(Date date) {
-        this.date = date;
+    public void setEntryDate(Date date) {
+        entryDate = date;
+    }
+    
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+    
+    public void setUpdateDate(Date date) {
+        updateDate = date;
     }
     
     public TestUniqueId getTestUniqueId() {
@@ -105,97 +105,110 @@ public class BugRecord {
         this.uniqueId = uniqueId;
     }
     
-//    public String getTitle() {
-//        return title;
-//    }
-//    
-//    public void setTitle(String title) {
-//        this.title = title;
-//    }
-//    
-//    public String getSeverity() {
-//        return severity;
-//    }
-//    
-//    public void setSeverity(String severity) {
-//        if (severityArgs == null || (severity != null && !Arrays.asList(severityArgs).contains(severity))) {
-//            throw new IllegalArgumentException(severity + " is not configurable.");
-//        }
-//        this.severity = severity;
-//    }
-//    
-//    public String[] getSeverityArgs() {
-//        return severityArgs;
-//    }
-//    
-//    public void setSeverityArgs(String[] args) {
-//        severityArgs = args;
-//    }
-//    
-//    public String getPriority() {
-//        return priority;
-//    }
-//    
-//    public void setPriority(String priority) {
-//        if (priorityArgs == null || (priority != null && !Arrays.asList(priorityArgs).contains(priority))) {
-//            throw new IllegalArgumentException(priority + " is not configurable.");
-//        }
-//        this.priority = priority;
-//    }
-//    
-//    public String[] getPriorityArgs() {
-//        return priorityArgs;
-//    }
-//    
-//    public void setPriorityArgs(String[] args) {
-//        priorityArgs = args;
-//    }
-//    
-//    public String getStatus() {
-//        return status;
-//    }
-//    
-//    public void setStatus(String status) {
-//        if (statusArgs == null || (status != null && !Arrays.asList(statusArgs).contains(priority))) {
-//            throw new IllegalArgumentException(status + " is not configurable.");
-//        }
-//        this.status = status;
-//    }
-//    
-//    public String[] getStatusArgs() {
-//        return statusArgs;
-//    }
-//    
-//    public void setStatusArgs(String[] args) {
-//        statusArgs = args;
-//    }
-//    
-//    public String getDescription() {
-//        return description;
-//    }
-//    
-//    public void setDescription(String description) {
-//        this.description = description;
-//    }
-//    
-//    public Date getClosedDate() {
-//        return closedDate;
-//    }
-//    
-//    public void setClosedDate(Date date) {
-//        closedDate = date;
-//    }
+    public String getScenarioGroupId() {
+        return uniqueId == null ? null : uniqueId.getScenarioGroupId();
+    }
     
-    public <T> BugAttribute<T> getBugAttributes(String name) {
-        return null;
+    public void setScenarioGroupId(String id) {
+        if(uniqueId == null) {
+            uniqueId = new TestUniqueId();
+        }
+        uniqueId.setScenarioGroupId(id);
+    }
+    
+    public String getScenarioId() {
+        return uniqueId == null ? null : uniqueId.getScenarioId();
+    }
+    
+    public void setScenarioId(String id) {
+        if(uniqueId == null) {
+            uniqueId = new TestUniqueId();
+        }
+        uniqueId.setScenarioId(id);
+    }
+    
+    public String getTestCaseId() {
+        return uniqueId == null ? null : uniqueId.getTestCaseId();
+    }
+    
+    public void setTestCaseId(String id) {
+        if(uniqueId == null) {
+            uniqueId = new TestUniqueId();
+        }
+        uniqueId.setTestCaseId(id);
+    }
+    
+    public BugAttribute<?> getBugAttribute(String name) {
+        return bugAttributeMap.get(name);
     }
     
     public BugAttribute<?>[] getBugAttributes() {
         return (BugAttribute<?>[]) bugAttributeMap.values().toArray(new BugAttribute<?>[0]);
     }
     
+    public void setBugAttributes(BugAttribute<?>[] attributes) {
+        bugAttributeMap.clear();
+        for(int i = 0; i < attributes.length; i++) {
+            addBugAttribute(attributes[i]);
+        }
+    }
+    
     public void addBugAttribute(BugAttribute<?> attribute) {
         bugAttributeMap.put(attribute.getName(), attribute);
+    }
+    
+    public Object getValue(String name){
+        if(bugAttributeMap.containsKey(name)) {
+            BugAttribute<?> attribute = bugAttributeMap.get(name);
+            return attribute.getValue();
+        }
+        return null;
+    }
+    
+    public <T> void setValue(String name, T value){
+        if(bugAttributeMap.containsKey(name)) {
+            BugAttribute<T> attribute = (BugAttribute<T>)bugAttributeMap.get(name);
+            attribute.setValue(value);;
+        }
+    }
+    
+    public BugRecord clone() {
+        BugRecord clone = cloneBugAttribute();
+        clone.setId(id);
+        clone.setTestUniqueId(new TestUniqueId(uniqueId.getScenarioGroupId(), uniqueId.getScenarioId(), uniqueId.getTestCaseId()));
+        clone.setEntryDate(entryDate);
+        clone.setUpdateDate(updateDate);
+        return clone;
+    }
+    
+    public BugRecord cloneBugAttribute() {
+        BugRecord clone = new BugRecord();
+        Iterator itr = bugAttributeMap.entrySet().iterator();
+        while(itr.hasNext()) {
+            Entry entry = (Entry)itr.next();
+            BugAttribute<?> attribute = (BugAttribute<?>)entry.getValue();
+            clone.addBugAttribute(attribute.clone());
+        }
+        return clone;
+    }
+    
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("{id=" + id + ", ");
+        if(uniqueId == null) {
+            sb.append("scenarioGroupId=null, scenarioId=null, testCaseId=null, ");
+        } else {
+            sb.append("scenarioGroupId=" + uniqueId.getScenarioGroupId() + ", scenarioId=" + uniqueId.getScenarioId() + ", testCaseId=" + uniqueId.getTestCaseId() + ", ");
+        }
+        sb.append("entryDate=" + entryDate + ", ");
+        sb.append("updateDate=" + updateDate);
+        Iterator itr = bugAttributeMap.entrySet().iterator();
+        while(itr.hasNext()) {
+            Entry entry = (Entry)itr.next();
+            sb.append(", " + entry.getKey() + "=" + ((BugAttribute<?>)entry.getValue()).getValue());
+        }
+        sb.append("}");
+        return sb.toString();
     }
     
     /**
@@ -205,10 +218,13 @@ public class BugRecord {
      *
      * @param <T> 情報を保持するデータの型
      */
-    public static class BugAttribute<T> {
+    public static class BugAttribute<T> implements Cloneable {
         
         protected String name;
         protected T value;
+        
+        public BugAttribute() {
+        }
         
         public BugAttribute(String name) {
             this.name = name;
@@ -234,6 +250,10 @@ public class BugRecord {
         public T getValue() {
             return value;
         }
+        
+        public BugAttribute<T> clone() {
+            return new BugAttribute<T>(name, value);
+        }
     }
     
     /**
@@ -243,9 +263,13 @@ public class BugRecord {
      *
      * @param <T> 情報を保持するデータの型
      */
-    public static class SelectableBugAttribute<T> extends BugAttribute<T> {
+    public static class SelectableBugAttribute<T> extends BugAttribute<T> implements Cloneable {
         
         protected T[] selectableValues;
+        
+        public SelectableBugAttribute() {
+            super();
+        }
         
         public SelectableBugAttribute(String name, T[] selectableValues) {
             super(name);
@@ -271,6 +295,10 @@ public class BugRecord {
                 throw new IllegalArgumentException(value + " is not contains SelectableValues");
             }
             super.setValue(value);
+        }
+        
+        public SelectableBugAttribute<T> clone() {
+            return new SelectableBugAttribute<T>(name, selectableValues, value);
         }
     }
 }
