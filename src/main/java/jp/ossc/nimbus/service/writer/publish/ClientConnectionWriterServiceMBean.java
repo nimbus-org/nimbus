@@ -36,7 +36,7 @@ import java.util.Map;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link ClientConnectionWriterService}‚ÌMBeanƒCƒ“ƒ^ƒtƒF[ƒX<p>
+ * {@link ClientConnectionWriterService}ã®MBeanã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹<p>
  * 
  * @author M.Takata
  * @see ClientConnectionWriterService
@@ -44,103 +44,103 @@ import jp.ossc.nimbus.core.*;
 public interface ClientConnectionWriterServiceMBean extends ServiceBaseMBean{
     
     /**
-     * óM‚·‚é{@link jp.ossc.nimbus.service.publish.ClientConnectionFactory ClientConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * å—ä¿¡ã™ã‚‹{@link jp.ossc.nimbus.service.publish.ClientConnectionFactory ClientConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ClientConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name ClientConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setClientConnectionFactoryServiceName(ServiceName name);
     
     /**
-     * óM‚·‚é{@link jp.ossc.nimbus.service.publish.ClientConnectionFactory ClientConnectionFactory}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * å—ä¿¡ã™ã‚‹{@link jp.ossc.nimbus.service.publish.ClientConnectionFactory ClientConnectionFactory}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ClientConnectionFactoryƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return ClientConnectionFactoryã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getClientConnectionFactoryServiceName();
     
     /**
-     * óM‚·‚é{@link jp.ossc.nimbus.service.publish.MessageReceiver MessageReceiver}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * å—ä¿¡ã™ã‚‹{@link jp.ossc.nimbus.service.publish.MessageReceiver MessageReceiver}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name MessageReceiverƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name MessageReceiverã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setMessageReceiverServiceName(ServiceName name);
     
     /**
-     * óM‚·‚é{@link jp.ossc.nimbus.service.publish.MessageReceiver MessageReceiver}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * å—ä¿¡ã™ã‚‹{@link jp.ossc.nimbus.service.publish.MessageReceiver MessageReceiver}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return MessageReceiverƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return MessageReceiverã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getMessageReceiverServiceName();
     
     /**
-     * óM‚·‚éƒTƒuƒWƒFƒNƒg‚ÆƒL[‚ğİ’è‚·‚éB<p>
+     * å—ä¿¡ã™ã‚‹ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param subject ƒTƒuƒWƒFƒNƒg
-     * @param keys ƒL[”z—ñ
+     * @param subject ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+     * @param keys ã‚­ãƒ¼é…åˆ—
      */
     public void setSubject(String subject, String[] keys);
     
     /**
-     * óM‚·‚éƒTƒuƒWƒFƒNƒg‚ÆƒL[‚Ìƒ}ƒbƒv‚ğæ“¾‚·‚éB<p>
+     * å—ä¿¡ã™ã‚‹ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã‚­ãƒ¼ã®ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * return ƒTƒuƒWƒFƒNƒg‚ÆƒL[”z—ñ‚Ìƒ}ƒbƒv
+     * return ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã‚­ãƒ¼é…åˆ—ã®ãƒãƒƒãƒ—
      */
     public Map getSubjectMap();
     
     /**
-     * o—Í‚·‚é{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * å‡ºåŠ›ã™ã‚‹{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name MessageWriterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name MessageWriterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setMessageWriterServiceName(ServiceName name);
     
     /**
-     * o—Í‚·‚é{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * å‡ºåŠ›ã™ã‚‹{@link jp.ossc.nimbus.service.writer.MessageWriter MessageWriter}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return MessageWriterƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return MessageWriterã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getMessageWriterServiceName();
     
     /**
-     * óM‚µ‚½ƒƒbƒZ[ƒW‚ÌƒTƒuƒWƒFƒNƒg‚ÆƒL[‚ğİ’è‚·‚é{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğİ’è‚·‚éB<p>
+     * å—ä¿¡ã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param name ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @param name Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public void setContextServiceName(ServiceName name);
     
     /**
-     * óM‚µ‚½ƒƒbƒZ[ƒW‚ÌƒTƒuƒWƒFƒNƒg‚ÆƒL[‚ğİ’è‚·‚é{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼‚ğæ“¾‚·‚éB<p>
+     * å—ä¿¡ã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹åã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ContextƒT[ƒrƒX‚ÌƒT[ƒrƒX–¼
+     * @return Contextã‚µãƒ¼ãƒ“ã‚¹ã®ã‚µãƒ¼ãƒ“ã‚¹å
      */
     public ServiceName getContextServiceName();
     
     /**
-     * óM‚µ‚½ƒƒbƒZ[ƒW‚ÌƒTƒuƒWƒFƒNƒg‚ğ{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚Éİ’è‚·‚é‚ÌƒL[‚ğİ’è‚·‚éB<p>
-     * İ’è‚µ‚È‚¢ê‡‚ÍAƒTƒuƒWƒFƒNƒg‚ğContextƒT[ƒrƒX‚Éİ’è‚µ‚È‚¢B<br>
+     * å—ä¿¡ã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹æ™‚ã®ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã—ãªã„å ´åˆã¯ã€ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’Contextã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã—ãªã„ã€‚<br>
      *
-     * @param key ƒTƒuƒWƒFƒNƒg‚ğContextƒT[ƒrƒX‚Éİ’è‚·‚é‚ÌƒL[
+     * @param key ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’Contextã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹æ™‚ã®ã‚­ãƒ¼
      */
     public void setSubjectContextKey(String key);
     
     /**
-     * óM‚µ‚½ƒƒbƒZ[ƒW‚ÌƒTƒuƒWƒFƒNƒg‚ğ{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚Éİ’è‚·‚é‚ÌƒL[‚ğæ“¾‚·‚éB<p>
+     * å—ä¿¡ã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹æ™‚ã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒTƒuƒWƒFƒNƒg‚ğContextƒT[ƒrƒX‚Éİ’è‚·‚é‚ÌƒL[
+     * @return ã‚µãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’Contextã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹æ™‚ã®ã‚­ãƒ¼
      */
     public String getSubjectContextKey();
     
     /**
-     * óM‚µ‚½ƒƒbƒZ[ƒW‚ÌƒL[‚ğ{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚Éİ’è‚·‚é‚ÌƒL[‚ğİ’è‚·‚éB<p>
-     * İ’è‚µ‚È‚¢ê‡‚ÍAƒL[‚ğContextƒT[ƒrƒX‚Éİ’è‚µ‚È‚¢B<br>
+     * å—ä¿¡ã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã‚­ãƒ¼ã‚’{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹æ™‚ã®ã‚­ãƒ¼ã‚’è¨­å®šã™ã‚‹ã€‚<p>
+     * è¨­å®šã—ãªã„å ´åˆã¯ã€ã‚­ãƒ¼ã‚’Contextã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã—ãªã„ã€‚<br>
      *
-     * @param key ƒL[‚ğContextƒT[ƒrƒX‚Éİ’è‚·‚é‚ÌƒL[
+     * @param key ã‚­ãƒ¼ã‚’Contextã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹æ™‚ã®ã‚­ãƒ¼
      */
     public void setKeyContextKey(String key);
     
     /**
-     * óM‚µ‚½ƒƒbƒZ[ƒW‚ÌƒL[‚ğ{@link jp.ossc.nimbus.service.context.Context Context}ƒT[ƒrƒX‚Éİ’è‚·‚é‚ÌƒL[‚ğæ“¾‚·‚éB<p>
+     * å—ä¿¡ã—ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã‚­ãƒ¼ã‚’{@link jp.ossc.nimbus.service.context.Context Context}ã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹æ™‚ã®ã‚­ãƒ¼ã‚’å–å¾—ã™ã‚‹ã€‚<p>
      *
-     * @return ƒL[‚ğContextƒT[ƒrƒX‚Éİ’è‚·‚é‚ÌƒL[
+     * @return ã‚­ãƒ¼ã‚’Contextã‚µãƒ¼ãƒ“ã‚¹ã«è¨­å®šã™ã‚‹æ™‚ã®ã‚­ãƒ¼
      */
     public String getKeyContextKey();
 }
