@@ -190,25 +190,35 @@ public class NestedProperty implements Property, java.io.Serializable{
         );
     }
     
-    public Class getPropertyType(Class clazz) throws NoSuchPropertyException{
-        return nestProperty.getPropertyType(thisProperty.getPropertyType(clazz));
-    }
-    
     public Class getPropertyType(Object obj)
      throws NoSuchPropertyException, InvocationTargetException{
         final Object thisObj = thisProperty.getProperty(obj);
         if(thisObj == null){
-            if(isIgnoreNullProperty){
-                return Object.class;
-            }else{
-                throw new NullNestPropertyException(
-                    obj.getClass(),
-                    thisProperty.getPropertyName()
-                );
-            }
+            Class thisPropType = thisProperty.getPropertyType(obj.getClass());
+            return nestProperty.getPropertyType(thisPropType);
         }else{
             return nestProperty.getPropertyType(thisObj);
         }
+    }
+    
+    public Type getPropertyGenericType(Object obj)
+     throws NoSuchPropertyException, InvocationTargetException{
+        final Object thisObj = thisProperty.getProperty(obj);
+        if(thisObj == null){
+            Class thisPropType = thisProperty.getPropertyType(obj.getClass());
+            return nestProperty.getPropertyGenericType(thisPropType);
+        }else{
+            return nestProperty.getPropertyGenericType(thisObj);
+        }
+    }
+    
+    public Class getPropertyType(Class clazz) throws NoSuchPropertyException{
+        return nestProperty.getPropertyType(thisProperty.getPropertyType(clazz));
+    }
+    
+    public Type getPropertyGenericType(Class clazz) throws NoSuchPropertyException{
+        Class thisPropType = thisProperty.getPropertyType(clazz);
+        return nestProperty.getPropertyGenericType(thisPropType);
     }
     
     public boolean isReadable(Class clazz){

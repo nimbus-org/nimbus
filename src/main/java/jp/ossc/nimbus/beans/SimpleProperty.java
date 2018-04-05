@@ -206,6 +206,34 @@ public class SimpleProperty implements Property, Serializable, Comparable{
     
     public Class getPropertyType(Class clazz)
      throws NoSuchPropertyException{
+        return (Class)getPropertyType(clazz, false);
+    }
+    
+    public Type getPropertyGenericType(Object obj)
+     throws NoSuchPropertyException{
+        if(obj instanceof Record){
+            final Record record = (Record)obj;
+            final RecordSchema recSchema = record.getRecordSchema();
+            if(recSchema != null){
+                final PropertySchema propSchema = recSchema.getPropertySchema(property);
+                if(propSchema != null){
+                    final Class type = propSchema.getType();
+                    if(type != null){
+                        return type;
+                    }
+                }
+            }
+        }
+        return getPropertyType(obj.getClass(), true);
+    }
+    
+    public Type getPropertyGenericType(Class clazz)
+     throws NoSuchPropertyException{
+        return getPropertyType(clazz, true);
+    }
+    
+    protected Type getPropertyType(Class clazz, boolean isGeneric)
+     throws NoSuchPropertyException{
         if(property == null){
             throw new NoSuchPropertyException(clazz, property);
         }
@@ -217,7 +245,7 @@ public class SimpleProperty implements Property, Serializable, Comparable{
         }catch(NoSuchPropertyException e){
         }
         if(readMethod != null){
-            return readMethod.getReturnType();
+            return isGeneric ? readMethod.getGenericReturnType() : readMethod.getReturnType();
         }else{
             Method writeMethod = null;
             try{
@@ -233,10 +261,10 @@ public class SimpleProperty implements Property, Serializable, Comparable{
                         return null;
                     }
                 }
-                return writeMethod.getParameterTypes()[0];
+                return isGeneric ? writeMethod.getGenericParameterTypes()[0] : writeMethod.getParameterTypes()[0];
             }else{
                 Field field = getField(clazz);
-                return field.getType();
+                return isGeneric ? field.getGenericType() : field.getType();
             }
         }
     }

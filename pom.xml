@@ -444,6 +444,10 @@
                     <configuration>
                         <useIncrementalCompilation>false</useIncrementalCompilation>
                         <encoding>${project.build.sourceEncoding}</encoding>
+                        <fork>true</fork>
+                        <compilerArgs>
+                            <arg>-Xlint:-unchecked,-deprecation</arg>
+                        </compilerArgs>
                     </configuration>
                 </plugin>
             </plugins>

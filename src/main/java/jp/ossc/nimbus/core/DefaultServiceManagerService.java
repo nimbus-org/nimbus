@@ -2330,7 +2330,7 @@ public class DefaultServiceManagerService extends ServiceBase
     
     private Object getValueOfText(
         ObjectMetaData objData,
-        Class type,
+        Type type,
         String textValue
     ) throws Exception{
         final Logger logger = getLogger();
@@ -2349,14 +2349,19 @@ public class DefaultServiceManagerService extends ServiceBase
         );
         // サーバプロパティの置換
         textValue = Utility.replaceServerProperty(textValue);
-        if(type == null || Object.class.equals(type)){
+        Class typeClass = null;
+        if(type instanceof Class){
+            typeClass = (Class)type;
+        }else if(type instanceof ParameterizedType){
+            typeClass = (Class)((ParameterizedType)type).getRawType();
+        }else{
             return textValue;
         }
         
         final PropertyEditor editor
-             = objData.getServiceLoader().findEditor(type);
+             = objData.getServiceLoader().findEditor(typeClass);
         if(editor == null){
-            logger.write(SVCM_00040, type);
+            logger.write(SVCM_00040, typeClass);
             return null;
         }
         if(editor instanceof ServiceNameEditor){
@@ -2374,6 +2379,17 @@ public class DefaultServiceManagerService extends ServiceBase
         }else if(editor instanceof ServiceNameRefArrayEditor){
             ((ServiceNameRefArrayEditor)editor).setServiceManagerName(
                 objData.getManagerName()
+            );
+        }else if(editor instanceof ParameterizedTypePropertyEditor
+            && type instanceof ParameterizedType){
+            ((ParameterizedTypePropertyEditor)editor).setServiceLoader(
+                objData.getServiceLoader()
+            );
+            ((ParameterizedTypePropertyEditor)editor).setServiceManager(
+                this
+            );
+            ((ParameterizedTypePropertyEditor)editor).setParameterizedType(
+                (ParameterizedType)type
             );
         }
         editor.setAsText(textValue);
@@ -2471,11 +2487,11 @@ public class DefaultServiceManagerService extends ServiceBase
             }else if(value instanceof StaticFieldRefMetaData){
                 value = getStaticFieldValue((StaticFieldRefMetaData)value);
             }else{
-                Class type = null;
+                Type type = null;
                 if(field.getType() != null){
                     type = Utility.convertStringToClass(field.getType());
                 }else{
-                    type = f.getType();
+                    type = f.getGenericType();
                 }
                 if(type == null || Object.class.equals(type)){
                     type = String.class;
@@ -2824,12 +2840,12 @@ public class DefaultServiceManagerService extends ServiceBase
                 }else if(value instanceof StaticFieldRefMetaData){
                     value = getStaticFieldValue((StaticFieldRefMetaData)value);
                 }else if(!(value instanceof org.w3c.dom.Element)){
-                    Class type = null;
+                    Type type = null;
                     if(attr.getType() != null){
                         type = Utility.convertStringToClass(attr.getType());
                     }else{
                         try{
-                            type = prop.getPropertyType(target);
+                            type = prop.getPropertyGenericType(target);
                         }catch(NoSuchPropertyException e){
                         }
                     }
