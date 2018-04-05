@@ -79,6 +79,8 @@ import jp.ossc.nimbus.util.*;
  *   <tr><td>java.util.Properties</td><td>{@link jp.ossc.nimbus.beans.PropertiesEditor}</td></tr>
  *   <tr><td>java.util.Map</td><td>{@link jp.ossc.nimbus.beans.MapEditor}</td></tr>
  *   <tr><td>java.util.SortedMap</td><td>{@link jp.ossc.nimbus.beans.SortedMapEditor}</td></tr>
+ *   <tr><td>java.util.List</td><td>{@link jp.ossc.nimbus.beans.ListEditor}</td></tr>
+ *   <tr><td>java.util.Set</td><td>{@link jp.ossc.nimbus.beans.SetEditor}</td></tr>
  *   <tr><td>{@link jp.ossc.nimbus.core.ServiceName}</td><td>{@link jp.ossc.nimbus.beans.ServiceNameEditor}</td></tr>
  *   <tr><td>{@link jp.ossc.nimbus.core.ServiceName jp.ossc.nimbus.core.ServiceName[]}</td><td>{@link jp.ossc.nimbus.beans.ServiceNameArrayEditor}</td></tr>
  *   <tr><td>{@link jp.ossc.nimbus.core.ServiceNameRef}</td><td>{@link jp.ossc.nimbus.beans.ServiceNameRefEditor}</td></tr>
@@ -122,6 +124,8 @@ public class NimbusPropertyEditorManager extends PropertyEditorManager{
         propertyEditors.add(java.lang.reflect.Constructor.class, ConstructorEditor.class);
         propertyEditors.add(java.util.SortedMap.class, SortedMapEditor.class);
         propertyEditors.add(java.util.Map.class, MapEditor.class);
+        propertyEditors.add(java.util.List.class, ListEditor.class);
+        propertyEditors.add(java.util.Set.class, SetEditor.class);
         propertyEditors.add(Character.TYPE, CharacterEditor.class);
         propertyEditors.add(Character.class, CharacterEditor.class);
         propertyEditors.add(

@@ -58,6 +58,15 @@ public interface Property{
     public Class getPropertyType(Class clazz) throws NoSuchPropertyException;
     
     /**
+     * 指定したオブジェクトから、このプロパティが表すプロパティ総称型を取得する。<p>
+     *
+     * @param clazz 対象となるBeanのクラス
+     * @return プロパティ総称型
+     * @exception NoSuchPropertyException 指定されたBeanのクラスが、このプロパティが表すアクセス可能なプロパティを持っていない場合
+     */
+    public Type getPropertyGenericType(Class clazz) throws NoSuchPropertyException;
+    
+    /**
      * 指定したオブジェクトから、このプロパティが表すプロパティ型を取得する。<p>
      *
      * @param obj 対象となるBean
@@ -66,6 +75,17 @@ public interface Property{
      * @exception InvocationTargetException 指定されたBeanのアクセサを呼び出した結果、例外がthrowされた場合
      */
     public Class getPropertyType(Object obj)
+     throws NoSuchPropertyException, InvocationTargetException;
+    
+    /**
+     * 指定したオブジェクトから、このプロパティが表すプロパティ総称型を取得する。<p>
+     *
+     * @param obj 対象となるBean
+     * @return プロパティ総称型
+     * @exception NoSuchPropertyException 指定されたBeanが、このプロパティが表すアクセス可能なプロパティを持っていない場合
+     * @exception InvocationTargetException 指定されたBeanのアクセサを呼び出した結果、例外がthrowされた場合
+     */
+    public Type getPropertyGenericType(Object obj)
      throws NoSuchPropertyException, InvocationTargetException;
     
     /**

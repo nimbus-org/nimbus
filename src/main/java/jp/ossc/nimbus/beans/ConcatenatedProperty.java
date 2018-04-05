@@ -187,12 +187,19 @@ public class ConcatenatedProperty implements Property, java.io.Serializable{
         );
     }
     
-    public Class getPropertyType(Class clazz) throws NoSuchPropertyException{
+    public Class getPropertyType(Class clazz){
         return String.class;
     }
     
-    public Class getPropertyType(Object obj)
-     throws NoSuchPropertyException, InvocationTargetException{
+    public Class getPropertyGenericType(Class clazz){
+        return String.class;
+    }
+    
+    public Class getPropertyType(Object obj){
+        return String.class;
+    }
+    
+    public Class getPropertyGenericType(Object obj){
         return String.class;
     }
     

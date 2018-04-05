@@ -221,15 +221,22 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     public Class getPropertyType(Object obj) throws NoSuchPropertyException{
-        return (Class)getIndexedPropertyType(obj);
+        return (Class)getIndexedPropertyType(obj, false);
     }
     
+    public Type getPropertyGenericType(Object obj) throws NoSuchPropertyException{
+        return getIndexedPropertyType(obj, true);
+    }
+    
+    public Type getPropertyGenericType(Class clazz) throws NoSuchPropertyException{
+        return getIndexedPropertyType(clazz, true);
+    }
     
     public Class getPropertyType(Class clazz) throws NoSuchPropertyException{
-        return (Class)getIndexedPropertyType(clazz);
+        return (Class)getIndexedPropertyType(clazz, false);
     }
     
-    protected Class getIndexedPropertyType(Object obj) throws NoSuchPropertyException{
+    protected Type getIndexedPropertyType(Object obj, boolean isGeneric) throws NoSuchPropertyException{
         if(obj instanceof Record
             && RECORD_PROP_NAME.equalsIgnoreCase(super.getPropertyName())){
             final Record record = (Record)obj;
@@ -246,13 +253,13 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
                 return type;
             }
         }
-        return getIndexedPropertyType(obj.getClass());
+        return getIndexedPropertyType(obj.getClass(), isGeneric);
     }
     
-    protected Class getIndexedPropertyType(Class clazz) throws NoSuchPropertyException{
+    protected Type getIndexedPropertyType(Class clazz, boolean isGeneric) throws NoSuchPropertyException{
         Method readMethod = null;
         if(property == null || property.length() == 0){
-            return getIndexedObjectPropertyType(clazz);
+            return getIndexedObjectPropertyType(clazz, isGeneric);
         }else{
             readMethod = getReadIndexedMethod(clazz);
             if(readMethod == null){
@@ -271,17 +278,17 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
                             }
                         }
                     }
-                    return setMethod.getParameterTypes()[1];
+                    return isGeneric ? setMethod.getGenericParameterTypes()[1] : setMethod.getParameterTypes()[1];
                 }
-                Class retClass = null;
+                Type retType = null;
                 try{
-                    retClass = super.getPropertyType(clazz);
+                    retType = super.getPropertyType(clazz, true);
                 }catch(NoSuchPropertyException e){
                     throw new NoSuchPropertyException(clazz, getPropertyName());
                 }
-                return getIndexedObjectPropertyType(retClass);
+                return getIndexedObjectPropertyType(retType, isGeneric);
             }else{
-                return readMethod.getReturnType();
+                return isGeneric ? readMethod.getGenericReturnType() : readMethod.getReturnType();
             }
         }
     }
@@ -394,6 +401,15 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
             if(writeMethod != null){
                 return true;
             }
+            Type indexedType = null;
+            if(clazz != null){
+                try{
+                    indexedType = super.getPropertyGenericType(obj);
+                }catch(NoSuchPropertyException e){
+                    return false;
+                }
+            }
+            
             Object prop = null;
             try{
                 prop = super.getProperty(obj);
@@ -405,7 +421,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
             if(prop == null){
                 return false;
             }
-            return isWritableIndexedObjectProperty(prop, clazz);
+            return isWritableIndexedObjectProperty(prop, indexedType, clazz);
         }
     }
     
@@ -414,9 +430,9 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
         Method readMethod = null;
         if(getMethodCache.containsKey(targetClass) && getMethodCache.get(targetClass) != null){
             readMethod = (Method)getMethodCache.get(targetClass);
-            return isWritableIndexedObjectProperty(readMethod.getReturnType(), clazz);
+            return isWritableIndexedObjectProperty(readMethod.getReturnType(), readMethod.getGenericReturnType(), clazz);
         }else if(property == null || property.length() == 0){
-            return isWritableIndexedObjectProperty(targetClass, clazz);
+            return isWritableIndexedObjectProperty(targetClass, null, clazz);
         }else{
             writeMethod = getWriteIndexedMethod(
                 targetClass,
@@ -431,7 +447,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
             }catch(InvocationTargetException e){
             }
             if(readMethod != null){
-                return isWritableIndexedObjectProperty(readMethod.getReturnType(), clazz);
+                return isWritableIndexedObjectProperty(readMethod.getReturnType(), readMethod.getGenericReturnType(), clazz);
             }else{
                 Field field = null;
                 try{
@@ -441,7 +457,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
                 if(field == null){
                     return false;
                 }
-                return isWritableIndexedObjectProperty(field.getType(), clazz);
+                return isWritableIndexedObjectProperty(field.getType(), field.getGenericType(), clazz);
             }
         }
     }
@@ -925,7 +941,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
                 throw new NoSuchPropertyException(
                     clazz,
                     getPropertyName(),
-                e
+                    e
                 );
             }else{
                 return null;
@@ -1179,7 +1195,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
         if(indexedObj == null){
             return false;
         }else{
-            return isWritableIndexedObjectProperty(indexedObj, clazz);
+            return isWritableIndexedObjectProperty(indexedObj, readMethod.getGenericReturnType(), clazz);
         }
     }
     
@@ -1192,6 +1208,19 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
      * @return 指定したインデックス付きオブジェクトに、このインデックスプロパティが持つインデックスのプロパティ値を設定可能な場合true
      */
     protected boolean isWritableIndexedObjectProperty(Object obj, Class clazz){
+        return isWritableIndexedObjectProperty(obj, null, clazz);
+    }
+    
+    /**
+     * 指定したインデックス付きオブジェクトに、このインデックスプロパティが持つインデックスのプロパティ値を設定可能か判定する。<p>
+     * ここで言う、インデックス付きオブジェクトとは、配列、{@link java.util.List}、インデックス付きSetter（set(int, プロパティ値の型に適合する任意のクラス)）を持つオブジェクトのいずれかである。
+     *
+     * @param obj インデックス付きオブジェクト
+     * @param indexdType インデックス付きオブジェクトのジェネリクス型
+     * @param clazz プロパティの型
+     * @return 指定したインデックス付きオブジェクトに、このインデックスプロパティが持つインデックスのプロパティ値を設定可能な場合true
+     */
+    protected boolean isWritableIndexedObjectProperty(Object obj, Type indexdType, Class clazz){
         final Class indexdClazz = obj.getClass();
         if(indexdClazz.isArray()){
             if(clazz != null && !isAssignableFrom(indexdClazz.getComponentType(), clazz)){
@@ -1203,6 +1232,12 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
                 return true;
             }
         }else if(obj instanceof List){
+            if(indexdType != null && (indexdType instanceof ParameterizedType)){
+                Type argType = ((ParameterizedType)indexdType).getActualTypeArguments()[0];
+                if(argType instanceof Class && !isAssignableFrom((Class)argType, clazz)){
+                    return false;
+                }
+            }
             return true;
         }else{
             Method setMethod = null;
@@ -1254,16 +1289,23 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
      * ここで言う、インデックス付きオブジェクトとは、配列、{@link java.util.List}、インデックス付きSetter（set(int, プロパティ値の型に適合する任意のクラス)）を持つオブジェクトのいずれかである。
      *
      * @param indexdClazz インデックス付きオブジェクトのクラス
+     * @param indexdType インデックス付きオブジェクトのジェネリクス型
      * @param clazz プロパティの型
      * @return 指定したインデックス付きオブジェクトに、このインデックスプロパティが持つインデックスのプロパティ値を設定可能な場合true
      */
-    protected boolean isWritableIndexedObjectProperty(Class indexdClazz, Class clazz){
+    protected boolean isWritableIndexedObjectProperty(Class indexdClazz, Type indexdType, Class clazz){
         if(indexdClazz.isArray()){
             if(clazz != null && !isAssignableFrom(indexdClazz.getComponentType(), clazz)){
                 return false;
             }
             return true;
         }else if(List.class.isAssignableFrom(indexdClazz)){
+            if(indexdType != null && (indexdType instanceof ParameterizedType)){
+                Type argType = ((ParameterizedType)indexdType).getActualTypeArguments()[0];
+                if(argType instanceof Class){
+                    return isAssignableFrom((Class)argType, clazz);
+                }
+            }
             return true;
         }else{
             Method setMethod = null;
@@ -1434,26 +1476,50 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
      * 指定したインデックス付きオブジェクトのClassから、このインデックスプロパティが持つインデックスのプロパティ型を取得する。<p>
      * ここで言う、インデックス付きオブジェクトとは、配列、{@link java.util.List}、インデックス付きGetter（get(int)）を持つオブジェクトのいずれかである。
      *
-     * @param indexdClazz インデックス付きクラス
+     * @param indexdType インデックス付き型
+     * @param isGeneric trueの場合、総称型を返す
      * @return プロパティ型
      * @exception NoSuchIndexPropertyException 指定されたインデックス付き戻り値に、このインデックスプロパティが持つインデックスが存在しない場合
      * @exception NoSuchPropertyException 指定されたインデックス付き戻り値が、インデックス付き戻り値でない場合
      */
-    protected Class getIndexedObjectPropertyType(Class indexdClazz)
+    protected Type getIndexedObjectPropertyType(Type indexdType, boolean isGeneric)
      throws NoSuchPropertyException{
-        return getIndexedObjectPropertyType(indexdClazz, true);
+        return getIndexedObjectPropertyType(indexdType, isGeneric, true);
     }
-    protected Class getIndexedObjectPropertyType(Class indexdClazz, boolean isThrow)
+    protected Type getIndexedObjectPropertyType(Type indexdType, boolean isGeneric, boolean isThrow)
      throws NoSuchPropertyException{
+        Class indexdClazz = null;
+        if(indexdType instanceof Class){
+            indexdClazz = (Class)indexdType;
+        }else if(indexdType instanceof ParameterizedType){
+            indexdClazz = (Class)((ParameterizedType)indexdType).getRawType();
+        }else if(indexdType instanceof GenericArrayType){
+            return isGeneric ? ((GenericArrayType)indexdType).getGenericComponentType() : Object.class;
+        }else{
+            return isGeneric ? indexdType : Object.class;
+        }
         if(indexdClazz.isArray()){
             return indexdClazz.getComponentType();
         }else if(List.class.isAssignableFrom(indexdClazz)){
-            return Object.class;
+            if(indexdType instanceof ParameterizedType){
+                Type elementType = ((ParameterizedType)indexdType).getActualTypeArguments()[0];
+                if(isGeneric){
+                    return elementType;
+                }else if(elementType instanceof Class){
+                    return elementType;
+                }else if(elementType instanceof ParameterizedType){
+                    return ((ParameterizedType)elementType).getRawType();
+                }else{
+                    return Object.class;
+                }
+            }else{
+                return Object.class;
+            }
         }else{
             try{
                 Method getMethod = null;
-                if(indexedObjReadMethodCache.containsKey(indexdClazz)){
-                    getMethod = (Method)indexedObjReadMethodCache.get(indexdClazz);
+                if(indexedObjReadMethodCache.containsKey(indexdType)){
+                    getMethod = (Method)indexedObjReadMethodCache.get(indexdType);
                     if(getMethod == null){
                         if(isThrow){
                             throw new NoSuchPropertyException(indexdClazz, getPropertyName());
@@ -1467,21 +1533,21 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
                         GET_METHOD_ARGS
                     );
                     if(!Modifier.isPublic(getMethod.getModifiers())){
-                        indexedObjReadMethodCache.put(indexdClazz, null);
+                        indexedObjReadMethodCache.put(indexdType, null);
                         if(isThrow){
                             throw new NoSuchPropertyException(indexdClazz, getPropertyName());
                         }else{
                             return null;
                         }
                     }else{
-                        indexedObjReadMethodCache.put(indexdClazz, getMethod);
+                        indexedObjReadMethodCache.put(indexdType, getMethod);
                     }
                 }
-                return getMethod.getReturnType();
+                return isGeneric ? getMethod.getGenericReturnType() : getMethod.getReturnType();
             }catch(NoSuchMethodException e){
                 Method setMethod = null;
-                if(indexedObjWriteMethodCache.containsKey(indexdClazz)){
-                    setMethod = (Method)indexedObjWriteMethodCache.get(indexdClazz);
+                if(indexedObjWriteMethodCache.containsKey(indexdType)){
+                    setMethod = (Method)indexedObjWriteMethodCache.get(indexdType);
                     if(setMethod == null){
                         if(isThrow){
                             throw new NoSuchPropertyException(indexdClazz, getPropertyName());
@@ -1492,7 +1558,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
                 }else{
                     final Method[] methods = indexdClazz.getMethods();
                     if(methods == null || methods.length == 0){
-                        indexedObjWriteMethodCache.put(indexdClazz, null);
+                        indexedObjWriteMethodCache.put(indexdType, null);
                         if(isThrow){
                             throw new NoSuchPropertyException(indexdClazz, getPropertyName());
                         }else{
@@ -1516,7 +1582,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
                         if(setMethod == null){
                             setMethod = method;
                         }else{
-                            indexedObjWriteMethodCache.put(indexdClazz, null);
+                            indexedObjWriteMethodCache.put(indexdType, null);
                             // 確定できないのでエラー
                             if(isThrow){
                                 throw new NoSuchPropertyException(
@@ -1529,16 +1595,16 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
                         }
                     }
                     if(setMethod == null){
-                        indexedObjWriteMethodCache.put(indexdClazz, null);
+                        indexedObjWriteMethodCache.put(indexdType, null);
                         if(isThrow){
                             throw new NoSuchPropertyException(indexdClazz, getPropertyName());
                         }else{
                             return null;
                         }
                     }
-                    indexedObjWriteMethodCache.put(indexdClazz, setMethod);
+                    indexedObjWriteMethodCache.put(indexdType, setMethod);
                 }
-                return setMethod.getParameterTypes()[1];
+                return isGeneric ? setMethod.getGenericParameterTypes()[1] : setMethod.getParameterTypes()[1];
             }
         }
     }

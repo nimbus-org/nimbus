@@ -31,9 +31,9 @@
  */
 package jp.ossc.nimbus.beans;
 
-import java.beans.*;
 import java.util.*;
 import java.io.*;
+import java.lang.reflect.Type;
 
 /**
  * {@link Map}型のPropertyEditorクラス。<p>
@@ -61,7 +61,7 @@ import java.io.*;
  *
  * @author M.Takata
  */
-public class MapEditor extends PropertyEditorSupport
+public class MapEditor extends ParameterizedTypePropertyEditorSupport
  implements java.io.Serializable{
     
     private static final long serialVersionUID = 2982596271402144547L;
@@ -133,19 +133,28 @@ public class MapEditor extends PropertyEditorSupport
                 if(val.indexOf(ESCAPE_DOUBLE_QUOTE) != -1){
                     val = val.replaceAll(ESCAPE_DOUBLE_QUOTE_REGEX, DOUBLE_QUOTE);
                 }
-                Object old = linkedMap.get(key);
+                Object keyObj = key;
+                Object valObj = val;
+                if(parameterizedType != null){
+                    Type[] types = parameterizedType.getActualTypeArguments();
+                    if(types != null && types.length == 2){
+                        keyObj = getValue(types[0], key);
+                        valObj = getValue(types[1], val);
+                    }
+                }
+                Object old = linkedMap.get(keyObj);
                 if(old != null){
                     List list = null;
-                    if(old instanceof String){
+                    if(!(old instanceof List)){
                         list = new ArrayList();
                         list.add(old);
-                        linkedMap.put(key, list);
+                        linkedMap.put(keyObj, list);
                     }else{
                         list = (List)old;
                     }
-                    list.add(val);
+                    list.add(valObj);
                 }else{
-                    linkedMap.put(key, val);
+                    linkedMap.put(keyObj, valObj);
                 }
             }
         }catch(IOException e){
@@ -177,14 +186,26 @@ public class MapEditor extends PropertyEditorSupport
         final PrintWriter writer = new PrintWriter(sw);
         final Iterator keys = linkedMap.keySet().iterator();
         while(keys.hasNext()){
-            final Object key = keys.next();
+            Object key = keys.next();
             Object val = linkedMap.get(key);
+            Type valueType = null;
+            if(parameterizedType != null){
+                Type[] types = parameterizedType.getActualTypeArguments();
+                if(types != null && types.length == 2){
+                    key = getAsText(types[0], key);
+                    valueType = types[1];
+                }
+            }
             if(val instanceof List){
                 List vals = (List)val;
                 for(int i = 0, imax = vals.size(); i < imax; i++){
                     writer.print(key);
                     writer.print('=');
-                    writer.print(vals.get(i));
+                    val = vals.get(i);
+                    if(valueType != null){
+                        val = getAsText(valueType, val);
+                    }
+                    writer.print(val);
                     if(i != imax - 1){
                         writer.println();
                     }
@@ -192,6 +213,9 @@ public class MapEditor extends PropertyEditorSupport
             }else{
                 writer.print(key);
                 writer.print('=');
+                if(valueType != null){
+                    val = getAsText(valueType, val);
+                }
                 writer.print(val);
             }
             if(keys.hasNext()){

@@ -219,13 +219,22 @@ public class MappedProperty extends SimpleProperty implements Serializable{
     }
     
     public Class getPropertyType(Object obj) throws NoSuchPropertyException{
-        return (Class)getMappedPropertyType(obj);
-    }
-    public Class getPropertyType(Class clazz) throws NoSuchPropertyException{
-        return (Class)getMappedPropertyType(clazz);
+        return (Class)getMappedPropertyType(obj, false);
     }
     
-    protected Class getMappedPropertyType(Object obj) throws NoSuchPropertyException{
+    public Type getPropertyGenericType(Object obj) throws NoSuchPropertyException{
+        return getMappedPropertyType(obj, true);
+    }
+    
+    public Type getPropertyGenericType(Class clazz) throws NoSuchPropertyException{
+        return getMappedPropertyType(clazz, true);
+    }
+    
+    public Class getPropertyType(Class clazz) throws NoSuchPropertyException{
+        return (Class)getMappedPropertyType(clazz, false);
+    }
+    
+    protected Type getMappedPropertyType(Object obj, boolean isGeneric) throws NoSuchPropertyException{
         if((obj instanceof Record) && getKey() != null){
             final boolean isGetProperty = RECORD_PROP_NAME.equalsIgnoreCase(super.getPropertyName());
             final boolean isGet = super.getPropertyName() == null || super.getPropertyName().length() == 0;
@@ -244,13 +253,13 @@ public class MappedProperty extends SimpleProperty implements Serializable{
                 throw new NoSuchPropertyException(obj.getClass(), getPropertyName());
             }
         }
-        return getMappedPropertyType(obj.getClass());
+        return getMappedPropertyType(obj.getClass(), isGeneric);
     }
     
-    protected Class getMappedPropertyType(Class clazz) throws NoSuchPropertyException{
+    protected Type getMappedPropertyType(Class clazz,  boolean isGeneric) throws NoSuchPropertyException{
         Method readMethod = null;
         if(property == null || property.length() == 0){
-            return getMappedObjectPropertyType(clazz);
+            return getMappedObjectPropertyType(clazz, isGeneric);
         }else{
             readMethod = getReadMappedMethod(clazz);
             if(readMethod == null){
@@ -269,17 +278,17 @@ public class MappedProperty extends SimpleProperty implements Serializable{
                             }
                         }
                     }
-                    return setMethod.getParameterTypes()[1];
+                    return isGeneric ? setMethod.getGenericParameterTypes()[1] : setMethod.getParameterTypes()[1];
                 }
-                Class retClass = null;
+                Type retType = null;
                 try{
-                    retClass = super.getPropertyType(clazz);
+                    retType = super.getPropertyType(clazz, true);
                 }catch(NoSuchPropertyException e){
                     throw new NoSuchPropertyException(clazz, getPropertyName());
                 }
-                return getMappedObjectPropertyType(retClass);
+                return getMappedObjectPropertyType(retType, isGeneric);
             }else{
-                return readMethod.getReturnType();
+                return isGeneric ? readMethod.getGenericReturnType() : readMethod.getReturnType();
             }
         }
     }
@@ -395,6 +404,15 @@ public class MappedProperty extends SimpleProperty implements Serializable{
             if(writeMethod != null){
                 return true;
             }
+            Type mappedType = null;
+            if(clazz != null){
+                try{
+                    mappedType = super.getPropertyGenericType(obj);
+                }catch(NoSuchPropertyException e){
+                    return false;
+                }
+            }
+            
             Object prop = null;
             try{
                 prop = super.getProperty(obj);
@@ -406,7 +424,7 @@ public class MappedProperty extends SimpleProperty implements Serializable{
             if(prop == null){
                 return false;
             }
-            return isWritableMappedObjectProperty(obj, clazz);
+            return isWritableMappedObjectProperty(prop, mappedType, clazz);
         }
     }
     
@@ -415,9 +433,9 @@ public class MappedProperty extends SimpleProperty implements Serializable{
         Method readMethod = null;
         if(getMethodCache.containsKey(targetClass) && getMethodCache.get(targetClass) != null){
             readMethod = (Method)getMethodCache.get(targetClass);
-            return isWritableMappedObjectProperty(readMethod.getReturnType(), clazz);
+            return isWritableMappedObjectProperty(readMethod.getReturnType(), readMethod.getGenericReturnType(), clazz);
         }else if(property == null || property.length() == 0){
-            return isWritableMappedObjectProperty(targetClass, clazz);
+            return isWritableMappedObjectProperty(targetClass, null, clazz);
         }else{
             writeMethod = getWriteMappedMethod(
                 targetClass,
@@ -432,7 +450,7 @@ public class MappedProperty extends SimpleProperty implements Serializable{
             }catch(InvocationTargetException e){
             }
             if(readMethod != null){
-                return isWritableMappedObjectProperty(readMethod.getReturnType(), clazz);
+                return isWritableMappedObjectProperty(readMethod.getReturnType(), readMethod.getGenericReturnType(), clazz);
             }else{
                 Field field = null;
                 try{
@@ -442,7 +460,7 @@ public class MappedProperty extends SimpleProperty implements Serializable{
                 if(field == null){
                     return false;
                 }
-                return isWritableMappedObjectProperty(field.getType(), clazz);
+                return isWritableMappedObjectProperty(field.getType(), field.getGenericType(), clazz);
             }
         }
     }
@@ -1180,7 +1198,7 @@ public class MappedProperty extends SimpleProperty implements Serializable{
         if(mappedObj == null){
             return false;
         }else{
-            return isWritableMappedObjectProperty(mappedObj, clazz);
+            return isWritableMappedObjectProperty(mappedObj, readMethod.getGenericReturnType(), clazz);
         }
     }
     
@@ -1193,6 +1211,19 @@ public class MappedProperty extends SimpleProperty implements Serializable{
      * @return 指定したキー付きオブジェクトに、このキープロパティが持つキーのプロパティ値を設定可能な場合true
      */
     protected boolean isWritableMappedObjectProperty(Object obj, Class clazz){
+        return isWritableMappedObjectProperty(obj, null, clazz);
+    }
+    
+    /**
+     * 指定したキー付きオブジェクトに、このキープロパティが持つキーのプロパティ値を設定可能か判定する。<p>
+     * ここで言う、キー付きオブジェクトとは、{@link java.util.Map}、キー付きSetter（set(String, プロパティ値の型に適合する任意のクラス)）を持つオブジェクトのいずれかである。
+     *
+     * @param obj キー付きオブジェクト
+     * @param mappedType キー付きオブジェクトのジェネリクス型
+     * @param clazz プロパティの型
+     * @return 指定したキー付きオブジェクトに、このキープロパティが持つキーのプロパティ値を設定可能な場合true
+     */
+    protected boolean isWritableMappedObjectProperty(Object obj, Type mappedType, Class clazz){
         final Class mappedClazz = obj.getClass();
         if(obj instanceof Record){
             final Record record = (Record)obj;
@@ -1207,6 +1238,12 @@ public class MappedProperty extends SimpleProperty implements Serializable{
             }
         }
         if(obj instanceof Map){
+            if(clazz != null && mappedType != null && (mappedType instanceof ParameterizedType)){
+                Type argType = ((ParameterizedType)mappedType).getActualTypeArguments()[1];
+                if(argType instanceof Class && !isAssignableFrom((Class)argType, clazz)){
+                    return false;
+                }
+            }
             return true;
         }
         Method setMethod = null;
@@ -1232,7 +1269,7 @@ public class MappedProperty extends SimpleProperty implements Serializable{
                 final Class[] params = method.getParameterTypes();
                 if(params == null || params.length != 2
                      || !params[0].equals(String.class)
-                     ||(valueClass != null
+                     || (valueClass != null
                          && !isAssignableFrom(params[1], valueClass))
                 ){
                     continue;
@@ -1256,16 +1293,17 @@ public class MappedProperty extends SimpleProperty implements Serializable{
      * ここで言う、キー付きオブジェクトとは、{@link java.util.Map}、キー付きSetter（set(String, プロパティ値の型に適合する任意のクラス)）を持つオブジェクトのいずれかである。
      *
      * @param mappedClazz キー付きオブジェクトのクラス
+     * @param mappedType キー付きオブジェクトのジェネリクス型
      * @param clazz プロパティの型
      * @return 指定したキー付きオブジェクトに、このキープロパティが持つキーのプロパティ値を設定可能な場合true
      */
-    protected boolean isWritableMappedObjectProperty(Class mappedClazz, Class clazz){
+    protected boolean isWritableMappedObjectProperty(Class mappedClazz, Type mappedType, Class clazz){
         Method setMethod = null;
         if(mappedObjWriteMethodCache.containsKey(mappedClazz)){
             setMethod = (Method)mappedObjWriteMethodCache.get(mappedClazz);
             if(setMethod == null){
                 if(Map.class.isAssignableFrom(mappedClazz)){
-                    return true;
+                    return isWritableMappedObjectPropertyForMap(mappedType, clazz);
                 }
                 return false;
             }
@@ -1274,7 +1312,7 @@ public class MappedProperty extends SimpleProperty implements Serializable{
             if(methods == null || methods.length == 0){
                 mappedObjWriteMethodCache.put(mappedClazz, null);
                 if(Map.class.isAssignableFrom(mappedClazz)){
-                    return true;
+                    return isWritableMappedObjectPropertyForMap(mappedType, clazz);
                 }
                 return false;
             }
@@ -1302,11 +1340,23 @@ public class MappedProperty extends SimpleProperty implements Serializable{
             if(setMethod == null){
                 mappedObjWriteMethodCache.put(mappedClazz, null);
                 if(Map.class.isAssignableFrom(mappedClazz)){
-                    return true;
+                    return isWritableMappedObjectPropertyForMap(mappedType, clazz);
                 }
                 return false;
             }
             mappedObjWriteMethodCache.put(mappedClazz, setMethod);
+        }
+        return true;
+    }
+    
+    protected boolean isWritableMappedObjectPropertyForMap(Type mappedType, Class clazz){
+        if(mappedType != null && (mappedType instanceof ParameterizedType)){
+            Type argType = ((ParameterizedType)mappedType).getActualTypeArguments()[1];
+            if(argType instanceof Class){
+                if(!isAssignableFrom((Class)argType, clazz)){
+                    return false;
+                }
+            }
         }
         return true;
     }
@@ -1426,23 +1476,32 @@ public class MappedProperty extends SimpleProperty implements Serializable{
      * 指定したキー付きオブジェクトのクラスから、このマッププロパティが持つキーのプロパティ型を取得する。<p>
      * ここで言う、キー付きオブジェクトとは、{@link java.util.Map}、キー付きGetter（get(String)）を持つオブジェクトのいずれかである。
      *
-     * @param mappedClazz キー付きオブジェクトの型
+     * @param mappedType キー付きオブジェクトの型
+     * @param isGeneric trueの場合、総称型を返す
      * @return プロパティ型
      * @exception NoSuchPropertyException 指定されたキー付き戻り値が、キー付き戻り値でない場合
      */
-    protected Class getMappedObjectPropertyType(Class mappedClazz)
+    protected Type getMappedObjectPropertyType(Type mappedType, boolean isGeneric)
      throws NoSuchPropertyException{
-        return getMappedObjectPropertyType(mappedClazz, true);
+        return getMappedObjectPropertyType(mappedType, isGeneric, true);
     }
-    protected Class getMappedObjectPropertyType(Class mappedClazz, boolean isThrow)
+    protected Type getMappedObjectPropertyType(Type mappedType, boolean isGeneric, boolean isThrow)
      throws NoSuchPropertyException{
+        Class mappedClazz = null;
+        if(mappedType instanceof Class){
+            mappedClazz = (Class)mappedType;
+        }else if(mappedType instanceof ParameterizedType){
+            mappedClazz = (Class)((ParameterizedType)mappedType).getRawType();
+        }else{
+            return isGeneric ? mappedType : Object.class;
+        }
         try{
             Method getMethod = null;
-            if(mappedObjReadMethodCache.containsKey(mappedClazz)){
-                getMethod = (Method)mappedObjReadMethodCache.get(mappedClazz);
+            if(mappedObjReadMethodCache.containsKey(mappedType)){
+                getMethod = (Method)mappedObjReadMethodCache.get(mappedType);
                 if(getMethod == null){
                     if(Map.class.isAssignableFrom(mappedClazz)){
-                        return Object.class;
+                        return getMappedObjectPropertyTypeForMap(mappedClazz, mappedType, isGeneric);
                     }
                     if(isThrow){
                         throw new NoSuchPropertyException(mappedClazz, getPropertyName());
@@ -1456,9 +1515,9 @@ public class MappedProperty extends SimpleProperty implements Serializable{
                     GET_METHOD_ARGS
                 );
                 if(!Modifier.isPublic(getMethod.getModifiers())){
-                    mappedObjReadMethodCache.put(mappedClazz, null);
+                    mappedObjReadMethodCache.put(mappedType, null);
                     if(Map.class.isAssignableFrom(mappedClazz)){
-                        return Object.class;
+                        return getMappedObjectPropertyTypeForMap(mappedClazz, mappedType, isGeneric);
                     }
                     if(isThrow){
                         throw new NoSuchPropertyException(mappedClazz, getPropertyName());
@@ -1466,17 +1525,17 @@ public class MappedProperty extends SimpleProperty implements Serializable{
                         return null;
                     }
                 }else{
-                    mappedObjReadMethodCache.put(mappedClazz, getMethod);
+                    mappedObjReadMethodCache.put(mappedType, getMethod);
                 }
             }
-            return getMethod.getReturnType();
+            return isGeneric ? getMethod.getGenericReturnType() : getMethod.getReturnType();
         }catch(NoSuchMethodException e){
             Method setMethod = null;
-            if(mappedObjWriteMethodCache.containsKey(mappedClazz)){
-                setMethod = (Method)mappedObjWriteMethodCache.get(mappedClazz);
+            if(mappedObjWriteMethodCache.containsKey(mappedType)){
+                setMethod = (Method)mappedObjWriteMethodCache.get(mappedType);
                 if(setMethod == null){
                     if(Map.class.isAssignableFrom(mappedClazz)){
-                        return Object.class;
+                        return getMappedObjectPropertyTypeForMap(mappedClazz, mappedType, isGeneric);
                     }
                     if(isThrow){
                         throw new NoSuchPropertyException(mappedClazz, getPropertyName());
@@ -1487,9 +1546,9 @@ public class MappedProperty extends SimpleProperty implements Serializable{
             }else{
                 final Method[] methods = mappedClazz.getMethods();
                 if(methods == null || methods.length == 0){
-                    mappedObjWriteMethodCache.put(mappedClazz, null);
+                    mappedObjWriteMethodCache.put(mappedType, null);
                     if(Map.class.isAssignableFrom(mappedClazz)){
-                        return Object.class;
+                        return getMappedObjectPropertyTypeForMap(mappedClazz, mappedType, isGeneric);
                     }
                     if(isThrow){
                         throw new NoSuchPropertyException(mappedClazz, getPropertyName());
@@ -1514,9 +1573,9 @@ public class MappedProperty extends SimpleProperty implements Serializable{
                         setMethod = method;
                     }else{
                         // 確定できないのでエラー
-                        mappedObjWriteMethodCache.put(mappedClazz, null);
+                        mappedObjWriteMethodCache.put(mappedType, null);
                         if(Map.class.isAssignableFrom(mappedClazz)){
-                            return Object.class;
+                            return getMappedObjectPropertyTypeForMap(mappedClazz, mappedType, isGeneric);
                         }
                         if(isThrow){
                             throw new NoSuchPropertyException(
@@ -1529,9 +1588,9 @@ public class MappedProperty extends SimpleProperty implements Serializable{
                     }
                 }
                 if(setMethod == null){
-                    mappedObjWriteMethodCache.put(mappedClazz, null);
+                    mappedObjWriteMethodCache.put(mappedType, null);
                     if(Map.class.isAssignableFrom(mappedClazz)){
-                        return Object.class;
+                        return getMappedObjectPropertyTypeForMap(mappedClazz, mappedType, isGeneric);
                     }
                     if(isThrow){
                         throw new NoSuchPropertyException(mappedClazz, property + '(' + key + ')');
@@ -1539,9 +1598,26 @@ public class MappedProperty extends SimpleProperty implements Serializable{
                         return null;
                     }
                 }
-                mappedObjWriteMethodCache.put(mappedClazz, setMethod);
+                mappedObjWriteMethodCache.put(mappedType, setMethod);
             }
-            return setMethod.getParameterTypes()[1];
+            return isGeneric ? setMethod.getGenericParameterTypes()[1] : setMethod.getParameterTypes()[1];
+        }
+    }
+    
+    private Type getMappedObjectPropertyTypeForMap(Class mappedClazz, Type mappedType, boolean isGeneric){
+        if(mappedType instanceof ParameterizedType){
+            Type valueType = ((ParameterizedType)mappedType).getActualTypeArguments()[1];
+            if(isGeneric){
+                return valueType;
+            }else if(valueType instanceof Class){
+                return valueType;
+            }else if(valueType instanceof ParameterizedType){
+                return ((ParameterizedType)valueType).getRawType();
+            }else{
+                return Object.class;
+            }
+        }else{
+            return Object.class;
         }
     }
     

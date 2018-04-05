@@ -1201,7 +1201,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
             }
             buf.append(OBJECT_ENCLOSURE_END);
             instanceSet.remove(value);
-        }else if(String.class.isAssignableFrom(type)){
+        }else if(String.class.isAssignableFrom(type) || Enum.class.isAssignableFrom(type)){
             buf.append(STRING_ENCLOSURE);
             buf.append(escape(value.toString()));
             buf.append(STRING_ENCLOSURE);
@@ -1559,7 +1559,9 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
                     new StringBuilder(),
                     ((jsonObj instanceof DataSet) && isWrappedDataSet) ? ((DataSet)jsonObj).getHeader() : jsonObj,
                     null,
-                    jsonObj instanceof DataSet ? (DataSet)jsonObj : null
+                    jsonObj instanceof DataSet ? (DataSet)jsonObj : null,
+                    null,
+                    null
                 );
                 break;
             case '[':
@@ -1593,11 +1595,13 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
         StringBuilder buf,
         Object jsonObj,
         MappedProperty mappedProp,
-        DataSet dataSet
+        DataSet dataSet,
+        Class nameType,
+        Class fieldType
     ) throws ConvertException, IOException{
         int c = 0;
         do{
-            c = readJSONProperty(reader, buf, jsonObj, mappedProp, dataSet);
+            c = readJSONProperty(reader, buf, jsonObj, mappedProp, dataSet, nameType, fieldType);
             if(c == -1){
                 throw new ConvertException("It reached EOF on the way.");
             }
@@ -1615,6 +1619,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
     ) throws ConvertException, IOException{
         buf.setLength(0);
         int c = 0;
+        int index = 0;
         do{
             c = skipWhitespace(reader);
             Object value = null;
@@ -1646,20 +1651,25 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
                 }
                 break;
             case '{':
-                if(array instanceof RecordList){
-                    value = ((RecordList)array).createRecord();
-                }else if(componentType == null){
-                    value = new HashMap();
-                }else{
-                    try{
-                        value = componentType.newInstance();
-                    }catch(InstantiationException e){
-                        throw new ConvertException(e);
-                    }catch(IllegalAccessException e){
-                        throw new ConvertException(e);
+                if(array.size() > index){
+                    value = array.get(index);
+                }
+                if(value == null){
+                    if(array instanceof RecordList){
+                        value = ((RecordList)array).createRecord();
+                    }else if(componentType == null){
+                        value = new HashMap();
+                    }else{
+                        try{
+                            value = componentType.newInstance();
+                        }catch(InstantiationException e){
+                            throw new ConvertException(e);
+                        }catch(IllegalAccessException e){
+                            throw new ConvertException(e);
+                        }
                     }
                 }
-                c = readJSONObject(reader, buf, value, null, dataSet);
+                c = readJSONObject(reader, buf, value, null, dataSet, null, null);
                 if(c == -1){
                     throw new ConvertException("It reached EOF on the way.");
                 }else if(c != '}'){
@@ -1725,14 +1735,19 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
                     continue;
                 }
             }
-            array.add(value);
+            if(array.size() <= index){
+                array.add(value);
+            }else{
+                array.set(index, value);
+            }
+            index++;
             buf.setLength(0);
         }while(c == ',');
         
         return c;
     }
     
-    private int readJSONProperty(Reader reader, StringBuilder buf, Object jsonObj, MappedProperty mappedProp, DataSet dataSet)
+    private int readJSONProperty(Reader reader, StringBuilder buf, Object jsonObj, MappedProperty mappedProp, DataSet dataSet, Class nameType, Class fieldType)
      throws ConvertException, IOException{
         buf.setLength(0);
         int c = skipWhitespace(reader);
@@ -1772,6 +1787,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
         }
         c = skipWhitespace(reader);
         Class propType = null;
+        Type propGenericsType = null;
         boolean isUnknownProperty = false;
         
         Object value = null;
@@ -1876,6 +1892,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
                 Property property = mappedProp != null ? mappedProp : propertyAccess.getProperty(name);
                 try{
                     propType = property.getPropertyType(jsonObj);
+                    propGenericsType = property.getPropertyGenericType(jsonObj);
                     if(property.isReadable(jsonObj)){
                         objectValue = property.getProperty(jsonObj);
                     }
@@ -1900,7 +1917,25 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
                 }catch(InvocationTargetException e){
                     throw new ConvertException(e);
                 }
+            }else if(fieldType != null){
+                if(!fieldType.isInterface() && !Modifier.isAbstract(fieldType.getModifiers())){
+                    try{
+                        objectValue = fieldType.newInstance();
+                        value = objectValue;
+                    }catch(InstantiationException e){
+                        throw new ConvertException(e);
+                    }catch(IllegalAccessException e){
+                        throw new ConvertException(e);
+                    }
+                }else if(!Map.class.isAssignableFrom(fieldType)){
+                    if(!isIgnoreUnknownProperty){
+                        throw new ConvertException("Unknown property : " + name);
+                    }
+                    isUnknownProperty = true;
+                }
             }
+            Class mapKeyType = null;
+            Class mapValueType = null;
             if(propType != null){
                 if(objectValue == null){
                     if(!propType.isInterface() && !Modifier.isAbstract(propType.getModifiers())){
@@ -1918,6 +1953,13 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
                         }
                         isUnknownProperty = true;
                     }
+                    if(Map.class.isAssignableFrom(propType)
+                        && propGenericsType != null
+                        && propGenericsType instanceof ParameterizedType
+                    ){
+                        mapKeyType = (Class)((ParameterizedType)propGenericsType).getActualTypeArguments()[0];
+                        mapValueType = (Class)((ParameterizedType)propGenericsType).getActualTypeArguments()[1];
+                    }
                 }else{
                     value = objectValue;
                 }
@@ -1926,7 +1968,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
                 objectValue = new HashMap();
                 value = objectValue;
             }
-            c = readJSONObject(reader, buf, objectValue, mappedProperty, dataSet);
+            c = readJSONObject(reader, buf, objectValue, mappedProperty, dataSet, mapKeyType, mapValueType);
             if(c == -1){
                 throw new ConvertException("It reached EOF on the way.");
             }else if(c != '}'){
@@ -1982,6 +2024,20 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
                 Property property = mappedProp != null ? mappedProp : propertyAccess.getProperty(name);
                 try{
                     propType = property.getPropertyType(jsonObj);
+                    propGenericsType = property.getPropertyGenericType(jsonObj);
+                    Object propValue = property.isReadable(jsonObj) ? property.getProperty(jsonObj) : null;
+                    if(propValue != null){
+                        if(propValue instanceof List){
+                            arrayValue = propValue;
+                            value = propValue;
+                        }else if(propValue.getClass().isArray() && Array.getLength(propValue) != 0){
+                            arrayValue = new ArrayList();
+                            value = arrayValue;
+                            for(int i = 0, imax = Array.getLength(propValue); i < imax; i++){
+                                ((List)arrayValue).add(Array.get(propValue, i));
+                            }
+                        }
+                    }
                 }catch(NoSuchPropertyException e){
                     if(!isIgnoreUnknownProperty){
                         throw new ConvertException(e);
@@ -2009,6 +2065,9 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
                         }catch(IllegalAccessException e){
                             throw new ConvertException(e);
                         }
+                    }
+                    if(propGenericsType != null && propGenericsType instanceof ParameterizedType){
+                        componentType = (Class)((ParameterizedType)propGenericsType).getActualTypeArguments()[0];
                     }
                 }
             }
@@ -2140,7 +2199,31 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
                 }
                 rec.setParseProperty(name, value);
             }else if(jsonObj instanceof Map){
-                ((Map)jsonObj).put(name, value);
+                if(nameType != null && !String.class.isAssignableFrom(nameType)){
+                    if(Byte.class.isAssignableFrom(nameType)){
+                        ((Map<Byte,Object>)jsonObj).put(Byte.valueOf(name), value);
+                    }else if(Short.class.isAssignableFrom(nameType)){
+                        ((Map<Short,Object>)jsonObj).put(Short.valueOf(name), value);
+                    }else if(Integer.class.isAssignableFrom(nameType)){
+                        ((Map<Integer,Object>)jsonObj).put(Integer.valueOf(name), value);
+                    }else if(Long.class.isAssignableFrom(nameType)){
+                        ((Map<Long,Object>)jsonObj).put(Long.valueOf(name), value);
+                    }else if(Float.class.isAssignableFrom(nameType)){
+                        ((Map<Float,Object>)jsonObj).put(Float.valueOf(name), value);
+                    }else if(Double.class.isAssignableFrom(nameType)){
+                        ((Map<Double,Object>)jsonObj).put(Double.valueOf(name), value);
+                    }else if(Character.class.isAssignableFrom(nameType)){
+                        ((Map<Character,Object>)jsonObj).put(name.length() == 0 ? null : Character.valueOf(name.charAt(0)), value);
+                    }else if(BigInteger.class.isAssignableFrom(nameType)){
+                        ((Map<BigInteger,Object>)jsonObj).put(new BigInteger(name), value);
+                    }else if(BigDecimal.class.isAssignableFrom(nameType)){
+                        ((Map<BigDecimal,Object>)jsonObj).put(new BigDecimal(name), value);
+                    }else{
+                        throw new ConvertException("Unsupported key type : " + nameType);
+                    }
+                }else{
+                    ((Map<String,Object>)jsonObj).put(name, value);
+                }
             }else if(!isUnknownProperty){
                 try{
                     propertyAccess.set(jsonObj, name, value);

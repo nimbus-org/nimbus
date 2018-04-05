@@ -180,10 +180,6 @@ public class OrProperty implements Property, java.io.Serializable{
         );
     }
     
-    public Class getPropertyType(Class clazz) throws NoSuchPropertyException{
-        return firstProperty.getPropertyType(clazz);
-    }
-    
     public Class getPropertyType(Object obj)
      throws NoSuchPropertyException, InvocationTargetException{
         Object firstObj = null;
@@ -195,6 +191,27 @@ public class OrProperty implements Property, java.io.Serializable{
         }else{
             return secondProperty.getPropertyType(obj);
         }
+    }
+    
+    public Class getPropertyType(Class clazz) throws NoSuchPropertyException{
+        return firstProperty.getPropertyType(clazz);
+    }
+    
+    public Type getPropertyGenericType(Object obj)
+     throws NoSuchPropertyException, InvocationTargetException{
+        Object firstObj = null;
+        try{
+            firstObj = firstProperty.getProperty(obj);
+        }catch(NoSuchPropertyException e){}
+        if(firstObj != null){
+            return firstProperty.getPropertyGenericType(obj);
+        }else{
+            return secondProperty.getPropertyGenericType(obj);
+        }
+    }
+    
+    public Type getPropertyGenericType(Class clazz) throws NoSuchPropertyException{
+        return firstProperty.getPropertyGenericType(clazz);
     }
     
     public boolean isReadable(Class clazz){
