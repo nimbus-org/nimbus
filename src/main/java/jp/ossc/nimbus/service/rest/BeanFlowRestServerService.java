@@ -40,6 +40,8 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.net.MalformedURLException;
@@ -946,26 +948,82 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                             }
                         }
                     }
+                    Type propGenericType = null;
                     try{
-                        String[] params = (String[])entry.getValue();
-                        for(int i = 0; i < params.length; i++){
-                            collection.add(params[i]);
-                        }
-                        prop.setProperty(requestObj, propType, collection);
+                        propGenericType = prop.getPropertyGenericType(requestObj);
                     }catch(NoSuchPropertyException e){
-                        getLogger().write("BFRS_00013", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
+                        getLogger().write("BFRS_00012", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
                         if(journal != null){
                             journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
                         }
                         response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
                         return false;
                     }catch(InvocationTargetException e){
-                        getLogger().write("BFRS_00013", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
+                        getLogger().write("BFRS_00012", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
                         if(journal != null){
                             journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
                         }
                         response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
                         return false;
+                    }
+                    if(propGenericType instanceof ParameterizedType){
+                        Type[] elementTypes = ((ParameterizedType)propGenericType).getActualTypeArguments();
+                        if(elementTypes.length == 0 || !(elementTypes[0] instanceof Class)){
+                            getLogger().write("BFRS_00016", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName(), propGenericType});
+                            response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                            return false;
+                        }
+                        Class elementType = (Class)elementTypes[0];
+                        try{
+                            PropertyEditor editor = NimbusPropertyEditorManager.findEditor(elementType);
+                            if(editor == null){
+                                getLogger().write("BFRS_00017", new Object[]{resource.resourcePath.path, entry.getKey(), elementType.getName()});
+                                response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                                return false;
+                            }
+                            String[] params = (String[])entry.getValue();
+                            for(int i = 0; i < params.length; i++){
+                                editor.setAsText(params[i]);
+                                collection.add(editor.getValue());
+                            }
+                            prop.setProperty(requestObj, propType, collection);
+                        }catch(NoSuchPropertyException e){
+                            getLogger().write("BFRS_00013", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
+                            if(journal != null){
+                                journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
+                            }
+                            response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                            return false;
+                        }catch(InvocationTargetException e){
+                            getLogger().write("BFRS_00013", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
+                            if(journal != null){
+                                journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
+                            }
+                            response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                            return false;
+                        }
+                    }else{
+                        try{
+                            String[] params = (String[])entry.getValue();
+                            for(int i = 0; i < params.length; i++){
+                                collection.add(params[i]);
+                            }
+                            prop.setProperty(requestObj, propType, collection);
+                        }catch(NoSuchPropertyException e){
+                            getLogger().write("BFRS_00013", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
+                            if(journal != null){
+                                journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
+                            }
+                            response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                            return false;
+                        }catch(InvocationTargetException e){
+                            getLogger().write("BFRS_00013", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
+                            if(journal != null){
+                                journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
+                            }
+                            response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                            return false;
+                        }
                     }
                 }else if(propType.isArray()){
                     Class componentType = propType.getComponentType();

@@ -31,9 +31,9 @@
  */
 package jp.ossc.nimbus.beans;
 
-import java.beans.*;
 import java.util.*;
 import java.io.*;
+import java.lang.reflect.Type;
 
 /**
  * {@link SortedMap}型のPropertyEditorクラス。<p>
@@ -61,7 +61,7 @@ import java.io.*;
  *
  * @author M.Takata
  */
-public class SortedMapEditor extends PropertyEditorSupport
+public class SortedMapEditor extends ParameterizedTypePropertyEditorSupport
  implements java.io.Serializable{
     
     private static final long serialVersionUID = 8836793249214444575L;
@@ -133,19 +133,28 @@ public class SortedMapEditor extends PropertyEditorSupport
                 if(val.indexOf(ESCAPE_DOUBLE_QUOTE) != -1){
                     val = val.replaceAll(ESCAPE_DOUBLE_QUOTE_REGEX, DOUBLE_QUOTE);
                 }
-                Object old = treeMap.get(key);
+                Object keyObj = key;
+                Object valObj = val;
+                if(parameterizedType != null){
+                    Type[] types = parameterizedType.getActualTypeArguments();
+                    if(types != null && types.length == 2){
+                        keyObj = getValue(types[0], key);
+                        valObj = getValue(types[1], val);
+                    }
+                }
+                Object old = treeMap.get(keyObj);
                 if(old != null){
                     List list = null;
                     if(old instanceof String){
                         list = new ArrayList();
                         list.add(old);
-                        treeMap.put(key, list);
+                        treeMap.put(keyObj, list);
                     }else{
                         list = (List)old;
                     }
-                    list.add(val);
+                    list.add(valObj);
                 }else{
-                    treeMap.put(key, val);
+                    treeMap.put(keyObj, valObj);
                 }
             }
         }catch(IOException e){
@@ -177,14 +186,26 @@ public class SortedMapEditor extends PropertyEditorSupport
         final PrintWriter writer = new PrintWriter(sw);
         final Iterator keys = treeMap.keySet().iterator();
         while(keys.hasNext()){
-            final Object key = keys.next();
+            Object key = keys.next();
             Object val = treeMap.get(key);
+            Type valueType = null;
+            if(parameterizedType != null){
+                Type[] types = parameterizedType.getActualTypeArguments();
+                if(types != null && types.length == 2){
+                    key = getAsText(types[0], key);
+                    valueType = types[1];
+                }
+            }
             if(val instanceof List){
                 List vals = (List)val;
                 for(int i = 0, imax = vals.size(); i < imax; i++){
                     writer.print(key);
                     writer.print('=');
-                    writer.print((String)vals.get(i));
+                    val = vals.get(i);
+                    if(valueType != null){
+                        val = getAsText(valueType, val);
+                    }
+                    writer.print(val);
                     if(i != imax - 1){
                         writer.println();
                     }
@@ -192,6 +213,9 @@ public class SortedMapEditor extends PropertyEditorSupport
             }else{
                 writer.print(key);
                 writer.print('=');
+                if(valueType != null){
+                    val = getAsText(valueType, val);
+                }
                 writer.print(val);
             }
             if(keys.hasNext()){
