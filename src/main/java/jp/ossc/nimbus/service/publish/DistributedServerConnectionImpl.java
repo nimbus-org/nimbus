@@ -68,6 +68,10 @@ public class DistributedServerConnectionImpl implements ServerConnection{
     private synchronized ServerConnection selectConnection(Message message){
         ServerConnectionImpl connection = (ServerConnectionImpl)connctionMap.get(message.getKey());
         if(connection == null){
+            for(int i = 0; i < connectionList.size(); i++){
+                ((ServerConnectionImpl)connectionList.get(i)).prepareSort();
+            }
+            
             Collections.sort(connectionList);
             connection = (ServerConnectionImpl)connectionList.get(0);
             connection.addKey(message.getKey());
@@ -165,6 +169,7 @@ public class DistributedServerConnectionImpl implements ServerConnection{
         private int count;
         private Set keySet = Collections.synchronizedSet(new HashSet());
         private ServerConnection connection;
+        private int countForSort;
         
         public ServerConnectionImpl(ServerConnection connection){
             this.connection = connection;
@@ -224,11 +229,15 @@ public class DistributedServerConnectionImpl implements ServerConnection{
             connection.reset();
         }
         
+        public void prepareSort(){
+            countForSort = count;
+        }
+        
         public int compareTo(Object o){
             ServerConnectionImpl cmp = (ServerConnectionImpl)o;
-            if(cmp.count > count){
+            if(cmp.countForSort > countForSort){
                 return -1;
-            }else if(cmp.count < count){
+            }else if(cmp.countForSort < countForSort){
                 return 1;
             }
             if(cmp.keySet.size() > keySet.size()){
