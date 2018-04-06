@@ -500,27 +500,27 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
             if(packetReceiveDaemon == null){
                 packetReceiveDaemon = new Daemon(new PacketReceiver());
                 packetReceiveDaemon.setDaemon(true);
-                packetReceiveDaemon.setName("Nimbus Publish(UDP) ClientConnection PacketReceiver " + receiveSocket.getLocalSocketAddress());
+                packetReceiveDaemon.setName("Nimbus Publish(UDP) ClientConnection PacketReceiver " + socket.getLocalSocketAddress());
                 packetReceiveDaemon.start();
             }
             
             if(replyReceiveDaemon == null){
                 replyReceiveDaemon = new Daemon(new ReplyReceiver());
                 replyReceiveDaemon.setDaemon(true);
-                replyReceiveDaemon.setName("Nimbus Publish(UDP) ClientConnection ReplyReceiver " + receiveSocket.getLocalSocketAddress());
+                replyReceiveDaemon.setName("Nimbus Publish(UDP) ClientConnection ReplyReceiver " + socket.getLocalSocketAddress());
                 replyReceiveDaemon.start();
             }
             
             if(messageReceiveDaemon == null){
                 messageReceiveDaemon = new Daemon(new MessageReceiver());
                 messageReceiveDaemon.setDaemon(true);
-                messageReceiveDaemon.setName("Nimbus Publish(UDP) ClientConnection MessageReceiver " + receiveSocket.getLocalSocketAddress());
+                messageReceiveDaemon.setName("Nimbus Publish(UDP) ClientConnection MessageReceiver " + socket.getLocalSocketAddress());
             }
             
             if(missingWindowCheckDaemon == null){
                 missingWindowCheckDaemon = new Daemon(new MissingWindowChecker((MessageReceiver)messageReceiveDaemon.getDaemonRunnable()));
                 missingWindowCheckDaemon.setDaemon(true);
-                missingWindowCheckDaemon.setName("Nimbus Publish(UDP) ClientConnection MissingWindowChecker " + receiveSocket.getLocalSocketAddress());
+                missingWindowCheckDaemon.setName("Nimbus Publish(UDP) ClientConnection MissingWindowChecker " + socket.getLocalSocketAddress());
                 ((MessageReceiver)messageReceiveDaemon.getDaemonRunnable()).setPacketReceiver((PacketReceiver)packetReceiveDaemon.getDaemonRunnable());
                 ((MessageReceiver)messageReceiveDaemon.getDaemonRunnable()).setMissingWindowChecker((MissingWindowChecker)missingWindowCheckDaemon.getDaemonRunnable());
             }
@@ -542,7 +542,7 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
                 if(manager != null){
                     final ClientConnectionService ccs = new ClientConnectionService();
                     try{
-                        String name = serverServiceName.getServiceName() + '$' + receiveSocket.getLocalSocketAddress();
+                        String name = serverServiceName.getServiceName() + '$' + socket.getLocalSocketAddress();
                         name = name.replaceAll(":", "\\$");
                         if(!manager.isRegisteredService(name) && manager.registerService(name, ccs)){
                             serviceName = ccs.getServiceNameObject();
