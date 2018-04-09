@@ -33,6 +33,7 @@ package jp.ossc.nimbus.service.test.bug;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
@@ -243,93 +244,93 @@ public class IpaBugRecord extends BugRecord {
     public static final String PHASE_TO_BE_DETECTED = "phaseToBeDetected";
     
     // タイトル
-    protected BugAttribute<String> title;
+    protected StringBugAttribute title;
     // プロジェクト名
-    protected BugAttribute<String> projectName;
+    protected StringBugAttribute projectName;
     // 重要度
-    protected BugAttribute<String> severity;
+    protected SelectableStringBugAttribute severity;
     // 優先度
-    protected BugAttribute<String> priority;
+    protected SelectableStringBugAttribute priority;
     // ステータス
-    protected BugAttribute<String> status;
+    protected SelectableStringBugAttribute status;
     // 同件ID
-    protected BugAttribute<String> duplicateId;
+    protected StringBugAttribute duplicateId;
     
     // 起票者
-    protected BugAttribute<String> openedBy;
+    protected StringBugAttribute openedBy;
     // バグ発見者
-    protected BugAttribute<String> observedBy;
+    protected StringBugAttribute observedBy;
     // 発見日時
-    protected BugAttribute<Date> observedDate;
+    protected DateBugAttribute observedDate;
     // 調査担当者
-    protected BugAttribute<String> analyzedBy;
+    protected StringBugAttribute analyzedBy;
     // 調査完了日
-    protected BugAttribute<Date> analyzedDate;
+    protected DateBugAttribute analyzedDate;
     // 処置方針決定日
-    protected BugAttribute<Date> determinedDate;
+    protected DateBugAttribute determinedDate;
     // 処置担当者
-    protected BugAttribute<String> resolvedBy;
+    protected StringBugAttribute resolvedBy;
     // 処置期限日
-    protected BugAttribute<Date> dueDate;
+    protected DateBugAttribute dueDate;
     // 処置完了日
-    protected BugAttribute<Date> resolvedDate;
+    protected DateBugAttribute resolvedDate;
     // 処置承認者
-    protected BugAttribute<String> approvedBy;
+    protected StringBugAttribute approvedBy;
     // 検証担当者
-    protected BugAttribute<String> verifiedBy;
+    protected StringBugAttribute verifiedBy;
     // 検証完了日
-    protected BugAttribute<Date> verifiedDate;
+    protected DateBugAttribute verifiedDate;
     // リリース日
-    protected BugAttribute<Date> releasedDate;
+    protected DateBugAttribute releasedDate;
     
     // 発生した機能/サブシステム
-    protected BugAttribute<String> component;
+    protected StringBugAttribute component;
     // 発生したバージョン
-    protected BugAttribute<String> detectedVersion;
+    protected StringBugAttribute detectedVersion;
     // 発生した環境
-    protected BugAttribute<String> environment;
+    protected StringBugAttribute environment;
     // 発生した頻度
-    protected BugAttribute<String> frequency;
+    protected StringBugAttribute frequency;
     // 発生した工程
-    protected BugAttribute<String> detectionPhase;
+    protected SelectableStringBugAttribute detectionPhase;
     // 発見手段
-    protected BugAttribute<String> detectionActivity;
+    protected SelectableStringBugAttribute detectionActivity;
     // 影響
-    protected BugAttribute<String> effect;
+    protected SelectableStringBugAttribute effect;
     
     // 発生原因
-    protected BugAttribute<String> cause;
+    protected StringBugAttribute cause;
     // 原因箇所
-    protected BugAttribute<String> defectFoundIn;
+    protected StringBugAttribute defectFoundIn;
     // 修正見積もり
-    protected BugAttribute<Float> estimatedEffort;
+    protected FloatBugAttribute estimatedEffort;
     
     // 解決方法/処置内容
-    protected BugAttribute<String> resolution;
+    protected StringBugAttribute resolution;
     // 解決方法/処置内容
-    protected BugAttribute<String> dispositionType;
+    protected SelectableStringBugAttribute dispositionType;
     // 修正対象
-    protected BugAttribute<String> changesMadeTo;
+    protected StringBugAttribute changesMadeTo;
     // 修正済バージョン
-    protected BugAttribute<String> correctedVersion;
+    protected StringBugAttribute correctedVersion;
     
     // バグ区分
-    protected BugAttribute<String> defectType;
+    protected SelectableStringBugAttribute defectType;
     // 作り込み工程
-    protected BugAttribute<String> insertionPhase;
+    protected SelectableStringBugAttribute insertionPhase;
     
     // 調査工数
-    protected BugAttribute<Float> investigationEffort;
+    protected FloatBugAttribute investigationEffort;
     // 処置工数
-    protected BugAttribute<Float> dispositionEffort;
+    protected FloatBugAttribute dispositionEffort;
     // 発見すべき工程
-    protected BugAttribute<String> phaseToBeDetected;
+    protected SelectableStringBugAttribute phaseToBeDetected;
     
     protected Set attributeNameSet;
     protected boolean isEnableSet;
     
     /**
-     * 全項目を有効にしてレコードを作成する。
+     * 全項目を無効にしてレコードを作成する。
      */
     public IpaBugRecord() {
         this(null, true);
@@ -348,203 +349,207 @@ public class IpaBugRecord extends BugRecord {
         this.attributeNameSet = attributeNameSet; 
         this.isEnableSet = isEnableSet;
         
+        updateEnableAttributes();
+    }
+    
+    public void updateEnableAttributes() {
+        super.bugAttributeMap.clear();
         if(isEnableAttribute(TITLE)) {
             // タイトル
-            title = new BugAttribute<String>(TITLE);
+            title = new StringBugAttribute(TITLE);
             addBugAttribute(title);
         }
         if(isEnableAttribute(PROJECT_NAME)) {
             // プロジェクト名
-            projectName = new BugAttribute<String>(PROJECT_NAME);
+            projectName = new StringBugAttribute(PROJECT_NAME);
             addBugAttribute(projectName);
         }
         if(isEnableAttribute(SEVERITY)) {
             // 重要度
-            severity = new SelectableBugAttribute<String>(SEVERITY, SeverityArgs.getValues());
+            severity = new SelectableStringBugAttribute(SEVERITY, SeverityArgs.getValues());
             addBugAttribute(severity);
         }
         if(isEnableAttribute(PRIORITY)) {
             // 優先度
-            priority = new SelectableBugAttribute<String>(PRIORITY, PriorityArgs.getValues());
+            priority = new SelectableStringBugAttribute(PRIORITY, PriorityArgs.getValues());
             addBugAttribute(priority);
         }
         if(isEnableAttribute(STATUS)) {
             // ステータス
-            status = new SelectableBugAttribute<String>(STATUS, StatusArgs.getValues());
+            status = new SelectableStringBugAttribute(STATUS, StatusArgs.getValues());
             addBugAttribute(status);
         }
         
         if(isEnableAttribute(DUPLICATE_ID)) {
             // 同件ID
-            duplicateId = new BugAttribute<String>(DUPLICATE_ID);
+            duplicateId = new StringBugAttribute(DUPLICATE_ID);
             addBugAttribute(duplicateId);
         }
         if(isEnableAttribute(OPENED_BY)) {
             // 起票者
-            openedBy = new BugAttribute<String>(OPENED_BY);
+            openedBy = new StringBugAttribute(OPENED_BY);
             addBugAttribute(openedBy);
         }
         if(isEnableAttribute(OBSERVED_BY)) {
             // バグ発見者
-            observedBy = new BugAttribute<String>(OBSERVED_BY);
+            observedBy = new StringBugAttribute(OBSERVED_BY);
             addBugAttribute(observedBy);
         }
         if(isEnableAttribute(OBSERVED_DATE)) {
             // 発見日時
-            observedDate = new BugAttribute<Date>(OBSERVED_DATE);
+            observedDate = new DateBugAttribute(OBSERVED_DATE);
             addBugAttribute(observedDate);
         }
         if(isEnableAttribute(ANALYZED_BY)) {
             // 調査担当者
-            analyzedBy = new BugAttribute<String>(ANALYZED_BY);
+            analyzedBy = new StringBugAttribute(ANALYZED_BY);
             addBugAttribute(analyzedBy);
         }
         if(isEnableAttribute(ANALYZED_DATE)) {
             // 調査完了日
-            analyzedDate = new BugAttribute<Date>(ANALYZED_DATE);
+            analyzedDate = new DateBugAttribute(ANALYZED_DATE);
             addBugAttribute(analyzedDate);
         }
         if(isEnableAttribute(DETERMINED_DATE)) {
             // 処置方針決定日
-            determinedDate = new BugAttribute<Date>(DETERMINED_DATE);
+            determinedDate = new DateBugAttribute(DETERMINED_DATE);
             addBugAttribute(determinedDate);
         }
         if(isEnableAttribute(RESOLVED_BY)) {
             // 処置担当者
-            resolvedBy = new BugAttribute<String>(RESOLVED_BY);
+            resolvedBy = new StringBugAttribute(RESOLVED_BY);
             addBugAttribute(resolvedBy);
         }
         if(isEnableAttribute(DUE_DATE)) {
             // 処置期限日
-            dueDate = new BugAttribute<Date>(DUE_DATE);
+            dueDate = new DateBugAttribute(DUE_DATE);
             addBugAttribute(dueDate);
         }
         if(isEnableAttribute(RESOLVED_DATE)) {
             // 処置完了日
-            resolvedDate = new BugAttribute<Date>(RESOLVED_DATE);
+            resolvedDate = new DateBugAttribute(RESOLVED_DATE);
             addBugAttribute(resolvedDate);
         }
         if(isEnableAttribute(APPROVED_BY)) {
             // 処置承認者
-            approvedBy = new BugAttribute<String>(APPROVED_BY);
+            approvedBy = new StringBugAttribute(APPROVED_BY);
             addBugAttribute(approvedBy);
         }
         if(isEnableAttribute(VERIFIED_BY)) {
             // 検証担当者
-            verifiedBy = new BugAttribute<String>(VERIFIED_BY);
+            verifiedBy = new StringBugAttribute(VERIFIED_BY);
             addBugAttribute(verifiedBy);
         }
         if(isEnableAttribute(VERIFIED_DATE)) {
             // 検証完了日
-            verifiedDate = new BugAttribute<Date>(VERIFIED_DATE);
+            verifiedDate = new DateBugAttribute(VERIFIED_DATE);
             addBugAttribute(verifiedDate);
         }
         if(isEnableAttribute(RELEASED_DATE)) {
             // リリース日
-            releasedDate = new BugAttribute<Date>(RELEASED_DATE);
+            releasedDate = new DateBugAttribute(RELEASED_DATE);
             addBugAttribute(releasedDate);
         }
         
         if(isEnableAttribute(COMPONENT)) {
             // 発生した機能/サブシステム
-            component = new BugAttribute<String>(COMPONENT);
+            component = new StringBugAttribute(COMPONENT);
             addBugAttribute(component);
         }
         if(isEnableAttribute(DETECTED_VERSION)) {
             // 発生したバージョン
-            detectedVersion = new BugAttribute<String>(DETECTED_VERSION);
+            detectedVersion = new StringBugAttribute(DETECTED_VERSION);
             addBugAttribute(detectedVersion);
         }
         if(isEnableAttribute(ENVIRONMENT)) {
             // 発生した環境
-            environment = new BugAttribute<String>(ENVIRONMENT);
+            environment = new StringBugAttribute(ENVIRONMENT);
             addBugAttribute(environment);
         }
         if(isEnableAttribute(FREQUENCY)) {
             // 発生頻度
-            frequency = new BugAttribute<String>(FREQUENCY);
+            frequency = new StringBugAttribute(FREQUENCY);
             addBugAttribute(frequency);
         }
         if(isEnableAttribute(DETECTION_PHASE)) {
             // 発生した工程
-            detectionPhase = new SelectableBugAttribute<String>(DETECTION_PHASE, DetectionPhaseArgs.getValues());
+            detectionPhase = new SelectableStringBugAttribute(DETECTION_PHASE, DetectionPhaseArgs.getValues());
             addBugAttribute(detectionPhase);
         }
         if(isEnableAttribute(DETECTION_ACTIVITY)) {
             // 発見手段
-            detectionActivity = new SelectableBugAttribute<String>(DETECTION_ACTIVITY, DetectionActivityArgs.getValues());
+            detectionActivity = new SelectableStringBugAttribute(DETECTION_ACTIVITY, DetectionActivityArgs.getValues());
             addBugAttribute(detectionActivity);
         }
         if(isEnableAttribute(EFFECT)) {
             // 影響
-            effect = new SelectableBugAttribute<String>(EFFECT, EffectArgs.getValues());
+            effect = new SelectableStringBugAttribute(EFFECT, EffectArgs.getValues());
             addBugAttribute(effect);
         }
         
         if(isEnableAttribute(CAUSE)) {
             // 発生原因
-            cause = new BugAttribute<String>(CAUSE);
+            cause = new StringBugAttribute(CAUSE);
             addBugAttribute(cause);
         }
         if(isEnableAttribute(DEFECT_FOUND_IN)) {
             // 原因箇所
-            defectFoundIn = new BugAttribute<String>(DEFECT_FOUND_IN);
+            defectFoundIn = new StringBugAttribute(DEFECT_FOUND_IN);
             addBugAttribute(defectFoundIn);
         }
         if(isEnableAttribute(ESTIMATED_EFFORT)) {
             // 修正見積もり
-            estimatedEffort = new BugAttribute<Float>(ESTIMATED_EFFORT);
+            estimatedEffort = new FloatBugAttribute(ESTIMATED_EFFORT);
             addBugAttribute(estimatedEffort);
         }
         
         if(isEnableAttribute(RESOLUTION)) {
             // 解決方法/処置内容
-            resolution = new BugAttribute<String>(RESOLUTION);
+            resolution = new StringBugAttribute(RESOLUTION);
             addBugAttribute(resolution);
         }
         if(isEnableAttribute(DISPOSITION_TYPE)) {
             // 処置区分
-            dispositionType = new SelectableBugAttribute<String>(DISPOSITION_TYPE, DispositionTypeArgs.getValues());
+            dispositionType = new SelectableStringBugAttribute(DISPOSITION_TYPE, DispositionTypeArgs.getValues());
             addBugAttribute(dispositionType);
         }
         if(isEnableAttribute(CHANGES_MADE_TO)) {
             // 修正対象
-            changesMadeTo = new BugAttribute<String>(CHANGES_MADE_TO);
+            changesMadeTo = new StringBugAttribute(CHANGES_MADE_TO);
             addBugAttribute(changesMadeTo);
         }
         if(isEnableAttribute(CORRECTED_VERSION)) {
             // 修正済バージョン
-            correctedVersion = new BugAttribute<String>(CORRECTED_VERSION);
+            correctedVersion = new StringBugAttribute(CORRECTED_VERSION);
             addBugAttribute(correctedVersion);
         }
         
         if(isEnableAttribute(DEFECT_TYPE)) {
             // バグ区分
-            defectType = new SelectableBugAttribute<String>(DEFECT_TYPE, DefectTypeArgs.getValues());
+            defectType = new SelectableStringBugAttribute(DEFECT_TYPE, DefectTypeArgs.getValues());
             addBugAttribute(defectType);
         }
         if(isEnableAttribute(INSERTION_PHASE)) {
             // 作り込み工程
-            insertionPhase = new SelectableBugAttribute<String>(INSERTION_PHASE, InsertionPhaseArgs.getValues());
+            insertionPhase = new SelectableStringBugAttribute(INSERTION_PHASE, InsertionPhaseArgs.getValues());
             addBugAttribute(insertionPhase);
         }
         
         if(isEnableAttribute(INVESTIGATION_EFFORT)) {
             // 調査工数
-            investigationEffort = new BugAttribute<Float>(INVESTIGATION_EFFORT);
+            investigationEffort = new FloatBugAttribute(INVESTIGATION_EFFORT);
             addBugAttribute(investigationEffort);
         }
         if(isEnableAttribute(DISPOSITION_EFFORT)) {
             // 処置工数
-            dispositionEffort = new BugAttribute<Float>(DISPOSITION_EFFORT);
+            dispositionEffort = new FloatBugAttribute(DISPOSITION_EFFORT);
             addBugAttribute(dispositionEffort);
         }
         if(isEnableAttribute(PHASE_TO_BE_DETECTED)) {
             // 発見すべき工程
-            phaseToBeDetected = new SelectableBugAttribute<String>(PHASE_TO_BE_DETECTED, PhaseToBeDetectedArgs.getValues());
+            phaseToBeDetected = new SelectableStringBugAttribute(PHASE_TO_BE_DETECTED, PhaseToBeDetectedArgs.getValues());
             addBugAttribute(phaseToBeDetected);
         }
-        
     }
     
     public Set getAttributeNameSet() {
@@ -553,6 +558,15 @@ public class IpaBugRecord extends BugRecord {
     
     public void setAttributeNameSet(Set set) {
         attributeNameSet = set;
+    }
+    
+    public void addAttributeName(String name) {
+        if(attributeNameSet == null) {
+            attributeNameSet = new HashSet();
+        }
+        if(!attributeNameSet.contains(name)) {
+            attributeNameSet.add(name);
+        }
     }
     
     public boolean isEnableSet() {
@@ -565,7 +579,7 @@ public class IpaBugRecord extends BugRecord {
 
     private boolean isEnableAttribute(String name) {
         if (attributeNameSet == null) {
-            return true;
+            return !isEnableSet;
         }
         return isEnableSet ? attributeNameSet.contains(name) : !attributeNameSet.contains(name);
     }

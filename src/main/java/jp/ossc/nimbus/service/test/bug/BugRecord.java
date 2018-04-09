@@ -110,7 +110,7 @@ public class BugRecord implements Cloneable {
     }
     
     public void setScenarioGroupId(String id) {
-        if(uniqueId == null) {
+        if (uniqueId == null) {
             uniqueId = new TestUniqueId();
         }
         uniqueId.setScenarioGroupId(id);
@@ -121,7 +121,7 @@ public class BugRecord implements Cloneable {
     }
     
     public void setScenarioId(String id) {
-        if(uniqueId == null) {
+        if (uniqueId == null) {
             uniqueId = new TestUniqueId();
         }
         uniqueId.setScenarioId(id);
@@ -132,7 +132,7 @@ public class BugRecord implements Cloneable {
     }
     
     public void setTestCaseId(String id) {
-        if(uniqueId == null) {
+        if (uniqueId == null) {
             uniqueId = new TestUniqueId();
         }
         uniqueId.setTestCaseId(id);
@@ -148,7 +148,7 @@ public class BugRecord implements Cloneable {
     
     public void setBugAttributes(BugAttribute<?>[] attributes) {
         bugAttributeMap.clear();
-        for(int i = 0; i < attributes.length; i++) {
+        for (int i = 0; i < attributes.length; i++) {
             addBugAttribute(attributes[i]);
         }
     }
@@ -157,18 +157,18 @@ public class BugRecord implements Cloneable {
         bugAttributeMap.put(attribute.getName(), attribute);
     }
     
-    public Object getValue(String name){
-        if(bugAttributeMap.containsKey(name)) {
+    public Object getValue(String name) {
+        if (bugAttributeMap.containsKey(name)) {
             BugAttribute<?> attribute = bugAttributeMap.get(name);
             return attribute.getValue();
         }
         return null;
     }
     
-    public <T> void setValue(String name, T value){
-        if(bugAttributeMap.containsKey(name)) {
-            BugAttribute<T> attribute = (BugAttribute<T>)bugAttributeMap.get(name);
-            attribute.setValue(value);;
+    public <T> void setValue(String name, T value) {
+        if (bugAttributeMap.containsKey(name)) {
+            BugAttribute<T> attribute = (BugAttribute<T>) bugAttributeMap.get(name);
+            attribute.setValue(value);
         }
     }
     
@@ -184,9 +184,9 @@ public class BugRecord implements Cloneable {
     public BugRecord cloneBugAttribute() {
         BugRecord clone = new BugRecord();
         Iterator itr = bugAttributeMap.entrySet().iterator();
-        while(itr.hasNext()) {
-            Entry entry = (Entry)itr.next();
-            BugAttribute<?> attribute = (BugAttribute<?>)entry.getValue();
+        while (itr.hasNext()) {
+            Entry entry = (Entry) itr.next();
+            BugAttribute<?> attribute = (BugAttribute<?>) entry.getValue();
             clone.addBugAttribute(attribute.clone());
         }
         return clone;
@@ -195,17 +195,18 @@ public class BugRecord implements Cloneable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{id=" + id + ", ");
-        if(uniqueId == null) {
+        if (uniqueId == null) {
             sb.append("scenarioGroupId=null, scenarioId=null, testCaseId=null, ");
         } else {
-            sb.append("scenarioGroupId=" + uniqueId.getScenarioGroupId() + ", scenarioId=" + uniqueId.getScenarioId() + ", testCaseId=" + uniqueId.getTestCaseId() + ", ");
+            sb.append("scenarioGroupId=" + uniqueId.getScenarioGroupId() + ", scenarioId=" + uniqueId.getScenarioId() + ", testCaseId="
+                    + uniqueId.getTestCaseId() + ", ");
         }
         sb.append("entryDate=" + entryDate + ", ");
         sb.append("updateDate=" + updateDate);
         Iterator itr = bugAttributeMap.entrySet().iterator();
-        while(itr.hasNext()) {
-            Entry entry = (Entry)itr.next();
-            sb.append(", " + entry.getKey() + "=" + ((BugAttribute<?>)entry.getValue()).getValue());
+        while (itr.hasNext()) {
+            Entry entry = (Entry) itr.next();
+            sb.append(", " + entry.getKey() + "=" + ((BugAttribute<?>) entry.getValue()).getValue());
         }
         sb.append("}");
         return sb.toString();
@@ -257,6 +258,123 @@ public class BugRecord implements Cloneable {
     }
     
     /**
+     * 不具合情報に設定する文字列項目を保持するためのクラス
+     * 
+     * @author m-ishida
+     */
+    public static class StringBugAttribute extends BugAttribute<String> {
+        public StringBugAttribute() {
+            super();
+        }
+        
+        public StringBugAttribute(String name) {
+            super(name);
+        }
+        
+        public StringBugAttribute(String name, String value) {
+            super(name, value);
+        }
+        
+        public void setName(String name) {
+            this.name = name;
+        }
+        
+        public String getName() {
+            return name;
+        }
+        
+        public void setValue(String value) {
+            super.setName(name);
+        }
+        
+        public String getValue() {
+            return super.getValue();
+        }
+        
+        public StringBugAttribute clone() {
+            return new StringBugAttribute(name, value);
+        }
+    }
+    
+    /**
+     * 不具合情報に設定する日付項目を保持するためのクラス
+     * 
+     * @author m-ishida
+     */
+    public static class DateBugAttribute extends BugAttribute<Date> {
+        public DateBugAttribute() {
+            super();
+        }
+        
+        public DateBugAttribute(String name) {
+            super(name);
+        }
+        
+        public DateBugAttribute(String name, Date value) {
+            super(name, value);
+        }
+        
+        public void setName(String name) {
+            this.name = name;
+        }
+        
+        public String getName() {
+            return name;
+        }
+        
+        public void setValue(String value) {
+            super.setName(name);
+        }
+        
+        public Date getValue() {
+            return super.getValue();
+        }
+        
+        public DateBugAttribute clone() {
+            return new DateBugAttribute(name, value);
+        }
+    }
+    
+    /**
+     * 不具合情報に設定する浮動小数項目を保持するためのクラス
+     * 
+     * @author m-ishida
+     */
+    public static class FloatBugAttribute extends BugAttribute<Float> {
+        public FloatBugAttribute() {
+            super();
+        }
+        
+        public FloatBugAttribute(String name) {
+            super(name);
+        }
+        
+        public FloatBugAttribute(String name, Float value) {
+            super(name, value);
+        }
+        
+        public void setName(String name) {
+            this.name = name;
+        }
+        
+        public String getName() {
+            return name;
+        }
+        
+        public void setValue(String value) {
+            super.setName(name);
+        }
+        
+        public Float getValue() {
+            return super.getValue();
+        }
+        
+        public FloatBugAttribute clone() {
+            return new FloatBugAttribute(name, value);
+        }
+    }
+    
+    /**
      * 選択値を持つ、不具合情報に設定する項目を保持するためのクラス
      * 
      * @author m-ishida
@@ -299,6 +417,45 @@ public class BugRecord implements Cloneable {
         
         public SelectableBugAttribute<T> clone() {
             return new SelectableBugAttribute<T>(name, selectableValues, value);
+        }
+    }
+    
+    /**
+     * 選択値を持つ、不具合情報に設定する文字列項目を保持するためのクラス
+     * 
+     * @author m-ishida
+     */
+    public static class SelectableStringBugAttribute extends SelectableBugAttribute<String> {
+        public SelectableStringBugAttribute() {
+            super();
+        }
+        
+        public SelectableStringBugAttribute(String name, String[] selectableValues) {
+            super(name, selectableValues);
+        }
+        
+        public SelectableStringBugAttribute(String name, String[] selectableValues, String value) {
+            super(name, selectableValues, value);
+        }
+        
+        public void setSelectableValues(String[] values) {
+            super.setSelectableValues(values);
+        }
+        
+        public String[] getSelectableValues() {
+            return super.getSelectableValues();
+        }
+        
+        public void setValue(String value) {
+            super.setValue(value);
+        }
+        
+        public String getValue() {
+            return super.getValue();
+        }
+        
+        public SelectableStringBugAttribute clone() {
+            return new SelectableStringBugAttribute(name, selectableValues, value);
         }
     }
 }

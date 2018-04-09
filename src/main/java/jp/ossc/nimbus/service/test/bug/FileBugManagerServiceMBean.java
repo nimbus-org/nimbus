@@ -35,8 +35,6 @@ import java.io.File;
 
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
-import jp.ossc.nimbus.service.connection.ConnectionFactory;
-import jp.ossc.nimbus.service.connection.PersistentManager;
 import jp.ossc.nimbus.service.sequence.Sequence;
 import jp.ossc.nimbus.service.test.bug.BugRecord.BugAttribute;
 import jp.ossc.nimbus.util.converter.BeanJSONConverter;

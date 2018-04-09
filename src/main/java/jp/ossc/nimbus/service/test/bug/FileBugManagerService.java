@@ -54,6 +54,8 @@ import jp.ossc.nimbus.util.converter.DateFormatConverter;
  */
 public class FileBugManagerService extends ServiceBase implements BugManager, FileBugManagerServiceMBean {
     
+    private static final long serialVersionUID = 7364223428456107621L;
+    
     protected ServiceName sequenceServiceName;
     protected Sequence sequence;
     
@@ -135,6 +137,10 @@ public class FileBugManagerService extends ServiceBase implements BugManager, Fi
             DateFormatConverter dfc = new DateFormatConverter();
             dfc.setFormat("yyyy/MM/dd HH:mm:ss.SSS");
             converter.setFormatConverter(java.util.Date.class, dfc);
+            DateFormatConverter dfc2 = new DateFormatConverter();
+            dfc2.setFormat("yyyy/MM/dd HH:mm:ss.SSS");
+            dfc2.setConvertType(DateFormatConverter.STRING_TO_DATE);
+            converter.setParseConverter(java.util.Date.class, dfc2);
         }
         if (sequenceServiceName != null) {
             sequence = (Sequence) ServiceManagerFactory.getServiceObject(sequenceServiceName);
