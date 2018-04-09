@@ -55,7 +55,7 @@ public class TcpNetProxyControlActionService extends ServiceBase implements Test
 
     protected ServiceName tcpNetProxyServiceName;
     protected TcpNetProxy proxy;
-    protected double expectedCost = 0d;
+    protected double expectedCost = Double.NaN;
 
     public ServiceName getTcpNetProxyServiceName() {
         return tcpNetProxyServiceName;

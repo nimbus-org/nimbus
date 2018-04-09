@@ -67,7 +67,7 @@ public class CSVCompareEvaluateActionService extends ServiceBase implements Eval
     protected String fileAfterEditExtention = DEFAULT_AFTER_EDIT_FILE_EXTENTION;
     protected CSVReader csvReader;
     protected CSVWriter csvWriter;
-    protected double expectedCost = 0d;
+    protected double expectedCost = Double.NaN;
     protected boolean isResultNGOnNotFoundDestFile;
     
     public void setFileEncoding(String encoding){

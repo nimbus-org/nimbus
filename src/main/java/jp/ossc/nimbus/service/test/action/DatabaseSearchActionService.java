@@ -58,7 +58,7 @@ public class DatabaseSearchActionService extends ServiceBase implements TestActi
     protected ConnectionFactory connectionFactory;
     protected ServiceName persistentManagerServiceName;
     protected PersistentManager persistentManager;
-    protected double expectedCost = 0d;
+    protected double expectedCost = Double.NaN;
     
     public void setConnectionFactoryServiceName(ServiceName name){
         connectionFactoryServiceName = name;

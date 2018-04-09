@@ -121,7 +121,7 @@ public class ScheduledTestResourceImpl extends TestResourceBaseImpl implements S
             return expectedCost;
         }
         Iterator itr = actionExpectedCostMap.values().iterator();
-        double result = 0;
+        double result = Double.NaN;
         while (itr.hasNext()) {
             double val = ((Double) itr.next()).doubleValue();
             if (!Double.isNaN(val)) {

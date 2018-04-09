@@ -246,16 +246,20 @@ public class TestScenarioImpl implements TestScenario, Serializable {
             if(super.getActionExpectedCostMap().isEmpty() && testCaseExpectedCostSet.isEmpty()){
                 return super.getExpectedCost();
             }
-            double result = 0;
+            double result = Double.NaN;
             if(!super.getActionExpectedCostMap().isEmpty()){
-                result += super.getExpectedCost();
+                result = super.getExpectedCost();
             }
             if(!testCaseExpectedCostSet.isEmpty()){
                 Iterator itr = testCaseExpectedCostSet.iterator();
                 while (itr.hasNext()) {
                     double val = ((Double) itr.next()).doubleValue();
                     if (!Double.isNaN(val)) {
-                        result += val;
+                        if(Double.isNaN(result)){
+                            result = val;
+                        } else {
+                            result += val;
+                        }
                     }
                 }
             }
@@ -266,16 +270,20 @@ public class TestScenarioImpl implements TestScenario, Serializable {
             if(super.getActionCostMap().isEmpty() && testCaseCostSet.isEmpty()){
                 return super.getCost();
             }
-            double result = 0;
+            double result = Double.NaN;
             if(!super.getActionCostMap().isEmpty()){
-                result += super.getCost();
+                result = super.getCost();
             }
             if(!testCaseCostSet.isEmpty()){
                 Iterator itr = testCaseCostSet.iterator();
                 while (itr.hasNext()) {
                     double val = ((Double) itr.next()).doubleValue();
                     if (!Double.isNaN(val)) {
-                        result += val;
+                        if(Double.isNaN(result)){
+                            result = val;
+                        } else {
+                            result += val;
+                        }
                     }
                 }
             }

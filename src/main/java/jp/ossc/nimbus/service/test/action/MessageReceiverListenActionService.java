@@ -60,7 +60,7 @@ public class MessageReceiverListenActionService extends ServiceBase implements T
     private static final long serialVersionUID = -165396344130216716L;
     protected ServiceName messageReceiverServiceName;
     protected MessageReceiver messageReceiver;
-    protected double expectedCost = 0d;
+    protected double expectedCost = Double.NaN;
     
     public void setMessageReceiverServiceName(ServiceName name){
         messageReceiverServiceName = name;

@@ -50,7 +50,7 @@ import jp.ossc.nimbus.service.test.TestContext;
  */
 public class PropertySetActionService extends ServiceBase implements TestAction, TestActionEstimation, PropertySetActionServiceMBean{
     
-    protected double expectedCost = 0d;
+    protected double expectedCost = Double.NaN;
     
     /**
      * リソースの内容を読み込んで、オブジェクトにプロパティ値を設定する。<p>

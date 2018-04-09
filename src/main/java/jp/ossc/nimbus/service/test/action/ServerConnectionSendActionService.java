@@ -60,7 +60,7 @@ import jp.ossc.nimbus.service.interpreter.Interpreter;
 public class ServerConnectionSendActionService extends ServiceBase implements TestAction, ChainTestAction.TestActionProcess, TestActionEstimation, ServerConnectionSendActionServiceMBean{
     
     private static final long serialVersionUID = -5342444233381889876L;
-    protected double expectedCost = 0d;
+    protected double expectedCost = Double.NaN;
     
     protected ServiceName serverConnectionFactoryServiceName;
     protected ServerConnectionFactory serverConnectionFactory;

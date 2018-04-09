@@ -56,7 +56,7 @@ import jp.ossc.nimbus.service.test.TestActionEstimation;
 public class FileOperateActionService extends ServiceBase implements TestAction,TestActionEstimation, FileOperateActionServiceMBean{
     
     private static final long serialVersionUID = -7746000195947141887L;
-    protected double expectedCost = 0d;
+    protected double expectedCost = Double.NaN;
 
     /**
      * リソースの内容を読み込んで、ファイル操作を行う。<p>

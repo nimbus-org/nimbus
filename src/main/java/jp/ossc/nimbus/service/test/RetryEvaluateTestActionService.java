@@ -205,15 +205,22 @@ public class RetryEvaluateTestActionService extends ServiceBase implements Retry
     
     public double getExpectedCost(){
         if(actionList == null || actionList.size() == 0){
-            return 0d;
+            return Double.NaN;
         }
-        double result = 0d;
+        double result = Double.NaN;
         for(int i = 0; i < actionList.size(); i++){
             Object action = actionList.get(i);
             if(!(action instanceof TestActionEstimation)){
                 continue;
             }
-            result += ((TestActionEstimation)action).getExpectedCost();
+            double d = ((TestActionEstimation)action).getExpectedCost();
+            if(!Double.isNaN(d)){
+                if(Double.isNaN(result)){
+                   result = ((TestActionEstimation)action).getExpectedCost();
+                } else {
+                    result += ((TestActionEstimation)action).getExpectedCost();
+                }
+            }
         }
         return result;
     }

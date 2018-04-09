@@ -66,7 +66,7 @@ public class TextEvaluateActionService extends ServiceBase implements EvaluateTe
     protected String fileEncoding;
     protected int[] matchFlags;
     protected int matchFlag;
-    protected double expectedCost = 0d;
+    protected double expectedCost = Double.NaN;
     
     public void setFileEncoding(String encoding){
         fileEncoding = encoding;

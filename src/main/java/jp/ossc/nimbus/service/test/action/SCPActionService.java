@@ -56,7 +56,7 @@ import jp.ossc.nimbus.service.test.TestContext;
 public class SCPActionService extends ServiceBase implements TestAction, TestActionEstimation, SCPActionServiceMBean {
 
     private static final long serialVersionUID = -6285352199755488985L;
-    protected double expectedCost = 0d;
+    protected double expectedCost = Double.NaN;
 
     protected ServiceName scpClientFactoryServiceName;
     protected SCPClientFactory scpClientFactory;

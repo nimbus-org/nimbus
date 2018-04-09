@@ -73,7 +73,7 @@ public class HttpRequestActionService extends ServiceBase implements TestAction,
     protected HttpClientFactory httpClientFactory;
     protected ServiceName interpreterServiceName;
     protected Interpreter interpreter;
-    protected double expectedCost = 0d;
+    protected double expectedCost = Double.NaN;
     
     public void setHttpClientFactoryServiceName(ServiceName name){
         httpClientFactoryServiceName = name;

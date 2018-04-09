@@ -60,7 +60,7 @@ import jp.ossc.nimbus.service.test.TestContext;
 public class JMSMessageReceiverGetActionService extends ServiceBase implements TestAction, TestActionEstimation, JMSMessageReceiverGetActionServiceMBean{
 
     private static final long serialVersionUID = 6779163909892607718L;
-    protected double expectedCost = 0d;
+    protected double expectedCost = Double.NaN;
 
     /* デフォルトを外から設定できる */
     protected String defaultGetType = "message";

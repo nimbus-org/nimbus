@@ -50,7 +50,7 @@ import jp.ossc.nimbus.service.test.TestContext;
 public class MessageReceiverGetActionService extends ServiceBase implements TestAction, TestActionEstimation, MessageReceiverGetActionServiceMBean{
     
     private static final long serialVersionUID = 6779163909892607718L;
-    protected double expectedCost = 0d;
+    protected double expectedCost = Double.NaN;
     
     /**
      * リソースの内容を読み込んで、{@link MessageReceiverListenActionService.MessageListener}が受信した{@link jp.ossc.nimbus.service.publish.Message Message}を取得する。<p>
