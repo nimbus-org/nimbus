@@ -72,7 +72,7 @@ public class JMSMessageReceiverListenActionService extends ServiceBase implement
     protected MessageConsumer consumer;
     protected Session session;
 
-    protected double expectedCost = 0d;
+    protected double expectedCost = Double.NaN;
 
     public void setJMSMessageConsumerFactoryServiceName(ServiceName name) {
         jMSMessageConsumerFactoryServiceName = name;

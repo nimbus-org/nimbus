@@ -76,7 +76,7 @@ public class CodeMasterNotifyActionService extends ServiceBase implements TestAc
     protected ServiceName interpreterServiceName;
     protected Interpreter interpreter;
     
-    protected double expectedCost = 0d;
+    protected double expectedCost = Double.NaN;
     
     public void setJndiFinderServiceName(ServiceName name){
         jndiFinderServiceName = name;

@@ -55,7 +55,7 @@ public class NetProxyControlActionService extends ServiceBase implements TestAct
 
     protected ServiceName netProxyServiceName;
     protected NetProxy proxy;
-    protected double expectedCost = 0d;
+    protected double expectedCost = Double.NaN;
 
     public ServiceName getNetProxyServiceName() {
         return netProxyServiceName;

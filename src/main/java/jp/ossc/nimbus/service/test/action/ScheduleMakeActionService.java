@@ -57,7 +57,7 @@ public class ScheduleMakeActionService extends ServiceBase implements TestAction
     
     protected ServiceName scheduleManagerServiceName;
     protected ScheduleManager scheduleManager;
-    protected double expectedCost = 0d;
+    protected double expectedCost = Double.NaN;
 
     public void setScheduleManagerServiceName(ServiceName name){
         scheduleManagerServiceName = name;

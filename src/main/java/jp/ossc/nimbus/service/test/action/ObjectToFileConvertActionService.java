@@ -58,7 +58,7 @@ import jp.ossc.nimbus.util.converter.FormatConverter;
 public class ObjectToFileConvertActionService extends ServiceBase implements TestAction, ChainTestAction.TestActionProcess, TestActionEstimation, ObjectToFileConvertActionServiceMBean{
     
     private static final long serialVersionUID = 3220754313008589978L;
-    protected double expectedCost = 0d;
+    protected double expectedCost = Double.NaN;
     
     protected String fileEncoding;
     protected ServiceName streamConverterServiceName;

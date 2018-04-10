@@ -64,7 +64,7 @@ public class TextCompareEvaluateActionService extends ServiceBase implements Eva
     protected int matchFlag;
     protected boolean isOutputFileAfterEdit;
     protected String fileAfterEditExtention = DEFAULT_AFTER_EDIT_FILE_EXTENTION;
-    protected double expectedCost = 0d;
+    protected double expectedCost = Double.NaN;
     protected boolean isResultNGOnNotFoundDestFile;
     
     public void setFileEncoding(String encoding){

@@ -70,7 +70,7 @@ public class ServiceCallActionService extends ServiceBase implements TestAction,
     protected ServiceName invokerServiceName;
     protected Invoker invoker;
     
-    protected double expectedCost = 0d;
+    protected double expectedCost = Double.NaN;
     
     public void setInterpreterServiceName(ServiceName name){
         interpreterServiceName = name;

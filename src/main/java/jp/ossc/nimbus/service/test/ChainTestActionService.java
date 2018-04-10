@@ -104,14 +104,21 @@ public class ChainTestActionService extends ServiceBase implements ChainTestActi
 
     public double getExpectedCost(){
         if(actions == null || actions.length == 0){
-            return 0d;
+            return Double.NaN;
         }
-        double result = 0d;
+        double result = Double.NaN;
         for(int i = 0; i < actions.length; i++){
             if(!(actions[i] instanceof TestActionEstimation)){
                 continue;
             }
-            result += ((TestActionEstimation)actions[i]).getExpectedCost();
+            double d = ((TestActionEstimation)actions[i]).getExpectedCost();
+            if(!Double.isNaN(d)){
+                if(Double.isNaN(result)){
+                   result = ((TestActionEstimation)actions[i]).getExpectedCost();
+                } else {
+                    result += ((TestActionEstimation)actions[i]).getExpectedCost();
+                }
+            }
         }
         return result;
     }

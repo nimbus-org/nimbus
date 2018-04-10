@@ -73,7 +73,7 @@ public class MBeanCallActionService extends ServiceBase implements TestAction, C
     protected static final int SETTER_PREFIX_LENGTH = 3;
     protected static final String GETTER_PREFIX = "get";
     protected static final int GETTER_PREFIX_LENGTH = 3;
-    protected double expectedCost = 0d;
+    protected double expectedCost = Double.NaN;
     
     protected ServiceName mbeanServerConnectionFactoryServiceName;
     protected MBeanServerConnectionFactory mbeanServerConnectionFactory;

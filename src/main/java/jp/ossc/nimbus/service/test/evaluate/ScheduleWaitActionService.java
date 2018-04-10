@@ -60,7 +60,7 @@ public class ScheduleWaitActionService extends ServiceBase implements EvaluateTe
     protected ServiceName scheduleManagerServiceName;
     protected ScheduleManager scheduleManager;
     protected long waitInterval = 1000;
-    protected double expectedCost = 0d;
+    protected double expectedCost = Double.NaN;
     
     public void setScheduleManagerServiceName(ServiceName name){
         scheduleManagerServiceName = name;

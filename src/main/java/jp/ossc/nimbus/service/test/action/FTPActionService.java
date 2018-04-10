@@ -55,7 +55,7 @@ import jp.ossc.nimbus.service.ftp.FTPClient;
 public class FTPActionService extends ServiceBase implements TestAction, TestActionEstimation, FTPActionServiceMBean{
     
     private static final long serialVersionUID = -782714823351233622L;
-    protected double expectedCost = 0d;
+    protected double expectedCost = Double.NaN;
     
     protected ServiceName ftpClientFactoryServiceName;
     protected FTPClientFactory ftpClientFactory;

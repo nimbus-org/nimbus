@@ -783,13 +783,35 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         TestScenario scenario = testController.getCurrentScenario();
         TestCase testcase = testController.getCurrentTestCase();
         StringBuilder sb = new StringBuilder();
-        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
         if(group != null){
             sb.append("ScenarioGroup=" + group.getScenarioGroupId());
             if(group.getStatus() != null){
                 sb.append("(" + group.getStatus().getUserId());
+                int state = group.getStatus().getState();
+                switch (state) {
+                    case Status.INITIAL:
+                        sb.append(" INITIAL");
+                        break;
+                    case Status.STARTED:
+                        sb.append(" STARTED");
+                        break;
+                    case Status.END:
+                        sb.append(" END");
+                        break;
+                    case Status.ERROR:
+                        sb.append(" ERROR");
+                        break;
+                    case Status.CANCELED:
+                        sb.append(" CANCELED");
+                        break;
+                    default:
+                }
                 if(group.getStatus().getStartTime() != null){
-                    sb.append(" " + sdf.format(group.getStatus().getStartTime()));
+                    sb.append(" " + sdf.format(group.getStatus().getStartTime()) + " - ");
+                }
+                if(group.getStatus().getEndTime() != null){
+                    sb.append(sdf.format(group.getStatus().getEndTime()));
                 }
                 sb.append(")");
             }
@@ -797,8 +819,30 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
                 sb.append(", Scenario=" + scenario.getScenarioId());
                 if(scenario.getStatus() != null){
                     sb.append("(" + scenario.getStatus().getUserId());
+                    int state = scenario.getStatus().getState();
+                    switch (state) {
+                        case Status.INITIAL:
+                            sb.append(" INITIAL");
+                            break;
+                        case Status.STARTED:
+                            sb.append(" STARTED");
+                            break;
+                        case Status.END:
+                            sb.append(" END");
+                            break;
+                        case Status.ERROR:
+                            sb.append(" ERROR");
+                            break;
+                        case Status.CANCELED:
+                            sb.append(" CANCELED");
+                            break;
+                        default:
+                    }
                     if(scenario.getStatus().getStartTime() != null){
-                        sb.append(" " + sdf.format(scenario.getStatus().getStartTime()));
+                        sb.append(" " + sdf.format(scenario.getStatus().getStartTime()) + " - ");
+                    }
+                    if(scenario.getStatus().getEndTime() != null){
+                        sb.append(sdf.format(scenario.getStatus().getEndTime()));
                     }
                     sb.append(")");
                 }
@@ -806,8 +850,30 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
                     sb.append(", Testcase=" + testcase.getTestCaseId());
                     if(testcase.getStatus() != null){
                         sb.append("(" + testcase.getStatus().getUserId());
+                        int state = testcase.getStatus().getState();
+                        switch (state) {
+                            case Status.INITIAL:
+                                sb.append(" INITIAL");
+                                break;
+                            case Status.STARTED:
+                                sb.append(" STARTED");
+                                break;
+                            case Status.END:
+                                sb.append(" END");
+                                break;
+                            case Status.ERROR:
+                                sb.append(" ERROR");
+                                break;
+                            case Status.CANCELED:
+                                sb.append(" CANCELED");
+                                break;
+                            default:
+                        }
                         if(testcase.getStatus().getStartTime() != null){
-                            sb.append(" " + sdf.format(testcase.getStatus().getStartTime()));
+                            sb.append(" " + sdf.format(testcase.getStatus().getStartTime()) + " - ");
+                        }
+                        if(testcase.getStatus().getEndTime() != null){
+                            sb.append(sdf.format(testcase.getStatus().getEndTime()));
                         }
                         sb.append(")");
                     }

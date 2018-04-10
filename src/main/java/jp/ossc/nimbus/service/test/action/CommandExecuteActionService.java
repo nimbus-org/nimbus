@@ -34,7 +34,7 @@ public class CommandExecuteActionService extends ServiceBase implements TestActi
     private static final long serialVersionUID = -5250176082027977563L;
     
     protected String[] environments;
-    protected double expectedCost = 0d;
+    protected double expectedCost = Double.NaN;
     protected long checkInterval = 1000l;
     
     public String[] getEnvironments() {

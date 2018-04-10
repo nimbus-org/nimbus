@@ -51,7 +51,7 @@ import jp.ossc.nimbus.service.test.TestContext;
 public class PropertyGetActionService extends ServiceBase implements TestAction, ChainTestAction.TestActionProcess, TestActionEstimation, PropertyGetActionServiceMBean{
     
     private static final long serialVersionUID = 7682175982096275432L;
-    protected double expectedCost = 0d;
+    protected double expectedCost = Double.NaN;
     
     /**
      * リソースの内容を読み込んで、オブジェクトのプロパティ値を取得する。<p>

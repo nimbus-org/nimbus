@@ -54,7 +54,7 @@ import jp.ossc.nimbus.service.test.TestContext;
 public class InterpreterActionService extends ServiceBase implements TestAction, ChainTestAction.TestActionProcess, TestActionEstimation, InterpreterActionServiceMBean{
     
     private static final long serialVersionUID = 6961467251188456361L;
-    protected double expectedCost = 0d;
+    protected double expectedCost = Double.NaN;
     
     protected ServiceName interpreterServiceName;
     protected Interpreter interpreter;

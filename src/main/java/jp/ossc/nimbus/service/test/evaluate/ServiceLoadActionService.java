@@ -48,7 +48,7 @@ import jp.ossc.nimbus.service.test.TestContext;
  */
 public class ServiceLoadActionService extends ServiceBase implements EvaluateTestAction, TestActionEstimation, ServiceLoadActionServiceMBean{
     
-    protected double expectedCost = 0d;
+    protected double expectedCost = Double.NaN;
     
     public void setExpectedCost(double cost) {
         expectedCost = cost;

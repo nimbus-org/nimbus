@@ -64,7 +64,7 @@ public class DatabaseUpdateActionService extends ServiceBase implements TestActi
     protected PersistentManager persistentManager;
     protected boolean isBatchExecute;
     protected int batchExecuteCount;
-    protected double expectedCost = 0d;
+    protected double expectedCost = Double.NaN;
 
     public void setConnectionFactoryServiceName(ServiceName name){
         connectionFactoryServiceName = name;
