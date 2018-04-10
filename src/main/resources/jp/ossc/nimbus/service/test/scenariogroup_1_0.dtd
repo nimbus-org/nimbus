@@ -140,6 +140,14 @@ finallyはエラー発生時でも最後に必ず実行されます。
 -->
 <!ATTLIST action cost CDATA #IMPLIED>
 
+<!-- retryInterval属性は、アクションの実行結果が不正な場合にスリープするインターバル(ミリ秒)を定義します。
+-->
+<!ATTLIST action retryInterval CDATA #IMPLIED>
+
+<!-- retryCount属性は、アクションの実行結果が不正な場合にアクションに戻る回数を定義します。
+-->
+<!ATTLIST action retryCount CDATA #IMPLIED>
+
 <!-- resources要素は、アクションを実行する際に使用するリソースの集合を定義します。
 -->
 <!ELEMENT resources (resource+)>
