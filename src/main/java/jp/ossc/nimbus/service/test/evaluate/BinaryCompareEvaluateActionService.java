@@ -130,10 +130,14 @@ public class BinaryCompareEvaluateActionService extends ServiceBase implements E
             int tmp_dst = 0;
             bis_src = new BufferedInputStream(new FileInputStream(srcFile));
             bis_dst = new BufferedInputStream(new FileInputStream(dstFile));
-            while ((tmp_src = bis_src.read()) != -1 || (tmp_dst = bis_dst.read()) != -1) {
-                if((tmp_src == -1 && tmp_dst != -1) || (tmp_src != -1 && tmp_dst == -1) || tmp_src != tmp_dst ) {
+            tmp_src = bis_src.read();
+            tmp_dst = bis_dst.read();
+            while (tmp_src != -1 || tmp_dst != -1) {
+                if(tmp_src != tmp_dst ) {
                     return false;
                 }
+                tmp_src = bis_src.read();
+                tmp_dst = bis_dst.read();
             }
         } finally {
             try {
