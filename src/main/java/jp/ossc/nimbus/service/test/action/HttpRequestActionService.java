@@ -53,6 +53,7 @@ import jp.ossc.nimbus.service.http.HttpClient;
 import jp.ossc.nimbus.service.http.HttpClientFactory;
 import jp.ossc.nimbus.service.http.HttpRequest;
 import jp.ossc.nimbus.service.http.HttpResponse;
+import jp.ossc.nimbus.service.http.RESTHttpRequest;
 import jp.ossc.nimbus.service.interpreter.Interpreter;
 import jp.ossc.nimbus.service.test.TestAction;
 import jp.ossc.nimbus.service.test.TestActionEstimation;
@@ -119,13 +120,16 @@ public class HttpRequestActionService extends ServiceBase implements TestAction,
      * 
      * headerName:headerValue
      * 
+     * urlKey=keyValue
+     * 
      * bodyType
      * body
      * </pre>
      * clientIdは、{@link HttpClient}オブジェクトを再利用する場合に指定するもので、同一テストケース中に、このTestActionより前に、このクラスのTestActionが存在する場合は、そのアクションIDを指定する。また、同一シナリオ中に、このTestActionより前に、このクラスのTestActionが存在する場合は、テストケースIDとアクションIDをカンマ区切りで指定する。再利用の必要がない場合は、空文字を指定する。<br>
      * actionNameは、{@link HttpClientFactory#createRequest(String)}の引数に指定するアクション名を指定する。<br>
-     * replaceValueIdは、リクエストヘッダ及びボディに対する置換を行う値をTestActionの結果から取得するために指定するもので、同一テストケース中のTestActionの結果を取得する場合は、そのアクションIDを指定する。また、同一シナリオ中の他のテストケースのTestActionの結果を取得する場合は、テストケースIDとアクションIDをカンマ区切りで指定する。それに続いて"-&gt;"を挟んで、置換対象の文字列をreplaceKeyとして指定する。この行は、複数指定が可能なため、終わりを示すために、空行を１行入れる。置換が不要な場合は、指定する必要はない。<br>
+     * replaceValueIdは、リクエストヘッダ及びボディ、URLキーに対する置換を行う値をTestActionの結果から取得するために指定するもので、同一テストケース中のTestActionの結果を取得する場合は、そのアクションIDを指定する。また、同一シナリオ中の他のテストケースのTestActionの結果を取得する場合は、テストケースIDとアクションIDをカンマ区切りで指定する。それに続いて"-&gt;"を挟んで、置換対象の文字列をreplaceKeyとして指定する。この行は、複数指定が可能なため、終わりを示すために、空行を１行入れる。置換が不要な場合は、指定する必要はない。<br>
      * headerNameは、HTTPヘッダ名を指定する。それに続いて":"を挟んで、ヘッダ値をheaderValueとして指定する。この行は、複数指定が可能なため、終わりを示すために、空行を１行入れる。ヘッダが不要な場合は、指定する必要はない。<br>
+     * urlKeyは、URLの一部を置換するキーを指定する。それに続いて"="を挟んで、置換する値をkeyValueとして指定する。この行は、複数指定が可能なため、終わりを示すために、空行を１行入れる。URL置換が不要な場合は、指定する必要はない。また、この機能を利用する場合は、{@link RESTHttpRequest}を使用する必要がある。<br>
      * bodyTypeは、"parameter"、"text"、"binary"、"object"、"multipart"のいずれかを指定する。HTTPボディが必要ない場合は、この行以下は必要ない。<br>
      * bodyは、bodyTypeによって、記述方法が異なる。<br>
      * <ul>
@@ -233,17 +237,32 @@ public class HttpRequestActionService extends ServiceBase implements TestAction,
                 }
                 replaceMap.put(line.substring(index + 2), replaceValue == null ? "" : replaceValue.toString());
             }
+            
             if(line != null && line.length() == 0){
                 line = br.readLine();
             }
-            String bodyType = null;
             do{
                 int index = line.indexOf(":");
+                if(index == -1){
+                    break;
+                }
+                request.setHeader(line.substring(0, index), replace(line.substring(index + 1), replaceMap));
+            }while((line = br.readLine()) != null && line.length() != 0);
+            
+            if(line != null && line.length() == 0){
+                line = br.readLine();
+            }
+            
+            String bodyType = null;
+            do{
+                int index = line.indexOf("=");
                 if(index == -1){
                     bodyType = line;
                     break;
                 }
-                request.setHeader(line.substring(0, index), replace(line.substring(index + 1), replaceMap));
+                if(request instanceof RESTHttpRequest){
+                    ((RESTHttpRequest)request).setKey(line.substring(0, index), replace(line.substring(index + 1), replaceMap));
+                }
             }while((line = br.readLine()) != null && line.length() != 0);
             
             if(line != null && bodyType == null){
