@@ -66,7 +66,6 @@ public class ServerConnectionSendActionService extends ServiceBase implements Te
     protected ServerConnectionFactory serverConnectionFactory;
     protected ServiceName interpreterServiceName;
     protected Interpreter interpreter;
-    protected String fileEncoding;
     
     public void setServerConnectionFactoryServiceName(ServiceName name){
         serverConnectionFactoryServiceName = name;
@@ -80,13 +79,6 @@ public class ServerConnectionSendActionService extends ServiceBase implements Te
     }
     public ServiceName getInterpreterServiceName(){
         return interpreterServiceName;
-    }
-    
-    public void setFileEncoding(String encoding){
-        fileEncoding = encoding;
-    }
-    public String getFileEncoding(){
-        return fileEncoding;
     }
     
     public void setServerConnectionFactory(ServerConnectionFactory factory){
