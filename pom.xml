@@ -504,6 +504,22 @@
                             <goal>run</goal>
                         </goals>
                     </execution>
+                    <execution>
+                        <id>rmiStubCopy</id>
+                        <phase>process-classes</phase>
+                        <configuration>
+                            <tasks>
+                                <copy todir="${basedir}/target/classes">
+                                    <fileset dir="${basedir}/target/rmi-classes">
+                                        <include name="**/*.class"/>
+                                    </fileset>
+                                </copy>
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
                 </executions>
             </plugin>
             <plugin>
@@ -604,6 +620,19 @@
                                 <include>**/*.def</include>
                             </includes>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>rmic-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <id>rmi compilation</id>
+                        <goals>
+                            <goal>rmic</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
