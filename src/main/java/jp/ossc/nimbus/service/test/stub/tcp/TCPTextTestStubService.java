@@ -42,6 +42,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -111,6 +112,7 @@ public class TCPTextTestStubService extends ServiceBase implements TestStub, Que
     private static final long serialVersionUID = 356502420591126756L;
 
     protected static final String NOT_FOUND = "NOT_FOUND";
+    protected static final String EXCEPTION_HANDLING = "Exception_handling";
 
     protected String id;
     protected ServiceName stubResourceManagerServiceName;
@@ -141,21 +143,75 @@ public class TCPTextTestStubService extends ServiceBase implements TestStub, Que
 
     protected String defaultResponseMessage = "";
 
-    protected String newLineCode;
+    protected String firstRequestMessage = "";
+
+    protected String errorResponseMessage = "ERROR";
+
+    protected String newLineCode = "\n";
 
     private Map<String, Pattern> patterns;
 
 
+
+    /**
+     * 処理中例外が発生した場合のResponseMessageを取得する。
+     * @return
+     */
+    public String getErrorResponseMessage() {
+        return errorResponseMessage;
+    }
+
+    /**
+     * 処理中例外が発生した場合のResponseMessageをセットする。
+     * デフォルトはERROR。
+     * @param errorResponseMessage
+     */
+    public void setErrorResponseMessage(String errorMessage) {
+        this.errorResponseMessage = errorMessage;
+    }
+
+    /**
+     * 改行コードを返す。
+     * @return 改行コード
+     */
     public String getNewLineCode() {
         return newLineCode;
     }
 
+    /**
+     * 改行コードをセットする。デフォルトは\n。
+     * @param newLineCode
+     */
     public void setNewLineCode(String newLineCode) {
         this.newLineCode = newLineCode;
     }
 
+    /**
+     * リソースファイルに記述されたRequestに対するResponseが見つからなかった場合に返すメッセージを取得。
+     * @return
+     */
     public String getNotFoundMessage() {
         return notFoundResponseMessage;
+    }
+
+
+    /**
+     * 最初のリクエストにInputStreamが設定されていない場合に、このスタブにリクエストとして認識させるメッセージを取得。
+     * @return
+     */
+    public String getFirstRequestMessage() {
+        return firstRequestMessage;
+    }
+
+    /**
+     * 最初のリクエストにInputStreamが設定されていない場合に、このスタブにリクエストとして認識させるメッセージをセットする。
+     * デフォルトは空行。
+     * SMTPのようにソケットをつないだ後、サーバが最初にレスポンスを返すようなプロトコルのテスト時に使用する。
+     * つまり、任意の文字列を指定しておき、それがリクエストの文字列として来た程でレスポンスさせるときに使用する。
+     * @return
+     */
+    public void setFirstRequestMessage(String firstRequestMessage) {
+        this.firstRequestMessage = firstRequestMessage;
     }
 
     /**
@@ -540,12 +596,11 @@ public class TCPTextTestStubService extends ServiceBase implements TestStub, Que
     }
 
 
-
-    protected File saveRequestFile(String requestMsg, File file) throws IOException {
-        final File requestFile = new File(file.getParentFile(), file.getName() + ".req");
+    protected File saveMessageFile(String requestMessage, File file, String suffix) throws IOException {
+        final File requestFile = new File(file.getParentFile(), file.getName() + suffix);
         PrintWriter pw = new PrintWriter(new OutputStreamWriter(new FileOutputStream(requestFile)));
         try {
-            pw.println(requestMsg);
+            pw.println(requestMessage);
             pw.flush();
         } finally {
             pw.close();
@@ -555,7 +610,30 @@ public class TCPTextTestStubService extends ServiceBase implements TestStub, Que
         return requestFile;
     }
 
+    private String toStringStackTrace(Throwable th) {
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        th.printStackTrace(pw);
+        pw.flush();
+        String str = sw.toString();
+
+        return str;
+    }
+
+    protected File saveErrorFile(String errorMessage) throws IOException {
+        File file = new File(new File(new File(new File(resourceDirectory, scenarioGroupId), scenarioId), testcaseId),
+                EXCEPTION_HANDLING );
+        return saveMessageFile(errorMessage, file, ".err");
+    }
+
+    protected File saveRequestFile(String requestMessage, File file) throws IOException {
+        return saveMessageFile(requestMessage, file, ".req");
+    }
+
     private String readInputStream(InputStream is) throws IOException {
+        if(is == null) {
+            return firstRequestMessage;
+        }
         StringBuilder sb = new StringBuilder();
         try{
             InputStreamReader reader = new InputStreamReader(is, Charset.forName(requestEncoding));
@@ -714,7 +792,7 @@ public class TCPTextTestStubService extends ServiceBase implements TestStub, Que
             patterns = new HashMap<String, Pattern>();
         }
         if(!patterns.containsKey(pattern)) {
-            patterns.put(pattern, Pattern.compile(pattern));
+            patterns.put(pattern, Pattern.compile(pattern, Pattern.DOTALL));// 改行を含む文字列がくるのでPattern.DOTALL
         }
 
         return patterns.get(pattern).matcher(str == null ? "" : str);
@@ -802,43 +880,49 @@ public class TCPTextTestStubService extends ServiceBase implements TestStub, Que
                         responseCacheMap.put(file, data);
                     }
                 }
-                OutputStreamWriter osw = null;
-                try {
-                    if (data.sleep > 0) {
-                        Thread.sleep(data.sleep);
-                    }
 
-                    String responseStr = data.responseMessage;
-                    if (interpreter != null && data.interpretScript != null) {
-                        Map variables = new HashMap();
-                        variables.put("request", request);
-                        variables.put("responseMessage", responseStr);
-                        responseStr = (String) interpreter.evaluate(data.interpretScript, variables);
-                    }
-                    if (responseStr != null) {
-                        String encoding = responseEncoding;
-                        osw = encoding == null ? new OutputStreamWriter(response.getOutputStream())
-                                : new OutputStreamWriter(response.getOutputStream(), encoding);
-                        String sendMessage = responseStr;
-
-                        if(newLineCode != null) {
-                            sendMessage += newLineCode;
-                        }
-
-                        osw.write(sendMessage, 0, sendMessage.length());
-                        osw.flush();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    if (osw != null) {
-                        osw.close();
-                    }
+                if (data.sleep > 0) {
+                    Thread.sleep(data.sleep);
                 }
+
+                String responseStr = data.responseMessage;
+                if (interpreter != null && data.interpretScript != null) {
+                    Map variables = new HashMap();
+                    variables.put("request", request);
+                    variables.put("responseMessage", responseStr);
+                    responseStr = (String) interpreter.evaluate(data.interpretScript, variables);
+                }
+                writeResponseMessage(response, responseStr);
+
                 return;
             }
         }
         responseNotFound(text, response, scenarioGroupId, scenarioId, testcaseId, evidenceMapByTestCase);
+    }
+
+    private void writeResponseMessage(Response response, String responseStr)
+            throws UnsupportedEncodingException, IOException {
+        OutputStreamWriter osw = null;
+
+        try{
+            if (responseStr != null) {
+                String encoding = responseEncoding;
+                osw = encoding == null ? new OutputStreamWriter(response.getOutputStream())
+                        : new OutputStreamWriter(response.getOutputStream(), encoding);
+                String sendMessage = responseStr;
+
+                if(newLineCode != null) {
+                    sendMessage += newLineCode;
+                }
+
+                osw.write(sendMessage, 0, sendMessage.length());
+                osw.flush();
+            }
+        } finally {
+            if(osw != null){
+                osw.close();
+            }
+        }
     }
 
     public boolean isAllowRepeatRequest() {
@@ -854,11 +938,17 @@ public class TCPTextTestStubService extends ServiceBase implements TestStub, Que
         this.isAllowRepeatRequest = isAllowRepeatRequest;
     }
 
+    /**
+     * 強制的にリトライはさせない
+     */
     public boolean handleError(Object obj, Throwable th) throws Throwable {
         // nop
         return false;
     }
 
+    /**
+     * 強制的にリトライはさせない
+     */
     public void handleRetryOver(Object obj, Throwable th) throws Throwable {
         // nop
     }
@@ -866,9 +956,26 @@ public class TCPTextTestStubService extends ServiceBase implements TestStub, Que
     /**
      * Queueにenqueueされた{@link RequestContext}が渡され、それを@{link {@link #doProcess(Request, Response)}に渡す
      * Queueからメインの処理へのエントリポイント
+     * @throws Exception
      */
-    public void handleDequeuedObject(Object obj) throws Throwable {
+    public void handleDequeuedObject(Object obj) throws Exception{
         RequestContext requestContext = (RequestContext)obj;
-        doProcess(requestContext.getRequest(), requestContext.getResponse());
+        StringBuilder sb = new StringBuilder();
+
+        try {
+            doProcess(requestContext.getRequest(), requestContext.getResponse());
+        } catch (Exception e) {
+            sb.append(EXCEPTION_HANDLING + ":" + errorResponseMessage).append(newLineCode);
+            sb.append(toStringStackTrace(e));
+            // エラーはクライアントに送信するが、それでも例外がでたら諦める
+            try {
+                writeResponseMessage(requestContext.getResponse(), errorResponseMessage);
+            } catch (Exception e1) {
+                sb.append(newLineCode).append(toStringStackTrace(e1));
+                throw e1;
+            }
+        } finally {
+            saveErrorFile(sb.toString());
+        }
     }
 }
