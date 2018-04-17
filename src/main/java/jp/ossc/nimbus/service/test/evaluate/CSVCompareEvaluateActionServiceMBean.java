@@ -61,6 +61,20 @@ public interface CSVCompareEvaluateActionServiceMBean extends ServiceBaseMBean{
     public String getFileEncoding();
     
     /**
+     * 正規表現のマッチフラグを設定する。<p>
+     *
+     * @param flags 正規表現のマッチフラグ
+     */
+    public void setMatchFlags(int[] flags);
+    
+    /**
+     * 正規表現のマッチフラグを取得する。<p>
+     *
+     * @return 正規表現のマッチフラグ
+     */
+    public int[] getMatchFlags();
+    
+    /**
      * 比較対象のみに編集を行った比較対象ファイルを出力するかどうかを判定する。<p>
      *
      * @return trueの場合、出力する
