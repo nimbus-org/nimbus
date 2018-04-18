@@ -551,9 +551,7 @@ public class BeanFlowController extends AbstractController{
 
             if(context.getOutput() == null){
                 if(ret != null){
-                    if(ret instanceof DataSet) {
-                        req.setAttribute(outputAttributeName, (DataSet)ret);
-                    }
+                    req.setAttribute(outputAttributeName, ret);
                 }
             }else{
                 req.setAttribute(outputAttributeName, context.getOutput());
