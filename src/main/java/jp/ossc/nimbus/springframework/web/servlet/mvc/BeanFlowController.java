@@ -1,9 +1,42 @@
+/*
+ * This software is distributed under following license based on modified BSD
+ * style license.
+ * ----------------------------------------------------------------------
+ *
+ * Copyright 2003 The Nimbus Project. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ *    this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE NIMBUS PROJECT ``AS IS'' AND ANY EXPRESS
+ * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN
+ * NO EVENT SHALL THE NIMBUS PROJECT OR CONTRIBUTORS BE LIABLE FOR ANY
+ * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+ * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * The views and conclusions contained in the software and documentation are
+ * those of the authors and should not be interpreted as representing official
+ * policies, either expressed or implied, of the Nimbus Project.
+ */
 package jp.ossc.nimbus.springframework.web.servlet.mvc;
 
-import javax.management.ServiceNotFoundException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
@@ -11,296 +44,541 @@ import jp.ossc.nimbus.beans.ServiceNameEditor;
 import jp.ossc.nimbus.beans.dataset.DataSet;
 import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.core.ServiceName;
-import jp.ossc.nimbus.service.aop.interceptor.servlet.StreamExchangeInterceptorServiceMBean;
+import jp.ossc.nimbus.core.ServiceNotFoundException;
 import jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory;
-import jp.ossc.nimbus.service.context.Context;
+import jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvoker;
+import jp.ossc.nimbus.service.aop.interceptor.servlet.StreamExchangeInterceptorServiceMBean;
+import jp.ossc.nimbus.service.journal.Journal;
+import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 import jp.ossc.nimbus.servlet.BeanFlowSelector;
+import jp.ossc.nimbus.servlet.BeanFlowServletContext;
+import jp.ossc.nimbus.servlet.DefaultBeanFlowSelectorService;
+import jp.ossc.nimbus.service.context.Context;
+import jp.ossc.nimbus.service.aop.interceptor.ThreadContextKey;
 
 /**
  * Spring mvcに使用するBeanFlow用のコントローラ。
  * {@link jp.ossc.nimbus.beans.dataset.DataSet}をDTOとした汎用コントローラ。
- * 使い方
- *   Restで使う場合
+ * {@link jp.ossc.nimbus.servlet.BeanFlowServlet}をもとに{@link org.springframework.web.servlet.mvc.AbstractController}に合うよう作成した。
+ * BeanFlowの実行結果が{@link org.springframework.web.servlet.ModelAndView}の場合は、Spring mvcのServletがJSPを返す。
+ * それ以外のクラスの場合は、Filterに設定されたnimbusのInterceptorにて処理できる。
+ * {@link jp.ossc.nimbus.servlet.BeanFlowServlet}と機能性は同じであるが、口がspring mvcに接続できるようにしてある。
+ * Requestに設定された入力はBeanFlowからは"Input"でアクセスできる。
+ * Springへのxml configuration：
+ *   ・ServiceNameをインジェクションするために、{@link jp.ossc.nimbus.beans.ServiceNameEditor}を{@link org.springframework.beans.factory.config.CustomEditorConfigurer}に登録する
+ *     &lt;bean class="org.springframework.beans.factory.config.CustomEditorConfigurer"&gt;
+ *       &lt;property name="customEditors"&gt;
+ *          &lt;map&gt;
+ *              &lt;entry key="jp.ossc.nimbus.core.ServiceName" value="jp.ossc.nimbus.beans.ServiceNameEditor"/&gt;
+ *          &lt;/map&gt;
+ *        &lt;/property&gt;
+ *      &lt;/bean&gt;
+ *   ・SpringのBeanに設定例(最小構成ではinit-methodにinitを指定、BeanFlowInvokerFactoryを設定)
+ *      &lt;bean name="beanflowController"
+ *      class="jp.ossc.nimbus.springframework.web.servlet.mvc.BeanFlowController"
+ *      init-method="init"&gt;
+ *       &lt;property name="beanFlowInvokerFactoryServiceName" value="WebServer.Servlet#BeanFlowInvokerFactory"/&gt;
+ *      &lt;/bean&gt;
+ * BeanFlowの実装方法：
+ *   BeanFlowからのアクセス例：
+ *     &lt;input-def name="input"&gt;Input&lt;/input-def&gt;
+ *   上りも下りもStream⇔{@link jp.ossc.nimbus.beans.dataset.DataSet}で使う場合
  *     ・処理の流れ:上りStream(Jsonなど)⇒{@link jp.ossc.nimbus.beans.dataset.DataSet}(Beanflowの入力)⇒{@link jp.ossc.nimbus.beans.dataset.DataSet}(Beanflowの出力)⇒Stream(Jsonなど)⇒下り
  *     ・Beanflowの開発:{@link jp.ossc.nimbus.beans.dataset.DataSet}を受け、{@link jp.ossc.nimbus.beans.dataset.DataSet}を返すBeanflowを実装
- *   JSPで使う場合
+ *   上り：Stream⇒{@link jp.ossc.nimbus.beans.dataset.DataSet}、下り：{@link jp.ossc.nimbus.beans.dataset.DataSet}⇒JSPで使う場合
  *     ・上りJson⇒DataSet(Beanflowの入力)⇒{@link org.springframework.web.servlet.ModelAndView}(Beanflowの出力)⇒JSP⇒下り
  *     ・Beanflowの開発:{@link jp.ossc.nimbus.beans.dataset.DataSet}を受け、{@link org.springframework.web.servlet.ModelAndView}を返すBeanflowを実装
- * @author nakashima
+ * @author Y.Nakashima
  *
  */
-public class DataSetStreamBeanFlowController extends AbstractController{
-    // AbstractControllerを実装するとspringに自前コントローラーをアノテーションなしで組み込める。
+public class BeanFlowController extends AbstractController{
 
-    // TODO:requestのチェックをここでできるようにするか？
-    //      AbstractController#checkRequestが動く。メソッドのチェックのみ実行される。
-    //      AbstractController#supportedMethods==nullなら素通りするだけ。
+    /**
+     * 検証BeanFlowの前置詞のデフォルト値。<p>
+     */
+    public static final String DEFAULT_VALIDATE_FLOW_PREFIX = "validate";
 
-    // TODO: DTOがPOJOの場合、コントローラーにPOJOクラスを宣言しなければならないので、共通のControllerにならない？
+    /**
+     * ジャーナル開始時のジャーナルキー。<p>
+     */
+    public static final String JOURNAL_KEY_PROCESS = "Process";
 
-//  private ServiceName beanflowInvokerFactoryServiceName=new ServiceName("WebServer.Servlet", "BeanFlowInvokerFactory");
-//  private BeanFlowInvokerFactory beanflowInvokerFactory = (BeanFlowInvokerFactory)ServiceManagerFactory
-//     .getServiceObject(beanflowInvokerFactoryServiceName);
-//
-//  private ServiceName threadContextServiceName=new ServiceName("WebServer.Log", "ThreadContext");
-//  private ThreadContextService threadContext = (ThreadContextService)ServiceManagerFactory
-//     .getServiceObject(threadContextServiceName);
+    /**
+     * フロー名のジャーナルキー。<p>
+     */
+    public static final String JOURNAL_KEY_FLOW_NAME = "FlowName";
 
-    private static final String MODE_JSP="MODE_JSP";
-    private static final String MODE_STREAM="MODE_STREAM";
+    /**
+     * 検証BeanFlowのジャーナル開始時のジャーナルキー。<p>
+     */
+    public static final String JOURNAL_KEY_VALIDATE = "Validate";
 
-    private String mode = null;
+    /**
+     * アクションBeanFlowのジャーナル開始時のジャーナルキー。<p>
+     */
+    public static final String JOURNAL_KEY_ACTION = "Action";
 
-    private ServiceNameEditor sne = new ServiceNameEditor();
+    /**
+     * 入力のジャーナルキー。<p>
+     */
+    public static final String JOURNAL_KEY_INPUT = "Input";
 
-    private String requestObjectAttributeName=
-            StreamExchangeInterceptorServiceMBean.DEFAULT_REQUEST_OBJECT_ATTRIBUTE_NAME;
-    private String reponseObjectContextKey=
-            StreamExchangeInterceptorServiceMBean.DEFAULT_RESPONSE_OBJECT_CONTEXT_KEY;
+    /**
+     * 出力のジャーナルキー。<p>
+     */
+    public static final String JOURNAL_KEY_OUTPUT = "Output";
 
-    private String beanflowInvokerFactoryServiceName;
-    private BeanFlowInvokerFactory beanflowInvokerFactory;
+    /**
+     * 例外発生時のジャーナルキー。<p>
+     */
+    public static final String JOURNAL_KEY_EXCEPTION = "Exception";
 
-    private String threadContextServiceName;
-    private Context threadContext;
+    /**
+     * {@link BeanFlowInvokerFactory}サービスのサービス名。<p>
+     */
+    protected ServiceName beanFlowInvokerFactoryServiceName;
 
-    private String beanFlowSelectorServiceName;
-    private BeanFlowSelector beanFlowSelector;
+    /**
+     * {@link BeanFlowSelector}サービスのサービス名。<p>
+     */
+    protected ServiceName beanFlowSelectorServiceName;
 
-    // サービス名からサービスを取得する共通処理
-    protected Object getServiceObject(String serviceName) throws ServiceNotFoundException {
-        if(serviceName == null) {
-            return null;
-        }
+    /**
+     * {@link Journal}サービスのサービス名。<p>
+     */
+    protected ServiceName journalServiceName;
 
-        sne.setAsText(serviceName);
-        ServiceName sn = (ServiceName) sne.getValue();
-        Object service = ServiceManagerFactory.getServiceObject(sn);
-        if(service == null) {
-            throw new ServiceNotFoundException(serviceName + "is not found.");
-        }
+    /**
+     * {@link EditorFinder}サービスのサービス名。<p>
+     */
+    protected ServiceName editorFinderServiceName;
 
-        return service;
+    /**
+     * 検証BeanFlowのジャーナル開始時の{@link EditorFinder}サービスのサービス名。<p>
+     */
+    protected ServiceName validateEditorFinderServiceName;
+
+    /**
+     * アクションBeanFlowのジャーナル開始時の{@link EditorFinder}サービスのサービス名。<p>
+     */
+    protected ServiceName actionEditorFinderServiceName;
+
+    /**
+     * {@link Context}サービスのサービス名。<p>
+     */
+    protected ServiceName contextServiceName;
+
+    /**
+     * デフォルト{@link BeanFlowSelector}。<p>
+     */
+    protected DefaultBeanFlowSelectorService defaultBeanFlowSelector;
+
+    /**
+     * 検証BeanFlow実行フラグ。<p>
+     * デフォルトは、falseで検証BeanFlowは呼び出さない。<br>
+     */
+    protected boolean isValidate = false;
+
+    /**
+     * 検証BeanFlowの前置詞。<p>
+     * デフォルトは、{@link #DEFAULT_VALIDATE_FLOW_PREFIX}。<br>
+     */
+    protected String validateFlowPrefix = DEFAULT_VALIDATE_FLOW_PREFIX;
+
+    /**
+     * 入力オブジェクトのリクエスト属性名。<p>
+     * デフォルトは、{@link StreamExchangeInterceptorServiceMBean#DEFAULT_REQUEST_OBJECT_ATTRIBUTE_NAME}。<br>
+     */
+    protected String inputAttributeName = StreamExchangeInterceptorServiceMBean.DEFAULT_REQUEST_OBJECT_ATTRIBUTE_NAME;
+
+    /**
+     * 出力オブジェクトのリクエスト属性名。<p>
+     * デフォルトは、{@link StreamExchangeInterceptorServiceMBean#DEFAULT_RESPONSE_OBJECT_ATTRIBUTE_NAME}。<br>
+     */
+    protected String outputAttributeName = StreamExchangeInterceptorServiceMBean.DEFAULT_RESPONSE_OBJECT_ATTRIBUTE_NAME;
+
+    public ServiceName getBeanFlowInvokerFactoryServiceName() {
+        return beanFlowInvokerFactoryServiceName;
     }
 
     /**
-     * 初期化
-     * サービス名からサービスを読み込む。必要なサービスが設定されているかチェックする。
-     * @throws Exception beanflowInvokerFactory, beanFlowSelectorが取得できない場合, mode==MODE_STREAMかつthreadContextが取得できない場合
+     * 必須。無い場合は{@link #init()}にて例外発生。
+     * @param beanFlowInvokerFactoryServiceName
      */
-    public void init() throws Exception {
-        {
-            Object service = getServiceObject(beanflowInvokerFactoryServiceName);
-            if(service != null) {
-                beanflowInvokerFactory = (BeanFlowInvokerFactory) service;
-            }
-        }
-
-        {
-            Object service = getServiceObject(threadContextServiceName);
-            if(service != null) {
-                threadContext = (Context) service;
-            }
-        }
-
-        {
-            Object service = getServiceObject(beanFlowSelectorServiceName);
-            if(service != null) {
-                beanFlowSelector = (BeanFlowSelector) service;
-            }
-        }
-
-        if(beanflowInvokerFactory == null) {
-            throw new Exception("BeanflowInvokerFactory must be set.");
-        }
-
-        if(beanFlowSelector == null) {
-            throw new Exception("BeanFlowSelector must be set.");
-        }
-
-        // threadContextはMODE_STREAMの場合に必須
-        if(MODE_STREAM.equals(mode) && threadContext == null) {
-            throw new Exception("ThreadContext must be set When you use REST mode.");
-        }
+    public void setBeanFlowInvokerFactoryServiceName(ServiceName beanFlowInvokerFactoryServiceName) {
+        this.beanFlowInvokerFactoryServiceName = beanFlowInvokerFactoryServiceName;
     }
 
-    /**
-     * R/Rの内部処理。Beanflowを実行する。
-     *
-     * @param request
-     * @param response
-     * @return Beanflowの戻り値がDataSetの場合null,Beanflowの戻り値がModelAndViewの場合はそれ
-     * @throws Exception STREAMモードor指定なし かつ 戻り値の型がDataSet出ない場合, JSPモードor指定なし かつ 戻り値の型がModelAndViewでない場合, それ以外は呼び出し先の例外をそのままスロー
-     */
-    @Override
-    protected ModelAndView handleRequestInternal(HttpServletRequest request, HttpServletResponse response)
-            throws Exception {
-        // AbstractControllerを実装するとspringに自前コントローラーをアノテーションなしで組み込める。
-        // @param request mvcから生のHttpServletRequestが渡される
-        // @param response mvcから生のHttpServletResponseが渡される
-        // @return ModelAndViewはページ遷移がある場合に利用。nullを返すと何もされない。
-        String beanflowName = beanFlowSelector.selectBeanFlow(request);
-
-        DataSet in = (DataSet)request.getAttribute(requestObjectAttributeName);
-        Object ret = beanflowInvokerFactory.createFlow(beanflowName).invokeFlow(in);
-
-
-        if(ret instanceof DataSet) {
-            if(MODE_JSP.equals(mode)) {
-                throw new Exception("Beanflow return value is only Dataset when mode == MODE_STREAM or null.");
-            }
-
-            threadContext.put(reponseObjectContextKey, ret);
-            return null;
-        }
-
-        if(ret instanceof ModelAndView) {
-            if(MODE_STREAM.equals(mode)) {
-                throw new Exception("Beanflow return value is only ModelAndView when mode == MODE_JSP or null.");
-            }
-
-            return (ModelAndView) ret;
-        }
-
-        // Spring mvcの例外ハンドラーを設定しなければ、ServletFilterまで例外があがる
-        // TODO:Nimbus Filterでの例外ハンドルがこの例外のみを対象にハンドリングしたいことがあるか？
-        //      何ができるわけでもないので、メッセージでわかるようにしておくくらいでいいのでは？
-        throw new Exception("Beanflow return value is not DataSet and ModelAndView.");
-    }
-
-    // 以下getterとsetter
-    // xml configからこのControllerにinjectionする口
-    public BeanFlowInvokerFactory getBeanflowInvokerFactory() {
-        return beanflowInvokerFactory;
-    }
-
-    public String getBeanflowInvokerFactoryServiceName() {
-        return beanflowInvokerFactoryServiceName;
-    }
-
-    public BeanFlowSelector getBeanFlowSelector() {
-        return beanFlowSelector;
-    }
-
-
-    public String getBeanFlowSelectorServiceName() {
+    public ServiceName getBeanFlowSelectorServiceName() {
         return beanFlowSelectorServiceName;
     }
 
-    public String getMode() {
-        return mode;
-    }
-
-    public String getReponseObjectContextKey() {
-        return reponseObjectContextKey;
-    }
-
-
-    public String getRequestObjectAttributeName() {
-        return requestObjectAttributeName;
-    }
-
-    public Context getThreadContext() {
-        return threadContext;
-    }
-
-    public String getThreadContextServiceName() {
-        return threadContextServiceName;
-    }
-
-
     /**
-     * デフォルトはnull.
-     * beanflowInvokerFactoryServiceNameが指定されている場合, {@link #init()}時に上書かれる.
-     * @param beanflowInvokerFactory
-     */
-    public void setBeanflowInvokerFactory(BeanFlowInvokerFactory beanflowInvokerFactory) {
-        this.beanflowInvokerFactory = beanflowInvokerFactory;
-    }
-
-
-
-    /**
-     * デフォルトはnull.
-     * beanflowInvokerFactoryServiceNameが指定されている場合, {@link #init()}時にbeanflowInvokerFactoryを上書く.
-     * @param beanflowInvokerFactoryServiceName
-     */
-    public void setBeanflowInvokerFactoryServiceName(String beanflowInvokerFactoryServiceName) {
-        this.beanflowInvokerFactoryServiceName = beanflowInvokerFactoryServiceName;
-    }
-
-
-
-    /**
-     * デフォルトはnull.
-     * beanFlowSelectorServiceNameが指定されている場合, {@link #init()}時に上書かれる.
-     * @param beanFlowSelector
-     */
-    public void setBeanFlowSelector(BeanFlowSelector beanFlowSelector) {
-        this.beanFlowSelector = beanFlowSelector;
-    }
-
-
-
-    /**
-     * デフォルトはnull.
-     * beanFlowSelectorServiceNameが指定されている場合, {@link #init()}時にbeanFlowSelectorを上書く.
+     * null可。
+     * 指定しなければ{@link DefaultBeanFlowSelectorService}が使用される。
      * @param beanFlowSelectorServiceName
      */
-    public void setBeanFlowSelectorServiceName(String beanFlowSelectorServiceName) {
+    public void setBeanFlowSelectorServiceName(ServiceName beanFlowSelectorServiceName) {
         this.beanFlowSelectorServiceName = beanFlowSelectorServiceName;
     }
 
-
-    /**
-     * デフォルトはnull.
-     * @param mode MODE_STREAM, MODE_JSP, null
-     */
-    public void setMode(String mode) {
-        this.mode = mode;
+    public ServiceName getJournalServiceName() {
+        return journalServiceName;
     }
 
-
-
     /**
-     * デフォルトは{@link StreamExchangeInterceptorServiceMBean#DEFAULT_RESPONSE_OBJECT_CONTEXT_KEY}.
-     * Filterで利用する{@link StreamExchangeInterceptorServiceMBean}と合わせる.
-     * @param reponseObjectContextKey ResponseにStreamを利用する場合にThreadContextに指定するkey名
+     * null可。
+     * @param journalServiceName
      */
-    public void setReponseObjectContextKey(String reponseObjectContextKey) {
-        this.reponseObjectContextKey = reponseObjectContextKey;
+    public void setJournalServiceName(ServiceName journalServiceName) {
+        this.journalServiceName = journalServiceName;
     }
 
-
-
-    /**
-     * デフォルトは{@link StreamExchangeInterceptorServiceMBean#DEFAULT_REQUEST_OBJECT_ATTRIBUTE_NAME}.
-     * Filterで利用する{@link StreamExchangeInterceptorServiceMBean}と合わせる.
-     * @param requestObjectAttributeName RequestにStreamを利用する場合にRequestのattributeに指定するkey名
-     */
-    public void setRequestObjectAttributeName(String requestObjectAttributeName) {
-        this.requestObjectAttributeName = requestObjectAttributeName;
+    public ServiceName getEditorFinderServiceName() {
+        return editorFinderServiceName;
     }
 
-
-
     /**
-     * デフォルトはnull.
-     * threadContextServiceNameが指定されている場合, {@link #init()}時に上書かれる.
-     * @param threadContext
+     * null可。
+     * ジャーナルのルートに用いられる{@link EditorFinder}を指定する。
+     * @param editorFinderServiceName
      */
-    public void setThreadContext(Context threadContext) {
-        this.threadContext = threadContext;
+    public void setEditorFinderServiceName(ServiceName editorFinderServiceName) {
+        this.editorFinderServiceName = editorFinderServiceName;
     }
 
-
+    public ServiceName getValidateEditorFinderServiceName() {
+        return validateEditorFinderServiceName;
+    }
 
     /**
-     * デフォルトはnull.
-     * threadContextServiceNameが指定されている場合, {@link #init()}時にthreadContextを上書く.
-     * @param threadContextServiceName
+     * null可。
+     * ジャーナルのValidateステップに用いられる{@link EditorFinder}を指定する。
+     * @param validateEditorFinderServiceName
      */
-    public void setThreadContextServiceName(String threadContextServiceName) {
-        this.threadContextServiceName = threadContextServiceName;
+    public void setValidateEditorFinderServiceName(ServiceName validateEditorFinderServiceName) {
+        this.validateEditorFinderServiceName = validateEditorFinderServiceName;
+    }
+
+    public ServiceName getActionEditorFinderServiceName() {
+        return actionEditorFinderServiceName;
+    }
+
+    /**
+     * null可。
+     * ジャーナルのAction(BeanFlow実行)ステップに用いられる{@link EditorFinder}を指定する。
+     * @param actionEditorFinderServiceName
+     */
+    public void setActionEditorFinderServiceName(ServiceName actionEditorFinderServiceName) {
+        this.actionEditorFinderServiceName = actionEditorFinderServiceName;
+    }
+
+    public ServiceName getContextServiceName() {
+        return contextServiceName;
+    }
+
+    /**
+     * null可。
+     * ジャーナルに設定するrequestIdを取得するために使用される。
+     * @param contextServiceName
+     */
+    public void setContextServiceName(ServiceName contextServiceName) {
+        this.contextServiceName = contextServiceName;
+    }
+
+    public boolean isValidate() {
+        return isValidate;
+    }
+
+    /**
+     * デフォルトはfalse。
+     * trueに設定すればValidation用のBeanFlowを実行する。
+     * @param isValidate
+     */
+    public void setValidate(boolean isValidate) {
+        this.isValidate = isValidate;
+    }
+
+    public String getValidateFlowPrefix() {
+        return validateFlowPrefix;
+    }
+
+    /**
+     * デフォルトは{@link #DEFAULT_VALIDATE_FLOW_PREFIX}。
+     * 指定した{@link #validateFlowPrefix}/beanflow名をvalidate時に呼び出す。
+     * @param validateFlowPrefix
+     */
+    public void setValidateFlowPrefix(String validateFlowPrefix) {
+        this.validateFlowPrefix = validateFlowPrefix;
+    }
+
+    public String getInputAttributeName() {
+        return inputAttributeName;
+    }
+
+    /**
+     * デフォルトは{@link #DEFAULT_REQUEST_OBJECT_ATTRIBUTE_NAME}。
+     * 指定した{@link #inputAttributeName}をkeyにRequestのattributeからオブジェクトを取り出し、それをBeanFlowへのInputにする。
+     * @param inputAttributeName
+     */
+    public void setInputAttributeName(String inputAttributeName) {
+        this.inputAttributeName = inputAttributeName;
+    }
+
+    public String getOutputAttributeName() {
+        return outputAttributeName;
+    }
+
+    /**
+     * デフォルトは{@link #DEFAULT_RESPONSE_OBJECT_ATTRIBUTE_NAME}。
+     * 指定した{@link #outputAttributeName}をkeyにResponseのattributeにオブジェクトをセットする。
+     * オブジェクトはBeanFlowのOutputである。
+     * @param outputAttributeName
+     */
+    public void setOutputAttributeName(String outputAttributeName) {
+        this.outputAttributeName = outputAttributeName;
+    }
+
+    /**
+     * 初期化を行う。<p>
+     *
+     * @exception Exception 初期化に失敗した場合
+     */
+    public void init() throws Exception{
+        if(beanFlowInvokerFactoryServiceName == null){
+            throw new Exception("BeanFlowInvokerFactoryServiceName is null.");
+        }
+        if(beanFlowSelectorServiceName == null){
+            defaultBeanFlowSelector = new DefaultBeanFlowSelectorService();
+            defaultBeanFlowSelector.create();
+            defaultBeanFlowSelector.start();
+        }
+    }
+
+    /**
+     * 検証BeanFlow及びアクションBeanFlowの呼び出しを制御する。<p>
+     * フローが見つからない場合はエラーコード404を返す。
+     * @param req HTTPリクエスト
+     * @param resp HTTPレスポンス
+     * @exception Exception
+     */
+    protected ModelAndView handleRequestInternal(HttpServletRequest req, HttpServletResponse resp)
+            throws Exception{
+
+        String flowName = processSelectBeanFlow(req, resp);
+
+        if(flowName == null || flowName.length() == 0){
+            handleNotFound(req, resp, flowName);
+            return null;
+        }
+        final BeanFlowInvokerFactory beanFlowInvokerFactory
+            = (BeanFlowInvokerFactory)ServiceManagerFactory
+                .getServiceObject(beanFlowInvokerFactoryServiceName);
+        if(!beanFlowInvokerFactory.containsFlow(flowName)){
+            handleNotFound(req, resp, flowName);
+            return null;
+        }
+        Journal journal = null;
+        EditorFinder editorFinder = null;
+        EditorFinder validateEditorFinder = null;
+        EditorFinder actionEditorFinder = null;
+        String requestId = null;
+        if(journalServiceName != null){
+            journal = (Journal)ServiceManagerFactory
+                .getServiceObject(journalServiceName);
+            if(editorFinderServiceName != null){
+                editorFinder = (EditorFinder)ServiceManagerFactory
+                    .getServiceObject(editorFinderServiceName);
+            }
+            if(validateEditorFinderServiceName != null){
+                validateEditorFinder = (EditorFinder)ServiceManagerFactory
+                    .getServiceObject(validateEditorFinderServiceName);
+            }
+            if(actionEditorFinderServiceName != null){
+                actionEditorFinder = (EditorFinder)ServiceManagerFactory
+                    .getServiceObject(actionEditorFinderServiceName);
+            }
+            if(contextServiceName != null){
+                Context context = (Context)ServiceManagerFactory
+                    .getServiceObject(contextServiceName);
+                requestId = (String)context.get(ThreadContextKey.REQUEST_ID);
+            }
+        }
+        try{
+            if(journal != null){
+                journal.startJournal(JOURNAL_KEY_PROCESS, editorFinder);
+                if(requestId != null){
+                    journal.setRequestId(requestId);
+                }
+            }
+            final BeanFlowServletContext context = new BeanFlowServletContext(
+                req,
+                resp,
+                req.getAttribute(inputAttributeName)
+            );
+            if(validateFlowPrefix != null && isValidate){
+                final String validateFlowName = validateFlowPrefix + flowName;
+                if(beanFlowInvokerFactory.containsFlow(validateFlowName)){
+                    final BeanFlowInvoker validateFlow
+                        = beanFlowInvokerFactory.createFlow(validateFlowName);
+                    try{
+                        if(journal != null){
+                            journal.addStartStep(JOURNAL_KEY_VALIDATE, validateEditorFinder);
+                            journal.addInfo(JOURNAL_KEY_FLOW_NAME, validateFlowName);
+                        }
+                        if(!processValidate(req, resp, context, validateFlow, journal)){
+                            if(!handleValidateError(req, resp, context, journal)){
+                                return null;
+                            }
+                        }
+                    }finally{
+                        if(journal != null){
+                            journal.addEndStep();
+                        }
+                    }
+                }
+            }
+            final BeanFlowInvoker flow
+                = beanFlowInvokerFactory.createFlow(flowName);
+            try{
+                if(journal != null){
+                    journal.addStartStep(JOURNAL_KEY_ACTION, actionEditorFinder);
+                    journal.addInfo(JOURNAL_KEY_FLOW_NAME, flowName);
+                }
+                ModelAndView ret = processAction(req, resp, context, flow, journal);
+                return ret;
+            }finally{
+                if(journal != null){
+                    journal.addEndStep();
+                }
+            }
+        }finally{
+            if(journal != null){
+                journal.endJournal();
+            }
+        }
+    }
+
+    protected String processSelectBeanFlow(
+        HttpServletRequest req,
+        HttpServletResponse resp
+    ) throws ServletException, IOException{
+        BeanFlowSelector beanFlowSelector = defaultBeanFlowSelector;
+        if(beanFlowSelectorServiceName != null){
+            beanFlowSelector = (BeanFlowSelector)ServiceManagerFactory
+                .getServiceObject(beanFlowSelectorServiceName);
+        }
+        return beanFlowSelector.selectBeanFlow(req);
+    }
+
+    protected void handleNotFound(
+        HttpServletRequest req,
+        HttpServletResponse resp,
+        String flowName
+    ) throws ServletException, IOException{
+        resp.sendError(
+            HttpServletResponse.SC_NOT_FOUND,
+            "Flow '" + flowName + "' is not found."
+        );
+    }
+
+    protected boolean processValidate(
+        HttpServletRequest req,
+        HttpServletResponse resp,
+        BeanFlowServletContext context,
+        BeanFlowInvoker validateFlow,
+        Journal journal
+    ) throws ServletException, IOException{
+        try{
+            if(journal != null){
+                journal.addInfo(JOURNAL_KEY_INPUT, context);
+            }
+            final Object ret = validateFlow.invokeFlow(context);
+            if(journal != null){
+                journal.addInfo(JOURNAL_KEY_OUTPUT, ret);
+            }
+            boolean result = false;
+            if(ret != null && ret instanceof Boolean){
+                result = ((Boolean)ret).booleanValue();
+            }
+            if(!result && context.getOutput() != null){
+                req.setAttribute(outputAttributeName, context.getOutput());
+            }
+            return result;
+        }catch(Exception e){
+            return handleValidateException(req, resp, context, journal, e);
+        }
+    }
+
+    protected boolean handleValidateException(
+        HttpServletRequest req,
+        HttpServletResponse resp,
+        BeanFlowServletContext context,
+        Journal journal,
+        Exception e
+    ) throws ServletException, IOException{
+        if(journal != null){
+            journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
+        }
+        throw new ServletException("Validate error.", e);
+    }
+
+    protected boolean handleValidateError(
+        HttpServletRequest req,
+        HttpServletResponse resp,
+        BeanFlowServletContext context,
+        Journal journal
+    ) throws ServletException, IOException{
+        return false;
+    }
+
+    protected ModelAndView processAction(
+        HttpServletRequest req,
+        HttpServletResponse resp,
+        BeanFlowServletContext context,
+        BeanFlowInvoker flow,
+        Journal journal
+    ) throws ServletException, IOException{
+        Object ret = null;
+        try{
+            if(journal != null){
+                journal.addInfo(JOURNAL_KEY_INPUT, context);
+            }
+            ret = flow.invokeFlow(context);
+            if(journal != null){
+                journal.addInfo(JOURNAL_KEY_OUTPUT, ret);
+            }
+
+            if(context.getOutput() == null){
+                if(ret != null){
+                    if(ret instanceof DataSet) {
+                        req.setAttribute(outputAttributeName, (DataSet)ret);
+                    }
+                }
+            }else{
+                req.setAttribute(outputAttributeName, context.getOutput());
+            }
+        }catch(Exception e){
+            handleActionException(req, resp, context, journal, e);
+        }
+
+        if(ret instanceof ModelAndView) {
+            return (ModelAndView)ret;
+        }
+
+        return null;
+    }
+
+    protected boolean handleActionException(
+        HttpServletRequest req,
+        HttpServletResponse resp,
+        BeanFlowServletContext context,
+        Journal journal,
+        Exception e
+    ) throws ServletException, IOException{
+        if(journal != null){
+            journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
+        }
+        throw new ServletException("Flow error.", e);
     }
 }
