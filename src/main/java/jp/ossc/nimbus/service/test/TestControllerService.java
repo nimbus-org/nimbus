@@ -373,7 +373,7 @@ public class TestControllerService extends ServiceBase implements TestController
                 if (testScenarioContexts != null) {
                     for (int i = 0; i < testScenarioContexts.length; i++) {
                         TestScenario.Status scenarioStatus = testScenarioContexts[i].getStatus();
-                        if (scenarioStatus != null && scenarioStatus.getState() == TestScenario.Status.STARTED) {
+                        if (scenarioStatus != null) {
                             endScenario(testScenarioContexts[i].getTestScenario().getScenarioId());
                         }
                     }
@@ -564,7 +564,7 @@ public class TestControllerService extends ServiceBase implements TestController
                 if (testCaseContexts != null) {
                     for (int i = 0; i < testCaseContexts.length; i++) {
                         TestCase.Status caseStatus = testCaseContexts[i].getStatus();
-                        if (caseStatus != null && caseStatus.getState() == TestCase.Status.STARTED) {
+                        if (caseStatus != null) {
                             cancelTestCase(testCaseContexts[i].getTestCase().getScenarioId(), testCaseContexts[i].getTestCase().getTestCaseId());
                         }
                     }
@@ -645,7 +645,7 @@ public class TestControllerService extends ServiceBase implements TestController
                 if (testCaseContexts != null) {
                     for (int i = 0; i < testCaseContexts.length; i++) {
                         TestCase.Status caseStatus = testCaseContexts[i].getStatus();
-                        if (caseStatus != null && caseStatus.getState() == TestCase.Status.STARTED) {
+                        if (caseStatus != null) {
                             endTestCase(testCaseContexts[i].getTestCase().getScenarioId(), testCaseContexts[i].getTestCase().getTestCaseId());
                         }
                     }
@@ -732,6 +732,14 @@ public class TestControllerService extends ServiceBase implements TestController
             TestCaseContext context = scenarioContext.getTestCaseContext(testcaseId);
             if (context == null) {
                 context = new TestCaseContext();
+            } else {
+                List actionContextList = context.getActionContextList();
+                if(actionContextList != null) {
+                    for(int i = 0; i < actionContextList.size(); i++) {
+                        TestActionContext testActionContext = (TestActionContext)actionContextList.get(i);
+                        testActionContext.clearState();
+                    }
+                }
             }
             TestCaseImpl testCase = (TestCaseImpl) context.getTestCase();
             if (testCase == null) {
@@ -859,7 +867,7 @@ public class TestControllerService extends ServiceBase implements TestController
                 throw new TestException("Scenario is not started.");
             }
             TestCaseContext context = scenarioContext.getTestCaseContext(testcaseId);
-            if (context == null || context.getStatus().getState() != TestCase.Status.STARTED) {
+            if (context == null) {
                 throw new TestException("TestCase is not started.");
             }
 
