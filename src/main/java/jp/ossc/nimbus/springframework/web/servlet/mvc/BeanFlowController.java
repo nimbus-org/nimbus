@@ -40,6 +40,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
+import javassist.NotFoundException;
 import jp.ossc.nimbus.beans.ServiceNameEditor;
 import jp.ossc.nimbus.beans.dataset.DataSet;
 import jp.ossc.nimbus.core.ServiceManagerFactory;
@@ -53,6 +54,7 @@ import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 import jp.ossc.nimbus.servlet.BeanFlowSelector;
 import jp.ossc.nimbus.servlet.BeanFlowServletContext;
 import jp.ossc.nimbus.servlet.DefaultBeanFlowSelectorService;
+import jp.ossc.nimbus.util.validator.ValidateException;
 import jp.ossc.nimbus.service.context.Context;
 import jp.ossc.nimbus.service.aop.interceptor.ThreadContextKey;
 
@@ -364,98 +366,101 @@ public class BeanFlowController extends AbstractController{
      */
     protected ModelAndView handleRequestInternal(HttpServletRequest req, HttpServletResponse resp)
             throws Exception{
-
-        String flowName = processSelectBeanFlow(req, resp);
-
-        if(flowName == null || flowName.length() == 0){
-            handleNotFound(req, resp, flowName);
-            return null;
-        }
-        final BeanFlowInvokerFactory beanFlowInvokerFactory
-            = (BeanFlowInvokerFactory)ServiceManagerFactory
-                .getServiceObject(beanFlowInvokerFactoryServiceName);
-        if(!beanFlowInvokerFactory.containsFlow(flowName)){
-            handleNotFound(req, resp, flowName);
-            return null;
-        }
-        Journal journal = null;
-        EditorFinder editorFinder = null;
-        EditorFinder validateEditorFinder = null;
-        EditorFinder actionEditorFinder = null;
-        String requestId = null;
-        if(journalServiceName != null){
-            journal = (Journal)ServiceManagerFactory
-                .getServiceObject(journalServiceName);
-            if(editorFinderServiceName != null){
-                editorFinder = (EditorFinder)ServiceManagerFactory
-                    .getServiceObject(editorFinderServiceName);
-            }
-            if(validateEditorFinderServiceName != null){
-                validateEditorFinder = (EditorFinder)ServiceManagerFactory
-                    .getServiceObject(validateEditorFinderServiceName);
-            }
-            if(actionEditorFinderServiceName != null){
-                actionEditorFinder = (EditorFinder)ServiceManagerFactory
-                    .getServiceObject(actionEditorFinderServiceName);
-            }
-            if(contextServiceName != null){
-                Context context = (Context)ServiceManagerFactory
-                    .getServiceObject(contextServiceName);
-                requestId = (String)context.get(ThreadContextKey.REQUEST_ID);
-            }
-        }
         try{
-            if(journal != null){
-                journal.startJournal(JOURNAL_KEY_PROCESS, editorFinder);
-                if(requestId != null){
-                    journal.setRequestId(requestId);
+            String flowName = processSelectBeanFlow(req, resp);
+
+            if(flowName == null || flowName.length() == 0){
+                handleNotFound(req, resp, flowName);
+                return null;
+            }
+            final BeanFlowInvokerFactory beanFlowInvokerFactory
+                = (BeanFlowInvokerFactory)ServiceManagerFactory
+                    .getServiceObject(beanFlowInvokerFactoryServiceName);
+            if(!beanFlowInvokerFactory.containsFlow(flowName)){
+                handleNotFound(req, resp, flowName);
+                return null;
+            }
+            Journal journal = null;
+            EditorFinder editorFinder = null;
+            EditorFinder validateEditorFinder = null;
+            EditorFinder actionEditorFinder = null;
+            String requestId = null;
+            if(journalServiceName != null){
+                journal = (Journal)ServiceManagerFactory
+                    .getServiceObject(journalServiceName);
+                if(editorFinderServiceName != null){
+                    editorFinder = (EditorFinder)ServiceManagerFactory
+                        .getServiceObject(editorFinderServiceName);
+                }
+                if(validateEditorFinderServiceName != null){
+                    validateEditorFinder = (EditorFinder)ServiceManagerFactory
+                        .getServiceObject(validateEditorFinderServiceName);
+                }
+                if(actionEditorFinderServiceName != null){
+                    actionEditorFinder = (EditorFinder)ServiceManagerFactory
+                        .getServiceObject(actionEditorFinderServiceName);
+                }
+                if(contextServiceName != null){
+                    Context context = (Context)ServiceManagerFactory
+                        .getServiceObject(contextServiceName);
+                    requestId = (String)context.get(ThreadContextKey.REQUEST_ID);
                 }
             }
-            final BeanFlowServletContext context = new BeanFlowServletContext(
-                req,
-                resp,
-                req.getAttribute(inputAttributeName)
-            );
-            if(validateFlowPrefix != null && isValidate){
-                final String validateFlowName = validateFlowPrefix + flowName;
-                if(beanFlowInvokerFactory.containsFlow(validateFlowName)){
-                    final BeanFlowInvoker validateFlow
-                        = beanFlowInvokerFactory.createFlow(validateFlowName);
-                    try{
-                        if(journal != null){
-                            journal.addStartStep(JOURNAL_KEY_VALIDATE, validateEditorFinder);
-                            journal.addInfo(JOURNAL_KEY_FLOW_NAME, validateFlowName);
-                        }
-                        if(!processValidate(req, resp, context, validateFlow, journal)){
-                            if(!handleValidateError(req, resp, context, journal)){
-                                return null;
+            try{
+                if(journal != null){
+                    journal.startJournal(JOURNAL_KEY_PROCESS, editorFinder);
+                    if(requestId != null){
+                        journal.setRequestId(requestId);
+                    }
+                }
+                final BeanFlowServletContext context = new BeanFlowServletContext(
+                    req,
+                    resp,
+                    req.getAttribute(inputAttributeName)
+                );
+                if(validateFlowPrefix != null && isValidate){
+                    final String validateFlowName = validateFlowPrefix + flowName;
+                    if(beanFlowInvokerFactory.containsFlow(validateFlowName)){
+                        final BeanFlowInvoker validateFlow
+                            = beanFlowInvokerFactory.createFlow(validateFlowName);
+                        try{
+                            if(journal != null){
+                                journal.addStartStep(JOURNAL_KEY_VALIDATE, validateEditorFinder);
+                                journal.addInfo(JOURNAL_KEY_FLOW_NAME, validateFlowName);
                             }
-                        }
-                    }finally{
-                        if(journal != null){
-                            journal.addEndStep();
+                            if(!processValidate(req, resp, context, validateFlow, journal)){
+                                if(!handleValidateError(req, resp, context, journal)){
+                                    return null;
+                                }
+                            }
+                        }finally{
+                            if(journal != null){
+                                journal.addEndStep();
+                            }
                         }
                     }
                 }
-            }
-            final BeanFlowInvoker flow
-                = beanFlowInvokerFactory.createFlow(flowName);
-            try{
-                if(journal != null){
-                    journal.addStartStep(JOURNAL_KEY_ACTION, actionEditorFinder);
-                    journal.addInfo(JOURNAL_KEY_FLOW_NAME, flowName);
+                final BeanFlowInvoker flow
+                    = beanFlowInvokerFactory.createFlow(flowName);
+                try{
+                    if(journal != null){
+                        journal.addStartStep(JOURNAL_KEY_ACTION, actionEditorFinder);
+                        journal.addInfo(JOURNAL_KEY_FLOW_NAME, flowName);
+                    }
+                    ModelAndView ret = processAction(req, resp, context, flow, journal);
+                    return ret;
+                }finally{
+                    if(journal != null){
+                        journal.addEndStep();
+                    }
                 }
-                ModelAndView ret = processAction(req, resp, context, flow, journal);
-                return ret;
             }finally{
                 if(journal != null){
-                    journal.addEndStep();
+                    journal.endJournal();
                 }
             }
-        }finally{
-            if(journal != null){
-                journal.endJournal();
-            }
+        }catch (Exception e) {
+            throw new BeanFlowControllerException(e);
         }
     }
 
@@ -475,7 +480,7 @@ public class BeanFlowController extends AbstractController{
         HttpServletRequest req,
         HttpServletResponse resp,
         String flowName
-    ) throws ServletException, IOException{
+    ) throws IOException{
         resp.sendError(
             HttpServletResponse.SC_NOT_FOUND,
             "Flow '" + flowName + "' is not found."
@@ -488,7 +493,7 @@ public class BeanFlowController extends AbstractController{
         BeanFlowServletContext context,
         BeanFlowInvoker validateFlow,
         Journal journal
-    ) throws ServletException, IOException{
+    ) throws ValidateException{
         try{
             if(journal != null){
                 journal.addInfo(JOURNAL_KEY_INPUT, context);
@@ -516,11 +521,11 @@ public class BeanFlowController extends AbstractController{
         BeanFlowServletContext context,
         Journal journal,
         Exception e
-    ) throws ServletException, IOException{
+    ) throws ValidateException{
         if(journal != null){
             journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
         }
-        throw new ServletException("Validate error.", e);
+        throw new ValidateException("Validate error.", e);
     }
 
     protected boolean handleValidateError(
@@ -528,7 +533,7 @@ public class BeanFlowController extends AbstractController{
         HttpServletResponse resp,
         BeanFlowServletContext context,
         Journal journal
-    ) throws ServletException, IOException{
+    ) throws IOException{
         return false;
     }
 
@@ -538,7 +543,7 @@ public class BeanFlowController extends AbstractController{
         BeanFlowServletContext context,
         BeanFlowInvoker flow,
         Journal journal
-    ) throws ServletException, IOException{
+    ) throws Exception{
         Object ret = null;
         try{
             if(journal != null){
@@ -573,10 +578,10 @@ public class BeanFlowController extends AbstractController{
         BeanFlowServletContext context,
         Journal journal,
         Exception e
-    ) throws ServletException, IOException{
+    ) throws Exception{
         if(journal != null){
             journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
         }
-        throw new ServletException("Flow error.", e);
+        throw new Exception("Flow error.", e);
     }
 }
