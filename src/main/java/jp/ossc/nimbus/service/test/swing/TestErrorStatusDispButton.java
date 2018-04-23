@@ -52,6 +52,9 @@ public class TestErrorStatusDispButton extends JButton implements ActionListener
             this.setText("OK");
             this.setBackground(NORMAL_COLOR);
             this.setEnabled(true);
+            
+            this.removeActionListener(this);
+            this.addActionListener(this);
         } else if (status != null && !status.getResult()) {
             this.setText("NG");
             this.setBackground(NG_COLOR);

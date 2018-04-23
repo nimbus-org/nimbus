@@ -75,4 +75,6 @@ public interface TestActionContext {
     public Throwable getThrowable();
     
     public boolean isExecutable(String phase);
+    
+    public void clearState();
 }
