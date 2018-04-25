@@ -67,6 +67,7 @@
   <classpathentry kind="var" path="M2_REPO/org/apache/maven/scm/maven-scm-api/1.9.5/maven-scm-api-1.9.5.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/codehaus/plexus/plexus-utils/3.0.15/plexus-utils-3.0.15.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/maven/scm/maven-scm-provider-cvsjava/1.9.5/maven-scm-provider-cvsjava-1.9.5.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/maven/scm/maven-scm-provider-gitexe/1.9.5/maven-scm-provider-gitexe-1.9.5.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/maven/scm/maven-scm-provider-cvs-commons/1.9.5/maven-scm-provider-cvs-commons-1.9.5.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/esotericsoftware/kryo/4.0.1/kryo-4.0.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/esotericsoftware/reflectasm/1.11.3/reflectasm-1.11.3.jar"/>
