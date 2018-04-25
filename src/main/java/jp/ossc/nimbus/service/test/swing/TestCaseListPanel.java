@@ -184,6 +184,14 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
             lineList = new ArrayList();
             
             for (int i = 0; i < testCaseList.size(); i++) {
+                TestCase testCase = (TestCase) testCaseList.get(i);
+                Status status = testCase.getStatus();
+                if (status != null && status.getState() == TestCase.Status.STARTED) {
+                    startTestCaseFlg = true;
+                }
+            }
+            
+            for (int i = 0; i < testCaseList.size(); i++) {
                 
                 tmpX = MARGIN;
                 tmpY += HEIGHT + MARGIN;
@@ -254,31 +262,40 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
                 JButton tmpButton3 = new JButton("結果DL");
                 tmpButton3.addActionListener(new DownloadButtonActionListener(testCase));
                 
-                if (status != null && status.getState() == TestCase.Status.STARTED) {
-                    tmpButton1.setEnabled(false);
-                    tmpButton2.setEnabled(true);
-                    tmpButton3.setEnabled(false);
-                    startTestCaseFlg = true;
-                } else if (status != null && (status.getState() == TestCase.Status.ERROR || !status.getResult())) {
-                    
-                    try {
-                        testController.cancelTestCase(scenarioId, testCase.getTestCaseId());
-                    } catch (Exception e2) {
-                        e2.printStackTrace();
-                    }
-                    
+                if(!startTestCaseFlg){
                     tmpButton1.setEnabled(true);
-                    tmpButton2.setEnabled(false);
-                    tmpButton3.setEnabled(true);
-                } else {
-                    if(!startTestCaseFlg){
-                        tmpButton1.setEnabled(true);
-                    }else{
-                        tmpButton1.setEnabled(false);
-                    }
+                }else{
+                    tmpButton1.setEnabled(false);
+                }
+                if(status == null) {
                     tmpButton2.setEnabled(false);
                     tmpButton3.setEnabled(false);
+                } else {
+                    int state = status.getState();
+                    switch(state) {
+                        case TestCase.Status.INITIAL:
+                            tmpButton2.setEnabled(false);
+                            tmpButton3.setEnabled(false);
+                            break;
+                        case TestCase.Status.STARTED:
+                            tmpButton2.setEnabled(true);
+                            tmpButton3.setEnabled(false);
+                            break;
+                        case TestCase.Status.END:
+                            tmpButton2.setEnabled(false);
+                            tmpButton3.setEnabled(true);
+                            break;
+                        case TestCase.Status.ERROR:
+                            tmpButton2.setEnabled(true);
+                            tmpButton3.setEnabled(true);
+                            break;
+                        case TestCase.Status.CANCELED:
+                            tmpButton2.setEnabled(true);
+                            tmpButton3.setEnabled(false);
+                            break;
+                    }
                 }
+                
                 tmpButton1.setFont(font);
                 tmpButton2.setFont(font);
                 tmpButton3.setFont(font);
@@ -330,20 +347,12 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
                 
                 // テストケースを開始した結果、エラー（Result＝false）だった場合、ｷｬﾝｾﾙを送る
                 TestCase.Status state = testController.getTestCase(scenarioGroupId, scenarioId, testCase.getTestCaseId()).getStatus();
-                if(!state.getResult()){
-                    testController.cancelTestCase(scenarioId, testCase.getTestCaseId());
-                }
                 
                 // リスナー呼び出し
                 for(int i=0; i < testCaseControlListenerList.size(); i++)
                     ((TestCaseControlListener)testCaseControlListenerList.get(i)).startTestCase(this.testCase);
                 
             } catch (Exception e1) {
-                
-                try {
-                    testController.cancelTestCase(scenarioId, testCase.getTestCaseId());
-                } catch (Exception e2) {
-                }
                 JDialog dialog = new StatusDialogView(ownerFrame, "Exception", e1);
                 dialog.setModal(true);
                 dialog.setVisible(true);
@@ -382,12 +391,6 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
                     ((TestCaseControlListener)testCaseControlListenerList.get(i)).endTestCase(this.testCase);
                 
             } catch (Exception e1) {
-                
-                try {
-                    testController.cancelTestCase(scenarioId, testCase.getTestCaseId());
-                } catch (Exception e2) {
-                }
-                
                 JDialog dialog = new StatusDialogView(ownerFrame, "Exception", e1);
                 dialog.setModal(true);
                 dialog.setVisible(true);

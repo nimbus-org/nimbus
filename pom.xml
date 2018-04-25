@@ -400,6 +400,12 @@
 
         <dependency>
             <groupId>org.apache.maven.scm</groupId>
+            <artifactId>maven-scm-provider-gitexe</artifactId>
+            <version>1.9.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.maven.scm</groupId>
             <artifactId>maven-scm-provider-cvs-commons</artifactId>
             <version>1.9.5</version>
         </dependency>
@@ -416,6 +422,12 @@
             <version>0.10</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>4.2.3.RELEASE</version>
+        </dependency>
+        
     </dependencies>
 
     <build>

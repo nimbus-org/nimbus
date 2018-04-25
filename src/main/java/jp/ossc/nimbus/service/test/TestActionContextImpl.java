@@ -156,4 +156,9 @@ public class TestActionContextImpl extends TestPhaseExecutableImpl implements Te
         this.throwable = throwable;
     }
     
+    public void clearState() {
+        success = true;
+        throwable = null;
+    }
+
 }
