@@ -44,6 +44,26 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
  */
 public interface SSHCommandExecuteActionServiceMBean extends ServiceBaseMBean{
     
+    public void setPtyType(String type);
+    public String getPtyType();
+    
+    public void setXForwarding(boolean forwarding);
+    public boolean isXForwarding();
+    
+    /**
+     * コマンド実行時に適用する環境変数を設定する。<p>
+     *
+     * @param environments 環境変数。変数名=値の配列で指定する。
+     */
+    public void setEnvironments(String[] environments);
+    
+    /**
+     * コマンド実行時に適用する環境変数を取得する。<p>
+     *
+     * @return 環境変数。変数名=値の配列で指定する。
+     */
+    public String[] getEnvironments();
+    
     /**
      * TCPの応答タイムアウト[ms]を設定する。<p>
      * デフォルトでは、タイムアウトしない。<br>

@@ -38,7 +38,7 @@ import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Channel;
-import com.jcraft.jsch.ChannelExec;
+import com.jcraft.jsch.ChannelShell;
 
 import jp.ossc.nimbus.core.ServiceBase;
 import jp.ossc.nimbus.service.test.TestAction;
@@ -53,7 +53,12 @@ import jp.ossc.nimbus.service.test.TestContext;
  */
 public class SSHCommandExecuteActionService extends ServiceBase implements TestAction, TestActionEstimation, SSHCommandExecuteActionServiceMBean{
     
-    private static final long serialVersionUID = -1L;
+    private static final long serialVersionUID = -1763457363374423240L;
+    
+    protected String ptyType;
+    protected boolean isXForwarding;
+    
+    protected String[] environments;
     
     protected double expectedCost = Double.NaN;
     protected long checkInterval = 1000l;
@@ -71,6 +76,33 @@ public class SSHCommandExecuteActionService extends ServiceBase implements TestA
     
     protected Properties configProperties;
     protected String encoding;
+    
+    public void setPtyType(String type){
+        ptyType = type;
+    }
+    public String getPtyType(){
+        return ptyType;
+    }
+    
+    public void setXForwarding(boolean forwarding){
+        isXForwarding = forwarding;
+    }
+    public boolean isXForwarding(){
+        return isXForwarding;
+    }
+    
+    public String[] getEnvironments() {
+        return environments;
+    }
+    public void setEnvironments(String[] envs) {
+        for(int i = 0; i < envs.length; i++){
+            int index = envs[i].indexOf('=');
+            if(index == -1){
+                throw new IllegalArgumentException("Illegal format : " + envs[i]);
+            }
+        }
+        this.environments = envs;
+    }
     
     public void setSessionTimeout(int timeout){
         this.sessionTimeout = timeout;
@@ -162,12 +194,13 @@ public class SSHCommandExecuteActionService extends ServiceBase implements TestA
      * <pre>
      * command
      * 
-     * command
      * 
+     * environments
      * 
      * timeout
      * </pre>
-     * commandは、実行するコマンドを指定する。複数指定する場合は、空行を1行挟む。終了は、空行を2行挟む。<br>
+     * commandは、実行するコマンドを指定する。終了は、空行を2行挟む。<br>
+     * environmentsは、コマンド実行時に適用する環境変数を変数名=値で指定する。複数指定する場合は、改行して指定する。終了は、空行を指定する。<br>
      * timeoutは、コマンドの終了待ちタイムアウトを指定する。指定しない場合は、終了待ちしない。<br>
      *
      * @param context コンテキスト
@@ -177,41 +210,52 @@ public class SSHCommandExecuteActionService extends ServiceBase implements TestA
      */
     public Object execute(TestContext context, String actionId, Reader resource) throws Exception{
         BufferedReader br = new BufferedReader(resource);
-        List commands = new ArrayList();
+        StringWriter command = new StringWriter();
+        PrintWriter pw = new PrintWriter(command);
+        Map envs = new LinkedHashMap();
         long timeout = 0;
         try{
-            String str = null;
             
             // コマンド
-            StringBuilder buf = new StringBuilder();
-            while((str = br.readLine()) != null){
-                if(str.length () == 0){
-                    if(buf.length() != 0){
-                        commands.add(buf.toString());
-                        buf.setLength(0);
-                    }else{
-                        break;
-                    }
-                }else{
-                    buf.append(str);
+            String line = null;
+            String preLine = null;
+            while((line = br.readLine()) != null
+                && (line.length() != 0 || preLine == null || preLine.length() != 0)
+            ){
+                pw.println(line);
+                preLine = line;
+            }
+            pw.flush();
+            
+            //環境変数
+            if(environments != null){
+                for(int i = 0; i < environments.length; i++){
+                    int index = environments[i].indexOf('=');
+                    envs.put(environments[i].substring(0, index), environments[i].substring(index + 1));
                 }
             }
-            if(buf.length() != 0){
-                commands.add(buf.toString());
+            while((line = br.readLine()) != null && line.length() != 0){
+                int index = line.indexOf('=');
+                if(index == -1){
+                    break;
+                }
+                envs.put(line.substring(0, index), line.substring(index + 1));
             }
-            buf = null;
             
             // タイムアウト
-            if(str != null){
-                str = br.readLine();
-                if(str != null && str.length() != 0){
-                    timeout = Long.parseLong(str.trim());
-                }
+            if(line != null && line.length() == 0){
+                line = br.readLine();
+            }
+            if(line != null && line.length() != 0){
+                timeout = Long.parseLong(line.trim());
             }
         }finally{
             try{
                 br.close();
             }catch(IOException e){}
+            
+            pw.close();
+            pw = null;
         }
         
         JSch jsch = new JSch();
@@ -223,8 +267,7 @@ public class SSHCommandExecuteActionService extends ServiceBase implements TestA
         }
         
         Session session = null;
-        ChannelExec channel = null;
-        PrintWriter pw = null;
+        ChannelShell channel = null;
         try{
             session = jsch.getSession(userName, hostName, port);
             if(configProperties != null){
@@ -243,125 +286,85 @@ public class SSHCommandExecuteActionService extends ServiceBase implements TestA
                 session.setPassword(password);
             }
             session.connect();
+            channel = (ChannelShell)session.openChannel("shell");
+            if(envs.size() != 0){
+                Iterator entries = envs.entrySet().iterator();
+                while(entries.hasNext()){
+                    Map.Entry entry = (Map.Entry)entries.next();
+                    channel.setEnv((String)entry.getKey(), (String)entry.getValue());
+                }
+            }
+            if(ptyType != null){
+                channel.setPtyType(ptyType);
+            }
+            channel.setXForwarding(isXForwarding);
+            channel.connect();
             
-            File outFile = new File(context.getCurrentDirectory(), actionId + ".txt");
-            FileWriter filewriter = new FileWriter(outFile);
-            BufferedWriter bw = new BufferedWriter(filewriter);
-            pw = new PrintWriter(bw);
-            
-            ByteArrayOutputStream stdos = new ByteArrayOutputStream();
-            ByteArrayOutputStream erros = new ByteArrayOutputStream();
-            long remainingTime = timeout;
             final long startTime = System.currentTimeMillis();
+            PrintStream ps = new PrintStream(channel.getOutputStream());
+            ps.println(command.toString());
+            ps.println("exit");
+            ps.flush();
+            
             int exitStatus = -1;
-            for(int i = 0, imax = commands.size(); i < imax; i++){
-                pw.println("Command：");
-                pw.println(commands.get(i));
-                pw.println();
+            if(timeout > 0){
+                File outFile = new File(context.getCurrentDirectory(), actionId + ".txt");
+                BufferedWriter bw = new BufferedWriter(
+                    encoding == null ? new FileWriter(outFile) : new OutputStreamWriter(new FileOutputStream(outFile), encoding)
+                );
+                pw = new PrintWriter(bw);
+                InputStream is = channel.getInputStream();
+                byte[] bytes = new byte[1024];
+                long remainingTime = timeout;
+                boolean isTimeout = false;
                 try{
-                    stdos.reset();
-                    erros.reset();
-                    exitStatus = -1;
-                    exitStatus = executeCommnad(
-                        session,
-                        (String)commands.get(i),
-                        stdos,
-                        erros,
-                        remainingTime
-                    );
-                }finally{
+                    while(timeout > 0 && remainingTime > 0){
+                        int length = 0;
+                        String output = null;
+                        while((length = is.read(bytes, 0, 1024)) != -1){
+                            output = encoding == null ? new String(bytes, 0, length) : new String(bytes, 0, length, encoding);
+                            if(timeout > 0){
+                                pw.print(output);
+                            }
+                        }
+                        
+                        if(channel.isClosed() || output.contains("logout")){
+                            exitStatus = channel.getExitStatus();
+                            break;
+                        }
+                        if(exitStatus == -1 && timeout > 0){
+                            Thread.sleep(remainingTime > checkInterval ? checkInterval : remainingTime);
+                            remainingTime = timeout - (System.currentTimeMillis() - startTime);
+                            if(remainingTime <= 0){
+                                isTimeout = true;
+                            }
+                        }
+                    }
+                    if(isTimeout){
+                        throw new Exception("Comannd execute timeout : elapsed=" + (System.currentTimeMillis() - startTime));
+                    }
                     if(timeout > 0){
-                        pw.println("Standard output：");
-                        String output = encoding == null ? new String(stdos.toByteArray()) : new String(stdos.toByteArray(), encoding);
-                        if(output.length() != 0){
-                            pw.print(output);
-                        }
-                        pw.println();
-                        pw.println("Error output：");
-                        output = encoding == null ? new String(erros.toByteArray()) : new String(erros.toByteArray(), encoding);
-                        if(output.length() != 0){
-                            pw.print(output);
-                        }
                         pw.println();
                         pw.println("Exit code：");
                         pw.println(exitStatus);
-                        if(i != imax - 1){
-                            pw.println();
-                            pw.println();
-                        }
                     }
-                }
-                if(timeout > 0){
-                    if(exitStatus != 0){
-                        throw new Exception("Comannd execute error exit : command=" + commands.get(i) + ", exitCode=" + exitStatus);
-                    }
-                    remainingTime = timeout - (System.currentTimeMillis() - startTime);
-                    if(remainingTime <= 0 && i != imax - 1){
-                        throw new Exception("Comannd execute timeout : remainingCommands=" + commands.subList(i + 1, commands.size()));
-                    }
+                }finally{
+                    pw.flush();
                 }
             }
-            
-            pw.flush();
             
             return timeout > 0 ? new Integer(exitStatus) : null;
         }finally{
             if(pw != null){
                 pw.close();
             }
-            if(session != null){
-                session.disconnect();
-                session = null;
-            }
-        }
-    }
-    
-    protected int executeCommnad(Session session, String command, OutputStream stdos, OutputStream erros, long timeout) throws Exception{
-        ChannelExec channel = null;
-        InputStream is = null;
-        try{
-            channel = (ChannelExec)session.openChannel("exec");
-            is = channel.getInputStream();
-            channel.setErrStream(erros);
-            channel.setCommand(command);
-            
-            final long startTime = System.currentTimeMillis();
-            channel.connect();
-            
-            byte[] bytes = new byte[1024];
-            int exitStatus = -1;
-            long remainingTime = timeout;
-            boolean isTimeout = false;
-            while(timeout > 0 && remainingTime > 0){
-                int length = 0;
-                while((length = is.read(bytes, 0, 1024)) != -1){
-                    stdos.write(bytes, 0, length);
-                }
-                
-                exitStatus = channel.getExitStatus();
-                if(exitStatus != -1 || channel.isClosed()){
-                    break;
-                }
-                if(exitStatus == -1 && timeout > 0){
-                    Thread.sleep(remainingTime > checkInterval ? checkInterval : remainingTime);
-                    remainingTime = timeout - (System.currentTimeMillis() - startTime);
-                    if(remainingTime <= 0){
-                        isTimeout = true;
-                    }
-                }
-            }
-            if(isTimeout){
-                throw new Exception("Comannd execute timeout : command=" + command + ", elapsed=" + (System.currentTimeMillis() - startTime));
-            }
-            return exitStatus;
-        }finally{
-            if(is != null){
-                is.close();
-                is = null;
-            }
             if(channel != null){
                 channel.disconnect();
                 channel = null;
+            }
+            if(session != null){
+                session.disconnect();
+                session = null;
             }
         }
     }
