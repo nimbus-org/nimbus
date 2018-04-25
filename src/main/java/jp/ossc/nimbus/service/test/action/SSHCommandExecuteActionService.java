@@ -53,7 +53,7 @@ import jp.ossc.nimbus.service.test.TestContext;
  */
 public class SSHCommandExecuteActionService extends ServiceBase implements TestAction, TestActionEstimation, SSHCommandExecuteActionServiceMBean{
     
-    private static final long serialVersionUID = -1L;
+    private static final long serialVersionUID = -1763457363374423240L;
     
     protected String ptyType;
     protected boolean isXForwarding;
