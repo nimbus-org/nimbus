@@ -47,6 +47,9 @@ public interface SSHCommandExecuteActionServiceMBean extends ServiceBaseMBean{
     public void setPtyType(String type);
     public String getPtyType();
     
+    public void setPty(boolean pty);
+    public boolean isPty();
+    
     public void setXForwarding(boolean forwarding);
     public boolean isXForwarding();
     

@@ -56,6 +56,7 @@ public class SSHCommandExecuteActionService extends ServiceBase implements TestA
     private static final long serialVersionUID = -1763457363374423240L;
     
     protected String ptyType;
+    protected boolean isPty = true;
     protected boolean isXForwarding;
     
     protected String[] environments;
@@ -82,6 +83,13 @@ public class SSHCommandExecuteActionService extends ServiceBase implements TestA
     }
     public String getPtyType(){
         return ptyType;
+    }
+    
+    public void setPty(boolean pty){
+        isPty = pty;
+    }
+    public boolean isPty(){
+        return isPty;
     }
     
     public void setXForwarding(boolean forwarding){
@@ -297,6 +305,8 @@ public class SSHCommandExecuteActionService extends ServiceBase implements TestA
             if(ptyType != null){
                 channel.setPtyType(ptyType);
             }
+            
+            channel.setPty(isPty);
             channel.setXForwarding(isXForwarding);
             channel.connect();
             
@@ -309,45 +319,35 @@ public class SSHCommandExecuteActionService extends ServiceBase implements TestA
             int exitStatus = -1;
             if(timeout > 0){
                 File outFile = new File(context.getCurrentDirectory(), actionId + ".txt");
-                BufferedWriter bw = new BufferedWriter(
+                pw = new PrintWriter(
                     encoding == null ? new FileWriter(outFile) : new OutputStreamWriter(new FileOutputStream(outFile), encoding)
                 );
-                pw = new PrintWriter(bw);
                 InputStream is = channel.getInputStream();
                 byte[] bytes = new byte[1024];
                 long remainingTime = timeout;
-                boolean isTimeout = false;
                 try{
-                    while(timeout > 0 && remainingTime > 0){
+                    while(remainingTime > 0){
                         int length = 0;
                         String output = null;
-                        while((length = is.read(bytes, 0, 1024)) != -1){
+                        while(is.available() > 0 && (length = is.read(bytes, 0, bytes.length)) != -1){
                             output = encoding == null ? new String(bytes, 0, length) : new String(bytes, 0, length, encoding);
-                            if(timeout > 0){
-                                pw.print(output);
-                            }
+                            pw.print(output);
+                            pw.flush();
                         }
                         
-                        if(channel.isClosed() || output.contains("logout")){
-                            exitStatus = channel.getExitStatus();
+                        if(channel.isClosed() || (output != null && output.contains("logout"))){
                             break;
                         }
-                        if(exitStatus == -1 && timeout > 0){
-                            Thread.sleep(remainingTime > checkInterval ? checkInterval : remainingTime);
-                            remainingTime = timeout - (System.currentTimeMillis() - startTime);
-                            if(remainingTime <= 0){
-                                isTimeout = true;
-                            }
-                        }
+                        Thread.sleep(remainingTime > checkInterval ? checkInterval : remainingTime);
+                        remainingTime = timeout - (System.currentTimeMillis() - startTime);
                     }
-                    if(isTimeout){
+                    if(remainingTime <= 0){
                         throw new Exception("Comannd execute timeout : elapsed=" + (System.currentTimeMillis() - startTime));
                     }
-                    if(timeout > 0){
-                        pw.println();
-                        pw.println("Exit code：");
-                        pw.println(exitStatus);
-                    }
+                    exitStatus = channel.getExitStatus();
+                    pw.println();
+                    pw.println("Exit code：");
+                    pw.println(exitStatus);
                 }finally{
                     pw.flush();
                 }
