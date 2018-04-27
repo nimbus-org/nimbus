@@ -290,12 +290,20 @@ public class CVSTestResourceManagerService extends LocalTestResourceManagerServi
         update(getRepository(groupId, null, null), new File(testResourceDirectory, groupId));
         super.downloadScenarioGroupResource(dir, groupId);
     }
+    
+    public void uploadScenarioGroupResource(File dir, String scenarioGroupId) throws Exception {
+        throw new UnsupportedOperationException("This method is not supported");
+    }
 
     public void downloadScenarioResource(File dir, String groupId, String scenarioId) throws Exception {
         update(getRepository(groupId, scenarioId, null), new File(testResourceDirectory, groupId + FILE_SEPARATOR + scenarioId));
         super.downloadScenarioResource(dir, groupId, scenarioId);
     }
 
+    public void uploadScenarioResource(File dir, String scenarioGroupId, String scenarioId) throws Exception {
+        throw new UnsupportedOperationException("This method is not supported");
+    }
+    
     protected ScmRepository getRepository(String scenarioGroupId, String scenarioId, String testcaseId) throws ScmRepositoryException,
             NoSuchScmProviderException {
         StringBuilder scmUrlBuff = new StringBuilder();
