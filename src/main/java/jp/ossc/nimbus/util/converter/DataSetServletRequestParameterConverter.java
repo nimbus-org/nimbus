@@ -31,16 +31,23 @@
  */
 package jp.ossc.nimbus.util.converter;
 
+import java.io.File;
 import java.util.Iterator;
 import java.util.Collections;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ConcurrentHashMap;
 import java.lang.reflect.InvocationTargetException;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import jp.ossc.nimbus.beans.PropertyFactory;
 import jp.ossc.nimbus.beans.Property;
@@ -94,6 +101,10 @@ public class DataSetServletRequestParameterConverter implements Converter{
     
     public static final String DEFAULT_DATASET_PREFIX = "dataset";
     
+    protected static final String HEADER_CONTENT_TYPE = "Content-Type";
+    
+    protected static final String MULTIPART = "multipart/";
+    
     /**
      * データセットマッピング。<p>
      */
@@ -130,6 +141,27 @@ public class DataSetServletRequestParameterConverter implements Converter{
      * デフォルトは、falseで、変換エラーとする。<br>
      */
     protected boolean isIgnoreUnknownParameter;
+    
+    /**
+     * HttpServletRequestからFileに変換する際の一時ファイルをメモリ上で管理できるデータサイズの上限。<p>
+     * デフォルトは、{@link DiskFileItemFactory#DEFAULT_SIZE_THRESHOLD}。
+     */
+    protected int sizeThreshold = DiskFileItemFactory.DEFAULT_SIZE_THRESHOLD;
+    
+    /**
+     * ディスク上に一時的に保存する際のディレクトリ。<p>
+     */
+    protected String repositoryPath;
+    
+    /**
+     * Requestのデータサイズの上限。<p>
+     */
+    protected long requestSizeThreshold = -1L;
+    
+    /**
+     * HTTPヘッダの文字エンコーディング。<p>
+     */
+    protected String headerEncoding;
     
     /**
      * データセット名とデータセットのマッピングを設定する。<p>
@@ -229,6 +261,82 @@ public class DataSetServletRequestParameterConverter implements Converter{
     public boolean isIgnoreUnknownParameter(){
         return isIgnoreUnknownParameter;
     }
+    /**
+     * メモリ上で管理するデータサイズ（上限）を設定する。<p>
+     * デフォルトは、{@link DiskFileItemFactory#DEFAULT_SIZE_THRESHOLD}。
+     * この値を超えると、ディスク上に一時的に保存される。<br>
+     * ここで保存されたファイルは適当なタイミングで勝手に消される。<br>
+     *
+     * @see DiskFileItemFactory#setSizeThreshold(int)
+     * @param size 上限サイズ
+     */
+    public void setSizeThreshold(int size) {
+        sizeThreshold = size;
+    }
+    
+    /**
+     * メモリ上で管理するデータサイズ（上限）を取得する。<p>
+     *
+     * @return 上限サイズ
+     */
+    public int getSizeThreshold() {
+        return sizeThreshold;
+    }
+    
+    /**
+     * ディスク上に一時的に保存する際のディレクトリを指定する。<p>
+     *
+     * @see DiskFileItemFactory#setRepository(File)
+     * @param path ディスク上に一時的に保存する際のディレクトリパス
+     */
+    public void setRepositoryPath(String path) {
+        repositoryPath = path;
+    }
+    
+    /**
+     * ディスク上に一時的に保存する際のディレクトリを取得する。<p>
+     *
+     * @return ディスク上に一時的に保存する際のディレクトリパス
+     */
+    public String getRepositoryPath() {
+        return repositoryPath;
+    }
+    
+    /**
+     * HttpServletRequestのContentLengthの最大値を設定する。<p>
+     *
+     * @param size ContentLengthの最大値
+     */
+    public void setRequestSizeThreshold(long size) {
+        requestSizeThreshold = size;
+    }
+    
+    /**
+     * HttpServletRequestのContentLengthの最大値を取得する。<p>
+     *
+     * @return ContentLengthの最大値
+     */
+    public long getRequestSizeThreshold() {
+        return requestSizeThreshold;
+    }
+    
+    /**
+     * HTTPヘッダの文字コードを設定する。<p>
+     *
+     * @param encoding 文字コード
+     */
+    public void setHeaderEncoding(String encoding){
+        headerEncoding = encoding;
+    }
+    
+    /**
+     * HTTPヘッダの文字コードを取得する。<p>
+     *
+     * @return 文字コード
+     */
+    public String getHeaderEncoding(){
+        return headerEncoding;
+    }
     
     /**
      * 指定されたオブジェクトを変換する。<p>
@@ -238,21 +346,69 @@ public class DataSetServletRequestParameterConverter implements Converter{
      * @exception ConvertException 変換に失敗した場合
      */
     public Object convert(Object obj) throws ConvertException{
-        if(!(obj instanceof ServletRequest)){
+        if(!(obj instanceof HttpServletRequest)){
             return null;
         }
-        ServletRequest request = (ServletRequest)obj;
-        final Map paramMap = request.getParameterMap();
+        HttpServletRequest request = (HttpServletRequest)obj;
+        String contentType = request.getHeader(HEADER_CONTENT_TYPE);
+        Map paramMap = null;
+        if(contentType != null || (!contentType.toLowerCase().startsWith(MULTIPART))){
+            paramMap = request.getParameterMap();
+        }else{
+            DiskFileItemFactory factory = new DiskFileItemFactory();
+            if(repositoryPath != null){
+                factory.setRepository(new File(repositoryPath));
+            }
+            factory.setSizeThreshold(sizeThreshold);
+            ServletFileUpload upload = new ServletFileUpload(factory);
+            upload.setSizeMax(requestSizeThreshold);
+            if(headerEncoding != null){
+                upload.setHeaderEncoding(headerEncoding);
+            }
+            List itemList = null;
+            try{
+                itemList = upload.parseRequest((HttpServletRequest) obj);
+            }catch(FileUploadException e){
+                throw new ConvertException(e);
+            }
+            for(int i = 0; i < itemList.size(); i++){
+                FileItem item = (FileItem)itemList.get(i);
+                if(paramMap == null){
+                    paramMap = new HashMap();
+                }
+                if(item.isFormField()){
+                    String[] vals = (String[])paramMap.get(item.getFieldName());
+                    if(vals == null){
+                        vals = new String[]{item.getString()};
+                    }else{
+                        String[] newVals = new String[vals.length + 1];
+                        System.arraycopy(vals, 0, newVals, 0, vals.length);
+                        newVals[vals.length] = item.getString();
+                        vals = newVals;
+                    }
+                    paramMap.put(item.getFieldName(), vals);
+                }else{
+                    FileItem[] vals = (FileItem[])paramMap.get(item.getFieldName());
+                    if(vals == null){
+                        vals = new FileItem[]{item};
+                    }else{
+                        FileItem[] newVals = new FileItem[vals.length + 1];
+                        System.arraycopy(vals, 0, newVals, 0, vals.length);
+                        newVals[vals.length] = item;
+                        vals = newVals;
+                    }
+                    paramMap.put(item.getFieldName(), vals);
+                }
+            }
+        }
         if(paramMap == null || paramMap.size() == 0){
             return null;
         }
         String defaultDsName = request.getParameter(dataSetParameterName);
-        if((defaultDsName == null || defaultDsName.length() == 0)
-            && request instanceof HttpServletRequest){
-            HttpServletRequest httpReq = (HttpServletRequest)request;
-            String path = httpReq.getServletPath();
-            if(httpReq.getPathInfo() != null){
-                path = path + httpReq.getPathInfo();
+        if((defaultDsName == null || defaultDsName.length() == 0)){
+            String path = request.getServletPath();
+            if(request.getPathInfo() != null){
+                path = path + request.getPathInfo();
             }
             if(path != null){
                 int index = path.lastIndexOf('.');
@@ -324,7 +480,7 @@ public class DataSetServletRequestParameterConverter implements Converter{
                     prop = old;
                 }
             }
-            final String[] vals = (String[])entry.getValue();
+            final Object[] vals = (Object[])entry.getValue();
             try{
                 if(prop instanceof NestedProperty){
                     Property thisProp = ((NestedProperty)prop).getThisProperty();
@@ -450,11 +606,10 @@ public class DataSetServletRequestParameterConverter implements Converter{
         Record record,
         String name,
         Class propType,
-        String[] vals
+        Object[] vals
     ) throws PropertySetException{
         if(propType == null
-            || propType.equals(java.lang.Object.class)
-            || propType.equals(String[].class)
+            || propType.isAssignableFrom(vals.getClass())
         ){
             record.setProperty(
                 name,
@@ -469,7 +624,7 @@ public class DataSetServletRequestParameterConverter implements Converter{
             }else{
                 record.setParseProperty(
                     name,
-                    vals[vals.length - 1]
+                    vals[0]
                 );
             }
         }
@@ -478,7 +633,7 @@ public class DataSetServletRequestParameterConverter implements Converter{
     protected void setRecordListProperty(
         RecordList recList,
         String name,
-        String[] vals
+        Object[] vals
     ) throws PropertySetException{
         for(int i = 0; i < vals.length; i++){
             Record rec = null;
@@ -496,7 +651,7 @@ public class DataSetServletRequestParameterConverter implements Converter{
         RecordList recList,
         String name,
         int index,
-        String[] vals
+        Object[] vals
     ) throws PropertySetException{
         Record rec = null;
         if(recList.size() > index){
