@@ -517,11 +517,7 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
         params.put("scenarioGroupId", scenarioGroupId);
         params.put("scenarioId", scenarioId);
         try {
-            TestScenario.Status status = (TestScenario.Status) request("getTestScenarioStatus", params);
-            if(localTestController != null && status == null) {
-                status = localTestController.getTestScenarioStatus(scenarioGroupId, scenarioId);
-            }
-            return status;
+            return (TestScenario.Status) request("getTestScenarioStatus", params);
         } catch (HttpException e) {
             throw e;
         } catch (Exception e) {

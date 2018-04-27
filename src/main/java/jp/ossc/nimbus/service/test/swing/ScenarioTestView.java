@@ -901,6 +901,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
             this.scenarioEndButton.setEnabled(false);
             this.scenarioCancelButton.setEnabled(false);
             this.scenarioDownloadButton.setEnabled(false);
+            this.scenarioStatusButton.change(null);
             return;
         }else{
             this.scenarioGroupStartButton.setEnabled(false);
