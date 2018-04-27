@@ -90,6 +90,14 @@ public interface TestResourceManager{
     public void downloadScenarioGroupResource(File dir, String scenarioGroupId) throws Exception;
     
     /**
+     * 指定されたシナリオグループのリソースをアップロードする。<p>
+     *
+     * @param dir アップロード元のディレクトリ
+     * @param scenarioGroupId シナリオグループID
+     */
+    public void uploadScenarioGroupResource(File dir, String scenarioGroupId) throws Exception;
+    
+    /**
      * 指定されたシナリオのリソースをダウンロードする。<p>
      *
      * @param dir ダウンロード先のディレクトリ
@@ -97,5 +105,14 @@ public interface TestResourceManager{
      * @param scenarioId シナリオID
      */
     public void downloadScenarioResource(File dir, String scenarioGroupId, String scenarioId) throws Exception;
+    
+    /**
+     * 指定されたシナリオのリソースをアップロードする。<p>
+     *
+     * @param dir アップロード元のディレクトリ
+     * @param scenarioGroupId シナリオグループID
+     * @param scenarioId シナリオID
+     */
+    public void uploadScenarioResource(File dir, String scenarioGroupId, String scenarioId) throws Exception;
     
 }

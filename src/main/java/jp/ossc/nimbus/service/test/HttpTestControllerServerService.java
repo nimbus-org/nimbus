@@ -31,8 +31,12 @@
  */
 package jp.ossc.nimbus.service.test;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
@@ -46,9 +50,14 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+
+import org.apache.commons.fileupload.MultipartStream;
 
 import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.core.ServiceName;
+import jp.ossc.nimbus.io.RecurciveSearchFile;
 import jp.ossc.nimbus.service.http.proxy.HttpProcessServiceBase;
 import jp.ossc.nimbus.service.http.proxy.HttpRequest;
 import jp.ossc.nimbus.service.http.proxy.HttpResponse;
@@ -61,54 +70,83 @@ import jp.ossc.nimbus.util.converter.BeanJSONConverter;
  * @author M.Takata
  */
 public class HttpTestControllerServerService extends HttpProcessServiceBase implements HttpTestControllerServerServiceMBean {
-
+    
     private ServiceName testControllerServiceName;
     private TestController testController;
     private ServiceName beanJSONConverterServiceName;
     private BeanJSONConverter beanJSONConverter;
     private String urlEncodeCharacterEncoding = "UTF-8";
     private String defaultResponseCharacterEncoding = "UTF-8";
-
+    
+    protected ServiceName testResourceManagerServiceName;
+    protected TestResourceManager testResourceManager;
+    
+    protected File temporaryDirectory;
+    
     public void setTestControllerServiceName(ServiceName name) {
         testControllerServiceName = name;
     }
-
+    
     public ServiceName getTestControllerServiceName() {
         return testControllerServiceName;
     }
-
+    
     public void setBeanJSONConverterServiceName(ServiceName name) {
         beanJSONConverterServiceName = name;
     }
-
+    
     public ServiceName getBeanJSONConverterServiceName() {
         return beanJSONConverterServiceName;
     }
-
+    
     public void setURLEncodeCharacterEncoding(String encoding) {
         urlEncodeCharacterEncoding = encoding;
     }
-
+    
     public String getURLEncodeCharacterEncoding() {
         return urlEncodeCharacterEncoding;
     }
-
+    
     public void setDefaultResponseCharacterEncoding(String encoding) {
         defaultResponseCharacterEncoding = encoding;
     }
-
+    
     public String getDefaultResponseCharacterEncoding() {
         return defaultResponseCharacterEncoding;
     }
-
+    
     public void setTestController(TestController controller) {
         testController = controller;
     }
-
+    
     public void setBeanJSONConverter(BeanJSONConverter converter) {
         beanJSONConverter = converter;
     }
-
+    
+    public ServiceName getTestResourceManagerServiceName() {
+        return testResourceManagerServiceName;
+    }
+    
+    public void setTestResourceManagerServiceName(ServiceName serviceName) {
+        testResourceManagerServiceName = serviceName;
+    }
+    
+    public TestResourceManager getTestResourceManager() {
+        return testResourceManager;
+    }
+    
+    public void setTestResourceManager(TestResourceManager manager) {
+        testResourceManager = manager;
+    }
+    
+    public File getTemporaryDirectory() {
+        return temporaryDirectory;
+    }
+    
+    public void setTemporaryDirectory(File path) {
+        temporaryDirectory = path;
+    }
+    
     public void startService() throws Exception {
         if (testControllerServiceName != null) {
             testController = (TestController) ServiceManagerFactory.getServiceObject(testControllerServiceName);
@@ -122,10 +160,22 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
         if (beanJSONConverter == null) {
             beanJSONConverter = new BeanJSONConverter();
         }
+        if (testResourceManagerServiceName != null) {
+            testResourceManager = (TestResourceManager) ServiceManagerFactory.getServiceObject(testResourceManagerServiceName);
+        }
+        if (testResourceManager != null) {
+            if (temporaryDirectory == null) {
+                temporaryDirectory = new File(System.getProperty("java.io.tmpdir"));
+            }
+            if (!temporaryDirectory.exists()) {
+                temporaryDirectory.mkdirs();
+            }
+        }
     }
-
+    
     public void doProcess(HttpRequest request, HttpResponse response) throws Exception {
         String acceptStr = request.getHeader().getHeader("Accept");
+        ContentType contentType = new ContentType(request.getHeader().getHeader("Content-Type"));
         boolean isJSON = true;
         if (acceptStr != null) {
             Accept accept = new Accept(acceptStr);
@@ -143,9 +193,11 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
         String body = null;
         if (request.getBody() != null) {
             request.getBody().read();
-            body = request.getBody().toString();
+            if (!"multipart/form-data".equalsIgnoreCase(contentType.getMediaType())) {
+                body = request.getBody().toString();
+            }
         }
-
+        
         if (request.getHeader().getURLMatcher(".*setTestPhase").matches()) {
             Map params = parseQuery(request.getHeader().getQuery());
             if (body != null) {
@@ -631,9 +683,9 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
             try {
                 if (isJSON) {
                     jsonMap.put(
-                            "TestCase",
-                            testController.getTestCase(getParameter(params, "scenarioGroupId"), getParameter(params, "scenarioId"),
-                                    getParameter(params, "testcaseId")));
+                                "TestCase",
+                                testController.getTestCase(getParameter(params, "scenarioGroupId"), getParameter(params, "scenarioId"),
+                                        getParameter(params, "testcaseId")));
                 } else {
                     result = testController.getTestCase(getParameter(params, "scenarioGroupId"), getParameter(params, "scenarioId"),
                             getParameter(params, "testcaseId"));
@@ -820,11 +872,98 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
             } else {
                 responseBinary(response, result);
             }
+        } else if (request.getHeader().getURLMatcher(".*uploadScenarioGroupResource").matches()) {
+            if (testResourceManager != null) {
+                Map params = parseQuery(request.getHeader().getQuery());
+                OutputStream os = null;
+                try {
+                    parseMultipartRequest(request, contentType, params);
+                    String scenarioGroupId = (String) params.get("scenarioGroupId");
+                    Object[] objs = (Object[]) params.get("zipfile");
+                    File tmpZipFile = new File(temporaryDirectory, (String) objs[0]);
+                    os = new FileOutputStream(tmpZipFile);
+                    os.write((byte[]) objs[1]);
+                    os.flush();
+                    RecurciveSearchFile tmpDir = new RecurciveSearchFile(temporaryDirectory, scenarioGroupId);
+                    unZip(tmpZipFile, temporaryDirectory);
+                    testResourceManager.uploadScenarioGroupResource(tmpDir, scenarioGroupId);
+                    tmpZipFile.delete();
+                    tmpDir.deleteAllTree(true);
+                } catch (Exception e) {
+                    if (isJSON) {
+                        Map jsonMap = new HashMap();
+                        jsonMap.put("exception", e);
+                        responseJSON(request, response, jsonMap);
+                    } else {
+                        responseBinary(response, e);
+                    }
+                } finally {
+                    if (os != null) {
+                        try {
+                            os.close();
+                        } catch (Exception e) {
+                        }
+                    }
+                }
+            } else {
+                Exception e = new Exception("TestResourceManager is null");
+                if (isJSON) {
+                    Map jsonMap = new HashMap();
+                    jsonMap.put("exception", e);
+                    responseJSON(request, response, jsonMap);
+                } else {
+                    responseBinary(response, e);
+                }
+            }
+        } else if (request.getHeader().getURLMatcher(".*uploadScenarioResource").matches()) {
+            if (testResourceManager != null) {
+                Map params = parseQuery(request.getHeader().getQuery());
+                OutputStream os = null;
+                try {
+                    parseMultipartRequest(request, contentType, params);
+                    String scenarioGroupId = (String) params.get("scenarioGroupId");
+                    String scenarioId = (String) params.get("scenarioId");
+                    Object[] objs = (Object[]) params.get("zipfile");
+                    File tmpZipFile = new File(temporaryDirectory, (String) objs[0]);
+                    os = new FileOutputStream(tmpZipFile);
+                    os.write((byte[]) objs[1]);
+                    os.flush();
+                    RecurciveSearchFile tmpDir = new RecurciveSearchFile(temporaryDirectory, scenarioId);
+                    unZip(tmpZipFile, temporaryDirectory);
+                    testResourceManager.uploadScenarioResource(tmpDir, scenarioGroupId, scenarioId);
+                    tmpZipFile.delete();
+                    tmpDir.deleteAllTree(true);
+                } catch (Exception e) {
+                    if (isJSON) {
+                        Map jsonMap = new HashMap();
+                        jsonMap.put("exception", e);
+                        responseJSON(request, response, jsonMap);
+                    } else {
+                        responseBinary(response, e);
+                    }
+                } finally {
+                    if (os != null) {
+                        try {
+                            os.close();
+                        } catch (Exception e) {
+                        }
+                    }
+                }
+            } else {
+                Exception e = new Exception("TestResourceManager is null");
+                if (isJSON) {
+                    Map jsonMap = new HashMap();
+                    jsonMap.put("exception", e);
+                    responseJSON(request, response, jsonMap);
+                } else {
+                    responseBinary(response, e);
+                }
+            }
         } else {
             response.setStatusCode(404);
         }
     }
-
+    
     private Map parseQuery(String query) throws UnsupportedEncodingException {
         Map paramMap = new HashMap();
         if (query == null) {
@@ -850,12 +989,12 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
         }
         return paramMap;
     }
-
+    
     private String getParameter(Map paramMap, String name) {
         List values = (List) paramMap.get(name);
         return values == null ? null : (String) values.get(0);
     }
-
+    
     private void responseJSON(HttpRequest request, HttpResponse response, Map jsonMap) throws Exception {
         String charset = defaultResponseCharacterEncoding;
         String acceptCharsetStr = request.getHeader().getHeader("Accept-Charset");
@@ -890,14 +1029,14 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
             os.write(bytes, 0, len);
         }
     }
-
+    
     private void responseBinary(HttpResponse response, Object responseObj) throws Exception {
         response.setHeader("Content-Type", "application/octet-stream");
         ObjectOutputStream oos = new ObjectOutputStream(response.getOutputStream());
         oos.writeObject(responseObj);
         oos.flush();
     }
-
+    
     private void responseZIPFile(HttpResponse response, File zipFile) throws Exception {
         response.setHeader("Content-Type", "application/zip; name=" + zipFile.getName());
         InputStream is = new FileInputStream(zipFile);
@@ -913,15 +1052,105 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
             is.close();
         }
     }
-
+    
+    private void parseMultipartRequest(HttpRequest request, ContentType contentType, Map params) throws Exception {
+        String boundary = (String) contentType.getParameters().get("boundary");
+        ByteArrayInputStream bais = new ByteArrayInputStream(request.getBody().toByteArray());
+        MultipartStream multipartStream = new MultipartStream(bais, boundary.getBytes());
+        ByteArrayOutputStream baos = null;
+        boolean nextPart = multipartStream.skipPreamble();
+        String key = null;
+        String partContentType = null;
+        String charset = null;
+        String fileName = null;
+        boolean isBinary = false;
+        while (nextPart) {
+            String[] headers = multipartStream.readHeaders().split("\r\n");
+            for (int i = 0; i < headers.length; i++) {
+                String type = headers[i].substring(0, headers[i].indexOf(": "));
+                String[] datas = headers[i].substring(headers[i].indexOf(": ") + 2).split("; ");
+                if ("Content-Disposition".equals(type)) {
+                    key = datas[1].substring(6, datas[1].length() - 1);
+                    if (datas.length > 2) {
+                        fileName = datas[2].substring(10, datas[2].length() - 1);
+                    }
+                } else if ("Content-Type".equals(type)) {
+                    partContentType = datas[0];
+                    charset = datas[1].substring(datas[1].indexOf("=") + 1);
+                } else if ("Content-Transfer-Encoding".equals(type)) {
+                    isBinary = "binary".equals(datas[0]);
+                }
+            }
+            baos = new ByteArrayOutputStream();
+            multipartStream.readBodyData(baos);
+            if (isBinary || "application/octet-stream".equals(partContentType)) {
+                params.put(key, new Object[] { fileName, baos.toByteArray() });
+            } else {
+                params.put(key, new String(baos.toByteArray(), charset));
+            }
+            nextPart = multipartStream.readBoundary();
+            key = null;
+            partContentType = null;
+            charset = null;
+            fileName = null;
+            isBinary = false;
+        }
+    }
+    
+    private void unZip(File zipFile, File baseDir) throws IOException {
+        if (!baseDir.exists()) {
+            baseDir.mkdirs();
+        }
+        ZipInputStream zis = null;
+        try {
+            zis = new ZipInputStream(new FileInputStream(zipFile));
+            ZipEntry entry = null;
+            while ((entry = zis.getNextEntry()) != null) {
+                if (entry.isDirectory()) {
+                    new File(baseDir, entry.getName()).mkdirs();
+                } else {
+                    File file = new File(baseDir, entry.getName());
+                    File parent = file.getParentFile();
+                    if (parent != null) {
+                        parent.mkdirs();
+                    }
+                    FileOutputStream out = null;
+                    try {
+                        out = new FileOutputStream(file);
+                        byte[] buf = new byte[1024];
+                        int size = 0;
+                        while ((size = zis.read(buf)) != -1) {
+                            out.write(buf, 0, size);
+                        }
+                    } finally {
+                        if (out != null) {
+                            try {
+                                out.close();
+                            } catch (Exception e) {
+                            }
+                        }
+                    }
+                }
+                zis.closeEntry();
+            }
+        } finally {
+            if (zis != null) {
+                try {
+                    zis.close();
+                } catch (Exception e) {
+                }
+            }
+        }
+    }
+    
     protected static class HeaderValue {
         protected String value;
         protected Map parameters;
         protected int hashCode;
-
+        
         public HeaderValue() {
         }
-
+        
         public HeaderValue(String header) {
             String[] types = header.split(";");
             value = types[0].trim();
@@ -940,26 +1169,26 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
                 hashCode += parameters.hashCode();
             }
         }
-
+        
         public String getValue() {
             return value;
         }
-
+        
         public void setValue(String val) {
             value = val;
         }
-
+        
         public String getParameter(String name) {
             return parameters == null ? null : (String) parameters.get(name);
         }
-
+        
         public void setParameter(String name, String value) {
             if (parameters == null) {
                 parameters = new HashMap();
             }
             parameters.put(name, value);
         }
-
+        
         public String toString() {
             StringBuffer buf = new StringBuffer();
             buf.append(value);
@@ -972,7 +1201,7 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
             }
             return buf.toString();
         }
-
+        
         public boolean equals(Object obj) {
             if (obj == null || !(obj instanceof HeaderValue)) {
                 return false;
@@ -990,15 +1219,15 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
             }
             return true;
         }
-
+        
         public int hashCode() {
             return hashCode;
         }
     }
-
+    
     protected static class CharsetRange extends HeaderValue {
         protected float q = 1.0f;
-
+        
         public CharsetRange(String header) throws IllegalArgumentException {
             super(header);
             String qvalue = getParameter("q");
@@ -1010,36 +1239,36 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
                 }
             }
         }
-
+        
         public String getCharset() {
             return getValue();
         }
-
+        
         public void setCharset(String charset) {
             setValue(charset);
         }
     }
-
+    
     protected static class MediaType extends HeaderValue {
         public MediaType() {
         }
-
+        
         public MediaType(String header) {
             super(header);
         }
-
+        
         public String getMediaType() {
             return getValue();
         }
-
+        
         public void setMediaType(String type) {
             setValue(type);
         }
     }
-
+    
     protected static class MediaRange extends MediaType {
         protected float q = 1.0f;
-
+        
         public MediaRange(String header) throws IllegalArgumentException {
             super(header);
             String qvalue = getParameter("q");
@@ -1052,10 +1281,10 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
             }
         }
     }
-
+    
     protected static class Accept {
         protected final List mediaRanges;
-
+        
         public Accept(String header) throws IllegalArgumentException {
             String[] mediaRangeArray = header.split(",");
             mediaRanges = new ArrayList(mediaRangeArray.length);
@@ -1069,10 +1298,10 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
             });
         }
     }
-
+    
     protected static class AcceptCharset {
         protected final List charsetRanges;
-
+        
         public AcceptCharset(String header) throws IllegalArgumentException {
             String[] charsetRangeArray = header.split(",");
             charsetRanges = new ArrayList(charsetRangeArray.length);
@@ -1084,6 +1313,82 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
                     return ((CharsetRange) o1).q == ((CharsetRange) o2).q ? 0 : ((CharsetRange) o1).q > ((CharsetRange) o2).q ? -1 : 1;
                 }
             });
+        }
+    }
+    
+    private static class ContentType {
+        private final String mediaType;
+        private final int hashCode;
+        private Map parameters;
+        
+        public ContentType(String contentType) {
+            String[] types = contentType.split(";");
+            mediaType = types[0].trim();
+            int hash = mediaType.hashCode();
+            if (types.length > 1) {
+                parameters = new HashMap();
+                for (int i = 1; i < types.length; i++) {
+                    String parameter = types[i].trim();
+                    final int index = parameter.indexOf('=');
+                    if (index != -1) {
+                        parameters.put(parameter.substring(0, index), parameter.substring(index + 1));
+                    } else {
+                        parameters.put(parameter, null);
+                    }
+                }
+                hash += parameters.hashCode();
+            }
+            hashCode = hash;
+        }
+        
+        public String getMediaType() {
+            return mediaType;
+        }
+        
+        public Map getParameters() {
+            return parameters;
+        }
+        
+        public int hashCode() {
+            return hashCode;
+        }
+        
+        public boolean equals(Object obj) {
+            if (obj == null || !(obj instanceof ContentType)) {
+                return false;
+            }
+            if (obj == this) {
+                return true;
+            }
+            ContentType cmp = (ContentType) obj;
+            if (!mediaType.equalsIgnoreCase(cmp.mediaType)) {
+                return false;
+            }
+            if (parameters == null && cmp.parameters == null) {
+                return true;
+            } else if ((parameters == null && cmp.parameters != null) || (parameters != null && cmp.parameters == null)) {
+                return false;
+            } else {
+                return parameters.equals(cmp.parameters);
+            }
+        }
+        
+        public String toString() {
+            StringBuilder buf = new StringBuilder(mediaType);
+            if (parameters != null) {
+                Iterator itr = parameters.entrySet().iterator();
+                while (itr.hasNext()) {
+                    Map.Entry entry = (Map.Entry) itr.next();
+                    buf.append(entry.getKey());
+                    if (entry.getValue() != null) {
+                        buf.append('=').append(entry.getValue());
+                    }
+                    if (itr.hasNext()) {
+                        buf.append("; ");
+                    }
+                }
+            }
+            return buf.toString();
         }
     }
 }

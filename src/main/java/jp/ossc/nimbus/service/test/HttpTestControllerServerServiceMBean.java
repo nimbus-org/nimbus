@@ -31,6 +31,8 @@
  */
 package jp.ossc.nimbus.service.test;
 
+import java.io.File;
+
 import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.service.http.proxy.HttpProcessServiceBaseMBean;
 
@@ -53,4 +55,13 @@ public interface HttpTestControllerServerServiceMBean extends HttpProcessService
     
     public void setDefaultResponseCharacterEncoding(String encoding);
     public String getDefaultResponseCharacterEncoding();
+    
+    public ServiceName getTestResourceManagerServiceName();
+    public void setTestResourceManagerServiceName(ServiceName serviceName);
+
+    public TestResourceManager getTestResourceManager();
+    public void setTestResourceManager(TestResourceManager manager);
+    
+    public File getTemporaryDirectory();
+    public void setTemporaryDirectory(File path);
 }
