@@ -1578,6 +1578,9 @@ public class TestControllerService extends ServiceBase implements TestController
             if (descriptionElements.hasNext()) {
                 Element descriptionElement = (Element) descriptionElements.next();
                 String description = MetaData.getElementContent(descriptionElement);
+                if(description == null || description.length() == 0){
+                    description = MetaData.getElementContent(descriptionElement, true, null);
+                }
                 if (description != null && !"".equals(description)) {
                     testActionResource.setDescription(description.trim());
                 }
@@ -1586,6 +1589,9 @@ public class TestControllerService extends ServiceBase implements TestController
             if (titleElements.hasNext()) {
                 Element titleElement = (Element) titleElements.next();
                 String title = MetaData.getElementContent(titleElement);
+                if(title == null || title.length() == 0){
+                    title = MetaData.getElementContent(titleElement, true, null);
+                }
                 if (title != null && !"".equals(title)) {
                     testActionResource.setTitle(title.trim());
                 }
@@ -1598,7 +1604,10 @@ public class TestControllerService extends ServiceBase implements TestController
                 String name = MetaData.getOptionalAttribute(resourceElement, "name");
                 Reader resource = null;
                 if (name == null) {
-                    final String resourceStr = MetaData.getElementContent(resourceElement, "");
+                    String resourceStr = MetaData.getElementContent(resourceElement);
+                    if(resourceStr == null || resourceStr.length() == 0){
+                        resourceStr = MetaData.getElementContent(resourceElement, true, "");
+                    }
                     resource = new RetryReader(new StringReader(resourceStr));
                 } else {
                     final File resourceFile = new File(targetDir, name);
@@ -1681,6 +1690,9 @@ public class TestControllerService extends ServiceBase implements TestController
                 if (descriptionElements.hasNext()) {
                     Element descriptionElement = (Element) descriptionElements.next();
                     String description = MetaData.getElementContent(descriptionElement);
+                    if(description == null || description.length() == 0){
+                        description = MetaData.getElementContent(descriptionElement, true, null);
+                    }
                     if (description != null && !"".equals(description)) {
                         ((TestResourceBaseImpl) target).setDescription(description.trim());
                     }
@@ -1689,6 +1701,9 @@ public class TestControllerService extends ServiceBase implements TestController
                 if (titleElements.hasNext()) {
                     Element titleElement = (Element) titleElements.next();
                     String title = MetaData.getElementContent(titleElement);
+                    if(title == null || title.length() == 0){
+                        title = MetaData.getElementContent(titleElement, true, null);
+                    }
                     if (title != null && !"".equals(title)) {
                         ((TestResourceBaseImpl) target).setTitle(title.trim());
                     }
