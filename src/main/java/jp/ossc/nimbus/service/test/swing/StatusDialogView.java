@@ -49,7 +49,7 @@ public class StatusDialogView extends JDialog {
     
     public StatusDialogView(JFrame ownerFrame, String title, StatusActionMnager statusObject) {
         super(ownerFrame);
-        this.setModal(true);
+        setModal(true);
         
         setTitle(title);
         setBounds(ownerFrame.getX()+100, ownerFrame.getY()+100, 700, 400);
@@ -124,7 +124,7 @@ public class StatusDialogView extends JDialog {
 
     public StatusDialogView(JFrame ownerFrame, String title, Exception throwObject) {
         super(ownerFrame);
-        this.setModal(true);
+        setModal(true);
         
         setTitle(title);
         setBounds(ownerFrame.getX()+100, ownerFrame.getY()+100, 700, 400);

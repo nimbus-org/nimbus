@@ -94,12 +94,12 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
     
     public TestCaseListPanel(JFrame ownerFrame) throws Exception {
         this.ownerFrame = ownerFrame;
-        this.initialize();
+        initialize();
     }
     
     public void initialize() throws Exception {
         testCaseList = null;
-        this.setupTestCaseCompornents();
+        setupTestCaseCompornents();
     }
     
     public void setUserId(String userId) {
@@ -120,16 +120,16 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
     
     public void setTestCaseList(List testCaseList) throws Exception {
         this.testCaseList = testCaseList;
-        this.setupTestCaseCompornents();
-        this.testCaseControlListenerList = new ArrayList();
+        setupTestCaseCompornents();
+        testCaseControlListenerList = new ArrayList();
     }
     
     public void resetup() throws Exception{
-        this.setupTestCaseCompornents();
+        setupTestCaseCompornents();
     }
     
     public void addTestCaseControlListener(TestCaseControlListener testCaseControlListener){
-        this.testCaseControlListenerList.add(testCaseControlListener);
+        testCaseControlListenerList.add(testCaseControlListener);
     }
     
     
@@ -150,10 +150,10 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
         SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_PATTERN);
         
         // 初期化
-        this.removeAll();
-        this.setLayout(null);
+        removeAll();
+        setLayout(null);
         
-        int winWidth = this.getWidth();
+        int winWidth = getWidth();
         
         ROW_SPACE = (winWidth - (NO_WIDTH + START_DATE_WIDTH + END_DATE_WIDTH + STATE_WIDTH + STATE_WIDTH + START_BUTTON_WIDTH + END_BUTTON_WIDTH + DOWNLOAD_BUTTON_WIDTH + MARGIN + MARGIN)) / 2;
         ID_WIDTH = ROW_SPACE;
@@ -205,15 +205,15 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
         tmpX += END_BUTTON_WIDTH;
         label10.setBounds(tmpX, tmpY, DOWNLOAD_BUTTON_WIDTH, HEIGHT);
         
-        this.add(label1);
-        this.add(label2);
-        this.add(label3);
-        this.add(label4);
-        this.add(label5);
-        this.add(label6);
-        this.add(label7);
-        this.add(label8);
-        this.add(label9);
+        add(label1);
+        add(label2);
+        add(label3);
+        add(label4);
+        add(label5);
+        add(label6);
+        add(label7);
+        add(label8);
+        add(label9);
         
         if (testCaseList != null) {
             
@@ -224,7 +224,7 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
             for (int i = 0; i < testCaseList.size(); i++) {
                 TestCase testCase = (TestCase) testCaseList.get(i);
                 Status status = testCase.getStatus();
-                if (status != null && status.getState() == TestCase.Status.STARTED) {
+                if (status != null && (status.getState() == TestCase.Status.STARTED || status.getState() == TestCase.Status.ERROR)) {
                     startTestCaseFlg = true;
                 }
             }
@@ -245,7 +245,7 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
                 label5 = new JLabel("");
                 label6 = new JLabel("");
                 
-                TestErrorStatusDispButton tmpErrorStatusButton = new TestErrorStatusDispButton(this.ownerFrame);
+                TestErrorStatusDispButton tmpErrorStatusButton = new TestErrorStatusDispButton(ownerFrame);
                 
                 Status status = null;
                 try {
@@ -344,24 +344,24 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
                 tmpX += END_BUTTON_WIDTH;
                 tmpButton3.setBounds(tmpX, tmpY, DOWNLOAD_BUTTON_WIDTH, HEIGHT);
 
-                this.add(label1);
-                this.add(label2);
-                this.add(label3);
-                this.add(label4);
-                this.add(label5);
-                this.add(tmpErrorStatusButton);
-                this.add(label6);
-                this.add(tmpButton1);
-                this.add(tmpButton2);
-                this.add(tmpButton3);
+                add(label1);
+                add(label2);
+                add(label3);
+                add(label4);
+                add(label5);
+                add(tmpErrorStatusButton);
+                add(label6);
+                add(tmpButton1);
+                add(tmpButton2);
+                add(tmpButton3);
             }
         }
 
         int tmpW = winWidth;
         int tmpH = tmpY + HEIGHT + MARGIN;
 
-        this.setPreferredSize(new Dimension(tmpW, tmpH));
-        this.repaint();
+        setPreferredSize(new Dimension(tmpW, tmpH));
+        repaint();
     }
     
     /**

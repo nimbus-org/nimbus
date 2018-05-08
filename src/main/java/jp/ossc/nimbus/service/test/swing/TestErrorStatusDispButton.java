@@ -61,18 +61,18 @@ public class TestErrorStatusDispButton extends JButton implements ActionListener
         
         Font font = new Font("ＭＳ ゴシック", Font.BOLD, 16);
         Dimension dim = new Dimension(50, 20);
-        this.setEnabled(false);
+        setEnabled(false);
 
-        this.setPreferredSize(dim);
-        this.setFont(font);
-        this.setFocusPainted(false);
-        this.setMargin(new Insets(0,0,0,0));
+        setPreferredSize(dim);
+        setFont(font);
+        setFocusPainted(false);
+        setMargin(new Insets(0,0,0,0));
 
-        this.setHorizontalAlignment(SwingConstants.CENTER);
-        this.setVerticalAlignment(SwingConstants.CENTER);
-        this.setHorizontalTextPosition(SwingConstants.CENTER);
-        this.setVerticalTextPosition(SwingConstants.CENTER);
-        this.change(null);
+        setHorizontalAlignment(SwingConstants.CENTER);
+        setVerticalAlignment(SwingConstants.CENTER);
+        setHorizontalTextPosition(SwingConstants.CENTER);
+        setVerticalTextPosition(SwingConstants.CENTER);
+        change(null);
     }
 
     public void change(StatusActionMnager status) {
@@ -80,28 +80,28 @@ public class TestErrorStatusDispButton extends JButton implements ActionListener
         this.status = status;
         
         if (status != null && status.getResult()) {
-            this.setText("OK");
-            this.setBackground(NORMAL_COLOR);
-            this.setEnabled(true);
+            setText("OK");
+            setBackground(NORMAL_COLOR);
+            setEnabled(true);
             
-            this.removeActionListener(this);
-            this.addActionListener(this);
+            removeActionListener(this);
+            addActionListener(this);
         } else if (status != null && !status.getResult()) {
-            this.setText("NG");
-            this.setBackground(NG_COLOR);
-            this.setEnabled(true);
+            setText("NG");
+            setBackground(NG_COLOR);
+            setEnabled(true);
             
-            this.removeActionListener(this);
-            this.addActionListener(this);
+            removeActionListener(this);
+            addActionListener(this);
         }else{
-            this.setText("-");
-            this.setBackground(NON_COLOR);
-            this.setEnabled(false);
+            setText("-");
+            setBackground(NON_COLOR);
+            setEnabled(false);
         }
     }
 
     public void actionPerformed(ActionEvent e) {
-        JDialog dialog = new StatusDialogView(this.ownerFrame, "状態", this.status);
+        JDialog dialog = new StatusDialogView(ownerFrame, "状態", status);
         dialog.setVisible(true);
     }
 

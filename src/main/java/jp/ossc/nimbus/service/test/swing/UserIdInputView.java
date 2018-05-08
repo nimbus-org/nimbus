@@ -69,7 +69,7 @@ public class UserIdInputView extends JFrame implements ActionListener, KeyListen
     
     public UserIdInputView(List servicePaths) throws Exception {
         this.servicePaths = servicePaths;
-        this.initialize();
+        initialize();
     }
     public boolean isWindowClosed(){
         return isWindowClosed;
@@ -93,18 +93,18 @@ public class UserIdInputView extends JFrame implements ActionListener, KeyListen
         JPanel p = new JPanel();
         p.setLayout(new FlowLayout());
         
-        this.textBox = new JTextField(15);
-        this.textBox.addKeyListener(this);
+        textBox = new JTextField(15);
+        textBox.addKeyListener(this);
         String user = System.getProperty("user.name");
         if(user != null){
-            this.textBox.setText(user);
+            textBox.setText(user);
         }
         
-        this.okButton = new JButton("OK");
-        this.okButton.setFont(font);
-        this.okButton.addActionListener(this);
+        okButton = new JButton("OK");
+        okButton.setFont(font);
+        okButton.addActionListener(this);
         
-        this.addWindowListener(
+        addWindowListener(
             new WindowAdapter(){
                 public void windowClosing(WindowEvent e){
                     setWindowClosed(true);
@@ -116,12 +116,12 @@ public class UserIdInputView extends JFrame implements ActionListener, KeyListen
         label.setFont(font);
         
         p.add(label);
-        p.add(this.textBox);
-        p.add(this.okButton);
+        p.add(textBox);
+        p.add(okButton);
         
-        this.setTitle("ユーザIDの入力画面");
-        this.setBounds(100, 100, 400, 200);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("ユーザIDの入力画面");
+        setBounds(100, 100, 400, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         getContentPane().add(Box.createVerticalStrut(50), BorderLayout.NORTH); 
         getContentPane().add(p, BorderLayout.CENTER);
@@ -134,10 +134,10 @@ public class UserIdInputView extends JFrame implements ActionListener, KeyListen
     
     private void mainViewStartup(){
 
-        this.setVisible(false);
+        setVisible(false);
         
         try {
-            ScenarioTestView view = new ScenarioTestView(testController, this.textBox.getText());
+            ScenarioTestView view = new ScenarioTestView(testController, textBox.getText());
             view.addWindowListener(
                 new WindowAdapter(){
                     public void windowClosing(WindowEvent e){

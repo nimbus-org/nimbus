@@ -52,7 +52,7 @@ public class TextAreaDialogView extends JDialog {
     
     public TextAreaDialogView(JFrame ownerFrame, String title) {
         super(ownerFrame);
-        this.setModal(false);
+        setModal(false);
         
         setTitle(title);
         setBounds(ownerFrame.getX() + 100, ownerFrame.getY() + 100, 700, 400);
