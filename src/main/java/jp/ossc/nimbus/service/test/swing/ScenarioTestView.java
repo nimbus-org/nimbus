@@ -1,7 +1,37 @@
+/*
+ * This software is distributed under following license based on modified BSD
+ * style license.
+ * ----------------------------------------------------------------------
+ *
+ * Copyright 2003 The Nimbus Project. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ *    this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE NIMBUS PROJECT ``AS IS'' AND ANY EXPRESS
+ * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN
+ * NO EVENT SHALL THE NIMBUS PROJECT OR CONTRIBUTORS BE LIABLE FOR ANY
+ * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+ * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * The views and conclusions contained in the software and documentation are
+ * those of the authors and should not be interpreted as representing official
+ * policies, either expressed or implied, of the Nimbus Project.
+ */
 package jp.ossc.nimbus.service.test.swing;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -14,9 +44,13 @@ import java.awt.event.ComponentListener;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
@@ -26,19 +60,21 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.SwingWorker;
 
 import jp.ossc.nimbus.service.test.TestCase;
 import jp.ossc.nimbus.service.test.TestCase.Status;
 import jp.ossc.nimbus.service.test.TestController;
 import jp.ossc.nimbus.service.test.TestScenario;
 import jp.ossc.nimbus.service.test.TestScenarioGroup;
+import jp.ossc.nimbus.service.test.TestStatusException;
 
 public class ScenarioTestView extends JFrame implements ActionListener, ComponentListener{
 
     /**
      * ウィンドウの最小サイズ
      */
-    private Dimension MINIMUM_SIZE = new Dimension(1150, 700);
+    private Dimension MINIMUM_SIZE = new Dimension(1280, 720);
 
 
 
@@ -59,6 +95,9 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
 
     // シナリオグループ終了ボタン
     private JButton scenarioGroupEndButton = null;
+    
+    // Actionステータス自動表示用チェックボックス
+    private JCheckBox statusDialogDisplayCheckBox = null;
 
     // 状態ラベル
     private JLabel statusLabel = null;
@@ -99,7 +138,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
     // シナリオの状態を表示するボタン
     private TestErrorStatusDispButton scenarioStatusButton = null;
 
-
+    private boolean isServerCalling = false;
 
 
 
@@ -192,7 +231,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         constraints.gridy = 1;
         constraints.weightx = 1;
         constraints.weighty = 0;
-        constraints.gridwidth = 5;
+        constraints.gridwidth = 6;
         constraints.gridheight = 1;
         constraints.insets = new Insets(0, 5, 5, 5);
         this.statusLabel2 = new JLabel();
@@ -257,7 +296,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         layout.setConstraints(this.scenarioGroupStartButton, constraints);
         p.add(this.scenarioGroupStartButton);
 
-        // 「シナリオグループ」開始ボタン
+        // 「シナリオグループ」終了ボタン
         constraints.gridx = 4;
         constraints.gridy = 2;
         constraints.weightx = 1;
@@ -271,6 +310,20 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         this.scenarioGroupEndButton.setSize(150, 25);
         layout.setConstraints(this.scenarioGroupEndButton, constraints);
         p.add(this.scenarioGroupEndButton);
+        
+        // Actionステータス自動表示用チェックボックス
+        constraints.gridx = 6;
+        constraints.gridy = 2;
+        constraints.weightx = 1;
+        constraints.weighty = 0;
+        constraints.gridwidth = 1;
+        constraints.gridheight = 1;
+        constraints.insets = new Insets(5, 5, 5, 5);
+        this.statusDialogDisplayCheckBox = new JCheckBox("Actionステータス表示");
+        this.statusDialogDisplayCheckBox.setSelected(true);
+        this.statusDialogDisplayCheckBox.setFont(font);
+        layout.setConstraints(this.statusDialogDisplayCheckBox, constraints);
+        p.add(this.statusDialogDisplayCheckBox);
 
         // 「シナリオ」表示ラベル
         constraints.gridx = 0;
@@ -450,52 +503,43 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
 
         try {
             if (e.getSource() == this.scenarioGroupStartButton) {
-                // シナリオグループ開始ボタン
-                this.scenarioGroupStartAction();
-
+                SwingWorker testControllerWorker = new TestControllerOperationWorker(this, this.scenarioGroupStartButton, TestControllerOperationWorker.MODE_SCENARIO_GROUP_START);
+                testControllerWorker.execute();
+                if(this.statusDialogDisplayCheckBox.isSelected()) {
+                    SwingWorker statusWorker = new StatusCheckWorker(this, StatusCheckWorker.MODE_SCENARIO_GROUP);
+                    statusWorker.execute();
+                }
             } else if (e.getSource() == this.scenarioGroupEndButton) {
-
-                // シナリオグループ終了ボタン
-                this.scenarioGroupEndAction();
-
+                SwingWorker testControllerWorker = new TestControllerOperationWorker(this, this.scenarioGroupEndButton, TestControllerOperationWorker.MODE_SCENARIO_GROUP_END);
+                testControllerWorker.execute();
+                if(this.statusDialogDisplayCheckBox.isSelected()) {
+                    SwingWorker statusWorker = new StatusCheckWorker(this, StatusCheckWorker.MODE_SCENARIO_GROUP);
+                    statusWorker.execute();
+                }
             } else if (e.getSource() == this.scenarioStartButton) {
-
-                try{
-                    // シナリオ開始ボタン
-                    this.scenarioStartAction();
-                }catch(Exception eStart){
-                    // シナリオキャンセルボタン
-                    try{
-                        this.scenarioCancelAction();
-                    }catch(Exception e2){
-                        e2.printStackTrace();
-                    }
-                    throw eStart;
+                SwingWorker testControllerWorker = new TestControllerOperationWorker(this, this.scenarioStartButton, TestControllerOperationWorker.MODE_SCENARIO_START);
+                testControllerWorker.execute();
+                if(this.statusDialogDisplayCheckBox.isSelected()) {
+                    SwingWorker statusWorker = new StatusCheckWorker(this, StatusCheckWorker.MODE_SCENARIO);
+                    statusWorker.execute();
                 }
-
             } else if (e.getSource() == this.scenarioEndButton) {
-
-                try{
-                    // シナリオ終了ボタン
-                    this.scenarioEndAction();
-                }catch(Exception eStart){
-                    // シナリオキャンセルボタン
-                    try{
-                        this.scenarioCancelAction();
-                    }catch(Exception e2){
-                        e2.printStackTrace();
-                    }
-                    throw eStart;
+                SwingWorker testControllerWorker = new TestControllerOperationWorker(this, this.scenarioEndButton, TestControllerOperationWorker.MODE_SCENARIO_END);
+                testControllerWorker.execute();
+                if(this.statusDialogDisplayCheckBox.isSelected()) {
+                    SwingWorker statusWorker = new StatusCheckWorker(this, StatusCheckWorker.MODE_SCENARIO);
+                    statusWorker.execute();
                 }
-
             } else if (e.getSource() == this.scenarioCancelButton) {
-                // シナリオキャンセルボタン
-                this.scenarioCancelAction();
-
+                SwingWorker testControllerWorker = new TestControllerOperationWorker(this, this.scenarioCancelButton, TestControllerOperationWorker.MODE_SCENARIO_CANCEL);
+                testControllerWorker.execute();
+                if(this.statusDialogDisplayCheckBox.isSelected()) {
+                    SwingWorker statusWorker = new StatusCheckWorker(this, StatusCheckWorker.MODE_SCENARIO);
+                    statusWorker.execute();
+                }
             } else if (e.getSource() == this.scenarioDownloadButton) {
                 // シナリオダウンロードボタン
                 this.scenarioDownloadAction();
-
             } else if (e.getSource() == this.scenarioGroupCombobox) {
                 // シナリオグループ 選択コンボボックス
                 if("comboBoxEdited".equals(e.getActionCommand())){
@@ -503,7 +547,6 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
                     this.scenarioGroupComboboxAction();
                 }else if("comboBoxChanged".equals(e.getActionCommand())){
                     // コンボボックスの選択値が変更された場合
-
                 }
             } else if (e.getSource() == this.scenarioCombobox) {
                 // シナリオ 選択コンボボックス
@@ -522,11 +565,12 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
                 this.setupStatusLabel();
                 this.updatehState();
             }
-
         } catch (Exception e1) {
             JDialog dialog = new StatusDialogView(this, "例外", e1);
             dialog.setModal(true);
             dialog.setVisible(true);
+        } finally {
+            
         }
     }
 
@@ -540,26 +584,27 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         TestScenarioGroup obj = testController.getCurrentScenarioGroup();
 
         if(obj != null && obj.getStatus() != null && obj.getStatus().getUserId() != null){
-
             int result = JOptionPane.showConfirmDialog(this, "シナリオグループは既に開始されていますが、リセットして再度開始しますか？", "確認", JOptionPane.OK_CANCEL_OPTION);
             if(JOptionPane.OK_OPTION != result){
                 return;
             }
         }
 
-        // シナリオグループの開始
-        this.testController.startScenarioGroup(this.userId, selectScenarioGroupId);
-
-        // シナリオの検索、シナリオ一覧をコンボボックスに設定
-        this.scenarioCombobox.setEnabled(true);
-        // シナリオコンボボックスを設定
-        this.setupScenarioCombobox(null);
-
-        // シナリオ系コンポーネントの設定（初期化）
-        this.setupScenarioComponents();
-
-        // テストケース表示パネルの初期化
-        this.testCasePanel.initialize();
+        try {
+            // シナリオグループの開始
+            this.testController.startScenarioGroup(this.userId, selectScenarioGroupId);
+            // シナリオの検索、シナリオ一覧をコンボボックスに設定
+            this.scenarioCombobox.setEnabled(true);
+        } finally {
+            // シナリオコンボボックスを設定
+            this.setupScenarioCombobox(null);
+    
+            // シナリオ系コンポーネントの設定（初期化）
+            this.setupScenarioComponents();
+    
+            // テストケース表示パネルの初期化
+            this.testCasePanel.initialize();
+        }
     }
 
     /**
@@ -568,16 +613,17 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
      */
     private void scenarioGroupEndAction() throws Exception {
 
-        // シナリオグループの終了
-        this.testController.endScenarioGroup();
-
-        // コンボボックスを非活性に
-        this.scenarioCombobox.setEnabled(false);
-        // シナリオコンボボックスを設定
-        this.setupScenarioCombobox(null);
-
-        // シナリオ系コンポーネントの設定（初期化）
-        this.setupScenarioComponents();
+        try {
+            // シナリオグループの終了
+            this.testController.endScenarioGroup();
+        } finally {
+            // コンボボックスを非活性に
+            this.scenarioCombobox.setEnabled(false);
+            // シナリオコンボボックスを設定
+            this.setupScenarioCombobox(null);
+            // シナリオ系コンポーネントの設定（初期化）
+            this.setupScenarioComponents();
+        }
     }
 
     /**
@@ -589,25 +635,27 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         String selectScenarioGroupId = this.scenarioGroupCombobox.getSelectedItem().toString();
         String selectScenarioId = this.scenarioCombobox.getSelectedItem().toString();
 
-        // シナリオの開始
-        this.testController.startScenario(this.userId, selectScenarioId);
-
-        // シナリオの検索、シナリオ一覧をコンボボックスに設定
-        TestCase[] testCaseArray = this.testController.getTestCases(selectScenarioGroupId, selectScenarioId);
-        List testCaseList = new ArrayList();
-        for (int i = 0; i < testCaseArray.length; i++){
-            testCaseList.add(testCaseArray[i]);
+        try {
+            // シナリオの開始
+            this.testController.startScenario(this.userId, selectScenarioId);
+    
+            // シナリオの検索、シナリオ一覧をコンボボックスに設定
+            TestCase[] testCaseArray = this.testController.getTestCases(selectScenarioGroupId, selectScenarioId);
+            List testCaseList = new ArrayList();
+            for (int i = 0; i < testCaseArray.length; i++){
+                testCaseList.add(testCaseArray[i]);
+            }
+            // コンポーネント、アクションリスナーの設定
+            this.testCasePanel.initialize();
+            this.testCasePanel.setScenarioGroupId(selectScenarioGroupId);
+            this.testCasePanel.setScenarioId(selectScenarioId);
+            this.testCasePanel.setTestCaseList(testCaseList);
+            this.testCasePanel.addTestCaseControlListener(new TestCaseControlListenerImpl());
+            this.testCasePanel.setUserId(userId);
+        } finally {
+            // シナリオ系コンポーネントの設定（初期化）
+            this.setupScenarioComponents();
         }
-        // コンポーネント、アクションリスナーの設定
-        this.testCasePanel.initialize();
-        this.testCasePanel.setScenarioGroupId(selectScenarioGroupId);
-        this.testCasePanel.setScenarioId(selectScenarioId);
-        this.testCasePanel.setTestCaseList(testCaseList);
-        this.testCasePanel.addTestCaseControlListener(new TestCaseControlListenerImpl());
-        this.testCasePanel.setUserId(userId);
-
-        // シナリオ系コンポーネントの設定（初期化）
-        this.setupScenarioComponents();
     }
 
     /**
@@ -617,11 +665,13 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
     private void scenarioEndAction() throws Exception {
         // シナリオの終了
         String selectScenarioId = this.scenarioCombobox.getSelectedItem().toString();
-        this.testController.endScenario(selectScenarioId);
-        this.testCasePanel.initialize();
-
-        // シナリオ系コンポーネントの設定
-        this.setupScenarioComponents();
+        try {
+            this.testController.endScenario(selectScenarioId);
+        } finally {
+            this.testCasePanel.initialize();
+            // シナリオ系コンポーネントの設定
+            this.setupScenarioComponents();
+        }
     }
 
     /**
@@ -631,11 +681,13 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
     private void scenarioCancelAction() throws Exception {
         // シナリオのキャンセル
         String selectScenarioId = this.scenarioCombobox.getSelectedItem().toString();
-        this.testController.cancelScenario(selectScenarioId);
-        this.testCasePanel.initialize();
-
-        // シナリオ系コンポーネントの設定
-        this.setupScenarioComponents();
+        try {
+            this.testController.cancelScenario(selectScenarioId);
+        } finally {
+            this.testCasePanel.initialize();
+            // シナリオ系コンポーネントの設定
+            this.setupScenarioComponents();
+        }
     }
 
     /**
@@ -733,7 +785,8 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         this.scenarioCombobox.removeAllItems();
         TestScenarioGroup currentScenarioGroup = this.testController.getCurrentScenarioGroup();
 
-        if(currentScenarioGroup == null){
+        if(currentScenarioGroup == null || TestScenarioGroup.Status.STARTED != currentScenarioGroup.getStatus().getState() ){
+            this.scenarioCombobox.removeAllItems();
             this.scenarioCombobox.setEnabled(false);
             return;
         }
@@ -894,6 +947,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
 
         TestScenarioGroup currentScenarioGroup = testController.getCurrentScenarioGroup();
         if(currentScenarioGroup == null){
+            this.scenarioGroupStatusButton.change(null);
             this.scenarioGroupStartButton.setEnabled(true);
             this.scenarioGroupEndButton.setEnabled(false);
             this.scenarioCombobox.setEnabled(false);
@@ -903,7 +957,19 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
             this.scenarioDownloadButton.setEnabled(false);
             this.scenarioStatusButton.change(null);
             return;
+        } else if(TestScenarioGroup.Status.STARTED != currentScenarioGroup.getStatus().getState()) {
+            this.scenarioGroupStatusButton.change(currentScenarioGroup.getStatus());
+            this.scenarioGroupStartButton.setEnabled(false);
+            this.scenarioGroupEndButton.setEnabled(true);
+            this.scenarioCombobox.setEnabled(false);
+            this.scenarioStartButton.setEnabled(false);
+            this.scenarioEndButton.setEnabled(false);
+            this.scenarioCancelButton.setEnabled(false);
+            this.scenarioDownloadButton.setEnabled(false);
+            this.scenarioStatusButton.change(null);
+            return;
         }else{
+            this.scenarioGroupStatusButton.change(currentScenarioGroup.getStatus());
             this.scenarioGroupStartButton.setEnabled(false);
             this.scenarioGroupEndButton.setEnabled(true);
         }
@@ -997,6 +1063,10 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
     public void componentShown(ComponentEvent e) {
     }
 
+    public boolean isStatusDialogDisplay() {
+        return this.statusDialogDisplayCheckBox.isSelected();
+    }
+    
     /**
      * テストケースがスタート、エンドなどされた際に通知してくれるリスナー実装クラス
      * @author j-higuchi
@@ -1011,4 +1081,152 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
             setupScenarioComponents();
         }
     }
+    
+    private class TestControllerOperationWorker extends SwingWorker<Object, Object> {
+        
+        private int mode;
+        private JFrame frame;
+        private JButton button;
+        
+        public static final int MODE_SCENARIO_GROUP_START = 1;
+        public static final int MODE_SCENARIO_GROUP_END = 2;
+        public static final int MODE_SCENARIO_START = 3;
+        public static final int MODE_SCENARIO_END = 4;
+        public static final int MODE_SCENARIO_CANCEL = 5;
+        
+        public TestControllerOperationWorker(JFrame frame, JButton button, int mode) {
+            this.frame = frame;
+            this.button = button;
+            this.mode = mode;
+        }
+
+        @Override
+        protected Object doInBackground() throws Exception {
+            button.setEnabled(false);
+            try {
+                isServerCalling = true;
+                switch(mode) {
+                case MODE_SCENARIO_GROUP_START:
+                    scenarioGroupStartAction();
+                    break;
+                case MODE_SCENARIO_GROUP_END:
+                    scenarioGroupEndAction();
+                    break;
+                case MODE_SCENARIO_START:
+                    scenarioStartAction();
+                    break;
+                case MODE_SCENARIO_END:
+                    scenarioEndAction();
+                    break;
+                case MODE_SCENARIO_CANCEL:
+                    scenarioCancelAction();
+                    break;
+                default:
+                }
+            }catch(TestStatusException e){
+                JDialog dialog = new StatusDialogView(frame, "警告", e);
+                dialog.setModal(true);
+                dialog.setVisible(true);
+            } catch (Exception e) {
+                JDialog dialog = new StatusDialogView(frame, "例外", e);
+                dialog.setModal(true);
+                dialog.setVisible(true);
+            } finally {
+                isServerCalling = false;                
+            }
+            return null;
+        }
+    }
+    
+    private class StatusCheckWorker extends SwingWorker<Object, Object> {
+        
+        private int mode;
+        private JFrame frame;
+        private TextAreaDialogView dialog;
+        
+        public static final int MODE_SCENARIO_GROUP = 1;
+        public static final int MODE_SCENARIO = 2;
+        
+        public StatusCheckWorker(JFrame frame, int mode) {
+            this.frame = frame;
+            this.mode = mode;
+        }
+        
+        @Override
+        protected Object doInBackground() throws Exception {
+            dialog = new TextAreaDialogView(frame, "Action実行状況");
+            dialog.setVisible(true);
+            while(isServerCalling) {
+                try {
+                    StringBuilder sb = new StringBuilder();
+                    switch(mode) {
+                    case MODE_SCENARIO_GROUP:
+                        TestScenarioGroup group = testController.getCurrentScenarioGroup();
+                        if(group == null) {
+                            sb.append("ScenarioGroup is not started.");
+                        } else {
+                            sb.append("ScenarioGroup [" + group.getScenarioGroupId() + "] status." + "\r\n");
+                            Map endMap = group.getStatus().getActionEndMap();
+                            Iterator itr = endMap.entrySet().iterator();
+                            while(itr.hasNext()) {
+                                Entry entry = (Entry)itr.next();
+                                boolean isEnd = (Boolean)entry.getValue();
+                                sb.append("\t Action [" + entry.getKey() + "] is ");
+                                if(isEnd) {
+                                    boolean result = group.getStatus().getActionResult((String)entry.getKey());
+                                    sb.append("end. result is " + result + "\r\n");
+                                } else {
+                                    sb.append("excuting...\r\n");
+                                }
+                            }
+                        }
+                        break;
+                    case MODE_SCENARIO:
+                        TestScenario scenario = testController.getCurrentScenario();
+                        if(scenario == null) {
+                            sb.append("Scenario is not started.");
+                        } else {
+                            sb.append("Scenario [" + scenario.getScenarioId() + "] status." + "\r\n");
+                            Map endMap = scenario.getStatus().getActionEndMap();
+                            Iterator itr = endMap.entrySet().iterator();
+                            while(itr.hasNext()) {
+                                Entry entry = (Entry)itr.next();
+                                boolean isEnd = (Boolean)entry.getValue();
+                                sb.append("\t Action [" + entry.getKey() + "] is ");
+                                if(isEnd) {
+                                    boolean result = scenario.getStatus().getActionResult((String)entry.getKey());
+                                    sb.append("end. result is " + result + "\r\n");
+                                } else {
+                                    sb.append("excuting...\r\n");
+                                }
+                            }
+                        }
+                        break;
+                    default :
+                        break;
+                    }
+                    publish(sb.toString());
+                    Thread.sleep(3000l);
+                }catch (InterruptedException e) {
+                }catch (Exception e) {
+                    throw e;
+                }
+            }
+            return null;
+        }
+        
+        @Override
+        protected void done() {
+            dialog.setVisible(false);
+            dialog = null;
+        }
+        
+        @Override
+        protected void process(List<Object> chunks) {
+            if(chunks != null && chunks.size() > 0) {
+                dialog.setText((String)chunks.get(chunks.size() - 1));
+            }
+        }
+    }
+
 }

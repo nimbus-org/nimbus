@@ -1,3 +1,34 @@
+/*
+ * This software is distributed under following license based on modified BSD
+ * style license.
+ * ----------------------------------------------------------------------
+ *
+ * Copyright 2003 The Nimbus Project. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ *    this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE NIMBUS PROJECT ``AS IS'' AND ANY EXPRESS
+ * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN
+ * NO EVENT SHALL THE NIMBUS PROJECT OR CONTRIBUTORS BE LIABLE FOR ANY
+ * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+ * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * The views and conclusions contained in the software and documentation are
+ * those of the authors and should not be interpreted as representing official
+ * policies, either expressed or implied, of the Nimbus Project.
+ */
 package jp.ossc.nimbus.service.test.swing;
 
 import java.awt.BasicStroke;
@@ -11,7 +42,10 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -20,10 +54,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingWorker;
 
 import jp.ossc.nimbus.service.test.TestCase;
-import jp.ossc.nimbus.service.test.TestController;
 import jp.ossc.nimbus.service.test.TestCase.Status;
+import jp.ossc.nimbus.service.test.TestController;
+import jp.ossc.nimbus.service.test.TestStatusException;
 
 public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
     
@@ -53,6 +89,8 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
     private JFrame ownerFrame = null;
     
     private List lineList = null;
+    
+    private boolean isServerCalling = false;
     
     public TestCaseListPanel(JFrame ownerFrame) throws Exception {
         this.ownerFrame = ownerFrame;
@@ -254,10 +292,10 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
                 tmpErrorStatusButton.change(status);
                 
                 JButton tmpButton1 = new JButton("開始");
-                tmpButton1.addActionListener(new StartButtonActionListener(testCase));
+                tmpButton1.addActionListener(new StartButtonActionListener(tmpButton1, testCase));
                 
                 JButton tmpButton2 = new JButton("終了");
-                tmpButton2.addActionListener(new EndButtonActionListener(testCase));
+                tmpButton2.addActionListener(new EndButtonActionListener(tmpButton1, testCase));
                 
                 JButton tmpButton3 = new JButton("結果DL");
                 tmpButton3.addActionListener(new DownloadButtonActionListener(testCase));
@@ -333,37 +371,32 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
     private class StartButtonActionListener implements ActionListener {
         
         private TestCase testCase = null;
-        //private TestStatusDispButton errorStatusDispButton = null;
+        private JButton button = null;
         
-        public StartButtonActionListener(TestCase testCase) {
+        public StartButtonActionListener(JButton button, TestCase testCase) {
             this.testCase = testCase;
-            //his.errorStatusDispButton = errorStatusDispButton;
+            this.button = button;
         }
 
         public void actionPerformed(ActionEvent e) {
-            // テストケースの開始
-            try {
-                testController.startTestCase(userId, scenarioId, testCase.getTestCaseId());
-                
-                // テストケースを開始した結果、エラー（Result＝false）だった場合、ｷｬﾝｾﾙを送る
-                TestCase.Status state = testController.getTestCase(scenarioGroupId, scenarioId, testCase.getTestCaseId()).getStatus();
-                
-                // リスナー呼び出し
-                for(int i=0; i < testCaseControlListenerList.size(); i++)
-                    ((TestCaseControlListener)testCaseControlListenerList.get(i)).startTestCase(this.testCase);
-                
-            } catch (Exception e1) {
-                JDialog dialog = new StatusDialogView(ownerFrame, "Exception", e1);
-                dialog.setModal(true);
-                dialog.setVisible(true);
+            SwingWorker testControllerWorker = new TestControllerOperationWorker(ownerFrame, button, testCase, TestControllerOperationWorker.MODE_TEST_START);
+            testControllerWorker.execute();
+            if(((ScenarioTestView)ownerFrame).isStatusDialogDisplay()) {
+                SwingWorker statusWorker = new StatusCheckWorker(ownerFrame);
+                statusWorker.execute();
             }
-            
-            // コンポーネントの再配置
-            try {
-                setupTestCaseCompornents();
-            } catch (Exception e1) {
-                e1.printStackTrace();
+        }
+    }
+    
+    private void startTestCase(TestCase testCase) throws Exception {
+        try {
+            testController.startTestCase(userId, scenarioId, testCase.getTestCaseId());
+            // リスナー呼び出し
+            for(int i=0; i < testCaseControlListenerList.size(); i++) {
+                ((TestCaseControlListener)testCaseControlListenerList.get(i)).startTestCase(testCase);
             }
+        } finally {
+            setupTestCaseCompornents();
         }
     }
 
@@ -374,33 +407,41 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
     private class EndButtonActionListener implements ActionListener {
 
         private TestCase testCase = null;
-        //private TestStatusDispButton errorStatusDispButton = null;
+        private JButton button = null;
 
-        public EndButtonActionListener(TestCase testCase) {
+        public EndButtonActionListener(JButton button, TestCase testCase) {
             this.testCase = testCase;
-            //this.errorStatusDispButton = errorStatusDispButton;
+            this.button = button;
         }
 
         public void actionPerformed(ActionEvent e) {
-            // テストケースの終了
-            try {
-                testController.endTestCase(scenarioId, testCase.getTestCaseId());
-                
-                // リスナー呼び出し
-                for(int i=0; i < testCaseControlListenerList.size(); i++)
-                    ((TestCaseControlListener)testCaseControlListenerList.get(i)).endTestCase(this.testCase);
-                
-            } catch (Exception e1) {
-                JDialog dialog = new StatusDialogView(ownerFrame, "Exception", e1);
-                dialog.setModal(true);
-                dialog.setVisible(true);
+            SwingWorker testControllerWorker = new TestControllerOperationWorker(ownerFrame, button, testCase, TestControllerOperationWorker.MODE_TEST_END);
+            testControllerWorker.execute();
+            if(((ScenarioTestView)ownerFrame).isStatusDialogDisplay()) {
+                SwingWorker statusWorker = new StatusCheckWorker(ownerFrame);
+                statusWorker.execute();
             }
-            
-            // コンポーネントの再配置
+        }
+    }
+    
+    private void endTestCase(TestCase testCase) throws Exception {
+        try {
+            testController.endTestCase(scenarioId, testCase.getTestCaseId());
+        } finally {
+            Exception ex = null;
             try {
-                setupTestCaseCompornents();
-            } catch (Exception e1) {
-                e1.printStackTrace();
+                // リスナー呼び出し
+                for(int i=0; i < testCaseControlListenerList.size(); i++) {
+                    ((TestCaseControlListener)testCaseControlListenerList.get(i)).startTestCase(testCase);
+                }
+            } catch(Exception e) {
+                if(ex == null) {
+                    ex = e;
+                }
+            }
+            setupTestCaseCompornents();
+            if(ex != null) {
+                throw ex;
             }
         }
     }
@@ -506,5 +547,109 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
         }
     }
 
+    private class TestControllerOperationWorker extends SwingWorker<Object, Object> {
+        
+        private int mode;
+        private JFrame frame;
+        private JButton button;
+        private TestCase testCase;
+        
+        public static final int MODE_TEST_START = 1;
+        public static final int MODE_TEST_END = 2;
+        
+        public TestControllerOperationWorker(JFrame frame, JButton button, TestCase testCase, int mode) {
+            this.frame = frame;
+            this.button = button;
+            this.testCase = testCase;
+            this.mode = mode;
+        }
+
+        @Override
+        protected Object doInBackground() throws Exception {
+            button.setEnabled(false);
+            try {
+                isServerCalling = true;
+                switch(mode) {
+                case MODE_TEST_START:
+                    startTestCase(testCase);
+                    break;
+                case MODE_TEST_END:
+                    endTestCase(testCase);
+                    break;
+                default:
+                }
+            }catch(TestStatusException e){
+                JDialog dialog = new StatusDialogView(frame, "警告", e);
+                dialog.setModal(true);
+                dialog.setVisible(true);
+            } catch (Exception e) {
+                JDialog dialog = new StatusDialogView(frame, "例外", e);
+                dialog.setModal(true);
+                dialog.setVisible(true);
+            } finally {
+                isServerCalling = false;                
+            }
+            return null;
+        }
+    }
+    
+    private class StatusCheckWorker extends SwingWorker<Object, Object> {
+        
+        private JFrame frame;
+        private TextAreaDialogView dialog;
+        
+        public StatusCheckWorker(JFrame frame) {
+            this.frame = frame;
+        }
+        
+        @Override
+        protected Object doInBackground() throws Exception {
+            dialog = new TextAreaDialogView(frame, "Action実行状況");
+            dialog.setVisible(true);
+            while(isServerCalling) {
+                try {
+                    StringBuilder sb = new StringBuilder();
+                    TestCase testCase = testController.getCurrentTestCase();
+                    if(testCase == null) {
+                        sb.append("TestCase is not started.");
+                    } else {
+                        sb.append("TestCase [" + testCase.getTestCaseId() + "] status." + "\r\n");
+                        Map endMap = testCase.getStatus().getActionEndMap();
+                        Iterator itr = endMap.entrySet().iterator();
+                        while(itr.hasNext()) {
+                            Entry entry = (Entry)itr.next();
+                            boolean isEnd = (Boolean)entry.getValue();
+                            sb.append("\t Action [" + entry.getKey() + "] is ");
+                            if(isEnd) {
+                                boolean result = testCase.getStatus().getActionResult((String)entry.getKey());
+                                sb.append("end. result is " + result + "\r\n");
+                            } else {
+                                sb.append("excuting...\r\n");
+                            }
+                        }
+                    }
+                    publish(sb.toString());
+                    Thread.sleep(3000l);
+                }catch (InterruptedException e) {
+                }catch (Exception e) {
+                    throw e;
+                }
+            }
+            return null;
+        }
+        
+        @Override
+        protected void done() {
+            dialog.setVisible(false);
+            dialog = null;
+        }
+        
+        @Override
+        protected void process(List<Object> chunks) {
+            if(chunks != null && chunks.size() > 0) {
+                dialog.setText((String)chunks.get(chunks.size() - 1));
+            }
+        }
+    }
 
 }

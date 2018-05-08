@@ -52,6 +52,7 @@ public class TestActionContextImpl extends TestPhaseExecutableImpl implements Te
     private long retryInterval;
     private int retryCount;
     private boolean success = true;
+    private boolean isEnd = false;
     private double expectedCost = Double.NaN;
     private double cost = Double.NaN;
     private Throwable throwable;
@@ -132,6 +133,14 @@ public class TestActionContextImpl extends TestPhaseExecutableImpl implements Te
         this.success = success;
     }
     
+    public boolean isEnd() {
+        return isEnd;
+    }
+    
+    public void setEnd(boolean isEnd) {
+        this.isEnd = isEnd;
+    }
+    
     public double getExpectedCost() {
         return expectedCost;
     }
@@ -158,7 +167,7 @@ public class TestActionContextImpl extends TestPhaseExecutableImpl implements Te
     
     public void clearState() {
         success = true;
+        isEnd = false;
         throwable = null;
     }
-
 }

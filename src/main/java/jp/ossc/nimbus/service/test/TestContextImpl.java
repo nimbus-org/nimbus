@@ -31,9 +31,9 @@
  */
 package jp.ossc.nimbus.service.test;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.io.File;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * テストコンテキストクラス。<p>
@@ -49,7 +49,7 @@ public class TestContextImpl implements TestContext {
     private TestCase testCase;
     private File currentDirectory;
     
-    private Map resultMap = new HashMap();
+    private Map resultMap = new LinkedHashMap();
     
     /**
      * テストフェーズを設定する。<p>
@@ -160,7 +160,7 @@ public class TestContextImpl implements TestContext {
             return;
         }
         if (!resultMap.containsKey(targetId)) {
-            resultMap.put(targetId, new HashMap());
+            resultMap.put(targetId, new LinkedHashMap());
         }
         Map map = (Map) resultMap.get(targetId);
         map.put(actionId, result);

@@ -31,66 +31,48 @@
  */
 package jp.ossc.nimbus.service.test;
 
-import java.util.List;
-import java.util.Map;
-
 /**
- * アクションの結果を管理するステータス。<p>
- * 
+ * テストステータス例外。<p>
+ *
  * @author M.Ishida
  */
-public interface StatusActionMnager extends StatusBase{
+public class TestStatusException extends TestException {
     
     /**
-     * 現在のアクションIDを取得する。<p>
-     * 
-     * @return アクションID
+     * コンストラクタ。<p>
      */
-    public String getCurrentActionId();
+    public TestStatusException(){
+        super();
+    }
     
     /**
-     * 指定したアクションIDの実行結果を取得する。<p>
-     * 
-     * @param actionId アクションID
-     * @return 実行結果。成功の場合、true。失敗の場合、false
-     */
-    public boolean getActionResult(String actionId);
-    
-    /**
-     * アクションの実行結果マップを取得する。<p>
-     * 
-     * @param actionId アクションID
-     * @return アクションIDと実行結果のマップ
-     */
-    public Map getActionResultMap();
-    
-    /**
-     * 指定したアクションIDの終了状態を取得する。<p>
-     * 
-     * @param actionId アクションID
-     * @return 終了状態。終了の場合、true。未終了の場合、false
-     */
-    public boolean isActionEnd(String actionId);
-    
-    /**
-     * アクションの終了状態マップを取得する。<p>
-     * 
-     * @return アクションIDと終了状態のマップ
-     */
-    public Map getActionEndMap();
-    
-    /**
-     * アクションを実行した結果、発生した例外を取得する。<p>
+     * エラーメッセージを持ったインスタンスを生成するコンストラクタ。<p>
      *
-     * @return アクションを実行した結果、発生した例外
+     * @param message エラーメッセージ
      */
-    public Throwable getThrowable();
+    public TestStatusException(String message){
+        super(message);
+    }
     
     /**
-     * {@link TestActionContext}のリストを取得する。<p>
+     * この例外の原因となった例外を持ったインスタンスを生成するコンストラクタ。<p>
      *
-     * @return TestActionContextのリスト
+     * @param cause 原因となった例外
      */
-    public List getTestActionContexts();
+    public TestStatusException(Throwable cause){
+        super(cause);
+    }
     
+    /**
+     * エラーメッセージと、この例外の原因となった例外を持ったインスタンスを生成するコンストラクタ。<p>
+     *
+     * @param message エラーメッセージ
+     * @param cause 原因となった例外
+     */
+    public TestStatusException(
+        String message,
+        Throwable cause
+    ){
+        super(message, cause);
+    }
 }

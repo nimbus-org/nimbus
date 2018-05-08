@@ -31,11 +31,46 @@
  */
 package jp.ossc.nimbus.service.test.swing;
 
-import jp.ossc.nimbus.service.test.TestCase;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
 
-public interface TestCaseControlListener {
+import jp.ossc.nimbus.service.test.StatusActionMnager;
+
+import javax.swing.JScrollPane;
+import java.awt.Container;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.awt.BorderLayout;
+
+public class TextAreaDialogView extends JDialog {
     
-    public void startTestCase(TestCase testcase) throws Exception;
-    public void endTestCase(TestCase testcase) throws Exception;
+    private JTextArea textArea;
     
+    public TextAreaDialogView(JFrame ownerFrame, String title) {
+        super(ownerFrame);
+        this.setModal(false);
+        
+        setTitle(title);
+        setBounds(ownerFrame.getX() + 100, ownerFrame.getY() + 100, 700, 400);
+        textArea = new JTextArea();
+        textArea.setEditable(false);
+        JScrollPane scrollpane1 = new JScrollPane(textArea);
+        Container contentPane = getContentPane();
+        contentPane.removeAll();
+        contentPane.add(scrollpane1, BorderLayout.CENTER);
+        textArea.setCaretPosition(0);
+    }
+    
+    public void setText(final String text) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                textArea.setText(text);
+                repaint();
+            }
+        });
+    }
 }
