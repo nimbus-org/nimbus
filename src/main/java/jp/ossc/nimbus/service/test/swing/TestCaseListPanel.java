@@ -382,7 +382,7 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
             SwingWorker testControllerWorker = new TestControllerOperationWorker(ownerFrame, button, testCase, TestControllerOperationWorker.MODE_TEST_START);
             testControllerWorker.execute();
             if(((ScenarioTestView)ownerFrame).isStatusDialogDisplay()) {
-                SwingWorker statusWorker = new StatusCheckWorker(ownerFrame);
+                SwingWorker statusWorker = new StatusCheckWorker(ownerFrame, true);
                 statusWorker.execute();
             }
         }
@@ -418,7 +418,7 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
             SwingWorker testControllerWorker = new TestControllerOperationWorker(ownerFrame, button, testCase, TestControllerOperationWorker.MODE_TEST_END);
             testControllerWorker.execute();
             if(((ScenarioTestView)ownerFrame).isStatusDialogDisplay()) {
-                SwingWorker statusWorker = new StatusCheckWorker(ownerFrame);
+                SwingWorker statusWorker = new StatusCheckWorker(ownerFrame, true);
                 statusWorker.execute();
             }
         }
@@ -521,6 +521,10 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
         }
     }
     
+    public void showTestCaseStatusDialog() {
+        SwingWorker statusWorker = new StatusCheckWorker(ownerFrame, false);
+        statusWorker.execute();
+    }
     
     private class Line{
         
@@ -597,16 +601,18 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
         
         private JFrame frame;
         private TextAreaDialogView dialog;
+        private boolean isAutoDisplay;
         
-        public StatusCheckWorker(JFrame frame) {
+        public StatusCheckWorker(JFrame frame, boolean isAutoDisplay) {
             this.frame = frame;
+            this.isAutoDisplay = isAutoDisplay;
         }
         
         @Override
         protected Object doInBackground() throws Exception {
             dialog = new TextAreaDialogView(frame, "Action実行状況");
             dialog.setVisible(true);
-            while(isServerCalling) {
+            while((isServerCalling || !isAutoDisplay) && dialog != null && dialog.isVisible()) {
                 try {
                     StringBuilder sb = new StringBuilder();
                     TestCase testCase = testController.getCurrentTestCase();

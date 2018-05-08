@@ -96,6 +96,9 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
     // シナリオグループ終了ボタン
     private JButton scenarioGroupEndButton = null;
     
+    // Actionステータスダイアログ表示ボタン
+    private JButton statusDialogDisplayButton = null;
+    
     // Actionステータス自動表示用チェックボックス
     private JCheckBox statusDialogDisplayCheckBox = null;
 
@@ -139,8 +142,6 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
     private TestErrorStatusDispButton scenarioStatusButton = null;
 
     private boolean isServerCalling = false;
-
-
 
     public ScenarioTestView(TestController testController, String userId) throws Exception {
         this.testController = testController;
@@ -312,7 +313,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         p.add(this.scenarioGroupEndButton);
         
         // Actionステータス自動表示用チェックボックス
-        constraints.gridx = 6;
+        constraints.gridx = 5;
         constraints.gridy = 2;
         constraints.weightx = 1;
         constraints.weighty = 0;
@@ -325,6 +326,21 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         layout.setConstraints(this.statusDialogDisplayCheckBox, constraints);
         p.add(this.statusDialogDisplayCheckBox);
 
+        // Actionステータスダイアログ表示ボタン
+        constraints.gridx = 6;
+        constraints.gridy = 2;
+        constraints.weightx = 1;
+        constraints.weighty = 0;
+        constraints.gridwidth = 1;
+        constraints.gridheight = 1;
+        constraints.insets = new Insets(5, 5, 5, 5);
+        this.statusDialogDisplayButton = new JButton("Actionステータス");
+        this.statusDialogDisplayButton.setFont(font);
+        this.statusDialogDisplayButton.addActionListener(this);
+        this.statusDialogDisplayButton.setSize(150, 25);
+        layout.setConstraints(this.statusDialogDisplayButton, constraints);
+        p.add(this.statusDialogDisplayButton);
+        
         // 「シナリオ」表示ラベル
         constraints.gridx = 0;
         constraints.gridy = 3;
@@ -506,35 +522,35 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
                 SwingWorker testControllerWorker = new TestControllerOperationWorker(this, this.scenarioGroupStartButton, TestControllerOperationWorker.MODE_SCENARIO_GROUP_START);
                 testControllerWorker.execute();
                 if(this.statusDialogDisplayCheckBox.isSelected()) {
-                    SwingWorker statusWorker = new StatusCheckWorker(this, StatusCheckWorker.MODE_SCENARIO_GROUP);
+                    SwingWorker statusWorker = new StatusCheckWorker(this, StatusCheckWorker.MODE_SCENARIO_GROUP, true);
                     statusWorker.execute();
                 }
             } else if (e.getSource() == this.scenarioGroupEndButton) {
                 SwingWorker testControllerWorker = new TestControllerOperationWorker(this, this.scenarioGroupEndButton, TestControllerOperationWorker.MODE_SCENARIO_GROUP_END);
                 testControllerWorker.execute();
                 if(this.statusDialogDisplayCheckBox.isSelected()) {
-                    SwingWorker statusWorker = new StatusCheckWorker(this, StatusCheckWorker.MODE_SCENARIO_GROUP);
+                    SwingWorker statusWorker = new StatusCheckWorker(this, StatusCheckWorker.MODE_SCENARIO_GROUP, true);
                     statusWorker.execute();
                 }
             } else if (e.getSource() == this.scenarioStartButton) {
                 SwingWorker testControllerWorker = new TestControllerOperationWorker(this, this.scenarioStartButton, TestControllerOperationWorker.MODE_SCENARIO_START);
                 testControllerWorker.execute();
                 if(this.statusDialogDisplayCheckBox.isSelected()) {
-                    SwingWorker statusWorker = new StatusCheckWorker(this, StatusCheckWorker.MODE_SCENARIO);
+                    SwingWorker statusWorker = new StatusCheckWorker(this, StatusCheckWorker.MODE_SCENARIO, true);
                     statusWorker.execute();
                 }
             } else if (e.getSource() == this.scenarioEndButton) {
                 SwingWorker testControllerWorker = new TestControllerOperationWorker(this, this.scenarioEndButton, TestControllerOperationWorker.MODE_SCENARIO_END);
                 testControllerWorker.execute();
                 if(this.statusDialogDisplayCheckBox.isSelected()) {
-                    SwingWorker statusWorker = new StatusCheckWorker(this, StatusCheckWorker.MODE_SCENARIO);
+                    SwingWorker statusWorker = new StatusCheckWorker(this, StatusCheckWorker.MODE_SCENARIO, true);
                     statusWorker.execute();
                 }
             } else if (e.getSource() == this.scenarioCancelButton) {
                 SwingWorker testControllerWorker = new TestControllerOperationWorker(this, this.scenarioCancelButton, TestControllerOperationWorker.MODE_SCENARIO_CANCEL);
                 testControllerWorker.execute();
                 if(this.statusDialogDisplayCheckBox.isSelected()) {
-                    SwingWorker statusWorker = new StatusCheckWorker(this, StatusCheckWorker.MODE_SCENARIO);
+                    SwingWorker statusWorker = new StatusCheckWorker(this, StatusCheckWorker.MODE_SCENARIO, true);
                     statusWorker.execute();
                 }
             } else if (e.getSource() == this.scenarioDownloadButton) {
@@ -564,6 +580,16 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
                 // 更新
                 this.setupStatusLabel();
                 this.updatehState();
+            } else if(e.getSource() == this.statusDialogDisplayButton) {
+                if(testController.getCurrentTestCase() != null) {
+                    testCasePanel.showTestCaseStatusDialog(); 
+                } else if(testController.getCurrentScenario() != null) {
+                    SwingWorker statusWorker = new StatusCheckWorker(this, StatusCheckWorker.MODE_SCENARIO, false);
+                    statusWorker.execute();
+                } else if(testController.getCurrentScenarioGroup() != null) {
+                    SwingWorker statusWorker = new StatusCheckWorker(this, StatusCheckWorker.MODE_SCENARIO_GROUP, false);
+                    statusWorker.execute();
+                }
             }
         } catch (Exception e1) {
             JDialog dialog = new StatusDialogView(this, "例外", e1);
@@ -589,7 +615,6 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
                 return;
             }
         }
-
         try {
             // シナリオグループの開始
             this.testController.startScenarioGroup(this.userId, selectScenarioGroupId);
@@ -634,7 +659,6 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
 
         String selectScenarioGroupId = this.scenarioGroupCombobox.getSelectedItem().toString();
         String selectScenarioId = this.scenarioCombobox.getSelectedItem().toString();
-
         try {
             // シナリオの開始
             this.testController.startScenario(this.userId, selectScenarioId);
@@ -1143,20 +1167,22 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         private int mode;
         private JFrame frame;
         private TextAreaDialogView dialog;
+        private boolean isAutoDisplay;
         
         public static final int MODE_SCENARIO_GROUP = 1;
         public static final int MODE_SCENARIO = 2;
         
-        public StatusCheckWorker(JFrame frame, int mode) {
+        public StatusCheckWorker(JFrame frame, int mode, boolean isAutoDisplay) {
             this.frame = frame;
             this.mode = mode;
+            this.isAutoDisplay = isAutoDisplay;
         }
         
         @Override
         protected Object doInBackground() throws Exception {
             dialog = new TextAreaDialogView(frame, "Action実行状況");
             dialog.setVisible(true);
-            while(isServerCalling) {
+            while((isServerCalling || !isAutoDisplay) && dialog != null && dialog.isVisible()) {
                 try {
                     StringBuilder sb = new StringBuilder();
                     switch(mode) {
