@@ -972,9 +972,17 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
      */
     private void setupScenarioComponents() throws Exception {
 
+        TestScenarioGroup.Status scenarioGroupStstus = null;
+        if(scenarioGroupCombobox.getSelectedItem() != null) {
+            String selectedScenarioGroupId = scenarioGroupCombobox.getSelectedItem().toString();
+            TestScenarioGroup scenarioGroup = testController.getScenarioGroup(selectedScenarioGroupId);
+            if(scenarioGroup != null) {
+                scenarioGroupStstus = scenarioGroup.getStatus();
+            }
+        }
         TestScenarioGroup currentScenarioGroup = testController.getCurrentScenarioGroup();
         if(currentScenarioGroup == null){
-            scenarioGroupStatusButton.change(null);
+            scenarioGroupStatusButton.change(scenarioGroupStstus);
             scenarioGroupStartButton.setEnabled(true);
             scenarioGroupEndButton.setEnabled(false);
             scenarioCombobox.setEnabled(false);
