@@ -373,7 +373,7 @@ public class TestControllerService extends ServiceBase implements TestController
                 if (testScenarioContexts != null) {
                     for (int i = 0; i < testScenarioContexts.length; i++) {
                         TestScenario.Status scenarioStatus = testScenarioContexts[i].getStatus();
-                        if (scenarioStatus != null && scenarioStatus.getState() == TestScenario.Status.STARTED) {
+                        if (scenarioStatus != null) {
                             endScenario(testScenarioContexts[i].getTestScenario().getScenarioId());
                         }
                     }
@@ -564,7 +564,7 @@ public class TestControllerService extends ServiceBase implements TestController
                 if (testCaseContexts != null) {
                     for (int i = 0; i < testCaseContexts.length; i++) {
                         TestCase.Status caseStatus = testCaseContexts[i].getStatus();
-                        if (caseStatus != null && caseStatus.getState() == TestCase.Status.STARTED) {
+                        if (caseStatus != null) {
                             cancelTestCase(testCaseContexts[i].getTestCase().getScenarioId(), testCaseContexts[i].getTestCase().getTestCaseId());
                         }
                     }
@@ -645,7 +645,7 @@ public class TestControllerService extends ServiceBase implements TestController
                 if (testCaseContexts != null) {
                     for (int i = 0; i < testCaseContexts.length; i++) {
                         TestCase.Status caseStatus = testCaseContexts[i].getStatus();
-                        if (caseStatus != null && caseStatus.getState() == TestCase.Status.STARTED) {
+                        if (caseStatus != null) {
                             endTestCase(testCaseContexts[i].getTestCase().getScenarioId(), testCaseContexts[i].getTestCase().getTestCaseId());
                         }
                     }
@@ -732,6 +732,14 @@ public class TestControllerService extends ServiceBase implements TestController
             TestCaseContext context = scenarioContext.getTestCaseContext(testcaseId);
             if (context == null) {
                 context = new TestCaseContext();
+            } else {
+                List actionContextList = context.getActionContextList();
+                if(actionContextList != null) {
+                    for(int i = 0; i < actionContextList.size(); i++) {
+                        TestActionContext testActionContext = (TestActionContext)actionContextList.get(i);
+                        testActionContext.clearState();
+                    }
+                }
             }
             TestCaseImpl testCase = (TestCaseImpl) context.getTestCase();
             if (testCase == null) {
@@ -859,7 +867,7 @@ public class TestControllerService extends ServiceBase implements TestController
                 throw new TestException("Scenario is not started.");
             }
             TestCaseContext context = scenarioContext.getTestCaseContext(testcaseId);
-            if (context == null || context.getStatus().getState() != TestCase.Status.STARTED) {
+            if (context == null) {
                 throw new TestException("TestCase is not started.");
             }
 
@@ -1570,6 +1578,9 @@ public class TestControllerService extends ServiceBase implements TestController
             if (descriptionElements.hasNext()) {
                 Element descriptionElement = (Element) descriptionElements.next();
                 String description = MetaData.getElementContent(descriptionElement);
+                if(description == null || description.length() == 0){
+                    description = MetaData.getElementContent(descriptionElement, true, null);
+                }
                 if (description != null && !"".equals(description)) {
                     testActionResource.setDescription(description.trim());
                 }
@@ -1578,6 +1589,9 @@ public class TestControllerService extends ServiceBase implements TestController
             if (titleElements.hasNext()) {
                 Element titleElement = (Element) titleElements.next();
                 String title = MetaData.getElementContent(titleElement);
+                if(title == null || title.length() == 0){
+                    title = MetaData.getElementContent(titleElement, true, null);
+                }
                 if (title != null && !"".equals(title)) {
                     testActionResource.setTitle(title.trim());
                 }
@@ -1590,7 +1604,10 @@ public class TestControllerService extends ServiceBase implements TestController
                 String name = MetaData.getOptionalAttribute(resourceElement, "name");
                 Reader resource = null;
                 if (name == null) {
-                    final String resourceStr = MetaData.getElementContent(resourceElement, "");
+                    String resourceStr = MetaData.getElementContent(resourceElement);
+                    if(resourceStr == null || resourceStr.length() == 0){
+                        resourceStr = MetaData.getElementContent(resourceElement, true, "");
+                    }
                     resource = new RetryReader(new StringReader(resourceStr));
                 } else {
                     final File resourceFile = new File(targetDir, name);
@@ -1673,6 +1690,9 @@ public class TestControllerService extends ServiceBase implements TestController
                 if (descriptionElements.hasNext()) {
                     Element descriptionElement = (Element) descriptionElements.next();
                     String description = MetaData.getElementContent(descriptionElement);
+                    if(description == null || description.length() == 0){
+                        description = MetaData.getElementContent(descriptionElement, true, null);
+                    }
                     if (description != null && !"".equals(description)) {
                         ((TestResourceBaseImpl) target).setDescription(description.trim());
                     }
@@ -1681,6 +1701,9 @@ public class TestControllerService extends ServiceBase implements TestController
                 if (titleElements.hasNext()) {
                     Element titleElement = (Element) titleElements.next();
                     String title = MetaData.getElementContent(titleElement);
+                    if(title == null || title.length() == 0){
+                        title = MetaData.getElementContent(titleElement, true, null);
+                    }
                     if (title != null && !"".equals(title)) {
                         ((TestResourceBaseImpl) target).setTitle(title.trim());
                     }

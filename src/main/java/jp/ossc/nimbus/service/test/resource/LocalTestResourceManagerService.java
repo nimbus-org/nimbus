@@ -31,29 +31,29 @@
  */
 package jp.ossc.nimbus.service.test.resource;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FilenameFilter;
 import java.io.FileReader;
+import java.io.FilenameFilter;
 import java.io.InputStreamReader;
-import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 import jp.ossc.nimbus.core.ServiceBase;
-import jp.ossc.nimbus.core.ServiceName;
-import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.core.ServiceLoader;
+import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.core.ServiceMetaData;
+import jp.ossc.nimbus.core.ServiceName;
+import jp.ossc.nimbus.io.ExtentionFileFilter;
 import jp.ossc.nimbus.io.RecurciveSearchFile;
 import jp.ossc.nimbus.service.test.TemplateEngine;
 import jp.ossc.nimbus.service.test.TestResourceManager;
-import jp.ossc.nimbus.io.ExtentionFileFilter;
 
 /**
  * ローカルディスクのテストリソースを管理する{@link TestResourceManager}インタフェースの実装サービス。
@@ -154,22 +154,24 @@ public class LocalTestResourceManagerService extends ServiceBase implements Test
 
         File[] files = testResourceDirectory.listFiles(new FileFilter());
         List scenarioGroupList = new ArrayList();
-        for (int index = 0; index < files.length; index++) {
-            File file = files[index];
-            if (file.isDirectory()) {
-                scenarioGroupList.add(file.getName());
+        if(files == null) {
+            return new String[] {};
+        } else {
+            for (int index = 0; index < files.length; index++) {
+                File file = files[index];
+                if (file.isDirectory()) {
+                    scenarioGroupList.add(file.getName());
+                }
             }
+            String[] scenarioGroups = new String[scenarioGroupList.size()];
+            for (int index = 0; index < scenarioGroupList.size(); index++) {
+                scenarioGroups[index] = (String) scenarioGroupList.get(index);
+            }
+            if (scenarioGroups != null) {
+                Arrays.sort(scenarioGroups);
+            }
+            return scenarioGroups;
         }
-        String[] scenarioGroups = new String[scenarioGroupList.size()];
-        for (int index = 0; index < scenarioGroupList.size(); index++) {
-            scenarioGroups[index] = (String) scenarioGroupList.get(index);
-        }
-
-        if (scenarioGroups != null) {
-            Arrays.sort(scenarioGroups);
-        }
-
-        return scenarioGroups;
     }
 
     public String[] getScenarioIds(String scenarioGroupId) throws Exception {
@@ -283,6 +285,23 @@ public class LocalTestResourceManagerService extends ServiceBase implements Test
         linkTemplate(dir, false);
     }
 
+    public void uploadScenarioGroupResource(File dir, String scenarioGroupId) throws Exception {
+        File targetDir = new File(testResourceDirectory, "/" + scenarioGroupId);
+        if(targetDir.exists()) {
+            File[] fileList = targetDir.listFiles();
+            if(fileList != null && fileList.length > 0) {
+                for(int i = 0; i < fileList.length; i++) {
+                    if(fileList[i].isFile()) {
+                        fileList[i].delete(); 
+                    }
+                }
+            }
+        } else {
+            targetDir.mkdirs(); 
+        }
+        RecurciveSearchFile.copyAllTree(dir, targetDir, new FileFilter());
+    }
+    
     protected void linkTemplate(File dir, boolean isRecurcive) throws Exception {
         File[] linkFiles = null;
         if (isRecurcive) {
@@ -369,6 +388,16 @@ public class LocalTestResourceManagerService extends ServiceBase implements Test
         linkTemplate(dir, true);
     }
 
+    public void uploadScenarioResource(File dir, String scenarioGroupId, String scenarioId) throws Exception {
+        RecurciveSearchFile targetDir = new RecurciveSearchFile(testResourceDirectory, scenarioGroupId + "/" + scenarioId);
+        if(targetDir.exists()) {
+            targetDir.deleteAllTree(false);
+        } else {
+            targetDir.mkdirs(); 
+        }
+        RecurciveSearchFile.copyAllTree(dir, targetDir, new FileFilter());
+    }
+    
     protected class FileFilter implements FilenameFilter {
 
         public boolean accept(File dir, String name) {

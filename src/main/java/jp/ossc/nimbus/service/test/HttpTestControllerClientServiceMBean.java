@@ -50,4 +50,16 @@ public interface HttpTestControllerClientServiceMBean extends ServiceBaseMBean{
     
     public void setTemplateAction(String action);
     public String getTemplateAction();
+
+    public ServiceName getTestResourceManagerServiceName();
+    public void setTestResourceManagerServiceName(ServiceName serviceName);
+
+    public TestResourceManager getTestResourceManager();
+    public void setTestResourceManager(TestResourceManager manager);
+
+    public ServiceName getLocalTestControllerServiceName();
+    public void setLocalTestControllerServiceName(ServiceName serviceName);
+    
+    public TestController getLocalTestController();
+    public void setLocalTestController(TestController testController);
 }

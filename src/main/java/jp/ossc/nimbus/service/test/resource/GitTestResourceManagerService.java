@@ -33,9 +33,6 @@ package jp.ossc.nimbus.service.test.resource;
 
 import java.io.File;
 
-import jp.ossc.nimbus.io.RecurciveSearchFile;
-import jp.ossc.nimbus.service.test.TestResourceManager;
-
 import org.apache.maven.scm.ScmBranch;
 import org.apache.maven.scm.ScmFileSet;
 import org.apache.maven.scm.ScmTag;
@@ -48,53 +45,51 @@ import org.apache.maven.scm.manager.BasicScmManager;
 import org.apache.maven.scm.manager.NoSuchScmProviderException;
 import org.apache.maven.scm.manager.ScmManager;
 import org.apache.maven.scm.provider.ScmProvider;
-import org.apache.maven.scm.provider.cvslib.cvsjava.CvsJavaScmProvider;
+import org.apache.maven.scm.provider.git.gitexe.GitExeScmProvider;
 import org.apache.maven.scm.repository.ScmRepository;
 import org.apache.maven.scm.repository.ScmRepositoryException;
 
+import jp.ossc.nimbus.io.RecurciveSearchFile;
+import jp.ossc.nimbus.service.test.TestResourceManager;
+
 /**
- * CVSサーバで管理されたテストリソースを使用する{@link TestResourceManager}インタフェースの実装サービス。
+ * Gitサーバで管理されたテストリソースを使用する{@link TestResourceManager}インタフェースの実装サービス。
  * <p>
  *
  * scmUrlは以下の仕様となる。<br>
  *
  * <pre>
- * scm:cvs&lt;delimiter&gt;local&lt;delimiter&gt;path_to_repository&lt;delimiter&gt;module_name
+ * scm:git:git://server_name[:port]/path_to_repository
  * </pre>
- *
  * <pre>
- * scm:cvs&lt;delimiter&gt;lserver&lt;delimiter&gt;[username@]servername[&lt;delimiter&gt;port]&lt;delimiter&gt;path_to_repository&lt;delimiter&gt;module_name
+ * scm:git:http://server_name[:port]/path_to_repository
  * </pre>
- *
  * <pre>
- * scm:cvs&lt;delimiter&gt;pserver&lt;delimiter&gt;[username[&lt;delimiter&gt;password]@]servername[&lt;delimiter&gt;port]&lt;delimiter&gt;path_to_repository&lt;delimiter&gt;module_name
+ * scm:git:https://server_name[:port]/path_to_repository
  * </pre>
- *
  * <pre>
- * scm:cvs&lt;delimiter&gt;ext&lt;delimiter&gt;[username@]servername[&lt;delimiter&gt;port]&lt;delimiter&gt;path_to_repository&lt;delimiter&gt;module_name
+ * scm:git:ssh://server_name[:port]/path_to_repository
  * </pre>
- *
  * <pre>
- * scm:cvs&lt;delimiter&gt;sspi&lt;delimiter&gt;[username@]host&lt;delimiter&gt;path&lt;delimiter&gt;module
+ * scm:git:file://[server_name]/path_to_repository
  * </pre>
  *
  * @author M.Ishida
  *
  */
-public class CVSTestResourceManagerService extends LocalTestResourceManagerService implements TestResourceManager, CVSTestResourceManagerServiceMBean {
+public class GitTestResourceManagerService extends LocalTestResourceManagerService implements TestResourceManager, GitTestResourceManagerServiceMBean {
 
-    private static final long serialVersionUID = -1903951590151650735L;
-
+    private static final long serialVersionUID = 4184509544809272399L;
+    
     private static final String FILE_SEPARATOR = System.getProperty("file.separator");
 
-    protected String method;
+    protected String protocol;
     protected String userName;
     protected String password;
     protected String serverName;
     protected int port = -1;
     protected String repositoryPath;
-    protected String modulePath;
-    protected File cvsCheckOutDirectory;
+    protected File gitCheckOutDirectory;
     protected String targetBranch;
     protected String targetTag;
 
@@ -109,12 +104,12 @@ public class CVSTestResourceManagerService extends LocalTestResourceManagerServi
     protected boolean isWarnEnabled = true;
     protected boolean isErrorEnabled = true;
 
-    public String getMethod() {
-        return method;
+    public String getProtocol() {
+        return protocol;
     }
 
-    public void setMethod(String method) {
-        this.method = method;
+    public void setProtocol(String protocol) {
+        this.protocol = protocol;
     }
 
     public String getUserName() {
@@ -157,20 +152,12 @@ public class CVSTestResourceManagerService extends LocalTestResourceManagerServi
         repositoryPath = path;
     }
 
-    public String getModulePath() {
-        return modulePath;
+    public File getGitCheckOutDirectory() {
+        return gitCheckOutDirectory;
     }
 
-    public void setModulePath(String module) {
-        modulePath = module;
-    }
-
-    public File getCvsCheckOutDirectory() {
-        return cvsCheckOutDirectory;
-    }
-
-    public void setCvsCheckOutDirectory(File directory) {
-        cvsCheckOutDirectory = directory;
+    public void setGitCheckOutDirectory(File directory) {
+        gitCheckOutDirectory = directory;
     }
 
     public String getTargetBranch() {
@@ -223,8 +210,8 @@ public class CVSTestResourceManagerService extends LocalTestResourceManagerServi
 
     public void createService() throws Exception {
         manager = new CustomScmManager();
-        provider = new CvsJavaScmProvider();
-        manager.setScmProvider("cvs", provider);
+        provider = new GitExeScmProvider();
+        manager.setScmProvider("git", provider);
     }
 
     public void startService() throws Exception {
@@ -232,19 +219,19 @@ public class CVSTestResourceManagerService extends LocalTestResourceManagerServi
         if (repositoryPath == null) {
             throw new IllegalArgumentException("RepositoryPath must be specified.");
         }
-        if (modulePath == null) {
-            throw new IllegalArgumentException("ModulePath must be specified.");
+        if (!PROTOCOL_GIT.equals(protocol) && !PROTOCOL_HTTP.equals(protocol) && !PROTOCOL_HTTPS.equals(protocol) && !PROTOCOL_SSH.equals(protocol)
+                && !PROTOCOL_FILE.equals(protocol)) {
+            throw new IllegalArgumentException("Protocol is illegal value. protocol=" + protocol);
         }
-        if (!METHOD_EXT.equals(method) && !METHOD_LSERVER.equals(method) && !METHOD_LOCAL.equals(method) && !METHOD_PSERVER.equals(method)
-                && !METHOD_SSPI.equals(method)) {
-            throw new IllegalArgumentException("Method is illegal value. method=" + method);
+        if(!PROTOCOL_FILE.equals(protocol) && serverName == null) {
+            throw new IllegalArgumentException("ServerName must be specified.");
         }
         if (targetBranch != null && targetTag != null) {
             throw new IllegalArgumentException("TargetBranch and TargetTag can not be specified at the same time.");
 
         }
-        if (cvsCheckOutDirectory == null) {
-            throw new IllegalArgumentException("CvsCheckOutDirectory must be specified.");
+        if (gitCheckOutDirectory == null) {
+            throw new IllegalArgumentException("GitCheckOutDirectory must be specified.");
         }
         if (targetBranch != null) {
             branch = new ScmBranch(targetBranch);
@@ -255,12 +242,12 @@ public class CVSTestResourceManagerService extends LocalTestResourceManagerServi
     }
 
     public void checkOut() throws Exception {
-        if (cvsCheckOutDirectory.exists()) {
-            RecurciveSearchFile.deleteAllTree(cvsCheckOutDirectory, false);
+        if (gitCheckOutDirectory.exists()) {
+            RecurciveSearchFile.deleteAllTree(gitCheckOutDirectory, false);
         } else {
-            cvsCheckOutDirectory.mkdirs();
+            gitCheckOutDirectory.mkdirs();
         }
-        checkOutInternal(getRepository(null, null, null), cvsCheckOutDirectory, true);
+        checkOutInternal(getRepository(null, null, null), gitCheckOutDirectory, true);
     }
 
     public String[] getScenarioGroupIds() throws Exception {
@@ -290,75 +277,30 @@ public class CVSTestResourceManagerService extends LocalTestResourceManagerServi
         update(getRepository(groupId, null, null), new File(testResourceDirectory, groupId));
         super.downloadScenarioGroupResource(dir, groupId);
     }
-    
-    public void uploadScenarioGroupResource(File dir, String scenarioGroupId) throws Exception {
-        throw new UnsupportedOperationException("This method is not supported");
-    }
 
     public void downloadScenarioResource(File dir, String groupId, String scenarioId) throws Exception {
         update(getRepository(groupId, scenarioId, null), new File(testResourceDirectory, groupId + FILE_SEPARATOR + scenarioId));
         super.downloadScenarioResource(dir, groupId, scenarioId);
     }
 
-    public void uploadScenarioResource(File dir, String scenarioGroupId, String scenarioId) throws Exception {
-        throw new UnsupportedOperationException("This method is not supported");
-    }
-    
     protected ScmRepository getRepository(String scenarioGroupId, String scenarioId, String testcaseId) throws ScmRepositoryException,
             NoSuchScmProviderException {
         StringBuilder scmUrlBuff = new StringBuilder();
-        scmUrlBuff.append("scm:cvs:");
-        if (METHOD_EXT.equals(method) || METHOD_LSERVER.equals(method)) {
-            if (serverName == null) {
-                throw new IllegalArgumentException("ServerName must be specified.");
+        scmUrlBuff.append("scm:git:" + protocol + "://");
+        if(userName != null) {
+            scmUrlBuff.append(userName);
+            if(password != null) {
+                scmUrlBuff.append(":" + password);
             }
-            scmUrlBuff.append(method + ":");
-            if (userName != null) {
-                scmUrlBuff.append(userName + "@");
-            }
-            scmUrlBuff.append(serverName);
-            if (port != -1) {
-                scmUrlBuff.append(":" + port);
-            }
-            scmUrlBuff.append(":" + repositoryPath + ":" + modulePath);
-        } else if (METHOD_LOCAL.equals(method)) {
-            scmUrlBuff.append(method + ":" + repositoryPath + ":" + modulePath);
-        } else if (METHOD_PSERVER.equals(method)) {
-            if (serverName == null) {
-                throw new IllegalArgumentException("ServerName must be specified.");
-            }
-            scmUrlBuff.append(method + ":");
-            if (userName != null) {
-                scmUrlBuff.append(userName);
-                if (password != null) {
-                    scmUrlBuff.append(":" + userName);
-                }
-                scmUrlBuff.append("@");
-            }
-            scmUrlBuff.append(serverName);
-            if (port != -1) {
-                scmUrlBuff.append(":" + port);
-            }
-            scmUrlBuff.append(":" + repositoryPath + ":" + modulePath);
-        } else if (METHOD_SSPI.equals(method)) {
-            if (serverName == null) {
-                throw new IllegalArgumentException("ServerName must be specified.");
-            }
-            scmUrlBuff.append(method + ":");
-            if (userName != null) {
-                scmUrlBuff.append(userName + "@");
-            }
-            scmUrlBuff.append(serverName + ":" + repositoryPath + ":" + modulePath);
+            scmUrlBuff.append("@");
         }
-        if (scenarioGroupId != null) {
-            scmUrlBuff.append("/" + scenarioGroupId);
-            if (scenarioId != null) {
-                scmUrlBuff.append("/" + scenarioId);
-                if (testcaseId != null) {
-                    scmUrlBuff.append("/" + testcaseId);
-                }
-            }
+        if(serverName != null) {
+            scmUrlBuff.append(serverName);
         }
+        if(!PROTOCOL_FILE.equals(protocol) && port != -1) {
+            scmUrlBuff.append(":" + port);
+        }
+        scmUrlBuff.append("/" + repositoryPath);
         return manager.makeScmRepository(scmUrlBuff.toString());
     }
 
@@ -372,10 +314,10 @@ public class CVSTestResourceManagerService extends LocalTestResourceManagerServi
             result = manager.update(repository, new ScmFileSet(updateDir));
         }
         if (result == null) {
-            throw new Exception("CVS UpdateScmResult is null.");
+            throw new Exception("Git UpdateScmResult is null.");
         }
         if (!result.isSuccess()) {
-            throw new Exception("CVS UpdateScmResult is failed. CommandOutput=" + result.getCommandOutput() + " ProviderMessage="
+            throw new Exception("Git UpdateScmResult is failed. CommandOutput=" + result.getCommandOutput() + " ProviderMessage="
                     + result.getProviderMessage());
         }
     }
@@ -390,10 +332,10 @@ public class CVSTestResourceManagerService extends LocalTestResourceManagerServi
             result = manager.checkOut(repository, new ScmFileSet(checkOutDir), isRecursive);
         }
         if (result == null) {
-            throw new Exception("CVS CheckOutScmResult is null.");
+            throw new Exception("Git CheckOutScmResult is null.");
         }
         if (!result.isSuccess()) {
-            throw new Exception("CVS CheckOutScmResult is failed. CommandOutput=" + result.getCommandOutput() + " ProviderMessage="
+            throw new Exception("Git CheckOutScmResult is failed. CommandOutput=" + result.getCommandOutput() + " ProviderMessage="
                     + result.getProviderMessage());
         }
     }

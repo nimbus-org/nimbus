@@ -43,6 +43,10 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 import jp.ossc.nimbus.core.ServiceBase;
 import jp.ossc.nimbus.io.CSVReader;
@@ -69,12 +73,27 @@ public class CSVCompareEvaluateActionService extends ServiceBase implements Eval
     protected CSVWriter csvWriter;
     protected double expectedCost = Double.NaN;
     protected boolean isResultNGOnNotFoundDestFile;
+    protected int[] matchFlags;
+    protected int matchFlag;
     
     public void setFileEncoding(String encoding){
         fileEncoding = encoding;
     }
     public String getFileEncoding(){
         return fileEncoding;
+    }
+    
+    public void setMatchFlags(int[] flags){
+        matchFlags = flags;
+        matchFlag = 0;
+        if(matchFlags != null){
+            for(int i = 0; i < matchFlags.length; i++){
+                matchFlag |= matchFlags[i];
+            }
+        }
+    }
+    public int[] getMatchFlags(){
+        return matchFlags;
     }
     
     public boolean isOutputFileAfterEdit(){
@@ -133,10 +152,12 @@ public class CSVCompareEvaluateActionService extends ServiceBase implements Eval
      * srcFilePath
      * dstFilePath
      * ignoreCSVElements
+     * ignoreRegexPattern
      * </pre>
      * srcFilePathは、比較元のCSVファイルのパスを指定する。<br>
      * dstFilePathは、比較先のCSVファイルのパスを指定する。ここで指定したファイルが存在しない場合は、比較を行わずにtrueを返す。<br>
      * ignoreCSVElementsは、比較時に無視するCSV要素を要素名または要素インデックスで指定する。要素名を指定する場合は、CSVファイルの一行目にCSV要素名ヘッダ行が必要である。要素インデックスは、0から開始する。複数指定する場合は、カンマ区切りで指定する。<br>
+     * ignoreRegexPatternは、比較時に無視するCSV要素内の内容を、要素名または要素インデックス:正規表現で指定する。複数指定する場合は、改行して指定する。この正規表現に一致する内容は、空文字に置換して比較する。<br>
      *
      * @param context コンテキスト
      * @param actionId アクションID
@@ -149,6 +170,7 @@ public class CSVCompareEvaluateActionService extends ServiceBase implements Eval
         File dstFile = null;
         int[] ignoreIndexes = null;
         String[] ignoreNames = null;
+        Map ignoreRegexPatternMap = null;
         try{
             final String srcFilePath = br.readLine();
             if(srcFilePath == null){
@@ -173,31 +195,64 @@ public class CSVCompareEvaluateActionService extends ServiceBase implements Eval
                 return !isResultNGOnNotFoundDestFile;
             }
             String ignoreCSVElementsStr = br.readLine();
-            if(ignoreCSVElementsStr != null){
-                final String[] ignoreCSVElements = CSVReader.toArray(
-                    ignoreCSVElementsStr,
-                    ',',
-                    '\\',
-                    '"',
-                    "null",
-                    "#",
-                    false,
-                    false,
-                    true,
-                    false
-                );
-                if(ignoreCSVElements != null && ignoreCSVElements.length != 0){
-                    try{
-                        ignoreIndexes = new int[ignoreCSVElements.length];
-                        for(int i = 0; i < ignoreCSVElements.length; i++){
-                            ignoreIndexes[i] = Integer.parseInt(ignoreCSVElements[i]);
+            String ignoreRegexPatternStr = null;
+            if(ignoreCSVElementsStr != null && ignoreCSVElementsStr.length() != 0){
+                if(ignoreCSVElementsStr.indexOf(':') != -1){
+                    ignoreRegexPatternStr = ignoreCSVElementsStr;
+                }else{
+                    final String[] ignoreCSVElements = CSVReader.toArray(
+                        ignoreCSVElementsStr,
+                        ',',
+                        '\\',
+                        '"',
+                        "null",
+                        "#",
+                        false,
+                        false,
+                        true,
+                        false
+                    );
+                    if(ignoreCSVElements != null && ignoreCSVElements.length != 0){
+                        try{
+                            ignoreIndexes = new int[ignoreCSVElements.length];
+                            for(int i = 0; i < ignoreCSVElements.length; i++){
+                                ignoreIndexes[i] = Integer.parseInt(ignoreCSVElements[i]);
+                            }
+                            
+                        }catch(NumberFormatException e){
+                            ignoreNames = ignoreCSVElements;
+                            ignoreIndexes = null;
                         }
-                        
-                    }catch(NumberFormatException e){
-                        ignoreNames = ignoreCSVElements;
-                        ignoreIndexes = null;
                     }
                 }
+            }
+            if(ignoreRegexPatternStr == null){
+                ignoreRegexPatternStr = br.readLine();
+            }
+            while(ignoreRegexPatternStr != null && ignoreRegexPatternStr.length() != 0){
+                final int index = ignoreRegexPatternStr.indexOf(':');
+                if(index == -1){
+                    throw new Exception("Illegal ignoreRegexPattern : " + ignoreRegexPatternStr);
+                }
+                Object csvKey = null;
+                try{
+                    csvKey = new Integer(Integer.parseInt(ignoreRegexPatternStr.substring(0, index)));
+                }catch(NumberFormatException e){
+                    csvKey = ignoreRegexPatternStr.substring(0, index);
+                }
+                Pattern pattern = matchFlag == 0 ? Pattern.compile(ignoreRegexPatternStr.substring(index + 1))
+                    : Pattern.compile(ignoreRegexPatternStr.substring(index + 1), matchFlag);
+                if(ignoreRegexPatternMap == null){
+                    ignoreRegexPatternMap = new HashMap();
+                }
+                List ignorePatternList = (List)ignoreRegexPatternMap.get(csvKey);
+                if(ignorePatternList == null){
+                    ignorePatternList = new ArrayList();
+                    ignoreRegexPatternMap.put(csvKey, ignorePatternList);
+                }
+                ignorePatternList.add(pattern);
+                
+                ignoreRegexPatternStr = br.readLine();
             }
         }finally{
             br.close();
@@ -242,18 +297,28 @@ public class CSVCompareEvaluateActionService extends ServiceBase implements Eval
                 srccsv = srccsvr.readCSVLineList(srccsv);
                 if(srccsv != null && srccsv.size() != 0){
                     ignores = new boolean[srccsv.size()];
+                    Map tmpIgnoreRegexPatternMap = null;
+                    if(ignoreRegexPatternMap != null){
+                        tmpIgnoreRegexPatternMap = new HashMap();
+                    }
                     for(int i = 0; i < srccsv.size(); i++){
                         ignores[i] = ignoreNameSet.contains(srccsv.get(i));
+                        if(ignoreRegexPatternMap != null && ignoreRegexPatternMap.containsKey(srccsv.get(i))){
+                            tmpIgnoreRegexPatternMap.put(new Integer(i), ignoreRegexPatternMap.get(srccsv.get(i)));
+                        }
+                    }
+                    if(ignoreRegexPatternMap != null){
+                        ignoreRegexPatternMap = tmpIgnoreRegexPatternMap;
                     }
                 }
                 if(isOutputFileAfterEdit){
-                    writeCSV(srccsvw, srccsv, ignores);
+                    writeCSV(srccsvw, srccsv, ignores, ignoreRegexPatternMap);
                 }
                 dstcsv = dstcsvr.readCSVLineList(dstcsv);
                 if(isOutputFileAfterEdit){
-                    writeCSV(dstcsvw, dstcsv, ignores);
+                    writeCSV(dstcsvw, dstcsv, ignores, ignoreRegexPatternMap);
                 }
-                if(!compareCSVList(srccsv, dstcsv, ignores)){
+                if(!compareCSVList(srccsv, dstcsv, ignores, ignoreRegexPatternMap)){
                     return false;
                 }
             }else if(ignoreIndexes != null && ignoreIndexes.length != 0){
@@ -268,13 +333,13 @@ public class CSVCompareEvaluateActionService extends ServiceBase implements Eval
                     }
                 }
                 if(isOutputFileAfterEdit){
-                    writeCSV(srccsvw, srccsv, ignores);
+                    writeCSV(srccsvw, srccsv, ignores, ignoreRegexPatternMap);
                 }
                 dstcsv = dstcsvr.readCSVLineList(dstcsv);
                 if(isOutputFileAfterEdit){
-                    writeCSV(dstcsvw, dstcsv, ignores);
+                    writeCSV(dstcsvw, dstcsv, ignores, ignoreRegexPatternMap);
                 }
-                if(!compareCSVList(srccsv, dstcsv, ignores)){
+                if(!compareCSVList(srccsv, dstcsv, ignores, ignoreRegexPatternMap)){
                     return false;
                 }
             }
@@ -286,10 +351,10 @@ public class CSVCompareEvaluateActionService extends ServiceBase implements Eval
                     dstcsv = dstcsvr.readCSVLineList(dstcsv);
                 }
                 if(isOutputFileAfterEdit){
-                    writeCSV(srccsvw, srccsv, ignores);
-                    writeCSV(dstcsvw, dstcsv, ignores);
+                    writeCSV(srccsvw, srccsv, ignores, ignoreRegexPatternMap);
+                    writeCSV(dstcsvw, dstcsv, ignores, ignoreRegexPatternMap);
                 }
-                result &= compareCSVList(srccsv, dstcsv, ignores);
+                result &= compareCSVList(srccsv, dstcsv, ignores, ignoreRegexPatternMap);
             }while(isOutputFileAfterEdit ? (srccsv != null || dstcsv != null) : result);
         }finally{
             if(srcisr != null){
@@ -341,7 +406,7 @@ public class CSVCompareEvaluateActionService extends ServiceBase implements Eval
         return result;
     }
     
-    protected boolean compareCSVList(List src, List dst, boolean[] ignores){
+    protected boolean compareCSVList(List src, List dst, boolean[] ignores, Map ignoreRegexPatternMap){
         if(src == null){
             return dst == null ? true : false;
         }
@@ -352,14 +417,29 @@ public class CSVCompareEvaluateActionService extends ServiceBase implements Eval
             if(ignores != null && i < ignores.length && ignores[i]){
                 continue;
             }
-            if(!src.get(i).equals(dst.get(i))){
+            String srcElement = (String)src.get(i);
+            String dstElement = (String)dst.get(i);
+            if(ignoreRegexPatternMap != null){
+                Integer index = Integer.valueOf(i);
+                if(ignoreRegexPatternMap.containsKey(index)){
+                    List ignorePatternList = (List)ignoreRegexPatternMap.get(index);
+                    for(int j = 0; j < ignorePatternList.size(); j++){
+                        Pattern pattern = (Pattern)ignorePatternList.get(j);
+                        Matcher matcher = pattern.matcher(srcElement);
+                        srcElement = matcher.replaceAll("");
+                        matcher = pattern.matcher(dstElement);
+                        dstElement = matcher.replaceAll("");
+                    }
+                }
+            }
+            if(!srcElement.equals(dstElement)){
                 return false;
             }
         }
         return true;
     }
     
-    protected void writeCSV(CSVWriter writer, List csv, boolean[] ignores) throws IOException{
+    protected void writeCSV(CSVWriter writer, List csv, boolean[] ignores, Map ignoreRegexPatternMap) throws IOException{
         if(csv == null){
             return;
         }
@@ -367,7 +447,19 @@ public class CSVCompareEvaluateActionService extends ServiceBase implements Eval
             if(ignores != null && i < ignores.length && ignores[i]){
                 continue;
             }
-            writer.writeElement(csv.get(i));
+            String element = (String)csv.get(i);
+            if(ignoreRegexPatternMap != null){
+                Integer index = Integer.valueOf(i);
+                if(ignoreRegexPatternMap.containsKey(index)){
+                    List ignorePatternList = (List)ignoreRegexPatternMap.get(index);
+                    for(int j = 0; j < ignorePatternList.size(); j++){
+                        Pattern pattern = (Pattern)ignorePatternList.get(j);
+                        Matcher matcher = pattern.matcher(element);
+                        element = matcher.replaceAll("");
+                    }
+                }
+            }
+            writer.writeElement(element);
         }
         writer.newLine();
     }

@@ -31,21 +31,29 @@
  */
 package jp.ossc.nimbus.service.test;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.lang.reflect.UndeclaredThrowableException;
 import java.net.URLEncoder;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
+import java.util.zip.ZipOutputStream;
 
 import jp.ossc.nimbus.core.ServiceBase;
 import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.core.ServiceName;
+import jp.ossc.nimbus.io.RecurciveSearchFile;
 import jp.ossc.nimbus.service.http.HttpClient;
 import jp.ossc.nimbus.service.http.HttpClientFactory;
 import jp.ossc.nimbus.service.http.HttpException;
@@ -63,7 +71,16 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
     private ServiceName httpClientFactoryServiceName;
     private HttpClientFactory httpClientFactory;
     private String templateAction = "template";
+    private String uploadAction = "upload";
     private String urlEncodeCharacterEncoding = "UTF-8";
+    
+    protected ServiceName testResourceManagerServiceName;
+    protected TestResourceManager testResourceManager;
+    
+    protected ServiceName localTestControllerServiceName;
+    protected TestController localTestController;
+    
+    protected File temporaryDirectory;
 
     public void setHttpClientFactoryServiceName(ServiceName name) {
         httpClientFactoryServiceName = name;
@@ -80,6 +97,14 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
     public String getTemplateAction() {
         return templateAction;
     }
+    
+    public String getUploadAction() {
+        return uploadAction;
+    }
+    
+    public void setUploadAction(String action) {
+        uploadAction = action;
+    }
 
     public void setURLEncodeCharacterEncoding(String encoding) {
         urlEncodeCharacterEncoding = encoding;
@@ -88,7 +113,47 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
     public String getURLEncodeCharacterEncoding() {
         return urlEncodeCharacterEncoding;
     }
+    
+    public ServiceName getTestResourceManagerServiceName() {
+        return testResourceManagerServiceName;
+    }
 
+    public void setTestResourceManagerServiceName(ServiceName serviceName) {
+        testResourceManagerServiceName = serviceName;
+    }
+
+    public TestResourceManager getTestResourceManager() {
+        return testResourceManager;
+    }
+
+    public void setTestResourceManager(TestResourceManager manager) {
+        testResourceManager = manager;
+    }
+
+    public ServiceName getLocalTestControllerServiceName() {
+        return localTestControllerServiceName;
+    }
+    
+    public void setLocalTestControllerServiceName(ServiceName serviceName) {
+        localTestControllerServiceName = serviceName;
+    }
+    
+    public TestController getLocalTestController() {
+        return localTestController;
+    }
+    
+    public void setLocalTestController(TestController testController) {
+        localTestController = testController;
+    }
+
+    public File getTemporaryDirectory() {
+        return temporaryDirectory;
+    }
+    
+    public void setTemporaryDirectory(File path) {
+        temporaryDirectory = path;
+    }
+    
     public void startService() throws Exception {
         if (httpClientFactoryServiceName != null) {
             httpClientFactory = (HttpClientFactory) ServiceManagerFactory.getServiceObject(httpClientFactoryServiceName);
@@ -97,11 +162,34 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
             throw new IllegalArgumentException("HttpClientFactory is null.");
         }
         httpClientFactory.createRequest(templateAction);
+        if (testResourceManagerServiceName != null) {
+            testResourceManager = (TestResourceManager) ServiceManagerFactory.getServiceObject(testResourceManagerServiceName);
+        }
+        if(testResourceManager != null) {
+            if(temporaryDirectory == null) {
+                temporaryDirectory = new File(System.getProperty("java.io.tmpdir"));
+            }
+            if(!temporaryDirectory.exists()) {
+                temporaryDirectory.mkdirs();
+            }
+            httpClientFactory.createRequest(uploadAction);
+        }
+        if(localTestControllerServiceName != null) {
+            localTestController = (TestController) ServiceManagerFactory.getServiceObject(localTestControllerServiceName);
+        }
     }
 
+    private Object upload(String action, Map params, File file) throws HttpException, Exception {
+        return request(action, params, file);
+    }
+    
     private Object request(String action, Map params) throws HttpException, Exception {
+        return request(action, params, null);
+    }
+    
+    private Object request(String action, Map params, File file) throws HttpException, Exception {
         HttpClient client = httpClientFactory.createHttpClient();
-        HttpRequest request = httpClientFactory.createRequest(templateAction);
+        HttpRequest request = file == null ? httpClientFactory.createRequest(templateAction) : httpClientFactory.createRequest(uploadAction);
         String accept = request.getHeader("Accept");
         if (accept == null) {
             request.setHeader("Accept", "application/octet-stream");
@@ -123,6 +211,9 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
                     request.setParameter((String) entry.getKey(), URLEncoder.encode((String) entry.getValue(), urlEncodeCharacterEncoding));
                 }
             }
+        }
+        if(file != null) {
+            request.setFileParameter("zipfile", file, file.getName(), null);
         }
         HttpResponse response = client.executeRequest(request);
         if (response.getStatusCode() != 200) {
@@ -192,6 +283,18 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
         Map params = new HashMap();
         params.put("userId", userId);
         params.put("scenarioGroupId", scenarioGroupId);
+        if(testResourceManager != null) {
+            File targetDir = new File(temporaryDirectory,scenarioGroupId);
+            if(!targetDir.exists()) {
+                targetDir.mkdirs();
+            }
+            testResourceManager.downloadScenarioGroupResource(targetDir, scenarioGroupId);
+            File zipFile = new File(temporaryDirectory, scenarioGroupId + ".zip");
+            createZipFile(targetDir, zipFile, false);
+            upload("uploadScenarioGroupResource", params, zipFile);
+            zipFile.delete();
+            RecurciveSearchFile.deleteAllTree(targetDir, true);
+        }
         request("startScenarioGroup", params);
     }
 
@@ -203,6 +306,20 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
         Map params = new HashMap();
         params.put("userId", userId);
         params.put("scenarioId", scenarioId);
+        if(testResourceManager != null) {
+            String scenarioGroupId = getCurrentScenarioGroup().getScenarioGroupId();
+            params.put("scenarioGroupId", scenarioGroupId);
+            File targetDir = new File(temporaryDirectory, scenarioGroupId + "/" + scenarioId);
+            if(!targetDir.exists()) {
+                targetDir.mkdirs();
+            }
+            testResourceManager.downloadScenarioResource(targetDir, scenarioGroupId, scenarioId);
+            File zipFile = new File(temporaryDirectory, scenarioId + ".zip");
+            createZipFile(targetDir, zipFile, true);
+            upload("uploadScenarioResource", params, zipFile);
+            zipFile.delete();
+            RecurciveSearchFile.deleteAllTree(targetDir, true);
+        }
         request("startScenario", params);
     }
 
@@ -242,7 +359,22 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
 
     public TestScenarioGroup[] getScenarioGroups() throws Exception {
         TestScenarioGroup[] groups = (TestScenarioGroup[]) request("getScenarioGroups", null);
-        if (groups != null) {
+        if(localTestController != null) {
+            TestScenarioGroup[] localGroups = localTestController.getScenarioGroups();
+            Map resultScenarioGroupIdMap = new TreeMap();
+            if(groups != null) {
+                for(int i = 0; i < groups.length; i++) {
+                    resultScenarioGroupIdMap.put(groups[i].getScenarioGroupId(), groups[i]);
+                }
+            }
+            if(localGroups != null) {
+                for(int i = 0; i < localGroups.length; i++) {
+                    resultScenarioGroupIdMap.put(localGroups[i].getScenarioGroupId(), localGroups[i]);
+                }
+            }
+            groups = (TestScenarioGroup[])resultScenarioGroupIdMap.values().toArray(new TestScenarioGroup[] {});
+        }
+        if (groups != null && groups.length > 0) {
             for (int i = 0; i < groups.length; i++) {
                 ((TestScenarioGroupImpl) groups[i]).setController(this);
             }
@@ -251,7 +383,19 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
     }
 
     public String[] getScenarioGroupIds() throws Exception {
-        return (String[]) request("getScenarioGroupIds", null);
+        String[] scenarioGroupIds = (String[]) request("getScenarioGroupIds", null);
+        if(localTestController != null) {
+            String[] localScenarioGroupIds = localTestController.getScenarioGroupIds();
+            Set resultScenarioGroupIdSet = new TreeSet();
+            if(scenarioGroupIds != null) {
+                Collections.addAll(resultScenarioGroupIdSet, scenarioGroupIds);
+            }
+            if(localScenarioGroupIds != null) {
+                Collections.addAll(resultScenarioGroupIdSet, localScenarioGroupIds);
+            }
+            scenarioGroupIds = (String[])resultScenarioGroupIdSet.toArray(new String[] {});
+        }
+        return scenarioGroupIds;
     }
 
     public TestScenarioGroup getScenarioGroup(String scenarioGroupId) throws Exception {
@@ -298,6 +442,21 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
         Map params = new HashMap();
         params.put("scenarioGroupId", scenarioGroupId);
         TestScenario[] scenarios = (TestScenario[]) request("getScenarios", params);
+        if(localTestController != null) {
+            TestScenario[] localScenarios = localTestController.getScenarios(scenarioGroupId);
+            Map resultScenarioIdMap = new TreeMap();
+            if(scenarios != null) {
+                for(int i = 0; i < scenarios.length; i++) {
+                    resultScenarioIdMap.put(scenarios[i].getScenarioId(), scenarios[i]);
+                }
+            }
+            if(localScenarios != null) {
+                for(int i = 0; i < localScenarios.length; i++) {
+                    resultScenarioIdMap.put(localScenarios[i].getScenarioId(), localScenarios[i]);
+                }
+            }
+            scenarios = (TestScenario[])resultScenarioIdMap.values().toArray(new TestScenario[] {});
+        }
         if (scenarios != null) {
             for (int i = 0; i < scenarios.length; i++) {
                 ((TestScenarioImpl) scenarios[i]).setController(this);
@@ -309,7 +468,19 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
     public String[] getScenarioIds(String scenarioGroupId) throws Exception {
         Map params = new HashMap();
         params.put("scenarioGroupId", scenarioGroupId);
-        return (String[]) request("getScenarioIds", params);
+        String[] scenarioIds = (String[]) request("getScenarioIds", params);
+        if(localTestController != null) {
+            String[] localScenarioIds = localTestController.getScenarioIds(scenarioGroupId);
+            Set resultScenarioIdSet = new TreeSet();
+            if(scenarioIds != null) {
+                Collections.addAll(resultScenarioIdSet, scenarioIds);
+            }
+            if(localScenarioIds != null) {
+                Collections.addAll(resultScenarioIdSet, localScenarioIds);
+            }
+            scenarioIds = (String[])resultScenarioIdSet.toArray(new String[] {});
+        }
+        return scenarioIds;
     }
 
     public TestScenario getScenario(String scenarioGroupId, String scenarioId) throws Exception {
@@ -317,6 +488,9 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
         params.put("scenarioGroupId", scenarioGroupId);
         params.put("scenarioId", scenarioId);
         TestScenario scenario = (TestScenario) request("getScenario", params);
+        if(localTestController != null && scenario == null) {
+            scenario = localTestController.getScenario(scenarioGroupId, scenarioId);
+        }
         if (scenario != null) {
             ((TestScenarioImpl) scenario).setController(this);
         }
@@ -508,6 +682,47 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
         request("reset", null);
     }
 
+    private void createZipFile(File targetDir, File zipFile, boolean isZipTree) throws Exception {
+        File[] files = { targetDir };
+        ZipOutputStream zos = null;
+        try {
+            zos = new ZipOutputStream(new FileOutputStream(zipFile));
+            doZip(zos, files, targetDir.getParent(), isZipTree);
+        } finally {
+            if (zos != null) {
+                try {
+                    zos.close();
+                } catch (Exception e) {
+                }
+            }
+        }
+    }
+    
+    private void doZip(ZipOutputStream zos, File[] files, String baseDir, boolean isZipTree) throws Exception {
+        byte[] buf = new byte[1024];
+        for (int i = 0; i < files.length; i++) {
+            File f = files[i];
+            if (f.isDirectory()) {
+                if(isZipTree || baseDir.equals(f.getParent())) {
+                    doZip(zos, f.listFiles(), baseDir, isZipTree);
+                }
+            } else {
+                String path = f.getPath().substring(f.getPath().indexOf(baseDir) + baseDir.length() + 1);
+                ZipEntry entry = new ZipEntry(path.replace('\\', '/'));
+                zos.putNextEntry(entry);
+                InputStream is = null;
+                try {
+                    is = new BufferedInputStream(new FileInputStream(f));
+                    int len = 0;
+                    while ((len = is.read(buf)) != -1) {
+                        zos.write(buf, 0, len);
+                    }
+                } finally {
+                    is.close();
+                }
+            }
+        }
+    }
 
     protected static class HeaderValue {
         protected String value;
