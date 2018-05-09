@@ -59,13 +59,14 @@ import jp.ossc.nimbus.service.context.Context;
 import jp.ossc.nimbus.service.aop.interceptor.ThreadContextKey;
 
 /**
- * Spring mvcに使用するBeanFlow用のコントローラ。
- * {@link jp.ossc.nimbus.beans.dataset.DataSet}をDTOとした汎用コントローラ。
- * {@link jp.ossc.nimbus.servlet.BeanFlowServlet}をもとに{@link org.springframework.web.servlet.mvc.AbstractController}に合うよう作成した。
- * BeanFlowの実行結果が{@link org.springframework.web.servlet.ModelAndView}の場合は、Spring mvcのServletがJSPを返す。
- * それ以外のクラスの場合は、Filterに設定されたnimbusのInterceptorにて処理できる。
- * {@link jp.ossc.nimbus.servlet.BeanFlowServlet}と機能性は同じであるが、口がspring mvcに接続できるようにしてある。
- * Requestに設定された入力はBeanFlowからは"Input"でアクセスできる。
+ * Spring mvcに使用するBeanFlow用のコントローラ。<br>
+ * {@link jp.ossc.nimbus.beans.dataset.DataSet}をDTOとした汎用コントローラ。<br>
+ * {@link jp.ossc.nimbus.servlet.BeanFlowServlet}をもとに{@link org.springframework.web.servlet.mvc.AbstractController}に合うよう作成した。<br>
+ * BeanFlowの実行結果が{@link org.springframework.web.servlet.ModelAndView}の場合は、Spring mvcのServletがJSPを返す。<br>
+ * それ以外のクラスの場合は、Filterに設定されたnimbusのInterceptorにて処理できる。<br>
+ * {@link jp.ossc.nimbus.servlet.BeanFlowServlet}と機能性は同じであるが、口がspring mvcに接続できるようにしてある。<br>
+ * Requestに設定された入力はBeanFlowからは"Input"でアクセスできる。<br>
+ * <pre>
  * Springへのxml configuration：
  *   ・ServiceNameをインジェクションするために、{@link jp.ossc.nimbus.beans.ServiceNameEditor}を{@link org.springframework.beans.factory.config.CustomEditorConfigurer}に登録する
  *     &lt;bean class="org.springframework.beans.factory.config.CustomEditorConfigurer"&gt;
@@ -81,6 +82,8 @@ import jp.ossc.nimbus.service.aop.interceptor.ThreadContextKey;
  *      init-method="init"&gt;
  *       &lt;property name="beanFlowInvokerFactoryServiceName" value="WebServer.Servlet#BeanFlowInvokerFactory"/&gt;
  *      &lt;/bean&gt;
+ * </pre>
+ * <pre>
  * BeanFlowの実装方法：
  *   BeanFlowからのアクセス例：
  *     &lt;input-def name="input"&gt;Input&lt;/input-def&gt;
@@ -90,6 +93,7 @@ import jp.ossc.nimbus.service.aop.interceptor.ThreadContextKey;
  *   上り：Stream⇒{@link jp.ossc.nimbus.beans.dataset.DataSet}、下り：{@link jp.ossc.nimbus.beans.dataset.DataSet}⇒JSPで使う場合
  *     ・上りJson⇒DataSet(Beanflowの入力)⇒{@link org.springframework.web.servlet.ModelAndView}(Beanflowの出力)⇒JSP⇒下り
  *     ・Beanflowの開発:{@link jp.ossc.nimbus.beans.dataset.DataSet}を受け、{@link org.springframework.web.servlet.ModelAndView}を返すBeanflowを実装
+ * </pre>
  * @author Y.Nakashima
  *
  */
@@ -319,7 +323,7 @@ public class BeanFlowController extends AbstractController{
     }
 
     /**
-     * デフォルトは{@link #DEFAULT_REQUEST_OBJECT_ATTRIBUTE_NAME}。
+     * デフォルトは{@link StreamExchangeInterceptorServiceMBean#DEFAULT_REQUEST_OBJECT_ATTRIBUTE_NAME}。
      * 指定した{@link #inputAttributeName}をkeyにRequestのattributeからオブジェクトを取り出し、それをBeanFlowへのInputにする。
      * @param inputAttributeName
      */
@@ -332,7 +336,7 @@ public class BeanFlowController extends AbstractController{
     }
 
     /**
-     * デフォルトは{@link #DEFAULT_RESPONSE_OBJECT_ATTRIBUTE_NAME}。
+     * デフォルトは{@link StreamExchangeInterceptorServiceMBean#DEFAULT_RESPONSE_OBJECT_ATTRIBUTE_NAME}。
      * 指定した{@link #outputAttributeName}をkeyにResponseのattributeにオブジェクトをセットする。
      * オブジェクトはBeanFlowのOutputである。
      * @param outputAttributeName
