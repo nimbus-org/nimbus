@@ -94,8 +94,8 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
     protected Context threadContext;
     protected Map authenticatedInfoMapping;
     protected PropertyAccess propertyAccess;
-    protected String loginPath;
-    protected String logoutPath;
+    protected String[] loginPath;
+    protected String[] logoutPath;
     protected ServiceName authenticateStoreServiceName;
     protected AuthenticateStore authenticateStore;
     protected boolean isStoreCreate = true;
@@ -157,20 +157,20 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
     }
 
     // AuthenticateInterceptorServiceMBean のJavaDoc
-    public void setLoginPath(String path){
+    public void setLoginPath(String[] path){
         loginPath = path;
     }
     // AuthenticateInterceptorServiceMBean のJavaDoc
-    public String getLoginPath(){
+    public String[] getLoginPath(){
         return loginPath;
     }
 
     // AuthenticateInterceptorServiceMBean のJavaDoc
-    public void setLogoutPath(String path){
+    public void setLogoutPath(String[] path){
         logoutPath = path;
     }
     // AuthenticateInterceptorServiceMBean のJavaDoc
-    public String getLogoutPath(){
+    public String[] getLogoutPath(){
         return logoutPath;
     }
 
@@ -266,7 +266,7 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
             threadContext = (Context)ServiceManagerFactory
                 .getServiceObject(threadContextServiceName);
         }
-        if(loginPath == null){
+        if(loginPath == null || loginPath.length == 0){
             throw new IllegalArgumentException("LoginPath must be specified.");
         }
         if(authenticatedInfoMapping == null || authenticatedInfoMapping.size() == 0){
@@ -314,21 +314,27 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
         if(request.getPathInfo() != null){
             reqPath = reqPath + request.getPathInfo();
         }
-        if(loginPath.equals(reqPath)){
-            Object ret = chain.invokeNext(context);
-            newAuthenticatedInfo(request);
-            return ret;
-        }else if(logoutPath != null && logoutPath.equals(reqPath)){
-            Object authenticatedInfo = checkAuthenticated(request);
-            setupAuthenticatedInfo(request, authenticatedInfo);
-            Object ret = chain.invokeNext(context);
-            removeAuthenticatedInfo(request);
-            return ret;
-        }else{
-            Object authenticatedInfo = checkAuthenticated(request);
-            setupAuthenticatedInfo(request, authenticatedInfo);
-            return chain.invokeNext(context);
+        for(int i = 0; i < loginPath.length; i++){
+            if(loginPath[i].equals(reqPath)){
+                Object ret = chain.invokeNext(context);
+                newAuthenticatedInfo(request);
+                return ret;
+            }
         }
+        if(logoutPath != null){
+            for(int i = 0; i < logoutPath.length; i++){
+                if(logoutPath[i].equals(reqPath)){
+                    Object authenticatedInfo = checkAuthenticated(request);
+                    setupAuthenticatedInfo(request, authenticatedInfo);
+                    Object ret = chain.invokeNext(context);
+                    removeAuthenticatedInfo(request);
+                    return ret;
+                }
+            }
+        }
+        Object authenticatedInfo = checkAuthenticated(request);
+        setupAuthenticatedInfo(request, authenticatedInfo);
+        return chain.invokeNext(context);
     }
 
     protected void newAuthenticatedInfo(HttpServletRequest request) throws AuthenticateException{

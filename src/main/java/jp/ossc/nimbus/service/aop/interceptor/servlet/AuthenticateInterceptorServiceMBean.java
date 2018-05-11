@@ -143,33 +143,33 @@ public interface AuthenticateInterceptorServiceMBean
     public Map getAuthenticatedInfoMapping();
     
     /**
-     * 認証情報を生成するログインのパスを設定する。<p>
+     * 認証情報を生成するログインのパスの配列を設定する。<p>
      * ログインのリクエスト処理を行うアプリケーションで認証情報を生成し、認証リクエスト属性(属性名は{@link #getAuthenticatedInfoAttributeName()})に設定する必要がある。<br>
      *
-     * @param path ログインのパス
+     * @param path ログインのパスの配列
      */
-    public void setLoginPath(String path);
+    public void setLoginPath(String[] path);
     
     /**
-     * 認証情報を生成するログインのパスを取得する。<p>
+     * 認証情報を生成するログインのパスの配列を取得する。<p>
      *
-     * @return ログインのパス
+     * @return ログインのパスの配列
      */
-    public String getLoginPath();
+    public String[] getLoginPath();
     
     /**
-     * 認証情報を削除するログアウトのパスを設定する。<p>
+     * 認証情報を削除するログアウトのパスの配列を設定する。<p>
      *
-     * @param path ログアウトのパス
+     * @param path ログアウトのパスの配列
      */
-    public void setLogoutPath(String path);
+    public void setLogoutPath(String[] path);
     
     /**
-     * 認証情報を削除するログアウトのパスを取得する。<p>
+     * 認証情報を削除するログアウトのパスの配列を取得する。<p>
      *
-     * @return ログアウトのパス
+     * @return ログアウトのパスの配列
      */
-    public String getLogoutPath();
+    public String[] getLogoutPath();
     
     /**
      * 認証情報をストアする{@link AuthenticateStore}サービスのサービス名を設定する。<p>
