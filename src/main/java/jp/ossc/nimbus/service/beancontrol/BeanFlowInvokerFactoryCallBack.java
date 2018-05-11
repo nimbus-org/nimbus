@@ -111,4 +111,6 @@ public interface BeanFlowInvokerFactoryCallBack {
     
     public QueueHandlerContainer getAsynchInvokeQueueHandlerContainer();
     public String replaceProperty(String textValue);
+    
+    public Integer getDefaultTransactionTimeout();
 }

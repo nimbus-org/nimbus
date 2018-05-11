@@ -468,6 +468,22 @@ public interface DefaultBeanFlowInvokerFactoryServiceMBean
     public boolean isOutputJournalMetricsTimestamp();
     
     /**
+     * JTAを使用する場合の、デフォルトのトランザクションタイムアウト[s]を設定する。<p>
+     * デフォルトは、nullで、タイムアウトを設定しない。<br>
+     *
+     * @param timeout デフォルトのトランザクションタイムアウト[s]
+     */
+    public void setDefaultTransactionTimeout(Integer timeout);
+    
+    /**
+     * JTAを使用する場合の、デフォルトのトランザクションタイムアウト[s]を取得する。<p>
+     *
+     * @return デフォルトのトランザクションタイムアウト[s]
+     */
+    public Integer getDefaultTransactionTimeout();
+    
+    
+    /**
      * ジャーナルの出力サイズの統計情報を初期化する。<p>
      */
     public void resetJournalMetrics();

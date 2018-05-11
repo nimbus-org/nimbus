@@ -821,16 +821,20 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
     ) throws Exception {
         ((BeanFlowMonitorImpl)monitor).setStartTime(System.currentTimeMillis());
         try{
+            Integer defaultTransactionTimeout = factoryCallBack.getDefaultTransactionTimeout();
             Object result = null;
             Transaction oldTransaction
                 = tranManager == null ? null : tranManager.getTransaction();
             Transaction newTransaction = null;
             switch(transactionType){
             case REQUIRED_VALUE:
-                if(transactionTimeout != -1 && oldTransaction == null){
-                    tranManager.setTransactionTimeout(transactionTimeout);
-                }
+                
                 if(oldTransaction == null){
+                    if(transactionTimeout != -1){
+                        tranManager.setTransactionTimeout(transactionTimeout);
+                    }else if(defaultTransactionTimeout != null){
+                        tranManager.setTransactionTimeout(defaultTransactionTimeout.intValue());
+                    }
                     tranManager.begin();
                     newTransaction = tranManager.getTransaction();
                 }
@@ -856,6 +860,8 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                 try{
                     if(transactionTimeout != -1){
                         tranManager.setTransactionTimeout(transactionTimeout);
+                    }else if(defaultTransactionTimeout != null){
+                        tranManager.setTransactionTimeout(defaultTransactionTimeout.intValue());
                     }
                     tranManager.begin();
                     newTransaction = tranManager.getTransaction();

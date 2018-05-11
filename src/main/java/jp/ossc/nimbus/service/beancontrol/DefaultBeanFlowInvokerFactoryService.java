@@ -195,6 +195,8 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
     private boolean isOutputJournalMetricsAverageSize = true;
     private boolean isOutputJournalMetricsTimestamp = false;
     private Map journalMetricsInfos;
+    
+    private Integer defaultTransactionTimeout;
 
     // DefaultBeanFlowInvokerFactoryServiceMBeanのJavaDoc
     public void setValidate(boolean validate){
@@ -470,6 +472,16 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
     // DefaultBeanFlowInvokerFactoryServiceMBeanのJavaDoc
     public boolean isOutputJournalMetricsTimestamp(){
         return isOutputJournalMetricsTimestamp;
+    }
+    
+    // DefaultBeanFlowInvokerFactoryServiceMBeanのJavaDoc
+    public void setDefaultTransactionTimeout(Integer timeout){
+        defaultTransactionTimeout = timeout;
+    }
+    
+    // DefaultBeanFlowInvokerFactoryServiceMBeanのJavaDoc
+    public Integer getDefaultTransactionTimeout(){
+        return defaultTransactionTimeout;
     }
     
     // DefaultBeanFlowInvokerFactoryServiceMBeanのJavaDoc
