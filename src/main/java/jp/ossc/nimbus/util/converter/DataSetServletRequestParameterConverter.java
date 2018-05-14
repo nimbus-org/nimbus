@@ -2,18 +2,18 @@
  * This software is distributed under following license based on modified BSD
  * style license.
  * ----------------------------------------------------------------------
- * 
+ *
  * Copyright 2003 The Nimbus Project. All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
- * 
+ *
  * 1. Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer. 
+ *    this list of conditions and the following disclaimer.
  * 2. Redistributions in binary form must reproduce the above copyright notice,
  *    this list of conditions and the following disclaimer in the documentation
  *    and/or other materials provided with the distribution.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE NIMBUS PROJECT ``AS IS'' AND ANY EXPRESS
  * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN
@@ -24,7 +24,7 @@
  * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- * 
+ *
  * The views and conclusions contained in the software and documentation are
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
@@ -90,83 +90,83 @@ import jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvoker;
  *   &lt;input name=":Header(h1).prop1" type="text" value="a"&gt;
  *   &lt;input name=":Header(h1).prop2" type="text" value="b"&gt;
  * </pre>
- * 
+ *
  * @author M.Takata
  */
 public class DataSetServletRequestParameterConverter implements Converter{
-    
+
     public static final String DEFAULT_DATASET_PARAMETER_NAME = "ds";
-    
+
     public static final String DEFAULT_DATASET_DELIMITER = ":";
-    
+
     public static final String DEFAULT_DATASET_PREFIX = "dataset";
-    
+
     protected static final String HEADER_CONTENT_TYPE = "Content-Type";
-    
+
     protected static final String MULTIPART = "multipart/";
-    
+
     /**
      * データセットマッピング。<p>
      */
     protected Map dataSetMap = new HashMap();
-    
+
     /**
      * BeanFlowInvokerFactory。<p>
      */
     protected BeanFlowInvokerFactory beanFlowInvokerFactory;
-    
+
     /**
      * PropertyをキャッシュするMap。<p>
      */
     protected ConcurrentMap propertyCache = new ConcurrentHashMap();
-    
+
     /**
      * データセット名を決定するパラメータ名。<p>
      */
     protected String dataSetParameterName = DEFAULT_DATASET_PARAMETER_NAME;
-    
+
     /**
      * データセット名の区切り子。<p>
      */
     protected String datasetDelimiter = DEFAULT_DATASET_DELIMITER;
-    
+
     /**
      * データセット名をパスから決定する場合に、パスに付加する前置詞。<p>
      * デフォルトは、{@link #DEFAULT_DATASET_PREFIX}。<br>
      */
     protected String dataSetPathPrefix = DEFAULT_DATASET_PREFIX;
-    
+
     /**
      * データセットに存在しないパラメータを無視するかどうかのフラグ。<p>
      * デフォルトは、falseで、変換エラーとする。<br>
      */
     protected boolean isIgnoreUnknownParameter;
-    
+
     /**
      * HttpServletRequestからFileに変換する際の一時ファイルをメモリ上で管理できるデータサイズの上限。<p>
      * デフォルトは、{@link DiskFileItemFactory#DEFAULT_SIZE_THRESHOLD}。
      */
     protected int sizeThreshold = DiskFileItemFactory.DEFAULT_SIZE_THRESHOLD;
-    
+
     /**
      * ディスク上に一時的に保存する際のディレクトリ。<p>
      */
     protected String repositoryPath;
-    
+
     /**
      * Requestのデータサイズの上限。<p>
      */
     protected long requestSizeThreshold = -1L;
-    
+
     /**
      * HTTPヘッダの文字エンコーディング。<p>
      */
     protected String headerEncoding;
-    
+
     /**
      * データセット名とデータセットのマッピングを設定する。<p>
      * サーブレットリクエストパラメータ→データセット変換を行う際に、データセット名からデータセットを特定するのに使用する。<br>
-     * 
+     *
      * @param name データセット名
      * @param dataSet データセット
      */
@@ -176,7 +176,7 @@ public class DataSetServletRequestParameterConverter implements Converter{
         }
         dataSetMap.put(name, dataSet);
     }
-    
+
     /**
      * DataSetをBeanFlowで取得する場合に使用する{@link BeanFlowInvokerFactory}を設定する。<p>
      *
@@ -185,7 +185,7 @@ public class DataSetServletRequestParameterConverter implements Converter{
     public void setBeanFlowInvokerFactory(BeanFlowInvokerFactory factory){
         beanFlowInvokerFactory = factory;
     }
-    
+
     /**
      * DataSet名を一括で指定するリクエストパラメータ名を設定する。<p>
      * デフォルトは、{@link #DEFAULT_DATASET_PARAMETER_NAME}。<br>
@@ -195,7 +195,7 @@ public class DataSetServletRequestParameterConverter implements Converter{
     public void setDataSetParameterName(String name){
         dataSetParameterName = name;
     }
-    
+
     /**
      * DataSet名を一括で指定するリクエストパラメータ名を取得する。<p>
      *
@@ -204,7 +204,7 @@ public class DataSetServletRequestParameterConverter implements Converter{
     public String getDataSetParameterName(){
         return dataSetParameterName;
     }
-    
+
     /**
      * データセット名の区切り子を設定する。<p>
      * デフォルトは、{@link #DEFAULT_DATASET_DELIMITER}。<br>
@@ -214,7 +214,7 @@ public class DataSetServletRequestParameterConverter implements Converter{
     public void setDataSetDelimiter(String delim){
         datasetDelimiter = delim;
     }
-    
+
     /**
      * データセット名の区切り子を取得する。<p>
      *
@@ -223,7 +223,7 @@ public class DataSetServletRequestParameterConverter implements Converter{
     public String getDataSetDelimiter(){
         return datasetDelimiter;
     }
-    
+
     /**
      * DataSet名をパスから決定する場合の前置詞を設定する。<p>
      * デフォルトは、{@link #DEFAULT_DATASET_PREFIX}。<br>
@@ -233,7 +233,7 @@ public class DataSetServletRequestParameterConverter implements Converter{
     public void setDataSetPathPrefix(String prefix){
         dataSetPathPrefix = prefix;
     }
-    
+
     /**
      * DataSet名をパスから決定する場合の前置詞を取得する。<p>
      *
@@ -242,20 +242,20 @@ public class DataSetServletRequestParameterConverter implements Converter{
     public String getDataSetPathPrefix(){
         return dataSetPathPrefix;
     }
-    
+
     /**
      * データセットに存在しないパラメータを無視するかどうかを設定する。<p>
      * デフォルトは、falseで、変換エラーとなる。<br>
-     * 
+     *
      * @param isIgnore trueの場合、無視する
      */
     public void setIgnoreUnknownParameter(boolean isIgnore){
         isIgnoreUnknownParameter = isIgnore;
     }
-    
+
     /**
      * データセットに存在しないパラメータを無視するかどうかを判定する。<p>
-     * 
+     *
      * @return trueの場合、無視する
      */
     public boolean isIgnoreUnknownParameter(){
@@ -273,7 +273,7 @@ public class DataSetServletRequestParameterConverter implements Converter{
     public void setSizeThreshold(int size) {
         sizeThreshold = size;
     }
-    
+
     /**
      * メモリ上で管理するデータサイズ（上限）を取得する。<p>
      *
@@ -282,7 +282,7 @@ public class DataSetServletRequestParameterConverter implements Converter{
     public int getSizeThreshold() {
         return sizeThreshold;
     }
-    
+
     /**
      * ディスク上に一時的に保存する際のディレクトリを指定する。<p>
      *
@@ -292,7 +292,7 @@ public class DataSetServletRequestParameterConverter implements Converter{
     public void setRepositoryPath(String path) {
         repositoryPath = path;
     }
-    
+
     /**
      * ディスク上に一時的に保存する際のディレクトリを取得する。<p>
      *
@@ -301,7 +301,7 @@ public class DataSetServletRequestParameterConverter implements Converter{
     public String getRepositoryPath() {
         return repositoryPath;
     }
-    
+
     /**
      * HttpServletRequestのContentLengthの最大値を設定する。<p>
      *
@@ -310,7 +310,7 @@ public class DataSetServletRequestParameterConverter implements Converter{
     public void setRequestSizeThreshold(long size) {
         requestSizeThreshold = size;
     }
-    
+
     /**
      * HttpServletRequestのContentLengthの最大値を取得する。<p>
      *
@@ -319,7 +319,7 @@ public class DataSetServletRequestParameterConverter implements Converter{
     public long getRequestSizeThreshold() {
         return requestSizeThreshold;
     }
-    
+
     /**
      * HTTPヘッダの文字コードを設定する。<p>
      *
@@ -328,7 +328,7 @@ public class DataSetServletRequestParameterConverter implements Converter{
     public void setHeaderEncoding(String encoding){
         headerEncoding = encoding;
     }
-    
+
     /**
      * HTTPヘッダの文字コードを取得する。<p>
      *
@@ -337,7 +337,7 @@ public class DataSetServletRequestParameterConverter implements Converter{
     public String getHeaderEncoding(){
         return headerEncoding;
     }
-    
+
     /**
      * 指定されたオブジェクトを変換する。<p>
      *
@@ -352,7 +352,7 @@ public class DataSetServletRequestParameterConverter implements Converter{
         HttpServletRequest request = (HttpServletRequest)obj;
         String contentType = request.getHeader(HEADER_CONTENT_TYPE);
         Map paramMap = null;
-        if(contentType != null || (!contentType.toLowerCase().startsWith(MULTIPART))){
+        if(contentType != null && (!contentType.toLowerCase().startsWith(MULTIPART))){
             paramMap = request.getParameterMap();
         }else{
             DiskFileItemFactory factory = new DiskFileItemFactory();
@@ -601,7 +601,7 @@ public class DataSetServletRequestParameterConverter implements Converter{
             return currentDsMap;
         }
     }
-    
+
     protected void setRecordProperty(
         Record record,
         String name,
@@ -629,7 +629,7 @@ public class DataSetServletRequestParameterConverter implements Converter{
             }
         }
     }
-    
+
     protected void setRecordListProperty(
         RecordList recList,
         String name,
@@ -646,7 +646,7 @@ public class DataSetServletRequestParameterConverter implements Converter{
             rec.setParseProperty(name, vals[i]);
         }
     }
-    
+
     protected void setRecordListProperty(
         RecordList recList,
         String name,
