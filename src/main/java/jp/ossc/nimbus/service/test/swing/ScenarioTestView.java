@@ -141,6 +141,8 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
 
     private boolean isServerCalling = false;
 
+    private final static long MAX_WAIT_TIME_MILLIS = 10 * 60 * 1000; 
+    
     public ScenarioTestView(TestController testController, String userId) throws Exception {
         this.testController = testController;
         this.userId = userId;
@@ -602,32 +604,54 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
      * シナリオグループ開始ボタンの押下アクション
      * @throws Exception
      */
-    private void scenarioGroupStartAction() throws Exception {
+    private void scenarioGroupStartAction(boolean isWait) throws Exception {
 
         String selectScenarioGroupId = scenarioGroupCombobox.getSelectedItem().toString();
-        TestScenarioGroup obj = testController.getCurrentScenarioGroup();
-
-        if(obj != null && obj.getStatus() != null && obj.getStatus().getUserId() != null){
-            int result = JOptionPane.showConfirmDialog(this, "シナリオグループは既に開始されていますが、リセットして再度開始しますか？", "確認", JOptionPane.OK_CANCEL_OPTION);
-            if(JOptionPane.OK_OPTION != result){
-                return;
-            }
-        }
+        
         try {
             // シナリオグループの開始
             testController.startScenarioGroup(userId, selectScenarioGroupId);
             // シナリオの検索、シナリオ一覧をコンボボックスに設定
             scenarioCombobox.setEnabled(true);
             setupStatusLabel();
+        }catch(TestStatusException e){
+            if(isWait) {
+                int result = JOptionPane.showConfirmDialog(this, e.getMessage() + "\r\n\r\n実行されているシナリオグループの終了を待ち、終了次第自動で開始しますか？" , "確認", JOptionPane.YES_NO_OPTION);
+                if(JOptionPane.YES_OPTION == result){
+                    long startTime = System.currentTimeMillis();
+                    while(true) {
+                        TestScenarioGroup group = testController.getCurrentScenarioGroup();
+                        if(group == null) {
+                            try {
+                                scenarioGroupStartAction(false);
+                            } catch(TestStatusException e2) {
+                                continue;
+                            }
+                            return;
+                        }
+                        if(System.currentTimeMillis() - startTime > MAX_WAIT_TIME_MILLIS) {
+                            JOptionPane.showMessageDialog(this, "実行されているシナリオグループが待ち時間[" + MAX_WAIT_TIME_MILLIS + "]ms以内に終了しませんでした。\r\n時間をおいて再度実行してください。");
+                            return;
+                        }
+                        try {
+                            Thread.sleep(5000);
+                        } catch(InterruptedException e2) {}
+                    }
+                }
+            } else {
+                throw e;
+            }
         } finally {
-            // シナリオコンボボックスを設定
-            setupScenarioCombobox(null);
-    
-            // シナリオ系コンポーネントの設定（初期化）
-            setupScenarioComponents();
-    
-            // テストケース表示パネルの初期化
-            testCasePanel.initialize();
+            if(isWait) {
+                // シナリオコンボボックスを設定
+                setupScenarioCombobox(null);
+        
+                // シナリオ系コンポーネントの設定（初期化）
+                setupScenarioComponents();
+        
+                // テストケース表示パネルの初期化
+                testCasePanel.initialize();
+            }
         }
     }
 
@@ -655,7 +679,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
      * シナリオ開始ボタンの押下アクション
      * @throws Exception
      */
-    private void scenarioStartAction() throws Exception {
+    private void scenarioStartAction(boolean isWait) throws Exception {
 
         String selectScenarioGroupId = scenarioGroupCombobox.getSelectedItem().toString();
         String selectScenarioId = scenarioCombobox.getSelectedItem().toString();
@@ -677,9 +701,38 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
             testCasePanel.addTestCaseControlListener(new TestCaseControlListenerImpl());
             testCasePanel.setUserId(userId);
             setupStatusLabel();
+        }catch(TestStatusException e){
+            if(isWait) {
+                int result = JOptionPane.showConfirmDialog(this, e.getMessage() + "\r\n\r\n実行されているシナリオの終了を待ち、終了次第自動で開始しますか？" , "確認", JOptionPane.YES_NO_OPTION);
+                if(JOptionPane.YES_OPTION == result){
+                    long startTime = System.currentTimeMillis();
+                    while(true) {
+                        TestScenario scenario = testController.getCurrentScenario();
+                        if(scenario == null) {
+                            try {
+                                scenarioStartAction(false);
+                            } catch(TestStatusException e2) {
+                                continue;
+                            }
+                            return;
+                        }
+                        if(System.currentTimeMillis() - startTime > MAX_WAIT_TIME_MILLIS) {
+                            JOptionPane.showMessageDialog(this, "実行されているシナリオが待ち時間[" + MAX_WAIT_TIME_MILLIS + "]ms以内に終了しませんでした。\r\n時間をおいて再度実行してください。");
+                            return;
+                        }
+                        try {
+                            Thread.sleep(5000);
+                        } catch(InterruptedException e2) {}
+                    }
+                }
+            } else {
+                throw e;
+            }
         } finally {
-            // シナリオ系コンポーネントの設定（初期化）
-            setupScenarioComponents();
+            if(isWait) {
+                // シナリオ系コンポーネントの設定（初期化）
+                setupScenarioComponents();
+            }
         }
     }
 
@@ -1142,13 +1195,13 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
                 isServerCalling = true;
                 switch(mode) {
                 case MODE_SCENARIO_GROUP_START:
-                    scenarioGroupStartAction();
+                    scenarioGroupStartAction(true);
                     break;
                 case MODE_SCENARIO_GROUP_END:
                     scenarioGroupEndAction();
                     break;
                 case MODE_SCENARIO_START:
-                    scenarioStartAction();
+                    scenarioStartAction(true);
                     break;
                 case MODE_SCENARIO_END:
                     scenarioEndAction();
@@ -1191,7 +1244,14 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         
         @Override
         protected Object doInBackground() throws Exception {
-            dialog = new TextAreaDialogView(frame, "Action実行状況");
+            switch(mode) {
+            case MODE_SCENARIO_GROUP:
+                dialog = new TextAreaDialogView(frame, "ScenarioGroup Action実行状況");
+                break;
+            case MODE_SCENARIO:
+                dialog = new TextAreaDialogView(frame, "Scenario Action実行状況");
+                break;
+            }
             dialog.setVisible(true);
             while((isServerCalling || !isAutoDisplay) && dialog != null && dialog.isVisible()) {
                 try {
@@ -1202,7 +1262,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
                         if(group == null) {
                             sb.append("ScenarioGroup is not started.");
                         } else {
-                            sb.append("ScenarioGroup [" + group.getScenarioGroupId() + "] status." + "\r\n");
+                            sb.append("ScenarioGroup [" + group.getScenarioGroupId() + "] Started User [" + group.getStatus().getUserId() + "] Status...\r\n");
                             Map endMap = group.getStatus().getActionEndMap();
                             Iterator itr = endMap.entrySet().iterator();
                             while(itr.hasNext()) {
@@ -1223,7 +1283,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
                         if(scenario == null) {
                             sb.append("Scenario is not started.");
                         } else {
-                            sb.append("Scenario [" + scenario.getScenarioId() + "] status." + "\r\n");
+                            sb.append("Scenario [" + scenario.getScenarioId() + " Started User [" + scenario.getStatus().getUserId() + "] Status...\r\n");
                             Map endMap = scenario.getStatus().getActionEndMap();
                             Iterator itr = endMap.entrySet().iterator();
                             while(itr.hasNext()) {

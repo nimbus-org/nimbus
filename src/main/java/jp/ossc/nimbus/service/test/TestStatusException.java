@@ -32,47 +32,113 @@
 package jp.ossc.nimbus.service.test;
 
 /**
- * テストステータス例外。<p>
+ * テストステータス例外。
+ * <p>
  *
  * @author M.Ishida
  */
 public class TestStatusException extends TestException {
     
-    /**
-     * コンストラクタ。<p>
-     */
-    public TestStatusException(){
-        super();
-    }
+    private String scenarioGroupId;
+    private String scenarioId;
+    private String userId;
     
     /**
-     * エラーメッセージを持ったインスタンスを生成するコンストラクタ。<p>
+     * エラーメッセージを持ったインスタンスを生成するコンストラクタ。
+     * <p>
      *
      * @param message エラーメッセージ
      */
-    public TestStatusException(String message){
+    public TestStatusException(String message) {
         super(message);
     }
     
     /**
-     * この例外の原因となった例外を持ったインスタンスを生成するコンストラクタ。<p>
-     *
-     * @param cause 原因となった例外
+     * コンストラクタ。
+     * <p>
+     * 
+     * @param userId 例外が発生した際のユーザID
+     * @param scenarioGroupId 例外が発生した際のシナリオグループID
+     * @param scenarioId 例外が発生した際のシナリオID
      */
-    public TestStatusException(Throwable cause){
-        super(cause);
+    public TestStatusException(String userId, String scenarioGroupId, String scenarioId) {
+        super();
+        this.scenarioGroupId = scenarioGroupId;
+        this.scenarioId = scenarioId;
+        this.userId = userId;
     }
     
     /**
-     * エラーメッセージと、この例外の原因となった例外を持ったインスタンスを生成するコンストラクタ。<p>
+     * エラーメッセージを持ったインスタンスを生成するコンストラクタ。
+     * <p>
+     *
+     * @param message エラーメッセージ
+     * @param userId 例外が発生した際のユーザID
+     * @param scenarioGroupId 例外が発生した際のシナリオグループID
+     * @param scenarioId 例外が発生した際のシナリオID
+     */
+    public TestStatusException(String message, String userId, String scenarioGroupId, String scenarioId) {
+        super(message);
+        this.scenarioGroupId = scenarioGroupId;
+        this.scenarioId = scenarioId;
+        this.userId = userId;
+    }
+    
+    /**
+     * この例外の原因となった例外を持ったインスタンスを生成するコンストラクタ。
+     * <p>
+     *
+     * @param cause 原因となった例外
+     * @param userId 例外が発生した際のユーザID
+     * @param scenarioGroupId 例外が発生した際のシナリオグループID
+     * @param scenarioId 例外が発生した際のシナリオID
+     */
+    public TestStatusException(Throwable cause, String userId, String scenarioGroupId, String scenarioId) {
+        super(cause);
+        this.scenarioGroupId = scenarioGroupId;
+        this.scenarioId = scenarioId;
+        this.userId = userId;
+    }
+    
+    /**
+     * エラーメッセージと、この例外の原因となった例外を持ったインスタンスを生成するコンストラクタ。
+     * <p>
      *
      * @param message エラーメッセージ
      * @param cause 原因となった例外
+     * @param userId 例外が発生した際のユーザID
+     * @param scenarioGroupId 例外が発生した際のシナリオグループID
+     * @param scenarioId 例外が発生した際のシナリオID
      */
-    public TestStatusException(
-        String message,
-        Throwable cause
-    ){
+    public TestStatusException(String message, Throwable cause, String userId, String scenarioGroupId, String scenarioId) {
         super(message, cause);
+        this.scenarioGroupId = scenarioGroupId;
+        this.scenarioId = scenarioId;
+        this.userId = userId;
     }
+
+    public String getUserId() {
+        return userId;
+    }
+    
+    public void setUserId(String id) {
+        userId = id;
+    }
+    
+    public String getScenarioGroupId() {
+        return scenarioGroupId;
+    }
+
+    public void setScenarioGroupId(String id) {
+        scenarioGroupId = id;
+    }
+
+    public String getScenarioId() {
+        return scenarioId;
+    }
+
+    public void setScenarioId(String id) {
+        scenarioId = id;
+    }
+
 }

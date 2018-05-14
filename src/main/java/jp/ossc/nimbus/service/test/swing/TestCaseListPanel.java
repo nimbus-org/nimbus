@@ -610,7 +610,7 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
         
         @Override
         protected Object doInBackground() throws Exception {
-            dialog = new TextAreaDialogView(frame, "Action実行状況");
+            dialog = new TextAreaDialogView(frame, "Testcase Action実行状況");
             dialog.setVisible(true);
             while((isServerCalling || !isAutoDisplay) && dialog != null && dialog.isVisible()) {
                 try {
@@ -619,7 +619,7 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
                     if(testCase == null) {
                         sb.append("TestCase is not started.");
                     } else {
-                        sb.append("TestCase [" + testCase.getTestCaseId() + "] status." + "\r\n");
+                        sb.append("TestCase [" + testCase.getTestCaseId() + "] Started User [" + testCase.getStatus().getUserId() + "] Status...\r\n");
                         Map endMap = testCase.getStatus().getActionEndMap();
                         Iterator itr = endMap.entrySet().iterator();
                         while(itr.hasNext()) {
