@@ -65,6 +65,21 @@ public interface StatusActionMnager extends StatusBase{
     public Map getActionResultMap();
     
     /**
+     * 指定したアクションIDの終了状態を取得する。<p>
+     * 
+     * @param actionId アクションID
+     * @return 終了状態。終了の場合、true。未終了の場合、false
+     */
+    public boolean isActionEnd(String actionId);
+    
+    /**
+     * アクションの終了状態マップを取得する。<p>
+     * 
+     * @return アクションIDと終了状態のマップ
+     */
+    public Map getActionEndMap();
+    
+    /**
      * アクションを実行した結果、発生した例外を取得する。<p>
      *
      * @return アクションを実行した結果、発生した例外
