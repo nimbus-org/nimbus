@@ -1265,15 +1265,19 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
                             sb.append("ScenarioGroup [" + group.getScenarioGroupId() + "] Started User [" + group.getStatus().getUserId() + "] Status...\r\n");
                             Map endMap = group.getStatus().getActionEndMap();
                             Iterator itr = endMap.entrySet().iterator();
-                            while(itr.hasNext()) {
-                                Entry entry = (Entry)itr.next();
-                                boolean isEnd = (Boolean)entry.getValue();
-                                sb.append("\t Action [" + entry.getKey() + "] is ");
-                                if(isEnd) {
-                                    boolean result = group.getStatus().getActionResult((String)entry.getKey());
-                                    sb.append("end. result is " + result + "\r\n");
-                                } else {
-                                    sb.append("excuting...\r\n");
+                            if(endMap.isEmpty()) {
+                                sb.append("\t Action is empty.");
+                            } else {
+                                while(itr.hasNext()) {
+                                    Entry entry = (Entry)itr.next();
+                                    boolean isEnd = (Boolean)entry.getValue();
+                                    sb.append("\t Action [" + entry.getKey() + "] is ");
+                                    if(isEnd) {
+                                        boolean result = group.getStatus().getActionResult((String)entry.getKey());
+                                        sb.append("end. result is " + result + "\r\n");
+                                    } else {
+                                        sb.append("excuting...\r\n");
+                                    }
                                 }
                             }
                         }
@@ -1285,16 +1289,20 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
                         } else {
                             sb.append("Scenario [" + scenario.getScenarioId() + " Started User [" + scenario.getStatus().getUserId() + "] Status...\r\n");
                             Map endMap = scenario.getStatus().getActionEndMap();
-                            Iterator itr = endMap.entrySet().iterator();
-                            while(itr.hasNext()) {
-                                Entry entry = (Entry)itr.next();
-                                boolean isEnd = (Boolean)entry.getValue();
-                                sb.append("\t Action [" + entry.getKey() + "] is ");
-                                if(isEnd) {
-                                    boolean result = scenario.getStatus().getActionResult((String)entry.getKey());
-                                    sb.append("end. result is " + result + "\r\n");
-                                } else {
-                                    sb.append("excuting...\r\n");
+                            if(endMap.isEmpty()) {
+                                sb.append("\t Action is empty.");
+                            } else {
+                                Iterator itr = endMap.entrySet().iterator();
+                                while(itr.hasNext()) {
+                                    Entry entry = (Entry)itr.next();
+                                    boolean isEnd = (Boolean)entry.getValue();
+                                    sb.append("\t Action [" + entry.getKey() + "] is ");
+                                    if(isEnd) {
+                                        boolean result = scenario.getStatus().getActionResult((String)entry.getKey());
+                                        sb.append("end. result is " + result + "\r\n");
+                                    } else {
+                                        sb.append("excuting...\r\n");
+                                    }
                                 }
                             }
                         }

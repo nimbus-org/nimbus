@@ -621,16 +621,20 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
                     } else {
                         sb.append("TestCase [" + testCase.getTestCaseId() + "] Started User [" + testCase.getStatus().getUserId() + "] Status...\r\n");
                         Map endMap = testCase.getStatus().getActionEndMap();
-                        Iterator itr = endMap.entrySet().iterator();
-                        while(itr.hasNext()) {
-                            Entry entry = (Entry)itr.next();
-                            boolean isEnd = (Boolean)entry.getValue();
-                            sb.append("\t Action [" + entry.getKey() + "] is ");
-                            if(isEnd) {
-                                boolean result = testCase.getStatus().getActionResult((String)entry.getKey());
-                                sb.append("end. result is " + result + "\r\n");
-                            } else {
-                                sb.append("excuting...\r\n");
+                        if(endMap.isEmpty()) {
+                            sb.append("\t Action is empty.");
+                        } else {
+                            Iterator itr = endMap.entrySet().iterator();
+                            while(itr.hasNext()) {
+                                Entry entry = (Entry)itr.next();
+                                boolean isEnd = (Boolean)entry.getValue();
+                                sb.append("\t Action [" + entry.getKey() + "] is ");
+                                if(isEnd) {
+                                    boolean result = testCase.getStatus().getActionResult((String)entry.getKey());
+                                    sb.append("end. result is " + result + "\r\n");
+                                } else {
+                                    sb.append("excuting...\r\n");
+                                }
                             }
                         }
                     }
