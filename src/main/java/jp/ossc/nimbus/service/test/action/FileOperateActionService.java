@@ -91,7 +91,7 @@ public class FileOperateActionService extends ServiceBase implements TestAction,
                     throw new Exception("Unexpected EOF on srcPath");
                 }
                 do{
-                    List srcFiles = toFiles(srcPath);
+                    List srcFiles = toFiles(srcPath, context);
                     if(srcFiles != null){
                         String dstPath = br.readLine();
                         File dstDir = null;
@@ -124,7 +124,7 @@ public class FileOperateActionService extends ServiceBase implements TestAction,
                     throw new Exception("Unexpected EOF on srcPath");
                 }
                 do{
-                    List srcFiles = toFiles(srcPath);
+                    List srcFiles = toFiles(srcPath, context);
                     if(srcFiles != null){
                         String dstPath = br.readLine();
                         File dstDir = null;
@@ -157,7 +157,7 @@ public class FileOperateActionService extends ServiceBase implements TestAction,
                     throw new Exception("Unexpected EOF on filePath");
                 }
                 do{
-                    List files = toFiles(filePath);
+                    List files = toFiles(filePath, context);
                     if(files != null){
                         delete(files);
                     }
@@ -168,7 +168,7 @@ public class FileOperateActionService extends ServiceBase implements TestAction,
                     throw new Exception("Unexpected EOF on filePath");
                 }
                 do{
-                    List files = toFiles(filePath);
+                    List files = toFiles(filePath, context);
                     if(files != null){
                         clear(files);
                     }
@@ -180,7 +180,7 @@ public class FileOperateActionService extends ServiceBase implements TestAction,
                 }
                 List fileList = null;
                 do{
-                    List files = toFiles(filePath);
+                    List files = toFiles(filePath, context);
                     if(files != null){
                         fileList = ls(files, fileList);
                     }
@@ -273,7 +273,7 @@ public class FileOperateActionService extends ServiceBase implements TestAction,
         return fileList;
     }
     
-    protected List toFiles(String path) throws IOException{
+    protected List toFiles(String path, TestContext context) throws IOException{
         List result = null;
         path = replaceProperty(path);
         File file = new File(path);
@@ -285,7 +285,7 @@ public class FileOperateActionService extends ServiceBase implements TestAction,
             while((parentFile = parentFile.getParentFile()) != null && !parentFile.exists());
             
             if(parentFile == null){
-                parentFile = new File(".");
+                parentFile = new File(context.getCurrentDirectory().getAbsolutePath());
             }else{
                 path = path.substring(parentFile.getPath().length() + 1);
             }
