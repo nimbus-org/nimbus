@@ -365,7 +365,7 @@ import jp.ossc.nimbus.util.converter.StringStreamConverter;
  *     <tr><td>action</td><td>changeMaxDelayTime</td></tr>
  *     <tr><td>id</td><td>スケジュールID。複数パラメータ、またはカンマ区切りで複数指定可能。</td></tr>
  *     <tr><td>time</td><td>最大遅延時間[ms]</td></tr>
- *     <tr><td rowspan="13">13</td><td rowspan="13"><nobr>スケジュールの追加</nobr></td><td>responseType</td><td>json</td><td rowspan="13">
+ *     <tr><td rowspan="12">13</td><td rowspan="12"><nobr>スケジュールの追加</nobr></td><td>responseType</td><td>json</td><td rowspan="12">
  *     <code><pre>
  *{
  *    "schedule": {
@@ -404,7 +404,7 @@ import jp.ossc.nimbus.util.converter.StringStreamConverter;
  *     <tr><td>retryInterval</td><td>リトライ間隔[ms]。指定しない場合0</td></tr>
  *     <tr><td>retryEndTime</td><td>リトライ終了日時。yyyyMMddHHmmssSSS。指定しない場合null</td></tr>
  *     <tr><td>maxDelayTime</td><td>最大遅延時間[ms]。指定しない場合0</td></tr>
- *     <tr><td rowspan="11">14</td><td rowspan="11"><nobr>スケジュールマスタからのスケジュールの追加</nobr></td><td>responseType</td><td>json</td><td rowspan="11">
+ *     <tr><td rowspan="10">14</td><td rowspan="10"><nobr>スケジュールマスタからのスケジュールの追加</nobr></td><td>responseType</td><td>json</td><td rowspan="10">
  *     <code><pre>
  *{
  *    "schedules": [
