@@ -83,6 +83,14 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
     
     protected File temporaryDirectory;
     
+    protected String currentScenarioGroupId;
+    protected String currentScenarioGroupUserId;
+    
+    protected String currentScenarioId;
+    protected String currentScenarioUserId;
+    
+    protected Object lock = new String();
+    
     public void setTestControllerServiceName(ServiceName name) {
         testControllerServiceName = name;
     }
@@ -231,6 +239,12 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
         } else if (request.getHeader().getURLMatcher(".*endScenarioGroup").matches()) {
             try {
                 testController.endScenarioGroup();
+                synchronized(lock) {
+                    currentScenarioGroupId = null;;
+                    currentScenarioGroupUserId = null;
+                    currentScenarioId = null;;
+                    currentScenarioUserId = null;
+                }
             } catch (Exception e) {
                 if (isJSON) {
                     Map jsonMap = new HashMap();
@@ -263,6 +277,10 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
             }
             try {
                 testController.cancelScenario(getParameter(params, "scenarioId"));
+                synchronized(lock) {
+                    currentScenarioId = null;;
+                    currentScenarioUserId = null;
+                }
             } catch (Exception e) {
                 if (isJSON) {
                     Map jsonMap = new HashMap();
@@ -279,6 +297,10 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
             }
             try {
                 testController.endScenario(getParameter(params, "scenarioId"));
+                synchronized(lock) {
+                    currentScenarioId = null;;
+                    currentScenarioUserId = null;
+                }
             } catch (Exception e) {
                 if (isJSON) {
                     Map jsonMap = new HashMap();
@@ -879,6 +901,14 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
                 try {
                     parseMultipartRequest(request, contentType, params);
                     String scenarioGroupId = (String) params.get("scenarioGroupId");
+                    synchronized(lock) {
+                        if(currentScenarioGroupId == null) {
+                            currentScenarioGroupId = scenarioGroupId;
+                            currentScenarioGroupUserId = (String) params.get("userId");
+                        } else {
+                            throw new TestStatusException("ScenarioGroup is already started. ScenarioGroupId=" + currentScenarioGroupId + " UserId=" + currentScenarioGroupUserId);
+                        }
+                    }
                     Object[] objs = (Object[]) params.get("zipfile");
                     File tmpZipFile = new File(temporaryDirectory, (String) objs[0]);
                     os = new FileOutputStream(tmpZipFile);
@@ -923,6 +953,22 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
                     parseMultipartRequest(request, contentType, params);
                     String scenarioGroupId = (String) params.get("scenarioGroupId");
                     String scenarioId = (String) params.get("scenarioId");
+                    synchronized(lock) {
+                        if(scenarioGroupId.equals(currentScenarioGroupId)) {
+                            if(currentScenarioId == null) {
+                                currentScenarioId = scenarioId;
+                                currentScenarioUserId = (String) params.get("userId");
+                            } else {
+                                throw new TestStatusException("Scenario is already started. ScenarioGroupId=" + currentScenarioGroupId + " ScenarioId=" + currentScenarioId + " UserId=" + currentScenarioUserId);
+                            }
+                        } else {
+                            if(currentScenarioId == null) {
+                                throw new TestStatusException("ScenarioGroup is already started. ScenarioGroupId=" + currentScenarioGroupId + " UserId=" + currentScenarioGroupUserId);
+                            } else {
+                                throw new TestStatusException("Scenario is already started. ScenarioGroupId=" + currentScenarioGroupId + " ScenarioId=" + currentScenarioId + " UserId=" + currentScenarioUserId);
+                            }
+                        }
+                    }
                     Object[] objs = (Object[]) params.get("zipfile");
                     File tmpZipFile = new File(temporaryDirectory, (String) objs[0]);
                     os = new FileOutputStream(tmpZipFile);

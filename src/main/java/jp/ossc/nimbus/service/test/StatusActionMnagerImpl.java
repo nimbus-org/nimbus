@@ -96,11 +96,30 @@ public class StatusActionMnagerImpl extends StatusBaseImpl implements StatusActi
         return true;
     }
     
+    public boolean isActionEnd(String actionId) {
+        for (int i = 0; i < testActionContextList.size(); i++) {
+            TestActionContext context = (TestActionContext) testActionContextList.get(i);
+            if(context.getId().equals(actionId)){
+                return context.isEnd();
+            }
+        }
+        return true;
+    }
+    
     public Map getActionResultMap() {
         Map result = new LinkedHashMap();
         for (int i = 0; i < testActionContextList.size(); i++) {
             TestActionContext context = (TestActionContext) testActionContextList.get(i);
             result.put(context.getId(), new Boolean(context.isSuccess()));
+        }
+        return result;
+    }
+    
+    public Map getActionEndMap() {
+        Map result = new LinkedHashMap();
+        for (int i = 0; i < testActionContextList.size(); i++) {
+            TestActionContext context = (TestActionContext) testActionContextList.get(i);
+            result.put(context.getId(), new Boolean(context.isEnd()));
         }
         return result;
     }

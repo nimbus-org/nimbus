@@ -68,6 +68,8 @@ public interface TestActionContext {
     
     public boolean isSuccess();
     
+    public boolean isEnd();
+    
     public double getExpectedCost();
     
     public double getCost();

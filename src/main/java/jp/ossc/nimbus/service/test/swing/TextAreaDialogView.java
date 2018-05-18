@@ -29,41 +29,48 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-package jp.ossc.nimbus.service.websocket;
+package jp.ossc.nimbus.service.test.swing;
 
-import javax.websocket.CloseReason;
-import javax.websocket.EndpointConfig;
-import javax.websocket.Session;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
 
-/**
- * WebSocketのSessionイベント用インターフェイス。
- * <p>
- *
- * @author M.Ishida
- */
-public interface SessionMessageHandler {
+import jp.ossc.nimbus.service.test.StatusActionMnager;
 
-    /**
-     * セッションオープン処理
-     *
-     * @param session WebSocketセッション
-     * @param config EndpointConfig
-     */
-    public void onOpen(Session session, EndpointConfig config);
+import javax.swing.JScrollPane;
+import java.awt.Container;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.awt.BorderLayout;
 
-    /**
-     * セッションクローズ処理
-     *
-     * @param session WebSocketセッション
-     * @param closeReason CloseReason
-     */
-    public void onClose(Session session, CloseReason closeReason);
-
-    /**
-     * 例外発生時処理
-     *
-     * @param session WebSocketセッション
-     * @param thr 発生した例外
-     */
-    public void onError(Session session, Throwable thr);
+public class TextAreaDialogView extends JDialog {
+    
+    private JTextArea textArea;
+    
+    public TextAreaDialogView(JFrame ownerFrame, String title) {
+        super(ownerFrame);
+        setModal(false);
+        
+        setTitle(title);
+        setBounds(ownerFrame.getX() + 100, ownerFrame.getY() + 100, 700, 400);
+        textArea = new JTextArea();
+        textArea.setEditable(false);
+        JScrollPane scrollpane1 = new JScrollPane(textArea);
+        Container contentPane = getContentPane();
+        contentPane.removeAll();
+        contentPane.add(scrollpane1, BorderLayout.CENTER);
+        textArea.setCaretPosition(0);
+    }
+    
+    public void setText(final String text) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                textArea.setText(text);
+                repaint();
+            }
+        });
+    }
 }
