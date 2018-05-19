@@ -72,7 +72,7 @@ public class HttpServletRequestCheckInterceptorService
     protected int minContentLength = -1;
     protected boolean isAllowNullContentType = true;
     protected String[] validContentTypes;
-    protected Set validContentTypeValueSet;
+    protected ContentType[] validContentTypeValues;
     protected String[] invalidContentTypes;
     protected ContentType[] invalidContentTypeValues;
     protected boolean isAllowNullCharacterEncoding = true;
@@ -357,9 +357,9 @@ public class HttpServletRequestCheckInterceptorService
         }
         
         if(validContentTypes != null){
-            validContentTypeValueSet = new HashSet();
+            validContentTypeValues = new ContentType[validContentTypes.length];
             for(int i = 0; i < validContentTypes.length; i++){
-                validContentTypeValueSet.add(new ContentType(validContentTypes[i]));
+                validContentTypeValues[i] = new ContentType(validContentTypes[i]);
             }
         }
         if(invalidContentTypes != null){
@@ -415,10 +415,47 @@ public class HttpServletRequestCheckInterceptorService
                         "ContentType is null."
                     );
                 }
-            }else if(validContentTypeValueSet != null || invalidContentTypeValues != null){
+            }else if(validContentTypeValues != null || invalidContentTypeValues != null){
                 ContentType contentTypeValue = new ContentType(contentType);
-                if(validContentTypeValueSet != null){
-                    if(!validContentTypeValueSet.contains(contentTypeValue)){
+                if(validContentTypeValues != null){
+                    boolean valid = false;
+                    for(int i = 0; i < validContentTypeValues.length; i++){
+                        if(validContentTypeValues[i].getParameters() == null){
+                            if(validContentTypeValues[i].getMediaType().equalsIgnoreCase(contentTypeValue.getMediaType())){
+                                valid = true;
+                                break;
+                            }
+                        }else{
+                            if(!validContentTypeValues[i].getMediaType().equalsIgnoreCase(contentTypeValue.getMediaType())){
+                                continue;
+                            }
+                            Map params = contentTypeValue.getParameters();
+                            if(params == null){
+                                continue;
+                            }
+                            Map validParams = validContentTypeValues[i].getParameters();
+                            if(!params.keySet().contains(validParams.keySet())){
+                                continue;
+                            }
+                            valid = true;
+                            Iterator entries = validParams.entrySet().iterator();
+                            while(entries.hasNext()){
+                                Map.Entry entry = (Map.Entry)entries.next();
+                                Object value = params.get(entry.getKey());
+                                if((value != null && entry.getValue() == null)
+                                    || (value == null && entry.getValue() != null)
+                                    || (entry.getValue() != null && !entry.getValue().equals(value))
+                                ){
+                                    valid = false;
+                                    break;
+                                }
+                            }
+                            if(valid){
+                                break;
+                            }
+                        }
+                    }
+                    if(!valid){
                         return fail(
                             request,
                             response,
