@@ -90,6 +90,10 @@ public class HttpResponseImpl implements HttpResponse, Cloneable{
     protected ServiceName streamConverterServiceName;
     protected StreamConverter streamConverter;
     protected byte[] outputBytes;
+    protected Set normalStatusCodeSet;
+    protected Set removeNormalStatusCodeSet;
+    protected Map errorStatusCodeMap;
+    protected Set removeErrorStatusCodeSet;
     
     /**
      * HTTPメソッドを設定する。<p>
@@ -409,6 +413,112 @@ public class HttpResponseImpl implements HttpResponse, Cloneable{
     // HttpResponseのJavaDoc
     public String getStatusMessage(){
         return statusMessage;
+    }
+    
+    /**
+     * HTTPステータスがエラーに該当するかどうかをチェックする。<p>
+     *
+     * @exception HttpErrorStatusException HTTPステータスがエラーに該当する場合
+     */
+    public void checkStatusCode() throws HttpErrorStatusException{
+        Integer code = Integer.valueOf(getStatusCode());
+        HttpErrorStatusException exception = null;
+        if(errorStatusCodeMap != null){
+            Class exceptionClass = (Class)errorStatusCodeMap.get(code);
+            if(exceptionClass != null && (removeErrorStatusCodeSet == null || !removeErrorStatusCodeSet.contains(code))){
+                try{
+                    exception = (HttpErrorStatusException)exceptionClass.newInstance();
+                }catch(InstantiationException e){
+                    exception = new HttpErrorStatusException();
+                }catch(IllegalAccessException e){
+                    exception = new HttpErrorStatusException();
+                }
+            }
+        }
+        if(exception == null && normalStatusCodeSet != null && !normalStatusCodeSet.contains(code)
+            && (removeNormalStatusCodeSet == null || removeNormalStatusCodeSet.contains(code))
+        ){
+            exception = new HttpErrorStatusException();
+        }
+        if(exception != null){
+            exception.setStatus(code.intValue(), getStatusMessage());
+            throw exception;
+        }
+    }
+    
+    /**
+     * 正常なレスポンスのHTTPステータスを設定する。<p>
+     * 指定されたHTTPステータス以外の場合は、{@link HttpErrorStatusException}をthrowする。<br>
+     *
+     * @param code HTTPステータス
+     */
+    public void setNormalStatusCode(int code){
+        if(normalStatusCodeSet == null){
+            normalStatusCodeSet = new HashSet();
+        }
+        normalStatusCodeSet.add(Integer.valueOf(code));
+    }
+    
+    /**
+     * 設定された正常なレスポンスのHTTPステータスを削除する。<p>
+     *
+     * @param code HTTPステータス
+     */
+    public void removeNormalStatusCode(int code){
+        if(removeNormalStatusCodeSet == null){
+            removeNormalStatusCodeSet = new HashSet();
+        }
+        removeNormalStatusCodeSet.add(Integer.valueOf(code));
+    }
+    
+    /**
+     * 異常なレスポンスのHTTPステータスを設定する。<p>
+     * 指定されたHTTPステータスの場合は、{@link HttpErrorStatusException}をthrowする。<br>
+     *
+     * @param code HTTPステータス
+     */
+    public void setErrorStatusCode(int code){
+        setErrorStatusCode(code, HttpErrorStatusException.class);
+    }
+    
+    /**
+     * 異常なレスポンスのHTTPステータスを設定する。<p>
+     * 指定されたHTTPステータスの場合は、指定された例外をthrowする。<br>
+     *
+     * @param code HTTPステータス
+     * @param exception 例外クラス
+     * @exception IllegalArgumentException 指定されたexceptionが{@link HttpErrorStatusException}にキャスト可能でない場合
+     */
+    public void setErrorStatusCode(int code, Class exception) throws IllegalArgumentException{
+        if(!HttpErrorStatusException.class.isAssignableFrom(exception)){
+            throw new IllegalArgumentException("Exception must be sub class of HttpErrorStatusException.");
+        }
+        if(errorStatusCodeMap == null){
+            errorStatusCodeMap = new HashMap();
+        }
+        errorStatusCodeMap.put(Integer.valueOf(code), exception);
+    }
+    
+    /**
+     * 異常なレスポンスのHTTPステータスを設定する。<p>
+     * 指定されたHTTPステータスの場合は、指定された例外をthrowする。<br>
+     *
+     * @return 異常なレスポンスのHTTPステータスと、その場合にthrowする例外のマップ
+     */
+    public Map getErrorStatusCodeMap(){
+        return errorStatusCodeMap;
+    }
+    
+    /**
+     * 設定された異常なレスポンスのHTTPステータスを削除する。<p>
+     *
+     * @param code HTTPステータス
+     */
+    public void removeErrorStatusCode(int code){
+        if(removeErrorStatusCodeSet == null){
+            removeErrorStatusCodeSet = new HashSet();
+        }
+        removeErrorStatusCodeSet.add(Integer.valueOf(code));
     }
     
     /**

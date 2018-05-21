@@ -72,6 +72,8 @@ public class HttpClientFactoryService extends ServiceBase
     protected Map credentialsMap = new HashMap();
     protected Map proxyCredentialsMap = new HashMap();
     protected Map requestHeaders = new HashMap();
+    protected Set responseNormalStatusCodeSet;
+    protected Map responseErrorStatusCodeMap;
     protected String proxy;
     protected String proxyHost;
     protected int proxyPort;
@@ -278,6 +280,37 @@ public class HttpClientFactoryService extends ServiceBase
     // HttpClientFactoryServiceMBeanのJavaDoc
     public ServiceName getResponseStreamConverterServiceName(){
         return responseStreamConverterServiceName;
+    }
+    
+    // HttpClientFactoryServiceMBeanのJavaDoc
+    public void setResponseNormalStatusCode(int code){
+        if(responseNormalStatusCodeSet == null){
+            responseNormalStatusCodeSet = new HashSet();
+        }
+        responseNormalStatusCodeSet.add(Integer.valueOf(code));
+    }
+    // HttpClientFactoryServiceMBeanのJavaDoc
+    public Set getResponseNormalStatusCodeSet(){
+        return responseNormalStatusCodeSet;
+    }
+    
+    // HttpClientFactoryServiceMBeanのJavaDoc
+    public void setResponseErrorStatusCode(int code){
+        setResponseErrorStatusCode(code, HttpErrorStatusException.class);
+    }
+    // HttpClientFactoryServiceMBeanのJavaDoc
+    public void setResponseErrorStatusCode(int code, Class exception) throws IllegalArgumentException{
+        if(!HttpErrorStatusException.class.isAssignableFrom(exception)){
+            throw new IllegalArgumentException("Exception must be sub class of HttpErrorStatusException.");
+        }
+        if(responseErrorStatusCodeMap == null){
+            responseErrorStatusCodeMap = new HashMap();
+        }
+        responseErrorStatusCodeMap.put(Integer.valueOf(code), exception);
+    }
+    // HttpClientFactoryServiceMBeanのJavaDoc
+    public Map getResponseErrorStatusCodeMap(){
+        return responseErrorStatusCodeMap;
     }
     
     // HttpClientFactoryServiceMBeanのJavaDoc
@@ -863,6 +896,22 @@ public class HttpClientFactoryService extends ServiceBase
                             );
                         }
                     }
+                    if(responseNormalStatusCodeSet != null){
+                        Iterator codes = responseNormalStatusCodeSet.iterator();
+                        while(codes.hasNext()){
+                            response.setNormalStatusCode(((Integer)codes.next()).intValue());
+                        }
+                    }
+                    if(responseErrorStatusCodeMap != null){
+                        Iterator entries = responseErrorStatusCodeMap.entrySet().iterator();
+                        Map errorStatusCodeMap = response.getErrorStatusCodeMap();
+                        while(entries.hasNext()){
+                            Map.Entry entry = (Map.Entry)entries.next();
+                            if(errorStatusCodeMap == null || !errorStatusCodeMap.containsKey(entry.getKey())){
+                                response.setErrorStatusCode(((Integer)entry.getKey()).intValue(), (Class)entry.getValue());
+                            }
+                        }
+                    }
                     response.setStatusCode(status);
                     response.setHttpMethod(method);
                     if(journal != null){
@@ -898,7 +947,7 @@ public class HttpClientFactoryService extends ServiceBase
                             }
                         }
                     }
-                    
+                    response.checkStatusCode();
                     return response;
                 }finally{
                     if(journal != null){
