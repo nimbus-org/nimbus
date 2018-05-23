@@ -44,10 +44,13 @@ import java.awt.event.ComponentListener;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -62,9 +65,16 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingWorker;
 
+import jp.ossc.nimbus.core.Service;
+import jp.ossc.nimbus.core.ServiceManager;
+import jp.ossc.nimbus.core.ServiceManagerFactory;
+import jp.ossc.nimbus.core.ServiceMetaData;
+import jp.ossc.nimbus.core.ServiceNotFoundException;
+import jp.ossc.nimbus.core.Utility;
 import jp.ossc.nimbus.service.test.TestCase;
 import jp.ossc.nimbus.service.test.TestCase.Status;
 import jp.ossc.nimbus.service.test.TestController;
+import jp.ossc.nimbus.service.test.TestReporter;
 import jp.ossc.nimbus.service.test.TestScenario;
 import jp.ossc.nimbus.service.test.TestScenarioGroup;
 import jp.ossc.nimbus.service.test.TestStatusException;
@@ -78,6 +88,12 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
 
     // 上部に表示するユーザID
     private String userId = null;
+
+    // Reporterコンボボックス
+    private JComboBox reporterCombobox = null;
+    
+    // report出力ボタン
+    private JButton reportButton = null;
 
     // コントローラ更新ボタン
     private JButton updateButton = null;
@@ -131,6 +147,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
     // 一度DLしたディレクトリ
     private File cashDlDir = null;
 
+    private List repoterList = null;
 
 
     // シナリオグループの状態を表示するボタン
@@ -146,6 +163,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
     public ScenarioTestView(TestController testController, String userId) throws Exception {
         this.testController = testController;
         this.userId = userId;
+        repoterList = getTestReporters();
         initialize();
     }
 
@@ -183,6 +201,46 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         label1.setVerticalTextPosition(JLabel.TOP);
         layout.setConstraints(label1, constraints);
         p.add(label1);
+
+        // 「Reporter」コンボボックス
+        constraints.gridx = 2;
+        constraints.gridy = 0;
+        constraints.weightx = 0;
+        constraints.weighty = 0;
+        constraints.gridwidth = 2;
+        constraints.gridheight = 1;
+        constraints.insets = new Insets(5, 5, 5, 5);
+        reporterCombobox = new JComboBox();
+        if(repoterList != null && repoterList.size() > 0) {
+            for(int i = 0; i < repoterList.size(); i++) {
+                Service service = (Service)repoterList.get(i);
+                reporterCombobox.addItem(service.getServiceName());
+            }
+        } else {
+            reporterCombobox.setEnabled(false);
+        }
+        reporterCombobox.setFont(font);
+        reporterCombobox.setSize(150, 25);
+        layout.setConstraints(reporterCombobox, constraints);
+        p.add(reporterCombobox);
+
+        // 「レポート出力」ボタン
+        constraints.gridx = 4;
+        constraints.gridy = 0;
+        constraints.weightx = 0;
+        constraints.weighty = 0;
+        constraints.gridwidth = 1;
+        constraints.gridheight = 1;
+        constraints.insets = new Insets(5, 5, 5, 5);
+        reportButton = new JButton("レポート出力");
+        reportButton.setFont(font);
+        reportButton.addActionListener(this);
+        reportButton.setSize(150, 25);
+        if(repoterList == null || repoterList.size() == 0) {
+            reportButton.setEnabled(false);
+        }
+        layout.setConstraints(reportButton, constraints);
+        p.add(reportButton);
 
         // 「更新」ボタン
         constraints.gridx = 5;
@@ -590,6 +648,10 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
                     SwingWorker statusWorker = new StatusCheckWorker(this, StatusCheckWorker.MODE_SCENARIO_GROUP, false);
                     statusWorker.execute();
                 }
+            } else if(e.getSource() == reportButton) {
+                TestReporter reporter = (TestReporter)repoterList.get(reporterCombobox.getSelectedIndex());
+                reporter.report(testController);
+                JOptionPane.showMessageDialog(this, "レポートを出力しました。");
             }
         } catch (Exception e1) {
             JDialog dialog = new StatusDialogView(this, "例外", e1);
@@ -1153,6 +1215,40 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
 
     public boolean isStatusDialogDisplay() {
         return statusDialogDisplayCheckBox.isSelected();
+    }
+    
+    private List getTestReporters() {
+        List result = new ArrayList();
+        ServiceManager[] managers = ServiceManagerFactory.findManagers();
+        for (int i = 0; i < managers.length; i++) {
+            Set serviceNameSet = managers[i].serviceNameSet();
+            Iterator itr = serviceNameSet.iterator();
+            while (itr.hasNext()) {
+                Object name = itr.next();
+                ServiceMetaData metaData = null;
+                try {
+                    metaData = managers[i].getServiceMetaData((String) name);
+                } catch (ServiceNotFoundException e) {
+                }
+                if (metaData != null) {
+                    try {
+                        Class serviceClass = Utility.convertStringToClass(metaData.getCode());
+                        if (TestReporter.class.isAssignableFrom(serviceClass)) {
+                            result.add(managers[i].getServiceObject((String) name));
+                        }
+                    } catch (ClassNotFoundException e) {
+                    }
+                }
+            }
+        }
+        Collections.sort(result, new ServiceComparator());
+        return result;
+    }
+    
+    private class ServiceComparator implements Comparator {
+        public int compare(Object o1, Object o2) {
+            return ((Service)o1).getServiceName().compareTo(((Service)o2).getServiceName());
+        }        
     }
     
     /**
