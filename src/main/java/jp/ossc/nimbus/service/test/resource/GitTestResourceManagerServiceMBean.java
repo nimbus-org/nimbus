@@ -169,6 +169,22 @@ public interface GitTestResourceManagerServiceMBean {
     public void setRepositoryPath(String path);
 
     /**
+     * Gitサーバからチェックアウト後に取得するモジュールパスを取得する。
+     * <p>
+     *
+     * @return モジュールパス
+     */
+    public String getModulePath();
+
+    /**
+     * Gitサーバからチェックアウト後に取得するモジュールパスを設定する。
+     * <p>
+     *
+     * @param module モジュールパス
+     */
+    public void setModulePath(String module);
+
+    /**
      * Gitサーバからモジュールをチェックアウトするディレクトリを取得する。
      * <p>
      *
@@ -271,4 +287,19 @@ public interface GitTestResourceManagerServiceMBean {
      * @param enabled Errorログ有効/無効
      */
     public void setErrorEnabled(boolean enabled);
+
+    /**
+     * Gitサーバからチェックアウトする際に使用する一時ディレクトリを取得する。
+     * 
+     * @return 一時ディレクトリ
+     */
+    public File getTemporaryDirectory();
+    
+    /**
+     * Gitサーバからチェックアウトする際に使用する一時ディレクトリを設定する。
+     * 
+     * @param path 一時ディレクトリ
+     */
+    public void setTemporaryDirectory(File path);
+
 }
