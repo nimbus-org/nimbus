@@ -4,7 +4,7 @@
     <groupId>com.github.nimbus-org</groupId>
     <artifactId>nimbus</artifactId>
     <packaging>jar</packaging>
-    <version>1.2.4</version>
+    <version>SNAPSHOT</version>
     <name>nimbus</name>
     <description>Nimbus Framework</description>
     <url>https://github.com/nimbus-org/nimbus</url>
