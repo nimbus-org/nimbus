@@ -434,7 +434,7 @@ public class HttpServletRequestCheckInterceptorService
                                 continue;
                             }
                             Map validParams = validContentTypeValues[i].getParameters();
-                            if(!params.keySet().contains(validParams.keySet())){
+                            if(!params.keySet().containsAll(validParams.keySet())){
                                 continue;
                             }
                             valid = true;

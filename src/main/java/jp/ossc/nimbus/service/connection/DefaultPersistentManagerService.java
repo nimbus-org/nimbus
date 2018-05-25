@@ -941,6 +941,7 @@ public class DefaultPersistentManagerService extends ServiceBase
             Object value = null;
             switch(jdbcType){
             case Types.BLOB:
+            case Types.BINARY:
             case Types.CLOB:
                 switch(jdbcType){
                 case Types.BLOB:
@@ -959,6 +960,15 @@ public class DefaultPersistentManagerService extends ServiceBase
                         }
                     }else{
                         value = rs.getBlob(index);
+                    }
+                    break;
+                case Types.BINARY:
+                    if(InputStream.class.equals(type)){
+                        value = rs.getBinaryStream(index);
+                    }else if(String.class.equals(type)){
+                        value = new String(rs.getBytes(index));
+                    }else{
+                        value = rs.getBytes(index);
                     }
                     break;
                 case Types.CLOB:

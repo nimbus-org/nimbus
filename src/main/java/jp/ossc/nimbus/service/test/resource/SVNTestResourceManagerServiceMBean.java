@@ -34,62 +34,64 @@ package jp.ossc.nimbus.service.test.resource;
 import java.io.File;
 
 /**
- * {@link CVSTestResourceManagerService}のMBeanインタフェース
+ * {@link SVNTestResourceManagerService}のMBeanインタフェース
  * <p>
  *
  * @author M.Ishida
- * @see CVSTestResourceManagerService
+ * @see SVNTestResourceManagerService
  */
-public interface GitTestResourceManagerServiceMBean {
+public interface SVNTestResourceManagerServiceMBean {
 
     /**
-     * Gitサーバへ接続する際のプロトコルgit用定数。
+     * SVNサーバへ接続する際のプロトコルgit用定数。
      * <p>
      */
-    public static String PROTOCOL_GIT = "git";
+    public static String PROTOCOL_SVN = "svn";
 
     /**
-     * Gitサーバへ接続する際のプロトコルhttp用定数。
+     * SVNサーバへ接続する際のプロトコルhttp用定数。
      * <p>
      */
     public static String PROTOCOL_HTTP = "http";
 
     /**
-     * Gitサーバへ接続する際のプロトコルhttps用定数。
+     * SVNサーバへ接続する際のプロトコルhttps用定数。
      * <p>
      */
     public static String PROTOCOL_HTTPS = "https";
 
     /**
-     * Gitサーバへ接続する際のプロトコルssh用定数。
+     * SVNサーバへ接続する際のプロトコルsvn+ssh用定数。
      * <p>
      */
-    public static String PROTOCOL_SSH = "ssh";
+    public static String PROTOCOL_SVN_SSH = "svn+ssh";
 
     /**
-     * Gitサーバへ接続する際のプロトコルfile用定数。
+     * SVNサーバへ接続する際のプロトコルfile用定数。
      * <p>
      */
     public static String PROTOCOL_FILE = "file";
 
+
     /**
-     * Gitサーバへ接続する際のプロトコルを取得する。
+     * SVNサーバへ接続する際のプロトコルを取得する。
      * <p>
      *
-     * @return メソッド
+     * @return プロトコル
      */
     public String getProtocol();
 
     /**
-     * Gitサーバへ接続する際のプロトコルを設定する。
+     * SVNサーバへ接続する際のプロトコルを設定する。
      * <p>
      *
-     * @param protocol メソッド
+     * @param protocol プロトコル
      */
     public void setProtocol(String protocol);
 
+
     /**
-     * Gitサーバへ接続する際のユーザ名を取得する。
+     * SVNサーバへ接続する際のユーザ名を取得する。
      * <p>
      *
      * @return ユーザ名
@@ -97,7 +99,7 @@ public interface GitTestResourceManagerServiceMBean {
     public String getUserName();
 
     /**
-     * Gitサーバへ接続する際のユーザ名を設定する。
+     * SVNサーバへ接続する際のユーザ名を設定する。
      * <p>
      *
      * @param user ユーザ名
@@ -105,7 +107,7 @@ public interface GitTestResourceManagerServiceMBean {
     public void setUserName(String user);
 
     /**
-     * Gitサーバへ接続する際のパスワードを取得する。
+     * SVNサーバへ接続する際のパスワードを取得する。
      * <p>
      *
      * @return パスワード
@@ -113,7 +115,7 @@ public interface GitTestResourceManagerServiceMBean {
     public String getPassword();
 
     /**
-     * Gitサーバへ接続する際のパスワードを設定する。
+     * SVNサーバへ接続する際のパスワードを設定する。
      * <p>
      *
      * @param str パスワード
@@ -121,7 +123,7 @@ public interface GitTestResourceManagerServiceMBean {
     public void setPassword(String str);
 
     /**
-     * Gitサーバへ接続する際のサーバ名を取得する。
+     * SVNサーバへ接続する際のサーバ名を取得する。
      * <p>
      *
      * @return サーバ名
@@ -129,7 +131,7 @@ public interface GitTestResourceManagerServiceMBean {
     public String getServerName();
 
     /**
-     * Gitサーバへ接続する際のサーバ名を設定する。
+     * SVNサーバへ接続する際のサーバ名を設定する。
      * <p>
      *
      * @param server サーバ名
@@ -137,7 +139,7 @@ public interface GitTestResourceManagerServiceMBean {
     public void setServerName(String server);
 
     /**
-     * Gitサーバへ接続する際のポートを取得する。
+     * SVNサーバへ接続する際のポートを取得する。
      * <p>
      *
      * @return ポート
@@ -145,7 +147,7 @@ public interface GitTestResourceManagerServiceMBean {
     public int getPort();
 
     /**
-     * Gitサーバへ接続する際のポートを設定する。
+     * SVNサーバへ接続する際のポートを設定する。
      * <p>
      *
      * @param port ポート
@@ -153,7 +155,7 @@ public interface GitTestResourceManagerServiceMBean {
     public void setPort(int port);
 
     /**
-     * Gitサーバへ接続する際のリポジトリパスを取得する。
+     * SVNサーバへ接続する際のリポジトリパスを取得する。
      * <p>
      *
      * @return リポジトリパス
@@ -161,7 +163,7 @@ public interface GitTestResourceManagerServiceMBean {
     public String getRepositoryPath();
 
     /**
-     * Gitサーバへ接続する際のリポジトリパスを設定する。
+     * SVNサーバへ接続する際のリポジトリパスを設定する。
      * <p>
      *
      * @param path リポジトリパス
@@ -169,7 +171,7 @@ public interface GitTestResourceManagerServiceMBean {
     public void setRepositoryPath(String path);
 
     /**
-     * Gitサーバからチェックアウト後に取得するモジュールパスを取得する。
+     * SVNサーバへ接続する際のモジュールパスを取得する。
      * <p>
      *
      * @return モジュールパス
@@ -177,7 +179,7 @@ public interface GitTestResourceManagerServiceMBean {
     public String getModulePath();
 
     /**
-     * Gitサーバからチェックアウト後に取得するモジュールパスを設定する。
+     * SVNサーバへ接続する際のモジュールパスを設定する。
      * <p>
      *
      * @param module モジュールパス
@@ -185,23 +187,23 @@ public interface GitTestResourceManagerServiceMBean {
     public void setModulePath(String module);
 
     /**
-     * Gitサーバからモジュールをチェックアウトするディレクトリを取得する。
+     * SVNサーバからモジュールをチェックアウトするディレクトリを取得する。
      * <p>
      *
      * @return モジュールをチェックアウトするディレクトリ
      */
-    public File getGitCheckOutDirectory();
+    public File getSvnCheckOutDirectory();
 
     /**
-     * Gitサーバからモジュールをチェックアウトするディレクトリを設定する。
+     * SVNサーバからモジュールをチェックアウトするディレクトリを設定する。
      * <p>
      *
      * @param directory モジュールをチェックアウトするディレクトリ
      */
-    public void setGitCheckOutDirectory(File directory);
+    public void setSvnCheckOutDirectory(File directory);
 
     /**
-     * Gitサーバへ接続する際のブランチ名を取得する。
+     * SVNサーバへ接続する際のブランチ名を取得する。
      * <p>
      *
      * @return ブランチ名
@@ -209,7 +211,7 @@ public interface GitTestResourceManagerServiceMBean {
     public String getTargetBranch();
 
     /**
-     * Gitサーバへ接続する際のブランチ名を設定する。
+     * SVNサーバへ接続する際のブランチ名を設定する。
      * <p>
      *
      * @param branch ブランチ名
@@ -217,7 +219,7 @@ public interface GitTestResourceManagerServiceMBean {
     public void setTargetBranch(String branch);
 
     /**
-     * Gitサーバへ接続する際のタグ名を取得する。
+     * SVNサーバへ接続する際のタグ名を取得する。
      * <p>
      *
      * @return タグ名
@@ -225,7 +227,7 @@ public interface GitTestResourceManagerServiceMBean {
     public String getTargetTag();
 
     /**
-     * Gitサーバへ接続する際のタグ名を設定する。
+     * SVNサーバへ接続する際のタグ名を設定する。
      * <p>
      *
      * @param tag タグ名
@@ -233,73 +235,72 @@ public interface GitTestResourceManagerServiceMBean {
     public void setTargetTag(String tag);
 
     /**
-     * Gitコマンド実行時のDebugログ有効/無効を返却する。
+     * SVNコマンド実行時のDebugログ有効/無効を返却する。
      *
      * @return Debugログ有効/無効
      */
     public boolean isDebugEnabled();
 
     /**
-     * Gitコマンド実行時のDebugログ有効/無効を設定する。
+     * SVNコマンド実行時のDebugログ有効/無効を設定する。
      *
      * @param enabled Debugログ有効/無効
      */
     public void setDebugEnabled(boolean enabled);
 
     /**
-     * Gitコマンド実行時のInfoログ有効/無効を返却する。
+     * SVNコマンド実行時のInfoログ有効/無効を返却する。
      *
      * @return Infoログ有効/無効
      */
     public boolean isInfoEnabled();
 
     /**
-     * Gitコマンド実行時のInfoログ有効/無効を設定する。
+     * SVNコマンド実行時のInfoログ有効/無効を設定する。
      *
      * @param enabled Infoログ有効/無効
      */
     public void setInfoEnabled(boolean enabled);
 
     /**
-     * Gitコマンド実行時のWarnログ有効/無効を返却する。
+     * SVNコマンド実行時のWarnログ有効/無効を返却する。
      *
      * @return Warnログ有効/無効
      */
     public boolean isWarnEnabled();
 
     /**
-     * Gitコマンド実行時のWarnログ有効/無効を設定する。
+     * SVNコマンド実行時のWarnログ有効/無効を設定する。
      *
      * @param enabled Warnログ有効/無効
      */
     public void setWarnEnabled(boolean enabled);
 
     /**
-     * Gitコマンド実行時のErrorログ有効/無効を返却する。
+     * SVNコマンド実行時のErrorログ有効/無効を返却する。
      *
      * @return Errorログ有効/無効
      */
     public boolean isErrorEnabled();
 
     /**
-     * Gitコマンド実行時のErrorログ有効/無効を設定する。
+     * SVNコマンド実行時のErrorログ有効/無効を設定する。
      *
      * @param enabled Errorログ有効/無効
      */
     public void setErrorEnabled(boolean enabled);
-
+    
     /**
-     * Gitサーバからチェックアウトする際に使用する一時ディレクトリを取得する。
+     * SVNサーバからチェックアウトする際に使用する一時ディレクトリを取得する。
      * 
      * @return 一時ディレクトリ
      */
     public File getTemporaryDirectory();
     
     /**
-     * Gitサーバからチェックアウトする際に使用する一時ディレクトリを設定する。
+     * SVNサーバからチェックアウトする際に使用する一時ディレクトリを設定する。
      * 
      * @param path 一時ディレクトリ
      */
     public void setTemporaryDirectory(File path);
-
 }

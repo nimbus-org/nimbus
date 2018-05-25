@@ -31,6 +31,7 @@
  */
 package jp.ossc.nimbus.service.http.httpclient;
 
+import java.util.Set;
 import java.util.Map;
 
 import jp.ossc.nimbus.core.*;
@@ -288,6 +289,46 @@ public interface HttpClientFactoryServiceMBean extends ServiceBaseMBean{
      * @return StreamConverterサービスのサービス名
      */
     public ServiceName getResponseStreamConverterServiceName();
+    
+    /**
+     * 正常なレスポンスのHTTPステータスを設定する。<p>
+     * 指定されたHTTPステータス以外の場合は、{@link HttpErrorStatusException}をthrowする。<br>
+     *
+     * @param code HTTPステータス
+     */
+    public void setResponseNormalStatusCode(int code);
+    
+    /**
+     * 正常なレスポンスのHTTPステータスの集合を取得する。<p>
+     *
+     * @return 正常なレスポンスのHTTPステータスの集合
+     */
+    public Set getResponseNormalStatusCodeSet();
+    
+    /**
+     * 異常なレスポンスのHTTPステータスを設定する。<p>
+     * 指定されたHTTPステータスの場合は、{@link HttpErrorStatusException}をthrowする。<br>
+     *
+     * @param code HTTPステータス
+     */
+    public void setResponseErrorStatusCode(int code);
+    
+    /**
+     * 異常なレスポンスのHTTPステータスを設定する。<p>
+     * 指定されたHTTPステータスの場合は、指定された例外をthrowする。<br>
+     *
+     * @param code HTTPステータス
+     * @param exception 例外クラス
+     * @exception IllegalArgumentException 指定されたexceptionが{@link HttpErrorStatusException}にキャスト可能でない場合
+     */
+    public void setResponseErrorStatusCode(int code, Class exception) throws IllegalArgumentException;
+    
+    /**
+     * 異常なレスポンスのHTTPステータスとその場合にthrowする例外のマップを取得する。<p>
+     *
+     * @return 異常なレスポンスのHTTPステータスとその場合にthrowする例外のマップ
+     */
+    public Map getResponseErrorStatusCodeMap();
     
     /**
      * ジャーナルを出力する{@link jp.ossc.nimbus.service.journal.Journal Journal}サービスのサービス名を設定する。<p>

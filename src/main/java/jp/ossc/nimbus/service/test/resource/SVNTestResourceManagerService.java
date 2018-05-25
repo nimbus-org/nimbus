@@ -45,7 +45,7 @@ import org.apache.maven.scm.manager.BasicScmManager;
 import org.apache.maven.scm.manager.NoSuchScmProviderException;
 import org.apache.maven.scm.manager.ScmManager;
 import org.apache.maven.scm.provider.ScmProvider;
-import org.apache.maven.scm.provider.git.gitexe.GitExeScmProvider;
+import org.apache.maven.scm.provider.svn.svnexe.SvnExeScmProvider;
 import org.apache.maven.scm.repository.ScmRepository;
 import org.apache.maven.scm.repository.ScmRepositoryException;
 
@@ -53,40 +53,37 @@ import jp.ossc.nimbus.io.RecurciveSearchFile;
 import jp.ossc.nimbus.service.test.TestResourceManager;
 
 /**
- * Gitサーバで管理されたテストリソースを使用する{@link TestResourceManager}インタフェースの実装サービス。
+ * SVNサーバで管理されたテストリソースを使用する{@link TestResourceManager}インタフェースの実装サービス。
  * <p>
  *
  * scmUrlは以下の仕様となる。<br>
  *
  * <pre>
- * scm:git:git://server_name[:port]/path_to_repository
+ * scm:svn:svn://[username[:password]@]server_name[:port]/path_to_repository
  * </pre>
- * 
+ *
  * <pre>
- * scm:git:http://server_name[:port]/path_to_repository
+ * scm:svn:svn+ssh://[username@]server_name[:port]/path_to_repository
  * </pre>
- * 
+ *
  * <pre>
- * scm:git:https://server_name[:port]/path_to_repository
+ * scm:svn:file://[hostname]/path_to_repository
  * </pre>
- * 
+ *
  * <pre>
- * scm:git:ssh://server_name[:port]/path_to_repository
+ * scm:svn:http://[username[:password]@]server_name[:port]/path_to_repository
  * </pre>
- * 
+ *
  * <pre>
- * scm:git:file://[server_name]/path_to_repository
+ * scm:svn:https://[username[:password]@]server_name[:port]/path_to_repository
  * </pre>
  *
  * @author M.Ishida
  *
  */
-public class GitTestResourceManagerService extends LocalTestResourceManagerService
-        implements TestResourceManager, GitTestResourceManagerServiceMBean {
-    
-    private static final long serialVersionUID = 4184509544809272399L;
-    
-    private static final String FILE_SEPARATOR = System.getProperty("file.separator");
+public class SVNTestResourceManagerService extends LocalTestResourceManagerService implements TestResourceManager, SVNTestResourceManagerServiceMBean {
+
+    private static final long serialVersionUID = -7739613842364386865L;
     
     protected String protocol;
     protected String userName;
@@ -95,22 +92,22 @@ public class GitTestResourceManagerService extends LocalTestResourceManagerServi
     protected int port = -1;
     protected String repositoryPath;
     protected String modulePath;
-    protected File gitCheckOutDirectory;
+    protected File svnCheckOutDirectory;
     protected File temporaryDirectory;
     protected String targetBranch;
     protected String targetTag;
-    
+
     protected ScmManager manager;
     protected ScmProvider provider;
     protected ScmRepository repository;
     protected ScmVersion branch;
     protected ScmVersion tag;
-    
+
     protected boolean isDebugEnabled = false;
     protected boolean isInfoEnabled = true;
     protected boolean isWarnEnabled = true;
     protected boolean isErrorEnabled = true;
-    
+
     public String getProtocol() {
         return protocol;
     }
@@ -118,111 +115,111 @@ public class GitTestResourceManagerService extends LocalTestResourceManagerServi
     public void setProtocol(String protocol) {
         this.protocol = protocol;
     }
-    
+
     public String getUserName() {
         return userName;
     }
-    
+
     public void setUserName(String user) {
         userName = user;
     }
-    
+
     public String getPassword() {
         return password;
     }
-    
+
     public void setPassword(String str) {
         password = str;
     }
-    
+
     public String getServerName() {
         return serverName;
     }
-    
+
     public void setServerName(String server) {
         serverName = server;
     }
-    
+
     public int getPort() {
         return port;
     }
-    
+
     public void setPort(int port) {
         this.port = port;
     }
-    
+
     public String getRepositoryPath() {
         return repositoryPath;
     }
-    
+
     public void setRepositoryPath(String path) {
         repositoryPath = path;
     }
-    
+
     public String getModulePath() {
         return modulePath;
     }
-    
+
     public void setModulePath(String module) {
         modulePath = module;
     }
-    
-    public File getGitCheckOutDirectory() {
-        return gitCheckOutDirectory;
+
+    public File getSvnCheckOutDirectory() {
+        return svnCheckOutDirectory;
     }
-    
-    public void setGitCheckOutDirectory(File directory) {
-        gitCheckOutDirectory = directory;
+
+    public void setSvnCheckOutDirectory(File directory) {
+        svnCheckOutDirectory = directory;
     }
-    
+
     public String getTargetBranch() {
         return targetBranch;
     }
-    
+
     public void setTargetBranch(String branch) {
         targetBranch = branch;
     }
-    
+
     public String getTargetTag() {
         return targetTag;
     }
-    
+
     public void setTargetTag(String tag) {
         targetTag = tag;
     }
-    
+
     public boolean isDebugEnabled() {
         return isDebugEnabled;
     }
-    
+
     public void setDebugEnabled(boolean enabled) {
         isDebugEnabled = enabled;
     }
-    
+
     public boolean isInfoEnabled() {
         return isInfoEnabled;
     }
-    
+
     public void setInfoEnabled(boolean enabled) {
         isInfoEnabled = enabled;
     }
-    
+
     public boolean isWarnEnabled() {
         return isWarnEnabled;
     }
-    
+
     public void setWarnEnabled(boolean enabled) {
         isWarnEnabled = enabled;
     }
-    
+
     public boolean isErrorEnabled() {
         return isErrorEnabled;
     }
-    
+
     public void setErrorEnabled(boolean enabled) {
         isErrorEnabled = enabled;
     }
-    
+
     public File getTemporaryDirectory() {
         return temporaryDirectory;
     }
@@ -233,16 +230,16 @@ public class GitTestResourceManagerService extends LocalTestResourceManagerServi
     
     public void createService() throws Exception {
         manager = new CustomScmManager();
-        provider = new GitExeScmProvider();
-        manager.setScmProvider("git", provider);
+        provider = new SvnExeScmProvider();
+        manager.setScmProvider("svn", provider);
     }
-    
+
     public void startService() throws Exception {
         super.startService();
         if (repositoryPath == null) {
             throw new IllegalArgumentException("RepositoryPath must be specified.");
         }
-        if (!PROTOCOL_GIT.equals(protocol) && !PROTOCOL_HTTP.equals(protocol) && !PROTOCOL_HTTPS.equals(protocol) && !PROTOCOL_SSH.equals(protocol)
+        if (!PROTOCOL_SVN.equals(protocol) && !PROTOCOL_HTTP.equals(protocol) && !PROTOCOL_HTTPS.equals(protocol) && !PROTOCOL_SVN_SSH.equals(protocol)
                 && !PROTOCOL_FILE.equals(protocol)) {
             throw new IllegalArgumentException("Protocol is illegal value. protocol=" + protocol);
         }
@@ -253,8 +250,8 @@ public class GitTestResourceManagerService extends LocalTestResourceManagerServi
             throw new IllegalArgumentException("TargetBranch and TargetTag can not be specified at the same time.");
             
         }
-        if (gitCheckOutDirectory == null) {
-            throw new IllegalArgumentException("GitCheckOutDirectory must be specified.");
+        if (svnCheckOutDirectory == null) {
+            throw new IllegalArgumentException("SvnCheckOutDirectory must be specified.");
         }
         if (targetBranch != null) {
             branch = new ScmBranch(targetBranch);
@@ -272,54 +269,60 @@ public class GitTestResourceManagerService extends LocalTestResourceManagerServi
         }
         repository = getRepository();
     }
-    
-    public void stopService() throws Exception {
-        super.stopService();
-        RecurciveSearchFile.deleteAllTree(temporaryDirectory, false);
-    }
-    
+
     public void checkOut() throws Exception {
-        if (gitCheckOutDirectory.exists()) {
-            RecurciveSearchFile.deleteAllTree(gitCheckOutDirectory, false);
+        if (svnCheckOutDirectory.exists()) {
+            RecurciveSearchFile.deleteAllTree(svnCheckOutDirectory, false);
         } else {
-            gitCheckOutDirectory.mkdirs();
+            svnCheckOutDirectory.mkdirs();
         }
         checkOutInternal();
     }
-    
+
     public String[] getScenarioGroupIds() throws Exception {
         update();
         return super.getScenarioGroupIds();
     }
-    
+
     public String[] getScenarioIds(String groupId) throws Exception {
         update();
         return super.getScenarioIds(groupId);
+
     }
-    
+
     public String[] getTestCaseIds(String groupId, String scenarioId) throws Exception {
         update();
         return super.getTestCaseIds(groupId, scenarioId);
     }
-    
+
     public String[] getStubIds(String groupId, String scenarioId, String testcaseId) throws Exception {
         update();
         return super.getStubIds(groupId, scenarioId, testcaseId);
+
     }
-    
+
     public void downloadScenarioGroupResource(File dir, String groupId) throws Exception {
         update();
         super.downloadScenarioGroupResource(dir, groupId);
     }
     
+    public void uploadScenarioGroupResource(File dir, String scenarioGroupId) throws Exception {
+        throw new UnsupportedOperationException("This method is not supported");
+    }
+
     public void downloadScenarioResource(File dir, String groupId, String scenarioId) throws Exception {
         update();
         super.downloadScenarioResource(dir, groupId, scenarioId);
     }
+
+    public void uploadScenarioResource(File dir, String scenarioGroupId, String scenarioId) throws Exception {
+        throw new UnsupportedOperationException("This method is not supported");
+    }
     
-    protected ScmRepository getRepository() throws ScmRepositoryException, NoSuchScmProviderException {
+    protected ScmRepository getRepository() throws ScmRepositoryException,
+            NoSuchScmProviderException {
         StringBuilder scmUrlBuff = new StringBuilder();
-        scmUrlBuff.append("scm:git:" + protocol + "://");
+        scmUrlBuff.append("scm:svn:" + protocol + "://");
         if (userName != null) {
             scmUrlBuff.append(userName);
             if (password != null) {
@@ -336,7 +339,7 @@ public class GitTestResourceManagerService extends LocalTestResourceManagerServi
         scmUrlBuff.append("/" + repositoryPath);
         return manager.makeScmRepository(scmUrlBuff.toString());
     }
-    
+
     protected void update() throws Exception {
         UpdateScmResult result = null;
         if (branch != null) {
@@ -347,15 +350,15 @@ public class GitTestResourceManagerService extends LocalTestResourceManagerServi
             result = manager.update(repository, new ScmFileSet(temporaryDirectory));
         }
         if (result == null) {
-            throw new Exception("Git UpdateScmResult is null.");
+            throw new Exception("SVN UpdateScmResult is null.");
         }
         if (!result.isSuccess()) {
-            throw new Exception(
-                    "Git UpdateScmResult is failed. CommandOutput=" + result.getCommandOutput() + " ProviderMessage=" + result.getProviderMessage());
+            throw new Exception("SVN UpdateScmResult is failed. CommandOutput=" + result.getCommandOutput() + " ProviderMessage="
+                    + result.getProviderMessage());
         }
-        RecurciveSearchFile.copyAllTree(new File(temporaryDirectory, modulePath), gitCheckOutDirectory);
+        RecurciveSearchFile.copyAllTree(new File(temporaryDirectory, modulePath), svnCheckOutDirectory);
     }
-    
+
     protected void checkOutInternal() throws Exception {
         CheckOutScmResult result = null;
         RecurciveSearchFile.deleteAllTree(temporaryDirectory, false);
@@ -367,38 +370,38 @@ public class GitTestResourceManagerService extends LocalTestResourceManagerServi
             result = manager.checkOut(repository, new ScmFileSet(temporaryDirectory), true);
         }
         if (result == null) {
-            throw new Exception("Git CheckOutScmResult is null.");
+            throw new Exception("SVN CheckOutScmResult is null.");
         }
         if (!result.isSuccess()) {
-            throw new Exception("Git CheckOutScmResult is failed. CommandOutput=" + result.getCommandOutput() + " ProviderMessage="
+            throw new Exception("SVN CheckOutScmResult is failed. CommandOutput=" + result.getCommandOutput() + " ProviderMessage="
                     + result.getProviderMessage());
         }
-        RecurciveSearchFile.copyAllTree(new File(temporaryDirectory, modulePath), gitCheckOutDirectory);
+        RecurciveSearchFile.copyAllTree(new File(temporaryDirectory, modulePath), svnCheckOutDirectory);
     }
-    
+
     public class CustomScmManager extends BasicScmManager {
         protected ScmLogger getScmLogger() {
             return new CustomLog();
         }
     }
-    
+
     public class CustomLog extends DefaultLog {
-        
+
         public boolean isDebugEnabled() {
             return isDebugEnabled;
         }
-        
+
         public boolean isInfoEnabled() {
             return isInfoEnabled;
         }
-        
+
         public boolean isWarnEnabled() {
             return isWarnEnabled;
         }
-        
+
         public boolean isErrorEnabled() {
             return isErrorEnabled;
         }
     }
-    
+
 }

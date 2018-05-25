@@ -67,8 +67,11 @@
   <classpathentry kind="var" path="M2_REPO/org/apache/maven/scm/maven-scm-api/1.9.5/maven-scm-api-1.9.5.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/codehaus/plexus/plexus-utils/3.0.15/plexus-utils-3.0.15.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/maven/scm/maven-scm-provider-cvsjava/1.9.5/maven-scm-provider-cvsjava-1.9.5.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/apache/maven/scm/maven-scm-provider-gitexe/1.9.5/maven-scm-provider-gitexe-1.9.5.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/maven/scm/maven-scm-provider-cvs-commons/1.9.5/maven-scm-provider-cvs-commons-1.9.5.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/maven/scm/maven-scm-provider-gitexe/1.9.5/maven-scm-provider-gitexe-1.9.5.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/maven/scm/maven-scm-provider-git-commons/1.9.5/maven-scm-provider-git-commons-1.9.5.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/maven/scm/maven-scm-provider-svnexe/1.9.5/maven-scm-provider-svnexe-1.9.5.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/maven/scm/maven-scm-provider-svn-commons/1.9.5/maven-scm-provider-svn-commons-1.9.5.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/esotericsoftware/kryo/4.0.1/kryo-4.0.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/esotericsoftware/reflectasm/1.11.3/reflectasm-1.11.3.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/ow2/asm/asm/5.0.4/asm-5.0.4.jar"/>
@@ -76,4 +79,12 @@
   <classpathentry kind="var" path="M2_REPO/org/objenesis/objenesis/2.5.1/objenesis-2.5.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/github/netcrusherorg/netcrusher-core/0.10/netcrusher-core-0.10.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-api/1.6.6/slf4j-api-1.6.6.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-webmvc/4.2.3.RELEASE/spring-webmvc-4.2.3.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-beans/4.2.3.RELEASE/spring-beans-4.2.3.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-core/4.2.3.RELEASE/spring-core-4.2.3.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-context/4.2.3.RELEASE/spring-context-4.2.3.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-aop/4.2.3.RELEASE/spring-aop-4.2.3.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/aopalliance/aopalliance/1.0/aopalliance-1.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-expression/4.2.3.RELEASE/spring-expression-4.2.3.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/spring-web/4.2.3.RELEASE/spring-web-4.2.3.RELEASE.jar"/>
 </classpath>
