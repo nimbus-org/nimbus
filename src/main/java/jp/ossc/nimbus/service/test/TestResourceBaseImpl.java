@@ -49,6 +49,7 @@ public class TestResourceBaseImpl extends TestPhaseExecutableImpl implements Tes
     private Map actionDescriptionMap;
     private Map actionTitleMap;
     private Map categoryMap;
+    private Map evidenceFileNameMap;
     
     /**
      * 空のインスタンスを生成する。<p>
@@ -58,6 +59,7 @@ public class TestResourceBaseImpl extends TestPhaseExecutableImpl implements Tes
         actionDescriptionMap = new LinkedHashMap();
         actionTitleMap = new LinkedHashMap();
         categoryMap = new LinkedHashMap();
+        evidenceFileNameMap = new LinkedHashMap();
     }
     
     public String getTitle() {
@@ -148,4 +150,20 @@ public class TestResourceBaseImpl extends TestPhaseExecutableImpl implements Tes
         categoryMap.put(name, value);
     }
     
+    public Map getActionEvidenceFileNameMap(){
+        return evidenceFileNameMap;
+    }
+    
+    /**
+     * ファイル比較を行うテストアクションのエビデンスファイル名を設定する。<p>
+     *
+     * @param actionId アクションID
+     * @param fileNames エビデンスファイル名（配列の0番目は比較元ファイル名、配列の１番めは比較先ファイル名）
+     */
+    public void setActionEvidenceFileName(String actionId, String[] fileNames){
+        if(fileNames == null || fileNames.length != 2) {
+            throw new IllegalArgumentException("fileNames is null or fileNames length is not 2. fileNames=" + fileNames);
+        }
+        evidenceFileNameMap.put(actionId, fileNames);
+    }
 }

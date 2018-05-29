@@ -831,6 +831,29 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
                     responseBinary(response, e);
                 }
             }
+        } else if (request.getHeader().getURLMatcher(".*downloadScenarioGroupResult").matches()) {
+            Map params = parseQuery(request.getHeader().getQuery());
+            if (body != null) {
+                params.putAll(parseQuery(body));
+            }
+            File zipFile = null;
+            try {
+                zipFile = testController.downloadScenarioGroupResult(new File(System.getProperty("java.io.tmpdir")),
+                        getParameter(params, "scenarioGroupId"), TestController.RESPONSE_FILE_TYPE_ZIP);
+                responseZIPFile(response, zipFile);
+            } catch (Exception e) {
+                if (isJSON) {
+                    Map jsonMap = new HashMap();
+                    jsonMap.put("exception", e);
+                    responseJSON(request, response, jsonMap);
+                } else {
+                    responseBinary(response, e);
+                }
+            } finally {
+                if (zipFile != null) {
+                    zipFile.delete();
+                }
+            }
         } else if (request.getHeader().getURLMatcher(".*downloadScenarioResult").matches()) {
             Map params = parseQuery(request.getHeader().getQuery());
             if (body != null) {
@@ -895,7 +918,7 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
                 responseBinary(response, result);
             }
         } else if (request.getHeader().getURLMatcher(".*uploadScenarioGroupResource").matches()) {
-            if (testResourceManager != null) {
+            if (testResourceManager != null && testResourceManager instanceof UploadableTestResourceManager) {
                 Map params = parseQuery(request.getHeader().getQuery());
                 OutputStream os = null;
                 try {
@@ -916,7 +939,7 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
                     os.flush();
                     RecurciveSearchFile tmpDir = new RecurciveSearchFile(temporaryDirectory, scenarioGroupId);
                     unZip(tmpZipFile, temporaryDirectory);
-                    testResourceManager.uploadScenarioGroupResource(tmpDir, scenarioGroupId);
+                    ((UploadableTestResourceManager)testResourceManager).uploadScenarioGroupResource(tmpDir, scenarioGroupId, true);
                     tmpZipFile.delete();
                     tmpDir.deleteAllTree(true);
                 } catch (Exception e) {
@@ -946,7 +969,7 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
                 }
             }
         } else if (request.getHeader().getURLMatcher(".*uploadScenarioResource").matches()) {
-            if (testResourceManager != null) {
+            if (testResourceManager != null && testResourceManager instanceof UploadableTestResourceManager) {
                 Map params = parseQuery(request.getHeader().getQuery());
                 OutputStream os = null;
                 try {
@@ -976,7 +999,7 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
                     os.flush();
                     RecurciveSearchFile tmpDir = new RecurciveSearchFile(temporaryDirectory, scenarioId);
                     unZip(tmpZipFile, temporaryDirectory);
-                    testResourceManager.uploadScenarioResource(tmpDir, scenarioGroupId, scenarioId);
+                    ((UploadableTestResourceManager)testResourceManager).uploadScenarioResource(tmpDir, scenarioGroupId, scenarioId, true);
                     tmpZipFile.delete();
                     tmpDir.deleteAllTree(true);
                 } catch (Exception e) {
@@ -1003,6 +1026,83 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
                     responseJSON(request, response, jsonMap);
                 } else {
                     responseBinary(response, e);
+                }
+            }
+        } else if (request.getHeader().getURLMatcher(".*generateTestScenarioGroupEvidenceFile").matches()) {
+            if (testResourceManager != null && testResourceManager instanceof UploadableTestResourceManager) {
+                Map params = parseQuery(request.getHeader().getQuery());
+                OutputStream os = null;
+                try {
+                    parseMultipartRequest(request, contentType, params);
+                    String scenarioGroupId = (String) params.get("scenarioGroupId");
+                    testController.generateTestScenarioGroupEvidenceFile(scenarioGroupId);
+                } catch (Exception e) {
+                    if (isJSON) {
+                        Map jsonMap = new HashMap();
+                        jsonMap.put("exception", e);
+                        responseJSON(request, response, jsonMap);
+                    } else {
+                        responseBinary(response, e);
+                    }
+                } finally {
+                    if (os != null) {
+                        try {
+                            os.close();
+                        } catch (Exception e) {
+                        }
+                    }
+                }
+            }
+        } else if (request.getHeader().getURLMatcher(".*generateTestScenarioEvidenceFile").matches()) {
+            if (testResourceManager != null && testResourceManager instanceof UploadableTestResourceManager) {
+                Map params = parseQuery(request.getHeader().getQuery());
+                OutputStream os = null;
+                try {
+                    parseMultipartRequest(request, contentType, params);
+                    String scenarioGroupId = (String) params.get("scenarioGroupId");
+                    String scenarioId = (String) params.get("scenarioId");
+                    testController.generateTestScenarioEvidenceFile(scenarioGroupId, scenarioId);
+                } catch (Exception e) {
+                    if (isJSON) {
+                        Map jsonMap = new HashMap();
+                        jsonMap.put("exception", e);
+                        responseJSON(request, response, jsonMap);
+                    } else {
+                        responseBinary(response, e);
+                    }
+                } finally {
+                    if (os != null) {
+                        try {
+                            os.close();
+                        } catch (Exception e) {
+                        }
+                    }
+                }
+            }
+        } else if (request.getHeader().getURLMatcher(".*generateTestCaseEvidenceFile").matches()) {
+            if (testResourceManager != null && testResourceManager instanceof UploadableTestResourceManager) {
+                Map params = parseQuery(request.getHeader().getQuery());
+                OutputStream os = null;
+                try {
+                    String scenarioGroupId = (String) params.get("scenarioGroupId");
+                    String scenarioId = (String) params.get("scenarioId");
+                    String testcaseId = (String) params.get("testcaseId");
+                    testController.generateTestCaseEvidenceFile(scenarioGroupId, scenarioId, testcaseId);
+                } catch (Exception e) {
+                    if (isJSON) {
+                        Map jsonMap = new HashMap();
+                        jsonMap.put("exception", e);
+                        responseJSON(request, response, jsonMap);
+                    } else {
+                        responseBinary(response, e);
+                    }
+                } finally {
+                    if (os != null) {
+                        try {
+                            os.close();
+                        } catch (Exception e) {
+                        }
+                    }
                 }
             }
         } else {

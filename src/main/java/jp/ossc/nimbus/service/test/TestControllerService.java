@@ -52,6 +52,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -1193,6 +1194,12 @@ public class TestControllerService extends ServiceBase implements TestController
                     if (isExceptionBreak) {
                         throw e;
                     }
+                } finally {
+                    if(action instanceof FileEvaluateTestAction) {
+                        ((TestActionContextImpl) testActionContext).setFileEvaluateTestAction(true);;
+                        ((TestActionContextImpl) testActionContext).setEvaluateTargetFileName(((FileEvaluateTestAction)action).getEvaluateTargetFileName());
+                        ((TestActionContextImpl) testActionContext).setEvaluateEvidenceFileName(((FileEvaluateTestAction)action).getEvaluateEvidenceFileName());
+                    }
                 }
             }
         }
@@ -1267,6 +1274,12 @@ public class TestControllerService extends ServiceBase implements TestController
                 resource.setActionDescription(testActionResources[i].getId(), testActionResources[i].getDescription());
                 resource.setActionTitle(testActionResources[i].getId(), testActionResources[i].getTitle());
                 resource.setActionExpectedCost(testActionResources[i].getId(), testActionResources[i].getExpectedCost());
+                TestActionContext testActionContext = groupContext.getActionContext(testActionResources[i].getId());
+                if(testActionContext != null && testActionContext.isFileEvaluateTestAction()) {
+                    if(testActionContext.getEvaluateTargetFileName() != null && testActionContext.getEvaluateEvidenceFileName() != null) {
+                        resource.setActionEvidenceFileName(testActionResources[i].getId(), new String[] {testActionContext.getEvaluateTargetFileName(), testActionContext.getEvaluateEvidenceFileName()});
+                    }
+                }
                 groupContext.putActionContext(testActionResources[i]);
             }
             resource.setBeforeActionIds((String[]) beforeList.toArray(new String[] {}));
@@ -1388,6 +1401,12 @@ public class TestControllerService extends ServiceBase implements TestController
                 resource.setActionDescription(testActionResources[i].getId(), testActionResources[i].getDescription());
                 resource.setActionTitle(testActionResources[i].getId(), testActionResources[i].getTitle());
                 resource.setActionExpectedCost(testActionResources[i].getId(), testActionResources[i].getExpectedCost());
+                TestActionContext testActionContext = scenarioContext.getActionContext(testActionResources[i].getId());
+                if(testActionContext != null && testActionContext.isFileEvaluateTestAction()) {
+                    if(testActionContext.getEvaluateTargetFileName() != null && testActionContext.getEvaluateEvidenceFileName() != null) {
+                        resource.setActionEvidenceFileName(testActionResources[i].getId(), new String[] {testActionContext.getEvaluateTargetFileName(), testActionContext.getEvaluateEvidenceFileName()});
+                    }
+                }
                 scenarioContext.putActionContext(testActionResources[i]);
             }
             resource.setBeforeActionIds((String[]) beforeList.toArray(new String[] {}));
@@ -1509,6 +1528,12 @@ public class TestControllerService extends ServiceBase implements TestController
             testCaseResource.setActionTitle(testCaseTestActionResources[i].getId(), testCaseTestActionResources[i].getTitle());
             testCaseResource.setActionExpectedCost(testCaseTestActionResources[i].getId(), testCaseTestActionResources[i].getExpectedCost());
             testCaseResource.setActionCost(testCaseTestActionResources[i].getId(), testCaseTestActionResources[i].getCost());
+            TestActionContext testActionContext = testCaseContext.getActionContext(testCaseTestActionResources[i].getId());
+            if(testActionContext != null && testActionContext.isFileEvaluateTestAction()) {
+                if(testActionContext.getEvaluateTargetFileName() != null && testActionContext.getEvaluateEvidenceFileName() != null) {
+                    testCaseResource.setActionEvidenceFileName(testCaseTestActionResources[i].getId(), new String[] {testActionContext.getEvaluateTargetFileName(), testActionContext.getEvaluateEvidenceFileName()});
+                }
+            }
             testCaseContext.putActionContext(testCaseTestActionResources[i]);
         }
         testCaseResource.setBeforeActionIds((String[]) testCaseBeforeList.toArray(new String[] {}));
@@ -1608,10 +1633,22 @@ public class TestControllerService extends ServiceBase implements TestController
         if (scenarioContext != null) {
             testCaseContext = scenarioContext.getTestCaseContext(testcaseId);
         }
-        if (scenarioContext == null) {
+        if (testCaseContext == null) {
             return null;
         }
-        return testCaseContext.getResource();
+        TestCaseResource resource = testCaseContext.getResource();
+        List actionContextList = testCaseContext.getActionContextList();
+        if(actionContextList != null) {
+            for(int i = 0; i < actionContextList.size(); i++) {
+                TestActionContext testActionContext = (TestActionContext)actionContextList.get(i);
+                if(testActionContext != null && testActionContext.isFileEvaluateTestAction()) {
+                    if(testActionContext.getEvaluateTargetFileName() != null && testActionContext.getEvaluateEvidenceFileName() != null) {
+                        ((TestCaseResourceImpl)resource).setActionEvidenceFileName(testActionContext.getId(), new String[] {testActionContext.getEvaluateTargetFileName(), testActionContext.getEvaluateEvidenceFileName()});
+                    }
+                }
+            }
+        }
+        return resource;
     }
     
     public jp.ossc.nimbus.service.test.TestCase.Status getTestCaseStatus(String scenarioGroupId, String scenarioId, String testcaseId) {
@@ -1626,6 +1663,14 @@ public class TestControllerService extends ServiceBase implements TestController
             }
         }
         return null;
+    }
+    
+    public File downloadScenarioGroupResult(File dir, String scenarioGroupId, int respnseFileType) throws Exception {
+        File resultDir = new File(testResourceFileBaseDirectory, scenarioGroupId);
+        if (!resultDir.exists()) {
+            resultDir.mkdirs();
+        }
+        return downloadResult(dir, resultDir, scenarioGroupId, respnseFileType);
     }
     
     public File downloadScenarioResult(File dir, String scenarioGroupId, String scenarioId, int respnseFileType) throws Exception {
@@ -1682,6 +1727,123 @@ public class TestControllerService extends ServiceBase implements TestController
     
     public void reset() throws Exception {
         testResourceManager.checkOut();
+    }
+    
+    public void generateTestScenarioGroupEvidenceFile(String scenarioGroupId) throws Exception {
+        if (testResourceManager instanceof UploadableTestResourceManager) {
+            File targetDir = new File(testResourceFileBaseDirectory, scenarioGroupId);
+            if(!targetDir.exists()) {
+                return;
+            }
+            TestScenarioGroupResource testScenarioGroupResource = getTestScenarioGroupResource(scenarioGroupId);
+            if(testScenarioGroupResource != null) {
+                Map actionEvidenceFileNameMap = testScenarioGroupResource.getActionEvidenceFileNameMap();
+                if (actionEvidenceFileNameMap != null && !actionEvidenceFileNameMap.isEmpty()) {
+                    File tempDir = null;
+                    try {
+                        tempDir = new File(internalTestResourceFileTempDirectory, new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date()));
+                        if (!tempDir.mkdirs()) {
+                            throw new IOException("Directory can not make. path=" + tempDir);
+                        }
+                        Iterator itr = actionEvidenceFileNameMap.entrySet().iterator();
+                        while (itr.hasNext()) {
+                            Entry entry = (Entry) itr.next();
+                            String[] names = (String[]) entry.getValue();
+                            File fromFile = new File(targetDir, names[0]);
+                            if (fromFile.exists()) {
+                                File toFile = new File(tempDir, names[1]);
+                                RecurciveSearchFile.dataCopy(fromFile, toFile);
+                            }
+                        }
+                        ((UploadableTestResourceManager) testResourceManager).uploadScenarioGroupResource(tempDir, scenarioGroupId, false);
+                    } finally {
+                        if(!RecurciveSearchFile.deleteAllTree(tempDir)) {
+                            RecurciveSearchFile.deleteOnExitAllTree(tempDir);
+                        }
+                    }
+                }
+            }
+        } else {
+            throw new UnsupportedOperationException("TestResourceManager is not support upload.");
+        }
+    }
+
+    public void generateTestScenarioEvidenceFile(String scenarioGroupId, String scenarioId) throws Exception {
+        if (testResourceManager instanceof UploadableTestResourceManager) {
+            File targetDir = new File(testResourceFileBaseDirectory, scenarioGroupId + File.separator + scenarioId);
+            if(!targetDir.exists()) {
+                return;
+            }
+            TestScenarioResource testScenarioResource = getTestScenarioResource(scenarioGroupId, scenarioId);
+            if(testScenarioResource != null) {
+                Map actionEvidenceFileNameMap = testScenarioResource.getActionEvidenceFileNameMap();
+                if (actionEvidenceFileNameMap != null && !actionEvidenceFileNameMap.isEmpty()) {
+                    File tempDir = null;
+                    try {
+                        tempDir = new File(internalTestResourceFileTempDirectory, new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date()));
+                        if (!tempDir.mkdirs()) {
+                            throw new IOException("Directory can not make. path=" + tempDir);
+                        }
+                        Iterator itr = actionEvidenceFileNameMap.entrySet().iterator();
+                        while (itr.hasNext()) {
+                            Entry entry = (Entry) itr.next();
+                            String[] names = (String[]) entry.getValue();
+                            File fromFile = new File(targetDir, names[0]);
+                            if (fromFile.exists()) {
+                                File toFile = new File(tempDir, names[1]);
+                                RecurciveSearchFile.dataCopy(fromFile, toFile);
+                            }
+                        }
+                        ((UploadableTestResourceManager) testResourceManager).uploadScenarioResource(tempDir, scenarioGroupId, scenarioId, false);
+                    } finally {
+                        if(!RecurciveSearchFile.deleteAllTree(tempDir)) {
+                            RecurciveSearchFile.deleteOnExitAllTree(tempDir);
+                        }
+                    }
+                }
+            }
+        } else {
+            throw new UnsupportedOperationException("TestResourceManager is not support upload.");
+        }
+    }
+
+    public void generateTestCaseEvidenceFile(String scenarioGroupId, String scenarioId, String testcaseId) throws Exception {
+        if (testResourceManager instanceof UploadableTestResourceManager) {
+            File targetDir = new File(testResourceFileBaseDirectory, scenarioGroupId + File.separator + scenarioId + File.separator + testcaseId);
+            if(!targetDir.exists()) {
+                return;
+            }
+            TestCaseResource testCaseResource = getTestCaseResource(scenarioGroupId, scenarioId, testcaseId);
+            if(testCaseResource != null) {
+                Map actionEvidenceFileNameMap = testCaseResource.getActionEvidenceFileNameMap();
+                if (actionEvidenceFileNameMap != null && !actionEvidenceFileNameMap.isEmpty()) {
+                    File tempDir = null;
+                    try {
+                        tempDir = new File(internalTestResourceFileTempDirectory, new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date()));
+                        if (!tempDir.mkdirs()) {
+                            throw new IOException("Directory can not make. path=" + tempDir);
+                        }
+                        Iterator itr = actionEvidenceFileNameMap.entrySet().iterator();
+                        while (itr.hasNext()) {
+                            Entry entry = (Entry) itr.next();
+                            String[] names = (String[]) entry.getValue();
+                            File fromFile = new File(targetDir, names[0]);
+                            if (fromFile.exists()) {
+                                File toFile = new File(tempDir, names[1]);
+                                RecurciveSearchFile.dataCopy(fromFile, toFile);
+                            }
+                        }
+                        ((UploadableTestResourceManager) testResourceManager).uploadTestCaseResource(tempDir, scenarioGroupId, scenarioId, testcaseId, false);
+                    } finally {
+                        if(!RecurciveSearchFile.deleteAllTree(tempDir)) {
+                            RecurciveSearchFile.deleteOnExitAllTree(tempDir);
+                        }
+                    }
+                }
+            }
+        } else {
+            throw new UnsupportedOperationException("TestResourceManager is not support upload.");
+        }
     }
     
     private void downloadTestScenarioResource(File resourceDir, String scenarioGroupId, String scenarioId) throws Exception {

@@ -46,7 +46,7 @@ import jp.ossc.nimbus.core.ServiceBase;
  * 
  * @author M.Ishida
  */
-public class RetryEvaluateTestActionService extends ServiceBase implements RetryEvaluateTestActionServiceMBean, RetryEvaluateTestAction, TestActionEstimation{
+public class RetryEvaluateTestActionService extends ServiceBase implements RetryEvaluateTestActionServiceMBean, RetryEvaluateTestAction, FileEvaluateTestAction, TestActionEstimation{
     
     private static final long serialVersionUID = 2193587152227926994L;
     
@@ -57,6 +57,9 @@ public class RetryEvaluateTestActionService extends ServiceBase implements Retry
     protected EvaluateTestAction endEvaluateTestAction;
     
     protected List actionList;
+    
+    protected String targetFileName;
+    protected String evidenceFileName;
     
     public void setDefaultInterval(long interval){
         defaultInterval = interval;
@@ -89,6 +92,14 @@ public class RetryEvaluateTestActionService extends ServiceBase implements Retry
     }
     public int getRetryMarkIndex(){
         return retryMarkIndex;
+    }
+    
+    public String getEvaluateTargetFileName(){
+        return targetFileName;
+    }
+    
+    public String getEvaluateEvidenceFileName(){
+        return evidenceFileName;
     }
     
     public void createService() throws Exception {
@@ -143,6 +154,10 @@ public class RetryEvaluateTestActionService extends ServiceBase implements Retry
                 } else {
                     boolean actionResult = ((EvaluateTestAction) action).execute(context, childActionId, resources[i]);
                     if (i == iMax - 1) {
+                        if(action instanceof FileEvaluateTestAction) {
+                            targetFileName = ((FileEvaluateTestAction)action).getEvaluateTargetFileName();
+                            evidenceFileName = ((FileEvaluateTestAction)action).getEvaluateEvidenceFileName();
+                        }
                         if (actionResult) {
                             result = true;
                             isBreak = true;

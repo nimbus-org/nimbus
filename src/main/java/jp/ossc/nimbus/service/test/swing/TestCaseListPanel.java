@@ -75,6 +75,7 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
     private final int START_BUTTON_WIDTH = 70;
     private final int END_BUTTON_WIDTH = 70;
     private final int DOWNLOAD_BUTTON_WIDTH = 90;
+    private final int EVI_BUTTON_WIDTH = 70;
     
     private String userId = null;
     private TestController testController = null;
@@ -155,7 +156,7 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
         
         int winWidth = getWidth();
         
-        ROW_SPACE = (winWidth - (NO_WIDTH + START_DATE_WIDTH + END_DATE_WIDTH + STATE_WIDTH + STATE_WIDTH + START_BUTTON_WIDTH + END_BUTTON_WIDTH + DOWNLOAD_BUTTON_WIDTH + MARGIN + MARGIN)) / 2;
+        ROW_SPACE = (winWidth - (NO_WIDTH + START_DATE_WIDTH + END_DATE_WIDTH + STATE_WIDTH + STATE_WIDTH + START_BUTTON_WIDTH + END_BUTTON_WIDTH + DOWNLOAD_BUTTON_WIDTH + EVI_BUTTON_WIDTH + MARGIN + MARGIN)) / 2;
         ID_WIDTH = ROW_SPACE;
         TITLE_WIDTH = ROW_SPACE;
         
@@ -170,6 +171,7 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
         JLabel label8 = new JLabel("　");
         JLabel label9 = new JLabel("　");
         JLabel label10 = new JLabel("　");
+        JLabel label11 = new JLabel("　");
         
         label1.setFont(font);
         label2.setFont(font);
@@ -181,6 +183,7 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
         label8.setFont(font);
         label9.setFont(font);
         label10.setFont(font);
+        label11.setFont(font);
         
         tmpX += MARGIN;
         tmpY += MARGIN;
@@ -204,6 +207,8 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
         label9.setBounds(tmpX, tmpY, END_BUTTON_WIDTH, HEIGHT);
         tmpX += END_BUTTON_WIDTH;
         label10.setBounds(tmpX, tmpY, DOWNLOAD_BUTTON_WIDTH, HEIGHT);
+        tmpX += DOWNLOAD_BUTTON_WIDTH;
+        label11.setBounds(tmpX, tmpY, EVI_BUTTON_WIDTH, HEIGHT);
         
         add(label1);
         add(label2);
@@ -214,6 +219,8 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
         add(label7);
         add(label8);
         add(label9);
+        add(label10);
+        add(label11);
         
         if (testCaseList != null) {
             
@@ -300,6 +307,10 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
                 JButton tmpButton3 = new JButton("結果DL");
                 tmpButton3.addActionListener(new DownloadButtonActionListener(testCase));
                 
+                JButton tmpButton4 = new JButton("変換");
+                tmpButton4.setToolTipText("エビデンス変換");
+                tmpButton4.addActionListener(new EvidenceButtonActionListener(testCase));
+                
                 if(!startTestCaseFlg){
                     tmpButton1.setEnabled(true);
                 }else{
@@ -308,28 +319,34 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
                 if(status == null) {
                     tmpButton2.setEnabled(false);
                     tmpButton3.setEnabled(false);
+                    tmpButton4.setEnabled(false);
                 } else {
                     int state = status.getState();
                     switch(state) {
                         case TestCase.Status.INITIAL:
                             tmpButton2.setEnabled(false);
                             tmpButton3.setEnabled(false);
+                            tmpButton4.setEnabled(false);
                             break;
                         case TestCase.Status.STARTED:
                             tmpButton2.setEnabled(true);
                             tmpButton3.setEnabled(false);
+                            tmpButton4.setEnabled(false);
                             break;
                         case TestCase.Status.END:
                             tmpButton2.setEnabled(false);
                             tmpButton3.setEnabled(true);
+                            tmpButton4.setEnabled(true);
                             break;
                         case TestCase.Status.ERROR:
                             tmpButton2.setEnabled(true);
                             tmpButton3.setEnabled(true);
+                            tmpButton4.setEnabled(true);
                             break;
                         case TestCase.Status.CANCELED:
                             tmpButton2.setEnabled(true);
                             tmpButton3.setEnabled(false);
+                            tmpButton4.setEnabled(false);
                             break;
                     }
                 }
@@ -337,12 +354,15 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
                 tmpButton1.setFont(font);
                 tmpButton2.setFont(font);
                 tmpButton3.setFont(font);
+                tmpButton4.setFont(font);
                 
                 tmpButton1.setBounds(tmpX, tmpY, START_BUTTON_WIDTH, HEIGHT);
                 tmpX += START_BUTTON_WIDTH;
                 tmpButton2.setBounds(tmpX, tmpY, END_BUTTON_WIDTH, HEIGHT);
                 tmpX += END_BUTTON_WIDTH;
                 tmpButton3.setBounds(tmpX, tmpY, DOWNLOAD_BUTTON_WIDTH, HEIGHT);
+                tmpX += DOWNLOAD_BUTTON_WIDTH;
+                tmpButton4.setBounds(tmpX, tmpY, EVI_BUTTON_WIDTH, HEIGHT);
 
                 add(label1);
                 add(label2);
@@ -354,6 +374,7 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
                 add(tmpButton1);
                 add(tmpButton2);
                 add(tmpButton3);
+                add(tmpButton4);
             }
         }
 
@@ -475,6 +496,32 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
                 JDialog dialog = new StatusDialogView(ownerFrame, "Exception", e1);
                 dialog.setModal(true);
                 dialog.setVisible(true);
+            }
+        }
+    }
+    
+    /**
+     * テストケースのエビデンス変換ボタンのアクションリスナー
+     */
+    private class EvidenceButtonActionListener implements ActionListener {
+        
+        private TestCase testCase = null;
+        
+        public EvidenceButtonActionListener(TestCase testCase) {
+            this.testCase = testCase;
+        }
+        
+        public void actionPerformed(ActionEvent e) {
+            int result = JOptionPane.showConfirmDialog(ownerFrame, "結果ファイルをエビデンスファイルに変換しますか？", "確認",
+                    JOptionPane.YES_NO_OPTION);
+            if (JOptionPane.YES_OPTION == result) {
+                try {
+                    testController.generateTestCaseEvidenceFile(testCase.getScenarioGroupId(), testCase.getScenarioId(), testCase.getTestCaseId());
+                } catch (Exception e1) {
+                    JDialog dialog = new StatusDialogView(ownerFrame, "Exception", e1);
+                    dialog.setModal(true);
+                    dialog.setVisible(true);
+                }
             }
         }
     }

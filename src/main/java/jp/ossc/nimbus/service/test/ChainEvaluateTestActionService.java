@@ -45,7 +45,7 @@ import jp.ossc.nimbus.core.ServiceName;
  * 
  * @author M.Ishida
  */
-public class ChainEvaluateTestActionService extends ServiceBase implements ChainEvaluateTestActionServiceMBean, ChainEvaluateTestAction, TestActionEstimation {
+public class ChainEvaluateTestActionService extends ServiceBase implements ChainEvaluateTestActionServiceMBean, ChainEvaluateTestAction, FileEvaluateTestAction, TestActionEstimation {
     
     private static final long serialVersionUID = 2163058114046456244L;
     
@@ -56,6 +56,9 @@ public class ChainEvaluateTestActionService extends ServiceBase implements Chain
     
     protected EvaluateTestAction endEvaluateTestAction;
     protected ChainEvaluateTestAction.EvaluateTestActionProcess endEvaluateTestActionProcess;
+    
+    protected String targetFileName;
+    protected String evidenceFileName;
     
     public ServiceName[] getActionServiceNames() {
         return actionServiceNames;
@@ -79,6 +82,14 @@ public class ChainEvaluateTestActionService extends ServiceBase implements Chain
     
     public void setEndEvaluateTestActionProcess(ChainEvaluateTestAction.EvaluateTestActionProcess action) {
         endEvaluateTestActionProcess = action;
+    }
+    
+    public String getEvaluateTargetFileName(){
+        return targetFileName;
+    }
+    
+    public String getEvaluateEvidenceFileName(){
+        return evidenceFileName;
     }
     
     public void createService() throws Exception {
@@ -158,6 +169,10 @@ public class ChainEvaluateTestActionService extends ServiceBase implements Chain
                     }
                 }else if(action instanceof EvaluateTestAction) {
                     actionResult = ((EvaluateTestAction) action).execute(context, childActionId, resources[i]);
+                }
+                if(action instanceof FileEvaluateTestAction){
+                    targetFileName = ((FileEvaluateTestAction)action).getEvaluateEvidenceFileName();
+                    evidenceFileName = ((FileEvaluateTestAction)action).getEvaluateEvidenceFileName();
                 }
             }else{
                 if(isPreEvaluateAction){
