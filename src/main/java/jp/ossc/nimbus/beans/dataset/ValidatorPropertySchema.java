@@ -44,6 +44,7 @@ import jp.ossc.nimbus.util.validator.*;
  *   <li>入力変換種類</li>
  *   <li>出力変換種類</li>
  *   <li>制約</li>
+ *   <li>主キーフラグ</li>
  * </ul>
  * 制約に、{@link Validator}サービス名を指定する事で、Validatorを使用する以外は、{@link DefaultPropertySchema}の仕様に従う。<br>
  * 
@@ -157,6 +158,9 @@ public class ValidatorPropertySchema extends DefaultPropertySchema{
         buf.append(",constrain=")
             .append(validatorServiceName == null
                  ? null : validatorServiceName);
+        if(isPrimaryKey){
+            buf.append(",isPrimaryKey=").append(isPrimaryKey);
+        }
         buf.append('}');
         return buf.toString();
     }

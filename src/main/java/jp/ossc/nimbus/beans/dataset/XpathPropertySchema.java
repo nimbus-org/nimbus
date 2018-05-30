@@ -40,7 +40,7 @@ import javax.xml.xpath.XPathFactory;
  * プロパティに対応するXPathを設定可能な{@link PropertySchema}。
  * <p>
  *   {@link DefaultPropertySchema}でサポートされるスキーマ定義に加えて、プロパティに対応するXPathを定義することができる。<br/>
- *   フォーマット：名前,型,入力変換種類,出力変換種類,制約,XPath
+ *   フォーマット：名前,型,入力変換種類,出力変換種類,制約,XPath,主キーフラグ
  * </p>
  * @author T.Okada
  */

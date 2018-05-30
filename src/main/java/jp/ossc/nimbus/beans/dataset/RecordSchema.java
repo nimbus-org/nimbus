@@ -71,6 +71,16 @@ public class RecordSchema{
      */
     public static final String PROPERTY_SCHEMA_ALIAS_NAME_XPATH = "XPATH";
     
+    /**
+     * プロパティスキーマの実装クラス名のエイリアス {@link ValidatorPropertySchema}のエイリアス。<p>
+     */
+    public static final String PROPERTY_SCHEMA_ALIAS_NAME_VALIDATOR = "VALIDATOR";
+    
+    /**
+     * プロパティスキーマの実装クラス名のエイリアス {@link InterpreterConstrainPropertySchema}のエイリアス。<p>
+     */
+    public static final String PROPERTY_SCHEMA_ALIAS_NAME_INTERPRETER = "INTERPRETER";
+    
     private static final String PROP_SCHEMA_CLASS_DELIMETER = ":";
     
     protected static final ConcurrentMap recordSchemaManager = new ConcurrentHashMap();
@@ -95,6 +105,14 @@ public class RecordSchema{
         propertySchemaAliasMap.put(
             PROPERTY_SCHEMA_ALIAS_NAME_XPATH,
             "jp.ossc.nimbus.beans.dataset.XpathPropertySchema"
+        );
+        propertySchemaAliasMap.put(
+            PROPERTY_SCHEMA_ALIAS_NAME_VALIDATOR,
+            "jp.ossc.nimbus.beans.dataset.ValidatorPropertySchema"
+        );
+        propertySchemaAliasMap.put(
+            PROPERTY_SCHEMA_ALIAS_NAME_INTERPRETER,
+            "jp.ossc.nimbus.beans.dataset.InterpreterConstrainPropertySchema"
         );
     }
     
