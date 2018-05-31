@@ -178,7 +178,7 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
             }
             httpClientFactory.createRequest(uploadAction);
             if (testResourceFileBaseDirectory == null) {
-                throw new IllegalArgumentException("TestResourceFileBaseDir is null.");
+                throw new IllegalArgumentException("TestResourceFileBaseDirectory is null.");
             }
             setupDir(testResourceFileBaseDirectory, false);
         }
@@ -292,6 +292,8 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
             File targetDir = new File(testResourceFileBaseDirectory, scenarioGroupId);
             if (!targetDir.exists()) {
                 targetDir.mkdirs();
+            } else {
+                RecurciveSearchFile.deleteAllTree(targetDir, false);
             }
             testResourceManager.downloadScenarioGroupResource(targetDir, scenarioGroupId);
             File zipFile = new File(temporaryDirectory, scenarioGroupId + ".zip");
@@ -321,6 +323,8 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
             File targetDir = new File(testResourceFileBaseDirectory, scenarioGroupId + File.separator + scenarioId);
             if (!targetDir.exists()) {
                 targetDir.mkdirs();
+            } else {
+                RecurciveSearchFile.deleteAllTree(targetDir, false);
             }
             testResourceManager.downloadScenarioResource(targetDir, scenarioGroupId, scenarioId);
             File zipFile = new File(temporaryDirectory, scenarioId + ".zip");

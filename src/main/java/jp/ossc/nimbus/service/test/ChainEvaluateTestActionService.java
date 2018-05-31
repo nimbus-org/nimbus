@@ -171,7 +171,7 @@ public class ChainEvaluateTestActionService extends ServiceBase implements Chain
                     actionResult = ((EvaluateTestAction) action).execute(context, childActionId, resources[i]);
                 }
                 if(action instanceof FileEvaluateTestAction){
-                    targetFileName = ((FileEvaluateTestAction)action).getEvaluateEvidenceFileName();
+                    targetFileName = ((FileEvaluateTestAction)action).getEvaluateTargetFileName();
                     evidenceFileName = ((FileEvaluateTestAction)action).getEvaluateEvidenceFileName();
                 }
             }else{

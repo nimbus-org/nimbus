@@ -48,6 +48,8 @@ public class TestContextImpl implements TestContext {
     private TestScenario testScenario;
     private TestCase testCase;
     private File currentDirectory;
+    private TestContext scenarioGroupTestContext;
+    private TestContext scenarioTestContext;
     
     private Map resultMap = new LinkedHashMap();
     
@@ -96,11 +98,13 @@ public class TestContextImpl implements TestContext {
      * テストシナリオを設定する。<p>
      *
      * @param testScenario テストシナリオ
+     * @param testContext シナリオグループのテストコンテキスト
      */
-    public void setTestScenario(TestScenario testScenario) {
+    public void setTestScenario(TestScenario testScenario, TestContext testContext) {
         this.testScenarioGroup = null;
         this.testScenario = testScenario;
         this.testCase = null;
+        this.scenarioGroupTestContext = testContext;
     }
     
     public TestScenario getTestScenario() {
@@ -111,11 +115,13 @@ public class TestContextImpl implements TestContext {
      * テストケースを設定する。<p>
      *
      * @param testCase テストケース
+     * @param testContext シナリオのテストコンテキスト
      */
-    public void setTestCase(TestCase testCase) {
+    public void setTestCase(TestCase testCase, TestContext testContext) {
         this.testScenarioGroup = null;
         this.testScenario = null;
         this.testCase = testCase;
+        this.scenarioTestContext = testContext;
     }
     
     public TestCase getTestCase() {
@@ -135,7 +141,14 @@ public class TestContextImpl implements TestContext {
         }
         if (resultMap.containsKey(targetId)) {
             Map map = (Map) resultMap.get(targetId);
-            return map.get(actionId);
+            Object result = map.get(actionId);
+            if(result == null && scenarioTestContext != null) {
+                result = scenarioTestContext.getTestActionResult(actionId);
+            }
+            if(result == null && scenarioGroupTestContext != null) {
+                result = scenarioGroupTestContext.getTestActionResult(actionId);
+            }
+            return result;
         }
         return null;
     }
@@ -143,7 +156,14 @@ public class TestContextImpl implements TestContext {
     public Object getTestActionResult(String testcaseId, String actionId) {
         if (resultMap.containsKey(testcaseId)) {
             Map map = (Map) resultMap.get(testcaseId);
-            return map.get(actionId);
+            Object result = map.get(actionId);
+            if(result == null && scenarioTestContext != null) {
+                result = scenarioTestContext.getTestActionResult(testcaseId, actionId);
+            }
+            if(result == null && scenarioGroupTestContext != null) {
+                result = scenarioGroupTestContext.getTestActionResult(testcaseId, actionId);
+            }
+            return result;
         }
         return null;
     }

@@ -239,12 +239,6 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
         } else if (request.getHeader().getURLMatcher(".*endScenarioGroup").matches()) {
             try {
                 testController.endScenarioGroup();
-                synchronized(lock) {
-                    currentScenarioGroupId = null;;
-                    currentScenarioGroupUserId = null;
-                    currentScenarioId = null;;
-                    currentScenarioUserId = null;
-                }
             } catch (Exception e) {
                 if (isJSON) {
                     Map jsonMap = new HashMap();
@@ -252,6 +246,13 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
                     responseJSON(request, response, jsonMap);
                 } else {
                     responseBinary(response, e);
+                }
+            } finally {
+                synchronized(lock) {
+                    currentScenarioGroupId = null;;
+                    currentScenarioGroupUserId = null;
+                    currentScenarioId = null;;
+                    currentScenarioUserId = null;
                 }
             }
         } else if (request.getHeader().getURLMatcher(".*startScenario").matches()) {
@@ -277,10 +278,6 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
             }
             try {
                 testController.cancelScenario(getParameter(params, "scenarioId"));
-                synchronized(lock) {
-                    currentScenarioId = null;;
-                    currentScenarioUserId = null;
-                }
             } catch (Exception e) {
                 if (isJSON) {
                     Map jsonMap = new HashMap();
@@ -288,6 +285,11 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
                     responseJSON(request, response, jsonMap);
                 } else {
                     responseBinary(response, e);
+                }
+            } finally {
+                synchronized(lock) {
+                    currentScenarioId = null;;
+                    currentScenarioUserId = null;
                 }
             }
         } else if (request.getHeader().getURLMatcher(".*endScenario").matches()) {
@@ -297,10 +299,6 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
             }
             try {
                 testController.endScenario(getParameter(params, "scenarioId"));
-                synchronized(lock) {
-                    currentScenarioId = null;;
-                    currentScenarioUserId = null;
-                }
             } catch (Exception e) {
                 if (isJSON) {
                     Map jsonMap = new HashMap();
@@ -308,6 +306,11 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
                     responseJSON(request, response, jsonMap);
                 } else {
                     responseBinary(response, e);
+                }
+            } finally {
+                synchronized(lock) {
+                    currentScenarioId = null;;
+                    currentScenarioUserId = null;
                 }
             }
         } else if (request.getHeader().getURLMatcher(".*startTestCase").matches()) {
