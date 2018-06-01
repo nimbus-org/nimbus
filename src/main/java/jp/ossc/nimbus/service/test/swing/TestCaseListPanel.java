@@ -75,7 +75,7 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
     private final int START_BUTTON_WIDTH = 70;
     private final int END_BUTTON_WIDTH = 70;
     private final int DOWNLOAD_BUTTON_WIDTH = 90;
-    private final int EVI_BUTTON_WIDTH = 70;
+    private final int EVI_BUTTON_WIDTH = 90;
     
     private String userId = null;
     private TestController testController = null;
@@ -307,8 +307,8 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
                 JButton tmpButton3 = new JButton("結果DL");
                 tmpButton3.addActionListener(new DownloadButtonActionListener(testCase));
                 
-                JButton tmpButton4 = new JButton("変換");
-                tmpButton4.setToolTipText("エビデンス変換");
+                JButton tmpButton4 = new JButton("確認OK");
+                tmpButton4.setToolTipText("比較対象データファイルをエビデンスファイルに変換します。");
                 tmpButton4.addActionListener(new EvidenceButtonActionListener(testCase));
                 
                 if(!startTestCaseFlg){
@@ -326,28 +326,28 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
                         case TestCase.Status.INITIAL:
                             tmpButton2.setEnabled(false);
                             tmpButton3.setEnabled(false);
-                            tmpButton4.setEnabled(false);
                             break;
                         case TestCase.Status.STARTED:
                             tmpButton2.setEnabled(true);
                             tmpButton3.setEnabled(false);
-                            tmpButton4.setEnabled(false);
                             break;
                         case TestCase.Status.END:
                             tmpButton2.setEnabled(false);
                             tmpButton3.setEnabled(true);
-                            tmpButton4.setEnabled(true);
                             break;
                         case TestCase.Status.ERROR:
                             tmpButton2.setEnabled(true);
                             tmpButton3.setEnabled(true);
-                            tmpButton4.setEnabled(true);
                             break;
                         case TestCase.Status.CANCELED:
                             tmpButton2.setEnabled(true);
                             tmpButton3.setEnabled(false);
-                            tmpButton4.setEnabled(false);
                             break;
+                    }
+                    if(status.getResult()) {
+                        tmpButton4.setEnabled(false);
+                    } else {
+                        tmpButton4.setEnabled(true);
                     }
                 }
                 
@@ -686,7 +686,7 @@ public class TestCaseListPanel extends JPanel /*implements ComponentListener*/ {
                         }
                     }
                     publish(sb.toString());
-                    Thread.sleep(3000l);
+                    Thread.sleep(2000l);
                 }catch (InterruptedException e) {
                 }catch (Exception e) {
                     throw e;

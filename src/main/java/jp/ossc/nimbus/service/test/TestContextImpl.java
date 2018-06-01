@@ -139,33 +139,33 @@ public class TestContextImpl implements TestContext {
         } else {
             return null;
         }
+        Object result = null;
         if (resultMap.containsKey(targetId)) {
             Map map = (Map) resultMap.get(targetId);
-            Object result = map.get(actionId);
-            if(result == null && scenarioTestContext != null) {
-                result = scenarioTestContext.getTestActionResult(actionId);
-            }
-            if(result == null && scenarioGroupTestContext != null) {
-                result = scenarioGroupTestContext.getTestActionResult(actionId);
-            }
-            return result;
+            result = map.get(actionId);
         }
-        return null;
+        if(result == null && scenarioTestContext != null) {
+            result = scenarioTestContext.getTestActionResult(actionId);
+        }
+        if(result == null && scenarioGroupTestContext != null) {
+            result = scenarioGroupTestContext.getTestActionResult(actionId);
+        }
+        return result;
     }
     
     public Object getTestActionResult(String testcaseId, String actionId) {
+        Object result = null;
         if (resultMap.containsKey(testcaseId)) {
             Map map = (Map) resultMap.get(testcaseId);
-            Object result = map.get(actionId);
-            if(result == null && scenarioTestContext != null) {
-                result = scenarioTestContext.getTestActionResult(testcaseId, actionId);
-            }
-            if(result == null && scenarioGroupTestContext != null) {
-                result = scenarioGroupTestContext.getTestActionResult(testcaseId, actionId);
-            }
-            return result;
+            result = map.get(actionId);
         }
-        return null;
+        if(result == null && scenarioTestContext != null) {
+            result = scenarioTestContext.getTestActionResult(testcaseId, actionId);
+        }
+        if(result == null && scenarioGroupTestContext != null) {
+            result = scenarioGroupTestContext.getTestActionResult(testcaseId, actionId);
+        }
+        return result;
     }
     
     public void setTestActionResult(String actionId, Object result) {

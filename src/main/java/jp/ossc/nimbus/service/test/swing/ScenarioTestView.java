@@ -410,7 +410,8 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         constraints.gridwidth = 1;
         constraints.gridheight = 1;
         constraints.insets = new Insets(5, 5, 5, 5);
-        scenarioGroupEviButton = new JButton("エビデンス変換");
+        scenarioGroupEviButton = new JButton("確認OK");
+        scenarioGroupEviButton.setToolTipText("比較対象データファイルをエビデンスファイルに変換します。");
         scenarioGroupEviButton.setFont(font);
         scenarioGroupEviButton.addActionListener(this);
         scenarioGroupEviButton.setSize(150, 25);
@@ -522,7 +523,8 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
         constraints.gridwidth = 1;
         constraints.gridheight = 1;
         constraints.insets = new Insets(5, 5, 5, 5);
-        scenarioEviButton = new JButton("エビデンス変換");
+        scenarioEviButton = new JButton("確認OK");
+        scenarioEviButton.setToolTipText("比較対象データファイルをエビデンスファイルに変換します。");
         scenarioEviButton.setFont(font);
         scenarioEviButton.addActionListener(this);
         scenarioEviButton.setSize(150, 25);
@@ -1161,16 +1163,16 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
                 scenarioGroupStstus = scenarioGroup.getStatus();
             }
         }
+        if(scenarioGroupStstus != null && !scenarioGroupStstus.getResult()) {
+            scenarioGroupEviButton.setEnabled(true);
+        } else {
+            scenarioGroupEviButton.setEnabled(false);
+        }
         TestScenarioGroup currentScenarioGroup = testController.getCurrentScenarioGroup();
         if (currentScenarioGroup == null) {
             scenarioGroupStatusButton.change(scenarioGroupStstus);
             scenarioGroupStartButton.setEnabled(true);
             scenarioGroupEndButton.setEnabled(false);
-            if(scenarioGroupStstus != null && TestScenarioGroup.Status.STARTED != scenarioGroupStstus.getState()) {
-                scenarioGroupEviButton.setEnabled(true);
-            } else {
-                scenarioGroupEviButton.setEnabled(false);
-            }
             scenarioCombobox.setEnabled(false);
             scenarioStartButton.setEnabled(false);
             scenarioEndButton.setEnabled(false);
@@ -1183,7 +1185,6 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
             scenarioGroupStatusButton.change(currentScenarioGroup.getStatus());
             scenarioGroupStartButton.setEnabled(false);
             scenarioGroupEndButton.setEnabled(true);
-            scenarioGroupEviButton.setEnabled(true);
             scenarioCombobox.setEnabled(false);
             scenarioStartButton.setEnabled(false);
             scenarioEndButton.setEnabled(false);
@@ -1196,7 +1197,6 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
             scenarioGroupStatusButton.change(currentScenarioGroup.getStatus());
             scenarioGroupStartButton.setEnabled(false);
             scenarioGroupEndButton.setEnabled(true);
-            scenarioGroupEviButton.setEnabled(false);
         }
         
         String currentScenarioGroupId = currentScenarioGroup.getScenarioGroupId();
@@ -1218,10 +1218,14 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
             scenarioCancelButton.setEnabled(false);
             scenarioDownloadButton.setEnabled(false);
             scenarioEviButton.setEnabled(false);
-            scenarioEviButton.setEnabled(false);
             return;
         }
         final TestScenario.Status status = selectSenario.getStatus();
+        if (status != null && !status.getResult()) {
+            scenarioEviButton.setEnabled(true);
+        } else {
+            scenarioEviButton.setEnabled(false);
+        }
         
         scenarioStatusButton.change(status);
         
@@ -1255,11 +1259,6 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
             scenarioEndButton.setEnabled(false);
             scenarioCancelButton.setEnabled(false);
             scenarioDownloadButton.setEnabled(false);
-        }
-        if (status != null && (status.getState() == TestScenario.Status.END || status.getState() == TestScenario.Status.ERROR)) {
-            scenarioEviButton.setEnabled(true);
-        } else {
-            scenarioEviButton.setEnabled(false);
         }
     }
     
@@ -1489,7 +1488,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
                         break;
                     }
                     publish(sb.toString());
-                    Thread.sleep(3000l);
+                    Thread.sleep(2000l);
                 } catch (InterruptedException e) {
                 } catch (Exception e) {
                     throw e;
