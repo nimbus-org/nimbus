@@ -51,4 +51,5 @@ public interface EvaluateTestAction{
      * @exception Exception テストアクションの実行で例外が発生した場合
      */
     public boolean execute(TestContext context, String actionId, Reader resource) throws Exception;
+    
 }

@@ -31,6 +31,8 @@
  */
 package jp.ossc.nimbus.service.test;
 
+import java.io.File;
+
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 import jp.ossc.nimbus.core.ServiceName;
 
@@ -51,15 +53,22 @@ public interface HttpTestControllerClientServiceMBean extends ServiceBaseMBean{
     public void setTemplateAction(String action);
     public String getTemplateAction();
 
+    public String getUploadAction();
+    public void setUploadAction(String action);
+    
     public ServiceName getTestResourceManagerServiceName();
     public void setTestResourceManagerServiceName(ServiceName serviceName);
 
     public TestResourceManager getTestResourceManager();
     public void setTestResourceManager(TestResourceManager manager);
 
-    public ServiceName getLocalTestControllerServiceName();
-    public void setLocalTestControllerServiceName(ServiceName serviceName);
+    public File getTemporaryDirectory();
+    public void setTemporaryDirectory(File path);
     
-    public TestController getLocalTestController();
-    public void setLocalTestController(TestController testController);
+    public File getTestResourceFileBaseDirectory();
+    public void setTestResourceFileBaseDirectory(File dir);
+    
+    public boolean isUploadEvidenceServer();
+    public void setUploadEvidenceServer(boolean isUpload);
+
 }

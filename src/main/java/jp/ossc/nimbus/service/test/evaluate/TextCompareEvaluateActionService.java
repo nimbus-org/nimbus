@@ -31,21 +31,22 @@
  */
 package jp.ossc.nimbus.service.test.evaluate;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-import java.io.StringWriter;
 import java.io.FileOutputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
-import java.util.List;
+import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import jp.ossc.nimbus.core.ServiceBase;
 import jp.ossc.nimbus.service.test.EvaluateTestAction;
+import jp.ossc.nimbus.service.test.FileEvaluateTestAction;
 import jp.ossc.nimbus.service.test.TestContext;
 
 /**
@@ -55,7 +56,7 @@ import jp.ossc.nimbus.service.test.TestContext;
  * 
  * @author M.Takata
  */
-public class TextCompareEvaluateActionService extends ServiceBase implements EvaluateTestAction, TextCompareEvaluateActionServiceMBean{
+public class TextCompareEvaluateActionService extends ServiceBase implements EvaluateTestAction, FileEvaluateTestAction, TextCompareEvaluateActionServiceMBean{
     
     private static final long serialVersionUID = -6946310231201742494L;
     
@@ -66,6 +67,8 @@ public class TextCompareEvaluateActionService extends ServiceBase implements Eva
     protected String fileAfterEditExtention = DEFAULT_AFTER_EDIT_FILE_EXTENTION;
     protected double expectedCost = Double.NaN;
     protected boolean isResultNGOnNotFoundDestFile;
+    protected String targetFileName;
+    protected String evidenceFileName;
     
     public void setFileEncoding(String encoding){
         fileEncoding = encoding;
@@ -118,6 +121,13 @@ public class TextCompareEvaluateActionService extends ServiceBase implements Eva
         isResultNGOnNotFoundDestFile = isResultNG;
     }
     
+    public String getEvaluateTargetFileName(){
+        return targetFileName;
+    }
+    
+    public String getEvaluateEvidenceFileName(){
+        return evidenceFileName;
+    }
     /**
      * ２つのテキストファイルを比較して、内容が等価かどうか評価する。<p>
      * リソースのフォーマットは、以下。<br>
@@ -142,10 +152,12 @@ public class TextCompareEvaluateActionService extends ServiceBase implements Eva
         List ignorePatternList = null;
         try{
             final String srcFilePath = br.readLine();
+            targetFileName = srcFilePath;
             if(srcFilePath == null){
                 throw new Exception("Unexpected EOF on srcFilePath");
             }
             final String dstFilePath = br.readLine();
+            evidenceFileName = dstFilePath;
             if(dstFilePath == null){
                 throw new Exception("Unexpected EOF on dstFilePath");
             }

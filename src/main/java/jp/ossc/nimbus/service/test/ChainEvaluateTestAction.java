@@ -72,4 +72,5 @@ public interface ChainEvaluateTestAction {
          */
         public boolean execute(TestContext context, String actionId, Object preResult, Reader resource) throws Exception;
     }
+
 }

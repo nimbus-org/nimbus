@@ -54,6 +54,7 @@ import jp.ossc.nimbus.io.ExtentionFileFilter;
 import jp.ossc.nimbus.io.RecurciveSearchFile;
 import jp.ossc.nimbus.service.test.TemplateEngine;
 import jp.ossc.nimbus.service.test.TestResourceManager;
+import jp.ossc.nimbus.service.test.UploadableTestResourceManager;
 
 /**
  * ローカルディスクのテストリソースを管理する{@link TestResourceManager}インタフェースの実装サービス。
@@ -61,7 +62,7 @@ import jp.ossc.nimbus.service.test.TestResourceManager;
  *
  * @author M.Aono
  */
-public class LocalTestResourceManagerService extends ServiceBase implements TestResourceManager, LocalTestResourceManagerServiceMBean {
+public class LocalTestResourceManagerService extends ServiceBase implements UploadableTestResourceManager, LocalTestResourceManagerServiceMBean {
 
     private static final long serialVersionUID = 2415695763380446884L;
 
@@ -285,14 +286,16 @@ public class LocalTestResourceManagerService extends ServiceBase implements Test
         linkTemplate(dir, false);
     }
 
-    public void uploadScenarioGroupResource(File dir, String scenarioGroupId) throws Exception {
+    public void uploadScenarioGroupResource(File dir, String scenarioGroupId, boolean isClear) throws Exception {
         File targetDir = new File(testResourceDirectory, "/" + scenarioGroupId);
         if(targetDir.exists()) {
-            File[] fileList = targetDir.listFiles();
-            if(fileList != null && fileList.length > 0) {
-                for(int i = 0; i < fileList.length; i++) {
-                    if(fileList[i].isFile()) {
-                        fileList[i].delete(); 
+            if(isClear){
+                File[] fileList = targetDir.listFiles();
+                if(fileList != null && fileList.length > 0) {
+                    for(int i = 0; i < fileList.length; i++) {
+                        if(fileList[i].isFile()) {
+                            fileList[i].delete(); 
+                        }
                     }
                 }
             }
@@ -388,10 +391,24 @@ public class LocalTestResourceManagerService extends ServiceBase implements Test
         linkTemplate(dir, true);
     }
 
-    public void uploadScenarioResource(File dir, String scenarioGroupId, String scenarioId) throws Exception {
+    public void uploadScenarioResource(File dir, String scenarioGroupId, String scenarioId, boolean isClear) throws Exception {
         RecurciveSearchFile targetDir = new RecurciveSearchFile(testResourceDirectory, scenarioGroupId + "/" + scenarioId);
         if(targetDir.exists()) {
-            targetDir.deleteAllTree(false);
+            if(isClear){
+                targetDir.deleteAllTree(false);
+            }
+        } else {
+            targetDir.mkdirs(); 
+        }
+        RecurciveSearchFile.copyAllTree(dir, targetDir, new FileFilter());
+    }
+    
+    public void uploadTestCaseResource(File dir, String scenarioGroupId, String scenarioId, String testcaseId, boolean isClear) throws Exception {
+        RecurciveSearchFile targetDir = new RecurciveSearchFile(testResourceDirectory, scenarioGroupId + File.separator + scenarioId + File.separator + testcaseId);
+        if(targetDir.exists()) {
+            if(isClear){
+                targetDir.deleteAllTree(false);
+            }
         } else {
             targetDir.mkdirs(); 
         }

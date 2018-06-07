@@ -35,17 +35,18 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.lang.reflect.UndeclaredThrowableException;
 import java.net.URLEncoder;
-import java.util.Collections;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.TreeSet;
+import java.util.Map.Entry;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
@@ -59,6 +60,9 @@ import jp.ossc.nimbus.service.http.HttpClientFactory;
 import jp.ossc.nimbus.service.http.HttpException;
 import jp.ossc.nimbus.service.http.HttpRequest;
 import jp.ossc.nimbus.service.http.HttpResponse;
+import jp.ossc.nimbus.service.test.TestCase.TestCaseResource;
+import jp.ossc.nimbus.service.test.TestScenario.TestScenarioResource;
+import jp.ossc.nimbus.service.test.TestScenarioGroup.TestScenarioGroupResource;
 
 /**
  * HTTPテストコントローラクライアント。
@@ -67,7 +71,7 @@ import jp.ossc.nimbus.service.http.HttpResponse;
  * @author M.Takata
  */
 public class HttpTestControllerClientService extends ServiceBase implements TestController, HttpTestControllerClientServiceMBean {
-
+    
     private ServiceName httpClientFactoryServiceName;
     private HttpClientFactory httpClientFactory;
     private String templateAction = "template";
@@ -77,23 +81,23 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
     protected ServiceName testResourceManagerServiceName;
     protected TestResourceManager testResourceManager;
     
-    protected ServiceName localTestControllerServiceName;
-    protected TestController localTestController;
-    
     protected File temporaryDirectory;
-
+    protected File testResourceFileBaseDirectory;
+    
+    protected boolean isUploadEvidenceServer = false;
+    
     public void setHttpClientFactoryServiceName(ServiceName name) {
         httpClientFactoryServiceName = name;
     }
-
+    
     public ServiceName getHttpClientFactoryServiceName() {
         return httpClientFactoryServiceName;
     }
-
+    
     public void setTemplateAction(String action) {
         templateAction = action;
     }
-
+    
     public String getTemplateAction() {
         return templateAction;
     }
@@ -105,11 +109,11 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
     public void setUploadAction(String action) {
         uploadAction = action;
     }
-
+    
     public void setURLEncodeCharacterEncoding(String encoding) {
         urlEncodeCharacterEncoding = encoding;
     }
-
+    
     public String getURLEncodeCharacterEncoding() {
         return urlEncodeCharacterEncoding;
     }
@@ -117,41 +121,41 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
     public ServiceName getTestResourceManagerServiceName() {
         return testResourceManagerServiceName;
     }
-
+    
     public void setTestResourceManagerServiceName(ServiceName serviceName) {
         testResourceManagerServiceName = serviceName;
     }
-
+    
     public TestResourceManager getTestResourceManager() {
         return testResourceManager;
     }
-
+    
     public void setTestResourceManager(TestResourceManager manager) {
         testResourceManager = manager;
     }
-
-    public ServiceName getLocalTestControllerServiceName() {
-        return localTestControllerServiceName;
-    }
     
-    public void setLocalTestControllerServiceName(ServiceName serviceName) {
-        localTestControllerServiceName = serviceName;
-    }
-    
-    public TestController getLocalTestController() {
-        return localTestController;
-    }
-    
-    public void setLocalTestController(TestController testController) {
-        localTestController = testController;
-    }
-
     public File getTemporaryDirectory() {
         return temporaryDirectory;
     }
     
     public void setTemporaryDirectory(File path) {
         temporaryDirectory = path;
+    }
+    
+    public File getTestResourceFileBaseDirectory() {
+        return testResourceFileBaseDirectory;
+    }
+    
+    public void setTestResourceFileBaseDirectory(File dir) {
+        testResourceFileBaseDirectory = dir;
+    }
+    
+    public boolean isUploadEvidenceServer() {
+        return isUploadEvidenceServer;
+    }
+    
+    public void setUploadEvidenceServer(boolean isUpload) {
+        isUploadEvidenceServer = isUpload;
     }
     
     public void startService() throws Exception {
@@ -165,20 +169,21 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
         if (testResourceManagerServiceName != null) {
             testResourceManager = (TestResourceManager) ServiceManagerFactory.getServiceObject(testResourceManagerServiceName);
         }
-        if(testResourceManager != null) {
-            if(temporaryDirectory == null) {
+        if (testResourceManager != null) {
+            if (temporaryDirectory == null) {
                 temporaryDirectory = new File(System.getProperty("java.io.tmpdir"));
             }
-            if(!temporaryDirectory.exists()) {
+            if (!temporaryDirectory.exists()) {
                 temporaryDirectory.mkdirs();
             }
             httpClientFactory.createRequest(uploadAction);
-        }
-        if(localTestControllerServiceName != null) {
-            localTestController = (TestController) ServiceManagerFactory.getServiceObject(localTestControllerServiceName);
+            if (testResourceFileBaseDirectory == null) {
+                throw new IllegalArgumentException("TestResourceFileBaseDirectory is null.");
+            }
+            setupDir(testResourceFileBaseDirectory, false);
         }
     }
-
+    
     private Object upload(String action, Map params, File file) throws HttpException, Exception {
         return request(action, params, file);
     }
@@ -212,7 +217,7 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
                 }
             }
         }
-        if(file != null) {
+        if (file != null) {
             request.setFileParameter("zipfile", file, file.getName(), null);
         }
         HttpResponse response = client.executeRequest(request);
@@ -248,7 +253,7 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
             }
         }
     }
-
+    
     public void setTestPhase(String phase) {
         Map params = new HashMap();
         params.put("phase", phase);
@@ -264,7 +269,7 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
             }
         }
     }
-
+    
     public String getTestPhase() {
         try {
             return (String) request("getTestPhase", null);
@@ -278,63 +283,79 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
             }
         }
     }
-
+    
     public void startScenarioGroup(String userId, String scenarioGroupId) throws Exception {
         Map params = new HashMap();
         params.put("userId", userId);
         params.put("scenarioGroupId", scenarioGroupId);
-        if(testResourceManager != null) {
-            File targetDir = new File(temporaryDirectory,scenarioGroupId);
-            if(!targetDir.exists()) {
+        if (testResourceManager != null) {
+            File targetDir = new File(testResourceFileBaseDirectory, scenarioGroupId);
+            if (!targetDir.exists()) {
                 targetDir.mkdirs();
+            } else {
+                RecurciveSearchFile.deleteAllTree(targetDir, false);
             }
             testResourceManager.downloadScenarioGroupResource(targetDir, scenarioGroupId);
             File zipFile = new File(temporaryDirectory, scenarioGroupId + ".zip");
             createZipFile(targetDir, zipFile, false);
             upload("uploadScenarioGroupResource", params, zipFile);
             zipFile.delete();
-            RecurciveSearchFile.deleteAllTree(targetDir, true);
+            RecurciveSearchFile.deleteAllTree(temporaryDirectory, false);
         }
         request("startScenarioGroup", params);
     }
-
+    
     public void endScenarioGroup() throws Exception {
+        String scenarioGroupId = getCurrentScenarioGroup().getScenarioGroupId();
         request("endScenarioGroup", null);
+        if (testResourceManager != null) {
+            downloadScenarioGroupResult(testResourceFileBaseDirectory, scenarioGroupId, RESPONSE_FILE_TYPE_DEFAULT);
+        }
     }
-
+    
     public void startScenario(String userId, String scenarioId) throws Exception {
         Map params = new HashMap();
         params.put("userId", userId);
         params.put("scenarioId", scenarioId);
-        if(testResourceManager != null) {
+        if (testResourceManager != null) {
             String scenarioGroupId = getCurrentScenarioGroup().getScenarioGroupId();
             params.put("scenarioGroupId", scenarioGroupId);
-            File targetDir = new File(temporaryDirectory, scenarioGroupId + "/" + scenarioId);
-            if(!targetDir.exists()) {
+            File targetDir = new File(testResourceFileBaseDirectory, scenarioGroupId + File.separator + scenarioId);
+            if (!targetDir.exists()) {
                 targetDir.mkdirs();
+            } else {
+                RecurciveSearchFile.deleteAllTree(targetDir, false);
             }
             testResourceManager.downloadScenarioResource(targetDir, scenarioGroupId, scenarioId);
             File zipFile = new File(temporaryDirectory, scenarioId + ".zip");
             createZipFile(targetDir, zipFile, true);
             upload("uploadScenarioResource", params, zipFile);
             zipFile.delete();
-            RecurciveSearchFile.deleteAllTree(targetDir, true);
+            RecurciveSearchFile.deleteAllTree(temporaryDirectory, false);
         }
         request("startScenario", params);
     }
-
+    
     public void cancelScenario(String scenarioId) throws Exception {
         Map params = new HashMap();
         params.put("scenarioId", scenarioId);
         request("cancelScenario", params);
     }
-
+    
     public void endScenario(String scenarioId) throws Exception {
+        String scenarioGroupId = getCurrentScenarioGroup().getScenarioGroupId();
         Map params = new HashMap();
         params.put("scenarioId", scenarioId);
         request("endScenario", params);
+        if (testResourceManager != null) {
+            File targetDir = new File(testResourceFileBaseDirectory, scenarioGroupId);
+            if (!targetDir.exists()) {
+                targetDir.mkdirs();
+            }
+            downloadScenarioResult(targetDir, scenarioGroupId, scenarioId, RESPONSE_FILE_TYPE_DEFAULT);
+        }
     }
-
+    
     public void startTestCase(String userId, String scenarioId, String testcaseId) throws Exception {
         Map params = new HashMap();
         params.put("userId", userId);
@@ -342,62 +363,63 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
         params.put("testcaseId", testcaseId);
         request("startTestCase", params);
     }
-
+    
     public void cancelTestCase(String scenarioId, String testcaseId) throws Exception {
         Map params = new HashMap();
         params.put("scenarioId", scenarioId);
         params.put("testcaseId", testcaseId);
         request("cancelTestCase", params);
     }
-
+    
     public void endTestCase(String scenarioId, String testcaseId) throws Exception {
+        String scenarioGroupId = getCurrentScenarioGroup().getScenarioGroupId();
         Map params = new HashMap();
         params.put("scenarioId", scenarioId);
         params.put("testcaseId", testcaseId);
         request("endTestCase", params);
+        if (testResourceManager != null) {
+            File targetDir = new File(testResourceFileBaseDirectory, scenarioGroupId + File.separator + scenarioId);
+            if (!targetDir.exists()) {
+                targetDir.mkdirs();
+            }
+            downloadTestCaseResult(targetDir, scenarioGroupId, scenarioId, testcaseId, RESPONSE_FILE_TYPE_DEFAULT);
+        }
     }
-
+    
     public TestScenarioGroup[] getScenarioGroups() throws Exception {
         TestScenarioGroup[] groups = (TestScenarioGroup[]) request("getScenarioGroups", null);
-        if(localTestController != null) {
-            TestScenarioGroup[] localGroups = localTestController.getScenarioGroups();
-            Map resultScenarioGroupIdMap = new TreeMap();
-            if(groups != null) {
-                for(int i = 0; i < groups.length; i++) {
-                    resultScenarioGroupIdMap.put(groups[i].getScenarioGroupId(), groups[i]);
+        if (testResourceManager != null) {
+            String[] scenarioGroupIds = testResourceManager.getScenarioGroupIds();
+            if (scenarioGroupIds == null || scenarioGroupIds.length == 0) {
+                return null;
+            }
+            List scenarioGroupIdList = Arrays.asList(scenarioGroupIds);
+            List list = new ArrayList();
+            for (int i = 0; i < groups.length; i++) {
+                if (scenarioGroupIdList.contains(groups[i].getScenarioGroupId())) {
+                    list.add(groups[i]);
                 }
             }
-            if(localGroups != null) {
-                for(int i = 0; i < localGroups.length; i++) {
-                    resultScenarioGroupIdMap.put(localGroups[i].getScenarioGroupId(), localGroups[i]);
-                }
-            }
-            groups = (TestScenarioGroup[])resultScenarioGroupIdMap.values().toArray(new TestScenarioGroup[] {});
+            groups = (TestScenarioGroup[]) list.toArray(new TestScenarioGroup[] {});
         }
-        if (groups != null && groups.length > 0) {
+        if (groups != null) {
             for (int i = 0; i < groups.length; i++) {
                 ((TestScenarioGroupImpl) groups[i]).setController(this);
             }
         }
         return groups;
     }
-
+    
     public String[] getScenarioGroupIds() throws Exception {
-        String[] scenarioGroupIds = (String[]) request("getScenarioGroupIds", null);
-        if(localTestController != null) {
-            String[] localScenarioGroupIds = localTestController.getScenarioGroupIds();
-            Set resultScenarioGroupIdSet = new TreeSet();
-            if(scenarioGroupIds != null) {
-                Collections.addAll(resultScenarioGroupIdSet, scenarioGroupIds);
-            }
-            if(localScenarioGroupIds != null) {
-                Collections.addAll(resultScenarioGroupIdSet, localScenarioGroupIds);
-            }
-            scenarioGroupIds = (String[])resultScenarioGroupIdSet.toArray(new String[] {});
+        String[] scenarioGroupIds = null;
+        if (testResourceManager == null) {
+            scenarioGroupIds = (String[]) request("getScenarioGroupIds", null);
+        } else {
+            scenarioGroupIds = testResourceManager.getScenarioGroupIds();
         }
         return scenarioGroupIds;
     }
-
+    
     public TestScenarioGroup getScenarioGroup(String scenarioGroupId) throws Exception {
         Map params = new HashMap();
         params.put("scenarioGroupId", scenarioGroupId);
@@ -407,7 +429,7 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
         }
         return group;
     }
-
+    
     public TestScenarioGroup getCurrentScenarioGroup() throws Exception {
         TestScenarioGroup group = (TestScenarioGroup) request("getCurrentScenarioGroup", null);
         if (group != null) {
@@ -415,13 +437,13 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
         }
         return group;
     }
-
+    
     public TestScenarioGroup.TestScenarioGroupResource getTestScenarioGroupResource(String scenarioGroupId) throws Exception {
         Map params = new HashMap();
         params.put("scenarioGroupId", scenarioGroupId);
         return (TestScenarioGroup.TestScenarioGroupResource) request("getTestScenarioGroupResource", params);
     }
-
+    
     public TestScenarioGroup.Status getTestScenarioGroupStatus(String scenarioGroupId) {
         Map params = new HashMap();
         params.put("scenarioGroupId", scenarioGroupId);
@@ -437,25 +459,24 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
             }
         }
     }
-
+    
     public TestScenario[] getScenarios(String scenarioGroupId) throws Exception {
         Map params = new HashMap();
         params.put("scenarioGroupId", scenarioGroupId);
         TestScenario[] scenarios = (TestScenario[]) request("getScenarios", params);
-        if(localTestController != null) {
-            TestScenario[] localScenarios = localTestController.getScenarios(scenarioGroupId);
-            Map resultScenarioIdMap = new TreeMap();
-            if(scenarios != null) {
-                for(int i = 0; i < scenarios.length; i++) {
-                    resultScenarioIdMap.put(scenarios[i].getScenarioId(), scenarios[i]);
+        if (testResourceManager != null) {
+            String[] scenarioIds = testResourceManager.getScenarioIds(scenarioGroupId);
+            if (scenarioIds == null || scenarioIds.length == 0) {
+                return null;
+            }
+            List scenarioIdList = Arrays.asList(scenarioIds);
+            List list = new ArrayList();
+            for (int i = 0; i < scenarios.length; i++) {
+                if (scenarioIdList.contains(scenarios[i].getScenarioId())) {
+                    list.add(scenarios[i]);
                 }
             }
-            if(localScenarios != null) {
-                for(int i = 0; i < localScenarios.length; i++) {
-                    resultScenarioIdMap.put(localScenarios[i].getScenarioId(), localScenarios[i]);
-                }
-            }
-            scenarios = (TestScenario[])resultScenarioIdMap.values().toArray(new TestScenario[] {});
+            scenarios = (TestScenario[]) list.toArray(new TestScenario[] {});
         }
         if (scenarios != null) {
             for (int i = 0; i < scenarios.length; i++) {
@@ -464,39 +485,30 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
         }
         return scenarios;
     }
-
+    
     public String[] getScenarioIds(String scenarioGroupId) throws Exception {
-        Map params = new HashMap();
-        params.put("scenarioGroupId", scenarioGroupId);
-        String[] scenarioIds = (String[]) request("getScenarioIds", params);
-        if(localTestController != null) {
-            String[] localScenarioIds = localTestController.getScenarioIds(scenarioGroupId);
-            Set resultScenarioIdSet = new TreeSet();
-            if(scenarioIds != null) {
-                Collections.addAll(resultScenarioIdSet, scenarioIds);
-            }
-            if(localScenarioIds != null) {
-                Collections.addAll(resultScenarioIdSet, localScenarioIds);
-            }
-            scenarioIds = (String[])resultScenarioIdSet.toArray(new String[] {});
+        String[] scenarioIds = null;
+        if (testResourceManager == null) {
+            Map params = new HashMap();
+            params.put("scenarioGroupId", scenarioGroupId);
+            scenarioIds = (String[]) request("getScenarioIds", params);
+        } else {
+            scenarioIds = testResourceManager.getScenarioIds(scenarioGroupId);
         }
         return scenarioIds;
     }
-
+    
     public TestScenario getScenario(String scenarioGroupId, String scenarioId) throws Exception {
         Map params = new HashMap();
         params.put("scenarioGroupId", scenarioGroupId);
         params.put("scenarioId", scenarioId);
         TestScenario scenario = (TestScenario) request("getScenario", params);
-        if(localTestController != null && scenario == null) {
-            scenario = localTestController.getScenario(scenarioGroupId, scenarioId);
-        }
         if (scenario != null) {
             ((TestScenarioImpl) scenario).setController(this);
         }
         return scenario;
     }
-
+    
     public TestScenario getCurrentScenario() throws Exception {
         TestScenario scenario = (TestScenario) request("getCurrentScenario", null);
         if (scenario != null) {
@@ -504,14 +516,14 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
         }
         return scenario;
     }
-
+    
     public TestScenario.TestScenarioResource getTestScenarioResource(String scenarioGroupId, String scenarioId) throws Exception {
         Map params = new HashMap();
         params.put("scenarioGroupId", scenarioGroupId);
         params.put("scenarioId", scenarioId);
         return (TestScenario.TestScenarioResource) request("getTestScenarioResource", params);
     }
-
+    
     public TestScenario.Status getTestScenarioStatus(String scenarioGroupId, String scenarioId) {
         Map params = new HashMap();
         params.put("scenarioGroupId", scenarioGroupId);
@@ -528,12 +540,26 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
             }
         }
     }
-
+    
     public TestCase[] getTestCases(String scenarioGroupId, String scenarioId) throws Exception {
         Map params = new HashMap();
         params.put("scenarioGroupId", scenarioGroupId);
         params.put("scenarioId", scenarioId);
         TestCase[] testcases = (TestCase[]) request("getTestCases", params);
+        if (testResourceManager != null) {
+            String[] testcaseIds = testResourceManager.getTestCaseIds(scenarioGroupId, scenarioId);
+            if (testcaseIds == null || testcaseIds.length == 0) {
+                return null;
+            }
+            List testcaseIdList = Arrays.asList(testcaseIds);
+            List list = new ArrayList();
+            for (int i = 0; i < testcases.length; i++) {
+                if (testcaseIdList.contains(testcases[i].getTestCaseId())) {
+                    list.add(testcases[i]);
+                }
+            }
+            testcases = (TestCase[]) list.toArray(new TestCase[] {});
+        }
         if (testcases != null) {
             for (int i = 0; i < testcases.length; i++) {
                 ((TestCaseImpl) testcases[i]).setController(this);
@@ -541,14 +567,20 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
         }
         return testcases;
     }
-
+    
     public String[] getTestCaseIds(String scenarioGroupId, String scenarioId) throws Exception {
-        Map params = new HashMap();
-        params.put("scenarioGroupId", scenarioGroupId);
-        params.put("scenarioId", scenarioId);
-        return (String[]) request("getTestCaseIds", params);
+        String[] testcaseIds = null;
+        if (testResourceManager == null) {
+            Map params = new HashMap();
+            params.put("scenarioGroupId", scenarioGroupId);
+            params.put("scenarioId", scenarioId);
+            testcaseIds = (String[]) request("getTestCaseIds", params);
+        } else {
+            testcaseIds = testResourceManager.getTestCaseIds(scenarioGroupId, scenarioId);
+        }
+        return testcaseIds;
     }
-
+    
     public TestCase getTestCase(String scenarioGroupId, String scenarioId, String testcaseId) throws Exception {
         Map params = new HashMap();
         params.put("scenarioGroupId", scenarioGroupId);
@@ -560,7 +592,7 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
         }
         return testcase;
     }
-
+    
     public TestCase getCurrentTestCase() throws Exception {
         TestCase testCase = (TestCase) request("getCurrentTestCase", null);
         if (testCase != null) {
@@ -568,7 +600,7 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
         }
         return testCase;
     }
-
+    
     public TestCase.TestCaseResource getTestCaseResource(String scenarioGroupId, String scenarioId, String testcaseId) throws Exception {
         Map params = new HashMap();
         params.put("scenarioGroupId", scenarioGroupId);
@@ -576,7 +608,7 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
         params.put("testcaseId", testcaseId);
         return (TestCase.TestCaseResource) request("getTestCaseResource", params);
     }
-
+    
     public TestCase.Status getTestCaseStatus(String scenarioGroupId, String scenarioId, String testcaseId) {
         Map params = new HashMap();
         params.put("scenarioGroupId", scenarioGroupId);
@@ -594,7 +626,16 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
             }
         }
     }
-
+    
+    public File downloadScenarioGroupResult(File dir, String scenarioGroupId, int responseFileType) throws Exception {
+        Map params = new HashMap();
+        params.put("scenarioGroupId", scenarioGroupId);
+        Object[] ret = (Object[]) request("downloadScenarioGroupResult", params);
+        String fileName = (String) ret[0];
+        InputStream is = (InputStream) ret[1];
+        return downloadResult(dir, responseFileType, fileName, is);
+    }
+    
     public File downloadScenarioResult(File dir, String scenarioGroupId, String scenarioId, int responseFileType) throws Exception {
         Map params = new HashMap();
         params.put("scenarioGroupId", scenarioGroupId);
@@ -604,7 +645,7 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
         InputStream is = (InputStream) ret[1];
         return downloadResult(dir, responseFileType, fileName, is);
     }
-
+    
     private File downloadResult(File dir, int responseFileType, String fileName, InputStream is) throws Exception {
         if (!dir.exists()) {
             dir.mkdirs();
@@ -653,8 +694,9 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
         }
         return result;
     }
-
-    public File downloadTestCaseResult(File dir, String scenarioGroupId, String scenarioId, String testcaseId, int responseFileType) throws Exception {
+    
+    public File downloadTestCaseResult(File dir, String scenarioGroupId, String scenarioId, String testcaseId, int responseFileType)
+            throws Exception {
         Map params = new HashMap();
         params.put("scenarioGroupId", scenarioGroupId);
         params.put("scenarioId", scenarioId);
@@ -664,24 +706,139 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
         InputStream is = (InputStream) ret[1];
         return downloadResult(dir, responseFileType, fileName, is);
     }
-
+    
     public void downloadTestScenarioGroupResource(String scenarioGroupId) throws Exception {
         Map params = new HashMap();
         params.put("scenarioGroupId", scenarioGroupId);
         request("downloadTestScenarioGroupResource", params);
     }
-
+    
     public void downloadTestScenarioResource(String scenarioGroupId, String scenarioId) throws Exception {
         Map params = new HashMap();
         params.put("scenarioGroupId", scenarioGroupId);
         params.put("scenarioId", scenarioId);
         request("downloadTestScenarioResource", params);
     }
-
+    
     public void reset() throws Exception {
         request("reset", null);
     }
-
+    
+    public void generateTestScenarioGroupEvidenceFile(String scenarioGroupId) throws Exception {
+        File targetDir = new File(testResourceFileBaseDirectory, scenarioGroupId);
+        if (!targetDir.exists()) {
+            return;
+        }
+        if (isUploadEvidenceServer) {
+            Map params = new HashMap();
+            params.put("scenarioGroupId", scenarioGroupId);
+            request("generateTestScenarioGroupEvidenceFile", params);
+        }
+        if (testResourceManager != null && testResourceManager instanceof UploadableTestResourceManager) {
+            TestScenarioGroupResource testScenarioGroupResource = getTestScenarioGroupResource(scenarioGroupId);
+            if (testScenarioGroupResource != null) {
+                Map actionEvidenceFileNameMap = testScenarioGroupResource.getActionEvidenceFileNameMap();
+                if (actionEvidenceFileNameMap != null && !actionEvidenceFileNameMap.isEmpty()) {
+                    try {
+                        File tmpDir = new File(temporaryDirectory, scenarioGroupId);
+                        setupDir(tmpDir, false);
+                        Iterator itr = actionEvidenceFileNameMap.entrySet().iterator();
+                        while (itr.hasNext()) {
+                            Entry entry = (Entry) itr.next();
+                            String[] names = (String[]) entry.getValue();
+                            File fromFile = new File(targetDir, names[0]);
+                            if (fromFile.exists()) {
+                                File toFile = new File(tmpDir, names[1]);
+                                RecurciveSearchFile.dataCopy(fromFile, toFile);
+                            }
+                        }
+                        ((UploadableTestResourceManager) testResourceManager).uploadScenarioGroupResource(tmpDir, scenarioGroupId, false);
+                    } finally {
+                        RecurciveSearchFile.deleteAllTree(temporaryDirectory, false);
+                    }
+                }
+            }
+        }
+    }
+    
+    public void generateTestScenarioEvidenceFile(String scenarioGroupId, String scenarioId) throws Exception {
+        File targetDir = new File(testResourceFileBaseDirectory, scenarioGroupId + File.separator + scenarioId);
+        if (!targetDir.exists()) {
+            return;
+        }
+        if (isUploadEvidenceServer) {
+            Map params = new HashMap();
+            params.put("scenarioGroupId", scenarioGroupId);
+            params.put("scenarioId", scenarioId);
+            request("generateTestScenarioEvidenceFile", params);
+        }
+        if (testResourceManager != null && testResourceManager instanceof UploadableTestResourceManager) {
+            TestScenarioResource testScenarioResource = getTestScenarioResource(scenarioGroupId, scenarioId);
+            if (testScenarioResource != null) {
+                Map actionEvidenceFileNameMap = testScenarioResource.getActionEvidenceFileNameMap();
+                if (actionEvidenceFileNameMap != null && !actionEvidenceFileNameMap.isEmpty()) {
+                    try {
+                        File tmpDir = new File(temporaryDirectory, scenarioId);
+                        setupDir(tmpDir, false);
+                        Iterator itr = actionEvidenceFileNameMap.entrySet().iterator();
+                        while (itr.hasNext()) {
+                            Entry entry = (Entry) itr.next();
+                            String[] names = (String[]) entry.getValue();
+                            File fromFile = new File(targetDir, names[0]);
+                            if (fromFile.exists()) {
+                                File toFile = new File(tmpDir, names[1]);
+                                RecurciveSearchFile.dataCopy(fromFile, toFile);
+                            }
+                        }
+                        ((UploadableTestResourceManager) testResourceManager).uploadScenarioResource(tmpDir, scenarioGroupId, scenarioId, false);
+                    } finally {
+                        RecurciveSearchFile.deleteAllTree(temporaryDirectory, false);
+                    }
+                }
+            }
+        }
+    }
+    
+    public void generateTestCaseEvidenceFile(String scenarioGroupId, String scenarioId, String testcaseId) throws Exception {
+        File targetDir = new File(testResourceFileBaseDirectory, scenarioGroupId + File.separator + scenarioId + File.separator + testcaseId);
+        if (!targetDir.exists()) {
+            return;
+        }
+        if (isUploadEvidenceServer) {
+            Map params = new HashMap();
+            params.put("scenarioGroupId", scenarioGroupId);
+            params.put("scenarioId", scenarioId);
+            params.put("testcaseId", testcaseId);
+            request("generateTestCaseEvidenceFile", params);
+        }
+        if (testResourceManager != null && testResourceManager instanceof UploadableTestResourceManager) {
+            TestCaseResource testCaseResource = getTestCaseResource(scenarioGroupId, scenarioId, testcaseId);
+            if (testCaseResource != null) {
+                Map actionEvidenceFileNameMap = testCaseResource.getActionEvidenceFileNameMap();
+                if (actionEvidenceFileNameMap != null && !actionEvidenceFileNameMap.isEmpty()) {
+                    try {
+                        File tmpDir = new File(temporaryDirectory, testcaseId);
+                        setupDir(tmpDir, false);
+                        Iterator itr = actionEvidenceFileNameMap.entrySet().iterator();
+                        while (itr.hasNext()) {
+                            Entry entry = (Entry) itr.next();
+                            String[] names = (String[]) entry.getValue();
+                            File fromFile = new File(targetDir, names[0]);
+                            if (fromFile.exists()) {
+                                File toFile = new File(tmpDir, names[1]);
+                                RecurciveSearchFile.dataCopy(fromFile, toFile);
+                            }
+                        }
+                        ((UploadableTestResourceManager) testResourceManager).uploadTestCaseResource(tmpDir, scenarioGroupId, scenarioId, testcaseId,
+                                false);
+                    } finally {
+                        RecurciveSearchFile.deleteAllTree(temporaryDirectory, false);
+                    }
+                }
+            }
+        }
+    }
+    
     private void createZipFile(File targetDir, File zipFile, boolean isZipTree) throws Exception {
         File[] files = { targetDir };
         ZipOutputStream zos = null;
@@ -703,7 +860,7 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
         for (int i = 0; i < files.length; i++) {
             File f = files[i];
             if (f.isDirectory()) {
-                if(isZipTree || baseDir.equals(f.getParent())) {
+                if (isZipTree || baseDir.equals(f.getParent())) {
                     doZip(zos, f.listFiles(), baseDir, isZipTree);
                 }
             } else {
@@ -723,15 +880,23 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
             }
         }
     }
-
+    
+    private void setupDir(File dir, boolean isContains) throws IOException {
+        if (dir.exists()) {
+            RecurciveSearchFile.deleteAllTree(dir, isContains);
+        } else if (!dir.mkdirs()) {
+            throw new IOException("Directory can not make. path=" + dir);
+        }
+    }
+    
     protected static class HeaderValue {
         protected String value;
         protected Map parameters;
         protected int hashCode;
-
+        
         public HeaderValue() {
         }
-
+        
         public HeaderValue(String header) {
             String[] types = header.split(";");
             value = types[0].trim();
@@ -750,26 +915,26 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
                 hashCode += parameters.hashCode();
             }
         }
-
+        
         public String getValue() {
             return value;
         }
-
+        
         public void setValue(String val) {
             value = val;
         }
-
+        
         public String getParameter(String name) {
             return parameters == null ? null : (String) parameters.get(name);
         }
-
+        
         public void setParameter(String name, String value) {
             if (parameters == null) {
                 parameters = new HashMap();
             }
             parameters.put(name, value);
         }
-
+        
         public String toString() {
             StringBuilder buf = new StringBuilder();
             buf.append(value);
@@ -782,7 +947,7 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
             }
             return buf.toString();
         }
-
+        
         public boolean equals(Object obj) {
             if (obj == null || !(obj instanceof HeaderValue)) {
                 return false;
@@ -800,24 +965,24 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
             }
             return true;
         }
-
+        
         public int hashCode() {
             return hashCode;
         }
     }
-
+    
     protected static class MediaType extends HeaderValue {
         public MediaType() {
         }
-
+        
         public MediaType(String header) {
             super(header);
         }
-
+        
         public String getMediaType() {
             return getValue();
         }
-
+        
         public void setMediaType(String type) {
             setValue(type);
         }
