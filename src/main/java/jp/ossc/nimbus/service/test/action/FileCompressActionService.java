@@ -118,7 +118,7 @@ public class FileCompressActionService extends ServiceBase implements TestAction
      * fromFile
      * toFile
      * </pre>
-     * algorithmは、圧縮解凍時に使用するアルゴリズムを指定する。<br>
+     * algorithmは、圧縮解凍時に使用するアルゴリズムを指定する。指定できるアルゴリズムはZIP、GZ、LZ4、SNAPPY<br>
      * modeは、EXTRACT（解凍）かARCHIVE（圧縮）を指定する。<br>
      * fromFileは、圧縮もしくは解凍する対象ファイルを指定する。<br>
      *
@@ -139,12 +139,13 @@ public class FileCompressActionService extends ServiceBase implements TestAction
      * mode
      * fromFilePath
      * </pre>
-     * propertyは、取得するプロパティ文字列を指定する。プロパティ文字列は、{@link PropertyFactory#createProperty(String)}で解釈される。<br>
-     * targetObjectIdは、プロパティの取得対象となるオブジェクトを指定するもので、同一テストケース中に、このTestActionより前に、プロパティの取得対象となるオブジェクトを戻すテストアクションが存在する場合は、そのアクションIDを指定する。また、同一シナリオ中に、このTestActionより前に、プロパティの取得対象となるオブジェクトを戻すテストアクションが存在する場合は、テストケースIDとアクションIDをカンマ区切りで指定する。preResultを使用する場合は、空行を指定する。<br>
+     * algorithmは、圧縮解凍時に使用するアルゴリズムを指定する。指定できるアルゴリズムはZIP、GZ、LZ4、SNAPPY<br>
+     * modeは、EXTRACT（解凍）かARCHIVE（圧縮）を指定する。<br>
+     * fromFileは、圧縮もしくは解凍する対象ファイルを指定する。<br>
      *
      * @param context コンテキスト
      * @param actionId アクションID
-     * @param preResult プロパティの取得対象となるオブジェクト
+     * @param preResult 圧縮解凍対象となるファイルオブジェクト、または配列、またはリスト
      * @param resource リソース
      * @return 圧縮解凍後のファイルリスト
      */
