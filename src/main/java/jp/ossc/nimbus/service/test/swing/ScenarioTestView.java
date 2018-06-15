@@ -66,11 +66,13 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingWorker;
 
 import jp.ossc.nimbus.core.Service;
+import jp.ossc.nimbus.core.ServiceBase;
 import jp.ossc.nimbus.core.ServiceManager;
 import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.core.ServiceMetaData;
 import jp.ossc.nimbus.core.ServiceNotFoundException;
 import jp.ossc.nimbus.core.Utility;
+import jp.ossc.nimbus.service.beancontrol.BeanFlowCoverageRepoter;
 import jp.ossc.nimbus.service.test.TestCase;
 import jp.ossc.nimbus.service.test.TestCase.Status;
 import jp.ossc.nimbus.service.test.TestController;
@@ -690,8 +692,14 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
                     statusWorker.execute();
                 }
             } else if (e.getSource() == reportButton) {
-                TestReporter reporter = (TestReporter) repoterList.get(reporterCombobox.getSelectedIndex());
-                reporter.report(testController);
+                Object service = repoterList.get(reporterCombobox.getSelectedIndex());
+                if (TestReporter.class.isAssignableFrom(service.getClass())) {
+                    TestReporter reporter = (TestReporter) service;
+                    reporter.report(testController);
+                } else if(BeanFlowCoverageRepoter.class.isAssignableFrom(service.getClass())) {
+                    BeanFlowCoverageRepoter reporter = (BeanFlowCoverageRepoter) service;
+                    reporter.report();
+                }
                 JOptionPane.showMessageDialog(this, "レポートを出力しました。");
             } else if (e.getSource() == scenarioGroupEviButton) {
                 int result = JOptionPane.showConfirmDialog(this, "結果ファイルをエビデンスファイルに変換しますか？", "確認",
@@ -1311,7 +1319,7 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
                 if (metaData != null) {
                     try {
                         Class serviceClass = Utility.convertStringToClass(metaData.getCode());
-                        if (TestReporter.class.isAssignableFrom(serviceClass)) {
+                        if (TestReporter.class.isAssignableFrom(serviceClass) || BeanFlowCoverageRepoter.class.isAssignableFrom(serviceClass)) {
                             result.add(managers[i].getServiceObject((String) name));
                         }
                     } catch (ClassNotFoundException e) {
