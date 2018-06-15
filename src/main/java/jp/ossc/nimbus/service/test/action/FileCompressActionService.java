@@ -51,8 +51,8 @@ import java.util.zip.ZipOutputStream;
 import org.xerial.snappy.SnappyInputStream;
 import org.xerial.snappy.SnappyOutputStream;
 
-import jp.ossc.nimbus.beans.PropertyFactory;
 import jp.ossc.nimbus.core.ServiceBase;
+import jp.ossc.nimbus.io.RecurciveSearchFile;
 import jp.ossc.nimbus.io.RegexFileFilter;
 import jp.ossc.nimbus.service.test.ChainTestAction;
 import jp.ossc.nimbus.service.test.TestAction;
@@ -115,8 +115,8 @@ public class FileCompressActionService extends ServiceBase implements TestAction
      * <pre>
      * algorithm
      * mode
-     * fromFile
-     * toFile
+     * directory
+     * file
      * </pre>
      * algorithmは、圧縮解凍時に使用するアルゴリズムを指定する。指定できるアルゴリズムはZIP、GZ、LZ4、SNAPPY<br>
      * modeは、EXTRACT（解凍）かARCHIVE（圧縮）を指定する。<br>
@@ -137,7 +137,8 @@ public class FileCompressActionService extends ServiceBase implements TestAction
      * <pre>
      * algorithm
      * mode
-     * fromFilePath
+     * directory
+     * file
      * </pre>
      * algorithmは、圧縮解凍時に使用するアルゴリズムを指定する。指定できるアルゴリズムはZIP、GZ、LZ4、SNAPPY<br>
      * modeは、EXTRACT（解凍）かARCHIVE（圧縮）を指定する。<br>
@@ -175,15 +176,21 @@ public class FileCompressActionService extends ServiceBase implements TestAction
                 throw new Exception("Illegal mode : " + mode);
             }
             if(fromFiles == null) {
-                final String fromFilePath = br.readLine();
-                if(fromFilePath == null) {
-                    throw new Exception("Unexpected EOF on fromFilePath");
+                final String fromFileDirPath = br.readLine();
+                if(fromFileDirPath == null) {
+                    throw new Exception("Unexpected EOF on directory");
                 }
-                File file = new File(fromFilePath);
-                if(!file.isAbsolute()) {
-                    file = new File(context.getCurrentDirectory(), fromFilePath);
+                final String filePath = br.readLine();
+                if(filePath == null) {
+                    throw new Exception("Unexpected EOF on file");
                 }
-                fromFiles = file.getParentFile().listFiles(new RegexFileFilter(file.getName()));
+                RecurciveSearchFile searchDir = null;
+                if("".equals(fromFileDirPath) || ".".equals(fromFileDirPath)) {
+                    searchDir = new RecurciveSearchFile(context.getCurrentDirectory());
+                } else {
+                    searchDir = new RecurciveSearchFile(fromFileDirPath);
+                }
+                fromFiles = searchDir.listAllTreeFiles(filePath, RecurciveSearchFile.SEARCH_TYPE_ALL);
             }
             if(fromFiles == null) {
                 return null;
