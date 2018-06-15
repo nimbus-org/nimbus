@@ -56,6 +56,9 @@ public class TestActionContextImpl extends TestPhaseExecutableImpl implements Te
     private double expectedCost = Double.NaN;
     private double cost = Double.NaN;
     private Throwable throwable;
+    private boolean isFileEvaluateTestAction = false;
+    private String evaluateTargetFileName;
+    private String evaluateEvidenceFileName;
     
     public TestActionContextImpl() {
         super();
@@ -170,4 +173,29 @@ public class TestActionContextImpl extends TestPhaseExecutableImpl implements Te
         isEnd = false;
         throwable = null;
     }
+    
+    public boolean isFileEvaluateTestAction(){
+        return isFileEvaluateTestAction;
+    }
+    
+    public void setFileEvaluateTestAction(boolean isFileEvaluate){
+        isFileEvaluateTestAction = isFileEvaluate;
+    }
+    
+    public String getEvaluateTargetFileName(){
+        return evaluateTargetFileName;
+    }
+    
+    public void setEvaluateTargetFileName(String fileName){
+        evaluateTargetFileName = fileName;
+    }
+    
+    public String getEvaluateEvidenceFileName(){
+        return evaluateEvidenceFileName;
+    }
+    
+    public void setEvaluateEvidenceFileName(String fileName){
+        evaluateEvidenceFileName = fileName;
+    }
+    
 }

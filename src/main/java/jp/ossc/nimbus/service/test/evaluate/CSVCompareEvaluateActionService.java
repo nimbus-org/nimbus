@@ -52,6 +52,7 @@ import jp.ossc.nimbus.core.ServiceBase;
 import jp.ossc.nimbus.io.CSVReader;
 import jp.ossc.nimbus.io.CSVWriter;
 import jp.ossc.nimbus.service.test.EvaluateTestAction;
+import jp.ossc.nimbus.service.test.FileEvaluateTestAction;
 import jp.ossc.nimbus.service.test.TestActionEstimation;
 import jp.ossc.nimbus.service.test.TestContext;
 
@@ -62,7 +63,7 @@ import jp.ossc.nimbus.service.test.TestContext;
  * 
  * @author M.Takata
  */
-public class CSVCompareEvaluateActionService extends ServiceBase implements EvaluateTestAction, TestActionEstimation, CSVCompareEvaluateActionServiceMBean{
+public class CSVCompareEvaluateActionService extends ServiceBase implements EvaluateTestAction, FileEvaluateTestAction, TestActionEstimation, CSVCompareEvaluateActionServiceMBean{
     
     private static final long serialVersionUID = -7771606827015084764L;
     
@@ -75,6 +76,8 @@ public class CSVCompareEvaluateActionService extends ServiceBase implements Eval
     protected boolean isResultNGOnNotFoundDestFile;
     protected int[] matchFlags;
     protected int matchFlag;
+    protected String targetFileName;
+    protected String evidenceFileName;
     
     public void setFileEncoding(String encoding){
         fileEncoding = encoding;
@@ -145,6 +148,14 @@ public class CSVCompareEvaluateActionService extends ServiceBase implements Eval
         isResultNGOnNotFoundDestFile = isResultNG;
     }
     
+    public String getEvaluateTargetFileName(){
+        return targetFileName;
+    }
+    
+    public String getEvaluateEvidenceFileName(){
+        return evidenceFileName;
+    }
+    
     /**
      * ２つのCSVファイルを比較して、内容が等価かどうか評価する。<p>
      * リソースのフォーマットは、以下。<br>
@@ -173,10 +184,12 @@ public class CSVCompareEvaluateActionService extends ServiceBase implements Eval
         Map ignoreRegexPatternMap = null;
         try{
             final String srcFilePath = br.readLine();
+            targetFileName = srcFilePath;
             if(srcFilePath == null){
                 throw new Exception("Unexpected EOF on srcFilePath");
             }
             final String dstFilePath = br.readLine();
+            evidenceFileName = dstFilePath;
             if(dstFilePath == null){
                 throw new Exception("Unexpected EOF on dstFilePath");
             }

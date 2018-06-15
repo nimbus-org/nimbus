@@ -40,6 +40,7 @@ import java.io.Reader;
 
 import jp.ossc.nimbus.core.ServiceBase;
 import jp.ossc.nimbus.service.test.EvaluateTestAction;
+import jp.ossc.nimbus.service.test.FileEvaluateTestAction;
 import jp.ossc.nimbus.service.test.TestContext;
 
 /**
@@ -49,12 +50,15 @@ import jp.ossc.nimbus.service.test.TestContext;
  * 
  * @author M.Ishida
  */
-public class BinaryCompareEvaluateActionService extends ServiceBase implements EvaluateTestAction, BinaryCompareEvaluateActionServiceMBean {
+public class BinaryCompareEvaluateActionService extends ServiceBase implements EvaluateTestAction, FileEvaluateTestAction, BinaryCompareEvaluateActionServiceMBean {
     
     private static final long serialVersionUID = -6946310231201742494L;
     
     protected double expectedCost = Double.NaN;
     protected boolean isResultNGOnNotFoundDestFile;
+    protected String targetFileName;
+    protected String evidenceFileName;
+    
     
     public void setExpectedCost(double cost) {
         expectedCost = cost;
@@ -70,6 +74,14 @@ public class BinaryCompareEvaluateActionService extends ServiceBase implements E
     
     public void setResultNGOnNotFoundDestFile(boolean isResultNG) {
         isResultNGOnNotFoundDestFile = isResultNG;
+    }
+    
+    public String getEvaluateTargetFileName(){
+        return targetFileName;
+    }
+    
+    public String getEvaluateEvidenceFileName(){
+        return evidenceFileName;
     }
     
     /**
@@ -96,10 +108,12 @@ public class BinaryCompareEvaluateActionService extends ServiceBase implements E
         File dstFile = null;
         try {
             final String srcFilePath = br.readLine();
+            targetFileName = srcFilePath;
             if (srcFilePath == null) {
                 throw new Exception("Unexpected EOF on srcFilePath");
             }
             final String dstFilePath = br.readLine();
+            evidenceFileName = dstFilePath;
             if (dstFilePath == null) {
                 throw new Exception("Unexpected EOF on dstFilePath");
             }

@@ -234,6 +234,18 @@ public interface TestController extends TestEventListener {
     public TestCase.Status getTestCaseStatus(String scenarioGroupId, String scenarioId, String testcaseId);
 
     /**
+     * 指定されたシナリオグループIDのテスト結果を指定されたディレクトリにダウンロードする。
+     * <p>
+     *
+     * @param dir ダウンロード対象のディレクトリ
+     * @param scenarioGroupId シナリオグループID
+     * @param respnseFileType レスポンスタイプ
+     * @return 出力ファイル
+     * @throws Exception ダウンロード時例外
+     */
+    public File downloadScenarioGroupResult(File dir, String scenarioGroupId, int respnseFileType) throws Exception;
+
+    /**
      * 指定されたシナリオグループID、シナリオIDのテスト結果を指定されたディレクトリにダウンロードする。
      * <p>
      *
@@ -285,5 +297,29 @@ public interface TestController extends TestEventListener {
      * @throws Exception リセット時の例外
      */
     public void reset() throws Exception;
+    
+    /**
+     * 対象のシナリオグループの実行結果ファイルからエビデンスファイルを生成する。
+     * 
+     * @param scenarioGroupId シナリオグループID
+     */
+    public void generateTestScenarioGroupEvidenceFile(String scenarioGroupId) throws Exception;
+
+    /**
+     * 対象のシナリオの実行結果ファイルからエビデンスファイルを生成する。
+     * 
+     * @param scenarioGroupId シナリオグループID
+     * @param scenarioId シナリオID
+     */
+    public void generateTestScenarioEvidenceFile(String scenarioGroupId, String scenarioId) throws Exception;
+
+    /**
+     * 対象のテストケースの実行結果ファイルからエビデンスファイルを生成する。
+     * 
+     * @param scenarioGroupId シナリオグループID
+     * @param scenarioId シナリオID
+     * @param testcaseId テストケースID
+     */
+    public void generateTestCaseEvidenceFile(String scenarioGroupId, String scenarioId, String testcaseId) throws Exception;
 
 }

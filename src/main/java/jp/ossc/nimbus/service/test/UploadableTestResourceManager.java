@@ -31,79 +31,43 @@
  */
 package jp.ossc.nimbus.service.test;
 
-import java.util.Map;
+import java.io.File;
 
 /**
- * 基底テストリソース。<p>
+ * Upload可能なテストリソース管理。<p>
  * 
  * @author M.Ishida
  */
-public interface TestResourceBase extends TestPhaseExecutable {
+public interface UploadableTestResourceManager extends TestResourceManager{
     
     /**
-     * エラー時の継続種別：デフォルト。<p>
-     */
-    public static int CONTINUE_TYPE_DEFAULT = -1;
-    /**
-     * エラー時の継続種別：継続する。<p>
-     */
-    public static int CONTINUE_TYPE_TRUE = 1;
-    /**
-     * エラー時の継続種別：継続しない。<p>
-     */
-    public static int CONTINUE_TYPE_FALSE = 0;
-    
-    /**
-     * タイトルを取得する。<p>
+     * 指定されたシナリオグループのリソースをアップロードする。<p>
      *
-     * @return タイトル
+     * @param dir アップロード元のディレクトリ
+     * @param scenarioGroupId シナリオグループID
+     * @param isClear アップドード前にクリアをするか。trueの場合クリアする。
      */
-    public String getTitle();
+    public void uploadScenarioGroupResource(File dir, String scenarioGroupId, boolean isClear) throws Exception;
     
     /**
-     * 説明を取得する。<p>
+     * 指定されたシナリオのリソースをアップロードする。<p>
      *
-     * @return 説明
+     * @param dir アップロード元のディレクトリ
+     * @param scenarioGroupId シナリオグループID
+     * @param scenarioId シナリオID
+     * @param isClear アップドード前にクリアをするか。trueの場合クリアする。
      */
-    public String getDescription();
+    public void uploadScenarioResource(File dir, String scenarioGroupId, String scenarioId, boolean isClear) throws Exception;
     
     /**
-     * カテゴリのマップを取得する。<p>
+     * 指定されたシナリオのリソースをアップロードする。<p>
      *
-     * @return カテゴリ名とカテゴリ値のマップ
+     * @param dir アップロード元のディレクトリ
+     * @param scenarioGroupId シナリオグループID
+     * @param scenarioId シナリオID
+     * @param testcaseId テストケースID
+     * @param isClear アップドード前にクリアをするか。trueの場合クリアする。
      */
-    public Map getCategoryMap();
+    public void uploadTestCaseResource(File dir, String scenarioGroupId, String scenarioId, String testcaseId, boolean isClear) throws Exception;
     
-    /**
-     * エラー時の継続種別を取得する。<p>
-     *
-     * return エラー時の継続種別
-     * @see #CONTINUE_TYPE_DEFAULT
-     * @see #CONTINUE_TYPE_TRUE
-     * @see #CONTINUE_TYPE_FALSE
-     */
-    public int getErrorContinue();
-    
-    /**
-     * テストアクションのタイトルを取得する。<p>
-     *
-     * @param actionId アクションID
-     * @return テストアクションのタイトル
-     */
-    public String getActionTitle(String actionId);
-    
-    /**
-     * テストアクションの説明を取得する。<p>
-     *
-     * @param actionId アクションID
-     * @return テストアクションの説明
-     */
-    public String getActionDescription(String actionId);
-    
-    /**
-     * ファイル比較を行うテストアクションのエビデンスファイル名のMapを取得する。<p>
-     * 
-     * @return エビデンスファイル名のMap
-     */
-    public Map getActionEvidenceFileNameMap();
 }
