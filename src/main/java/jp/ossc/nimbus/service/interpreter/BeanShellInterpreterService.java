@@ -33,9 +33,12 @@ package jp.ossc.nimbus.service.interpreter;
 
 import java.io.*;
 import java.util.*;
+import java.beans.*;
+
 
 import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.beans.ServiceNameEditor;
+import jp.ossc.nimbus.beans.NimbusPropertyEditorManager;
 
 /**
  * BeanShell(http://www.beanshell.org/)を使ってJavaコードを実行するインタープリタサービス。<p>
@@ -286,7 +289,11 @@ public class BeanShellInterpreterService extends ServiceBase
         System.out.println("  パスセパレータ区切りで複数指定可能です。");
         System.out.println("  このオプションの指定がない場合は、引数source codeでソースコードを指定します。");
         System.out.println();
-        System.out.println(" [-encoding path]");
+        System.out.println(" [-param name(type)=value]");
+        System.out.println("  スクリプト変数として渡す変数名と型と値を指定します。");
+        System.out.println("  型宣言である(type)は省略可能で、省略した場合は、java.lang.Stringとなります。");
+        System.out.println();
+        System.out.println(" [-encoding encode]");
         System.out.println("  実行するソースコードファイルの文字コードを指定します。");
         System.out.println();
         System.out.println(" [-help]");
@@ -342,6 +349,7 @@ public class BeanShellInterpreterService extends ServiceBase
         List servicePaths = null;
         List files = null;
         String encode = null;
+        Map params = null;
         StringWriter code = new StringWriter();
         PrintWriter codeWriter = new PrintWriter(code);
         for(int i = 0; i < args.length; i++){
@@ -356,6 +364,35 @@ public class BeanShellInterpreterService extends ServiceBase
                     files = parsePaths(args[i]);
                 }else if(key.equals("-encoding")){
                     encode = args[i];
+                }else if(key.equals("-param")){
+                    int index = args[i].indexOf("=");
+                    if(index == -1){
+                        System.out.println("パラメータが不正です : " + args[i]);
+                        System.exit(-1);
+                    }
+                    String name = args[i].substring(0, index);
+                    String value = args[i].substring(index + 1);
+                    Class type = String.class;
+                    index = name.indexOf("(");
+                    if(index != -1 && name.charAt(name.length() - 1) == ')'){
+                        try{
+                            type = Utility.convertStringToClass(name.substring(index + 1, name.length() - 1));
+                        }catch(ClassNotFoundException e){
+                            System.out.println("パラメータの型クラスが見つかりません : " + args[i]);
+                            System.exit(-1);
+                        }
+                        name = name.substring(0, index);
+                    }
+                    PropertyEditor editor = NimbusPropertyEditorManager.findEditor(type);
+                    if(editor == null){
+                        System.out.println("パラメータの型が編集できない型です : " + args[i]);
+                        System.exit(-1);
+                    }
+                    editor.setAsText(value);
+                    if(params == null){
+                        params = new HashMap();
+                    }
+                    params.put(name, editor.getValue());
                 }
                 option = false;
                 key = null;
@@ -364,6 +401,7 @@ public class BeanShellInterpreterService extends ServiceBase
                      || args[i].equals("-servicepath")
                      || args[i].equals("-file")
                      || args[i].equals("-encoding")
+                     || args[i].equals("-param")
                 ){
                     option = true;
                     key = args[i];
@@ -418,8 +456,9 @@ public class BeanShellInterpreterService extends ServiceBase
             }
         }
         codeWriter.flush();
+        int exitCode = 0;
         try{
-            System.out.println(interpreter.evaluate(code.toString()));
+            System.out.println(params == null ? interpreter.evaluate(code.toString()) : interpreter.evaluate(code.toString(), params));
         }catch(Throwable e){
             StringBuilder buf = new StringBuilder();
             final String lineSeparator = System.getProperty("line.separator");
@@ -450,6 +489,7 @@ public class BeanShellInterpreterService extends ServiceBase
                 }
             }
             System.out.println(buf.toString());
+            exitCode = -1;
         }finally{
             if(servicePaths != null){
                 for(int i = servicePaths.size(); --i >= 0;){
@@ -457,7 +497,7 @@ public class BeanShellInterpreterService extends ServiceBase
                 }
             }
         }
-        System.exit(0);
+        System.exit(exitCode);
     }
     
     private static Throwable getCause(Throwable th){
