@@ -9,8 +9,23 @@
  [-class]
    jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerの実装クラス。
 
+ [-interpreterClass]
+   jp.ossc.nimbus.service.interpreter.Interpreterの実装クラス。
+
  [-testInterpreterClass]
    jp.ossc.nimbus.service.interpreter.Interpreterの実装クラス。
+
+ [-expressionInterpreterClass]
+   jp.ossc.nimbus.service.interpreter.Interpreterの実装クラス。
+
+ [-servicepath paths]
+   DefaultBeanFlowInvokerFactoryServiceの起動に必要なサービス定義ファイルのパスを指定します。
+   パスセパレータ区切りで複数指定可能です。
+   指定しない場合は、自動で生成します。
+
+ [-servicename name]
+   DefaultBeanFlowInvokerFactoryServiceのサービス名を指定します。
+   指定しない場合はNimbus#BeanFlowInvokerFactoryとみなします。
 
  [-help]
   ヘルプを表示します。
