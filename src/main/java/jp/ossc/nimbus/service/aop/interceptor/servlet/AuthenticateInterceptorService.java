@@ -101,6 +101,7 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
     protected boolean isStoreCreate = true;
     protected boolean isStoreDestroy = true;
     protected boolean isSessionInvalidate = false;
+    protected boolean isLogoutSessionInvalidate = false;
 
     // AuthenticateInterceptorServiceMBean のJavaDoc
     public void setThreadContextServiceName(ServiceName name){
@@ -208,6 +209,15 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
     // AuthenticateInterceptorServiceMBean のJavaDoc
     public boolean isSessionInvalidate(){
         return isSessionInvalidate;
+    }
+
+    // AuthenticateInterceptorServiceMBean のJavaDoc
+    public void setLogoutSessionInvalidate(boolean isInvalidate){
+        isLogoutSessionInvalidate = isInvalidate;
+    }
+    // AuthenticateInterceptorServiceMBean のJavaDoc
+    public boolean isLogoutSessionInvalidate(){
+        return isLogoutSessionInvalidate;
     }
 
     /**
@@ -389,7 +399,11 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
         }finally{
             HttpSession session = request.getSession(false);
             if(session != null){
-                session.removeAttribute(authenticatedInfoAttributeName);
+                if(isLogoutSessionInvalidate) {
+                    session.invalidate();
+                } else {
+                    session.removeAttribute(authenticatedInfoAttributeName);
+                }
             }
         }
     }
