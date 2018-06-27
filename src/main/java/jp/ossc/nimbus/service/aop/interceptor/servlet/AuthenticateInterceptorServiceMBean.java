@@ -229,4 +229,20 @@ public interface AuthenticateInterceptorServiceMBean
      * @return trueの場合、セッションを無効化する
      */
     public boolean isSessionInvalidate();
+    
+    /**
+     * ログアウト時に、セッションがすでに存在する場合にそのセッション無効化するかどうかを設定する。<p>
+     * デフォルトは、falseで無効化しない。<br>
+     * 
+     * @param isInvalidate セッションを無効化する場合true
+     */
+    public void setLogoutSessionInvalidate(boolean isInvalidate);
+    
+    /**
+     * ログアウト時に、セッションがすでに存在する場合にそのセッション無効化するかどうかを判定する。<p>
+     * 
+     * @return trueの場合、セッションを無効化する
+     */
+    public boolean isLogoutSessionInvalidate();
+    
 }
