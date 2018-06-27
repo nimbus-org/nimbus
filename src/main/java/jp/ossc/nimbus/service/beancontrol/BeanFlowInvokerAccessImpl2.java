@@ -422,20 +422,6 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                 }else{
                     throw new InvalidConfigurationException("Invalid transaction : " + transactionStr);
                 }
-
-                if(transactionType != SUPPORTS_VALUE){
-                    try{
-                        TransactionManagerFactory tranMngFactory = factoryCallBack.getTransactionManagerFactory();
-                        if(getTransactionManagerJndiName() != null
-                            && tranMngFactory instanceof JndiTransactionManagerFactoryService){
-                            ((JndiTransactionManagerFactoryService)tranMngFactory).setTransactionManagerName(getTransactionManagerJndiName());
-                        }
-
-                        tranManager = tranMngFactory.getTransactionManager();
-                    }catch(TransactionManagerFactoryException e){
-                        throw new DeploymentException(e);
-                    }
-                }
             }
             final String transactionTimeoutStr = MetaData.getOptionalAttribute(
                 element,
@@ -704,6 +690,15 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
             ((BeanFlowMonitorImpl)monitor).setFlowName(flowName);
         }
         ((BeanFlowMonitorImpl)monitor).setCurrentFlowName(flowName);
+        if(tranManager == null && transactionType != SUPPORTS_VALUE){
+            TransactionManagerFactory tranMngFactory = factoryCallBack.getTransactionManagerFactory();
+            if(getTransactionManagerJndiName() != null
+                && tranMngFactory instanceof JndiTransactionManagerFactoryService){
+                ((JndiTransactionManagerFactoryService)tranMngFactory).setTransactionManagerName(getTransactionManagerJndiName());
+            }
+
+            tranManager = tranMngFactory.getTransactionManager();
+        }
         TransactionInfo info = (TransactionInfo)transaction.get();
         return invokeFlowWithTransaction(
             input,
