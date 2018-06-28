@@ -188,7 +188,7 @@ public abstract class AbstractStringValidator
             if(!isAllowObject){
                 return false;
             }
-            str = obj.toString();
+            str = toString(obj);
         }
         if(isTrim){
             str = trim(str);
@@ -197,6 +197,16 @@ public abstract class AbstractStringValidator
             return true;
         }
         return validateString(str);
+    }
+    
+    /**
+     * 検証対象のオブジェクトを文字列に変換する。<p>
+     *
+     * @param obj 検証対象のオブジェクト
+     * return 検証対象の文字列表現
+     */
+    protected String toString(Object obj){
+        return obj == null ? null : obj.toString();
     }
     
     /**
