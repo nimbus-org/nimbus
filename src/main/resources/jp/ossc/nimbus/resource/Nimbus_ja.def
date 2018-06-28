@@ -248,7 +248,7 @@ QHC__00001,Queueのハンドリング処理に失敗しました。 dequedObject
 QHC__00002,Queueのハンドリング処理の最大リトライ回数を越えました。 dequedObject=@0
 BFIF_00001,BeanFlow定義XML 警告 : @0 : file=@1\\, line=@2\\, column=@3
 BFIF_00002,BeanFlow定義XML エラー : @0 : file=@1\\, line=@2\\, column=@3
-BFIF_00003,BeanFlow定義XML 致命的エラー : @0 : file=@1\, line=@2\\, column=@3
+BFIF_00003,BeanFlow定義XML 致命的エラー : @0 : file=@1\\, line=@2\\, column=@3
 TS___00001,スケジュールタスク実行中にエラーが発生しました。
 TS___00002,依存するスケジュールの終了待ちでタイムアウトしました。
 CC___00001,暗号化に失敗しました。

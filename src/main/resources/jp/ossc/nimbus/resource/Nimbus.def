@@ -162,9 +162,9 @@ SVCL_00026,The shutdown hook of ServiceManager "@0" was set up.,50,jp.ossc.nimbu
 SVCL_00027,Shut-down of Service "@0#@1" failed.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 SVCL_00028,Loading PropertyEditor "@1" of property type "@0" failed.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 SVCL_00029,ServiceManager"@0" is not loaded by this loader.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
-SVCL_00030,Service definition XML warning : @0 : line=@1\, column=@2,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
-SVCL_00031,Service definition XML error : @0 : line=@1\, column=@2,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
-SVCL_00032,Service definition XML fatal : @0 : line=@1\, column=@2,200,jp.ossc.nimbus.service.log.SYSTEM_FATAL_CATEGORY
+SVCL_00030,Service definition XML warning : @0 : line=@1\\, column=@2,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+SVCL_00031,Service definition XML error : @0 : line=@1\\, column=@2,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+SVCL_00032,Service definition XML fatal : @0 : line=@1\\, column=@2,200,jp.ossc.nimbus.service.log.SYSTEM_FATAL_CATEGORY
 SVCL_00033,Validation of Service definition XML failed : @0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 SVCL_00034,Since Service "@0#@1" is already installed\\, can not install.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 SVCL_00035,Service "@0#@1" is not installed.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
