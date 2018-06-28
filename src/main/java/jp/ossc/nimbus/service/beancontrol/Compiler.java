@@ -40,8 +40,11 @@ import java.io.InputStream;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+import jp.ossc.nimbus.beans.ServiceNameEditor;
 import jp.ossc.nimbus.core.Utility;
+import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.core.Service;
+import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.service.log.LogService;
 import jp.ossc.nimbus.service.interpreter.Interpreter;
 
@@ -58,7 +61,11 @@ public class Compiler{
          = "jp/ossc/nimbus/service/beancontrol/CompilerUsage.txt";
     
     private boolean isVerbose;
+    private Interpreter interpreter = null;
     private Interpreter testInterpreter = null;
+    private Interpreter expressionInterpreter = null;
+    private List servicePaths = null;
+    private ServiceName serviceName = new ServiceName("Nimbus", "BeanFlowInvokerFactory");
     
     /**
      * 空のインスタンスを生成する。<p>
@@ -93,8 +100,24 @@ public class Compiler{
         return isVerbose;
     }
     
+    public void setInterpreter(Interpreter interpreter){
+        this.interpreter = interpreter;
+    }
+    
     public void setTestInterpreter(Interpreter interpreter){
         testInterpreter = interpreter;
+    }
+    
+    public void setExpressionInterpreter(Interpreter interpreter){
+        expressionInterpreter = interpreter;
+    }
+    
+    public void setServicePaths(List paths){
+        servicePaths = paths;
+    }
+    
+    public void setServiceName(ServiceName name){
+        serviceName = name;
     }
     
     /**
@@ -119,7 +142,37 @@ public class Compiler{
                 flowPaths.add(definition);
             }
         }
-        DefaultBeanFlowInvokerFactoryService factory = new DefaultBeanFlowInvokerFactoryService();
+        DefaultBeanFlowInvokerFactoryService factory = null;
+        if(servicePaths != null && servicePaths.size() != 0){
+            for(int i = 0, imax = servicePaths.size(); i < imax; i++){
+                if(!ServiceManagerFactory.loadManager((String)servicePaths.get(i))){
+                    System.out.println("Service load error." + servicePaths.get(i));
+                    Thread.sleep(1000);
+                    System.exit(-1);
+                }
+            }
+            if(!ServiceManagerFactory.checkLoadManagerCompleted()){
+                Thread.sleep(1000);
+                System.exit(-1);
+            }
+            factory = (DefaultBeanFlowInvokerFactoryService)ServiceManagerFactory
+                .getService(serviceName);
+        }else{
+            factory = new DefaultBeanFlowInvokerFactoryService();
+            if(interpreter != null){
+                factory.setInterpreter(interpreter);
+            }
+            if(testInterpreter != null){
+                factory.setTestInterpreter(testInterpreter);
+            }
+            if(expressionInterpreter != null){
+                factory.setExpressionInterpreter(expressionInterpreter);
+            }
+            if(clazz != null){
+                factory.setBeanFlowInvokerAccessClass(clazz);
+            }
+        }
+        
         LogService logger = new LogService();
         logger.create();
         if(isVerbose){
@@ -140,12 +193,6 @@ public class Compiler{
         factory.create();
         factory.setDirPaths((String[])flowDirs.toArray(new String[flowDirs.size()]));
         factory.setPaths((String[])flowPaths.toArray(new String[flowPaths.size()]));
-        if(testInterpreter != null){
-            factory.setTestInterpreter(testInterpreter);
-        }
-        if(clazz != null){
-            factory.setBeanFlowInvokerAccessClass(clazz);
-        }
         factory.setValidate(true);
         factory.start();
     }
@@ -275,6 +322,33 @@ public class Compiler{
         return buf.toString();
     }
     
+    private static List parsePaths(String paths){
+        String pathSeparator = System.getProperty("path.separator");
+        final List result = new ArrayList();
+        if(paths == null || paths.length() == 0){
+            return result;
+        }
+        if(paths.indexOf(pathSeparator) == -1){
+            result.add(paths);
+            return result;
+        }
+        String tmpPaths = paths;
+        int index = -1;
+        while((index = tmpPaths.indexOf(pathSeparator)) != -1){
+            result.add(tmpPaths.substring(0, index));
+            if(index != tmpPaths.length() - 1){
+                tmpPaths = tmpPaths.substring(index + 1);
+            }else{
+                tmpPaths = null;
+                break;
+            }
+        }
+        if(tmpPaths != null && tmpPaths.length() != 0){
+            result.add(tmpPaths);
+        }
+        return result;
+    }
+    
     /**
      * コンパイルコマンドを実行する。<p>
      * <pre>
@@ -289,8 +363,23 @@ public class Compiler{
      *  [-class]
      *    jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerの実装クラス。
      * 
+     *  [-interpreterClass]
+     *    jp.ossc.nimbus.service.interpreter.Interpreterの実装クラス。
+     * 
      *  [-testInterpreterClass]
      *    jp.ossc.nimbus.service.interpreter.Interpreterの実装クラス。
+     * 
+     *  [-expressionInterpreterClass]
+     *    jp.ossc.nimbus.service.interpreter.Interpreterの実装クラス。
+     * 
+     *  [-servicepath paths]
+     *    DefaultBeanFlowInvokerFactoryServiceの起動に必要なサービス定義ファイルのパスを指定します。
+     *    パスセパレータ区切りで複数指定可能です。
+     *    指定しない場合は、自動で生成します。
+     * 
+     *  [-servicename name]
+     *    DefaultBeanFlowInvokerFactoryServiceのサービス名を指定します。
+     *    指定しない場合はNimbus#BeanFlowInvokerFactoryとみなします。
      * 
      *  [-help]
      *    ヘルプを表示します。
@@ -317,15 +406,33 @@ public class Compiler{
         List paths = new ArrayList();
         boolean verbose = false;
         String className = null;
+        String interpreterClassName = null;
         String testInterpreterClassName = null;
+        String expressionInterpreterClassName = null;
+        List servicePaths = null;
+        ServiceName serviceName = null;
         for(int i = 0; i < args.length; i++){
             if(args[i].equals("-v")){
                 verbose = true;
             }else if(args[i].equals("-class")){
                 className = (args.length > i + 1) ? args[i + 1] : null;
                 i++;
+            }else if(args[i].equals("-interpreterClass")){
+                interpreterClassName = (args.length > i + 1) ? args[i + 1] : null;
+                i++;
             }else if(args[i].equals("-testInterpreterClass")){
                 testInterpreterClassName = (args.length > i + 1) ? args[i + 1] : null;
+                i++;
+            }else if(args[i].equals("-expressionInterpreterClass")){
+                expressionInterpreterClassName = (args.length > i + 1) ? args[i + 1] : null;
+                i++;
+            }else if(args[i].equals("-servicename")){
+                ServiceNameEditor editor = new ServiceNameEditor();
+                editor.setAsText((args.length > i + 1) ? args[i + 1] : null);
+                serviceName = (ServiceName)editor.getValue();
+                i++;
+            }else if(args[i].equals("-servicepath")){
+                servicePaths = parsePaths((args.length > i + 1) ? args[i + 1] : null);
                 i++;
             }else{
                 paths.add(args[i]);
@@ -334,6 +441,19 @@ public class Compiler{
         
         try{
             final Compiler compiler = new Compiler(verbose);
+            compiler.setServicePaths(servicePaths);
+            if(serviceName != null){
+                compiler.setServiceName(serviceName);
+            }
+            if(interpreterClassName != null){
+                Class clazz = Utility.convertStringToClass(interpreterClassName);
+                Interpreter interpreter = (Interpreter)clazz.newInstance();
+                if(interpreter instanceof Service){
+                    ((Service)interpreter).create();
+                    ((Service)interpreter).start();
+                }
+                compiler.setInterpreter(interpreter);
+            }
             if(testInterpreterClassName != null){
                 Class clazz = Utility.convertStringToClass(testInterpreterClassName);
                 Interpreter interpreter = (Interpreter)clazz.newInstance();
@@ -342,6 +462,15 @@ public class Compiler{
                     ((Service)interpreter).start();
                 }
                 compiler.setTestInterpreter(interpreter);
+            }
+            if(expressionInterpreterClassName != null){
+                Class clazz = Utility.convertStringToClass(expressionInterpreterClassName);
+                Interpreter interpreter = (Interpreter)clazz.newInstance();
+                if(interpreter instanceof Service){
+                    ((Service)interpreter).create();
+                    ((Service)interpreter).start();
+                }
+                compiler.setExpressionInterpreter(interpreter);
             }
             compiler.compile(paths, className == null ? null : Utility.convertStringToClass(className));
             System.out.println("Compile is completed.");
