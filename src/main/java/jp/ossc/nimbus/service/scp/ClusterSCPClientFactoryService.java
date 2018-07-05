@@ -147,7 +147,7 @@ public class ClusterSCPClientFactoryService extends ServiceBase
                     }
                 }
                 if(clients.size() == 0){
-                    throw new SCPException("I could not connect all the cluster members.");
+                    throw new SCPException(getServiceNameObject(), "I could not connect all the cluster members.");
                 }
                 break;
             default:

@@ -242,15 +242,16 @@ public class FTPClientFactoryService extends ServiceBase
                     access.set(ftpClient, names[i], ftpClientProps.get(names[i]));
                 }
             }catch(IllegalArgumentException e){
-                throw new FTPException(e);
+                throw new FTPException(getServiceNameObject(), e);
             }catch(NoSuchPropertyException e){
-                throw new FTPException(e);
+                throw new FTPException(getServiceNameObject(), e);
             }catch(InvocationTargetException e){
-                throw new FTPException(e.getTargetException());
+                throw new FTPException(getServiceNameObject(), e.getTargetException());
             }
         }
         
         FTPClientImpl client = new FTPClientImpl(ftpClient);
+        client.setFtpClientFactoryServiceName(getServiceNameObject());
         if(ftpFileListParser != null){
             client.setFTPFileListParser(ftpFileListParser);
         }

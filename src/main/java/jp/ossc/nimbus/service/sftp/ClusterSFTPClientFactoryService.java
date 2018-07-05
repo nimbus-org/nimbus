@@ -147,7 +147,7 @@ public class ClusterSFTPClientFactoryService extends ServiceBase
                     }
                 }
                 if(clients.size() == 0){
-                    throw new SFTPException("I could not connect all the cluster members.");
+                    throw new SFTPException(getServiceNameObject(), "I could not connect all the cluster members.");
                 }
                 break;
             default:

@@ -31,23 +31,26 @@
  */
 package jp.ossc.nimbus.service.ftp.ftpclient;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
-
-import jp.ossc.nimbus.service.ftp.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPFile;
 import org.apache.commons.net.ftp.FTPFileListParser;
+
+import jp.ossc.nimbus.core.ServiceName;
+import jp.ossc.nimbus.service.ftp.FTPClient;
+import jp.ossc.nimbus.service.ftp.FTPErrorResponseException;
+import jp.ossc.nimbus.service.ftp.FTPException;
 
 /**
  * FTPクライアント。<p>
@@ -68,6 +71,7 @@ public class FTPClientImpl implements FTPClient{
     private int soTimeout = -1;
     private int soLinger = -1;
     private Boolean isTcpNoDelay;
+    private ServiceName ftpClientFactoryServiceName;
     
     public FTPClientImpl(org.apache.commons.net.ftp.FTPClient client){
         this.client = client;
@@ -122,6 +126,14 @@ public class FTPClientImpl implements FTPClient{
         return isTcpNoDelay == null ? false : isTcpNoDelay.booleanValue();
     }
     
+    public ServiceName getFtpClientFactoryServiceName() {
+        return ftpClientFactoryServiceName;
+    }
+    
+    public void setFtpClientFactoryServiceName(ServiceName name) {
+        ftpClientFactoryServiceName = name;
+    }
+
     public void connect(String host) throws FTPException{
         int retryCount = 0;
         while(true){
@@ -134,11 +146,11 @@ public class FTPClientImpl implements FTPClient{
                     retryCount++;
                     continue;
                 }
-                throw new FTPException(e);
+                throw new FTPException(ftpClientFactoryServiceName, e);
             }catch(UnknownHostException e){
-                throw new FTPException(e);
+                throw new FTPException(ftpClientFactoryServiceName, e);
             }catch(IOException e){
-                throw new FTPException(e);
+                throw new FTPException(ftpClientFactoryServiceName, e);
             }
         }
         try{
@@ -152,7 +164,7 @@ public class FTPClientImpl implements FTPClient{
                 client.setTcpNoDelay(isTcpNoDelay.booleanValue());
             }
         }catch(SocketException e){
-            throw new FTPException(e);
+            throw new FTPException(ftpClientFactoryServiceName, e);
         }
     }
     
@@ -168,11 +180,11 @@ public class FTPClientImpl implements FTPClient{
                     retryCount++;
                     continue;
                 }
-                throw new FTPException(e);
+                throw new FTPException(ftpClientFactoryServiceName, e);
             }catch(UnknownHostException e){
-                throw new FTPException(e);
+                throw new FTPException(ftpClientFactoryServiceName, e);
             }catch(IOException e){
-                throw new FTPException(e);
+                throw new FTPException(ftpClientFactoryServiceName, e);
             }
         }
         try{
@@ -186,7 +198,7 @@ public class FTPClientImpl implements FTPClient{
                 client.setTcpNoDelay(isTcpNoDelay.booleanValue());
             }
         }catch(SocketException e){
-            throw new FTPException(e);
+            throw new FTPException(ftpClientFactoryServiceName, e);
         }
     }
     
@@ -207,11 +219,11 @@ public class FTPClientImpl implements FTPClient{
                     retryCount++;
                     continue;
                 }
-                throw new FTPException(e);
+                throw new FTPException(ftpClientFactoryServiceName, e);
             }catch(UnknownHostException e){
-                throw new FTPException(e);
+                throw new FTPException(ftpClientFactoryServiceName, e);
             }catch(IOException e){
-                throw new FTPException(e);
+                throw new FTPException(ftpClientFactoryServiceName, e);
             }
         }
         try{
@@ -225,7 +237,7 @@ public class FTPClientImpl implements FTPClient{
                 client.setTcpNoDelay(isTcpNoDelay.booleanValue());
             }
         }catch(SocketException e){
-            throw new FTPException(e);
+            throw new FTPException(ftpClientFactoryServiceName, e);
         }
     }
     
@@ -233,12 +245,13 @@ public class FTPClientImpl implements FTPClient{
         try{
             if(!client.login(user, password)){
                 throw new FTPErrorResponseException(
+                    ftpClientFactoryServiceName, 
                     client.getReplyCode(),
                     "login failed. cause=" + client.getReplyString()
                 );
             }
         }catch(IOException e){
-            throw new FTPException(e);
+            throw new FTPException(ftpClientFactoryServiceName, e);
         }
     }
     
@@ -246,12 +259,13 @@ public class FTPClientImpl implements FTPClient{
         try{
             if(!client.logout()){
                 throw new FTPErrorResponseException(
+                    ftpClientFactoryServiceName, 
                     client.getReplyCode(),
                     "logout failed. cause=" + client.getReplyString()
                 );
             }
         }catch(IOException e){
-            throw new FTPException(e);
+            throw new FTPException(ftpClientFactoryServiceName, e);
         }
     }
     
@@ -271,7 +285,7 @@ public class FTPClientImpl implements FTPClient{
                 return paths;
             }
         }catch(IOException e){
-            throw new FTPException(e);
+            throw new FTPException(ftpClientFactoryServiceName, e);
         }
     }
     
@@ -280,7 +294,7 @@ public class FTPClientImpl implements FTPClient{
             return ftpFileListParser == null
                 ? client.listFiles() : client.listFiles(ftpFileListParser);
         }catch(IOException e){
-            throw new FTPException(e);
+            throw new FTPException(ftpClientFactoryServiceName, e);
         }
     }
     
@@ -300,7 +314,7 @@ public class FTPClientImpl implements FTPClient{
                 return paths;
             }
         }catch(IOException e){
-            throw new FTPException(e);
+            throw new FTPException(ftpClientFactoryServiceName, e);
         }
     }
     
@@ -309,7 +323,7 @@ public class FTPClientImpl implements FTPClient{
             return ftpFileListParser == null
                 ? client.listFiles(path) : client.listFiles(ftpFileListParser, path);
         }catch(IOException e){
-            throw new FTPException(e);
+            throw new FTPException(ftpClientFactoryServiceName, e);
         }
     }
     
@@ -317,7 +331,7 @@ public class FTPClientImpl implements FTPClient{
         try{
             return client.printWorkingDirectory();
         }catch(IOException e){
-            throw new FTPException(e);
+            throw new FTPException(ftpClientFactoryServiceName, e);
         }
     }
     
@@ -333,12 +347,13 @@ public class FTPClientImpl implements FTPClient{
         try{
             if(!client.changeWorkingDirectory(path)){
                 throw new FTPErrorResponseException(
+                    ftpClientFactoryServiceName, 
                     client.getReplyCode(),
                     "Can't change directory! from=" + client.printWorkingDirectory() + ", to=" + path + ", cause=" + client.getReplyString()
                 );
             }
         }catch(IOException e){
-            throw new FTPException(e);
+            throw new FTPException(ftpClientFactoryServiceName, e);
         }
     }
     
@@ -348,10 +363,10 @@ public class FTPClientImpl implements FTPClient{
             file = new File(homeDir, path);
         }
         if(!file.exists()){
-            throw new FTPException("Can't change directory, because it is not exists! path=" + path);
+            throw new FTPException(ftpClientFactoryServiceName, "Can't change directory, because it is not exists! path=" + path);
         }
         if(!file.isDirectory()){
-            throw new FTPException("Can't change directory, because it is not directory! path=" + path);
+            throw new FTPException(ftpClientFactoryServiceName, "Can't change directory, because it is not directory! path=" + path);
         }
         homeDir = file;
     }
@@ -360,12 +375,13 @@ public class FTPClientImpl implements FTPClient{
         try{
             if(!client.makeDirectory(dir)){
                 throw new FTPErrorResponseException(
+                    ftpClientFactoryServiceName, 
                     client.getReplyCode(),
                     "Can't make directory! dir=" + dir + ", cause=" + client.getReplyString()
                 );
             }
         }catch(IOException e){
-            throw new FTPException(e);
+            throw new FTPException(ftpClientFactoryServiceName, e);
         }
     }
     
@@ -373,12 +389,13 @@ public class FTPClientImpl implements FTPClient{
         try{
             if(!client.rename(from, to)){
                 throw new FTPErrorResponseException(
+                    ftpClientFactoryServiceName, 
                     client.getReplyCode(),
                     "Can't rename file! from=" + from + ", to=" + to + ", cause=" + client.getReplyString()
                 );
             }
         }catch(IOException e){
-            throw new FTPException(e);
+            throw new FTPException(ftpClientFactoryServiceName, e);
         }
     }
     
@@ -391,13 +408,14 @@ public class FTPClientImpl implements FTPClient{
             fos = new FileOutputStream(localFile);
             if(!client.retrieveFile(path, fos)){
                 throw new FTPErrorResponseException(
+                    ftpClientFactoryServiceName, 
                     client.getReplyCode(),
                     "Can't get file! remote=" + path + ", local=" + localFile + ", cause=" + client.getReplyString()
                 );
             }
             return localFile;
         }catch(IOException e){
-            throw new FTPException(e);
+            throw new FTPException(ftpClientFactoryServiceName, e);
         }finally{
             if(fos != null){
                 try{
@@ -418,13 +436,14 @@ public class FTPClientImpl implements FTPClient{
             fos = new FileOutputStream(localFile);
             if(!client.retrieveFile(remote, fos)){
                 throw new FTPErrorResponseException(
+                    ftpClientFactoryServiceName,                         
                     client.getReplyCode(),
                     "Can't get file! remote=" + remote + ", local=" + localFile + ", cause=" + client.getReplyString()
                 );
             }
             return localFile;
         }catch(IOException e){
-            throw new FTPException(e);
+            throw new FTPException(ftpClientFactoryServiceName, e);
         }finally{
             if(fos != null){
                 try{
@@ -481,7 +500,7 @@ public class FTPClientImpl implements FTPClient{
             }
             return (File[])result.toArray(new File[result.size()]);
         }catch(IOException e){
-            throw new FTPException(e);
+            throw new FTPException(ftpClientFactoryServiceName, e);
         }
     }
     
@@ -496,12 +515,13 @@ public class FTPClientImpl implements FTPClient{
             fis = new FileInputStream(localFile);
             if(!client.storeFile(remote, fis)){
                 throw new FTPErrorResponseException(
+                    ftpClientFactoryServiceName, 
                     client.getReplyCode(),
                     "Can't put file! local=" + path + ", remote=" + remote + ", cause=" + client.getReplyString()
                 );
             }
         }catch(IOException e){
-            throw new FTPException(e);
+            throw new FTPException(ftpClientFactoryServiceName, e);
         }finally{
             if(fis != null){
                 try{
@@ -522,12 +542,13 @@ public class FTPClientImpl implements FTPClient{
             fis = new FileInputStream(localFile);
             if(!client.storeFile(remote, fis)){
                 throw new FTPErrorResponseException(
+                    ftpClientFactoryServiceName, 
                     client.getReplyCode(),
                     "Can't put file! local=" + local + ", remote=" + remote + ", cause=" + client.getReplyString()
                 );
             }
         }catch(IOException e){
-            throw new FTPException(e);
+            throw new FTPException(ftpClientFactoryServiceName, e);
         }finally{
             if(fis != null){
                 try{
@@ -568,12 +589,13 @@ public class FTPClientImpl implements FTPClient{
         try{
             if(!client.deleteFile(path)){
                 throw new FTPErrorResponseException(
+                    ftpClientFactoryServiceName, 
                     client.getReplyCode(),
                     "Can't delete file! path=" + path + ", cause=" + client.getReplyString()
                 );
             }
         }catch(IOException e){
-            throw new FTPException(e);
+            throw new FTPException(ftpClientFactoryServiceName, e);
         }
     }
     
@@ -620,7 +642,7 @@ public class FTPClientImpl implements FTPClient{
                 );
             }
         }catch(IOException e){
-            throw new FTPException(e);
+            throw new FTPException(ftpClientFactoryServiceName, e);
         }
     }
     
@@ -645,7 +667,7 @@ public class FTPClientImpl implements FTPClient{
 //                }
                 isPassive = false;
 //            }catch(IOException e){
-//                throw new FTPException(e);
+//                throw new FTPException(ftpClientFactoryServiceName, e);
 //            }
         }
     }
@@ -655,6 +677,7 @@ public class FTPClientImpl implements FTPClient{
             try{
                 if(!client.enterRemotePassiveMode()){
                     throw new FTPErrorResponseException(
+                        ftpClientFactoryServiceName, 
                         client.getReplyCode(),
                         "Can't change passive mode! cause=" + client.getReplyString()
                     );
@@ -662,7 +685,7 @@ public class FTPClientImpl implements FTPClient{
                 client.enterLocalPassiveMode();
                 isPassive = true;
             }catch(IOException e){
-                throw new FTPException(e);
+                throw new FTPException(ftpClientFactoryServiceName, e);
             }
         }
     }
@@ -672,7 +695,7 @@ public class FTPClientImpl implements FTPClient{
             client.setFileType(type);
             transferType = type;
         }catch(IOException e){
-            throw new FTPException(e);
+            throw new FTPException(ftpClientFactoryServiceName, e);
         }
     }
     
@@ -684,7 +707,7 @@ public class FTPClientImpl implements FTPClient{
         try{
             client.disconnect();
         }catch(IOException e){
-            throw new FTPException(e);
+            throw new FTPException(ftpClientFactoryServiceName, e);
         }
     }
 }

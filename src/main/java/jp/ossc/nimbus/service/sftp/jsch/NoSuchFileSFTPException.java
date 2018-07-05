@@ -31,6 +31,8 @@
  */
 package jp.ossc.nimbus.service.sftp.jsch;
 
+import jp.ossc.nimbus.core.ServiceName;
+
 /**
  * ファイルが見つからない場合のSFTP例外。<p>
  *
@@ -42,37 +44,42 @@ public class NoSuchFileSFTPException extends jp.ossc.nimbus.service.sftp.SFTPExc
     
     /**
      * コンストラクタ
+     * 
+     * @param name 例外が発生したサービス名
      */
-    public NoSuchFileSFTPException() {
-        super();
+    public NoSuchFileSFTPException(ServiceName name) {
+        super(name);
     }
     
     /**
      * コンストラクタ
      * 
+     * @param name 例外が発生したサービス名
      * @param message メッセージ
      */
-    public NoSuchFileSFTPException(String message) {
-        super(message);
+    public NoSuchFileSFTPException(ServiceName name, String message) {
+        super(name, message);
     }
     
     /**
      * コンストラクタ
      * 
+     * @param name 例外が発生したサービス名
      * @param message メッセージ
      * @param cause 原因
      */
-    public NoSuchFileSFTPException(String message, Throwable cause) {
-        super(message, cause);
+    public NoSuchFileSFTPException(ServiceName name, String message, Throwable cause) {
+        super(name, message, cause);
     }
     
     /**
      * コンストラクタ
      * 
+     * @param name 例外が発生したサービス名
      * @param cause 原因
      */
-    public NoSuchFileSFTPException(Throwable cause) {
-        super(cause);
+    public NoSuchFileSFTPException(ServiceName name, Throwable cause) {
+        super(name, cause);
     }
     
 }

@@ -31,6 +31,7 @@
  */
 package jp.ossc.nimbus.service.http.httpclient;
 
+import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.service.http.HttpException;
 
 /**
@@ -49,7 +50,7 @@ public class HttpErrorStatusException extends HttpException {
      * コンストラクタ
      */
     public HttpErrorStatusException() {
-        super();
+        super(null);
     }
     
     /**

@@ -465,6 +465,7 @@ public class HttpClientFactoryService extends ServiceBase
             actionRequestMap = new HashMap();
         }
         request.setActionName(action);
+        request.setHttpClientFactoryServiceName(getServiceNameObject());
         actionRequestMap.put(action, request);
     }
     
@@ -492,6 +493,7 @@ public class HttpClientFactoryService extends ServiceBase
         if(actionResponseMap == null){
             actionResponseMap = new HashMap();
         }
+        response.setHttpClientFactoryServiceName(getServiceNameObject());
         actionResponseMap.put(action, response);
     }
     
@@ -602,7 +604,7 @@ public class HttpClientFactoryService extends ServiceBase
      throws HttpRequestCreateException{
         HttpRequestImpl request = (HttpRequestImpl)actionRequestMap.get(action);
         if(request == null){
-            throw new HttpRequestCreateException("No action.");
+            throw new HttpRequestCreateException(getServiceNameObject(), "No action.");
         }
         try{
             request = (HttpRequestImpl)request.clone();
@@ -647,7 +649,7 @@ public class HttpClientFactoryService extends ServiceBase
             }
             return request;
         }catch(CloneNotSupportedException e){
-            throw new HttpRequestCreateException(e);
+            throw new HttpRequestCreateException(getServiceNameObject(),e);
         }
     }
     
@@ -671,7 +673,7 @@ public class HttpClientFactoryService extends ServiceBase
                 }
             }
         }else{
-            throw new HttpClientCreateTimeoutException(getServiceNameObject() == null ? "" : getServiceNameObject().toString());
+            throw new HttpClientCreateTimeoutException(getServiceNameObject(),getServiceNameObject() == null ? "" : getServiceNameObject().toString());
         }
     }
     
@@ -789,7 +791,7 @@ public class HttpClientFactoryService extends ServiceBase
         public HttpResponse executeRequest(HttpRequest request)
          throws HttpException{
             if(client == null){
-                throw new HttpException("Closed.");
+                throw new HttpException(getServiceNameObject(), "Closed.");
             }
             HttpResponseImpl response = null;
             long start = System.currentTimeMillis();
@@ -958,22 +960,22 @@ public class HttpClientFactoryService extends ServiceBase
                 if(journal != null){
                     journal.addInfo(JOURNAL_ACCESS_EXCEPTION, e);
                 }
-                throw new HttpClientConnectTimeoutException(e);
+                throw new HttpClientConnectTimeoutException(getServiceNameObject(), e);
             }catch(CloneNotSupportedException e){
                 if(journal != null){
                     journal.addInfo(JOURNAL_ACCESS_EXCEPTION, e);
                 }
-                throw new HttpException(e);
+                throw new HttpException(getServiceNameObject(), e);
             }catch(SocketTimeoutException e){
                 if(journal != null){
                     journal.addInfo(JOURNAL_ACCESS_EXCEPTION, e);
                 }
-                throw new HttpClientSocketTimeoutException(e);
+                throw new HttpClientSocketTimeoutException(getServiceNameObject(), e);
             }catch(IOException e){
                 if(journal != null){
                     journal.addInfo(JOURNAL_ACCESS_EXCEPTION, e);
                 }
-                throw new HttpException(e);
+                throw new HttpException(getServiceNameObject(), e);
             }catch(RuntimeException e){
                 if(journal != null){
                     journal.addInfo(JOURNAL_ACCESS_EXCEPTION, e);

@@ -31,6 +31,8 @@
  */
 package jp.ossc.nimbus.service.ftp;
 
+import jp.ossc.nimbus.core.ServiceName;
+
 /**
  * FTPエラー応答例外。<p>
  *
@@ -48,8 +50,8 @@ public class FTPErrorResponseException extends FTPException {
      * @param code コード
      * @param message メッセージ
      */
-    public FTPErrorResponseException(int code, String message) {
-        super(message);
+    public FTPErrorResponseException(ServiceName name, int code, String message) {
+        super(name, message);
         this.code = code;
     }
     

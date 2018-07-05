@@ -43,6 +43,7 @@ import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.SftpException;
 import com.jcraft.jsch.Proxy;
 
+import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.io.RecurciveSearchFile;
 import jp.ossc.nimbus.service.sftp.SFTPException;
 import jp.ossc.nimbus.service.semaphore.Semaphore;
@@ -71,6 +72,8 @@ public class SFTPClientImpl implements jp.ossc.nimbus.service.sftp.SFTPClient{
     private ChannelSftp channel;
     private Proxy proxy;
     private Semaphore semaphore;
+    
+    private ServiceName sftpClientFactoryServiceName;
     
     public void setSemaphore(Semaphore semaphore){
         this.semaphore = semaphore;
@@ -121,6 +124,14 @@ public class SFTPClientImpl implements jp.ossc.nimbus.service.sftp.SFTPClient{
     public String getFileNameEncoding(){
         return fileNameEncoding;
     }
+    
+    public ServiceName getSftpClientFactoryServiceName() {
+        return sftpClientFactoryServiceName;
+    }
+    
+    public void setSftpClientFactoryServiceName(ServiceName name) {
+        sftpClientFactoryServiceName = name;
+    }
 
     public void connect(String user, String host, String password) throws SFTPException{
         connect(user, host, 22, password);
@@ -128,7 +139,7 @@ public class SFTPClientImpl implements jp.ossc.nimbus.service.sftp.SFTPClient{
 
     public void connect(String user, String host, int port, String password) throws SFTPException{
         if(jsch != null){
-            throw new SFTPException("It is already connected!");
+            throw new SFTPException(sftpClientFactoryServiceName, "It is already connected!");
         }
         jsch = new JSch();
         try{
@@ -170,7 +181,7 @@ public class SFTPClientImpl implements jp.ossc.nimbus.service.sftp.SFTPClient{
                 session = null;
             }
             jsch = null;
-            throw new SFTPException("It failed to connect!", e);
+            throw new SFTPException(sftpClientFactoryServiceName, "It failed to connect!", e);
         }catch(SftpException e){
             if(channel != null){
                 channel.disconnect();
@@ -181,7 +192,7 @@ public class SFTPClientImpl implements jp.ossc.nimbus.service.sftp.SFTPClient{
                 session = null;
             }
             jsch = null;
-            throw new SFTPException("It failed to connect!", e);
+            throw new SFTPException(sftpClientFactoryServiceName, "It failed to connect!", e);
         }
     }
 
@@ -191,7 +202,7 @@ public class SFTPClientImpl implements jp.ossc.nimbus.service.sftp.SFTPClient{
 
     public void connect(String user, String host, int port, File pemFile, String passphrase) throws SFTPException{
         if(jsch != null){
-            throw new SFTPException("It is already connected!");
+            throw new SFTPException(sftpClientFactoryServiceName, "It is already connected!");
         }
         jsch = new JSch();
         try{
@@ -231,7 +242,7 @@ public class SFTPClientImpl implements jp.ossc.nimbus.service.sftp.SFTPClient{
                 session = null;
             }
             jsch = null;
-            throw new SFTPException("It failed to connect!", e);
+            throw new SFTPException(sftpClientFactoryServiceName, "It failed to connect!", e);
         }catch(SftpException e){
             if(channel != null){
                 channel.disconnect();
@@ -242,7 +253,7 @@ public class SFTPClientImpl implements jp.ossc.nimbus.service.sftp.SFTPClient{
                 session = null;
             }
             jsch = null;
-            throw new SFTPException("It failed to connect!", e);
+            throw new SFTPException(sftpClientFactoryServiceName, "It failed to connect!", e);
         }
     }
 
@@ -252,7 +263,7 @@ public class SFTPClientImpl implements jp.ossc.nimbus.service.sftp.SFTPClient{
 
     public String[] ls(String path) throws NoSuchFileSFTPException, SFTPException{
         if(channel == null){
-            throw new SFTPException("Connection is not established!");
+            throw new SFTPException(sftpClientFactoryServiceName, "Connection is not established!");
         }
         try{
             List entries = channel.ls(path);
@@ -264,9 +275,9 @@ public class SFTPClientImpl implements jp.ossc.nimbus.service.sftp.SFTPClient{
             return fileNames;
         }catch(SftpException e){
             if(e.id == ERROR_ID_NO_SUCH_FILE){
-                throw new NoSuchFileSFTPException("It failed to ls! path=" + path, e);
+                throw new NoSuchFileSFTPException(sftpClientFactoryServiceName, "It failed to ls! path=" + path, e);
             }
-            throw new SFTPException("It failed to ls! path=" + path, e);
+            throw new SFTPException(sftpClientFactoryServiceName, "It failed to ls! path=" + path, e);
         }
     }
 
@@ -276,7 +287,7 @@ public class SFTPClientImpl implements jp.ossc.nimbus.service.sftp.SFTPClient{
 
     public SFTPFile[] lsFile(String path) throws SFTPException{
         if(channel == null){
-            throw new SFTPException("Connection is not established!");
+            throw new SFTPException(sftpClientFactoryServiceName, "Connection is not established!");
         }
         try{
             List entries = channel.ls(path);
@@ -288,26 +299,26 @@ public class SFTPClientImpl implements jp.ossc.nimbus.service.sftp.SFTPClient{
             return files;
         }catch(SftpException e){
             if(e.id == ERROR_ID_NO_SUCH_FILE){
-                throw new NoSuchFileSFTPException("It failed to ls! path=" + path, e);
+                throw new NoSuchFileSFTPException(sftpClientFactoryServiceName, "It failed to ls! path=" + path, e);
             }
-            throw new SFTPException("It failed to ls! path=" + path, e);
+            throw new SFTPException(sftpClientFactoryServiceName, "It failed to ls! path=" + path, e);
         }
     }
 
     public String pwd() throws SFTPException{
         if(channel == null){
-            throw new SFTPException("Connection is not established!");
+            throw new SFTPException(sftpClientFactoryServiceName, "Connection is not established!");
         }
         try{
             return channel.pwd();
         }catch(SftpException e){
-            throw new SFTPException("It failed to pwd!", e);
+            throw new SFTPException(sftpClientFactoryServiceName, "It failed to pwd!", e);
         }
     }
 
     public File lpwd() throws SFTPException{
         if(channel == null){
-            throw new SFTPException("Connection is not established!");
+            throw new SFTPException(sftpClientFactoryServiceName, "Connection is not established!");
         }
         final String path = channel.lpwd();
         return new File(path);
@@ -315,51 +326,51 @@ public class SFTPClientImpl implements jp.ossc.nimbus.service.sftp.SFTPClient{
 
     public void cd(String path) throws NoSuchFileSFTPException, SFTPException{
         if(channel == null){
-            throw new SFTPException("Connection is not established!");
+            throw new SFTPException(sftpClientFactoryServiceName, "Connection is not established!");
         }
         try{
             channel.cd(path);
         }catch(SftpException e){
             if(e.id == ERROR_ID_NO_SUCH_FILE){
-                throw new NoSuchFileSFTPException("It failed to cd! to=" + path, e);
+                throw new NoSuchFileSFTPException(sftpClientFactoryServiceName, "It failed to cd! to=" + path, e);
             }
-            throw new SFTPException("It failed to cd! to=" + path, e);
+            throw new SFTPException(sftpClientFactoryServiceName, "It failed to cd! to=" + path, e);
         }
     }
 
     public void lcd(String path) throws SFTPException{
         if(channel == null){
-            throw new SFTPException("Connection is not established!");
+            throw new SFTPException(sftpClientFactoryServiceName, "Connection is not established!");
         }
         try{
             channel.lcd(path);
         }catch(SftpException e){
-            throw new SFTPException("It failed to lcd! to=" + path, e);
+            throw new SFTPException(sftpClientFactoryServiceName, "It failed to lcd! to=" + path, e);
         }
     }
 
     public void mkdir(String dir) throws SFTPException{
         if(channel == null){
-            throw new SFTPException("Connection is not established!");
+            throw new SFTPException(sftpClientFactoryServiceName, "Connection is not established!");
         }
         try{
             channel.mkdir(dir);
         }catch(SftpException e){
-            throw new SFTPException("It failed to mkdir! dir=" + dir, e);
+            throw new SFTPException(sftpClientFactoryServiceName, "It failed to mkdir! dir=" + dir, e);
         }
     }
 
     public void rename(String from, String to) throws NoSuchFileSFTPException, SFTPException{
         if(channel == null){
-            throw new SFTPException("Connection is not established!");
+            throw new SFTPException(sftpClientFactoryServiceName, "Connection is not established!");
         }
         try{
             channel.rename(from, to);
         }catch(SftpException e){
             if(e.id == ERROR_ID_NO_SUCH_FILE){
-                throw new NoSuchFileSFTPException("It failed to rename! from=" + from + ", to=" + to, e);
+                throw new NoSuchFileSFTPException(sftpClientFactoryServiceName, "It failed to rename! from=" + from + ", to=" + to, e);
             }
-            throw new SFTPException("It failed to rename! from=" + from + ", to=" + to, e);
+            throw new SFTPException(sftpClientFactoryServiceName, "It failed to rename! from=" + from + ", to=" + to, e);
         }
     }
 
@@ -369,7 +380,7 @@ public class SFTPClientImpl implements jp.ossc.nimbus.service.sftp.SFTPClient{
 
     public File get(String remote, String local) throws NoSuchFileSFTPException, SFTPException{
         if(channel == null){
-            throw new SFTPException("Connection is not established!");
+            throw new SFTPException(sftpClientFactoryServiceName, "Connection is not established!");
         }
         try{
             if(local == null){
@@ -381,9 +392,9 @@ public class SFTPClientImpl implements jp.ossc.nimbus.service.sftp.SFTPClient{
             return localFile.isDirectory() ? new File(localFile, remoteFile.getName()) : localFile;
         }catch(SftpException e){
             if(e.id == ERROR_ID_NO_SUCH_FILE){
-                throw new NoSuchFileSFTPException("It failed to get! remote=" + remote + ", local=" + local, e);
+                throw new NoSuchFileSFTPException(sftpClientFactoryServiceName, "It failed to get! remote=" + remote + ", local=" + local, e);
             }
-            throw new SFTPException("It failed to get! remote=" + remote + ", local=" + local, e);
+            throw new SFTPException(sftpClientFactoryServiceName, "It failed to get! remote=" + remote + ", local=" + local, e);
         }
     }
 
@@ -393,7 +404,7 @@ public class SFTPClientImpl implements jp.ossc.nimbus.service.sftp.SFTPClient{
 
     public File[] mget(String remote, String localDir) throws NoSuchFileSFTPException, SFTPException{
         if(channel == null){
-            throw new SFTPException("Connection is not established!");
+            throw new SFTPException(sftpClientFactoryServiceName, "Connection is not established!");
         }
         try{
             String[] fileNames = ls(remote);
@@ -411,9 +422,9 @@ public class SFTPClientImpl implements jp.ossc.nimbus.service.sftp.SFTPClient{
             return files;
         }catch(SftpException e){
             if(e.id == ERROR_ID_NO_SUCH_FILE){
-                throw new NoSuchFileSFTPException("It failed to mget! remote=" + remote + ", localDir=" + localDir, e);
+                throw new NoSuchFileSFTPException(sftpClientFactoryServiceName, "It failed to mget! remote=" + remote + ", localDir=" + localDir, e);
             }
-            throw new SFTPException("It failed to mget! remote=" + remote + ", localDir=" + localDir, e);
+            throw new SFTPException(sftpClientFactoryServiceName, "It failed to mget! remote=" + remote + ", localDir=" + localDir, e);
         }
     }
 
@@ -427,14 +438,14 @@ public class SFTPClientImpl implements jp.ossc.nimbus.service.sftp.SFTPClient{
 
     public void put(String local, String remote, String mode) throws SFTPException{
         if(channel == null){
-            throw new SFTPException("Connection is not established!");
+            throw new SFTPException(sftpClientFactoryServiceName, "Connection is not established!");
         }
         try{
             channel.put(local, remote == null ? "." : remote, mode == null ? 644 : Integer.parseInt(mode));
         }catch(NumberFormatException e){
-            throw new SFTPException("Mode must be number! mode=" + mode, e);
+            throw new SFTPException(sftpClientFactoryServiceName, "Mode must be number! mode=" + mode, e);
         }catch(SftpException e){
-            throw new SFTPException("It failed to put! local=" + local + ", remote=" + remote, e);
+            throw new SFTPException(sftpClientFactoryServiceName, "It failed to put! local=" + local + ", remote=" + remote, e);
         }
     }
 
@@ -448,7 +459,7 @@ public class SFTPClientImpl implements jp.ossc.nimbus.service.sftp.SFTPClient{
 
     public void mput(String local, String remoteDir, String mode) throws SFTPException{
         if(channel == null){
-            throw new SFTPException("Connection is not established!");
+            throw new SFTPException(sftpClientFactoryServiceName, "Connection is not established!");
         }
         if(remoteDir == null){
             remoteDir = "./";
@@ -468,7 +479,7 @@ public class SFTPClientImpl implements jp.ossc.nimbus.service.sftp.SFTPClient{
 
     public boolean rm(String path) throws SFTPException{
         if(channel == null){
-            throw new SFTPException("Connection is not established!");
+            throw new SFTPException(sftpClientFactoryServiceName, "Connection is not established!");
         }
         try{
             channel.rm(path);
@@ -476,14 +487,14 @@ public class SFTPClientImpl implements jp.ossc.nimbus.service.sftp.SFTPClient{
             if(e.id == ERROR_ID_NO_SUCH_FILE){
                 return false;
             }
-            throw new SFTPException("It failed to rmove! path=" + path, e);
+            throw new SFTPException(sftpClientFactoryServiceName, "It failed to rmove! path=" + path, e);
         }
         return true;
     }
 
     public boolean rmdir(String path) throws SFTPException{
         if(channel == null){
-            throw new SFTPException("Connection is not established!");
+            throw new SFTPException(sftpClientFactoryServiceName, "Connection is not established!");
         }
         try{
             channel.rmdir(path);
@@ -491,84 +502,84 @@ public class SFTPClientImpl implements jp.ossc.nimbus.service.sftp.SFTPClient{
             if(e.id == ERROR_ID_NO_SUCH_FILE){
                 return false;
             }
-            throw new SFTPException("It failed to rmove! path=" + path, e);
+            throw new SFTPException(sftpClientFactoryServiceName, "It failed to rmove! path=" + path, e);
         }
         return true;
     }
 
     public void chmod(String mode, String path) throws NoSuchFileSFTPException, SFTPException{
         if(channel == null){
-            throw new SFTPException("Connection is not established!");
+            throw new SFTPException(sftpClientFactoryServiceName, "Connection is not established!");
         }
         try{
             channel.chmod(Integer.parseInt(mode), path);
         }catch(NumberFormatException e){
-            throw new SFTPException("Mode must be number! mode=" + mode, e);
+            throw new SFTPException(sftpClientFactoryServiceName, "Mode must be number! mode=" + mode, e);
         }catch(SftpException e){
             if(e.id == ERROR_ID_NO_SUCH_FILE){
-                throw new NoSuchFileSFTPException("It failed to chmod! mode=" + mode + ", path=" + path, e);
+                throw new NoSuchFileSFTPException(sftpClientFactoryServiceName, "It failed to chmod! mode=" + mode + ", path=" + path, e);
             }
-            throw new SFTPException("It failed to chmod! mode=" + mode + ", path=" + path, e);
+            throw new SFTPException(sftpClientFactoryServiceName, "It failed to chmod! mode=" + mode + ", path=" + path, e);
         }
     }
 
     public void chown(String uid, String path) throws NoSuchFileSFTPException, SFTPException{
         if(channel == null){
-            throw new SFTPException("Connection is not established!");
+            throw new SFTPException(sftpClientFactoryServiceName, "Connection is not established!");
         }
         try{
             channel.chown(Integer.parseInt(uid), path);
         }catch(NumberFormatException e){
-            throw new SFTPException("uid must be number! uid=" + uid, e);
+            throw new SFTPException(sftpClientFactoryServiceName, "uid must be number! uid=" + uid, e);
         }catch(SftpException e){
             if(e.id == ERROR_ID_NO_SUCH_FILE){
-                throw new NoSuchFileSFTPException("It failed to chown! uid=" + uid + ", path=" + path, e);
+                throw new NoSuchFileSFTPException(sftpClientFactoryServiceName, "It failed to chown! uid=" + uid + ", path=" + path, e);
             }
-            throw new SFTPException("It failed to chown! uid=" + uid + ", path=" + path, e);
+            throw new SFTPException(sftpClientFactoryServiceName, "It failed to chown! uid=" + uid + ", path=" + path, e);
         }
     }
 
     public void chgrp(String gid, String path) throws NoSuchFileSFTPException, SFTPException{
         if(channel == null){
-            throw new SFTPException("Connection is not established!");
+            throw new SFTPException(sftpClientFactoryServiceName, "Connection is not established!");
         }
         try{
             channel.chgrp(Integer.parseInt(gid), path);
         }catch(NumberFormatException e){
-            throw new SFTPException("gid must be number! gid=" + gid, e);
+            throw new SFTPException(sftpClientFactoryServiceName, "gid must be number! gid=" + gid, e);
         }catch(SftpException e){
             if(e.id == ERROR_ID_NO_SUCH_FILE){
-                throw new NoSuchFileSFTPException("It failed to chgrp! gid=" + gid + ", path=" + path, e);
+                throw new NoSuchFileSFTPException(sftpClientFactoryServiceName, "It failed to chgrp! gid=" + gid + ", path=" + path, e);
             }
-            throw new SFTPException("It failed to chgrp! gid=" + gid + ", path=" + path, e);
+            throw new SFTPException(sftpClientFactoryServiceName, "It failed to chgrp! gid=" + gid + ", path=" + path, e);
         }
     }
 
     public void symlink(String path, String link) throws NoSuchFileSFTPException, SFTPException{
         if(channel == null){
-            throw new SFTPException("Connection is not established!");
+            throw new SFTPException(sftpClientFactoryServiceName, "Connection is not established!");
         }
         try{
             channel.symlink(path, link);
         }catch(SftpException e){
             if(e.id == ERROR_ID_NO_SUCH_FILE){
-                throw new NoSuchFileSFTPException("It failed to symlink! path=" + path + ", link=" + link, e);
+                throw new NoSuchFileSFTPException(sftpClientFactoryServiceName, "It failed to symlink! path=" + path + ", link=" + link, e);
             }
-            throw new SFTPException("It failed to symlink! path=" + path + ", link=" + link, e);
+            throw new SFTPException(sftpClientFactoryServiceName, "It failed to symlink! path=" + path + ", link=" + link, e);
         }
     }
     
     public void ln(String path, String link) throws NoSuchFileSFTPException, SFTPException{
         if(channel == null){
-            throw new SFTPException("Connection is not established!");
+            throw new SFTPException(sftpClientFactoryServiceName, "Connection is not established!");
         }
         try{
             channel.hardlink(path, link);
         }catch(SftpException e){
             if(e.id == ERROR_ID_NO_SUCH_FILE){
-                throw new NoSuchFileSFTPException("It failed to ln! path=" + path + ", link=" + link, e);
+                throw new NoSuchFileSFTPException(sftpClientFactoryServiceName, "It failed to ln! path=" + path + ", link=" + link, e);
             }
-            throw new SFTPException("It failed to ln! path=" + path + ", link=" + link, e);
+            throw new SFTPException(sftpClientFactoryServiceName, "It failed to ln! path=" + path + ", link=" + link, e);
         }
     }
 

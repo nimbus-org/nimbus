@@ -31,6 +31,7 @@
  */
 package jp.ossc.nimbus.service.http.httpclient;
 
+import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.service.http.HttpException;
 
 /**
@@ -44,37 +45,42 @@ public class HttpClientCreateTimeoutException extends HttpException {
     
     /**
      * コンストラクタ
+     * 
+     * @param name 例外が発生したサービス名
      */
-    public HttpClientCreateTimeoutException() {
-        super();
+    public HttpClientCreateTimeoutException(ServiceName name) {
+        super(name);
     }
     
     /**
      * コンストラクタ
      * 
+     * @param name 例外が発生したサービス名
      * @param message メッセージ
      */
-    public HttpClientCreateTimeoutException(String message) {
-        super(message);
+    public HttpClientCreateTimeoutException(ServiceName name, String message) {
+        super(name, message);
     }
     
     /**
      * コンストラクタ
      * 
+     * @param name 例外が発生したサービス名
      * @param message メッセージ
      * @param cause 原因
      */
-    public HttpClientCreateTimeoutException(String message, Throwable cause) {
-        super(message, cause);
+    public HttpClientCreateTimeoutException(ServiceName name, String message, Throwable cause) {
+        super(name, message, cause);
     }
     
     /**
      * コンストラクタ
      * 
+     * @param name 例外が発生したサービス名
      * @param cause 原因
      */
-    public HttpClientCreateTimeoutException(Throwable cause) {
-        super(cause);
+    public HttpClientCreateTimeoutException(ServiceName name, Throwable cause) {
+        super(name, cause);
     }
     
 }

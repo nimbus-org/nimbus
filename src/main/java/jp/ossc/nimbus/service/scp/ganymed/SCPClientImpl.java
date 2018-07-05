@@ -31,22 +31,22 @@
  */
 package jp.ossc.nimbus.service.scp.ganymed;
 
-import java.io.File;
-import java.io.InputStream;
 import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import java.io.OutputStream;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.List;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 import ch.ethz.ssh2.Connection;
-import ch.ethz.ssh2.Session;
 import ch.ethz.ssh2.SCPClient;
-
+import ch.ethz.ssh2.Session;
+import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.io.RecurciveSearchFile;
 import jp.ossc.nimbus.service.scp.SCPException;
 
@@ -61,6 +61,7 @@ public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
     private int connectionTimeout;
     private int keyExchangeTimeout;
     private Boolean isTcpNoDelay;
+    private ServiceName scpClientFactoryServiceName;
     
     private String[] serverHostKeyAlgorithms;
     
@@ -104,13 +105,21 @@ public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
         return homeDir;
     }
     
+    public ServiceName getScpClientFactoryServiceName() {
+        return scpClientFactoryServiceName;
+    }
+    
+    public void setScpClientFactoryServiceName(ServiceName name) {
+        scpClientFactoryServiceName = name;
+    }
+    
     public void connect(String user, String host, String password) throws SCPException{
         connect(user, host, 22, password);
     }
     
     public void connect(String user, String host, int port, String password) throws SCPException{
         if(connection != null){
-            throw new SCPException("It is already connected!");
+            throw new SCPException(scpClientFactoryServiceName, "It is already connected!");
         }
         connection = new Connection(host, port);
         try{
@@ -122,14 +131,14 @@ public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
             }
             connection.connect(null, connectionTimeout, keyExchangeTimeout);
             if(!connection.authenticateWithPassword(user, password)){
-                throw new SCPException("It failed to authenticate!");
+                throw new SCPException(scpClientFactoryServiceName, "It failed to authenticate!");
             }
             scpClient = connection.createSCPClient();
         }catch(IOException e){
             scpClient = null;
             connection.close();
             connection = null;
-            throw new SCPException("It failed to connect!", e);
+            throw new SCPException(scpClientFactoryServiceName, "It failed to connect!", e);
         }
     }
     
@@ -139,10 +148,10 @@ public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
     
     public void connect(String user, String host, int port, File pemFile, String passphrase) throws SCPException{
         if(connection != null){
-            throw new SCPException("It is already connected!");
+            throw new SCPException(scpClientFactoryServiceName, "It is already connected!");
         }
         if(!pemFile.exists()){
-            throw new SCPException("The pemFile not exists! path=" + pemFile);
+            throw new SCPException(scpClientFactoryServiceName, "The pemFile not exists! path=" + pemFile);
         }
         FileInputStream fis = null;
         final ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -156,7 +165,7 @@ public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
             }
             pem = new String(baos.toByteArray());
         }catch(IOException e){
-            throw new SCPException("It failed to read pemFile! path=" + pemFile, e);
+            throw new SCPException(scpClientFactoryServiceName, "It failed to read pemFile! path=" + pemFile, e);
         }finally{
             if(fis != null){
                 try{
@@ -174,23 +183,23 @@ public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
             }
             connection.connect(null, connectionTimeout, keyExchangeTimeout);
             if(!connection.authenticateWithPublicKey(user, pem.toCharArray(), passphrase)){
-                throw new SCPException("It failed to authenticate!");
+                throw new SCPException(scpClientFactoryServiceName, "It failed to authenticate!");
             }
             scpClient = connection.createSCPClient();
         }catch(IOException e){
             scpClient = null;
             connection.close();
             connection = null;
-            throw new SCPException("It failed to authenticate!", e);
+            throw new SCPException(scpClientFactoryServiceName, "It failed to authenticate!", e);
         }
     }
     
     public File get(String remote) throws SCPException{
         if(connection == null){
-            throw new SCPException("Connection is not established!");
+            throw new SCPException(scpClientFactoryServiceName, "Connection is not established!");
         }
         if(scpClient == null){
-            throw new SCPException("It is not authenticated!");
+            throw new SCPException(scpClientFactoryServiceName, "It is not authenticated!");
         }
         File localFile = null;
         try{
@@ -199,17 +208,17 @@ public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
             localFile = homeDir == null ? new File(name) : new File(homeDir, name);
             scpClient.get(remote, homeDir == null ? "." : homeDir.getPath());
         }catch(IOException e){
-            throw new SCPException("It failed to get! file=" + remote, e);
+            throw new SCPException(scpClientFactoryServiceName, "It failed to get! file=" + remote, e);
         }
         return localFile;
     }
     
     public File get(String remote, String local) throws SCPException{
         if(connection == null){
-            throw new SCPException("Connection is not established!");
+            throw new SCPException(scpClientFactoryServiceName, "Connection is not established!");
         }
         if(scpClient == null){
-            throw new SCPException("It is not authenticated!");
+            throw new SCPException(scpClientFactoryServiceName, "It is not authenticated!");
         }
         File localFile = null;
         try{
@@ -225,11 +234,11 @@ public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
             if(!getFile.equals(localFile)){
                 if(!getFile.renameTo(localFile)){
                     getFile.delete();
-                    throw new SCPException("Can not write to directory! dir=" + targetDir);
+                    throw new SCPException(scpClientFactoryServiceName, "Can not write to directory! dir=" + targetDir);
                 }
             }
         }catch(IOException e){
-            throw new SCPException("It failed to get! file=" + remote, e);
+            throw new SCPException(scpClientFactoryServiceName, "It failed to get! file=" + remote, e);
         }
         return localFile;
     }
@@ -240,7 +249,7 @@ public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
     
     public File[] mget(String remote, String localDir) throws SCPException{
         if(remote == null || remote.length() == 0){
-            throw new SCPException("Path is null.");
+            throw new SCPException(scpClientFactoryServiceName, "Path is null.");
         }
         if(localDir == null){
             localDir = ".";
@@ -279,7 +288,7 @@ public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
                 long fileSize = 0L;
                 while(true){
                     if(is.read(buf, 0, 1) < 0){
-                        throw new SCPException("Unexpected EOF.");
+                        throw new SCPException(scpClientFactoryServiceName, "Unexpected EOF.");
                     }
                     if(buf[0]==' '){
                         break;
@@ -312,7 +321,7 @@ public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
                         }
                         readLen = is.read(buf, 0, readLen);
                         if(readLen < 0){
-                            throw new SCPException("Unexpected EOF.");
+                            throw new SCPException(scpClientFactoryServiceName, "Unexpected EOF.");
                         }
                         fos.write(buf, 0, readLen);
                         fileSize -= readLen;
@@ -331,7 +340,7 @@ public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
                 os.flush();
             }
         }catch(IOException e){
-            throw new SCPException("It failed to mget! from=" + remote + ", to=" + (localFile == null ? localDirFile : localFile), e);
+            throw new SCPException(scpClientFactoryServiceName, "It failed to mget! from=" + remote + ", to=" + (localFile == null ? localDirFile : localFile), e);
         }finally{
             if(session != null){
                 session.close();
@@ -361,10 +370,10 @@ public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
     
     public void put(String local) throws SCPException{
         if(connection == null){
-            throw new SCPException("Connection is not established!");
+            throw new SCPException(scpClientFactoryServiceName, "Connection is not established!");
         }
         if(scpClient == null){
-            throw new SCPException("It is not authenticated!");
+            throw new SCPException(scpClientFactoryServiceName, "It is not authenticated!");
         }
         File localFile = null;
         try{
@@ -373,11 +382,11 @@ public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
                 localFile = new File(homeDir, local);
             }
             if(!localFile.exists()){
-                throw new SCPException("File not exists! path=" + local);
+                throw new SCPException(scpClientFactoryServiceName, "File not exists! path=" + local);
             }
             scpClient.put(localFile.getPath(), ".");
         }catch(IOException e){
-            throw new SCPException("It failed to put! file=" + localFile, e);
+            throw new SCPException(scpClientFactoryServiceName, "It failed to put! file=" + localFile, e);
         }
     }
     
@@ -387,10 +396,10 @@ public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
     
     public void put(String local, String remote, String mode) throws SCPException{
         if(connection == null){
-            throw new SCPException("Connection is not established!");
+            throw new SCPException(scpClientFactoryServiceName, "Connection is not established!");
         }
         if(scpClient == null){
-            throw new SCPException("It is not authenticated!");
+            throw new SCPException(scpClientFactoryServiceName, "It is not authenticated!");
         }
         File localFile = null;
         try{
@@ -399,7 +408,7 @@ public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
                 localFile = new File(homeDir, local);
             }
             if(!localFile.exists()){
-                throw new SCPException("File not exists! path=" + local);
+                throw new SCPException(scpClientFactoryServiceName, "File not exists! path=" + local);
             }
             File remoteFile = new File(remote);
             if(localFile.getName().equals(remoteFile.getName())){
@@ -419,7 +428,7 @@ public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
                         baos.write(buf, 0, length);
                     }
                 }catch(IOException e){
-                    throw new SCPException("It failed to read path=" + localFile, e);
+                    throw new SCPException(scpClientFactoryServiceName, "It failed to read path=" + localFile, e);
                 }finally{
                     if(fis != null){
                         try{
@@ -434,7 +443,7 @@ public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
                 }
             }
         }catch(IOException e){
-            throw new SCPException("It failed to put! file=" + localFile, e);
+            throw new SCPException(scpClientFactoryServiceName, "It failed to put! file=" + localFile, e);
         }
     }
     
@@ -448,10 +457,10 @@ public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
     
     public void mput(String local, String remoteDir, String mode) throws SCPException{
         if(connection == null){
-            throw new SCPException("Connection is not established!");
+            throw new SCPException(scpClientFactoryServiceName, "Connection is not established!");
         }
         if(scpClient == null){
-            throw new SCPException("It is not authenticated!");
+            throw new SCPException(scpClientFactoryServiceName, "It is not authenticated!");
         }
         RecurciveSearchFile rsf = new RecurciveSearchFile(".");
         File[] localFiles = rsf.listAllTreeFiles(local);
@@ -464,7 +473,7 @@ public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
                 }
             }
         }catch(IOException e){
-            throw new SCPException("It failed to mput! local=" + local, e);
+            throw new SCPException(scpClientFactoryServiceName, "It failed to mput! local=" + local, e);
         }
     }
     

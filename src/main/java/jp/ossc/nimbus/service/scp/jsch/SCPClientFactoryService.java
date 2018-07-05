@@ -135,6 +135,7 @@ public class SCPClientFactoryService extends ServiceBase
     
     public SCPClient createSCPClient() throws SCPException{
         SCPClientImpl client = new SCPClientImpl();
+        client.setScpClientFactoryServiceName(getServiceNameObject());
         if(timeout >= 0){
             client.setTimeout(timeout);
         }
