@@ -147,7 +147,7 @@ public class ClusterFTPClientFactoryService extends ServiceBase
                     }
                 }
                 if(clients.size() == 0){
-                    throw new FTPException("I could not connect all the cluster members.");
+                    throw new FTPException(getServiceNameObject(), "I could not connect all the cluster members.");
                 }
                 break;
             default:

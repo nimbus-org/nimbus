@@ -186,9 +186,10 @@ public class SFTPClientFactoryService extends ServiceBase
     
     public SFTPClient createSFTPClient() throws SFTPException{
         if(semaphore != null && !semaphore.getResource()){
-            throw new SFTPClientCreateTimeoutException();
+            throw new SFTPClientCreateTimeoutException(getServiceNameObject());
         }
         SFTPClientImpl client = new SFTPClientImpl();
+        client.setSftpClientFactoryServiceName(getServiceNameObject());
         if(semaphore != null){
             client.setSemaphore(semaphore);
         }

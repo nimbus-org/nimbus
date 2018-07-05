@@ -94,6 +94,7 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
     protected byte[] inputBytes;
     protected int deflateLength = -1;
     protected Map httpMethodParamMap;
+    protected ServiceName httpClientFactoryServiceName;
     
     // HttpRequestのJavaDoc
     public String getActionName(){
@@ -484,6 +485,24 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
     }
     
     /**
+     * HttpClientFactoryのサービス名を取得する。<p>
+     * 
+     * @return httpClientFactoryServiceName HttpClientFactoryのサービス名
+     */
+    public ServiceName getHttpClientFactoryServiceName() {
+        return httpClientFactoryServiceName;
+    }
+
+    /**
+     * HttpClientFactoryのサービス名を設定する。<p>
+     * 
+     * @param httpClientFactoryServiceName HttpClientFactoryのサービス名
+     */
+    public void setHttpClientFactoryServiceName(ServiceName name) {
+        httpClientFactoryServiceName = name;
+    }
+
+    /**
      * 空のHTTPメソッドを生成する。<p>
      *
      * @return HTTPメソッド
@@ -550,9 +569,7 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
             inputBytes = outputStream.toByteArray();
         }else if(inputObject != null){
             if(streamConverter == null && streamConverterServiceName == null){
-                throw new HttpRequestCreateException(
-                    "StreamConverter is null."
-                );
+                throw new HttpRequestCreateException(httpClientFactoryServiceName, "StreamConverter is null.");
             }else{
                 final ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 final byte[] bytes = new byte[1024];
@@ -694,7 +711,7 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
         }catch(HttpRequestCreateException e){
             throw e;
         }catch(Exception e){
-            throw new HttpRequestCreateException(e);
+            throw new HttpRequestCreateException(httpClientFactoryServiceName, e);
         }
         return httpMethod;
     }

@@ -31,6 +31,8 @@
  */
 package jp.ossc.nimbus.service.scp;
 
+import jp.ossc.nimbus.core.ServiceName;
+
 /**
  * SCP例外。<p>
  *
@@ -40,39 +42,67 @@ public class SCPException extends RuntimeException {
     
     private static final long serialVersionUID = 8059601442152399734L;
 
+    protected ServiceName servieName;
+    
     /**
      * コンストラクタ
+     * 
+     * @param name 例外が発生したサービス名
      */
-    public SCPException() {
+    public SCPException(ServiceName name) {
         super();
+        servieName = name;
     }
     
     /**
      * コンストラクタ
      * 
+     * @param name 例外が発生したサービス名
      * @param message メッセージ
      */
-    public SCPException(String message) {
+    public SCPException(ServiceName name, String message) {
         super(message);
+        servieName = name;
     }
     
     /**
      * コンストラクタ
      * 
+     * @param name 例外が発生したサービス名
      * @param message メッセージ
      * @param cause 原因
      */
-    public SCPException(String message, Throwable cause) {
+    public SCPException(ServiceName name, String message, Throwable cause) {
         super(message, cause);
+        servieName = name;
     }
     
     /**
      * コンストラクタ
      * 
+     * @param name 例外が発生したサービス名
      * @param cause 原因
      */
-    public SCPException(Throwable cause) {
+    public SCPException(ServiceName name, Throwable cause) {
         super(cause);
+        servieName = name;
     }
     
+    /**
+     * 例外が発生したサービス名を取得する。
+     * 
+     * @return 例外が発生したサービス名
+     */
+    public ServiceName getServieName() {
+        return servieName;
+    }
+
+    /**
+     * 例外が発生したサービス名を設定する。
+     * 
+     * @param name 例外が発生したサービス名
+     */
+    public void setServieName(ServiceName name) {
+        servieName = name;
+    }
 }

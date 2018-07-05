@@ -31,18 +31,30 @@
  */
 package jp.ossc.nimbus.service.http.httpclient;
 
-import java.io.*;
-import java.util.*;
-import java.util.zip.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.InflaterInputStream;
 
-import org.apache.commons.httpclient.*;
-
-import jp.ossc.nimbus.core.*;
-import jp.ossc.nimbus.service.http.*;
-import jp.ossc.nimbus.util.converter.*;
-
-
+import org.apache.commons.httpclient.Header;
+import org.apache.commons.httpclient.HttpMethodBase;
 import org.xerial.snappy.SnappyInputStream;
+
+import jp.ossc.nimbus.core.ServiceManagerFactory;
+import jp.ossc.nimbus.core.ServiceName;
+import jp.ossc.nimbus.service.http.HttpResponse;
+import jp.ossc.nimbus.util.converter.BindingStreamConverter;
+import jp.ossc.nimbus.util.converter.ConvertException;
+import jp.ossc.nimbus.util.converter.StreamConverter;
+import jp.ossc.nimbus.util.converter.StreamStringConverter;
 import net.jpountz.lz4.LZ4BlockInputStream;
 
 
@@ -95,6 +107,8 @@ public class HttpResponseImpl implements HttpResponse, Cloneable{
     protected Map errorStatusCodeMap;
     protected Set removeErrorStatusCodeSet;
     
+    protected ServiceName httpClientFactoryServiceName;
+    
     /**
      * HTTPメソッドを設定する。<p>
      *
@@ -144,6 +158,24 @@ public class HttpResponseImpl implements HttpResponse, Cloneable{
      */
     public StreamConverter getStreamConverter(){
         return streamConverter;
+    }
+    
+    /**
+     * HttpClientFactoryのサービス名を取得する。<p>
+     * 
+     * @return httpClientFactoryServiceName HttpClientFactoryのサービス名
+     */
+    public ServiceName getHttpClientFactoryServiceName() {
+        return httpClientFactoryServiceName;
+    }
+
+    /**
+     * HttpClientFactoryのサービス名を設定する。<p>
+     * 
+     * @param httpClientFactoryServiceName HttpClientFactoryのサービス名
+     */
+    public void setHttpClientFactoryServiceName(ServiceName name) {
+        httpClientFactoryServiceName = name;
     }
     
     /**
@@ -442,6 +474,7 @@ public class HttpResponseImpl implements HttpResponse, Cloneable{
         }
         if(exception != null){
             exception.setStatus(code.intValue(), getStatusMessage());
+            exception.setServieName(httpClientFactoryServiceName);
             throw exception;
         }
     }

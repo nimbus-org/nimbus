@@ -31,6 +31,8 @@
  */
 package jp.ossc.nimbus.service.sftp;
 
+import jp.ossc.nimbus.core.ServiceName;
+
 /**
  * SFTP例外。<p>
  *
@@ -40,39 +42,68 @@ public class SFTPException extends RuntimeException {
     
     private static final long serialVersionUID = -4491684364750536034L;
     
+    protected ServiceName servieName;
+    
     /**
      * コンストラクタ
+     * 
+     * @param name 例外が発生したサービス名
      */
-    public SFTPException() {
+    public SFTPException(ServiceName name) {
         super();
+        servieName = name;
     }
     
     /**
      * コンストラクタ
      * 
+     * @param name 例外が発生したサービス名
      * @param message メッセージ
      */
-    public SFTPException(String message) {
+    public SFTPException(ServiceName name, String message) {
         super(message);
+        servieName = name;
     }
     
     /**
      * コンストラクタ
      * 
+     * @param name 例外が発生したサービス名
      * @param message メッセージ
      * @param cause 原因
      */
-    public SFTPException(String message, Throwable cause) {
+    public SFTPException(ServiceName name, String message, Throwable cause) {
         super(message, cause);
+        servieName = name;
     }
     
     /**
      * コンストラクタ
      * 
+     * @param name 例外が発生したサービス名
      * @param cause 原因
      */
-    public SFTPException(Throwable cause) {
+    public SFTPException(ServiceName name, Throwable cause) {
         super(cause);
+        servieName = name;
     }
     
+    /**
+     * 例外が発生したサービス名を取得する。
+     * 
+     * @param name 例外が発生したサービス名
+     * @return 例外が発生したサービス名
+     */
+    public ServiceName getServieName() {
+        return servieName;
+    }
+
+    /**
+     * 例外が発生したサービス名を設定する。
+     * 
+     * @param name 例外が発生したサービス名
+     */
+    public void setServieName(ServiceName name) {
+        servieName = name;
+    }
 }

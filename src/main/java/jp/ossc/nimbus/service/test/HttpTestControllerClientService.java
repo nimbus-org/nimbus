@@ -222,7 +222,7 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
         }
         HttpResponse response = client.executeRequest(request);
         if (response.getStatusCode() != 200) {
-            throw new HttpException("Illegal http status : " + response.getStatusCode());
+            throw new HttpException(getServiceNameObject(), "Illegal http status : " + response.getStatusCode());
         }
         String contentLengthStr = response.getHeader("Content-Length");
         int contentLength = 0;
@@ -234,7 +234,7 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
         } else {
             String contentTypeStr = response.getHeader("Content-Type");
             if (contentTypeStr == null) {
-                throw new HttpException("Content-Type is null.");
+                throw new HttpException(getServiceNameObject(), "Content-Type is null.");
             }
             final MediaType mediaType = new MediaType(contentTypeStr);
             InputStream is = response.getInputStream();
@@ -249,7 +249,7 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
             } else if ("application/zip".equals(mediaType.getMediaType())) {
                 return new Object[] { mediaType.getParameter("name"), is };
             } else {
-                throw new HttpException("Unsupported Content-Type : " + mediaType.getMediaType());
+                throw new HttpException(getServiceNameObject(), "Unsupported Content-Type : " + mediaType.getMediaType());
             }
         }
     }

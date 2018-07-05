@@ -31,6 +31,8 @@
  */
 package jp.ossc.nimbus.service.http;
 
+import jp.ossc.nimbus.core.ServiceName;
+
 /**
  * リクエスト生成例外。<p>
  *
@@ -42,37 +44,42 @@ public class HttpRequestCreateException extends HttpException {
     
     /**
      * コンストラクタ
+     * 
+     * @param name 例外が発生したサービス名
      */
-    public HttpRequestCreateException() {
-        super();
+    public HttpRequestCreateException(ServiceName name) {
+        super(name);
     }
     
     /**
      * コンストラクタ
      * 
+     * @param name 例外が発生したサービス名
      * @param message メッセージ
      */
-    public HttpRequestCreateException(String message) {
-        super(message);
+    public HttpRequestCreateException(ServiceName name,String message) {
+        super(name, message);
     }
     
     /**
      * コンストラクタ
      * 
+     * @param name 例外が発生したサービス名
      * @param message メッセージ
      * @param cause 原因
      */
-    public HttpRequestCreateException(String message, Throwable cause) {
-        super(message, cause);
+    public HttpRequestCreateException(ServiceName name, String message, Throwable cause) {
+        super(name, message, cause);
     }
     
     /**
      * コンストラクタ
      * 
+     * @param name 例外が発生したサービス名
      * @param cause 原因
      */
-    public HttpRequestCreateException(Throwable cause) {
-        super(cause);
+    public HttpRequestCreateException(ServiceName name, Throwable cause) {
+        super(name, cause);
     }
     
 }

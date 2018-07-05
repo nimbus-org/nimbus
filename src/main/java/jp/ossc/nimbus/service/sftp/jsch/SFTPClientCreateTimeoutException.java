@@ -31,6 +31,7 @@
  */
 package jp.ossc.nimbus.service.sftp.jsch;
 
+import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.service.sftp.SFTPException;
 
 /**
@@ -44,37 +45,42 @@ public class SFTPClientCreateTimeoutException extends SFTPException {
     
     /**
      * コンストラクタ
+     * 
+     * @param name 例外が発生したサービス名
      */
-    public SFTPClientCreateTimeoutException() {
-        super();
+    public SFTPClientCreateTimeoutException(ServiceName name) {
+        super(name);
     }
     
     /**
      * コンストラクタ
      * 
+     * @param name 例外が発生したサービス名
      * @param message メッセージ
      */
-    public SFTPClientCreateTimeoutException(String message) {
-        super(message);
+    public SFTPClientCreateTimeoutException(ServiceName name, String message) {
+        super(name, message);
     }
     
     /**
      * コンストラクタ
      * 
+     * @param name 例外が発生したサービス名
      * @param message メッセージ
      * @param cause 原因
      */
-    public SFTPClientCreateTimeoutException(String message, Throwable cause) {
-        super(message, cause);
+    public SFTPClientCreateTimeoutException(ServiceName name, String message, Throwable cause) {
+        super(name, message, cause);
     }
     
     /**
      * コンストラクタ
      * 
+     * @param name 例外が発生したサービス名
      * @param cause 原因
      */
-    public SFTPClientCreateTimeoutException(Throwable cause) {
-        super(cause);
+    public SFTPClientCreateTimeoutException(ServiceName name, Throwable cause) {
+        super(name, cause);
     }
     
 }
