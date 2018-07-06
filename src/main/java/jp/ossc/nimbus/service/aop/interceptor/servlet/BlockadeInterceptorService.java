@@ -32,22 +32,27 @@
 package jp.ossc.nimbus.service.aop.interceptor.servlet;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.Map;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
-import javax.servlet.http.*;
 
-import jp.ossc.nimbus.beans.PropertyAccess;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import jp.ossc.nimbus.beans.NoSuchPropertyException;
-import jp.ossc.nimbus.beans.dataset.RecordList;
+import jp.ossc.nimbus.beans.PropertyAccess;
 import jp.ossc.nimbus.beans.dataset.Record;
-import jp.ossc.nimbus.core.*;
+import jp.ossc.nimbus.beans.dataset.RecordList;
+import jp.ossc.nimbus.core.ServiceManagerFactory;
+import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.recset.RecordSet;
 import jp.ossc.nimbus.recset.RowData;
-import jp.ossc.nimbus.service.aop.*;
+import jp.ossc.nimbus.service.aop.InterceptorChain;
+import jp.ossc.nimbus.service.aop.ServletFilterInvocationContext;
+import jp.ossc.nimbus.service.aop.interceptor.servlet.AuthenticateInterceptorService.AuthenticatedInfo;
 import jp.ossc.nimbus.service.codemaster.CodeMasterFinder;
 import jp.ossc.nimbus.service.context.Context;
 
@@ -131,6 +136,8 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
     private String pathPropertyName = DEFAULT_PROPERTY_NAME_PATH;
     private String statePropertyName = DEFAULT_PROPERTY_NAME_STATE;
     private String messagePropertyName = DEFAULT_PROPERTY_NAME_MESSAGE;
+    
+    private String sessionAuthenticatedInfoAttributeName;
     
     private int stateOpen = BLOCKADE_STATE_OPEN;
     private int stateAllClose = BLOCKADE_STATE_ALL_CLOSE;
@@ -221,6 +228,14 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
         return messagePropertyName;
     }
     
+    public String getSessionAuthenticatedInfoAttributeName() {
+        return sessionAuthenticatedInfoAttributeName;
+    }
+
+    public void setSessionAuthenticatedInfoAttributeName(String attributeName) {
+        sessionAuthenticatedInfoAttributeName = attributeName;
+    }
+
     public void setCodeMasterFinder(CodeMasterFinder finder) {
         codeMasterFinder = finder;
     }
@@ -356,20 +371,32 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
         boolean isSpecialUser = false;
         String userKey = null;
         if (specialUserCodeMaster != null) {
-            Object requestObject = request.getAttribute(requestObjectAttributeName);
-            if (requestObject == null) {
-                throw new BlockadeProcessException("RequestObject is null.");
+            Object checkTargetObject = null;
+            if(sessionAuthenticatedInfoAttributeName != null) {
+                HttpSession session = request.getSession(false);
+                if(session != null) {
+                    AuthenticatedInfo authenticatedInfo = (AuthenticatedInfo)session.getAttribute(sessionAuthenticatedInfoAttributeName);
+                    if(authenticatedInfo != null) {
+                        checkTargetObject = authenticatedInfo.authenticatedInfo;
+                    }
+                }
+            }
+            if(checkTargetObject == null) {
+                checkTargetObject = request.getAttribute(requestObjectAttributeName);
+            }
+            if (checkTargetObject == null) {
+                throw new BlockadeProcessException("CheckTargetObject is not found.");
             }
             if (specialUserCodeMaster instanceof RecordList) {
                 RecordList list = (RecordList) specialUserCodeMaster;
                 Record primaryKey = list.createRecord();
-                applySpecialUserMapping(requestObject, primaryKey);
+                applySpecialUserMapping(checkTargetObject, primaryKey);
                 userKey = primaryKey.toString();
                 isSpecialUser = list.searchByPrimaryKey(primaryKey) != null;
             } else if (specialUserCodeMaster instanceof RecordSet) {
                 RecordSet recset = (RecordSet) specialUserCodeMaster;
                 RowData primaryKey = recset.createNewRecord();
-                applySpecialUserMapping(requestObject, primaryKey);
+                applySpecialUserMapping(checkTargetObject, primaryKey);
                 userKey = primaryKey.getKey();
                 isSpecialUser = recset.get(primaryKey) != null;
             } else {
