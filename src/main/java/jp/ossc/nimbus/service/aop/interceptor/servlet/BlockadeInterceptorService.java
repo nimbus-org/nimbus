@@ -122,6 +122,7 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
     private String requestObjectAttributeName = StreamExchangeInterceptorServiceMBean.DEFAULT_REQUEST_OBJECT_ATTRIBUTE_NAME;
     
     private Map specialUserMapping;
+    private Map sessionSpecialUserMapping;
     private Map blockadeMapping;
     
     private ServiceName codeMasterFinderServiceName;
@@ -162,6 +163,14 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
     
     public Map getSpecialUserMapping() {
         return specialUserMapping;
+    }
+    
+    public void setSessionSpecialUserMapping(Map mapping) {
+        sessionSpecialUserMapping = mapping;
+    }
+    
+    public Map getSessionSpecialUserMapping() {
+        return sessionSpecialUserMapping;
     }
     
     public void setBlockadeMapping(Map mapping) {
@@ -311,6 +320,9 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
         if (specialUserCodeMasterKey != null && (specialUserMapping == null || specialUserMapping.size() == 0)) {
             throw new IllegalArgumentException("SpecialUserMapping must be specified.");
         }
+        if (sessionAuthenticatedInfoAttributeName != null && (sessionSpecialUserMapping == null || sessionSpecialUserMapping.size() == 0)) {
+            throw new IllegalArgumentException("SessionSpecialUserMapping must be specified.");
+        }
         if (codeMasterFinderServiceName != null) {
             codeMasterFinder = (CodeMasterFinder) ServiceManagerFactory.getServiceObject(codeMasterFinderServiceName);
         }
@@ -371,32 +383,32 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
         boolean isSpecialUser = false;
         String userKey = null;
         if (specialUserCodeMaster != null) {
+            boolean isCheckSessionObject = false;
             Object checkTargetObject = null;
             if(sessionAuthenticatedInfoAttributeName != null) {
                 HttpSession session = request.getSession(false);
                 if(session != null) {
-                    AuthenticatedInfo authenticatedInfo = (AuthenticatedInfo)session.getAttribute(sessionAuthenticatedInfoAttributeName);
-                    if(authenticatedInfo != null) {
-                        checkTargetObject = authenticatedInfo.authenticatedInfo;
-                    }
+                    checkTargetObject = (AuthenticatedInfo)session.getAttribute(sessionAuthenticatedInfoAttributeName);
                 }
             }
-            if(checkTargetObject == null) {
+            if(checkTargetObject != null) {
+                isCheckSessionObject = true;
+            } else {
                 checkTargetObject = request.getAttribute(requestObjectAttributeName);
-            }
-            if (checkTargetObject == null) {
-                throw new BlockadeProcessException("CheckTargetObject is not found.");
+                if (checkTargetObject == null) {
+                    throw new BlockadeProcessException("CheckTargetObject is not found.");
+                }
             }
             if (specialUserCodeMaster instanceof RecordList) {
                 RecordList list = (RecordList) specialUserCodeMaster;
                 Record primaryKey = list.createRecord();
-                applySpecialUserMapping(checkTargetObject, primaryKey);
+                applySpecialUserMapping(checkTargetObject, primaryKey, isCheckSessionObject);
                 userKey = primaryKey.toString();
                 isSpecialUser = list.searchByPrimaryKey(primaryKey) != null;
             } else if (specialUserCodeMaster instanceof RecordSet) {
                 RecordSet recset = (RecordSet) specialUserCodeMaster;
                 RowData primaryKey = recset.createNewRecord();
-                applySpecialUserMapping(checkTargetObject, primaryKey);
+                applySpecialUserMapping(checkTargetObject, primaryKey, isCheckSessionObject);
                 userKey = primaryKey.getKey();
                 isSpecialUser = recset.get(primaryKey) != null;
             } else {
@@ -486,19 +498,20 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
         return isMatch;
     }
     
-    private Object applySpecialUserMapping(Object requestObject, Object primaryKey) throws BlockadeProcessException {
-        Iterator entries = specialUserMapping.entrySet().iterator();
+    private Object applySpecialUserMapping(Object requestObject, Object primaryKey, boolean isCheckSessionObject) throws BlockadeProcessException {
+        Map mapping = isCheckSessionObject ? sessionSpecialUserMapping : specialUserMapping;
+        Iterator entries = mapping.entrySet().iterator();
         while (entries.hasNext()) {
             Map.Entry entry = (Map.Entry) entries.next();
             Object key = null;
             try {
                 key = propertyAccess.get(requestObject, (String) entry.getKey());
             } catch (IllegalArgumentException e) {
-                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + entry.getKey() + "' cannot acquire from a request.", e);
+                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + entry.getKey() + "' cannot acquire from a object.", e);
             } catch (NoSuchPropertyException e) {
-                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + entry.getKey() + "' cannot acquire from a request.", e);
+                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + entry.getKey() + "' cannot acquire from a object.", e);
             } catch (InvocationTargetException e) {
-                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + entry.getKey() + "' cannot acquire from a request.",
+                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + entry.getKey() + "' cannot acquire from a object.",
                         e.getTargetException());
             }
             try {
