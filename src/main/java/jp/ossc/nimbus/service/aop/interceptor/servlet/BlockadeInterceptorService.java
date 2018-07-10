@@ -52,7 +52,6 @@ import jp.ossc.nimbus.recset.RecordSet;
 import jp.ossc.nimbus.recset.RowData;
 import jp.ossc.nimbus.service.aop.InterceptorChain;
 import jp.ossc.nimbus.service.aop.ServletFilterInvocationContext;
-import jp.ossc.nimbus.service.aop.interceptor.servlet.AuthenticateInterceptorService.AuthenticatedInfo;
 import jp.ossc.nimbus.service.codemaster.CodeMasterFinder;
 import jp.ossc.nimbus.service.context.Context;
 
