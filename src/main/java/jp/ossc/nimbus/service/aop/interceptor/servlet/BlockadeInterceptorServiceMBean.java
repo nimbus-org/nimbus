@@ -109,6 +109,21 @@ public interface BlockadeInterceptorServiceMBean
     public Map getSpecialUserMapping();
     
     /**
+     * HttpSession上のオブジェクトのユーザを特定するプロパティと、特権ユーザコードマスタのユーザを特定するプロパティのマッピングを設定する。<p>
+     * テスト開放をサポートする場合は、設定する。<br>
+     *
+     * @param mapping HttpSession上のオブジェクトのユーザを特定するプロパティ=特権ユーザコードマスタのユーザを特定するプロパティ
+     */
+    public void setSessionSpecialUserMapping(Map mapping);
+    
+    /**
+     * HttpSession上のオブジェクトのユーザを特定するプロパティと、特権ユーザコードマスタのユーザを特定するプロパティのマッピングを取得する。<p>
+     *
+     * @return HttpSession上のオブジェクトのユーザを特定するプロパティ=特権ユーザコードマスタのユーザを特定するプロパティ
+     */
+    public Map getSessionSpecialUserMapping();
+    
+    /**
      * リクエスト属性の閉塞レコードを特定するプロパティと、閉塞コードマスタの閉塞レコードを特定するプロパティのマッピングを設定する。<p>
      * 閉塞コードマスタを、リクエスト属性から絞り込みたい場合に、設定する。<br>
      *
@@ -230,6 +245,20 @@ public interface BlockadeInterceptorServiceMBean
      */
     public String getMessagePropertyName();
     
+    /**
+     * 要求オブジェクトをHttpSessionから取得する時に使用する属性名を設定する。<p>
+     *
+     * @param attributeName 属性名
+     */
+    public void setSessionObjectAttributeName(String attributeName);
+    
+    /**
+     * 要求オブジェクトをHttpSessionから取得する時に使用する属性名を取得する。<p>
+     * 
+     * @return 属性名
+     */
+    public String getSessionObjectAttributeName();
+
     /**
      * "閉塞状態：開放"を表すステータス値を取得する。<p>
      * 
