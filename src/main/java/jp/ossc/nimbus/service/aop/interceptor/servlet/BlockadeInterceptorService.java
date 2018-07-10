@@ -499,6 +499,7 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
     
     private Object applySpecialUserMapping(Object requestObject, Object primaryKey, boolean isCheckSessionObject) throws BlockadeProcessException {
         Map mapping = isCheckSessionObject ? sessionSpecialUserMapping : specialUserMapping;
+        String checkObjName = isCheckSessionObject ? "session object" : "request object";
         Iterator entries = mapping.entrySet().iterator();
         while (entries.hasNext()) {
             Map.Entry entry = (Map.Entry) entries.next();
@@ -506,11 +507,11 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
             try {
                 key = propertyAccess.get(requestObject, (String) entry.getKey());
             } catch (IllegalArgumentException e) {
-                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + entry.getKey() + "' cannot acquire from a object.", e);
+                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + entry.getKey() + "' cannot acquire from a " + checkObjName + ".", e);
             } catch (NoSuchPropertyException e) {
-                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + entry.getKey() + "' cannot acquire from a object.", e);
+                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + entry.getKey() + "' cannot acquire from a " + checkObjName + ".", e);
             } catch (InvocationTargetException e) {
-                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + entry.getKey() + "' cannot acquire from a object.",
+                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + entry.getKey() + "' cannot acquire from a " + checkObjName + ".",
                         e.getTargetException());
             }
             try {
