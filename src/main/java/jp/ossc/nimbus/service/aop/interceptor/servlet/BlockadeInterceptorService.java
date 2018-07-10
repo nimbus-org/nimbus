@@ -138,7 +138,7 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
     private String statePropertyName = DEFAULT_PROPERTY_NAME_STATE;
     private String messagePropertyName = DEFAULT_PROPERTY_NAME_MESSAGE;
     
-    private String sessionAuthenticatedInfoAttributeName;
+    private String sessionObjectAttributeName;
     
     private int stateOpen = BLOCKADE_STATE_OPEN;
     private int stateAllClose = BLOCKADE_STATE_ALL_CLOSE;
@@ -237,12 +237,12 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
         return messagePropertyName;
     }
     
-    public String getSessionAuthenticatedInfoAttributeName() {
-        return sessionAuthenticatedInfoAttributeName;
+    public String getSessionObjectAttributeName() {
+        return sessionObjectAttributeName;
     }
 
-    public void setSessionAuthenticatedInfoAttributeName(String attributeName) {
-        sessionAuthenticatedInfoAttributeName = attributeName;
+    public void setSessionObjectAttributeName(String attributeName) {
+        sessionObjectAttributeName = attributeName;
     }
 
     public void setCodeMasterFinder(CodeMasterFinder finder) {
@@ -320,7 +320,7 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
         if (specialUserCodeMasterKey != null && (specialUserMapping == null || specialUserMapping.size() == 0)) {
             throw new IllegalArgumentException("SpecialUserMapping must be specified.");
         }
-        if (sessionAuthenticatedInfoAttributeName != null && (sessionSpecialUserMapping == null || sessionSpecialUserMapping.size() == 0)) {
+        if (sessionObjectAttributeName != null && (sessionSpecialUserMapping == null || sessionSpecialUserMapping.size() == 0)) {
             throw new IllegalArgumentException("SessionSpecialUserMapping must be specified.");
         }
         if (codeMasterFinderServiceName != null) {
@@ -385,10 +385,10 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
         if (specialUserCodeMaster != null) {
             boolean isCheckSessionObject = false;
             Object checkTargetObject = null;
-            if(sessionAuthenticatedInfoAttributeName != null) {
+            if(sessionObjectAttributeName != null) {
                 HttpSession session = request.getSession(false);
                 if(session != null) {
-                    checkTargetObject = (AuthenticatedInfo)session.getAttribute(sessionAuthenticatedInfoAttributeName);
+                    checkTargetObject = session.getAttribute(sessionObjectAttributeName);
                 }
             }
             if(checkTargetObject != null) {
