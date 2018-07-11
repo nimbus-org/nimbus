@@ -1025,6 +1025,9 @@ public class DefaultPersistentManagerService extends ServiceBase
                 }else{
                     value = rs.getObject(index);
                 }
+                if(rs.wasNull()){
+                    value = null;
+                }
                 break;
             case Types.CHAR:
             case Types.VARCHAR:
