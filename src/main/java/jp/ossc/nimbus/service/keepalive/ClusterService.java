@@ -1631,14 +1631,14 @@ public class ClusterService extends ServiceBase implements ClusterServiceMBean{
                     clients = clientMembers.size() == 0 ? null : (GlobalUID[])clientMembers.values().toArray(new GlobalUID[clientMembers.size()]);
                     if(clients != null){
                         for(int i = 0; i < clients.length; i++){
-                            if(lastSendTime - (heartBeatInterval * heartBeatRetryCount) > clients[i].lastHeartBeatTime){
+                            if(lastSendTime - ((heartBeatInterval + heartBeatResponseTimeout) * heartBeatRetryCount) > clients[i].lastHeartBeatTime){
                                 clientMembers.remove(clients[i]);
                                 getLogger().write(MSG_ID_MESSAGE_CLIENT_REMOVE, new Object[]{getServiceNameObject(), clients[i]});
                             }
                         }
                     }
                 }
-            }else if(isMainRequesting && mainRequestingTime < lastSendTime - (heartBeatInterval * heartBeatRetryCount)){
+            }else if(isMainRequesting && mainRequestingTime < lastSendTime - ((heartBeatInterval + heartBeatResponseTimeout) * heartBeatRetryCount)){
                 synchronized(mainReqMembers){
                     if(isMainRequesting){
                         mainRequestingTime = System.currentTimeMillis();
@@ -1690,7 +1690,7 @@ public class ClusterService extends ServiceBase implements ClusterServiceMBean{
                     tmpLastReceiveUID = lastReceiveUID;
                     tmpLastReceiveTime = lastReceiveTime;
                 }
-                if(!isClient && tmpLastReceiveUID != null && tmpLastReceiveTime < (lastSendTime - (heartBeatInterval * heartBeatRetryCount))){
+                if(!isClient && tmpLastReceiveUID != null && tmpLastReceiveTime < (lastSendTime - ((heartBeatInterval + heartBeatResponseTimeout) * heartBeatRetryCount))){
                     synchronized(lastReceiveUIDLockObj){
                         lastReceiveUID = null;
                         lastReceiveTime = -1;
