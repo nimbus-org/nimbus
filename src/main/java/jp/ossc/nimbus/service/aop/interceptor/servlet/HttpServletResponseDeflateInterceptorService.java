@@ -264,6 +264,7 @@ public class HttpServletResponseDeflateInterceptorService
             this.acceptEncoding = acceptEncoding;
             this.enabledContentTypes = enabledContentTypes;
             this.disabledContentTypes = disabledContentTypes;
+            this.deflateLength = deflateLength;
         }
         
         public ServletOutputStream getOutputStream() throws IOException{
