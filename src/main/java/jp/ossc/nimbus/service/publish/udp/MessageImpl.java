@@ -193,6 +193,10 @@ public class MessageImpl extends MessageId implements Message, Comparable, Clone
         return windows;
     }
     
+    public List getWindows(){
+        return windows;
+    }
+    
     public Set getDestinationIds(){
         return destinationIds;
     }

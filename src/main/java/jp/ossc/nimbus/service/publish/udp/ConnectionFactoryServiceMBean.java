@@ -506,6 +506,21 @@ public interface ConnectionFactoryServiceMBean extends ServiceBaseMBean{
     public long getSendMessageCacheTime();
     
     /**
+     * 送信パケットをキャッシュする際のブロック件数を設定する。<p>
+     * デフォルトは、100。<br>
+     *
+     * @param size ブロック件数
+     */
+    public void setMessageCacheBlockSize(int size);
+    
+    /**
+     * 送信パケットをキャッシュする際のブロック件数を取得する。<p>
+     *
+     * @return ブロック件数
+     */
+    public int getMessageCacheBlockSize();
+    
+    /**
      * {@link jp.ossc.nimbus.service.publish.ClientConnectionFactory ClientConnectionFactory}リモートオブジェクトのJNDI名を設定する。<p>
      * デフォルトは、{@link jp.ossc.nimbus.service.publish.ClientConnectionFactory#DEFAULT_JNDI_NAME}。<br>
      *
