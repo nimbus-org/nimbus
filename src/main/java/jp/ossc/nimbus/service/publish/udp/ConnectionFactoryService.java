@@ -100,7 +100,7 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
     private int unicastPort;
     private int windowSize = 1024;
     private long sendMessageCacheTime = 5000;
-    private int messageCacheBlockSize = 100;
+    private int sendMessageCacheBlockSize = 100;
     private int localPort;
     
     private ServiceName jndiRepositoryServiceName;
@@ -320,11 +320,11 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
         return sendMessageCacheTime;
     }
     
-    public void setMessageCacheBlockSize(int size){
-        messageCacheBlockSize = size;
+    public void setSendMessageCacheBlockSize(int size){
+        sendMessageCacheBlockSize = size;
     }
-    public int getMessageCacheBlockSize(){
-        return messageCacheBlockSize;
+    public int getSendMessageCacheBlockSize(){
+        return sendMessageCacheBlockSize;
     }
     
     public void setLocalPort(int port){
@@ -1036,7 +1036,7 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
         }
         serverConnection.setWindowSize(getWindowSize());
         serverConnection.setSendMessageCacheTime(getSendMessageCacheTime());
-        serverConnection.setMessageCacheBlockSize(getMessageCacheBlockSize());
+        serverConnection.setSendMessageCacheBlockSize(getSendMessageCacheBlockSize());
         serverConnection.setTimeToLive(timeToLive);
         serverConnection.setLogger(getLogger());
         serverConnection.setMaxSendRetryCount(maxSendRetryCount);

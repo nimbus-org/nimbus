@@ -511,14 +511,14 @@ public interface ConnectionFactoryServiceMBean extends ServiceBaseMBean{
      *
      * @param size ブロック件数
      */
-    public void setMessageCacheBlockSize(int size);
+    public void setSendMessageCacheBlockSize(int size);
     
     /**
      * 送信パケットをキャッシュする際のブロック件数を取得する。<p>
      *
      * @return ブロック件数
      */
-    public int getMessageCacheBlockSize();
+    public int getSendMessageCacheBlockSize();
     
     /**
      * {@link jp.ossc.nimbus.service.publish.ClientConnectionFactory ClientConnectionFactory}リモートオブジェクトのJNDI名を設定する。<p>

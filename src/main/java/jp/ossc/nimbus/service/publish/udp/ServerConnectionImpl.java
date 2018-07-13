@@ -180,7 +180,7 @@ public class ServerConnectionImpl implements ServerConnection{
     protected long recycleWindowCount;
     private List sendRequestBuffer;
     private List asynchContextBuffer;
-    private int messageCacheBlockSize = 100;
+    private int sendMessageCacheBlockSize = 100;
     
     public ServerConnectionImpl(
         ServerSocket serverSocket,
@@ -463,8 +463,8 @@ public class ServerConnectionImpl implements ServerConnection{
         windowRecycleBufferSize = size;
     }
     
-    public void setMessageCacheBlockSize(int size){
-        messageCacheBlockSize = size;
+    public void setSendMessageCacheBlockSize(int size){
+        sendMessageCacheBlockSize = size;
     }
     
     public void setTimeToLive(int ttl) throws IOException{
@@ -2241,13 +2241,13 @@ public class ServerConnectionImpl implements ServerConnection{
         public void add(MessageImpl message){
             List block = null;
             if(messageList.size() == 0){
-                block = new ArrayList(messageCacheBlockSize);
+                block = new ArrayList(sendMessageCacheBlockSize);
                 messageList.add(block);
             }else{
                 block = (List)messageList.get(messageList.size() - 1);
             }
-            if(block.size() >= messageCacheBlockSize){
-                block = new ArrayList(messageCacheBlockSize);
+            if(block.size() >= sendMessageCacheBlockSize){
+                block = new ArrayList(sendMessageCacheBlockSize);
                 messageList.add(block);
             }
             block.add(message);
