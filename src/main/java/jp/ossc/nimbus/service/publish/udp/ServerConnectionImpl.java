@@ -2300,10 +2300,16 @@ public class ServerConnectionImpl implements ServerConnection{
             int fromIndex = Collections.binarySearch(messageList, from, COMP);
             if(fromIndex < 0){
                 fromIndex = -fromIndex - 2;
+                if(fromIndex < 0){
+                    return result;
+                }
             }
             int toIndex = to == null ? messageList.size() - 1 : Collections.binarySearch(messageList, to, COMP);
             if(toIndex < 0){
                 toIndex = -toIndex - 2;
+                if(toIndex < 0){
+                    return result;
+                }
             }
             int index = 0;
             for(int i = fromIndex; i <= toIndex; i++){
