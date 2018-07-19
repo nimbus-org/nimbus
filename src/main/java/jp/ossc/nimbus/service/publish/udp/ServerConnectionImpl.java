@@ -68,6 +68,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Date;
+import java.util.Comparator;
 
 import jp.ossc.nimbus.daemon.Daemon;
 import jp.ossc.nimbus.daemon.DaemonControl;
@@ -103,6 +104,32 @@ import jp.ossc.nimbus.service.publish.tcp.StartReceiveMessage;
  * @author M.Takata
  */
 public class ServerConnectionImpl implements ServerConnection{
+        
+    private static final Comparator COMP = new Comparator(){
+        public int compare(Object o1, Object o2){
+            if(o1 instanceof MessageId){
+                MessageId m1 = (MessageId)o1;
+                MessageId m2 = (MessageId)((List)o2).get(0);
+                return m1.sequence - m2.sequence;
+            }else if(o2 instanceof MessageId){
+                MessageId m1 = (MessageId)((List)o1).get(0);
+                MessageId m2 = (MessageId)o2;
+                return m1.sequence - m2.sequence;
+            }else{
+                List block1 = (List)o1;
+                List block2 = (List)o2;
+                return ((MessageId)block1.get(0)).sequence - ((MessageId)block2.get(0)).sequence;
+            }
+        }
+    };
+    
+    private static final Comparator BLOCK_COMP = new Comparator(){
+        public int compare(Object o1, Object o2){
+            MessageId m1 = (MessageId)o1;
+            MessageId m2 = (MessageId)o2;
+            return m1.sequence - m2.sequence;
+        }
+    };
     
     private ServerSocket serverSocket;
     private ServerSocketChannel serverSocketChannel;
@@ -140,8 +167,7 @@ public class ServerConnectionImpl implements ServerConnection{
     private int windowSize;
     private int maxWindowCount;
     private int currentSequence = 0;
-    private List sendMessageCache = Collections.synchronizedList(new ArrayList());
-    private Map sendMessageCacheMap = Collections.synchronizedMap(new HashMap());
+    private MessageCache sendMessageCache = new MessageCache();
     private long sendMessageCacheTime;
     private boolean isAcknowledge;
     private int messageRecycleBufferSize = 100;
@@ -154,6 +180,7 @@ public class ServerConnectionImpl implements ServerConnection{
     protected long recycleWindowCount;
     private List sendRequestBuffer;
     private List asynchContextBuffer;
+    private int sendMessageCacheBlockSize = 100;
     
     public ServerConnectionImpl(
         ServerSocket serverSocket,
@@ -434,6 +461,10 @@ public class ServerConnectionImpl implements ServerConnection{
     
     public void setWindowRecycleBufferSize(int size){
         windowRecycleBufferSize = size;
+    }
+    
+    public void setSendMessageCacheBlockSize(int size){
+        sendMessageCacheBlockSize = size;
     }
     
     public void setTimeToLive(int ttl) throws IOException{
@@ -787,46 +818,30 @@ public class ServerConnectionImpl implements ServerConnection{
     }
     
     private void addSendMessageCache(MessageImpl message) throws IOException{
-        final int windowCount = addSendMessageCache(message, sendMessageCacheMap, sendMessageCache);
-        synchronized(sendMessageCacheMap){
+        final int windowCount = addSendMessageCache(message, sendMessageCache);
+        synchronized(sendMessageCache){
             sendCount++;
             sendPacketCount += windowCount;
         }
     }
     
-    private int addSendMessageCache(MessageImpl message, Map sendMessageCacheMap, List sendMessageCache) throws IOException{
+    private int addSendMessageCache(MessageImpl message, MessageCache sendMessageCache) throws IOException{
         final long currentTime = System.currentTimeMillis();
         List windows = null;
-        synchronized(sendMessageCacheMap){
+        synchronized(sendMessageCache){
             final Integer seq = new Integer(message.getSequence());
             windows = message.getWindows(this, windowSize, externalizer);
-            if(!sendMessageCacheMap.containsKey(seq)){
+            if(!sendMessageCache.contains(message)){
                 sendMessageCache.add(message);
-                sendMessageCacheMap.put(seq, windows);
-                for(int i = 0, imax = sendMessageCache.size(); i < imax; i++){
-                    MessageImpl msg = (MessageImpl)sendMessageCache.get(0);
-                    if((currentTime - msg.getSendTime()) > sendMessageCacheTime){
-                        MessageImpl trashMsg = (MessageImpl)sendMessageCache.remove(0);
-                        if(trashMsg.isSend()){
-                            List trashWindows = (List)sendMessageCacheMap.remove(new Integer(trashMsg.getSequence()));
-                            for(int j = 0, jmax = trashWindows.size(); j < jmax; j++){
-                                recycleWindow((Window)trashWindows.get(j));
-                            }
-                            recycleMessage(trashMsg);
-                        }
-                    }else{
-                        break;
-                    }
-                }
             }
         }
         return windows.size();
     }
     
-    private List getSendWindows(MessageId id, Map sendMessageCacheMap){
+    private List getSendWindows(MessageId id, MessageCache sendMessageCache){
         List result = null;
-        synchronized(sendMessageCacheMap){
-            List windows = (List)sendMessageCacheMap.get(new Integer(id.sequence));
+        synchronized(sendMessageCache){
+            List windows = sendMessageCache.getWindows(id);
             if(windows != null){
                 result = new ArrayList();
                 for(int i = 0, imax = windows.size(); i < imax; i++){
@@ -837,63 +852,27 @@ public class ServerConnectionImpl implements ServerConnection{
         return result;
     }
     
-    private List getSendMessages(long from, Map sendMessageCacheMap, List sendMessageCache){
-        List result = new ArrayList();
-        synchronized(sendMessageCacheMap){
-            for(int i = sendMessageCache.size(); --i >= 0; ){
-                MessageImpl msg = (MessageImpl)sendMessageCache.get(i);
-                if(msg.getSendTime() >= from){
-                    result.add(0, copyMessage(msg));
-                }else{
-                    break;
-                }
-            }
-        }
-        return result;
-    }
-    
-    private Message getSendMessage(MessageId id, Map sendMessageCacheMap, List sendMessageCache){
-        synchronized(sendMessageCacheMap){
-            if(sendMessageCache.size() == 0){
-                return null;
-            }
-            int index = Collections.binarySearch(sendMessageCache, id);
-            if(index < 0){
-                return null;
-            }else{
-                return copyMessage((MessageImpl)sendMessageCache.get(index));
-            }
+    private List getSendMessages(long from, MessageCache sendMessageCache){
+        synchronized(sendMessageCache){
+            return sendMessageCache.getMessages(from);
         }
     }
     
-    private List getSendMessages(MessageId from, MessageId to, Map sendMessageCacheMap, List sendMessageCache){
-        List result = new ArrayList();
-        synchronized(sendMessageCacheMap){
-            if(sendMessageCache.size() == 0){
-                return result;
-            }
-            int toIndex = to == null ? sendMessageCache.size() : Collections.binarySearch(sendMessageCache, to);
-            if(toIndex < 0){
-                result.add(copyMessage((MessageImpl)sendMessageCache.get(0)));
-                return result;
-            }
-            int fromIndex = Collections.binarySearch(sendMessageCache, from);
-            if(fromIndex < 0){
-                fromIndex = -fromIndex - 1;
-            }
-            
-            for(int i = fromIndex; i < toIndex; i++){
-                MessageImpl msg = (MessageImpl)sendMessageCache.get(i);
-                result.add(copyMessage(msg));
-            }
+    private Message getSendMessage(MessageId id, MessageCache sendMessageCache){
+        synchronized(sendMessageCache){
+            return sendMessageCache.getMessage(id);
         }
-        return result;
     }
     
-    private Window getSendWindow(WindowId id, Map sendMessageCacheMap){
-        List windows = null;
-        synchronized(sendMessageCacheMap){
-            windows = (List)sendMessageCacheMap.get(new Integer(id.sequence));
+    private List getSendMessages(MessageId from, MessageId to, MessageCache sendMessageCache){
+        synchronized(sendMessageCache){
+            return sendMessageCache.getMessages(from, to);
+        }
+    }
+    
+    private Window getSendWindow(WindowId id, MessageCache sendMessageCache){
+        synchronized(sendMessageCache){
+            List windows = sendMessageCache.getWindows(id.toMessageId());
             if(windows == null || windows.size() <= id.windowNo){
                 return null;
             }
@@ -903,20 +882,20 @@ public class ServerConnectionImpl implements ServerConnection{
     }
     
     public int getMostOldSendMessageCacheSequence(){
-        return getMostOldSendMessageCacheSequence(sendMessageCacheMap, sendMessageCache);
+        return getMostOldSendMessageCacheSequence(sendMessageCache);
     }
-    private int getMostOldSendMessageCacheSequence(Map sendMessageCacheMap, List sendMessageCache){
-        synchronized(sendMessageCacheMap){
-            return sendMessageCache.size() == 0 ? 0 : ((MessageImpl)sendMessageCache.get(0)).sequence;
+    private int getMostOldSendMessageCacheSequence(MessageCache sendMessageCache){
+        synchronized(sendMessageCache){
+            return sendMessageCache.getMostOldMessageSequence();
         }
     }
     
     public Date getMostOldSendMessageCacheTime(){
-        return getMostOldSendMessageCacheTime(sendMessageCacheMap, sendMessageCache);
+        return getMostOldSendMessageCacheTime(sendMessageCache);
     }
-    private Date getMostOldSendMessageCacheTime(Map sendMessageCacheMap, List sendMessageCache){
-        synchronized(sendMessageCacheMap){
-            return sendMessageCache.size() == 0 ? null : new Date(((MessageImpl)sendMessageCache.get(0)).getSendTime());
+    private Date getMostOldSendMessageCacheTime(MessageCache sendMessageCache){
+        synchronized(sendMessageCache){
+            return sendMessageCache.getMostOldMessageTime();
         }
     }
     
@@ -983,8 +962,7 @@ public class ServerConnectionImpl implements ServerConnection{
     }
     
     public void reset(){
-        synchronized(sendMessageCacheMap){
-            sendMessageCacheMap.clear();
+        synchronized(sendMessageCache){
             sendMessageCache.clear();
         }
     }
@@ -1229,8 +1207,7 @@ public class ServerConnectionImpl implements ServerConnection{
         private long lostCount;
         
         private int currentSequence = 0;
-        private List sendMessageCache;
-        private Map sendMessageCacheMap;
+        private MessageCache sendMessageCache;
         private Object socketLock = new Object();
         
         public ClientImpl(SocketChannel sc, DatagramSocket ss){
@@ -1248,8 +1225,7 @@ public class ServerConnectionImpl implements ServerConnection{
             queue.accept();
             responseQueue = queue;
             if(multicastAddress == null){
-                ClientImpl.this.sendMessageCache = Collections.synchronizedList(new ArrayList());
-                ClientImpl.this.sendMessageCacheMap = Collections.synchronizedMap(new HashMap());
+                ClientImpl.this.sendMessageCache = new MessageCache();
             }
         }
         
@@ -1265,8 +1241,7 @@ public class ServerConnectionImpl implements ServerConnection{
             requestDispatcher.setDaemon(true);
             requestDispatcher.start();
             if(multicastAddress == null){
-                ClientImpl.this.sendMessageCache = Collections.synchronizedList(new ArrayList());
-                ClientImpl.this.sendMessageCacheMap = Collections.synchronizedMap(new HashMap());
+                ClientImpl.this.sendMessageCache = new MessageCache();
             }
         }
         
@@ -1282,7 +1257,6 @@ public class ServerConnectionImpl implements ServerConnection{
         private void addSendMessageCache(MessageImpl message) throws IOException{
             ServerConnectionImpl.this.addSendMessageCache(
                 message,
-                ClientImpl.this.sendMessageCacheMap,
                 ClientImpl.this.sendMessageCache
             );
         }
@@ -1290,14 +1264,13 @@ public class ServerConnectionImpl implements ServerConnection{
         private List getSendWindows(MessageId id){
             return ServerConnectionImpl.this.getSendWindows(
                 id,
-                ClientImpl.this.sendMessageCacheMap != null ? ClientImpl.this.sendMessageCacheMap : ServerConnectionImpl.this.sendMessageCacheMap
+                ClientImpl.this.sendMessageCache != null ? ClientImpl.this.sendMessageCache : ServerConnectionImpl.this.sendMessageCache
             );
         }
         
         private List getSendMessages(long from){
             return ServerConnectionImpl.this.getSendMessages(
                 from,
-                ClientImpl.this.sendMessageCacheMap != null ? ClientImpl.this.sendMessageCacheMap : ServerConnectionImpl.this.sendMessageCacheMap,
                 ClientImpl.this.sendMessageCache != null ? ClientImpl.this.sendMessageCache : ServerConnectionImpl.this.sendMessageCache
             );
         }
@@ -1305,7 +1278,6 @@ public class ServerConnectionImpl implements ServerConnection{
         private Message getSendMessage(MessageId id){
             return ServerConnectionImpl.this.getSendMessage(
                 id,
-                ClientImpl.this.sendMessageCacheMap != null ? ClientImpl.this.sendMessageCacheMap : ServerConnectionImpl.this.sendMessageCacheMap,
                 ClientImpl.this.sendMessageCache != null ? ClientImpl.this.sendMessageCache : ServerConnectionImpl.this.sendMessageCache
             );
         }
@@ -1314,7 +1286,6 @@ public class ServerConnectionImpl implements ServerConnection{
             return ServerConnectionImpl.this.getSendMessages(
                 from,
                 to,
-                ClientImpl.this.sendMessageCacheMap != null ? ClientImpl.this.sendMessageCacheMap : ServerConnectionImpl.this.sendMessageCacheMap,
                 ClientImpl.this.sendMessageCache != null ? ClientImpl.this.sendMessageCache : ServerConnectionImpl.this.sendMessageCache
             );
         }
@@ -1322,20 +1293,18 @@ public class ServerConnectionImpl implements ServerConnection{
         private Window getSendWindow(WindowId id){
             return ServerConnectionImpl.this.getSendWindow(
                 id,
-                ClientImpl.this.sendMessageCacheMap != null ? ClientImpl.this.sendMessageCacheMap : ServerConnectionImpl.this.sendMessageCacheMap
+                ClientImpl.this.sendMessageCache != null ? ClientImpl.this.sendMessageCache : ServerConnectionImpl.this.sendMessageCache
             );
         }
         
         private int getMostOldSendMessageCacheSequence(){
             return ServerConnectionImpl.this.getMostOldSendMessageCacheSequence(
-                ClientImpl.this.sendMessageCacheMap != null ? ClientImpl.this.sendMessageCacheMap : ServerConnectionImpl.this.sendMessageCacheMap,
                 ClientImpl.this.sendMessageCache != null ? ClientImpl.this.sendMessageCache : ServerConnectionImpl.this.sendMessageCache
             );
         }
         
         private Date getMostOldSendMessageCacheTime(){
             return ServerConnectionImpl.this.getMostOldSendMessageCacheTime(
-                ClientImpl.this.sendMessageCacheMap != null ? ClientImpl.this.sendMessageCacheMap : ServerConnectionImpl.this.sendMessageCacheMap,
                 ClientImpl.this.sendMessageCache != null ? ClientImpl.this.sendMessageCache : ServerConnectionImpl.this.sendMessageCache
             );
         }
@@ -2246,6 +2215,185 @@ public class ServerConnectionImpl implements ServerConnection{
             AsynchContext asynchContext = (AsynchContext)obj;
             SendRequest request = (SendRequest)asynchContext.getInput();
             return request.client;
+        }
+    }
+    
+    private class MessageCache{
+        
+        private final List messageList = new ArrayList();
+        private int size;
+        
+        public boolean contains(MessageId id){
+            if(messageList.size() == 0){
+                return false;
+            }
+            int index = Collections.binarySearch(messageList, id, COMP);
+            if(index < 0){
+                index = -index - 2;
+            }
+            if(index < messageList.size()){
+                return Collections.binarySearch((List)messageList.get(index), id, BLOCK_COMP) >= 0;
+            }else{
+                return false;
+            }
+        }
+        
+        public void add(MessageImpl message){
+            List block = null;
+            if(messageList.size() == 0){
+                block = new ArrayList(sendMessageCacheBlockSize);
+                messageList.add(block);
+            }else{
+                block = (List)messageList.get(messageList.size() - 1);
+            }
+            if(block.size() >= sendMessageCacheBlockSize){
+                block = new ArrayList(sendMessageCacheBlockSize);
+                messageList.add(block);
+            }
+            block.add(message);
+            size++;
+            final long currentTime = System.currentTimeMillis();
+            for(int i = 0, imax = messageList.size(); i < imax; i++){
+                block = (List)messageList.get(0);
+                MessageImpl blockLastMessage = (MessageImpl)block.get(block.size() - 1);
+                if((currentTime - blockLastMessage.getSendTime()) > sendMessageCacheTime){
+                    messageList.remove(0);
+                    size -= block.size();
+                    for(int j = 0, jmax = block.size(); j < jmax; j++){
+                        MessageImpl trashMsg = (MessageImpl)block.get(j);
+                        if(trashMsg.isSend()){
+                            List trashWindows = trashMsg.getWindows();
+                            for(int k = 0, kmax = trashWindows.size(); k < kmax; k++){
+                                recycleWindow((Window)trashWindows.get(k));
+                            }
+                            recycleMessage(trashMsg);
+                        }
+                    }
+                }else{
+                    break;
+                }
+            }
+        }
+        
+        public MessageImpl getMessage(MessageId id){
+            if(messageList.size() == 0){
+                return null;
+            }
+            int index = Collections.binarySearch(messageList, id, COMP);
+            if(index < 0){
+                index = -index - 2;
+            }
+            if(index < messageList.size()){
+                List block = (List)messageList.get(index);
+                index = Collections.binarySearch(block, id, BLOCK_COMP);
+                return index >= 0 ? (MessageImpl)block.get(index) : null;
+            }else{
+                return null;
+            }
+        }
+        
+        public List getMessages(MessageId from, MessageId to){
+            List result = new ArrayList();
+            if(messageList.size() == 0){
+                return result;
+            }
+            int fromIndex = Collections.binarySearch(messageList, from, COMP);
+            if(fromIndex < 0){
+                fromIndex = -fromIndex - 2;
+                if(fromIndex < 0){
+                    return result;
+                }
+            }
+            int toIndex = to == null ? messageList.size() - 1 : Collections.binarySearch(messageList, to, COMP);
+            if(toIndex < 0){
+                toIndex = -toIndex - 2;
+                if(toIndex < 0){
+                    return result;
+                }
+            }
+            int index = 0;
+            for(int i = fromIndex; i <= toIndex; i++){
+                List block = (List)messageList.get(i);
+                if(i == fromIndex){
+                    index = Collections.binarySearch(block, from, BLOCK_COMP);
+                    if(index < 0){
+                        index = -index - 1;
+                    }
+                    for(int j = index, jmax = block.size(); j < jmax; j++){
+                        result.add(copyMessage((MessageImpl)block.get(j)));
+                    }
+                }else if(i == toIndex){
+                    index = to == null ? block.size() : Collections.binarySearch(block, to, BLOCK_COMP);
+                    if(index < 0){
+                        index = -index - 1;
+                    }
+                    for(int j = 0; j < index; j++){
+                        result.add(copyMessage((MessageImpl)block.get(j)));
+                    }
+                }else{
+                    for(int j = 0, jmax = block.size(); j < jmax; j++){
+                        result.add(copyMessage((MessageImpl)block.get(j)));
+                    }
+                }
+            }
+            return result;
+        }
+        
+        public List getWindows(MessageId id){
+            MessageImpl msg = getMessage(id);
+            return msg == null ? null : msg.getWindows();
+        }
+        
+        public List getMessages(long fromTime){
+            List result = new ArrayList();
+            for(int i = messageList.size(); --i >= 0; ){
+                List block = (List)messageList.get(i);
+                MessageImpl msg = (MessageImpl)block.get(0);
+                if(msg.getSendTime() >= fromTime){
+                    for(int j = block.size(); --j >= 0;){
+                        result.add(0, copyMessage((MessageImpl)block.get(j)));
+                    }
+                    if(msg.getSendTime() == fromTime){
+                        break;
+                    }
+                }else{
+                    for(int j = block.size(); --j >= 0;){
+                        msg = (MessageImpl)block.get(j);
+                        if(msg.getSendTime() >= fromTime){
+                            result.add(0, copyMessage(msg));
+                        }else{
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+            return result;
+        }
+        
+        public int getMostOldMessageSequence(){
+            if(messageList.size() == 0){
+                return 0;
+            }
+            List block = (List)messageList.get(0);
+            return block.size() == 0 ? 0 : ((MessageImpl)block.get(0)).sequence;
+        }
+        
+        public Date getMostOldMessageTime(){
+            if(messageList.size() == 0){
+                return null;
+            }
+            List block = (List)messageList.get(0);
+            return block.size() == 0 ? null : new Date(((MessageImpl)block.get(0)).getSendTime());
+        }
+        
+        public int size(){
+            return size;
+        }
+        
+        public void clear(){
+            messageList.clear();
+            size = 0;
         }
     }
 }
