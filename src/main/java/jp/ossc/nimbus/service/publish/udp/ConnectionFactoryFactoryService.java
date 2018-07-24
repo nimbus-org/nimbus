@@ -302,6 +302,17 @@ public class ConnectionFactoryFactoryService extends ServiceFactoryServiceBase i
         return ((Long)paramMap.get("sendMessageCacheTime")).longValue();
     }
     
+    public int getSendMessageCacheBlockSize() {
+        if(!paramMap.containsKey("sendMessageCacheBlockSize")) {
+            return -1;
+        }
+        return ((Integer)paramMap.get("sendMessageCacheBlockSize")).intValue();
+    }
+    
+    public void setSendMessageCacheBlockSize(int size) {
+        paramMap.put("sendMessageCacheBlockSize", size);
+    }
+
     public void setLocalPort(int port) {
         paramMap.put("localPort", port);
     }
@@ -959,4 +970,5 @@ public class ConnectionFactoryFactoryService extends ServiceFactoryServiceBase i
     public double getWindowRecycleRate() {
         return -1d;
     }
+
 }
