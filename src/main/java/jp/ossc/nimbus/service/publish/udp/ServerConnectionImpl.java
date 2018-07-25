@@ -2353,9 +2353,6 @@ public class ServerConnectionImpl implements ServerConnection{
                     for(int j = block.size(); --j >= 0;){
                         result.add(0, copyMessage((MessageImpl)block.get(j)));
                     }
-                    if(msg.getSendTime() == fromTime){
-                        break;
-                    }
                 }else{
                     for(int j = block.size(); --j >= 0;){
                         msg = (MessageImpl)block.get(j);
