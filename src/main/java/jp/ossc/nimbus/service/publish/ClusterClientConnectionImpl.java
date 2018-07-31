@@ -84,7 +84,7 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
     private transient Object currentUID;
     private transient boolean isStartReceive;
     private transient long fromTime;
-    private transient Message latestMessage;
+    private transient long lastReceiveTime = -1;
     
     public ClusterClientConnectionImpl(){
     }
@@ -487,7 +487,7 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
     
     public void onMessage(Message message){
         if(messageListener != null){
-            latestMessage = (Message)message.clone();
+            lastReceiveTime = message.getReceiveTime();
             messageListener.onMessage(message);
         }
     }
@@ -536,8 +536,8 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
                 connection.startReceive(-1l);
             }else{
                 long time = fromTime;
-                if(isStartReceiveFromLastReceiveTime && latestMessage != null){
-                    time = latestMessage.getReceiveTime() - failoverBufferTime;
+                if(isStartReceiveFromLastReceiveTime && lastReceiveTime >= 0){
+                    time = lastReceiveTime - failoverBufferTime;
                 }else if(fromTime <= 0){
                     time = System.currentTimeMillis() - failoverBufferTime;
                 }
