@@ -166,4 +166,11 @@ public interface Message{
      * このオブジェクトを再利用するように促す。<br>
      */
     public void recycle();
+    
+    /**
+     * メッセージを複製する。<p>
+     *
+     * @return メッセージの複製
+     */
+    public Object clone();
 }

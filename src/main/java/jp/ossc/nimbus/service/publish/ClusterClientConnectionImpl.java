@@ -487,7 +487,7 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
     
     public void onMessage(Message message){
         if(messageListener != null){
-            latestMessage = message;
+            latestMessage = (Message)message.clone();
             messageListener.onMessage(message);
         }
     }
