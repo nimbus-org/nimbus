@@ -190,4 +190,20 @@ public class MessageImpl implements Message{
         buf.append('}');
         return buf.toString();
     }
+    
+    public Object clone(){
+        MessageImpl clone = null;
+        try{
+            clone = (MessageImpl)super.clone();
+        }catch(CloneNotSupportedException e){
+            return null;
+        }
+        clone.subjectMap = new LinkedHashMap();
+        clone.subjectMap.putAll(subjectMap);
+        if(destinationIds != null){
+            clone.destinationIds = new HashSet();
+            clone.destinationIds.addAll(destinationIds);
+        }
+        return clone;
+    }
 }
