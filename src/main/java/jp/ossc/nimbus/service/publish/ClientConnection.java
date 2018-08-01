@@ -64,7 +64,7 @@ public interface ClientConnection{
     public void connect(Object id) throws ConnectException;
     
     /**
-     * 配信して欲しいサブジェクトをサーバに要求する。<br>
+     * 配信して欲しいサブジェクトをサーバに要求する。<p>
      *
      * @param subject サブジェクト
      * @exception MessageSendException サーバへの要求に失敗した場合
@@ -72,7 +72,7 @@ public interface ClientConnection{
     public void addSubject(String subject) throws MessageSendException;
     
     /**
-     * 配信して欲しいサブジェクトとキーをサーバに要求する。<br>
+     * 配信して欲しいサブジェクトとキーをサーバに要求する。<p>
      *
      * @param subject サブジェクト
      * @param keys キー
@@ -81,7 +81,7 @@ public interface ClientConnection{
     public void addSubject(String subject, String[] keys) throws MessageSendException;
     
     /**
-     * 配信を解除して欲しいサブジェクトをサーバに要求する。<br>
+     * 配信を解除して欲しいサブジェクトをサーバに要求する。<p>
      *
      * @param subject サブジェクト
      * @exception MessageSendException サーバへの要求に失敗した場合
@@ -89,7 +89,7 @@ public interface ClientConnection{
     public void removeSubject(String subject) throws MessageSendException;
     
     /**
-     * 配信を解除して欲しいサブジェクトとキーをサーバに要求する。<br>
+     * 配信を解除して欲しいサブジェクトとキーをサーバに要求する。<p>
      *
      * @param subject サブジェクト
      * @param keys キー
@@ -98,14 +98,14 @@ public interface ClientConnection{
     public void removeSubject(String subject, String[] keys) throws MessageSendException;
     
     /**
-     * 配信開始をサーバに要求する。<br>
+     * 配信開始をサーバに要求する。<p>
      *
      * @exception MessageSendException サーバへの要求に失敗した場合
      */
     public void startReceive() throws MessageSendException;
     
     /**
-     * 指定した過去の時間のデータから配信開始をサーバに要求する。<br>
+     * 指定した過去の時間のデータから配信開始をサーバに要求する。<p>
      *
      * @param from 開始時間
      * @exception MessageSendException サーバへの要求に失敗した場合
@@ -113,14 +113,14 @@ public interface ClientConnection{
     public void startReceive(long from) throws MessageSendException;
     
     /**
-     * 配信停止をサーバに要求する。<br>
+     * 配信停止をサーバに要求する。<p>
      *
      * @exception MessageSendException サーバへの要求に失敗した場合
      */
     public void stopReceive() throws MessageSendException;
     
     /**
-     * 配信開始しているかどうかを判定する。<br>
+     * 配信開始しているかどうかを判定する。<p>
      *
      * @return 配信開始している場合true
      */
@@ -142,7 +142,7 @@ public interface ClientConnection{
     public Set getKeys(String subject);
     
     /**
-     * メッセージ受信の通知先である{@link MessageListener メッセージリスナ}を設定する。<br>
+     * メッセージ受信の通知先である{@link MessageListener メッセージリスナ}を設定する。<p>
      *
      * @param listener メッセージリスナ
      */
@@ -161,6 +161,13 @@ public interface ClientConnection{
      * @return サーバ側から切断要求を受けた場合true
      */
     public boolean isServerClosed();
+    
+    /**
+     * 最後にメッセージを受信した時刻を取得する。<p>
+     *
+     * @return 最後にメッセージを受信した時刻
+     */
+    public long getLastReceiveTime();
     
     /**
      * この接続のIDを取得する。<p>

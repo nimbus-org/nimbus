@@ -446,6 +446,20 @@ public class DistributedClientConnectionImpl implements ClientConnection, Serial
         return true;
     }
     
+    public long getLastReceiveTime(){
+        long result = -1;
+        if(connectionList == null || connectionList.size() == 0){
+            return result;
+        }
+        for(int i = 0, imax = connectionList.size(); i < imax; i++){
+            ClientConnection connection = (ClientConnection)connectionList.get(i);
+            if(result == -1 || result > connection.getLastReceiveTime()){
+                result = connection.getLastReceiveTime();
+            }
+        }
+        return result;
+    }
+    
     public Object getId(){
         if(connectionList == null || connectionList.size() == 0){
             return id;

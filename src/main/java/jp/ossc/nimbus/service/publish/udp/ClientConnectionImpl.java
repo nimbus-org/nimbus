@@ -168,6 +168,7 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
     private transient int maxMissingWindowSize;
     private transient boolean isServerClosed;
     private transient NetworkInterface[] networkInterfaces;
+    private transient long lastReceiveTime = -1;
     
     public ClientConnectionImpl(){}
     
@@ -884,6 +885,10 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
         return id;
     }
     
+    public long getLastReceiveTime(){
+        return lastReceiveTime;
+    }
+    
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException{
         in.defaultReadObject();
         messageBuffer = new ArrayList();
@@ -934,6 +939,7 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
             receiveSocket.close();
             receiveSocket = null;
         }
+        lastReceiveTime = -1;
         isClosing = false;
     }
     
@@ -1295,6 +1301,7 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
             if(message == null || message.isLost()){
                 return;
             }
+            lastReceiveTime = message.getReceiveTime();
             if(receiveAddress != null){
                 MulticastMessageImpl multicastMessage = (MulticastMessageImpl)message;
                 if(!isTargetMessage(multicastMessage)){

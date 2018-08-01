@@ -119,11 +119,11 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
     private transient long receiveProcessTime;
     private transient long onMessageProcessTime;
     private transient boolean isStartReceive;
-    private transient Message latestMessage;
     private transient Map requestMonitorMap;
     private transient short requestId;
     private transient byte[] receiveBytes;
     private transient boolean isServerClosed;
+    private transient long lastReceiveTime = -1;
     
     public ClientConnectionImpl(){}
     
@@ -691,8 +691,8 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
                         }
                         if(isStartReceive){
                             long time = -1;
-                            if(latestMessage != null){
-                                time = latestMessage.getReceiveTime() - reconnectBufferTime;
+                            if(lastReceiveTime >= 0){
+                                time = lastReceiveTime - reconnectBufferTime;
                             }
                             startReceive(time, true);
                         }
@@ -748,6 +748,10 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
         return id;
     }
     
+    public long getLastReceiveTime(){
+        return lastReceiveTime;
+    }
+    
     public synchronized void close(){
         isClosing = true;
         if(serviceName != null){
@@ -772,6 +776,7 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
             }catch(IOException e){}
             socket = null;
         }
+        lastReceiveTime = -1;
         isClosing = false;
         isConnected = false;
     }
@@ -807,10 +812,13 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
         }
     }
     public void consume(Object paramObj, DaemonControl ctrl) throws Throwable{
-        if(paramObj == null || messageListener == null){
+        if(paramObj == null){
             return;
         }
-        latestMessage = (Message)paramObj;
+        lastReceiveTime = ((Message)paramObj).getReceiveTime();
+        if(messageListener == null){
+            return;
+        }
         receiveCount++;
         receiveProcessTime += (System.currentTimeMillis() - startTime);
         long sTime = System.currentTimeMillis();

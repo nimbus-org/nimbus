@@ -141,6 +141,10 @@ public abstract class ClientConnectionWrapper implements ClientConnection{
         return clientConnection == null ? false : clientConnection.isServerClosed();
     }
     
+    public long getLastReceiveTime(){
+        return clientConnection == null ? -1 : clientConnection.getLastReceiveTime();
+    }
+    
     public Object getId(){
         return clientConnection == null ? null : clientConnection.getId();
     }

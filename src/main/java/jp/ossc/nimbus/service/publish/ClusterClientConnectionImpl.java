@@ -84,7 +84,6 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
     private transient Object currentUID;
     private transient boolean isStartReceive;
     private transient long fromTime;
-    private transient long lastReceiveTime = -1;
     
     public ClusterClientConnectionImpl(){
     }
@@ -460,6 +459,29 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
         return false;
     }
     
+    public long getLastReceiveTime(){
+        long result = -1;
+        if(connectionMap != null){
+            if(isMultiple){
+                if(connectionMap.size() == 0){
+                    return result;
+                }
+                Iterator connections = connectionMap.values().iterator();
+                while(connections.hasNext()){
+                    ClientConnection connection = ((ClusterConnection)connections.next()).clientConnection;
+                    if(result == -1 || result > connection.getLastReceiveTime()){
+                        result = connection.getLastReceiveTime();
+                    }
+                }
+                return result;
+            }else if(currentUID != null){
+                ClientConnection connection = ((ClusterConnection)connectionMap.get(currentUID)).clientConnection;
+                return connection.getLastReceiveTime();
+            }
+        }
+        return result;
+    }
+    
     public Object getId(){
         return id;
     }
@@ -487,7 +509,6 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
     
     public void onMessage(Message message){
         if(messageListener != null){
-            lastReceiveTime = message.getReceiveTime();
             messageListener.onMessage(message);
         }
     }
@@ -536,8 +557,8 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
                 connection.startReceive(-1l);
             }else{
                 long time = fromTime;
-                if(isStartReceiveFromLastReceiveTime && lastReceiveTime >= 0){
-                    time = lastReceiveTime - failoverBufferTime;
+                if(isStartReceiveFromLastReceiveTime && connection.getLastReceiveTime() >= 0){
+                    time = connection.getLastReceiveTime() - failoverBufferTime;
                 }else if(fromTime <= 0){
                     time = System.currentTimeMillis() - failoverBufferTime;
                 }
