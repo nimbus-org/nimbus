@@ -2298,6 +2298,9 @@ public class ServerConnectionImpl implements ServerConnection{
             int index = Collections.binarySearch(messageList, id, COMP);
             if(index < 0){
                 index = -index - 2;
+                if(index < 0){
+                    return false;
+                }
             }
             if(index < messageList.size()){
                 return Collections.binarySearch((List)messageList.get(index), id, BLOCK_COMP) >= 0;
@@ -2350,6 +2353,9 @@ public class ServerConnectionImpl implements ServerConnection{
             int index = Collections.binarySearch(messageList, id, COMP);
             if(index < 0){
                 index = -index - 2;
+                if(index < 0){
+                    return null;
+                }
             }
             if(index < messageList.size()){
                 List block = (List)messageList.get(index);
