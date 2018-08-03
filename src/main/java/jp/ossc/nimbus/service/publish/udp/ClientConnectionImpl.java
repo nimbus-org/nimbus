@@ -1025,7 +1025,6 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
             receiveSocket.close();
             receiveSocket = null;
         }
-        lastReceiveTime = -1;
         isClosing = false;
     }
     

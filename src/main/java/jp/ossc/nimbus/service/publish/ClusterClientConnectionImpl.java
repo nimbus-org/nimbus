@@ -84,6 +84,7 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
     private transient Object currentUID;
     private transient boolean isStartReceive;
     private transient long fromTime;
+    private transient long lastReceiveTime = -1;
     
     public ClusterClientConnectionImpl(){
     }
@@ -557,8 +558,8 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
                 connection.startReceive(-1l);
             }else{
                 long time = fromTime;
-                if(isStartReceiveFromLastReceiveTime && connection.getLastReceiveTime() >= 0){
-                    time = connection.getLastReceiveTime() - failoverBufferTime;
+                if(isStartReceiveFromLastReceiveTime && lastReceiveTime >= 0){
+                    time = lastReceiveTime - failoverBufferTime;
                 }else if(fromTime <= 0){
                     time = System.currentTimeMillis() - failoverBufferTime;
                 }
@@ -674,6 +675,13 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
             ClusterService.GlobalUID rmMember = (ClusterService.GlobalUID)rmMembers.next();
             ClusterConnection clusterConnection = (ClusterConnection)connectionMap.get(rmMember);
             if(clusterConnection != null){
+                if(!isMultiple && currentUID != null && currentUID.equals(rmMember)){
+                    if(clusterConnection.clientConnection.getLastReceiveTime() >= 0
+                        && lastReceiveTime < clusterConnection.clientConnection.getLastReceiveTime()
+                    ){
+                        lastReceiveTime = clusterConnection.clientConnection.getLastReceiveTime();
+                    }
+                }
                 clusterConnection.clientConnection.close();
             }
         }
@@ -722,6 +730,9 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
                     );
                 }
                 if(currentConnection != null){
+                    if(currentConnection.getLastReceiveTime() >= 0 && lastReceiveTime < currentConnection.getLastReceiveTime()){
+                        lastReceiveTime = currentConnection.getLastReceiveTime();
+                    }
                     currentConnection.close();
                 }
                 id = null;
@@ -779,6 +790,9 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
                 String currentConnectionStr = null;
                 if(currentConnection != null){
                     currentConnectionStr = currentConnection.toString();
+                    if(currentConnection.getLastReceiveTime() >= 0 && lastReceiveTime < currentConnection.getLastReceiveTime()){
+                        lastReceiveTime = currentConnection.getLastReceiveTime();
+                    }
                     currentConnection.close();
                 }
                 try{

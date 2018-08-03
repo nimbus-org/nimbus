@@ -863,7 +863,6 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
             }catch(IOException e){}
             socket = null;
         }
-        lastReceiveTime = -1;
         isClosing = false;
         isConnected = false;
     }

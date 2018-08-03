@@ -258,7 +258,6 @@ public class ClientConnectionImpl implements ClientConnection{
         if(isConnected){
             serverConnection.close(this.id);
         }
-        lastReceiveTime = -1;
         isConnected = false;
     }
     
