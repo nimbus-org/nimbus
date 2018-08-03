@@ -70,6 +70,7 @@ public class ClientConnectionImpl implements ClientConnection{
     private long onMessageProcessTime;
     private boolean isStartReceive;
     private boolean isServerClosed;
+    private long lastReceiveTime = -1;
     
     public ClientConnectionImpl(
         ServerConnectionImpl con,
@@ -242,6 +243,10 @@ public class ClientConnectionImpl implements ClientConnection{
         return id;
     }
     
+    public long getLastReceiveTime(){
+        return lastReceiveTime;
+    }
+    
     public synchronized void close(){
         if(serviceName != null){
             ServiceManagerFactory.unregisterService(
@@ -268,6 +273,7 @@ public class ClientConnectionImpl implements ClientConnection{
             close();
             return;
         }
+        lastReceiveTime = message.getReceiveTime();
         if(messageListener == null){
             return;
         }
@@ -282,7 +288,8 @@ public class ClientConnectionImpl implements ClientConnection{
         final StringBuilder buf = new StringBuilder();
         buf.append(super.toString());
         buf.append('{');
-        buf.append("id=").append(id);
+        buf.append("factory=").append(serverServiceName);
+        buf.append(", id=").append(id);
         buf.append(", server=").append(serverConnection);
         buf.append(", subject=").append(subjects);
         buf.append('}');

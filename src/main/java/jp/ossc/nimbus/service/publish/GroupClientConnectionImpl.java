@@ -319,6 +319,24 @@ public class GroupClientConnectionImpl implements ClientConnection, Serializable
         return result.size() == 0 ? id : result;
     }
     
+    public long getLastReceiveTime(){
+        long result = -1;
+        if(connectionMap == null || connectionMap.size() == 0){
+            return result;
+        }
+        Iterator itr = connectionMap.values().iterator();
+        while(itr.hasNext()){
+            List connections = (List)itr.next();
+            for(int i = 0, imax = connections.size(); i < imax; i++){
+                ClientConnectionImpl connection = (ClientConnectionImpl)connections.get(i);
+                if(result == -1 || result > connection.getLastReceiveTime()){
+                    result = connection.getLastReceiveTime();
+                }
+            }
+        }
+        return result;
+    }
+    
     public void close(){
         Iterator itr = connectionMap.values().iterator();
         while(itr.hasNext()){
@@ -470,6 +488,10 @@ public class GroupClientConnectionImpl implements ClientConnection, Serializable
         
         public Object getId(){
             return connection.getId();
+        }
+        
+        public long getLastReceiveTime(){
+            return connection.getLastReceiveTime();
         }
         
         public void close(){

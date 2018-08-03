@@ -69,6 +69,8 @@ public class ServerConnectionImpl implements ServerConnection{
     private Logger logger;
     private String sendErrorMessageId;
     private String sendErrorRetryOverMessageId;
+    private String startReceiveMessageId;
+    private String stopReceiveMessageId;
     private QueueHandlerContainerService sendQueueHandlerContainer;
     private ClientDistributedQueueSelector queueSelector;
     private DistributedQueueHandlerContainerService asynchSendQueueHandlerContainer;
@@ -415,7 +417,7 @@ public class ServerConnectionImpl implements ServerConnection{
         final StringBuilder buf = new StringBuilder();
         buf.append(super.toString());
         buf.append('{');
-        buf.append("server=").append(serverConnectionFactroyServiceName);
+        buf.append("factory=").append(serverConnectionFactroyServiceName);
         buf.append('}');
         return buf.toString();
     }

@@ -1164,6 +1164,10 @@ public class MessageReceiverService extends ServiceBase implements MessageReceiv
         public Object getId(){
             return clientConnection == null ? id : clientConnection.getId();
         }
+        
+        public long getLastReceiveTime(){
+            return clientConnection == null ? -1 : clientConnection.getLastReceiveTime();
+        }
 
         public void close(){
             if(clientConnection != null){

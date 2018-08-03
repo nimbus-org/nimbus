@@ -46,6 +46,7 @@ import java.net.SocketAddress;
 import java.net.UnknownHostException;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
+import java.text.SimpleDateFormat;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Map;
@@ -53,6 +54,7 @@ import java.util.HashMap;
 import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.net.SocketFactory;
 
 import jp.ossc.nimbus.core.ServiceManagerFactory;
@@ -96,6 +98,11 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
     private String serverCloseMessageId;
     private String receiveWarnMessageId;
     private String receiveErrorMessageId;
+    private String startReceiveMessageId;
+    private String stopReceiveMessageId;
+    private String connectMessageId;
+    private String closeMessageId;
+    private String closedMessageId;
     private int reconnectCount;
     private long reconnectInterval;
     private long reconnectBufferTime;
@@ -119,11 +126,11 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
     private transient long receiveProcessTime;
     private transient long onMessageProcessTime;
     private transient boolean isStartReceive;
-    private transient Message latestMessage;
     private transient Map requestMonitorMap;
     private transient short requestId;
     private transient byte[] receiveBytes;
     private transient boolean isServerClosed;
+    private transient long lastReceiveTime = -1;
     
     public ClientConnectionImpl(){}
     
@@ -195,6 +202,41 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
     }
     public String getReceiveErrorMessageId(){
         return receiveErrorMessageId;
+    }
+    
+    public void setStartReceiveMessageId(String id){
+        startReceiveMessageId = id;
+    }
+    public String getStartReceiveMessageId(){
+        return startReceiveMessageId;
+    }
+    
+    public void setStopReceiveMessageId(String id){
+        stopReceiveMessageId = id;
+    }
+    public String getStopReceiveMessageId(){
+        return stopReceiveMessageId;
+    }
+    
+    public void setConnectMessageId(String id){
+        connectMessageId = id;
+    }
+    public String getConnectMessageId(){
+        return connectMessageId;
+    }
+    
+    public void setCloseMessageId(String id){
+        closeMessageId = id;
+    }
+    public String getCloseMessageId(){
+        return closeMessageId;
+    }
+    
+    public void setClosedMessageId(String id){
+        closedMessageId = id;
+    }
+    public String getClosedMessageId(){
+        return closedMessageId;
     }
     
     public void setReconnectCount(int count){
@@ -308,6 +350,12 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
             }
             this.id = id == null ? socket.getLocalSocketAddress() : id;
             try{
+                if(connectMessageId != null){
+                    ServiceManagerFactory.getLogger().write(
+                        connectMessageId,
+                        new Object[]{ClientConnectionImpl.this}
+                    );
+                }
                 send(new IdMessage(this.id));
             }catch(IOException e){
                 throw new ConnectException(e);
@@ -434,6 +482,15 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
             return;
         }
         try{
+            if(startReceiveMessageId != null){
+                ServiceManagerFactory.getLogger().write(
+                    startReceiveMessageId,
+                    new Object[]{
+                        ClientConnectionImpl.this,
+                        from >= 0 ? new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS").format(new Date(from)) : null
+                    }
+                );
+            }
             send(new StartReceiveMessage(from));
             isStartReceive = true;
         }catch(SocketTimeoutException e){
@@ -457,6 +514,12 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
             return;
         }
         try{
+            if(stopReceiveMessageId != null){
+                ServiceManagerFactory.getLogger().write(
+                    stopReceiveMessageId,
+                    new Object[]{ClientConnectionImpl.this}
+                );
+            }
             send(new StopReceiveMessage());
             isStartReceive = false;
         }catch(SocketTimeoutException e){
@@ -566,7 +629,7 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
                         );
                     }
                     isServerClosed = true;
-                    close();
+                    close(true, null);
                     return null;
                 case MessageImpl.MESSAGE_TYPE_SERVER_RESPONSE:
                     if(isAcknowledge && requestMonitorMap != null){
@@ -607,7 +670,7 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
                 reconnect();
                 return receive();
             }else{
-                close();
+                close(true, e);
                 return null;
             }
         }catch(EOFException e){
@@ -625,7 +688,7 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
                 reconnect();
                 return receive();
             }else if(length == 0){
-                close();
+                close(true, e);
                 return null;
             }else{
                 throw new MessageCommunicateException("length=" + length + ", receiveBytes=" + (receiveBytes == null ? "null" : Integer.toString(receiveBytes.length)), e);
@@ -691,8 +754,8 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
                         }
                         if(isStartReceive){
                             long time = -1;
-                            if(latestMessage != null){
-                                time = latestMessage.getReceiveTime() - reconnectBufferTime;
+                            if(lastReceiveTime >= 0){
+                                time = lastReceiveTime - reconnectBufferTime;
                             }
                             startReceive(time, true);
                         }
@@ -748,8 +811,36 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
         return id;
     }
     
-    public synchronized void close(){
+    public long getLastReceiveTime(){
+        return lastReceiveTime;
+    }
+    
+    public void close(){
+        close(false, null);
+    }
+    
+    private synchronized void close(boolean isClosed, Throwable reason){
+        if(!isConnected){
+            return;
+        }
         isClosing = true;
+        if(isClosed){
+            if(closedMessageId != null){
+                ServiceManagerFactory.getLogger().write(
+                    closedMessageId,
+                    new Object[]{ClientConnectionImpl.this},
+                    reason
+                );
+            }
+        }else{
+            if(closeMessageId != null){
+                ServiceManagerFactory.getLogger().write(
+                    closeMessageId,
+                    new Object[]{ClientConnectionImpl.this},
+                    reason
+                );
+            }
+        }
         if(serviceName != null){
             ServiceManagerFactory.unregisterService(
                 serviceName.getServiceManagerName(),
@@ -802,15 +893,18 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
                     e
                 );
             }
-            close();
+            close(true, e);
             return null;
         }
     }
     public void consume(Object paramObj, DaemonControl ctrl) throws Throwable{
-        if(paramObj == null || messageListener == null){
+        if(paramObj == null){
             return;
         }
-        latestMessage = (Message)paramObj;
+        lastReceiveTime = ((Message)paramObj).getReceiveTime();
+        if(messageListener == null){
+            return;
+        }
         receiveCount++;
         receiveProcessTime += (System.currentTimeMillis() - startTime);
         long sTime = System.currentTimeMillis();
@@ -823,7 +917,8 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
         final StringBuilder buf = new StringBuilder();
         buf.append(super.toString());
         buf.append('{');
-        buf.append("id=").append(id);
+        buf.append("factory=").append(serverServiceName);
+        buf.append(", id=").append(id);
         buf.append(", localAddress=").append(socket == null ? null : socket.getLocalSocketAddress());
         buf.append(", remoteAddress=").append(socket == null ? null : socket.getRemoteSocketAddress());
         buf.append(", subject=").append(subjects);

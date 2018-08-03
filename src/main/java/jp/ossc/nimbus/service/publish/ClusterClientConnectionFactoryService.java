@@ -335,6 +335,10 @@ public class ClusterClientConnectionFactoryService extends ServiceBase
             }
         }
         
+        public long getLastReceiveTime(){
+            return connection == null ? -1 : connection.getLastReceiveTime();
+        }
+        
         public Object getId(){
             return connection == null ? id : connection.getId();
         }

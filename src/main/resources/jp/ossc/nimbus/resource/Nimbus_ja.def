@@ -307,6 +307,13 @@ PCFT_00008,サーバが終了しました。受信を停止します。connectio
 PCFT_00009,クライアントが接続されました。connection=@0
 PCFT_00010,クライアントが切断されました。connection=@0
 PCFT_00011,クライアントを切断しました。connection=@0
+PCFT_00012,受信の開始を要求しました。connection=@0\\, from=@1
+PCFT_00013,受信の停止を要求しました。connection=@0\\
+PCFT_00014,受信の開始を受け付けました。connection=@0\\, from=@1
+PCFT_00015,受信の停止を受け付けました。connection=@0\\
+PCFT_00016,接続を要求しました。connection=@0
+PCFT_00017,切断を要求しました。connection=@0
+PCFT_00018,サーバから切断されました。connection=@0
 PRCF_00001,メッセージの応答に失敗しました。リトライします。client=@0\\, message=@1
 PRCF_00002,メッセージの応答に失敗しました。client=@0\\, message=@1
 PRCF_00003,メッセージの読み込みに失敗しました。service=@0\\, message=@1

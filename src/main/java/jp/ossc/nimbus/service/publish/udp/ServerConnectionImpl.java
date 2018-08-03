@@ -58,6 +58,7 @@ import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.DatagramPacket;
 import java.net.MulticastSocket;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -146,11 +147,14 @@ public class ServerConnectionImpl implements ServerConnection{
     private int maxSendRetryCount;
     private Logger logger;
     private String clientConnectMessageId;
+    private String clientClosedMessageId;
     private String clientCloseMessageId;
     private String sendErrorMessageId;
     private String sendErrorRetryOverMessageId;
     private String responseErrorMessageId;
     private String messageLostErrorMessageId;
+    private String startReceiveMessageId;
+    private String stopReceiveMessageId;
     private Daemon clientAcceptor;
     private DefaultQueueService sendResponseQueue;
     private QueueHandlerContainerService sendQueueHandlerContainer;
@@ -181,6 +185,7 @@ public class ServerConnectionImpl implements ServerConnection{
     private List sendRequestBuffer;
     private List asynchContextBuffer;
     private int sendMessageCacheBlockSize = 100;
+    private ServiceName factoryServiceName;
     
     public ServerConnectionImpl(
         ServerSocket serverSocket,
@@ -515,6 +520,10 @@ public class ServerConnectionImpl implements ServerConnection{
         clientConnectMessageId = id;
     }
     
+    public void setClientClosedMessageId(String id){
+        clientClosedMessageId = id;
+    }
+    
     public void setClientCloseMessageId(String id){
         clientCloseMessageId = id;
     }
@@ -536,6 +545,24 @@ public class ServerConnectionImpl implements ServerConnection{
     }
     public String getMessageLostErrorMessageId(){
         return messageLostErrorMessageId;
+    }
+    
+    public void setStartReceiveMessageId(String id){
+        startReceiveMessageId = id;
+    }
+    public String getStartReceiveMessageId(){
+        return startReceiveMessageId;
+    }
+    
+    public void setStopReceiveMessageId(String id){
+        stopReceiveMessageId = id;
+    }
+    public String getStopReceiveMessageId(){
+        return stopReceiveMessageId;
+    }
+    
+    public void setFactoryServiceName(ServiceName name){
+        factoryServiceName = name;
     }
     
     public int getMaxWindowCount(){
@@ -1017,7 +1044,7 @@ public class ServerConnectionImpl implements ServerConnection{
         while(clientItr.hasNext()){
             ClientImpl client = (ClientImpl)clientItr.next();
             if(client != null){
-                client.close();
+                client.close(true, null);
             }
         }
         
@@ -1056,7 +1083,8 @@ public class ServerConnectionImpl implements ServerConnection{
         final StringBuilder buf = new StringBuilder();
         buf.append(super.toString());
         buf.append('{');
-        buf.append("server=").append(serverSocket == null ? null : serverSocket.getLocalSocketAddress());
+        buf.append("factory=").append(factoryServiceName);
+        buf.append(", server=").append(serverSocket == null ? null : serverSocket.getLocalSocketAddress());
         buf.append('}');
         return buf.toString();
     }
@@ -1416,10 +1444,10 @@ public class ServerConnectionImpl implements ServerConnection{
             }catch(SocketTimeoutException e){
                 throw new MessageSendException(e);
             }catch(SocketException e){
-                ClientImpl.this.close();
+                ClientImpl.this.close(false, e);
                 throw new MessageSendException(e);
             }catch(IOException e){
-                ClientImpl.this.close();
+                ClientImpl.this.close(true, e);
                 throw new MessageSendException(e);
             }
         }
@@ -1483,9 +1511,12 @@ public class ServerConnectionImpl implements ServerConnection{
             }catch(ClassNotFoundException e){
                 e.printStackTrace();
             }catch(SocketTimeoutException e){
+            }catch(SocketException e){
+                key.cancel();
+                ClientImpl.this.close(false, e);
             }catch(IOException e){
                 key.cancel();
-                ClientImpl.this.close();
+                ClientImpl.this.close(true, e);
             }
         }
         
@@ -1501,9 +1532,12 @@ public class ServerConnectionImpl implements ServerConnection{
                         }
                     }
                 }
+            }catch(SocketException e){
+                key.cancel();
+                ClientImpl.this.close(false, e);
             }catch(IOException e){
                 key.cancel();
-                ClientImpl.this.close();
+                ClientImpl.this.close(true, e);
             }
         }
         
@@ -1596,12 +1630,25 @@ public class ServerConnectionImpl implements ServerConnection{
             return sendCount == 0 ? 0 : (sendProcessTime / sendCount);
         }
         
-        public synchronized void close(){
-            if(logger != null && clientCloseMessageId != null){
-                logger.write(
-                    clientCloseMessageId,
-                    new Object[]{this}
-                );
+        
+        public void close(){
+            close(false, null);
+        }
+        protected synchronized void close(boolean isClose, Throwable reason){
+            if(logger != null){
+                if(!isClose && clientClosedMessageId != null){
+                    logger.write(
+                        clientClosedMessageId,
+                        new Object[]{this},
+                        reason
+                    );
+                }else if(isClose && clientCloseMessageId != null){
+                    logger.write(
+                        clientCloseMessageId,
+                        new Object[]{this},
+                        reason
+                    );
+                }
             }
             if(subjects.size() != 0){
                 Iterator entries = subjects.entrySet().iterator();
@@ -1671,7 +1718,8 @@ public class ServerConnectionImpl implements ServerConnection{
             final StringBuilder buf = new StringBuilder();
             buf.append(super.toString());
             buf.append('{');
-            buf.append("client=").append(clientAddress).append(':').append(destPort);
+            buf.append("factory=").append(factoryServiceName);
+            buf.append(", client=").append(clientAddress).append(':').append(destPort);
             buf.append(", subject=").append(subjects);
             buf.append(", isEnabled=").append(isEnabled);
             buf.append('}');
@@ -1710,7 +1758,7 @@ public class ServerConnectionImpl implements ServerConnection{
         
         public void consume(Object paramObj, DaemonControl ctrl) throws Throwable{
             if(paramObj == null){
-                ClientImpl.this.close();
+                ClientImpl.this.close(true, null);
                 return;
             }
             if(!(paramObj instanceof ClientMessage)){
@@ -1927,38 +1975,50 @@ public class ServerConnectionImpl implements ServerConnection{
             case ClientMessage.MESSAGE_START_RECEIVE:
                 StartReceiveMessage startMessage = (StartReceiveMessage)message;
                 fromTime = startMessage.getFrom();
-                if(fromTime >= 0){
-                    List messages = getSendMessages(fromTime);
-                    boolean isFirstMessage = true;
-                    for(int i = 0; i < messages.size(); i++){
-                        MessageImpl msg = (MessageImpl)messages.get(i);
-                        if(multicastAddress == null && !isTargetMessage(msg)){
-                            continue;
-                        }
-                        if(isFirstMessage){
-                            msg.setFirst(true);
-                            isFirstMessage = false;
-                        }
-                        try{
-                            send(msg);
-                        }catch(MessageSendException e){
-                            if(logger != null && sendErrorRetryOverMessageId != null){
-                                logger.write(
-                                    sendErrorRetryOverMessageId,
-                                    new Object[]{this, msg},
-                                    e
-                                );
+                if(!isStartReceive){
+                    if(logger != null && startReceiveMessageId != null){
+                        logger.write(
+                            startReceiveMessageId,
+                            new Object[]{
+                                ClientImpl.this,
+                                fromTime >= 0 ? new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS").format(new Date(fromTime)) : null
+                            }
+                        );
+                    }
+                    
+                    if(fromTime >= 0){
+                        List messages = getSendMessages(fromTime);
+                        boolean isFirstMessage = true;
+                        for(int i = 0; i < messages.size(); i++){
+                            MessageImpl msg = (MessageImpl)messages.get(i);
+                            if(multicastAddress == null && !isTargetMessage(msg)){
+                                continue;
+                            }
+                            if(isFirstMessage){
+                                msg.setFirst(true);
+                                isFirstMessage = false;
+                            }
+                            try{
+                                send(msg);
+                            }catch(MessageSendException e){
+                                if(logger != null && sendErrorRetryOverMessageId != null){
+                                    logger.write(
+                                        sendErrorRetryOverMessageId,
+                                        new Object[]{this, msg},
+                                        e
+                                    );
+                                }
+                            }
+                            if(multicastAddress != null){
+                                break;
                             }
                         }
-                        if(multicastAddress != null){
-                            break;
-                        }
                     }
-                }
-                isStartReceive = true;
-                if(serverConnectionListeners != null){
-                    for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
-                        ((ServerConnectionListener)serverConnectionListeners.get(i)).onStartReceive(ClientImpl.this, fromTime);
+                    isStartReceive = true;
+                    if(serverConnectionListeners != null){
+                        for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
+                            ((ServerConnectionListener)serverConnectionListeners.get(i)).onStartReceive(ClientImpl.this, fromTime);
+                        }
                     }
                 }
                 if(isAcknowledge){
@@ -1968,11 +2028,19 @@ public class ServerConnectionImpl implements ServerConnection{
                 }
                 break;
             case ClientMessage.MESSAGE_STOP_RECEIVE:
-                isStartReceive = false;
-                firstMessage = null;
-                if(serverConnectionListeners != null){
-                    for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
-                        ((ServerConnectionListener)serverConnectionListeners.get(i)).onStopReceive(ClientImpl.this);
+                if(isStartReceive){
+                    if(logger != null && stopReceiveMessageId != null){
+                        logger.write(
+                            stopReceiveMessageId,
+                            new Object[]{ClientImpl.this}
+                        );
+                    }
+                    isStartReceive = false;
+                    firstMessage = null;
+                    if(serverConnectionListeners != null){
+                        for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
+                            ((ServerConnectionListener)serverConnectionListeners.get(i)).onStopReceive(ClientImpl.this);
+                        }
                     }
                 }
                 if(isAcknowledge){
@@ -2230,6 +2298,9 @@ public class ServerConnectionImpl implements ServerConnection{
             int index = Collections.binarySearch(messageList, id, COMP);
             if(index < 0){
                 index = -index - 2;
+                if(index < 0){
+                    return false;
+                }
             }
             if(index < messageList.size()){
                 return Collections.binarySearch((List)messageList.get(index), id, BLOCK_COMP) >= 0;
@@ -2282,6 +2353,9 @@ public class ServerConnectionImpl implements ServerConnection{
             int index = Collections.binarySearch(messageList, id, COMP);
             if(index < 0){
                 index = -index - 2;
+                if(index < 0){
+                    return null;
+                }
             }
             if(index < messageList.size()){
                 List block = (List)messageList.get(index);
