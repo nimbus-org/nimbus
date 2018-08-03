@@ -51,6 +51,7 @@ import java.net.UnknownHostException;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.net.NetworkInterface;
+import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.HashSet;
@@ -116,7 +117,12 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
     private String serverCloseMessageId;
     private String receiveWarnMessageId;
     private String receiveErrorMessageId;
+    private String startReceiveMessageId;
+    private String stopReceiveMessageId;
     private String messageLostErrorMessageId;
+    private String connectMessageId;
+    private String closeMessageId;
+    private String closedMessageId;
     private int reconnectCount;
     private long reconnectInterval;
     private long reconnectBufferTime;
@@ -254,11 +260,46 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
         return receiveErrorMessageId;
     }
     
+    public void setStartReceiveMessageId(String id){
+        startReceiveMessageId = id;
+    }
+    public String getStartReceiveMessageId(){
+        return startReceiveMessageId;
+    }
+    
+    public void setStopReceiveMessageId(String id){
+        stopReceiveMessageId = id;
+    }
+    public String getStopReceiveMessageId(){
+        return stopReceiveMessageId;
+    }
+    
     public void setMessageLostErrorMessageId(String id){
         messageLostErrorMessageId = id;
     }
     public String getMessageLostErrorMessageId(){
         return messageLostErrorMessageId;
+    }
+    
+    public void setConnectMessageId(String id){
+        connectMessageId = id;
+    }
+    public String getConnectMessageId(){
+        return connectMessageId;
+    }
+    
+    public void setCloseMessageId(String id){
+        closeMessageId = id;
+    }
+    public String getCloseMessageId(){
+        return closeMessageId;
+    }
+    
+    public void setClosedMessageId(String id){
+        closedMessageId = id;
+    }
+    public String getClosedMessageId(){
+        return closedMessageId;
     }
     
     public void setReconnectCount(int count){
@@ -530,6 +571,12 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
             
             this.id = id == null ? socket.getLocalSocketAddress() : id;
             try{
+                if(connectMessageId != null){
+                    ServiceManagerFactory.getLogger().write(
+                        connectMessageId,
+                        new Object[]{ClientConnectionImpl.this}
+                    );
+                }
                 IdMessage message = new IdMessage(this.id);
                 message.setReceivePort(receivePortReal);
                 send(message, isAcknowledge);
@@ -683,8 +730,17 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
             return;
         }
         try{
-            isStartReceive = true;
+            if(startReceiveMessageId != null){
+                ServiceManagerFactory.getLogger().write(
+                    startReceiveMessageId,
+                    new Object[]{
+                        ClientConnectionImpl.this,
+                        from >= 0 ? new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS").format(new Date(from)) : null
+                    }
+                );
+            }
             send(new StartReceiveMessage(from), isAcknowledge);
+            isStartReceive = true;
         }catch(SocketTimeoutException e){
             isStartReceive = false;
             throw new MessageSendException(e);
@@ -712,6 +768,12 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
             return;
         }
         try{
+            if(stopReceiveMessageId != null){
+                ServiceManagerFactory.getLogger().write(
+                    stopReceiveMessageId,
+                    new Object[]{ClientConnectionImpl.this}
+                );
+            }
             send(new StopReceiveMessage(), isAcknowledge);
             isStartReceive = false;
         }catch(SocketTimeoutException e){
@@ -894,8 +956,32 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
         messageBuffer = new ArrayList();
     }
     
-    public synchronized void close(){
+    public void close(){
+        close(false, null);
+    }
+    
+    private synchronized void close(boolean isClosed, Throwable reason){
+        if(!isConnected){
+            return;
+        }
         isClosing = true;
+        if(isClosed){
+            if(closedMessageId != null){
+                ServiceManagerFactory.getLogger().write(
+                    closedMessageId,
+                    new Object[]{ClientConnectionImpl.this},
+                    reason
+                );
+            }
+        }else{
+            if(closeMessageId != null){
+                ServiceManagerFactory.getLogger().write(
+                    closeMessageId,
+                    new Object[]{ClientConnectionImpl.this},
+                    reason
+                );
+            }
+        }
         isConnected = false;
         if(serviceName != null){
             ServiceManagerFactory.unregisterService(
@@ -947,7 +1033,8 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
         final StringBuilder buf = new StringBuilder();
         buf.append(super.toString());
         buf.append('{');
-        buf.append("id=").append(id);
+        buf.append("factory=").append(serverServiceName);
+        buf.append(", id=").append(id);
         buf.append(", receiveAddress=").append(receiveAddress);
         buf.append(", receivePort=").append(receivePortReal);
         buf.append(", localAddress=").append(socket == null ? null : socket.getLocalSocketAddress());
@@ -1017,7 +1104,7 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
                         );
                     }
                     isServerClosed = true;
-                    close();
+                    close(true, null);
                     return null;
                 }
                 return message;
@@ -1042,7 +1129,7 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
                         e
                     );
                 }
-                close();
+                close(true, e);
                 return null;
             }catch(EOFException e){
                 if(isClosing || !isConnected){
@@ -1063,7 +1150,7 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
                         e
                     );
                 }
-                close();
+                close(true, e);
                 return null;
             }catch(ClassNotFoundException e){
                 if(receiveWarnMessageId != null){
@@ -1150,7 +1237,7 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
                         e
                     );
                 }
-                close();
+                close(true, e);
                 return null;
             }catch(EOFException e){
                 if(isClosing || !isConnected){
@@ -1163,7 +1250,7 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
                         e
                     );
                 }
-                close();
+                close(true, e);
                 return null;
             }catch(IOException e){
                 if(isClosing || !isConnected){

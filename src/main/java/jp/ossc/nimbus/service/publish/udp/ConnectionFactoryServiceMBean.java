@@ -52,8 +52,16 @@ public interface ConnectionFactoryServiceMBean extends ServiceBaseMBean{
     public static final String MSG_ID_CLIENT_LOST_MESSAGE_ERROR = "PCFT_00006";
     public static final String MSG_ID_SERVER_LOST_MESSAGE_ERROR = "PCFT_00007";
     public static final String MSG_ID_SERVER_CLOSE              = "PCFT_00008";
-    public static final String MSG_ID_CLIENT_CONNECT            = "PCFT_00009";
-    public static final String MSG_ID_CLIENT_CLOSE              = "PCFT_00010";
+    public static final String MSG_ID_SERVER_CLIENT_CONNECT     = "PCFT_00009";
+    public static final String MSG_ID_SERVER_CLIENT_CLOSED      = "PCFT_00010";
+    public static final String MSG_ID_SERVER_CLIENT_CLOSE       = "PCFT_00011";
+    public static final String MSG_ID_CLIENT_START_RECEIVE      = "PCFT_00012";
+    public static final String MSG_ID_CLIENT_STOP_RECEIVE       = "PCFT_00013";
+    public static final String MSG_ID_SERVER_START_RECEIVE      = "PCFT_00014";
+    public static final String MSG_ID_SERVER_STOP_RECEIVE       = "PCFT_00015";
+    public static final String MSG_ID_CLIENT_CONNECT            = "PCFT_00016";
+    public static final String MSG_ID_CLIENT_CLOSE              = "PCFT_00017";
+    public static final String MSG_ID_CLIENT_CLOSED             = "PCFT_00018";
     
     /**
      * クライアント側でTCPソケットをバインドするローカルアドレスを指定するシステムプロパティ名を設定する。<br>
@@ -765,28 +773,70 @@ public interface ConnectionFactoryServiceMBean extends ServiceBaseMBean{
      *
      * @param id ログメッセージID
      */
-    public void setClientConnectMessageId(String id);
+    public void setServerClientConnectMessageId(String id);
     
     /**
      * クライアントが接続しにきた場合に出力するログメッセージIDを取得する。<p>
      *
      * @return ログメッセージID
      */
-    public String getClientConnectMessageId();
+    public String getServerClientConnectMessageId();
     
     /**
      * クライアントが切断しにきた場合に出力するログメッセージIDを設定する。<p>
      *
      * @param id ログメッセージID
      */
-    public void setClientCloseMessageId(String id);
+    public void setServerClientClosedMessageId(String id);
     
     /**
      * クライアントが切断しにきた場合に出力するログメッセージIDを取得する。<p>
      *
      * @return ログメッセージID
      */
-    public String getClientCloseMessageId();
+    public String getServerClientClosedMessageId();
+    
+    /**
+     * クライアントを切断した場合に出力するログメッセージIDを設定する。<p>
+     *
+     * @param id ログメッセージID
+     */
+    public void setServerClientCloseMessageId(String id);
+    
+    /**
+     * クライアントを切断した場合に出力するログメッセージIDを取得する。<p>
+     *
+     * @return ログメッセージID
+     */
+    public String getServerClientCloseMessageId();
+    
+    /**
+     * サーバが受信開始した場合に出力するログメッセージIDを設定する。<p>
+     *
+     * @param id ログメッセージID
+     */
+    public void setServerStartReceiveMessageId(String id);
+    
+    /**
+     * サーバが受信開始した場合に出力するログメッセージIDを取得する。<p>
+     *
+     * @return ログメッセージID
+     */
+    public String getServerStartReceiveMessageId();
+    
+    /**
+     * サーバが受信停止した場合に出力するログメッセージIDを設定する。<p>
+     *
+     * @param id ログメッセージID
+     */
+    public void setServerStopReceiveMessageId(String id);
+    
+    /**
+     * サーバが受信停止した場合に出力するログメッセージIDを取得する。<p>
+     *
+     * @return ログメッセージID
+     */
+    public String getServerStopReceiveMessageId();
     
     /**
      * サーバ側が終了した場合に出力するログメッセージIDを設定する。<p>
@@ -801,6 +851,76 @@ public interface ConnectionFactoryServiceMBean extends ServiceBaseMBean{
      * @return ログメッセージID
      */
     public String getClientServerCloseMessageId();
+    
+    /**
+     * クライアントが受信開始した場合に出力するログメッセージIDを設定する。<p>
+     *
+     * @param id ログメッセージID
+     */
+    public void setClientStartReceiveMessageId(String id);
+    
+    /**
+     * クライアントが受信開始した場合に出力するログメッセージIDを取得する。<p>
+     *
+     * @return ログメッセージID
+     */
+    public String getClientStartReceiveMessageId();
+    
+    /**
+     * クライアントが受信停止した場合に出力するログメッセージIDを設定する。<p>
+     *
+     * @param id ログメッセージID
+     */
+    public void setClientStopReceiveMessageId(String id);
+    
+    /**
+     * クライアントが受信停止した場合に出力するログメッセージIDを取得する。<p>
+     *
+     * @return ログメッセージID
+     */
+    public String getClientStopReceiveMessageId();
+    
+    /**
+     * クライアントが接続を要求した場合に出力するログメッセージIDを設定する。<p>
+     *
+     * @param id ログメッセージID
+     */
+    public void setClientConnectMessageId(String id);
+    
+    /**
+     * クライアントが接続を要求した場合に出力するログメッセージIDを取得する。<p>
+     *
+     * @return ログメッセージID
+     */
+    public String getClientConnectMessageId();
+    
+    /**
+     * クライアントが切断した場合に出力するログメッセージIDを設定する。<p>
+     *
+     * @param id ログメッセージID
+     */
+    public void setClientCloseMessageId(String id);
+    
+    /**
+     * クライアントが切断した場合に出力するログメッセージIDを取得する。<p>
+     *
+     * @return ログメッセージID
+     */
+    public String getClientCloseMessageId();
+    
+    /**
+     * クライアントが切断された場合に出力するログメッセージIDを設定する。<p>
+     *
+     * @param id ログメッセージID
+     */
+    public void setClientClosedMessageId(String id);
+    
+    /**
+     * クライアントが切断された場合に出力するログメッセージIDを取得する。<p>
+     *
+     * @return ログメッセージID
+     */
+    public String getClientClosedMessageId();
     
     /**
      * サーバ側で送信メッセージを再利用する際の送信メッセージバッファ数を設定する。<p>

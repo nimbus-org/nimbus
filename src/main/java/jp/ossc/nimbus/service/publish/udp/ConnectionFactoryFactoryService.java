@@ -486,20 +486,77 @@ public class ConnectionFactoryFactoryService extends ServiceFactoryServiceBase i
         return (String)paramMap.get("serverMessageLostErrorMessageId");
     }
     
-    public void setClientConnectMessageId(String id) {
-        paramMap.put("clientConnectMessageId", id);
+    public void setServerStartReceiveMessageId(String id){
+        paramMap.put("serverStartReceiveMessageId", id);
+    }
+    public String getServerStartReceiveMessageId(){
+        return (String)paramMap.get("serverStartReceiveMessageId");
     }
     
-    public String getClientConnectMessageId() {
+    public void setServerStopReceiveMessageId(String id){
+        paramMap.put("serverStopReceiveMessageId", id);
+    }
+    public String getServerStopReceiveMessageId(){
+        return (String)paramMap.get("serverStopReceiveMessageId");
+    }
+    
+    public void setServerClientConnectMessageId(String id) {
+        paramMap.put("serverClientConnectMessageId", id);
+    }
+    
+    public String getServerClientConnectMessageId() {
+        return (String)paramMap.get("serverClientConnectMessageId");
+    }
+    
+    public void setServerClientCloseMessageId(String id) {
+        paramMap.put("serverClientCloseMessageId", id);
+    }
+    
+    public String getServerClientCloseMessageId() {
+        return (String)paramMap.get("serverClientCloseMessageId");
+    }
+    
+    public void setServerClientClosedMessageId(String id){
+        paramMap.put("serverClientClosedMessageId", id);
+    }
+    
+    public String getServerClientClosedMessageId(){
+        return (String)paramMap.get("serverClientClosedMessageId");
+    }
+    
+    public void setClientStartReceiveMessageId(String id){
+        paramMap.put("clientStartReceiveMessageId", id);
+    }
+    public String getClientStartReceiveMessageId(){
+        return (String)paramMap.get("clientStartReceiveMessageId");
+    }
+    
+    public void setClientStopReceiveMessageId(String id){
+        paramMap.put("clientStopReceiveMessageId", id);
+    }
+    public String getClientStopReceiveMessageId(){
+        return (String)paramMap.get("clientStopReceiveMessageId");
+    }
+    
+    public void setClientConnectMessageId(String id){
+        paramMap.put("clientConnectMessageId", id);
+    }
+    public String getClientConnectMessageId(){
         return (String)paramMap.get("clientConnectMessageId");
     }
     
-    public void setClientCloseMessageId(String id) {
+    public void setClientCloseMessageId(String id){
         paramMap.put("clientCloseMessageId", id);
     }
-    
-    public String getClientCloseMessageId() {
+    public String getClientCloseMessageId(){
         return (String)paramMap.get("clientCloseMessageId");
+    }
+    
+    public void setClientClosedMessageId(String id){
+        paramMap.put("clientClosedMessageId", id);
+    }
+    public String getClientClosedMessageId(){
+        return (String)paramMap.get("clientClosedMessageId");
     }
     
     public void setServerMessageRecycleBufferSize(int size) {

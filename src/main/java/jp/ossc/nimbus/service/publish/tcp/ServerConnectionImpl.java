@@ -52,6 +52,7 @@ import java.net.Socket;
 import java.net.SocketAddress;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -61,6 +62,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Date;
 
 import jp.ossc.nimbus.daemon.Daemon;
 import jp.ossc.nimbus.daemon.DaemonControl;
@@ -104,6 +106,8 @@ public class ServerConnectionImpl implements ServerConnection{
     private String clientConnectMessageId;
     private String clientClosedMessageId;
     private String clientCloseMessageId;
+    private String startReceiveMessageId;
+    private String stopReceiveMessageId;
     private Daemon clientAcceptor;
     private QueueHandlerContainerService sendQueueHandlerContainer;
     private DefaultQueueService sendResponseQueue;
@@ -126,6 +130,7 @@ public class ServerConnectionImpl implements ServerConnection{
     private long bufferSize;
     private long bufferTimeoutInterval = 1000l;
     private Daemon sendBufferChecker;
+    private ServiceName factoryServiceName;
     
     public ServerConnectionImpl(
         ServerSocket serverSocket,
@@ -407,12 +412,30 @@ public class ServerConnectionImpl implements ServerConnection{
         clientCloseMessageId = id;
     }
     
+    public void setStartReceiveMessageId(String id){
+        startReceiveMessageId = id;
+    }
+    public String getStartReceiveMessageId(){
+        return startReceiveMessageId;
+    }
+    
+    public void setStopReceiveMessageId(String id){
+        stopReceiveMessageId = id;
+    }
+    public String getStopReceiveMessageId(){
+        return stopReceiveMessageId;
+    }
+    
     public void setSendMessageCacheTime(long time){
         sendMessageCacheTime = time;
     }
     
     public void setAcknowledge(boolean isAck){
         isAcknowledge = isAck;
+    }
+    
+    public void setFactoryServiceName(ServiceName name){
+        factoryServiceName = name;
     }
     
     public Message createMessage(String subject, String key) throws MessageCreateException{
@@ -673,7 +696,7 @@ public class ServerConnectionImpl implements ServerConnection{
         final Iterator clientItr = clients.iterator();
         while(clientItr.hasNext()){
             ClientImpl client = (ClientImpl)clientItr.next();
-            client.close();
+            client.close(true, null);
         }
         clientAcceptor = null;
         
@@ -722,7 +745,8 @@ public class ServerConnectionImpl implements ServerConnection{
         final StringBuilder buf = new StringBuilder();
         buf.append(super.toString());
         buf.append('{');
-        buf.append("server=").append(serverSocket == null ? null : serverSocket.getLocalSocketAddress());
+        buf.append("factory=").append(factoryServiceName);
+        buf.append(", server=").append(serverSocket == null ? null : serverSocket.getLocalSocketAddress());
         buf.append('}');
         return buf.toString();
     }
@@ -1245,7 +1269,8 @@ public class ServerConnectionImpl implements ServerConnection{
             final StringBuilder buf = new StringBuilder();
             buf.append(super.toString());
             buf.append('{');
-            buf.append("client=").append(socket == null ? null : socket.getRemoteSocketAddress());
+            buf.append("factory=").append(factoryServiceName);
+            buf.append(", client=").append(socket == null ? null : socket.getRemoteSocketAddress());
             buf.append(", subject=").append(subjects);
             buf.append(", isEnabled=").append(isEnabled);
             buf.append('}');
@@ -1379,42 +1404,61 @@ public class ServerConnectionImpl implements ServerConnection{
             case ClientMessage.MESSAGE_START_RECEIVE:
                 StartReceiveMessage startMessage = (StartReceiveMessage)message;
                 fromTime = startMessage.getFrom();
-                if(fromTime >= 0){
-                    synchronized(this){
-                        isStartReceive = true;
-                        List messages = getSendMessages(fromTime);
-                        for(int i = 0; i < messages.size(); i++){
-                            Message msg = (Message)messages.get(i);
-                            if(!isTargetMessage(msg)){
-                                continue;
+                if(!isStartReceive){
+                    if(logger != null && startReceiveMessageId != null){
+                        logger.write(
+                            startReceiveMessageId,
+                            new Object[]{
+                                ClientImpl.this,
+                                fromTime >= 0 ? new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS").format(new Date(fromTime)) : null
                             }
-                            try{
-                                send(msg);
-                            }catch(MessageSendException e){
-                                if(logger != null && sendErrorRetryOverMessageId != null){
-                                    logger.write(
-                                        sendErrorRetryOverMessageId,
-                                        new Object[]{this, msg},
-                                        e
-                                    );
+                        );
+                    }
+                    if(fromTime >= 0){
+                        synchronized(this){
+                            isStartReceive = true;
+                            List messages = getSendMessages(fromTime);
+                            for(int i = 0; i < messages.size(); i++){
+                                Message msg = (Message)messages.get(i);
+                                if(!isTargetMessage(msg)){
+                                    continue;
+                                }
+                                try{
+                                    send(msg);
+                                }catch(MessageSendException e){
+                                    if(logger != null && sendErrorRetryOverMessageId != null){
+                                        logger.write(
+                                            sendErrorRetryOverMessageId,
+                                            new Object[]{this, msg},
+                                            e
+                                        );
+                                    }
                                 }
                             }
                         }
+                    }else{
+                        isStartReceive = true;
                     }
-                }else{
-                    isStartReceive = true;
-                }
-                if(serverConnectionListeners != null){
-                    for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
-                        ((ServerConnectionListener)serverConnectionListeners.get(i)).onStartReceive(ClientImpl.this, fromTime);
+                    if(serverConnectionListeners != null){
+                        for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
+                            ((ServerConnectionListener)serverConnectionListeners.get(i)).onStartReceive(ClientImpl.this, fromTime);
+                        }
                     }
                 }
                 break;
             case ClientMessage.MESSAGE_STOP_RECEIVE:
-                isStartReceive = false;
-                if(serverConnectionListeners != null){
-                    for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
-                        ((ServerConnectionListener)serverConnectionListeners.get(i)).onStopReceive(ClientImpl.this);
+                if(isStartReceive){
+                    if(logger != null && stopReceiveMessageId != null){
+                        logger.write(
+                            stopReceiveMessageId,
+                            new Object[]{ClientImpl.this}
+                        );
+                    }
+                    isStartReceive = false;
+                    if(serverConnectionListeners != null){
+                        for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
+                            ((ServerConnectionListener)serverConnectionListeners.get(i)).onStopReceive(ClientImpl.this);
+                        }
                     }
                 }
                 break;

@@ -122,14 +122,22 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
     private String serverSendErrorRetryOverMessageId = MSG_ID_SEND_ERROR_RETRY_OVER;
     private String serverResponseErrorMessageId = MSG_ID_RESPONSE_ERROR;
     private String serverMessageLostErrorMessageId = MSG_ID_SERVER_LOST_MESSAGE_ERROR;
-    private String clientConnectMessageId = MSG_ID_CLIENT_CONNECT;
-    private String clientCloseMessageId = MSG_ID_CLIENT_CLOSE;
+    private String serverClientConnectMessageId = MSG_ID_SERVER_CLIENT_CONNECT;
+    private String serverClientClosedMessageId = MSG_ID_SERVER_CLIENT_CLOSED;
+    private String serverClientCloseMessageId = MSG_ID_SERVER_CLIENT_CLOSE;
+    private String serverStartReceiveMessageId = MSG_ID_SERVER_START_RECEIVE;
+    private String serverStopReceiveMessageId = MSG_ID_SERVER_STOP_RECEIVE;
     private int serverMessageRecycleBufferSize;
     private int serverWindowRecycleBufferSize;
     private String clientServerCloseMessageId = MSG_ID_SERVER_CLOSE;
     private String clientReceiveWarnMessageId = MSG_ID_RECEIVE_WARN;
     private String clientReceiveErrorMessageId = MSG_ID_RECEIVE_ERROR;
     private String clientMessageLostErrorMessageId = MSG_ID_CLIENT_LOST_MESSAGE_ERROR;
+    private String clientStartReceiveMessageId = MSG_ID_CLIENT_START_RECEIVE;
+    private String clientStopReceiveMessageId = MSG_ID_CLIENT_STOP_RECEIVE;
+    private String clientConnectMessageId = MSG_ID_CLIENT_CONNECT;
+    private String clientCloseMessageId = MSG_ID_CLIENT_CLOSE;
+    private String clientClosedMessageId = MSG_ID_CLIENT_CLOSED;
     private long clientResponseTimeout = 30000;
     private int clientPacketRecycleBufferSize;
     private int clientWindowRecycleBufferSize;
@@ -460,18 +468,39 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
         return serverMessageLostErrorMessageId;
     }
     
-    public void setClientConnectMessageId(String id){
-        clientConnectMessageId = id;
+    public void setServerClientConnectMessageId(String id){
+        serverClientConnectMessageId = id;
     }
-    public String getClientConnectMessageId(){
-        return clientConnectMessageId;
+    public String getServerClientConnectMessageId(){
+        return serverClientConnectMessageId;
     }
     
-    public void setClientCloseMessageId(String id){
-        clientCloseMessageId = id;
+    public void setServerClientClosedMessageId(String id){
+        serverClientClosedMessageId = id;
     }
-    public String getClientCloseMessageId(){
-        return clientCloseMessageId;
+    public String getServerClientClosedMessageId(){
+        return serverClientClosedMessageId;
+    }
+    
+    public void setServerClientCloseMessageId(String id){
+        serverClientCloseMessageId = id;
+    }
+    public String getServerClientCloseMessageId(){
+        return serverClientCloseMessageId;
+    }
+    
+    public void setServerStartReceiveMessageId(String id){
+        serverStartReceiveMessageId = id;
+    }
+    public String getServerStartReceiveMessageId(){
+        return serverStartReceiveMessageId;
+    }
+    
+    public void setServerStopReceiveMessageId(String id){
+        serverStopReceiveMessageId = id;
+    }
+    public String getServerStopReceiveMessageId(){
+        return serverStopReceiveMessageId;
     }
     
     public void setServerMessageRecycleBufferSize(int size){
@@ -514,6 +543,41 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
     }
     public String getClientMessageLostErrorMessageId(){
         return clientMessageLostErrorMessageId;
+    }
+    
+    public void setClientStartReceiveMessageId(String id){
+        clientStartReceiveMessageId = id;
+    }
+    public String getClientStartReceiveMessageId(){
+        return clientStartReceiveMessageId;
+    }
+    
+    public void setClientStopReceiveMessageId(String id){
+        clientStopReceiveMessageId = id;
+    }
+    public String getClientStopReceiveMessageId(){
+        return clientStopReceiveMessageId;
+    }
+    
+    public void setClientConnectMessageId(String id){
+        clientConnectMessageId = id;
+    }
+    public String getClientConnectMessageId(){
+        return clientConnectMessageId;
+    }
+    
+    public void setClientCloseMessageId(String id){
+        clientCloseMessageId = id;
+    }
+    public String getClientCloseMessageId(){
+        return clientCloseMessageId;
+    }
+    
+    public void setClientClosedMessageId(String id){
+        clientClosedMessageId = id;
+    }
+    public String getClientClosedMessageId(){
+        return clientClosedMessageId;
     }
     
     public void setClientResponseTimeout(long timeout){
@@ -1044,9 +1108,13 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
         serverConnection.setSendErrorRetryOverMessageId(serverSendErrorRetryOverMessageId);
         serverConnection.setResponseErrorMessageId(serverResponseErrorMessageId);
         serverConnection.setMessageLostErrorMessageId(serverMessageLostErrorMessageId);
-        serverConnection.setClientConnectMessageId(clientConnectMessageId);
-        serverConnection.setClientCloseMessageId(clientCloseMessageId);
+        serverConnection.setClientConnectMessageId(serverClientConnectMessageId);
+        serverConnection.setClientClosedMessageId(serverClientClosedMessageId);
+        serverConnection.setClientCloseMessageId(serverClientCloseMessageId);
+        serverConnection.setStartReceiveMessageId(serverStartReceiveMessageId);
+        serverConnection.setStopReceiveMessageId(serverStopReceiveMessageId);
         serverConnection.setAcknowledge(isAcknowledge);
+        serverConnection.setFactoryServiceName(getServiceNameObject());
         if(serverMessageRecycleBufferSize > 0){
             serverConnection.setMessageRecycleBufferSize(serverMessageRecycleBufferSize);
         }
@@ -1135,6 +1203,11 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
         connection.setReceiveWarnMessageId(clientReceiveWarnMessageId);
         connection.setReceiveErrorMessageId(clientReceiveErrorMessageId);
         connection.setMessageLostErrorMessageId(clientMessageLostErrorMessageId);
+        connection.setStartReceiveMessageId(clientStartReceiveMessageId);
+        connection.setStopReceiveMessageId(clientStopReceiveMessageId);
+        connection.setConnectMessageId(clientConnectMessageId);
+        connection.setCloseMessageId(clientCloseMessageId);
+        connection.setClosedMessageId(clientClosedMessageId);
         connection.setReconnectCount(clientReconnectCount);
         connection.setReconnectInterval(clientReconnectInterval);
         connection.setReconnectBufferTime(clientReconnectBufferTime);

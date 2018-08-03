@@ -289,7 +289,8 @@ public class ClientConnectionImpl implements ClientConnection{
         final StringBuilder buf = new StringBuilder();
         buf.append(super.toString());
         buf.append('{');
-        buf.append("id=").append(id);
+        buf.append("factory=").append(serverServiceName);
+        buf.append(", id=").append(id);
         buf.append(", server=").append(serverConnection);
         buf.append(", subject=").append(subjects);
         buf.append('}');
