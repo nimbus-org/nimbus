@@ -5979,53 +5979,6 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                             keyList.add(tmpKey);
                             condBuf.append(tmpKey);
 
-                            if(!beforeToken.startsWith(INPUT)
-                                && !beforeToken.startsWith(VAR)
-                                && !beforeToken.startsWith(THIS)
-                            ){
-                                int index = 0;
-                                int dotIndex = beforeToken.indexOf('.');
-                                int braket1Index = beforeToken.indexOf('(');
-                                int braket2Index = beforeToken.indexOf('[');
-                                if(dotIndex == -1
-                                    && braket1Index == -1
-                                    && braket2Index == -1
-                                ){
-                                    beforeToken = beforeToken + '.' + RESULT;
-                                }else if(dotIndex == beforeToken.length() - 1
-                                    || braket1Index == beforeToken.length() - 1
-                                    || braket2Index == beforeToken.length() - 1
-                                ){
-                                    throw new DeploymentException(
-                                        "Invalid key of test : " + beforeToken
-                                    );
-                                }else{
-                                    index = dotIndex;
-                                    if(index == -1
-                                         || (braket1Index != -1 && index > braket1Index)){
-                                        index = braket1Index;
-                                    }
-                                    if(index == -1
-                                         || (braket2Index != -1 && index > braket2Index)){
-                                        index = braket2Index;
-                                    }
-                                    String tmp = beforeToken.substring(index + 1);
-                                    if(!tmp.startsWith(TARGET)
-                                         && !tmp.startsWith(TARGET + '.')
-                                         && !tmp.startsWith(TARGET + '(')
-                                         && !tmp.startsWith(TARGET + '[')
-                                         && !tmp.startsWith(RESULT)
-                                         && !tmp.startsWith(RESULT + '.')
-                                         && !tmp.startsWith(RESULT + '(')
-                                         && !tmp.startsWith(RESULT + '[')
-                                    ){
-                                        beforeToken
-                                             = beforeToken.substring(0, index)
-                                             + '.' + RESULT
-                                             + beforeToken.substring(index);
-                                    }
-                                }
-                            }
                             if(properties == null){
                                 properties = new ArrayList();
                             }
@@ -6081,11 +6034,29 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                             NestedProperty nestedProp = (NestedProperty)property;
                             Property thisProp = nestedProp.getFirstThisProperty();
                             val = thisProp.getProperty(context);
+                            if(val != null && (val instanceof StepContext)){
+                                if(nestedProp instanceof NestedProperty){
+                                    NestedProperty nestedProp2 = (NestedProperty)nestedProp;
+                                    Property thisProp2 = nestedProp2.getFirstThisProperty();
+                                    if(!TARGET.equals(thisProp2.getPropertyName())
+                                            && !RESULT.equals(thisProp2.getPropertyName())
+                                    ){
+                                        val = ((StepContext)val).result;
+                                    }
+                                }else if(!TARGET.equals(nestedProp.getPropertyName())
+                                        && !RESULT.equals(nestedProp.getPropertyName())
+                                ){
+                                    val = ((StepContext)val).result;
+                                }
+                            }
                             if(val != null){
                                 val = nestedProp.getProperty(context);
                             }
                         }else{
                             val = property.getProperty(context);
+                            if(val instanceof StepContext){
+                                val = ((StepContext)val).result;
+                            }
                         }
                     }catch(NullIndexPropertyException e){
                         if(nullCheck){
@@ -6482,54 +6453,6 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                                  = "_evaluatectgyserv" + keyList.size();
                             keyList.add(tmpKey);
                             condBuf.append(tmpKey);
-
-                            if(!beforeToken.startsWith(INPUT)
-                                && !beforeToken.startsWith(VAR)
-                                && !beforeToken.startsWith(THIS)
-                            ){
-                                int index = 0;
-                                int dotIndex = beforeToken.indexOf('.');
-                                int braket1Index = beforeToken.indexOf('(');
-                                int braket2Index = beforeToken.indexOf('[');
-                                if(dotIndex == -1
-                                    && braket1Index == -1
-                                    && braket2Index == -1
-                                ){
-                                    beforeToken = beforeToken + '.' + RESULT;
-                                }else if(dotIndex == beforeToken.length() - 1
-                                    || braket1Index == beforeToken.length() - 1
-                                    || braket2Index == beforeToken.length() - 1
-                                ){
-                                    throw new DeploymentException(
-                                        "Invalid key of test : " + beforeToken
-                                    );
-                                }else{
-                                    index = dotIndex;
-                                    if(index == -1
-                                         || (braket1Index != -1 && index > braket1Index)){
-                                        index = braket1Index;
-                                    }
-                                    if(index == -1
-                                         || (braket2Index != -1 && index > braket2Index)){
-                                        index = braket2Index;
-                                    }
-                                    String tmp = beforeToken.substring(index + 1);
-                                    if(!tmp.equals(TARGET)
-                                         && !tmp.startsWith(TARGET + '.')
-                                         && !tmp.startsWith(TARGET + '(')
-                                         && !tmp.startsWith(TARGET + '[')
-                                         && !tmp.equals(RESULT)
-                                         && !tmp.startsWith(RESULT + '.')
-                                         && !tmp.startsWith(RESULT + '(')
-                                         && !tmp.startsWith(RESULT + '[')
-                                    ){
-                                        beforeToken
-                                             = beforeToken.substring(0, index)
-                                             + '.' + RESULT
-                                             + beforeToken.substring(index);
-                                    }
-                                }
-                            }
                             Property prop = PropertyFactory.createProperty(beforeToken);
                             if(!nullCheck){
                                 prop.setIgnoreNullProperty(true);
@@ -6574,11 +6497,29 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                         NestedProperty nestedProp = (NestedProperty)property;
                         Property thisProp = nestedProp.getFirstThisProperty();
                         val = thisProp.getProperty(context);
+                        if(val != null && (val instanceof StepContext)){
+                            if(nestedProp instanceof NestedProperty){
+                                NestedProperty nestedProp2 = (NestedProperty)nestedProp;
+                                Property thisProp2 = nestedProp2.getFirstThisProperty();
+                                if(!TARGET.equals(thisProp2.getPropertyName())
+                                        && !RESULT.equals(thisProp2.getPropertyName())
+                                ){
+                                    val = ((StepContext)val).result;
+                                }
+                            }else if(!TARGET.equals(nestedProp.getPropertyName())
+                                    && !RESULT.equals(nestedProp.getPropertyName())
+                            ){
+                                val = ((StepContext)val).result;
+                            }
+                        }
                         if(val != null){
                             val = nestedProp.getProperty(context);
                         }
                     }else{
                         val = property.getProperty(context);
+                        if(val instanceof StepContext){
+                            val = ((StepContext)val).result;
+                        }
                     }
                 }catch(InvocationTargetException e){
                     final Throwable th = e.getCause();
