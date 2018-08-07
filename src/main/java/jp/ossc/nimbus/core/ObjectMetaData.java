@@ -304,6 +304,10 @@ public class ObjectMetaData extends MetaData implements Serializable{
         }
     }
     
+    protected void importCodeAttribute(Element element) throws DeploymentException{
+        code = getUniqueAttribute(element, CODE_ATTRIBUTE_NAME);
+    }
+    
     /**
      * &lt;object&gt;要素のElementをパースして、自分自身の初期化、及び子要素のメタデータの生成を行う。<p>
      *
@@ -315,7 +319,7 @@ public class ObjectMetaData extends MetaData implements Serializable{
         
         checkTagName(element);
         
-        code = getUniqueAttribute(element, CODE_ATTRIBUTE_NAME);
+        importCodeAttribute(element);
         
         importXMLInner(element, null);
         
@@ -520,9 +524,31 @@ public class ObjectMetaData extends MetaData implements Serializable{
      */
     public Object clone(){
         ObjectMetaData clone = (ObjectMetaData)super.clone();
-        clone.fields = new LinkedHashMap(fields);
-        clone.attributes = new LinkedHashMap(attributes);
-        clone.invokes = new ArrayList(invokes);
+        clone.fields = new LinkedHashMap();
+        Iterator entries = fields.entrySet().iterator();
+        while(entries.hasNext()){
+            Map.Entry entry = (Map.Entry)entries.next();
+            FieldMetaData field = (FieldMetaData)entry.getValue();
+            field = (FieldMetaData)field.clone();
+            field.setParent(clone);
+            clone.fields.put(entry.getKey(), field);
+        }
+        clone.attributes = new LinkedHashMap();
+        entries = attributes.entrySet().iterator();
+        while(entries.hasNext()){
+            Map.Entry entry = (Map.Entry)entries.next();
+            AttributeMetaData attr = (AttributeMetaData)entry.getValue();
+            attr = (AttributeMetaData)attr.clone();
+            attr.setParent(clone);
+            clone.attributes.put(entry.getKey(), attr);
+        }
+        clone.invokes = new ArrayList();
+        for(int i = 0; i < invokes.size(); i++){
+            InvokeMetaData invoke = (InvokeMetaData)invokes.get(i);
+            invoke = (InvokeMetaData)invoke.clone();
+            invoke.setParent(clone);
+            clone.invokes.add(invoke);
+        }
         return clone;
     }
     

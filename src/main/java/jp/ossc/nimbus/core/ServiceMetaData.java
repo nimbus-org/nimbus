@@ -437,18 +437,27 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
         if(templateData == null){
             templateData = ServiceManagerFactory.getServiceMetaData(temlateServiceName);
         }
+        templateData = (ServiceMetaData)templateData.clone();
         templateData = templateData.applyTemplate(loader);
         
         ServiceMetaData result = (ServiceMetaData)clone();
-        if(result.constructor == null){
-            result.constructor = templateData.constructor;
+        if(result.code == null){
+            result.code = templateData.code;
+        }
+        if(result.constructor == null && templateData.constructor != null){
+            ConstructorMetaData cons = (ConstructorMetaData)templateData.constructor.clone();
+            cons.setParent(result);
+            result.constructor = cons;
         }
         if(templateData.fields.size() != 0){
             Iterator entries = templateData.fields.entrySet().iterator();
             while(entries.hasNext()){
                 Map.Entry entry = (Map.Entry)entries.next();
                 if(!result.fields.containsKey(entry.getKey())){
-                    result.fields.put(entry.getKey(), entry.getValue());
+                    FieldMetaData field = (FieldMetaData)entry.getValue();
+                    field = (FieldMetaData)field.clone();
+                    field.setParent(result);
+                    result.fields.put(entry.getKey(), field);
                 }
             }
         }
@@ -457,7 +466,10 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
             while(entries.hasNext()){
                 Map.Entry entry = (Map.Entry)entries.next();
                 if(!result.attributes.containsKey(entry.getKey())){
-                    result.attributes.put(entry.getKey(), entry.getValue());
+                    AttributeMetaData attr = (AttributeMetaData)entry.getValue();
+                    attr = (AttributeMetaData)attr.clone();
+                    attr.setParent(result);
+                    result.attributes.put(entry.getKey(), attr);
                 }
             }
         }
@@ -467,10 +479,24 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
         if(result.optionalConfig == null){
             result.optionalConfig = templateData.optionalConfig;
         }
-        if(templateData.depends.size() != 0){
-            result.depends.addAll(templateData.depends);
+        for(int i = 0; i < templateData.depends.size(); i++){
+            DependsMetaData deps = (DependsMetaData)templateData.depends.get(i);
+            deps = (DependsMetaData)deps.clone();
+            deps.setParent(result);
+            if(!isTemplate() && deps.isRelativeManagerName() && manager != null){
+                deps.setManagerName(manager.getName());
+            }
+            result.depends.add(deps);
         }
         return result;
+    }
+    
+    protected void importCodeAttribute(Element element) throws DeploymentException{
+        if(template == null){
+            super.importCodeAttribute(element);
+        }else{
+            code = getOptionalAttribute(element, CODE_ATTRIBUTE_NAME);
+        }
     }
     
     /**
@@ -722,7 +748,13 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
      */
     public Object clone(){
         ServiceMetaData clone = (ServiceMetaData)super.clone();
-        clone.depends = new ArrayList(depends);
+        clone.depends = new ArrayList();
+        for(int i = 0; i < depends.size(); i++){
+            DependsMetaData deps = (DependsMetaData)depends.get(i);
+            deps = (DependsMetaData)deps.clone();
+            deps.setParent(clone);
+            clone.depends.add(deps);
+        }
         return clone;
     }
     

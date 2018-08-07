@@ -65,6 +65,8 @@ public class ServiceNameMetaData extends MetaData implements Serializable{
      */
     protected String serviceName;
     
+    protected boolean isRelativeManagerName;
+    
     /**
      * 親要素のメタデータを持つインスタンスを生成する。<p>
      * 
@@ -152,6 +154,15 @@ public class ServiceNameMetaData extends MetaData implements Serializable{
     }
     
     /**
+     * マネージャ名が相対指定だったかを判定する。<p>
+     *
+     * @return マネージャ名が相対指定だった場合、true
+     */
+    public boolean isRelativeManagerName(){
+        return isRelativeManagerName;
+    }
+    
+    /**
      * サービス名を表す要素のElementをパースして、自分自身の初期化を行う。<p>
      *
      * @param element サービス名を表す要素のElement
@@ -162,11 +173,18 @@ public class ServiceNameMetaData extends MetaData implements Serializable{
         
         tagName = element.getTagName();
         
-        managerName = getOptionalAttribute(
+        String tmpManagerName = getOptionalAttribute(
             element,
-            MANAGER_NAME_ATTRIBUTE_NAME,
-            managerName == null ? ServiceManager.DEFAULT_NAME : managerName
+            MANAGER_NAME_ATTRIBUTE_NAME
         );
+        if(tmpManagerName != null){
+            managerName = tmpManagerName;
+        }else{
+            if(managerName != null){
+                isRelativeManagerName = true;
+            }
+            managerName = managerName == null ? ServiceManager.DEFAULT_NAME : managerName;
+        }
         
         String content = getElementContent(element);
         if(content != null && content.length() != 0){
@@ -198,6 +216,9 @@ public class ServiceNameMetaData extends MetaData implements Serializable{
                 final ServiceNameEditor editor = new ServiceNameEditor();
                 editor.setServiceManagerName(managerName);
                 editor.setAsText(content);
+                if(editor.isRelativeManagerName()){
+                    isRelativeManagerName = true;
+                }
                 final ServiceName editName = (ServiceName)editor.getValue();
                 if(!editName.getServiceManagerName().equals(managerName)){
                     managerName = editName.getServiceManagerName();
