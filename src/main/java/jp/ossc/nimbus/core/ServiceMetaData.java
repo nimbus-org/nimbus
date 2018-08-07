@@ -507,7 +507,22 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
      */
     public void importXML(Element element) throws DeploymentException{
         
-        name = getUniqueAttribute(element, NAME_ATTRIBUTE_NAME);
+        template = getOptionalAttribute(
+            element,
+            TEMPLATE_ATTRIBUTE_NAME
+        );
+        if(template == null){
+            name = getUniqueAttribute(element, NAME_ATTRIBUTE_NAME);
+        }else{
+            ServiceNameEditor editor = new ServiceNameEditor();
+            if(getManager() != null){
+                editor.setServiceManagerName(getManager().getName());
+            }
+            editor.setAsText(template);
+            ServiceName temlateServiceName = (ServiceName)editor.getValue();
+            name = temlateServiceName.getServiceName();
+        }
+        
         if(name != null){
             // システムプロパティの置換
             name = Utility.replaceSystemProperty(name);
@@ -580,11 +595,6 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
         if(createTemplate != null){
             isCreateTemplate = Boolean.valueOf(createTemplate).booleanValue();
         }
-        
-        template = getOptionalAttribute(
-            element,
-            TEMPLATE_ATTRIBUTE_NAME
-        );
         
         super.importXML(element);
     }
