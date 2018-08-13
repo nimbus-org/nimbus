@@ -56,14 +56,11 @@ public class ServiceNameMetaData extends MetaData implements Serializable{
     protected String tagName;
     
     /**
-     * サービス名を表す要素のmanager-name属性の値。<p>
-     */
-    protected String managerName;
-    
-    /**
-     * サービス名を表す要素の内容で指定されたサービス名。<p>
+     * サービス名。<p>
      */
     protected String serviceName;
+    
+    protected ServiceName serviceNameObject;
     
     protected boolean isRelativeManagerName;
     
@@ -84,7 +81,7 @@ public class ServiceNameMetaData extends MetaData implements Serializable{
      */
     public ServiceNameMetaData(MetaData parent, String manager){
         super(parent);
-        managerName = manager;
+        serviceName = manager;
     }
     
     /**
@@ -96,8 +93,7 @@ public class ServiceNameMetaData extends MetaData implements Serializable{
      */
     public ServiceNameMetaData(MetaData parent, String manager, String service){
         super(parent);
-        managerName = manager;
-        serviceName = service;
+        serviceName = manager + '#' + service;
     }
     
     /**
@@ -111,46 +107,66 @@ public class ServiceNameMetaData extends MetaData implements Serializable{
     public ServiceNameMetaData(MetaData parent, String name, String manager, String service){
         super(parent);
         tagName = name;
-        managerName = manager;
-        serviceName = service;
+        serviceName = manager + '#' + service;
     }
     
     /**
-     * サービス名を表す要素のmanager-name属性の値を取得する。<p>
-     * manager-name属性が省略されていた場合は、{@link ServiceManager#DEFAULT_NAME}を返す。<br>
+     * サービス名を取得する。<p>
      * 
-     * @return サービス名を表す要素のmanager-name属性の値
-     */
-    public String getManagerName(){
-        return managerName;
-    }
-    
-    /**
-     * サービス名を表す要素のmanager-name属性の値を設定する。<p>
-     * 
-     * @param name サービス名を表す要素のmanager-name属性の値
-     */
-    public void setManagerName(String name){
-        managerName = name;
-    }
-    
-    /**
-     * サービス名を表す要素の内容で指定されたサービス名を取得する。<p>
-     * 内容が指定されていない場合は、nullを返す。<br>
-     * 
-     * @return サービス名を表す要素の内容
+     * @return サービス名
      */
     public String getServiceName(){
         return serviceName;
     }
     
     /**
-     * サービス名を表す要素の内容で指定されたサービス名を設定する。<p>
+     * サービス名を設定する。<p>
      * 
-     * @param name サービス名を表す要素の内容
+     * @param name サービス名
      */
     public void setServiceName(String name){
         serviceName = name;
+    }
+    
+    public ServiceName getServiceNameObject(){
+        if(serviceNameObject != null){
+            return serviceNameObject;
+        }
+        String serviceNameStr = serviceName;
+        if(serviceNameStr != null){
+            // システムプロパティの置換
+            serviceNameStr = Utility.replaceSystemProperty(serviceNameStr);
+            final MetaData parent = getParent();
+            if(parent != null && parent instanceof ObjectMetaData){
+                ObjectMetaData objData = (ObjectMetaData)parent;
+                if(objData.getServiceLoader() != null){
+                    // サービスローダ構成プロパティの置換
+                    serviceNameStr = Utility.replaceServiceLoderConfig(
+                        serviceNameStr,
+                        objData.getServiceLoader().getConfig()
+                    );
+                }
+            }
+            String managerName = null;
+            if(parent != null && parent instanceof ServiceMetaData){
+                ServiceMetaData serviceData = (ServiceMetaData)parent;
+                if(serviceData.getManager() != null){
+                    // マネージャプロパティの置換
+                    serviceNameStr = Utility.replaceManagerProperty(serviceData.getManager(), serviceNameStr);
+                    managerName = serviceData.getManager().getName();
+                }
+            }
+            // サーバプロパティの置換
+            serviceNameStr = Utility.replaceServerProperty(serviceNameStr);
+            final ServiceNameEditor editor = new ServiceNameEditor();
+            editor.setServiceManagerName(managerName);
+            editor.setAsText(serviceNameStr);
+            if(editor.isRelativeManagerName()){
+                isRelativeManagerName = true;
+            }
+            serviceNameObject = (ServiceName)editor.getValue();
+        }
+        return serviceNameObject;
     }
     
     /**
@@ -173,60 +189,27 @@ public class ServiceNameMetaData extends MetaData implements Serializable{
         
         tagName = element.getTagName();
         
-        String tmpManagerName = getOptionalAttribute(
+        String managerName = getOptionalAttribute(
             element,
             MANAGER_NAME_ATTRIBUTE_NAME
         );
-        if(tmpManagerName != null){
-            managerName = tmpManagerName;
-        }else{
-            if(managerName != null){
+        if(managerName == null){
+            if(serviceName == null){
+                managerName = ServiceManager.DEFAULT_NAME;
+            }else if(serviceName.indexOf('#') == -1){
                 isRelativeManagerName = true;
+                managerName = serviceName;
+                serviceName = null;
+            }else{
+                serviceName = null;
             }
-            managerName = managerName == null ? ServiceManager.DEFAULT_NAME : managerName;
+        }else{
+            serviceName = null;
         }
         
         String content = getElementContent(element);
         if(content != null && content.length() != 0){
-            if(content != null){
-                // システムプロパティの置換
-                content = Utility.replaceSystemProperty(content);
-                final MetaData parent = getParent();
-                if(parent != null && parent instanceof ObjectMetaData){
-                    ObjectMetaData objData = (ObjectMetaData)parent;
-                    if(objData.getServiceLoader() != null){
-                        // サービスローダ構成プロパティの置換
-                        content = Utility.replaceServiceLoderConfig(
-                            content,
-                            objData.getServiceLoader().getConfig()
-                        );
-                    }
-                }
-                if(parent != null && parent instanceof ServiceMetaData){
-                    ServiceMetaData serviceData = (ServiceMetaData)parent;
-                    if(serviceData.getManager() != null){
-                        // マネージャプロパティの置換
-                        content = Utility.replaceManagerProperty(serviceData.getManager(), content);
-                    }
-                }
-                // サーバプロパティの置換
-                content = Utility.replaceServerProperty(content);
-            }
-            if(content.indexOf('#') != -1){
-                final ServiceNameEditor editor = new ServiceNameEditor();
-                editor.setServiceManagerName(managerName);
-                editor.setAsText(content);
-                if(editor.isRelativeManagerName()){
-                    isRelativeManagerName = true;
-                }
-                final ServiceName editName = (ServiceName)editor.getValue();
-                if(!editName.getServiceManagerName().equals(managerName)){
-                    managerName = editName.getServiceManagerName();
-                }
-                serviceName = editName.getServiceName();
-            }else{
-                serviceName = content;
-            }
+            serviceName = managerName + '#' + content;
         }else{
             throw new DeploymentException(
                 "Content of '" + tagName + "' element must not be null."
@@ -237,11 +220,8 @@ public class ServiceNameMetaData extends MetaData implements Serializable{
     public StringBuilder toXML(StringBuilder buf){
         appendComment(buf);
         buf.append('<').append(tagName).append('>');
-        if(managerName != null){
-            buf.append(managerName);
-        }
         if(serviceName != null){
-            buf.append('#').append(serviceName);
+            buf.append(serviceName);
         }
         buf.append("</").append(tagName).append('>');
         return buf;
@@ -263,13 +243,6 @@ public class ServiceNameMetaData extends MetaData implements Serializable{
         }
         if(obj instanceof ServiceNameMetaData){
             final ServiceNameMetaData name = (ServiceNameMetaData)obj;
-            if((managerName == null && name.managerName != null)
-                || (managerName != null && name.managerName == null)){
-                return false;
-            }else if(managerName != null && name.managerName != null
-                && !managerName.equals(name.managerName)){
-                return false;
-            }
             if((serviceName == null && name.serviceName != null)
                 || (serviceName != null && name.serviceName == null)){
                 return false;
@@ -288,7 +261,6 @@ public class ServiceNameMetaData extends MetaData implements Serializable{
      * @return ハッシュ値
      */
     public int hashCode(){
-        return (managerName != null ? managerName.hashCode() : 0)
-            + (serviceName != null ? serviceName.hashCode() : 0);
+        return serviceName != null ? serviceName.hashCode() : 0;
     }
 }

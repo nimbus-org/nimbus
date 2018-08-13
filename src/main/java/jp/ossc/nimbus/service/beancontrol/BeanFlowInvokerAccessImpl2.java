@@ -3304,7 +3304,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
             coverage.cover();
             if(serviceNameValue == null){
                 return ServiceManagerFactory
-                    .getServiceObject(getManagerName(), getServiceName());
+                    .getServiceObject(getServiceNameObject());
             }else{
                 Object value = serviceNameValue.getValue(context);
                 if(value == null){
@@ -3326,12 +3326,24 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                      + element.getTagName()
                 );
             }
-            managerName = getOptionalAttribute(
+            String managerName = getOptionalAttribute(
                 element,
-                MANAGER_NAME_ATTRIBUTE_NAME,
-                managerName == null ? ServiceManager.DEFAULT_NAME : managerName
+                MANAGER_NAME_ATTRIBUTE_NAME
             );
-
+            if(managerName == null){
+                if(serviceName == null){
+                    managerName = ServiceManager.DEFAULT_NAME;
+                }else if(serviceName.indexOf('#') == -1){
+                    isRelativeManagerName = true;
+                    managerName = serviceName;
+                    serviceName = null;
+                }else{
+                    serviceName = null;
+                }
+            }else{
+                serviceName = null;
+            }
+            
             final Element childElement = getOptionalChild(element);
             if(childElement != null){
                 coverage.setElementName("<" + SERIVCE_REF_TAG_NAME + ">");
@@ -3367,19 +3379,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
             }else{
                 String content = getElementContent(element);
                 if(content != null && content.length() != 0){
-                    content = factoryCallBack.replaceProperty(content);
-                    if(content.indexOf('#') != -1){
-                        final ServiceNameEditor editor = new ServiceNameEditor();
-                        editor.setServiceManagerName(managerName);
-                        editor.setAsText(content);
-                        final ServiceName editName = (ServiceName)editor.getValue();
-                        if(!editName.getServiceManagerName().equals(managerName)){
-                            managerName = editName.getServiceManagerName();
-                        }
-                        serviceName = editName.getServiceName();
-                    }else{
-                        serviceName = content;
-                    }
+                    serviceName = managerName + '#' + content;
                     coverage.setElementName("<" + SERIVCE_REF_TAG_NAME + ">" + serviceName + "</" + SERIVCE_REF_TAG_NAME + ">");
                 }else{
                     throw new DeploymentException(
@@ -3387,6 +3387,24 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                     );
                 }
             }
+        }
+        
+        public ServiceName getServiceNameObject(){
+            if(serviceNameObject != null){
+                return serviceNameObject;
+            }
+            String serviceNameStr = serviceName;
+            if(serviceNameStr != null){
+                serviceNameStr = factoryCallBack.replaceProperty(serviceNameStr);
+                final ServiceNameEditor editor = new ServiceNameEditor();
+                editor.setServiceManagerName(factoryCallBack.getServiceManager().getServiceManagerName());
+                editor.setAsText(serviceNameStr);
+                if(editor.isRelativeManagerName()){
+                    isRelativeManagerName = true;
+                }
+                serviceNameObject = (ServiceName)editor.getValue();
+            }
+            return serviceNameObject;
         }
     }
 

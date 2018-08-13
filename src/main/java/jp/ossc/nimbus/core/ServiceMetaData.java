@@ -483,9 +483,6 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
             DependsMetaData deps = (DependsMetaData)templateData.depends.get(i);
             deps = (DependsMetaData)deps.clone();
             deps.setParent(result);
-            if(!isTemplate() && deps.isRelativeManagerName() && manager != null){
-                deps.setManagerName(manager.getName());
-            }
             result.depends.add(deps);
         }
         return result;
