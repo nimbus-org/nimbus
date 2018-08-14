@@ -222,7 +222,7 @@ public class DataSourceConnectionFactoryService extends ServiceBase
                 getContextServiceName()
             );
         }
-        if(context == null && getName() == null){
+        if(dataSource == null && context == null && getName() == null){
             throw new IllegalArgumentException("DataSource name is null.");
         }
     }
