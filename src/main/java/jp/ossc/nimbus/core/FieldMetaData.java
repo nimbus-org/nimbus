@@ -189,10 +189,7 @@ public class FieldMetaData extends MetaData
             ServiceRefMetaData.SERIVCE_REF_TAG_NAME
         );
         if(serviceRefElement != null){
-            final ServiceRefMetaData serviceRefData = new ServiceRefMetaData(
-                this,
-                ((ObjectMetaData)getParent()).getManagerName()
-            );
+            final ServiceRefMetaData serviceRefData = new ServiceRefMetaData(this);
             serviceRefData.importXML(serviceRefElement);
             value = serviceRefData;
             return;
@@ -205,8 +202,7 @@ public class FieldMetaData extends MetaData
         if(objectElement != null){
             final ObjectMetaData objectData = new ObjectMetaData(
                 ((ObjectMetaData)getParent()).getServiceLoader(),
-                this,
-                ((ObjectMetaData)getParent()).getManagerName()
+                this
             );
             objectData.importXML(objectElement);
             value = objectData;
@@ -239,6 +235,12 @@ public class FieldMetaData extends MetaData
         value = getElementContent(element);
         if(value == null){
             value = "";
+        }
+    }
+    
+    public void importIfDef() throws DeploymentException{
+        if(value != null && value instanceof MetaData){
+            ((MetaData)value).importIfDef();
         }
     }
     
@@ -281,5 +283,14 @@ public class FieldMetaData extends MetaData
             buf.append("</").append(FIELD_TAG_NAME).append('>');
         }
         return buf;
+    }
+    
+    public Object clone(){
+        FieldMetaData clone = (FieldMetaData)super.clone();
+        if(clone.value != null && clone.value instanceof MetaData){
+            clone.value = ((MetaData)clone.value).clone();
+            ((MetaData)clone.value).setParent(clone);
+        }
+        return clone;
     }
 }

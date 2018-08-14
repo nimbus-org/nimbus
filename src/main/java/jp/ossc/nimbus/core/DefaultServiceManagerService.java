@@ -310,7 +310,6 @@ public class DefaultServiceManagerService extends ServiceBase
             }
         }
         if(loader != null){
-            serviceData.setManagerName(getServiceName());
             Service service = instanciateService(serviceData);
             return registerService(serviceData.getName(), service);
         }
@@ -2367,19 +2366,19 @@ public class DefaultServiceManagerService extends ServiceBase
         }
         if(editor instanceof ServiceNameEditor){
             ((ServiceNameEditor)editor).setServiceManagerName(
-                objData.getManagerName()
+                getServiceName()
             );
         }else if(editor instanceof ServiceNameArrayEditor){
             ((ServiceNameArrayEditor)editor).setServiceManagerName(
-                objData.getManagerName()
+                getServiceName()
             );
         }else if(editor instanceof ServiceNameRefEditor){
             ((ServiceNameRefEditor)editor).setServiceManagerName(
-                objData.getManagerName()
+                getServiceName()
             );
         }else if(editor instanceof ServiceNameRefArrayEditor){
             ((ServiceNameRefArrayEditor)editor).setServiceManagerName(
-                objData.getManagerName()
+                getServiceName()
             );
         }else if(editor instanceof ParameterizedTypePropertyEditor
             && type instanceof ParameterizedType){

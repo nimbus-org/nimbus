@@ -70,7 +70,7 @@ public class ConstructorMetaData extends MetaData
     /**
      * 子要素&lt;argument&gt;を格納するリスト。<p>
      */
-    protected final List arguments = new ArrayList();
+    protected List arguments = new ArrayList();
     
     /**
      * 親要素のメタデータを持つインスタンスを生成する。<p>
@@ -237,6 +237,25 @@ public class ConstructorMetaData extends MetaData
         }
     }
     
+    public void importIfDef() throws DeploymentException{
+        if(invoke != null){
+            invoke.importIfDef();
+        }
+        if(staticInvoke != null){
+            staticInvoke.importIfDef();
+        }
+        if(staticFieldRef != null){
+            staticFieldRef.importIfDef();
+        }
+        
+        if(arguments.size() != 0){
+            for(int i = 0, imax = arguments.size(); i < imax; i++){
+                MetaData argument = (MetaData)((MetaData)arguments.get(i));
+                argument.importIfDef();
+            }
+        }
+    }
+    
     public StringBuilder toXML(StringBuilder buf){
         appendComment(buf);
         buf.append('<').append(CONSTRUCTOR_TAG_NAME).append('>');
@@ -266,5 +285,31 @@ public class ConstructorMetaData extends MetaData
         }
         buf.append("</").append(CONSTRUCTOR_TAG_NAME).append('>');
         return buf;
+    }
+    
+    public Object clone(){
+        ConstructorMetaData clone = (ConstructorMetaData)super.clone();
+        if(invoke != null){
+            clone.invoke = (InvokeMetaData)invoke.clone();
+            clone.invoke.setParent(clone);
+        }
+        if(staticInvoke != null){
+            clone.staticInvoke = (StaticInvokeMetaData)staticInvoke.clone();
+            clone.staticInvoke.setParent(clone);
+        }
+        if(staticFieldRef != null){
+            clone.staticFieldRef = (StaticFieldRefMetaData)staticFieldRef.clone();
+            clone.staticFieldRef.setParent(clone);
+        }
+        
+        if(arguments.size() != 0){
+            clone.arguments = new ArrayList(arguments.size());
+            for(int i = 0, imax = arguments.size(); i < imax; i++){
+                MetaData argument = (MetaData)((MetaData)arguments.get(i)).clone();
+                argument.setParent(clone);
+                clone.arguments.add(argument);
+            }
+        }
+        return clone;
     }
 }

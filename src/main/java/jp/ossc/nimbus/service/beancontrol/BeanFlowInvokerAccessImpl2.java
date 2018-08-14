@@ -1889,7 +1889,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
         private BeanFlowCoverageImpl coverage;
 
         public ObjectMetaData(MetaData parent, BeanFlowCoverageImpl coverage){
-            super(null, parent, null);
+            super(null, parent);
             ObjectMetaData.this.coverage = new BeanFlowCoverageImpl(coverage);
         }
 
@@ -3330,18 +3330,8 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                 element,
                 MANAGER_NAME_ATTRIBUTE_NAME
             );
-            if(managerName == null){
-                if(serviceName == null){
-                    managerName = ServiceManager.DEFAULT_NAME;
-                }else if(serviceName.indexOf('#') == -1){
-                    isRelativeManagerName = true;
-                    managerName = serviceName;
-                    serviceName = null;
-                }else{
-                    serviceName = null;
-                }
-            }else{
-                serviceName = null;
+            if(managerName != null){
+                this.managerName = managerName;
             }
             
             final Element childElement = getOptionalChild(element);
@@ -3379,8 +3369,12 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
             }else{
                 String content = getElementContent(element);
                 if(content != null && content.length() != 0){
-                    serviceName = managerName + '#' + content;
-                    coverage.setElementName("<" + SERIVCE_REF_TAG_NAME + ">" + serviceName + "</" + SERIVCE_REF_TAG_NAME + ">");
+                    serviceName = content;
+                    if(managerName == null){
+                        coverage.setElementName("<" + SERIVCE_REF_TAG_NAME + ">" + serviceName + "</" + SERIVCE_REF_TAG_NAME + ">");
+                    }else{
+                        coverage.setElementName("<" + SERIVCE_REF_TAG_NAME + ">" + managerName + '#' + serviceName + "</" + SERIVCE_REF_TAG_NAME + ">");
+                    }
                 }else{
                     throw new DeploymentException(
                         "Content of '" + tagName + "' element must not be null."

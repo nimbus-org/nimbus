@@ -56,6 +56,11 @@ public class ServiceNameMetaData extends MetaData implements Serializable{
     protected String tagName;
     
     /**
+     * マネージャ名。<p>
+     */
+    protected String managerName;
+    
+    /**
      * サービス名。<p>
      */
     protected String serviceName;
@@ -78,22 +83,10 @@ public class ServiceNameMetaData extends MetaData implements Serializable{
      * 
      * @param parent 親要素のメタデータ
      * @param manager サービスが登録される{@link ServiceManager}の名前
-     */
-    public ServiceNameMetaData(MetaData parent, String manager){
-        super(parent);
-        serviceName = manager;
-    }
-    
-    /**
-     * 親要素のメタデータを持つインスタンスを生成する。<p>
-     * 
-     * @param parent 親要素のメタデータ
-     * @param manager サービスが登録される{@link ServiceManager}の名前
      * @param service サービスの名前
      */
     public ServiceNameMetaData(MetaData parent, String manager, String service){
-        super(parent);
-        serviceName = manager + '#' + service;
+        this(parent, null, manager, service);
     }
     
     /**
@@ -107,7 +100,8 @@ public class ServiceNameMetaData extends MetaData implements Serializable{
     public ServiceNameMetaData(MetaData parent, String name, String manager, String service){
         super(parent);
         tagName = name;
-        serviceName = manager + '#' + service;
+        managerName = manager;
+        serviceName = service;
     }
     
     /**
@@ -136,30 +130,27 @@ public class ServiceNameMetaData extends MetaData implements Serializable{
         if(serviceNameStr != null){
             // システムプロパティの置換
             serviceNameStr = Utility.replaceSystemProperty(serviceNameStr);
-            final MetaData parent = getParent();
-            if(parent != null && parent instanceof ObjectMetaData){
-                ObjectMetaData objData = (ObjectMetaData)parent;
-                if(objData.getServiceLoader() != null){
-                    // サービスローダ構成プロパティの置換
-                    serviceNameStr = Utility.replaceServiceLoderConfig(
-                        serviceNameStr,
-                        objData.getServiceLoader().getConfig()
-                    );
-                }
+            ServiceLoader loader = findServiceLoader(getParent());
+            if(loader != null){
+                // サービスローダ構成プロパティの置換
+                serviceNameStr = Utility.replaceServiceLoderConfig(
+                    serviceNameStr,
+                    loader.getConfig()
+                );
             }
-            String managerName = null;
-            if(parent != null && parent instanceof ServiceMetaData){
-                ServiceMetaData serviceData = (ServiceMetaData)parent;
-                if(serviceData.getManager() != null){
-                    // マネージャプロパティの置換
-                    serviceNameStr = Utility.replaceManagerProperty(serviceData.getManager(), serviceNameStr);
-                    managerName = serviceData.getManager().getName();
-                }
+            ManagerMetaData managerData = findManagerMetaData(getParent());
+            if(managerData != null){
+                // マネージャプロパティの置換
+                serviceNameStr = Utility.replaceManagerProperty(managerData, serviceNameStr);
             }
             // サーバプロパティの置換
             serviceNameStr = Utility.replaceServerProperty(serviceNameStr);
             final ServiceNameEditor editor = new ServiceNameEditor();
+            String managerName = this.managerName == null ? findManagerName(getParent()) : this.managerName;
             editor.setServiceManagerName(managerName);
+            if(serviceNameStr.length() != 0 && serviceNameStr.indexOf('#') == -1){
+                serviceNameStr = '#' + serviceNameStr;
+            }
             editor.setAsText(serviceNameStr);
             if(editor.isRelativeManagerName()){
                 isRelativeManagerName = true;
@@ -167,6 +158,51 @@ public class ServiceNameMetaData extends MetaData implements Serializable{
             serviceNameObject = (ServiceName)editor.getValue();
         }
         return serviceNameObject;
+    }
+    
+    protected ServiceLoader findServiceLoader(MetaData metaData){
+        if(metaData == null){
+            return null;
+        }
+        if(metaData instanceof ObjectMetaData){
+            return ((ObjectMetaData)metaData).getServiceLoader();
+        }
+        if(metaData instanceof ManagerMetaData){
+            return ((ManagerMetaData)metaData).getServiceLoader();
+        }
+        if(metaData instanceof ServerMetaData){
+            return ((ServerMetaData)metaData).getServiceLoader();
+        }
+        return findServiceLoader(metaData.getParent());
+    }
+    
+    protected ManagerMetaData findManagerMetaData(MetaData metaData){
+        if(metaData == null){
+            return null;
+        }
+        if(metaData instanceof ServiceMetaData){
+            return ((ServiceMetaData)metaData).getManager();
+        }
+        if(metaData instanceof ManagerMetaData){
+            return (ManagerMetaData)metaData;
+        }
+        return findManagerMetaData(metaData.getParent());
+    }
+    
+    protected String findManagerName(MetaData metaData){
+        if(metaData == null){
+            return null;
+        }
+        if(metaData instanceof ServiceMetaData){
+            ManagerMetaData managerData = ((ServiceMetaData)metaData).getManager();
+            if(managerData != null){
+                return managerData.getName();
+            }
+        }
+        if(metaData instanceof ManagerMetaData){
+            return ((ManagerMetaData)metaData).getName();
+        }
+        return findManagerName(metaData.getParent());
     }
     
     /**
@@ -193,23 +229,13 @@ public class ServiceNameMetaData extends MetaData implements Serializable{
             element,
             MANAGER_NAME_ATTRIBUTE_NAME
         );
-        if(managerName == null){
-            if(serviceName == null){
-                managerName = ServiceManager.DEFAULT_NAME;
-            }else if(serviceName.indexOf('#') == -1){
-                isRelativeManagerName = true;
-                managerName = serviceName;
-                serviceName = null;
-            }else{
-                serviceName = null;
-            }
-        }else{
-            serviceName = null;
+        if(managerName != null){
+            this.managerName = managerName;
         }
         
         String content = getElementContent(element);
         if(content != null && content.length() != 0){
-            serviceName = managerName + '#' + content;
+            serviceName = content;
         }else{
             throw new DeploymentException(
                 "Content of '" + tagName + "' element must not be null."
@@ -220,8 +246,8 @@ public class ServiceNameMetaData extends MetaData implements Serializable{
     public StringBuilder toXML(StringBuilder buf){
         appendComment(buf);
         buf.append('<').append(tagName).append('>');
-        if(serviceName != null){
-            buf.append(serviceName);
+        if(getServiceNameObject() != null){
+            buf.append(getServiceNameObject());
         }
         buf.append("</").append(tagName).append('>');
         return buf;
@@ -262,5 +288,23 @@ public class ServiceNameMetaData extends MetaData implements Serializable{
      */
     public int hashCode(){
         return serviceName != null ? serviceName.hashCode() : 0;
+    }
+    
+    /**
+     * このインスタンスの文字列表現を取得する。<p>
+     *
+     * @return 文字列表現
+     */
+    public String toString(){
+        final StringBuffer buf = new StringBuffer();
+        buf.append(super.toString());
+        buf.append('{');
+        if(managerName != null){
+            buf.append(managerName);
+            buf.append('#');
+        }
+        buf.append(serviceName);
+        buf.append('}');
+        return buf.toString();
     }
 }

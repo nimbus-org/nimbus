@@ -198,7 +198,7 @@ public class ArgumentMetaData extends MetaData
         );
         if(serviceRefElement != null){
             final ServiceRefMetaData serviceRefData
-                 = new ServiceRefMetaData(this, parentObjData.getManagerName());
+                 = new ServiceRefMetaData(this);
             serviceRefData.importXML(serviceRefElement);
             value = serviceRefData;
             return;
@@ -211,8 +211,7 @@ public class ArgumentMetaData extends MetaData
         if(objectElement != null){
             final ObjectMetaData objectData = new ObjectMetaData(
                 parentObjData.getServiceLoader(),
-                this,
-                parentObjData.getManagerName()
+                this
             );
             objectData.importXML(objectElement);
             value = objectData;
@@ -246,6 +245,12 @@ public class ArgumentMetaData extends MetaData
         value = getElementContent(element);
         if(value == null){
             value = "";
+        }
+    }
+    
+    public void importIfDef() throws DeploymentException{
+        if(value != null && value instanceof MetaData){
+            ((MetaData)value).importIfDef();
         }
     }
     
@@ -308,5 +313,14 @@ public class ArgumentMetaData extends MetaData
             buf.append("</").append(ARGUMENT_TAG_NAME).append('>');
         }
         return buf;
+    }
+    
+    public Object clone(){
+        ArgumentMetaData clone = (ArgumentMetaData)super.clone();
+        if(clone.value != null && value instanceof MetaData){
+            clone.value = ((MetaData)value).clone();
+            ((MetaData)clone.value).setParent(clone);
+        }
+        return clone;
     }
 }

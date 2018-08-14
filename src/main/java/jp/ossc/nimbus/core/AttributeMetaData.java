@@ -187,10 +187,7 @@ public class AttributeMetaData extends MetaData
             ServiceRefMetaData.SERIVCE_REF_TAG_NAME
         );
         if(serviceRefElement != null){
-            final ServiceRefMetaData serviceRefData = new ServiceRefMetaData(
-                this,
-                ((ObjectMetaData)getParent()).getManagerName()
-            );
+            final ServiceRefMetaData serviceRefData = new ServiceRefMetaData(this);
             serviceRefData.importXML(serviceRefElement);
             value = serviceRefData;
             return;
@@ -203,8 +200,7 @@ public class AttributeMetaData extends MetaData
         if(objectElement != null){
             final ObjectMetaData objectData = new ObjectMetaData(
                 ((ObjectMetaData)getParent()).getServiceLoader(),
-                this,
-                ((ObjectMetaData)getParent()).getManagerName()
+                this
             );
             objectData.importXML(objectElement);
             value = objectData;
@@ -237,6 +233,12 @@ public class AttributeMetaData extends MetaData
         value = getElementContent(element);
         if(value == null){
             value = "";
+        }
+    }
+    
+    public void importIfDef() throws DeploymentException{
+        if(value != null && value instanceof MetaData){
+            ((MetaData)value).importIfDef();
         }
     }
     
@@ -279,5 +281,14 @@ public class AttributeMetaData extends MetaData
             buf.append("</").append(ATTRIBUTE_TAG_NAME).append('>');
         }
         return buf;
+    }
+    
+    public Object clone(){
+        AttributeMetaData clone = (AttributeMetaData)super.clone();
+        if(clone.value != null && clone.value instanceof MetaData){
+            clone.value = ((MetaData)clone.value).clone();
+            ((MetaData)clone.value).setParent(clone);
+        }
+        return clone;
     }
 }

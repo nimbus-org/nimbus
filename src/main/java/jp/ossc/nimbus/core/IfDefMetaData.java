@@ -197,6 +197,15 @@ public class IfDefMetaData extends MetaData
         this.element = element;
     }
     
+    public void importIfDef() throws DeploymentException{
+        if(childrenMetaData.size() != 0){
+            for(int i = 0, imax = childrenMetaData.size(); i < imax; i++){
+                MetaData child = (MetaData)childrenMetaData.get(i);
+                child.importIfDef();
+            }
+        }
+    }
+    
     public StringBuilder toXML(StringBuilder buf){
         appendComment(buf);
         buf.append('<').append(IFDEF_TAG_NAME);
@@ -221,5 +230,18 @@ public class IfDefMetaData extends MetaData
         buf.append("</").append(IFDEF_TAG_NAME).append('>');
         
         return buf;
+    }
+    
+    public Object clone(){
+        IfDefMetaData clone = (IfDefMetaData)super.clone();
+        if(childrenMetaData.size() != 0){
+            clone.childrenMetaData = new ArrayList(childrenMetaData.size());
+            for(int i = 0, imax = childrenMetaData.size(); i < imax; i++){
+                MetaData child = (MetaData)((MetaData)childrenMetaData.get(i)).clone();
+                child.setParent(clone);
+                clone.childrenMetaData.add(child);
+            }
+        }
+        return clone;
     }
 }

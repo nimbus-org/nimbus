@@ -131,6 +131,9 @@ public abstract class MetaData implements Serializable, Cloneable{
         comment = getElementComment(element);
     }
     
+    public void importIfDef() throws DeploymentException{
+    }
+    
     /**
      * このメタデータが表す要素をXML形式で出力する。<p>
      *
@@ -785,9 +788,9 @@ public abstract class MetaData implements Serializable, Cloneable{
      * @return このインスタンスの複製
      */
     public Object clone(){
-        Object clone = null;
+        MetaData clone = null;
         try{
-            clone = super.clone();
+            clone = (MetaData)super.clone();
         }catch(CloneNotSupportedException ignore){
         }
         return clone;
