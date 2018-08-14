@@ -530,6 +530,9 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
         if(template == null){
             name = getUniqueAttribute(element, NAME_ATTRIBUTE_NAME);
         }else{
+            name = getOptionalAttribute(element, NAME_ATTRIBUTE_NAME);
+        }
+        if(name == null){
             ServiceNameEditor editor = new ServiceNameEditor();
             if(getManager() != null){
                 editor.setServiceManagerName(getManager().getName());
