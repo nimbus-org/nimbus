@@ -307,4 +307,16 @@ public class ServiceNameMetaData extends MetaData implements Serializable{
         buf.append('}');
         return buf.toString();
     }
+    
+    /**
+     * このインスタンスの複製を生成する。<p>
+     *
+     * @return このインスタンスの複製
+     */
+    public Object clone(){
+        ServiceNameMetaData clone = (ServiceNameMetaData)super.clone();
+        clone.serviceNameObject = null;
+        clone.isRelativeManagerName = false;
+        return clone;
+    }
 }
