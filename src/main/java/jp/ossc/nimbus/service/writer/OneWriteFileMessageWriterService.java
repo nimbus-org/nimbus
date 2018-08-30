@@ -212,7 +212,7 @@ public class OneWriteFileMessageWriterService extends ServiceBase
             if(header != null && (!isExistsFile || !isAppend)){
                 WritableRecord headerRecord = new WritableRecord();
                 headerRecord.addElement(new SimpleElement(null, header));
-                write(headerRecord);
+                writeInternal(headerRecord, fos);
             }
         }
 
@@ -244,42 +244,50 @@ public class OneWriteFileMessageWriterService extends ServiceBase
      */
     public void write(WritableRecord rec) throws MessageWriteException{
         FileOutputStream tmpFos = null;
-        try{
-            if(isEveryTimeCloseStream){
-                String path = fileName.toString(rec);
-                File file = new File(path);
-                if(header != null && (!file.exists() || file.length() == 0)){
-                    WritableRecord headerRecord = new WritableRecord();
-                    headerRecord.addElement(new SimpleElement(null, header));
-                    write(headerRecord);
-                }
+        if(isEveryTimeCloseStream){
+            String path = fileName.toString(rec);
+            File file = new File(path);
+            try{
                 tmpFos = new FileOutputStream(path, isAppend);
-            }else{
-                if(fos == null){
-                    return;
-                }
-                tmpFos = fos;
+            }catch(FileNotFoundException e){
+                throw new MessageWriteException(e);
             }
+            if(header != null && (!file.exists() || file.length() == 0)){
+                WritableRecord headerRecord = new WritableRecord();
+                headerRecord.addElement(new SimpleElement(null, header));
+                writeInternal(headerRecord, tmpFos);
+            }
+        }else{
+            if(fos == null){
+                return;
+            }
+            tmpFos = fos;
+        }
+        writeInternal(rec, tmpFos);
+    }
+            
+    private void writeInternal(WritableRecord rec, FileOutputStream fos) throws MessageWriteException{
+        try{
             if(getState() == STOPPING || getState() == STOPPED || getState() == DESTROYING || getState() == DESTROYED){
                 return;
             }
             if(encoding == null){
-                tmpFos.write(rec.toString().getBytes());
+                fos.write(rec.toString().getBytes());
                 if(isAppend && separator != null){
-                    tmpFos.write(separator.getBytes());
+                    fos.write(separator.getBytes());
                 }
             }else{
-                tmpFos.write(rec.toString().getBytes(encoding));
+                fos.write(rec.toString().getBytes(encoding));
                 if(isAppend && separator != null){
-                    tmpFos.write(separator.getBytes(encoding));
+                    fos.write(separator.getBytes(encoding));
                 }
             }
         }catch(IOException e){
             throw new MessageWriteException(e);
         }finally{
-            if(isEveryTimeCloseStream && tmpFos != null){
+            if(isEveryTimeCloseStream && fos != null){
                 try{
-                    tmpFos.close();
+                    fos.close();
                 }catch(IOException e){
                 }
             }
