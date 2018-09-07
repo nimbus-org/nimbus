@@ -97,22 +97,4 @@ public class ServiceRefMetaData extends ServiceNameMetaData
         }
         super.importXML(element);
     }
-    
-    /**
-     * このインスタンスの文字列表現を取得する。<p>
-     *
-     * @return 文字列表現
-     */
-    public String toString(){
-        final StringBuffer buf = new StringBuffer();
-        buf.append(super.toString());
-        buf.append('{');
-        if(managerName != null){
-            buf.append(managerName);
-        }
-        buf.append('#');
-        buf.append(serviceName);
-        buf.append('}');
-        return buf.toString();
-    }
 }

@@ -382,7 +382,7 @@ ServiceManagerの名前を定義します。
   分自身を削除する。また、Service#getState()は、CREATED、DESTROYED以外の状態は
   UNKNOWNとなります。
 -->
-<!ATTLIST service code CDATA #REQUIRED>
+<!ATTLIST service code CDATA #IMPLIED>
 
 <!-- name属性は、service要素で登録するServiceの名前を定義します。
 ここで指定した名前を、ServiceManager#getService(String)の引数に指定する事で、
@@ -392,7 +392,7 @@ ServiceManagerの名前を定義します。
 スを実装している場合は、FactoryService#newInstance()で生成されたインスタンスが
 取得されます。
 -->
-<!ATTLIST service name CDATA #REQUIRED>
+<!ATTLIST service name CDATA #IMPLIED>
 
 <!-- initState属性は、service要素で登録するServiceの初期状態を定義します。
 -->
@@ -408,7 +408,7 @@ threadlocalを設定すると、ServiceManager#getServiceObject(String)を呼び
 スレッド毎に、インスタンスを生成して返します。
 また、ServiceManager#getService(String)の戻り値は、FactoryServiceになります。
 templateを設定すると、サービス定義のテンプレート定義となり、この定義自体では、
-サービスは登録されず、templateName属性でこの定義をテンプレートとして取り込む事が
+サービスは登録されず、template属性でこの定義をテンプレートとして取り込む事が
 できます。但し、テンプレートとして適用されるのは、この要素の属性以外です。
 -->
 <!ATTLIST service instance (singleton|factory|threadlocal|template) "singleton">

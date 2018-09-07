@@ -53,8 +53,6 @@ public class ObjectMetaData extends MetaData implements Serializable{
     
     protected static final String CODE_ATTRIBUTE_NAME = "code";
     
-    protected String managerName;
-    
     protected String code;
     
     protected ConstructorMetaData constructor;
@@ -83,16 +81,13 @@ public class ObjectMetaData extends MetaData implements Serializable{
      * 
      * @param loader 自分をロードしたServiceLoader
      * @param parent 親要素のメタデータ
-     * @param manager サービスが登録される{@link ServiceManager}の名前
      */
     public ObjectMetaData(
         ServiceLoader loader,
-        MetaData parent,
-        String manager
+        MetaData parent
     ){
         super(parent);
         myLoader = loader;
-        managerName = manager;
     }
     
     /**
@@ -147,24 +142,6 @@ public class ObjectMetaData extends MetaData implements Serializable{
      */
     public void setConstructor(ConstructorMetaData constructor){
         this.constructor = constructor;
-    }
-    
-    /**
-     * この&lt;object&gt;要素が関連する&lt;manager&gt;要素のname属性の値を取得する。<p>
-     * 
-     * @return この&lt;object&gt;要素が関連する&lt;manager&gt;要素のname属性の値
-     */
-    public String getManagerName(){
-        return managerName;
-    }
-    
-    /**
-     * この&lt;object&gt;要素が関連する&lt;manager&gt;要素のname属性の値を設定する。<p>
-     * 
-     * @param name この&lt;object&gt;要素が関連する&lt;manager&gt;要素のname属性の値
-     */
-    public void setManagerName(String name){
-        managerName = name;
     }
     
     /**
@@ -304,6 +281,10 @@ public class ObjectMetaData extends MetaData implements Serializable{
         }
     }
     
+    protected void importCodeAttribute(Element element) throws DeploymentException{
+        code = getUniqueAttribute(element, CODE_ATTRIBUTE_NAME);
+    }
+    
     /**
      * &lt;object&gt;要素のElementをパースして、自分自身の初期化、及び子要素のメタデータの生成を行う。<p>
      *
@@ -315,7 +296,7 @@ public class ObjectMetaData extends MetaData implements Serializable{
         
         checkTagName(element);
         
-        code = getUniqueAttribute(element, CODE_ATTRIBUTE_NAME);
+        importCodeAttribute(element);
         
         importXMLInner(element, null);
         
@@ -333,8 +314,39 @@ public class ObjectMetaData extends MetaData implements Serializable{
             ifDefMetaDataList.add(ifdefData);
         }
         
+        importIfDef();
+    }
+    
+    public void importIfDef() throws DeploymentException{
+        Iterator entries = fields.entrySet().iterator();
+        while(entries.hasNext()){
+            Map.Entry entry = (Map.Entry)entries.next();
+            FieldMetaData field = (FieldMetaData)entry.getValue();
+            field.importIfDef();
+        }
+        entries = attributes.entrySet().iterator();
+        while(entries.hasNext()){
+            Map.Entry entry = (Map.Entry)entries.next();
+            AttributeMetaData attr = (AttributeMetaData)entry.getValue();
+            attr.importIfDef();
+        }
+        for(int i = 0; i < invokes.size(); i++){
+            InvokeMetaData invoke = (InvokeMetaData)invokes.get(i);
+            invoke.importIfDef();
+        }
+        
         if(ifDefMetaDataList == null || ifDefMetaDataList.size() == 0){
             return;
+        }
+        
+        MetaData metaData = this;
+        while(metaData != null){
+            if(metaData instanceof ServiceMetaData){
+                if(((ServiceMetaData)metaData).isTemplate()){
+                    return;
+                }
+            }
+            metaData = metaData.getParent();
         }
         
         for(int i = 0, imax = ifDefMetaDataList.size(); i < imax; i++){
@@ -520,9 +532,40 @@ public class ObjectMetaData extends MetaData implements Serializable{
      */
     public Object clone(){
         ObjectMetaData clone = (ObjectMetaData)super.clone();
-        clone.fields = new LinkedHashMap(fields);
-        clone.attributes = new LinkedHashMap(attributes);
-        clone.invokes = new ArrayList(invokes);
+        clone.fields = new LinkedHashMap();
+        Iterator entries = fields.entrySet().iterator();
+        while(entries.hasNext()){
+            Map.Entry entry = (Map.Entry)entries.next();
+            FieldMetaData field = (FieldMetaData)entry.getValue();
+            field = (FieldMetaData)field.clone();
+            field.setParent(clone);
+            clone.fields.put(entry.getKey(), field);
+        }
+        clone.attributes = new LinkedHashMap();
+        entries = attributes.entrySet().iterator();
+        while(entries.hasNext()){
+            Map.Entry entry = (Map.Entry)entries.next();
+            AttributeMetaData attr = (AttributeMetaData)entry.getValue();
+            attr = (AttributeMetaData)attr.clone();
+            attr.setParent(clone);
+            clone.attributes.put(entry.getKey(), attr);
+        }
+        clone.invokes = new ArrayList();
+        for(int i = 0; i < invokes.size(); i++){
+            InvokeMetaData invoke = (InvokeMetaData)invokes.get(i);
+            invoke = (InvokeMetaData)invoke.clone();
+            invoke.setParent(clone);
+            clone.invokes.add(invoke);
+        }
+        if(ifDefMetaDataList != null){
+            clone.ifDefMetaDataList = new ArrayList();
+            for(int i = 0; i < ifDefMetaDataList.size(); i++){
+                IfDefMetaData ifdef = (IfDefMetaData)ifDefMetaDataList.get(i);
+                ifdef = (IfDefMetaData)ifdef.clone();
+                ifdef.setParent(clone);
+                clone.ifDefMetaDataList.add(ifdef);
+            }
+        }
         return clone;
     }
     

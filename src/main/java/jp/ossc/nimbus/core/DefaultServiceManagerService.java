@@ -310,7 +310,6 @@ public class DefaultServiceManagerService extends ServiceBase
             }
         }
         if(loader != null){
-            serviceData.setManagerName(getServiceName());
             Service service = instanciateService(serviceData);
             return registerService(serviceData.getName(), service);
         }
@@ -1627,8 +1626,8 @@ public class DefaultServiceManagerService extends ServiceBase
             while(services.hasNext()){
                 final ServiceMetaData.DependsMetaData dependsData
                      = (ServiceMetaData.DependsMetaData)services.next();
-                final String managerName = dependsData.getManagerName();
-                final String dependsServiceName = dependsData.getServiceName();
+                final String managerName = dependsData.getServiceNameObject().getServiceManagerName();
+                final String dependsServiceName = dependsData.getServiceNameObject().getServiceName();
                 
                 ServiceManager mng = null;
                 Service dependsService = null;
@@ -1854,8 +1853,9 @@ public class DefaultServiceManagerService extends ServiceBase
             final ServiceMetaData.DependsMetaData dependsData
                  = (ServiceMetaData.DependsMetaData)services.next();
             
-            if(dependsData.getServiceName().equals(service2)
-                && dependsData.getManagerName()
+            ServiceName dependsServiceName = dependsData.getServiceNameObject();
+            if(dependsServiceName.getServiceName().equals(service2)
+                && dependsServiceName.getServiceManagerName()
                     .equals(manager2.getServiceName())
             ){
                 return true;
@@ -1887,8 +1887,9 @@ public class DefaultServiceManagerService extends ServiceBase
                 if(depends.contains(dependsData)){
                     continue;
                 }
+                ServiceName dependsServiceName = dependsData.getServiceNameObject();
                 final ServiceManager mng = ServiceManagerFactory.findManager(
-                    dependsData.getManagerName()
+                    dependsServiceName.getServiceManagerName()
                 );
                 if(mng == null){
                     continue;
@@ -1896,7 +1897,7 @@ public class DefaultServiceManagerService extends ServiceBase
                 depends.add(dependsData);
                 depends = getDepends(
                     mng,
-                    dependsData.getServiceName(),
+                    dependsServiceName.getServiceName(),
                     depends
                 );
             }
@@ -2135,8 +2136,7 @@ public class DefaultServiceManagerService extends ServiceBase
     private Object getValueOfServiceRef(ServiceRefMetaData serviceRefData)
      throws ServiceNotFoundException{
         return ServiceManagerFactory.getServiceObject(
-            serviceRefData.getManagerName(),
-            serviceRefData.getServiceName()
+            serviceRefData.getServiceNameObject()
         );
     }
     
@@ -2366,19 +2366,19 @@ public class DefaultServiceManagerService extends ServiceBase
         }
         if(editor instanceof ServiceNameEditor){
             ((ServiceNameEditor)editor).setServiceManagerName(
-                objData.getManagerName()
+                getServiceName()
             );
         }else if(editor instanceof ServiceNameArrayEditor){
             ((ServiceNameArrayEditor)editor).setServiceManagerName(
-                objData.getManagerName()
+                getServiceName()
             );
         }else if(editor instanceof ServiceNameRefEditor){
             ((ServiceNameRefEditor)editor).setServiceManagerName(
-                objData.getManagerName()
+                getServiceName()
             );
         }else if(editor instanceof ServiceNameRefArrayEditor){
             ((ServiceNameRefArrayEditor)editor).setServiceManagerName(
-                objData.getManagerName()
+                getServiceName()
             );
         }else if(editor instanceof ParameterizedTypePropertyEditor
             && type instanceof ParameterizedType){

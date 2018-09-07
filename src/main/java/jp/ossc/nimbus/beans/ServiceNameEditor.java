@@ -77,6 +77,10 @@ public class ServiceNameEditor extends PropertyEditorSupport
     
     private String managerName;
     
+    private boolean isImplicitManagerName;
+    
+    private boolean isRelativeManagerName;
+    
     /**
      * {@link jp.ossc.nimbus.core.ServiceManager ServiceManager}の名前が省略されているサービス名文字列を{@link ServiceName}に変換する場合に、使用するServiceManagerの名前を設定する。<p>
      *
@@ -87,11 +91,31 @@ public class ServiceNameEditor extends PropertyEditorSupport
     }
     
     /**
+     * 文字列を解析した結果、マネージャ名が暗黙的だったかを判定する。<p>
+     *
+     * @return マネージャ名が暗黙的だった場合、true
+     */
+    public boolean isImplicitManagerName(){
+        return isImplicitManagerName;
+    }
+    
+    /**
+     * 文字列を解析した結果、マネージャ名が相対的だったかを判定する。<p>
+     *
+     * @return マネージャ名が相対的だった場合、true
+     */
+    public boolean isRelativeManagerName(){
+        return isRelativeManagerName;
+    }
+    
+    /**
      * 指定された文字列を解析してプロパティ値を設定する。<p>
      *
      * @param text 解析される文字列
      */
     public void setAsText(String text){
+        isImplicitManagerName = false;
+        isRelativeManagerName = false;
         if(text == null){
             setValue(null);
             return;
@@ -102,12 +126,14 @@ public class ServiceNameEditor extends PropertyEditorSupport
         ServiceName serviceName = null;
         if(index == -1){
             serviceName = new ServiceName(tmpText);
+            isImplicitManagerName = true;
         }else if(index == 0 && tmpText.length() > 1){
             if(managerName == null){
                 throw new IllegalArgumentException(
                     "ServiceManagerName is null."
                 );
             }
+            isRelativeManagerName = true;
             serviceName = new ServiceName(
                 managerName,
                 tmpText.substring(1)

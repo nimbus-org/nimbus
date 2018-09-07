@@ -497,6 +497,11 @@ public class ManagerMetaData extends MetaData implements Serializable{
             ifDefMetaDataList.add(ifdefData);
         }
         
+        importIfDef();
+    }
+    
+    public void importIfDef() throws DeploymentException{
+        
         if(ifDefMetaDataList == null || ifDefMetaDataList.size() == 0){
             return;
         }
@@ -513,6 +518,7 @@ public class ManagerMetaData extends MetaData implements Serializable{
             ifdefData.setElement(null);
         }
     }
+    
     protected void importXMLInner(Element element, IfDefMetaData ifdefData) throws DeploymentException{
         
         final boolean ifdefMatch
@@ -555,7 +561,7 @@ public class ManagerMetaData extends MetaData implements Serializable{
             if(ifdefMatch && repository != null){
                 throw new DeploymentException("Element of " + REPOSITORY_TAG_NAME + " is duplicated.");
             }
-            ServiceNameMetaData tmp = new ServiceNameMetaData(this, getName());
+            ServiceNameMetaData tmp = new ServiceNameMetaData(this);
             if(ifdefData != null){
                 tmp.setIfDefMetaData(ifdefData);
                 ifdefData.addChild(tmp);
@@ -572,7 +578,7 @@ public class ManagerMetaData extends MetaData implements Serializable{
             if(ifdefMatch && log != null){
                 throw new DeploymentException("Element of " + LOG_TAG_NAME + " is duplicated.");
             }
-            ServiceNameMetaData tmp = new ServiceNameMetaData(this, getName());
+            ServiceNameMetaData tmp = new ServiceNameMetaData(this);
             if(ifdefData != null){
                 tmp.setIfDefMetaData(ifdefData);
                 ifdefData.addChild(tmp);
@@ -591,7 +597,7 @@ public class ManagerMetaData extends MetaData implements Serializable{
             if(ifdefMatch && message != null){
                 throw new DeploymentException("Element of " + MESSAGE_TAG_NAME + " is duplicated.");
             }
-            ServiceNameMetaData tmp = new ServiceNameMetaData(this, getName());
+            ServiceNameMetaData tmp = new ServiceNameMetaData(this);
             if(ifdefData != null){
                 tmp.setIfDefMetaData(ifdefData);
                 ifdefData.addChild(tmp);

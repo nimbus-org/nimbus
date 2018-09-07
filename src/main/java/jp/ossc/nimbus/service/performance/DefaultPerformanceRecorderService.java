@@ -484,7 +484,7 @@ public class DefaultPerformanceRecorderService extends ServiceBase implements Pe
                     medianPerformance = performances[0];
                 }else{
                     Arrays.sort(performances, 0, index);
-                    medianPerformance = performances[Math.round((float)index / 2.0f)];
+                    medianPerformance = performances[Math.round((float)index / 2.0f) - 1];
                 }
             }
         }

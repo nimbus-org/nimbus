@@ -62,7 +62,7 @@ public class InvokeMetaData extends MetaData
     
     protected String name;
     
-    protected final List arguments = new ArrayList();
+    protected List arguments = new ArrayList();
     
     protected String callState = Service.STATES[1];
     protected int callStateValue = Service.CREATED;
@@ -234,8 +234,7 @@ public class InvokeMetaData extends MetaData
             if(targetObjElement != null){
                 ObjectMetaData objData = new ObjectMetaData(
                     parentObjData.getServiceLoader(),
-                    this,
-                    parentObjData.getManagerName()
+                    this
                 );
                 objData.importXML(targetObjElement);
                 target = objData;
@@ -247,10 +246,7 @@ public class InvokeMetaData extends MetaData
                 ServiceRefMetaData.SERIVCE_REF_TAG_NAME
             );
             if(targetObjElement != null){
-                ServiceRefMetaData serviceRefData = new ServiceRefMetaData(
-                    this,
-                    parentObjData.getManagerName()
-                );
+                ServiceRefMetaData serviceRefData = new ServiceRefMetaData(this);
                 serviceRefData.importXML(targetObjElement);
                 target = serviceRefData;
                 return;
@@ -295,6 +291,19 @@ public class InvokeMetaData extends MetaData
                 }
                 target = invokeData;
                 return;
+            }
+        }
+    }
+    
+    public void importIfDef() throws DeploymentException{
+        if(target != null){
+            target.importIfDef();
+        }
+        
+        if(arguments.size() != 0){
+            for(int i = 0, imax = arguments.size(); i < imax; i++){
+                MetaData argument = (MetaData)((MetaData)arguments.get(i));
+                argument.importIfDef();
             }
         }
     }
@@ -373,5 +382,22 @@ public class InvokeMetaData extends MetaData
         }
         buf.append('}');
         return buf.toString();
+    }
+    
+    public Object clone(){
+        InvokeMetaData clone = (InvokeMetaData)super.clone();
+        if(clone.target != null){
+            clone.target = (MetaData)target.clone();
+            clone.target.setParent(clone);
+        }
+        if(arguments.size() != 0){
+            clone.arguments = new ArrayList(arguments.size());
+            for(int i = 0, imax = arguments.size(); i < imax; i++){
+                MetaData argument = (MetaData)((MetaData)arguments.get(i)).clone();
+                argument.setParent(clone);
+                clone.arguments.add(argument);
+            }
+        }
+        return clone;
     }
 }

@@ -559,6 +559,10 @@ public class ServerMetaData extends MetaData implements Serializable{
             ifDefMetaDataList.add(ifdefData);
         }
         
+        importIfDef();
+    }
+    
+    public void importIfDef() throws DeploymentException{
         if(ifDefMetaDataList == null || ifDefMetaDataList.size() == 0){
             return;
         }

@@ -466,8 +466,8 @@ public class DefaultServiceLoaderService extends ServiceBase
         // サーバLoggerの設定
         final ServiceNameMetaData logData = serverData.getLog();
         if(logData != null){
-            final String managerName = logData.getManagerName();
-            final String logName = logData.getServiceName();
+            final String managerName = logData.getServiceNameObject().getServiceManagerName();
+            final String logName = logData.getServiceNameObject().getServiceName();
             if(managerName != null && logName != null){
                 ServiceManagerFactory.setLogger(managerName, logName);
             }
@@ -476,8 +476,8 @@ public class DefaultServiceLoaderService extends ServiceBase
         // サーバMessageRecordFactoryの設定
         final ServiceNameMetaData messageData = serverData.getMessage();
         if(messageData != null){
-            final String managerName = messageData.getManagerName();
-            final String messageName = messageData.getServiceName();
+            final String managerName = messageData.getServiceNameObject().getServiceManagerName();
+            final String messageName = messageData.getServiceNameObject().getServiceName();
             if(managerName != null && messageName != null){
                 ServiceManagerFactory.setMessageRecordFactory(
                     managerName,
@@ -489,8 +489,8 @@ public class DefaultServiceLoaderService extends ServiceBase
         // サーバRepositoryの設定
         final ServiceNameMetaData repositoryData = serverData.getRepository();
         if(repositoryData != null){
-            final String managerName = repositoryData.getManagerName();
-            final String repositoryName = repositoryData.getServiceName();
+            final String managerName = repositoryData.getServiceNameObject().getServiceManagerName();
+            final String repositoryName = repositoryData.getServiceNameObject().getServiceName();
             if(managerName != null && repositoryName != null){
                 ServiceManagerFactory.setManagerRepository(
                     managerName,
@@ -626,6 +626,9 @@ public class DefaultServiceLoaderService extends ServiceBase
             while(serviceDatas.hasNext()){
                 final ServiceMetaData serviceData
                      = (ServiceMetaData)serviceDatas.next();
+                if(serviceData.isTemplate()){
+                    continue;
+                }
                 final Iterator depends
                      = serviceData.getDepends().iterator();
                 while(depends.hasNext()){
@@ -644,8 +647,8 @@ public class DefaultServiceLoaderService extends ServiceBase
         if(dependsData == null){
             return;
         }
-        final String depManagerName = dependsData.getManagerName();
-        final String depServiceName = dependsData.getServiceName();
+        final String depManagerName = dependsData.getServiceNameObject().getServiceManagerName();
+        final String depServiceName = dependsData.getServiceNameObject().getServiceName();
         if(refServices.containsKey(depManagerName)){
             final Map services = (Map)refServices.get(depManagerName);
             if(services.containsKey(depServiceName)){
@@ -670,8 +673,8 @@ public class DefaultServiceLoaderService extends ServiceBase
         final String managerName = managerData.getName();
         final String serviceName = serviceData.getName();
         
-        final String depManagerName = dependsData.getManagerName();
-        final String depServiceName = dependsData.getServiceName();
+        final String depManagerName = dependsData.getServiceNameObject().getServiceManagerName();
+        final String depServiceName = dependsData.getServiceNameObject().getServiceName();
         
         final Map ref = (Map)refServices.get(depManagerName);
         if(ref == null || !ref.containsKey(depServiceName)){
@@ -685,14 +688,17 @@ public class DefaultServiceLoaderService extends ServiceBase
         }else{
             final ServiceMetaData depServiceData
                  = (ServiceMetaData)ref.get(depServiceName);
+            if(depServiceData.isTemplate()){
+                return;
+            }
             final Iterator deps = depServiceData.getDepends().iterator();
             while(deps.hasNext()){
                 final ServiceMetaData.DependsMetaData depdepServiceData
                      = (ServiceMetaData.DependsMetaData)deps.next();
                 final String depdepManagerName
-                     = depdepServiceData.getManagerName();
+                     = depdepServiceData.getServiceNameObject().getServiceManagerName();
                 final String depdepServiceName
-                     = depdepServiceData.getServiceName();
+                     = depdepServiceData.getServiceNameObject().getServiceName();
                 if(depdepManagerName.equals(managerName)
                    && depdepServiceName.equals(serviceName)
                 ){
@@ -731,8 +737,8 @@ public class DefaultServiceLoaderService extends ServiceBase
         // サーバRepositoryの設定解除
         final ServiceNameMetaData repositoryData = serverData.getRepository();
         if(repositoryData != null){
-            final String managerName = repositoryData.getManagerName();
-            final String repositoryName = repositoryData.getServiceName();
+            final String managerName = repositoryData.getServiceNameObject().getServiceManagerName();
+            final String repositoryName = repositoryData.getServiceNameObject().getServiceName();
             if(managerName != null && repositoryName != null){
                 if(ServiceManagerFactory
                     .isRegisteredService(managerName, repositoryName)){
@@ -974,33 +980,21 @@ public class DefaultServiceLoaderService extends ServiceBase
         
         // ServiceManagerのLoggerの設定
         final ServiceNameMetaData logData = managerData.getLog();
-        if(logData != null){
-            final String managerName = logData.getManagerName();
-            final String logName = logData.getServiceName();
-            if(managerName != null && logName != null){
-                manager.setSystemLoggerServiceName(
-                    new ServiceName(managerName, logName)
-                );
-            }
+        if(logData != null && logData.getServiceNameObject() != null){
+            manager.setSystemLoggerServiceName(logData.getServiceNameObject());
         }
         
         // ServiceManagerのMessageRecordFactoryの設定
         final ServiceNameMetaData messageData = managerData.getMessage();
-        if(messageData != null){
-            final String managerName = messageData.getManagerName();
-            final String messageName = messageData.getServiceName();
-            if(managerName != null && messageName != null){
-                manager.setSystemMessageRecordFactoryServiceName(
-                    new ServiceName(managerName, messageName)
-                );
-            }
+        if(messageData != null && messageData.getServiceNameObject() != null){
+            manager.setSystemMessageRecordFactoryServiceName(messageData.getServiceNameObject());
         }
         
         // ServiceManagerのRepositoryの設定
         final ServiceNameMetaData repositoryData = managerData.getRepository();
         if(repositoryData != null){
-            final String managerName = repositoryData.getManagerName();
-            final String repositoryName = repositoryData.getServiceName();
+            final String managerName = repositoryData.getServiceNameObject().getServiceManagerName();
+            final String repositoryName = repositoryData.getServiceNameObject().getServiceName();
             if(managerName != null && repositoryName != null){
                 manager.setServiceRepository(managerName, repositoryName);
             }
@@ -1276,8 +1270,8 @@ public class DefaultServiceLoaderService extends ServiceBase
                 while(dependsDatas.hasNext()){
                     final ServiceMetaData.DependsMetaData dependsData
                          = (ServiceMetaData.DependsMetaData)dependsDatas.next();
-                    if(dependsData.getServiceName().equals(serviceName)
-                        && dependsData.getManagerName().equals(managerName)){
+                    if(dependsData.getServiceNameObject().getServiceName().equals(serviceName)
+                        && dependsData.getServiceNameObject().getServiceManagerName().equals(managerName)){
                         final ServiceMetaData serviceData
                              = (ServiceMetaData)serviceMetaMap.get(name);
                         result.add(serviceData);

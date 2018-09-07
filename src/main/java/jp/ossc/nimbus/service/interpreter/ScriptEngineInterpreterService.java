@@ -383,12 +383,7 @@ public class ScriptEngineInterpreterService extends ServiceBase
             }
         }
         Interpreter interpreter = null;
-        if(servicePaths == null){
-            ScriptEngineInterpreterService service = new ScriptEngineInterpreterService();
-            service.create();
-            service.start();
-            interpreter = service;
-        }else{
+        if(servicePaths != null){
             for(int i = 0, imax = servicePaths.size(); i < imax; i++){
                 if(!ServiceManagerFactory.loadManager((String)servicePaths.get(i))){
                     System.out.println("Service load error." + servicePaths.get(i));
@@ -402,9 +397,20 @@ public class ScriptEngineInterpreterService extends ServiceBase
             }
             if(serviceName == null){
                 serviceName = new ServiceName("Nimbus", "Interpreter");
+                if(ServiceManagerFactory.isRegisteredService(serviceName)){
+                    interpreter = (Interpreter)ServiceManagerFactory
+                        .getServiceObject(serviceName);
+                }
+            }else{
+                interpreter = (Interpreter)ServiceManagerFactory
+                    .getServiceObject(serviceName);
             }
-            interpreter = (Interpreter)ServiceManagerFactory
-                .getServiceObject(serviceName);
+        }
+        if(interpreter == null){
+            ScriptEngineInterpreterService service = new ScriptEngineInterpreterService();
+            service.create();
+            service.start();
+            interpreter = service;
         }
         if(files != null){
             code.flush();

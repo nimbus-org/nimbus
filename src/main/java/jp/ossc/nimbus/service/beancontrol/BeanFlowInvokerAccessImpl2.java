@@ -1889,7 +1889,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
         private BeanFlowCoverageImpl coverage;
 
         public ObjectMetaData(MetaData parent, BeanFlowCoverageImpl coverage){
-            super(null, parent, null);
+            super(null, parent);
             ObjectMetaData.this.coverage = new BeanFlowCoverageImpl(coverage);
         }
 
@@ -3304,7 +3304,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
             coverage.cover();
             if(serviceNameValue == null){
                 return ServiceManagerFactory
-                    .getServiceObject(getManagerName(), getServiceName());
+                    .getServiceObject(getServiceNameObject());
             }else{
                 Object value = serviceNameValue.getValue(context);
                 if(value == null){
@@ -3326,12 +3326,14 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                      + element.getTagName()
                 );
             }
-            managerName = getOptionalAttribute(
+            String managerName = getOptionalAttribute(
                 element,
-                MANAGER_NAME_ATTRIBUTE_NAME,
-                managerName == null ? ServiceManager.DEFAULT_NAME : managerName
+                MANAGER_NAME_ATTRIBUTE_NAME
             );
-
+            if(managerName != null){
+                this.managerName = managerName;
+            }
+            
             final Element childElement = getOptionalChild(element);
             if(childElement != null){
                 coverage.setElementName("<" + SERIVCE_REF_TAG_NAME + ">");
@@ -3367,26 +3369,36 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
             }else{
                 String content = getElementContent(element);
                 if(content != null && content.length() != 0){
-                    content = factoryCallBack.replaceProperty(content);
-                    if(content.indexOf('#') != -1){
-                        final ServiceNameEditor editor = new ServiceNameEditor();
-                        editor.setServiceManagerName(managerName);
-                        editor.setAsText(content);
-                        final ServiceName editName = (ServiceName)editor.getValue();
-                        if(!editName.getServiceManagerName().equals(managerName)){
-                            managerName = editName.getServiceManagerName();
-                        }
-                        serviceName = editName.getServiceName();
+                    serviceName = content;
+                    if(managerName == null){
+                        coverage.setElementName("<" + SERIVCE_REF_TAG_NAME + ">" + serviceName + "</" + SERIVCE_REF_TAG_NAME + ">");
                     }else{
-                        serviceName = content;
+                        coverage.setElementName("<" + SERIVCE_REF_TAG_NAME + ">" + managerName + '#' + serviceName + "</" + SERIVCE_REF_TAG_NAME + ">");
                     }
-                    coverage.setElementName("<" + SERIVCE_REF_TAG_NAME + ">" + serviceName + "</" + SERIVCE_REF_TAG_NAME + ">");
                 }else{
                     throw new DeploymentException(
                         "Content of '" + tagName + "' element must not be null."
                     );
                 }
             }
+        }
+        
+        public ServiceName getServiceNameObject(){
+            if(serviceNameObject != null){
+                return serviceNameObject;
+            }
+            String serviceNameStr = serviceName;
+            if(serviceNameStr != null){
+                serviceNameStr = factoryCallBack.replaceProperty(serviceNameStr);
+                final ServiceNameEditor editor = new ServiceNameEditor();
+                editor.setServiceManagerName(factoryCallBack.getServiceManager().getServiceManagerName());
+                editor.setAsText(serviceNameStr);
+                if(editor.isRelativeManagerName()){
+                    isRelativeManagerName = true;
+                }
+                serviceNameObject = (ServiceName)editor.getValue();
+            }
+            return serviceNameObject;
         }
     }
 

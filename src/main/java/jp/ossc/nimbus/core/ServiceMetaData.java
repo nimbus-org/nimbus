@@ -122,7 +122,7 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
         MetaData parent,
         ManagerMetaData manager
     ){
-        super(loader, parent, manager.getName());
+        super(loader, parent);
         this.manager = manager;
     }
     
@@ -416,8 +416,9 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
      * @param loader ServiceLoader
      * @return テンプレート適用後のメタデータ
      * @exception ServiceNotFoundException テンプレートとして指定されているサービスメタデータが見つからない場合
+     * @exception DeploymentException テンプレートの適用に失敗した場合
      */
-    public ServiceMetaData applyTemplate(ServiceLoader loader) throws ServiceNotFoundException{
+    public ServiceMetaData applyTemplate(ServiceLoader loader) throws ServiceNotFoundException, DeploymentException{
         if(getTemplateName() == null){
             return this;
         }
@@ -437,18 +438,27 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
         if(templateData == null){
             templateData = ServiceManagerFactory.getServiceMetaData(temlateServiceName);
         }
+        templateData = (ServiceMetaData)templateData.clone();
         templateData = templateData.applyTemplate(loader);
         
         ServiceMetaData result = (ServiceMetaData)clone();
-        if(result.constructor == null){
-            result.constructor = templateData.constructor;
+        if(result.code == null){
+            result.code = templateData.code;
+        }
+        if(result.constructor == null && templateData.constructor != null){
+            ConstructorMetaData cons = (ConstructorMetaData)templateData.constructor.clone();
+            cons.setParent(result);
+            result.constructor = cons;
         }
         if(templateData.fields.size() != 0){
             Iterator entries = templateData.fields.entrySet().iterator();
             while(entries.hasNext()){
                 Map.Entry entry = (Map.Entry)entries.next();
                 if(!result.fields.containsKey(entry.getKey())){
-                    result.fields.put(entry.getKey(), entry.getValue());
+                    FieldMetaData field = (FieldMetaData)entry.getValue();
+                    field = (FieldMetaData)field.clone();
+                    field.setParent(result);
+                    result.fields.put(entry.getKey(), field);
                 }
             }
         }
@@ -457,20 +467,52 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
             while(entries.hasNext()){
                 Map.Entry entry = (Map.Entry)entries.next();
                 if(!result.attributes.containsKey(entry.getKey())){
-                    result.attributes.put(entry.getKey(), entry.getValue());
+                    AttributeMetaData attr = (AttributeMetaData)entry.getValue();
+                    attr = (AttributeMetaData)attr.clone();
+                    attr.setParent(result);
+                    result.attributes.put(entry.getKey(), attr);
                 }
             }
         }
         if(templateData.invokes.size() != 0){
-            result.invokes.addAll(templateData.invokes);
+            for(int i = 0; i < templateData.invokes.size(); i++){
+                InvokeMetaData invoke = (InvokeMetaData)templateData.invokes.get(i);
+                invoke = (InvokeMetaData)invoke.clone();
+                invoke.setParent(result);
+                result.invokes.add(invoke);
+            }
         }
         if(result.optionalConfig == null){
             result.optionalConfig = templateData.optionalConfig;
         }
-        if(templateData.depends.size() != 0){
-            result.depends.addAll(templateData.depends);
+        for(int i = 0; i < templateData.depends.size(); i++){
+            DependsMetaData deps = (DependsMetaData)templateData.depends.get(i);
+            deps = (DependsMetaData)deps.clone();
+            deps.setParent(result);
+            result.depends.add(deps);
         }
+        if(templateData.ifDefMetaDataList != null && templateData.ifDefMetaDataList.size() != 0){
+            for(int i = 0; i < templateData.ifDefMetaDataList.size(); i++){
+                IfDefMetaData ifdef = (IfDefMetaData)templateData.ifDefMetaDataList.get(i);
+                ifdef = (IfDefMetaData)ifdef.clone();
+                ifdef.setParent(result);
+                if(result.ifDefMetaDataList == null){
+                    result.ifDefMetaDataList = new ArrayList();
+                }
+                result.ifDefMetaDataList.add(ifdef);
+            }
+        }
+        result.importIfDef();
+        
         return result;
+    }
+    
+    protected void importCodeAttribute(Element element) throws DeploymentException{
+        if(template == null){
+            super.importCodeAttribute(element);
+        }else{
+            code = getOptionalAttribute(element, CODE_ATTRIBUTE_NAME);
+        }
     }
     
     /**
@@ -481,7 +523,25 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
      */
     public void importXML(Element element) throws DeploymentException{
         
-        name = getUniqueAttribute(element, NAME_ATTRIBUTE_NAME);
+        template = getOptionalAttribute(
+            element,
+            TEMPLATE_ATTRIBUTE_NAME
+        );
+        if(template == null){
+            name = getUniqueAttribute(element, NAME_ATTRIBUTE_NAME);
+        }else{
+            name = getOptionalAttribute(element, NAME_ATTRIBUTE_NAME);
+        }
+        if(name == null){
+            ServiceNameEditor editor = new ServiceNameEditor();
+            if(getManager() != null){
+                editor.setServiceManagerName(getManager().getName());
+            }
+            editor.setAsText(template);
+            ServiceName temlateServiceName = (ServiceName)editor.getValue();
+            name = temlateServiceName.getServiceName();
+        }
+        
         if(name != null){
             // システムプロパティの置換
             name = Utility.replaceSystemProperty(name);
@@ -555,12 +615,16 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
             isCreateTemplate = Boolean.valueOf(createTemplate).booleanValue();
         }
         
-        template = getOptionalAttribute(
-            element,
-            TEMPLATE_ATTRIBUTE_NAME
-        );
-        
         super.importXML(element);
+    }
+    
+    public void importIfDef() throws DeploymentException{
+        super.importIfDef();
+        
+        for(int i = 0; i < depends.size(); i++){
+            DependsMetaData deps = (DependsMetaData)depends.get(i);
+            deps.importIfDef();
+        }
     }
     
     protected void importXMLInner(Element element, IfDefMetaData ifdefData) throws DeploymentException{
@@ -581,7 +645,7 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
         );
         while(dependsElements.hasNext()){
             final Element dependsElement = (Element)dependsElements.next();
-            final DependsMetaData dependsData = new DependsMetaData(manager.getName());
+            final DependsMetaData dependsData = new DependsMetaData();
             if(ifdefData != null){
                 dependsData.setIfDefMetaData(ifdefData);
                 ifdefData.addChild(dependsData);
@@ -722,7 +786,13 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
      */
     public Object clone(){
         ServiceMetaData clone = (ServiceMetaData)super.clone();
-        clone.depends = new ArrayList(depends);
+        clone.depends = new ArrayList();
+        for(int i = 0; i < depends.size(); i++){
+            DependsMetaData deps = (DependsMetaData)depends.get(i);
+            deps = (DependsMetaData)deps.clone();
+            deps.setParent(clone);
+            clone.depends.add(deps);
+        }
         return clone;
     }
     
@@ -765,12 +835,10 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
         private ServiceMetaData serviceData;
         
         /**
-         * 指定されたサービスマネージャに登録されたサービスに依存する事を表す依存関係定義のインスタンスを生成する。<p>
-         *
-         * @param manager 依存するサービスが登録されるサービスマネージャ名
+         * サービスに依存する事を表す依存関係定義のインスタンスを生成する。<p>
          */
-        public DependsMetaData(String manager){
-            super(ServiceMetaData.this, manager);
+        public DependsMetaData(){
+            super(ServiceMetaData.this);
         }
         
         /**
@@ -807,28 +875,26 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
                 );
             }
             tagName = element.getTagName();
+            
             final Element serviceElement = getOptionalChild(
                 element,
                 SERVICE_TAG_NAME
             );
-            final boolean ifdefMatch
-                = DependsMetaData.this.getIfDefMetaData() == null ? true : DependsMetaData.this.getIfDefMetaData().isMatch();
             if(serviceElement == null){
-                final ServiceMetaData parent = (ServiceMetaData)getParent();
-                if(parent != null){
-                    setManagerName(parent.getManager().getName());
-                }
                 super.importXML(element);
             }else{
                 final ServiceMetaData serviceData
                      = new ServiceMetaData(myLoader, this, manager);
                 serviceData.importXML(serviceElement);
-                serviceData.setIfDefMetaData(DependsMetaData.this.getIfDefMetaData());
                 setServiceName(serviceData.getName());
-                if(ifdefMatch){
-                    this.serviceData = serviceData;
-                    setManagerName(manager.getName());
-                }
+                this.serviceData = serviceData;
+            }
+        }
+        
+        public void importIfDef() throws DeploymentException{
+            super.importIfDef();
+            if(serviceData != null){
+                serviceData.importIfDef();
             }
         }
     }
