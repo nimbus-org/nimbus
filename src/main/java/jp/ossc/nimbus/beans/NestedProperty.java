@@ -171,6 +171,26 @@ public class NestedProperty implements Property, java.io.Serializable{
     }
     
     /**
+     * ネストした最初のプロパティを取得する。<p>
+     * 
+     * @return ネストした最初のプロパティ
+     */
+    public Property getFirstNestedProperty(){
+        return getFirstNestedProperty(thisProperty, nestProperty);
+    }
+    
+    private Property getFirstNestedProperty(Property prop1, Property prop2){
+        if(prop1 instanceof NestedProperty){
+            return getFirstNestedProperty(
+                ((NestedProperty)prop1).getThisProperty(),
+                ((NestedProperty)prop1).getNestedProperty()
+            );
+        }else{
+            return prop2;
+        }
+    }
+    
+    /**
      * 指定したプロパティ文字列を解析する。<p>
      * ここで指定可能な文字列は、<br>
      * &nbsp;ネストされるプロパティ名.ネストするプロパティ名<br>

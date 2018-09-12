@@ -6046,23 +6046,19 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                             NestedProperty nestedProp = (NestedProperty)property;
                             Property thisProp = nestedProp.getFirstThisProperty();
                             val = thisProp.getProperty(context);
-                            if(val != null && (val instanceof StepContext)){
-                                if(nestedProp instanceof NestedProperty){
-                                    NestedProperty nestedProp2 = (NestedProperty)nestedProp;
-                                    Property thisProp2 = nestedProp2.getFirstThisProperty();
-                                    if(!TARGET.equals(thisProp2.getPropertyName())
-                                            && !RESULT.equals(thisProp2.getPropertyName())
-                                    ){
-                                        val = ((StepContext)val).result;
-                                    }
-                                }else if(!TARGET.equals(nestedProp.getPropertyName())
-                                        && !RESULT.equals(nestedProp.getPropertyName())
-                                ){
-                                    val = ((StepContext)val).result;
-                                }
-                            }
                             if(val != null){
-                                val = nestedProp.getProperty(context);
+                                if(val instanceof StepContext){
+                                    Property fnp = nestedProp.getFirstNestedProperty();
+                                    if(!TARGET.equals(fnp.getPropertyName())
+                                            && !RESULT.equals(fnp.getPropertyName())
+                                    ){
+                                        val = property.getProperty(vars);
+                                    }else{
+                                        val = property.getProperty(context);
+                                    }
+                                }else{
+                                    val = property.getProperty(context);
+                                }
                             }
                         }else{
                             val = property.getProperty(context);
@@ -6509,23 +6505,19 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                         NestedProperty nestedProp = (NestedProperty)property;
                         Property thisProp = nestedProp.getFirstThisProperty();
                         val = thisProp.getProperty(context);
-                        if(val != null && (val instanceof StepContext)){
-                            if(nestedProp instanceof NestedProperty){
-                                NestedProperty nestedProp2 = (NestedProperty)nestedProp;
-                                Property thisProp2 = nestedProp2.getFirstThisProperty();
-                                if(!TARGET.equals(thisProp2.getPropertyName())
-                                        && !RESULT.equals(thisProp2.getPropertyName())
-                                ){
-                                    val = ((StepContext)val).result;
-                                }
-                            }else if(!TARGET.equals(nestedProp.getPropertyName())
-                                    && !RESULT.equals(nestedProp.getPropertyName())
-                            ){
-                                val = ((StepContext)val).result;
-                            }
-                        }
                         if(val != null){
-                            val = nestedProp.getProperty(context);
+                            if(val instanceof StepContext){
+                                Property fnp = nestedProp.getFirstNestedProperty();
+                                if(!TARGET.equals(fnp.getPropertyName())
+                                        && !RESULT.equals(fnp.getPropertyName())
+                                ){
+                                    val = property.getProperty(vars);
+                                }else{
+                                    val = property.getProperty(context);
+                                }
+                            }else{
+                                val = property.getProperty(context);
+                            }
                         }
                     }else{
                         val = property.getProperty(context);
