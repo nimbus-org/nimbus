@@ -352,7 +352,7 @@ public class DataSetServletRequestParameterConverter implements Converter{
         HttpServletRequest request = (HttpServletRequest)obj;
         String contentType = request.getHeader(HEADER_CONTENT_TYPE);
         Map paramMap = null;
-        if(contentType != null && (!contentType.toLowerCase().startsWith(MULTIPART))){
+        if(contentType == null || (!contentType.toLowerCase().startsWith(MULTIPART))){
             paramMap = request.getParameterMap();
         }else{
             DiskFileItemFactory factory = new DiskFileItemFactory();
