@@ -93,17 +93,17 @@ public class DefaultCachedReference
     }
     
     // CachedReferenceのJavaDoc
-    public Object get(){
+    public Object get() throws IllegalCachedReferenceException{
         return get(null, true);
     }
     
     // CachedReferenceのJavaDoc
-    public Object get(Object source){
+    public Object get(Object source) throws IllegalCachedReferenceException{
         return get(source, true);
     }
     
     // CachedReferenceのJavaDoc
-    public Object get(Object source, boolean notify){
+    public Object get(Object source, boolean notify) throws IllegalCachedReferenceException{
         if(notify){
             notifyAccessed(source);
         }

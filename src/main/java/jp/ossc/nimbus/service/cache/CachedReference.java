@@ -45,9 +45,10 @@ public interface CachedReference{
      * {@link #get(Object, boolean) get(null, true)}で呼び出すのに等しい。<br>
      *
      * @return キャッシュオブジェクト
+     * @exception IllegalCachedReferenceException キャッシュ参照の状態が不正な為キャッシュオブジェクトの取得に失敗した場合
      * @see #get(Object, boolean)
      */
-    public Object get();
+    public Object get() throws IllegalCachedReferenceException;
     
     /**
      * キャッシュされたオブジェクトを取得する。<p>
@@ -55,9 +56,10 @@ public interface CachedReference{
      *
      * @param source キャッシュを取得するこのメソッドの呼び出し元オブジェクト
      * @return キャッシュオブジェクト
+     * @exception IllegalCachedReferenceException キャッシュ参照の状態が不正な為キャッシュオブジェクトの取得に失敗した場合
      * @see #get(Object, boolean)
      */
-    public Object get(Object source);
+    public Object get(Object source) throws IllegalCachedReferenceException;
     
     /**
      * キャッシュされたオブジェクトを取得する。<p>
@@ -67,8 +69,9 @@ public interface CachedReference{
      * @param source キャッシュを取得するこのメソッドの呼び出し元オブジェクト
      * @param notify キャッシュアクセスリスナに通知する場合はtrue
      * @return キャッシュオブジェクト
+     * @exception IllegalCachedReferenceException キャッシュ参照の状態が不正な為キャッシュオブジェクトの取得に失敗した場合
      */
-    public Object get(Object source, boolean notify);
+    public Object get(Object source, boolean notify) throws IllegalCachedReferenceException;
     
     /**
      * キャッシュオブジェクトを設定する。<p>

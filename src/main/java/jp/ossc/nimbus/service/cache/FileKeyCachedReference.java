@@ -197,7 +197,7 @@ public class FileKeyCachedReference extends DefaultKeyCachedReference
      * @param notify キャッシュアクセスリスナに通知する場合はtrue
      * @return キャッシュオブジェクト
      */
-    public Object get(Object source, boolean notify){
+    public Object get(Object source, boolean notify) throws IllegalCachedReferenceException{
         final Object obj = super.get(source, notify);
         if(obj instanceof File){
             File file = (File)obj;
@@ -206,9 +206,9 @@ public class FileKeyCachedReference extends DefaultKeyCachedReference
                 try{
                     entry = ((MapEntry)deserializeObject(file));
                 }catch(IOException e){
-                    return null;
+                    throw new IllegalCachedReferenceException(e);
                 }catch(ClassNotFoundException e){
-                    return null;
+                    throw new IllegalCachedReferenceException(e);
                 }
                 return entry.getValue();
             }else{

@@ -39,7 +39,7 @@ import java.io.PrintWriter;
  *
  * @author M.Takata
  */
-public class IllegalCachedReferenceException extends Exception{
+public class IllegalCachedReferenceException extends RuntimeException{
     
     private static final long serialVersionUID = 7402131639192992549L;
     
