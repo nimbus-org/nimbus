@@ -287,11 +287,11 @@ public class StoreCacheOverflowActionService extends ServiceBase
                 obj = newRef.get(this);
                 try{
                     ref.set(this, obj);
-                    newRef.remove(this);
                     references.remove(ref);
                     ref.removeLinkedReference(this);
                     ref.removeCacheRemoveListener(this);
                     ref.removeCacheChangeListener(this);
+                    newRef.remove(this);
                     if(controller != null){
                         controller.control(ref);
                     }
