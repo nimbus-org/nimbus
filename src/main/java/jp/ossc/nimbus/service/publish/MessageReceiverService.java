@@ -419,28 +419,37 @@ public class MessageReceiverService extends ServiceBase implements MessageReceiv
         addSubject(listener, subject, null);
     }
 
-    public synchronized void addSubject(MessageListener listener, String subject, String[] keys) throws MessageSendException{
+    public void addSubject(MessageListener listener, String subject, String[] keys) throws MessageSendException{
         Subject sbj = (Subject)subjectMap.get(subject);
         if(sbj == null){
-            sbj = new Subject(subject);
-            subjectMap.put(subject, sbj);
+            synchronized(subjectMap){
+                sbj = (Subject)subjectMap.get(subject);
+                if(sbj == null){
+                    sbj = new Subject(subject);
+                    subjectMap.put(subject, sbj);
+                }
+            }
         }
+        
         sbj.registKeys(listener, keys);
-        Map subjects = (Map)listenerSubjectMap.get(listener);
-        if(subjects == null){
-            subjects = Collections.synchronizedMap(new HashMap());
-            listenerSubjectMap.put(listener, subjects);
-        }
-        Set keySet = (Set)subjects.get(subject);
-        if(keySet == null){
-            keySet = Collections.synchronizedSet(new HashSet());
-            subjects.put(subject, keySet);
-        }
-        if(keys == null){
-            keySet.add(null);
-        }else{
-            for(int i = 0; i < keys.length; i++){
-                keySet.add(keys[i]);
+        
+        synchronized(listenerSubjectMap){
+            Map subjects = (Map)listenerSubjectMap.get(listener);
+            if(subjects == null){
+                subjects = Collections.synchronizedMap(new HashMap());
+                listenerSubjectMap.put(listener, subjects);
+            }
+            Set keySet = (Set)subjects.get(subject);
+            if(keySet == null){
+                keySet = Collections.synchronizedSet(new HashSet());
+                subjects.put(subject, keySet);
+            }
+            if(keys == null){
+                keySet.add(null);
+            }else{
+                for(int i = 0; i < keys.length; i++){
+                    keySet.add(keys[i]);
+                }
             }
         }
     }
@@ -449,7 +458,7 @@ public class MessageReceiverService extends ServiceBase implements MessageReceiv
         removeSubject(listener, subject, null);
     }
 
-    public synchronized void removeSubject(MessageListener listener, String subject, String[] keys) throws MessageSendException{
+    public void removeSubject(MessageListener listener, String subject, String[] keys) throws MessageSendException{
         Subject sbj = (Subject)subjectMap.get(subject);
         if(sbj == null){
             return;
@@ -458,32 +467,37 @@ public class MessageReceiverService extends ServiceBase implements MessageReceiv
         if(sbj.isEmpty()){
             subjectMap.remove(subject);
         }
-        Map subjects = (Map)listenerSubjectMap.get(listener);
-        if(subjects != null){
-            Set keySet = (Set)subjects.get(subject);
-            if(keySet != null){
-                if(keys == null){
-                    keySet.remove(null);
-                }else{
-                    for(int i = 0; i < keys.length; i++){
-                        keySet.remove(keys[i]);
+        synchronized(listenerSubjectMap){
+            Map subjects = (Map)listenerSubjectMap.get(listener);
+            if(subjects != null){
+                Set keySet = (Set)subjects.get(subject);
+                if(keySet != null){
+                    if(keys == null){
+                        keySet.remove(null);
+                    }else{
+                        for(int i = 0; i < keys.length; i++){
+                            keySet.remove(keys[i]);
+                        }
                     }
-                }
-                if(keySet.size() == 0){
-                    subjects.remove(subject);
-                    if(subjects.size() == 0){
-                        listenerSubjectMap.remove(listener);
+                    if(keySet.size() == 0){
+                        subjects.remove(subject);
+                        if(subjects.size() == 0){
+                            listenerSubjectMap.remove(listener);
+                        }
                     }
                 }
             }
         }
     }
 
-    public synchronized void removeMessageListener(MessageListener listener) throws MessageSendException{
+    public void removeMessageListener(MessageListener listener) throws MessageSendException{
         if(subjectMap == null || subjectMap.size() == 0){
             return;
         }
-        Subject[] subjects = (Subject[])subjectMap.values().toArray(new Subject[subjectMap.size()]);
+        Subject[] subjects = null;
+        synchronized(subjectMap){
+            subjects = (Subject[])subjectMap.values().toArray(new Subject[subjectMap.size()]);
+        }
         for(int i = 0; i < subjects.length; i++){
             subjects[i].removeMessageListener(listener);
             if(subjects[i].isEmpty()){
@@ -1178,22 +1192,26 @@ public class MessageReceiverService extends ServiceBase implements MessageReceiv
         }
     }
 
-    protected synchronized MessageListenerParameter getListenerParamObject(MessageListener listener, Message message) {
+    protected MessageListenerParameter getListenerParamObject(MessageListener listener, Message message) {
         MessageListenerParameter obj = null;
-        if (messageListenerParameterRecycleList.isEmpty()) {
-            obj = new MessageListenerParameter();
-        } else {
-            obj = (MessageListenerParameter) messageListenerParameterRecycleList.remove(0);
+        synchronized(messageListenerParameterRecycleList){
+            if (messageListenerParameterRecycleList.isEmpty()) {
+                obj = new MessageListenerParameter();
+            } else {
+                obj = (MessageListenerParameter) messageListenerParameterRecycleList.remove(0);
+            }
+            obj.setMessageListener(listener);
+            obj.setMessage(message);
         }
-        obj.setMessageListener(listener);
-        obj.setMessage(message);
         return obj;
     }
 
-    protected synchronized void recycleSendParamObject(MessageListenerParameter param) {
-        if (messageListenerParameterRecycleList.size() < messageListenerParameterRecycleListSize) {
-            param.clear();
-            messageListenerParameterRecycleList.add(param);
+    protected void recycleSendParamObject(MessageListenerParameter param) {
+        synchronized(messageListenerParameterRecycleList){
+            if (messageListenerParameterRecycleList.size() < messageListenerParameterRecycleListSize) {
+                param.clear();
+                messageListenerParameterRecycleList.add(param);
+            }
         }
     }
 
