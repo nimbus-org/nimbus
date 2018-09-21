@@ -137,4 +137,36 @@ public interface ServletFilterInterceptorServiceMBean
      * @return このインターセプタを無効にするサーブレットパス（正規表現）の配列
      */
     public String[] getDisabledPaths();
+
+    /**
+     * このインターセプタを有効にするメソッドを設定する。<p>
+     * リクエストメソッドが指定されたメソッドに該当する場合だけ、インターセプタの処理が行われる。<br>
+     * 設定しない場合は、全てのメソッドに対して有効になる。<br>
+     *
+     * @param methods このインターセプタを有効にするメソッドの配列
+     */
+    public void setEnabledMethods(String[] methods);
+    
+    /**
+     * このインターセプタを有効にするメソッドを取得する。<p>
+     *
+     * @return このインターセプタを有効にするメソッドの配列
+     */
+    public String[] getEnabledMethods();
+    
+    /**
+     * このインターセプタを無効にするメソッドを設定する。<p>
+     * リクエストメソッドが指定されたメソッドに該当する場合だけ、インターセプタの処理が行われない。<br>
+     * 設定しない場合は、全てのメソッドに対して有効になる。<br>
+     *
+     * @param methods このインターセプタを無効にするメソッドの配列
+     */
+    public void setDisabledMethods(String[] methods);
+    
+    /**
+     * このインターセプタを無効にするメソッドを取得する。<p>
+     *
+     * @return このインターセプタを無効にするメソッドの配列
+     */
+    public String[] getDisabledMethods();
 }
