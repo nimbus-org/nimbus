@@ -413,6 +413,9 @@ WS___00003,The number of clients has exceeded the maximum size. SessionPropertie
 WS___00004,Session is not normal close. SessionProperties=@0 CloseReason=@1,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 WS___00005,Failed to send WebSocket Ping. SessionProperties=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 WS___00006,Failed to send WebSocket Message. SessionProperties=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+WS___00007,Message is invalid. Message=@0\\, SessionProperties=@1,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+WS___00008,Key registration failed. Message=@0\\, SessionProperties=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+WS___00009,Failed to remove key. Message=@0\\, SessionProperties=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 WSSV_00001,Unexpected exception occured.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 WSSV_00002,Illegal Accept header. header=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 WSSV_00003,Illegal Accept-Charset header. header=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
