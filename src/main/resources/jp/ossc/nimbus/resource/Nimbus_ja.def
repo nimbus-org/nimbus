@@ -389,6 +389,9 @@ WS___00003,クライアントの接続数が最大数を超えています。Ses
 WS___00004,セッションが異常クローズされました。SessionProperties=@0 CloseReason=@1
 WS___00005,WebSocketのPing送信に失敗しました。SessionProperties=@0
 WS___00006,WebSocketのメッセージ送信に失敗しました。SessionProperties=@0
+WS___00007,受信電文が不正です。message=@0\\, SessionProperties=@1
+WS___00008,キー登録に失敗しました。message=@0\\, SessionProperties=@1
+WS___00009,キー削除に失敗しました。message=@0\\, SessionProperties=@1
 WSSV_00001,予期しない例外が発生しました。
 WSSV_00002,Acceptヘッダが不正です。header=@0
 WSSV_00003,Accept-Charsetヘッダが不正です。header=@0
