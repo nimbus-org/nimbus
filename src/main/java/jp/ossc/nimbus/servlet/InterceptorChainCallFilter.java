@@ -33,6 +33,7 @@ package jp.ossc.nimbus.servlet;
 
 import java.io.*;
 import java.lang.reflect.*;
+import java.util.*;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -84,10 +85,17 @@ public class InterceptorChainCallFilter implements Filter, Invoker{
     
     public static final String INIT_PARAM_NAME_USE_THREAD_LOCAL_INTERCEPTOR_CHAIN = "UseThreadLocalInterceptorChain";
     
+    public static final String INIT_PARAM_NAME_ENABLED_METHODS = "EnabledMethods";
+    
+    public static final String INIT_PARAM_NAME_DISABLED_METHODS = "DisabledMethods";
+    
     protected boolean isUseThreadLocalInterceptorChain = true;
     
     protected InterceptorChain interceptorChain;
     protected ServiceName interceptorChainFactoryServiceName;
+    
+    protected Set enabledMethodSet;
+    protected Set disabledMethodSet;
     
     /**
      * フィルタの初期化を行う。<p>
@@ -143,6 +151,22 @@ public class InterceptorChainCallFilter implements Filter, Invoker{
             editor.setAsText(name);
             interceptorChainFactoryServiceName = (ServiceName)editor.getValue();
         }
+        String enabledMethods = filterConfig.getInitParameter(INIT_PARAM_NAME_ENABLED_METHODS);
+        if(enabledMethods != null && !enabledMethods.isEmpty()) {
+            enabledMethodSet = new HashSet();
+            String[] enabledMethodArray = enabledMethods.split(",");
+            for(int i = 0; i < enabledMethodArray.length; i++) {
+                enabledMethodSet.add(enabledMethodArray[i].toUpperCase());
+            }
+        }
+        String disableMethods = filterConfig.getInitParameter(INIT_PARAM_NAME_DISABLED_METHODS);
+        if(disableMethods != null && !disableMethods.isEmpty()) {
+            disabledMethodSet = new HashSet();
+            String[] disabledMethodArray = disableMethods.split(",");
+            for(int i = 0; i < disabledMethodArray.length; i++) {
+                disabledMethodSet.add(disabledMethodArray[i].toUpperCase());
+            }
+        }
     }
     
     /**
@@ -166,6 +190,15 @@ public class InterceptorChainCallFilter implements Filter, Invoker{
         ServletResponse response,
         FilterChain chain
     ) throws IOException, ServletException{
+        if(request instanceof HttpServletRequest) {
+            String reqMethod = ((HttpServletRequest)request).getMethod().toUpperCase();
+            if(enabledMethodSet != null && !enabledMethodSet.contains(reqMethod)) {
+                return;
+            }
+            if(disabledMethodSet != null && disabledMethodSet.contains(reqMethod)) {
+                return;
+            }
+        }
         if(interceptorChain == null && interceptorChainFactoryServiceName == null){
             chain.doFilter(request, response);
         }else if(interceptorChain != null){

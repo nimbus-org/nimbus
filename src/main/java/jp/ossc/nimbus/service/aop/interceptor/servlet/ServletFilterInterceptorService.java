@@ -31,6 +31,7 @@
  */
 package jp.ossc.nimbus.service.aop.interceptor.servlet;
 
+import java.util.*;
 import java.util.regex.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -65,6 +66,12 @@ public abstract class ServletFilterInterceptorService extends ServiceBase
     
     protected String[] disabledPaths;
     protected Pattern[] disabledPathPatterns;
+    
+    protected String[] enabledMethods;
+    protected Set enabledMethodSet;
+    
+    protected String[] disabledMethods;
+    protected Set disabledMethodSet;
     
     // ServletFilterInterceptorServiceMBeanのJavaDoc
     public void setEnabledURLs(String[] urls){
@@ -126,6 +133,27 @@ public abstract class ServletFilterInterceptorService extends ServiceBase
         return disabledPaths;
     }
     
+    // ServletFilterInterceptorServiceMBeanのJavaDoc
+    public void setEnabledMethods(String[] methods) {
+        enabledMethods = methods;
+    }
+    
+    // ServletFilterInterceptorServiceMBeanのJavaDoc
+    public String[] getEnabledMethods() {
+        return enabledMethods;
+    }
+    
+    // ServletFilterInterceptorServiceMBeanのJavaDoc
+    public void setDisabledMethods(String[] methods) {
+        disabledMethods = methods;
+    }
+    
+    // ServletFilterInterceptorServiceMBeanのJavaDoc
+    public String[] getDisabledMethods() {
+        return disabledMethods;
+    }
+    
+    
     /**
      * サービスの開始前処理を行う。<p>
      *
@@ -169,6 +197,18 @@ public abstract class ServletFilterInterceptorService extends ServiceBase
                 disabledPathPatterns[i] = Pattern.compile(disabledPaths[i]);
             }
         }
+        if(enabledMethods != null && enabledMethods.length != 0){
+            enabledMethodSet = new HashSet();
+            for(int i = 0; i < enabledMethods.length; i++){
+                enabledMethodSet.add(enabledMethods[i].toUpperCase());
+            }
+        }
+        if(disabledMethods != null && disabledMethods.length != 0){
+            disabledMethodSet = new HashSet();
+            for(int i = 0; i < disabledMethods.length; i++){
+                disabledMethodSet.add(disabledMethods[i].toUpperCase());
+            }
+        }
     }
     
     /**
@@ -210,6 +250,12 @@ public abstract class ServletFilterInterceptorService extends ServiceBase
                     return chain.invokeNext(context);
                 }
             }
+            if(enabledMethodSet != null && enabledMethodSet.size() != 0){
+                String reqMethod = httpReq.getMethod().toUpperCase();
+                if(!enabledMethodSet.contains(reqMethod)){
+                    return chain.invokeNext(context);
+                }
+            }
             if(disabledURLPatterns != null && disabledURLPatterns.length != 0){
                 final String reqURL = httpReq.getRequestURL().toString();
                 if(checkPatterns(reqURL, disabledURLPatterns)){
@@ -229,6 +275,12 @@ public abstract class ServletFilterInterceptorService extends ServiceBase
                     reqPath = reqPath + httpReq.getPathInfo();
                 }
                 if(checkPatterns(reqPath, disabledPathPatterns)){
+                    return chain.invokeNext(context);
+                }
+            }
+            if(disabledMethodSet != null && disabledMethodSet.size() != 0){
+                String reqMethod = httpReq.getMethod().toUpperCase();
+                if(disabledMethodSet.contains(reqMethod)){
                     return chain.invokeNext(context);
                 }
             }
