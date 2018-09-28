@@ -46,7 +46,7 @@ public class NumberSequenceService extends ServiceBase
     private static final long serialVersionUID = 7700067543446331974L;
     private long initialValue;
     private long minValue;
-    private long maxValue;
+    private long maxValue = Long.MAX_VALUE;
     private long incrementValue = 1;
     private long currentValue;
     
