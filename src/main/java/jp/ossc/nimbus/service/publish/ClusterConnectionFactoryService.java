@@ -42,6 +42,8 @@ import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.service.repository.Repository;
 import jp.ossc.nimbus.service.keepalive.ClusterService;
+import jp.ossc.nimbus.service.sequence.Sequence;
+import jp.ossc.nimbus.service.sequence.NumberSequenceService;
 
 /**
  * クラスタコネクション生成サービス。<p>
@@ -73,6 +75,8 @@ public class ClusterConnectionFactoryService extends ServiceBase
     private long failoverBufferTime;
     private boolean isStartReceiveFromLastReceiveTime = true;
     private RemoteClusterClientConnectionFactory remoteClientConnectionFactory;
+    private ServiceName sequenceServiceName;
+    private Sequence sequence;
     
     private Repository jndiRepository;
     
@@ -123,6 +127,13 @@ public class ClusterConnectionFactoryService extends ServiceBase
     }
     public ServiceName getClientConnectionFactoryServiceName(){
         return clientConnectionFactoryServiceName;
+    }
+    
+    public void setSequenceServiceName(ServiceName name){
+        sequenceServiceName = name;
+    }
+    public ServiceName getSequenceServiceName(){
+        return sequenceServiceName;
     }
     
     public void setClientConnectErrorMessageId(String id){
@@ -223,6 +234,15 @@ public class ClusterConnectionFactoryService extends ServiceBase
         if(cluster.isJoin()){
             throw new IllegalArgumentException("ClusterService already join.");
         }
+        if(sequenceServiceName != null){
+            sequence = (Sequence)ServiceManagerFactory
+                .getServiceObject(sequenceServiceName);
+        }
+        if(sequence == null){
+            sequence = new NumberSequenceService();
+            ((NumberSequenceService)sequence).create();
+            ((NumberSequenceService)sequence).start();
+        }
         if(clientConnectionFactoryServiceName != null){
             clientConnectionFactory = (ClientConnectionFactory)ServiceManagerFactory.getServiceObject(clientConnectionFactoryServiceName);
         }
@@ -263,7 +283,7 @@ public class ClusterConnectionFactoryService extends ServiceBase
     }
     
     public ClientConnection getClientConnection() throws ConnectionCreateException, RemoteException{
-        ClusterClientConnectionImpl connection = new ClusterClientConnectionImpl(cluster);
+        ClusterClientConnectionImpl connection = new ClusterClientConnectionImpl(cluster, sequence.increment());
         connection.setConnectErrorMessageId(clientConnectErrorMessageId);
         connection.setReconnectMessageId(clientReconnectMessageId);
         connection.setNoConnectErrorMessageId(clientNoConnectErrorMessageId);

@@ -149,6 +149,20 @@ public interface ClusterConnectionFactoryServiceMBean extends ServiceBaseMBean{
     public ServiceName getClientConnectionFactoryServiceName();
     
     /**
+     * {@link jp.ossc.nimbus.service.publish.ClientConnection ClientConnection}のIDを生成する{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}サービスのサービス名を設定する。<p>
+     * 
+     * @param name Sequenceサービスのサービス名
+     */
+    public void setSequenceServiceName(ServiceName name);
+    
+    /**
+     * {@link jp.ossc.nimbus.service.publish.ClientConnection ClientConnection}のIDを生成する{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}サービスのサービス名を取得する。<p>
+     * 
+     * @return Sequenceサービスのサービス名
+     */
+    public ServiceName getSequenceServiceName();
+    
+    /**
      * 分散クラスタにするかどうかを設定する。<p>
      * trueにすると分散クラスタとなり、クライアントは、接続台数の少ないクラスタメンバに接続し、サーバに対して分散して接続する。<br>
      * デフォルトはfalseで、全てのクライアントが主系となっているクラスタメンバに接続する。<br>
