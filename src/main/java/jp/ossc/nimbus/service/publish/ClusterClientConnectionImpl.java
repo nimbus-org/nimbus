@@ -85,12 +85,14 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
     private transient boolean isStartReceive;
     private transient long fromTime;
     private transient long lastReceiveTime = -1;
+    private String clientNo;
     
     public ClusterClientConnectionImpl(){
     }
     
-    public ClusterClientConnectionImpl(ClusterService cluster){
+    public ClusterClientConnectionImpl(ClusterService cluster, String no){
         setCluster(cluster);
+        clientNo = no;
     }
     
     public void setCluster(ClusterService cluster){
@@ -165,7 +167,7 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
                     cluster.setClient(true);
                     cluster.addClusterListener(this);
                     cluster.start();
-                    this.id = id == null ? uid : id;
+                    this.id = id == null ? (uid + clientNo) : id;
                     cluster.join();
                 }catch(Exception e){
                     cluster.stop();
@@ -173,7 +175,7 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
                     throw new ConnectException(e);
                 }
             }else{
-                this.id = id == null ? uid : id;
+                this.id = id == null ? (uid + clientNo) : id;
                 cluster.addClusterListener(this);
             }
             if(!isFlexibleConnect && (connectionMap == null || connectionMap.size() == 0)){
