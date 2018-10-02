@@ -323,7 +323,7 @@ PCFT_00007,It failed to interpolate message. client=@0\\, id=@1-@2\\, count=@3\\
 PCFT_00008,The server was terminated. The receiving stop. connection=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 PCFT_00009,The client was connected. connection=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 PCFT_00010,The client was closed. connection=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
-PCFT_00011,Connection closed. connection=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+PCFT_00011,Connection closed. connection=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 PCFT_00012,Requested to start reception. connection=@0\\, from=@1,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 PCFT_00013,Requested to stop reception. connection=@0\\,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 PCFT_00014,Accepted to start reception. connection=@0\\, from=@1,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
