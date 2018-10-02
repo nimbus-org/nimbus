@@ -283,7 +283,7 @@ EHI__00001,Exception occurred while evaluating expression "@0".,100,jp.ossc.nimb
 AS___00001,It failed in the state change "@3" of the schedule "@1:@2" of ScheduleManager "@0".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 AS___00002,It failed in execution of the schedule "@1:@2" of ScheduleManager "@0".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 AS___00003,The schedule "@1:@2" of ScheduleManager "@0" was entry.input=@3,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
-AS___00004,Scheduler "@0" failed to pick out the schedule.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+AS___00004,Scheduler "@0" failed to pick out the schedule.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 AS___00005,Unexpected error occured on Scheduler "@0".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 AS___00006,It failed in state transition @3->@4 of the schedule "@1:@2" of ScheduleManager "@0".,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 AS___00007,It failed to entry of the schedule "@1:@2" of ScheduleManager "@0".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
