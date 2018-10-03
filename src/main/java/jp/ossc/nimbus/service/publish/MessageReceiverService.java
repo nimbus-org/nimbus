@@ -506,6 +506,18 @@ public class MessageReceiverService extends ServiceBase implements MessageReceiv
         }
         listenerSubjectMap.remove(listener);
     }
+    
+    public boolean existsMessageListener(String subject){
+        return existsMessageListener(subject, null);
+    }
+    
+    public boolean existsMessageListener(String subject, String key){
+        Subject sbj = (Subject)subjectMap.get(subject);
+        if(sbj == null){
+            return false;
+        }
+        return sbj.existsMessageListener(key);
+    }
 
     public Set getSubjects(MessageListener listener){
         Map subjects = (Map)listenerSubjectMap.get(listener);
@@ -646,6 +658,9 @@ public class MessageReceiverService extends ServiceBase implements MessageReceiv
         }
 
         public boolean existsMessageListener(Message message){
+            return existsMessageListener(message.getKey(subject));
+        }
+        public boolean existsMessageListener(String key){
             Set listeners = null;
             Map localKeyAndMessageListenerMap = unmodifiedKeyAndMessageListenerMap;
             if(localKeyAndMessageListenerMap.containsKey(null)){
@@ -654,7 +669,6 @@ public class MessageReceiverService extends ServiceBase implements MessageReceiv
                     return true;
                 }
             }
-            String key = message.getKey(subject);
             if(localKeyAndMessageListenerMap.containsKey(key)){
                 listeners = (Set)localKeyAndMessageListenerMap.get(key);
             }

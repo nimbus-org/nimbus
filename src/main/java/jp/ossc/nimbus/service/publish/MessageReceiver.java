@@ -88,6 +88,24 @@ public interface MessageReceiver{
     public void removeMessageListener(MessageListener listener) throws MessageSendException;
     
     /**
+     * 指定したサブジェクトのメッセージを受信するメッセージリスナが登録されているかを判定する。<p>
+     *
+     * @param subject サブジェクト
+     * @return メッセージリスナが登録されている場合、true
+     * @exception MessageSendException サブジェクト登録のリクエスト送信に失敗した場合
+     */
+    public boolean existsMessageListener(String subject);
+    
+    /**
+     * 指定したサブジェクト且つ指定したキーのメッセージを受信するメッセージリスナが登録されているかを判定する。<p>
+     *
+     * @param subject サブジェクト
+     * @param key キー
+     * @return メッセージリスナが登録されている場合、true
+     */
+    public boolean existsMessageListener(String subject, String key);
+    
+    /**
      * 指定した{@link MessageListener}に対して登録されているサブジェクトを取得する。<p>
      *
      * @param listener メッセージリスナ

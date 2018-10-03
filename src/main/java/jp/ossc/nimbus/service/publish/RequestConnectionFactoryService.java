@@ -201,6 +201,19 @@ public class RequestConnectionFactoryService extends ServiceBase
     }
     
     public void addSubject(MessageListener listener, String subject, String[] keys) throws MessageSendException{
+        if(listener instanceof RequestMessageListener){
+            if(keys == null || keys.length == 0){
+                if(messageReceiver.existsMessageListener(subject, null)){
+                    throw new MessageSendException("Listener already exists : subject=" + subject);
+                }
+            }else{
+                for(int i = 0; i < keys.length; i++){
+                    if(messageReceiver.existsMessageListener(subject, keys[i])){
+                        throw new MessageSendException("Listener already exists : subject=" + subject + ", key=" + keys[i]);
+                    }
+                }
+            }
+        }
         listener = getMessageListenerWrapper(listener, true);
         messageReceiver.addSubject(listener, subject, keys);
     }
@@ -248,6 +261,13 @@ public class RequestConnectionFactoryService extends ServiceBase
             listener = wrapper;
         }
         messageReceiver.removeMessageListener(listener);
+    }
+    public boolean existsMessageListener(String subject){
+        return messageReceiver.existsMessageListener(subject);
+    }
+    
+    public boolean existsMessageListener(String subject, String key){
+        return messageReceiver.existsMessageListener(subject, key);
     }
     
     public Set getSubjects(MessageListener listener){
@@ -665,16 +685,18 @@ public class RequestConnectionFactoryService extends ServiceBase
             }
             
             public synchronized void onResponse(Message message, ResponseMessage response){
-                requestClients.remove(response.getSourceId());
+                synchronized(requestClients){
+                    requestClients.remove(response.getSourceId());
+                }
                 synchronized(responseList){
                     responseList.add(message);
                 }
                 if(callback == null){
-                    if(requestClients.size() == 0 || (replyCount > 0 && responseList.size() >= replyCount)){
+                    if((replyCount <= 0 && requestClients.size() == 0) || (replyCount > 0 && responseList.size() >= replyCount)){
                         monitor.notifyAllMonitor();
                     }
                 }else{
-                    final boolean isLast = requestClients.size() == 0 || (replyCount > 0 && responseList.size() >= replyCount);
+                    final boolean isLast = (replyCount <= 0 && requestClients.size() == 0) || (replyCount > 0 && responseList.size() >= replyCount);
                     if(isLast){
                         if(timeout > 0){
                             cancel();
@@ -691,13 +713,15 @@ public class RequestConnectionFactoryService extends ServiceBase
             }
             
             public synchronized void onClose(Object id){
-                requestClients.remove(id);
+                synchronized(requestClients){
+                    requestClients.remove(id);
+                }
                 if(callback == null){
-                    if(requestClients.size() == 0 || (replyCount > 0 && responseList.size() >= replyCount)){
+                    if((replyCount <= 0 && requestClients.size() == 0) || (replyCount > 0 && responseList.size() >= replyCount)){
                         monitor.notifyAllMonitor();
                     }
                 }else{
-                    final boolean isLast = requestClients.size() == 0 || (replyCount > 0 && responseList.size() >= replyCount);
+                    final boolean isLast = (replyCount <= 0 && requestClients.size() == 0) || (replyCount > 0 && responseList.size() >= replyCount);
                     if(isLast){
                         if(timeout > 0){
                             cancel();
@@ -719,7 +743,7 @@ public class RequestConnectionFactoryService extends ServiceBase
                         synchronized(responseList){
                             responses = responseList.size() == 0 ? null : (Message[])responseList.toArray(new Message[responseList.size()]);
                         }
-                        synchronized(ResponseContainer.this){
+                        synchronized(requestClients){
                             throw new RequestTimeoutException("No responce destinations: sequence=" + sequence + ", clients=" + requestClients, responses);
                         }
                     }
@@ -728,16 +752,16 @@ public class RequestConnectionFactoryService extends ServiceBase
                 }finally{
                     monitor.releaseMonitor();
                 }
+                Message[] responses = null;
                 synchronized(responseList){
-                    Message[] responses = null;
                     responses = (Message[])responseList.toArray(new Message[responseList.size()]);
-                    if(replyCount > 0 && (responses == null || responses.length < replyCount)){
-                        synchronized(ResponseContainer.this){
-                            throw new RequestTimeoutException("No responce destinations: sequence=" + sequence + ", clients=" + requestClients, responses);
-                        }
-                    }
-                    return responses;
                 }
+                if(replyCount > 0 && (responses == null || responses.length < replyCount)){
+                    synchronized(requestClients){
+                        throw new RequestTimeoutException("No responce destinations: sequence=" + sequence + ", clients=" + requestClients, responses);
+                    }
+                }
+                return responses;
             }
             
             public void interrupt(){
@@ -799,6 +823,7 @@ public class RequestConnectionFactoryService extends ServiceBase
                     final RequestMessage request = (RequestMessage)obj;
                     final Object requestObj = request.getObject();
                     try{
+                        message = (Message)message.clone();
                         message.setObject(requestObj);
                     }catch(MessageException e){
                         // 発生しないはず
@@ -882,6 +907,7 @@ public class RequestConnectionFactoryService extends ServiceBase
                     final ResponseMessage response = (ResponseMessage)obj;
                     final Object responseObj = response.getObject();
                     try{
+                        message = (Message)message.clone();
                         message.setObject(responseObj);
                     }catch(MessageException e){
                         // 発生しないはず
