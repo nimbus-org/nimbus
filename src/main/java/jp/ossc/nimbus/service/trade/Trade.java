@@ -2,18 +2,18 @@
  * This software is distributed under following license based on modified BSD
  * style license.
  * ----------------------------------------------------------------------
- * 
+ *
  * Copyright 2003 The Nimbus Project. All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
- * 
+ *
  * 1. Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer. 
+ *    this list of conditions and the following disclaimer.
  * 2. Redistributions in binary form must reproduce the above copyright notice,
  *    this list of conditions and the following disclaimer in the documentation
  *    and/or other materials provided with the distribution.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE NIMBUS PROJECT ``AS IS'' AND ANY EXPRESS
  * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN
@@ -24,15 +24,15 @@
  * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- * 
+ *
  * The views and conclusions contained in the software and documentation are
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
 package jp.ossc.nimbus.service.trade;
 
-import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Trade implements Comparable<Trade>, java.io.Serializable{
     protected Date startTime;
@@ -40,64 +40,64 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
     protected Date endTime;
     protected double endValue;
     protected boolean isShortSelling;
-    protected Enum reason;
-    
+    protected Enum<?> reason;
+
     public Trade(){
     }
-    
+
     public Trade(TimeSeries.Element element, boolean hasMargin){
         start(element, hasMargin);
     }
-    
+
     public Trade(Date time, double value){
         start(time, value);
     }
-    
+
     public Date getStartTime(){
         return startTime;
     }
-    
+
     public double getStartValue(){
         return startValue;
     }
-    
+
     public Date getEndTime(){
         return endTime;
     }
-    
+
     public double getEndValue(){
         return endValue;
     }
-    
+
     public boolean isShortSelling(){
         return isShortSelling;
     }
     public void setShortSelling(boolean isShort){
         isShortSelling = isShort;
     }
-    
-    public void setReason(Enum reason){
+
+    public void setReason(Enum<?> reason){
         this.reason = reason;
     }
-    public Enum getReason(){
-        return reason;
+    public <E extends Enum<?>> E getReason(){
+        return (E)reason;
     }
-    
+
     public void start(TimeSeries.Element element, boolean hasMargin){
         start(element.getTime(), hasMargin ? element.getTradeStartValue() : element.getValue());
     }
-    
+
     public void start(Date time, double value){
         startTime = time;
         startValue = value;
         endTime = null;
         endValue = 0l;
     }
-    
+
     public void end(TimeSeries.Element element, boolean hasMargin) throws IllegalArgumentException{
         end(element.getTime(), hasMargin ? element.getTradeEndValue() : element.getValue());
     }
-    
+
     public void end(Date time, double value) throws IllegalArgumentException{
         if(startTime == null || time.before(startTime)){
             final SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS");
@@ -108,7 +108,7 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
         endTime = time;
         endValue = value;
     }
-    
+
     public void clear(){
         startTime = null;
         startValue = 0;
@@ -116,11 +116,11 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
         endValue = 0;
         reason = null;
     }
-    
+
     public boolean isHolding(){
         return isHolding(null);
     }
-    
+
     public boolean isHolding(Date current){
         if(startTime == null){
             return false;
@@ -136,11 +136,11 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
             }
         }
     }
-    
+
     public long getHoldingTermInMillis(){
         return getHoldingTermInMillis(null);
     }
-    
+
     public long getHoldingTermInMillis(Date current){
         if(startTime == null){
             return 0l;
@@ -155,11 +155,11 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
         }
         return endTime.getTime() - startTime.getTime();
     }
-    
+
     public double getHoldingTerm(long unitMillis){
         return getHoldingTerm(null, unitMillis);
     }
-    
+
     public double getHoldingTerm(Date current, long unitMillis){
         long termInMillis = getHoldingTermInMillis(current);
         if(termInMillis >= 0){
@@ -168,7 +168,7 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
             return termInMillis;
         }
     }
-    
+
     public double getProfit() throws IllegalStateException{
         if(startTime != null && endTime != null){
             return isShortSelling ? startValue - endValue : endValue - startValue;
@@ -179,7 +179,7 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
             throw new IllegalStateException("Trade is not over. startTime=" + startTimeStr + ", endTime=" + endTimeStr);
         }
     }
-    
+
     public double getProfit(double value) throws IllegalStateException{
         if(startTime != null){
             return isShortSelling ? startValue - value : value - startValue;
@@ -187,15 +187,15 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
             throw new IllegalStateException("Trade is not start.");
         }
     }
-    
+
     public double getProfitRate() throws IllegalStateException{
         return getProfit() / startValue;
     }
-    
+
     public double getProfitRate(double value) throws IllegalStateException{
         return getProfit(value) / startValue;
     }
-    
+
     public int compareTo(Trade trade){
         if(startTime == null){
             return trade.startTime == null ? 0 : -1;
@@ -212,7 +212,7 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
             return startTime.before(trade.startTime) ? -1 : 1;
         }
     }
-    
+
     public String toString(){
         final StringBuilder buf = new StringBuilder(super.toString());
         final SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS");
