@@ -41,6 +41,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Array;
+import java.lang.reflect.Type;
+import java.lang.reflect.ParameterizedType;
 
 import jp.ossc.nimbus.beans.Property;
 import jp.ossc.nimbus.beans.PropertyAccess;
@@ -457,12 +459,31 @@ public class BeanExchangeConverter implements BindingConverter{
             }else if(output instanceof Collection){
                 Object[] outputs = ((Collection)output).toArray();
                 if(outputs.length == 0){
-                    throw new ConvertException("Size of collection is 0.");
+                    Type type = output.getClass().getGenericSuperclass();
+                    if(type != null && type instanceof ParameterizedType){
+                        Type[] argTypes = ((ParameterizedType)type).getActualTypeArguments();
+                        if(argTypes != null && argTypes.length == 1 && argTypes[0] instanceof Class){
+                            outputs = (Object[])Array.newInstance((Class)argTypes[0], inputs.length);
+                            try{
+                                for(int i = 0; i < outputs.length; i++){
+                                    outputs[i] = ((Class)argTypes[0]).newInstance();
+                                    ((Collection)output).add(outputs[i]);
+                                }
+                            }catch(IllegalAccessException e){
+                                throw new ConvertException("Length of array is 0.", e);
+                            }catch(InstantiationException e){
+                                throw new ConvertException("Length of array is 0.", e);
+                            }
+                        }
+                    }
+                    if(outputs.length == 0){
+                        throw new ConvertException("Size of collection is 0.");
+                    }
                 }
                 for(int i = 0, imax = Math.min(inputs.length, outputs.length); i < imax; i++){
                     outputs[i] = convert(inputs[i], outputs[i], false);
                 }
-                return outputs;
+                return output;
             }else if(output.getClass().isArray()){
                 Object[] outputs = (Object[])output;
                 final Class componentType = output.getClass().getComponentType();
