@@ -42,6 +42,8 @@ import java.io.CharArrayWriter;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Type;
+import java.lang.reflect.ParameterizedType;
 import java.math.BigInteger;
 import java.math.BigDecimal;
 import java.util.Collection;
@@ -482,17 +484,35 @@ public class DefaultPersistentManagerService extends ServiceBase
                 return list;
             }else if(output instanceof List){
                 List list = (List)output;
+                Type type = output.getClass().getGenericSuperclass();
+                Class recordClass = null;
+                if(type != null && type instanceof ParameterizedType){
+                    Type[] argTypes = ((ParameterizedType)type).getActualTypeArguments();
+                    if(argTypes != null && argTypes.length == 1 && argTypes[0] instanceof Class){
+                        recordClass = (Class)argTypes[0];
+                    }
+                }
                 while(true){
                     if(!isCursor){
                         if(!resultSet.next()){
                             break;
                         }
                     }
-                    final Map record = new LinkedHashMap();
-                    for(int i = 1; i <= colCount; i++){
-                        record.put(
-                            metadata.getColumnName(i),
-                            resultSet.getObject(i)
+                    Object record = null;
+                    if(recordClass == null){
+                        record = new LinkedHashMap();
+                        for(int i = 1; i <= colCount; i++){
+                            ((Map)record).put(
+                                metadata.getColumnName(i),
+                                resultSet.getObject(i)
+                            );
+                        }
+                    }else{
+                        record = fillBeanOf(
+                            recordClass,
+                            resultSet,
+                            outputMapping,
+                            isOutputMappingFromMetaData
                         );
                     }
                     list.add(record);
@@ -607,85 +627,29 @@ public class DefaultPersistentManagerService extends ServiceBase
                     return getValue(outputClass, resultSet, 1);
                 }else{
                     if(isCursor){
-                        Object bean = null;
-                        try{
-                            bean = outputClass.newInstance();
-                        }catch(InstantiationException e){
-                            throw new PersistentException(
-                                "Output bean instantiate error.",
-                                e
-                            );
-                        }catch(IllegalAccessException e){
-                            throw new PersistentException(
-                                "Output bean instantiate error.",
-                                e
-                            );
-                        }
-                        final Iterator itr = outputMapping.entrySet().iterator();
-                        while(itr.hasNext()){
-                            final Map.Entry entry = (Map.Entry)itr.next();
-                            setValue(
-                                bean,
-                                (String)entry.getValue(),
-                                resultSet,
-                                (String)entry.getKey(),
-                                isOutputMappingFromMetaData
-                            );
-                        }
-                        return bean;
+                        return fillBeanOf(
+                            outputClass,
+                            resultSet,
+                            outputMapping,
+                            isOutputMappingFromMetaData
+                        );
                     }else{
                         final List list = new ArrayList();
                         while(resultSet.next()){
-                            Object bean = null;
-                            try{
-                                bean = outputClass.newInstance();
-                            }catch(InstantiationException e){
-                                if(isOutputMappingFromMetaData
-                                    && outputMapping.size() == 1
-                                    && list.size() == 0
-                                ){
-                                    return getValue(outputClass, resultSet, 1);
-                                }
-                                throw new PersistentException(
-                                    "Output bean instantiate error.",
-                                    e
-                                );
-                            }catch(IllegalAccessException e){
-                                if(isOutputMappingFromMetaData
-                                    && outputMapping.size() == 1
-                                    && list.size() == 0
-                                ){
-                                    return getValue(outputClass, resultSet, 1);
-                                }
-                                throw new PersistentException(
-                                    "Output bean instantiate error.",
-                                    e
-                                );
-                            }
-                            final Iterator itr = outputMapping.entrySet().iterator();
-                            while(itr.hasNext()){
-                                final Map.Entry entry = (Map.Entry)itr.next();
-                                try{
-                                    setValue(
-                                        bean,
-                                        (String)entry.getValue(),
-                                        resultSet,
-                                        (String)entry.getKey(),
-                                        isOutputMappingFromMetaData
-                                    );
-                                }catch(PersistentException e){
-                                    if(isOutputMappingFromMetaData
-                                        && outputMapping.size() == 1
-                                        && list.size() == 0
-                                    ){
-                                        return getValue(outputClass, resultSet, 1);
-                                    }
-                                    throw e;
-                                }
-                            }
-                            list.add(bean);
+                            list.add(
+                                fillBeanOf(
+                                    outputClass,
+                                    resultSet,
+                                    outputMapping,
+                                    isOutputMappingFromMetaData
+                                )
+                            );
                         }
-                        return list;
+                        if(list.size() == 1){
+                            return list.get(0);
+                        }else{
+                            return list;
+                        }
                     }
                 }
             }else{
@@ -734,6 +698,62 @@ public class DefaultPersistentManagerService extends ServiceBase
                 e
             );
         }
+    }
+    
+    private Object fillBeanOf(
+        Class outputClass,
+        ResultSet resultSet,
+        Map outputMapping,
+        boolean isOutputMappingFromMetaData
+    )throws PersistentException, SQLException{
+        Object bean = null;
+        try{
+            bean = outputClass.newInstance();
+        }catch(InstantiationException e){
+            if(isOutputMappingFromMetaData
+                && outputMapping.size() == 1
+            ){
+                bean = getValue(outputClass, resultSet, 1);
+            }else{
+                throw new PersistentException(
+                    "Output bean instantiate error.",
+                    e
+                );
+            }
+        }catch(IllegalAccessException e){
+            if(isOutputMappingFromMetaData
+                && outputMapping.size() == 1
+            ){
+                bean = getValue(outputClass, resultSet, 1);
+            }else{
+                throw new PersistentException(
+                    "Output bean instantiate error.",
+                    e
+                );
+            }
+        }
+        final Iterator itr = outputMapping.entrySet().iterator();
+        while(itr.hasNext()){
+            final Map.Entry entry = (Map.Entry)itr.next();
+            try{
+                setValue(
+                    bean,
+                    (String)entry.getValue(),
+                    resultSet,
+                    (String)entry.getKey(),
+                    isOutputMappingFromMetaData
+                );
+            }catch(PersistentException e){
+                if(isOutputMappingFromMetaData
+                    && outputMapping.size() == 1
+                ){
+                    bean = getValue(outputClass, resultSet, 1);
+                }else{
+                    throw e;
+                }
+            }
+        }
+        return bean;
     }
     
     private Object listToArray(List list, Class componentType){
