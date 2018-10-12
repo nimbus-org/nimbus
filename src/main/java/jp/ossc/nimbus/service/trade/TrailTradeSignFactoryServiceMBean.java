@@ -34,6 +34,7 @@ package jp.ossc.nimbus.service.trade;
 import java.util.Map;
 
 import jp.ossc.nimbus.core.*;
+import jp.ossc.nimbus.service.ga.FloatGene;
 
 /**
  * {@link TrailTradeSignFactoryService}のMBeanインタフェース<p>
@@ -42,6 +43,21 @@ import jp.ossc.nimbus.core.*;
  * @see TrailTradeSignFactoryService
  */
 public interface TrailTradeSignFactoryServiceMBean extends ServiceBaseMBean{
+    
+    /**
+     * 遺伝子の交叉種別を設定する。<p>
+     * デフォルトは、{@link jp.ossc.nimbus.service.ga.ComplexGene#CROSSOVER_ALL_POINT 全交叉}。<br>
+     *
+     * @param type 交叉種別
+     */
+    public void setGeneCrossoverType(int type);
+    
+    /**
+     * 遺伝子の交叉種別を取得する。<p>
+     *
+     * @return 交叉種別
+     */
+    public int getGeneCrossoverType();
     
     /**
      * 空売りの売買サイン判定を行うかどうかを設定する。<p>
@@ -73,6 +89,20 @@ public interface TrailTradeSignFactoryServiceMBean extends ServiceBaseMBean{
      */
     public float getTrailWidth();
     
+    /**
+     * トレール幅遺伝子を設定する。<p>
+     *
+     * @param gene トレール幅遺伝子
+     * @see #setTrailWidth(float)
+     */
+    public void setTrailWidthGene(FloatGene gene);
+    
+    /**
+     * トレール幅遺伝子を取得する。<p>
+     *
+     * @return トレール幅遺伝子
+     */
+    public FloatGene getTrailWidthGene();
     
     /**
      * 取引開始サインを探索するために行う逆トレールのトレール幅を設定する。<p>
@@ -91,6 +121,21 @@ public interface TrailTradeSignFactoryServiceMBean extends ServiceBaseMBean{
     public float getReverseTrailWidth();
     
     /**
+     * 逆トレールのトレール幅遺伝子を設定する。<p>
+     *
+     * @param gene トレール幅遺伝子
+     * @see #setReverseTrailWidth(float)
+     */
+    public void setReverseTrailWidthGene(FloatGene gene);
+    
+    /**
+     * 逆トレールのトレール幅遺伝子を取得する。<p>
+     *
+     * @return トレール幅遺伝子
+     */
+    public FloatGene getReverseTrailWidthGene();
+    
+    /**
      * トレールを開始する閾値を設定する。<p>
      * この閾値は、取引開始値に対する比率（つまりは利益率）で指定する。<br>
      * デフォルトは、閾値なしで、取引開始と共にトレールを開始する。<br>
@@ -105,6 +150,21 @@ public interface TrailTradeSignFactoryServiceMBean extends ServiceBaseMBean{
      * @return トレールを開始する閾値
      */
     public float getTrailStartThreshold();
+    
+    /**
+     * トレールを開始する閾値の遺伝子を設定する。<p>
+     *
+     * @param gene トレールを開始する閾値の遺伝子
+     * @see #setTrailStartThreshold(float)
+     */
+    public void setTrailStartThresholdGene(FloatGene gene);
+    
+    /**
+     * トレールを開始する閾値の遺伝子を取得する。<p>
+     *
+     * @return トレールを開始する閾値の遺伝子
+     */
+    public FloatGene getTrailStartThresholdGene();
     
     /**
      * 取引開始のサインが発生して取引を開始するまでの間を設定する。<p>
@@ -138,6 +198,21 @@ public interface TrailTradeSignFactoryServiceMBean extends ServiceBaseMBean{
     public float getLossCutRate();
     
     /**
+     * ロスカット率遺伝子を設定する。<p>
+     *
+     * @param gene ロスカット率遺伝子
+     * @see #setLossCutRate(float)
+     */
+    public void setLossCutRateGene(FloatGene gene);
+    
+    /**
+     * ロスカット率遺伝子を取得する。<p>
+     *
+     * @return ロスカット率遺伝子
+     */
+    public FloatGene getLossCutRateGene();
+    
+    /**
      * 取引開始サインを探索するために行う逆トレールのロスカット率を設定する。<p>
      * ロスカット率は、取引開始値に対する比率（つまりは損失率の絶対値）で指定する。<br>
      * 指定しない場合は、正トレールのロスカット率と同じ。<br>
@@ -152,4 +227,19 @@ public interface TrailTradeSignFactoryServiceMBean extends ServiceBaseMBean{
      * @param rate ロスカット率
      */
     public float getReverseLossCutRate();
+    
+    /**
+     * 逆トレールのロスカット率遺伝子を設定する。<p>
+     *
+     * @param gene ロスカット率遺伝子
+     * @see #setReverseLossCutRate(float)
+     */
+    public void setReverseLossCutRateGene(FloatGene gene);
+    
+    /**
+     * 逆トレールのロスカット率遺伝子を取得する。<p>
+     *
+     * @return ロスカット率遺伝子
+     */
+    public FloatGene getReverseLossCutRateGene();
 }

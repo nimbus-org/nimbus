@@ -31,6 +31,8 @@
  */
 package jp.ossc.nimbus.service.trade;
 
+import jp.ossc.nimbus.service.ga.Gene;
+
 /**
  * 売買サイン。<p>
  * 設定した{@link TradeTarget 取引対象}の取引の開始及び終了サインを判定する。<br>
@@ -38,6 +40,13 @@ package jp.ossc.nimbus.service.trade;
  * @author M.Takata
  */
 public interface TradeSign{
+    
+    /**
+     * 遺伝子を取得する。<p>
+     *
+     * @return 遺伝子
+     */
+    public Gene getGene();
     
     /**
      * 取引対象を設定する。<p>
@@ -57,9 +66,10 @@ public interface TradeSign{
      * 設定された{@link TradeTarget 取引対象}が持つ{@link TimeSeries 時系列データ}の指定されたインデックスの{@link TimeSeries.Element 時系列要素}において、サインが発生するか判定する。<p>
      *
      * @param index 設定された{@link TradeTarget 取引対象}が持つ{@link TimeSeries 時系列データ}の{@link TimeSeries.Element 時系列要素}を指すインデックス
+     * @param trade 開始されている取引
      * @return サイン
      */
-    public Sign getSign(int index);
+    public Sign getSign(int index, Trade trade);
     
     /**
      * サイン。<p>

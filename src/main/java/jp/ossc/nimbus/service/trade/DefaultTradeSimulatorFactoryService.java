@@ -135,7 +135,7 @@ public class DefaultTradeSimulatorFactoryService extends FactoryServiceBase impl
             TimeSeries<TimeSeries.Element> ts = tradeTarget.getTimeSeries();
             for(int i = 0; i < ts.size(); i++){
                 TimeSeries.Element element = ts.get(i);
-                TradeSign.Sign sign = tradeSign.getSign(i);
+                TradeSign.Sign sign = tradeSign.getSign(i, trade);
                 if(trade == null){
                     boolean isStart = false;
                     if(isShortSelling){
