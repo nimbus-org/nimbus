@@ -33,11 +33,25 @@ package jp.ossc.nimbus.service.trade;
 
 import java.util.List;
 
+/**
+ * 一本値時系列データ。<p>
+ * {@link TimeSeries.Element 時系列要素}のリスト。<br>
+ *
+ * @author M.Takata
+ */
 public class SingleTimeSeries extends TimeSeries<TimeSeries.Element>{
     
+    /**
+     * 空のインスタンスを生成する。<p>
+     */
     public SingleTimeSeries(){
     }
     
+    /**
+     * 指定された時系列要素のリストを保持するインスタンスを生成する。<p>
+     *
+     * @param list 時系列要素のリスト
+     */
     public SingleTimeSeries(List<TimeSeries.Element> list){
         addAll(list);
     }

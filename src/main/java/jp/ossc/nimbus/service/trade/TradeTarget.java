@@ -31,30 +31,64 @@
  */
 package jp.ossc.nimbus.service.trade;
 
+/**
+ * 取引対象。<p>
+ * 取引対象の情報を格納する。<br>
+ *
+ * @author M.Takata
+ */
 public class TradeTarget implements java.io.Serializable{
-
+    
     protected TimeSeries<?> timeSeries;
     protected double tradeUnit = 1.0d;
-
+    
+    /**
+     * 空のインスタンスを生成する。<p>
+     */
     public TradeTarget(){
     }
-
+    
+    /**
+     * 指定された時系列データを持つインスタンスを生成する。<p>
+     *
+     * @param timeSeries 時系列データ
+     */
     public TradeTarget(TimeSeries<?> timeSeries){
         this.timeSeries = timeSeries;
     }
-
+    
+    /**
+     * 時系列データを取得する。<p>
+     *
+     * @return 時系列データ
+     */
     public <E extends TimeSeries.Element> TimeSeries<E> getTimeSeries(){
         return (TimeSeries<E>)timeSeries;
     }
-
+    
+    /**
+     * 時系列データを設定する。<p>
+     *
+     * @param series 時系列データ
+     */
     public void setTimeSeries(TimeSeries<?> series){
         timeSeries = series;
     }
-
+    
+    /**
+     * 売買単位を設定する。<p>
+     *
+     * @param unit 売買単位
+     */
     public void setTradeUnit(double unit){
         tradeUnit = unit;
     }
-
+    
+    /**
+     * 売買単位を取得する。<p>
+     *
+     * @return 売買単位
+     */
     public double getTradeUnit(){
         return tradeUnit;
     }

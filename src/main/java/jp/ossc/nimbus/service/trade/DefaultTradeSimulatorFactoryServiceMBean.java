@@ -31,63 +31,59 @@
  */
 package jp.ossc.nimbus.service.trade;
 
-import java.util.Date;
-import java.util.List;
+import java.util.Map;
+
+import jp.ossc.nimbus.core.*;
 
 /**
- * 取引シミュレータ。<p>
- * 設定した{@link TradeTarget 取引対象}の持つ{@link TimeSeries 時系列データ}に対する取引をシミュレートする。<br>
- *
+ * {@link DefaultTradeSimulatorFactoryService}のMBeanインタフェース<p>
+ * 
  * @author M.Takata
+ * @see DefaultTradeSimulatorFactoryService
  */
-public interface TradeSimulator{
+public interface DefaultTradeSimulatorFactoryServiceMBean extends ServiceBaseMBean{
     
     /**
-     * 取引対象を設定する。<p>
+     * 空売りの売買サイン判定を行うかどうかを設定する。<p>
      * 
-     * @param target 取引対象
+     * @param isShort 空売りの場合、true
      */
-    public void setTarget(TradeTarget target);
+    public void setShortSelling(boolean isShort);
     
     /**
-     * 取引対象を取得する。<p>
+     * 空売りの売買サイン判定を行うかどうかを判定する。<p>
      * 
-     * @return 取引対象
+     * @return trueの場合、空売り
      */
-    public TradeTarget getTarget();
+    public boolean isShortSelling();
     
     /**
-     * 売買サインを設定する。<p>
-     * 
-     * @param sign 売買サイン
-     */
-    public void setSign(TradeSign sign);
-    
-    /**
-     * 売買サインを取得する。<p>
-     * 
-     * @return 売買サイン
-     */
-    public TradeSign getSign();
-    
-    /**
-     * 設定された取引対象に対して、取引をシミュレートする。<p>
+     * 取引開始のサインが発生して取引を開始するまでの間を設定する。<p>
+     * デフォルトは、0で、サイン発生時に取引を開始する。<br>
      *
-     * @exception Exception シミュレートに失敗した場合
+     * @param margin 取引を開始するまでの間となる時系列要素の本数
      */
-    public void simulate() throws Exception;
+    public void setTradeStartMargin(int margin);
     
     /**
-     * シミュレートした結果、発生した取引のリストを取得する。<p>
+     * 取引開始のサインが発生して取引を開始するまでの間を取得する。<p>
      *
-     * @return 取引のリスト
+     * @return 取引を開始するまでの間となる時系列要素の本数
      */
-    public List<Trade> getTradeList();
+    public int getTradeStartMargin();
     
     /**
-     * 指定された日に存在する取引を取得する。<p>
+     * 取引終了のサインが発生して取引を終了するまでの間を設定する。<p>
+     * デフォルトは、0で、サイン発生時に取引を終了する。<br>
      *
-     * @return 取引
+     * @param margin 取引を終了するまでの間となる時系列要素の本数
      */
-    public Trade getTrade(Date time);
+    public void setTradeEndMargin(int margin);
+    
+    /**
+     * 取引終了のサインが発生して取引を終了するまでの間を取得する。<p>
+     *
+     * @return 取引を終了するまでの間となる時系列要素の本数
+     */
+    public int getTradeEndMargin();
 }

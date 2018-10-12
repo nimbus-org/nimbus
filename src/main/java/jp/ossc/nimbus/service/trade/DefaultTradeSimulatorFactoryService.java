@@ -38,7 +38,13 @@ import java.util.Collections;
 
 import jp.ossc.nimbus.core.FactoryServiceBase;
 
-public class DefaultTradeSimulatorFactoryService extends FactoryServiceBase{
+/**
+ * 取引シミュレータのデフォルト実装を提供するファクトリサービス。<p>
+ * 取引をシミューレトする{@link TradeSimulator}実装クラスを生成するファクトリ。<br>
+ *
+ * @author M.Takata
+ */
+public class DefaultTradeSimulatorFactoryService extends FactoryServiceBase implements DefaultTradeSimulatorFactoryServiceMBean{
     
     protected boolean isShortSelling;
     protected int tradeStartMargin;

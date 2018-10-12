@@ -35,42 +35,40 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 四本値時系列データ。<p>
- * {@link OHLCTimeSeries.OHLCElement 四本値時系列要素}のリスト。<br>
+ * 出来高付き四本値時系列データ。<p>
+ * {@link OHLCVTimeSeries.OHLCVElement 出来高付き四本値時系列要素}のリスト。<br>
  *
  * @author M.Takata
  */
-public class OHLCTimeSeries extends TimeSeries<OHLCTimeSeries.OHLCElement>{
+public class OHLCVTimeSeries extends TimeSeries<OHLCVTimeSeries.OHLCVElement>{
     
     /**
      * 空のインスタンスを生成する。<p>
      */
-    public OHLCTimeSeries(){
+    public OHLCVTimeSeries(){
     }
     
     /**
-     * 指定された四本値時系列要素のリストを保持するインスタンスを生成する。<p>
+     * 指定された出来高付き四本値時系列要素のリストを保持するインスタンスを生成する。<p>
      *
-     * @param list 四本値時系列要素のリスト
+     * @param list 出来高付き四本値時系列要素のリスト
      */
-    public OHLCTimeSeries(List<OHLCTimeSeries.OHLCElement> list){
+    public OHLCVTimeSeries(List<OHLCVTimeSeries.OHLCVElement> list){
         addAll(list);
     }
     
     /**
-     * 四本値時系列要素。<p>
+     * 出来高付き四本値時系列要素。<p>
      *
      * @author M.Takata
      */
-    public static class OHLCElement extends TimeSeries.Element{
-        protected double openValue;
-        protected double highValue;
-        protected double lowValue;
+    public static class OHLCVElement extends OHLCTimeSeries.OHLCElement{
+        protected double volume;
         
         /**
          * 空のインスタンスを生成する。<p>
          */
-        public OHLCElement(){
+        public OHLCVElement(){
         }
         
         /**
@@ -81,107 +79,42 @@ public class OHLCTimeSeries extends TimeSeries<OHLCTimeSeries.OHLCElement>{
          * @param high 高値
          * @param low 安値
          * @param close 終値
+         * @param volume 出来高
          */
-        public OHLCElement(
+        public OHLCVElement(
             Date time,
             double open,
             double high,
             double low,
-            double close
+            double close,
+            double volume
         ){
-            super(time, close);
-            openValue = open;
-            highValue = high;
-            lowValue = low;
-        }
-        
-        public double getTradeStartValue(){
-            return getOpenValue();
-        }
-        
-        public double getTradeEndValue(){
-            return getOpenValue();
+            super(time, open, high, low, close);
+            this.volume = volume;
         }
         
         /**
-         * 始値を取得する。<p>
+         * 出来高を取得する。<p>
          *
-         * @return 始値
+         * @return 出来高
          */
-        public double getOpenValue(){
-            return openValue;
+        public double getVolume(){
+            return volume;
         }
         
         /**
-         * 始値を設定する。<p>
+         * 出来高を設定する。<p>
          *
-         * @param value 始値
+         * @param value 出来高
          */
-        public void setOpenValue(double value){
-            openValue = value;
-        }
-        
-        /**
-         * 高値を取得する。<p>
-         *
-         * @return 高値
-         */
-        public double getHighValue(){
-            return highValue;
-        }
-        
-        /**
-         * 高値を設定する。<p>
-         *
-         * @param value 高値
-         */
-        public void setHighValue(double value){
-            highValue = value;
-        }
-        
-        /**
-         * 安値を取得する。<p>
-         *
-         * @return 安値
-         */
-        public double getLowValue(){
-            return lowValue;
-        }
-        
-        /**
-         * 安値を設定する。<p>
-         *
-         * @param value 安値
-         */
-        public void setLowValue(double value){
-            lowValue = value;
-        }
-        
-        /**
-         * 終値を取得する。<p>
-         *
-         * @return 終値
-         */
-        public double getCloseValue(){
-            return getValue();
-        }
-        
-        /**
-         * 終値を設定する。<p>
-         *
-         * @param value 終値
-         */
-        public void setCloseValue(double value){
-            setValue(value);
+        public void setVolume(double value){
+            volume = value;
         }
         
         public String toString(){
             final StringBuilder buf = new StringBuilder(super.toString());
             buf.setLength(buf.indexOf(","));
-            buf.append(", open=" + openValue);
-            buf.append(", high=" + highValue);
-            buf.append(", low=" + lowValue);
-            buf.append(", close=" + value);
+            buf.append(", volume=" + volume);
             buf.append('}');
             return buf.toString();
         }

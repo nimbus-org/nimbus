@@ -33,7 +33,13 @@ package jp.ossc.nimbus.service.trade;
 
 import jp.ossc.nimbus.core.FactoryServiceBase;
 
-public class TrailTradeSignFactoryService extends FactoryServiceBase{
+/**
+ * トレール売買サインファクトリサービス。<p>
+ * トレール取引で、売買サインを判定する{@link TradeSign}実装クラスを生成するファクトリ。<br>
+ *
+ * @author M.Takata
+ */
+public class TrailTradeSignFactoryService extends FactoryServiceBase implements TrailTradeSignFactoryServiceMBean{
     
     protected boolean isShortSelling;
     protected float trailWidth = 0.05f;

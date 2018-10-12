@@ -31,45 +31,108 @@
  */
 package jp.ossc.nimbus.service.trade;
 
+/**
+ * 売買サイン。<p>
+ * 設定した{@link TradeTarget 取引対象}の取引の開始及び終了サインを判定する。<br>
+ *
+ * @author M.Takata
+ */
 public interface TradeSign{
-
+    
+    /**
+     * 取引対象を設定する。<p>
+     *
+     * @param target 取引対象
+     */
     public void setTarget(TradeTarget target);
-
+    
+    /**
+     * 設定された{@link TradeTarget 取引対象}の売買サインを計算する。<p>
+     *
+     * @exception Exception 売買サインの計算に失敗した場合
+     */
     public void calculate() throws Exception;
-
+    
+    /**
+     * 設定された{@link TradeTarget 取引対象}が持つ{@link TimeSeries 時系列データ}の指定されたインデックスの{@link TimeSeries.Element 時系列要素}において、サインが発生するか判定する。<p>
+     *
+     * @param index 設定された{@link TradeTarget 取引対象}が持つ{@link TimeSeries 時系列データ}の{@link TimeSeries.Element 時系列要素}を指すインデックス
+     * @return サイン
+     */
     public Sign getSign(int index);
-
+    
+    /**
+     * サイン。<p>
+     *
+     * @author M.Takata
+     */
     public static class Sign implements java.io.Serializable{
-
+        
         protected Enum<?> reason;
         protected Type type;
-
+        
+        /**
+         * 空のインスタンスを生成する。<p>
+         */
         public Sign(){
         }
-
+        
+        /**
+         * 指定されたサイン種別を持つインスタンスを生成する。<p>
+         *
+         * @param type サイン種別
+         */
         public Sign(Type type){
             this.type = type;
         }
-
+        
+        /**
+         * サイン種別を取得する。<p>
+         *
+         * @return サイン種別
+         */
         public Type getType(){
             return type;
         }
-
+        
+        /**
+         * サイン種別を設定する。<p>
+         *
+         * @param type サイン種別
+         */
         public void setType(Type type){
             this.type = type;
         }
-
+        
+        /**
+         * サイン理由を取得する。<p>
+         *
+         * @return サイン理由
+         */
         public <E extends Enum<?>> E getReason(){
             return (E)reason;
         }
-
+        
+        /**
+         * サイン理由を設定する。<p>
+         *
+         * @param reason サイン理由
+         */
         public void setReason(Enum<?> reason){
             this.reason = reason;
         }
-
+        
+        /**
+         * サイン種別。<p>
+         *
+         * @author M.Takata
+         */
         public enum Type{
+            /** 売サイン */
             SELL,
+            /** 買サイン */
             BUY,
+            /** サインなし */
             NA
         }
     }
