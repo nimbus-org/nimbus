@@ -42,7 +42,7 @@ import jp.ossc.nimbus.service.ga.FloatGene;
  * @author M.Takata
  * @see TrailTradeSignFactoryService
  */
-public interface TrailTradeSignFactoryServiceMBean extends ServiceBaseMBean{
+public interface TrailTradeSignFactoryServiceMBean extends FactoryServiceBaseMBean{
     
     /**
      * 遺伝子の交叉種別を設定する。<p>
@@ -61,6 +61,7 @@ public interface TrailTradeSignFactoryServiceMBean extends ServiceBaseMBean{
     
     /**
      * 空売りの売買サイン判定を行うかどうかを設定する。<p>
+     * デフォルトは、false。<br>
      * 
      * @param isShort 空売りの場合、true
      */
@@ -72,6 +73,36 @@ public interface TrailTradeSignFactoryServiceMBean extends ServiceBaseMBean{
      * @return trueの場合、空売り
      */
     public boolean isShortSelling();
+    
+    /**
+     * 反対売買のみを行うかどうかを設定する。<p>
+     * デフォルトは、false。<br>
+     * 
+     * @param flg 反対売買のみを行う場合、true
+     */
+    public void setOnlyReverseTrade(boolean flg);
+    
+    /**
+     * 反対売買のみを行うかどうかを判定する。<p>
+     * 
+     * @return trueの場合、反対売買のみを行う
+     */
+    public boolean isOnlyReverseTrade();
+    
+    /**
+     * 取引開始のサインが発生して取引を開始するまでの間を設定する。<p>
+     * デフォルトは、0で、サイン発生時に取引を開始する。<br>
+     *
+     * @param margin 取引を開始するまでの間となる時系列要素の本数
+     */
+    public void setTradeStartMargin(int margin);
+    
+    /**
+     * 取引開始のサインが発生して取引を開始するまでの間を取得する。<p>
+     *
+     * @return 取引を開始するまでの間となる時系列要素の本数
+     */
+    public int getTradeStartMargin();
     
     /**
      * トレール幅を設定する。<p>
@@ -165,21 +196,6 @@ public interface TrailTradeSignFactoryServiceMBean extends ServiceBaseMBean{
      * @return トレールを開始する閾値の遺伝子
      */
     public FloatGene getTrailStartThresholdGene();
-    
-    /**
-     * 取引開始のサインが発生して取引を開始するまでの間を設定する。<p>
-     * デフォルトは、0で、サイン発生時に取引を開始する。<br>
-     *
-     * @param margin 取引を開始するまでの間となる時系列要素の本数
-     */
-    public void setTradeStartMargin(int margin);
-    
-    /**
-     * 取引開始のサインが発生して取引を開始するまでの間を取得する。<p>
-     *
-     * @return 取引を開始するまでの間となる時系列要素の本数
-     */
-    public int getTradeStartMargin();
     
     /**
      * ロスカット率を設定する。<p>

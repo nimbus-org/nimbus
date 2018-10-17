@@ -58,6 +58,7 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
     protected FloatGene lossCutRateGene;
     protected float reverseLossCutRate = Float.NaN;
     protected FloatGene reverseLossCutRateGene;
+    protected boolean isOnlyReverseTrade;
     
     public void setGeneCrossoverType(int type){
         geneCrossoverType = type;
@@ -72,6 +73,20 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
     }
     public boolean isShortSelling(){
         return isShortSelling;
+    }
+    
+    public void setOnlyReverseTrade(boolean flg){
+        isOnlyReverseTrade = flg;
+    }
+    public boolean isOnlyReverseTrade(){
+        return isOnlyReverseTrade;
+    }
+    
+    public void setTradeStartMargin(int margin){
+        tradeStartMargin = margin;
+    }
+    public int getTradeStartMargin(){
+        return tradeStartMargin;
     }
     
     public void setTrailWidth(float rate){
@@ -125,13 +140,6 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
         return trailStartThresholdGene;
     }
     
-    public void setTradeStartMargin(int margin){
-        tradeStartMargin = margin;
-    }
-    public int getTradeStartMargin(){
-        return tradeStartMargin;
-    }
-    
     public void setLossCutRate(float rate){
         lossCutRate = rate;
     }
@@ -170,8 +178,10 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
         TrailTradeSign ts = new TrailTradeSign();
         
         ts.setGeneCrossoverType(geneCrossoverType);
-        
         ts.setShortSelling(isShortSelling);
+        ts.setOnlyReverseTrade(isOnlyReverseTrade);
+        ts.setTradeStartMargin(tradeStartMargin);
+        
         ts.setTrailWidth(trailWidth);
         if(trailWidthGene != null){
             ts.getComplexGene().addGene(trailWidthGene.cloneGene());
@@ -184,7 +194,6 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
         if(trailStartThresholdGene != null){
             ts.getComplexGene().addGene(trailStartThresholdGene.cloneGene());
         }
-        ts.setTradeStartMargin(tradeStartMargin);
         ts.setLossCutRate(lossCutRate);
         if(lossCutRateGene != null){
             ts.getComplexGene().addGene(lossCutRateGene.cloneGene());
@@ -200,6 +209,7 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
         
         protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
         protected boolean isShortSelling;
+        protected boolean isOnlyReverseTrade;
         protected float trailWidth;
         protected float reverseTrailWidth;
         protected float trailStartThreshold;
@@ -210,6 +220,8 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
         protected TradeTarget tradeTarget;
         protected Sign[] signs;
         protected ComplexGene complexGene;
+        protected double highValue = Double.NaN;
+        protected double trailValue = Double.NaN;
         
         public void setGeneCrossoverType(int crossoverType){
             geneCrossoverType = crossoverType;
@@ -232,6 +244,13 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
         }
         public boolean isShortSelling(){
             return isShortSelling;
+        }
+        
+        public void setOnlyReverseTrade(boolean flg){
+            isOnlyReverseTrade = flg;
+        }
+        public boolean isOnlyReverseTrade(){
+            return isOnlyReverseTrade;
         }
         
         public void setTrailWidth(float rate){
@@ -311,6 +330,9 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
         }
         
         public void calculate() throws Exception{
+            if(isOnlyReverseTrade){
+                return;
+            }
             TimeSeries<TimeSeries.Element> ts = tradeTarget.getTimeSeries();
             signs = new Sign[ts.size()];
             if(ts.size() < 3){
@@ -418,7 +440,81 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
         }
         
         public Sign getSign(int index, Trade trade){
-            return signs[index];
+            if(isOnlyReverseTrade){
+                Sign sign = null;
+                if(trade == null){
+                    sign = new Sign(Sign.Type.NA);
+                }else{
+                    TimeSeries<TimeSeries.Element> ts = tradeTarget.getTimeSeries();
+                    double value = ts.get(index).getValue();
+                    if(isShortSelling){
+                        final double tradeStartValue = trade.getStartValue();
+                        final double profit = tradeStartValue - value;
+                        final double profitRate = profit / tradeStartValue;
+                        final float trailWidth = getTrailWidth();
+                        if(Double.isNaN(highValue)){
+                            if(profitRate >= getTrailStartThreshold()){
+                                highValue = value;
+                                trailValue = highValue + (profit * trailWidth);
+                            }
+                        }else if(value < highValue){
+                            highValue = value;
+                            trailValue = highValue + (profit * trailWidth);
+                        }
+                        final float lossCutRate = getLossCutRate();
+                        final boolean isLossCut = !Float.isNaN(lossCutRate)
+                            && profitRate < -lossCutRate;
+                        final boolean isTrailEnd = !Double.isNaN(trailValue)
+                                &&  value >= trailValue;
+                        if(isLossCut || isTrailEnd){
+                            sign.setType(Sign.Type.BUY);
+                            if(isLossCut){
+                                sign.setReason(Reason.LOSS_CUT);
+                            }else if(isTrailEnd){
+                                sign.setReason(Reason.TRAIL_END);
+                            }
+                            highValue = Double.NaN;
+                            trailValue = Double.NaN;
+                        }else{
+                            sign = new Sign(Sign.Type.NA);
+                        }
+                    }else{
+                        final double tradeStartValue = trade.getStartValue();
+                        final double profit = value - tradeStartValue;
+                        final double profitRate = profit / tradeStartValue;
+                        final float trailWidth = getTrailWidth();
+                        if(Double.isNaN(highValue)){
+                            if(profitRate >= getTrailStartThreshold()){
+                                highValue = value;
+                                trailValue = highValue - (profit * trailWidth);
+                            }
+                        }else if(value > highValue){
+                            highValue = value;
+                            trailValue = highValue - (profit * trailWidth);
+                        }
+                        final float lossCutRate = getLossCutRate();
+                        final boolean isLossCut = !Float.isNaN(lossCutRate)
+                            && profitRate < -lossCutRate;
+                        final boolean isTrailEnd = !Double.isNaN(trailValue)
+                                &&  value <= trailValue;
+                        if(isLossCut || isTrailEnd){
+                            sign.setType(Sign.Type.SELL);
+                            if(isLossCut){
+                                sign.setReason(Reason.LOSS_CUT);
+                            }else if(isTrailEnd){
+                                sign.setReason(Reason.TRAIL_END);
+                            }
+                            highValue = Double.NaN;
+                            trailValue = Double.NaN;
+                        }else{
+                            sign = new Sign(Sign.Type.NA);
+                        }
+                    }
+                }
+                return sign;
+            }else{
+                return signs[index];
+            }
         }
         
         public enum Reason{

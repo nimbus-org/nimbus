@@ -36,12 +36,27 @@ import java.util.Map;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link DefaultTradeSimulatorFactoryService}のMBeanインタフェース<p>
+ * {@link PairTradeSignFactoryService}のMBeanインタフェース<p>
  * 
  * @author M.Takata
- * @see DefaultTradeSimulatorFactoryService
+ * @see PairTradeSignFactoryService
  */
-public interface DefaultTradeSimulatorFactoryServiceMBean extends FactoryServiceBaseMBean{
+public interface PairTradeSignFactoryServiceMBean extends FactoryServiceBaseMBean{
+    
+    /**
+     * 遺伝子の交叉種別を設定する。<p>
+     * デフォルトは、{@link jp.ossc.nimbus.service.ga.ComplexGene#CROSSOVER_ALL_POINT 全交叉}。<br>
+     *
+     * @param type 交叉種別
+     */
+    public void setGeneCrossoverType(int type);
+    
+    /**
+     * 遺伝子の交叉種別を取得する。<p>
+     *
+     * @return 交叉種別
+     */
+    public int getGeneCrossoverType();
     
     /**
      * 空売りの売買サイン判定を行うかどうかを設定する。<p>
@@ -58,32 +73,30 @@ public interface DefaultTradeSimulatorFactoryServiceMBean extends FactoryService
     public boolean isShortSelling();
     
     /**
-     * 取引開始のサインが発生して取引を開始するまでの間を設定する。<p>
-     * デフォルトは、0で、サイン発生時に取引を開始する。<br>
+     * 買いサインを判断するために使用する{@link TradeSign 売買サイン}サービスのサービス名を設定する。<p>
      *
-     * @param margin 取引を開始するまでの間となる時系列要素の本数
+     * @param name 買いサインを判断するために使用する売買サインサービスのサービス名
      */
-    public void setTradeStartMargin(int margin);
+    public void setBuyTradeSignServiceName(ServiceName name);
     
     /**
-     * 取引開始のサインが発生して取引を開始するまでの間を取得する。<p>
+     * 買いサインを判断するために使用する{@link TradeSign 売買サイン}サービスのサービス名を取得する。<p>
      *
-     * @return 取引を開始するまでの間となる時系列要素の本数
+     * @return 買いサインを判断するために使用する売買サインサービスのサービス名
      */
-    public int getTradeStartMargin();
+    public ServiceName getBuyTradeSignServiceName();
     
     /**
-     * 取引終了のサインが発生して取引を終了するまでの間を設定する。<p>
-     * デフォルトは、0で、サイン発生時に取引を終了する。<br>
+     * 売りサインを判断するために使用する{@link TradeSign 売買サイン}サービスのサービス名を設定する。<p>
      *
-     * @param margin 取引を終了するまでの間となる時系列要素の本数
+     * @param name 売りサインを判断するために使用する売買サインサービスのサービス名
      */
-    public void setTradeEndMargin(int margin);
+    public void setSellTradeSignServiceName(ServiceName name);
     
     /**
-     * 取引終了のサインが発生して取引を終了するまでの間を取得する。<p>
+     * 売りサインを判断するために使用する{@link TradeSign 売買サイン}サービスのサービス名を取得する。<p>
      *
-     * @return 取引を終了するまでの間となる時系列要素の本数
+     * @return 売りサインを判断するために使用する売買サインサービスのサービス名
      */
-    public int getTradeEndMargin();
+    public ServiceName getSellTradeSignServiceName();
 }

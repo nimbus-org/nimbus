@@ -75,6 +75,17 @@ public abstract class TimeSeries<E extends TimeSeries.Element> extends ArrayList
     }
     
     /**
+     * 指定された日付の時系列要素のインデックスを取得する。<p>
+     *
+     * @param time 日付
+     * @return 時系列要素のインデックス。存在しない場合、-1
+     */
+    public int indexOf(Date time){
+        final int index = Collections.binarySearch(this, new Element(time, 0d));
+        return index < 0 ? -1 : index;
+    }
+    
+    /**
      * 指定された期間にフィルタリングした時系列データを取得する。<p>
      *
      * @param from 開始日付
