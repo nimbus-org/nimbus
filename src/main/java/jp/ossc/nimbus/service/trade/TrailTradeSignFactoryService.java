@@ -35,6 +35,7 @@ import jp.ossc.nimbus.core.FactoryServiceBase;
 import jp.ossc.nimbus.service.ga.Gene;
 import jp.ossc.nimbus.service.ga.ComplexGene;
 import jp.ossc.nimbus.service.ga.FloatGene;
+import jp.ossc.nimbus.service.ga.IntegerGene;
 
 
 /**
@@ -59,6 +60,8 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
     protected float reverseLossCutRate = Float.NaN;
     protected FloatGene reverseLossCutRateGene;
     protected boolean isOnlyReverseTrade;
+    protected int maxHoldingTerm;
+    protected IntegerGene maxHoldingTermGene;
     
     public void setGeneCrossoverType(int type){
         geneCrossoverType = type;
@@ -174,6 +177,23 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
         return reverseLossCutRateGene;
     }
     
+    public void setMaxHoldingTerm(int term){
+        maxHoldingTerm = term;
+    }
+    public int getMaxHoldingTerm(){
+        return maxHoldingTerm;
+    }
+    
+    public void setMaxHoldingTermGene(IntegerGene gene){
+        maxHoldingTermGene = gene;
+        if(maxHoldingTermGene != null){
+            maxHoldingTermGene.setName("maxHoldingTerm");
+        }
+    }
+    public IntegerGene getMaxHoldingTermGene(){
+        return maxHoldingTermGene;
+    }
+    
     protected Object createInstance() throws Exception{
         TrailTradeSign ts = new TrailTradeSign();
         
@@ -202,6 +222,11 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
         if(reverseLossCutRateGene != null){
             ts.getComplexGene().addGene(reverseLossCutRateGene.cloneGene());
         }
+        ts.setMaxHoldingTerm(maxHoldingTerm);
+        if(maxHoldingTermGene != null){
+            ts.getComplexGene().addGene(maxHoldingTermGene.cloneGene());
+        }
+        
         return ts;
     }
     
@@ -216,6 +241,7 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
         protected int tradeStartMargin;
         protected float lossCutRate = Float.NaN;
         protected float reverseLossCutRate = Float.NaN;
+        protected int maxHoldingTerm = 0;
         
         protected TradeTarget tradeTarget;
         protected Sign[] signs;
@@ -325,6 +351,19 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
             return reverseLossCutRate;
         }
         
+        public void setMaxHoldingTerm(int term){
+            maxHoldingTerm = term;
+        }
+        public int getMaxHoldingTerm(){
+            if(complexGene != null){
+                IntegerGene gene = (IntegerGene)complexGene.getGene("maxHoldingTerm");
+                if(gene != null){
+                    return ((Integer)gene.getValue()).intValue();
+                }
+            }
+            return maxHoldingTerm;
+        }
+        
         public void setTarget(TradeTarget target){
             tradeTarget = target;
         }
@@ -382,12 +421,17 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
                         && profitRate < -lossCutRate;
                     final boolean isTrailEnd = !Double.isNaN(trailValue)
                             &&  value <= trailValue;
-                    if(isLossCut || isTrailEnd){
+                    final boolean isMaxHolding = getMaxHoldingTerm() > 0
+                        && !isShortSelling
+                        && (i - tradeStartIndex > getMaxHoldingTerm());
+                    if(isLossCut || isTrailEnd || isMaxHolding){
                         signs[i].setType(Sign.Type.SELL);
                         if(isLossCut){
                             signs[i].setReason(Reason.LOSS_CUT);
                         }else if(isTrailEnd){
                             signs[i].setReason(Reason.TRAIL_END);
+                        }else if(isMaxHolding){
+                            signs[i].setReason(Reason.MAX_HOLDING_TERM);
                         }
                         isBuyMode = false;
                         preSignIndex = i;
@@ -426,12 +470,17 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
                         && profitRate < -lossCutRate;
                     final boolean isTrailEnd = !Double.isNaN(trailValue)
                             &&  value >= trailValue;
-                    if(isLossCut || isTrailEnd){
+                    final boolean isMaxHolding = getMaxHoldingTerm() > 0
+                        && isShortSelling
+                        && (i - tradeStartIndex > getMaxHoldingTerm());
+                    if(isLossCut || isTrailEnd || isMaxHolding){
                         signs[i].setType(Sign.Type.BUY);
                         if(isLossCut){
                             signs[i].setReason(Reason.LOSS_CUT);
                         }else if(isTrailEnd){
                             signs[i].setReason(Reason.TRAIL_END);
+                        }else if(isMaxHolding){
+                            signs[i].setReason(Reason.MAX_HOLDING_TERM);
                         }
                         isBuyMode = true;
                         preSignIndex = i;
@@ -535,7 +584,8 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
         
         public enum Reason{
             LOSS_CUT,
-            TRAIL_END
+            TRAIL_END,
+            MAX_HOLDING_TERM
         }
     }
 }

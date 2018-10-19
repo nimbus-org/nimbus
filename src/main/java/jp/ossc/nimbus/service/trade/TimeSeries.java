@@ -101,9 +101,32 @@ public abstract class TimeSeries<E extends TimeSeries.Element> extends ArrayList
         if(toIndex < 0){
             toIndex = -fromIndex - 1;
         }
-        TimeSeries<E> clone = (TimeSeries<E>)clone();
-        clone.addAll(subList(fromIndex, toIndex));
-        return clone;
+        TimeSeries<E> result = null;
+        try{
+            result = getClass().newInstance();
+            result.addAll(subList(fromIndex, toIndex));
+        }catch(InstantiationException e){
+        }catch(IllegalAccessException e){
+        }
+        return result;
+    }
+    
+    /**
+     * 指定された期間にフィルタリングした時系列データを取得する。<p>
+     *
+     * @param from 開始インデックス
+     * @param to 終了インデックス
+     * @return フィルタリングされた時系列データ
+     */
+    public TimeSeries<E> filter(int from, int to){
+        TimeSeries<E> result = null;
+        try{
+            result = getClass().newInstance();
+            result.addAll(subList(from, to));
+        }catch(InstantiationException e){
+        }catch(IllegalAccessException e){
+        }
+        return result;
     }
     
     /**

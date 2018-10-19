@@ -35,6 +35,7 @@ import java.util.Map;
 
 import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.ga.FloatGene;
+import jp.ossc.nimbus.service.ga.IntegerGene;
 
 /**
  * {@link TrailTradeSignFactoryService}のMBeanインタフェース<p>
@@ -258,4 +259,33 @@ public interface TrailTradeSignFactoryServiceMBean extends FactoryServiceBaseMBe
      * @return ロスカット率遺伝子
      */
     public FloatGene getReverseLossCutRateGene();
+    
+    /**
+     * 最大保有日数を設定する。<p>
+     * デフォルトは、0で制限なし。<br>
+     *
+     * @param term 最大保有日数
+     */
+    public void setMaxHoldingTerm(int term);
+    
+    /**
+     * 最大保有日数を取得する。<p>
+     *
+     * @return 最大保有日数
+     */
+    public int getMaxHoldingTerm();
+    
+    /**
+     * 最大保有日数遺伝子を設定する。<p>
+     *
+     * @param gene 最大保有日数遺伝子
+     */
+    public void setMaxHoldingTermGene(IntegerGene gene);
+    
+    /**
+     * 最大保有日数遺伝子を取得する。<p>
+     *
+     * @return 最大保有日数遺伝子
+     */
+    public IntegerGene getMaxHoldingTermGene();
 }
