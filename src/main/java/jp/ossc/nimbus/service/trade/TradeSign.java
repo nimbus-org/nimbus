@@ -72,6 +72,13 @@ public interface TradeSign{
     public Sign getSign(int index, Trade trade);
     
     /**
+     * 複製を生成する。<p>
+     *
+     * @return 複製
+     */
+    public Object clone();
+    
+    /**
      * サイン。<p>
      *
      * @author M.Takata

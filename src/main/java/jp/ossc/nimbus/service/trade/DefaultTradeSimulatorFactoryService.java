@@ -79,7 +79,7 @@ public class DefaultTradeSimulatorFactoryService extends FactoryServiceBase impl
         return tradeSimulator;
     }
     
-    public static class TradeSimulatorImpl implements TradeSimulator, java.io.Serializable{
+    public static class TradeSimulatorImpl implements TradeSimulator, java.io.Serializable, Cloneable{
         
         protected boolean isShortSelling;
         protected int tradeStartMargin;
@@ -200,6 +200,22 @@ public class DefaultTradeSimulatorFactoryService extends FactoryServiceBase impl
             }else{
                 return null;
             }
+        }
+        
+        public Object clone(){
+            TradeSimulatorImpl clone = null;
+            try{
+                clone = (TradeSimulatorImpl)super.clone();
+            }catch(CloneNotSupportedException e){
+                return null;
+            }
+            if(tradeSign != null){
+                clone.tradeSign = (TradeSign)tradeSign.clone();
+            }
+            if(tradeList != null){
+                clone.tradeList = (List<Trade>)((ArrayList<Trade>)tradeList).clone();
+            }
+            return clone;
         }
     }
 }

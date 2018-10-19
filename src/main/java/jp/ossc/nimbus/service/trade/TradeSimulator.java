@@ -90,4 +90,11 @@ public interface TradeSimulator{
      * @return 取引
      */
     public Trade getTrade(Date time);
+    
+    /**
+     * 複製を生成する。<p>
+     *
+     * @return 複製
+     */
+    public Object clone();
 }

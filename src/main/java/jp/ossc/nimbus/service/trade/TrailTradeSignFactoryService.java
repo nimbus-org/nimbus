@@ -205,7 +205,7 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
         return ts;
     }
     
-    public static class TrailTradeSign implements TradeSign, java.io.Serializable{
+    public static class TrailTradeSign implements TradeSign, java.io.Serializable, Cloneable{
         
         protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
         protected boolean isShortSelling;
@@ -331,6 +331,9 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
         
         public void calculate() throws Exception{
             if(isOnlyReverseTrade){
+                highValue = Double.NaN;
+                trailValue = Double.NaN;
+                signs = null;
                 return;
             }
             TimeSeries<TimeSeries.Element> ts = tradeTarget.getTimeSeries();
@@ -515,6 +518,19 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
             }else{
                 return signs[index];
             }
+        }
+        
+        public Object clone(){
+            TrailTradeSign clone = null;
+            try{
+                clone = (TrailTradeSign)super.clone();
+            }catch(CloneNotSupportedException e){
+                return null;
+            }
+            if(complexGene != null){
+                clone.complexGene = (ComplexGene)complexGene.cloneGene();
+            }
+            return clone;
         }
         
         public enum Reason{
