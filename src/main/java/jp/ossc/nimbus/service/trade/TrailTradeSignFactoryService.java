@@ -55,10 +55,10 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
     protected float trailStartThreshold;
     protected FloatGene trailStartThresholdGene;
     protected int tradeStartMargin;
-    protected float lossCutRate = Float.NaN;
-    protected FloatGene lossCutRateGene;
-    protected float reverseLossCutRate = Float.NaN;
-    protected FloatGene reverseLossCutRateGene;
+    protected float lossCutRatio = Float.NaN;
+    protected FloatGene lossCutRatioGene;
+    protected float reverseLossCutRatio = Float.NaN;
+    protected FloatGene reverseLossCutRatioGene;
     protected boolean isOnlyReverseTrade;
     protected int maxHoldingTerm;
     protected IntegerGene maxHoldingTermGene;
@@ -92,8 +92,8 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
         return tradeStartMargin;
     }
     
-    public void setTrailWidth(float rate){
-        trailWidth = rate;
+    public void setTrailWidth(float ratio){
+        trailWidth = ratio;
     }
     public float getTrailWidth(){
         return trailWidth;
@@ -109,8 +109,8 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
         return trailWidthGene;
     }
     
-    public void setReverseTrailWidth(float rate){
-        reverseTrailWidth = rate;
+    public void setReverseTrailWidth(float ratio){
+        reverseTrailWidth = ratio;
     }
     public float getReverseTrailWidth(){
         return reverseTrailWidth;
@@ -126,8 +126,8 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
         return reverseTrailWidthGene;
     }
     
-    public void setTrailStartThreshold(float rate){
-        trailStartThreshold = rate;
+    public void setTrailStartThreshold(float ratio){
+        trailStartThreshold = ratio;
     }
     public float getTrailStartThreshold(){
         return trailStartThreshold;
@@ -143,38 +143,38 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
         return trailStartThresholdGene;
     }
     
-    public void setLossCutRate(float rate){
-        lossCutRate = rate;
+    public void setLossCutRatio(float ratio){
+        lossCutRatio = ratio;
     }
-    public float getLossCutRate(){
-        return lossCutRate;
+    public float getLossCutRatio(){
+        return lossCutRatio;
     }
     
-    public void setLossCutRateGene(FloatGene gene){
-        lossCutRateGene = gene;
-        if(lossCutRateGene != null){
-            lossCutRateGene.setName("lossCutRate");
+    public void setLossCutRatioGene(FloatGene gene){
+        lossCutRatioGene = gene;
+        if(lossCutRatioGene != null){
+            lossCutRatioGene.setName("lossCutRatio");
         }
     }
-    public FloatGene getLossCutRateGene(){
-        return lossCutRateGene;
+    public FloatGene getLossCutRatioGene(){
+        return lossCutRatioGene;
     }
     
-    public void setReverseLossCutRate(float rate){
-        reverseLossCutRate = rate;
+    public void setReverseLossCutRatio(float ratio){
+        reverseLossCutRatio = ratio;
     }
-    public float getReverseLossCutRate(){
-        return reverseLossCutRate;
+    public float getReverseLossCutRatio(){
+        return reverseLossCutRatio;
     }
     
-    public void setReverseLossCutRateGene(FloatGene gene){
-        reverseLossCutRateGene = gene;
-        if(reverseLossCutRateGene != null){
-            reverseLossCutRateGene.setName("reverseLossCutRate");
+    public void setReverseLossCutRatioGene(FloatGene gene){
+        reverseLossCutRatioGene = gene;
+        if(reverseLossCutRatioGene != null){
+            reverseLossCutRatioGene.setName("reverseLossCutRatio");
         }
     }
-    public FloatGene getReverseLossCutRateGene(){
-        return reverseLossCutRateGene;
+    public FloatGene getReverseLossCutRatioGene(){
+        return reverseLossCutRatioGene;
     }
     
     public void setMaxHoldingTerm(int term){
@@ -214,13 +214,13 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
         if(trailStartThresholdGene != null){
             ts.getComplexGene().addGene(trailStartThresholdGene.cloneGene());
         }
-        ts.setLossCutRate(lossCutRate);
-        if(lossCutRateGene != null){
-            ts.getComplexGene().addGene(lossCutRateGene.cloneGene());
+        ts.setLossCutRatio(lossCutRatio);
+        if(lossCutRatioGene != null){
+            ts.getComplexGene().addGene(lossCutRatioGene.cloneGene());
         }
-        ts.setReverseLossCutRate(reverseLossCutRate);
-        if(reverseLossCutRateGene != null){
-            ts.getComplexGene().addGene(reverseLossCutRateGene.cloneGene());
+        ts.setReverseLossCutRatio(reverseLossCutRatio);
+        if(reverseLossCutRatioGene != null){
+            ts.getComplexGene().addGene(reverseLossCutRatioGene.cloneGene());
         }
         ts.setMaxHoldingTerm(maxHoldingTerm);
         if(maxHoldingTermGene != null){
@@ -239,8 +239,8 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
         protected float reverseTrailWidth;
         protected float trailStartThreshold;
         protected int tradeStartMargin;
-        protected float lossCutRate = Float.NaN;
-        protected float reverseLossCutRate = Float.NaN;
+        protected float lossCutRatio = Float.NaN;
+        protected float reverseLossCutRatio = Float.NaN;
         protected int maxHoldingTerm = 0;
         
         protected TradeTarget tradeTarget;
@@ -279,8 +279,8 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
             return isOnlyReverseTrade;
         }
         
-        public void setTrailWidth(float rate){
-            trailWidth = rate;
+        public void setTrailWidth(float ratio){
+            trailWidth = ratio;
         }
         public float getTrailWidth(){
             if(complexGene != null){
@@ -292,8 +292,8 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
             return trailWidth;
         }
         
-        public void setReverseTrailWidth(float rate){
-            reverseTrailWidth = rate;
+        public void setReverseTrailWidth(float ratio){
+            reverseTrailWidth = ratio;
         }
         public float getReverseTrailWidth(){
             if(complexGene != null){
@@ -305,8 +305,8 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
             return reverseTrailWidth;
         }
         
-        public void setTrailStartThreshold(float rate){
-            trailStartThreshold = rate;
+        public void setTrailStartThreshold(float ratio){
+            trailStartThreshold = ratio;
         }
         public float getTrailStartThreshold(){
             if(complexGene != null){
@@ -325,30 +325,30 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
             return tradeStartMargin;
         }
         
-        public void setLossCutRate(float rate){
-            lossCutRate = rate;
+        public void setLossCutRatio(float ratio){
+            lossCutRatio = ratio;
         }
-        public float getLossCutRate(){
+        public float getLossCutRatio(){
             if(complexGene != null){
-                FloatGene gene = (FloatGene)complexGene.getGene("lossCutRate");
+                FloatGene gene = (FloatGene)complexGene.getGene("lossCutRatio");
                 if(gene != null){
                     return ((Float)gene.getValue()).floatValue();
                 }
             }
-            return lossCutRate;
+            return lossCutRatio;
         }
         
-        public void setReverseLossCutRate(float rate){
-            reverseLossCutRate = rate;
+        public void setReverseLossCutRatio(float ratio){
+            reverseLossCutRatio = ratio;
         }
-        public float getReverseLossCutRate(){
+        public float getReverseLossCutRatio(){
             if(complexGene != null){
-                FloatGene gene = (FloatGene)complexGene.getGene("reverseLossCutRate");
+                FloatGene gene = (FloatGene)complexGene.getGene("reverseLossCutRatio");
                 if(gene != null){
                     return ((Float)gene.getValue()).floatValue();
                 }
             }
-            return reverseLossCutRate;
+            return reverseLossCutRatio;
         }
         
         public void setMaxHoldingTerm(int term){
@@ -399,13 +399,13 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
                     }
                     final double tradeStartValue = ts.get(tradeStartIndex).getValue();
                     final double profit = value - tradeStartValue;
-                    final double profitRate = profit / tradeStartValue;
+                    final double profitRatio = profit / tradeStartValue;
                     float trailWidth = getTrailWidth();
                     if(isShortSelling && !Float.isNaN(getReverseTrailWidth())){
                         trailWidth = getReverseTrailWidth();
                     }
                     if(Double.isNaN(highValue)){
-                        if(profitRate >= getTrailStartThreshold()){
+                        if(profitRatio >= getTrailStartThreshold()){
                             highValue = value;
                             trailValue = highValue - (profit * trailWidth);
                         }
@@ -413,12 +413,12 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
                         highValue = value;
                         trailValue = highValue - (profit * trailWidth);
                     }
-                    float lossCutRate = getLossCutRate();
-                    if(isShortSelling && !Float.isNaN(getReverseLossCutRate())){
-                        trailWidth = getReverseLossCutRate();
+                    float lossCutRatio = getLossCutRatio();
+                    if(isShortSelling && !Float.isNaN(getReverseLossCutRatio())){
+                        trailWidth = getReverseLossCutRatio();
                     }
-                    final boolean isLossCut = !Float.isNaN(lossCutRate)
-                        && profitRate < -lossCutRate;
+                    final boolean isLossCut = !Float.isNaN(lossCutRatio)
+                        && profitRatio < -lossCutRatio;
                     final boolean isTrailEnd = !Double.isNaN(trailValue)
                             &&  value <= trailValue;
                     final boolean isMaxHolding = getMaxHoldingTerm() > 0
@@ -448,13 +448,13 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
                     }
                     final double tradeStartValue = ts.get(tradeStartIndex).getValue();
                     final double profit = tradeStartValue - value;
-                    final double profitRate = profit / tradeStartValue;
+                    final double profitRatio = profit / tradeStartValue;
                     float trailWidth = getTrailWidth();
                     if(!isShortSelling && !Float.isNaN(getReverseTrailWidth())){
                         trailWidth = getReverseTrailWidth();
                     }
                     if(Double.isNaN(highValue)){
-                        if(profitRate >= getTrailStartThreshold()){
+                        if(profitRatio >= getTrailStartThreshold()){
                             highValue = value;
                             trailValue = highValue + (profit * trailWidth);
                         }
@@ -462,12 +462,12 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
                         highValue = value;
                         trailValue = highValue + (profit * trailWidth);
                     }
-                    float lossCutRate = getLossCutRate();
-                    if(!isShortSelling && !Float.isNaN(getReverseLossCutRate())){
-                        trailWidth = getReverseLossCutRate();
+                    float lossCutRatio = getLossCutRatio();
+                    if(!isShortSelling && !Float.isNaN(getReverseLossCutRatio())){
+                        trailWidth = getReverseLossCutRatio();
                     }
-                    final boolean isLossCut = !Float.isNaN(lossCutRate)
-                        && profitRate < -lossCutRate;
+                    final boolean isLossCut = !Float.isNaN(lossCutRatio)
+                        && profitRatio < -lossCutRatio;
                     final boolean isTrailEnd = !Double.isNaN(trailValue)
                             &&  value >= trailValue;
                     final boolean isMaxHolding = getMaxHoldingTerm() > 0
@@ -502,10 +502,10 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
                     if(isShortSelling){
                         final double tradeStartValue = trade.getStartValue();
                         final double profit = tradeStartValue - value;
-                        final double profitRate = profit / tradeStartValue;
+                        final double profitRatio = profit / tradeStartValue;
                         final float trailWidth = getTrailWidth();
                         if(Double.isNaN(highValue)){
-                            if(profitRate >= getTrailStartThreshold()){
+                            if(profitRatio >= getTrailStartThreshold()){
                                 highValue = value;
                                 trailValue = highValue + (profit * trailWidth);
                             }
@@ -513,9 +513,9 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
                             highValue = value;
                             trailValue = highValue + (profit * trailWidth);
                         }
-                        final float lossCutRate = getLossCutRate();
-                        final boolean isLossCut = !Float.isNaN(lossCutRate)
-                            && profitRate < -lossCutRate;
+                        final float lossCutRatio = getLossCutRatio();
+                        final boolean isLossCut = !Float.isNaN(lossCutRatio)
+                            && profitRatio < -lossCutRatio;
                         final boolean isTrailEnd = !Double.isNaN(trailValue)
                                 &&  value >= trailValue;
                         if(isLossCut || isTrailEnd){
@@ -533,10 +533,10 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
                     }else{
                         final double tradeStartValue = trade.getStartValue();
                         final double profit = value - tradeStartValue;
-                        final double profitRate = profit / tradeStartValue;
+                        final double profitRatio = profit / tradeStartValue;
                         final float trailWidth = getTrailWidth();
                         if(Double.isNaN(highValue)){
-                            if(profitRate >= getTrailStartThreshold()){
+                            if(profitRatio >= getTrailStartThreshold()){
                                 highValue = value;
                                 trailValue = highValue - (profit * trailWidth);
                             }
@@ -544,9 +544,9 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
                             highValue = value;
                             trailValue = highValue - (profit * trailWidth);
                         }
-                        final float lossCutRate = getLossCutRate();
-                        final boolean isLossCut = !Float.isNaN(lossCutRate)
-                            && profitRate < -lossCutRate;
+                        final float lossCutRatio = getLossCutRatio();
+                        final boolean isLossCut = !Float.isNaN(lossCutRatio)
+                            && profitRatio < -lossCutRatio;
                         final boolean isTrailEnd = !Double.isNaN(trailValue)
                                 &&  value <= trailValue;
                         if(isLossCut || isTrailEnd){

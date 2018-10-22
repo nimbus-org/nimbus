@@ -31,8 +31,6 @@
  */
 package jp.ossc.nimbus.service.trade;
 
-import java.util.Map;
-
 import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.ga.FloatGene;
 import jp.ossc.nimbus.service.ga.IntegerGene;
@@ -110,9 +108,9 @@ public interface TrailTradeSignFactoryServiceMBean extends FactoryServiceBaseMBe
      * トレール幅は、取引開始値と最高値（空売りの場合は最安値）の差に対する比率で指定する。<br>
      * デフォルトは、0.05（5%）。<br>
      *
-     * @param rate トレール幅
+     * @param ratio トレール幅
      */
-    public void setTrailWidth(float rate);
+    public void setTrailWidth(float ratio);
     
     /**
      * トレール幅を取得する。<p>
@@ -141,9 +139,9 @@ public interface TrailTradeSignFactoryServiceMBean extends FactoryServiceBaseMBe
      * トレール幅は、取引開始値と最高値（空売りの場合は最安値）の差に対する比率で指定する。<br>
      * 指定しない場合は、正トレールのトレール幅と同じ。<br>
      *
-     * @param rate トレール幅
+     * @param ratio トレール幅
      */
-    public void setReverseTrailWidth(float rate);
+    public void setReverseTrailWidth(float ratio);
     
     /**
      * 取引開始サインを探索するために行う逆トレールのトレール幅を取得する。<p>
@@ -172,9 +170,9 @@ public interface TrailTradeSignFactoryServiceMBean extends FactoryServiceBaseMBe
      * この閾値は、取引開始値に対する比率（つまりは利益率）で指定する。<br>
      * デフォルトは、閾値なしで、取引開始と共にトレールを開始する。<br>
      *
-     * @param rate トレールを開始する閾値
+     * @param ratio トレールを開始する閾値
      */
-    public void setTrailStartThreshold(float rate);
+    public void setTrailStartThreshold(float ratio);
     
     /**
      * トレールを開始する閾値を取得する。<p>
@@ -203,62 +201,62 @@ public interface TrailTradeSignFactoryServiceMBean extends FactoryServiceBaseMBe
      * ロスカット率は、取引開始値に対する比率（つまりは損失率の絶対値）で指定する。<br>
      * デフォルトは、ロスカットしない。<br>
      *
-     * @param rate ロスカット率
+     * @param ratio ロスカット率
      */
-    public void setLossCutRate(float rate);
+    public void setLossCutRatio(float ratio);
     
     /**
      * ロスカット率を取得する。<p>
      *
-     * @param rate ロスカット率
+     * @param ratio ロスカット率
      */
-    public float getLossCutRate();
+    public float getLossCutRatio();
     
     /**
      * ロスカット率遺伝子を設定する。<p>
      *
      * @param gene ロスカット率遺伝子
-     * @see #setLossCutRate(float)
+     * @see #setLossCutRatio(float)
      */
-    public void setLossCutRateGene(FloatGene gene);
+    public void setLossCutRatioGene(FloatGene gene);
     
     /**
      * ロスカット率遺伝子を取得する。<p>
      *
      * @return ロスカット率遺伝子
      */
-    public FloatGene getLossCutRateGene();
+    public FloatGene getLossCutRatioGene();
     
     /**
      * 取引開始サインを探索するために行う逆トレールのロスカット率を設定する。<p>
      * ロスカット率は、取引開始値に対する比率（つまりは損失率の絶対値）で指定する。<br>
      * 指定しない場合は、正トレールのロスカット率と同じ。<br>
      *
-     * @param rate ロスカット率
+     * @param ratio ロスカット率
      */
-    public void setReverseLossCutRate(float rate);
+    public void setReverseLossCutRatio(float ratio);
     
     /**
      * 取引開始サインを探索するために行う逆トレールのロスカット率を取得する。<p>
      *
-     * @param rate ロスカット率
+     * @param ratio ロスカット率
      */
-    public float getReverseLossCutRate();
+    public float getReverseLossCutRatio();
     
     /**
      * 逆トレールのロスカット率遺伝子を設定する。<p>
      *
      * @param gene ロスカット率遺伝子
-     * @see #setReverseLossCutRate(float)
+     * @see #setReverseLossCutRatio(float)
      */
-    public void setReverseLossCutRateGene(FloatGene gene);
+    public void setReverseLossCutRatioGene(FloatGene gene);
     
     /**
      * 逆トレールのロスカット率遺伝子を取得する。<p>
      *
      * @return ロスカット率遺伝子
      */
-    public FloatGene getReverseLossCutRateGene();
+    public FloatGene getReverseLossCutRatioGene();
     
     /**
      * 最大保有日数を設定する。<p>

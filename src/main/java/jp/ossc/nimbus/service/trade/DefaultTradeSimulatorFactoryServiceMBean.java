@@ -31,8 +31,6 @@
  */
 package jp.ossc.nimbus.service.trade;
 
-import java.util.Map;
-
 import jp.ossc.nimbus.core.*;
 
 /**

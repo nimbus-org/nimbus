@@ -331,7 +331,7 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
      * @return 損益率
      * @exception IllegalStateException 取引が成立していない場合
      */
-    public double getProfitRate() throws IllegalStateException{
+    public double getProfitRatio() throws IllegalStateException{
         return getProfit() / startValue;
     }
     
@@ -341,7 +341,7 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
      * @return 損益率
      * @exception IllegalStateException 取引が開始していない場合
      */
-    public double getProfitRate(double value) throws IllegalStateException{
+    public double getProfitRatio(double value) throws IllegalStateException{
         return getProfit(value) / startValue;
     }
     

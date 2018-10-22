@@ -32,32 +32,19 @@
 package jp.ossc.nimbus.service.trade;
 
 import jp.ossc.nimbus.core.*;
+import jp.ossc.nimbus.service.ga.FloatGene;
 
 /**
- * {@link PairTradeSignFactoryService}のMBeanインタフェース<p>
+ * {@link IdealTradeSignFactoryService}のMBeanインタフェース<p>
  * 
  * @author M.Takata
- * @see PairTradeSignFactoryService
+ * @see IdealTradeSignFactoryService
  */
-public interface PairTradeSignFactoryServiceMBean extends FactoryServiceBaseMBean{
-    
-    /**
-     * 遺伝子の交叉種別を設定する。<p>
-     * デフォルトは、{@link jp.ossc.nimbus.service.ga.ComplexGene#CROSSOVER_ALL_POINT 全交叉}。<br>
-     *
-     * @param type 交叉種別
-     */
-    public void setGeneCrossoverType(int type);
-    
-    /**
-     * 遺伝子の交叉種別を取得する。<p>
-     *
-     * @return 交叉種別
-     */
-    public int getGeneCrossoverType();
+public interface IdealTradeSignFactoryServiceMBean extends FactoryServiceBaseMBean{
     
     /**
      * 空売りの売買サイン判定を行うかどうかを設定する。<p>
+     * デフォルトは、false。<br>
      * 
      * @param isShort 空売りの場合、true
      */
@@ -71,30 +58,60 @@ public interface PairTradeSignFactoryServiceMBean extends FactoryServiceBaseMBea
     public boolean isShortSelling();
     
     /**
-     * 買いサインを判断するために使用する{@link TradeSign 売買サイン}サービスのサービス名を設定する。<p>
+     * 目標利益率を設定する。<br>
      *
-     * @param name 買いサインを判断するために使用する売買サインサービスのサービス名
+     * @param ratio 目標利益率
      */
-    public void setBuyTradeSignServiceName(ServiceName name);
+    public void setTargetProfitRatio(float ratio);
     
     /**
-     * 買いサインを判断するために使用する{@link TradeSign 売買サイン}サービスのサービス名を取得する。<p>
+     * 目標利益率を取得する。<br>
      *
-     * @return 買いサインを判断するために使用する売買サインサービスのサービス名
+     * @return 目標利益率
      */
-    public ServiceName getBuyTradeSignServiceName();
+    public float getTargetProfitRatio();
     
     /**
-     * 売りサインを判断するために使用する{@link TradeSign 売買サイン}サービスのサービス名を設定する。<p>
+     * 目標利益率遺伝子を設定する。<br>
      *
-     * @param name 売りサインを判断するために使用する売買サインサービスのサービス名
+     * @param gene 目標利益率遺伝子
      */
-    public void setSellTradeSignServiceName(ServiceName name);
+    public void setTargetProfitRatioGene(FloatGene gene);
     
     /**
-     * 売りサインを判断するために使用する{@link TradeSign 売買サイン}サービスのサービス名を取得する。<p>
+     * 目標利益率遺伝子を取得する。<br>
      *
-     * @return 売りサインを判断するために使用する売買サインサービスのサービス名
+     * @return 目標利益率遺伝子
      */
-    public ServiceName getSellTradeSignServiceName();
+    public FloatGene getTargetProfitRatioGene();
+    
+    /**
+     * 最適な反対売買タイミングが発生して反対売買サインを発生させる間を設定する。<p>
+     * デフォルトは、0で、最適な反対売買タイミング時に反対売買サインを発生させる。<br>
+     *
+     * @param margin 最適な反対売買タイミングが発生して反対売買サインを発生させる間となる時系列要素の本数
+     */
+    public void setReverseTradeSignMargin(int margin);
+    
+    /**
+     * 最適な反対売買タイミングが発生して反対売買サインを発生させる間を取得する。<p>
+     *
+     * @return 最適な反対売買タイミングが発生して反対売買サインを発生させる間となる時系列要素の本数
+     */
+    public int getReverseTradeSignMargin();
+    
+    /**
+     * 最大保有日数を設定する。<p>
+     * デフォルトは、0で制限なし。<br>
+     *
+     * @param term 最大保有日数
+     */
+    public void setMaxHoldingTerm(int term);
+    
+    /**
+     * 最大保有日数を取得する。<p>
+     *
+     * @return 最大保有日数
+     */
+    public int getMaxHoldingTerm();
 }

@@ -104,7 +104,7 @@ public class PairTradeSignFactoryService extends FactoryServiceBase implements P
         return ts;
     }
     
-    public static class PairTradeSign implements TradeSign, java.io.Serializable{
+    public static class PairTradeSign implements TradeSign, java.io.Serializable, Cloneable{
         
         protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
         protected boolean isShortSelling;
@@ -204,6 +204,25 @@ public class PairTradeSignFactoryService extends FactoryServiceBase implements P
                 }
             }
             return sign;
+        }
+        
+        public Object clone(){
+            PairTradeSign clone = null;
+            try{
+                clone = (PairTradeSign)super.clone();
+            }catch(CloneNotSupportedException e){
+                return null;
+            }
+            if(complexGene != null){
+                clone.complexGene = (ComplexGene)complexGene.cloneGene();
+            }
+            if(sellTradeSign != null){
+                clone.setSellTradeSign((TradeSign)sellTradeSign.clone());
+            }
+            if(buyTradeSign != null){
+                clone.setBuyTradeSign((TradeSign)buyTradeSign.clone());
+            }
+            return clone;
         }
     }
 }
