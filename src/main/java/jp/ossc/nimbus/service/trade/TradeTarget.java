@@ -37,7 +37,7 @@ package jp.ossc.nimbus.service.trade;
  *
  * @author M.Takata
  */
-public class TradeTarget implements java.io.Serializable{
+public class TradeTarget implements java.io.Serializable, Cloneable{
     
     protected TimeSeries<?> timeSeries;
     protected double tradeUnit = 1.0d;
@@ -91,5 +91,15 @@ public class TradeTarget implements java.io.Serializable{
      */
     public double getTradeUnit(){
         return tradeUnit;
+    }
+    
+    public Object clone(){
+        TradeTarget clone = null;
+        try{
+            clone = (TradeTarget)super.clone();
+        }catch(CloneNotSupportedException e){
+            return null;
+        }
+        return clone;
     }
 }

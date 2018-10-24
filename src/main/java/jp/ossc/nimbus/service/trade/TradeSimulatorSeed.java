@@ -55,11 +55,6 @@ public abstract class TradeSimulatorSeed implements Seed, Cloneable, java.io.Ser
     
     public void setTradeSimulator(TradeSimulator simulator){
         tradeSimulator = simulator;
-        TradeSign tradeSign = tradeSimulator.getSign();
-        if(genom == null){
-            genom = new DefaultGenom();
-        }
-        genom.setGene("tradeSign", tradeSign.getGene());
     }
     
     public TradeSimulator getTradeSimulator(){
@@ -67,6 +62,10 @@ public abstract class TradeSimulatorSeed implements Seed, Cloneable, java.io.Ser
     }
     
     public Genom getGenom(){
+        if(genom == null){
+            genom = new DefaultGenom();
+            genom.setGene("tradeSign", tradeSimulator.getSign().getGene());
+        }
         return genom;
     }
     
@@ -85,7 +84,7 @@ public abstract class TradeSimulatorSeed implements Seed, Cloneable, java.io.Ser
             clone.tradeSimulator = (TradeSimulator)tradeSimulator.clone();
         }
         if(genom != null){
-            clone.genom.setGene("tradeSign", clone.tradeSimulator.getSign().getGene());
+            clone.genom = null;
         }
         clone.fitness = null;
         return clone;
