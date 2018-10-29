@@ -150,6 +150,7 @@ public interface ClusterConnectionFactoryServiceMBean extends ServiceBaseMBean{
     
     /**
      * {@link jp.ossc.nimbus.service.publish.ClientConnection ClientConnection}のIDを生成する{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}サービスのサービス名を設定する。<p>
+     * 複数の接続に対して、異なるIDを振りたい場合に設定する。<br>
      * 
      * @param name Sequenceサービスのサービス名
      */

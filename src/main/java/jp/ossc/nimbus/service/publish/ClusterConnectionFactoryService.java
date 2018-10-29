@@ -238,11 +238,6 @@ public class ClusterConnectionFactoryService extends ServiceBase
             sequence = (Sequence)ServiceManagerFactory
                 .getServiceObject(sequenceServiceName);
         }
-        if(sequence == null){
-            sequence = new NumberSequenceService();
-            ((NumberSequenceService)sequence).create();
-            ((NumberSequenceService)sequence).start();
-        }
         if(clientConnectionFactoryServiceName != null){
             clientConnectionFactory = (ClientConnectionFactory)ServiceManagerFactory.getServiceObject(clientConnectionFactoryServiceName);
         }
@@ -283,7 +278,7 @@ public class ClusterConnectionFactoryService extends ServiceBase
     }
     
     public ClientConnection getClientConnection() throws ConnectionCreateException, RemoteException{
-        ClusterClientConnectionImpl connection = new ClusterClientConnectionImpl(cluster, sequence.increment());
+        ClusterClientConnectionImpl connection = sequence == null ? new ClusterClientConnectionImpl(cluster) : new ClusterClientConnectionImpl(cluster, sequence.increment());
         connection.setConnectErrorMessageId(clientConnectErrorMessageId);
         connection.setReconnectMessageId(clientReconnectMessageId);
         connection.setNoConnectErrorMessageId(clientNoConnectErrorMessageId);

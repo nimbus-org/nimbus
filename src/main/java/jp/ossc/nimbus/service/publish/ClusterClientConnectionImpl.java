@@ -90,6 +90,10 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
     public ClusterClientConnectionImpl(){
     }
     
+    public ClusterClientConnectionImpl(ClusterService cluster){
+        setCluster(cluster);
+    }
+    
     public ClusterClientConnectionImpl(ClusterService cluster, String no){
         setCluster(cluster);
         clientNo = no;
@@ -167,7 +171,7 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
                     cluster.setClient(true);
                     cluster.addClusterListener(this);
                     cluster.start();
-                    this.id = id == null ? (uid + clientNo) : id;
+                    this.id = id == null ? (clientNo == null ? uid : (uid + clientNo)) : id;
                     cluster.join();
                 }catch(Exception e){
                     cluster.stop();
@@ -175,7 +179,7 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
                     throw new ConnectException(e);
                 }
             }else{
-                this.id = id == null ? (uid + clientNo) : id;
+                this.id = id == null ? (clientNo == null ? uid : (uid + clientNo)) : id;
                 cluster.addClusterListener(this);
             }
             if(!isFlexibleConnect && (connectionMap == null || connectionMap.size() == 0)){
