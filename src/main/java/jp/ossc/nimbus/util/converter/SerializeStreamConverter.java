@@ -34,6 +34,8 @@ package jp.ossc.nimbus.util.converter;
 import java.io.*;
 import java.util.zip.*;
 
+import jp.ossc.nimbus.service.io.Externalizer;
+
 /**
  * Serializableオブジェクト⇔ストリームコンバータ。<p>
  * 
@@ -52,6 +54,11 @@ public class SerializeStreamConverter extends BufferedStreamConverter implements
      * 圧縮するかどうかのフラグ。<p>
      */
     protected boolean isCompress;
+    
+    /**
+     * 直列化/非直列化に使用する{@link Externalizer}サービス。<p>
+     */
+    protected Externalizer externalizer;
     
     /**
      * Serializableオブジェクト→ストリーム変換を行うコンバータを生成する。<p>
@@ -113,6 +120,15 @@ public class SerializeStreamConverter extends BufferedStreamConverter implements
     }
     
     /**
+     * 直列化/非直列化に使用する{@link Externalizer}サービスを設定する。<p>
+     *
+     * @param externalizer Externalizerサービス
+     */
+    public void setExternalizer(Externalizer externalizer){
+        this.externalizer = externalizer;
+    }
+    
+    /**
      * 指定されたオブジェクトを変換する。<p>
      *
      * @param obj 変換対象のオブジェクト
@@ -149,22 +165,23 @@ public class SerializeStreamConverter extends BufferedStreamConverter implements
      */
     protected byte[] convertToByteArray(Object obj) throws ConvertException{
         final ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        if(obj != null){
-            OutputStream os = baos;
-            try{
-                if(isCompress){
-                    os = new GZIPOutputStream(os);
-                }
+        OutputStream os = baos;
+        try{
+            if(isCompress){
+                os = new GZIPOutputStream(os);
+            }
+            if(externalizer == null){
                 final ObjectOutputStream oos = new ObjectOutputStream(os);
                 oos.writeObject((Serializable)obj);
                 oos.flush();
-                if(isCompress){
-                    ((GZIPOutputStream)os).finish();
-                }
-            }catch(IOException e){
-                throw new ConvertException(e);
-            }finally{
+            }else{
+                externalizer.writeExternal(obj, os);
             }
+            if(isCompress){
+                ((GZIPOutputStream)os).finish();
+            }
+        }catch(IOException e){
+            throw new ConvertException(e);
         }
         return baos.toByteArray();
     }
@@ -181,8 +198,12 @@ public class SerializeStreamConverter extends BufferedStreamConverter implements
             if(isCompress){
                 is = new GZIPInputStream(is);
             }
-            final ObjectInputStream ois = new ObjectInputStream(is);
-            return ois.readObject();
+            if(externalizer == null){
+                final ObjectInputStream ois = new ObjectInputStream(is);
+                return ois.readObject();
+            }else{
+                return externalizer.readExternal(is);
+            }
         }catch(IOException e){
             throw new ConvertException(e);
         }catch(ClassNotFoundException e){
