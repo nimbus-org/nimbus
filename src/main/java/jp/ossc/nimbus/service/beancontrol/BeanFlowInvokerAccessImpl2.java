@@ -6044,21 +6044,13 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                     try{
                         if(property instanceof NestedProperty){
                             NestedProperty nestedProp = (NestedProperty)property;
-                            Property thisProp = nestedProp.getFirstThisProperty();
-                            val = thisProp.getProperty(context);
-                            if(val != null){
-                                if(val instanceof StepContext){
-                                    Property fnp = nestedProp.getFirstNestedProperty();
-                                    if(!TARGET.equals(fnp.getPropertyName())
-                                            && !RESULT.equals(fnp.getPropertyName())
-                                    ){
-                                        val = property.getProperty(vars);
-                                    }else{
-                                        val = property.getProperty(context);
-                                    }
-                                }else{
-                                    val = property.getProperty(context);
-                                }
+                            Property fnp = nestedProp.getFirstNestedProperty();
+                            if(!TARGET.equals(fnp.getPropertyName())
+                                    && !RESULT.equals(fnp.getPropertyName())
+                            ){
+                                val = property.getProperty(vars);
+                            }else{
+                                val = property.getProperty(context);
                             }
                         }else{
                             val = property.getProperty(context);
@@ -6503,21 +6495,13 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                 try{
                     if(property instanceof NestedProperty){
                         NestedProperty nestedProp = (NestedProperty)property;
-                        Property thisProp = nestedProp.getFirstThisProperty();
-                        val = thisProp.getProperty(context);
-                        if(val != null){
-                            if(val instanceof StepContext){
-                                Property fnp = nestedProp.getFirstNestedProperty();
-                                if(!TARGET.equals(fnp.getPropertyName())
-                                        && !RESULT.equals(fnp.getPropertyName())
-                                ){
-                                    val = property.getProperty(vars);
-                                }else{
-                                    val = property.getProperty(context);
-                                }
-                            }else{
-                                val = property.getProperty(context);
-                            }
+                        Property fnp = nestedProp.getFirstNestedProperty();
+                        if(!TARGET.equals(fnp.getPropertyName())
+                                && !RESULT.equals(fnp.getPropertyName())
+                        ){
+                            val = property.getProperty(vars);
+                        }else{
+                            val = property.getProperty(context);
                         }
                     }else{
                         val = property.getProperty(context);
