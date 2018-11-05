@@ -664,3 +664,7 @@ service要素とは異なる点です。
 <!-- value属性は、条件となる環境変数値を定義します。
 -->
 <!ATTLIST ifdef value CDATA #IMPLIED>
+
+<!-- not属性は、否定条件となるように定義します。
+-->
+<!ATTLIST ifdef not (true|false) "false">

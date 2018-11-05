@@ -56,9 +56,13 @@ public class IfDefMetaData extends MetaData
     
     protected static final String VALUE_ATTRIBUTE_NAME = "value";
     
+    protected static final String NOT_ATTRIBUTE_NAME = "not";
+    
     protected String name;
     
     protected String value;
+    
+    protected boolean isNot;
     
     protected List childrenMetaData = new ArrayList();
     
@@ -139,8 +143,9 @@ public class IfDefMetaData extends MetaData
     }
     
     public boolean isMatch(){
+        boolean isMatch = false;
         if(value == null){
-            return Utility.existsProperty(
+            isMatch = Utility.existsProperty(
                 name,
                 getServiceLoaderConfig(),
                 getServiceManager(),
@@ -153,8 +158,9 @@ public class IfDefMetaData extends MetaData
                 getServiceManager(),
                 this
             );
-            return value.equals(prop);
+            isMatch = value.equals(prop);
         }
+        return isNot ? !isMatch : isMatch;
     }
     
     protected ServiceManager getServiceManager(){
@@ -203,6 +209,7 @@ public class IfDefMetaData extends MetaData
         }
         name = getUniqueAttribute(element, NAME_ATTRIBUTE_NAME);
         value = getOptionalAttribute(element, VALUE_ATTRIBUTE_NAME);
+        isNot = getOptionalBooleanAttribute(element, NOT_ATTRIBUTE_NAME, false);
         this.element = element;
     }
     
@@ -223,6 +230,10 @@ public class IfDefMetaData extends MetaData
         if(value != null){
             buf.append(' ').append(VALUE_ATTRIBUTE_NAME)
                 .append("=\"").append(value).append("\"");
+        }
+        if(isNot){
+            buf.append(' ').append(NOT_ATTRIBUTE_NAME)
+                .append("=\"true\"");
         }
         buf.append(">");
         if(childrenMetaData.size() != 0){
