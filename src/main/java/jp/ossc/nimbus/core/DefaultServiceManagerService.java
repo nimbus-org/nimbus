@@ -681,6 +681,11 @@ public class DefaultServiceManagerService extends ServiceBase
     }
     
     // ServiceManagerのJavaDoc
+    public boolean existsProperty(String name){
+        return managerProperties.containsKey(name);
+    }
+    
+    // ServiceManagerのJavaDoc
     public String getProperty(String name){
         return managerProperties.getProperty(name);
     }

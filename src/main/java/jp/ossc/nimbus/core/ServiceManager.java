@@ -229,6 +229,14 @@ public interface ServiceManager
     public Set getManagerMetaDatas();
     
     /**
+     * 指定されたマネージャプロパティが存在するか判定する。<p>
+     * 
+     * @param name プロパティ名
+     * @return 存在する場合、true
+     */
+    public boolean existsProperty(String name);
+    
+    /**
      * マネージャプロパティを取得する。<p>
      *
      * @param name プロパティ名

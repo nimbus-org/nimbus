@@ -433,6 +433,69 @@ public class Utility{
         return ServiceManagerFactory.getProperty(name);
     }
     
+    /**
+     * 環境変数プロパティを取得する。<p>
+     * System.getProperties().containsKey(String) &gt; {@link ServiceLoaderConfig#existsProperty(String)} &gt; {@link ServiceManager#existsProperty(String)} &gt; {@link ServiceManagerFactory#existsProperty(String)}
+     *
+     * @param name プロパティ名
+     * @param config ServiceLoaderConfig
+     * @param manager ServiceManager
+     * @param metaData メタデータ
+     */
+    public static boolean existsProperty(
+        String name,
+        ServiceLoaderConfig config,
+        ServiceManager manager,
+        MetaData metaData
+    ){
+        boolean exists = System.getProperties().containsKey(name);
+        if(exists){
+            return exists;
+        }
+        if(config != null){
+            exists = config.existsProperty(name);
+            if(exists){
+                return exists;
+            }
+        }
+        if(manager != null){
+            exists = manager.existsProperty(name);
+            if(exists){
+                return exists;
+            }
+        }
+        if(metaData != null){
+            ServerMetaData serverData = null;
+            ManagerMetaData mngData = null;
+            MetaData parent = metaData;
+            do{
+                if(parent == null){
+                    break;
+                }else if(mngData == null
+                     && parent instanceof ManagerMetaData){
+                    mngData = (ManagerMetaData)parent;
+                }else if(serverData == null
+                     && parent instanceof ServerMetaData){
+                    serverData = (ServerMetaData)parent;
+                    break;
+                }
+            }while((parent = parent.getParent()) != null);
+            if(mngData != null){
+                exists = mngData.existsProperty(name);
+                if(exists){
+                    return exists;
+                }
+            }
+            if(serverData != null){
+                exists = serverData.existsProperty(name);
+                if(exists){
+                    return exists;
+                }
+            }
+        }
+        return ServiceManagerFactory.existsProperty(name);
+    }
+    
     public static Class convertStringToClass(String typeStr)
      throws ClassNotFoundException{
         return Utility.convertStringToClass(typeStr, false);

@@ -1853,7 +1853,17 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
-     * サーバプロパティを取得する。<p>
+     * 指定されたサーバプロパティが存在するか判定する。<p>
+     * 
+     * @param name プロパティ名
+     * @return 指定されたサーバプロパティが存在する場合true
+     */
+    public static boolean existsProperty(String name){
+        return properties.containsKey(name);
+    }
+    
+    /**
+     * 指定されたサーバプロパティを取得する。<p>
      * 
      * @param name プロパティ名
      * @return サーバプロパティ
