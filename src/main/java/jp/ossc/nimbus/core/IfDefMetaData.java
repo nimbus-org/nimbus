@@ -139,13 +139,22 @@ public class IfDefMetaData extends MetaData
     }
     
     public boolean isMatch(){
-        String prop = Utility.getProperty(
-            name,
-            getServiceLoaderConfig(),
-            getServiceManager(),
-            this
-        );
-        return value.equals(prop);
+        if(value == null){
+            return Utility.existsProperty(
+                name,
+                getServiceLoaderConfig(),
+                getServiceManager(),
+                this
+            );
+        }else{
+            String prop = Utility.getProperty(
+                name,
+                getServiceLoaderConfig(),
+                getServiceManager(),
+                this
+            );
+            return value.equals(prop);
+        }
     }
     
     protected ServiceManager getServiceManager(){
@@ -193,7 +202,7 @@ public class IfDefMetaData extends MetaData
             );
         }
         name = getUniqueAttribute(element, NAME_ATTRIBUTE_NAME);
-        value = getUniqueAttribute(element, VALUE_ATTRIBUTE_NAME);
+        value = getOptionalAttribute(element, VALUE_ATTRIBUTE_NAME);
         this.element = element;
     }
     
@@ -211,8 +220,10 @@ public class IfDefMetaData extends MetaData
         buf.append('<').append(IFDEF_TAG_NAME);
         buf.append(' ').append(NAME_ATTRIBUTE_NAME)
             .append("=\"").append(name).append("\"");
-        buf.append(' ').append(VALUE_ATTRIBUTE_NAME)
-            .append("=\"").append(value).append("\"");
+        if(value != null){
+            buf.append(' ').append(VALUE_ATTRIBUTE_NAME)
+                .append("=\"").append(value).append("\"");
+        }
         buf.append(">");
         if(childrenMetaData.size() != 0){
             buf.append(LINE_SEPARATOR);

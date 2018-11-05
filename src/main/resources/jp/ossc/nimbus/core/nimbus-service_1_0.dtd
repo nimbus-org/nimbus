@@ -663,4 +663,4 @@ service要素とは異なる点です。
 
 <!-- value属性は、条件となる環境変数値を定義します。
 -->
-<!ATTLIST ifdef value CDATA #REQUIRED>
+<!ATTLIST ifdef value CDATA #IMPLIED>
