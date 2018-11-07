@@ -653,7 +653,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     + scheduleTableSchema.rowVersion + ','
                     + scheduleTableSchema.updateUserId + ','
                     + scheduleTableSchema.updateTime
-                    + ") values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'0','" + updateUserId + "',?)"
+                    + ") values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,0,'" + updateUserId + "',?)"
             );
             ps2 = con.prepareStatement(
                 "insert into " + scheduleDependsTableSchema.table
@@ -666,7 +666,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     + scheduleDependsTableSchema.rowVersion + ','
                     + scheduleDependsTableSchema.updateUserId + ','
                     + scheduleDependsTableSchema.updateTime
-                    + ") values(?,?,?,?,?,'0','" + updateUserId + "',?)"
+                    + ") values(?,?,?,?,?,0,'" + updateUserId + "',?)"
             );
             ps3 = con.prepareStatement(
                 "select " + scheduleGroupDependsMasterTableSchema.dependsGroupId + ','
@@ -683,7 +683,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     + scheduleGroupDependsTableSchema.rowVersion + ','
                     + scheduleGroupDependsTableSchema.updateUserId + ','
                     + scheduleGroupDependsTableSchema.updateTime
-                    + ") values(?,?,?,'0','" + updateUserId + "',?)"
+                    + ") values(?,?,?,0,'" + updateUserId + "',?)"
             );
             ps5 = con.prepareStatement(
                 "insert into " + scheduleGroupTableSchema.table
@@ -694,7 +694,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     + scheduleGroupTableSchema.rowVersion + ','
                     + scheduleGroupTableSchema.updateUserId + ','
                     + scheduleGroupTableSchema.updateTime
-                    + ") values(?,?,?,'0','" + updateUserId + "',?)"
+                    + ") values(?,?,?,0,'" + updateUserId + "',?)"
             );
             List result = new ArrayList();
             Map groupMap = new HashMap();
@@ -2752,8 +2752,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
         PreparedStatement st3InGroup = null;
         Statement st3GroupOnGroup = null;
         ResultSet rs = null;
+        StringBuilder buf = new StringBuilder();
         try{
-            StringBuilder buf = new StringBuilder();
             // 1スケジュール - 1スケジュール
             // 自分より前の時間で、自分が依存するスケジュールの数を問い合わせる
             buf.append("select count(1) from ").append(scheduleTableSchema.table).append(" A,")
@@ -3517,7 +3517,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
             
             return result;
         }catch(SQLException e){
-            throw new ScheduleManageException(e);
+            throw new ScheduleManageException("query=" + buf.toString(), e);
         }finally{
             if(rs != null){
                 try{
@@ -4770,7 +4770,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     + scheduleTableSchema.rowVersion + ','
                     + scheduleTableSchema.updateUserId + ','
                     + scheduleTableSchema.updateTime
-                    + ") values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'0','" + updateUserId + "',?)"
+                    + ") values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,0,'" + updateUserId + "',?)"
             );
             ps2 = con.prepareStatement(
                 "insert into " + scheduleDependsTableSchema.table
@@ -4783,7 +4783,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     + scheduleDependsTableSchema.rowVersion + ','
                     + scheduleDependsTableSchema.updateUserId + ','
                     + scheduleDependsTableSchema.updateTime
-                    + ") values(?,?,?,?,?,'0','" + updateUserId + "',?)"
+                    + ") values(?,?,?,?,?,0,'" + updateUserId + "',?)"
             );
             ps3 = con.prepareStatement(
                 "select " + scheduleGroupDependsMasterTableSchema.dependsGroupId
@@ -4799,7 +4799,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     + scheduleGroupDependsTableSchema.rowVersion + ','
                     + scheduleGroupDependsTableSchema.updateUserId + ','
                     + scheduleGroupDependsTableSchema.updateTime
-                    + ") values(?,?,?,'0','" + updateUserId + "',?)"
+                    + ") values(?,?,?,0,'" + updateUserId + "',?)"
             );
             ps5 = con.prepareStatement(
                 "insert into " + scheduleGroupTableSchema.table
@@ -4810,7 +4810,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     + scheduleGroupTableSchema.rowVersion + ','
                     + scheduleGroupTableSchema.updateUserId + ','
                     + scheduleGroupTableSchema.updateTime
-                    + ") values(?,?,?,'0','" + updateUserId + "',?)"
+                    + ") values(?,?,?,0,'" + updateUserId + "',?)"
             );
             addSchedule(
                 st,
@@ -4944,11 +4944,11 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     + scheduleTableSchema.checkState + "='"
                     + scheduleTableSchema.getCheckStateString(Schedule.CHECK_STATE_INITIAL) + "',"
                     + scheduleTableSchema.output + "=?,"
-                    + scheduleTableSchema.rowVersion + "='" + (rowVersion + 1) + "',"
+                    + scheduleTableSchema.rowVersion + "=" + (rowVersion + 1) + ","
                     + scheduleTableSchema.updateUserId + "='" + updateUserId + "',"
                     + scheduleTableSchema.updateTime + "=?"
                     + " where " + scheduleTableSchema.id + "=? and "
-                    + scheduleTableSchema.rowVersion + "='" + rowVersion + '\''
+                    + scheduleTableSchema.rowVersion + "=" + rowVersion
             );
             int index = 0;
             final SimpleDateFormat format = new SimpleDateFormat(dateFormat);
@@ -5529,11 +5529,11 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     + " set " + scheduleTableSchema.state + "=?,"
                     + (isUpdateExecuteStartTime ? scheduleTableSchema.executeStartTime + "=?," : "")
                     + (isUpdateExecuteEndTime ? scheduleTableSchema.executeEndTime + "=?," : "")
-                    + scheduleTableSchema.rowVersion + "='" + (rowVersion + 1) + "',"
+                    + scheduleTableSchema.rowVersion + "=" + (rowVersion + 1) + ","
                     + scheduleTableSchema.updateUserId + "='" + updateUserId + "',"
                     + scheduleTableSchema.updateTime + "=?"
                     + " where " + scheduleTableSchema.id + "=? and "
-                    + scheduleTableSchema.rowVersion + "='" + rowVersion + '\''
+                    + scheduleTableSchema.rowVersion + "=" + rowVersion
             );
             int i = 0;
             st.setString(++i, newStateStr);
@@ -5640,12 +5640,12 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     + " set " + scheduleTableSchema.state + "=?,"
                     + (isUpdateExecuteStartTime ? scheduleTableSchema.executeStartTime + "=?," : "")
                     + (isUpdateExecuteEndTime ? scheduleTableSchema.executeEndTime + "=?," : "")
-                    + scheduleTableSchema.rowVersion + "='" + (rowVersion + 1) + "',"
+                    + scheduleTableSchema.rowVersion + "=" + (rowVersion + 1) + ","
                     + scheduleTableSchema.updateUserId + "='" + updateUserId + "',"
                     + scheduleTableSchema.updateTime + "=?"
                     + " where " + scheduleTableSchema.id + "=? and "
                     + scheduleTableSchema.state + "=? and "
-                    + scheduleTableSchema.rowVersion + "='" + rowVersion + '\''
+                    + scheduleTableSchema.rowVersion + "=" + rowVersion
             );
             int i = 0;
             st.setString(++i, newStateStr);
@@ -5754,12 +5754,12 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     + (isUpdateExecuteStartTime ? scheduleTableSchema.executeStartTime + "=?," : "")
                     + (isUpdateExecuteEndTime ? scheduleTableSchema.executeEndTime + "=?," : "")
                     + scheduleTableSchema.output + "=?,"
-                    + scheduleTableSchema.rowVersion + "='" + (rowVersion + 1) + "',"
+                    + scheduleTableSchema.rowVersion + "=" + (rowVersion + 1) + ","
                     + scheduleTableSchema.updateUserId + "='" + updateUserId + "',"
                     + scheduleTableSchema.updateTime + "=?"
                     + " where " + scheduleTableSchema.id + "=? and "
                     + scheduleTableSchema.state + "=? and "
-                    + scheduleTableSchema.rowVersion + "='" + rowVersion + '\''
+                    + scheduleTableSchema.rowVersion + "=" + rowVersion
             );
             int i = 0;
             st.setString(++i, newStateStr);
@@ -5871,11 +5871,11 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     + scheduleTableSchema.output + "=?,"
                     + (isUpdateExecuteStartTime ? scheduleTableSchema.executeStartTime + "=?," : "")
                     + (isUpdateExecuteEndTime ? scheduleTableSchema.executeEndTime + "=?," : "")
-                    + scheduleTableSchema.rowVersion + "='" + (rowVersion + 1) + "',"
+                    + scheduleTableSchema.rowVersion + "=" + (rowVersion + 1) + ","
                     + scheduleTableSchema.updateUserId + "='" + updateUserId + "',"
                     + scheduleTableSchema.updateTime + "=?"
                     + " where " + scheduleTableSchema.id + "=? and "
-                    + scheduleTableSchema.rowVersion + "='" + rowVersion + '\''
+                    + scheduleTableSchema.rowVersion + "=" + rowVersion
             );
             int i = 0;
             st.setString(++i, newStateStr);
@@ -5978,7 +5978,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
             st = con.prepareStatement(
                 "update " + scheduleTableSchema.table
                     + " set " + scheduleTableSchema.controlState + "=?,"
-                    + scheduleTableSchema.rowVersion + "='" + (rowVersion + 1) + "',"
+                    + scheduleTableSchema.rowVersion + "=" + (rowVersion + 1) + ","
                     + scheduleTableSchema.updateUserId + "='" + updateUserId + "',"
                     + scheduleTableSchema.updateTime + "=?"
                     + " where " + scheduleTableSchema.id + "=?"
@@ -6100,7 +6100,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
             st = con.prepareStatement(
                 "update " + scheduleTableSchema.table
                     + " set " + scheduleTableSchema.controlState + "=?,"
-                    + scheduleTableSchema.rowVersion + "='" + (rowVersion + 1) + "',"
+                    + scheduleTableSchema.rowVersion + "=" + (rowVersion + 1) + ","
                     + scheduleTableSchema.updateUserId + "='" + updateUserId + "',"
                     + scheduleTableSchema.updateTime + "=?"
                     + " where " + scheduleTableSchema.id + "=? and "
