@@ -6247,7 +6247,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
             input = in;
             resourceManager = rm;
             this.monitor = monitor;
-            interpreterContext = new HashMap();
+            interpreterContext = new InterpreterContext();
             interpreterContext.put(INPUT, input);
             if(stepNames != null){
                 Iterator namse = stepNames.iterator();
@@ -6349,6 +6349,24 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
         
         public Map getInterpreterContext(){
             return interpreterContext;
+        }
+        
+        public class InterpreterContext extends HashMap{
+            
+            private static final long serialVersionUID = -7004254995623566269L;
+            
+            public Object getThis(){
+                return FlowContext.this.getThis();
+            }
+            public Object getInput(){
+                return FlowContext.this.getInput();
+            }
+            public Object getVar(String name){
+                return FlowContext.this.getVar(name);
+            }
+            public Object getInputDef(String name){
+                return FlowContext.this.getInputDef(name);
+            }
         }
     }
 
