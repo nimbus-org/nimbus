@@ -587,7 +587,7 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
     
     // PropertySchemaのJavaDoc
     public Class getType(){
-        return type;
+        return type == null ? Object.class : type;
     }
     
     public boolean isPrimaryKey(){
