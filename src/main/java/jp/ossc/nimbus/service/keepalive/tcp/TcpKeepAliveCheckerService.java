@@ -167,7 +167,7 @@ public class TcpKeepAliveCheckerService extends AbstractKeepAliveCheckerService 
                 dis = new DataInputStream(socket.getInputStream());
             }
             if (dos != null) {
-                dos.write(assertBytes);
+                dos.write(requestBytes);
             }
             if (dis != null) {
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
