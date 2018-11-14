@@ -199,6 +199,7 @@ public class ClientConnectionImpl implements ClientConnection{
             return;
         }
         serverConnection.startReceive(this.id, from);
+        isStartReceive = true;
     }
     
     public boolean isStartReceive(){
@@ -213,6 +214,7 @@ public class ClientConnectionImpl implements ClientConnection{
             return;
         }
         serverConnection.stopReceive(this.id);
+        isStartReceive = false;
     }
     
     public Set getSubjects(){
@@ -258,6 +260,7 @@ public class ClientConnectionImpl implements ClientConnection{
         if(isConnected){
             serverConnection.close(this.id);
         }
+        isStartReceive = false;
         isConnected = false;
     }
     

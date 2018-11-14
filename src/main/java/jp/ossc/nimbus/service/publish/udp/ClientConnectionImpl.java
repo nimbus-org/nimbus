@@ -742,16 +742,12 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
             send(new StartReceiveMessage(from), isAcknowledge);
             isStartReceive = true;
         }catch(SocketTimeoutException e){
-            isStartReceive = false;
             throw new MessageSendException(e);
         }catch(SocketException e){
-            isStartReceive = false;
             throw new MessageSendException(e);
         }catch(IOException e){
-            isStartReceive = false;
             throw new MessageSendException(e);
         }catch(ClassNotFoundException e){
-            isStartReceive = false;
             throw new MessageSendException(e);
         }
     }
@@ -982,6 +978,7 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
                 );
             }
         }
+        isStartReceive = false;
         isConnected = false;
         if(serviceName != null){
             ServiceManagerFactory.unregisterService(

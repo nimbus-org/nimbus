@@ -864,6 +864,7 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
             socket = null;
         }
         isClosing = false;
+        isStartReceive = false;
         isConnected = false;
     }
     
