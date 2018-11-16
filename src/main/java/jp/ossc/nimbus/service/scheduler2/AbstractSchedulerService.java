@@ -92,6 +92,8 @@ public abstract class AbstractSchedulerService extends ServiceBase
     protected ServiceName timeServiceName;
     protected Time time;
     
+    protected boolean isControlCluster = true;
+    
     // AbstractSchedulerServiceMBeanのJavaDoc
     public void setScheduleTickerInterval(long interval){
         scheduleTickerInterval = interval;
@@ -191,6 +193,15 @@ public abstract class AbstractSchedulerService extends ServiceBase
         return timeServiceName;
     }
     
+    // AbstractSchedulerServiceMBeanのJavaDoc
+    public boolean isControlCluster(){
+        return isControlCluster;
+    }
+    // AbstractSchedulerServiceMBeanのJavaDoc
+    public void setControlCluster(boolean isControl){
+        isControlCluster = isControl;
+    }
+    
     /**
      * サービスの生成前処理を行う。<p>
      *
@@ -272,12 +283,11 @@ public abstract class AbstractSchedulerService extends ServiceBase
         
         if(clusterServiceName != null){
             cluster = (ClusterService)ServiceManagerFactory.getServiceObject(clusterServiceName);
-            if(cluster.isJoin()){
-                throw new IllegalArgumentException("ClusterService already join.");
-            }
             clusterListener = new ClusterListener();
             cluster.addClusterListener(clusterListener);
-            cluster.join();
+            if(isControlCluster && !cluster.isJoin()){
+                cluster.join();
+            }
         }else{
             scheduleTicker.resume();
         }
@@ -301,7 +311,9 @@ public abstract class AbstractSchedulerService extends ServiceBase
         if(cluster != null){
             cluster.removeClusterListener(clusterListener);
             clusterListener = null;
-            cluster.leave();
+            if(isControlCluster && cluster.isJoin()){
+                cluster.leave();
+            }
             cluster = null;
         }
         
