@@ -229,6 +229,21 @@ public interface AbstractSchedulerServiceMBean extends ServiceBaseMBean{
     public ServiceName getClusterServiceName();
     
     /**
+     * このサービスと連動して、クラスタの参加を制御するかどうかを判定する。<p>
+     *
+     * @return trueの場合、クラスタの参加を制御する
+     */
+    public boolean isControlCluster();
+    
+    /**
+     * このサービスと連動して、クラスタの参加を制御するかどうかを設定する。<p>
+     * デフォルトは、trueで制御する。<br>
+     *
+     * @param isControl クラスタの参加を制御する場合、true
+     */
+    public void setControlCluster(boolean isControl);
+    
+    /**
      * {@link jp.ossc.nimbus.service.system.Time Time}サービスのサービス名を設定する。<p>
      *
      * @param name Timeサービスのサービス名
