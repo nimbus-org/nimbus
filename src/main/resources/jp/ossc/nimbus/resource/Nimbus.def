@@ -466,6 +466,7 @@ TC___00020,Testcase end error : ScenarioGroupId=@0\\, ScenarioId=@1\\, TestcaseI
 TC___00021,Action excute : ActionId=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 TC___00022,Action excute error : ActionId=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 TC___00023,EvaluateAction result is false: ActionId=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+TA___00001,It failed to write file : ActionId=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 RPC__00001,Processing time exceeded threshold. timestamp=@0\\, elapsed=@1\\, thread=@2\\, args=@3\\, stacktrace=@4,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
 RPC__00002,Processing time exceeded threshold. timestamp=@0\\, elapsed=@1\\, thread=@2\\, args=@3\\, stacktrace=@4,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 RPC__00003,Processing time exceeded threshold. timestamp=@0\\, elapsed=@1\\, thread=@2\\, args=@3\\, stacktrace=@4,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY

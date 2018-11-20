@@ -448,8 +448,8 @@ TC___00019,テストケースを終了します。 : ScenarioGroupId=@0\\, Scena
 TC___00020,テストケースの終了でエラーが発生しました。 : ScenarioGroupId=@0\\, ScenarioId=@1\\, TestcaseId=@2
 TC___00021,アクションを実行します。 : ActionId=@0
 TC___00022,アクションの実行でエラーが発生しました。 : ActionId=@0
-TC___00022,アクションの実行でエラーが発生しました。 : ActionId=@0
 TC___00023,評価アクションの結果がFalseでした。 : ActionId=@0
+TA___00001,ファイル書込みに失敗しました。 : File=@0
 RPC__00001,処理時間が閾値を越えました。timestamp=@0\\, elapsed=@1\\, thread=@2\\, args=@3\\, stacktrace=@4
 RPC__00002,処理時間が閾値を越えました。timestamp=@0\\, elapsed=@1\\, thread=@2\\, args=@3\\, stacktrace=@4
 RPC__00003,処理時間が閾値を越えました。timestamp=@0\\, elapsed=@1\\, thread=@2\\, args=@3\\, stacktrace=@4
