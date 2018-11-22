@@ -4249,8 +4249,13 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
         }
 
         public void importXML(Element element) throws DeploymentException{
-            name = getUniqueAttribute(element, NAME_ATTRIBUTE);
+            name = getOptionalAttribute(element, NAME_ATTRIBUTE);
             stepName = getOptionalAttribute(element, STEPNAME_ATTRIBUTE, name);
+            if(stepName == null){
+                throw new DeploymentException(
+                    "it is necessary to specify \"" + NAME_ATTRIBUTE + "\" or  \"" + STEPNAME_ATTRIBUTE + "\" of <" + REPLY_ELEMENT + '>'
+                );
+            }
             coverage.setElementName("<" + REPLY_ELEMENT + " " + STEPNAME_ATTRIBUTE + "=\"" + stepName + "\">");
 
             final String journalStr = MetaData.getOptionalAttribute(
@@ -4337,8 +4342,17 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                                 }
                             }
                             stepContext.result = asynchContext.getBeanFlowInvoker().getAsynchReply(asynchContext, context.monitor, timeoutVal, isCancel);
+                            if(asynchContexts.size() != 0 && name != null && name.equals(stepName)){
+                                throw new DeploymentException(
+                                    "\"" + NAME_ATTRIBUTE + "\" and \"" + STEPNAME_ATTRIBUTE + "\" are the same. Explicitly \"" + STEPNAME_ATTRIBUTE + "\" is not specified or the same value as \"" + NAME_ATTRIBUTE + "\" is specified. " + NAME_ATTRIBUTE + "=" + name
+                                );
+                            }
                         }
                     }
+                }else{
+                    throw new DeploymentException(
+                        "The specified \"" + STEPNAME_ATTRIBUTE + "\" is not <" + CALL_FLOW_ELEMENT + ">. " + STEPNAME_ATTRIBUTE + "=" + stepName
+                    );
                 }
                 if(journal != null){
                     journal.addInfo(
@@ -4377,7 +4391,9 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                 if(!isCatch){
                     throwException(th);
                 }
-                context.put(name, stepContext);
+                if(name != null){
+                    context.put(name, stepContext);
+                }
             }finally{
                 try{
                     if(finallyStep != null){
@@ -4391,7 +4407,9 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                     }
                 }
             }
-            context.put(name, stepContext);
+            if(name != null){
+                context.put(name, stepContext);
+            }
             return stepContext;
         }
     }
