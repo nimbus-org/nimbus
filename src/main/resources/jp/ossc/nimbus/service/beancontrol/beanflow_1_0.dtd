@@ -374,7 +374,7 @@ The DOCTYPE is:
 
 <!-- name属性は、reply要素のステップ名を定義します。
 -->
-<!ATTLIST reply name CDATA #REQUIRED>
+<!ATTLIST reply name CDATA #IMPLIED>
 
 <!-- stepname属性は、reply要素で取得する非同期子フロー呼び出しであるcallflow要素のステップ名を定義します。
  定義しない場合は、name属性で指定したステップ名がそのままcallflow要素のステップ名になります。
