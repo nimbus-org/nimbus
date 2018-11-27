@@ -128,9 +128,9 @@ public class VelocityTemplateEngineService extends ServiceBase implements Templa
         engine = new VelocityEngine();
         Properties props = properties == null ? new Properties() : properties;
         props.setProperty(RuntimeConstants.RESOURCE_LOADER, "string, file");
-        File resourceDir = templateFileRootDirectory;
         if(templateFileRootDirectory != null){
-            if(!templateFileRootDirectory.exists()){
+            File resourceDir = templateFileRootDirectory;
+            if(!resourceDir.exists()){
                 if(getServiceNameObject() != null){
                     ServiceMetaData metaData = ServiceManagerFactory.getServiceMetaData(getServiceNameObject());
                     if(metaData != null){
@@ -139,7 +139,7 @@ public class VelocityTemplateEngineService extends ServiceBase implements Templa
                             String filePath = loader.getServiceURL().getFile();
                             if(filePath != null){
                                 File serviceDefDir = new File(filePath).getParentFile();
-                                File dir = new File(serviceDefDir, templateFileRootDirectory.getPath());
+                                File dir = new File(serviceDefDir, resourceDir.getPath());
                                 if(dir.exists()){
                                     resourceDir = dir;
                                 }
@@ -148,8 +148,8 @@ public class VelocityTemplateEngineService extends ServiceBase implements Templa
                     }
                 }
             }
+            props.setProperty(RuntimeConstants.FILE_RESOURCE_LOADER_PATH, resourceDir.getCanonicalPath());
         }
-        props.setProperty(RuntimeConstants.FILE_RESOURCE_LOADER_PATH, resourceDir.getCanonicalPath());
         props.setProperty("string." + RuntimeConstants.RESOURCE_LOADER + '.' + StringResourceLoader.REPOSITORY_STATIC, "false");
         stringRespositoryName = props.getProperty(StringResourceLoader.REPOSITORY_NAME);
         if(stringRespositoryName == null){
