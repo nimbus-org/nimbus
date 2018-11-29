@@ -91,4 +91,5 @@
   <classpathentry kind="var" path="M2_REPO/com/googlecode/javaewah/JavaEWAH/0.7.9/JavaEWAH-0.7.9.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/httpcomponents/httpclient/4.1.3/httpclient-4.1.3.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/httpcomponents/httpcore/4.1.4/httpcore-4.1.4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/io/github/java-diff-utils/java-diff-utils/4.0/java-diff-utils-4.0.jar"/>
 </classpath>

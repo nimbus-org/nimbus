@@ -42,6 +42,11 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 public interface TextDiffGetActionServiceMBean extends ServiceBaseMBean{
     
     /**
+     * JavaDiffUtils用 差分アルゴリズムタイプ
+     */
+    public static int DIFF_ALGORITHM_TYPE_JAVA_DIFF_UTILS = 0;
+    
+    /**
      * Jgit Histgram用 差分アルゴリズムタイプ
      */
     public static int DIFF_ALGORITHM_TYPE_JGIT_HISTGRAM = 1;

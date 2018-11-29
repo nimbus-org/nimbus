@@ -40,9 +40,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.io.Reader;
+import java.io.StringWriter;
 import java.io.Writer;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.jgit.diff.DiffAlgorithm;
 import org.eclipse.jgit.diff.DiffFormatter;
@@ -51,6 +55,10 @@ import org.eclipse.jgit.diff.HistogramDiff;
 import org.eclipse.jgit.diff.MyersDiff;
 import org.eclipse.jgit.diff.RawText;
 import org.eclipse.jgit.diff.RawTextComparator;
+
+import com.github.difflib.DiffUtils;
+import com.github.difflib.UnifiedDiffUtils;
+import com.github.difflib.patch.Patch;
 
 import jp.ossc.nimbus.core.ServiceBase;
 import jp.ossc.nimbus.service.test.ChainTestAction;
@@ -70,9 +78,7 @@ public class TextDiffGetActionService extends ServiceBase implements TestAction,
     private static final long serialVersionUID = 7682175982096275432L;
     protected double expectedCost = Double.NaN;
     
-    protected static byte[] LINE_SEPARATOR = System.getProperty("line.separator").getBytes();
-    
-    protected int diffAlgorithmType = DIFF_ALGORITHM_TYPE_JGIT_HISTGRAM;
+    protected int diffAlgorithmType = DIFF_ALGORITHM_TYPE_JAVA_DIFF_UTILS;
     protected String textFileEncoding;
     protected String diffFileEncoding;
     
@@ -182,6 +188,9 @@ public class TextDiffGetActionService extends ServiceBase implements TestAction,
                 }
             }
             switch (diffAlgorithmType) {
+            case DIFF_ALGORITHM_TYPE_JAVA_DIFF_UTILS:
+                javaDiffUtils(diffFile, srcFile, dstFile);
+                break;
             case DIFF_ALGORITHM_TYPE_JGIT_HISTGRAM:
                 histgram(diffFile, srcFile, dstFile);
                 break;
@@ -279,6 +288,39 @@ public class TextDiffGetActionService extends ServiceBase implements TestAction,
                 writer.flush();
                 writer.close();
                 writer = null;
+            }
+        }
+    }
+    
+    protected void javaDiffUtils(File diffFile, File srcFile, File dstFile) throws Exception {
+        List srcLines = getLineStrings(srcFile);
+        List dstLines = getLineStrings(dstFile);
+        Patch diff = DiffUtils.diff(srcLines, dstLines);
+        List unifiedDiffs = UnifiedDiffUtils.generateUnifiedDiff(srcFile.getName(), dstFile.getName(), srcLines, diff, 0);
+        StringWriter sw = new StringWriter();
+        PrintWriter writer = new PrintWriter(sw);
+        for(int i = 0; i < unifiedDiffs.size(); i++) {
+            writer.println(unifiedDiffs.get(i));
+        }
+        createDiffText(diffFile, sw.toString());
+    }
+    
+    private List getLineStrings(File file) throws Exception {
+        BufferedReader reader = null;
+        try {
+            Reader isr = textFileEncoding == null ? new InputStreamReader(new FileInputStream(file))
+                    : new InputStreamReader(new FileInputStream(file), textFileEncoding);
+            reader = new BufferedReader(isr);
+            List result = new ArrayList();
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                result.add(line);
+            }
+            return result;
+        } finally {
+            if(reader != null) {
+                reader.close();
+                reader = null;
             }
         }
     }
