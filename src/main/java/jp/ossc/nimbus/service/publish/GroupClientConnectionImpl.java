@@ -41,6 +41,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.regex.Pattern;
 import java.io.Serializable;
+import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 import jp.ossc.nimbus.util.net.GlobalUID;
@@ -86,7 +87,7 @@ public class GroupClientConnectionImpl implements ClientConnection, Serializable
     public void connect(Object id) throws ConnectException{
         if(id == null){
             try{
-                this.id = new GlobalUID();
+                this.id = new GlobalUID(InetAddress.getLocalHost());
             }catch(UnknownHostException e){
                 throw new ConnectException(e);
             }
