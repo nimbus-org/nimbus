@@ -38,6 +38,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
@@ -56,6 +57,8 @@ import org.eclipse.jgit.diff.MyersDiff;
 import org.eclipse.jgit.diff.RawText;
 import org.eclipse.jgit.diff.RawTextComparator;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.difflib.DiffUtils;
 import com.github.difflib.UnifiedDiffUtils;
 import com.github.difflib.patch.Patch;
@@ -121,12 +124,12 @@ public class TextDiffGetActionService extends ServiceBase implements TestAction,
      * リソースのフォーマットは、以下。<br>
      * 
      * <pre>
-     * srcFilePath
-     * dstFilePath
+     * original
+     * revised
      * </pre>
      * 
-     * srcFilePathは、比較元のテキストファイルのパスを指定する。<br>
-     * dstFilePathは、比較先のテキストファイルのパスを指定する。<br>
+     * originalは、比較元となるファイル、またはファイルオブジェクトを指定するもので、ファイルの場合は比較元のテキストファイルのパスを指定する。ファイルオブジェクトの場合は同一テストケース中に、このTestActionより前に、比較元となるファイルオブジェクトを戻すテストアクションが存在する場合は、そのアクションIDを指定する。また、同一シナリオ中に、このTestActionより前に、比較元となるファイルオブジェクトを戻すテストアクションが存在する場合は、テストケースIDとアクションIDをカンマ区切りで指定する。<br>
+     * revisedは、比較元となるファイル、またはファイルオブジェクトを指定するもので、ファイルの場合は比較元のテキストファイルのパスを指定する。ファイルオブジェクトの場合は同一テストケース中に、このTestActionより前に、比較元となるファイルオブジェクトを戻すテストアクションが存在する場合は、そのアクションIDを指定する。また、同一シナリオ中に、このTestActionより前に、比較元となるファイルオブジェクトを戻すテストアクションが存在する場合は、テストケースIDとアクションIDをカンマ区切りで指定する。<br>
      *
      * @param context コンテキスト
      * @param actionId アクションID
@@ -143,12 +146,12 @@ public class TextDiffGetActionService extends ServiceBase implements TestAction,
      * リソースのフォーマットは、以下。<br>
      * 
      * <pre>
-     * srcFilePath
-     * dstFilePath
+     * original
+     * revised
      * </pre>
      * 
-     * srcFilePathは、比較元のテキストファイルのパスを指定する。<br>
-     * dstFilePathは、比較先のテキストファイルのパスを指定する。preResultを使用する場合は、空行を指定する。<br>
+     * originalは、比較元となるファイル、またはファイルオブジェクトを指定するもので、ファイルの場合は比較元のテキストファイルのパスを指定する。ファイルオブジェクトの場合は同一テストケース中に、このTestActionより前に、比較元となるファイルオブジェクトを戻すテストアクションが存在する場合は、そのアクションIDを指定する。また、同一シナリオ中に、このTestActionより前に、比較元となるファイルオブジェクトを戻すテストアクションが存在する場合は、テストケースIDとアクションIDをカンマ区切りで指定する。<br>
+     * revisedは、比較元となるファイル、またはファイルオブジェクトを指定するもので、ファイルの場合は比較元のテキストファイルのパスを指定する。ファイルオブジェクトの場合は同一テストケース中に、このTestActionより前に、比較元となるファイルオブジェクトを戻すテストアクションが存在する場合は、そのアクションIDを指定する。また、同一シナリオ中に、このTestActionより前に、比較元となるファイルオブジェクトを戻すテストアクションが存在する場合は、テストケースIDとアクションIDをカンマ区切りで指定する。preResultを使用する場合は、空行を指定する。<br>
      * 
      * @param context コンテキスト
      * @param actionId アクションID
@@ -159,43 +162,27 @@ public class TextDiffGetActionService extends ServiceBase implements TestAction,
      */
     public Object execute(TestContext context, String actionId, Object preResult, Reader resource) throws Exception{
         BufferedReader br = new BufferedReader(resource);
-        File diffFile = new File(context.getCurrentDirectory(), actionId + ".diff");
-        File srcFile = null;
-        File dstFile = null;
-        if(preResult != null && preResult instanceof File) {
-            dstFile = (File)preResult;
-        }
         try {
-            final String srcFilePath = br.readLine();
-            if (srcFilePath == null) {
-                throw new Exception("Unexpected EOF on srcFilePath");
+            File diffFile = new File(context.getCurrentDirectory(), actionId + ".diff");
+            String orgLine = br.readLine();
+            File orgFile = getTargetFile(context, orgLine);
+            File revFile = null;
+            if(preResult != null && preResult instanceof File) {
+                revFile = (File)preResult;
             }
-            srcFile = new File(srcFilePath);
-            if (!srcFile.exists()) {
-                srcFile = new File(context.getCurrentDirectory(), srcFilePath);
-            }
-            if (!srcFile.exists()) {
-                throw new Exception("File not found. srcFilePath=" + srcFilePath);
-            }
-            final String dstFilePath = br.readLine();
-            if(dstFilePath != null && dstFilePath.length() != 0){
-                dstFile = new File(dstFilePath);
-                if (!dstFile.exists()) {
-                    dstFile = new File(context.getCurrentDirectory(), dstFilePath);
-                }
-                if (!dstFile.exists()) {
-                    throw new Exception("File not found. dstFilePath=" + dstFilePath);
-                }
+            if(revFile == null) {
+                String revLine = br.readLine();
+                revFile = getTargetFile(context, revLine);
             }
             switch (diffAlgorithmType) {
             case DIFF_ALGORITHM_TYPE_JAVA_DIFF_UTILS:
-                javaDiffUtils(diffFile, srcFile, dstFile);
+                javaDiffUtils(diffFile, orgFile, revFile);
                 break;
             case DIFF_ALGORITHM_TYPE_JGIT_HISTGRAM:
-                histgram(diffFile, srcFile, dstFile);
+                histgram(diffFile, orgFile, revFile);
                 break;
             case DIFF_ALGORITHM_TYPE_JGIT_MYERS:
-                myers(diffFile, srcFile, dstFile);
+                myers(diffFile, orgFile, revFile);
                 break;
             default:
                 throw new IllegalArgumentException("DiffAlgorithmType is illegal. DiffAlgorithmType=" + diffAlgorithmType);
@@ -207,16 +194,44 @@ public class TextDiffGetActionService extends ServiceBase implements TestAction,
         }
     }
     
-    protected void histgram(File diffFile, File srcFile, File dstFile) throws Exception {
+    protected File getTargetFile(TestContext context, String str) throws Exception {
+        Object actionResult = null;
+        if (str.indexOf(",") == -1) {
+            actionResult = context.getTestActionResult(str);
+        } else {
+            String[] ids = str.split(",");
+            if (ids.length == 2) {
+                actionResult = context.getTestActionResult(ids[0], ids[1]);
+            }
+        }
+        if (actionResult != null) {
+            if (actionResult instanceof File) {
+                return (File)actionResult;
+            } else {
+                throw new Exception("Target action result is not File Object. ActionId=" + str);
+            }
+        }
+        File result = new File(str);
+        if (!result.exists()) {
+            result = new File(context.getCurrentDirectory(), str);
+        }
+        if (result.exists()) {
+            return result;
+        } else {
+            throw new Exception("Target file is not found. args=" + str);
+        }
+    }
+    
+    protected void histgram(File diffFile, File orgFile, File revFile) throws Exception {
         DiffAlgorithm diffAlgorithm = new HistogramDiff();
-        RawText src = createRawText(srcFile);
-        RawText dst = createRawText(dstFile);
-        EditList editList = diffAlgorithm.diff(RawTextComparator.DEFAULT, src, dst);
+        RawText org = createRawText(orgFile);
+        RawText rev = createRawText(revFile);
+        EditList editList = diffAlgorithm.diff(RawTextComparator.DEFAULT, org, rev);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         DiffFormatter formatter = null;
         try {
             formatter = new DiffFormatter(baos);
-            formatter.format(editList, src, dst);
+            formatter.format(editList, org, rev);
             createDiffText(diffFile, baos.toString());
         } finally {
             if (formatter != null) {
@@ -230,15 +245,15 @@ public class TextDiffGetActionService extends ServiceBase implements TestAction,
         }
     }
     
-    protected void myers(File diffFile, File srcFile, File dstFile) throws Exception {
-        RawText src = createRawText(srcFile);
-        RawText dst = createRawText(dstFile);
-        EditList editList = MyersDiff.INSTANCE.diff(RawTextComparator.DEFAULT, src, dst);
+    protected void myers(File diffFile, File orgFile, File revFile) throws Exception {
+        RawText org = createRawText(orgFile);
+        RawText rev = createRawText(revFile);
+        EditList editList = MyersDiff.INSTANCE.diff(RawTextComparator.DEFAULT, org, rev);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         DiffFormatter formatter = null;
         try {
             formatter = new DiffFormatter(baos);
-            formatter.format(editList, src, dst);
+            formatter.format(editList, org, rev);
             createDiffText(diffFile, baos.toString());
         } finally {
             if (formatter != null) {
@@ -292,11 +307,11 @@ public class TextDiffGetActionService extends ServiceBase implements TestAction,
         }
     }
     
-    protected void javaDiffUtils(File diffFile, File srcFile, File dstFile) throws Exception {
-        List srcLines = getLineStrings(srcFile);
-        List dstLines = getLineStrings(dstFile);
-        Patch diff = DiffUtils.diff(srcLines, dstLines);
-        List unifiedDiffs = UnifiedDiffUtils.generateUnifiedDiff(srcFile.getName(), dstFile.getName(), srcLines, diff, 0);
+    protected void javaDiffUtils(File diffFile, File orgFile, File revFile) throws Exception {
+        List orgLines = getLineStrings(orgFile);
+        List revLines = getLineStrings(revFile);
+        Patch diff = DiffUtils.diff(orgLines, revLines);
+        List unifiedDiffs = UnifiedDiffUtils.generateUnifiedDiff(orgFile.getName(), revFile.getName(), orgLines, diff, 0);
         StringWriter sw = new StringWriter();
         PrintWriter writer = new PrintWriter(sw);
         for(int i = 0; i < unifiedDiffs.size(); i++) {
