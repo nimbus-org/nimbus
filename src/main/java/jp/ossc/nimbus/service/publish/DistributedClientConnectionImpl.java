@@ -37,6 +37,7 @@ import java.util.Set;
 import java.util.HashSet;
 import java.io.Serializable;
 import java.net.UnknownHostException;
+import java.net.InetAddress;
 
 import jp.ossc.nimbus.service.queue.AsynchContext;
 import jp.ossc.nimbus.service.queue.DefaultQueueService;
@@ -75,7 +76,7 @@ public class DistributedClientConnectionImpl implements ClientConnection, Serial
         Object tmpId = null;
         if(id == null){
             try{
-                tmpId = new GlobalUID();
+                tmpId = new GlobalUID(InetAddress.getLocalHost());
             }catch(UnknownHostException e){
                 throw new ConnectException(e);
             }
