@@ -900,6 +900,7 @@ public class ServerConnectionImpl implements ServerConnection{
         private long sendBufferCount;
         private long bufferStartTime = -1l;
         private ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        private boolean isClosing;
         
         public ClientImpl(SocketChannel sc){
             socketChannel = sc;
@@ -1189,6 +1190,10 @@ public class ServerConnectionImpl implements ServerConnection{
             close(false, null);
         }
         protected synchronized void close(boolean isClose, Throwable reason){
+            if(isClosing){
+                return;
+            }
+            isClosing = true;
             if(logger != null){
                 if(!isClose && clientClosedMessageId != null){
                     logger.write(
@@ -1204,6 +1209,19 @@ public class ServerConnectionImpl implements ServerConnection{
                     );
                 }
             }
+            final Set newClients = new LinkedHashSet();
+            if(clientAcceptor != null){
+                synchronized(clientAcceptor){
+                    newClients.addAll(clients);
+                    newClients.remove(ClientImpl.this);
+                    clients = newClients;
+                }
+            }else{
+                newClients.addAll(clients);
+                newClients.remove(ClientImpl.this);
+                clients = newClients;
+            }
+            clientMap.remove(id);
             if(subjects.size() != 0){
                 Iterator entries = subjects.entrySet().iterator();
                 while(entries.hasNext()){
@@ -1245,24 +1263,12 @@ public class ServerConnectionImpl implements ServerConnection{
                 }
                 socket = null;
             }
-            final Set newClients = new LinkedHashSet();
-            if(clientAcceptor != null){
-                synchronized(clientAcceptor){
-                    newClients.addAll(clients);
-                    newClients.remove(ClientImpl.this);
-                    clients = newClients;
-                }
-            }else{
-                newClients.addAll(clients);
-                newClients.remove(ClientImpl.this);
-                clients = newClients;
-            }
-            clientMap.remove(id);
             if(serverConnectionListeners != null){
                 for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
                     ((ServerConnectionListener)serverConnectionListeners.get(i)).onClose(ClientImpl.this);
                 }
             }
+            isClosing = false;
         }
         
         public String toString(){
