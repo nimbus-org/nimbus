@@ -1237,6 +1237,7 @@ public class ServerConnectionImpl implements ServerConnection{
         private int currentSequence = 0;
         private MessageCache sendMessageCache;
         private Object socketLock = new Object();
+        private boolean isClosing;
         
         public ClientImpl(SocketChannel sc, DatagramSocket ss){
             socketChannel = sc;
@@ -1635,6 +1636,10 @@ public class ServerConnectionImpl implements ServerConnection{
             close(false, null);
         }
         protected synchronized void close(boolean isClose, Throwable reason){
+            if(isClosing){
+                return;
+            }
+            isClosing = true;
             if(logger != null){
                 if(!isClose && clientClosedMessageId != null){
                     logger.write(
@@ -1650,6 +1655,12 @@ public class ServerConnectionImpl implements ServerConnection{
                     );
                 }
             }
+            final Set tmpClients = new LinkedHashSet();
+            tmpClients.addAll(clients);
+            tmpClients.remove(ClientImpl.this);
+            clients = tmpClients;
+            clientMap.remove(id);
+            newClients.remove(ClientImpl.this);
             if(subjects.size() != 0){
                 Iterator entries = subjects.entrySet().iterator();
                 while(entries.hasNext()){
@@ -1701,17 +1712,12 @@ public class ServerConnectionImpl implements ServerConnection{
                 sendSocket.close();
                 sendSocket = null;
             }
-            final Set tmpClients = new LinkedHashSet();
-            tmpClients.addAll(clients);
-            tmpClients.remove(ClientImpl.this);
-            clients = tmpClients;
-            clientMap.remove(id);
-            newClients.remove(ClientImpl.this);
             if(serverConnectionListeners != null){
                 for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
                     ((ServerConnectionListener)serverConnectionListeners.get(i)).onClose(ClientImpl.this);
                 }
             }
+            isClosing = false;
         }
         
         public String toString(){
