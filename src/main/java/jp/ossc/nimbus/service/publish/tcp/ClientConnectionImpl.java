@@ -72,6 +72,7 @@ import jp.ossc.nimbus.service.publish.ConnectException;
 import jp.ossc.nimbus.service.publish.MessageException;
 import jp.ossc.nimbus.service.publish.MessageSendException;
 import jp.ossc.nimbus.service.publish.MessageCommunicateException;
+import jp.ossc.nimbus.service.publish.ConnectionClosedException;
 import jp.ossc.nimbus.service.io.Externalizer;
 import jp.ossc.nimbus.util.SynchronizeMonitor;
 import jp.ossc.nimbus.util.WaitSynchronizeMonitor;
@@ -398,7 +399,7 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
     
     public void addSubject(String subject, String[] keys) throws MessageSendException{
         if(socket == null){
-            throw new MessageSendException("Not connected.");
+            throw new ConnectionClosedException();
         }
         if(subject == null){
             return;
@@ -435,7 +436,7 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
     
     public void removeSubject(String subject, String[] keys) throws MessageSendException{
         if(socket == null){
-            throw new MessageSendException("Not connected.");
+            throw new ConnectionClosedException();
         }
         if(subject == null){
             return;
@@ -476,7 +477,7 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
     
     private void startReceive(long from, boolean isRestart) throws MessageSendException{
         if(socket == null){
-            throw new MessageSendException("Not connected.");
+            throw new ConnectionClosedException();
         }
         if(!isRestart && isStartReceive){
             return;
@@ -508,7 +509,7 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
     
     public void stopReceive() throws MessageSendException{
         if(socket == null){
-            throw new MessageSendException("Not connected.");
+            throw new ConnectionClosedException();
         }
         if(!isStartReceive){
             return;

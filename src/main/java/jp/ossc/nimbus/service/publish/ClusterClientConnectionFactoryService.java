@@ -214,7 +214,7 @@ public class ClusterClientConnectionFactoryService extends ServiceBase
         
         public void addSubject(String subject, String[] keys) throws MessageSendException{
             if(!isConnected){
-                throw new MessageSendException("Not connected.");
+                throw new ConnectionClosedException();
             }
             if(connection == null){
                 if(subjects == null){
@@ -243,7 +243,7 @@ public class ClusterClientConnectionFactoryService extends ServiceBase
         
         public void removeSubject(String subject, String[] keys) throws MessageSendException{
             if(!isConnected){
-                throw new MessageSendException("Not connected.");
+                throw new ConnectionClosedException();
             }
             if(connection == null){
                 if(subjects != null){
@@ -272,7 +272,7 @@ public class ClusterClientConnectionFactoryService extends ServiceBase
         
         public void startReceive(long from) throws MessageSendException{
             if(!isConnected){
-                throw new MessageSendException("Not connected.");
+                throw new ConnectionClosedException();
             }
             if(connection != null){
                 connection.startReceive(from);
