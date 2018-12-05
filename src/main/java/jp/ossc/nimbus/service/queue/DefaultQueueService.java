@@ -183,7 +183,7 @@ public class DefaultQueueService extends ServiceBase
                     queueElements = Collections.synchronizedList(new ArrayList(initialCapacity));
                 }
             }else{
-                queueElements = Collections.synchronizedList(new ArrayList());
+                queueElements = Collections.synchronizedList(new LinkedList());
             }
         }
         if(cacheServiceName != null){
