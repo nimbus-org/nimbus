@@ -535,4 +535,14 @@ public interface SharedContextServiceMBean extends DefaultContextServiceMBean{
      * キャッシュのヒット率をリセットする。<p>
      */
     public void resetCacheHitRatio();
+    
+    /**
+     * 分散サーバとの通信の健全性をチェックする。<p>
+     * 
+     * @param isContainsClient 健全性をチェックする対象として、クライアントモードも含める場合は、true
+     * @param timeout タイムアウト
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public void healthCheck(boolean isContainsClient, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
 }
