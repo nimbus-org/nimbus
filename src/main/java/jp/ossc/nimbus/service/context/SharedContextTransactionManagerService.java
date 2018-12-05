@@ -55,6 +55,7 @@ public class SharedContextTransactionManagerService extends ServiceBase
     protected long transactionTimeout;
     protected Timer timer;
     protected int defaultLockMode = LOCK_MODE_PESSIMISTIC;
+    protected boolean isSupportTwoPhaseCommit;
     
     public void setTransactionTimeout(long timeout){
         transactionTimeout = timeout;
@@ -68,6 +69,13 @@ public class SharedContextTransactionManagerService extends ServiceBase
     }
     public int getDefaultLockMode(){
         return defaultLockMode;
+    }
+    
+    public void setSupportTwoPhaseCommit(boolean isSupport){
+        isSupportTwoPhaseCommit = isSupport;
+    }
+    public boolean isSupportTwoPhaseCommit(){
+        return isSupportTwoPhaseCommit;
     }
     
     public void createService() throws Exception{
@@ -397,7 +405,13 @@ public class SharedContextTransactionManagerService extends ServiceBase
                 oldValue = old;
             }
             public void commit() throws SharedContextSendException, SharedContextTimeoutException{
-                context.put(key, value, timeout);
+                long start = System.currentTimeMillis();
+                long curTimeout = timeout;
+                if(isSupportTwoPhaseCommit){
+                    context.healthCheck(true, curTimeout);
+                    curTimeout = timeout - (System.currentTimeMillis() - start);
+                }
+                context.put(key, value, curTimeout);
             }
             public void rollback() throws SharedContextSendException, SharedContextTimeoutException{
                 if(oldValue == null){
@@ -423,10 +437,16 @@ public class SharedContextTransactionManagerService extends ServiceBase
                 this.ifExists = ifExists;
             }
             public void commit() throws SharedContextSendException, SharedContextTimeoutException{
+                long start = System.currentTimeMillis();
+                long curTimeout = timeout;
+                if(isSupportTwoPhaseCommit){
+                    context.healthCheck(true, curTimeout);
+                    curTimeout = timeout - (System.currentTimeMillis() - start);
+                }
                 if(ifExists){
-                    context.updateIfExists(key, diff, timeout);
+                    context.updateIfExists(key, diff, curTimeout);
                 }else{
-                    context.update(key, diff, timeout);
+                    context.update(key, diff, curTimeout);
                 }
             }
             public void rollback() throws SharedContextSendException, SharedContextTimeoutException{
@@ -447,7 +467,13 @@ public class SharedContextTransactionManagerService extends ServiceBase
                 oldValue = old;
             }
             public void commit() throws SharedContextSendException, SharedContextTimeoutException{
-                context.remove(key, timeout);
+                long start = System.currentTimeMillis();
+                long curTimeout = timeout;
+                if(isSupportTwoPhaseCommit){
+                    context.healthCheck(true, curTimeout);
+                    curTimeout = timeout - (System.currentTimeMillis() - start);
+                }
+                context.remove(key, curTimeout);
             }
             public void rollback() throws SharedContextSendException, SharedContextTimeoutException{
                 context.put(key, oldValue, timeout);

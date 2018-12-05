@@ -45,4 +45,7 @@ public interface SharedContextTransactionManagerServiceMBean extends ServiceBase
     
     public void setDefaultLockMode(int lockMode);
     public int getDefaultLockMode();
+    
+    public void setSupportTwoPhaseCommit(boolean isSupport);
+    public boolean isSupportTwoPhaseCommit();
 }
