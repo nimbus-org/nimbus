@@ -31,13 +31,7 @@
  */
 package jp.ossc.nimbus.service.publish;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * {@link ServerConnection}を分散するServerConnectionインタフェース実装クラス。<p>
@@ -49,12 +43,14 @@ public class DistributedServerConnectionImpl implements ServerConnection{
     private ServerConnection templateConnection;
     private List connectionList = new ArrayList();
     private Map connctionMap = Collections.synchronizedMap(new HashMap());
+    private ServerConnectionBroadcaster broadcaster = new ServerConnectionBroadcaster();
     
     public void addServerConnection(ServerConnection connection){
         if(templateConnection == null){
             templateConnection = connection;
         }
         connectionList.add(new ServerConnectionImpl(connection));
+        connection.addServerConnectionListener(broadcaster);
     }
     
     public Message createMessage(String subject, String key) throws MessageCreateException{
@@ -89,37 +85,45 @@ public class DistributedServerConnectionImpl implements ServerConnection{
     }
     
     public void addServerConnectionListener(ServerConnectionListener listener){
-        templateConnection.addServerConnectionListener(listener);
+        broadcaster.addServerConnectionListener(listener);
     }
     
     public void removeServerConnectionListener(ServerConnectionListener listener){
-        templateConnection.removeServerConnectionListener(listener);
+        broadcaster.removeServerConnectionListener(listener);
     }
     
     public int getClientCount(){
-        int result = 0;
-        for(int i = 0; i < connectionList.size(); i++){
-            result += ((ServerConnectionImpl)connectionList.get(i)).getClientCount();
-            break;
-        }
-        return result;
+        return getClientIds().size();
     }
     
     public Set getClientIds(){
-        Set result = new HashSet();
+        Set result = null;
         for(int i = 0; i < connectionList.size(); i++){
-            result.addAll(((ServerConnectionImpl)connectionList.get(i)).getClientIds());
-            break;
+            Set ids = ((ServerConnectionImpl)connectionList.get(i)).getClientIds();
+            if(ids != null){
+                if(result == null){
+                    result = new HashSet(ids);
+                }else{
+                    result.retainAll(ids);
+                }
+            }
         }
-        return result;
+        return result == null ? new HashSet() : result;
     }
     
     public Set getReceiveClientIds(Message message){
-        Set result = new HashSet();
+        Set result = null;
         for(int i = 0; i < connectionList.size(); i++){
-            result.addAll(((ServerConnectionImpl)connectionList.get(i)).getReceiveClientIds(message));
+            Set ids = ((ServerConnectionImpl)connectionList.get(i)).getReceiveClientIds(message);
+            if(ids != null){
+                if(result == null){
+                    result = new HashSet(ids);
+                }else{
+                    result.retainAll(ids);
+                }
+            }
         }
-        return result;
+        return result == null ? new HashSet() : result;
     }
     
     public Set getSubjects(Object id){
@@ -128,9 +132,10 @@ public class DistributedServerConnectionImpl implements ServerConnection{
             Set subjects = ((ServerConnectionImpl)connectionList.get(i)).getSubjects(id);
             if(subjects != null){
                 if(result == null){
-                    result = new HashSet();
+                    result = new HashSet(subjects);
+                }else{
+                    result.retainAll(subjects);
                 }
-                result.addAll(subjects);
             }
         }
         return result;
@@ -142,9 +147,10 @@ public class DistributedServerConnectionImpl implements ServerConnection{
             Set keys = ((ServerConnectionImpl)connectionList.get(i)).getKeys(id, subject);
             if(keys != null){
                 if(result == null){
-                    result = new HashSet();
+                    result = new HashSet(keys);
+                }else{
+                    result.retainAll(keys);
                 }
-                result.addAll(keys);
             }
         }
         return result;
@@ -256,6 +262,253 @@ public class DistributedServerConnectionImpl implements ServerConnection{
             buf.append(", keySet=").append(keySet);
             buf.append('}');
             return buf.toString();
+        }
+    }
+    
+    private class ClientImpl implements Client{
+        
+        private Object id;
+        private Set clients = new HashSet();
+        
+        public ClientImpl(Object id){
+            this.id = id;
+        }
+        
+        protected boolean addClient(Client client){
+            boolean add = false;
+            if(!clients.contains(client)){
+                synchronized(clients){
+                    if(!clients.contains(client)){
+                        Set newClients = new HashSet();
+                        newClients.addAll(clients);
+                        newClients.add(client);
+                        clients = newClients;
+                        add = true;
+                    }
+                }
+            }
+            return add;
+        }
+        
+        protected boolean removeClient(Client client){
+            boolean remove = false;
+            if(clients.contains(client)){
+                synchronized(clients){
+                    if(clients.contains(client)){
+                        Set newClients = new HashSet();
+                        newClients.addAll(clients);
+                        newClients.remove(client);
+                        clients = newClients;
+                        remove = true;
+                    }
+                }
+            }
+            return remove;
+        }
+        
+        protected boolean isConnected(){
+            return connectionList.size() == clients.size();
+        }
+        
+        protected boolean isFirstRemovedSubject(String subject, String[] keys){
+            int removedCount = 0;
+            for(int i = 0; i < connectionList.size(); i++){
+                Set keySet = ((ServerConnectionImpl)connectionList.get(i)).getKeys(id, subject);
+                if(keySet == null){
+                    removedCount++;
+                }else if(keys == null){
+                    continue;
+                }else{
+                    boolean isRemoved = true;
+                    for(int j = 0; j < keys.length; j++){
+                        if(keySet.contains(keys[i])){
+                            isRemoved = false;
+                            break;
+                        }
+                    }
+                    if(!isRemoved){
+                        continue;
+                    }
+                    removedCount++;
+                }
+                if(removedCount > 1){
+                    return false;
+                }
+            }
+            return true;
+        }
+        
+        protected boolean isFirstStoppedReceive(){
+            int stoppedCount = 0;
+            Iterator itr = clients.iterator();
+            while(itr.hasNext()){
+                Client client = (Client)itr.next();
+                if(!client.isStartReceive()){
+                    stoppedCount++;
+                }
+                if(stoppedCount > 1){
+                    return false;
+                }
+            }
+            return true;
+        }
+        
+        protected boolean isFirstClosed(){
+            return connectionList.size() - 1 == clients.size();
+        }
+        
+        public Set getSubjects(){
+            return DistributedServerConnectionImpl.this.getSubjects(id);
+        }
+        
+        public Set getKeys(String subject){
+            return DistributedServerConnectionImpl.this.getKeys(id, subject);
+        }
+        
+        public boolean isStartReceive(){
+            if(clients.size() == 0){
+                return false;
+            }
+            Iterator itr = clients.iterator();
+            while(itr.hasNext()){
+                Client client = (Client)itr.next();
+                if(!client.isStartReceive()){
+                    return false;
+                }
+            }
+            return true;
+        }
+        
+        public Object getId(){
+            return id;
+        }
+    }
+    
+    private class ServerConnectionBroadcaster implements ServerConnectionListener{
+        
+        private Map clients = new HashMap();
+        private Set listeners = new LinkedHashSet();
+        
+        public void addServerConnectionListener(ServerConnectionListener listener) {
+            listeners.add(listener);
+        }
+        
+        public void removeServerConnectionListener(ServerConnectionListener listener) {
+            listeners.remove(listener);
+        }
+        
+        public void onConnect(Client client){
+            ClientImpl wrapper = (ClientImpl)clients.get(client.getId());
+            if(wrapper == null){
+                synchronized(clients){
+                    wrapper = (ClientImpl)clients.get(client.getId());
+                    if(wrapper == null){
+                        Map newClients = new HashMap();
+                        newClients.putAll(clients);
+                        wrapper = new ClientImpl(client.getId());
+                        newClients.put(client.getId(), wrapper);
+                        clients = newClients;
+                    }
+                }
+            }
+            if(wrapper.addClient(client) && wrapper.isConnected() && listeners.size() != 0){
+                Iterator itr = listeners.iterator();
+                while(itr.hasNext()){
+                    ServerConnectionListener listener = (ServerConnectionListener)itr.next();
+                    listener.onConnect(wrapper);
+                }
+            }
+        }
+        
+        public void onAddSubject(Client client, String subject, String[] keys){
+            ClientImpl wrapper = (ClientImpl)clients.get(client.getId());
+            if(listeners.size() == 0
+                || wrapper == null
+                || !wrapper.isConnected()
+                || !wrapper.getSubjects().contains(subject)
+            ){
+                return;
+            }
+            if(keys != null && keys.length != 0){
+                Set keySet = wrapper.getKeys(subject);
+                if(keySet == null){
+                    return;
+                }
+                for(int i = 0; i < keys.length; i++){
+                    if(!keySet.contains(keys[i])){
+                        return;
+                    }
+                }
+            }
+            Iterator itr = listeners.iterator();
+            while(itr.hasNext()){
+                ServerConnectionListener listener = (ServerConnectionListener)itr.next();
+                listener.onAddSubject(wrapper, subject, keys);
+            }
+        }
+        
+        public void onRemoveSubject(Client client, String subject, String[] keys){
+            ClientImpl wrapper = (ClientImpl)clients.get(client.getId());
+            if(listeners.size() == 0
+                || wrapper == null
+                || !wrapper.isConnected()
+                || !wrapper.isFirstRemovedSubject(subject, keys)
+            ){
+                return;
+            }
+            Iterator itr = listeners.iterator();
+            while(itr.hasNext()){
+                ServerConnectionListener listener = (ServerConnectionListener)itr.next();
+                listener.onRemoveSubject(wrapper, subject, keys);
+            }
+        }
+        
+        public void onStartReceive(Client client, long from){
+            ClientImpl wrapper = (ClientImpl)clients.get(client.getId());
+            if(listeners.size() == 0
+                || wrapper == null
+                || !wrapper.isConnected()
+                || !wrapper.isStartReceive()
+            ){
+                return;
+            }
+            Iterator itr = listeners.iterator();
+            while(itr.hasNext()){
+                ServerConnectionListener listener = (ServerConnectionListener)itr.next();
+                listener.onStartReceive(wrapper, from);
+            }
+        }
+        
+        public void onStopReceive(Client client){
+            ClientImpl wrapper = (ClientImpl)clients.get(client.getId());
+            if(listeners.size() == 0
+                || wrapper == null
+                || !wrapper.isConnected()
+                || !wrapper.isFirstStoppedReceive()
+            ){
+                return;
+            }
+            Iterator itr = listeners.iterator();
+            while(itr.hasNext()){
+                ServerConnectionListener listener = (ServerConnectionListener)itr.next();
+                listener.onStopReceive(wrapper);
+            }
+        }
+        
+        public void onClose(Client client){
+            ClientImpl wrapper = (ClientImpl)clients.get(client.getId());
+            if(listeners.size() == 0
+                || wrapper == null
+                || !wrapper.removeClient(client)
+                || !wrapper.isFirstClosed()
+            ){
+                return;
+            }
+            Iterator itr = listeners.iterator();
+            while(itr.hasNext()){
+                ServerConnectionListener listener = (ServerConnectionListener)itr.next();
+                listener.onClose(wrapper);
+            }
         }
     }
 }

@@ -61,4 +61,11 @@ public interface Client{
      * @return Clientを一意に識別するオブジェクト
      */
     public Object getId();
+    
+    /**
+     * 受信開始しているかどうかを判定する。<p>
+     *
+     * @return trueの場合、受信開始している
+     */
+    public boolean isStartReceive();
 }
