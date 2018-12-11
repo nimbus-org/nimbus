@@ -34,79 +34,56 @@ package jp.ossc.nimbus.service.test.action;
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * {@link TextDiffGetActionService}のMBeanインタフェース<p>
+ * {@link DiffUtilsTextDiffGetActionService}のMBeanインタフェース<p>
  * 
  * @author M.Ishida
- * @see TextDiffGetActionService
+ * @see DiffUtilsTextDiffGetActionService
  */
-public interface TextDiffGetActionServiceMBean extends ServiceBaseMBean{
+public interface DiffUtilsTextDiffGetActionServiceMBean extends ServiceBaseMBean {
     
     /**
-     * JavaDiffUtils用 差分アルゴリズムタイプ
-     */
-    public static int DIFF_ALGORITHM_TYPE_JAVA_DIFF_UTILS = 0;
-    
-    /**
-     * Jgit Histgram用 差分アルゴリズムタイプ
-     */
-    public static int DIFF_ALGORITHM_TYPE_JGIT_HISTGRAM = 1;
-    
-    /**
-     * Jgit Myers用 差分アルゴリズムタイプ
-     */
-    public static int DIFF_ALGORITHM_TYPE_JGIT_MYERS = 2;
-    
-    /**
-     * 差分取得アルゴリズムタイプを取得する。<p>
-     * 
-     * @return 差分取得アルゴリズムタイプ
-     */
-    public int getDiffAlgorithmType();
-
-    /**
-     * 差分取得アルゴリズムタイプを設定する。
-     * 
-     * @param algorithmType 差分取得アルゴリズムタイプ
-     */
-    public void setDiffAlgorithmType(int algorithmType);
-
-    /**
-     * 差分取得対象ファイルの文字コードを取得する。<p>
+     * 差分取得対象ファイルの文字コードを取得する。
+     * <p>
      * 
      * @return 文字コード
      */
     public String getTextFileEncoding();
-
+    
     /**
-     * 差分取得対象ファイルの文字コードを設定する。<p>
+     * 差分取得対象ファイルの文字コードを設定する。
+     * <p>
      * 
      * @param encoding 文字コード
      */
     public void setTextFileEncoding(String encoding);
-
+    
     /**
-     * 差分出力ファイルの文字コードを取得する。<p>
+     * 差分出力ファイルの文字コードを取得する。
+     * <p>
      * 
      * @return 文字コード
      */
     public String getDiffFileEncoding();
-
+    
     /**
-     * 差分出力ファイルの文字コードを設定する。<p>
+     * 差分出力ファイルの文字コードを設定する。
+     * <p>
      * 
      * @param encoding 文字コード
      */
     public void setDiffFileEncoding(String encoding);
     
     /**
-     * このアクションのリソース定義を作成する際のデフォルトの想定コストを設定する。<p>
+     * このアクションのリソース定義を作成する際のデフォルトの想定コストを設定する。
+     * <p>
      * 
      * @param cost 想定コスト
      */
     public void setExpectedCost(double cost);
     
     /**
-     * このアクションのリソース定義を作成する際のデフォルトの想定コストを取得する。<p>
+     * このアクションのリソース定義を作成する際のデフォルトの想定コストを取得する。
+     * <p>
      * 
      * @return 想定コスト
      */
