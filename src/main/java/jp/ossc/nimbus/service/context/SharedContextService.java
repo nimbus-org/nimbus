@@ -3126,6 +3126,44 @@ public class SharedContextService extends DefaultContextService
         return interpreter.evaluate(evaluate, variables);
     }
     
+    public void healthCheck(boolean isContainsClient, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+        try{
+            Message message = serverConnection.createMessage(subject, null);
+            if(isContainsClient){
+                message.setSubject(clientSubject, null);
+            }
+            Set receiveClients = serverConnection.getReceiveClientIds(message);
+            if(receiveClients.size() != 0){
+                message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_HEALTH_CHECK));
+                Message[] responses = serverConnection.request(
+                    message,
+                    isClient ? clientSubject : subject,
+                    null,
+                    0,
+                    timeout
+                );
+                for(int i = 0; i < responses.length; i++){
+                    Object ret = responses[i].getObject();
+                    responses[i].recycle();
+                    if(ret != null){
+                        if(ret instanceof Throwable){
+                            throw new SharedContextSendException((Throwable)ret);
+                        }
+                    }
+                }
+            }else if(isClient){
+                throw new NoConnectServerException();
+            }
+        }catch(MessageException e){
+            throw new SharedContextSendException(e);
+        }catch(MessageSendException e){
+            throw new SharedContextSendException(e);
+        }catch(RequestTimeoutException e){
+            throw new SharedContextTimeoutException(e);
+        }
+        
+    }
+    
     public void addSharedContextUpdateListener(SharedContextUpdateListener listener){
         if(updateListeners == null){
             updateListeners = Collections.synchronizedList(new ArrayList());
@@ -3357,6 +3395,9 @@ public class SharedContextService extends DefaultContextService
             break;
         case SharedContextEvent.EVENT_GET_UPDATE_LOCK:
             result = onGetUpdateLock(event, sourceId, sequence, responseSubject, responseKey);
+            break;
+        case SharedContextEvent.EVENT_HEALTH_CHECK:
+            result = onHealthCheck(event, sourceId, sequence, responseSubject, responseKey);
             break;
         default:
         }
@@ -4410,6 +4451,10 @@ public class SharedContextService extends DefaultContextService
         return null;
     }
     
+    protected Message onHealthCheck(final SharedContextEvent event, final Object sourceId, final int sequence, final String responseSubject, final String responseKey){
+        return createResponseMessage(responseSubject, responseKey, Boolean.TRUE);
+    }
+    
     protected void onReleaseUpdateLock(SharedContextEvent event){
         updateLock.releaseForLock(event.key);
     }
@@ -4464,6 +4509,7 @@ public class SharedContextService extends DefaultContextService
         public static final byte EVENT_GET_UPDATE_LOCK     = (byte)24;
         public static final byte EVENT_RELEASE_UPDATE_LOCK = (byte)25;
         public static final byte EVENT_CHANGE_MODE         = (byte)26;
+        public static final byte EVENT_HEALTH_CHECK        = (byte)27;
         
         public byte type;
         public Object key;
@@ -5373,6 +5419,10 @@ public class SharedContextService extends DefaultContextService
         }
         
         public void save(Object key, long timeout) throws Exception{
+            throw new UnsupportedOperationException();
+        }
+        
+        public void healthCheck(boolean isContainsClient, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
             throw new UnsupportedOperationException();
         }
     }

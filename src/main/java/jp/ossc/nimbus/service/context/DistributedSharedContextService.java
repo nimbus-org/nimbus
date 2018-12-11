@@ -1839,6 +1839,54 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         return nodeIndex >= 0 ? sharedContextArray[nodeIndex].isMain() : false;
     }
     
+    public void healthCheck(boolean isContainsClient, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+        if(parallelRequestQueueHandlerContainer == null){
+            long start = System.currentTimeMillis();
+            final boolean isNoTimeout = timeout <= 0;
+            for(int i = 0; i < sharedContextArray.length; i++){
+                timeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
+                if(!isNoTimeout && timeout < 0){
+                    throw new SharedContextTimeoutException("nodeSize=" + sharedContextArray.length + ", responseCount=" + i);
+                }
+                sharedContextArray[i].healthCheck(isContainsClient, timeout);
+            }
+        }else{
+            DefaultQueueService responseQueue = new DefaultQueueService();
+            try{
+                responseQueue.create();
+                responseQueue.start();
+            }catch(Exception e){
+            }
+            responseQueue.accept();
+            for(int i = 0; i < sharedContextArray.length; i++){
+                AsynchContext asynchContext = new AsynchContext(
+                    new HealthCheckParallelRequest(sharedContextArray[i], isContainsClient, timeout),
+                    responseQueue
+                );
+                parallelRequestQueueHandlerContainer.push(asynchContext);
+            }
+            for(int i = 0; i < sharedContextArray.length; i++){
+                AsynchContext asynchContext = (AsynchContext)responseQueue.get();
+                if(asynchContext == null){
+                    break;
+                }else{
+                    try{
+                        asynchContext.checkError();
+                    }catch(SharedContextSendException e){
+                        throw e;
+                    }catch(SharedContextTimeoutException e){
+                        throw e;
+                    }catch(Error e){
+                        throw e;
+                    }catch(Throwable th){
+                        // 起きないはず
+                        throw new SharedContextSendException(th);
+                    }
+                }
+            }
+        }
+    }
+    
     public void addSharedContextUpdateListener(SharedContextUpdateListener listener){
         if(updateListeners == null){
             updateListeners = Collections.synchronizedList(new ArrayList());
@@ -2674,6 +2722,22 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         }
         public Object execute() throws SharedContextSendException, SharedContextTimeoutException{
             return context.containsValue(value, timeout) ? Boolean.TRUE : Boolean.FALSE;
+        }
+    }
+    
+    protected class HealthCheckParallelRequest extends SharedContextParallelRequest{
+        
+        private long timeout;
+        private boolean isContainsClient;
+        
+        public HealthCheckParallelRequest(SharedContext context, boolean isContainsClient, long timeout){
+            super(context);
+            this.isContainsClient = isContainsClient;
+            this.timeout = timeout;
+        }
+        public Object execute() throws SharedContextIllegalIndexException, SharedContextSendException, SharedContextTimeoutException{
+            context.healthCheck(isContainsClient, timeout);
+            return null;
         }
     }
     

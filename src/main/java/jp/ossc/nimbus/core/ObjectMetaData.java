@@ -318,6 +318,9 @@ public class ObjectMetaData extends MetaData implements Serializable{
     }
     
     public void importIfDef() throws DeploymentException{
+        if(constructor != null){
+            constructor.importIfDef();
+        }
         Iterator entries = fields.entrySet().iterator();
         while(entries.hasNext()){
             Map.Entry entry = (Map.Entry)entries.next();
@@ -532,6 +535,10 @@ public class ObjectMetaData extends MetaData implements Serializable{
      */
     public Object clone(){
         ObjectMetaData clone = (ObjectMetaData)super.clone();
+        if(constructor != null){
+            clone.constructor = (ConstructorMetaData)constructor.clone();
+            clone.constructor.setParent(clone);
+        }
         clone.fields = new LinkedHashMap();
         Iterator entries = fields.entrySet().iterator();
         while(entries.hasNext()){

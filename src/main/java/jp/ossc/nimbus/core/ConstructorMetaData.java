@@ -72,6 +72,8 @@ public class ConstructorMetaData extends MetaData
      */
     protected List arguments = new ArrayList();
     
+    protected List ifDefMetaDataList;
+    
     /**
      * 親要素のメタデータを持つインスタンスを生成する。<p>
      * 
@@ -186,19 +188,48 @@ public class ConstructorMetaData extends MetaData
             
         }
         
+        importXMLInner(element, null);
+        
+        final Iterator ifDefElements = getChildrenByTagName(
+            element,
+            IfDefMetaData.IFDEF_TAG_NAME
+        );
+        while(ifDefElements.hasNext()){
+            if(ifDefMetaDataList == null){
+                ifDefMetaDataList = new ArrayList();
+            }
+            final IfDefMetaData ifdefData
+                 = new IfDefMetaData(this);
+            ifdefData.importXML((Element)ifDefElements.next());
+            ifDefMetaDataList.add(ifdefData);
+        }
+        
+        importIfDef();
+    }
+    
+    protected void importXMLInner(Element element, IfDefMetaData ifdefData) throws DeploymentException{
+        
+        final boolean ifdefMatch
+            = ifdefData == null ? true : ifdefData.isMatch();
+        
         final Element invokeElement = getOptionalChild(
             element,
             InvokeMetaData.INVOKE_TAG_NAME
         );
         if(invokeElement != null){
+            if(ifdefMatch && invoke != null){
+                throw new DeploymentException("Element of " + InvokeMetaData.INVOKE_TAG_NAME+ " is duplicated.");
+            }
             final InvokeMetaData invokeData
                  = new InvokeMetaData(this);
             invokeData.importXML(invokeElement);
             if(invokeData.getTarget() == null){
                 throw new DeploymentException("Target is null." + invokeData);
             }
-            invoke = invokeData;
-            return;
+            if(ifdefMatch){
+                invoke = invokeData;
+                return;
+            }
         }
         
         final Element staticInvokeElement = getOptionalChild(
@@ -206,11 +237,16 @@ public class ConstructorMetaData extends MetaData
             StaticInvokeMetaData.STATIC_INVOKE_TAG_NAME
         );
         if(staticInvokeElement != null){
+            if(ifdefMatch && staticInvoke != null){
+                throw new DeploymentException("Element of " + StaticInvokeMetaData.STATIC_INVOKE_TAG_NAME+ " is duplicated.");
+            }
             final StaticInvokeMetaData staticInvokeData
                  = new StaticInvokeMetaData(this);
             staticInvokeData.importXML(staticInvokeElement);
-            staticInvoke = staticInvokeData;
-            return;
+            if(ifdefMatch){
+                staticInvoke = staticInvokeData;
+                return;
+            }
         }
         
         final Element staticFieldRefElement = getOptionalChild(
@@ -218,11 +254,16 @@ public class ConstructorMetaData extends MetaData
             StaticFieldRefMetaData.STATIC_FIELD_REF_TAG_NAME
         );
         if(staticFieldRefElement != null){
+            if(ifdefMatch && staticFieldRef != null){
+                throw new DeploymentException("Element of " + StaticFieldRefMetaData.STATIC_FIELD_REF_TAG_NAME+ " is duplicated.");
+            }
             final StaticFieldRefMetaData staticFieldRefData
                  = new StaticFieldRefMetaData(this);
             staticFieldRefData.importXML(staticFieldRefElement);
-            staticFieldRef = staticFieldRefData;
-            return;
+            if(ifdefMatch){
+                staticFieldRef = staticFieldRefData;
+                return;
+            }
         }
         
         final Iterator argElements = getChildrenByTagName(
@@ -233,7 +274,9 @@ public class ConstructorMetaData extends MetaData
             final ArgumentMetaData argData
                  = new ArgumentMetaData(this, (ObjectMetaData)getParent());
             argData.importXML((Element)argElements.next());
-            addArgument(argData);
+            if(ifdefMatch){
+                addArgument(argData);
+            }
         }
     }
     
@@ -253,6 +296,32 @@ public class ConstructorMetaData extends MetaData
                 MetaData argument = (MetaData)((MetaData)arguments.get(i));
                 argument.importIfDef();
             }
+        }
+        
+        if(ifDefMetaDataList == null || ifDefMetaDataList.size() == 0){
+            return;
+        }
+        
+        MetaData metaData = this;
+        while(metaData != null){
+            if(metaData instanceof ServiceMetaData){
+                if(((ServiceMetaData)metaData).isTemplate()){
+                    return;
+                }
+            }
+            metaData = metaData.getParent();
+        }
+        
+        for(int i = 0, imax = ifDefMetaDataList.size(); i < imax; i++){
+            IfDefMetaData ifdefData = (IfDefMetaData)ifDefMetaDataList.get(i);
+            Element ifDefElement = ifdefData.getElement();
+            if(ifDefElement == null){
+                continue;
+            }
+            
+            importXMLInner(ifDefElement, ifdefData);
+            
+            ifdefData.setElement(null);
         }
     }
     
@@ -308,6 +377,15 @@ public class ConstructorMetaData extends MetaData
                 MetaData argument = (MetaData)((MetaData)arguments.get(i)).clone();
                 argument.setParent(clone);
                 clone.arguments.add(argument);
+            }
+        }
+        if(ifDefMetaDataList != null){
+            clone.ifDefMetaDataList = new ArrayList();
+            for(int i = 0; i < ifDefMetaDataList.size(); i++){
+                IfDefMetaData ifdef = (IfDefMetaData)ifDefMetaDataList.get(i);
+                ifdef = (IfDefMetaData)ifdef.clone();
+                ifdef.setParent(clone);
+                clone.ifDefMetaDataList.add(ifdef);
             }
         }
         return clone;
