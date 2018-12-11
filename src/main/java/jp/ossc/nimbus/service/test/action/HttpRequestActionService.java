@@ -408,16 +408,20 @@ public class HttpRequestActionService extends ServiceBase implements TestAction,
             }
             final File responseBodyFile = new File(context.getCurrentDirectory(), actionId + ".b.rsp");
             final InputStream is = response.getInputStream();
-            FileOutputStream fos = new FileOutputStream(responseBodyFile);
-            try{
-                byte[] bytes = new byte[1024];
-                int len = 0;
-                while((len = is.read(bytes)) > 0){
-                    fos.write(bytes, 0, len);
+            if(is == null) {
+                responseBodyFile.createNewFile();
+            } else {
+                FileOutputStream fos = new FileOutputStream(responseBodyFile);
+                try{
+                    byte[] bytes = new byte[1024];
+                    int len = 0;
+                    while((len = is.read(bytes)) > 0){
+                        fos.write(bytes, 0, len);
+                    }
+                }finally{
+                    fos.close();
+                    fos = null;
                 }
-            }finally{
-                fos.close();
-                fos = null;
             }
         }finally{
             br.close();
