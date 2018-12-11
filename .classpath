@@ -19,7 +19,7 @@
   <classpathentry kind="var" path="M2_REPO/mx4j/mx4j-jmx/1.1/mx4j-jmx-1.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/ejb/ejb/2.1/ejb-2.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/jta/jta/1.0.1/jta-1.0.1.jar"/>
-  <classpathentry kind="var" path="M2_REPO/log4j/log4j/1.2.9/log4j-1.2.9.jar"/>
+  <classpathentry kind="var" path="M2_REPO/log4j/log4j/1.2.9/log4j-1.2.9.jar" sourcepath="M2_REPO/log4j/log4j/1.2.9/log4j-1.2.9-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/sun/xml/parsers/jaxp-ri/1.4.2/jaxp-ri-1.4.2.jar"/>
   <classpathentry kind="var" path="M2_REPO/dom/dom/2/dom-2.jar"/>
   <classpathentry kind="var" path="M2_REPO/sax/sax/2.0.1/sax-2.0.1.jar"/>
@@ -32,7 +32,7 @@
   <classpathentry kind="var" path="M2_REPO/commons-beanutils/commons-beanutils/1.7.0/commons-beanutils-1.7.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-pool/commons-pool/1.4/commons-pool-1.4.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar" sourcepath="M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/commons-codec/commons-codec/1.3/commons-codec-1.3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-codec/commons-codec/1.3/commons-codec-1.3.jar" sourcepath="M2_REPO/commons-codec/commons-codec/1.3/commons-codec-1.3-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-jexl/commons-jexl/1.1/commons-jexl-1.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-io/commons-io/20030203.000550/commons-io-20030203.000550.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-net/commons-net/1.4.1/commons-net-1.4.1.jar"/>
@@ -57,7 +57,7 @@
   <classpathentry kind="var" path="M2_REPO/org/netbeans/lib/cvsclient/200110816/cvsclient-200110816.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-lang/commons-lang/2.6/commons-lang-2.6.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-collections/commons-collections/3.1/commons-collections-3.1.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/apache/velocity/velocity/1.7/velocity-1.7.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/velocity/velocity/1.7/velocity-1.7.jar" sourcepath="M2_REPO/org/apache/velocity/velocity/1.7/velocity-1.7-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/poi/poi/3.15/poi-3.15.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/commons/commons-collections4/4.1/commons-collections4-4.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/net/sf/mpxj/mpxj/5.5.4/mpxj-5.5.4.jar"/>
@@ -87,4 +87,37 @@
   <classpathentry kind="var" path="M2_REPO/aopalliance/aopalliance/1.0/aopalliance-1.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/springframework/spring-expression/4.2.3.RELEASE/spring-expression-4.2.3.RELEASE.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/springframework/spring-web/4.2.3.RELEASE/spring-web-4.2.3.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/cloud/google-cloud-logging/1.39.0/google-cloud-logging-1.39.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/cloud/google-cloud-core/1.39.0/google-cloud-core-1.39.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/guava/guava/20.0/guava-20.0.jar" sourcepath="M2_REPO/com/google/guava/guava/20.0/guava-20.0-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/joda-time/joda-time/2.9.2/joda-time-2.9.2.jar" sourcepath="M2_REPO/joda-time/joda-time/2.9.2/joda-time-2.9.2-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/http-client/google-http-client/1.24.1/google-http-client-1.24.1.jar" sourcepath="M2_REPO/com/google/http-client/google-http-client/1.24.1/google-http-client-1.24.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/httpcomponents/httpclient/4.5.3/httpclient-4.5.3.jar" sourcepath="M2_REPO/org/apache/httpcomponents/httpclient/4.5.3/httpclient-4.5.3-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/httpcomponents/httpcore/4.4.6/httpcore-4.4.6.jar" sourcepath="M2_REPO/org/apache/httpcomponents/httpcore/4.4.6/httpcore-4.4.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar" sourcepath="M2_REPO/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/api/api-common/1.7.0/api-common-1.7.0.jar" sourcepath="M2_REPO/com/google/api/api-common/1.7.0/api-common-1.7.0-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/api/gax/1.30.0/gax-1.30.0.jar" sourcepath="M2_REPO/com/google/api/gax/1.30.0/gax-1.30.0-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/threeten/threetenbp/1.3.3/threetenbp-1.3.3.jar" sourcepath="M2_REPO/org/threeten/threetenbp/1.3.3/threetenbp-1.3.3-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/auth/google-auth-library-oauth2-http/0.10.0/google-auth-library-oauth2-http-0.10.0.jar" sourcepath="M2_REPO/com/google/auth/google-auth-library-oauth2-http/0.10.0/google-auth-library-oauth2-http-0.10.0-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/auth/google-auth-library-credentials/0.11.0/google-auth-library-credentials-0.11.0.jar" sourcepath="M2_REPO/com/google/auth/google-auth-library-credentials/0.11.0/google-auth-library-credentials-0.11.0-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/http-client/google-http-client-jackson2/1.19.0/google-http-client-jackson2-1.19.0.jar" sourcepath="M2_REPO/com/google/http-client/google-http-client-jackson2/1.19.0/google-http-client-jackson2-1.19.0-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/fasterxml/jackson/core/jackson-core/2.1.3/jackson-core-2.1.3.jar" sourcepath="M2_REPO/com/fasterxml/jackson/core/jackson-core/2.1.3/jackson-core-2.1.3-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/protobuf/protobuf-java-util/3.6.0/protobuf-java-util-3.6.0.jar" sourcepath="M2_REPO/com/google/protobuf/protobuf-java-util/3.6.0/protobuf-java-util-3.6.0-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/protobuf/protobuf-java/3.6.0/protobuf-java-3.6.0.jar" sourcepath="M2_REPO/com/google/protobuf/protobuf-java/3.6.0/protobuf-java-3.6.0-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/code/gson/gson/2.7/gson-2.7.jar" sourcepath="M2_REPO/com/google/code/gson/gson/2.7/gson-2.7-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/api/grpc/proto-google-common-protos/1.12.0/proto-google-common-protos-1.12.0.jar" sourcepath="M2_REPO/com/google/api/grpc/proto-google-common-protos/1.12.0/proto-google-common-protos-1.12.0-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/api/grpc/proto-google-iam-v1/0.12.0/proto-google-iam-v1-0.12.0.jar" sourcepath="M2_REPO/com/google/api/grpc/proto-google-iam-v1/0.12.0/proto-google-iam-v1-0.12.0-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/cloud/google-cloud-core-grpc/1.39.0/google-cloud-core-grpc-1.39.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/io/grpc/grpc-protobuf/1.13.1/grpc-protobuf-1.13.1.jar" sourcepath="M2_REPO/io/grpc/grpc-protobuf/1.13.1/grpc-protobuf-1.13.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/io/grpc/grpc-core/1.13.1/grpc-core-1.13.1.jar" sourcepath="M2_REPO/io/grpc/grpc-core/1.13.1/grpc-core-1.13.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/io/grpc/grpc-context/1.13.1/grpc-context-1.13.1.jar" sourcepath="M2_REPO/io/grpc/grpc-context/1.13.1/grpc-context-1.13.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/errorprone/error_prone_annotations/2.1.2/error_prone_annotations-2.1.2.jar" sourcepath="M2_REPO/com/google/errorprone/error_prone_annotations/2.1.2/error_prone_annotations-2.1.2-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/io/opencensus/opencensus-api/0.12.3/opencensus-api-0.12.3.jar" sourcepath="M2_REPO/io/opencensus/opencensus-api/0.12.3/opencensus-api-0.12.3-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/io/opencensus/opencensus-contrib-grpc-metrics/0.12.3/opencensus-contrib-grpc-metrics-0.12.3.jar" sourcepath="M2_REPO/io/opencensus/opencensus-contrib-grpc-metrics/0.12.3/opencensus-contrib-grpc-metrics-0.12.3-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/io/grpc/grpc-protobuf-lite/1.13.1/grpc-protobuf-lite-1.13.1.jar" sourcepath="M2_REPO/io/grpc/grpc-protobuf-lite/1.13.1/grpc-protobuf-lite-1.13.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/io/grpc/grpc-netty-shaded/1.13.1/grpc-netty-shaded-1.13.1.jar" sourcepath="M2_REPO/io/grpc/grpc-netty-shaded/1.13.1/grpc-netty-shaded-1.13.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/io/grpc/grpc-stub/1.13.1/grpc-stub-1.13.1.jar" sourcepath="M2_REPO/io/grpc/grpc-stub/1.13.1/grpc-stub-1.13.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/io/grpc/grpc-auth/1.13.1/grpc-auth-1.13.1.jar" sourcepath="M2_REPO/io/grpc/grpc-auth/1.13.1/grpc-auth-1.13.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/api/gax-grpc/1.30.0/gax-grpc-1.30.0.jar" sourcepath="M2_REPO/com/google/api/gax-grpc/1.30.0/gax-grpc-1.30.0-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/api/grpc/proto-google-cloud-logging-v2/0.22.0/proto-google-cloud-logging-v2-0.22.0.jar"/>
 </classpath>
