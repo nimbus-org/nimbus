@@ -438,6 +438,17 @@
             <version>4.2.3.RELEASE</version>
         </dependency>
         
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-logging</artifactId>
+            <version>1.39.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.auth</groupId>
+            <artifactId>google-auth-library-credentials</artifactId>
+            <version>0.11.0</version>
+        </dependency>
     </dependencies>
 
     <build>
