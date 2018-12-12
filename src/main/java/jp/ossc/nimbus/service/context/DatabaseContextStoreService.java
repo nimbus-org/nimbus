@@ -162,6 +162,24 @@ public class DatabaseContextStoreService extends ServiceBase
         }
     }
     
+    public boolean isSupportSaveByKey(){
+        for(int i = 0; i < databaseMappings.size(); i++){
+            if(!((DatabaseMapping)databaseMappings.get(i)).isSupportSaveByKey()){
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public boolean isSupportLoadByKey(){
+        for(int i = 0; i < databaseMappings.size(); i++){
+            if(!((DatabaseMapping)databaseMappings.get(i)).isSupportLoadByKey()){
+                return false;
+            }
+        }
+        return true;
+    }
+    
     /**
      * データベースマッピング。<p>
      * 
@@ -209,6 +227,8 @@ public class DatabaseContextStoreService extends ServiceBase
         protected String[] sortPropertyNames;
         protected boolean[] isAsc;
         protected boolean isSynchronizedRecordList = true;
+        protected boolean isLockOnLoad = false;
+        protected int batchLoadCount;
         
         /**
          * キーがユニークキーかどうかを設定する。<p>
@@ -546,6 +566,24 @@ public class DatabaseContextStoreService extends ServiceBase
         }
         
         /**
+         * 読み込む際に、{@link ShareContext}をロックするかどうかを設定する。<p>
+         *
+         * @param isLock ロックする場合は、true
+         */
+        public void setLockOnLoad(boolean isLock){
+            isLockOnLoad = isLock;
+        }
+        
+        /**
+         * 読み込む際のバッチ実行件数を設定する。<p>
+         * 
+         * @param count バッチ実行件数
+         */
+        public void setBatchLoadCount(int count){
+            batchLoadCount = count;
+        }
+        
+        /**
          * 保存する際のバッチ実行件数を設定する。<p>
          * 
          * @param count バッチ実行件数
@@ -603,6 +641,10 @@ public class DatabaseContextStoreService extends ServiceBase
             }else{
                 throw new UnsupportedOperationException("selectQuery is null.");
             }
+        }
+        
+        public boolean isSupportLoadByKey(){
+            return selectWhereQuery != null;
         }
         
         public void load(Context context, ConnectionFactory factory, PersistentManager pm, Object key) throws Exception{
@@ -753,7 +795,18 @@ public class DatabaseContextStoreService extends ServiceBase
                 tmpContext.put(key, null);
             }
             if(tmpContext.size() != 0){
-                context.putAll(tmpContext);
+                Set keys = null;
+                if(isLockOnLoad && context instanceof SharedContext){
+                    keys = new HashSet(tmpContext.keySet());
+                    ((SharedContext)context).locks(keys);
+                }
+                try{
+                    context.putAll(tmpContext);
+                }finally{
+                    if(isLockOnLoad && context instanceof SharedContext){
+                        ((SharedContext)context).unlocks(keys);
+                    }
+                }
             }
         }
         
@@ -770,7 +823,7 @@ public class DatabaseContextStoreService extends ServiceBase
             Connection con = null;
             final boolean isDist = context instanceof DistributedSharedContext;
             Map tmpContext = null;
-            if(!isDist){
+            if(!isDist || batchLoadCount > 1){
                 tmpContext = new HashMap();
             }
             try{
@@ -925,8 +978,17 @@ public class DatabaseContextStoreService extends ServiceBase
                         if(isAsynch && !isDist){
                             ((SharedContext)context).putAsynch(key, output);
                         }else{
-                            if(isDist){
-                                context.put(key, output);
+                            if(isDist && batchLoadCount <= 1){
+                                if(isLockOnLoad && context instanceof SharedContext){
+                                    ((SharedContext)context).lock(key);
+                                }
+                                try{
+                                    context.put(key, output);
+                                }finally{
+                                    if(isLockOnLoad && context instanceof SharedContext){
+                                        ((SharedContext)context).unlock(key);
+                                    }
+                                }
                             }else{
                                 tmpContext.put(key, output);
                             }
@@ -957,8 +1019,17 @@ public class DatabaseContextStoreService extends ServiceBase
                             if(isAsynch && !isDist){
                                 ((SharedContext)context).putAsynch(preKey, list);
                             }else{
-                                if(isDist){
-                                    context.put(preKey, list);
+                                if(isDist && batchLoadCount <= 1){
+                                    if(isLockOnLoad && context instanceof SharedContext){
+                                        ((SharedContext)context).lock(key);
+                                    }
+                                    try{
+                                        context.put(preKey, list);
+                                    }finally{
+                                        if(isLockOnLoad && context instanceof SharedContext){
+                                            ((SharedContext)context).unlock(key);
+                                        }
+                                    }
                                 }else{
                                     tmpContext.put(preKey, list);
                                 }
@@ -978,6 +1049,21 @@ public class DatabaseContextStoreService extends ServiceBase
                         list.add(output);
                         preKey = key;
                     }
+                    if(batchLoadCount > 1 && tmpContext != null && tmpContext.size() >= batchLoadCount){
+                        Set keys = null;
+                        if(isLockOnLoad && context instanceof SharedContext){
+                            keys = new HashSet(tmpContext.keySet());
+                            ((SharedContext)context).locks(keys);
+                        }
+                        try{
+                            context.putAll(tmpContext);
+                            tmpContext.clear();
+                        }finally{
+                            if(isLockOnLoad && context instanceof SharedContext){
+                                ((SharedContext)context).unlocks(keys);
+                            }
+                        }
+                    }
                 }
                 if(!isUniqueKey && list != null && list.size() != 0){
                     if(isSort){
@@ -990,15 +1076,35 @@ public class DatabaseContextStoreService extends ServiceBase
                     if(isAsynch && !isDist){
                         ((SharedContext)context).putAsynch(key, list);
                     }else{
-                        if(isDist){
-                            context.put(key, list);
+                        if(isDist && batchLoadCount <= 1){
+                            if(isLockOnLoad && context instanceof SharedContext){
+                                ((SharedContext)context).lock(key);
+                            }
+                            try{
+                                context.put(key, list);
+                            }finally{
+                                if(isLockOnLoad && context instanceof SharedContext){
+                                    ((SharedContext)context).unlock(key);
+                                }
+                            }
                         }else{
                             tmpContext.put(key, list);
                         }
                     }
                 }
                 if(tmpContext != null && tmpContext.size() != 0){
-                    context.putAll(tmpContext);
+                    Set keys = null;
+                    if(isLockOnLoad && context instanceof SharedContext){
+                        keys = new HashSet(tmpContext.keySet());
+                        ((SharedContext)context).locks(keys);
+                    }
+                    try{
+                        context.putAll(tmpContext);
+                    }finally{
+                        if(isLockOnLoad && context instanceof SharedContext){
+                            ((SharedContext)context).unlocks(keys);
+                        }
+                    }
                 }
             }finally{
                 if(subCursors != null){
@@ -1207,6 +1313,10 @@ public class DatabaseContextStoreService extends ServiceBase
                 }
             }
             return record;
+        }
+        
+        public boolean isSupportSaveByKey(){
+            return deleteWhereQuery != null && updateQuery != null && insertQuery != null;
         }
         
         public void save(Context context, ConnectionFactory factory, PersistentManager pm, Object key) throws Exception{

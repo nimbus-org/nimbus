@@ -325,9 +325,9 @@ PCFT_00009,The client was connected. connection=@0,50,jp.ossc.nimbus.service.log
 PCFT_00010,The client was closed. connection=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 PCFT_00011,Connection closed. connection=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 PCFT_00012,Requested to start reception. connection=@0\\, from=@1,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
-PCFT_00013,Requested to stop reception. connection=@0\\,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+PCFT_00013,Requested to stop reception. connection=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 PCFT_00014,Accepted to start reception. connection=@0\\, from=@1,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
-PCFT_00015,Accepted to stop reception. connection=@0\\,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+PCFT_00015,Accepted to stop reception. connection=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 PCFT_00016,Requested to connect. connection=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 PCFT_00017,Requested to close. connection=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 PCFT_00018,Connection closed by server. connection=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
@@ -367,6 +367,8 @@ SCS__00009,Update request for key "@0" is old\\, discarded. : subject=@1,100,jp.
 DSCS_00001,It failed to create response message : subject=@0\\, responseSubject=@1\\, responseKey=@2\\, response=@3,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 DSCS_00002,It failed to response : subject=@0\\, response=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 DSCS_00003,It failed to rehash : subject=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+DSCS_00004,Rehash start : service=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+DSCS_00005,Rehash succeeded : service=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 DSS__00001,Select error. It will try to reconnect. : @0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 DSS__00002,It failed to reconnect : @0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 CFTP_00001,It failed to connect to the FTP server. server=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY

@@ -701,6 +701,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             return;
         }
         if(isMain()){
+            getLogger().write("DSCS_00004", new Object[]{getServiceNameObject()});
             try{
                 Message message = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_GET_DIST_INFO));
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
@@ -763,6 +764,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         callback.waitResponse(timeout);
                     }
                 }
+                getLogger().write("DSCS_00005", new Object[]{getServiceNameObject()});
             }catch(MessageException e){
                 throw new SharedContextSendException(e);
             }catch(MessageSendException e){
@@ -1054,12 +1056,12 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         }
     }
     
-    public void lock(Object key) throws SharedContextSendException, SharedContextTimeoutException{
-        lock(key, defaultTimeout);
-    }
-    
     protected SharedContext selectDistributeContext(Object key){
         return sharedContextArray[getDataNodeIndex(key)];
+    }
+    
+    public void lock(Object key) throws SharedContextSendException, SharedContextTimeoutException{
+        lock(key, defaultTimeout);
     }
     
     public void lock(Object key, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
@@ -1076,6 +1078,177 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     
     public boolean unlock(Object key, boolean force) throws SharedContextSendException{
         return selectDistributeContext(key).unlock(key, force);
+    }
+    
+    public void locks(Set keys) throws SharedContextSendException, SharedContextTimeoutException{
+        locks(keys, defaultTimeout);
+    }
+    
+    public void locks(Set keys, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+        locks(keys, false, false, defaultTimeout);
+    }
+    
+    public boolean locks(Set keys, boolean ifAcquireable, boolean ifExist, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+        final long start = System.currentTimeMillis();
+        Map distMap = new HashMap();
+        Iterator itr = keys.iterator();
+        while(itr.hasNext()){
+            Object key = itr.next();
+            SharedContext context = selectDistributeContext(key);
+            Set set = (Set)distMap.get(context);
+            if(set == null){
+                set = new HashSet();
+                distMap.put(context, set);
+            }
+            set.add(key);
+        }
+        
+        boolean result = true;
+        try{
+            Iterator entries = distMap.entrySet().iterator();
+            if(parallelRequestQueueHandlerContainer == null){
+                int completed = 0;
+                while(entries.hasNext()){
+                    Map.Entry entry = (Map.Entry)entries.next();
+                    if(timeout > 0){
+                        final long currentTimeout = timeout - (start - System.currentTimeMillis());
+                        if(currentTimeout > 0){
+                            result &= ((SharedContext)entry.getKey()).locks((Set)entry.getValue(), ifAcquireable, ifExist, currentTimeout);
+                        }else{
+                            result = false;
+                            throw new SharedContextTimeoutException("There is a node that is not possible yet putAll. completed=" + completed + "notCompleted=" + (distMap.size() - completed));
+                        }
+                    }else{
+                        result &= ((SharedContext)entry.getKey()).locks((Set)entry.getValue(), ifAcquireable, ifExist, timeout);
+                    }
+                    completed++;
+                }
+            }else{
+                DefaultQueueService responseQueue = new DefaultQueueService();
+                try{
+                    responseQueue.create();
+                    responseQueue.start();
+                }catch(Exception e){
+                }
+                responseQueue.accept();
+                while(entries.hasNext()){
+                    Map.Entry entry = (Map.Entry)entries.next();
+                    AsynchContext asynchContext = new AsynchContext(
+                        new LocksParallelRequest((SharedContext)entry.getKey(), (Set)entry.getValue(), ifAcquireable, ifExist, timeout),
+                        responseQueue
+                    );
+                    parallelRequestQueueHandlerContainer.push(asynchContext);
+                }
+                for(int i = 0; i < sharedContextArray.length; i++){
+                    AsynchContext asynchContext = (AsynchContext)responseQueue.get();
+                    if(asynchContext == null){
+                        result = false;
+                        break;
+                    }else{
+                        try{
+                            asynchContext.checkError();
+                        }catch(SharedContextSendException e){
+                            result = false;
+                            throw e;
+                        }catch(SharedContextTimeoutException e){
+                            result = false;
+                            throw e;
+                        }catch(Error e){
+                            result = false;
+                            throw e;
+                        }catch(Throwable th){
+                            result = false;
+                            // 起きないはず
+                            throw new SharedContextSendException(th);
+                        }
+                        result &= ((Boolean)asynchContext.getOutput()).booleanValue();
+                    }
+                }
+            }
+        }finally{
+            if(!result){
+                unlocks(keys);
+            }
+        }
+        return result;
+    }
+    
+    public Set unlocks(Set keys) throws SharedContextSendException{
+        return unlocks(keys, false);
+    }
+    
+    public Set unlocks(Set keys, boolean force) throws SharedContextSendException{
+        final long start = System.currentTimeMillis();
+        Map distMap = new HashMap();
+        Iterator itr = keys.iterator();
+        while(itr.hasNext()){
+            Object key = itr.next();
+            SharedContext context = selectDistributeContext(key);
+            Set set = (Set)distMap.get(context);
+            if(set == null){
+                set = new HashSet();
+                distMap.put(context, set);
+            }
+            set.add(key);
+        }
+        
+        Set result = null;
+        Iterator entries = distMap.entrySet().iterator();
+        if(parallelRequestQueueHandlerContainer == null){
+            while(entries.hasNext()){
+                Map.Entry entry = (Map.Entry)entries.next();
+                Set ret = ((SharedContext)entry.getKey()).unlocks((Set)entry.getValue(), force);
+                if(ret != null){
+                    if(result == null){
+                        result = new HashSet();
+                    }
+                    result.addAll(ret);
+                }
+            }
+        }else{
+            DefaultQueueService responseQueue = new DefaultQueueService();
+            try{
+                responseQueue.create();
+                responseQueue.start();
+            }catch(Exception e){
+            }
+            responseQueue.accept();
+            while(entries.hasNext()){
+                Map.Entry entry = (Map.Entry)entries.next();
+                AsynchContext asynchContext = new AsynchContext(
+                    new UnlocksParallelRequest((SharedContext)entry.getKey(), (Set)entry.getValue(), force),
+                    responseQueue
+                );
+                parallelRequestQueueHandlerContainer.push(asynchContext);
+            }
+            for(int i = 0; i < sharedContextArray.length; i++){
+                AsynchContext asynchContext = (AsynchContext)responseQueue.get();
+                if(asynchContext == null){
+                    break;
+                }else{
+                    try{
+                        asynchContext.checkError();
+                    }catch(SharedContextSendException e){
+                        throw e;
+                    }catch(SharedContextTimeoutException e){
+                        throw e;
+                    }catch(Error e){
+                        throw e;
+                    }catch(Throwable th){
+                        // 起きないはず
+                        throw new SharedContextSendException(th);
+                    }
+                    Set ret = (Set)asynchContext.getOutput();
+                    if(ret != null){
+                        if(result == null){
+                            result = new HashSet();
+                        }
+                        result.addAll(ret);
+                    }
+                }
+            }
+        }
+        return result;
     }
     
     public Object getLockOwner(Object key){
@@ -1169,9 +1342,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             map.put(entry.getKey(), entry.getValue());
         }
         
+        entries = distMap.entrySet().iterator();
         if(parallelRequestQueueHandlerContainer == null){
             int completed = 0;
-            entries = distMap.entrySet().iterator();
             while(entries.hasNext()){
                 Map.Entry entry = (Map.Entry)entries.next();
                 if(timeout > 0){
@@ -2738,6 +2911,40 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         public Object execute() throws SharedContextIllegalIndexException, SharedContextSendException, SharedContextTimeoutException{
             context.healthCheck(isContainsClient, timeout);
             return null;
+        }
+    }
+    
+    protected class LocksParallelRequest extends SharedContextParallelRequest{
+        
+        private Set keys;
+        private long timeout;
+        private boolean ifAcquireable;
+        private boolean ifExist;
+        
+        public LocksParallelRequest(SharedContext context, Set keys, boolean ifAcquireable, boolean ifExist, long timeout){
+            super(context);
+            this.keys = keys;
+            this.ifAcquireable = ifAcquireable;
+            this.ifExist = ifExist;
+            this.timeout = timeout;
+        }
+        public Object execute() throws SharedContextIllegalIndexException, SharedContextSendException, SharedContextTimeoutException{
+            return context.locks(keys, ifAcquireable, ifExist, timeout) ? Boolean.TRUE : Boolean.FALSE;
+        }
+    }
+    
+    protected class UnlocksParallelRequest extends SharedContextParallelRequest{
+        
+        private Set keys;
+        private boolean force;
+        
+        public UnlocksParallelRequest(SharedContext context, Set keys, boolean force){
+            super(context);
+            this.keys = keys;
+            this.force = force;
+        }
+        public Object execute() throws SharedContextIllegalIndexException, SharedContextSendException, SharedContextTimeoutException{
+            return context.unlocks(keys, force);
         }
     }
     

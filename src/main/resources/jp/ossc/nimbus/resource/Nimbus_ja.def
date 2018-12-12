@@ -350,6 +350,8 @@ SCS__00009,キー"@0"の更新要求が古いため、破棄しました。: sub
 DSCS_00001,応答メッセージが生成できませんでした。: subject=@0\\, responseSubject=@1\\, responseKey=@2\\, response=@3
 DSCS_00002,応答に失敗しました。: subject=@0\\, response=@1
 DSCS_00003,リハッシュに失敗しました。: subject=@0
+DSCS_00004,リハッシュを開始します。: service=@0
+DSCS_00005,リハッシュが終了しました。: service=@0
 DSS__00001,Select処理でエラーが発生しました。再接続してみます。: @0
 DSS__00002,再接続に失敗しました。: @0
 CFTP_00001,FTPサーバへの接続に失敗しました。server=@0

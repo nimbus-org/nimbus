@@ -86,4 +86,18 @@ public interface ContextStore{
      * @exception Exception 失敗した場合
      */
     public void load(Context context, Object key) throws Exception;
+    
+    /**
+     * キー指定での保存をサポートするかどうかを判定する。<p>
+     *
+     * @return trueの場合、キー指定での保存をサポートする
+     */
+    public boolean isSupportSaveByKey();
+    
+    /**
+     * キー指定での読み込みをサポートするかどうかを判定する。<p>
+     *
+     * @return trueの場合、キー指定での読み込みをサポートする
+     */
+    public boolean isSupportLoadByKey();
 }

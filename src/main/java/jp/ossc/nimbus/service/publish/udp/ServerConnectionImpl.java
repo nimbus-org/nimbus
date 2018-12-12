@@ -1662,15 +1662,15 @@ public class ServerConnectionImpl implements ServerConnection{
             clientMap.remove(id);
             newClients.remove(ClientImpl.this);
             if(subjects.size() != 0){
-                Iterator entries = subjects.entrySet().iterator();
-                while(entries.hasNext()){
-                    Map.Entry entry = (Map.Entry)entries.next();
+                Object[] entries = subjects.entrySet().toArray();
+                for(int i = 0; i < entries.length; i++){
+                    Map.Entry entry = (Map.Entry)entries[i];
                     String subject = (String)entry.getKey();
                     Set keySet = (Set)entry.getValue();
                     if(serverConnectionListeners != null && !keySet.isEmpty()){
                         String[] removeKeys = (String[])keySet.toArray(new String[0]);
-                        for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
-                            ((ServerConnectionListener)serverConnectionListeners.get(i)).onRemoveSubject(ClientImpl.this, subject, removeKeys);
+                        for(int j = 0, jmax = serverConnectionListeners.size(); j < jmax; j++){
+                            ((ServerConnectionListener)serverConnectionListeners.get(j)).onRemoveSubject(ClientImpl.this, subject, removeKeys);
                         }
                     }
                 }
@@ -2070,7 +2070,9 @@ public class ServerConnectionImpl implements ServerConnection{
             if(subjects == null){
                 return null;
             }
-            return new HashSet(subjects.keySet());
+            synchronized(subjects){
+                return new HashSet(subjects.keySet());
+            }
         }
         
         public Set getKeys(String subject){
