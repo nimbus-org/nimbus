@@ -441,7 +441,7 @@ constructor要素の子要素にargument要素を指定します。デフォル�
 のコンストラクタを指定したい場合に指定します。
 Serviceには、該当するコンストラクタを実装しておく必要があります。
 -->
-<!ELEMENT constructor (argument+ | invoke |static-invoke | static-field-ref)*>
+<!ELEMENT constructor (argument+ | invoke |static-invoke | static-field-ref | ifdef*)*>
 
 <!-- argument要素は、constructor要素で指定するコンストラクタの引数を定義します。
 argument要素の内容に、引数の値を指定します。
