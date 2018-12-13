@@ -139,10 +139,6 @@ public class DefaultMBeanServerConnectionFactoryService extends ServiceBase impl
                     isConnected = true;
                 }
             }
-/*
-        }else{
-            throw new IllegalArgumentException("ServiceURL or jndiFinderServiceName must be specified.");
-*/
         }
     }
     
@@ -161,12 +157,7 @@ public class DefaultMBeanServerConnectionFactoryService extends ServiceBase impl
         try{
             if(jndiFinder != null){
                 connection = (MBeanServerConnection)jndiFinder.lookup(rmiAdaptorName);
-/*
-            }else{
-*/
-
             }else if(serviceURL != null){
-
                 if(connector == null){
                     synchronized(connector){
                         if(connector == null){
@@ -187,10 +178,8 @@ public class DefaultMBeanServerConnectionFactoryService extends ServiceBase impl
                     }
                 }
                 connection = connector.getMBeanServerConnection();
-
             }else{
                 connection = ManagementFactory.getPlatformMBeanServer();
-
             }
         }catch(IOException e){
             throw new MBeanServerConnectionFactoryException(e);
@@ -201,10 +190,7 @@ public class DefaultMBeanServerConnectionFactoryService extends ServiceBase impl
     }
     
     public JMXConnector getJMXConnector() throws MBeanServerConnectionFactoryException{
-/*
-        throw UnsupportedOperationException();
-*/
-
+        
         if(serviceURL != null){
             JMXConnector connector = this.connector;
             try{
@@ -229,7 +215,6 @@ public class DefaultMBeanServerConnectionFactoryService extends ServiceBase impl
         }else{
             return new JMXConnectorWrapper(getConnection());
         }
-
     }
     
     protected static class JMXConnectorWrapper implements JMXConnector{

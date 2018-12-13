@@ -96,12 +96,15 @@ import jp.ossc.nimbus.util.converter.Converter;
 public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, MBeanWatcherServiceMBean{
 
     private static final long serialVersionUID = -1421073056315791503L;
-
-    protected ServiceName jndiFinderServiceName;
-    protected JndiFinder jndiFinder;
-    protected String rmiAdaptorName = DEFAULT_JMX_RMI_ADAPTOR_NAME;
+    
+    private ServiceName jndiFinderServiceName;
+    private JndiFinder jndiFinder;
+    private String rmiAdaptorName = DEFAULT_JMX_RMI_ADAPTOR_NAME;
     private String serviceURL;
     private Map jmxConnectorEnvironment;
+    private ServiceName mBeanServerConnectionFactoryServiceName;
+    private MBeanServerConnectionFactory mBeanServerConnectionFactory;
+    
     private long interval;
     private ServiceName categoryServiceName;
     private List targetList;
@@ -120,6 +123,15 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     private Map contextMap;
     private boolean isConnectError;
     private PropertyAccess propertyAccess;
+
+    // MBeanWatcherServiceMBeanのJavaDoc
+    public void setMBeanServerConnectionFactoryServiceName(ServiceName name){
+        mBeanServerConnectionFactoryServiceName = name;
+    }
+    // MBeanWatcherServiceMBeanのJavaDoc
+    public ServiceName getMBeanServerConnectionFactoryServiceName(){
+        return mBeanServerConnectionFactoryServiceName;
+    }
 
     // MBeanWatcherServiceMBeanのJavaDoc
     public void setJndiFinderServiceName(ServiceName name){
@@ -278,7 +290,13 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     public void startService() throws Exception{
-        if(jndiFinderServiceName != null){
+        if(mBeanServerConnectionFactoryServiceName != null){
+            mBeanServerConnectionFactory = (MBeanServerConnectionFactory)ServiceManagerFactory.getServiceObject(mBeanServerConnectionFactoryServiceName);
+            if(isConnectOnStart){
+                connector = mBeanServerConnectionFactory.getJMXConnector();
+                connector.connect();
+            }
+        }else if(jndiFinderServiceName != null){
             jndiFinder = (JndiFinder)ServiceManagerFactory.getServiceObject(jndiFinderServiceName);
         }else if(serviceURL != null){
             if(isConnectOnStart){
@@ -288,10 +306,6 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
                 );
                 connector.connect();
             }
-/*
-        }else{
-            throw new IllegalArgumentException("ServiceURL or jndiFinderServiceName must be specified.");
-*/
         }
 
         if(categoryServiceName != null){
@@ -355,17 +369,16 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
             try{
                 if(jndiFinder != null){
                     connection = (MBeanServerConnection)jndiFinder.lookup(rmiAdaptorName);
-/*
-                }else{
-*/
-
-                }else if(serviceURL != null){
-
+                }else if(mBeanServerConnectionFactory != null || serviceURL != null){
                     if(connector == null){
-                        tmpConnector = JMXConnectorFactory.newJMXConnector(
-                            new JMXServiceURL(serviceURL),
-                            jmxConnectorEnvironment
-                        );
+                        if(mBeanServerConnectionFactory != null){
+                            tmpConnector = mBeanServerConnectionFactory.getJMXConnector();
+                        }else{
+                            tmpConnector = JMXConnectorFactory.newJMXConnector(
+                                new JMXServiceURL(serviceURL),
+                                jmxConnectorEnvironment
+                            );
+                        }
                         tmpConnector.connect();
                         connection = tmpConnector.getMBeanServerConnection();
                     }else{
@@ -377,16 +390,25 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
 
                 }
                 isConnectError = false;
+            }catch(MBeanServerConnectionFactoryException e){
+                if(!isConnectError && connectErrorMessageId != null){
+                    getLogger().write(
+                        connectErrorMessageId,
+                        new Object[]{getServiceNameObject(), mBeanServerConnectionFactoryServiceName},
+                        e
+                    );
+                }
+                isConnectError = true;
+                if(throwConnectError){
+                    throw e;
+                }else{
+                    return null;
+                }
             }catch(Exception e){
                 if(!isConnectError && connectErrorMessageId != null){
                     getLogger().write(
                         connectErrorMessageId,
-/*
-                        new Object[]{getServiceNameObject(), rmiAdaptorName != null ? rmiAdaptorName : serviceURL},
-*/
-
                         new Object[]{getServiceNameObject(), rmiAdaptorName != null ? rmiAdaptorName : (serviceURL != null ? serviceURL : "PlatformMBeanServer")},
-
                         e
                     );
                 }
@@ -2602,17 +2624,18 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
                 MBeanServerConnection connection = null;
                 if(watcher.jndiFinder != null){
                     connection = (MBeanServerConnection)watcher.jndiFinder.lookup(watcher.rmiAdaptorName);
-/*
-                }else{
-*/
 
-                }else if(watcher.serviceURL != null){
+                }else if(watcher.mBeanServerConnectionFactory != null || watcher.serviceURL != null){
 
                     if(watcher.connector == null){
-                        tmpConnector = JMXConnectorFactory.newJMXConnector(
-                            new JMXServiceURL(watcher.serviceURL),
-                            watcher.jmxConnectorEnvironment
-                        );
+                        if(watcher.mBeanServerConnectionFactory != null){
+                            tmpConnector = watcher.mBeanServerConnectionFactory.getJMXConnector();
+                        }else{
+                            tmpConnector = JMXConnectorFactory.newJMXConnector(
+                                new JMXServiceURL(watcher.serviceURL),
+                                watcher.jmxConnectorEnvironment
+                            );
+                        }
                         tmpConnector.connect();
                         connection = tmpConnector.getMBeanServerConnection();
                     }else{
