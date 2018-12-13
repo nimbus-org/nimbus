@@ -437,6 +437,12 @@ public class RequestConnectionFactoryService extends ServiceBase
                 }
                 try{
                     responseStartTime = sendEndTime;
+                    if(timeout > 0){
+                        curTimeout = timeout - (System.currentTimeMillis() - sendStartTime);
+                        if(curTimeout <= 0){
+                            throw new RequestTimeoutException("No responce destinations: sequence=" + sequence + ", clients=" + requestClients);
+                        }
+                    }
                     return container.getResponse(curTimeout);
                 }finally{
                     responseMap.remove(sequenceVal);

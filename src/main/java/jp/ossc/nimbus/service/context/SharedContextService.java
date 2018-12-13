@@ -1452,7 +1452,7 @@ public class SharedContextService extends DefaultContextService
             throw new SharedContextSendException(e);
         }catch(RequestTimeoutException e){
             currentTimeout = isNoTimeout ? currentTimeout : timeout - (System.currentTimeMillis() - start);
-            if(!isNoTimeout && timeout <= 0){
+            if(!isNoTimeout && currentTimeout <= 0){
                 result = false;
                 throw new SharedContextTimeoutException("keys=" + keys.size() + ", timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - start), e);
             }else{
@@ -5352,6 +5352,7 @@ public class SharedContextService extends DefaultContextService
                     Message message = serverConnection.createMessage(subject, null);
                     message.setSubject(clientSubject, null);
                     final Set receiveClients = serverConnection.getReceiveClientIds(message);
+                    receiveClients.remove(sourceId);
                     if(receiveClients.size() == 0){
                         Message response = createResponseMessage(responseSubject, responseKey, Boolean.TRUE);
                         try{
@@ -5360,6 +5361,7 @@ public class SharedContextService extends DefaultContextService
                             getLogger().write("SCS__00006", new Object[]{isClient ? clientSubject : subject, response}, e);
                         }
                     }else{
+                        message.setDestinationIds(receiveClients);
                         long currentTimeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - startTime);
                         if(!isNoTimeout && timeout <= 0){
                             Message response = createResponseMessage(responseSubject, responseKey, new SharedContextTimeoutException());
