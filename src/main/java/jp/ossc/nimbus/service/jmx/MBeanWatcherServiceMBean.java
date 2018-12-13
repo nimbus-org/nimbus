@@ -59,6 +59,20 @@ public interface MBeanWatcherServiceMBean extends ServiceBaseMBean{
     public static final String DEFAULT_JMX_RMI_ADAPTOR_NAME = "jmx/invoker/RMIAdaptor";
 
     /**
+     * javax.management.remote.JMXConnectorを取得する{@link MBeanServerConnectionFactory}サービスのサービス名を設定する。<p>
+     *
+     * @param name MBeanServerConnectionFactoryサービスのサービス名
+     */
+    public void setMBeanServerConnectionFactoryServiceName(ServiceName name);
+
+    /**
+     * javax.management.remote.JMXConnector取得する{@link MBeanServerConnectionFactory}サービスのサービス名を取得する。<p>
+     *
+     * @return MBeanServerConnectionFactoryサービスのサービス名
+     */
+    public ServiceName getMBeanServerConnectionFactoryServiceName();
+
+    /**
      * javax.management.MBeanServerConnectionをJNDIからlookupする{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}サービスのサービス名を設定する。<p>
      *
      * @param name JndiFinderサービスのサービス名
