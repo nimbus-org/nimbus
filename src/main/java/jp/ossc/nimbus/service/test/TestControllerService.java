@@ -1281,6 +1281,9 @@ public class TestControllerService extends ServiceBase implements TestController
             List beforeList = new ArrayList();
             List finallyList = new ArrayList();
             for (int i = 0; i < testActionResources.length; i++) {
+                if(beforeList.contains(testActionResources[i].getId()) || finallyList.contains(testActionResources[i].getId())) {
+                    throw new TestException("ScenarioGroup ActionId is Duplicated. id=" + testActionResources[i].getId());
+                }
                 if (testActionResources[i].getType() == TestActionContext.TYPE_BEFORE) {
                     beforeList.add(testActionResources[i].getId());
                 }
@@ -1400,6 +1403,9 @@ public class TestControllerService extends ServiceBase implements TestController
             List afterList = new ArrayList();
             List finallyList = new ArrayList();
             for (int i = 0; i < testActionResources.length; i++) {
+                if(beforeList.contains(testActionResources[i].getId()) || afterList.contains(testActionResources[i].getId()) || finallyList.contains(testActionResources[i].getId())) {
+                    throw new TestException("Scenario ActionId is Duplicated. id=" + testActionResources[i].getId());
+                }
                 switch (testActionResources[i].getType()) {
                 case TestActionContext.TYPE_BEFORE:
                     beforeList.add(testActionResources[i].getId());
@@ -1523,6 +1529,10 @@ public class TestControllerService extends ServiceBase implements TestController
         List testCaseAfterList = new ArrayList();
         List testCaseFinallyList = new ArrayList();
         for (int i = 0; i < testCaseTestActionResources.length; i++) {
+            if(testCaseBeforeList.contains(testCaseTestActionResources[i].getId()) || testCaseActionList.contains(testCaseTestActionResources[i].getId())
+                    || testCaseAfterList.contains(testCaseTestActionResources[i].getId()) || testCaseFinallyList.contains(testCaseTestActionResources[i].getId())) {
+                throw new TestException("Testcase ActionId is Duplicated. id=" + testCaseTestActionResources[i].getId());
+            }
             switch (testCaseTestActionResources[i].getType()) {
             case TestActionContext.TYPE_BEFORE:
                 testCaseBeforeList.add(testCaseTestActionResources[i].getId());
@@ -2236,33 +2246,28 @@ public class TestControllerService extends ServiceBase implements TestController
     
     protected class TestActionContextManager {
         
-        private List actionContexts;
+        private LinkedHashMap actionContexts;
         
         public TestActionContextManager() {
-            actionContexts = new ArrayList();
+            actionContexts = new LinkedHashMap();
         }
         
         public void putActionContext(TestActionContext testActionContext) {
-            actionContexts.add(testActionContext);
+            actionContexts.put(testActionContext.getId(), testActionContext);
         }
         
         public List getActionContextList() {
-            return actionContexts;
+            return new ArrayList(actionContexts.values());
         }
         
         public TestActionContext getActionContext(String id) {
-            for (int i = 0; i < actionContexts.size(); i++) {
-                TestActionContext testActionContext = (TestActionContext) actionContexts.get(i);
-                if (testActionContext.getId().equals(id)) {
-                    return testActionContext;
-                }
-            }
-            return null;
+            return (TestActionContext)actionContexts.get(id);
         }
         
         public boolean isAllActionSuccess() {
-            for (int i = 0; i < actionContexts.size(); i++) {
-                TestActionContext testActionContext = (TestActionContext) actionContexts.get(i);
+            Iterator itr = actionContexts.values().iterator();
+            while(itr.hasNext()) {
+                TestActionContext testActionContext = (TestActionContext)itr.next();
                 if (!testActionContext.isSuccess()) {
                     return false;
                 }
