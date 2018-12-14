@@ -603,7 +603,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
      */
     public void stopService() throws Exception{
         if(serverConnection != null){
-	        serverConnection.removeServerConnectionListener(this);
+            serverConnection.removeServerConnectionListener(this);
         }
         
         if(messageReceiver != null){
@@ -1072,12 +1072,16 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         return selectDistributeContext(key).lock(key, ifAcquireable, ifExist, timeout);
     }
     
-    public boolean unlock(Object key) throws SharedContextSendException{
+    public boolean unlock(Object key) throws SharedContextSendException, SharedContextTimeoutException{
         return unlock(key, false);
     }
     
-    public boolean unlock(Object key, boolean force) throws SharedContextSendException{
-        return selectDistributeContext(key).unlock(key, force);
+    public boolean unlock(Object key, boolean force) throws SharedContextSendException, SharedContextTimeoutException{
+        return unlock(key, force, defaultTimeout);
+    }
+    
+    public boolean unlock(Object key, boolean force, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+        return selectDistributeContext(key).unlock(key, force, timeout);
     }
     
     public void locks(Set keys) throws SharedContextSendException, SharedContextTimeoutException{
@@ -1173,11 +1177,15 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         return result;
     }
     
-    public Set unlocks(Set keys) throws SharedContextSendException{
+    public Set unlocks(Set keys) throws SharedContextSendException, SharedContextTimeoutException{
         return unlocks(keys, false);
     }
     
-    public Set unlocks(Set keys, boolean force) throws SharedContextSendException{
+    public Set unlocks(Set keys, boolean force) throws SharedContextSendException, SharedContextTimeoutException{
+        return unlocks(keys, force, defaultTimeout);
+    }
+    
+    public Set unlocks(Set keys, boolean force, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
         final long start = System.currentTimeMillis();
         Map distMap = new HashMap();
         Iterator itr = keys.iterator();
@@ -1195,15 +1203,27 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         Set result = null;
         Iterator entries = distMap.entrySet().iterator();
         if(parallelRequestQueueHandlerContainer == null){
+            int completed = 0;
             while(entries.hasNext()){
                 Map.Entry entry = (Map.Entry)entries.next();
-                Set ret = ((SharedContext)entry.getKey()).unlocks((Set)entry.getValue(), force);
+                Set ret = null;
+                if(timeout > 0){
+                    final long currentTimeout = timeout - (start - System.currentTimeMillis());
+                    if(currentTimeout > 0){
+                        ret = ((SharedContext)entry.getKey()).unlocks((Set)entry.getValue(), force, currentTimeout);
+                    }else{
+                        throw new SharedContextTimeoutException("There is a node that is not possible yet unlocks. completed=" + completed + "notCompleted=" + (distMap.size() - completed));
+                    }
+                }else{
+                    ret = ((SharedContext)entry.getKey()).unlocks((Set)entry.getValue(), force, timeout);
+                }
                 if(ret != null){
                     if(result == null){
                         result = new HashSet();
                     }
                     result.addAll(ret);
                 }
+                completed++;
             }
         }else{
             DefaultQueueService responseQueue = new DefaultQueueService();
@@ -1216,7 +1236,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             while(entries.hasNext()){
                 Map.Entry entry = (Map.Entry)entries.next();
                 AsynchContext asynchContext = new AsynchContext(
-                    new UnlocksParallelRequest((SharedContext)entry.getKey(), (Set)entry.getValue(), force),
+                    new UnlocksParallelRequest((SharedContext)entry.getKey(), (Set)entry.getValue(), force, timeout),
                     responseQueue
                 );
                 parallelRequestQueueHandlerContainer.push(asynchContext);
@@ -2937,14 +2957,16 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         
         private Set keys;
         private boolean force;
+        private long timeout;
         
-        public UnlocksParallelRequest(SharedContext context, Set keys, boolean force){
+        public UnlocksParallelRequest(SharedContext context, Set keys, boolean force, long timeout){
             super(context);
             this.keys = keys;
             this.force = force;
+            this.timeout = timeout;
         }
         public Object execute() throws SharedContextIllegalIndexException, SharedContextSendException, SharedContextTimeoutException{
-            return context.unlocks(keys, force);
+            return context.unlocks(keys, force, timeout);
         }
     }
     
@@ -4775,13 +4797,6 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             this.propName = propName;
         }
         
-/*
-        public Object execute() throws IndexNotFoundException, IndexPropertyAccessException, SharedContextSendException, SharedContextTimeoutException{
-            return view.searchFrom(timeout, fromValue, indexName, propName);
-        }
-*/
-        
-
         private boolean inclusive = true;
         
         public SearchFromParallelRequest(SharedContextView view, long timeout, Object fromValue, boolean inclusive, String indexName, String propName){
@@ -4810,13 +4825,6 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             this.propName = propName;
         }
         
-/*
-        public Object execute() throws IndexNotFoundException, SharedContextSendException, SharedContextTimeoutException{
-            return view.searchFromProperty(timeout, fromProp, indexName, propName);
-        }
-*/
-        
-
         private boolean inclusive;
         
         public SearchFromPropertyParallelRequest(SharedContextView view, long timeout, Object fromProp, boolean inclusive, String indexName, String propName){
@@ -4845,13 +4853,6 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             this.propName = propName;
         }
         
-/*
-        public Object execute() throws IndexNotFoundException, IndexPropertyAccessException, SharedContextSendException, SharedContextTimeoutException{
-            return view.searchTo(timeout, toValue, indexName, propName);
-        }
-*/
-        
-
         private boolean inclusive;
         
         public SearchToParallelRequest(SharedContextView view, long timeout, Object toValue, boolean inclusive, String indexName, String propName){
@@ -4880,13 +4881,6 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             this.propName = propName;
         }
         
-/*
-        public Object execute() throws IndexNotFoundException, SharedContextSendException, SharedContextTimeoutException{
-            return view.searchToProperty(timeout, toProp, indexName, propName);
-        }
-*/
-        
-
         private boolean inclusive;
         
         public SearchToPropertyParallelRequest(SharedContextView view, long timeout, Object toProp, boolean inclusive, String indexName, String propName){
@@ -4915,13 +4909,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             this.indexName = indexName;
             this.propName = propName;
         }
-/*
-        public Object execute() throws IndexNotFoundException, IndexPropertyAccessException, SharedContextSendException, SharedContextTimeoutException{
-            return view.searchRange(timeout, fromValue, toValue, indexName, propName);
-        }
-*/
         
-
         private boolean fromInclusive;
         private boolean toInclusive;
         
@@ -4952,13 +4940,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             this.indexName = indexName;
             this.propName = propName;
         }
-/*
-        public Object execute() throws IndexNotFoundException, IndexPropertyAccessException, SharedContextSendException, SharedContextTimeoutException{
-            return view.searchRangeProperty(timeout, fromProp, toProp, indexName, propName);
-        }
-*/
         
-
         private boolean fromInclusive;
         private boolean toInclusive;
         

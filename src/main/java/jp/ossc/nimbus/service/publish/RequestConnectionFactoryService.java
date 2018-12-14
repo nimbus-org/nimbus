@@ -743,6 +743,7 @@ public class RequestConnectionFactoryService extends ServiceBase
             }
             
             public Message[] getResponse(long timeout) throws RequestTimeoutException{
+                final long startTime = System.currentTimeMillis();
                 try{
                     if(!monitor.waitMonitor(timeout)){
                         Message[] responses = null;
@@ -750,7 +751,7 @@ public class RequestConnectionFactoryService extends ServiceBase
                             responses = responseList.size() == 0 ? null : (Message[])responseList.toArray(new Message[responseList.size()]);
                         }
                         synchronized(requestClients){
-                            throw new RequestTimeoutException("No responce destinations: sequence=" + sequence + ", clients=" + requestClients, responses);
+                            throw new RequestTimeoutException("No responce destinations: sequence=" + sequence + ", clients=" + requestClients + ", timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - startTime), responses);
                         }
                     }
                 }catch(InterruptedException e){
@@ -764,7 +765,7 @@ public class RequestConnectionFactoryService extends ServiceBase
                 }
                 if(replyCount > 0 && (responses == null || responses.length < replyCount)){
                     synchronized(requestClients){
-                        throw new RequestTimeoutException("No responce destinations: sequence=" + sequence + ", clients=" + requestClients, responses);
+                        throw new RequestTimeoutException("No responce destinations: sequence=" + sequence + ", clients=" + requestClients + ", timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - startTime), responses);
                     }
                 }
                 return responses;

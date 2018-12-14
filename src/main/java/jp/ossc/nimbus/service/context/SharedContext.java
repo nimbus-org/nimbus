@@ -84,8 +84,9 @@ public interface SharedContext extends Context{
      * @param key キー
      * @return ロック開放できた場合は、true
      * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
-    public boolean unlock(Object key) throws SharedContextSendException;
+    public boolean unlock(Object key) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
      * 指定されたキーのロックを開放する。<p>
@@ -94,8 +95,21 @@ public interface SharedContext extends Context{
      * @param force 強制フラグ
      * @return ロック開放できた場合は、true
      * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
-    public boolean unlock(Object key, boolean force) throws SharedContextSendException;
+    public boolean unlock(Object key, boolean force) throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 指定されたキーのロックを開放する。<p>
+     *
+     * @param key キー
+     * @param force 強制フラグ
+     * @param timeout タイムアウト[ms]
+     * @return ロック開放できた場合は、true
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public boolean unlock(Object key, boolean force, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
      * 指定されたキー集合のロックを獲得する。<p>
@@ -135,8 +149,9 @@ public interface SharedContext extends Context{
      * @param keys キー集合
      * @return ロック開放できた場合は、null。解放できなかった場合は、解放できなかったキー集合
      * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
-    public Set unlocks(Set keys) throws SharedContextSendException;
+    public Set unlocks(Set keys) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
      * 指定されたキーのロックを開放する。<p>
@@ -145,8 +160,21 @@ public interface SharedContext extends Context{
      * @param force 強制フラグ
      * @return ロック開放できた場合は、null。解放できなかった場合は、解放できなかったキー集合
      * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
-    public Set unlocks(Set keys, boolean force) throws SharedContextSendException;
+    public Set unlocks(Set keys, boolean force) throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 指定されたキーのロックを開放する。<p>
+     *
+     * @param keys キー集合
+     * @param force 強制フラグ
+     * @param timeout タイムアウト[ms]
+     * @return ロック開放できた場合は、null。解放できなかった場合は、解放できなかったキー集合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public Set unlocks(Set keys, boolean force, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
      * 指定されたキーのロックを保有しているノードのIDを取得する。<p>

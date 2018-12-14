@@ -546,12 +546,7 @@ public class SharedContextService extends DefaultContextService
         cluster = (ClusterService)ServiceManagerFactory.getServiceObject(clusterServiceName);
         cluster.addClusterListener(this);
         
-/*
-        lockTimeoutTimer = new Timer(true);
-*/
-
         lockTimeoutTimer = new Timer("SharedContext LockTimeoutTimerThread of " + getServiceNameObject(), true);
-
         
         super.startService();
         
@@ -1248,30 +1243,80 @@ public class SharedContextService extends DefaultContextService
         return true;
     }
     
-    public boolean unlock(Object key) throws SharedContextSendException{
+    public boolean unlock(Object key) throws SharedContextSendException, SharedContextTimeoutException{
         return unlock(key, false);
     }
     
-    public boolean unlock(Object key, boolean force) throws SharedContextSendException{
+    public boolean unlock(Object key, boolean force) throws SharedContextSendException, SharedContextTimeoutException{
+        return unlock(key, force, defaultTimeout);
+    }
+    
+    public boolean unlock(Object key, boolean force, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
         Lock lock = (Lock)keyLockMap.get(key);
         Object id = cluster.getUID();
         if(force && lock != null && lock.getOwner() != null){
             id = lock.getOwner();
         }
-        boolean result = lock == null;
-        if(lock != null){
+        boolean result = true;
+        if(isMain()){
+            if(lock == null){
+                return true;
+            }
             result = lock.release(id, force);
-        }
-        if(result){
+            if(result){
+                try{
+                    Message message = serverConnection.createMessage(subject, key == null ? null : key.toString());
+                    message.setSubject(clientSubject, key == null ? null : key.toString());
+                    message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_RELEASE_LOCK, key, id));
+                    serverConnection.sendAsynch(message);
+                }catch(MessageException e){
+                    throw new SharedContextSendException(e);
+                }catch(MessageSendException e){
+                    throw new SharedContextSendException(e);
+                }
+            }
+        }else{
             try{
                 Message message = serverConnection.createMessage(subject, key == null ? null : key.toString());
-                message.setSubject(clientSubject, key == null ? null : key.toString());
-                message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_RELEASE_LOCK, key, id));
-                serverConnection.sendAsynch(message);
+                Set receiveClients = serverConnection.getReceiveClientIds(message);
+                if(receiveClients.size() != 0){
+                    message.setObject(
+                        new SharedContextEvent(
+                            SharedContextEvent.EVENT_RELEASE_LOCK,
+                            key,
+                            id
+                        )
+                    );
+                    Message[] responses = serverConnection.request(
+                        message,
+                        isClient ? clientSubject : subject,
+                        key == null ? null : key.toString(),
+                        1,
+                        timeout
+                    );
+                    Object ret = responses[0].getObject();
+                    responses[0].recycle();
+                    if(ret instanceof Throwable){
+                        throw new SharedContextSendException((Throwable)ret);
+                    }else if(ret == null || !((Boolean)ret).booleanValue()){
+                        result = false;
+                    }
+                }
             }catch(MessageException e){
                 throw new SharedContextSendException(e);
             }catch(MessageSendException e){
                 throw new SharedContextSendException(e);
+            }catch(RequestTimeoutException e){
+                throw new SharedContextTimeoutException(e);
+            }catch(RuntimeException e){
+                throw e;
+            }catch(Error e){
+                throw e;
+            }catch(Throwable th){
+                throw new SharedContextSendException(th);
+            }
+            if(lock != null && result){
+                result = lock.release(id, force);
             }
         }
         return result;
@@ -1475,46 +1520,111 @@ public class SharedContextService extends DefaultContextService
         return result;
     }
     
-    public Set unlocks(Set keys) throws SharedContextSendException{
+    public Set unlocks(Set keys) throws SharedContextSendException, SharedContextTimeoutException{
         return unlocks(keys, false);
     }
     
-    public Set unlocks(Set keys, boolean force) throws SharedContextSendException{
+    public Set unlocks(Set keys, boolean force) throws SharedContextSendException, SharedContextTimeoutException{
+        return unlocks(keys, force, defaultTimeout);
+    }
+    
+    public Set unlocks(Set keys, boolean force, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
         Object myId = cluster.getUID();
         Set failedKeys = null;
-        final Iterator keyItr = keys.iterator();
-        while(keyItr.hasNext()){
-            Object key = keyItr.next();
-            Lock lock = (Lock)keyLockMap.get(key);
-            Object id = null;
-            if(force && lock != null && lock.getOwner() != null){
-                id = lock.getOwner();
-            }else{
-                id = myId;
-            }
-            if(lock != null){
-                if(!lock.release(id, force)){
-                    if(failedKeys == null){
-                        failedKeys = new HashSet();
+        if(isMain()){
+            final Iterator keyItr = keys.iterator();
+            while(keyItr.hasNext()){
+                Object key = keyItr.next();
+                Lock lock = (Lock)keyLockMap.get(key);
+                Object id = null;
+                if(force && lock != null && lock.getOwner() != null){
+                    id = lock.getOwner();
+                }else{
+                    id = myId;
+                }
+                if(lock != null){
+                    if(!lock.release(id, force)){
+                        if(failedKeys == null){
+                            failedKeys = new HashSet();
+                        }
+                        failedKeys.add(key);
                     }
-                    failedKeys.add(key);
+                }
+            }
+            Set tmpKeys = new HashSet(keys);
+            if(failedKeys != null){
+                tmpKeys.remove(failedKeys);
+            }
+            try{
+                Message message = serverConnection.createMessage(subject, null);
+                message.setSubject(clientSubject, null);
+                message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_RELEASE_LOCKS, tmpKeys, myId));
+                serverConnection.sendAsynch(message);
+            }catch(MessageException e){
+                throw new SharedContextSendException(e);
+            }catch(MessageSendException e){
+                throw new SharedContextSendException(e);
+            }
+        }else{
+            try{
+                Message message = serverConnection.createMessage(subject, null);
+                Set receiveClients = serverConnection.getReceiveClientIds(message);
+                if(receiveClients.size() != 0){
+                    message.setObject(
+                        new SharedContextEvent(
+                            SharedContextEvent.EVENT_RELEASE_LOCKS,
+                            keys,
+                            myId
+                        )
+                    );
+                    Message[] responses = serverConnection.request(
+                        message,
+                        isClient ? clientSubject : subject,
+                        null,
+                        1,
+                        timeout
+                    );
+                    Object ret = responses[0].getObject();
+                    responses[0].recycle();
+                    if(ret instanceof Throwable){
+                        throw new SharedContextSendException((Throwable)ret);
+                    }else if(ret != null && ret instanceof Set){
+                        failedKeys = (Set)ret;
+                    }
+                }
+            }catch(MessageException e){
+                throw new SharedContextSendException(e);
+            }catch(MessageSendException e){
+                throw new SharedContextSendException(e);
+            }catch(RequestTimeoutException e){
+                throw new SharedContextTimeoutException(e);
+            }catch(RuntimeException e){
+                throw e;
+            }catch(Error e){
+                throw e;
+            }catch(Throwable th){
+                throw new SharedContextSendException(th);
+            }
+            Set tmpKeys = new HashSet(keys);
+            if(failedKeys != null){
+                tmpKeys.remove(failedKeys);
+            }
+            final Iterator keyItr = tmpKeys.iterator();
+            while(keyItr.hasNext()){
+                Object key = keyItr.next();
+                Lock lock = (Lock)keyLockMap.get(key);
+                Object id = null;
+                if(force && lock != null && lock.getOwner() != null){
+                    id = lock.getOwner();
+                }else{
+                    id = myId;
+                }
+                if(lock != null){
+                    lock.release(id, force);
                 }
             }
         }
-        Set tmpKeys = new HashSet(keys);
-        if(failedKeys != null){
-            tmpKeys.remove(failedKeys);
-        }
-        try{
-            Message message = serverConnection.createMessage(subject, null);
-            message.setSubject(clientSubject, null);
-            message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_RELEASE_LOCKS, tmpKeys, myId));
-            serverConnection.sendAsynch(message);
-        }catch(MessageException e){
-            throw new SharedContextSendException(e);
-        }catch(MessageSendException e){
-            throw new SharedContextSendException(e);
-        }
+        
         return failedKeys;
     }
     
@@ -3658,6 +3768,12 @@ public class SharedContextService extends DefaultContextService
         case SharedContextEvent.EVENT_GOT_LOCKS:
             result = onGotLocks(event, sourceId, sequence, responseSubject, responseKey);
             break;
+        case SharedContextEvent.EVENT_RELEASE_LOCK:
+            result = onReleaseLock(event, sourceId, sequence, responseSubject, responseKey);
+            break;
+        case SharedContextEvent.EVENT_RELEASE_LOCKS:
+            result = onReleaseLocks(event, sourceId, sequence, responseSubject, responseKey);
+            break;
         default:
         }
         return result;
@@ -4482,6 +4598,40 @@ public class SharedContextService extends DefaultContextService
         }
     }
     
+    protected Message onReleaseLock(final SharedContextEvent event, final Object sourceId, final int sequence, final String responseSubject, final String responseKey){
+        if(isMain(sourceId)){
+            boolean result = true;
+            Lock lock = (Lock)keyLockMap.get(event.key);
+            if(lock != null){
+                result = lock.release(event.value, true);
+            }
+            if(result){
+                try{
+                    Message message = serverConnection.createMessage(subject, event.key == null ? null : event.key.toString());
+                    message.setSubject(clientSubject, event.key == null ? null : event.key.toString());
+                    final Set receiveClients =  serverConnection.getReceiveClientIds(message);
+                    receiveClients.remove(sourceId);
+                    if(receiveClients.size() != 0){
+                        message.setDestinationIds(receiveClients);
+                        message.setObject(
+                            new SharedContextEvent(
+                                SharedContextEvent.EVENT_RELEASE_LOCK,
+                                event.key,
+                                sourceId
+                            )
+                        );
+                        serverConnection.sendAsynch(message);
+                    }
+                }catch(Throwable th){
+                    return createResponseMessage(responseSubject, responseKey, th);
+                }
+            }
+            return createResponseMessage(responseSubject, responseKey, result ? Boolean.TRUE : Boolean.FALSE);
+        }else{
+            return null;
+        }
+    }
+    
     protected void onReleaseLocks(SharedContextEvent event){
         Iterator keyItr = ((Set)event.key).iterator();
         Object id  = event.value;
@@ -4491,6 +4641,53 @@ public class SharedContextService extends DefaultContextService
             if(lock != null){
                 lock.release(id, true);
             }
+        }
+    }
+    
+    protected Message onReleaseLocks(final SharedContextEvent event, final Object sourceId, final int sequence, final String responseSubject, final String responseKey){
+        if(isMain(sourceId)){
+            Set keys = (Set)event.key;
+            Set failedKeys = null;
+            Iterator keyItr = keys.iterator();
+            Object id  = event.value;
+            while(keyItr.hasNext()){
+                Object key = keyItr.next();
+                Lock lock = (Lock)keyLockMap.get(key);
+                if(lock != null && !lock.release(id, true)){
+                    if(failedKeys == null){
+                        failedKeys = new HashSet();
+                    }
+                    failedKeys.add(key);
+                }
+            }
+            Set tmpKeys = new HashSet(keys);
+            if(failedKeys != null){
+                tmpKeys.remove(failedKeys);
+            }
+            if(tmpKeys.size() != 0){
+                try{
+                    Message message = serverConnection.createMessage(subject, null);
+                    message.setSubject(clientSubject, null);
+                    final Set receiveClients =  serverConnection.getReceiveClientIds(message);
+                    receiveClients.remove(sourceId);
+                    if(receiveClients.size() != 0){
+                        message.setDestinationIds(receiveClients);
+                        message.setObject(
+                            new SharedContextEvent(
+                                SharedContextEvent.EVENT_RELEASE_LOCKS,
+                                tmpKeys,
+                                sourceId
+                            )
+                        );
+                        serverConnection.sendAsynch(message);
+                    }
+                }catch(Throwable th){
+                    return createResponseMessage(responseSubject, responseKey, th);
+                }
+            }
+            return createResponseMessage(responseSubject, responseKey, failedKeys);
+        }else{
+            return null;
         }
     }
     
@@ -4584,120 +4781,6 @@ public class SharedContextService extends DefaultContextService
         }
     }
     
-/*
-    protected Message onSearchIndex(final SharedContextEvent event, final Object sourceId, final int sequence, final String responseSubject, final String responseKey){
-        if(isMain(sourceId)){
-            SearchEvent searchEvent = (SearchEvent)event.value;
-            Object result = null;
-            final byte type = searchEvent.type;
-            final Object[] args = searchEvent.arguments;
-            try{
-                switch(type){
-                case SearchEvent.TYPE_KEY:
-                    result = indexManager.searchKey((String)args[0], (String[])args[1]);
-                    break;
-                case SearchEvent.TYPE_NULL:
-                    result = indexManager.searchNull((String)args[0], (String)args[1]);
-                    break;
-                case SearchEvent.TYPE_NOT_NULL:
-                    result = indexManager.searchNotNull((String)args[0], (String)args[1]);
-                    break;
-                case SearchEvent.TYPE_BY:
-                    result = indexManager.searchBy((Object)args[0], (String)args[1], (String[])args[2]);
-                    break;
-                case SearchEvent.TYPE_IN:
-                    result = indexManager.searchIn((String)args[0], (String[])args[1], (Object[])args[2]);
-                    break;
-                case SearchEvent.TYPE_BY_PROP:
-                    result = indexManager.searchByProperty((Object)args[0], (String)args[1], (String)args[2]);
-                    break;
-                case SearchEvent.TYPE_IN_PROP:
-                    result = indexManager.searchInProperty((String)args[0], (String)args[1], (Object[])args[2]);
-                    break;
-                case SearchEvent.TYPE_BY_PROP_MAP:
-                    result = indexManager.searchByProperty((Map)args[0], (String)args[1]);
-                    break;
-                case SearchEvent.TYPE_IN_PROP_MAP:
-                    result = indexManager.searchInProperty((String)args[0], (Map[])args[1]);
-                    break;
-                case SearchEvent.TYPE_FROM:
-                    if(args[0] == null){
-                        result = indexManager.searchFrom((Object)args[3], (String)args[1], (String)args[2]);
-                    }else{
-                        result = indexManager.createTemporaryIndex(
-                            (Set)args[0],
-                            (String)args[1],
-                            (String)args[2]
-                        ).searchFrom((Object)args[3]);
-                    }
-                    break;
-                case SearchEvent.TYPE_FROM_PROP:
-                    if(args[0] == null){
-                        result = indexManager.searchFromProperty((Object)args[3], (String)args[1], (String)args[2]);
-                    }else{
-                        result = indexManager.createTemporaryIndex(
-                            (Set)args[0],
-                            (String)args[1],
-                            (String)args[2]
-                        ).searchFromProperty((Object)args[3]);
-                    }
-                    break;
-                case SearchEvent.TYPE_TO:
-                    if(args[0] == null){
-                        result = indexManager.searchTo((Object)args[3], (String)args[1], (String)args[2]);
-                    }else{
-                        result = indexManager.createTemporaryIndex(
-                            (Set)args[0],
-                            (String)args[1],
-                            (String)args[2]
-                        ).searchTo((Object)args[3]);
-                    }
-                    break;
-                case SearchEvent.TYPE_TO_PROP:
-                    if(args[0] == null){
-                        result = indexManager.searchToProperty((Object)args[3], (String)args[1], (String)args[2]);
-                    }else{
-                        result = indexManager.createTemporaryIndex(
-                            (Set)args[0],
-                            (String)args[1],
-                            (String)args[2]
-                        ).searchToProperty((Object)args[3]);
-                    }
-                    break;
-                case SearchEvent.TYPE_RANGE:
-                    if(args[0] == null){
-                        result = indexManager.searchRange((Object)args[3], (Object)args[4], (String)args[1], (String)args[2]);
-                    }else{
-                        result = indexManager.createTemporaryIndex(
-                            (Set)args[0],
-                            (String)args[1],
-                            (String)args[2]
-                        ).searchRange((Object)args[3], (Object)args[4]);
-                    }
-                    break;
-                case SearchEvent.TYPE_RANGE_PROP:
-                    if(args[0] == null){
-                        result = indexManager.searchRangeProperty((Object)args[3], (Object)args[4], (String)args[1], (String)args[2]);
-                    }else{
-                        result = indexManager.createTemporaryIndex(
-                            (Set)args[0],
-                            (String)args[1],
-                            (String)args[2]
-                        ).searchRangeProperty((Object)args[3], (Object)args[4]);
-                    }
-                    break;
-                }
-            }catch(Throwable th){
-                result = th;
-            }
-            return createResponseMessage(responseSubject, responseKey, result);
-        }else{
-            return null;
-        }
-    }
-*/
-    
-
     protected Message onSearchIndex(final SharedContextEvent event, final Object sourceId, final int sequence, final String responseSubject, final String responseKey){
         if(isMain(sourceId)){
             SearchEvent searchEvent = (SearchEvent)event.value;
@@ -4962,7 +5045,7 @@ public class SharedContextService extends DefaultContextService
         protected Thread ownerThread;
         protected long ownerThreadId = -1;
         protected final SynchronizeMonitor lockMonitor = new WaitSynchronizeMonitor();
-        protected Set callbacks = new LinkedHashSet();
+        protected Set callbacks = Collections.synchronizedSet(new LinkedHashSet());
         
         public Lock(Object key){
             this.key = key;
@@ -5013,10 +5096,8 @@ public class SharedContextService extends DefaultContextService
                         return true;
                     }
                 }else{
-                    synchronized(callbacks){
-                        if(callbacks.size() > 1){
-                            lockMonitor.notifyMonitor();
-                        }
+                    if(callbacks.size() > 0){
+                        lockMonitor.notifyMonitor();
                     }
                     return false;
                 }
@@ -5024,24 +5105,18 @@ public class SharedContextService extends DefaultContextService
                     return false;
                 }
                 callback = new CallbackTask();
-                synchronized(callbacks){
-                    callbacks.add(callback);
-                }
+                callbacks.add(callback);
                 lockMonitor.initMonitor();
             }
             try{
                 long start = System.currentTimeMillis();
                 if(lockMonitor.waitMonitor(timeout)){
                     synchronized(Lock.this){
-                        synchronized(callbacks){
-                            callbacks.remove(callback);
-                        }
+                        callbacks.remove(callback);
                         timeout = timeout - (System.currentTimeMillis() - start);
                         if(timeout <= 0){
-                            synchronized(callbacks){
-                                if(callbacks.size() > 1){
-                                    lockMonitor.notifyMonitor();
-                                }
+                            if(callbacks.size() > 0){
+                                lockMonitor.notifyMonitor();
                             }
                             return false;
                         }
@@ -5049,85 +5124,88 @@ public class SharedContextService extends DefaultContextService
                     return acquire(id, false, timeout);
                 }else{
                     synchronized(Lock.this){
-                        synchronized(callbacks){
-                            if(callbacks.size() > 1){
-                                lockMonitor.notifyMonitor();
-                            }
+                        if(callbacks.size() > 1){
+                            lockMonitor.notifyMonitor();
                         }
                     }
                     return false;
                 }
             }catch(InterruptedException e){
                 synchronized(Lock.this){
-                    synchronized(callbacks){
-                        if(callbacks.size() > 1){
-                            lockMonitor.notifyMonitor();
-                        }
+                    if(callbacks.size() > 1){
+                        lockMonitor.notifyMonitor();
                     }
                 }
                 return false;
             }finally{
-                synchronized(Lock.this){
-                    synchronized(callbacks){
-                        callbacks.remove(callback);
-                    }
-                }
+                callbacks.remove(callback);
                 lockMonitor.releaseMonitor();
             }
         }
         
         public int acquireForReply(CallbackTask callback){
             final boolean isLocal = callback.id.equals(getId());
+            int result = 2;
             synchronized(Lock.this){
-                Set targetMembers = serverConnection.getReceiveClientIds(allTargetMessage);
-                if(getState() == STARTED && (isLocal || targetMembers.contains(callback.id))){
-                    if(owner == null){
-                        owner = callback.id;
-                        if(isLocal){
-                            ownerThread = Thread.currentThread();
-                            ownerThreadId = -1;
-                        }else{
-                            ownerThread = null;
-                            ownerThreadId = callback.threadId;
-                        }
-                        Set keySet = (Set)idLocksMap.get(callback.id);
-                        if(keySet == null){
-                            keySet = new HashSet();
-                            Set old = (Set)idLocksMap.putIfAbsent(callback.id, keySet);
-                            if(old != null){
-                                keySet = old;
+                try{
+                    Set targetMembers = serverConnection.getReceiveClientIds(allTargetMessage);
+                    if(getState() == STARTED && (isLocal || targetMembers.contains(callback.id))){
+                        if(owner == null){
+                            owner = callback.id;
+                            if(isLocal){
+                                ownerThread = Thread.currentThread();
+                                ownerThreadId = -1;
+                            }else{
+                                ownerThread = null;
+                                ownerThreadId = callback.threadId;
                             }
+                            Set keySet = (Set)idLocksMap.get(callback.id);
+                            if(keySet == null){
+                                keySet = new HashSet();
+                                Set old = (Set)idLocksMap.putIfAbsent(callback.id, keySet);
+                                if(old != null){
+                                    keySet = old;
+                                }
+                            }
+                            synchronized(keySet){
+                                keySet.add(key);
+                            }
+                            result = 1;
+                            return result;
+                        }else if(callback.id.equals(owner)
+                            && ((isLocal && Thread.currentThread().equals(ownerThread))
+                                || (!isLocal && callback.threadId == ownerThreadId))
+                        ){
+                            result = 1;
+                            return result;
                         }
-                        synchronized(keySet){
-                            keySet.add(key);
-                        }
-                        return 1;
-                    }else if(callback.id.equals(owner)
-                        && ((isLocal && Thread.currentThread().equals(ownerThread))
-                            || (!isLocal && callback.threadId == ownerThreadId))
-                    ){
-                        return 1;
-                    }
-                }else{
-                    synchronized(callbacks){
-                        if(callbacks.size() > 1){
+                    }else{
+                        if(callbacks.size() > 0){
                             lockMonitor.notifyMonitor();
                         }
+                        result = 0;
+                        return result;
                     }
-                    return 0;
-                }
-                if(callback.ifAcquireable){
-                    return 0;
-                }
-                synchronized(callbacks){
-                    callbacks.add(callback);
-                }
-                if(callback.timeout > 0){
-                    lockTimeoutTimer.schedule(callback, callback.timeout);
-                }
-                synchronized(callbacks){
+                    if(callback.ifAcquireable){
+                        result = 0;
+                        return result;
+                    }
+                    if(callbacks.add(callback) && callback.timeout > 0){
+                        lockTimeoutTimer.schedule(callback, callback.timeout);
+                    }
                     if(callbacks.size() > 1){
                         lockMonitor.notifyMonitor();
+                    }
+                }finally{
+                    if(result != 2){
+                        callbacks.remove(callback);
+                    }
+                    if(result != 1){
+                        synchronized(Lock.this){
+                            if(callbacks.size() > (result == 2 ? 1 : 0)){
+                                lockMonitor.notifyMonitor();
+                            }
+                        }
                     }
                 }
             }
@@ -5143,9 +5221,7 @@ public class SharedContextService extends DefaultContextService
         }
         
         public int getWaitCount(){
-            synchronized(callbacks){
-                return callbacks.size();
-            }
+            return callbacks.size();
         }
         
         public boolean release(Object id, boolean force){
@@ -5159,15 +5235,17 @@ public class SharedContextService extends DefaultContextService
                     ownerThreadId = -1;
                     result = true;
                 }
-                Set keySet = (Set)idLocksMap.get(id);
-                if(keySet != null){
-                    synchronized(keySet){
-                        keySet.remove(key);
+                if(result){
+                    Set keySet = (Set)idLocksMap.get(id);
+                    if(keySet != null){
+                        synchronized(keySet){
+                            keySet.remove(key);
+                        }
                     }
-                }
-                synchronized(callbacks){
                     if(callbacks.size() != 0){
-                        callback = (CallbackTask)callbacks.iterator().next();
+                        synchronized(callbacks){
+                            callback = (CallbackTask)callbacks.iterator().next();
+                        }
                     }
                 }
             }
@@ -5229,16 +5307,11 @@ public class SharedContextService extends DefaultContextService
                 if(callback != null){
                     callback.callback(Lock.this, notify);
                 }
-                synchronized(callbacks){
-                    callbacks.remove(CallbackTask.this);
-                }
+                callbacks.remove(CallbackTask.this);
             }
             
             public void run(){
-                boolean isRemoved = false;
-                synchronized(callbacks){
-                    isRemoved = callbacks.remove(CallbackTask.this);
-                }
+                boolean isRemoved = callbacks.remove(CallbackTask.this);
                 if(isRemoved){
                     notify(false);
                 }
@@ -5683,11 +5756,15 @@ public class SharedContextService extends DefaultContextService
             throw new UnsupportedOperationException();
         }
         
-        public boolean unlock(Object key) throws SharedContextSendException{
+        public boolean unlock(Object key) throws SharedContextSendException, SharedContextTimeoutException{
             throw new UnsupportedOperationException();
         }
         
-        public boolean unlock(Object key, boolean force) throws SharedContextSendException{
+        public boolean unlock(Object key, boolean force) throws SharedContextSendException, SharedContextTimeoutException{
+            throw new UnsupportedOperationException();
+        }
+        
+        public boolean unlock(Object key, boolean force, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
             throw new UnsupportedOperationException();
         }
         
@@ -5703,11 +5780,15 @@ public class SharedContextService extends DefaultContextService
             throw new UnsupportedOperationException();
         }
         
-        public Set unlocks(Set keys) throws SharedContextSendException{
+        public Set unlocks(Set keys) throws SharedContextSendException, SharedContextTimeoutException{
             throw new UnsupportedOperationException();
         }
         
-        public Set unlocks(Set keys, boolean force) throws SharedContextSendException{
+        public Set unlocks(Set keys, boolean force) throws SharedContextSendException, SharedContextTimeoutException{
+            throw new UnsupportedOperationException();
+        }
+        
+        public Set unlocks(Set keys, boolean force, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
             throw new UnsupportedOperationException();
         }
         
@@ -7582,7 +7663,6 @@ public class SharedContextService extends DefaultContextService
             return this;
         }
         
-
         public SharedContextView searchFrom(
             Object fromValue,
             boolean inclusive,
