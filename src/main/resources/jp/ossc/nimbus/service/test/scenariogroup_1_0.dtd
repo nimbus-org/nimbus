@@ -120,7 +120,7 @@ The DOCTYPE is:
 
 <!-- id属性は、リソースのIDを定義します。
 -->
-<!ATTLIST action id CDATA #REQUIRED>
+<!ATTLIST action id ID #REQUIRED>
 
 <!-- type属性は、リソースの実行タイプを定義します。
 beforeは開始時に実行されます。
