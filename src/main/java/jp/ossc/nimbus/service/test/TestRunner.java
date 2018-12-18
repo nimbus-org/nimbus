@@ -422,38 +422,37 @@ public class TestRunner {
                                             ServiceManagerFactory.getLogger().write("TR___00009", testCases[k].getTestCaseId());
                                         }
                                         testController.startTestCase(userId, scenarios[j].getScenarioId(), testCases[k].getTestCaseId());
-                                        if(testCases[k].getStatus().getResult()){
-                                            testController.endTestCase(scenarios[j].getScenarioId(), testCases[k].getTestCaseId());
-                                        }else{
-                                            testController.cancelTestCase(scenarios[j].getScenarioId(), testCases[k].getTestCaseId());
-                                        }
-                                        if(testCases[k].getStatus().getResult()){
-                                            if(verbose){
-                                                ServiceManagerFactory.getLogger().write("TR___00010", new Object[]{testCases[k].getTestCaseId(), testCases[k].getStatus()});
-                                            }
-                                        }else{
-                                            int ErrorContinue = testCases[k].getTestCaseResource().getErrorContinue();
-                                            if(!(ErrorContinue == TestResourceBase.CONTINUE_TYPE_TRUE 
-                                                    || (ErrorContinue == TestResourceBase.CONTINUE_TYPE_DEFAULT  && defaultTestCaseErrorContinue == TestResourceBase.CONTINUE_TYPE_TRUE))){
-                                                break;
-                                            }
-                                            if(verbose){
-                                                ServiceManagerFactory.getLogger().write("TR___00011", new Object[]{testCases[k].getTestCaseId(), testCases[k].getStatus()});
-                                            }
-                                        }
                                     }catch(Exception e){
                                         if(verbose){
                                             ServiceManagerFactory.getLogger().write("TR___00012", new Object[]{testCases[k].getTestCaseId(), testCases[k].getStatus()}, e);
                                         }
                                         continue;
-                                    }
-                                }
-                                testController.endScenario(scenarios[j].getScenarioId());
-                                if(verbose){
-                                    if(scenarios[j].getStatus().getResult()){
-                                        ServiceManagerFactory.getLogger().write("TR___00013", new Object[]{scenarios[j].getScenarioId(), scenarios[j].getStatus()});
-                                    }else{
-                                        ServiceManagerFactory.getLogger().write("TR___00014", new Object[]{scenarios[j].getScenarioId(), scenarios[j].getStatus()});
+                                    } finally {
+                                        try{
+                                            if(testCases[k].getStatus().getResult()){
+                                                testController.endTestCase(scenarios[j].getScenarioId(), testCases[k].getTestCaseId());
+                                            }else{
+                                                testController.cancelTestCase(scenarios[j].getScenarioId(), testCases[k].getTestCaseId());
+                                            }
+                                            if(testCases[k].getStatus().getResult()){
+                                                if(verbose){
+                                                    ServiceManagerFactory.getLogger().write("TR___00010", new Object[]{testCases[k].getTestCaseId(), testCases[k].getStatus()});
+                                                }
+                                            }else{
+                                                int ErrorContinue = testCases[k].getTestCaseResource().getErrorContinue();
+                                                if(!(ErrorContinue == TestResourceBase.CONTINUE_TYPE_TRUE 
+                                                        || (ErrorContinue == TestResourceBase.CONTINUE_TYPE_DEFAULT  && defaultTestCaseErrorContinue == TestResourceBase.CONTINUE_TYPE_TRUE))){
+                                                    break;
+                                                }
+                                                if(verbose){
+                                                    ServiceManagerFactory.getLogger().write("TR___00011", new Object[]{testCases[k].getTestCaseId(), testCases[k].getStatus()});
+                                                }
+                                            }
+                                        }catch(Exception e){
+                                            if(verbose){
+                                                ServiceManagerFactory.getLogger().write("TR___00012", new Object[]{testCases[k].getTestCaseId(), testCases[k].getStatus()}, e);
+                                            }
+                                        }
                                     }
                                 }
                             }else{
@@ -464,19 +463,43 @@ public class TestRunner {
                                 ServiceManagerFactory.getLogger().write("TR___00015", new Object[]{scenarios[j].getScenarioId(), scenarios[j].getStatus()}, e);
                             }
                             continue;
+                        } finally {
+                            try {
+                                if(isTest){
+                                    testController.endScenario(scenarios[j].getScenarioId());
+                                    if(verbose){
+                                        if(scenarios[j].getStatus().getResult()){
+                                            ServiceManagerFactory.getLogger().write("TR___00013", new Object[]{scenarios[j].getScenarioId(), scenarios[j].getStatus()});
+                                        }else{
+                                            ServiceManagerFactory.getLogger().write("TR___00014", new Object[]{scenarios[j].getScenarioId(), scenarios[j].getStatus()});
+                                        }
+                                    }
+                                }
+                            }catch(Exception e){
+                                if(verbose){
+                                    ServiceManagerFactory.getLogger().write("TR___00015", new Object[]{scenarios[j].getScenarioId(), scenarios[j].getStatus()}, e);
+                                }
+                            }
                         }
-                    }
-                    if(isTest){
-                        testController.endScenarioGroup();
-                    }
-                    if(verbose){
-                        ServiceManagerFactory.getLogger().write("TR___00016", groups[i].getScenarioGroupId());
                     }
                 }catch(Exception e){
                     if(verbose){
                         ServiceManagerFactory.getLogger().write("TR___00017", groups[i].getScenarioGroupId(), e);
                     }
                     continue;
+                } finally {
+                    try {
+                        if(isTest){
+                            testController.endScenarioGroup();
+                        }
+                        if(verbose){
+                            ServiceManagerFactory.getLogger().write("TR___00016", groups[i].getScenarioGroupId());
+                        }
+                    }catch(Exception e){
+                        if(verbose){
+                            ServiceManagerFactory.getLogger().write("TR___00017", groups[i].getScenarioGroupId(), e);
+                        }
+                    }
                 }
             }
             // レポート
