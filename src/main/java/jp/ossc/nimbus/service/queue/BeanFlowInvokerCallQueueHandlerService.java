@@ -322,6 +322,7 @@ public class BeanFlowInvokerCallQueueHandlerService extends ServiceBase
         }
         if(asynchCtx != null){
             asynchCtx.setOutput(output);
+            asynchCtx.response();
             asynchCtx.setInput(null);
             asynchCtx.clearThreadContext();
             if(asynchCtx.getResponseQueue() != null){
