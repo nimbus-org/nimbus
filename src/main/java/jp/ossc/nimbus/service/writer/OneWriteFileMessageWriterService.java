@@ -207,15 +207,23 @@ public class OneWriteFileMessageWriterService extends ServiceBase
                     "Dynamic filename!"
                 );
             }
-            final boolean isExistsFile = new File(fileName.toString(null)).exists();
-            fos = new FileOutputStream(fileName.toString(null), isAppend);
+            final File file = new File(fileName.toString(null));
+            try{
+                final File dir = file.getCanonicalFile().getParentFile();
+                if(dir != null && !dir.exists()){
+                    dir.mkdirs();
+                }
+            }catch(IOException e){
+            }
+            final boolean isExistsFile = file.exists();
+            fos = new FileOutputStream(file, isAppend);
             if(header != null && (!isExistsFile || !isAppend)){
                 WritableRecord headerRecord = new WritableRecord();
                 headerRecord.addElement(new SimpleElement(null, header));
                 writeInternal(headerRecord, fos);
             }
         }
-
+        
         if(contextServiceName != null){
             context = (Context)ServiceManagerFactory
                 .getServiceObject(contextServiceName);
@@ -245,10 +253,16 @@ public class OneWriteFileMessageWriterService extends ServiceBase
     public void write(WritableRecord rec) throws MessageWriteException{
         FileOutputStream tmpFos = null;
         if(isEveryTimeCloseStream){
-            String path = fileName.toString(rec);
-            File file = new File(path);
+            File file = new File(fileName.toString(rec));
             try{
-                tmpFos = new FileOutputStream(path, isAppend);
+                final File dir = file.getCanonicalFile().getParentFile();
+                if(dir != null && !dir.exists()){
+                    dir.mkdirs();
+                }
+            }catch(IOException e){
+            }
+            try{
+                tmpFos = new FileOutputStream(file, isAppend);
             }catch(FileNotFoundException e){
                 throw new MessageWriteException(e);
             }
