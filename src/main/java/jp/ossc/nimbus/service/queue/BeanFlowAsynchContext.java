@@ -108,12 +108,12 @@ public class BeanFlowAsynchContext extends AsynchContext{
         return monitor;
     }
     
-    public void setOutput(Object output){
-        super.setOutput(output);
-        if(callback != null && !isCancel()){
-            try{
+    public void response() throws Exception{
+        if(callback == null){
+            super.response();
+        }else{
+            if(!isCancel()){
                 callback.reply(output, null);
-            }catch(RemoteException e){
             }
         }
     }
