@@ -631,8 +631,12 @@ public class ClientBeanFlowInvokerFactoryService extends ServiceBase
                 }else{
                     context.setThrowable(th);
                 }
-                if(context.getResponseQueue() != null){
-                    context.getResponseQueue().push(context);
+                try{
+                    context.response();
+                }catch(RemoteException e){
+                    throw e;
+                }catch(Exception e){
+                    throw new RemoteException(e.getMessage(), e);
                 }
             }else if(callback != null){
                 callback.reply(output, th);
