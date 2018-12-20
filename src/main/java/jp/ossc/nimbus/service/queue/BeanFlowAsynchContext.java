@@ -35,6 +35,7 @@ import java.rmi.RemoteException;
 
 import jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvoker;
 import jp.ossc.nimbus.service.beancontrol.BeanFlowMonitor;
+import jp.ossc.nimbus.service.beancontrol.BeanFlowMonitorImpl;
 import jp.ossc.nimbus.service.beancontrol.BeanFlowAsynchInvokeCallback;
 
 /**
@@ -110,22 +111,23 @@ public class BeanFlowAsynchContext extends AsynchContext{
     
     public void response() throws Exception{
         if(callback == null){
-            super.response();
+            if(responseQueue == null){
+                if(monitor != null && monitor instanceof BeanFlowMonitorImpl){
+                    BeanFlowMonitorImpl monitorImpl = (BeanFlowMonitorImpl)monitor;
+                    monitorImpl.removeAsynchContext(this);
+                }
+            }else{
+                responseQueue.push(this);
+            }
         }else{
             if(!isCancel()){
-                callback.reply(output, null);
+                callback.reply(output, throwable);
             }
         }
     }
     
     public void setThrowable(Throwable th){
         super.setThrowable(th);
-        if(callback != null && !isCancel()){
-            try{
-                callback.reply(null, th);
-            }catch(RemoteException e){
-            }
-        }
     }
     
     public String toString(){
