@@ -34,6 +34,7 @@ package jp.ossc.nimbus.service.queue;
 import java.io.*;
 import java.util.*;
 import java.lang.reflect.InvocationTargetException;
+import java.rmi.RemoteException;
 
 import org.apache.commons.jexl.Expression;
 import org.apache.commons.jexl.ExpressionFactory;
@@ -322,6 +323,15 @@ public class BeanFlowInvokerCallQueueHandlerService extends ServiceBase
         }
         if(asynchCtx != null){
             asynchCtx.setOutput(output);
+            if(asynchCtx instanceof BeanFlowAsynchContext){
+                try {
+                    ((BeanFlowAsynchContext)asynchCtx).reply();
+                } catch (RemoteException e) {
+                    if(errorLogMessageId != null){
+                        getLogger().write(errorLogMessageId, obj, e);
+                    }
+                }
+            }
             asynchCtx.setInput(null);
             asynchCtx.clearThreadContext();
             if(asynchCtx.getResponseQueue() != null){
