@@ -957,11 +957,13 @@ public class ServerConnectionImpl implements ServerConnection{
     }
     
     public Set getClientIds(){
-        return new HashSet(clientMap.keySet());
+        synchronized(clientMap){
+            return new HashSet(clientMap.keySet());
+        }
     }
     
     public Set getReceiveClientIds(Message message){
-        Set result = new HashSet();
+        final Set result = new HashSet();
         final Iterator clientItr = clients.iterator();
         while(clientItr.hasNext()){
             ClientImpl client = (ClientImpl)clientItr.next();
@@ -1017,7 +1019,7 @@ public class ServerConnectionImpl implements ServerConnection{
         }
         
         if(clientAcceptor != null){
-            clientAcceptor.stop(1000);
+            clientAcceptor.stopNoWait();
             clientAcceptor = null;
         }
         if(sendQueueHandlerContainer != null){
@@ -1150,9 +1152,11 @@ public class ServerConnectionImpl implements ServerConnection{
                                     client
                                 );
                                 final Set tmpClients = new LinkedHashSet();
-                                tmpClients.addAll(clients);
-                                tmpClients.add(client);
-                                clients = tmpClients;
+                                synchronized(ClientAcceptor.this){
+                                    tmpClients.addAll(clients);
+                                    tmpClients.add(client);
+                                    clients = tmpClients;
+                                }
                                 newClients.add(client);
                                 clientMap.put(client.getId(), client);
                             }
@@ -1192,9 +1196,11 @@ public class ServerConnectionImpl implements ServerConnection{
                 ClientImpl client = new ClientImpl(socket, sendSocket == null ? (sendSocketAddress == null ? new DatagramSocket() : new DatagramSocket(sendSocketAddress)) : null);
                 client.setDestPort(destPort);
                 final Set tmpClients = new LinkedHashSet();
-                tmpClients.addAll(clients);
-                tmpClients.add(client);
-                clients = tmpClients;
+                synchronized(ClientAcceptor.this){
+                    tmpClients.addAll(clients);
+                    tmpClients.add(client);
+                    clients = tmpClients;
+                }
                 newClients.add(client);
                 clientMap.put(client.getId(), client);
             }
@@ -1238,6 +1244,8 @@ public class ServerConnectionImpl implements ServerConnection{
         private MessageCache sendMessageCache;
         private Object socketLock = new Object();
         private boolean isClosing;
+        private boolean isClosed;
+        private final Object closeLock = new Object();
         
         public ClientImpl(SocketChannel sc, DatagramSocket ss){
             socketChannel = sc;
@@ -1397,7 +1405,7 @@ public class ServerConnectionImpl implements ServerConnection{
         }
         
         public synchronized void send(Message message) throws MessageSendException{
-            if(!isEnabled || (sendSocket == null && ServerConnectionImpl.this.sendSocket == null)){
+            if(!isEnabled || isClosed || isClosing){
                 return;
             }
             MessageImpl copyMsg = null;
@@ -1454,6 +1462,9 @@ public class ServerConnectionImpl implements ServerConnection{
         }
         
         public void receive(SelectionKey key){
+            if(!isEnabled || isClosed || isClosing){
+                return;
+            }
             try{
                 int readLength = 0;
                 if(socketChannel != null){
@@ -1522,6 +1533,9 @@ public class ServerConnectionImpl implements ServerConnection{
         }
         
         public void writeResponse(SelectionKey key){
+            if(!isEnabled || isClosed || isClosing){
+                return;
+            }
             ByteBuffer buf = null;
             try{
                 if(socketChannel != null && responseQueue != null){
@@ -1543,6 +1557,9 @@ public class ServerConnectionImpl implements ServerConnection{
         }
         
         protected void sendServerMessage(ServerMessage message, SelectionKey key){
+            if(!isEnabled || isClosed || isClosing){
+                return;
+            }
             try{
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 if(externalizer == null){
@@ -1635,89 +1652,107 @@ public class ServerConnectionImpl implements ServerConnection{
         public void close(){
             close(false, null);
         }
-        protected synchronized void close(boolean isClose, Throwable reason){
-            if(isClosing){
+        protected void close(boolean isClose, Throwable reason){
+            if(isClosing || isClosed){
                 return;
             }
-            isClosing = true;
-            if(logger != null){
-                if(!isClose && clientClosedMessageId != null){
-                    logger.write(
-                        clientClosedMessageId,
-                        new Object[]{this},
-                        reason
-                    );
-                }else if(isClose && clientCloseMessageId != null){
-                    logger.write(
-                        clientCloseMessageId,
-                        new Object[]{this},
-                        reason
-                    );
+            synchronized(closeLock){
+                if(isClosed){
+                    return;
                 }
-            }
-            final Set tmpClients = new LinkedHashSet();
-            tmpClients.addAll(clients);
-            tmpClients.remove(ClientImpl.this);
-            clients = tmpClients;
-            clientMap.remove(id);
-            newClients.remove(ClientImpl.this);
-            if(subjects.size() != 0){
-                Iterator entries = subjects.entrySet().iterator();
-                while(entries.hasNext()){
-                    Map.Entry entry = (Map.Entry)entries.next();
-                    String subject = (String)entry.getKey();
-                    Set keySet = (Set)entry.getValue();
-                    if(serverConnectionListeners != null && !keySet.isEmpty()){
-                        String[] removeKeys = (String[])keySet.toArray(new String[0]);
-                        for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
-                            ((ServerConnectionListener)serverConnectionListeners.get(i)).onRemoveSubject(ClientImpl.this, subject, removeKeys);
+                isClosing = true;
+                try{
+                    if(logger != null){
+                        if(!isClose && clientClosedMessageId != null){
+                            logger.write(
+                                clientClosedMessageId,
+                                new Object[]{this},
+                                reason
+                            );
+                        }else if(isClose && clientCloseMessageId != null){
+                            logger.write(
+                                clientCloseMessageId,
+                                new Object[]{this},
+                                reason
+                            );
                         }
                     }
-                }
-            }
-            if(isStartReceive){
-                isStartReceive = false;
-                if(serverConnectionListeners != null){
-                    for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
-                        ((ServerConnectionListener)serverConnectionListeners.get(i)).onStopReceive(ClientImpl.this);
+                    final Set tmpClients = new LinkedHashSet();
+                    if(clientAcceptor != null){
+                        synchronized(clientAcceptor){
+                            tmpClients.addAll(clients);
+                            tmpClients.remove(ClientImpl.this);
+                            clients = tmpClients;
+                        }
+                    }else{
+                        tmpClients.addAll(clients);
+                        tmpClients.remove(ClientImpl.this);
+                        clients = tmpClients;
                     }
-                }
-            }
-            Object id = getId();
-            if(requestDispatcher != null){
-                requestDispatcher.stopNoWait();
-                requestDispatcher = null;
-            }
-            synchronized(socketLock){
-                if(responseQueue != null){
-                    responseQueue.release();
-                    responseQueue = null;
-                }
-                if(socketChannel != null){
-                    try{
-                        socketChannel.close();
-                    }catch(IOException e){
+                    clientMap.remove(id);
+                    newClients.remove(ClientImpl.this);
+                    if(subjects.size() != 0){
+                        Object[] entries = subjects.entrySet().toArray();
+                        for(int i = 0; i < entries.length; i++){
+                            Map.Entry entry = (Map.Entry)entries[i];
+                            String subject = (String)entry.getKey();
+                            Set keySet = (Set)entry.getValue();
+                            subjects.remove(subject);
+                            if(serverConnectionListeners != null && !keySet.isEmpty()){
+                                String[] removeKeys = (String[])keySet.toArray(new String[0]);
+                                for(int j = 0, jmax = serverConnectionListeners.size(); j < jmax; j++){
+                                    ((ServerConnectionListener)serverConnectionListeners.get(j)).onRemoveSubject(ClientImpl.this, subject, removeKeys);
+                                }
+                            }
+                        }
                     }
-                    socketChannel = null;
-                }
-                if(socket != null){
-                    try{
-                        socket.close();
-                    }catch(IOException e){
+                    if(isStartReceive){
+                        isStartReceive = false;
+                        if(serverConnectionListeners != null){
+                            for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
+                                ((ServerConnectionListener)serverConnectionListeners.get(i)).onStopReceive(ClientImpl.this);
+                            }
+                        }
                     }
-                    socket = null;
+                    Object id = getId();
+                    if(requestDispatcher != null){
+                        requestDispatcher.stopNoWait();
+                        requestDispatcher = null;
+                    }
+                    synchronized(socketLock){
+                        if(responseQueue != null){
+                            responseQueue.release();
+                            responseQueue = null;
+                        }
+                        if(socketChannel != null){
+                            try{
+                                socketChannel.close();
+                            }catch(IOException e){
+                            }
+                            socketChannel = null;
+                        }
+                        if(socket != null){
+                            try{
+                                socket.close();
+                            }catch(IOException e){
+                            }
+                            socket = null;
+                        }
+                    }
+                    if(sendSocket != null){
+                        sendSocket.close();
+                        sendSocket = null;
+                    }
+                    if(serverConnectionListeners != null){
+                        for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
+                            ((ServerConnectionListener)serverConnectionListeners.get(i)).onClose(ClientImpl.this);
+                        }
+                    }
+                }finally{
+                    isClosing = false;
+                    isClosed = true;
                 }
             }
-            if(sendSocket != null){
-                sendSocket.close();
-                sendSocket = null;
-            }
-            if(serverConnectionListeners != null){
-                for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
-                    ((ServerConnectionListener)serverConnectionListeners.get(i)).onClose(ClientImpl.this);
-                }
-            }
-            isClosing = false;
         }
         
         public String toString(){
@@ -1750,21 +1785,23 @@ public class ServerConnectionImpl implements ServerConnection{
                     return externalizer.readExternal(bais);
                 }
             }catch(ClassNotFoundException e){
-                return ClientImpl.this;
+                return null;
             }catch(SocketTimeoutException e){
-                return ClientImpl.this;
+                return null;
             }catch(SocketException e){
+                ClientImpl.this.close(false, e);
                 return null;
             }catch(EOFException e){
+                ClientImpl.this.close(false, e);
                 return null;
             }catch(IOException e){
-                return ClientImpl.this;
+                ClientImpl.this.close(true, e);
+                return null;
             }
         }
         
         public void consume(Object paramObj, DaemonControl ctrl) throws Throwable{
             if(paramObj == null){
-                ClientImpl.this.close(true, null);
                 return;
             }
             if(!(paramObj instanceof ClientMessage)){
@@ -2070,7 +2107,9 @@ public class ServerConnectionImpl implements ServerConnection{
             if(subjects == null){
                 return null;
             }
-            return new HashSet(subjects.keySet());
+            synchronized(subjects){
+                return new HashSet(subjects.keySet());
+            }
         }
         
         public Set getKeys(String subject){

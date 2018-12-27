@@ -238,7 +238,7 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
     
     public synchronized void addSubject(String subject, String[] keys) throws MessageSendException{
         if(!isConnected){
-            throw new MessageSendException("Not connected.");
+            throw new ConnectionClosedException();
         }
         if(subjects == null){
             subjects = Collections.synchronizedMap(new HashMap());
@@ -260,7 +260,10 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
                 Iterator connections = connectionMap.values().iterator();
                 while(connections.hasNext()){
                     ClientConnection connection = ((ClusterConnection)connections.next()).clientConnection;
-                    connection.addSubject(subject, keys);
+                    try{
+                        connection.addSubject(subject, keys);
+                    }catch(ConnectionClosedException e){
+                    }
                 }
             }else if(currentUID != null){
                 ClientConnection connection = ((ClusterConnection)connectionMap.get(currentUID)).clientConnection;
@@ -275,14 +278,17 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
     
     public synchronized void removeSubject(String subject, String[] keys) throws MessageSendException{
         if(!isConnected){
-            throw new MessageSendException("Not connected.");
+            throw new ConnectionClosedException();
         }
         if(connectionMap != null){
             if(isMultiple){
                 Iterator connections = connectionMap.values().iterator();
                 while(connections.hasNext()){
                     ClientConnection connection = ((ClusterConnection)connections.next()).clientConnection;
-                    connection.removeSubject(subject, keys);
+                    try{
+                        connection.removeSubject(subject, keys);
+                    }catch(ConnectionClosedException e){
+                    }
                 }
             }else if(currentUID != null){
                 ClientConnection connection = ((ClusterConnection)connectionMap.get(currentUID)).clientConnection;
@@ -312,14 +318,17 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
     
     public synchronized void startReceive(long from) throws MessageSendException{
         if(!isConnected){
-            throw new MessageSendException("Not connected.");
+            throw new ConnectionClosedException();
         }
         if(connectionMap != null){
             if(isMultiple){
                 Iterator connections = connectionMap.values().iterator();
                 while(connections.hasNext()){
                     ClientConnection connection = ((ClusterConnection)connections.next()).clientConnection;
-                    connection.startReceive(from);
+                    try{
+                        connection.startReceive(from);
+                    }catch(ConnectionClosedException e){
+                    }
                 }
             }else if(currentUID != null){
                 ClientConnection connection = ((ClusterConnection)connectionMap.get(currentUID)).clientConnection;
@@ -354,14 +363,17 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
     
     public synchronized void stopReceive() throws MessageSendException{
         if(!isConnected){
-            throw new MessageSendException("Not connected.");
+            throw new ConnectionClosedException();
         }
         if(connectionMap != null){
             if(isMultiple){
                 Iterator connections = connectionMap.values().iterator();
                 while(connections.hasNext()){
                     ClientConnection connection = ((ClusterConnection)connections.next()).clientConnection;
-                    connection.stopReceive();
+                    try{
+                        connection.stopReceive();
+                    }catch(ConnectionClosedException e){
+                    }
                 }
             }else if(currentUID != null){
                 ClientConnection connection = ((ClusterConnection)connectionMap.get(currentUID)).clientConnection;
@@ -600,6 +612,7 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
                             new Object[]{null, connection}
                         );
                     }
+                }catch(ConnectionClosedException e){
                 }catch(MessageCommunicateException e){
                     if(connectErrorMessageId != null){
                         ServiceManagerFactory.getLogger().write(
@@ -712,6 +725,7 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
                             new Object[]{null, connection}
                         );
                     }
+                }catch(ConnectionClosedException e){
                 }catch(MessageCommunicateException e){
                     if(connectErrorMessageId != null){
                         ServiceManagerFactory.getLogger().write(

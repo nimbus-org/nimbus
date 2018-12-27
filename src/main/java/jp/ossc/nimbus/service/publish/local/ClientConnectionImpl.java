@@ -46,6 +46,7 @@ import jp.ossc.nimbus.service.publish.ClientConnection;
 import jp.ossc.nimbus.service.publish.MessageListener;
 import jp.ossc.nimbus.service.publish.ConnectException;
 import jp.ossc.nimbus.service.publish.MessageSendException;
+import jp.ossc.nimbus.service.publish.ConnectionClosedException;
 
 /**
  * ローカルプロトコル用の{@link ClientConnection}インタフェース実装クラス。<p>
@@ -131,7 +132,7 @@ public class ClientConnectionImpl implements ClientConnection{
     
     public void addSubject(String subject, String[] keys) throws MessageSendException{
         if(!isConnected){
-            throw new MessageSendException("Not connected.");
+            throw new ConnectionClosedException();
         }
         if(subject == null){
             return;
@@ -160,7 +161,7 @@ public class ClientConnectionImpl implements ClientConnection{
     
     public void removeSubject(String subject, String[] keys) throws MessageSendException{
         if(!isConnected){
-            throw new MessageSendException("Not connected.");
+            throw new ConnectionClosedException();
         }
         if(subject == null){
             return;
@@ -193,7 +194,7 @@ public class ClientConnectionImpl implements ClientConnection{
     
     private void startReceive(long from, boolean isRestart) throws MessageSendException{
         if(!isConnected){
-            throw new MessageSendException("Not connected.");
+            throw new ConnectionClosedException();
         }
         if(!isRestart && isStartReceive){
             return;
@@ -208,7 +209,7 @@ public class ClientConnectionImpl implements ClientConnection{
     
     public void stopReceive() throws MessageSendException{
         if(!isConnected){
-            throw new MessageSendException("Not connected.");
+            throw new ConnectionClosedException();
         }
         if(!isStartReceive){
             return;

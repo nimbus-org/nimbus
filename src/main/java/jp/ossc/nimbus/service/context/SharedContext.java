@@ -84,8 +84,9 @@ public interface SharedContext extends Context{
      * @param key キー
      * @return ロック開放できた場合は、true
      * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
-    public boolean unlock(Object key) throws SharedContextSendException;
+    public boolean unlock(Object key) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
      * 指定されたキーのロックを開放する。<p>
@@ -94,8 +95,86 @@ public interface SharedContext extends Context{
      * @param force 強制フラグ
      * @return ロック開放できた場合は、true
      * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
-    public boolean unlock(Object key, boolean force) throws SharedContextSendException;
+    public boolean unlock(Object key, boolean force) throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 指定されたキーのロックを開放する。<p>
+     *
+     * @param key キー
+     * @param force 強制フラグ
+     * @param timeout タイムアウト[ms]
+     * @return ロック開放できた場合は、true
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public boolean unlock(Object key, boolean force, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 指定されたキー集合のロックを獲得する。<p>
+     *
+     * @param keys キー集合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public void locks(Set keys) throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 指定されたキー集合のロックを獲得する。<p>
+     *
+     * @param keys キー集合
+     * @param timeout タイムアウト[ms]
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public void locks(Set keys, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 指定されたキー集合のロックを獲得する。<p>
+     *
+     * @param keys キー集合
+     * @param ifAcquireable ロックを待機ぜずに獲得可能な場合のみ獲得する時は、true。待機してでも獲得する時は、false
+     * @param ifExist 指定されたキーが存在する場合のみロックを獲得する場合、true。キーが存在しなくてもロックを取得する場合は、false
+     * @param timeout タイムアウト[ms]
+     * @return ifAcquireableがtrueで、ロックが獲得できなかった場合は、false
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public boolean locks(Set keys, boolean ifAcquireable, boolean ifExist, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 指定されたキー集合のロックを開放する。<p>
+     *
+     * @param keys キー集合
+     * @return ロック開放できた場合は、null。解放できなかった場合は、解放できなかったキー集合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public Set unlocks(Set keys) throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 指定されたキーのロックを開放する。<p>
+     *
+     * @param keys キー集合
+     * @param force 強制フラグ
+     * @return ロック開放できた場合は、null。解放できなかった場合は、解放できなかったキー集合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public Set unlocks(Set keys, boolean force) throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 指定されたキーのロックを開放する。<p>
+     *
+     * @param keys キー集合
+     * @param force 強制フラグ
+     * @param timeout タイムアウト[ms]
+     * @return ロック開放できた場合は、null。解放できなかった場合は、解放できなかったキー集合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public Set unlocks(Set keys, boolean force, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
      * 指定されたキーのロックを保有しているノードのIDを取得する。<p>

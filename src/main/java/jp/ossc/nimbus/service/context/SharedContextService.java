@@ -546,12 +546,7 @@ public class SharedContextService extends DefaultContextService
         cluster = (ClusterService)ServiceManagerFactory.getServiceObject(clusterServiceName);
         cluster.addClusterListener(this);
         
-/*
-        lockTimeoutTimer = new Timer(true);
-*/
-
         lockTimeoutTimer = new Timer("SharedContext LockTimeoutTimerThread of " + getServiceNameObject(), true);
-
         
         super.startService();
         
@@ -1057,7 +1052,7 @@ public class SharedContextService extends DefaultContextService
         if(cacheMap == null){
             return value;
         }else{
-            CachedReference ref = (CachedReference)value;
+            KeyCachedReference ref = (KeyCachedReference)value;
             Object ret = ref.get(this, notify);
             if(remove){
                 ref.remove(this);
@@ -1076,6 +1071,7 @@ public class SharedContextService extends DefaultContextService
     
     public boolean lock(Object key, boolean ifAcquireable, boolean ifExist,long timeout) throws SharedContextSendException, SharedContextTimeoutException{
         final Object id = cluster.getUID();
+        final boolean isNoTimeout = timeout <= 0;
         Lock lock = (Lock)keyLockMap.get(key);
         if(lock == null){
             lock = new Lock(key);
@@ -1098,9 +1094,8 @@ public class SharedContextService extends DefaultContextService
                     lock.release(id, false);
                     return false;
                 }
-                final boolean isNoTimeout = timeout <= 0;
-                timeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
-                if(!isNoTimeout && timeout <= 0){
+                long currentTimeout = timeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
+                if(!isNoTimeout && currentTimeout <= 0){
                     lock.release(id, false);
                     throw new SharedContextTimeoutException();
                 }else{
@@ -1113,7 +1108,7 @@ public class SharedContextService extends DefaultContextService
                                 new SharedContextEvent(
                                     SharedContextEvent.EVENT_GOT_LOCK,
                                     key,
-                                    new Object[]{id, new Long(Thread.currentThread().getId()), new Long(timeout)}
+                                    new Object[]{id, new Long(Thread.currentThread().getId()), new Long(currentTimeout)}
                                 )
                             );
                             Message[] responses = serverConnection.request(
@@ -1121,7 +1116,7 @@ public class SharedContextService extends DefaultContextService
                                 isClient ? clientSubject : subject,
                                 key == null ? null : key.toString(),
                                 0,
-                                timeout
+                                currentTimeout
                             );
                             for(int i = 0; i < responses.length; i++){
                                 Object ret = responses[i].getObject();
@@ -1179,6 +1174,7 @@ public class SharedContextService extends DefaultContextService
                             SharedContextEvent.EVENT_GET_LOCK,
                             key,
                             new Object[]{
+                                id,
                                 new Long(Thread.currentThread().getId()),
                                 ifAcquireable ? Boolean.TRUE : Boolean.FALSE,
                                 ifExist ? Boolean.TRUE : Boolean.FALSE,
@@ -1216,9 +1212,8 @@ public class SharedContextService extends DefaultContextService
                 unlock(key);
                 throw new SharedContextSendException(e);
             }catch(RequestTimeoutException e){
-                final boolean isNoTimeout = timeout <= 0;
-                timeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
-                if(!isNoTimeout && timeout <= 0){
+                long currentTimeout = timeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
+                if(!isNoTimeout && currentTimeout <= 0){
                     unlock(key);
                     throw new SharedContextTimeoutException("key=" + key + ", timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - start), e);
                 }else{
@@ -1231,7 +1226,12 @@ public class SharedContextService extends DefaultContextService
                 unlock(key);
                 throw e;
             }
-            if(!lock.acquire(id, ifAcquireable, timeout)){
+            long currentTimeout = timeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
+            if(!isNoTimeout && currentTimeout <= 0){
+                unlock(key);
+                throw new SharedContextTimeoutException("key=" + key + ", timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - start));
+            }
+            if(!lock.acquire(id, ifAcquireable, currentTimeout)){
                 unlock(key);
                 if(ifAcquireable){
                     return false;
@@ -1243,31 +1243,389 @@ public class SharedContextService extends DefaultContextService
         return true;
     }
     
-    public boolean unlock(Object key) throws SharedContextSendException{
+    public boolean unlock(Object key) throws SharedContextSendException, SharedContextTimeoutException{
         return unlock(key, false);
     }
     
-    public boolean unlock(Object key, boolean force) throws SharedContextSendException{
+    public boolean unlock(Object key, boolean force) throws SharedContextSendException, SharedContextTimeoutException{
+        return unlock(key, force, defaultTimeout);
+    }
+    
+    public boolean unlock(Object key, boolean force, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
         Lock lock = (Lock)keyLockMap.get(key);
         Object id = cluster.getUID();
         if(force && lock != null && lock.getOwner() != null){
             id = lock.getOwner();
         }
-        try{
-            Message message = serverConnection.createMessage(subject, key == null ? null : key.toString());
-            message.setSubject(clientSubject, key == null ? null : key.toString());
-            message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_RELEASE_LOCK, key, id));
-            serverConnection.sendAsynch(message);
-        }catch(MessageException e){
-            throw new SharedContextSendException(e);
-        }catch(MessageSendException e){
-            throw new SharedContextSendException(e);
-        }
-        boolean result = lock == null;
-        if(lock != null){
+        boolean result = true;
+        if(isMain()){
+            if(lock == null){
+                return true;
+            }
             result = lock.release(id, force);
+            if(result){
+                try{
+                    Message message = serverConnection.createMessage(subject, key == null ? null : key.toString());
+                    message.setSubject(clientSubject, key == null ? null : key.toString());
+                    message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_RELEASE_LOCK, key, id));
+                    serverConnection.sendAsynch(message);
+                }catch(MessageException e){
+                    throw new SharedContextSendException(e);
+                }catch(MessageSendException e){
+                    throw new SharedContextSendException(e);
+                }
+            }
+        }else{
+            try{
+                Message message = serverConnection.createMessage(subject, key == null ? null : key.toString());
+                Set receiveClients = serverConnection.getReceiveClientIds(message);
+                if(receiveClients.size() != 0){
+                    message.setObject(
+                        new SharedContextEvent(
+                            SharedContextEvent.EVENT_RELEASE_LOCK,
+                            key,
+                            id
+                        )
+                    );
+                    Message[] responses = serverConnection.request(
+                        message,
+                        isClient ? clientSubject : subject,
+                        key == null ? null : key.toString(),
+                        1,
+                        timeout
+                    );
+                    Object ret = responses[0].getObject();
+                    responses[0].recycle();
+                    if(ret instanceof Throwable){
+                        throw new SharedContextSendException((Throwable)ret);
+                    }else if(ret == null || !((Boolean)ret).booleanValue()){
+                        result = false;
+                    }
+                }
+            }catch(MessageException e){
+                throw new SharedContextSendException(e);
+            }catch(MessageSendException e){
+                throw new SharedContextSendException(e);
+            }catch(RequestTimeoutException e){
+                throw new SharedContextTimeoutException(e);
+            }catch(RuntimeException e){
+                throw e;
+            }catch(Error e){
+                throw e;
+            }catch(Throwable th){
+                throw new SharedContextSendException(th);
+            }
+            if(lock != null && result){
+                result = lock.release(id, force);
+            }
         }
         return result;
+    }
+    
+    public void locks(Set keys) throws SharedContextSendException, SharedContextTimeoutException{
+        locks(keys, defaultTimeout);
+    }
+    
+    public void locks(Set keys, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+        locks(keys, false, false, timeout);
+    }
+    
+    public boolean locks(Set keys, boolean ifAcquireable, boolean ifExist, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+        final long start = System.currentTimeMillis();
+        final boolean isNoTimeout = timeout <= 0;
+        long currentTimeout = timeout;
+        final Object id = cluster.getUID();
+        boolean result = true;
+        try{
+            Iterator keyItr = keys.iterator();
+            while(keyItr.hasNext()){
+                Object key = keyItr.next();
+                Lock lock = (Lock)keyLockMap.get(key);
+                if(lock == null){
+                    lock = new Lock(key);
+                    Lock old = (Lock)keyLockMap.putIfAbsent(key, lock);
+                    if(old != null){
+                        lock = old;
+                    }
+                }
+                Object lockedOwner = lock.getOwner();
+                if(id.equals(lockedOwner) && Thread.currentThread().equals(lock.getOwnerThread())){
+                    continue;
+                }
+                if(isMain()){
+                    if(ifExist && !super.containsKey(key)){
+                        result = false;
+                        return result;
+                    }
+                    if(lock.acquire(id, ifAcquireable, currentTimeout)){
+                        if(ifExist && !super.containsKey(key)){
+                            result = false;
+                            return result;
+                        }
+                        currentTimeout = isNoTimeout ? currentTimeout : timeout - (System.currentTimeMillis() - start);
+                        if(!isNoTimeout && timeout <= 0){
+                            throw new SharedContextTimeoutException();
+                        }
+                    }else{
+                        if(ifAcquireable){
+                            result = false;
+                            return result;
+                        }else{
+                            throw new SharedContextTimeoutException("keys=" + keys.size() + ", timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - start));
+                        }
+                    }
+                }else{
+                    if((ifExist && !super.containsKey(key))
+                        || (ifAcquireable && !lock.isAcquireable(id))){
+                        result = false;
+                        return result;
+                    }
+                }
+            }
+            if(isMain()){
+                Message message = serverConnection.createMessage(subject, null);
+                message.setSubject(clientSubject, null);
+                Set receiveClients = serverConnection.getReceiveClientIds(message);
+                if(receiveClients.size() != 0){
+                    message.setObject(
+                        new SharedContextEvent(
+                            SharedContextEvent.EVENT_GOT_LOCKS,
+                            keys,
+                            new Object[]{id, new Long(Thread.currentThread().getId()), new Long(currentTimeout)}
+                        )
+                    );
+                    Message[] responses = serverConnection.request(
+                        message,
+                        isClient ? clientSubject : subject,
+                        null,
+                        0,
+                        currentTimeout
+                    );
+                    for(int i = 0; i < responses.length; i++){
+                        Object ret = responses[i].getObject();
+                        responses[i].recycle();
+                        if(ret instanceof Throwable){
+                            throw new SharedContextSendException((Throwable)ret);
+                        }else if(ret == null || !((Boolean)ret).booleanValue()){
+                            throw new SharedContextTimeoutException();
+                        }
+                    }
+                }
+            }else{
+                Message message = serverConnection.createMessage(subject, null);
+                Set receiveClients = serverConnection.getReceiveClientIds(message);
+                if(receiveClients.size() != 0){
+                    message.setObject(
+                        new SharedContextEvent(
+                            SharedContextEvent.EVENT_GET_LOCKS,
+                            keys,
+                            new Object[]{
+                                id,
+                                new Long(Thread.currentThread().getId()),
+                                ifAcquireable ? Boolean.TRUE : Boolean.FALSE,
+                                ifExist ? Boolean.TRUE : Boolean.FALSE,
+                                new Long(currentTimeout)
+                            }
+                        )
+                    );
+                    Message[] responses = serverConnection.request(
+                        message,
+                        isClient ? clientSubject : subject,
+                        null,
+                        1,
+                        currentTimeout
+                    );
+                    Object ret = responses[0].getObject();
+                    responses[0].recycle();
+                    if(ret instanceof Throwable){
+                        throw new SharedContextSendException((Throwable)ret);
+                    }else if(ret == null || !((Boolean)ret).booleanValue()){
+                        if(ifAcquireable){
+                            result = false;
+                            return result;
+                        }else{
+                            throw new SharedContextTimeoutException("keys=" + keys.size() + ", timeout=" + timeout);
+                        }
+                    }
+                }else{
+                    throw new NoConnectServerException("Main server is not found.");
+                }
+                currentTimeout = isNoTimeout ? currentTimeout : timeout - (System.currentTimeMillis() - start);
+                keyItr = keys.iterator();
+                while(keyItr.hasNext()){
+                    Object key = keyItr.next();
+                    Lock lock = (Lock)keyLockMap.get(key);
+                    if(lock == null){
+                        lock = new Lock(key);
+                        Lock old = (Lock)keyLockMap.putIfAbsent(key, lock);
+                        if(old != null){
+                            lock = old;
+                        }
+                    }
+                    Object lockedOwner = lock.getOwner();
+                    if(id.equals(lockedOwner) && Thread.currentThread().equals(lock.getOwnerThread())){
+                        continue;
+                    }
+                    if(!lock.acquire(id, ifAcquireable, currentTimeout)){
+                        if(ifAcquireable){
+                            result = false;
+                            return result;
+                        }else{
+                            throw new SharedContextTimeoutException();
+                        }
+                    }
+                    currentTimeout = isNoTimeout ? currentTimeout : timeout - (System.currentTimeMillis() - start);
+                    if(!isNoTimeout && timeout <= 0){
+                        throw new SharedContextTimeoutException();
+                    }
+                }
+            }
+        }catch(NoConnectServerException e){
+            result = false;
+            throw e;
+        }catch(SharedContextTimeoutException e){
+            result = false;
+            throw e;
+        }catch(SharedContextSendException e){
+            result = false;
+            throw e;
+        }catch(MessageException e){
+            result = false;
+            throw new SharedContextSendException(e);
+        }catch(MessageSendException e){
+            result = false;
+            throw new SharedContextSendException(e);
+        }catch(RequestTimeoutException e){
+            currentTimeout = isNoTimeout ? currentTimeout : timeout - (System.currentTimeMillis() - start);
+            if(!isNoTimeout && currentTimeout <= 0){
+                result = false;
+                throw new SharedContextTimeoutException("keys=" + keys.size() + ", timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - start), e);
+            }else{
+                return locks(keys, ifAcquireable, ifExist, currentTimeout);
+            }
+        }catch(RuntimeException e){
+            result = false;
+            throw e;
+        }catch(Error e){
+            result = false;
+            throw e;
+        }catch(Throwable th){
+            result = false;
+            throw new SharedContextSendException(th);
+        }finally{
+            if(!result){
+                unlocks(keys);
+            }
+        }
+        return result;
+    }
+    
+    public Set unlocks(Set keys) throws SharedContextSendException, SharedContextTimeoutException{
+        return unlocks(keys, false);
+    }
+    
+    public Set unlocks(Set keys, boolean force) throws SharedContextSendException, SharedContextTimeoutException{
+        return unlocks(keys, force, defaultTimeout);
+    }
+    
+    public Set unlocks(Set keys, boolean force, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+        Object myId = cluster.getUID();
+        Set failedKeys = null;
+        if(isMain()){
+            final Iterator keyItr = keys.iterator();
+            while(keyItr.hasNext()){
+                Object key = keyItr.next();
+                Lock lock = (Lock)keyLockMap.get(key);
+                Object id = null;
+                if(force && lock != null && lock.getOwner() != null){
+                    id = lock.getOwner();
+                }else{
+                    id = myId;
+                }
+                if(lock != null){
+                    if(!lock.release(id, force)){
+                        if(failedKeys == null){
+                            failedKeys = new HashSet();
+                        }
+                        failedKeys.add(key);
+                    }
+                }
+            }
+            Set tmpKeys = new HashSet(keys);
+            if(failedKeys != null){
+                tmpKeys.remove(failedKeys);
+            }
+            try{
+                Message message = serverConnection.createMessage(subject, null);
+                message.setSubject(clientSubject, null);
+                message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_RELEASE_LOCKS, tmpKeys, myId));
+                serverConnection.sendAsynch(message);
+            }catch(MessageException e){
+                throw new SharedContextSendException(e);
+            }catch(MessageSendException e){
+                throw new SharedContextSendException(e);
+            }
+        }else{
+            try{
+                Message message = serverConnection.createMessage(subject, null);
+                Set receiveClients = serverConnection.getReceiveClientIds(message);
+                if(receiveClients.size() != 0){
+                    message.setObject(
+                        new SharedContextEvent(
+                            SharedContextEvent.EVENT_RELEASE_LOCKS,
+                            keys,
+                            myId
+                        )
+                    );
+                    Message[] responses = serverConnection.request(
+                        message,
+                        isClient ? clientSubject : subject,
+                        null,
+                        1,
+                        timeout
+                    );
+                    Object ret = responses[0].getObject();
+                    responses[0].recycle();
+                    if(ret instanceof Throwable){
+                        throw new SharedContextSendException((Throwable)ret);
+                    }else if(ret != null && ret instanceof Set){
+                        failedKeys = (Set)ret;
+                    }
+                }
+            }catch(MessageException e){
+                throw new SharedContextSendException(e);
+            }catch(MessageSendException e){
+                throw new SharedContextSendException(e);
+            }catch(RequestTimeoutException e){
+                throw new SharedContextTimeoutException(e);
+            }catch(RuntimeException e){
+                throw e;
+            }catch(Error e){
+                throw e;
+            }catch(Throwable th){
+                throw new SharedContextSendException(th);
+            }
+            Set tmpKeys = new HashSet(keys);
+            if(failedKeys != null){
+                tmpKeys.remove(failedKeys);
+            }
+            final Iterator keyItr = tmpKeys.iterator();
+            while(keyItr.hasNext()){
+                Object key = keyItr.next();
+                Lock lock = (Lock)keyLockMap.get(key);
+                Object id = null;
+                if(force && lock != null && lock.getOwner() != null){
+                    id = lock.getOwner();
+                }else{
+                    id = myId;
+                }
+                if(lock != null){
+                    lock.release(id, force);
+                }
+            }
+        }
+        
+        return failedKeys;
     }
     
     protected void unlockAll(){
@@ -2600,7 +2958,7 @@ public class SharedContextService extends DefaultContextService
                 }
             }
             Object unwrapped = unwrapCachedReference(raw, true, false);
-            if(raw != unwrapped && unwrapped == null && !isClient && contextStore != null && super.containsKey(key)){
+            if(raw != unwrapped && unwrapped == null && !isClient && contextStore != null && contextStore.isSupportLoadByKey() && super.containsKey(key)){
                 raw = getRawLocal(key, true);
                 unwrapped = unwrapCachedReference(raw, false, false);
             }
@@ -2621,7 +2979,7 @@ public class SharedContextService extends DefaultContextService
             result = super.get(key);
             isContainsKey = result == null ? super.containsKey(key) : true;
         }
-        if((result == null || isLoadForce) && !isClient && contextStore != null && isContainsKey){
+        if((result == null || isLoadForce) && !isClient && contextStore != null && contextStore.isSupportLoadByKey() && isContainsKey){
             try{
                 contextStore.load(this, key);
                 result = super.get(key);
@@ -3267,8 +3625,10 @@ public class SharedContextService extends DefaultContextService
         KeyCachedReference kcr = (KeyCachedReference)ref;
         if(isClient){
             super.remove(kcr.getKey());
-        }else{
-            super.put(kcr.getKey(), null);
+        }else if(contextStore != null && contextStore.isSupportLoadByKey()){
+            if(ref.equals(super.get(kcr.getKey()))){
+                super.put(kcr.getKey(), null);
+            }
         }
     }
     
@@ -3311,6 +3671,9 @@ public class SharedContextService extends DefaultContextService
             break;
         case SharedContextEvent.EVENT_CHANGE_MODE:
             onChangeMode(event);
+            break;
+        case SharedContextEvent.EVENT_RELEASE_LOCKS:
+            onReleaseLocks(event);
             break;
         default:
         }
@@ -3398,6 +3761,18 @@ public class SharedContextService extends DefaultContextService
             break;
         case SharedContextEvent.EVENT_HEALTH_CHECK:
             result = onHealthCheck(event, sourceId, sequence, responseSubject, responseKey);
+            break;
+        case SharedContextEvent.EVENT_GET_LOCKS:
+            result = onGetLocks(event, sourceId, sequence, responseSubject, responseKey);
+            break;
+        case SharedContextEvent.EVENT_GOT_LOCKS:
+            result = onGotLocks(event, sourceId, sequence, responseSubject, responseKey);
+            break;
+        case SharedContextEvent.EVENT_RELEASE_LOCK:
+            result = onReleaseLock(event, sourceId, sequence, responseSubject, responseKey);
+            break;
+        case SharedContextEvent.EVENT_RELEASE_LOCKS:
+            result = onReleaseLocks(event, sourceId, sequence, responseSubject, responseKey);
             break;
         default:
         }
@@ -3932,131 +4307,132 @@ public class SharedContextService extends DefaultContextService
     }
     
     protected Message onGetLock(final SharedContextEvent event, final Object sourceId, final int sequence, final String responseSubject, final String responseKey){
-        if(isMain(sourceId)){
-            final Object[] params = (Object[])event.value;
-            final long threadId = ((Long)params[0]).longValue();
-            final boolean ifAcquireable = ((Boolean)params[1]).booleanValue();
-            final boolean ifExist = ((Boolean)params[2]).booleanValue();
-            long timeout = ((Long)params[3]).longValue();
+        if(!isMain(sourceId)){
+            return null;
+        }
+        final Object[] params = (Object[])event.value;
+        final Object id = params[0];
+        final long threadId = ((Long)params[1]).longValue();
+        final boolean ifAcquireable = ((Boolean)params[2]).booleanValue();
+        final boolean ifExist = ((Boolean)params[3]).booleanValue();
+        long timeout = ((Long)params[4]).longValue();
+        if(ifExist && !super.containsKey(event.key)){
+            return createResponseMessage(responseSubject, responseKey, Boolean.FALSE);
+        }
+        Lock lock = (Lock)keyLockMap.get(event.key);
+        if(lock == null){
+            lock = new Lock(event.key);
+            Lock old = (Lock)keyLockMap.putIfAbsent(event.key, lock);
+            if(old != null){
+                lock = old;
+            }
+        }
+        final long start = System.currentTimeMillis();
+        final int result = lock.acquireForReply(lock.new CallbackTask(id, threadId, ifAcquireable, ifExist, timeout, new ResponseCallback(sourceId, sequence, responseSubject, responseKey)));
+        switch(result){
+        case 0:
+            return createResponseMessage(responseSubject, responseKey, Boolean.FALSE);
+        case 1:
             if(ifExist && !super.containsKey(event.key)){
+                lock.release(id, false);
                 return createResponseMessage(responseSubject, responseKey, Boolean.FALSE);
             }
-            Lock lock = (Lock)keyLockMap.get(event.key);
-            if(lock == null){
-                lock = new Lock(event.key);
-                Lock old = (Lock)keyLockMap.putIfAbsent(event.key, lock);
-                if(old != null){
-                    lock = old;
-                }
-            }
-            final long start = System.currentTimeMillis();
-            if(lock.acquireForReply(sourceId, threadId, ifAcquireable, ifExist, timeout, sourceId, sequence, responseSubject, responseKey)){
-                if(ifExist && !super.containsKey(event.key)){
-                    lock.release(sourceId, false);
-                    return createResponseMessage(responseSubject, responseKey, Boolean.FALSE);
-                }
-                final boolean isNoTimeout = timeout <= 0;
-                timeout = isNoTimeout ? timeout : (timeout - (System.currentTimeMillis() - start));
-                if(!isNoTimeout && timeout <= 0){
-                    lock.release(sourceId, false);
-                    return createResponseMessage(responseSubject, responseKey, Boolean.FALSE);
-                }else{
-                    try{
-                        Message message = serverConnection.createMessage(subject, event.key == null ? null : event.key.toString());
-                        message.setSubject(clientSubject, event.key == null ? null : event.key.toString());
-                        final Set receiveClients =  serverConnection.getReceiveClientIds(message);
-                        receiveClients.remove(sourceId);
-                        if(receiveClients.size() != 0){
-                            message.setDestinationIds(receiveClients);
-                            message.setObject(
-                                new SharedContextEvent(
-                                    SharedContextEvent.EVENT_GOT_LOCK,
-                                    event.key,
-                                    new Object[]{sourceId, new Long(threadId), new Long(timeout)}
-                                )
-                            );
-                            serverConnection.request(
-                                message,
-                                isClient ? clientSubject : subject,
-                                event.key == null ? null : event.key.toString(),
-                                0,
-                                timeout,
-                                new RequestServerConnection.ResponseCallBack(){
-                                    public void onResponse(Object fromId, Message response, boolean isLast){
-                                        if(receiveClients.size() == 0){
+            final boolean isNoTimeout = timeout <= 0;
+            timeout = isNoTimeout ? timeout : (timeout - (System.currentTimeMillis() - start));
+            if(!isNoTimeout && timeout <= 0){
+                lock.release(id, false);
+                return createResponseMessage(responseSubject, responseKey, Boolean.FALSE);
+            }else{
+                try{
+                    Message message = serverConnection.createMessage(subject, event.key == null ? null : event.key.toString());
+                    message.setSubject(clientSubject, event.key == null ? null : event.key.toString());
+                    final Set receiveClients =  serverConnection.getReceiveClientIds(message);
+                    receiveClients.remove(sourceId);
+                    if(receiveClients.size() != 0){
+                        message.setDestinationIds(receiveClients);
+                        message.setObject(
+                            new SharedContextEvent(
+                                SharedContextEvent.EVENT_GOT_LOCK,
+                                event.key,
+                                new Object[]{id, new Long(threadId), new Long(timeout)}
+                            )
+                        );
+                        serverConnection.request(
+                            message,
+                            isClient ? clientSubject : subject,
+                            event.key == null ? null : event.key.toString(),
+                            0,
+                            timeout,
+                            new RequestServerConnection.ResponseCallBack(){
+                                public void onResponse(Object fromId, Message response, boolean isLast){
+                                    if(receiveClients.size() == 0){
+                                        return;
+                                    }
+                                    try{
+                                        if(response == null){
+                                            serverConnection.response(
+                                                sourceId,
+                                                sequence,
+                                                createResponseMessage(responseSubject, responseKey, Boolean.FALSE)
+                                            );
+                                            receiveClients.clear();
                                             return;
                                         }
+                                        receiveClients.remove(fromId);
+                                        Object ret = response.getObject();
+                                        response.recycle();
+                                        if(ret == null
+                                            || ret instanceof Throwable
+                                            || !((Boolean)ret).booleanValue()
+                                        ){
+                                            unlock(event.key);
+                                            serverConnection.response(
+                                                sourceId,
+                                                sequence,
+                                                createResponseMessage(responseSubject, responseKey, ret)
+                                            );
+                                            receiveClients.clear();
+                                        }else if(isLast){
+                                            serverConnection.response(
+                                                sourceId,
+                                                sequence,
+                                                createResponseMessage(responseSubject, responseKey, ret)
+                                            );
+                                        }
+                                    }catch(Throwable th){
                                         try{
-                                            if(response == null){
-                                                serverConnection.response(
-                                                    sourceId,
-                                                    sequence,
-                                                    createResponseMessage(responseSubject, responseKey, Boolean.FALSE)
-                                                );
-                                                receiveClients.clear();
-                                                return;
-                                            }
-                                            receiveClients.remove(fromId);
-                                            Object ret = response.getObject();
-                                            response.recycle();
-                                            if(ret == null
-                                                || ret instanceof Throwable
-                                                || !((Boolean)ret).booleanValue()
-                                            ){
-                                                unlock(event.key);
-                                                serverConnection.response(
-                                                    sourceId,
-                                                    sequence,
-                                                    createResponseMessage(responseSubject, responseKey, ret)
-                                                );
-                                                receiveClients.clear();
-                                            }else if(isLast){
-                                                serverConnection.response(
-                                                    sourceId,
-                                                    sequence,
-                                                    createResponseMessage(responseSubject, responseKey, ret)
-                                                );
-                                            }
-                                        }catch(Throwable th){
-                                            try{
-                                                unlock(event.key);
-                                            }catch(SharedContextSendException e){
-                                                getLogger().write("SCS__00007", new Object[]{isClient ? clientSubject : subject, event.key}, e);
-                                            }
-                                            try{
-                                                serverConnection.response(
-                                                    sourceId,
-                                                    sequence,
-                                                    createResponseMessage(responseSubject, responseKey, th)
-                                                );
-                                            }catch(MessageSendException e){
-                                                getLogger().write("SCS__00006", new Object[]{isClient ? clientSubject : subject, event.key}, e);
-                                            }
+                                            unlock(event.key);
+                                        }catch(SharedContextSendException e){
+                                            getLogger().write("SCS__00007", new Object[]{isClient ? clientSubject : subject, event.key}, e);
+                                        }
+                                        try{
+                                            serverConnection.response(
+                                                sourceId,
+                                                sequence,
+                                                createResponseMessage(responseSubject, responseKey, th)
+                                            );
+                                        }catch(MessageSendException e){
+                                            getLogger().write("SCS__00006", new Object[]{isClient ? clientSubject : subject, event.key}, e);
                                         }
                                     }
                                 }
-                            );
-                            return null;
-                        }else{
-                            return createResponseMessage(responseSubject, responseKey, Boolean.TRUE);
-                        }
-                    }catch(Throwable th){
-                        try{
-                            unlock(event.key);
-                        }catch(SharedContextSendException e){
-                            getLogger().write("SCS__00007", new Object[]{isClient ? clientSubject : subject, event.key}, e);
-                        }
-                        return createResponseMessage(responseSubject, responseKey, th);
+                            }
+                        );
+                        return null;
+                    }else{
+                        return createResponseMessage(responseSubject, responseKey, Boolean.TRUE);
                     }
-                }
-            }else{
-                if(ifAcquireable){
-                    return createResponseMessage(responseSubject, responseKey, Boolean.FALSE);
-                }else{
-                    return null;
+                }catch(Throwable th){
+                    try{
+                        unlock(event.key);
+                    }catch(SharedContextSendException e){
+                        getLogger().write("SCS__00007", new Object[]{isClient ? clientSubject : subject, event.key}, e);
+                    }
+                    return createResponseMessage(responseSubject, responseKey, th);
                 }
             }
-        }else{
+        case 2:
+        default:
             return null;
         }
     }
@@ -4078,8 +4454,9 @@ public class SharedContextService extends DefaultContextService
         }
         final long timeout = ((Long)params[2]).longValue();
         try{
-            if(lock.acquireForReply(id, threadId, false, false, timeout, sourceId, sequence, responseSubject, responseKey)){
-                return createResponseMessage(responseSubject, responseKey, Boolean.TRUE);
+            final int result = lock.acquireForReply(lock.new CallbackTask(id, threadId, false, false, timeout, new ResponseCallback(sourceId, sequence, responseSubject, responseKey)));
+            if(result != 2){
+                return createResponseMessage(responseSubject, responseKey, result == 1 ? Boolean.TRUE : Boolean.FALSE);
             }else{
                 return null;
             }
@@ -4089,10 +4466,228 @@ public class SharedContextService extends DefaultContextService
         }
     }
     
+    protected Message onGetLocks(final SharedContextEvent event, final Object sourceId, final int sequence, final String responseSubject, final String responseKey){
+        if(!isMain(sourceId)){
+            return null;
+        }
+        final long start = System.currentTimeMillis();
+        final Set keys = (Set)event.key;
+        final Object[] params = (Object[])event.value;
+        final Object id = params[0];
+        final long threadId = ((Long)params[1]).longValue();
+        final boolean ifAcquireable = ((Boolean)params[2]).booleanValue();
+        final boolean ifExist = ((Boolean)params[3]).booleanValue();
+        final long timeout = ((Long)params[4]).longValue();
+        final List lockedLocks = new LinkedList();
+        final List tasks = new LinkedList();
+        boolean result = true;
+        final GetLocksResponseCallback callback = new GetLocksResponseCallback(id, threadId, ifAcquireable, ifExist, timeout, keys, sourceId, sequence, responseSubject, responseKey);
+        final Iterator keyItr = keys.iterator();
+        try{
+            while(keyItr.hasNext()){
+                Object key = keyItr.next();
+                if(ifExist && !super.containsKey(key)){
+                    result = false;
+                    return createResponseMessage(responseSubject, responseKey, Boolean.FALSE);
+                }
+                Lock lock = (Lock)keyLockMap.get(key);
+                if(lock == null){
+                    lock = new Lock(key);
+                    Lock old = (Lock)keyLockMap.putIfAbsent(key, lock);
+                    if(old != null){
+                        lock = old;
+                    }
+                }
+                Lock.CallbackTask task = lock.new CallbackTask(id, threadId, ifAcquireable, ifExist, timeout, callback);
+                final int ret = lock.acquireForReply(task);
+                switch(ret){
+                case 0:
+                    result = false;
+                    return createResponseMessage(responseSubject, responseKey, Boolean.FALSE);
+                case 1:
+                    callback.callback(lock, true);
+                    lockedLocks.add(lock);
+                    if(ifExist && !super.containsKey(key)){
+                        result = false;
+                        return createResponseMessage(responseSubject, responseKey, Boolean.FALSE);
+                    }
+                    break;
+                case 2:
+                default:
+                    tasks.add(task);
+                    break;
+                }
+            }
+        }catch(Throwable th){
+            result = false;
+            return createResponseMessage(responseSubject, responseKey, th);
+        }finally{
+            if(!result){
+                for(int i = 0, imax = tasks.size(); i < imax; i++){
+                    ((Lock.CallbackTask)tasks.remove(0)).cancel();
+                }
+                for(int i = 0, imax = lockedLocks.size(); i < imax; i++){
+                    ((Lock)lockedLocks.remove(0)).release(id, false);
+                }
+            }
+        }
+        return null;
+    }
+    
+    protected Message onGotLocks(final SharedContextEvent event, final Object sourceId, final int sequence, final String responseSubject, final String responseKey){
+        Set keys = (Set)event.key;
+        final Object[] params = (Object[])event.value;
+        final Object id = params[0];
+        final long threadId = ((Long)params[1]).longValue();
+        if(getId().equals(id)){
+            return null;
+        }
+        final long timeout = ((Long)params[2]).longValue();
+        final GotLocksResponseCallback callback = new GotLocksResponseCallback(keys, sourceId, sequence, responseSubject, responseKey);
+        final List lockedLocks = new LinkedList();
+        final List tasks = new LinkedList();
+        final Iterator keyItr = keys.iterator();
+        boolean result = true;
+        try{
+            while(keyItr.hasNext()){
+                Object key = keyItr.next();
+                Lock lock = (Lock)keyLockMap.get(key);
+                if(lock == null){
+                    lock = new Lock(key);
+                    Lock old = (Lock)keyLockMap.putIfAbsent(key, lock);
+                    if(old != null){
+                        lock = old;
+                    }
+                }
+                Lock.CallbackTask task = lock.new CallbackTask(id, threadId, false, false, timeout, callback);
+                final int ret = lock.acquireForReply(task);
+                switch(ret){
+                case 0:
+                    result = false;
+                    return createResponseMessage(responseSubject, responseKey, Boolean.FALSE);
+                case 1:
+                    callback.callback(lock, true);
+                    lockedLocks.add(lock);
+                    break;
+                case 2:
+                default:
+                    tasks.add(task);
+                    break;
+                }
+            }
+        }catch(Throwable th){
+            result = false;
+            return createResponseMessage(responseSubject, responseKey, th);
+        }finally{
+            if(!result){
+                for(int i = 0, imax = tasks.size(); i < imax; i++){
+                    ((Lock.CallbackTask)tasks.remove(0)).cancel();
+                }
+                for(int i = 0, imax = lockedLocks.size(); i < imax; i++){
+                    ((Lock)lockedLocks.remove(0)).release(id, false);
+                }
+            }
+        }
+        return null;
+    }
+    
     protected void onReleaseLock(SharedContextEvent event){
         Lock lock = (Lock)keyLockMap.get(event.key);
         if(lock != null){
             lock.release(event.value, true);
+        }
+    }
+    
+    protected Message onReleaseLock(final SharedContextEvent event, final Object sourceId, final int sequence, final String responseSubject, final String responseKey){
+        if(isMain(sourceId)){
+            boolean result = true;
+            Lock lock = (Lock)keyLockMap.get(event.key);
+            if(lock != null){
+                result = lock.release(event.value, true);
+            }
+            if(result){
+                try{
+                    Message message = serverConnection.createMessage(subject, event.key == null ? null : event.key.toString());
+                    message.setSubject(clientSubject, event.key == null ? null : event.key.toString());
+                    final Set receiveClients =  serverConnection.getReceiveClientIds(message);
+                    receiveClients.remove(sourceId);
+                    if(receiveClients.size() != 0){
+                        message.setDestinationIds(receiveClients);
+                        message.setObject(
+                            new SharedContextEvent(
+                                SharedContextEvent.EVENT_RELEASE_LOCK,
+                                event.key,
+                                sourceId
+                            )
+                        );
+                        serverConnection.sendAsynch(message);
+                    }
+                }catch(Throwable th){
+                    return createResponseMessage(responseSubject, responseKey, th);
+                }
+            }
+            return createResponseMessage(responseSubject, responseKey, result ? Boolean.TRUE : Boolean.FALSE);
+        }else{
+            return null;
+        }
+    }
+    
+    protected void onReleaseLocks(SharedContextEvent event){
+        Iterator keyItr = ((Set)event.key).iterator();
+        Object id  = event.value;
+        while(keyItr.hasNext()){
+            Object key = keyItr.next();
+            Lock lock = (Lock)keyLockMap.get(key);
+            if(lock != null){
+                lock.release(id, true);
+            }
+        }
+    }
+    
+    protected Message onReleaseLocks(final SharedContextEvent event, final Object sourceId, final int sequence, final String responseSubject, final String responseKey){
+        if(isMain(sourceId)){
+            Set keys = (Set)event.key;
+            Set failedKeys = null;
+            Iterator keyItr = keys.iterator();
+            Object id  = event.value;
+            while(keyItr.hasNext()){
+                Object key = keyItr.next();
+                Lock lock = (Lock)keyLockMap.get(key);
+                if(lock != null && !lock.release(id, true)){
+                    if(failedKeys == null){
+                        failedKeys = new HashSet();
+                    }
+                    failedKeys.add(key);
+                }
+            }
+            Set tmpKeys = new HashSet(keys);
+            if(failedKeys != null){
+                tmpKeys.remove(failedKeys);
+            }
+            if(tmpKeys.size() != 0){
+                try{
+                    Message message = serverConnection.createMessage(subject, null);
+                    message.setSubject(clientSubject, null);
+                    final Set receiveClients =  serverConnection.getReceiveClientIds(message);
+                    receiveClients.remove(sourceId);
+                    if(receiveClients.size() != 0){
+                        message.setDestinationIds(receiveClients);
+                        message.setObject(
+                            new SharedContextEvent(
+                                SharedContextEvent.EVENT_RELEASE_LOCKS,
+                                tmpKeys,
+                                sourceId
+                            )
+                        );
+                        serverConnection.sendAsynch(message);
+                    }
+                }catch(Throwable th){
+                    return createResponseMessage(responseSubject, responseKey, th);
+                }
+            }
+            return createResponseMessage(responseSubject, responseKey, failedKeys);
+        }else{
+            return null;
         }
     }
     
@@ -4186,120 +4781,6 @@ public class SharedContextService extends DefaultContextService
         }
     }
     
-/*
-    protected Message onSearchIndex(final SharedContextEvent event, final Object sourceId, final int sequence, final String responseSubject, final String responseKey){
-        if(isMain(sourceId)){
-            SearchEvent searchEvent = (SearchEvent)event.value;
-            Object result = null;
-            final byte type = searchEvent.type;
-            final Object[] args = searchEvent.arguments;
-            try{
-                switch(type){
-                case SearchEvent.TYPE_KEY:
-                    result = indexManager.searchKey((String)args[0], (String[])args[1]);
-                    break;
-                case SearchEvent.TYPE_NULL:
-                    result = indexManager.searchNull((String)args[0], (String)args[1]);
-                    break;
-                case SearchEvent.TYPE_NOT_NULL:
-                    result = indexManager.searchNotNull((String)args[0], (String)args[1]);
-                    break;
-                case SearchEvent.TYPE_BY:
-                    result = indexManager.searchBy((Object)args[0], (String)args[1], (String[])args[2]);
-                    break;
-                case SearchEvent.TYPE_IN:
-                    result = indexManager.searchIn((String)args[0], (String[])args[1], (Object[])args[2]);
-                    break;
-                case SearchEvent.TYPE_BY_PROP:
-                    result = indexManager.searchByProperty((Object)args[0], (String)args[1], (String)args[2]);
-                    break;
-                case SearchEvent.TYPE_IN_PROP:
-                    result = indexManager.searchInProperty((String)args[0], (String)args[1], (Object[])args[2]);
-                    break;
-                case SearchEvent.TYPE_BY_PROP_MAP:
-                    result = indexManager.searchByProperty((Map)args[0], (String)args[1]);
-                    break;
-                case SearchEvent.TYPE_IN_PROP_MAP:
-                    result = indexManager.searchInProperty((String)args[0], (Map[])args[1]);
-                    break;
-                case SearchEvent.TYPE_FROM:
-                    if(args[0] == null){
-                        result = indexManager.searchFrom((Object)args[3], (String)args[1], (String)args[2]);
-                    }else{
-                        result = indexManager.createTemporaryIndex(
-                            (Set)args[0],
-                            (String)args[1],
-                            (String)args[2]
-                        ).searchFrom((Object)args[3]);
-                    }
-                    break;
-                case SearchEvent.TYPE_FROM_PROP:
-                    if(args[0] == null){
-                        result = indexManager.searchFromProperty((Object)args[3], (String)args[1], (String)args[2]);
-                    }else{
-                        result = indexManager.createTemporaryIndex(
-                            (Set)args[0],
-                            (String)args[1],
-                            (String)args[2]
-                        ).searchFromProperty((Object)args[3]);
-                    }
-                    break;
-                case SearchEvent.TYPE_TO:
-                    if(args[0] == null){
-                        result = indexManager.searchTo((Object)args[3], (String)args[1], (String)args[2]);
-                    }else{
-                        result = indexManager.createTemporaryIndex(
-                            (Set)args[0],
-                            (String)args[1],
-                            (String)args[2]
-                        ).searchTo((Object)args[3]);
-                    }
-                    break;
-                case SearchEvent.TYPE_TO_PROP:
-                    if(args[0] == null){
-                        result = indexManager.searchToProperty((Object)args[3], (String)args[1], (String)args[2]);
-                    }else{
-                        result = indexManager.createTemporaryIndex(
-                            (Set)args[0],
-                            (String)args[1],
-                            (String)args[2]
-                        ).searchToProperty((Object)args[3]);
-                    }
-                    break;
-                case SearchEvent.TYPE_RANGE:
-                    if(args[0] == null){
-                        result = indexManager.searchRange((Object)args[3], (Object)args[4], (String)args[1], (String)args[2]);
-                    }else{
-                        result = indexManager.createTemporaryIndex(
-                            (Set)args[0],
-                            (String)args[1],
-                            (String)args[2]
-                        ).searchRange((Object)args[3], (Object)args[4]);
-                    }
-                    break;
-                case SearchEvent.TYPE_RANGE_PROP:
-                    if(args[0] == null){
-                        result = indexManager.searchRangeProperty((Object)args[3], (Object)args[4], (String)args[1], (String)args[2]);
-                    }else{
-                        result = indexManager.createTemporaryIndex(
-                            (Set)args[0],
-                            (String)args[1],
-                            (String)args[2]
-                        ).searchRangeProperty((Object)args[3], (Object)args[4]);
-                    }
-                    break;
-                }
-            }catch(Throwable th){
-                result = th;
-            }
-            return createResponseMessage(responseSubject, responseKey, result);
-        }else{
-            return null;
-        }
-    }
-*/
-    
-
     protected Message onSearchIndex(final SharedContextEvent event, final Object sourceId, final int sequence, final String responseSubject, final String responseKey){
         if(isMain(sourceId)){
             SearchEvent searchEvent = (SearchEvent)event.value;
@@ -4510,6 +4991,9 @@ public class SharedContextService extends DefaultContextService
         public static final byte EVENT_RELEASE_UPDATE_LOCK = (byte)25;
         public static final byte EVENT_CHANGE_MODE         = (byte)26;
         public static final byte EVENT_HEALTH_CHECK        = (byte)27;
+        public static final byte EVENT_GET_LOCKS           = (byte)28;
+        public static final byte EVENT_GOT_LOCKS           = (byte)29;
+        public static final byte EVENT_RELEASE_LOCKS       = (byte)30;
         
         public byte type;
         public Object key;
@@ -4561,10 +5045,14 @@ public class SharedContextService extends DefaultContextService
         protected Thread ownerThread;
         protected long ownerThreadId = -1;
         protected final SynchronizeMonitor lockMonitor = new WaitSynchronizeMonitor();
-        protected Set callbacks = new LinkedHashSet();
+        protected Set callbacks = Collections.synchronizedSet(new LinkedHashSet());
         
         public Lock(Object key){
             this.key = key;
+        }
+        
+        public Object getKey(){
+            return key;
         }
         
         public boolean isAcquireable(Object id){
@@ -4584,7 +5072,7 @@ public class SharedContextService extends DefaultContextService
         }
         
         public boolean acquire(Object id, boolean ifAcquireable, long timeout){
-            NotifyCallback callback = null;
+            CallbackTask callback = null;
             synchronized(Lock.this){
                 Set targetMembers = serverConnection.getReceiveClientIds(allTargetMessage);
                 if(getState() == STARTED){
@@ -4608,35 +5096,27 @@ public class SharedContextService extends DefaultContextService
                         return true;
                     }
                 }else{
-                    synchronized(callbacks){
-                        if(callbacks.size() > 1){
-                            lockMonitor.notifyMonitor();
-                        }
+                    if(callbacks.size() > 0){
+                        lockMonitor.notifyMonitor();
                     }
                     return false;
                 }
                 if(ifAcquireable){
                     return false;
                 }
-                callback = new NotifyCallback();
-                synchronized(callbacks){
-                    callbacks.add(callback);
-                }
+                callback = new CallbackTask();
+                callbacks.add(callback);
                 lockMonitor.initMonitor();
             }
             try{
                 long start = System.currentTimeMillis();
                 if(lockMonitor.waitMonitor(timeout)){
                     synchronized(Lock.this){
-                        synchronized(callbacks){
-                            callbacks.remove(callback);
-                        }
+                        callbacks.remove(callback);
                         timeout = timeout - (System.currentTimeMillis() - start);
                         if(timeout <= 0){
-                            synchronized(callbacks){
-                                if(callbacks.size() > 1){
-                                    lockMonitor.notifyMonitor();
-                                }
+                            if(callbacks.size() > 0){
+                                lockMonitor.notifyMonitor();
                             }
                             return false;
                         }
@@ -4644,90 +5124,92 @@ public class SharedContextService extends DefaultContextService
                     return acquire(id, false, timeout);
                 }else{
                     synchronized(Lock.this){
-                        synchronized(callbacks){
-                            if(callbacks.size() > 1){
-                                lockMonitor.notifyMonitor();
-                            }
+                        if(callbacks.size() > 1){
+                            lockMonitor.notifyMonitor();
                         }
                     }
                     return false;
                 }
             }catch(InterruptedException e){
                 synchronized(Lock.this){
-                    synchronized(callbacks){
-                        if(callbacks.size() > 1){
-                            lockMonitor.notifyMonitor();
-                        }
-                    }
-                }
-                return false;
-            }finally{
-                synchronized(Lock.this){
-                    synchronized(callbacks){
-                        callbacks.remove(callback);
-                    }
-                }
-                lockMonitor.releaseMonitor();
-            }
-        }
-        
-        public boolean acquireForReply(Object id, long threadId, boolean ifAcquireable, boolean ifExist, long timeout, Object sourceId, int sequence, String responseSubject, String responseKey){
-            final boolean isLocal = id.equals(getId());
-            synchronized(Lock.this){
-                Set targetMembers = serverConnection.getReceiveClientIds(allTargetMessage);
-                if(getState() == STARTED && (isLocal || targetMembers.contains(id))){
-                    if(owner == null){
-                        owner = id;
-                        if(isLocal){
-                            ownerThread = Thread.currentThread();
-                            ownerThreadId = -1;
-                        }else{
-                            ownerThread = null;
-                            ownerThreadId = threadId;
-                        }
-                        Set keySet = (Set)idLocksMap.get(id);
-                        if(keySet == null){
-                            keySet = new HashSet();
-                            Set old = (Set)idLocksMap.putIfAbsent(id, keySet);
-                            if(old != null){
-                                keySet = old;
-                            }
-                        }
-                        synchronized(keySet){
-                            keySet.add(key);
-                        }
-                        return true;
-                    }else if(id.equals(owner)
-                        && ((isLocal && Thread.currentThread().equals(ownerThread))
-                            || (!isLocal && threadId == ownerThreadId))
-                    ){
-                        return true;
-                    }
-                }else{
-                    synchronized(callbacks){
-                        if(callbacks.size() > 1){
-                            lockMonitor.notifyMonitor();
-                        }
-                    }
-                    return false;
-                }
-                if(ifAcquireable){
-                    return false;
-                }
-                NotifyCallback callback = new NotifyCallback(id, ownerThreadId, ifExist, timeout, sourceId, sequence, responseSubject, responseKey);
-                synchronized(callbacks){
-                    callbacks.add(callback);
-                }
-                if(timeout > 0){
-                    lockTimeoutTimer.schedule(callback, timeout);
-                }
-                synchronized(callbacks){
                     if(callbacks.size() > 1){
                         lockMonitor.notifyMonitor();
                     }
                 }
+                return false;
+            }finally{
+                callbacks.remove(callback);
+                lockMonitor.releaseMonitor();
             }
-            return false;
+        }
+        
+        public int acquireForReply(CallbackTask callback){
+            final boolean isLocal = callback.id.equals(getId());
+            int result = 2;
+            synchronized(Lock.this){
+                try{
+                    Set targetMembers = serverConnection.getReceiveClientIds(allTargetMessage);
+                    if(getState() == STARTED && (isLocal || targetMembers.contains(callback.id))){
+                        if(owner == null){
+                            owner = callback.id;
+                            if(isLocal){
+                                ownerThread = Thread.currentThread();
+                                ownerThreadId = -1;
+                            }else{
+                                ownerThread = null;
+                                ownerThreadId = callback.threadId;
+                            }
+                            Set keySet = (Set)idLocksMap.get(callback.id);
+                            if(keySet == null){
+                                keySet = new HashSet();
+                                Set old = (Set)idLocksMap.putIfAbsent(callback.id, keySet);
+                                if(old != null){
+                                    keySet = old;
+                                }
+                            }
+                            synchronized(keySet){
+                                keySet.add(key);
+                            }
+                            result = 1;
+                            return result;
+                        }else if(callback.id.equals(owner)
+                            && ((isLocal && Thread.currentThread().equals(ownerThread))
+                                || (!isLocal && callback.threadId == ownerThreadId))
+                        ){
+                            result = 1;
+                            return result;
+                        }
+                    }else{
+                        if(callbacks.size() > 0){
+                            lockMonitor.notifyMonitor();
+                        }
+                        result = 0;
+                        return result;
+                    }
+                    if(callback.ifAcquireable){
+                        result = 0;
+                        return result;
+                    }
+                    if(callbacks.add(callback) && callback.timeout > 0){
+                        lockTimeoutTimer.schedule(callback, callback.timeout);
+                    }
+                    if(callbacks.size() > 1){
+                        lockMonitor.notifyMonitor();
+                    }
+                }finally{
+                    if(result != 2){
+                        callbacks.remove(callback);
+                    }
+                    if(result != 1){
+                        synchronized(Lock.this){
+                            if(callbacks.size() > (result == 2 ? 1 : 0)){
+                                lockMonitor.notifyMonitor();
+                            }
+                        }
+                    }
+                }
+            }
+            return 2;
         }
         
         public Object getOwner(){
@@ -4739,15 +5221,13 @@ public class SharedContextService extends DefaultContextService
         }
         
         public int getWaitCount(){
-            synchronized(callbacks){
-                return callbacks.size();
-            }
+            return callbacks.size();
         }
         
         public boolean release(Object id, boolean force){
             final boolean isLocal = id.equals(getId());
             boolean result = false;
-            NotifyCallback callback = null;
+            CallbackTask callback = null;
             synchronized(Lock.this){
                 if(owner == null || (id.equals(owner) && (force || !isLocal || Thread.currentThread().equals(ownerThread)))){
                     owner = null;
@@ -4755,15 +5235,17 @@ public class SharedContextService extends DefaultContextService
                     ownerThreadId = -1;
                     result = true;
                 }
-                Set keySet = (Set)idLocksMap.get(id);
-                if(keySet != null){
-                    synchronized(keySet){
-                        keySet.remove(key);
+                if(result){
+                    Set keySet = (Set)idLocksMap.get(id);
+                    if(keySet != null){
+                        synchronized(keySet){
+                            keySet.remove(key);
+                        }
                     }
-                }
-                synchronized(callbacks){
                     if(callbacks.size() != 0){
-                        callback = (NotifyCallback)callbacks.iterator().next();
+                        synchronized(callbacks){
+                            callback = (CallbackTask)callbacks.iterator().next();
+                        }
                     }
                 }
             }
@@ -4773,30 +5255,26 @@ public class SharedContextService extends DefaultContextService
             return result;
         }
         
-        protected class NotifyCallback extends TimerTask{
+        public class CallbackTask extends TimerTask{
             protected boolean isLocal;
             protected Object id;
             protected long threadId;
             protected long startTime;
             protected long timeout;
-            protected Object sourceId;
-            protected int sequence;
-            protected String responseSubject;
-            protected String responseKey;
+            protected boolean ifAcquireable;
             protected boolean ifExist;
-            public NotifyCallback(){
+            protected LockNotifyCallback callback;
+            public CallbackTask(){
                 isLocal = true;
             }
-            public NotifyCallback(Object id, long threadId, boolean ifExist, long timeout, Object sourceId, int sequence, String responseSubject, String responseKey){
+            public CallbackTask(Object id, long threadId, boolean ifAcquireable, boolean ifExist, long timeout, LockNotifyCallback callback){
                 isLocal = false;
                 this.id = id;
                 this.threadId = threadId;
-                this.sourceId = sourceId;
-                this.sequence = sequence;
-                this.responseSubject = responseSubject;
-                this.responseKey = responseKey;
+                this.ifAcquireable = ifAcquireable;
                 this.ifExist = ifExist;
                 this.timeout = timeout;
+                this.callback = callback;
                 startTime = System.currentTimeMillis();
             }
             public void notify(boolean notify){
@@ -4806,13 +5284,13 @@ public class SharedContextService extends DefaultContextService
                 }
                 if(notify){
                     if(timeout <= 0){
-                        if(!acquireForReply(this.id, threadId, false, ifExist, timeout, sourceId, sequence, responseSubject, responseKey)){
+                        if(acquireForReply(CallbackTask.this) != 1){
                             return;
                         }
                     }else{
                         long currentTimeout = (startTime + timeout) - System.currentTimeMillis();
                         if(currentTimeout > 0){
-                            if(!acquireForReply(this.id, threadId, false, ifExist, currentTimeout, sourceId, sequence, responseSubject, responseKey)){
+                            if(acquireForReply(CallbackTask.this) != 1){
                                 return;
                             }
                         }else{
@@ -4825,29 +5303,209 @@ public class SharedContextService extends DefaultContextService
                     }
                 }
                 cancel();
-                Message response = null;
-                try{
-                    response = createResponseMessage(responseSubject, responseKey, notify ? Boolean.TRUE : Boolean.FALSE);
-                }catch(Throwable th){
-                    response = createResponseMessage(responseSubject, responseKey, th);
+                
+                if(callback != null){
+                    callback.callback(Lock.this, notify);
                 }
+                callbacks.remove(CallbackTask.this);
+            }
+            
+            public void run(){
+                boolean isRemoved = callbacks.remove(CallbackTask.this);
+                if(isRemoved){
+                    notify(false);
+                }
+            }
+        }
+    }
+    
+    protected interface LockNotifyCallback{
+        public void callback(Lock lock, boolean notify);
+    }
+    
+    protected class ResponseCallback implements LockNotifyCallback{
+        protected Object sourceId;
+        protected int sequence;
+        protected String responseSubject;
+        protected String responseKey;
+        public ResponseCallback(
+            Object sourceId,
+            int sequence,
+            String responseSubject,
+            String responseKey
+        ){
+            this.sourceId = sourceId;
+            this.sequence = sequence;
+            this.responseSubject = responseSubject;
+            this.responseKey = responseKey;
+        }
+        
+        public void callback(Lock lock, boolean notify){
+            Message response = createResponseMessage(responseSubject, responseKey, notify ? Boolean.TRUE : Boolean.FALSE);
+            try{
+                serverConnection.response(sourceId, sequence, response);
+            }catch(MessageSendException e){
+                getLogger().write("SCS__00006", new Object[]{isClient ? clientSubject : subject, response}, e);
+            }
+        }
+    }
+    
+    protected class GotLocksResponseCallback extends ResponseCallback{
+        private Set keys;
+        public GotLocksResponseCallback(
+            Set keys,
+            Object sourceId,
+            int sequence,
+            String responseSubject,
+            String responseKey
+        ){
+            super(sourceId, sequence, responseSubject, responseKey);
+            this.keys = new HashSet(keys);
+        }
+        
+        public synchronized void callback(Lock lock, boolean notify){
+            keys.remove(lock.getKey());
+            if(!notify || keys.size() == 0){
+                Message response = createResponseMessage(responseSubject, responseKey, notify ? Boolean.TRUE : Boolean.FALSE);
                 try{
                     serverConnection.response(sourceId, sequence, response);
                 }catch(MessageSendException e){
                     getLogger().write("SCS__00006", new Object[]{isClient ? clientSubject : subject, response}, e);
                 }
-                synchronized(callbacks){
-                    callbacks.remove(NotifyCallback.this);
+            }
+        }
+    }
+    protected class GetLocksResponseCallback extends ResponseCallback{
+        private Object id;
+        private Set keys;
+        private Set lockedKeys;
+        private long threadId;
+        private long timeout;
+        private boolean ifAcquireable;
+        private boolean ifExist;
+        private long startTime;
+        public GetLocksResponseCallback(
+            Object id,
+            long threadId, 
+            boolean ifAcquireable,
+            boolean ifExist,
+            long timeout,
+            Set keys,
+            Object sourceId,
+            int sequence,
+            String responseSubject,
+            String responseKey
+        ){
+            super(sourceId, sequence, responseSubject, responseKey);
+            this.id = id;
+            this.threadId = threadId;
+            this.ifAcquireable = ifAcquireable;
+            this.ifExist = ifExist;
+            this.timeout = timeout;
+            this.keys = new HashSet(keys);
+            lockedKeys = new HashSet();
+            startTime = System.currentTimeMillis();
+        }
+        
+        public synchronized void callback(Lock lock, boolean notify){
+            keys.remove(lock.getKey());
+            if(notify){
+                lockedKeys.add(lock.getKey());
+            }else{
+                Message response = createResponseMessage(responseSubject, responseKey, Boolean.FALSE);
+                try{
+                    serverConnection.response(sourceId, sequence, response);
+                }catch(MessageSendException e){
+                    getLogger().write("SCS__00006", new Object[]{isClient ? clientSubject : subject, response}, e);
                 }
             }
-            
-            public void run(){
-                boolean isRemoved = false;
-                synchronized(callbacks){
-                    isRemoved = callbacks.remove(NotifyCallback.this);
-                }
-                if(isRemoved){
-                    notify(false);
+            if(keys.size() == 0){
+                try{
+                    final boolean isNoTimeout = timeout <= 0;
+                    Message message = serverConnection.createMessage(subject, null);
+                    message.setSubject(clientSubject, null);
+                    final Set receiveClients = serverConnection.getReceiveClientIds(message);
+                    receiveClients.remove(sourceId);
+                    if(receiveClients.size() == 0){
+                        Message response = createResponseMessage(responseSubject, responseKey, Boolean.TRUE);
+                        try{
+                            serverConnection.response(sourceId, sequence, response);
+                        }catch(MessageSendException e){
+                            getLogger().write("SCS__00006", new Object[]{isClient ? clientSubject : subject, response}, e);
+                        }
+                    }else{
+                        message.setDestinationIds(receiveClients);
+                        long currentTimeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - startTime);
+                        if(!isNoTimeout && timeout <= 0){
+                            Message response = createResponseMessage(responseSubject, responseKey, new SharedContextTimeoutException());
+                            try{
+                                serverConnection.response(sourceId, sequence, response);
+                            }catch(MessageSendException e){
+                                getLogger().write("SCS__00006", new Object[]{isClient ? clientSubject : subject, response}, e);
+                            }
+                        }
+                        message.setObject(
+                            new SharedContextEvent(
+                                SharedContextEvent.EVENT_GOT_LOCKS,
+                                lockedKeys,
+                                new Object[]{id, new Long(threadId), new Long(currentTimeout)}
+                            )
+                        );
+                        serverConnection.request(
+                            message,
+                            isClient ? clientSubject : subject,
+                            null,
+                            0,
+                            currentTimeout,
+                            new RequestServerConnection.ResponseCallBack(){
+                                public void onResponse(Object fromId, Message response, boolean isLast){
+                                    if(receiveClients.size() == 0){
+                                        return;
+                                    }
+                                    try{
+                                        if(response == null){
+                                            serverConnection.response(
+                                                sourceId,
+                                                sequence,
+                                                createResponseMessage(responseSubject, responseKey, Boolean.FALSE)
+                                            );
+                                            receiveClients.clear();
+                                            return;
+                                        }
+                                        receiveClients.remove(fromId);
+                                        Object ret = null;
+                                        try{
+                                            ret = response.getObject();
+                                        }catch(MessageException e){
+                                            ret = e;
+                                        }
+                                        response.recycle();
+                                        if(ret == null
+                                            || ret instanceof Throwable
+                                            || !((Boolean)ret).booleanValue()
+                                            || isLast
+                                        ){
+                                            serverConnection.response(
+                                                sourceId,
+                                                sequence,
+                                                createResponseMessage(responseSubject, responseKey, ret)
+                                            );
+                                            receiveClients.clear();
+                                        }
+                                    }catch(MessageSendException e){
+                                        getLogger().write("SCS__00006", new Object[]{isClient ? clientSubject : subject, response}, e);
+                                    }
+                                }
+                            }
+                        );
+                    }
+                }catch(Throwable th){
+                    Message response = createResponseMessage(responseSubject, responseKey, th);
+                    try{
+                        serverConnection.response(sourceId, sequence, response);
+                    }catch(MessageSendException e){
+                        getLogger().write("SCS__00006", new Object[]{isClient ? clientSubject : subject, response}, e);
+                    }
                 }
             }
         }
@@ -5098,11 +5756,39 @@ public class SharedContextService extends DefaultContextService
             throw new UnsupportedOperationException();
         }
         
-        public boolean unlock(Object key) throws SharedContextSendException{
+        public boolean unlock(Object key) throws SharedContextSendException, SharedContextTimeoutException{
             throw new UnsupportedOperationException();
         }
         
-        public boolean unlock(Object key, boolean force) throws SharedContextSendException{
+        public boolean unlock(Object key, boolean force) throws SharedContextSendException, SharedContextTimeoutException{
+            throw new UnsupportedOperationException();
+        }
+        
+        public boolean unlock(Object key, boolean force, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+            throw new UnsupportedOperationException();
+        }
+        
+        public void locks(Set keys) throws SharedContextSendException, SharedContextTimeoutException{
+            throw new UnsupportedOperationException();
+        }
+        
+        public void locks(Set keys, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+            throw new UnsupportedOperationException();
+        }
+        
+        public boolean locks(Set keys, boolean ifAcquireable, boolean ifExist, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+            throw new UnsupportedOperationException();
+        }
+        
+        public Set unlocks(Set keys) throws SharedContextSendException, SharedContextTimeoutException{
+            throw new UnsupportedOperationException();
+        }
+        
+        public Set unlocks(Set keys, boolean force) throws SharedContextSendException, SharedContextTimeoutException{
+            throw new UnsupportedOperationException();
+        }
+        
+        public Set unlocks(Set keys, boolean force, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
             throw new UnsupportedOperationException();
         }
         
@@ -6977,7 +7663,6 @@ public class SharedContextService extends DefaultContextService
             return this;
         }
         
-
         public SharedContextView searchFrom(
             Object fromValue,
             boolean inclusive,

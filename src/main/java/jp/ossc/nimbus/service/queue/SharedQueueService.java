@@ -726,7 +726,7 @@ public class SharedQueueService extends SharedContextService
                     }
                 }
                 final long start = System.currentTimeMillis();
-                if(lock.acquireForReply(sourceId, threadId, true, true, timeout, sourceId, sequence, responseSubject, responseKey)){
+                if(lock.acquireForReply(lock.new CallbackTask(sourceId, threadId, true, true, timeout, new ResponseCallback(sourceId, sequence, responseSubject, responseKey))) == 1){
                     if(!containsKey(key)){
                         lock.release(sourceId, false);
                         continue;
