@@ -366,7 +366,7 @@ SCS__00008,It failed to analyze keyIndex : subject=@0\\, keyIndex=@1,150,jp.ossc
 SCS__00009,Update request for key "@0" is old\\, discarded. : subject=@1,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 DSCS_00001,It failed to create response message : subject=@0\\, responseSubject=@1\\, responseKey=@2\\, response=@3,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 DSCS_00002,It failed to response : subject=@0\\, response=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
-DSCS_00003,It failed to rehash : subject=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+DSCS_00003,It failed to rehash : service=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 DSCS_00004,Rehash start : service=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 DSCS_00005,Rehash succeeded : service=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 DSS__00001,Select error. It will try to reconnect. : @0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY

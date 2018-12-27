@@ -702,6 +702,8 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         }
         if(isMain()){
             getLogger().write("DSCS_00004", new Object[]{getServiceNameObject()});
+            final boolean isNoTimeout = timeout <= 0;
+            long currentTimeout = timeout;
             try{
                 Message message = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_GET_DIST_INFO));
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
@@ -711,16 +713,14 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     grid.rehash();
                     distributeInfo.apply(distributeInfo, sharedContextArray);
                 }else{
-                    message.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_GET_DIST_INFO, new Long(timeout)));
+                    message.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_GET_DIST_INFO, new Long(currentTimeout)));
                     long start = System.currentTimeMillis();
                     Message[] responses = null;
                     try{
-                        responses = serverConnection.request(message, 0, timeout);
+                        responses = serverConnection.request(message, 0, currentTimeout);
                     }catch(RequestTimeoutException e){
                         throw new SharedContextTimeoutException("Timeout has occurred to get state of distribution.", e);
                     }
-                    final boolean isNoTimeout = timeout <= 0;
-                    timeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
                     DistributeGrid grid = new DistributeGrid();
                     grid.addDistributeInfo(distributeInfo);
                     for(int i = 0; i < responses.length; i++){
@@ -735,6 +735,10 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         info.apply(distributeInfo, sharedContextArray);
                     }
                     if(increaseDistributeInfos.size() != 0){
+                        currentTimeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
+                        if(!isNoTimeout && currentTimeout < 0){
+                            throw new SharedContextTimeoutException("timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - start));
+                        }
                         callback.setResponseCount(increaseDistributeInfos.size());
                         Iterator infos = increaseDistributeInfos.values().iterator();
                         while(infos.hasNext()){
@@ -744,14 +748,22 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                             rehashMessage.addDestinationId(info.getId());
                             serverConnection.request(rehashMessage, 1, timeout, callback);
                         }
-                        callback.waitResponse(timeout);
+                        callback.waitResponse(currentTimeout);
                     }
                     Map decreaseDistributeInfos = grid.getDecreaseDistributeInfos();
                     info = (DistributeInfo)decreaseDistributeInfos.remove(getId());
                     if(info != null){
+                        currentTimeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
+                        if(!isNoTimeout && currentTimeout < 0){
+                            throw new SharedContextTimeoutException("timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - start));
+                        }
                         info.apply(distributeInfo, sharedContextArray);
                     }
                     if(decreaseDistributeInfos.size() != 0){
+                        currentTimeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
+                        if(!isNoTimeout && currentTimeout < 0){
+                            throw new SharedContextTimeoutException("timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - start));
+                        }
                         callback.setResponseCount(decreaseDistributeInfos.size());
                         Iterator infos = decreaseDistributeInfos.values().iterator();
                         while(infos.hasNext()){
@@ -759,9 +771,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                             Message rehashMessage = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_REHASH));
                             rehashMessage.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_REHASH, info));
                             rehashMessage.addDestinationId(info.getId());
-                            serverConnection.request(rehashMessage, 1, timeout, callback);
+                            serverConnection.request(rehashMessage, 1, currentTimeout, callback);
                         }
-                        callback.waitResponse(timeout);
+                        callback.waitResponse(currentTimeout);
                     }
                 }
                 getLogger().write("DSCS_00005", new Object[]{getServiceNameObject()});
@@ -2203,6 +2215,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         rehash(((Long)event.value).longValue());
                         response = createResponseMessage(responseSubject, responseKey, null);
                     }catch(Throwable th){
+                        getLogger().write("DSCS_00003", new Object[]{getServiceNameObject()}, th);
                         response = createResponseMessage(responseSubject, responseKey, th);
                     }
                     try{
@@ -2235,6 +2248,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 }
             }
         };
+        rehashThread.setName(getServiceNameObject() + " Rehash thread " + sequence);
         rehashThread.start();
         return null;
     }
@@ -2439,11 +2453,17 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     }
     public void onRemoveSubject(Client client, String subject, String[] keys){
         if(!getId().equals(client.getId()) && isMain() && subject.equals(this.subject)){
-            try{
-                rehash();
-            }catch(Throwable th){
-                getLogger().write("DSCS_00003", new Object[]{isClient ? clientSubject : subject}, th);
-            }
+            Thread thread = new Thread(){
+                public void run(){
+                    try{
+                        rehash();
+                    }catch(Throwable th){
+                        getLogger().write("DSCS_00003", new Object[]{getServiceNameObject()}, th);
+                    }
+                }
+            };
+            thread.setName(getServiceNameObject() + "Rehash thread on remove subject " + subject);
+            thread.start();
         }
     }
     public void onStartReceive(Client client, long from){

@@ -719,8 +719,12 @@ public class RequestConnectionFactoryService extends ServiceBase
             }
             
             public synchronized void onClose(Object id){
+                boolean isRemoved = false;
                 synchronized(requestClients){
-                    requestClients.remove(id);
+                    isRemoved = requestClients.remove(id);
+                }
+                if(!isRemoved){
+                    return;
                 }
                 if(callback == null){
                     if((replyCount <= 0 && requestClients.size() == 0) || (replyCount > 0 && responseList.size() >= replyCount)){
