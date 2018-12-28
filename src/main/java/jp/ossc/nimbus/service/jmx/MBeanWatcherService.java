@@ -31,44 +31,44 @@
  */
 package jp.ossc.nimbus.service.jmx;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.HashMap;
-import java.util.TreeMap;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.LinkedHashMap;
-import java.util.Iterator;
-import java.util.Date;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.Arrays;
-import java.io.Serializable;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.text.ParseException;
+import java.io.Serializable;
+import java.lang.management.ManagementFactory;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-
 import java.math.MathContext;
-import java.lang.management.ManagementFactory;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeMap;
 
+import javax.management.ListenerNotFoundException;
 import javax.management.MBeanServerConnection;
-import javax.management.ObjectName;
-import javax.management.QueryExp;
 import javax.management.MalformedObjectNameException;
 import javax.management.Notification;
-import javax.management.NotificationListener;
 import javax.management.NotificationFilter;
-import javax.management.ListenerNotFoundException;
-import javax.management.remote.JMXConnectorFactory;
-import javax.management.remote.JMXConnector;
-import javax.management.remote.JMXServiceURL;
+import javax.management.NotificationListener;
+import javax.management.ObjectName;
+import javax.management.QueryExp;
 import javax.management.remote.JMXConnectionNotification;
+import javax.management.remote.JMXConnector;
+import javax.management.remote.JMXConnectorFactory;
+import javax.management.remote.JMXServiceURL;
 
 import org.apache.commons.jexl.Expression;
 import org.apache.commons.jexl.ExpressionFactory;
@@ -76,9 +76,9 @@ import org.apache.commons.jexl.JexlContext;
 import org.apache.commons.jexl.JexlHelper;
 
 import jp.ossc.nimbus.beans.PropertyAccess;
-import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.core.ServiceBase;
 import jp.ossc.nimbus.core.ServiceManagerFactory;
+import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.daemon.Daemon;
 import jp.ossc.nimbus.daemon.DaemonControl;
 import jp.ossc.nimbus.daemon.DaemonRunnable;
@@ -96,7 +96,7 @@ import jp.ossc.nimbus.util.converter.Converter;
 public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, MBeanWatcherServiceMBean{
 
     private static final long serialVersionUID = -1421073056315791503L;
-    
+
     private ServiceName jndiFinderServiceName;
     private JndiFinder jndiFinder;
     private String rmiAdaptorName = DEFAULT_JMX_RMI_ADAPTOR_NAME;
@@ -104,7 +104,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     private Map jmxConnectorEnvironment;
     private ServiceName mBeanServerConnectionFactoryServiceName;
     private MBeanServerConnectionFactory mBeanServerConnectionFactory;
-    
+
     private long interval;
     private ServiceName categoryServiceName;
     private List targetList;
@@ -2505,7 +2505,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private static final long serialVersionUID = 6105816116626297923L;
         private long interval = 1000l;
         private int count = 60;
-        private List valueList = new ArrayList();
+        private List valueList = new LinkedList();
         private Daemon periodicGetter;
         private JMXConnectorNotificationListener listener;
 
@@ -2661,7 +2661,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
             synchronized(valueList){
                 valueList.add(paramObj);
                 if(valueList.size() > count){
-                    for(int i = 0, imax = count - valueList.size(); i < imax; i++){
+                    for(int i = 0, imax = valueList.size() - count; i < imax; i++){
                         valueList.remove(0);
                     }
                 }
