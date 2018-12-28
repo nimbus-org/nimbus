@@ -33,6 +33,7 @@ package jp.ossc.nimbus.service.repository;
 
 import java.io.*;
 import java.util.*;
+import java.lang.management.*;
 import javax.management.*;
 
 import jp.ossc.nimbus.core.*;
@@ -118,13 +119,18 @@ public class MBeanServerRepositoryService extends ServiceBase
     public void startService() throws Exception{
         List servers = MBeanServerFactory.findMBeanServer(serverDomain);
         if(servers == null || servers.size() == 0){
-            if(isCreateMBeanServer){
-                MBeanServer server = MBeanServerFactory.createMBeanServer(serverDomain);
+            if(servers == null){
                 servers = new ArrayList();
-                servers.add(server);
+            }
+            MBeanServer server = null;
+            if(isCreateMBeanServer){
+                server = MBeanServerFactory.createMBeanServer(serverDomain);
+            }else if(serverDomain == null){
+                server = ManagementFactory.getPlatformMBeanServer();
             }else{
                 throw new Exception("MBeanServer not found : " + serverDomain);
             }
+            servers.add(server);
         }
         if(serverDefaultDomain != null){
             for(int i = 0; i < servers.size(); i++){
