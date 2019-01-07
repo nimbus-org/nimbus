@@ -333,7 +333,7 @@ ServiceManagerの名前を定義します。
 <!-- service要素は、manager要素で構成されるServiceManagerに登録するServiceを
 定義します。
 -->
-<!ELEMENT service (constructor? | field* | attribute* | optional-config? | invoke* | depends* | ifdef*)*>
+<!ELEMENT service (service-property* | constructor? | field* | attribute* | optional-config? | invoke* | depends* | ifdef*)*>
 
 <!-- code属性は、service要素で登録するServiceの実装クラス名を完全修飾名で定義し
 ます。
@@ -434,6 +434,17 @@ trueを設定すると、生成されたインスタンスはServiceManagerに�
 サービス名を定義します。
 -->
 <!ATTLIST service template CDATA #IMPLIED>
+
+<!-- service-property要素は、service要素の子要素attributeの内容で${プロパティ名}で参照できる環境変数プロパティを定義します。
+
+例:
+   <service-property name="hoge">fuga</service-property>
+-->
+<!ELEMENT service-property (#PCDATA)>
+
+<!-- name属性は、service要素の子要素attributeの内容で${プロパティ名}で参照できる環境変数プロパティ名を定義します。
+-->
+<!ATTLIST service-property name CDATA #REQUIRED>
 
 <!-- constructor要素は、service要素で登録するServiceやobject要素で生成する
 オブジェクトのコンストラクタ属性を定義します。
@@ -657,7 +668,7 @@ service要素とは異なる点です。
 <!ELEMENT ifdef ANY>
 
 <!-- name属性は、条件となる環境変数名を定義します。
-ここで言う環境変数は、JVMのシステムプロパティ、server-property要素で指定した変数、manager-property要素で指定した変数を指します。
+ここで言う環境変数は、JVMのシステムプロパティ、server-property要素で指定した変数、manager-property要素で指定した変数、service-property要素で指定した変数を指します。
 -->
 <!ATTLIST ifdef name CDATA #REQUIRED>
 

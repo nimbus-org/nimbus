@@ -2347,6 +2347,13 @@ public class DefaultServiceManagerService extends ServiceBase
             textValue,
             objData.getServiceLoader().getConfig()
         );
+        if(objData instanceof ServiceMetaData){
+            // サービスプロパティの置換
+            textValue = Utility.replaceServiceProperty(
+                (ServiceMetaData)objData,
+                textValue
+            );
+        }
         // マネージャプロパティの置換
         textValue = Utility.replaceManagerProperty(
             this,
