@@ -138,6 +138,11 @@ public class ServiceNameMetaData extends MetaData implements Serializable{
                     loader.getConfig()
                 );
             }
+            ServiceMetaData serviceData = findServiceMetaData(getParent());
+            if(serviceData != null){
+                // サービスプロパティの置換
+                serviceNameStr = Utility.replaceServiceProperty(serviceData, serviceNameStr);
+            }
             ManagerMetaData managerData = findManagerMetaData(getParent());
             if(managerData != null){
                 // マネージャプロパティの置換
@@ -174,6 +179,16 @@ public class ServiceNameMetaData extends MetaData implements Serializable{
             return ((ServerMetaData)metaData).getServiceLoader();
         }
         return findServiceLoader(metaData.getParent());
+    }
+    
+    protected ServiceMetaData findServiceMetaData(MetaData metaData){
+        if(metaData == null){
+            return null;
+        }
+        if(metaData instanceof ServiceMetaData){
+            return (ServiceMetaData)metaData;
+        }
+        return findServiceMetaData(metaData.getParent());
     }
     
     protected ManagerMetaData findManagerMetaData(MetaData metaData){
