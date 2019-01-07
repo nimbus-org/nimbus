@@ -2333,6 +2333,16 @@ public class DefaultServiceManagerService extends ServiceBase
         return field.get(null);
     }
     
+    private ServiceMetaData findServiceMetaData(MetaData metaData){
+        if(metaData == null){
+            return null;
+        }
+        if(metaData instanceof ServiceMetaData){
+            return (ServiceMetaData)metaData;
+        }
+        return findServiceMetaData(metaData.getParent());
+    }
+    
     private Object getValueOfText(
         ObjectMetaData objData,
         Type type,
@@ -2347,10 +2357,11 @@ public class DefaultServiceManagerService extends ServiceBase
             textValue,
             objData.getServiceLoader().getConfig()
         );
-        if(objData instanceof ServiceMetaData){
+        ServiceMetaData serviceData = findServiceMetaData(objData);
+        if(serviceData != null){
             // サービスプロパティの置換
             textValue = Utility.replaceServiceProperty(
-                (ServiceMetaData)objData,
+                serviceData,
                 textValue
             );
         }
