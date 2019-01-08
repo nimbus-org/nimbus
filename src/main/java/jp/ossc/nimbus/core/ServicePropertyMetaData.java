@@ -98,7 +98,7 @@ public class ServicePropertyMetaData extends PropertyMetaData{
     public StringBuilder toXML(StringBuilder buf){
         super.toXML(buf);
         if(isExtends){
-            final int index = buf.lastIndexOf("</");
+            final int index = buf.lastIndexOf("\">") + 1;
             buf.insert(index, "=\"true\"");
             buf.insert(index, EXTENDS_ATTRIBUTE_NAME);
             buf.insert(index, ' ');
