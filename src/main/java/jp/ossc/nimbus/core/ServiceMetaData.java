@@ -568,6 +568,18 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
                 result.invokes.add(invoke);
             }
         }
+        if(templateData.properties.size() != 0){
+            Iterator entries = templateData.properties.entrySet().iterator();
+            while(entries.hasNext()){
+                Map.Entry entry = (Map.Entry)entries.next();
+                ServicePropertyMetaData propData = (ServicePropertyMetaData)entry.getValue();
+                if(propData.isExtends() && !result.properties.containsKey(entry.getKey())){
+                    propData = (ServicePropertyMetaData)propData.clone();
+                    propData.setParent(result);
+                    result.properties.put(entry.getKey(), propData);
+                }
+            }
+        }
         if(result.optionalConfig == null){
             result.optionalConfig = templateData.optionalConfig;
         }
