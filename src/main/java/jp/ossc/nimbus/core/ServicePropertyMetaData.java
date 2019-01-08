@@ -31,6 +31,8 @@
  */
 package jp.ossc.nimbus.core;
 
+import org.w3c.dom.*;
+
 /**
  * サービスプロパティ&lt;service-property&gt;要素メタデータ。<p>
  * サービス定義ファイルの&lt;service-property&gt;要素に記述された内容を格納するメタデータコンテナである。<p>
@@ -47,6 +49,10 @@ public class ServicePropertyMetaData extends PropertyMetaData{
      */
     public static final String SERVICE_PROPERTY_TAG_NAME = "service-property";
     
+    protected static final String EXTENDS_ATTRIBUTE_NAME = "extends";
+    
+    protected boolean isExtends;
+    
     /**
      * 親要素のメタデータを持つインスタンスを生成する。<p>
      * 
@@ -58,5 +64,45 @@ public class ServicePropertyMetaData extends PropertyMetaData{
     
     protected String getTagName(){
         return SERVICE_PROPERTY_TAG_NAME;
+    }
+    
+    /**
+     * このプロパティ要素のextends属性の値を取得する。<p>
+     * 
+     * @return extends属性の値
+     */
+    public boolean isExtends(){
+        return isExtends;
+    }
+    
+    /**
+     * このプロパティ要素のextends属性の値を設定する。<p>
+     * 
+     * @param isExtends extends属性の値
+     */
+    public void setExtends(boolean isExtends){
+        this.isExtends = isExtends;
+    }
+    
+    /**
+     * プロパティ要素のElementをパースして、自分自身の初期化、及び子要素のメタデータの生成を行う。<p>
+     *
+     * @param element プロパティ要素のElement
+     * @exception DeploymentException プロパティ要素の解析、その結果によるメタデータの生成に失敗した場合
+     */
+    public void importXML(Element element) throws DeploymentException{
+        super.importXML(element);
+        isExtends = getOptionalBooleanAttribute(element, EXTENDS_ATTRIBUTE_NAME);
+    }
+    
+    public StringBuilder toXML(StringBuilder buf){
+        super.toXML(buf);
+        if(isExtends){
+            final int index = buf.lastIndexOf("</");
+            buf.insert(index, "=\"true\"");
+            buf.insert(index, EXTENDS_ATTRIBUTE_NAME);
+            buf.insert(index, ' ');
+        }
+        return buf;
     }
 }
