@@ -355,8 +355,9 @@ public class ClientBeanFlowInvokerFactoryService extends ServiceBase
                 replyQueue.start();
                 context = new BeanFlowAsynchContext(this, obj, serverMonitor, replyQueue);
                 try{
-                    callbacks.add(new BeanFlowAsynchInvokeCallbackImpl(context));
-                    invokeAsynchFlow(obj, monitor, (BeanFlowAsynchInvokeCallback)((BeanFlowAsynchInvokeCallbackImpl) callbacks.get(callbacks.size()-1)).getStub(), maxAsynchWait);
+                    BeanFlowAsynchInvokeCallbackImpl callback = new BeanFlowAsynchInvokeCallbackImpl(context);
+                    callbacks.add(callback);
+                    invokeAsynchFlow(obj, monitor, (BeanFlowAsynchInvokeCallback)callback.getStub(), maxAsynchWait);
                 }finally{
                     endTime = System.currentTimeMillis();
                 }
@@ -409,8 +410,9 @@ public class ClientBeanFlowInvokerFactoryService extends ServiceBase
                 ((BeanFlowMonitorImpl)monitor).addBeanFlowMonitor(serverMonitor);
             }
             if(!(callback instanceof BeanFlowAsynchInvokeCallbackImpl)){
-                callbacks.add(new BeanFlowAsynchInvokeCallbackImpl(callback));
-                callback = (BeanFlowAsynchInvokeCallback)((BeanFlowAsynchInvokeCallbackImpl) callbacks.get(callbacks.size()-1)).getStub();
+                callback = new BeanFlowAsynchInvokeCallbackImpl(callback);
+                callbacks.add(callback);
+                callback = (BeanFlowAsynchInvokeCallback)((BeanFlowAsynchInvokeCallbackImpl)callback).getStub();
             }
             Map ctx = null;
             if(contextServiceName != null){
