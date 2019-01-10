@@ -64,12 +64,6 @@ import jp.ossc.nimbus.util.converter.PaddingStringConverter;
  */
 public class FLVReader extends LineNumberReader{
     
-    /**
-     * デフォルトの改行文字。<p>
-     */
-    public static final String LINE_SEPARATOR
-         = System.getProperty("line.separator");
-    
     protected String encoding;
     protected int[] fieldLength;
     protected PaddingStringConverter[] converters;
@@ -80,6 +74,7 @@ public class FLVReader extends LineNumberReader{
     protected FLVIterator iterator;
     
     protected ReaderWrapper readerWrapper;
+    protected boolean isNoLineBreak;
     
     /**
      * デフォルトの読み込みバッファサイズを持つ未接続のインスタンスを生成する。<p>
@@ -311,6 +306,25 @@ public class FLVReader extends LineNumberReader{
     }
     
     /**
+     * 行区切りなしかどうかを設定する。<p>
+     * デフォルトは、falseで、行区切りあり。<br>
+     *
+     * @param isNoLineBreak 行区切りなしの場合、true
+     */
+    public void setNoLineBreak(boolean isNoLineBreak){
+        this.isNoLineBreak = isNoLineBreak;
+    }
+    
+    /**
+     * 行区切りなしかどうかを判定する。<p>
+     *
+     * @return trueの場合、行区切りなし
+     */
+    public boolean isNoLineBreak(){
+        return isNoLineBreak;
+    }
+    
+    /**
      * Readerを設定する。<p>
      *
      * @param reader Reader
@@ -367,7 +381,7 @@ public class FLVReader extends LineNumberReader{
     public long skipLine(long line) throws IOException{
         int result = 0;
         for(result = 0; result < line; result++){
-            if(super.readLine() == null){
+            if(readLine() == null){
                 break;
             }
         }
@@ -476,10 +490,31 @@ public class FLVReader extends LineNumberReader{
     }
     
     public String readLine() throws IOException{
-        if(readerWrapper.getReader() instanceof BufferedReader){
-            return ((BufferedReader)readerWrapper.getReader()).readLine();
+        if(isNoLineBreak){
+            StringBuilder buf = null;
+            for(int i = 0; i < fieldLength.length; i++){
+                for(int j = 0, jmax = fieldLength[i]; j < jmax; j++){
+                    int c = readerWrapper.getReader().read();
+                    if(c == -1){
+                        break;
+                    }else{
+                        if(buf == null){
+                            buf = new StringBuilder();
+                        }
+                        buf.append((char)c);
+                    }
+                }
+            }
+            if(buf != null){
+                setLineNumber(getLineNumber() + 1);
+            }
+            return buf == null ? null : buf.toString();
         }else{
-            return super.readLine();
+            if(readerWrapper.getReader() instanceof BufferedReader){
+                return ((BufferedReader)readerWrapper.getReader()).readLine();
+            }else{
+                return super.readLine();
+            }
         }
     }
     
