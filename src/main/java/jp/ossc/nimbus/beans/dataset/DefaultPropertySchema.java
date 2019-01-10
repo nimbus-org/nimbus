@@ -378,10 +378,26 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
             );
             className = className.substring(0, propStartIndex);
         }
-        Class clazz = jp.ossc.nimbus.core.Utility.convertStringToClass(
-            className,
-            true
-        );
+        Class clazz = null;
+        try{
+            clazz = jp.ossc.nimbus.core.Utility.convertStringToClass(
+                className,
+                true
+            );
+        }catch(ClassNotFoundException e){
+            if(className.indexOf('.') == -1){
+                try{
+                    clazz = jp.ossc.nimbus.core.Utility.convertStringToClass(
+                        Converter.class.getPackage().getName() + '.' + className,
+                        true
+                    );
+                }catch(ClassNotFoundException e2){
+                    throw e;
+                }
+            }else{
+                throw e;
+            }
+        }
         try{
             object = clazz.newInstance();
         }catch(InstantiationException e){
@@ -438,7 +454,23 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
                             className = propValStr.substring(0, index2);
                             final String fieldName = propValStr.substring(index2 + 1);
                             try{
-                                Class clazz2 = jp.ossc.nimbus.core.Utility.convertStringToClass(className, false);
+                                Class clazz2 = null;
+                                try{
+                                    clazz2 = jp.ossc.nimbus.core.Utility.convertStringToClass(className, false);
+                                }catch(ClassNotFoundException e){
+                                    if(className.indexOf('.') == -1){
+                                        try{
+                                            clazz2 = jp.ossc.nimbus.core.Utility.convertStringToClass(
+                                                Converter.class.getPackage().getName() + '.' + className,
+                                                false
+                                            );
+                                        }catch(ClassNotFoundException e2){
+                                            throw e;
+                                        }
+                                    }else{
+                                        throw e;
+                                    }
+                                }
                                 Field field = clazz2.getField(fieldName);
                                 if(propType.isAssignableFrom(field.getType())){
                                     propVal = field.get(null);
@@ -691,43 +723,42 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
         }catch(ServiceNotFoundException e){
             throw new PropertySetException(this, e);
         }
-        if(converter == null){
-            if(result == null){
-                return result;
-            }
-            final Class type = getType();
-            if(type == null){
-                return result;
-            }
-            final Class inType = result.getClass();
-            if(type.isAssignableFrom(inType)){
-                return result;
-            }
-            if(result instanceof String){
-                result = parseByPropertyEditor((String)result, type);
-            }else if(type.isArray() && inType.equals(String[].class)){
-                final String[] array = (String[])result;
-                final Class componentType = type.getComponentType();
-                result = Array.newInstance(
-                    componentType,
-                    array.length
-                );
-                for(int i = 0; i < array.length; i++){
-                    Array.set(
-                        result,
-                        i,
-                        parseByPropertyEditor(array[i], componentType)
-                    );
-                }
-            }else{
-                throw new PropertySetException(this, "Counld not parse.");
-            }
-        }else{
+        if(converter != null){
             try{
                 result = converter.convert(result);
             }catch(ConvertException e){
                 throw new PropertySetException(this, e);
             }
+        }
+        if(result == null){
+            return result;
+        }
+        final Class type = getType();
+        if(type == null){
+            return result;
+        }
+        final Class inType = result.getClass();
+        if(type.isAssignableFrom(inType)){
+            return result;
+        }
+        if(result instanceof String){
+            result = parseByPropertyEditor((String)result, type);
+        }else if(type.isArray() && inType.equals(String[].class)){
+            final String[] array = (String[])result;
+            final Class componentType = type.getComponentType();
+            result = Array.newInstance(
+                componentType,
+                array.length
+            );
+            for(int i = 0; i < array.length; i++){
+                Array.set(
+                    result,
+                    i,
+                    parseByPropertyEditor(array[i], componentType)
+                );
+            }
+        }else{
+            throw new PropertySetException(this, "Counld not parse, because type is unmatch. in=" + inType.getName() + ", out=" + type.getName());
         }
         return result;
     }
