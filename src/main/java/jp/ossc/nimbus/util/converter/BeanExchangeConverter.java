@@ -64,6 +64,7 @@ public class BeanExchangeConverter implements BindingConverter{
     
     private Object output;
     private Map propertyMapping;
+    private Map partPropertyMapping;
     private PropertyAccess propertyAccess = new PropertyAccess();
     private boolean isCloneOutput = false;
     private boolean isFieldOnly = false;
@@ -169,6 +170,51 @@ public class BeanExchangeConverter implements BindingConverter{
      */
     public Map getPropertyMappings(){
         return propertyMapping;
+    }
+    
+    /**
+     * 交換する入力オブジェクトと出力オブジェクトのプロパティのマッピングを削除する。<p>
+     */
+    public void clearPropertyMappings(){
+        propertyMapping = null;
+    }
+    
+    /**
+     * 出力オブジェクトのプロパティを基準にして、入力オブジェクトと出力オブジェクトのプロパティ交換を行う場合に、一部のプロパティ交換のみ個別に設定する。<p>
+     *
+     * @param partOutputProperty 個別に指定する出力オブジェクト側のプロパティ
+     * @param inputProperty 入力オブジェクト側のプロパティ。partOutputPropertyと同じで良い場合は、null
+     * @param outputProperty 出力オブジェクト側のプロパティ。partOutputPropertyと同じで良い場合は、null
+     */
+    public void setPartPropertyMapping(String partOutputProperty, String inputProperty, String outputProperty){
+        if(partPropertyMapping == null){
+            partPropertyMapping = new HashMap();
+        }
+        if(inputProperty == null){
+            inputProperty = partOutputProperty;
+        }
+        if(outputProperty == null){
+            outputProperty = partOutputProperty;
+        }
+        partPropertyMapping.put(partOutputProperty, new String[]{inputProperty, outputProperty});
+    }
+    
+    /**
+     * 一部の交換する入力オブジェクトと出力オブジェクトのプロパティのマッピングを削除する。<p>
+     */
+    public void clearPartPropertyMappings(){
+        partPropertyMapping = null;
+    }
+    
+    /**
+     * 交換する入力オブジェクトと出力オブジェクトのプロパティのマッピングを全て削除する。<p>
+     * 
+     * @see #clearPropertyMappings()
+     * @see #clearPartPropertyMappings()
+     */
+    public void clearMappings(){
+        clearPropertyMappings();
+        clearPartPropertyMappings();
     }
     
     /**
@@ -532,7 +578,16 @@ public class BeanExchangeConverter implements BindingConverter{
                 RecordSchema schema = record.getRecordSchema();
                 if(schema != null){
                     for(int i = 0, imax = schema.getPropertySize(); i < imax; i++){
-                        propMapping.put(schema.getPropertyName(i), schema.getPropertyName(i));
+                        String inputProp = schema.getPropertyName(i);
+                        String outputProp = inputProp;
+                        if(isEnabledPropertyName(output.getClass(), outputProp)){
+                            if(partPropertyMapping != null && partPropertyMapping.containsKey(outputProp)){
+                                String[] propMap = (String[])partPropertyMapping.get(outputProp);
+                                inputProp = propMap[0];
+                                outputProp = propMap[1];
+                            }
+                            propMapping.put(inputProp, outputProp);
+                        }
                     }
                 }
                 if(propMapping.size() != 0){
@@ -541,36 +596,19 @@ public class BeanExchangeConverter implements BindingConverter{
             }else{
                 final SimpleProperty[] props = isFieldOnly(output.getClass()) ? SimpleProperty.getFieldProperties(output) : SimpleProperty.getProperties(output, !isAccessorOnly(output.getClass()));
                 for(int i = 0; i < props.length; i++){
-                    if(isEnabledPropertyName(output.getClass(), props[i].getPropertyName()) && props[i].isWritable(output.getClass())){
-                        propMapping.put(props[i].getPropertyName(), props[i].getPropertyName());
+                    String inputProp = props[i].getPropertyName();
+                    String outputProp = inputProp;
+                    if(isEnabledPropertyName(output.getClass(), outputProp) && props[i].isWritable(output.getClass())){
+                        if(partPropertyMapping != null && partPropertyMapping.containsKey(outputProp)){
+                            String[] propMap = (String[])partPropertyMapping.get(outputProp);
+                            inputProp = propMap[0];
+                            outputProp = propMap[1];
+                        }
+                        propMapping.put(inputProp, outputProp);
                     }
                 }
                 if(propMapping.size() != 0){
                     isOutputAutoMapping = true;
-                }
-            }
-            if(!isOutputAutoMapping){
-                if(input instanceof Record){
-                    Record record = (Record)input;
-                    RecordSchema schema = record.getRecordSchema();
-                    if(schema != null){
-                        for(int i = 0, imax = schema.getPropertySize(); i < imax; i++){
-                            propMapping.put(schema.getPropertyName(i), schema.getPropertyName(i));
-                        }
-                    }
-                    if(propMapping.size() != 0){
-                        isInputAutoMapping = true;
-                    }
-                }else{
-                    final SimpleProperty[] props = isFieldOnly(output.getClass()) ? SimpleProperty.getFieldProperties(input) : SimpleProperty.getProperties(input, !isAccessorOnly(output.getClass()));
-                    for(int i = 0; i < props.length; i++){
-                        if(isEnabledPropertyName(output.getClass(), props[i].getPropertyName()) && props[i].isReadable(input.getClass())){
-                            propMapping.put(props[i].getPropertyName(), props[i].getPropertyName());
-                        }
-                    }
-                    if(propMapping.size() != 0){
-                        isInputAutoMapping = true;
-                    }
                 }
             }
             if(propMapping.size() == 0){
