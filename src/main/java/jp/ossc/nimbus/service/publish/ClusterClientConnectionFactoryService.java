@@ -143,7 +143,7 @@ public class ClusterClientConnectionFactoryService extends ServiceBase
         public void connect(Object id) throws ConnectException{
             if(connection == null){
                 List members = cluster.getMembers();
-                ClusterService.GlobalUID uid = members.size() == 0 ? null : (ClusterService.GlobalUID)members.get(0);
+                ClusterService.GlobalUID uid = !cluster.isJoin() || members.size() == 0 ? null : (ClusterService.GlobalUID)members.get(0);
                 if(uid == null){
                     if(!isFlexibleConnect){
                         throw new ConnectException("No cluster member.");
