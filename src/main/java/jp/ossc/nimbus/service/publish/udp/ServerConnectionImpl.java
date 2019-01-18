@@ -186,6 +186,7 @@ public class ServerConnectionImpl implements ServerConnection{
     private List asynchContextBuffer;
     private int sendMessageCacheBlockSize = 100;
     private ServiceName factoryServiceName;
+    private Map disabledClients = Collections.synchronizedMap(new HashMap());
     
     public ServerConnectionImpl(
         ServerSocket serverSocket,
@@ -587,6 +588,78 @@ public class ServerConnectionImpl implements ServerConnection{
     
     public double getWindowRecycleRate(){
         return (double)recycleWindowCount/((double)newWindowCount + (double)recycleWindowCount);
+    }
+    
+    public void enabledClient(String address, int port){
+        if(disabledClients.containsKey(address)){
+            Set portSet = (Set)disabledClients.get(address);
+            if(port > 0){
+                if(portSet != null){
+                    portSet.remove(new Integer(port));
+                }
+            }else if(portSet != null){
+                disabledClients.remove(address);
+            }
+        }
+        setEnabledClient(address, port, true);
+    }
+    
+    public void disabledClient(String address, int port){
+        if(disabledClients.containsKey(address)){
+            Set portSet = (Set)disabledClients.get(address);
+            if(port > 0){
+                if(portSet != null){
+                    portSet.add(new Integer(port));
+                }
+            }else if(portSet != null){
+                disabledClients.put(address, null);
+            }
+        }else{
+            if(port > 0){
+                Set portSet = Collections.synchronizedSet(new HashSet());
+                portSet.add(new Integer(port));
+                disabledClients.put(address, portSet);
+            }else{
+                disabledClients.put(address, null);
+            }
+        }
+        setEnabledClient(address, port, false);
+    }
+    
+    private void setEnabledClient(String address, int port, boolean isEnabled){
+        ServerConnectionImpl.ClientImpl[] clientArray = (ServerConnectionImpl.ClientImpl[])clients.toArray(new ServerConnectionImpl.ClientImpl[clients.size()]);
+        for(int i = 0; i < clientArray.length; i++){
+            Socket socket = clientArray[i].getSocket();
+            if(socket == null || clientArray[i].isEnabled() == isEnabled){
+                continue;
+            }
+            InetSocketAddress remoteAddress = (InetSocketAddress)socket.getRemoteSocketAddress();
+            if(remoteAddress == null){
+                continue;
+            }
+            if(remoteAddress.getAddress().getHostAddress().equals(address)
+                && (port <= 0 || port == remoteAddress.getPort())
+            ){
+                clientArray[i].setEnabled(isEnabled);
+            }
+        }
+    }
+    
+    private boolean isDisableClient(ServerConnectionImpl.ClientImpl client){
+        Socket socket = client.getSocket();
+        if(socket == null){
+            return false;
+        }
+        InetSocketAddress remoteAddress = (InetSocketAddress)socket.getRemoteSocketAddress();
+        if(remoteAddress == null){
+            return false;
+        }
+        if(disabledClients.containsKey(remoteAddress.getAddress().getHostAddress())){
+            Set portSet = (Set)disabledClients.get(remoteAddress.getAddress().getHostAddress());
+            return portSet == null || portSet.contains(new Integer(remoteAddress.getPort()));
+        }else{
+            return false;
+        }
     }
     
     public Message createMessage(String subject, String key) throws MessageCreateException{
@@ -1146,6 +1219,9 @@ public class ServerConnectionImpl implements ServerConnection{
                                 }
                                 client = new ClientImpl(channel, sendSocket == null ? (sendSocketAddress == null ? new DatagramSocket() : new DatagramSocket(sendSocketAddress)) : null);
                                 client.setDestPort(destPort);
+                                if(isDisableClient(client)){
+                                    client.setEnabled(false);
+                                }
                                 channel.register(
                                     key.selector(),
                                     SelectionKey.OP_READ,
@@ -1195,6 +1271,9 @@ public class ServerConnectionImpl implements ServerConnection{
                 }
                 ClientImpl client = new ClientImpl(socket, sendSocket == null ? (sendSocketAddress == null ? new DatagramSocket() : new DatagramSocket(sendSocketAddress)) : null);
                 client.setDestPort(destPort);
+                if(isDisableClient(client)){
+                    client.setEnabled(false);
+                }
                 final Set tmpClients = new LinkedHashSet();
                 synchronized(ClientAcceptor.this){
                     tmpClients.addAll(clients);
