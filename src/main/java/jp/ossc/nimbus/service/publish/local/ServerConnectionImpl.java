@@ -78,6 +78,7 @@ public class ServerConnectionImpl implements ServerConnection{
     private List serverConnectionListeners;
     private List sendMessageCache = Collections.synchronizedList(new ArrayList());
     private long sendMessageCacheTime;
+    private Set disabledClients = Collections.synchronizedSet(new HashSet());
     
     public ServerConnectionImpl(
         ServiceName serverConnectionFactroyServiceName,
@@ -143,6 +144,27 @@ public class ServerConnectionImpl implements ServerConnection{
         sendMessageCacheTime = time;
     }
     
+    public void enabledClient(Object id){
+        disabledClients.remove(id);
+        setEnabledClient(id, true);
+    }
+    
+    public void disabledClient(Object id){
+        disabledClients.add(id);
+        setEnabledClient(id, false);
+    }
+    
+    private void setEnabledClient(Object id, boolean isEnabled){
+        ServerConnectionImpl.ClientImpl client = (ServerConnectionImpl.ClientImpl)clients.get(id);
+        if(client != null){
+            client.setEnabled(isEnabled);
+        }
+    }
+    
+    private boolean isDisableClient(ServerConnectionImpl.ClientImpl client){
+        return disabledClients.contains(client.getId());
+    }
+    
     public synchronized void connect(Object id, ClientConnectionImpl cc) throws ConnectException{
         ClientImpl old = (ClientImpl)clients.get(id);
         if(old != null){
@@ -152,6 +174,9 @@ public class ServerConnectionImpl implements ServerConnection{
             throw new ConnectException("Already exists. id=" + id + ", client=" + old);
         }
         ClientImpl client = new ClientImpl( cc);
+        if(isDisableClient(client)){
+            client.setEnabled(false);
+        }
         client.connect(id);
     }
     

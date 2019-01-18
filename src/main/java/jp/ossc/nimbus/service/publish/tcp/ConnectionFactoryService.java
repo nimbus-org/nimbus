@@ -43,6 +43,7 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.rmi.NoSuchObjectException;
 import java.rmi.server.UnicastRemoteObject;
 import javax.net.ServerSocketFactory;
@@ -126,6 +127,7 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
     private Externalizer externalizer;
     private List serverConnectionListeners;
     private RemoteClientConnectionFactory remoteClientConnectionFactory;
+    private Map disabledClients = Collections.synchronizedMap(new HashMap());
     
     public void setClientAddressPropertyName(String name){
         clientAddressPropertyName = name;
@@ -593,11 +595,17 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
     }
     
     public void enabledClient(String address, int port){
-        setEnabledClient(address, port, true);
+        if(serverConnection == null){
+            return;
+        }
+        serverConnection.enabledClient(address, port);
     }
     
     public void disabledClient(String address, int port){
-        setEnabledClient(address, port, false);
+        if(serverConnection == null){
+            return;
+        }
+        serverConnection.disabledClient(address, port);
     }
     
     public Set getSubjects(String address, int port){
@@ -648,30 +656,6 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
             }
         }
         return new HashSet();
-    }
-    
-    private void setEnabledClient(String address, int port, boolean isEnabled){
-        if(serverConnection == null){
-            return;
-        }
-        Set clients = serverConnection.getClients();
-        ServerConnectionImpl.ClientImpl[] clientArray = (ServerConnectionImpl.ClientImpl[])clients.toArray(new ServerConnectionImpl.ClientImpl[clients.size()]);
-        for(int i = 0; i < clientArray.length; i++){
-            Socket socket = clientArray[i].getSocket();
-            if(socket == null || clientArray[i].isEnabled() == isEnabled){
-                continue;
-            }
-            InetSocketAddress remoteAddress = (InetSocketAddress)socket.getRemoteSocketAddress();
-            if(remoteAddress == null){
-                continue;
-            }
-            if((remoteAddress.getAddress().getHostAddress().equals(address)
-                    || remoteAddress.getAddress().getHostName().equalsIgnoreCase(address))
-                && (port <= 0 || port == remoteAddress.getPort())
-            ){
-                clientArray[i].setEnabled(isEnabled);
-            }
-        }
     }
     
     public Map getSendCountsByClient(){
