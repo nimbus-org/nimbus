@@ -98,6 +98,9 @@ import jp.ossc.nimbus.util.ClassMappingTree;
  * post-interpreter:start
  * script
  * post-interpreter:end
+ * argument[index]:start
+ * argument
+ * argument[index]:end
  * returnType
  * return
  * </pre>
@@ -107,10 +110,11 @@ import jp.ossc.nimbus.util.ClassMappingTree;
  * returnClass 戻り値のクラス名を指定する。空文字を指定した場合は、メソッドの戻り値の型が適用される。<br>
  * pre-interpreter:startとpre-interpreter:endの行で挟んで、応答する戻り値を事前編集するスクリプトをscriptに指定できる。scriptは、{@link Interpreter#evaluate(String,Map)}で評価され、引数の変数マップには、"args"で引数の配列が、"ret"で戻り値が渡される。スクリプトを指定する必要がない場合は、この行は必要ない。<br>
  * post-interpreter:startとpost-interpreter:endの行で挟んで、応答する戻り値を事後編集するスクリプトをscriptに指定できる。scriptは、{@link Interpreter#evaluate(String,Map)}で評価され、引数の変数マップには、"args"で引数の配列が、"ret"で戻り値が渡される。スクリプトを指定する必要がない場合は、この行は必要ない。<br>
+ * argument[index]:startとargument:endの行で挟んで、index番目の引数を、{@link #setReturnConverterServiceName}や{@link #setReturnConverter}で指定した{@link BindingConverter BindingConverter}や{@link BindingStreamConverter BindingStreamConverter}で変換する文字列をargumentとして指定する。引数を変換する必要がない場合は、この行は必要ない。<br>
  * returnTypeは、"text"、"interpreter"のいずれかを指定する。戻り値が必要ない場合は、この行以下は必要ない。<br>
  * returnは、returnTypeによって、記述方法が異なる。<br>
  * <ul>
- * <li>returnTypeが"text"の場合<br>任意の文字列で指定する。</li>
+ * <li>returnTypeが"text"の場合<br>任意の文字列を指定する。指定した文字列は、{@link #setReturnConverterServiceName}や{@link #setReturnConverter}で指定した{@link Converter Converter}で変換されて、戻り値となる。</li>
  * <li>returnTypeが"interpreter"の場合<br>応答する戻り値を生成または編集するスクリプトを指定する。スクリプトは、{@link Interpreter#evaluate(String,Map)}で評価され、引数の変数マップには、"args"で引数の配列が、"ret"で戻り値が渡される。</li>
  * </ul>
  * returnは、任意の文字列で指定する。<br>
@@ -401,7 +405,7 @@ public class RemoteServiceTestStubService extends ServiceBase implements TestStu
                     data = (ReturnData)returnCacheMap.get(file);
                 }else{
                     data = new ReturnData();
-                    data.read(file);
+                    data.read(file ,methodCtx);
                     if(isCacheReturn){
                         returnCacheMap.put(file, data);
                     }
@@ -436,6 +440,35 @@ public class RemoteServiceTestStubService extends ServiceBase implements TestStu
                     variables.put("args", methodCtx.getParameters());
                     variables.put("ret", returnValue);
                     returnValue = interpreter.evaluate(data.preInterpretScript, variables);
+                }
+                if(data.argumentValues != null){
+                    for(int i = 0; i < data.argumentValues.length; i++){
+                        String argumentValue = data.argumentValues[i];
+                        if(argumentValue == null){
+                            continue;
+                        }
+                        Object argument = methodCtx.getParameters()[i];
+                        Class argClass = argument == null ? methodCtx.getTargetMethod().getParameterTypes()[i] : argument.getClass();
+                        Object converterObj = returnConverters.getValue(argClass);
+                        Converter converter = null;
+                        if(converterObj == null){
+                            throw new ConvertException("Argument value can't convert. Converter not found. argumentType=" + argClass.getName());
+                        }else if(converterObj instanceof ServiceName){
+                            converter = (Converter)ServiceManagerFactory.getServiceObject((ServiceName)converterObj);
+                        }else{
+                            converter = (Converter)converterObj;
+                        }
+                        
+                        if(converter instanceof BindingConverter){
+                            ((BindingConverter)converter).convert(argumentValue, argument);
+                        }else if(converter instanceof BindingStreamConverter){
+                            StringStreamConverter ssc = new StringStreamConverter();
+                            ssc.setCharacterEncodingToStream(fileEncoding == null ? System.getProperty("file.encoding") : fileEncoding);
+                            ((BindingStreamConverter)converter).convertToObject(ssc.convertToStream(argumentValue), argument);
+                        }else{
+                            throw new ConvertException("Argument value can't convert. Not supported converter. argumentType=" + argClass.getName() + ", converter=" + converter);
+                        }
+                    }
                 }
                 if("text".equals(data.returnType)){
                     String returnStr = data.returnValue;
@@ -484,8 +517,9 @@ public class RemoteServiceTestStubService extends ServiceBase implements TestStu
                     variables.put("ret", returnValue);
                     returnValue = interpreter.evaluate(data.postInterpretScript, variables);
                 }
+                returnClass = returnValue == null ? returnClass : returnValue.getClass();
                 if(!methodCtx.getTargetMethod().getReturnType().isAssignableFrom(returnClass)){
-                    throw new ConvertException("Return value can't convert. returnType=" + returnClass);
+                    throw new ConvertException("Return value can't convert. returnType=" + returnClass.getName());
                 }
                 return returnValue;
             }
@@ -861,10 +895,11 @@ public class RemoteServiceTestStubService extends ServiceBase implements TestStu
         public String preInterpretScript;
         public String postInterpretScript;
         public String returnClass;
+        public String[] argumentValues;
         public String returnType;
         public String returnValue;
         
-        public void read(File file) throws Exception{
+        public void read(File file, MethodInvocationContext context) throws Exception{
             FileInputStream fis = new FileInputStream(file);
             InputStreamReader isr = fileEncoding == null ? new InputStreamReader(fis) : new InputStreamReader(fis, fileEncoding);
             try{
@@ -909,6 +944,27 @@ public class RemoteServiceTestStubService extends ServiceBase implements TestStu
                     pw.flush();
                     postInterpretScript = sw.toString();
                 }
+                while(line != null && "argument[".startsWith(line)){
+                    Object[] params = context.getTargetMethod().getParameters();
+                    int lastIndex = line.lastIndexOf(']');
+                    if(lastIndex == -1){
+                        throw new Exception("Illegal argument line : " + line);
+                    }
+                    int argIndex = 0;
+                    try{
+                        argIndex = Integer.parseInt(line.substring(9, lastIndex));
+                    }catch(NumberFormatException e){
+                        throw new Exception("Illegal argument line : " + line, e);
+                    }
+                    if(params == null || params.length <= argIndex){
+                        throw new Exception("Illegal argument line : " + line);
+                    }
+                    if(argumentValues == null){
+                        argumentValues = new String[params.length];
+                    }
+                    argumentValues[argIndex] = read(br, "argument:end");
+                    line = br.readLine();
+                }
                 if(line != null){
                     returnType = line;
                     if(returnType.length() == 0){
@@ -928,6 +984,28 @@ public class RemoteServiceTestStubService extends ServiceBase implements TestStu
                 fis.close();
                 isr.close();
             }
+        }
+        
+        private String read(BufferedReader r, String endLine) throws IOException{
+            final StringBuilder buf = new StringBuilder();
+            int rightIndex = 0;
+            int c = 0;
+            do{
+                c = r.read();
+                if(c < 0){
+                    break;
+                }
+                buf.append((char)c);
+                if(c == endLine.charAt(rightIndex)){
+                    rightIndex++;
+                }else{
+                    rightIndex = 0;
+                }
+            }while(rightIndex <= endLine.length());
+            if(c > 0){
+                r.readLine();
+            }
+            return buf.substring(0, buf.length() - endLine.length());
         }
     }
     
