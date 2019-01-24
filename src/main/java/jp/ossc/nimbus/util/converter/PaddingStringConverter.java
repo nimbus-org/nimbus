@@ -2,18 +2,18 @@
  * This software is distributed under following license based on modified BSD
  * style license.
  * ----------------------------------------------------------------------
- * 
+ *
  * Copyright 2003 The Nimbus Project. All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
- * 
+ *
  * 1. Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer. 
+ *    this list of conditions and the following disclaimer.
  * 2. Redistributions in binary form must reproduce the above copyright notice,
  *    this list of conditions and the following disclaimer in the documentation
  *    and/or other materials provided with the distribution.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE NIMBUS PROJECT ``AS IS'' AND ANY EXPRESS
  * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN
@@ -24,7 +24,7 @@
  * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- * 
+ *
  * The views and conclusions contained in the software and documentation are
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
@@ -33,58 +33,58 @@ package jp.ossc.nimbus.util.converter;
 
 /**
  * 文字列パディングコンバータ。<p>
- * 
+ *
  * @author M.Takata
  */
 public class PaddingStringConverter
  implements StringConverter, PaddingConverter, java.io.Serializable{
-    
+
     private static final long serialVersionUID = -3962004369893317399L;
-    
+
     /**
      * デフォルトのパディング文字。<p>
      * 半角スペース。<br>
      */
     public static final char DEFAULT_PADDING_LITERAL = ' ';
-    
+
     /**
      * デフォルトのパディング文字。<p>
      * {@link #DIRECTION_LEFT 左詰め}。<br>
      */
     public static final int DEFAULT_PADDING_DIRECTION = DIRECTION_LEFT;
-    
+
     /**
      * 変換種別。<p>
      */
     protected int convertType;
-    
+
     /**
      * パディング文字。<p>
      */
     protected char paddingLiteral = DEFAULT_PADDING_LITERAL;
-    
+
     /**
      * パディング長。<p>
      */
     protected int paddingLength = -1;
-    
+
     /**
      * パディング方向。<p>
      */
     protected int paddingDirection = DEFAULT_PADDING_DIRECTION;
-    
+
     /**
      * 全角文字を長さ2と数えるかのフラグ。<p>
      */
     protected boolean isCountTwiceByZenkaku;
-    
+
     /**
      * パディングを行う文字列パディングコンバータを生成する。<p>
      */
     public PaddingStringConverter(){
         this(PADDING, DEFAULT_PADDING_LITERAL, -1, DEFAULT_PADDING_DIRECTION);
     }
-    
+
     /**
      * 指定されたパディング変換を行う文字列パディングコンバータを生成する。<p>
      *
@@ -94,7 +94,7 @@ public class PaddingStringConverter
     public PaddingStringConverter(int length){
         this(PADDING, DEFAULT_PADDING_LITERAL, length, DEFAULT_PADDING_DIRECTION);
     }
-    
+
     /**
      * 指定されたパディング変換を行う文字列パディングコンバータを生成する。<p>
      *
@@ -110,7 +110,7 @@ public class PaddingStringConverter
     ){
         this(PADDING, literal, length, direction);
     }
-    
+
     /**
      * 指定されたパース変換を行う文字列パディングコンバータを生成する。<p>
      *
@@ -124,7 +124,7 @@ public class PaddingStringConverter
     ){
         this(PARSE, literal, -1, direction);
     }
-    
+
     /**
      * 指定された変換種別の文字列パディングコンバータを生成する。<p>
      *
@@ -146,7 +146,7 @@ public class PaddingStringConverter
         setPaddingLength(length);
         setPaddingDirection(direction);
     }
-    
+
     // ReversibleConverterのJavaDoc
     public void setConvertType(int type){
         switch(type){
@@ -160,7 +160,7 @@ public class PaddingStringConverter
             );
         }
     }
-    
+
     /**
      * 変換種別を取得する。<p>
      *
@@ -170,12 +170,12 @@ public class PaddingStringConverter
     public int getConvertType(){
         return convertType;
     }
-    
+
     // PaddingConverterのJavaDoc
     public void setPaddingLiteral(char literal){
         paddingLiteral = literal;
     }
-    
+
     /**
      * パディング文字を取得する。<p>
      *
@@ -184,12 +184,12 @@ public class PaddingStringConverter
     public char getPaddingLiteral(){
         return paddingLiteral;
     }
-    
+
     // PaddingConverterのJavaDoc
     public void setPaddingLength(int length){
         paddingLength = length;
     }
-    
+
     /**
      * パディング長を取得する。<p>
      *
@@ -198,7 +198,7 @@ public class PaddingStringConverter
     public int getPaddingLength(){
         return paddingLength;
     }
-    
+
     // PaddingConverterのJavaDoc
     public void setPaddingDirection(int direct){
         switch(direct){
@@ -213,7 +213,7 @@ public class PaddingStringConverter
             );
         }
     }
-    
+
     /**
      * パディング方向を取得する。<p>
      *
@@ -222,7 +222,7 @@ public class PaddingStringConverter
     public int getPaddingDirection(){
         return paddingDirection;
     }
-    
+
     /**
      * 全角文字を長さ2と数えるかどうかを判定する。<p>
      *
@@ -231,7 +231,7 @@ public class PaddingStringConverter
     public boolean isCountTwiceByZenkaku(){
         return isCountTwiceByZenkaku;
     }
-    
+
     /**
      * 全角文字を長さ2と数えるかどうかを設定する。<p>
      *
@@ -240,20 +240,20 @@ public class PaddingStringConverter
     public void setCountTwiceByZenkaku(boolean isTwice){
         isCountTwiceByZenkaku = isTwice;
     }
-    
+
     // ConverterのJavaDoc
     public Object convert(Object obj) throws ConvertException{
         return convert(
-            obj == null ? (String)null : 
+            obj == null ? (String)null :
                 (String)(obj instanceof String ? obj : String.valueOf(obj))
         );
     }
-    
+
     /**
      * 文字列を変換する。<p>
      * 変換文字列配列と変換キャラクタ配列を使って変換する。<br>
      *
-     * @param str 変換対象の文字列 
+     * @param str 変換対象の文字列
      * @return 変換後の文字列
      * @exception ConvertException 変換に失敗した場合
      */
@@ -270,7 +270,7 @@ public class PaddingStringConverter
             return padding(str);
         }
     }
-    
+
     protected int countLength(CharSequence str){
         if(isCountTwiceByZenkaku){
             int length = 0;
@@ -287,7 +287,7 @@ public class PaddingStringConverter
             return str.length();
         }
     }
-    
+
     /**
      * 指定された文字列をパディングする。<p>
      *
@@ -314,7 +314,7 @@ public class PaddingStringConverter
             return paddingLeft(buf).toString();
         }
     }
-    
+
     protected StringBuilder paddingCenter(StringBuilder buf)
      throws ConvertException{
         int length = countLength(buf);
@@ -328,7 +328,7 @@ public class PaddingStringConverter
         }
         return buf;
     }
-    
+
     protected StringBuilder paddingRight(StringBuilder buf)
      throws ConvertException{
         int length = countLength(buf);
@@ -337,7 +337,7 @@ public class PaddingStringConverter
         }
         return buf;
     }
-    
+
     protected StringBuilder paddingLeft(StringBuilder buf)
      throws ConvertException{
         int length = countLength(buf);
@@ -346,7 +346,7 @@ public class PaddingStringConverter
         }
         return buf;
     }
-    
+
     /**
      * 指定された文字列をパースする。<p>
      *
@@ -366,11 +366,11 @@ public class PaddingStringConverter
             return parseLeft(buf).toString();
         }
     }
-    
+
     protected StringBuilder parseCenter(StringBuilder buf)
      throws ConvertException{
         int startIndex = -1;
-        int length = countLength(buf);
+        int length = buf.length();
         for(int i = 0, max = length; i < max; i++){
             if(buf.charAt(i) != paddingLiteral){
                 startIndex = i;
@@ -383,7 +383,7 @@ public class PaddingStringConverter
         if(startIndex != 0){
             buf.delete(0, startIndex);
         }
-        length = countLength(buf);
+        length = buf.length();
         if(length <= 1){
             return buf;
         }
@@ -399,11 +399,11 @@ public class PaddingStringConverter
         }
         return buf;
     }
-    
+
     protected StringBuilder parseRight(StringBuilder buf)
      throws ConvertException{
         int startIndex = -1;
-        int length = countLength(buf);
+        int length = buf.length();
         for(int i = 0, max = length; i < max; i++){
             if(buf.charAt(i) != paddingLiteral){
                 startIndex = i;
@@ -418,11 +418,11 @@ public class PaddingStringConverter
         }
         return buf;
     }
-    
+
     protected StringBuilder parseLeft(StringBuilder buf)
      throws ConvertException{
         int endIndex = -1;
-        int length = countLength(buf);
+        int length = buf.length();
         for(int i = length ; --i >= 0;){
             if(buf.charAt(i) != paddingLiteral){
                 endIndex = i;
