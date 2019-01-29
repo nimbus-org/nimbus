@@ -628,6 +628,7 @@ public class FLVReader extends LineNumberReader{
         clone.encoding = encoding;
         clone.setFieldLength(fieldLength);
         clone.isIgnoreEmptyLine = isIgnoreEmptyLine;
+        clone.isNoLineBreak = isNoLineBreak;
         clone.commentPrefix = commentPrefix;
         if(converters != null && converters.length != 0){
             clone.converters = new PaddingStringConverter[converters.length];
