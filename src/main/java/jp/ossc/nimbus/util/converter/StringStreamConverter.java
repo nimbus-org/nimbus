@@ -53,6 +53,16 @@ public class StringStreamConverter extends BufferedStreamConverter implements St
     public static final int STREAM_TO_STRING = STREAM_TO_OBJECT;
     
     /**
+     * 文字列→バイト配列を表す変換種別定数。<p>
+     */
+    public static final int STRING_TO_BYTE_ARRAY = 3;
+    
+    /**
+     * バイト配列→文字列を表す変換種別定数。<p>
+     */
+    public static final int BYTE_ARRAY_TO_STRING = 4;
+    
+    /**
      * 変換種別。<p>
      */
     protected int convertType;
@@ -80,6 +90,8 @@ public class StringStreamConverter extends BufferedStreamConverter implements St
      * @param type 変換種別
      * @see #STRING_TO_STREAM
      * @see #STREAM_TO_STRING
+     * @see #STRING_TO_BYTE_ARRAY
+     * @see #BYTE_ARRAY_TO_STRING
      */
     public StringStreamConverter(int type){
         convertType = type;
@@ -92,6 +104,8 @@ public class StringStreamConverter extends BufferedStreamConverter implements St
      * @see #getConvertType()
      * @see #STRING_TO_STREAM
      * @see #STREAM_TO_STRING
+     * @see #STRING_TO_BYTE_ARRAY
+     * @see #BYTE_ARRAY_TO_STRING
      */
     public void setConvertType(int type){
         convertType = type;
@@ -192,6 +206,15 @@ public class StringStreamConverter extends BufferedStreamConverter implements St
                 );
             }
             return convertToObject((InputStream)obj);
+        case STRING_TO_BYTE_ARRAY:
+            return convertToByteArrayWithBuffer(obj);
+        case BYTE_ARRAY_TO_STRING:
+            if(!(obj instanceof byte[])){
+                throw new ConvertException(
+                    "Invalid input type : " + obj.getClass()
+                );
+            }
+            return toString((byte[])obj);
         default:
             throw new ConvertException(
                 "Invalid convert type : " + convertType
