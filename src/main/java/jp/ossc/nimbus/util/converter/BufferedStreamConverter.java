@@ -65,13 +65,18 @@ public abstract class BufferedStreamConverter implements Cloneable, StreamConver
     }
     
     public InputStream convertToStream(Object obj) throws ConvertException{
+        byte[] bytes = convertToByteArrayWithBuffer(obj);
+        return bytes == null ? null : new ByteArrayInputStream(bytes);
+    }
+    
+    protected byte[] convertToByteArrayWithBuffer(Object obj) throws ConvertException{
+        byte[] bytes = null;
         if(bufferSize > 0){
-            byte[] bytes = (byte[])bufferedMap.get(obj);
+            bytes = (byte[])bufferedMap.get(obj);
             if(bytes != null){
-                return new ByteArrayInputStream(bytes);
+                return bytes;
             }
         }
-        byte[] bytes = null;
         if(bufferSize > 0){
             synchronized(obj){
                 bytes = (byte[])bufferedMap.get(obj);
@@ -89,7 +94,7 @@ public abstract class BufferedStreamConverter implements Cloneable, StreamConver
         }else{
             bytes = convertToByteArray(obj);
         }
-        return bytes == null ? null : new ByteArrayInputStream(bytes);
+        return bytes;
     }
     
     protected abstract byte[] convertToByteArray(Object obj) throws ConvertException;
