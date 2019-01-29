@@ -57,7 +57,7 @@ import jp.ossc.nimbus.util.converter.PaddingByteArrayConverter;
  * 
  * @author M.Takata
  */
-public class FLVInputStream extends FilterInputStream{
+public class FLVInputStream extends BufferedInputStream{
     
     protected int[] fieldLength;
     protected PaddingByteArrayConverter[] converters;
@@ -67,14 +67,14 @@ public class FLVInputStream extends FilterInputStream{
     protected InputStreamWrapper inputStreamWrapper;
     
     /**
-     * 未接続のインスタンスを生成する。<p>
+     * デフォルトの読み込みバッファサイズを持つ未接続のインスタンスを生成する。<p>
      */
     public FLVInputStream(){
         this(new InputStreamWrapper());
     }
     
     /**
-     * インスタンスを生成する。<p>
+     * デフォルトの読み込みバッファサイズを持つインスタンスを生成する。<p>
      *
      * @param in 読み込み元のInputStream
      */
@@ -83,7 +83,7 @@ public class FLVInputStream extends FilterInputStream{
     }
     
     /**
-     * インスタンスを生成する。<p>
+     * デフォルトの読み込みバッファサイズを持つインスタンスを生成する。<p>
      *
      * @param in 読み込み元のInputStream
      * @param fieldLen フィールド長の配列
@@ -93,7 +93,7 @@ public class FLVInputStream extends FilterInputStream{
     }
     
     /**
-     * インスタンスを生成する。<p>
+     * デフォルトの読み込みバッファサイズを持つインスタンスを生成する。<p>
      *
      * @param fieldLen フィールド長の配列
      */
@@ -102,7 +102,7 @@ public class FLVInputStream extends FilterInputStream{
     }
     
     /**
-     * インスタンスを生成する。<p>
+     * デフォルトの読み込みバッファサイズを持つインスタンスを生成する。<p>
      *
      * @param fieldLen フィールド長の配列
      * @param convs フィールドのパディングを解除するコンバータ配列
@@ -112,7 +112,7 @@ public class FLVInputStream extends FilterInputStream{
     }
     
     /**
-     * インスタンスを生成する。<p>
+     * デフォルトの読み込みバッファサイズを持つインスタンスを生成する。<p>
      *
      * @param in 読み込み元のInputStream
      * @param fieldLen フィールド長の配列
@@ -120,6 +120,72 @@ public class FLVInputStream extends FilterInputStream{
      */
     public FLVInputStream(InputStream in, int[] fieldLen, PaddingByteArrayConverter[] convs){
         super(in instanceof InputStreamWrapper ? in : new InputStreamWrapper(in));
+        inputStreamWrapper = (InputStreamWrapper)this.in;
+        setFieldLength(fieldLen);
+        converters = convs;
+    }
+    
+    /**
+     * 指定された読み込みバッファサイズを持つ未接続のインスタンスを生成する。<p>
+     *
+     * @param size バッファサイズ
+     */
+    public FLVInputStream(int size){
+        this(new InputStreamWrapper(), size);
+    }
+    
+    /**
+     * 指定された読み込みバッファサイズを持つインスタンスを生成する。<p>
+     *
+     * @param in 読み込み元のInputStream
+     * @param size バッファサイズ
+     */
+    public FLVInputStream(InputStream in, int size){
+        this(in, size, null, null);
+    }
+    
+    /**
+     * 指定された読み込みバッファサイズを持つインスタンスを生成する。<p>
+     *
+     * @param in 読み込み元のInputStream
+     * @param size バッファサイズ
+     * @param fieldLen フィールド長の配列
+     */
+    public FLVInputStream(InputStream in, int size, int[] fieldLen){
+        this(in, size, fieldLen, null);
+    }
+    
+    /**
+     * 指定された読み込みバッファサイズを持つインスタンスを生成する。<p>
+     *
+     * @param size バッファサイズ
+     * @param fieldLen フィールド長の配列
+     */
+    public FLVInputStream(int size, int[] fieldLen){
+        this(new InputStreamWrapper(), size, fieldLen, null);
+    }
+    
+    /**
+     * 指定された読み込みバッファサイズを持つインスタンスを生成する。<p>
+     *
+     * @param size バッファサイズ
+     * @param fieldLen フィールド長の配列
+     * @param convs フィールドのパディングを解除するコンバータ配列
+     */
+    public FLVInputStream(int size, int[] fieldLen, PaddingByteArrayConverter[] convs){
+        this(new InputStreamWrapper(), size, fieldLen, convs);
+    }
+    
+    /**
+     * 指定された読み込みバッファサイズを持つインスタンスを生成する。<p>
+     *
+     * @param in 読み込み元のInputStream
+     * @param size バッファサイズ
+     * @param fieldLen フィールド長の配列
+     * @param convs フィールドのパディングを解除するコンバータ配列
+     */
+    public FLVInputStream(InputStream in, int size, int[] fieldLen, PaddingByteArrayConverter[] convs){
+        super(in instanceof InputStreamWrapper ? in : new InputStreamWrapper(in), size);
         inputStreamWrapper = (InputStreamWrapper)this.in;
         setFieldLength(fieldLen);
         converters = convs;
