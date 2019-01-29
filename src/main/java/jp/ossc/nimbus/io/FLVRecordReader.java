@@ -36,7 +36,11 @@ import java.util.*;
 
 import jp.ossc.nimbus.beans.dataset.Record;
 import jp.ossc.nimbus.beans.dataset.RecordSchema;
+import jp.ossc.nimbus.beans.dataset.PropertySchema;
+import jp.ossc.nimbus.beans.dataset.DefaultPropertySchema;
 import jp.ossc.nimbus.beans.dataset.PropertySetException;
+import jp.ossc.nimbus.util.converter.Converter;
+import jp.ossc.nimbus.util.converter.PaddingConverter;
 import jp.ossc.nimbus.util.converter.PaddingStringConverter;
 
 /**
@@ -112,6 +116,17 @@ public class FLVRecordReader extends FLVReader{
     /**
      * デフォルトの読み込みバッファサイズを持つ未接続のインスタンスを生成する。<p>
      *
+     * @param encoding 文字エンコーディング
+     * @param schema レコードスキーマ
+     */
+    public FLVRecordReader(String encoding, RecordSchema schema){
+        super((int[])null, encoding);
+        setRecordSchema(schema);
+    }
+    
+    /**
+     * デフォルトの読み込みバッファサイズを持つ未接続のインスタンスを生成する。<p>
+     *
      * @param fieldLen フィールド長の配列
      * @param encoding 文字エンコーディング
      * @param schema レコードスキーマ
@@ -174,6 +189,18 @@ public class FLVRecordReader extends FLVReader{
      */
     public FLVRecordReader(Reader reader, int[] fieldLen, PaddingStringConverter[] convs, String encoding){
         super(reader, fieldLen, convs, encoding);
+    }
+    
+    /**
+     * デフォルトの読み込みバッファサイズを持つインスタンスを生成する。<p>
+     *
+     * @param reader 読み込み元のReader
+     * @param encoding 文字エンコーディング
+     * @param schema レコードスキーマ
+     */
+    public FLVRecordReader(Reader reader, String encoding, RecordSchema schema){
+        super(reader, null, encoding);
+        setRecordSchema(schema);
     }
     
     /**
@@ -243,6 +270,18 @@ public class FLVRecordReader extends FLVReader{
      */
     public FLVRecordReader(int size, int[] fieldLen, PaddingStringConverter[] convs, String encoding){
         super(size, fieldLen, convs, encoding);
+    }
+    
+    /**
+     * 指定された読み込みバッファサイズを持つ未接続のインスタンスを生成する。<p>
+     *
+     * @param size 読み込みバッファサイズ
+     * @param encoding 文字エンコーディング
+     * @param schema レコードスキーマ
+     */
+    public FLVRecordReader(int size, String encoding, RecordSchema schema){
+        super(size, null, encoding);
+        setRecordSchema(schema);
     }
     
     /**
@@ -323,6 +362,19 @@ public class FLVRecordReader extends FLVReader{
      *
      * @param reader 読み込み元のReader
      * @param size 読み込みバッファサイズ
+     * @param encoding 文字エンコーディング
+     * @param schema レコードスキーマ
+     */
+    public FLVRecordReader(Reader reader, int size, String encoding, RecordSchema schema){
+        super(reader, size, null, encoding);
+        setRecordSchema(schema);
+    }
+    
+    /**
+     * 指定された読み込みバッファサイズを持つインスタンスを生成する。<p>
+     *
+     * @param reader 読み込み元のReader
+     * @param size 読み込みバッファサイズ
      * @param fieldLen フィールド長の配列
      * @param encoding 文字エンコーディング
      * @param schema レコードスキーマ
@@ -356,6 +408,28 @@ public class FLVRecordReader extends FLVReader{
     public void setRecordSchema(RecordSchema schema){
         this.schema = schema;
         workList = new ArrayList(schema.getPropertySize());
+        if(fieldLength == null){
+            PropertySchema[] props = schema.getPropertySchemata();
+            int[] length = null;
+            for(int i = 0; i < props.length; i++){
+                if(props[i] instanceof DefaultPropertySchema){
+                    DefaultPropertySchema prop = (DefaultPropertySchema)props[i];
+                    Converter converter = prop.getParseConverter();
+                    if(converter != null && (converter instanceof PaddingConverter)){
+                        if(length == null){
+                            length = new int[props.length];
+                        }
+                        length[i] = ((PaddingConverter)converter).getPaddingLength();
+                    }else{
+                        length = null;
+                        break;
+                    }
+                }
+            }
+            if(length != null){
+                setFieldLength(length);
+            }
+        }
     }
     
     /**

@@ -64,13 +64,6 @@ public interface PaddingConverter extends ReversibleConverter{
     public static final int DIRECTION_CENTER = 3;
     
     /**
-     * パディング文字を設定する。<p>
-     *
-     * @param literal パディング文字
-     */
-    public void setPaddingLiteral(char literal);
-    
-    /**
      * パディング長を設定する。<p>
      *
      * @param length パディング長
@@ -78,9 +71,23 @@ public interface PaddingConverter extends ReversibleConverter{
     public void setPaddingLength(int length);
     
     /**
+     * パディング長を取得する。<p>
+     *
+     * @return パディング長
+     */
+    public int getPaddingLength();
+    
+    /**
      * パディング方向を設定する。<p>
      *
      * @param direct パディング方向
      */
     public void setPaddingDirection(int direct);
+    
+    /**
+     * パディング方向を取得する。<p>
+     *
+     * @return パディング方向
+     */
+    public int getPaddingDirection();
 }
