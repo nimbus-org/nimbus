@@ -230,12 +230,13 @@ public class StringStreamConverter extends BufferedStreamConverter implements St
      * @exception ConvertException 変換に失敗した場合
      */
     protected byte[] convertToByteArray(Object obj) throws ConvertException{
+        String str = (obj instanceof String) ? (String)obj : obj.toString();
         byte[] bytes = null;
         if(characterEncodingToStream == null){
-            bytes = ((String)obj).getBytes();
+            bytes = str.getBytes();
         }else{
             try{
-                bytes = ((String)obj).getBytes(characterEncodingToStream);
+                bytes = str.getBytes(characterEncodingToStream);
             }catch(UnsupportedEncodingException e){
                 throw new ConvertException(e);
             }
