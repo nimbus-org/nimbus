@@ -79,6 +79,12 @@ public class PaddingStringConverter
     protected boolean isCountTwiceByZenkaku;
 
     /**
+     * パース後に空文字になった場合に適用する文字列。<p>
+     * デフォルトは、空文字。
+     */
+    protected String valueOfEmpty = "";
+
+    /**
      * パディングを行う文字列パディングコンバータを生成する。<p>
      */
     public PaddingStringConverter(){
@@ -171,7 +177,11 @@ public class PaddingStringConverter
         return convertType;
     }
 
-    // PaddingConverterのJavaDoc
+    /**
+     * パディング文字を設定する。<p>
+     *
+     * @param char パディング文字
+     */
     public void setPaddingLiteral(char literal){
         paddingLiteral = literal;
     }
@@ -190,11 +200,7 @@ public class PaddingStringConverter
         paddingLength = length;
     }
 
-    /**
-     * パディング長を取得する。<p>
-     *
-     * @return パディング長
-     */
+    // PaddingConverterのJavaDoc
     public int getPaddingLength(){
         return paddingLength;
     }
@@ -214,11 +220,7 @@ public class PaddingStringConverter
         }
     }
 
-    /**
-     * パディング方向を取得する。<p>
-     *
-     * @return パディング方向
-     */
+    // PaddingConverterのJavaDoc
     public int getPaddingDirection(){
         return paddingDirection;
     }
@@ -239,6 +241,25 @@ public class PaddingStringConverter
      */
     public void setCountTwiceByZenkaku(boolean isTwice){
         isCountTwiceByZenkaku = isTwice;
+    }
+
+    /**
+     * パース後に空文字になった場合に適用する文字列を設定する。<p>
+     * デフォルトは、空文字。
+     * 
+     * @param val パース後に空文字になった場合に適用する文字列
+     */
+    public void setValueOfEmpty(String val){
+        valueOfEmpty = val;
+    }
+
+    /**
+     * パース後に空文字になった場合に適用する文字列を取得する。<p>
+     * 
+     * @return パース後に空文字になった場合に適用する文字列
+     */
+    public String getValueOfEmpty(){
+        return valueOfEmpty;
     }
 
     // ConverterのJavaDoc
@@ -356,15 +377,23 @@ public class PaddingStringConverter
      */
     public String parse(String str) throws ConvertException{
         final StringBuilder buf = new StringBuilder(str);
+        String result = null;
         switch(paddingDirection){
         case DIRECTION_CENTER:
-            return parseCenter(buf).toString();
+            result = parseCenter(buf).toString();
+            break;
         case DIRECTION_RIGHT:
-            return parseRight(buf).toString();
+            result = parseRight(buf).toString();
+            break;
         case DIRECTION_LEFT:
         default:
-            return parseLeft(buf).toString();
+            result = parseLeft(buf).toString();
+            break;
         }
+        if(result != null && result.length() == 0){
+            result = valueOfEmpty;
+        }
+        return result;
     }
 
     protected StringBuilder parseCenter(StringBuilder buf)
@@ -375,6 +404,8 @@ public class PaddingStringConverter
             if(buf.charAt(i) != paddingLiteral){
                 startIndex = i;
                 break;
+            }else if(i == max - 1){
+                startIndex = max;
             }
         }
         if(startIndex == -1){
@@ -408,6 +439,8 @@ public class PaddingStringConverter
             if(buf.charAt(i) != paddingLiteral){
                 startIndex = i;
                 break;
+            }else if(i == max - 1){
+                startIndex = max;
             }
         }
         if(startIndex == -1){
