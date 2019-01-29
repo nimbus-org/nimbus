@@ -41,7 +41,13 @@ import java.util.List;
  * @author M.Takata
  */
 public class CustomConverter
- implements Converter, StringConverter, CharacterConverter, StreamStringConverter, BindingStreamConverter,FormatConverter,
+ implements Converter,
+            StringConverter,
+            CharacterConverter,
+            StreamStringConverter,
+            BindingStreamConverter,
+            FormatConverter,
+            PaddingConverter,
             java.io.Serializable, Cloneable{
 
     private static final long serialVersionUID = 727589924434574684L;
@@ -181,7 +187,49 @@ public class CustomConverter
             }
         }
     }
-
+    
+    public void setPaddingLength(int length){
+        if(converters != null){
+            for(int i = 0, max = converters.size(); i < max; i++){
+                if(converters.get(i) instanceof PaddingConverter){
+                    ((PaddingConverter)converters.get(i)).setPaddingLength(length);
+                }
+            }
+        }
+    }
+    
+    public int getPaddingLength(){
+        if(converters != null){
+            for(int i = 0, max = converters.size(); i < max; i++){
+                if(converters.get(i) instanceof PaddingConverter){
+                    return ((PaddingConverter)converters.get(i)).getPaddingLength();
+                }
+            }
+        }
+        return 0;
+    }
+    
+    public void setPaddingDirection(int direct){
+        if(converters != null){
+            for(int i = 0, max = converters.size(); i < max; i++){
+                if(converters.get(i) instanceof PaddingConverter){
+                    ((PaddingConverter)converters.get(i)).setPaddingDirection(direct);
+                }
+            }
+        }
+    }
+    
+    public int getPaddingDirection(){
+        if(converters != null){
+            for(int i = 0, max = converters.size(); i < max; i++){
+                if(converters.get(i) instanceof PaddingConverter){
+                    return ((PaddingConverter)converters.get(i)).getPaddingDirection();
+                }
+            }
+        }
+        return PaddingConverter.DIRECTION_LEFT;
+    }
+    
    /**
      * コンバータを追加する。<p>
      *
