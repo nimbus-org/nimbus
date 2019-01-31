@@ -97,6 +97,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
 
     private static final long serialVersionUID = -1421073056315791503L;
 
+    private String description;
     private ServiceName jndiFinderServiceName;
     private JndiFinder jndiFinder;
     private String rmiAdaptorName = DEFAULT_JMX_RMI_ADAPTOR_NAME;
@@ -123,7 +124,17 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     private Map contextMap;
     private boolean isConnectError;
     private PropertyAccess propertyAccess;
-
+    
+    // MBeanWatcherServiceMBeanのJavaDoc
+    public String getDescription(){
+        return description;
+    }
+    
+    // MBeanWatcherServiceMBeanのJavaDoc
+    public void setDescription(String desc){
+        description = desc;
+    }
+    
     // MBeanWatcherServiceMBeanのJavaDoc
     public void setMBeanServerConnectionFactoryServiceName(ServiceName name){
         mBeanServerConnectionFactoryServiceName = name;
@@ -273,6 +284,28 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     // MBeanWatcherServiceMBeanのJavaDoc
     public List getTargetList(){
         return targetList;
+    }
+
+    // MBeanWatcherServiceMBeanのJavaDoc
+    public List getCheckTargetList(){
+        if(targetList == null){
+            return null;
+        }
+        List result = new ArrayList();
+        for(int i = 0; i < targetList.size(); i++){
+            Target target = (Target)targetList.get(i);
+            if(target instanceof Check){
+                result.add(target);
+            }else if(target instanceof WrapTarget){
+                do{
+                    target = ((WrapTarget)target).getTarget();
+                    if(target != null && (target instanceof Check)){
+                        result.add(target);
+                    }
+                }while(target != null && (target instanceof WrapTarget));
+            }
+        }
+        return result;
     }
 
     // MBeanWatcherServiceMBeanのJavaDoc
@@ -531,6 +564,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         protected transient MBeanWatcherService watcher;
         protected ServiceName watcherServiceName;
         protected String contextKey;
+        protected String description;
 
         /**
          * {@link MBeanWatcherService}のサービス名を設定する。<p>
@@ -623,6 +657,24 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
+         * 説明を取得する。<p>
+         *
+         * @return 説明
+         */
+        public String getDescription(){
+            return description;
+        }
+
+        /**
+         * 説明を設定する。<p>
+         *
+         * @param desc 説明
+         */
+        public void setDescription(String desc){
+            description = desc;
+        }
+
+        /**
          * 監視対象の値を取得する。<p>
          *
          * @param connection JMX接続
@@ -684,6 +736,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
             StringBuilder buf = new StringBuilder(super.toString());
             buf.append('{');
             buf.append("key=").append(getKey());
+            buf.append(",description=").append(getDescription());
             buf.append('}');
             return buf.toString();
         }
@@ -1499,7 +1552,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         public String toString(){
             StringBuilder buf = new StringBuilder(super.toString());
             buf.deleteCharAt(buf.length() - 1);
-            buf.append("checkConditions=").append(checkConditions);
+            buf.append(",checkConditions=").append(checkConditions);
             buf.append(",isNullToZero=").append(isNullToZero);
             buf.append(",loggerServiceName=").append(loggerServiceName);
             buf.append('}');
@@ -1526,8 +1579,9 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
 
             public static final String CONTEXT = "context";
             public static final String VALUE = "value";
-
-            private Expression checkExpression;
+            
+            private String description;
+            private transient Expression checkExpression;
             private String expression;
             private Map idMap = new TreeMap(new ErrorCountComparator());
             private int errorCount;
@@ -1535,8 +1589,9 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
             private List checkTerms;
             private boolean isOnceOutputLog;
             private ServiceName interpreterServiceName;
-            private jp.ossc.nimbus.service.interpreter.Interpreter interpreter;
-            private MBeanWatcherService watcher;
+            private transient jp.ossc.nimbus.service.interpreter.Interpreter interpreter;
+            private transient MBeanWatcherService watcher;
+            private boolean lastCheckResult = true;
 
             /**
              * {@link MBeanWatcherService}を設定する。<p>
@@ -1554,7 +1609,25 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
             public void setInterpreter(jp.ossc.nimbus.service.interpreter.Interpreter interpreter){
                 this.interpreter = interpreter;
             }
-
+            
+            /**
+             * 説明を取得する。<p>
+             *
+             * @return 説明
+             */
+            public String getDescription(){
+                return description;
+            }
+            
+            /**
+             * 説明を設定する。<p>
+             *
+             * @param desc 説明
+             */
+            public void setDescription(String desc){
+                description = desc;
+            }
+            
             /**
              * 監視対象をチェックする条件式を設定する。<p>
              * 条件式は、{@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}を指定していない場合は、The Apache Jakarta Projectの Commons Jexl(http://jakarta.apache.org/commons/jexl/)で評価する。<br>
@@ -1686,7 +1759,16 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
             public boolean isOnceOutputLog() {
                 return isOnceOutputLog;
             }
-
+            
+            /**
+             * 直近のチェック結果を取得する。<p>
+             *
+             * @return 直近のチェック結果
+             */
+            public boolean getLastCheckResult(){
+                return lastCheckResult;
+            }
+            
             /**
              * 指定された値のチェックを行ってチェックエラーが発生するとログを出力する。<p>
              *
@@ -1699,6 +1781,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
              */
             protected boolean check(Object value, Logger logger, ServiceName watcherServiceName, String key) throws Exception{
                 if(errorCount == -1){
+                    lastCheckResult = true;
                     return true;
                 }
                 List currentCheckTimes = null;
@@ -1719,6 +1802,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
                         currentCheckTimes.add(ct);
                     }
                     if(currentCheckTimes == null){
+                        lastCheckResult = true;
                         return true;
                     }
                 }
@@ -1735,6 +1819,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
                         check = true;
                     }
                     if(!check){
+                        lastCheckResult = true;
                         return true;
                     }
                 }
@@ -1781,6 +1866,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
                                     }
                                 }
                             }
+                            lastCheckResult = false;
                             return false;
                         }
                         isFirst = false;
@@ -1794,6 +1880,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
                         ct.setCheckDay(nowDay);
                     }
                 }
+                lastCheckResult = true;
                 return true;
             }
 
@@ -1812,8 +1899,14 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
             public String toString(){
                 StringBuilder buf = new StringBuilder();
                 buf.append("Condition{");
+                buf.append(",description=").append(description);
                 buf.append(",expression=").append(expression);
+                buf.append(",checkTimes=").append(checkTimes);
+                buf.append(",checkTerms=").append(checkTerms);
+                buf.append(",isOnceOutputLog=").append(isOnceOutputLog);
                 buf.append(",idMap=").append(idMap);
+                buf.append(",lastCheckResult=").append(lastCheckResult);
+                buf.append(",errorCount=").append(errorCount);
                 buf.append('}');
                 return buf.toString();
             }
@@ -3560,7 +3653,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         public String toString() {
             StringBuilder buf = new StringBuilder(super.toString());
             buf.deleteCharAt(buf.length() - 1);
-            buf.append("exceptionConditions=").append(exceptionConditions);
+            buf.append(",exceptionConditions=").append(exceptionConditions);
             buf.append('}');
             return buf.toString();
         }
