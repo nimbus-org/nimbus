@@ -1431,6 +1431,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private boolean isNullToZero;
         private ServiceName loggerServiceName;
         private List checkConditions = new ArrayList();
+        private boolean isOutputCheckResult;
 
         /**
          * 監視対象が数値型でnullの場合に、ゼロとみなすかどうかを設定する。<p>
@@ -1502,13 +1503,32 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         public List getCheckConditionList(){
             return checkConditions;
         }
-
+        
+        /**
+         * 監視対象の値として、チェック結果のフラグを返すかどうかを設定する。<p>
+         * デフォルトは、falseで、監視対象の値として、チェック対象の値を返す。<br>
+         * 
+         * @param isOutput 監視対象の値として、チェック結果のフラグを返したい場合は、true。そうでない場合はfalse
+         */
+        public void setOutputCheckResult(boolean isOutput){
+            isOutputCheckResult = isOutput;
+        }
+        
+        /**
+         * 監視対象の値として、チェック結果のフラグを返すかどうかを判定する。<p>
+         * 
+         * @return trueの場合は、監視対象の値として、チェック結果のフラグを返す。falseの場合は、チェック対象の値を返す
+         */
+        public boolean isOutputCheckResult(){
+            return isOutputCheckResult;
+        }
+        
         /**
          * ラップした監視対象のオペレーションの戻り値を取得し、チェックを行ってチェックエラーの場合はログを出力する。<p>
          * チェックする条件を追加された順番にチェックして、チェックエラーになると後続の条件はチェックせずにリセットする。<br>
          *
          * @param connection JMX接続
-         * @return 監視対象の値
+         * @return 監視対象の値、またはチェック結果のフラグ
          * @exception Exception 監視対象の値の取得に失敗した場合
          */
         public Object getValue(MBeanServerConnection connection) throws Exception{
@@ -1525,6 +1545,9 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
                 }else if(!condition.check(value, getLogger(), getWatcherServiceName(), getKey())){
                     checkError = true;
                 }
+            }
+            if(isOutputCheckResult){
+                value = checkError ? Boolean.FALSE : Boolean.TRUE;
             }
             if(value != null && contextKey != null){
                 watcher.setContextValue(contextKey, value);
