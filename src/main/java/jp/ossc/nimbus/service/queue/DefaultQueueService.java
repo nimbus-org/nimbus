@@ -220,7 +220,8 @@ public class DefaultQueueService extends ServiceBase
         if(getState() != STARTED || fourceEndFlg){
             throw new IllegalServiceStateException(this);
         }
-        if(maxThresholdSize > 0
+        final long startTime = timeout > 0 ? System.currentTimeMillis() : 0;
+        while(maxThresholdSize > 0
              && (pushMonitor.isWait()
                     || (size() >= maxThresholdSize))
              && !fourceEndFlg
@@ -229,9 +230,10 @@ public class DefaultQueueService extends ServiceBase
                 if(timeout == 0){
                     return false;
                 }else if(timeout < 0){
-                    pushMonitor.initAndWaitMonitor();
+                    pushMonitor.initAndWaitMonitor(sleepTime);
                 }else{
-                    if(!pushMonitor.initAndWaitMonitor(timeout)){
+                    final long curTimeout = timeout - (System.currentTimeMillis() - startTime);
+                    if(curTimeout <= 0 || !pushMonitor.initAndWaitMonitor(curTimeout)){
                         return false;
                     }
                 }
