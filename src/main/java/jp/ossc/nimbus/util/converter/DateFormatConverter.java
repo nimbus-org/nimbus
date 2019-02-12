@@ -32,6 +32,7 @@
 package jp.ossc.nimbus.util.converter;
 
 import java.text.*;
+import java.util.Locale;
 
 /**
  * 日付フォーマットコンバータ。<p>
@@ -67,6 +68,11 @@ public class DateFormatConverter
      * 渡されたDateがnullの場合に返す文字列。<p>
      */
     protected String nullString = "";
+    
+    /**
+     * ロケール。<p>
+     */
+    protected Locale locale;
     
     /**
      * フォーマット"yyyy/MM/dd HH:mm:ss.SSS"で日付→文字列変換を行うコンバータを生成する。<p>
@@ -150,6 +156,54 @@ public class DateFormatConverter
     }
     
     /**
+     * ロケール文字列を設定する。<p>
+     * ロケール文字列は、language_country_variantのフォーマットで指定でき、後ろから省略可能。<br>
+     *
+     * @param language_country_variant ロケール文字列
+     * @exception IllegalArgumentException ロケール文字列が不正な場合
+     */
+    public void setLocaleString(String language_country_variant) throws IllegalArgumentException{
+        if(language_country_variant == null){
+            locale = null;
+            return;
+        }
+        String[] lcv = language_country_variant.split("_");
+        final int length = lcv.length;
+        switch(length){
+        case 1:
+            locale = new Locale(lcv[0]);
+            break;
+        case 2:
+            locale = new Locale(lcv[0], lcv[1]);
+            break;
+        case 3:
+            locale = new Locale(lcv[0], lcv[1], lcv[2]);
+            break;
+        default:
+            throw new IllegalArgumentException("Invalid locale : " + language_country_variant);
+        }
+    }
+    
+    /**
+     * ロケールを設定する。<p>
+     * デフォルトは、nullでロケール指定なし。
+     *
+     * @param locale ロケール
+     */
+    public void setLocale(Locale locale){
+        this.locale = locale;
+    }
+    
+    /**
+     * ロケールを取得する。<p>
+     *
+     * @return ロケール
+     */
+    public Locale getLocale(){
+        return locale;
+    }
+    
+    /**
      * 指定されたオブジェクトを変換する。<p>
      *
      * @param obj 変換対象のオブジェクト
@@ -163,13 +217,13 @@ public class DateFormatConverter
             if(obj == null){
                 return nullString;
             }
-            return new SimpleDateFormat(format).format(obj);
+            return (locale == null ? new SimpleDateFormat(format) : new SimpleDateFormat(format, locale)).format(obj);
         case STRING_TO_DATE:
             if(obj == null || ((String)obj).length() == 0){
                 return null;
             }
             try{
-                return new SimpleDateFormat(format).parse((String)obj);
+                return (locale == null ? new SimpleDateFormat(format) : new SimpleDateFormat(format, locale)).parse((String)obj);
             }catch(ParseException e){
                 throw new ConvertException(e);
             }
