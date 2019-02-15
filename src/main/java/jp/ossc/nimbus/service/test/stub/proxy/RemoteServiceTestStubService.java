@@ -864,8 +864,10 @@ public class RemoteServiceTestStubService extends ServiceBase implements TestStu
                 return false;
             }
             for(int i = 0; i < paramTypes.length; i++){
+                String typeName = toClassName(compParamTypes[i]);
                 if(!paramTypes[i].equals(compParamTypes[i].getName())
-                    && !Pattern.matches(paramTypes[i], compParamTypes[i].getName())){
+                    && !paramTypes[i].equals(typeName)
+                    && !Pattern.matches(paramTypes[i], typeName)){
                     return false;
                 }
             }
@@ -877,6 +879,14 @@ public class RemoteServiceTestStubService extends ServiceBase implements TestStu
                 }
             }
             return true;
+        }
+        
+        private String toClassName(Class clazz){
+            if(clazz.isArray()){
+                return toClassName(clazz.getComponentType()) + "[]";
+            }else{
+                return clazz.getName();
+            }
         }
         
         public boolean equals(Object obj){
