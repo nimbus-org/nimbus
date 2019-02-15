@@ -518,7 +518,7 @@ public class RemoteServiceTestStubService extends ServiceBase implements TestStu
                     returnValue = interpreter.evaluate(data.postInterpretScript, variables);
                 }
                 returnClass = returnValue == null ? returnClass : returnValue.getClass();
-                if(!methodCtx.getTargetMethod().getReturnType().isAssignableFrom(returnClass)){
+                if(!isAssignableFrom(methodCtx.getTargetMethod().getReturnType(), returnClass)){
                     throw new ConvertException("Return value can't convert. returnType=" + returnClass.getName());
                 }
                 return returnValue;
@@ -533,6 +533,65 @@ public class RemoteServiceTestStubService extends ServiceBase implements TestStu
             "TestCase not found. scenarioGroupId=" + scenarioGroupId + ", scenarioId=" + scenarioId + ", testcaseId=" + testcaseId + ", method=" + methodCtx.getTargetMethod()
         );
         return null;
+    }
+    
+    protected boolean isAssignableFrom(Class thisClass, Class thatClass){
+        if(thatClass == null){
+            return !thisClass.isPrimitive();
+        }
+        if(isNumber(thisClass) && isNumber(thatClass)){
+            if(Byte.TYPE.equals(thisClass)
+                || Byte.class.equals(thisClass)){
+                return Byte.TYPE.equals(thatClass)
+                    || Byte.class.equals(thatClass);
+            }else if(Short.TYPE.equals(thisClass)
+                || Short.class.equals(thisClass)){
+                return Short.TYPE.equals(thatClass)
+                    || Short.class.equals(thatClass);
+            }else if(Integer.TYPE.equals(thisClass)
+                || Integer.class.equals(thisClass)){
+                return Integer.TYPE.equals(thatClass)
+                    || Integer.class.equals(thatClass);
+            }else if(Long.TYPE.equals(thisClass)
+                || Long.class.equals(thisClass)){
+                return Long.TYPE.equals(thatClass)
+                    || Long.class.equals(thatClass);
+            }else if(Float.TYPE.equals(thisClass)
+                || Float.class.equals(thisClass)){
+                return Float.TYPE.equals(thatClass)
+                    || Float.class.equals(thatClass);
+            }else if(Double.TYPE.equals(thisClass)
+                || Double.class.equals(thisClass)){
+                return Double.TYPE.equals(thatClass)
+                    || Double.class.equals(thatClass);
+            }else{
+                return thisClass.isAssignableFrom(thatClass);
+            }
+        }else{
+            return thisClass.isAssignableFrom(thatClass);
+        }
+    }
+    
+    protected boolean isNumber(Class clazz){
+        if(clazz == null){
+            return false;
+        }
+        if(clazz.isPrimitive()){
+            if(Byte.TYPE.equals(clazz)
+                || Short.TYPE.equals(clazz)
+                || Integer.TYPE.equals(clazz)
+                || Long.TYPE.equals(clazz)
+                || Float.TYPE.equals(clazz)
+                || Double.TYPE.equals(clazz)){
+                return true;
+            }else{
+                return false;
+            }
+        }else if(Number.class.isAssignableFrom(clazz)){
+            return true;
+        }else{
+            return false;
+        }
     }
     
     protected File saveCallFile(MethodInvocationContext context, File file) throws IOException, ConvertException{
