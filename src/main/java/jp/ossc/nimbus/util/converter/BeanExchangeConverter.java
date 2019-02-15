@@ -118,6 +118,7 @@ public class BeanExchangeConverter implements BindingConverter{
     
     /**
      * 交換する入力オブジェクトと出力オブジェクトのプロパティのマッピングを設定する。<p>
+     * 出力オブジェクトが配列やリストの場合で、入力オブジェクト側のプロパティ（配列やリスト）を展開したい場合は、inputPropertyで指定するプロパティ名の末尾に"-<"を付加する。<br>
      *
      * @param inputProperty 入力オブジェクト側のプロパティ
      * @param outputProperty 値が出力オブジェクト側のプロパティ
@@ -181,6 +182,7 @@ public class BeanExchangeConverter implements BindingConverter{
     
     /**
      * 出力オブジェクトのプロパティを基準にして、入力オブジェクトと出力オブジェクトのプロパティ交換を行う場合に、一部のプロパティ交換のみ個別に設定する。<p>
+     * 出力オブジェクトが配列やリストの場合で、入力オブジェクト側のプロパティ（配列やリスト）を展開したい場合は、inputPropertyで指定するプロパティ名の末尾に"-<"を付加する。<br>
      *
      * @param partOutputProperty 個別に指定する出力オブジェクト側のプロパティ
      * @param inputProperty 入力オブジェクト側のプロパティ。partOutputPropertyと同じで良い場合は、null
@@ -593,6 +595,26 @@ public class BeanExchangeConverter implements BindingConverter{
                 if(propMapping.size() != 0){
                     isOutputAutoMapping = true;
                 }
+            }else if(output instanceof RecordList){
+                RecordList recordList = (RecordList)output;
+                RecordSchema schema = recordList.getRecordSchema();
+                if(schema != null){
+                    for(int i = 0, imax = schema.getPropertySize(); i < imax; i++){
+                        String inputProp = schema.getPropertyName(i);
+                        String outputProp = inputProp;
+                        if(isEnabledPropertyName(recordList.getRecordClass(), outputProp)){
+                            if(partPropertyMapping != null && partPropertyMapping.containsKey(outputProp)){
+                                String[] propMap = (String[])partPropertyMapping.get(outputProp);
+                                inputProp = propMap[0];
+                                outputProp = propMap[1];
+                            }
+                            propMapping.put(inputProp, outputProp);
+                        }
+                    }
+                }
+                if(propMapping.size() != 0){
+                    isOutputAutoMapping = true;
+                }
             }else{
                 final SimpleProperty[] props = isFieldOnly(output.getClass()) ? SimpleProperty.getFieldProperties(output) : SimpleProperty.getProperties(output, !isAccessorOnly(output.getClass()));
                 for(int i = 0; i < props.length; i++){
@@ -615,7 +637,10 @@ public class BeanExchangeConverter implements BindingConverter{
                 throw new ConvertException("PropertyMapping is null.");
             }
         }
-        if(isMakeSchema && (output instanceof Record) && ((Record)output).getRecordSchema() == null){
+        if(isMakeSchema 
+            &&(((output instanceof Record) && ((Record)output).getRecordSchema() == null)
+                || ((output instanceof RecordList) && ((RecordList)output).getRecordSchema() == null))
+        ){
             StringBuilder buf = new StringBuilder();
             final Iterator entries = propMapping.entrySet().iterator();
             while(entries.hasNext()){
@@ -648,7 +673,11 @@ public class BeanExchangeConverter implements BindingConverter{
             }
             if(buf.length() != 0){
                 try{
-                    ((Record)output).setSchema(buf.toString());
+                    if(output instanceof Record){
+                        ((Record)output).setSchema(buf.toString());
+                    }else{
+                        ((RecordList)output).setSchema(buf.toString());
+                    }
                 }catch(PropertySchemaDefineException e){
                     // 起こらない
                 }
@@ -658,6 +687,10 @@ public class BeanExchangeConverter implements BindingConverter{
         while(entries.hasNext()){
             Map.Entry entry = (Map.Entry)entries.next();
             String inputProp = (String)entry.getKey();
+            final boolean isExpands = inputProp.endsWith("-<");
+            if(isExpands){
+                inputProp = inputProp.substring(0, inputProp.length() - 2);
+            }
             Object value = null;
             try{
                 value = propertyAccess.get(input, inputProp);
@@ -671,40 +704,158 @@ public class BeanExchangeConverter implements BindingConverter{
             }catch(InvocationTargetException e){
                 throw new ConvertException("Input property get error. input=" + input + ", property=" + inputProp, e);
             }
-            
-            Object outputProp = entry.getValue();
-            if(outputProp instanceof String){
-                try{
-                    propertyAccess.set(output, (String)outputProp, value);
-                }catch(IllegalArgumentException e){
-                    throw new ConvertException("Output property set error. output=" + output + ", property=" + outputProp + ", value=" + value, e);
-                }catch(NoSuchPropertyException e){
-                    if(isInputAutoMapping){
-                        continue;
-                    }
-                    throw new ConvertException("Output property set error. output=" + output + ", property=" + outputProp + ", value=" + value, e);
-                }catch(InvocationTargetException e){
-                    throw new ConvertException("Output property set error. output=" + output + ", property=" + outputProp + ", value=" + value, e);
-                }
-            }else{
-                List outputProps = (List)outputProp;
-                try{
-                    for(int i = 0, imax = outputProps.size(); i < imax; i++){
-                        propertyAccess.set(output, (String)outputProps.get(i), value);
-                    }
-                }catch(IllegalArgumentException e){
-                    throw new ConvertException("Output property set error. output=" + output + ", property=" + outputProp + ", value=" + value, e);
-                }catch(NoSuchPropertyException e){
-                    if(isInputAutoMapping){
-                        continue;
-                    }
-                    throw new ConvertException("Output property set error. output=" + output + ", property=" + outputProp + ", value=" + value, e);
-                }catch(InvocationTargetException e){
-                    throw new ConvertException("Output property set error. output=" + output + ", property=" + outputProp + ", value=" + value, e);
-                }
-            }
+            setOutputProperty(output, entry.getValue(), value, isExpands, isInputAutoMapping);
         }
         return output;
+    }
+    
+    private void setOutputProperty(Object output, Object outputProp, Object value, boolean isExpands, boolean isInputAutoMapping) throws ConvertException{
+        if(outputProp instanceof String){
+            String outputPropName = (String)outputProp;
+            Object[] values = null;
+            if(isExpands){
+                if(value == null){
+                    values = null;
+                }else if(value instanceof Collection){
+                    values = ((Collection)value).toArray();
+                }else if(value.getClass().isArray()){
+                    values = (Object[])value;
+                }
+            }
+            if(output instanceof RecordList){
+                RecordList recordList = (RecordList)output;
+                if(isExpands){
+                    if(values != null){
+                        for(int i = 0; i < values.length; i++){
+                            if(recordList.size() == 0){
+                                Record rec = recordList.createRecord();
+                                setOutputProperty(rec, outputPropName, values[i], false, isInputAutoMapping);
+                                recordList.add(rec);
+                            }else if(i < recordList.size()){
+                                setOutputProperty(recordList.get(i), outputPropName, values[i], false, isInputAutoMapping);
+                            }else{
+                                Record preRec = recordList.getRecord(i - 1);
+                                Record rec = recordList.createRecord();
+                                rec.putAll(preRec);
+                                setOutputProperty(rec, outputPropName, values[i], false, isInputAutoMapping);
+                                recordList.add(rec);
+                            }
+                        }
+                    }
+                }else{
+                    if(recordList.size() == 0){
+                        Record rec = recordList.createRecord();
+                        setOutputProperty(rec, outputPropName, value, false, isInputAutoMapping);
+                        recordList.add(rec);
+                    }else{
+                        for(int i = 0, imax = recordList.size(); i < imax; i++){
+                            setOutputProperty(recordList.get(i), outputPropName, value, false, isInputAutoMapping);
+                        }
+                    }
+                }
+            }else if(output instanceof Collection){
+                Object[] outputs = ((Collection)output).toArray();
+                if(outputs.length == 0){
+                    Type type = output.getClass().getGenericSuperclass();
+                    if(type != null && type instanceof ParameterizedType){
+                        Type[] argTypes = ((ParameterizedType)type).getActualTypeArguments();
+                        if(argTypes != null && argTypes.length == 1 && argTypes[0] instanceof Class){
+                            outputs = (Object[])Array.newInstance((Class)argTypes[0], values.length);
+                            try{
+                                for(int i = 0; i < outputs.length; i++){
+                                    outputs[i] = ((Class)argTypes[0]).newInstance();
+                                    ((Collection)output).add(outputs[i]);
+                                }
+                            }catch(IllegalAccessException e){
+                                throw new ConvertException("Length of array is 0.", e);
+                            }catch(InstantiationException e){
+                                throw new ConvertException("Length of array is 0.", e);
+                            }
+                        }
+                    }
+                    if(outputs.length == 0){
+                        throw new ConvertException("Size of collection is 0.");
+                    }
+                }
+                if(isExpands){
+                    for(int i = 0, imax = Math.min(values.length, outputs.length); i < imax; i++){
+                        setOutputProperty(outputs[i], outputPropName, values[i], false, isInputAutoMapping);
+                    }
+                }else{
+                    for(int i = 0; i < outputs.length; i++){
+                        setOutputProperty(outputs[i], outputPropName, value, false, isInputAutoMapping);
+                    }
+                }
+            }else if(output.getClass().isArray()){
+                Object[] outputs = (Object[])output;
+                final Class componentType = output.getClass().getComponentType();
+                if(outputs.length == 0){
+                    if(componentType.isInterface() || componentType.isPrimitive()){
+                        throw new ConvertException("Length of array is 0.");
+                    }
+                    outputs = (Object[])Array.newInstance(componentType, values.length);
+                    try{
+                        for(int i = 0; i < outputs.length; i++){
+                            outputs[i] = componentType.newInstance();
+                        }
+                    }catch(IllegalAccessException e){
+                        throw new ConvertException("Length of array is 0.", e);
+                    }catch(InstantiationException e){
+                        throw new ConvertException("Length of array is 0.", e);
+                    }
+                }
+                if(isExpands){
+                    for(int i = 0, imax = Math.min(values.length, outputs.length); i < imax; i++){
+                        if(outputs[i] == null){
+                            if(componentType.isInterface() || componentType.isPrimitive()){
+                                throw new ConvertException("Element of array is null.");
+                            }
+                            try{
+                                outputs[i] = componentType.newInstance();
+                            }catch(IllegalAccessException e){
+                                throw new ConvertException("Element of array is null.", e);
+                            }catch(InstantiationException e){
+                                throw new ConvertException("Element of array is null.", e);
+                            }
+                        }
+                        setOutputProperty(outputs[i], outputPropName, values[i], false, isInputAutoMapping);
+                    }
+                }else{
+                    for(int i = 0; i < outputs.length; i++){
+                        if(outputs[i] == null){
+                            if(componentType.isInterface() || componentType.isPrimitive()){
+                                throw new ConvertException("Element of array is null.");
+                            }
+                            try{
+                                outputs[i] = componentType.newInstance();
+                            }catch(IllegalAccessException e){
+                                throw new ConvertException("Element of array is null.", e);
+                            }catch(InstantiationException e){
+                                throw new ConvertException("Element of array is null.", e);
+                            }
+                        }
+                        setOutputProperty(outputs[i], outputPropName, value, false, isInputAutoMapping);
+                    }
+                }
+            }else{
+                try{
+                    propertyAccess.set(output, outputPropName, value);
+                }catch(IllegalArgumentException e){
+                    throw new ConvertException("Output property set error. output=" + output + ", property=" + outputPropName + ", value=" + value, e);
+                }catch(NoSuchPropertyException e){
+                    if(!isInputAutoMapping){
+                        throw new ConvertException("Output property set error. output=" + output + ", property=" + outputPropName + ", value=" + value, e);
+                    }
+                }catch(InvocationTargetException e){
+                    throw new ConvertException("Output property set error. output=" + output + ", property=" + outputPropName + ", value=" + value, e);
+                }
+            }
+        }else{
+            List outputProps = (List)outputProp;
+            for(int i = 0, imax = outputProps.size(); i < imax; i++){
+                setOutputProperty(output, (String)outputProps.get(i), value, false, isInputAutoMapping);
+            }
+        }
     }
     
     private class PropertyAccessType{
