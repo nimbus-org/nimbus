@@ -35,7 +35,7 @@ import jp.ossc.nimbus.core.FactoryServiceBase;
 import jp.ossc.nimbus.service.ga.Gene;
 import jp.ossc.nimbus.service.ga.ComplexGene;
 import jp.ossc.nimbus.service.ga.IntegerGene;
-import jp.ossc.nimbus.service.trade.IndexCalcUtil.PeriodicPrice;
+import jp.ossc.nimbus.service.trade.TradeSignCalcUtil.PeriodicPrice;
 
 
 /**

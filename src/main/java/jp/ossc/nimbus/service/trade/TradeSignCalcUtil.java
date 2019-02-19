@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class IndexCalcUtil {
+public class TradeSignCalcUtil {
     
 	public static class LongWrapper {
     	public long price;
