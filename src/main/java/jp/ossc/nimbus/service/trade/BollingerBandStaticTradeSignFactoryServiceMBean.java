@@ -40,7 +40,7 @@ import jp.ossc.nimbus.service.ga.IntegerGene;
  * @author M.Aono
  * @see MovingAverageTradeSignFactoryService
  */
-public interface MovingAverageTradeSignFactoryServiceMBean extends FactoryServiceBaseMBean{
+public interface BollingerBandStaticTradeSignFactoryServiceMBean extends FactoryServiceBaseMBean{
     
     /**
      * 遺伝子の交叉種別を設定する。<p>
@@ -88,65 +88,66 @@ public interface MovingAverageTradeSignFactoryServiceMBean extends FactoryServic
     public boolean isOnlyReverseTrade();
     
     /**
-     * 移動平均計算期間(短期)を設定する。<p>
-     * 移動平均線を計算する期間を指定する。<br>
+     * 期間を設定する。<p>
+     * ボリンジャーバンドを計算する期間を指定する。<br>
      * デフォルトは、25。<br>
      *
      * @param period 期間
      */
-    public void setShortPeriod(int period);
+    public void setPeriod(int period);
     
     /**
-     * 移動平均計算期間(短期)を取得する。<p>
+     * 期間を取得する。<p>
      *
-     * @return 移動平均計算期間(短期)
+     * @return 期間
      */
-    public int getShortPeriod();
+    public int getPeriod();
     
     /**
-     * 移動平均計算期間(短期)遺伝子を設定する。<p>
+     * 期間遺伝子を設定する。<p>
      *
-     * @param gene 移動平均計算期間(短期)遺伝子
-     * @see #setShortPeriod(int)
+     * @param gene 期間遺伝子
+     * @see #setPeriod(int)
      */
-    public void setShortPeriodGene(IntegerGene gene);
+    public void setPeriodGene(IntegerGene gene);
     
     /**
-     * 移動平均計算期間(短期)遺伝子を取得する。<p>
+     * 期間遺伝子を取得する。<p>
      *
      * @return 移動平均計算期間(短期)遺伝子
      */
-    public IntegerGene getShortPeriodGene();
+    public IntegerGene getPeriodGene();
         
     /**
-     * 移動平均計算期間(長期)を設定する。<p>
-     * 移動平均線を計算する期間を指定する。<br>
+     * 偏差を設定する。<p>
+     * 偏差を指定する。<br>
      * デフォルトは、75。<br>
      *
-     * @param period 期間
+     * @param deviation 偏差
      */
-    public void setLongPeriod(int period);
+    public void setDeviation(int deviation);
     
     /**
-     * 移動平均計算期間(長期)を取得する。<p>
+     * 
+     * 偏差を取得する。<p>
      *
-     * @return 移動平均計算期間(長期)
+     * @return 偏差
      */
-    public int getLongPeriod();
+    public int getDeviation();
     
     /**
-     * 移動平均計算期間(長期)遺伝子を設定する。<p>
+     * 偏差遺伝子を設定する。<p>
      *
-     * @param gene 移動平均計算期間(長期)遺伝子
-     * @see #setLongPeriod(int)
+     * @param gene 偏差遺伝子
+     * @see #setDeviation(int)
      */
-    public void setLongPeriodGene(IntegerGene gene);
+    public void setDeviationGene(IntegerGene gene);
     
     /**
-     * 移動平均計算期間(長期)遺伝子を取得する。<p>
+     * 偏差遺伝子を取得する。<p>
      *
-     * @return 移動平均計算期間(長期)遺伝子
+     * @return 偏差遺伝子
      */
-    public IntegerGene getLongPeriodGene();
+    public IntegerGene getDeviationGene();
 
 }

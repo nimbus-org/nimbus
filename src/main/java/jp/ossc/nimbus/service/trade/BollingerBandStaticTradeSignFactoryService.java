@@ -39,12 +39,12 @@ import jp.ossc.nimbus.service.trade.TradeSignCalcUtil.PeriodicPrice;
 
 
 /**
- * 移動平均線サインファクトリサービス。<p>
- * 移動平均線のゴールデンクロス・デッドクロスで、売買サインを判定する{@link TradeSign}実装クラスを生成するファクトリ。<br>
+ * ボリンジャーバンドサインファクトリサービス。<p>
+ * ボリンジャーバンドのゴールデンクロス・デッドクロスで、売買サインを判定する{@link TradeSign}実装クラスを生成するファクトリ。<br>
  *
  * @author M.Aono
  */
-public class MovingAverageTradeSignFactoryService extends FactoryServiceBase implements MovingAverageTradeSignFactoryServiceMBean{
+public class BollingerBandStaticTradeSignFactoryService extends FactoryServiceBase implements BollingerBandStaticTradeSignFactoryServiceMBean{
 
     /**
 	 * 
@@ -53,10 +53,10 @@ public class MovingAverageTradeSignFactoryService extends FactoryServiceBase imp
 	protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
     protected boolean isShortSelling;
     protected boolean isOnlyReverseTrade;
-    protected int shortPeriod = 25;
-    protected IntegerGene shortPeriodGene;
-    protected int longPeriod = 75;
-    protected IntegerGene longPeriodGene;
+    protected int period = 25;
+    protected IntegerGene periodGene;
+    protected int deviation = 75;
+    protected IntegerGene deviationGene;
     
     @Override
     public void setGeneCrossoverType(int type){
@@ -89,70 +89,70 @@ public class MovingAverageTradeSignFactoryService extends FactoryServiceBase imp
     }
 
     @Override
-    public void setShortPeriod(int period){
-        shortPeriod = period;
+    public void setPeriod(int period){
+        this.period = period;
     }
     
     @Override
-    public int getShortPeriod(){
-        return shortPeriod;
+    public int getPeriod(){
+        return this.period;
     }
     
     @Override
-    public void setShortPeriodGene(IntegerGene gene){
-        shortPeriodGene = gene;
-        if(shortPeriodGene != null){
-            shortPeriodGene.setName("shortPeriod");
+    public void setPeriodGene(IntegerGene gene){
+        periodGene = gene;
+        if(periodGene != null){
+            periodGene.setName("period");
         }
     }
     
     @Override
-    public IntegerGene getShortPeriodGene(){
-        return shortPeriodGene;
+    public IntegerGene getPeriodGene(){
+        return periodGene;
     }
     
     @Override
-    public void setLongPeriod(int period){
-        longPeriod = period;
+    public void setDeviation(int deviation){
+    	this.deviation = deviation;
     }
     
     @Override
-    public int getLongPeriod(){
-        return longPeriod;
+    public int getDeviation(){
+        return deviation;
     }
     
     @Override
-    public void setLongPeriodGene(IntegerGene gene){
-    	longPeriodGene = gene;
-        if(longPeriodGene != null){
-        	longPeriodGene.setName("longPeriod");
+    public void setDeviationGene(IntegerGene gene){
+    	deviationGene = gene;
+        if(deviationGene != null){
+        	deviationGene.setName("deviation");
         }
     }
 
     @Override
-    public IntegerGene getLongPeriodGene(){
-        return longPeriodGene;
+    public IntegerGene getDeviationGene(){
+        return deviationGene;
     }
     
     protected Object createInstance() throws Exception{
-        MovingAverageTradeSign ts = new MovingAverageTradeSign();
+    	BollingerBandStaticTradeSign ts = new BollingerBandStaticTradeSign();
         
         ts.setGeneCrossoverType(geneCrossoverType);
         ts.setShortSelling(isShortSelling);
         
-        ts.setShortPeriod(shortPeriod);
-        if(shortPeriodGene != null){
-            ts.getComplexGene().addGene(shortPeriodGene.cloneGene());
+        ts.setPeriod(period);
+        if(periodGene != null){
+            ts.getComplexGene().addGene(periodGene.cloneGene());
         }
-        ts.setShortPeriod(longPeriod);
-        if(longPeriodGene != null){
-            ts.getComplexGene().addGene(longPeriodGene.cloneGene());
+        ts.setDeviation(deviation);
+        if(deviationGene != null){
+            ts.getComplexGene().addGene(deviationGene.cloneGene());
         }
         
         return ts;
     }
     
-    public static class MovingAverageTradeSign implements TradeSign, java.io.Serializable, Cloneable{
+    public static class BollingerBandStaticTradeSign implements TradeSign, java.io.Serializable, Cloneable{
         
         /**
 		 * 
@@ -160,8 +160,8 @@ public class MovingAverageTradeSignFactoryService extends FactoryServiceBase imp
 		private static final long serialVersionUID = 1L;
 		protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
         protected boolean isShortSelling;
-        protected int shortPeriod;
-        protected int longPeriod;
+        protected int period;
+        protected int devitation;
         
         protected TradeTarget tradeTarget;
         protected Sign[] signs;
@@ -190,31 +190,31 @@ public class MovingAverageTradeSignFactoryService extends FactoryServiceBase imp
             return isShortSelling;
         }
         
-        public void setShortPeriod(int period){
-        	shortPeriod = period;
+        public void setPeriod(int period){
+        	this.period = period;
         }
-        public int getShortPeriod(){
+        public int getPeriod(){
             if(complexGene != null){
-                IntegerGene gene = (IntegerGene)complexGene.getGene("shortPeriod");
+                IntegerGene gene = (IntegerGene)complexGene.getGene("period");
                 if(gene != null){
                     return ((Integer)gene.getValue()).intValue();
                 }
             }
-            return shortPeriod;
+            return period;
         }
  
-        public void setLongPeriod(int period){
-        	longPeriod = period;
+        public void setDeviation(int devitation){
+        	this.devitation = devitation;
         }
         
-        public int getLongPeriod(){
+        public int getDeviation(){
             if(complexGene != null){
-                IntegerGene gene = (IntegerGene)complexGene.getGene("longPeriod");
+                IntegerGene gene = (IntegerGene)complexGene.getGene("devitation");
                 if(gene != null){
                     return ((Integer)gene.getValue()).intValue();
                 }
             }
-            return longPeriod;
+            return devitation;
         }
         
         public void setTarget(TradeTarget target){
@@ -224,45 +224,49 @@ public class MovingAverageTradeSignFactoryService extends FactoryServiceBase imp
         public void calculate() throws Exception{        	
             TimeSeries<TimeSeries.Element> ts = tradeTarget.getTimeSeries();
             signs = new Sign[ts.size()];
-            int shortPeriod = getShortPeriod();
-            int longPeriod = getLongPeriod();
-            if(ts.size() < longPeriod){
+            int period = getPeriod();
+            int deviation = getDeviation();
+            if(ts.size() < period){
                 return;
             }
+            //移動平均
+            PeriodicPrice periodicPrice = new PeriodicPrice(period);
             
-            //短期移動平均
-            PeriodicPrice shortPeriodicPrice = new PeriodicPrice(shortPeriod);
-            //長期移動平均
-            PeriodicPrice longPeriodicPrice = new PeriodicPrice(longPeriod);
-            double preShortAverage = Double.NaN;
-            double preLongAverage = Double.NaN;
+            double preUpDivitation = Double.NaN;
+            double preDownDivitation = Double.NaN;
+
             for(int i = 0; i < ts.size(); i++){
                 OHLCVTimeSeries.OHLCVElement element = (OHLCVTimeSeries.OHLCVElement)ts.get(i);
                 signs[i] = new Sign(Sign.Type.NA);
     			if(element.getVolume() == 0d){
     				continue;
-    			}   			
-            	double shotAverage = shortPeriodicPrice.addAverage(element.getCloseValue());
-            	double longAverage = longPeriodicPrice.addAverage(element.getCloseValue());
-            	if(longPeriod <= i + 1){
-            		if(Double.isNaN(preLongAverage)){
-            			preShortAverage = shotAverage;
-            			preLongAverage = longAverage;
+    			}
+            	double[] divitations = periodicPrice.addDevitation(element.getCloseValue(), deviation, i, ts);
+            	if(period <= i + 1){
+            		if(Double.isNaN(divitations[0])){
+            			preUpDivitation = divitations[0];
             			continue;
             		}
-
-            		if (preShortAverage < preLongAverage && shotAverage >= longAverage){
-                    	signs[i].setType(Sign.Type.BUY);
-                    	signs[i].setReason(Reason.GOLDEN_CROSS);
-                    }else if (preShortAverage > preLongAverage && shotAverage <= longAverage){
-                    	signs[i].setType(Sign.Type.SELL);
-                    	signs[i].setReason(Reason.DEAD_CROSS);
-                    }
             		
-                    preShortAverage = shotAverage;
-        			preLongAverage = longAverage;
+            		if(Double.isNaN(divitations[1])){
+            			preDownDivitation = divitations[1];
+            			continue;
+            		}
+            		
+                    if ((((OHLCVTimeSeries.OHLCVElement)ts.get(i - 1)).getCloseValue() < preDownDivitation) && 
+                    		(divitations[1] < ((OHLCVTimeSeries.OHLCVElement)ts.get(i)).getCloseValue())){
+                    	signs[i].setType(Sign.Type.BUY);
+                    	signs[i].setReason(Reason.BUY_CROSS);
+                    }else if ((preUpDivitation < ((OHLCVTimeSeries.OHLCVElement)ts.get(i - 1)).getCloseValue()) && 
+                    		(((OHLCVTimeSeries.OHLCVElement)ts.get(i)).getCloseValue() < divitations[0])){
+                    	signs[i].setType(Sign.Type.SELL);
+                    	signs[i].setReason(Reason.SELL_CROSS);
+                    }
             	}
+            	preUpDivitation = divitations[0];
+            	preDownDivitation = divitations[1];
             }
+            
         }
         
         public Sign getSign(int index, Trade trade){
@@ -270,9 +274,9 @@ public class MovingAverageTradeSignFactoryService extends FactoryServiceBase imp
         }
         
         public Object clone(){
-            MovingAverageTradeSign clone = null;
+        	BollingerBandStaticTradeSign clone = null;
             try{
-                clone = (MovingAverageTradeSign)super.clone();
+                clone = (BollingerBandStaticTradeSign)super.clone();
             }catch(CloneNotSupportedException e){
                 return null;
             }
@@ -283,9 +287,8 @@ public class MovingAverageTradeSignFactoryService extends FactoryServiceBase imp
         }
         
         public enum Reason{
-            GOLDEN_CROSS,
-            DEAD_CROSS,
-            MAX_HOLDING_TERM
+            BUY_CROSS,
+            SELL_CROSS
         }
     }
 

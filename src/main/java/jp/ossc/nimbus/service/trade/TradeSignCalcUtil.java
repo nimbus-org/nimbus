@@ -168,7 +168,7 @@ public class TradeSignCalcUtil {
     		return (double)sumAverage / (double)period;
     	}
     	
-    	public double[] addDevitation(double price, int devitation, int index, OHLCVTimeSeries element){
+    	public double[] addDevitation(double price, int devitation, int index, TimeSeries<TimeSeries.Element> timeSeries){
     		double[] devitations = new double[2];
     		double average = addAverage(price);
     		if(Double.isNaN(average)){
@@ -178,8 +178,8 @@ public class TradeSignCalcUtil {
     		}
     		double variance = 0d;
     		for(int i = index - (period - 1); i <= index; i++){
-        		variance  += (((OHLCVTimeSeries.OHLCVElement)element.get(i)).getCloseValue() - average)*
-        				(((OHLCVTimeSeries.OHLCVElement)element.get(i)).getCloseValue() - average);
+        		variance  += (((OHLCVTimeSeries.OHLCVElement)timeSeries.get(i)).getCloseValue() - average)*
+        				(((OHLCVTimeSeries.OHLCVElement)timeSeries.get(i)).getCloseValue() - average);
     		}   
     		
     		double avg = variance / (double)period;
