@@ -917,13 +917,13 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
         public int execute(HttpState state, HttpConnection connection) throws org.apache.commons.httpclient.HttpException, IOException{
             try{
                 return method.execute(state, connection);
-            }catch(org.apache.commons.httpclient.HttpException e){
-                Throwable cause = e.getCause();
+            }catch(IOException e){
                 if(isAutoDisabledSNI
-                    && cause != null
-                    && (cause instanceof javax.net.ssl.SSLProtocolException)
+                    && (e instanceof javax.net.ssl.SSLProtocolException)
                     && GET_SOCKET != null
                 ){
+                    connection.close();
+                    connection.open();
                     try{
                         SSLSocket socket = (SSLSocket)GET_SOCKET.invoke(connection, (Object[])null);
                         SSLParameters params = socket.getSSLParameters();
