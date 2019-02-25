@@ -34,10 +34,13 @@ package jp.ossc.nimbus.service.http.httpclient;
 import java.io.*;
 import java.util.*;
 import java.util.zip.*;
+import java.lang.reflect.*;
+import javax.net.ssl.*;
 
 import org.apache.commons.httpclient.*;
 import org.apache.commons.httpclient.params.*;
 import org.apache.commons.httpclient.methods.multipart.FilePart;
+import org.apache.commons.httpclient.auth.AuthState;
 
 import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.http.*;
@@ -74,6 +77,17 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
 
     protected static final String CONTENT_ENCODING_SNAPPY = "snappy";
     protected static final String CONTENT_ENCODING_LZ4 = "lz4";
+    protected static Method GET_SOCKET;
+
+    static{
+        try{
+            GET_SOCKET = HttpConnection.class.getDeclaredMethod("getSocket", (Class[])null);
+            GET_SOCKET.setAccessible(true);
+        }catch(NoSuchMethodException e){
+        }catch(SecurityException e){
+            GET_SOCKET = null;
+        }
+    }
 
     
     protected String actionName;
@@ -95,6 +109,7 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
     protected int deflateLength = -1;
     protected Map httpMethodParamMap;
     protected ServiceName httpClientFactoryServiceName;
+    protected boolean isAutoDisabledSNI;
     
     // HttpRequestのJavaDoc
     public String getActionName(){
@@ -501,7 +516,17 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
     public void setHttpClientFactoryServiceName(ServiceName name) {
         httpClientFactoryServiceName = name;
     }
-
+    
+    /**
+     * SNIを自動で無効化するかどうかを設定する。<p>
+     * デフォルトは、false。<br>
+     *
+     * @param isAutoDisabled 自動で無効化する場合true
+     */
+    public void setAutoDisabledSNI(boolean isAutoDisabled){
+        isAutoDisabledSNI = isAutoDisabled;
+    }
+    
     /**
      * 空のHTTPメソッドを生成する。<p>
      *
@@ -717,6 +742,16 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
     }
     
     /**
+     * HTTPメソッドをラップする。<p>
+     *
+     * @param method HTTPメソッド
+     * @return HTTPメソッドラッパー
+     */
+    protected HttpMethodWrapper wrapHttpMethod(HttpMethodBase method){
+        return new HttpMethodWrapper(method);
+    }
+    
+    /**
      * 複製を生成する。<p>
      *
      * @return 複製
@@ -731,5 +766,229 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
             clone.parameterMap = new LinkedHashMap(parameterMap);
         }
         return clone;
+    }
+    
+    public class HttpMethodWrapper implements HttpMethod{
+        private HttpMethodBase method;
+        public HttpMethodWrapper(HttpMethodBase method){
+            this.method = method;
+        }
+        
+        public HttpMethodBase getHttpMethod(){
+            return method;
+        }
+        
+        public String getName(){
+            return method.getName();
+        }
+        
+        public HostConfiguration getHostConfiguration(){
+            return method.getHostConfiguration();
+        }
+        
+        public void setPath(String path){
+            method.setPath(path);
+        }
+        
+        public String getPath(){
+            return method.getPath();
+        }
+        
+        public URI getURI() throws URIException{
+            return method.getURI();
+        }
+        
+        public void setURI(URI uri) throws URIException{
+            method.setURI(uri);
+        }
+        
+        public void setStrictMode(boolean strictMode){
+            method.setStrictMode(strictMode);
+        }
+        
+        public boolean isStrictMode(){
+            return method.isStrictMode();
+        }
+        
+        public void setRequestHeader(String headerName, String headerValue){
+            method.setRequestHeader(headerName, headerValue);
+        }
+        
+        public void setRequestHeader(Header header){
+            method.setRequestHeader(header);
+        }
+        
+        public void addRequestHeader(String headerName, String headerValue){
+            method.addRequestHeader(headerName, headerValue);
+        }
+        
+        public void addRequestHeader(Header header){
+            method.addRequestHeader(header);
+        }
+        
+        public Header getRequestHeader(String headerName){
+            return method.getRequestHeader(headerName);
+        }
+        
+        public void removeRequestHeader(String headerName){
+            method.removeRequestHeader(headerName);
+        }
+        
+        public void removeRequestHeader(Header header){
+            method.removeRequestHeader(header);
+        }
+        
+        public boolean getFollowRedirects(){
+            return method.getFollowRedirects();
+        }
+        
+        public void setFollowRedirects(boolean followRedirects){
+            method.setFollowRedirects(followRedirects);
+        }
+        
+        public void setQueryString(String queryString){
+            method.setQueryString(queryString);
+        }
+        
+        public void setQueryString(NameValuePair[] params){
+            method.setQueryString(params);
+        }
+        
+        public String getQueryString(){
+            return method.getQueryString();
+        }
+        
+        public Header[] getRequestHeaders(){
+            return method.getRequestHeaders();
+        }
+        
+        public Header[] getRequestHeaders(String headerName){
+            return method.getRequestHeaders(headerName);
+        }
+        
+        public boolean validate(){
+            return method.validate();
+        }
+        
+        public int getStatusCode(){
+            return method.getStatusCode();
+        }
+        
+        public String getStatusText(){
+            return method.getStatusText();
+        }
+        
+        public Header[] getResponseHeaders(){
+            return method.getResponseHeaders();
+        }
+        
+        public Header getResponseHeader(String headerName){
+            return method.getResponseHeader(headerName);
+        }
+        
+        public Header[] getResponseHeaders(String headerName){
+            return method.getResponseHeaders(headerName);
+        }
+        
+        public Header[] getResponseFooters(){
+            return method.getResponseFooters();
+        }
+        
+        public Header getResponseFooter(String footerName){
+            return method.getResponseFooter(footerName);
+        }
+        
+        public byte[] getResponseBody() throws IOException{
+            return method.getResponseBody();
+        }
+        
+        public String getResponseBodyAsString() throws IOException{
+            return method.getResponseBodyAsString();
+        }
+        
+        public InputStream getResponseBodyAsStream() throws IOException{
+            return method.getResponseBodyAsStream();
+        }
+        
+        public boolean hasBeenUsed(){
+            return method.hasBeenUsed();
+        }
+        
+        public int execute(HttpState state, HttpConnection connection) throws org.apache.commons.httpclient.HttpException, IOException{
+            try{
+                return method.execute(state, connection);
+            }catch(IOException e){
+                if(isAutoDisabledSNI
+                    && (e instanceof javax.net.ssl.SSLProtocolException)
+                    && GET_SOCKET != null
+                ){
+                    connection.close();
+                    connection.open();
+                    try{
+                        SSLSocket socket = (SSLSocket)GET_SOCKET.invoke(connection, (Object[])null);
+                        SSLParameters params = socket.getSSLParameters();
+                        params.setServerNames(new ArrayList());
+                        socket.setSSLParameters(params);
+                        return method.execute(state, connection);
+                    }catch(IllegalAccessException ee){
+                        throw e;
+                    }catch(IllegalArgumentException ee){
+                        throw e;
+                    }catch(InvocationTargetException ee){
+                        throw e;
+                    }
+                }else{
+                    throw e;
+                }
+            }
+        }
+        
+        public void abort(){
+            method.abort();
+        }
+        
+        public void recycle(){
+            method.recycle();
+        }
+        
+        public void releaseConnection(){
+            method.releaseConnection();
+        }
+        
+        public void addResponseFooter(Header footer){
+            method.addResponseFooter(footer);
+        }
+        
+        public StatusLine getStatusLine(){
+            return method.getStatusLine();
+        }
+        
+        public boolean getDoAuthentication(){
+            return method.getDoAuthentication();
+        }
+        
+        public void setDoAuthentication(boolean doAuthentication){
+            method.setDoAuthentication(doAuthentication);
+        }
+        
+        public HttpMethodParams getParams(){
+            return method.getParams();
+        }
+        
+        public void setParams(final HttpMethodParams params){
+            method.setParams(params);
+        }
+        
+        public AuthState getHostAuthState(){
+            return method.getHostAuthState();
+        }
+        
+        public AuthState getProxyAuthState(){
+            return method.getProxyAuthState();
+        }
+        
+        public boolean isRequestSent(){
+            return method.isRequestSent();
+        }
     }
 }

@@ -413,18 +413,23 @@ public class HttpResponseImpl implements HttpResponse, Cloneable{
     
     // HttpResponseのJavaDoc
     public String getCharacterEncoding(){
-        final String contentType = getHeader(HEADER_CONTENT_TYPE);
-        if(contentType == null){
+        final String type = getHeader(HEADER_CONTENT_TYPE);
+        if(type == null){
             return DEFAULT_RESPONSE_CHARSET;
         }
-        
-        final int index = contentType.indexOf(HEADER_CHARSET);
-        if(index == -1){
+        ContentType contentType = new ContentType(type);
+        String charset = contentType.getParameters() == null ? null : (String)contentType.getParameters().get(HEADER_CHARSET);
+        if(charset == null){
             return DEFAULT_RESPONSE_CHARSET;
         }else{
-            return contentType.substring(
-                index + HEADER_CHARSET.length() + 1
-            );
+            charset = charset.trim();
+            if(charset.length() > 3
+                && ((charset.charAt(0) == '"' && charset.charAt(charset.length() - 1) == '"')
+                    || (charset.charAt(0) == '\'' && charset.charAt(charset.length() - 1) == '\''))
+            ){
+                charset = charset.substring(1, charset.length() - 1);
+            }
+            return charset;
         }
     }
     
@@ -596,5 +601,81 @@ public class HttpResponseImpl implements HttpResponse, Cloneable{
     public boolean isConnectionClose(){
         String connection = getHeader(HEADER_CONNECTION);
         return connection == null || CONNECTION_CLOSE.equalsIgnoreCase(connection);
+    }
+    
+    private static class ContentType {
+        private final String mediaType;
+        private final int hashCode;
+        private Map parameters;
+        
+        public ContentType(String contentType) {
+            String[] types = contentType.split(";");
+            mediaType = types[0].trim();
+            int hash = mediaType.hashCode();
+            if (types.length > 1) {
+                parameters = new HashMap();
+                for (int i = 1; i < types.length; i++) {
+                    String parameter = types[i].trim();
+                    final int index = parameter.indexOf('=');
+                    if (index != -1) {
+                        parameters.put(parameter.substring(0, index), parameter.substring(index + 1));
+                    } else {
+                        parameters.put(parameter, null);
+                    }
+                }
+                hash += parameters.hashCode();
+            }
+            hashCode = hash;
+        }
+        
+        public String getMediaType() {
+            return mediaType;
+        }
+        
+        public Map getParameters() {
+            return parameters;
+        }
+        
+        public int hashCode() {
+            return hashCode;
+        }
+        
+        public boolean equals(Object obj) {
+            if (obj == null || !(obj instanceof ContentType)) {
+                return false;
+            }
+            if (obj == this) {
+                return true;
+            }
+            ContentType cmp = (ContentType) obj;
+            if (!mediaType.equalsIgnoreCase(cmp.mediaType)) {
+                return false;
+            }
+            if (parameters == null && cmp.parameters == null) {
+                return true;
+            } else if ((parameters == null && cmp.parameters != null) || (parameters != null && cmp.parameters == null)) {
+                return false;
+            } else {
+                return parameters.equals(cmp.parameters);
+            }
+        }
+        
+        public String toString() {
+            StringBuilder buf = new StringBuilder(mediaType);
+            if (parameters != null) {
+                Iterator itr = parameters.entrySet().iterator();
+                while (itr.hasNext()) {
+                    Map.Entry entry = (Map.Entry) itr.next();
+                    buf.append(entry.getKey());
+                    if (entry.getValue() != null) {
+                        buf.append('=').append(entry.getValue());
+                    }
+                    if (itr.hasNext()) {
+                        buf.append("; ");
+                    }
+                }
+            }
+            return buf.toString();
+        }
     }
 }
