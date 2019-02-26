@@ -416,7 +416,7 @@ The DOCTYPE is:
 <!-- case要素は、switch要素による条件選択中の1条件を定義します。
  この条件に一致する場合の処理を、子要素に定義します。
 -->
-<!ELEMENT case (test? | step* | callflow* | reply* | switch* | if* | for* | while* | break? | continue? | return? | throw?)*>
+<!ELEMENT case ((test? | step* | callflow* | reply* | switch* | if* | for* | while* | break? | continue? | return? | throw?), finally?)*>
 
 <!-- test属性は、case要素が表す条件を定義します。
  この属性の値には、@で囲んだキーとそのキー値に対する条件式を記述します。
@@ -458,12 +458,12 @@ The DOCTYPE is:
 <!-- default要素は、switch要素による条件選択中の条件外の条件を定義します。
  全てのcase要素の条件に該当しない場合の処理を、子要素に定義します。
 -->
-<!ELEMENT default (step* | callflow* | reply* | switch* | if* | for* | while* | break? | continue? | return? | throw?)*>
+<!ELEMENT default ((step* | callflow* | reply* | switch* | if* | for* | while* | break? | continue? | return? | throw?)*, finally?)>
 
 <!-- if要素は、一定条件下での処理を定義します。
  この条件に一致する場合の処理を、子要素に定義します。
 -->
-<!ELEMENT if (test? | step* | callflow* | reply* | switch* | if* | for* | while* | break? | continue? | return? | throw?)*>
+<!ELEMENT if ((test? | step* | callflow* | reply* | switch* | if* | for* | while* | break? | continue? | return? | throw?)*, finally?) >
 
 <!-- test属性は、if要素が表す条件を定義します。
  case要素のtest属性と同様の値を定義します。
@@ -500,7 +500,7 @@ The DOCTYPE is:
  
  繰り返し対象のオブジェクトを指定しない場合は、end属性で指定した回数分、子要素のステップを実行します。
 -->
-<!ELEMENT for (target?, (step* | callflow* | reply* | switch* | if* | for* | while* | break? | continue? | return? | throw?)*)>
+<!ELEMENT for (target?, (step* | callflow* | reply* | switch* | if* | for* | while* | break? | continue? | return? | throw?)*, finally?)>
 
 <!-- var属性は、繰り返し変数の変数名を定義します。
  ここで定義した変数名で、var要素を使って参照する事ができます。
@@ -537,7 +537,7 @@ The DOCTYPE is:
 <!-- while要素は、一定条件下での処理を定義します。
  この条件に一致する場合の処理を、子要素に定義します。
 -->
-<!ELEMENT while (test? | step* | callflow* | reply* | switch* | if* | for* | while* | break? | continue? | return? | throw?)*>
+<!ELEMENT while ((test? | step* | callflow* | reply* | switch* | if* | for* | while* | break? | continue? | return? | throw?)*, finally?)>
 
 <!-- test属性は、while要素が表す条件を定義します。
  case要素のtest属性と同様の値を定義します。
