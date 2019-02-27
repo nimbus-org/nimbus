@@ -31,10 +31,13 @@
  */
 package jp.ossc.nimbus.service.http.httpclient;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -46,16 +49,16 @@ import java.util.zip.InflaterInputStream;
 
 import org.apache.commons.httpclient.Header;
 import org.apache.commons.httpclient.HttpMethodBase;
-import org.xerial.snappy.SnappyInputStream;
+import org.mozilla.universalchardet.UniversalDetector;
 
 import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.core.ServiceName;
+import jp.ossc.nimbus.core.NimbusClassLoader;
 import jp.ossc.nimbus.service.http.HttpResponse;
 import jp.ossc.nimbus.util.converter.BindingStreamConverter;
 import jp.ossc.nimbus.util.converter.ConvertException;
 import jp.ossc.nimbus.util.converter.StreamConverter;
 import jp.ossc.nimbus.util.converter.StreamStringConverter;
-import net.jpountz.lz4.LZ4BlockInputStream;
 
 
 /**
@@ -106,8 +109,9 @@ public class HttpResponseImpl implements HttpResponse, Cloneable{
     protected Set removeNormalStatusCodeSet;
     protected Map errorStatusCodeMap;
     protected Set removeErrorStatusCodeSet;
-    
     protected ServiceName httpClientFactoryServiceName;
+    protected boolean isAutoDetectCharset;
+    protected String characterEncoding;
     
     /**
      * HTTPメソッドを設定する。<p>
@@ -179,6 +183,26 @@ public class HttpResponseImpl implements HttpResponse, Cloneable{
     }
     
     /**
+     * レスポンスヘッダのContent-Typeに文字コードが正しく設定されていない場合に、適切な文字コードを自動検出するかどうかを設定する。<p>
+     * デフォルトは、自動検出しない。<br>
+     * 自動検出は、レスポンスストリームを読み込む必要があるので、{@link #getObject}または、{@link #getAutoDetectCharacterEncoding()}を明示的に呼び出さない限り実行されない。<br>
+     *
+     * @param isAutoDetect 自動検出する場合、true
+     */
+    public void setAutoDetectCharset(boolean isAutoDetect){
+        isAutoDetectCharset = isAutoDetect;
+    }
+    
+    /**
+     * レスポンスヘッダのContent-Typeに文字コードが正しく設定されていない場合に、適切な文字コードを自動検出するかどうかを判定する。<p>
+     *
+     * @return trueの場合、自動検出する
+     */
+    public boolean isAutoDetectCharset(){
+        return isAutoDetectCharset;
+    }
+    
+    /**
      * 入力ストリームの圧縮を解除する。<p>
      * (Content-Encodingに指定された逆順で解除)
      * 
@@ -202,12 +226,48 @@ public class HttpResponseImpl implements HttpResponse, Cloneable{
                         || encode.indexOf(CONTENT_ENCODING_X_GZIP) != -1){
                 // gzip圧縮解除
                 in = new GZIPInputStream(in);
-
             }else if(encode.indexOf(CONTENT_ENCODING_SNAPPY) != -1){
-                in = new SnappyInputStream(in);
+                try{
+                    Class clazz = NimbusClassLoader.getInstance().loadClass("org.xerial.snappy.SnappyInputStream");
+                    Constructor constructor = clazz.getConstructor(new Class[]{InputStream.class});
+                    in = (InputStream)constructor.newInstance(new Object[]{in});
+                }catch(InvocationTargetException e){
+                    Throwable th = e.getTargetException();
+                    if(th instanceof IOException){
+                        throw (IOException)th;
+                    }else if(th instanceof RuntimeException){
+                        throw (RuntimeException)th;
+                    }else if(th instanceof Error){
+                        throw (Error)th;
+                    }else{
+                        throw new IOException("Unsupported encoding. encode=" + encode, e);
+                    }
+                }catch(RuntimeException e){
+                    throw e;
+                }catch(Exception e){
+                    throw new IOException("Unsupported encoding. encode=" + encode, e);
+                }
             }else if(encode.indexOf(CONTENT_ENCODING_LZ4) != -1){
-                in = new LZ4BlockInputStream(in);
-
+                try{
+                    Class clazz = NimbusClassLoader.getInstance().loadClass("net.jpountz.lz4.LZ4BlockInputStream");
+                    Constructor constructor = clazz.getConstructor(new Class[]{InputStream.class});
+                    in = (InputStream)constructor.newInstance(new Object[]{in});
+                }catch(InvocationTargetException e){
+                    Throwable th = e.getTargetException();
+                    if(th instanceof IOException){
+                        throw (IOException)th;
+                    }else if(th instanceof RuntimeException){
+                        throw (RuntimeException)th;
+                    }else if(th instanceof Error){
+                        throw (Error)th;
+                    }else{
+                        throw new IOException("Unsupported encoding. encode=" + encode, e);
+                    }
+                }catch(RuntimeException e){
+                    throw e;
+                }catch(Exception e){
+                    throw new IOException("Unsupported encoding. encode=" + encode, e);
+                }
             }else{
                 throw new IOException("Can not decompress. [" + encode + "]");
             }
@@ -381,9 +441,13 @@ public class HttpResponseImpl implements HttpResponse, Cloneable{
                     .getServiceObject(streamConverterServiceName);
             }
             if(converter instanceof StreamStringConverter){
-                converter = ((StreamStringConverter)converter).cloneCharacterEncodingToObject(
-                    getCharacterEncoding()
-                );
+                String charset = null;
+                try{
+                    charset = getAutoDetectCharacterEncoding();
+                }catch(IOException e){
+                    throw new ConvertException("Error occured on process of AutoDetectCharset.", e);
+                }
+                converter = ((StreamStringConverter)converter).cloneCharacterEncodingToObject(charset);
             }
             if(inputStream != null){
                 try{
@@ -411,26 +475,92 @@ public class HttpResponseImpl implements HttpResponse, Cloneable{
         outputObject = object;
     }
     
-    // HttpResponseのJavaDoc
+    /**
+     * レスポンスの文字エンコーディングを取得する。<p>
+     * 文字コードの自動検知を実行していない場合は、レスポンスヘッダのcharsetを取得する。charsetが空の場合は、{@link #DEFAULT_RESPONSE_CHARSET}を返す。<br>
+     *
+     * @return 文字エンコーディング
+     */
     public String getCharacterEncoding(){
-        final String type = getHeader(HEADER_CONTENT_TYPE);
-        if(type == null){
-            return DEFAULT_RESPONSE_CHARSET;
-        }
-        ContentType contentType = new ContentType(type);
-        String charset = contentType.getParameters() == null ? null : (String)contentType.getParameters().get(HEADER_CHARSET);
-        if(charset == null){
-            return DEFAULT_RESPONSE_CHARSET;
-        }else{
-            charset = charset.trim();
-            if(charset.length() > 3
-                && ((charset.charAt(0) == '"' && charset.charAt(charset.length() - 1) == '"')
-                    || (charset.charAt(0) == '\'' && charset.charAt(charset.length() - 1) == '\''))
-            ){
-                charset = charset.substring(1, charset.length() - 1);
+        if(characterEncoding == null){
+            try{
+                return detectCharacterEncoding(false);
+            }catch(IOException e){
+                return DEFAULT_RESPONSE_CHARSET;
             }
-            return charset;
         }
+        return characterEncoding;
+    }
+    
+    /**
+     * レスポンスの文字エンコーディングを取得する。<p>
+     * {@link #isAutoDetectCharset()}がtrueの場合は、文字コードの自動検知を行った結果を取得する。falseの場合は、{@link #getCharacterEncoding()}と同じ。<br>
+     *
+     * @return 文字エンコーディング
+     * @exception IOException 文字コードの自動検知処理でレスポンスストリームの読み込みに失敗した場合
+     */
+    public String getAutoDetectCharacterEncoding() throws IOException{
+        if(characterEncoding == null){
+            return detectCharacterEncoding(true);
+        }
+        return characterEncoding;
+    }
+    
+    protected String detectCharacterEncoding(boolean isDetect) throws IOException{
+        if(characterEncoding != null){
+            return characterEncoding;
+        }
+        String charset = null;
+        final String type = getHeader(HEADER_CONTENT_TYPE);
+        if(type != null){
+            ContentType contentType = new ContentType(type);
+            charset = contentType.getParameters() == null ? null : (String)contentType.getParameters().get(HEADER_CHARSET);
+            if(charset != null){
+                charset = charset.trim();
+                if(charset.length() > 3
+                    && ((charset.charAt(0) == '"' && charset.charAt(charset.length() - 1) == '"')
+                        || (charset.charAt(0) == '\'' && charset.charAt(charset.length() - 1) == '\''))
+                ){
+                    charset = charset.substring(1, charset.length() - 1);
+                }
+            }
+        }
+        if((charset == null || !Charset.isSupported(charset))
+            && isAutoDetectCharset
+            && isDetect
+        ){
+            if(inputStream == null){
+                return charset == null ? DEFAULT_RESPONSE_CHARSET : charset;
+            }
+            if(!inputStream.markSupported()){
+                final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                final byte[] bytes = new byte[1024];
+                int length = 0;
+                while((length = inputStream.read(bytes)) != -1){
+                    baos.write(bytes, 0, length);
+                }
+                outputBytes = baos.toByteArray();
+                inputStream = new ByteArrayInputStream(outputBytes);
+            }
+            inputStream.mark(Integer.MAX_VALUE);
+            UniversalDetector detector = new UniversalDetector(null);
+            try{
+                final byte[] buf = new byte[1024];
+                int read = 0;
+                while((read = inputStream.read(buf)) > 0 && !detector.isDone()) {
+                    detector.handleData(buf, 0, read);
+                }
+                detector.dataEnd();
+            }finally{
+                inputStream.reset();
+            }
+            String detectedCharset = detector.getDetectedCharset();
+            if(detectedCharset != null){
+                charset = detectedCharset;
+            }
+        }
+        characterEncoding = charset == null ? DEFAULT_RESPONSE_CHARSET : charset;
+        return characterEncoding;
     }
     
     // HttpResponseのJavaDoc

@@ -106,6 +106,8 @@ public class HttpClientFactoryService extends ServiceBase
     protected long idleConnectionCheckInterval;
     protected IdleConnectionTimeoutThread idleConnectionTimeoutThread;
     protected Map hostConfigurations;
+    protected Boolean isRequestAutoDisabledSNI;
+    protected Boolean isResponseAutoDetectCharset;
     
     // HttpClientFactoryServiceMBeanのJavaDoc
     public void setConnectionTimeout(int millis){
@@ -265,6 +267,16 @@ public class HttpClientFactoryService extends ServiceBase
     }
     
     // HttpClientFactoryServiceMBeanのJavaDoc
+    public void setRequestAutoDisabledSNI(boolean isAutoDisabled){
+        isRequestAutoDisabledSNI = isAutoDisabled ? Boolean.TRUE : Boolean.FALSE;
+    }
+    
+    // HttpClientFactoryServiceMBeanのJavaDoc
+    public boolean isRequestAutoDisabledSNI(){
+        return isRequestAutoDisabledSNI == null ? false : isRequestAutoDisabledSNI.booleanValue();
+    }
+    
+    // HttpClientFactoryServiceMBeanのJavaDoc
     public void setRequestStreamConverterServiceName(ServiceName name){
         requestStreamConverterServiceName = name;
     }
@@ -313,6 +325,15 @@ public class HttpClientFactoryService extends ServiceBase
     // HttpClientFactoryServiceMBeanのJavaDoc
     public Map getResponseErrorStatusCodeMap(){
         return responseErrorStatusCodeMap;
+    }
+    
+    // HttpClientFactoryServiceMBeanのJavaDoc
+    public void setResponseAutoDetectCharset(boolean isAutoDetect){
+        isResponseAutoDetectCharset = isAutoDetect ? Boolean.TRUE : Boolean.FALSE;
+    }
+    // HttpClientFactoryServiceMBeanのJavaDoc
+    public boolean isResponseAutoDetectCharset(){
+        return isRequestAutoDisabledSNI == null ? false : isResponseAutoDetectCharset.booleanValue();
     }
     
     // HttpClientFactoryServiceMBeanのJavaDoc
@@ -675,6 +696,9 @@ public class HttpClientFactoryService extends ServiceBase
                 && requestDeflateLength != -1){
                 request.setDeflateLength(requestDeflateLength);
             }
+            if(isRequestAutoDisabledSNI != null){
+                request.setAutoDisabledSNI(isRequestAutoDisabledSNI.booleanValue());
+            }
             return request;
         }catch(CloneNotSupportedException e){
             throw new HttpRequestCreateException(getServiceNameObject(),e);
@@ -918,6 +942,9 @@ public class HttpClientFactoryService extends ServiceBase
                         response = new HttpResponseImpl();
                     }else{
                         response = (HttpResponseImpl)response.clone();
+                    }
+                    if(isResponseAutoDetectCharset != null){
+                        response.setAutoDetectCharset(isResponseAutoDetectCharset.booleanValue());
                     }
                     if(response.getStreamConverter() == null
                          && response.getStreamConverterServiceName() == null){

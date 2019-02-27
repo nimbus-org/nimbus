@@ -261,6 +261,21 @@ public interface HttpClientFactoryServiceMBean extends ServiceBaseMBean{
     public int getRequestDeflateLength();
     
     /**
+     * リクエスト時に、SNIを自動で無効化するかどうかを設定する。<p>
+     * デフォルトは、false。<br>
+     *
+     * @param isAutoDisabled 自動で無効化する場合true
+     */
+    public void setRequestAutoDisabledSNI(boolean isAutoDisabled);
+    
+    /**
+     * リクエスト時に、SNIを自動で無効化するかどうかを判定する。<p>
+     *
+     * @return trueの場合、自動で無効化する
+     */
+    public boolean isRequestAutoDisabledSNI();
+    
+    /**
      * HTTPリクエストに設定された入力オブジェクトをストリームに変換する{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}サービスのサービス名を設定する。<p>
      * HTTPリクエストに既に設定されている場合は、そちらが優先される。<br>
      *
@@ -329,6 +344,21 @@ public interface HttpClientFactoryServiceMBean extends ServiceBaseMBean{
      * @return 異常なレスポンスのHTTPステータスとその場合にthrowする例外のマップ
      */
     public Map getResponseErrorStatusCodeMap();
+    
+    /**
+     * レスポンスヘッダのContent-Typeに文字コードが正しく設定されていない場合に、適切な文字コードを自動検出するかどうかを設定する。<p>
+     * デフォルトは、自動検出しない。<br>
+     *
+     * @param isAutoDetect 自動検出する場合、true
+     */
+    public void setResponseAutoDetectCharset(boolean isAutoDetect);
+    
+    /**
+     * レスポンスヘッダのContent-Typeに文字コードが正しく設定されていない場合に、適切な文字コードを自動検出するかどうかを判定する。<p>
+     *
+     * @return trueの場合、自動検出する
+     */
+    public boolean isResponseAutoDetectCharset();
     
     /**
      * ジャーナルを出力する{@link jp.ossc.nimbus.service.journal.Journal Journal}サービスのサービス名を設定する。<p>
