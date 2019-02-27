@@ -46,11 +46,6 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.http.*;
 import jp.ossc.nimbus.util.converter.*;
 
-
-import org.xerial.snappy.SnappyOutputStream;
-import net.jpountz.lz4.LZ4BlockOutputStream;
-
-
 /**
  * Jakarta HttpClientを使ったHTTPリクエスト抽象クラス。<p>
  *
@@ -682,10 +677,47 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
             os = new GZIPOutputStream(os);
 
         }else if(encode.indexOf(CONTENT_ENCODING_SNAPPY) != -1){
-            os = new SnappyOutputStream(os);
+            try{
+                Class clazz = NimbusClassLoader.getInstance().loadClass("org.xerial.snappy.SnappyOutputStream");
+                Constructor constructor = clazz.getConstructor(new Class[]{OutputStream.class});
+                os = (OutputStream)constructor.newInstance(new Object[]{os});
+            }catch(InvocationTargetException e){
+                Throwable th = e.getTargetException();
+                if(th instanceof IOException){
+                    throw (IOException)th;
+                }else if(th instanceof RuntimeException){
+                    throw (RuntimeException)th;
+                }else if(th instanceof Error){
+                    throw (Error)th;
+                }else{
+                    throw new IOException("Unsupported encoding. encode=" + encode, e);
+                }
+            }catch(RuntimeException e){
+                throw e;
+            }catch(Exception e){
+                throw new IOException("Unsupported encoding. encode=" + encode, e);
+            }
         }else if(encode.indexOf(CONTENT_ENCODING_LZ4) != -1){
-            os = new LZ4BlockOutputStream(os);
-
+            try{
+                Class clazz = NimbusClassLoader.getInstance().loadClass("net.jpountz.lz4.LZ4BlockOutputStream");
+                Constructor constructor = clazz.getConstructor(new Class[]{OutputStream.class});
+                os = (OutputStream)constructor.newInstance(new Object[]{os});
+            }catch(InvocationTargetException e){
+                Throwable th = e.getTargetException();
+                if(th instanceof IOException){
+                    throw (IOException)th;
+                }else if(th instanceof RuntimeException){
+                    throw (RuntimeException)th;
+                }else if(th instanceof Error){
+                    throw (Error)th;
+                }else{
+                    throw new IOException("Unsupported encoding. encode=" + encode, e);
+                }
+            }catch(RuntimeException e){
+                throw e;
+            }catch(Exception e){
+                throw new IOException("Unsupported encoding. encode=" + encode, e);
+            }
         }else{
             throw new IOException("Can not compress. [" + encode + "]");
         }
