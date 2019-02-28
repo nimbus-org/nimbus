@@ -222,7 +222,7 @@ public class DefaultQueueService extends ServiceBase
         }
         final long startTime = timeout > 0 ? System.currentTimeMillis() : 0;
         while(maxThresholdSize > 0
-             && (pushMonitor.isWait()
+             && ((pushMonitor.isWait() && !pushMonitor.isFirst())
                     || (size() >= maxThresholdSize))
              && !fourceEndFlg
         ){
