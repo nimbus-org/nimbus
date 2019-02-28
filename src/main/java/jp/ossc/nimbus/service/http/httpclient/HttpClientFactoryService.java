@@ -39,6 +39,7 @@ import org.apache.commons.httpclient.*;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.auth.*;
 import org.apache.commons.httpclient.params.*;
+import org.apache.commons.httpclient.protocol.Protocol;
 import org.apache.commons.httpclient.util.IdleConnectionTimeoutThread;
 
 import jp.ossc.nimbus.core.*;
@@ -104,6 +105,9 @@ public class HttpClientFactoryService extends ServiceBase
     protected long idleConnectionTimeout;
     protected long idleConnectionCheckInterval;
     protected IdleConnectionTimeoutThread idleConnectionTimeoutThread;
+    protected Map hostConfigurations;
+    protected Boolean isRequestAutoDisabledSNI;
+    protected Boolean isResponseAutoDetectCharset;
     
     // HttpClientFactoryServiceMBeanのJavaDoc
     public void setConnectionTimeout(int millis){
@@ -263,6 +267,16 @@ public class HttpClientFactoryService extends ServiceBase
     }
     
     // HttpClientFactoryServiceMBeanのJavaDoc
+    public void setRequestAutoDisabledSNI(boolean isAutoDisabled){
+        isRequestAutoDisabledSNI = isAutoDisabled ? Boolean.TRUE : Boolean.FALSE;
+    }
+    
+    // HttpClientFactoryServiceMBeanのJavaDoc
+    public boolean isRequestAutoDisabledSNI(){
+        return isRequestAutoDisabledSNI == null ? false : isRequestAutoDisabledSNI.booleanValue();
+    }
+    
+    // HttpClientFactoryServiceMBeanのJavaDoc
     public void setRequestStreamConverterServiceName(ServiceName name){
         requestStreamConverterServiceName = name;
     }
@@ -311,6 +325,15 @@ public class HttpClientFactoryService extends ServiceBase
     // HttpClientFactoryServiceMBeanのJavaDoc
     public Map getResponseErrorStatusCodeMap(){
         return responseErrorStatusCodeMap;
+    }
+    
+    // HttpClientFactoryServiceMBeanのJavaDoc
+    public void setResponseAutoDetectCharset(boolean isAutoDetect){
+        isResponseAutoDetectCharset = isAutoDetect ? Boolean.TRUE : Boolean.FALSE;
+    }
+    // HttpClientFactoryServiceMBeanのJavaDoc
+    public boolean isResponseAutoDetectCharset(){
+        return isRequestAutoDisabledSNI == null ? false : isResponseAutoDetectCharset.booleanValue();
     }
     
     // HttpClientFactoryServiceMBeanのJavaDoc
@@ -414,6 +437,32 @@ public class HttpClientFactoryService extends ServiceBase
         }else{
             return -1;
         }
+    }
+    
+    /**
+     * プロトコルを登録する。<p>
+     *
+     * @param id プロトコルのID
+     * @param protocol プロトコル
+     */
+    public void setProtocol(String id, Protocol protocol){
+        Protocol.registerProtocol(id, protocol);
+    }
+    
+    /**
+     * ホスト毎の設定を登録する。<p>
+     *
+     * @param config ホスト毎の設定
+     * @exception IllegalArgumentException configに、ホストが設定されていない場合
+     */
+    public void addHostConfiguration(HostConfiguration config) throws IllegalArgumentException{
+        if(!config.isHostSet()){
+            throw new IllegalArgumentException("Host don't be specified.");
+        }
+        if(hostConfigurations == null){
+            hostConfigurations = new HashMap();
+        }
+        hostConfigurations.put(new HostKey(config), config);
     }
     
     /**
@@ -647,6 +696,9 @@ public class HttpClientFactoryService extends ServiceBase
                 && requestDeflateLength != -1){
                 request.setDeflateLength(requestDeflateLength);
             }
+            if(isRequestAutoDisabledSNI != null){
+                request.setAutoDisabledSNI(isRequestAutoDisabledSNI.booleanValue());
+            }
             return request;
         }catch(CloneNotSupportedException e){
             throw new HttpRequestCreateException(getServiceNameObject(),e);
@@ -865,7 +917,12 @@ public class HttpClientFactoryService extends ServiceBase
                         }
                     }
                     
-                    status = client.executeMethod(method);
+                    if(hostConfigurations != null){
+                        HostKey key = new HostKey(method.getURI());
+                        status = client.executeMethod((HostConfiguration)hostConfigurations.get(key), req.wrapHttpMethod(method));
+                    }else{
+                        status = client.executeMethod(req.wrapHttpMethod(method));
+                    }
                 }finally{
                     if(journal != null){
                         journal.addEndStep();
@@ -885,6 +942,9 @@ public class HttpClientFactoryService extends ServiceBase
                         response = new HttpResponseImpl();
                     }else{
                         response = (HttpResponseImpl)response.clone();
+                    }
+                    if(isResponseAutoDetectCharset != null){
+                        response.setAutoDetectCharset(isResponseAutoDetectCharset.booleanValue());
                     }
                     if(response.getStreamConverter() == null
                          && response.getStreamConverterServiceName() == null){
@@ -962,6 +1022,11 @@ public class HttpClientFactoryService extends ServiceBase
                 }
                 throw new HttpClientConnectTimeoutException(getServiceNameObject(), e);
             }catch(CloneNotSupportedException e){
+                if(journal != null){
+                    journal.addInfo(JOURNAL_ACCESS_EXCEPTION, e);
+                }
+                throw new HttpException(getServiceNameObject(), e);
+            }catch(URIException e){
                 if(journal != null){
                     journal.addInfo(JOURNAL_ACCESS_EXCEPTION, e);
                 }
@@ -1091,6 +1156,62 @@ public class HttpClientFactoryService extends ServiceBase
         public void setVersion(int v){
             super.setVersion(v);
             cookie.setVersion(v);
+        }
+    }
+    
+    private static class HostKey implements Serializable{
+        
+        private static final long serialVersionUID = -5653844351151276479L;
+        
+        private String host;
+        private int port;
+        private String scheme;
+        
+        public HostKey(org.apache.commons.httpclient.URI uri) throws URIException{
+            this(uri.getHost(), uri.getPort(), uri.getScheme());
+        }
+        
+        public HostKey(HostConfiguration config){
+            this(config.getHost(), config.getPort(), config.getProtocol().getScheme());
+        }
+        
+        public HostKey(String host, int port, String scheme){
+            this.host = host;
+            this.port = port;
+            this.scheme = scheme;
+        }
+        
+        public boolean equals(Object obj){
+            if(obj == null || !(obj instanceof HostKey)){
+                return false;
+            }
+            if(obj == this){
+                return true;
+            }
+            HostKey cmp = (HostKey)obj;
+            if((host == null && cmp.host != null)
+                || (host != null && cmp.host == null)
+                || (host != null && !host.equals(cmp.host))
+            ){
+                return false;
+            }
+            if(port != cmp.port){
+                return false;
+            }
+            if((scheme == null && cmp.scheme != null)
+                || (scheme != null && cmp.scheme == null)
+                || (scheme != null && !scheme.equals(cmp.scheme))
+            ){
+                return false;
+            }
+            return true;
+        }
+        
+        public int hashCode(){
+            int hashCode= host == null ? 0 : host.hashCode();
+            hashCode += port;
+            hashCode += scheme == null ? 0 : scheme.hashCode();
+            return hashCode;
         }
     }
 }
