@@ -43,7 +43,7 @@ public interface DefaultBeanFlowInvokerFactoryServiceMBean
  extends ServiceBaseMBean{
     
     /** 更新時刻フォーマット文字列 */
-    public static final String TIME_FORMAT = "yyyy.MM.dd hh:mm:ss";
+    public static final String TIME_FORMAT = "yyyy.MM.dd HH:mm:ss";
     
     /**
      * {@link jp.ossc.nimbus.service.beancontrol.resource.ResourceManagerFactory ResourceManagerFactory}サービスのサービス名を設定する。<p>
