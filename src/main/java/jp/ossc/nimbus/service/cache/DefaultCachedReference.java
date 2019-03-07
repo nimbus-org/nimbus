@@ -107,10 +107,14 @@ public class DefaultCachedReference
         if(notify){
             notifyAccessed(source);
         }
-        if(cacheObj == null){
-            cacheObj = getLinkedObject();
+        Object ret = null;
+        synchronized(this){
+            if(cacheObj == null){
+                cacheObj = getLinkedObject();
+            }
+            ret = cacheObj;
         }
-        return cacheObj;
+        return ret;
     }
     
     // CachedReferenceのJavaDoc
@@ -122,7 +126,9 @@ public class DefaultCachedReference
     public void set(Object source, Object obj)
      throws IllegalCachedReferenceException{
         notifyChange(source, obj);
-        cacheObj = obj;
+        synchronized(this){
+            cacheObj = obj;
+        }
     }
     
     /**
@@ -153,7 +159,9 @@ public class DefaultCachedReference
     // CachedReferenceのJavaDoc
     public void remove(Object source){
         notifyRemoved(source);
-        cacheObj = null;
+        synchronized(this){
+            cacheObj = null;
+        }
         if(linkedReferences != null){
             linkedReferences.clear();
         }
