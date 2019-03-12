@@ -253,7 +253,7 @@ public class FileContextStoreService extends ServiceBase implements FileContextS
     public void load(Context context) throws Exception{
         synchronized(entireFile){
             if(!entireFile.exists()){
-                throw new IOException("EntireFile don't exists.");
+                return;
             }
             FileInputStream fis = new FileInputStream(entireFile);
             try{
@@ -303,7 +303,7 @@ public class FileContextStoreService extends ServiceBase implements FileContextS
             }else{
                 synchronized(entireFile){
                     if(!entireFile.exists()){
-                        throw new IOException("KeyFile and EntireFile don't exists.");
+                        return;
                     }
                     FileInputStream fis = new FileInputStream(entireFile);
                     DataInputStream dis = new DataInputStream(fis);
@@ -360,7 +360,7 @@ public class FileContextStoreService extends ServiceBase implements FileContextS
             if(valueFile == null && keyFileMap.size() == 0){
                 synchronized(entireFile){
                     if(!entireFile.exists()){
-                        throw new IOException("KeyFile and EntireFile don't exists.");
+                        return;
                     }
                     FileInputStream fis = new FileInputStream(entireFile);
                     DataInputStream dis = new DataInputStream(fis);
