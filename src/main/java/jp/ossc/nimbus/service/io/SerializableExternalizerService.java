@@ -216,7 +216,6 @@ public class SerializableExternalizerService extends ServiceBase
                 output = createObjectOutput(sos);
                 writeInternal(obj, output);
                 sos.flush();
-                sos.close();
                 break;
             case COMPRESS_MODE_LZ4:
                 LZ4BlockOutputStream lzos = new LZ4BlockOutputStream(out);
@@ -224,7 +223,6 @@ public class SerializableExternalizerService extends ServiceBase
                 writeInternal(obj, output);
                 lzos.flush();
                 lzos.finish();
-                lzos.close();
                 break;
             default:
                 switch(compressMode){
