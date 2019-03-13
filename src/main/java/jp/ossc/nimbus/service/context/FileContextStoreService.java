@@ -188,18 +188,31 @@ public class FileContextStoreService extends ServiceBase implements FileContextS
     
     public void save(Context context) throws Exception{
         synchronized(entireFile){
-            FileOutputStream fos = new FileOutputStream(entireFile);
+            Set keySet = context.keySet();
+            RandomAccessFile raf = new RandomAccessFile(entireFile, "rw");
             try{
-                Set keySet = context.keySet();
+                int size = keySet.size();
+                if(raf.length() != 0){
+                    raf.seek(0);
+                    size = raf.readInt();
+                    size += keySet.size();
+                    raf.seek(0);
+                }
+                raf.writeInt(size);
+            }finally{
+                raf.close();
+            }
+            FileOutputStream fos = new FileOutputStream(entireFile, true);
+            try{
                 DataOutputStream dos = new DataOutputStream(fos);
-                dos.writeInt(keySet.size());
                 Iterator keys = keySet.iterator();
                 while(keys.hasNext()){
                     Object key = keys.next();
                     Object value = context.get(key);
-                    externalizer.writeExternal(key, fos);
-                    externalizer.writeExternal(value, fos);
+                    externalizer.writeExternal(key, dos);
+                    externalizer.writeExternal(value, dos);
                 }
+                dos.flush();
             }finally{
                 fos.close();
             }
@@ -228,7 +241,9 @@ public class FileContextStoreService extends ServiceBase implements FileContextS
                 RandomAccessFile raf = new RandomAccessFile(keyFile, "rw");
                 try{
                     raf.seek(0);
-                    raf.writeInt(keyFileMap.size());
+                    int size = raf.readInt();
+                    raf.seek(0);
+                    raf.writeInt(size + 1);
                 }finally{
                     raf.close();
                 }
@@ -261,8 +276,8 @@ public class FileContextStoreService extends ServiceBase implements FileContextS
                 final int size = dis.readInt();
                 final boolean isSharedContext = context instanceof SharedContext;
                 for(int i = 0; i < size; i++){
-                    Object key = externalizer.readExternal(fis);
-                    Object value = externalizer.readExternal(fis);
+                    Object key = externalizer.readExternal(dis);
+                    Object value = externalizer.readExternal(dis);
                     try{
                         if(isLockOnLoad && isSharedContext){
                             ((SharedContext)context).lock(key);
@@ -292,8 +307,8 @@ public class FileContextStoreService extends ServiceBase implements FileContextS
                     DataInputStream dis = new DataInputStream(fis);
                     final int size = dis.readInt();
                     for(int i = 0; i < size; i++){
-                        Object key = externalizer.readExternal(fis);
-                        Object valueFile = externalizer.readExternal(fis);
+                        Object key = externalizer.readExternal(dis);
+                        Object valueFile = externalizer.readExternal(dis);
                         keyFileMap.put(key, valueFile);
                         map.put(key, null);
                     }
@@ -309,8 +324,8 @@ public class FileContextStoreService extends ServiceBase implements FileContextS
                     DataInputStream dis = new DataInputStream(fis);
                     final int size = dis.readInt();
                     for(int i = 0; i < size; i++){
-                        Object key = externalizer.readExternal(fis);
-                        Object value = externalizer.readExternal(fis);
+                        Object key = externalizer.readExternal(dis);
+                        Object value = externalizer.readExternal(dis);
                         File valueFile = File.createTempFile(valueFileNamePrefix, valueFileNameSuffix, valueDirectory);
                         FileOutputStream fos = new FileOutputStream(valueFile);
                         try{
@@ -328,9 +343,10 @@ public class FileContextStoreService extends ServiceBase implements FileContextS
                         Iterator entries = keyFileMap.entrySet().iterator();
                         while(entries.hasNext()){
                             Map.Entry entry = (Map.Entry)entries.next();
-                            externalizer.writeExternal(entry.getKey(), fos);
-                            externalizer.writeExternal(entry.getValue(), fos);
+                            externalizer.writeExternal(entry.getKey(), dos);
+                            externalizer.writeExternal(entry.getValue(), dos);
                         }
+                        dos.flush();
                     }finally{
                         fos.close();
                     }
@@ -366,8 +382,8 @@ public class FileContextStoreService extends ServiceBase implements FileContextS
                     DataInputStream dis = new DataInputStream(fis);
                     final int size = dis.readInt();
                     for(int i = 0; i < size; i++){
-                        Object k = externalizer.readExternal(fis);
-                        Object val = externalizer.readExternal(fis);
+                        Object k = externalizer.readExternal(dis);
+                        Object val = externalizer.readExternal(dis);
                         valueFile = File.createTempFile(valueFileNamePrefix, valueFileNameSuffix, valueDirectory);
                         FileOutputStream fos = new FileOutputStream(valueFile);
                         try{
@@ -384,9 +400,10 @@ public class FileContextStoreService extends ServiceBase implements FileContextS
                         Iterator entries = keyFileMap.entrySet().iterator();
                         while(entries.hasNext()){
                             Map.Entry entry = (Map.Entry)entries.next();
-                            externalizer.writeExternal(entry.getKey(), fos);
-                            externalizer.writeExternal(entry.getValue(), fos);
+                            externalizer.writeExternal(entry.getKey(), dos);
+                            externalizer.writeExternal(entry.getValue(), dos);
                         }
+                        dos.flush();
                     }finally{
                         fos.close();
                     }
