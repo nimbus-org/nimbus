@@ -42,6 +42,11 @@ import jp.ossc.nimbus.core.*;
 public interface RemoteClientServiceMBean extends FactoryServiceBaseMBean{
     
     /**
+     * プロキシするサービスのサービス名をスレッドコンテキストで指定して呼び出す際に、プロキシするサービスのサービス名を指定するコンテキストキー。<p>
+     */
+    public static final String CONTEXT_KEY_REMOTE_SERVICE_NAME = RemoteClientServiceMBean.class.getName().replace('.', '_') + "_REMOTE_SERVICE_NAME";
+    
+    /**
      * プロキシするサービスのインタフェース名を設定する。<p>
      *
      * @param className プロキシするサービスのインタフェース名
@@ -142,4 +147,18 @@ public interface RemoteClientServiceMBean extends FactoryServiceBaseMBean{
      * @return trueの場合、紐付ける
      */
     public boolean isCreateInterceptorChainByProxy();
+    
+    /**
+     * {@link jp.ossc.nimbus.service.context.Context Context}サービスのサービス名を設定する。<p>
+     *
+     * @param name Contextサービスのサービス名
+     */
+    public void setThreadContextServiceName(ServiceName name);
+    
+    /**
+     * {@link jp.ossc.nimbus.service.context.Context Context}サービスのサービス名を取得する。<p>
+     *
+     * @return Contextサービスのサービス名
+     */
+    public ServiceName getThreadContextServiceName();
 }
