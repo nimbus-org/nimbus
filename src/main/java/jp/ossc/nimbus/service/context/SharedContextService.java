@@ -260,12 +260,16 @@ public class SharedContextService extends DefaultContextService
                             cacheMap = (CacheMap)ServiceManagerFactory.getServiceObject(clientCacheMapServiceName);
                         }else if(clientCacheMap != null){
                             cacheMap = clientCacheMap;
+                        }else{
+                            cacheMap = null;
                         }
                     }else{
                         if(serverCacheMapServiceName != null){
                             cacheMap = (CacheMap)ServiceManagerFactory.getServiceObject(serverCacheMapServiceName);
                         }else if(serverCacheMap != null){
                             cacheMap = serverCacheMap;
+                        }else{
+                            cacheMap = null;
                         }
                     }
                     if(indexManager != null){
