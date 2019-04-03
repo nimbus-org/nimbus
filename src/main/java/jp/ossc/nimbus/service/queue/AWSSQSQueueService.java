@@ -359,7 +359,7 @@ public class AWSSQSQueueService extends ServiceBase implements Queue, AWSSQSQueu
             waitCount++;
         }
         try{
-            List messages = getMessageList(1, timeOutMs);
+            List messages = getMessageList(1, timeOutMs, isRemove);
             if(messages == null || messages.size() == 0){
                 return null;
             }
@@ -379,7 +379,7 @@ public class AWSSQSQueueService extends ServiceBase implements Queue, AWSSQSQueu
         }
     }
 
-    protected List getMessageList(int maxSize, long timeOutMs){
+    protected List getMessageList(int maxSize, long timeOutMs, boolean isRemove){
         ReceiveMessageRequest request = new ReceiveMessageRequest()
             .withQueueUrl(sqs.getQueueUrl(queueName).getQueueUrl());
         if(maxSize > 0){
@@ -388,6 +388,9 @@ public class AWSSQSQueueService extends ServiceBase implements Queue, AWSSQSQueu
         if(timeOutMs > 0){
             request.setSdkRequestTimeout((int)timeOutMs);
             request.setWaitTimeSeconds(Integer.valueOf((int)(timeOutMs / 1000)));
+        }
+        if(!isRemove){
+            request.setVisibilityTimeout(Integer.valueOf(0));
         }
         List messages = null;
         try{
@@ -421,7 +424,10 @@ public class AWSSQSQueueService extends ServiceBase implements Queue, AWSSQSQueu
         if(sqs == null){
             return;
         }
-        List messages = getMessageList(-1, 10000);
+        if(size() == 0){
+            return;
+        }
+        List messages = getMessageList(-1, 10000, true);
         if(messages == null || messages.size() == 0){
             return;
         }
@@ -436,7 +442,7 @@ public class AWSSQSQueueService extends ServiceBase implements Queue, AWSSQSQueu
         if(sqs == null){
             return 0;
         }
-        List messages = getMessageList(-1, 10000);
+        List messages = getMessageList(-1, 0, false);
         return messages == null ? 0 : messages.size();
     }
 
