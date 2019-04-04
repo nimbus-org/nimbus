@@ -38,6 +38,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.amazonaws.services.lambda.AWSLambda;
+import com.amazonaws.services.lambda.AWSLambdaClientBuilder;
 import com.amazonaws.services.lambda.model.InvocationType;
 import com.amazonaws.services.lambda.model.InvokeRequest;
 import com.amazonaws.services.lambda.model.InvokeResult;
@@ -60,11 +61,13 @@ public class AWSLambdaScheduleExecutorService extends AbstractScheduleExecutorSe
     private static final long serialVersionUID = 6075236051813713742L;
     
     protected ServiceName lambdaServiceName;
+    protected ServiceName lambdaClientBuilderServiceName;
     protected Integer clientExecutionTimeout = null;
     protected Integer requestTimeout = null;
     protected String encoding;
     
     protected AWSLambda lambda;
+    protected AWSLambdaClientBuilder lambdaClientBuilder;
     protected Map threadMap;
     
     {
@@ -79,6 +82,14 @@ public class AWSLambdaScheduleExecutorService extends AbstractScheduleExecutorSe
         lambdaServiceName = serviceName;
     }
     
+    public ServiceName getLambdaClientBuilderServiceName() {
+        return lambdaClientBuilderServiceName;
+    }
+
+    public void setLambdaClientBuilderServiceName(ServiceName serviceName) {
+        lambdaClientBuilderServiceName = serviceName;
+    }
+
     public int getClientExecutionTimeout() {
         return clientExecutionTimeout;
     }
@@ -111,16 +122,30 @@ public class AWSLambdaScheduleExecutorService extends AbstractScheduleExecutorSe
         lambda = awsLambda;
     }
     
+    public AWSLambdaClientBuilder getLambdaClientBuilder() {
+        return lambdaClientBuilder;
+    }
+
+    public void setLambdaClientBuilder(AWSLambdaClientBuilder builder) {
+        lambdaClientBuilder = builder;
+    }
+
     public void createService() throws Exception {
         threadMap = Collections.synchronizedMap(new HashMap());
     }
     
     public void startService() throws Exception {
-        if(lambdaServiceName != null){
+        if(lambda == null && lambdaServiceName != null){
             lambda = (AWSLambda) ServiceManagerFactory.getServiceObject(lambdaServiceName);
         }
+        if(lambda == null && lambdaClientBuilder == null && lambdaClientBuilderServiceName != null){
+            lambdaClientBuilder = (AWSLambdaClientBuilder) ServiceManagerFactory.getServiceObject(lambdaServiceName);
+        }
+        if(lambda == null && lambdaClientBuilder != null) {
+            lambda = lambdaClientBuilder.build();
+        }
         if(lambda == null){
-            throw new IllegalArgumentException("AWSLambda is null.");
+            lambda = AWSLambdaClientBuilder.standard().build();
         }
         if(encoding != null && !Charset.isSupported(encoding)) {
             throw new IllegalArgumentException("encoding is not support. encoding=" + encoding);
