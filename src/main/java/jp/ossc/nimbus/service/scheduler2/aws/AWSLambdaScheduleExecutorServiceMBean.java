@@ -31,6 +31,9 @@
  */
 package jp.ossc.nimbus.service.scheduler2.aws;
 
+import com.amazonaws.services.lambda.AWSLambda;
+import com.amazonaws.services.lambda.AWSLambdaClientBuilder;
+
 import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.service.scheduler2.AbstractScheduleExecutorServiceMBean;
 
@@ -60,6 +63,20 @@ public interface AWSLambdaScheduleExecutorServiceMBean extends AbstractScheduleE
      * @param serviceName AWSLambdaのサービス名
      */
     public void setLambdaServiceName(ServiceName serviceName);
+    
+    /**
+     * AWSLambdaClientBuilderのサービス名を取得する。<p>
+     * 
+     * @return AWSLambdaClientBuilderのサービス名
+     */
+    public ServiceName getLambdaClientBuilderServiceName();
+
+    /**
+     * AWSLambdaClientBuilderのサービス名を設定する。<p>
+     * 
+     * @param serviceName AWSLambdaClientBuilderのサービス名
+     */
+    public void setLambdaClientBuilderServiceName(ServiceName serviceName);
     
     /**
      * Lambdaへのリクエスト時のClientExecutionTimeoutを取得する。<p>
@@ -103,4 +120,31 @@ public interface AWSLambdaScheduleExecutorServiceMBean extends AbstractScheduleE
      */
     public void setEncoding(String encoding);
 
+    /**
+     * AWSLambdaを取得する。<p>
+     * 
+     * @return AWSLambda
+     */
+    public AWSLambda getLambda();
+    
+    /**
+     * AWSLambdaを設定する。<p>
+     * 
+     * @param awsLambda AWSLambda
+     */
+    public void setLambda(AWSLambda awsLambda);
+    
+    /**
+     * AWSLambdaClientBuilderを取得する。<p>
+     * 
+     * @return AWSLambdaClientBuilder
+     */
+    public AWSLambdaClientBuilder getLambdaClientBuilder();
+
+    /**
+     * AWSLambdaClientBuilderを設定する。<p>
+     * 
+     * @param builder AWSLambdaClientBuilder
+     */
+    public void setLambdaClientBuilder(AWSLambdaClientBuilder builder);
 }
