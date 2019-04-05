@@ -55,28 +55,28 @@ public interface AWSLambdaScheduleExecutorServiceMBean extends AbstractScheduleE
      * 
      * @return AWSLambdaのサービス名
      */
-    public ServiceName getLambdaServiceName();
+    public ServiceName getAWSLambdaServiceName();
     
     /**
      * AWSLambdaのサービス名を設定する。<p>
      * 
      * @param serviceName AWSLambdaのサービス名
      */
-    public void setLambdaServiceName(ServiceName serviceName);
+    public void setAWSLambdaServiceName(ServiceName serviceName);
     
     /**
      * AWSLambdaClientBuilderのサービス名を取得する。<p>
      * 
      * @return AWSLambdaClientBuilderのサービス名
      */
-    public ServiceName getLambdaClientBuilderServiceName();
+    public ServiceName getAWSLambdaClientBuilderServiceName();
 
     /**
      * AWSLambdaClientBuilderのサービス名を設定する。<p>
      * 
      * @param serviceName AWSLambdaClientBuilderのサービス名
      */
-    public void setLambdaClientBuilderServiceName(ServiceName serviceName);
+    public void setAWSLambdaClientBuilderServiceName(ServiceName serviceName);
     
     /**
      * Lambdaへのリクエスト時のClientExecutionTimeoutを取得する。<p>
@@ -125,26 +125,26 @@ public interface AWSLambdaScheduleExecutorServiceMBean extends AbstractScheduleE
      * 
      * @return AWSLambda
      */
-    public AWSLambda getLambda();
+    public AWSLambda getAWSLambda();
     
     /**
      * AWSLambdaを設定する。<p>
      * 
      * @param awsLambda AWSLambda
      */
-    public void setLambda(AWSLambda awsLambda);
+    public void setAWSLambda(AWSLambda awsLambda);
     
     /**
      * AWSLambdaClientBuilderを取得する。<p>
      * 
      * @return AWSLambdaClientBuilder
      */
-    public AWSLambdaClientBuilder getLambdaClientBuilder();
+    public AWSLambdaClientBuilder getAWSLambdaClientBuilder();
 
     /**
      * AWSLambdaClientBuilderを設定する。<p>
      * 
      * @param builder AWSLambdaClientBuilder
      */
-    public void setLambdaClientBuilder(AWSLambdaClientBuilder builder);
+    public void setAWSLambdaClientBuilder(AWSLambdaClientBuilder builder);
 }

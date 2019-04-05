@@ -74,19 +74,19 @@ public class AWSLambdaScheduleExecutorService extends AbstractScheduleExecutorSe
         type = DEFAULT_EXECUTOR_TYPE;
     }
     
-    public ServiceName getLambdaServiceName() {
+    public ServiceName getAWSLambdaServiceName() {
         return lambdaServiceName;
     }
     
-    public void setLambdaServiceName(ServiceName serviceName) {
+    public void setAWSLambdaServiceName(ServiceName serviceName) {
         lambdaServiceName = serviceName;
     }
     
-    public ServiceName getLambdaClientBuilderServiceName() {
+    public ServiceName getAWSLambdaClientBuilderServiceName() {
         return lambdaClientBuilderServiceName;
     }
 
-    public void setLambdaClientBuilderServiceName(ServiceName serviceName) {
+    public void setAWSLambdaClientBuilderServiceName(ServiceName serviceName) {
         lambdaClientBuilderServiceName = serviceName;
     }
 
@@ -114,19 +114,19 @@ public class AWSLambdaScheduleExecutorService extends AbstractScheduleExecutorSe
         this.encoding = encoding;
     }
 
-    public AWSLambda getLambda() {
+    public AWSLambda getAWSLambda() {
         return lambda;
     }
     
-    public void setLambda(AWSLambda awsLambda) {
+    public void setAWSLambda(AWSLambda awsLambda) {
         lambda = awsLambda;
     }
     
-    public AWSLambdaClientBuilder getLambdaClientBuilder() {
+    public AWSLambdaClientBuilder getAWSLambdaClientBuilder() {
         return lambdaClientBuilder;
     }
 
-    public void setLambdaClientBuilder(AWSLambdaClientBuilder builder) {
+    public void setAWSLambdaClientBuilder(AWSLambdaClientBuilder builder) {
         lambdaClientBuilder = builder;
     }
 
