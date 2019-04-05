@@ -492,6 +492,12 @@
             <version>1.11.530</version>
         </dependency>
         
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-lambda</artifactId>
+            <version>1.11.530</version>
+        </dependency>
+        
     </dependencies>
 
     <build>
