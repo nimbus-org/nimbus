@@ -139,7 +139,7 @@ public class AWSLambdaScheduleExecutorService extends AbstractScheduleExecutorSe
             lambda = (AWSLambda) ServiceManagerFactory.getServiceObject(lambdaServiceName);
         }
         if(lambda == null && lambdaClientBuilder == null && lambdaClientBuilderServiceName != null){
-            lambdaClientBuilder = (AWSLambdaClientBuilder) ServiceManagerFactory.getServiceObject(lambdaServiceName);
+            lambdaClientBuilder = (AWSLambdaClientBuilder) ServiceManagerFactory.getServiceObject(lambdaClientBuilderServiceName);
         }
         if(lambda == null && lambdaClientBuilder != null) {
             lambda = lambdaClientBuilder.build();
