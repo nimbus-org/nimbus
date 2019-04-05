@@ -42,7 +42,10 @@ import java.util.Collection;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Array;
 import java.lang.reflect.Type;
+import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
+import java.math.BigInteger;
+import java.math.BigDecimal;
 
 import jp.ossc.nimbus.beans.Property;
 import jp.ossc.nimbus.beans.PropertyAccess;
@@ -70,7 +73,9 @@ public class BeanExchangeConverter implements BindingConverter{
     private boolean isFieldOnly = false;
     private boolean isAccessorOnly = true;
     private ClassMappingTree propertyAccessTypeMap;
+    private ClassMappingTree implementsTypeMap;
     private boolean isMakeSchema;
+    private boolean isNarrowCast;
     
     /**
      * 空のインスタンスを生成する。<p>
@@ -288,7 +293,7 @@ public class BeanExchangeConverter implements BindingConverter{
     }
     
     /**
-     * Javaオブジェクト→JSON変換時に出力しないプロパティ名を設定する。<p>
+     * 変換時に出力しないプロパティ名を設定する。<p>
      *
      * @param type 対象のクラス
      * @param names プロパティ名の配列
@@ -317,7 +322,7 @@ public class BeanExchangeConverter implements BindingConverter{
     }
     
     /**
-     * Javaオブジェクト→JSON変換時に出力するプロパティ名を設定する。<p>
+     * 変換時に出力するプロパティ名を設定する。<p>
      *
      * @param type 対象のクラス
      * @param names プロパティ名の配列
@@ -346,7 +351,7 @@ public class BeanExchangeConverter implements BindingConverter{
     }
     
     /**
-     * Javaオブジェクト→JSON変換時に出力するプロパティ名かどうかを判定する。<p>
+     * 変換時に出力するプロパティ名かどうかを判定する。<p>
      *
      * @param type 対象のクラス
      * @param name プロパティ名
@@ -435,6 +440,71 @@ public class BeanExchangeConverter implements BindingConverter{
     }
     
     /**
+     * 変換時に、インタフェース型（または抽象型）に対してどの実装クラスを生成するかを設定する。<p>
+     * 
+     * @param interfaceType インタフェース型（または抽象型）
+     * @param implementsType 実装クラス型
+     */
+    public void setImplementsType(Class interfaceType,  Class implementsType){
+        if(!interfaceType.isInterface() && !Modifier.isAbstract(interfaceType.getModifiers())){
+            throw new IllegalArgumentException("interfaceType must be interface or abstract. interfaceType=" + interfaceType.getName());
+        }
+        if(implementsType.isInterface() || Modifier.isAbstract(implementsType.getModifiers())){
+            throw new IllegalArgumentException("implementsType must not be interface or abstract. implementsType=" + implementsType.getName());
+        }
+        if(implementsTypeMap == null){
+            implementsTypeMap = new ClassMappingTree();
+        }
+        implementsTypeMap.add(interfaceType, implementsType, true);
+    }
+    
+    /**
+     * 変換時に、インタフェース型（または抽象型）に対してどの実装クラスを生成するかを取得する。<p>
+     * 
+     * @param interfaceType インタフェース型（または抽象型）
+     * @return 実装クラス型
+     */
+    public Class getImplementsType(Class interfaceType){
+        if(implementsTypeMap == null){
+            return null;
+        }
+        return (Class)implementsTypeMap.getValue(interfaceType);
+    }
+    
+    /**
+     * 変換時に、指定した型に対して適切な実装クラスを取得する。<p>
+     * 
+     * @param type 型
+     * @return 実装クラス型
+     */
+    protected Class findImplementsType(Class type){
+        if(implementsTypeMap == null){
+            return type;
+        }
+        Class result = (Class)implementsTypeMap.getValue(type);
+        return result == null ? type : result;
+    }
+    
+    /**
+     * 変換時に、数値型のプロパティのダウンキャストを許可するかどうかを判定する。<p>
+     *
+     * @return trueの場合、許可する
+     */
+    public boolean isNarrowCast(){
+        return isNarrowCast;
+    }
+    
+    /**
+     * 変換時に、数値型のプロパティのダウンキャストを許可するかどうかを設定する。<p>
+     * デフォルトは、falseで許可しない。<br>
+     *
+     * @param isNarrowCast 許可する場合、true
+     */
+    public void setNarrowCast(boolean isNarrowCast){
+        this.isNarrowCast = isNarrowCast;
+    }
+    
+    /**
      * 指定されたオブジェクトを変換する。<p>
      *
      * @param obj 変換対象のオブジェクト
@@ -514,7 +584,7 @@ public class BeanExchangeConverter implements BindingConverter{
                             outputs = (Object[])Array.newInstance((Class)argTypes[0], inputs.length);
                             try{
                                 for(int i = 0; i < outputs.length; i++){
-                                    outputs[i] = ((Class)argTypes[0]).newInstance();
+                                    outputs[i] = findImplementsType((Class)argTypes[0]).newInstance();
                                     ((Collection)output).add(outputs[i]);
                                 }
                             }catch(IllegalAccessException e){
@@ -536,13 +606,13 @@ public class BeanExchangeConverter implements BindingConverter{
                 Object[] outputs = (Object[])output;
                 final Class componentType = output.getClass().getComponentType();
                 if(outputs.length == 0){
-                    if(componentType.isInterface() || componentType.isPrimitive()){
+                    if(componentType.isPrimitive()){
                         throw new ConvertException("Length of array is 0.");
                     }
                     outputs = (Object[])Array.newInstance(componentType, inputs.length);
                     try{
                         for(int i = 0; i < outputs.length; i++){
-                            outputs[i] = componentType.newInstance();
+                            outputs[i] = findImplementsType(componentType).newInstance();
                         }
                     }catch(IllegalAccessException e){
                         throw new ConvertException("Length of array is 0.", e);
@@ -552,11 +622,11 @@ public class BeanExchangeConverter implements BindingConverter{
                 }
                 for(int i = 0, imax = Math.min(inputs.length, outputs.length); i < imax; i++){
                     if(outputs[i] == null){
-                        if(componentType.isInterface() || componentType.isPrimitive()){
+                        if(componentType.isPrimitive()){
                             throw new ConvertException("Element of array is null.");
                         }
                         try{
-                            outputs[i] = componentType.newInstance();
+                            outputs[i] = findImplementsType(componentType).newInstance();
                         }catch(IllegalAccessException e){
                             throw new ConvertException("Element of array is null.", e);
                         }catch(InstantiationException e){
@@ -634,7 +704,7 @@ public class BeanExchangeConverter implements BindingConverter{
                 }
             }
             if(propMapping.size() == 0){
-                throw new ConvertException("PropertyMapping is null.");
+                throw new ConvertException("PropertyMapping is null. input=" + input + ", output=" + output);
             }
         }
         if(isMakeSchema 
@@ -763,7 +833,7 @@ public class BeanExchangeConverter implements BindingConverter{
                             outputs = (Object[])Array.newInstance((Class)argTypes[0], values.length);
                             try{
                                 for(int i = 0; i < outputs.length; i++){
-                                    outputs[i] = ((Class)argTypes[0]).newInstance();
+                                    outputs[i] = findImplementsType((Class)argTypes[0]).newInstance();
                                     ((Collection)output).add(outputs[i]);
                                 }
                             }catch(IllegalAccessException e){
@@ -790,13 +860,13 @@ public class BeanExchangeConverter implements BindingConverter{
                 Object[] outputs = (Object[])output;
                 final Class componentType = output.getClass().getComponentType();
                 if(outputs.length == 0){
-                    if(componentType.isInterface() || componentType.isPrimitive()){
+                    if(componentType.isPrimitive()){
                         throw new ConvertException("Length of array is 0.");
                     }
                     outputs = (Object[])Array.newInstance(componentType, values.length);
                     try{
                         for(int i = 0; i < outputs.length; i++){
-                            outputs[i] = componentType.newInstance();
+                            outputs[i] = findImplementsType(componentType).newInstance();
                         }
                     }catch(IllegalAccessException e){
                         throw new ConvertException("Length of array is 0.", e);
@@ -807,11 +877,11 @@ public class BeanExchangeConverter implements BindingConverter{
                 if(isExpands){
                     for(int i = 0, imax = Math.min(values.length, outputs.length); i < imax; i++){
                         if(outputs[i] == null){
-                            if(componentType.isInterface() || componentType.isPrimitive()){
+                            if(componentType.isPrimitive()){
                                 throw new ConvertException("Element of array is null.");
                             }
                             try{
-                                outputs[i] = componentType.newInstance();
+                                outputs[i] = findImplementsType(componentType).newInstance();
                             }catch(IllegalAccessException e){
                                 throw new ConvertException("Element of array is null.", e);
                             }catch(InstantiationException e){
@@ -823,11 +893,11 @@ public class BeanExchangeConverter implements BindingConverter{
                 }else{
                     for(int i = 0; i < outputs.length; i++){
                         if(outputs[i] == null){
-                            if(componentType.isInterface() || componentType.isPrimitive()){
+                            if(componentType.isPrimitive()){
                                 throw new ConvertException("Element of array is null.");
                             }
                             try{
-                                outputs[i] = componentType.newInstance();
+                                outputs[i] = findImplementsType(componentType).newInstance();
                             }catch(IllegalAccessException e){
                                 throw new ConvertException("Element of array is null.", e);
                             }catch(InstantiationException e){
@@ -839,7 +909,48 @@ public class BeanExchangeConverter implements BindingConverter{
                 }
             }else{
                 try{
-                    propertyAccess.set(output, outputPropName, value);
+                    Property outProp = propertyAccess.getProperty(outputPropName);
+                    if(value != null){
+                        Class inPropType = value.getClass();
+                        Class outPropType = outProp.getPropertyType(output);
+                        if(!isAssignableFrom(outPropType, inPropType)){
+                            if(isNarrowCast() && isNarrowCast(inPropType, outPropType)){
+                                value = castPrimitiveWrapper(outPropType, (Number)value);
+                            }else if(Collection.class.isAssignableFrom(inPropType) && outPropType.isArray()){
+                                Object outPropValue = null;
+                                if(outProp.isReadable(output)){
+                                    outPropValue = outProp.getProperty(output);
+                                }
+                                if(outPropValue == null){
+                                    outPropValue = Array.newInstance(outPropType.getComponentType(), ((Collection)value).size());
+                                }
+                                value = convert(((Collection)value).toArray(), outPropValue, false);
+                            }else if(inPropType.isArray() && outPropType.isArray()){
+                                Object outPropValue = null;
+                                if(outProp.isReadable(output)){
+                                    outPropValue = outProp.getProperty(output);
+                                }
+                                if(outPropValue == null){
+                                    outPropValue = Array.newInstance(outPropType.getComponentType(), Array.getLength(value));
+                                }
+                                value = convert(value, outPropValue, false);
+                            }else{
+                                Object outPropValue = null;
+                                if(outProp.isReadable(output)){
+                                    outPropValue = outProp.getProperty(output);
+                                }
+                                if(outPropValue == null){
+                                    outPropValue = findImplementsType(outPropType).newInstance();
+                                }
+                                value = convert(value, outPropValue, false);
+                            }
+                        }
+                    }
+                    outProp.setProperty(output, value);
+                }catch(IllegalAccessException e){
+                    throw new ConvertException("Output property set error. output=" + output + ", property=" + outputPropName + ", value=" + value, e);
+                }catch(InstantiationException e){
+                    throw new ConvertException("Output property set error. output=" + output + ", property=" + outputPropName + ", value=" + value, e);
                 }catch(IllegalArgumentException e){
                     throw new ConvertException("Output property set error. output=" + output + ", property=" + outputPropName + ", value=" + value, e);
                 }catch(NoSuchPropertyException e){
@@ -858,16 +969,258 @@ public class BeanExchangeConverter implements BindingConverter{
         }
     }
     
+    private boolean isNarrowCast(Class from, Class to){
+        if(from == null || to == null
+            || !Number.class.isAssignableFrom(from)
+            || (!Number.class.isAssignableFrom(to)
+                    && (!to.isPrimitive() || to.equals(Boolean.TYPE)))
+            || from.equals(to)
+        ){
+            return false;
+        }
+        if(Byte.class.equals(from)
+            && !Byte.TYPE.equals(to)
+        ){
+            return true;
+        }else if(Short.class.equals(from)
+            && !Short.TYPE.equals(to)
+            && (Byte.TYPE.equals(to)
+                || Byte.class.equals(to))
+        ){
+            return true;
+        }else if(Integer.class.equals(from)
+            && !Integer.TYPE.equals(to)
+            && (Short.TYPE.equals(to)
+                || Short.class.equals(to)
+                || Byte.TYPE.equals(to)
+                || Byte.class.equals(to))
+        ){
+            return true;
+        }else if(Long.class.equals(from)
+            && !Long.TYPE.equals(to)
+            && (Integer.TYPE.equals(to)
+                || Integer.class.equals(to)
+                || Short.TYPE.equals(to)
+                || Short.class.equals(to)
+                || Byte.TYPE.equals(to)
+                || Byte.class.equals(to))
+        ){
+            return true;
+        }else if(Float.class.equals(from)
+            && !Float.TYPE.equals(to)
+            && (Long.TYPE.equals(to)
+                || Long.class.equals(to)
+                || Integer.TYPE.equals(to)
+                || Integer.class.equals(to)
+                || Short.TYPE.equals(to)
+                || Short.class.equals(to)
+                || Byte.TYPE.equals(to)
+                || Byte.class.equals(to))
+        ){
+            return true;
+        }else if(Double.class.equals(from)
+            && !Double.TYPE.equals(to)
+            && (Float.TYPE.equals(to)
+                || Float.class.equals(to)
+                || Long.TYPE.equals(to)
+                || Long.class.equals(to)
+                || Integer.TYPE.equals(to)
+                || Integer.class.equals(to)
+                || Short.TYPE.equals(to)
+                || Short.class.equals(to)
+                || Byte.TYPE.equals(to)
+                || Byte.class.equals(to))
+        ){
+            return true;
+        }else if(BigInteger.class.equals(from)
+            && !Double.TYPE.equals(to)
+            && (Double.class.equals(to)
+                || Float.TYPE.equals(to)
+                || Float.class.equals(to)
+                || Long.TYPE.equals(to)
+                || Long.class.equals(to)
+                || Integer.TYPE.equals(to)
+                || Integer.class.equals(to)
+                || Short.TYPE.equals(to)
+                || Short.class.equals(to)
+                || Byte.TYPE.equals(to)
+                || Byte.class.equals(to))
+        ){
+            return true;
+        }else if(BigDecimal.class.equals(from)
+            && !BigInteger.class.equals(to)
+            && (Double.TYPE.equals(to)
+                || Double.class.equals(to)
+                || Float.TYPE.equals(to)
+                || Float.class.equals(to)
+                || Long.TYPE.equals(to)
+                || Long.class.equals(to)
+                || Integer.TYPE.equals(to)
+                || Integer.class.equals(to)
+                || Short.TYPE.equals(to)
+                || Short.class.equals(to)
+                || Byte.TYPE.equals(to)
+                || Byte.class.equals(to))
+        ){
+            return true;
+        }
+        return false;
+    }
+    
+    private Number castPrimitiveWrapper(Class clazz, Number val){
+        if(Byte.TYPE.equals(clazz) || Byte.class.equals(clazz)){
+            return Byte.valueOf(val.byteValue());
+        }else if(Short.TYPE.equals(clazz) || Short.class.equals(clazz)){
+            return Short.valueOf(val.shortValue());
+        }else if(Integer.TYPE.equals(clazz) || Integer.class.equals(clazz)){
+            return Integer.valueOf(val.intValue());
+        }else if(Long.TYPE.equals(clazz) || Long.class.equals(clazz)){
+            return new Long(val.longValue());
+        }else if(Float.TYPE.equals(clazz) || Float.class.equals(clazz)){
+            return new Float(val.floatValue());
+        }else if(Double.TYPE.equals(clazz) || Double.class.equals(clazz)){
+            return new Double(val.doubleValue());
+        }else if(BigInteger.class.equals(clazz)){
+            return BigInteger.valueOf(val.longValue());
+        }else if(BigDecimal.class.equals(clazz)){
+            if(val instanceof BigInteger){
+                return new BigDecimal((BigInteger)val);
+            }else{
+                return new BigDecimal(val.doubleValue());
+            }
+        }else{
+            return val;
+        }
+    }
+    
+    private boolean isNumber(Class clazz){
+        if(clazz == null){
+            return false;
+        }
+        if(clazz.isPrimitive()){
+            if(Byte.TYPE.equals(clazz)
+                || Short.TYPE.equals(clazz)
+                || Integer.TYPE.equals(clazz)
+                || Long.TYPE.equals(clazz)
+                || Float.TYPE.equals(clazz)
+                || Double.TYPE.equals(clazz)){
+                return true;
+            }else{
+                return false;
+            }
+        }else if(Number.class.isAssignableFrom(clazz)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    private boolean isAssignableFrom(Class thisClass, Class thatClass){
+        if(isNumber(thisClass) && isNumber(thatClass)){
+            if(Byte.TYPE.equals(thisClass)
+                || Byte.class.equals(thisClass)){
+                return Byte.TYPE.equals(thatClass)
+                    || Byte.class.equals(thatClass);
+            }else if(Short.TYPE.equals(thisClass)
+                || Short.class.equals(thisClass)){
+                return Short.TYPE.equals(thatClass)
+                    || Short.class.equals(thatClass)
+                    || Byte.TYPE.equals(thatClass)
+                    || Byte.class.equals(thatClass);
+            }else if(Integer.TYPE.equals(thisClass)
+                || Integer.class.equals(thisClass)){
+                return Integer.TYPE.equals(thatClass)
+                    || Integer.class.equals(thatClass)
+                    || Short.TYPE.equals(thatClass)
+                    || Short.class.equals(thatClass)
+                    || Byte.TYPE.equals(thatClass)
+                    || Byte.class.equals(thatClass);
+            }else if(Long.TYPE.equals(thisClass)
+                || Long.class.equals(thisClass)){
+                return Long.TYPE.equals(thatClass)
+                    || Long.class.equals(thatClass)
+                    || Integer.TYPE.equals(thatClass)
+                    || Integer.class.equals(thatClass)
+                    || Short.TYPE.equals(thatClass)
+                    || Short.class.equals(thatClass)
+                    || Byte.TYPE.equals(thatClass)
+                    || Byte.class.equals(thatClass);
+            }else if(BigInteger.class.equals(thisClass)){
+                return BigInteger.class.equals(thatClass)
+                    || Long.TYPE.equals(thatClass)
+                    || Long.class.equals(thatClass)
+                    || Integer.TYPE.equals(thatClass)
+                    || Integer.class.equals(thatClass)
+                    || Short.TYPE.equals(thatClass)
+                    || Short.class.equals(thatClass)
+                    || Byte.TYPE.equals(thatClass)
+                    || Byte.class.equals(thatClass);
+            }else if(Float.TYPE.equals(thisClass)
+                || Float.class.equals(thisClass)){
+                return Float.TYPE.equals(thatClass)
+                    || Float.class.equals(thatClass)
+                    || Long.TYPE.equals(thatClass)
+                    || Long.class.equals(thatClass)
+                    || Integer.TYPE.equals(thatClass)
+                    || Integer.class.equals(thatClass)
+                    || Short.TYPE.equals(thatClass)
+                    || Short.class.equals(thatClass)
+                    || Byte.TYPE.equals(thatClass)
+                    || Byte.class.equals(thatClass);
+            }else if(Double.TYPE.equals(thisClass)
+                || Double.class.equals(thisClass)){
+                return Double.TYPE.equals(thatClass)
+                    || Double.class.equals(thatClass)
+                    || Float.TYPE.equals(thatClass)
+                    || Float.class.equals(thatClass)
+                    || Long.TYPE.equals(thatClass)
+                    || Long.class.equals(thatClass)
+                    || Integer.TYPE.equals(thatClass)
+                    || Integer.class.equals(thatClass)
+                    || Short.TYPE.equals(thatClass)
+                    || Short.class.equals(thatClass)
+                    || Byte.TYPE.equals(thatClass)
+                    || Byte.class.equals(thatClass);
+            }else if(BigDecimal.class.equals(thisClass)){
+                return BigDecimal.class.equals(thatClass)
+                    || Double.TYPE.equals(thatClass)
+                    || Double.class.equals(thatClass)
+                    || Float.TYPE.equals(thatClass)
+                    || Float.class.equals(thatClass)
+                    || BigInteger.class.equals(thatClass)
+                    || Long.TYPE.equals(thatClass)
+                    || Long.class.equals(thatClass)
+                    || Integer.TYPE.equals(thatClass)
+                    || Integer.class.equals(thatClass)
+                    || Short.TYPE.equals(thatClass)
+                    || Short.class.equals(thatClass)
+                    || Byte.TYPE.equals(thatClass)
+                    || Byte.class.equals(thatClass);
+            }
+            return true;
+        }else if((thisClass.equals(Boolean.class) && thatClass.equals(Boolean.TYPE))
+            || (thisClass.equals(Boolean.TYPE) && thatClass.equals(Boolean.class))
+        ){
+            return true;
+        }else if((thisClass.equals(Character.class) && thatClass.equals(Character.TYPE))
+            || (thisClass.equals(Character.TYPE) && thatClass.equals(Character.class))
+        ){
+            return true;
+        }else{
+            return thisClass.isAssignableFrom(thatClass);
+        }
+    }
+    
     private class PropertyAccessType{
         
         /**
-         * Javaオブジェクト→JSON変換時にJavaオブジェクトのpublicフィールドのみを対象とするかどうかのフラグ。<p>
+         * 変換時にJavaオブジェクトのpublicフィールドのみを対象とするかどうかのフラグ。<p>
          * デフォルトは、falseでpublicフィールドのみを対象にはしない。<br>
          */
         public boolean isFieldOnly = false;
         
         /**
-         * Javaオブジェクト→JSON変換時にJavaオブジェクトのpublicなgetterのみを対象とするかどうかのフラグ。<p>
+         * 変換時にJavaオブジェクトのpublicなgetterのみを対象とするかどうかのフラグ。<p>
          * デフォルトは、trueでpublicなgetterのみを対象にする。<br>
          */
         public boolean isAccessorOnly = true;

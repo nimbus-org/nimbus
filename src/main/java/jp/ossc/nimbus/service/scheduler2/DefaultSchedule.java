@@ -240,6 +240,13 @@ public class DefaultSchedule
     public Map getGroupIdMap(){
         return groupMap;
     }
+    public void setGroupIdMap(Map map){
+        if(map == null){
+            groupMap.clear();
+        }else{
+            groupMap.putAll(map);
+        }
+    }
     
     // ScheduleのJavaDoc
     public String getMasterId(){
@@ -340,6 +347,13 @@ public class DefaultSchedule
     public Map getDependsInGroupMasterMap(){
         return dependsInGroupMasterMap;
     }
+    public void setDependsInGroupMasterMap(Map map){
+        if(map == null){
+            dependsInGroupMasterMap.clear();
+        }else{
+            dependsInGroupMasterMap.putAll(map);
+        }
+    }
     
     // ScheduleのJavaDoc
     public ScheduleDepends[] getDependsInGroup(String groupId){
@@ -359,6 +373,14 @@ public class DefaultSchedule
     // ScheduleのJavaDoc
     public Map getDependsInGroupMap(){
         return dependsInGroupMap;
+    }
+    
+    public void setDependsInGroupMap(Map map){
+        if(map == null){
+            dependsInGroupMap.clear();
+        }else{
+            dependsInGroupMap.putAll(map);
+        }
     }
     
     // ScheduleのJavaDoc
@@ -394,6 +416,13 @@ public class DefaultSchedule
     public Map getGroupDependsOnGroupMasterMap(){
         return groupDependsOnGroupMasterMap;
     }
+    public void setGroupDependsOnGroupMasterMap(Map map){
+        if(map == null){
+            groupDependsOnGroupMasterMap.clear();
+        }else{
+            groupDependsOnGroupMasterMap.putAll(map);
+        }
+    }
     
     // ScheduleのJavaDoc
     public ScheduleDepends[] getGroupDependsOnGroup(String groupId){
@@ -413,6 +442,13 @@ public class DefaultSchedule
     // ScheduleのJavaDoc
     public Map getGroupDependsOnGroupMap(){
         return groupDependsOnGroupMap;
+    }
+    public void setGroupDependsOnGroupMap(Map map){
+        if(map == null){
+            groupDependsOnGroupMap.clear();
+        }else{
+            groupDependsOnGroupMap.putAll(map);
+        }
     }
     
     // ScheduleのJavaDoc
