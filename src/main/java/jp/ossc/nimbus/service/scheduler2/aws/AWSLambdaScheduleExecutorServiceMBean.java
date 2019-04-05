@@ -49,6 +49,10 @@ public interface AWSLambdaScheduleExecutorServiceMBean extends AbstractScheduleE
      */
     public static final String DEFAULT_EXECUTOR_TYPE = "AWS_LAMBDA";
     
+    /**
+     * デフォルトのエンコーディング。<p>
+     */
+    public static final String DEFAULT_ENCODING = "UTF-8";
     
     /**
      * AWSLambdaのサービス名を取得する。<p>

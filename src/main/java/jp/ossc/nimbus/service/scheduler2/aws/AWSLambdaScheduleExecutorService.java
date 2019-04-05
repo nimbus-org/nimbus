@@ -33,8 +33,6 @@ package jp.ossc.nimbus.service.scheduler2.aws;
 
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 
 import com.amazonaws.services.lambda.AWSLambda;
@@ -64,11 +62,10 @@ public class AWSLambdaScheduleExecutorService extends AbstractScheduleExecutorSe
     protected ServiceName lambdaClientBuilderServiceName;
     protected Integer clientExecutionTimeout = null;
     protected Integer requestTimeout = null;
-    protected String encoding;
+    protected String encoding = DEFAULT_ENCODING;
     
     protected AWSLambda lambda;
     protected AWSLambdaClientBuilder lambdaClientBuilder;
-    protected Map threadMap;
     
     {
         type = DEFAULT_EXECUTOR_TYPE;
@@ -130,10 +127,6 @@ public class AWSLambdaScheduleExecutorService extends AbstractScheduleExecutorSe
         lambdaClientBuilder = builder;
     }
 
-    public void createService() throws Exception {
-        threadMap = Collections.synchronizedMap(new HashMap());
-    }
-    
     public void startService() throws Exception {
         if(lambda == null && lambdaServiceName != null){
             lambda = (AWSLambda) ServiceManagerFactory.getServiceObject(lambdaServiceName);
@@ -153,10 +146,6 @@ public class AWSLambdaScheduleExecutorService extends AbstractScheduleExecutorSe
         super.startService();
     }
     
-    public void destroyService() throws Exception {
-        threadMap = null;
-    }
-    
     protected void checkPreExecute(Schedule schedule) throws Exception{
         Object input = schedule.getInput();
         if(!(input == null || input instanceof String || input instanceof Map)){
@@ -165,52 +154,40 @@ public class AWSLambdaScheduleExecutorService extends AbstractScheduleExecutorSe
     }
     
     protected Schedule executeInternal(Schedule schedule) throws Throwable {
-        threadMap.put(schedule.getId(), Thread.currentThread());
-        try{
-            String functionName = schedule.getTaskName();
-            if(functionName == null || functionName.length() == 0) {
-                throw new IllegalArgumentException("TaskName is null or empty.");
-            }
-            Object input = schedule.getInput();
-            String inputJSON = null;
-            if(input instanceof String) {
-                inputJSON = (String)input;
-            } else if(input instanceof Map) {
-                BeanJSONConverter bjConverter = new BeanJSONConverter();
-                StringStreamConverter ssConverter = new StringStreamConverter();
-                inputJSON = (String)ssConverter.convertToObject(bjConverter.convertToStream(input));
-            }
-            InvokeRequest request = new InvokeRequest();
-            request.setFunctionName(functionName);
-            if(inputJSON != null) {
-                request.setPayload(inputJSON);
-            }
-            if(clientExecutionTimeout != null) {
-                request.setSdkClientExecutionTimeout(clientExecutionTimeout.intValue());
-            }
-            if(requestTimeout != null) {
-                request.setSdkRequestTimeout(requestTimeout.intValue());
-            }
-            request.setInvocationType(InvocationType.RequestResponse);
-            InvokeResult result = lambda.invoke(request);
-            
-            ByteBuffer buffer = result.getPayload();
-            String resultString = encoding == null ? new String(buffer.array()) : new String(buffer.array(), Charset.forName(encoding));
-            schedule.setOutput(resultString);
-        }finally{
-            threadMap.remove(schedule.getId());
+        String functionName = schedule.getTaskName();
+        if(functionName == null || functionName.length() == 0) {
+            throw new IllegalArgumentException("TaskName is null or empty.");
         }
+        Object input = schedule.getInput();
+        String inputJSON = null;
+        if(input instanceof String) {
+            inputJSON = (String)input;
+        } else if(input instanceof Map) {
+            BeanJSONConverter bjConverter = new BeanJSONConverter();
+            StringStreamConverter ssConverter = new StringStreamConverter();
+            inputJSON = (String)ssConverter.convertToObject(bjConverter.convertToStream(input));
+        }
+        InvokeRequest request = new InvokeRequest();
+        request.setFunctionName(functionName);
+        if(inputJSON != null) {
+            request.setPayload(inputJSON);
+        }
+        if(clientExecutionTimeout != null) {
+            request.setSdkClientExecutionTimeout(clientExecutionTimeout.intValue());
+        }
+        if(requestTimeout != null) {
+            request.setSdkRequestTimeout(requestTimeout.intValue());
+        }
+        request.setInvocationType(InvocationType.RequestResponse);
+        InvokeResult result = lambda.invoke(request);
+        
+        ByteBuffer buffer = result.getPayload();
+        String resultString = encoding == null ? new String(buffer.array()) : new String(buffer.array(), Charset.forName(encoding));
+        schedule.setOutput(resultString);
         return schedule;
     }
     
     public boolean controlState(String id, int cntrolState) throws ScheduleStateControlException {
-        if(cntrolState == Schedule.CONTROL_STATE_ABORT){
-            Thread thread = (Thread) threadMap.get(id);
-            if(thread != null){
-                thread.interrupt();
-                return true;
-            }
-        }
         return false;
     }
     
