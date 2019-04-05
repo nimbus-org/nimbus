@@ -125,14 +125,14 @@ public interface AWSLambdaScheduleExecutorServiceMBean extends AbstractScheduleE
      * 
      * @return AWSLambda
      */
-    public AWSLambda getLambda();
+    public AWSLambda getAWSLambda();
     
     /**
      * AWSLambdaを設定する。<p>
      * 
      * @param awsLambda AWSLambda
      */
-    public void setLambda(AWSLambda awsLambda);
+    public void setAWSLambda(AWSLambda awsLambda);
     
     /**
      * AWSLambdaClientBuilderを取得する。<p>

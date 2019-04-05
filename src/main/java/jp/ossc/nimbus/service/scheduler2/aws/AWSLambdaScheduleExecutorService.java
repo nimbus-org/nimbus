@@ -114,11 +114,11 @@ public class AWSLambdaScheduleExecutorService extends AbstractScheduleExecutorSe
         this.encoding = encoding;
     }
 
-    public AWSLambda getLambda() {
+    public AWSLambda getAWSLambda() {
         return lambda;
     }
     
-    public void setLambda(AWSLambda awsLambda) {
+    public void setAWSLambda(AWSLambda awsLambda) {
         lambda = awsLambda;
     }
     
