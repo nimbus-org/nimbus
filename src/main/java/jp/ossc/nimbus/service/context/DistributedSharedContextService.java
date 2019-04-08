@@ -442,6 +442,60 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         }
     }
     
+    public Set getLockedKeySet(){
+        Set keySet = new HashSet();
+        if(getState() == STARTED){
+            for(int i = 0; i < sharedContextArray.length; i++){
+                keySet.addAll(sharedContextArray[i].getLockedKeySet());
+            }
+        }
+        return keySet;
+    }
+    
+    public int getLockedCount(){
+        int lockedCount = 0;
+        if(getState() == STARTED){
+            for(int i = 0; i < sharedContextArray.length; i++){
+                lockedCount += sharedContextArray[i].getLockedCount();
+            }
+        }
+        return lockedCount;
+    }
+    
+    public double getAverageLockTime(){
+        double result = 0;
+        if(getState() == STARTED){
+            for(int i = 0; i < sharedContextArray.length; i++){
+                result += sharedContextArray[i].getAverageLockTime();
+            }
+            result /= (double)sharedContextArray.length;
+        }
+        return result;
+    }
+    
+    public long getMaxLockTime(){
+        long result = 0;
+        if(getState() == STARTED){
+            for(int i = 0; i < sharedContextArray.length; i++){
+                long maxLockTime = sharedContextArray[i].getMaxLockTime();
+                if(result < maxLockTime){
+                    result = maxLockTime;
+                }
+            }
+        }
+        return result;
+    }
+    
+    public String displayLocks(){
+        StringBuilder buf = new StringBuilder();
+        if(getState() == STARTED){
+            for(int i = 0; i < sharedContextArray.length; i++){
+                buf.append(sharedContextArray[i].displayLocks());
+            }
+        }
+        return buf.toString();
+    }
+    
     /**
      * サービスの生成処理を行う。<p>
      *
