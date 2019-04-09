@@ -69,8 +69,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
  implements ScheduleManager, DatabaseScheduleManagerServiceMBean{
     
     private static final long serialVersionUID = -768179222440496616L;
+    
     protected Properties scheduleMakerTypeMapping;
-    protected Map addedScheduleMakerMap;
     protected Map scheduleMakerMap;
     protected boolean isScheduleMakerTypeRegexEnabled;
     protected ServiceName defaultScheduleMakerServiceName;
@@ -119,6 +119,10 @@ public class DatabaseScheduleManagerService extends ServiceBase
     
     protected boolean isUseConcatFunction;
     protected boolean isJsonInput;
+    protected Properties inputParseConverterMapping;
+    protected Map inputParseConverterMap;
+    protected Properties inputFormatConverterMapping;
+    protected Map inputFormatConverterMap;
     
     // DatabaseScheduleManagerServiceMBeanのJavaDoc
     public void setDefaultScheduleMakerServiceName(ServiceName name){
@@ -348,6 +352,24 @@ public class DatabaseScheduleManagerService extends ServiceBase
     }
     
     // DatabaseScheduleManagerServiceMBeanのJavaDoc
+    public void setInputParseConverterMapping(Properties mapping){
+        inputParseConverterMapping = mapping;
+    }
+    // DatabaseScheduleManagerServiceMBeanのJavaDoc
+    public Properties getInputParseConverterMapping(){
+        return inputParseConverterMapping;
+    }
+    
+    // DatabaseScheduleManagerServiceMBeanのJavaDoc
+    public void setInputFormatConverterMapping(Properties mapping){
+        inputFormatConverterMapping = mapping;
+    }
+    // DatabaseScheduleManagerServiceMBeanのJavaDoc
+    public Properties getInputFormatConverterMapping(){
+        return inputFormatConverterMapping;
+    }
+    
+    // DatabaseScheduleManagerServiceMBeanのJavaDoc
     public void startControlStateCheck(){
         if(controlStateChecker != null){
             controlStateChecker.resume();
@@ -385,6 +407,26 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }
     }
     
+    public void setInputParseConverterMap(String executorType, Converter converter)
+     throws IllegalArgumentException{
+        if(inputParseConverterMap.containsKey(executorType)){
+            throw new IllegalArgumentException(
+                "Dupulicate executorType : " + executorType
+            );
+        }
+        inputParseConverterMap.put(executorType, converter);
+    }
+     
+    public void setInputFormatConverterMap(String executorType, Converter converter)
+     throws IllegalArgumentException{
+        if(inputFormatConverterMap.containsKey(executorType)){
+            throw new IllegalArgumentException(
+                "Dupulicate executorType : " + executorType
+            );
+        }
+        inputFormatConverterMap.put(executorType, converter);
+    }
+    
     /**
      * サービスの生成処理を行う。<p>
      *
@@ -392,8 +434,9 @@ public class DatabaseScheduleManagerService extends ServiceBase
      */
     public void createService() throws Exception{
         scheduleMakerMap = new HashMap();
-        addedScheduleMakerMap = null;
         scheduleControlListeners = Collections.synchronizedSet(new LinkedHashSet());
+        inputParseConverterMap = new HashMap();
+        inputFormatConverterMap = new HashMap();
     }
     
     /**
@@ -417,13 +460,41 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 final ScheduleMaker scheduleMaker
                     = (ScheduleMaker)ServiceManagerFactory
                         .getServiceObject(scheduleMakerServiceName);
-                if(scheduleMakerMap.containsKey(entry.getKey())){
-                    throw new IllegalArgumentException(
-                        "Dupulicate scheduleMakerTypeMapping : "
-                            + entry.getKey()
-                    );
-                }
                 scheduleMakerMap.put(entry.getKey(), scheduleMaker);
+            }
+        }
+        if(inputParseConverterMapping != null
+             && inputParseConverterMapping.size() != 0){
+            final ServiceNameEditor editor = new ServiceNameEditor();
+            editor.setServiceManagerName(getServiceManagerName());
+            final Iterator entries
+                = inputParseConverterMapping.entrySet().iterator();
+            while(entries.hasNext()){
+                final Map.Entry entry = (Map.Entry)entries.next();
+                editor.setAsText((String)entry.getValue());
+                final ServiceName inputConverterServiceName
+                    = (ServiceName)editor.getValue();
+                final Converter inputConverter
+                    = (Converter)ServiceManagerFactory
+                        .getServiceObject(inputConverterServiceName);
+                inputParseConverterMap.put(entry.getKey(), inputConverter);
+            }
+        }
+        if(inputFormatConverterMapping != null
+             && inputFormatConverterMapping.size() != 0){
+            final ServiceNameEditor editor = new ServiceNameEditor();
+            editor.setServiceManagerName(getServiceManagerName());
+            final Iterator entries
+                = inputFormatConverterMapping.entrySet().iterator();
+            while(entries.hasNext()){
+                final Map.Entry entry = (Map.Entry)entries.next();
+                editor.setAsText((String)entry.getValue());
+                final ServiceName inputConverterServiceName
+                    = (ServiceName)editor.getValue();
+                final Converter inputConverter
+                    = (Converter)ServiceManagerFactory
+                        .getServiceObject(inputConverterServiceName);
+                inputFormatConverterMap.put(entry.getKey(), inputConverter);
             }
         }
         
@@ -522,10 +593,6 @@ public class DatabaseScheduleManagerService extends ServiceBase
             clusterListener = null;
             cluster = null;
         }
-        
-        if(scheduleMakerMap != null){
-            scheduleMakerMap.clear();
-        }
     }
     
     /**
@@ -535,8 +602,9 @@ public class DatabaseScheduleManagerService extends ServiceBase
      */
     public void destroyService() throws Exception{
         scheduleMakerMap = null;
-        addedScheduleMakerMap = null;
         scheduleControlListeners = null;
+        inputParseConverterMap = null;
+        inputFormatConverterMap = null;
     }
     
     // ScheduleManagerのJavaDoc
@@ -854,11 +922,20 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 );
             }else{
                 Object input = schedule.getInput();
-                if(isJsonInput && !(input instanceof String)){
-                    BeanJSONConverter jsonConverter = new BeanJSONConverter();
-                    jsonConverter.setUnicodeEscape(false);
-                    StringStreamConverter streamConverter = new StringStreamConverter();
-                    input = streamConverter.convertToObject(jsonConverter.convertToStream(input));
+                
+                if(!(input instanceof String)){
+                    if(schedule.getExecutorType() != null && inputFormatConverterMap.containsKey(schedule.getExecutorType())){
+                        Converter converter = (Converter)inputFormatConverterMap.get(schedule.getExecutorType());
+                        if(converter instanceof StreamConverter){
+                            input = new StringStreamConverter().convertToObject(((StreamConverter)converter).convertToStream(input));
+                        }else{
+                            input = converter.convert(input);
+                        }
+                    }else if(isJsonInput){
+                        BeanJSONConverter jsonConverter = new BeanJSONConverter();
+                        jsonConverter.setUnicodeEscape(false);
+                        input = new StringStreamConverter().convertToObject(jsonConverter.convertToStream(input));
+                    }
                 }
                 scheduleTableSchema.setInputObject(++index, scheduleInsertStatement, input);
             }
@@ -1165,15 +1242,12 @@ public class DatabaseScheduleManagerService extends ServiceBase
     // ScheduleManagerのJavaDoc
     public void setScheduleMaker(String scheduleType, ScheduleMaker maker)
      throws IllegalArgumentException{
-        if(addedScheduleMakerMap == null){
-            addedScheduleMakerMap = new HashMap();
-        }
-        if(addedScheduleMakerMap.containsKey(scheduleType)){
+        if(scheduleMakerMap.containsKey(scheduleType)){
             throw new IllegalArgumentException(
                 "Dupulicate scheduleType : " + scheduleType
             );
         }
-        addedScheduleMakerMap.put(scheduleType, maker);
+        scheduleMakerMap.put(scheduleType, maker);
     }
     
     // ScheduleManagerのJavaDoc
@@ -1876,12 +1950,21 @@ public class DatabaseScheduleManagerService extends ServiceBase
             + rs.getString(scheduleTableSchema.time);
         schedule.setTime(format.parse(str));
         schedule.setTaskName(rs.getString(scheduleTableSchema.taskName));
+        schedule.setExecutorType(rs.getString(scheduleTableSchema.executorType));
         Object input = scheduleTableSchema.getInputObject(rs);
-        if(isJsonInput && (input instanceof String)){
-            BeanJSONConverter jsonConverter = new BeanJSONConverter();
-            jsonConverter.setUnicodeEscape(false);
-            StringStreamConverter streamConverter = new StringStreamConverter();
-            input = jsonConverter.convertToObject(streamConverter.convertToStream(input));
+        if(input instanceof String){
+            if(schedule.getExecutorType() != null && inputParseConverterMap.containsKey(schedule.getExecutorType())){
+                Converter converter = (Converter)inputParseConverterMap.get(schedule.getExecutorType());
+                if(converter instanceof StreamConverter){
+                    input = ((StreamConverter)converter).convertToObject(new StringStreamConverter().convertToStream(input));
+                }else{
+                    input = converter.convert(input);
+                }
+            }else if(isJsonInput){
+                BeanJSONConverter jsonConverter = new BeanJSONConverter();
+                jsonConverter.setUnicodeEscape(false);
+                input = jsonConverter.convertToObject(new StringStreamConverter().convertToStream(input));
+            }
         }
         schedule.setInput(input);
         schedule.setOutput(scheduleTableSchema.getOutputObject(rs));
@@ -1916,7 +1999,6 @@ public class DatabaseScheduleManagerService extends ServiceBase
             )
         );
         schedule.setExecutorKey(rs.getString(scheduleTableSchema.executorKey));
-        schedule.setExecutorType(rs.getString(scheduleTableSchema.executorType));
         final String executeStartTimeStr = rs.getString(scheduleTableSchema.executeStartTime);
         if(executeStartTimeStr != null){
             schedule.setExecuteStartTime(format.parse(executeStartTimeStr));

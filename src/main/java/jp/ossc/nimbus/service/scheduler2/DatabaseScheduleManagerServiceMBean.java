@@ -429,6 +429,34 @@ public interface DatabaseScheduleManagerServiceMBean extends ServiceBaseMBean{
     public boolean isJSONInput();
     
     /**
+     * {@link ScheduleExecutor}の種類({@link Schedule#getExecutorType()})毎に、スケジュールの入力をパースする{@link jp.ossc.nimbus.util.converter.Converter Converter}サービスのサービス名のマッピングを設定する。<p>
+     *
+     * @param mapping キーが{@link ScheduleExecutor}の種類({@link Schedule#getExecutorType()})、値がスケジュールの入力をパースする{@link jp.ossc.nimbus.util.converter.Converter Converter}サービスのサービス名となるマッピング
+     */
+    public void setInputParseConverterMapping(Properties mapping);
+    
+    /**
+     * {@link ScheduleExecutor}の種類({@link Schedule#getExecutorType()})毎に、スケジュールの入力をパースする{@link jp.ossc.nimbus.util.converter.Converter Converter}サービスのサービス名のマッピングを取得する。<p>
+     *
+     * @return キーが{@link ScheduleExecutor}の種類({@link Schedule#getExecutorType()})、値がスケジュールの入力をパースする{@link jp.ossc.nimbus.util.converter.Converter Converter}サービスのサービス名となるマッピング
+     */
+    public Properties getInputParseConverterMapping();
+    
+    /**
+     * {@link ScheduleExecutor}の種類({@link Schedule#getExecutorType()})毎に、スケジュールの入力をフォーマットする{@link jp.ossc.nimbus.util.converter.Converter Converter}サービスのサービス名のマッピングを設定する。<p>
+     *
+     * @param mapping キーが{@link ScheduleExecutor}の種類({@link Schedule#getExecutorType()})、値がスケジュールの入力をフォーマットする{@link jp.ossc.nimbus.util.converter.Converter Converter}サービスのサービス名となるマッピング
+     */
+    public void setInputFormatConverterMapping(Properties mapping);
+    
+    /**
+     * {@link ScheduleExecutor}の種類({@link Schedule#getExecutorType()})毎に、スケジュールの入力をフォーマットする{@link jp.ossc.nimbus.util.converter.Converter Converter}サービスのサービス名のマッピングを取得する。<p>
+     *
+     * @return キーが{@link ScheduleExecutor}の種類({@link Schedule#getExecutorType()})、値がスケジュールの入力をフォーマットする{@link jp.ossc.nimbus.util.converter.Converter Converter}サービスのサービス名となるマッピング
+     */
+    public Properties getInputFormatConverterMapping();
+    
+    /**
      * 指定された日付のスケジュールを作成する。<p>
      *
      * @param date 日付
