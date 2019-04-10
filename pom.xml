@@ -498,12 +498,6 @@
             <version>1.11.530</version>
         </dependency>
         
-        <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-java-sdk-sagemaker</artifactId>
-            <version>1.11.534</version>
-        </dependency>
-        
     </dependencies>
 
     <build>
