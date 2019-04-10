@@ -280,13 +280,7 @@ public abstract class AbstractScheduleExecutorService extends ServiceBase
         Schedule result = schedule;
         try{
             checkPreExecute(schedule);
-            for(int i = 0; i < inputConvertMappings.size(); i++){
-                ConvertMapping mapping = (ConvertMapping)inputConvertMappings.get(i);
-                if(mapping.isMatch(schedule)){
-                    schedule.setInput(mapping.convert(schedule.getInput()));
-                    break;
-                }
-            }
+            convertInput(schedule);
         }catch(Throwable th){
             getLogger().write(
                 MSG_ID_EXECUTE_ERROR,
@@ -367,13 +361,7 @@ public abstract class AbstractScheduleExecutorService extends ServiceBase
                 journal.addInfo(JOURNAL_KEY_INPUT_SCHEDULE, schedule);
             }
             result = executeInternal(schedule);
-            for(int i = 0; i < outputConvertMappings.size(); i++){
-                ConvertMapping mapping = (ConvertMapping)outputConvertMappings.get(i);
-                if(mapping.isMatch(result)){
-                    result.setOutput(mapping.convert(result.getOutput()));
-                    break;
-                }
-            }
+            convertOutput(result);
             if(journal != null){
                 journal.addInfo(JOURNAL_KEY_OUTPUT_SCHEDULE, result);
             }
@@ -665,6 +653,38 @@ public abstract class AbstractScheduleExecutorService extends ServiceBase
     }
     
     /**
+     * スケジュールの入力を変換する。<p>
+     *
+     * @param schedule スケジュール
+     * @exception ConvertException 変換に失敗した場合
+     */
+    protected void convertInput(Schedule schedule) throws ConvertException{
+        for(int i = 0; i < inputConvertMappings.size(); i++){
+            ConvertMapping mapping = (ConvertMapping)inputConvertMappings.get(i);
+            if(mapping.isMatch(schedule)){
+                schedule.setInput(mapping.convert(schedule.getInput()));
+                break;
+            }
+        }
+    }
+    
+    /**
+     * スケジュールの出力を変換する。<p>
+     *
+     * @param schedule スケジュール
+     * @exception ConvertException 変換に失敗した場合
+     */
+    protected void convertOutput(Schedule schedule) throws ConvertException{
+        for(int i = 0; i < outputConvertMappings.size(); i++){
+            ConvertMapping mapping = (ConvertMapping)outputConvertMappings.get(i);
+            if(mapping.isMatch(schedule)){
+                schedule.setOutput(mapping.convert(schedule.getOutput()));
+                break;
+            }
+        }
+    }
+    
+    /**
      * リトライ日時を計算する。<p>
      *
      * @param interval リトライ実行間隔
@@ -816,7 +836,7 @@ public abstract class AbstractScheduleExecutorService extends ServiceBase
             return cnv;
         }
         
-        protected boolean isMatch(Schedule schedule){
+        public boolean isMatch(Schedule schedule){
             boolean result = true;
             if(masterId != null && !masterId.equals(schedule.getMasterId())){
                 result = false;
@@ -830,7 +850,7 @@ public abstract class AbstractScheduleExecutorService extends ServiceBase
             return result;
         }
         
-        protected Object convert(Object obj) throws ConvertException{
+        public Object convert(Object obj) throws ConvertException{
             Converter cnv = getConverterService();
             if(cnv == null){
                 return obj;
@@ -868,7 +888,7 @@ public abstract class AbstractScheduleExecutorService extends ServiceBase
             return encoding;
         }
         
-        protected Object convert(Object obj) throws ConvertException{
+        public Object convert(Object obj) throws ConvertException{
             Converter cnv = getConverterService();
             if(cnv == null || obj == null){
                 return obj;
