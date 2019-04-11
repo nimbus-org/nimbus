@@ -39,6 +39,11 @@ package jp.ossc.nimbus.service.scheduler2.aws;
 public interface AWSGlueScheduleExecutorServiceMBean extends AWSWebServiceScheduleExecutorServiceMBean {
     
     /**
+     * デフォルトのスケジュール実行種別。<p>
+     */
+    public static final String DEFAULT_EXECUTOR_TYPE = "GLUE";
+
+    /**
      * デフォルトのCrawlerのReady状態ステータス文字列。<p>
      */
     public static final String DEFAULT_CRAWLER_READY_STR = "READY";

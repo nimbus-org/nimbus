@@ -74,6 +74,10 @@ public class AWSGlueScheduleExecutorService extends AWSWebServiceScheduleExecuto
     
     protected Map executeScheduleMap;
     
+    {
+        type = DEFAULT_EXECUTOR_TYPE;
+    }
+    
     public void setWaitPollingInterval(int interval) {
         waitPollingInterval = interval;
     }
