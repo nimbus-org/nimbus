@@ -39,6 +39,11 @@ package jp.ossc.nimbus.service.scheduler2.aws;
 public interface AWSSageMakerScheduleExecutorServiceMBean extends AWSWebServiceScheduleExecutorServiceMBean{
     
     /**
+     * デフォルトのスケジュール実行種別。<p>
+     */
+    public static final String DEFAULT_EXECUTOR_TYPE = "SAGEMAKER";
+    
+    /**
      * 終了待ちの確認を行う間隔[s]を設定する。<p>
      * デフォルトは、1[s]。<br>
      *

@@ -35,6 +35,7 @@ import java.util.*;
 
 import jp.ossc.nimbus.service.scheduler2.*;
 import jp.ossc.nimbus.util.converter.BeanJSONConverter;
+import jp.ossc.nimbus.util.converter.DateFormatConverter;
 
 import com.amazonaws.waiters.WaiterParameters;
 import com.amazonaws.waiters.PollingStrategy;
@@ -56,6 +57,10 @@ public class AWSSageMakerScheduleExecutorService extends AWSWebServiceScheduleEx
     protected PollingStrategy pollingStrategy;
     protected Map executeScheduleMap;
     
+    {
+        type = DEFAULT_EXECUTOR_TYPE;
+    }
+    
     public void setWaitPollingInterval(int interval){
         waitPollingInterval = interval;
     }
@@ -76,6 +81,10 @@ public class AWSSageMakerScheduleExecutorService extends AWSWebServiceScheduleEx
         super.startService();
         
         BeanJSONConverter beanJSONConverter = new BeanJSONConverter();
+        DateFormatConverter dfc = new DateFormatConverter();
+        dfc.setFormat("yyyy/MM/dd HH:mm:ss.SSS");
+        dfc.setConvertType(DateFormatConverter.DATE_TO_STRING);
+        beanJSONConverter.setFormatConverter(java.util.Date.class, dfc);
         addAutoInputConvertMappings(beanJSONConverter);
         addAutoOutputConvertMappings(beanJSONConverter);
         
