@@ -896,6 +896,63 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
     }
     
     /**
+     * Javaオブジェクト⇔JSON変換時に使用するプロパティ名に対する型を設定する。<p>
+     * setterやgetterがオーバーロードされていて、型が正しく判別できない場合に使用する。<br>
+     *
+     * @param type 対象のクラス
+     * @param propName プロパティ名
+     * @param propType プロパティ型
+     */
+    public void setPropertyType(Class type, String propName, Class propType){
+        if(propertyAccessTypeMap == null){
+            propertyAccessTypeMap = new ClassMappingTree();
+        }
+        PropertyAccessType pat = (PropertyAccessType)propertyAccessTypeMap.getValueOf(type);
+        if(pat == null){
+            pat = new PropertyAccessType();
+            propertyAccessTypeMap.add(type, pat, true);
+        }
+        if(pat.propertyTypes == null){
+            pat.propertyTypes = new HashMap();
+        }
+        Property prop = propertyAccess.getProperty(propName);
+        pat.propertyTypes.put(prop.getPropertyName(), propType);
+    }
+    
+    /**
+     * Javaオブジェクト⇔JSON変換時に使用するプロパティ名に対する型を取得する。<p>
+     *
+     * @param type 対象のクラス
+     * @param propName プロパティ名
+     * return propType プロパティ型
+     */
+    public Class getPropertyType(Class type, String propName){
+        PropertyAccessType pat = propertyAccessTypeMap == null ? null : (PropertyAccessType)propertyAccessTypeMap.getValue(type);
+        if(pat == null || pat.propertyTypes == null){
+            return null;
+        }
+        Property prop = propertyAccess.getProperty(propName);
+        return (Class)pat.propertyTypes.get(prop.getPropertyName());
+    }
+    
+    protected Class getPropertyType(Property prop, Object obj) throws NoSuchPropertyException, InvocationTargetException{
+        return getPropertyType(prop, obj, null);
+    }
+    
+    protected Class getPropertyType(Property prop, Object obj, Object value) throws NoSuchPropertyException, InvocationTargetException{
+        Class type = getPropertyType(obj.getClass(), prop.getPropertyName());
+        if(type == null){
+            if(value == null){
+                return prop.getPropertyType(obj);
+            }else{
+                return prop.isWritable(obj, value.getClass()) ? value.getClass() : prop.getPropertyType(obj);
+            }
+        }else{
+            return type;
+        }
+    }
+    
+    /**
      * 指定されたオブジェクトを変換する。<p>
      *
      * @param obj 変換対象のオブジェクト
@@ -1301,7 +1358,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
                         appendName(buf, props[i].getPropertyName(), indent + 1);
                     }
                     buf.append(PROPERTY_SEPARATOR);
-                    Class propType = props[i].getPropertyType(value);
+                    Class propType = getPropertyType(props[i], value);
                     appendValue(
                         buf,
                         propValue == null? propType : propValue.getClass(),
@@ -1923,7 +1980,8 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
             }else if(!(jsonObj instanceof Map)){
                 Property property = mappedProp != null ? mappedProp : propertyAccess.getProperty(name);
                 try{
-                    propType = property.getPropertyType(jsonObj);
+                    
+                    propType = getPropertyType(property, jsonObj, value);
                 }catch(NoSuchPropertyException e){
                     if(!isIgnoreUnknownProperty){
                         throw new ConvertException(e);
@@ -1984,7 +2042,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
             }else if(!(jsonObj instanceof Map)){
                 Property property = mappedProp != null ? mappedProp : propertyAccess.getProperty(name);
                 try{
-                    propType = property.getPropertyType(jsonObj);
+                    propType = getPropertyType(property, jsonObj);
                     propGenericsType = property.getPropertyGenericType(jsonObj);
                     if(property.isReadable(jsonObj)){
                         objectValue = property.getProperty(jsonObj);
@@ -2118,7 +2176,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
             }else if(!(jsonObj instanceof Map)){
                 Property property = mappedProp != null ? mappedProp : propertyAccess.getProperty(name);
                 try{
-                    propType = property.getPropertyType(jsonObj);
+                    propType = getPropertyType(property, jsonObj);
                     propGenericsType = property.getPropertyGenericType(jsonObj);
                     Object propValue = property.isReadable(jsonObj) ? property.getProperty(jsonObj) : null;
                     if(propValue != null){
@@ -2243,7 +2301,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
                 }else if(!(jsonObj instanceof Map)){
                     Property property = mappedProp != null ? mappedProp : propertyAccess.getProperty(name);
                     try{
-                        propType = property.getPropertyType(jsonObj);
+                        propType = getPropertyType(property, jsonObj);
                     }catch(NoSuchPropertyException e){
                         if(!isIgnoreUnknownProperty){
                             throw new ConvertException(e);
@@ -2535,5 +2593,10 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
          * 出力するプロパティ名の集合。<p>
          */
         public Set enabledPropertyNames;
+        
+        /**
+         * プロパティの名前と型のマップ。<p>
+         */
+        public Map propertyTypes;
     }
 }
