@@ -31,23 +31,17 @@
  */
 package jp.ossc.nimbus.service.scheduler2.aws;
 
-import com.amazonaws.services.lambda.AWSLambda;
-import com.amazonaws.services.lambda.AWSLambdaClientBuilder;
-
-import jp.ossc.nimbus.core.ServiceName;
-import jp.ossc.nimbus.service.scheduler2.AbstractScheduleExecutorServiceMBean;
-
 /**
  * {@link AWSLambdaScheduleExecutorService}のMBeanインタフェース。<p>
  * 
  * @author M.Ishida
  */
-public interface AWSLambdaScheduleExecutorServiceMBean extends AbstractScheduleExecutorServiceMBean {
+public interface AWSLambdaScheduleExecutorServiceMBean extends AWSWebServiceScheduleExecutorServiceMBean {
     
     /**
      * デフォルトのスケジュール実行種別。<p>
      */
-    public static final String DEFAULT_EXECUTOR_TYPE = "AWS_LAMBDA";
+    public static final String DEFAULT_EXECUTOR_TYPE = "LAMBDA";
     
     /**
      * デフォルトのエンコーディング。<p>
@@ -55,100 +49,16 @@ public interface AWSLambdaScheduleExecutorServiceMBean extends AbstractScheduleE
     public static final String DEFAULT_ENCODING = "UTF-8";
     
     /**
-     * AWSLambdaのサービス名を取得する。<p>
+     * 処理結果のByteBufferを文字列変換する際の文字コードを取得する。<p>
      * 
-     * @return AWSLambdaのサービス名
-     */
-    public ServiceName getAWSLambdaServiceName();
-    
-    /**
-     * AWSLambdaのサービス名を設定する。<p>
-     * 
-     * @param serviceName AWSLambdaのサービス名
-     */
-    public void setAWSLambdaServiceName(ServiceName serviceName);
-    
-    /**
-     * AWSLambdaClientBuilderのサービス名を取得する。<p>
-     * 
-     * @return AWSLambdaClientBuilderのサービス名
-     */
-    public ServiceName getAWSLambdaClientBuilderServiceName();
-
-    /**
-     * AWSLambdaClientBuilderのサービス名を設定する。<p>
-     * 
-     * @param serviceName AWSLambdaClientBuilderのサービス名
-     */
-    public void setAWSLambdaClientBuilderServiceName(ServiceName serviceName);
-    
-    /**
-     * Lambdaへのリクエスト時のClientExecutionTimeoutを取得する。<p>
-     * 
-     * @return Lambdaへのリクエスト時のClientExecutionTimeout
-     */
-    public int getClientExecutionTimeout();
-
-    /**
-     * Lambdaへのリクエスト時のClientExecutionTimeoutを設定する。<p>
-     * 
-     * @param timeout Lambdaへのリクエスト時のClientExecutionTimeout
-     */
-    public void setClientExecutionTimeout(int timeout);
-
-    /**
-     * Lambdaへのリクエスト時のRequestTimeoutを取得する。<p>
-     * 
-     * @return Lambdaへのリクエスト時のRequestTimeout
-     */
-    public int getRequestTimeout();
-
-    /**
-     * Lambdaへのリクエスト時のRequestTimeoutを設定する。<p>
-     * 
-     * @param timeout Lambdaへのリクエスト時のRequestTimeout
-     */
-    public void setRequestTimeout(int timeout);
-
-    /**
-     * LambdaからのレスポンスのByteBufferを文字列に変換する際のエンコーディングを取得する。<p>
-     * 
-     * @return エンコーディング
+     * @return 文字コード
      */
     public String getEncoding();
-
+    
     /**
-     * LambdaからのレスポンスのByteBufferを文字列に変換する際のエンコーディングを設定する。<p>
+     * 処理結果のByteBufferを文字列変換する際の文字コードを設定する。<p>
      * 
-     * @param encoding エンコーディング
+     * @param encoding 文字コード
      */
     public void setEncoding(String encoding);
-
-    /**
-     * AWSLambdaを取得する。<p>
-     * 
-     * @return AWSLambda
-     */
-    public AWSLambda getAWSLambda();
-    
-    /**
-     * AWSLambdaを設定する。<p>
-     * 
-     * @param awsLambda AWSLambda
-     */
-    public void setAWSLambda(AWSLambda awsLambda);
-    
-    /**
-     * AWSLambdaClientBuilderを取得する。<p>
-     * 
-     * @return AWSLambdaClientBuilder
-     */
-    public AWSLambdaClientBuilder getAWSLambdaClientBuilder();
-
-    /**
-     * AWSLambdaClientBuilderを設定する。<p>
-     * 
-     * @param builder AWSLambdaClientBuilder
-     */
-    public void setAWSLambdaClientBuilder(AWSLambdaClientBuilder builder);
 }
