@@ -41,11 +41,13 @@ import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.services.glue.AWSGlueClient;
 import com.amazonaws.services.glue.model.BatchStopJobRunRequest;
 import com.amazonaws.services.glue.model.Crawler;
+import com.amazonaws.services.glue.model.CrawlerState;
 import com.amazonaws.services.glue.model.GetCrawlerRequest;
 import com.amazonaws.services.glue.model.GetCrawlerResult;
 import com.amazonaws.services.glue.model.GetJobRunRequest;
 import com.amazonaws.services.glue.model.GetJobRunResult;
 import com.amazonaws.services.glue.model.JobRun;
+import com.amazonaws.services.glue.model.JobRunState;
 import com.amazonaws.services.glue.model.StartCrawlerRequest;
 import com.amazonaws.services.glue.model.StartJobRunRequest;
 import com.amazonaws.services.glue.model.StartJobRunResult;
@@ -66,11 +68,6 @@ public class AWSGlueScheduleExecutorService extends AWSWebServiceScheduleExecuto
     private static final long serialVersionUID = 591226491501738321L;
     
     protected int waitPollingInterval = 1;
-    protected String crawlerReadyString = DEFAULT_CRAWLER_READY_STR;
-    protected String crawlerRunningString = DEFAULT_CRAWLER_RUNNING_STR;
-    protected String jobSucceededString = DEFAULT_JOB_SUCCEEDED_STR;
-    protected String jobStoppedString = DEFAULT_JOB_STOPPED_STR;
-    protected String jobRunningString = DEFAULT_JOB_RUNNING_STR;
     
     protected Map executeScheduleMap;
     
@@ -84,46 +81,6 @@ public class AWSGlueScheduleExecutorService extends AWSWebServiceScheduleExecuto
     
     public int getWaitPollingInterval() {
         return waitPollingInterval;
-    }
-    
-    public String getCrawlerReadyString() {
-        return crawlerReadyString;
-    }
-    
-    public void setCrawlerReadyString(String str) {
-        crawlerReadyString = str;
-    }
-    
-    public String getCrawlerRunningString() {
-        return crawlerRunningString;
-    }
-    
-    public void setCrawlerRunningString(String str) {
-        crawlerRunningString = str;
-    }
-    
-    public String getJobSucceededString() {
-        return jobSucceededString;
-    }
-    
-    public void setJobSucceededString(String str) {
-        jobSucceededString = str;
-    }
-    
-    public String getJobStoppedString() {
-        return jobStoppedString;
-    }
-    
-    public void setJobStoppedString(String str) {
-        jobStoppedString = str;
-    }
-    
-    public String getJobRunningString() {
-        return jobRunningString;
-    }
-    
-    public void setJobRunningString(String str) {
-        jobRunningString = str;
     }
     
     public void createService() throws Exception {
@@ -160,7 +117,7 @@ public class AWSGlueScheduleExecutorService extends AWSWebServiceScheduleExecuto
                 getCrawlerRequest.setName(((StartCrawlerRequest) request).getName());
                 GetCrawlerResult getCrawlerResult = client.getCrawler(getCrawlerRequest);
                 Crawler crawler = getCrawlerResult.getCrawler();
-                while (!crawlerReadyString.equals(crawler.getState())){
+                while (!CrawlerState.READY.toString().equals(crawler.getState())){
                     try{
                         Thread.sleep(waitPollingInterval * 1000);
                     }catch (Exception e){
@@ -176,7 +133,10 @@ public class AWSGlueScheduleExecutorService extends AWSWebServiceScheduleExecuto
                 
                 GetJobRunResult getJobRunResult = client.getJobRun(getJobRunRequest);
                 JobRun jobRun = getJobRunResult.getJobRun();
-                while (!jobSucceededString.equals(jobRun.getJobRunState()) && !jobStoppedString.equals(jobRun.getJobRunState())){
+                while (!JobRunState.SUCCEEDED.toString().equals(jobRun.getJobRunState())
+                        && !JobRunState.STOPPED.toString().equals(jobRun.getJobRunState())
+                        && !JobRunState.FAILED.toString().equals(jobRun.getJobRunState())
+                        && !JobRunState.TIMEOUT.toString().equals(jobRun.getJobRunState())){
                     try{
                         Thread.sleep(waitPollingInterval * 1000);
                     }catch (Exception e){
@@ -202,7 +162,7 @@ public class AWSGlueScheduleExecutorService extends AWSWebServiceScheduleExecuto
                 getCrawlerRequest.setName(name);
                 GetCrawlerResult getCrawlerResult = client.getCrawler(getCrawlerRequest);
                 Crawler crawler = getCrawlerResult.getCrawler();
-                if(crawlerRunningString.equals(crawler.getState())){
+                if(CrawlerState.RUNNING.toString().equals(crawler.getState())){
                     StopCrawlerRequest stopCrawlerRequest = new StopCrawlerRequest();
                     stopCrawlerRequest.setName(name);
                     client.stopCrawler(stopCrawlerRequest);
@@ -217,7 +177,7 @@ public class AWSGlueScheduleExecutorService extends AWSWebServiceScheduleExecuto
                 
                 GetJobRunResult getJobRunResult = client.getJobRun(getJobRunRequest);
                 JobRun jobRun = getJobRunResult.getJobRun();
-                if(jobRunningString.equals(jobRun.getJobRunState())){
+                if(JobRunState.RUNNING.toString().equals(jobRun.getJobRunState())){
                     BatchStopJobRunRequest batchStopJobRunRequest = new BatchStopJobRunRequest();
                     batchStopJobRunRequest.setJobName(jobName);
                     Collection runIds = new ArrayList();

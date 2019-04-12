@@ -39,36 +39,6 @@ package jp.ossc.nimbus.service.scheduler2.aws;
 public interface AWSGlueScheduleExecutorServiceMBean extends AWSWebServiceScheduleExecutorServiceMBean {
     
     /**
-     * デフォルトのスケジュール実行種別。<p>
-     */
-    public static final String DEFAULT_EXECUTOR_TYPE = "GLUE";
-
-    /**
-     * デフォルトのCrawlerのReady状態ステータス文字列。<p>
-     */
-    public static final String DEFAULT_CRAWLER_READY_STR = "READY";
-    
-    /**
-     * デフォルトのCrawlerのRunning状態ステータス文字列。<p>
-     */
-    public static final String DEFAULT_CRAWLER_RUNNING_STR = "RUNNING";
-    
-    /**
-     * デフォルトのJobのSucceeded状態ステータス文字列。<p>
-     */
-    public static final String DEFAULT_JOB_SUCCEEDED_STR = "SUCCEEDED";
-    
-    /**
-     * デフォルトのJobのStoped状態ステータス文字列。<p>
-     */
-    public static final String DEFAULT_JOB_STOPPED_STR = "STOPPED";
-    
-    /**
-     * デフォルトのJobのRunning状態ステータス文字列。<p>
-     */
-    public static final String DEFAULT_JOB_RUNNING_STR = "RUNNING";
-    
-    /**
      * 終了待ちの確認を行う間隔[s]を設定する。<p>
      * デフォルトは、1[s]。<br>
      *
@@ -82,75 +52,5 @@ public interface AWSGlueScheduleExecutorServiceMBean extends AWSWebServiceSchedu
      * @return 終了待ちの確認を行う間隔[s]
      */
     public int getWaitPollingInterval();
-    
-    /**
-     * CrawlerのReady状態ステータス文字列を取得する。<p>
-     * 
-     * @return CrawlerのReady状態ステータス文字列
-     */
-    public String getCrawlerReadyString();
-    
-    /**
-     * CrawlerのReady状態ステータス文字列を設定する。<p>
-     * 
-     * @param str CrawlerのReady状態ステータス文字列
-     */
-    public void setCrawlerReadyString(String str);
-    
-    /**
-     * CrawlerのRunning状態ステータス文字列を取得する。<p>
-     * 
-     * @return CrawlerのRunning状態ステータス文字列
-     */
-    public String getCrawlerRunningString();
-    
-    /**
-     * CrawlerのRunning状態ステータス文字列を設定する。<p>
-     * 
-     * @param str CrawlerのRunning状態ステータス文字列
-     */
-    public void setCrawlerRunningString(String str);
-    
-    /**
-     * JobのSucceeded状態ステータス文字列を取得する。<p>
-     * 
-     * @return JobのSucceeded状態ステータス文字列
-     */
-    public String getJobSucceededString();
-    
-    /**
-     * JobのSucceeded状態ステータス文字列を設定する。<p>
-     * 
-     * @param str JobのSucceeded状態ステータス文字列
-     */
-    public void setJobSucceededString(String str);
-    
-    /**
-     * JobのStopped状態ステータス文字列を取得する。<p>
-     * 
-     * @return JobのStopped状態ステータス文字列
-     */
-    public String getJobStoppedString();
-    
-    /**
-     * JobのStopped状態ステータス文字列を設定する。<p>
-     * 
-     * @param str JobのStopped状態ステータス文字列
-     */
-    public void setJobStoppedString(String str);
-    
-    /**
-     * JobのRunning状態ステータス文字列を取得する。<p>
-     * 
-     * @return JobのRunning状態ステータス文字列
-     */
-    public String getJobRunningString();
-    
-    /**
-     * JobのRunning状態ステータス文字列を設定する。<p>
-     * 
-     * @param str JobのRunning状態ステータス文字列
-     */
-    public void setJobRunningString(String str);
     
 }
