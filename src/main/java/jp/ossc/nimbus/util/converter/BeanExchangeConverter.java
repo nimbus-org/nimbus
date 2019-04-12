@@ -421,6 +421,63 @@ public class BeanExchangeConverter implements BindingConverter{
     }
     
     /**
+     * Javaオブジェクト⇔JSON変換時に使用するプロパティ名に対する型を設定する。<p>
+     * setterやgetterがオーバーロードされていて、型が正しく判別できない場合に使用する。<br>
+     *
+     * @param type 対象のクラス
+     * @param propName プロパティ名
+     * @param propType プロパティ型
+     */
+    public void setPropertyType(Class type, String propName, Class propType){
+        if(propertyAccessTypeMap == null){
+            propertyAccessTypeMap = new ClassMappingTree();
+        }
+        PropertyAccessType pat = (PropertyAccessType)propertyAccessTypeMap.getValueOf(type);
+        if(pat == null){
+            pat = new PropertyAccessType();
+            propertyAccessTypeMap.add(type, pat, true);
+        }
+        if(pat.propertyTypes == null){
+            pat.propertyTypes = new HashMap();
+        }
+        Property prop = propertyAccess.getProperty(propName);
+        pat.propertyTypes.put(prop.getPropertyName(), propType);
+    }
+    
+    /**
+     * Javaオブジェクト⇔JSON変換時に使用するプロパティ名に対する型を取得する。<p>
+     *
+     * @param type 対象のクラス
+     * @param propName プロパティ名
+     * return propType プロパティ型
+     */
+    public Class getPropertyType(Class type, String propName){
+        PropertyAccessType pat = propertyAccessTypeMap == null ? null : (PropertyAccessType)propertyAccessTypeMap.getValue(type);
+        if(pat == null || pat.propertyTypes == null){
+            return null;
+        }
+        Property prop = propertyAccess.getProperty(propName);
+        return (Class)pat.propertyTypes.get(prop.getPropertyName());
+    }
+    
+    protected Class getPropertyType(Property prop, Object obj) throws NoSuchPropertyException, InvocationTargetException{
+        return getPropertyType(prop, obj, null);
+    }
+    
+    protected Class getPropertyType(Property prop, Object obj, Object value) throws NoSuchPropertyException, InvocationTargetException{
+        Class type = getPropertyType(obj.getClass(), prop.getPropertyName());
+        if(type == null){
+            if(value == null){
+                return prop.getPropertyType(obj);
+            }else{
+                return prop.isWritable(obj, value.getClass()) ? value.getClass() : prop.getPropertyType(obj);
+            }
+        }else{
+            return type;
+        }
+    }
+    
+    /**
      * 変換後オブジェクトがRecordでスキーマ定義が行われていない場合に、変換対象オブジェクトの各フィールドの型に即したスキーマ定義を作成するかどうかを判定する。<p>
      *
      * @return trueの場合、スキーマを作成する
@@ -719,7 +776,7 @@ public class BeanExchangeConverter implements BindingConverter{
                 Object outputProp = entry.getValue();
                 try{
                     Property prop = propertyAccess.getProperty(inputProp);
-                    Class propType = prop.getPropertyType(input);
+                    Class propType = getPropertyType(prop, input);
                     if(outputProp instanceof String){
                         buf.append(':').append(outputProp);
                         buf.append(',').append(propType.getName()).append('\n');
@@ -912,7 +969,7 @@ public class BeanExchangeConverter implements BindingConverter{
                     Property outProp = propertyAccess.getProperty(outputPropName);
                     if(value != null){
                         Class inPropType = value.getClass();
-                        Class outPropType = outProp.getPropertyType(output);
+                        Class outPropType = getPropertyType(outProp, output, value);
                         if(!isAssignableFrom(outPropType, inPropType)){
                             if(isNarrowCast() && isNarrowCast(inPropType, outPropType)){
                                 value = castPrimitiveWrapper(outPropType, (Number)value);
@@ -1234,5 +1291,10 @@ public class BeanExchangeConverter implements BindingConverter{
          * 出力するプロパティ名の集合。<p>
          */
         public Set enabledPropertyNames;
+        
+        /**
+         * プロパティの名前と型のマップ。<p>
+         */
+        public Map propertyTypes;
     }
 }
