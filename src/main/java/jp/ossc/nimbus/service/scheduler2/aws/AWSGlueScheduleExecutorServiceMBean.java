@@ -32,33 +32,30 @@
 package jp.ossc.nimbus.service.scheduler2.aws;
 
 /**
- * {@link AWSLambdaScheduleExecutorService}のMBeanインタフェース。<p>
+ * {@link AWSGlueScheduleExecutorService}のMBeanインタフェース。<p>
  * 
  * @author M.Ishida
  */
-public interface AWSLambdaScheduleExecutorServiceMBean extends AWSWebServiceScheduleExecutorServiceMBean {
+public interface AWSGlueScheduleExecutorServiceMBean extends AWSWebServiceScheduleExecutorServiceMBean {
     
     /**
      * デフォルトのスケジュール実行種別。<p>
      */
-    public static final String DEFAULT_EXECUTOR_TYPE = "LAMBDA";
+    public static final String DEFAULT_EXECUTOR_TYPE = "GLUE";
     
     /**
-     * デフォルトのエンコーディング。<p>
+     * 終了待ちの確認を行う間隔[s]を設定する。<p>
+     * デフォルトは、1[s]。<br>
+     *
+     * @param interval 終了待ちの確認を行う間隔[s]
      */
-    public static final String DEFAULT_ENCODING = "UTF-8";
+    public void setWaitPollingInterval(int interval);
     
     /**
-     * 処理結果のByteBufferを文字列変換する際の文字コードを取得する。<p>
-     * 
-     * @return 文字コード
+     * 終了待ちの確認を行う間隔[s]を取得する。<p>
+     *
+     * @return 終了待ちの確認を行う間隔[s]
      */
-    public String getEncoding();
+    public int getWaitPollingInterval();
     
-    /**
-     * 処理結果のByteBufferを文字列変換する際の文字コードを設定する。<p>
-     * 
-     * @param encoding 文字コード
-     */
-    public void setEncoding(String encoding);
 }

@@ -31,164 +31,77 @@
  */
 package jp.ossc.nimbus.service.scheduler2.aws;
 
+import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
-import java.util.Map;
 
-import com.amazonaws.services.lambda.AWSLambda;
-import com.amazonaws.services.lambda.AWSLambdaClientBuilder;
-import com.amazonaws.services.lambda.model.InvocationType;
-import com.amazonaws.services.lambda.model.InvokeRequest;
-import com.amazonaws.services.lambda.model.InvokeResult;
-
-import jp.ossc.nimbus.core.ServiceManagerFactory;
-import jp.ossc.nimbus.core.ServiceName;
-import jp.ossc.nimbus.service.scheduler2.AbstractScheduleExecutorService;
-import jp.ossc.nimbus.service.scheduler2.Schedule;
 import jp.ossc.nimbus.service.scheduler2.ScheduleStateControlException;
 import jp.ossc.nimbus.util.converter.BeanJSONConverter;
-import jp.ossc.nimbus.util.converter.StringStreamConverter;
+import jp.ossc.nimbus.util.converter.ConvertException;
+import jp.ossc.nimbus.util.converter.Converter;
+import jp.ossc.nimbus.util.converter.DateFormatConverter;
 
 /**
  * AWS Lambdaを呼び出すスケジュール実行。<p>
  *
  * @author M.Ishida
  */
-public class AWSLambdaScheduleExecutorService extends AbstractScheduleExecutorService implements AWSLambdaScheduleExecutorServiceMBean {
+public class AWSLambdaScheduleExecutorService extends AWSWebServiceScheduleExecutorService implements AWSLambdaScheduleExecutorServiceMBean {
     
     private static final long serialVersionUID = 6075236051813713742L;
     
-    protected ServiceName lambdaServiceName;
-    protected ServiceName lambdaClientBuilderServiceName;
-    protected Integer clientExecutionTimeout = null;
-    protected Integer requestTimeout = null;
     protected String encoding = DEFAULT_ENCODING;
-    
-    protected AWSLambda lambda;
-    protected AWSLambdaClientBuilder lambdaClientBuilder;
     
     {
         type = DEFAULT_EXECUTOR_TYPE;
     }
     
-    public ServiceName getAWSLambdaServiceName() {
-        return lambdaServiceName;
-    }
-    
-    public void setAWSLambdaServiceName(ServiceName serviceName) {
-        lambdaServiceName = serviceName;
-    }
-    
-    public ServiceName getAWSLambdaClientBuilderServiceName() {
-        return lambdaClientBuilderServiceName;
-    }
-
-    public void setAWSLambdaClientBuilderServiceName(ServiceName serviceName) {
-        lambdaClientBuilderServiceName = serviceName;
-    }
-
-    public int getClientExecutionTimeout() {
-        return clientExecutionTimeout;
-    }
-
-    public void setClientExecutionTimeout(int timeout) {
-        clientExecutionTimeout = timeout;
-    }
-
-    public int getRequestTimeout() {
-        return requestTimeout;
-    }
-
-    public void setRequestTimeout(int timeout) {
-        requestTimeout = timeout;
-    }
-
     public String getEncoding() {
         return encoding;
     }
-
+    
     public void setEncoding(String encoding) {
         this.encoding = encoding;
     }
-
-    public AWSLambda getAWSLambda() {
-        return lambda;
-    }
     
-    public void setAWSLambda(AWSLambda awsLambda) {
-        lambda = awsLambda;
-    }
-    
-    public AWSLambdaClientBuilder getAWSLambdaClientBuilder() {
-        return lambdaClientBuilder;
-    }
-
-    public void setAWSLambdaClientBuilder(AWSLambdaClientBuilder builder) {
-        lambdaClientBuilder = builder;
-    }
-
     public void startService() throws Exception {
-        if(lambda == null && lambdaServiceName != null){
-            lambda = (AWSLambda) ServiceManagerFactory.getServiceObject(lambdaServiceName);
-        }
-        if(lambda == null && lambdaClientBuilder == null && lambdaClientBuilderServiceName != null){
-            lambdaClientBuilder = (AWSLambdaClientBuilder) ServiceManagerFactory.getServiceObject(lambdaClientBuilderServiceName);
-        }
-        if(lambda == null && lambdaClientBuilder != null) {
-            lambda = lambdaClientBuilder.build();
-        }
-        if(lambda == null){
-            lambda = AWSLambdaClientBuilder.standard().build();
-        }
-        if(encoding != null && !Charset.isSupported(encoding)) {
-            throw new IllegalArgumentException("encoding is not support. encoding=" + encoding);
-        }
         super.startService();
-    }
-    
-    protected void checkPreExecute(Schedule schedule) throws Exception{
-        Object input = schedule.getInput();
-        if(!(input == null || input instanceof String || input instanceof Map)){
-            throw new IllegalArgumentException("Input is not support. type=" + input.getClass().getName());
-        }
-    }
-    
-    protected Schedule executeInternal(Schedule schedule) throws Throwable {
-        String functionName = schedule.getTaskName();
-        if(functionName == null || functionName.length() == 0) {
-            throw new IllegalArgumentException("TaskName is null or empty.");
-        }
-        Object input = schedule.getInput();
-        String inputJSON = null;
-        if(input instanceof String) {
-            inputJSON = (String)input;
-        } else if(input instanceof Map) {
-            BeanJSONConverter bjConverter = new BeanJSONConverter();
-            StringStreamConverter ssConverter = new StringStreamConverter();
-            inputJSON = (String)ssConverter.convertToObject(bjConverter.convertToStream(input));
-        }
-        InvokeRequest request = new InvokeRequest();
-        request.setFunctionName(functionName);
-        if(inputJSON != null) {
-            request.setPayload(inputJSON);
-        }
-        if(clientExecutionTimeout != null) {
-            request.setSdkClientExecutionTimeout(clientExecutionTimeout.intValue());
-        }
-        if(requestTimeout != null) {
-            request.setSdkRequestTimeout(requestTimeout.intValue());
-        }
-        request.setInvocationType(InvocationType.RequestResponse);
-        InvokeResult result = lambda.invoke(request);
         
-        ByteBuffer buffer = result.getPayload();
-        String resultString = encoding == null ? new String(buffer.array()) : new String(buffer.array(), Charset.forName(encoding));
-        schedule.setOutput(resultString);
-        return schedule;
+        BeanJSONConverter beanJSONConverter = new BeanJSONConverter();
+        DateFormatConverter dfc = new DateFormatConverter();
+        dfc.setFormat("yyyy/MM/dd HH:mm:ss.SSS");
+        dfc.setConvertType(DateFormatConverter.DATE_TO_STRING);
+        beanJSONConverter.setFormatConverter(java.util.Date.class, dfc);
+        ByteBufferToStringConverter byteBufferToStringConverter = new ByteBufferToStringConverter();
+        if(encoding != null){
+            byteBufferToStringConverter.setEncoding(encoding);
+        }
+        beanJSONConverter.setFormatConverter(ByteBuffer.class, byteBufferToStringConverter);
+        addAutoInputConvertMappings(beanJSONConverter);
+        addAutoOutputConvertMappings(beanJSONConverter);
     }
     
     public boolean controlState(String id, int cntrolState) throws ScheduleStateControlException {
         return false;
     }
     
+    public static class ByteBufferToStringConverter implements Converter {
+        
+        protected String encoding;
+        
+        public void setEncoding(String encoding) {
+            this.encoding = encoding;
+        }
+        
+        public Object convert(Object obj) throws ConvertException {
+            if(obj == null){
+                return null;
+            }
+            try{
+                return encoding == null ? new String(((ByteBuffer) obj).array()) : new String(((ByteBuffer) obj).array(), encoding);
+            }catch (UnsupportedEncodingException e){
+                throw new ConvertException(e);
+            }
+        }
+        
+    }
 }
