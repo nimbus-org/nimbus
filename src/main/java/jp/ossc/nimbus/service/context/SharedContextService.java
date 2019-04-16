@@ -5300,6 +5300,8 @@ public class SharedContextService extends DefaultContextService
                                 keySet.add(key);
                             }
                             result = 1;
+                            lockStartTime = System.currentTimeMillis();
+                            lockCount++;
                             return result;
                         }else if(callback.id.equals(owner)
                             && ((isLocal && Thread.currentThread().equals(ownerThread))
