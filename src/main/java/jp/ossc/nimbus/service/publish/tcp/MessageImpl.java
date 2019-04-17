@@ -68,7 +68,7 @@ public class MessageImpl implements Message, Externalizable, Cloneable{
     private Map subjectMap = new LinkedHashMap();
     private Object object;
     private transient byte[] bytes;
-    private transient long sendTime;
+    private transient long sendTime = -1;
     private transient long receiveTime;
     private byte messageType = MESSAGE_TYPE_APPLICATION;
     private transient Set destinationIds;
@@ -280,7 +280,7 @@ public class MessageImpl implements Message, Externalizable, Cloneable{
         subjectMap.clear();
         object = null;
         bytes = null;
-        sendTime = 0;
+        sendTime = -1l;
         receiveTime = 0;
         messageType = MESSAGE_TYPE_APPLICATION;
         if(destinationIds != null){
@@ -317,6 +317,10 @@ public class MessageImpl implements Message, Externalizable, Cloneable{
     public void writeExternal(ObjectOutput out) throws IOException{
         out.write(messageType);
         out.writeObject(subjectMap);
+        if(sendTime < 0){
+            sendTime = System.currentTimeMillis();
+        }
+        out.writeLong(sendTime);
         if(serializedBytes == null){
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(baos);
@@ -331,6 +335,7 @@ public class MessageImpl implements Message, Externalizable, Cloneable{
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException{
         messageType = (byte)in.read();
         subjectMap = (Map)in.readObject();
+        sendTime = in.readLong();
         serializedBytes = (byte[])in.readObject();
         receiveTime = System.currentTimeMillis();
     }

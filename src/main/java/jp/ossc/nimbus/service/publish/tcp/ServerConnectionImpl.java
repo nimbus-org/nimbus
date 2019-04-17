@@ -714,7 +714,9 @@ public class ServerConnectionImpl implements ServerConnection{
     
     private void addSendMessageCache(MessageImpl message){
         final long currentTime = System.currentTimeMillis();
-        message.setSendTime(currentTime);
+        if(message.getSendTime() < 0){
+            message.setSendTime(currentTime);
+        }
         synchronized(sendMessageCache){
             sendMessageCache.add(message);
             for(int i = 0, imax = sendMessageCache.size(); i < imax; i++){

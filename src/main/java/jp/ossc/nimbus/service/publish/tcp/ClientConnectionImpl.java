@@ -132,6 +132,8 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
     private transient byte[] receiveBytes;
     private transient boolean isServerClosed;
     private transient long lastReceiveTime = -1;
+    private transient long totalMessageLatency;
+    private transient long maxMessageLatency;
     
     public ClientConnectionImpl(){}
     
@@ -910,7 +912,13 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
         receiveCount++;
         receiveProcessTime += (System.currentTimeMillis() - startTime);
         long sTime = System.currentTimeMillis();
-        messageListener.onMessage((Message)paramObj);
+        Message message = (Message)paramObj;
+        long latency = message.getReceiveTime() - message.getSendTime();
+        totalMessageLatency += latency;
+        if(maxMessageLatency < latency){
+            maxMessageLatency = latency;
+        }
+        messageListener.onMessage(message);
         onMessageProcessTime += (System.currentTimeMillis() - sTime);
     }
     public void garbage(){}
@@ -960,6 +968,9 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
             ClientConnectionImpl.this.receiveCount = 0;
             ClientConnectionImpl.this.receiveProcessTime = 0;
             ClientConnectionImpl.this.onMessageProcessTime = 0;
+            ClientConnectionImpl.this.lastReceiveTime = -1;
+            ClientConnectionImpl.this.totalMessageLatency = 0;
+            ClientConnectionImpl.this.maxMessageLatency = 0;
         }
         
         public long getAverageReceiveProcessTime(){
@@ -968,6 +979,14 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
         
         public long getAverageOnMessageProcessTime(){
             return ClientConnectionImpl.this.receiveCount == 0 ? 0 : (ClientConnectionImpl.this.onMessageProcessTime / ClientConnectionImpl.this.receiveCount);
+        }
+        
+        public long getAverageMessageLatency(){
+            return ClientConnectionImpl.this.receiveCount == 0 ? 0 : (ClientConnectionImpl.this.totalMessageLatency / ClientConnectionImpl.this.receiveCount);
+        }
+        
+        public long getMaxMessageLatency(){
+            return ClientConnectionImpl.this.maxMessageLatency;
         }
         
         public SocketAddress getLocalSocketAddress(){
@@ -1105,6 +1124,20 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
          * @return 平均メッセージ処理時間[ms]
          */
         public long getAverageOnMessageProcessTime();
+        
+        /**
+         * 平均メッセージ到達時間を取得する。<p>
+         *
+         * @return 平均メッセージ到達時間[ms]
+         */
+        public long getAverageMessageLatency();
+        
+        /**
+         * 最大メッセージ到達時間を取得する。<p>
+         *
+         * @return 最大メッセージ到達時間[ms]
+         */
+        public long getMaxMessageLatency();
         
         /**
          * カウントをリセットする。<p>

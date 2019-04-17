@@ -176,6 +176,8 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
     private transient boolean isServerClosed;
     private transient NetworkInterface[] networkInterfaces;
     private transient long lastReceiveTime = -1;
+    private transient long totalMessageLatency;
+    private transient long maxMessageLatency;
     
     public ClientConnectionImpl(){}
     
@@ -1395,6 +1397,11 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
             }
             receiveCount++;
             long sTime = System.currentTimeMillis();
+            long latency = message.getReceiveTime() - message.getSendTime();
+            totalMessageLatency += latency;
+            if(maxMessageLatency < latency){
+                maxMessageLatency = latency;
+            }
             messageListener.onMessage(message);
             onMessageProcessTime += (System.currentTimeMillis() - sTime);
         }
@@ -1909,10 +1916,21 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
             ClientConnectionImpl.this.newMessagePollingTimeoutCount = 0;
             ClientConnectionImpl.this.newMessagePollingResponseTime = 0;
             ClientConnectionImpl.this.lostCount = 0;
+            ClientConnectionImpl.this.lastReceiveTime = -1;
+            ClientConnectionImpl.this.totalMessageLatency = 0;
+            ClientConnectionImpl.this.maxMessageLatency = 0;
         }
         
         public long getAverageOnMessageProcessTime(){
             return ClientConnectionImpl.this.receiveCount == 0 ? 0 : (ClientConnectionImpl.this.onMessageProcessTime / ClientConnectionImpl.this.receiveCount);
+        }
+        
+        public long getAverageMessageLatency(){
+            return ClientConnectionImpl.this.receiveCount == 0 ? 0 : (ClientConnectionImpl.this.totalMessageLatency / ClientConnectionImpl.this.receiveCount);
+        }
+        
+        public long getMaxMessageLatency(){
+            return ClientConnectionImpl.this.maxMessageLatency;
         }
         
         public long getMissingWindowRequestCount(){
@@ -2279,6 +2297,20 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
          * @return 平均メッセージ処理時間[ms]
          */
         public long getAverageOnMessageProcessTime();
+        
+        /**
+         * 平均メッセージ到達時間を取得する。<p>
+         *
+         * @return 平均メッセージ到達時間[ms]
+         */
+        public long getAverageMessageLatency();
+        
+        /**
+         * 最大メッセージ到達時間を取得する。<p>
+         *
+         * @return 最大メッセージ到達時間[ms]
+         */
+        public long getMaxMessageLatency();
         
         /**
          * 補間要求の送信件数を取得する。<p>

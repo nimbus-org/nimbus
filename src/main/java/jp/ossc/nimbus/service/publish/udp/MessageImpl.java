@@ -62,7 +62,7 @@ public class MessageImpl extends MessageId implements Message, Comparable, Clone
     private Map subjectMap = new LinkedHashMap();
     private Object object;
     private boolean isFirst;
-    private transient long sendTime;
+    private transient long sendTime = -1;
     private transient long receiveTime;
     private transient List windows;
     private transient boolean isLost;
@@ -264,6 +264,10 @@ public class MessageImpl extends MessageId implements Message, Comparable, Clone
             out.writeObject(entry.getKey());
             out.writeObject(entry.getValue());
         }
+        if(sendTime < 0){
+            sendTime = System.currentTimeMillis();
+        }
+        out.writeLong(sendTime);
         if(serializedBytes == null){
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(baos);
@@ -283,6 +287,7 @@ public class MessageImpl extends MessageId implements Message, Comparable, Clone
         for(int i = 0; i < size; i++){
             subjectMap.put(in.readObject(), in.readObject());
         }
+        sendTime = in.readLong();
         serializedBytes = (byte[])in.readObject();
     }
     
@@ -302,7 +307,7 @@ public class MessageImpl extends MessageId implements Message, Comparable, Clone
         subjectMap.clear();
         object = null;
         isFirst = false;
-        sendTime = 0l;
+        sendTime = -1l;
         receiveTime = 0l;
         windows = null;
         isLost = false;

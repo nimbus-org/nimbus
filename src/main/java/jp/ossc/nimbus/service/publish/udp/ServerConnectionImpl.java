@@ -897,8 +897,6 @@ public class ServerConnectionImpl implements ServerConnection{
     private synchronized Set allocateSequence(MessageImpl message){
         currentSequence++;
         message.setSequence(currentSequence);
-        final long currentTime = System.currentTimeMillis();
-        message.setSendTime(currentTime);
         Set result = null;
         if(newClients.size() != 0){
             final ClientImpl[] clientArray = (ClientImpl[])newClients.toArray(new ClientImpl[newClients.size()]);
@@ -927,6 +925,9 @@ public class ServerConnectionImpl implements ServerConnection{
     
     private int addSendMessageCache(MessageImpl message, MessageCache sendMessageCache) throws IOException{
         final long currentTime = System.currentTimeMillis();
+        if(message.getSendTime() < 0){
+            message.setSendTime(currentTime);
+        }
         List windows = null;
         synchronized(sendMessageCache){
             final Integer seq = new Integer(message.getSequence());
@@ -1365,8 +1366,6 @@ public class ServerConnectionImpl implements ServerConnection{
             ClientImpl.this.currentSequence++;
             MessageImpl result = copy ? copyMessage(message) : message;
             result.setSequence(ClientImpl.this.currentSequence);
-            final long currentTime = System.currentTimeMillis();
-            result.setSendTime(currentTime);
             return result;
         }
         
