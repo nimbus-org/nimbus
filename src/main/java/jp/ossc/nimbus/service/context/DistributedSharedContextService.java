@@ -626,7 +626,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             }
             sharedContextArray[i].start();
         }
-        distributeInfo = new DistributeInfo(getId(), distributedSize);
+        distributeInfo = new DistributeInfo(getId(), sharedContextArray);
         serverConnection.addServerConnectionListener(this);
         messageReceiver.addSubject(this, isClient ? clientSubject :  subject);
         if(!isClient){
@@ -2581,9 +2581,17 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         public DistributeInfo(){
         }
         
-        public DistributeInfo(Object id, int distributedSize){
+        public DistributeInfo(Object id, SharedContext[] contexts){
             this.id = id;
-            serverFlagArray = new boolean[distributedSize];
+            serverFlagArray = new boolean[contexts.length];
+            for(int i = 0; i < contexts.length; i++){
+                final boolean isClient = contexts[i].isClient();
+                if(isClient){
+                    setClient(i);
+                }else{
+                    setServer(i);
+                }
+            }
         }
         
         public Object getId(){
@@ -2630,11 +2638,11 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final boolean isClient = !isServer(i);
                 if(isClient != contexts[i].isClient()){
                     contexts[i].setClient(isClient);
-                    if(isClient){
-                        info.setClient(i);
-                    }else{
-                        info.setServer(i);
-                    }
+                }
+                if(isClient){
+                    info.setClient(i);
+                }else{
+                    info.setServer(i);
                 }
             }
         }
