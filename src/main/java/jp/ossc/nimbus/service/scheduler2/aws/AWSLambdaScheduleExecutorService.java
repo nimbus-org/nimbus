@@ -38,7 +38,9 @@ import jp.ossc.nimbus.service.scheduler2.ScheduleStateControlException;
 import jp.ossc.nimbus.util.converter.BeanJSONConverter;
 import jp.ossc.nimbus.util.converter.ConvertException;
 import jp.ossc.nimbus.util.converter.Converter;
+import jp.ossc.nimbus.util.converter.CustomConverter;
 import jp.ossc.nimbus.util.converter.DateFormatConverter;
+import jp.ossc.nimbus.util.converter.StringStreamConverter;
 
 /**
  * AWS Lambdaを呼び出すスケジュール実行。<p>
@@ -67,24 +69,37 @@ public class AWSLambdaScheduleExecutorService extends AWSWebServiceScheduleExecu
         super.startService();
         
         BeanJSONConverter beanJSONConverter = new BeanJSONConverter();
+        beanJSONConverter.setConvertType(BeanJSONConverter.OBJECT_TO_JSON);
+        beanJSONConverter.setIgnoreUnknownProperty(true);
+        beanJSONConverter.setOutputNullProperty(false);
         DateFormatConverter dfc = new DateFormatConverter();
         dfc.setFormat("yyyy/MM/dd HH:mm:ss.SSS");
         dfc.setConvertType(DateFormatConverter.DATE_TO_STRING);
         beanJSONConverter.setFormatConverter(java.util.Date.class, dfc);
-        ByteBufferToStringConverter byteBufferToStringConverter = new ByteBufferToStringConverter();
+        
+        ByteBufferStringConverter byteBufferStringConverter = new ByteBufferStringConverter();
         if(encoding != null){
-            byteBufferToStringConverter.setEncoding(encoding);
+            byteBufferStringConverter.setEncoding(encoding);
         }
-        beanJSONConverter.setFormatConverter(ByteBuffer.class, byteBufferToStringConverter);
+        beanJSONConverter.setFormatConverter(ByteBuffer.class, byteBufferStringConverter);
+        beanJSONConverter.setParseConverter(ByteBuffer.class, byteBufferStringConverter);
+        
+        StringStreamConverter stringStreamConverter = new StringStreamConverter();
+        stringStreamConverter.setConvertType(StringStreamConverter.STREAM_TO_STRING);
+        
+        CustomConverter customConverter = new CustomConverter();
+        customConverter.add(beanJSONConverter);
+        customConverter.add(stringStreamConverter);
+        
         addAutoInputConvertMappings(beanJSONConverter);
-        addAutoOutputConvertMappings(beanJSONConverter);
+        addAutoOutputConvertMappings(customConverter);
     }
     
     public boolean controlState(String id, int cntrolState) throws ScheduleStateControlException {
         return false;
     }
     
-    public static class ByteBufferToStringConverter implements Converter {
+    public static class ByteBufferStringConverter implements Converter {
         
         protected String encoding;
         
@@ -96,10 +111,19 @@ public class AWSLambdaScheduleExecutorService extends AWSWebServiceScheduleExecu
             if(obj == null){
                 return null;
             }
-            try{
-                return encoding == null ? new String(((ByteBuffer) obj).array()) : new String(((ByteBuffer) obj).array(), encoding);
-            }catch (UnsupportedEncodingException e){
-                throw new ConvertException(e);
+            if(obj instanceof ByteBuffer) {
+                try{
+                    return encoding == null ? new String(((ByteBuffer) obj).array()) : new String(((ByteBuffer) obj).array(), encoding);
+                }catch (UnsupportedEncodingException e){
+                    throw new ConvertException(e);
+                }
+            } else {
+                try{
+                    byte[] bytes = encoding == null ? ((String)obj).getBytes() : ((String)obj).getBytes(encoding);
+                    return ByteBuffer.wrap(bytes);
+                }catch (UnsupportedEncodingException e){
+                    throw new ConvertException(e);
+                }
             }
         }
         
