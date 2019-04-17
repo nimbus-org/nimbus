@@ -1362,10 +1362,7 @@ public class SharedContextService extends DefaultContextService
                 }catch(MessageSendException e){
                     throw new SharedContextSendException(e);
                 }
-                if(lock != null){
-                    lock.release(id, force);
-                }
-                return true;
+                return lock == null ? true : lock.release(id, force);
             }
         }else{
             boolean result = true;
@@ -5442,7 +5439,7 @@ public class SharedContextService extends DefaultContextService
             buf.append(", owner=").append(owner);
             buf.append(", ownerThread=").append(ownerThread);
             buf.append(", ownerThreadId=").append(ownerThreadId);
-            buf.append(", lockStartTime=").append(new Date(lockStartTime));
+            buf.append(", lockStartTime=").append(lockStartTime == -1 ? null : new Date(lockStartTime));
             buf.append(", lockProcessTime=").append(lockProcessTime);
             buf.append(", lockCount=").append(lockCount);
             buf.append(", maxLockTime=").append(maxLockTime);
