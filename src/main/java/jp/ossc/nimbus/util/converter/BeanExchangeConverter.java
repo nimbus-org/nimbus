@@ -76,6 +76,7 @@ public class BeanExchangeConverter implements BindingConverter{
     private ClassMappingTree implementsTypeMap;
     private boolean isMakeSchema;
     private boolean isNarrowCast;
+    private ClassMappingTree nestConvertClassTypeMap;
     
     /**
      * 空のインスタンスを生成する。<p>
@@ -562,6 +563,18 @@ public class BeanExchangeConverter implements BindingConverter{
     }
     
     /**
+     * 変換時にネストしてコンバートする対象のClassをリストに追加する。<p>
+     * 
+     * @param clazz 変換時にネストしてコンバートする対象のClass
+     */
+    public void addNestConvertClass(Class clazz) {
+        if(nestConvertClassTypeMap == null) {
+            nestConvertClassTypeMap = new ClassMappingTree();
+        }
+        nestConvertClassTypeMap.add(clazz, clazz, true);
+    }
+    
+    /**
      * 指定されたオブジェクトを変換する。<p>
      *
      * @param obj 変換対象のオブジェクト
@@ -991,7 +1004,7 @@ public class BeanExchangeConverter implements BindingConverter{
                                     outPropValue = Array.newInstance(outPropType.getComponentType(), Array.getLength(value));
                                 }
                                 value = convert(value, outPropValue, false);
-                            }else{
+                            }else if(nestConvertClassTypeMap != null && nestConvertClassTypeMap.getValue(outPropType) != null){
                                 Object outPropValue = null;
                                 if(outProp.isReadable(output)){
                                     outPropValue = outProp.getProperty(output);
