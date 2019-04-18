@@ -1328,6 +1328,12 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             if(fieldReflector == null){
                 return;
             }
+            if(classTree != null){
+                for(int i = classTree.size(); --i >= 0;){
+                    MetaClass metaClass = (MetaClass)classTree.get(i);
+                    metaClass.defaultWriteObject(obj, oos);
+                }
+            }
             fieldReflector.writeFields(obj, oos);
         }
         
@@ -1377,6 +1383,12 @@ public class NimbusExternalizerService extends SerializableExternalizerService
         public void defaultReadObject(Object obj, NimbusObjectInputStream ois) throws IOException, ClassNotFoundException{
             if(fieldReflector == null){
                 return;
+            }
+            if(classTree != null){
+                for(int i = classTree.size(); --i >= 0;){
+                    MetaClass metaClass = (MetaClass)classTree.get(i);
+                    metaClass.defaultReadObject(obj, ois);
+                }
             }
             fieldReflector.readFields(obj, ois);
         }
