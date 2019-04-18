@@ -76,7 +76,7 @@ public class BeanExchangeConverter implements BindingConverter{
     private ClassMappingTree implementsTypeMap;
     private boolean isMakeSchema;
     private boolean isNarrowCast;
-    private List nestConvertClassList;
+    private ClassMappingTree nestConvertClassTypeMap;
     
     /**
      * 空のインスタンスを生成する。<p>
@@ -563,33 +563,15 @@ public class BeanExchangeConverter implements BindingConverter{
     }
     
     /**
-     * 変換時にネストしてコンバートする対象のClassのリストを取得する。<p>
-     * 
-     * @return 変換時にネストしてコンバートする対象のClassのリスト
-     */
-    public List getNestConvertClassList() {
-        return nestConvertClassList;
-    }
-    
-    /**
-     * 変換時にネストしてコンバートする対象のClassのリストを設定する。<p>
-     * 
-     * @param list 変換時にネストしてコンバートする対象のClassのリスト
-     */
-    public void setNestConvertClassList(List list) {
-        nestConvertClassList = list;
-    }
-    
-    /**
      * 変換時にネストしてコンバートする対象のClassをリストに追加する。<p>
      * 
      * @param clazz 変換時にネストしてコンバートする対象のClass
      */
     public void addNestConvertClassList(Class clazz) {
-        if(nestConvertClassList == null) {
-            nestConvertClassList = new ArrayList();
+        if(nestConvertClassTypeMap == null) {
+            nestConvertClassTypeMap = new ClassMappingTree();
         }
-        nestConvertClassList.add(clazz);
+        nestConvertClassTypeMap.add(clazz, clazz, true);
     }
     
     /**
@@ -1300,12 +1282,9 @@ public class BeanExchangeConverter implements BindingConverter{
     }
     
     private boolean isNestConvertTargetClass(Class targetClass) {
-        if(nestConvertClassList != null) {
-            for(int i=0; i<nestConvertClassList.size(); i++) {
-                Class clazz = (Class)nestConvertClassList.get(i);
-                if(clazz.isAssignableFrom(targetClass)) {
-                    return true;
-                }
+        if(nestConvertClassTypeMap != null) {
+            if(nestConvertClassTypeMap.getValue(targetClass) != null) {
+                return true;
             }
         }
         return false;
