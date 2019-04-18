@@ -1004,7 +1004,7 @@ public class BeanExchangeConverter implements BindingConverter{
                                     outPropValue = Array.newInstance(outPropType.getComponentType(), Array.getLength(value));
                                 }
                                 value = convert(value, outPropValue, false);
-                            }else if(isNestConvertTargetClass(outPropType)){
+                            }else if(nestConvertClassTypeMap != null && nestConvertClassTypeMap.getValue(outPropType) != null){
                                 Object outPropValue = null;
                                 if(outProp.isReadable(output)){
                                     outPropValue = outProp.getProperty(output);
@@ -1279,15 +1279,6 @@ public class BeanExchangeConverter implements BindingConverter{
         }else{
             return thisClass.isAssignableFrom(thatClass);
         }
-    }
-    
-    private boolean isNestConvertTargetClass(Class targetClass) {
-        if(nestConvertClassTypeMap != null) {
-            if(nestConvertClassTypeMap.getValue(targetClass) != null) {
-                return true;
-            }
-        }
-        return false;
     }
     
     private class PropertyAccessType{
