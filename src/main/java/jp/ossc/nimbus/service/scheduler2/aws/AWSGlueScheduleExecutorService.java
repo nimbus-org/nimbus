@@ -56,7 +56,9 @@ import com.amazonaws.services.glue.model.StopCrawlerRequest;
 import jp.ossc.nimbus.service.scheduler2.Schedule;
 import jp.ossc.nimbus.service.scheduler2.ScheduleStateControlException;
 import jp.ossc.nimbus.util.converter.BeanJSONConverter;
+import jp.ossc.nimbus.util.converter.CustomConverter;
 import jp.ossc.nimbus.util.converter.DateFormatConverter;
+import jp.ossc.nimbus.util.converter.StringStreamConverter;
 
 /**
  * AWS Glueを呼び出すスケジュール実行。<p>
@@ -92,12 +94,23 @@ public class AWSGlueScheduleExecutorService extends AWSWebServiceScheduleExecuto
         super.startService();
         
         BeanJSONConverter beanJSONConverter = new BeanJSONConverter();
+        beanJSONConverter.setConvertType(BeanJSONConverter.OBJECT_TO_JSON);
+        beanJSONConverter.setIgnoreUnknownProperty(true);
+        beanJSONConverter.setOutputNullProperty(false);
         DateFormatConverter dfc = new DateFormatConverter();
         dfc.setFormat("yyyy/MM/dd HH:mm:ss.SSS");
         dfc.setConvertType(DateFormatConverter.DATE_TO_STRING);
         beanJSONConverter.setFormatConverter(java.util.Date.class, dfc);
+        
+        StringStreamConverter stringStreamConverter = new StringStreamConverter();
+        stringStreamConverter.setConvertType(StringStreamConverter.STREAM_TO_STRING);
+        
+        CustomConverter customConverter = new CustomConverter();
+        customConverter.add(beanJSONConverter);
+        customConverter.add(stringStreamConverter);
+        
         addAutoInputConvertMappings(beanJSONConverter);
-        addAutoOutputConvertMappings(beanJSONConverter);
+        addAutoOutputConvertMappings(customConverter);
     }
     
     public void destroyService() throws Exception {
