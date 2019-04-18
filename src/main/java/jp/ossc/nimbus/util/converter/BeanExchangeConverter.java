@@ -567,7 +567,7 @@ public class BeanExchangeConverter implements BindingConverter{
      * 
      * @param clazz 変換時にネストしてコンバートする対象のClass
      */
-    public void addNestConvertClassList(Class clazz) {
+    public void addNestConvertClass(Class clazz) {
         if(nestConvertClassTypeMap == null) {
             nestConvertClassTypeMap = new ClassMappingTree();
         }
