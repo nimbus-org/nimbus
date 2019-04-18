@@ -677,7 +677,7 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
                 return null;
             }
         }catch(EOFException e){
-            if(isClosing || !isConnected){
+            if(isClosing){
                 return null;
             }
             if(reconnectCount > 0){
@@ -697,12 +697,12 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
                 throw new MessageCommunicateException("length=" + length + ", receiveBytes=" + (receiveBytes == null ? "null" : Integer.toString(receiveBytes.length)), e);
             }
         }catch(IOException e){
-            if(isClosing || !isConnected){
+            if(isClosing){
                 return null;
             }
             throw new MessageCommunicateException(e);
         }catch(ClassNotFoundException e){
-            if(isClosing || !isConnected){
+            if(isClosing){
                 return null;
             }
             throw new MessageCommunicateException(e);
