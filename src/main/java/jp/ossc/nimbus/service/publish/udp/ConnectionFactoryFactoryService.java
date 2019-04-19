@@ -1009,23 +1009,63 @@ public class ConnectionFactoryFactoryService extends ServiceFactoryServiceBase i
     }
     
     public int getSendMessageCacheSize() {
-        return -1;
+        int result = 0;
+        Iterator itr = managedInstances.iterator();
+        while(itr.hasNext()) {
+            ConnectionFactoryService connectionFactoryService = (ConnectionFactoryService)itr.next();
+            result += connectionFactoryService.getSendMessageCacheSize();
+        }
+        return result;
     }
     
     public long getAverageAsynchSendProcessTime() {
-        return -1l;
+        long result = 0;
+        int count = 0;
+        Iterator itr = managedInstances.iterator();
+        while(itr.hasNext()) {
+            ConnectionFactoryService connectionFactoryService = (ConnectionFactoryService)itr.next();
+            result += connectionFactoryService.getAverageAsynchSendProcessTime();
+            count++;
+        }
+        return (long)(result / count);
     }
     
     public long getAverageRequestHandleProcessTime() {
-        return -1l;
+        long result = 0;
+        int count = 0;
+        Iterator itr = managedInstances.iterator();
+        while(itr.hasNext()) {
+            ConnectionFactoryService connectionFactoryService = (ConnectionFactoryService)itr.next();
+            result += connectionFactoryService.getAverageRequestHandleProcessTime();
+            count++;
+        }
+        return (long)(result / count);
     }
     
-    public double getMessageRecycleRate() {
-        return -1d;
+    public int getMaxMessagePayoutCount(){
+        int result = 0;
+        Iterator itr = managedInstances.iterator();
+        while(itr.hasNext()) {
+            ConnectionFactoryService connectionFactoryService = (ConnectionFactoryService)itr.next();
+            int count = connectionFactoryService.getMaxMessagePayoutCount();
+            if(result < count){
+                result = count;
+            }
+        }
+        return result;
     }
     
-    public double getWindowRecycleRate() {
-        return -1d;
+    public int getMaxWindowPayoutCount(){
+        int result = 0;
+        Iterator itr = managedInstances.iterator();
+        while(itr.hasNext()) {
+            ConnectionFactoryService connectionFactoryService = (ConnectionFactoryService)itr.next();
+            int count = connectionFactoryService.getMaxWindowPayoutCount();
+            if(result < count){
+                result = count;
+            }
+        }
+        return result;
     }
 
 }
