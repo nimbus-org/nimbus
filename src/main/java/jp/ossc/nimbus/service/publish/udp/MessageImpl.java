@@ -70,6 +70,7 @@ public class MessageImpl extends MessageId implements Message, Comparable, Clone
     private transient byte[] serializedBytes;
     private transient boolean isSend;
     private transient ClientConnectionImpl clientConnection;
+    protected transient Externalizer externalizer;
     
     public MessageImpl(){
     }
@@ -150,9 +151,14 @@ public class MessageImpl extends MessageId implements Message, Comparable, Clone
                 if(object != null){
                     return object;
                 }
+                ByteArrayInputStream bais = new ByteArrayInputStream(serializedBytes);
                 try{
-                    ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(serializedBytes));
-                    object = ois.readObject();
+                    if(externalizer == null){
+                        ObjectInputStream ois = new ObjectInputStream(bais);
+                        object = ois.readObject();
+                    }else{
+                        object = externalizer.readExternal(bais);
+                    }
                 }catch(IOException e){
                     throw new MessageException(e);
                 }catch(ClassNotFoundException e){
@@ -188,6 +194,7 @@ public class MessageImpl extends MessageId implements Message, Comparable, Clone
     
     public synchronized List getWindows(ServerConnectionImpl con, int windowSize, Externalizer ext) throws IOException{
         if(windows == null){
+            externalizer = ext;
             windows = Window.toWindows(this, con, windowSize, ext);
         }
         return windows;
@@ -270,9 +277,13 @@ public class MessageImpl extends MessageId implements Message, Comparable, Clone
         out.writeLong(sendTime);
         if(serializedBytes == null){
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ObjectOutputStream oos = new ObjectOutputStream(baos);
-            oos.writeObject(object);
-            oos.flush();
+            if(externalizer == null){
+                ObjectOutputStream oos = new ObjectOutputStream(baos);
+                oos.writeObject(object);
+                oos.flush();
+            }else{
+                externalizer.writeExternal(object, baos);
+            }
             out.writeObject(baos.toByteArray());
         }else{
             out.writeObject(serializedBytes);

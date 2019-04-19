@@ -115,6 +115,7 @@ public class Window extends WindowId{
             message.writeExternal(oos);
             oos.flush();
         }else{
+            message.externalizer = ext;
             ext.writeExternal(message, baos);
         }
         List result = new ArrayList();
@@ -284,6 +285,7 @@ public class Window extends WindowId{
                 message.readExternal(ois);
             }else{
                 message = (MessageImpl)ext.readExternal(bais);
+                message.externalizer = ext;
             }
             message.setReceiveTime(recTime);
         }
