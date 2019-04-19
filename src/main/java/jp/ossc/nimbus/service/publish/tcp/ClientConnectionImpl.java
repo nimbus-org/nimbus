@@ -887,7 +887,7 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
         try{
             return receive();
         }catch(MessageCommunicateException e){
-            if(isClosing || !isConnected){
+            if(isClosing){
                 return null;
             }
             if(receiveErrorMessageId != null){
