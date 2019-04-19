@@ -239,6 +239,13 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             }
         }
         
+        protected void registerbackReference(MetaClass metaClass){
+            if(metaClass.isImmutable()){
+                immutableReferenceTable.assignback();
+            }else{
+                referenceTable.assignback();
+            }
+        }
         public ObjectOutputStream.PutField putFields() throws IOException{
             if(currentPut == null){
                 if(currentMetaClass == null){
@@ -1285,6 +1292,7 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                             oos.write(TAG_NULL);
                             return;
                         }else if(!clazz.equals(obj.getClass())){
+                            oos.registerbackReference(this);
                             oos.write(TAG_REPLACE);
                             oos.writeObject(obj);
                             return;
@@ -2000,6 +2008,10 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             return id;
         }
         
+        public void assignback(){
+            references[size - 1] = null;
+            size--;
+        }
         public int lookup(Object reference){
             if(size == 0){
                 return 0;
