@@ -2081,11 +2081,11 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                 newLength = Integer.MAX_VALUE;
             }
             int[] newNext = new int[newLength];
-            System.arraycopy(next, 0, newNext, 0, size);
+            System.arraycopy(next, 0, newNext, 0, next.length);
             next = newNext;
             
             Object[] newRefs = new Object[newLength];
-            System.arraycopy(references, 0, newRefs, 0, size);
+            System.arraycopy(references, 0, newRefs, 0, references.length);
             references = newRefs;
         }
         
@@ -2222,11 +2222,11 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                 newLength = Integer.MAX_VALUE;
             }
             int[] newNext = new int[newLength];
-            System.arraycopy(next, 0, newNext, 0, size);
+            System.arraycopy(next, 0, newNext, 0, next.length);
             next = newNext;
             
             int[] newRefs = new int[newLength];
-            System.arraycopy(references, 0, newRefs, 0, size);
+            System.arraycopy(references, 0, newRefs, 0, references.length);
             references = newRefs;
         }
         
@@ -2333,11 +2333,11 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                 newLength = Integer.MAX_VALUE;
             }
             int[] newNext = new int[newLength];
-            System.arraycopy(next, 0, newNext, 0, size);
+            System.arraycopy(next, 0, newNext, 0, next.length);
             next = newNext;
             
             long[] newRefs = new long[newLength];
-            System.arraycopy(references, 0, newRefs, 0, size);
+            System.arraycopy(references, 0, newRefs, 0, references.length);
             references = newRefs;
         }
         
