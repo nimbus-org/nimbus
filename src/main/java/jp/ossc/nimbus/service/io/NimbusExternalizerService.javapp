@@ -239,13 +239,14 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             }
         }
         
-        protected void registerbackReference(MetaClass metaClass){
+        protected int lookupReference(MetaClass metaClass, Object obj){
             if(metaClass.isImmutable()){
-                immutableReferenceTable.assignback();
+                return immutableReferenceTable.lookup(obj);
             }else{
-                referenceTable.assignback();
+                return referenceTable.lookup(obj);
             }
         }
+        
         public ObjectOutputStream.PutField putFields() throws IOException{
             if(currentPut == null){
                 if(currentMetaClass == null){
@@ -1240,10 +1241,11 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             }
         }
         public void writeObject(Object obj, NimbusObjectOutputStream oos) throws IOException{
-            final int referenceId = oos.registerReference(this, obj);
-            if(referenceId > 0){
+            int referenceId = oos.lookupReference(this, obj);
+            if(referenceId == 0){
                 Class objClass = obj.getClass();
                 if(objClass.isArray()){
+                    referenceId = oos.registerReference(this, obj);
                     oos.write(TAG_ARRAY);
                     final int length = Array.getLength(obj);
                     oos.writeInt(length, isDisabledNumberCompression, false);
@@ -1292,12 +1294,12 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                             oos.write(TAG_NULL);
                             return;
                         }else if(!clazz.equals(obj.getClass())){
-                            oos.registerbackReference(this);
                             oos.write(TAG_REPLACE);
                             oos.writeObject(obj);
                             return;
                         }
                     }
+                    referenceId = oos.registerReference(this, obj);
                     oos.write(TAG_VALUE);
                     oos.writeInt(referenceId, isDisabledNumberCompression, false);
                     
@@ -1327,6 +1329,7 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                     }
                 }
             }else{
+                referenceId = oos.registerReference(this, obj);
                 oos.write(TAG_REFERENCE);
                 oos.writeInt(-referenceId, isDisabledNumberCompression, false);
             }
@@ -2008,10 +2011,6 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             return id;
         }
         
-        public void assignback(){
-            references[size - 1] = null;
-            size--;
-        }
         public int lookup(Object reference){
             if(size == 0){
                 return 0;
