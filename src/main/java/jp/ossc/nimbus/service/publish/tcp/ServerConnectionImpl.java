@@ -55,6 +55,7 @@ import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -124,6 +125,8 @@ public class ServerConnectionImpl implements ServerConnection{
     private long sendMessageCacheTime;
     private boolean isAcknowledge;
     private int messageRecycleBufferSize = 100;
+    private int messagePayoutCount;
+    private int maxMessagePayoutCount;
     private List messageBuffer;
     private List sendRequestBuffer;
     private List asynchContextBuffer;
@@ -148,9 +151,9 @@ public class ServerConnectionImpl implements ServerConnection{
     ) throws Exception{
         this.serverSocket = serverSocket;
         externalizer = ext;
-        messageBuffer = new ArrayList();
-        sendRequestBuffer = new ArrayList();
-        asynchContextBuffer = new ArrayList();
+        messageBuffer = new LinkedList();
+        sendRequestBuffer = new LinkedList();
+        asynchContextBuffer = new LinkedList();
         this.bufferTime = bufferTime;
         this.bufferSize = bufferSize;
         if(bufferTimeoutInterval > 0){
@@ -180,9 +183,9 @@ public class ServerConnectionImpl implements ServerConnection{
         serverSocketChannel = ssc;
         socketFactory = sf;
         externalizer = ext;
-        messageBuffer = new ArrayList();
-        sendRequestBuffer = new ArrayList();
-        asynchContextBuffer = new ArrayList();
+        messageBuffer = new LinkedList();
+        sendRequestBuffer = new LinkedList();
+        asynchContextBuffer = new LinkedList();
         this.bufferTime = bufferTime;
         this.bufferSize = bufferSize;
         if(bufferTimeoutInterval > 0){
@@ -285,24 +288,27 @@ public class ServerConnectionImpl implements ServerConnection{
     
     protected void recycleMessage(MessageImpl msg){
         if(msg != null){
-            if(messageBuffer.size() <= messageRecycleBufferSize){
-                msg.clear();
-                synchronized(messageBuffer){
+            synchronized(messageBuffer){
+                if(messageBuffer.size() <= messageRecycleBufferSize){
+                    msg.clear();
                     if(messageBuffer.size() <= messageRecycleBufferSize){
                         messageBuffer.add(msg);
                     }
                 }
+                messagePayoutCount--;
             }
         }
     }
     
     protected MessageImpl createMessage(byte type){
         MessageImpl result = null;
-        if(messageBuffer.size() != 0){
-            synchronized(messageBuffer){
-                if(messageBuffer.size() != 0){
-                    result = (MessageImpl)messageBuffer.remove(0);
-                }
+        synchronized(messageBuffer){
+            if(messageBuffer.size() != 0){
+                result = (MessageImpl)messageBuffer.remove(0);
+            }
+            messagePayoutCount++;
+            if(maxMessagePayoutCount < messagePayoutCount){
+                maxMessagePayoutCount = messagePayoutCount;
             }
         }
         if(result == null){
@@ -751,6 +757,10 @@ public class ServerConnectionImpl implements ServerConnection{
     
     public int getSendMessageCacheSize(){
         return sendMessageCache.size();
+    }
+    
+    public int getMaxMessagePayoutCount(){
+        return maxMessagePayoutCount;
     }
     
     public synchronized void close(){

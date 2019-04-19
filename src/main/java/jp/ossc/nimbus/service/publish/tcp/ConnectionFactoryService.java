@@ -549,7 +549,7 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
     }
     
     public int getClientSize(){
-        return serverConnection.getClients().size();
+        return serverConnection == null ? 0 : serverConnection.getClients().size();
     }
     
     public Set getEnabledClients(){
@@ -901,5 +901,9 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
     
     public int getClientCount(){
         return serverConnection == null ? 0 : serverConnection.getClientCount();
+    }
+    
+    public int getMaxMessagePayoutCount(){
+        return serverConnection == null ? 0 : serverConnection.getMaxMessagePayoutCount();
     }
 }

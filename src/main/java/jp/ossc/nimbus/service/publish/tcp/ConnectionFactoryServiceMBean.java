@@ -852,4 +852,11 @@ public interface ConnectionFactoryServiceMBean extends ServiceBaseMBean{
      * @return キーの集合
      */
     public Set getKeys(String address, int port, String subject);
+    
+    /**
+     * メッセージのリサイクルにおける、メッセージの最大払い出し数を取得する。<p>
+     *
+     * @return メッセージの最大払い出し数
+     */
+    public int getMaxMessagePayoutCount();
 }

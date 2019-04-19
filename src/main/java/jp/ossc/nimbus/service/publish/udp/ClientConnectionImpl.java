@@ -62,6 +62,7 @@ import java.util.TreeMap;
 import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Date;
 import javax.net.SocketFactory;
 
@@ -109,7 +110,7 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
     private SocketFactory socketFactory;
     private String receiveAddress;
     private int receivePort;
-    private Externalizer externalizer;
+    protected Externalizer externalizer;
     
     private String bindAddressPropertyName = BIND_ADDRESS_PROPERTY;
     private String bindPortPropertyName = BIND_PORT_PROPERTY;
@@ -135,10 +136,16 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
     private long responseTimeout = -1;
     private boolean isAcknowledge;
     private int packetRecycleBufferSize = 10;
+    private int packetPayoutCount;
+    private int maxPacketPayoutCount;
     private int windowRecycleBufferSize = 200;
+    private int windowPayoutCount;
+    private int maxWindowPayoutCount;
     private int messageRecycleBufferSize = 100;
+    private int messagePayoutCount;
+    private int maxMessagePayoutCount;
     
-    private transient List messageBuffer;
+    protected transient List messageBuffer;
     
     private transient Socket socket;
     private transient InetAddress receiveGroup;
@@ -202,16 +209,38 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
     }
     
     protected void recycleMessage(MessageImpl msg){
-        if(msg != null){
-            if(messageBuffer.size() <= messageRecycleBufferSize){
-                msg.clear();
-                synchronized(messageBuffer){
-                    if(messageBuffer.size() <= messageRecycleBufferSize){
-                        messageBuffer.add(msg);
-                    }
+        if(msg != null && externalizer == null){
+            synchronized(messageBuffer){
+                if(messageBuffer.size() <= messageRecycleBufferSize){
+                    msg.clear();
+                    messageBuffer.add(msg);
+                }
+                messagePayoutCount--;
+            }
+        }
+    }
+    
+    protected MessageImpl createMessage(int msgType){
+        MessageImpl message = null;
+        if(externalizer == null){
+            synchronized(messageBuffer){
+                if(messageBuffer.size() != 0){
+                    message = (MessageImpl)messageBuffer.remove(0);
+                }
+                messagePayoutCount++;
+                if(maxMessagePayoutCount < messagePayoutCount){
+                    maxMessagePayoutCount = messagePayoutCount;
                 }
             }
         }
+        if(message == null){
+            if(msgType == 1){
+                message = new MessageImpl();
+            }else{
+                message = new MulticastMessageImpl();
+            }
+        }
+        return message;
     }
     
     public void setBindAddressPropertyName(String name){
@@ -952,7 +981,7 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
     
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException{
         in.defaultReadObject();
-        messageBuffer = new ArrayList();
+        messageBuffer = new LinkedList();
     }
     
     public void close(){
@@ -1191,16 +1220,15 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
     private class PacketReceiver implements DaemonRunnable{
         
         private final DatagramPacket packet = new DatagramPacket(new byte[0], 0);
-        private final List packetBuffer = new ArrayList();
+        private final List packetBuffer = new LinkedList();
         
         public void recyclePacket(byte[] bytes){
             if(bytes != null){
-                if(packetBuffer.size() <= packetRecycleBufferSize){
-                    synchronized(packetBuffer){
-                        if(packetBuffer.size() <= packetRecycleBufferSize){
-                            packetBuffer.add(bytes);
-                        }
+                synchronized(packetBuffer){
+                    if(packetBuffer.size() <= packetRecycleBufferSize){
+                        packetBuffer.add(bytes);
                     }
+                    packetPayoutCount--;
                 }
             }
         }
@@ -1212,11 +1240,13 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
         public Object provide(DaemonControl ctrl) throws Throwable{
             try{
                 byte[] buf = null;
-                if(packetBuffer.size() != 0){
-                    synchronized(packetBuffer){
-                        if(packetBuffer.size() != 0){
-                            buf = (byte[])packetBuffer.remove(0);
-                        }
+                synchronized(packetBuffer){
+                    if(packetBuffer.size() != 0){
+                        buf = (byte[])packetBuffer.remove(0);
+                    }
+                    packetPayoutCount++;
+                    if(maxPacketPayoutCount < packetPayoutCount){
+                        maxPacketPayoutCount = packetPayoutCount;
                     }
                 }
                 if(buf == null){
@@ -1283,7 +1313,7 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
         public final SortedMap missingWindowMap = Collections.synchronizedSortedMap(new TreeMap());
         private PacketReceiver packetReceiver;
         private MissingWindowChecker missingWindowChecker;
-        private final List windowBuffer = new ArrayList();
+        private final List windowBuffer = new LinkedList();
         
         public void recycleWindow(Window window){
             if(window == null){
@@ -1304,6 +1334,9 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
                         }
                     }
                 }
+                synchronized(windowBuffer){
+                    windowPayoutCount-=windows.size();
+                }
             }
             window.clear();
             if(windowBuffer.size() <= windowRecycleBufferSize){
@@ -1311,6 +1344,7 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
                     if(windowBuffer.size() <= windowRecycleBufferSize){
                         windowBuffer.add(window);
                     }
+                    windowPayoutCount--;
                 }
             }
         }
@@ -1340,11 +1374,13 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
                 if(packet != null){
                     ByteArrayInputStream bais = new ByteArrayInputStream(packet);
                     DataInputStream dis = new DataInputStream(bais);
-                    if(windowBuffer.size() != 0){
-                        synchronized(windowBuffer){
-                            if(windowBuffer.size() != 0){
-                                window = (Window)windowBuffer.remove(0);
-                            }
+                    synchronized(windowBuffer){
+                        if(windowBuffer.size() != 0){
+                            window = (Window)windowBuffer.remove(0);
+                        }
+                        windowPayoutCount++;
+                        if(maxWindowPayoutCount < windowPayoutCount){
+                            maxWindowPayoutCount = windowPayoutCount;
                         }
                     }
                     if(window == null){
@@ -1434,7 +1470,7 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
                 id = (MessageId)missingWindowMap.firstKey();
                 window = (Window)missingWindowMap.get(id);
                 if(window.isComplete() || window.isLost()){
-                    message = window.getMessage(messageBuffer, externalizer);
+                    message = window.getMessage(ClientConnectionImpl.this);
                     if(message != null){
                         ((MessageImpl)message).setClientConnection(ClientConnectionImpl.this);
                     }
@@ -1442,7 +1478,7 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
                     return null;
                 }
             }else if(window.isComplete()){
-                message = window.getMessage(messageBuffer, externalizer);
+                message = window.getMessage(ClientConnectionImpl.this);
                 if(message != null){
                     ((MessageImpl)message).setClientConnection(ClientConnectionImpl.this);
                 }
@@ -2025,6 +2061,18 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
             return maxMissingWindowSize;
         }
         
+        public int getMaxPacketPayoutCount(){
+            return ClientConnectionImpl.this.maxPacketPayoutCount;
+        }
+        
+        public int getMaxWindowPayoutCount(){
+            return ClientConnectionImpl.this.maxWindowPayoutCount;
+        }
+        
+        public int getMaxMessagePayoutCount(){
+            return ClientConnectionImpl.this.maxMessagePayoutCount;
+        }
+        
         public void connect() throws ConnectException{
             ClientConnectionImpl.this.connect();
         }
@@ -2456,6 +2504,27 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
          * @return 受信順序を調整中のメッセージ最大件数
          */
         public int getMaxMissingWindowSize();
+        
+        /**
+         * パケットのリサイクルにおける、パケットの最大払い出し数を取得する。<p>
+         *
+         * @return パケットの最大払い出し数
+         */
+        public int getMaxPacketPayoutCount();
+        
+        /**
+         * ウィンドウのリサイクルにおける、ウィンドウの最大払い出し数を取得する。<p>
+         *
+         * @return ウィンドウの最大払い出し数
+         */
+        public int getMaxWindowPayoutCount();
+        
+        /**
+         * メッセージのリサイクルにおける、メッセージの最大払い出し数を取得する。<p>
+         *
+         * @return メッセージの最大払い出し数
+         */
+        public int getMaxMessagePayoutCount();
         
         /**
          * サーバと接続する。<p>

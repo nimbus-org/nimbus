@@ -250,24 +250,15 @@ public class MessageImpl implements Message, Externalizable, Cloneable{
         out.write(bytes);
     }
     
-    public static MessageImpl read(InputStream in, Externalizer externalizer, List messageBuffer) throws IOException, ClassNotFoundException{
+    public static MessageImpl read(InputStream in, ClientConnectionImpl cc) throws IOException, ClassNotFoundException{
         MessageImpl message = null;
-        if(externalizer == null){
-            if(messageBuffer.size() != 0){
-                synchronized(messageBuffer){
-                    if(messageBuffer.size() != 0){
-                        message = (MessageImpl)messageBuffer.remove(0);
-                    }
-                }
-            }
-            if(message == null){
-                message = new MessageImpl();
-            }
+        if(cc.externalizer == null){
             ObjectInputStream ois = new ObjectInputStream(in);
+            message = cc.createMessage();
             message.readExternal(ois);
         }else{
-            message = (MessageImpl)externalizer.readExternal(in);
-            message.externalizer = externalizer;
+            message = (MessageImpl)cc.externalizer.readExternal(in);
+            message.externalizer = cc.externalizer;
         }
         return message;
     }

@@ -192,10 +192,10 @@ public class MessageImpl extends MessageId implements Message, Comparable, Clone
         receiveTime = time;
     }
     
-    public synchronized List getWindows(ServerConnectionImpl con, int windowSize, Externalizer ext) throws IOException{
+    public synchronized List getWindows(ServerConnectionImpl sc, int windowSize) throws IOException{
         if(windows == null){
-            externalizer = ext;
-            windows = Window.toWindows(this, con, windowSize, ext);
+            externalizer = sc.externalizer;
+            windows = Window.toWindows(this, sc, windowSize);
         }
         return windows;
     }

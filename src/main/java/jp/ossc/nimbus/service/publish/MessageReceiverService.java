@@ -40,6 +40,7 @@ import java.util.LinkedHashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import jp.ossc.nimbus.core.Service;
 import jp.ossc.nimbus.core.ServiceBase;
@@ -78,6 +79,8 @@ public class MessageReceiverService extends ServiceBase implements MessageReceiv
     protected MessageListenerDistributedQueueSelector messageListenerQueueSelector;
     protected DistributedQueueHandlerContainerService messageListenerQueueHandlerContainer;
     protected List messageListenerParameterRecycleList;
+    protected int messagePayoutCount;
+    protected int maxMessagePayoutCount;
     protected PerformanceRecorder messageLatencyPerformanceRecorder;
 
     public void setClientConnectionFactoryJndiName(String name){
@@ -219,12 +222,16 @@ public class MessageReceiverService extends ServiceBase implements MessageReceiv
     public int getMessageListenerParameterRecycleListSize() {
         return messageListenerParameterRecycleListSize;
     }
+    
+    public int getMaxMessagePayoutCount(){
+        return maxMessagePayoutCount;
+    }
 
     public void createService() throws Exception{
         subjectMap = Collections.synchronizedMap(new HashMap());
         registeredListenerMap = Collections.synchronizedMap(new HashMap());
         listenerSubjectMap = Collections.synchronizedMap(new HashMap());
-        messageListenerParameterRecycleList = new ArrayList();
+        messageListenerParameterRecycleList = new LinkedList();
     }
 
     public void startService() throws Exception{
@@ -1267,6 +1274,10 @@ public class MessageReceiverService extends ServiceBase implements MessageReceiv
             }
             obj.setMessageListener(listener);
             obj.setMessage(message);
+            messagePayoutCount++;
+            if(maxMessagePayoutCount < messagePayoutCount){
+                maxMessagePayoutCount = messagePayoutCount;
+            }
         }
         return obj;
     }
@@ -1277,6 +1288,7 @@ public class MessageReceiverService extends ServiceBase implements MessageReceiv
                 param.clear();
                 messageListenerParameterRecycleList.add(param);
             }
+            messagePayoutCount--;
         }
     }
 

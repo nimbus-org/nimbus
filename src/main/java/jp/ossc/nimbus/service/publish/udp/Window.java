@@ -107,35 +107,23 @@ public class Window extends WindowId{
         return isFirst;
     }
     
-    public static List toWindows(MessageImpl message, ServerConnectionImpl con, int windowSize, Externalizer ext) throws IOException{
+    public static List toWindows(MessageImpl message, ServerConnectionImpl sc, int windowSize) throws IOException{
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        if(ext == null){
+        if(sc.externalizer == null){
             ObjectOutputStream oos = new ObjectOutputStream(baos);
             oos.writeByte(message instanceof MulticastMessageImpl ? 2 : 1);
             message.writeExternal(oos);
             oos.flush();
         }else{
-            message.externalizer = ext;
-            ext.writeExternal(message, baos);
+            message.externalizer = sc.externalizer;
+            sc.externalizer.writeExternal(message, baos);
         }
         List result = new ArrayList();
         byte[] tmp = baos.toByteArray();
         int offset = 0;
         short no = 0;
         do{
-            Window window = null;
-            if(con.windowBuffer.size() != 0){
-                synchronized(con.windowBuffer){
-                    if(con.windowBuffer.size() != 0){
-                        window = (Window)con.windowBuffer.remove(0);
-                        con.recycleWindowCount++;
-                    }
-                }
-            }
-            if(window == null){
-                window = new Window();
-                con.newWindowCount++;
-            }
+            Window window = sc.createWindow();
             window.isFirst = message.isFirst();
             window.sequence = message.getSequence();
             window.windowNo = no;
@@ -223,21 +211,12 @@ public class Window extends WindowId{
         return result;
     }
     
-    public MessageImpl getMessage(List messageBuffer, Externalizer ext) throws IOException, ClassNotFoundException{
+    public MessageImpl getMessage(ClientConnectionImpl cc) throws IOException, ClassNotFoundException{
         if(message != null){
             return message;
         }
         if(isLost()){
-            if(messageBuffer.size() != 0){
-                synchronized(messageBuffer){
-                    if(messageBuffer.size() != 0){
-                        message = (MessageImpl)messageBuffer.remove(0);
-                    }
-                }
-            }
-            if(message == null){
-                message = new MessageImpl();
-            }
+            message = cc.createMessage(1);
             message.setSequence(sequence);
             message.setLost(true);
             message.setReceiveTime(System.currentTimeMillis());
@@ -265,27 +244,13 @@ public class Window extends WindowId{
                 }
             }
             ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
-            if(ext == null){
+            if(cc.externalizer == null){
                 ObjectInputStream ois = new ObjectInputStream(bais);
-                final byte msgType = ois.readByte();
-                if(messageBuffer.size() != 0){
-                    synchronized(messageBuffer){
-                        if(messageBuffer.size() != 0){
-                            message = (MessageImpl)messageBuffer.remove(0);
-                        }
-                    }
-                }
-                if(message == null){
-                    if(msgType == 1){
-                        message = new MessageImpl();
-                    }else{
-                        message = new MulticastMessageImpl();
-                    }
-                }
+                message = cc.createMessage(ois.readByte());
                 message.readExternal(ois);
             }else{
-                message = (MessageImpl)ext.readExternal(bais);
-                message.externalizer = ext;
+                message = (MessageImpl)cc.externalizer.readExternal(bais);
+                message.externalizer = cc.externalizer;
             }
             message.setReceiveTime(recTime);
         }

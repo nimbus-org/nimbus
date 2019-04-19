@@ -346,5 +346,12 @@ public interface MessageReceiverServiceMBean extends ServiceBaseMBean{
      * @return リサイクルリストの上限サイズ
      */
     public int getMessageListenerParameterRecycleListSize();
+    
+    /**
+     * メッセージのリサイクルにおける、メッセージの最大貸し出し数を取得する。<p>
+     *
+     * @return メッセージの最大貸し出し数
+     */
+    public int getMaxMessagePayoutCount();
 
 }

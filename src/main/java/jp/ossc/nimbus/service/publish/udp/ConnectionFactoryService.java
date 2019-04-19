@@ -988,12 +988,12 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
         return serverConnection == null ? 0 : serverConnection.getAverageRequestHandleProcessTime();
     }
     
-    public double getMessageRecycleRate(){
-        return serverConnection == null ? 0d : serverConnection.getMessageRecycleRate();
+    public int getMaxMessagePayoutCount(){
+        return serverConnection == null ? 0 : serverConnection.getMaxMessagePayoutCount();
     }
     
-    public double getWindowRecycleRate(){
-        return serverConnection == null ? 0d : serverConnection.getWindowRecycleRate();
+    public int getMaxWindowPayoutCount(){
+        return serverConnection == null ? 0 : serverConnection.getMaxWindowPayoutCount();
     }
     
     public void startService() throws Exception{
