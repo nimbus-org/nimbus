@@ -1353,7 +1353,7 @@ public class SharedContextService extends DefaultContextService
                         new SharedContextEvent(
                             SharedContextEvent.EVENT_RELEASE_LOCK,
                             key,
-                            new Object[]{id, Long.valueOf(Thread.currentThread().getId()), Boolean.TRUE}
+                            new Object[]{id, Long.valueOf(Thread.currentThread().getId()), force ? Boolean.TRUE : Boolean.FALSE}
                         )
                     );
                     serverConnection.sendAsynch(message);
@@ -2981,10 +2981,9 @@ public class SharedContextService extends DefaultContextService
                             lock = old;
                             newLock = null;
                         }
-                    }else{
-                        lock.init();
                     }
                     if(lock != null){
+                        lock.init();
                         final long start = System.currentTimeMillis();
                         if(!lock.waitLock(currentTimeout)){
                             throw new SharedContextTimeoutException();
