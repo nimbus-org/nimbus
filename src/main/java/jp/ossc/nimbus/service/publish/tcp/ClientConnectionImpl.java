@@ -156,7 +156,7 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
     }
     
     protected void recycleMessage(MessageImpl msg){
-        if(msg != null && externalizer == null){
+        if(msg != null){
             synchronized(messageBuffer){
                 if(messageBuffer.size() <= messageRecycleBufferSize){
                     msg.clear();
@@ -169,15 +169,13 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
     
     protected MessageImpl createMessage(){
         MessageImpl message = null;
-        if(externalizer == null){
-            synchronized(messageBuffer){
-                if(messageBuffer.size() != 0){
-                    message = (MessageImpl)messageBuffer.remove(0);
-                }
-                messagePayoutCount++;
-                if(maxMessagePayoutCount < messagePayoutCount){
-                    maxMessagePayoutCount = messagePayoutCount;
-                }
+        synchronized(messageBuffer){
+            if(messageBuffer.size() != 0){
+                message = (MessageImpl)messageBuffer.remove(0);
+            }
+            messagePayoutCount++;
+            if(maxMessagePayoutCount < messagePayoutCount){
+                maxMessagePayoutCount = messagePayoutCount;
             }
         }
         if(message == null){

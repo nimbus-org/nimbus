@@ -243,7 +243,9 @@ public class MessageImpl implements Message, Externalizable, Cloneable{
                 oos.flush();
             }else{
                 externalizer = ext;
-                ext.writeExternal(this, baos);
+                ObjectOutput oo = externalizer.createObjectOutput(baos);
+                writeExternal(oo);
+                oo.flush();
             }
             bytes = baos.toByteArray();
         }
@@ -257,8 +259,10 @@ public class MessageImpl implements Message, Externalizable, Cloneable{
             message = cc.createMessage();
             message.readExternal(ois);
         }else{
-            message = (MessageImpl)cc.externalizer.readExternal(in);
+            ObjectInput oi = cc.externalizer.createObjectInput(in);
+            message = cc.createMessage();
             message.externalizer = cc.externalizer;
+            message.readExternal(oi);
         }
         return message;
     }

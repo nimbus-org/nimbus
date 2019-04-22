@@ -34,6 +34,8 @@ package jp.ossc.nimbus.service.publish.udp;
 import java.io.IOException;
 import java.io.DataOutput;
 import java.io.DataInput;
+import java.io.ObjectOutput;
+import java.io.ObjectInput;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
@@ -116,7 +118,10 @@ public class Window extends WindowId{
             oos.flush();
         }else{
             message.externalizer = sc.externalizer;
-            sc.externalizer.writeExternal(message, baos);
+            ObjectOutput oo = sc.externalizer.createObjectOutput(baos);
+            oo.writeByte(message instanceof MulticastMessageImpl ? 2 : 1);
+            message.writeExternal(oo);
+            oo.flush();
         }
         List result = new ArrayList();
         byte[] tmp = baos.toByteArray();
@@ -249,8 +254,10 @@ public class Window extends WindowId{
                 message = cc.createMessage(ois.readByte());
                 message.readExternal(ois);
             }else{
-                message = (MessageImpl)cc.externalizer.readExternal(bais);
+                ObjectInput oi = cc.externalizer.createObjectInput(bais);
+                message = cc.createMessage(oi.readByte());
                 message.externalizer = cc.externalizer;
+                message.readExternal(oi);
             }
             message.setReceiveTime(recTime);
         }
