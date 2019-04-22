@@ -146,10 +146,10 @@ public class NimbusExternalizerService extends SerializableExternalizerService
         metaClassMap = null;
     }
     
-    protected ObjectOutput createObjectOutput(OutputStream out) throws IOException{
+    public ObjectOutput createObjectOutput(OutputStream out) throws IOException{
         return new NimbusObjectOutputStream(out);
     }
-    protected ObjectInput createObjectInput(InputStream in) throws IOException{
+    public ObjectInput createObjectInput(InputStream in) throws IOException{
         return new NimbusObjectInputStream(in);
     }
     

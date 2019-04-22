@@ -184,7 +184,7 @@ public class SerializableExternalizerService extends ServiceBase
         return objectInputClass;
     }
     
-    protected ObjectOutput createObjectOutput(OutputStream out) throws IOException{
+    public ObjectOutput createObjectOutput(OutputStream out) throws IOException{
         ObjectOutput output = null;
         if(objectOutputClass == null){
             output = new ObjectOutputStream(out);
@@ -403,7 +403,7 @@ public class SerializableExternalizerService extends ServiceBase
         }
     }
     
-    protected ObjectInput createObjectInput(InputStream in) throws IOException{
+    public ObjectInput createObjectInput(InputStream in) throws IOException{
         ObjectInput input = null;
         if(objectInputClass == null){
             input = new ObjectInputStream(in);
