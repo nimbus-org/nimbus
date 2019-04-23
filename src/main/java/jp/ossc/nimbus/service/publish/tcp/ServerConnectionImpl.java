@@ -121,7 +121,7 @@ public class ServerConnectionImpl implements ServerConnection{
     private List serverConnectionListeners;
     private Externalizer externalizer;
     private SocketFactory socketFactory;
-    private List sendMessageCache = Collections.synchronizedList(new ArrayList());
+    private LinkedList sendMessageCache = new LinkedList();
     private long sendMessageCacheTime;
     private boolean isAcknowledge;
     private int messageRecycleBufferSize = 100;
@@ -291,11 +291,11 @@ public class ServerConnectionImpl implements ServerConnection{
             synchronized(messageBuffer){
                 if(messageBuffer.size() <= messageRecycleBufferSize){
                     msg.clear();
-                    if(messageBuffer.size() <= messageRecycleBufferSize){
-                        messageBuffer.add(msg);
-                    }
+                    messageBuffer.add(msg);
                 }
-                messagePayoutCount--;
+                if(messagePayoutCount > 0){
+                    messagePayoutCount--;
+                }
             }
         }
     }
@@ -315,6 +315,7 @@ public class ServerConnectionImpl implements ServerConnection{
             result = new MessageImpl();
         }
         result.setMessageType(type);
+        result.setServerConnection(this);
         return result;
     }
     
@@ -540,6 +541,7 @@ public class ServerConnectionImpl implements ServerConnection{
     public synchronized void send(Message message) throws MessageSendException{
         long startTime = System.currentTimeMillis();
         if(clients.size() == 0){
+            ((MessageImpl)message).setSend(true);
             addSendMessageCache((MessageImpl)message);
             return;
         }
@@ -724,17 +726,21 @@ public class ServerConnectionImpl implements ServerConnection{
             message.setSendTime(currentTime);
         }
         synchronized(sendMessageCache){
-            sendMessageCache.add(message);
-            for(int i = 0, imax = sendMessageCache.size(); i < imax; i++){
-                MessageImpl msg = (MessageImpl)sendMessageCache.get(0);
-                if((currentTime - msg.getSendTime()) > sendMessageCacheTime){
-                    MessageImpl trash = (MessageImpl)sendMessageCache.remove(0);
-                    if(trash.isSend()){
-                        recycleMessage(trash);
+            if(sendMessageCacheTime > 0 && message.getMessageType() == MessageImpl.MESSAGE_TYPE_APPLICATION){
+                sendMessageCache.add(message);
+                for(int i = 0, imax = sendMessageCache.size(); i < imax; i++){
+                    MessageImpl msg = (MessageImpl)sendMessageCache.get(0);
+                    if((currentTime - msg.getSendTime()) > sendMessageCacheTime){
+                        MessageImpl trash = (MessageImpl)sendMessageCache.remove(0);
+                        if(trash.isSend()){
+                            recycleMessage(trash);
+                        }
+                    }else{
+                        break;
                     }
-                }else{
-                    break;
                 }
+            }else{
+                recycleMessage(message);
             }
             sendCount++;
         }
@@ -743,8 +749,8 @@ public class ServerConnectionImpl implements ServerConnection{
     private List getSendMessages(long from){
         List result = new ArrayList();
         synchronized(sendMessageCache){
-            for(int i = sendMessageCache.size(); --i >= 0; ){
-                MessageImpl msg = (MessageImpl)sendMessageCache.get(i);
+            for(Iterator itr = sendMessageCache.descendingIterator(); itr.hasNext(); ){
+                MessageImpl msg = (MessageImpl)itr.next();
                 if(msg.getSendTime() >= from){
                     result.add(0, msg.clone());
                 }else{
@@ -759,8 +765,28 @@ public class ServerConnectionImpl implements ServerConnection{
         return sendMessageCache.size();
     }
     
+    public Date getSendMessageCacheOldTime(){
+        if(sendMessageCache.size() == 0){
+            return null;
+        }
+        MessageImpl msg = null;
+        synchronized(sendMessageCache){
+            if(sendMessageCache.size() != 0){
+                msg = (MessageImpl)sendMessageCache.get(0);
+            }
+        }
+        if(msg == null){
+            return null;
+        }
+        return new Date(msg.getSendTime());
+    }
+    
     public int getMaxMessagePayoutCount(){
         return maxMessagePayoutCount;
+    }
+    
+    public int getMessagePayoutCount(){
+        return messagePayoutCount;
     }
     
     public synchronized void close(){
@@ -1590,6 +1616,8 @@ public class ServerConnectionImpl implements ServerConnection{
                 }catch(MessageSendException e){
                 }catch(MessageException e){
                     // 起こらないはず
+                }finally{
+                    recycleMessage(response);
                 }
             }
             return isClosed;

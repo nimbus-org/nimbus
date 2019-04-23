@@ -992,8 +992,16 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
         return serverConnection == null ? 0 : serverConnection.getMaxMessagePayoutCount();
     }
     
+    public int getMessagePayoutCount(){
+        return serverConnection == null ? 0 : serverConnection.getMessagePayoutCount();
+    }
+    
     public int getMaxWindowPayoutCount(){
         return serverConnection == null ? 0 : serverConnection.getMaxWindowPayoutCount();
+    }
+    
+    public int getWindowPayoutCount(){
+        return serverConnection == null ? 0 : serverConnection.getWindowPayoutCount();
     }
     
     public void startService() throws Exception{

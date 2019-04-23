@@ -1055,6 +1055,17 @@ public class ConnectionFactoryFactoryService extends ServiceFactoryServiceBase i
         return result;
     }
     
+    public int getMessagePayoutCount(){
+        int result = 0;
+        Iterator itr = managedInstances.iterator();
+        while(itr.hasNext()) {
+            ConnectionFactoryService connectionFactoryService = (ConnectionFactoryService)itr.next();
+            int count = connectionFactoryService.getMessagePayoutCount();
+            result+=count;
+        }
+        return result;
+    }
+    
     public int getMaxWindowPayoutCount(){
         int result = 0;
         Iterator itr = managedInstances.iterator();
@@ -1064,6 +1075,17 @@ public class ConnectionFactoryFactoryService extends ServiceFactoryServiceBase i
             if(result < count){
                 result = count;
             }
+        }
+        return result;
+    }
+    
+    public int getWindowPayoutCount(){
+        int result = 0;
+        Iterator itr = managedInstances.iterator();
+        while(itr.hasNext()) {
+            ConnectionFactoryService connectionFactoryService = (ConnectionFactoryService)itr.next();
+            int count = connectionFactoryService.getWindowPayoutCount();
+            result+=count;
         }
         return result;
     }

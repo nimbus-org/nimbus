@@ -70,6 +70,7 @@ public class MessageImpl extends MessageId implements Message, Comparable, Clone
     private transient byte[] serializedBytes;
     private transient boolean isSend;
     private transient ClientConnectionImpl clientConnection;
+    private transient ServerConnectionImpl serverConnection;
     protected transient Externalizer externalizer;
     
     public MessageImpl(){
@@ -77,6 +78,10 @@ public class MessageImpl extends MessageId implements Message, Comparable, Clone
     
     public void setClientConnection(ClientConnectionImpl con){
         clientConnection = con;
+    }
+    
+    public void setServerConnection(ServerConnectionImpl con){
+        serverConnection = con;
     }
     
     public void setSend(boolean isSend){
@@ -372,5 +377,9 @@ public class MessageImpl extends MessageId implements Message, Comparable, Clone
             clientConnection.recycleMessage(this);
             clientConnection = null;
         }
+    }
+    
+    protected void finalize() throws Throwable{
+        recycle();
     }
 }

@@ -215,7 +215,9 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
                     msg.clear();
                     messageBuffer.add(msg);
                 }
-                messagePayoutCount--;
+                if(messagePayoutCount > 0){
+                    messagePayoutCount--;
+                }
             }
         }
     }
@@ -1226,7 +1228,9 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
                     if(packetBuffer.size() <= packetRecycleBufferSize){
                         packetBuffer.add(bytes);
                     }
-                    packetPayoutCount--;
+                    if(packetPayoutCount > 0){
+                        packetPayoutCount--;
+                    }
                 }
             }
         }
@@ -1342,7 +1346,9 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
                     if(windowBuffer.size() <= windowRecycleBufferSize){
                         windowBuffer.add(window);
                     }
-                    windowPayoutCount--;
+                    if(windowPayoutCount > 0){
+                        windowPayoutCount--;
+                    }
                 }
             }
         }
@@ -2063,12 +2069,24 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
             return ClientConnectionImpl.this.maxPacketPayoutCount;
         }
         
+        public int getPacketPayoutCount(){
+            return ClientConnectionImpl.this.packetPayoutCount;
+        }
+        
         public int getMaxWindowPayoutCount(){
             return ClientConnectionImpl.this.maxWindowPayoutCount;
         }
         
+        public int getWindowPayoutCount(){
+            return ClientConnectionImpl.this.windowPayoutCount;
+        }
+        
         public int getMaxMessagePayoutCount(){
             return ClientConnectionImpl.this.maxMessagePayoutCount;
+        }
+        
+        public int getMessagePayoutCount(){
+            return ClientConnectionImpl.this.messagePayoutCount;
         }
         
         public void connect() throws ConnectException{
@@ -2511,6 +2529,13 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
         public int getMaxPacketPayoutCount();
         
         /**
+         * パケットのリサイクルにおける、パケットの払い出し数を取得する。<p>
+         *
+         * @return パケットの払い出し数
+         */
+        public int getPacketPayoutCount();
+        
+        /**
          * ウィンドウのリサイクルにおける、ウィンドウの最大払い出し数を取得する。<p>
          *
          * @return ウィンドウの最大払い出し数
@@ -2518,11 +2543,25 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
         public int getMaxWindowPayoutCount();
         
         /**
+         * ウィンドウのリサイクルにおける、ウィンドウの払い出し数を取得する。<p>
+         *
+         * @return ウィンドウの払い出し数
+         */
+        public int getWindowPayoutCount();
+        
+        /**
          * メッセージのリサイクルにおける、メッセージの最大払い出し数を取得する。<p>
          *
          * @return メッセージの最大払い出し数
          */
         public int getMaxMessagePayoutCount();
+        
+        /**
+         * メッセージのリサイクルにおける、メッセージの払い出し数を取得する。<p>
+         *
+         * @return メッセージの払い出し数
+         */
+        public int getMessagePayoutCount();
         
         /**
          * サーバと接続する。<p>

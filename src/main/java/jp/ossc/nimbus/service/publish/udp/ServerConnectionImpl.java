@@ -379,7 +379,9 @@ public class ServerConnectionImpl implements ServerConnection{
                     msg.clear();
                     messageBuffer.add(msg);
                 }
-                messagePayoutCount--;
+                if(messagePayoutCount > 0){
+                    messagePayoutCount--;
+                }
             }
         }
     }
@@ -391,7 +393,9 @@ public class ServerConnectionImpl implements ServerConnection{
                     window.clear();
                     windowBuffer.add(window);
                 }
-                windowPayoutCount--;
+                if(windowPayoutCount > 0){
+                    windowPayoutCount--;
+                }
             }
         }
     }
@@ -602,8 +606,16 @@ public class ServerConnectionImpl implements ServerConnection{
         return maxMessagePayoutCount;
     }
     
+    public int getMessagePayoutCount(){
+        return messagePayoutCount;
+    }
+    
     public int getMaxWindowPayoutCount(){
         return maxWindowPayoutCount;
+    }
+    
+    public int getWindowPayoutCount(){
+        return windowPayoutCount;
     }
     
     public void enabledClient(String address, int port){
@@ -692,19 +704,22 @@ public class ServerConnectionImpl implements ServerConnection{
         if(message == null){
             message = multicastAddress == null ? new MessageImpl() : new MulticastMessageImpl();
         }
+        message.setServerConnection(this);
         message.setSubject(subject, key);
         return message;
     }
     
-    protected MessageImpl copyMessage(MessageImpl msg){
+    protected MessageImpl copyMessage(MessageImpl msg, boolean recycle){
         MessageImpl message = null;
-        synchronized(messageBuffer){
-            if(messageBuffer.size() != 0){
-                message = (MessageImpl)messageBuffer.remove(0);
-            }
-            messagePayoutCount++;
-            if(maxMessagePayoutCount < messagePayoutCount){
-                maxMessagePayoutCount = messagePayoutCount;
+        if(recycle){
+            synchronized(messageBuffer){
+                if(messageBuffer.size() != 0){
+                    message = (MessageImpl)messageBuffer.remove(0);
+                }
+                messagePayoutCount++;
+                if(maxMessagePayoutCount < messagePayoutCount){
+                    maxMessagePayoutCount = messagePayoutCount;
+                }
             }
         }
         if(message == null){
@@ -1383,7 +1398,7 @@ public class ServerConnectionImpl implements ServerConnection{
         
         private synchronized MessageImpl allocateSequence(MessageImpl message, boolean copy){
             ClientImpl.this.currentSequence++;
-            MessageImpl result = copy ? copyMessage(message) : message;
+            MessageImpl result = copy ? copyMessage(message, true) : message;
             result.setSequence(ClientImpl.this.currentSequence);
             return result;
         }
@@ -1513,7 +1528,7 @@ public class ServerConnectionImpl implements ServerConnection{
                 }else if(firstMessage != null && firstMessage.equals(message)){
                     firstMessage = null;
                     if(copyMsg == null){
-                        copyMsg = copyMessage((MessageImpl)message);
+                        copyMsg = copyMessage((MessageImpl)message, true);
                         message = copyMsg;
                     }
                     ((MessageImpl)message).setFirst(true);
@@ -1527,7 +1542,7 @@ public class ServerConnectionImpl implements ServerConnection{
                 message = copyMsg;
             }else{
                 if(copyMsg == null){
-                    copyMsg = copyMessage((MessageImpl)message);
+                    copyMsg = copyMessage((MessageImpl)message, true);
                     message = copyMsg;
                 }
                 ((MulticastMessageImpl)message).addToId(id);
@@ -2536,7 +2551,7 @@ public class ServerConnectionImpl implements ServerConnection{
                         index = -index - 1;
                     }
                     for(int j = index, jmax = block.size(); j < jmax; j++){
-                        result.add(copyMessage((MessageImpl)block.get(j)));
+                        result.add(copyMessage((MessageImpl)block.get(j), false));
                     }
                 }else if(i == toIndex){
                     index = to == null ? block.size() : Collections.binarySearch(block, to, BLOCK_COMP);
@@ -2544,11 +2559,11 @@ public class ServerConnectionImpl implements ServerConnection{
                         index = -index - 1;
                     }
                     for(int j = 0; j < index; j++){
-                        result.add(copyMessage((MessageImpl)block.get(j)));
+                        result.add(copyMessage((MessageImpl)block.get(j), false));
                     }
                 }else{
                     for(int j = 0, jmax = block.size(); j < jmax; j++){
-                        result.add(copyMessage((MessageImpl)block.get(j)));
+                        result.add(copyMessage((MessageImpl)block.get(j), false));
                     }
                 }
             }
@@ -2567,13 +2582,13 @@ public class ServerConnectionImpl implements ServerConnection{
                 MessageImpl msg = (MessageImpl)block.get(0);
                 if(msg.getSendTime() >= fromTime){
                     for(int j = block.size(); --j >= 0;){
-                        result.add(0, copyMessage((MessageImpl)block.get(j)));
+                        result.add(0, copyMessage((MessageImpl)block.get(j), false));
                     }
                 }else{
                     for(int j = block.size(); --j >= 0;){
                         msg = (MessageImpl)block.get(j);
                         if(msg.getSendTime() >= fromTime){
-                            result.add(0, copyMessage(msg));
+                            result.add(0, copyMessage(msg, false));
                         }else{
                             break;
                         }

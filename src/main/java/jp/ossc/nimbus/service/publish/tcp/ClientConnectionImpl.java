@@ -162,7 +162,9 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
                     msg.clear();
                     messageBuffer.add(msg);
                 }
-                messagePayoutCount--;
+                if(messagePayoutCount > 0){
+                    messagePayoutCount--;
+                }
             }
         }
     }
@@ -1012,6 +1014,10 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
             return ClientConnectionImpl.this.maxMessagePayoutCount;
         }
         
+        public int getMessagePayoutCount(){
+            return ClientConnectionImpl.this.messagePayoutCount;
+        }
+        
         public SocketAddress getLocalSocketAddress(){
             return ClientConnectionImpl.this.socket.getLocalSocketAddress();
         }
@@ -1168,6 +1174,13 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
          * @return メッセージの最大払い出し数
          */
         public int getMaxMessagePayoutCount();
+        
+        /**
+         * メッセージのリサイクルにおける、メッセージの払い出し数を取得する。<p>
+         *
+         * @return メッセージの払い出し数
+         */
+        public int getMessagePayoutCount();
         
         /**
          * カウントをリセットする。<p>

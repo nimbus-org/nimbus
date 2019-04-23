@@ -75,6 +75,7 @@ public class MessageImpl implements Message, Externalizable, Cloneable{
     private transient byte[] serializedBytes;
     private transient boolean isSend;
     private transient ClientConnectionImpl clientConnection;
+    private transient ServerConnectionImpl serverConnection;
     private transient Externalizer externalizer;
     
     public MessageImpl(){
@@ -86,6 +87,10 @@ public class MessageImpl implements Message, Externalizable, Cloneable{
     
     public void setClientConnection(ClientConnectionImpl con){
         clientConnection = con;
+    }
+    
+    public void setServerConnection(ServerConnectionImpl con){
+        serverConnection = con;
     }
     
     public void setSend(boolean isSend){
@@ -315,6 +320,14 @@ public class MessageImpl implements Message, Externalizable, Cloneable{
             clientConnection.recycleMessage(this);
             clientConnection = null;
         }
+        if(serverConnection != null){
+            serverConnection.recycleMessage(this);
+            serverConnection = null;
+        }
+    }
+    
+    protected void finalize() throws Throwable{
+        recycle();
     }
     
     public void writeExternal(ObjectOutput out) throws IOException{

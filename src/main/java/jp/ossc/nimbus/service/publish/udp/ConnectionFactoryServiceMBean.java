@@ -1231,9 +1231,23 @@ public interface ConnectionFactoryServiceMBean extends ServiceBaseMBean{
     public int getMaxMessagePayoutCount();
     
     /**
+     * メッセージのリサイクルにおける、メッセージの払い出し数を取得する。<p>
+     *
+     * @return メッセージの払い出し数
+     */
+    public int getMessagePayoutCount();
+    
+    /**
      * ウィンドウのリサイクルにおける、ウィンドウの最大払い出し数を取得する。<p>
      *
      * @return ウィンドウの最大払い出し数
      */
     public int getMaxWindowPayoutCount();
+    
+    /**
+     * ウィンドウのリサイクルにおける、ウィンドウの払い出し数を取得する。<p>
+     *
+     * @return ウィンドウの払い出し数
+     */
+    public int getWindowPayoutCount();
 }

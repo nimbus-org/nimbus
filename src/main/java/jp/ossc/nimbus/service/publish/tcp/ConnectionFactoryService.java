@@ -44,6 +44,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.rmi.NoSuchObjectException;
 import java.rmi.server.UnicastRemoteObject;
 import javax.net.ServerSocketFactory;
@@ -903,7 +904,19 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
         return serverConnection == null ? 0 : serverConnection.getClientCount();
     }
     
+    public int getSendMessageCacheSize(){
+        return serverConnection == null ? 0 : serverConnection.getSendMessageCacheSize();
+    }
+    
+    public Date getSendMessageCacheOldTime(){
+        return serverConnection == null ? null : serverConnection.getSendMessageCacheOldTime();
+    }
+    
     public int getMaxMessagePayoutCount(){
         return serverConnection == null ? 0 : serverConnection.getMaxMessagePayoutCount();
+    }
+    
+    public int getMessagePayoutCount(){
+        return serverConnection == null ? 0 : serverConnection.getMessagePayoutCount();
     }
 }
