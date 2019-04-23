@@ -141,11 +141,6 @@ public class NimbusExternalizerService extends SerializableExternalizerService
         metaClassMap.clear();
     }
     
-    public void destroyService() throws Exception{
-        disabledNumberCompressionClassMap = null;
-        metaClassMap = null;
-    }
-    
     public ObjectOutput createObjectOutput(OutputStream out) throws IOException{
         return new NimbusObjectOutputStream(out);
     }
