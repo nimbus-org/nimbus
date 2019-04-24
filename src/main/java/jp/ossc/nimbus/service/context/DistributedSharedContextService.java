@@ -555,6 +555,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         messageReceiver = (MessageReceiver)ServiceManagerFactory.getServiceObject(requestConnectionFactoryServiceName);
         clientSubject = subject + CLIENT_SUBJECT_SUFFIX;
         targetMessage = serverConnection.createMessage(subject, null);
+        Message tmpMessage = targetMessage;
+        targetMessage = (Message)targetMessage.clone();
+        tmpMessage.recycle();
         if(clusterServiceName == null){
             throw new IllegalArgumentException("ClusterServiceName must be specified.");
         }

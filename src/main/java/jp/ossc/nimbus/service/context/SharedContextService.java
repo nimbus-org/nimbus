@@ -616,9 +616,17 @@ public class SharedContextService extends DefaultContextService
         ServerConnectionFactory factory = (ServerConnectionFactory)ServiceManagerFactory.getServiceObject(requestConnectionFactoryServiceName);
         serverConnection = (RequestServerConnection)factory.getServerConnection();
         targetMessage = serverConnection.createMessage(subject, null);
+        Message tmpMessage = targetMessage;
+        targetMessage = (Message)targetMessage.clone();
+        tmpMessage.recycle();
+        
         messageReceiver = (MessageReceiver)ServiceManagerFactory.getServiceObject(requestConnectionFactoryServiceName);
         clientSubject = subject + CLIENT_SUBJECT_SUFFIX;
         allTargetMessage = serverConnection.createMessage(subject, null);
+        tmpMessage = allTargetMessage;
+        allTargetMessage = (Message)allTargetMessage.clone();
+        tmpMessage.recycle();
+        
         allTargetMessage.setSubject(clientSubject, null);
         messageReceiver.addSubject(this, isClient ? clientSubject :  subject);
         if(clusterServiceName == null){
