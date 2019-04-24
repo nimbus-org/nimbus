@@ -1559,7 +1559,7 @@ public class DefaultPropertySchemaTest extends TestCase {
 	public void testParse() {
 		try {
 			DefaultPropertySchema dps = new DefaultPropertySchema();
-			String schema = "A,java.util.Date," +
+			String schema = "A,java.lang.String," +
 					"\"jp.ossc.nimbus.util.converter.DateFormatConverter{ConvertType=1;Format=\"yyyy-MM-DD\"}\",,";
 			dps.setSchema(schema);
 			Calendar cal = Calendar.getInstance();
