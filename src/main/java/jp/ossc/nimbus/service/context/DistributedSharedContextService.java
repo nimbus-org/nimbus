@@ -209,8 +209,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     
     public void setRehashEnabled(boolean isEnabled) throws SharedContextSendException, SharedContextTimeoutException{
         if(getState() == STARTED){
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_REHASH_SWITCH));
+                message = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_REHASH_SWITCH));
                 message.setSubject(clientSubject, null);
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
@@ -238,6 +239,10 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 throw new SharedContextSendException(e);
             }catch(MessageSendException e){
                 throw new SharedContextSendException(e);
+            }finally{
+                if(message != null){
+                    message.recycle();
+                }
             }
         }
         isRehashEnabled = isEnabled;
@@ -761,8 +766,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             getLogger().write("DSCS_00004", new Object[]{getServiceNameObject()});
             final boolean isNoTimeout = timeout <= 0;
             long currentTimeout = timeout;
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_GET_DIST_INFO));
+                message = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_GET_DIST_INFO));
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() == 0){
                     DistributeGrid grid = new DistributeGrid();
@@ -778,6 +784,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }catch(RequestTimeoutException e){
                         throw new SharedContextTimeoutException("Timeout has occurred to get state of distribution.", e);
                     }
+                    message.recycle();
                     DistributeGrid grid = new DistributeGrid();
                     grid.addDistributeInfo(distributeInfo);
                     for(int i = 0; i < responses.length; i++){
@@ -800,10 +807,11 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         Iterator infos = increaseDistributeInfos.values().iterator();
                         while(infos.hasNext()){
                             info = (DistributeInfo)infos.next();
-                            Message rehashMessage = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_REHASH));
-                            rehashMessage.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_REHASH, info));
-                            rehashMessage.addDestinationId(info.getId());
-                            serverConnection.request(rehashMessage, 1, timeout, callback);
+                            message = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_REHASH));
+                            message.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_REHASH, info));
+                            message.addDestinationId(info.getId());
+                            serverConnection.request(message, 1, timeout, callback);
+                            message.recycle();
                         }
                         callback.waitResponse(currentTimeout);
                     }
@@ -825,10 +833,11 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         Iterator infos = decreaseDistributeInfos.values().iterator();
                         while(infos.hasNext()){
                             info = (DistributeInfo)infos.next();
-                            Message rehashMessage = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_REHASH));
-                            rehashMessage.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_REHASH, info));
-                            rehashMessage.addDestinationId(info.getId());
-                            serverConnection.request(rehashMessage, 1, currentTimeout, callback);
+                            message = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_REHASH));
+                            message.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_REHASH, info));
+                            message.addDestinationId(info.getId());
+                            serverConnection.request(message, 1, currentTimeout, callback);
+                            message.recycle();
                         }
                         callback.waitResponse(currentTimeout);
                     }
@@ -838,10 +847,15 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 throw new SharedContextSendException(e);
             }catch(MessageSendException e){
                 throw new SharedContextSendException(e);
+            }finally{
+                if(message != null){
+                    message.recycle();
+                }
             }
         }else{
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_REHASH_REQUEST));
+                message = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_REHASH_REQUEST));
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
                     message.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_REHASH_REQUEST, new Long(timeout)));
@@ -866,6 +880,10 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 throw new SharedContextSendException(e);
             }catch(MessageSendException e){
                 throw new SharedContextSendException(e);
+            }finally{
+                if(message != null){
+                    message.recycle();
+                }
             }
         }
     }
@@ -882,8 +900,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 throw new UnsupportedOperationException();
             }
         }else{
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, null);
+                message = serverConnection.createMessage(subject, null);
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
                     message.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_LOAD));
@@ -908,6 +927,10 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 throw new SharedContextSendException(e);
             }catch(MessageSendException e){
                 throw new SharedContextSendException(e);
+            }finally{
+                if(message != null){
+                    message.recycle();
+                }
             }
         }
     }
@@ -924,8 +947,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 throw new UnsupportedOperationException();
             }
         }else{
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, key == null ? null : key.toString());
+                message = serverConnection.createMessage(subject, key == null ? null : key.toString());
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
                     message.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_LOAD, key));
@@ -950,6 +974,10 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 throw new SharedContextSendException(e);
             }catch(MessageSendException e){
                 throw new SharedContextSendException(e);
+            }finally{
+                if(message != null){
+                    message.recycle();
+                }
             }
         }
     }
@@ -966,8 +994,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 throw new UnsupportedOperationException();
             }
         }else{
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, null);
+                message = serverConnection.createMessage(subject, null);
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
                     message.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_LOAD_KEY));
@@ -992,6 +1021,10 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 throw new SharedContextSendException(e);
             }catch(MessageSendException e){
                 throw new SharedContextSendException(e);
+            }finally{
+                if(message != null){
+                    message.recycle();
+                }
             }
         }
     }
@@ -1053,8 +1086,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 throw new UnsupportedOperationException();
             }
         }else{
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, null);
+                message = serverConnection.createMessage(subject, null);
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
                     message.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_SAVE, new Long(timeout)));
@@ -1079,6 +1113,10 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 throw new SharedContextSendException(e);
             }catch(MessageSendException e){
                 throw new SharedContextSendException(e);
+            }finally{
+                if(message != null){
+                    message.recycle();
+                }
             }
         }
     }
@@ -1095,8 +1133,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 throw new UnsupportedOperationException();
             }
         }else{
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, key == null ? null : key.toString());
+                message = serverConnection.createMessage(subject, key == null ? null : key.toString());
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
                     message.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_SAVE, new Object[]{key, new Long(timeout)}));
@@ -1121,6 +1160,10 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 throw new SharedContextSendException(e);
             }catch(MessageSendException e){
                 throw new SharedContextSendException(e);
+            }finally{
+                if(message != null){
+                    message.recycle();
+                }
             }
         }
     }
@@ -2177,8 +2220,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     
     public String displayDistributeInfo() throws SharedContextSendException, SharedContextTimeoutException{
         DistributeGrid grid = new DistributeGrid();
+        Message message = null;
         try{
-            Message message = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_GET_DIST_INFO));
+            message = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_GET_DIST_INFO));
             Set receiveClients = serverConnection.getReceiveClientIds(message);
             if(!isClient){
                 grid.addDistributeInfo(distributeInfo);
@@ -2206,6 +2250,10 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             throw new SharedContextSendException(e);
         }catch(MessageSendException e){
             throw new SharedContextSendException(e);
+        }finally{
+            if(message != null){
+                message.recycle();
+            }
         }
         return grid.toString();
     }
@@ -2476,8 +2524,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         if(serverConnection == null || clientSubject == null){
             return new HashSet();
         }
+        Message message = null;
         try{
-            Message message = serverConnection.createMessage(clientSubject, null);
+            message = serverConnection.createMessage(clientSubject, null);
             Set result = serverConnection.getReceiveClientIds(message);
             if(isClient){
                 result.add(getId());
@@ -2485,6 +2534,10 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             return result;
         }catch(MessageException e){
             return new HashSet();
+        }finally{
+            if(message != null){
+                message.recycle();
+            }
         }
     }
     
@@ -2492,8 +2545,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         if(serverConnection == null){
             return new HashSet();
         }
+        Message message = null;
         try{
-            Message message = serverConnection.createMessage(subject, null);
+            message = serverConnection.createMessage(subject, null);
             Set result = serverConnection.getReceiveClientIds(message);
             if(!isClient){
                 result.add(getId());
@@ -2501,6 +2555,10 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             return result;
         }catch(MessageException e){
             return new HashSet();
+        }finally{
+            if(message != null){
+                message.recycle();
+            }
         }
     }
     

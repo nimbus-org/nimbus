@@ -335,6 +335,8 @@ public class SharedContextService extends DefaultContextService
                 if(receiveClients.size() != 0){
                     message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_CHANGE_MODE, cluster.getUID(), isClient));
                     serverConnection.sendAsynch(message);
+                }else{
+                    message.recycle();
                 }
             }catch(MessageException e){
                 throw new SharedContextSendException(e);
@@ -426,8 +428,9 @@ public class SharedContextService extends DefaultContextService
             if(!isClient){
                 return;
             }
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, null);
+                message = serverConnection.createMessage(subject, null);
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
                     message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_ANALYZE_KEY_INDEX, name, new Long(timeout)));
@@ -446,6 +449,10 @@ public class SharedContextService extends DefaultContextService
                 throw new SharedContextSendException(e);
             }catch(RequestTimeoutException e){
                 throw new SharedContextTimeoutException(e);
+            }finally{
+                if(message != null){
+                    message.recycle();
+                }
             }
             return;
         }
@@ -728,8 +735,9 @@ public class SharedContextService extends DefaultContextService
         if(isMain()){
             super.load();
         }else{
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, null);
+                message = serverConnection.createMessage(subject, null);
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
                     message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_LOAD));
@@ -754,6 +762,10 @@ public class SharedContextService extends DefaultContextService
                 throw new SharedContextSendException(e);
             }catch(RequestTimeoutException e){
                 throw new SharedContextTimeoutException(e);
+            }finally{
+                if(message != null){
+                    message.recycle();
+                }
             }
         }
     }
@@ -766,8 +778,9 @@ public class SharedContextService extends DefaultContextService
         if(isMain()){
             super.loadKey();
         }else{
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, null);
+                message = serverConnection.createMessage(subject, null);
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
                     message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_LOAD_KEY));
@@ -792,6 +805,10 @@ public class SharedContextService extends DefaultContextService
                 throw new SharedContextSendException(e);
             }catch(RequestTimeoutException e){
                 throw new SharedContextTimeoutException(e);
+            }finally{
+                if(message != null){
+                    message.recycle();
+                }
             }
         }
     }
@@ -804,8 +821,9 @@ public class SharedContextService extends DefaultContextService
         if(isMain()){
             super.load(key);
         }else{
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, key == null ? null : key.toString());
+                message = serverConnection.createMessage(subject, key == null ? null : key.toString());
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
                     message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_LOAD, key));
@@ -830,6 +848,10 @@ public class SharedContextService extends DefaultContextService
                 throw new SharedContextSendException(e);
             }catch(RequestTimeoutException e){
                 throw new SharedContextTimeoutException(e);
+            }finally{
+                if(message != null){
+                    message.recycle();
+                }
             }
         }
     }
@@ -840,8 +862,9 @@ public class SharedContextService extends DefaultContextService
     
     public synchronized void save(long timeout) throws Exception{
         if(!isMain()){
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, null);
+                message = serverConnection.createMessage(subject, null);
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
                     message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_SAVE));
@@ -874,6 +897,10 @@ public class SharedContextService extends DefaultContextService
                 throw new SharedContextSendException(e);
             }catch(MessageSendException e){
                 throw new SharedContextSendException(e);
+            }finally{
+                if(message != null){
+                    message.recycle();
+                }
             }
         }
         if(!isClient && (isMain() || !isSaveOnlyMain)){
@@ -887,8 +914,9 @@ public class SharedContextService extends DefaultContextService
     
     public void save(Object key, long timeout) throws Exception{
         if(!isMain()){
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, key == null ? null : key.toString());
+                message = serverConnection.createMessage(subject, key == null ? null : key.toString());
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
                     message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_SAVE, key));
@@ -921,6 +949,10 @@ public class SharedContextService extends DefaultContextService
                 throw new SharedContextSendException(e);
             }catch(MessageSendException e){
                 throw new SharedContextSendException(e);
+            }finally{
+                if(message != null){
+                    message.recycle();
+                }
             }
         }
         if(!isClient && (isMain() || !isSaveOnlyMain)){
@@ -947,41 +979,53 @@ public class SharedContextService extends DefaultContextService
             }
             
             Message message = serverConnection.createMessage(subject, null);
-            message.setSubject(clientSubject, null);
-            Set receiveClients = serverConnection.getReceiveClientIds(message);
-            if(receiveClients.size() != 0){
-                message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_GET_UPDATE_LOCK, null, new Long(timeout)));
-                Message[] responses = serverConnection.request(
-                    message,
-                    isClient ? clientSubject : subject,
-                    null,
-                    0,
-                    timeout
-                );
-                for(int i = 0; i < responses.length; i++){
-                    Object ret = responses[i].getObject();
-                    responses[i].recycle();
-                    if(ret instanceof Throwable){
-                        throw new SharedContextSendException((Throwable)ret);
-                    }else if(ret == null || !((Boolean)ret).booleanValue()){
-                        throw new SharedContextTimeoutException();
+            try{
+                message.setSubject(clientSubject, null);
+                Set receiveClients = serverConnection.getReceiveClientIds(message);
+                if(receiveClients.size() != 0){
+                    message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_GET_UPDATE_LOCK, null, new Long(timeout)));
+                    Message[] responses = serverConnection.request(
+                        message,
+                        isClient ? clientSubject : subject,
+                        null,
+                        0,
+                        timeout
+                    );
+                    for(int i = 0; i < responses.length; i++){
+                        Object ret = responses[i].getObject();
+                        responses[i].recycle();
+                        if(ret instanceof Throwable){
+                            throw new SharedContextSendException((Throwable)ret);
+                        }else if(ret == null || !((Boolean)ret).booleanValue()){
+                            throw new SharedContextTimeoutException();
+                        }
                     }
+                }
+            }finally{
+                if(message != null){
+                    message.recycle();
                 }
             }
             if(isClient){
                 synchronizeForClient(timeout);
             }else if(isMain()){
-                message = serverConnection.createMessage(subject, null);
-                message.setSubject(clientSubject, null);
-                receiveClients = serverConnection.getReceiveClientIds(message);
-                if(receiveClients.size() != 0){
-                    message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_SYNCH_ALL, null, new Long(timeout)));
-                    Message[] responses = serverConnection.request(message, 0, timeout);
-                    for(int i = 0; i < responses.length; i++){
-                        if(responses[i].getObject() == null || !((Boolean)responses[i].getObject()).booleanValue()){
-                            throw new SharedContextSendException("It faild to synchronize.");
+                try{
+                    message = serverConnection.createMessage(subject, null);
+                    message.setSubject(clientSubject, null);
+                    Set receiveClients = serverConnection.getReceiveClientIds(message);
+                    if(receiveClients.size() != 0){
+                        message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_SYNCH_ALL, null, new Long(timeout)));
+                        Message[] responses = serverConnection.request(message, 0, timeout);
+                        for(int i = 0; i < responses.length; i++){
+                            if(responses[i].getObject() == null || !((Boolean)responses[i].getObject()).booleanValue()){
+                                throw new SharedContextSendException("It faild to synchronize.");
+                            }
+                            responses[i].recycle();
                         }
-                        responses[i].recycle();
+                    }
+                }finally{
+                    if(message != null){
+                        message.recycle();
                     }
                 }
             }else{
@@ -1001,6 +1045,8 @@ public class SharedContextService extends DefaultContextService
                 if(receiveClients.size() != 0){
                     message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_RELEASE_UPDATE_LOCK, cluster.getUID()));
                     serverConnection.sendAsynch(message);
+                }else{
+                    message.recycle();
                 }
             }catch(MessageException e){
                 throw new SharedContextSendException(e);
@@ -1028,8 +1074,9 @@ public class SharedContextService extends DefaultContextService
         }
         super.clear();
         if(updateListeners != null || indexManager.hasIndex()){
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, null);
+                message = serverConnection.createMessage(subject, null);
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
                     message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_GET_ALL));
@@ -1063,13 +1110,18 @@ public class SharedContextService extends DefaultContextService
                 throw new SharedContextSendException(e);
             }catch(RequestTimeoutException e){
                 throw new SharedContextTimeoutException(e);
+            }finally{
+                if(message != null){
+                    message.recycle();
+                }
             }
         }
     }
     
     protected synchronized void synchronizeWithMain(long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+        Message message = null;
         try{
-            Message message = serverConnection.createMessage(subject, null);
+            message = serverConnection.createMessage(subject, null);
             Set receiveClients = serverConnection.getReceiveClientIds(message);
             if(receiveClients.size() != 0){
                 message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_GET_ALL));
@@ -1118,6 +1170,10 @@ public class SharedContextService extends DefaultContextService
             throw new SharedContextSendException(e);
         }catch(RequestTimeoutException e){
             throw new SharedContextTimeoutException(e);
+        }finally{
+            if(message != null){
+                message.recycle();
+            }
         }
     }
     
@@ -1188,8 +1244,9 @@ public class SharedContextService extends DefaultContextService
                     lock.release(id, false);
                     throw new SharedContextTimeoutException();
                 }else{
+                    Message message = null;
                     try{
-                        Message message = serverConnection.createMessage(subject, key == null ? null : key.toString());
+                        message = serverConnection.createMessage(subject, key == null ? null : key.toString());
                         message.setSubject(clientSubject, key == null ? null : key.toString());
                         Set receiveClients = serverConnection.getReceiveClientIds(message);
                         if(receiveClients.size() != 0){
@@ -1237,6 +1294,10 @@ public class SharedContextService extends DefaultContextService
                     }catch(Throwable th){
                         unlock(key);
                         throw new SharedContextSendException(th);
+                    }finally{
+                        if(message != null){
+                            message.recycle();
+                        }
                     }
                 }
             }else{
@@ -1253,9 +1314,10 @@ public class SharedContextService extends DefaultContextService
             if(ifAcquireable && !lock.isAcquireable(id)){
                 return false;
             }
+            Message message = null;
             final long start = System.currentTimeMillis();
             try{
-                Message message = serverConnection.createMessage(subject, key == null ? null : key.toString());
+                message = serverConnection.createMessage(subject, key == null ? null : key.toString());
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
                     message.setObject(
@@ -1314,6 +1376,10 @@ public class SharedContextService extends DefaultContextService
             }catch(Error e){
                 unlock(key);
                 throw e;
+            }finally{
+                if(message != null){
+                    message.recycle();
+                }
             }
             long currentTimeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
             if(!isNoTimeout && currentTimeout <= 0){
@@ -1374,8 +1440,9 @@ public class SharedContextService extends DefaultContextService
             }
         }else{
             boolean result = true;
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, key == null ? null : key.toString());
+                message = serverConnection.createMessage(subject, key == null ? null : key.toString());
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
                     message.setObject(
@@ -1412,6 +1479,10 @@ public class SharedContextService extends DefaultContextService
                 throw e;
             }catch(Throwable th){
                 throw new SharedContextSendException(th);
+            }finally{
+                if(message != null){
+                    message.recycle();
+                }
             }
             if(lock != null && result){
                 lock.release(id, true);
@@ -1434,6 +1505,7 @@ public class SharedContextService extends DefaultContextService
         long currentTimeout = timeout;
         final Object id = cluster.getUID();
         boolean result = true;
+        Message message = null;
         try{
             Iterator keyItr = keys.iterator();
             while(keyItr.hasNext()){
@@ -1481,7 +1553,7 @@ public class SharedContextService extends DefaultContextService
                 }
             }
             if(isMain()){
-                Message message = serverConnection.createMessage(subject, null);
+                message = serverConnection.createMessage(subject, null);
                 message.setSubject(clientSubject, null);
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
@@ -1510,7 +1582,7 @@ public class SharedContextService extends DefaultContextService
                     }
                 }
             }else{
-                Message message = serverConnection.createMessage(subject, null);
+                message = serverConnection.createMessage(subject, null);
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
                     message.setObject(
@@ -1611,6 +1683,9 @@ public class SharedContextService extends DefaultContextService
             result = false;
             throw new SharedContextSendException(th);
         }finally{
+            if(message != null){
+                message.recycle();
+            }
             if(!result){
                 unlocks(keys);
             }
@@ -1672,8 +1747,9 @@ public class SharedContextService extends DefaultContextService
                 }
             }
         }else{
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, null);
+                message = serverConnection.createMessage(subject, null);
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
                     message.setObject(
@@ -1710,6 +1786,10 @@ public class SharedContextService extends DefaultContextService
                 throw e;
             }catch(Throwable th){
                 throw new SharedContextSendException(th);
+            }finally{
+                if(message != null){
+                    message.recycle();
+                }
             }
             Set tmpKeys = new HashSet(keys);
             if(failedKeys != null){
@@ -1794,8 +1874,9 @@ public class SharedContextService extends DefaultContextService
                 }
             }
             SharedContextTimeoutException timeoutException = null;
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, key == null ? null : key.toString());
+                message = serverConnection.createMessage(subject, key == null ? null : key.toString());
                 message.setSubject(clientSubject, key == null ? null : key.toString());
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
@@ -1822,6 +1903,10 @@ public class SharedContextService extends DefaultContextService
                 throw new SharedContextSendException(e);
             }catch(RequestTimeoutException e){
                 timeoutException = new SharedContextTimeoutException(e);
+            }finally{
+                if(message != null){
+                    message.recycle();
+                }
             }
             final boolean isContainsKey = super.containsKey(key);
             if(isClient){
@@ -1929,8 +2014,11 @@ public class SharedContextService extends DefaultContextService
                 if(receiveClients.size() != 0){
                     message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_PUT, key, value));
                     serverConnection.sendAsynch(message);
-                }else if(isClient){
-                    throw new NoConnectServerException();
+                }else{
+                    message.recycle();
+                    if(isClient){
+                        throw new NoConnectServerException();
+                    }
                 }
             }catch(MessageException e){
                 throw new SharedContextSendException(e);
@@ -2044,8 +2132,9 @@ public class SharedContextService extends DefaultContextService
                 }
             }
             SharedContextTimeoutException timeoutException = null;
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, key == null ? null : key.toString());
+                message = serverConnection.createMessage(subject, key == null ? null : key.toString());
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
                     message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_UPDATE, key, new Object[]{diff, ifExists ? Boolean.TRUE : Boolean.FALSE}));
@@ -2074,6 +2163,10 @@ public class SharedContextService extends DefaultContextService
                 throw new SharedContextSendException(e);
             }catch(RequestTimeoutException e){
                 timeoutException = new SharedContextTimeoutException(e);
+            }finally{
+                if(message != null){
+                    message.recycle();
+                }
             }
             if(!isClient || super.containsKey(key)){
                 Object current = getRawLocal(key);
@@ -2119,7 +2212,7 @@ public class SharedContextService extends DefaultContextService
                 indexManager.replace(key, oldValue, newValue);
             }
             try{
-                Message message = serverConnection.createMessage(clientSubject, key == null ? null : key.toString());
+                message = serverConnection.createMessage(clientSubject, key == null ? null : key.toString());
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
                     message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_UPDATE, key, new Object[]{diff, ifExists ? Boolean.TRUE : Boolean.FALSE}));
@@ -2146,6 +2239,10 @@ public class SharedContextService extends DefaultContextService
                 throw new SharedContextSendException(e);
             }catch(RequestTimeoutException e){
                 throw new SharedContextTimeoutException(e);
+            }finally{
+                if(message != null){
+                    message.recycle();
+                }
             }
             if(timeoutException != null){
                 throw timeoutException;
@@ -2268,8 +2365,11 @@ public class SharedContextService extends DefaultContextService
                 if(receiveClients.size() != 0){
                     message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_UPDATE, key, new Object[]{diff, ifExists ? Boolean.TRUE : Boolean.FALSE}));
                     serverConnection.sendAsynch(message);
-                }else if(isClient){
-                    throw new NoConnectServerException();
+                }else{
+                    message.recycle();
+                    if(isClient){
+                        throw new NoConnectServerException();
+                    }
                 }
             }catch(MessageException e){
                 throw new SharedContextSendException(e);
@@ -2354,8 +2454,9 @@ public class SharedContextService extends DefaultContextService
                 }
             }
             SharedContextTimeoutException timeoutException = null;
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, key == null ? null : key.toString());
+                message = serverConnection.createMessage(subject, key == null ? null : key.toString());
                 message.setSubject(clientSubject, key == null ? null : key.toString());
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
@@ -2390,6 +2491,10 @@ public class SharedContextService extends DefaultContextService
                 throw new SharedContextSendException(e);
             }catch(RequestTimeoutException e){
                 timeoutException = new SharedContextTimeoutException(e);
+            }finally{
+                if(message != null){
+                    message.recycle();
+                }
             }
             if(isMain()){
                 result = super.remove(key);
@@ -2473,8 +2578,11 @@ public class SharedContextService extends DefaultContextService
                 if(receiveClients.size() != 0){
                     message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_REMOVE, key));
                     serverConnection.sendAsynch(message);
-                }else if(isClient){
-                    throw new NoConnectServerException();
+                }else{
+                    message.recycle();
+                    if(isClient){
+                        throw new NoConnectServerException();
+                    }
                 }
             }catch(MessageException e){
                 throw new SharedContextSendException(e);
@@ -2538,8 +2646,9 @@ public class SharedContextService extends DefaultContextService
                 }
             }
             SharedContextTimeoutException timeoutException = null;
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, null);
+                message = serverConnection.createMessage(subject, null);
                 message.setSubject(clientSubject, null);
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
@@ -2569,6 +2678,10 @@ public class SharedContextService extends DefaultContextService
                 throw new SharedContextSendException(e);
             }catch(RequestTimeoutException e){
                 timeoutException = new SharedContextTimeoutException(e);
+            }finally{
+                if(message != null){
+                    message.recycle();
+                }
             }
             Iterator entries = t.entrySet().iterator();
             while(entries.hasNext()){
@@ -2717,6 +2830,7 @@ public class SharedContextService extends DefaultContextService
                     message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_PUT_ALL, null, t));
                     serverConnection.sendAsynch(message);
                 }else if(isClient){
+                    message.recycle();
                     throw new NoConnectServerException();
                 }
             }catch(MessageException e){
@@ -2782,8 +2896,9 @@ public class SharedContextService extends DefaultContextService
                 }
             }
             SharedContextTimeoutException timeoutException = null;
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, null);
+                message = serverConnection.createMessage(subject, null);
                 message.setSubject(clientSubject, null);
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
@@ -2813,6 +2928,10 @@ public class SharedContextService extends DefaultContextService
                 throw new SharedContextSendException(e);
             }catch(RequestTimeoutException e){
                 timeoutException = new SharedContextTimeoutException(e);
+            }finally{
+                if(message != null){
+                    message.recycle();
+                }
             }
             Object[] keys = null;
             synchronized(context){
