@@ -377,6 +377,10 @@ public class MessageImpl extends MessageId implements Message, Comparable, Clone
             clientConnection.recycleMessage(this);
             clientConnection = null;
         }
+        if(serverConnection != null){
+            serverConnection.recycleMessage(this);
+            serverConnection = null;
+        }
     }
     
     protected void finalize() throws Throwable{
