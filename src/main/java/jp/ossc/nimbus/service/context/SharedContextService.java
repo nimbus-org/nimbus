@@ -1484,7 +1484,7 @@ public class SharedContextService extends DefaultContextService
                     message.recycle();
                 }
             }
-            if(lock != null && result){
+            if(lock != null){
                 lock.release(id, true);
             }
             return result;
@@ -4829,37 +4829,30 @@ public class SharedContextService extends DefaultContextService
             final long threadId = ((Long)params[1]).longValue();
             final boolean force = ((Boolean)params[2]).booleanValue();
             
-            final int canRelease = lock == null ? 2 : lock.canRelease(id, threadId, force);
-            switch(canRelease){
-            case 0:
-                return createResponseMessage(responseSubject, responseKey, Boolean.FALSE);
-            case 1:
-            case 2:
-            default:
-                try{
-                    Message message = serverConnection.createMessage(subject, event.key == null ? null : event.key.toString());
-                    message.setSubject(clientSubject, event.key == null ? null : event.key.toString());
-                    final Set receiveClients =  serverConnection.getReceiveClientIds(message);
-                    receiveClients.remove(sourceId);
-                    if(receiveClients.size() != 0){
-                        message.setDestinationIds(receiveClients);
-                        message.setObject(
-                            new SharedContextEvent(
-                                SharedContextEvent.EVENT_RELEASE_LOCK,
-                                event.key,
-                                new Object[]{id, Long.valueOf(threadId), force ? Boolean.TRUE : Boolean.FALSE}
-                            )
-                        );
-                        serverConnection.sendAsynch(message);
-                    }
-                }catch(Throwable th){
-                    return createResponseMessage(responseSubject, responseKey, th);
+            try{
+                Message message = serverConnection.createMessage(subject, event.key == null ? null : event.key.toString());
+                message.setSubject(clientSubject, event.key == null ? null : event.key.toString());
+                final Set receiveClients =  serverConnection.getReceiveClientIds(message);
+                receiveClients.remove(sourceId);
+                if(receiveClients.size() != 0){
+                    message.setDestinationIds(receiveClients);
+                    message.setObject(
+                        new SharedContextEvent(
+                            SharedContextEvent.EVENT_RELEASE_LOCK,
+                            event.key,
+                            new Object[]{id, Long.valueOf(threadId), force ? Boolean.TRUE : Boolean.FALSE}
+                        )
+                    );
+                    serverConnection.sendAsynch(message);
                 }
-                if(lock != null){
-                    lock.release(id, threadId, force);
-                }
-                return createResponseMessage(responseSubject, responseKey, Boolean.TRUE);
+            }catch(Throwable th){
+                return createResponseMessage(responseSubject, responseKey, th);
             }
+            boolean result = true;
+            if(lock != null){
+                result = lock.release(id, threadId, force);
+            }
+            return createResponseMessage(responseSubject, responseKey, result ? Boolean.TRUE : Boolean.FALSE);
         }else{
             return null;
         }
