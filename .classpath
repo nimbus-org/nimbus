@@ -135,7 +135,9 @@
   <classpathentry kind="var" path="M2_REPO/com/fasterxml/jackson/dataformat/jackson-dataformat-cbor/2.6.7/jackson-dataformat-cbor-2.6.7.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/amazonaws/aws-java-sdk-sqs/1.11.530/aws-java-sdk-sqs-1.11.530.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/amazonaws/jmespath-java/1.11.530/jmespath-java-1.11.530.jar"/>
-  <classpathentry kind="var" path="M2_REPO/com/amazonaws/aws-java-sdk-lambda/1.11.530/aws-java-sdk-lambda-1.11.530.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/amazonaws/aws-java-sdk-sagemaker/1.11.530/aws-java-sdk-sagemaker-1.11.530.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/amazonaws/aws-java-sdk-lambda/1.11.530/aws-java-sdk-lambda-1.11.530.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/amazonaws/aws-java-sdk-logs/1.11.534/aws-java-sdk-logs-1.11.534.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/amazonaws/aws-java-sdk-glue/1.11.530/aws-java-sdk-glue-1.11.530.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/amazonaws/aws-java-sdk-cloudwatch/1.11.530/aws-java-sdk-cloudwatch-1.11.530.jar"/>
 </classpath>
