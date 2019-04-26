@@ -82,6 +82,11 @@ public interface DefaultPerformanceRecorderServiceMBean extends ServiceBaseMBean
     public static final String RECORD_KEY_MEDIAN          = "Median";
     
     /**
+     * 出力するパフォーマンス情報マップのキー：合計。<p>
+     */
+    public static final String RECORD_KEY_SUM             = "Sum";
+    
+    /**
      * 記録したパフォーマンスをリセットする間隔[ms]を設定する。<p>
      * デフォルトは、60秒。<br>
      *
@@ -275,6 +280,21 @@ public interface DefaultPerformanceRecorderServiceMBean extends ServiceBaseMBean
      * @return trueの場合、出力する
      */
     public boolean isOutputLastTimestamp();
+    
+    /**
+     * {@link jp.ossc.nimbus.service.writer.Category Category}サービスに出力するパフォーマンス情報のうち、{@link #RECORD_KEY_SUM}を出力するかどうかを設定する。<p>
+     * デフォルトは、trueで出力する。<br>
+     *
+     * @param isOutput 出力する場合、true
+     */
+    public void setOutputSum(boolean isOutput);
+    
+    /**
+     * {@link jp.ossc.nimbus.service.writer.Category Category}サービスに出力するパフォーマンス情報のうち、{@link #RECORD_KEY_SUM}を出力するかどうかを判定する。<p>
+     *
+     * @return trueの場合、出力する
+     */
+    public boolean isOutputSum();
     
     /**
      * 現在のパフォーマンス情報を表示する。<p>
