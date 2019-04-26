@@ -289,12 +289,15 @@ public class ServerConnectionImpl implements ServerConnection{
     protected void recycleMessage(MessageImpl msg){
         if(msg != null){
             synchronized(messageBuffer){
-                if(messageBuffer.size() <= messageRecycleBufferSize){
-                    msg.clear();
-                    messageBuffer.add(msg);
-                }
-                if(messagePayoutCount > 0){
-                    messagePayoutCount--;
+                if(msg.isPayout()){
+                    msg.setPayout(false);
+                    if(messageBuffer.size() <= messageRecycleBufferSize){
+                        msg.clear();
+                        messageBuffer.add(msg);
+                    }
+                    if(messagePayoutCount > 0){
+                        messagePayoutCount--;
+                    }
                 }
             }
         }
@@ -305,6 +308,7 @@ public class ServerConnectionImpl implements ServerConnection{
         synchronized(messageBuffer){
             if(messageBuffer.size() != 0){
                 result = (MessageImpl)messageBuffer.remove(0);
+                result.setPayout(true);
             }
             messagePayoutCount++;
             if(maxMessagePayoutCount < messagePayoutCount){

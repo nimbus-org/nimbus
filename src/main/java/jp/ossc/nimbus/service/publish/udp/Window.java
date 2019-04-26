@@ -65,6 +65,7 @@ public class Window extends WindowId{
     private long receiveTime;
     private boolean isLost;
     private boolean isFirst;
+    private transient boolean isPayout = true;
     
     public Window(){
     }
@@ -302,6 +303,13 @@ public class Window extends WindowId{
         receiveTime = 0;
         isLost = false;
         isFirst = false;
+    }
+    
+    public synchronized boolean isPayout(){
+        return isPayout;
+    }
+    public synchronized void setPayout(boolean isPayout){
+        this.isPayout = isPayout;
     }
     
     public Object clone(){

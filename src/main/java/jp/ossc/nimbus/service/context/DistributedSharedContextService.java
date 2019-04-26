@@ -811,7 +811,6 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                             message.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_REHASH, info));
                             message.addDestinationId(info.getId());
                             serverConnection.request(message, 1, timeout, callback);
-                            message.recycle();
                         }
                         callback.waitResponse(currentTimeout);
                     }
@@ -837,7 +836,6 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                             message.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_REHASH, info));
                             message.addDestinationId(info.getId());
                             serverConnection.request(message, 1, currentTimeout, callback);
-                            message.recycle();
                         }
                         callback.waitResponse(currentTimeout);
                     }

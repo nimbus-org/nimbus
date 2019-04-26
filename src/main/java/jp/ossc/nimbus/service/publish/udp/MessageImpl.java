@@ -72,6 +72,7 @@ public class MessageImpl extends MessageId implements Message, Comparable, Clone
     private transient ClientConnectionImpl clientConnection;
     private transient ServerConnectionImpl serverConnection;
     protected transient Externalizer externalizer;
+    private transient boolean isPayout = true;
     
     public MessageImpl(){
     }
@@ -197,7 +198,7 @@ public class MessageImpl extends MessageId implements Message, Comparable, Clone
         receiveTime = time;
     }
     
-    public synchronized List getWindows(ServerConnectionImpl sc, int windowSize) throws IOException{
+    public List getWindows(ServerConnectionImpl sc, int windowSize) throws IOException{
         if(windows == null){
             externalizer = sc.externalizer;
             windows = Window.toWindows(this, sc, windowSize);
@@ -381,6 +382,13 @@ public class MessageImpl extends MessageId implements Message, Comparable, Clone
             serverConnection.recycleMessage(this);
             serverConnection = null;
         }
+    }
+    
+    public synchronized boolean isPayout(){
+        return isPayout;
+    }
+    public synchronized void setPayout(boolean isPayout){
+        this.isPayout = isPayout;
     }
     
     protected void finalize() throws Throwable{

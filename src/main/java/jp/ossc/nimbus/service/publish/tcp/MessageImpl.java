@@ -77,6 +77,7 @@ public class MessageImpl implements Message, Externalizable, Cloneable{
     private transient ClientConnectionImpl clientConnection;
     private transient ServerConnectionImpl serverConnection;
     private transient Externalizer externalizer;
+    private transient boolean isPayout = true;
     
     public MessageImpl(){
     }
@@ -239,20 +240,24 @@ public class MessageImpl implements Message, Externalizable, Cloneable{
         }
     }
     
-    public synchronized void write(OutputStream out, Externalizer ext) throws IOException{
+    public void write(OutputStream out, Externalizer ext) throws IOException{
         if(bytes == null){
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            if(ext == null){
-                ObjectOutputStream oos = new ObjectOutputStream(baos);
-                writeExternal(oos);
-                oos.flush();
-            }else{
-                externalizer = ext;
-                ObjectOutput oo = externalizer.createObjectOutput(baos);
-                writeExternal(oo);
-                oo.flush();
+            synchronized(this){
+                if(bytes == null){
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    if(ext == null){
+                        ObjectOutputStream oos = new ObjectOutputStream(baos);
+                        writeExternal(oos);
+                        oos.flush();
+                    }else{
+                        externalizer = ext;
+                        ObjectOutput oo = externalizer.createObjectOutput(baos);
+                        writeExternal(oo);
+                        oo.flush();
+                    }
+                    bytes = baos.toByteArray();
+                }
             }
-            bytes = baos.toByteArray();
         }
         out.write(bytes);
     }
@@ -324,6 +329,13 @@ public class MessageImpl implements Message, Externalizable, Cloneable{
             serverConnection.recycleMessage(this);
             serverConnection = null;
         }
+    } 
+    
+    public synchronized boolean isPayout(){
+        return isPayout;
+    }
+    public synchronized void setPayout(boolean isPayout){
+        this.isPayout = isPayout;
     }
     
     protected void finalize() throws Throwable{

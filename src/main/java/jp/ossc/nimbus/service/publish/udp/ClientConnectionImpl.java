@@ -211,12 +211,15 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
     protected void recycleMessage(MessageImpl msg){
         if(msg != null){
             synchronized(messageBuffer){
-                if(messageBuffer.size() <= messageRecycleBufferSize){
-                    msg.clear();
-                    messageBuffer.add(msg);
-                }
-                if(messagePayoutCount > 0){
-                    messagePayoutCount--;
+                if(msg.isPayout()){
+                    msg.setPayout(false);
+                    if(messageBuffer.size() <= messageRecycleBufferSize){
+                        msg.clear();
+                        messageBuffer.add(msg);
+                    }
+                    if(messagePayoutCount > 0){
+                        messagePayoutCount--;
+                    }
                 }
             }
         }
@@ -227,6 +230,7 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
         synchronized(messageBuffer){
             if(messageBuffer.size() != 0){
                 message = (MessageImpl)messageBuffer.remove(0);
+                message.setPayout(true);
             }
             messagePayoutCount++;
             if(maxMessagePayoutCount < messagePayoutCount){
@@ -1329,8 +1333,12 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
                         w.clear();
                         if(windowBuffer.size() <= windowRecycleBufferSize){
                             synchronized(windowBuffer){
-                                if(windowBuffer.size() <= windowRecycleBufferSize){
+                                if(windowBuffer.size() <= windowRecycleBufferSize && w.isPayout()){
+                                    w.setPayout(false);
                                     windowBuffer.add(w);
+                                    if(windowPayoutCount > 0){
+                                        windowPayoutCount--;
+                                    }
                                 }
                             }
                         }
@@ -1343,11 +1351,9 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
             window.clear();
             if(windowBuffer.size() <= windowRecycleBufferSize){
                 synchronized(windowBuffer){
-                    if(windowBuffer.size() <= windowRecycleBufferSize){
+                    if(windowBuffer.size() <= windowRecycleBufferSize && window.isPayout()){
+                        window.setPayout(false);
                         windowBuffer.add(window);
-                    }
-                    if(windowPayoutCount > 0){
-                        windowPayoutCount--;
                     }
                 }
             }
@@ -1381,6 +1387,7 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
                     synchronized(windowBuffer){
                         if(windowBuffer.size() != 0){
                             window = (Window)windowBuffer.remove(0);
+                            window.setPayout(true);
                         }
                         windowPayoutCount++;
                         if(maxWindowPayoutCount < windowPayoutCount){
