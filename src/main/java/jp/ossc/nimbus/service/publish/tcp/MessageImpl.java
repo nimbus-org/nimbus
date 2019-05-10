@@ -192,7 +192,7 @@ public class MessageImpl implements Message, Externalizable, Cloneable{
     }
     
     public void setDestinationIds(Set ids){
-        destinationIds = ids;
+        destinationIds = new HashSet(ids);
     }
     
     public void addDestinationId(Object id){

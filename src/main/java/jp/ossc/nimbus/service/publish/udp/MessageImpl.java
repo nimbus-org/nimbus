@@ -215,7 +215,7 @@ public class MessageImpl extends MessageId implements Message, Comparable, Clone
     }
     
     public void setDestinationIds(Set ids){
-        destinationIds = ids;
+        destinationIds = new HashSet(ids);
     }
     
     public void addDestinationId(Object id){
