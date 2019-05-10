@@ -239,10 +239,6 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 throw new SharedContextSendException(e);
             }catch(MessageSendException e){
                 throw new SharedContextSendException(e);
-            }finally{
-                if(message != null){
-                    message.recycle();
-                }
             }
         }
         isRehashEnabled = isEnabled;
@@ -784,7 +780,6 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }catch(RequestTimeoutException e){
                         throw new SharedContextTimeoutException("Timeout has occurred to get state of distribution.", e);
                     }
-                    message.recycle();
                     DistributeGrid grid = new DistributeGrid();
                     grid.addDistributeInfo(distributeInfo);
                     for(int i = 0; i < responses.length; i++){
@@ -845,10 +840,6 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 throw new SharedContextSendException(e);
             }catch(MessageSendException e){
                 throw new SharedContextSendException(e);
-            }finally{
-                if(message != null){
-                    message.recycle();
-                }
             }
         }else{
             Message message = null;
@@ -878,10 +869,6 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 throw new SharedContextSendException(e);
             }catch(MessageSendException e){
                 throw new SharedContextSendException(e);
-            }finally{
-                if(message != null){
-                    message.recycle();
-                }
             }
         }
     }
@@ -925,10 +912,6 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 throw new SharedContextSendException(e);
             }catch(MessageSendException e){
                 throw new SharedContextSendException(e);
-            }finally{
-                if(message != null){
-                    message.recycle();
-                }
             }
         }
     }
@@ -972,10 +955,6 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 throw new SharedContextSendException(e);
             }catch(MessageSendException e){
                 throw new SharedContextSendException(e);
-            }finally{
-                if(message != null){
-                    message.recycle();
-                }
             }
         }
     }
@@ -1019,10 +998,6 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 throw new SharedContextSendException(e);
             }catch(MessageSendException e){
                 throw new SharedContextSendException(e);
-            }finally{
-                if(message != null){
-                    message.recycle();
-                }
             }
         }
     }
@@ -1111,10 +1086,6 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 throw new SharedContextSendException(e);
             }catch(MessageSendException e){
                 throw new SharedContextSendException(e);
-            }finally{
-                if(message != null){
-                    message.recycle();
-                }
             }
         }
     }
@@ -1158,10 +1129,6 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 throw new SharedContextSendException(e);
             }catch(MessageSendException e){
                 throw new SharedContextSendException(e);
-            }finally{
-                if(message != null){
-                    message.recycle();
-                }
             }
         }
     }
@@ -2248,10 +2215,6 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             throw new SharedContextSendException(e);
         }catch(MessageSendException e){
             throw new SharedContextSendException(e);
-        }finally{
-            if(message != null){
-                message.recycle();
-            }
         }
         return grid.toString();
     }
