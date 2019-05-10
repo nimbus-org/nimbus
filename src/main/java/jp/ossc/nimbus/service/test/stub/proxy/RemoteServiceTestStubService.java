@@ -1014,7 +1014,7 @@ public class RemoteServiceTestStubService extends ServiceBase implements TestStu
                     postInterpretScript = sw.toString();
                 }
                 while(line != null && "argument[".startsWith(line)){
-                    Object[] params = context.getTargetMethod().getParameters();
+                    Class[] params = context.getTargetMethod().getParameterTypes();
                     int lastIndex = line.lastIndexOf(']');
                     if(lastIndex == -1){
                         throw new Exception("Illegal argument line : " + line);
