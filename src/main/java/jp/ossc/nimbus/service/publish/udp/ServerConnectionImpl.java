@@ -192,6 +192,7 @@ public class ServerConnectionImpl implements ServerConnection{
     public ServerConnectionImpl(
         ServerSocket serverSocket,
         Externalizer ext,
+        ServiceName factoryServiceName,
         int sendThreadSize,
         ServiceName sendQueueServiceName,
         int asynchSendThreadSize,
@@ -208,6 +209,7 @@ public class ServerConnectionImpl implements ServerConnection{
         this.multicastAddress = multicastAddress;
         this.destPort = destPort;
         externalizer = ext;
+        this.factoryServiceName = factoryServiceName;
         messageBuffer = new LinkedList();
         windowBuffer = new LinkedList();
         sendRequestBuffer = new LinkedList();
@@ -223,6 +225,7 @@ public class ServerConnectionImpl implements ServerConnection{
     public ServerConnectionImpl(
         ServerSocketChannel ssc,
         Externalizer ext,
+        ServiceName factoryServiceName,
         int sendThreadSize,
         ServiceName sendQueueServiceName,
         int asynchSendThreadSize,
@@ -243,6 +246,7 @@ public class ServerConnectionImpl implements ServerConnection{
         this.multicastAddress = multicastAddress;
         this.destPort = destPort;
         externalizer = ext;
+        this.factoryServiceName = factoryServiceName;
         messageBuffer = new LinkedList();
         windowBuffer = new LinkedList();
         sendRequestBuffer = new LinkedList();
@@ -286,6 +290,10 @@ public class ServerConnectionImpl implements ServerConnection{
     private void initSend(ServiceName sendQueueServiceName, int sendThreadSize, boolean isMulticast) throws Exception{
         if(!isMulticast && sendThreadSize >= 1){
             sendQueueHandlerContainer = new QueueHandlerContainerService();
+            if(factoryServiceName != null){
+                sendQueueHandlerContainer.setServiceManagerName(factoryServiceName.getServiceManagerName());
+                sendQueueHandlerContainer.setServiceName(factoryServiceName.getServiceName() + "$SendQueueHandlerContainer");
+            }
             sendQueueHandlerContainer.create();
             if(sendQueueServiceName == null){
                 DefaultQueueService sendQueue = new DefaultQueueService();
@@ -317,6 +325,10 @@ public class ServerConnectionImpl implements ServerConnection{
             return;
         }
         asynchAcceptQueueHandlerContainer = new QueueHandlerContainerService();
+        if(factoryServiceName != null){
+            asynchAcceptQueueHandlerContainer.setServiceManagerName(factoryServiceName.getServiceManagerName());
+            asynchAcceptQueueHandlerContainer.setServiceName(factoryServiceName.getServiceName() + "$AsynchAcceptQueueHandlerContainer");
+        }
         asynchAcceptQueueHandlerContainer.create();
         if(queueServiceName == null){
             DefaultQueueService acceptQueue = new DefaultQueueService();
@@ -342,6 +354,10 @@ public class ServerConnectionImpl implements ServerConnection{
             queueSelector.start();
             
             DistributedQueueHandlerContainerService distributedQueueHandlerContainer = new DistributedQueueHandlerContainerService();
+            if(factoryServiceName != null){
+                distributedQueueHandlerContainer.setServiceManagerName(factoryServiceName.getServiceManagerName());
+                distributedQueueHandlerContainer.setServiceName(factoryServiceName.getServiceName() + "$AsynchSendQueueHandlerContainer");
+            }
             distributedQueueHandlerContainer.create();
             distributedQueueHandlerContainer.setDistributedQueueSelector(queueSelector);
             distributedQueueHandlerContainer.setQueueHandler(new SendQueueHandler());
@@ -355,6 +371,10 @@ public class ServerConnectionImpl implements ServerConnection{
     private void initRequestHandle(ServiceName requestHandleQueueServiceName, int requestHandleThreadSize) throws Exception{
         if(requestHandleThreadSize >= 1){
             requestHandleQueueHandlerContainer = new QueueHandlerContainerService();
+            if(factoryServiceName != null){
+                requestHandleQueueHandlerContainer.setServiceManagerName(factoryServiceName.getServiceManagerName());
+                requestHandleQueueHandlerContainer.setServiceName(factoryServiceName.getServiceName() + "$RequestHandleQueueHandlerContainer");
+            }
             requestHandleQueueHandlerContainer.create();
             if(requestHandleQueueServiceName == null){
                 DefaultQueueService requestHandleQueue = new DefaultQueueService();
@@ -586,10 +606,6 @@ public class ServerConnectionImpl implements ServerConnection{
         return stopReceiveMessageId;
     }
     
-    public void setFactoryServiceName(ServiceName name){
-        factoryServiceName = name;
-    }
-    
     public int getMaxWindowCount(){
         return maxWindowCount;
     }
@@ -598,12 +614,12 @@ public class ServerConnectionImpl implements ServerConnection{
         return sendCount == 0 ? 0.0d : (double)sendPacketCount / (double)sendCount;
     }
     
-    public long getAverageAsynchSendProcessTime(){
-        return asynchAcceptQueueHandlerContainer == null ? 0 : asynchAcceptQueueHandlerContainer.getAverageHandleProcessTime();
+    public double getAverageAsynchSendProcessTime(){
+        return asynchAcceptQueueHandlerContainer == null ? 0.0d : asynchAcceptQueueHandlerContainer.getAverageHandleProcessTime();
     }
     
-    public long getAverageRequestHandleProcessTime(){
-        return requestHandleQueueHandlerContainer == null ? 0 : requestHandleQueueHandlerContainer.getAverageHandleProcessTime();
+    public double getAverageRequestHandleProcessTime(){
+        return requestHandleQueueHandlerContainer == null ? 0.0d : requestHandleQueueHandlerContainer.getAverageHandleProcessTime();
     }
     
     public int getMaxMessagePayoutCount(){
@@ -1058,8 +1074,8 @@ public class ServerConnectionImpl implements ServerConnection{
         sendProcessTime = 0;
     }
     
-    public long getAverageSendProcessTime(){
-        return sendCount == 0 ? 0 : (sendProcessTime / sendCount);
+    public double getAverageSendProcessTime(){
+        return sendCount == 0 ? 0.0d : ((double)sendProcessTime / (double)sendCount);
     }
     
     public Set getClients(){
@@ -1762,8 +1778,8 @@ public class ServerConnectionImpl implements ServerConnection{
             lostCount = 0;
         }
         
-        public long getAverageSendProcessTime(){
-            return sendCount == 0 ? 0 : (sendProcessTime / sendCount);
+        public double getAverageSendProcessTime(){
+            return sendCount == 0 ? 0.0d : ((double)sendProcessTime / (double)sendCount);
         }
         
         
