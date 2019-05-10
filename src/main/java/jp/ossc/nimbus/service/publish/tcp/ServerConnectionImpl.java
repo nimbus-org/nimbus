@@ -140,6 +140,7 @@ public class ServerConnectionImpl implements ServerConnection{
     public ServerConnectionImpl(
         ServerSocket serverSocket,
         Externalizer ext,
+        ServiceName factoryServiceName,
         int sendThreadSize,
         ServiceName sendQueueServiceName,
         int asynchSendThreadSize,
@@ -151,6 +152,7 @@ public class ServerConnectionImpl implements ServerConnection{
     ) throws Exception{
         this.serverSocket = serverSocket;
         externalizer = ext;
+        this.factoryServiceName = factoryServiceName;
         messageBuffer = new LinkedList();
         sendRequestBuffer = new LinkedList();
         asynchContextBuffer = new LinkedList();
@@ -170,6 +172,7 @@ public class ServerConnectionImpl implements ServerConnection{
     public ServerConnectionImpl(
         ServerSocketChannel ssc,
         Externalizer ext,
+        ServiceName factoryServiceName,
         int sendThreadSize,
         ServiceName sendQueueServiceName,
         int asynchSendThreadSize,
@@ -183,6 +186,7 @@ public class ServerConnectionImpl implements ServerConnection{
         serverSocketChannel = ssc;
         socketFactory = sf;
         externalizer = ext;
+        this.factoryServiceName = factoryServiceName;
         messageBuffer = new LinkedList();
         sendRequestBuffer = new LinkedList();
         asynchContextBuffer = new LinkedList();
@@ -224,6 +228,10 @@ public class ServerConnectionImpl implements ServerConnection{
     private void initSend(ServiceName sendQueueServiceName, int sendThreadSize) throws Exception{
         if(sendThreadSize >= 2){
             sendQueueHandlerContainer = new QueueHandlerContainerService();
+            if(factoryServiceName != null){
+                sendQueueHandlerContainer.setServiceManagerName(factoryServiceName.getServiceManagerName());
+                sendQueueHandlerContainer.setServiceName(factoryServiceName.getServiceName() + "$SendQueueHandlerContainer");
+            }
             sendQueueHandlerContainer.create();
             if(sendQueueServiceName == null){
                 DefaultQueueService sendQueue = new DefaultQueueService();
@@ -253,6 +261,10 @@ public class ServerConnectionImpl implements ServerConnection{
     private void initAsynchSend(ServiceName queueServiceName, ServiceName queueFactoryServiceName, int clientQueueDistributedSize) throws Exception{
         if(clientQueueDistributedSize > 0){
             asynchAcceptQueueHandlerContainer = new QueueHandlerContainerService();
+            if(factoryServiceName != null){
+                asynchAcceptQueueHandlerContainer.setServiceManagerName(factoryServiceName.getServiceManagerName());
+                asynchAcceptQueueHandlerContainer.setServiceName(factoryServiceName.getServiceName() + "$AsynchAcceptQueueHandlerContainer");
+            }
             asynchAcceptQueueHandlerContainer.create();
             if(queueServiceName == null){
                 DefaultQueueService acceptQueue = new DefaultQueueService();
@@ -277,6 +289,10 @@ public class ServerConnectionImpl implements ServerConnection{
             queueSelector.start();
             
             asynchSendQueueHandlerContainer = new DistributedQueueHandlerContainerService();
+            if(factoryServiceName != null){
+                asynchSendQueueHandlerContainer.setServiceManagerName(factoryServiceName.getServiceManagerName());
+                asynchSendQueueHandlerContainer.setServiceName(factoryServiceName.getServiceName() + "$AsynchSendQueueHandlerContainer");
+            }
             asynchSendQueueHandlerContainer.create();
             asynchSendQueueHandlerContainer.setDistributedQueueSelector(queueSelector);
             asynchSendQueueHandlerContainer.setQueueHandler(new SendQueueHandler());
@@ -445,10 +461,6 @@ public class ServerConnectionImpl implements ServerConnection{
     
     public void setAcknowledge(boolean isAck){
         isAcknowledge = isAck;
-    }
-    
-    public void setFactoryServiceName(ServiceName name){
-        factoryServiceName = name;
     }
     
     public void enabledClient(String address, int port){
@@ -674,6 +686,10 @@ public class ServerConnectionImpl implements ServerConnection{
             sendCount += client.getSendCount();
         }
         return sendCount == 0 ? 0.0d : ((double)sendBytes / (double)sendCount);
+    }
+    
+    public double getAverageAsynchSendProcessTime(){
+        return asynchAcceptQueueHandlerContainer == null ? 0.0d : asynchAcceptQueueHandlerContainer.getAverageHandleProcessTime();
     }
     
     public Set getClients(){
@@ -1683,6 +1699,7 @@ public class ServerConnectionImpl implements ServerConnection{
             }
             if(clients.size() == 0){
                 message.setSend(true);
+                addSendMessageCache(message);
                 return;
             }
             final Map sendContexts = new HashMap();
