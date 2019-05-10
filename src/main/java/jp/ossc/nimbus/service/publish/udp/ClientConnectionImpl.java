@@ -214,8 +214,12 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
                 if(msg.isPayout()){
                     msg.setPayout(false);
                     if(messageBuffer.size() <= messageRecycleBufferSize){
-                        msg.clear();
-                        messageBuffer.add(msg);
+                        if(receiveAddress == null
+                            || msg instanceof MulticastMessageImpl
+                        ){
+                            msg.clear();
+                            messageBuffer.add(msg);
+                        }
                     }
                     if(messagePayoutCount > 0){
                         messagePayoutCount--;
