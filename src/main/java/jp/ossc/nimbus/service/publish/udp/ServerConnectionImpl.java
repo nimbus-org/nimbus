@@ -730,18 +730,16 @@ public class ServerConnectionImpl implements ServerConnection{
         return message;
     }
     
-    protected MessageImpl copyMessage(MessageImpl msg, boolean recycle){
+    protected MessageImpl copyMessage(MessageImpl msg){
         MessageImpl message = null;
-        if(recycle){
-            synchronized(messageBuffer){
-                if(messageBuffer.size() != 0){
-                    message = (MessageImpl)messageBuffer.remove(0);
-                    message.setPayout(true);
-                }
-                messagePayoutCount++;
-                if(maxMessagePayoutCount < messagePayoutCount){
-                    maxMessagePayoutCount = messagePayoutCount;
-                }
+        synchronized(messageBuffer){
+            if(messageBuffer.size() != 0){
+                message = (MessageImpl)messageBuffer.remove(0);
+                message.setPayout(true);
+            }
+            messagePayoutCount++;
+            if(maxMessagePayoutCount < messagePayoutCount){
+                maxMessagePayoutCount = messagePayoutCount;
             }
         }
         if(message == null){
@@ -1420,7 +1418,7 @@ public class ServerConnectionImpl implements ServerConnection{
         
         private synchronized MessageImpl allocateSequence(MessageImpl message, boolean copy){
             ClientImpl.this.currentSequence++;
-            MessageImpl result = copy ? copyMessage(message, true) : message;
+            MessageImpl result = copy ? copyMessage(message) : message;
             result.setSequence(ClientImpl.this.currentSequence);
             return result;
         }
@@ -1550,7 +1548,7 @@ public class ServerConnectionImpl implements ServerConnection{
                 }else if(firstMessage != null && firstMessage.equals(message)){
                     firstMessage = null;
                     if(copyMsg == null){
-                        copyMsg = copyMessage((MessageImpl)message, true);
+                        copyMsg = copyMessage((MessageImpl)message);
                         message = copyMsg;
                     }
                     ((MessageImpl)message).setFirst(true);
@@ -1564,7 +1562,7 @@ public class ServerConnectionImpl implements ServerConnection{
                 message = copyMsg;
             }else{
                 if(copyMsg == null){
-                    copyMsg = copyMessage((MessageImpl)message, true);
+                    copyMsg = copyMessage((MessageImpl)message);
                     message = copyMsg;
                 }
                 ((MulticastMessageImpl)message).addToId(id);
@@ -2573,7 +2571,7 @@ public class ServerConnectionImpl implements ServerConnection{
                         index = -index - 1;
                     }
                     for(int j = index, jmax = block.size(); j < jmax; j++){
-                        result.add(copyMessage((MessageImpl)block.get(j), false));
+                        result.add(copyMessage((MessageImpl)block.get(j)));
                     }
                 }else if(i == toIndex){
                     index = to == null ? block.size() : Collections.binarySearch(block, to, BLOCK_COMP);
@@ -2581,11 +2579,11 @@ public class ServerConnectionImpl implements ServerConnection{
                         index = -index - 1;
                     }
                     for(int j = 0; j < index; j++){
-                        result.add(copyMessage((MessageImpl)block.get(j), false));
+                        result.add(copyMessage((MessageImpl)block.get(j)));
                     }
                 }else{
                     for(int j = 0, jmax = block.size(); j < jmax; j++){
-                        result.add(copyMessage((MessageImpl)block.get(j), false));
+                        result.add(copyMessage((MessageImpl)block.get(j)));
                     }
                 }
             }
@@ -2604,13 +2602,13 @@ public class ServerConnectionImpl implements ServerConnection{
                 MessageImpl msg = (MessageImpl)block.get(0);
                 if(msg.getSendTime() >= fromTime){
                     for(int j = block.size(); --j >= 0;){
-                        result.add(0, copyMessage((MessageImpl)block.get(j), false));
+                        result.add(0, copyMessage((MessageImpl)block.get(j)));
                     }
                 }else{
                     for(int j = block.size(); --j >= 0;){
                         msg = (MessageImpl)block.get(j);
                         if(msg.getSendTime() >= fromTime){
-                            result.add(0, copyMessage(msg, false));
+                            result.add(0, copyMessage(msg));
                         }else{
                             break;
                         }
