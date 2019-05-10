@@ -199,8 +199,8 @@ public class MessageReceiverService extends ServiceBase implements MessageReceiv
         return messageQueueHandlerContainer == null ? 0 : messageQueueHandlerContainer.size();
     }
 
-    public long getMessageQueueAverageHandleProcessTime(){
-        return messageQueueHandlerContainer == null ? 0 : messageQueueHandlerContainer.getAverageHandleProcessTime();
+    public double getMessageQueueAverageHandleProcessTime(){
+        return messageQueueHandlerContainer == null ? 0d : messageQueueHandlerContainer.getAverageHandleProcessTime();
     }
 
     public long getgetMessageListenerQueueCount(){
@@ -211,7 +211,7 @@ public class MessageReceiverService extends ServiceBase implements MessageReceiv
         return messageListenerQueueHandlerContainer == null ? 0 : messageListenerQueueHandlerContainer.size();
     }
 
-    public long getMessageListenerQueueAverageHandleProcessTime(){
+    public double getMessageListenerQueueAverageHandleProcessTime(){
         return messageListenerQueueHandlerContainer == null ? 0 : messageListenerQueueHandlerContainer.getAverageHandleProcessTime();
     }
 
