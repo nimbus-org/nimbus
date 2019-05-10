@@ -222,8 +222,8 @@ public class DistributedQueueHandlerContainerService extends ServiceBase
     }
 
     // DistributedQueueHandlerContainerServiceのJavaDoc
-    public long getAverageHandleProcessTime(){
-        long time = 0;
+    public double getAverageHandleProcessTime(){
+        double time = 0;
         if(invokers == null){
             if(distributedQueueSelector != null){
                 final Queue[] queues = distributedQueueSelector.getQueues();
@@ -231,7 +231,7 @@ public class DistributedQueueHandlerContainerService extends ServiceBase
                     for(int i = 0; i < queues.length; i++){
                         time += ((QueueHandlerContainer)queues[i]).getAverageHandleProcessTime();
                     }
-                    time /= queues.length;
+                    time /= (double)queues.length;
                 }
             }
         }else{
@@ -239,7 +239,7 @@ public class DistributedQueueHandlerContainerService extends ServiceBase
                 for(int i = 0; i < invokers.length; i++){
                     time += invokers[i].getAverageReceiveProcessTime();
                 }
-                time /= invokers.length;
+                time /= (double)invokers.length;
             }
         }
         return time;
@@ -510,7 +510,7 @@ public class DistributedQueueHandlerContainerService extends ServiceBase
                         }else{
                             isRetry = false;
                             try{
-                                handler.handleError(dequeued, th);
+                                handler.handleRetryOver(dequeued, th);
                             }catch(Throwable th2){
                                 getLogger().write(
                                     retryOverErrorMessageId,
