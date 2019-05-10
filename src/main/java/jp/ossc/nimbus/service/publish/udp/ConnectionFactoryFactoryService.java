@@ -776,8 +776,8 @@ public class ConnectionFactoryFactoryService extends ServiceFactoryServiceBase i
         }
     }
     
-    public long getAverageSendProcessTime() {
-        return -1;
+    public double getAverageSendProcessTime() {
+        return -1.0d;
     }
     
     public Set getClients() {
@@ -1018,8 +1018,8 @@ public class ConnectionFactoryFactoryService extends ServiceFactoryServiceBase i
         return result;
     }
     
-    public long getAverageAsynchSendProcessTime() {
-        long result = 0;
+    public double getAverageAsynchSendProcessTime() {
+        double result = 0;
         int count = 0;
         Iterator itr = managedInstances.iterator();
         while(itr.hasNext()) {
@@ -1027,11 +1027,11 @@ public class ConnectionFactoryFactoryService extends ServiceFactoryServiceBase i
             result += connectionFactoryService.getAverageAsynchSendProcessTime();
             count++;
         }
-        return (long)(result / count);
+        return result / (double)count;
     }
     
-    public long getAverageRequestHandleProcessTime() {
-        long result = 0;
+    public double getAverageRequestHandleProcessTime() {
+        double result = 0;
         int count = 0;
         Iterator itr = managedInstances.iterator();
         while(itr.hasNext()) {
@@ -1039,7 +1039,7 @@ public class ConnectionFactoryFactoryService extends ServiceFactoryServiceBase i
             result += connectionFactoryService.getAverageRequestHandleProcessTime();
             count++;
         }
-        return (long)(result / count);
+        return result / (double)count;
     }
     
     public int getMaxMessagePayoutCount(){

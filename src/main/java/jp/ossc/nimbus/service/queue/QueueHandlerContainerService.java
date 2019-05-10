@@ -246,16 +246,16 @@ public class QueueHandlerContainerService extends ServiceBase
     }
     
     // QueueHandlerContainerServiceMBeanのJavaDoc
-    public long getAverageHandleProcessTime(){
+    public double getAverageHandleProcessTime(){
         if(invokers == null){
             return 0;
         }
-        int time = 0;
+        double time = 0d;
         if(invokers.length != 0){
             for(int i = 0; i < invokers.length; i++){
                 time += invokers[i].getAverageReceiveProcessTime();
             }
-            time /= invokers.length;
+            time = time / (double)invokers.length;
         }
         return time;
     }
@@ -648,8 +648,8 @@ public class QueueHandlerContainerService extends ServiceBase
             return receiveCount;
         }
         
-        public long getAverageReceiveProcessTime(){
-            return receiveCount == 0 ? 0 : (receiveProcessTime / receiveCount);
+        public double getAverageReceiveProcessTime(){
+            return receiveCount == 0 ? 0d : ((double)receiveProcessTime / (double)receiveCount);
         }
         
         /**

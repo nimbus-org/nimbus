@@ -116,5 +116,5 @@ public interface QueueHandlerContainer extends Queue{
      *
      * @return 平均処理時間[ms]
      */
-    public long getAverageHandleProcessTime();
+    public double getAverageHandleProcessTime();
 }

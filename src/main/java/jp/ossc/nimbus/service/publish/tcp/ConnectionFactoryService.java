@@ -528,6 +528,10 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
         return serverConnection == null ? 0.0d : serverConnection.getAverageSendBytes();
     }
     
+    public double getAverageAsynchSendProcessTime(){
+        return serverConnection == null ? 0.0d : serverConnection.getAverageAsynchSendProcessTime();
+    }
+    
     public Set getClients(){
         if(serverConnection == null){
             return new HashSet();
@@ -759,6 +763,7 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
             serverConnection = new ServerConnectionImpl(
                 serverSocketChannel,
                 externalizer,
+                getServiceNameObject(),
                 sendThreadSize,
                 sendQueueServiceName,
                 asynchSendThreadSize,
@@ -794,6 +799,7 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
             serverConnection = new ServerConnectionImpl(
                 serverSocket,
                 externalizer,
+                getServiceNameObject(),
                 sendThreadSize,
                 sendQueueServiceName,
                 asynchSendThreadSize,
@@ -815,7 +821,6 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
         serverConnection.setStartReceiveMessageId(serverStartReceiveMessageId);
         serverConnection.setStopReceiveMessageId(serverStopReceiveMessageId);
         serverConnection.setAcknowledge(isAcknowledge);
-        serverConnection.setFactoryServiceName(getServiceNameObject());
         if(serverMessageRecycleBufferSize > 0){
             serverConnection.setMessageRecycleBufferSize(serverMessageRecycleBufferSize);
         }

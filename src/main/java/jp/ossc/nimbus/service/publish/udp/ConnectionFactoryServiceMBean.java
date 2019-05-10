@@ -1066,7 +1066,7 @@ public interface ConnectionFactoryServiceMBean extends ServiceBaseMBean{
      *
      * @return 平均送信時間[ms]
      */
-    public long getAverageSendProcessTime();
+    public double getAverageSendProcessTime();
     
     /**
      * 接続中のクライアントのjava.net.InetSocketAddressの集合を取得する。<br>
@@ -1214,14 +1214,14 @@ public interface ConnectionFactoryServiceMBean extends ServiceBaseMBean{
      *
      * @return 平均処理時間[ms]
      */
-    public long getAverageAsynchSendProcessTime();
+    public double getAverageAsynchSendProcessTime();
     
     /**
      * クライアントからの要求に対する処理の平均処理時間[ms]を取得する。<p>
      *
      * @return 平均処理時間[ms]
      */
-    public long getAverageRequestHandleProcessTime();
+    public double getAverageRequestHandleProcessTime();
     
     /**
      * メッセージのリサイクルにおける、メッセージの最大払い出し数を取得する。<p>

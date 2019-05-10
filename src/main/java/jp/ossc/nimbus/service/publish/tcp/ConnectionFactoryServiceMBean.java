@@ -757,6 +757,13 @@ public interface ConnectionFactoryServiceMBean extends ServiceBaseMBean{
     public double getAverageSendProcessTime();
     
     /**
+     * 平均非同期送信時間を取得する。<p>
+     *
+     * @return 平均非同期送信時間[ms]
+     */
+    public double getAverageAsynchSendProcessTime();
+    
+    /**
      * 平均送信バイト数[byte]を取得する。<p>
      *
      * @return 平均送信バイト数[byte]
