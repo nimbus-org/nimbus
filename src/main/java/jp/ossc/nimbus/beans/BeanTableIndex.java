@@ -61,7 +61,7 @@ public class BeanTableIndex implements Externalizable, Cloneable{
     protected Class elementClass;
     protected boolean isSynchronized;
     protected TreeMap indexValueMap = new TreeMap(new ComparableComparator());
-    protected Set notNullValueSet = new HashSet();
+    protected Set nullValueSet = new HashSet();
     protected Set linkedIndex = new HashSet();
     protected BeanTableIndexKeyFactory indexKeyFactory;
     
@@ -121,14 +121,15 @@ public class BeanTableIndex implements Externalizable, Cloneable{
     }
     protected void addInternal(Object element) throws IndexPropertyAccessException{
         Object indexKey = indexKeyFactory.createIndexKey(element);
-        Set elements = (Set)indexValueMap.get(indexKey);
-        if(elements == null){
-            elements = new HashSet();
-            indexValueMap.put(indexKey, elements);
-        }
-        elements.add(element);
-        if(indexKey != null){
-            notNullValueSet.add(element);
+        if(indexKey == null){
+            nullValueSet.add(element);
+        }else{
+            Set elements = (Set)indexValueMap.get(indexKey);
+            if(elements == null){
+                elements = new HashSet();
+                indexValueMap.put(indexKey, elements);
+            }
+            elements.add(element);
         }
     }
     
@@ -143,14 +144,17 @@ public class BeanTableIndex implements Externalizable, Cloneable{
     }
     protected void removeInternal(Object element) throws IndexPropertyAccessException{
         Object indexKey = indexKeyFactory.createIndexKey(element);
-        Set elements = (Set)indexValueMap.get(indexKey);
-        if(elements != null){
-            elements.remove(element);
-            if(elements.size() == 0){
-                indexValueMap.remove(indexKey);
+        if(indexKey == null){
+            nullValueSet.remove(element);
+        }else{
+            Set elements = (Set)indexValueMap.get(indexKey);
+            if(elements != null){
+                elements.remove(element);
+                if(elements.size() == 0){
+                    indexValueMap.remove(indexKey);
+                }
             }
         }
-        notNullValueSet.remove(element);
     }
     
     public void replace(Object oldElement, Object newElement) throws IndexPropertyAccessException{
@@ -176,7 +180,7 @@ public class BeanTableIndex implements Externalizable, Cloneable{
     }
     protected void clearInternal(){
         indexValueMap.clear();
-        notNullValueSet.clear();
+        nullValueSet.clear();
     }
     
     public Set searchKeyElement(){
@@ -216,18 +220,14 @@ public class BeanTableIndex implements Externalizable, Cloneable{
         }
     }
     protected Set searchNullInternal(Set result){
-        Set elements = (Set)indexValueMap.get(null);
         if(result == null){
             if(!isSynchronized){
-                return elements;
+                return nullValueSet;
             }else{
                 result = new HashSet();
             }
         }
-        
-        if(elements != null){
-            result.addAll(elements);
-        }
+        result.addAll(nullValueSet);
         return result;
     }
     
@@ -244,14 +244,16 @@ public class BeanTableIndex implements Externalizable, Cloneable{
         }
     }
     protected Set searchNotNullInternal(Set result){
-        if(result == null){
-            if(!isSynchronized){
-                return notNullValueSet;
-            }else{
-                result = new HashSet();
+        if(indexValueMap.size() != 0){
+            Iterator itr = indexValueMap.values().iterator();
+            while(itr.hasNext()){
+                Set elements = (Set)itr.next();
+                if(result == null){
+                    result = new HashSet();
+                }
+                result.addAll(elements);
             }
         }
-        result.addAll(notNullValueSet);
         return result;
     }
     
@@ -716,14 +718,14 @@ public class BeanTableIndex implements Externalizable, Cloneable{
                 out.writeObject(linkedIndex);
                 if(writeValue){
                     out.writeObject(indexValueMap);
-                    out.writeObject(notNullValueSet);
+                    out.writeObject(nullValueSet);
                 }
             }
         }else{
             out.writeObject(linkedIndex);
             if(writeValue){
                 out.writeObject(indexValueMap);
-                out.writeObject(notNullValueSet);
+                out.writeObject(nullValueSet);
             }
         }
     }
@@ -738,7 +740,7 @@ public class BeanTableIndex implements Externalizable, Cloneable{
         linkedIndex = (Set)in.readObject();
         if(readValue){
             indexValueMap = (TreeMap)in.readObject();
-            notNullValueSet = (Set)in.readObject();
+            nullValueSet = (Set)in.readObject();
         }
     }
     
@@ -751,7 +753,7 @@ public class BeanTableIndex implements Externalizable, Cloneable{
         }
         clone.isSynchronized = isSynchronized;
         clone.indexValueMap = new TreeMap(new ComparableComparator());
-        clone.notNullValueSet = new HashSet();
+        clone.nullValueSet = new HashSet();
         clone.linkedIndex = new HashSet();
         return clone;
     }

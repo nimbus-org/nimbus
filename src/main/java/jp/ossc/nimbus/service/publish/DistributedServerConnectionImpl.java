@@ -40,29 +40,25 @@ import java.util.*;
  */
 public class DistributedServerConnectionImpl implements ServerConnection{
     
-    private ServerConnection templateConnection;
     private List connectionList = new ArrayList();
     private Map connctionMap = Collections.synchronizedMap(new HashMap());
     private ServerConnectionBroadcaster broadcaster = new ServerConnectionBroadcaster();
     
     public void addServerConnection(ServerConnection connection){
-        if(templateConnection == null){
-            templateConnection = connection;
-        }
         connectionList.add(new ServerConnectionImpl(connection));
         connection.addServerConnectionListener(broadcaster);
     }
     
     public Message createMessage(String subject, String key) throws MessageCreateException{
-        return templateConnection.createMessage(subject, key);
+        return selectConnection(key).createMessage(subject, key);
     }
     
     public Message castMessage(Message message) throws MessageException{
-        return templateConnection.castMessage(message);
+        return selectConnection(message.getKey()).castMessage(message);
     }
     
-    private synchronized ServerConnection selectConnection(Message message){
-        ServerConnectionImpl connection = (ServerConnectionImpl)connctionMap.get(message.getKey());
+    private synchronized ServerConnection selectConnection(String key){
+        ServerConnectionImpl connection = (ServerConnectionImpl)connctionMap.get(key);
         if(connection == null){
             for(int i = 0; i < connectionList.size(); i++){
                 ((ServerConnectionImpl)connectionList.get(i)).prepareSort();
@@ -70,18 +66,18 @@ public class DistributedServerConnectionImpl implements ServerConnection{
             
             Collections.sort(connectionList);
             connection = (ServerConnectionImpl)connectionList.get(0);
-            connection.addKey(message.getKey());
-            connctionMap.put(message.getKey(), connection);
+            connection.addKey(key);
+            connctionMap.put(key, connection);
         }
         return connection;
     }
     
     public void send(Message message) throws MessageSendException{
-        selectConnection(message).send(message);
+        selectConnection(message.getKey()).send(message);
     }
     
     public void sendAsynch(Message message) throws MessageSendException{
-        selectConnection(message).sendAsynch(message);
+        selectConnection(message.getKey()).sendAsynch(message);
     }
     
     public void addServerConnectionListener(ServerConnectionListener listener){

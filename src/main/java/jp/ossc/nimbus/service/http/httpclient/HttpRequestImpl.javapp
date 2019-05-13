@@ -519,7 +519,12 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
      * @param isAutoDisabled 自動で無効化する場合true
      */
     public void setAutoDisabledSNI(boolean isAutoDisabled){
+@START<=JAVA8@
+        throw new UnsupportedOperationException();
+@END<=JAVA8@
+@START>JAVA8@
         isAutoDisabledSNI = isAutoDisabled;
+@END>JAVA8@
     }
     
     /**
@@ -947,8 +952,11 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
         }
         
         public int execute(HttpState state, HttpConnection connection) throws org.apache.commons.httpclient.HttpException, IOException{
+@START>JAVA8@
             try{
+@END>JAVA8@
                 return method.execute(state, connection);
+@START>JAVA8@
             }catch(IOException e){
                 if(isAutoDisabledSNI
                     && (e instanceof javax.net.ssl.SSLProtocolException)
@@ -973,6 +981,7 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
                     throw e;
                 }
             }
+@END>JAVA8@
         }
         
         public void abort(){

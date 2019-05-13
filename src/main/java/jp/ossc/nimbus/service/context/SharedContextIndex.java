@@ -34,11 +34,12 @@ package jp.ossc.nimbus.service.context;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.TreeMap;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.concurrent.ConcurrentSkipListMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.lang.reflect.InvocationTargetException;
 import java.io.Externalizable;
 import java.io.ObjectOutput;
@@ -56,9 +57,9 @@ import jp.ossc.nimbus.beans.*;
 public class SharedContextIndex implements Externalizable, Cloneable{
     
     protected String name;
-    protected TreeMap indexKeyMap = new TreeMap(new ComparableComparator());
-    protected Set notNullKeySet = new HashSet();
-    protected Set linkedIndex = new HashSet();
+    protected ConcurrentSkipListMap indexKeyMap = new ConcurrentSkipListMap(new ComparableComparator());
+    protected ConcurrentHashMap nullKeySet = new ConcurrentHashMap();
+    protected ConcurrentHashMap linkedIndex = new ConcurrentHashMap();
     protected BeanTableIndexKeyFactory indexKeyFactory;
     
     public SharedContextIndex(){
@@ -93,58 +94,58 @@ public class SharedContextIndex implements Externalizable, Cloneable{
     }
     
     public void addLinkedIndex(String indexName){
-        linkedIndex.add(indexName);
+        linkedIndex.put(indexName, indexName);
     }
     public void removeLinkedIndex(String indexName){
-        linkedIndex.remove(indexName);
+        linkedIndex.remove(indexName, indexName);
     }
     public Set getLinkedIndexSet(){
-        return linkedIndex;
+        return linkedIndex.keySet();
     }
     
-    public synchronized void add(Object key, Object value) throws IndexPropertyAccessException{
+    public void add(Object key, Object value) throws IndexPropertyAccessException{
         if(value instanceof List){
             List list = (List)value;
-            Set keySet = null;
             for(int i = 0, imax = list.size(); i < imax; i++){
                 Object element = list.get(i);
                 Object indexKey = indexKeyFactory.createIndexKey(element);
-                if(keySet != null){
-                    if(keySet.contains(indexKey)){
-                        continue;
-                    }else{
-                        keySet.add(indexKey);
+                if(indexKey == null){
+                    nullKeySet.putIfAbsent(key, key);
+                }else{
+                    ConcurrentHashMap keys = (ConcurrentHashMap)indexKeyMap.get(indexKey);
+                    if(keys == null){
+                        keys = new ConcurrentHashMap();
+                        Object already = indexKeyMap.putIfAbsent(indexKey, keys);
+                        if(already != null){
+                            keys = (ConcurrentHashMap)already;
+                        }
                     }
-                }
-                Set keys = (Set)indexKeyMap.get(indexKey);
-                if(keys == null){
-                    keys = new HashSet();
-                    indexKeyMap.put(indexKey, keys);
-                }
-                keys.add(key);
-                if(indexKey != null){
-                    notNullKeySet.add(key);
-                }
-                if(keySet == null && i != imax - 1){
-                    keySet = new HashSet();
-                    keySet.add(indexKey);
+                    synchronized(keys){
+                        keys.put(key, key);
+                    }
                 }
             }
         }else{
             Object indexKey = indexKeyFactory.createIndexKey(value);
-            Set keys = (Set)indexKeyMap.get(indexKey);
-            if(keys == null){
-                keys = new HashSet();
-                indexKeyMap.put(indexKey, keys);
-            }
-            keys.add(key);
-            if(indexKey != null){
-                notNullKeySet.add(key);
+            if(indexKey == null){
+                nullKeySet.putIfAbsent(key, key);
+            }else{
+                ConcurrentHashMap keys = (ConcurrentHashMap)indexKeyMap.get(indexKey);
+                if(keys == null){
+                    keys = new ConcurrentHashMap();
+                    Object already = indexKeyMap.putIfAbsent(indexKey, keys);
+                    if(already != null){
+                        keys = (ConcurrentHashMap)already;
+                    }
+                }
+                synchronized(keys){
+                    keys.put(key, key);
+                }
             }
         }
     }
     
-    public synchronized void addAll(Map c) throws IndexPropertyAccessException{
+    public void addAll(Map c) throws IndexPropertyAccessException{
         Iterator itr = c.entrySet().iterator();
         while(itr.hasNext()){
             Map.Entry entry = (Map.Entry)itr.next();
@@ -152,81 +153,87 @@ public class SharedContextIndex implements Externalizable, Cloneable{
         }
     }
     
-    public synchronized void remove(Object key, Object value) throws IndexPropertyAccessException{
+    public void remove(Object key, Object value) throws IndexPropertyAccessException{
         if(value instanceof List){
             List list = (List)value;
             Set keySet = null;
             for(int i = 0, imax = list.size(); i < imax; i++){
                 Object element = list.get(i);
                 Object indexKey = indexKeyFactory.createIndexKey(element);
-                if(keySet != null){
-                    if(keySet.contains(indexKey)){
-                        continue;
-                    }else{
-                        keySet.add(indexKey);
+                if(indexKey == null){
+                    nullKeySet.remove(key);
+                }else{
+                    ConcurrentHashMap keys = (ConcurrentHashMap)indexKeyMap.get(indexKey);
+                    if(keys != null){
+                        keys.remove(key);
+                        if(keys.size() == 0){
+                            synchronized(keys){
+                                if(keys.size() == 0){
+                                    indexKeyMap.remove(indexKey);
+                                }
+                            }
+                        }
                     }
-                }
-                Set keys = (Set)indexKeyMap.get(indexKey);
-                if(keys != null){
-                    keys.remove(key);
-                    if(keys.size() == 0){
-                        indexKeyMap.remove(indexKey);
-                    }
-                }
-                notNullKeySet.remove(key);
-                if(keySet == null && i != imax - 1){
-                    keySet = new HashSet();
-                    keySet.add(indexKey);
                 }
             }
         }else{
             Object indexKey = indexKeyFactory.createIndexKey(value);
-            Set keys = (Set)indexKeyMap.get(indexKey);
-            if(keys != null){
-                keys.remove(key);
-                if(keys.size() == 0){
-                    indexKeyMap.remove(indexKey);
+            if(indexKey == null){
+                nullKeySet.remove(key);
+            }else{
+                ConcurrentHashMap keys = (ConcurrentHashMap)indexKeyMap.get(indexKey);
+                if(keys != null){
+                    keys.remove(key);
+                    if(keys.size() == 0){
+                        synchronized(keys){
+                            if(keys.size() == 0){
+                                indexKeyMap.remove(indexKey);
+                            }
+                        }
+                    }
                 }
             }
-            notNullKeySet.remove(key);
         }
     }
     
-    public synchronized void replace(Object key, Object oldValue, Object newValue) throws IndexPropertyAccessException{
+    public void replace(Object key, Object oldValue, Object newValue) throws IndexPropertyAccessException{
         remove(key, oldValue);
         add(key, newValue);
     }
     
-    public synchronized void clear(){
+    public void clear(){
         indexKeyMap.clear();
-        notNullKeySet.clear();
+        nullKeySet.clear();
     }
     
     public Set searchKey(){
         return searchKey(null);
     }
-    public synchronized Set searchKey(Set result){
-        if(result == null){
-            result = new HashSet();
-        }
+    public Set searchKey(Set result){
         Iterator itr = indexKeyMap.values().iterator();
         while(itr.hasNext()){
-            Set keys = (Set)itr.next();
-            result.add(keys.iterator().next());
+            ConcurrentHashMap keys = (ConcurrentHashMap)itr.next();
+            result.addAll(keys.keySet());
         }
+        if(nullKeySet.size() != 0){
+            if(result == null){
+                result = new HashSet();
+            }
+            result.addAll(nullKeySet.keySet());
+        }
+        
         return result;
     }
     
     public Set searchNull(){
         return searchNull(null);
     }
-    public synchronized Set searchNull(Set result){
-        Set keys = (Set)indexKeyMap.get(null);
-        if(result == null){
-            result = new HashSet();
-        }
-        if(keys != null){
-            result.addAll(keys);
+    public Set searchNull(Set result){
+        if(nullKeySet.size() != 0){
+            if(result == null){
+                result = new HashSet();
+            }
+            result.addAll(nullKeySet.keySet());
         }
         return result;
     }
@@ -234,53 +241,78 @@ public class SharedContextIndex implements Externalizable, Cloneable{
     public Set searchNotNull(){
         return searchNotNull(null);
     }
-    public synchronized Set searchNotNull(Set result){
-        if(result == null){
-            result = new HashSet();
+    public Set searchNotNull(Set result){
+        Iterator itr = indexKeyMap.values().iterator();
+        while(itr.hasNext()){
+            ConcurrentHashMap keys = (ConcurrentHashMap)itr.next();
+            if(result == null){
+                result = new HashSet();
+            }
+            result.addAll(keys.keySet());
         }
-        result.addAll(notNullKeySet);
         return result;
     }
     
-    public synchronized Object searchByPrimary(Object value) throws IndexPropertyAccessException{
+    public Object searchByPrimary(Object value) throws IndexPropertyAccessException{
         Object indexKey = indexKeyFactory.createIndexKey(value);
-        Set keys = (Set)indexKeyMap.get(indexKey);
-        if(keys == null){
+        ConcurrentHashMap keys = (ConcurrentHashMap)indexKeyMap.get(indexKey);
+        if(keys == null || keys.size() == 0){
             return null;
         }else{
-            return keys.iterator().next();
+            return keys.keySet().iterator().next();
         }
     }
     
     public Set searchBy(Object value) throws IndexPropertyAccessException{
         return searchBy(null, value);
     }
-    public synchronized Set searchBy(Set result, Object value) throws IndexPropertyAccessException{
+    public Set searchBy(Set result, Object value) throws IndexPropertyAccessException{
         Object indexKey = indexKeyFactory.createIndexKey(value);
-        Set keys = (Set)indexKeyMap.get(indexKey);
-        if(result == null){
-            result = new HashSet();
-        }
-        if(keys == null){
+        if(indexKey == null){
+            if(nullKeySet.size() != 0){
+                if(result == null){
+                    result = new HashSet();
+                }
+                result.addAll(nullKeySet.keySet());
+            }
             return result;
         }else{
-            result.addAll(keys);
-            return result;
+            ConcurrentHashMap keys = (ConcurrentHashMap)indexKeyMap.get(indexKey);
+            if(keys == null){
+                return result;
+            }else{
+                if(result == null){
+                    result = new HashSet();
+                }
+                result.addAll(keys.keySet());
+                return result;
+            }
         }
     }
     
     public Set searchIn(Object[] values) throws IndexPropertyAccessException{
         return searchIn(null, values);
     }
-    public synchronized Set searchIn(Set result, Object[] values) throws IndexPropertyAccessException{
-        if(result == null){
-            result = new HashSet();
-        }
+    public Set searchIn(Set result, Object[] values) throws IndexPropertyAccessException{
+        boolean containsNullKey = false;
         for(int i = 0; i < values.length; i++){
             Object indexKey = indexKeyFactory.createIndexKey(values[i]);
-            Set ret = (Set)indexKeyMap.get(indexKey);
-            if(ret != null){
-                result.addAll(ret);
+            if(indexKey == null){
+                if(!containsNullKey && nullKeySet.size() != 0){
+                    if(result == null){
+                        result = new HashSet();
+                    }
+                    result.addAll(nullKeySet.keySet());
+                    containsNullKey = true;
+                }
+            }else{
+                ConcurrentHashMap ret = (ConcurrentHashMap)indexKeyMap.get(indexKey);
+                if(ret != null){
+                    if(result == null){
+                        result = new HashSet();
+                    }
+                    result.addAll(ret.keySet());
+                }
             }
         }
         return result;
@@ -289,37 +321,56 @@ public class SharedContextIndex implements Externalizable, Cloneable{
     public Set searchByProperty(Object prop){
         return searchByProperty(null, prop);
     }
-    public synchronized Set searchByProperty(Set result, Object prop){
+    public Set searchByProperty(Set result, Object prop){
         final int indexKeySize = indexKeyFactory.getPropertyNames().size();
         if(indexKeySize != 1){
             throw new UnsupportedOperationException("This method is not supported, beacause this index is complex key index.");
         }
-        Set keys = (Set)indexKeyMap.get(prop);
-        if(keys == null){
-            return result;
+        if(prop == null){
+            if(nullKeySet.size() != 0){
+                if(result == null){
+                    result = new HashSet();
+                }
+                result.addAll(nullKeySet.keySet());
+            }
+        }else{
+            ConcurrentHashMap keys = (ConcurrentHashMap)indexKeyMap.get(prop);
+            if(keys != null){
+                if(result == null){
+                    result = new HashSet();
+                }
+                result.addAll(keys.keySet());
+            }
         }
-        if(result == null){
-            result = new HashSet();
-        }
-        result.addAll(keys);
         return result;
     }
     
     public Set searchInProperty(Object[] props){
         return searchInProperty(null, props);
     }
-    public synchronized Set searchInProperty(Set result, Object[] props){
+    public Set searchInProperty(Set result, Object[] props){
         final int indexKeySize = indexKeyFactory.getPropertyNames().size();
         if(indexKeySize != 1){
             throw new UnsupportedOperationException("This method is not supported, beacause this index is complex key index.");
         }
-        if(result == null){
-            result = new HashSet();
-        }
+        boolean containsNullKey = false;
         for(int i = 0; i < props.length; i++){
-            Set keys = (Set)indexKeyMap.get(props[i]);
-            if(keys != null){
-                result.addAll(keys);
+            if(props[i] == null){
+                if(!containsNullKey && nullKeySet.size() != 0){
+                    if(result == null){
+                        result = new HashSet();
+                    }
+                    result.addAll(nullKeySet.keySet());
+                    containsNullKey = true;
+                }
+            }else{
+                ConcurrentHashMap keys = (ConcurrentHashMap)indexKeyMap.get(props[i]);
+                if(keys != null){
+                    if(result == null){
+                        result = new HashSet();
+                    }
+                    result.addAll(keys.keySet());
+                }
             }
         }
         return result;
@@ -328,32 +379,52 @@ public class SharedContextIndex implements Externalizable, Cloneable{
     public Set searchByProperty(Map props) throws IllegalArgumentException{
         return searchByProperty(null, props);
     }
-    public synchronized Set searchByProperty(Set result, Map props) throws IllegalArgumentException{
+    public Set searchByProperty(Set result, Map props) throws IllegalArgumentException{
         Object indexKey = indexKeyFactory.createIndexKeyByProperties(props);
-        Set keys = (Set)indexKeyMap.get(indexKey);
-        if(keys == null){
-            return result;
+        if(indexKey == null){
+            if(nullKeySet.size() != 0){
+                if(result == null){
+                    result = new HashSet();
+                }
+                result.addAll(nullKeySet.keySet());
+            }
+        }else{
+            ConcurrentHashMap keys = (ConcurrentHashMap)indexKeyMap.get(indexKey);
+            if(keys == null){
+                return result;
+            }
+            if(result == null){
+                result = new HashSet();
+            }
+            result.addAll(keys.keySet());
         }
-        if(result == null){
-            result = new HashSet();
-        }
-        result.addAll(keys);
         return result;
     }
     
     public Set searchInProperty(Map[] props) throws IllegalArgumentException{
         return searchInProperty(null, props);
     }
-    public synchronized Set searchInProperty(Set result, Map[] props) throws IllegalArgumentException{
-        if(result == null){
-            result = new HashSet();
-        }
+    public Set searchInProperty(Set result, Map[] props) throws IllegalArgumentException{
+        boolean containsNullKey = false;
         for(int i = 0; i < props.length; i++){
             Map propMap = props[i];
             Object indexKey = indexKeyFactory.createIndexKeyByProperties(propMap);
-            Set keys = (Set)indexKeyMap.get(indexKey);
-            if(keys != null){
-                result.addAll(keys);
+            if(indexKey == null){
+                if(!containsNullKey && nullKeySet.size() != 0){
+                    if(result == null){
+                        result = new HashSet();
+                    }
+                    result.addAll(nullKeySet.keySet());
+                    containsNullKey = true;
+                }
+            }else{
+                ConcurrentHashMap keys = (ConcurrentHashMap)indexKeyMap.get(indexKey);
+                if(keys != null){
+                    if(result == null){
+                        result = new HashSet();
+                    }
+                    result.addAll(keys.keySet());
+                }
             }
         }
         return result;
@@ -374,18 +445,18 @@ public class SharedContextIndex implements Externalizable, Cloneable{
     public Set searchFromProperty(Object fromProp){
         return searchFromProperty(null, fromProp);
     }
-    public synchronized Set searchFromProperty(Set result, Object fromProp){
+    public Set searchFromProperty(Set result, Object fromProp){
         final int indexKeySize = indexKeyFactory.getPropertyNames().size();
         if(indexKeySize != 1){
             throw new UnsupportedOperationException("This method is not supported, beacause this index is complex key index.");
         }
-        if(result == null){
-            result = new HashSet();
-        }
         Iterator itr = indexKeyMap.tailMap(fromProp).values().iterator();
         while(itr.hasNext()){
-            Set keys = (Set)itr.next();
-            result.addAll(keys);
+            ConcurrentHashMap keys = (ConcurrentHashMap)itr.next();
+            if(result == null){
+                result = new HashSet();
+            }
+            result.addAll(keys.keySet());
         }
         return result;
     }
@@ -405,18 +476,18 @@ public class SharedContextIndex implements Externalizable, Cloneable{
     public Set searchToProperty(Object toProp){
         return searchToProperty(null, toProp);
     }
-    public synchronized Set searchToProperty(Set result, Object toProp){
+    public Set searchToProperty(Set result, Object toProp){
         final int indexKeySize = indexKeyFactory.getPropertyNames().size();
         if(indexKeySize != 1){
             throw new UnsupportedOperationException("This method is not supported, beacause this index is complex key index.");
         }
-        if(result == null){
-            result = new HashSet();
-        }
         Iterator itr = indexKeyMap.headMap(toProp).values().iterator();
         while(itr.hasNext()){
-            Set keys = (Set)itr.next();
-            result.addAll(keys);
+            ConcurrentHashMap keys = (ConcurrentHashMap)itr.next();
+            if(result == null){
+                result = new HashSet();
+            }
+            result.addAll(keys.keySet());
         }
         return result;
     }
@@ -437,13 +508,10 @@ public class SharedContextIndex implements Externalizable, Cloneable{
     public Set searchRangeProperty(Object fromProp, Object toProp){
         return searchRangeProperty(null, fromProp, toProp);
     }
-    public synchronized Set searchRangeProperty(Set result, Object fromProp, Object toProp){
+    public Set searchRangeProperty(Set result, Object fromProp, Object toProp){
         final int indexKeySize = indexKeyFactory.getPropertyNames().size();
         if(indexKeySize != 1){
             throw new UnsupportedOperationException("This method is not supported, beacause this index is complex key index.");
-        }
-        if(result == null){
-            result = new HashSet();
         }
         if(fromProp == null){
             return searchToProperty(result, toProp);
@@ -452,14 +520,16 @@ public class SharedContextIndex implements Externalizable, Cloneable{
         }else{
             Iterator itr = indexKeyMap.subMap(fromProp, toProp).values().iterator();
             while(itr.hasNext()){
-                Set keys = (Set)itr.next();
-                result.addAll(keys);
+                ConcurrentHashMap keys = (ConcurrentHashMap)itr.next();
+                if(result == null){
+                    result = new HashSet();
+                }
+                result.addAll(keys.keySet());
             }
             return result;
         }
     }
     
-
     public Set searchFrom(Object fromValue, boolean inclusive) throws IndexPropertyAccessException{
         return searchFrom(null, fromValue, inclusive);
     }
@@ -475,18 +545,18 @@ public class SharedContextIndex implements Externalizable, Cloneable{
     public Set searchFromProperty(Object fromProp, boolean inclusive){
         return searchFromProperty(null, fromProp, inclusive);
     }
-    public synchronized Set searchFromProperty(Set result, Object fromProp, boolean inclusive){
+    public Set searchFromProperty(Set result, Object fromProp, boolean inclusive){
         final int indexKeySize = indexKeyFactory.getPropertyNames().size();
         if(indexKeySize != 1){
             throw new UnsupportedOperationException("This method is not supported, beacause this index is complex key index.");
         }
-        if(result == null){
-            result = new HashSet();
-        }
         Iterator itr = indexKeyMap.tailMap(fromProp, inclusive).values().iterator();
         while(itr.hasNext()){
-            Set keys = (Set)itr.next();
-            result.addAll(keys);
+            ConcurrentHashMap keys = (ConcurrentHashMap)itr.next();
+            if(result == null){
+                result = new HashSet();
+            }
+            result.addAll(keys.keySet());
         }
         return result;
     }
@@ -506,18 +576,18 @@ public class SharedContextIndex implements Externalizable, Cloneable{
     public Set searchToProperty(Object toProp, boolean inclusive){
         return searchToProperty(null, toProp, inclusive);
     }
-    public synchronized Set searchToProperty(Set result, Object toProp, boolean inclusive){
+    public Set searchToProperty(Set result, Object toProp, boolean inclusive){
         final int indexKeySize = indexKeyFactory.getPropertyNames().size();
         if(indexKeySize != 1){
             throw new UnsupportedOperationException("This method is not supported, beacause this index is complex key index.");
         }
-        if(result == null){
-            result = new HashSet();
-        }
         Iterator itr = indexKeyMap.headMap(toProp, inclusive).values().iterator();
         while(itr.hasNext()){
-            Set keys = (Set)itr.next();
-            result.addAll(keys);
+            ConcurrentHashMap keys = (ConcurrentHashMap)itr.next();
+            if(result == null){
+                result = new HashSet();
+            }
+            result.addAll(keys.keySet());
         }
         return result;
     }
@@ -538,13 +608,10 @@ public class SharedContextIndex implements Externalizable, Cloneable{
     public Set searchRangeProperty(Object fromProp, boolean fromInclusive, Object toProp, boolean toInclusive){
         return searchRangeProperty(null, fromProp, fromInclusive, toProp, toInclusive);
     }
-    public synchronized Set searchRangeProperty(Set result, Object fromProp, boolean fromInclusive, Object toProp, boolean toInclusive){
+    public Set searchRangeProperty(Set result, Object fromProp, boolean fromInclusive, Object toProp, boolean toInclusive){
         final int indexKeySize = indexKeyFactory.getPropertyNames().size();
         if(indexKeySize != 1){
             throw new UnsupportedOperationException("This method is not supported, beacause this index is complex key index.");
-        }
-        if(result == null){
-            result = new HashSet();
         }
         if(fromProp == null){
             return searchToProperty(result, toProp, toInclusive);
@@ -553,8 +620,11 @@ public class SharedContextIndex implements Externalizable, Cloneable{
         }else{
             Iterator itr = indexKeyMap.subMap(fromProp, fromInclusive, toProp, toInclusive).values().iterator();
             while(itr.hasNext()){
-                Set keys = (Set)itr.next();
-                result.addAll(keys);
+                ConcurrentHashMap keys = (ConcurrentHashMap)itr.next();
+                if(result == null){
+                    result = new HashSet();
+                }
+                result.addAll(keys.keySet());
             }
             return result;
         }
@@ -567,12 +637,10 @@ public class SharedContextIndex implements Externalizable, Cloneable{
     public void writeExternal(ObjectOutput out, boolean writeValue) throws IOException{
         out.writeObject(name);
         out.writeObject(indexKeyFactory);
-        synchronized(this){
-            out.writeObject(linkedIndex);
-            if(writeValue){
-                out.writeObject(indexKeyMap);
-                out.writeObject(notNullKeySet);
-            }
+        out.writeObject(linkedIndex);
+        if(writeValue){
+            out.writeObject(indexKeyMap);
+            out.writeObject(nullKeySet);
         }
     }
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException{
@@ -581,10 +649,10 @@ public class SharedContextIndex implements Externalizable, Cloneable{
     public void readExternal(ObjectInput in, boolean readValue) throws IOException, ClassNotFoundException{
         name = (String)in.readObject();
         indexKeyFactory = (BeanTableIndexKeyFactory)in.readObject();
-        linkedIndex = (Set)in.readObject();
+        linkedIndex = (ConcurrentHashMap)in.readObject();
         if(readValue){
-            indexKeyMap = (TreeMap)in.readObject();
-            notNullKeySet = (Set)in.readObject();
+            indexKeyMap = (ConcurrentSkipListMap)in.readObject();
+            nullKeySet = (ConcurrentHashMap)in.readObject();
         }
     }
     
@@ -595,9 +663,9 @@ public class SharedContextIndex implements Externalizable, Cloneable{
         }catch(CloneNotSupportedException e){
             return null;
         }
-        clone.indexKeyMap = new TreeMap(new ComparableComparator());
-        clone.notNullKeySet = new HashSet();
-        clone.linkedIndex = new HashSet();
+        clone.indexKeyMap = new ConcurrentSkipListMap(new ComparableComparator());
+        clone.nullKeySet = new ConcurrentHashMap();
+        clone.linkedIndex = new ConcurrentHashMap();
         return clone;
     }
     
@@ -608,35 +676,33 @@ public class SharedContextIndex implements Externalizable, Cloneable{
         }catch(CloneNotSupportedException e){
             return null;
         }
-        clone.indexKeyMap = new TreeMap(new ComparableComparator());
-        clone.notNullKeySet = new HashSet();
-        clone.linkedIndex = new HashSet();
-        synchronized(this){
-            Iterator itr = indexKeyMap.entrySet().iterator();
-            while(itr.hasNext()){
-                Map.Entry entry = (Map.Entry)itr.next();
-                Set set = (Set)entry.getValue();
-                Set newSet = null;
-                Iterator keys = keySet.iterator();
-                while(keys.hasNext()){
-                    Object key = keys.next();
-                    if(set.contains(key)){
-                        if(newSet == null){
-                            newSet = new HashSet();
-                        }
-                        newSet.add(key);
-                    }
-                }
-                if(newSet != null){
-                    clone.indexKeyMap.put(entry.getKey(), newSet);
-                }
-            }
+        clone.indexKeyMap = new ConcurrentSkipListMap(new ComparableComparator());
+        clone.nullKeySet = new ConcurrentHashMap();
+        clone.linkedIndex = new ConcurrentHashMap();
+        Iterator itr = indexKeyMap.entrySet().iterator();
+        while(itr.hasNext()){
+            Map.Entry entry = (Map.Entry)itr.next();
+            ConcurrentHashMap set = (ConcurrentHashMap)entry.getValue();
+            ConcurrentHashMap newSet = null;
             Iterator keys = keySet.iterator();
             while(keys.hasNext()){
                 Object key = keys.next();
-                if(notNullKeySet.contains(key)){
-                    clone.notNullKeySet.add(key);
+                if(set.containsKey(key)){
+                    if(newSet == null){
+                        newSet = new ConcurrentHashMap();
+                    }
+                    newSet.put(key, key);
                 }
+            }
+            if(newSet != null){
+                clone.indexKeyMap.put(entry.getKey(), newSet);
+            }
+        }
+        Iterator keys = keySet.iterator();
+        while(keys.hasNext()){
+            Object key = keys.next();
+            if(nullKeySet.containsKey(key)){
+                clone.nullKeySet.put(key, key);
             }
         }
         return clone;

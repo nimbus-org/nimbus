@@ -55,6 +55,7 @@ import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -120,10 +121,12 @@ public class ServerConnectionImpl implements ServerConnection{
     private List serverConnectionListeners;
     private Externalizer externalizer;
     private SocketFactory socketFactory;
-    private List sendMessageCache = Collections.synchronizedList(new ArrayList());
+    private LinkedList sendMessageCache = new LinkedList();
     private long sendMessageCacheTime;
     private boolean isAcknowledge;
     private int messageRecycleBufferSize = 100;
+    private int messagePayoutCount;
+    private int maxMessagePayoutCount;
     private List messageBuffer;
     private List sendRequestBuffer;
     private List asynchContextBuffer;
@@ -137,6 +140,7 @@ public class ServerConnectionImpl implements ServerConnection{
     public ServerConnectionImpl(
         ServerSocket serverSocket,
         Externalizer ext,
+        ServiceName factoryServiceName,
         int sendThreadSize,
         ServiceName sendQueueServiceName,
         int asynchSendThreadSize,
@@ -148,9 +152,10 @@ public class ServerConnectionImpl implements ServerConnection{
     ) throws Exception{
         this.serverSocket = serverSocket;
         externalizer = ext;
-        messageBuffer = new ArrayList();
-        sendRequestBuffer = new ArrayList();
-        asynchContextBuffer = new ArrayList();
+        this.factoryServiceName = factoryServiceName;
+        messageBuffer = new LinkedList();
+        sendRequestBuffer = new LinkedList();
+        asynchContextBuffer = new LinkedList();
         this.bufferTime = bufferTime;
         this.bufferSize = bufferSize;
         if(bufferTimeoutInterval > 0){
@@ -167,6 +172,7 @@ public class ServerConnectionImpl implements ServerConnection{
     public ServerConnectionImpl(
         ServerSocketChannel ssc,
         Externalizer ext,
+        ServiceName factoryServiceName,
         int sendThreadSize,
         ServiceName sendQueueServiceName,
         int asynchSendThreadSize,
@@ -180,9 +186,10 @@ public class ServerConnectionImpl implements ServerConnection{
         serverSocketChannel = ssc;
         socketFactory = sf;
         externalizer = ext;
-        messageBuffer = new ArrayList();
-        sendRequestBuffer = new ArrayList();
-        asynchContextBuffer = new ArrayList();
+        this.factoryServiceName = factoryServiceName;
+        messageBuffer = new LinkedList();
+        sendRequestBuffer = new LinkedList();
+        asynchContextBuffer = new LinkedList();
         this.bufferTime = bufferTime;
         this.bufferSize = bufferSize;
         if(bufferTimeoutInterval > 0){
@@ -221,6 +228,10 @@ public class ServerConnectionImpl implements ServerConnection{
     private void initSend(ServiceName sendQueueServiceName, int sendThreadSize) throws Exception{
         if(sendThreadSize >= 2){
             sendQueueHandlerContainer = new QueueHandlerContainerService();
+            if(factoryServiceName != null){
+                sendQueueHandlerContainer.setServiceManagerName(factoryServiceName.getServiceManagerName());
+                sendQueueHandlerContainer.setServiceName(factoryServiceName.getServiceName() + "$SendQueueHandlerContainer");
+            }
             sendQueueHandlerContainer.create();
             if(sendQueueServiceName == null){
                 DefaultQueueService sendQueue = new DefaultQueueService();
@@ -250,6 +261,10 @@ public class ServerConnectionImpl implements ServerConnection{
     private void initAsynchSend(ServiceName queueServiceName, ServiceName queueFactoryServiceName, int clientQueueDistributedSize) throws Exception{
         if(clientQueueDistributedSize > 0){
             asynchAcceptQueueHandlerContainer = new QueueHandlerContainerService();
+            if(factoryServiceName != null){
+                asynchAcceptQueueHandlerContainer.setServiceManagerName(factoryServiceName.getServiceManagerName());
+                asynchAcceptQueueHandlerContainer.setServiceName(factoryServiceName.getServiceName() + "$AsynchAcceptQueueHandlerContainer");
+            }
             asynchAcceptQueueHandlerContainer.create();
             if(queueServiceName == null){
                 DefaultQueueService acceptQueue = new DefaultQueueService();
@@ -274,6 +289,10 @@ public class ServerConnectionImpl implements ServerConnection{
             queueSelector.start();
             
             asynchSendQueueHandlerContainer = new DistributedQueueHandlerContainerService();
+            if(factoryServiceName != null){
+                asynchSendQueueHandlerContainer.setServiceManagerName(factoryServiceName.getServiceManagerName());
+                asynchSendQueueHandlerContainer.setServiceName(factoryServiceName.getServiceName() + "$AsynchSendQueueHandlerContainer");
+            }
             asynchSendQueueHandlerContainer.create();
             asynchSendQueueHandlerContainer.setDistributedQueueSelector(queueSelector);
             asynchSendQueueHandlerContainer.setQueueHandler(new SendQueueHandler());
@@ -285,11 +304,15 @@ public class ServerConnectionImpl implements ServerConnection{
     
     protected void recycleMessage(MessageImpl msg){
         if(msg != null){
-            if(messageBuffer.size() <= messageRecycleBufferSize){
-                msg.clear();
-                synchronized(messageBuffer){
+            synchronized(messageBuffer){
+                if(msg.isPayout()){
+                    msg.setPayout(false);
                     if(messageBuffer.size() <= messageRecycleBufferSize){
+                        msg.clear();
                         messageBuffer.add(msg);
+                    }
+                    if(messagePayoutCount > 0){
+                        messagePayoutCount--;
                     }
                 }
             }
@@ -298,17 +321,21 @@ public class ServerConnectionImpl implements ServerConnection{
     
     protected MessageImpl createMessage(byte type){
         MessageImpl result = null;
-        if(messageBuffer.size() != 0){
-            synchronized(messageBuffer){
-                if(messageBuffer.size() != 0){
-                    result = (MessageImpl)messageBuffer.remove(0);
-                }
+        synchronized(messageBuffer){
+            if(messageBuffer.size() != 0){
+                result = (MessageImpl)messageBuffer.remove(0);
+                result.setPayout(true);
+            }
+            messagePayoutCount++;
+            if(maxMessagePayoutCount < messagePayoutCount){
+                maxMessagePayoutCount = messagePayoutCount;
             }
         }
         if(result == null){
             result = new MessageImpl();
         }
         result.setMessageType(type);
+        result.setServerConnection(this);
         return result;
     }
     
@@ -436,10 +463,6 @@ public class ServerConnectionImpl implements ServerConnection{
         isAcknowledge = isAck;
     }
     
-    public void setFactoryServiceName(ServiceName name){
-        factoryServiceName = name;
-    }
-    
     public void enabledClient(String address, int port){
         if(disabledClients.containsKey(address)){
             Set portSet = (Set)disabledClients.get(address);
@@ -534,6 +557,7 @@ public class ServerConnectionImpl implements ServerConnection{
     public synchronized void send(Message message) throws MessageSendException{
         long startTime = System.currentTimeMillis();
         if(clients.size() == 0){
+            ((MessageImpl)message).setSend(true);
             addSendMessageCache((MessageImpl)message);
             return;
         }
@@ -664,6 +688,10 @@ public class ServerConnectionImpl implements ServerConnection{
         return sendCount == 0 ? 0.0d : ((double)sendBytes / (double)sendCount);
     }
     
+    public double getAverageAsynchSendProcessTime(){
+        return asynchAcceptQueueHandlerContainer == null ? 0.0d : asynchAcceptQueueHandlerContainer.getAverageHandleProcessTime();
+    }
+    
     public Set getClients(){
         return clients;
     }
@@ -714,19 +742,25 @@ public class ServerConnectionImpl implements ServerConnection{
     
     private void addSendMessageCache(MessageImpl message){
         final long currentTime = System.currentTimeMillis();
-        message.setSendTime(currentTime);
+        if(message.getSendTime() < 0){
+            message.setSendTime(currentTime);
+        }
         synchronized(sendMessageCache){
-            sendMessageCache.add(message);
-            for(int i = 0, imax = sendMessageCache.size(); i < imax; i++){
-                MessageImpl msg = (MessageImpl)sendMessageCache.get(0);
-                if((currentTime - msg.getSendTime()) > sendMessageCacheTime){
-                    MessageImpl trash = (MessageImpl)sendMessageCache.remove(0);
-                    if(trash.isSend()){
-                        recycleMessage(trash);
+            if(sendMessageCacheTime > 0 && message.getMessageType() == MessageImpl.MESSAGE_TYPE_APPLICATION){
+                sendMessageCache.add(message);
+                for(int i = 0, imax = sendMessageCache.size(); i < imax; i++){
+                    MessageImpl msg = (MessageImpl)sendMessageCache.get(0);
+                    if((currentTime - msg.getSendTime()) > sendMessageCacheTime){
+                        MessageImpl trash = (MessageImpl)sendMessageCache.remove(0);
+                        if(trash.isSend()){
+                            recycleMessage(trash);
+                        }
+                    }else{
+                        break;
                     }
-                }else{
-                    break;
                 }
+            }else{
+                recycleMessage(message);
             }
             sendCount++;
         }
@@ -735,8 +769,8 @@ public class ServerConnectionImpl implements ServerConnection{
     private List getSendMessages(long from){
         List result = new ArrayList();
         synchronized(sendMessageCache){
-            for(int i = sendMessageCache.size(); --i >= 0; ){
-                MessageImpl msg = (MessageImpl)sendMessageCache.get(i);
+            for(Iterator itr = sendMessageCache.descendingIterator(); itr.hasNext(); ){
+                MessageImpl msg = (MessageImpl)itr.next();
                 if(msg.getSendTime() >= from){
                     result.add(0, msg.clone());
                 }else{
@@ -749,6 +783,30 @@ public class ServerConnectionImpl implements ServerConnection{
     
     public int getSendMessageCacheSize(){
         return sendMessageCache.size();
+    }
+    
+    public Date getSendMessageCacheOldTime(){
+        if(sendMessageCache.size() == 0){
+            return null;
+        }
+        MessageImpl msg = null;
+        synchronized(sendMessageCache){
+            if(sendMessageCache.size() != 0){
+                msg = (MessageImpl)sendMessageCache.get(0);
+            }
+        }
+        if(msg == null){
+            return null;
+        }
+        return new Date(msg.getSendTime());
+    }
+    
+    public int getMaxMessagePayoutCount(){
+        return maxMessagePayoutCount;
+    }
+    
+    public int getMessagePayoutCount(){
+        return messagePayoutCount;
     }
     
     public synchronized void close(){
@@ -1578,6 +1636,8 @@ public class ServerConnectionImpl implements ServerConnection{
                 }catch(MessageSendException e){
                 }catch(MessageException e){
                     // 起こらないはず
+                }finally{
+                    recycleMessage(response);
                 }
             }
             return isClosed;
@@ -1639,6 +1699,7 @@ public class ServerConnectionImpl implements ServerConnection{
             }
             if(clients.size() == 0){
                 message.setSend(true);
+                addSendMessageCache(message);
                 return;
             }
             final Map sendContexts = new HashMap();

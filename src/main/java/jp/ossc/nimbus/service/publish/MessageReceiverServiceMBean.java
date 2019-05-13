@@ -310,7 +310,7 @@ public interface MessageReceiverServiceMBean extends ServiceBaseMBean{
      *
      * @return 非同期処理の平均処理時間[ms]
      */
-    public long getMessageQueueAverageHandleProcessTime();
+    public double getMessageQueueAverageHandleProcessTime();
 
     /**
      * {@link MessageListener}への配信を非同期で行う場合の非同期処理用のキューの投入件数を取得する。<p>
@@ -331,7 +331,7 @@ public interface MessageReceiverServiceMBean extends ServiceBaseMBean{
      *
      * @return 非同期処理の平均処理時間[ms]
      */
-    public long getMessageListenerQueueAverageHandleProcessTime();
+    public double getMessageListenerQueueAverageHandleProcessTime();
 
     /**
      * {@link MessageListener}へのパラメータオブジェクトのリサイクルリストの上限サイズを設定する。<p>
@@ -346,5 +346,12 @@ public interface MessageReceiverServiceMBean extends ServiceBaseMBean{
      * @return リサイクルリストの上限サイズ
      */
     public int getMessageListenerParameterRecycleListSize();
+    
+    /**
+     * メッセージのリサイクルにおける、メッセージの最大貸し出し数を取得する。<p>
+     *
+     * @return メッセージの最大貸し出し数
+     */
+    public int getMaxMessagePayoutCount();
 
 }

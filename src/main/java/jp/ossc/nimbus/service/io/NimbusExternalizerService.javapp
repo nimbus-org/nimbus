@@ -141,15 +141,10 @@ public class NimbusExternalizerService extends SerializableExternalizerService
         metaClassMap.clear();
     }
     
-    public void destroyService() throws Exception{
-        disabledNumberCompressionClassMap = null;
-        metaClassMap = null;
-    }
-    
-    protected ObjectOutput createObjectOutput(OutputStream out) throws IOException{
+    public ObjectOutput createObjectOutput(OutputStream out) throws IOException{
         return new NimbusObjectOutputStream(out);
     }
-    protected ObjectInput createObjectInput(InputStream in) throws IOException{
+    public ObjectInput createObjectInput(InputStream in) throws IOException{
         return new NimbusObjectInputStream(in);
     }
     
@@ -219,6 +214,7 @@ public class NimbusExternalizerService extends SerializableExternalizerService
         private LongReferenceTable longReferenceTable = new LongReferenceTable(referenceTableInitialSize, referenceTableExpandRatio, referenceTableLoadFactor);
         
         private Stack currentObjectStack = new Stack();
+        private PutFieldImpl currentPut;
         private MetaClass currentMetaClass;
         
         public NimbusObjectOutputStream(OutputStream os) throws IOException{
@@ -238,12 +234,39 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             }
         }
         
+        protected int lookupReference(MetaClass metaClass, Object obj){
+            if(metaClass.isImmutable()){
+                return immutableReferenceTable.lookup(obj);
+            }else{
+                return referenceTable.lookup(obj);
+            }
+        }
+        
+        public ObjectOutputStream.PutField putFields() throws IOException{
+            if(currentPut == null){
+                if(currentMetaClass == null){
+                    throw new NotActiveException("not in call to writeObject");
+                }
+                currentPut = new PutFieldImpl(currentMetaClass);
+            }
+            return currentPut;
+        }
+        
+        public void writeFields() throws IOException{
+            if(currentPut == null){
+                throw new NotActiveException("no current PutField object");
+            }
+            currentPut.write(NimbusObjectOutputStream.this);
+        }
+        
         public void defaultWriteObject() throws IOException{
             Object currentObject = currentObjectStack.peek();
             currentMetaClass.defaultWriteObject(currentObject, this);
         }
         protected void writeObjectOverride(Object obj) throws IOException{
             MetaClass preMetaClass = currentMetaClass;
+            PutFieldImpl prePut = currentPut;
+            currentPut = null;
             currentObjectStack.push(obj);
             try{
                 MetaClass.writeClass(obj, this);
@@ -253,6 +276,7 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                 }
             }finally{
                 currentMetaClass = preMetaClass;
+                currentPut = prePut;
                 currentObjectStack.pop();
             }
         }
@@ -471,6 +495,102 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             os.flush();
             os.close();
         }
+        
+        private class PutFieldImpl extends PutField{
+            
+            private final MetaClass metaClass;
+            private final byte[] primVals;
+            private final Object[] objVals;
+            
+            PutFieldImpl(MetaClass meta){
+                metaClass = meta;
+                primVals = new byte[metaClass.getPrimDataSize()];
+                objVals = new Object[metaClass.getNumObjFields()];
+            }
+            
+            public void put(String name, boolean val){
+                primVals[metaClass.getFieldOffset(name, Boolean.TYPE)] = (byte) (val ? 1 : 0);
+            }
+            
+            public void put(String name, byte val){
+                primVals[metaClass.getFieldOffset(name, Byte.TYPE)] = val;
+            }
+            
+            public void put(String name, char val){
+                final int offset = metaClass.getFieldOffset(name, Character.TYPE);
+                primVals[offset + 1] = (byte) (val      );
+                primVals[offset    ] = (byte) (val >>> 8);
+            }
+            
+            public void put(String name, short val){
+                final int offset = metaClass.getFieldOffset(name, Short.TYPE);
+                primVals[offset + 1] = (byte) (val      );
+                primVals[offset    ] = (byte) (val >>> 8);
+            }
+            
+            public void put(String name, int val) {
+                final int offset = metaClass.getFieldOffset(name, Integer.TYPE);
+                primVals[offset + 3] = (byte) (val       );
+                primVals[offset + 2] = (byte) (val >>>  8);
+                primVals[offset + 1] = (byte) (val >>> 16);
+                primVals[offset    ] = (byte) (val >>> 24);
+            }
+            
+            public void put(String name, float val) {
+                final int offset = metaClass.getFieldOffset(name, Float.TYPE);
+                final int intBits = Float.floatToIntBits(val);
+                primVals[offset + 3] = (byte) (intBits       );
+                primVals[offset + 2] = (byte) (intBits >>>  8);
+                primVals[offset + 1] = (byte) (intBits >>> 16);
+                primVals[offset    ] = (byte) (intBits >>> 24);
+            }
+            
+            public void put(String name, long val) {
+                final int intBits = Float.floatToIntBits(val);
+                final int offset = metaClass.getFieldOffset(name, Long.TYPE);
+                primVals[offset + 7] = (byte) (val       );
+                primVals[offset + 6] = (byte) (val >>>  8);
+                primVals[offset + 5] = (byte) (val >>> 16);
+                primVals[offset + 4] = (byte) (val >>> 24);
+                primVals[offset + 3] = (byte) (val >>> 32);
+                primVals[offset + 2] = (byte) (val >>> 40);
+                primVals[offset + 1] = (byte) (val >>> 48);
+                primVals[offset    ] = (byte) (val >>> 56);
+            }
+            
+            public void put(String name, double val) {
+                final int offset = metaClass.getFieldOffset(name, Double.TYPE);
+                final long longBits = Double.doubleToLongBits(val);
+                primVals[offset + 7] = (byte) (longBits       );
+                primVals[offset + 6] = (byte) (longBits >>>  8);
+                primVals[offset + 5] = (byte) (longBits >>> 16);
+                primVals[offset + 4] = (byte) (longBits >>> 24);
+                primVals[offset + 3] = (byte) (longBits >>> 32);
+                primVals[offset + 2] = (byte) (longBits >>> 40);
+                primVals[offset + 1] = (byte) (longBits >>> 48);
+                primVals[offset    ] = (byte) (longBits >>> 56);
+            }
+            
+            public void put(String name, Object val) {
+                objVals[metaClass.getFieldOffset(name, Object.class)] = val;
+            }
+            
+            public void write(ObjectOutput out) throws IOException{
+                if(NimbusObjectOutputStream.this != out){
+                    throw new IllegalArgumentException("wrong stream");
+                }
+                out.write(primVals, 0, primVals.length);
+                
+                ObjectStreamField[] fields = metaClass.getFields();
+                int numPrimFields = fields.length - objVals.length;
+                for(int i = 0; i < objVals.length; i++){
+                    if(fields[numPrimFields + i].isUnshared()){
+                        throw new IOException("cannot write unshared object");
+                    }
+                    out.writeObject(objVals[i]);
+                }
+            }
+        }
     }
     
     public class NimbusObjectInputStream extends ObjectInputStream{
@@ -522,6 +642,8 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             MetaClass metaClass = findMetaClass(clazz);
             if(MetaClass.isReference(instanceType)){
                 return metaClass.getReference(this);
+            }else if(MetaClass.isReplace(instanceType)){
+                return readObjectOverride();
             }else{
                 Object obj = null;
                 try{
@@ -547,6 +669,16 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                 currentObjectStack.pop();
             }
         }
+        
+        public ObjectInputStream.GetField readFields() throws IOException, ClassNotFoundException{
+            if(currentMetaClass == null){
+                throw new NotActiveException("not in call to readObject");
+            }
+            GetFieldImpl getField = new GetFieldImpl(currentMetaClass);
+            getField.readFields();
+            return getField;
+        }
+        
         public void defaultReadObject() throws IOException, ClassNotFoundException{
             Object currentObject = currentObjectStack.peek();
             currentMetaClass.defaultReadObject(currentObject, this);
@@ -846,6 +978,116 @@ public class NimbusExternalizerService extends SerializableExternalizerService
         public void close() throws IOException{
             is.close();
         }
+        
+        private class GetFieldImpl extends GetField{
+            
+            private final MetaClass metaClass;
+            private final byte[] primVals;
+            private final Object[] objVals;
+            
+            GetFieldImpl(MetaClass meta){
+                metaClass = meta;
+                primVals = new byte[metaClass.getPrimDataSize()];
+                objVals = new Object[metaClass.getNumObjFields()];
+            }
+            
+            public ObjectStreamClass getObjectStreamClass(){
+                return ObjectStreamClass.lookup(metaClass.getTargetClass());
+            }
+            
+            public boolean defaulted(String name) throws IOException{
+                return (metaClass.getFieldOffset(name, null) < 0);
+            }
+            
+            public boolean get(String name, boolean val) throws IOException{
+                final int offset = metaClass.getFieldOffset(name, Boolean.TYPE);
+                return offset >= 0 ? primVals[offset] != 0 : val;
+            }
+            
+            public byte get(String name, byte val) throws IOException{
+                final int offset = metaClass.getFieldOffset(name, Byte.TYPE);
+                return offset >= 0 ? primVals[offset] : val;
+            }
+            
+            public char get(String name, char val) throws IOException{
+                final int offset = metaClass.getFieldOffset(name, Character.TYPE);
+                return offset >= 0 ? (char)((primVals[offset + 1] & 0xFF) + (primVals[offset] << 8)) : val;
+            }
+            
+            public short get(String name, short val) throws IOException{
+                final int offset = metaClass.getFieldOffset(name, Short.TYPE);
+                return offset >= 0 ? (short)((primVals[offset + 1] & 0xFF) + (primVals[offset] << 8)) : val;
+            }
+            
+            public int get(String name, int val) throws IOException{
+                final int offset = metaClass.getFieldOffset(name, Integer.TYPE);
+                return offset >= 0 ?
+                    ((primVals[offset + 3] & 0xFF)      ) +
+                    ((primVals[offset + 2] & 0xFF) <<  8) +
+                    ((primVals[offset + 1] & 0xFF) << 16) +
+                    ((primVals[offset    ]       ) << 24)
+                        : val;
+            }
+            
+            public float get(String name, float val) throws IOException{
+                final int offset = metaClass.getFieldOffset(name, Float.TYPE);
+                return offset >= 0 ? 
+                    Float.intBitsToFloat(
+                        ((primVals[offset + 3] & 0xFF)      ) +
+                        ((primVals[offset + 2] & 0xFF) <<  8) +
+                        ((primVals[offset + 1] & 0xFF) << 16) +
+                        ((primVals[offset    ]       ) << 24)
+                    )
+                        : val;
+            }
+            
+            public long get(String name, long val) throws IOException{
+                final int offset = metaClass.getFieldOffset(name, Long.TYPE);
+                return offset >= 0 ? 
+                    ((primVals[offset + 7] & 0xFFL)      ) +
+                    ((primVals[offset + 6] & 0xFFL) <<  8) +
+                    ((primVals[offset + 5] & 0xFFL) << 16) +
+                    ((primVals[offset + 4] & 0xFFL) << 24) +
+                    ((primVals[offset + 3] & 0xFFL) << 32) +
+                    ((primVals[offset + 2] & 0xFFL) << 40) +
+                    ((primVals[offset + 1] & 0xFFL) << 48) +
+                    (((long) primVals[offset])      << 56)
+                        : val;
+            }
+            
+            public double get(String name, double val) throws IOException{
+                final int offset = metaClass.getFieldOffset(name, Double.TYPE);
+                return offset >= 0 ? 
+                    Double.longBitsToDouble(
+                        ((primVals[offset + 7] & 0xFFL)      ) +
+                        ((primVals[offset + 6] & 0xFFL) <<  8) +
+                        ((primVals[offset + 5] & 0xFFL) << 16) +
+                        ((primVals[offset + 4] & 0xFFL) << 24) +
+                        ((primVals[offset + 3] & 0xFFL) << 32) +
+                        ((primVals[offset + 2] & 0xFFL) << 40) +
+                        ((primVals[offset + 1] & 0xFFL) << 48) +
+                        (((long) primVals[offset])      << 56)
+                    )
+                        : val;
+            }
+            
+            public Object get(String name, Object val) throws IOException{
+                final int offset = metaClass.getFieldOffset(name, Object.class);
+                if(offset >= 0){
+                    return objVals[offset];
+                }else{
+                    return val;
+                }
+            }
+            
+            void readFields() throws IOException, ClassNotFoundException{
+                readFully(primVals, 0, primVals.length);
+                ObjectStreamField[] fields = metaClass.getFields();
+                for(int i = 0; i < objVals.length; i++){
+                    objVals[i] = readObject();
+                }
+            }
+        }
     }
     
     private static class MetaClass{
@@ -857,6 +1099,7 @@ public class NimbusExternalizerService extends SerializableExternalizerService
         protected static final byte TAG_REFERENCE = (byte)1;
         protected static final byte TAG_VALUE = (byte)2;
         protected static final byte TAG_ARRAY = (byte)3;
+        protected static final byte TAG_REPLACE = (byte)4;
         
         private NimbusExternalizerService externalizer;
         private MetaClass superMetaClass;
@@ -933,6 +1176,41 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             }
         }
         
+        public Class getTargetClass(){
+            return clazz;
+        }
+        
+        public int getPrimDataSize(){
+            return fieldReflector == null ? 0 : fieldReflector.getPrimDataSize();
+        }
+        
+        public int getNumObjFields(){
+            return fieldReflector == null ? 0 : fieldReflector.getNumObjFields();
+        }
+        
+        public ObjectStreamField[] getFields(){
+            return fieldReflector == null ? new ObjectStreamField[0] : fieldReflector.getFields();
+        }
+        
+        public int getFieldOffset(String name, Class type){
+            if(fieldReflector == null) return -1;
+            
+            final ObjectStreamField[] fields = fieldReflector.getFields();
+            for(int i = 0; i < fields.length; i++){
+                ObjectStreamField field = fields[i];
+                if(field.getName().equals(name)){
+                    if(type == null || (type == Object.class && !field.isPrimitive())){
+                        return fieldReflector.getFieldOffset(i);
+                    }
+                    Class ftype = field.getType();
+                    if(ftype != null && type.isAssignableFrom(ftype)){
+                        return fieldReflector.getFieldOffset(i);
+                    }
+                }
+            }
+            return -1;
+        }
+        
         public boolean isImmutable(){
             return isImmutable;
         }
@@ -958,10 +1236,11 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             }
         }
         public void writeObject(Object obj, NimbusObjectOutputStream oos) throws IOException{
-            final int referenceId = oos.registerReference(this, obj);
-            if(referenceId > 0){
+            int referenceId = oos.lookupReference(this, obj);
+            if(referenceId == 0){
                 Class objClass = obj.getClass();
                 if(objClass.isArray()){
+                    referenceId = oos.registerReference(this, obj);
                     oos.write(TAG_ARRAY);
                     final int length = Array.getLength(obj);
                     oos.writeInt(length, isDisabledNumberCompression, false);
@@ -1010,10 +1289,12 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                             oos.write(TAG_NULL);
                             return;
                         }else if(!clazz.equals(obj.getClass())){
+                            oos.write(TAG_REPLACE);
                             oos.writeObject(obj);
                             return;
                         }
                     }
+                    referenceId = oos.registerReference(this, obj);
                     oos.write(TAG_VALUE);
                     oos.writeInt(referenceId, isDisabledNumberCompression, false);
                     
@@ -1043,6 +1324,7 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                     }
                 }
             }else{
+                referenceId = oos.registerReference(this, obj);
                 oos.write(TAG_REFERENCE);
                 oos.writeInt(-referenceId, isDisabledNumberCompression, false);
             }
@@ -1051,6 +1333,12 @@ public class NimbusExternalizerService extends SerializableExternalizerService
         public void defaultWriteObject(Object obj, NimbusObjectOutputStream oos) throws IOException{
             if(fieldReflector == null){
                 return;
+            }
+            if(classTree != null){
+                for(int i = classTree.size(); --i >= 0;){
+                    MetaClass metaClass = (MetaClass)classTree.get(i);
+                    metaClass.defaultWriteObject(obj, oos);
+                }
             }
             fieldReflector.writeFields(obj, oos);
         }
@@ -1075,6 +1363,10 @@ public class NimbusExternalizerService extends SerializableExternalizerService
         public static boolean isReference(byte instanceType){
             return instanceType == TAG_REFERENCE;
         }
+        public static boolean isReplace(byte instanceType){
+            return instanceType == TAG_REPLACE;
+        }
+        
         public Object getReference(NimbusObjectInputStream ois) throws IOException{
             final int referenceId = ois.readInt(isDisabledNumberCompression, false);
             return ois.lookupReference(this, referenceId);
@@ -1097,6 +1389,12 @@ public class NimbusExternalizerService extends SerializableExternalizerService
         public void defaultReadObject(Object obj, NimbusObjectInputStream ois) throws IOException, ClassNotFoundException{
             if(fieldReflector == null){
                 return;
+            }
+            if(classTree != null){
+                for(int i = classTree.size(); --i >= 0;){
+                    MetaClass metaClass = (MetaClass)classTree.get(i);
+                    metaClass.defaultReadObject(obj, ois);
+                }
             }
             fieldReflector.readFields(obj, ois);
         }
@@ -1155,15 +1453,6 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                     }
                 }
             }else{
-                if(readResolveMethod != null){
-                    obj = invokeReadResolve(obj);
-                    ois.registerReference(this, referenceId, obj);
-                    if(obj == null){
-                        return null;
-                    }else if(!clazz.equals(obj.getClass())){
-                        return ois.readObjectOverrideInternal(externalizer.findMetaClass(obj.getClass()), obj);
-                    }
-                }
                 if(String.class.equals(clazz)){
                     obj = ois.readString();
                     ois.registerReference(this, referenceId, obj);
@@ -1192,6 +1481,10 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                     }else{
                         ois.defaultReadObject();
                     }
+                }
+                if(readResolveMethod != null){
+                    obj = invokeReadResolve(obj);
+                    ois.registerReference(this, referenceId, obj);
                 }
             }
             return obj;
@@ -1498,8 +1791,11 @@ public class NimbusExternalizerService extends SerializableExternalizerService
         private final long[] writeKeys;
         private final char[] typeCodes;
         private final Class[] types;
+        private int primDataSize;
+        private int numObjFields;
+        private final int[] fieldOffsets;
         
-        public FieldReflector(NimbusExternalizerService externalizer, Class clazz, ObjectStreamField[] fields){
+        public FieldReflector(NimbusExternalizerService externalizer, Class clazz, ObjectStreamField[] fields) throws InvalidClassException{
             this.externalizer = externalizer;
             this.fields = fields;
             final int nfields = fields.length;
@@ -1509,25 +1805,75 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             
             ArrayList typeList = new ArrayList();
             Set usedKeys = new HashSet();
+            primDataSize = 0;
+            numObjFields = 0;
+            fieldOffsets = new int[nfields];
+            int firstObjIndex = -1;
             for(int i = 0; i < nfields; i++){
                 ObjectStreamField f = fields[i];
                 Field rf = null;
                 try{
                     rf = clazz.getDeclaredField(f.getName());
+                    final long key = unsafe.objectFieldOffset(rf);
+                    readKeys[i] = key;
+                    writeKeys[i] = usedKeys.add(key) ? key : Unsafe.INVALID_FIELD_OFFSET;
+                    typeCodes[i] = f.getTypeCode();
+                    typeList.add((rf != null) ? rf.getType() : null);
                 }catch(NoSuchFieldException ex){
-                    throw (InternalError)new InternalError().initCause(ex);
+                    switch(f.getTypeCode()){
+                    case 'Z':
+                    case 'B':
+                        fieldOffsets[i] = primDataSize;
+                        primDataSize++;
+                        break;
+                    case 'C':
+                    case 'S':
+                        fieldOffsets[i] = primDataSize;
+                        primDataSize += 2;
+                        break;
+                    case 'I':
+                    case 'F':
+                        fieldOffsets[i] = primDataSize;
+                        primDataSize += 4;
+                        break;
+                    case 'J':
+                    case 'D':
+                        fieldOffsets[i] = primDataSize;
+                        primDataSize += 8;
+                        break;
+                    case '[':
+                    case 'L':
+                        fieldOffsets[i] = numObjFields;
+                        numObjFields++;
+                        if(firstObjIndex == -1){
+                            firstObjIndex = i;
+                        }
+                        break;
+                    default:
+                        throw new InternalError();
+                    }
                 }
-                final long key = (rf != null) ? unsafe.objectFieldOffset(rf) : Unsafe.INVALID_FIELD_OFFSET;
-                readKeys[i] = key;
-                writeKeys[i] = usedKeys.add(key) ? key : Unsafe.INVALID_FIELD_OFFSET;
-                typeCodes[i] = f.getTypeCode();
-                typeList.add((rf != null) ? rf.getType() : null);
             }
             types = (Class[])typeList.toArray(new Class[typeList.size()]);
+            
+            if(firstObjIndex != -1 && firstObjIndex + numObjFields != nfields){
+                throw new InvalidClassException(clazz.getName(), "illegal field order");
+            }
+        }
+        
+        public int getPrimDataSize(){
+            return primDataSize;
+        }
+        public int getNumObjFields(){
+            return numObjFields;
         }
         
         public ObjectStreamField[] getFields(){
             return fields;
+        }
+        
+        public int getFieldOffset(int index){
+            return fieldOffsets[index];
         }
         
         public void writeFields(Object obj, NimbusObjectOutputStream oos) throws IOException{
@@ -1730,11 +2076,11 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                 newLength = Integer.MAX_VALUE;
             }
             int[] newNext = new int[newLength];
-            System.arraycopy(next, 0, newNext, 0, size);
+            System.arraycopy(next, 0, newNext, 0, next.length);
             next = newNext;
             
             Object[] newRefs = new Object[newLength];
-            System.arraycopy(references, 0, newRefs, 0, size);
+            System.arraycopy(references, 0, newRefs, 0, references.length);
             references = newRefs;
         }
         
@@ -1871,11 +2217,11 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                 newLength = Integer.MAX_VALUE;
             }
             int[] newNext = new int[newLength];
-            System.arraycopy(next, 0, newNext, 0, size);
+            System.arraycopy(next, 0, newNext, 0, next.length);
             next = newNext;
             
             int[] newRefs = new int[newLength];
-            System.arraycopy(references, 0, newRefs, 0, size);
+            System.arraycopy(references, 0, newRefs, 0, references.length);
             references = newRefs;
         }
         
@@ -1982,11 +2328,11 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                 newLength = Integer.MAX_VALUE;
             }
             int[] newNext = new int[newLength];
-            System.arraycopy(next, 0, newNext, 0, size);
+            System.arraycopy(next, 0, newNext, 0, next.length);
             next = newNext;
             
             long[] newRefs = new long[newLength];
-            System.arraycopy(references, 0, newRefs, 0, size);
+            System.arraycopy(references, 0, newRefs, 0, references.length);
             references = newRefs;
         }
         

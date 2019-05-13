@@ -537,6 +537,41 @@ public interface SharedContextServiceMBean extends DefaultContextServiceMBean{
     public void resetCacheHitRatio();
     
     /**
+     * 現在ロックされているキーの集合を取得する。<p>
+     *
+     * @return ロックされているキーの集合
+     */
+    public Set getLockedKeySet();
+    
+    /**
+     * 現在ロックされている数を取得する。<p>
+     *
+     * @return ロックされている数
+     */
+    public int getLockedCount();
+    
+    /**
+     * ロックされていた時間の平均時間[ms]を取得する。<p>
+     *
+     * @return ロックされていた時間の平均時間[ms]
+     */
+    public double getAverageLockTime();
+    
+    /**
+     * ロックされていた時間の最大時間[ms]を取得する。<p>
+     *
+     * @return ロックされていた時間の最大時間[ms]
+     */
+    public long getMaxLockTime();
+    
+    /**
+     * ロック情報を表示する。<p>
+     *
+     * @return ロック情報文字列
+     */
+    public String displayLocks();
+    
+    /**
      * 分散サーバとの通信の健全性をチェックする。<p>
      * 
      * @param isContainsClient 健全性をチェックする対象として、クライアントモードも含める場合は、true

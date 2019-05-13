@@ -1066,7 +1066,7 @@ public interface ConnectionFactoryServiceMBean extends ServiceBaseMBean{
      *
      * @return 平均送信時間[ms]
      */
-    public long getAverageSendProcessTime();
+    public double getAverageSendProcessTime();
     
     /**
      * 接続中のクライアントのjava.net.InetSocketAddressの集合を取得する。<br>
@@ -1214,26 +1214,40 @@ public interface ConnectionFactoryServiceMBean extends ServiceBaseMBean{
      *
      * @return 平均処理時間[ms]
      */
-    public long getAverageAsynchSendProcessTime();
+    public double getAverageAsynchSendProcessTime();
     
     /**
      * クライアントからの要求に対する処理の平均処理時間[ms]を取得する。<p>
      *
      * @return 平均処理時間[ms]
      */
-    public long getAverageRequestHandleProcessTime();
+    public double getAverageRequestHandleProcessTime();
     
     /**
-     * メッセージの再利用率を取得する。<p>
+     * メッセージのリサイクルにおける、メッセージの最大払い出し数を取得する。<p>
      *
-     * @return メッセージの再利用率
+     * @return メッセージの最大払い出し数
      */
-    public double getMessageRecycleRate();
+    public int getMaxMessagePayoutCount();
     
     /**
-     * ウィンドウの再利用率を取得する。<p>
+     * メッセージのリサイクルにおける、メッセージの払い出し数を取得する。<p>
      *
-     * @return ウィンドウの再利用率
+     * @return メッセージの払い出し数
      */
-    public double getWindowRecycleRate();
+    public int getMessagePayoutCount();
+    
+    /**
+     * ウィンドウのリサイクルにおける、ウィンドウの最大払い出し数を取得する。<p>
+     *
+     * @return ウィンドウの最大払い出し数
+     */
+    public int getMaxWindowPayoutCount();
+    
+    /**
+     * ウィンドウのリサイクルにおける、ウィンドウの払い出し数を取得する。<p>
+     *
+     * @return ウィンドウの払い出し数
+     */
+    public int getWindowPayoutCount();
 }

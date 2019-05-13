@@ -68,13 +68,16 @@ public class MessageImpl implements Message, Externalizable, Cloneable{
     private Map subjectMap = new LinkedHashMap();
     private Object object;
     private transient byte[] bytes;
-    private transient long sendTime;
+    private transient long sendTime = -1;
     private transient long receiveTime;
     private byte messageType = MESSAGE_TYPE_APPLICATION;
     private transient Set destinationIds;
     private transient byte[] serializedBytes;
     private transient boolean isSend;
     private transient ClientConnectionImpl clientConnection;
+    private transient ServerConnectionImpl serverConnection;
+    private transient Externalizer externalizer;
+    private transient boolean isPayout = true;
     
     public MessageImpl(){
     }
@@ -85,6 +88,10 @@ public class MessageImpl implements Message, Externalizable, Cloneable{
     
     public void setClientConnection(ClientConnectionImpl con){
         clientConnection = con;
+    }
+    
+    public void setServerConnection(ServerConnectionImpl con){
+        serverConnection = con;
     }
     
     public void setSend(boolean isSend){
@@ -135,9 +142,14 @@ public class MessageImpl implements Message, Externalizable, Cloneable{
                 if(object != null){
                     return object;
                 }
+                ByteArrayInputStream bais = new ByteArrayInputStream(serializedBytes);
                 try{
-                    ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(serializedBytes));
-                    object = ois.readObject();
+                    if(externalizer == null){
+                        ObjectInputStream ois = new ObjectInputStream(bais);
+                        object = ois.readObject();
+                    }else{
+                        object = externalizer.readExternal(bais);
+                    }
                 }catch(IOException e){
                     throw new MessageException(e);
                 }catch(ClassNotFoundException e){
@@ -180,7 +192,7 @@ public class MessageImpl implements Message, Externalizable, Cloneable{
     }
     
     public void setDestinationIds(Set ids){
-        destinationIds = ids;
+        destinationIds = new HashSet(ids);
     }
     
     public void addDestinationId(Object id){
@@ -228,38 +240,39 @@ public class MessageImpl implements Message, Externalizable, Cloneable{
         }
     }
     
-    public synchronized void write(OutputStream out, Externalizer ext) throws IOException{
+    public void write(OutputStream out, Externalizer ext) throws IOException{
         if(bytes == null){
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            if(ext == null){
-                ObjectOutputStream oos = new ObjectOutputStream(baos);
-                writeExternal(oos);
-                oos.flush();
-            }else{
-                ext.writeExternal(this, baos);
+            synchronized(this){
+                if(bytes == null){
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    if(ext == null){
+                        ObjectOutputStream oos = new ObjectOutputStream(baos);
+                        writeExternal(oos);
+                        oos.flush();
+                    }else{
+                        externalizer = ext;
+                        ObjectOutput oo = externalizer.createObjectOutput(baos);
+                        writeExternal(oo);
+                        oo.flush();
+                    }
+                    bytes = baos.toByteArray();
+                }
             }
-            bytes = baos.toByteArray();
         }
         out.write(bytes);
     }
     
-    public static MessageImpl read(InputStream in, Externalizer externalizer, List messageBuffer) throws IOException, ClassNotFoundException{
+    public static MessageImpl read(InputStream in, ClientConnectionImpl cc) throws IOException, ClassNotFoundException{
         MessageImpl message = null;
-        if(externalizer == null){
-            if(messageBuffer.size() != 0){
-                synchronized(messageBuffer){
-                    if(messageBuffer.size() != 0){
-                        message = (MessageImpl)messageBuffer.remove(0);
-                    }
-                }
-            }
-            if(message == null){
-                message = new MessageImpl();
-            }
+        if(cc.externalizer == null){
             ObjectInputStream ois = new ObjectInputStream(in);
+            message = cc.createMessage();
             message.readExternal(ois);
         }else{
-            message = (MessageImpl)externalizer.readExternal(in);
+            ObjectInput oi = cc.externalizer.createObjectInput(in);
+            message = cc.createMessage();
+            message.externalizer = cc.externalizer;
+            message.readExternal(oi);
         }
         return message;
     }
@@ -280,7 +293,7 @@ public class MessageImpl implements Message, Externalizable, Cloneable{
         subjectMap.clear();
         object = null;
         bytes = null;
-        sendTime = 0;
+        sendTime = -1l;
         receiveTime = 0;
         messageType = MESSAGE_TYPE_APPLICATION;
         if(destinationIds != null){
@@ -312,16 +325,39 @@ public class MessageImpl implements Message, Externalizable, Cloneable{
             clientConnection.recycleMessage(this);
             clientConnection = null;
         }
+        if(serverConnection != null){
+            serverConnection.recycleMessage(this);
+            serverConnection = null;
+        }
+    } 
+    
+    public synchronized boolean isPayout(){
+        return isPayout;
+    }
+    public synchronized void setPayout(boolean isPayout){
+        this.isPayout = isPayout;
+    }
+    
+    protected void finalize() throws Throwable{
+        recycle();
     }
     
     public void writeExternal(ObjectOutput out) throws IOException{
         out.write(messageType);
         out.writeObject(subjectMap);
+        if(sendTime < 0){
+            sendTime = System.currentTimeMillis();
+        }
+        out.writeLong(sendTime);
         if(serializedBytes == null){
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ObjectOutputStream oos = new ObjectOutputStream(baos);
-            oos.writeObject(object);
-            oos.flush();
+            if(externalizer == null){
+                ObjectOutputStream oos = new ObjectOutputStream(baos);
+                oos.writeObject(object);
+                oos.flush();
+            }else{
+                externalizer.writeExternal(object, baos);
+            }
             out.writeObject(baos.toByteArray());
         }else{
             out.writeObject(serializedBytes);
@@ -331,6 +367,7 @@ public class MessageImpl implements Message, Externalizable, Cloneable{
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException{
         messageType = (byte)in.read();
         subjectMap = (Map)in.readObject();
+        sendTime = in.readLong();
         serializedBytes = (byte[])in.readObject();
         receiveTime = System.currentTimeMillis();
     }

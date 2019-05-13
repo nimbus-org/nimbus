@@ -44,6 +44,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.rmi.NoSuchObjectException;
 import java.rmi.server.UnicastRemoteObject;
 import javax.net.ServerSocketFactory;
@@ -527,6 +528,10 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
         return serverConnection == null ? 0.0d : serverConnection.getAverageSendBytes();
     }
     
+    public double getAverageAsynchSendProcessTime(){
+        return serverConnection == null ? 0.0d : serverConnection.getAverageAsynchSendProcessTime();
+    }
+    
     public Set getClients(){
         if(serverConnection == null){
             return new HashSet();
@@ -549,7 +554,7 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
     }
     
     public int getClientSize(){
-        return serverConnection.getClients().size();
+        return serverConnection == null ? 0 : serverConnection.getClients().size();
     }
     
     public Set getEnabledClients(){
@@ -758,6 +763,7 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
             serverConnection = new ServerConnectionImpl(
                 serverSocketChannel,
                 externalizer,
+                getServiceNameObject(),
                 sendThreadSize,
                 sendQueueServiceName,
                 asynchSendThreadSize,
@@ -793,6 +799,7 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
             serverConnection = new ServerConnectionImpl(
                 serverSocket,
                 externalizer,
+                getServiceNameObject(),
                 sendThreadSize,
                 sendQueueServiceName,
                 asynchSendThreadSize,
@@ -814,7 +821,6 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
         serverConnection.setStartReceiveMessageId(serverStartReceiveMessageId);
         serverConnection.setStopReceiveMessageId(serverStopReceiveMessageId);
         serverConnection.setAcknowledge(isAcknowledge);
-        serverConnection.setFactoryServiceName(getServiceNameObject());
         if(serverMessageRecycleBufferSize > 0){
             serverConnection.setMessageRecycleBufferSize(serverMessageRecycleBufferSize);
         }
@@ -901,5 +907,21 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
     
     public int getClientCount(){
         return serverConnection == null ? 0 : serverConnection.getClientCount();
+    }
+    
+    public int getSendMessageCacheSize(){
+        return serverConnection == null ? 0 : serverConnection.getSendMessageCacheSize();
+    }
+    
+    public Date getSendMessageCacheOldTime(){
+        return serverConnection == null ? null : serverConnection.getSendMessageCacheOldTime();
+    }
+    
+    public int getMaxMessagePayoutCount(){
+        return serverConnection == null ? 0 : serverConnection.getMaxMessagePayoutCount();
+    }
+    
+    public int getMessagePayoutCount(){
+        return serverConnection == null ? 0 : serverConnection.getMessagePayoutCount();
     }
 }

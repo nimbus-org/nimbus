@@ -62,7 +62,7 @@ public class MessageImpl extends MessageId implements Message, Comparable, Clone
     private Map subjectMap = new LinkedHashMap();
     private Object object;
     private boolean isFirst;
-    private transient long sendTime;
+    private transient long sendTime = -1;
     private transient long receiveTime;
     private transient List windows;
     private transient boolean isLost;
@@ -70,12 +70,19 @@ public class MessageImpl extends MessageId implements Message, Comparable, Clone
     private transient byte[] serializedBytes;
     private transient boolean isSend;
     private transient ClientConnectionImpl clientConnection;
+    private transient ServerConnectionImpl serverConnection;
+    protected transient Externalizer externalizer;
+    private transient boolean isPayout = true;
     
     public MessageImpl(){
     }
     
     public void setClientConnection(ClientConnectionImpl con){
         clientConnection = con;
+    }
+    
+    public void setServerConnection(ServerConnectionImpl con){
+        serverConnection = con;
     }
     
     public void setSend(boolean isSend){
@@ -150,9 +157,14 @@ public class MessageImpl extends MessageId implements Message, Comparable, Clone
                 if(object != null){
                     return object;
                 }
+                ByteArrayInputStream bais = new ByteArrayInputStream(serializedBytes);
                 try{
-                    ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(serializedBytes));
-                    object = ois.readObject();
+                    if(externalizer == null){
+                        ObjectInputStream ois = new ObjectInputStream(bais);
+                        object = ois.readObject();
+                    }else{
+                        object = externalizer.readExternal(bais);
+                    }
                 }catch(IOException e){
                     throw new MessageException(e);
                 }catch(ClassNotFoundException e){
@@ -186,9 +198,10 @@ public class MessageImpl extends MessageId implements Message, Comparable, Clone
         receiveTime = time;
     }
     
-    public synchronized List getWindows(ServerConnectionImpl con, int windowSize, Externalizer ext) throws IOException{
+    public List getWindows(ServerConnectionImpl sc, int windowSize) throws IOException{
         if(windows == null){
-            windows = Window.toWindows(this, con, windowSize, ext);
+            externalizer = sc.externalizer;
+            windows = Window.toWindows(this, sc, windowSize);
         }
         return windows;
     }
@@ -202,7 +215,7 @@ public class MessageImpl extends MessageId implements Message, Comparable, Clone
     }
     
     public void setDestinationIds(Set ids){
-        destinationIds = ids;
+        destinationIds = new HashSet(ids);
     }
     
     public void addDestinationId(Object id){
@@ -264,11 +277,19 @@ public class MessageImpl extends MessageId implements Message, Comparable, Clone
             out.writeObject(entry.getKey());
             out.writeObject(entry.getValue());
         }
+        if(sendTime < 0){
+            sendTime = System.currentTimeMillis();
+        }
+        out.writeLong(sendTime);
         if(serializedBytes == null){
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ObjectOutputStream oos = new ObjectOutputStream(baos);
-            oos.writeObject(object);
-            oos.flush();
+            if(externalizer == null){
+                ObjectOutputStream oos = new ObjectOutputStream(baos);
+                oos.writeObject(object);
+                oos.flush();
+            }else{
+                externalizer.writeExternal(object, baos);
+            }
             out.writeObject(baos.toByteArray());
         }else{
             out.writeObject(serializedBytes);
@@ -283,6 +304,7 @@ public class MessageImpl extends MessageId implements Message, Comparable, Clone
         for(int i = 0; i < size; i++){
             subjectMap.put(in.readObject(), in.readObject());
         }
+        sendTime = in.readLong();
         serializedBytes = (byte[])in.readObject();
     }
     
@@ -302,7 +324,7 @@ public class MessageImpl extends MessageId implements Message, Comparable, Clone
         subjectMap.clear();
         object = null;
         isFirst = false;
-        sendTime = 0l;
+        sendTime = -1l;
         receiveTime = 0l;
         windows = null;
         isLost = false;
@@ -356,5 +378,20 @@ public class MessageImpl extends MessageId implements Message, Comparable, Clone
             clientConnection.recycleMessage(this);
             clientConnection = null;
         }
+        if(serverConnection != null){
+            serverConnection.recycleMessage(this);
+            serverConnection = null;
+        }
+    }
+    
+    public synchronized boolean isPayout(){
+        return isPayout;
+    }
+    public synchronized void setPayout(boolean isPayout){
+        this.isPayout = isPayout;
+    }
+    
+    protected void finalize() throws Throwable{
+        recycle();
     }
 }
