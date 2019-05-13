@@ -59,6 +59,7 @@
     </scm>
     <properties>
         <java.version>1.8</java.version>
+        <filecontrol.java.version>1.8</filecontrol.java.version>
         <compile.target>1.6</compile.target>
         <maven.compiler.source>${compile.target}</maven.compiler.source>
         <maven.compiler.target>${compile.target}</maven.compiler.target>
@@ -614,6 +615,14 @@
                 <configuration>
                     <archive>
                         <manifestFile>${basedir}/src/main/resources/META-INF/MANIFEST.MF</manifestFile>
+                        <manifestEntries>
+                            <Specification-Title>${project.name}</Specification-Title>
+                            <Specification-Version>${project.version}</Specification-Version>
+                            <Implementation-Title>${project.name}</Implementation-Title>
+                            <Implementation-Version>${project.version}</Implementation-Version>
+                            <X-Compile-Source-JDK>${maven.compiler.source}</X-Compile-Source-JDK>
+                            <X-Compile-Target-JDK>${maven.compiler.target}</X-Compile-Target-JDK>
+                        </manifestEntries>
                     </archive>
                 </configuration>
             </plugin>
@@ -834,8 +843,23 @@
             </plugin>
             <plugin>
                 <groupId>com.github.nimbus-org</groupId>
-                <artifactId>commentout-by-javaversion-maven-plugin</artifactId>
+                <artifactId>nimbus-javaversion-filecontrol-maven-plugin</artifactId>
+                <version>1.0</version>
                 <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <javaVersion>${filecontrol.java.version}</javaVersion>
+                            <fromDir>${basedir}/src/main/java</fromDir>
+                            <toDir>${basedir}/target/gen-src</toDir>
+                            <fromFileExtention>jpp</fromFileExtention>
+                            <toFileExtention>java</toFileExtention>
+                        </configuration>
+                    </execution>
                     <execution>
                         <id>replace</id>
                         <phase>generate-sources</phase>
@@ -843,7 +867,7 @@
                             <goal>replace</goal>
                         </goals>
                         <configuration>
-                            <javaVersion>8</javaVersion>
+                            <javaVersion>${filecontrol.java.version}</javaVersion>
                             <fromDir>${basedir}/src/main/java</fromDir>
                             <toDir>${basedir}/target/gen-src</toDir>
                             <fromFileExtention>javapp</fromFileExtention>
