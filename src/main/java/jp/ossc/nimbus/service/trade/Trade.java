@@ -260,6 +260,30 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
     }
     
     /**
+     * 指定された日の取引状態を判定する。<p>
+     *
+     * @param current 日付
+     * @return -3の場合、この取引自体が開始していない。-2の場合、取引前。-1の場合、取引開始。0の場合、取引中。1の場合、取引終了。2の場合、取引後。
+     */
+    public TradeState getTradeState(Date current){
+        if(startTime == null){
+            return TradeState.NOT_TRADE;
+        }else{
+            if(current.before(startTime)){
+                return TradeState.BEFORE;
+            }else if(current.equals(startTime)){
+                return endTime != null && current.equals(endTime) ? TradeState.END : TradeState.START;
+            }else if(endTime == null || current.before(endTime)){
+                return TradeState.HOLDING;
+            }else if(current.equals(endTime)){
+                return TradeState.END;
+            }else{
+                return TradeState.AFTER;
+            }
+        }
+    }
+    
+    /**
      * 取引期間を取得する。<p>
      *
      * @return 取引期間[ms]
@@ -397,5 +421,25 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
         buf.append(", isShortSelling=" + isShortSelling);
         buf.append('}');
         return buf.toString();
+    }
+    
+    /**
+     * 取引状態。<p>
+     *
+     * @author M.Takata
+     */
+    public static enum TradeState{
+        /** 取引前 */
+        BEFORE,
+        /** 取引開始 */
+        START,
+        /** 取引中 */
+        HOLDING,
+        /** 取引終了 */
+        END,
+        /** 取引後 */
+        AFTER,
+        /** 取引していない */
+        NOT_TRADE
     }
 }
