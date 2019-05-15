@@ -47,6 +47,7 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
     protected double endValue;
     protected boolean isShortSelling;
     protected Enum<?> reason;
+    protected long volume = 1;
     
     /**
      * 空のインスタンスを生成する。<p>
@@ -147,6 +148,25 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
     }
     
     /**
+     * 売買高を設定する。<p>
+     * デフォルトは、1。<br>
+     *
+     * @param volume 売買高
+     */
+    public void setVolume(long volume){
+        this.volume = volume;
+    }
+    
+    /**
+     * 売買高を取得する。<p>
+     *
+     * @return 売買高
+     */
+    public long getVolume(){
+        return volume;
+    }
+    
+    /**
      * 指定された時系列要素に取引を開始したことを設定する。<p>
      *
      * @param element 取引を開始した時系列要素
@@ -205,6 +225,7 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
         endTime = null;
         endValue = 0;
         reason = null;
+        volume = 1;
     }
     
     /**
@@ -234,6 +255,30 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
                 }else{
                     return endTime == null ? true : !current.after(endTime);
                 }
+            }
+        }
+    }
+    
+    /**
+     * 指定された日の取引状態を判定する。<p>
+     *
+     * @param current 日付
+     * @return -3の場合、この取引自体が開始していない。-2の場合、取引前。-1の場合、取引開始。0の場合、取引中。1の場合、取引終了。2の場合、取引後。
+     */
+    public TradeState getTradeState(Date current){
+        if(startTime == null){
+            return TradeState.NOT_TRADE;
+        }else{
+            if(current.before(startTime)){
+                return TradeState.BEFORE;
+            }else if(current.equals(startTime)){
+                return endTime != null && current.equals(endTime) ? TradeState.END : TradeState.START;
+            }else if(endTime == null || current.before(endTime)){
+                return TradeState.HOLDING;
+            }else if(current.equals(endTime)){
+                return TradeState.END;
+            }else{
+                return TradeState.AFTER;
             }
         }
     }
@@ -302,7 +347,7 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
      */
     public double getProfit() throws IllegalStateException{
         if(startTime != null && endTime != null){
-            return isShortSelling ? startValue - endValue : endValue - startValue;
+            return (isShortSelling ? startValue - endValue : endValue - startValue) * (double)volume;
         }else{
             final SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS");
             String startTimeStr = startTime == null ? null : format.format(startTime);
@@ -319,7 +364,7 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
      */
     public double getProfit(double value) throws IllegalStateException{
         if(startTime != null){
-            return isShortSelling ? startValue - value : value - startValue;
+            return (isShortSelling ? startValue - value : value - startValue) * (double)volume;
         }else{
             throw new IllegalStateException("Trade is not start.");
         }
@@ -372,8 +417,29 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
         buf.append(", endTime=" + endTimeStr);
         buf.append(", startValue=" + startValue);
         buf.append(", endValue=" + endValue);
+        buf.append(", volume=" + volume);
         buf.append(", isShortSelling=" + isShortSelling);
         buf.append('}');
         return buf.toString();
+    }
+    
+    /**
+     * 取引状態。<p>
+     *
+     * @author M.Takata
+     */
+    public static enum TradeState{
+        /** 取引前 */
+        BEFORE,
+        /** 取引開始 */
+        START,
+        /** 取引中 */
+        HOLDING,
+        /** 取引終了 */
+        END,
+        /** 取引後 */
+        AFTER,
+        /** 取引していない */
+        NOT_TRADE
     }
 }
