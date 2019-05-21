@@ -126,6 +126,16 @@ public class TradePerformance{
     protected double maxProfitInHolding;
     
     /**
+     * 最大利益率。<p>
+     */
+    protected double maxProfitRatio;
+    
+    /**
+     * 保有中取引の最大利益率。<p>
+     */
+    protected double maxProfitRatioInHolding;
+    
+    /**
      * 最大損失。<p>
      */
     protected double maxLoss;
@@ -134,6 +144,16 @@ public class TradePerformance{
      * 保有中取引の最大損失。<p>
      */
     protected double maxLossInHolding;
+    
+    /**
+     * 最大損失率。<p>
+     */
+    protected double maxLossRatio;
+    
+    /**
+     * 保有中取引の最大損失率。<p>
+     */
+    protected double maxLossRatioInHolding;
     
     /**
      * 取引対象開始日時。<p>
@@ -307,6 +327,65 @@ public class TradePerformance{
     }
     
     /**
+     * 平均利益率を取得する。<p>
+     *
+     * @return 平均利益率
+     */
+    public double getAverageProfitRatio(){
+        return winTradeNum == 0 ? 0d  : totalProfitRatio / (double)winTradeNum;
+    }
+    
+    /**
+     * 保有中取引の平均利益率を取得する。<p>
+     *
+     * @return 保有中取引の平均利益率
+     */
+    public double getAverageProfitRatioInHolding(){
+        return getWinTradeNumInHolding() == 0 ? 0d  : (getTotalProfitRatioInHolding() / (double)getWinTradeNumInHolding());
+    }
+    
+    /**
+     * 保有中取引を含む平均利益率を取得する。<p>
+     *
+     * @return 保有中取引を含む平均利益率
+     */
+    public double getAverageProfitRatioWithHolding(){
+        return getWinTradeNumWithHolding() == 0 ? 0d  : (getTotalProfitRatioWithHolding() / (double)getWinTradeNumWithHolding());
+    }
+    
+    /**
+     * 最大利益率を取得する。<p>
+     *
+     * @return 最大利益率
+     */
+    public double getMaxProfitRatio(){
+        return maxProfitRatio;
+    }
+    
+    /**
+     * 保有中取引の最大利益率を取得する。<p>
+     *
+     * @return 保有中取引の最大利益率
+     */
+    public double getMaxProfitRatioInHolding(){
+        if(currentTrade == null){
+            return maxProfitRatioInHolding;
+        }else{
+            final double profitRatio = currentTrade.getProfitRatio(getCurrentTimeSeriesElement().getValue());
+            return Math.max(maxProfitRatioInHolding, profitRatio);
+        }
+    }
+    
+    /**
+     * 保有中取引を含む最大利益率を取得する。<p>
+     *
+     * @return 保有中取引を含む最大利益率
+     */
+    public double getMaxProfitRatioWithHolding(){
+        return Math.max(maxProfitRatio, getMaxProfitRatioInHolding());
+    }
+    
+    /**
      * 総損失を取得する。<p>
      *
      * @return 総損失
@@ -433,6 +512,68 @@ public class TradePerformance{
     }
     
     /**
+     * 平均損失率を取得する。<p>
+     *
+     * @return 平均損失率
+     */
+    public double getAverageLossRatio(){
+        final int lossTradeNum = tradeNum - winTradeNum;
+        return lossTradeNum == 0 ? 0d : totalLossRatio / (double)lossTradeNum;
+    }
+    
+    /**
+     * 保有中取引の平均損失率を取得する。<p>
+     *
+     * @return 保有中取引の平均損失率
+     */
+    public double getAverageLossRatioInHolding(){
+        final int lossTradeNum = getTradeNumInHolding() - getWinTradeNumInHolding();
+        return lossTradeNum == 0 ? 0d : getTotalLossRatioInHolding() / (double)lossTradeNum;
+    }
+    
+    /**
+     * 保有中取引を含む平均損失率を取得する。<p>
+     *
+     * @return 保有中取引を含む平均損失率
+     */
+    public double getAverageLossRatioWithHolding(){
+        final int lossTradeNum = getTradeNumWithHolding() - getWinTradeNumWithHolding();
+        return lossTradeNum == 0 ? 0d : (getTotalLossRatioWithHolding() / (double)lossTradeNum);
+    }
+    
+    /**
+     * 最大損失率を取得する。<p>
+     *
+     * @return 最大損失率
+     */
+    public double getMaxLossRatio(){
+        return maxLossRatio;
+    }
+    
+    /**
+     * 保有中取引の最大損失率を取得する。<p>
+     *
+     * @return 保有中取引の最大損失率
+     */
+    public double getMaxLossRatioInHolding(){
+        if(currentTrade == null){
+            return maxLossRatioInHolding;
+        }else{
+            final double profitRatio = currentTrade.getProfitRatio(getCurrentTimeSeriesElement().getValue());
+            return Math.min(maxLossRatioInHolding, profitRatio);
+        }
+    }
+    
+    /**
+     * 保有中取引を含む最大損失率を取得する。<p>
+     *
+     * @return 保有中取引を含む最大損失率
+     */
+    public double getMaxLossRatioWithHolding(){
+        return Math.max(maxLossRatio, getMaxLossRatioInHolding());
+    }
+    
+    /**
      * 総損益を取得する。<p>
      *
      * @return 総損益
@@ -511,6 +652,33 @@ public class TradePerformance{
      */
     public double getTotalProfitAndLossRatioWithHolding(){
         return getTotalProfitAndLossRatio() + getTotalProfitAndLossRatioInHolding();
+    }
+    
+    /**
+     * 平均損益率を取得する。<p>
+     *
+     * @return 平均損益率
+     */
+    public double getAverageProfitAndLossRatio(){
+        return tradeNum == 0 ? 0d : (getTotalProfitAndLossRatio() / (double)tradeNum);
+    }
+    
+    /**
+     * 保有中取引の平均損益率を取得する。<p>
+     *
+     * @return 保有中取引の平均損益率
+     */
+    public double getAverageProfitAndLossRatioInHolding(){
+        return getTradeNumInHolding() == 0 ? 0d : (getTotalProfitAndLossRatioInHolding() / (double)getTradeNumInHolding());
+    }
+    
+    /**
+     * 保有中取引を含む平均損率益を取得する。<p>
+     *
+     * @return 保有中取引を含む平均損益率
+     */
+    public double getAverageProfitAndLossRatioWithHolding(){
+        return getTradeNumWithHolding() == 0 ? 0d : (getTotalProfitAndLossRatioWithHolding() / (double)getTradeNumWithHolding());
     }
     
     /**
@@ -773,11 +941,17 @@ public class TradePerformance{
                         if(profit > maxProfitInHolding){
                             maxProfitInHolding = profit;
                         }
+                        if(profitRatio > maxProfitRatioInHolding){
+                            maxProfitRatioInHolding = profitRatio;
+                        }
                     }else{
                         totalLossInHolding += profit;
                         totalLossRatioInHolding += profitRatio;
                         if(profit < maxLossInHolding){
                             maxLossInHolding = profit;
+                        }
+                        if(profitRatio < maxLossRatioInHolding){
+                            maxLossRatioInHolding = profitRatio;
                         }
                     }
                 }else{
@@ -796,11 +970,17 @@ public class TradePerformance{
                         if(profit > maxProfit){
                             maxProfit = profit;
                         }
+                        if(profitRatio > maxProfitRatio){
+                            maxProfitRatio = profitRatio;
+                        }
                     }else{
                         totalLoss += profit;
                         totalLossRatio += profitRatio;
                         if(profit < maxLoss){
                             maxLoss = profit;
+                        }
+                        if(profitRatio < maxLossRatio){
+                            maxLossRatio = profitRatio;
                         }
                     }
                 }
@@ -884,11 +1064,17 @@ public class TradePerformance{
             if(profit > maxProfit){
                 maxProfit = profit;
             }
+            if(profitRatio > maxProfitRatio){
+                maxProfitRatio = profitRatio;
+            }
         }else{
             totalLoss += profit;
             totalLossRatio += profitRatio;
             if(profit < maxLoss){
                 maxLoss = profit;
+            }
+            if(profitRatio < maxLossRatio){
+                maxLossRatio = profitRatio;
             }
         }
         return element;
@@ -914,6 +1100,10 @@ public class TradePerformance{
         maxProfitInHolding = 0d;
         maxLoss = 0d;
         maxLossInHolding = 0d;
+        maxProfitRatio = 0d;
+        maxProfitRatioInHolding = 0d;
+        maxLossRatio = 0d;
+        maxLossRatioInHolding = 0d;
         tradeTargetStartTime = null;
         tradeTargetEndTime = null;
         totalHoldingTermMillis = 0;
@@ -939,6 +1129,10 @@ public class TradePerformance{
         buf.append(", maxProfitInHolding=").append(getMaxProfitInHolding());
         buf.append(", maxLoss=").append(maxLoss);
         buf.append(", maxLossInHolding=").append(getMaxLossInHolding());
+        buf.append(", maxProfitRatio=").append(maxProfitRatio);
+        buf.append(", maxProfitRatioInHolding=").append(getMaxProfitRatioInHolding());
+        buf.append(", maxLossRatio=").append(maxLossRatio);
+        buf.append(", maxLossRatioInHolding=").append(getMaxLossRatioInHolding());
         buf.append(", tradeTargetStartTime=").append(tradeTargetStartTime);
         buf.append(", tradeTargetEndTime=").append(tradeTargetEndTime);
         buf.append(", totalHoldingTermMillis=").append(totalHoldingTermMillis);
