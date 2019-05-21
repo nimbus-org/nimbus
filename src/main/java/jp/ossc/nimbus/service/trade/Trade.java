@@ -347,7 +347,7 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
      */
     public double getProfit() throws IllegalStateException{
         if(startTime != null && endTime != null){
-            return (isShortSelling ? startValue - endValue : endValue - startValue) * (double)volume;
+            return (isShortSelling ? (startValue - endValue) : (endValue - startValue)) * (double)volume;
         }else{
             final SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS");
             String startTimeStr = startTime == null ? null : format.format(startTime);
@@ -364,7 +364,7 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
      */
     public double getProfit(double value) throws IllegalStateException{
         if(startTime != null){
-            return (isShortSelling ? startValue - value : value - startValue) * (double)volume;
+            return (isShortSelling ? (startValue - value) : (value - startValue)) * (double)volume;
         }else{
             throw new IllegalStateException("Trade is not start.");
         }
