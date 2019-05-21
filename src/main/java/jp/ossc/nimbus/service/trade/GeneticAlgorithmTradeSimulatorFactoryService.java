@@ -146,8 +146,6 @@ public class GeneticAlgorithmTradeSimulatorFactoryService extends FactoryService
             );
         }else if(tradeSimulatorSeed != null){
             tradeSimulator.setTradeSimulatorSeed(tradeSimulatorSeed);
-        }else{
-            throw new IllegalArgumentException("TradeSimulatorSeed is null.");
         }
         if(geneticAlgorithmServiceName != null){
             tradeSimulator.setGeneticAlgorithm(
