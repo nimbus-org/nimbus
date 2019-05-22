@@ -47,10 +47,10 @@ import jp.ossc.nimbus.service.trade.TradeSignCalcUtil.PeriodicPrice;
 public class MACDTradeSignFactoryService extends FactoryServiceBase implements MACDTradeSignFactoryServiceMBean{
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+    protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
     protected boolean isShortSelling;
     protected boolean isOnlyReverseTrade;
     protected int shortEMAPeriod = 25;
@@ -92,7 +92,7 @@ public class MACDTradeSignFactoryService extends FactoryServiceBase implements M
 
     @Override
     public void setShortEMAPeriod(int period){
-    	shortEMAPeriod = period;
+        shortEMAPeriod = period;
     }
     
     @Override
@@ -102,9 +102,9 @@ public class MACDTradeSignFactoryService extends FactoryServiceBase implements M
     
     @Override
     public void setShortEMAPeriodGene(IntegerGene gene){
-    	shortEMAPeriodGene = gene;
+        shortEMAPeriodGene = gene;
         if(shortEMAPeriodGene != null){
-        	shortEMAPeriodGene.setName("shortEMAPeriod");
+            shortEMAPeriodGene.setName("shortEMAPeriod");
         }
     }
     
@@ -116,7 +116,7 @@ public class MACDTradeSignFactoryService extends FactoryServiceBase implements M
 
     @Override
     public void setLongEMAPeriod(int period){
-    	longEMAPeriod = period;
+        longEMAPeriod = period;
     }
     
     @Override
@@ -126,9 +126,9 @@ public class MACDTradeSignFactoryService extends FactoryServiceBase implements M
     
     @Override
     public void setLongEMAPeriodGene(IntegerGene gene){
-    	longEMAPeriodGene = gene;
+        longEMAPeriodGene = gene;
         if(longEMAPeriodGene != null){
-        	longEMAPeriodGene.setName("longEMAPeriod");
+            longEMAPeriodGene.setName("longEMAPeriod");
         }
     }
     
@@ -139,7 +139,7 @@ public class MACDTradeSignFactoryService extends FactoryServiceBase implements M
     
     @Override
     public void setSignal(int signal){
-    	this.signal = signal;
+        this.signal = signal;
     }
     
     @Override
@@ -149,9 +149,9 @@ public class MACDTradeSignFactoryService extends FactoryServiceBase implements M
     
     @Override
     public void setSignalGene(IntegerGene gene){
-    	signalGene = gene;
+        signalGene = gene;
         if(signalGene != null){
-        	signalGene.setName("signal");
+            signalGene.setName("signal");
         }
     }
 
@@ -161,7 +161,7 @@ public class MACDTradeSignFactoryService extends FactoryServiceBase implements M
     }
     
     protected Object createInstance() throws Exception{
-    	MACDTradeSign ts = new MACDTradeSign();
+        MACDTradeSign ts = new MACDTradeSign();
         
         ts.setGeneCrossoverType(geneCrossoverType);
         ts.setShortSelling(isShortSelling);
@@ -185,10 +185,10 @@ public class MACDTradeSignFactoryService extends FactoryServiceBase implements M
     public static class MACDTradeSign implements TradeSign, java.io.Serializable, Cloneable{
         
         /**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
-		protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
+         * 
+         */
+        private static final long serialVersionUID = 1L;
+        protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
         protected boolean isShortSelling;
         protected int shortEMAPeriod;
         protected int longEMAPeriod;
@@ -222,7 +222,7 @@ public class MACDTradeSignFactoryService extends FactoryServiceBase implements M
         }
         
         public void setShortEMAPeriod(int period){
-        	this.shortEMAPeriod = period;
+            this.shortEMAPeriod = period;
         }
         
         public int getShortEMAPeriod(){
@@ -237,7 +237,7 @@ public class MACDTradeSignFactoryService extends FactoryServiceBase implements M
 
         
         public void setLongEMAPeriod(int period){
-        	this.longEMAPeriod = period;
+            this.longEMAPeriod = period;
         }
         
         public int getLongEMAPeriod(){
@@ -251,7 +251,7 @@ public class MACDTradeSignFactoryService extends FactoryServiceBase implements M
         }
 
         public void setSignal(int signal){
-        	this.signal = signal;
+            this.signal = signal;
         }
         
         public int getSignal(){
@@ -268,7 +268,7 @@ public class MACDTradeSignFactoryService extends FactoryServiceBase implements M
             tradeTarget = target;
         }
         
-        public void calculate() throws Exception{        	
+        public void calculate() throws Exception{            
             TimeSeries<TimeSeries.Element> ts = tradeTarget.getTimeSeries();
             signs = new Sign[ts.size()];
             int shortEMAPeriod = getShortEMAPeriod();
@@ -277,7 +277,7 @@ public class MACDTradeSignFactoryService extends FactoryServiceBase implements M
             if(ts.size() < longEMAPeriod){
                 return;
             }
-        	
+            
             //短期EMA
             PeriodicPrice shortPriceAverage = new PeriodicPrice(shortEMAPeriod);
             //長期EMA
@@ -296,12 +296,12 @@ public class MACDTradeSignFactoryService extends FactoryServiceBase implements M
             for(int i = 0; i < ts.size(); i++){
                 OHLCVTimeSeries.OHLCVElement element = (OHLCVTimeSeries.OHLCVElement)ts.get(i);
                 signs[i] = new Sign(Sign.Type.NA);
-    			if(element.getVolume() == 0d){
-    				continue;
-    			}
+                if(element.getVolume() == 0d){
+                    continue;
+                }
                 double shortAverage = shortPriceAverage.addAverage(element.getCloseValue());
                 if(!Double.isNaN(shortAverage)){
-              	    if(!Double.isNaN(preShortEMAAverage)){
+                      if(!Double.isNaN(preShortEMAAverage)){
                         shortEMAAverage =  (preShortEMAAverage + (2.0 / (double)(shortEMAPeriod + 1)) * (element.getCloseValue() - preShortEMAAverage));
                     }else{
                         shortEMAAverage = shortAverage;
@@ -312,33 +312,33 @@ public class MACDTradeSignFactoryService extends FactoryServiceBase implements M
                 double longAverage = longPriceAverage.addAverage(element.getCloseValue());
                 if(!Double.isNaN(longAverage)){
                     if(!Double.isNaN(preLongEMAAverage)){
-                  	    longEMAAverage =  (preLongEMAAverage + (2.0 / (double)(longEMAPeriod + 1)) * (element.getCloseValue() - preLongEMAAverage));
+                          longEMAAverage =  (preLongEMAAverage + (2.0 / (double)(longEMAPeriod + 1)) * (element.getCloseValue() - preLongEMAAverage));
                     }else{
-                  	    longEMAAverage = longAverage;
+                          longEMAAverage = longAverage;
                     }
                     preLongEMAAverage = longEMAAverage;
 
                     if(!Double.isNaN(shortEMAAverage) && !Double.isNaN(longEMAAverage)){
-                  	    macd = shortEMAAverage - longEMAAverage;
+                          macd = shortEMAAverage - longEMAAverage;
                         macdSignal = macdSignalAverage.addAverage(macd);
                         if(!Double.isNaN(macdSignal)){
-                     	    if(!Double.isNaN(preMacdSignal)){
-                     		    macdSignal =  (preMacdSignal + (2.0 / (double)(signal + 1)) * (macd - preMacdSignal));
+                             if(!Double.isNaN(preMacdSignal)){
+                                 macdSignal =  (preMacdSignal + (2.0 / (double)(signal + 1)) * (macd - preMacdSignal));
                             }
                         }
                      
                         if (IsBuySignZero(preMacd, macd)){
-                    	    signs[i].setType(Sign.Type.BUY);
-                     	    signs[i].setReason(Reason.BUY_CROSS);
+                            signs[i].setType(Sign.Type.BUY);
+                             signs[i].setReason(Reason.BUY_CROSS);
                         }else if(IsBuySignSignal(preMacdSignal,  preMacd, macdSignal, macd)){
-                    	    signs[i].setType(Sign.Type.BUY);
-                     	    signs[i].setReason(Reason.BUY_CROSS);
+                            signs[i].setType(Sign.Type.BUY);
+                             signs[i].setReason(Reason.BUY_CROSS);
                         }else if (IsSellSignZero(preMacd, macd)){
-                    	    signs[i].setType(Sign.Type.SELL);
-                      	    signs[i].setReason(Reason.SELL_CROSS);  
+                            signs[i].setType(Sign.Type.SELL);
+                              signs[i].setReason(Reason.SELL_CROSS);  
                         }else if (IsSellSignSignal(preMacdSignal,  preMacd, macdSignal, macd)){
                             signs[i].setType(Sign.Type.SELL);
-                       	    signs[i].setReason(Reason.SELL_CROSS); 
+                               signs[i].setReason(Reason.SELL_CROSS); 
                         }
                      
                         preMacd = macd;
@@ -350,8 +350,8 @@ public class MACDTradeSignFactoryService extends FactoryServiceBase implements M
 
         private boolean IsSellSignZero(double beforeMACD, double MACD){
             if (!Double.isNaN(beforeMACD) && !Double.isNaN(MACD) &&
-                beforeMACD >0 && MACD < 0){       	
-        	    return true;
+                beforeMACD >0 && MACD < 0){           
+                return true;
             }
             return false;
         }
@@ -360,13 +360,13 @@ public class MACDTradeSignFactoryService extends FactoryServiceBase implements M
             if (!Double.isNaN(beforeMACDSignal) && !Double.isNaN(beforeMACD) &&
                 !Double.isNaN(MACDSignal) && !Double.isNaN(MACD) &&
                 beforeMACDSignal < beforeMACD && MACDSignal > MACD){
-        	    return true;
+                return true;
             }
             return false;
         }
     
         private boolean IsBuySignZero(double beforeMACD, double MACD){
-            if ( !Double.isNaN(beforeMACD) && !Double.isNaN(MACD) && beforeMACD < 0 && MACD > 0){        	
+            if ( !Double.isNaN(beforeMACD) && !Double.isNaN(MACD) && beforeMACD < 0 && MACD > 0){
                 return true;
             }
             return false;

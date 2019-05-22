@@ -47,10 +47,10 @@ import jp.ossc.nimbus.service.trade.TradeSignCalcUtil.PeriodicPrice;
 public class BollingerBandStaticTradeSignFactoryService extends FactoryServiceBase implements BollingerBandStaticTradeSignFactoryServiceMBean{
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+    protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
     protected boolean isShortSelling;
     protected boolean isOnlyReverseTrade;
     protected int period = 25;
@@ -113,7 +113,7 @@ public class BollingerBandStaticTradeSignFactoryService extends FactoryServiceBa
     
     @Override
     public void setDeviation(int deviation){
-    	this.deviation = deviation;
+        this.deviation = deviation;
     }
     
     @Override
@@ -123,9 +123,9 @@ public class BollingerBandStaticTradeSignFactoryService extends FactoryServiceBa
     
     @Override
     public void setDeviationGene(IntegerGene gene){
-    	deviationGene = gene;
+        deviationGene = gene;
         if(deviationGene != null){
-        	deviationGene.setName("deviation");
+            deviationGene.setName("deviation");
         }
     }
 
@@ -135,7 +135,7 @@ public class BollingerBandStaticTradeSignFactoryService extends FactoryServiceBa
     }
     
     protected Object createInstance() throws Exception{
-    	BollingerBandStaticTradeSign ts = new BollingerBandStaticTradeSign();
+        BollingerBandStaticTradeSign ts = new BollingerBandStaticTradeSign();
         
         ts.setGeneCrossoverType(geneCrossoverType);
         ts.setShortSelling(isShortSelling);
@@ -155,10 +155,10 @@ public class BollingerBandStaticTradeSignFactoryService extends FactoryServiceBa
     public static class BollingerBandStaticTradeSign implements TradeSign, java.io.Serializable, Cloneable{
         
         /**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
-		protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
+         * 
+         */
+        private static final long serialVersionUID = 1L;
+        protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
         protected boolean isShortSelling;
         protected int period;
         protected int devitation;
@@ -191,7 +191,7 @@ public class BollingerBandStaticTradeSignFactoryService extends FactoryServiceBa
         }
         
         public void setPeriod(int period){
-        	this.period = period;
+            this.period = period;
         }
         public int getPeriod(){
             if(complexGene != null){
@@ -204,7 +204,7 @@ public class BollingerBandStaticTradeSignFactoryService extends FactoryServiceBa
         }
  
         public void setDeviation(int devitation){
-        	this.devitation = devitation;
+            this.devitation = devitation;
         }
         
         public int getDeviation(){
@@ -221,7 +221,7 @@ public class BollingerBandStaticTradeSignFactoryService extends FactoryServiceBa
             tradeTarget = target;
         }
         
-        public void calculate() throws Exception{        	
+        public void calculate() throws Exception{            
             TimeSeries<TimeSeries.Element> ts = tradeTarget.getTimeSeries();
             signs = new Sign[ts.size()];
             int period = getPeriod();
@@ -238,33 +238,33 @@ public class BollingerBandStaticTradeSignFactoryService extends FactoryServiceBa
             for(int i = 0; i < ts.size(); i++){
                 OHLCVTimeSeries.OHLCVElement element = (OHLCVTimeSeries.OHLCVElement)ts.get(i);
                 signs[i] = new Sign(Sign.Type.NA);
-    			if(element.getVolume() == 0d){
-    				continue;
-    			}
-            	double[] divitations = periodicPrice.addDevitation(element.getCloseValue(), deviation, i, ts);
-            	if(period <= i + 1){
-            		if(Double.isNaN(divitations[0])){
-            			preUpDivitation = divitations[0];
-            			continue;
-            		}
-            		
-            		if(Double.isNaN(divitations[1])){
-            			preDownDivitation = divitations[1];
-            			continue;
-            		}
-            		
-                    if ((((OHLCVTimeSeries.OHLCVElement)ts.get(i - 1)).getCloseValue() < preDownDivitation) && 
-                    		(divitations[1] < ((OHLCVTimeSeries.OHLCVElement)ts.get(i)).getCloseValue())){
-                    	signs[i].setType(Sign.Type.BUY);
-                    	signs[i].setReason(Reason.BUY_CROSS);
-                    }else if ((preUpDivitation < ((OHLCVTimeSeries.OHLCVElement)ts.get(i - 1)).getCloseValue()) && 
-                    		(((OHLCVTimeSeries.OHLCVElement)ts.get(i)).getCloseValue() < divitations[0])){
-                    	signs[i].setType(Sign.Type.SELL);
-                    	signs[i].setReason(Reason.SELL_CROSS);
+                if(element.getVolume() == 0d){
+                    continue;
+                }
+                double[] divitations = periodicPrice.addDevitation(element.getCloseValue(), deviation, i, ts);
+                if(period <= i + 1){
+                    if(Double.isNaN(divitations[0])){
+                        preUpDivitation = divitations[0];
+                        continue;
                     }
-            	}
-            	preUpDivitation = divitations[0];
-            	preDownDivitation = divitations[1];
+                    
+                    if(Double.isNaN(divitations[1])){
+                        preDownDivitation = divitations[1];
+                        continue;
+                    }
+                    
+                    if ((((OHLCVTimeSeries.OHLCVElement)ts.get(i - 1)).getCloseValue() < preDownDivitation) && 
+                            (divitations[1] < ((OHLCVTimeSeries.OHLCVElement)ts.get(i)).getCloseValue())){
+                        signs[i].setType(Sign.Type.BUY);
+                        signs[i].setReason(Reason.BUY_CROSS);
+                    }else if ((preUpDivitation < ((OHLCVTimeSeries.OHLCVElement)ts.get(i - 1)).getCloseValue()) && 
+                            (((OHLCVTimeSeries.OHLCVElement)ts.get(i)).getCloseValue() < divitations[0])){
+                        signs[i].setType(Sign.Type.SELL);
+                        signs[i].setReason(Reason.SELL_CROSS);
+                    }
+                }
+                preUpDivitation = divitations[0];
+                preDownDivitation = divitations[1];
             }
             
         }
@@ -274,7 +274,7 @@ public class BollingerBandStaticTradeSignFactoryService extends FactoryServiceBa
         }
         
         public Object clone(){
-        	BollingerBandStaticTradeSign clone = null;
+            BollingerBandStaticTradeSign clone = null;
             try{
                 clone = (BollingerBandStaticTradeSign)super.clone();
             }catch(CloneNotSupportedException e){

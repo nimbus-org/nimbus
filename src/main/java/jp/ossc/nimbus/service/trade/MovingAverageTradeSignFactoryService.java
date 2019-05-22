@@ -47,10 +47,10 @@ import jp.ossc.nimbus.service.trade.TradeSignCalcUtil.PeriodicPrice;
 public class MovingAverageTradeSignFactoryService extends FactoryServiceBase implements MovingAverageTradeSignFactoryServiceMBean{
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+    protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
     protected boolean isShortSelling;
     protected boolean isOnlyReverseTrade;
     protected int shortPeriod = 25;
@@ -123,9 +123,9 @@ public class MovingAverageTradeSignFactoryService extends FactoryServiceBase imp
     
     @Override
     public void setLongPeriodGene(IntegerGene gene){
-    	longPeriodGene = gene;
+        longPeriodGene = gene;
         if(longPeriodGene != null){
-        	longPeriodGene.setName("longPeriod");
+            longPeriodGene.setName("longPeriod");
         }
     }
 
@@ -155,10 +155,10 @@ public class MovingAverageTradeSignFactoryService extends FactoryServiceBase imp
     public static class MovingAverageTradeSign implements TradeSign, java.io.Serializable, Cloneable{
         
         /**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
-		protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
+         * 
+         */
+        private static final long serialVersionUID = 1L;
+        protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
         protected boolean isShortSelling;
         protected int shortPeriod;
         protected int longPeriod;
@@ -191,7 +191,7 @@ public class MovingAverageTradeSignFactoryService extends FactoryServiceBase imp
         }
         
         public void setShortPeriod(int period){
-        	shortPeriod = period;
+            shortPeriod = period;
         }
         public int getShortPeriod(){
             if(complexGene != null){
@@ -204,7 +204,7 @@ public class MovingAverageTradeSignFactoryService extends FactoryServiceBase imp
         }
  
         public void setLongPeriod(int period){
-        	longPeriod = period;
+            longPeriod = period;
         }
         
         public int getLongPeriod(){
@@ -221,7 +221,7 @@ public class MovingAverageTradeSignFactoryService extends FactoryServiceBase imp
             tradeTarget = target;
         }
         
-        public void calculate() throws Exception{        	
+        public void calculate() throws Exception{            
             TimeSeries<TimeSeries.Element> ts = tradeTarget.getTimeSeries();
             signs = new Sign[ts.size()];
             int shortPeriod = getShortPeriod();
@@ -239,29 +239,29 @@ public class MovingAverageTradeSignFactoryService extends FactoryServiceBase imp
             for(int i = 0; i < ts.size(); i++){
                 OHLCVTimeSeries.OHLCVElement element = (OHLCVTimeSeries.OHLCVElement)ts.get(i);
                 signs[i] = new Sign(Sign.Type.NA);
-    			if(element.getVolume() == 0d){
-    				continue;
-    			}   			
-            	double shotAverage = shortPeriodicPrice.addAverage(element.getCloseValue());
-            	double longAverage = longPeriodicPrice.addAverage(element.getCloseValue());
-            	if(longPeriod <= i + 1){
-            		if(Double.isNaN(preLongAverage)){
-            			preShortAverage = shotAverage;
-            			preLongAverage = longAverage;
-            			continue;
-            		}
-
-            		if (preShortAverage < preLongAverage && shotAverage >= longAverage){
-                    	signs[i].setType(Sign.Type.BUY);
-                    	signs[i].setReason(Reason.GOLDEN_CROSS);
-                    }else if (preShortAverage > preLongAverage && shotAverage <= longAverage){
-                    	signs[i].setType(Sign.Type.SELL);
-                    	signs[i].setReason(Reason.DEAD_CROSS);
+                if(element.getVolume() == 0d){
+                    continue;
+                }               
+                double shotAverage = shortPeriodicPrice.addAverage(element.getCloseValue());
+                double longAverage = longPeriodicPrice.addAverage(element.getCloseValue());
+                if(longPeriod <= i + 1){
+                    if(Double.isNaN(preLongAverage)){
+                        preShortAverage = shotAverage;
+                        preLongAverage = longAverage;
+                        continue;
                     }
-            		
+
+                    if (preShortAverage < preLongAverage && shotAverage >= longAverage){
+                        signs[i].setType(Sign.Type.BUY);
+                        signs[i].setReason(Reason.GOLDEN_CROSS);
+                    }else if (preShortAverage > preLongAverage && shotAverage <= longAverage){
+                        signs[i].setType(Sign.Type.SELL);
+                        signs[i].setReason(Reason.DEAD_CROSS);
+                    }
+                    
                     preShortAverage = shotAverage;
-        			preLongAverage = longAverage;
-            	}
+                    preLongAverage = longAverage;
+                }
             }
         }
         
