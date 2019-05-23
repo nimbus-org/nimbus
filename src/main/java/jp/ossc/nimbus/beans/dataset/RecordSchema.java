@@ -209,6 +209,68 @@ public class RecordSchema{
     }
     
     /**
+     * レコードの表層的なスキーマ定義を作成する。<p>
+     *
+     * @param propertyNames 表層的に見せたいプロパティ名の配列
+     * @param isIgnoreUnknown trueの場合、存在しないプロパティを指定された場合に、無視する。falseの場合は、例外をthrowする
+     * @exception PropertySchemaDefineException プロパティのスキーマ定義に失敗した場合
+     */
+    public RecordSchema createSuperficialRecordSchema(String[] propertyNames, boolean isIgnoreUnknown){
+        RecordSchema superficial = new RecordSchema();
+        List schemata = new ArrayList(propertyNames.length);
+        if(propertyNames != null){
+            for(int i = 0; i < propertyNames.length; i++){
+                final int index = getPropertyIndex(propertyNames[i]);
+                if(index == -1){
+                    if(isIgnoreUnknown){
+                        continue;
+                    }else{
+                        throw new PropertySchemaDefineException(
+                            this.schema,
+                            "Property name is not undefined. name=" + propertyNames[i]
+                        );
+                    }
+                }
+                schemata.add(getPropertySchema(index));
+            }
+        }
+        PropertySchema[] propSchemata = (PropertySchema[])schemata.toArray(new PropertySchema[schemata.size()]);
+        superficial.setPropertySchemata(propSchemata);
+        return superficial;
+    }
+    
+    /**
+     * レコードの表層的なスキーマ定義を作成する。<p>
+     *
+     * @param propertyIndexes 表層的に見せたいプロパティのインデックス配列
+     * @param isIgnoreUnknown trueの場合、存在しないプロパティを指定された場合に、無視する。falseの場合は、例外をthrowする
+     * @exception PropertySchemaDefineException プロパティのスキーマ定義に失敗した場合
+     */
+    public RecordSchema createSuperficialRecordSchema(int[] propertyIndexes, boolean isIgnoreUnknown){
+        RecordSchema superficial = new RecordSchema();
+        List schemata = new ArrayList(propertyIndexes.length);
+        if(propertyIndexes != null){
+            for(int i = 0; i < propertyIndexes.length; i++){
+                PropertySchema propSchema = getPropertySchema(propertyIndexes[i]);
+                if(propSchema == null){
+                    if(isIgnoreUnknown){
+                        continue;
+                    }else{
+                        throw new PropertySchemaDefineException(
+                            this.schema,
+                            "Property index is not undefined. index=" + propertyIndexes[i]
+                        );
+                    }
+                }
+                schemata.add(propSchema);
+            }
+        }
+        PropertySchema[] propSchemata = (PropertySchema[])schemata.toArray(new PropertySchema[schemata.size()]);
+        superficial.setPropertySchemata(propSchemata);
+        return superficial;
+    }
+    
+    /**
      * レコードのスキーマ定義を設定する。<p>
      *
      * @param schema レコードのスキーマ定義
