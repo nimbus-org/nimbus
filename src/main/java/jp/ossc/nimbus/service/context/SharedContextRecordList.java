@@ -177,7 +177,11 @@ public class SharedContextRecordList extends RecordList implements SharedContext
     
     public Record createRecord(){
         if(recordClass == null){
-            return new SharedContextRecord(recordSchema);
+            SharedContextRecord record = new SharedContextRecord(recordSchema);
+            if(superficialRecordSchema != null){
+                record.setSuperficialRecordSchema(superficialRecordSchema);
+            }
+            return record;
         }else{
             return super.createRecord();
         }
