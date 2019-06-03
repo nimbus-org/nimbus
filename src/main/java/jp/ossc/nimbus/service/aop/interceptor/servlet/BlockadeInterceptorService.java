@@ -380,7 +380,7 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
             if(checkTargetObject == null) {
                 checkTargetObject = request.getAttribute(requestObjectAttributeName);
                 if (checkTargetObject == null) {
-                    throw new BlockadeProcessException("CheckTargetObject is not found.");
+                    throw new BlockadeCheckTargetNotFoundException("CheckTargetObject is not found.");
                 }
             }
             if (specialUserCodeMaster instanceof RecordList) {
@@ -414,7 +414,7 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
             if (checkTargetObject == null) {
                 checkTargetObject = request.getAttribute(requestObjectAttributeName);
                 if (checkTargetObject == null) {
-                    throw new BlockadeProcessException("CheckTargetObject is null.");
+                    throw new BlockadeCheckTargetNotFoundException("CheckTargetObject is null.");
                 }
             }
             blockadeFilterMap = new HashMap();
