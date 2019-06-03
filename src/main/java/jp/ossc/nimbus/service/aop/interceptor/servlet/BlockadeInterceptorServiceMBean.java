@@ -245,6 +245,35 @@ public interface BlockadeInterceptorServiceMBean
     public String getSessionObjectAttributeName();
 
     /**
+     * 特権ユーザをSession上のオブジェクトからチェックするかを取得する。<p>
+     * 
+     * @return Session上のオブジェクトからチェックするか
+     */
+    public boolean isCheckSessionSpecialUser();
+
+    /**
+     * 特権ユーザをSession上のオブジェクトからチェックするかを設定する。<p>
+     * デフォルトは、falseでチェックしない。
+     * 
+     * @param isCheckSession Session上のオブジェクトからチェックするか
+     */
+    public void setCheckSessionSpecialUser(boolean isCheckSession);
+
+    /**
+     * 閉塞チェックを行う属性をSession上のオブジェクトからチェックするかを取得する。<p>
+     * 
+     * @return Session上のオブジェクトからチェックするか
+     */
+    public boolean isCheckSessionBlockade();
+
+    /**
+     * 閉塞チェックを行う属性をSession上のオブジェクトからチェックするかを設定する。<p>
+     * 
+     * @param isCheckSession Session上のオブジェクトからチェックするか
+     */
+    public void setCheckSessionBlockade(boolean isCheckSession);
+    
+    /**
      * "閉塞状態：開放"を表すステータス値を取得する。<p>
      * 
      * @return  "閉塞状態：開放"を表すステータス値

@@ -137,6 +137,8 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
     private String messagePropertyName = DEFAULT_PROPERTY_NAME_MESSAGE;
     
     private String sessionObjectAttributeName;
+    private boolean isCheckSessionSpecialUser;
+    private boolean isCheckSessionBlockade;
     
     private int stateOpen = BLOCKADE_STATE_OPEN;
     private int stateAllClose = BLOCKADE_STATE_ALL_CLOSE;
@@ -233,6 +235,22 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
 
     public void setSessionObjectAttributeName(String attributeName) {
         sessionObjectAttributeName = attributeName;
+    }
+    
+    public boolean isCheckSessionSpecialUser() {
+        return isCheckSessionSpecialUser;
+    }
+
+    public void setCheckSessionSpecialUser(boolean isCheckSession) {
+        isCheckSessionSpecialUser = isCheckSession;
+    }
+
+    public boolean isCheckSessionBlockade() {
+        return isCheckSessionBlockade;
+    }
+
+    public void setCheckSessionBlockade(boolean isCheckSession) {
+        isCheckSessionBlockade = isCheckSession;
     }
 
     public void setCodeMasterFinder(CodeMasterFinder finder) {
@@ -371,7 +389,7 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
         String userKey = null;
         if (specialUserCodeMaster != null) {
             Object checkTargetObject = null;
-            if(sessionObjectAttributeName != null) {
+            if(sessionObjectAttributeName != null && isCheckSessionSpecialUser) {
                 HttpSession session = request.getSession(false);
                 if(session != null) {
                     checkTargetObject = session.getAttribute(sessionObjectAttributeName);
@@ -405,7 +423,7 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
         Map blockadeFilterMap = null;
         if(blockadeMapping != null){
             Object checkTargetObject = null;
-            if(sessionObjectAttributeName != null) {
+            if(sessionObjectAttributeName != null && isCheckSessionBlockade) {
                 HttpSession session = request.getSession(false);
                 if(session != null) {
                     checkTargetObject = session.getAttribute(sessionObjectAttributeName);
