@@ -390,7 +390,7 @@ public class InvokeMetaData extends MetaData
             clone.target = (MetaData)target.clone();
             clone.target.setParent(clone);
         }
-        if(arguments.size() != 0){
+        if(arguments != null){
             clone.arguments = new ArrayList(arguments.size());
             for(int i = 0, imax = arguments.size(); i < imax; i++){
                 MetaData argument = (MetaData)((MetaData)arguments.get(i)).clone();
