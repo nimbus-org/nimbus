@@ -206,9 +206,10 @@ public interface AWSLogsWriterServiceMBean
     /**
      *
      * AbortedExceptionを無視するかどうかを判定するフラグを設定する<p>
-     * デフォルトはfalseで、AbortedExceptionが発生したところのログをCloudWatch Logsに書き出さない設定になっている。<br>
-     * trueにするとAbortedExceptionが発生したところのログをCloudWatch Logsに書き出す設定になる<br>
+     * デフォルトは、falseで、AbortedExceptionが発生した際はログをCloudWatch Logsに書き出さない設定になっている。<br>
      *
+     *
+     * @param isIgnoreabortion AbortedExceptionが発生した際のログをCloudWatch Logsに書き出す場合は、true
      */
      public void setIgnoreAbortion(boolean isIgnoreabortion);
      /**
