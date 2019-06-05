@@ -31,34 +31,16 @@
  */
 package jp.ossc.nimbus.service.writer.aws;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
+
+import jp.ossc.nimbus.core.*;
+import jp.ossc.nimbus.service.writer.*;
 
 import com.amazonaws.AbortedException;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.services.logs.AWSLogsClient;
-import com.amazonaws.services.logs.model.CreateLogGroupRequest;
-import com.amazonaws.services.logs.model.CreateLogStreamRequest;
-import com.amazonaws.services.logs.model.DescribeLogStreamsRequest;
-import com.amazonaws.services.logs.model.DescribeLogStreamsResult;
-import com.amazonaws.services.logs.model.InputLogEvent;
-import com.amazonaws.services.logs.model.InvalidSequenceTokenException;
-import com.amazonaws.services.logs.model.PutLogEventsRequest;
-import com.amazonaws.services.logs.model.PutLogEventsResult;
-import com.amazonaws.services.logs.model.RejectedLogEventsInfo;
-import com.amazonaws.services.logs.model.ResourceAlreadyExistsException;
-
-import jp.ossc.nimbus.core.ServiceBase;
-import jp.ossc.nimbus.core.ServiceManagerFactory;
-import jp.ossc.nimbus.core.ServiceName;
-import jp.ossc.nimbus.service.writer.MessageWriteException;
-import jp.ossc.nimbus.service.writer.WritableRecord;
+import com.amazonaws.services.logs.model.*;
 
 /**
  * AWS CloudWatch Logs Writerサービス。<p>

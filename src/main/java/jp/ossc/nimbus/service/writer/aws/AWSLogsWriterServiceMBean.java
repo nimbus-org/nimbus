@@ -134,7 +134,7 @@ public interface AWSLogsWriterServiceMBean
     /**
      * AWS Key Management ServiceのIDを設定する。<p>
      *
-     * @param id IDsetLogGroupName
+     * @param id ID
      */
     public void setKMSKeyId(String id);
 
@@ -204,17 +204,17 @@ public interface AWSLogsWriterServiceMBean
     public long getBufferTimeout();
 
     /**
-     * サーバー停止時に発生するAbortedException(AWS SDKの)を無視してログを書くかどうかを判断するisIgnoreAbortionを設定する。
-     * デフォルトはFalse。Trueの場合はAbortedExceptionを無視してログを書く
+     *
+     * AbortedExceptionを無視するかどうかを判定するフラグを設定する<p>
+     * デフォルトはfalseで、AbortedExceptionが発生したところのログをCloudWatch Logsに書き出さない設定になっている。<br>
+     * trueにするとAbortedExceptionが発生したところのログをCloudWatch Logsに書き出す設定になる<br>
      *
      */
-     public void setIgnoreAbortion(boolean isIgnoreAbortion);
-
+     public void setIgnoreAbortion(boolean isIgnoreabortion);
      /**
-      *isIgnoreAbortionの値を取得する
+      * AbortedExceptionを無視するかどうかを判定するフラグを取得する。<p>
       *
-      *
+      * @return boolean
       */
-      public boolean getIgnoreAbortion();
-
+     public boolean getIgnoreAbortion();
 }
