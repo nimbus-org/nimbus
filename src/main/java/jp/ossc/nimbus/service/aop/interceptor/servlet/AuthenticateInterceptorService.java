@@ -276,9 +276,6 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
             threadContext = (Context)ServiceManagerFactory
                 .getServiceObject(threadContextServiceName);
         }
-        if(loginPath == null || loginPath.length == 0){
-            throw new IllegalArgumentException("LoginPath must be specified.");
-        }
         if(authenticatedInfoMapping == null || authenticatedInfoMapping.size() == 0){
             throw new IllegalArgumentException("AuthenticatedInfoMapping must be specified.");
         }
