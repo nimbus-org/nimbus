@@ -121,6 +121,7 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
     private String requestObjectAttributeName = StreamExchangeInterceptorServiceMBean.DEFAULT_REQUEST_OBJECT_ATTRIBUTE_NAME;
     
     private Map specialUserMapping;
+    private Map sessionSpecialUserMapping;
     private Map blockadeMapping;
     
     private ServiceName codeMasterFinderServiceName;
@@ -137,8 +138,6 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
     private String messagePropertyName = DEFAULT_PROPERTY_NAME_MESSAGE;
     
     private String sessionObjectAttributeName;
-    private boolean isCheckSessionSpecialUser;
-    private boolean isCheckSessionBlockade;
     
     private int stateOpen = BLOCKADE_STATE_OPEN;
     private int stateAllClose = BLOCKADE_STATE_ALL_CLOSE;
@@ -163,6 +162,14 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
     
     public Map getSpecialUserMapping() {
         return specialUserMapping;
+    }
+    
+    public void setSessionSpecialUserMapping(Map mapping) {
+        sessionSpecialUserMapping = mapping;
+    }
+    
+    public Map getSessionSpecialUserMapping() {
+        return sessionSpecialUserMapping;
     }
     
     public void setBlockadeMapping(Map mapping) {
@@ -235,22 +242,6 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
 
     public void setSessionObjectAttributeName(String attributeName) {
         sessionObjectAttributeName = attributeName;
-    }
-    
-    public boolean isCheckSessionSpecialUser() {
-        return isCheckSessionSpecialUser;
-    }
-
-    public void setCheckSessionSpecialUser(boolean isCheckSession) {
-        isCheckSessionSpecialUser = isCheckSession;
-    }
-
-    public boolean isCheckSessionBlockade() {
-        return isCheckSessionBlockade;
-    }
-
-    public void setCheckSessionBlockade(boolean isCheckSession) {
-        isCheckSessionBlockade = isCheckSession;
     }
 
     public void setCodeMasterFinder(CodeMasterFinder finder) {
@@ -328,6 +319,9 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
         if (specialUserCodeMasterKey != null && (specialUserMapping == null || specialUserMapping.size() == 0)) {
             throw new IllegalArgumentException("SpecialUserMapping must be specified.");
         }
+        if (sessionObjectAttributeName != null && (sessionSpecialUserMapping == null || sessionSpecialUserMapping.size() == 0)) {
+            throw new IllegalArgumentException("SessionSpecialUserMapping must be specified.");
+        }
         if (codeMasterFinderServiceName != null) {
             codeMasterFinder = (CodeMasterFinder) ServiceManagerFactory.getServiceObject(codeMasterFinderServiceName);
         }
@@ -388,29 +382,32 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
         boolean isSpecialUser = false;
         String userKey = null;
         if (specialUserCodeMaster != null) {
+            boolean isCheckSessionObject = false;
             Object checkTargetObject = null;
-            if(sessionObjectAttributeName != null && isCheckSessionSpecialUser) {
+            if(sessionObjectAttributeName != null) {
                 HttpSession session = request.getSession(false);
                 if(session != null) {
                     checkTargetObject = session.getAttribute(sessionObjectAttributeName);
                 }
             }
-            if(checkTargetObject == null) {
+            if(checkTargetObject != null) {
+                isCheckSessionObject = true;
+            } else {
                 checkTargetObject = request.getAttribute(requestObjectAttributeName);
                 if (checkTargetObject == null) {
-                    throw new BlockadeCheckTargetNotFoundException("CheckTargetObject is not found.");
+                    throw new BlockadeProcessException("CheckTargetObject is not found.");
                 }
             }
             if (specialUserCodeMaster instanceof RecordList) {
                 RecordList list = (RecordList) specialUserCodeMaster;
                 Record primaryKey = list.createRecord();
-                applySpecialUserMapping(checkTargetObject, primaryKey);
+                applySpecialUserMapping(checkTargetObject, primaryKey, isCheckSessionObject);
                 userKey = primaryKey.toString();
                 isSpecialUser = list.searchByPrimaryKey(primaryKey) != null;
             } else if (specialUserCodeMaster instanceof RecordSet) {
                 RecordSet recset = (RecordSet) specialUserCodeMaster;
                 RowData primaryKey = recset.createNewRecord();
-                applySpecialUserMapping(checkTargetObject, primaryKey);
+                applySpecialUserMapping(checkTargetObject, primaryKey, isCheckSessionObject);
                 userKey = primaryKey.getKey();
                 isSpecialUser = recset.get(primaryKey) != null;
             } else {
@@ -422,18 +419,9 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
         }
         Map blockadeFilterMap = null;
         if(blockadeMapping != null){
-            Object checkTargetObject = null;
-            if(sessionObjectAttributeName != null && isCheckSessionBlockade) {
-                HttpSession session = request.getSession(false);
-                if(session != null) {
-                    checkTargetObject = session.getAttribute(sessionObjectAttributeName);
-                }
-            }
-            if (checkTargetObject == null) {
-                checkTargetObject = request.getAttribute(requestObjectAttributeName);
-                if (checkTargetObject == null) {
-                    throw new BlockadeCheckTargetNotFoundException("CheckTargetObject is null.");
-                }
+            Object requestObject = request.getAttribute(requestObjectAttributeName);
+            if (requestObject == null) {
+                throw new BlockadeProcessException("RequestObject is null.");
             }
             blockadeFilterMap = new HashMap();
             Iterator entries = blockadeMapping.entrySet().iterator();
@@ -442,7 +430,7 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
                 try {
                     blockadeFilterMap.put(
                         entry.getValue(),
-                        propertyAccess.get(checkTargetObject, (String) entry.getKey())
+                        propertyAccess.get(requestObject, (String) entry.getKey())
                     );
                 } catch (IllegalArgumentException e) {
                     throw new BlockadeProcessException("BlockadeCodeMaster value '" + entry.getKey() + "' cannot acquire from a request.", e);
@@ -509,19 +497,21 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
         return isMatch;
     }
     
-    private Object applySpecialUserMapping(Object checkTargetObject, Object primaryKey) throws BlockadeProcessException {
-        Iterator entries = specialUserMapping.entrySet().iterator();
+    private Object applySpecialUserMapping(Object requestObject, Object primaryKey, boolean isCheckSessionObject) throws BlockadeProcessException {
+        Map mapping = isCheckSessionObject ? sessionSpecialUserMapping : specialUserMapping;
+        String checkObjName = isCheckSessionObject ? "session object" : "request object";
+        Iterator entries = mapping.entrySet().iterator();
         while (entries.hasNext()) {
             Map.Entry entry = (Map.Entry) entries.next();
             Object key = null;
             try {
-                key = propertyAccess.get(checkTargetObject, (String) entry.getKey());
+                key = propertyAccess.get(requestObject, (String) entry.getKey());
             } catch (IllegalArgumentException e) {
-                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + entry.getKey() + "' cannot acquire from a CheckTargetObject.", e);
+                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + entry.getKey() + "' cannot acquire from a " + checkObjName + ".", e);
             } catch (NoSuchPropertyException e) {
-                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + entry.getKey() + "' cannot acquire from a CheckTargetObject.", e);
+                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + entry.getKey() + "' cannot acquire from a " + checkObjName + ".", e);
             } catch (InvocationTargetException e) {
-                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + entry.getKey() + "' cannot acquire from a CheckTargetObject.",
+                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + entry.getKey() + "' cannot acquire from a " + checkObjName + ".",
                         e.getTargetException());
             }
             try {

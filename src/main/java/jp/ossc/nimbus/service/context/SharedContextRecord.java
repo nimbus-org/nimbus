@@ -84,15 +84,6 @@ public class SharedContextRecord extends Record implements SharedContextValueDif
         super(recordSchema);
     }
     
-    /**
-     * 表層的なレコードスキーマを設定する。<p>
-     *
-     * @param schema 表層的なレコードスキーマ
-     */
-    protected void setSuperficialRecordSchema(RecordSchema schema){
-        super.setSuperficialRecordSchema(schema);
-    }
-    
     public void setUpdateVersion(int version){
         updateVersion = version;
     }

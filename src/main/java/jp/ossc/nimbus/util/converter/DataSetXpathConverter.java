@@ -86,26 +86,12 @@ public class DataSetXpathConverter implements BindingStreamConverter, StreamStri
     protected String documentBuilderFactoryClass;
     
     /**
-     * DocumentBuilderの実装クラス。<p>
-     */
-    protected String documentBuilderClass;
-    
-    /**
      * DocumentBuilderFactoryの実装クラスを設定する。<p>
      *
      * @param clazz DocumentBuilderFactoryの実装クラス
      */
     public void setDocumentBuilderFactoryClassName(String clazz){
         documentBuilderFactoryClass = clazz;
-    }
-    
-    /**
-     * DocumentBuilderの実装クラスを設定する。<p>
-     *
-     * @param clazz DocumentBuilderの実装クラス
-     */
-    public void setDocumentBuilderClassName(String clazz){
-        documentBuilderClass = clazz;
     }
     
     public void setConvertType(int convertType) {
@@ -296,8 +282,9 @@ public class DataSetXpathConverter implements BindingStreamConverter, StreamStri
      */
     protected Document parseXml(InputStream inputStream) throws ConvertException {
         DocumentBuilderFactory factory = null;
-        DocumentBuilder builder = null;
-        if(documentBuilderFactoryClass != null){
+        if(documentBuilderFactoryClass == null){
+            factory = DocumentBuilderFactory.newInstance();
+        }else{
             try{
                 factory = (DocumentBuilderFactory)Class.forName(
                     documentBuilderFactoryClass,
@@ -311,29 +298,12 @@ public class DataSetXpathConverter implements BindingStreamConverter, StreamStri
             }catch(ClassNotFoundException e){
                 throw new ConvertException(e);
             }
-        }else if(documentBuilderClass != null){
-            try{
-                builder = (DocumentBuilder)Class.forName(
-                    documentBuilderClass,
-                    true,
-                    NimbusClassLoader.getInstance()
-                ).newInstance();
-            }catch(InstantiationException e){
-                throw new ConvertException(e);
-            }catch(IllegalAccessException e){
-                throw new ConvertException(e);
-            }catch(ClassNotFoundException e){
-                throw new ConvertException(e);
-            }
-        }else{
-            factory = DocumentBuilderFactory.newInstance();
         }
-        if(builder == null){
-            try {
-                builder = factory.newDocumentBuilder();
-            } catch (ParserConfigurationException e) {
-                throw new ConvertException("XML document builder could not be instanced.", e);
-            }
+        DocumentBuilder builder = null;
+        try {
+            builder = factory.newDocumentBuilder();
+        } catch (ParserConfigurationException e) {
+            throw new ConvertException("XML document builder could not be instanced.", e);
         }
         Document document = null;
         try {

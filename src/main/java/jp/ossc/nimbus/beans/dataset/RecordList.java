@@ -115,11 +115,6 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     protected RecordSchema recordSchema;
     
     /**
-     * 表層的なレコードスキーマ。<p>
-     */
-    protected RecordSchema superficialRecordSchema;
-    
-    /**
      * レコードのリスト。<p>
      */
     protected List records = Collections.synchronizedList(new ArrayList());
@@ -375,98 +370,12 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
-     * 表層的なプロパティを設定する。<p>
-     * {@link #setSuperficialProperties(String[], boolean) setSuperficialProperties(propertyNames, true)}と同じ。<br>
-     *
-     * @param propertyNames 表層的に見せたいプロパティ名の配列。nullを指定すると、クリアする
-     * @exception PropertySchemaDefineException プロパティのスキーマ定義に失敗した場合
-     */
-    public void setSuperficialProperties(String[] propertyNames) throws PropertySchemaDefineException{
-        setSuperficialProperties(propertyNames, true);
-    }
-    
-    /**
-     * 表層的なプロパティを設定する。<p>
-     * 表層的なプロパティ以外のプロパティは、参照及び設定できなくなる。<br>
-     *
-     * @param propertyNames 表層的に見せたいプロパティ名の配列。nullを指定すると、クリアする
-     * @param isIgnoreUnknown trueの場合、存在しないプロパティを指定された場合に、無視する。falseの場合は、例外をthrowする
-     * @exception PropertySchemaDefineException プロパティのスキーマ定義に失敗した場合
-     */
-    public void setSuperficialProperties(String[] propertyNames, boolean isIgnoreUnknown) throws PropertySchemaDefineException{
-        if(recordSchema == null){
-            throw new PropertySchemaDefineException("Schema is undefined.");
-        }
-        if(propertyNames == null){
-            superficialRecordSchema = null;
-        }else{
-            superficialRecordSchema = recordSchema.createSuperficialRecordSchema(propertyNames, isIgnoreUnknown);
-        }
-    }
-    
-    /**
-     * 表層的なプロパティを設定する。<p>
-     * {@link #setSuperficialProperties(int[], boolean) setSuperficialProperties(propertyIndexes, true)}と同じ。<br>
-     *
-     * @param propertyIndexes 表層的に見せたいプロパティのインデックス配列。nullを指定すると、クリアする
-     * @exception PropertySchemaDefineException プロパティのスキーマ定義に失敗した場合
-     */
-    public void setSuperficialProperties(int[] propertyIndexes) throws PropertySchemaDefineException{
-        setSuperficialProperties(propertyIndexes, true);
-    }
-    
-    /**
-     * 表層的なプロパティを設定する。<p>
-     * 表層的なプロパティ以外のプロパティは、参照及び設定できなくなる。<br>
-     *
-     * @param propertyIndexes 表層的に見せたいプロパティのインデックス配列。nullを指定すると、クリアする
-     * @param isIgnoreUnknown trueの場合、存在しないプロパティを指定された場合に、無視する。falseの場合は、例外をthrowする
-     * @exception PropertySchemaDefineException プロパティのスキーマ定義に失敗した場合
-     */
-    public void setSuperficialProperties(int[] propertyIndexes, boolean isIgnoreUnknown) throws PropertySchemaDefineException{
-        if(recordSchema == null){
-            throw new PropertySchemaDefineException("Schema is undefined.");
-        }
-        if(propertyIndexes == null){
-            superficialRecordSchema = null;
-        }else{
-            superficialRecordSchema = recordSchema.createSuperficialRecordSchema(propertyIndexes, isIgnoreUnknown);
-        }
-    }
-    
-    /**
-     * 表層的なレコードスキーマを取得する。<p>
-     *
-     * @return 表層的なレコードスキーマ
-     */
-    protected RecordSchema getSuperficialRecordSchema(){
-        return superficialRecordSchema;
-    }
-    
-    /**
-     * 表層的なプロパティのインデックスから、実質的なプロパティのインデックスを取得する。<p>
-     *
-     * @param index 表層的なプロパティのインデックス
-     * @return 実質的なプロパティのインデックス
-     */
-    protected int getSubstantialIndex(int index){
-        if(superficialRecordSchema == null || recordSchema == null){
-            return index;
-        }
-        PropertySchema propSchema = superficialRecordSchema.getPropertySchema(index);
-        if(propSchema == null){
-            return -1;
-        }
-        return recordSchema.getPropertyIndex(propSchema.getName());
-    }
-    
-    /**
      * レコードスキーマを取得する。<p>
      *
      * @return レコードスキーマ
      */
     public RecordSchema getRecordSchema(){
-        return superficialRecordSchema == null ? recordSchema : superficialRecordSchema;
+        return recordSchema;
     }
     
     /**
@@ -512,20 +421,15 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
      * @return 新しいレコード
      */
     public Record createRecord(){
-        Record record = null;
         if(recordClass == null){
-            record = new Record(recordSchema);
+            return new Record(recordSchema);
         }else{
             try{
-                record = (Record)recordClass.newInstance();
+                return (Record)recordClass.newInstance();
             }catch(Exception e){
-                record = new Record(recordSchema);
+                return new Record(recordSchema);
             }
         }
-        if(superficialRecordSchema != null){
-            record.setSuperficialRecordSchema(superficialRecordSchema);
-        }
-        return record;
     }
     
     /**
@@ -1607,16 +1511,6 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     protected void writeSchema(ObjectOutput out) throws IOException{
         out.writeObject(name);
         out.writeObject(schema);
-        if(superficialRecordSchema == null){
-            out.writeObject(null);
-        }else{
-            PropertySchema[] propSchemata = superficialRecordSchema.getPropertySchemata();
-            String[] propNames = new String[propSchemata.length];
-            for(int i = 0; i < propNames.length; i++){
-                propNames[i] = propSchemata[i].getName();
-            }
-            out.writeObject(propNames);
-        }
         out.writeObject(recordClass);
         out.writeBoolean(isSynchronized);
     }
@@ -1647,10 +1541,6 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     protected void readSchema(ObjectInput in) throws IOException, ClassNotFoundException{
         name = (String)in.readObject();
         schema = (String)in.readObject();
-        String[] propNames = (String[])in.readObject();
-        if(recordSchema != null && propNames != null){
-            superficialRecordSchema = recordSchema.createSuperficialRecordSchema(propNames, true);
-        }
         recordClass = (Class)in.readObject();
         isSynchronized = in.readBoolean();
     }

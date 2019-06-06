@@ -371,7 +371,7 @@ public class ConstructorMetaData extends MetaData
             clone.staticFieldRef.setParent(clone);
         }
         
-        if(arguments != null){
+        if(arguments.size() != 0){
             clone.arguments = new ArrayList(arguments.size());
             for(int i = 0, imax = arguments.size(); i < imax; i++){
                 MetaData argument = (MetaData)((MetaData)arguments.get(i)).clone();

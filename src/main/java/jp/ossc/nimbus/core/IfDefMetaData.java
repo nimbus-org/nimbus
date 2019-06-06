@@ -256,7 +256,7 @@ public class IfDefMetaData extends MetaData
     
     public Object clone(){
         IfDefMetaData clone = (IfDefMetaData)super.clone();
-        if(childrenMetaData != null){
+        if(childrenMetaData.size() != 0){
             clone.childrenMetaData = new ArrayList(childrenMetaData.size());
             for(int i = 0, imax = childrenMetaData.size(); i < imax; i++){
                 MetaData child = (MetaData)((MetaData)childrenMetaData.get(i)).clone();

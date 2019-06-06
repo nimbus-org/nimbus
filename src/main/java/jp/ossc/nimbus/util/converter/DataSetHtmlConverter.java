@@ -31,18 +31,16 @@
  */
 package jp.ossc.nimbus.util.converter;
 
-import java.util.Properties;
 import java.io.IOException;
 import java.io.InputStream;
 
 import jp.ossc.nimbus.beans.dataset.DataSet;
 import jp.ossc.nimbus.beans.dataset.XpathPropertySchema;
 
+import org.cyberneko.html.parsers.DOMParser;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
-
-import org.w3c.tidy.Tidy;
 
 /**
  * {@link DataSet}とXPathで表現されたHTMLデータとの変換を行う{@link Converter}。
@@ -53,40 +51,31 @@ import org.w3c.tidy.Tidy;
  *         <li>すべてのHTMLタグは大文字で表現しなければならない。</li>
  *     </ul>
  * </p>
- *
  * @author T.Okada
  */
 public class DataSetHtmlConverter extends DataSetXpathConverter {
-    
-    protected Properties configuration;
-    
-    public void setConfiguration(Properties config){
-        configuration = config;
-    }
-    
+
     protected Document parseXml(InputStream inputStream) throws ConvertException {
-        Tidy parser = new Tidy();
-        if(characterEncodingToObject != null){
-            parser.setInputEncoding(characterEncodingToObject);
+        DOMParser parser = new DOMParser();
+        InputSource inputSource = new InputSource(inputStream);
+        if(characterEncodingToObject != null) {
+            inputSource.setEncoding(characterEncodingToObject);
         }
-        parser.setShowWarnings(false);
-        parser.setOnlyErrors(true);
-        parser.setQuiet(true);
-        if(configuration != null){
-            parser.setConfigurationFromProps(configuration);
-        }
-        try{
+        try {
             if(isSynchronizedDomParse){
                 final Object lock = parser.getClass();
                 synchronized(lock){
-                    return parser.parseDOM(inputStream, null);
+                    parser.parse(inputSource);
                 }
             }else{
-                return parser.parseDOM(inputStream, null);
+                parser.parse(inputSource);
             }
-        }catch(Exception e){
+        } catch (SAXException e) {
+            throw new ConvertException("Failed to parse a stream.", e);
+        } catch (IOException e) {
             throw new ConvertException("Failed to parse a stream.", e);
         }
+        return parser.getDocument();
     }
 
 }

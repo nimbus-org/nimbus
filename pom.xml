@@ -522,12 +522,6 @@
             <artifactId>aws-java-sdk-cloudwatch</artifactId>
             <version>1.11.530</version>
         </dependency>
-        
-        <dependency>
-            <groupId>jtidy</groupId>
-            <artifactId>jtidy</artifactId>
-            <version>1.0</version>
-        </dependency>
     </dependencies>
 
     <build>

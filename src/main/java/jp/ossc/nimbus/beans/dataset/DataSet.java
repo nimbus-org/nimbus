@@ -112,20 +112,10 @@ public class DataSet implements java.io.Serializable, Cloneable{
     protected Map headerMap;
     
     /**
-     * 表層的なヘッダー名の集合。<p>
-     */
-    protected Set superficialHeaderNames;
-    
-    /**
      * レコードリストのマップ。<p>
      * キーはレコードリスト名、値は{@link RecordList レコードリスト}
      */
     protected Map recordListMap;
-    
-    /**
-     * 表層的なレコードリスト名の集合。<p>
-     */
-    protected Set superficialRecordListNames;
     
     /**
      * ネストされたレコードリストのスキーマのマップ。<p>
@@ -774,29 +764,6 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * 表層的なヘッダを設定する。<p>
-     * 表層的なヘッダ以外のヘッダは、参照できなくなる。<br>
-     *
-     * @param names 表層的に見せたいヘッダ名の配列。nullを指定すると、クリアする
-     */
-    public void setSuperficialHeaders(String[] names){
-        if(superficialHeaderNames == null){
-            if(names == null){
-                return;
-            }
-            superficialHeaderNames = new HashSet();
-        }
-        if(names == null){
-            superficialHeaderNames = null;
-        }else{
-            superficialHeaderNames.clear();
-            for(int i = 0; i < names.length; i++){
-                superficialHeaderNames.add(names[i]);
-            }
-        }
-    }
-    
-    /**
      * 名前を持たない{@link Header ヘッダー}を取得する。<p>
      * {@link #getHeader(String) getHeader(null)}を呼び出すのと同じ。<br>
      *
@@ -813,9 +780,6 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @return ヘッダー
      */
     public Header getHeader(String name){
-        if(superficialHeaderNames != null && !superficialHeaderNames.contains(name)){
-            return null;
-        }
         return headerMap == null ? null : (Header)headerMap.get(name);
     }
     
@@ -825,15 +789,7 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @return ヘッダー名配列
      */
     public String[] getHeaderNames(){
-        if(headerMap == null || (superficialHeaderNames != null && superficialHeaderNames.size() == 0)){
-            return new String[0];
-        }else if(superficialHeaderNames == null){
-            return (String[])headerMap.keySet().toArray(new String[headerMap.size()]);
-        }else{
-            List result = new ArrayList(headerMap.keySet());
-            result.retainAll(superficialHeaderNames);
-            return (String[])result.toArray(new String[result.size()]);
-        }
+        return headerMap == null ? new String[0] : (String[])headerMap.keySet().toArray(new String[headerMap.size()]);
     }
     
     /**
@@ -842,15 +798,7 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @return ヘッダーの数
      */
     public int getHeaderSize(){
-        if(headerMap == null || (superficialHeaderNames != null && superficialHeaderNames.size() == 0)){
-            return 0;
-        }else if(superficialHeaderNames == null){
-            return headerMap.size();
-        }else{
-            List result = new ArrayList(headerMap.keySet());
-            result.retainAll(superficialHeaderNames);
-            return result.size();
-        }
+        return headerMap == null ? 0 : headerMap.size();
     }
     
     /**
@@ -862,15 +810,7 @@ public class DataSet implements java.io.Serializable, Cloneable{
         if(headerMap == null){
             headerMap = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
         }
-        if(superficialHeaderNames != null && superficialHeaderNames.size() == 0){
-            return new LinkedHashMap();
-        }else if(superficialHeaderNames == null){
-            return headerMap;
-        }else{
-            Map result = new LinkedHashMap(headerMap);
-            result.keySet().retainAll(superficialHeaderNames);
-            return result;
-        }
+        return headerMap;
     }
     
     /**
@@ -902,29 +842,6 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
-     * 表層的なレコードリストを設定する。<p>
-     * 表層的なレコードリスト以外のレコードリストは、参照できなくなる。<br>
-     *
-     * @param names 表層的に見せたいレコードリスト名の配列。nullを指定すると、クリアする
-     */
-    public void setSuperficialRecordLists(String[] names){
-        if(superficialRecordListNames == null){
-            if(names == null){
-                return;
-            }
-            superficialRecordListNames = new HashSet();
-        }
-        if(names == null){
-            superficialRecordListNames = null;
-        }else{
-            superficialRecordListNames.clear();
-            for(int i = 0; i < names.length; i++){
-                superficialRecordListNames.add(names[i]);
-            }
-        }
-    }
-    
-    /**
      * 名前を持たない{@link RecordList レコードリスト}を取得する。<p>
      * {@link #getRecordList(String) getRecordList(null)}を呼び出すのと同じ。<br>
      *
@@ -941,9 +858,6 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @return レコードリスト
      */
     public RecordList getRecordList(String name){
-        if(superficialRecordListNames != null && !superficialRecordListNames.contains(name)){
-            return null;
-        }
         return recordListMap == null ? null : (RecordList)recordListMap.get(name);
     }
     
@@ -953,15 +867,7 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @return レコードリスト名配列
      */
     public String[] getRecordListNames(){
-        if(recordListMap == null || (superficialRecordListNames != null && superficialRecordListNames.size() == 0)){
-            return new String[0];
-        }else if(superficialRecordListNames == null){
-            return (String[])recordListMap.keySet().toArray(new String[recordListMap.size()]);
-        }else{
-            List result = new ArrayList(recordListMap.keySet());
-            result.retainAll(superficialRecordListNames);
-            return (String[])result.toArray(new String[result.size()]);
-        }
+        return recordListMap == null ? new String[0] : (String[])recordListMap.keySet().toArray(new String[recordListMap.size()]);
     }
     
     /**
@@ -970,15 +876,7 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @return レコードリストの数
      */
     public int getRecordListSize(){
-        if(recordListMap == null || (superficialRecordListNames != null && superficialRecordListNames.size() == 0)){
-            return 0;
-        }else if(superficialRecordListNames == null){
-            return recordListMap.size();
-        }else{
-            List result = new ArrayList(recordListMap.keySet());
-            result.retainAll(superficialRecordListNames);
-            return result.size();
-        }
+        return recordListMap == null ? 0 : recordListMap.size();
     }
     
     /**
@@ -990,15 +888,7 @@ public class DataSet implements java.io.Serializable, Cloneable{
         if(recordListMap == null){
             recordListMap = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
         }
-        if(superficialRecordListNames != null && superficialRecordListNames.size() == 0){
-            return new LinkedHashMap();
-        }else if(superficialRecordListNames == null){
-            return recordListMap;
-        }else{
-            Map result = new LinkedHashMap(recordListMap);
-            result.keySet().retainAll(superficialRecordListNames);
-            return result;
-        }
+        return recordListMap;
     }
     
     /**
@@ -1105,7 +995,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @exception PropertyValidateException プロパティの検証時に例外が発生した場合
      */
     public boolean validateHeader() throws PropertyGetException, PropertyValidateException{
-        return validateHeader(null);
+        Header header = getHeader();
+        if(header == null){
+            return false;
+        }
+        return header.validate();
     }
     
     /**
@@ -1117,10 +1011,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @exception PropertyValidateException プロパティの検証時に例外が発生した場合
      */
     public boolean validateHeader(String name) throws PropertyGetException, PropertyValidateException{
-        if(headerMap == null || headerMap.size() == 0 || !headerMap.containsKey(name)){
-            return true;
+        Header header = getHeader(name);
+        if(header == null){
+            return false;
         }
-        return ((Header)headerMap.get(name)).validate();
+        return header.validate();
     }
     
     /**
@@ -1152,7 +1047,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @exception PropertyValidateException プロパティの検証時に例外が発生した場合
      */
     public boolean validateRecordList() throws PropertyGetException, PropertyValidateException{
-        return validateRecordList(null);
+        RecordList recordList = getRecordList();
+        if(recordList == null){
+            return false;
+        }
+        return recordList.validate();
     }
     
     /**
@@ -1164,10 +1063,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @exception PropertyValidateException プロパティの検証時に例外が発生した場合
      */
     public boolean validateRecordList(String name) throws PropertyGetException, PropertyValidateException{
-        if(recordListMap == null || recordListMap.size() == 0 || !recordListMap.containsKey(name)){
-            return true;
+        RecordList recordList = getRecordList(name);
+        if(recordList == null){
+            return false;
         }
-        return ((RecordList)recordListMap.get(name)).validate();
+        return recordList.validate();
     }
     
     /**
