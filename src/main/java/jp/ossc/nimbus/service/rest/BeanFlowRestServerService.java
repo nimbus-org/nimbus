@@ -618,167 +618,190 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
         Map pathParameters = request.getPathParameterMap();
         Object requestObj = null;
-        Class requestObjClass = null;
-        try{
-            requestObjClass = Utility.convertStringToClass(requestData.code, true);
-        }catch(ClassNotFoundException e){
-            getLogger().write("BFRS_00004", new Object[]{resource.resourcePath.path, requestData.code}, e);
-            if(journal != null){
-                journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
-            }
-            response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            return false;
-        }
-        if(String.class.equals(requestObjClass)){
-            if(pathParameters != null && pathParameters.size() != 0){
-                requestObj = pathParameters.values().iterator().next();
-            }
-        }else if(String[].class.equals(requestObjClass)){
-            if(pathParameters != null && pathParameters.size() != 0){
-                requestObj = pathParameters.values().toArray();
-            }
-        }else if(Number.class.isAssignableFrom(requestObjClass)){
-            if(pathParameters != null && pathParameters.size() != 0){
-                String valStr = (String)pathParameters.values().iterator().next();
-                try{
-                    if(Byte.class.isAssignableFrom(requestObjClass)){
-                        requestObj = Byte.valueOf(valStr);
-                    }else if(Short.class.isAssignableFrom(requestObjClass)){
-                        requestObj = Short.valueOf(valStr);
-                    }else if(Integer.class.isAssignableFrom(requestObjClass)){
-                        requestObj = Integer.valueOf(valStr);
-                    }else if(Long.class.isAssignableFrom(requestObjClass)){
-                        requestObj = Long.valueOf(valStr);
-                    }else if(Float.class.isAssignableFrom(requestObjClass)){
-                        requestObj = Float.valueOf(valStr);
-                    }else if(Double.class.isAssignableFrom(requestObjClass)){
-                        requestObj = Double.valueOf(valStr);
-                    }else if(BigInteger.class.isAssignableFrom(requestObjClass)){
-                        requestObj = new BigInteger(valStr);
-                    }else if(BigDecimal.class.isAssignableFrom(requestObjClass)){
-                        requestObj = new BigDecimal(valStr);
-                    }else{
-                        getLogger().write("BFRS_00005", new Object[]{resource.resourcePath.path, requestObjClass.getName()});
-                        response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                        return false;
-                    }
-                }catch(NumberFormatException e){
-                    getLogger().write("BFRS_00026", new Object[]{resource.resourcePath.path, pathParameters.keySet().iterator().next(), valStr}, e);
-                    if(journal != null){
-                        journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
-                    }
-                    response.setResult(
-                        HttpServletResponse.SC_BAD_REQUEST,
-                        "Illegal number format. val=" + valStr
-                    );
-                    return false;
+        if(beanFlowInvokerFactory.containsFlow(requestData.code)){
+            final String flowName = requestData.code;
+            BeanFlowInvoker flow = null;
+            try{
+                flow = beanFlowInvokerFactory.createFlow(flowName);
+                requestObj = flow.invokeFlow(new RestContext(request, response));
+                request.setRequestObject(requestObj);
+            }catch(Throwable th){
+                getLogger().write("BFRS_00004", new Object[]{resource.resourcePath.path, requestData.code}, th);
+                if(journal != null){
+                    journal.addInfo(JOURNAL_KEY_EXCEPTION, th);
                 }
+                response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                return false;
             }
         }else{
+            Class requestObjClass = null;
             try{
-                requestObj = requestObjClass.newInstance();
-            }catch(InstantiationException e){
-                getLogger().write("BFRS_00006", new Object[]{resource.resourcePath.path, requestObjClass.getName()}, e);
-                if(journal != null){
-                    journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
-                }
-                response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                return false;
-            }catch(IllegalAccessException e){
-                getLogger().write("BFRS_00006", new Object[]{resource.resourcePath.path, requestObjClass.getName()}, e);
+                requestObjClass = Utility.convertStringToClass(requestData.code, true);
+            }catch(ClassNotFoundException e){
+                getLogger().write("BFRS_00004", new Object[]{resource.resourcePath.path, requestData.code}, e);
                 if(journal != null){
                     journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
                 }
                 response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
                 return false;
             }
-            if(pathParameters != null && pathParameters.size() != 0){
-                Iterator entries = pathParameters.entrySet().iterator();
-                while(entries.hasNext()){
-                    Map.Entry entry = (Map.Entry)entries.next();
-                    Property prop = null;
+            if(String.class.equals(requestObjClass)){
+                if(pathParameters != null && pathParameters.size() != 0){
+                    requestObj = pathParameters.values().iterator().next();
+                }
+                request.setRequestObject(requestObj);
+                return true;
+            }else if(String[].class.equals(requestObjClass)){
+                if(pathParameters != null && pathParameters.size() != 0){
+                    requestObj = pathParameters.values().toArray();
+                }
+                request.setRequestObject(requestObj);
+                return true;
+            }else if(Number.class.isAssignableFrom(requestObjClass)){
+                if(pathParameters != null && pathParameters.size() != 0){
+                    String valStr = (String)pathParameters.values().iterator().next();
                     try{
-                        prop = propertyAccess.getProperty((String)entry.getKey());
-                    }catch(IllegalArgumentException e){
-                        getLogger().write("BFRS_00007", new Object[]{resource.resourcePath.path, entry.getKey()}, e);
+                        if(Byte.class.isAssignableFrom(requestObjClass)){
+                            requestObj = Byte.valueOf(valStr);
+                        }else if(Short.class.isAssignableFrom(requestObjClass)){
+                            requestObj = Short.valueOf(valStr);
+                        }else if(Integer.class.isAssignableFrom(requestObjClass)){
+                            requestObj = Integer.valueOf(valStr);
+                        }else if(Long.class.isAssignableFrom(requestObjClass)){
+                            requestObj = Long.valueOf(valStr);
+                        }else if(Float.class.isAssignableFrom(requestObjClass)){
+                            requestObj = Float.valueOf(valStr);
+                        }else if(Double.class.isAssignableFrom(requestObjClass)){
+                            requestObj = Double.valueOf(valStr);
+                        }else if(BigInteger.class.isAssignableFrom(requestObjClass)){
+                            requestObj = new BigInteger(valStr);
+                        }else if(BigDecimal.class.isAssignableFrom(requestObjClass)){
+                            requestObj = new BigDecimal(valStr);
+                        }else{
+                            getLogger().write("BFRS_00005", new Object[]{resource.resourcePath.path, requestObjClass.getName()});
+                            response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                            return false;
+                        }
+                    }catch(NumberFormatException e){
+                        getLogger().write("BFRS_00026", new Object[]{resource.resourcePath.path, pathParameters.keySet().iterator().next(), valStr}, e);
                         if(journal != null){
                             journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
                         }
-                        response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                        response.setResult(
+                            HttpServletResponse.SC_BAD_REQUEST,
+                            "Illegal number format. val=" + valStr
+                        );
                         return false;
                     }
-                    if(!prop.isReadable(requestObj)){
-                        continue;
+                }
+                request.setRequestObject(requestObj);
+                return true;
+            }else{
+                try{
+                    requestObj = requestObjClass.newInstance();
+                    request.setRequestObject(requestObj);
+                }catch(InstantiationException e){
+                    getLogger().write("BFRS_00006", new Object[]{resource.resourcePath.path, requestObjClass.getName()}, e);
+                    if(journal != null){
+                        journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
                     }
-                    Class propType = null;
+                    response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                    return false;
+                }catch(IllegalAccessException e){
+                    getLogger().write("BFRS_00006", new Object[]{resource.resourcePath.path, requestObjClass.getName()}, e);
+                    if(journal != null){
+                        journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
+                    }
+                    response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                    return false;
+                }
+            }
+        }
+        if(pathParameters != null && pathParameters.size() != 0){
+            Iterator entries = pathParameters.entrySet().iterator();
+            while(entries.hasNext()){
+                Map.Entry entry = (Map.Entry)entries.next();
+                Property prop = null;
+                try{
+                    prop = propertyAccess.getProperty((String)entry.getKey());
+                }catch(IllegalArgumentException e){
+                    getLogger().write("BFRS_00007", new Object[]{resource.resourcePath.path, entry.getKey()}, e);
+                    if(journal != null){
+                        journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
+                    }
+                    response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                    return false;
+                }
+                if(!prop.isReadable(requestObj)){
+                    continue;
+                }
+                Class propType = null;
+                try{
+                    propType = prop.getPropertyType(requestObj);
+                }catch(NoSuchPropertyException e){
+                    getLogger().write("BFRS_00008", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
+                    if(journal != null){
+                        journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
+                    }
+                    response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                    return false;
+                }catch(InvocationTargetException e){
+                    getLogger().write("BFRS_00008", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
+                    if(journal != null){
+                        journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
+                    }
+                    response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                    return false;
+                }
+                if(!prop.isWritable(requestObj, propType)){
+                    continue;
+                }
+                if(propType.isAssignableFrom(String.class)){
                     try{
-                        propType = prop.getPropertyType(requestObj);
+                        prop.setProperty(requestObj, propType, entry.getValue());
                     }catch(NoSuchPropertyException e){
-                        getLogger().write("BFRS_00008", new Object[]{resource.resourcePath.path, entry.getKey(), requestObjClass.getName()}, e);
+                        getLogger().write("BFRS_00009", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
                         if(journal != null){
                             journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
                         }
                         response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
                         return false;
                     }catch(InvocationTargetException e){
-                        getLogger().write("BFRS_00008", new Object[]{resource.resourcePath.path, entry.getKey(), requestObjClass.getName()}, e);
+                        getLogger().write("BFRS_00009", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
                         if(journal != null){
                             journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
                         }
                         response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
                         return false;
                     }
-                    if(!prop.isWritable(requestObj, propType)){
-                        continue;
+                }else{
+                    PropertyEditor editor = NimbusPropertyEditorManager.findEditor(propType);
+                    if(editor == null){
+                        getLogger().write("BFRS_00010", new Object[]{resource.resourcePath.path, entry.getKey(), propType.getName()});
+                        response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                        return false;
                     }
-                    if(propType.isAssignableFrom(String.class)){
-                        try{
-                            prop.setProperty(requestObj, propType, entry.getValue());
-                        }catch(NoSuchPropertyException e){
-                            getLogger().write("BFRS_00009", new Object[]{resource.resourcePath.path, entry.getKey(), requestObjClass.getName()}, e);
-                            if(journal != null){
-                                journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
-                            }
-                            response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                            return false;
-                        }catch(InvocationTargetException e){
-                            getLogger().write("BFRS_00009", new Object[]{resource.resourcePath.path, entry.getKey(), requestObjClass.getName()}, e);
-                            if(journal != null){
-                                journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
-                            }
-                            response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                            return false;
+                    editor.setAsText((String)entry.getValue());
+                    try{
+                        prop.setProperty(requestObj, propType, editor.getValue());
+                    }catch(NoSuchPropertyException e){
+                        getLogger().write("BFRS_00009", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
+                        if(journal != null){
+                            journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
                         }
-                    }else{
-                        PropertyEditor editor = NimbusPropertyEditorManager.findEditor(propType);
-                        if(editor == null){
-                            getLogger().write("BFRS_00010", new Object[]{resource.resourcePath.path, entry.getKey(), propType.getName()});
-                            response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                            return false;
+                        response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                        return false;
+                    }catch(InvocationTargetException e){
+                        getLogger().write("BFRS_00009", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
+                        if(journal != null){
+                            journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
                         }
-                        editor.setAsText((String)entry.getValue());
-                        try{
-                            prop.setProperty(requestObj, propType, editor.getValue());
-                        }catch(NoSuchPropertyException e){
-                            getLogger().write("BFRS_00009", new Object[]{resource.resourcePath.path, entry.getKey(), requestObjClass.getName()}, e);
-                            if(journal != null){
-                                journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
-                            }
-                            response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                            return false;
-                        }catch(InvocationTargetException e){
-                            getLogger().write("BFRS_00009", new Object[]{resource.resourcePath.path, entry.getKey(), requestObjClass.getName()}, e);
-                            if(journal != null){
-                                journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
-                            }
-                            response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                            return false;
-                        }
+                        response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                        return false;
                     }
                 }
             }
         }
-        request.setRequestObject(requestObj);
         return true;
     }
     
@@ -792,18 +815,35 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         if(responseData == null){
             return true;
         }
-        Class responseObjClass = null;
-        try{
-            responseObjClass = Utility.convertStringToClass(responseData.code, true);
-        }catch(ClassNotFoundException e){
-            getLogger().write("BFRS_00011", new Object[]{resource.resourcePath.path, responseData.code}, e);
-            if(journal != null){
-                journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
+        if(beanFlowInvokerFactory.containsFlow(responseData.code)){
+            final String flowName = responseData.code;
+            BeanFlowInvoker flow = null;
+            try{
+                flow = beanFlowInvokerFactory.createFlow(flowName);
+                Object responseObj = flow.invokeFlow(new RestContext(request, response));
+                response.setResponseObject(responseObj);
+            }catch(Throwable th){
+                getLogger().write("BFRS_00011", new Object[]{resource.resourcePath.path, responseData.code}, th);
+                if(journal != null){
+                    journal.addInfo(JOURNAL_KEY_EXCEPTION, th);
+                }
+                response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                return false;
             }
-            response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            return false;
+        }else{
+            Class responseObjClass = null;
+            try{
+                responseObjClass = Utility.convertStringToClass(responseData.code, true);
+            }catch(ClassNotFoundException e){
+                getLogger().write("BFRS_00011", new Object[]{resource.resourcePath.path, responseData.code}, e);
+                if(journal != null){
+                    journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
+                }
+                response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                return false;
+            }
+            response.setResponseObjectClass(responseObjClass);
         }
-        response.setResponseObjectClass(responseObjClass);
         return true;
     }
     
