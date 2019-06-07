@@ -119,6 +119,14 @@ public interface DefaultQuerySearchManagerServiceMBean extends ServiceBaseMBean{
     public Class getOutputClass();
     
     /**
+     * 検索結果をバインドするオブジェクトを設定する。<p>
+     * バインドするオブジェクトは、Cloneableを実装し、publicなclone()メソッドを持つ必要がある。<br>
+     *
+     * @param obj 検索結果をバインドするオブジェクト
+     */
+    public void setOutputObject(Cloneable obj);
+    
+    /**
      * 検索結果が必ず一意になるかどうかを設定する。<p>
      * デフォルトは、falseで、検索結果はリストになる。<br>
      *
