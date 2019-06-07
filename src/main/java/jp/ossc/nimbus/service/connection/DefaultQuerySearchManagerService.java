@@ -60,6 +60,7 @@ public class DefaultQuerySearchManagerService extends ServiceBase implements Que
     private Map statementProps;
     private Map resultSetProps;
     private Class outputClass;
+    private Cloneable outputObject;
     private boolean isUnique;
     private ServiceName connectionFactoryServiceName;
     private ConnectionFactory connectionFactory;
@@ -109,6 +110,13 @@ public class DefaultQuerySearchManagerService extends ServiceBase implements Que
     }
     public Class getOutputClass(){
         return outputClass;
+    }
+
+    public void setOutputObject(Cloneable obj){
+        outputObject = obj;
+    }
+    public Cloneable getOutputObject(){
+        return outputObject;
     }
 
     public void setUnique(boolean isUnique){
@@ -235,15 +243,27 @@ public class DefaultQuerySearchManagerService extends ServiceBase implements Que
             Connection con = null;
             try{
                 con = connectionFactory.getConnection();
+                Object output = outputClass == null ? null : (isUnique ? outputClass.newInstance() : outputClass);
+                if(output == null && outputObject != null){
+                    try{
+                        output = outputObject.getClass().getMethod("clone", (Class[])null).invoke(outputObject, (Object[])null);
+                    }catch(NoSuchMethodException e){
+                        throw new PersistentException(e);
+                    }catch(IllegalAccessException e){
+                        throw new PersistentException(e);
+                    }catch(java.lang.reflect.InvocationTargetException e){
+                        throw new PersistentException(e);
+                    }
+                }
                 result = persistentManager.loadQuery(
                     con,
                     query,
                     key,
-                    outputClass == null ? null : (isUnique ? outputClass.newInstance() : outputClass),
+                    output,
                     statementProps,
                     resultSetProps
                 );
-                if(outputClass == null && isUnique){
+                if(outputObject == null && outputClass == null && isUnique){
                     List list = (List)result;
                     if(list.size() == 0){
                         result = null;
