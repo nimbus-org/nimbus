@@ -321,11 +321,13 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
         if(request.getPathInfo() != null){
             reqPath = reqPath + request.getPathInfo();
         }
-        for(int i = 0; i < loginPath.length; i++){
-            if(loginPath[i].equals(reqPath)){
-                Object ret = chain.invokeNext(context);
-                newAuthenticatedInfo(request);
-                return ret;
+        if(loginPath != null) {
+            for(int i = 0; i < loginPath.length; i++){
+                if(loginPath[i].equals(reqPath)){
+                    Object ret = chain.invokeNext(context);
+                    newAuthenticatedInfo(request);
+                    return ret;
+                }
             }
         }
         if(logoutPath != null){
