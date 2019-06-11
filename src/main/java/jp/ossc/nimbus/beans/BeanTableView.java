@@ -432,9 +432,13 @@ public class BeanTableView implements Cloneable{
      * @return 逆集合をとった結果のこのビュー
      */
     public BeanTableView not(){
-        Set all = indexManager.elements();
-        all.removeAll(resultSet);
-        resultSet = all;
+        if(resultSet == null){
+            resultSet = new HashSet();
+        }else{
+            Set all = indexManager.elements();
+            all.removeAll(resultSet);
+            resultSet = all;
+        }
         return this;
     }
     
@@ -445,6 +449,9 @@ public class BeanTableView implements Cloneable{
      * @return 連結された結果のこのビュー
      */
     public BeanTableView and(BeanTableView view){
+        if(resultSet == null){
+            resultSet = indexManager.elements();
+        }
         resultSet.retainAll(view.getResultSet());
         return this;
     }
@@ -456,6 +463,9 @@ public class BeanTableView implements Cloneable{
      * @return 連結された結果のこのビュー
      */
     public BeanTableView or(BeanTableView view){
+        if(resultSet == null){
+            resultSet = indexManager.elements();
+        }
         resultSet.addAll(view.getResultSet());
         return this;
     }
@@ -467,6 +477,9 @@ public class BeanTableView implements Cloneable{
      * @return 結果となるこのビュー
      */
     public BeanTableView nand(BeanTableView view){
+        if(resultSet == null){
+            resultSet = indexManager.elements();
+        }
         resultSet.retainAll(view.getResultSet());
         Set all = indexManager.elements();
         all.removeAll(resultSet);
@@ -481,6 +494,9 @@ public class BeanTableView implements Cloneable{
      * @return 結果となるこのビュー
      */
     public BeanTableView nor(BeanTableView view){
+        if(resultSet == null){
+            resultSet = indexManager.elements();
+        }
         resultSet.addAll(view.getResultSet());
         Set all = indexManager.elements();
         all.removeAll(resultSet);
@@ -495,6 +511,9 @@ public class BeanTableView implements Cloneable{
      * @return 結果となるこのビュー
      */
     public BeanTableView xor(BeanTableView view){
+        if(resultSet == null){
+            resultSet = indexManager.elements();
+        }
         Set andSet = new HashSet(resultSet);
         andSet.retainAll(view.getResultSet());
         resultSet.addAll(view.getResultSet());
@@ -509,6 +528,9 @@ public class BeanTableView implements Cloneable{
      * @return 結果となるこのビュー
      */
     public BeanTableView xnor(BeanTableView view){
+        if(resultSet == null){
+            resultSet = indexManager.elements();
+        }
         Set tmpSet = new HashSet(resultSet);
         tmpSet.retainAll(view.getResultSet());
         resultSet.addAll(view.getResultSet());
@@ -526,8 +548,13 @@ public class BeanTableView implements Cloneable{
      * @return 結果となるこのビュー
      */
     public BeanTableView imp(BeanTableView view){
-        Set all = indexManager.elements();
-        all.removeAll(resultSet);
+        Set all = null;
+        if(resultSet == null){
+            all = new HashSet();
+        }else{
+            all = indexManager.elements();
+            all.removeAll(resultSet);
+        }
         all.addAll(view.getResultSet());
         resultSet = all;
         return this;
@@ -540,6 +567,9 @@ public class BeanTableView implements Cloneable{
      * @return 結果となるこのビュー
      */
     public BeanTableView nimp(BeanTableView view){
+        if(resultSet == null){
+            resultSet = indexManager.elements();
+        }
         resultSet.removeAll(view.getResultSet());
         return this;
     }
@@ -553,7 +583,9 @@ public class BeanTableView implements Cloneable{
     public BeanTableView cimp(BeanTableView view){
         Set all = indexManager.elements();
         all.removeAll(view.getResultSet());
-        all.addAll(resultSet);
+        if(resultSet != null){
+            all.addAll(resultSet);
+        }
         resultSet = all;
         return this;
     }
@@ -566,7 +598,11 @@ public class BeanTableView implements Cloneable{
      */
     public BeanTableView cnimp(BeanTableView view){
         Set targetSet = new HashSet(view.getResultSet());
-        targetSet.removeAll(resultSet);
+        if(resultSet == null){
+            targetSet.removeAll(indexManager.elements());
+        }else{
+            targetSet.removeAll(resultSet);
+        }
         resultSet = targetSet;
         return this;
     }
