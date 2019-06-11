@@ -47,6 +47,8 @@ public class StringEditConverter
     private int startIndex = -1;
     private int endIndex = -1;
     private boolean isIgnoreArrayIndexOutOfBounds;
+    private String splitRegex;
+    private int splitIndex;
     
     /**
      * トリムするかどうかを設定する。<p>
@@ -180,6 +182,42 @@ public class StringEditConverter
         return isIgnoreArrayIndexOutOfBounds;
     }
     
+    /**
+     * スプリットする正規表現文字列を設定する。<p>
+     *
+     * @param regex スプリットする正規表現文字列
+     */
+    public void setSplitRegex(String regex){
+        splitRegex = regex;
+    }
+    
+    /**
+     * スプリットする正規表現文字列を取得する。<p>
+     *
+     * @return スプリットする正規表現文字列
+     */
+    public String getSplitRegex(){
+        return splitRegex;
+    }
+    
+    /**
+     * スプリットした文字列配列の何番目を取り出すか設定する。<p>
+     *
+     * @param index スプリットした文字列配列上のインデックス
+     */
+    public void setSplitIndex(int index){
+        splitIndex = index;
+    }
+    
+    /**
+     * スプリットした文字列配列の何番目を取り出すか取得する。<p>
+     *
+     * @return スプリットした文字列配列上のインデックス
+     */
+    public int getSplitIndex(){
+        return splitIndex;
+    }
+    
     public Object convert(Object obj) throws ConvertException{
         return convert(obj == null ? null : obj.toString());
     }
@@ -191,6 +229,10 @@ public class StringEditConverter
         String result = str;
         if(isTrim){
             result = result.trim();
+        }
+        if(splitRegex != null){
+            String[] results = result.split(splitRegex);
+            result = results[splitIndex];
         }
         int sIndex = startIndex;
         int eIndex = endIndex;
