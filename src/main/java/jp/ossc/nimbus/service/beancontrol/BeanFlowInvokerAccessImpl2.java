@@ -6188,6 +6188,8 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
         private static final String VAR = "var";
         private static final String RESOURCE = "resource";
         private static final String JOURNAL = "journal";
+        private static final String LOGGER = "logger";
+        private static final String BFIF = "beanFlowInvokerFactory";
 
         private String code;
         private transient CompiledInterpreter compiled;
@@ -6227,6 +6229,24 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
             vars.put(VAR, context.vars);
             vars.put(RESOURCE, context.resourceManager);
             vars.put(JOURNAL, new JournalWrapper(getJournal(this)));
+            vars.put(LOGGER, factoryCallBack.getLogger());
+            vars.put(
+                BFIF,
+                new BeanFlowInvokerFactory(){
+                    public BeanFlowInvoker createFlow(String key){
+                        return factoryCallBack.createFlow(key);
+                    }
+                    public BeanFlowInvoker createFlow(String key, String caller, boolean isOverwride){
+                        return factoryCallBack.createFlow(key, caller, isOverwride);
+                    }
+                    public boolean containsFlow(String key){
+                        return factoryCallBack.containsFlow(key);
+                    }
+                    public Set getBeanFlowKeySet(){
+                        return factoryCallBack.getBeanFlowKeySet();
+                    }
+                }
+            );
             if(compiled == null){
                 Interpreter interpreter = factoryCallBack.getInterpreter();
                 if(interpreter == null){
