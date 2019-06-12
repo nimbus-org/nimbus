@@ -32,7 +32,9 @@
 // パッケージ
 package jp.ossc.nimbus.service.beancontrol;
 // インポート
+
 import java.beans.PropertyEditor;
+import java.util.Set;
 
 import jp.ossc.nimbus.service.beancontrol.resource.*;
 import jp.ossc.nimbus.core.*;
@@ -98,6 +100,7 @@ public interface BeanFlowInvokerFactoryCallBack {
 	public BeanFlowInvoker createFlow(String key) ;
     public BeanFlowInvoker createFlow(String key, String caller, boolean isOverwride);
     public boolean containsFlow(String key);
+    public Set getBeanFlowKeySet();
 
 	public ServiceLoader getServiceLoader();
     public ServiceManager getServiceManager();
