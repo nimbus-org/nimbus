@@ -849,11 +849,24 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
         if(type == null){
             return result;
         }
-        final Class inType = result.getClass();
+        Class inType = result.getClass();
         if(type.isAssignableFrom(inType)){
             return result;
         }
-        if(result instanceof String){
+        if(String.class.equals(type)){
+            result = formatByPropertyEditor(result, type);
+        }else if(inType.isArray() && String[].class.equals(type)){
+            final Object[] array = (Object[])result;
+            final Class componentType = inType.getComponentType();
+            result = new String[array.length];
+            for(int i = 0; i < array.length; i++){
+                Array.set(
+                    result,
+                    i,
+                    formatByPropertyEditor(array[i], componentType)
+                );
+            }
+        }else if(result instanceof String){
             result = parseByPropertyEditor((String)result, type);
         }else if(type.isArray() && inType.equals(String[].class)){
             final String[] array = (String[])result;
@@ -869,7 +882,9 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
                     parseByPropertyEditor(array[i], componentType)
                 );
             }
-        }else{
+        }
+        inType = result == null ? null : result.getClass();
+        if(inType != null && !type.isAssignableFrom(inType)){
             throw new PropertySetException(this, "Counld not parse, because type is unmatch. in=" + inType.getName() + ", out=" + type.getName());
         }
         return result;
@@ -911,8 +926,25 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
             }catch(RuntimeException e){
                 throw new PropertySetException(this, e);
             }
+        }else{
+            throw new PropertySetException(this, "Counld not parse, because type is unmatch. in=" + String.class.getName() + ", out=" + editType.getName());
         }
-        return str;
+    }
+    
+    private String formatByPropertyEditor(Object val, Class editType)
+     throws PropertySetException{
+        final PropertyEditor editor
+             = NimbusPropertyEditorManager.findEditor(editType);
+        if(editor != null){
+            try{
+                editor.setValue(val);
+                return editor.getAsText();
+            }catch(RuntimeException e){
+                throw new PropertySetException(this, e);
+            }
+        }else{
+            throw new PropertySetException(this, "Counld not parse, because type is unmatch. in=" + editType.getName() + ", out=" + String.class.getName());
+        }
     }
     
     /**
