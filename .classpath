@@ -140,4 +140,5 @@
   <classpathentry kind="var" path="M2_REPO/com/amazonaws/aws-java-sdk-logs/1.11.534/aws-java-sdk-logs-1.11.534.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/amazonaws/aws-java-sdk-glue/1.11.530/aws-java-sdk-glue-1.11.530.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/amazonaws/aws-java-sdk-cloudwatch/1.11.530/aws-java-sdk-cloudwatch-1.11.530.jar"/>
+  <classpathentry kind="var" path="M2_REPO/jtidy/jtidy/1.0/jtidy-1.0.jar"/>
 </classpath>
