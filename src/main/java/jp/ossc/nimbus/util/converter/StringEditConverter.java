@@ -49,7 +49,10 @@ public class StringEditConverter
     private boolean isIgnoreArrayIndexOutOfBounds;
     private String splitRegex;
     private int splitIndex;
+<<<<<<< HEAD
     private int splitLimit;
+=======
+>>>>>>> branch 'master' of ssh://git@github.com/nimbus-org/nimbus.git
     
     /**
      * トリムするかどうかを設定する。<p>
@@ -219,6 +222,7 @@ public class StringEditConverter
         return splitIndex;
     }
     
+<<<<<<< HEAD
     /**
      * スプリットする正規表現を何回適用するかを設定する。<p>
      *
@@ -237,6 +241,8 @@ public class StringEditConverter
         return splitLimit;
     }
     
+=======
+>>>>>>> branch 'master' of ssh://git@github.com/nimbus-org/nimbus.git
     public Object convert(Object obj) throws ConvertException{
         return convert(obj == null ? null : obj.toString());
     }
@@ -250,7 +256,11 @@ public class StringEditConverter
             result = result.trim();
         }
         if(splitRegex != null){
+<<<<<<< HEAD
             String[] results = splitLimit > 0 ? result.split(splitRegex, splitLimit) : result.split(splitRegex);
+=======
+            String[] results = result.split(splitRegex);
+>>>>>>> branch 'master' of ssh://git@github.com/nimbus-org/nimbus.git
             result = results[splitIndex];
         }
         int sIndex = startIndex;
