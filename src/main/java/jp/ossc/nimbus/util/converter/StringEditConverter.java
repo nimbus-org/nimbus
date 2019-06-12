@@ -49,6 +49,7 @@ public class StringEditConverter
     private boolean isIgnoreArrayIndexOutOfBounds;
     private String splitRegex;
     private int splitIndex;
+    private int splitLimit;
     
     /**
      * トリムするかどうかを設定する。<p>
@@ -218,6 +219,24 @@ public class StringEditConverter
         return splitIndex;
     }
     
+    /**
+     * スプリットする正規表現を何回適用するかを設定する。<p>
+     *
+     * @param limit スプリットする正規表現の適用回数
+     */
+    public void setSplitLimit(int limit){
+        splitLimit = limit;
+    }
+    
+    /**
+     * スプリットする正規表現を何回適用するかを取得する。<p>
+     *
+     * @return スプリットする正規表現の適用回数
+     */
+    public int getSplitLimit(){
+        return splitLimit;
+    }
+    
     public Object convert(Object obj) throws ConvertException{
         return convert(obj == null ? null : obj.toString());
     }
@@ -231,7 +250,7 @@ public class StringEditConverter
             result = result.trim();
         }
         if(splitRegex != null){
-            String[] results = result.split(splitRegex);
+            String[] results = splitLimit > 0 ? result.split(splitRegex, splitLimit) : result.split(splitRegex);
             result = results[splitIndex];
         }
         int sIndex = startIndex;
