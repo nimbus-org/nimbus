@@ -1413,10 +1413,6 @@ public class Record implements Externalizable, Cloneable, Map{
         }
         final Record record = (Record)o;
         
-        if(recordSchema != record.recordSchema){
-            return false;
-        }
-        
         if(values == record.values){
             return true;
         }
@@ -1440,9 +1436,6 @@ public class Record implements Externalizable, Cloneable, Map{
     // java.util.MapのJavaDoc
     public int hashCode(){
         int hashCode = 0;
-        if(schema != null){
-            hashCode += schema.hashCode();
-        }
         if(values != null){
             for(int i = 0; i < values.length; i++){
                 if(values[i] != null){
