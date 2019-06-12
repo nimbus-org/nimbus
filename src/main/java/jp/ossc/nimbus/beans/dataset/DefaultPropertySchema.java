@@ -850,7 +850,7 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
             return result;
         }
         Class inType = result.getClass();
-        if(type.isAssignableFrom(inType)){
+        if(isAssignableFrom(type, inType)){
             return result;
         }
         if(String.class.equals(type)){
@@ -884,7 +884,7 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
             }
         }
         inType = result == null ? null : result.getClass();
-        if(inType != null && !type.isAssignableFrom(inType)){
+        if(inType != null && !isAssignableFrom(type, inType)){
             throw new PropertySetException(this, "Counld not parse, because type is unmatch. in=" + inType.getName() + ", out=" + type.getName());
         }
         return result;
