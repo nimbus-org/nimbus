@@ -45,11 +45,9 @@ import jp.ossc.nimbus.service.trade.TradeSignCalcUtil.PeriodicPrice;
  * @author M.Aono
  */
 public class MovingAverageTradeSignFactoryService extends FactoryServiceBase implements MovingAverageTradeSignFactoryServiceMBean{
-
-    /**
-     * 
-     */
-    private static final long serialVersionUID = 1L;
+    
+    private static final long serialVersionUID = 1166919576071529622L;
+    
     protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
     protected boolean isShortSelling;
     protected boolean isOnlyReverseTrade;
@@ -135,7 +133,7 @@ public class MovingAverageTradeSignFactoryService extends FactoryServiceBase imp
     }
     
     protected Object createInstance() throws Exception{
-        MovingAverageTradeSign ts = new MovingAverageTradeSign();
+        TradeSignImpl ts = new TradeSignImpl();
         
         ts.setGeneCrossoverType(geneCrossoverType);
         ts.setShortSelling(isShortSelling);
@@ -152,12 +150,10 @@ public class MovingAverageTradeSignFactoryService extends FactoryServiceBase imp
         return ts;
     }
     
-    public static class MovingAverageTradeSign implements TradeSign, java.io.Serializable, Cloneable{
+    public static class TradeSignImpl implements TradeSign, java.io.Serializable, Cloneable{
         
-        /**
-         * 
-         */
-        private static final long serialVersionUID = 1L;
+        private static final long serialVersionUID = -9125073959763082588L;
+        
         protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
         protected boolean isShortSelling;
         protected int shortPeriod;
@@ -270,9 +266,9 @@ public class MovingAverageTradeSignFactoryService extends FactoryServiceBase imp
         }
         
         public Object clone(){
-            MovingAverageTradeSign clone = null;
+            TradeSignImpl clone = null;
             try{
-                clone = (MovingAverageTradeSign)super.clone();
+                clone = (TradeSignImpl)super.clone();
             }catch(CloneNotSupportedException e){
                 return null;
             }

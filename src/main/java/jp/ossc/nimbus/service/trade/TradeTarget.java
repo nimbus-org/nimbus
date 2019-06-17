@@ -39,6 +39,8 @@ package jp.ossc.nimbus.service.trade;
  */
 public class TradeTarget implements java.io.Serializable, Cloneable{
     
+    private static final long serialVersionUID = 4293625245249053589L;
+    
     protected TimeSeries<?> timeSeries;
     protected double tradeUnit = 1.0d;
     

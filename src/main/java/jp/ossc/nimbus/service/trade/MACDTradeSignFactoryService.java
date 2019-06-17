@@ -46,10 +46,9 @@ import jp.ossc.nimbus.service.trade.TradeSignCalcUtil.PeriodicPrice;
  */
 public class MACDTradeSignFactoryService extends FactoryServiceBase implements MACDTradeSignFactoryServiceMBean{
 
-    /**
-     * 
-     */
-    private static final long serialVersionUID = 1L;
+    
+    private static final long serialVersionUID = -1989092545417501804L;
+    
     protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
     protected boolean isShortSelling;
     protected boolean isOnlyReverseTrade;
@@ -161,7 +160,7 @@ public class MACDTradeSignFactoryService extends FactoryServiceBase implements M
     }
     
     protected Object createInstance() throws Exception{
-        MACDTradeSign ts = new MACDTradeSign();
+        TradeSignImpl ts = new TradeSignImpl();
         
         ts.setGeneCrossoverType(geneCrossoverType);
         ts.setShortSelling(isShortSelling);
@@ -182,12 +181,10 @@ public class MACDTradeSignFactoryService extends FactoryServiceBase implements M
         return ts;
     }
     
-    public static class MACDTradeSign implements TradeSign, java.io.Serializable, Cloneable{
+    public static class TradeSignImpl implements TradeSign, java.io.Serializable, Cloneable{
         
-        /**
-         * 
-         */
-        private static final long serialVersionUID = 1L;
+        private static final long serialVersionUID = -6909697822265736684L;
+        
         protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
         protected boolean isShortSelling;
         protected int shortEMAPeriod;
@@ -386,9 +383,9 @@ public class MACDTradeSignFactoryService extends FactoryServiceBase implements M
         }
         
         public Object clone(){
-            MACDTradeSign clone = null;
+            TradeSignImpl clone = null;
             try{
-                clone = (MACDTradeSign)super.clone();
+                clone = (TradeSignImpl)super.clone();
             }catch(CloneNotSupportedException e){
                 return null;
             }

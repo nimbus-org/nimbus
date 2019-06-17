@@ -45,6 +45,8 @@ import java.util.List;
  */
 public abstract class TimeSeries<E extends TimeSeries.Element> extends ArrayList<TimeSeries.Element> implements Cloneable, java.io.Serializable{
     
+    private static final long serialVersionUID = 333795166601447487L;
+    
     /**
      * 空のインスタンスを生成する。<p>
      */

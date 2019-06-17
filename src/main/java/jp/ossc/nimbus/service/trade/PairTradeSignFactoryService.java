@@ -46,6 +46,9 @@ import jp.ossc.nimbus.service.ga.ComplexGene;
  * @author M.Takata
  */
 public class PairTradeSignFactoryService extends FactoryServiceBase implements PairTradeSignFactoryServiceMBean{
+    
+    private static final long serialVersionUID = 7926073316434920514L;
+    
     protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
     protected boolean isShortSelling;
     protected ServiceName buyTradeSignServiceName;
@@ -80,31 +83,22 @@ public class PairTradeSignFactoryService extends FactoryServiceBase implements P
         return sellTradeSignServiceName;
     }
     
-    public void startService() throws Exception{
-        if(buyTradeSignServiceName == null){
-            throw new IllegalArgumentException("BuyTradeSignServiceName is null.");
-        }
-        if(!ServiceManagerFactory.isRegisteredService(buyTradeSignServiceName)){
-            throw new IllegalArgumentException("BuyTradeSignServiceName don't be registered.");
-        }
-        if(sellTradeSignServiceName == null){
-            throw new IllegalArgumentException("SellTradeSignServiceName is null.");
-        }
-        if(!ServiceManagerFactory.isRegisteredService(sellTradeSignServiceName)){
-            throw new IllegalArgumentException("SellTradeSignServiceName don't be registered.");
-        }
-    }
-    
     protected Object createInstance() throws Exception{
-        PairTradeSign ts = new PairTradeSign();
+        TradeSignImpl ts = new TradeSignImpl();
         ts.setGeneCrossoverType(geneCrossoverType);
         ts.setShortSelling(isShortSelling);
-        ts.setBuyTradeSign((TradeSign)ServiceManagerFactory.getServiceObject(buyTradeSignServiceName));
-        ts.setSellTradeSign((TradeSign)ServiceManagerFactory.getServiceObject(sellTradeSignServiceName));
+        if(buyTradeSignServiceName != null){
+            ts.setBuyTradeSign((TradeSign)ServiceManagerFactory.getServiceObject(buyTradeSignServiceName));
+        }
+        if(sellTradeSignServiceName != null){
+            ts.setSellTradeSign((TradeSign)ServiceManagerFactory.getServiceObject(sellTradeSignServiceName));
+        }
         return ts;
     }
     
-    public static class PairTradeSign implements TradeSign, java.io.Serializable, Cloneable{
+    public static class TradeSignImpl implements TradeSign, java.io.Serializable, Cloneable{
+        
+        private static final long serialVersionUID = -4332435955158908710L;
         
         protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
         protected boolean isShortSelling;
@@ -207,9 +201,9 @@ public class PairTradeSignFactoryService extends FactoryServiceBase implements P
         }
         
         public Object clone(){
-            PairTradeSign clone = null;
+            TradeSignImpl clone = null;
             try{
-                clone = (PairTradeSign)super.clone();
+                clone = (TradeSignImpl)super.clone();
             }catch(CloneNotSupportedException e){
                 return null;
             }

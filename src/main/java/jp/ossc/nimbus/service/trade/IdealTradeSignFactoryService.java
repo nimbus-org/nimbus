@@ -44,6 +44,8 @@ import jp.ossc.nimbus.service.ga.FloatGene;
  */
 public class IdealTradeSignFactoryService extends FactoryServiceBase implements IdealTradeSignFactoryServiceMBean{
     
+    private static final long serialVersionUID = 4750779147218716318L;
+    
     protected boolean isShortSelling;
     protected float targetProfitRatio;
     protected FloatGene targetProfitRatioGene;
@@ -86,7 +88,7 @@ public class IdealTradeSignFactoryService extends FactoryServiceBase implements 
     }
     
     protected Object createInstance() throws Exception{
-        IdealTradeSign ts = new IdealTradeSign();
+        TradeSignImpl ts = new TradeSignImpl();
         ts.setShortSelling(isShortSelling);
         ts.setTargetProfitRatio(targetProfitRatio);
         if(targetProfitRatioGene != null){
@@ -97,7 +99,9 @@ public class IdealTradeSignFactoryService extends FactoryServiceBase implements 
         return ts;
     }
     
-    public static class IdealTradeSign implements TradeSign, java.io.Serializable, Cloneable{
+    public static class TradeSignImpl implements TradeSign, java.io.Serializable, Cloneable{
+        
+        private static final long serialVersionUID = -5392766814107217952L;
         
         protected boolean isShortSelling;
         protected float targetProfitRatio;
@@ -328,9 +332,9 @@ public class IdealTradeSignFactoryService extends FactoryServiceBase implements 
         }
         
         public Object clone(){
-            IdealTradeSign clone = null;
+            TradeSignImpl clone = null;
             try{
-                clone = (IdealTradeSign)super.clone();
+                clone = (TradeSignImpl)super.clone();
             }catch(CloneNotSupportedException e){
                 return null;
             }

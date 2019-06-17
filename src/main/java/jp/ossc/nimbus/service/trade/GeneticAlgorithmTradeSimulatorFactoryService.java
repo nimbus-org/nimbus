@@ -54,6 +54,8 @@ import jp.ossc.nimbus.service.ga.GeneticAlgorithm;
  * @author M.Takata
  */
 public class GeneticAlgorithmTradeSimulatorFactoryService extends FactoryServiceBase implements GeneticAlgorithmTradeSimulatorFactoryServiceMBean{
+    
+    private static final long serialVersionUID = 7218981434381481699L;
 
     protected ServiceName tradeSimulatorSeedServiceName;
     protected ServiceName geneticAlgorithmServiceName;
@@ -133,7 +135,7 @@ public class GeneticAlgorithmTradeSimulatorFactoryService extends FactoryService
     }
 
     protected Object createInstance() throws Exception{
-        GeneticAlgorithmTradeSimulator tradeSimulator = new GeneticAlgorithmTradeSimulator();
+        TradeSimulatorImpl tradeSimulator = new TradeSimulatorImpl();
         tradeSimulator.setForwardTestTerm(forwardTestTerm);
         tradeSimulator.setBackTestTerm(backTestTerm);
         tradeSimulator.setMinBackTestTerm(minBackTestTerm);
@@ -159,7 +161,10 @@ public class GeneticAlgorithmTradeSimulatorFactoryService extends FactoryService
         return tradeSimulator;
     }
 
-    public static class GeneticAlgorithmTradeSimulator implements TradeSimulator, java.io.Serializable, Cloneable{
+    public static class TradeSimulatorImpl implements TradeSimulator, java.io.Serializable, Cloneable{
+        
+        private static final long serialVersionUID = -5165734409811194663L;
+        
         protected TradeSimulatorSeed tradeSimulatorSeed;
         protected GeneticAlgorithm geneticAlgorithm;
         protected int forwardTestTerm;
@@ -353,9 +358,9 @@ public class GeneticAlgorithmTradeSimulatorFactoryService extends FactoryService
         }
 
         public Object clone(){
-            GeneticAlgorithmTradeSimulator clone = null;
+            TradeSimulatorImpl clone = null;
             try{
-                clone = (GeneticAlgorithmTradeSimulator)super.clone();
+                clone = (TradeSimulatorImpl)super.clone();
             }catch(CloneNotSupportedException e){
                 return null;
             }

@@ -46,6 +46,8 @@ import jp.ossc.nimbus.service.ga.IntegerGene;
  */
 public class TrailTradeSignFactoryService extends FactoryServiceBase implements TrailTradeSignFactoryServiceMBean{
     
+    private static final long serialVersionUID = 9219567468442288529L;
+    
     protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
     protected boolean isShortSelling;
     protected float trailWidth = 0.05f;
@@ -195,7 +197,7 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
     }
     
     protected Object createInstance() throws Exception{
-        TrailTradeSign ts = new TrailTradeSign();
+        TradeSignImpl ts = new TradeSignImpl();
         
         ts.setGeneCrossoverType(geneCrossoverType);
         ts.setShortSelling(isShortSelling);
@@ -230,7 +232,9 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
         return ts;
     }
     
-    public static class TrailTradeSign implements TradeSign, java.io.Serializable, Cloneable{
+    public static class TradeSignImpl implements TradeSign, java.io.Serializable, Cloneable{
+        
+        private static final long serialVersionUID = -7705093139374749262L;
         
         protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
         protected boolean isShortSelling;
@@ -570,9 +574,9 @@ public class TrailTradeSignFactoryService extends FactoryServiceBase implements 
         }
         
         public Object clone(){
-            TrailTradeSign clone = null;
+            TradeSignImpl clone = null;
             try{
-                clone = (TrailTradeSign)super.clone();
+                clone = (TradeSignImpl)super.clone();
             }catch(CloneNotSupportedException e){
                 return null;
             }

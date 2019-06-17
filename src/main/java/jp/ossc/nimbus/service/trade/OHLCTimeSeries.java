@@ -42,6 +42,8 @@ import java.util.List;
  */
 public class OHLCTimeSeries extends TimeSeries<OHLCTimeSeries.OHLCElement>{
     
+    private static final long serialVersionUID = -5345458848076806030L;
+    
     /**
      * 空のインスタンスを生成する。<p>
      */
