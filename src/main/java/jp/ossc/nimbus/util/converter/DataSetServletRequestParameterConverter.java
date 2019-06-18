@@ -93,7 +93,7 @@ import jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvoker;
  *
  * @author M.Takata
  */
-public class DataSetServletRequestParameterConverter implements Converter{
+public class DataSetServletRequestParameterConverter implements BindingConverter{
 
     public static final String DEFAULT_DATASET_PARAMETER_NAME = "ds";
 
@@ -341,67 +341,17 @@ public class DataSetServletRequestParameterConverter implements Converter{
     /**
      * 指定されたオブジェクトを変換する。<p>
      *
-     * @param obj 変換対象のオブジェクト
-     * @return 変換後のオブジェクト
+     * @param req 変換対象のHttpServletRequestオブジェクト
+     * @return 変換後のDataSetオブジェクト
      * @exception ConvertException 変換に失敗した場合
      */
-    public Object convert(Object obj) throws ConvertException{
-        if(!(obj instanceof HttpServletRequest)){
+    public Object convert(Object req) throws ConvertException{
+        if(!(req instanceof HttpServletRequest)){
             return null;
         }
-        HttpServletRequest request = (HttpServletRequest)obj;
-        String contentType = request.getHeader(HEADER_CONTENT_TYPE);
-        Map paramMap = null;
-        if(contentType == null || (!contentType.toLowerCase().startsWith(MULTIPART))){
-            paramMap = request.getParameterMap();
-        }else{
-            DiskFileItemFactory factory = new DiskFileItemFactory();
-            if(repositoryPath != null){
-                factory.setRepository(new File(repositoryPath));
-            }
-            factory.setSizeThreshold(sizeThreshold);
-            ServletFileUpload upload = new ServletFileUpload(factory);
-            upload.setSizeMax(requestSizeThreshold);
-            if(headerEncoding != null){
-                upload.setHeaderEncoding(headerEncoding);
-            }
-            List itemList = null;
-            try{
-                itemList = upload.parseRequest((HttpServletRequest) obj);
-            }catch(FileUploadException e){
-                throw new ConvertException(e);
-            }
-            for(int i = 0; i < itemList.size(); i++){
-                FileItem item = (FileItem)itemList.get(i);
-                if(paramMap == null){
-                    paramMap = new HashMap();
-                }
-                if(item.isFormField()){
-                    String[] vals = (String[])paramMap.get(item.getFieldName());
-                    if(vals == null){
-                        vals = new String[]{item.getString()};
-                    }else{
-                        String[] newVals = new String[vals.length + 1];
-                        System.arraycopy(vals, 0, newVals, 0, vals.length);
-                        newVals[vals.length] = item.getString();
-                        vals = newVals;
-                    }
-                    paramMap.put(item.getFieldName(), vals);
-                }else{
-                    FileItem[] vals = (FileItem[])paramMap.get(item.getFieldName());
-                    if(vals == null){
-                        vals = new FileItem[]{item};
-                    }else{
-                        FileItem[] newVals = new FileItem[vals.length + 1];
-                        System.arraycopy(vals, 0, newVals, 0, vals.length);
-                        newVals[vals.length] = item;
-                        vals = newVals;
-                    }
-                    paramMap.put(item.getFieldName(), vals);
-                }
-            }
-        }
-        if(paramMap == null || paramMap.size() == 0){
+        HttpServletRequest request = (HttpServletRequest)req;
+        Map paramMap = toParameterMap(request);
+        if(paramMap == null){
             return null;
         }
         String defaultDsName = request.getParameter(dataSetParameterName);
@@ -601,7 +551,218 @@ public class DataSetServletRequestParameterConverter implements Converter{
             return currentDsMap;
         }
     }
-
+    
+    protected Map toParameterMap(HttpServletRequest request) throws ConvertException{
+        String contentType = request.getHeader(HEADER_CONTENT_TYPE);
+        Map paramMap = null;
+        if(contentType == null || (!contentType.toLowerCase().startsWith(MULTIPART))){
+            paramMap = request.getParameterMap();
+        }else{
+            DiskFileItemFactory factory = new DiskFileItemFactory();
+            if(repositoryPath != null){
+                factory.setRepository(new File(repositoryPath));
+            }
+            factory.setSizeThreshold(sizeThreshold);
+            ServletFileUpload upload = new ServletFileUpload(factory);
+            upload.setSizeMax(requestSizeThreshold);
+            if(headerEncoding != null){
+                upload.setHeaderEncoding(headerEncoding);
+            }
+            List itemList = null;
+            try{
+                itemList = upload.parseRequest(request);
+            }catch(FileUploadException e){
+                throw new ConvertException(e);
+            }
+            for(int i = 0; i < itemList.size(); i++){
+                FileItem item = (FileItem)itemList.get(i);
+                if(paramMap == null){
+                    paramMap = new HashMap();
+                }
+                if(item.isFormField()){
+                    String[] vals = (String[])paramMap.get(item.getFieldName());
+                    if(vals == null){
+                        vals = new String[]{item.getString()};
+                    }else{
+                        String[] newVals = new String[vals.length + 1];
+                        System.arraycopy(vals, 0, newVals, 0, vals.length);
+                        newVals[vals.length] = item.getString();
+                        vals = newVals;
+                    }
+                    paramMap.put(item.getFieldName(), vals);
+                }else{
+                    FileItem[] vals = (FileItem[])paramMap.get(item.getFieldName());
+                    if(vals == null){
+                        vals = new FileItem[]{item};
+                    }else{
+                        FileItem[] newVals = new FileItem[vals.length + 1];
+                        System.arraycopy(vals, 0, newVals, 0, vals.length);
+                        newVals[vals.length] = item;
+                        vals = newVals;
+                    }
+                    paramMap.put(item.getFieldName(), vals);
+                }
+            }
+        }
+        if(paramMap == null || paramMap.size() == 0){
+            return null;
+        }
+        return paramMap;
+    }
+    
+    /**
+     * 指定されたオブジェクトを変換する。<p>
+     *
+     * @param req 変換対象のHttpServletRequestオブジェクト
+     * @param output 変換先のDataSetオブジェクト
+     * @return 変換後のDataSetオブジェクト
+     * @exception ConvertException 変換に失敗した場合
+     */
+    public Object convert(Object req, Object output) throws ConvertException{
+        if(!(req instanceof HttpServletRequest)){
+            return output;
+        }
+        HttpServletRequest request = (HttpServletRequest)req;
+        DataSet ds = (DataSet)output;
+        Map paramMap = toParameterMap(request);
+        if(paramMap == null){
+            return output;
+        }
+        final Iterator entries = paramMap.entrySet().iterator();
+        while(entries.hasNext()){
+            final Map.Entry entry = (Map.Entry)entries.next();
+            final String propStr = (String)entry.getKey();
+            Property prop = (Property)propertyCache.get(propStr);
+            if(prop == null){
+                try{
+                    prop = PropertyFactory.createProperty(propStr);
+                    if(isIgnoreUnknownParameter){
+                        prop.setIgnoreNullProperty(true);
+                    }
+                }catch(IllegalArgumentException e){
+                    throw new ConvertException("Parameter '" + propStr + "' is illegal.", e);
+                }
+                Property old = (Property)propertyCache.putIfAbsent(propStr, prop);
+                if(old != null){
+                    prop = old;
+                }
+            }
+            final Object[] vals = (Object[])entry.getValue();
+            try{
+                if(prop instanceof NestedProperty){
+                    Property thisProp = ((NestedProperty)prop).getThisProperty();
+                    if(thisProp instanceof NestedProperty){
+                        Property nestedProp = ((NestedProperty)prop).getNestedProperty();
+                        Property nestedProp2 = ((NestedProperty)thisProp).getNestedProperty();
+                        if(nestedProp2 instanceof IndexedProperty){
+                            Property thisProp2 = ((NestedProperty)thisProp).getThisProperty();
+                            Object thisObj = thisProp2.getProperty(ds);
+                            if(thisObj == null){
+                                if(isIgnoreUnknownParameter){
+                                    continue;
+                                }else{
+                                    throw new ConvertException("Parameter '" + propStr + "' is illegal.");
+                                }
+                            }
+                            if(thisObj instanceof RecordList){
+                                setRecordListProperty(
+                                    (RecordList)thisObj,
+                                    nestedProp.getPropertyName(),
+                                    ((IndexedProperty)nestedProp2).getIndex(),
+                                    vals
+                                );
+                            }else{
+                                // ありえない
+                                prop.setProperty(
+                                    ds,
+                                    vals[vals.length - 1]
+                                );
+                            }
+                        }else{
+                            Object thisObj = thisProp.getProperty(ds);
+                            if(thisObj == null){
+                                if(isIgnoreUnknownParameter){
+                                    continue;
+                                }else{
+                                    throw new ConvertException("Parameter '" + propStr + "' is illegal.");
+                                }
+                            }
+                            if(thisObj instanceof RecordList){
+                                setRecordListProperty(
+                                    (RecordList)thisObj,
+                                    nestedProp.getPropertyName(),
+                                    vals
+                                );
+                            }else if(thisObj instanceof Record){
+                                setRecordProperty(
+                                    (Record)thisObj,
+                                    nestedProp.getPropertyName(),
+                                    nestedProp.getPropertyType(thisObj),
+                                    vals
+                                );
+                            }else{
+                                nestedProp.setProperty(
+                                    thisObj,
+                                    vals[vals.length - 1]
+                                );
+                            }
+                        }
+                    }else{
+                        Object thisObj = thisProp.getProperty(ds);
+                        if(thisObj == null){
+                            if(isIgnoreUnknownParameter){
+                                continue;
+                            }else{
+                                throw new ConvertException("Parameter '" + propStr + "' is illegal.");
+                            }
+                        }
+                        Property nestedProp = ((NestedProperty)prop).getNestedProperty();
+                        if(thisObj instanceof RecordList){
+                            setRecordListProperty(
+                                (RecordList)thisObj,
+                                nestedProp.getPropertyName(),
+                                vals
+                            );
+                        }else if(thisObj instanceof Record){
+                            setRecordProperty(
+                                (Record)thisObj,
+                                nestedProp.getPropertyName(),
+                                nestedProp.getPropertyType(thisObj),
+                                vals
+                            );
+                        }else{
+                            nestedProp.setProperty(
+                                thisObj,
+                                vals[vals.length - 1]
+                            );
+                        }
+                    }
+                }else{
+                    throw new ConvertException("Parameter '" + propStr + "' is illegal.");
+                }
+            }catch(PropertySetException e){
+                Throwable cause = e.getCause();
+                if(cause instanceof ConvertException){
+                    throw (ConvertException)cause;
+                }
+                if(isIgnoreUnknownParameter){
+                    continue;
+                }else{
+                    throw new ConvertException("Parameter '" + propStr + "' is illegal.", e);
+                }
+            }catch(NoSuchPropertyException e){
+                if(isIgnoreUnknownParameter){
+                    continue;
+                }else{
+                    throw new ConvertException("Parameter '" + propStr + "' is illegal.", e);
+                }
+            }catch(InvocationTargetException e){
+                throw new ConvertException("Parameter '" + propStr + "' is illegal.", e.getTargetException());
+            }
+        }
+        return ds;
+    }
+    
     protected void setRecordProperty(
         Record record,
         String name,
