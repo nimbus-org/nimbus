@@ -902,6 +902,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             final Object requestObj = request.getRequestObject();
             if(requestObj instanceof DataSet){
                 DataSetServletRequestParameterConverter converter = new DataSetServletRequestParameterConverter();
+                converter.setIgnoreUnknownParameter(true);
                 if(requestSizeThreshold > 0){
                     converter.setRequestSizeThreshold(requestSizeThreshold);
                 }
