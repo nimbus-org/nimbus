@@ -2,18 +2,18 @@
  * This software is distributed under following license based on modified BSD
  * style license.
  * ----------------------------------------------------------------------
- * 
+ *
  * Copyright 2009 The Nimbus2 Project. All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
- * 
+ *
  * 1. Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer. 
+ *    this list of conditions and the following disclaimer.
  * 2. Redistributions in binary form must reproduce the above copyright notice,
  *    this list of conditions and the following disclaimer in the documentation
  *    and/or other materials provided with the distribution.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE NIMBUS PROJECT ``AS IS'' AND ANY EXPRESS
  * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN
@@ -24,7 +24,7 @@
  * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- * 
+ *
  * The views and conclusions contained in the software and documentation are
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus2 Project.
@@ -47,8 +47,20 @@ import java.math.BigInteger;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
-import java.util.*;
-import java.util.regex.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.InflaterInputStream;
 
@@ -59,7 +71,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import org.w3c.dom.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -75,9 +88,9 @@ import jp.ossc.nimbus.core.MetaData;
 import jp.ossc.nimbus.core.NimbusClassLoader;
 import jp.ossc.nimbus.core.NimbusEntityResolver;
 import jp.ossc.nimbus.core.ServiceBase;
+import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.core.ServiceMetaData;
 import jp.ossc.nimbus.core.ServiceName;
-import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.core.Utility;
 import jp.ossc.nimbus.service.aop.interceptor.ThreadContextKey;
 import jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvoker;
@@ -86,11 +99,11 @@ import jp.ossc.nimbus.service.context.Context;
 import jp.ossc.nimbus.service.journal.Journal;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 import jp.ossc.nimbus.service.sequence.Sequence;
-import jp.ossc.nimbus.util.converter.ConvertException;
-import jp.ossc.nimbus.util.converter.StreamConverter;
 import jp.ossc.nimbus.util.converter.BindingStreamConverter;
-import jp.ossc.nimbus.util.converter.StreamStringConverter;
+import jp.ossc.nimbus.util.converter.ConvertException;
 import jp.ossc.nimbus.util.converter.DataSetServletRequestParameterConverter;
+import jp.ossc.nimbus.util.converter.StreamConverter;
+import jp.ossc.nimbus.util.converter.StreamStringConverter;
 
 /**
  * アプリケーション処理をBeanFlowに委譲する{@link RestServer}インタフェース実装サービス。<p>
@@ -99,16 +112,16 @@ import jp.ossc.nimbus.util.converter.DataSetServletRequestParameterConverter;
  * @see <a href="restserver_1_0.dtd">RESTサーバ定義ファイルDTD</a>
  */
 public class BeanFlowRestServerService extends ServiceBase implements RestServer, BeanFlowRestServerServiceMBean{
-    
+
     static{
         NimbusEntityResolver.registerDTD(
             "-//Nimbus//DTD Nimbus RestServer definition 1.0//JA",
             "jp/ossc/nimbus/service/rest/restserver_1_0.dtd"
         );
     }
-    
+
     private static final long serialVersionUID = 7754807146567199126L;
-    
+
     protected static final String HTTP_HEADER_NAME_ACCEPT = "Accept";
     protected static final String HTTP_HEADER_NAME_ACCEPT_CHARSET = "Accept-Charset";
     protected static final String HTTP_HEADER_NAME_CONTENT_TYPE = "Content-Type";
@@ -117,7 +130,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
     protected static final String CONTENT_ENCODING_DEFLATE = "deflate";
     protected static final String CONTENT_ENCODING_GZIP = "gzip";
     protected static final String CONTENT_ENCODING_X_GZIP = "x-gzip";
-    
+
     protected String serverDefinitionPath;
     protected String documentBuilderFactoryClassName;
     protected boolean isValidate;
@@ -135,7 +148,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
     protected String requestIdKey = ThreadContextKey.REQUEST_ID;
     protected long requestSizeThreshold = -1L;
     protected String defaultResponseCharacterEncoding = "UTF-8";
-    
+
     protected BeanFlowInvokerFactory beanFlowInvokerFactory;
     protected Journal journal;
     protected EditorFinder editorFinder;
@@ -147,119 +160,119 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
     protected Map requestConverterMapping;
     protected Map responseConverterServiceNameMapping;
     protected Map responseConverterMapping;
-    
+
     public void setServerDefinitionPath(String path){
         serverDefinitionPath = path;
     }
     public String getServerDefinitionPath(){
         return serverDefinitionPath;
     }
-    
+
     public void setDocumentBuilderFactoryClassName(String name){
         documentBuilderFactoryClassName = name;
     }
     public String getDocumentBuilderFactoryClassName(){
         return documentBuilderFactoryClassName;
     }
-    
+
     public void setValidate(boolean validate){
         isValidate = validate;
     }
     public boolean isValidate(){
         return isValidate;
     }
-    
+
     public void setValidateFlowPrefix(String prefix){
         validateFlowPrefix = prefix;
     }
     public String getValidateFlowPrefix(){
         return validateFlowPrefix;
     }
-    
+
     public void setPostMethodFlowPostfix(String postfix){
         postMethodFlowPostfix = postfix;
     }
     public String getPostMethodFlowPostfix(){
         return postMethodFlowPostfix;
     }
-    
+
     public void setGetMethodFlowPostfix(String postfix){
         getMethodFlowPostfix = postfix;
     }
     public String getGetMethodFlowPostfix(){
         return getMethodFlowPostfix;
     }
-    
+
     public void setHeadMethodFlowPostfix(String postfix){
         headMethodFlowPostfix = postfix;
     }
     public String getHeadMethodFlowPostfix(){
         return headMethodFlowPostfix;
     }
-    
+
     public void setPutMethodFlowPostfix(String postfix){
         putMethodFlowPostfix = postfix;
     }
     public String getPutMethodFlowPostfix(){
         return putMethodFlowPostfix;
     }
-    
+
     public void setDeleteMethodFlowPostfix(String postfix){
         deleteMethodFlowPostfix = postfix;
     }
     public String getDeleteMethodFlowPostfix(){
         return deleteMethodFlowPostfix;
     }
-    
+
     public void setBeanFlowInvokerFactoryServiceName(ServiceName name){
         beanFlowInvokerFactoryServiceName = name;
     }
     public ServiceName getBeanFlowInvokerFactoryServiceName(){
         return beanFlowInvokerFactoryServiceName;
     }
-    
+
     public void setJournalServiceName(ServiceName name){
         journalServiceName = name;
     }
     public ServiceName getJournalServiceName(){
         return journalServiceName;
     }
-    
+
     public void setEditorFinderServiceName(ServiceName name){
         editorFinderServiceName = name;
     }
     public ServiceName getEditorFinderServiceName(){
         return editorFinderServiceName;
     }
-    
+
     public void setSequenceServiceName(ServiceName name){
         sequenceServiceName = name;
     }
     public ServiceName getSequenceServiceName(){
         return sequenceServiceName;
     }
-    
+
     public void setRequestIdKey(String key){
         requestIdKey = key;
     }
     public String getRequestIdKey(){
         return requestIdKey;
     }
-    
+
     public void setContextServiceName(ServiceName name){
         contextServiceName = name;
     }
     public ServiceName getContextServiceName(){
         return contextServiceName;
     }
-    
+
     public void setRequestConverterServiceNames(Map mapping){
         requestConverterServiceNameMapping = mapping;
     }
     public Map getRequestConverterServiceNames(){
         return requestConverterServiceNameMapping;
     }
-    
+
     public void setRequestConverterServiceName(String mediaType, ServiceName name){
         if(requestConverterServiceNameMapping == null){
             requestConverterServiceNameMapping = new LinkedHashMap();
@@ -272,14 +285,14 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
         return (ServiceName)requestConverterServiceNameMapping.get(mediaType);
     }
-    
+
     public void setResponseConverterServiceNames(Map mapping){
         responseConverterServiceNameMapping = mapping;
     }
     public Map getResponseConverterServiceNames(){
         return responseConverterServiceNameMapping;
     }
-    
+
     public void setResponseConverterServiceName(String mediaType, ServiceName name){
         if(responseConverterServiceNameMapping == null){
             responseConverterServiceNameMapping = new HashMap();
@@ -292,91 +305,91 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
         return (ServiceName)responseConverterServiceNameMapping.get(mediaType);
     }
-    
+
     public void setRequestConverter(String mediaType, BindingStreamConverter converter){
         if(requestConverterMapping == null){
             requestConverterMapping = new LinkedHashMap();
         }
         requestConverterMapping.put(mediaType, converter);
     }
-    
+
     public BindingStreamConverter getRequestConverter(String mediaType){
         if(requestConverterMapping == null){
             return null;
         }
         return (BindingStreamConverter)requestConverterMapping.get(mediaType);
     }
-    
+
     public void setResponseConverter(String mediaType, StreamConverter converter){
         if(responseConverterMapping == null){
             responseConverterMapping = new LinkedHashMap();
         }
         responseConverterMapping.put(mediaType, converter);
     }
-    
+
     public StreamConverter getResponseConverter(String mediaType){
         if(responseConverterMapping == null){
             return null;
         }
         return (StreamConverter)responseConverterMapping.get(mediaType);
     }
-    
+
     public void setRequestSizeThreshold(long size) {
         requestSizeThreshold = size;
     }
     public long getRequestSizeThreshold() {
         return requestSizeThreshold;
     }
-    
+
     public void setDefaultResponseCharacterEncoding(String encoding) {
         defaultResponseCharacterEncoding = encoding;
     }
     public String getDefaultResponseCharacterEncoding() {
         return defaultResponseCharacterEncoding;
     }
-    
-    
-    
+
+
+
     public void setBeanFlowInvokerFactory(BeanFlowInvokerFactory factory){
         beanFlowInvokerFactory = factory;
     }
     public BeanFlowInvokerFactory getBeanFlowInvokerFactory(){
         return beanFlowInvokerFactory;
     }
-    
+
     public void setJournal(Journal journal){
         this.journal = journal;
     }
     public Journal getJournal(){
         return journal;
     }
-    
+
     public void setEditorFinder(EditorFinder editorFinder){
         this.editorFinder = editorFinder;
     }
     public EditorFinder getEditorFinder(){
         return editorFinder;
     }
-    
+
     public void setSequence(Sequence seq){
         sequence = seq;
     }
     public Sequence getSequence(){
         return sequence;
     }
-    
+
     public void setContext(Context ctx){
         context = ctx;
     }
     public Context getContext(){
         return context;
     }
-    
+
     public void createService() throws Exception{
         propertyAccess = new PropertyAccess();
         propertyAccess.setIgnoreNullProperty(true);
     }
-    
+
     public void startService() throws Exception{
         if(requestConverterServiceNameMapping != null){
             Iterator entries = requestConverterServiceNameMapping.entrySet().iterator();
@@ -413,15 +426,15 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         if(editorFinderServiceName != null){
             editorFinder = (EditorFinder)ServiceManagerFactory.getServiceObject(editorFinderServiceName);
         }
-        
+
         reload();
     }
-    
+
     public synchronized void reload() throws Exception{
         if(serverDefinitionPath == null || serverDefinitionPath.length() == 0){
             throw new IllegalArgumentException("ServerDefinitionPath is null");
         }
-        
+
         File serviceDefDir = null;
         if(getServiceNameObject() != null){
             ServiceMetaData metaData = ServiceManagerFactory.getServiceMetaData(getServiceNameObject());
@@ -435,7 +448,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 }
             }
         }
-        
+
         URL url = null;
         File localFile = new File(serverDefinitionPath);
         if(!localFile.exists() && serviceDefDir != null){
@@ -490,11 +503,11 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         serverData.importXML(doc.getDocumentElement());
         restServerMetaData = serverData;
     }
-    
+
     public RestServerMetaData getRestServerMetaData(){
         return restServerMetaData;
     }
-    
+
     protected boolean processCheckAccept(
         RestRequest request,
         RestResponse response
@@ -569,7 +582,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         response.setResult(HttpServletResponse.SC_NOT_ACCEPTABLE);
         return false;
     }
-    
+
     protected boolean processCheckContentType(
         RestRequest request,
         RestResponse response
@@ -594,7 +607,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
         return true;
     }
-    
+
     protected ResourceMetaData processFindResource(
         RestRequest request,
         RestResponse response,
@@ -610,7 +623,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
         return resource;
     }
-    
+
     protected boolean processParsePathParameters(
         RestRequest request,
         RestResponse response,
@@ -633,7 +646,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
         return true;
     }
-    
+
     protected boolean processCreateRequestObject(
         RestRequest request,
         RestResponse response,
@@ -832,7 +845,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
         return true;
     }
-    
+
     protected boolean processSetupResponseObject(
         RestRequest request,
         RestResponse response,
@@ -874,7 +887,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
         return true;
     }
-    
+
     protected boolean processReadQuery(
         RestRequest request,
         RestResponse response,
@@ -886,7 +899,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
         return processReadParameter(request, response, paths, resource);
     }
-    
+
     protected boolean processReadParameter(
         RestRequest request,
         RestResponse response,
@@ -902,6 +915,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             final Object requestObj = request.getRequestObject();
             if(requestObj instanceof DataSet){
                 DataSetServletRequestParameterConverter converter = new DataSetServletRequestParameterConverter();
+                converter.setIgnoreUnknownParameter(true);
                 if(requestSizeThreshold > 0){
                     converter.setRequestSizeThreshold(requestSizeThreshold);
                 }
@@ -1178,7 +1192,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
         return true;
     }
-    
+
     protected boolean processReadRequestBody(
         RestRequest request,
         RestResponse response,
@@ -1259,7 +1273,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
         return true;
     }
-    
+
     protected ByteArrayOutputStream decompress(HttpServletRequest request, ByteArrayOutputStream baos) throws IOException {
         // ヘッダー[Content-Encoding]の値を取得
         Enumeration encodeEnum = (Enumeration)request.getHeaders(HTTP_HEADER_NAME_CONTENT_ENCODING);
@@ -1301,7 +1315,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
         return baos;
     }
-    
+
     protected boolean processValidateRequestObject(
         RestRequest request,
         RestResponse response,
@@ -1348,7 +1362,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             return false;
         }
     }
-    
+
     protected boolean processExecute(
         RestRequest request,
         RestResponse response,
@@ -1388,7 +1402,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             return false;
         }
     }
-    
+
     protected boolean processWriteResponseBody(
         RestRequest request,
         RestResponse response,
@@ -1478,7 +1492,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
         return true;
     }
-    
+
     public void processPost(PostRestRequest request, PostRestResponse response) throws Throwable{
         ResourceMetaData resource = null;
         try{
@@ -1544,7 +1558,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
         }
     }
-    
+
     public void processGet(GetRestRequest request, GetRestResponse response) throws Throwable{
         ResourceMetaData resource = null;
         try{
@@ -1610,7 +1624,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
         }
     }
-    
+
     public void processHead(HeadRestRequest request, HeadRestResponse response) throws Throwable{
         ResourceMetaData resource = null;
         try{
@@ -1666,7 +1680,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
         }
     }
-    
+
     public void processPut(PutRestRequest request, PutRestResponse response) throws Throwable{
         ResourceMetaData resource = null;
         try{
@@ -1732,7 +1746,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
         }
     }
-    
+
     public void processDelete(DeleteRestRequest request, DeleteRestResponse response) throws Throwable{
         ResourceMetaData resource = null;
         try{
@@ -1795,7 +1809,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
         }
     }
-    
+
     public void processOptions(OptionsRestRequest request, OptionsRestResponse response) throws Throwable{
         ResourceMetaData resource = null;
         try{
@@ -1853,11 +1867,11 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
         }
     }
-    
+
     protected class MyErrorHandler implements ErrorHandler{
-        
+
         private boolean isError;
-        
+
         public void warning(SAXParseException e) throws SAXException{
             getLogger().write(
                 "BFRS_00001",
@@ -1882,10 +1896,10 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             return isError;
         }
     }
-    
+
     public static class ResourceTree{
         protected Map treeMap = new HashMap();
-        
+
         public void addResource(ResourceMetaData resource) throws DeploymentException{
             ResourceTreeElement currentElement = null;
             for(int i = 0, imax = resource.resourcePath.pathElements.size(); i < imax; i++){
@@ -1923,7 +1937,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 }
             }
         }
-        
+
         public ResourceMetaData getResource(List paths){
             ResourceTreeElement currentElement = null;
             for(int i = 0, imax = paths.size(); i < imax; i++){
@@ -1944,7 +1958,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
             return null;
         }
-        
+
         public static class ResourceTreeElement{
             public ResourceMetaData resource;
             public ResourcePath.ParameterPath parameterPath;
@@ -1952,13 +1966,13 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             public Map children;
         }
     }
-    
+
     public static class ResourcePath{
-        
+
         protected String path;
         protected List pathElements = new ArrayList();
         protected List parameterPathIndex;
-        
+
         public ResourcePath(String path) throws IllegalArgumentException{
             if(path.length() == 0){
                 throw new IllegalArgumentException("empty path : path=" + path);
@@ -1981,23 +1995,23 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 }
             }
         }
-        
+
         public String getPath(){
             return path;
         }
-        
+
         public List getPathElementList(){
             return pathElements;
         }
-        
+
         public int getParameterPathSize(){
             return parameterPathIndex == null ? 0 : parameterPathIndex.size();
         }
-        
+
         public ParameterPath getParameterPathIndex(int index){
             return parameterPathIndex == null || parameterPathIndex.size() <= index ? null : (ParameterPath)pathElements.get(((Integer)parameterPathIndex.get(index)).intValue());
         }
-        
+
         public static List splitPath(String path){
             String[] paths = path.split("/");
             List result = new ArrayList();
@@ -2010,11 +2024,11 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
             return result;
         }
-        
+
         public boolean hasParameterPath(){
             return parameterPathIndex != null;
         }
-        
+
         public Map parseParameter(List paths, Map result) throws IndexOutOfBoundsException{
             if(!hasParameterPath()){
                 return result;
@@ -2026,19 +2040,19 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
             return result;
         }
-        
+
         public String toString(){
             return path;
         }
-        
+
         public static class ParameterPath{
-            
+
             protected static final Pattern PARAMETER_PATTERN = Pattern.compile("\\{.+?\\}");
-            
+
             protected final String path;
             protected final int paramCount;
             protected List paramElements = new ArrayList();
-            
+
             public ParameterPath(String path) throws IllegalArgumentException{
                 this.path = path;
                 Matcher m = PARAMETER_PATTERN.matcher(path);
@@ -2059,19 +2073,19 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 }
                 paramCount = count;
             }
-            
+
             public String getPath(){
                 return path;
             }
-            
+
             public int getParameterCount(){
                 return paramCount;
             }
-            
+
             public List getParameterElementList(){
                 return paramElements;
             }
-            
+
             public Map parseParameter(String path, Map result) throws IndexOutOfBoundsException{
                 if(result == null){
                     result = new LinkedHashMap();
@@ -2097,11 +2111,11 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 }
                 return result;
             }
-            
+
             public String toString(){
                 return path;
             }
-            
+
             public int hashCode(){
                 return path.hashCode();
             }
@@ -2117,12 +2131,12 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 }
                 return path.equals(((ParameterPath)obj).path);
             }
-            
+
             public static boolean isParameterPath(String path){
                 Matcher m = PARAMETER_PATTERN.matcher(path);
                 return m.find();
             }
-            
+
             protected static class ParameterElement{
                 protected final String name;
                 public ParameterElement(String element){
@@ -2134,33 +2148,33 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
         }
     }
-    
+
     public static class RestServerMetaData extends MetaData{
-        
+
         private static final long serialVersionUID = -8221854228229536891L;
-        
+
         public static final String TAG_NAME = "restserver";
-        
+
         protected List resources = new ArrayList();
         protected ResourceTree resourceTree = new ResourceTree();
-        
+
         public RestServerMetaData(){
         }
-        
+
         public List getResourceMetaDataList(){
             return resources;
         }
-        
+
         public void importXML(Element element) throws DeploymentException{
             super.importXML(element);
-            
+
             if(!element.getTagName().equals(TAG_NAME)){
                 throw new DeploymentException(
                     "Root tag must be " + TAG_NAME + " : "
                      + element.getTagName()
                 );
             }
-            
+
             final Iterator propElements = getChildrenByTagName(
                 element,
                 ResourceMetaData.TAG_NAME
@@ -2173,15 +2187,15 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
         }
     }
-    
+
     public static class ResourceMetaData extends MetaData{
-        
+
         private static final long serialVersionUID = -9068306933796302144L;
-        
+
         public static final String TAG_NAME = "resource";
         public static final String ATTRIBUTE_NAME_NAME = "name";
         public static final String DESCRIPTION_TAG_NAME = "description";
-        
+
         protected ResourcePath resourcePath;
         protected PostMetaData postData;
         protected GetMetaData getData;
@@ -2189,39 +2203,39 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         protected PutMetaData putData;
         protected DeleteMetaData deleteData;
         protected OptionsMetaData optionsData;
-        
+
         public ResourceMetaData(RestServerMetaData parent){
             super(parent);
         }
-        
+
         public ResourcePath getResourcePath(){
             return resourcePath;
         }
-        
+
         public PostMetaData getPostMetaData(){
             return postData;
         }
-        
+
         public GetMetaData getGetMetaData(){
             return getData;
         }
-        
+
         public HeadMetaData getHeadMetaData(){
             return headData;
         }
-        
+
         public PutMetaData getPutMetaData(){
             return putData;
         }
-        
+
         public DeleteMetaData getDeleteMetaData(){
             return deleteData;
         }
-        
+
         public OptionsMetaData getOptionsMetaData(){
             return optionsData;
         }
-        
+
         public void importXML(Element element) throws DeploymentException{
             super.importXML(element);
             if(!element.getTagName().equals(TAG_NAME)){
@@ -2236,7 +2250,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }catch(IllegalArgumentException e){
                 throw new DeploymentException("Resource name is illegal. name=" + name, e);
             }
-            
+
             Element postElement = getOptionalChild(
                 element,
                 PostMetaData.TAG_NAME
@@ -2245,7 +2259,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 postData = new PostMetaData(ResourceMetaData.this);
                 postData.importXML(postElement);
             }
-            
+
             Element getElement = getOptionalChild(
                 element,
                 GetMetaData.TAG_NAME
@@ -2254,7 +2268,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 getData = new GetMetaData(ResourceMetaData.this);
                 getData.importXML(getElement);
             }
-            
+
             Element headElement = getOptionalChild(
                 element,
                 HeadMetaData.TAG_NAME
@@ -2263,7 +2277,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 headData = new HeadMetaData(ResourceMetaData.this);
                 headData.importXML(headElement);
             }
-            
+
             Element putElement = getOptionalChild(
                 element,
                 PutMetaData.TAG_NAME
@@ -2272,7 +2286,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 putData = new PutMetaData(ResourceMetaData.this);
                 putData.importXML(putElement);
             }
-            
+
             Element deleteElement = getOptionalChild(
                 element,
                 DeleteMetaData.TAG_NAME
@@ -2281,7 +2295,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 deleteData = new DeleteMetaData(ResourceMetaData.this);
                 deleteData.importXML(deleteElement);
             }
-            
+
             Element optionsElement = getOptionalChild(
                 element,
                 OptionsMetaData.TAG_NAME
@@ -2292,24 +2306,24 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
         }
     }
-    
+
     public static class RequestMetaData extends MetaData{
-        
+
         private static final long serialVersionUID = 6894091068389999950L;
-        
+
         public static final String TAG_NAME = "request";
         public static final String ATTRIBUTE_NAME_CODE = "code";
-        
+
         protected String code;
-        
+
         public RequestMetaData(MetaData parent){
             super(parent);
         }
-        
+
         public String getClassName(){
             return code;
         }
-        
+
         public void importXML(Element element) throws DeploymentException{
             super.importXML(element);
             if(!element.getTagName().equals(TAG_NAME)){
@@ -2321,24 +2335,24 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             code = getUniqueAttribute(element, ATTRIBUTE_NAME_CODE);
         }
     }
-    
+
     public static class ResponseMetaData extends MetaData{
-        
+
         private static final long serialVersionUID = 4090435433096913841L;
-        
+
         public static final String TAG_NAME = "response";
         public static final String ATTRIBUTE_NAME_CODE = "code";
-        
+
         protected String code;
-        
+
         public ResponseMetaData(MetaData parent){
             super(parent);
         }
-        
+
         public String getClassName(){
             return code;
         }
-        
+
         public void importXML(Element element) throws DeploymentException{
             super.importXML(element);
             if(!element.getTagName().equals(TAG_NAME)){
@@ -2350,33 +2364,33 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             code = getUniqueAttribute(element, ATTRIBUTE_NAME_CODE);
         }
     }
-    
+
     public static class PostMetaData extends MetaData{
-        
+
         private static final long serialVersionUID = -6372696917063102603L;
-        
+
         public static final String TAG_NAME = "post";
-        
+
         protected String description;
         protected RequestMetaData requestData;
         protected ResponseMetaData responseData;
-        
+
         public PostMetaData(ResourceMetaData parent){
             super(parent);
         }
-        
+
         public String getDescription(){
             return description;
         }
-        
+
         public RequestMetaData getRequestMetaData(){
             return requestData;
         }
-        
+
         public ResponseMetaData getResponseMetaData(){
             return responseData;
         }
-        
+
         public void importXML(Element element) throws DeploymentException{
             super.importXML(element);
             if(!element.getTagName().equals(TAG_NAME)){
@@ -2385,7 +2399,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                      + element.getTagName()
                 );
             }
-            
+
             Element descElement = getOptionalChild(
                 element,
                 ResourceMetaData.DESCRIPTION_TAG_NAME
@@ -2393,7 +2407,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             if(descElement != null){
                 description = getElementContent(descElement);
             }
-            
+
             Element requestElement = getOptionalChild(
                 element,
                 RequestMetaData.TAG_NAME
@@ -2402,7 +2416,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 requestData = new RequestMetaData(PostMetaData.this);
                 requestData.importXML(requestElement);
             }
-            
+
             Element responseElement = getOptionalChild(
                 element,
                 ResponseMetaData.TAG_NAME
@@ -2413,33 +2427,33 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
         }
     }
-    
+
     public static class GetMetaData extends MetaData{
-        
+
         private static final long serialVersionUID = -7298962823068474227L;
-        
+
         public static final String TAG_NAME = "get";
-        
+
         protected String description;
         protected RequestMetaData requestData;
         protected ResponseMetaData responseData;
-        
+
         public GetMetaData(ResourceMetaData parent){
             super(parent);
         }
-        
+
         public String getDescription(){
             return description;
         }
-        
+
         public RequestMetaData getRequestMetaData(){
             return requestData;
         }
-        
+
         public ResponseMetaData getResponseMetaData(){
             return responseData;
         }
-        
+
         public void importXML(Element element) throws DeploymentException{
             super.importXML(element);
             if(!element.getTagName().equals(TAG_NAME)){
@@ -2448,7 +2462,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                      + element.getTagName()
                 );
             }
-            
+
             Element descElement = getOptionalChild(
                 element,
                 ResourceMetaData.DESCRIPTION_TAG_NAME
@@ -2456,7 +2470,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             if(descElement != null){
                 description = getElementContent(descElement);
             }
-            
+
             Element requestElement = getOptionalChild(
                 element,
                 RequestMetaData.TAG_NAME
@@ -2465,7 +2479,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 requestData = new RequestMetaData(GetMetaData.this);
                 requestData.importXML(requestElement);
             }
-            
+
             Element responseElement = getOptionalChild(
                 element,
                 ResponseMetaData.TAG_NAME
@@ -2476,28 +2490,28 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
         }
     }
-    
+
     public static class HeadMetaData extends MetaData{
-        
+
         private static final long serialVersionUID = -5269682659140303058L;
-        
+
         public static final String TAG_NAME = "head";
-        
+
         protected String description;
         protected RequestMetaData requestData;
-        
+
         public HeadMetaData(ResourceMetaData parent){
             super(parent);
         }
-        
+
         public String getDescription(){
             return description;
         }
-        
+
         public RequestMetaData getRequestMetaData(){
             return requestData;
         }
-        
+
         public void importXML(Element element) throws DeploymentException{
             super.importXML(element);
             if(!element.getTagName().equals(TAG_NAME)){
@@ -2506,7 +2520,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                      + element.getTagName()
                 );
             }
-            
+
             Element descElement = getOptionalChild(
                 element,
                 ResourceMetaData.DESCRIPTION_TAG_NAME
@@ -2514,7 +2528,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             if(descElement != null){
                 description = getElementContent(descElement);
             }
-            
+
             Element requestElement = getOptionalChild(
                 element,
                 RequestMetaData.TAG_NAME
@@ -2525,33 +2539,33 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
         }
     }
-    
+
     public static class PutMetaData extends MetaData{
-        
+
         private static final long serialVersionUID = -5753138646526386529L;
-        
+
         public static final String TAG_NAME = "put";
-        
+
         protected String description;
         protected RequestMetaData requestData;
         protected ResponseMetaData responseData;
-        
+
         public PutMetaData(ResourceMetaData parent){
             super(parent);
         }
-        
+
         public String getDescription(){
             return description;
         }
-        
+
         public RequestMetaData getRequestMetaData(){
             return requestData;
         }
-        
+
         public ResponseMetaData getResponseMetaData(){
             return responseData;
         }
-        
+
         public void importXML(Element element) throws DeploymentException{
             super.importXML(element);
             if(!element.getTagName().equals(TAG_NAME)){
@@ -2560,7 +2574,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                      + element.getTagName()
                 );
             }
-            
+
             Element descElement = getOptionalChild(
                 element,
                 ResourceMetaData.DESCRIPTION_TAG_NAME
@@ -2568,7 +2582,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             if(descElement != null){
                 description = getElementContent(descElement);
             }
-            
+
             Element requestElement = getOptionalChild(
                 element,
                 RequestMetaData.TAG_NAME
@@ -2577,7 +2591,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 requestData = new RequestMetaData(PutMetaData.this);
                 requestData.importXML(requestElement);
             }
-            
+
             Element responseElement = getOptionalChild(
                 element,
                 ResponseMetaData.TAG_NAME
@@ -2588,33 +2602,33 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
         }
     }
-    
+
     public static class DeleteMetaData extends MetaData{
-        
+
         private static final long serialVersionUID = -3735047733753523513L;
-        
+
         public static final String TAG_NAME = "delete";
-        
+
         protected String description;
         protected RequestMetaData requestData;
         protected ResponseMetaData responseData;
-        
+
         public DeleteMetaData(ResourceMetaData parent){
             super(parent);
         }
-        
+
         public String getDescription(){
             return description;
         }
-        
+
         public RequestMetaData getRequestMetaData(){
             return requestData;
         }
-        
+
         public ResponseMetaData getResponseMetaData(){
             return responseData;
         }
-        
+
         public void importXML(Element element) throws DeploymentException{
             super.importXML(element);
             if(!element.getTagName().equals(TAG_NAME)){
@@ -2623,7 +2637,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                      + element.getTagName()
                 );
             }
-            
+
             Element descElement = getOptionalChild(
                 element,
                 ResourceMetaData.DESCRIPTION_TAG_NAME
@@ -2631,7 +2645,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             if(descElement != null){
                 description = getElementContent(descElement);
             }
-            
+
             Element requestElement = getOptionalChild(
                 element,
                 RequestMetaData.TAG_NAME
@@ -2640,7 +2654,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 requestData = new RequestMetaData(DeleteMetaData.this);
                 requestData.importXML(requestElement);
             }
-            
+
             Element responseElement = getOptionalChild(
                 element,
                 ResponseMetaData.TAG_NAME
@@ -2651,17 +2665,17 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
         }
     }
-    
+
     public static class OptionsMetaData extends MetaData{
-        
+
         private static final long serialVersionUID = -9220229909119120614L;
-        
+
         public static final String TAG_NAME = "options";
-        
+
         public OptionsMetaData(ResourceMetaData parent){
             super(parent);
         }
-        
+
         public void importXML(Element element) throws DeploymentException{
             super.importXML(element);
             if(!element.getTagName().equals(TAG_NAME)){
@@ -2672,15 +2686,15 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
         }
     }
-    
+
     protected static class HeaderValue{
         protected String value;
         protected Map parameters;
         protected int hashCode;
-        
+
         public HeaderValue(){
         }
-        
+
         public HeaderValue(String header){
             String[] types = header.split(";");
             value = types[0].trim();
@@ -2714,7 +2728,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
             parameters.put(name, value);
         }
-        
+
         public String toString(){
             StringBuilder buf = new StringBuilder();
             buf.append(value);
@@ -2727,7 +2741,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
             return buf.toString();
         }
-        
+
         public boolean equals(Object obj){
             if(obj == null || !(obj instanceof HeaderValue)){
                 return false;
@@ -2750,7 +2764,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             return hashCode;
         }
     }
-    
+
     protected static class MediaType extends HeaderValue{
         public MediaType(){
         }
@@ -2764,7 +2778,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             setValue(type);
         }
     }
-    
+
     protected static class ContentType extends MediaType{
         public ContentType(String mediaType, String charset){
             setMediaType(mediaType);
@@ -2777,7 +2791,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             setParameter("charset", charset);
         }
     }
-    
+
     protected static class MediaRange extends MediaType{
         protected float q = 1.0f;
         public MediaRange(String header) throws IllegalArgumentException{
@@ -2792,7 +2806,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
         }
     }
-    
+
     protected static class CharsetRange extends HeaderValue{
         protected float q = 1.0f;
         public CharsetRange(String header) throws IllegalArgumentException{
@@ -2813,7 +2827,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             setValue(charset);
         }
     }
-    
+
     protected static class Accept{
         protected final List mediaRanges;
         public Accept(String header) throws IllegalArgumentException{
@@ -2832,7 +2846,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             );
         }
     }
-    
+
     protected static class AcceptCharset{
         protected final List charsetRanges;
         public AcceptCharset(String header) throws IllegalArgumentException{
