@@ -409,7 +409,11 @@ BFRS_00028,Illegal Accept header. header=@0,100,jp.ossc.nimbus.service.log.SYSTE
 BFRS_00029,Illegal Accept-Charset header. header=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY,false
 BFRS_00030,Charset of Accept-Charset header is not supported. header=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 BFRS_00031,Unexpected exception occured. path=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+<<<<<<< HEAD
 BFRS_00032,Failed to convert request-parameter. path=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+=======
+BFRS_00032,Failed to convert request-parameter. path=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+>>>>>>> refs/heads/master
 WS___00001,Unexpected exception occured. SessionProperties=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 WS___00002,Illegal Request. Id is null or Ticket is null. IP=@0,100,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 WS___00003,The number of clients has exceeded the maximum size. SessionProperties=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
