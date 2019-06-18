@@ -374,6 +374,20 @@ public interface BeanFlowRestServerServiceMBean extends ServiceBaseMBean{
     public ServiceName getResponseConverterServiceName(String mediaType);
     
     /**
+     * ContentLengthの最大値を設定する。<p>
+     *
+     * @param size ContentLengthの最大値
+     */
+    public void setRequestSizeThreshold(long size);
+    
+    /**
+     * ContentLengthの最大値を取得する。<p>
+     *
+     * @return ContentLengthの最大値
+     */
+    public long getRequestSizeThreshold();
+    
+    /**
      * RESTサーバ定義ファイルを再読み込みする。<p>
      *
      * @exception Exception 再読み込みに失敗した場合

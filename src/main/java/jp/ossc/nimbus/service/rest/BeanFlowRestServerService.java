@@ -69,6 +69,7 @@ import jp.ossc.nimbus.beans.NimbusPropertyEditorManager;
 import jp.ossc.nimbus.beans.NoSuchPropertyException;
 import jp.ossc.nimbus.beans.Property;
 import jp.ossc.nimbus.beans.PropertyAccess;
+import jp.ossc.nimbus.beans.dataset.DataSet;
 import jp.ossc.nimbus.core.DeploymentException;
 import jp.ossc.nimbus.core.MetaData;
 import jp.ossc.nimbus.core.NimbusClassLoader;
@@ -89,6 +90,7 @@ import jp.ossc.nimbus.util.converter.ConvertException;
 import jp.ossc.nimbus.util.converter.StreamConverter;
 import jp.ossc.nimbus.util.converter.BindingStreamConverter;
 import jp.ossc.nimbus.util.converter.StreamStringConverter;
+import jp.ossc.nimbus.util.converter.DataSetServletRequestParameterConverter;
 
 /**
  * アプリケーション処理をBeanFlowに委譲する{@link RestServer}インタフェース実装サービス。<p>
@@ -131,6 +133,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
     protected ServiceName sequenceServiceName;
     protected ServiceName contextServiceName;
     protected String requestIdKey = ThreadContextKey.REQUEST_ID;
+    protected long requestSizeThreshold = -1L;
     
     protected BeanFlowInvokerFactory beanFlowInvokerFactory;
     protected Journal journal;
@@ -315,6 +318,13 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             return null;
         }
         return (StreamConverter)responseConverterMapping.get(mediaType);
+    }
+    
+    public void setRequestSizeThreshold(long size) {
+        requestSizeThreshold = size;
+    }
+    public long getRequestSizeThreshold() {
+        return requestSizeThreshold;
     }
     
     public void setBeanFlowInvokerFactory(BeanFlowInvokerFactory factory){
@@ -872,161 +882,238 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             request.setRequestObject(request.getRequest().getParameterMap());
         }else{
             final Object requestObj = request.getRequestObject();
-            Iterator entries = request.getRequest().getParameterMap().entrySet().iterator();
-            while(entries.hasNext()){
-                Map.Entry entry = (Map.Entry)entries.next();
-                Property prop = null;
+            if(requestObj instanceof DataSet){
+                DataSetServletRequestParameterConverter converter = new DataSetServletRequestParameterConverter();
+                if(requestSizeThreshold > 0){
+                    converter.setRequestSizeThreshold(requestSizeThreshold);
+                }
                 try{
-                    prop = propertyAccess.getProperty((String)entry.getKey());
-                }catch(IllegalArgumentException e){
-                    getLogger().write("BFRS_00027", new Object[]{resource.resourcePath.path, entry.getKey()}, e);
+                    request.setRequestObject(converter.convert(request.getRequest(), requestObj));
+                }catch(ConvertException e){
+                    getLogger().write("BFRS_00032", new Object[]{resource.resourcePath.path}, e);
                     if(journal != null){
                         journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
                     }
                     response.setResult(HttpServletResponse.SC_BAD_REQUEST);
                     return false;
                 }
-                if(!prop.isReadable(requestObj)){
-                    continue;
-                }
-                Class propType = null;
-                try{
-                    propType = prop.getPropertyType(requestObj);
-                }catch(NoSuchPropertyException e){
-                    getLogger().write("BFRS_00012", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
-                    if(journal != null){
-                        journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
-                    }
-                    response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                    return false;
-                }catch(InvocationTargetException e){
-                    getLogger().write("BFRS_00012", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
-                    if(journal != null){
-                        journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
-                    }
-                    response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                    return false;
-                }
-                if(!prop.isWritable(requestObj, propType)){
-                    continue;
-                }
-                if(propType.isAssignableFrom(String.class)){
+            }else{
+                Iterator entries = request.getRequest().getParameterMap().entrySet().iterator();
+                while(entries.hasNext()){
+                    Map.Entry entry = (Map.Entry)entries.next();
+                    Property prop = null;
                     try{
-                        prop.setProperty(requestObj, propType, ((String[])entry.getValue())[0]);
+                        prop = propertyAccess.getProperty((String)entry.getKey());
+                    }catch(IllegalArgumentException e){
+                        getLogger().write("BFRS_00027", new Object[]{resource.resourcePath.path, entry.getKey()}, e);
+                        if(journal != null){
+                            journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
+                        }
+                        response.setResult(HttpServletResponse.SC_BAD_REQUEST);
+                        return false;
+                    }
+                    if(!prop.isReadable(requestObj)){
+                        continue;
+                    }
+                    Class propType = null;
+                    try{
+                        propType = prop.getPropertyType(requestObj);
                     }catch(NoSuchPropertyException e){
-                        getLogger().write("BFRS_00013", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
+                        getLogger().write("BFRS_00012", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
                         if(journal != null){
                             journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
                         }
                         response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
                         return false;
                     }catch(InvocationTargetException e){
-                        getLogger().write("BFRS_00013", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
+                        getLogger().write("BFRS_00012", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
                         if(journal != null){
                             journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
                         }
                         response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
                         return false;
                     }
-                }else if(propType.isAssignableFrom(String[].class)){
-                    try{
-                        prop.setProperty(requestObj, propType, entry.getValue());
-                    }catch(NoSuchPropertyException e){
-                        getLogger().write("BFRS_00013", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
-                        if(journal != null){
-                            journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
-                        }
-                        response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                        return false;
-                    }catch(InvocationTargetException e){
-                        getLogger().write("BFRS_00013", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
-                        if(journal != null){
-                            journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
-                        }
-                        response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                        return false;
+                    if(!prop.isWritable(requestObj, propType)){
+                        continue;
                     }
-                }else if(propType.isAssignableFrom(List.class) || propType.isAssignableFrom(Set.class)){
-                    Collection collection = null;
-                    try{
-                        collection = (Collection)prop.getProperty(requestObj);
-                    }catch(NoSuchPropertyException e){
-                        getLogger().write("BFRS_00014", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
-                        if(journal != null){
-                            journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
-                        }
-                        response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                        return false;
-                    }catch(InvocationTargetException e){
-                        getLogger().write("BFRS_00014", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
-                        if(journal != null){
-                            journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
-                        }
-                        response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                        return false;
-                    }
-                    if(collection == null){
-                        if(propType.isInterface()){
-                            collection = propType.isAssignableFrom(List.class) ? (Collection)new ArrayList() : new HashSet();
-                        }else{
-                            try{
-                                collection = (Collection)propType.newInstance();
-                            }catch(InstantiationException e){
-                                getLogger().write("BFRS_00015", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName(), propType}, e);
-                                if(journal != null){
-                                    journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
-                                }
-                                response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                                return false;
-                            }catch(IllegalAccessException e){
-                                getLogger().write("BFRS_00015", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName(), propType}, e);
-                                if(journal != null){
-                                    journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
-                                }
-                                response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                                return false;
+                    if(propType.isAssignableFrom(String.class)){
+                        try{
+                            prop.setProperty(requestObj, propType, ((String[])entry.getValue())[0]);
+                        }catch(NoSuchPropertyException e){
+                            getLogger().write("BFRS_00013", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
+                            if(journal != null){
+                                journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
                             }
-                        }
-                    }
-                    Type propGenericType = null;
-                    try{
-                        propGenericType = prop.getPropertyGenericType(requestObj);
-                    }catch(NoSuchPropertyException e){
-                        getLogger().write("BFRS_00012", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
-                        if(journal != null){
-                            journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
-                        }
-                        response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                        return false;
-                    }catch(InvocationTargetException e){
-                        getLogger().write("BFRS_00012", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
-                        if(journal != null){
-                            journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
-                        }
-                        response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                        return false;
-                    }
-                    if(propGenericType instanceof ParameterizedType){
-                        Type[] elementTypes = ((ParameterizedType)propGenericType).getActualTypeArguments();
-                        if(elementTypes.length == 0 || !(elementTypes[0] instanceof Class)){
-                            getLogger().write("BFRS_00016", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName(), propGenericType});
+                            response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                            return false;
+                        }catch(InvocationTargetException e){
+                            getLogger().write("BFRS_00013", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
+                            if(journal != null){
+                                journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
+                            }
                             response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
                             return false;
                         }
-                        Class elementType = (Class)elementTypes[0];
+                    }else if(propType.isAssignableFrom(String[].class)){
                         try{
-                            PropertyEditor editor = NimbusPropertyEditorManager.findEditor(elementType);
-                            if(editor == null){
-                                getLogger().write("BFRS_00017", new Object[]{resource.resourcePath.path, entry.getKey(), elementType.getName()});
+                            prop.setProperty(requestObj, propType, entry.getValue());
+                        }catch(NoSuchPropertyException e){
+                            getLogger().write("BFRS_00013", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
+                            if(journal != null){
+                                journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
+                            }
+                            response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                            return false;
+                        }catch(InvocationTargetException e){
+                            getLogger().write("BFRS_00013", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
+                            if(journal != null){
+                                journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
+                            }
+                            response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                            return false;
+                        }
+                    }else if(propType.isAssignableFrom(List.class) || propType.isAssignableFrom(Set.class)){
+                        Collection collection = null;
+                        try{
+                            collection = (Collection)prop.getProperty(requestObj);
+                        }catch(NoSuchPropertyException e){
+                            getLogger().write("BFRS_00014", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
+                            if(journal != null){
+                                journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
+                            }
+                            response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                            return false;
+                        }catch(InvocationTargetException e){
+                            getLogger().write("BFRS_00014", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
+                            if(journal != null){
+                                journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
+                            }
+                            response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                            return false;
+                        }
+                        if(collection == null){
+                            if(propType.isInterface()){
+                                collection = propType.isAssignableFrom(List.class) ? (Collection)new ArrayList() : new HashSet();
+                            }else{
+                                try{
+                                    collection = (Collection)propType.newInstance();
+                                }catch(InstantiationException e){
+                                    getLogger().write("BFRS_00015", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName(), propType}, e);
+                                    if(journal != null){
+                                        journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
+                                    }
+                                    response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                                    return false;
+                                }catch(IllegalAccessException e){
+                                    getLogger().write("BFRS_00015", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName(), propType}, e);
+                                    if(journal != null){
+                                        journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
+                                    }
+                                    response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                                    return false;
+                                }
+                            }
+                        }
+                        Type propGenericType = null;
+                        try{
+                            propGenericType = prop.getPropertyGenericType(requestObj);
+                        }catch(NoSuchPropertyException e){
+                            getLogger().write("BFRS_00012", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
+                            if(journal != null){
+                                journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
+                            }
+                            response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                            return false;
+                        }catch(InvocationTargetException e){
+                            getLogger().write("BFRS_00012", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
+                            if(journal != null){
+                                journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
+                            }
+                            response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                            return false;
+                        }
+                        if(propGenericType instanceof ParameterizedType){
+                            Type[] elementTypes = ((ParameterizedType)propGenericType).getActualTypeArguments();
+                            if(elementTypes.length == 0 || !(elementTypes[0] instanceof Class)){
+                                getLogger().write("BFRS_00016", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName(), propGenericType});
                                 response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
                                 return false;
                             }
-                            String[] params = (String[])entry.getValue();
-                            for(int i = 0; i < params.length; i++){
-                                editor.setAsText(params[i]);
-                                collection.add(editor.getValue());
+                            Class elementType = (Class)elementTypes[0];
+                            try{
+                                PropertyEditor editor = NimbusPropertyEditorManager.findEditor(elementType);
+                                if(editor == null){
+                                    getLogger().write("BFRS_00017", new Object[]{resource.resourcePath.path, entry.getKey(), elementType.getName()});
+                                    response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                                    return false;
+                                }
+                                String[] params = (String[])entry.getValue();
+                                for(int i = 0; i < params.length; i++){
+                                    editor.setAsText(params[i]);
+                                    collection.add(editor.getValue());
+                                }
+                                prop.setProperty(requestObj, propType, collection);
+                            }catch(NoSuchPropertyException e){
+                                getLogger().write("BFRS_00013", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
+                                if(journal != null){
+                                    journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
+                                }
+                                response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                                return false;
+                            }catch(InvocationTargetException e){
+                                getLogger().write("BFRS_00013", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
+                                if(journal != null){
+                                    journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
+                                }
+                                response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                                return false;
                             }
-                            prop.setProperty(requestObj, propType, collection);
+                        }else{
+                            try{
+                                String[] params = (String[])entry.getValue();
+                                for(int i = 0; i < params.length; i++){
+                                    collection.add(params[i]);
+                                }
+                                prop.setProperty(requestObj, propType, collection);
+                            }catch(NoSuchPropertyException e){
+                                getLogger().write("BFRS_00013", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
+                                if(journal != null){
+                                    journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
+                                }
+                                response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                                return false;
+                            }catch(InvocationTargetException e){
+                                getLogger().write("BFRS_00013", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
+                                if(journal != null){
+                                    journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
+                                }
+                                response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                                return false;
+                            }
+                        }
+                    }else if(propType.isArray()){
+                        Class componentType = propType.getComponentType();
+                        PropertyEditor editor = NimbusPropertyEditorManager.findEditor(componentType);
+                        if(editor == null){
+                            getLogger().write("BFRS_00017", new Object[]{resource.resourcePath.path, entry.getKey(), componentType.getName()});
+                            response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                            return false;
+                        }
+                        String[] params = (String[])entry.getValue();
+                        Object array = Array.newInstance(componentType, params.length);
+                        try{
+                            for(int i = 0; i < params.length; i++){
+                                editor.setAsText(((String[])entry.getValue())[0]);
+                                Array.set(array, i, editor.getValue());
+                            }
+                            prop.setProperty(requestObj, propType, array);
+                        }catch(IllegalArgumentException e){
+                            getLogger().write("BFRS_00013", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
+                            if(journal != null){
+                                journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
+                            }
+                            response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                            return false;
                         }catch(NoSuchPropertyException e){
                             getLogger().write("BFRS_00013", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
                             if(journal != null){
@@ -1043,12 +1130,15 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                             return false;
                         }
                     }else{
+                        PropertyEditor editor = NimbusPropertyEditorManager.findEditor(propType);
+                        if(editor == null){
+                            getLogger().write("BFRS_00017", new Object[]{resource.resourcePath.path, entry.getKey(), propType.getName()});
+                            response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                            return false;
+                        }
+                        editor.setAsText(((String[])entry.getValue())[0]);
                         try{
-                            String[] params = (String[])entry.getValue();
-                            for(int i = 0; i < params.length; i++){
-                                collection.add(params[i]);
-                            }
-                            prop.setProperty(requestObj, propType, collection);
+                            prop.setProperty(requestObj, propType, editor.getValue());
                         }catch(NoSuchPropertyException e){
                             getLogger().write("BFRS_00013", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
                             if(journal != null){
@@ -1064,69 +1154,6 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                             response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
                             return false;
                         }
-                    }
-                }else if(propType.isArray()){
-                    Class componentType = propType.getComponentType();
-                    PropertyEditor editor = NimbusPropertyEditorManager.findEditor(componentType);
-                    if(editor == null){
-                        getLogger().write("BFRS_00017", new Object[]{resource.resourcePath.path, entry.getKey(), componentType.getName()});
-                        response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                        return false;
-                    }
-                    String[] params = (String[])entry.getValue();
-                    Object array = Array.newInstance(componentType, params.length);
-                    try{
-                        for(int i = 0; i < params.length; i++){
-                            editor.setAsText(((String[])entry.getValue())[0]);
-                            Array.set(array, i, editor.getValue());
-                        }
-                        prop.setProperty(requestObj, propType, array);
-                    }catch(IllegalArgumentException e){
-                        getLogger().write("BFRS_00013", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
-                        if(journal != null){
-                            journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
-                        }
-                        response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                        return false;
-                    }catch(NoSuchPropertyException e){
-                        getLogger().write("BFRS_00013", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
-                        if(journal != null){
-                            journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
-                        }
-                        response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                        return false;
-                    }catch(InvocationTargetException e){
-                        getLogger().write("BFRS_00013", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
-                        if(journal != null){
-                            journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
-                        }
-                        response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                        return false;
-                    }
-                }else{
-                    PropertyEditor editor = NimbusPropertyEditorManager.findEditor(propType);
-                    if(editor == null){
-                        getLogger().write("BFRS_00017", new Object[]{resource.resourcePath.path, entry.getKey(), propType.getName()});
-                        response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                        return false;
-                    }
-                    editor.setAsText(((String[])entry.getValue())[0]);
-                    try{
-                        prop.setProperty(requestObj, propType, editor.getValue());
-                    }catch(NoSuchPropertyException e){
-                        getLogger().write("BFRS_00013", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
-                        if(journal != null){
-                            journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
-                        }
-                        response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                        return false;
-                    }catch(InvocationTargetException e){
-                        getLogger().write("BFRS_00013", new Object[]{resource.resourcePath.path, entry.getKey(), requestObj.getClass().getName()}, e);
-                        if(journal != null){
-                            journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
-                        }
-                        response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                        return false;
                     }
                 }
             }
