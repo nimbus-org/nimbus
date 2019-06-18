@@ -134,6 +134,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
     protected ServiceName contextServiceName;
     protected String requestIdKey = ThreadContextKey.REQUEST_ID;
     protected long requestSizeThreshold = -1L;
+    protected String defaultResponseCharacterEncoding = "UTF-8";
     
     protected BeanFlowInvokerFactory beanFlowInvokerFactory;
     protected Journal journal;
@@ -308,7 +309,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
     
     public void setResponseConverter(String mediaType, StreamConverter converter){
         if(responseConverterMapping == null){
-            responseConverterMapping= new HashMap();
+            responseConverterMapping = new LinkedHashMap();
         }
         responseConverterMapping.put(mediaType, converter);
     }
@@ -326,6 +327,15 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
     public long getRequestSizeThreshold() {
         return requestSizeThreshold;
     }
+    
+    public void setDefaultResponseCharacterEncoding(String encoding) {
+        defaultResponseCharacterEncoding = encoding;
+    }
+    public String getDefaultResponseCharacterEncoding() {
+        return defaultResponseCharacterEncoding;
+    }
+    
+    
     
     public void setBeanFlowInvokerFactory(BeanFlowInvokerFactory factory){
         beanFlowInvokerFactory = factory;
@@ -493,9 +503,6 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         if(journal != null){
             journal.addInfo(JOURNAL_KEY_ACCEPT_HEADER, acceptStr);
         }
-        if(acceptStr == null){
-            return true;
-        }
         if(responseConverterMapping != null){
             String acceptCharsetStr = request.request.getHeader(HTTP_HEADER_NAME_ACCEPT_CHARSET);
             if(journal != null){
@@ -529,7 +536,15 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                     response.setResult(HttpServletResponse.SC_NOT_ACCEPTABLE);
                     return false;
                 }
+            }else{
+                response.getResponse().setCharacterEncoding(
+                    Charset.forName(defaultResponseCharacterEncoding).name()
+                );
             }
+        }
+        if(acceptStr == null){
+            return true;
+        }else{
             Accept accept = null;
             try{
                 accept = new Accept(acceptStr);
@@ -543,7 +558,10 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
             for(int i = 0; i < accept.mediaRanges.size(); i++){
                 MediaRange mr = (MediaRange)accept.mediaRanges.get(i);
-                if(responseConverterMapping.containsKey(mr.getMediaType())){
+                String mediaType = mr.getMediaType();
+                if(responseConverterMapping.containsKey(mediaType)
+                    || "*/*".equals(mediaType)
+                ){
                     return true;
                 }
             }
@@ -1399,9 +1417,14 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
             for(int i = 0; i < accept.mediaRanges.size(); i++){
                 MediaRange mr = (MediaRange)accept.mediaRanges.get(i);
-                responseConverter = (StreamConverter)responseConverterMapping.get(mr.getMediaType());
+                String mt = mr.getMediaType();
+                responseConverter = (StreamConverter)responseConverterMapping.get(mt);
                 if(responseConverter != null){
-                    mediaType = mr.getMediaType();
+                    mediaType = mt;
+                    break;
+                }else if("*/*".equals(mt)){
+                    mediaType = (String)responseConverterMapping.keySet().iterator().next();
+                    responseConverter = (StreamConverter)responseConverterMapping.get(mediaType);
                     break;
                 }
             }
