@@ -220,25 +220,29 @@ public class DefaultQueueService extends ServiceBase
         if(getState() != STARTED || fourceEndFlg){
             throw new IllegalServiceStateException(this);
         }
-        final long startTime = timeout > 0 ? System.currentTimeMillis() : 0;
-        while(maxThresholdSize > 0
-             && ((pushMonitor.isWait() && !pushMonitor.isFirst())
-                    || (size() >= maxThresholdSize))
-             && !fourceEndFlg
-        ){
+        if(maxThresholdSize > 0){
+            final long startTime = timeout > 0 ? System.currentTimeMillis() : 0;
             try{
-                if(timeout == 0){
-                    return false;
-                }else if(timeout < 0){
-                    pushMonitor.initAndWaitMonitor(sleepTime);
-                }else{
-                    final long curTimeout = timeout - (System.currentTimeMillis() - startTime);
-                    if(curTimeout <= 0 || !pushMonitor.initAndWaitMonitor(curTimeout)){
+                pushMonitor.initMonitor();
+                while(((pushMonitor.isWait() && !pushMonitor.isFirst())
+                            || (size() >= maxThresholdSize))
+                     && !fourceEndFlg
+                ){
+                    try{
+                        if(timeout == 0){
+                            return false;
+                        }else if(timeout < 0){
+                            pushMonitor.waitMonitor(sleepTime);
+                        }else{
+                            final long curTimeout = timeout - (System.currentTimeMillis() - startTime);
+                            if(curTimeout <= 0 || !pushMonitor.initAndWaitMonitor(curTimeout)){
+                                return false;
+                            }
+                        }
+                    }catch(InterruptedException e){
                         return false;
                     }
                 }
-            }catch(InterruptedException e){
-                return false;
             }finally{
                 pushMonitor.releaseMonitor();
             }
