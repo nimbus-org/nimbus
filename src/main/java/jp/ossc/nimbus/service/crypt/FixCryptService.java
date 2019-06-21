@@ -45,10 +45,13 @@ public class FixCryptService extends ServiceBase
     private static final long serialVersionUID = 1117606145962089601L;
     
     private String fixPrefix;
+    private byte[] fixPrefixBytes;
     private String fixSuffix;
+    private byte[] fixSuffixBytes;
     
     public void setFixPrefix(String prefix){
         fixPrefix = prefix;
+        fixPrefixBytes = prefix == null ? null : prefix.getBytes();
     }
     public String getFixPrefix(){
         return fixPrefix;
@@ -56,6 +59,7 @@ public class FixCryptService extends ServiceBase
     
     public void setFixSuffix(String suffix){
         fixSuffix = suffix;
+        fixSuffixBytes = suffix == null ? null : suffix.getBytes();
     }
     public String getFixSuffix(){
         return fixSuffix;
@@ -83,13 +87,34 @@ public class FixCryptService extends ServiceBase
         return buf.toString();
     }
     
+    public byte[] doEncodeBytes(byte[] bytes){
+        if((fixPrefixBytes == null || fixPrefixBytes.length == 0)
+            && (fixSuffixBytes == null || fixSuffixBytes.length == 0)){
+            return bytes;
+        }
+        byte[] result = bytes;
+        if(fixPrefixBytes != null && fixPrefixBytes.length != 0){
+            byte[] newBytes = new byte[fixPrefixBytes.length + result.length];
+            System.arraycopy(fixPrefixBytes, 0, newBytes, 0, fixPrefixBytes.length);
+            System.arraycopy(result, 0, newBytes, fixPrefixBytes.length, result.length);
+            result = newBytes;
+        }
+        if(fixSuffixBytes != null && fixSuffixBytes.length != 0){
+            byte[] newBytes = new byte[result.length + fixSuffixBytes.length];
+            System.arraycopy(result, 0, newBytes, 0, result.length);
+            System.arraycopy(fixSuffixBytes, 0, newBytes, result.length, fixSuffixBytes.length);
+            result = newBytes;
+        }
+        return result;
+    }
+    
     /**
      * 復号化対象の文字列から接頭語及び接尾語を削って返す。<p>
      * 
      * @param str 復号化対象文字列
      * @return 復号化文字列
      */
-    public String doDecode(String str) {
+    public String doDecode(String str){
         if((fixPrefix == null || fixPrefix.length() == 0)
             && (fixSuffix == null || fixSuffix.length() == 0)){
             return str;
@@ -104,6 +129,43 @@ public class FixCryptService extends ServiceBase
             tmp = tmp.substring(0, tmp.length() - fixSuffix.length());
         }
         return tmp;
+    }
+    
+    public byte[] doDecodeBytes(byte[] bytes){
+        if((fixPrefixBytes == null || fixPrefixBytes.length == 0)
+            && (fixSuffixBytes == null || fixSuffixBytes.length == 0)){
+            return bytes;
+        }
+        byte[] result = bytes;
+        if(fixPrefixBytes != null && fixPrefixBytes.length != 0){
+            boolean isMatch = true;
+            for(int i = 0; i < fixPrefixBytes.length; i++){
+                if(i >= result.length || result[i] != fixPrefixBytes[i]){
+                    isMatch = false;
+                    break;
+                }
+            }
+            if(isMatch){
+                byte[] newBytes = new byte[result.length - fixPrefixBytes.length];
+                System.arraycopy(result, fixPrefixBytes.length, newBytes, 0, newBytes.length);
+                result = newBytes;
+            }
+        }
+        if(fixSuffixBytes != null && fixSuffixBytes.length != 0){
+            boolean isMatch = true;
+            for(int i = 0; i < fixSuffixBytes.length; i++){
+                if(i >= result.length || result[result.length - 1 - i] != fixSuffixBytes[fixSuffixBytes.length - 1 - i]){
+                    isMatch = false;
+                    break;
+                }
+            }
+            if(isMatch){
+                byte[] newBytes = new byte[result.length - fixSuffixBytes.length];
+                System.arraycopy(result, 0, newBytes, 0, newBytes.length);
+                result = newBytes;
+            }
+        }
+        return result;
     }
     
     /**

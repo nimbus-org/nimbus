@@ -55,6 +55,22 @@ public interface Crypt {
     public String doDecode(String str);
     
     /**
+     * バイト配列を暗号化する。<p>
+     * 
+     * @param bytes 暗号化対象バイト配列
+     * @return 暗号化バイト配列
+     */
+    public byte[] doEncodeBytes(byte[] bytes);
+    
+    /**
+     * バイト配列を複合化する。<p>
+     * 
+     * @param bytes 復号化対象バイト配列
+     * @return 復号化バイト配列
+     */
+    public byte[] doDecodeBytes(byte[] bytes);
+    
+    /**
      * 文字列をハッシュする。<p>
      * 
      * @param str ハッシュ対象文字列
