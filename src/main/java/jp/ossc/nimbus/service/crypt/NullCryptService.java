@@ -64,6 +64,14 @@ public class NullCryptService extends ServiceBase
         return str;
     }
     
+    public byte[] doEncodeBytes(byte[] bytes){
+        return bytes;
+    }
+    
+    public byte[] doDecodeBytes(byte[] bytes){
+        return bytes;
+    }
+    
     /**
      * ハッシュ対象の文字列をそのまま返す。<p>
      * 

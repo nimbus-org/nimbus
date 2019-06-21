@@ -268,9 +268,9 @@ public class  CipherCryptService extends ServiceBase
             key = loadKey();
         }
         if(key != null){
-            final String encodeStr = doEncodeInternal("test");
-            final String decodeStr = doDecodeInternal(encodeStr);
-            if(!"test".equals(decodeStr)){
+            final byte[] encodeBytes = doEncodeInternal("test".getBytes());
+            final byte[] decodeBytes = doDecodeInternal(encodeBytes);
+            if(!"test".equals(new String(decodeBytes))){
                 throw new IllegalArgumentException(
                     "This encryption cannot convert reversible."
                 );
@@ -321,7 +321,7 @@ public class  CipherCryptService extends ServiceBase
     // Crypt のJavaDoc
     public String doEncode(String str){
         try{
-            return doEncodeInternal(str);
+            return toHexString(doEncodeInternal(str.getBytes(encoding)));
         }catch(NoSuchAlgorithmException e){
             // 起こらないはず
             getLogger().write(CC___00001, e);
@@ -350,11 +350,39 @@ public class  CipherCryptService extends ServiceBase
         return str;
     }
     
+    public byte[] doEncodeBytes(byte[] bytes){
+        try{
+            return doEncodeInternal(bytes);
+        }catch(NoSuchAlgorithmException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }catch(NoSuchProviderException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }catch(NoSuchPaddingException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }catch(InvalidKeyException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }catch(InvalidAlgorithmParameterException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }catch(IllegalBlockSizeException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }catch(BadPaddingException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }
+        return bytes;
+    }
+    
     /**
      * 暗号化する。<p>
      *
-     * @param str 暗号化対象の文字列
-     * @return 暗号化後の文字列
+     * @param bytes 暗号化対象のバイト配列
+     * @return 暗号化後のバイト配列
      * @exception NoSuchAlgorithmException 指定されたアルゴリズムが存在しない場合
      * @exception NoSuchProviderException 指定されたプロバイダが存在しない場合
      * @exception NoSuchPaddingException 指定されたパディング機構が存在しない場合
@@ -362,21 +390,19 @@ public class  CipherCryptService extends ServiceBase
      * @exception InvalidAlgorithmParameterException 指定されたアルゴリズムパラメータが無効または不適切な場合
      * @exception IllegalBlockSizeException ブロック暗号に提供されたデータの長さが正しくない場合
      * @exception BadPaddingException 特定のパディング機構が入力データに対して予期されているのにデータが適切にパディングされない場合
-     * @exception UnsupportedEncodingException 指定された文字エンコーディングがサポートされていない場合
      */
-    protected String doEncodeInternal(String str)
+    protected byte[] doEncodeInternal(byte[] bytes)
      throws NoSuchAlgorithmException, NoSuchProviderException,
             NoSuchPaddingException, InvalidKeyException,
             InvalidAlgorithmParameterException,
-            IllegalBlockSizeException, BadPaddingException,
-            UnsupportedEncodingException{
+            IllegalBlockSizeException, BadPaddingException{
         if(transformation == null || key == null){
             throw new UnsupportedOperationException(
                 "Transformation or key is not specified."
             );
         }
         
-        if(str == null){
+        if(bytes == null){
             return null;
         }
         
@@ -384,7 +410,7 @@ public class  CipherCryptService extends ServiceBase
         
         intiCipher(c, Cipher.ENCRYPT_MODE);
         
-        return toHexString(c.doFinal(str.getBytes(encoding)));
+        return c.doFinal(bytes);
     }
     
     /**
@@ -469,7 +495,7 @@ public class  CipherCryptService extends ServiceBase
     // Crypt のJavaDoc
     public String doDecode(String str){
         try{
-            return doDecodeInternal(str);
+            return new String(doDecodeInternal(toBytes(str)), encoding);
         }catch(NoSuchAlgorithmException e){
             // 起こらないはず
             getLogger().write(CC___00002, e);
@@ -498,11 +524,39 @@ public class  CipherCryptService extends ServiceBase
         return str;
     }
     
+    public byte[] doDecodeBytes(byte[] bytes){
+        try{
+            return doDecodeInternal(bytes);
+        }catch(NoSuchAlgorithmException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }catch(NoSuchProviderException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }catch(NoSuchPaddingException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }catch(InvalidKeyException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }catch(InvalidAlgorithmParameterException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }catch(IllegalBlockSizeException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }catch(BadPaddingException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }
+        return bytes;
+    }
+    
     /**
      * 復号化する。<p>
      *
-     * @param str 復号化対象の文字列
-     * @return 復号化後の文字列
+     * @param bytes 復号化対象のバイト配列
+     * @return 復号化後のバイト配列
      * @exception NoSuchAlgorithmException 指定されたアルゴリズムが存在しない場合
      * @exception NoSuchProviderException 指定されたプロバイダが存在しない場合
      * @exception NoSuchPaddingException 指定されたパディング機構が存在しない場合
@@ -510,15 +564,13 @@ public class  CipherCryptService extends ServiceBase
      * @exception InvalidAlgorithmParameterException 指定されたアルゴリズムパラメータが無効または不適切な場合
      * @exception IllegalBlockSizeException ブロック暗号に提供されたデータの長さが正しくない場合
      * @exception BadPaddingException 特定のパディング機構が入力データに対して予期されているのにデータが適切にパディングされない場合
-     * @exception UnsupportedEncodingException 指定された文字エンコーディングがサポートされていない場合
      */
-    protected String doDecodeInternal(String str)
+    protected byte[] doDecodeInternal(byte[] bytes)
      throws NoSuchAlgorithmException, NoSuchProviderException,
             NoSuchPaddingException, InvalidKeyException,
             InvalidAlgorithmParameterException,
-            IllegalBlockSizeException, BadPaddingException,
-            UnsupportedEncodingException{
-        if(str == null){
+            IllegalBlockSizeException, BadPaddingException{
+        if(bytes == null){
             return null;
         }
         
@@ -526,7 +578,7 @@ public class  CipherCryptService extends ServiceBase
         
         intiCipher(c, Cipher.DECRYPT_MODE);
         
-        return new String(c.doFinal(toBytes(str)), encoding);
+        return c.doFinal(bytes);
     }
     
     /**
