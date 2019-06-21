@@ -96,6 +96,8 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     private int parallelRequestThreadSize;
     private ServiceName parallelRequestQueueServiceName;
     private QueueHandlerContainerService parallelRequestQueueHandlerContainer;
+    private ServiceName threadContextServiceName;
+    private Context threadContext;
     private ServiceName sharedContextTransactionManagerServiceName;
     
     private String subject = DEFAULT_SUBJECT;
@@ -308,6 +310,13 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     }
     public ServiceName getParallelRequestQueueServiceName(){
         return parallelRequestQueueServiceName;
+    }
+    
+    public void setThreadContextServiceName(ServiceName name){
+        threadContextServiceName = name;
+    }
+    public ServiceName getThreadContextServiceName(){
+        return threadContextServiceName;
     }
     
     public void setWaitConnectAllOnStart(boolean isWait){
@@ -550,6 +559,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             parallelRequestQueueHandlerContainer.setQueueHandler(new ParallelRequestQueueHandler());
             parallelRequestQueueHandlerContainer.start();
         }
+        if(threadContextServiceName != null){
+            threadContext = (Context)ServiceManagerFactory.getServiceObject(threadContextServiceName);
+        }
         
         ServerConnectionFactory factory = (ServerConnectionFactory)ServiceManagerFactory.getServiceObject(requestConnectionFactoryServiceName);
         serverConnection = (RequestServerConnection)factory.getServerConnection();
@@ -724,6 +736,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     new SynchronizeParallelRequest(sharedContextArray[i], timeout),
                     responseQueue
                 );
+                if(threadContext != null){
+                    asynchContext.putThreadContextAll(threadContext);
+                }
                 parallelRequestQueueHandlerContainer.push(asynchContext);
             }
             for(int i = 0; i < sharedContextArray.length; i++){
@@ -1035,6 +1050,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                             new SaveParallelRequest(sharedContextArray[i], timeout),
                             responseQueue
                         );
+                        if(threadContext != null){
+                            asynchContext.putThreadContextAll(threadContext);
+                        }
                         parallelRequestQueueHandlerContainer.push(asynchContext);
                     }
                     for(int i = 0; i < sharedContextArray.length; i++){
@@ -1218,6 +1236,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new LocksParallelRequest((SharedContext)entry.getKey(), (Set)entry.getValue(), ifAcquireable, ifExist, timeout),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -1316,6 +1337,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     new UnlocksParallelRequest((SharedContext)entry.getKey(), (Set)entry.getValue(), force, timeout),
                     responseQueue
                 );
+                if(threadContext != null){
+                    asynchContext.putThreadContextAll(threadContext);
+                }
                 parallelRequestQueueHandlerContainer.push(asynchContext);
             }
             for(int i = 0; i < sharedContextArray.length; i++){
@@ -1470,6 +1494,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     new PutAllParallelRequest((SharedContext)entry.getKey(), (Map)entry.getValue(), timeout),
                     responseQueue
                 );
+                if(threadContext != null){
+                    asynchContext.putThreadContextAll(threadContext);
+                }
                 parallelRequestQueueHandlerContainer.push(asynchContext);
             }
             for(int i = 0; i < sharedContextArray.length; i++){
@@ -1536,6 +1563,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     new PutAllAsynchParallelRequest((SharedContext)entry.getKey(), (Map)entry.getValue()),
                     responseQueue
                 );
+                if(threadContext != null){
+                    asynchContext.putThreadContextAll(threadContext);
+                }
                 parallelRequestQueueHandlerContainer.push(asynchContext);
             }
             for(int i = 0; i < sharedContextArray.length; i++){
@@ -1586,6 +1616,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     new ClearParallelRequest(sharedContextArray[i], timeout),
                     responseQueue
                 );
+                if(threadContext != null){
+                    asynchContext.putThreadContextAll(threadContext);
+                }
                 parallelRequestQueueHandlerContainer.push(asynchContext);
             }
             for(int i = 0; i < sharedContextArray.length; i++){
@@ -1634,6 +1667,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     new ClearAsynchParallelRequest(sharedContextArray[i]),
                     responseQueue
                 );
+                if(threadContext != null){
+                    asynchContext.putThreadContextAll(threadContext);
+                }
                 parallelRequestQueueHandlerContainer.push(asynchContext);
             }
             for(int i = 0; i < sharedContextArray.length; i++){
@@ -1684,6 +1720,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     new AnalyzeIndexParallelRequest(sharedContextArray[i], name, timeout),
                     responseQueue
                 );
+                if(threadContext != null){
+                    asynchContext.putThreadContextAll(threadContext);
+                }
                 parallelRequestQueueHandlerContainer.push(asynchContext);
             }
             for(int i = 0; i < sharedContextArray.length; i++){
@@ -1743,6 +1782,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     new ExecuteInterpretQueryParallelRequest(sharedContextArray[i], query, variables, timeout),
                     responseQueue
                 );
+                if(threadContext != null){
+                    asynchContext.putThreadContextAll(threadContext);
+                }
                 parallelRequestQueueHandlerContainer.push(asynchContext);
             }
             for(int i = 0; i < sharedContextArray.length; i++){
@@ -1835,6 +1877,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     new KeySetParallelRequest(sharedContextArray[i], timeout),
                     responseQueue
                 );
+                if(threadContext != null){
+                    asynchContext.putThreadContextAll(threadContext);
+                }
                 parallelRequestQueueHandlerContainer.push(asynchContext);
             }
             for(int i = 0; i < sharedContextArray.length; i++){
@@ -1898,6 +1943,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     new SizeParallelRequest(sharedContextArray[i], timeout),
                     responseQueue
                 );
+                if(threadContext != null){
+                    asynchContext.putThreadContextAll(threadContext);
+                }
                 parallelRequestQueueHandlerContainer.push(asynchContext);
             }
             for(int i = 0; i < sharedContextArray.length; i++){
@@ -1982,6 +2030,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     new ContainsValueParallelRequest(sharedContextArray[i], value, timeout),
                     responseQueue
                 );
+                if(threadContext != null){
+                    asynchContext.putThreadContextAll(threadContext);
+                }
                 parallelRequestQueueHandlerContainer.push(asynchContext);
             }
             for(int i = 0; i < sharedContextArray.length; i++){
@@ -2133,6 +2184,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     new HealthCheckParallelRequest(sharedContextArray[i], isContainsClient, timeout),
                     responseQueue
                 );
+                if(threadContext != null){
+                    asynchContext.putThreadContextAll(threadContext);
+                }
                 parallelRequestQueueHandlerContainer.push(asynchContext);
             }
             for(int i = 0; i < sharedContextArray.length; i++){
@@ -3080,6 +3134,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 return;
             }
             AsynchContext ac = (AsynchContext)obj;
+            if(threadContext != null){
+                ac.applyThreadContext(threadContext);
+            }
             ac.setOutput(
                 ((ParallelRequest)ac.getInput()).execute()
             );
@@ -3323,6 +3380,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchKeyParallelRequest(views[i], timeout, indexName, propNames),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -3380,6 +3440,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchNullParallelRequest(views[i], timeout, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -3437,6 +3500,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchNotNullParallelRequest(views[i], timeout, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -3503,6 +3569,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchByParallelRequest(views[i], timeout, value, indexName, propNames),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -3571,6 +3640,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchInParallelRequest(views[i], timeout, indexName, propNames, values),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -3639,6 +3711,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchByPropertyParallelRequest(views[i], timeout, prop, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -3705,6 +3780,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchInPropertyParallelRequest(views[i], timeout, indexName, propName, props),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -3769,6 +3847,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchByPropertyMapParallelRequest(views[i], timeout, props, indexName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -3835,6 +3916,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchInPropertyMapParallelRequest(views[i], timeout, indexName, props),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -3903,6 +3987,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchFromParallelRequest(views[i], timeout, fromValue, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -3971,6 +4058,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchFromPropertyParallelRequest(views[i], timeout, fromProp, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -4037,6 +4127,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchToParallelRequest(views[i], timeout, toValue, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -4105,6 +4198,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchToPropertyParallelRequest(views[i], timeout, toProp, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -4173,6 +4269,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchRangeParallelRequest(views[i], timeout, fromValue, toValue, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -4243,6 +4342,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchRangePropertyParallelRequest(views[i], timeout, fromProp, toProp, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -4314,6 +4416,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchFromParallelRequest(views[i], timeout, fromValue, inclusive, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -4384,6 +4489,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchFromPropertyParallelRequest(views[i], timeout, fromProp, inclusive, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -4452,6 +4560,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchToParallelRequest(views[i], timeout, toValue, inclusive, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -4522,6 +4633,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchToPropertyParallelRequest(views[i], timeout, toProp, inclusive, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -4594,6 +4708,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchRangeParallelRequest(views[i], timeout, fromValue, fromInclusive, toValue, toInclusive, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -4668,6 +4785,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchRangePropertyParallelRequest(views[i], timeout, fromProp, fromInclusive, toProp, toInclusive, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){

@@ -262,6 +262,20 @@ public interface DistributedSharedContextServiceMBean extends ServiceBaseMBean{
     public ServiceName getParallelRequestQueueServiceName();
     
     /**
+     * 分散したノードに並列で要求を行う際に使用する{@link jp.ossc.nimbus.service.context.ThreadContextService ThreadContextService}のサービス名を設定する。<p>
+     * 
+     * @param name ThreadContextServiceのサービス名
+     */
+    public void setThreadContextServiceName(ServiceName name);
+    
+    /**
+     * 分散したノードに並列で要求を行う際に使用する{@link jp.ossc.nimbus.service.context.ThreadContextService ThreadContextService}のサービス名を取得する。<p>
+     * 
+     * @return ThreadContextServiceのサービス名
+     */
+    public ServiceName getThreadContextServiceName();
+    
+    /**
      * {@link SharedContextTransactionManager}サービスのサービス名を設定する。<p>
      * トランザクション実行をサポートする場合に設定する。指定しない場合は、トランザクションに参加しない。<br>
      * 
