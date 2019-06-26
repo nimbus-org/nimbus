@@ -44,6 +44,8 @@ import jp.ossc.nimbus.util.*;
 import jp.ossc.nimbus.service.log.*;
 import jp.ossc.nimbus.service.message.MessageRecordFactory;
 import jp.ossc.nimbus.service.repository.Repository;
+import jp.ossc.nimbus.service.crypt.Crypt;
+import jp.ossc.nimbus.util.converter.StreamExchangeConverter;
 
 /**
  * サービスローダ。<p>
@@ -217,6 +219,8 @@ public class DefaultServiceLoaderService extends ServiceBase
      */
     private DefaultLogMetaData preDefaultLogData;
     
+    private ServiceName cryptServiceName;
+    
     /**
      * コンストラクタ。<p>
      */
@@ -317,6 +321,13 @@ public class DefaultServiceLoaderService extends ServiceBase
         }
     }
     
+    public void setCryptServiceName(ServiceName name){
+        cryptServiceName = name;
+    }
+    public ServiceName getCryptServiceName(){
+        return cryptServiceName;
+    }
+    
     /**
      * サービス定義を読み込み、サービス定義&lt;server&gt;要素メタデータを構築する。<p>
      * ここでは、以下の処理を行う。<br>
@@ -389,6 +400,20 @@ public class DefaultServiceLoaderService extends ServiceBase
     public ServerMetaData loadServerMetaData(InputStream is)
      throws IOException, ParserConfigurationException, SAXException,
             DeploymentException{
+        
+        if(cryptServiceName != null){
+            Crypt crypt = (Crypt)ServiceManagerFactory.getServiceObject(cryptServiceName);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            new StreamExchangeConverter().convert(is, baos);
+            try{
+                is = new ByteArrayInputStream(crypt.doDecodeBytes(baos.toByteArray()));
+            }catch(IOException e){
+                throw e;
+            }catch(Exception e){
+                throw new DeploymentException(e);
+            }
+        }
+        
         final InputSource inputSource = new InputSource(is);
         final DocumentBuilderFactory domFactory
              = DocumentBuilderFactory.newInstance();

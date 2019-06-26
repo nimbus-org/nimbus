@@ -67,7 +67,6 @@ public class  CipherCryptService extends ServiceBase
     private static final long serialVersionUID = 5230161454391953789L;
     
     private static final String CC___00001 = "CC___00001";
-    private static final String CC___00002 = "CC___00002";
     private static final String CC___00003 = "CC___00003";
     private static final String CC___00004 = "CC___00004";
     
@@ -1146,6 +1145,28 @@ public class  CipherCryptService extends ServiceBase
         return bytes;
     }
     
+    public void doEncodeFile(String inFilePath, String outFilePath) throws IOException{
+        FileInputStream fis = new FileInputStream(inFilePath);
+        FileOutputStream fos = new FileOutputStream(outFilePath);
+        try{
+            doEncodeStream(fis, fos);
+        }finally{
+            fis.close();
+            fos.close();
+        }
+    }
+    
+    public void doEncodeStream(InputStream is, OutputStream os) throws IOException{
+        byte[] bytes = new byte[1024];
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        int length = 0;
+        while((length = is.read(bytes, 0, bytes.length)) > 0){
+            baos.write(bytes, 0, length);
+        }
+        bytes = doEncodeBytes(baos.toByteArray());
+        os.write(bytes, 0, bytes.length);
+    }
+    
     /**
      * 暗号化する。<p>
      *
@@ -1333,70 +1354,41 @@ public class  CipherCryptService extends ServiceBase
     }
     
     // Crypt のJavaDoc
-    public String doDecode(String str){
+    public String doDecode(String str) throws Exception{
         return doDecode(str, null);
     }
-    public String doDecode(String str, String iv){
-        try{
-            return new String(doDecodeInternal(toBytes(str), iv == null ? null : toBytes(iv)), encoding);
-        }catch(NoSuchAlgorithmException e){
-            // 起こらないはず
-            getLogger().write(CC___00002, e);
-        }catch(NoSuchProviderException e){
-            // 起こらないはず
-            getLogger().write(CC___00002, e);
-        }catch(NoSuchPaddingException e){
-            // 起こらないはず
-            getLogger().write(CC___00002, e);
-        }catch(InvalidKeyException e){
-            // 起こらないはず
-            getLogger().write(CC___00002, e);
-        }catch(InvalidAlgorithmParameterException e){
-            // 起こらないはず
-            getLogger().write(CC___00002, e);
-        }catch(IllegalBlockSizeException e){
-            // 起こらないはず
-            getLogger().write(CC___00002, e);
-        }catch(BadPaddingException e){
-            // 起こらないはず
-            getLogger().write(CC___00002, e);
-        }catch(UnsupportedEncodingException e){
-            // 起こらないはず
-            getLogger().write(CC___00002, e);
-        }
-        return str;
+    public String doDecode(String str, String iv) throws Exception{
+        return new String(doDecodeInternal(toBytes(str), iv == null ? null : toBytes(iv)), encoding);
     }
     
-    public byte[] doDecodeBytes(byte[] bytes){
+    public byte[] doDecodeBytes(byte[] bytes) throws Exception{
         return doDecodeBytes(bytes, null);
     }
     
-    public byte[] doDecodeBytes(byte[] bytes, byte[] iv){
+    public byte[] doDecodeBytes(byte[] bytes, byte[] iv) throws Exception{
+        return doDecodeInternal(bytes, iv);
+    }
+    
+    public void doDecodeFile(String inFilePath, String outFilePath) throws Exception{
+        FileInputStream fis = new FileInputStream(inFilePath);
+        FileOutputStream fos = new FileOutputStream(outFilePath);
         try{
-            return doDecodeInternal(bytes, iv);
-        }catch(NoSuchAlgorithmException e){
-            // 起こらないはず
-            getLogger().write(CC___00002, e);
-        }catch(NoSuchProviderException e){
-            // 起こらないはず
-            getLogger().write(CC___00002, e);
-        }catch(NoSuchPaddingException e){
-            // 起こらないはず
-            getLogger().write(CC___00002, e);
-        }catch(InvalidKeyException e){
-            // 起こらないはず
-            getLogger().write(CC___00002, e);
-        }catch(InvalidAlgorithmParameterException e){
-            // 起こらないはず
-            getLogger().write(CC___00002, e);
-        }catch(IllegalBlockSizeException e){
-            // 起こらないはず
-            getLogger().write(CC___00002, e);
-        }catch(BadPaddingException e){
-            // 起こらないはず
-            getLogger().write(CC___00002, e);
+            doDecodeStream(fis, fos);
+        }finally{
+            fis.close();
+            fos.close();
         }
-        return bytes;
+    }
+    
+    public void doDecodeStream(InputStream is, OutputStream os) throws Exception{
+        byte[] bytes = new byte[1024];
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        int length = 0;
+        while((length = is.read(bytes, 0, bytes.length)) > 0){
+            baos.write(bytes, 0, length);
+        }
+        bytes = doDecodeBytes(baos.toByteArray());
+        os.write(bytes, 0, bytes.length);
     }
     
     /**
@@ -1446,6 +1438,7 @@ public class  CipherCryptService extends ServiceBase
         return str;
     }
     
+    // Crypt のJavaDoc
     public byte[] doHashBytes(byte[] bytes){
         try{
             return doHashInternal(bytes);
@@ -1518,6 +1511,7 @@ public class  CipherCryptService extends ServiceBase
         return str;
     }
     
+    // Crypt のJavaDoc
     public byte[] doMacBytes(byte[] bytes){
         try{
             return doMacInternal(bytes);
@@ -1587,7 +1581,11 @@ public class  CipherCryptService extends ServiceBase
         }else if(obj instanceof byte[]){
             switch(convertType){
             case REVERSE_CONVERT:
-                return doDecodeBytes((byte[])obj);
+                try{
+                    return doDecodeBytes((byte[])obj);
+                }catch(Exception e){
+                    throw new ConvertException(e);
+                }
             case POSITIVE_CONVERT:
             default:
                 return doEncodeBytes((byte[])obj);
@@ -1607,7 +1605,11 @@ public class  CipherCryptService extends ServiceBase
     public String convert(String str) throws ConvertException{
         switch(convertType){
         case REVERSE_CONVERT:
-            return doDecode(str);
+            try{
+                return doDecode(str);
+            }catch(Exception e){
+                throw new ConvertException(e);
+            }
         case POSITIVE_CONVERT:
         default:
             return doEncode(str);
@@ -1626,22 +1628,16 @@ public class  CipherCryptService extends ServiceBase
         InputStream is = (InputStream)input;
         OutputStream os = (OutputStream)output;
         
-        byte[] bytes = new byte[1024];
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        int length = 0;
         try{
-            while((length = is.read(bytes, 0, bytes.length)) > 0){
-                baos.write(bytes, 0, length);
-            }
             switch(convertType){
             case REVERSE_CONVERT:
-                bytes = doDecodeBytes(baos.toByteArray());
+                doDecodeStream(is, os);
+                break;
             case POSITIVE_CONVERT:
             default:
-                bytes = doEncodeBytes(baos.toByteArray());
+                doEncodeStream(is, os);
             }
-            os.write(bytes, 0, bytes.length);
-        }catch(IOException e){
+        }catch(Exception e){
             throw new ConvertException(e);
         }
         

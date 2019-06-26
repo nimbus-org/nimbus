@@ -32,6 +32,8 @@
 // パッケージ
 package jp.ossc.nimbus.service.crypt;
 
+import java.io.*;
+
 import jp.ossc.nimbus.core.ServiceBase;
 
 /**
@@ -70,6 +72,50 @@ public class NullCryptService extends ServiceBase
     
     public byte[] doDecodeBytes(byte[] bytes){
         return bytes;
+    }
+    
+    public void doEncodeFile(String inFilePath, String outFilePath) throws IOException{
+        FileInputStream fis = new FileInputStream(inFilePath);
+        FileOutputStream fos = new FileOutputStream(outFilePath);
+        try{
+            doEncodeStream(fis, fos);
+        }finally{
+            fis.close();
+            fos.close();
+        }
+    }
+    
+    public void doEncodeStream(InputStream is, OutputStream os) throws IOException{
+        byte[] bytes = new byte[1024];
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        int length = 0;
+        while((length = is.read(bytes, 0, bytes.length)) > 0){
+            baos.write(bytes, 0, length);
+        }
+        bytes = doEncodeBytes(baos.toByteArray());
+        os.write(bytes, 0, bytes.length);
+    }
+    
+    public void doDecodeFile(String inFilePath, String outFilePath) throws Exception{
+        FileInputStream fis = new FileInputStream(inFilePath);
+        FileOutputStream fos = new FileOutputStream(outFilePath);
+        try{
+            doDecodeStream(fis, fos);
+        }finally{
+            fis.close();
+            fos.close();
+        }
+    }
+    
+    public void doDecodeStream(InputStream is, OutputStream os) throws Exception{
+        byte[] bytes = new byte[1024];
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        int length = 0;
+        while((length = is.read(bytes, 0, bytes.length)) > 0){
+            baos.write(bytes, 0, length);
+        }
+        bytes = doDecodeBytes(baos.toByteArray());
+        os.write(bytes, 0, bytes.length);
     }
     
     /**

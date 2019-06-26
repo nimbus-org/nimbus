@@ -31,6 +31,8 @@
  */
 package jp.ossc.nimbus.service.crypt;
 
+import java.io.*;
+
 /**
  * 暗号化。<p>
  *
@@ -47,12 +49,12 @@ public interface Crypt {
     public String doEncode(String str);
     
     /**
-     * 文字列を複合化する。<p>
+     * 文字列を復号化する。<p>
      * 
      * @param str 復号化対象文字列
      * @return 復号化文字列
      */
-    public String doDecode(String str);
+    public String doDecode(String str) throws Exception;
     
     /**
      * バイト配列を暗号化する。<p>
@@ -63,12 +65,44 @@ public interface Crypt {
     public byte[] doEncodeBytes(byte[] bytes);
     
     /**
-     * バイト配列を複合化する。<p>
+     * バイト配列を復号化する。<p>
      * 
      * @param bytes 復号化対象バイト配列
      * @return 復号化バイト配列
      */
-    public byte[] doDecodeBytes(byte[] bytes);
+    public byte[] doDecodeBytes(byte[] bytes) throws Exception;
+    
+    /**
+     * ファイルを暗号化する。<p>
+     * 
+     * @param inFilePath 暗号化対象のファイルのパス
+     * @param outFilePath 暗号化後のファイルのパス
+     */
+    public void doEncodeFile(String inFilePath, String outFilePath) throws Exception;
+    
+    /**
+     * ファイルを暗号化する。<p>
+     * 
+     * @param is 暗号化対象の入力ストリーム
+     * @param os 暗号化後の出力ストリーム
+     */
+    public void doEncodeStream(InputStream is, OutputStream os) throws Exception;
+    
+    /**
+     * ファイルを復号化する。<p>
+     * 
+     * @param inFilePath 復号化対象のファイルのパス
+     * @param outFilePath 復号化後のファイルのパス
+     */
+    public void doDecodeFile(String inFilePath, String outFilePath) throws Exception;
+    
+    /**
+     * ファイルを復号化する。<p>
+     * 
+     * @param is 復号化対象の入力ストリーム
+     * @param os 復号化後の出力ストリーム
+     */
+    public void doDecodeStream(InputStream is, OutputStream os) throws Exception;
     
     /**
      * 文字列をハッシュする。<p>
