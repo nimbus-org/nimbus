@@ -52,6 +52,7 @@ import java.security.spec.*;
 import javax.crypto.*;
 import javax.crypto.spec.*;
 
+import jp.ossc.nimbus.beans.SimpleProperty;
 import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.util.converter.*;
 import jp.ossc.nimbus.service.interpreter.ScriptEngineInterpreterService;
@@ -1644,6 +1645,32 @@ public class  CipherCryptService extends ServiceBase
         return os;
     }
     
+    private static void usage(){
+        System.out.println("コマンド使用方法：");
+        System.out.println(" java jp.ossc.nimbus.service.crypt.CipherCryptService [options] [source code]");
+        System.out.println();
+        System.out.println("[options]");
+        System.out.println();
+        System.out.println(" [-attributename=value]");
+        System.out.println("  このサービスの属性とその値を設定します。");
+        SimpleProperty[] props = SimpleProperty.getProperties(CipherCryptService.class);
+        for(int i = 0; i < props.length; i++){
+            if(props[i].isWritable(CipherCryptService.class)){
+                System.out.println("    " + props[i].getPropertyName());
+            }
+        }
+        System.out.println();
+        System.out.println(" [-help]");
+        System.out.println("  ヘルプを表示します。");
+        System.out.println();
+        System.out.println("[source code]");
+        System.out.println(" 実行するソースコードを指定します。");
+        System.out.println(" スクリプト内変数として\"crypt\"で、このクラスのインスタンスが参照可能です。");
+        System.out.println();
+        System.out.println(" 使用例 : ");
+        System.out.println("    java -classpath nimbus.jar jp.ossc.nimbus.service.crypt.CipherCryptService -storePath=.keystore -storePassword=changeit -keyAlias=key1 -keyPassword=test crypt.doEncode('test')");
+    }
+    
     /**
      * このクラスを初期化して、指定されたスクリプトを実行する。<p>
      *
@@ -1651,6 +1678,15 @@ public class  CipherCryptService extends ServiceBase
      * @exception Exception 初期化またはスクリプトの実行に失敗した場合
      */
     public static void main(String[] args) throws Exception{
+        
+        if(args.length == 0 || (args.length != 0 && args[0].equals("-help"))){
+            usage();
+            if(args.length == 0){
+                System.exit(-1);
+            }
+            return;
+        }
+        
         ServiceManagerFactory.registerManager("Nimbus");
         ServiceMetaData serviceData = new ServiceMetaData();
         serviceData.setName("Crypt");
@@ -1660,6 +1696,7 @@ public class  CipherCryptService extends ServiceBase
             for(i = 0; i < args.length; i++){
                 if(args[i].charAt(0) == '-'){
                     if(args[i].indexOf("=") == -1){
+                        usage();
                         throw new IllegalArgumentException("Illegal attribute parameter : " + args[i]);
                     }
                     AttributeMetaData attrData = new AttributeMetaData(serviceData);
