@@ -77,4 +77,28 @@ public interface Crypt {
      * @return ハッシュ文字列
      */
     public String doHash(String str);
+    
+    /**
+     * バイト配列をハッシュする。<p>
+     * 
+     * @param bytes ハッシュ対象バイト配列
+     * @return ハッシュバイト配列
+     */
+    public byte[] doHashBytes(byte[] bytes);
+    
+    /**
+     * 文字列のメッセージ認証コードを取得する。<p>
+     * 
+     * @param str 対象文字列
+     * @return メッセージ認証コード文字列
+     */
+    public String doMac(String str);
+    
+    /**
+     * バイト配列のメッセージ認証コードを取得する。<p>
+     * 
+     * @param bytes 対象バイト配列
+     * @return メッセージ認証コードバイト配列
+     */
+    public byte[] doMacBytes(byte[] bytes);
 }

@@ -271,6 +271,7 @@ TS___00002,Timeout occurred while wait depends schedule task.,150,jp.ossc.nimbus
 CC___00001,It failed in the encryption.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 CC___00002,It failed in the decryption.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 CC___00003,It failed in the hash.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+CC___00004,It failed in the mac.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 KACS_00001,KeepAliveChecker @0 was recovery.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 KACS_00002,KeepAliveChecker @0 was dead.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 DBSM_00001,It faild to change state of "@0" to "@1".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY

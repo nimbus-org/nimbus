@@ -81,4 +81,34 @@ public class NullCryptService extends ServiceBase
     public String doHash(String str) {
         return str;
     }
+    
+    /**
+     * ハッシュ対象のバイト配列をそのまま返す。<p>
+     * 
+     * @param bytes ハッシュ対象バイト配列
+     * @return ハッシュ対象バイト配列
+     */
+    public byte[] doHashBytes(byte[] bytes){
+        return bytes;
+    }
+    
+    /**
+     * 対象の文字列をそのまま返す。<p>
+     * 
+     * @param str 対象文字列
+     * @return 対象文字列
+     */
+    public String doMac(String str) {
+        return str;
+    }
+    
+    /**
+     * 対象のバイト配列をそのまま返す。<p>
+     * 
+     * @param bytes 対象バイト配列
+     * @return 対象バイト配列
+     */
+    public byte[] doMacBytes(byte[] bytes){
+        return bytes;
+    }
 }

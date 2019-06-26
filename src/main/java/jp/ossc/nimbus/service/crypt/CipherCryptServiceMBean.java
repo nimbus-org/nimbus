@@ -45,14 +45,34 @@ import java.security.spec.*;
 public interface CipherCryptServiceMBean extends ServiceBaseMBean{
     
     /**
+     * バイト配列と文字コードの交換フォーマット：16進数。<p>
+     */
+    public static final String FORMAT_HEX = "HEX";
+    
+    /**
+     * バイト配列と文字コードの交換フォーマット：BASE64。<p>
+     */
+    public static final String FORMAT_BASE64 = "BASE64";
+    
+    /**
+     * デフォルトのRNGアルゴリズム名。<p>
+     */
+    public static final String DEFAULT_RNG_ALGORITHM = "SHA1PRNG";
+    
+    /**
+     * デフォルトの鍵アルゴリズム名。<p>
+     */
+    public static final String DEFAULT_KEY_ALGORITHM = "DES";
+    
+    /**
+     * デフォルトの鍵長。<p>
+     */
+    public static final int DEFAULT_KEY_LENGTH = 56;
+    
+    /**
      * デフォルトの変換名。<p>
      */
     public static final String DEFAULT_TRANSFORMATION = "DES/ECB/PKCS5Padding";
-    
-    /**
-     * デフォルトの文字エンコーディング。<p>
-     */
-    public static final String DEFAULT_ENCODING = "ISO_8859-1";
     
     /**
      * デフォルトのハッシュアルゴリズム名。<p>
@@ -60,33 +80,211 @@ public interface CipherCryptServiceMBean extends ServiceBaseMBean{
     public static final String DEFAULT_HASH_ALGORITHM = "MD5";
     
     /**
-     * 暗号化/復号化に使用する変換名を設定する。<p>
-     * デフォルトは、{@link #DEFAULT_TRANSFORMATION}。<br>
-     *
-     * @param trans 変換名
+     * デフォルトのMACアルゴリズム名。<p>
      */
-    public void setTransformation(String trans);
+    public static final String DEFAULT_MAC_ALGORITHM = "HmacMD5";
     
     /**
-     * 暗号化/復号化に使用する変換名を取得する。<p>
-     *
-     * @return 変換名
+     * デフォルトの文字エンコーディング。<p>
      */
-    public String getTransformation();
+    public static final String DEFAULT_ENCODING = "ISO_8859-1";
     
     /**
-     * 鍵を設定する。<p>
-     *
-     * @param k 鍵
+     * デフォルトのバイト配列と文字コードの交換フォーマット。<p>
      */
-    public void setKey(Key k);
+    public static final String DEFAULT_FORMAT = FORMAT_HEX;
     
     /**
-     * 鍵を取得する。<p>
-     *
-     * @return 鍵
+     * デフォルトの鍵ストアの種別。<p>
      */
-    public Key getKey();
+    public static final String DEFAULT_STORE_TYPE = "JCEKS";
+    
+    /**
+     * 乱数発生源が設定されていない場合に生成する乱数発生源のRNGアルゴリズム名を設定する。<p>
+     * デフォルトは、{@link #DEFAULT_RNG_ALGORITHM}。<br>
+     *
+     * @param algorithm RNGアルゴリズム名
+     */
+    public void setRNGAlgorithm(String algorithm);
+    
+    /**
+     * 乱数発生源が設定されていない場合に生成する乱数発生源のRNGアルゴリズム名を取得する。<p>
+     *
+     * @return RNGアルゴリズム名
+     */
+    public String getRNGAlgorithm();
+    
+    /**
+     * 秘密鍵を生成する場合の鍵アルゴリズム名を設定する。<p>
+     * デフォルトは、{@link #DEFAULT_KEY_ALGORITHM}。<br>
+     *
+     * @param algorithm 鍵アルゴリズム名
+     */
+    public void setKeyAlgorithm(String algorithm);
+    
+    /**
+     * 秘密鍵を生成する場合の鍵アルゴリズム名を取得する。<p>
+     *
+     * @return 鍵アルゴリズム名
+     */
+    public String getKeyAlgorithm();
+    
+    /**
+     * 鍵生成プロバイダの名前を設定する。<p>
+     *
+     * @param name 鍵生成プロバイダの名前
+     */
+    public void setKeyGeneratorProviderName(String name);
+    
+    /**
+     * 鍵生成プロバイダの名前を取得する。<p>
+     *
+     * @return 鍵生成プロバイダの名前
+     */
+    public String getKeyGeneratorProviderName();
+    
+    /**
+     * 秘密鍵を生成する場合の鍵長を設定する。<p>
+     * デフォルトは、{@link #DEFAULT_KEY_LENGTH}。<br>
+     *
+     * @param size 鍵長
+     */
+    public void setKeySize(int size);
+    
+    /**
+     * 秘密鍵を生成する場合の鍵長を取得する。<p>
+     *
+     * @return 鍵長
+     */
+    public int getKeySize();
+    
+    /**
+     * 鍵のバイト配列を設定する。<p>
+     *
+     * @param bytes 鍵のバイト配列
+     */
+    public void setKeyBytes(byte[] bytes);
+    
+    /**
+     * 鍵のバイト配列を取得する。<p>
+     *
+     * @return 鍵のバイト配列
+     */
+    public byte[] getKeyBytes();
+    
+    /**
+     * 鍵の文字列を設定する。<p>
+     *
+     * @param str 鍵の文字列
+     */
+    public void setKeyString(String str);
+    
+    /**
+     * 鍵の文字列を取得する。<p>
+     *
+     * @return 鍵の文字列
+     */
+    public String getKeyString();
+    
+    /**
+     * 鍵ファクトリプロバイダの名前を設定する。<p>
+     *
+     * @param name 鍵ファクトリプロバイダの名前
+     */
+    public void setKeyFactoryProviderName(String name);
+    
+    /**
+     * 鍵ファクトリプロバイダの名前を取得する。<p>
+     *
+     * @return 鍵ファクトリプロバイダの名前
+     */
+    public String getKeyFactoryProviderName();
+    
+    /**
+     * PBE鍵のパスワードを設定する。<p>
+     *
+     * @param password パスワード
+     */
+    public void setPBEPassword(String password);
+    
+    /**
+     * PBE鍵のパスワードを取得する。<p>
+     *
+     * @return パスワード
+     */
+    public String getPBEPassword();
+    
+    /**
+     * PBE鍵のソルトを設定する。<p>
+     *
+     * @param salt ソルト
+     */
+    public void setPBESalt(byte[] salt);
+    
+    /**
+     * PBE鍵のソルトを取得する。<p>
+     *
+     * @return ソルト
+     */
+    public byte[] getPBESalt();
+    
+    /**
+     * PBE鍵のソルト文字列を設定する。<p>
+     *
+     * @param salt ソルト文字列
+     */
+    public void setPBESaltString(String salt);
+    
+    /**
+     * PBE鍵のソルト文字列を取得する。<p>
+     *
+     * @return ソルト文字列
+     */
+    public String getPBESaltString();
+    
+    /**
+     * PBE鍵の反復回数を設定する。<p>
+     *
+     * @param count 反復回数
+     */
+    public void setPBEIterationCount(int count);
+    
+    /**
+     * PBE鍵の反復回数を取得する。<p>
+     *
+     * @return 反復回数
+     */
+    public int getPBEIterationCount();
+    
+    /**
+     * サービスの開始時に、鍵ストアから鍵を読み込むかどうかを設定する。<p>
+     * デフォルトはtrueで、読み込む。<br>
+     *
+     * @param isLoad 読み込む場合は、true
+     */
+    public void setLoadKeyOnStart(boolean isLoad);
+    
+    /**
+     * サービスの開始時に、鍵ストアから鍵を読み込むかどうかを判定する。<p>
+     *
+     * @return trueの場合は、読み込む
+     */
+    public boolean isLoadKeyOnStart();
+    
+    /**
+     * サービスの停止時に、鍵ストアに鍵を書き込むかどうかを設定する。<p>
+     * デフォルトはfalseで、書き込まない。<br>
+     *
+     * @param isSave 書き込む場合は、true
+     */
+    public void setSaveKeyOnStart(boolean isSave);
+    
+    /**
+     * サービスの停止時に、鍵ストアに鍵を書き込むかどうかを判定する。<p>
+     *
+     * @return 書き込む場合は、true
+     */
+    public boolean isSaveKeyOnStart();
     
     /**
      * 鍵ストアのパスを設定する。<p>
@@ -104,6 +302,7 @@ public interface CipherCryptServiceMBean extends ServiceBaseMBean{
     
     /**
      * 鍵ストアの種別を設定する。<p>
+     * デフォルトは、{@link #DEFAULT_STORE_TYPE}。<br>
      *
      * @param type 種別
      */
@@ -131,20 +330,6 @@ public interface CipherCryptServiceMBean extends ServiceBaseMBean{
     public String getStoreProviderName();
     
     /**
-     * 鍵ストアプロバイダを設定する。<p>
-     *
-     * @param provider 鍵ストアプロバイダ
-     */
-    public void setStoreProvider(Provider provider);
-    
-    /**
-     * 鍵ストアプロバイダを取得する。<p>
-     *
-     * @return 鍵ストアプロバイダ
-     */
-    public Provider getStoreProvider();
-    
-    /**
      * 鍵ストアのパスワードを設定する。<p>
      *
      * @param password 鍵ストアのパスワード
@@ -159,47 +344,47 @@ public interface CipherCryptServiceMBean extends ServiceBaseMBean{
     public String getStorePassword();
     
     /**
-     * 鍵のエイリアスを設定する。<p>
+     * 鍵ストアの鍵のエイリアスを設定する。<p>
      *
      * @param alias 鍵のエイリアス
      */
     public void setKeyAlias(String alias);
     
     /**
-     * 鍵のエイリアスを取得する。<p>
+     * 鍵ストアの鍵のエイリアスを取得する。<p>
      *
      * @return 鍵のエイリアス
      */
     public String getKeyAlias();
     
     /**
-     * 鍵のパスワードを設定する。<p>
+     * 鍵ストアの鍵のパスワードを設定する。<p>
      *
      * @param password 鍵のパスワード
      */
     public void setKeyPassword(String password);
     
     /**
-     * 鍵のパスワードを取得する。<p>
+     * 鍵ストアの鍵のパスワードを取得する。<p>
      *
      * @return 鍵のパスワード
      */
     public String getKeyPassword();
     
     /**
-     * javax.crypto.Cipherを取得するためのプロバイダを設定する。<p>
-     * この属性を設定しない場合は、デフォルトのプロバイダが使用されます。<br>
+     * 暗号化/復号化に使用する変換名を設定する。<p>
+     * デフォルトは、{@link #DEFAULT_TRANSFORMATION}。<br>
      *
-     * @param p プロバイダ
+     * @param trans 変換名
      */
-    public void setCipherProvider(Provider p);
+    public void setTransformation(String trans);
     
     /**
-     * javax.crypto.Cipherを取得するためのプロバイダを取得する。<p>
+     * 暗号化/復号化に使用する変換名を取得する。<p>
      *
-     * @return プロバイダ
+     * @return 変換名
      */
-    public Provider getCipherProvider();
+    public String getTransformation();
     
     /**
      * javax.crypto.Cipherを取得するためのプロバイダ名を設定する。<p>
@@ -217,49 +402,47 @@ public interface CipherCryptServiceMBean extends ServiceBaseMBean{
     public String getCipherProviderName();
     
     /**
-     * javax.crypto.Cipherの初期化に使用するアルゴリズムパラメータを設定する。<p>
-     * この属性を設定しない場合は、デフォルトのアルゴリズムパラメータが使用されます。<br>
+     * 初期化ベクタを設定する。<p>
      *
-     * @param params アルゴリズムパラメータ
+     * @param iv 初期化ベクタ
      */
-    public void setAlgorithmParameters(AlgorithmParameters params);
+    public void setIV(byte[] iv);
     
     /**
-     * javax.crypto.Cipherの初期化に使用するアルゴリズムパラメータを取得する。<p>
+     * 初期化ベクタを取得する。<p>
      *
-     * @return アルゴリズムパラメータ
+     * @return 初期化ベクタ
      */
-    public AlgorithmParameters getAlgorithmParameters();
+    public byte[] getIV();
     
     /**
-     * javax.crypto.Cipherの初期化に使用するアルゴリズムパラメータを設定する。<p>
-     * この属性を設定しない場合は、デフォルトのアルゴリズムパラメータが使用されます。<br>
+     * 初期化ベクタ文字列を設定する。<p>
      *
-     * @param params アルゴリズムパラメータ
+     * @param iv 初期化ベクタ文字列
      */
-    public void setAlgorithmParameterSpec(AlgorithmParameterSpec params);
+    public void setIVString(String iv);
     
     /**
-     * javax.crypto.Cipherの初期化に使用するアルゴリズムパラメータを取得する。<p>
+     * 初期化ベクタ文字列を取得する。<p>
      *
-     * @return アルゴリズムパラメータ
+     * @return 初期化ベクタ文字列
      */
-    public AlgorithmParameterSpec getAlgorithmParameterSpec();
+    public String getIVString();
     
     /**
-     * javax.crypto.Cipherの初期化に使用する乱数発生源を設定する。<p>
-     * この属性を設定しない場合は、デフォルトの乱数発生源が使用されます。<br>
+     * 文字列とバイト配列を交換する際のフォーマットを設定する。<p>
+     * デフォルトは、{@link #FORMAT_HEX}。<br>
      *
-     * @param random 乱数発生源
+     * @param format フォーマット
      */
-    public void setSecureRandom(SecureRandom random);
+    public void setFormat(String format);
     
     /**
-     * javax.crypto.Cipherの初期化に使用する乱数発生源を取得する。<p>
+     * 文字列とバイト配列を交換する際のフォーマットを取得する。<p>
      *
-     * @return 乱数発生源
+     * @return フォーマット
      */
-    public SecureRandom getSecureRandom();
+    public String getFormat();
     
     /**
      * 文字エンコーディングを設定する。<p>
@@ -294,21 +477,6 @@ public interface CipherCryptServiceMBean extends ServiceBaseMBean{
     public String getHashAlgorithm();
     
     /**
-     * javax.crypto.MessageDigestを取得するためのプロバイダを設定する。<p>
-     * この属性を設定しない場合は、デフォルトのプロバイダが使用されます。<br>
-     *
-     * @param p プロバイダ
-     */
-    public void setMessageDigestProvider(Provider p);
-    
-    /**
-     * javax.crypto.MessageDigestを取得するためのプロバイダを取得する。<p>
-     *
-     * @return プロバイダ
-     */
-    public Provider getMessageDigestProvider();
-    
-    /**
      * javax.crypto.MessageDigestを取得するためのプロバイダ名を設定する。<p>
      * この属性を設定しない場合は、デフォルトのプロバイダが使用されます。<br>
      *
@@ -322,6 +490,44 @@ public interface CipherCryptServiceMBean extends ServiceBaseMBean{
      * @return プロバイダ名
      */
     public String getMessageDigestProviderName();
+    
+    /**
+     * メッセージ認証コードのアルゴリズム名を設定する。<p>
+     * デフォルトは、{@link #DEFAULT_MAC_ALGORITHM}。<br>
+     * 
+     * @param algorithm メッセージ認証コードのアルゴリズム名
+     */
+    public void setMacAlgorithm(String algorithm);
+    
+    /**
+     * メッセージ認証コードのアルゴリズム名を取得する。<p>
+     * 
+     * @return メッセージ認証コードのアルゴリズム名
+     */
+    public String getMacAlgorithm();
+    
+    /**
+     * javax.crypto.Macを取得するためのプロバイダ名を設定する。<p>
+     * この属性を設定しない場合は、デフォルトのプロバイダが使用されます。<br>
+     *
+     * @param name プロバイダ名
+     */
+    public void setMacProviderName(String name);
+    
+    /**
+     * javax.crypto.Macを取得するためのプロバイダ名を取得する。<p>
+     *
+     * @return プロバイダ名
+     */
+    public String getMacProviderName();
+    
+    /**
+     * javax.crypto.Macの初期化に使用するアルゴリズムパラメータを設定する。<p>
+     * この属性を設定しない場合は、デフォルトのアルゴリズムパラメータが使用されます。<br>
+     *
+     * @param params アルゴリズムパラメータ
+     */
+    public void setMacAlgorithmParameterSpec(AlgorithmParameterSpec params);
     
     /**
      * 変換種別を設定する。<p>
