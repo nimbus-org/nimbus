@@ -47,12 +47,14 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
 import java.security.*;
 import java.security.spec.*;
 import javax.crypto.*;
 import javax.crypto.spec.*;
 
-import jp.ossc.nimbus.beans.SimpleProperty;
+import jp.ossc.nimbus.beans.*;
 import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.util.converter.*;
 import jp.ossc.nimbus.service.interpreter.ScriptEngineInterpreterService;
@@ -65,23 +67,27 @@ import jp.ossc.nimbus.service.interpreter.ScriptEngineInterpreterService;
 public class  CipherCryptService extends ServiceBase
  implements Crypt, StringConverter, ReversibleConverter, BindingConverter, CipherCryptServiceMBean{
     
-    private static final long serialVersionUID = 5230161454391953789L;
+    protected static final long serialVersionUID = 5230161454391953789L;
     
-    private static final String CC___00001 = "CC___00001";
-    private static final String CC___00003 = "CC___00003";
-    private static final String CC___00004 = "CC___00004";
+    protected static final String CC___00001 = "CC___00001";
+    protected static final String CC___00002 = "CC___00002";
+    protected static final String CC___00003 = "CC___00003";
+    protected static final String CC___00004 = "CC___00004";
     
-    private static final ConcurrentMap storeLockMap = new ConcurrentHashMap();
+    protected static final ConcurrentMap storeLockMap = new ConcurrentHashMap();
     
     protected String rngAlgorithm = DEFAULT_RNG_ALGORITHM;
     protected SecureRandom secureRandom;
     
     protected String keyAlgorithm = DEFAULT_KEY_ALGORITHM;
+    protected String keyPairAlgorithm;
     protected String keyGeneratorProviderName;
     protected Provider keyGeneratorProvider;
+    protected AlgorithmParameterSpec keyGeneratorAlgorithmParameterSpec;
     protected int keySize = DEFAULT_KEY_LENGTH;
     protected byte[] keyBytes;
     protected Key key;
+    protected KeyPair keyPair;
     protected byte[] iv;
     protected String keyFactoryProviderName;
     protected Provider keyFactoryProvider;
@@ -104,6 +110,10 @@ public class  CipherCryptService extends ServiceBase
     protected String macProviderName;
     protected AlgorithmParameterSpec macAlgorithmParameterSpec;
     
+    protected String signatureAlgorithm;
+    protected Provider signatureProvider;
+    protected String signatureProviderName;
+    
     protected String format = DEFAULT_FORMAT;
     protected String encoding = DEFAULT_ENCODING;
     protected int convertType;
@@ -116,6 +126,7 @@ public class  CipherCryptService extends ServiceBase
     protected Provider storeProvider;
     protected String storePassword;
     protected String keyAlias;
+    protected String certificateAlias;
     protected String keyPassword;
     
     protected boolean isMyKey;
@@ -161,12 +172,40 @@ public class  CipherCryptService extends ServiceBase
     }
     
     // CipherCryptServiceMBean のJavaDoc
+    public void setKeyPairAlgorithm(String algorithm){
+        keyPairAlgorithm = algorithm;
+    }
+    // CipherCryptServiceMBean のJavaDoc
+    public String getKeyPairAlgorithm(){
+        return keyPairAlgorithm;
+    }
+    
+    // CipherCryptServiceMBean のJavaDoc
     public void setKeyGeneratorProviderName(String name){
         keyGeneratorProviderName = name;
     }
     // CipherCryptServiceMBean のJavaDoc
     public String getKeyGeneratorProviderName(){
         return keyGeneratorProviderName;
+    }
+    
+    /**
+     * javax.crypto.KeyGeneratorまたはjava.security.KeyPairGeneratorの初期化に使用するアルゴリズムパラメータを設定する。<p>
+     * この属性を設定しない場合は、デフォルトのアルゴリズムパラメータが使用されます。<br>
+     *
+     * @param params アルゴリズムパラメータ
+     */
+    public void setKeyGeneratorAlgorithmParameterSpec(AlgorithmParameterSpec params){
+        keyGeneratorAlgorithmParameterSpec = params;
+    }
+    
+    /**
+     * javax.crypto.KeyGeneratorまたはjava.security.KeyPairGeneratorの初期化に使用するアルゴリズムパラメータを取得する。<p>
+     *
+     * @return アルゴリズムパラメータ
+     */
+    public AlgorithmParameterSpec getKeyGeneratorAlgorithmParameterSpec(){
+        return keyGeneratorAlgorithmParameterSpec;
     }
     
     /**
@@ -289,6 +328,28 @@ public class  CipherCryptService extends ServiceBase
         return key;
     }
     
+    /**
+     * 鍵ペアを設定する。<p>
+     *
+     * @param k 鍵ペア
+     */
+    public void setKeyPair(KeyPair k){
+        keyPair = k;
+        if(keyPair != null){
+            isMyKey = false;
+            isLoadKey = false;
+        }
+    }
+    
+    /**
+     * 鍵ペアを取得する。<p>
+     *
+     * @return 鍵ペア
+     */
+    public KeyPair getKeyPair(){
+        return keyPair;
+    }
+    
     // CipherCryptServiceMBean のJavaDoc
     public void setKeyFactoryProviderName(String name){
         keyFactoryProviderName = name;
@@ -387,25 +448,6 @@ public class  CipherCryptService extends ServiceBase
     // CipherCryptServiceMBean のJavaDoc
     public String getCipherProviderName(){
         return cipherProviderName;
-    }
-    
-    /**
-     * javax.crypto.Cipherの初期化に使用するアルゴリズムパラメータを設定する。<p>
-     * この属性を設定しない場合は、デフォルトのアルゴリズムパラメータが使用されます。<br>
-     *
-     * @param params アルゴリズムパラメータ
-     */
-    public void setAlgorithmParameters(AlgorithmParameters params){
-        algorithmParameters = params;
-    }
-    
-    /**
-     * javax.crypto.Cipherの初期化に使用するアルゴリズムパラメータを取得する。<p>
-     *
-     * @return アルゴリズムパラメータ
-     */
-    public AlgorithmParameters getAlgorithmParameters(){
-        return algorithmParameters;
     }
     
     /**
@@ -517,7 +559,12 @@ public class  CipherCryptService extends ServiceBase
         return macProviderName;
     }
     
-    // CipherCryptServiceMBean のJavaDoc
+    /**
+     * javax.crypto.Macの初期化に使用するアルゴリズムパラメータを設定する。<p>
+     * この属性を設定しない場合は、デフォルトのアルゴリズムパラメータが使用されます。<br>
+     *
+     * @param params アルゴリズムパラメータ
+     */
     public void setMacAlgorithmParameterSpec(AlgorithmParameterSpec params){
         macAlgorithmParameterSpec = params;
     }
@@ -529,6 +576,42 @@ public class  CipherCryptService extends ServiceBase
      */
     public AlgorithmParameterSpec getMacAlgorithmParameterSpec(){
         return macAlgorithmParameterSpec;
+    }
+    
+    // CipherCryptServiceMBean のJavaDoc
+    public void setSignatureAlgorithm(String algorithm){
+        signatureAlgorithm = algorithm;
+    }
+    // CipherCryptServiceMBean のJavaDoc
+    public String getSignatureAlgorithm(){
+        return signatureAlgorithm;
+    }
+    
+    /**
+     * java.security.Signatureを取得するためのプロバイダを設定する。<p>
+     * この属性を設定しない場合は、デフォルトのプロバイダが使用されます。<br>
+     *
+     * @param p プロバイダ
+     */
+    public void setSignatureProvider(Provider p){
+        signatureProvider = p;
+    }
+    /**
+     * java.security.Signatureを取得するためのプロバイダを取得する。<p>
+     *
+     * @return プロバイダ
+     */
+    public Provider getSignatureProvider(){
+        return signatureProvider;
+    }
+    
+    // CipherCryptServiceMBean のJavaDoc
+    public void setSignatureProviderName(String name){
+        signatureProviderName = name;
+    }
+    // CipherCryptServiceMBean のJavaDoc
+    public String getSignatureProviderName(){
+        return signatureProviderName;
     }
     
     // CipherCryptServiceMBean のJavaDoc
@@ -614,11 +697,20 @@ public class  CipherCryptService extends ServiceBase
     
     // CipherCryptServiceMBean のJavaDoc
     public void setKeyAlias(String alias){
-        keyAlias = alias;
+        this.keyAlias = alias;
     }
     // CipherCryptServiceMBean のJavaDoc
     public String getKeyAlias(){
         return keyAlias;
+    }
+    
+    // CipherCryptServiceMBean のJavaDoc
+    public void setCertificateAlias(String alias){
+        certificateAlias = alias;
+    }
+    // CipherCryptServiceMBean のJavaDoc
+    public String getCertificateAlias(){
+        return certificateAlias;
     }
     
     // CipherCryptServiceMBean のJavaDoc
@@ -665,43 +757,39 @@ public class  CipherCryptService extends ServiceBase
             storeLock = old == null ? file : old;
         }
         
-        if(key == null){
-            if(storePath != null && isLoadKeyOnStart){
-                if(storePassword == null){
-                    throw new IllegalArgumentException("StorePassword is null");
-                }
-                if(keyAlias == null){
-                    throw new IllegalArgumentException("KeyAlias is null");
-                }
-                if(keyPassword == null){
-                    throw new IllegalArgumentException("KeyPassword is null");
-                }
-                key = loadKey();
-                if(key != null){
-                    isLoadKey = true;
-                }
+        if(key == null && keyPair == null && storePath != null && isLoadKeyOnStart){
+            if(storePassword == null){
+                throw new IllegalArgumentException("StorePassword is null");
             }
-            if(key == null){
-                key = createSecretKey();
+            if(keyAlias == null && certificateAlias == null){
+                throw new IllegalArgumentException("KeyAlias is null");
             }
+            loadKey();
+        }
+        
+        if(keyPair == null && keyPairAlgorithm != null){
+            keyPair = createKeyPair();
+            isMyKey = true;
+        }else if(key == null){
+            key = createSecretKey();
             isMyKey = true;
         }
         
-        if(algorithmParameters == null && algorithmParameterSpec == null){
-            final Cipher c = createCipher();
-            intiCipher(c, Cipher.ENCRYPT_MODE, iv);
-            algorithmParameters = c.getParameters();
-        }
-        
-        final byte[] encodeBytes = doEncodeInternal("test".getBytes(), null);
-        final byte[] decodeBytes = doDecodeInternal(encodeBytes, null);
+        final byte[] encodeBytes = doEncodeInternal("test".getBytes(), iv);
+        final byte[] decodeBytes = doDecodeInternal(encodeBytes, iv);
         if(!"test".equals(new String(decodeBytes))){
             throw new IllegalArgumentException(
-                "This encryption cannot convert reversible."
+                "This encryption cannot convert reversible. decode=" + new String(decodeBytes)
             );
         }
         doHashInternal("test".getBytes());
         doMacInternal("test".getBytes());
+        if(signatureAlgorithm != null && getPrivateKey() != null){
+            byte[] sign = doSignInternal("test".getBytes());
+            if(getPublicKey() != null){
+                doVerifyInternal("test".getBytes(), sign);
+            }
+        }
     }
     
     /**
@@ -719,9 +807,13 @@ public class  CipherCryptService extends ServiceBase
         ){
             saveKey();
         }
+        if(keyPair != null && isMyKey){
+            keyPair = null;
+        }
         if(key != null && isMyKey){
             key = null;
         }
+        algorithmParameters = null;
     }
     
     protected SecureRandom createSecureRandom() throws Exception{
@@ -823,7 +915,9 @@ public class  CipherCryptService extends ServiceBase
         }else{
             keyGen = KeyGenerator.getInstance(keyAlgorithm);
         }
-        if(keySize <= 0){
+        if(keyGeneratorAlgorithmParameterSpec != null){
+            keyGen.init(keyGeneratorAlgorithmParameterSpec, secureRandom);
+        }else if(keySize <= 0){
             keyGen.init(secureRandom);
         }else{
             keyGen.init(keySize, secureRandom);
@@ -862,6 +956,53 @@ public class  CipherCryptService extends ServiceBase
     }
     
     /**
+     * 鍵ペアを生成する。<p>
+     *
+     * @return 鍵ペア
+     * @exception Exception キーの生成に失敗した場合
+     */
+    public KeyPair createKeyPair() throws Exception{
+        return createKeyPair(
+            keyPairAlgorithm,
+            keyGeneratorProviderName,
+            keyGeneratorProvider,
+            keySize
+        );
+    }
+    
+    /**
+     * 鍵ペアを生成する。<p>
+     *
+     * @param keyPairAlgorithm 鍵ペアアルゴリズム
+     * @param keyGeneratorProviderName 鍵生成プロバイダ名
+     * @param keyGeneratorProvider 鍵生成プロバイダ
+     * @param keySize 鍵長
+     * @return 鍵ペア
+     * @exception Exception キーの生成に失敗した場合
+     */
+    public KeyPair createKeyPair(
+        String keyPairAlgorithm,
+        String keyGeneratorProviderName,
+        Provider keyGeneratorProvider,
+        int keySize
+    ) throws Exception{
+        KeyPairGenerator keyGen = null;
+        if(keyGeneratorProvider != null){
+            keyGen = KeyPairGenerator.getInstance(keyPairAlgorithm, keyGeneratorProvider);
+        }else if(keyGeneratorProviderName != null){
+            keyGen = KeyPairGenerator.getInstance(keyPairAlgorithm, keyGeneratorProviderName);
+        }else{
+            keyGen = KeyPairGenerator.getInstance(keyPairAlgorithm);
+        }
+        if(keyGeneratorAlgorithmParameterSpec != null){
+            keyGen.initialize(keyGeneratorAlgorithmParameterSpec, secureRandom);
+        }else{
+            keyGen.initialize(keySize, secureRandom);
+        }
+        return keyGen.generateKeyPair();
+    }
+    
+    /**
      * 指定した鍵をバイト配列に変換する。<p>
      *
      * @param key 鍵
@@ -877,7 +1018,7 @@ public class  CipherCryptService extends ServiceBase
      * @return 鍵のバイト配列
      */
     public byte[] toKeyBytes(){
-        return key.getEncoded();
+        return key == null ? null : key.getEncoded();
     }
     
     /**
@@ -896,7 +1037,7 @@ public class  CipherCryptService extends ServiceBase
      * @return 鍵文字列
      */
     public String toKeyString(){
-        return toString(key.getEncoded());
+        return key == null ? null : toString(key.getEncoded());
     }
     
     /**
@@ -926,14 +1067,44 @@ public class  CipherCryptService extends ServiceBase
         return toString(createSeed(length));
     }
     
-    /**
-     * キーストアから秘密鍵を読み込む。<p>
-     *
-     * @return 秘密鍵
-     * @exception Exception キーの読み込みに失敗した場合
-     */
-    public Key loadKey() throws Exception{
-        return loadKey(keyAlias, keyPassword);
+    public void loadKey() throws Exception{
+        if(keyAlias != null && certificateAlias != null){
+            if(storePath != null && isLoadKeyOnStart){
+                if(storePassword == null){
+                    throw new IllegalArgumentException("StorePassword is null");
+                }
+                PublicKey publicKey = (PublicKey)loadKey(certificateAlias, null);
+                if(keyPassword == null){
+                    throw new IllegalArgumentException("KeyPassword is null");
+                }
+                PrivateKey privateKey = (PrivateKey)loadKey(keyAlias, keyPassword);
+                if(publicKey != null && privateKey != null){
+                    keyPair = new KeyPair(publicKey, privateKey);
+                }
+                if(keyPair != null){
+                    isLoadKey = true;
+                    isMyKey = true;
+                }
+            }
+        }else if(keyAlias != null || certificateAlias != null){
+            if(storePath != null && isLoadKeyOnStart){
+                if(storePassword == null){
+                    throw new IllegalArgumentException("StorePassword is null");
+                }
+                if(keyAlias != null){
+                    if(keyPassword == null){
+                        throw new IllegalArgumentException("KeyPassword is null");
+                    }
+                    key = loadKey(keyAlias, keyPassword);
+                }else{
+                    key = loadKey(certificateAlias, null);
+                }
+                if(key != null){
+                    isLoadKey = true;
+                    isMyKey = true;
+                }
+            }
+        }
     }
     
     /**
@@ -945,8 +1116,14 @@ public class  CipherCryptService extends ServiceBase
      * @exception Exception キーの読み込みに失敗した場合
      */
     public Key loadKey(String alias, String password) throws Exception{
-        synchronized(storeLock){
-            return loadKeyStore().getKey(alias, password.toCharArray());
+        KeyStore store = loadKeyStore();
+        if(store.isKeyEntry(alias)){
+            return store.getKey(alias, password.toCharArray());
+        }else if(store.isCertificateEntry(alias)){
+            java.security.cert.Certificate cert = store.getCertificate(alias);
+            return cert == null ? null : cert.getPublicKey();
+        }else{
+            return null;
         }
     }
     
@@ -994,13 +1171,12 @@ public class  CipherCryptService extends ServiceBase
         }
     }
     
-    /**
-     * 鍵をキーストアに書き込む。<p>
-     *
-     * @exception Exception キーの書き込みに失敗した場合
-     */
     public void saveKey() throws Exception{
-        saveKey(key, keyAlias, keyPassword);
+        if(key != null){
+            saveKey(key, keyAlias, keyPassword);
+        }else if(keyPair != null){
+            saveKey(keyPair.getPrivate(), keyAlias, keyPassword);
+        }
     }
     
     /**
@@ -1040,14 +1216,31 @@ public class  CipherCryptService extends ServiceBase
      */
     public Set keyAliasSet() throws Exception{
         Set result = new TreeSet();
-        synchronized(storeLock){
-            KeyStore store = loadKeyStore();
-            Enumeration aliases = store.aliases();
-            while(aliases.hasMoreElements()){
-                String alias = (String)aliases.nextElement();
-                if(store.isKeyEntry(alias)){
-                    result.add(alias);
-                }
+        KeyStore store = loadKeyStore();
+        Enumeration aliases = store.aliases();
+        while(aliases.hasMoreElements()){
+            String alias = (String)aliases.nextElement();
+            if(store.isKeyEntry(alias)){
+                result.add(alias);
+            }
+        }
+        return result;
+    }
+    
+    /**
+     * 証明書のエイリアス一覧を取得する。<p>
+     *
+     * @return 証明書のエイリアス一覧
+     * @exception Exception キーストアの読み込みに失敗した場合
+     */
+    public Set certificateAliasSet() throws Exception{
+        Set result = new TreeSet();
+        KeyStore store = loadKeyStore();
+        Enumeration aliases = store.aliases();
+        while(aliases.hasMoreElements()){
+            String alias = (String)aliases.nextElement();
+            if(store.isCertificateEntry(alias)){
+                result.add(alias);
             }
         }
         return result;
@@ -1060,17 +1253,17 @@ public class  CipherCryptService extends ServiceBase
      */
     public void deleteKey() throws Exception{
         if(keyAlias != null){
-            deleteKey(keyAlias);
+            deleteEntry(keyAlias);
         }
     }
     
     /**
-     * 指定したエイリアス名の鍵を削除する。<p>
+     * 指定したエイリアス名のエントリを削除する。<p>
      *
      * @param alias エイリアス名
-     * @exception Exception キーの削除に失敗した場合
+     * @exception Exception エントリの削除に失敗した場合
      */
-    public void deleteKey(String alias) throws Exception{
+    public void deleteEntry(String alias) throws Exception{
         synchronized(storeLock){
             KeyStore store = loadKeyStore();
             store.deleteEntry(alias);
@@ -1080,12 +1273,39 @@ public class  CipherCryptService extends ServiceBase
         
     // Crypt のJavaDoc
     public String doEncode(String str){
-        return doEncode(str, null);
+        try{
+            return toString(doEncodeInternal(str.getBytes(encoding), iv));
+        }catch(NoSuchAlgorithmException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }catch(NoSuchProviderException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }catch(NoSuchPaddingException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }catch(InvalidKeyException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }catch(InvalidAlgorithmParameterException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }catch(IllegalBlockSizeException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }catch(BadPaddingException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }catch(UnsupportedEncodingException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }
+        return str;
     }
     
     public String doEncode(String str, String iv){
         try{
-            return toString(doEncodeInternal(str.getBytes(encoding), iv == null ? null : iv.getBytes(encoding)));
+            return toString(doEncodeInternal(str.getBytes(encoding), iv == null ? null : toBytes(iv)));
         }catch(NoSuchAlgorithmException e){
             // 起こらないはず
             getLogger().write(CC___00001, e);
@@ -1115,7 +1335,7 @@ public class  CipherCryptService extends ServiceBase
     }
     
     public byte[] doEncodeBytes(byte[] bytes){
-        return doEncodeBytes(bytes, null);
+        return doEncodeBytes(bytes, iv);
     }
     
     public byte[] doEncodeBytes(byte[] bytes, byte[] iv){
@@ -1158,14 +1378,33 @@ public class  CipherCryptService extends ServiceBase
     }
     
     public void doEncodeStream(InputStream is, OutputStream os) throws IOException{
-        byte[] bytes = new byte[1024];
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        int length = 0;
-        while((length = is.read(bytes, 0, bytes.length)) > 0){
-            baos.write(bytes, 0, length);
+        try{
+            doEncodeInternal(is, os, iv);
+        }catch(NoSuchAlgorithmException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }catch(NoSuchProviderException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }catch(NoSuchPaddingException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }catch(InvalidKeyException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }catch(InvalidAlgorithmParameterException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }catch(IllegalBlockSizeException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }catch(BadPaddingException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }catch(UnsupportedEncodingException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
         }
-        bytes = doEncodeBytes(baos.toByteArray());
-        os.write(bytes, 0, bytes.length);
     }
     
     /**
@@ -1187,21 +1426,59 @@ public class  CipherCryptService extends ServiceBase
             NoSuchPaddingException, InvalidKeyException,
             InvalidAlgorithmParameterException,
             IllegalBlockSizeException, BadPaddingException{
-        if(transformation == null || key == null){
-            throw new UnsupportedOperationException(
-                "Transformation or key is not specified."
-            );
-        }
         
         if(bytes == null){
             return null;
+        }
+        try{
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            doEncodeInternal(new ByteArrayInputStream(bytes), baos, iv);
+            return baos.toByteArray();
+        }catch(IOException e){
+        }
+        return bytes;
+    }
+    
+    /**
+     * 暗号化する。<p>
+     *
+     * @param is 暗号化対象の入力ストリーム
+     * @param os 暗号化後の出力ストリーム
+     * @param iv 初期ベクタのバイト配列
+     * @exception NoSuchAlgorithmException 指定されたアルゴリズムが存在しない場合
+     * @exception NoSuchProviderException 指定されたプロバイダが存在しない場合
+     * @exception NoSuchPaddingException 指定されたパディング機構が存在しない場合
+     * @exception InvalidKeyException 指定された鍵が無効な符号化、長さの誤り、未初期化などの無効な鍵である場合
+     * @exception InvalidAlgorithmParameterException 指定されたアルゴリズムパラメータが無効または不適切な場合
+     * @exception IllegalBlockSizeException ブロック暗号に提供されたデータの長さが正しくない場合
+     * @exception BadPaddingException 特定のパディング機構が入力データに対して予期されているのにデータが適切にパディングされない場合
+     */
+    protected void doEncodeInternal(InputStream is, OutputStream os, byte[] iv)
+     throws NoSuchAlgorithmException, NoSuchProviderException,
+            NoSuchPaddingException, InvalidKeyException,
+            InvalidAlgorithmParameterException,
+            IllegalBlockSizeException, BadPaddingException,
+            IOException{
+        if(transformation == null || (key == null && keyPair == null)){
+            throw new UnsupportedOperationException(
+                "Transformation or key is not specified."
+            );
         }
         
         final Cipher c = createCipher();
         
         intiCipher(c, Cipher.ENCRYPT_MODE, iv);
         
-        return c.doFinal(bytes);
+        if(algorithmParameterSpec == null){
+            algorithmParameters = c.getParameters();
+        }
+        final byte[] bytes = new byte[1024];
+        int length = 0;
+        while((length = is.read(bytes, 0, bytes.length)) != -1){
+            os.write(c.update(bytes, 0, length));
+        }
+        os.write(c.doFinal());
+        os.flush();
     }
     
     /**
@@ -1224,6 +1501,21 @@ public class  CipherCryptService extends ServiceBase
         }
     }
     
+    protected Key selectKey(final int opmode){
+        Key k = key;
+        if(keyPair != null){
+            switch(opmode){
+            case Cipher.ENCRYPT_MODE:
+                k = keyPair.getPublic();
+                break;
+            case Cipher.DECRYPT_MODE:
+                k = keyPair.getPrivate();
+                break;
+            }
+        }
+        return k;
+    }
+    
     /**
      * javax.crypto.Cipherを初期化する。<p>
      *
@@ -1233,19 +1525,20 @@ public class  CipherCryptService extends ServiceBase
      * @exception InvalidKeyException 指定された鍵が無効な符号化、長さの誤り、未初期化などの無効な鍵である場合
      * @exception InvalidAlgorithmParameterException 指定されたアルゴリズムパラメータが無効または不適切な場合
      */
-    protected void intiCipher(Cipher c, int opmode, byte[] iv)
+    protected void intiCipher(Cipher c, final int opmode, byte[] iv)
      throws InvalidKeyException, InvalidAlgorithmParameterException{
+        Key k = selectKey(opmode);
         if(algorithmParameterSpec != null){
             c.init(
                 opmode,
-                key,
+                k,
                 algorithmParameterSpec,
                 secureRandom
             );
         }else if(algorithmParameters != null){
             c.init(
                 opmode,
-                key,
+                k,
                 algorithmParameters,
                 secureRandom
             );
@@ -1272,12 +1565,12 @@ public class  CipherCryptService extends ServiceBase
             if(aps != null){
                 c.init(
                     opmode,
-                    key,
+                    k,
                     aps,
                     secureRandom
                 );
             }else{
-                c.init(opmode, key, secureRandom);
+                c.init(opmode, k, secureRandom);
             }
         }
     }
@@ -1356,14 +1649,14 @@ public class  CipherCryptService extends ServiceBase
     
     // Crypt のJavaDoc
     public String doDecode(String str) throws Exception{
-        return doDecode(str, null);
+        return new String(doDecodeInternal(toBytes(str), iv), encoding);
     }
     public String doDecode(String str, String iv) throws Exception{
         return new String(doDecodeInternal(toBytes(str), iv == null ? null : toBytes(iv)), encoding);
     }
     
     public byte[] doDecodeBytes(byte[] bytes) throws Exception{
-        return doDecodeBytes(bytes, null);
+        return doDecodeBytes(bytes, iv);
     }
     
     public byte[] doDecodeBytes(byte[] bytes, byte[] iv) throws Exception{
@@ -1382,14 +1675,7 @@ public class  CipherCryptService extends ServiceBase
     }
     
     public void doDecodeStream(InputStream is, OutputStream os) throws Exception{
-        byte[] bytes = new byte[1024];
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        int length = 0;
-        while((length = is.read(bytes, 0, bytes.length)) > 0){
-            baos.write(bytes, 0, length);
-        }
-        bytes = doDecodeBytes(baos.toByteArray());
-        os.write(bytes, 0, bytes.length);
+        doDecodeInternal(is, os, iv);
     }
     
     /**
@@ -1414,12 +1700,46 @@ public class  CipherCryptService extends ServiceBase
         if(bytes == null){
             return null;
         }
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        try{
+            doDecodeInternal(new ByteArrayInputStream(bytes), baos, iv);
+        }catch(IOException e){
+        }
+        return baos.toByteArray();
+    }
+    
+    /**
+     * 復号化する。<p>
+     *
+     * @param bytes 復号化対象のバイト配列
+     * @param iv 初期ベクタのバイト配列
+     * @return 復号化後のバイト配列
+     * @exception NoSuchAlgorithmException 指定されたアルゴリズムが存在しない場合
+     * @exception NoSuchProviderException 指定されたプロバイダが存在しない場合
+     * @exception NoSuchPaddingException 指定されたパディング機構が存在しない場合
+     * @exception InvalidKeyException 指定された鍵が無効な符号化、長さの誤り、未初期化などの無効な鍵である場合
+     * @exception InvalidAlgorithmParameterException 指定されたアルゴリズムパラメータが無効または不適切な場合
+     * @exception IllegalBlockSizeException ブロック暗号に提供されたデータの長さが正しくない場合
+     * @exception BadPaddingException 特定のパディング機構が入力データに対して予期されているのにデータが適切にパディングされない場合
+     */
+    protected void doDecodeInternal(InputStream is, OutputStream os, byte[] iv)
+     throws NoSuchAlgorithmException, NoSuchProviderException,
+            NoSuchPaddingException, InvalidKeyException,
+            InvalidAlgorithmParameterException,
+            IllegalBlockSizeException, BadPaddingException,
+            IOException{
         
         final Cipher c = createCipher();
         
         intiCipher(c, Cipher.DECRYPT_MODE, iv);
         
-        return c.doFinal(bytes);
+        final byte[] bytes = new byte[1024];
+        int length = 0;
+        while((length = is.read(bytes, 0, bytes.length)) != -1){
+            os.write(c.update(bytes, 0, length));
+        }
+        os.write(c.doFinal());
+        os.flush();
     }
     
     // Crypt のJavaDoc
@@ -1453,6 +1773,25 @@ public class  CipherCryptService extends ServiceBase
         return bytes;
     }
     
+    // Crypt のJavaDoc
+    public byte[] doHashFile(String filePath) throws IOException{
+        return doHashStream(new FileInputStream(filePath));
+    }
+    
+    // Crypt のJavaDoc
+    public byte[] doHashStream(InputStream is) throws IOException{
+        try{
+            return doHashInternal(is);
+        }catch(NoSuchProviderException e){
+            // 起こらないはず
+            getLogger().write(CC___00003, e);
+        }catch(NoSuchAlgorithmException e){
+            // 起こらないはず
+            getLogger().write(CC___00003, e);
+        }
+        return null;
+    }
+    
     /**
      * ハッシュする。<p>
      *
@@ -1463,12 +1802,30 @@ public class  CipherCryptService extends ServiceBase
      */
     protected byte[] doHashInternal(byte[] bytes)
      throws NoSuchProviderException, NoSuchAlgorithmException{
+        try{
+            return doHashInternal(new ByteArrayInputStream(bytes));
+        }catch(IOException e){
+        }
+        return bytes;
+    }
+    
+    /**
+     * ハッシュする。<p>
+     *
+     * @param is ハッシュ対象のストリーム
+     * @return ハッシュ後のバイト配列
+     * @exception NoSuchAlgorithmException 指定されたアルゴリズムが存在しない場合
+     * @exception NoSuchProviderException 指定されたプロバイダが存在しない場合
+     * @exception IOException ストリームの読み込みに失敗した場合
+     */
+    protected byte[] doHashInternal(InputStream is)
+     throws NoSuchProviderException, NoSuchAlgorithmException, IOException{
         if(hashAlgorithm == null){
             throw new UnsupportedOperationException(
                 "HashAlgorithm is not specified."
             );
         }
-        if(bytes == null){
+        if(is == null){
             return null;
         }
         MessageDigest messageDigest = null;
@@ -1485,8 +1842,12 @@ public class  CipherCryptService extends ServiceBase
         }else{
             messageDigest = MessageDigest.getInstance(hashAlgorithm);
         }
-        
-        return messageDigest.digest(bytes);
+        final byte[] bytes = new byte[1024];
+        int length = 0;
+        while((length = is.read(bytes, 0, bytes.length)) != -1){
+            messageDigest.update(bytes, 0, length);
+        }
+        return messageDigest.digest();
     }
     
     // Crypt のJavaDoc
@@ -1532,11 +1893,36 @@ public class  CipherCryptService extends ServiceBase
         return bytes;
     }
     
+    // Crypt のJavaDoc
+    public byte[] doMacFile(String filePath) throws IOException{
+        return doMacStream(new FileInputStream(filePath));
+    }
+    
+    // Crypt のJavaDoc
+    public byte[] doMacStream(InputStream is) throws IOException{
+        try{
+            return doMacInternal(is);
+        }catch(NoSuchProviderException e){
+            // 起こらないはず
+            getLogger().write(CC___00004, e);
+        }catch(NoSuchAlgorithmException e){
+            // 起こらないはず
+            getLogger().write(CC___00004, e);
+        }catch(InvalidKeyException e){
+            // 起こらないはず
+            getLogger().write(CC___00004, e);
+        }catch(InvalidAlgorithmParameterException e){
+            // 起こらないはず
+            getLogger().write(CC___00004, e);
+        }
+        return null;
+    }
+    
     /**
-     * ハッシュする。<p>
+     * メッセージ認証コードを取得する。<p>
      *
-     * @param bytes ハッシュ対象のバイト配列
-     * @return ハッシュ後のバイト配列
+     * @param bytes メッセージ認証コードの生成対象のバイト配列
+     * @return メッセージ認証コードのバイト配列
      * @exception NoSuchAlgorithmException 指定されたアルゴリズムが存在しない場合
      * @exception NoSuchProviderException 指定されたプロバイダが存在しない場合
      * @exception InvalidKeyException 指定された鍵が無効な符号化、長さの誤り、未初期化などの無効な鍵である場合
@@ -1544,13 +1930,31 @@ public class  CipherCryptService extends ServiceBase
      */
     protected byte[] doMacInternal(byte[] bytes)
      throws NoSuchProviderException, NoSuchAlgorithmException, InvalidKeyException, InvalidAlgorithmParameterException{
+        if(bytes == null){
+            return null;
+        }
+        try{
+            return doMacInternal(new ByteArrayInputStream(bytes));
+        }catch(IOException e){
+        }
+        return bytes;
+    }
+    /**
+     * メッセージ認証コードを取得する。<p>
+     *
+     * @param is メッセージ認証コードの生成対象の入力ストリーム
+     * @return メッセージ認証コードのバイト配列
+     * @exception NoSuchAlgorithmException 指定されたアルゴリズムが存在しない場合
+     * @exception NoSuchProviderException 指定されたプロバイダが存在しない場合
+     * @exception InvalidKeyException 指定された鍵が無効な符号化、長さの誤り、未初期化などの無効な鍵である場合
+     * @exception InvalidAlgorithmParameterException 指定されたアルゴリズムパラメータが無効または不適切な場合
+     */
+    protected byte[] doMacInternal(InputStream is)
+     throws NoSuchProviderException, NoSuchAlgorithmException, InvalidKeyException, InvalidAlgorithmParameterException, IOException{
         if(macAlgorithm == null){
             throw new UnsupportedOperationException(
                 "MacAlgorithm is not specified."
             );
-        }
-        if(bytes == null){
-            return null;
         }
         Mac mac = null;
         if(macProvider != null){
@@ -1571,8 +1975,309 @@ public class  CipherCryptService extends ServiceBase
         }else{
             mac.init(key, macAlgorithmParameterSpec);
         }
+        final byte[] bytes = new byte[1024];
+        int length = 0;
+        while((length = is.read(bytes, 0, bytes.length)) != -1){
+            mac.update(bytes, 0, length);
+        }
         
-        return mac.doFinal(bytes);
+        return mac.doFinal();
+    }
+    
+    protected PrivateKey getPrivateKey(){
+        if(keyPair != null){
+            return keyPair.getPrivate();
+        }else if(key != null && key instanceof PrivateKey){
+            return (PrivateKey)key;
+        }else{
+            return null;
+        }
+    }
+    
+    protected PublicKey getPublicKey(){
+        if(keyPair != null){
+            return keyPair.getPublic();
+        }else if(key != null && key instanceof PublicKey){
+            return (PublicKey)key;
+        }else{
+            return null;
+        }
+    }
+    
+    // Crypt のJavaDoc
+    public String doSign(String str){
+        try{
+            return toString(doSignInternal(str.getBytes(encoding)));
+        }catch(NoSuchProviderException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }catch(NoSuchAlgorithmException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }catch(InvalidKeyException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }catch(SignatureException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }catch(UnsupportedEncodingException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }
+        return str;
+    }
+    
+    // Crypt のJavaDoc
+    public byte[] doSignBytes(byte[] bytes){
+        try{
+            return doSignInternal(bytes);
+        }catch(NoSuchProviderException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }catch(NoSuchAlgorithmException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }catch(InvalidKeyException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }catch(SignatureException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }
+        return bytes;
+    }
+    
+    // Crypt のJavaDoc
+    public byte[] doSignFile(String filePath) throws IOException{
+        return doSignStream(new FileInputStream(filePath));
+    }
+    
+    // Crypt のJavaDoc
+    public byte[] doSignStream(InputStream is) throws IOException{
+        try{
+            return doSignInternal(is);
+        }catch(NoSuchProviderException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }catch(NoSuchAlgorithmException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }catch(InvalidKeyException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }catch(SignatureException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }
+        return null;
+    }
+    
+    /**
+     * デジタル署名を取得する。<p>
+     *
+     * @param bytes デジタル署名の生成対象のバイト配列
+     * @return デジタル署名のバイト配列
+     * @exception NoSuchAlgorithmException 指定されたアルゴリズムが存在しない場合
+     * @exception NoSuchProviderException 指定されたプロバイダが存在しない場合
+     * @exception InvalidKeyException 指定された鍵が無効な符号化、長さの誤り、未初期化などの無効な鍵である場合
+     * @exception SignatureException デジタル署名に失敗した場合
+     */
+    protected byte[] doSignInternal(byte[] bytes)
+     throws NoSuchProviderException, NoSuchAlgorithmException, InvalidKeyException, SignatureException{
+        if(bytes == null){
+            return null;
+        }
+        try{
+            return doSignInternal(new ByteArrayInputStream(bytes));
+        }catch(IOException e){
+        }
+        return bytes;
+    }
+    
+    /**
+     * デジタル署名を取得する。<p>
+     *
+     * @param is デジタル署名の対象の入力ストリーム
+     * @return デジタル署名のバイト配列
+     * @exception NoSuchAlgorithmException 指定されたアルゴリズムが存在しない場合
+     * @exception NoSuchProviderException 指定されたプロバイダが存在しない場合
+     * @exception InvalidKeyException 指定された鍵が無効な符号化、長さの誤り、未初期化などの無効な鍵である場合
+     * @exception SignatureException デジタル署名に失敗した場合
+     * @exception IOException ストリームの読み込みに失敗した場合
+     */
+    protected byte[] doSignInternal(InputStream is)
+     throws NoSuchProviderException, NoSuchAlgorithmException, InvalidKeyException, SignatureException, IOException{
+        if(signatureAlgorithm == null){
+            throw new UnsupportedOperationException(
+                "SignatureAlgorithm is not specified."
+            );
+        }
+        PrivateKey privateKey = getPrivateKey();
+        if(privateKey == null){
+            throw new UnsupportedOperationException(
+                "PrivateKey is not specified."
+            );
+        }
+        Signature signature = null;
+        if(signatureProvider != null){
+            signature = Signature.getInstance(
+                signatureAlgorithm,
+                signatureProvider
+            );
+        }else if(signatureProviderName != null){
+            signature = Signature.getInstance(
+                signatureAlgorithm,
+                signatureProviderName
+            );
+        }else{
+            signature = Signature.getInstance(signatureAlgorithm);
+        }
+        signature.initSign(privateKey, secureRandom);
+        final byte[] bytes = new byte[1024];
+        int length = 0;
+        while((length = is.read(bytes, 0, bytes.length)) != -1){
+            signature.update(bytes, 0, length);
+        }
+        return signature.sign();
+    }
+    
+    // Crypt のJavaDoc
+    public boolean doVerify(String str, String sign){
+        try{
+            return doVerifyInternal(str.getBytes(encoding), toBytes(sign));
+        }catch(NoSuchProviderException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }catch(NoSuchAlgorithmException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }catch(InvalidKeyException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }catch(SignatureException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }catch(UnsupportedEncodingException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }
+        return false;
+    }
+    
+    // Crypt のJavaDoc
+    public boolean doVerifyBytes(byte[] bytes, byte[] sign){
+        try{
+            return doVerifyInternal(bytes, sign);
+        }catch(NoSuchProviderException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }catch(NoSuchAlgorithmException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }catch(InvalidKeyException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }catch(SignatureException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }
+        return false;
+    }
+    
+    // Crypt のJavaDoc
+    public boolean doVerifyFile(String filePath, byte[] sign) throws IOException{
+        return doVerifyStream(new FileInputStream(filePath), sign);
+    }
+    
+    // Crypt のJavaDoc
+    public boolean doVerifyStream(InputStream is, byte[] sign) throws IOException{
+        try{
+            return doVerifyInternal(is, sign);
+        }catch(NoSuchProviderException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }catch(NoSuchAlgorithmException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }catch(InvalidKeyException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }catch(SignatureException e){
+            // 起こらないはず
+            getLogger().write(CC___00002, e);
+        }
+        return false;
+    }
+    
+    /**
+     * デジタル署名を取得する。<p>
+     *
+     * @param bytes デジタル署名の検証対象のバイト配列
+     * @param sign デジタル署名のバイト配列
+     * @return デジタル署名が検証された場合、true
+     * @exception NoSuchAlgorithmException 指定されたアルゴリズムが存在しない場合
+     * @exception NoSuchProviderException 指定されたプロバイダが存在しない場合
+     * @exception InvalidKeyException 指定された鍵が無効な符号化、長さの誤り、未初期化などの無効な鍵である場合
+     * @exception SignatureException デジタル署名に失敗した場合
+     */
+    protected boolean doVerifyInternal(byte[] bytes, byte[] sign)
+     throws NoSuchProviderException, NoSuchAlgorithmException, InvalidKeyException, SignatureException{
+        if(bytes == null){
+            return false;
+        }
+        try{
+            return doVerifyInternal(new ByteArrayInputStream(bytes), sign);
+        }catch(IOException e){
+        }
+        return false;
+    }
+    
+    /**
+     * デジタル署名を検証する。<p>
+     *
+     * @param is デジタル署名の検証対象の入力ストリーム
+     * @param sign デジタル署名のバイト配列
+     * @return デジタル署名が検証された場合、true
+     * @exception NoSuchAlgorithmException 指定されたアルゴリズムが存在しない場合
+     * @exception NoSuchProviderException 指定されたプロバイダが存在しない場合
+     * @exception InvalidKeyException 指定された鍵が無効な符号化、長さの誤り、未初期化などの無効な鍵である場合
+     * @exception SignatureException デジタル署名の検証に失敗した場合
+     * @exception IOException ストリームの読み込みに失敗した場合
+     */
+    protected boolean doVerifyInternal(InputStream is, byte[] sign)
+     throws NoSuchProviderException, NoSuchAlgorithmException, InvalidKeyException, SignatureException, IOException{
+        if(signatureAlgorithm == null){
+            throw new UnsupportedOperationException(
+                "SignatureAlgorithm is not specified."
+            );
+        }
+        PublicKey publicKey = getPublicKey();
+        if(publicKey == null){
+            throw new UnsupportedOperationException(
+                "PublicKey is not specified."
+            );
+        }
+        Signature signature = null;
+        if(signatureProvider != null){
+            signature = Signature.getInstance(
+                signatureAlgorithm,
+                signatureProvider
+            );
+        }else if(signatureProviderName != null){
+            signature = Signature.getInstance(
+                signatureAlgorithm,
+                signatureProviderName
+            );
+        }else{
+            signature = Signature.getInstance(signatureAlgorithm);
+        }
+        signature.initVerify(publicKey);
+        final byte[] bytes = new byte[1024];
+        int length = 0;
+        while((length = is.read(bytes, 0, bytes.length)) != -1){
+            signature.update(bytes, 0, length);
+        }
+        return signature.verify(sign);
     }
     
     // ConverterのJavaDoc
@@ -1645,14 +2350,23 @@ public class  CipherCryptService extends ServiceBase
         return os;
     }
     
-    private static void usage(){
+    protected static void usage(){
         System.out.println("コマンド使用方法：");
         System.out.println(" java jp.ossc.nimbus.service.crypt.CipherCryptService [options] [source code]");
         System.out.println();
         System.out.println("[options]");
         System.out.println();
+        System.out.println(" [-servicepath=paths]");
+        System.out.println("  このサービスを定義したサービス定義ファイルのパスを指定します。");
+        System.out.println("  パスセパレータ区切りで複数指定可能です。");
+        System.out.println();
+        System.out.println(" [-servicename=name]");
+        System.out.println("  このサービスのサービス名を指定します。");
+        System.out.println("  指定しない場合はNimbus#Cryptとみなします。");
+        System.out.println();
         System.out.println(" [-attributename=value]");
         System.out.println("  このサービスの属性とその値を設定します。");
+        System.out.println("  但し、servicepathを指定した場合は、無効です。");
         SimpleProperty[] props = SimpleProperty.getProperties(CipherCryptService.class);
         for(int i = 0; i < props.length; i++){
             if(props[i].isWritable(CipherCryptService.class)){
@@ -1671,6 +2385,33 @@ public class  CipherCryptService extends ServiceBase
         System.out.println("    java -classpath nimbus.jar jp.ossc.nimbus.service.crypt.CipherCryptService -storePath=.keystore -storePassword=changeit -keyAlias=key1 -keyPassword=test crypt.doEncode('test')");
     }
     
+    protected static List parsePaths(String paths){
+        String pathSeparator = System.getProperty("path.separator");
+        final List result = new ArrayList();
+        if(paths == null || paths.length() == 0){
+            return result;
+        }
+        if(paths.indexOf(pathSeparator) == -1){
+            result.add(paths);
+            return result;
+        }
+        String tmpPaths = paths;
+        int index = -1;
+        while((index = tmpPaths.indexOf(pathSeparator)) != -1){
+            result.add(tmpPaths.substring(0, index));
+            if(index != tmpPaths.length() - 1){
+                tmpPaths = tmpPaths.substring(index + 1);
+            }else{
+                tmpPaths = null;
+                break;
+            }
+        }
+        if(tmpPaths != null && tmpPaths.length() != 0){
+            result.add(tmpPaths);
+        }
+        return result;
+    }
+    
     /**
      * このクラスを初期化して、指定されたスクリプトを実行する。<p>
      *
@@ -1681,48 +2422,77 @@ public class  CipherCryptService extends ServiceBase
         
         if(args.length == 0 || (args.length != 0 && args[0].equals("-help"))){
             usage();
-            if(args.length == 0){
-                System.exit(-1);
-            }
+            System.exit(-1);
             return;
         }
-        
-        ServiceManagerFactory.registerManager("Nimbus");
+        String script = null;
+        List servicePaths = null;
+        String serviceNameStr = "Nimbus#Crypt";
         ServiceMetaData serviceData = new ServiceMetaData();
         serviceData.setName("Crypt");
         serviceData.setCode(CipherCryptService.class.getName());
-        int i = 0;
-        if(args != null){
-            for(i = 0; i < args.length; i++){
-                if(args[i].charAt(0) == '-'){
-                    if(args[i].indexOf("=") == -1){
-                        usage();
-                        throw new IllegalArgumentException("Illegal attribute parameter : " + args[i]);
-                    }
-                    AttributeMetaData attrData = new AttributeMetaData(serviceData);
-                    attrData.setName(args[i].substring(1, args[i].indexOf("=")));
-                    attrData.setValue(args[i].substring(args[i].indexOf("=") + 1));
-                    serviceData.addAttribute(attrData);
+        for(int i = 0; i < args.length; i++){
+            if(args[i].charAt(0) == '-'){
+                if(args[i].indexOf("=") == -1){
+                    usage();
+                    throw new IllegalArgumentException("Illegal attribute parameter : " + args[i]);
+                }
+                String name = args[i].substring(1, args[i].indexOf("="));
+                String value = args[i].substring(args[i].indexOf("=") + 1);
+                if("servicepath".equals(name)){
+                    servicePaths = parsePaths(value);
+                }else if("servicename".equals(name)){
+                    serviceNameStr = value;
                 }else{
-                    break;
+                    AttributeMetaData attrData = new AttributeMetaData(serviceData);
+                    attrData.setName(name);
+                    attrData.setValue(value);
+                    serviceData.addAttribute(attrData);
+                }
+            }else{
+                script = args[i];
+                break;
+            }
+        }
+        if(script == null){
+            usage();
+            System.exit(-1);
+            return;
+        }
+        if(servicePaths == null){
+            ServiceManagerFactory.registerManager("Nimbus");
+            ServiceManagerFactory.registerService("Nimbus", serviceData);
+            ServiceManager manager = ServiceManagerFactory.findManager("Nimbus");
+            manager.create();
+            manager.start();
+        }else{
+            for(int i = 0, imax = servicePaths.size(); i < imax; i++){
+                if(!ServiceManagerFactory.loadManager((String)servicePaths.get(i))){
+                    System.out.println("Service load error." + servicePaths.get(i));
+                    Thread.sleep(1000);
+                    System.exit(-1);
                 }
             }
         }
-        ServiceManagerFactory.registerService("Nimbus", serviceData);
-        ServiceManager manager = ServiceManagerFactory.findManager("Nimbus");
-        manager.create();
-        manager.start();
-        if(ServiceManagerFactory.checkLoadManagerCompleted()){
-            CipherCryptService crypt = (CipherCryptService)manager.getServiceObject("Crypt");
-            ScriptEngineInterpreterService interpreter = new ScriptEngineInterpreterService();
-            interpreter.create();
-            interpreter.start();
-            Map variables = new HashMap();
-            variables.put("crypt", crypt);
-            System.out.println(interpreter.evaluate(args[i], variables));
-        }else{
+        
+        if(!ServiceManagerFactory.checkLoadManagerCompleted()){
             Thread.sleep(1000);
+            System.exit(-1);
+            return;
         }
+        
+        ServiceNameEditor editor = new ServiceNameEditor();
+        editor.setAsText(serviceNameStr);
+        ServiceName serviceName = (ServiceName)editor.getValue();
+        
+        CipherCryptService crypt = (CipherCryptService)ServiceManagerFactory.getServiceObject(serviceName);
+        
+        ScriptEngineInterpreterService interpreter = new ScriptEngineInterpreterService();
+        interpreter.create();
+        interpreter.start();
+        Map variables = new HashMap();
+        variables.put("crypt", crypt);
+        System.out.println(interpreter.evaluate(script, variables));
     }
     
 }

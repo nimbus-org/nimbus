@@ -214,43 +214,57 @@ public class FixCryptService extends ServiceBase
         os.write(bytes, 0, bytes.length);
     }
     
-    /**
-     * ハッシュ対象の文字列をそのまま返す。<p>
-     * 
-     * @param str ハッシュ対象文字列
-     * @return ハッシュ対象文字列
-     */
     public String doHash(String str) {
-        return str;
+        throw new UnsupportedOperationException();
     }
-    
-    /**
-     * ハッシュ対象のバイト配列をそのまま返す。<p>
-     * 
-     * @param bytes ハッシュ対象バイト配列
-     * @return ハッシュ対象バイト配列
-     */
     public byte[] doHashBytes(byte[] bytes){
-        return bytes;
+        throw new UnsupportedOperationException();
     }
     
-    /**
-     * 対象の文字列をそのまま返す。<p>
-     * 
-     * @param str 対象文字列
-     * @return 対象文字列
-     */
+    public byte[] doHashFile(String filePath) throws IOException{
+        throw new UnsupportedOperationException();
+    }
+    public byte[] doHashStream(InputStream is) throws IOException{
+        throw new UnsupportedOperationException();
+    }
+    
     public String doMac(String str) {
-        return str;
+        throw new UnsupportedOperationException();
+    }
+    public byte[] doMacBytes(byte[] bytes){
+        throw new UnsupportedOperationException();
     }
     
-    /**
-     * 対象のバイト配列をそのまま返す。<p>
-     * 
-     * @param bytes 対象バイト配列
-     * @return 対象バイト配列
-     */
-    public byte[] doMacBytes(byte[] bytes){
-        return bytes;
+    public byte[] doMacFile(String filePath) throws IOException{
+        throw new UnsupportedOperationException();
+    }
+    public byte[] doMacStream(InputStream is) throws IOException{
+        throw new UnsupportedOperationException();
+    }
+    
+    public String doSign(String str){
+        throw new UnsupportedOperationException();
+    }
+    public byte[] doSignBytes(byte[] bytes){
+        throw new UnsupportedOperationException();
+    }
+    
+    public byte[] doSignFile(String filePath) throws IOException{
+        throw new UnsupportedOperationException();
+    }
+    public byte[] doSignStream(InputStream is) throws IOException{
+        throw new UnsupportedOperationException();
+    }
+    public boolean doVerify(String str, String sign){
+        throw new UnsupportedOperationException();
+    }
+    public boolean doVerifyBytes(byte[] bytes, byte[] sign){
+        throw new UnsupportedOperationException();
+    }
+    public boolean doVerifyFile(String filePath, byte[] sign) throws IOException{
+        throw new UnsupportedOperationException();
+    }
+    public boolean doVerifyStream(InputStream is, byte[] sign) throws IOException{
+        throw new UnsupportedOperationException();
     }
 }

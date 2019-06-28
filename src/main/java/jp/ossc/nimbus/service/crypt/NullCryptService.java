@@ -118,43 +118,54 @@ public class NullCryptService extends ServiceBase
         os.write(bytes, 0, bytes.length);
     }
     
-    /**
-     * ハッシュ対象の文字列をそのまま返す。<p>
-     * 
-     * @param str ハッシュ対象文字列
-     * @return ハッシュ文字列
-     */
     public String doHash(String str) {
-        return str;
+        return "";
     }
-    
-    /**
-     * ハッシュ対象のバイト配列をそのまま返す。<p>
-     * 
-     * @param bytes ハッシュ対象バイト配列
-     * @return ハッシュ対象バイト配列
-     */
     public byte[] doHashBytes(byte[] bytes){
-        return bytes;
+        return "".getBytes();
+    }
+    public byte[] doHashFile(String filePath) throws IOException{
+        return "".getBytes();
+    }
+    public byte[] doHashStream(InputStream is) throws IOException{
+        return "".getBytes();
     }
     
-    /**
-     * 対象の文字列をそのまま返す。<p>
-     * 
-     * @param str 対象文字列
-     * @return 対象文字列
-     */
     public String doMac(String str) {
-        return str;
+        return "";
+    }
+    public byte[] doMacBytes(byte[] bytes){
+        return "".getBytes();
+    }
+    public byte[] doMacFile(String filePath) throws IOException{
+        return "".getBytes();
+    }
+    public byte[] doMacStream(InputStream is) throws IOException{
+        return "".getBytes();
     }
     
-    /**
-     * 対象のバイト配列をそのまま返す。<p>
-     * 
-     * @param bytes 対象バイト配列
-     * @return 対象バイト配列
-     */
-    public byte[] doMacBytes(byte[] bytes){
-        return bytes;
+    public String doSign(String str){
+        return "";
+    }
+    public byte[] doSignBytes(byte[] bytes){
+        return "".getBytes();
+    }
+    public byte[] doSignFile(String filePath) throws IOException{
+        return "".getBytes();
+    }
+    public byte[] doSignStream(InputStream is) throws IOException{
+        return "".getBytes();
+    }
+    public boolean doVerify(String str, String sign){
+        return true;
+    }
+    public boolean doVerifyBytes(byte[] bytes, byte[] sign){
+        return true;
+    }
+    public boolean doVerifyFile(String filePath, byte[] sign) throws IOException{
+        return true;
+    }
+    public boolean doVerifyStream(InputStream is, byte[] sign) throws IOException{
+        return true;
     }
 }

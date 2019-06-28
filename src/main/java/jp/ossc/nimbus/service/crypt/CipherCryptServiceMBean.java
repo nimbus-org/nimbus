@@ -130,6 +130,21 @@ public interface CipherCryptServiceMBean extends ServiceBaseMBean{
     public String getKeyAlgorithm();
     
     /**
+     * 鍵ペアを生成する場合の鍵アルゴリズム名を設定する。<p>
+     * デフォルトは、{@link #DEFAULT_KEY_ALGORITHM}。<br>
+     *
+     * @param algorithm 鍵ペアアルゴリズム名
+     */
+    public void setKeyPairAlgorithm(String algorithm);
+    
+    /**
+     * 鍵ペアを生成する場合の鍵アルゴリズム名を取得する。<p>
+     *
+     * @return 鍵ペアアルゴリズム名
+     */
+    public String getKeyPairAlgorithm();
+    
+    /**
      * 鍵生成プロバイダの名前を設定する。<p>
      *
      * @param name 鍵生成プロバイダの名前
@@ -344,18 +359,32 @@ public interface CipherCryptServiceMBean extends ServiceBaseMBean{
     public String getStorePassword();
     
     /**
-     * 鍵ストアの鍵のエイリアスを設定する。<p>
+     * 鍵ストアの鍵エントリのエイリアスを設定する。<p>
      *
-     * @param alias 鍵のエイリアス
+     * @param alias エントリのエイリアス
      */
     public void setKeyAlias(String alias);
     
     /**
-     * 鍵ストアの鍵のエイリアスを取得する。<p>
+     * 鍵ストアの鍵エントリのエイリアスを取得する。<p>
      *
-     * @return 鍵のエイリアス
+     * @return エントリのエイリアス
      */
     public String getKeyAlias();
+    
+    /**
+     * 鍵ストアの証明書エントリのエイリアスを設定する。<p>
+     *
+     * @param alias 証明書エントリのエイリアス
+     */
+    public void setCertificateAlias(String alias);
+    
+    /**
+     * 鍵ストアの証明書エントリのエイリアスを取得する。<p>
+     *
+     * @return 証明書エントリのエイリアス
+     */
+    public String getCertificateAlias();
     
     /**
      * 鍵ストアの鍵のパスワードを設定する。<p>
@@ -522,12 +551,33 @@ public interface CipherCryptServiceMBean extends ServiceBaseMBean{
     public String getMacProviderName();
     
     /**
-     * javax.crypto.Macの初期化に使用するアルゴリズムパラメータを設定する。<p>
-     * この属性を設定しない場合は、デフォルトのアルゴリズムパラメータが使用されます。<br>
-     *
-     * @param params アルゴリズムパラメータ
+     * デジタル署名のアルゴリズム名を設定する。<p>
+     * 
+     * @param algorithm デジタル署名のアルゴリズム名
      */
-    public void setMacAlgorithmParameterSpec(AlgorithmParameterSpec params);
+    public void setSignatureAlgorithm(String algorithm);
+    
+    /**
+     * デジタル署名のアルゴリズム名を取得する。<p>
+     * 
+     * @return デジタル署名のアルゴリズム名
+     */
+    public String getSignatureAlgorithm();
+    
+    /**
+     * java.security.Signatureを取得するためのプロバイダ名を設定する。<p>
+     * この属性を設定しない場合は、デフォルトのプロバイダが使用されます。<br>
+     *
+     * @param name プロバイダ名
+     */
+    public void setSignatureProviderName(String name);
+    
+    /**
+     * java.security.Signatureを取得するためのプロバイダ名を取得する。<p>
+     *
+     * @return プロバイダ名
+     */
+    public String getSignatureProviderName();
     
     /**
      * 変換種別を設定する。<p>
@@ -545,4 +595,18 @@ public interface CipherCryptServiceMBean extends ServiceBaseMBean{
      * @return 変換種別
      */
     public int getConvertType();
+    
+    /**
+     * 鍵をキーストアに書き込む。<p>
+     *
+     * @exception Exception キーの書き込みに失敗した場合
+     */
+    public void saveKey() throws Exception;
+    
+    /**
+     * 鍵をキーストアから読み込む。<p>
+     *
+     * @exception Exception キーの読み込みに失敗した場合
+     */
+    public void loadKey() throws Exception;
 }
