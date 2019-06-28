@@ -33,9 +33,6 @@ package jp.ossc.nimbus.service.crypt;
 
 import jp.ossc.nimbus.core.*;
 
-import java.security.*;
-import java.security.spec.*;
-
 /**
  * {@link CipherCryptService}のMBeanインタフェース<p>
  * 
@@ -60,9 +57,9 @@ public interface CipherCryptServiceMBean extends ServiceBaseMBean{
     public static final String DEFAULT_RNG_ALGORITHM = "SHA1PRNG";
     
     /**
-     * デフォルトの鍵アルゴリズム名。<p>
+     * デフォルトの秘密鍵アルゴリズム名。<p>
      */
-    public static final String DEFAULT_KEY_ALGORITHM = "DES";
+    public static final String DEFAULT_SECRET_KEY_ALGORITHM = "DES";
     
     /**
      * デフォルトの鍵長。<p>
@@ -116,29 +113,28 @@ public interface CipherCryptServiceMBean extends ServiceBaseMBean{
     
     /**
      * 秘密鍵を生成する場合の鍵アルゴリズム名を設定する。<p>
-     * デフォルトは、{@link #DEFAULT_KEY_ALGORITHM}。<br>
+     * デフォルトは、{@link #DEFAULT_SECRET_KEY_ALGORITHM}。<br>
      *
      * @param algorithm 鍵アルゴリズム名
      */
-    public void setKeyAlgorithm(String algorithm);
+    public void setSecretKeyAlgorithm(String algorithm);
     
     /**
      * 秘密鍵を生成する場合の鍵アルゴリズム名を取得する。<p>
      *
      * @return 鍵アルゴリズム名
      */
-    public String getKeyAlgorithm();
+    public String getSecretKeyAlgorithm();
     
     /**
-     * 鍵ペアを生成する場合の鍵アルゴリズム名を設定する。<p>
-     * デフォルトは、{@link #DEFAULT_KEY_ALGORITHM}。<br>
+     * 非対称鍵のペアを生成する場合の鍵アルゴリズム名を設定する。<p>
      *
      * @param algorithm 鍵ペアアルゴリズム名
      */
     public void setKeyPairAlgorithm(String algorithm);
     
     /**
-     * 鍵ペアを生成する場合の鍵アルゴリズム名を取得する。<p>
+     * 非対称鍵のペアを生成する場合の鍵アルゴリズム名を取得する。<p>
      *
      * @return 鍵ペアアルゴリズム名
      */
@@ -159,7 +155,7 @@ public interface CipherCryptServiceMBean extends ServiceBaseMBean{
     public String getKeyGeneratorProviderName();
     
     /**
-     * 秘密鍵を生成する場合の鍵長を設定する。<p>
+     * 鍵を生成する場合の鍵長を設定する。<p>
      * デフォルトは、{@link #DEFAULT_KEY_LENGTH}。<br>
      *
      * @param size 鍵長
@@ -167,39 +163,39 @@ public interface CipherCryptServiceMBean extends ServiceBaseMBean{
     public void setKeySize(int size);
     
     /**
-     * 秘密鍵を生成する場合の鍵長を取得する。<p>
+     * 鍵を生成する場合の鍵長を取得する。<p>
      *
      * @return 鍵長
      */
     public int getKeySize();
     
     /**
-     * 鍵のバイト配列を設定する。<p>
+     * 秘密鍵のバイト配列を設定する。<p>
      *
-     * @param bytes 鍵のバイト配列
+     * @param bytes 秘密鍵のバイト配列
      */
-    public void setKeyBytes(byte[] bytes);
+    public void setSecretKeyBytes(byte[] bytes);
     
     /**
-     * 鍵のバイト配列を取得する。<p>
+     * 秘密鍵のバイト配列を取得する。<p>
      *
-     * @return 鍵のバイト配列
+     * @return 秘密鍵のバイト配列
      */
-    public byte[] getKeyBytes();
+    public byte[] getSecretKeyBytes();
     
     /**
-     * 鍵の文字列を設定する。<p>
+     * 秘密鍵の文字列を設定する。<p>
      *
-     * @param str 鍵の文字列
+     * @param str 秘密鍵の文字列
      */
-    public void setKeyString(String str);
+    public void setSecretKeyString(String str);
     
     /**
-     * 鍵の文字列を取得する。<p>
+     * 秘密鍵の文字列を取得する。<p>
      *
-     * @return 鍵の文字列
+     * @return 秘密鍵の文字列
      */
-    public String getKeyString();
+    public String getSecretKeyString();
     
     /**
      * 鍵ファクトリプロバイダの名前を設定する。<p>
@@ -595,6 +591,21 @@ public interface CipherCryptServiceMBean extends ServiceBaseMBean{
      * @return 変換種別
      */
     public int getConvertType();
+    
+    /**
+     * サービスの開始時に、鍵の有効性を検証するかどうかを設定する。<p>
+     * デフォルトは、trueでチェックする。<br>
+     *
+     * @param isCheck 検証する場合は、true
+     */
+    public void setCheckOnStart(boolean isCheck);
+    
+    /**
+     * サービスの開始時に、鍵の有効性を検証するかどうかを判定する。<p>
+     *
+     * @return trueの場合は、検証する
+     */
+    public boolean isCheckOnStart();
     
     /**
      * 鍵をキーストアに書き込む。<p>
