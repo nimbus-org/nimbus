@@ -34,14 +34,34 @@ package jp.ossc.nimbus.service.crypt;
 import java.io.*;
 import java.util.*;
 import java.security.*;
+import java.security.spec.*;
 
 import jp.ossc.nimbus.beans.*;
 import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.util.converter.*;
 import jp.ossc.nimbus.service.interpreter.ScriptEngineInterpreterService;
 
+import org.bouncycastle.asn1.DEROctetString;
+import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.asn1.x500.X500Name;
+import org.bouncycastle.asn1.x500.X500NameBuilder;
+import org.bouncycastle.asn1.x500.style.BCStyle;
+import org.bouncycastle.asn1.x509.X509Extension;
+import org.bouncycastle.asn1.x509.X509Extensions;
+import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
+import org.bouncycastle.asn1.x509.GeneralName;
+import org.bouncycastle.asn1.x509.GeneralNames;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.openssl.PEMWriter;
+import org.bouncycastle.openssl.PEMParser;
+import org.bouncycastle.openssl.PEMKeyPair;
+import org.bouncycastle.openssl.jcajce.JcaPEMKeyConverter;
+import org.bouncycastle.openssl.jcajce.JcaPEMWriter;
+import org.bouncycastle.operator.ContentSigner;
+import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
+import org.bouncycastle.pkcs.PKCS10CertificationRequest;
+import org.bouncycastle.pkcs.jcajce.JcaPKCS10CertificationRequestBuilder;
 
 /**
  * JCE(Java Cryptographic Extension)実装である<a href="http://www.bouncycastle.org/java.html">Bouncy Castle</a>を使用して、暗号化機能を提供するサービスである。<p>
@@ -51,16 +71,186 @@ import org.bouncycastle.openssl.PEMWriter;
 public class  BouncyCastleCipherCryptService extends CipherCryptService
  implements BouncyCastleCipherCryptServiceMBean{
     
+    protected String publicKeyStringPEM;
+    protected String publicKeyFilePEM;
+    protected String privateKeyStringPEM;
+    protected String privateKeyFilePEM;
+    
+    protected JcaPEMKeyConverter pemKeyConverter;
+    
+    public void setPublicKeyStringPEM(String str){
+        publicKeyStringPEM = str;
+    }
+    public String getPublicKeyStringPEM(){
+        return publicKeyStringPEM;
+    }
+    public void setPublicKeyFilePEM(String path){
+        publicKeyFilePEM = path;
+    }
+    public String getPublicKeyFilePEM(){
+        return publicKeyFilePEM;
+    }
+    
+    public void setPrivateKeyStringPEM(String str){
+        privateKeyStringPEM = str;
+    }
+    public String getPrivateKeyStringPEM(){
+        return privateKeyStringPEM;
+    }
+    public void setPrivateKeyFilePEM(String path){
+        privateKeyFilePEM = path;
+    }
+    public String getPrivateKeyFilePEM(){
+        return privateKeyFilePEM;
+    }
+    
     public void createService() throws Exception{
-        if(Security.getProvider(BouncyCastleProvider.PROVIDER_NAME) == null){
-            Security.addProvider(new BouncyCastleProvider());
+        Provider provider = Security.getProvider(BouncyCastleProvider.PROVIDER_NAME);
+        if(provider == null){
+            provider = new BouncyCastleProvider();
+            Security.addProvider(provider);
         }
+        pemKeyConverter = new JcaPEMKeyConverter();
+        pemKeyConverter.setProvider(provider);
+        
         keyGeneratorProviderName = BouncyCastleProvider.PROVIDER_NAME;
         cipherProviderName = BouncyCastleProvider.PROVIDER_NAME;
         messageDigestProviderName = BouncyCastleProvider.PROVIDER_NAME;
         macProviderName = BouncyCastleProvider.PROVIDER_NAME;
         signatureProviderName = BouncyCastleProvider.PROVIDER_NAME;
+        
         super.createService();
+    }
+    
+    public KeyPair createKeyPair() throws Exception{
+        if(publicKeyStringPEM != null || publicKeyFilePEM != null
+            || privateKeyStringPEM != null || privateKeyFilePEM != null){
+            if(publicKeyStringPEM != null){
+                publicKey = createPublicKeyFromPEM(publicKeyStringPEM);
+            }else if(publicKeyFilePEM != null){
+                File file = findFile(publicKeyFilePEM, false);
+                publicKey = createPublicKeyFromPEM(new BufferedReader(new FileReader(file)));
+            }
+            if(privateKeyStringPEM != null){
+                privateKey = createPrivateKeyFromPEM(privateKeyStringPEM);
+            }else if(privateKeyFilePEM != null){
+                File file = findFile(privateKeyFilePEM, false);
+                privateKey = createPrivateKeyFromPEM(new BufferedReader(new FileReader(file)));
+            }
+            return new KeyPair(publicKey, privateKey);
+        }else{
+            return super.createKeyPair();
+        }
+    }
+    
+    /**
+     * 指定されたPEM(Privacy-enhanced mail)形式文字列から格納されていた公開鍵を生成する。<p>
+     *
+     * @param pem PEM(Privacy-enhanced mail)形式文字列
+     * @return 格納されていた公開鍵
+     * @exception Exception 格納されていた公開鍵の生成に失敗した場合
+     */
+    public PublicKey createPublicKeyFromPEM(String pem) throws Exception{
+        return createPublicKeyFromPEM(new StringReader(pem));
+    }
+    
+    /**
+     * 指定されたPEM(Privacy-enhanced mail)形式文字列のReaderから格納されていた公開鍵を生成する。<p>
+     *
+     * @param reader PEM(Privacy-enhanced mail)形式文字列を読み取るReader
+     * @return 格納されていた公開鍵
+     * @exception Exception 格納されていた公開鍵の生成に失敗した場合
+     */
+    public PublicKey createPublicKeyFromPEM(Reader reader) throws Exception{
+        Object info = createObjectFromPEM(reader);
+        if(info instanceof PEMKeyPair){
+            return pemKeyConverter.getKeyPair((PEMKeyPair)info).getPublic();
+        }else{
+            return pemKeyConverter.getPublicKey((SubjectPublicKeyInfo)info);
+        }
+    }
+    
+    /**
+     * 指定されたPEM(Privacy-enhanced mail)形式文字列から格納されていた非公開鍵を生成する。<p>
+     *
+     * @param pem PEM(Privacy-enhanced mail)形式文字列
+     * @return 格納されていた非公開鍵
+     * @exception Exception 格納されていた非公開鍵の生成に失敗した場合
+     */
+    public PrivateKey createPrivateKeyFromPEM(String pem) throws Exception{
+        return createPrivateKeyFromPEM(new StringReader(pem));
+    }
+    
+    /**
+     * 指定されたPEM(Privacy-enhanced mail)形式文字列のReaderから格納されていた非公開鍵を生成する。<p>
+     *
+     * @param reader PEM(Privacy-enhanced mail)形式文字列を読み取るReader
+     * @return 格納されていた非公開鍵
+     * @exception Exception 格納されていた非公開鍵の生成に失敗した場合
+     */
+    public PrivateKey createPrivateKeyFromPEM(Reader reader) throws Exception{
+        Object info = createObjectFromPEM(reader);
+        if(info instanceof PEMKeyPair){
+            return pemKeyConverter.getKeyPair((PEMKeyPair)info).getPrivate();
+        }else{
+            return pemKeyConverter.getPrivateKey((PrivateKeyInfo)info);
+        }
+    }
+    
+    /**
+     * 指定されたPEM(Privacy-enhanced mail)形式文字列から格納されていたオブジェクトを生成する。<p>
+     *
+     * @param pem PEM(Privacy-enhanced mail)形式文字列
+     * @return 格納されていたオブジェクト
+     * @exception Exception キーの生成に失敗した場合
+     */
+    protected Object createObjectFromPEM(String pem) throws Exception{
+        return createObjectFromPEM(new StringReader(pem));
+    }
+    
+    /**
+     * 指定されたPEM(Privacy-enhanced mail)形式文字列のReaderから格納されていたオブジェクトを生成する。<p>
+     *
+     * @param reader PEM(Privacy-enhanced mail)形式文字列を読み取るReader
+     * @return 格納されていたオブジェクト
+     * @exception Exception 格納されていたオブジェクトの生成に失敗した場合
+     */
+    protected Object createObjectFromPEM(Reader reader) throws Exception{
+        PEMParser parser = new PEMParser(reader);
+        try{
+            return parser.readObject();
+        }finally{
+            parser.close();
+        }
+    }
+    
+    /**
+     * 指定された鍵を指定されたファイルにPEM(Privacy-enhanced mail)形式で書き出す。<p>
+     *
+     * @param key 鍵
+     * @param filePath ファイルパス
+     * @exception IOException 書き出しに失敗した場合
+     */
+    public void writeKeyToPEM(Key key, String filePath) throws IOException{
+        OutputStream os = new BufferedOutputStream(new FileOutputStream(findFile(filePath, true)));
+        try{
+            writeKeyToPEM(key, os);
+            os.flush();
+        }finally{
+            os.close();
+        }
+    }
+    
+    /**
+     * 指定された鍵を指定されたストリームにPEM(Privacy-enhanced mail)形式で書き出す。<p>
+     *
+     * @param key 鍵
+     * @param os 出力ストリーム
+     * @exception IOException 書き出しに失敗した場合
+     */
+    public void writeKeyToPEM(Key key, OutputStream os) throws IOException{
+        byte[] bytes = keyToPEM(key).getBytes();
+        os.write(bytes);
     }
     
     // BouncyCastleCipherCryptService のJavaDoc
@@ -74,12 +264,12 @@ public class  BouncyCastleCipherCryptService extends CipherCryptService
     }
     
     /**
-     * 指定された鍵をPEM形式に変換する。<p>
+     * 指定された鍵をPEM(Privacy-enhanced mail)形式に変換する。<p>
      *
      * @param key 鍵
      * @return PEM形式の鍵
      */
-    public static String keyToPEM(Key key){
+    public String keyToPEM(Key key){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PEMWriter pemWriter = null;
         try{
@@ -92,6 +282,247 @@ public class  BouncyCastleCipherCryptService extends CipherCryptService
             }catch(IOException e){}
         }
         return new String(baos.toByteArray());
+    }
+    
+    /**
+     * 証明書署名要求を生成する。<p>
+     *
+     * @param commonName 名前
+     * @param countryCode 国コード
+     * @param state 州や都道府県名などの代表的な所在地
+     * @param locality 市町村名などの細かい所在地
+     * @param organization 組織名
+     * @param organizationalUnit 組織内の部署名
+     * @param subjectAltNames サブジェクト代替名称の配列
+     * @return 証明書署名要求のPKCS#10形式の文字列
+     * @exception Exception 証明書署名要求の生成に失敗した場合
+     */
+    public String createCertificateSigningRequest(
+        String commonName,
+        String countryCode,
+        String state,
+        String locality,
+        String organization,
+        String organizationalUnit,
+        GeneralName[] subjectAltNames
+    ) throws Exception{
+        return createCertificateSigningRequest(
+            getKeyPair(),
+            signatureAlgorithm,
+            signatureAlgorithmParameterSpec,
+            commonName,
+            countryCode,
+            state,
+            locality,
+            organization,
+            organizationalUnit,
+            subjectAltNames
+        );
+    }
+    
+    /**
+     * 証明書署名要求を生成する。<p>
+     *
+     * @param keyPair 鍵ペア
+     * @param signatureAlgorithm 署名アルゴリズム
+     * @param signatureAlgorithmParameterSpec 署名アルゴリズムパラメータ
+     * @param commonName 名前
+     * @param countryCode 国コード
+     * @param state 州や都道府県名などの代表的な所在地
+     * @param locality 市町村名などの細かい所在地
+     * @param organization 組織名
+     * @param organizationalUnit 組織内の部署名
+     * @param subjectAltNames サブジェクト代替名称の配列
+     * @return 証明書署名要求のPKCS#10形式の文字列
+     * @exception Exception 証明書署名要求の生成に失敗した場合
+     */
+    public String createCertificateSigningRequest(
+        KeyPair keyPair,
+        String signatureAlgorithm,
+        AlgorithmParameterSpec signatureAlgorithmParameterSpec,
+        String commonName,
+        String countryCode,
+        String state,
+        String locality,
+        String organization,
+        String organizationalUnit,
+        GeneralName[] subjectAltNames
+    ) throws Exception{
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        writeCertificateSigningRequest(
+            keyPair,
+            signatureAlgorithm,
+            signatureAlgorithmParameterSpec,
+            commonName,
+            countryCode,
+            state,
+            locality,
+            organization,
+            organizationalUnit,
+            subjectAltNames,
+            baos
+        );
+        return new String(baos.toByteArray());
+    }
+    
+    /**
+     * 証明書署名要求をファイルに書き出す。<p>
+     *
+     * @param commonName 名前
+     * @param countryCode 国コード
+     * @param state 州や都道府県名などの代表的な所在地
+     * @param locality 市町村名などの細かい所在地
+     * @param organization 組織名
+     * @param organizationalUnit 組織内の部署名
+     * @param subjectAltNames サブジェクト代替名称の配列
+     * @param filePath PKCS#10形式の証明書署名要求を書き込むファイルのパス
+     * @exception Exception 証明書署名要求の生成に失敗した場合
+     */
+    public void writeCertificateSigningRequest(
+        String commonName,
+        String countryCode,
+        String state,
+        String locality,
+        String organization,
+        String organizationalUnit,
+        GeneralName[] subjectAltNames,
+        String filePath
+    ) throws Exception{
+        writeCertificateSigningRequest(
+            getKeyPair(),
+            signatureAlgorithm,
+            signatureAlgorithmParameterSpec,
+            commonName,
+            countryCode,
+            state,
+            locality,
+            organization,
+            organizationalUnit,
+            subjectAltNames,
+            filePath
+        );
+    }
+    
+    /**
+     * 証明書署名要求をファイルに書き出す。<p>
+     *
+     * @param keyPair 鍵ペア
+     * @param signatureAlgorithm 署名アルゴリズム
+     * @param signatureAlgorithmParameterSpec 署名アルゴリズムパラメータ
+     * @param commonName 名前
+     * @param countryCode 国コード
+     * @param state 州や都道府県名などの代表的な所在地
+     * @param locality 市町村名などの細かい所在地
+     * @param organization 組織名
+     * @param organizationalUnit 組織内の部署名
+     * @param subjectAltNames サブジェクト代替名称の配列
+     * @param filePath PKCS#10形式の証明書署名要求を書き込むファイルのパス
+     * @exception Exception 証明書署名要求の生成に失敗した場合
+     */
+    public void writeCertificateSigningRequest(
+        KeyPair keyPair,
+        String signatureAlgorithm,
+        AlgorithmParameterSpec signatureAlgorithmParameterSpec,
+        String commonName,
+        String countryCode,
+        String state,
+        String locality,
+        String organization,
+        String organizationalUnit,
+        GeneralName[] subjectAltNames,
+        String filePath
+    ) throws Exception{
+        OutputStream os = new BufferedOutputStream(new FileOutputStream(findFile(filePath, true)));
+        try{
+            writeCertificateSigningRequest(
+                keyPair,
+                signatureAlgorithm,
+                signatureAlgorithmParameterSpec,
+                commonName,
+                countryCode,
+                state,
+                locality,
+                organization,
+                organizationalUnit,
+                subjectAltNames,
+                os
+            );
+            os.flush();
+        }finally{
+            os.close();
+        }
+    }
+    
+    /**
+     * 証明書署名要求をストリームに書き出す。<p>
+     *
+     * @param keyPair 鍵ペア
+     * @param signatureAlgorithm 署名アルゴリズム
+     * @param signatureAlgorithmParameterSpec 署名アルゴリズムパラメータ
+     * @param commonName 名前
+     * @param countryCode 国コード
+     * @param state 州や都道府県名などの代表的な所在地
+     * @param locality 市町村名などの細かい所在地
+     * @param organization 組織名
+     * @param organizationalUnit 組織内の部署名
+     * @param subjectAltNames サブジェクト代替名称の配列
+     * @param os PKCS#10形式の証明書署名要求を書き込む出力ストリーム
+     * @exception Exception 証明書署名要求の生成に失敗した場合
+     */
+    public void writeCertificateSigningRequest(
+        KeyPair keyPair,
+        String signatureAlgorithm,
+        AlgorithmParameterSpec signatureAlgorithmParameterSpec,
+        String commonName,
+        String countryCode,
+        String state,
+        String locality,
+        String organization,
+        String organizationalUnit,
+        GeneralName[] subjectAltNames,
+        OutputStream os
+    ) throws Exception{
+        X500NameBuilder sbjBuilder = new X500NameBuilder(BCStyle.INSTANCE);
+        if(commonName != null){
+            sbjBuilder.addRDN(BCStyle.CN, commonName);
+        }
+        if(countryCode != null){
+            sbjBuilder.addRDN(BCStyle.C, countryCode);
+        }
+        if(state != null){
+            sbjBuilder.addRDN(BCStyle.ST, state);
+        }
+        if(locality != null){
+            sbjBuilder.addRDN(BCStyle.L, locality);
+        }
+        if(organization != null){
+            sbjBuilder.addRDN(BCStyle.O, organization);
+        }
+        if(organizationalUnit != null){
+            sbjBuilder.addRDN(BCStyle.OU, organizationalUnit);
+        }
+        X500Name subject = sbjBuilder.build();
+        JcaPKCS10CertificationRequestBuilder csrBuilder = new JcaPKCS10CertificationRequestBuilder(subject, keyPair.getPublic());
+        Vector oids = new Vector();
+        Vector attributeValues = new Vector();
+        if(subjectAltNames != null && subjectAltNames.length > 0){
+            oids.add(X509Extensions.SubjectAlternativeName);
+            attributeValues.add(new X509Extension(subject == null, new DEROctetString(new GeneralNames(subjectAltNames))));
+        }
+        if(oids.size() > 0){
+            csrBuilder.addAttribute(PKCSObjectIdentifiers.pkcs_9_at_extensionRequest, new X509Extensions(oids, attributeValues));
+        }
+        JcaContentSignerBuilder jcsBuilder = signatureAlgorithmParameterSpec == null ? new JcaContentSignerBuilder(signatureAlgorithm) : new JcaContentSignerBuilder(signatureAlgorithm, signatureAlgorithmParameterSpec);
+        ContentSigner signer = jcsBuilder.build(keyPair.getPrivate());
+        PKCS10CertificationRequest csrRequest = csrBuilder.build(signer);
+        OutputStreamWriter osw = new OutputStreamWriter(os);
+        JcaPEMWriter pemWriter = new JcaPEMWriter(osw);
+        try{
+            pemWriter.writeObject(csrRequest);
+            pemWriter.flush();
+        }finally{
+            osw.flush();
+        }
     }
     
     protected static void usage(){

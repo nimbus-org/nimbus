@@ -112,35 +112,6 @@ public interface CipherCryptServiceMBean extends ServiceBaseMBean{
     public String getRNGAlgorithm();
     
     /**
-     * 秘密鍵を生成する場合の鍵アルゴリズム名を設定する。<p>
-     * デフォルトは、{@link #DEFAULT_SECRET_KEY_ALGORITHM}。<br>
-     *
-     * @param algorithm 鍵アルゴリズム名
-     */
-    public void setSecretKeyAlgorithm(String algorithm);
-    
-    /**
-     * 秘密鍵を生成する場合の鍵アルゴリズム名を取得する。<p>
-     *
-     * @return 鍵アルゴリズム名
-     */
-    public String getSecretKeyAlgorithm();
-    
-    /**
-     * 非対称鍵のペアを生成する場合の鍵アルゴリズム名を設定する。<p>
-     *
-     * @param algorithm 鍵ペアアルゴリズム名
-     */
-    public void setKeyPairAlgorithm(String algorithm);
-    
-    /**
-     * 非対称鍵のペアを生成する場合の鍵アルゴリズム名を取得する。<p>
-     *
-     * @return 鍵ペアアルゴリズム名
-     */
-    public String getKeyPairAlgorithm();
-    
-    /**
      * 鍵生成プロバイダの名前を設定する。<p>
      *
      * @param name 鍵生成プロバイダの名前
@@ -153,6 +124,20 @@ public interface CipherCryptServiceMBean extends ServiceBaseMBean{
      * @return 鍵生成プロバイダの名前
      */
     public String getKeyGeneratorProviderName();
+    
+    /**
+     * 鍵ファクトリプロバイダの名前を設定する。<p>
+     *
+     * @param name 鍵ファクトリプロバイダの名前
+     */
+    public void setKeyFactoryProviderName(String name);
+    
+    /**
+     * 鍵ファクトリプロバイダの名前を取得する。<p>
+     *
+     * @return 鍵ファクトリプロバイダの名前
+     */
+    public String getKeyFactoryProviderName();
     
     /**
      * 鍵を生成する場合の鍵長を設定する。<p>
@@ -168,6 +153,21 @@ public interface CipherCryptServiceMBean extends ServiceBaseMBean{
      * @return 鍵長
      */
     public int getKeySize();
+    
+    /**
+     * 秘密鍵を生成する場合の鍵アルゴリズム名を設定する。<p>
+     * デフォルトは、{@link #DEFAULT_SECRET_KEY_ALGORITHM}。<br>
+     *
+     * @param algorithm 鍵アルゴリズム名
+     */
+    public void setSecretKeyAlgorithm(String algorithm);
+    
+    /**
+     * 秘密鍵を生成する場合の鍵アルゴリズム名を取得する。<p>
+     *
+     * @return 鍵アルゴリズム名
+     */
+    public String getSecretKeyAlgorithm();
     
     /**
      * 秘密鍵のバイト配列を設定する。<p>
@@ -198,18 +198,18 @@ public interface CipherCryptServiceMBean extends ServiceBaseMBean{
     public String getSecretKeyString();
     
     /**
-     * 鍵ファクトリプロバイダの名前を設定する。<p>
+     * 秘密鍵のファイルのパスを設定する。<p>
      *
-     * @param name 鍵ファクトリプロバイダの名前
+     * @param path 秘密鍵のファイルのパス
      */
-    public void setKeyFactoryProviderName(String name);
+    public void setSecretKeyFile(String path);
     
     /**
-     * 鍵ファクトリプロバイダの名前を取得する。<p>
+     * 秘密鍵のファイルのパスを取得する。<p>
      *
-     * @return 鍵ファクトリプロバイダの名前
+     * @return 秘密鍵のファイルのパス
      */
-    public String getKeyFactoryProviderName();
+    public String getSecretKeyFile();
     
     /**
      * PBE鍵のパスワードを設定する。<p>
@@ -266,6 +266,104 @@ public interface CipherCryptServiceMBean extends ServiceBaseMBean{
      * @return 反復回数
      */
     public int getPBEIterationCount();
+    
+    /**
+     * 非対称鍵のペアを生成する場合の鍵アルゴリズム名を設定する。<p>
+     *
+     * @param algorithm 鍵ペアアルゴリズム名
+     */
+    public void setKeyPairAlgorithm(String algorithm);
+    
+    /**
+     * 非対称鍵のペアを生成する場合の鍵アルゴリズム名を取得する。<p>
+     *
+     * @return 鍵ペアアルゴリズム名
+     */
+    public String getKeyPairAlgorithm();
+    
+    /**
+     * 公開鍵のバイト配列（X.509標準のASN.1エンコーディング）を設定する。<p>
+     *
+     * @param bytes 公開鍵のバイト配列（X.509標準のASN.1エンコーディング）
+     */
+    public void setPublicKeyBytes(byte[] bytes);
+    
+    /**
+     * 公開鍵のバイト配列（X.509標準のASN.1エンコーディング）を取得する。<p>
+     *
+     * @return 公開鍵のバイト配列（X.509標準のASN.1エンコーディング）
+     */
+    public byte[] getPublicKeyBytes();
+    
+    /**
+     * 公開鍵の文字列を設定する。<p>
+     *
+     * @param str 公開鍵の文字列
+     */
+    public void setPublicKeyString(String str);
+    
+    /**
+     * 公開鍵の文字列を取得する。<p>
+     *
+     * @return 公開鍵の文字列
+     */
+    public String getPublicKeyString();
+    
+    /**
+     * 公開鍵のファイル（X.509標準のASN.1エンコーディング）のパスを設定する。<p>
+     *
+     * @param path 公開鍵のファイルのパス
+     */
+    public void setPublicKeyFile(String path);
+    
+    /**
+     * 公開鍵のファイルのパスを取得する。<p>
+     *
+     * @return 公開鍵のファイルのパス
+     */
+    public String getPublicKeyFile();
+    
+    /**
+     * 非公開鍵のバイト配列（PKCS#8標準のASN.1エンコーディング）を設定する。<p>
+     *
+     * @param bytes 非公開鍵のバイト配列（PKCS#8標準のASN.1エンコーディング）
+     */
+    public void setPrivateKeyBytes(byte[] bytes);
+    
+    /**
+     * 非公開鍵のバイト配列（PKCS#8標準のASN.1エンコーディング）を取得する。<p>
+     *
+     * @return 非公開鍵のバイト配列（PKCS#8標準のASN.1エンコーディング）
+     */
+    public byte[] getPrivateKeyBytes();
+    
+    /**
+     * 非公開鍵の文字列を設定する。<p>
+     *
+     * @param str 非公開鍵の文字列
+     */
+    public void setPrivateKeyString(String str);
+    
+    /**
+     * 非公開鍵の文字列を取得する。<p>
+     *
+     * @return 非公開鍵の文字列
+     */
+    public String getPrivateKeyString();
+    
+    /**
+     * 非公開鍵のファイル（PKCS#8標準のASN.1エンコーディング）のパスを設定する。<p>
+     *
+     * @param path 非公開鍵のファイルのパス
+     */
+    public void setPrivateKeyFile(String path);
+    
+    /**
+     * 非公開鍵のファイルのパスを取得する。<p>
+     *
+     * @return 非公開鍵のファイルのパス
+     */
+    public String getPrivateKeyFile();
     
     /**
      * サービスの開始時に、鍵ストアから鍵を読み込むかどうかを設定する。<p>

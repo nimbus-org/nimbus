@@ -40,14 +40,70 @@ package jp.ossc.nimbus.service.crypt;
 public interface BouncyCastleCipherCryptServiceMBean extends CipherCryptServiceMBean{
     
     /**
-     * 非公開鍵をPEM形式に変換する。<p>
+     * 公開鍵のPEM(Privacy-enhanced mail)形式文字列を設定する。<p>
+     *
+     * @param str 公開鍵の文字列
+     */
+    public void setPublicKeyStringPEM(String str);
+    
+    /**
+     * 公開鍵のPEM(Privacy-enhanced mail)形式文字列を取得する。<p>
+     *
+     * @return 公開鍵の文字列
+     */
+    public String getPublicKeyStringPEM();
+    
+    /**
+     * 公開鍵のPEM(Privacy-enhanced mail)形式ファイルのパスを設定する。<p>
+     *
+     * @param path 公開鍵のファイルのパス
+     */
+    public void setPublicKeyFilePEM(String path);
+    
+    /**
+     * 公開鍵のPEM(Privacy-enhanced mail)形式ファイルのパスを取得する。<p>
+     *
+     * @return 公開鍵のファイルのパス
+     */
+    public String getPublicKeyFilePEM();
+    
+    /**
+     * 非公開鍵のPEM(Privacy-enhanced mail)形式文字列を設定する。<p>
+     *
+     * @param str 非公開鍵の文字列
+     */
+    public void setPrivateKeyStringPEM(String str);
+    
+    /**
+     * 非公開鍵のPEM(Privacy-enhanced mail)形式文字列を取得する。<p>
+     *
+     * @return 非公開鍵の文字列
+     */
+    public String getPrivateKeyStringPEM();
+    
+    /**
+     * 非公開鍵のPEM(Privacy-enhanced mail)形式ファイルのパスを設定する。<p>
+     *
+     * @param path 非公開鍵のファイルのパス
+     */
+    public void setPrivateKeyFilePEM(String path);
+    
+    /**
+     * 非公開鍵のPEM(Privacy-enhanced mail)形式ファイルのパスを取得する。<p>
+     *
+     * @return 非公開鍵のファイルのパス
+     */
+    public String getPrivateKeyFilePEM();
+    
+    /**
+     * 非公開鍵をPEM(Privacy-enhanced mail)形式に変換する。<p>
      *
      * @return PEM形式の非公開鍵
      */
     public String privateKeyToPEM();
     
     /**
-     * 公開鍵をPEM形式に変換する。<p>
+     * 公開鍵をPEM(Privacy-enhanced mail)形式に変換する。<p>
      *
      * @return PEM形式の公開鍵
      */
