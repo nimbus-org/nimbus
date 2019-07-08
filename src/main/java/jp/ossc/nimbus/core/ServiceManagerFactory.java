@@ -62,12 +62,12 @@ public class ServiceManagerFactory implements Serializable{
     /**
      * デフォルトのログ出力を行う{@link LogService}オブジェクト。<p>
      */
-    static final LogService DEFAULT_LOGGER;
+    public static final LogService DEFAULT_LOGGER;
     
     /**
      * デフォルトのメッセージ生成を行う{@link MessageRecordFactoryService}オブジェクト。<p>
      */
-    static final MessageRecordFactoryService DEFAULT_MESSAGE;
+    public static final MessageRecordFactoryService DEFAULT_MESSAGE;
     
     // メッセージID定義
     private static final String SVCMF = "SVCMF";

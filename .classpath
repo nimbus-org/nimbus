@@ -141,4 +141,6 @@
   <classpathentry kind="var" path="M2_REPO/com/amazonaws/aws-java-sdk-glue/1.11.530/aws-java-sdk-glue-1.11.530.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/amazonaws/aws-java-sdk-cloudwatch/1.11.530/aws-java-sdk-cloudwatch-1.11.530.jar"/>
   <classpathentry kind="var" path="M2_REPO/jtidy/jtidy/1.0/jtidy-1.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/bouncycastle/bcprov-jdk15on/1.62/bcprov-jdk15on-1.62.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/bouncycastle/bcpkix-jdk15on/1.62/bcpkix-jdk15on-1.62.jar"/>
 </classpath>
