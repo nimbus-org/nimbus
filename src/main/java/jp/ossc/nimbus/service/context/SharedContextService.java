@@ -419,6 +419,10 @@ public class SharedContextService extends DefaultContextService
         indexManager.removeIndex(name);
     }
     
+    public void clearIndex(){
+        indexManager.clearIndex();
+    }
+    
     public void analyzeIndex(String name) throws SharedContextSendException, SharedContextTimeoutException{
         analyzeIndex(name, synchronizeTimeout);
     }
@@ -1039,6 +1043,7 @@ public class SharedContextService extends DefaultContextService
             }
         }
         super.clear();
+        indexManager.clear();
         if(updateListeners != null || indexManager.hasIndex()){
             Message message = null;
             try{
@@ -2051,25 +2056,37 @@ public class SharedContextService extends DefaultContextService
                 }
                 startTime = System.currentTimeMillis();
             }
-            if(isClient && !super.containsKey(key)){
-                oldValue = get(key, timeout);
-                if(oldValue instanceof SharedContextValueDifferenceSupport){
-                    oldValue = ((SharedContextValueDifferenceSupport)oldValue).clone();
-                }else{
-                    throw new SharedContextUpdateException("Not support SharedContextValueDifference. key=" + key + ", value=" + oldValue);
-                }
-                if(timeout > 0){
-                    timeout -= (System.currentTimeMillis() - startTime);
-                    if(timeout <= 0){
-                        throw new SharedContextTimeoutException();
+            Object current = getRawLocal(key);
+            Object currentValue = unwrapCachedReference(current, false, false);
+            if(currentValue == null){
+                if(isClient){
+                    currentValue = get(key, timeout);
+                    if(timeout > 0){
+                        timeout -= (System.currentTimeMillis() - startTime);
+                        if(timeout <= 0){
+                            throw new SharedContextTimeoutException();
+                        }
+                        startTime = System.currentTimeMillis();
                     }
-                    startTime = System.currentTimeMillis();
                 }
+                if(currentValue == null){
+                    if(ifExists){
+                        return;
+                    }else{
+                        throw new SharedContextUpdateException("Current value is null. key=" + key);
+                    }
+                }
+            }
+            if(currentValue instanceof SharedContextValueDifferenceSupport){
+                oldValue = ((SharedContextValueDifferenceSupport)currentValue).clone();
+            }else{
+                throw new SharedContextUpdateException("Not support SharedContextValueDifference. key=" + key + ", value=" + currentValue);
             }
             SharedContextTimeoutException timeoutException = null;
             Message message = null;
             try{
                 message = serverConnection.createMessage(subject, key == null ? null : key.toString());
+                message.setSubject(clientSubject, key == null ? null : key.toString());
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
                     message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_UPDATE, key, new Object[]{diff, ifExists ? Boolean.TRUE : Boolean.FALSE}));
@@ -2099,80 +2116,26 @@ public class SharedContextService extends DefaultContextService
             }catch(RequestTimeoutException e){
                 timeoutException = new SharedContextTimeoutException(e);
             }
-            if(!isClient || super.containsKey(key)){
-                Object current = getRawLocal(key);
-                Object currentValue = unwrapCachedReference(current, false, false);
-                if(currentValue == null){
-                    if(!ifExists){
-                        throw new SharedContextUpdateException("Current value is null. key=" + key);
-                    }
-                }else if(currentValue instanceof SharedContextValueDifferenceSupport){
-                    oldValue = ((SharedContextValueDifferenceSupport)currentValue).clone();
-                    final int updateResult = ((SharedContextValueDifferenceSupport)currentValue).update(diff);
-                    if(updateResult == -1){
-                        throw new SharedContextUpdateException(
-                            "An update version is mismatching. currentVersion="
-                                + ((SharedContextValueDifferenceSupport)currentValue).getUpdateVersion()
-                                + ", updateVersion=" + diff.getUpdateVersion()
-                        );
-                    }else if(updateResult == 0){
-                        getLogger().write("SCS__00009", new Object[]{key, subject});
-                    }
-                    newValue = currentValue;
-                }else{
-                    throw new SharedContextUpdateException("Not support SharedContextValueDifference. key=" + key + ", value=" + currentValue);
-                }
-                if(currentValue != null && (current instanceof CachedReference)){
-                    try{
-                        ((CachedReference)current).set(this, currentValue);
-                    }catch(IllegalCachedReferenceException e){
-                        throw new SharedContextUpdateException(e);
-                    }
-                }
-            }else{
-                newValue = get(key, timeout);
-                if(timeout > 0){
-                    timeout -= (System.currentTimeMillis() - startTime);
-                    if(timeout <= 0){
-                        throw new SharedContextTimeoutException();
-                    }
-                    startTime = System.currentTimeMillis();
+            final int updateResult = ((SharedContextValueDifferenceSupport)currentValue).update(diff);
+            if(updateResult == -1){
+                throw new SharedContextUpdateException(
+                    "An update version is mismatching. currentVersion="
+                        + ((SharedContextValueDifferenceSupport)currentValue).getUpdateVersion()
+                        + ", updateVersion=" + diff.getUpdateVersion()
+                );
+            }else if(updateResult == 0){
+                getLogger().write("SCS__00009", new Object[]{key, subject});
+            }
+            newValue = currentValue;
+            if(currentValue != null && (current instanceof CachedReference)){
+                try{
+                    ((CachedReference)current).set(this, currentValue);
+                }catch(IllegalCachedReferenceException e){
+                    throw new SharedContextUpdateException(e);
                 }
             }
-            if(super.containsKey(key) && indexManager.hasIndex()){
+            if(indexManager.hasIndex()){
                 indexManager.replace(key, oldValue, newValue);
-            }
-            try{
-                message = serverConnection.createMessage(clientSubject, key == null ? null : key.toString());
-                Set receiveClients = serverConnection.getReceiveClientIds(message);
-                if(receiveClients.size() != 0){
-                    message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_UPDATE, key, new Object[]{diff, ifExists ? Boolean.TRUE : Boolean.FALSE}));
-                    Message[] responses = serverConnection.request(
-                        message,
-                        isClient ? clientSubject : subject,
-                        key == null ? null : key.toString(),
-                        0,
-                        timeout
-                    );
-                    for(int i = 0; i < responses.length; i++){
-                        Object ret = responses[i].getObject();
-                        responses[i].recycle();
-                        if(ret != null){
-                            if(ret instanceof Throwable){
-                                throw new SharedContextSendException((Throwable)ret);
-                            }
-                        }
-                    }
-                }
-            }catch(MessageException e){
-                throw new SharedContextSendException(e);
-            }catch(MessageSendException e){
-                throw new SharedContextSendException(e);
-            }catch(RequestTimeoutException e){
-                throw new SharedContextTimeoutException(e);
-            }
-            if(timeoutException != null){
-                throw timeoutException;
             }
         }finally{
             referLock.releaseForUse();
@@ -2206,44 +2169,44 @@ public class SharedContextService extends DefaultContextService
             Object oldValue = null;
             Object newValue = null;
             updateLock.acquireForUse(-1);
+            referLock.acquireForUse(-1);
             Object current = getRawLocal(key);
             Object currentValue = unwrapCachedReference(current, false, false);
-            if(currentValue != null){
-                if(currentValue instanceof SharedContextValueDifferenceSupport){
-                    oldValue = ((SharedContextValueDifferenceSupport)currentValue).clone();
+            if(currentValue == null){
+                if(ifExists){
+                    return;
                 }else{
-                    throw new SharedContextUpdateException("Not support SharedContextValueDifference. key=" + key + ", value=" + currentValue);
+                    throw new SharedContextUpdateException("Current value is null. key=" + key);
                 }
             }
-            if(!isClient || super.containsKey(key)){
-                if(currentValue == null){
-                    if(!ifExists){
-                        throw new SharedContextUpdateException("Current value is null. key=" + key);
-                    }
-                }
-                final int updateResult = ((SharedContextValueDifferenceSupport)currentValue).update(diff);
-                if(updateResult == -1){
-                    throw new SharedContextUpdateException(
-                        "An update version is mismatching. currentVersion="
-                            + ((SharedContextValueDifferenceSupport)currentValue).getUpdateVersion()
-                            + ", updateVersion=" + diff.getUpdateVersion()
-                    );
-                }else if(updateResult == 0){
-                    getLogger().write("SCS__00009", new Object[]{key, subject});
-                }
-                newValue = currentValue;
-                if(currentValue != null && (current instanceof CachedReference)){
-                    try{
-                        ((CachedReference)current).set(this, currentValue);
-                    }catch(IllegalCachedReferenceException e){
-                        throw new SharedContextUpdateException(e);
-                    }
+            if(currentValue instanceof SharedContextValueDifferenceSupport){
+                oldValue = ((SharedContextValueDifferenceSupport)currentValue).clone();
+            }else{
+                throw new SharedContextUpdateException("Not support SharedContextValueDifference. key=" + key + ", value=" + currentValue);
+            }
+            final int updateResult = ((SharedContextValueDifferenceSupport)currentValue).update(diff);
+            if(updateResult == -1){
+                throw new SharedContextUpdateException(
+                    "An update version is mismatching. currentVersion="
+                        + ((SharedContextValueDifferenceSupport)currentValue).getUpdateVersion()
+                        + ", updateVersion=" + diff.getUpdateVersion()
+                );
+            }else if(updateResult == 0){
+                getLogger().write("SCS__00009", new Object[]{key, subject});
+            }
+            newValue = currentValue;
+            if(currentValue != null && (current instanceof CachedReference)){
+                try{
+                    ((CachedReference)current).set(this, currentValue);
+                }catch(IllegalCachedReferenceException e){
+                    throw new SharedContextUpdateException(e);
                 }
             }
-            if(super.containsKey(key) && indexManager.hasIndex()){
+            if(indexManager.hasIndex()){
                 indexManager.replace(key, oldValue, newValue);
             }
         }finally{
+            referLock.releaseForUse();
             updateLock.releaseForUse();
         }
         if(updateListeners != null){
@@ -2275,18 +2238,30 @@ public class SharedContextService extends DefaultContextService
             Object oldValue = null;
             Object newValue = null;
             updateLock.acquireForUse(-1);
-            if(isClient && indexManager.hasIndex()){
-                try{
-                    if(!referLock.acquireForUse(-1)){
-                        throw new SharedContextTimeoutException();
+            referLock.acquireForUse(-1);
+            Object current = getRawLocal(key);
+            Object currentValue = unwrapCachedReference(current, false, false);
+            if(currentValue == null){
+                if(isClient){
+                    currentValue = get(key, -1);
+                }
+                if(currentValue == null){
+                    if(ifExists){
+                        return;
+                    }else{
+                        throw new SharedContextUpdateException("Current value is null. key=" + key);
                     }
-                    oldValue = get(key);
-                }finally{
-                    referLock.releaseForUse();
                 }
             }
+            if(currentValue instanceof SharedContextValueDifferenceSupport){
+                oldValue = ((SharedContextValueDifferenceSupport)currentValue).clone();
+            }else{
+                throw new SharedContextUpdateException("Not support SharedContextValueDifference. key=" + key + ", value=" + currentValue);
+            }
+            SharedContextTimeoutException timeoutException = null;
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, key == null ? null : key.toString());
+                message = serverConnection.createMessage(subject, key == null ? null : key.toString());
                 message.setSubject(clientSubject, key == null ? null : key.toString());
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
@@ -2303,41 +2278,29 @@ public class SharedContextService extends DefaultContextService
             }catch(MessageSendException e){
                 throw new SharedContextSendException(e);
             }
-            if(!isClient || super.containsKey(key)){
-                Object current = getRawLocal(key);
-                Object currentValue = unwrapCachedReference(current, false, false);
-                if(currentValue == null){
-                    if(!ifExists){
-                        throw new SharedContextUpdateException("Current value is null. key=" + key);
-                    }
-                }else if(currentValue instanceof SharedContextValueDifferenceSupport){
-                    oldValue = ((SharedContextValueDifferenceSupport)currentValue).clone();
-                    final int updateResult = ((SharedContextValueDifferenceSupport)currentValue).update(diff);
-                    if(updateResult == -1){
-                        throw new SharedContextUpdateException(
-                            "An update version is mismatching. currentVersion="
-                                + ((SharedContextValueDifferenceSupport)currentValue).getUpdateVersion()
-                                + ", updateVersion=" + diff.getUpdateVersion()
-                        );
-                    }else if(updateResult == 0){
-                        getLogger().write("SCS__00009", new Object[]{key, subject});
-                    }
-                    newValue = currentValue;
-                }else{
-                    throw new SharedContextUpdateException("Not support SharedContextValueDifference. key=" + key + ", value=" + currentValue);
-                }
-                if(currentValue != null && (current instanceof CachedReference)){
-                    try{
-                        ((CachedReference)current).set(this, currentValue);
-                    }catch(IllegalCachedReferenceException e){
-                        throw new SharedContextUpdateException(e);
-                    }
+            final int updateResult = ((SharedContextValueDifferenceSupport)currentValue).update(diff);
+            if(updateResult == -1){
+                throw new SharedContextUpdateException(
+                    "An update version is mismatching. currentVersion="
+                        + ((SharedContextValueDifferenceSupport)currentValue).getUpdateVersion()
+                        + ", updateVersion=" + diff.getUpdateVersion()
+                );
+            }else if(updateResult == 0){
+                getLogger().write("SCS__00009", new Object[]{key, subject});
+            }
+            newValue = currentValue;
+            if(currentValue != null && (current instanceof CachedReference)){
+                try{
+                    ((CachedReference)current).set(this, currentValue);
+                }catch(IllegalCachedReferenceException e){
+                    throw new SharedContextUpdateException(e);
                 }
             }
-            if(super.containsKey(key) && indexManager.hasIndex()){
+            if(indexManager.hasIndex()){
                 indexManager.replace(key, oldValue, newValue);
             }
         }finally{
+            referLock.releaseForUse();
             updateLock.releaseForUse();
         }
         if(updateListeners != null){
@@ -4110,6 +4073,8 @@ public class SharedContextService extends DefaultContextService
                 }
             }
         }
+        Object oldValue = null;
+        Object newValue = null;
         if(!isClient || super.containsKey(event.key)){
             Object current = getRawLocal(event.key);
             Object currentValue = unwrapCachedReference(current, false, false);
@@ -4121,6 +4086,7 @@ public class SharedContextService extends DefaultContextService
                     return sourceId == null ? null : createResponseMessage(responseSubject, responseKey, new SharedContextUpdateException("Current value is null. key=" + event.key));
                 }
             }else if(currentValue instanceof SharedContextValueDifferenceSupport){
+                oldValue = ((SharedContextValueDifferenceSupport)currentValue).clone();
                 try{
                     boolean isSuccess = false;
                     try{
@@ -4147,6 +4113,7 @@ public class SharedContextService extends DefaultContextService
                         }
                     }
                     if(isSuccess){
+                        newValue = currentValue;
                         if(current instanceof CachedReference){
                             try{
                                 ((CachedReference)current).set(this, currentValue);
@@ -4201,7 +4168,7 @@ public class SharedContextService extends DefaultContextService
                 getLogger().write("SCS__00005", new Object[]{isClient ? clientSubject : subject, event.key}, e);
                 return sourceId == null ? null : createResponseMessage(responseSubject, responseKey, e);
             }
-        }else if(isClient && clientCacheLockMap.containsKey(event.key)){
+        }else if(clientCacheLockMap.containsKey(event.key)){
             ClientCacheLock lock = (ClientCacheLock)clientCacheLockMap.get(event.key);
             if(lock != null){
                 synchronized(lock){
@@ -4212,6 +4179,7 @@ public class SharedContextService extends DefaultContextService
                             Object removed = super.remove(event.key);
                             removed = unwrapCachedReference(removed, false, true);
                         }else if(currentValue instanceof SharedContextValueDifferenceSupport){
+                            oldValue = ((SharedContextValueDifferenceSupport)currentValue).clone();
                             try{
                                 boolean isSuccess = false;
                                 try{
@@ -4226,6 +4194,7 @@ public class SharedContextService extends DefaultContextService
                                     getLogger().write("SCS__00003", new Object[]{clientSubject, event.key}, e);
                                 }
                                 if(isSuccess){
+                                    newValue = current;
                                     if(current instanceof CachedReference){
                                         try{
                                             ((CachedReference)current).set(this, currentValue);
@@ -4251,6 +4220,9 @@ public class SharedContextService extends DefaultContextService
                     }
                 }
             }
+        }
+        if(oldValue != null && newValue != null && indexManager.hasIndex()){
+            indexManager.replace(event.key, oldValue, newValue);
         }
         if(updateListeners != null){
             for(int i = 0; i < updateListeners.size(); i++){
@@ -6273,6 +6245,10 @@ public class SharedContextService extends DefaultContextService
         }
         
         public void removeIndex(String name){
+            throw new UnsupportedOperationException();
+        }
+        
+        public void clearIndex(){
             throw new UnsupportedOperationException();
         }
         

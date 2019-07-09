@@ -133,6 +133,13 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
         }
     }
     
+    public void clearIndex(){
+        nameIndexMap.clear();
+        singleIndexMap.clear();
+        complexIndexMap.clear();
+        keySet.clear();
+    }
+    
     public SharedContextIndex getIndex(String name){
         return (SharedContextIndex)nameIndexMap.get(name);
     }
@@ -166,7 +173,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
     }
     
     public boolean hasIndex(String name, String[] propNames){
-        if(getIndex(name) != null){
+        if(name != null && getIndex(name) != null){
             return true;
         }
         return propNames == null ? false : getIndexBy(propNames) != null;
