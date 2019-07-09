@@ -425,6 +425,15 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         indexMap.remove(name);
     }
     
+    public void clearIndex(){
+        if(getState() == STARTED){
+            for(int i = 0; i < sharedContextArray.length; i++){
+                sharedContextArray[i].clearIndex();
+            }
+        }
+        indexMap.clear();
+    }
+    
     public boolean isMainDistributed(){
         return isMainDistributed;
     }

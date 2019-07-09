@@ -645,6 +645,7 @@ public interface SharedContext extends Context{
      * 複合インデックスを追加した場合は、自動的にその要素となる単一プロパティの単純インデックスも内部的に生成される。<p>
      * 但し、自動生成された単一インデックスは、インデックス名を持たないため、インデックス名では指定できず、プロパティ名で指定して使用する。<br>
      * インデックスの種類によって、使用できる検索機能が異なる。単純インデックスは、一致検索と範囲検索の両方が可能だが、複合インデックスは、一致検索のみ可能である。<br>
+     * 制約として、クライアントモードの場合は、差分更新されたデータがインデックスに反映されない。従って、クライアントモードでのインデックス利用では、更新しないプロパティに対するインデックス、または差分更新を行わない事が前提となる。<br>
      *
      * @param name インデックス名
      * @param props インデックスを張るBeanのプロパティ名配列
@@ -661,11 +662,16 @@ public interface SharedContext extends Context{
     public void setIndex(String name, BeanTableIndexKeyFactory keyFactory);
     
     /**
-     * インデックスを削除する。<p>
+     * 指定されたインデックスを削除する。<p>
      *
      * @param name インデックス名
      */
     public void removeIndex(String name);
+    
+    /**
+     * インデックスを全て削除する。<p>
+     */
+    public void clearIndex();
     
     /**
      * インデックスを再解析する。<p>
