@@ -220,6 +220,22 @@ public interface SharedContextServiceMBean extends DefaultContextServiceMBean{
     public boolean isClient();
     
     /**
+     * クライアントモードの時に、ローカルのインデックスを有効化するかどうかを設定する。<p>
+     * デフォルトは、trueで有効。<br>
+     * falseにした場合、インデックスを使った検索は、サーバモードのノードに要求する。<br>
+     *
+     * @param isEnabled クライアントモードの時に、ローカルのインデックスを有効化する場合は、true
+     */
+    public void setEnabledIndexOnClient(boolean isEnabled);
+    
+    /**
+     * クライアントモードの時に、ローカルのインデックスを有効化するかどうかを判定する。<p>
+     *
+     * @return trueの場合は、クライアントモードの時に、ローカルのインデックスを有効化する
+     */
+    public boolean isEnabledIndexOnClient();
+    
+    /**
      * 同期時のタイムアウト[ms]を設定する。<p>
      * デフォルトは、5000[ms]。<br>
      *

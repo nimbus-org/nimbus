@@ -103,6 +103,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     private String subject = DEFAULT_SUBJECT;
     private String clientSubject;
     private boolean isClient;
+    private boolean isEnabledIndexOnClient = true;
     
     private long synchronizeTimeout = 10000l;
     private long rehashTimeout = 10000l;
@@ -207,6 +208,13 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     }
     public boolean isClient(){
         return isClient;
+    }
+    
+    public void setEnabledIndexOnClient(boolean isEnabled){
+        isEnabledIndexOnClient = isEnabled;
+    }
+    public boolean isEnabledIndexOnClient(){
+        return isEnabledIndexOnClient;
     }
     
     public void setRehashEnabled(boolean isEnabled) throws SharedContextSendException, SharedContextTimeoutException{
@@ -625,6 +633,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             sharedContextArray[i].setExecuteThreadSize(executeThreadSize);
             sharedContextArray[i].setSubject(subject + "$" + i);
             sharedContextArray[i].setClient(isClient || isRehashEnabled ? true : false);
+            sharedContextArray[i].setEnabledIndexOnClient(isEnabledIndexOnClient);
             sharedContextArray[i].setSynchronizeTimeout(synchronizeTimeout);
             sharedContextArray[i].setDefaultTimeout(defaultTimeout);
             sharedContextArray[i].setSynchronizeOnStart(false);

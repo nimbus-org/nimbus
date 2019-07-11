@@ -323,6 +323,22 @@ public interface DistributedSharedContextServiceMBean extends ServiceBaseMBean{
     public boolean isClient();
     
     /**
+     * クライアントモードの時に、ローカルのインデックスを有効化するかどうかを設定する。<p>
+     * デフォルトは、trueで有効。<br>
+     * falseにした場合、インデックスを使った検索は、サーバモードのノードに要求する。<br>
+     *
+     * @param isEnabled クライアントモードの時に、ローカルのインデックスを有効化する場合は、true
+     */
+    public void setEnabledIndexOnClient(boolean isEnabled);
+    
+    /**
+     * クライアントモードの時に、ローカルのインデックスを有効化するかどうかを判定する。<p>
+     *
+     * @return trueの場合は、クライアントモードの時に、ローカルのインデックスを有効化する
+     */
+    public boolean isEnabledIndexOnClient();
+    
+    /**
      * リハッシュが有効かどうかを設定する。<p>
      * デフォルトは、trueで有効。<br>
      *
