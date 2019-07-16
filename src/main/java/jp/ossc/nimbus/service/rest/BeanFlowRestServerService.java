@@ -93,15 +93,6 @@ import jp.ossc.nimbus.beans.ServiceNameEditor;
 import jp.ossc.nimbus.beans.dataset.DataSet;
 import jp.ossc.nimbus.core.DeploymentException;
 import jp.ossc.nimbus.core.MetaData;
-import jp.ossc.nimbus.core.ObjectMetaData;
-import jp.ossc.nimbus.core.ConstructorMetaData;
-import jp.ossc.nimbus.core.FieldMetaData;
-import jp.ossc.nimbus.core.StaticFieldRefMetaData;
-import jp.ossc.nimbus.core.InvokeMetaData;
-import jp.ossc.nimbus.core.StaticInvokeMetaData;
-import jp.ossc.nimbus.core.ArgumentMetaData;
-import jp.ossc.nimbus.core.AttributeMetaData;
-import jp.ossc.nimbus.core.ServiceRefMetaData;
 import jp.ossc.nimbus.core.NimbusClassLoader;
 import jp.ossc.nimbus.core.NimbusEntityResolver;
 import jp.ossc.nimbus.core.ServiceBase;
@@ -693,11 +684,21 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 return false;
             }
         }else{
+            String requestObjClassName = null;
             Class requestObjClass = null;
             try{
-                requestObjClass = Utility.convertStringToClass(requestData.getCode(), true);
+                if(requestData.getRef() != null){
+                    jp.ossc.nimbus.core.ObjectMetaData objData = restServerMetaData.getObjectDef(requestData.getRef());
+                    if(objData == null){
+                        throw new DeploymentException("Not found object-def : name=" + requestData.getRef());
+                    }
+                    requestObjClassName = objData.getCode();
+                }else{
+                    requestObjClassName = requestData.getCode();
+                }
+                requestObjClass = Utility.convertStringToClass(requestObjClassName, true);
             }catch(ClassNotFoundException e){
-                getLogger().write("BFRS_00004", new Object[]{resource.resourcePath.path, requestData.getCode()}, e);
+                getLogger().write("BFRS_00004", new Object[]{resource.resourcePath.path, requestObjClassName}, e);
                 if(journal != null){
                     journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
                 }
@@ -2182,7 +2183,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
     }
     
-    public class RestServerMetaData extends MetaData{
+    protected class RestServerMetaData extends MetaData{
         
         private static final long serialVersionUID = -8221854228229536891L;
         
@@ -2190,12 +2191,17 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         
         protected List resources = new ArrayList();
         protected ResourceTree resourceTree = new ResourceTree();
+        protected Map objectDefs = new HashMap();
         
         public RestServerMetaData(){
         }
         
         public List getResourceMetaDataList(){
             return resources;
+        }
+        
+        public ObjectDefMetaData getObjectDef(String ref){
+            return (ObjectDefMetaData)objectDefs.get(ref);
         }
         
         public void importXML(Element element) throws DeploymentException{
@@ -2208,20 +2214,30 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 );
             }
             
-            final Iterator propElements = getChildrenByTagName(
+            final Iterator resourceElements = getChildrenByTagName(
                 element,
                 ResourceMetaData.TAG_NAME
             );
-            while(propElements.hasNext()){
+            while(resourceElements.hasNext()){
                 ResourceMetaData resourceData = new ResourceMetaData(RestServerMetaData.this);
-                resourceData.importXML((Element)propElements.next());
+                resourceData.importXML((Element)resourceElements.next());
                 resources.add(resourceData);
                 resourceTree.addResource(resourceData);
+            }
+            
+            final Iterator objectDefElements = getChildrenByTagName(
+                element,
+                ObjectDefMetaData.TAG_NAME
+            );
+            while(objectDefElements.hasNext()){
+                ObjectDefMetaData objectDefData = new ObjectDefMetaData(RestServerMetaData.this);
+                objectDefData.importXML((Element)objectDefElements.next());
+                objectDefs.put(objectDefData.getName(), objectDefData);
             }
         }
     }
     
-    public class ResourceMetaData extends MetaData{
+    protected class ResourceMetaData extends MetaData{
         
         private static final long serialVersionUID = -9068306933796302144L;
         
@@ -2340,7 +2356,13 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
     }
     
-    protected Object createObject(ObjectMetaData data) throws Exception{
+    protected Object createObject(jp.ossc.nimbus.core.ObjectMetaData data) throws Exception{
+        if(data instanceof ObjectMetaData && ((ObjectMetaData)data).getRef() != null){
+            data = restServerMetaData.getObjectDef(((ObjectMetaData)data).getRef());
+            if(data == null){
+                throw new DeploymentException("Not found object-def : name=" + ((ObjectMetaData)data).getRef());
+            }
+        }
         Object obj = null;
         if(data.getConstructor() == null){
             final Class clazz = Utility.convertStringToClass(data.getCode());
@@ -2356,37 +2378,37 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         
         final Iterator fields = data.getFields().iterator();
         while(fields.hasNext()){
-            FieldMetaData field = (FieldMetaData)fields.next();
+            jp.ossc.nimbus.core.FieldMetaData field = (jp.ossc.nimbus.core.FieldMetaData)fields.next();
             setFieldValue(field, obj);
         }
         
         final Iterator attributes = data.getAttributes().iterator();
         while(attributes.hasNext()){
-            AttributeMetaData attribute = (AttributeMetaData)attributes.next();
+            jp.ossc.nimbus.core.AttributeMetaData attribute = (jp.ossc.nimbus.core.AttributeMetaData)attributes.next();
             setAttributeValue(attribute, obj);
         }
         
         final Iterator invokes = data.getInvokes().iterator();
         while(invokes.hasNext()){
             MetaData invokeData = (MetaData)invokes.next();
-            if(invokeData instanceof InvokeMetaData){
-                InvokeMetaData invoke = (InvokeMetaData)invokeData;
+            if(invokeData instanceof jp.ossc.nimbus.core.InvokeMetaData){
+                jp.ossc.nimbus.core.InvokeMetaData invoke = (jp.ossc.nimbus.core.InvokeMetaData)invokeData;
                 callInvoke(invoke, obj);
-            }else if(invokeData instanceof StaticInvokeMetaData){
-                StaticInvokeMetaData invoke = (StaticInvokeMetaData)invokeData;
+            }else if(invokeData instanceof jp.ossc.nimbus.core.StaticInvokeMetaData){
+                jp.ossc.nimbus.core.StaticInvokeMetaData invoke = (jp.ossc.nimbus.core.StaticInvokeMetaData)invokeData;
                 callStaticInvoke(invoke);
             }
         }
         return obj;
     }
     
-    protected Object construct(ConstructorMetaData data) throws Exception{
+    protected Object construct(jp.ossc.nimbus.core.ConstructorMetaData data) throws Exception{
         if(data.getStaticFieldRef() != null){
-            return getStaticField((StaticFieldRefMetaData)data.getStaticFieldRef());
+            return getStaticField((jp.ossc.nimbus.core.StaticFieldRefMetaData)data.getStaticFieldRef());
         }else if(data.getStaticInvoke() != null){
-            return callStaticInvoke((StaticInvokeMetaData)data.getStaticInvoke());
+            return callStaticInvoke((jp.ossc.nimbus.core.StaticInvokeMetaData)data.getStaticInvoke());
         }
-        ObjectMetaData objectData = (ObjectMetaData)data.getParent();
+        jp.ossc.nimbus.core.ObjectMetaData objectData = (jp.ossc.nimbus.core.ObjectMetaData)data.getParent();
         final Class clazz = Utility.convertStringToClass(objectData.getCode());
         if(clazz.isArray()){
             final Class elementType = clazz.getComponentType();
@@ -2398,8 +2420,8 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             final Iterator args = argCollection.iterator();
             int i = 0;
             while(args.hasNext()){
-                final ArgumentMetaData argData
-                     = (ArgumentMetaData)args.next();
+                final jp.ossc.nimbus.core.ArgumentMetaData argData
+                     = (jp.ossc.nimbus.core.ArgumentMetaData)args.next();
                 Array.set(argVals, i, createArgument(argData));
                 i++;
             }
@@ -2409,7 +2431,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             List params = new ArrayList(paramTypes.size());
             final Iterator argDatas = data.getArguments().iterator();
             while(argDatas.hasNext()){
-                ArgumentMetaData argData = (ArgumentMetaData)argDatas.next();
+                jp.ossc.nimbus.core.ArgumentMetaData argData = (jp.ossc.nimbus.core.ArgumentMetaData)argDatas.next();
                 Object arg = createArgument(argData);
                 Class typeClass = getTypeClass(argData);
                 if(typeClass == null){
@@ -2431,7 +2453,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
     }
     
-    protected Class getTypeClass(ArgumentMetaData arg) throws Exception{
+    protected Class getTypeClass(jp.ossc.nimbus.core.ArgumentMetaData arg) throws Exception{
         if(arg.getType() != null){
             return Utility.convertStringToClass(arg.getType());
         }
@@ -2444,7 +2466,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         return null;
     }
     
-    protected Class getValueTypeClass(ArgumentMetaData arg) throws Exception{
+    protected Class getValueTypeClass(jp.ossc.nimbus.core.ArgumentMetaData arg) throws Exception{
         if(arg.getValueType() != null){
             return Utility.convertStringToClass(arg.getValueType());
         }
@@ -2457,18 +2479,18 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         return null;
     }
     
-    protected Object createArgument(ArgumentMetaData data) throws Exception{
+    protected Object createArgument(jp.ossc.nimbus.core.ArgumentMetaData data) throws Exception{
         if(data.isNullValue()){
             return null;
         }
-        if(data.getValue() instanceof ServiceRefMetaData){
-            return getServiceObject((ServiceRefMetaData)data.getValue());
-        }else if(data.getValue() instanceof ObjectMetaData){
-            return createObject((ObjectMetaData)data.getValue());
-        }else if(data.getValue() instanceof StaticInvokeMetaData){
-            return callStaticInvoke((StaticInvokeMetaData)data.getValue());
-        }else if(data.getValue() instanceof StaticFieldRefMetaData){
-            return getStaticField((StaticFieldRefMetaData)data.getValue());
+        if(data.getValue() instanceof jp.ossc.nimbus.core.ServiceRefMetaData){
+            return getServiceObject((jp.ossc.nimbus.core.ServiceRefMetaData)data.getValue());
+        }else if(data.getValue() instanceof jp.ossc.nimbus.core.ObjectMetaData){
+            return createObject((jp.ossc.nimbus.core.ObjectMetaData)data.getValue());
+        }else if(data.getValue() instanceof jp.ossc.nimbus.core.StaticInvokeMetaData){
+            return callStaticInvoke((jp.ossc.nimbus.core.StaticInvokeMetaData)data.getValue());
+        }else if(data.getValue() instanceof jp.ossc.nimbus.core.StaticFieldRefMetaData){
+            return getStaticField((jp.ossc.nimbus.core.StaticFieldRefMetaData)data.getValue());
         }else{
             Class valueTypeClass = getValueTypeClass(data);
             if(valueTypeClass == null){
@@ -2490,19 +2512,19 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
     }
     
-    protected void setFieldValue(FieldMetaData data, Object target) throws Exception{
+    protected void setFieldValue(jp.ossc.nimbus.core.FieldMetaData data, Object target) throws Exception{
         Object value = data.getValue();
         if(data.isNullValue()){
             value = null;
         }else{
-            if(value instanceof ServiceRefMetaData){
-                value = getServiceObject((ServiceRefMetaData)value);
-            }else if(value instanceof ObjectMetaData){
-                value = createObject((ObjectMetaData)value);
-            }else if(value instanceof StaticInvokeMetaData){
-                value = callStaticInvoke((StaticInvokeMetaData)value);
-            }else if(value instanceof StaticFieldRefMetaData){
-                value = getStaticField((StaticFieldRefMetaData)value);
+            if(value instanceof jp.ossc.nimbus.core.ServiceRefMetaData){
+                value = getServiceObject((jp.ossc.nimbus.core.ServiceRefMetaData)value);
+            }else if(value instanceof jp.ossc.nimbus.core.ObjectMetaData){
+                value = createObject((jp.ossc.nimbus.core.ObjectMetaData)value);
+            }else if(value instanceof jp.ossc.nimbus.core.StaticInvokeMetaData){
+                value = callStaticInvoke((jp.ossc.nimbus.core.StaticInvokeMetaData)value);
+            }else if(value instanceof jp.ossc.nimbus.core.StaticFieldRefMetaData){
+                value = getStaticField((jp.ossc.nimbus.core.StaticFieldRefMetaData)value);
             }else{
                 Class type = null;
                 if(data.getType() != null){
@@ -2529,7 +2551,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         getField(data, target).set(target, value);
     }
     
-    protected Field getField(FieldMetaData data, Object target) throws Exception{
+    protected Field getField(jp.ossc.nimbus.core.FieldMetaData data, Object target) throws Exception{
         final String name = data.getName();
         final Class targetClazz = target.getClass();
         Field field = null;
@@ -2550,20 +2572,20 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         return field;
     }
     
-    protected void setAttributeValue(AttributeMetaData data, Object target) throws Exception{
+    protected void setAttributeValue(jp.ossc.nimbus.core.AttributeMetaData data, Object target) throws Exception{
         Object value = data.getValue();
         Property property = propertyAccess.getProperty(data.getName());
         if(data.isNullValue()){
             value = null;
         }else if(Element.class.getName().equals(data.getType())){
-            if(value instanceof ServiceRefMetaData){
-                value = getServiceObject((ServiceRefMetaData)value);
-            }else if(value instanceof ObjectMetaData){
-                value = createObject((ObjectMetaData)value);
-            }else if(value instanceof StaticInvokeMetaData){
-                value = callStaticInvoke((StaticInvokeMetaData)value);
-            }else if(value instanceof StaticFieldRefMetaData){
-                value = getStaticField((StaticFieldRefMetaData)value);
+            if(value instanceof jp.ossc.nimbus.core.ServiceRefMetaData){
+                value = getServiceObject((jp.ossc.nimbus.core.ServiceRefMetaData)value);
+            }else if(value instanceof jp.ossc.nimbus.core.ObjectMetaData){
+                value = createObject((jp.ossc.nimbus.core.ObjectMetaData)value);
+            }else if(value instanceof jp.ossc.nimbus.core.StaticInvokeMetaData){
+                value = callStaticInvoke((jp.ossc.nimbus.core.StaticInvokeMetaData)value);
+            }else if(value instanceof jp.ossc.nimbus.core.StaticFieldRefMetaData){
+                value = getStaticField((jp.ossc.nimbus.core.StaticFieldRefMetaData)value);
             }else{
                 Class type = null;
                 if(data.getType() != null){
@@ -2622,12 +2644,12 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 && SimpleProperty.class.getPackage().equals(clazz.getPackage()));
     }
     
-    protected Object callInvoke(InvokeMetaData data, Object target) throws Exception{
+    protected Object callInvoke(jp.ossc.nimbus.core.InvokeMetaData data, Object target) throws Exception{
         List paramTypes = new ArrayList(data.getArguments().size());
         List params = new ArrayList(paramTypes.size());
         final Iterator argDatas = data.getArguments().iterator();
         while(argDatas.hasNext()){
-            ArgumentMetaData argData = (ArgumentMetaData)argDatas.next();
+            jp.ossc.nimbus.core.ArgumentMetaData argData = (jp.ossc.nimbus.core.ArgumentMetaData)argDatas.next();
             Object arg = createArgument(argData);
             Class typeClass = getTypeClass(argData);
             if(typeClass == null){
@@ -2676,7 +2698,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                     final Iterator args = data.getArguments().iterator();
                     int index = 0;
                     while(args.hasNext()){
-                        ArgumentMetaData argData = (ArgumentMetaData)args.next();
+                        jp.ossc.nimbus.core.ArgumentMetaData argData = (jp.ossc.nimbus.core.ArgumentMetaData)args.next();
                         Class type = null;
                         try{
                             type = getTypeClass(argData);
@@ -2721,13 +2743,13 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
     }
     
-    protected Object callStaticInvoke(StaticInvokeMetaData data) throws Exception{
+    protected Object callStaticInvoke(jp.ossc.nimbus.core.StaticInvokeMetaData data) throws Exception{
         final Class targetClass = Utility.convertStringToClass(data.getCode());
         List paramTypes = new ArrayList(data.getArguments().size());
         List params = new ArrayList(data.getArguments().size());
         final Iterator argDatas = data.getArguments().iterator();
         while(argDatas.hasNext()){
-            ArgumentMetaData argData = (ArgumentMetaData)argDatas.next();
+            jp.ossc.nimbus.core.ArgumentMetaData argData = (jp.ossc.nimbus.core.ArgumentMetaData)argDatas.next();
             Object arg = createArgument(argData);
             Class typeClass = getTypeClass(argData);
             if(typeClass == null){
@@ -2764,13 +2786,13 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
     }
     
-    protected Object getStaticField(StaticFieldRefMetaData data) throws Exception{
+    protected Object getStaticField(jp.ossc.nimbus.core.StaticFieldRefMetaData data) throws Exception{
         final Class clazz = Utility.convertStringToClass(data.getCode());
         final Field field = clazz.getField(data.getName());
         return field.get(null);
     }
     
-    protected Object getServiceObject(ServiceRefMetaData data) throws Exception{
+    protected Object getServiceObject(jp.ossc.nimbus.core.ServiceRefMetaData data) throws Exception{
         String serviceNameStr = data.getServiceName();
         serviceNameStr = replaceProperty(serviceNameStr);
         final ServiceNameEditor editor = new ServiceNameEditor();
@@ -2779,22 +2801,249 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         return ServiceManagerFactory.getServiceObject((ServiceName)editor.getValue());
     }
     
-    protected class RequestMetaData extends ObjectMetaData{
+    protected class ObjectMetaData extends jp.ossc.nimbus.core.ObjectMetaData{
+        
+        private static final long serialVersionUID = -260416443689809096L;
+        
+        public static final String REF_ATTRIBUTE_NAME = "ref";
+        
+        protected String ref;
+        
+        public ObjectMetaData(MetaData parent){
+            super(BeanFlowRestServerService.this.getServiceLoader(), parent);
+        }
+        
+        public String getRef(){
+            return ref;
+        }
+        
+        protected void importCodeAttribute(Element element) throws DeploymentException{
+            code = getOptionalAttribute(element, CODE_ATTRIBUTE_NAME);
+        }
+        
+        protected void importRefAttribute(Element element) throws DeploymentException{
+            ref = getOptionalAttribute(element, REF_ATTRIBUTE_NAME);
+            if(code == null && ref == null){
+                throw new DeploymentException(
+                    CODE_ATTRIBUTE_NAME + " or " + REF_ATTRIBUTE_NAME + " attribute is require."
+                );
+            }
+        }
+        
+        public void importXML(Element element) throws DeploymentException{
+            super.importXML(element);
+            importRefAttribute(element);
+        }
+        
+        protected jp.ossc.nimbus.core.ConstructorMetaData createConstructorMetaData() throws DeploymentException{
+            return new ConstructorMetaData(this);
+        }
+        
+        protected jp.ossc.nimbus.core.FieldMetaData createFieldMetaData() throws DeploymentException{
+            return new FieldMetaData(this);
+        }
+        
+        protected jp.ossc.nimbus.core.AttributeMetaData createAttributeMetaData() throws DeploymentException{
+            return new AttributeMetaData(this);
+        }
+        
+        protected jp.ossc.nimbus.core.InvokeMetaData createInvokeMetaData() throws DeploymentException{
+            return new InvokeMetaData(this);
+        }
+    }
+    
+    protected class ConstructorMetaData extends jp.ossc.nimbus.core.ConstructorMetaData{
+        
+        private static final long serialVersionUID = 6663456944825341024L;
+        
+        public ConstructorMetaData(jp.ossc.nimbus.core.ObjectMetaData parent){
+            super(parent);
+        }
+        
+        protected jp.ossc.nimbus.core.InvokeMetaData createInvokeMetaData() throws DeploymentException{
+            return new InvokeMetaData(this);
+        }
+        
+        protected jp.ossc.nimbus.core.StaticInvokeMetaData createStaticInvokeMetaData() throws DeploymentException{
+            return new StaticInvokeMetaData(this);
+        }
+        
+        protected jp.ossc.nimbus.core.ArgumentMetaData createArgumentMetaData() throws DeploymentException{
+            return new ArgumentMetaData(this, (jp.ossc.nimbus.core.ObjectMetaData)getParent());
+        }
+    }
+    
+    protected class FieldMetaData extends jp.ossc.nimbus.core.FieldMetaData{
+        
+        private static final long serialVersionUID = 7939927805968169125L;
+        
+        public FieldMetaData(MetaData parent){
+            super(parent);
+        }
+        
+        protected jp.ossc.nimbus.core.ObjectMetaData createObjectMetaData() throws DeploymentException{
+            return new ObjectMetaData(this);
+        }
+        
+        protected jp.ossc.nimbus.core.StaticInvokeMetaData createStaticInvokeMetaData() throws DeploymentException{
+            return new StaticInvokeMetaData(this);
+        }
+    }
+    
+    protected class AttributeMetaData extends jp.ossc.nimbus.core.AttributeMetaData{
+        
+        private static final long serialVersionUID = 405447874432233055L;
+        
+        public AttributeMetaData(MetaData parent){
+            super(parent);
+        }
+        
+        protected jp.ossc.nimbus.core.ObjectMetaData createObjectMetaData() throws DeploymentException{
+            return new ObjectMetaData(this);
+        }
+        
+        protected jp.ossc.nimbus.core.StaticInvokeMetaData createStaticInvokeMetaData() throws DeploymentException{
+            return new StaticInvokeMetaData(this);
+        }
+    }
+    
+    protected class StaticInvokeMetaData extends jp.ossc.nimbus.core.StaticInvokeMetaData{
+        
+        private static final long serialVersionUID = -8381816250412798742L;
+        
+        public StaticInvokeMetaData(MetaData parent){
+            super(parent);
+        }
+        
+        protected jp.ossc.nimbus.core.ArgumentMetaData createArgumentMetaData() throws DeploymentException{
+            return new ArgumentMetaData(this, getParentObjectMetaData());
+        }
+    }
+    
+    protected class InvokeMetaData extends jp.ossc.nimbus.core.InvokeMetaData{
+        
+        private static final long serialVersionUID = 1445714181356175716L;
+        
+        public InvokeMetaData(MetaData parent){
+            super(parent);
+        }
+        
+        protected jp.ossc.nimbus.core.StaticInvokeMetaData createStaticInvokeMetaData() throws DeploymentException{
+            return new StaticInvokeMetaData(this);
+        }
+        
+        protected jp.ossc.nimbus.core.InvokeMetaData createInvokeMetaData() throws DeploymentException{
+            return new InvokeMetaData(this);
+        }
+    }
+    
+    protected class ArgumentMetaData extends jp.ossc.nimbus.core.ArgumentMetaData{
+        
+        private static final long serialVersionUID = 6096154117304638698L;
+        
+        public ArgumentMetaData(MetaData parent, jp.ossc.nimbus.core.ObjectMetaData objData){
+            super(parent, objData);
+        }
+        
+        protected jp.ossc.nimbus.core.ObjectMetaData createObjectMetaData() throws DeploymentException{
+            return new ObjectMetaData(this);
+        }
+        
+        protected jp.ossc.nimbus.core.StaticInvokeMetaData createStaticInvokeMetaData() throws DeploymentException{
+            return new StaticInvokeMetaData(this);
+        }
+    }
+    
+    protected class ObjectDefMetaData extends jp.ossc.nimbus.core.ObjectMetaData{
+        
+        private static final long serialVersionUID = -8274604469407521804L;
+        
+        public static final String TAG_NAME = "object-def";
+        
+        public static final String NAME_ATTRIBUTE_NAME = "name";
+        
+        protected String name;
+        
+        public ObjectDefMetaData(MetaData parent){
+            super(BeanFlowRestServerService.this.getServiceLoader(), parent);
+        }
+        
+        public String getName(){
+            return name;
+        }
+        
+        protected void checkTagName(Element element) throws DeploymentException{
+            if(!element.getTagName().equals(TAG_NAME)){
+                throw new DeploymentException(
+                    "Tag must be " + TAG_NAME + " : "
+                     + element.getTagName()
+                );
+            }
+        }
+        
+        public void importXML(Element element) throws DeploymentException{
+            super.importXML(element);
+            name = getUniqueAttribute(element, NAME_ATTRIBUTE_NAME);
+        }
+        
+        protected jp.ossc.nimbus.core.ConstructorMetaData createConstructorMetaData() throws DeploymentException{
+            return new ConstructorMetaData(this);
+        }
+        
+        protected jp.ossc.nimbus.core.FieldMetaData createFieldMetaData() throws DeploymentException{
+            return new FieldMetaData(this);
+        }
+        
+        protected jp.ossc.nimbus.core.AttributeMetaData createAttributeMetaData() throws DeploymentException{
+            return new AttributeMetaData(this);
+        }
+        
+        protected jp.ossc.nimbus.core.InvokeMetaData createInvokeMetaData() throws DeploymentException{
+            return new InvokeMetaData(this);
+        }
+    }
+    
+    protected abstract class ResourceObjectMetaData extends ObjectMetaData{
+        
+        public static final String NAME_ATTRIBUTE_NAME = "name";
+        
+        protected String name;
+        
+        public ResourceObjectMetaData(MetaData parent){
+            super(parent);
+        }
+        
+        public String getName(){
+            return name;
+        }
+        
+        protected void importCodeAttribute(Element element) throws DeploymentException{
+            code = getOptionalAttribute(element, CODE_ATTRIBUTE_NAME);
+        }
+        
+        protected void importRefAttribute(Element element) throws DeploymentException{
+            ref = getOptionalAttribute(element, REF_ATTRIBUTE_NAME);
+        }
+        
+        public void importXML(Element element) throws DeploymentException{
+            super.importXML(element);
+            name = getOptionalAttribute(element, NAME_ATTRIBUTE_NAME);
+            if(name == null && code == null && ref == null){
+                throw new DeploymentException(
+                    CODE_ATTRIBUTE_NAME + " or " + NAME_ATTRIBUTE_NAME + " or " + REF_ATTRIBUTE_NAME + " attribute is require."
+                );
+            }
+        }
+    }
+    
+    protected class RequestMetaData extends ResourceObjectMetaData{
         
         private static final long serialVersionUID = 6894091068389999950L;
         
         public static final String TAG_NAME = "request";
         
-        public static final String ATTRIBUTE_NAME_NAME = "name";
-        
-        protected String name;
-        
         public RequestMetaData(MetaData parent){
-            super(BeanFlowRestServerService.this.getServiceLoader(), parent);
-        }
-        
-        public String getName(){
-            return name;
+            super(parent);
         }
         
         protected void checkTagName(Element element) throws DeploymentException{
@@ -2805,38 +3054,16 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 );
             }
         }
-        
-        protected void importCodeAttribute(Element element) throws DeploymentException{
-            code = getOptionalAttribute(element, CODE_ATTRIBUTE_NAME);
-        }
-        
-        public void importXML(Element element) throws DeploymentException{
-            super.importXML(element);
-            name = getOptionalAttribute(element, ATTRIBUTE_NAME_NAME);
-            if(name == null && code == null){
-                throw new DeploymentException(
-                    name + " or " + code + " attribute is require."
-                );
-            }
-        }
     }
     
-    protected class ResponseMetaData extends ObjectMetaData{
+    protected class ResponseMetaData extends ResourceObjectMetaData{
         
         private static final long serialVersionUID = 4090435433096913841L;
         
         public static final String TAG_NAME = "response";
         
-        public static final String ATTRIBUTE_NAME_NAME = "name";
-        
-        protected String name;
-        
         public ResponseMetaData(MetaData parent){
-            super(BeanFlowRestServerService.this.getServiceLoader(), parent);
-        }
-        
-        public String getName(){
-            return name;
+            super(parent);
         }
         
         protected void checkTagName(Element element) throws DeploymentException{
@@ -2847,23 +3074,9 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 );
             }
         }
-        
-        protected void importCodeAttribute(Element element) throws DeploymentException{
-            code = getOptionalAttribute(element, CODE_ATTRIBUTE_NAME);
-        }
-        
-        public void importXML(Element element) throws DeploymentException{
-            super.importXML(element);
-            name = getOptionalAttribute(element, ATTRIBUTE_NAME_NAME);
-            if(name == null && code == null){
-                throw new DeploymentException(
-                    name + " or " + code + " attribute is require."
-                );
-            }
-        }
     }
     
-    public class PostMetaData extends MetaData{
+    protected class PostMetaData extends MetaData{
 
         private static final long serialVersionUID = -6372696917063102603L;
 
@@ -2926,7 +3139,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
     }
 
-    public class GetMetaData extends MetaData{
+    protected class GetMetaData extends MetaData{
 
         private static final long serialVersionUID = -7298962823068474227L;
 
@@ -2989,7 +3202,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
     }
 
-    public class HeadMetaData extends MetaData{
+    protected class HeadMetaData extends MetaData{
 
         private static final long serialVersionUID = -5269682659140303058L;
 
@@ -3038,7 +3251,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
     }
 
-    public class PutMetaData extends MetaData{
+    protected class PutMetaData extends MetaData{
 
         private static final long serialVersionUID = -5753138646526386529L;
 
@@ -3101,7 +3314,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
     }
 
-    public class DeleteMetaData extends MetaData{
+    protected class DeleteMetaData extends MetaData{
 
         private static final long serialVersionUID = -3735047733753523513L;
 
@@ -3164,7 +3377,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
     }
 
-    public class OptionsMetaData extends MetaData{
+    protected class OptionsMetaData extends MetaData{
 
         private static final long serialVersionUID = -9220229909119120614L;
 
