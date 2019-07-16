@@ -117,16 +117,179 @@ The DOCTYPE is:
 
 <!-- request要素は、メソッドのリクエスト情報を定義する要素です。
 -->
-<!ELEMENT request EMPTY>
+<!ELEMENT request (constructor? | field* | attribute* | invoke*)*>
 
 <!-- code属性は、リクエスト情報を格納するBeanのクラス名を定義します。
 -->
-<!ATTLIST request code CDATA #REQUIRED>
+<!ATTLIST request code CDATA #IMPLIED>
+
+<!-- name属性は、リクエスト情報を格納するBeanを取得するフロー名を定義します。
+-->
+<!ATTLIST request name CDATA #IMPLIED>
 
 <!-- response要素は、メソッドのレスポンス情報を定義する要素です。
 -->
-<!ELEMENT response EMPTY>
+<!ELEMENT response (constructor? | field* | attribute* | invoke*)*>
 
 <!-- code属性は、レスポンス情報を格納するBeanのクラス名を定義します。
 -->
-<!ATTLIST response code CDATA #REQUIRED>
+<!ATTLIST response code CDATA #IMPLIED>
+
+<!-- name属性は、レスポンス情報を格納するBeanを取得するフロー名を定義します。
+-->
+<!ATTLIST response name CDATA #IMPLIED>
+
+<!-- invoke要素は、request、response、object要素で生成する
+オブジェクトのメソッド実行属性を定義します。
+invoke要素の子要素にargument要素を指定します。引数ありのメソッドを実行したい
+場合に指定します。
+この要素がconstructor要素またはtarget要素の子要素として現れる場合のみ、子要素にtarget要素を持つ事ができます。target要素では、呼び出し対象のオブジェクトを指定します。
+Serviceやオブジェクトには、該当するメソッドを実装しておく必要があります。
+-->
+<!ELEMENT invoke (target?, argument*)>
+
+<!-- name属性は、invoke要素で実行するメソッド名を定義します。
+-->
+<!ATTLIST invoke name CDATA #REQUIRED>
+
+<!-- target要素は、invoke要素でメソッド呼び出しを行う対象のオブジェクトを定義します。
+-->
+<!ELEMENT target (object | service-ref | invoke | static-invoke | static-field-ref)*>
+
+<!-- static-invoke要素は、staticメソッドの呼び出しを定義します。
+static-invoke要素の子要素にargument要素を指定します。引数ありのメソッドを実行したい
+場合に指定します。
+-->
+<!ELEMENT static-invoke (argument*)>
+
+<!-- code属性は、static-invoke要素で実行するstaticメソッドが宣言されているクラス名を定義します。
+-->
+<!ATTLIST static-invoke code CDATA #REQUIRED>
+
+<!-- name属性は、static-invoke要素で実行するstaticメソッド名を定義します。
+-->
+<!ATTLIST static-invoke name CDATA #REQUIRED>
+
+<!-- static-field-ref要素は、staticフィールド参照を定義します。
+static-field-ref要素のcode属性でクラス名を、name属性でフィールド名を定義します。
+-->
+<!ELEMENT static-field-ref EMPTY>
+
+<!-- code属性は、static-field-ref要素で参照するstaticフィールドが宣言されているクラス名を指定します。
+-->
+<!ATTLIST static-field-ref code CDATA #REQUIRED>
+
+<!-- name属性は、static-field-ref要素で参照するstaticフィールド名を指定します。
+-->
+<!ATTLIST static-field-ref name CDATA #REQUIRED>
+
+<!-- object要素は、生成する任意のオブジェクトを定義します。
+-->
+<!ELEMENT object (constructor? | field* | attribute* | invoke*)*>
+
+<!-- constructor要素は、request、response、object要素で生成するオブジェクトのコンストラクタ属性を定義します。
+constructor要素の子要素にargument要素を指定します。デフォルトコンストラクタ以外
+のコンストラクタを指定したい場合に指定します。
+生成するオブジェクトのクラスには、該当するコンストラクタを実装しておく必要があります。
+-->
+<!ELEMENT constructor (argument+ | invoke |static-invoke | static-field-ref)*>
+
+<!-- argument要素は、constructor要素で指定するコンストラクタの引数を定義します。
+argument要素の内容に、引数の値を指定します。
+引数として、サービスを参照する時は、service-ref要素。
+-->
+<!ELEMENT argument (#PCDATA | service-ref | object | static-invoke | static-field-ref)*>
+
+<!-- type属性は、argument要素で定義する引数の型を指定します。
+argument要素の子要素にservice-ref要素やobject要素を定義する場合で、引数の型が
+それらの要素が表すオブジェクトの型と等しい場合は、省略可能です。
+-->
+<!ATTLIST argument type CDATA #IMPLIED>
+
+<!-- valueType属性は、argument要素で定義する引数の実型を指定します。
+引数の型と設定したいオブジェクトの型が代入互換の関係にあり、等しい型ではない
+場合に指定します。
+-->
+<!ATTLIST argument valueType CDATA #IMPLIED>
+
+<!-- nullValue属性は、argument要素で定義する引数の値がnullである事を指定します。
+argument要素が表す値がnullである場合に、trueを指定します。
+-->
+<!ATTLIST argument nullValue (true|false) "false">
+
+<!-- field要素は、request、response、object要素で生成するオブジェクトのフィールド属性を定義します。
+field要素の内容に、値を指定します。ここで指定された値は、
+java.beans.PropertyEditorによって編集されます。
+生成するオブジェクトのクラスには、この要素のname属性で定義するフィールド属性名に該当するフィールド
+を実装しておく必要があります。
+-->
+<!ELEMENT field (#PCDATA | service-ref | object | static-invoke | static-field-ref)*>
+
+<!-- name属性は、field要素で定義するフィールド属性の属性名を指定します。
+request、response、object要素で生成するオブジェクトには、この要素のname属性で定義するフィールド属性名
+に該当するフィールドを実装しておく必要があります。
+-->
+<!ATTLIST field name CDATA #REQUIRED>
+
+<!-- type属性は、field要素で定義するフィールド属性の型を指定します。
+request、response、object要素で生成するオブジェクトに、name属性で定義した属性名に対するフィールドの型
+と内容の文字列を編集するPropertyEditorが登録されている型が同じ場合は、
+省略可能です。
+request、response、object要素で生成するオブジェクトに、name属性で定義した属性名に対するフィールドの型
+と代入互換の関係にある別の型で設定したい場合は、この属性で必要な型を定義します。
+指定した型に該当するjava.beans.PropertyEditorが登録されていない場合は、
+値が設定されません。
+-->
+<!ATTLIST field type CDATA #IMPLIED>
+
+<!-- nullValue属性は、field要素で定義するフィールドの値がnullである事を指定します。
+field要素が表す値がnullである場合に、trueを指定します。
+-->
+<!ATTLIST field nullValue (true|false) "false">
+
+<!-- attribute要素は、request、response、object要素で生成するオブジェクトのBean属性を定義します。
+attribute要素の内容に、値を指定します。ここで指定された値は、
+java.beans.PropertyEditorによってServiceに設定されます。
+Serviceには、この要素のname属性で定義する属性名に該当するsetterを実装しておくか
+、Mapインタフェースを実装しておく必要があります。
+-->
+<!ELEMENT attribute (#PCDATA | service-ref | object | static-invoke | static-field-ref)*>
+
+<!-- name属性は、attribute要素で定義するBean属性の属性名を指定します。
+request、response、object要素で生成するオブジェクトには、ここで定義する属性名の属性に対するsetterを
+実装しておくか、Mapインタフェースを実装する必要があります。
+-->
+<!ATTLIST attribute name CDATA #REQUIRED>
+
+<!-- type属性は、attribute要素で定義するBean属性の型を指定します。
+request、response、object要素で生成するオブジェクトに、name属性で定義した属性名に対するsetterが用意
+されている場合は、省略可能です。但し、DOMのElementをそのまま設定したい場合は、
+この属性に、"org.w3c.dom.Element"を指定する必要があります。
+request、response、object要素で生成するオブジェクトに、name属性で定義した属性名に対するsetterが用意
+されていない場合で、Mapインタフェースを実装している場合に、String型以外の型で
+設定する必要がある場合は、この属性で型を定義します。
+また、request、response、object要素で生成するオブジェクトに、name属性で定義した属性名に対するsetterが
+用意されている場合でも、そのsetterの引数の型と代入互換の関係にある別の型で設定
+したい場合などにも、この属性で必要な型を定義します。
+指定した型に該当するjava.beans.PropertyEditorが登録されていない場合は、
+値が設定されません。
+-->
+<!ATTLIST attribute type CDATA #IMPLIED>
+
+<!-- nullValue属性は、attribute要素で定義する属性の値がnullである事を指定します。
+attribute要素が表す値がnullである場合に、trueを指定します。
+-->
+<!ATTLIST attribute nullValue (true|false) "false">
+
+<!-- service-ref要素は、参照するServiceのサービス名を定義します。
+service-ref要素の内容に、サービス名を指定します。
+-->
+<!ELEMENT service-ref (#PCDATA)>
+
+<!-- manager-name属性は、service-ref要素で定義するサービスが登録されている
+manager要素のname属性を指定する。
+service-ref要素の親要素のmanagerの子要素に存在しないservice要素
+を参照する場合に、そのservice要素の親要素となっているmanager要素のname属性を指
+定する。同じmanager要素内のservice要素を参照する場合には、省略可能である。
+-->
+<!ATTLIST service-ref manager-name CDATA #IMPLIED>
