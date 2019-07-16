@@ -42,6 +42,10 @@ import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.net.MalformedURLException;
@@ -63,6 +67,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.InflaterInputStream;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.servlet.ServletInputStream;
 import javax.servlet.ServletOutputStream;
@@ -82,9 +88,20 @@ import jp.ossc.nimbus.beans.NimbusPropertyEditorManager;
 import jp.ossc.nimbus.beans.NoSuchPropertyException;
 import jp.ossc.nimbus.beans.Property;
 import jp.ossc.nimbus.beans.PropertyAccess;
+import jp.ossc.nimbus.beans.SimpleProperty;
+import jp.ossc.nimbus.beans.ServiceNameEditor;
 import jp.ossc.nimbus.beans.dataset.DataSet;
 import jp.ossc.nimbus.core.DeploymentException;
 import jp.ossc.nimbus.core.MetaData;
+import jp.ossc.nimbus.core.ObjectMetaData;
+import jp.ossc.nimbus.core.ConstructorMetaData;
+import jp.ossc.nimbus.core.FieldMetaData;
+import jp.ossc.nimbus.core.StaticFieldRefMetaData;
+import jp.ossc.nimbus.core.InvokeMetaData;
+import jp.ossc.nimbus.core.StaticInvokeMetaData;
+import jp.ossc.nimbus.core.ArgumentMetaData;
+import jp.ossc.nimbus.core.AttributeMetaData;
+import jp.ossc.nimbus.core.ServiceRefMetaData;
 import jp.ossc.nimbus.core.NimbusClassLoader;
 import jp.ossc.nimbus.core.NimbusEntityResolver;
 import jp.ossc.nimbus.core.ServiceBase;
@@ -160,6 +177,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
     protected Map requestConverterMapping;
     protected Map responseConverterServiceNameMapping;
     protected Map responseConverterMapping;
+    protected ConcurrentMap methodCache = new ConcurrentHashMap();
 
     public void setServerDefinitionPath(String path){
         serverDefinitionPath = path;
@@ -659,15 +677,15 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
         Map pathParameters = request.getPathParameterMap();
         Object requestObj = null;
-        if(beanFlowInvokerFactory.containsFlow(requestData.code)){
-            final String flowName = requestData.code;
+        if(requestData.getName() != null){
+            final String flowName = requestData.getName();
             BeanFlowInvoker flow = null;
             try{
                 flow = beanFlowInvokerFactory.createFlow(flowName);
                 requestObj = flow.invokeFlow(new RestContext(request, response));
                 request.setRequestObject(requestObj);
             }catch(Throwable th){
-                getLogger().write("BFRS_00004", new Object[]{resource.resourcePath.path, requestData.code}, th);
+                getLogger().write("BFRS_00004", new Object[]{resource.resourcePath.path, requestData.getName()}, th);
                 if(journal != null){
                     journal.addInfo(JOURNAL_KEY_EXCEPTION, th);
                 }
@@ -677,9 +695,9 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }else{
             Class requestObjClass = null;
             try{
-                requestObjClass = Utility.convertStringToClass(requestData.code, true);
+                requestObjClass = Utility.convertStringToClass(requestData.getCode(), true);
             }catch(ClassNotFoundException e){
-                getLogger().write("BFRS_00004", new Object[]{resource.resourcePath.path, requestData.code}, e);
+                getLogger().write("BFRS_00004", new Object[]{resource.resourcePath.path, requestData.getCode()}, e);
                 if(journal != null){
                     journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
                 }
@@ -739,16 +757,9 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 return true;
             }else{
                 try{
-                    requestObj = requestObjClass.newInstance();
+                    requestObj = createObject(requestData);
                     request.setRequestObject(requestObj);
-                }catch(InstantiationException e){
-                    getLogger().write("BFRS_00006", new Object[]{resource.resourcePath.path, requestObjClass.getName()}, e);
-                    if(journal != null){
-                        journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
-                    }
-                    response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                    return false;
-                }catch(IllegalAccessException e){
+                }catch(Exception e){
                     getLogger().write("BFRS_00006", new Object[]{resource.resourcePath.path, requestObjClass.getName()}, e);
                     if(journal != null){
                         journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
@@ -847,43 +858,33 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
     }
 
     protected boolean processSetupResponseObject(
-        RestRequest request,
-        RestResponse response,
+        final RestRequest request,
+        final RestResponse response,
         List paths,
         ResourceMetaData resource,
-        ResponseMetaData responseData
+        final ResponseMetaData responseData
     ) throws Exception{
         if(responseData == null){
             return true;
         }
-        if(beanFlowInvokerFactory.containsFlow(responseData.code)){
-            final String flowName = responseData.code;
-            BeanFlowInvoker flow = null;
-            try{
-                flow = beanFlowInvokerFactory.createFlow(flowName);
-                Object responseObj = flow.invokeFlow(new RestContext(request, response));
-                response.setResponseObject(responseObj);
-            }catch(Throwable th){
-                getLogger().write("BFRS_00011", new Object[]{resource.resourcePath.path, responseData.code}, th);
-                if(journal != null){
-                    journal.addInfo(JOURNAL_KEY_EXCEPTION, th);
+        if(responseData.getName() != null){
+            response.setReponseObjectFactory(
+                new RestResponse.ReponseObjectFactory(){
+                    public Object createResponseObject() throws Exception{
+                        final String flowName = responseData.getName();
+                        BeanFlowInvoker flow = beanFlowInvokerFactory.createFlow(flowName);
+                        return flow.invokeFlow(new RestContext(request, response));
+                    }
                 }
-                response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                return false;
-            }
+            );
         }else{
-            Class responseObjClass = null;
-            try{
-                responseObjClass = Utility.convertStringToClass(responseData.code, true);
-            }catch(ClassNotFoundException e){
-                getLogger().write("BFRS_00011", new Object[]{resource.resourcePath.path, responseData.code}, e);
-                if(journal != null){
-                    journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
+            response.setReponseObjectFactory(
+                new RestResponse.ReponseObjectFactory(){
+                    public Object createResponseObject() throws Exception{
+                        return createObject(responseData);
+                    }
                 }
-                response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                return false;
-            }
-            response.setResponseObjectClass(responseObjClass);
+            );
         }
         return true;
     }
@@ -1867,11 +1868,43 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
         }
     }
-
+    
+    protected String replaceProperty(String textValue){
+        
+        // システムプロパティの置換
+        textValue = Utility.replaceSystemProperty(textValue);
+        
+        // サービスローダ構成プロパティの置換
+        if(getServiceLoader() != null){
+            textValue = Utility.replaceServiceLoderConfig(
+                textValue,
+                getServiceLoader().getConfig()
+            );
+        }
+        
+        // マネージャプロパティの置換
+        if(getServiceManager() != null){
+            textValue = Utility.replaceManagerProperty(
+                getServiceManager(),
+                textValue
+            );
+        }
+        
+        // サーバプロパティの置換
+        textValue = Utility.replaceServerProperty(textValue);
+        
+        return textValue;
+    }
+    
+    protected PropertyEditor findPropEditor(Class cls) {
+        jp.ossc.nimbus.core.ServiceLoader loader = getServiceLoader();
+        return loader != null ? loader.findEditor(cls) : NimbusPropertyEditorManager.findEditor(cls);
+    }
+    
     protected class MyErrorHandler implements ErrorHandler{
-
+        
         private boolean isError;
-
+        
         public void warning(SAXParseException e) throws SAXException{
             getLogger().write(
                 "BFRS_00001",
@@ -2148,33 +2181,33 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
         }
     }
-
-    public static class RestServerMetaData extends MetaData{
-
+    
+    public class RestServerMetaData extends MetaData{
+        
         private static final long serialVersionUID = -8221854228229536891L;
-
+        
         public static final String TAG_NAME = "restserver";
-
+        
         protected List resources = new ArrayList();
         protected ResourceTree resourceTree = new ResourceTree();
-
+        
         public RestServerMetaData(){
         }
-
+        
         public List getResourceMetaDataList(){
             return resources;
         }
-
+        
         public void importXML(Element element) throws DeploymentException{
             super.importXML(element);
-
+            
             if(!element.getTagName().equals(TAG_NAME)){
                 throw new DeploymentException(
                     "Root tag must be " + TAG_NAME + " : "
                      + element.getTagName()
                 );
             }
-
+            
             final Iterator propElements = getChildrenByTagName(
                 element,
                 ResourceMetaData.TAG_NAME
@@ -2187,15 +2220,15 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
         }
     }
-
-    public static class ResourceMetaData extends MetaData{
-
+    
+    public class ResourceMetaData extends MetaData{
+        
         private static final long serialVersionUID = -9068306933796302144L;
-
+        
         public static final String TAG_NAME = "resource";
         public static final String ATTRIBUTE_NAME_NAME = "name";
         public static final String DESCRIPTION_TAG_NAME = "description";
-
+        
         protected ResourcePath resourcePath;
         protected PostMetaData postData;
         protected GetMetaData getData;
@@ -2203,39 +2236,39 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         protected PutMetaData putData;
         protected DeleteMetaData deleteData;
         protected OptionsMetaData optionsData;
-
+        
         public ResourceMetaData(RestServerMetaData parent){
             super(parent);
         }
-
+        
         public ResourcePath getResourcePath(){
             return resourcePath;
         }
-
+        
         public PostMetaData getPostMetaData(){
             return postData;
         }
-
+        
         public GetMetaData getGetMetaData(){
             return getData;
         }
-
+        
         public HeadMetaData getHeadMetaData(){
             return headData;
         }
-
+        
         public PutMetaData getPutMetaData(){
             return putData;
         }
-
+        
         public DeleteMetaData getDeleteMetaData(){
             return deleteData;
         }
-
+        
         public OptionsMetaData getOptionsMetaData(){
             return optionsData;
         }
-
+        
         public void importXML(Element element) throws DeploymentException{
             super.importXML(element);
             if(!element.getTagName().equals(TAG_NAME)){
@@ -2250,7 +2283,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }catch(IllegalArgumentException e){
                 throw new DeploymentException("Resource name is illegal. name=" + name, e);
             }
-
+            
             Element postElement = getOptionalChild(
                 element,
                 PostMetaData.TAG_NAME
@@ -2259,7 +2292,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 postData = new PostMetaData(ResourceMetaData.this);
                 postData.importXML(postElement);
             }
-
+            
             Element getElement = getOptionalChild(
                 element,
                 GetMetaData.TAG_NAME
@@ -2268,7 +2301,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 getData = new GetMetaData(ResourceMetaData.this);
                 getData.importXML(getElement);
             }
-
+            
             Element headElement = getOptionalChild(
                 element,
                 HeadMetaData.TAG_NAME
@@ -2277,7 +2310,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 headData = new HeadMetaData(ResourceMetaData.this);
                 headData.importXML(headElement);
             }
-
+            
             Element putElement = getOptionalChild(
                 element,
                 PutMetaData.TAG_NAME
@@ -2286,7 +2319,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 putData = new PutMetaData(ResourceMetaData.this);
                 putData.importXML(putElement);
             }
-
+            
             Element deleteElement = getOptionalChild(
                 element,
                 DeleteMetaData.TAG_NAME
@@ -2295,7 +2328,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 deleteData = new DeleteMetaData(ResourceMetaData.this);
                 deleteData.importXML(deleteElement);
             }
-
+            
             Element optionsElement = getOptionalChild(
                 element,
                 OptionsMetaData.TAG_NAME
@@ -2306,66 +2339,531 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
         }
     }
-
-    public static class RequestMetaData extends MetaData{
-
+    
+    protected Object createObject(ObjectMetaData data) throws Exception{
+        Object obj = null;
+        if(data.getConstructor() == null){
+            final Class clazz = Utility.convertStringToClass(data.getCode());
+            if(clazz.isArray()){
+                final Class elementType = clazz.getComponentType();
+                obj = Array.newInstance(elementType, 0);
+            }else{
+                obj = clazz.newInstance();
+            }
+        }else{
+            obj = construct(data.getConstructor());
+        }
+        
+        final Iterator fields = data.getFields().iterator();
+        while(fields.hasNext()){
+            FieldMetaData field = (FieldMetaData)fields.next();
+            setFieldValue(field, obj);
+        }
+        
+        final Iterator attributes = data.getAttributes().iterator();
+        while(attributes.hasNext()){
+            AttributeMetaData attribute = (AttributeMetaData)attributes.next();
+            setAttributeValue(attribute, obj);
+        }
+        
+        final Iterator invokes = data.getInvokes().iterator();
+        while(invokes.hasNext()){
+            MetaData invokeData = (MetaData)invokes.next();
+            if(invokeData instanceof InvokeMetaData){
+                InvokeMetaData invoke = (InvokeMetaData)invokeData;
+                callInvoke(invoke, obj);
+            }else if(invokeData instanceof StaticInvokeMetaData){
+                StaticInvokeMetaData invoke = (StaticInvokeMetaData)invokeData;
+                callStaticInvoke(invoke);
+            }
+        }
+        return obj;
+    }
+    
+    protected Object construct(ConstructorMetaData data) throws Exception{
+        if(data.getStaticFieldRef() != null){
+            return getStaticField((StaticFieldRefMetaData)data.getStaticFieldRef());
+        }else if(data.getStaticInvoke() != null){
+            return callStaticInvoke((StaticInvokeMetaData)data.getStaticInvoke());
+        }
+        ObjectMetaData objectData = (ObjectMetaData)data.getParent();
+        final Class clazz = Utility.convertStringToClass(objectData.getCode());
+        if(clazz.isArray()){
+            final Class elementType = clazz.getComponentType();
+            final Collection argCollection = data.getArguments();
+            Object argVals = Array.newInstance(
+                elementType,
+                argCollection.size()
+            );
+            final Iterator args = argCollection.iterator();
+            int i = 0;
+            while(args.hasNext()){
+                final ArgumentMetaData argData
+                     = (ArgumentMetaData)args.next();
+                Array.set(argVals, i, createArgument(argData));
+                i++;
+            }
+            return argVals;
+        }else{
+            List paramTypes = new ArrayList(data.getArguments().size());
+            List params = new ArrayList(paramTypes.size());
+            final Iterator argDatas = data.getArguments().iterator();
+            while(argDatas.hasNext()){
+                ArgumentMetaData argData = (ArgumentMetaData)argDatas.next();
+                Object arg = createArgument(argData);
+                Class typeClass = getTypeClass(argData);
+                if(typeClass == null){
+                    if(arg == null){
+                        throw new Exception(
+                            "Type is unknown : " + argData
+                        );
+                    }
+                    typeClass = arg.getClass();
+                }
+                params.add(arg);
+                paramTypes.add(typeClass);
+            }
+            
+            final Constructor c = clazz.getConstructor(
+                (Class[])paramTypes.toArray(new Class[paramTypes.size()])
+            );
+            return c.newInstance(params.toArray());
+        }
+    }
+    
+    protected Class getTypeClass(ArgumentMetaData arg) throws Exception{
+        if(arg.getType() != null){
+            return Utility.convertStringToClass(arg.getType());
+        }
+        if(arg.getValueType() != null){
+            return Utility.convertStringToClass(arg.getValueType());
+        }
+        if(arg.getValue() instanceof String){
+            return String.class;
+        }
+        return null;
+    }
+    
+    protected Class getValueTypeClass(ArgumentMetaData arg) throws Exception{
+        if(arg.getValueType() != null){
+            return Utility.convertStringToClass(arg.getValueType());
+        }
+        if(arg.getType() != null){
+            return Utility.convertStringToClass(arg.getType());
+        }
+        if(arg.getValue() instanceof String){
+            return String.class;
+        }
+        return null;
+    }
+    
+    protected Object createArgument(ArgumentMetaData data) throws Exception{
+        if(data.isNullValue()){
+            return null;
+        }
+        if(data.getValue() instanceof ServiceRefMetaData){
+            return getServiceObject((ServiceRefMetaData)data.getValue());
+        }else if(data.getValue() instanceof ObjectMetaData){
+            return createObject((ObjectMetaData)data.getValue());
+        }else if(data.getValue() instanceof StaticInvokeMetaData){
+            return callStaticInvoke((StaticInvokeMetaData)data.getValue());
+        }else if(data.getValue() instanceof StaticFieldRefMetaData){
+            return getStaticField((StaticFieldRefMetaData)data.getValue());
+        }else{
+            Class valueTypeClass = getValueTypeClass(data);
+            if(valueTypeClass == null){
+                throw new Exception(
+                    "Type is unknown : " + data
+                );
+            }
+            final PropertyEditor editor
+                 = findPropEditor(valueTypeClass);
+            if(editor == null){
+                throw new Exception(
+                    "PropertyEditor not found : " + valueTypeClass.getName()
+                );
+            }
+            editor.setAsText(
+                replaceProperty((String)data.getValue())
+            );
+            return editor.getValue();
+        }
+    }
+    
+    protected void setFieldValue(FieldMetaData data, Object target) throws Exception{
+        Object value = data.getValue();
+        if(data.isNullValue()){
+            value = null;
+        }else{
+            if(value instanceof ServiceRefMetaData){
+                value = getServiceObject((ServiceRefMetaData)value);
+            }else if(value instanceof ObjectMetaData){
+                value = createObject((ObjectMetaData)value);
+            }else if(value instanceof StaticInvokeMetaData){
+                value = callStaticInvoke((StaticInvokeMetaData)value);
+            }else if(value instanceof StaticFieldRefMetaData){
+                value = getStaticField((StaticFieldRefMetaData)value);
+            }else{
+                Class type = null;
+                if(data.getType() != null){
+                    type = Utility.convertStringToClass(data.getType());
+                }else{
+                    type = getField(data, target).getType();
+                }
+                if(type == null || Object.class.equals(data.getType())){
+                    type = String.class;
+                }
+                final PropertyEditor editor
+                     = findPropEditor(type);
+                if(editor == null){
+                    throw new Exception(
+                        "PropertyEditor not found : " + type.getName()
+                    );
+                }
+                editor.setAsText(
+                    replaceProperty((String)value)
+                );
+                value = editor.getValue();
+            }
+        }
+        getField(data, target).set(target, value);
+    }
+    
+    protected Field getField(FieldMetaData data, Object target) throws Exception{
+        final String name = data.getName();
+        final Class targetClazz = target.getClass();
+        Field field = null;
+        try{
+            field = targetClazz.getField(name);
+        }catch(NoSuchFieldException e){
+            if(name.length() != 0 && Character.isUpperCase(name.charAt(0))){
+                StringBuilder tmpName = new StringBuilder();
+                tmpName.append(Character.toLowerCase(name.charAt(0)));
+                if(name.length() > 1){
+                    tmpName.append(name.substring(1));
+                }
+                field = targetClazz.getField(tmpName.toString());
+            }else{
+                throw e;
+            }
+        }
+        return field;
+    }
+    
+    protected void setAttributeValue(AttributeMetaData data, Object target) throws Exception{
+        Object value = data.getValue();
+        Property property = propertyAccess.getProperty(data.getName());
+        if(data.isNullValue()){
+            value = null;
+        }else if(Element.class.getName().equals(data.getType())){
+            if(value instanceof ServiceRefMetaData){
+                value = getServiceObject((ServiceRefMetaData)value);
+            }else if(value instanceof ObjectMetaData){
+                value = createObject((ObjectMetaData)value);
+            }else if(value instanceof StaticInvokeMetaData){
+                value = callStaticInvoke((StaticInvokeMetaData)value);
+            }else if(value instanceof StaticFieldRefMetaData){
+                value = getStaticField((StaticFieldRefMetaData)value);
+            }else{
+                Class type = null;
+                if(data.getType() != null){
+                    type = Utility.convertStringToClass(data.getType());
+                }else{
+                    try{
+                        type = property.getPropertyType(target);
+                    }catch(NoSuchPropertyException e){
+                    }
+                }
+                if(type == null || Object.class.equals(type)){
+                    type = String.class;
+                }
+                final PropertyEditor editor = findPropEditor(type);
+                if(editor == null){
+                    throw new Exception(
+                        "PropertyEditor not found : " + type.getName()
+                    );
+                }
+                editor.setAsText(
+                    replaceProperty((String)value)
+                );
+                value = editor.getValue();
+            }
+        }
+        try{
+            Class type = null;
+            if(data.getType() != null){
+                type = Utility.convertStringToClass(data.getType());
+            }else if(value != null){
+                type = value.getClass();
+            }
+            property.setProperty(target, type, value);
+        }catch(InvocationTargetException e){
+            final Throwable th = e.getCause();
+            if(th == null){
+                throw e;
+            }
+            if(th instanceof Exception){
+                throw (Exception)th;
+            }else if(th instanceof Error){
+                throw (Error)th;
+            }else{
+                throw e;
+            }
+        }
+    }
+    
+    protected boolean isAccessableClass(Class clazz){
+        final int modifier = clazz.getModifiers();
+        return Modifier.isPublic(modifier)
+            || ((Modifier.isProtected(modifier)
+                || (!Modifier.isPublic(modifier)
+                    && !Modifier.isProtected(modifier)
+                    && !Modifier.isPrivate(modifier)))
+                && SimpleProperty.class.getPackage().equals(clazz.getPackage()));
+    }
+    
+    protected Object callInvoke(InvokeMetaData data, Object target) throws Exception{
+        List paramTypes = new ArrayList(data.getArguments().size());
+        List params = new ArrayList(paramTypes.size());
+        final Iterator argDatas = data.getArguments().iterator();
+        while(argDatas.hasNext()){
+            ArgumentMetaData argData = (ArgumentMetaData)argDatas.next();
+            Object arg = createArgument(argData);
+            Class typeClass = getTypeClass(argData);
+            if(typeClass == null){
+                if(arg == null){
+                    throw new Exception(
+                        "Type is unknown : " + argData
+                    );
+                }
+                typeClass = arg.getClass();
+            }
+            params.add(arg);
+            paramTypes.add(typeClass);
+        }
+        Class targetClass = target.getClass();
+        Method method = (Method)methodCache.get(targetClass);
+        if(method == null){
+            final Class[] paramTypeArray = (Class[])paramTypes.toArray(new Class[paramTypes.size()]);
+            do{
+                if(isAccessableClass(targetClass)){
+                    method = targetClass.getMethod(
+                        data.getName(),
+                        paramTypeArray
+                    );
+                }else{
+                    final Class[] interfaces = targetClass.getInterfaces();
+                    for(int i = 0; i < interfaces.length; i++){
+                        if(isAccessableClass(interfaces[i])){
+                            try{
+                                method = interfaces[i].getMethod(
+                                    data.getName(),
+                                    paramTypeArray
+                                );
+                                break;
+                            }catch(NoSuchMethodException e){
+                                continue;
+                            }
+                        }
+                    }
+                }
+            }while(method == null && (targetClass = targetClass.getSuperclass()) != null);
+            if(method == null){
+                final StringBuilder buf = new StringBuilder();
+                buf.append(data.getName());
+                buf.append('(');
+                if(data.getArguments().size() != 0){
+                    final Iterator args = data.getArguments().iterator();
+                    int index = 0;
+                    while(args.hasNext()){
+                        ArgumentMetaData argData = (ArgumentMetaData)args.next();
+                        Class type = null;
+                        try{
+                            type = getTypeClass(argData);
+                        }catch(Exception e){
+                        }
+                        if(type == null){
+                            final Object param = params.get(index);
+                            if(param != null){
+                                type = param.getClass();
+                            }
+                        }
+                        if(type != null){
+                            buf.append(type.getName());
+                        }
+                        if(args.hasNext()){
+                            buf.append(',');
+                        }
+                        index++;
+                    }
+                }
+                buf.append(')');
+                throw new NoSuchMethodException(
+                    target.getClass().getName() + '#' + buf
+                );
+            }
+            methodCache.putIfAbsent(targetClass, method);
+        }
+        try{
+            return method.invoke(target, params.toArray());
+        }catch(InvocationTargetException e){
+            final Throwable th = e.getCause();
+            if(th == null){
+                throw e;
+            }
+            if(th instanceof Exception){
+                throw (Exception)th;
+            }else if(th instanceof Error){
+                throw (Error)th;
+            }else{
+                throw e;
+            }
+        }
+    }
+    
+    protected Object callStaticInvoke(StaticInvokeMetaData data) throws Exception{
+        final Class targetClass = Utility.convertStringToClass(data.getCode());
+        List paramTypes = new ArrayList(data.getArguments().size());
+        List params = new ArrayList(data.getArguments().size());
+        final Iterator argDatas = data.getArguments().iterator();
+        while(argDatas.hasNext()){
+            ArgumentMetaData argData = (ArgumentMetaData)argDatas.next();
+            Object arg = createArgument(argData);
+            Class typeClass = getTypeClass(argData);
+            if(typeClass == null){
+                if(arg == null){
+                    throw new Exception(
+                        "Type is unknown : " + argData
+                    );
+                }
+                typeClass = arg.getClass();
+            }
+            params.add(arg);
+            if(paramTypes != null){
+                paramTypes.add(typeClass);
+            }
+        }
+        Method method = targetClass.getMethod(
+            data.getName(),
+            (Class[])paramTypes.toArray(new Class[paramTypes.size()])
+        );
+        try{
+            return method.invoke(null, params.toArray());
+        }catch(InvocationTargetException e){
+            final Throwable th = e.getCause();
+            if(th == null){
+                throw e;
+            }
+            if(th instanceof Exception){
+                throw (Exception)th;
+            }else if(th instanceof Error){
+                throw (Error)th;
+            }else{
+                throw e;
+            }
+        }
+    }
+    
+    protected Object getStaticField(StaticFieldRefMetaData data) throws Exception{
+        final Class clazz = Utility.convertStringToClass(data.getCode());
+        final Field field = clazz.getField(data.getName());
+        return field.get(null);
+    }
+    
+    protected Object getServiceObject(ServiceRefMetaData data) throws Exception{
+        String serviceNameStr = data.getServiceName();
+        serviceNameStr = replaceProperty(serviceNameStr);
+        final ServiceNameEditor editor = new ServiceNameEditor();
+        editor.setServiceManagerName(getServiceManager().getServiceManagerName());
+        editor.setAsText(serviceNameStr);
+        return ServiceManagerFactory.getServiceObject((ServiceName)editor.getValue());
+    }
+    
+    protected class RequestMetaData extends ObjectMetaData{
+        
         private static final long serialVersionUID = 6894091068389999950L;
-
+        
         public static final String TAG_NAME = "request";
-        public static final String ATTRIBUTE_NAME_CODE = "code";
-
-        protected String code;
-
+        
+        public static final String ATTRIBUTE_NAME_NAME = "name";
+        
+        protected String name;
+        
         public RequestMetaData(MetaData parent){
-            super(parent);
+            super(BeanFlowRestServerService.this.getServiceLoader(), parent);
         }
-
-        public String getClassName(){
-            return code;
+        
+        public String getName(){
+            return name;
         }
-
-        public void importXML(Element element) throws DeploymentException{
-            super.importXML(element);
+        
+        protected void checkTagName(Element element) throws DeploymentException{
             if(!element.getTagName().equals(TAG_NAME)){
                 throw new DeploymentException(
-                    "tag must be " + TAG_NAME + " : "
+                    "Tag must be " + TAG_NAME + " : "
                      + element.getTagName()
                 );
             }
-            code = getUniqueAttribute(element, ATTRIBUTE_NAME_CODE);
+        }
+        
+        protected void importCodeAttribute(Element element) throws DeploymentException{
+            code = getOptionalAttribute(element, CODE_ATTRIBUTE_NAME);
+        }
+        
+        public void importXML(Element element) throws DeploymentException{
+            super.importXML(element);
+            name = getOptionalAttribute(element, ATTRIBUTE_NAME_NAME);
+            if(name == null && code == null){
+                throw new DeploymentException(
+                    name + " or " + code + " attribute is require."
+                );
+            }
         }
     }
-
-    public static class ResponseMetaData extends MetaData{
-
+    
+    protected class ResponseMetaData extends ObjectMetaData{
+        
         private static final long serialVersionUID = 4090435433096913841L;
-
+        
         public static final String TAG_NAME = "response";
-        public static final String ATTRIBUTE_NAME_CODE = "code";
-
-        protected String code;
-
+        
+        public static final String ATTRIBUTE_NAME_NAME = "name";
+        
+        protected String name;
+        
         public ResponseMetaData(MetaData parent){
-            super(parent);
+            super(BeanFlowRestServerService.this.getServiceLoader(), parent);
         }
-
-        public String getClassName(){
-            return code;
+        
+        public String getName(){
+            return name;
         }
-
-        public void importXML(Element element) throws DeploymentException{
-            super.importXML(element);
+        
+        protected void checkTagName(Element element) throws DeploymentException{
             if(!element.getTagName().equals(TAG_NAME)){
                 throw new DeploymentException(
-                    "tag must be " + TAG_NAME + " : "
+                    "Tag must be " + TAG_NAME + " : "
                      + element.getTagName()
                 );
             }
-            code = getUniqueAttribute(element, ATTRIBUTE_NAME_CODE);
+        }
+        
+        protected void importCodeAttribute(Element element) throws DeploymentException{
+            code = getOptionalAttribute(element, CODE_ATTRIBUTE_NAME);
+        }
+        
+        public void importXML(Element element) throws DeploymentException{
+            super.importXML(element);
+            name = getOptionalAttribute(element, ATTRIBUTE_NAME_NAME);
+            if(name == null && code == null){
+                throw new DeploymentException(
+                    name + " or " + code + " attribute is require."
+                );
+            }
         }
     }
-
-    public static class PostMetaData extends MetaData{
+    
+    public class PostMetaData extends MetaData{
 
         private static final long serialVersionUID = -6372696917063102603L;
 
@@ -2428,7 +2926,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
     }
 
-    public static class GetMetaData extends MetaData{
+    public class GetMetaData extends MetaData{
 
         private static final long serialVersionUID = -7298962823068474227L;
 
@@ -2491,7 +2989,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
     }
 
-    public static class HeadMetaData extends MetaData{
+    public class HeadMetaData extends MetaData{
 
         private static final long serialVersionUID = -5269682659140303058L;
 
@@ -2540,7 +3038,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
     }
 
-    public static class PutMetaData extends MetaData{
+    public class PutMetaData extends MetaData{
 
         private static final long serialVersionUID = -5753138646526386529L;
 
@@ -2603,7 +3101,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
     }
 
-    public static class DeleteMetaData extends MetaData{
+    public class DeleteMetaData extends MetaData{
 
         private static final long serialVersionUID = -3735047733753523513L;
 
@@ -2666,7 +3164,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
     }
 
-    public static class OptionsMetaData extends MetaData{
+    public class OptionsMetaData extends MetaData{
 
         private static final long serialVersionUID = -9220229909119120614L;
 
