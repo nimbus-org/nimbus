@@ -171,26 +171,6 @@ public class ConstructorMetaData extends MetaData
         arguments.clear();
     }
     
-    protected InvokeMetaData createInvokeMetaData() throws DeploymentException{
-        return new InvokeMetaData(this);
-    }
-    
-    protected StaticInvokeMetaData createStaticInvokeMetaData() throws DeploymentException{
-        return new StaticInvokeMetaData(this);
-    }
-    
-    protected StaticFieldRefMetaData createStaticFieldRefMetaData() throws DeploymentException{
-        return new StaticFieldRefMetaData(this);
-    }
-    
-    protected ArgumentMetaData createArgumentMetaData() throws DeploymentException{
-        return new ArgumentMetaData(this, (ObjectMetaData)getParent());
-    }
-    
-    protected IfDefMetaData createIfDefMetaData() throws DeploymentException{
-        return new IfDefMetaData(this);
-    }
-    
     /**
      * &lt;constructor&gt;要素のElementをパースして、自分自身の初期化、及び子要素のメタデータの生成を行う。<p>
      *
@@ -219,7 +199,7 @@ public class ConstructorMetaData extends MetaData
                 ifDefMetaDataList = new ArrayList();
             }
             final IfDefMetaData ifdefData
-                 = createIfDefMetaData();
+                 = new IfDefMetaData(this);
             ifdefData.importXML((Element)ifDefElements.next());
             ifDefMetaDataList.add(ifdefData);
         }
@@ -241,7 +221,7 @@ public class ConstructorMetaData extends MetaData
                 throw new DeploymentException("Element of " + InvokeMetaData.INVOKE_TAG_NAME+ " is duplicated.");
             }
             final InvokeMetaData invokeData
-                 = createInvokeMetaData();
+                 = new InvokeMetaData(this);
             invokeData.importXML(invokeElement);
             if(invokeData.getTarget() == null){
                 throw new DeploymentException("Target is null." + invokeData);
@@ -261,7 +241,7 @@ public class ConstructorMetaData extends MetaData
                 throw new DeploymentException("Element of " + StaticInvokeMetaData.STATIC_INVOKE_TAG_NAME+ " is duplicated.");
             }
             final StaticInvokeMetaData staticInvokeData
-                 = createStaticInvokeMetaData();
+                 = new StaticInvokeMetaData(this);
             staticInvokeData.importXML(staticInvokeElement);
             if(ifdefMatch){
                 staticInvoke = staticInvokeData;
@@ -278,7 +258,7 @@ public class ConstructorMetaData extends MetaData
                 throw new DeploymentException("Element of " + StaticFieldRefMetaData.STATIC_FIELD_REF_TAG_NAME+ " is duplicated.");
             }
             final StaticFieldRefMetaData staticFieldRefData
-                 = createStaticFieldRefMetaData();
+                 = new StaticFieldRefMetaData(this);
             staticFieldRefData.importXML(staticFieldRefElement);
             if(ifdefMatch){
                 staticFieldRef = staticFieldRefData;
@@ -292,7 +272,7 @@ public class ConstructorMetaData extends MetaData
         );
         while(argElements.hasNext()){
             final ArgumentMetaData argData
-                 = createArgumentMetaData();
+                 = new ArgumentMetaData(this, (ObjectMetaData)getParent());
             argData.importXML((Element)argElements.next());
             if(ifdefMatch){
                 addArgument(argData);

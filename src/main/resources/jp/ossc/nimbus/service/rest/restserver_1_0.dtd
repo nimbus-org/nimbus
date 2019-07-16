@@ -77,7 +77,7 @@ The DOCTYPE is:
 
 <!-- restserver要素は、RESTサーバ定義のルート要素です。
 -->
-<!ELEMENT restserver (resource+ | object-def*)*>
+<!ELEMENT restserver (resource+)>
 
 <!-- resource要素は、RESTサーバに存在するリソースを定義する要素です。
 -->
@@ -127,10 +127,6 @@ The DOCTYPE is:
 -->
 <!ATTLIST request name CDATA #IMPLIED>
 
-<!-- ref属性は、リクエスト情報を格納するBeanを定義したobject-def要素のname属性の値を定義します。
--->
-<!ATTLIST request ref CDATA #IMPLIED>
-
 <!-- response要素は、メソッドのレスポンス情報を定義する要素です。
 -->
 <!ELEMENT response (constructor? | field* | attribute* | invoke*)*>
@@ -142,10 +138,6 @@ The DOCTYPE is:
 <!-- name属性は、レスポンス情報を格納するBeanを取得するフロー名を定義します。
 -->
 <!ATTLIST response name CDATA #IMPLIED>
-
-<!-- ref属性は、レスポンス情報を格納するBeanを定義したobject-def要素のname属性の値を定義します。
--->
-<!ATTLIST response ref CDATA #IMPLIED>
 
 <!-- invoke要素は、request、response、object要素で生成する
 オブジェクトのメソッド実行属性を定義します。
@@ -194,15 +186,6 @@ static-field-ref要素のcode属性でクラス名を、name属性でフィー�
 <!-- object要素は、生成する任意のオブジェクトを定義します。
 -->
 <!ELEMENT object (constructor? | field* | attribute* | invoke*)*>
-
-<!-- code属性は、object要素で生成するオブジェクトの実装クラス名を完全修飾名で
-定義します。
--->
-<!ATTLIST object code CDATA #IMPLIED>
-
-<!-- ref属性は、object要素で生成するオブジェクトを定義したobject-def要素のname属性の値を定義します。
--->
-<!ATTLIST object ref CDATA #IMPLIED>
 
 <!-- constructor要素は、request、response、object要素で生成するオブジェクトのコンストラクタ属性を定義します。
 constructor要素の子要素にargument要素を指定します。デフォルトコンストラクタ以外
@@ -310,15 +293,3 @@ service-ref要素の親要素のmanagerの子要素に存在しないservice要�
 定する。同じmanager要素内のservice要素を参照する場合には、省略可能である。
 -->
 <!ATTLIST service-ref manager-name CDATA #IMPLIED>
-
-<!-- object-def要素は、request要素やresponse要素で使用するオブジェクトを定義する要素です。
--->
-<!ELEMENT object-def (constructor? | field* | attribute* | invoke*)*>
-
-<!-- name属性は、object-def要素で定義されるオブジェクトを参照する名前を定義します。
--->
-<!ATTLIST object-def name CDATA #REQUIRED>
-
-<!-- code属性は、object-def要素で定義されるオブジェクトのクラス名を定義します。
--->
-<!ATTLIST object-def code CDATA #REQUIRED>

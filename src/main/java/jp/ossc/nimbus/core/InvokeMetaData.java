@@ -185,36 +185,6 @@ public class InvokeMetaData extends MetaData
         return callStateValue;
     }
     
-    protected ArgumentMetaData createArgumentMetaData() throws DeploymentException{
-        return new ArgumentMetaData(
-            this,
-            (ObjectMetaData)getParentObjectMetaData()
-        );
-    }
-    
-    protected ObjectMetaData createObjectMetaData() throws DeploymentException{
-        return new ObjectMetaData(
-            getParentObjectMetaData().getServiceLoader(),
-            this
-        );
-    }
-    
-    protected ServiceRefMetaData createServiceRefMetaData() throws DeploymentException{
-        return new ServiceRefMetaData(this);
-    }
-    
-    protected StaticFieldRefMetaData createStaticFieldRefMetaData() throws DeploymentException{
-        return new StaticFieldRefMetaData(this);
-    }
-    
-    protected StaticInvokeMetaData createStaticInvokeMetaData() throws DeploymentException{
-        return new StaticInvokeMetaData(this);
-    }
-    
-    protected InvokeMetaData createInvokeMetaData() throws DeploymentException{
-        return new InvokeMetaData(this);
-    }
-    
     /**
      * &lt;invoke&gt;要素のElementをパースして、自分自身の初期化、及び子要素のメタデータの生成を行う。<p>
      *
@@ -237,7 +207,10 @@ public class InvokeMetaData extends MetaData
             ArgumentMetaData.ARGUMENT_TAG_NAME
         );
         while(argElements.hasNext()){
-            final ArgumentMetaData argData = createArgumentMetaData();
+            final ArgumentMetaData argData = new ArgumentMetaData(
+                this,
+                (ObjectMetaData)getParentObjectMetaData()
+            );
             argData.importXML((Element)argElements.next());
             addArgument(argData);
         }
@@ -252,13 +225,17 @@ public class InvokeMetaData extends MetaData
         final Element targetElement
              = getOptionalChild(element, TARGET_TAG_NAME);
         if(targetElement != null){
+            final ObjectMetaData parentObjData = getParentObjectMetaData();
             
             Element targetObjElement = getOptionalChild(
                 targetElement,
                 ObjectMetaData.OBJECT_TAG_NAME
             );
             if(targetObjElement != null){
-                ObjectMetaData objData = createObjectMetaData();
+                ObjectMetaData objData = new ObjectMetaData(
+                    parentObjData.getServiceLoader(),
+                    this
+                );
                 objData.importXML(targetObjElement);
                 target = objData;
                 return;
@@ -269,7 +246,7 @@ public class InvokeMetaData extends MetaData
                 ServiceRefMetaData.SERIVCE_REF_TAG_NAME
             );
             if(targetObjElement != null){
-                ServiceRefMetaData serviceRefData = createServiceRefMetaData();
+                ServiceRefMetaData serviceRefData = new ServiceRefMetaData(this);
                 serviceRefData.importXML(targetObjElement);
                 target = serviceRefData;
                 return;
@@ -281,7 +258,7 @@ public class InvokeMetaData extends MetaData
             );
             if(targetObjElement != null){
                 StaticFieldRefMetaData staticFieldData
-                     = createStaticFieldRefMetaData();
+                     = new StaticFieldRefMetaData(this);
                 staticFieldData.importXML(targetObjElement);
                 target = staticFieldData;
                 return;
@@ -293,7 +270,7 @@ public class InvokeMetaData extends MetaData
             );
             if(targetObjElement != null){
                 StaticInvokeMetaData staticInvokeData
-                     = createStaticInvokeMetaData();
+                     = new StaticInvokeMetaData(this);
                 staticInvokeData.importXML(targetObjElement);
                 target = staticInvokeData;
                 return;
@@ -305,7 +282,7 @@ public class InvokeMetaData extends MetaData
             );
             if(targetObjElement != null){
                 InvokeMetaData invokeData
-                     = createInvokeMetaData();
+                     = new InvokeMetaData(this);
                 invokeData.importXML(targetObjElement);
                 if(invokeData.getTarget() == null){
                     throw new DeploymentException(

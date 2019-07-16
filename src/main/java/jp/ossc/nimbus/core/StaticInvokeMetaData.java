@@ -83,10 +83,6 @@ public class StaticInvokeMetaData extends InvokeMetaData
         this.code = code;
     }
     
-    protected ArgumentMetaData createArgumentMetaData() throws DeploymentException{
-        return new ArgumentMetaData(this, getParentObjectMetaData());
-    }
-    
     /**
      * &lt;static-invoke&gt;要素のElementをパースして、自分自身の初期化、及び子要素のメタデータの生成を行う。<p>
      *
@@ -110,7 +106,7 @@ public class StaticInvokeMetaData extends InvokeMetaData
         );
         while(argElements.hasNext()){
             final ArgumentMetaData argData
-                 = createArgumentMetaData();
+                 = new ArgumentMetaData(this, getParentObjectMetaData());
             argData.importXML((Element)argElements.next());
             addArgument(argData);
         }
