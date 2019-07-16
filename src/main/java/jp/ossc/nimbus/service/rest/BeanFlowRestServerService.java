@@ -684,11 +684,21 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 return false;
             }
         }else{
+            String requestObjClassName = null;
             Class requestObjClass = null;
             try{
-                requestObjClass = Utility.convertStringToClass(requestData.getCode(), true);
+                if(requestData.getRef() != null){
+                    jp.ossc.nimbus.core.ObjectMetaData objData = restServerMetaData.getObjectDef(requestData.getRef());
+                    if(objData == null){
+                        throw new DeploymentException("Not found object-def : name=" + requestData.getRef());
+                    }
+                    requestObjClassName = objData.getCode();
+                }else{
+                    requestObjClassName = requestData.getCode();
+                }
+                requestObjClass = Utility.convertStringToClass(requestObjClassName, true);
             }catch(ClassNotFoundException e){
-                getLogger().write("BFRS_00004", new Object[]{resource.resourcePath.path, requestData.getCode()}, e);
+                getLogger().write("BFRS_00004", new Object[]{resource.resourcePath.path, requestObjClassName}, e);
                 if(journal != null){
                     journal.addInfo(JOURNAL_KEY_EXCEPTION, e);
                 }
@@ -2350,7 +2360,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         if(data instanceof ObjectMetaData && ((ObjectMetaData)data).getRef() != null){
             data = restServerMetaData.getObjectDef(((ObjectMetaData)data).getRef());
             if(data == null){
-                throw new Exception("Not found object-def : name=" + ((ObjectMetaData)data).getRef());
+                throw new DeploymentException("Not found object-def : name=" + ((ObjectMetaData)data).getRef());
             }
         }
         Object obj = null;
