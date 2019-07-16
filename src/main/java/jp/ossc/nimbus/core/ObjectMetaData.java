@@ -309,7 +309,7 @@ public class ObjectMetaData extends MetaData implements Serializable{
                 ifDefMetaDataList = new ArrayList();
             }
             final IfDefMetaData ifdefData
-                 = createIfDefMetaData();
+                 = new IfDefMetaData(this);
             ifdefData.importXML((Element)ifDefElements.next());
             ifDefMetaDataList.add(ifdefData);
         }
@@ -365,26 +365,6 @@ public class ObjectMetaData extends MetaData implements Serializable{
         }
     }
     
-    protected ConstructorMetaData createConstructorMetaData() throws DeploymentException{
-        return new ConstructorMetaData(this);
-    }
-    
-    protected FieldMetaData createFieldMetaData() throws DeploymentException{
-        return new FieldMetaData(this);
-    }
-    
-    protected AttributeMetaData createAttributeMetaData() throws DeploymentException{
-        return new AttributeMetaData(this);
-    }
-    
-    protected InvokeMetaData createInvokeMetaData() throws DeploymentException{
-        return new InvokeMetaData(this);
-    }
-    
-    protected IfDefMetaData createIfDefMetaData() throws DeploymentException{
-        return new IfDefMetaData(this);
-    }
-    
     protected void importXMLInner(Element element, IfDefMetaData ifdefData) throws DeploymentException{
         
         final boolean ifdefMatch
@@ -398,7 +378,7 @@ public class ObjectMetaData extends MetaData implements Serializable{
             if(ifdefMatch && constructor != null){
                 throw new DeploymentException("Element of " + ConstructorMetaData.CONSTRUCTOR_TAG_NAME + " is duplicated.");
             }
-            final ConstructorMetaData constData = createConstructorMetaData();
+            final ConstructorMetaData constData = new ConstructorMetaData(this);
             if(ifdefData != null){
                 constData.setIfDefMetaData(ifdefData);
                 ifdefData.addChild(constData);
@@ -415,7 +395,7 @@ public class ObjectMetaData extends MetaData implements Serializable{
         );
         while(fieldElements.hasNext()){
             final FieldMetaData fieldData
-                 = createFieldMetaData();
+                 = new FieldMetaData(this);
             if(ifdefData != null){
                 fieldData.setIfDefMetaData(ifdefData);
                 ifdefData.addChild(fieldData);
@@ -432,7 +412,7 @@ public class ObjectMetaData extends MetaData implements Serializable{
         );
         while(attributeElements.hasNext()){
             final AttributeMetaData attributeData
-                 = createAttributeMetaData();
+                 = new AttributeMetaData(this);
             if(ifdefData != null){
                 attributeData.setIfDefMetaData(ifdefData);
                 ifdefData.addChild(attributeData);
@@ -449,7 +429,7 @@ public class ObjectMetaData extends MetaData implements Serializable{
         );
         while(invokeElements.hasNext()){
             final InvokeMetaData invokeData
-                 = createInvokeMetaData();
+                 = new InvokeMetaData(this);
             if(ifdefData != null){
                 invokeData.setIfDefMetaData(ifdefData);
                 ifdefData.addChild(invokeData);

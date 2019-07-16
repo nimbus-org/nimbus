@@ -154,22 +154,6 @@ public class ArgumentMetaData extends MetaData
         this.value = value;
     }
     
-    protected ServiceRefMetaData createServiceRefMetaData() throws DeploymentException{
-        return new ServiceRefMetaData(this);
-    }
-    
-    protected ObjectMetaData createObjectMetaData() throws DeploymentException{
-        return new ObjectMetaData(parentObjData.getServiceLoader(), this);
-    }
-    
-    protected StaticInvokeMetaData createStaticInvokeMetaData() throws DeploymentException{
-        return new StaticInvokeMetaData(this);
-    }
-    
-    protected StaticFieldRefMetaData createStaticFieldRefMetaData() throws DeploymentException{
-        return new StaticFieldRefMetaData(this);
-    }
-    
     /**
      * &lt;argument&gt;要素のElementをパースして、自分自身の初期化、及び子要素のメタデータの生成を行う。<p>
      *
@@ -214,7 +198,7 @@ public class ArgumentMetaData extends MetaData
         );
         if(serviceRefElement != null){
             final ServiceRefMetaData serviceRefData
-                 = createServiceRefMetaData();
+                 = new ServiceRefMetaData(this);
             serviceRefData.importXML(serviceRefElement);
             value = serviceRefData;
             return;
@@ -225,7 +209,10 @@ public class ArgumentMetaData extends MetaData
             ObjectMetaData.OBJECT_TAG_NAME
         );
         if(objectElement != null){
-            final ObjectMetaData objectData = createObjectMetaData();
+            final ObjectMetaData objectData = new ObjectMetaData(
+                parentObjData.getServiceLoader(),
+                this
+            );
             objectData.importXML(objectElement);
             value = objectData;
             return;
@@ -237,7 +224,7 @@ public class ArgumentMetaData extends MetaData
         );
         if(staticInvokeElement != null){
             final StaticInvokeMetaData staticInvokeData
-                 = createStaticInvokeMetaData();
+                 = new StaticInvokeMetaData(this);
             staticInvokeData.importXML(staticInvokeElement);
             value = staticInvokeData;
             return;
@@ -249,7 +236,7 @@ public class ArgumentMetaData extends MetaData
         );
         if(staticFieldElement != null){
             final StaticFieldRefMetaData staticFieldData
-                 = createStaticFieldRefMetaData();
+                 = new StaticFieldRefMetaData(this);
             staticFieldData.importXML(staticFieldElement);
             value = staticFieldData;
             return;
