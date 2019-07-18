@@ -2358,10 +2358,11 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
     
     protected Object createObject(jp.ossc.nimbus.core.ObjectMetaData data) throws Exception{
         if(data instanceof ObjectMetaData && ((ObjectMetaData)data).getRef() != null){
-            data = restServerMetaData.getObjectDef(((ObjectMetaData)data).getRef());
+            ObjectDefMetaData defData = restServerMetaData.getObjectDef(((ObjectMetaData)data).getRef());
             if(data == null){
                 throw new DeploymentException("Not found object-def : name=" + ((ObjectMetaData)data).getRef());
             }
+            data = defData.construct();
         }
         Object obj = null;
         if(data.getConstructor() == null){
@@ -2954,7 +2955,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
     }
     
-    protected class ObjectDefMetaData extends jp.ossc.nimbus.core.ObjectMetaData{
+    protected class ObjectDefMetaData extends ObjectMetaData{
         
         private static final long serialVersionUID = -8274604469407521804L;
         
@@ -2965,7 +2966,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         protected String name;
         
         public ObjectDefMetaData(MetaData parent){
-            super(BeanFlowRestServerService.this.getServiceLoader(), parent);
+            super(parent);
         }
         
         public String getName(){
@@ -2986,20 +2987,61 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             name = getUniqueAttribute(element, NAME_ATTRIBUTE_NAME);
         }
         
-        protected jp.ossc.nimbus.core.ConstructorMetaData createConstructorMetaData() throws DeploymentException{
-            return new ConstructorMetaData(this);
-        }
-        
-        protected jp.ossc.nimbus.core.FieldMetaData createFieldMetaData() throws DeploymentException{
-            return new FieldMetaData(this);
-        }
-        
-        protected jp.ossc.nimbus.core.AttributeMetaData createAttributeMetaData() throws DeploymentException{
-            return new AttributeMetaData(this);
-        }
-        
-        protected jp.ossc.nimbus.core.InvokeMetaData createInvokeMetaData() throws DeploymentException{
-            return new InvokeMetaData(this);
+        public ObjectDefMetaData construct() throws DeploymentException{
+            if(getRef() == null){
+                return this;
+            }
+            ObjectDefMetaData parentDefData = restServerMetaData.getObjectDef(getRef());
+            if(parentDefData == null){
+                throw new DeploymentException("Not found object-def : name=" + getRef());
+            }
+            parentDefData = (ObjectDefMetaData)parentDefData.clone();
+            parentDefData = parentDefData.construct();
+            
+            ObjectDefMetaData result = (ObjectDefMetaData)clone();
+            if(result.code == null){
+                result.code = parentDefData.code;
+            }
+            if(result.constructor == null && parentDefData.constructor != null){
+                ConstructorMetaData cons = (ConstructorMetaData)parentDefData.constructor.clone();
+                cons.setParent(result);
+                result.constructor = cons;
+            }
+            if(parentDefData.fields.size() != 0){
+                Iterator entries = parentDefData.fields.entrySet().iterator();
+                while(entries.hasNext()){
+                    Map.Entry entry = (Map.Entry)entries.next();
+                    if(!result.fields.containsKey(entry.getKey())){
+                        FieldMetaData field = (FieldMetaData)entry.getValue();
+                        field = (FieldMetaData)field.clone();
+                        field.setParent(result);
+                        result.fields.put(entry.getKey(), field);
+                    }
+                }
+            }
+            if(parentDefData.attributes.size() != 0){
+                Iterator entries = parentDefData.attributes.entrySet().iterator();
+                while(entries.hasNext()){
+                    Map.Entry entry = (Map.Entry)entries.next();
+                    if(!result.attributes.containsKey(entry.getKey())){
+                        AttributeMetaData attr = (AttributeMetaData)entry.getValue();
+                        attr = (AttributeMetaData)attr.clone();
+                        attr.setParent(result);
+                        result.attributes.put(entry.getKey(), attr);
+                    }
+                }
+            }
+            if(parentDefData.invokes.size() != 0){
+                for(int i = 0; i < parentDefData.invokes.size(); i++){
+                    InvokeMetaData invoke = (InvokeMetaData)parentDefData.invokes.get(i);
+                    invoke = (InvokeMetaData)invoke.clone();
+                    invoke.setParent(result);
+                    result.invokes.add(invoke);
+                }
+            }
+            result.importIfDef();
+            
+            return result;
         }
     }
     
