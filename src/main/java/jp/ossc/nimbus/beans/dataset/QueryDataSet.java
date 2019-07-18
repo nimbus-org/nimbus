@@ -53,12 +53,24 @@ public class QueryDataSet extends DataSet{
     public static final String RECORD_LIST_QUERY_NAME = "RecordListQuery";
     
     /**
+     * ネストしたレコードに対するクエリを指定するレコードリストの名前。<p>
+     */
+    public static final String NESTED_RECORD_QUERY_NAME = "NestedRecordQuery";
+    
+    /**
+     * ネストしたレコードリストに対するクエリを指定するレコードリストの名前。<p>
+     */
+    public static final String NESTED_RECORD_LIST_QUERY_NAME = "NestedRecordListQuery";
+    
+    /**
      * 空のデータセットを生成する。<p>
      */
     public QueryDataSet(){
         super();
         setRecordListClass(HEADER_QUERY_NAME, HeaderQueryRecordList.class);
         setRecordListClass(RECORD_LIST_QUERY_NAME, RecordListQueryRecordList.class);
+        setRecordListClass(NESTED_RECORD_QUERY_NAME, NestedRecordQueryRecordList.class);
+        setRecordListClass(NESTED_RECORD_LIST_QUERY_NAME, NestedRecordListQueryRecordList.class);
     }
     
     /**
@@ -70,6 +82,8 @@ public class QueryDataSet extends DataSet{
         super(isSynch);
         setRecordListClass(HEADER_QUERY_NAME, HeaderQueryRecordList.class);
         setRecordListClass(RECORD_LIST_QUERY_NAME, RecordListQueryRecordList.class);
+        setRecordListClass(NESTED_RECORD_QUERY_NAME, NestedRecordQueryRecordList.class);
+        setRecordListClass(NESTED_RECORD_LIST_QUERY_NAME, NestedRecordListQueryRecordList.class);
     }
     
     /**
@@ -81,6 +95,8 @@ public class QueryDataSet extends DataSet{
         super(name);
         setRecordListClass(HEADER_QUERY_NAME, HeaderQueryRecordList.class);
         setRecordListClass(RECORD_LIST_QUERY_NAME, RecordListQueryRecordList.class);
+        setRecordListClass(NESTED_RECORD_QUERY_NAME, NestedRecordQueryRecordList.class);
+        setRecordListClass(NESTED_RECORD_LIST_QUERY_NAME, NestedRecordListQueryRecordList.class);
     }
     
     /**
@@ -93,6 +109,8 @@ public class QueryDataSet extends DataSet{
         super(name, isSynch);
         setRecordListClass(HEADER_QUERY_NAME, HeaderQueryRecordList.class);
         setRecordListClass(RECORD_LIST_QUERY_NAME, RecordListQueryRecordList.class);
+        setRecordListClass(NESTED_RECORD_QUERY_NAME, NestedRecordQueryRecordList.class);
+        setRecordListClass(NESTED_RECORD_LIST_QUERY_NAME, NestedRecordListQueryRecordList.class);
     }
     
     /**
@@ -114,6 +132,24 @@ public class QueryDataSet extends DataSet{
     }
     
     /**
+     * ネストしたレコードに対するクエリを指定するレコードリストを取得する。<p>
+     *
+     * @return ネストしたレコードに対するクエリを指定するレコードリスト
+     */
+    public NestedRecordQueryRecordList getNestedRecordQueryRecordList(){
+        return (NestedRecordQueryRecordList)getRecordList(NESTED_RECORD_QUERY_NAME);
+    }
+    
+    /**
+     * ネストしたレコードリストに対するクエリを指定するレコードリストを取得する。<p>
+     *
+     * @return ネストしたレコードリストに対するクエリを指定するレコードリスト
+     */
+    public NestedRecordListQueryRecordList getNestedRecordListQueryRecordList(){
+        return (NestedRecordListQueryRecordList)getRecordList(NESTED_RECORD_LIST_QUERY_NAME);
+    }
+    
+    /**
      * 指定されたデータセットに対して、クエリを実行する。<p>
      *
      * @param ds クエリの実行対象となるデータセット
@@ -121,6 +157,8 @@ public class QueryDataSet extends DataSet{
     public void executeQuery(DataSet ds){
         getHeaderQueryRecordList().executeQuery(ds);
         getRecordListQueryRecordList().executeQuery(ds);
+        getNestedRecordQueryRecordList().executeQuery(ds);
+        getNestedRecordListQueryRecordList().executeQuery(ds);
     }
     
     /**
@@ -219,6 +257,40 @@ public class QueryDataSet extends DataSet{
     }
     
     /**
+     * クエリを指定してネストしたレコードを絞り込むレコード。<p>
+     *
+     * @author M.Takata
+     */
+    public static class NestedRecordQueryRecord extends QueryRecord{
+        
+        private static final long serialVersionUID = -5346339769951356900L;
+        
+        /**
+         * 空のインスタンスを生成する。<p>
+         */
+        public NestedRecordQueryRecord(){
+        }
+        
+        /**
+         * 指定されたデータセットの該当するヘッダに対して、クエリを実行する。<p>
+         *
+         * @param ds クエリの実行対象となるデータセット
+         */
+        public void executeQuery(DataSet ds){
+            final String name = getNameProperty();
+            final RecordSchema nestedRecordSchema = ds.getNestedRecordSchema(name);
+            if(nestedRecordSchema == null){
+                return;
+            }
+            final String[] propertyNames = getPropertyNamesProperty();
+            if(propertyNames != null){
+                RecordSchema superficialRecordSchema = nestedRecordSchema.createSuperficialRecordSchema(propertyNames, true);
+                ds.setSuperficialNestedRecordSchema(name, superficialRecordSchema);
+            }
+        }
+    }
+    
+    /**
      * クエリを指定してレコードリストを絞り込むレコード。<p>
      *
      * @author M.Takata
@@ -295,6 +367,40 @@ public class QueryDataSet extends DataSet{
     }
     
     /**
+     * クエリを指定してネストしたレコードリストを絞り込むレコード。<p>
+     *
+     * @author M.Takata
+     */
+    public static class NestedRecordListQueryRecord extends QueryRecord{
+        
+        private static final long serialVersionUID = -854867250438040322L;
+        
+        /**
+         * 空のインスタンスを生成する。<p>
+         */
+        public NestedRecordListQueryRecord(){
+        }
+        
+        /**
+         * 指定されたデータセットの該当するレコードリストに対して、クエリを実行する。<p>
+         *
+         * @param ds クエリの実行対象となるデータセット
+         */
+        public void executeQuery(DataSet ds){
+            final String name = getNameProperty();
+            final RecordSchema nestedRecordListSchema = ds.getNestedRecordListSchema(name);
+            if(nestedRecordListSchema == null){
+                return;
+            }
+            final String[] propertyNames = getPropertyNamesProperty();
+            if(propertyNames != null){
+                RecordSchema superficialRecordSchema = nestedRecordListSchema.createSuperficialRecordSchema(propertyNames, true);
+                ds.setSuperficialNestedRecordListSchema(name, superficialRecordSchema);
+            }
+        }
+    }
+    
+    /**
      * {@link QueryRecord}のレコードリスト。<p>
      *
      * @author M.Takata
@@ -342,7 +448,7 @@ public class QueryDataSet extends DataSet{
         /**
          * 空のレコードリストを生成する。<p>
          *
-         * @param name レコード名
+         * @param name レコードリスト名
          */
         public HeaderQueryRecordList(String name){
             super(name);
@@ -352,7 +458,7 @@ public class QueryDataSet extends DataSet{
         /**
          * 空のレコードリストを生成する。<p>
          *
-         * @param name レコード名
+         * @param name レコードリスト名
          * @param isSynch 同期化する場合true
          */
         public HeaderQueryRecordList(String name, boolean isSynch){
@@ -362,6 +468,7 @@ public class QueryDataSet extends DataSet{
         
         /**
          * 指定されたデータセットのヘッダに対して、クエリを実行する。<p>
+         * データセットの表層的なヘッダ名の設定と、ヘッダの表層的なスキーマの設定を行う。
          *
          * @param ds クエリの実行対象となるデータセット
          */
@@ -397,7 +504,7 @@ public class QueryDataSet extends DataSet{
         /**
          * 空のレコードリストを生成する。<p>
          *
-         * @param name レコード名
+         * @param name レコードリスト名
          */
         public RecordListQueryRecordList(String name){
             super(name);
@@ -407,7 +514,7 @@ public class QueryDataSet extends DataSet{
         /**
          * 空のレコードリストを生成する。<p>
          *
-         * @param name レコード名
+         * @param name レコードリスト名
          * @param isSynch 同期化する場合true
          */
         public RecordListQueryRecordList(String name, boolean isSynch){
@@ -417,6 +524,8 @@ public class QueryDataSet extends DataSet{
         
         /**
          * 指定されたデータセットのレコードリストに対して、クエリを実行する。<p>
+         * データセットの表層的なレコードリスト名の設定と、レコードリストの表層的なスキーマの設定、件数の絞り込みを行う。<br>
+         * レコードリストの件数の絞り込みは、レコードリストにデータを追加した後に、このメソッドを実行した場合のみ有効。<br>
          *
          * @param ds クエリの実行対象となるデータセット
          */
@@ -436,6 +545,102 @@ public class QueryDataSet extends DataSet{
             }
             if(listNames != null){
                 ds.setSuperficialRecordLists((String[])listNames.toArray(new String[listNames.size()]));
+            }
+        }
+    }
+    
+    /**
+     * {@link NestedRecordQueryRecord}のレコードリスト。<p>
+     *
+     * @author M.Takata
+     */
+    public static class NestedRecordQueryRecordList extends QueryRecordList{
+        
+        private static final long serialVersionUID = -6470555870853893000L;
+        
+        /**
+         * 空のレコードリストを生成する。<p>
+         *
+         * @param name レコードリスト名
+         */
+        public NestedRecordQueryRecordList(String name){
+            super(name);
+            setRecordClass(NestedRecordQueryRecord.class);
+        }
+        
+        /**
+         * 空のレコードリストを生成する。<p>
+         *
+         * @param name レコードリスト名
+         * @param isSynch 同期化する場合true
+         */
+        public NestedRecordQueryRecordList(String name, boolean isSynch){
+            super(name, isSynch);
+            setRecordClass(NestedRecordQueryRecord.class);
+        }
+        
+        /**
+         * 指定されたデータセットのネスとしたレコードに対して、クエリを実行する。<p>
+         * ネスとしたレコードに、表層的なスキーマを設定する。但し、ネストしたレコードを生成する前に、このメソッドを呼び出した場合のみ有効。<br>
+         *
+         * @param ds クエリの実行対象となるデータセット
+         */
+        public void executeQuery(DataSet ds){
+            if(size() == 0){
+                return;
+            }
+            Iterator queries = iterator();
+            while(queries.hasNext()){
+                NestedRecordQueryRecord query = (NestedRecordQueryRecord)queries.next();
+                query.executeQuery(ds);
+            }
+        }
+    }
+    
+    /**
+     * {@link NestedRecordListQueryRecord}のレコードリスト。<p>
+     *
+     * @author M.Takata
+     */
+    public static class NestedRecordListQueryRecordList extends QueryRecordList{
+        
+        private static final long serialVersionUID = -2512099138542793919L;
+        
+        /**
+         * 空のレコードリストを生成する。<p>
+         *
+         * @param name レコードリスト名
+         */
+        public NestedRecordListQueryRecordList(String name){
+            super(name);
+            setRecordClass(NestedRecordListQueryRecord.class);
+        }
+        
+        /**
+         * 空のレコードリストを生成する。<p>
+         *
+         * @param name レコードリスト名
+         * @param isSynch 同期化する場合true
+         */
+        public NestedRecordListQueryRecordList(String name, boolean isSynch){
+            super(name, isSynch);
+            setRecordClass(NestedRecordListQueryRecord.class);
+        }
+        
+        /**
+         * 指定されたデータセットのネスとしたレコードリストに対して、クエリを実行する。<p>
+         * ネスとしたレコードリストに、表層的なスキーマを設定する。但し、ネストしたレコードリストを生成する前に、このメソッドを呼び出した場合のみ有効。<br>
+         *
+         * @param ds クエリの実行対象となるデータセット
+         */
+        public void executeQuery(DataSet ds){
+            if(size() == 0){
+                return;
+            }
+            Iterator queries = iterator();
+            while(queries.hasNext()){
+                NestedRecordListQueryRecord query = (NestedRecordListQueryRecord)queries.next();
+                query.executeQuery(ds);
             }
         }
     }
