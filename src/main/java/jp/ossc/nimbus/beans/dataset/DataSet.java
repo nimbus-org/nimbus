@@ -134,6 +134,12 @@ public class DataSet implements java.io.Serializable, Cloneable{
     protected transient Map nestedRecordListMap;
     
     /**
+     * ネストされたレコードリストの表層的なスキーマのマップ。<p>
+     * キーはレコードリスト名、値は{@link RecordSchema レコードスキーマ}
+     */
+    protected transient Map superficialNestedRecordListMap;
+    
+    /**
      * ネストされたレコードリストのクラスのマップ。<p>
      * キーはレコードリスト名、値はクラス
      */
@@ -144,6 +150,12 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * キーはレコード名、値は{@link RecordSchema レコードスキーマ}
      */
     protected transient Map nestedRecordMap;
+    
+    /**
+     * ネストされたレコードの表層的なスキーマのマップ。<p>
+     * キーはレコード名、値は{@link RecordSchema レコードスキーマ}
+     */
+    protected transient Map superficialNestedRecordMap;
     
     /**
      * ネストされたレコードのクラスのマップ。<p>
@@ -547,6 +559,23 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
+     * 指定した名前のネストした{@link RecordList レコードリスト}の表層的なスキーマを設定する。<p>
+     *
+     * @param name レコードリスト名
+     * @param schema スキーマ
+     */
+    public void setSuperficialNestedRecordListSchema(String name, RecordSchema schema){
+        
+        if(superficialNestedRecordListMap == null){
+            superficialNestedRecordListMap = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
+        }
+        superficialNestedRecordListMap.put(
+            name,
+            schema.getSchema()
+        );
+    }
+    
+    /**
      * 指定した名前のネストした{@link RecordList レコードリスト}のスキーマを取得する。<p>
      *
      * @param name レコードリスト名
@@ -623,6 +652,23 @@ public class DataSet implements java.io.Serializable, Cloneable{
             nestedRecordMap = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
         }
         nestedRecordMap.put(
+            name,
+            schema.getSchema()
+        );
+    }
+    
+    /**
+     * 指定した名前のネストした{@link Record レコード}の表層的なスキーマを設定する。<p>
+     *
+     * @param name レコード名
+     * @param schema スキーマ
+     */
+    public void setSuperficialNestedRecordSchema(String name, RecordSchema schema){
+        
+        if(superficialNestedRecordMap == null){
+            superficialNestedRecordMap = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
+        }
+        superficialNestedRecordMap.put(
             name,
             schema.getSchema()
         );
@@ -1039,10 +1085,14 @@ public class DataSet implements java.io.Serializable, Cloneable{
                 }
             }
         }
-        return createRecordList(
+        RecordList list = createRecordList(
             name,
             RecordSchema.getInstance((String)nestedRecordListMap.get(name))
         );
+        if(superficialNestedRecordListMap != null && superficialNestedRecordListMap.containsKey(name)){
+            list.setSuperficialRecordSchema(RecordSchema.getInstance((String)superficialNestedRecordListMap.get(name)));
+        }
+        return list;
     }
     
     /**
@@ -1065,9 +1115,13 @@ public class DataSet implements java.io.Serializable, Cloneable{
                 }
             }
         }
-        return new Record(
+        Record record = new Record(
             RecordSchema.getInstance((String)nestedRecordMap.get(name))
         );
+        if(superficialNestedRecordMap != null && superficialNestedRecordMap.containsKey(name)){
+            record.setSuperficialRecordSchema(RecordSchema.getInstance((String)superficialNestedRecordMap.get(name)));
+        }
+        return record;
     }
     
     /**
@@ -1251,6 +1305,9 @@ public class DataSet implements java.io.Serializable, Cloneable{
             dataSet.nestedRecordListClassMap = null;
             dataSet.nestedRecordMap = null;
             dataSet.nestedRecordClassMap = null;
+            dataSet.superficialRecordListNames = null;
+            dataSet.superficialNestedRecordListMap = null;
+            dataSet.superficialNestedRecordMap = null;
         }catch(CloneNotSupportedException e){
             return null;
         }
@@ -1285,6 +1342,10 @@ public class DataSet implements java.io.Serializable, Cloneable{
                 }
             }
         }
+        if(superficialRecordListNames != null && superficialRecordListNames.size() != 0){
+            dataSet.superficialRecordListNames = new HashSet();
+            dataSet.superficialRecordListNames.addAll(superficialRecordListNames);
+        }
         if(nestedRecordListMap != null && nestedRecordListMap.size() != 0){
             dataSet.nestedRecordListMap
                  = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
@@ -1295,6 +1356,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
                  = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
             dataSet.nestedRecordListClassMap.putAll(nestedRecordListClassMap);
         }
+        if(superficialNestedRecordListMap != null && superficialNestedRecordListMap.size() != 0){
+            dataSet.superficialNestedRecordListMap
+                 = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
+            dataSet.superficialNestedRecordListMap.putAll(superficialNestedRecordListMap);
+        }
         if(nestedRecordMap != null && nestedRecordMap.size() != 0){
             dataSet.nestedRecordMap
                  = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
@@ -1304,6 +1370,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
             dataSet.nestedRecordClassMap
                  = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
             dataSet.nestedRecordClassMap.putAll(nestedRecordClassMap);
+        }
+        if(superficialNestedRecordMap != null && superficialNestedRecordMap.size() != 0){
+            dataSet.superficialNestedRecordMap
+                 = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
+            dataSet.superficialNestedRecordMap.putAll(superficialNestedRecordMap);
         }
         return dataSet;
     }

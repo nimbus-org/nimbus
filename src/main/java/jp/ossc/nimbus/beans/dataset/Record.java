@@ -201,9 +201,9 @@ public class Record implements Externalizable, Cloneable, Map{
             throw new PropertySchemaDefineException("Schema is undefined.");
         }
         if(propertyNames == null){
-            superficialRecordSchema = null;
+            setSuperficialRecordSchema(null);
         }else{
-            superficialRecordSchema = recordSchema.createSuperficialRecordSchema(propertyNames, isIgnoreUnknown);
+            setSuperficialRecordSchema(recordSchema.createSuperficialRecordSchema(propertyNames, isIgnoreUnknown));
         }
     }
     
@@ -231,9 +231,9 @@ public class Record implements Externalizable, Cloneable, Map{
             throw new PropertySchemaDefineException("Schema is undefined.");
         }
         if(propertyIndexes == null){
-            superficialRecordSchema = null;
+            setSuperficialRecordSchema(null);
         }else{
-            superficialRecordSchema = recordSchema.createSuperficialRecordSchema(propertyIndexes, isIgnoreUnknown);
+            setSuperficialRecordSchema(recordSchema.createSuperficialRecordSchema(propertyIndexes, isIgnoreUnknown));
         }
     }
     
