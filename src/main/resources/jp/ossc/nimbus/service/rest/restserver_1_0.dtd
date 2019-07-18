@@ -322,3 +322,7 @@ service-ref要素の親要素のmanagerの子要素に存在しないservice要�
 <!-- code属性は、object-def要素で定義されるオブジェクトのクラス名を定義します。
 -->
 <!ATTLIST object-def code CDATA #REQUIRED>
+
+<!-- ref属性は、object-def要素で定義するオブジェクトの親定義でとなるobject-def要素のname属性の値を定義します。
+-->
+<!ATTLIST object-def ref CDATA #IMPLIED>
