@@ -107,6 +107,20 @@ public interface DataSourceConnectionFactoryServiceMBean
     public String getDataSourceNameKey();
     
     /**
+     * 設定されたデータソース名の一部を置換するキー文字列を設定する。<p>
+     * 
+     * @param regex データソース名の一部を置換するキー文字列を正規表現で指定する
+     */
+    public void setReplaceKey(String regex);
+    
+    /**
+     * 設定されたデータソース名の一部を置換するキー文字列を取得する。<p>
+     * 
+     * @return データソース名の一部を置換するキー文字列
+     */
+    public String getReplaceKey();
+    
+    /**
      * javax.sql.DataSourceサービス名を設定する。<p>
      *
      * @param name DataSourceサービス名

@@ -85,6 +85,11 @@ public class DataSourceConnectionFactoryService extends ServiceBase
     private String dataSourceName;
     
     /**
+     * データソース置換文字列。<p>
+     */
+    private String dataSourceReplaceKey;
+    
+    /**
      * {@link JndiFinder}オブジェクト。<p>
      */
     private JndiFinder jndiFinder;
@@ -127,6 +132,16 @@ public class DataSourceConnectionFactoryService extends ServiceBase
     // DataSourceConnectionFactoryServiceMBeanのJavaDoc
     public String getName(){
         return dataSourceName;
+    }
+    
+    // DataSourceConnectionFactoryServiceMBeanのJavaDoc
+    public void setReplaceKey(String regex){
+        dataSourceReplaceKey = regex;
+    }
+    
+    // DataSourceConnectionFactoryServiceMBeanのJavaDoc
+    public String getReplaceKey(){
+        return dataSourceReplaceKey;
     }
     
     // DataSourceConnectionFactoryServiceMBeanのJavaDoc
@@ -238,7 +253,11 @@ public class DataSourceConnectionFactoryService extends ServiceBase
                     final String tmpName
                          = (String)context.get(getDataSourceNameKey());
                     if(tmpName != null){
-                        name = tmpName;
+                        if(name == null || dataSourceReplaceKey == null){
+                            name = tmpName;
+                        }else{
+                            name = name.replaceAll(dataSourceReplaceKey, tmpName);
+                        }
                     }
                 }
                 ds = (DataSource)jndiFinder.lookup(name);
