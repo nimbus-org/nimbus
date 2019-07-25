@@ -84,7 +84,7 @@ public abstract class AbstractKeepAliveCheckerSelectorService
     protected boolean isKeepOrder = false;
     
     protected ServiceName clusterServiceName;
-    protected ClusterService cluster;
+    protected Cluster cluster;
     protected List clusterMembers;
     protected String clusterOptionKey;
     
@@ -182,7 +182,7 @@ public abstract class AbstractKeepAliveCheckerSelectorService
     
     public void startService() throws Exception{
         if(clusterServiceName != null){
-            cluster = (ClusterService)ServiceManagerFactory.getServiceObject(clusterServiceName);
+            cluster = (Cluster)ServiceManagerFactory.getServiceObject(clusterServiceName);
             cluster.addClusterListener(this);
         }else{
             if(selectableCheckerServiceNames != null){
@@ -229,7 +229,7 @@ public abstract class AbstractKeepAliveCheckerSelectorService
             }
             List list = new ArrayList();
             for(int i = 0, imax = members.size(); i < imax; i++){
-                ClusterService.GlobalUID uid = (ClusterService.GlobalUID)members.get(i);
+                ClusterUID uid = (ClusterUID)members.get(i);
                 Object option = clusterOptionKey == null ? uid.getOption() : uid.getOption(clusterOptionKey);
                 if(option != null && option instanceof KeepAliveChecker){
                     list.add(option);
@@ -271,7 +271,7 @@ public abstract class AbstractKeepAliveCheckerSelectorService
             }
             final List tmpAliveCheckers = Collections.synchronizedList(new ArrayList());
             for(int i = 0, imax = members.size(); i < imax; i++){
-                ClusterService.GlobalUID uid = (ClusterService.GlobalUID)members.get(i);
+                ClusterUID uid = (ClusterUID)members.get(i);
                 Object option = clusterOptionKey == null ? uid.getOption() : uid.getOption(clusterOptionKey);
                 if(option == null || !(option instanceof KeepAliveChecker)){
                     continue;

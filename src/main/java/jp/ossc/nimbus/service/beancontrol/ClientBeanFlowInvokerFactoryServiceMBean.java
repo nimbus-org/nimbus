@@ -44,7 +44,7 @@ public interface ClientBeanFlowInvokerFactoryServiceMBean extends ServiceBaseMBe
     public static final String MSG_ID_ASYNCH_INVOKE_ERROR = "CBFI_00001";
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService クラスタ}サービスのサービス名を設定する。<p>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster クラスタ}サービスのサービス名を設定する。<p>
      * {@link BeanFlowInvokerServer}をクラスタサービスのメンバー情報から取得する。<br>
      *
      * @param name クラスタサービスのサービス名
@@ -52,21 +52,21 @@ public interface ClientBeanFlowInvokerFactoryServiceMBean extends ServiceBaseMBe
     public void setClusterServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService クラスタ}サービスのサービス名を取得する。<p>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster クラスタ}サービスのサービス名を取得する。<p>
      *
      * @return クラスタサービスのサービス名
      */
     public ServiceName getClusterServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService クラスタ}サービスのメンバー情報のオプションキーを設定する。<p>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster クラスタ}サービスのメンバー情報のオプションキーを設定する。<p>
      *
      * @param key オプションキー
      */
     public void setClusterOptionKey(String key);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService クラスタ}サービスのメンバー情報のオプションキーを取得する。<p>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster クラスタ}サービスのメンバー情報のオプションキーを取得する。<p>
      *
      * @return オプションキー
      */

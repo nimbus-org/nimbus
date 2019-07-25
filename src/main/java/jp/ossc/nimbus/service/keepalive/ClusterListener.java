@@ -35,7 +35,7 @@ import java.util.List;
 
 /**
  * クラスタリスナ。<p>
- * {@link ClusterService}によって構成されたクラスタメンバーの状態変化の通知を受け取る。<br>
+ * {@link Cluster}によって構成されたクラスタメンバーの状態変化の通知を受け取る。<br>
  *
  * @author M.Takata
  */

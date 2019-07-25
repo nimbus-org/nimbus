@@ -69,16 +69,16 @@ public interface SharedContextServiceMBean extends DefaultContextServiceMBean{
     public ServiceName getRequestConnectionFactoryServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ClusterService}サービスのサービス名を設定する。<p>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster Cluster}サービスのサービス名を設定する。<p>
      * 
-     * @param name ClusterServiceサービスのサービス名
+     * @param name Clusterサービスのサービス名
      */
     public void setClusterServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ClusterService}サービスのサービス名を取得する。<p>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster Cluster}サービスのサービス名を取得する。<p>
      * 
-     * @return ClusterServiceサービスのサービス名
+     * @return Clusterサービスのサービス名
      */
     public ServiceName getClusterServiceName();
     

@@ -43,7 +43,7 @@ import jp.ossc.nimbus.beans.*;
 import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.daemon.*;
 import jp.ossc.nimbus.service.connection.*;
-import jp.ossc.nimbus.service.keepalive.ClusterService;
+import jp.ossc.nimbus.service.keepalive.Cluster;
 import jp.ossc.nimbus.service.sequence.Sequence;
 import jp.ossc.nimbus.service.system.Time;
 import jp.ossc.nimbus.util.converter.*;
@@ -111,7 +111,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
     protected boolean isLockForFindExecutable;
     
     protected ServiceName clusterServiceName;
-    protected ClusterService cluster;
+    protected Cluster cluster;
     protected ClusterListener clusterListener;
     
     protected ServiceName sequenceServiceName;
@@ -558,7 +558,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
             timeoverChecker.start();
         }
         if(clusterServiceName != null && (controlStateChecker != null || timeoverChecker != null)){
-            cluster = (ClusterService)ServiceManagerFactory.getServiceObject(clusterServiceName);
+            cluster = (Cluster)ServiceManagerFactory.getServiceObject(clusterServiceName);
             clusterListener = new ClusterListener();
             cluster.addClusterListener(clusterListener);
         }else{

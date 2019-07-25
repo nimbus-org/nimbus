@@ -50,7 +50,7 @@ import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.aop.*;
 import jp.ossc.nimbus.service.context.Context;
 import jp.ossc.nimbus.service.repository.*;
-import jp.ossc.nimbus.service.keepalive.ClusterService;
+import jp.ossc.nimbus.service.keepalive.Cluster;
 import jp.ossc.nimbus.service.keepalive.KeepAliveListener;
 import jp.ossc.nimbus.service.proxy.invoker.KeepAliveCheckInvoker;
 import jp.ossc.nimbus.service.queue.BeanFlowAsynchContext;
@@ -78,7 +78,7 @@ public class BeanFlowInvokerServerService extends ServiceBase
     private String jndiName = DEFAULT_JNDI_NAME;
     private int rmiPort;
     private ServiceName clusterServiceName;
-    private ClusterService cluster;
+    private Cluster cluster;
     private String clusterOptionKey;
     private boolean isClusterJoin = true;
     private StringSequenceService sequence;
@@ -322,9 +322,9 @@ public class BeanFlowInvokerServerService extends ServiceBase
             throw new Exception("Could not register in jndiRepository.");
         }
         if(clusterServiceName != null){
-            cluster = (ClusterService)ServiceManagerFactory.getServiceObject(clusterServiceName);
+            cluster = (Cluster)ServiceManagerFactory.getServiceObject(clusterServiceName);
             if(cluster.isJoin()){
-                throw new IllegalArgumentException("ClusterService already join.");
+                throw new IllegalArgumentException("Cluster already join.");
             }
             if(clusterOptionKey == null){
                 cluster.setOption((Serializable)server.getStub());
