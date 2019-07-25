@@ -51,7 +51,7 @@ import jp.ossc.nimbus.beans.BeanTableIndexKeyFactory;
 import jp.ossc.nimbus.beans.IndexPropertyAccessException;
 import jp.ossc.nimbus.beans.IndexNotFoundException;
 import jp.ossc.nimbus.service.cache.CacheMap;
-import jp.ossc.nimbus.service.keepalive.ClusterService;
+import jp.ossc.nimbus.service.keepalive.Cluster;
 import jp.ossc.nimbus.service.publish.RequestMessageListener;
 import jp.ossc.nimbus.service.publish.Message;
 import jp.ossc.nimbus.service.publish.MessageException;
@@ -121,7 +121,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     
     private RequestServerConnection serverConnection;
     private MessageReceiver messageReceiver;
-    private ClusterService cluster;
+    private Cluster cluster;
     private Message targetMessage;
     
     private SharedContextService[] sharedContextArray;
@@ -591,7 +591,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         if(clusterServiceName == null){
             throw new IllegalArgumentException("ClusterServiceName must be specified.");
         }
-        cluster = (ClusterService)ServiceManagerFactory.getServiceObject(clusterServiceName);
+        cluster = (Cluster)ServiceManagerFactory.getServiceObject(clusterServiceName);
         
         if(interpreterServiceName != null){
             interpreter = (Interpreter)ServiceManagerFactory.getServiceObject(interpreterServiceName);

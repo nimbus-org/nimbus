@@ -151,7 +151,7 @@ public interface AbstractKeepAliveCheckerSelectorServiceMBean
     public boolean isKeepOrder();
     
     /**
-     * {@link ClusterService クラスタ}サービスのサービス名を設定する。<p>
+     * {@link Cluster クラスタ}サービスのサービス名を設定する。<p>
      * この属性を設定した場合は、{@link KeepAliveChecker}をクラスタサービスのメンバー情報から取得する。<br>
      *
      * @param name クラスタサービスのサービス名
@@ -159,21 +159,21 @@ public interface AbstractKeepAliveCheckerSelectorServiceMBean
     public void setClusterServiceName(ServiceName name);
     
     /**
-     * {@link ClusterService クラスタ}サービスのサービス名を取得する。<p>
+     * {@link Cluster クラスタ}サービスのサービス名を取得する。<p>
      *
      * @return クラスタサービスのサービス名
      */
     public ServiceName getClusterServiceName();
     
     /**
-     * {@link ClusterService クラスタ}サービスのメンバー情報のオプションキーを設定する。<p>
+     * {@link Cluster クラスタ}サービスのメンバー情報のオプションキーを設定する。<p>
      *
      * @param key オプションキー
      */
     public void setClusterOptionKey(String key);
     
     /**
-     * {@link ClusterService クラスタ}サービスのメンバー情報のオプションキーを取得する。<p>
+     * {@link Cluster クラスタ}サービスのメンバー情報のオプションキーを取得する。<p>
      *
      * @return オプションキー
      */

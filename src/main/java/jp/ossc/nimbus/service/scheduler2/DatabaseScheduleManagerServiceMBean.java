@@ -370,15 +370,15 @@ public interface DatabaseScheduleManagerServiceMBean extends ServiceBaseMBean{
     public boolean isLockForFindExecutable();
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService クラスタ}サービスのサービス名を設定する。<p>
-     * この属性を設定した場合、クラスタサービスが{@link jp.ossc.nimbus.service.keepalive.ClusterService#isMain() ClusterService.isMain()}=trueとなっている場合のみ、制御状態のチェック及び、最大遅延時間のチェックを行う。<br>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster クラスタ}サービスのサービス名を設定する。<p>
+     * この属性を設定した場合、クラスタサービスが{@link jp.ossc.nimbus.service.keepalive.Cluster#isMain() Cluster.isMain()}=trueとなっている場合のみ、制御状態のチェック及び、最大遅延時間のチェックを行う。<br>
      *
      * @param name クラスタサービスのサービス名
      */
     public void setClusterServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService クラスタ}サービスのサービス名を取得する。<p>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster クラスタ}サービスのサービス名を取得する。<p>
      *
      * @return クラスタサービスのサービス名
      */

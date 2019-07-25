@@ -43,7 +43,8 @@ import java.rmi.RemoteException;
 import jp.ossc.nimbus.core.ServiceBase;
 import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.core.ServiceManagerFactory;
-import jp.ossc.nimbus.service.keepalive.ClusterService;
+import jp.ossc.nimbus.service.keepalive.Cluster;
+import jp.ossc.nimbus.service.keepalive.ClusterUID;
 import jp.ossc.nimbus.service.keepalive.ClusterListener;
 
 /**
@@ -56,7 +57,7 @@ public class ClusterClientConnectionFactoryService extends ServiceBase
     
     private static final long serialVersionUID = -3980354944166812867L;
     private ServiceName clusterServiceName;
-    private ClusterService cluster;
+    private Cluster cluster;
     private String clusterOptionKey;
     private String connectErrorMessageId = MSG_ID_CONNECT_ERROR;
     
@@ -92,10 +93,10 @@ public class ClusterClientConnectionFactoryService extends ServiceBase
     
     public void startService() throws Exception{
         if(clusterServiceName != null){
-            cluster = (ClusterService)ServiceManagerFactory.getServiceObject(clusterServiceName);
+            cluster = (Cluster)ServiceManagerFactory.getServiceObject(clusterServiceName);
         }
         if(cluster == null){
-            throw new IllegalArgumentException("ClusterService is null.");
+            throw new IllegalArgumentException("Cluster is null.");
         }
     }
     
@@ -113,7 +114,7 @@ public class ClusterClientConnectionFactoryService extends ServiceBase
         int count = 0;
         List members = cluster.getMembers();
         for(int i = 0; i < members.size(); i++){
-            ClusterService.GlobalUID uid = (ClusterService.GlobalUID)members.get(i);
+            ClusterUID uid = (ClusterUID)members.get(i);
             ClusterConnectionFactoryService.ClusterOption clusterOption = (ClusterConnectionFactoryService.ClusterOption)(clusterOptionKey == null ? uid.getOption() : uid.getOption(clusterOptionKey));
             ClientConnectionFactory clientConnectionFactory = clusterOption.clusterClientConnectionFactory;
             count += clientConnectionFactory.getClientCount();
@@ -143,7 +144,7 @@ public class ClusterClientConnectionFactoryService extends ServiceBase
         public void connect(Object id) throws ConnectException{
             if(connection == null){
                 List members = cluster.getMembers();
-                ClusterService.GlobalUID uid = !cluster.isJoin() || members.size() == 0 ? null : (ClusterService.GlobalUID)members.get(0);
+                ClusterUID uid = !cluster.isJoin() || members.size() == 0 ? null : (ClusterUID)members.get(0);
                 if(uid == null){
                     if(!isFlexibleConnect){
                         throw new ConnectException("No cluster member.");

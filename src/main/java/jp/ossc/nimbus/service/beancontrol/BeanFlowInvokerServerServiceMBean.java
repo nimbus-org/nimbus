@@ -148,7 +148,7 @@ public interface BeanFlowInvokerServerServiceMBean extends ServiceBaseMBean{
     public int getRMIPort();
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService クラスタ}サービスのサービス名を設定する。<p>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster クラスタ}サービスのサービス名を設定する。<p>
      * この属性を設定した場合は、クラスタサービスのメンバー情報のオプションに{@link jp.ossc.nimbus.service.proxy.invoker.KeepAliveCheckInvoker KeepAliveCheckInvoker}を設定する事で、クラスタサービス経由でのリモート呼び出しをサポートする。<br>
      * クラスタサービスのクラスタへの参加は、このサービスの状態と連動する必要があるため、{@link jp.ossc.nimbus.service.keepalive.ClusterService#setJoinOnStart(boolean) ClusterService.setJoinOnStart(false)}にしておく必要がある。<br>
      *
@@ -157,28 +157,28 @@ public interface BeanFlowInvokerServerServiceMBean extends ServiceBaseMBean{
     public void setClusterServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService クラスタ}サービスのサービス名を取得する。<p>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster クラスタ}サービスのサービス名を取得する。<p>
      *
      * @return クラスタサービスのサービス名
      */
     public ServiceName getClusterServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService クラスタ}サービスのメンバー情報のオプションキーを設定する。<p>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster クラスタ}サービスのメンバー情報のオプションキーを設定する。<p>
      *
      * @param key オプションキー
      */
     public void setClusterOptionKey(String key);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService クラスタ}サービスのメンバー情報のオプションキーを取得する。<p>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster クラスタ}サービスのメンバー情報のオプションキーを取得する。<p>
      *
      * @return オプションキー
      */
     public String getClusterOptionKey();
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService クラスタ}サービスのクラスタ参加を制御するかどうかを設定する。<p>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster クラスタ}サービスのクラスタ参加を制御するかどうかを設定する。<p>
      * デフォルトは、trueで制御する。<br>
      *
      * @param isJoin 制御する場合、true
@@ -186,7 +186,7 @@ public interface BeanFlowInvokerServerServiceMBean extends ServiceBaseMBean{
     public void setClusterJoin(boolean isJoin);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService クラスタ}サービスのクラスタ参加を制御するかどうかを判定する。<p>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster クラスタ}サービスのクラスタ参加を制御するかどうかを判定する。<p>
      *
      * @return trueの場合、制御する
      */

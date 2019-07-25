@@ -56,17 +56,17 @@ public interface DefaultClusterListenerServiceMBean extends ServiceBaseMBean{
     public ServiceName getTargetServiceName();
     
     /**
-     * {@link ClusterService}サービスのサービス名を設定する。<p>
-     * この属性を設定すると、開始/停止を制御する対象となるサービスの開始/停止に連動して、ClusterServiceも開始/停止するようになる。<br>
+     * {@link Cluster}サービスのサービス名を設定する。<p>
+     * この属性を設定すると、開始/停止を制御する対象となるサービスの開始/停止に連動して、Clusterも開始/停止するようになる。<br>
      *
-     * @param name ClusterServiceのサービス名
+     * @param name Clusterのサービス名
      */
     public void setClusterServiceName(ServiceName name);
     
     /**
-     * {@link ClusterService}サービスのサービス名を取得する。<p>
+     * {@link Cluster}サービスのサービス名を取得する。<p>
      *
-     * @return ClusterServiceのサービス名
+     * @return Clusterのサービス名
      */
     public ServiceName getClusterServiceName();
 }

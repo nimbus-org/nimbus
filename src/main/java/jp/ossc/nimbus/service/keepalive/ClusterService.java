@@ -48,7 +48,7 @@ import jp.ossc.nimbus.util.WaitSynchronizeMonitor;
  *
  * @author M.Takata
  */
-public class ClusterService extends ServiceBase implements ClusterServiceMBean{
+public class ClusterService extends ServiceBase implements Cluster, ClusterServiceMBean{
     
     private static final long serialVersionUID = 4503189967951662029L;
     
@@ -91,8 +91,8 @@ public class ClusterService extends ServiceBase implements ClusterServiceMBean{
     protected boolean isClient;
     protected long lostTimeout = 500;
     
-    protected transient GlobalUID uid;
-    protected transient GlobalUID uidWithOption;
+    protected transient ClusterService.ClusterUID uid;
+    protected transient ClusterService.ClusterUID uidWithOption;
     protected transient InetAddress group;
     protected transient DatagramSocket socket;
     protected transient DatagramSocket unicastSocket;
@@ -116,7 +116,7 @@ public class ClusterService extends ServiceBase implements ClusterServiceMBean{
     protected transient Set mainReqMembers;
     
     protected final SynchronizeMonitor helloMonitor = new WaitSynchronizeMonitor();
-    protected transient GlobalUID helloTarget;
+    protected transient ClusterService.ClusterUID helloTarget;
     protected transient Serializable option;
     protected transient Map optionMap;
     protected transient boolean isJoinOnStart = true;
@@ -128,7 +128,7 @@ public class ClusterService extends ServiceBase implements ClusterServiceMBean{
     protected int threadPriority = -1;
     protected final Object lockObj = "LOCK";
     protected transient long lastReceiveTime = -1;
-    protected transient GlobalUID lastReceiveUID;
+    protected transient ClusterService.ClusterUID lastReceiveUID;
     protected final Object lastReceiveUIDLockObj = "LOCK_LAST_RECEIVE";
     
     public void setTargetServiceName(ServiceName name){
@@ -344,7 +344,7 @@ public class ClusterService extends ServiceBase implements ClusterServiceMBean{
         }
     }
     
-    public Object getUID(){
+    public ClusterUID getUID(){
         return uid;
     }
     
@@ -426,9 +426,9 @@ public class ClusterService extends ServiceBase implements ClusterServiceMBean{
             listeners.add(listener);
         }
         
-        uidWithOption = new GlobalUID(localAddress, (optionMap == null || optionMap.size() == 0) ? option : (Serializable)optionMap);
+        uidWithOption = new ClusterService.ClusterUID(localAddress, (optionMap == null || optionMap.size() == 0) ? option : (Serializable)optionMap);
         uidWithOption.setClient(isClient);
-        uid = (GlobalUID)uidWithOption.clone();
+        uid = (ClusterService.ClusterUID)uidWithOption.clone();
         uid.setOption(null);
         if(multicastGroupAddress == null && (unicastMemberAddresses == null || unicastMemberAddresses.length == 0)){
             throw new IllegalArgumentException("MulticastGroupAddress and UnicastMemberAddresses is null.");
@@ -741,7 +741,7 @@ public class ClusterService extends ServiceBase implements ClusterServiceMBean{
         }
     }
     
-    public ClusterService createClient(){
+    public Cluster createClient(){
         ClusterService client = new ClusterService();
         client.multicastGroupAddress = multicastGroupAddress;
         client.multicastPort = multicastPort;
@@ -763,14 +763,14 @@ public class ClusterService extends ServiceBase implements ClusterServiceMBean{
         sendMessage(messageId, null);
     }
     
-    protected void sendMessage(int messageId, GlobalUID toUID) throws IOException{
+    protected void sendMessage(int messageId, ClusterService.ClusterUID toUID) throws IOException{
         sendMessage(messageId, null, toUID);
     }
     
     protected void sendMessage(
         int messageId,
-        GlobalUID agentUID,
-        GlobalUID toUID
+        ClusterService.ClusterUID agentUID,
+        ClusterService.ClusterUID toUID
     ) throws IOException{
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ObjectOutputStream oos = new ObjectOutputStream(baos);
@@ -832,9 +832,9 @@ public class ClusterService extends ServiceBase implements ClusterServiceMBean{
                         toMembers.addAll(memberAddresses);
                     }
                     InetSocketAddress[] toAddresses = (InetSocketAddress[])toMembers.toArray(new InetSocketAddress[toMembers.size()]);
-                    GlobalUID[] clients = null;
+                    ClusterService.ClusterUID[] clients = null;
                     synchronized(clientMembers){
-                        clients = clientMembers.size() == 0 ? null : (GlobalUID[])clientMembers.values().toArray(new GlobalUID[clientMembers.size()]);
+                        clients = clientMembers.size() == 0 ? null : (ClusterService.ClusterUID[])clientMembers.values().toArray(new ClusterService.ClusterUID[clientMembers.size()]);
                     }
                     for(int i = 0; i < windows.size(); i++){
                         byte[] windowData = (byte[])windows.get(i);
@@ -924,12 +924,12 @@ public class ClusterService extends ServiceBase implements ClusterServiceMBean{
         }
     }
     
-    protected void handleMessage(GlobalUID fromUID, InputStream is){
+    protected void handleMessage(ClusterService.ClusterUID fromUID, InputStream is){
         ObjectInputStream ois = null;
         try{
             ois = new ObjectInputStream(is);
             final int messageId = ois.readInt();
-            GlobalUID agentFromUID = (GlobalUID)ois.readObject();
+            ClusterService.ClusterUID agentFromUID = (ClusterService.ClusterUID)ois.readObject();
             if(agentFromUID != null){
                 fromUID = agentFromUID;
             }
@@ -946,13 +946,13 @@ public class ClusterService extends ServiceBase implements ClusterServiceMBean{
                 if(!isMain || isMainDoubt){
                     break;
                 }
-                GlobalUID newUID = (GlobalUID)ois.readObject();
+                ClusterService.ClusterUID newUID = (ClusterService.ClusterUID)ois.readObject();
                 if(fromUID.isClient()){
                     synchronized(clientMembers){
                         if(fromUID.getUnicastPort() != 0){
                             Iterator itr = clientMembers.keySet().iterator();
                             while(itr.hasNext()){
-                                GlobalUID clientId = (GlobalUID)itr.next();
+                                ClusterService.ClusterUID clientId = (ClusterService.ClusterUID)itr.next();
                                 if(!fromUID.equals(clientId)
                                     && clientId.getUnicastPort() != 0
                                     && clientId.getAddress().equals(fromUID.getAddress())
@@ -975,7 +975,7 @@ public class ClusterService extends ServiceBase implements ClusterServiceMBean{
                                 if(members.size() != 0){
                                     Iterator itr = members.iterator();
                                     while(itr.hasNext()){
-                                        GlobalUID memberId = (GlobalUID)itr.next();
+                                        ClusterService.ClusterUID memberId = (ClusterService.ClusterUID)itr.next();
                                         if(memberId.getUnicastPort() != 0
                                             && memberId.getAddress().equals(newUID.getAddress())
                                             && memberId.getUnicastPort() == newUID.getUnicastPort()
@@ -1030,7 +1030,7 @@ public class ClusterService extends ServiceBase implements ClusterServiceMBean{
                         if(multicastGroupAddress == null){
                             memberAddresses.clear();
                             for(int i = 0; i < newMembers.size(); i++){
-                                GlobalUID newMember = (GlobalUID)newMembers.get(i);
+                                ClusterService.ClusterUID newMember = (ClusterService.ClusterUID)newMembers.get(i);
                                 memberAddresses.add(new InetSocketAddress(newMember.getAddress(), newMember.getUnicastPort()));
                             }
                         }
@@ -1065,7 +1065,7 @@ public class ClusterService extends ServiceBase implements ClusterServiceMBean{
                         tmpNewMembers = new ArrayList(members);
                         if(multicastGroupAddress == null){
                             for(int i = 0; i < newMembers.size(); i++){
-                                GlobalUID newMember = (GlobalUID)newMembers.get(i);
+                                ClusterService.ClusterUID newMember = (ClusterService.ClusterUID)newMembers.get(i);
                                 memberAddresses.add(new InetSocketAddress(newMember.getAddress(), newMember.getUnicastPort()));
                             }
                         }
@@ -1108,7 +1108,7 @@ public class ClusterService extends ServiceBase implements ClusterServiceMBean{
                         if(multicastGroupAddress == null){
                             memberAddresses.clear();
                             for(int i = 0; i < newMembers.size(); i++){
-                                GlobalUID newMember = (GlobalUID)newMembers.get(i);
+                                ClusterService.ClusterUID newMember = (ClusterService.ClusterUID)newMembers.get(i);
                                 memberAddresses.add(new InetSocketAddress(newMember.getAddress(), newMember.getUnicastPort()));
                             }
                         }
@@ -1192,7 +1192,7 @@ public class ClusterService extends ServiceBase implements ClusterServiceMBean{
                             if(fromUID.getUnicastPort() != 0){
                                 Iterator itr = clientMembers.keySet().iterator();
                                 while(itr.hasNext()){
-                                    GlobalUID clientId = (GlobalUID)itr.next();
+                                    ClusterService.ClusterUID clientId = (ClusterService.ClusterUID)itr.next();
                                     if(!fromUID.equals(clientId)
                                         && clientId.getUnicastPort() != 0
                                         && clientId.getAddress().equals(fromUID.getAddress())
@@ -1434,28 +1434,18 @@ public class ClusterService extends ServiceBase implements ClusterServiceMBean{
         }
     }
     
-    public static class GlobalUID extends jp.ossc.nimbus.util.net.GlobalUID{
+    public static class ClusterUID extends jp.ossc.nimbus.service.keepalive.ClusterUID{
         
         private static final long serialVersionUID = 2185113122895103559L;
         
-        protected Serializable option;
         protected int unicastPort = 0;
-        protected boolean isClient;
         protected transient long lastHeartBeatTime;
         
-        public GlobalUID() throws UnknownHostException{
+        public ClusterUID() throws UnknownHostException{
         }
         
-        public GlobalUID(String localAddress, Serializable option) throws UnknownHostException{
-            super(localAddress);
-            this.option = option;
-        }
-        
-        public void setClient(boolean isClient){
-            this.isClient = isClient;
-        }
-        public boolean isClient(){
-            return isClient;
+        public ClusterUID(String localAddress, Serializable option) throws UnknownHostException{
+            super(localAddress, option);
         }
         
         public void setUnicastPort(int port){
@@ -1465,28 +1455,11 @@ public class ClusterService extends ServiceBase implements ClusterServiceMBean{
             return unicastPort;
         }
         
-        public Object getOption(){
-            return option;
-        }
-        public void setOption(Object opt){
-            option = (Serializable)opt;
-        }
-        
-        public Object getOption(String key){
-            return option == null ? null : ((Map)option).get(key);
-        }
-        public void setOption(String key, Object opt){
-            if(option == null){
-                option = new HashMap();
-            }
-            ((Map)option).put(key, (Serializable)opt);
-        }
-        
         public boolean equals(Object obj){
             if(!super.equals(obj)){
                 return false;
             }
-            GlobalUID cmp = (GlobalUID)obj;
+            ClusterUID cmp = (ClusterUID)obj;
             if(unicastPort != cmp.unicastPort){
                 return false;
             }
@@ -1502,22 +1475,18 @@ public class ClusterService extends ServiceBase implements ClusterServiceMBean{
             if(result != 0){
                 return result;
             }
-            GlobalUID cmp = (GlobalUID)obj;
+            ClusterUID cmp = (ClusterUID)obj;
             return unicastPort - cmp.unicastPort;
         }
         
         public void writeExternal(ObjectOutput out) throws IOException{
             super.writeExternal(out);
-            out.writeObject(option);
             out.writeInt(unicastPort);
-            out.writeBoolean(isClient);
         }
         
         public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException{
             super.readExternal(in);
-            option = (Serializable)in.readObject();
             unicastPort = in.readInt();
-            isClient = in.readBoolean();
             lastHeartBeatTime = System.currentTimeMillis();
         }
     }
@@ -1606,7 +1575,7 @@ public class ClusterService extends ServiceBase implements ClusterServiceMBean{
         
         protected long lastSendTime = -1;
         protected int heartBeatFailedCount;
-        protected GlobalUID targetMember;
+        protected ClusterService.ClusterUID targetMember;
         
         public boolean onStart(){return true;}
         public boolean onStop(){return true;}
@@ -1624,11 +1593,11 @@ public class ClusterService extends ServiceBase implements ClusterServiceMBean{
                 return;
             }
             lastSendTime = System.currentTimeMillis();
-            GlobalUID[] clients = null;
+            ClusterService.ClusterUID[] clients = null;
             if(isMain){
                 sendMessage(MESSAGE_ID_MAIN_HELLO_REQ);
                 synchronized(clientMembers){
-                    clients = clientMembers.size() == 0 ? null : (GlobalUID[])clientMembers.values().toArray(new GlobalUID[clientMembers.size()]);
+                    clients = clientMembers.size() == 0 ? null : (ClusterService.ClusterUID[])clientMembers.values().toArray(new ClusterService.ClusterUID[clientMembers.size()]);
                     if(clients != null){
                         for(int i = 0; i < clients.length; i++){
                             if(lastSendTime - ((heartBeatInterval + heartBeatResponseTimeout) * heartBeatRetryCount) > clients[i].lastHeartBeatTime){
@@ -1649,11 +1618,11 @@ public class ClusterService extends ServiceBase implements ClusterServiceMBean{
                 }
             }
             
-            GlobalUID member = null;
+            ClusterService.ClusterUID member = null;
             synchronized(members){
                 if(isClient){
                     if(members.size() > 0){
-                        member = (GlobalUID)members.get(0);
+                        member = (ClusterService.ClusterUID)members.get(0);
                     }
                 }else{
                     if(members.size() > 1){
@@ -1666,7 +1635,7 @@ public class ClusterService extends ServiceBase implements ClusterServiceMBean{
                         }else{
                             index += 1;
                         }
-                        member = (GlobalUID)members.get(index);
+                        member = (ClusterService.ClusterUID)members.get(index);
                         if(!member.equals(targetMember)){
                             heartBeatFailedCount = 0;
                         }
@@ -1684,7 +1653,7 @@ public class ClusterService extends ServiceBase implements ClusterServiceMBean{
                     }
                 }
             }else if(member != null && !member.equals(uid)){
-                GlobalUID tmpLastReceiveUID = null;
+                ClusterService.ClusterUID tmpLastReceiveUID = null;
                 long tmpLastReceiveTime = 0l;
                 synchronized(lastReceiveUIDLockObj){
                     tmpLastReceiveUID = lastReceiveUID;
@@ -1919,7 +1888,7 @@ public class ClusterService extends ServiceBase implements ClusterServiceMBean{
     protected static class Window implements Comparable{
         
         private static final int HEADER_LENGTH = 4 + 2 + 2 + 4;
-        public GlobalUID uid;
+        public ClusterService.ClusterUID uid;
         public int sequence;
         
         public short windowCount;
@@ -2012,7 +1981,7 @@ public class ClusterService extends ServiceBase implements ClusterServiceMBean{
         }
         
         public void read(DataInputStream in) throws IOException, ClassNotFoundException{
-            uid = (GlobalUID)new ObjectInputStream(in).readObject();
+            uid = (ClusterService.ClusterUID)new ObjectInputStream(in).readObject();
             sequence = in.readInt();
             windowCount = in.readShort();
             windowNo = in.readShort();

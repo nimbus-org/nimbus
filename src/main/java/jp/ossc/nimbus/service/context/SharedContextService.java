@@ -41,7 +41,7 @@ import java.lang.reflect.InvocationTargetException;
 import jp.ossc.nimbus.beans.*;
 import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.publish.*;
-import jp.ossc.nimbus.service.keepalive.ClusterService;
+import jp.ossc.nimbus.service.keepalive.Cluster;
 import jp.ossc.nimbus.service.keepalive.ClusterListener;
 import jp.ossc.nimbus.service.cache.CacheMap;
 import jp.ossc.nimbus.service.cache.CacheRemoveListener;
@@ -133,7 +133,7 @@ public class SharedContextService extends DefaultContextService
     protected RequestServerConnection serverConnection;
     protected MessageReceiver messageReceiver;
     protected ServiceName clusterServiceName;
-    protected ClusterService cluster;
+    protected Cluster cluster;
     protected ServiceName clientCacheMapServiceName;
     protected ServiceName serverCacheMapServiceName;
     protected CacheMap clientCacheMap;
@@ -644,7 +644,7 @@ public class SharedContextService extends DefaultContextService
         if(clusterServiceName == null){
             throw new IllegalArgumentException("ClusterServiceName must be specified.");
         }
-        cluster = (ClusterService)ServiceManagerFactory.getServiceObject(clusterServiceName);
+        cluster = (Cluster)ServiceManagerFactory.getServiceObject(clusterServiceName);
         cluster.addClusterListener(this);
         
         lockTimeoutTimer = new Timer("SharedContext LockTimeoutTimerThread of " + getServiceNameObject(), true);

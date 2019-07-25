@@ -48,7 +48,8 @@ import java.rmi.RemoteException;
 
 import jp.ossc.nimbus.core.Service;
 import jp.ossc.nimbus.core.ServiceManagerFactory;
-import jp.ossc.nimbus.service.keepalive.ClusterService;
+import jp.ossc.nimbus.service.keepalive.Cluster;
+import jp.ossc.nimbus.service.keepalive.ClusterUID;
 import jp.ossc.nimbus.service.keepalive.ClusterListener;
 
 /**
@@ -61,7 +62,7 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
     private static final long serialVersionUID = 4277728721026624133L;
     
     private transient Object uid;
-    private transient ClusterService cluster;
+    private transient Cluster cluster;
     private String clusterOptionKey;
     private String connectionGetErrorMessageId;
     private String connectErrorMessageId;
@@ -90,19 +91,19 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
     public ClusterClientConnectionImpl(){
     }
     
-    public ClusterClientConnectionImpl(ClusterService cluster){
+    public ClusterClientConnectionImpl(Cluster cluster){
         setCluster(cluster);
     }
     
-    public ClusterClientConnectionImpl(ClusterService cluster, String no){
+    public ClusterClientConnectionImpl(Cluster cluster, String no){
         setCluster(cluster);
         clientNo = no;
     }
     
-    public void setCluster(ClusterService cluster){
+    public void setCluster(Cluster cluster){
         this.cluster = cluster;
-        ClusterService.GlobalUID tmpUID = (ClusterService.GlobalUID)this.cluster.getUID();
-        tmpUID = (ClusterService.GlobalUID)tmpUID.clone();
+        ClusterUID tmpUID = (ClusterUID)this.cluster.getUID();
+        tmpUID = (ClusterUID)tmpUID.clone();
         tmpUID.setOption(null);
         uid = tmpUID;
     }
@@ -165,17 +166,17 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
         }
         isConnecting = true;
         try{
-            if(cluster.getState() != Service.STARTED){
+            if(((Service)cluster).getState() != Service.STARTED){
                 try{
-                    cluster.create();
+                    ((Service)cluster).create();
                     cluster.setClient(true);
                     cluster.addClusterListener(this);
-                    cluster.start();
+                    ((Service)cluster).start();
                     this.id = id == null ? (clientNo == null ? uid : (uid + clientNo)) : id;
                     cluster.join();
                 }catch(Exception e){
-                    cluster.stop();
-                    cluster.destroy();
+                    ((Service)cluster).stop();
+                    ((Service)cluster).destroy();
                     throw new ConnectException(e);
                 }
             }else{
@@ -199,7 +200,7 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
         List memberList = cluster.getMembers();
         List tmpMembers = new ArrayList();
         Map tmpConnectionMap = new LinkedHashMap();
-        ClusterService.GlobalUID[] members = (ClusterService.GlobalUID[])memberList.toArray(new ClusterService.GlobalUID[memberList.size()]);
+        ClusterUID[] members = (ClusterUID[])memberList.toArray(new ClusterUID[memberList.size()]);
         for(int i = 0; i < members.length; i++){
             ClusterConnection clusterConnection = null;
             if(connectionMap != null && connectionMap.containsKey(members[i])){
@@ -512,8 +513,8 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
         id = null;
         currentUID = null;
         cluster.removeClusterListener(this);
-        if(cluster.getServiceManagerName() == null){
-            cluster.stop();
+        if(((Service)cluster).getServiceManagerName() == null){
+            ((Service)cluster).stop();
         }
         if(connectionMap != null){
             List connections = new ArrayList(connectionMap.values());
@@ -691,7 +692,7 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
         removedMembers.removeAll(newMembers);
         Iterator rmMembers = removedMembers.iterator();
         while(rmMembers.hasNext()){
-            ClusterService.GlobalUID rmMember = (ClusterService.GlobalUID)rmMembers.next();
+            ClusterUID rmMember = (ClusterUID)rmMembers.next();
             ClusterConnection clusterConnection = (ClusterConnection)connectionMap.get(rmMember);
             if(clusterConnection != null){
                 if(!isMultiple && currentUID != null && currentUID.equals(rmMember)){
@@ -874,6 +875,6 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
     
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException{
         in.defaultReadObject();
-        cluster = (ClusterService)in.readObject();
+        cluster = (Cluster)in.readObject();
     }
 }

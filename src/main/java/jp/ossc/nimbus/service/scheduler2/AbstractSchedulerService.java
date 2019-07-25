@@ -41,7 +41,7 @@ import jp.ossc.nimbus.service.context.Context;
 import jp.ossc.nimbus.service.sequence.Sequence;
 import jp.ossc.nimbus.service.aop.interceptor.ThreadContextKey;
 import jp.ossc.nimbus.service.transaction.TransactionManagerFactory;
-import jp.ossc.nimbus.service.keepalive.ClusterService;
+import jp.ossc.nimbus.service.keepalive.Cluster;
 import jp.ossc.nimbus.service.system.Time;
 
 /**
@@ -86,7 +86,7 @@ public abstract class AbstractSchedulerService extends ServiceBase
     protected Sequence sequence;
     
     protected ServiceName clusterServiceName;
-    protected ClusterService cluster;
+    protected Cluster cluster;
     protected ClusterListener clusterListener;
     
     protected ServiceName timeServiceName;
@@ -282,7 +282,7 @@ public abstract class AbstractSchedulerService extends ServiceBase
         scheduleTicker.start();
         
         if(clusterServiceName != null){
-            cluster = (ClusterService)ServiceManagerFactory.getServiceObject(clusterServiceName);
+            cluster = (Cluster)ServiceManagerFactory.getServiceObject(clusterServiceName);
             clusterListener = new ClusterListener();
             cluster.addClusterListener(clusterListener);
             if(isControlCluster && !cluster.isJoin()){
