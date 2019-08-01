@@ -164,7 +164,7 @@ public interface CodeMasterServiceMBean extends ServiceBaseMBean, CodeMasterFind
 
     /**
      * {@link jp.ossc.nimbus.service.publish.Message Message}を受信する{@link jp.ossc.nimbus.service.publish.MessageReceiver MessageReceiver}サービスのサービス名を設定する。<p>
-     * Messageでのマスタ更新を行う場合に使用する。Messageでのマスタ更新を行わない場合は、設定する必要はない。<br>
+     * Messageでの非同期的なマスタ更新を行う場合に使用する。Messageでのマスタ更新を行わない場合は、設定する必要はない。<br>
      *
      * @param name MessageReceiverサービスのサービス名
      */
@@ -176,6 +176,21 @@ public interface CodeMasterServiceMBean extends ServiceBaseMBean, CodeMasterFind
      * @return MessageReceiverサービスのサービス名
      */
     public ServiceName getMessageReceiverServiceName();
+    
+    /**
+     * {@link jp.ossc.nimbus.service.publish.Message Message}を受信して応答する{@link jp.ossc.nimbus.service.publish.RequestConnectionFactoryService RequestConnectionFactoryService}サービスのサービス名を設定する。<p>
+     * Messageでの同期的なマスタ更新を行う場合に使用する。Messageでのマスタ更新を行わない場合は、設定する必要はない。<br>
+     * 
+     * @param name RequestConnectionFactoryServiceサービスのサービス名
+     */
+    public void setRequestConnectionFactoryServiceName(ServiceName name);
+    
+    /**
+     * {@link jp.ossc.nimbus.service.publish.Message Message}を受信して応答する{@link jp.ossc.nimbus.service.publish.RequestConnectionFactoryService RequestConnectionFactoryService}サービスのサービス名を取得する。<p>
+     * 
+     * @return RequestConnectionFactoryServiceサービスのサービス名
+     */
+    public ServiceName getRequestConnectionFactoryServiceName();
 
     /**
      * JMSトピックでマスタ更新を行う場合のマスタ名と通知マスタ名のマッピングを設定する。<p>
