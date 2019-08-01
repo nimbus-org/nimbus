@@ -38,9 +38,11 @@ import javax.jms.*;
 import javax.naming.NamingException;
 import jp.ossc.nimbus.service.jndi.*;
 import jp.ossc.nimbus.service.publish.ServerConnection;
+import jp.ossc.nimbus.service.publish.RequestServerConnection;
 import jp.ossc.nimbus.service.publish.MessageSendException;
 import jp.ossc.nimbus.service.publish.MessageException;
 import jp.ossc.nimbus.service.publish.MessageCreateException;
+import jp.ossc.nimbus.service.publish.RequestTimeoutException;
 
 /**
  * コードマスター管理にマスター入れ替えを指示するBean
@@ -68,14 +70,36 @@ public class CodeMasterNotifyBean extends HashMap{
     
     private String subject;
     private ServerConnection connection;
+    private long timeout;
     private Set flowNameSet = new LinkedHashSet();
     
+    /**
+     * 送信先のサブジェクト名を設定する。<p>
+     *
+     * @param subject サブジェクト名
+     */
     public void setSubject(String subject){
         this.subject = subject;
     }
     
+    /**
+     * 送信するサーバコネクションを設定する。<p>
+     * 同期送信を行う場合は、{@link RequestServerConnection}を設定すること。<br>
+     *
+     * @param connection サーバコネクション
+     */
     public void setServerConnection(ServerConnection connection){
         this.connection = connection;
+    }
+    
+    /**
+     * 同期送信する際のタイムアウト[ms]を設定する。<p>
+     * デフォルトは、タイムアウトしない。<br>
+     *
+     * @param timeout タイムアウト
+     */
+    public void setTimeout(long timeout){
+        this.timeout = timeout;
     }
     
     /**
@@ -198,6 +222,47 @@ public class CodeMasterNotifyBean extends HashMap{
                 map.put(dateKey, get(dateKey));
                 msg.setObject(map);
                 connection.send(msg);
+            }
+        }
+        flowNameSet.clear();
+        this.clear();
+    }
+    
+    public void request() throws Exception{
+        if(size() == 0){
+            return ;
+        }
+        Iterator flowNames = flowNameSet.iterator();
+        long currentTimeout = timeout;
+        long start = System.currentTimeMillis();
+        while(flowNames.hasNext()){
+            if(timeout > 0 && currentTimeout <= 0){
+                throw new RequestTimeoutException();
+            }
+            String flowName = (String)flowNames.next();
+            jp.ossc.nimbus.service.publish.Message msg = connection.createMessage(
+                subject,
+                flowName
+            );
+            Map map = new HashMap();
+            map.put(flowName, get(flowName));
+            String dateKey = flowName + CodeMasterService.UPDATE_TIME_KEY;
+            map.put(dateKey, get(dateKey));
+            msg.setObject(map);
+            jp.ossc.nimbus.service.publish.Message[] responses = ((RequestServerConnection)connection).request(msg, 0, currentTimeout);
+            for(int i = 0; i < responses.length; i++){
+                Object response = responses[i].getObject();
+                if(response instanceof Throwable){
+                    Throwable th = (Throwable)response;
+                    if(th instanceof Error){
+                        throw (Error)th;
+                    }else{
+                        throw (Exception)th;
+                    }
+                }
+            }
+            if(timeout > 0){
+                currentTimeout = timeout - (System.currentTimeMillis() - start);
             }
         }
         flowNameSet.clear();
