@@ -443,7 +443,13 @@ public class SharedContextService extends DefaultContextService
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
                     message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_ANALYZE_KEY_INDEX, name, new Long(timeout)));
-                    Message[] responses = serverConnection.request(message, 1, timeout);
+                    Message[] responses = serverConnection.request(
+                        message,
+                        isClient ? clientSubject : subject,
+                        null,
+                        1,
+                        timeout
+                    );
                     Object ret = responses[0].getObject();
                     responses[0].recycle();
                     if(ret instanceof Throwable){
@@ -993,7 +999,13 @@ public class SharedContextService extends DefaultContextService
                 receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
                     message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_SYNCH_ALL, null, new Long(timeout)));
-                    Message[] responses = serverConnection.request(message, 0, timeout);
+                    Message[] responses = serverConnection.request(
+                        message,
+                        isClient ? clientSubject : subject,
+                        null,
+                        0,
+                        timeout
+                    );
                     for(int i = 0; i < responses.length; i++){
                         if(responses[i].getObject() == null || !((Boolean)responses[i].getObject()).booleanValue()){
                             throw new SharedContextSendException("It faild to synchronize.");
@@ -1055,7 +1067,13 @@ public class SharedContextService extends DefaultContextService
             Set receiveClients = serverConnection.getReceiveClientIds(message);
             if(receiveClients.size() != 0){
                 message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_GET_ALL));
-                Message[] responses = serverConnection.request(message, 1, timeout);
+                Message[] responses = serverConnection.request(
+                    message,
+                    isClient ? clientSubject : subject,
+                    null,
+                    1,
+                    timeout
+                );
                 Map result = (Map)responses[0].getObject();
                 responses[0].recycle();
                 if(result != null){

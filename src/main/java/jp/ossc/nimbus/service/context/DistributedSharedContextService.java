@@ -809,7 +809,13 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     long start = System.currentTimeMillis();
                     Message[] responses = null;
                     try{
-                        responses = serverConnection.request(message, 0, currentTimeout);
+                        responses = serverConnection.request(
+                            message,
+                            isClient ? clientSubject : subject,
+                            null,
+                            0,
+                            currentTimeout
+                        );
                     }catch(RequestTimeoutException e){
                         throw new SharedContextTimeoutException("Timeout has occurred to get state of distribution.", e);
                     }
@@ -838,7 +844,14 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                             message = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_REHASH));
                             message.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_REHASH, info));
                             message.addDestinationId(info.getId());
-                            serverConnection.request(message, 1, timeout, callback);
+                            serverConnection.request(
+                                message,
+                                isClient ? clientSubject : subject,
+                                null,
+                                1,
+                                timeout,
+                                callback
+                            );
                         }
                         callback.waitResponse(currentTimeout);
                     }
@@ -863,7 +876,14 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                             message = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_REHASH));
                             message.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_REHASH, info));
                             message.addDestinationId(info.getId());
-                            serverConnection.request(message, 1, currentTimeout, callback);
+                            serverConnection.request(
+                                message,
+                                isClient ? clientSubject : subject,
+                                null,
+                                1,
+                                currentTimeout,
+                                callback
+                            );
                         }
                         callback.waitResponse(currentTimeout);
                     }
