@@ -120,6 +120,20 @@ public interface RequestConnectionFactoryServiceMBean extends ServiceBaseMBean{
     public long getResponseRetryInterval();
     
     /**
+     * 応答サブジェクトを設定する。<p>
+     *
+     * @param subject サブジェクト
+     */
+    public void setResponseSubject(String subject);
+    
+    /**
+     * 応答サブジェクトを取得する。<p>
+     *
+     * @return サブジェクト
+     */
+    public String getResponseSubject();
+    
+    /**
      * クライアントからの要求に応答する際に、送信エラーが発生しリトライする場合に出力するログメッセージIDを設定する。<p>
      *
      * @param id ログメッセージID

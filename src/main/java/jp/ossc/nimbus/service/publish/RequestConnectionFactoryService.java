@@ -74,6 +74,8 @@ public class RequestConnectionFactoryService extends ServiceBase
     private boolean isAsynchResponse;
     private int responseRetryCount = 1;
     private long responseRetryInterval = 50l;
+    private String responseSubject;
+    private ResponseMessageListener responseMessageListener;
     
     private String responseErrorRetryMessageId = MSG_ID_RESPONSE_ERROR_RETRY;
     private String responseErrorMessageId = MSG_ID_RESPONSE_ERROR;
@@ -125,6 +127,13 @@ public class RequestConnectionFactoryService extends ServiceBase
         return responseRetryInterval;
     }
     
+    public void setResponseSubject(String subject){
+        responseSubject = subject;
+    }
+    public String getResponseSubject(){
+        return responseSubject;
+    }
+    
     public void setResponseErrorRetryMessageId(String id){
         responseErrorRetryMessageId = id;
     }
@@ -173,6 +182,11 @@ public class RequestConnectionFactoryService extends ServiceBase
         }
         messageReceiver = (MessageReceiver)ServiceManagerFactory.getServiceObject(messageReceiverServiceName);
         
+        if(responseSubject != null){
+            responseMessageListener = new ResponseMessageListener();
+            messageReceiver.addSubject(responseMessageListener, responseSubject);
+        }
+        
         if(serverConnectionFactoryServiceName == null){
             throw new IllegalArgumentException("ServerConnectionFactoryServiceName must be specified.");
         }
@@ -181,6 +195,10 @@ public class RequestConnectionFactoryService extends ServiceBase
     }
     
     public void stopService() throws Exception{
+        if(responseMessageListener != null){
+            messageReceiver.removeMessageListener(responseMessageListener);
+            responseMessageListener = null;
+        }
         serverConnection.close();
         serverConnection = null;
         sequence = 0;
@@ -393,7 +411,7 @@ public class RequestConnectionFactoryService extends ServiceBase
         }
         
         public Message[] request(Message message, int replyCount, long timeout) throws MessageSendException, RequestTimeoutException{
-            return request(message, null, null, replyCount, timeout);
+            return request(message, responseSubject, null, replyCount, timeout);
         }
         
         public Message[] request(Message message, String responseSubject, String responseKey, int replyCount, long timeout) throws MessageSendException, RequestTimeoutException{
@@ -461,7 +479,7 @@ public class RequestConnectionFactoryService extends ServiceBase
         }
         
         public void request(Message message, int replyCount, long timeout, RequestServerConnection.ResponseCallBack callback) throws MessageSendException{
-            request(message, null, null, replyCount, timeout, callback);
+            request(message, responseSubject, null, replyCount, timeout, callback);
         }
         
         public void request(Message message, String responseSubject, String responseKey, int replyCount, long timeout, RequestServerConnection.ResponseCallBack callback) throws MessageSendException{
@@ -529,7 +547,7 @@ public class RequestConnectionFactoryService extends ServiceBase
         }
         
         public int sendRequest(Message message, int replyCount, long timeout) throws MessageSendException, RequestTimeoutException{
-            return sendRequest(message, null, null, replyCount, timeout);
+            return sendRequest(message, responseSubject, null, replyCount, timeout);
         }
         
         public int sendRequest(Message message, String responseSubject, String responseKey, int replyCount, long timeout) throws MessageSendException, RequestTimeoutException{
@@ -802,6 +820,37 @@ public class RequestConnectionFactoryService extends ServiceBase
                     itr.remove();
                     container.interrupt();
                 }
+            }
+        }
+    }
+    
+    private class ResponseMessageListener implements MessageListener{
+        public void onMessage(Message message){
+            Object obj = null;
+            try{
+                obj = message.getObject();
+            }catch(MessageException e){
+                if(readMessageErrorMessageId != null){
+                    getLogger().write(
+                        readMessageErrorMessageId,
+                        new Object[]{RequestConnectionFactoryService.this.getServiceNameObject(), message},
+                        e
+                    );
+                }
+                return;
+            }
+            if(obj instanceof ResponseMessage){
+                final ResponseMessage response = (ResponseMessage)obj;
+                final Object responseObj = response.getObject();
+                try{
+                    message = (Message)message.clone();
+                    message.setObject(responseObj);
+                }catch(MessageException e){
+                    // 発生しないはず
+                    e.printStackTrace();
+                    return;
+                }
+                serverConnection.reply(message, response);
             }
         }
     }
