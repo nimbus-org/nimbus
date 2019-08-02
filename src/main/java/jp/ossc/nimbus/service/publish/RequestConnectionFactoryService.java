@@ -74,7 +74,7 @@ public class RequestConnectionFactoryService extends ServiceBase
     private boolean isAsynchResponse;
     private int responseRetryCount = 1;
     private long responseRetryInterval = 50l;
-    private String responseSubject = "response";
+    private String responseSubject;
     private ResponseMessageListener responseMessageListener;
     
     private String responseErrorRetryMessageId = MSG_ID_RESPONSE_ERROR_RETRY;
