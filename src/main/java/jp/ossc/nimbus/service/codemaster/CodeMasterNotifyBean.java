@@ -323,4 +323,9 @@ public class CodeMasterNotifyBean extends HashMap{
         addMessage();
         send();
     }
+
+    public void addMessageAndRequest() throws Exception{
+        addMessage();
+        request();
+    }
 }
