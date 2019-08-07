@@ -626,6 +626,7 @@ public class MessageRecordFactoryService extends ServiceBase
         if(mLocales == null || mLocales.length == 0){
             return;
         }
+        dirRoot = findDirectory(dirRoot);
         File[] dirs = dirRoot.listFiles();
         if(dirs != null){
             for(int cnt = 0; cnt < dirs.length; cnt++){
@@ -642,6 +643,30 @@ public class MessageRecordFactoryService extends ServiceBase
         }
     }
     
+    protected File findDirectory(File dir) throws IOException{
+        if(dir.exists()){
+           return dir;
+        }
+        File serviceDefDir = null;
+        if(getServiceNameObject() != null){
+            ServiceMetaData metaData = ServiceManagerFactory.getServiceMetaData(getServiceNameObject());
+            if(metaData != null){
+                jp.ossc.nimbus.core.ServiceLoader loader = metaData.getServiceLoader();
+                if(loader != null){
+                    String filePath = loader.getServiceURL().getFile();
+                    if(filePath != null){
+                        serviceDefDir = new File(filePath).getParentFile();
+                    }
+                }
+            }
+        }
+        if(serviceDefDir == null){
+           return dir;
+        }
+        File relativeDir = new File(serviceDefDir, dir.getPath());
+        return relativeDir.exists() ? relativeDir : dir;
+    }
+    
     /**
      * 指定されたディレクトリ配下のメッセージ定義ファイルを読み込んで、このサービスに格納する。<p>
      * 
@@ -651,6 +676,7 @@ public class MessageRecordFactoryService extends ServiceBase
      */
     protected void setMessageDef(File dirRoot)
      throws IOException, MessageRecordParseException{
+        dirRoot = findDirectory(dirRoot);
         ExtentionFileFilter filter = new ExtentionFileFilter(mExtention);
         File[] defFileList = dirRoot.listFiles(filter);
         if(defFileList!=null){
