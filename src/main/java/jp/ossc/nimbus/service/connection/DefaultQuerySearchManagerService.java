@@ -374,7 +374,7 @@ public class DefaultQuerySearchManagerService extends ServiceBase implements Que
             }else{
                 this.key = key;
             }
-            hashCode = this.key.hashCode();
+            hashCode = this.key == null ? 0 : this.key.hashCode();
         }
         public int hashCode(){
             return hashCode;
