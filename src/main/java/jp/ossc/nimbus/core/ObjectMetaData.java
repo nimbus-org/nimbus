@@ -455,11 +455,6 @@ public class ObjectMetaData extends MetaData implements Serializable{
                 ifdefData.addChild(invokeData);
             }
             invokeData.importXML((Element)invokeElements.next());
-            if(invokeData.getTarget() != null){
-                throw new DeploymentException(
-                    "target element must not specified. : " + invokeData
-                );
-            }
             if(ifdefMatch){
                 addInvoke(invokeData);
             }

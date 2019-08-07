@@ -2602,16 +2602,17 @@ public class DefaultServiceManagerService extends ServiceBase
         Object target,
         ObjectMetaData objData,
         int state
-    ){
+    ) throws Exception {
         if(objData == null){
             return;
         }
         final Iterator invokes = objData.getInvokes().iterator();
         while(invokes.hasNext()){
             final InvokeMetaData invokeData = (InvokeMetaData)invokes.next();
+            Object t = getValueOfTarget(invokeData);
             if(state == invokeData.getCallStateValue()){
                 try{
-                    callInvoke(target, objData, invokeData);
+                    callInvoke(t == null ? target : t, objData, invokeData);
                 }catch(Exception e){
                     // 無視する
                 }
