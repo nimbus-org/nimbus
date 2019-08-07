@@ -185,6 +185,21 @@ public interface DefaultQuerySearchManagerServiceMBean extends ServiceBaseMBean{
     public ServiceName getCacheMapServiceName();
     
     /**
+     * 検索結果をストリームに書き出す{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}サービスのサービス名を設定する。<p>
+     * 設定しない場合は、{@link jp.ossc.nimbus.util.converter.BeanJSONConverter BeanJSONConverter}が使用される。<br>
+     *
+     * @param name StreamConverterサービスのサービス名
+     */
+    public void setStreamConverterServiceName(ServiceName name);
+    
+    /**
+     * 検索結果をストリームに書き出す{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}サービスのサービス名を取得する。<p>
+     *
+     * @return StreamConverterサービスのサービス名
+     */
+    public ServiceName getStreamConverterServiceName();
+    
+    /**
      * キャッシュのヒット率を取得する。<p>
      *
      * @return ヒット率

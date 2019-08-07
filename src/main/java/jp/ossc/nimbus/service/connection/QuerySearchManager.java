@@ -31,6 +31,8 @@
  */
 package jp.ossc.nimbus.service.connection;
 
+import java.io.*;
+
 /**
  * 検索管理。<p>
  *
@@ -38,5 +40,34 @@ package jp.ossc.nimbus.service.connection;
  */
 public interface QuerySearchManager{
     
+    /**
+     * 指定された条件オブジェクトに合致するレコードを検索して返す。<p>
+     *
+     * @param key 条件オブジェクト
+     * @return 条件オブジェクトに合致するレコード
+     * @exception ConnectionFactoryException データベースへの接続が取得できない場合
+     * @exception PersistentException データベースからの検索に失敗した場合、または検索結果の変換に失敗した場合
+     */
     public Object search(Object key) throws ConnectionFactoryException, PersistentException;
+    
+    /**
+     * 指定された条件オブジェクトに合致するレコードを検索して出力ストリームに書き出す。<p>
+     *
+     * @param key 条件オブジェクト
+     * @return 条件オブジェクトに合致するレコード
+     * @exception ConnectionFactoryException データベースへの接続が取得できない場合
+     * @exception PersistentException データベースからの検索に失敗した場合、または検索結果の変換に失敗した場合
+     */
+    public InputStream searchAndRead(Object key) throws ConnectionFactoryException, PersistentException;
+    
+    /**
+     * 指定された条件オブジェクトに合致するレコードを検索して出力ストリームに書き出す。<p>
+     *
+     * @param key 条件オブジェクト
+     * @param os 条件オブジェクトに合致するレコードを書き込む出力ストリーム
+     * @exception ConnectionFactoryException データベースへの接続が取得できない場合
+     * @exception PersistentException データベースからの検索に失敗した場合、または検索結果の変換に失敗した場合
+     * @exception IOException 書き込みに失敗した場合
+     */
+    public void searchAndWrite(Object key, OutputStream os) throws ConnectionFactoryException, PersistentException, IOException;
 }
