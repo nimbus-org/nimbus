@@ -72,6 +72,9 @@
         <github.global.server>github</github.global.server>
         <!-- Javadoc error ignore -->
         <additionalJOption>-Xdoclint:none</additionalJOption>
+        <!-- GPG Version 2.1 over options -->
+        <gpgArguments1/>
+        <gpgArguments2/>
     </properties>
 
 <!-- for Maven central repository deploy 
@@ -813,6 +816,12 @@
                         <goals>
                             <goal>sign</goal>
                         </goals>
+                        <configuration>
+                            <gpgArguments>
+                                <arg>${gpgArguments1}</arg>
+                                <arg>${gpgArguments2}</arg>
+                            </gpgArguments>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
