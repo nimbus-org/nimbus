@@ -35,6 +35,7 @@ import java.util.*;
 import java.net.*;
 import java.io.*;
 
+import jp.ossc.nimbus.io.RecurciveSearchFile;
 import jp.ossc.nimbus.service.repository.*;
 import jp.ossc.nimbus.service.log.*;
 import jp.ossc.nimbus.service.message.*;
@@ -499,6 +500,99 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
+     * 指定されたディレクトリのサービス定義をロードする。<p>
+     * {@link #loadManagers(String, String) loadManagers(dir, null)}を呼び出す。<br>
+     * 
+     * @param dir サービス定義があるディレクトリのパス
+     * @return ロードに成功した場合true。但し、ここで言う成功は、必ずしもサービス定義に定義されたサービスが全て正常に起動した事を保証するものでは、ありません。サービス定義のロードに使用するServiceLoaderが正常に起動された事を示します。
+     */
+    public static synchronized boolean loadManagers(String dir){
+        return loadManagers(dir, (String)null);
+    }
+    
+    /**
+     * 指定されたディレクトリのサービス定義をロードする。<p>
+     * {@link #loadManagers(String, String, ServiceLoaderConfig, boolean, boolean) loadManagers(dir, filter, null, false, false)}を呼び出す。<br>
+     * 
+     * @param dir サービス定義があるディレクトリのパス
+     * @param filter サービス定義ファイルを抽出するフィルター。フィルターの指定方法は、{@link RecurciveSearchFile#listAllTreeFiles(String, int)}を参照。
+     * @return ロードに成功した場合true。但し、ここで言う成功は、必ずしもサービス定義に定義されたサービスが全て正常に起動した事を保証するものでは、ありません。サービス定義のロードに使用するServiceLoaderが正常に起動された事を示します。
+     */
+    public static synchronized boolean loadManagers(
+        String dir,
+        String filter
+    ){
+        return loadManagers(dir, filter, (ServiceLoaderConfig)null, false, false);
+    }
+    
+    /**
+     * 指定されたディレクトリのサービス定義をロードする。<p>
+     * {@link #loadManagers(String, String, ServiceLoaderConfig, boolean, boolean) loadManagers(dir, filter, null, isReload, false)}を呼び出す。<br>
+     * 
+     * @param dir サービス定義があるディレクトリのパス
+     * @param filter サービス定義ファイルを抽出するフィルター。フィルターの指定方法は、{@link RecurciveSearchFile#listAllTreeFiles(String, int)}を参照。
+     * @param isReload 既にロードしたサービス定義を再ロードする場合には、true
+     * @return ロードに成功した場合true。但し、ここで言う成功は、必ずしもサービス定義に定義されたサービスが全て正常に起動した事を保証するものでは、ありません。サービス定義のロードに使用するServiceLoaderが正常に起動された事を示します。
+     */
+    public static synchronized boolean loadManagers(
+        String dir,
+        String filter,
+        boolean isReload
+    ){
+        return loadManagers(dir, filter, (ServiceLoaderConfig)null, isReload, false);
+    }
+    
+    /**
+     * 指定されたディレクトリのサービス定義をロードする。<p>
+     * {@link #loadManagers(String, String, ServiceLoaderConfig, boolean, boolean) loadManagers(dir, filter, null, isReload, isValidate)}を呼び出す。<br>
+     * 
+     * @param dir サービス定義があるディレクトリのパス
+     * @param filter サービス定義ファイルを抽出するフィルター。フィルターの指定方法は、{@link RecurciveSearchFile#listAllTreeFiles(String, int)}を参照。
+     * @param isReload 既にロードしたサービス定義を再ロードする場合には、true
+     * @param isValidate サービス定義ファイルを評価するかどうか。評価する場合はtrue
+     * @return ロードに成功した場合true。但し、ここで言う成功は、必ずしもサービス定義に定義されたサービスが全て正常に起動した事を保証するものでは、ありません。サービス定義のロードに使用するServiceLoaderが正常に起動された事を示します。
+     */
+    public static synchronized boolean loadManagers(
+        String dir,
+        String filter,
+        boolean isReload,
+        boolean isValidate
+    ){
+        return loadManagers(dir, filter, (ServiceLoaderConfig)null, isReload, isValidate);
+    }
+    
+    /**
+     * 指定されたディレクトリのサービス定義をロードする。<p>
+     * 
+     * @param dir サービス定義があるディレクトリのパス
+     * @param filter サービス定義ファイルを抽出するフィルター。フィルターの指定方法は、{@link RecurciveSearchFile#listAllTreeFiles(String, int)}を参照。
+     * @param config サービスローダ構成情報
+     * @param isReload 既にロードしたサービス定義を再ロードする場合には、true
+     * @param isValidate サービス定義ファイルを評価するかどうか。評価する場合はtrue
+     * @return ロードに成功した場合true。但し、ここで言う成功は、必ずしもサービス定義に定義されたサービスが全て正常に起動した事を保証するものでは、ありません。サービス定義のロードに使用するServiceLoaderが正常に起動された事を示します。
+     */
+    public static synchronized boolean loadManagers(
+        String dir,
+        String filter,
+        ServiceLoaderConfig config,
+        boolean isReload,
+        boolean isValidate
+    ){
+        RecurciveSearchFile dirFile = new RecurciveSearchFile(dir);
+        String[] paths = filter == null ? dirFile.listAllTree() : dirFile.listAllTree(filter);
+        if(paths == null || paths.length == 0){
+            return false;
+        }
+        Arrays.sort(paths);
+        for(int i = 0; i < paths.length; i++){
+            if(!loadManager(paths[i], config, isReload, isValidate)){
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    /**
      * デフォルトのサービス定義をアンロードする。<p>
      * {@link #unloadManager(URL)}を引数nullで呼び出す。<br>
      *
@@ -560,6 +654,39 @@ public class ServiceManagerFactory implements Serializable{
             logger.write(SVCMF00012, url);
         }
         return true;
+    }
+    
+    /**
+     * 指定されたディレクトリのサービス定義をアンロードする。<p>
+     * {@link #unloadManagers(String, String) unloadManagers(dir, null)}を呼び出す。<br>
+     *
+     * @param dir サービス定義があるディレクトリのパス
+     * @param filter サービス定義ファイルを抽出するフィルター。フィルターの指定方法は、{@link RecurciveSearchFile#listAllTreeFiles(String, int)}を参照。
+     * @return サービス定義のアンロード処理を行った場合true
+     */
+    public static synchronized boolean unloadManagers(String dir){
+        return unloadManagers(dir, null);
+    }
+    
+    /**
+     * 指定されたディレクトリのサービス定義をアンロードする。<p>
+     *
+     * @param dir サービス定義があるディレクトリのパス
+     * @param filter サービス定義ファイルを抽出するフィルター。フィルターの指定方法は、{@link RecurciveSearchFile#listAllTreeFiles(String, int)}を参照。
+     * @return サービス定義のアンロード処理を行った場合true
+     */
+    public static synchronized boolean unloadManagers(String dir, String filter){
+        RecurciveSearchFile dirFile = new RecurciveSearchFile(dir);
+        String[] paths = filter == null ? dirFile.listAllTree() : dirFile.listAllTree(filter);
+        if(paths == null || paths.length == 0){
+            return false;
+        }
+        Arrays.sort(paths);
+        boolean result = true;
+        for(int i = paths.length; --i >= 0;){
+            result &= unloadManager(paths[i]);
+        }
+        return result;
     }
     
     /**
@@ -848,6 +975,15 @@ public class ServiceManagerFactory implements Serializable{
             logger.write(SVCMF00014, message.toString());
         }
         return isSuccess;
+    }
+    
+    /**
+     * 登録されているServiceManagerの名前の集合を取得する。<p>
+     *
+     * @return 登録されているServiceManagerの名前の集合
+     */
+    public static Set managerNameSet(){
+        return repository.nameSet();
     }
     
     /**
