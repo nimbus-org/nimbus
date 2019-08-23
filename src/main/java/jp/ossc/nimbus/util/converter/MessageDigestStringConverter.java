@@ -59,8 +59,6 @@ public class MessageDigestStringConverter extends StringStreamConverter implemen
     protected String characterEncoding = DEFAULT_ENCODING;
     protected String hashAlgorithm = DEFAULT_HASH_ALGORITHM;
     
-    protected int stretchingCount = 1;
-    
     /**
      * 変換時に使用する文字エンコーディングを設定する。<p>
      * デフォルトは、{@link #DEFAULT_ENCODING}。<br>
@@ -137,25 +135,6 @@ public class MessageDigestStringConverter extends StringStreamConverter implemen
         return messageDigestProviderName;
     }
     
-    /**
-     * ストレッチング（ハッシュ値計算）する回数を設定する。<p>
-     * デフォルトは、1でストレッチング（ハッシュ値計算）は１回。<br>
-     *
-     * @param count ストレッチングする回数
-     */
-    public void setStretchingCount(int count) {
-        stretchingCount = count;
-    }
-
-    /**
-     * ストレッチングする回数を取得する。<p>
-     * 
-     * @return ストレッチングする回数
-     */
-    public int getStretchingCount() {
-        return stretchingCount;
-    }
-
     public Object convert(Object obj) throws ConvertException{
         if(obj == null){
             return null;
@@ -174,7 +153,11 @@ public class MessageDigestStringConverter extends StringStreamConverter implemen
             return null;
         }
         try{
-            return toHexString(digest(str.getBytes(characterEncoding)));
+            return toHexString(
+                createMessageDigest().digest(
+                    str.getBytes(characterEncoding)
+                )
+            );
         }catch(UnsupportedEncodingException e){
             throw new ConvertException(e);
         }
@@ -206,7 +189,7 @@ public class MessageDigestStringConverter extends StringStreamConverter implemen
     
     protected byte[] convertToByteArray(Object obj) throws ConvertException{
         try{
-            return obj == null ? null : digest(obj.toString().getBytes(characterEncoding));
+            return obj == null ? null : createMessageDigest().digest(obj.toString().getBytes(characterEncoding));
         }catch(UnsupportedEncodingException e){
             throw new ConvertException(e);
         }
@@ -224,18 +207,7 @@ public class MessageDigestStringConverter extends StringStreamConverter implemen
             throw new ConvertException(e);
         }
         
-        return toHexString(digest(baos.toByteArray()));
-    }
-    
-    protected byte[] digest(byte[] bytes) {
-        MessageDigest messageDigest = createMessageDigest();
-        byte[] result = messageDigest.digest(bytes);
-        if(stretchingCount > 1) {
-            for(int i = 1; i < stretchingCount; i++) {
-                result = messageDigest.digest(result);
-            }
-        }
-        return result;
+        return toHexString(createMessageDigest().digest(baos.toByteArray()));
     }
     
     /**
