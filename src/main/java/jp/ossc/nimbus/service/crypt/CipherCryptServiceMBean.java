@@ -97,6 +97,31 @@ public interface CipherCryptServiceMBean extends ServiceBaseMBean{
     public static final String DEFAULT_STORE_TYPE = "JCEKS";
     
     /**
+     * 暗号化変換を表す変換種別定数。<p>
+     */
+    public static final int ENCODE_CONVERT = jp.ossc.nimbus.util.converter.ReversibleConverter.POSITIVE_CONVERT;
+    
+    /**
+     * 復号化変換を表す変換種別定数。<p>
+     */
+    public static final int DECODE_CONVERT = jp.ossc.nimbus.util.converter.ReversibleConverter.REVERSE_CONVERT;
+    
+    /**
+     * ハッシュ変換を表す変換種別定数。<p>
+     */
+    public static final int HASH_CONVERT = 3;
+    
+    /**
+     * メッセージ認証コード変換を表す変換種別定数。<p>
+     */
+    public static final int MAC_CONVERT = 4;
+    
+    /**
+     * デジタル署名変換を表す変換種別定数。<p>
+     */
+    public static final int SIGN_CONVERT = 5;
+    
+    /**
      * 乱数発生源が設定されていない場合に生成する乱数発生源のRNGアルゴリズム名を設定する。<p>
      * デフォルトは、{@link #DEFAULT_RNG_ALGORITHM}。<br>
      *
@@ -553,6 +578,21 @@ public interface CipherCryptServiceMBean extends ServiceBaseMBean{
     public String getIVString();
     
     /**
+     * 初期化ベクタの長さ（バイト数）を設定する。<p>
+     * 初期化ベクタが設定されていない場合に有効。この値が設定されている場合は、毎回自動的に初期化ベクタを生成する。生成された初期化ベクタは、変換結果に付与される。<br>
+     *
+     * @param length 初期化ベクタの長さ（バイト数）
+     */
+    public void setIVLength(int length);
+    
+    /**
+     * 初期化ベクタの長さ（バイト数）を取得する。<p>
+     *
+     * @return 初期化ベクタの長さ（バイト数）
+     */
+    public int getIVLength();
+    
+    /**
      * 文字列とバイト配列を交換する際のフォーマットを設定する。<p>
      * デフォルトは、{@link #FORMAT_HEX}。<br>
      *
@@ -678,8 +718,11 @@ public interface CipherCryptServiceMBean extends ServiceBaseMBean{
      * {@link jp.ossc.nimbus.util.converter.ReversibleConverter ReversibleConverter}として使用する場合に設定する。<br>
      *
      * @param type 変換種別
-     * @see jp.ossc.nimbus.util.converter.ReversibleConverter#POSITIVE_CONVERT 暗号化
-     * @see jp.ossc.nimbus.util.converter.ReversibleConverter#REVERSE_CONVERT 複合化
+     * @see #ENCODE_CONVERT
+     * @see #DECODE_CONVERT
+     * @see #HASH_CONVERT
+     * @see #MAC_CONVERT
+     * @see #SIGN_CONVERT
      */
     public void setConvertType(int type);
     

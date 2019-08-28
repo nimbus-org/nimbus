@@ -91,6 +91,7 @@ public class  CipherCryptService extends ServiceBase
     
     protected int keySize = DEFAULT_KEY_LENGTH;
     protected byte[] iv;
+    protected int ivLength;
     
     protected String secretKeyAlgorithm = DEFAULT_SECRET_KEY_ALGORITHM;
     protected byte[] secretKeyBytes;
@@ -259,7 +260,7 @@ public class  CipherCryptService extends ServiceBase
     
     // CipherCryptServiceMBean のJavaDoc
     public byte[] getIV(){
-        if(iv == null && algorithmParameters != null){
+        if(iv == null && algorithmParameters != null && ivLength <= 0){
             try{
                 IvParameterSpec ivSpec = null;
                 if(pbePassword != null){
@@ -291,6 +292,13 @@ public class  CipherCryptService extends ServiceBase
     public String getIVString(){
         byte[] iv = getIV();
         return iv == null ? null : toString(iv);
+    }
+    
+    public void setIVLength(int length){
+        ivLength = length;
+    }
+    public int getIVLength(){
+        return ivLength;
     }
     
     // CipherCryptServiceMBean のJavaDoc
@@ -1825,7 +1833,14 @@ public class  CipherCryptService extends ServiceBase
     // Crypt のJavaDoc
     public String doEncode(String str){
         try{
-            return toString(doEncodeInternal(str.getBytes(encoding), iv));
+            if(iv == null && ivLength > 0){
+                byte[] ivBytes = createSeed(ivLength);
+                String encoded = toString(doEncodeInternal(str.getBytes(encoding), ivBytes));
+                String ivStr = toString(ivBytes);
+                return ivStr + '-' + encoded;
+            }else{
+                return toString(doEncodeInternal(str.getBytes(encoding), iv));
+            }
         }catch(NoSuchAlgorithmException e){
             // 起こらないはず
             getLogger().write(CC___00001, e);
@@ -1886,7 +1901,40 @@ public class  CipherCryptService extends ServiceBase
     }
     
     public byte[] doEncodeBytes(byte[] bytes){
-        return doEncodeBytes(bytes, iv);
+        try{
+            if(iv == null && ivLength > 0){
+                byte[] ivBytes = createSeed(ivLength);
+                byte[] encodedBytes = doEncodeInternal(bytes, ivBytes);
+                byte[] result = new byte[ivBytes.length + encodedBytes.length];
+                System.arraycopy(ivBytes, 0, result, 0, ivBytes.length);
+                System.arraycopy(encodedBytes, 0, result, ivBytes.length, encodedBytes.length);
+                return result;
+            }else{
+                return doEncodeInternal(bytes, iv);
+            }
+        }catch(NoSuchAlgorithmException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }catch(NoSuchProviderException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }catch(NoSuchPaddingException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }catch(InvalidKeyException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }catch(InvalidAlgorithmParameterException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }catch(IllegalBlockSizeException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }catch(BadPaddingException e){
+            // 起こらないはず
+            getLogger().write(CC___00001, e);
+        }
+        return bytes;
     }
     
     public byte[] doEncodeBytes(byte[] bytes, byte[] iv){
@@ -1930,7 +1978,13 @@ public class  CipherCryptService extends ServiceBase
     
     public void doEncodeStream(InputStream is, OutputStream os) throws IOException{
         try{
-            doEncodeInternal(is, os, iv);
+            if(iv == null && ivLength > 0){
+                byte[] ivBytes = createSeed(ivLength);
+                os.write(ivBytes, 0 , ivBytes.length);
+                doEncodeInternal(is, os, ivBytes);
+            }else{
+                doEncodeInternal(is, os, iv);
+            }
         }catch(NoSuchAlgorithmException e){
             // 起こらないはず
             getLogger().write(CC___00001, e);
@@ -2215,14 +2269,33 @@ public class  CipherCryptService extends ServiceBase
     
     // Crypt のJavaDoc
     public String doDecode(String str) throws Exception{
-        return new String(doDecodeInternal(toBytes(str), iv), encoding);
+        if(iv == null && ivLength > 0){
+            final int index = str.indexOf('-');
+            if(index == -1){
+                throw new Exception("IV is not included.");
+            }
+            String ivStr = str.substring(0, index);
+            byte[] ivBytes = toBytes(ivStr);
+            return new String(doDecodeInternal(toBytes(str.substring(index + 1)), ivBytes), encoding);
+        }else{
+            return new String(doDecodeInternal(toBytes(str), iv), encoding);
+        }
     }
     public String doDecode(String str, String iv) throws Exception{
         return new String(doDecodeInternal(toBytes(str), iv == null ? null : toBytes(iv)), encoding);
     }
     
     public byte[] doDecodeBytes(byte[] bytes) throws Exception{
-        return doDecodeBytes(bytes, iv);
+        if(iv == null && ivLength > 0){
+            byte[] ivBytes = new byte[ivLength];
+            System.arraycopy(bytes, 0, ivBytes, 0, ivLength);
+            byte[] encodedBytes = new byte[bytes.length - ivLength];
+            System.arraycopy(bytes, ivLength, encodedBytes, 0, encodedBytes.length);
+            return doDecodeBytes(encodedBytes, ivBytes);
+            
+        }else{
+            return doDecodeBytes(bytes, iv);
+        }
     }
     
     public byte[] doDecodeBytes(byte[] bytes, byte[] iv) throws Exception{
@@ -2241,7 +2314,13 @@ public class  CipherCryptService extends ServiceBase
     }
     
     public void doDecodeStream(InputStream is, OutputStream os) throws Exception{
-        doDecodeInternal(is, os, iv);
+        if(iv == null && ivLength > 0){
+            byte[] ivBytes = new byte[ivLength];
+            is.read(ivBytes, 0, ivLength);
+            doDecodeInternal(is, os, ivBytes);
+        }else{
+            doDecodeInternal(is, os, iv);
+        }
     }
     
     /**
@@ -2897,16 +2976,26 @@ public class  CipherCryptService extends ServiceBase
         }
         
         final Cipher c = createCipher();
-        
-        intiCipher(c, Cipher.WRAP_MODE, iv);
-        
-        return c.wrap(key);
+        if(iv == null && ivLength > 0){
+            byte[] ivBytes = createSeed(ivLength);
+            intiCipher(c, Cipher.WRAP_MODE, ivBytes);
+            
+            byte[] wrappedBytes = c.wrap(key);
+            byte[] result = new byte[ivLength + wrappedBytes.length];
+            System.arraycopy(ivBytes, 0, result, 0, ivBytes.length);
+            System.arraycopy(wrappedBytes, 0, result, ivBytes.length, wrappedBytes.length);
+            return result;
+        }else{
+            intiCipher(c, Cipher.WRAP_MODE, iv);
+            return c.wrap(key);
+        }
     }
     
     /**
      * 指定した鍵のラップを解除する。<p>
      *
      * @param key ラップ解除する鍵
+     * @param wrappedKeyType ラップされた鍵のタイプ
      * @return ラップ解除された鍵
      * @exception Exception 鍵のラップ解除に失敗した場合
      */
@@ -2919,9 +3008,17 @@ public class  CipherCryptService extends ServiceBase
         
         final Cipher c = createCipher();
         
-        intiCipher(c, Cipher.UNWRAP_MODE, iv);
-        
-        return c.unwrap(wrappedKey, selectKey(Cipher.WRAP_MODE).getAlgorithm(), wrappedKeyType);
+        if(iv == null && ivLength > 0){
+            byte[] ivBytes = new byte[ivLength];
+            System.arraycopy(wrappedKey, 0, ivBytes, 0, ivLength);
+            byte[] keyBytes = new byte[wrappedKey.length - ivLength];
+            System.arraycopy(wrappedKey, ivLength, keyBytes, 0, keyBytes.length);
+            intiCipher(c, Cipher.UNWRAP_MODE, ivBytes);
+            return c.unwrap(keyBytes, selectKey(Cipher.WRAP_MODE).getAlgorithm(), wrappedKeyType);
+        }else{
+            intiCipher(c, Cipher.UNWRAP_MODE, iv);
+            return c.unwrap(wrappedKey, selectKey(Cipher.WRAP_MODE).getAlgorithm(), wrappedKeyType);
+        }
     }
     
     // ConverterのJavaDoc
@@ -2930,13 +3027,19 @@ public class  CipherCryptService extends ServiceBase
             return null;
         }else if(obj instanceof byte[]){
             switch(convertType){
-            case REVERSE_CONVERT:
+            case HASH_CONVERT:
+                return doHashBytes((byte[])obj);
+            case MAC_CONVERT:
+                return doMacBytes((byte[])obj);
+            case SIGN_CONVERT:
+                return doSignBytes((byte[])obj);
+            case DECODE_CONVERT:
                 try{
                     return doDecodeBytes((byte[])obj);
                 }catch(Exception e){
                     throw new ConvertException(e);
                 }
-            case POSITIVE_CONVERT:
+            case ENCODE_CONVERT:
             default:
                 return doEncodeBytes((byte[])obj);
             }
@@ -2959,13 +3062,19 @@ public class  CipherCryptService extends ServiceBase
     // StringConverterのJavaDoc
     public String convert(String str) throws ConvertException{
         switch(convertType){
-        case REVERSE_CONVERT:
+        case HASH_CONVERT:
+            return doHash(str);
+        case MAC_CONVERT:
+            return doMac(str);
+        case SIGN_CONVERT:
+            return doSign(str);
+        case DECODE_CONVERT:
             try{
                 return doDecode(str);
             }catch(Exception e){
                 throw new ConvertException(e);
             }
-        case POSITIVE_CONVERT:
+        case ENCODE_CONVERT:
         default:
             return doEncode(str);
         }
@@ -2985,10 +3094,22 @@ public class  CipherCryptService extends ServiceBase
         
         try{
             switch(convertType){
-            case REVERSE_CONVERT:
+            case HASH_CONVERT:
+                os.write(doHashStream(is));
+                os.flush();
+                break;
+            case MAC_CONVERT:
+                os.write(doMacStream(is));
+                os.flush();
+                break;
+            case SIGN_CONVERT:
+                os.write(doSignStream(is));
+                os.flush();
+                break;
+            case DECODE_CONVERT:
                 doDecodeStream(is, os);
                 break;
-            case POSITIVE_CONVERT:
+            case ENCODE_CONVERT:
             default:
                 doEncodeStream(is, os);
             }
