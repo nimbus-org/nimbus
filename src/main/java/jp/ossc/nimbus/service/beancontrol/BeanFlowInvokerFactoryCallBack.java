@@ -35,6 +35,7 @@ package jp.ossc.nimbus.service.beancontrol;
 
 import java.beans.PropertyEditor;
 import java.util.Set;
+import java.io.File;
 
 import jp.ossc.nimbus.service.beancontrol.resource.*;
 import jp.ossc.nimbus.core.*;
@@ -94,6 +95,8 @@ public interface BeanFlowInvokerFactoryCallBack {
 	 * @return PropertyEditor
 	 */
 	public PropertyEditor findPropEditor(Class cls);
+	
+    public File findResource(String name);
 
 	public boolean isManageExecBeanFlow();
 	

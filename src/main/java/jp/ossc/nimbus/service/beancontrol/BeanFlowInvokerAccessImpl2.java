@@ -206,6 +206,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
     private static final String MAX_ASYNCH_WAIT_ATTRIBUTE = "maxAsynchWait";
     private static final String CANCEL_ATTRIBUTE = "cancel";
     private static final String ENCODING_ATTRIBUTE = "encoding";
+    private static final String FILE_ATTRIBUTE = "file";
 
     private static final String JOURNAL_KEY_FLOW = "Flow";
     private static final String JOURNAL_KEY_FLOW_NAME = "Name";
@@ -6284,21 +6285,35 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                 );
             }
             coverage.setElementName("<" + TEMPLATE_ELEMENT + ">");
-            String template = getElementContent(element);
-            if(template == null || template.length() == 0){
-                template = getElementContent(element, true, null);
-                if(template == null || template.length() == 0){
-                    throw new DeploymentException(
-                        "Content of template is null."
-                    );
-                }
-            }
-            template = factoryCallBack.replaceProperty(template);
-            String encoding = getOptionalAttribute(element, ENCODING_ATTRIBUTE, BeanFlowInvokerAccessImpl2.this.encoding);
             templateName = BeanFlowInvokerAccessImpl2.this.flowName + '.' + ((StepMetaData)getParent()).getName();
             TemplateEngine templateEngine = factoryCallBack.getTemplateEngine();
-            if(templateEngine != null){
-                templateEngine.setTemplate(templateName, template, encoding);
+            String encoding = getOptionalAttribute(element, ENCODING_ATTRIBUTE, BeanFlowInvokerAccessImpl2.this.encoding);
+            String fileStr = getOptionalAttribute(element, FILE_ATTRIBUTE);
+            if(fileStr != null){
+                File file = factoryCallBack.findResource(fileStr);
+                if(file == null && resourcePath != null){
+                    File dir = new File(resourcePath).getParentFile();
+                    if(dir != null){
+                        file = factoryCallBack.findResource(new File(dir, fileStr).getPath());
+                    }
+                }
+                if(templateEngine != null && file != null){
+                    templateEngine.setTemplateFile(templateName, file, encoding);
+                }
+            }else{
+                String template = getElementContent(element);
+                if(template == null || template.length() == 0){
+                    template = getElementContent(element, true, null);
+                    if(template == null || template.length() == 0){
+                        throw new DeploymentException(
+                            "Content of template is null."
+                        );
+                    }
+                }
+                template = factoryCallBack.replaceProperty(template);
+                if(templateEngine != null){
+                    templateEngine.setTemplate(templateName, template, encoding);
+                }
             }
         }
 
