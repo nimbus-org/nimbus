@@ -924,8 +924,12 @@ public class  CipherCryptService extends ServiceBase
         if(isCheckOnStart){
             if(key != null || (publicKey != null && privateKey != null)){
                 if(transformation != null){
-                    final byte[] encodeBytes = doEncodeInternal("test".getBytes(), iv);
-                    final byte[] decodeBytes = doDecodeInternal(encodeBytes, iv);
+                    byte[] ivBytes = iv;
+                    if(ivBytes == null && ivLength > 0){
+                        ivBytes = createSeed(ivLength);
+                    }
+                    final byte[] encodeBytes = doEncodeInternal("test".getBytes(), ivBytes);
+                    final byte[] decodeBytes = doDecodeInternal(encodeBytes, ivBytes);
                     if(!"test".equals(new String(decodeBytes))){
                         throw new IllegalArgumentException(
                             "This encryption cannot convert reversible. decode=" + new String(decodeBytes)
@@ -2046,7 +2050,7 @@ public class  CipherCryptService extends ServiceBase
         
         intiCipher(c, Cipher.ENCRYPT_MODE, iv);
         
-        if(algorithmParameterSpec == null){
+        if(algorithmParameterSpec == null && ivLength <= 0){
             algorithmParameters = c.getParameters();
         }
         final byte[] bytes = new byte[1024];
