@@ -867,9 +867,14 @@ static-invoke要素の子要素にargument要素を指定します。引数あ�
 <!ELEMENT interpreter (#PCDATA)>
 
 <!-- template要素はテンプレートエンジンを使って文字列を作成する要素です。
- この要素の内容には、jp.ossc.nimbus.service.template.TemplateEngineが解釈するテンプレートを記述します。
+ この要素の内容に、jp.ossc.nimbus.service.template.TemplateEngineが解釈するテンプレートを記述するか、file属性でテンプレートファイルを指定します。
 -->
 <!ELEMENT template (#PCDATA)>
+
+<!-- file属性は、テンプレートファイルを指定します。
+ ファイルのパスは、絶対パス、サービス定義からの相対パス、業務フロー定義ファイルからの相対パスで評価されます。
+-->
+<!ATTLIST template file CDATA #IMPLIED>
 
 <!-- encoding属性は、テンプレートの文字コードを指定します。 -->
 <!ATTLIST template encoding CDATA #IMPLIED>

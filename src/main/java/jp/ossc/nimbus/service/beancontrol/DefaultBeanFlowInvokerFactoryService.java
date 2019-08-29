@@ -1114,6 +1114,31 @@ public class DefaultBeanFlowInvokerFactoryService extends ServiceBase
     }
 
     // BeanFlowInvokerFactoryCallBackのJavaDoc
+    public File findResource(String name){
+        File file = new File(name);
+        if(!file.exists()){
+            File serviceDefDir = null;
+            if(getServiceNameObject() != null){
+                ServiceMetaData metaData = ServiceManagerFactory.getServiceMetaData(getServiceNameObject());
+                if(metaData != null){
+                    jp.ossc.nimbus.core.ServiceLoader loader = metaData.getServiceLoader();
+                    if(loader != null){
+                        String filePath = loader.getServiceURL().getFile();
+                        if(filePath != null){
+                            serviceDefDir = new File(filePath).getParentFile();
+                        }
+                    }
+                }
+            }
+            if(serviceDefDir == null){
+                return null;
+            }
+            file = new File(serviceDefDir, name);
+        }
+        return file.exists() ? file : null;
+    }
+
+    // BeanFlowInvokerFactoryCallBackのJavaDoc
     public PropertyEditor findPropEditor(Class cls) {
         jp.ossc.nimbus.core.ServiceLoader loader = super.getServiceLoader();
         return loader != null ? loader.findEditor(cls) : NimbusPropertyEditorManager.findEditor(cls);
