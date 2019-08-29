@@ -1833,35 +1833,7 @@ public class  CipherCryptService extends ServiceBase
     // Crypt のJavaDoc
     public String doEncode(String str){
         try{
-            if(iv == null && ivLength > 0){
-                byte[] ivBytes = createSeed(ivLength);
-                String encoded = toString(doEncodeInternal(str.getBytes(encoding), ivBytes));
-                String ivStr = toString(ivBytes);
-                return ivStr + '-' + encoded;
-            }else{
-                return toString(doEncodeInternal(str.getBytes(encoding), iv));
-            }
-        }catch(NoSuchAlgorithmException e){
-            // 起こらないはず
-            getLogger().write(CC___00001, e);
-        }catch(NoSuchProviderException e){
-            // 起こらないはず
-            getLogger().write(CC___00001, e);
-        }catch(NoSuchPaddingException e){
-            // 起こらないはず
-            getLogger().write(CC___00001, e);
-        }catch(InvalidKeyException e){
-            // 起こらないはず
-            getLogger().write(CC___00001, e);
-        }catch(InvalidAlgorithmParameterException e){
-            // 起こらないはず
-            getLogger().write(CC___00001, e);
-        }catch(IllegalBlockSizeException e){
-            // 起こらないはず
-            getLogger().write(CC___00001, e);
-        }catch(BadPaddingException e){
-            // 起こらないはず
-            getLogger().write(CC___00001, e);
+            return toString(doEncodeBytes(str.getBytes(encoding)));
         }catch(UnsupportedEncodingException e){
             // 起こらないはず
             getLogger().write(CC___00001, e);
@@ -2269,17 +2241,7 @@ public class  CipherCryptService extends ServiceBase
     
     // Crypt のJavaDoc
     public String doDecode(String str) throws Exception{
-        if(iv == null && ivLength > 0){
-            final int index = str.indexOf('-');
-            if(index == -1){
-                throw new Exception("IV is not included.");
-            }
-            String ivStr = str.substring(0, index);
-            byte[] ivBytes = toBytes(ivStr);
-            return new String(doDecodeInternal(toBytes(str.substring(index + 1)), ivBytes), encoding);
-        }else{
-            return new String(doDecodeInternal(toBytes(str), iv), encoding);
-        }
+        return new String(doDecodeBytes(toBytes(str)), encoding);
     }
     public String doDecode(String str, String iv) throws Exception{
         return new String(doDecodeInternal(toBytes(str), iv == null ? null : toBytes(iv)), encoding);
