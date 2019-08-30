@@ -116,9 +116,16 @@ public class Compiler implements java.io.Serializable{
     /**
      * 指定したサービス定義ファイルパスリストのサービス定義をロードする。<p>
      *
+     * @param serviceDirs サービス定義ディレクトリとフィルタのリスト
      * @param servicePaths サービス定義ファイルパスリスト
      */
-    public static void loadServices(List servicePaths){
+    public static void loadServices(List serviceDirs, List servicePaths){
+        if(serviceDirs != null){
+            for(int i = 0, max = serviceDirs.size(); i < max; i++){
+                String[] params = (String[])serviceDirs.get(i);
+                ServiceManagerFactory.loadManagers(params[0], params[1]);
+            }
+        }
         if(servicePaths != null){
             for(int i = 0, max = servicePaths.size(); i < max; i++){
                 ServiceManagerFactory.loadManager((String)servicePaths.get(i));
@@ -130,13 +137,21 @@ public class Compiler implements java.io.Serializable{
     /**
      * 指定したサービス定義ファイルパスリストのサービス定義をアンロードする。<p>
      *
+     * @param serviceDirs サービス定義ディレクトリとフィルタのリスト
      * @param servicePaths サービス定義ファイルパスリスト
      */
-    public static void unloadServices(List servicePaths){
+    public static void unloadServices(List serviceDirs, List servicePaths){
         if(servicePaths != null){
             for(int i = servicePaths.size(); --i >= 0;){
                 ServiceManagerFactory
                     .unloadManager((String)servicePaths.get(i));
+            }
+        }
+        if(serviceDirs != null){
+            for(int i = serviceDirs.size(); --i >= 0;){
+                String[] params = (String[])serviceDirs.get(i);
+                ServiceManagerFactory
+                    .unloadManagers(params[0], params[1]);
             }
         }
     }
@@ -649,10 +664,13 @@ public class Compiler implements java.io.Serializable{
      * 
      * [options]
      * 
+     *  [-servicedir path filter]
+     *    コンパイルに必要なアスペクトを定義したサービス定義ファイルのディレクトリとサービス定義ファイルを特定するフィルタを指定します。
+     * 
      *  [-servicepath paths]
      *    コンパイルに必要なアスペクトを定義したサービス定義ファイルのパスを指定します。
      *    この指定は必須です。
-     *    セミコロン(;)区切りで複数指定可能です。
+     *    パスセパレータ区切りで複数指定可能です。
      * 
      *  [-d directory]
      *    出力先のディレクトリを指定します。
@@ -685,8 +703,11 @@ public class Compiler implements java.io.Serializable{
         }
         
         boolean option = false;
+        boolean isServiceDir = false;
         String key = null;
         String dest = null;
+        List serviceDirs = null;
+        String serviceDir = null;
         List servicePaths = null;
         boolean verbose = false;
         final List classNames = new ArrayList();
@@ -694,6 +715,11 @@ public class Compiler implements java.io.Serializable{
             if(option){
                 if(key.equals("-d")){
                     dest = args[i];
+                }else if(key.equals("-servicedir")){
+                    if(serviceDirs == null){
+                        serviceDirs = new ArrayList();
+                    }
+                    serviceDirs.add(new String[]{serviceDir, args[i]});
                 }else if(key.equals("-servicepath")){
                     servicePaths = parsePaths(args[i]);
                 }
@@ -703,19 +729,26 @@ public class Compiler implements java.io.Serializable{
                 if(args[i].equals("-d")){
                     option = true;
                     key = args[i];
+                }else if(args[i].equals("-servicedir")){
+                    isServiceDir = true;
+                    key = args[i];
                 }else if(args[i].equals("-servicepath")){
                     option = true;
                     key = args[i];
                 }else if(args[i].equals("-v")){
                     verbose = true;
+                }else if(isServiceDir){
+                    isServiceDir = false;
+                    option = true;
+                    serviceDir = args[i];
                 }else{
-                  classNames.add(args[i]);
+                    classNames.add(args[i]);
                 }
             }
         }
         
         final Compiler compiler = new Compiler(dest, verbose);
-        loadServices(servicePaths);
+        loadServices(serviceDirs, servicePaths);
         try{
             if(compiler.compile(classNames)){
                 System.out.println("Compile is completed.");
@@ -726,7 +759,7 @@ public class Compiler implements java.io.Serializable{
                 }
             }
         }finally{
-            unloadServices(servicePaths);
+            unloadServices(serviceDirs, servicePaths);
         }
     }
 }

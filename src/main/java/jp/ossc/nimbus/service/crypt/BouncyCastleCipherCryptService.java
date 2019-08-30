@@ -531,6 +531,9 @@ public class  BouncyCastleCipherCryptService extends CipherCryptService
         System.out.println();
         System.out.println("[options]");
         System.out.println();
+        System.out.println(" [-servicedir=path filter]");
+        System.out.println("  このサービスを定義したサービス定義ファイルのディレクトリとサービス定義ファイルを特定するフィルタを指定します。");
+        System.out.println();
         System.out.println(" [-servicepath=paths]");
         System.out.println("  このサービスを定義したサービス定義ファイルのパスを指定します。");
         System.out.println("  パスセパレータ区切りで複数指定可能です。");
@@ -574,6 +577,7 @@ public class  BouncyCastleCipherCryptService extends CipherCryptService
             return;
         }
         String script = null;
+        List serviceDirs = null;
         List servicePaths = null;
         String serviceNameStr = "Nimbus#Crypt";
         ServiceMetaData serviceData = new ServiceMetaData();
@@ -587,7 +591,12 @@ public class  BouncyCastleCipherCryptService extends CipherCryptService
                 }
                 String name = args[i].substring(1, args[i].indexOf("="));
                 String value = args[i].substring(args[i].indexOf("=") + 1);
-                if("servicepath".equals(name)){
+                if("servicedir".equals(name)){
+                    if(serviceDirs == null){
+                        serviceDirs = new ArrayList();
+                    }
+                    serviceDirs.add(new String[]{value, args[++i]});
+                }else if("servicepath".equals(name)){
                     servicePaths = parsePaths(value);
                 }else if("servicename".equals(name)){
                     serviceNameStr = value;
@@ -607,7 +616,7 @@ public class  BouncyCastleCipherCryptService extends CipherCryptService
             System.exit(-1);
             return;
         }
-        if(servicePaths == null){
+        if(servicePaths == null && serviceDirs == null){
             ServiceManagerFactory.DEFAULT_LOGGER.setSystemDebugEnabled(false);
             ServiceManagerFactory.DEFAULT_LOGGER.setDebugEnabled(false);
             ServiceManagerFactory.DEFAULT_LOGGER.setSystemInfoEnabled(false);
@@ -617,11 +626,23 @@ public class  BouncyCastleCipherCryptService extends CipherCryptService
             manager.create();
             manager.start();
         }else{
-            for(int i = 0, imax = servicePaths.size(); i < imax; i++){
-                if(!ServiceManagerFactory.loadManager((String)servicePaths.get(i))){
-                    System.out.println("Service load error." + servicePaths.get(i));
-                    Thread.sleep(1000);
-                    System.exit(-1);
+            if(serviceDirs != null){
+                for(int i = 0, imax = serviceDirs.size(); i < imax; i++){
+                    String[] params = (String[])serviceDirs.get(i);
+                    if(!ServiceManagerFactory.loadManagers(params[0], params[1])){
+                        System.out.println("Service load error. path=" + params[0] + ", filter=" + params[1]);
+                        Thread.sleep(1000);
+                        System.exit(-1);
+                    }
+                }
+            }
+            if(servicePaths != null){
+                for(int i = 0, imax = servicePaths.size(); i < imax; i++){
+                    if(!ServiceManagerFactory.loadManager((String)servicePaths.get(i))){
+                        System.out.println("Service load error." + servicePaths.get(i));
+                        Thread.sleep(1000);
+                        System.exit(-1);
+                    }
                 }
             }
         }

@@ -2157,6 +2157,9 @@ public class ServiceManagerFactory implements Serializable{
      *  [-server]
      *   メインスレッドを待機させて、サーバとして動かす。
      * 
+     *  [-dir path filter]
+     *   サービス定義ファイルのディレクトリとサービス定義ファイルを特定するフィルタを指定する。
+     * 
      *  [-help]
      *   ヘルプを表示します。
      * 
@@ -2178,6 +2181,7 @@ public class ServiceManagerFactory implements Serializable{
         }
         
         final List servicePaths = new ArrayList();
+        final List serviceDirs = new ArrayList();
         boolean validate = false;
         boolean server = false;
         for(int i = 0; i < args.length; i++){
@@ -2185,12 +2189,16 @@ public class ServiceManagerFactory implements Serializable{
                 server = true;
             }else if(args[i].equals("-validate")){
                 validate = true;
+            }else if(args[i].equals("-dir")){
+                if(i + 2 < args.length){
+                    serviceDirs.add(new String[]{args[++i], args[++i]});
+                }
             }else{
                 servicePaths.add(args[i]);
             }
         }
         
-        if(servicePaths.size() == 0){
+        if(servicePaths.size() == 0 && serviceDirs.size() == 0){
             usage();
             return;
         }
@@ -2202,11 +2210,22 @@ public class ServiceManagerFactory implements Serializable{
                         for(int i = servicePaths.size(); --i >= 0;){
                             ServiceManagerFactory.unloadManager((String)servicePaths.get(i));
                         }
+                        for(int i = serviceDirs.size(); --i >= 0;){
+                            String[] params = (String[])serviceDirs.get(i);
+                            ServiceManagerFactory.unloadManagers(params[0], params[1]);
+                        }
                     }
                 }
             )
         );
         
+        for(int i = 0, max = serviceDirs.size(); i < max; i++){
+            String[] params = (String[])serviceDirs.get(i);
+            if(!ServiceManagerFactory.loadManagers(params[0], params[1], false, validate)){
+                Thread.sleep(1000);
+                System.exit(-1);
+            }
+        }
         for(int i = 0, max = servicePaths.size(); i < max; i++){
             if(!ServiceManagerFactory.loadManager((String)servicePaths.get(i), false, validate)){
                 Thread.sleep(1000);

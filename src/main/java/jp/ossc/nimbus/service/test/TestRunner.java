@@ -180,6 +180,7 @@ public class TestRunner {
         }
         
         String runnerDefPath = null;
+        List serviceDirs = null;
         final List servicePaths = new ArrayList();
         boolean validate = false;
         boolean verbose = false;
@@ -191,6 +192,11 @@ public class TestRunner {
                 validate = true;
             }else if(args[i].equals("-userId")){
                 userId = args[++i];
+            }else if(args[i].equals("-servicedir")){
+                if(serviceDirs == null){
+                    serviceDirs = new ArrayList();
+                }
+                serviceDirs.add(new String[]{args[++i], args[++i]});
             }else if(runnerDefPath == null){
                 runnerDefPath = args[i];
             }else{
@@ -198,7 +204,7 @@ public class TestRunner {
             }
         }
         
-        if(runnerDefPath == null || servicePaths.size() == 0){
+        if(runnerDefPath == null || (servicePaths.size() == 0 && serviceDirs == null)){
             usage();
             return;
         }
@@ -208,6 +214,14 @@ public class TestRunner {
         }
         
         try{
+            if(serviceDirs != null){
+                for(int i = 0, max = serviceDirs.size(); i < max; i++){
+                    String[] params = (String[])serviceDirs.get(i);
+                    if(!ServiceManagerFactory.loadManagers(params[0], params[1], false, validate)){
+                        System.exit(-1);
+                    }
+                }
+            }
             for(int i = 0, max = servicePaths.size(); i < max; i++){
                 if(!ServiceManagerFactory.loadManager((String)servicePaths.get(i), false, validate)){
                     System.exit(-1);
@@ -512,6 +526,12 @@ public class TestRunner {
         }finally{
             for(int i = servicePaths.size(); --i >= 0;){
                 ServiceManagerFactory.unloadManager((String)servicePaths.get(i));
+            }
+            if(serviceDirs != null){
+                for(int i = serviceDirs.size(); --i >= 0;){
+                    String[] params = (String[])serviceDirs.get(i);
+                    ServiceManagerFactory.unloadManagers(params[0], params[1]);
+                }
             }
         }
     }

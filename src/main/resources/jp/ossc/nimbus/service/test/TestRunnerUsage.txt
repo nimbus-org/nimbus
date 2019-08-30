@@ -1,25 +1,28 @@
-ã‚³ãƒãƒ³ãƒ‰ä½¿ç”¨æ–¹æ³•ï¼š
+ƒRƒ}ƒ“ƒhg—p•û–@F
  java jp.ossc.nimbus.service.test.TestRunner [options] [testRunner xml] [service paths]
 
 [options]
 
  [-userId]
-  å®Ÿè¡Œãƒ¦ãƒ¼ã‚¶ã‚’æŒ‡å®šã™ã‚‹ã€‚
+  Àsƒ†[ƒU‚ğw’è‚·‚éB
 
  [-validate]
-  ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ã‚’DTDã§æ¤œè¨¼ã™ã‚‹ã€‚
+  ƒT[ƒrƒX’è‹`‚ğDTD‚ÅŒŸØ‚·‚éB
+
+ [-servicedir]
+  ƒ[ƒh‚·‚éƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌƒfƒBƒŒƒNƒgƒŠ‚ÆƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ğ“Á’è‚·‚éƒtƒBƒ‹ƒ^‚ğw’è‚·‚éB
 
  [-verbose]
-  å®Ÿè¡Œè©³ç´°ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
+  ÀsÚ×‚ğo—Í‚·‚éB
 
  [-help]
-  ãƒ˜ãƒ«ãƒ—ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
+  ƒwƒ‹ƒv‚ğ•\¦‚µ‚Ü‚·B
 
 [testRunner xml]
- ãƒ†ã‚¹ãƒˆå®Ÿè¡Œå®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
+ ƒeƒXƒgÀs’è‹`ƒtƒ@ƒCƒ‹‚ÌƒpƒX
 
 [service paths]
- ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹
+ ƒ[ƒh‚·‚éƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌƒpƒX
 
-ä½¿ç”¨ä¾‹ : 
+g—p—á : 
    java -classpath classes;lib/nimbus.jar jp.ossc.nimbus.service.test.TestRunner runner.xml service-definition.xml
