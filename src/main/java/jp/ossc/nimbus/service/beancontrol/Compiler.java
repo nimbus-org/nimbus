@@ -64,6 +64,7 @@ public class Compiler{
     private Interpreter interpreter = null;
     private Interpreter testInterpreter = null;
     private Interpreter expressionInterpreter = null;
+    private List serviceDirs = null;
     private List servicePaths = null;
     private ServiceName serviceName = new ServiceName("Nimbus", "BeanFlowInvokerFactory");
     
@@ -112,6 +113,10 @@ public class Compiler{
         expressionInterpreter = interpreter;
     }
     
+    public void setServiceDirs(List paths){
+        serviceDirs = paths;
+    }
+    
     public void setServicePaths(List paths){
         servicePaths = paths;
     }
@@ -143,6 +148,16 @@ public class Compiler{
             }
         }
         DefaultBeanFlowInvokerFactoryService factory = null;
+        if(serviceDirs != null && serviceDirs.size() != 0){
+            for(int i = 0, imax = serviceDirs.size(); i < imax; i++){
+                String[] params = (String[])serviceDirs.get(i);
+                if(!ServiceManagerFactory.loadManagers(params[0], params[1])){
+                    System.out.println("Service load error. dir=" + params[0] + ", filter=" + params[1]);
+                    Thread.sleep(1000);
+                    System.exit(-1);
+                }
+            }
+        }
         if(servicePaths != null && servicePaths.size() != 0){
             for(int i = 0, imax = servicePaths.size(); i < imax; i++){
                 if(!ServiceManagerFactory.loadManager((String)servicePaths.get(i))){
@@ -372,6 +387,9 @@ public class Compiler{
      *  [-expressionInterpreterClass]
      *    jp.ossc.nimbus.service.interpreter.Interpreterの実装クラス。
      * 
+     *  [-servicedir path filter]
+     *    DefaultBeanFlowInvokerFactoryServiceの起動に必要なサービス定義ファイルのディレクトリとサービス定義ファイルを特定するフィルタを指定します。
+     * 
      *  [-servicepath paths]
      *    DefaultBeanFlowInvokerFactoryServiceの起動に必要なサービス定義ファイルのパスを指定します。
      *    パスセパレータ区切りで複数指定可能です。
@@ -409,6 +427,7 @@ public class Compiler{
         String interpreterClassName = null;
         String testInterpreterClassName = null;
         String expressionInterpreterClassName = null;
+        List serviceDirs = null;
         List servicePaths = null;
         ServiceName serviceName = null;
         for(int i = 0; i < args.length; i++){
@@ -431,6 +450,11 @@ public class Compiler{
                 editor.setAsText((args.length > i + 1) ? args[i + 1] : null);
                 serviceName = (ServiceName)editor.getValue();
                 i++;
+            }else if(args[i].equals("-servicedir")){
+                if(serviceDirs == null){
+                    serviceDirs = new ArrayList();
+                }
+                serviceDirs.add(new String[]{args[++i], args[++i]});
             }else if(args[i].equals("-servicepath")){
                 servicePaths = parsePaths((args.length > i + 1) ? args[i + 1] : null);
                 i++;
@@ -441,6 +465,7 @@ public class Compiler{
         
         try{
             final Compiler compiler = new Compiler(verbose);
+            compiler.setServiceDirs(serviceDirs);
             compiler.setServicePaths(servicePaths);
             if(serviceName != null){
                 compiler.setServiceName(serviceName);

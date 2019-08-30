@@ -176,18 +176,35 @@ public class TestSwingRunner{
             return;
         }
         
+        List serviceDirs = null;
         final List servicePaths = new ArrayList();
         boolean validate = false;
-        
+        String userId = null;
         for(int i = 0; i < args.length; i++){
-            servicePaths.add(args[i]);
+            if(args[i].equals("-validate")){
+                validate = true;
+            }else if(args[i].equals("-servicedir")){
+                if(serviceDirs == null){
+                    serviceDirs = new ArrayList();
+                }
+                serviceDirs.add(new String[]{args[++i], args[++i]});
+            }else{
+                servicePaths.add(args[i]);
+            }
         }
         
-        if(servicePaths.size() == 0){
+        if(servicePaths.size() == 0 && serviceDirs == null){
             usage();
             return;
         }
-        
+        if(serviceDirs != null){
+            for(int i = 0, max = serviceDirs.size(); i < max; i++){
+                String[] params = (String[])serviceDirs.get(i);
+                if(!ServiceManagerFactory.loadManagers(params[0], params[1], false, validate)){
+                    System.exit(-1);
+                }
+            }
+        }
         for(int i = 0, max = servicePaths.size(); i < max; i++){
             if(!ServiceManagerFactory.loadManager((String)servicePaths.get(i), false, validate)){
                 System.exit(-1);
@@ -216,7 +233,7 @@ public class TestSwingRunner{
         }
         
         // GUI を起動
-        final UserIdInputView view = new UserIdInputView(servicePaths);
+        final UserIdInputView view = new UserIdInputView(serviceDirs, servicePaths);
         view.setTestController(testController);
         view.setVisible(true);
         view.addWindowListener(

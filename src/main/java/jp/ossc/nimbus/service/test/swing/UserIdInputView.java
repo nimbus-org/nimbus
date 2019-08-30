@@ -58,6 +58,7 @@ public class UserIdInputView extends JFrame implements ActionListener, KeyListen
     private JTextField textBox = null;
     private JButton okButton = null;
     private boolean isWindowClosed;
+    private List serviceDirs;
     private List servicePaths;
     
     private TestController testController = null;
@@ -67,7 +68,8 @@ public class UserIdInputView extends JFrame implements ActionListener, KeyListen
         this.testController = testController;
     }
     
-    public UserIdInputView(List servicePaths) throws Exception {
+    public UserIdInputView(List serviceDirs, List servicePaths) throws Exception {
+        this.serviceDirs = serviceDirs;
         this.servicePaths = servicePaths;
         initialize();
     }
@@ -80,6 +82,12 @@ public class UserIdInputView extends JFrame implements ActionListener, KeyListen
             if(servicePaths != null){
                 for(int i = servicePaths.size(); --i >= 0;){
                     ServiceManagerFactory.unloadManager((String)servicePaths.get(i));
+                }
+            }
+            if(serviceDirs != null){
+                for(int i = serviceDirs.size(); --i >= 0;){
+                    String[] params = (String[])serviceDirs.get(i);
+                    ServiceManagerFactory.unloadManagers(params[0], params[1]);
                 }
             }
             UserIdInputView.this.notifyAll();
@@ -128,7 +136,7 @@ public class UserIdInputView extends JFrame implements ActionListener, KeyListen
     }
     
     public static void main(String[] args) throws Exception{
-        UserIdInputView view = new UserIdInputView(null);
+        UserIdInputView view = new UserIdInputView(null, null);
         view.setVisible(true);
     }
     
