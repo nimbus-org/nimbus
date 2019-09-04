@@ -122,7 +122,7 @@ public class StatusDialogView extends JDialog {
     }
     
 
-    public StatusDialogView(JFrame ownerFrame, String title, Exception throwObject) {
+    public StatusDialogView(JFrame ownerFrame, String title, Throwable throwObject) {
         super(ownerFrame);
         setModal(true);
         

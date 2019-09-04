@@ -717,8 +717,8 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
                     testController.generateTestScenarioEvidenceFile(scenarioGroupId, scenarioId);
                 }
             }
-        } catch (Exception e1) {
-            JDialog dialog = new StatusDialogView(this, "例外", e1);
+        } catch (Throwable t) {
+            JDialog dialog = new StatusDialogView(this, "例外", t);
             dialog.setModal(true);
             dialog.setVisible(true);
         }
@@ -1398,8 +1398,8 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
                 JDialog dialog = new StatusDialogView(frame, "警告", e);
                 dialog.setModal(true);
                 dialog.setVisible(true);
-            } catch (Exception e) {
-                JDialog dialog = new StatusDialogView(frame, "例外", e);
+            } catch (Throwable t) {
+                JDialog dialog = new StatusDialogView(frame, "例外", t);
                 dialog.setModal(true);
                 dialog.setVisible(true);
             } finally {
