@@ -32,6 +32,8 @@
 package jp.ossc.nimbus.service.template;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.Writer;
 import java.util.Map;
 
 /**
@@ -41,12 +43,38 @@ import java.util.Map;
  */
 public interface TemplateEngine{
     
+    /**
+     * テンプレートを登録する。<p>
+     *
+     * @param name テンプレート名
+     * @param template テンプレート文字列
+     */
     public void setTemplate(String name, String template);
     
+    /**
+     * テンプレートを登録する。<p>
+     *
+     * @param name テンプレート名
+     * @param template テンプレート文字列
+     * @param encoding テンプレート文字列をバイト配列にする場合の文字コード
+     */
     public void setTemplate(String name, String template, String encoding);
     
+    /**
+     * テンプレートを登録する。<p>
+     *
+     * @param name テンプレート名
+     * @param templateFile テンプレートファイル
+     */
     public void setTemplateFile(String name, File templateFile);
     
+    /**
+     * テンプレートを登録する。<p>
+     *
+     * @param name テンプレート名
+     * @param templateFile テンプレートファイル
+     * @param encoding テンプレートファイルの文字コード
+     */
     public void setTemplateFile(String name, File templateFile, String encoding);
     
     /**
@@ -58,4 +86,15 @@ public interface TemplateEngine{
      * @exception TemplateTransformException 変換に失敗した場合
      */
     public String transform(String name, Map dataMap) throws TemplateTransformException;
+    
+    /**
+     * テンプレートにデータを適用して、変換結果を書き込む。<p>
+     *
+     * @param name テンプレート名
+     * @param dataMap データマップ
+     * @param writer 変換結果を書き込むWriter
+     * @exception TemplateTransformException 変換に失敗した場合
+     * @exception IOException 書き込みに失敗した場合
+     */
+    public void transform(String name, Map dataMap, Writer writer) throws TemplateTransformException, IOException;
 }

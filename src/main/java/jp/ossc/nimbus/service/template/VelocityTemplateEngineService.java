@@ -32,6 +32,8 @@
 package jp.ossc.nimbus.service.template;
 
 import java.io.File;
+import java.io.Writer;
+import java.io.IOException;
 import java.io.Serializable;
 import java.io.StringWriter;
 import java.util.Properties;
@@ -204,6 +206,14 @@ public class VelocityTemplateEngineService extends ServiceBase implements Templa
             throw new TemplateTransformException("Transform failed. name=" + name, e);
         }
         return sw.toString();
+    }
+    
+    public void transform(String name, Map dataMap, Writer writer) throws TemplateTransformException, IOException{
+        try{
+            writer.write(transform(name, dataMap));
+        }catch(IOException e){
+            throw e;
+        }
     }
     
     private static class TemplateResource implements Serializable{
