@@ -255,9 +255,6 @@ public class ThymeleafTemplateEngineService extends ServiceBase implements Templ
     public void setMessageRecordFactory(MessageRecordFactory factory){
         messageRecordFactory = factory;
     }
-    public MessageRecordFactory getMessageRecordFactory(){
-        return messageRecordFactory == null ? super.getMessageRecordFactory() : messageRecordFactory;
-    }
     
     public void createService() throws Exception{
         templateMap = Collections.synchronizedMap(new HashMap());
@@ -335,7 +332,7 @@ public class ThymeleafTemplateEngineService extends ServiceBase implements Templ
             messageRecordFactory = (MessageRecordFactory)ServiceManagerFactory.getServiceObject(messageRecordFactoryServiceName);
         }
         
-        if(getMessageRecordFactory() != null){
+        if(messageRecordFactory != null || super.getMessageRecordFactory() != null){
             engine.addMessageResolver(new MessageResolver());
         }
         
@@ -453,7 +450,8 @@ public class ThymeleafTemplateEngineService extends ServiceBase implements Templ
     
     protected class MessageResolver extends AbstractMessageResolver{
         public String resolveMessage(final ITemplateContext context, final Class<?> origin, final String key, final Object[] messageParameters){
-            return getMessageRecordFactory().findEmbedMessage(context.getLocale(), key, messageParameters);
+            MessageRecordFactory factory = messageRecordFactory == null ? ThymeleafTemplateEngineService.super.getMessageRecordFactory() : messageRecordFactory;
+            return factory.findEmbedMessage(context.getLocale(), key, messageParameters);
         }
         public String createAbsentMessageRepresentation(final ITemplateContext context, final Class<?> origin, final String key, final Object[] messageParameters){
             if (context.getLocale() != null){

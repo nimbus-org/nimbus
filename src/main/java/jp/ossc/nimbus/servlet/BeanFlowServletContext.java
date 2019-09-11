@@ -31,6 +31,7 @@
  */
 package jp.ossc.nimbus.servlet;
 
+import javax.servlet.*;
 import javax.servlet.http.*;
 
 /**
@@ -40,6 +41,11 @@ import javax.servlet.http.*;
  * @author M.Takata
  */
 public class BeanFlowServletContext{
+    
+    /**
+     * サーブレットコンテキスト。<p>
+     */
+    protected ServletContext context;
     
     /**
      * HTTPリクエスト。<p>
@@ -68,9 +74,11 @@ public class BeanFlowServletContext{
      * @param resp HTTPレスポンス
      */
     public BeanFlowServletContext(
+        ServletContext context,
         HttpServletRequest req,
         HttpServletResponse resp
     ){
+        this.context = context;
         request = req;
         response = resp;
     }
@@ -83,13 +91,24 @@ public class BeanFlowServletContext{
      * @param input 入力オブジェクト
      */
     public BeanFlowServletContext(
+        ServletContext context,
         HttpServletRequest req,
         HttpServletResponse resp,
         Object input
     ){
+        this.context = context;
         request = req;
         response = resp;
         this.input = input;
+    }
+    
+    /**
+     * サーブレットコンテキストを取得する。<p>
+     * 
+     * @return サーブレットコンテキスト
+     */
+    public ServletContext getServletContext(){
+        return context;
     }
     
     /**
