@@ -489,6 +489,7 @@ public class BeanFlowServlet extends HttpServlet{
                 }
             }
             final BeanFlowServletContext context = new BeanFlowServletContext(
+                getServletContext(),
                 req,
                 resp,
                 req.getAttribute(inputAttributeName)

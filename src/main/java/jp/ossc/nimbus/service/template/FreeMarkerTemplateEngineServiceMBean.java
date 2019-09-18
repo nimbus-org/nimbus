@@ -32,16 +32,70 @@
 package jp.ossc.nimbus.service.template;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.Writer;
-import java.util.Map;
+import java.util.Locale;
+
+import freemarker.template.Version;
+
+import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
- * テンプレートエンジン。<p>
- *
+ * {@link FreeMarkerTemplateEngineService}のMBeanインタフェース<p>
+ * 
  * @author M.Takata
+ * @see FreeMarkerTemplateEngineService
  */
-public interface TemplateEngine{
+public interface FreeMarkerTemplateEngineServiceMBean extends ServiceBaseMBean{
+    
+    /**
+     * テンプレートファイルを探索するルートディレクトリを設定する。<p>
+     * 指定されたパスは、実行ディレクトリからの相対パス、絶対パス、サービス定義ファイルからの相対パスの順で評価され、存在したディレクトリが適用される。また、指定されていない場合は、実行ディレクトリとなる。<br>
+     * テンプレートの探索は、以下の順序で行われる。<br>
+     * <ol>
+     *   <li>指定されたテンプレート名で、{@link #setTemplate(String, String, String)}や{@link #setTemplateFile(String, File, String)}で登録されたテンプレートを探す。</li>
+     *   <li>指定されたテンプレート名からテンプレートリソース名に変換した後、ルートディレクトリからテンプレートファイルを探索する。</li>
+     *   <li>指定されたテンプレート名自体をテンプレート文字列と解釈する。</li>
+     * </ol>
+     *
+     * @param dir ルートディレクトリ
+     */
+    public void setTemplateFileRootDirectory(File dir);
+    
+    /**
+     * テンプレートファイルを探索するルートディレクトリを取得する。<p>
+     *
+     * @return ルートディレクトリ
+     */
+    public File getTemplateFileRootDirectory();
+    
+    /**
+     * テンプレートファイルの文字コードを設定する。<p>
+     * 指定しない場合は、システムの環境変数の文字コードが適用される。<br>
+     *
+     * @param encoding 文字コード
+     */
+    public void setCharacterEncoding(String encoding);
+    
+    /**
+     * テンプレートファイルの文字コードを取得する。<p>
+     *
+     * @return 文字コード
+     */
+    public String getCharacterEncoding();
+    
+    /**
+     * ロケールを設定する。<p>
+     * 指定しない場合は、リクエストのロケール、システムの環境変数のロケールの順で適用される。<br>
+     *
+     * @param lo ロケール
+     */
+    public void setLocale(Locale lo);
+    
+    /**
+     * ロケールを設定する。<p>
+     *
+     * @param lo ロケール
+     */
+    public Locale getLocale();
     
     /**
      * テンプレートを登録する。<p>
@@ -78,23 +132,18 @@ public interface TemplateEngine{
     public void setTemplateFile(String name, File templateFile, String encoding);
     
     /**
-     * テンプレートにデータを適用して、変換結果を返す。<p>
+     * freemarker.template.Configurationのプロパティを設定する。<p>
      *
-     * @param name テンプレート名
-     * @param dataMap データマップ
-     * @return 変換結果
-     * @exception TemplateTransformException 変換に失敗した場合
+     * @param name プロパティ名
+     * @param value プロパティ値
      */
-    public String transform(String name, Map dataMap) throws TemplateTransformException;
+    public void setConfigurationProperty(String name, Object value);
     
     /**
-     * テンプレートにデータを適用して、変換結果を書き込む。<p>
+     * freemarker.template.Configurationに設定するプロパティ値を取得する。<p>
      *
-     * @param name テンプレート名
-     * @param dataMap データマップ
-     * @param writer 変換結果を書き込むWriter
-     * @exception TemplateTransformException 変換に失敗した場合
-     * @exception IOException 書き込みに失敗した場合
+     * @param name プロパティ名
+     * @return プロパティ値
      */
-    public void transform(String name, Map dataMap, Writer writer) throws TemplateTransformException, IOException;
+    public Object getConfigurationProperty(String name);
 }
