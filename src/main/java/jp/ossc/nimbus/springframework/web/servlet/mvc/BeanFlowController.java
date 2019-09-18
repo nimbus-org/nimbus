@@ -418,6 +418,7 @@ public class BeanFlowController extends AbstractController{
                     }
                 }
                 final BeanFlowServletContext context = new BeanFlowServletContext(
+                    getServletContext(),
                     req,
                     resp,
                     req.getAttribute(inputAttributeName)
