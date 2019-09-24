@@ -35,10 +35,20 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
+import java.util.Map;
+import java.util.HashMap;
 
 import jp.ossc.nimbus.beans.NoSuchPropertyException;
 import jp.ossc.nimbus.beans.Property;
 import jp.ossc.nimbus.beans.PropertyFactory;
+import jp.ossc.nimbus.core.ServiceName;
+import jp.ossc.nimbus.core.ServiceManagerFactory;
+import jp.ossc.nimbus.service.aop.interceptor.ThreadContextKey;
+import jp.ossc.nimbus.service.context.Context;
+import jp.ossc.nimbus.service.codemaster.CodeMasterFinder;
+import jp.ossc.nimbus.service.interpreter.Interpreter;
+import jp.ossc.nimbus.service.interpreter.CompiledInterpreter;
+import jp.ossc.nimbus.service.interpreter.EvaluateException;
 import jp.ossc.nimbus.service.writer.SimpleCategoryService;
 import jp.ossc.nimbus.service.writer.MessageWriteException;
 import org.apache.commons.jexl.Expression;
@@ -75,6 +85,17 @@ public class EvaluateCategoryService extends SimpleCategoryService
     
     private List conditions;
     
+    private boolean isTestOnStart = true;
+    
+    private ServiceName interpreterServiceName;
+    private Interpreter interpreter;
+    
+    private ServiceName threadContextServiceName;
+    private Context threadContext;
+    private ServiceName codeMasterFinderServiceName;
+    private CodeMasterFinder codeMasterFinder;
+    private String codeMasterName;
+    
     // EvaluateCategoryServiceMBeanのJavaDoc
     public void setWritableConditions(String conditions[]){
         writableConditions = conditions;
@@ -83,6 +104,51 @@ public class EvaluateCategoryService extends SimpleCategoryService
     // EvaluateCategoryServiceMBeanのJavaDoc
     public String[] getWritableConditions(){
         return writableConditions;
+    }
+    
+    public void setTestOnStart(boolean isTest){
+        isTestOnStart = isTest;
+    }
+    public boolean isTestOnStart(){
+        return isTestOnStart;
+    }
+    
+    public void setInterpreterServiceName(ServiceName name){
+        interpreterServiceName = name;
+    }
+    public ServiceName getInterpreterServiceName(){
+        return interpreterServiceName;
+    }
+    
+    public void setThreadContextServiceName(ServiceName name){
+        threadContextServiceName = name;
+    }
+    public ServiceName getThreadContextServiceName(){
+        return threadContextServiceName;
+    }
+    
+    public void setCodeMasterFinderServiceName(ServiceName name){
+        codeMasterFinderServiceName = name;
+    }
+    public ServiceName getCodeMasterFinderServiceName(){
+        return codeMasterFinderServiceName;
+    }
+    
+    public void setCodeMasterName(String name){
+        codeMasterName = name;
+    }
+    public String getCodeMasterName(){
+        return codeMasterName;
+    }
+    
+    public void setInterpreter(Interpreter interpreter){
+        this.interpreter = interpreter;
+    }
+    public void setThreadContext(Context threadContext){
+        this.threadContext = threadContext;
+    }
+    public void setCodeMasterFinder(CodeMasterFinder codeMasterFinder){
+        this.codeMasterFinder = codeMasterFinder;
     }
     
     /**
@@ -102,6 +168,16 @@ public class EvaluateCategoryService extends SimpleCategoryService
      */
     public void startService() throws Exception{
         super.startService();
+        if(interpreterServiceName != null){
+            interpreter = (Interpreter)ServiceManagerFactory.getServiceObject(interpreterServiceName);
+        }
+        if(threadContextServiceName != null){
+            threadContext = (Context)ServiceManagerFactory.getServiceObject(threadContextServiceName);
+        }
+        if(codeMasterFinderServiceName != null){
+            codeMasterFinder = (CodeMasterFinder)ServiceManagerFactory.getServiceObject(codeMasterFinderServiceName);
+        }
+        
         if(writableConditions != null){
             for(int i = 0; i < writableConditions.length; i++){
                 conditions.add(new Condition(writableConditions[i]));
@@ -149,9 +225,11 @@ public class EvaluateCategoryService extends SimpleCategoryService
     }
     
     private class Condition{
-        public List properties;
-        public Expression expression;
-        public List keyList;
+        private List properties;
+        private String expressionStr;
+        private Expression expression;
+        private List keyList;
+        private CompiledInterpreter compiledInterpreter;
         
         public static final String DELIMITER = "@";
         
@@ -193,13 +271,15 @@ public class EvaluateCategoryService extends SimpleCategoryService
                 }
                 beforeToken = str;
             }
-            
-            if(keyList.size() == 0){
-                throw new IllegalArgumentException(cond);
+            expressionStr = condBuf.toString();
+            if(interpreter == null){
+                expression = ExpressionFactory.createExpression(expressionStr);
+            }else if(interpreter.isCompilable()){
+                compiledInterpreter = interpreter.compile(expressionStr);
             }
-            
-            expression = ExpressionFactory.createExpression(condBuf.toString());
-            evaluate("", true);
+            if(isTestOnStart){
+                evaluate("", true);
+            }
         }
         
         public boolean evaluate(Object object) throws MessageWriteException{
@@ -207,32 +287,88 @@ public class EvaluateCategoryService extends SimpleCategoryService
         }
         
         protected boolean evaluate(Object object, boolean isTest) throws MessageWriteException{
-            JexlContext jexlContext = JexlHelper.createContext();
-            
-            for(int i = 0, size = keyList.size(); i < size; i++){
-                final String keyString = (String)keyList.get(i);
-                final Property property = (Property)properties.get(i);
-                Object val = null;
-                try{
-                    val = property.getProperty(object);
-                }catch(NoSuchPropertyException e){
-                }catch(InvocationTargetException e){
-                }
-                jexlContext.getVars().put(keyString, val);
-            }
-            
-            try{
-                Object exp = expression.evaluate(jexlContext);
-                if(exp instanceof Boolean){
-                    return ((Boolean)exp).booleanValue();
-                }else{
-                    if(exp == null && isTest){
-                        return true;
+            if(interpreter == null){
+                JexlContext jexlContext = JexlHelper.createContext();
+                
+                for(int i = 0, size = keyList.size(); i < size; i++){
+                    final String keyString = (String)keyList.get(i);
+                    final Property property = (Property)properties.get(i);
+                    Object val = null;
+                    try{
+                        val = property.getProperty(object);
+                    }catch(NoSuchPropertyException e){
+                    }catch(InvocationTargetException e){
                     }
-                    throw new MessageWriteException(expression.getExpression());
+                    jexlContext.getVars().put(keyString, val);
                 }
-            }catch(Exception e){
-                throw new MessageWriteException(e);
+                jexlContext.getVars().put("value", object);
+                Map codeMasterMap = null;
+                if(threadContext != null){
+                    codeMasterMap = (Map)threadContext.get(ThreadContextKey.CODEMASTER);
+                }else if(codeMasterFinder != null){
+                    codeMasterMap = codeMasterFinder.getCodeMasters();
+                }
+                Object codeMaster = codeMasterMap;
+                if(codeMasterMap != null && codeMasterName != null){
+                    codeMaster = codeMasterMap.get(codeMasterName);
+                }
+                jexlContext.getVars().put("master", codeMaster);
+                try{
+                    Object exp = expression.evaluate(jexlContext);
+                    if(exp instanceof Boolean){
+                        return ((Boolean)exp).booleanValue();
+                    }else{
+                        if(exp == null && isTest){
+                            return true;
+                        }
+                        throw new MessageWriteException(expression.getExpression());
+                    }
+                }catch(Exception e){
+                    throw new MessageWriteException(e);
+                }
+            }else{
+                Map params = new HashMap();
+                for(int i = 0, size = keyList.size(); i < size; i++){
+                    final String keyString = (String)keyList.get(i);
+                    final Property property = (Property)properties.get(i);
+                    Object val = null;
+                    try{
+                        val = property.getProperty(object);
+                    }catch(NoSuchPropertyException e){
+                    }catch(InvocationTargetException e){
+                    }
+                    params.put(keyString, val);
+                }
+                params.put("value", object);
+                Map codeMasterMap = null;
+                if(threadContext != null){
+                    codeMasterMap = (Map)threadContext.get(ThreadContextKey.CODEMASTER);
+                }else if(codeMasterFinder != null){
+                    codeMasterMap = codeMasterFinder.getCodeMasters();
+                }
+                Object codeMaster = codeMasterMap;
+                if(codeMasterMap != null && codeMasterName != null){
+                    codeMaster = codeMasterMap.get(codeMasterName);
+                }
+                params.put("master", codeMaster);
+                try{
+                    Object ret = null;
+                    if(compiledInterpreter == null){
+                        ret = compiledInterpreter.evaluate(params);
+                    }else{
+                        ret = interpreter.evaluate(expressionStr, params);
+                    }
+                    if(ret instanceof Boolean){
+                        return ((Boolean)ret).booleanValue();
+                    }else{
+                        if(ret == null && isTest){
+                            return true;
+                        }
+                        throw new MessageWriteException(expressionStr);
+                    }
+                }catch(EvaluateException e){
+                    throw new MessageWriteException(e);
+                }
             }
         }
     }
