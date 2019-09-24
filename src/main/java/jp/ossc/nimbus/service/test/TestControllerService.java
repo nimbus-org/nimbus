@@ -950,29 +950,6 @@ public class TestControllerService extends ServiceBase implements TestController
         TestCaseImpl.StatusImpl status = null;
         Exception ex = null;
         try {
-            if (testStubs != null) {
-                for (int i = 0; i < testStubs.length; i++) {
-                    File stubDir = new File(testResourceFileBaseDirectory, currentTestScenarioGroup.getScenarioGroupId() + File.separator + scenarioId
-                            + File.separator + testcaseId + File.separator + testStubs[i].getId());
-                    if (stubDir.exists()) {
-                        testStubs[i].endTestCase();
-                        stubResourceManager.downloadTestCaseResource(stubDir, currentTestScenarioGroup.getScenarioGroupId(), scenarioId, testcaseId,
-                                testStubs[i].getId());
-                    }
-                }
-            }
-            if (testEventListeners != null) {
-                for (int i = 0; i < testEventListeners.length; i++) {
-                    try {
-                        testEventListeners[i].cancelTestCase(scenarioId, testcaseId);
-                    } catch (Exception e) {
-                        getLogger().write("TC___00018", new Object[] { currentTestScenarioGroup.getScenarioGroupId(), scenarioId, testcaseId }, e);
-                        if (ex != null) {
-                            ex = e;
-                        }
-                    }
-                }
-            }
             TestScenarioGroupContext groupContext = (TestScenarioGroupContext) contextMap.get(currentTestScenarioGroup.getScenarioGroupId());
             TestScenarioContext scenarioContext = groupContext.getTestScenarioContext(scenarioId);
             if (scenarioContext == null || scenarioContext.getStatus().getState() != TestScenario.Status.STARTED) {
@@ -996,6 +973,29 @@ public class TestControllerService extends ServiceBase implements TestController
                     }
                 }
                 status.setResult(context.isAllActionSuccess());
+            }
+            if (testStubs != null) {
+                for (int i = 0; i < testStubs.length; i++) {
+                    File stubDir = new File(testResourceFileBaseDirectory, currentTestScenarioGroup.getScenarioGroupId() + File.separator + scenarioId
+                            + File.separator + testcaseId + File.separator + testStubs[i].getId());
+                    if (stubDir.exists()) {
+                        testStubs[i].endTestCase();
+                        stubResourceManager.downloadTestCaseResource(stubDir, currentTestScenarioGroup.getScenarioGroupId(), scenarioId, testcaseId,
+                                testStubs[i].getId());
+                    }
+                }
+            }
+            if (testEventListeners != null) {
+                for (int i = 0; i < testEventListeners.length; i++) {
+                    try {
+                        testEventListeners[i].cancelTestCase(scenarioId, testcaseId);
+                    } catch (Exception e) {
+                        getLogger().write("TC___00018", new Object[] { currentTestScenarioGroup.getScenarioGroupId(), scenarioId, testcaseId }, e);
+                        if (ex != null) {
+                            ex = e;
+                        }
+                    }
+                }
             }
         } catch (Exception e) {
             getLogger().write("TC___00018", new Object[] { currentTestScenarioGroup.getScenarioGroupId(), scenarioId, testcaseId }, e);
@@ -1029,29 +1029,6 @@ public class TestControllerService extends ServiceBase implements TestController
                 throw new TestStatusException("TestCase is not started.");
             }
             
-            if (testStubs != null) {
-                for (int i = 0; i < testStubs.length; i++) {
-                    File stubDir = new File(testResourceFileBaseDirectory, currentTestScenarioGroup.getScenarioGroupId() + File.separator + scenarioId
-                            + File.separator + testcaseId + File.separator + testStubs[i].getId());
-                    if (stubDir.exists()) {
-                        testStubs[i].endTestCase();
-                        stubResourceManager.downloadTestCaseResource(stubDir, currentTestScenarioGroup.getScenarioGroupId(), scenarioId, testcaseId,
-                                testStubs[i].getId());
-                    }
-                }
-            }
-            if (testEventListeners != null) {
-                for (int i = 0; i < testEventListeners.length; i++) {
-                    try {
-                        testEventListeners[i].endTestCase(scenarioId, testcaseId);
-                    } catch (Exception e) {
-                        getLogger().write("TC___00020", new Object[] { currentTestScenarioGroup.getScenarioGroupId(), scenarioId, testcaseId }, e);
-                        if (ex != null) {
-                            ex = e;
-                        }
-                    }
-                }
-            }
             TestCaseResource testCaseResource = context.getTestCase().getTestCaseResource();
             if (testPhase == null || testCaseResource.isExecutable(testPhase)) {
                 TestContextImpl testCaseTestContext = (TestContextImpl) scenarioContext.getTestCaseTestContext();
@@ -1083,6 +1060,29 @@ public class TestControllerService extends ServiceBase implements TestController
                     }
                 }
                 status.setResult(context.isAllActionSuccess());
+            }
+            if (testStubs != null) {
+                for (int i = 0; i < testStubs.length; i++) {
+                    File stubDir = new File(testResourceFileBaseDirectory, currentTestScenarioGroup.getScenarioGroupId() + File.separator + scenarioId
+                            + File.separator + testcaseId + File.separator + testStubs[i].getId());
+                    if (stubDir.exists()) {
+                        testStubs[i].endTestCase();
+                        stubResourceManager.downloadTestCaseResource(stubDir, currentTestScenarioGroup.getScenarioGroupId(), scenarioId, testcaseId,
+                                testStubs[i].getId());
+                    }
+                }
+            }
+            if (testEventListeners != null) {
+                for (int i = 0; i < testEventListeners.length; i++) {
+                    try {
+                        testEventListeners[i].endTestCase(scenarioId, testcaseId);
+                    } catch (Exception e) {
+                        getLogger().write("TC___00020", new Object[] { currentTestScenarioGroup.getScenarioGroupId(), scenarioId, testcaseId }, e);
+                        if (ex != null) {
+                            ex = e;
+                        }
+                    }
+                }
             }
         } catch (Exception e) {
             getLogger().write("TC___00020", new Object[] { currentTestScenarioGroup.getScenarioGroupId(), scenarioId, testcaseId }, e);
