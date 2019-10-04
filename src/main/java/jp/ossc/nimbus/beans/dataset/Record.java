@@ -374,12 +374,11 @@ public class Record implements Externalizable, Cloneable, Map{
         if(getRecordSchema() == null){
             throw new PropertySetException(null, "Schema is not initialized.");
         }
-        final PropertySchema propertySchema
-             = getRecordSchema().getPropertySchema(name);
-        if(propertySchema == null){
-            throw new PropertySetException(null, "No such property : " + name);
+        final int index = getRecordSchema().getPropertyIndex(name);
+        if(index == -1){
+            throw new PropertyGetException(null, "No such property : " + name);
         }
-        setProperty(recordSchema.getPropertyIndex(name), val);
+        setProperty(index, val);
     }
     
     /**
@@ -407,7 +406,7 @@ public class Record implements Externalizable, Cloneable, Map{
                     if(values == null){
                         synchronized(this){
                             if(values == null){
-                                values = new Object[getRecordSchema().getPropertySize()];
+                                values = new Object[recordSchema.getPropertySize()];
                             }
                         }
                     }
@@ -419,7 +418,7 @@ public class Record implements Externalizable, Cloneable, Map{
                 if(values == null){
                     synchronized(this){
                         if(values == null){
-                            values = new Object[getRecordSchema().getPropertySize()];
+                            values = new Object[recordSchema.getPropertySize()];
                         }
                     }
                 }
@@ -430,7 +429,7 @@ public class Record implements Externalizable, Cloneable, Map{
             if(values == null){
                 synchronized(this){
                     if(values == null){
-                        values = new Object[getRecordSchema().getPropertySize()];
+                        values = new Object[recordSchema.getPropertySize()];
                     }
                 }
             }
