@@ -32,6 +32,7 @@
 package jp.ossc.nimbus.service.test;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -41,7 +42,7 @@ import java.util.Map;
  * 
  * @author M.Ishida
  */
-public class TestContextImpl implements TestContext {
+public class TestContextImpl implements TestContext, Serializable {
     
     private String testPhase;
     private TestScenarioGroup testScenarioGroup;
