@@ -349,15 +349,15 @@ public class QueryDataSet extends DataSet{
             }
             final Integer fromIndex = getFromIndexProperty();
             final Integer maxSize = getMaxSizeProperty();
-            if(fromIndex == null){
-                if(maxSize != null && maxSize.intValue() < list.size()){
-                    list.subList(maxSize.intValue() + 1, list.size()).clear();
+            if(fromIndex == null || fromIndex.intValue() <= 0){
+                if(maxSize != null && maxSize.intValue() >= 0 && maxSize.intValue() < list.size()){
+                    list.subList(maxSize.intValue(), list.size()).clear();
                 }
             }else{
                 if(fromIndex.intValue() < list.size()){
-                    list.subList(0, fromIndex.intValue() - 1).clear();
-                    if(maxSize != null && maxSize.intValue() < list.size()){
-                        list.subList(maxSize.intValue() + 1, list.size()).clear();
+                    list.subList(0, fromIndex.intValue()).clear();
+                    if(maxSize != null && maxSize.intValue() >= 0 && maxSize.intValue() < list.size()){
+                        list.subList(maxSize.intValue(), list.size()).clear();
                     }
                 }else{
                     list.clear();
@@ -411,6 +411,13 @@ public class QueryDataSet extends DataSet{
         
         /**
          * 空のレコードリストを生成する。<p>
+         */
+        public QueryRecordList(){
+            super();
+        }
+        
+        /**
+         * 空のレコードリストを生成する。<p>
          *
          * @param name レコード名
          */
@@ -447,6 +454,14 @@ public class QueryDataSet extends DataSet{
         
         /**
          * 空のレコードリストを生成する。<p>
+         */
+        public HeaderQueryRecordList(){
+            super();
+            setRecordClass(HeaderQueryRecord.class);
+        }
+        
+        /**
+         * 空のレコードリストを生成する。<p>
          *
          * @param name レコードリスト名
          */
@@ -473,22 +488,19 @@ public class QueryDataSet extends DataSet{
          * @param ds クエリの実行対象となるデータセット
          */
         public void executeQuery(DataSet ds){
-            if(size() == 0){
-                return;
-            }
             Set headerNames = null;
-            Iterator queries = iterator();
-            while(queries.hasNext()){
-                HeaderQueryRecord query = (HeaderQueryRecord)queries.next();
-                if(headerNames == null){
-                    headerNames = new HashSet();
+            if(size() != 0){
+                Iterator queries = iterator();
+                while(queries.hasNext()){
+                    HeaderQueryRecord query = (HeaderQueryRecord)queries.next();
+                    if(headerNames == null){
+                        headerNames = new HashSet();
+                    }
+                    headerNames.add(query.getNameProperty());
+                    query.executeQuery(ds);
                 }
-                headerNames.add(query.getNameProperty());
-                query.executeQuery(ds);
             }
-            if(headerNames != null){
-                ds.setSuperficialHeaders((String[])headerNames.toArray(new String[headerNames.size()]));
-            }
+            ds.setSuperficialHeaders(headerNames != null ? (String[])headerNames.toArray(new String[headerNames.size()]) : new String[0]);
         }
     }
     
@@ -500,6 +512,14 @@ public class QueryDataSet extends DataSet{
     public static class RecordListQueryRecordList extends QueryRecordList{
         
       private static final long serialVersionUID = 1734087472138599124L;
+        
+        /**
+         * 空のレコードリストを生成する。<p>
+         */
+        public RecordListQueryRecordList(){
+            super();
+            setRecordClass(RecordListQueryRecord.class);
+        }
         
         /**
          * 空のレコードリストを生成する。<p>
@@ -530,22 +550,19 @@ public class QueryDataSet extends DataSet{
          * @param ds クエリの実行対象となるデータセット
          */
         public void executeQuery(DataSet ds){
-            if(size() == 0){
-                return;
-            }
             Set listNames = null;
-            Iterator queries = iterator();
-            while(queries.hasNext()){
-                RecordListQueryRecord query = (RecordListQueryRecord)queries.next();
-                if(listNames == null){
-                    listNames = new HashSet();
+            if(size() != 0){
+                Iterator queries = iterator();
+                while(queries.hasNext()){
+                    RecordListQueryRecord query = (RecordListQueryRecord)queries.next();
+                    if(listNames == null){
+                        listNames = new HashSet();
+                    }
+                    listNames.add(query.getNameProperty());
+                    query.executeQuery(ds);
                 }
-                listNames.add(query.getNameProperty());
-                query.executeQuery(ds);
             }
-            if(listNames != null){
-                ds.setSuperficialRecordLists((String[])listNames.toArray(new String[listNames.size()]));
-            }
+            ds.setSuperficialRecordLists(listNames != null ? (String[])listNames.toArray(new String[listNames.size()]) : new String[0]);
         }
     }
     
@@ -557,6 +574,14 @@ public class QueryDataSet extends DataSet{
     public static class NestedRecordQueryRecordList extends QueryRecordList{
         
         private static final long serialVersionUID = -6470555870853893000L;
+        
+        /**
+         * 空のレコードリストを生成する。<p>
+         */
+        public NestedRecordQueryRecordList(){
+            super();
+            setRecordClass(NestedRecordQueryRecord.class);
+        }
         
         /**
          * 空のレコードリストを生成する。<p>
@@ -605,6 +630,14 @@ public class QueryDataSet extends DataSet{
     public static class NestedRecordListQueryRecordList extends QueryRecordList{
         
         private static final long serialVersionUID = -2512099138542793919L;
+        
+        /**
+         * 空のレコードリストを生成する。<p>
+         */
+        public NestedRecordListQueryRecordList(){
+            super();
+            setRecordClass(NestedRecordListQueryRecord.class);
+        }
         
         /**
          * 空のレコードリストを生成する。<p>
