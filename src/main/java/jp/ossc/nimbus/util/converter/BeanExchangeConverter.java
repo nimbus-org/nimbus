@@ -996,14 +996,31 @@ public class BeanExchangeConverter implements BindingConverter{
                                 }
                                 value = convert(((Collection)value).toArray(), outPropValue, false);
                             }else if(inPropType.isArray() && outPropType.isArray()){
-                                Object outPropValue = null;
-                                if(outProp.isReadable(output)){
-                                    outPropValue = outProp.getProperty(output);
+                                if(Array.getLength(value) == 0){
+                                    value = Array.newInstance(outPropType.getComponentType(), 0);
+                                }else{
+                                    Class inComponentType = inPropType.getComponentType();
+                                    for(int i = 0; i < Array.getLength(value); i++){
+                                        Object element = Array.get(value, i);
+                                        if(element != null){
+                                            inComponentType = element.getClass();
+                                            break;
+                                        }
+                                    }
+                                    Object outPropValue = null;
+                                    if(outProp.isReadable(output)){
+                                        outPropValue = outProp.getProperty(output);
+                                    }
+                                    if(outPropValue == null){
+                                        outPropValue = Array.newInstance(outPropType.getComponentType(), Array.getLength(value));
+                                    }
+                                    if(!isAssignableFrom(inComponentType, outPropType.getComponentType())){
+                                        value = convert(value, outPropValue, false);
+                                    }else{
+                                        System.arraycopy(value, 0, outPropValue, 0, Array.getLength(outPropValue));
+                                        value = outPropValue;
+                                    }
                                 }
-                                if(outPropValue == null){
-                                    outPropValue = Array.newInstance(outPropType.getComponentType(), Array.getLength(value));
-                                }
-                                value = convert(value, outPropValue, false);
                             }else if(nestConvertClassTypeMap != null && nestConvertClassTypeMap.getValue(outPropType) != null){
                                 Object outPropValue = null;
                                 if(outProp.isReadable(output)){
