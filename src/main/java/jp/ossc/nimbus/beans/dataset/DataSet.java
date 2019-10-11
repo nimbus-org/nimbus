@@ -586,7 +586,13 @@ public class DataSet implements java.io.Serializable, Cloneable{
         if(nestedRecordListMap == null){
             return null;
         }
-        final String schema = (String)nestedRecordListMap.get(name);
+        String schema = null;
+        if(superficialNestedRecordListMap != null){
+            schema = (String)superficialNestedRecordListMap.get(name);
+        }
+        if(schema == null){
+            schema = (String)nestedRecordListMap.get(name);
+        }
         return schema == null ? null : RecordSchema.getInstance(schema);
     }
     
@@ -614,10 +620,14 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @return ネストしたレコードリストのマップ。キーはレコードリスト名、値はスキーマ文字列
      */
     public Map getNestedRecordListSchemaMap(){
-        if(nestedRecordListMap == null){
-            nestedRecordListMap = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
+        Map result = new HashMap();
+        if(nestedRecordListMap != null){
+            result.putAll(nestedRecordListMap);
         }
-        return nestedRecordListMap;
+        if(superficialNestedRecordListMap != null){
+            result.putAll(superficialNestedRecordListMap);
+        }
+        return result;
     }
     
     /**
@@ -720,7 +730,13 @@ public class DataSet implements java.io.Serializable, Cloneable{
         if(nestedRecordMap == null){
             return null;
         }
-        final String schema = (String)nestedRecordMap.get(name);
+        String schema = null;
+        if(superficialNestedRecordMap != null){
+            schema = (String)superficialNestedRecordMap.get(name);
+        }
+        if(schema == null){
+            schema = (String)nestedRecordMap.get(name);
+        }
         return schema == null ? null : RecordSchema.getInstance(schema);
     }
     
@@ -748,10 +764,14 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @return ネストしたレコードのマップ。キーはレコード名、値はスキーマ文字列
      */
     public Map getNestedRecordSchemaMap(){
-        if(nestedRecordMap == null){
-            nestedRecordMap = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
+        Map result = new HashMap();
+        if(nestedRecordMap != null){
+            result.putAll(nestedRecordMap);
         }
-        return nestedRecordMap;
+        if(superficialNestedRecordMap != null){
+            result.putAll(superficialNestedRecordMap);
+        }
+        return result;
     }
     
     /**
