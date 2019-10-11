@@ -413,7 +413,22 @@ public class RecordSchema{
         final String lineSep = System.getProperty("line.separator");
         for(int i = 0; i < schemata.length; i++){
             PropertySchema propertySchema = schemata[i];
-            buf.append(propertySchema.getSchema());
+            
+            Class propertySchemaType = propertySchema.getClass();
+            if(RecordListPropertySchema.class.equals(propertySchemaType)){
+                buf.append(PROPERTY_SCHEMA_ALIAS_NAME_LIST);
+            }else if(RecordPropertySchema.class.equals(propertySchemaType)){
+                buf.append(PROPERTY_SCHEMA_ALIAS_NAME_RECORD);
+            }else if(XpathPropertySchema.class.equals(propertySchemaType)){
+                buf.append(PROPERTY_SCHEMA_ALIAS_NAME_XPATH);
+            }else if(ValidatorPropertySchema.class.equals(propertySchemaType)){
+                buf.append(PROPERTY_SCHEMA_ALIAS_NAME_VALIDATOR);
+            }else if(InterpreterConstrainPropertySchema.class.equals(propertySchemaType)){
+                buf.append(PROPERTY_SCHEMA_ALIAS_NAME_INTERPRETER);
+            }else{
+                buf.append(propertySchemaType.getName());
+            }
+            buf.append(':').append(propertySchema.getSchema());
             if(i != schemata.length - 1){
                 buf.append(lineSep);
             }

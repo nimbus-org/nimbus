@@ -193,7 +193,7 @@ public class QueryDataSet extends DataSet{
          * @return スキーマ文字列
          */
         protected String createSchema(){
-            return ':' + NAME + ",java.lang.String"
+            return ':' + NAME + ",java.lang.String,,,,1"
                  + "\n:" + PROPERTY_NAMES + ",java.lang.String[]";
         }
         
@@ -333,19 +333,50 @@ public class QueryDataSet extends DataSet{
         }
         
         /**
-         * 指定されたデータセットの該当するレコードリストに対して、クエリを実行する。<p>
+         * 指定された配列を、開始インデックスと最大件数で絞り込む。<p>
          *
-         * @param ds クエリの実行対象となるデータセット
+         * @param array 配列
+         * @return 絞り込んだ配列
          */
-        public void executeQuery(DataSet ds){
-            final String name = getNameProperty();
-            final RecordList list = ds.getRecordList(name);
+        public Object[] shrinkArray(Object[] array){
+            if(array == null || array.length == 0){
+                return array;
+            }
+            final Integer fromIndex = getFromIndexProperty();
+            final Integer maxSize = getMaxSizeProperty();
+            if(fromIndex == null || fromIndex.intValue() <= 0){
+                if(maxSize != null && maxSize.intValue() >= 0 && maxSize.intValue() < array.length){
+                    Object[] newArray = new Object[maxSize.intValue()];
+                    System.arraycopy(array, 0, newArray, 0, newArray.length);
+                    return newArray;
+                }else{
+                    return array;
+                }
+            }else{
+                if(fromIndex.intValue() < array.length){
+                    if(maxSize != null && maxSize.intValue() >= 0 && maxSize.intValue() < array.length){
+                        Object[] newArray = new Object[maxSize.intValue()];
+                        System.arraycopy(array, fromIndex.intValue(), newArray, 0, newArray.length);
+                        return newArray;
+                    }else{
+                        Object[] newArray = new Object[array.length - fromIndex.intValue()];
+                        System.arraycopy(array, fromIndex.intValue(), newArray, 0, newArray.length);
+                        return newArray;
+                    }
+                }else{
+                    return new Object[0];
+                }
+            }
+        }
+        
+        /**
+         * 指定されたリストを、開始インデックスと最大件数で絞り込む。<p>
+         *
+         * @param list リスト
+         */
+        public void shrinkList(List list){
             if(list == null){
                 return;
-            }
-            final String[] propertyNames = getPropertyNamesProperty();
-            if(propertyNames != null){
-                list.setSuperficialProperties(propertyNames);
             }
             final Integer fromIndex = getFromIndexProperty();
             final Integer maxSize = getMaxSizeProperty();
@@ -363,6 +394,24 @@ public class QueryDataSet extends DataSet{
                     list.clear();
                 }
             }
+        }
+        
+        /**
+         * 指定されたデータセットの該当するレコードリストに対して、クエリを実行する。<p>
+         *
+         * @param ds クエリの実行対象となるデータセット
+         */
+        public void executeQuery(DataSet ds){
+            final String name = getNameProperty();
+            final RecordList list = ds.getRecordList(name);
+            if(list == null){
+                return;
+            }
+            final String[] propertyNames = getPropertyNamesProperty();
+            if(propertyNames != null){
+                list.setSuperficialProperties(propertyNames);
+            }
+            shrinkList(list);
         }
     }
     
@@ -441,6 +490,18 @@ public class QueryDataSet extends DataSet{
          * @param ds クエリの実行対象となるデータセット
          */
         public abstract void executeQuery(DataSet ds);
+        
+        /**
+         * 指定された名前の{@link QueryRecord}を取得する。<p>
+         *
+         * @param name QueryRecordの名前
+         * @return 指定された名前のQueryRecord。存在しない場合は、null
+         */
+        public QueryRecord getQueryRecord(String name){
+            Record key = createRecord();
+            key.setProperty(QueryRecord.NAME, name);
+            return (QueryRecord)searchByPrimaryKey(key);
+        }
     }
     
     /**
