@@ -97,6 +97,8 @@ public class Record implements Externalizable, Cloneable, Map{
      */
     protected RecordList recordList;
     
+    protected DataSet dataSet;
+    
     /**
      * 未定義のレコードを生成する。<p>
      */
@@ -360,6 +362,37 @@ public class Record implements Externalizable, Cloneable, Map{
      */
     public RecordList getRecordList(){
         return recordList;
+    }
+    
+    /**
+     * 親となるデータセットを取得する。<p>
+     *
+     * @return データセット
+     */
+    public DataSet getDataSet(){
+        return dataSet;
+    }
+    
+    /**
+     * 親となるデータセットを設定する。<p>
+     *
+     * @param ds データセット
+     */
+    protected void setDataSet(DataSet ds){
+        if(dataSet != ds){
+            dataSet = ds;
+            if(values != null && values.length > 0){
+                for(int i = 0; i < values.length; i ++){
+                    if(values[i] != null){
+                        if(values[i] instanceof Record){
+                            ((Record)values[i]).setDataSet(ds);
+                        }else if(values[i] instanceof RecordList){
+                            ((RecordList)values[i]).setDataSet(ds);
+                        }
+                    }
+                }
+            }
+        }
     }
     
     /**

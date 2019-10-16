@@ -55,6 +55,9 @@ import jp.ossc.nimbus.beans.dataset.DataSet;
 import jp.ossc.nimbus.beans.dataset.Record;
 import jp.ossc.nimbus.beans.dataset.RecordList;
 import jp.ossc.nimbus.beans.dataset.RecordSchema;
+import jp.ossc.nimbus.beans.dataset.PropertySchema;
+import jp.ossc.nimbus.beans.dataset.RecordPropertySchema;
+import jp.ossc.nimbus.beans.dataset.RecordListPropertySchema;
 import jp.ossc.nimbus.beans.dataset.PropertySchemaDefineException;
 import jp.ossc.nimbus.util.ClassMappingTree;
 
@@ -893,6 +896,48 @@ public class BeanExchangeConverter implements BindingConverter{
                         }
                     }
                 }
+            }else if(output instanceof Record
+                && ((Record)output).getRecordSchema() != null
+                && ((Record)output).getRecordSchema().getPropertySchema(outputPropName) != null
+                && (((Record)output).getRecordSchema().getPropertySchema(outputPropName) instanceof RecordPropertySchema
+                    || ((Record)output).getRecordSchema().getPropertySchema(outputPropName) instanceof RecordListPropertySchema)
+            ){
+                Record record = (Record)output;
+                RecordSchema schema = record.getRecordSchema();
+                PropertySchema propSchema = schema.getPropertySchema(outputPropName);
+                if(propSchema instanceof RecordPropertySchema){
+                    Object propValue = record.getProperty(propSchema.getName());
+                    if(propValue == null){
+                        DataSet ds = record.getDataSet();
+                        if(ds == null){
+                            throw new ConvertException("NestedRecord can not create, because DataSet is null. propertyName=" + outputPropName);
+                        }
+                        propValue = ds.createNestedRecord(((RecordPropertySchema)propSchema).getRecordName());
+                    }
+                    value = convert(value, propValue, false);
+                }else if(propSchema instanceof RecordListPropertySchema){
+                    Object propValue = record.getProperty(propSchema.getName());
+                    if(propValue == null){
+                        DataSet ds = record.getDataSet();
+                        if(ds == null){
+                            throw new ConvertException("NestedRecordList can not create, because DataSet is null. propertyName=" + outputPropName);
+                        }
+                        propValue = ds.createNestedRecordList(((RecordListPropertySchema)propSchema).getRecordListName());
+                    }
+                    value = convert(value, propValue, false);
+                }
+                Property outProp = propertyAccess.getProperty(outputPropName);
+                try{
+                    outProp.setProperty(record, value);
+                }catch(IllegalArgumentException e){
+                    throw new ConvertException("Output property set error. output=" + output + ", property=" + outputPropName + ", value=" + value, e);
+                }catch(NoSuchPropertyException e){
+                    if(!isInputAutoMapping){
+                        throw new ConvertException("Output property set error. output=" + output + ", property=" + outputPropName + ", value=" + value, e);
+                    }
+                }catch(InvocationTargetException e){
+                    throw new ConvertException("Output property set error. output=" + output + ", property=" + outputPropName + ", value=" + value, e);
+                }
             }else if(output instanceof Collection){
                 Object[] outputs = ((Collection)output).toArray();
                 if(outputs.length == 0){
@@ -987,14 +1032,32 @@ public class BeanExchangeConverter implements BindingConverter{
                             if(isNarrowCast() && isNarrowCast(inPropType, outPropType)){
                                 value = castPrimitiveWrapper(outPropType, (Number)value);
                             }else if(Collection.class.isAssignableFrom(inPropType) && outPropType.isArray()){
-                                Object outPropValue = null;
-                                if(outProp.isReadable(output)){
-                                    outPropValue = outProp.getProperty(output);
+                                if(((Collection)value).size() == 0){
+                                    value = Array.newInstance(outPropType.getComponentType(), 0);
+                                }else{
+                                    Class inComponentType = inPropType.getComponentType();
+                                    Iterator itr = ((Collection)value).iterator();
+                                    while(itr.hasNext()){
+                                        Object element = itr.next();
+                                        if(element != null){
+                                            inComponentType = element.getClass();
+                                            break;
+                                        }
+                                    }
+                                    Object outPropValue = null;
+                                    if(outProp.isReadable(output)){
+                                        outPropValue = outProp.getProperty(output);
+                                    }
+                                    if(outPropValue == null){
+                                        outPropValue = Array.newInstance(outPropType.getComponentType(), ((Collection)value).size());
+                                    }
+                                    if(!isAssignableFrom(inComponentType, outPropType.getComponentType())){
+                                        value = convert(((Collection)value).toArray(), outPropValue, false);
+                                    }else{
+                                        System.arraycopy(((Collection)value).toArray(), 0, outPropValue, 0, Array.getLength(outPropValue));
+                                        value = outPropValue;
+                                    }
                                 }
-                                if(outPropValue == null){
-                                    outPropValue = Array.newInstance(outPropType.getComponentType(), ((Collection)value).size());
-                                }
-                                value = convert(((Collection)value).toArray(), outPropValue, false);
                             }else if(inPropType.isArray() && outPropType.isArray()){
                                 if(Array.getLength(value) == 0){
                                     value = Array.newInstance(outPropType.getComponentType(), 0);
