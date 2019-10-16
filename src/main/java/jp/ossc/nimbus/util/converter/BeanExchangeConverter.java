@@ -905,26 +905,28 @@ public class BeanExchangeConverter implements BindingConverter{
                 Record record = (Record)output;
                 RecordSchema schema = record.getRecordSchema();
                 PropertySchema propSchema = schema.getPropertySchema(outputPropName);
-                if(propSchema instanceof RecordPropertySchema){
-                    Object propValue = record.getProperty(propSchema.getName());
-                    if(propValue == null){
-                        DataSet ds = record.getDataSet();
-                        if(ds == null){
-                            throw new ConvertException("NestedRecord can not create, because DataSet is null. propertyName=" + outputPropName);
+                if(value != null){
+                    if(propSchema instanceof RecordPropertySchema){
+                        Object propValue = record.getProperty(propSchema.getName());
+                        if(propValue == null){
+                            DataSet ds = record.getDataSet();
+                            if(ds == null){
+                                throw new ConvertException("NestedRecord can not create, because DataSet is null. propertyName=" + outputPropName);
+                            }
+                            propValue = ds.createNestedRecord(((RecordPropertySchema)propSchema).getRecordName());
                         }
-                        propValue = ds.createNestedRecord(((RecordPropertySchema)propSchema).getRecordName());
-                    }
-                    value = convert(value, propValue, false);
-                }else if(propSchema instanceof RecordListPropertySchema){
-                    Object propValue = record.getProperty(propSchema.getName());
-                    if(propValue == null){
-                        DataSet ds = record.getDataSet();
-                        if(ds == null){
-                            throw new ConvertException("NestedRecordList can not create, because DataSet is null. propertyName=" + outputPropName);
+                        value = convert(value, propValue, false);
+                    }else if(propSchema instanceof RecordListPropertySchema){
+                        Object propValue = record.getProperty(propSchema.getName());
+                        if(propValue == null){
+                            DataSet ds = record.getDataSet();
+                            if(ds == null){
+                                throw new ConvertException("NestedRecordList can not create, because DataSet is null. propertyName=" + outputPropName);
+                            }
+                            propValue = ds.createNestedRecordList(((RecordListPropertySchema)propSchema).getRecordListName());
                         }
-                        propValue = ds.createNestedRecordList(((RecordListPropertySchema)propSchema).getRecordListName());
+                        value = convert(value, propValue, false);
                     }
-                    value = convert(value, propValue, false);
                 }
                 Property outProp = propertyAccess.getProperty(outputPropName);
                 try{
