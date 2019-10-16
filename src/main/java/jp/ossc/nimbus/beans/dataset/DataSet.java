@@ -245,7 +245,9 @@ public class DataSet implements java.io.Serializable, Cloneable{
      */
     protected Header createHeader(String name, String schema)
      throws PropertySchemaDefineException{
-        return new Header(name, schema);
+        Header header = new Header(name, schema);
+        header.setDataSet(this);
+        return header;
     }
     
     /**
@@ -258,7 +260,9 @@ public class DataSet implements java.io.Serializable, Cloneable{
      */
     protected Header createHeader(String name, RecordSchema schema)
      throws PropertySchemaDefineException{
-        return new Header(name, schema);
+        Header header = new Header(name, schema);
+        header.setDataSet(this);
+        return header;
     }
     
     /**
@@ -332,6 +336,7 @@ public class DataSet implements java.io.Serializable, Cloneable{
         if(headerMap == null){
             headerMap = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
         }
+        header.setDataSet(this);
         headerMap.put(name, header);
     }
     
@@ -367,7 +372,9 @@ public class DataSet implements java.io.Serializable, Cloneable{
      */
     protected RecordList createRecordList(String name, String schema)
      throws PropertySchemaDefineException{
-        return new RecordList(name, schema, isSynchronized);
+        RecordList list =  new RecordList(name, schema, isSynchronized);
+        list.setDataSet(this);
+        return list;
     }
     
     /**
@@ -380,7 +387,9 @@ public class DataSet implements java.io.Serializable, Cloneable{
      */
     protected RecordList createRecordList(String name, RecordSchema schema)
      throws PropertySchemaDefineException{
-        return new RecordList(name, schema, isSynchronized);
+        RecordList list =  new RecordList(name, schema, isSynchronized);
+        list.setDataSet(this);
+        return list;
     }
     
     /**
@@ -528,6 +537,7 @@ public class DataSet implements java.io.Serializable, Cloneable{
         if(recordListMap == null){
             recordListMap = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
         }
+        list.setDataSet(this);
         recordListMap.put(name, list);
     }
     
@@ -952,6 +962,7 @@ public class DataSet implements java.io.Serializable, Cloneable{
         if(header != null){
             header.setName(name);
         }
+        header.setDataSet(this);
         headerMap.put(name, header);
     }
     
@@ -964,6 +975,7 @@ public class DataSet implements java.io.Serializable, Cloneable{
         if(headerMap == null){
             headerMap = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
         }
+        header.setDataSet(this);
         headerMap.put(header.getName(), header);
     }
     
@@ -1076,6 +1088,7 @@ public class DataSet implements java.io.Serializable, Cloneable{
         if(recordListMap == null){
             recordListMap = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
         }
+        recList.setDataSet(this);
         recordListMap.put(recList.getName(), recList);
     }
     
@@ -1141,6 +1154,7 @@ public class DataSet implements java.io.Serializable, Cloneable{
         if(superficialNestedRecordMap != null && superficialNestedRecordMap.containsKey(name)){
             record.setSuperficialRecordSchema(RecordSchema.getInstance((String)superficialNestedRecordMap.get(name)));
         }
+        record.setDataSet(this);
         return record;
     }
     
@@ -1339,9 +1353,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
             for(int i = 0; i < headerNames.length; i++){
                 final Header header = getHeader(headerNames[i]);
                 if(header != null){
+                    Record cloneHeader = hasData ? header.cloneRecord() : header.cloneSchema();
+                    cloneHeader.setDataSet(dataSet);
                     dataSet.headerMap.put(
                         headerNames[i],
-                        hasData ? header.cloneRecord() : header.cloneSchema()
+                        cloneHeader
                     );
                 }
             }
@@ -1354,10 +1370,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
             for(int i = 0; i < recListNames.length; i++){
                 final RecordList recList = getRecordList(recListNames[i]);
                 if(recList != null){
+                    RecordList cloneRecList = hasData ? recList.cloneRecordList() : recList.cloneSchema();
+                    cloneRecList.setDataSet(dataSet);
                     dataSet.recordListMap.put(
                         recListNames[i],
-                        hasData ? recList.cloneRecordList()
-                             : recList.cloneSchema()
+                        cloneRecList
                     );
                 }
             }

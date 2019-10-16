@@ -137,6 +137,8 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     
     protected boolean isSynchronized = true;
     
+    protected DataSet dataSet;
+    
     /**
      * 未定義のレコードリストを生成する。<p>
      */
@@ -255,6 +257,34 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
         isSynchronized = isSynch;
         records = isSynchronized ? Collections.synchronizedList(new ArrayList()) : new ArrayList();
         setRecordClass(clazz);
+    }
+    
+    /**
+     * 親となるデータセットを取得する。<p>
+     *
+     * @return データセット
+     */
+    public DataSet getDataSet(){
+        return dataSet;
+    }
+    
+    /**
+     * 親となるデータセットを設定する。<p>
+     *
+     * @param ds データセット
+     */
+    protected void setDataSet(DataSet ds){
+        dataSet = ds;
+        if(records.size() != 0){
+            DataSet ds2 = ((Record)records.get(0)).getDataSet();
+            if(ds2 != dataSet){
+                final Iterator itr = records.iterator();
+                while(itr.hasNext()){
+                    Record record = (Record)itr.next();
+                    record.setDataSet(dataSet);
+                }
+            }
+        }
     }
     
     /**
@@ -543,6 +573,7 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
         if(superficialRecordSchema != null){
             record.setSuperficialRecordSchema(superficialRecordSchema);
         }
+        record.setDataSet(dataSet);
         return record;
     }
     
@@ -1010,6 +1041,7 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
         }
         rec.setIndex(size());
         rec.setRecordList(this);
+        rec.setDataSet(dataSet);
         boolean isAdd = records.add(rec);
         if(isAdd){
             indexManager.add(rec);
@@ -1043,6 +1075,7 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
         }
         rec.setIndex(index);
         rec.setRecordList(this);
+        rec.setDataSet(dataSet);
         records.add(index, rec);
         for(int i = index + 1, imax = size(); i < imax; i++){
             Record record = (Record)get(i);
@@ -1077,11 +1110,13 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
         }
         rec.setIndex(index);
         rec.setRecordList(this);
+        rec.setDataSet(dataSet);
         Record old = (Record)records.set(index, rec);
         indexManager.remove(old);
         indexManager.add(rec);
         old.setIndex(-1);
         old.setRecordList(null);
+        old.setDataSet(null);
         return old;
     }
     
@@ -1136,6 +1171,7 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
             indexManager.remove(old);
             ((Record)old).setIndex(-1);
             ((Record)old).setRecordList(null);
+            ((Record)old).setDataSet(null);
             for(int i = index, imax = size(); i < imax; i++){
                 Record record = (Record)get(i);
                 if(record != null){
@@ -1231,6 +1267,7 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
             if(record != null){
                 record.setIndex(-1);
                 record.setRecordList(null);
+                record.setDataSet(null);
             }
         }
         indexManager.clear();
