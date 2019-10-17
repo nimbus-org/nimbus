@@ -54,6 +54,7 @@ public class TestSwingRunner{
     private static final String USAGE_RESOURCE
          = "jp/ossc/nimbus/service/test/TestSwingRunnerUsage.txt";
     
+    private static long exitSleepTime = 0l;
     
     private static void usage(){
         try{
@@ -183,6 +184,9 @@ public class TestSwingRunner{
         for(int i = 0; i < args.length; i++){
             if(args[i].equals("-validate")){
                 validate = true;
+            }else if(args[i].equals("-sleep")){
+                i++;
+                exitSleepTime = Long.parseLong(args[i]);
             }else if(args[i].equals("-servicedir")){
                 if(serviceDirs == null){
                     serviceDirs = new ArrayList();
@@ -201,16 +205,19 @@ public class TestSwingRunner{
             for(int i = 0, max = serviceDirs.size(); i < max; i++){
                 String[] params = (String[])serviceDirs.get(i);
                 if(!ServiceManagerFactory.loadManagers(params[0], params[1], false, validate)){
+                    Thread.sleep(exitSleepTime);
                     System.exit(-1);
                 }
             }
         }
         for(int i = 0, max = servicePaths.size(); i < max; i++){
             if(!ServiceManagerFactory.loadManager((String)servicePaths.get(i), false, validate)){
+                Thread.sleep(exitSleepTime);
                 System.exit(-1);
             }
         }
         if(!ServiceManagerFactory.checkLoadManagerCompleted()){
+            Thread.sleep(exitSleepTime);
             System.exit(-1);
         }
         
