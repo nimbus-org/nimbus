@@ -222,7 +222,19 @@ public class BeanExchangeConverter implements BindingConverter{
         if(outputProperty == null){
             outputProperty = partOutputProperty;
         }
-        partPropertyMapping.put(partOutputProperty, new String[]{inputProperty, outputProperty});
+        Object inOutProp = partPropertyMapping.get(partOutputProperty);
+        if(inOutProp == null){
+            partPropertyMapping.put(partOutputProperty, new String[]{inputProperty, outputProperty});
+        }else{
+            List inOutProps = null;
+            if(inOutProp instanceof String[]){
+                inOutProps = new ArrayList();
+                inOutProps.add(inOutProp);
+            }else{
+                inOutProps = (List)inOutProp;
+            }
+            inOutProps.add(new String[]{inputProperty, outputProperty});
+        }
     }
     
     /**
@@ -756,11 +768,19 @@ public class BeanExchangeConverter implements BindingConverter{
                         String outputProp = inputProp;
                         if(isEnabledPropertyName(output.getClass(), outputProp)){
                             if(partPropertyMapping != null && partPropertyMapping.containsKey(outputProp)){
-                                String[] propMap = (String[])partPropertyMapping.get(outputProp);
-                                inputProp = propMap[0];
-                                outputProp = propMap[1];
+                                Object propMap = partPropertyMapping.get(outputProp);
+                                if(propMap instanceof List){
+                                    Iterator propMaps = ((List)propMap).iterator();
+                                    while(propMaps.hasNext()){
+                                        String[] inOutProp = (String[])propMaps.next();
+                                        propMapping.put(inOutProp[0], inOutProp[1]);
+                                    }
+                                }else{
+                                    propMapping.put(((String[])propMap)[0], ((String[])propMap)[1]);
+                                }
+                            }else{
+                                propMapping.put(inputProp, outputProp);
                             }
-                            propMapping.put(inputProp, outputProp);
                         }
                     }
                 }
@@ -776,11 +796,19 @@ public class BeanExchangeConverter implements BindingConverter{
                         String outputProp = inputProp;
                         if(isEnabledPropertyName(recordList.getRecordClass(), outputProp)){
                             if(partPropertyMapping != null && partPropertyMapping.containsKey(outputProp)){
-                                String[] propMap = (String[])partPropertyMapping.get(outputProp);
-                                inputProp = propMap[0];
-                                outputProp = propMap[1];
+                                Object propMap = partPropertyMapping.get(outputProp);
+                                if(propMap instanceof List){
+                                    Iterator propMaps = ((List)propMap).iterator();
+                                    while(propMaps.hasNext()){
+                                        String[] inOutProp = (String[])propMaps.next();
+                                        propMapping.put(inOutProp[0], inOutProp[1]);
+                                    }
+                                }else{
+                                    propMapping.put(((String[])propMap)[0], ((String[])propMap)[1]);
+                                }
+                            }else{
+                                propMapping.put(inputProp, outputProp);
                             }
-                            propMapping.put(inputProp, outputProp);
                         }
                     }
                 }
@@ -794,11 +822,19 @@ public class BeanExchangeConverter implements BindingConverter{
                     String outputProp = inputProp;
                     if(isEnabledPropertyName(output.getClass(), outputProp) && props[i].isWritable(output.getClass())){
                         if(partPropertyMapping != null && partPropertyMapping.containsKey(outputProp)){
-                            String[] propMap = (String[])partPropertyMapping.get(outputProp);
-                            inputProp = propMap[0];
-                            outputProp = propMap[1];
+                            Object propMap = partPropertyMapping.get(outputProp);
+                            if(propMap instanceof List){
+                                Iterator propMaps = ((List)propMap).iterator();
+                                while(propMaps.hasNext()){
+                                    String[] inOutProp = (String[])propMaps.next();
+                                    propMapping.put(inOutProp[0], inOutProp[1]);
+                                }
+                            }else{
+                                propMapping.put(((String[])propMap)[0], ((String[])propMap)[1]);
+                            }
+                        }else{
+                            propMapping.put(inputProp, outputProp);
                         }
-                        propMapping.put(inputProp, outputProp);
                     }
                 }
                 if(propMapping.size() != 0){
