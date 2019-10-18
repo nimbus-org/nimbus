@@ -50,6 +50,8 @@ import java.math.BigDecimal;
 import jp.ossc.nimbus.beans.Property;
 import jp.ossc.nimbus.beans.PropertyAccess;
 import jp.ossc.nimbus.beans.SimpleProperty;
+import jp.ossc.nimbus.beans.IndexedProperty;
+import jp.ossc.nimbus.beans.NestedProperty;
 import jp.ossc.nimbus.beans.NoSuchPropertyException;
 import jp.ossc.nimbus.beans.dataset.DataSet;
 import jp.ossc.nimbus.beans.dataset.Record;
@@ -152,6 +154,19 @@ public class BeanExchangeConverter implements BindingConverter{
     }
     
     /**
+     * 交換する入力オブジェクトと出力オブジェクトのプロパティのマッピングを設定する。<p>
+     * 出力オブジェクトが配列やリストの場合で、入力オブジェクト側のインデックス付きプロパティを展開したい場合は、inputPropertyで指定するプロパティ名の末尾に"-<"を付加する。<br>
+     *
+     * @param inputProperty 入力オブジェクト側のインデックス付きプロパティ
+     * @param outputProperty 出力オブジェクト側のプロパティ
+     * @param from 入力オブジェクト側のインデックス付きプロパティの開始インデックス
+     * @param to 入力オブジェクト側のインデックス付きプロパティの終了インデックス
+     */
+    public void setIndexedPropertyMapping(String inputProperty, String outputProperty, int from, int to){
+        setPropertyMapping(inputProperty + '[' + from + ',' + to + "]>-", outputProperty);
+    }
+    
+    /**
      * 指定した入力オブジェクトのプロパティに対する出力オブジェクトのプロパティのマッピングを取得する。<p>
      *
      * @param inputProperty キーが入力オブジェクト側のプロパティ
@@ -208,6 +223,20 @@ public class BeanExchangeConverter implements BindingConverter{
             outputProperty = partOutputProperty;
         }
         partPropertyMapping.put(partOutputProperty, new String[]{inputProperty, outputProperty});
+    }
+    
+    /**
+     * 出力オブジェクトのプロパティを基準にして、入力オブジェクトと出力オブジェクトのプロパティ交換を行う場合に、一部のプロパティ交換のみ個別に設定する。<p>
+     * 出力オブジェクトが配列やリストの場合で、入力オブジェクト側のインデックス付きプロパティを展開したい場合は、inputPropertyで指定するプロパティ名の末尾に"-<"を付加する。<br>
+     *
+     * @param partOutputProperty 個別に指定する出力オブジェクト側のプロパティ
+     * @param inputProperty 入力オブジェクト側のインデックス付きプロパティ。partOutputPropertyと同じで良い場合は、null
+     * @param outputProperty 出力オブジェクト側のプロパティ。partOutputPropertyと同じで良い場合は、null
+     * @param from 入力オブジェクト側のインデックス付きプロパティの開始インデックス
+     * @param to 入力オブジェクト側のインデックス付きプロパティの終了インデックス
+     */
+    public void setPartIndexedPropertyMapping(String partOutputProperty, String inputProperty, String outputProperty, int from, int to){
+        setPartPropertyMapping(partOutputProperty, inputProperty + '[' + from + ',' + to + "]>-", outputProperty);
     }
     
     /**
@@ -830,13 +859,40 @@ public class BeanExchangeConverter implements BindingConverter{
         while(entries.hasNext()){
             Map.Entry entry = (Map.Entry)entries.next();
             String inputProp = (String)entry.getKey();
+            final boolean isIndexed = inputProp.endsWith(">-");
+            int from = 0;
+            int to = 0;
+            if(isIndexed){
+                final String suffix = inputProp.substring(inputProp.lastIndexOf('['));
+                inputProp = inputProp.substring(0, inputProp.lastIndexOf('['));
+                try{
+                    from = Integer.parseInt(suffix.substring(1, suffix.indexOf(',')));
+                    to = Integer.parseInt(suffix.substring(suffix.indexOf(',') + 1, suffix.lastIndexOf(']')));
+                }catch(NumberFormatException e){
+                }
+            }
             final boolean isExpands = inputProp.endsWith("-<");
             if(isExpands){
                 inputProp = inputProp.substring(0, inputProp.length() - 2);
             }
             Object value = null;
             try{
-                value = propertyAccess.get(input, inputProp);
+                if(isIndexed){
+                    Object[] values = new Object[to - from];
+                    for(int i = from; i < to; i++){
+                        Property property = propertyAccess.getProperty(inputProp + "[0]");
+                        IndexedProperty indexedProperty = null;
+                        if(property instanceof IndexedProperty){
+                            indexedProperty = (IndexedProperty)property;
+                        }else{
+                            indexedProperty = (IndexedProperty)((NestedProperty)property).getNestedProperty();
+                        }
+                        values[i] = indexedProperty.getProperty(input, i);
+                    }
+                    value = values;
+                }else{
+                    value = propertyAccess.get(input, inputProp);
+                }
             }catch(IllegalArgumentException e){
                 throw new ConvertException("Input property get error. input=" + input + ", property=" + inputProp, e);
             }catch(NoSuchPropertyException e){
@@ -895,50 +951,6 @@ public class BeanExchangeConverter implements BindingConverter{
                             setOutputProperty(recordList.get(i), outputPropName, value, false, isInputAutoMapping);
                         }
                     }
-                }
-            }else if(output instanceof Record
-                && ((Record)output).getRecordSchema() != null
-                && ((Record)output).getRecordSchema().getPropertySchema(outputPropName) != null
-                && (((Record)output).getRecordSchema().getPropertySchema(outputPropName) instanceof RecordPropertySchema
-                    || ((Record)output).getRecordSchema().getPropertySchema(outputPropName) instanceof RecordListPropertySchema)
-            ){
-                Record record = (Record)output;
-                RecordSchema schema = record.getRecordSchema();
-                PropertySchema propSchema = schema.getPropertySchema(outputPropName);
-                if(value != null){
-                    if(propSchema instanceof RecordPropertySchema){
-                        Object propValue = record.getProperty(propSchema.getName());
-                        if(propValue == null){
-                            DataSet ds = record.getDataSet();
-                            if(ds == null){
-                                throw new ConvertException("NestedRecord can not create, because DataSet is null. propertyName=" + outputPropName);
-                            }
-                            propValue = ds.createNestedRecord(((RecordPropertySchema)propSchema).getRecordName());
-                        }
-                        value = convert(value, propValue, false);
-                    }else if(propSchema instanceof RecordListPropertySchema){
-                        Object propValue = record.getProperty(propSchema.getName());
-                        if(propValue == null){
-                            DataSet ds = record.getDataSet();
-                            if(ds == null){
-                                throw new ConvertException("NestedRecordList can not create, because DataSet is null. propertyName=" + outputPropName);
-                            }
-                            propValue = ds.createNestedRecordList(((RecordListPropertySchema)propSchema).getRecordListName());
-                        }
-                        value = convert(value, propValue, false);
-                    }
-                }
-                Property outProp = propertyAccess.getProperty(outputPropName);
-                try{
-                    outProp.setProperty(record, value);
-                }catch(IllegalArgumentException e){
-                    throw new ConvertException("Output property set error. output=" + output + ", property=" + outputPropName + ", value=" + value, e);
-                }catch(NoSuchPropertyException e){
-                    if(!isInputAutoMapping){
-                        throw new ConvertException("Output property set error. output=" + output + ", property=" + outputPropName + ", value=" + value, e);
-                    }
-                }catch(InvocationTargetException e){
-                    throw new ConvertException("Output property set error. output=" + output + ", property=" + outputPropName + ", value=" + value, e);
                 }
             }else if(output instanceof Collection){
                 Object[] outputs = ((Collection)output).toArray();
@@ -1025,6 +1037,39 @@ public class BeanExchangeConverter implements BindingConverter{
                     }
                 }
             }else{
+                if(value != null
+                    && output instanceof Record
+                    && ((Record)output).getRecordSchema() != null
+                ){
+                    Record record = (Record)output;
+                    RecordSchema schema = record.getRecordSchema();
+                    PropertySchema propSchema = schema.getPropertySchema(outputPropName);
+                    if(propSchema != null
+                        && (propSchema instanceof RecordPropertySchema || propSchema instanceof RecordListPropertySchema)
+                    ){
+                        if(propSchema instanceof RecordPropertySchema){
+                            Object propValue = record.getProperty(propSchema.getName());
+                            if(propValue == null){
+                                DataSet ds = record.getDataSet();
+                                if(ds == null){
+                                    throw new ConvertException("NestedRecord can not create, because DataSet is null. propertyName=" + outputPropName);
+                                }
+                                propValue = ds.createNestedRecord(((RecordPropertySchema)propSchema).getRecordName());
+                            }
+                            value = convert(value, propValue, false);
+                        }else if(propSchema instanceof RecordListPropertySchema){
+                            Object propValue = record.getProperty(propSchema.getName());
+                            if(propValue == null){
+                                DataSet ds = record.getDataSet();
+                                if(ds == null){
+                                    throw new ConvertException("NestedRecordList can not create, because DataSet is null. propertyName=" + outputPropName);
+                                }
+                                propValue = ds.createNestedRecordList(((RecordListPropertySchema)propSchema).getRecordListName());
+                            }
+                            value = convert(value, propValue, false);
+                        }
+                    }
+                }
                 try{
                     Property outProp = propertyAccess.getProperty(outputPropName);
                     if(value != null){

@@ -159,7 +159,17 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
      * @return プロパティ名[インデックス]
      */
     public String getPropertyName(){
-        return (super.getPropertyName() == null ? "" : super.getPropertyName()) + '[' + getIndex() + ']';
+        return getPropertyName(getIndex());
+    }
+    
+    /**
+     * このプロパティが表すプロパティ名を取得する。<p>
+     *
+     * @param index インデックス
+     * @return プロパティ名[インデックス]
+     */
+    public String getPropertyName(int index){
+        return (super.getPropertyName() == null ? "" : super.getPropertyName()) + '[' + index + ']';
     }
     
     /**
@@ -221,22 +231,38 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     public Class getPropertyType(Object obj) throws NoSuchPropertyException{
-        return (Class)getIndexedPropertyType(obj, false);
+        return getPropertyType(obj, getIndex());
+    }
+    
+    public Class getPropertyType(Object obj, int index) throws NoSuchPropertyException{
+        return (Class)getIndexedPropertyType(obj, false, index);
     }
     
     public Type getPropertyGenericType(Object obj) throws NoSuchPropertyException{
-        return getIndexedPropertyType(obj, true);
+        return getPropertyGenericType(obj, getIndex());
+    }
+    
+    public Type getPropertyGenericType(Object obj, int index) throws NoSuchPropertyException{
+        return getIndexedPropertyType(obj, true, index);
     }
     
     public Type getPropertyGenericType(Class clazz) throws NoSuchPropertyException{
-        return getIndexedPropertyType(clazz, true);
+        return getPropertyGenericType(clazz, getIndex());
+    }
+    
+    public Type getPropertyGenericType(Class clazz, int index) throws NoSuchPropertyException{
+        return getIndexedPropertyType(clazz, true, index);
     }
     
     public Class getPropertyType(Class clazz) throws NoSuchPropertyException{
-        return (Class)getIndexedPropertyType(clazz, false);
+        return getPropertyType(clazz, getIndex());
     }
     
-    protected Type getIndexedPropertyType(Object obj, boolean isGeneric) throws NoSuchPropertyException{
+    public Class getPropertyType(Class clazz, int index) throws NoSuchPropertyException{
+        return (Class)getIndexedPropertyType(clazz, false, index);
+    }
+    
+    protected Type getIndexedPropertyType(Object obj, boolean isGeneric, int index) throws NoSuchPropertyException{
         if(obj instanceof Record
             && RECORD_PROP_NAME.equalsIgnoreCase(super.getPropertyName())){
             final Record record = (Record)obj;
@@ -244,7 +270,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
             if(recSchema == null){
                 throw new NoSuchPropertyException(obj.getClass(), getPropertyName());
             }
-            final PropertySchema propSchema = recSchema.getPropertySchema(getIndex());
+            final PropertySchema propSchema = recSchema.getPropertySchema(index);
             if(propSchema == null){
                 throw new NoSuchPropertyException(obj.getClass(), getPropertyName());
             }
@@ -294,6 +320,10 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     public boolean isReadable(Object obj){
+        return isReadable(obj, getIndex());
+    }
+    
+    public boolean isReadable(Object obj, int index){
         if(obj instanceof Record
             && RECORD_PROP_NAME.equalsIgnoreCase(super.getPropertyName())){
             final Record record = (Record)obj;
@@ -301,18 +331,18 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
             if(recSchema == null){
                 return false;
             }
-            final PropertySchema propSchema = recSchema.getPropertySchema(getIndex());
+            final PropertySchema propSchema = recSchema.getPropertySchema(index);
             return propSchema != null;
         }
         final Class clazz = obj.getClass();
         Method readMethod = null;
         if(getMethodCache.containsKey(clazz) && getMethodCache.get(clazz) != null){
             readMethod = (Method)getMethodCache.get(clazz);
-            return isReadableNoIndexedProperty(obj, readMethod);
+            return isReadableNoIndexedProperty(obj, readMethod, index);
         }else if(indexedReadMethodCache.get(clazz) != null){
             return true;
         }else if(property == null || property.length() == 0){
-            return isReadableIndexedObjectProperty(clazz, obj);
+            return isReadableIndexedObjectProperty(clazz, obj, index);
         }else{
             readMethod = getReadIndexedMethod(clazz);
             if(readMethod != null){
@@ -329,7 +359,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
             if(prop == null){
                 return false;
             }
-            return isReadableIndexedObjectProperty(prop.getClass(), prop);
+            return isReadableIndexedObjectProperty(prop.getClass(), prop, index);
         }
     }
     
@@ -369,6 +399,10 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     }
     
     public boolean isWritable(Object obj, Class clazz){
+        return isWritable(obj, clazz, getIndex());
+    }
+    
+    public boolean isWritable(Object obj, Class clazz, int index){
         if(obj instanceof Record
             && RECORD_PROP_NAME.equalsIgnoreCase(super.getPropertyName())){
             final Record record = (Record)obj;
@@ -376,7 +410,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
             if(recSchema == null){
                 return false;
             }
-            final PropertySchema propSchema = recSchema.getPropertySchema(getIndex());
+            final PropertySchema propSchema = recSchema.getPropertySchema(index);
             if(propSchema == null){
                 return false;
             }else if(clazz == null){
@@ -390,9 +424,9 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
         Method readMethod = null;
         if(getMethodCache.containsKey(objClazz) && getMethodCache.get(objClazz) != null){
             readMethod = (Method)getMethodCache.get(objClazz);
-            return isWritableNoIndexedProperty(obj, readMethod, clazz);
+            return isWritableNoIndexedProperty(obj, readMethod, clazz, index);
         }else if(property == null || property.length() == 0){
-            return isWritableIndexedObjectProperty(obj, clazz);
+            return isWritableIndexedObjectProperty(obj, clazz, index);
         }else{
             writeMethod = getWriteIndexedMethod(
                 objClazz,
@@ -421,7 +455,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
             if(prop == null){
                 return false;
             }
-            return isWritableIndexedObjectProperty(prop, indexedType, clazz);
+            return isWritableIndexedObjectProperty(prop, indexedType, clazz, index);
         }
     }
     
@@ -475,6 +509,22 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
      */
     public Object getProperty(Object obj)
      throws NoSuchPropertyException, InvocationTargetException{
+        return getProperty(obj, getIndex());
+    }
+    /**
+     * 指定したオブジェクトから、このプロパティが表すプロパティ値を取得する。<p>
+     *
+     * @param obj 対象となるBean
+     * @param index インデックス
+     * @return プロパティ値
+     * @exception NoSuchReadablePropertyException 指定されたプロパティのGetterが存在しない場合
+     * @exception NullIndexPropertyException 指定されたプロパティのインデックス付き戻り値が、nullの場合
+     * @exception NoSuchIndexPropertyException 指定されたBeanに、このインデックスプロパティが持つインデックスが存在しない場合
+     * @exception NoSuchPropertyException 指定されたBeanが、このプロパティが表すアクセス可能なプロパティを持っていない場合
+     * @exception InvocationTargetException 指定されたBeanのアクセサを呼び出した結果、例外がthrowされた場合
+     */
+    public Object getProperty(Object obj, int index)
+     throws NoSuchPropertyException, InvocationTargetException{
         if(obj == null && isIgnoreNullProperty){
             return null;
         }
@@ -482,16 +532,16 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
         Method readMethod = null;
         if(getMethodCache.containsKey(clazz) && getMethodCache.get(clazz) != null){
             readMethod = (Method)getMethodCache.get(clazz);
-            return getNoIndexedProperty(obj, readMethod);
+            return getNoIndexedProperty(obj, readMethod, index);
         }else if(indexedReadMethodCache.get(clazz) != null){
             readMethod = (Method)indexedReadMethodCache.get(clazz);
-            return getIndexedProperty(obj, readMethod);
+            return getIndexedProperty(obj, readMethod, index);
         }else if(property == null || property.length() == 0){
-            return getIndexedObjectProperty(clazz, obj);
+            return getIndexedObjectProperty(clazz, obj, index);
         }else{
             readMethod = getReadIndexedMethod(clazz);
             if(readMethod != null){
-                return getIndexedProperty(obj, readMethod);
+                return getIndexedProperty(obj, readMethod, index);
             }
             Object prop = super.getProperty(obj);
             if(prop == null){
@@ -500,7 +550,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
                     getPropertyName()
                 );
             }
-            return getIndexedObjectProperty(prop.getClass(), prop);
+            return getIndexedObjectProperty(prop.getClass(), prop, index);
         }
     }
     
@@ -600,14 +650,31 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
      */
     public void setProperty(Object obj, Class type, Object value)
      throws NoSuchPropertyException, InvocationTargetException{
+        setProperty(obj, type, value, getIndex());
+    }
+    /**
+     * 指定したオブジェクトに、このプロパティが表すプロパティ値を設定する。<p>
+     *
+     * @param obj 対象となるBean
+     * @param type プロパティの型
+     * @param value 設定するプロパティ値
+     * @param index インデックス
+     * @exception NoSuchReadablePropertyException 指定されたプロパティのGetterが存在しない場合
+     * @exception NullIndexPropertyException 指定されたプロパティのインデックス付き戻り値が、nullの場合
+     * @exception NoSuchIndexPropertyException 指定されたBeanに、このインデックスプロパティが持つインデックスが存在しない場合
+     * @exception NoSuchPropertyException 指定されたBeanが、このプロパティが表すアクセス可能なプロパティを持っていない場合
+     * @exception InvocationTargetException 指定されたBeanのアクセサを呼び出した結果、例外がthrowされた場合
+     */
+    public void setProperty(Object obj, Class type, Object value, int index)
+     throws NoSuchPropertyException, InvocationTargetException{
         final Class clazz = obj.getClass();
         Method writeMethod = null;
         Method readMethod = null;
         if(getMethodCache.containsKey(clazz) && getMethodCache.get(clazz) != null){
             readMethod = (Method)getMethodCache.get(clazz);
-            setNoIndexedProperty(obj, readMethod, value);
+            setNoIndexedProperty(obj, readMethod, value, index);
         }else if(property == null || property.length() == 0){
-            setIndexedObjectProperty(clazz, obj, value);
+            setIndexedObjectProperty(clazz, obj, value, index);
         }else{
             if(type == null){
                 if(value == null){
@@ -616,7 +683,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
                         final Record record = (Record)obj;
                         final RecordSchema recSchema = record.getRecordSchema();
                         if(recSchema != null){
-                            final PropertySchema propSchema = recSchema.getPropertySchema(getIndex());
+                            final PropertySchema propSchema = recSchema.getPropertySchema(index);
                             if(propSchema != null){
                                 type = propSchema.getType();
                             }
@@ -631,7 +698,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
                 type
             );
             if(writeMethod != null){
-                setIndexedProperty(obj, writeMethod, value);
+                setIndexedProperty(obj, writeMethod, value, index);
                 return;
             }
             Object prop = super.getProperty(obj);
@@ -641,7 +708,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
                     getPropertyName()
                 );
             }
-            setIndexedObjectProperty(prop.getClass(), prop, value);
+            setIndexedObjectProperty(prop.getClass(), prop, value, index);
         }
     }
     
@@ -837,17 +904,18 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
      *
      * @param obj 対象となるBean
      * @param readMethod インデックス付きGetter（getプロパティ名(int)）
+     * @param index インデックス
      * @return プロパティ値
      * @exception NoSuchPropertyException 指定されたBeanが、このプロパティが表すアクセス可能なプロパティを持っていない場合
      * @exception InvocationTargetException 指定されたBeanのアクセサを呼び出した結果、例外がthrowされた場合
      */
-    protected Object getIndexedProperty(Object obj, Method readMethod)
+    protected Object getIndexedProperty(Object obj, Method readMethod, int index)
      throws NoSuchPropertyException, InvocationTargetException{
         final Class clazz = obj.getClass();
         try{
             return readMethod.invoke(
                 obj,
-                new Object[]{new Integer(getIndex())}
+                new Object[]{new Integer(index)}
             );
         }catch(IllegalAccessException e){
             // 起こらないはず
@@ -880,6 +948,25 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
         Method writeMethod,
         Object value
     ) throws NoSuchPropertyException, InvocationTargetException{
+        setIndexedProperty(obj, writeMethod, value, getIndex());
+    }
+    
+    /**
+     * 指定したオブジェクトのインデックス付きSetter（setプロパティ名(int, 任意のクラス)）を呼び出しプロパティ値を取得する。<p>
+     *
+     * @param obj 対象となるBean
+     * @param writeMethod インデックス付きSetter（setプロパティ名(int, 任意のクラス)）
+     * @param value 設定するプロパティ値
+     * @param index インデックス
+     * @exception NoSuchPropertyException 指定されたBeanが、このプロパティが表すアクセス可能なプロパティを持っていない場合
+     * @exception InvocationTargetException 指定されたBeanのアクセサを呼び出した結果、例外がthrowされた場合
+     */
+    protected void setIndexedProperty(
+        Object obj,
+        Method writeMethod,
+        Object value,
+        int index
+    ) throws NoSuchPropertyException, InvocationTargetException{
         final Class clazz = obj.getClass();
         try{
             final Class paramType = writeMethod.getParameterTypes()[1];
@@ -891,7 +978,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
             }
             writeMethod.invoke(
                 obj,
-                new Object[]{new Integer(getIndex()), value}
+                new Object[]{new Integer(index), value}
             );
         }catch(IllegalAccessException e){
             // 起こらないはず
@@ -965,13 +1052,14 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
      *
      * @param obj 対象となるBean
      * @param readMethod インデックス付き戻り値Getter（インデックス付きオブジェクト getプロパティ名()）
+     * @param index インデックス
      * @return プロパティ値
      * @exception NullIndexPropertyException 指定されたプロパティのインデックス付き戻り値が、nullの場合
      * @exception NoSuchIndexPropertyException インデックス付き戻り値に、このインデックスプロパティが持つインデックスが存在しない場合
      * @exception NoSuchPropertyException 指定されたBeanが、このプロパティが表すアクセス可能なプロパティを持っていない場合、または戻り値がインデックス付き戻り値でない場合
      * @exception InvocationTargetException 指定されたBeanまたはインデックス付き戻り値のアクセサを呼び出した結果、例外がthrowされた場合
      */
-    protected Object getNoIndexedProperty(Object obj, Method readMethod)
+    protected Object getNoIndexedProperty(Object obj, Method readMethod, int index)
      throws NoSuchPropertyException, InvocationTargetException{
         final Class clazz = obj.getClass();
         Object indexedObj = getIndexedObject(obj, readMethod);
@@ -985,7 +1073,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
                 );
             }
         }else{
-            return getIndexedObjectProperty(indexedObj.getClass(), indexedObj);
+            return getIndexedObjectProperty(indexedObj.getClass(), indexedObj, index);
         }
     }
     
@@ -995,6 +1083,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
      * @param obj 対象となるBean
      * @param readMethod インデックス付き戻り値Getter（インデックス付きオブジェクト getプロパティ名()）
      * @param value プロパティ値
+     * @param index インデックス
      * @exception NullIndexPropertyException 指定されたプロパティのインデックス付き戻り値が、nullの場合
      * @exception NoSuchIndexPropertyException インデックス付き戻り値に、このインデックスプロパティが持つインデックスが存在しない場合
      * @exception NoSuchPropertyException 指定されたBeanが、このプロパティが表すアクセス可能なプロパティを持っていない場合、または戻り値がインデックス付き戻り値でない場合
@@ -1003,7 +1092,8 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
     protected void setNoIndexedProperty(
         Object obj,
         Method readMethod,
-        Object value
+        Object value,
+        int index
     ) throws NoSuchPropertyException, InvocationTargetException{
         final Class clazz = obj.getClass();
         Object indexedObj = getIndexedObject(obj, readMethod);
@@ -1013,7 +1103,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
                 getPropertyName()
             );
         }else{
-            setIndexedObjectProperty(indexedObj.getClass(), indexedObj, value);
+            setIndexedObjectProperty(indexedObj.getClass(), indexedObj, value, index);
         }
     }
     
@@ -1022,9 +1112,10 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
      *
      * @param obj 対象となるBean
      * @param readMethod インデックス付き戻り値Getter（インデックス付きオブジェクト getプロパティ名()）
+     * @param index インデックス
      * @return インデックス付き戻り値からプロパティ値を取得可能な場合true
      */
-    protected boolean isReadableNoIndexedProperty(Object obj, Method readMethod){
+    protected boolean isReadableNoIndexedProperty(Object obj, Method readMethod, int index){
         Object indexedObj = null;
         try{
             indexedObj = getIndexedObject(obj, readMethod, false);
@@ -1034,7 +1125,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
         if(indexedObj == null){
             return false;
         }else{
-            return isReadableIndexedObjectProperty(indexedObj.getClass(), indexedObj);
+            return isReadableIndexedObjectProperty(indexedObj.getClass(), indexedObj, index);
         }
     }
     
@@ -1059,18 +1150,19 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
      *
      * @param clazz インデックス付きオブジェクトのクラスまたはインタフェース
      * @param obj インデックス付きオブジェクト
+     * @param index インデックス
      * @return インデックス付きオブジェクトから、このインデックスプロパティが持つインデックスのプロパティ値を取得可能な場合true
      */
-    protected boolean isReadableIndexedObjectProperty(Class clazz, Object obj){
+    protected boolean isReadableIndexedObjectProperty(Class clazz, Object obj, int index){
         if(clazz.isArray()){
-            if(Array.getLength(obj) <= getIndex()){
+            if(Array.getLength(obj) <= index){
                 return false;
             }else{
                 return true;
             }
         }else if(obj instanceof List){
             final List list = (List)obj;
-            if(list.size() <= getIndex()){
+            if(list.size() <= index){
                 return false;
             }else{
                 return true;
@@ -1088,12 +1180,12 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
                     final Class[] interfaces = clazz.getInterfaces();
                     for(int i = 0; i < interfaces.length; i++){
                         if(isAccessableClass(interfaces[i])){
-                            return isReadableIndexedObjectProperty(interfaces[i], obj);
+                            return isReadableIndexedObjectProperty(interfaces[i], obj, index);
                         }
                     }
                     final Class superClass = clazz.getSuperclass();
                     if(superClass != null){
-                        return isReadableIndexedObjectProperty(superClass, obj);
+                        return isReadableIndexedObjectProperty(superClass, obj, index);
                     }
                     return false;
                 }
@@ -1179,12 +1271,14 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
      * @param obj 対象となるBean
      * @param readMethod インデックス付き戻り値Getter（インデックス付きオブジェクト getプロパティ名()）
      * @param clazz プロパティの型
+     * @param index インデックス
      * @return インデックス付き戻り値にプロパティ値を設定可能な場合true
      */
     protected boolean isWritableNoIndexedProperty(
         Object obj,
         Method readMethod,
-        Class clazz
+        Class clazz,
+        int index
     ){
         Object indexedObj = null;
         try{
@@ -1195,7 +1289,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
         if(indexedObj == null){
             return false;
         }else{
-            return isWritableIndexedObjectProperty(indexedObj, readMethod.getGenericReturnType(), clazz);
+            return isWritableIndexedObjectProperty(indexedObj, readMethod.getGenericReturnType(), clazz, index);
         }
     }
     
@@ -1207,8 +1301,8 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
      * @param clazz プロパティの型
      * @return 指定したインデックス付きオブジェクトに、このインデックスプロパティが持つインデックスのプロパティ値を設定可能な場合true
      */
-    protected boolean isWritableIndexedObjectProperty(Object obj, Class clazz){
-        return isWritableIndexedObjectProperty(obj, null, clazz);
+    protected boolean isWritableIndexedObjectProperty(Object obj, Class clazz, int index){
+        return isWritableIndexedObjectProperty(obj, null, clazz, index);
     }
     
     /**
@@ -1218,15 +1312,16 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
      * @param obj インデックス付きオブジェクト
      * @param indexdType インデックス付きオブジェクトのジェネリクス型
      * @param clazz プロパティの型
+     * @param index インデックス
      * @return 指定したインデックス付きオブジェクトに、このインデックスプロパティが持つインデックスのプロパティ値を設定可能な場合true
      */
-    protected boolean isWritableIndexedObjectProperty(Object obj, Type indexdType, Class clazz){
+    protected boolean isWritableIndexedObjectProperty(Object obj, Type indexdType, Class clazz, int index){
         final Class indexdClazz = obj.getClass();
         if(indexdClazz.isArray()){
             if(clazz != null && !isAssignableFrom(indexdClazz.getComponentType(), clazz)){
                 return false;
             }
-            if(Array.getLength(obj) <= getIndex()){
+            if(Array.getLength(obj) <= index){
                 return false;
             }else{
                 return true;
@@ -1358,31 +1453,32 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
      *
      * @param clazz インデックス付きオブジェクトのクラスまたはインタフェース
      * @param obj インデックス付きオブジェクト
+     * @param index インデックス
      * @return プロパティ値
      * @exception NoSuchIndexPropertyException 指定されたインデックス付き戻り値に、このインデックスプロパティが持つインデックスが存在しない場合
      * @exception NoSuchPropertyException 指定されたインデックス付き戻り値が、インデックス付き戻り値でない場合
      * @exception InvocationTargetException 指定されたインデックス付き戻り値のアクセサを呼び出した結果、例外がthrowされた場合
      */
-    protected Object getIndexedObjectProperty(Class clazz, Object obj)
+    protected Object getIndexedObjectProperty(Class clazz, Object obj, int index)
      throws NoSuchPropertyException, InvocationTargetException{
         if(clazz.isArray()){
-            if(Array.getLength(obj) <= getIndex()){
+            if(Array.getLength(obj) <= index){
                 if(isIgnoreNullProperty){
                     return null;
                 }else{
                     throw new NoSuchIndexPropertyException(
                         clazz,
                         getPropertyName(),
-                        getIndex()
+                        index
                     );
                 }
             }else{
-                return Array.get(obj, getIndex());
+                return Array.get(obj, index);
             }
         }else if(obj instanceof List){
             final List list = (List)obj;
             try{
-                return list.get(getIndex());
+                return list.get(index);
             }catch(IndexOutOfBoundsException e){
                 if(isIgnoreNullProperty){
                     return null;
@@ -1390,7 +1486,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
                     throw new NoSuchIndexPropertyException(
                         clazz,
                         getPropertyName(),
-                        getIndex(),
+                        index,
                         e
                     );
                 }
@@ -1412,20 +1508,20 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
                     for(int i = 0; i < interfaces.length; i++){
                         if(isAccessableClass(interfaces[i])){
                             try{
-                                return getIndexedObjectProperty(interfaces[i], obj);
+                                return getIndexedObjectProperty(interfaces[i], obj, index);
                             }catch(NoSuchPropertyException e){
                             }
                         }
                     }
                     final Class superClass = clazz.getSuperclass();
                     if(superClass != null){
-                        return getIndexedObjectProperty(superClass, obj);
+                        return getIndexedObjectProperty(superClass, obj, index);
                     }
                     indexedObjReadMethodCache.put(clazz, null);
                     throw new NoSuchIndexPropertyException(
                         clazz,
                         getPropertyName(),
-                        getIndex()
+                        index
                     );
                 }
                 try{
@@ -1452,7 +1548,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
             try{
                 return getMethod.invoke(
                     obj,
-                    new Object[]{new Integer(getIndex())}
+                    new Object[]{new Integer(index)}
                 );
             }catch(IllegalAccessException e){
                 // 起こらないはず
@@ -1615,36 +1711,37 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
      *
      * @param obj インデックス付きオブジェクト
      * @param value プロパティ値
+     * @@aram index インデックス
      * @exception NoSuchIndexPropertyException 指定されたインデックス付き戻り値に、このインデックスプロパティが持つインデックスが存在しない場合
      * @exception NoSuchPropertyException 指定されたインデックス付き戻り値が、インデックス付き戻り値でない場合
      * @exception InvocationTargetException 指定されたインデックス付き戻り値のアクセサを呼び出した結果、例外がthrowされた場合
      */
-    protected void setIndexedObjectProperty(Class clazz, Object obj, Object value)
+    protected void setIndexedObjectProperty(Class clazz, Object obj, Object value, int index)
      throws NoSuchPropertyException, InvocationTargetException{
         if(clazz.isArray()){
-            if(Array.getLength(obj) <= getIndex()){
+            if(Array.getLength(obj) <= index){
                 throw new NoSuchIndexPropertyException(
                     clazz,
                     getPropertyName(),
-                    getIndex()
+                    index
                 );
             }else{
-                Array.set(obj, getIndex(), value);
+                Array.set(obj, index, value);
             }
         }else if(obj instanceof List){
             final List list = (List)obj;
-            if(list.size() <= getIndex()){
-                for(int i = list.size(); i <= getIndex(); i++){
+            if(list.size() <= index){
+                for(int i = list.size(); i <= index; i++){
                     list.add(null);
                 }
             }
             try{
-                list.set(getIndex(), value);
+                list.set(index, value);
             }catch(IndexOutOfBoundsException e){
                 throw new NoSuchIndexPropertyException(
                     clazz,
                     getPropertyName(),
-                    getIndex(),
+                    index,
                     e
                 );
             }
@@ -1656,7 +1753,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
                     throw new NoSuchIndexPropertyException(
                         clazz,
                         getPropertyName(),
-                        getIndex()
+                        index
                     );
                 }
             }else{
@@ -1665,7 +1762,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
                     for(int i = 0; i < interfaces.length; i++){
                         if(isAccessableClass(interfaces[i])){
                             try{
-                                setIndexedObjectProperty(interfaces[i], obj, value);
+                                setIndexedObjectProperty(interfaces[i], obj, value, index);
                                 return;
                             }catch(NoSuchPropertyException e){
                             }
@@ -1673,14 +1770,14 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
                     }
                     final Class superClass = clazz.getSuperclass();
                     if(superClass != null){
-                        setIndexedObjectProperty(superClass, obj, value);
+                        setIndexedObjectProperty(superClass, obj, value, index);
                         return;
                     }
                     indexedObjWriteMethodCache.put(clazz, null);
                     throw new NoSuchIndexPropertyException(
                         clazz,
                         getPropertyName(),
-                        getIndex()
+                        index
                     );
                 }
                 Class valueClass = value == null ? null : value.getClass();
@@ -1718,7 +1815,7 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
             try{
                 setMethod.invoke(
                     obj,
-                    new Object[]{new Integer(getIndex()), value}
+                    new Object[]{new Integer(index), value}
                 );
             }catch(IllegalAccessException e){
                 // 起こらないはず
