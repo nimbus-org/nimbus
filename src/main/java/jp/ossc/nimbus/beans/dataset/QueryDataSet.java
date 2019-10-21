@@ -159,6 +159,47 @@ public class QueryDataSet extends DataSet{
         getRecordListQueryRecordList().executeQuery(ds);
         getNestedRecordQueryRecordList().executeQuery(ds);
         getNestedRecordListQueryRecordList().executeQuery(ds);
+        
+        Set nestedRecordNames = new HashSet();
+        Set nestedRecordListNames = new HashSet();
+        String[] headerNames = ds.getHeaderNames();
+        for(int i = 0; i < headerNames.length; i++){
+            collectNestedRecordNames(ds, ds.getHeader(headerNames[i]).getRecordSchema(), nestedRecordNames, nestedRecordListNames);
+        }
+        String[] listNames = ds.getRecordListNames();
+        for(int i = 0; i < listNames.length; i++){
+            collectNestedRecordNames(ds, ds.getRecordList(listNames[i]).getRecordSchema(), nestedRecordNames, nestedRecordListNames);
+        }
+        Set targetNestedRecordNames = ds.getNestedRecordSchemaMap().keySet();
+        targetNestedRecordNames.removeAll(nestedRecordNames);
+        Iterator names = targetNestedRecordNames.iterator();
+        while(names.hasNext()){
+            ds.setSuperficialNestedRecordSchema((String)names.next(), null);
+        }
+        Set targetNestedRecordListNames = ds.getNestedRecordListSchemaMap().keySet();
+        targetNestedRecordListNames.removeAll(nestedRecordListNames);
+        names = targetNestedRecordListNames.iterator();
+        while(names.hasNext()){
+            ds.setSuperficialNestedRecordListSchema((String)names.next(), null);
+        }
+    }
+    
+    protected void collectNestedRecordNames(DataSet ds, RecordSchema schema, Set nestedRecordNames, Set nestedRecordListNames){
+        if(schema == null){
+            return;
+        }
+        PropertySchema[] propertySchemata = schema.getPropertySchemata();
+        for(int i = 0; i < propertySchemata.length; i++){
+            if(propertySchemata[i] instanceof RecordPropertySchema){
+                String name = ((RecordPropertySchema)propertySchemata[i]).getRecordName();
+                nestedRecordNames.add(name);
+                collectNestedRecordNames(ds, ds.getNestedRecordSchema(name), nestedRecordNames, nestedRecordListNames);
+            }else if(propertySchemata[i] instanceof RecordListPropertySchema){
+                String name = ((RecordListPropertySchema)propertySchemata[i]).getRecordListName();
+                nestedRecordListNames.add(name);
+                collectNestedRecordNames(ds, ds.getNestedRecordListSchema(name), nestedRecordNames, nestedRecordListNames);
+            }
+        }
     }
     
     /**

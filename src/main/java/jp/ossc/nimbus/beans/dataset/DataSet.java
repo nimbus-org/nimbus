@@ -581,7 +581,7 @@ public class DataSet implements java.io.Serializable, Cloneable{
         }
         superficialNestedRecordListMap.put(
             name,
-            schema.getSchema()
+            schema == null ? null : schema.getSchema()
         );
     }
     
@@ -597,10 +597,9 @@ public class DataSet implements java.io.Serializable, Cloneable{
             return null;
         }
         String schema = null;
-        if(superficialNestedRecordListMap != null){
+        if(superficialNestedRecordListMap != null && superficialNestedRecordListMap.containsKey(name)){
             schema = (String)superficialNestedRecordListMap.get(name);
-        }
-        if(schema == null){
+        }else{
             schema = (String)nestedRecordListMap.get(name);
         }
         return schema == null ? null : RecordSchema.getInstance(schema);
@@ -612,7 +611,8 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @return ネストしたレコードリスト名配列
      */
     public String[] getNestedRecordListSchemaNames(){
-        return nestedRecordListMap == null ? new String[0] : (String[])nestedRecordListMap.keySet().toArray(new String[nestedRecordListMap.size()]);
+        Map map = getNestedRecordListSchemaMap();
+        return (String[])map.keySet().toArray(new String[map.size()]);
     }
     
     /**
@@ -621,7 +621,8 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @return ネストしたレコードリストの数
      */
     public int getNestedRecordListSchemaSize(){
-        return nestedRecordListMap == null ? 0 : nestedRecordListMap.size();
+        Map map = getNestedRecordListSchemaMap();
+        return map == null ? 0 : map.size();
     }
     
     /**
@@ -630,12 +631,21 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @return ネストしたレコードリストのマップ。キーはレコードリスト名、値はスキーマ文字列
      */
     public Map getNestedRecordListSchemaMap(){
-        Map result = new HashMap();
+        Map result = new LinkedHashMap();
         if(nestedRecordListMap != null){
-            result.putAll(nestedRecordListMap);
-        }
-        if(superficialNestedRecordListMap != null){
-            result.putAll(superficialNestedRecordListMap);
+            Iterator names = nestedRecordListMap.keySet().iterator();
+            while(names.hasNext()){
+                String name = (String)names.next();
+                String schema = null;
+                if(superficialNestedRecordListMap != null && superficialNestedRecordListMap.containsKey(name)){
+                    schema = (String)superficialNestedRecordListMap.get(name);
+                }else{
+                    schema = (String)nestedRecordListMap.get(name);
+                }
+                if(schema != null){
+                    result.put(name, schema);
+                }
+            }
         }
         return result;
     }
@@ -690,7 +700,7 @@ public class DataSet implements java.io.Serializable, Cloneable{
         }
         superficialNestedRecordMap.put(
             name,
-            schema.getSchema()
+            schema == null ? null : schema.getSchema()
         );
     }
     
@@ -741,10 +751,9 @@ public class DataSet implements java.io.Serializable, Cloneable{
             return null;
         }
         String schema = null;
-        if(superficialNestedRecordMap != null){
+        if(superficialNestedRecordMap != null && superficialNestedRecordMap.containsKey(name)){
             schema = (String)superficialNestedRecordMap.get(name);
-        }
-        if(schema == null){
+        }else{
             schema = (String)nestedRecordMap.get(name);
         }
         return schema == null ? null : RecordSchema.getInstance(schema);
@@ -756,7 +765,8 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @return ネストしたレコード名配列
      */
     public String[] getNestedRecordSchemaNames(){
-        return nestedRecordMap == null ? new String[0] : (String[])nestedRecordMap.keySet().toArray(new String[nestedRecordMap.size()]);
+        Map map = getNestedRecordSchemaMap();
+        return (String[])map.keySet().toArray(new String[map.size()]);
     }
     
     /**
@@ -765,7 +775,8 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @return ネストしたレコードの数
      */
     public int getNestedRecordSchemaSize(){
-        return nestedRecordMap == null ? 0 : nestedRecordMap.size();
+        Map map = getNestedRecordSchemaMap();
+        return map.size();
     }
     
     /**
@@ -774,12 +785,21 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @return ネストしたレコードのマップ。キーはレコード名、値はスキーマ文字列
      */
     public Map getNestedRecordSchemaMap(){
-        Map result = new HashMap();
+        Map result = new LinkedHashMap();
         if(nestedRecordMap != null){
-            result.putAll(nestedRecordMap);
-        }
-        if(superficialNestedRecordMap != null){
-            result.putAll(superficialNestedRecordMap);
+            Iterator names = nestedRecordMap.keySet().iterator();
+            while(names.hasNext()){
+                String name = (String)names.next();
+                String schema = null;
+                if(superficialNestedRecordMap != null && superficialNestedRecordMap.containsKey(name)){
+                    schema = (String)superficialNestedRecordMap.get(name);
+                }else{
+                    schema = (String)nestedRecordMap.get(name);
+                }
+                if(schema != null){
+                    result.put(name, schema);
+                }
+            }
         }
         return result;
     }
@@ -1100,7 +1120,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
      */
     public RecordList createNestedRecordList(String name){
         if(nestedRecordListMap == null
-             || !nestedRecordListMap.containsKey(name)){
+             || !nestedRecordListMap.containsKey(name)
+             || (superficialNestedRecordListMap != null
+                && superficialNestedRecordListMap.containsKey(name)
+                && superficialNestedRecordListMap.get(name) == null)
+        ){
             return null;
         }
         if(nestedRecordListClassMap != null){
@@ -1136,7 +1160,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
      */
     public Record createNestedRecord(String name){
         if(nestedRecordMap == null
-             || !nestedRecordMap.containsKey(name)){
+             || !nestedRecordMap.containsKey(name)
+             || (superficialNestedRecordMap != null
+                && superficialNestedRecordMap.containsKey(name)
+                && superficialNestedRecordMap.get(name) == null)
+        ){
             return null;
         }
         if(nestedRecordClassMap != null){
