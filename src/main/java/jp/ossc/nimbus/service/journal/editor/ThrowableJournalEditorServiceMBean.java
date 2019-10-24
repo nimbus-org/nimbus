@@ -33,6 +33,8 @@
 // インポート
 package jp.ossc.nimbus.service.journal.editor;
 
+import jp.ossc.nimbus.core.ServiceName;
+
 /**
  * ThrowableJournalEditorServiceのMBeanインタフェース。<p>
  * 
@@ -42,11 +44,46 @@ package jp.ossc.nimbus.service.journal.editor;
  */
 public interface ThrowableJournalEditorServiceMBean 
 extends ImmutableJournalEditorServiceBaseMBean {
-    /**原因(Cause)を追って出力するかどうか設定*/
+    
+    /**
+     * 原因(Cause)を追って出力するかどうかを設定する。<p>
+     * 
+     * @param output 出力する場合、true
+     */
     public void setOutputCause(boolean output);
-    /**原因(Cause)を追って出力するかどうか取得*/
+    /**
+     * 原因(Cause)を追って出力するかどうかを判定する。<p>
+     * 
+     * return trueの場合、出力する
+     */
     public boolean getOutputCause();
-    /**原因(Cause)を追って出力する際にTabを入れるかどうか取得*/
+    
+    /**
+     * 原因(Cause)を追って出力する際にTabを出力するかどうかを設定する。<p>
+     * 
+     * @param output 出力する場合、true
+     */
+    public void setOutputTab(boolean output);
+    
+    /**
+     * 原因(Cause)を追って出力する際にTabを出力するかどうかを判定する。<p>
+     * 
+     * return trueの場合、出力する
+     */
     public boolean getOutputTab();
-    /**原因(Cause)を追って出力する際にTabを入れるかどうか設定*/
-    public void setOutputTab(boolean outputTab);}
+    
+    /**
+     * {@link jp.ossc.nimbus.service.context.ThreadContextService ThreadContextService}のサービス名を設定する。<br>
+     * 一度出力した例外をスレッドコンテキストに管理して、スタックトレースを出力しないようにする。<br>
+     *
+     * @param name ThreadContextServiceのサービス名
+     */
+    public void setThreadContextServiceName(ServiceName name);
+    
+    /**
+     * {@link jp.ossc.nimbus.service.context.ThreadContextService ThreadContextService}のサービス名を取得する。<br>
+     *
+     * @return ThreadContextServiceのサービス名
+     */
+    public ServiceName getThreadContextServiceName();
+}

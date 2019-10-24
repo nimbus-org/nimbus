@@ -35,8 +35,13 @@ package jp.ossc.nimbus.service.journal.editor;
 
 import java.lang.reflect.*;
 import java.io.Serializable;
+import java.util.Set;
+import java.util.HashSet;
 
+import jp.ossc.nimbus.core.ServiceName;
+import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
+import jp.ossc.nimbus.service.context.Context;
 
 /**
  * {@link Throwable}をフォーマットするジャーナルエディタ。<p>
@@ -58,25 +63,67 @@ public class ThrowableJournalEditorService extends
     private static final String LINE_SEP = System.getProperty("line.separator");
 
     private static final String TAB = "\t";
-
+    
     /** 原因(Cause)を追って出力するかどうか */
     private boolean isOutputCause = true;
-
+    
+    /** 原因(Cause)を追って出力する際TABを入れるかどうか */
+    private boolean bOutputTab = true;
+    
+    private ServiceName threadContextServiceName;
+    private Context threadContext;
+    
     public void setOutputCause(boolean output) {
         isOutputCause = output;
     }
-
-    /** 原因(Cause)を追って出力する際TABを入れるかどうか */
-    private boolean bOutputTab = true;
-
     public boolean getOutputCause() {
         return isOutputCause;
     }
-
+    
+    public boolean getOutputTab() {
+        return bOutputTab;
+    }
+    public void setOutputTab(boolean outputTab) {
+        bOutputTab = outputTab;
+    }
+    
+    public void setThreadContextServiceName(ServiceName name){
+        threadContextServiceName = name;
+    }
+    public ServiceName getThreadContextServiceName(){
+        return threadContextServiceName;
+    }
+    
+    public void setThreadContext(Context context){
+        threadContext = context;
+    }
+    protected Context getThreadContext(){
+        if(threadContext == null && threadContextServiceName != null){
+            threadContext = (Context)ServiceManagerFactory.getServiceObject(threadContextServiceName);
+        }
+        return threadContext;
+    }
+    
+    public void stopService() throws Exception{
+        threadContext = null;
+        super.stopService();
+    }
+    
     protected String toString(EditorFinder finder, Object key, Object value,
             StringBuilder buf) {
         Throwable e = (Throwable) value;
         if (e != null) {
+            if(getThreadContext() != null){
+                Set exceptions = (Set)getThreadContext().get(getServiceNameObject());
+                if(exceptions == null){
+                    exceptions = new HashSet();
+                    getThreadContext().put(getServiceNameObject(), exceptions);
+                }else if(exceptions.contains(e)){
+                    buf.append("Exception occuers :").append(e.toString()).append(LINE_SEP);
+                    return buf.toString();
+                }
+                exceptions.add(e);
+            }
             buf.append("Exception occuers :").append(e.toString()).append(LINE_SEP);
             final StackTraceElement[] elemss = e.getStackTrace();
             if (elemss != null) {
@@ -136,20 +183,5 @@ public class ThrowableJournalEditorService extends
             cause = th.getCause();
         }
         return cause == th ? null : cause;
-    }
-
-    /**
-     * @return bOutputTab を戻します。
-     */
-    public boolean getOutputTab() {
-        return bOutputTab;
-    }
-
-    /**
-     * @param outputTab
-     *            bOutputTab を設定。
-     */
-    public void setOutputTab(boolean outputTab) {
-        bOutputTab = outputTab;
     }
 }
