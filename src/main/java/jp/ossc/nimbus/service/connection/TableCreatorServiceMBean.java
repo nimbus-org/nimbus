@@ -77,6 +77,20 @@ public interface TableCreatorServiceMBean extends ServiceBaseMBean{
     public ServiceName getRecordListConverterServiceName();
     
     /**
+     * 対象となるテーブル名を設定する。<p>
+     * 
+     * @param name テーブル名
+     */
+    public void setTableName(String name);
+    
+    /**
+     * 対象となるテーブル名を取得する。<p>
+     * 
+     * @return テーブル名
+     */
+    public String getTableName();
+    
+    /**
      * 対象となるテーブルの存在確認をするSQLを設定する。<p>
      * 結果として、テーブルの件数を返すSQLにする必要がある。<br>
      *
@@ -118,6 +132,20 @@ public interface TableCreatorServiceMBean extends ServiceBaseMBean{
      * @return テーブルを作成するSQL
      */
     public String getCreateTableQuery();
+    
+    /**
+     * 対象となるテーブルを作成するSQLのファイルパスを設定する。<p>
+     *
+     * @param filePath テーブルを作成するSQLのファイルパス
+     */
+    public void setCreateTableQueryFilePath(String filePath);
+    
+    /**
+     * 対象となるテーブルを作成するSQLのファイルパスを取得する。<p>
+     *
+     * @return テーブルを作成するSQLのファイルパス
+     */
+    public String getCreateTableQueryFilePath();
     
     /**
      * 対象となるテーブルを作成する直前に実行するSQLを設定する。<p>
