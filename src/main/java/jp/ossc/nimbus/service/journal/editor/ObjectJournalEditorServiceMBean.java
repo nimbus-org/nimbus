@@ -39,4 +39,19 @@ package jp.ossc.nimbus.service.journal.editor;
  */
 public interface ObjectJournalEditorServiceMBean
  extends ImmutableJournalEditorServiceBaseMBean{
+    
+    /**
+     * 配列が持つ要素の最大出力件数を設定する。<p>
+     * デフォルトは、-1で出力件数を制限しない。<p>
+     * 
+     * @param max 最大出力件数
+     */
+    public void setMaxArrayLength(int max);
+    
+    /**
+     * 配列が持つ要素の最大出力件数を取得する。<p>
+     * 
+     * @return 最大出力件数
+     */
+    public int getMaxArrayLength();
 }
