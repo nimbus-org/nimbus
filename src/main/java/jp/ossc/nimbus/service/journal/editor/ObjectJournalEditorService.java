@@ -55,6 +55,17 @@ public class ObjectJournalEditorService
     
     private static final String ELEMENT_SEPARATOR = ", ";
     
+    private static final String MAX_SIZE_OVER = "...";
+    
+    private int maxArrayLength = -1;
+    
+    public void setMaxArrayLength(int max){
+        maxArrayLength = max;
+    }
+    
+    public int getMaxArrayLength(){
+        return maxArrayLength;
+    }
     
     protected String toString(
         EditorFinder finder,
@@ -88,10 +99,15 @@ public class ObjectJournalEditorService
         }
         
         buf.append(OPEN_BRACKET);
-        for(int i = 0, max = Array.getLength(values); i < max; i++){
-            makeObjectFormat(finder, null, Array.get(values, i), buf);
-            if(i != max - 1){
-                buf.append(ELEMENT_SEPARATOR);
+        int length = Array.getLength(values);
+        for(int i = 0, max = (maxArrayLength > 0 && maxArrayLength < length) ? maxArrayLength : length; i <= max; i++){
+            if(i != max){
+                makeObjectFormat(finder, null, Array.get(values, i), buf);
+                if(i != max - 1){
+                    buf.append(ELEMENT_SEPARATOR);
+                }
+            }else if(length > max){
+                buf.append(MAX_SIZE_OVER).append(length);
             }
         }
         buf.append(CLOSE_BRACKET);
