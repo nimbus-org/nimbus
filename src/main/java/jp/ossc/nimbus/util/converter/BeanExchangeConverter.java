@@ -842,7 +842,7 @@ public class BeanExchangeConverter implements BindingConverter{
                 }
             }
             if(propMapping.size() == 0){
-                throw new ConvertException("PropertyMapping is null. input=" + input + ", output=" + output);
+                return output;
             }
         }
         if(isMakeSchema 
