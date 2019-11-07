@@ -54,8 +54,11 @@ import java.util.List;
 import java.util.ArrayList;
 import java.security.*;
 import java.security.spec.*;
+import java.net.*;
+import javax.net.ssl.*;
 import javax.crypto.*;
 import javax.crypto.spec.*;
+import java.security.cert.*;
 
 import jp.ossc.nimbus.beans.*;
 import jp.ossc.nimbus.core.*;
@@ -105,6 +108,14 @@ public class  CipherCryptService extends ServiceBase
     protected String privateKeyFile;
     protected PrivateKey privateKey;
     protected PublicKey publicKey;
+    protected Provider certificateFactoryProvider;
+    protected String certificateFactoryProviderName;
+    protected String certificateType = "X.509";
+    protected String certificateFile;
+    protected URL certificateURL;
+    protected int certificateURLConnectTimeout;
+    protected int certificateURLReadTimeout;
+    protected boolean isGetPublickKeyOnVerify;
     
     protected String pbePassword;
     protected byte[] pbeSalt;
@@ -378,6 +389,87 @@ public class  CipherCryptService extends ServiceBase
     // CipherCryptServiceMBean のJavaDoc
     public String getPublicKeyFile(){
         return publicKeyFile;
+    }
+    
+    // CipherCryptServiceMBean のJavaDoc
+    public void setCertificateFactoryProviderName(String name){
+        certificateFactoryProviderName = name;
+    }
+    // CipherCryptServiceMBean のJavaDoc
+    public String getCertificateFactoryProviderName(){
+        return certificateFactoryProviderName;
+    }
+    
+    // CipherCryptServiceMBean のJavaDoc
+    public void setCertificateType(String type){
+        certificateType = type;
+    }
+    // CipherCryptServiceMBean のJavaDoc
+    public String getCertificateType(){
+        return certificateType;
+    }
+    
+    // CipherCryptServiceMBean のJavaDoc
+    public void setCertificateFile(String path){
+        certificateFile = path;
+    }
+    // CipherCryptServiceMBean のJavaDoc
+    public String getCertificateFile(){
+        return certificateFile;
+    }
+    
+    // CipherCryptServiceMBean のJavaDoc
+    public void setCertificateURL(URL url){
+        certificateURL = url;
+    }
+    // CipherCryptServiceMBean のJavaDoc
+    public URL getCertificateURL(){
+        return certificateURL;
+    }
+    
+    // CipherCryptServiceMBean のJavaDoc
+    public void setCertificateURLConnectTimeout(int timeout){
+        certificateURLConnectTimeout = timeout;
+    }
+    // CipherCryptServiceMBean のJavaDoc
+    public int getCertificateURLConnectTimeout(){
+        return certificateURLConnectTimeout;
+    }
+    
+    // CipherCryptServiceMBean のJavaDoc
+    public void setCertificateURLReadTimeout(int timeout){
+        certificateURLReadTimeout = timeout;
+    }
+    // CipherCryptServiceMBean のJavaDoc
+    public int getCertificateURLReadTimeout(){
+        return certificateURLReadTimeout;
+    }
+    
+    // CipherCryptServiceMBean のJavaDoc
+    public void setGetPublickKeyOnVerify(boolean isGet){
+        isGetPublickKeyOnVerify = isGet;
+    }
+    // CipherCryptServiceMBean のJavaDoc
+    public boolean isGetPublickKeyOnVerify(){
+        return isGetPublickKeyOnVerify;
+    }
+    
+    /**
+     * 証明書生成プロバイダを設定する。<p>
+     *
+     * @param provider 証明書生成プロバイダ
+     */
+    public void setCertificateFactoryProvider(Provider provider){
+        certificateFactoryProvider = provider;
+    }
+    
+    /**
+     * 証明書生成プロバイダを取得する。<p>
+     *
+     * @return 証明書生成プロバイダ
+     */
+    public Provider getCertificateFactoryProvider(){
+        return certificateFactoryProvider;
     }
     
     // CipherCryptServiceMBean のJavaDoc
@@ -1006,7 +1098,7 @@ public class  CipherCryptService extends ServiceBase
     }
     
     protected boolean isCreatableKeyPair(){
-        return keyPairAlgorithm != null;
+        return keyPairAlgorithm != null || certificateFile != null || certificateURL != null;
     }
     
     protected boolean isCreatableSecretKey(){
@@ -1235,7 +1327,26 @@ public class  CipherCryptService extends ServiceBase
      * @exception Exception キーの生成に失敗した場合
      */
     public KeyPair createKeyPair() throws Exception{
-        if(publicKeyBytes != null || privateKeyBytes != null){
+        if(certificateURL != null || certificateFile != null){
+            PublicKey publicKey = null;
+            if(certificateURL != null){
+                publicKey = createPublicKeyFromCertificate(certificateURL);
+            }else{
+                publicKey = createPublicKeyFromCertificate(
+                    certificateType,
+                    certificateFactoryProviderName,
+                    certificateFactoryProvider,
+                    certificateFile
+                );
+            }
+            if(publicKeyBytes == null){
+                publicKeyBytes = publicKey.getEncoded();
+            }
+            return new KeyPair(
+                publicKey,
+                privateKeyBytes == null ? null : createPrivateKey(privateKeyBytes)
+            );
+        }else if(publicKeyBytes != null || privateKeyBytes != null){
             return createKeyPair(
                 keyPairAlgorithm,
                 keyGeneratorProviderName,
@@ -1381,6 +1492,94 @@ public class  CipherCryptService extends ServiceBase
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         new StreamExchangeConverter().convert(is, baos);
         return createPublicKey(keyAlgorithm, keyFactoryProviderName, keyFactoryProvider, baos.toByteArray());
+    }
+    
+    /**
+     * 指定された証明書ファイル（X.509標準のASN.1エンコーディング）から公開鍵を生成する。<p>
+     *
+     * @param certificateType 証明書タイプ
+     * @param certificateFactoryProviderName 証明書生成プロバイダ名
+     * @param certificateFactoryProvider 証明書生成プロバイダ
+     * @param filePath 証明書ファイルのパス（X.509標準のASN.1エンコーディング）
+     * @return 公開鍵
+     * @exception Exception キーの生成に失敗した場合
+     */
+    public PublicKey createPublicKeyFromCertificate(
+        String certificateType,
+        String certificateFactoryProviderName,
+        Provider certificateFactoryProvider,
+        String filePath
+    ) throws Exception{
+        InputStream is = new BufferedInputStream(new FileInputStream(findFile(filePath, false)));
+        try{
+            return createPublicKeyFromCertificate(certificateType, certificateFactoryProviderName, certificateFactoryProvider, is);
+        }finally{
+            is.close();
+        }
+    }
+    
+    /**
+     * 指定された証明書のストリーム（X.509標準のASN.1エンコーディング）から公開鍵を生成する。<p>
+     *
+     * @param certificateType 証明書タイプ
+     * @param certificateFactoryProviderName 証明書生成プロバイダ名
+     * @param certificateFactoryProvider 証明書生成プロバイダ
+     * @param is 証明書のストリーム（X.509標準のASN.1エンコーディング）
+     * @return 公開鍵
+     * @exception Exception キーの生成に失敗した場合
+     */
+    public PublicKey createPublicKeyFromCertificate(
+        String certificateType,
+        String certificateFactoryProviderName,
+        Provider certificateFactoryProvider,
+        InputStream is
+    ) throws Exception{
+        CertificateFactory certificateFactory = null;
+        if(certificateFactoryProvider != null){
+            certificateFactory = CertificateFactory.getInstance(certificateType, certificateFactoryProvider);
+        }else if(certificateFactoryProviderName != null){
+            certificateFactory = CertificateFactory.getInstance(certificateType, certificateFactoryProviderName);
+        }else{
+            certificateFactory = CertificateFactory.getInstance(certificateType);
+        }
+        return certificateFactory.generateCertificate(is).getPublicKey();
+    }
+    
+    /**
+     * 指定された証明書のバイト配列（X.509標準のASN.1エンコーディング）から公開鍵を生成する。<p>
+     *
+     * @param certificateType 証明書タイプ
+     * @param certificateFactoryProviderName 証明書生成プロバイダ名
+     * @param certificateFactoryProvider 証明書生成プロバイダ
+     * @param certificateBytes 証明書のバイト配列（X.509標準のASN.1エンコーディング）
+     * @return 公開鍵
+     * @exception Exception キーの生成に失敗した場合
+     */
+    public PublicKey createPublicKeyFromCertificate(
+        String certificateType,
+        String certificateFactoryProviderName,
+        Provider certificateFactoryProvider,
+        byte[] certificateBytes
+    ) throws Exception{
+        InputStream is = new ByteArrayInputStream(certificateBytes);
+        try{
+            return createPublicKeyFromCertificate(certificateType, certificateFactoryProviderName, certificateFactoryProvider, is);
+        }finally{
+            is.close();
+        }
+    }
+    
+    /**
+     * 指定された証明書が取得可能なURLから証明書を取得し、公開鍵を生成する。<p>
+     *
+     * @param certificateURL 証明書が取得可能なURL
+     * @return 公開鍵
+     * @exception Exception キーの生成に失敗した場合
+     */
+    public PublicKey createPublicKeyFromCertificate(
+        URL certificateURL
+    ) throws Exception{
+        return getCertificate(certificateURL).getPublicKey();
     }
     
     /**
@@ -1629,6 +1828,34 @@ public class  CipherCryptService extends ServiceBase
             return store.getCertificate(alias);
         }else{
             return null;
+        }
+    }
+    
+    /**
+     * 指定されたURLから証明書を取得する。<p>
+     *
+     * @param url 証明書を取得するURL
+     * @return 証明書
+     * @exception Exception 証明書の読み込みに失敗した場合
+     */
+    public java.security.cert.Certificate getCertificate(URL url) throws Exception{
+        URLConnection con = url.openConnection();
+        if(con instanceof HttpsURLConnection){
+            HttpsURLConnection httpsCon = (HttpsURLConnection)con;
+            if(certificateURLConnectTimeout > 0){
+                httpsCon.setConnectTimeout(certificateURLConnectTimeout);
+            }
+            if(certificateURLReadTimeout > 0){
+                httpsCon.setReadTimeout(certificateURLReadTimeout);
+            }
+            try{
+                httpsCon.connect();
+                return httpsCon.getServerCertificates()[0];
+            }finally{
+                httpsCon.disconnect();
+            }
+        }else{
+            throw new IllegalArgumentException("Not https url : " + url);
         }
     }
     
@@ -2896,6 +3123,13 @@ public class  CipherCryptService extends ServiceBase
             );
         }
         PublicKey publicKey = getPublicKey();
+        if(certificateURL != null && isGetPublickKeyOnVerify){
+            try{
+                publicKey = createPublicKeyFromCertificate(certificateURL);
+            }catch(IOException e){
+                throw e;
+            }catch(Exception e){}
+        }
         if(publicKey == null){
             throw new UnsupportedOperationException(
                 "PublicKey is not specified."
