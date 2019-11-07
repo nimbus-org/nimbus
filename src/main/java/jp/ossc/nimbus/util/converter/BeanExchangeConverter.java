@@ -923,7 +923,7 @@ public class BeanExchangeConverter implements BindingConverter{
                         }else{
                             indexedProperty = (IndexedProperty)((NestedProperty)property).getNestedProperty();
                         }
-                        values[i] = indexedProperty.getProperty(input, i);
+                        values[i - from] = indexedProperty.getProperty(input, i);
                     }
                     value = values;
                 }else{
