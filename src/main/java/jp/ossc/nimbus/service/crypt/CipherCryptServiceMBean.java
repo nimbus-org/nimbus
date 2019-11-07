@@ -31,6 +31,8 @@
  */
 package jp.ossc.nimbus.service.crypt;
 
+import java.net.URL;
+
 import jp.ossc.nimbus.core.*;
 
 /**
@@ -390,6 +392,63 @@ public interface CipherCryptServiceMBean extends ServiceBaseMBean{
      * @return 証明書のファイルのパス
      */
     public String getCertificateFile();
+    
+    /**
+     * 証明書を取得するHTTPSのURLを設定する。<p>
+     *
+     * @param url 証明書を取得するHTTPSのURL
+     */
+    public void setCertificateURL(URL url);
+    
+    /**
+     * 証明書を取得するHTTPSのURLを取得する。<p>
+     *
+     * @return 証明書を取得するHTTPSのURL
+     */
+    public URL getCertificateURL();
+    
+    /**
+     * 証明書を取得するHTTPSのURLに接続する際の接続タイムアウト[s]を設定する。<p>
+     *
+     * @param timeout 接続タイムアウト[s]
+     */
+    public void setCertificateURLConnectTimeout(int timeout);
+    
+    /**
+     * 証明書を取得するHTTPSのURLに接続する際の接続タイムアウト[s]を取得する。<p>
+     *
+     * @return 接続タイムアウト[s]
+     */
+    public int getCertificateURLConnectTimeout();
+    
+    /**
+     * 証明書を取得するHTTPSのURLに接続する際の読み込みタイムアウト[s]を設定する。<p>
+     *
+     * @param timeout 読み込みタイムアウト[s]
+     */
+    public void setCertificateURLReadTimeout(int timeout);
+    
+    /**
+     * 証明書を取得するHTTPSのURLに接続する際の読み込みタイムアウト[s]を取得する。<p>
+     *
+     * @return 読み込みタイムアウト[s]
+     */
+    public int getCertificateURLReadTimeout();
+    
+    /**
+     * デジタル署名による検証毎に、公開鍵を含む証明書を取得するかどうかを設定する。<p>
+     * デフォルトは、falseで、毎回取得しない。<br>
+     *
+     * @param isGet デジタル署名による検証毎に、公開鍵を含む証明書を取得する場合、true
+     */
+    public void setGetPublickKeyOnVerify(boolean isGet);
+    
+    /**
+     * デジタル署名による検証毎に、公開鍵を含む証明書を取得するかどうかを判定する。<p>
+     *
+     * @return trueの場合、デジタル署名による検証毎に、公開鍵を含む証明書を取得する
+     */
+    public boolean isGetPublickKeyOnVerify();
     
     /**
      * 非公開鍵のバイト配列（PKCS#8標準のASN.1エンコーディング）を設定する。<p>
