@@ -1579,24 +1579,7 @@ public class  CipherCryptService extends ServiceBase
     public PublicKey createPublicKeyFromCertificate(
         URL certificateURL
     ) throws Exception{
-        URLConnection con = certificateURL.openConnection();
-        if(con instanceof HttpsURLConnection){
-            HttpsURLConnection httpsCon = (HttpsURLConnection)con;
-            if(certificateURLConnectTimeout > 0){
-                httpsCon.setConnectTimeout(certificateURLConnectTimeout);
-            }
-            if(certificateURLReadTimeout > 0){
-                httpsCon.setReadTimeout(certificateURLReadTimeout);
-            }
-            try{
-                httpsCon.connect();
-                return httpsCon.getServerCertificates()[0].getPublicKey();
-            }finally{
-                httpsCon.disconnect();
-            }
-        }else{
-            throw new IllegalArgumentException("Not https url : " + certificateURL);
-        }
+        return getCertificate(certificateURL).getPublicKey();
     }
     
     /**
@@ -1845,6 +1828,34 @@ public class  CipherCryptService extends ServiceBase
             return store.getCertificate(alias);
         }else{
             return null;
+        }
+    }
+    
+    /**
+     * 指定されたURLから証明書を取得する。<p>
+     *
+     * @param url 証明書を取得するURL
+     * @return 証明書
+     * @exception Exception 証明書の読み込みに失敗した場合
+     */
+    public java.security.cert.Certificate getCertificate(URL url) throws Exception{
+        URLConnection con = url.openConnection();
+        if(con instanceof HttpsURLConnection){
+            HttpsURLConnection httpsCon = (HttpsURLConnection)con;
+            if(certificateURLConnectTimeout > 0){
+                httpsCon.setConnectTimeout(certificateURLConnectTimeout);
+            }
+            if(certificateURLReadTimeout > 0){
+                httpsCon.setReadTimeout(certificateURLReadTimeout);
+            }
+            try{
+                httpsCon.connect();
+                return httpsCon.getServerCertificates()[0];
+            }finally{
+                httpsCon.disconnect();
+            }
+        }else{
+            throw new IllegalArgumentException("Not https url : " + url);
         }
     }
     
