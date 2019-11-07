@@ -56,6 +56,7 @@ import java.security.*;
 import java.security.spec.*;
 import javax.crypto.*;
 import javax.crypto.spec.*;
+import java.security.cert.*;
 
 import jp.ossc.nimbus.beans.*;
 import jp.ossc.nimbus.core.*;
@@ -105,6 +106,10 @@ public class  CipherCryptService extends ServiceBase
     protected String privateKeyFile;
     protected PrivateKey privateKey;
     protected PublicKey publicKey;
+    protected Provider certificateFactoryProvider;
+    protected String certificateFactoryProviderName;
+    protected String certificateType = "X.509";
+    protected String certificateFile;
     
     protected String pbePassword;
     protected byte[] pbeSalt;
@@ -378,6 +383,51 @@ public class  CipherCryptService extends ServiceBase
     // CipherCryptServiceMBean のJavaDoc
     public String getPublicKeyFile(){
         return publicKeyFile;
+    }
+    
+    // CipherCryptServiceMBean のJavaDoc
+    public void setCertificateFactoryProviderName(String name){
+        certificateFactoryProviderName = name;
+    }
+    // CipherCryptServiceMBean のJavaDoc
+    public String getCertificateFactoryProviderName(){
+        return certificateFactoryProviderName;
+    }
+    
+    // CipherCryptServiceMBean のJavaDoc
+    public void setCertificateType(String type){
+        certificateType = type;
+    }
+    // CipherCryptServiceMBean のJavaDoc
+    public String getCertificateType(){
+        return certificateType;
+    }
+    
+    // CipherCryptServiceMBean のJavaDoc
+    public void setCertificateFile(String path){
+        certificateFile = path;
+    }
+    // CipherCryptServiceMBean のJavaDoc
+    public String getCertificateFile(){
+        return certificateFile;
+    }
+    
+    /**
+     * 証明書生成プロバイダを設定する。<p>
+     *
+     * @param provider 証明書生成プロバイダ
+     */
+    public void setCertificateFactoryProvider(Provider provider){
+        certificateFactoryProvider = provider;
+    }
+    
+    /**
+     * 証明書生成プロバイダを取得する。<p>
+     *
+     * @return 証明書生成プロバイダ
+     */
+    public Provider getCertificateFactoryProvider(){
+        return certificateFactoryProvider;
     }
     
     // CipherCryptServiceMBean のJavaDoc
@@ -1006,7 +1056,7 @@ public class  CipherCryptService extends ServiceBase
     }
     
     protected boolean isCreatableKeyPair(){
-        return keyPairAlgorithm != null;
+        return keyPairAlgorithm != null || certificateFile != null;
     }
     
     protected boolean isCreatableSecretKey(){
@@ -1235,7 +1285,21 @@ public class  CipherCryptService extends ServiceBase
      * @exception Exception キーの生成に失敗した場合
      */
     public KeyPair createKeyPair() throws Exception{
-        if(publicKeyBytes != null || privateKeyBytes != null){
+        if(certificateFile != null){
+            PublicKey publicKey = createPublicKeyFromCertificate(
+                certificateType,
+                certificateFactoryProviderName,
+                certificateFactoryProvider,
+                certificateFile
+            );
+            if(publicKeyBytes == null){
+                publicKeyBytes = publicKey.getEncoded();
+            }
+            return new KeyPair(
+                publicKey,
+                privateKeyBytes == null ? null : createPrivateKey(privateKeyBytes)
+            );
+        }else if(publicKeyBytes != null || privateKeyBytes != null){
             return createKeyPair(
                 keyPairAlgorithm,
                 keyGeneratorProviderName,
@@ -1381,6 +1445,81 @@ public class  CipherCryptService extends ServiceBase
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         new StreamExchangeConverter().convert(is, baos);
         return createPublicKey(keyAlgorithm, keyFactoryProviderName, keyFactoryProvider, baos.toByteArray());
+    }
+    
+    /**
+     * 指定された証明書ファイル（X.509標準のASN.1エンコーディング）から公開鍵を生成する。<p>
+     *
+     * @param certificateType 証明書タイプ
+     * @param certificateFactoryProviderName 証明書生成プロバイダ名
+     * @param certificateFactoryProvider 証明書生成プロバイダ
+     * @param filePath 証明書ファイルのパス（X.509標準のASN.1エンコーディング）
+     * @return 公開鍵
+     * @exception Exception キーの生成に失敗した場合
+     */
+    public PublicKey createPublicKeyFromCertificate(
+        String certificateType,
+        String certificateFactoryProviderName,
+        Provider certificateFactoryProvider,
+        String filePath
+    ) throws Exception{
+        InputStream is = new BufferedInputStream(new FileInputStream(findFile(filePath, false)));
+        try{
+            return createPublicKeyFromCertificate(certificateType, certificateFactoryProviderName, certificateFactoryProvider, is);
+        }finally{
+            is.close();
+        }
+    }
+    
+    /**
+     * 指定された証明書のストリーム（X.509標準のASN.1エンコーディング）から公開鍵を生成する。<p>
+     *
+     * @param certificateType 証明書タイプ
+     * @param certificateFactoryProviderName 証明書生成プロバイダ名
+     * @param certificateFactoryProvider 証明書生成プロバイダ
+     * @param is 証明書のストリーム（X.509標準のASN.1エンコーディング）
+     * @return 公開鍵
+     * @exception Exception キーの生成に失敗した場合
+     */
+    public PublicKey createPublicKeyFromCertificate(
+        String certificateType,
+        String certificateFactoryProviderName,
+        Provider certificateFactoryProvider,
+        InputStream is
+    ) throws Exception{
+        CertificateFactory certificateFactory = null;
+        if(certificateFactoryProvider != null){
+            certificateFactory = CertificateFactory.getInstance(certificateType, certificateFactoryProvider);
+        }else if(certificateFactoryProviderName != null){
+            certificateFactory = CertificateFactory.getInstance(certificateType, certificateFactoryProviderName);
+        }else{
+            certificateFactory = CertificateFactory.getInstance(certificateType);
+        }
+        return certificateFactory.generateCertificate(is).getPublicKey();
+    }
+    
+    /**
+     * 指定された証明書のバイト配列（X.509標準のASN.1エンコーディング）から公開鍵を生成する。<p>
+     *
+     * @param certificateType 証明書タイプ
+     * @param certificateFactoryProviderName 証明書生成プロバイダ名
+     * @param certificateFactoryProvider 証明書生成プロバイダ
+     * @param certificateBytes 証明書のバイト配列（X.509標準のASN.1エンコーディング）
+     * @return 公開鍵
+     * @exception Exception キーの生成に失敗した場合
+     */
+    public PublicKey createPublicKeyFromCertificate(
+        String certificateType,
+        String certificateFactoryProviderName,
+        Provider certificateFactoryProvider,
+        byte[] certificateBytes
+    ) throws Exception{
+        InputStream is = new ByteArrayInputStream(certificateBytes);
+        try{
+            return createPublicKeyFromCertificate(certificateType, certificateFactoryProviderName, certificateFactoryProvider, is);
+        }finally{
+            is.close();
+        }
     }
     
     /**

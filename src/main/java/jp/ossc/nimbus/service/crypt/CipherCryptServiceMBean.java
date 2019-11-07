@@ -349,6 +349,49 @@ public interface CipherCryptServiceMBean extends ServiceBaseMBean{
     public String getPublicKeyFile();
     
     /**
+     * 証明書ファクトリプロバイダの名前を設定する。<p>
+     *
+     * @param name 証明書ファクトリプロバイダの名前
+     */
+    public void setCertificateFactoryProviderName(String name);
+    
+    /**
+     * 証明書ファクトリプロバイダの名前を取得する。<p>
+     *
+     * @return 証明書ファクトリプロバイダの取得
+     */
+    public String getCertificateFactoryProviderName();
+    
+    /**
+     * 証明書タイプを設定する。<p>
+     * デフォルトは、X.509。<br>
+     *
+     * @param type 証明書タイプ
+     */
+    public void setCertificateType(String type);
+    
+    /**
+     * 証明書タイプを取得する。<p>
+     *
+     * @return 証明書タイプ
+     */
+    public String getCertificateType();
+    
+    /**
+     * 証明書のファイル（X.509標準のASN.1エンコーディング）のパスを設定する。<p>
+     *
+     * @param path 証明書のファイルのパス
+     */
+    public void setCertificateFile(String path);
+    
+    /**
+     * 証明書のファイルのパスを取得する。<p>
+     *
+     * @return 証明書のファイルのパス
+     */
+    public String getCertificateFile();
+    
+    /**
      * 非公開鍵のバイト配列（PKCS#8標準のASN.1エンコーディング）を設定する。<p>
      *
      * @param bytes 非公開鍵のバイト配列（PKCS#8標準のASN.1エンコーディング）
