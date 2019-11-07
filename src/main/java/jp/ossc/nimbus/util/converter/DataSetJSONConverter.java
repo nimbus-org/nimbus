@@ -31,12 +31,34 @@
  */
 package jp.ossc.nimbus.util.converter;
 
-import java.io.*;
-import java.lang.reflect.*;
-import java.util.*;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Reader;
+import java.io.StringReader;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
-import jp.ossc.nimbus.beans.dataset.*;
-import jp.ossc.nimbus.service.beancontrol.interfaces.*;
+import jp.ossc.nimbus.beans.dataset.DataSet;
+import jp.ossc.nimbus.beans.dataset.DataSetException;
+import jp.ossc.nimbus.beans.dataset.Header;
+import jp.ossc.nimbus.beans.dataset.PropertySchema;
+import jp.ossc.nimbus.beans.dataset.Record;
+import jp.ossc.nimbus.beans.dataset.RecordList;
+import jp.ossc.nimbus.beans.dataset.RecordListPropertySchema;
+import jp.ossc.nimbus.beans.dataset.RecordPropertySchema;
+import jp.ossc.nimbus.beans.dataset.RecordSchema;
+import jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvoker;
+import jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory;
 
 /**
  * DataSer⇔JSON(JavaScript Object Notation)コンバータ。<p>
@@ -205,6 +227,12 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
     protected boolean isCloneBindingObject = true;
     
     protected boolean isOutputVTLTemplate = false;
+    
+    /**
+     * プロパティ名のキャメルケースとスネークケース変換を行うかのフラグ。
+     * デフォルトは、falseで変換しない。<br>
+     */
+    protected boolean isCamelSnakeConvert = false; 
     
     /**
      * データセット→JSON変換を行うコンバータを生成する。<p>
@@ -536,6 +564,25 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
      */
     public boolean isCloneBindingObject(){
         return isCloneBindingObject;
+    }
+    
+    /**
+     * プロパティ名のキャメルケースとスネークケース変換を行うかを設定する。<p>
+     * デフォルトは、fasleで変換しない。<br>
+     * 
+     * @param isConvert プロパティ名のキャメルケースとスネークケース変換を行うか
+     */
+    public void setCamelSnakeConvert(boolean isConvert) {
+        isCamelSnakeConvert = isConvert;
+    }
+
+    /**
+     * プロパティ名のキャメルケースとスネークケース変換を行うかを取得する。<p>
+     * 
+     * @return プロパティ名のキャメルケースとスネークケース変換を行うか。trueの場合変換する。
+     */
+    public boolean isCamelSnakeConvert() {
+        return isCamelSnakeConvert;
     }
     
     /**
@@ -1544,8 +1591,38 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
             final Iterator entries = propertyMap.entrySet().iterator();
             while(entries.hasNext()){
                 final Map.Entry entry = (Map.Entry)entries.next();
-                final String propName = (String)entry.getKey();
+                String propName = (String)entry.getKey();
                 PropertySchema propSchema = schema.getPropertySchema(propName);
+                if(propSchema == null && isCamelSnakeConvert) {
+                    StringBuilder sb = null;
+                    if (propName.indexOf("_") == -1) {
+                        sb = new StringBuilder(propName);
+                        for (int i = 0; i < sb.length(); i++) {
+                            char c = sb.charAt(i);
+                            if (Character.isUpperCase(c)) {
+                                char c2 = sb.charAt(i + 1);
+                                if (Character.isUpperCase(c2)) {
+                                    sb.setCharAt(i, Character.toLowerCase(c));
+                                } else {
+                                    sb.insert(i, '_');
+                                    sb.setCharAt(i + 1, Character.toLowerCase(c));
+                                    i++;
+                                }
+                            }
+                        }
+                    } else {
+                        sb = new StringBuilder(propName.toLowerCase());
+                        int i = 0;
+                        while ((i = sb.indexOf("_")) > 0) {
+                            char c = sb.charAt(i + 1);
+                            c = Character.toUpperCase(c);
+                            sb.setCharAt(i + 1, c);
+                            sb.deleteCharAt(i);
+                        }
+                    }
+                    propName = sb.toString();
+                    propSchema = schema.getPropertySchema(propName);
+                }
                 if(propSchema == null && isIgnoreUnknownElement){
                     continue;
                 }
