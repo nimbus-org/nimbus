@@ -625,7 +625,7 @@ public class RemoteServiceTestStubService extends ServiceBase implements TestStu
                             pw.println(editor.getAsText());
                         }
                     }else{
-                        if(converter instanceof StreamConverter){
+                        if(converter instanceof StreamConverter && !(converter instanceof StringStreamConverter && StringStreamConverter.BYTE_ARRAY_TO_STRING == ((StringStreamConverter)converter).getConvertType())){
                             StringStreamConverter ssc = new StringStreamConverter();
                             ssc.setCharacterEncodingToObject(fileEncoding == null ? System.getProperty("file.encoding") : fileEncoding);
                             pw.println(ssc.convertToObject(((StreamConverter)converter).convertToStream(param)));
