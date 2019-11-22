@@ -1134,7 +1134,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                         }
                         if(isOutputPropertyName){
                             if(!isOutputNullProperty){
-                                if(prop == null || formatProp == null){
+                                if(prop == null && formatProp == null){
                                     continue;
                                 }
                             }
