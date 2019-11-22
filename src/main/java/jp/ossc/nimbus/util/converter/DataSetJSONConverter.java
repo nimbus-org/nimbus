@@ -50,6 +50,7 @@ import java.util.Map;
 
 import jp.ossc.nimbus.beans.dataset.DataSet;
 import jp.ossc.nimbus.beans.dataset.DataSetException;
+import jp.ossc.nimbus.beans.dataset.DefaultPropertySchema;
 import jp.ossc.nimbus.beans.dataset.Header;
 import jp.ossc.nimbus.beans.dataset.PropertySchema;
 import jp.ossc.nimbus.beans.dataset.Record;
@@ -743,7 +744,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                                 appendSchema(buf, schema);
                             }
                         }else{
-                            appendValue(buf, null, header.getSchema());
+                            appendValue(buf, header.getSchema() == null ? null : header.getSchema().getClass(), header.getSchema());
                         }
                         if(i != imax - 1){
                             buf.append(ARRAY_SEPARATOR);
@@ -778,7 +779,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                                 appendSchema(buf, schema);
                             }
                         }else{
-                            appendValue(buf, null, recList.getSchema());
+                            appendValue(buf, recList.getSchema() == null ? null : recList.getSchema().getClass(), recList.getSchema());
                         }
                         if(i != imax - 1){
                             buf.append(ARRAY_SEPARATOR);
@@ -809,7 +810,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                                 appendSchema(buf, recSchema);
                             }
                         }else{
-                            appendValue(buf, null, recSchema.getSchema());
+                            appendValue(buf, recSchema.getSchema() == null ? null : recSchema.getSchema().getClass(), recSchema.getSchema());
                         }
                         if(i != imax - 1){
                             buf.append(ARRAY_SEPARATOR);
@@ -840,7 +841,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                                 appendSchema(buf, recSchema);
                             }
                         }else{
-                            appendValue(buf, null, recSchema.getSchema());
+                            appendValue(buf, recSchema.getSchema() == null ? null : recSchema.getSchema().getClass(), recSchema.getSchema());
                         }
                         if(i != imax - 1){
                             buf.append(ARRAY_SEPARATOR);
@@ -869,7 +870,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                         headerNames[i] == null ? "" : headerNames[i]
                     );
                     buf.append(PROPERTY_SEPARATOR);
-                    appendValue(buf, null, header);
+                    appendValue(buf, header == null ? null : header.getClass(), header);
                     if(i != imax - 1){
                         buf.append(ARRAY_SEPARATOR);
                     }
@@ -894,11 +895,11 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                         recListNames[i] == null ? "" : recListNames[i]
                     );
                     buf.append(PROPERTY_SEPARATOR);
-                    if(isOutputVTLTemplate){
+                    if(isOutputVTLTemplate && recList.size() > 0){
                         buf.append(ARRAY_ENCLOSURE_START);
                         buf.append("#foreach( $record in $").append(recListNames[i]).append(" )");
                         buf.append("#if( $velocityCount != 1 )").append(ARRAY_SEPARATOR).append("#end");
-                        appendValue(buf, null, recList.get(0));
+                        appendValue(buf, recList.get(0).getClass(), recList.get(0));
                         buf.append("#end");
                         buf.append(ARRAY_ENCLOSURE_END);
                     }else{
@@ -941,20 +942,20 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
             buf.append(PROPERTY_SEPARATOR);
             String nestedSchemaName = null;
             if(props[j] instanceof RecordListPropertySchema){
-                appendValue(buf, null, NAME_NESTED_RECORD_LIST);
+                appendValue(buf, String.class, NAME_NESTED_RECORD_LIST);
                 nestedSchemaName = ((RecordListPropertySchema)props[j]).getRecordListName();
             }else if(props[j] instanceof RecordPropertySchema){
-                appendValue(buf, null, NAME_NESTED_RECORD);
+                appendValue(buf, String.class, NAME_NESTED_RECORD);
                 nestedSchemaName = ((RecordPropertySchema)props[j]).getRecordName();
             }else{
-                appendValue(buf, null, NAME_VALUE);
+                appendValue(buf, String.class, NAME_VALUE);
             }
             
             if(nestedSchemaName != null){
                 buf.append(ARRAY_SEPARATOR);
                 appendName(buf, NAME_SCHEMA);
                 buf.append(PROPERTY_SEPARATOR);
-                appendValue(buf, null, nestedSchemaName);
+                appendValue(buf, String.class, nestedSchemaName);
             }
             buf.append(OBJECT_ENCLOSURE_END);
             if(j != props.length - 1){
@@ -973,12 +974,43 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
     }
     
     private StringBuilder appendValue(StringBuilder buf, Class type, Object value){
-        if(type == null && value != null){
-            type = value.getClass();
-        }
-        if(value == null){
-            if(type == null){
+        if(type == null){
+            if(value == null) {
                 buf.append(NULL_VALUE);
+            } else {
+                buf.append(escape(value.toString()));
+            }
+        } else {
+            if(value == null){
+                if(Number.class.isAssignableFrom(type)
+                    || (type.isPrimitive()
+                        && (Byte.TYPE.equals(type)
+                            || Short.TYPE.equals(type)
+                            || Integer.TYPE.equals(type)
+                            || Long.TYPE.equals(type)
+                            || Float.TYPE.equals(type)
+                            || Double.TYPE.equals(type)))
+                ){
+                    buf.append('0');
+                }else if(Boolean.class.equals(type)
+                    || Boolean.TYPE.equals(type)
+                ){
+                    buf.append(BOOLEAN_VALUE_FALSE);
+                }else{
+                    buf.append(NULL_VALUE);
+                }
+            }else if(Boolean.class.equals(type)
+                || Boolean.TYPE.equals(type)
+            ){
+                if(value instanceof Boolean){
+                    if(((Boolean)value).booleanValue()){
+                        buf.append(BOOLEAN_VALUE_TRUE);
+                    }else{
+                        buf.append(BOOLEAN_VALUE_FALSE);
+                    }
+                }else{
+                    buf.append(escape(value.toString()));
+                }
             }else if(Number.class.isAssignableFrom(type)
                 || (type.isPrimitive()
                     && (Byte.TYPE.equals(type)
@@ -988,204 +1020,164 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                         || Float.TYPE.equals(type)
                         || Double.TYPE.equals(type)))
             ){
-                buf.append('0');
-            }else if(Boolean.class.equals(type)
-                || Boolean.TYPE.equals(type)
-            ){
-                buf.append(BOOLEAN_VALUE_FALSE);
-            }else{
-                buf.append(NULL_VALUE);
-            }
-        }else if(Boolean.class.equals(type)
-            || Boolean.TYPE.equals(type)
-        ){
-            if(value instanceof Boolean){
-                if(((Boolean)value).booleanValue()){
-                    buf.append(BOOLEAN_VALUE_TRUE);
+                if((value instanceof Float && (((Float)value).isNaN() || ((Float)value).isInfinite()))
+                    || (value instanceof Double && (((Double)value).isNaN() || ((Double)value).isInfinite()))
+                    || ((value instanceof String) && ("-Infinity".equals(value) || "Infinity".equals(value) || "NaN".equals(value)))
+                ){
+                    buf.append(STRING_ENCLOSURE);
+                    buf.append(escape(value.toString()));
+                    buf.append(STRING_ENCLOSURE);
                 }else{
-                    buf.append(BOOLEAN_VALUE_FALSE);
+                    buf.append(value);
                 }
-            }else{
-                buf.append(escape(value.toString()));
-            }
-        }else if(Number.class.isAssignableFrom(type)
-            || (type.isPrimitive()
-                && (Byte.TYPE.equals(type)
-                    || Short.TYPE.equals(type)
-                    || Integer.TYPE.equals(type)
-                    || Long.TYPE.equals(type)
-                    || Float.TYPE.equals(type)
-                    || Double.TYPE.equals(type)))
-        ){
-            if((value instanceof Float && (((Float)value).isNaN() || ((Float)value).isInfinite()))
-                || (value instanceof Double && (((Double)value).isNaN() || ((Double)value).isInfinite()))
-                || ((value instanceof String) && ("-Infinity".equals(value) || "Infinity".equals(value) || "NaN".equals(value)))
-            ){
-                buf.append(STRING_ENCLOSURE);
-                buf.append(escape(value.toString()));
-                buf.append(STRING_ENCLOSURE);
-            }else{
-                buf.append(value);
-            }
-        }else if(type.isArray() || Collection.class.isAssignableFrom(type)){
-            appendArray(buf, value);
-        }else if(Record.class.isAssignableFrom(type)){
-            Record rec = (Record)value;
-            RecordSchema schema = rec.getRecordSchema();
-            PropertySchema[] propSchemata = schema.getPropertySchemata();
-            boolean isOutputPropertyName = true;
-            if((rec instanceof Header && !isOutputPropertyNameOfHeader)
-                || (!(rec instanceof Header)
-                    && !isOutputPropertyNameOfRecordList)
-            ){
-                isOutputPropertyName = false;
-            }
-            if(isOutputPropertyName){
-                buf.append(OBJECT_ENCLOSURE_START);
-            }else{
-                buf.append(ARRAY_ENCLOSURE_START);
-            }
-            boolean isOutput = false;
-            RecordList parentList = rec.getRecordList();
-            String headerName = isOutputVTLTemplate && (rec instanceof Header) ? ((Header)rec).getName() : null;
-            if(isOutputVTLTemplate && !isOutputNullProperty){
-                buf.append("#set( $isOutput = false )");
-            }
-            for(int i = 0, imax = propSchemata.length; i < imax; i++){
-                Object prop = rec.getProperty(i);
-                PropertySchema propSchema = propSchemata[i];
-                if(isOutputVTLTemplate){
-                    if(isOutputNullProperty){
-                        if(isOutput){
-                            buf.append(ARRAY_SEPARATOR);
-                        }
-                        if(isOutputPropertyName){
-                            appendName(buf, propSchema.getName());
-                            buf.append(PROPERTY_SEPARATOR);
-                        }
-                        if(propSchema instanceof RecordPropertySchema){
-                            appendValue(buf, propSchema.getType(), prop);
-                        }else if(propSchema instanceof RecordListPropertySchema){
-                            buf.append(ARRAY_ENCLOSURE_START);
-                            buf.append("#foreach( $record in $").append(propSchema.getName()).append(" )");
-                            buf.append("#if( $velocityCount != 1 )").append(ARRAY_SEPARATOR).append("#end");
-                            appendValue(buf, null, ((RecordList)prop).get(0));
-                            buf.append("#end");
-                            buf.append(ARRAY_ENCLOSURE_END);
-                        }else{
-                            buf.append('$');
-                            if(parentList != null){
-                                buf.append("record.");
-                            }else if(headerName != null){
-                                buf.append(headerName).append("[0].");
-                            }
-                            buf.append(propSchema.getName());
-                        }
-                        isOutput = true;
-                    }else{
-                        buf.append("#if( ");
-                        buf.append('$');
-                        if(parentList != null){
-                            buf.append("record.");
-                        }else if(headerName != null){
-                            buf.append(headerName).append("[0].");
-                        }
-                        buf.append(propSchema.getName()).append(" )");
-                        buf.append("#if( $isOutput )").append(ARRAY_SEPARATOR).append("#end");
-                        
-                        if(isOutputPropertyName){
-                            appendName(buf, propSchema.getName());
-                            buf.append(PROPERTY_SEPARATOR);
-                        }
-                        if(propSchema instanceof RecordPropertySchema){
-                            appendValue(buf, propSchema.getType(), prop);
-                        }else if(propSchema instanceof RecordListPropertySchema){
-                            buf.append(ARRAY_ENCLOSURE_START);
-                            buf.append("#foreach( $record in $").append(propSchema.getName()).append(" )");
-                            buf.append("#if( $velocityCount != 1 )").append(ARRAY_SEPARATOR).append("#end");
-                            appendValue(buf, null, ((RecordList)prop).get(0));
-                            buf.append("#end");
-                            buf.append(ARRAY_ENCLOSURE_END);
-                        }else{
-                            buf.append('$');
-                            if(parentList != null){
-                                buf.append("record.");
-                            }else if(headerName != null){
-                                buf.append(headerName).append("[0].");
-                            }
-                            buf.append(propSchema.getName());
-                        }
-                        buf.append("#set( $isOutput = true )");
-                        buf.append("#end");
-                    }
+            }else if(type.isArray() || Collection.class.isAssignableFrom(type)){
+                appendArray(buf, value);
+            }else if(Record.class.isAssignableFrom(type)){
+                Record rec = (Record)value;
+                RecordSchema schema = rec.getRecordSchema();
+                PropertySchema[] propSchemata = schema.getPropertySchemata();
+                boolean isOutputPropertyName = true;
+                if((rec instanceof Header && !isOutputPropertyNameOfHeader)
+                    || (!(rec instanceof Header)
+                        && !isOutputPropertyNameOfRecordList)
+                ){
+                    isOutputPropertyName = false;
+                }
+                if(isOutputPropertyName){
+                    buf.append(OBJECT_ENCLOSURE_START);
                 }else{
-                    Object formatProp = null;
-                    if(isOutputPropertyName){
-                        if(!isOutputNullProperty){
-                            if(prop == null){
-                                continue;
+                    buf.append(ARRAY_ENCLOSURE_START);
+                }
+                boolean isOutput = false;
+                RecordList parentList = rec.getRecordList();
+                String headerName = isOutputVTLTemplate && (rec instanceof Header) ? ((Header)rec).getName() : null;
+                if(isOutputVTLTemplate && !isOutputNullProperty){
+                    buf.append("#set( $isOutput = false )");
+                }
+                for(int i = 0, imax = propSchemata.length; i < imax; i++){
+                    Object prop = rec.getProperty(i);
+                    PropertySchema propSchema = propSchemata[i];
+                    if(isOutputVTLTemplate){
+                        if(isOutputNullProperty){
+                            if(isOutput){
+                                buf.append(ARRAY_SEPARATOR);
+                            }
+                            if(isOutputPropertyName){
+                                appendName(buf, propSchema.getName());
+                                buf.append(PROPERTY_SEPARATOR);
+                            }
+                            if(propSchema instanceof RecordPropertySchema){
+                                appendValue(buf, propSchema.getType(), prop);
+                            }else if(propSchema instanceof RecordListPropertySchema){
+                                buf.append(ARRAY_ENCLOSURE_START);
+                                if(((RecordList)prop).size() > 0) {
+                                    buf.append("#foreach( $record in $").append(propSchema.getName()).append(" )");
+                                    buf.append("#if( $velocityCount != 1 )").append(ARRAY_SEPARATOR).append("#end");
+                                    appendValue(buf, ((RecordList)prop).get(0).getClass(), ((RecordList)prop).get(0));
+                                    buf.append("#end");
+                                }
+                                buf.append(ARRAY_ENCLOSURE_END);
                             }else{
-                                formatProp = rec.getFormatProperty(i);
-                                if(formatProp == null){
+                                buf.append('$');
+                                if(parentList != null){
+                                    buf.append("record.");
+                                }else if(headerName != null){
+                                    buf.append(headerName).append("[0].");
+                                }
+                                buf.append(propSchema.getName());
+                            }
+                            isOutput = true;
+                        }else{
+                            buf.append("#if( ");
+                            buf.append('$');
+                            if(parentList != null){
+                                buf.append("record.");
+                            }else if(headerName != null){
+                                buf.append(headerName).append("[0].");
+                            }
+                            buf.append(propSchema.getName()).append(" )");
+                            buf.append("#if( $isOutput )").append(ARRAY_SEPARATOR).append("#end");
+                            
+                            if(isOutputPropertyName){
+                                appendName(buf, propSchema.getName());
+                                buf.append(PROPERTY_SEPARATOR);
+                            }
+                            if(propSchema instanceof RecordPropertySchema){
+                                appendValue(buf, propSchema.getType(), prop);
+                            }else if(propSchema instanceof RecordListPropertySchema){
+                                buf.append(ARRAY_ENCLOSURE_START);
+                                if(((RecordList)prop).size() > 0) {
+                                    buf.append("#foreach( $record in $").append(propSchema.getName()).append(" )");
+                                    buf.append("#if( $velocityCount != 1 )").append(ARRAY_SEPARATOR).append("#end");
+                                    appendValue(buf, ((RecordList)prop).get(0).getClass(), ((RecordList)prop).get(0));
+                                    buf.append("#end");
+                                }
+                                buf.append(ARRAY_ENCLOSURE_END);
+                            }else{
+                                buf.append('$');
+                                if(parentList != null){
+                                    buf.append("record.");
+                                }else if(headerName != null){
+                                    buf.append(headerName).append("[0].");
+                                }
+                                buf.append(propSchema.getName());
+                            }
+                            buf.append("#set( $isOutput = true )");
+                            buf.append("#end");
+                        }
+                    }else{
+                        Object formatProp = null;
+                        boolean isConvert = false;
+                        if(!(propSchema instanceof DefaultPropertySchema) || ((DefaultPropertySchema)propSchema).getFormatConverter() != null){
+                            formatProp = rec.getFormatProperty(i);
+                            isConvert = true;
+                        }
+                        if(isOutputPropertyName){
+                            if(!isOutputNullProperty){
+                                if(prop == null || formatProp == null){
                                     continue;
                                 }
                             }
-                        }
-                        if(isOutput){
+                            if(isOutput){
+                                buf.append(ARRAY_SEPARATOR);
+                            }
+                            appendName(buf, propSchema.getName());
+                            buf.append(PROPERTY_SEPARATOR);
+                        }else if(isOutput){
                             buf.append(ARRAY_SEPARATOR);
                         }
-                        appendName(buf, propSchema.getName());
-                        buf.append(PROPERTY_SEPARATOR);
-                    }else if(isOutput){
-                        buf.append(ARRAY_SEPARATOR);
-                    }
-                    if(prop == null){
-                        appendValue(buf, propSchema.getType(), null);
-                    }else{
-                        Class propType = propSchema.getType();
-                        if(propType == null){
-                            propType = prop.getClass();
-                        }
-                        if(propType.isArray()
-                            || Collection.class.isAssignableFrom(propType)){
-                            appendArray(buf, prop);
+                        if((prop == null && !isConvert) || (formatProp == null && isConvert)){
+                            appendValue(buf, propSchema.getType(), null);
                         }else{
-                            if(formatProp == null){
-                                formatProp = rec.getFormatProperty(i);
+                            Object resultProp = isConvert ? formatProp : prop;
+                            Class propType = propSchema.getType();
+                            if(propType == null) {
+                                propType = prop.getClass();
                             }
-                            if(Number.class.isAssignableFrom(propType)
-                                || (propType.isPrimitive()
-                                    && (Byte.TYPE.equals(propType)
-                                        || Short.TYPE.equals(propType)
-                                        || Integer.TYPE.equals(propType)
-                                        || Long.TYPE.equals(propType)
-                                        || Float.TYPE.equals(propType)
-                                        || Double.TYPE.equals(propType)
-                                        || Boolean.TYPE.equals(propType)))
-                                || Boolean.class.equals(propType)
-                            ){
+                            if(propType != null &&
+                                    (propType.isArray() || Collection.class.isAssignableFrom(propType))){
+                                appendArray(buf, resultProp);
+                            }else{
                                 appendValue(
                                     buf,
                                     propType,
-                                    formatProp
+                                    resultProp
                                 );
-                            }else{
-                                appendValue(buf, null, formatProp);
                             }
                         }
                     }
+                    isOutput = true;
                 }
-                isOutput = true;
-            }
-            if(isOutputPropertyName){
-                buf.append(OBJECT_ENCLOSURE_END);
+                if(isOutputPropertyName){
+                    buf.append(OBJECT_ENCLOSURE_END);
+                }else{
+                    buf.append(ARRAY_ENCLOSURE_END);
+                }
             }else{
-                buf.append(ARRAY_ENCLOSURE_END);
+                buf.append(STRING_ENCLOSURE);
+                buf.append(escape(value.toString()));
+                buf.append(STRING_ENCLOSURE);
             }
-        }else{
-            buf.append(STRING_ENCLOSURE);
-            buf.append(escape(value.toString()));
-            buf.append(STRING_ENCLOSURE);
         }
         return buf;
     }
@@ -1194,7 +1186,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
         buf.append(ARRAY_ENCLOSURE_START);
         if(array.getClass().isArray()){
             for(int i = 0, imax = Array.getLength(array); i < imax; i++){
-                appendValue(buf, null, Array.get(array, i));
+                appendValue(buf, Array.get(array, i) == null ? null : Array.get(array, i).getClass(), Array.get(array, i));
                 if(i != imax - 1){
                     buf.append(ARRAY_SEPARATOR);
                 }
@@ -1202,7 +1194,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
         }else if(List.class.isAssignableFrom(array.getClass())){
             List list = (List)array;
             for(int i = 0, imax = list.size(); i < imax; i++){
-                appendValue(buf, null, list.get(i));
+                appendValue(buf, list.get(i) == null ? null : list.get(i).getClass(), list.get(i));
                 if(i != imax - 1){
                     buf.append(ARRAY_SEPARATOR);
                 }
@@ -1210,7 +1202,8 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
         }else if(Collection.class.isAssignableFrom(array.getClass())){
             Iterator itr = ((Collection)array).iterator();
             while(itr.hasNext()){
-                appendValue(buf, null, itr.next());
+                Object obj = itr.next();
+                appendValue(buf, obj == null ? null : obj.getClass(), obj);
                 if(itr.hasNext()){
                     buf.append(ARRAY_SEPARATOR);
                 }
