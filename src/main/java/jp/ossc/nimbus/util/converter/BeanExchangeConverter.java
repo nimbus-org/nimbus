@@ -746,8 +746,16 @@ public class BeanExchangeConverter implements BindingConverter{
             if(output instanceof RecordList){
                 RecordList list = (RecordList)output;
                 for(int i = 0; i < inputs.length; i++){
-                    Record record = list.createRecord();
-                    list.add(convert(inputs[i], record, false));
+                    Record record = null;
+                    if(i < list.size()){
+                        record = list.getRecord(i);
+                    }else{
+                        record = list.createRecord();
+                    }
+                    record = (Record)convert(inputs[i], record, false);
+                    if(record != null && i >= list.size()){
+                        list.add(record);
+                    }
                 }
                 return list;
             }else if(output instanceof Collection){
