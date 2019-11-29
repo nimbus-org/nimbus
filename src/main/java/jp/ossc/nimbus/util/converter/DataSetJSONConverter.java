@@ -41,6 +41,7 @@ import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -150,6 +151,21 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
     public static final int JSON_TO_DATASET = STREAM_TO_OBJECT;
     
     /**
+     * キャメルスネーク変換を行わないを表す変換定数。<p>
+     */
+    public static final int CAMEL_SNAKE_NON = 0;
+    
+    /**
+     * キャメル→スネークを表す変換定数。<p>
+     */
+    public static final int CAMEL_TO_SNAKE = 1;
+    
+    /**
+     * スネーク→キャメルを表す変換定数。<p>
+     */
+    public static final int SNAKE_TO_CAMEL = 2;
+    
+    /**
      * 変換種別。<p>
      */
     protected int convertType;
@@ -231,9 +247,20 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
     
     /**
      * プロパティ名のキャメルケースとスネークケース変換を行うかのフラグ。
+     * デフォルトは、0で変換しない。<br>
+     */
+    protected int camelSnakeConvertMode = 0;
+    
+    /**
+     * プロパティ名をキャメルケース変換する際に最初の文字を大文字設定するかのフラグ。
      * デフォルトは、falseで変換しない。<br>
      */
-    protected boolean isCamelSnakeConvert = false; 
+    protected boolean isUpperCaseStartCamelProperty = false;
+    
+    /**
+     * プロパティ名のキャメルケースとスネークケース変換を行う際の無視プロパティ名の配列
+     */
+    protected String[] camelSnakeIgnorePropertyNames = null;
     
     /**
      * データセット→JSON変換を行うコンバータを生成する。<p>
@@ -463,6 +490,24 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
         return characterEncodingToObject;
     }
     
+    /**
+     * プロパティ名のキャメルケースとスネークケース変換を行う際の無視プロパティ名の配列を取得する。<p>
+     * 
+     * @return プロパティ名のキャメルケースとスネークケース変換を行う際の無視プロパティ名の配列
+     */
+    public String[] getCamelSnakeIgnorePropertyNames() {
+        return camelSnakeIgnorePropertyNames;
+    }
+
+    /**
+     * プロパティ名のキャメルケースとスネークケース変換を行う際の無視プロパティ名の配列を設定する。<p>
+     * 
+     * @param propertyNames プロパティ名のキャメルケースとスネークケース変換を行う際の無視プロパティ名の配列
+     */
+    public void setCamelSnakeIgnorePropertyNames(String[] propertyNames) {
+        camelSnakeIgnorePropertyNames = propertyNames;
+    }
+
     public StreamStringConverter cloneCharacterEncodingToStream(String encoding){
         if((encoding == null && characterEncodingToStream == null)
             || (encoding != null && encoding.equals(characterEncodingToStream))){
@@ -566,25 +611,47 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
     public boolean isCloneBindingObject(){
         return isCloneBindingObject;
     }
-    
+
     /**
-     * プロパティ名のキャメルケースとスネークケース変換を行うかを設定する。<p>
-     * デフォルトは、fasleで変換しない。<br>
+     * プロパティ名のキャメルケースとスネークケース変換モードを取得する。<p>
      * 
-     * @param isConvert プロパティ名のキャメルケースとスネークケース変換を行うか
+     * @return プロパティ名のキャメルケースとスネークケース変換モード
      */
-    public void setCamelSnakeConvert(boolean isConvert) {
-        isCamelSnakeConvert = isConvert;
+    public int getCamelSnakeConvertMode() {
+        return camelSnakeConvertMode;
     }
 
     /**
-     * プロパティ名のキャメルケースとスネークケース変換を行うかを取得する。<p>
+     * プロパティ名のキャメルケースとスネークケース変換モードを設定する。<p>
+     * デフォルトは、0で変換しない。<br>
      * 
-     * @return プロパティ名のキャメルケースとスネークケース変換を行うか。trueの場合変換する。
+     * @param mode プロパティ名のキャメルケースとスネークケース変換モード
      */
-    public boolean isCamelSnakeConvert() {
-        return isCamelSnakeConvert;
+    public void setCamelSnakeConvertMode(int mode) {
+        camelSnakeConvertMode = mode;
     }
+
+    /**
+     * プロパティ名をキャメルケース変換する際に最初の文字を大文字設定するかを取得する。<p>
+     * デフォルトは、fasleで大文字設定しない。<br>
+     * 
+     * @return プロパティ名をキャメルケース変換する際に最初の文字を大文字設定するか
+     */
+    public boolean isUpperCaseStartCamelProperty() {
+        return isUpperCaseStartCamelProperty;
+    }
+
+    /**
+     * プロパティ名をキャメルケース変換する際に最初の文字を大文字設定するかを設定する。<p>
+     * デフォルトは、fasleで大文字設定しない。<br>
+     * 
+     * @param isUpperCaseStart プロパティ名をキャメルケース変換する際に最初の文字を大文字設定するか
+     */
+    public void setUpperCaseStartCamelProperty(boolean isUpperCaseStart) {
+        isUpperCaseStartCamelProperty = isUpperCaseStart;
+    }
+
+    
     
     /**
      * 指定されたオブジェクトを変換する。<p>
@@ -930,7 +997,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
         final PropertySchema[] props = schema.getPropertySchemata();
         buf.append(OBJECT_ENCLOSURE_START);
         for(int j = 0; j < props.length; j++){
-            appendName(buf, props[j].getName());
+            appendName(buf, camelSnakeConvertMode == CAMEL_SNAKE_NON ? props[j].getName() : camelSnakeConvert(props[j].getName()));
             buf.append(PROPERTY_SEPARATOR);
             buf.append(OBJECT_ENCLOSURE_START);
             appendName(buf, NAME_INDEX);
@@ -1063,7 +1130,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                                 buf.append(ARRAY_SEPARATOR);
                             }
                             if(isOutputPropertyName){
-                                appendName(buf, propSchema.getName());
+                                appendName(buf, camelSnakeConvertMode == CAMEL_SNAKE_NON ? propSchema.getName() : camelSnakeConvert(propSchema.getName()));
                                 buf.append(PROPERTY_SEPARATOR);
                             }
                             if(propSchema instanceof RecordPropertySchema){
@@ -1099,7 +1166,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                             buf.append("#if( $isOutput )").append(ARRAY_SEPARATOR).append("#end");
                             
                             if(isOutputPropertyName){
-                                appendName(buf, propSchema.getName());
+                                appendName(buf, camelSnakeConvertMode == CAMEL_SNAKE_NON ? propSchema.getName() : camelSnakeConvert(propSchema.getName()));
                                 buf.append(PROPERTY_SEPARATOR);
                             }
                             if(propSchema instanceof RecordPropertySchema){
@@ -1141,7 +1208,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                             if(isOutput){
                                 buf.append(ARRAY_SEPARATOR);
                             }
-                            appendName(buf, propSchema.getName());
+                            appendName(buf, camelSnakeConvertMode == CAMEL_SNAKE_NON ? propSchema.getName() : camelSnakeConvert(propSchema.getName()));
                             buf.append(PROPERTY_SEPARATOR);
                         }else if(isOutput){
                             buf.append(ARRAY_SEPARATOR);
@@ -1586,34 +1653,8 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                 final Map.Entry entry = (Map.Entry)entries.next();
                 String propName = (String)entry.getKey();
                 PropertySchema propSchema = schema.getPropertySchema(propName);
-                if(propSchema == null && isCamelSnakeConvert) {
-                    StringBuilder sb = null;
-                    if (propName.indexOf("_") == -1) {
-                        sb = new StringBuilder(propName);
-                        for (int i = 0; i < sb.length(); i++) {
-                            char c = sb.charAt(i);
-                            if (Character.isUpperCase(c)) {
-                                char c2 = sb.charAt(i + 1);
-                                if (Character.isUpperCase(c2)) {
-                                    sb.setCharAt(i, Character.toLowerCase(c));
-                                } else {
-                                    sb.insert(i, '_');
-                                    sb.setCharAt(i + 1, Character.toLowerCase(c));
-                                    i++;
-                                }
-                            }
-                        }
-                    } else {
-                        sb = new StringBuilder(propName.toLowerCase());
-                        int i = 0;
-                        while ((i = sb.indexOf("_")) > 0) {
-                            char c = sb.charAt(i + 1);
-                            c = Character.toUpperCase(c);
-                            sb.setCharAt(i + 1, c);
-                            sb.deleteCharAt(i);
-                        }
-                    }
-                    propName = sb.toString();
+                if(propSchema == null && camelSnakeConvertMode != CAMEL_SNAKE_NON) {
+                    propName = camelSnakeConvert(propName);
                     propSchema = schema.getPropertySchema(propName);
                 }
                 if(propSchema == null && isIgnoreUnknownElement){
@@ -2103,5 +2144,47 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
             c = reader.read();
         }while(c != -1 && Character.isWhitespace((char)c));
         return c;
+    }
+    
+    private String camelSnakeConvert(String str) {
+        if(camelSnakeConvertMode != SNAKE_TO_CAMEL && camelSnakeConvertMode != CAMEL_TO_SNAKE) {
+            return str;
+        }
+        if(camelSnakeIgnorePropertyNames != null && Arrays.asList(camelSnakeIgnorePropertyNames).contains(str)) {
+            return str;
+        }
+        StringBuilder sb = null;
+        if(camelSnakeConvertMode == SNAKE_TO_CAMEL) {
+            sb = new StringBuilder(str.toLowerCase());
+            if(isUpperCaseStartCamelProperty && Character.isLowerCase(sb.charAt(0))) {
+                sb.setCharAt(0, Character.toUpperCase(sb.charAt(0)));
+            }
+            int i = 0;
+            while ((i = sb.indexOf("_")) > 0) {
+                char c = sb.charAt(i + 1);
+                c = Character.toUpperCase(c);
+                sb.setCharAt(i + 1, c);
+                sb.deleteCharAt(i);
+            }
+        } else if(camelSnakeConvertMode == CAMEL_TO_SNAKE) {
+            sb = new StringBuilder(str);
+            if(isUpperCaseStartCamelProperty && Character.isUpperCase(sb.charAt(0))) {
+                sb.setCharAt(0, Character.toLowerCase(sb.charAt(0)));
+            }
+            for (int i = 0; i < sb.length(); i++) {
+                char c = sb.charAt(i);
+                if (Character.isUpperCase(c)) {
+                    char c2 = sb.charAt(i + 1);
+                    if (Character.isUpperCase(c2)) {
+                        sb.setCharAt(i, Character.toLowerCase(c));
+                    } else {
+                        sb.insert(i, '_');
+                        sb.setCharAt(i + 1, Character.toLowerCase(c));
+                        i++;
+                    }
+                }
+            }
+        }
+       return sb.toString();
     }
 }
