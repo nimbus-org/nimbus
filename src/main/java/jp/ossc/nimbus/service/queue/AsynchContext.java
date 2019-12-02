@@ -92,6 +92,12 @@ public class AsynchContext implements java.io.Serializable, Cloneable{
         return output;
     }
     
+    public void response() throws Exception{
+        if(responseQueue != null){
+            responseQueue.push(this);
+        }
+    }
+    
     public void checkError() throws Throwable{
         if(throwable != null){
             throw throwable;

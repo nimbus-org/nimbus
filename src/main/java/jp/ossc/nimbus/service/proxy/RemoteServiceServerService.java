@@ -53,7 +53,7 @@ import jp.ossc.nimbus.beans.MethodEditor;
 import jp.ossc.nimbus.service.aop.*;
 import jp.ossc.nimbus.service.aop.invoker.*;
 import jp.ossc.nimbus.service.repository.*;
-import jp.ossc.nimbus.service.keepalive.ClusterService;
+import jp.ossc.nimbus.service.keepalive.Cluster;
 import jp.ossc.nimbus.service.keepalive.KeepAliveChecker;
 import jp.ossc.nimbus.service.keepalive.KeepAliveListener;
 import jp.ossc.nimbus.service.proxy.invoker.KeepAliveCheckInvoker;
@@ -87,7 +87,7 @@ public class RemoteServiceServerService extends ServiceBase
     private String jndiName;
     private int rmiPort;
     private ServiceName clusterServiceName;
-    private ClusterService cluster;
+    private Cluster cluster;
     private String clusterOptionKey;
     private boolean isClusterJoin = true;
     private ServiceName resourceUsageServiceName;
@@ -369,9 +369,9 @@ public class RemoteServiceServerService extends ServiceBase
             }
         }
         if(clusterServiceName != null){
-            cluster = (ClusterService)ServiceManagerFactory.getServiceObject(clusterServiceName);
+            cluster = (Cluster)ServiceManagerFactory.getServiceObject(clusterServiceName);
             if(cluster.isJoin()){
-                throw new IllegalArgumentException("ClusterService already join.");
+                throw new IllegalArgumentException("Cluster already join.");
             }
             RemoteServiceClientInvoker remoteServiceClientInvoker = new RemoteServiceClientInvoker(
                 (RemoteServerInvoker)remoteServerInvoker.getStub(),

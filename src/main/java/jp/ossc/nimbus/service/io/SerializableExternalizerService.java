@@ -184,7 +184,7 @@ public class SerializableExternalizerService extends ServiceBase
         return objectInputClass;
     }
     
-    protected ObjectOutput createObjectOutput(OutputStream out) throws IOException{
+    public ObjectOutput createObjectOutput(OutputStream out) throws IOException{
         ObjectOutput output = null;
         if(objectOutputClass == null){
             output = new ObjectOutputStream(out);
@@ -216,7 +216,6 @@ public class SerializableExternalizerService extends ServiceBase
                 output = createObjectOutput(sos);
                 writeInternal(obj, output);
                 sos.flush();
-                sos.close();
                 break;
             case COMPRESS_MODE_LZ4:
                 LZ4BlockOutputStream lzos = new LZ4BlockOutputStream(out);
@@ -224,7 +223,6 @@ public class SerializableExternalizerService extends ServiceBase
                 writeInternal(obj, output);
                 lzos.flush();
                 lzos.finish();
-                lzos.close();
                 break;
             default:
                 switch(compressMode){
@@ -405,7 +403,7 @@ public class SerializableExternalizerService extends ServiceBase
         }
     }
     
-    protected ObjectInput createObjectInput(InputStream in) throws IOException{
+    public ObjectInput createObjectInput(InputStream in) throws IOException{
         ObjectInput input = null;
         if(objectInputClass == null){
             input = new ObjectInputStream(in);

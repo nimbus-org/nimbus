@@ -86,12 +86,32 @@ public class DataSetXpathConverter implements BindingStreamConverter, StreamStri
     protected String documentBuilderFactoryClass;
     
     /**
+     * DocumentBuilderの実装クラス。<p>
+     */
+    protected String documentBuilderClass;
+    
+    /**
+     * データセットを複製するかどうかのフラグ。<p>
+     * デフォルトは、trueで、複製する。<br>
+     */
+    protected boolean isClone = true;
+    
+    /**
      * DocumentBuilderFactoryの実装クラスを設定する。<p>
      *
      * @param clazz DocumentBuilderFactoryの実装クラス
      */
     public void setDocumentBuilderFactoryClassName(String clazz){
         documentBuilderFactoryClass = clazz;
+    }
+    
+    /**
+     * DocumentBuilderの実装クラスを設定する。<p>
+     *
+     * @param clazz DocumentBuilderの実装クラス
+     */
+    public void setDocumentBuilderClassName(String clazz){
+        documentBuilderClass = clazz;
     }
     
     public void setConvertType(int convertType) {
@@ -160,6 +180,25 @@ public class DataSetXpathConverter implements BindingStreamConverter, StreamStri
     }
     
     /**
+     * データセットを複製するかどうかを設定する。<p>
+     * デフォルトは、trueで複製する。<br>
+     *
+     * @param isClone 複製する場合true
+     */
+    public void setClone(boolean isClone){
+        this.isClone = isClone;
+    }
+    
+    /**
+     * データセットを複製するかどうかを判定する。<p>
+     *
+     * @return trueの場合、複製する
+     */
+    public boolean isClone(){
+        return isClone;
+    }
+    
+    /**
      * 指定された{@link DataSet}サブクラスのオブジェクトへ変換する。
      * @param inputStream 入力ストリーム
      * @param returnObject 変換対象の{@link DataSet}サブクラス
@@ -172,7 +211,7 @@ public class DataSetXpathConverter implements BindingStreamConverter, StreamStri
         // 出力DataSet生成
         if(returnObject != null) {
             if(DataSet.class.isAssignableFrom(returnObject.getClass())) {
-                result = ((DataSet)returnObject).cloneDataSet();
+                result = isClone ? ((DataSet)returnObject).cloneDataSet() : (DataSet)returnObject;
             }else {
                 throw new ConvertException("A return object is not a sub-class of DataSet.");
             }
@@ -282,9 +321,8 @@ public class DataSetXpathConverter implements BindingStreamConverter, StreamStri
      */
     protected Document parseXml(InputStream inputStream) throws ConvertException {
         DocumentBuilderFactory factory = null;
-        if(documentBuilderFactoryClass == null){
-            factory = DocumentBuilderFactory.newInstance();
-        }else{
+        DocumentBuilder builder = null;
+        if(documentBuilderFactoryClass != null){
             try{
                 factory = (DocumentBuilderFactory)Class.forName(
                     documentBuilderFactoryClass,
@@ -298,12 +336,29 @@ public class DataSetXpathConverter implements BindingStreamConverter, StreamStri
             }catch(ClassNotFoundException e){
                 throw new ConvertException(e);
             }
+        }else if(documentBuilderClass != null){
+            try{
+                builder = (DocumentBuilder)Class.forName(
+                    documentBuilderClass,
+                    true,
+                    NimbusClassLoader.getInstance()
+                ).newInstance();
+            }catch(InstantiationException e){
+                throw new ConvertException(e);
+            }catch(IllegalAccessException e){
+                throw new ConvertException(e);
+            }catch(ClassNotFoundException e){
+                throw new ConvertException(e);
+            }
+        }else{
+            factory = DocumentBuilderFactory.newInstance();
         }
-        DocumentBuilder builder = null;
-        try {
-            builder = factory.newDocumentBuilder();
-        } catch (ParserConfigurationException e) {
-            throw new ConvertException("XML document builder could not be instanced.", e);
+        if(builder == null){
+            try {
+                builder = factory.newDocumentBuilder();
+            } catch (ParserConfigurationException e) {
+                throw new ConvertException("XML document builder could not be instanced.", e);
+            }
         }
         Document document = null;
         try {

@@ -53,9 +53,9 @@ public class RestResponse{
     protected Object responseObject;
     
     /**
-     * レスポンスオブジェクトのクラス。<p>
+     * レスポンスオブジェクトのファクトリ。<p>
      */
-    protected Class responseObjectClass;
+    protected ReponseObjectFactory reponseObjectFactory;
     
     /**
      * HTTPステータス。<p>
@@ -117,32 +117,24 @@ public class RestResponse{
     }
     
     /**
-     * レスポンスオブジェクトのクラスを設定する。<p>
+     * レスポンスオブジェクトのファクトリを設定する。<p>
      *
-     * @param clazz レスポンスオブジェクトのクラス
+     * @param factory レスポンスオブジェクトのファクトリ
      */
-    protected void setResponseObjectClass(Class clazz){
-        responseObjectClass = clazz;
-    }
-    
-    /**
-     * レスポンスオブジェクトのクラスを取得する。<p>
-     *
-     * @return レスポンスオブジェクトのクラス
-     */
-    public Class getResponseObjectClass(){
-        return responseObjectClass;
+    protected void setReponseObjectFactory(ReponseObjectFactory factory){
+        reponseObjectFactory = factory;
     }
     
     /**
      * レスポンスオブジェクトを生成する。<p>
      *
      * @return レスポンスオブジェクト
-     * @exception InstantiationException 生成に失敗した場合
-     * @exception IllegalAccessException 引数なしのコンストラクタにアクセスできない場合
+     * @exception Exception 生成に失敗した場合
      */
-    public Object createResponseObject() throws InstantiationException, IllegalAccessException{
-        responseObject = responseObjectClass == null ? null : responseObjectClass.newInstance();
+    public Object createResponseObject() throws Exception{
+        if(responseObject == null){
+            responseObject = reponseObjectFactory == null ? null : reponseObjectFactory.createResponseObject();
+        }
         return responseObject;
     }
     
@@ -153,9 +145,6 @@ public class RestResponse{
      * @exception IllegalArgumentException 指定したレスポンスオブジェクトの型が不正な場合
      */
     public void setResponseObject(Object responseObj) throws IllegalArgumentException{
-        if(responseObj != null && responseObjectClass != null && !responseObjectClass.equals(responseObj.getClass())){
-            throw new IllegalArgumentException("ResponseObject is not " + responseObjectClass.getName());
-        }
         responseObject = responseObj;
     }
     
@@ -166,5 +155,21 @@ public class RestResponse{
      */
     public Object getResponseObject(){
         return responseObject;
+    }
+    
+    /**
+     * レスポンスオブジェクトのファクトリ。<p>
+     *
+     * @author M.Takata
+     */
+    public interface ReponseObjectFactory{
+        
+        /**
+         * レスポンスオブジェクトを生成する。<p>
+         *
+         * @return レスポンスオブジェクト
+         * @exception Exception 生成に失敗した場合
+         */
+        public Object createResponseObject() throws Exception;
     }
 }

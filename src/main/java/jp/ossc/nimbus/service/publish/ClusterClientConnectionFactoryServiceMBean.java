@@ -45,29 +45,29 @@ public interface ClusterClientConnectionFactoryServiceMBean extends ServiceBaseM
     public static final String MSG_ID_CONNECT_ERROR = "PCCF_00001";
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ClusterService}サービスのサービス名を設定する。<p>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster Cluster}サービスのサービス名を設定する。<p>
      * クラスタのメンバー情報から、{@link ClientConnectionFactory}リモートオブジェクトを取得する事で、クラスタに参加しているClientConnectionFactoryをクライアント側で共有する。<br>
      *
-     * @param name ClusterServiceサービスのサービス名
+     * @param name Clusterサービスのサービス名
      */
     public void setClusterServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ClusterService}サービスのサービス名を取得する。<p>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster Cluster}サービスのサービス名を取得する。<p>
      *
-     * @return ClusterServiceサービスのサービス名
+     * @return Clusterサービスのサービス名
      */
     public ServiceName getClusterServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService クラスタ}サービスのメンバー情報のオプションキーを設定する。<p>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster クラスタ}サービスのメンバー情報のオプションキーを設定する。<p>
      *
      * @param key オプションキー
      */
     public void setClusterOptionKey(String key);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService クラスタ}サービスのメンバー情報のオプションキーを取得する。<p>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster クラスタ}サービスのメンバー情報のオプションキーを取得する。<p>
      *
      * @return オプションキー
      */

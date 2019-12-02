@@ -58,8 +58,9 @@ import jp.ossc.nimbus.util.converter.*;
  *     <tr><td>6</td><td>ClearEnabled</td><td>{@link SharedContext 共有コンテキスト}への全削除操作を有効にするかどうかを指定する。</td><td>false</td></tr>
  *     <tr><td>7</td><td>LoadEnabled</td><td>{@link SharedContext 共有コンテキスト}への読込操作を有効にするかどうかを指定する。</td><td>false</td></tr>
  *     <tr><td>8</td><td>SaveEnabled</td><td>{@link SharedContext 共有コンテキスト}への永続化操作を有効にするかどうかを指定する。</td><td>false</td></tr>
- *     <tr><td>9</td><td>JSONConverterServiceName</td><td>JSON形式での応答を要求する場合に使用する{@link BeanJSONConverter}サービスのサービス名を指定する。</td><td>指定しない場合は、内部生成される。</td></tr>
- *     <tr><td>10</td><td>UnicodeEscape</td><td>JSON形式での応答を要求する場合に、２バイト文字をユニコードエスケープするかどうかを指定する。</td><td>true</td></tr>
+ *     <tr><td>9</td><td>SynchronizeEnabled</td><td>{@link SharedContext 共有コンテキスト}への同期操作を有効にするかどうかを指定する。</td><td>false</td></tr>
+ *     <tr><td>10</td><td>JSONConverterServiceName</td><td>JSON形式での応答を要求する場合に使用する{@link BeanJSONConverter}サービスのサービス名を指定する。</td><td>指定しない場合は、内部生成される。</td></tr>
+ *     <tr><td>11</td><td>UnicodeEscape</td><td>JSON形式での応答を要求する場合に、２バイト文字をユニコードエスケープするかどうかを指定する。</td><td>true</td></tr>
  * </table>
  * <p>
  * Webサービスは、クエリ指定でのGETリクエストに対して、JSONでデータを応答する。<br>
@@ -75,7 +76,7 @@ import jp.ossc.nimbus.util.converter.*;
  *        "nodeNum":1,
  *        "name":"Nimbus%23Context1",
  *        "distributeType":"replicated",
- *        "size":2
+ *        "sizeLocal":2
  *    },
  *    {
  *        "clientNodeNum":0,
@@ -83,7 +84,7 @@ import jp.ossc.nimbus.util.converter.*;
  *        "nodeNum":1,
  *        "name":"Nimbus%23Context2",
  *        "distributeType":"distributed",
- *        "size":5
+ *        "sizeLocal":5
  *    }
  *]
  *     </pre></code></td></tr>
@@ -94,12 +95,11 @@ import jp.ossc.nimbus.util.converter.*;
  *    "client":false,
  *    "mainId":"USER-PC\/192.168.1.1:4506101c:14d9ec2142a:-7ffd",
  *    "name":"Nimbus#Context",
- *    "localSize":2,
+ *    "sizeLocal":2,
  *    "serverNodeMembers":["USER-PC\/192.168.1.1:4506101c:14d9ec2142a:-7ffd"],
  *    "clientNodeMembers":[],
  *    "nodeMembers":["USER-PC\/192.168.1.1:4506101c:14d9ec2142a:-7ffd"],
  *    "distributeType":"replicated",
- *    "size":2,
  *    "main":true
  *}
  *     </pre></code></td></tr>
@@ -151,17 +151,26 @@ import jp.ossc.nimbus.util.converter.*;
  *     <tr><td>action</td><td>clear</td></tr>
  *     <tr><td>name</td><td>対象の共有コンテキストのサービス名。</td></tr>
  *     <tr><td>local</td><td>共有コンテキストのローカルデータのみクリアするかどうかを指定する。trueの場合、ローカルのみ。指定しない場合は、false。</td></tr>
- *     <tr><td rowspan="4">11</td><td rowspan="4"><nobr>共有コンテキストの読み込み</nobr></td><td>responseType</td><td>json</td><td rowspan="4"><code><pre>{}</pre></code></td></tr>
+ *     <tr><td rowspan="4">11</td><td rowspan="4"><nobr>共有コンテキストの件数取得</nobr></td><td>responseType</td><td>json</td><td rowspan="4"><code><pre>{"local":false}</pre></code></td></tr>
+ *     <tr><td>action</td><td>size</td></tr>
+ *     <tr><td>name</td><td>対象の共有コンテキストのサービス名。</td></tr>
+ *     <tr><td>local</td><td>共有コンテキストのローカルの件数のみを取得するかどうかを指定する。trueの場合、ローカルのみ。指定しない場合は、false。</td></tr>
+ *     <tr><td rowspan="4">12</td><td rowspan="4"><nobr>共有コンテキストの読み込み</nobr></td><td>responseType</td><td>json</td><td rowspan="4"><code><pre>{}</pre></code></td></tr>
  *     <tr><td>action</td><td>load</td></tr>
  *     <tr><td>name</td><td>対象の共有コンテキストのサービス名。</td></tr>
  *     <tr><td>key</td><td>読み込み対象のキー。{@link Interpreter インタープリタ}を使ったオブジェクト生成式も指定可能。指定しない場合は、全て読み込む。</td></tr>
- *     <tr><td rowspan="3">12</td><td rowspan="3"><nobr>共有コンテキストの読み込み</nobr></td><td>responseType</td><td>json</td><td rowspan="3"><code><pre>{}</pre></code></td></tr>
+ *     <tr><td rowspan="3">13</td><td rowspan="3"><nobr>共有コンテキストの読み込み</nobr></td><td>responseType</td><td>json</td><td rowspan="3"><code><pre>{}</pre></code></td></tr>
  *     <tr><td>action</td><td>loadKey</td></tr>
  *     <tr><td>name</td><td>対象の共有コンテキストのサービス名。</td></tr>
- *     <tr><td rowspan="4">13</td><td rowspan="4"><nobr>共有コンテキストの保存</nobr></td><td>responseType</td><td>json</td><td rowspan="4"><code><pre>{}</pre></code></td></tr>
+ *     <tr><td rowspan="4">14</td><td rowspan="4"><nobr>共有コンテキストの保存</nobr></td><td>responseType</td><td>json</td><td rowspan="4"><code><pre>{}</pre></code></td></tr>
  *     <tr><td>action</td><td>save</td></tr>
  *     <tr><td>name</td><td>対象の共有コンテキストのサービス名。</td></tr>
  *     <tr><td>key</td><td>保存対象のキー。{@link Interpreter インタープリタ}を使ったオブジェクト生成式も指定可能。指定しない場合は、全て保存する。</td></tr>
+ *     <tr><td rowspan="5">15</td><td rowspan="5"><nobr>共有コンテキストの通信正常性チェック</nobr></td><td>responseType</td><td>json</td><td rowspan="5"><code><pre>{"containsClient":false,"timeout":10000}</pre></code></td></tr>
+ *     <tr><td>action</td><td>healthCheck</td></tr>
+ *     <tr><td>name</td><td>対象の共有コンテキストのサービス名。</td></tr>
+ *     <tr><td>containsClient</td><td>クライアントモードのノードの健全性もチェックするかどうかを指定する。trueの場合、クライアントモードのノードの健全性もチェックする。指定しない場合は、false。</td></tr>
+ *     <tr><td>timeout</td><td>健全性チェックのタイムアウト[ms]</td></tr>
  * </table>
  * <p>
  * 以下に、サーブレットのweb.xml定義例を示す。<br>
@@ -222,6 +231,11 @@ public class SharedContextServlet extends HttpServlet{
      * 書込みを有効にするかどうかを指定するための初期化パラメータ名。<p>
      */
     protected static final String INIT_PARAM_NAME_SAVE_ENABLED = "SaveEnabled";
+    
+    /**
+     * 同期を有効にするかどうかを指定するための初期化パラメータ名。<p>
+     */
+    protected static final String INIT_PARAM_NAME_SYNCHRONIZE_ENABLED = "SynchronizeEnabled";
     
     /**
      * JSONコンバータのサービス名を指定するための初期化パラメータ名。<p>
@@ -292,6 +306,12 @@ public class SharedContextServlet extends HttpServlet{
     private boolean isSaveEnabled(){
         final ServletConfig config = getServletConfig();
         final String isEnabled = config.getInitParameter(INIT_PARAM_NAME_SAVE_ENABLED);
+        return isEnabled == null ? false : Boolean.valueOf(isEnabled).booleanValue();
+    }
+    
+    private boolean isSynchronizeEnabled(){
+        final ServletConfig config = getServletConfig();
+        final String isEnabled = config.getInitParameter(INIT_PARAM_NAME_SYNCHRONIZE_ENABLED);
         return isEnabled == null ? false : Boolean.valueOf(isEnabled).booleanValue();
     }
     
@@ -446,6 +466,16 @@ public class SharedContextServlet extends HttpServlet{
                 return;
             }
             processSaveResponse(req, resp, responseType);
+        }else if(action.equals("synchronize")){
+            if(!isSynchronizeEnabled()){
+                resp.sendError(HttpServletResponse.SC_NOT_ACCEPTABLE);
+                return;
+            }
+            processSynchronizeResponse(req, resp, responseType);
+        }else if(action.equals("size")){
+            processSizeResponse(req, resp, responseType);
+        }else if(action.equals("healthCheck")){
+            processHealthCheckResponse(req, resp, responseType);
         }else{
             resp.sendError(HttpServletResponse.SC_NOT_FOUND);
         }
@@ -513,7 +543,7 @@ public class SharedContextServlet extends HttpServlet{
                     jsonMap.put("nodeNum", new Integer(context.getMemberIdList().size()));
                     jsonMap.put("clientNodeNum", new Integer(context.getClientMemberIdSet().size()));
                     jsonMap.put("serverNodeNum", new Integer(context.getServerMemberIdSet().size()));
-                    jsonMap.put("size", new Integer(context.size()));
+                    jsonMap.put("sizeLocal", new Integer(context.sizeLocal()));
                     jsonList.add(jsonMap);
                 }
             }
@@ -555,7 +585,7 @@ public class SharedContextServlet extends HttpServlet{
                     buf.append("<td>").append(isDistributed ? "distributed" : "replicated").append("</td>");
                     buf.append("<td>").append(context.isClient() ? "client" : ("server" + (context.isMain() ? "(main)" : "(sub)"))).append("</td>");
                     buf.append("<td>").append(context.getMemberIdList().size() + "(" + context.getServerMemberIdSet().size() + ")").append("</td>");
-                    buf.append("<td>").append(context.size() + (context.isClient() || isDistributed ? ("(" + context.sizeLocal() + ")") : "")).append("</td>");
+                    buf.append("<td>").append(context.sizeLocal()).append("</td>");
                     buf.append("</tr>");
                 }
             }
@@ -623,8 +653,7 @@ public class SharedContextServlet extends HttpServlet{
             Collections.sort(serverNodeMembers);
             jsonMap.put("serverNodeMembers", serverNodeMembers);
             jsonMap.put("mainId", context.getMainId().toString());
-            jsonMap.put("size", new Integer(context.size()));
-            jsonMap.put("localSize", new Integer(context.sizeLocal()));
+            jsonMap.put("sizeLocal", new Integer(context.sizeLocal()));
             buf.append(
                 toStringConverter.convertToObject(jsonConverter.convertToStream(jsonMap))
             );
@@ -642,7 +671,19 @@ public class SharedContextServlet extends HttpServlet{
             if(context instanceof DistributedSharedContextService){
                 buf.append("<tr><th bgcolor=\"#cccccc\">distribute</th><td colspan=\"2\"><pre>").append(((DistributedSharedContextService)context).displayDistributeInfo()).append("</pre></td></tr>");
             }
-            buf.append("<tr><th bgcolor=\"#cccccc\">size</th><td colspan=\"2\">").append(context.size() + (context.isClient() || isDistributed ? ("(" + context.sizeLocal() + ")") : "")).append("</td></tr>");
+            buf.append("<tr><th bgcolor=\"#cccccc\">local size</th><td colspan=\"2\">").append(context.sizeLocal()).append("</td></tr>");
+            
+            buf.append("<form method=\"POST\" action=\"").append(getCurrentPath(req)).append("\">");
+            buf.append("<input type=\"hidden\" name=\"action\" value=\"healthCheck\"/>");
+            buf.append("<input type=\"hidden\" name=\"name\" value=\"").append(serviceNameStr).append("\"/>");
+            buf.append("<tr><th bgcolor=\"#cccccc\"><input type=\"submit\" value=\"healthCheck\"/></th><td><input type=\"radio\" name=\"containsClient\" value=\"true\" checked>all<input type=\"radio\" name=\"containsClient\" value=\"false\">server only</td><td><table><tr><td>timeout:</td><td><textarea name=\"timeout\"></textarea></td></tr></table></td></tr>");
+            buf.append("</form>");
+            
+            buf.append("<form method=\"POST\" action=\"").append(getCurrentPath(req)).append("\">");
+            buf.append("<input type=\"hidden\" name=\"action\" value=\"size\"/>");
+            buf.append("<input type=\"hidden\" name=\"name\" value=\"").append(serviceNameStr).append("\"/>");
+            buf.append("<tr><th bgcolor=\"#cccccc\"><input type=\"submit\" value=\"size\"/></th><td colspan=\"2\"><input type=\"radio\" name=\"local\" value=\"true\" checked>local<input type=\"radio\" name=\"local\" value=\"false\">all</td></tr>");
+            buf.append("</form>");
             
             buf.append("<form method=\"POST\" action=\"").append(getCurrentPath(req)).append("\">");
             buf.append("<input type=\"hidden\" name=\"action\" value=\"get\"/>");
@@ -720,6 +761,13 @@ public class SharedContextServlet extends HttpServlet{
                 buf.append("<input type=\"hidden\" name=\"action\" value=\"save\"/>");
                 buf.append("<input type=\"hidden\" name=\"name\" value=\"").append(serviceNameStr).append("\"/>");
                 buf.append("<tr><th bgcolor=\"#cccccc\"><input type=\"submit\" value=\"save\"/></th><td colspan=\"2\">&nbsp;</td></tr>");
+                buf.append("</form>");
+            }
+            if(isSynchronizeEnabled()){
+                buf.append("<form method=\"POST\" action=\"").append(getCurrentPath(req)).append("\">");
+                buf.append("<input type=\"hidden\" name=\"action\" value=\"synchronize\"/>");
+                buf.append("<input type=\"hidden\" name=\"name\" value=\"").append(serviceNameStr).append("\"/>");
+                buf.append("<tr><th bgcolor=\"#cccccc\"><input type=\"submit\" value=\"synchronize\"/></th><td colspan=\"2\"><table><tr><td>timeout:</td><td><textarea name=\"timeout\"></textarea></td></tr></table></td></tr>");
                 buf.append("</form>");
             }
             buf.append("</table>")
@@ -1669,6 +1717,259 @@ public class SharedContextServlet extends HttpServlet{
             
             if(exception == null){
                 buf.append("clear ").append(isLocal ? "local" : "all");
+            }else{
+                writeThrowable(buf, exception);
+            }
+            
+            buf.append("<hr>");
+            buf.append("<a href=\"").append(getCurrentPath(req))
+                .append("?action=context")
+                .append("&name=").append(URLEncoder.encode(serviceNameStr, "UTF-8"))
+                .append("\">Context</a>");
+            
+            buf.append("</body>");
+            buf.append("</html>");
+        }
+        resp.getWriter().println(buf.toString());
+    }
+    
+    /**
+     * コンテキストの件数を取得するリクエスト処理を行う。<p>
+     *
+     * @param req HTTPリクエスト
+     * @param resp HTTPレスポンス
+     * @param responseType レスポンス種別
+     * @exception ServletException 
+     * @exception IOException 
+     */
+    protected void processSizeResponse(
+        HttpServletRequest req,
+        HttpServletResponse resp,
+        String responseType
+    ) throws ServletException, IOException{
+        final String serviceNameStr = req.getParameter("name");
+        if(serviceNameStr == null){
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+            return;
+        }
+        final ServiceNameEditor editor = new ServiceNameEditor();
+        editor.setAsText(serviceNameStr);
+        final ServiceName serviceName = (ServiceName)editor.getValue();
+        SharedContext context = (SharedContext)ServiceManagerFactory.getServiceObject(serviceName);
+        if(context == null){
+            resp.sendError(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        }
+        String localStr = req.getParameter("local");
+        boolean isLocal = false;
+        if(localStr != null && localStr.length() != 0){
+            isLocal = Boolean.valueOf(localStr).booleanValue();
+        }
+        
+        Exception exception = null;
+        int size = 0;
+        try{
+            if(isLocal){
+                size = context.sizeLocal();
+            }else{
+                size = context.size();
+            }
+        }catch(Exception e){
+            exception = e;
+        }
+        
+        final StringBuilder buf = new StringBuilder();
+        if("json".equals(responseType)){
+            resp.setContentType("application/json;charset=UTF-8");
+            Map jsonMap = new HashMap();
+            jsonMap.put("local", isLocal ? Boolean.TRUE : Boolean.FALSE);
+            if(exception == null){
+                jsonMap.put("size", new Integer(size));
+            }else{
+                StringWriter sw = new StringWriter();
+                PrintWriter pw = new PrintWriter(sw);
+                exception.printStackTrace(pw);
+                pw.flush();
+                jsonMap.put("exception", sw.toString());
+            }
+            buf.append(
+                toStringConverter.convertToObject(jsonConverter.convertToStream(jsonMap))
+            );
+        }else{
+            resp.setContentType("text/html;charset=UTF-8");
+            buf.append("<html>");
+            buf.append("<head><title>Nimbus SharedContext " + serviceName + " Size</title></head>");
+            buf.append("<body>");
+            
+            if(exception == null){
+                buf.append("size : ").append(size);
+            }else{
+                writeThrowable(buf, exception);
+            }
+            
+            buf.append("<hr>");
+            buf.append("<a href=\"").append(getCurrentPath(req))
+                .append("?action=context")
+                .append("&name=").append(URLEncoder.encode(serviceNameStr, "UTF-8"))
+                .append("\">Context</a>");
+            
+            buf.append("</body>");
+            buf.append("</html>");
+        }
+        resp.getWriter().println(buf.toString());
+    }
+    
+    /**
+     * コンテキストの通信の健全性をチェックするリクエスト処理を行う。<p>
+     *
+     * @param req HTTPリクエスト
+     * @param resp HTTPレスポンス
+     * @param responseType レスポンス種別
+     * @exception ServletException 
+     * @exception IOException 
+     */
+    protected void processHealthCheckResponse(
+        HttpServletRequest req,
+        HttpServletResponse resp,
+        String responseType
+    ) throws ServletException, IOException{
+        final String serviceNameStr = req.getParameter("name");
+        if(serviceNameStr == null){
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+            return;
+        }
+        final ServiceNameEditor editor = new ServiceNameEditor();
+        editor.setAsText(serviceNameStr);
+        final ServiceName serviceName = (ServiceName)editor.getValue();
+        SharedContext context = (SharedContext)ServiceManagerFactory.getServiceObject(serviceName);
+        if(context == null){
+            resp.sendError(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        }
+        String containsClientStr = req.getParameter("containsClient");
+        boolean isContainsClient = false;
+        if(containsClientStr != null && containsClientStr.length() != 0){
+            isContainsClient = Boolean.valueOf(containsClientStr).booleanValue();
+        }
+        String timeoutStr = req.getParameter("timeout");
+        long timeout = 0;
+        if(timeoutStr != null && timeoutStr.length() != 0){
+            try{
+                timeout = Long.parseLong(timeoutStr);
+            }catch(NumberFormatException e){
+            }
+        }
+        
+        Exception exception = null;
+        try{
+            context.healthCheck(isContainsClient, timeout);
+        }catch(Exception e){
+            exception = e;
+        }
+        
+        final StringBuilder buf = new StringBuilder();
+        if("json".equals(responseType)){
+            resp.setContentType("application/json;charset=UTF-8");
+            Map jsonMap = new HashMap();
+            if(exception != null){
+                StringWriter sw = new StringWriter();
+                PrintWriter pw = new PrintWriter(sw);
+                exception.printStackTrace(pw);
+                pw.flush();
+                jsonMap.put("exception", sw.toString());
+            }
+            buf.append(
+                toStringConverter.convertToObject(jsonConverter.convertToStream(jsonMap))
+            );
+        }else{
+            resp.setContentType("text/html;charset=UTF-8");
+            buf.append("<html>");
+            buf.append("<head><title>Nimbus SharedContext " + serviceName + " HealthCheck</title></head>");
+            buf.append("<body>");
+            
+            if(exception == null){
+                buf.append("healthCheck OK");
+            }else{
+                writeThrowable(buf, exception);
+            }
+            
+            buf.append("<hr>");
+            buf.append("<a href=\"").append(getCurrentPath(req))
+                .append("?action=context")
+                .append("&name=").append(URLEncoder.encode(serviceNameStr, "UTF-8"))
+                .append("\">Context</a>");
+            
+            buf.append("</body>");
+            buf.append("</html>");
+        }
+        resp.getWriter().println(buf.toString());
+    }
+    
+    /**
+     * コンテキストの同期を行うリクエスト処理を行う。<p>
+     *
+     * @param req HTTPリクエスト
+     * @param resp HTTPレスポンス
+     * @param responseType レスポンス種別
+     * @exception ServletException 
+     * @exception IOException 
+     */
+    protected void processSynchronizeResponse(
+        HttpServletRequest req,
+        HttpServletResponse resp,
+        String responseType
+    ) throws ServletException, IOException{
+        final String serviceNameStr = req.getParameter("name");
+        if(serviceNameStr == null){
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+            return;
+        }
+        final ServiceNameEditor editor = new ServiceNameEditor();
+        editor.setAsText(serviceNameStr);
+        final ServiceName serviceName = (ServiceName)editor.getValue();
+        SharedContext context = (SharedContext)ServiceManagerFactory.getServiceObject(serviceName);
+        if(context == null){
+            resp.sendError(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        }
+        String timeoutStr = req.getParameter("timeout");
+        long timeout = 0;
+        if(timeoutStr != null && timeoutStr.length() != 0){
+            try{
+                timeout = Long.parseLong(timeoutStr);
+            }catch(NumberFormatException e){
+            }
+        }
+        
+        Exception exception = null;
+        try{
+            context.synchronize(timeout);
+        }catch(Exception e){
+            exception = e;
+        }
+        
+        final StringBuilder buf = new StringBuilder();
+        if("json".equals(responseType)){
+            resp.setContentType("application/json;charset=UTF-8");
+            Map jsonMap = new HashMap();
+            if(exception != null){
+                StringWriter sw = new StringWriter();
+                PrintWriter pw = new PrintWriter(sw);
+                exception.printStackTrace(pw);
+                pw.flush();
+                jsonMap.put("exception", sw.toString());
+            }
+            buf.append(
+                toStringConverter.convertToObject(jsonConverter.convertToStream(jsonMap))
+            );
+        }else{
+            resp.setContentType("text/html;charset=UTF-8");
+            buf.append("<html>");
+            buf.append("<head><title>Nimbus SharedContext " + serviceName + " Synchronize</title></head>");
+            buf.append("<body>");
+            
+            if(exception == null){
+                buf.append("synchronize OK");
             }else{
                 writeThrowable(buf, exception);
             }

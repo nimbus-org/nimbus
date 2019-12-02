@@ -31,6 +31,7 @@
  */
 package jp.ossc.nimbus.util.converter;
 
+import java.lang.reflect.Array;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,12 +42,22 @@ import java.util.List;
  * @author M.Takata
  */
 public class CustomConverter
- implements Converter, StringConverter, CharacterConverter, StreamStringConverter, BindingStreamConverter,FormatConverter,
+ implements Converter,
+            StringConverter,
+            CharacterConverter,
+            StreamStringConverter,
+            BindingStreamConverter,
+            FormatConverter,
+            PaddingConverter,
             java.io.Serializable, Cloneable{
 
     private static final long serialVersionUID = 727589924434574684L;
 
     protected List converters;
+    
+    protected boolean isConvertByElement;
+    
+    protected Class elementTypeOfArray;
 
     /**
      * 空のカスタムコンバータを生成する。<p>
@@ -83,7 +94,45 @@ public class CustomConverter
             }
         }
     }
-
+    
+    /**
+     * 変換対象が配列やリストの場合に、要素毎に変換を行うかどうかを設定する。<p>
+     * デフォルトは、false。<br>
+     *
+     * @param isConvert 要素毎に変換を行う場合は、true
+     */
+    public void setConvertByElement(boolean isConvert){
+        isConvertByElement = isConvert;;
+    }
+    
+    /**
+     * 変換対象が配列やリストの場合に、要素毎に変換を行うかどうかを判定する。<p>
+     *
+     * @return trueの場合、要素毎に変換を行う
+     */
+    public boolean isConvertByElement(){
+        return isConvertByElement;
+    }
+    
+    /**
+     * 配列の要素を変換する際の、変換後の配列の要素型を設定する。<p>
+     *
+     * @param type 変換後の配列の要素型
+     */
+    public void setElementTypeOfArray(Class type){
+        elementTypeOfArray = type;
+    }
+    
+    /**
+     * 配列の要素を変換する際の、変換後の配列の要素型を設定する。<p>
+     *
+     * @param type 変換後の配列の要素型
+     */
+    public Class getElementTypeOfArray(){
+        return elementTypeOfArray;
+    }
+    
+    
     /**
      * オブジェクトからストリームへ変換する際の文字エンコーディングを設定する。<p>
      *
@@ -181,7 +230,49 @@ public class CustomConverter
             }
         }
     }
-
+    
+    public void setPaddingLength(int length){
+        if(converters != null){
+            for(int i = 0, max = converters.size(); i < max; i++){
+                if(converters.get(i) instanceof PaddingConverter){
+                    ((PaddingConverter)converters.get(i)).setPaddingLength(length);
+                }
+            }
+        }
+    }
+    
+    public int getPaddingLength(){
+        if(converters != null){
+            for(int i = 0, max = converters.size(); i < max; i++){
+                if(converters.get(i) instanceof PaddingConverter){
+                    return ((PaddingConverter)converters.get(i)).getPaddingLength();
+                }
+            }
+        }
+        return 0;
+    }
+    
+    public void setPaddingDirection(int direct){
+        if(converters != null){
+            for(int i = 0, max = converters.size(); i < max; i++){
+                if(converters.get(i) instanceof PaddingConverter){
+                    ((PaddingConverter)converters.get(i)).setPaddingDirection(direct);
+                }
+            }
+        }
+    }
+    
+    public int getPaddingDirection(){
+        if(converters != null){
+            for(int i = 0, max = converters.size(); i < max; i++){
+                if(converters.get(i) instanceof PaddingConverter){
+                    return ((PaddingConverter)converters.get(i)).getPaddingDirection();
+                }
+            }
+        }
+        return PaddingConverter.DIRECTION_LEFT;
+    }
+    
    /**
      * コンバータを追加する。<p>
      *
@@ -229,8 +320,52 @@ public class CustomConverter
     public Object convert(Object obj) throws ConvertException{
         Object tmp = obj;
         if(converters != null){
-            for(int i = 0, max = converters.size(); i < max; i++){
-                tmp = ((Converter)converters.get(i)).convert(tmp);
+            if(isConvertByElement
+                && tmp != null
+                && (tmp instanceof List
+                    || tmp.getClass().isArray())
+                
+            ){
+                if(tmp instanceof List){
+                    List list = (List)tmp;
+                    List newList = new ArrayList();
+                    for(int i = 0, imax = list.size(); i < imax; i++){
+                        Object element = list.get(i);
+                        for(int j = 0, jmax = converters.size(); j < jmax; j++){
+                            element = ((Converter)converters.get(j)).convert(element);
+                        }
+                    }
+                    tmp = newList;
+                }else{
+                    if(Array.getLength(tmp) == 0){
+                        tmp = elementTypeOfArray == null ? null : Array.newInstance(elementTypeOfArray, 0);
+                    }else{
+                        List newList = new ArrayList();
+                        Class elementType = elementTypeOfArray;
+                        for(int i = 0, imax = Array.getLength(tmp); i < imax; i++){
+                            Object element = Array.get(tmp, i);
+                            
+                            for(int j = 0, jmax = converters.size(); j < jmax; j++){
+                                element = ((Converter)converters.get(j)).convert(element);
+                            }
+                            if(elementType == null && element != null){
+                                elementType = element.getClass();
+                            }
+                            newList.add(element);
+                        }
+                        if(elementType == null){
+                            tmp = newList.toArray();
+                        }else{
+                            Object newArray = Array.newInstance(elementType, Array.getLength(tmp));
+                            System.arraycopy(newList.toArray(), 0, newArray, 0, newList.size());
+                            tmp = newArray;
+                        }
+                    }
+                }
+            }else{
+                for(int i = 0, max = converters.size(); i < max; i++){
+                    tmp = ((Converter)converters.get(i)).convert(tmp);
+                }
             }
         }
         return tmp;

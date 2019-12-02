@@ -50,6 +50,7 @@ import jp.ossc.nimbus.beans.*;
 import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.io.CSVReader;
 import jp.ossc.nimbus.util.converter.*;
+import jp.ossc.nimbus.util.validator.*;
 
 /**
  * デフォルトのプロパティスキーマ実装クラス。<p>
@@ -64,7 +65,7 @@ import jp.ossc.nimbus.util.converter.*;
  * </ul>
  * プロパティスキーマ定義のフォーマットは、<br>
  * <pre>
- *    名前,型,入力変換種類,出力変換種類,制約
+ *    名前,型,入力変換種類,出力変換種類,制約,主キーフラグ
  * </pre>
  * となっており、名前以外は省略可能である。但し、途中の項目を省略する場合は、区切り子であるカンマは必要である。<br>
  * <p>
@@ -75,7 +76,7 @@ import jp.ossc.nimbus.util.converter.*;
  * 型は、プロパティの型を意味し、Javaの完全修飾クラス名で指定する。<br>
  * <p>
  * 変換種類は、{@link Record#setParseProperty(String, Object)}で入力オブジェクトをプロパティの型に変換し値を設定したり、{@link Record#getFormatProperty(String)}でプロパティを変換し何らかのフォーマットした値を取得するためのものである。<br>
- * 変換には、{@link Converter コンバータ}を使用するため、コンバータの完全修飾クラス名または、サービス名を指定することができる。<br>
+ * 変換には、{@link Converter コンバータ}を使用するため、コンバータの完全修飾クラス名（"jp.ossc.nimbus.util.converter"パッケージの場合は省略可能）または、サービス名を指定することができる。<br>
  * また、コンバータのクラス名を指定する場合は、デフォルトコンストラクタを持つコンバータである必要がある。更に、コンバータクラスに対しては、コンバータのプロパティを指定することができる。<br>
  * コンバータのプロパティの指定は、<br>
  * <pre>
@@ -88,10 +89,12 @@ import jp.ossc.nimbus.util.converter.*;
  * </pre>
  * というように、コンバータの定義を"+"で連結する。<br>
  * <p>
- * 制約は、プロパティに値を設定する際の、値に対する制約式を定義する。<br>
+ * 制約は、プロパティに値を設定する際の、値に対する制約式、または{@link Validator バリデータ}を使用するため、バリデータの完全修飾クラス名（"jp.ossc.nimbus.util.validator"パッケージの場合は省略可能）または、サービス名を指定することができる。<br>
  * 制約式は、等号、不等号、論理演算、四則演算などが可能であるが、式の結果はbooleanとなるようにしなければならない。式言語は、The Apache Jakarta Projectの Commons Jexl(http://jakarta.apache.org/commons/jexl/)の仕様に従う。<br>
  * 値は、"@value@"という文字で表現する。例えば、NOT NULL制約を掛けたければ、"@value@ != null"という制約式になる。<br>
  * また値に対して、プロパティアクセスする事が可能である。例えば、String型のプロパティに長さ５以上という制約を掛けたければ、"@value.length@ >= 5"という制約式になる。プロパティアクセスは、{@link PropertyFactory プロパティファクトリ}の仕様に従う。<br>
+ * また、バリデータのクラス名を指定する場合は、デフォルトコンストラクタを持つバリデータである必要がある。更に、バリデータクラスに対しては、バリデータのプロパティを指定することができる。<br>
+ * バリデータのプロパティの指定は、コンバータと同様である。"+"による連結は、AND連結となる。<br>
  * <p>
  * 主キーフラグは、{@link RecordList}のスキーマ情報として使用する場合に、このプロパティが主キーである事を指定するもので、主キーな場合は、"1"で指定する。<br>
  * 
@@ -156,6 +159,16 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
      * プロパティ値の設定制約。<p>
      */
     protected transient Constrain constrainExpression;
+    
+    /**
+     * プロパティ値のバリデータ。<p>
+     */
+    protected transient Validator validator;
+    
+    /**
+     * プロパティ値のバリデータサービス名。<p>
+     */
+    protected ServiceName validatorName;
     
     /**
      * 主キーかどうかのフラグ。<p>
@@ -349,7 +362,7 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
      * @exception ClassNotFoundException 指定されたクラス名のクラスが見つからない場合
      * @exception PropertySchemaDefineException プロパティのスキーマ定義に失敗した場合
      */
-    protected Object parseObject(String schema, String val)
+    protected Object parseObject(String schema, String val, String packageName)
      throws ClassNotFoundException, PropertySchemaDefineException{
         Object object = objectManager.get(val);
         if(object != null){
@@ -378,10 +391,26 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
             );
             className = className.substring(0, propStartIndex);
         }
-        Class clazz = jp.ossc.nimbus.core.Utility.convertStringToClass(
-            className,
-            true
-        );
+        Class clazz = null;
+        try{
+            clazz = jp.ossc.nimbus.core.Utility.convertStringToClass(
+                className,
+                true
+            );
+        }catch(ClassNotFoundException e){
+            if(className.indexOf('.') == -1){
+                try{
+                    clazz = jp.ossc.nimbus.core.Utility.convertStringToClass(
+                        packageName + '.' + className,
+                        true
+                    );
+                }catch(ClassNotFoundException e2){
+                    throw e;
+                }
+            }else{
+                throw e;
+            }
+        }
         try{
             object = clazz.newInstance();
         }catch(InstantiationException e){
@@ -438,7 +467,23 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
                             className = propValStr.substring(0, index2);
                             final String fieldName = propValStr.substring(index2 + 1);
                             try{
-                                Class clazz2 = jp.ossc.nimbus.core.Utility.convertStringToClass(className, false);
+                                Class clazz2 = null;
+                                try{
+                                    clazz2 = jp.ossc.nimbus.core.Utility.convertStringToClass(className, false);
+                                }catch(ClassNotFoundException e){
+                                    if(className.indexOf('.') == -1){
+                                        try{
+                                            clazz2 = jp.ossc.nimbus.core.Utility.convertStringToClass(
+                                                packageName + '.' + className,
+                                                false
+                                            );
+                                        }catch(ClassNotFoundException e2){
+                                            throw e;
+                                        }
+                                    }else{
+                                        throw e;
+                                    }
+                                }
                                 Field field = clazz2.getField(fieldName);
                                 if(propType.isAssignableFrom(field.getType())){
                                     propVal = field.get(null);
@@ -492,7 +537,7 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
         if(val != null && val.length() != 0){
             if(val.indexOf('+') == -1){
                 try{
-                    Object obj = parseObject(schema, val);
+                    Object obj = parseObject(schema, val, Converter.class.getPackage().getName());
                     if(!(obj instanceof Converter)){
                         throw new PropertySchemaDefineException(schema, "Converter dose not implement Converter.");
                     }
@@ -528,7 +573,7 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
             Converter[] converters = new Converter[converterStrList.size()];
             for(int i = 0; i < converterStrList.size(); i++){
                 try{
-                    Object obj = parseObject(schema, (String)converterStrList.get(i));
+                    Object obj = parseObject(schema, (String)converterStrList.get(i), Converter.class.getPackage().getName());
                     if(!(obj instanceof Converter)){
                         throw new PropertySchemaDefineException(schema, "Converter dose not implement Converter.");
                     }
@@ -559,6 +604,18 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
             try{
                 constrainExpression = new Constrain(val);
             }catch(Exception e){
+                try{
+                    Object valid = parseValidator(schema, val);
+                    if(valid != null){
+                        if(valid instanceof ServiceName){
+                            parseConverterName = (ServiceName)valid;
+                        }else{
+                            validator = (Validator)valid;
+                        }
+                        return;
+                    }
+                }catch(PropertySchemaDefineException e2){
+                }
                 throw new PropertySchemaDefineException(
                     this.toString(),
                     "Illegal constrain : " + val,
@@ -566,6 +623,77 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
                 );
             }
         }
+    }
+    
+    /**
+     * プロパティスキーマの制約の項目をValidatorとしてパースする。<p>
+     *
+     * @param schema プロパティスキーマ全体
+     * @param val スキーマ項目
+     * @return {@link Converter コンバータ}またはコンバータの{@link ServiceName サービス名}
+     * @exception PropertySchemaDefineException プロパティのスキーマ定義に失敗した場合
+     */
+    protected Object parseValidator(String schema, String val)
+     throws PropertySchemaDefineException{
+        if(val != null && val.length() != 0){
+            if(val.indexOf('+') == -1){
+                try{
+                    Object obj = parseObject(schema, val, Validator.class.getPackage().getName());
+                    if(!(obj instanceof Validator)){
+                        throw new PropertySchemaDefineException(schema, "Validator dose not implement Validator.");
+                    }
+                    return obj;
+                }catch(ClassNotFoundException e){
+                    final ServiceNameEditor serviceNameEditor
+                         = new ServiceNameEditor();
+                    try{
+                        serviceNameEditor.setAsText(val);
+                    }catch(IllegalArgumentException e2){
+                        throw new PropertySchemaDefineException(
+                            schema,
+                            "Converter is illegal.",
+                            e2
+                        );
+                    }
+                    return (ServiceName)serviceNameEditor.getValue();
+                }
+            }
+            List validatorStrList = CSVReader.toList(
+                val,
+                null,
+                '+',
+                '\\',
+                '"',
+                "",
+                null,
+                true,
+                true,
+                true,
+                false
+            );
+            CombinationValidator comb = new CombinationValidator();
+            for(int i = 0; i < validatorStrList.size(); i++){
+                try{
+                    Object obj = parseObject(schema, (String)validatorStrList.get(i), Validator.class.getPackage().getName());
+                    if(!(obj instanceof Validator)){
+                        throw new PropertySchemaDefineException(schema, "Validator dose not implement Validator.");
+                    }
+                    if(i == 0){
+                        comb.add((Validator)obj);
+                    }else{
+                        comb.and((Validator)obj);
+                    }
+                }catch(ClassNotFoundException e){
+                    throw new PropertySchemaDefineException(
+                        schema,
+                        "Validator is illegal.",
+                        e
+                    );
+                }
+            }
+            return comb;
+        }
+        return null;
     }
     
     /**
@@ -587,7 +715,7 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
     
     // PropertySchemaのJavaDoc
     public Class getType(){
-        return type;
+        return type == null ? Object.class : type;
     }
     
     public boolean isPrimaryKey(){
@@ -634,6 +762,22 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
     public String getConstrain(){
         return constrainExpression == null
              ? null : constrainExpression.constrain;
+    }
+    
+    /**
+     * バリデータを取得する。<p>
+     *
+     * @return バリデータ
+     */
+    public Validator getValidator(){
+        if(validator != null){
+            return validator;
+        }
+        if(validatorName != null){
+            return (Validator)ServiceManagerFactory
+                .getServiceObject(validatorName);
+        }
+        return null;
     }
     
     // PropertySchemaのJavaDoc
@@ -691,43 +835,57 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
         }catch(ServiceNotFoundException e){
             throw new PropertySetException(this, e);
         }
-        if(converter == null){
-            if(result == null){
-                return result;
-            }
-            final Class type = getType();
-            if(type == null){
-                return result;
-            }
-            final Class inType = result.getClass();
-            if(type.isAssignableFrom(inType)){
-                return result;
-            }
-            if(result instanceof String){
-                result = parseByPropertyEditor((String)result, type);
-            }else if(type.isArray() && inType.equals(String[].class)){
-                final String[] array = (String[])result;
-                final Class componentType = type.getComponentType();
-                result = Array.newInstance(
-                    componentType,
-                    array.length
-                );
-                for(int i = 0; i < array.length; i++){
-                    Array.set(
-                        result,
-                        i,
-                        parseByPropertyEditor(array[i], componentType)
-                    );
-                }
-            }else{
-                throw new PropertySetException(this, "Counld not parse.");
-            }
-        }else{
+        if(converter != null){
             try{
                 result = converter.convert(result);
             }catch(ConvertException e){
                 throw new PropertySetException(this, e);
             }
+        }
+        if(result == null){
+            return result;
+        }
+        final Class type = getType();
+        if(type == null){
+            return result;
+        }
+        Class inType = result.getClass();
+        if(isAssignableFrom(type, inType)){
+            return result;
+        }
+        if(String.class.equals(type)){
+            result = formatByPropertyEditor(result, type);
+        }else if(inType.isArray() && String[].class.equals(type)){
+            final Object[] array = (Object[])result;
+            final Class componentType = inType.getComponentType();
+            result = new String[array.length];
+            for(int i = 0; i < array.length; i++){
+                Array.set(
+                    result,
+                    i,
+                    formatByPropertyEditor(array[i], componentType)
+                );
+            }
+        }else if(result instanceof String){
+            result = parseByPropertyEditor((String)result, type);
+        }else if(type.isArray() && inType.equals(String[].class)){
+            final String[] array = (String[])result;
+            final Class componentType = type.getComponentType();
+            result = Array.newInstance(
+                componentType,
+                array.length
+            );
+            for(int i = 0; i < array.length; i++){
+                Array.set(
+                    result,
+                    i,
+                    parseByPropertyEditor(array[i], componentType)
+                );
+            }
+        }
+        inType = result == null ? null : result.getClass();
+        if(inType != null && !isAssignableFrom(type, inType)){
+            throw new PropertySetException(this, "Counld not parse, because type is unmatch. in=" + inType.getName() + ", out=" + type.getName());
         }
         return result;
     }
@@ -768,8 +926,25 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
             }catch(RuntimeException e){
                 throw new PropertySetException(this, e);
             }
+        }else{
+            throw new PropertySetException(this, "Counld not parse, because type is unmatch. in=" + String.class.getName() + ", out=" + editType.getName());
         }
-        return str;
+    }
+    
+    private String formatByPropertyEditor(Object val, Class editType)
+     throws PropertySetException{
+        final PropertyEditor editor
+             = NimbusPropertyEditorManager.findEditor(editType);
+        if(editor != null){
+            try{
+                editor.setValue(val);
+                return editor.getAsText();
+            }catch(RuntimeException e){
+                throw new PropertySetException(this, e);
+            }
+        }else{
+            throw new PropertySetException(this, "Counld not parse, because type is unmatch. in=" + editType.getName() + ", out=" + String.class.getName());
+        }
     }
     
     /**
@@ -982,19 +1157,35 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
     
     // PropertySchemaのJavaDoc
     public boolean validate(Object val) throws PropertyValidateException{
-        if(constrainExpression == null){
-            return true;
-        }
-        try{
-            return constrainExpression.evaluate(val);
-        }catch(Exception e){
-            throw new PropertyValidateException(
-                this,
-                "The constrain is illegal."
-                    + "constrain=" + constrainExpression.constrain
-                    + ", value=" + val,
-                e
-            );
+        if(constrainExpression != null){
+            try{
+                return constrainExpression.evaluate(val);
+            }catch(Exception e){
+                throw new PropertyValidateException(
+                    this,
+                    "The constrain is illegal."
+                        + "constrain=" + constrainExpression.constrain
+                        + ", value=" + val,
+                    e
+                );
+            }
+        }else{
+            Validator validator = getValidator();
+            if(validator == null){
+                return true;
+            }else{
+                try{
+                    return validator.validate(val);
+                }catch(ValidateException e){
+                    throw new PropertyValidateException(
+                        this,
+                        "Validate error."
+                            + "validator=" + validator
+                            + ", value=" + val,
+                        e
+                    );
+                }
+            }
         }
     }
     
@@ -1024,7 +1215,7 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
         }
         buf.append(",constrain=")
             .append(constrainExpression == null
-                 ? null : constrainExpression.constrain);
+                 ? (validator == null ? (validatorName == null ? null : validatorName) : validator) : constrainExpression.constrain);
         if(isPrimaryKey){
             buf.append(",isPrimaryKey=").append(isPrimaryKey);
         }

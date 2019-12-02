@@ -269,8 +269,9 @@ BFIF_00003,Bean flow definition XML fatal : @0 : file=@1\\, line=@2\\, column=@3
 TS___00001,Error occurred while execute schedule task.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 TS___00002,Timeout occurred while wait depends schedule task.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 CC___00001,It failed in the encryption.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
-CC___00002,It failed in the decryption.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+CC___00002,It failed in the sign.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 CC___00003,It failed in the hash.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+CC___00004,It failed in the mac.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 KACS_00001,KeepAliveChecker @0 was recovery.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 KACS_00002,KeepAliveChecker @0 was dead.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 DBSM_00001,It faild to change state of "@0" to "@1".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
@@ -325,9 +326,9 @@ PCFT_00009,The client was connected. connection=@0,50,jp.ossc.nimbus.service.log
 PCFT_00010,The client was closed. connection=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 PCFT_00011,Connection closed. connection=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 PCFT_00012,Requested to start reception. connection=@0\\, from=@1,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
-PCFT_00013,Requested to stop reception. connection=@0\\,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+PCFT_00013,Requested to stop reception. connection=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 PCFT_00014,Accepted to start reception. connection=@0\\, from=@1,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
-PCFT_00015,Accepted to stop reception. connection=@0\\,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+PCFT_00015,Accepted to stop reception. connection=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 PCFT_00016,Requested to connect. connection=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 PCFT_00017,Requested to close. connection=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 PCFT_00018,Connection closed by server. connection=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
@@ -366,7 +367,9 @@ SCS__00008,It failed to analyze keyIndex : subject=@0\\, keyIndex=@1,150,jp.ossc
 SCS__00009,Update request for key "@0" is old\\, discarded. : subject=@1,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 DSCS_00001,It failed to create response message : subject=@0\\, responseSubject=@1\\, responseKey=@2\\, response=@3,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 DSCS_00002,It failed to response : subject=@0\\, response=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
-DSCS_00003,It failed to rehash : subject=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+DSCS_00003,It failed to rehash : service=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+DSCS_00004,Rehash start : service=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+DSCS_00005,Rehash succeeded : service=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 DSS__00001,Select error. It will try to reconnect. : @0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 DSS__00002,It failed to reconnect : @0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 CFTP_00001,It failed to connect to the FTP server. server=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
@@ -407,6 +410,7 @@ BFRS_00028,Illegal Accept header. header=@0,100,jp.ossc.nimbus.service.log.SYSTE
 BFRS_00029,Illegal Accept-Charset header. header=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY,false
 BFRS_00030,Charset of Accept-Charset header is not supported. header=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 BFRS_00031,Unexpected exception occured. path=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+BFRS_00032,Failed to convert request-parameter. path=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 WS___00001,Unexpected exception occured. SessionProperties=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 WS___00002,Illegal Request. Id is null or Ticket is null. IP=@0,100,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 WS___00003,The number of clients has exceeded the maximum size. SessionProperties=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
@@ -466,6 +470,7 @@ TC___00020,Testcase end error : ScenarioGroupId=@0\\, ScenarioId=@1\\, TestcaseI
 TC___00021,Action excute : ActionId=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 TC___00022,Action excute error : ActionId=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 TC___00023,EvaluateAction result is false: ActionId=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+TA___00001,It failed to write file : ActionId=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 RPC__00001,Processing time exceeded threshold. timestamp=@0\\, elapsed=@1\\, thread=@2\\, args=@3\\, stacktrace=@4,0,jp.ossc.nimbus.service.log.SYSTEM_DEBUG_CATEGORY
 RPC__00002,Processing time exceeded threshold. timestamp=@0\\, elapsed=@1\\, thread=@2\\, args=@3\\, stacktrace=@4,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 RPC__00003,Processing time exceeded threshold. timestamp=@0\\, elapsed=@1\\, thread=@2\\, args=@3\\, stacktrace=@4,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY

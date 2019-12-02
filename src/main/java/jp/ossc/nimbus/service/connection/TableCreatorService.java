@@ -60,9 +60,11 @@ public class TableCreatorService extends ServiceBase
     private ServiceName recordListConverterServiceName;
     private StreamConverter recordListConverter;
     
+    private String tableName;
     private String existsTableQuery;
     private String selectQuery;
     private String createTableQuery;
+    private String createTableQueryFilePath;
     private String[] preCreateTableQueries;
     private String[] postCreateTableQueries;
     private String dropTableQuery;
@@ -116,6 +118,13 @@ public class TableCreatorService extends ServiceBase
         return recordListConverterServiceName;
     }
     
+    public void setTableName(String name) {
+        tableName = name;
+    }
+    public String getTableName() {
+        return tableName;
+    }
+    
     public void setExistsTableQuery(String query){
         existsTableQuery = query;
     }
@@ -135,6 +144,13 @@ public class TableCreatorService extends ServiceBase
     }
     public String getCreateTableQuery(){
         return createTableQuery;
+    }
+    
+    public void setCreateTableQueryFilePath(String filePath) {
+        createTableQueryFilePath = filePath;
+    }
+    public String getCreateTableQueryFilePath() {
+        return createTableQueryFilePath;
     }
     
     public void setPreCreateTableQueries(String[] queries){
@@ -416,7 +432,20 @@ public class TableCreatorService extends ServiceBase
             backupRecordList = new RecordList();
             backupRecordList.setSchema(recordListSchema);
         }
-        
+        if(createTableQuery == null && createTableQueryFilePath != null) {
+            StringWriter sw = new StringWriter();
+            InputStreamReader reader = fileEncoding == null ? new InputStreamReader(new FileInputStream(createTableQueryFilePath)) : new InputStreamReader(new FileInputStream(createTableQueryFilePath),fileEncoding);
+            try{
+                int len = 0;
+                char[] buf = new char[1024];
+                while((len = reader.read(buf, 0, buf.length)) > 0){
+                    sw.write(buf, 0, len);
+                }
+                createTableQuery = sw.toString();
+            }finally{
+                reader.close();
+            }
+        }
         final Connection con = connectionFactory.getConnection();
         if(isTransacted){
             if(con.getAutoCommit()){

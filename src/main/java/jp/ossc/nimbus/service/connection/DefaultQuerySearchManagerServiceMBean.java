@@ -119,6 +119,14 @@ public interface DefaultQuerySearchManagerServiceMBean extends ServiceBaseMBean{
     public Class getOutputClass();
     
     /**
+     * 検索結果をバインドするオブジェクトを設定する。<p>
+     * バインドするオブジェクトは、Cloneableを実装し、publicなclone()メソッドを持つ必要がある。<br>
+     *
+     * @param obj 検索結果をバインドするオブジェクト
+     */
+    public void setOutputObject(Cloneable obj);
+    
+    /**
      * 検索結果が必ず一意になるかどうかを設定する。<p>
      * デフォルトは、falseで、検索結果はリストになる。<br>
      *
@@ -175,6 +183,21 @@ public interface DefaultQuerySearchManagerServiceMBean extends ServiceBaseMBean{
      * @return CacheMapサービスのサービス名
      */
     public ServiceName getCacheMapServiceName();
+    
+    /**
+     * 検索結果をストリームに書き出す{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}サービスのサービス名を設定する。<p>
+     * 設定しない場合は、{@link jp.ossc.nimbus.util.converter.BeanJSONConverter BeanJSONConverter}が使用される。<br>
+     *
+     * @param name StreamConverterサービスのサービス名
+     */
+    public void setStreamConverterServiceName(ServiceName name);
+    
+    /**
+     * 検索結果をストリームに書き出す{@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}サービスのサービス名を取得する。<p>
+     *
+     * @return StreamConverterサービスのサービス名
+     */
+    public ServiceName getStreamConverterServiceName();
     
     /**
      * キャッシュのヒット率を取得する。<p>

@@ -31,6 +31,9 @@
  */
 package jp.ossc.nimbus.service.writer.log4j;
 
+import java.io.File;
+import java.io.IOException;
+
 import org.apache.log4j.*;
 
 /**
@@ -119,6 +122,12 @@ public class FileAppenderWriterService extends WriterAppenderWriterService
      * @exception Exception FileAppenderの初期化に失敗した場合
      */
     protected void initWriterAppender(WriterAppender appender) throws Exception{
+        File targetFile = new File(file);
+        if(targetFile.getParentFile() != null && !targetFile.getParentFile().exists()) {
+            if(!targetFile.getParentFile().mkdirs()) {
+                throw new IOException("Could not make directory path=" + targetFile.getParentFile());
+            }
+        }
         super.initWriterAppender(appender);
         final FileAppender fileAppender = (FileAppender)appender;
         fileAppender.setFile(file);

@@ -115,6 +115,11 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     protected RecordSchema recordSchema;
     
     /**
+     * 表層的なレコードスキーマ。<p>
+     */
+    protected RecordSchema superficialRecordSchema;
+    
+    /**
      * レコードのリスト。<p>
      */
     protected List records = Collections.synchronizedList(new ArrayList());
@@ -131,6 +136,8 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     protected boolean[] partUpdateIsAsc;
     
     protected boolean isSynchronized = true;
+    
+    protected DataSet dataSet;
     
     /**
      * 未定義のレコードリストを生成する。<p>
@@ -253,6 +260,34 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
+     * 親となるデータセットを取得する。<p>
+     *
+     * @return データセット
+     */
+    public DataSet getDataSet(){
+        return dataSet;
+    }
+    
+    /**
+     * 親となるデータセットを設定する。<p>
+     *
+     * @param ds データセット
+     */
+    protected void setDataSet(DataSet ds){
+        dataSet = ds;
+        if(records.size() != 0){
+            DataSet ds2 = ((Record)records.get(0)).getDataSet();
+            if(ds2 != dataSet){
+                final Iterator itr = records.iterator();
+                while(itr.hasNext()){
+                    Record record = (Record)itr.next();
+                    record.setDataSet(dataSet);
+                }
+            }
+        }
+    }
+    
+    /**
      * レコード名を取得する。<p>
      *
      * @return レコード名
@@ -343,8 +378,9 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     public void replaceRecordSchema(RecordSchema schema) throws PropertySchemaDefineException{
         
         if(recordSchema != null && schema != null && size() != 0){
-            for(int i = 0, imax = records.size(); i < imax; i++){
-                Record record = (Record)records.get(i);
+            final Iterator itr = records.iterator();
+            while(itr.hasNext()){
+                Record record = (Record)itr.next();
                 record.replaceRecordSchema(schema);
             }
         }
@@ -370,12 +406,115 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
+     * 表層的なプロパティを設定する。<p>
+     * {@link #setSuperficialProperties(String[], boolean) setSuperficialProperties(propertyNames, true)}と同じ。<br>
+     *
+     * @param propertyNames 表層的に見せたいプロパティ名の配列。nullを指定すると、クリアする
+     * @exception PropertySchemaDefineException プロパティのスキーマ定義に失敗した場合
+     */
+    public void setSuperficialProperties(String[] propertyNames) throws PropertySchemaDefineException{
+        setSuperficialProperties(propertyNames, true);
+    }
+    
+    /**
+     * 表層的なプロパティを設定する。<p>
+     * 表層的なプロパティ以外のプロパティは、参照及び設定できなくなる。<br>
+     *
+     * @param propertyNames 表層的に見せたいプロパティ名の配列。nullを指定すると、クリアする
+     * @param isIgnoreUnknown trueの場合、存在しないプロパティを指定された場合に、無視する。falseの場合は、例外をthrowする
+     * @exception PropertySchemaDefineException プロパティのスキーマ定義に失敗した場合
+     */
+    public void setSuperficialProperties(String[] propertyNames, boolean isIgnoreUnknown) throws PropertySchemaDefineException{
+        if(recordSchema == null){
+            throw new PropertySchemaDefineException("Schema is undefined.");
+        }
+        if(propertyNames == null){
+            setSuperficialRecordSchema(null);
+        }else{
+            setSuperficialRecordSchema(recordSchema.createSuperficialRecordSchema(propertyNames, isIgnoreUnknown));
+        }
+    }
+    
+    /**
+     * 表層的なプロパティを設定する。<p>
+     * {@link #setSuperficialProperties(int[], boolean) setSuperficialProperties(propertyIndexes, true)}と同じ。<br>
+     *
+     * @param propertyIndexes 表層的に見せたいプロパティのインデックス配列。nullを指定すると、クリアする
+     * @exception PropertySchemaDefineException プロパティのスキーマ定義に失敗した場合
+     */
+    public void setSuperficialProperties(int[] propertyIndexes) throws PropertySchemaDefineException{
+        setSuperficialProperties(propertyIndexes, true);
+    }
+    
+    /**
+     * 表層的なプロパティを設定する。<p>
+     * 表層的なプロパティ以外のプロパティは、参照及び設定できなくなる。<br>
+     *
+     * @param propertyIndexes 表層的に見せたいプロパティのインデックス配列。nullを指定すると、クリアする
+     * @param isIgnoreUnknown trueの場合、存在しないプロパティを指定された場合に、無視する。falseの場合は、例外をthrowする
+     * @exception PropertySchemaDefineException プロパティのスキーマ定義に失敗した場合
+     */
+    public void setSuperficialProperties(int[] propertyIndexes, boolean isIgnoreUnknown) throws PropertySchemaDefineException{
+        if(recordSchema == null){
+            throw new PropertySchemaDefineException("Schema is undefined.");
+        }
+        if(propertyIndexes == null){
+            setSuperficialRecordSchema(null);
+        }else{
+            setSuperficialRecordSchema(recordSchema.createSuperficialRecordSchema(propertyIndexes, isIgnoreUnknown));
+        }
+    }
+    
+    /**
+     * 表層的なレコードスキーマを取得する。<p>
+     *
+     * @return 表層的なレコードスキーマ
+     */
+    protected RecordSchema getSuperficialRecordSchema(){
+        return superficialRecordSchema;
+    }
+    
+    /**
+     * 表層的なレコードスキーマを設定する。<p>
+     *
+     * @param schema 表層的なレコードスキーマ
+     */
+    protected void setSuperficialRecordSchema(RecordSchema schema){
+        final boolean isChange = superficialRecordSchema != schema;
+        superficialRecordSchema = schema;
+        if(isChange && records.size() != 0){
+            final Iterator itr = records.iterator();
+            while(itr.hasNext()){
+                Record record = (Record)itr.next();
+                record.setSuperficialRecordSchema(schema);
+            }
+        }
+    }
+    
+    /**
+     * 表層的なプロパティのインデックスから、実質的なプロパティのインデックスを取得する。<p>
+     *
+     * @param index 表層的なプロパティのインデックス
+     * @return 実質的なプロパティのインデックス
+     */
+    protected int getSubstantialIndex(int index){
+        if(superficialRecordSchema == null || recordSchema == null){
+            return index;
+        }
+        PropertySchema propSchema = superficialRecordSchema.getPropertySchema(index);
+        if(propSchema == null){
+            return -1;
+        }
+        return recordSchema.getPropertyIndex(propSchema.getName());
+    }
+    
+    /**
      * レコードスキーマを取得する。<p>
      *
      * @return レコードスキーマ
      */
     public RecordSchema getRecordSchema(){
-        return recordSchema;
+        return superficialRecordSchema == null ? recordSchema : superficialRecordSchema;
     }
     
     /**
@@ -421,15 +560,21 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
      * @return 新しいレコード
      */
     public Record createRecord(){
+        Record record = null;
         if(recordClass == null){
-            return new Record(recordSchema);
+            record = new Record(recordSchema);
         }else{
             try{
-                return (Record)recordClass.newInstance();
+                record = (Record)recordClass.newInstance();
             }catch(Exception e){
-                return new Record(recordSchema);
+                record = new Record(recordSchema);
             }
         }
+        if(superficialRecordSchema != null){
+            record.setSuperficialRecordSchema(superficialRecordSchema);
+        }
+        record.setDataSet(dataSet);
+        return record;
     }
     
     /**
@@ -896,6 +1041,7 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
         }
         rec.setIndex(size());
         rec.setRecordList(this);
+        rec.setDataSet(dataSet);
         boolean isAdd = records.add(rec);
         if(isAdd){
             indexManager.add(rec);
@@ -929,6 +1075,7 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
         }
         rec.setIndex(index);
         rec.setRecordList(this);
+        rec.setDataSet(dataSet);
         records.add(index, rec);
         for(int i = index + 1, imax = size(); i < imax; i++){
             Record record = (Record)get(i);
@@ -963,11 +1110,13 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
         }
         rec.setIndex(index);
         rec.setRecordList(this);
+        rec.setDataSet(dataSet);
         Record old = (Record)records.set(index, rec);
         indexManager.remove(old);
         indexManager.add(rec);
         old.setIndex(-1);
         old.setRecordList(null);
+        old.setDataSet(null);
         return old;
     }
     
@@ -1022,6 +1171,7 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
             indexManager.remove(old);
             ((Record)old).setIndex(-1);
             ((Record)old).setRecordList(null);
+            ((Record)old).setDataSet(null);
             for(int i = index, imax = size(); i < imax; i++){
                 Record record = (Record)get(i);
                 if(record != null){
@@ -1110,11 +1260,14 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
         }
     }
     private void clearInternal(){
-        for(int i = 0, imax = records.size(); i < imax; i++){
-            Record record = (Record)records.remove(0);
+        final Iterator itr = records.iterator();
+        while(itr.hasNext()){
+            Record record = (Record)itr.next();
+            itr.remove();
             if(record != null){
                 record.setIndex(-1);
                 record.setRecordList(null);
+                record.setDataSet(null);
             }
         }
         indexManager.clear();
@@ -1176,8 +1329,9 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     private boolean validateInternal() throws PropertyGetException, PropertyValidateException{
-        for(int i = 0, imax = records.size(); i < imax; i++){
-            Record record = (Record)records.get(i);
+        final Iterator itr = records.iterator();
+        while(itr.hasNext()){
+            Record record = (Record)itr.next();
             if(!record.validate()){
                 return false;
             }
@@ -1244,14 +1398,16 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
         }
         if(isSynchronized){
             synchronized(records){
-                for(int i = 0; i < records.size(); i++){
-                    final Record rec = ((Record)records.get(i)).cloneRecord();
+                final Iterator itr = records.iterator();
+                while(itr.hasNext()){
+                    final Record rec = ((Record)itr.next()).cloneRecord();
                     recList.addRecord(rec);
                 }
             }
         }else{
-            for(int i = 0; i < records.size(); i++){
-                final Record rec = ((Record)records.get(i)).cloneRecord();
+            final Iterator itr = records.iterator();
+            while(itr.hasNext()){
+                final Record rec = ((Record)itr.next()).cloneRecord();
                 recList.addRecord(rec);
             }
         }
@@ -1330,8 +1486,9 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
         if(records == null){
             records = new PartUpdateRecords();
         }
-        for(int i = 0, imax = this.records.size(); i < imax; i++){
-            Record record = (Record)this.records.get(i);
+        final Iterator itr = this.records.iterator();
+        while(itr.hasNext()){
+            final Record record = (Record)itr.next();
             CodeMasterUpdateKey key = record.createCodeMasterUpdateKey();
             key.setUpdateType(updateType);
             if(containsValue){
@@ -1415,8 +1572,9 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
         final RecordList newRecList = cloneSchema();
         CodeMasterUpdateKey tmpKey = new CodeMasterUpdateKey();
         CodeMasterUpdateKey key = null;
-        for(int i = 0, imax = this.records.size(); i < imax; i++){
-            Record oldRecord = (Record)this.records.get(i);
+        Iterator itr = this.records.iterator();
+        while(itr.hasNext()){
+            Record oldRecord = (Record)itr.next();
             tmpKey = oldRecord.createCodeMasterUpdateKey(tmpKey);
             key = records == null ? null : records.getKey(tmpKey);
             Record newRecord = null;
@@ -1439,7 +1597,7 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
             }
         }
         if(records != null && records.size() != 0){
-            final Iterator itr = records.getRecords().entrySet().iterator();
+            itr = records.getRecords().entrySet().iterator();
             while(itr.hasNext()){
                 Map.Entry entry = (Map.Entry)itr.next();
                 switch(((CodeMasterUpdateKey)entry.getKey()).getUpdateType()){
@@ -1502,8 +1660,9 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
         out.writeObject(partUpdateOrderBy);
         out.writeObject(partUpdateIsAsc);
         writeInt(out, records.size());
-        for(int i = 0, imax = records.size(); i < imax; i++){
-            Record record = (Record)records.get(i);
+        final Iterator itr = records.iterator();
+        while(itr.hasNext()){
+            Record record = (Record)itr.next();
             record.writeExternalValues(out);
         }
     }
@@ -1511,6 +1670,16 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     protected void writeSchema(ObjectOutput out) throws IOException{
         out.writeObject(name);
         out.writeObject(schema);
+        if(superficialRecordSchema == null){
+            out.writeObject(null);
+        }else{
+            PropertySchema[] propSchemata = superficialRecordSchema.getPropertySchemata();
+            String[] propNames = new String[propSchemata.length];
+            for(int i = 0; i < propNames.length; i++){
+                propNames[i] = propSchemata[i].getName();
+            }
+            out.writeObject(propNames);
+        }
         out.writeObject(recordClass);
         out.writeBoolean(isSynchronized);
     }
@@ -1541,6 +1710,10 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     protected void readSchema(ObjectInput in) throws IOException, ClassNotFoundException{
         name = (String)in.readObject();
         schema = (String)in.readObject();
+        String[] propNames = (String[])in.readObject();
+        if(recordSchema != null && propNames != null){
+            superficialRecordSchema = recordSchema.createSuperficialRecordSchema(propNames, true);
+        }
         recordClass = (Class)in.readObject();
         isSynchronized = in.readBoolean();
     }

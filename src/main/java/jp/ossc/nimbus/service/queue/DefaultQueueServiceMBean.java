@@ -46,7 +46,7 @@ public interface DefaultQueueServiceMBean extends ServiceBaseMBean{
     /**
      * キューの初期容量を設定する。<p>
      * サービスの生成時に使用される属性なので、生成後の変更はできない。<br>
-     * 0以上の値を設定すると有効になる。デフォルト値は、-1で「初期容量を指定しない」である。<br>
+     * 0以上の値を設定すると有効になり、内部リストとして、java.util.ArrayListが使用される。デフォルト値は、-1で「初期容量を指定しない」で、内部リストとして、java.util.LinkedListが使用される。<br>
      *
      * @param initial キューの初期容量
      */
@@ -62,7 +62,7 @@ public interface DefaultQueueServiceMBean extends ServiceBaseMBean{
     /**
      * キューの要素数が容量を越えた時に、増加させる容量を設定する。<p>
      * サービスの生成時に使用される属性なので、生成後の変更はできない。<br>
-     * 0以上の値を設定すると有効になる。また、有効な初期容量が設定されていない場合は、無効となる。デフォルト値は、-1で「増加容量を指定しない」である。<br>
+     * 0以上の値を設定すると有効になり、内部リストとして、java.util.Vectorが使用される。また、有効な初期容量が設定されていない場合は、無効となる。デフォルト値は、-1で「増加容量を指定しない」である。<br>
      *
      * @param increment 増加容量
      */

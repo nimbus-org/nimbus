@@ -280,6 +280,52 @@ public class Utility{
     }
     
     /**
+     * 指定された文字列内のプロパティ参照文字列をサービスプロパティの値に置換する。<p>
+     *
+     * @param str 文字列
+     * @return プロパティ参照文字列をサービスプロパティの値に置換した文字列
+     */
+    public static String replaceServiceProperty(
+        ServiceMetaData service,
+        String str
+    ){
+        String result = str;
+        if(result == null){
+            return null;
+        }
+        final int startIndex = result.indexOf(SYSTEM_PROPERTY_START);
+        if(startIndex == -1){
+            return result;
+        }
+        final int endIndex = result.indexOf(SYSTEM_PROPERTY_END, startIndex);
+        if(endIndex == -1){
+            return result;
+        }
+        final String propStr = result.substring(
+            startIndex + SYSTEM_PROPERTY_START.length(),
+            endIndex
+        );
+        String prop = null;
+        if(propStr != null && propStr.length() != 0){
+            prop = service.getProperty(propStr);
+        }
+        if(prop == null){
+            return result.substring(0, endIndex + SYSTEM_PROPERTY_END.length())
+             + replaceServiceProperty(
+                service,
+                result.substring(endIndex + SYSTEM_PROPERTY_END.length())
+             );
+        }else{
+            result = result.substring(0, startIndex) + prop
+                 + result.substring(endIndex + SYSTEM_PROPERTY_END.length());
+        }
+        if(result.indexOf(SYSTEM_PROPERTY_START) != -1){
+            return replaceServiceProperty(service, result);
+        }
+        return result;
+    }
+    
+    /**
      * 指定された文字列内のプロパティ参照文字列をサービスロード構成プロパティの値に置換する。<p>
      *
      * @param str 文字列
@@ -404,10 +450,14 @@ public class Utility{
         if(metaData != null){
             ServerMetaData serverData = null;
             ManagerMetaData mngData = null;
+            ServiceMetaData serviceData = null;
             MetaData parent = metaData;
             do{
                 if(parent == null){
                     break;
+                }else if(serviceData == null
+                     && parent instanceof ServiceMetaData){
+                    serviceData = (ServiceMetaData)parent;
                 }else if(mngData == null
                      && parent instanceof ManagerMetaData){
                     mngData = (ManagerMetaData)parent;
@@ -417,6 +467,12 @@ public class Utility{
                     break;
                 }
             }while((parent = parent.getParent()) != null);
+            if(serviceData != null){
+                prop = serviceData.getProperty(name);
+                if(prop != null){
+                    return prop;
+                }
+            }
             if(mngData != null){
                 prop = mngData.getProperty(name);
                 if(prop != null){
@@ -431,6 +487,79 @@ public class Utility{
             }
         }
         return ServiceManagerFactory.getProperty(name);
+    }
+    
+    /**
+     * 環境変数プロパティを取得する。<p>
+     * System.getProperties().containsKey(String) &gt; {@link ServiceLoaderConfig#existsProperty(String)} &gt; {@link ServiceManager#existsProperty(String)} &gt; {@link ServiceManagerFactory#existsProperty(String)}
+     *
+     * @param name プロパティ名
+     * @param config ServiceLoaderConfig
+     * @param manager ServiceManager
+     * @param metaData メタデータ
+     */
+    public static boolean existsProperty(
+        String name,
+        ServiceLoaderConfig config,
+        ServiceManager manager,
+        MetaData metaData
+    ){
+        boolean exists = System.getProperties().containsKey(name);
+        if(exists){
+            return exists;
+        }
+        if(config != null){
+            exists = config.existsProperty(name);
+            if(exists){
+                return exists;
+            }
+        }
+        if(manager != null){
+            exists = manager.existsProperty(name);
+            if(exists){
+                return exists;
+            }
+        }
+        if(metaData != null){
+            ServerMetaData serverData = null;
+            ManagerMetaData mngData = null;
+            ServiceMetaData serviceData = null;
+            MetaData parent = metaData;
+            do{
+                if(parent == null){
+                    break;
+                }else if(serviceData == null
+                     && parent instanceof ServiceMetaData){
+                    serviceData = (ServiceMetaData)parent;
+                }else if(mngData == null
+                     && parent instanceof ManagerMetaData){
+                    mngData = (ManagerMetaData)parent;
+                }else if(serverData == null
+                     && parent instanceof ServerMetaData){
+                    serverData = (ServerMetaData)parent;
+                    break;
+                }
+            }while((parent = parent.getParent()) != null);
+            if(serviceData != null){
+                exists = serviceData.existsProperty(name);
+                if(exists){
+                    return exists;
+                }
+            }
+            if(mngData != null){
+                exists = mngData.existsProperty(name);
+                if(exists){
+                    return exists;
+                }
+            }
+            if(serverData != null){
+                exists = serverData.existsProperty(name);
+                if(exists){
+                    return exists;
+                }
+            }
+        }
+        return ServiceManagerFactory.existsProperty(name);
     }
     
     public static Class convertStringToClass(String typeStr)

@@ -276,6 +276,9 @@ public class BeanShellInterpreterService extends ServiceBase
         System.out.println();
         System.out.println("[options]");
         System.out.println();
+        System.out.println(" [-servicedir path filter]");
+        System.out.println("  インタープリタサービスの起動に必要なサービス定義ファイルのディレクトリとサービス定義ファイルを特定するフィルタを指定します。");
+        System.out.println();
         System.out.println(" [-servicepath paths]");
         System.out.println("  インタープリタサービスの起動に必要なサービス定義ファイルのパスを指定します。");
         System.out.println("  パスセパレータ区切りで複数指定可能です。");
@@ -344,8 +347,11 @@ public class BeanShellInterpreterService extends ServiceBase
         }
         
         boolean option = false;
+        boolean isServiceDir = false;
         String key = null;
         ServiceName serviceName = null;
+        List serviceDirs = null;
+        String serviceDir = null;
         List servicePaths = null;
         List files = null;
         String encode = null;
@@ -358,6 +364,11 @@ public class BeanShellInterpreterService extends ServiceBase
                     ServiceNameEditor editor = new ServiceNameEditor();
                     editor.setAsText(args[i]);
                     serviceName = (ServiceName)editor.getValue();
+                }else if(key.equals("-servicedir")){
+                    if(serviceDirs == null){
+                        serviceDirs = new ArrayList();
+                    }
+                    serviceDirs.add(new String[]{serviceDir, args[i]});
                 }else if(key.equals("-servicepath")){
                     servicePaths = parsePaths(args[i]);
                 }else if(key.equals("-file")){
@@ -405,21 +416,40 @@ public class BeanShellInterpreterService extends ServiceBase
                 ){
                     option = true;
                     key = args[i];
+                }else if(args[i].equals("-servicedir")){
+                    isServiceDir = true;
+                    key = args[i];
                 }else if(args[i].equals("-help")){
                     usage();
                     return;
+                }else if(isServiceDir){
+                    isServiceDir = false;
+                    option = true;
+                    serviceDir = args[i];
                 }else{
                     codeWriter.print(" " + args[i]);
                 }
             }
         }
         Interpreter interpreter = null;
-        if(servicePaths != null){
-            for(int i = 0, imax = servicePaths.size(); i < imax; i++){
-                if(!ServiceManagerFactory.loadManager((String)servicePaths.get(i))){
-                    System.out.println("Service load error." + servicePaths.get(i));
-                    Thread.sleep(1000);
-                    System.exit(-1);
+        if(serviceDirs != null || servicePaths != null){
+            if(serviceDirs != null){
+                for(int i = 0, imax = serviceDirs.size(); i < imax; i++){
+                    String[] array = (String[])serviceDirs.get(i);
+                    if(!ServiceManagerFactory.loadManagers(array[0], array[1])){
+                        System.out.println("Service load error. path=" + array[0] + ", filter=" + array[1]);
+                        Thread.sleep(1000);
+                        System.exit(-1);
+                    }
+                }
+            }
+            if(servicePaths != null){
+                for(int i = 0, imax = servicePaths.size(); i < imax; i++){
+                    if(!ServiceManagerFactory.loadManager((String)servicePaths.get(i))){
+                        System.out.println("Service load error." + servicePaths.get(i));
+                        Thread.sleep(1000);
+                        System.exit(-1);
+                    }
                 }
             }
             if(!ServiceManagerFactory.checkLoadManagerCompleted()){
@@ -500,6 +530,12 @@ public class BeanShellInterpreterService extends ServiceBase
             if(servicePaths != null){
                 for(int i = servicePaths.size(); --i >= 0;){
                     ServiceManagerFactory.unloadManager((String)servicePaths.get(i));
+                }
+            }
+            if(serviceDirs != null){
+                for(int i = serviceDirs.size(); --i >= 0;){
+                    String[] array = (String[])serviceDirs.get(i);
+                    ServiceManagerFactory.unloadManagers(array[0], array[1]);
                 }
             }
         }

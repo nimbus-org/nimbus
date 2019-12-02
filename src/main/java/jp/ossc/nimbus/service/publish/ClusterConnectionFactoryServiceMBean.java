@@ -91,36 +91,36 @@ public interface ClusterConnectionFactoryServiceMBean extends ServiceBaseMBean{
     public int getRMIPort();
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ClusterService}サービスのサービス名を設定する。<p>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster Cluster}サービスのサービス名を設定する。<p>
      * クラスタのメンバー情報に、{@link ClientConnectionFactory}リモートオブジェクトを設定する事で、クラスタに参加しているClientConnectionFactoryをクライアント側で共有する。<br>
      *
-     * @param name ClusterServiceサービスのサービス名
+     * @param name Clusterサービスのサービス名
      */
     public void setClusterServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ClusterService}サービスのサービス名を取得する。<p>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster Cluster}サービスのサービス名を取得する。<p>
      *
-     * @return ClusterServiceサービスのサービス名
+     * @return Clusterサービスのサービス名
      */
     public ServiceName getClusterServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService クラスタ}サービスのメンバー情報のオプションキーを設定する。<p>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster クラスタ}サービスのメンバー情報のオプションキーを設定する。<p>
      *
      * @param key オプションキー
      */
     public void setClusterOptionKey(String key);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService クラスタ}サービスのメンバー情報のオプションキーを取得する。<p>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster クラスタ}サービスのメンバー情報のオプションキーを取得する。<p>
      *
      * @return オプションキー
      */
     public String getClusterOptionKey();
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService クラスタ}サービスのクラスタ参加を制御するかどうかを設定する。<p>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster クラスタ}サービスのクラスタ参加を制御するかどうかを設定する。<p>
      * デフォルトは、trueで制御する。<br>
      *
      * @param isJoin 制御する場合、true
@@ -128,7 +128,7 @@ public interface ClusterConnectionFactoryServiceMBean extends ServiceBaseMBean{
     public void setClusterJoin(boolean isJoin);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService クラスタ}サービスのクラスタ参加を制御するかどうかを判定する。<p>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster クラスタ}サービスのクラスタ参加を制御するかどうかを判定する。<p>
      *
      * @return trueの場合、制御する
      */
@@ -150,6 +150,7 @@ public interface ClusterConnectionFactoryServiceMBean extends ServiceBaseMBean{
     
     /**
      * {@link jp.ossc.nimbus.service.publish.ClientConnection ClientConnection}のIDを生成する{@link jp.ossc.nimbus.service.sequence.Sequence Sequence}サービスのサービス名を設定する。<p>
+     * 複数の接続に対して、異なるIDを振りたい場合に設定する。<br>
      * 
      * @param name Sequenceサービスのサービス名
      */

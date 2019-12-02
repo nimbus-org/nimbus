@@ -56,9 +56,13 @@ public class IfDefMetaData extends MetaData
     
     protected static final String VALUE_ATTRIBUTE_NAME = "value";
     
+    protected static final String NOT_ATTRIBUTE_NAME = "not";
+    
     protected String name;
     
     protected String value;
+    
+    protected boolean isNot;
     
     protected List childrenMetaData = new ArrayList();
     
@@ -139,13 +143,24 @@ public class IfDefMetaData extends MetaData
     }
     
     public boolean isMatch(){
-        String prop = Utility.getProperty(
-            name,
-            getServiceLoaderConfig(),
-            getServiceManager(),
-            this
-        );
-        return value.equals(prop);
+        boolean isMatch = false;
+        if(value == null){
+            isMatch = Utility.existsProperty(
+                name,
+                getServiceLoaderConfig(),
+                getServiceManager(),
+                this
+            );
+        }else{
+            String prop = Utility.getProperty(
+                name,
+                getServiceLoaderConfig(),
+                getServiceManager(),
+                this
+            );
+            isMatch = value.equals(prop);
+        }
+        return isNot ? !isMatch : isMatch;
     }
     
     protected ServiceManager getServiceManager(){
@@ -193,7 +208,8 @@ public class IfDefMetaData extends MetaData
             );
         }
         name = getUniqueAttribute(element, NAME_ATTRIBUTE_NAME);
-        value = getUniqueAttribute(element, VALUE_ATTRIBUTE_NAME);
+        value = getOptionalAttribute(element, VALUE_ATTRIBUTE_NAME);
+        isNot = getOptionalBooleanAttribute(element, NOT_ATTRIBUTE_NAME, false);
         this.element = element;
     }
     
@@ -211,8 +227,14 @@ public class IfDefMetaData extends MetaData
         buf.append('<').append(IFDEF_TAG_NAME);
         buf.append(' ').append(NAME_ATTRIBUTE_NAME)
             .append("=\"").append(name).append("\"");
-        buf.append(' ').append(VALUE_ATTRIBUTE_NAME)
-            .append("=\"").append(value).append("\"");
+        if(value != null){
+            buf.append(' ').append(VALUE_ATTRIBUTE_NAME)
+                .append("=\"").append(value).append("\"");
+        }
+        if(isNot){
+            buf.append(' ').append(NOT_ATTRIBUTE_NAME)
+                .append("=\"true\"");
+        }
         buf.append(">");
         if(childrenMetaData.size() != 0){
             buf.append(LINE_SEPARATOR);
@@ -234,7 +256,7 @@ public class IfDefMetaData extends MetaData
     
     public Object clone(){
         IfDefMetaData clone = (IfDefMetaData)super.clone();
-        if(childrenMetaData.size() != 0){
+        if(childrenMetaData != null){
             clone.childrenMetaData = new ArrayList(childrenMetaData.size());
             for(int i = 0, imax = childrenMetaData.size(); i < imax; i++){
                 MetaData child = (MetaData)((MetaData)childrenMetaData.get(i)).clone();

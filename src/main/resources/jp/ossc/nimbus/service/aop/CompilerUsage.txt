@@ -1,27 +1,30 @@
-ã‚³ãƒžãƒ³ãƒ‰ä½¿ç”¨æ–¹æ³•ï¼š
+ƒRƒ}ƒ“ƒhŽg—p•û–@F
  java jp.ossc.nimbus.service.aop.Compiler [options] [class files]
 
 [options]
 
+ [-servicedir path filter]
+  ƒRƒ“ƒpƒCƒ‹‚É•K—v‚ÈƒAƒXƒyƒNƒg‚ð’è‹`‚µ‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌƒfƒBƒŒƒNƒgƒŠ‚ÆƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ð“Á’è‚·‚éƒtƒBƒ‹ƒ^‚ðŽw’è‚µ‚Ü‚·B
+
  [-servicepath paths]
-  ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã«å¿…è¦ãªã‚¢ã‚¹ãƒšã‚¯ãƒˆã‚’å®šç¾©ã—ãŸã‚µãƒ¼ãƒ“ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’æŒ‡å®šã—ã¾ã™ã€‚
-  ã“ã®æŒ‡å®šã¯å¿…é ˆã§ã™ã€‚
-  ;åŒºåˆ‡ã‚Šã§è¤‡æ•°æŒ‡å®šå¯èƒ½ã§ã™ã€‚
+  ƒRƒ“ƒpƒCƒ‹‚É•K—v‚ÈƒAƒXƒyƒNƒg‚ð’è‹`‚µ‚½ƒT[ƒrƒX’è‹`ƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ðŽw’è‚µ‚Ü‚·B
+  ‚±‚ÌŽw’è‚Í•K{‚Å‚·B
+  ƒpƒXƒZƒpƒŒ[ƒ^‹æØ‚è‚Å•¡”Žw’è‰Â”\‚Å‚·B
 
  [-d directory]
-  å‡ºåŠ›å…ˆã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’æŒ‡å®šã—ã¾ã™ã€‚
-  ã“ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã®æŒ‡å®šãŒãªã„å ´åˆã¯ã€å®Ÿè¡Œæ™‚ã®ã‚«ãƒ¬ãƒ³ãƒˆã«å‡ºåŠ›ã—ã¾ã™ã€‚
+  o—Íæ‚ÌƒfƒBƒŒƒNƒgƒŠ‚ðŽw’è‚µ‚Ü‚·B
+  ‚±‚ÌƒIƒvƒVƒ‡ƒ“‚ÌŽw’è‚ª‚È‚¢ê‡‚ÍAŽÀsŽž‚ÌƒJƒŒƒ“ƒg‚Éo—Í‚µ‚Ü‚·B
 
  [-v]
-  å®Ÿè¡Œã®è©³ç´°ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
+  ŽÀs‚ÌÚ×‚ð•\Ž¦‚µ‚Ü‚·B
 
  [-help]
-  ãƒ˜ãƒ«ãƒ—ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
+  ƒwƒ‹ƒv‚ð•\Ž¦‚µ‚Ü‚·B
 
 [class names]
- ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã™ã‚‹ã‚¯ãƒ©ã‚¹åã‚’æŒ‡å®šã—ã¾ã™ã€‚
- ã“ã“ã§æŒ‡å®šã™ã‚‹ã‚¯ãƒ©ã‚¹ã¯ã€ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ã«å­˜åœ¨ã—ãªã‘ã‚Œã°ãªã‚Šã¾ã›ã‚“ã€‚
- ã‚¹ãƒšãƒ¼ã‚¹åŒºåˆ‡ã‚Šã§è¤‡æ•°æŒ‡å®šå¯èƒ½ã§ã™ã€‚
+ ƒRƒ“ƒpƒCƒ‹‚·‚éƒNƒ‰ƒX–¼‚ðŽw’è‚µ‚Ü‚·B
+ ‚±‚±‚ÅŽw’è‚·‚éƒNƒ‰ƒX‚ÍAƒNƒ‰ƒXƒpƒX‚É‘¶Ý‚µ‚È‚¯‚ê‚Î‚È‚è‚Ü‚¹‚ñB
+ ƒXƒy[ƒX‹æØ‚è‚Å•¡”Žw’è‰Â”\‚Å‚·B
 
-ä½¿ç”¨ä¾‹ : 
+Žg—p—á : 
    java -classpath classes;lib/javassist-3.0.jar;lib/nimbus.jar jp.ossc.nimbus.service.aop.Compiler -servicepath aspect-service.xml sample.Sample1 sample.Sample2

@@ -36,6 +36,7 @@ import java.lang.reflect.*;
 import jp.ossc.nimbus.beans.MethodEditor;
 import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.aop.*;
+import jp.ossc.nimbus.service.context.Context;
 
 /**
  * リモート呼び出しクライアントサービス。<p>
@@ -61,6 +62,8 @@ public class RemoteClientService extends FactoryServiceBase
     private Object proxy;
     private boolean isCreateNewProxy;
     private boolean isCreateInterceptorChainByProxy;
+    private ServiceName threadContextServiceName;
+    private Context threadContext;
     
     // RemoteClientServiceMBean
     public void setRemoteInterfaceClassName(String className){
@@ -125,6 +128,15 @@ public class RemoteClientService extends FactoryServiceBase
         return isCreateInterceptorChainByProxy;
     }
     
+    // RemoteClientServiceMBean
+    public void setThreadContextServiceName(ServiceName name){
+        threadContextServiceName = name;
+    }
+    // RemoteClientServiceMBean
+    public ServiceName getThreadContextServiceName(){
+        return threadContextServiceName;
+    }
+    
     /**
      * サービスの開始処理を行う。<p>
      *
@@ -149,6 +161,9 @@ public class RemoteClientService extends FactoryServiceBase
             true,
             NimbusClassLoader.getInstance()
         );
+        if(threadContextServiceName != null){
+            threadContext = (Context)ServiceManagerFactory.getServiceObject(threadContextServiceName);
+        }
     }
     
     /**
@@ -167,8 +182,9 @@ public class RemoteClientService extends FactoryServiceBase
                     remoteServiceName,
                     interceptorChainListServiceName,
                     invokerServiceName,
-                    isCreateInterceptorChainByProxy
-                ) : new ClientInvocationHandler(remoteServiceName, interceptorChainFactory)
+                    isCreateInterceptorChainByProxy,
+                    threadContext
+                ) : new ClientInvocationHandler(remoteServiceName, interceptorChainFactory, threadContext)
             );
         }else{
             if(proxy == null){
@@ -179,8 +195,9 @@ public class RemoteClientService extends FactoryServiceBase
                         remoteServiceName,
                         interceptorChainListServiceName,
                         invokerServiceName,
-                        isCreateInterceptorChainByProxy
-                    ) : new ClientInvocationHandler(remoteServiceName, interceptorChainFactory)
+                        isCreateInterceptorChainByProxy,
+                        threadContext
+                    ) : new ClientInvocationHandler(remoteServiceName, interceptorChainFactory, threadContext)
                 );
             }
             return proxy;
@@ -195,21 +212,25 @@ public class RemoteClientService extends FactoryServiceBase
         private transient final InterceptorChain chain;
         private ServiceName remoteServiceName;
         private transient InterceptorChainFactory interceptorChainFactory;
+        private transient Context threadContext;
         
         public ClientInvocationHandler(
             ServiceName remoteServiceName,
-            InterceptorChainFactory interceptorChainFactory
+            InterceptorChainFactory interceptorChainFactory,
+            Context threadContext
         ){
             this.remoteServiceName = remoteServiceName;
             this.interceptorChainFactory = interceptorChainFactory;
             chain = null;
+            this.threadContext = threadContext;
         }
         
         public ClientInvocationHandler(
             ServiceName remoteServiceName,
             ServiceName interceptorChainListServiceName,
             ServiceName invokerServiceName,
-            boolean isCreateInterceptorChainByProxy
+            boolean isCreateInterceptorChainByProxy,
+            Context threadContext
         ){
             this.remoteServiceName = remoteServiceName;
             if(isCreateInterceptorChainByProxy){
@@ -224,6 +245,7 @@ public class RemoteClientService extends FactoryServiceBase
                     invokerServiceName
                 );
             }
+            this.threadContext = threadContext;
         }
         public Object invoke(
             Object proxy,
@@ -235,8 +257,15 @@ public class RemoteClientService extends FactoryServiceBase
                 method,
                 args
             );
-            if(remoteServiceName != null){
-                ctx.setTargetObject(remoteServiceName);
+            ServiceName serviceName = remoteServiceName;
+            if(threadContext != null){
+                serviceName = (ServiceName)threadContext.get(CONTEXT_KEY_REMOTE_SERVICE_NAME);
+            }
+            if(serviceName == null){
+                serviceName = remoteServiceName;
+            }
+            if(serviceName != null){
+                ctx.setTargetObject(serviceName);
             }
             InterceptorChain chain = this.chain;
             if(interceptorChainFactory != null){

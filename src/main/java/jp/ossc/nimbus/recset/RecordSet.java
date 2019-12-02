@@ -2986,7 +2986,10 @@ public class RecordSet implements Serializable, PartUpdate, Cloneable{
             return obj;
         }
         if(obj instanceof String){
-            obj = mCrypt.doDecode((String)obj);
+            try{
+                obj = mCrypt.doDecode((String)obj);
+            }catch(Exception e){
+            }
         }
         return obj;
     }

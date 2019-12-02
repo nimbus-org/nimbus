@@ -276,9 +276,6 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
             threadContext = (Context)ServiceManagerFactory
                 .getServiceObject(threadContextServiceName);
         }
-        if(loginPath == null || loginPath.length == 0){
-            throw new IllegalArgumentException("LoginPath must be specified.");
-        }
         if(authenticatedInfoMapping == null || authenticatedInfoMapping.size() == 0){
             throw new IllegalArgumentException("AuthenticatedInfoMapping must be specified.");
         }
@@ -324,11 +321,13 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
         if(request.getPathInfo() != null){
             reqPath = reqPath + request.getPathInfo();
         }
-        for(int i = 0; i < loginPath.length; i++){
-            if(loginPath[i].equals(reqPath)){
-                Object ret = chain.invokeNext(context);
-                newAuthenticatedInfo(request);
-                return ret;
+        if(loginPath != null) {
+            for(int i = 0; i < loginPath.length; i++){
+                if(loginPath[i].equals(reqPath)){
+                    Object ret = chain.invokeNext(context);
+                    newAuthenticatedInfo(request);
+                    return ret;
+                }
             }
         }
         if(logoutPath != null){

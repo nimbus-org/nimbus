@@ -776,8 +776,8 @@ public class ConnectionFactoryFactoryService extends ServiceFactoryServiceBase i
         }
     }
     
-    public long getAverageSendProcessTime() {
-        return -1;
+    public double getAverageSendProcessTime() {
+        return -1.0d;
     }
     
     public Set getClients() {
@@ -1009,23 +1009,85 @@ public class ConnectionFactoryFactoryService extends ServiceFactoryServiceBase i
     }
     
     public int getSendMessageCacheSize() {
-        return -1;
+        int result = 0;
+        Iterator itr = managedInstances.iterator();
+        while(itr.hasNext()) {
+            ConnectionFactoryService connectionFactoryService = (ConnectionFactoryService)itr.next();
+            result += connectionFactoryService.getSendMessageCacheSize();
+        }
+        return result;
     }
     
-    public long getAverageAsynchSendProcessTime() {
-        return -1l;
+    public double getAverageAsynchSendProcessTime() {
+        double result = 0;
+        int count = 0;
+        Iterator itr = managedInstances.iterator();
+        while(itr.hasNext()) {
+            ConnectionFactoryService connectionFactoryService = (ConnectionFactoryService)itr.next();
+            result += connectionFactoryService.getAverageAsynchSendProcessTime();
+            count++;
+        }
+        return result / (double)count;
     }
     
-    public long getAverageRequestHandleProcessTime() {
-        return -1l;
+    public double getAverageRequestHandleProcessTime() {
+        double result = 0;
+        int count = 0;
+        Iterator itr = managedInstances.iterator();
+        while(itr.hasNext()) {
+            ConnectionFactoryService connectionFactoryService = (ConnectionFactoryService)itr.next();
+            result += connectionFactoryService.getAverageRequestHandleProcessTime();
+            count++;
+        }
+        return result / (double)count;
     }
     
-    public double getMessageRecycleRate() {
-        return -1d;
+    public int getMaxMessagePayoutCount(){
+        int result = 0;
+        Iterator itr = managedInstances.iterator();
+        while(itr.hasNext()) {
+            ConnectionFactoryService connectionFactoryService = (ConnectionFactoryService)itr.next();
+            int count = connectionFactoryService.getMaxMessagePayoutCount();
+            if(result < count){
+                result = count;
+            }
+        }
+        return result;
     }
     
-    public double getWindowRecycleRate() {
-        return -1d;
+    public int getMessagePayoutCount(){
+        int result = 0;
+        Iterator itr = managedInstances.iterator();
+        while(itr.hasNext()) {
+            ConnectionFactoryService connectionFactoryService = (ConnectionFactoryService)itr.next();
+            int count = connectionFactoryService.getMessagePayoutCount();
+            result+=count;
+        }
+        return result;
+    }
+    
+    public int getMaxWindowPayoutCount(){
+        int result = 0;
+        Iterator itr = managedInstances.iterator();
+        while(itr.hasNext()) {
+            ConnectionFactoryService connectionFactoryService = (ConnectionFactoryService)itr.next();
+            int count = connectionFactoryService.getMaxWindowPayoutCount();
+            if(result < count){
+                result = count;
+            }
+        }
+        return result;
+    }
+    
+    public int getWindowPayoutCount(){
+        int result = 0;
+        Iterator itr = managedInstances.iterator();
+        while(itr.hasNext()) {
+            ConnectionFactoryService connectionFactoryService = (ConnectionFactoryService)itr.next();
+            int count = connectionFactoryService.getWindowPayoutCount();
+            result+=count;
+        }
+        return result;
     }
 
 }

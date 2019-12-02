@@ -33,6 +33,7 @@ package jp.ossc.nimbus.service.publish.tcp;
 
 import java.util.Set;
 import java.util.Map;
+import java.util.Date;
 
 import jp.ossc.nimbus.core.*;
 
@@ -756,6 +757,13 @@ public interface ConnectionFactoryServiceMBean extends ServiceBaseMBean{
     public double getAverageSendProcessTime();
     
     /**
+     * 平均非同期送信時間を取得する。<p>
+     *
+     * @return 平均非同期送信時間[ms]
+     */
+    public double getAverageAsynchSendProcessTime();
+    
+    /**
      * 平均送信バイト数[byte]を取得する。<p>
      *
      * @return 平均送信バイト数[byte]
@@ -852,4 +860,32 @@ public interface ConnectionFactoryServiceMBean extends ServiceBaseMBean{
      * @return キーの集合
      */
     public Set getKeys(String address, int port, String subject);
+    
+    /**
+     * 送信キャッシュの件数を取得する。<p>
+     *
+     * @return 送信キャッシュの件数
+     */
+    public int getSendMessageCacheSize();
+    
+    /**
+     * 送信キャッシュの最も古いメッセージの送信時刻を取得する。<p>
+     *
+     * @return 最も古いメッセージの送信時刻
+     */
+    public Date getSendMessageCacheOldTime();
+    
+    /**
+     * メッセージのリサイクルにおける、メッセージの最大払い出し数を取得する。<p>
+     *
+     * @return メッセージの最大払い出し数
+     */
+    public int getMaxMessagePayoutCount();
+    
+    /**
+     * メッセージのリサイクルにおける、メッセージの払い出し数を取得する。<p>
+     *
+     * @return メッセージの払い出し数
+     */
+    public int getMessagePayoutCount();
 }

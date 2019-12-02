@@ -40,6 +40,21 @@ import java.util.Set;
  * @see DefaultServiceLoaderService
  */
 public interface DefaultServiceLoaderServiceMBean extends ServiceBaseMBean, ServiceLoader{
+    
+    /**
+     * {@link jp.ossc.nimbus.service.crypt.Crypt Crypt}サービスのサービス名を設定する。<p>
+     *
+     * @param name Cryptサービスのサービス名
+     */
+    public void setCryptServiceName(ServiceName name);
+    
+    /**
+     * {@link jp.ossc.nimbus.service.crypt.Crypt Crypt}サービスのサービス名を取得する。<p>
+     *
+     * @return Cryptサービスのサービス名
+     */
+    public ServiceName getCryptServiceName();
+    
     /**
      * サービス定義XMLファイルをDTDで検証するかどうかを指定する。<p>
      * デフォルトでは、検証しない。<br>

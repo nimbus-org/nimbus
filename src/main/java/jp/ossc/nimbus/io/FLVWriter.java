@@ -188,7 +188,7 @@ public class FLVWriter extends BufferedWriter{
     }
     
     /**
-     * nullをCSV要素として書き込もうとした場合に、出力する文字列を設定する。<p>
+     * nullをFLV要素として書き込もうとした場合に、出力する文字列を設定する。<p>
      * 設定しない場合は、NullPointerExceptionが発生する。<br>
      *
      * @param value 文字列
@@ -198,7 +198,7 @@ public class FLVWriter extends BufferedWriter{
     }
     
     /**
-     * nullをCSV要素として書き込もうとした場合に、出力する文字列を取得する。<p>
+     * nullをFLV要素として書き込もうとした場合に、出力する文字列を取得する。<p>
      *
      * @return 文字列
      */
@@ -226,6 +226,9 @@ public class FLVWriter extends BufferedWriter{
      * @exception IOException 入出力エラーが発生した場合
      */
     public void writeElement(String element) throws IOException{
+        if(element == null){
+            element = nullValue;
+        }
         if(converters != null && converters.length != 0 && converters[fieldIndex] != null){
             element = converters[fieldIndex].padding(element);
         }
@@ -363,7 +366,7 @@ public class FLVWriter extends BufferedWriter{
     
     /**
      * 指定されたリストをFLVとして書き込む。<p>
-     * 改行文字の追加、セパレータの追加、セパレータ文字が含まれている場合のエスケープ、囲み文字での囲み処理を自動で行う。<br>
+     * 改行文字の追加を自動で行う。<br>
      *
      * @param elements FLV形式で出力するリスト
      * @exception IOException 入出力エラーが発生した場合
@@ -396,6 +399,7 @@ public class FLVWriter extends BufferedWriter{
             clone.converters = new PaddingStringConverter[converters.length];
             System.arraycopy(converters, 0, clone.converters, 0, converters.length);
         }
+        clone.nullValue = nullValue;
         return clone;
     }
     

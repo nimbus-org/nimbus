@@ -31,15 +31,26 @@
  */
 package jp.ossc.nimbus.service.scheduler2;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.*;
+import java.util.regex.Pattern;
+import java.io.InputStream;
 import java.net.UnknownHostException;
 import java.text.*;
 
 import jp.ossc.nimbus.core.*;
+import jp.ossc.nimbus.beans.dataset.DataSet;
+import jp.ossc.nimbus.beans.dataset.Record;
+import jp.ossc.nimbus.beans.dataset.RecordList;
 import jp.ossc.nimbus.service.journal.Journal;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 import jp.ossc.nimbus.service.context.Context;
 import jp.ossc.nimbus.service.aop.interceptor.ThreadContextKey;
+import jp.ossc.nimbus.util.converter.Converter;
+import jp.ossc.nimbus.util.converter.StringStreamConverter;
+import jp.ossc.nimbus.util.converter.BindingConverter;
+import jp.ossc.nimbus.util.converter.BindingStreamConverter;
+import jp.ossc.nimbus.util.converter.ConvertException;
 
 /**
  * 抽象スケジュール実行。<p>
@@ -67,6 +78,9 @@ public abstract class AbstractScheduleExecutorService extends ServiceBase
     
     protected ServiceName threadContextServiceName;
     protected Context threadContext;
+    
+    protected List inputConvertMappings;
+    protected List outputConvertMappings;
     
     public void setScheduleManagerServiceName(ServiceName name){
         scheduleManagerServiceName = name;
@@ -126,11 +140,40 @@ public abstract class AbstractScheduleExecutorService extends ServiceBase
     }
     
     /**
+     * スケジュールの入力を変換する{@link Converter}のマッピング情報を登録する。<p>
+     *
+     * @param mapping マッピング情報
+     */
+    public void addInputConvertMapping(ConvertMapping mapping){
+        inputConvertMappings.add(mapping);
+    }
+    
+    /**
+     * スケジュールの出力を変換する{@link Converter}のマッピング情報を登録する。<p>
+     *
+     * @param mapping マッピング情報
+     */
+    public void addOutputConvertMapping(ConvertMapping mapping){
+        outputConvertMappings.add(mapping);
+    }
+    
+    /**
+     * サービスの生成前処理を行う。<p>
+     *
+     * @exception Exception サービスの生成前処理に失敗した場合
+     */
+    public void preCreateService() throws Exception{
+        inputConvertMappings = new ArrayList();
+        outputConvertMappings = new ArrayList();
+    }
+    
+    /**
      * サービスの開始前処理を行う。<p>
      *
      * @exception Exception サービスの開始前処理に失敗した場合
      */
     public void preStartService() throws Exception{
+        super.preStartService();
         
         if(scheduleManagerServiceName != null){
             scheduleManager = (ScheduleManager)ServiceManagerFactory
@@ -158,6 +201,18 @@ public abstract class AbstractScheduleExecutorService extends ServiceBase
             threadContext = (Context)ServiceManagerFactory
                 .getServiceObject(threadContextServiceName);
         }
+    }
+    
+    /**
+     * サービスの破棄後処理を行う。<p>
+     *
+     * @exception Exception サービスの破棄後処理に失敗した場合
+     */
+    public void postDestroyService() throws Exception{
+        super.postDestroyService();
+        
+        inputConvertMappings = null;
+        outputConvertMappings = null;
     }
     
     // ScheduleExecutorのJavaDoc
@@ -225,6 +280,7 @@ public abstract class AbstractScheduleExecutorService extends ServiceBase
         Schedule result = schedule;
         try{
             checkPreExecute(schedule);
+            convertInput(schedule);
         }catch(Throwable th){
             getLogger().write(
                 MSG_ID_EXECUTE_ERROR,
@@ -305,6 +361,7 @@ public abstract class AbstractScheduleExecutorService extends ServiceBase
                 journal.addInfo(JOURNAL_KEY_INPUT_SCHEDULE, schedule);
             }
             result = executeInternal(schedule);
+            convertOutput(result);
             if(journal != null){
                 journal.addInfo(JOURNAL_KEY_OUTPUT_SCHEDULE, result);
             }
@@ -596,6 +653,38 @@ public abstract class AbstractScheduleExecutorService extends ServiceBase
     }
     
     /**
+     * スケジュールの入力を変換する。<p>
+     *
+     * @param schedule スケジュール
+     * @exception ConvertException 変換に失敗した場合
+     */
+    protected void convertInput(Schedule schedule) throws ConvertException{
+        for(int i = 0; i < inputConvertMappings.size(); i++){
+            ConvertMapping mapping = (ConvertMapping)inputConvertMappings.get(i);
+            if(mapping.isMatch(schedule)){
+                schedule.setInput(mapping.convert(schedule.getInput()));
+                break;
+            }
+        }
+    }
+    
+    /**
+     * スケジュールの出力を変換する。<p>
+     *
+     * @param schedule スケジュール
+     * @exception ConvertException 変換に失敗した場合
+     */
+    protected void convertOutput(Schedule schedule) throws ConvertException{
+        for(int i = 0; i < outputConvertMappings.size(); i++){
+            ConvertMapping mapping = (ConvertMapping)outputConvertMappings.get(i);
+            if(mapping.isMatch(schedule)){
+                schedule.setOutput(mapping.convert(schedule.getOutput()));
+                break;
+            }
+        }
+    }
+    
+    /**
      * リトライ日時を計算する。<p>
      *
      * @param interval リトライ実行間隔
@@ -631,6 +720,224 @@ public abstract class AbstractScheduleExecutorService extends ServiceBase
             return null;
         }else{
             return offset.getTime();
+        }
+    }
+    
+    /**
+     * 変換マッピング。<p>
+     *
+     * @author M.Takata
+     */
+    public static class ConvertMapping implements java.io.Serializable{
+        
+        private static final long serialVersionUID = 8905574263957259138L;
+        
+        protected String masterId;
+        protected String taskName;
+        protected Pattern taskNamePattern;
+        protected ServiceName converterServiceName;
+        protected Converter converter;
+        
+        /**
+         * 変換対象となるスケジュールのスケジュールマスタIDを設定する。<p>
+         *
+         * @param id スケジュールマスタID
+         */
+        public void setMasterId(String id){
+            masterId = id;
+        }
+        
+        /**
+         * 変換対象となるスケジュールのスケジュールマスタIDを取得する。<p>
+         *
+         * @return スケジュールマスタID
+         */
+        public String getMasterId(){
+            return masterId;
+        }
+        
+        /**
+         * 変換対象となるスケジュールのタスク名を設定する。<p>
+         *
+         * @param name タスク名
+         */
+        public void setTaskName(String name){
+            taskName = name;
+        }
+        
+        /**
+         * 変換対象となるスケジュールのタスク名を取得する。<p>
+         *
+         * @return タスク名
+         */
+        public String getTaskName(){
+            return taskName;
+        }
+        
+        /**
+         * 変換対象となるスケジュールのタスク名正規表現を設定する。<p>
+         *
+         * @param pattern タスク名正規表現
+         */
+        public void setTaskNamePattern(String pattern){
+            taskNamePattern = Pattern.compile(pattern);
+        }
+        
+        /**
+         * 変換対象となるスケジュールのタスク名正規表現を取得する。<p>
+         *
+         * @return タスク名正規表現
+         */
+        public String getTaskNamePattern(){
+            return taskNamePattern == null ? null : taskNamePattern.toString();
+        }
+        
+        /**
+         * 変換を行う{@link Converter}のサービス名を設定する。<p>
+         *
+         * @param name Converterのサービス名
+         */
+        public void setConverterServiceName(ServiceName name){
+            converterServiceName = name;
+        }
+        
+        /**
+         * 変換を行う{@link Converter}のサービス名を取得する。<p>
+         *
+         * @return Converterのサービス名
+         */
+        public ServiceName getConverterServiceName(){
+            return converterServiceName;
+        }
+        
+        /**
+         * 変換を行う{@link Converter}を設定する。<p>
+         *
+         * @param converter Converter
+         */
+        public void setConverter(Converter converter){
+            this.converter = converter;
+        }
+        
+        /**
+         * 変換を行う{@link Converter}を取得する。<p>
+         *
+         * @return Converter
+         */
+        public Converter getConverter(){
+            return converter;
+        }
+        
+        protected Converter getConverterService(){
+            Converter cnv = converter;
+            if(converterServiceName != null){
+                cnv = (Converter)ServiceManagerFactory.getServiceObject(converterServiceName);
+            }
+            return cnv;
+        }
+        
+        public boolean isMatch(Schedule schedule){
+            boolean result = true;
+            if(masterId != null && !masterId.equals(schedule.getMasterId())){
+                result = false;
+            }
+            if(taskName != null && !taskName.equals(schedule.getTaskName())){
+                result = false;
+            }
+            if(schedule.getTaskName() != null && taskNamePattern != null && !taskNamePattern.matcher(schedule.getTaskName()).matches()){
+                result = false;
+            }
+            return result;
+        }
+        
+        public Object convert(Object obj) throws ConvertException{
+            Converter cnv = getConverterService();
+            if(cnv == null){
+                return obj;
+            }
+            return cnv.convert(obj);
+        }
+    }
+    
+    public static class BindingConvertMapping extends ConvertMapping implements java.io.Serializable{
+        
+        private static final long serialVersionUID = 586825523873882273L;
+        
+        protected Class bindType;
+        protected Object bindObject;
+        protected String encoding;
+        
+        public void setBindType(Class type){
+            bindType = type;
+        }
+        public Class getBindType(){
+            return bindType;
+        }
+        
+        public void setBindObject(Object obj){
+            bindObject = obj;
+        }
+        public Object getBindObject(){
+            return bindObject;
+        }
+        
+        public void setEncoding(String encoding){
+            this.encoding = encoding;
+        }
+        public String getEncoding(){
+            return encoding;
+        }
+        
+        public Object convert(Object obj) throws ConvertException{
+            Converter cnv = getConverterService();
+            if(cnv == null || obj == null){
+                return obj;
+            }
+            Object output = null;
+            if(bindType != null){
+                try{
+                    output = bindType.newInstance();
+                }catch(InstantiationException e){
+                    throw new ConvertException(e);
+                }catch(IllegalAccessException e){
+                    throw new ConvertException(e);
+                }
+            }else if(bindObject != null){
+                if(bindObject instanceof DataSet){
+                    output = ((DataSet)bindObject).cloneSchema();
+                }else if(bindObject instanceof RecordList){
+                    output = ((RecordList)bindObject).cloneSchema();
+                }else if(bindObject instanceof Record){
+                    output = ((Record)bindObject).cloneSchema();
+                }else if(bindObject instanceof Cloneable){
+                    try{
+                        output = bindObject.getClass().getMethod("clone", (Class[])null).invoke(bindObject, (Object[])null);
+                    }catch(NoSuchMethodException e){
+                        throw new ConvertException(e);
+                    }catch(IllegalAccessException e){
+                        throw new ConvertException(e);
+                    }catch(InvocationTargetException e){
+                        throw new ConvertException(e);
+                    }
+                }
+            }
+            if(cnv instanceof BindingConverter){
+                return ((BindingConverter)cnv).convert(obj, output);
+            }else if(cnv instanceof BindingStreamConverter){
+                InputStream is = null;
+                if(obj instanceof InputStream){
+                    is = (InputStream)obj;
+                }else{
+                    StringStreamConverter ssc = new StringStreamConverter();
+                    if(encoding != null){
+                        ssc.setCharacterEncodingToObject(encoding);
+                    }
+                    is = ssc.convertToStream(obj.toString());
+                }
+                return ((BindingStreamConverter)cnv).convertToObject(is, output);
+            }else{
+                return super.convert(obj);
+            }
         }
     }
 }

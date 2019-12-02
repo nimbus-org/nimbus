@@ -656,10 +656,14 @@ public class DecimalFormatConverter implements FormatConverter{
                     }
                 }
             }
-            if(obj == null){
-                return createDecimalFormat().format(new Long(0));
+            try{
+                if(obj == null){
+                    return createDecimalFormat().format(new Long(0));
+                }
+                return createDecimalFormat().format(obj);
+            }catch(IllegalArgumentException e){
+                throw new ConvertException("Illegal object : value=" + obj + ", type=" + (obj == null ? null : obj.getClass().getName()), e);
             }
-            return createDecimalFormat().format(obj);
         case STRING_TO_NUMBER:
             if(isUseNotApplicable){
                 if((notApplicableStringForByte == null && obj == null)

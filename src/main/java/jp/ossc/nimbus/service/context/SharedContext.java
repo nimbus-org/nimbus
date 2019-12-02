@@ -84,8 +84,9 @@ public interface SharedContext extends Context{
      * @param key キー
      * @return ロック開放できた場合は、true
      * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
-    public boolean unlock(Object key) throws SharedContextSendException;
+    public boolean unlock(Object key) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
      * 指定されたキーのロックを開放する。<p>
@@ -94,8 +95,86 @@ public interface SharedContext extends Context{
      * @param force 強制フラグ
      * @return ロック開放できた場合は、true
      * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
-    public boolean unlock(Object key, boolean force) throws SharedContextSendException;
+    public boolean unlock(Object key, boolean force) throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 指定されたキーのロックを開放する。<p>
+     *
+     * @param key キー
+     * @param force 強制フラグ
+     * @param timeout タイムアウト[ms]
+     * @return ロック開放できた場合は、true
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public boolean unlock(Object key, boolean force, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 指定されたキー集合のロックを獲得する。<p>
+     *
+     * @param keys キー集合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public void locks(Set keys) throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 指定されたキー集合のロックを獲得する。<p>
+     *
+     * @param keys キー集合
+     * @param timeout タイムアウト[ms]
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public void locks(Set keys, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 指定されたキー集合のロックを獲得する。<p>
+     *
+     * @param keys キー集合
+     * @param ifAcquireable ロックを待機ぜずに獲得可能な場合のみ獲得する時は、true。待機してでも獲得する時は、false
+     * @param ifExist 指定されたキーが存在する場合のみロックを獲得する場合、true。キーが存在しなくてもロックを取得する場合は、false
+     * @param timeout タイムアウト[ms]
+     * @return ifAcquireableがtrueで、ロックが獲得できなかった場合は、false
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public boolean locks(Set keys, boolean ifAcquireable, boolean ifExist, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 指定されたキー集合のロックを開放する。<p>
+     *
+     * @param keys キー集合
+     * @return ロック開放できた場合は、null。解放できなかった場合は、解放できなかったキー集合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public Set unlocks(Set keys) throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 指定されたキーのロックを開放する。<p>
+     *
+     * @param keys キー集合
+     * @param force 強制フラグ
+     * @return ロック開放できた場合は、null。解放できなかった場合は、解放できなかったキー集合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public Set unlocks(Set keys, boolean force) throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 指定されたキーのロックを開放する。<p>
+     *
+     * @param keys キー集合
+     * @param force 強制フラグ
+     * @param timeout タイムアウト[ms]
+     * @return ロック開放できた場合は、null。解放できなかった場合は、解放できなかったキー集合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public Set unlocks(Set keys, boolean force, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
      * 指定されたキーのロックを保有しているノードのIDを取得する。<p>
@@ -566,6 +645,7 @@ public interface SharedContext extends Context{
      * 複合インデックスを追加した場合は、自動的にその要素となる単一プロパティの単純インデックスも内部的に生成される。<p>
      * 但し、自動生成された単一インデックスは、インデックス名を持たないため、インデックス名では指定できず、プロパティ名で指定して使用する。<br>
      * インデックスの種類によって、使用できる検索機能が異なる。単純インデックスは、一致検索と範囲検索の両方が可能だが、複合インデックスは、一致検索のみ可能である。<br>
+     * 制約として、クライアントモードの場合は、差分更新されたデータがインデックスに反映されない。従って、クライアントモードでのインデックス利用では、更新しないプロパティに対するインデックス、または差分更新を行わない事が前提となる。<br>
      *
      * @param name インデックス名
      * @param props インデックスを張るBeanのプロパティ名配列
@@ -582,11 +662,16 @@ public interface SharedContext extends Context{
     public void setIndex(String name, BeanTableIndexKeyFactory keyFactory);
     
     /**
-     * インデックスを削除する。<p>
+     * 指定されたインデックスを削除する。<p>
      *
      * @param name インデックス名
      */
     public void removeIndex(String name);
+    
+    /**
+     * インデックスを全て削除する。<p>
+     */
+    public void clearIndex();
     
     /**
      * インデックスを再解析する。<p>
@@ -640,4 +725,14 @@ public interface SharedContext extends Context{
      * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
     public Object executeInterpretQuery(String query, Map variables, long timeout) throws EvaluateException, SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 分散サーバとの通信の健全性をチェックする。<p>
+     * 
+     * @param isContainsClient 健全性をチェックする対象として、クライアントモードも含める場合は、true
+     * @param timeout タイムアウト
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public void healthCheck(boolean isContainsClient, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
 }

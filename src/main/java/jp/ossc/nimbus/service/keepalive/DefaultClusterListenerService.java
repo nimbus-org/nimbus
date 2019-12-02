@@ -48,7 +48,7 @@ public class DefaultClusterListenerService extends ServiceBase
     protected Service targetService;
     
     protected ServiceName clusterServiceName;
-    protected ClusterService clusterService;
+    protected Cluster clusterService;
     
     public void setTargetServiceName(ServiceName name){
         targetServiceName = name;
@@ -71,10 +71,10 @@ public class DefaultClusterListenerService extends ServiceBase
         return targetService;
     }
     
-    public void setClusterService(ClusterService service){
+    public void setClusterService(Cluster service){
         clusterService = service;
     }
-    public ClusterService getClusterService(){
+    public Cluster getClusterService(){
         return clusterService;
     }
     
@@ -128,27 +128,27 @@ public class DefaultClusterListenerService extends ServiceBase
     }
     
     public void stateChanged(ServiceStateChangeEvent e) throws Exception{
-        ClusterService cluster = clusterService;
+        Cluster cluster = clusterService;
         if(cluster == null && clusterServiceName != null){
             try{
-                cluster = (ClusterService)ServiceManagerFactory
+                cluster = (Cluster)ServiceManagerFactory
                     .getServiceObject(clusterServiceName);
             }catch(ServiceNotFoundException ex){}
         }
         if(cluster != null){
             switch(e.getService().getState()){
             case STARTED:
-                if(cluster.getState() == STOPPED){
+                if(((Service)cluster).getState() == STOPPED){
                     try{
-                        cluster.start();
+                        ((Service)cluster).start();
                     }catch(Exception ex){
                         // TODO エラーログ出力
                     }
                 }
                 break;
             case STOPPING:
-                if(cluster.getState() == STARTED){
-                    cluster.stop();
+                if(((Service)cluster).getState() == STARTED){
+                    ((Service)cluster).stop();
                 }
                 break;
             default:

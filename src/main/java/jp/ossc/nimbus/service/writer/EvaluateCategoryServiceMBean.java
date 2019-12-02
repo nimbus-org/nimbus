@@ -31,6 +31,7 @@
  */
 package jp.ossc.nimbus.service.writer;
 
+import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.service.writer.SimpleCategoryServiceMBean;
 
 /**
@@ -42,14 +43,91 @@ public interface EvaluateCategoryServiceMBean
  extends SimpleCategoryServiceMBean{
     
     /**
-     * カテゴリを使用する際の条件式を設定
-     * @param conditions
+     * カテゴリを使用する際の条件式を設定する。<p>
+     * 条件式は、booleanを返す必要がある。<br>
+     * 条件式中では、valueで{@link Category#write(Object)}の引数が参照できる。また、その引数のプロパティにアクセスする場合には、@で囲んでプロパティ名を指定することができる。<br>
+     * {@link #setThreadContextServiceName(ServiceName)}または、{@link #setCodeMasterFinderServiceName(ServiceName)}で、コードマスタが参照できる設定にしている場合は、masterでコードマスタのマップを参照できる。また、{@link #setCodeMasterName(String)}で、マスタを１つに絞っている場合は、masterで、そのマスタのみを参照できる。<br>
+     *
+     * @param conditions 条件式の配列
      */
     public void setWritableConditions(String conditions[]);
     
     /**
-     * 設定された条件式を取得
-     * @return 設定された条件式
+     * 設定された条件式を取得する。<p>
+     * 
+     * @return 設定された条件式の配列
      */
     public String[] getWritableConditions();
+    
+    /**
+     * サービスの開始時に、条件式を評価してみるかどうかを設定する。<p>
+     * デフォルトでは、trueで評価する。<br>
+     * 
+     * @param isTest 評価する場合は、true
+     */
+    public void setTestOnStart(boolean isTest);
+    
+    /**
+     * サービスの開始時に、条件式を評価してみるかどうかを判定する。<p>
+     * 
+     * @return trueの場合は、評価する
+     */
+    public boolean isTestOnStart();
+    
+    /**
+     * 評価式を評価する{@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}サービスのサービス名を設定する。<p>
+     * 設定しない場合は、The Apache Jakarta Projectの<a href="http://jakarta.apache.org/commons/jexl/">Commons Jexl</a>を使用する。<br>
+     * 
+     * @param name Interpreterサービスのサービス名
+     */
+    public void setInterpreterServiceName(ServiceName name);
+    
+    /**
+     * 評価式を評価する{@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}サービスのサービス名を取得する。<p>
+     * 
+     * @return Interpreterサービスのサービス名
+     */
+    public ServiceName getInterpreterServiceName();
+    
+    /**
+     * コードマスタを取得する{@link jp.ossc.nimbus.service.context.Context Context}サービスのサービス名を設定する。<p>
+     * 
+     * @param name Contextサービスのサービス名
+     */
+    public void setThreadContextServiceName(ServiceName name);
+    
+    /**
+     * コードマスタを取得する{@link jp.ossc.nimbus.service.context.Context Context}サービスのサービス名を取得する。<p>
+     * 
+     * @return Contextサービスのサービス名
+     */
+    public ServiceName getThreadContextServiceName();
+    
+    /**
+     * コードマスタを取得する{@link jp.ossc.nimbus.service.codemaster.CodeMasterFinder CodeMasterFinder}サービスのサービス名を設定する。<p>
+     * 
+     * @param name CodeMasterFinderサービスのサービス名
+     */
+    public void setCodeMasterFinderServiceName(ServiceName name);
+    
+    /**
+     * コードマスタを取得する{@link jp.ossc.nimbus.service.codemaster.CodeMasterFinder CodeMasterFinder}サービスのサービス名を取得する。<p>
+     * 
+     * @return CodeMasterFinderサービスのサービス名
+     */
+    public ServiceName getCodeMasterFinderServiceName();
+    
+    /**
+     * コードマスタのマスタ名を設定する。<p>
+     *
+     * @param name コードマスタのマスタ名
+     */
+    public void setCodeMasterName(String name);
+    
+    /**
+     * コードマスタのマスタ名を取得する。<p>
+     *
+     * @return コードマスタのマスタ名
+     */
+    public String getCodeMasterName();
 }

@@ -119,10 +119,10 @@ public class KryoExternalizerService extends SerializableExternalizerService
         super.destroyService();
     }
     
-    protected ObjectOutput createObjectOutput(OutputStream out) throws IOException{
+    public ObjectOutput createObjectOutput(OutputStream out) throws IOException{
         return new KryoObjectOutput(getKryo(), out);
     }
-    protected ObjectInput createObjectInput(InputStream in) throws IOException{
+    public ObjectInput createObjectInput(InputStream in) throws IOException{
         return new KryoObjectInput(getKryo(), in);
     }
     

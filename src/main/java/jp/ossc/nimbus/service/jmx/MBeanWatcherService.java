@@ -31,44 +31,44 @@
  */
 package jp.ossc.nimbus.service.jmx;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.HashMap;
-import java.util.TreeMap;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.LinkedHashMap;
-import java.util.Iterator;
-import java.util.Date;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.Arrays;
-import java.io.Serializable;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.text.ParseException;
+import java.io.Serializable;
+import java.lang.management.ManagementFactory;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-
 import java.math.MathContext;
-import java.lang.management.ManagementFactory;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeMap;
 
+import javax.management.ListenerNotFoundException;
 import javax.management.MBeanServerConnection;
-import javax.management.ObjectName;
-import javax.management.QueryExp;
 import javax.management.MalformedObjectNameException;
 import javax.management.Notification;
-import javax.management.NotificationListener;
 import javax.management.NotificationFilter;
-import javax.management.ListenerNotFoundException;
-import javax.management.remote.JMXConnectorFactory;
-import javax.management.remote.JMXConnector;
-import javax.management.remote.JMXServiceURL;
+import javax.management.NotificationListener;
+import javax.management.ObjectName;
+import javax.management.QueryExp;
 import javax.management.remote.JMXConnectionNotification;
+import javax.management.remote.JMXConnector;
+import javax.management.remote.JMXConnectorFactory;
+import javax.management.remote.JMXServiceURL;
 
 import org.apache.commons.jexl.Expression;
 import org.apache.commons.jexl.ExpressionFactory;
@@ -76,9 +76,9 @@ import org.apache.commons.jexl.JexlContext;
 import org.apache.commons.jexl.JexlHelper;
 
 import jp.ossc.nimbus.beans.PropertyAccess;
-import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.core.ServiceBase;
 import jp.ossc.nimbus.core.ServiceManagerFactory;
+import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.daemon.Daemon;
 import jp.ossc.nimbus.daemon.DaemonControl;
 import jp.ossc.nimbus.daemon.DaemonRunnable;
@@ -97,11 +97,15 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
 
     private static final long serialVersionUID = -1421073056315791503L;
 
-    protected ServiceName jndiFinderServiceName;
-    protected JndiFinder jndiFinder;
-    protected String rmiAdaptorName = DEFAULT_JMX_RMI_ADAPTOR_NAME;
+    private String description;
+    private ServiceName jndiFinderServiceName;
+    private JndiFinder jndiFinder;
+    private String rmiAdaptorName = DEFAULT_JMX_RMI_ADAPTOR_NAME;
     private String serviceURL;
     private Map jmxConnectorEnvironment;
+    private ServiceName mBeanServerConnectionFactoryServiceName;
+    private MBeanServerConnectionFactory mBeanServerConnectionFactory;
+
     private long interval;
     private ServiceName categoryServiceName;
     private List targetList;
@@ -120,6 +124,25 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     private Map contextMap;
     private boolean isConnectError;
     private PropertyAccess propertyAccess;
+    
+    // MBeanWatcherServiceMBeanのJavaDoc
+    public String getDescription(){
+        return description;
+    }
+    
+    // MBeanWatcherServiceMBeanのJavaDoc
+    public void setDescription(String desc){
+        description = desc;
+    }
+    
+    // MBeanWatcherServiceMBeanのJavaDoc
+    public void setMBeanServerConnectionFactoryServiceName(ServiceName name){
+        mBeanServerConnectionFactoryServiceName = name;
+    }
+    // MBeanWatcherServiceMBeanのJavaDoc
+    public ServiceName getMBeanServerConnectionFactoryServiceName(){
+        return mBeanServerConnectionFactoryServiceName;
+    }
 
     // MBeanWatcherServiceMBeanのJavaDoc
     public void setJndiFinderServiceName(ServiceName name){
@@ -264,6 +287,28 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     // MBeanWatcherServiceMBeanのJavaDoc
+    public List getCheckTargetList(){
+        if(targetList == null){
+            return null;
+        }
+        List result = new ArrayList();
+        for(int i = 0; i < targetList.size(); i++){
+            Target target = (Target)targetList.get(i);
+            if(target instanceof Check){
+                result.add(target);
+            }else if(target instanceof WrapTarget){
+                do{
+                    target = ((WrapTarget)target).getTarget();
+                    if(target != null && (target instanceof Check)){
+                        result.add(target);
+                    }
+                }while(target != null && (target instanceof WrapTarget));
+            }
+        }
+        return result;
+    }
+
+    // MBeanWatcherServiceMBeanのJavaDoc
     public void reset(){
         for(int i = 0, imax = targetList.size(); i < imax; i++){
             Target target = (Target)targetList.get(i);
@@ -278,7 +323,13 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     }
 
     public void startService() throws Exception{
-        if(jndiFinderServiceName != null){
+        if(mBeanServerConnectionFactoryServiceName != null){
+            mBeanServerConnectionFactory = (MBeanServerConnectionFactory)ServiceManagerFactory.getServiceObject(mBeanServerConnectionFactoryServiceName);
+            if(isConnectOnStart){
+                connector = mBeanServerConnectionFactory.getJMXConnector();
+                connector.connect();
+            }
+        }else if(jndiFinderServiceName != null){
             jndiFinder = (JndiFinder)ServiceManagerFactory.getServiceObject(jndiFinderServiceName);
         }else if(serviceURL != null){
             if(isConnectOnStart){
@@ -288,10 +339,6 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
                 );
                 connector.connect();
             }
-/*
-        }else{
-            throw new IllegalArgumentException("ServiceURL or jndiFinderServiceName must be specified.");
-*/
         }
 
         if(categoryServiceName != null){
@@ -355,17 +402,16 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
             try{
                 if(jndiFinder != null){
                     connection = (MBeanServerConnection)jndiFinder.lookup(rmiAdaptorName);
-/*
-                }else{
-*/
-
-                }else if(serviceURL != null){
-
+                }else if(mBeanServerConnectionFactory != null || serviceURL != null){
                     if(connector == null){
-                        tmpConnector = JMXConnectorFactory.newJMXConnector(
-                            new JMXServiceURL(serviceURL),
-                            jmxConnectorEnvironment
-                        );
+                        if(mBeanServerConnectionFactory != null){
+                            tmpConnector = mBeanServerConnectionFactory.getJMXConnector();
+                        }else{
+                            tmpConnector = JMXConnectorFactory.newJMXConnector(
+                                new JMXServiceURL(serviceURL),
+                                jmxConnectorEnvironment
+                            );
+                        }
                         tmpConnector.connect();
                         connection = tmpConnector.getMBeanServerConnection();
                     }else{
@@ -377,16 +423,25 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
 
                 }
                 isConnectError = false;
+            }catch(MBeanServerConnectionFactoryException e){
+                if(!isConnectError && connectErrorMessageId != null){
+                    getLogger().write(
+                        connectErrorMessageId,
+                        new Object[]{getServiceNameObject(), mBeanServerConnectionFactoryServiceName},
+                        e
+                    );
+                }
+                isConnectError = true;
+                if(throwConnectError){
+                    throw e;
+                }else{
+                    return null;
+                }
             }catch(Exception e){
                 if(!isConnectError && connectErrorMessageId != null){
                     getLogger().write(
                         connectErrorMessageId,
-/*
-                        new Object[]{getServiceNameObject(), rmiAdaptorName != null ? rmiAdaptorName : serviceURL},
-*/
-
                         new Object[]{getServiceNameObject(), rmiAdaptorName != null ? rmiAdaptorName : (serviceURL != null ? serviceURL : "PlatformMBeanServer")},
-
                         e
                     );
                 }
@@ -509,6 +564,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         protected transient MBeanWatcherService watcher;
         protected ServiceName watcherServiceName;
         protected String contextKey;
+        protected String description;
 
         /**
          * {@link MBeanWatcherService}のサービス名を設定する。<p>
@@ -601,6 +657,24 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         }
 
         /**
+         * 説明を取得する。<p>
+         *
+         * @return 説明
+         */
+        public String getDescription(){
+            return description;
+        }
+
+        /**
+         * 説明を設定する。<p>
+         *
+         * @param desc 説明
+         */
+        public void setDescription(String desc){
+            description = desc;
+        }
+
+        /**
          * 監視対象の値を取得する。<p>
          *
          * @param connection JMX接続
@@ -662,6 +736,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
             StringBuilder buf = new StringBuilder(super.toString());
             buf.append('{');
             buf.append("key=").append(getKey());
+            buf.append(",description=").append(getDescription());
             buf.append('}');
             return buf.toString();
         }
@@ -1356,6 +1431,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private boolean isNullToZero;
         private ServiceName loggerServiceName;
         private List checkConditions = new ArrayList();
+        private boolean isOutputCheckResult;
 
         /**
          * 監視対象が数値型でnullの場合に、ゼロとみなすかどうかを設定する。<p>
@@ -1427,13 +1503,32 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         public List getCheckConditionList(){
             return checkConditions;
         }
-
+        
+        /**
+         * 監視対象の値として、チェック結果のフラグを返すかどうかを設定する。<p>
+         * デフォルトは、falseで、監視対象の値として、チェック対象の値を返す。<br>
+         * 
+         * @param isOutput 監視対象の値として、チェック結果のフラグを返したい場合は、true。そうでない場合はfalse
+         */
+        public void setOutputCheckResult(boolean isOutput){
+            isOutputCheckResult = isOutput;
+        }
+        
+        /**
+         * 監視対象の値として、チェック結果のフラグを返すかどうかを判定する。<p>
+         * 
+         * @return trueの場合は、監視対象の値として、チェック結果のフラグを返す。falseの場合は、チェック対象の値を返す
+         */
+        public boolean isOutputCheckResult(){
+            return isOutputCheckResult;
+        }
+        
         /**
          * ラップした監視対象のオペレーションの戻り値を取得し、チェックを行ってチェックエラーの場合はログを出力する。<p>
          * チェックする条件を追加された順番にチェックして、チェックエラーになると後続の条件はチェックせずにリセットする。<br>
          *
          * @param connection JMX接続
-         * @return 監視対象の値
+         * @return 監視対象の値、またはチェック結果のフラグ
          * @exception Exception 監視対象の値の取得に失敗した場合
          */
         public Object getValue(MBeanServerConnection connection) throws Exception{
@@ -1450,6 +1545,9 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
                 }else if(!condition.check(value, getLogger(), getWatcherServiceName(), getKey())){
                     checkError = true;
                 }
+            }
+            if(isOutputCheckResult){
+                value = checkError ? Boolean.FALSE : Boolean.TRUE;
             }
             if(value != null && contextKey != null){
                 watcher.setContextValue(contextKey, value);
@@ -1477,7 +1575,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         public String toString(){
             StringBuilder buf = new StringBuilder(super.toString());
             buf.deleteCharAt(buf.length() - 1);
-            buf.append("checkConditions=").append(checkConditions);
+            buf.append(",checkConditions=").append(checkConditions);
             buf.append(",isNullToZero=").append(isNullToZero);
             buf.append(",loggerServiceName=").append(loggerServiceName);
             buf.append('}');
@@ -1504,8 +1602,9 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
 
             public static final String CONTEXT = "context";
             public static final String VALUE = "value";
-
-            private Expression checkExpression;
+            
+            private String description;
+            private transient Expression checkExpression;
             private String expression;
             private Map idMap = new TreeMap(new ErrorCountComparator());
             private int errorCount;
@@ -1513,8 +1612,9 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
             private List checkTerms;
             private boolean isOnceOutputLog;
             private ServiceName interpreterServiceName;
-            private jp.ossc.nimbus.service.interpreter.Interpreter interpreter;
-            private MBeanWatcherService watcher;
+            private transient jp.ossc.nimbus.service.interpreter.Interpreter interpreter;
+            private transient MBeanWatcherService watcher;
+            private boolean lastCheckResult = true;
 
             /**
              * {@link MBeanWatcherService}を設定する。<p>
@@ -1532,7 +1632,25 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
             public void setInterpreter(jp.ossc.nimbus.service.interpreter.Interpreter interpreter){
                 this.interpreter = interpreter;
             }
-
+            
+            /**
+             * 説明を取得する。<p>
+             *
+             * @return 説明
+             */
+            public String getDescription(){
+                return description;
+            }
+            
+            /**
+             * 説明を設定する。<p>
+             *
+             * @param desc 説明
+             */
+            public void setDescription(String desc){
+                description = desc;
+            }
+            
             /**
              * 監視対象をチェックする条件式を設定する。<p>
              * 条件式は、{@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}を指定していない場合は、The Apache Jakarta Projectの Commons Jexl(http://jakarta.apache.org/commons/jexl/)で評価する。<br>
@@ -1664,7 +1782,16 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
             public boolean isOnceOutputLog() {
                 return isOnceOutputLog;
             }
-
+            
+            /**
+             * 直近のチェック結果を取得する。<p>
+             *
+             * @return 直近のチェック結果
+             */
+            public boolean getLastCheckResult(){
+                return lastCheckResult;
+            }
+            
             /**
              * 指定された値のチェックを行ってチェックエラーが発生するとログを出力する。<p>
              *
@@ -1677,6 +1804,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
              */
             protected boolean check(Object value, Logger logger, ServiceName watcherServiceName, String key) throws Exception{
                 if(errorCount == -1){
+                    lastCheckResult = true;
                     return true;
                 }
                 List currentCheckTimes = null;
@@ -1697,6 +1825,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
                         currentCheckTimes.add(ct);
                     }
                     if(currentCheckTimes == null){
+                        lastCheckResult = true;
                         return true;
                     }
                 }
@@ -1713,6 +1842,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
                         check = true;
                     }
                     if(!check){
+                        lastCheckResult = true;
                         return true;
                     }
                 }
@@ -1759,6 +1889,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
                                     }
                                 }
                             }
+                            lastCheckResult = false;
                             return false;
                         }
                         isFirst = false;
@@ -1772,6 +1903,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
                         ct.setCheckDay(nowDay);
                     }
                 }
+                lastCheckResult = true;
                 return true;
             }
 
@@ -1790,8 +1922,14 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
             public String toString(){
                 StringBuilder buf = new StringBuilder();
                 buf.append("Condition{");
+                buf.append(",description=").append(description);
                 buf.append(",expression=").append(expression);
+                buf.append(",checkTimes=").append(checkTimes);
+                buf.append(",checkTerms=").append(checkTerms);
+                buf.append(",isOnceOutputLog=").append(isOnceOutputLog);
                 buf.append(",idMap=").append(idMap);
+                buf.append(",lastCheckResult=").append(lastCheckResult);
+                buf.append(",errorCount=").append(errorCount);
                 buf.append('}');
                 return buf.toString();
             }
@@ -2483,7 +2621,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         private static final long serialVersionUID = 6105816116626297923L;
         private long interval = 1000l;
         private int count = 60;
-        private List valueList = new ArrayList();
+        private List valueList = new LinkedList();
         private Daemon periodicGetter;
         private JMXConnectorNotificationListener listener;
 
@@ -2602,17 +2740,18 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
                 MBeanServerConnection connection = null;
                 if(watcher.jndiFinder != null){
                     connection = (MBeanServerConnection)watcher.jndiFinder.lookup(watcher.rmiAdaptorName);
-/*
-                }else{
-*/
 
-                }else if(watcher.serviceURL != null){
+                }else if(watcher.mBeanServerConnectionFactory != null || watcher.serviceURL != null){
 
                     if(watcher.connector == null){
-                        tmpConnector = JMXConnectorFactory.newJMXConnector(
-                            new JMXServiceURL(watcher.serviceURL),
-                            watcher.jmxConnectorEnvironment
-                        );
+                        if(watcher.mBeanServerConnectionFactory != null){
+                            tmpConnector = watcher.mBeanServerConnectionFactory.getJMXConnector();
+                        }else{
+                            tmpConnector = JMXConnectorFactory.newJMXConnector(
+                                new JMXServiceURL(watcher.serviceURL),
+                                watcher.jmxConnectorEnvironment
+                            );
+                        }
                         tmpConnector.connect();
                         connection = tmpConnector.getMBeanServerConnection();
                     }else{
@@ -2638,7 +2777,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
             synchronized(valueList){
                 valueList.add(paramObj);
                 if(valueList.size() > count){
-                    for(int i = 0, imax = count - valueList.size(); i < imax; i++){
+                    for(int i = 0, imax = valueList.size() - count; i < imax; i++){
                         valueList.remove(0);
                     }
                 }
@@ -3537,7 +3676,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
         public String toString() {
             StringBuilder buf = new StringBuilder(super.toString());
             buf.deleteCharAt(buf.length() - 1);
-            buf.append("exceptionConditions=").append(exceptionConditions);
+            buf.append(",exceptionConditions=").append(exceptionConditions);
             buf.append('}');
             return buf.toString();
         }

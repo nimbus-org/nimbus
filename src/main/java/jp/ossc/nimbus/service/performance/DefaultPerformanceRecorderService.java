@@ -76,6 +76,7 @@ public class DefaultPerformanceRecorderService extends ServiceBase implements Pe
     private boolean isOutputMedianPerformance = true;
     private boolean isOutputFirstTimestamp = true;
     private boolean isOutputLastTimestamp = true;
+    private boolean isOutputSum = true;
     
     private Category category;
     private ThreadLocal threadLocal;
@@ -177,6 +178,13 @@ public class DefaultPerformanceRecorderService extends ServiceBase implements Pe
     }
     public boolean isOutputLastTimestamp(){
         return isOutputLastTimestamp;
+    }
+    
+    public void setOutputSum(boolean isOutput){
+        isOutputSum = isOutput;
+    }
+    public boolean isOutputSum(){
+        return isOutputSum;
     }
     
     public void setCategory(Category category){
@@ -337,6 +345,12 @@ public class DefaultPerformanceRecorderService extends ServiceBase implements Pe
                         new Long(merged.medianPerformance)
                     );
                 }
+                if(isOutputSum){
+                    record.put(
+                        RECORD_KEY_SUM,
+                        new Long(merged.total)
+                    );
+                }
                 if(isOutputFirstTimestamp){
                     record.put(RECORD_KEY_FIRST_TIMESTAMP, merged.firstTime == -1 ? null : new Date(merged.firstTime));
                 }
@@ -374,6 +388,7 @@ public class DefaultPerformanceRecorderService extends ServiceBase implements Pe
         public long maxPerformance;
         public long minPerformance;
         public long count;
+        public long total;
         
         public Performance(){
             performances = new long[initialCapacity];
@@ -384,7 +399,8 @@ public class DefaultPerformanceRecorderService extends ServiceBase implements Pe
                 if(performances.length <= index){
                     grow(performances.length + 1);
                 }
-                performances[index++] = endTime - startTime;
+                long performance = endTime - startTime;
+                performances[index++] = performance < 0 ? 0 : performance;
                 if(firstTime == -1){
                     firstTime = startTime;
                 }
@@ -462,17 +478,18 @@ public class DefaultPerformanceRecorderService extends ServiceBase implements Pe
             averagePerformance = 0.0d;
             medianPerformance = 0l;
             maxPerformance = 0l;
-            minPerformance = 0l;
+            minPerformance = -1l;
             count = 0;
             synchronized(Performance.this){
                 if(index == 0){
+                    minPerformance = 0l;
                     return;
                 }
-                long total = 0;
+                total = 0;
                 for(int i = 0; i < index; i++){
                     total += performances[i];
                     maxPerformance = Math.max(maxPerformance, performances[i]);
-                    if(minPerformance == 0){
+                    if(minPerformance == -1l){
                         minPerformance = performances[i];
                     }else{
                         minPerformance = Math.min(minPerformance, performances[i]);

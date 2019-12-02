@@ -213,8 +213,8 @@ public interface AbstractSchedulerServiceMBean extends ServiceBaseMBean{
     public ServiceName getTransactionManagerFactoryServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService クラスタ}サービスのサービス名を設定する。<p>
-     * この属性を設定した場合、クラスタサービスが{@link jp.ossc.nimbus.service.keepalive.ClusterService#isMain() ClusterService.isMain()}=trueとなっている場合のみ、スケジュールの投入を行う。<br>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster クラスタ}サービスのサービス名を設定する。<p>
+     * この属性を設定した場合、クラスタサービスが{@link jp.ossc.nimbus.service.keepalive.Cluster#isMain() Cluster.isMain()}=trueとなっている場合のみ、スケジュールの投入を行う。<br>
      * クラスタサービスのクラスタへの参加は、このサービスの状態と連動する必要があるため、{@link jp.ossc.nimbus.service.keepalive.ClusterService#setJoinOnStart(boolean) ClusterService.setJoinOnStart(false)}にしておく必要がある。<br>
      *
      * @param name クラスタサービスのサービス名
@@ -222,11 +222,26 @@ public interface AbstractSchedulerServiceMBean extends ServiceBaseMBean{
     public void setClusterServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService クラスタ}サービスのサービス名を取得する。<p>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster クラスタ}サービスのサービス名を取得する。<p>
      *
      * @return クラスタサービスのサービス名
      */
     public ServiceName getClusterServiceName();
+    
+    /**
+     * このサービスと連動して、クラスタの参加を制御するかどうかを判定する。<p>
+     *
+     * @return trueの場合、クラスタの参加を制御する
+     */
+    public boolean isControlCluster();
+    
+    /**
+     * このサービスと連動して、クラスタの参加を制御するかどうかを設定する。<p>
+     * デフォルトは、trueで制御する。<br>
+     *
+     * @param isControl クラスタの参加を制御する場合、true
+     */
+    public void setControlCluster(boolean isControl);
     
     /**
      * {@link jp.ossc.nimbus.service.system.Time Time}サービスのサービス名を設定する。<p>

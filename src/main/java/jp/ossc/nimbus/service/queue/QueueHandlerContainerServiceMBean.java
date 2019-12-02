@@ -287,7 +287,7 @@ public interface QueueHandlerContainerServiceMBean extends ServiceBaseMBean{
      *
      * @return 平均処理時間[ms]
      */
-    public long getAverageHandleProcessTime();
+    public double getAverageHandleProcessTime();
     
     /**
      * 再開する。<p>

@@ -54,6 +54,7 @@ import java.util.HashMap;
 import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Date;
 import javax.net.SocketFactory;
 
@@ -72,6 +73,7 @@ import jp.ossc.nimbus.service.publish.ConnectException;
 import jp.ossc.nimbus.service.publish.MessageException;
 import jp.ossc.nimbus.service.publish.MessageSendException;
 import jp.ossc.nimbus.service.publish.MessageCommunicateException;
+import jp.ossc.nimbus.service.publish.ConnectionClosedException;
 import jp.ossc.nimbus.service.io.Externalizer;
 import jp.ossc.nimbus.util.SynchronizeMonitor;
 import jp.ossc.nimbus.util.WaitSynchronizeMonitor;
@@ -91,7 +93,7 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
     private String address;
     private int port;
     private SocketFactory socketFactory;
-    private Externalizer externalizer;
+    protected Externalizer externalizer;
     
     private String bindAddressPropertyName = BIND_ADDRESS_PROPERTY;
     private String bindPortPropertyName = BIND_PORT_PROPERTY;
@@ -110,7 +112,9 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
     private boolean isAcknowledge;
     private long responseTimeout;
     private int messageRecycleBufferSize = 100;
-    private transient List messageBuffer;
+    private int messagePayoutCount;
+    private int maxMessagePayoutCount;
+    protected transient List messageBuffer;
     
     private transient Socket socket;
     private transient Map subjects;
@@ -131,6 +135,8 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
     private transient byte[] receiveBytes;
     private transient boolean isServerClosed;
     private transient long lastReceiveTime = -1;
+    private transient long totalMessageLatency;
+    private transient long maxMessageLatency;
     
     public ClientConnectionImpl(){}
     
@@ -151,15 +157,37 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
     
     protected void recycleMessage(MessageImpl msg){
         if(msg != null){
-            if(messageBuffer.size() <= messageRecycleBufferSize){
-                msg.clear();
-                synchronized(messageBuffer){
+            synchronized(messageBuffer){
+                if(msg.isPayout()){
+                    msg.setPayout(false);
                     if(messageBuffer.size() <= messageRecycleBufferSize){
+                        msg.clear();
                         messageBuffer.add(msg);
+                    }
+                    if(messagePayoutCount > 0){
+                        messagePayoutCount--;
                     }
                 }
             }
         }
+    }
+    
+    protected MessageImpl createMessage(){
+        MessageImpl message = null;
+        synchronized(messageBuffer){
+            if(messageBuffer.size() != 0){
+                message = (MessageImpl)messageBuffer.remove(0);
+                message.setPayout(true);
+            }
+            messagePayoutCount++;
+            if(maxMessagePayoutCount < messagePayoutCount){
+                maxMessagePayoutCount = messagePayoutCount;
+            }
+        }
+        if(message == null){
+            message = new MessageImpl();
+        }
+        return message;
     }
     
     public void setMessageRecycleBufferSize(int size){
@@ -398,7 +426,7 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
     
     public void addSubject(String subject, String[] keys) throws MessageSendException{
         if(socket == null){
-            throw new MessageSendException("Not connected.");
+            throw new ConnectionClosedException();
         }
         if(subject == null){
             return;
@@ -435,7 +463,7 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
     
     public void removeSubject(String subject, String[] keys) throws MessageSendException{
         if(socket == null){
-            throw new MessageSendException("Not connected.");
+            throw new ConnectionClosedException();
         }
         if(subject == null){
             return;
@@ -476,7 +504,7 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
     
     private void startReceive(long from, boolean isRestart) throws MessageSendException{
         if(socket == null){
-            throw new MessageSendException("Not connected.");
+            throw new ConnectionClosedException();
         }
         if(!isRestart && isStartReceive){
             return;
@@ -508,7 +536,7 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
     
     public void stopReceive() throws MessageSendException{
         if(socket == null){
-            throw new MessageSendException("Not connected.");
+            throw new ConnectionClosedException();
         }
         if(!isStartReceive){
             return;
@@ -616,7 +644,7 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
             }
             dis.readFully(receiveBytes, 0, length);
             ByteArrayInputStream bais = new ByteArrayInputStream(receiveBytes, 0, length);
-            MessageImpl message = MessageImpl.read(bais, externalizer, messageBuffer);
+            MessageImpl message = MessageImpl.read(bais, this);
             message.setClientConnection(this);
             if(message != null){
                 final short messageType = message.getMessageType();
@@ -674,7 +702,7 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
                 return null;
             }
         }catch(EOFException e){
-            if(isClosing || !isConnected){
+            if(isClosing){
                 return null;
             }
             if(reconnectCount > 0){
@@ -694,12 +722,12 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
                 throw new MessageCommunicateException("length=" + length + ", receiveBytes=" + (receiveBytes == null ? "null" : Integer.toString(receiveBytes.length)), e);
             }
         }catch(IOException e){
-            if(isClosing || !isConnected){
+            if(isClosing){
                 return null;
             }
             throw new MessageCommunicateException(e);
         }catch(ClassNotFoundException e){
-            if(isClosing || !isConnected){
+            if(isClosing){
                 return null;
             }
             throw new MessageCommunicateException(e);
@@ -864,12 +892,13 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
             socket = null;
         }
         isClosing = false;
+        isStartReceive = false;
         isConnected = false;
     }
     
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException{
         in.defaultReadObject();
-        messageBuffer = new ArrayList();
+        messageBuffer = new LinkedList();
     }
     
     private long startTime;
@@ -883,7 +912,7 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
         try{
             return receive();
         }catch(MessageCommunicateException e){
-            if(isClosing || !isConnected){
+            if(isClosing){
                 return null;
             }
             if(receiveErrorMessageId != null){
@@ -908,7 +937,13 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
         receiveCount++;
         receiveProcessTime += (System.currentTimeMillis() - startTime);
         long sTime = System.currentTimeMillis();
-        messageListener.onMessage((Message)paramObj);
+        Message message = (Message)paramObj;
+        long latency = message.getReceiveTime() - message.getSendTime();
+        totalMessageLatency += latency;
+        if(maxMessageLatency < latency){
+            maxMessageLatency = latency;
+        }
+        messageListener.onMessage(message);
         onMessageProcessTime += (System.currentTimeMillis() - sTime);
     }
     public void garbage(){}
@@ -958,6 +993,9 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
             ClientConnectionImpl.this.receiveCount = 0;
             ClientConnectionImpl.this.receiveProcessTime = 0;
             ClientConnectionImpl.this.onMessageProcessTime = 0;
+            ClientConnectionImpl.this.lastReceiveTime = -1;
+            ClientConnectionImpl.this.totalMessageLatency = 0;
+            ClientConnectionImpl.this.maxMessageLatency = 0;
         }
         
         public long getAverageReceiveProcessTime(){
@@ -966,6 +1004,22 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
         
         public long getAverageOnMessageProcessTime(){
             return ClientConnectionImpl.this.receiveCount == 0 ? 0 : (ClientConnectionImpl.this.onMessageProcessTime / ClientConnectionImpl.this.receiveCount);
+        }
+        
+        public long getAverageMessageLatency(){
+            return ClientConnectionImpl.this.receiveCount == 0 ? 0 : (ClientConnectionImpl.this.totalMessageLatency / ClientConnectionImpl.this.receiveCount);
+        }
+        
+        public long getMaxMessageLatency(){
+            return ClientConnectionImpl.this.maxMessageLatency;
+        }
+        
+        public int getMaxMessagePayoutCount(){
+            return ClientConnectionImpl.this.maxMessagePayoutCount;
+        }
+        
+        public int getMessagePayoutCount(){
+            return ClientConnectionImpl.this.messagePayoutCount;
         }
         
         public SocketAddress getLocalSocketAddress(){
@@ -1103,6 +1157,34 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
          * @return 平均メッセージ処理時間[ms]
          */
         public long getAverageOnMessageProcessTime();
+        
+        /**
+         * 平均メッセージ到達時間を取得する。<p>
+         *
+         * @return 平均メッセージ到達時間[ms]
+         */
+        public long getAverageMessageLatency();
+        
+        /**
+         * 最大メッセージ到達時間を取得する。<p>
+         *
+         * @return 最大メッセージ到達時間[ms]
+         */
+        public long getMaxMessageLatency();
+        
+        /**
+         * メッセージのリサイクルにおける、メッセージの最大払い出し数を取得する。<p>
+         *
+         * @return メッセージの最大払い出し数
+         */
+        public int getMaxMessagePayoutCount();
+        
+        /**
+         * メッセージのリサイクルにおける、メッセージの払い出し数を取得する。<p>
+         *
+         * @return メッセージの払い出し数
+         */
+        public int getMessagePayoutCount();
         
         /**
          * カウントをリセットする。<p>

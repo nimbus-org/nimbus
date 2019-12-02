@@ -97,7 +97,7 @@ public class ListJournalEditorService extends BlockJournalEditorServiceBase
                 makeObjectFormat(finder, null, element, subBuf);
                 subBuf.append(getLineSeparator());
             }else if(list.size() > max){
-                subBuf.append(MAX_SIZE_OVER);
+                subBuf.append(MAX_SIZE_OVER).append(list.size());
                 subBuf.append(getLineSeparator());
             }
         }

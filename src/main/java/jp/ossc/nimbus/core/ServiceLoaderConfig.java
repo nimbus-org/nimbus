@@ -39,6 +39,14 @@ package jp.ossc.nimbus.core;
 public interface ServiceLoaderConfig{
     
     /**
+     * サービスローダに渡すサービスロード用のプロパティが存在するか判定する。<p>
+     * 
+     * @param name プロパティ名
+     * @return 存在する場合、true
+     */
+    public boolean existsProperty(String name);
+    
+    /**
      * サービスローダに渡すサービスロード用のプロパティを取得する。<p>
      * 
      * @param name プロパティ名

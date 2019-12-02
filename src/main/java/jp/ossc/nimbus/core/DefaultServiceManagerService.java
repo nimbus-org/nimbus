@@ -681,6 +681,11 @@ public class DefaultServiceManagerService extends ServiceBase
     }
     
     // ServiceManagerのJavaDoc
+    public boolean existsProperty(String name){
+        return managerProperties.containsKey(name);
+    }
+    
+    // ServiceManagerのJavaDoc
     public String getProperty(String name){
         return managerProperties.getProperty(name);
     }
@@ -2328,6 +2333,16 @@ public class DefaultServiceManagerService extends ServiceBase
         return field.get(null);
     }
     
+    private ServiceMetaData findServiceMetaData(MetaData metaData){
+        if(metaData == null){
+            return null;
+        }
+        if(metaData instanceof ServiceMetaData){
+            return (ServiceMetaData)metaData;
+        }
+        return findServiceMetaData(metaData.getParent());
+    }
+    
     private Object getValueOfText(
         ObjectMetaData objData,
         Type type,
@@ -2342,6 +2357,14 @@ public class DefaultServiceManagerService extends ServiceBase
             textValue,
             objData.getServiceLoader().getConfig()
         );
+        ServiceMetaData serviceData = findServiceMetaData(objData);
+        if(serviceData != null){
+            // サービスプロパティの置換
+            textValue = Utility.replaceServiceProperty(
+                serviceData,
+                textValue
+            );
+        }
         // マネージャプロパティの置換
         textValue = Utility.replaceManagerProperty(
             this,
@@ -2579,16 +2602,17 @@ public class DefaultServiceManagerService extends ServiceBase
         Object target,
         ObjectMetaData objData,
         int state
-    ){
+    ) throws Exception {
         if(objData == null){
             return;
         }
         final Iterator invokes = objData.getInvokes().iterator();
         while(invokes.hasNext()){
             final InvokeMetaData invokeData = (InvokeMetaData)invokes.next();
+            Object t = getValueOfTarget(invokeData);
             if(state == invokeData.getCallStateValue()){
                 try{
-                    callInvoke(target, objData, invokeData);
+                    callInvoke(t == null ? target : t, objData, invokeData);
                 }catch(Exception e){
                     // 無視する
                 }

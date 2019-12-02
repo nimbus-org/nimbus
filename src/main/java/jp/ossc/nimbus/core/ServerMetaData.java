@@ -393,6 +393,16 @@ public class ServerMetaData extends MetaData implements Serializable{
     }
     
     /**
+     * 指定されたプロパティ名の&lt;server-property&gt;要素で指定されたプロパティが存在するか判定する。<p>
+     *
+     * @param property プロパティ名
+     * @return &lt;server-property&gt;要素で指定されたプロパティ名が存在する場合true
+     */
+    public boolean existsProperty(String property){
+        return properties.containsKey(property);
+    }
+    
+    /**
      * 指定されたプロパティ名の&lt;server-property&gt;要素で指定されたプロパティ値を取得する。<p>
      * 該当するプロパティ名の&lt;server-property&gt;要素が指定されていない場合は、nullを返す。<br>
      *

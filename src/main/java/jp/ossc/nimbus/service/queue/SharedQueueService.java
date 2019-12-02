@@ -178,48 +178,31 @@ public class SharedQueueService extends SharedContextService
         if(getState() != STARTED || fourceEndFlg){
             throw new IllegalServiceStateException(this);
         }
-        long startTime = System.currentTimeMillis();
-        long processTime = 0;
-        if(maxThresholdSize > 0
-             && (pushMonitor.isWait()
-                    || (size() >= maxThresholdSize))
-             && !fourceEndFlg
-        ){
-            while(size() >= maxThresholdSize && !fourceEndFlg){
-                long proc = 0;
-                if(timeout >= 0){
-                    proc = System.currentTimeMillis();
-                }
-                try{
-                    long curSleepTime = timeout >= 0 ? timeout - processTime : sleepTime;
-                    if(timeout == 0 || curSleepTime <= 0){
-                        return false;
-                    }else{
-                        if(timeout < 0){
-                            pushMonitor.initAndWaitMonitor(curSleepTime);
+        if(maxThresholdSize > 0){
+            final long startTime = timeout > 0 ? System.currentTimeMillis() : 0;
+            try{
+                pushMonitor.initMonitor();
+                while(((pushMonitor.isWait() && !pushMonitor.isFirst())
+                            || (size() >= maxThresholdSize))
+                     && !fourceEndFlg
+                ){
+                    try{
+                        if(timeout == 0){
+                            return false;
+                        }else if(timeout < 0){
+                            pushMonitor.waitMonitor(sleepTime);
                         }else{
-                            if(!pushMonitor.initAndWaitMonitor(curSleepTime)){
-                                if(timeout >= 0){
-                                    proc = System.currentTimeMillis() - proc;
-                                    processTime += proc;
-                                    if(processTime > timeout){
-                                        return false;
-                                    }
-                                }
+                            final long curTimeout = timeout - (System.currentTimeMillis() - startTime);
+                            if(curTimeout <= 0 || !pushMonitor.initAndWaitMonitor(curTimeout)){
+                                return false;
                             }
                         }
+                    }catch(InterruptedException e){
+                        return false;
                     }
-                }catch(InterruptedException e){
-                    return false;
-                }finally{
-                    pushMonitor.releaseMonitor();
                 }
-            }
-        }
-        if(timeout > 0){
-            timeout -= (System.currentTimeMillis() - startTime);
-            if(timeout <= 0){
-                return false;
+            }finally{
+                pushMonitor.releaseMonitor();
             }
         }
         
@@ -726,7 +709,7 @@ public class SharedQueueService extends SharedContextService
                     }
                 }
                 final long start = System.currentTimeMillis();
-                if(lock.acquireForReply(sourceId, threadId, true, true, timeout, sourceId, sequence, responseSubject, responseKey)){
+                if(lock.acquireForReply(lock.new CallbackTask(sourceId, threadId, true, true, timeout, new ResponseCallback(sourceId, sequence, responseSubject, responseKey))) == 1){
                     if(!containsKey(key)){
                         lock.release(sourceId, false);
                         continue;

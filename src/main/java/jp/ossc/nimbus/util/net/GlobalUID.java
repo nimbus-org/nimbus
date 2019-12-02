@@ -45,8 +45,7 @@ public class GlobalUID implements Externalizable, Comparable, Cloneable{
     protected UID uid;
     protected InetAddress address;
     
-    public GlobalUID() throws UnknownHostException{
-        this((InetAddress)null);
+    public GlobalUID(){
     }
     
     public GlobalUID(String localAddress) throws UnknownHostException{

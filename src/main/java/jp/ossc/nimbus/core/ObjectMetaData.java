@@ -309,7 +309,7 @@ public class ObjectMetaData extends MetaData implements Serializable{
                 ifDefMetaDataList = new ArrayList();
             }
             final IfDefMetaData ifdefData
-                 = new IfDefMetaData(this);
+                 = createIfDefMetaData();
             ifdefData.importXML((Element)ifDefElements.next());
             ifDefMetaDataList.add(ifdefData);
         }
@@ -318,6 +318,9 @@ public class ObjectMetaData extends MetaData implements Serializable{
     }
     
     public void importIfDef() throws DeploymentException{
+        if(constructor != null){
+            constructor.importIfDef();
+        }
         Iterator entries = fields.entrySet().iterator();
         while(entries.hasNext()){
             Map.Entry entry = (Map.Entry)entries.next();
@@ -362,6 +365,26 @@ public class ObjectMetaData extends MetaData implements Serializable{
         }
     }
     
+    protected ConstructorMetaData createConstructorMetaData() throws DeploymentException{
+        return new ConstructorMetaData(this);
+    }
+    
+    protected FieldMetaData createFieldMetaData() throws DeploymentException{
+        return new FieldMetaData(this);
+    }
+    
+    protected AttributeMetaData createAttributeMetaData() throws DeploymentException{
+        return new AttributeMetaData(this);
+    }
+    
+    protected InvokeMetaData createInvokeMetaData() throws DeploymentException{
+        return new InvokeMetaData(this);
+    }
+    
+    protected IfDefMetaData createIfDefMetaData() throws DeploymentException{
+        return new IfDefMetaData(this);
+    }
+    
     protected void importXMLInner(Element element, IfDefMetaData ifdefData) throws DeploymentException{
         
         final boolean ifdefMatch
@@ -375,7 +398,7 @@ public class ObjectMetaData extends MetaData implements Serializable{
             if(ifdefMatch && constructor != null){
                 throw new DeploymentException("Element of " + ConstructorMetaData.CONSTRUCTOR_TAG_NAME + " is duplicated.");
             }
-            final ConstructorMetaData constData = new ConstructorMetaData(this);
+            final ConstructorMetaData constData = createConstructorMetaData();
             if(ifdefData != null){
                 constData.setIfDefMetaData(ifdefData);
                 ifdefData.addChild(constData);
@@ -392,7 +415,7 @@ public class ObjectMetaData extends MetaData implements Serializable{
         );
         while(fieldElements.hasNext()){
             final FieldMetaData fieldData
-                 = new FieldMetaData(this);
+                 = createFieldMetaData();
             if(ifdefData != null){
                 fieldData.setIfDefMetaData(ifdefData);
                 ifdefData.addChild(fieldData);
@@ -409,7 +432,7 @@ public class ObjectMetaData extends MetaData implements Serializable{
         );
         while(attributeElements.hasNext()){
             final AttributeMetaData attributeData
-                 = new AttributeMetaData(this);
+                 = createAttributeMetaData();
             if(ifdefData != null){
                 attributeData.setIfDefMetaData(ifdefData);
                 ifdefData.addChild(attributeData);
@@ -426,17 +449,12 @@ public class ObjectMetaData extends MetaData implements Serializable{
         );
         while(invokeElements.hasNext()){
             final InvokeMetaData invokeData
-                 = new InvokeMetaData(this);
+                 = createInvokeMetaData();
             if(ifdefData != null){
                 invokeData.setIfDefMetaData(ifdefData);
                 ifdefData.addChild(invokeData);
             }
             invokeData.importXML((Element)invokeElements.next());
-            if(invokeData.getTarget() != null){
-                throw new DeploymentException(
-                    "target element must not specified. : " + invokeData
-                );
-            }
             if(ifdefMatch){
                 addInvoke(invokeData);
             }
@@ -532,6 +550,10 @@ public class ObjectMetaData extends MetaData implements Serializable{
      */
     public Object clone(){
         ObjectMetaData clone = (ObjectMetaData)super.clone();
+        if(constructor != null){
+            clone.constructor = (ConstructorMetaData)constructor.clone();
+            clone.constructor.setParent(clone);
+        }
         clone.fields = new LinkedHashMap();
         Iterator entries = fields.entrySet().iterator();
         while(entries.hasNext()){

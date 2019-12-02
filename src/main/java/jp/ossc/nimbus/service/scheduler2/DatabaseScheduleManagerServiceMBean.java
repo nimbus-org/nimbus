@@ -370,15 +370,15 @@ public interface DatabaseScheduleManagerServiceMBean extends ServiceBaseMBean{
     public boolean isLockForFindExecutable();
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService クラスタ}サービスのサービス名を設定する。<p>
-     * この属性を設定した場合、クラスタサービスが{@link jp.ossc.nimbus.service.keepalive.ClusterService#isMain() ClusterService.isMain()}=trueとなっている場合のみ、制御状態のチェック及び、最大遅延時間のチェックを行う。<br>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster クラスタ}サービスのサービス名を設定する。<p>
+     * この属性を設定した場合、クラスタサービスが{@link jp.ossc.nimbus.service.keepalive.Cluster#isMain() Cluster.isMain()}=trueとなっている場合のみ、制御状態のチェック及び、最大遅延時間のチェックを行う。<br>
      *
      * @param name クラスタサービスのサービス名
      */
     public void setClusterServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService クラスタ}サービスのサービス名を取得する。<p>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster クラスタ}サービスのサービス名を取得する。<p>
      *
      * @return クラスタサービスのサービス名
      */
@@ -427,6 +427,34 @@ public interface DatabaseScheduleManagerServiceMBean extends ServiceBaseMBean{
      * @return trueの場合、スケジュールの入力のJSONフォーマットをサポートする
      */
     public boolean isJSONInput();
+    
+    /**
+     * {@link ScheduleExecutor}の種類({@link Schedule#getExecutorType()})毎に、スケジュールの入力をパースする{@link jp.ossc.nimbus.util.converter.Converter Converter}サービスのサービス名のマッピングを設定する。<p>
+     *
+     * @param mapping キーが{@link ScheduleExecutor}の種類({@link Schedule#getExecutorType()})、値がスケジュールの入力をパースする{@link jp.ossc.nimbus.util.converter.Converter Converter}サービスのサービス名となるマッピング
+     */
+    public void setInputParseConverterMapping(Properties mapping);
+    
+    /**
+     * {@link ScheduleExecutor}の種類({@link Schedule#getExecutorType()})毎に、スケジュールの入力をパースする{@link jp.ossc.nimbus.util.converter.Converter Converter}サービスのサービス名のマッピングを取得する。<p>
+     *
+     * @return キーが{@link ScheduleExecutor}の種類({@link Schedule#getExecutorType()})、値がスケジュールの入力をパースする{@link jp.ossc.nimbus.util.converter.Converter Converter}サービスのサービス名となるマッピング
+     */
+    public Properties getInputParseConverterMapping();
+    
+    /**
+     * {@link ScheduleExecutor}の種類({@link Schedule#getExecutorType()})毎に、スケジュールの入力をフォーマットする{@link jp.ossc.nimbus.util.converter.Converter Converter}サービスのサービス名のマッピングを設定する。<p>
+     *
+     * @param mapping キーが{@link ScheduleExecutor}の種類({@link Schedule#getExecutorType()})、値がスケジュールの入力をフォーマットする{@link jp.ossc.nimbus.util.converter.Converter Converter}サービスのサービス名となるマッピング
+     */
+    public void setInputFormatConverterMapping(Properties mapping);
+    
+    /**
+     * {@link ScheduleExecutor}の種類({@link Schedule#getExecutorType()})毎に、スケジュールの入力をフォーマットする{@link jp.ossc.nimbus.util.converter.Converter Converter}サービスのサービス名のマッピングを取得する。<p>
+     *
+     * @return キーが{@link ScheduleExecutor}の種類({@link Schedule#getExecutorType()})、値がスケジュールの入力をフォーマットする{@link jp.ossc.nimbus.util.converter.Converter Converter}サービスのサービス名となるマッピング
+     */
+    public Properties getInputFormatConverterMapping();
     
     /**
      * 指定された日付のスケジュールを作成する。<p>

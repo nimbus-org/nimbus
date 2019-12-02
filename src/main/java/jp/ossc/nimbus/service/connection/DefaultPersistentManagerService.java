@@ -602,12 +602,12 @@ public class DefaultPersistentManagerService extends ServiceBase
                     return list;
                 }else if(outputClass.isArray()){
                     List list = new ArrayList();
-                    while(true){
+                    while(isCursor || resultSet.next()){
                         Object bean = fillOutput(
                             resultSet,
                             outputClass.getComponentType(),
                             outputMapping,
-                            isCursor
+                            true
                         );
                         if(bean == null && (resultSet.isAfterLast() || resultSet.getRow() == 0)){
                             break;

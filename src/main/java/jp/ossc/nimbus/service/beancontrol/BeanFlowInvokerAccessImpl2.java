@@ -206,6 +206,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
     private static final String MAX_ASYNCH_WAIT_ATTRIBUTE = "maxAsynchWait";
     private static final String CANCEL_ATTRIBUTE = "cancel";
     private static final String ENCODING_ATTRIBUTE = "encoding";
+    private static final String FILE_ATTRIBUTE = "file";
 
     private static final String JOURNAL_KEY_FLOW = "Flow";
     private static final String JOURNAL_KEY_FLOW_NAME = "Name";
@@ -4249,8 +4250,13 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
         }
 
         public void importXML(Element element) throws DeploymentException{
-            name = getUniqueAttribute(element, NAME_ATTRIBUTE);
+            name = getOptionalAttribute(element, NAME_ATTRIBUTE);
             stepName = getOptionalAttribute(element, STEPNAME_ATTRIBUTE, name);
+            if(stepName == null){
+                throw new DeploymentException(
+                    "it is necessary to specify \"" + NAME_ATTRIBUTE + "\" or  \"" + STEPNAME_ATTRIBUTE + "\" of <" + REPLY_ELEMENT + '>'
+                );
+            }
             coverage.setElementName("<" + REPLY_ELEMENT + " " + STEPNAME_ATTRIBUTE + "=\"" + stepName + "\">");
 
             final String journalStr = MetaData.getOptionalAttribute(
@@ -4337,8 +4343,17 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                                 }
                             }
                             stepContext.result = asynchContext.getBeanFlowInvoker().getAsynchReply(asynchContext, context.monitor, timeoutVal, isCancel);
+                            if(asynchContexts.size() != 0 && name != null && name.equals(stepName)){
+                                throw new DeploymentException(
+                                    "\"" + NAME_ATTRIBUTE + "\" and \"" + STEPNAME_ATTRIBUTE + "\" are the same. Explicitly \"" + STEPNAME_ATTRIBUTE + "\" is not specified or the same value as \"" + NAME_ATTRIBUTE + "\" is specified. " + NAME_ATTRIBUTE + "=" + name
+                                );
+                            }
                         }
                     }
+                }else{
+                    throw new DeploymentException(
+                        "The specified \"" + STEPNAME_ATTRIBUTE + "\" is not <" + CALL_FLOW_ELEMENT + ">. " + STEPNAME_ATTRIBUTE + "=" + stepName
+                    );
                 }
                 if(journal != null){
                     journal.addInfo(
@@ -4377,7 +4392,9 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                 if(!isCatch){
                     throwException(th);
                 }
-                context.put(name, stepContext);
+                if(name != null){
+                    context.put(name, stepContext);
+                }
             }finally{
                 try{
                     if(finallyStep != null){
@@ -4391,7 +4408,9 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                     }
                 }
             }
-            context.put(name, stepContext);
+            if(name != null){
+                context.put(name, stepContext);
+            }
             return stepContext;
         }
     }
@@ -4413,6 +4432,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
         private boolean isTargetJournal = true;
         private BeanFlowCoverageImpl coverage;
         private BeanFlowCoverageImpl targetCoverage;
+        private FinallyMetaData finallyStep;
 
         public ForMetaData(MetaData parent, BeanFlowCoverageImpl coverage){
             super(parent);
@@ -4424,6 +4444,9 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                 for(int i = 0; i < steps.size(); i++){
                     ((Step)steps.get(i)).setupStepNames(names);
                 }
+            }
+            if(finallyStep != null){
+                finallyStep.setupStepNames(names);
             }
         }
 
@@ -4539,7 +4562,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
 
             final Iterator children = getChildrenWithoutTagName(
                 element,
-                new String[]{TARGET_ELEMENT}
+                new String[]{TARGET_ELEMENT, FINALLY_ELEMENT}
             );
             boolean isReturn = false;
             while(children.hasNext()){
@@ -4611,6 +4634,16 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
             }
             if(steps == null){
                 throw new DeploymentException("for body is empty.");
+            }
+            
+            final Element finallyElement = MetaData.getOptionalChild(
+                element,
+                FINALLY_ELEMENT
+            );
+            if(finallyElement != null){
+                FinallyMetaData step = new FinallyMetaData(this, coverage);
+                step.importXML(finallyElement);
+                finallyStep = step;
             }
         }
 
@@ -4895,8 +4928,15 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                     }
                 }
             }finally{
-                if(journal != null){
-                    journal.addEndStep();
+                try{
+                    if(finallyStep != null){
+                        finallyStep.invokeStep(context);
+                    }
+                }finally{
+                    ((BeanFlowMonitorImpl)context.monitor).setCurrentFlowName(flowName);
+                    if(journal != null){
+                        journal.addEndStep();
+                    }
                 }
             }
             if(stepContext == null){
@@ -4916,6 +4956,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
         private boolean isJournalOnlyLast = false;
         private boolean isDo = false;
         private BeanFlowCoverageImpl coverage;
+        private FinallyMetaData finallyStep;
 
         public WhileMetaData(MetaData parent, BeanFlowCoverageImpl coverage){
             super(parent);
@@ -4927,6 +4968,9 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                 for(int i = 0; i < steps.size(); i++){
                     ((Step)steps.get(i)).setupStepNames(names);
                 }
+            }
+            if(finallyStep != null){
+                finallyStep.setupStepNames(names);
             }
         }
 
@@ -4990,7 +5034,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
             }
             String tagName = null;
             boolean isReturn = false;
-            final Iterator children = getChildrenWithoutTagName(element, new String[]{TEST_ATTRIBUTE});
+            final Iterator children = getChildrenWithoutTagName(element, new String[]{TEST_ATTRIBUTE, FINALLY_ELEMENT});
             while(children.hasNext()){
                 final Element currentElement = (Element)children.next();
                 tagName = currentElement.getTagName();
@@ -5058,6 +5102,16 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
             }
             if(steps == null){
                 throw new DeploymentException("if body is empty.");
+            }
+            
+            final Element finallyElement = MetaData.getOptionalChild(
+                element,
+                FINALLY_ELEMENT
+            );
+            if(finallyElement != null){
+                FinallyMetaData step = new FinallyMetaData(this, coverage);
+                step.importXML(finallyElement);
+                finallyStep = step;
             }
         }
 
@@ -5130,8 +5184,15 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                     }
                 }
             }finally{
-                if(journal != null){
-                    journal.addEndStep();
+                try{
+                    if(finallyStep != null){
+                        finallyStep.invokeStep(context);
+                    }
+                }finally{
+                    ((BeanFlowMonitorImpl)context.monitor).setCurrentFlowName(flowName);
+                    if(journal != null){
+                        journal.addEndStep();
+                    }
                 }
             }
             if(stepContext == null){
@@ -5226,6 +5287,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
         private List steps;
         private boolean isJournal = true;
         private BeanFlowCoverageImpl coverage;
+        private FinallyMetaData finallyStep;
 
         public IfMetaData(MetaData parent, BeanFlowCoverageImpl coverage){
             super(parent);
@@ -5237,6 +5299,9 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                 for(int i = 0; i < steps.size(); i++){
                     ((Step)steps.get(i)).setupStepNames(names);
                 }
+            }
+            if(finallyStep != null){
+                finallyStep.setupStepNames(names);
             }
         }
 
@@ -5289,7 +5354,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                 isJournal = Boolean.valueOf(journalStr).booleanValue();
             }
             boolean isReturn = false;
-            final Iterator children = getChildrenWithoutTagName(element, new String[]{TEST_ATTRIBUTE});
+            final Iterator children = getChildrenWithoutTagName(element, new String[]{TEST_ATTRIBUTE, FINALLY_ELEMENT});
             while(children.hasNext()){
                 final Element currentElement = (Element)children.next();
                 tagName = currentElement.getTagName();
@@ -5355,6 +5420,16 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                 }
                 steps.add(stepObj);
             }
+            
+            final Element finallyElement = MetaData.getOptionalChild(
+                element,
+                FINALLY_ELEMENT
+            );
+            if(finallyElement != null){
+                FinallyMetaData step = new FinallyMetaData(this, coverage);
+                step.importXML(finallyElement);
+                finallyStep = step;
+            }
         }
 
         public boolean isMatch(FlowContext context) throws Exception{
@@ -5393,8 +5468,15 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                     stepContext = new StepContext();
                 }
             }finally{
-                if(journal != null){
-                    journal.addEndStep();
+                try{
+                    if(finallyStep != null){
+                        finallyStep.invokeStep(context);
+                    }
+                }finally{
+                    ((BeanFlowMonitorImpl)context.monitor).setCurrentFlowName(flowName);
+                    if(journal != null){
+                        journal.addEndStep();
+                    }
                 }
             }
             return stepContext;
@@ -6044,21 +6126,13 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                     try{
                         if(property instanceof NestedProperty){
                             NestedProperty nestedProp = (NestedProperty)property;
-                            Property thisProp = nestedProp.getFirstThisProperty();
-                            val = thisProp.getProperty(context);
-                            if(val != null){
-                                if(val instanceof StepContext){
-                                    Property fnp = nestedProp.getFirstNestedProperty();
-                                    if(!TARGET.equals(fnp.getPropertyName())
-                                            && !RESULT.equals(fnp.getPropertyName())
-                                    ){
-                                        val = property.getProperty(vars);
-                                    }else{
-                                        val = property.getProperty(context);
-                                    }
-                                }else{
-                                    val = property.getProperty(context);
-                                }
+                            Property fnp = nestedProp.getFirstNestedProperty();
+                            if(!TARGET.equals(fnp.getPropertyName())
+                                    && !RESULT.equals(fnp.getPropertyName())
+                            ){
+                                val = property.getProperty(vars);
+                            }else{
+                                val = property.getProperty(context);
                             }
                         }else{
                             val = property.getProperty(context);
@@ -6115,6 +6189,8 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
         private static final String VAR = "var";
         private static final String RESOURCE = "resource";
         private static final String JOURNAL = "journal";
+        private static final String LOGGER = "logger";
+        private static final String BFIF = "beanFlowInvokerFactory";
 
         private String code;
         private transient CompiledInterpreter compiled;
@@ -6154,6 +6230,24 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
             vars.put(VAR, context.vars);
             vars.put(RESOURCE, context.resourceManager);
             vars.put(JOURNAL, new JournalWrapper(getJournal(this)));
+            vars.put(LOGGER, factoryCallBack.getLogger());
+            vars.put(
+                BFIF,
+                new BeanFlowInvokerFactory(){
+                    public BeanFlowInvoker createFlow(String key){
+                        return factoryCallBack.createFlow(key);
+                    }
+                    public BeanFlowInvoker createFlow(String key, String caller, boolean isOverwride){
+                        return factoryCallBack.createFlow(key, caller, isOverwride);
+                    }
+                    public boolean containsFlow(String key){
+                        return factoryCallBack.containsFlow(key);
+                    }
+                    public Set getBeanFlowKeySet(){
+                        return factoryCallBack.getBeanFlowKeySet();
+                    }
+                }
+            );
             if(compiled == null){
                 Interpreter interpreter = factoryCallBack.getInterpreter();
                 if(interpreter == null){
@@ -6191,21 +6285,35 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                 );
             }
             coverage.setElementName("<" + TEMPLATE_ELEMENT + ">");
-            String template = getElementContent(element);
-            if(template == null || template.length() == 0){
-                template = getElementContent(element, true, null);
-                if(template == null || template.length() == 0){
-                    throw new DeploymentException(
-                        "Content of template is null."
-                    );
-                }
-            }
-            template = factoryCallBack.replaceProperty(template);
-            String encoding = getOptionalAttribute(element, ENCODING_ATTRIBUTE, BeanFlowInvokerAccessImpl2.this.encoding);
             templateName = BeanFlowInvokerAccessImpl2.this.flowName + '.' + ((StepMetaData)getParent()).getName();
             TemplateEngine templateEngine = factoryCallBack.getTemplateEngine();
-            if(templateEngine != null){
-                templateEngine.setTemplate(templateName, template, encoding);
+            String encoding = getOptionalAttribute(element, ENCODING_ATTRIBUTE, BeanFlowInvokerAccessImpl2.this.encoding);
+            String fileStr = getOptionalAttribute(element, FILE_ATTRIBUTE);
+            if(fileStr != null){
+                File file = factoryCallBack.findResource(fileStr);
+                if(file == null && resourcePath != null){
+                    File dir = new File(resourcePath).getParentFile();
+                    if(dir != null){
+                        file = factoryCallBack.findResource(new File(dir, fileStr).getPath());
+                    }
+                }
+                if(templateEngine != null && file != null){
+                    templateEngine.setTemplateFile(templateName, file, encoding);
+                }
+            }else{
+                String template = getElementContent(element);
+                if(template == null || template.length() == 0){
+                    template = getElementContent(element, true, null);
+                    if(template == null || template.length() == 0){
+                        throw new DeploymentException(
+                            "Content of template is null."
+                        );
+                    }
+                }
+                template = factoryCallBack.replaceProperty(template);
+                if(templateEngine != null){
+                    templateEngine.setTemplate(templateName, template, encoding);
+                }
             }
         }
 
@@ -6255,7 +6363,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
             input = in;
             resourceManager = rm;
             this.monitor = monitor;
-            interpreterContext = new HashMap();
+            interpreterContext = new InterpreterContext();
             interpreterContext.put(INPUT, input);
             if(stepNames != null){
                 Iterator namse = stepNames.iterator();
@@ -6357,6 +6465,24 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
         
         public Map getInterpreterContext(){
             return interpreterContext;
+        }
+        
+        public class InterpreterContext extends HashMap{
+            
+            private static final long serialVersionUID = -7004254995623566269L;
+            
+            public Object getThis(){
+                return FlowContext.this.getThis();
+            }
+            public Object getInput(){
+                return FlowContext.this.getInput();
+            }
+            public Object getVar(String name){
+                return FlowContext.this.getVar(name);
+            }
+            public Object getInputDef(String name){
+                return FlowContext.this.getInputDef(name);
+            }
         }
     }
 
@@ -6503,21 +6629,13 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                 try{
                     if(property instanceof NestedProperty){
                         NestedProperty nestedProp = (NestedProperty)property;
-                        Property thisProp = nestedProp.getFirstThisProperty();
-                        val = thisProp.getProperty(context);
-                        if(val != null){
-                            if(val instanceof StepContext){
-                                Property fnp = nestedProp.getFirstNestedProperty();
-                                if(!TARGET.equals(fnp.getPropertyName())
-                                        && !RESULT.equals(fnp.getPropertyName())
-                                ){
-                                    val = property.getProperty(vars);
-                                }else{
-                                    val = property.getProperty(context);
-                                }
-                            }else{
-                                val = property.getProperty(context);
-                            }
+                        Property fnp = nestedProp.getFirstNestedProperty();
+                        if(!TARGET.equals(fnp.getPropertyName())
+                                && !RESULT.equals(fnp.getPropertyName())
+                        ){
+                            val = property.getProperty(vars);
+                        }else{
+                            val = property.getProperty(context);
                         }
                     }else{
                         val = property.getProperty(context);

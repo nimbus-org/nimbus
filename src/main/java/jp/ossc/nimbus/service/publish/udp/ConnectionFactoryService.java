@@ -676,8 +676,8 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
         serverConnection.resetSendCount();
     }
     
-    public long getAverageSendProcessTime(){
-        return serverConnection == null ? 0 : serverConnection.getAverageSendProcessTime();
+    public double getAverageSendProcessTime(){
+        return serverConnection == null ? 0.0d : serverConnection.getAverageSendProcessTime();
     }
     
     public Set getClients(){
@@ -748,11 +748,17 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
     }
     
     public void enabledClient(String address, int port){
-        setEnabledClient(address, port, true);
+        if(serverConnection == null){
+            return;
+        }
+        serverConnection.enabledClient(address, port);
     }
     
     public void disabledClient(String address, int port){
-        setEnabledClient(address, port, false);
+        if(serverConnection == null){
+            return;
+        }
+        serverConnection.disabledClient(address, port);
     }
     
     public Set getSubjects(String address, int port){
@@ -805,30 +811,6 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
         return new HashSet();
     }
     
-    private void setEnabledClient(String address, int port, boolean isEnabled){
-        if(serverConnection == null){
-            return;
-        }
-        Set clients = serverConnection.getClients();
-        ServerConnectionImpl.ClientImpl[] clientArray = (ServerConnectionImpl.ClientImpl[])clients.toArray(new ServerConnectionImpl.ClientImpl[clients.size()]);
-        for(int i = 0; i < clientArray.length; i++){
-            Socket socket = clientArray[i].getSocket();
-            if(socket == null || clientArray[i].isEnabled() == isEnabled){
-                continue;
-            }
-            InetSocketAddress remoteAddress = (InetSocketAddress)socket.getRemoteSocketAddress();
-            if(remoteAddress == null){
-                continue;
-            }
-            if((remoteAddress.getAddress().getHostAddress().equals(address)
-                    || remoteAddress.getAddress().getHostName().equalsIgnoreCase(address))
-                && (port <= 0 || port == remoteAddress.getPort())
-            ){
-                clientArray[i].setEnabled(isEnabled);
-            }
-        }
-    }
-    
     public Map getSendCountsByClient(){
         if(serverConnection == null){
             return new HashMap();
@@ -866,7 +848,7 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
             if(address == null){
                 continue;
             }
-            result.put(address, new Long(clientArray[i].getAverageSendProcessTime()));
+            result.put(address, new Double(clientArray[i].getAverageSendProcessTime()));
         }
         return result;
     }
@@ -998,20 +980,28 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
         return serverConnection == null ? 0 : serverConnection.getSendMessageCacheSize();
     }
     
-    public long getAverageAsynchSendProcessTime(){
-        return serverConnection == null ? 0 : serverConnection.getAverageAsynchSendProcessTime();
+    public double getAverageAsynchSendProcessTime(){
+        return serverConnection == null ? 0.0d : serverConnection.getAverageAsynchSendProcessTime();
     }
     
-    public long getAverageRequestHandleProcessTime(){
-        return serverConnection == null ? 0 : serverConnection.getAverageRequestHandleProcessTime();
+    public double getAverageRequestHandleProcessTime(){
+        return serverConnection == null ? 0.0d : serverConnection.getAverageRequestHandleProcessTime();
     }
     
-    public double getMessageRecycleRate(){
-        return serverConnection == null ? 0d : serverConnection.getMessageRecycleRate();
+    public int getMaxMessagePayoutCount(){
+        return serverConnection == null ? 0 : serverConnection.getMaxMessagePayoutCount();
     }
     
-    public double getWindowRecycleRate(){
-        return serverConnection == null ? 0d : serverConnection.getWindowRecycleRate();
+    public int getMessagePayoutCount(){
+        return serverConnection == null ? 0 : serverConnection.getMessagePayoutCount();
+    }
+    
+    public int getMaxWindowPayoutCount(){
+        return serverConnection == null ? 0 : serverConnection.getMaxWindowPayoutCount();
+    }
+    
+    public int getWindowPayoutCount(){
+        return serverConnection == null ? 0 : serverConnection.getWindowPayoutCount();
     }
     
     public void startService() throws Exception{
@@ -1049,6 +1039,7 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
             serverConnection = new ServerConnectionImpl(
                 serverSocketChannel,
                 externalizer,
+                getServiceNameObject(),
                 sendThreadSize,
                 sendQueueServiceName,
                 asynchSendThreadSize,
@@ -1087,6 +1078,7 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
             serverConnection = new ServerConnectionImpl(
                 serverSocket,
                 externalizer,
+                getServiceNameObject(),
                 sendThreadSize,
                 sendQueueServiceName,
                 asynchSendThreadSize,
@@ -1114,7 +1106,6 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
         serverConnection.setStartReceiveMessageId(serverStartReceiveMessageId);
         serverConnection.setStopReceiveMessageId(serverStopReceiveMessageId);
         serverConnection.setAcknowledge(isAcknowledge);
-        serverConnection.setFactoryServiceName(getServiceNameObject());
         if(serverMessageRecycleBufferSize > 0){
             serverConnection.setMessageRecycleBufferSize(serverMessageRecycleBufferSize);
         }

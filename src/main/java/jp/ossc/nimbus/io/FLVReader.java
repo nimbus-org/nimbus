@@ -64,14 +64,9 @@ import jp.ossc.nimbus.util.converter.PaddingStringConverter;
  */
 public class FLVReader extends LineNumberReader{
     
-    /**
-     * デフォルトの改行文字。<p>
-     */
-    public static final String LINE_SEPARATOR
-         = System.getProperty("line.separator");
-    
     protected String encoding;
     protected int[] fieldLength;
+    protected int lineLength;
     protected PaddingStringConverter[] converters;
     
     protected boolean isIgnoreEmptyLine;
@@ -80,6 +75,7 @@ public class FLVReader extends LineNumberReader{
     protected FLVIterator iterator;
     
     protected ReaderWrapper readerWrapper;
+    protected boolean isNoLineBreak;
     
     /**
      * デフォルトの読み込みバッファサイズを持つ未接続のインスタンスを生成する。<p>
@@ -159,7 +155,7 @@ public class FLVReader extends LineNumberReader{
     public FLVReader(Reader reader, int[] fieldLen, PaddingStringConverter[] convs, String encoding){
         super(reader instanceof ReaderWrapper ? reader : new ReaderWrapper(reader));
         readerWrapper = (ReaderWrapper)lock;
-        fieldLength = fieldLen;
+        setFieldLength(fieldLen);
         converters = convs;
         this.encoding = encoding;
     }
@@ -251,7 +247,7 @@ public class FLVReader extends LineNumberReader{
     public FLVReader(Reader reader, int size, int[] fieldLen, PaddingStringConverter[] convs, String encoding){
         super(reader instanceof ReaderWrapper ? reader : new ReaderWrapper(reader), size);
         readerWrapper = (ReaderWrapper)lock;
-        fieldLength = fieldLen;
+        setFieldLength(fieldLen);
         converters = convs;
         this.encoding = encoding;
     }
@@ -263,6 +259,12 @@ public class FLVReader extends LineNumberReader{
      */
     public void setFieldLength(int[] length){
         fieldLength = length;
+        lineLength = 0;
+        if(length != null){
+            for(int i = 0; i < length.length; i++){
+                lineLength += length[i];
+            }
+        }
     }
     
     /**
@@ -308,6 +310,25 @@ public class FLVReader extends LineNumberReader{
      */
     public String getEncoding(){
         return encoding;
+    }
+    
+    /**
+     * 行区切りなしかどうかを設定する。<p>
+     * デフォルトは、falseで、行区切りあり。<br>
+     *
+     * @param isNoLineBreak 行区切りなしの場合、true
+     */
+    public void setNoLineBreak(boolean isNoLineBreak){
+        this.isNoLineBreak = isNoLineBreak;
+    }
+    
+    /**
+     * 行区切りなしかどうかを判定する。<p>
+     *
+     * @return trueの場合、行区切りなし
+     */
+    public boolean isNoLineBreak(){
+        return isNoLineBreak;
     }
     
     /**
@@ -367,7 +388,7 @@ public class FLVReader extends LineNumberReader{
     public long skipLine(long line) throws IOException{
         int result = 0;
         for(result = 0; result < line; result++){
-            if(super.readLine() == null){
+            if(readLine() == null){
                 break;
             }
         }
@@ -476,10 +497,48 @@ public class FLVReader extends LineNumberReader{
     }
     
     public String readLine() throws IOException{
-        if(readerWrapper.getReader() instanceof BufferedReader){
-            return ((BufferedReader)readerWrapper.getReader()).readLine();
+        if(isNoLineBreak){
+            StringBuilder buf = null;
+            for(int i = 0; i < fieldLength.length; i++){
+                for(int j = 0, jmax = fieldLength[i]; j < jmax; j++){
+                    int c = readerWrapper.read();
+                    if(c == -1){
+                        break;
+                    }else{
+                        if(buf == null){
+                            buf = new StringBuilder();
+                        }
+                        buf.append((char)c);
+                    }
+                }
+            }
+            if(buf == null){
+                return null;
+            }
+            setLineNumber(getLineNumber() + 1);
+            String line = buf.toString();
+            byte[] bytes = null;
+            if(encoding == null){
+                bytes = line.getBytes();
+            }else{
+                bytes = line.getBytes(encoding);
+            }
+            if(bytes.length > lineLength){
+                if(encoding == null){
+                    line = new String(bytes, 0, lineLength);
+                    readerWrapper.prefetching(new String(bytes, lineLength, bytes.length - lineLength));
+                }else{
+                    line = new String(bytes, 0, lineLength, encoding);
+                    readerWrapper.prefetching(new String(bytes, lineLength, bytes.length - lineLength, encoding));
+                }
+            }
+            return line;
         }else{
-            return super.readLine();
+            if(readerWrapper.getReader() instanceof BufferedReader){
+                return ((BufferedReader)readerWrapper.getReader()).readLine();
+            }else{
+                return super.readLine();
+            }
         }
     }
     
@@ -567,8 +626,9 @@ public class FLVReader extends LineNumberReader{
      */
     protected FLVReader cloneReader(FLVReader clone){
         clone.encoding = encoding;
-        clone.fieldLength = fieldLength;
+        clone.setFieldLength(fieldLength);
         clone.isIgnoreEmptyLine = isIgnoreEmptyLine;
+        clone.isNoLineBreak = isNoLineBreak;
         clone.commentPrefix = commentPrefix;
         if(converters != null && converters.length != 0){
             clone.converters = new PaddingStringConverter[converters.length];
@@ -844,6 +904,7 @@ public class FLVReader extends LineNumberReader{
     private static class ReaderWrapper extends Reader{
         
         private Reader realReader;
+        private StringBuilder prefetchingBuffer;
         private static Method READ_CHARBUFFER_METHOD = null;
         static{
             try{
@@ -867,7 +928,17 @@ public class FLVReader extends LineNumberReader{
         }
         
         public void setReader(Reader reader){
+            if(reader != realReader){
+                prefetchingBuffer = null;
+            }
             realReader = reader;
+        }
+        
+        protected void prefetching(String str){
+            if(prefetchingBuffer == null){
+                prefetchingBuffer = new StringBuilder();
+            }
+            prefetchingBuffer.append(str);
         }
         
         public int read(CharBuffer target) throws IOException{
@@ -900,7 +971,13 @@ public class FLVReader extends LineNumberReader{
             if(realReader == null){
                 return -1;
             }else{
-                return realReader.read();
+                if(prefetchingBuffer != null && prefetchingBuffer.length() > 0){
+                    int c = prefetchingBuffer.charAt(0);
+                    prefetchingBuffer.deleteCharAt(0);
+                    return c;
+                }else{
+                    return realReader.read();
+                }
             }
         }
         
@@ -962,6 +1039,7 @@ public class FLVReader extends LineNumberReader{
             if(realReader != null){
                 realReader.close();
             }
+            prefetchingBuffer = null;
         }
     }
 }

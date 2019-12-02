@@ -32,6 +32,8 @@
 // パッケージ
 package jp.ossc.nimbus.service.crypt;
 
+import java.io.*;
+
 import jp.ossc.nimbus.core.ServiceBase;
 
 /**
@@ -64,13 +66,106 @@ public class NullCryptService extends ServiceBase
         return str;
     }
     
-    /**
-     * ハッシュ対象の文字列をそのまま返す。<p>
-     * 
-     * @param str ハッシュ対象文字列
-     * @return ハッシュ文字列
-     */
+    public byte[] doEncodeBytes(byte[] bytes){
+        return bytes;
+    }
+    
+    public byte[] doDecodeBytes(byte[] bytes){
+        return bytes;
+    }
+    
+    public void doEncodeFile(String inFilePath, String outFilePath) throws IOException{
+        FileInputStream fis = new FileInputStream(inFilePath);
+        FileOutputStream fos = new FileOutputStream(outFilePath);
+        try{
+            doEncodeStream(fis, fos);
+        }finally{
+            fis.close();
+            fos.close();
+        }
+    }
+    
+    public void doEncodeStream(InputStream is, OutputStream os) throws IOException{
+        byte[] bytes = new byte[1024];
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        int length = 0;
+        while((length = is.read(bytes, 0, bytes.length)) > 0){
+            baos.write(bytes, 0, length);
+        }
+        bytes = doEncodeBytes(baos.toByteArray());
+        os.write(bytes, 0, bytes.length);
+    }
+    
+    public void doDecodeFile(String inFilePath, String outFilePath) throws Exception{
+        FileInputStream fis = new FileInputStream(inFilePath);
+        FileOutputStream fos = new FileOutputStream(outFilePath);
+        try{
+            doDecodeStream(fis, fos);
+        }finally{
+            fis.close();
+            fos.close();
+        }
+    }
+    
+    public void doDecodeStream(InputStream is, OutputStream os) throws Exception{
+        byte[] bytes = new byte[1024];
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        int length = 0;
+        while((length = is.read(bytes, 0, bytes.length)) > 0){
+            baos.write(bytes, 0, length);
+        }
+        bytes = doDecodeBytes(baos.toByteArray());
+        os.write(bytes, 0, bytes.length);
+    }
+    
     public String doHash(String str) {
-        return str;
+        return "";
+    }
+    public byte[] doHashBytes(byte[] bytes){
+        return "".getBytes();
+    }
+    public byte[] doHashFile(String filePath) throws IOException{
+        return "".getBytes();
+    }
+    public byte[] doHashStream(InputStream is) throws IOException{
+        return "".getBytes();
+    }
+    
+    public String doMac(String str) {
+        return "";
+    }
+    public byte[] doMacBytes(byte[] bytes){
+        return "".getBytes();
+    }
+    public byte[] doMacFile(String filePath) throws IOException{
+        return "".getBytes();
+    }
+    public byte[] doMacStream(InputStream is) throws IOException{
+        return "".getBytes();
+    }
+    
+    public String doSign(String str){
+        return "";
+    }
+    public byte[] doSignBytes(byte[] bytes){
+        return "".getBytes();
+    }
+    public byte[] doSignFile(String filePath) throws IOException{
+        return "".getBytes();
+    }
+    public byte[] doSignStream(InputStream is) throws IOException{
+        return "".getBytes();
+    }
+    public boolean doVerify(String str, String sign){
+        return true;
+    }
+    public boolean doVerifyBytes(byte[] bytes, byte[] sign){
+        return true;
+    }
+    public boolean doVerifyFile(String filePath, byte[] sign) throws IOException{
+        return true;
+    }
+    public boolean doVerifyStream(InputStream is, byte[] sign) throws IOException{
+        return true;
     }
 }

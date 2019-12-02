@@ -256,11 +256,17 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
     }
     
     public void enabledClient(Object id){
-        setEnabledClient(id, true);
+        if(serverConnection == null){
+            return;
+        }
+        serverConnection.enabledClient(id);
     }
     
     public void disabledClient(Object id){
-        setEnabledClient(id, false);
+        if(serverConnection == null){
+            return;
+        }
+        serverConnection.disabledClient(id);
     }
     
     public Set getSubjects(Object id){
@@ -277,16 +283,6 @@ public class ConnectionFactoryService extends ServiceBase implements ServerConne
         }
         ServerConnectionImpl.ClientImpl client = (ServerConnectionImpl.ClientImpl)serverConnection.getClients().get(id);
         return client == null ? new HashSet() : client.getKeys(subject);
-    }
-    
-    private void setEnabledClient(Object id, boolean isEnabled){
-        if(serverConnection == null){
-            return;
-        }
-        ServerConnectionImpl.ClientImpl client = (ServerConnectionImpl.ClientImpl)serverConnection.getClients().get(id);
-        if(client != null){
-            client.setEnabled(isEnabled);
-        }
     }
     
     public Map getSendCountsByClient(){

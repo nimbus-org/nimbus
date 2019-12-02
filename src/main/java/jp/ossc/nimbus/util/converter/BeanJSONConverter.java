@@ -231,19 +231,24 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
     protected boolean isAccessorOnly = true;
     
     /**
-     * JSON⇔Javaオブジェクト変換時に、値の型に応じて変換を行う{@link Converter}のマッピング。<p>
+     * JSON→Javaオブジェクト変換時に、値の型に応じて変換を行う{@link Converter}のマッピング。<p>
      */
     protected ClassMappingTree parseConverterMap;
     
     /**
-     * Javaオブジェクト⇔JSON変換時に、値の型に応じて変換を行う{@link Converter}のマッピング。<p>
+     * Javaオブジェクト→JSON変換時に、値の型に応じて変換を行う{@link Converter}のマッピング。<p>
      */
     protected ClassMappingTree formatConverterMap;
     
     /**
-     * Javaオブジェクト⇔JSON変換時に、プロパティにどのようにアクセスするかを示す{@link PropertyAccessType}のマッピング。<p>
+     * Javaオブジェクト→JSON変換時に、プロパティにどのようにアクセスするかを示す{@link PropertyAccessType}のマッピング。<p>
      */
     protected ClassMappingTree propertyAccessTypeMap;
+    
+    /**
+     * JSON→Javaオブジェクト変換時に、インタフェース型に対してどの実装クラスを生成するかのマッピング。<p>
+     */
+    protected ClassMappingTree implementsTypeMap;
     
     /**
      * Javaオブジェクト→JSON変換を行うコンバータを生成する。<p>
@@ -564,7 +569,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
         if(parseConverterMap == null){
             parseConverterMap = new ClassMappingTree();
         }
-        parseConverterMap.add(type, converter);
+        parseConverterMap.add(type, converter, true);
     }
     
     /**
@@ -588,7 +593,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
         if(formatConverterMap == null){
             formatConverterMap = new ClassMappingTree();
         }
-        formatConverterMap.add(type, converter);
+        formatConverterMap.add(type, converter, true);
     }
     
     /**
@@ -700,7 +705,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
         PropertyAccessType pat = (PropertyAccessType)propertyAccessTypeMap.getValueOf(type);
         if(pat == null){
             pat = new PropertyAccessType();
-            propertyAccessTypeMap.add(type, pat);
+            propertyAccessTypeMap.add(type, pat, true);
         }
         pat.isFieldOnly = isFieldOnly;
     }
@@ -749,7 +754,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
         PropertyAccessType pat = (PropertyAccessType)propertyAccessTypeMap.getValueOf(type);
         if(pat == null){
             pat = new PropertyAccessType();
-            propertyAccessTypeMap.add(type, pat);
+            propertyAccessTypeMap.add(type, pat, true);
         }
         pat.isAccessorOnly = isAccessorOnly;
     }
@@ -778,7 +783,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
         PropertyAccessType pat = (PropertyAccessType)propertyAccessTypeMap.getValueOf(type);
         if(pat == null){
             pat = new PropertyAccessType();
-            propertyAccessTypeMap.add(type, pat);
+            propertyAccessTypeMap.add(type, pat, true);
         }
         if(names == null || names.length == 0){
             pat.disabledPropertyNames = null;
@@ -807,7 +812,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
         PropertyAccessType pat = (PropertyAccessType)propertyAccessTypeMap.getValueOf(type);
         if(pat == null){
             pat = new PropertyAccessType();
-            propertyAccessTypeMap.add(type, pat);
+            propertyAccessTypeMap.add(type, pat, true);
         }
         if(names == null || names.length == 0){
             pat.enabledPropertyNames = null;
@@ -842,6 +847,109 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
             return pat.enabledPropertyNames.contains(name);
         }
         return true;
+    }
+    
+    /**
+     * JSON→Javaオブジェクト変換時に、インタフェース型（または抽象型）に対してどの実装クラスを生成するかを設定する。<p>
+     * 
+     * @param interfaceType インタフェース型（または抽象型）
+     * @param implementsType 実装クラス型
+     */
+    public void setImplementsType(Class interfaceType,  Class implementsType){
+        if(!interfaceType.isInterface() && !Modifier.isAbstract(interfaceType.getModifiers())){
+            throw new IllegalArgumentException("interfaceType must be interface or abstract. interfaceType=" + interfaceType.getName());
+        }
+        if(implementsType.isInterface() || Modifier.isAbstract(implementsType.getModifiers())){
+            throw new IllegalArgumentException("implementsType must not be interface or abstract. implementsType=" + implementsType.getName());
+        }
+        if(implementsTypeMap == null){
+            implementsTypeMap = new ClassMappingTree();
+        }
+        implementsTypeMap.add(interfaceType, implementsType, true);
+    }
+    
+    /**
+     * JSON→Javaオブジェクト変換時に、インタフェース型（または抽象型）に対してどの実装クラスを生成するかを取得する。<p>
+     * 
+     * @param interfaceType インタフェース型（または抽象型）
+     * @return 実装クラス型
+     */
+    public Class getImplementsType(Class interfaceType){
+        if(implementsTypeMap == null){
+            return null;
+        }
+        return (Class)implementsTypeMap.getValue(interfaceType);
+    }
+    
+    /**
+     * JSON→Javaオブジェクト変換時に、指定した型に対して適切な実装クラスを取得する。<p>
+     * 
+     * @param type 型
+     * @return 実装クラス型
+     */
+    protected Class findImplementsType(Class type){
+        if(implementsTypeMap == null){
+            return type;
+        }
+        Class result = (Class)implementsTypeMap.getValue(type);
+        return result == null ? type : result;
+    }
+    
+    /**
+     * Javaオブジェクト⇔JSON変換時に使用するプロパティ名に対する型を設定する。<p>
+     * setterやgetterがオーバーロードされていて、型が正しく判別できない場合に使用する。<br>
+     *
+     * @param type 対象のクラス
+     * @param propName プロパティ名
+     * @param propType プロパティ型
+     */
+    public void setPropertyType(Class type, String propName, Class propType){
+        if(propertyAccessTypeMap == null){
+            propertyAccessTypeMap = new ClassMappingTree();
+        }
+        PropertyAccessType pat = (PropertyAccessType)propertyAccessTypeMap.getValueOf(type);
+        if(pat == null){
+            pat = new PropertyAccessType();
+            propertyAccessTypeMap.add(type, pat, true);
+        }
+        if(pat.propertyTypes == null){
+            pat.propertyTypes = new HashMap();
+        }
+        Property prop = propertyAccess.getProperty(propName);
+        pat.propertyTypes.put(prop.getPropertyName(), propType);
+    }
+    
+    /**
+     * Javaオブジェクト⇔JSON変換時に使用するプロパティ名に対する型を取得する。<p>
+     *
+     * @param type 対象のクラス
+     * @param propName プロパティ名
+     * return propType プロパティ型
+     */
+    public Class getPropertyType(Class type, String propName){
+        PropertyAccessType pat = propertyAccessTypeMap == null ? null : (PropertyAccessType)propertyAccessTypeMap.getValue(type);
+        if(pat == null || pat.propertyTypes == null){
+            return null;
+        }
+        Property prop = propertyAccess.getProperty(propName);
+        return (Class)pat.propertyTypes.get(prop.getPropertyName());
+    }
+    
+    protected Class getPropertyType(Property prop, Object obj) throws NoSuchPropertyException, InvocationTargetException{
+        return getPropertyType(prop, obj, null);
+    }
+    
+    protected Class getPropertyType(Property prop, Object obj, Object value) throws NoSuchPropertyException, InvocationTargetException{
+        Class type = getPropertyType(obj.getClass(), prop.getPropertyName());
+        if(type == null){
+            if(value == null){
+                return prop.getPropertyType(obj);
+            }else{
+                return prop.isWritable(obj, value.getClass()) ? value.getClass() : prop.getPropertyType(obj);
+            }
+        }else{
+            return type;
+        }
     }
     
     /**
@@ -1250,7 +1358,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
                         appendName(buf, props[i].getPropertyName(), indent + 1);
                     }
                     buf.append(PROPERTY_SEPARATOR);
-                    Class propType = props[i].getPropertyType(value);
+                    Class propType = getPropertyType(props[i], value);
                     appendValue(
                         buf,
                         propValue == null? propType : propValue.getClass(),
@@ -1490,9 +1598,9 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
         Object jsonObj = null;
         try{
             int length = 0;
-            byte[] buf = new byte[1024];
-            while((length = is.read(buf)) != -1){
-                baos.write(buf, 0, length);
+            byte[] bytes = new byte[1024];
+            while((length = is.read(bytes)) != -1){
+                baos.write(bytes, 0, length);
             }
             String dataStr = characterEncodingToObject == null ? new String(baos.toByteArray())
                 : new String(baos.toByteArray(), characterEncodingToObject);
@@ -1514,7 +1622,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
                         componentType = returnClass.getComponentType();
                     }else{
                         try{
-                            jsonObj = returnClass.newInstance();
+                            jsonObj = findImplementsType(returnClass).newInstance();
                         }catch(InstantiationException e){
                             throw new ConvertException(e);
                         }catch(IllegalAccessException e){
@@ -1549,6 +1657,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
             if(c == -1){
                 throw new ConvertException("It reached EOF on the way.");
             }
+            StringBuilder buf = null;
             switch(c){
             case '{':
                 if(jsonObj == null){
@@ -1581,8 +1690,49 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
                     );
                 }
                 break;
+            case '"':
+                if(jsonObj != null && !(jsonObj instanceof String)){
+                    throw new ConvertException("Not string. type=" + jsonObj.getClass().getName());
+                }
+                buf = new StringBuilder();
+                do{
+                    c = reader.read();
+                    if(c != -1 && c != '"'){
+                        if(c == '\\'){
+                            buf.append((char)c);
+                            c = reader.read();
+                            if(c == -1){
+                                break;
+                            }
+                        }
+                        buf.append((char)c);
+                    }else{
+                        break;
+                    }
+                }while(true);
+                jsonObj = unescape(buf.toString());
+                break;
             default:
-                throw new ConvertException("Not json." + dataStr);
+                if(jsonObj != null
+                    && (!(jsonObj instanceof Number)
+                        || !(jsonObj instanceof Boolean))
+                ){
+                    throw new ConvertException("Type missmatch. type=" + jsonObj.getClass().getName() + ", ");
+                }
+                buf = new StringBuilder();
+                while(c != -1){
+                    if(c == '\\'){
+                        buf.append((char)c);
+                        c = reader.read();
+                        if(c == -1){
+                            break;
+                        }
+                    }
+                    buf.append((char)c);
+                    c = reader.read();
+                }
+                jsonObj = toPrimitive(unescape(buf.toString()), jsonObj == null ? null : jsonObj.getClass());
+                break;
             }
         }catch(IOException e){
             throw new ConvertException(e);
@@ -1661,7 +1811,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
                         value = new HashMap();
                     }else{
                         try{
-                            value = componentType.newInstance();
+                            value = findImplementsType(componentType).newInstance();
                         }catch(InstantiationException e){
                             throw new ConvertException(e);
                         }catch(IllegalAccessException e){
@@ -1830,7 +1980,8 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
             }else if(!(jsonObj instanceof Map)){
                 Property property = mappedProp != null ? mappedProp : propertyAccess.getProperty(name);
                 try{
-                    propType = property.getPropertyType(jsonObj);
+                    
+                    propType = getPropertyType(property, jsonObj, value);
                 }catch(NoSuchPropertyException e){
                     if(!isIgnoreUnknownProperty){
                         throw new ConvertException(e);
@@ -1891,7 +2042,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
             }else if(!(jsonObj instanceof Map)){
                 Property property = mappedProp != null ? mappedProp : propertyAccess.getProperty(name);
                 try{
-                    propType = property.getPropertyType(jsonObj);
+                    propType = getPropertyType(property, jsonObj);
                     propGenericsType = property.getPropertyGenericType(jsonObj);
                     if(property.isReadable(jsonObj)){
                         objectValue = property.getProperty(jsonObj);
@@ -1918,16 +2069,17 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
                     throw new ConvertException(e);
                 }
             }else if(fieldType != null){
-                if(!fieldType.isInterface() && !Modifier.isAbstract(fieldType.getModifiers())){
+                Class implType = findImplementsType(fieldType);
+                if(!implType.isInterface() && !Modifier.isAbstract(implType.getModifiers())){
                     try{
-                        objectValue = fieldType.newInstance();
+                        objectValue = implType.newInstance();
                         value = objectValue;
                     }catch(InstantiationException e){
                         throw new ConvertException(e);
                     }catch(IllegalAccessException e){
                         throw new ConvertException(e);
                     }
-                }else if(!Map.class.isAssignableFrom(fieldType)){
+                }else if(!Map.class.isAssignableFrom(implType)){
                     if(!isIgnoreUnknownProperty){
                         throw new ConvertException("Unknown property : " + name);
                     }
@@ -1938,16 +2090,17 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
             Class mapValueType = null;
             if(propType != null){
                 if(objectValue == null){
-                    if(!propType.isInterface() && !Modifier.isAbstract(propType.getModifiers())){
+                    Class implType = findImplementsType(propType);
+                    if(!implType.isInterface() && !Modifier.isAbstract(implType.getModifiers())){
                         try{
-                            objectValue = propType.newInstance();
+                            objectValue = implType.newInstance();
                             value = objectValue;
                         }catch(InstantiationException e){
                             throw new ConvertException(e);
                         }catch(IllegalAccessException e){
                             throw new ConvertException(e);
                         }
-                    }else if(!Map.class.isAssignableFrom(propType)){
+                    }else if(!Map.class.isAssignableFrom(implType)){
                         if(!isIgnoreUnknownProperty){
                             throw new ConvertException("Unknown property : " + name);
                         }
@@ -2023,7 +2176,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
             }else if(!(jsonObj instanceof Map)){
                 Property property = mappedProp != null ? mappedProp : propertyAccess.getProperty(name);
                 try{
-                    propType = property.getPropertyType(jsonObj);
+                    propType = getPropertyType(property, jsonObj);
                     propGenericsType = property.getPropertyGenericType(jsonObj);
                     Object propValue = property.isReadable(jsonObj) ? property.getProperty(jsonObj) : null;
                     if(propValue != null){
@@ -2056,9 +2209,10 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
                 }else if(propType.isArray()){
                     componentType = propType.getComponentType();
                 }else{
-                    if(!propType.isInterface() && !Modifier.isAbstract(propType.getModifiers())){
+                    Class implType = findImplementsType(propType);
+                    if(!implType.isInterface() && !Modifier.isAbstract(implType.getModifiers())){
                         try{
-                            objectValue = propType.newInstance();
+                            objectValue = implType.newInstance();
                             value = objectValue;
                         }catch(InstantiationException e){
                             throw new ConvertException(e);
@@ -2147,7 +2301,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
                 }else if(!(jsonObj instanceof Map)){
                     Property property = mappedProp != null ? mappedProp : propertyAccess.getProperty(name);
                     try{
-                        propType = property.getPropertyType(jsonObj);
+                        propType = getPropertyType(property, jsonObj);
                     }catch(NoSuchPropertyException e){
                         if(!isIgnoreUnknownProperty){
                             throw new ConvertException(e);
@@ -2439,5 +2593,10 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
          * 出力するプロパティ名の集合。<p>
          */
         public Set enabledPropertyNames;
+        
+        /**
+         * プロパティの名前と型のマップ。<p>
+         */
+        public Map propertyTypes;
     }
 }

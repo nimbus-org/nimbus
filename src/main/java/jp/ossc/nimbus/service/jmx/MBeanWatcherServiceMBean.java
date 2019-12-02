@@ -52,11 +52,39 @@ public interface MBeanWatcherServiceMBean extends ServiceBaseMBean{
     public static final String MSG_ID_CHECK_WARN      = "MBW__00004";
     public static final String MSG_ID_CHECK_ERROR     = "MBW__00005";
     public static final String MSG_ID_CHECK_FATAL     = "MBW__00006";
-
+    
+    /**
+     * 説明を取得する。<p>
+     *
+     * @return 説明
+     */
+    public String getDescription();
+    
+    /**
+     * 説明を設定する。<p>
+     *
+     * @param desc 説明
+     */
+    public void setDescription(String desc);
+    
     /**
      * javax.management.MBeanServerConnectionのJNDI名のデフォルト値。<p>
      */
     public static final String DEFAULT_JMX_RMI_ADAPTOR_NAME = "jmx/invoker/RMIAdaptor";
+
+    /**
+     * javax.management.remote.JMXConnectorを取得する{@link MBeanServerConnectionFactory}サービスのサービス名を設定する。<p>
+     *
+     * @param name MBeanServerConnectionFactoryサービスのサービス名
+     */
+    public void setMBeanServerConnectionFactoryServiceName(ServiceName name);
+
+    /**
+     * javax.management.remote.JMXConnector取得する{@link MBeanServerConnectionFactory}サービスのサービス名を取得する。<p>
+     *
+     * @return MBeanServerConnectionFactoryサービスのサービス名
+     */
+    public ServiceName getMBeanServerConnectionFactoryServiceName();
 
     /**
      * javax.management.MBeanServerConnectionをJNDIからlookupする{@link jp.ossc.nimbus.service.jndi.JndiFinder JndiFinder}サービスのサービス名を設定する。<p>
@@ -272,6 +300,13 @@ public interface MBeanWatcherServiceMBean extends ServiceBaseMBean{
      * @return {@link MBeanWatcherService.Target 監視対象}のリスト
      */
     public List getTargetList();
+    
+    /**
+     * 監視対象のうち、{@link MBeanWatcherService.Check}のリストを取得する。<p>
+     *
+     * @return {@link MBeanWatcherService.Check チェック監視対象}のリスト
+     */
+    public List getCheckTargetList();
 
     /**
      * 監視を実行する。<p>

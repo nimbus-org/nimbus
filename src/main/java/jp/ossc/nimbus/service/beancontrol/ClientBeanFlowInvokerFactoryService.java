@@ -49,7 +49,8 @@ import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.core.ServiceBase;
 import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.service.context.Context;
-import jp.ossc.nimbus.service.keepalive.ClusterService;
+import jp.ossc.nimbus.service.keepalive.ClusterUID;
+import jp.ossc.nimbus.service.keepalive.Cluster;
 import jp.ossc.nimbus.service.keepalive.ClusterListener;
 import jp.ossc.nimbus.service.beancontrol.interfaces.*;
 import jp.ossc.nimbus.service.queue.Queue;
@@ -68,7 +69,7 @@ public class ClientBeanFlowInvokerFactoryService extends ServiceBase
     
     private static final long serialVersionUID = 6401533155172726865L;
     private ServiceName clusterServiceName;
-    private ClusterService cluster;
+    private Cluster cluster;
     private ServiceName contextServiceName;
     private String clusterOptionKey;
     private String[] contextKeys;
@@ -138,7 +139,7 @@ public class ClientBeanFlowInvokerFactoryService extends ServiceBase
                 "ClusterServiceName must be specified."
             );
         }
-        cluster = (ClusterService)ServiceManagerFactory.getServiceObject(clusterServiceName);
+        cluster = (Cluster)ServiceManagerFactory.getServiceObject(clusterServiceName);
         cluster.addClusterListener(this);
         
         if(asynchInvokeQueueHandlerContainerServiceName != null){
@@ -241,7 +242,7 @@ public class ClientBeanFlowInvokerFactoryService extends ServiceBase
     private Map createFlowMap(List members){
         Map result = new HashMap();
         for(int i = 0; i < members.size(); i++){
-            final ClusterService.GlobalUID uid = (ClusterService.GlobalUID)members.get(i);
+            final ClusterUID uid = (ClusterUID)members.get(i);
             final Object option = clusterOptionKey == null ? uid.getOption() : uid.getOption(clusterOptionKey);
             if(option instanceof BeanFlowInvokerServer){
                 final BeanFlowInvokerServer server = (BeanFlowInvokerServer)option;
@@ -295,6 +296,7 @@ public class ClientBeanFlowInvokerFactoryService extends ServiceBase
         private String[] contextKeys;
         private ServerBeanFlowMonitor serverMonitor = new ServerBeanFlowMonitor();
         private QueueHandlerContainer asynchInvokeQueueHandlerContainer;
+        private List callbacks = new ArrayList();//no such object対応
         
         public BeanFlowInvokerImpl(){
         }
@@ -354,7 +356,9 @@ public class ClientBeanFlowInvokerFactoryService extends ServiceBase
                 replyQueue.start();
                 context = new BeanFlowAsynchContext(this, obj, serverMonitor, replyQueue);
                 try{
-                    invokeAsynchFlow(obj, monitor, (BeanFlowAsynchInvokeCallback)new BeanFlowAsynchInvokeCallbackImpl(context).getStub(), maxAsynchWait);
+                    BeanFlowAsynchInvokeCallbackImpl callback = new BeanFlowAsynchInvokeCallbackImpl(context);
+                    callbacks.add(callback);
+                    invokeAsynchFlow(obj, monitor, (BeanFlowAsynchInvokeCallback)callback.getStub(), maxAsynchWait);
                 }finally{
                     endTime = System.currentTimeMillis();
                 }
@@ -407,7 +411,9 @@ public class ClientBeanFlowInvokerFactoryService extends ServiceBase
                 ((BeanFlowMonitorImpl)monitor).addBeanFlowMonitor(serverMonitor);
             }
             if(!(callback instanceof BeanFlowAsynchInvokeCallbackImpl)){
-                callback = (BeanFlowAsynchInvokeCallback)new BeanFlowAsynchInvokeCallbackImpl(callback).getStub();
+                callback = new BeanFlowAsynchInvokeCallbackImpl(callback);
+                callbacks.add(callback);
+                callback = (BeanFlowAsynchInvokeCallback)((BeanFlowAsynchInvokeCallbackImpl)callback).getStub();
             }
             Map ctx = null;
             if(contextServiceName != null){
@@ -631,8 +637,12 @@ public class ClientBeanFlowInvokerFactoryService extends ServiceBase
                 }else{
                     context.setThrowable(th);
                 }
-                if(context.getResponseQueue() != null){
-                    context.getResponseQueue().push(context);
+                try{
+                    context.response();
+                }catch(RemoteException e){
+                    throw e;
+                }catch(Exception e){
+                    throw new RemoteException(e.getMessage(), e);
                 }
             }else if(callback != null){
                 callback.reply(output, th);

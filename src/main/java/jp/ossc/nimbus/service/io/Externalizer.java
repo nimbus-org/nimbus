@@ -47,4 +47,8 @@ public interface Externalizer{
     public Object readExternal(InputStream in) throws IOException, ClassNotFoundException;
     
     public Object readExternal(ObjectInput in) throws IOException, ClassNotFoundException;
+    
+    public ObjectOutput createObjectOutput(OutputStream out) throws IOException;
+    
+    public ObjectInput createObjectInput(InputStream in) throws IOException;
 }

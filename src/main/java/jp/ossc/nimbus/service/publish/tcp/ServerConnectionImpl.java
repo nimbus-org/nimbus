@@ -47,6 +47,7 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.ClosedSelectorException;
 import java.nio.channels.CancelledKeyException;
 import java.nio.channels.ClosedChannelException;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketAddress;
@@ -54,6 +55,7 @@ import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -119,10 +121,12 @@ public class ServerConnectionImpl implements ServerConnection{
     private List serverConnectionListeners;
     private Externalizer externalizer;
     private SocketFactory socketFactory;
-    private List sendMessageCache = Collections.synchronizedList(new ArrayList());
+    private LinkedList sendMessageCache = new LinkedList();
     private long sendMessageCacheTime;
     private boolean isAcknowledge;
     private int messageRecycleBufferSize = 100;
+    private int messagePayoutCount;
+    private int maxMessagePayoutCount;
     private List messageBuffer;
     private List sendRequestBuffer;
     private List asynchContextBuffer;
@@ -131,10 +135,12 @@ public class ServerConnectionImpl implements ServerConnection{
     private long bufferTimeoutInterval = 1000l;
     private Daemon sendBufferChecker;
     private ServiceName factoryServiceName;
+    private Map disabledClients = Collections.synchronizedMap(new HashMap());
     
     public ServerConnectionImpl(
         ServerSocket serverSocket,
         Externalizer ext,
+        ServiceName factoryServiceName,
         int sendThreadSize,
         ServiceName sendQueueServiceName,
         int asynchSendThreadSize,
@@ -146,9 +152,10 @@ public class ServerConnectionImpl implements ServerConnection{
     ) throws Exception{
         this.serverSocket = serverSocket;
         externalizer = ext;
-        messageBuffer = new ArrayList();
-        sendRequestBuffer = new ArrayList();
-        asynchContextBuffer = new ArrayList();
+        this.factoryServiceName = factoryServiceName;
+        messageBuffer = new LinkedList();
+        sendRequestBuffer = new LinkedList();
+        asynchContextBuffer = new LinkedList();
         this.bufferTime = bufferTime;
         this.bufferSize = bufferSize;
         if(bufferTimeoutInterval > 0){
@@ -165,6 +172,7 @@ public class ServerConnectionImpl implements ServerConnection{
     public ServerConnectionImpl(
         ServerSocketChannel ssc,
         Externalizer ext,
+        ServiceName factoryServiceName,
         int sendThreadSize,
         ServiceName sendQueueServiceName,
         int asynchSendThreadSize,
@@ -178,9 +186,10 @@ public class ServerConnectionImpl implements ServerConnection{
         serverSocketChannel = ssc;
         socketFactory = sf;
         externalizer = ext;
-        messageBuffer = new ArrayList();
-        sendRequestBuffer = new ArrayList();
-        asynchContextBuffer = new ArrayList();
+        this.factoryServiceName = factoryServiceName;
+        messageBuffer = new LinkedList();
+        sendRequestBuffer = new LinkedList();
+        asynchContextBuffer = new LinkedList();
         this.bufferTime = bufferTime;
         this.bufferSize = bufferSize;
         if(bufferTimeoutInterval > 0){
@@ -219,6 +228,10 @@ public class ServerConnectionImpl implements ServerConnection{
     private void initSend(ServiceName sendQueueServiceName, int sendThreadSize) throws Exception{
         if(sendThreadSize >= 2){
             sendQueueHandlerContainer = new QueueHandlerContainerService();
+            if(factoryServiceName != null){
+                sendQueueHandlerContainer.setServiceManagerName(factoryServiceName.getServiceManagerName());
+                sendQueueHandlerContainer.setServiceName(factoryServiceName.getServiceName() + "$SendQueueHandlerContainer");
+            }
             sendQueueHandlerContainer.create();
             if(sendQueueServiceName == null){
                 DefaultQueueService sendQueue = new DefaultQueueService();
@@ -248,6 +261,10 @@ public class ServerConnectionImpl implements ServerConnection{
     private void initAsynchSend(ServiceName queueServiceName, ServiceName queueFactoryServiceName, int clientQueueDistributedSize) throws Exception{
         if(clientQueueDistributedSize > 0){
             asynchAcceptQueueHandlerContainer = new QueueHandlerContainerService();
+            if(factoryServiceName != null){
+                asynchAcceptQueueHandlerContainer.setServiceManagerName(factoryServiceName.getServiceManagerName());
+                asynchAcceptQueueHandlerContainer.setServiceName(factoryServiceName.getServiceName() + "$AsynchAcceptQueueHandlerContainer");
+            }
             asynchAcceptQueueHandlerContainer.create();
             if(queueServiceName == null){
                 DefaultQueueService acceptQueue = new DefaultQueueService();
@@ -272,6 +289,10 @@ public class ServerConnectionImpl implements ServerConnection{
             queueSelector.start();
             
             asynchSendQueueHandlerContainer = new DistributedQueueHandlerContainerService();
+            if(factoryServiceName != null){
+                asynchSendQueueHandlerContainer.setServiceManagerName(factoryServiceName.getServiceManagerName());
+                asynchSendQueueHandlerContainer.setServiceName(factoryServiceName.getServiceName() + "$AsynchSendQueueHandlerContainer");
+            }
             asynchSendQueueHandlerContainer.create();
             asynchSendQueueHandlerContainer.setDistributedQueueSelector(queueSelector);
             asynchSendQueueHandlerContainer.setQueueHandler(new SendQueueHandler());
@@ -283,11 +304,15 @@ public class ServerConnectionImpl implements ServerConnection{
     
     protected void recycleMessage(MessageImpl msg){
         if(msg != null){
-            if(messageBuffer.size() <= messageRecycleBufferSize){
-                msg.clear();
-                synchronized(messageBuffer){
+            synchronized(messageBuffer){
+                if(msg.isPayout()){
+                    msg.setPayout(false);
                     if(messageBuffer.size() <= messageRecycleBufferSize){
+                        msg.clear();
                         messageBuffer.add(msg);
+                    }
+                    if(messagePayoutCount > 0){
+                        messagePayoutCount--;
                     }
                 }
             }
@@ -296,17 +321,21 @@ public class ServerConnectionImpl implements ServerConnection{
     
     protected MessageImpl createMessage(byte type){
         MessageImpl result = null;
-        if(messageBuffer.size() != 0){
-            synchronized(messageBuffer){
-                if(messageBuffer.size() != 0){
-                    result = (MessageImpl)messageBuffer.remove(0);
-                }
+        synchronized(messageBuffer){
+            if(messageBuffer.size() != 0){
+                result = (MessageImpl)messageBuffer.remove(0);
+                result.setPayout(true);
+            }
+            messagePayoutCount++;
+            if(maxMessagePayoutCount < messagePayoutCount){
+                maxMessagePayoutCount = messagePayoutCount;
             }
         }
         if(result == null){
             result = new MessageImpl();
         }
         result.setMessageType(type);
+        result.setServerConnection(this);
         return result;
     }
     
@@ -434,8 +463,76 @@ public class ServerConnectionImpl implements ServerConnection{
         isAcknowledge = isAck;
     }
     
-    public void setFactoryServiceName(ServiceName name){
-        factoryServiceName = name;
+    public void enabledClient(String address, int port){
+        if(disabledClients.containsKey(address)){
+            Set portSet = (Set)disabledClients.get(address);
+            if(port > 0){
+                if(portSet != null){
+                    portSet.remove(new Integer(port));
+                }
+            }else if(portSet != null){
+                disabledClients.remove(address);
+            }
+        }
+        setEnabledClient(address, port, true);
+    }
+    
+    public void disabledClient(String address, int port){
+        if(disabledClients.containsKey(address)){
+            Set portSet = (Set)disabledClients.get(address);
+            if(port > 0){
+                if(portSet != null){
+                    portSet.add(new Integer(port));
+                }
+            }else if(portSet != null){
+                disabledClients.put(address, null);
+            }
+        }else{
+            if(port > 0){
+                Set portSet = Collections.synchronizedSet(new HashSet());
+                portSet.add(new Integer(port));
+                disabledClients.put(address, portSet);
+            }else{
+                disabledClients.put(address, null);
+            }
+        }
+        setEnabledClient(address, port, false);
+    }
+    
+    private void setEnabledClient(String address, int port, boolean isEnabled){
+        ServerConnectionImpl.ClientImpl[] clientArray = (ServerConnectionImpl.ClientImpl[])clients.toArray(new ServerConnectionImpl.ClientImpl[clients.size()]);
+        for(int i = 0; i < clientArray.length; i++){
+            Socket socket = clientArray[i].getSocket();
+            if(socket == null || clientArray[i].isEnabled() == isEnabled){
+                continue;
+            }
+            InetSocketAddress remoteAddress = (InetSocketAddress)socket.getRemoteSocketAddress();
+            if(remoteAddress == null){
+                continue;
+            }
+            if(remoteAddress.getAddress().getHostAddress().equals(address)
+                && (port <= 0 || port == remoteAddress.getPort())
+            ){
+                clientArray[i].setEnabled(isEnabled);
+            }
+        }
+    }
+    
+    private boolean isDisableClient(ServerConnectionImpl.ClientImpl client){
+        Socket socket = client.getSocket();
+        if(socket == null){
+            return false;
+        }
+        InetSocketAddress remoteAddress = (InetSocketAddress)socket.getRemoteSocketAddress();
+        if(remoteAddress == null){
+            return false;
+        }
+        if(disabledClients.containsKey(remoteAddress.getAddress().getHostAddress())){
+            Set portSet = (Set)disabledClients.get(remoteAddress.getAddress().getHostAddress());
+            return portSet == null || portSet.contains(new Integer(remoteAddress.getPort()));
+        }else{
+            return false;
+        }
     }
     
     public Message createMessage(String subject, String key) throws MessageCreateException{
@@ -460,6 +557,7 @@ public class ServerConnectionImpl implements ServerConnection{
     public synchronized void send(Message message) throws MessageSendException{
         long startTime = System.currentTimeMillis();
         if(clients.size() == 0){
+            ((MessageImpl)message).setSend(true);
             addSendMessageCache((MessageImpl)message);
             return;
         }
@@ -590,6 +688,10 @@ public class ServerConnectionImpl implements ServerConnection{
         return sendCount == 0 ? 0.0d : ((double)sendBytes / (double)sendCount);
     }
     
+    public double getAverageAsynchSendProcessTime(){
+        return asynchAcceptQueueHandlerContainer == null ? 0.0d : asynchAcceptQueueHandlerContainer.getAverageHandleProcessTime();
+    }
+    
     public Set getClients(){
         return clients;
     }
@@ -640,19 +742,25 @@ public class ServerConnectionImpl implements ServerConnection{
     
     private void addSendMessageCache(MessageImpl message){
         final long currentTime = System.currentTimeMillis();
-        message.setSendTime(currentTime);
+        if(message.getSendTime() < 0){
+            message.setSendTime(currentTime);
+        }
         synchronized(sendMessageCache){
-            sendMessageCache.add(message);
-            for(int i = 0, imax = sendMessageCache.size(); i < imax; i++){
-                MessageImpl msg = (MessageImpl)sendMessageCache.get(0);
-                if((currentTime - msg.getSendTime()) > sendMessageCacheTime){
-                    MessageImpl trash = (MessageImpl)sendMessageCache.remove(0);
-                    if(trash.isSend()){
-                        recycleMessage(trash);
+            if(sendMessageCacheTime > 0 && message.getMessageType() == MessageImpl.MESSAGE_TYPE_APPLICATION){
+                sendMessageCache.add(message);
+                for(int i = 0, imax = sendMessageCache.size(); i < imax; i++){
+                    MessageImpl msg = (MessageImpl)sendMessageCache.get(0);
+                    if((currentTime - msg.getSendTime()) > sendMessageCacheTime){
+                        MessageImpl trash = (MessageImpl)sendMessageCache.remove(0);
+                        if(trash.isSend()){
+                            recycleMessage(trash);
+                        }
+                    }else{
+                        break;
                     }
-                }else{
-                    break;
                 }
+            }else{
+                recycleMessage(message);
             }
             sendCount++;
         }
@@ -661,8 +769,8 @@ public class ServerConnectionImpl implements ServerConnection{
     private List getSendMessages(long from){
         List result = new ArrayList();
         synchronized(sendMessageCache){
-            for(int i = sendMessageCache.size(); --i >= 0; ){
-                MessageImpl msg = (MessageImpl)sendMessageCache.get(i);
+            for(Iterator itr = sendMessageCache.descendingIterator(); itr.hasNext(); ){
+                MessageImpl msg = (MessageImpl)itr.next();
                 if(msg.getSendTime() >= from){
                     result.add(0, msg.clone());
                 }else{
@@ -675,6 +783,30 @@ public class ServerConnectionImpl implements ServerConnection{
     
     public int getSendMessageCacheSize(){
         return sendMessageCache.size();
+    }
+    
+    public Date getSendMessageCacheOldTime(){
+        if(sendMessageCache.size() == 0){
+            return null;
+        }
+        MessageImpl msg = null;
+        synchronized(sendMessageCache){
+            if(sendMessageCache.size() != 0){
+                msg = (MessageImpl)sendMessageCache.get(0);
+            }
+        }
+        if(msg == null){
+            return null;
+        }
+        return new Date(msg.getSendTime());
+    }
+    
+    public int getMaxMessagePayoutCount(){
+        return maxMessagePayoutCount;
+    }
+    
+    public int getMessagePayoutCount(){
+        return messagePayoutCount;
     }
     
     public synchronized void close(){
@@ -805,6 +937,9 @@ public class ServerConnectionImpl implements ServerConnection{
                                     socketFactory.applySocketProperties(channel.socket());
                                 }
                                 client = new ClientImpl(channel);
+                                if(isDisableClient(client)){
+                                    client.setEnabled(false);
+                                }
                                 channel.register(
                                     key.selector(),
                                     SelectionKey.OP_READ,
@@ -839,6 +974,9 @@ public class ServerConnectionImpl implements ServerConnection{
                     return;
                 }
                 ClientImpl client = new ClientImpl(socket);
+                if(isDisableClient(client)){
+                    client.setEnabled(false);
+                }
                 final Set newClients = new LinkedHashSet();
                 clientMap.put(client.getId(), client);
                 synchronized(ClientAcceptor.this){
@@ -900,6 +1038,9 @@ public class ServerConnectionImpl implements ServerConnection{
         private long sendBufferCount;
         private long bufferStartTime = -1l;
         private ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        private boolean isClosing;
+        private boolean isClosed;
+        private final Object closeLock = new Object();
         
         public ClientImpl(SocketChannel sc){
             socketChannel = sc;
@@ -972,7 +1113,7 @@ public class ServerConnectionImpl implements ServerConnection{
         }
         
         public synchronized void send(Message message) throws MessageSendException{
-            if(!isEnabled || (socketChannel == null && socket == null)){
+            if(!isEnabled || isClosed || isClosing){
                 return;
             }
             try{
@@ -1039,7 +1180,7 @@ public class ServerConnectionImpl implements ServerConnection{
         }
         
         public synchronized void checkSendBuffer(long lastCheckTime){
-            if(sendBufferCount == 0){
+            if(!isEnabled || isClosed || isClosing || sendBufferCount == 0){
                 return;
             }
             boolean isBuffer = false;
@@ -1074,6 +1215,9 @@ public class ServerConnectionImpl implements ServerConnection{
         }
         
         public synchronized void writeSendBuffer(SelectionKey key){
+            if(!isEnabled || isClosed || isClosing){
+                return;
+            }
             long startTime = System.currentTimeMillis();
             try{
                 byte[] bytes = sendBuffer.toByteArray();
@@ -1109,6 +1253,9 @@ public class ServerConnectionImpl implements ServerConnection{
         }
         
         public void receive(SelectionKey key){
+            if(!isEnabled || isClosed || isClosing){
+                return;
+            }
             try{
                 final int readLength = socketChannel.read(byteBuffer);
                 if(readLength == 0){
@@ -1188,79 +1335,92 @@ public class ServerConnectionImpl implements ServerConnection{
         public void close(){
             close(false, null);
         }
-        protected synchronized void close(boolean isClose, Throwable reason){
-            if(logger != null){
-                if(!isClose && clientClosedMessageId != null){
-                    logger.write(
-                        clientClosedMessageId,
-                        new Object[]{this},
-                        reason
-                    );
-                }else if(isClose && clientCloseMessageId != null){
-                    logger.write(
-                        clientCloseMessageId,
-                        new Object[]{this},
-                        reason
-                    );
-                }
+        protected void close(boolean isClose, Throwable reason){
+            if(isClosing || isClosed){
+                return;
             }
-            if(subjects.size() != 0){
-                Iterator entries = subjects.entrySet().iterator();
-                while(entries.hasNext()){
-                    Map.Entry entry = (Map.Entry)entries.next();
-                    String subject = (String)entry.getKey();
-                    Set keySet = (Set)entry.getValue();
-                    if(serverConnectionListeners != null && !keySet.isEmpty()){
-                        String[] removeKeys = (String[])keySet.toArray(new String[0]);
-                        for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
-                            ((ServerConnectionListener)serverConnectionListeners.get(i)).onRemoveSubject(ClientImpl.this, subject, removeKeys);
+            synchronized(closeLock){
+                if(isClosed){
+                    return;
+                }
+                isClosing = true;
+                try{
+                    if(logger != null){
+                        if(!isClose && clientClosedMessageId != null){
+                            logger.write(
+                                clientClosedMessageId,
+                                new Object[]{this},
+                                reason
+                            );
+                        }else if(isClose && clientCloseMessageId != null){
+                            logger.write(
+                                clientCloseMessageId,
+                                new Object[]{this},
+                                reason
+                            );
                         }
                     }
-                }
-            }
-            if(isStartReceive){
-                isStartReceive = false;
-                if(serverConnectionListeners != null){
-                    for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
-                        ((ServerConnectionListener)serverConnectionListeners.get(i)).onStopReceive(ClientImpl.this);
+                    final Set newClients = new LinkedHashSet();
+                    if(clientAcceptor != null){
+                        synchronized(clientAcceptor){
+                            newClients.addAll(clients);
+                            newClients.remove(ClientImpl.this);
+                            clients = newClients;
+                        }
+                    }else{
+                        newClients.addAll(clients);
+                        newClients.remove(ClientImpl.this);
+                        clients = newClients;
                     }
-                }
-            }
-            Object id = getId();
-            if(requestDispatcher != null){
-                requestDispatcher.stopNoWait();
-                requestDispatcher = null;
-            }
-            if(socketChannel != null){
-                try{
-                    socketChannel.close();
-                }catch(IOException e){
-                }
-                socketChannel = null;
-            }
-            if(socket != null){
-                try{
-                    socket.close();
-                }catch(IOException e){
-                }
-                socket = null;
-            }
-            final Set newClients = new LinkedHashSet();
-            if(clientAcceptor != null){
-                synchronized(clientAcceptor){
-                    newClients.addAll(clients);
-                    newClients.remove(ClientImpl.this);
-                    clients = newClients;
-                }
-            }else{
-                newClients.addAll(clients);
-                newClients.remove(ClientImpl.this);
-                clients = newClients;
-            }
-            clientMap.remove(id);
-            if(serverConnectionListeners != null){
-                for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
-                    ((ServerConnectionListener)serverConnectionListeners.get(i)).onClose(ClientImpl.this);
+                    clientMap.remove(id);
+                    if(subjects.size() != 0){
+                        Object[] entries = subjects.entrySet().toArray();
+                        for(int i = 0; i < entries.length; i++){
+                            Map.Entry entry = (Map.Entry)entries[i];
+                            String subject = (String)entry.getKey();
+                            Set keySet = (Set)entry.getValue();
+                            subjects.remove(subject);
+                            if(serverConnectionListeners != null && !keySet.isEmpty()){
+                                String[] removeKeys = (String[])keySet.toArray(new String[0]);
+                                for(int j = 0, jmax = serverConnectionListeners.size(); j < jmax; j++){
+                                    ((ServerConnectionListener)serverConnectionListeners.get(j)).onRemoveSubject(ClientImpl.this, subject, removeKeys);
+                                }
+                            }
+                        }
+                    }
+                    if(isStartReceive){
+                        isStartReceive = false;
+                        if(serverConnectionListeners != null){
+                            for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
+                                ((ServerConnectionListener)serverConnectionListeners.get(i)).onStopReceive(ClientImpl.this);
+                            }
+                        }
+                    }
+                    Object id = getId();
+                    if(requestDispatcher != null){
+                        requestDispatcher.stopNoWait();
+                        requestDispatcher = null;
+                    }
+                    if(socketChannel != null){
+                        try{
+                            socketChannel.close();
+                        }catch(IOException e){
+                        }
+                    }
+                    if(socket != null){
+                        try{
+                            socket.close();
+                        }catch(IOException e){
+                        }
+                    }
+                    if(serverConnectionListeners != null){
+                        for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
+                            ((ServerConnectionListener)serverConnectionListeners.get(i)).onClose(ClientImpl.this);
+                        }
+                    }
+                }finally{
+                    isClosing = false;
+                    isClosed = true;
                 }
             }
         }
@@ -1476,6 +1636,8 @@ public class ServerConnectionImpl implements ServerConnection{
                 }catch(MessageSendException e){
                 }catch(MessageException e){
                     // 起こらないはず
+                }finally{
+                    recycleMessage(response);
                 }
             }
             return isClosed;
@@ -1487,7 +1649,9 @@ public class ServerConnectionImpl implements ServerConnection{
             if(subjects == null){
                 return null;
             }
-            return new HashSet(subjects.keySet());
+            synchronized(subjects){
+                return new HashSet(subjects.keySet());
+            }
         }
         
         public Set getKeys(String subject){
@@ -1535,6 +1699,7 @@ public class ServerConnectionImpl implements ServerConnection{
             }
             if(clients.size() == 0){
                 message.setSend(true);
+                addSendMessageCache(message);
                 return;
             }
             final Map sendContexts = new HashMap();

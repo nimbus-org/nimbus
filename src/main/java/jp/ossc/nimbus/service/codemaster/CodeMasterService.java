@@ -43,7 +43,11 @@ import jp.ossc.nimbus.service.sequence.*;
 import jp.ossc.nimbus.service.jms.*;
 import jp.ossc.nimbus.service.ioccall.*;
 import jp.ossc.nimbus.service.beancontrol.interfaces.*;
+import jp.ossc.nimbus.service.publish.ServerConnectionFactory;
+import jp.ossc.nimbus.service.publish.RequestServerConnection;
 import jp.ossc.nimbus.service.publish.MessageReceiver;
+import jp.ossc.nimbus.service.publish.RequestMessageListener;
+import jp.ossc.nimbus.service.publish.MessageException;
 
 //
 /**
@@ -52,7 +56,7 @@ import jp.ossc.nimbus.service.publish.MessageReceiver;
  * @version  1.00 作成: 2004/05/06 
  */
 public class CodeMasterService extends ServiceBase
- implements CodeMasterServiceMBean, CodeMasterFinder, MessageListener, jp.ossc.nimbus.service.publish.MessageListener{
+ implements CodeMasterServiceMBean, CodeMasterFinder, MessageListener, RequestMessageListener{
     
     private static final long serialVersionUID = -4013884085932487905L;
     
@@ -74,6 +78,8 @@ public class CodeMasterService extends ServiceBase
     private BeanFlowInvokerFactory beanFlowInvokerFactory;
     
     private String[] subjects;
+    private ServiceName requestConnectionFactoryServiceName;
+    private RequestServerConnection serverConnection;
     private ServiceName messageReceiverServiceName;
     private MessageReceiver messageReceiver;
     
@@ -170,6 +176,15 @@ public class CodeMasterService extends ServiceBase
     // CodeMasterServiceMBean のJavaDoc
     public String[] getSubjects(){
         return subjects;
+    }
+    
+    // CodeMasterServiceMBean のJavaDoc
+    public void setRequestConnectionFactoryServiceName(ServiceName name){
+        requestConnectionFactoryServiceName = name;
+    }
+    // CodeMasterServiceMBean のJavaDoc
+    public ServiceName getRequestConnectionFactoryServiceName(){
+        return requestConnectionFactoryServiceName;
     }
     
     // CodeMasterServiceMBean のJavaDoc
@@ -343,8 +358,14 @@ public class CodeMasterService extends ServiceBase
             }
         }
         
-        if(messageReceiverServiceName != null){
-            messageReceiver = (MessageReceiver)ServiceManagerFactory.getServiceObject(messageReceiverServiceName);
+        if(messageReceiverServiceName != null || requestConnectionFactoryServiceName != null){
+            if(messageReceiverServiceName != null){
+                messageReceiver = (MessageReceiver)ServiceManagerFactory.getServiceObject(messageReceiverServiceName);
+            }else{
+                ServerConnectionFactory factory = (ServerConnectionFactory)ServiceManagerFactory.getServiceObject(requestConnectionFactoryServiceName);
+                serverConnection = (RequestServerConnection)factory.getServerConnection();
+                messageReceiver = (MessageReceiver)ServiceManagerFactory.getServiceObject(requestConnectionFactoryServiceName);
+            }
             Set keySet = new HashSet();
             if(notifyMasterNameMapping != null){
                 keySet.addAll(notifyMasterNameMapping.keySet());
@@ -808,6 +829,61 @@ public class CodeMasterService extends ServiceBase
             getLogger().write("CMS__00004", e);
             return;
         }
+    }
+    
+    public jp.ossc.nimbus.service.publish.Message onRequestMessage(Object sourceId, int sequence, jp.ossc.nimbus.service.publish.Message msg, String responseSubject, String responseKey){
+        jp.ossc.nimbus.service.publish.Message message = null;
+        Date now = new Date();
+        try{
+            message = serverConnection.createMessage(responseSubject, responseKey);
+            Map map = (Map)msg.getObject();
+            msg.recycle();
+            final Map keyInputMap = new LinkedHashMap();
+            final Iterator itr = map.keySet().iterator();
+            while(itr.hasNext()){
+                String originalKey = (String)itr.next();
+                String[] keys = new String[]{originalKey};
+                if(notifyMasterNameMapping != null
+                     && notifyMasterNameMapping.containsKey(originalKey)){
+                    keys = notifyMasterNameMapping.getProperty(originalKey).split(KEY_SEPARATOR);
+                }
+                Object input = map.get(originalKey);
+                for(int i = 0; i < keys.length; i++){
+                    if(!masterNameSet.contains(keys[i])){
+                        continue;
+                    }
+                    keyInputMap.put(keys[i], input);
+                }
+            }
+            if(keyInputMap.size() != 0){
+                final Map keyMasterMap = createNewMasters(keyInputMap);
+                final Iterator keyMasterEntries
+                     = keyMasterMap.entrySet().iterator();
+                while(keyMasterEntries.hasNext()){
+                    final Map.Entry entry = (Map.Entry)keyMasterEntries.next();
+                    final String key = (String)entry.getKey();
+                    final Object newMaster = entry.getValue();
+                    Date updateTime = (Date)map.get(key + UPDATE_TIME_KEY);
+                    if(updateTime == null){
+                        updateTime = now;
+                    }
+                    updateNewMaster(key, newMaster, updateTime);
+                }
+            }
+            message.setObject(Boolean.TRUE);
+        }catch(Exception e){
+            getLogger().write("CMS__00004", e);
+            if(message != null){
+                try{
+                    message.setObject(e);
+                }catch(MessageException e2){
+                    try{
+                        message.setObject(new Exception(e.toString()));
+                    }catch(MessageException e3){}
+                }
+            }
+        }
+        return message;
     }
     
     // CodeMasterFinderのJavaDoc

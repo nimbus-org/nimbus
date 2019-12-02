@@ -60,6 +60,7 @@ import java.net.DatagramPacket;
 import java.net.MulticastSocket;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -166,7 +167,7 @@ public class ServerConnectionImpl implements ServerConnection{
     private long sendCount;
     private long sendProcessTime;
     private List serverConnectionListeners;
-    private Externalizer externalizer;
+    protected Externalizer externalizer;
     private SocketFactory socketFactory;
     private int windowSize;
     private int maxWindowCount;
@@ -176,20 +177,22 @@ public class ServerConnectionImpl implements ServerConnection{
     private boolean isAcknowledge;
     private int messageRecycleBufferSize = 100;
     private List messageBuffer;
-    private long newMessageCount;
-    private long recycleMessageCount;
+    private int messagePayoutCount;
+    private int maxMessagePayoutCount;
     private int windowRecycleBufferSize = 200;
-    protected List windowBuffer;
-    protected long newWindowCount;
-    protected long recycleWindowCount;
+    private int windowPayoutCount;
+    private int maxWindowPayoutCount;
+    private List windowBuffer;
     private List sendRequestBuffer;
     private List asynchContextBuffer;
     private int sendMessageCacheBlockSize = 100;
     private ServiceName factoryServiceName;
+    private Map disabledClients = Collections.synchronizedMap(new HashMap());
     
     public ServerConnectionImpl(
         ServerSocket serverSocket,
         Externalizer ext,
+        ServiceName factoryServiceName,
         int sendThreadSize,
         ServiceName sendQueueServiceName,
         int asynchSendThreadSize,
@@ -206,10 +209,11 @@ public class ServerConnectionImpl implements ServerConnection{
         this.multicastAddress = multicastAddress;
         this.destPort = destPort;
         externalizer = ext;
-        messageBuffer = new ArrayList();
-        windowBuffer = new ArrayList();
-        sendRequestBuffer = new ArrayList();
-        asynchContextBuffer = new ArrayList();
+        this.factoryServiceName = factoryServiceName;
+        messageBuffer = new LinkedList();
+        windowBuffer = new LinkedList();
+        sendRequestBuffer = new LinkedList();
+        asynchContextBuffer = new LinkedList();
         
         initSendSocket();
         initSend(sendQueueServiceName, sendThreadSize, multicastAddress != null);
@@ -221,6 +225,7 @@ public class ServerConnectionImpl implements ServerConnection{
     public ServerConnectionImpl(
         ServerSocketChannel ssc,
         Externalizer ext,
+        ServiceName factoryServiceName,
         int sendThreadSize,
         ServiceName sendQueueServiceName,
         int asynchSendThreadSize,
@@ -241,10 +246,11 @@ public class ServerConnectionImpl implements ServerConnection{
         this.multicastAddress = multicastAddress;
         this.destPort = destPort;
         externalizer = ext;
-        messageBuffer = new ArrayList();
-        windowBuffer = new ArrayList();
-        sendRequestBuffer = new ArrayList();
-        asynchContextBuffer = new ArrayList();
+        this.factoryServiceName = factoryServiceName;
+        messageBuffer = new LinkedList();
+        windowBuffer = new LinkedList();
+        sendRequestBuffer = new LinkedList();
+        asynchContextBuffer = new LinkedList();
         
         initSendSocket();
         initSend(sendQueueServiceName, sendThreadSize, multicastAddress != null);
@@ -284,6 +290,10 @@ public class ServerConnectionImpl implements ServerConnection{
     private void initSend(ServiceName sendQueueServiceName, int sendThreadSize, boolean isMulticast) throws Exception{
         if(!isMulticast && sendThreadSize >= 1){
             sendQueueHandlerContainer = new QueueHandlerContainerService();
+            if(factoryServiceName != null){
+                sendQueueHandlerContainer.setServiceManagerName(factoryServiceName.getServiceManagerName());
+                sendQueueHandlerContainer.setServiceName(factoryServiceName.getServiceName() + "$SendQueueHandlerContainer");
+            }
             sendQueueHandlerContainer.create();
             if(sendQueueServiceName == null){
                 DefaultQueueService sendQueue = new DefaultQueueService();
@@ -315,6 +325,10 @@ public class ServerConnectionImpl implements ServerConnection{
             return;
         }
         asynchAcceptQueueHandlerContainer = new QueueHandlerContainerService();
+        if(factoryServiceName != null){
+            asynchAcceptQueueHandlerContainer.setServiceManagerName(factoryServiceName.getServiceManagerName());
+            asynchAcceptQueueHandlerContainer.setServiceName(factoryServiceName.getServiceName() + "$AsynchAcceptQueueHandlerContainer");
+        }
         asynchAcceptQueueHandlerContainer.create();
         if(queueServiceName == null){
             DefaultQueueService acceptQueue = new DefaultQueueService();
@@ -340,6 +354,10 @@ public class ServerConnectionImpl implements ServerConnection{
             queueSelector.start();
             
             DistributedQueueHandlerContainerService distributedQueueHandlerContainer = new DistributedQueueHandlerContainerService();
+            if(factoryServiceName != null){
+                distributedQueueHandlerContainer.setServiceManagerName(factoryServiceName.getServiceManagerName());
+                distributedQueueHandlerContainer.setServiceName(factoryServiceName.getServiceName() + "$AsynchSendQueueHandlerContainer");
+            }
             distributedQueueHandlerContainer.create();
             distributedQueueHandlerContainer.setDistributedQueueSelector(queueSelector);
             distributedQueueHandlerContainer.setQueueHandler(new SendQueueHandler());
@@ -353,6 +371,10 @@ public class ServerConnectionImpl implements ServerConnection{
     private void initRequestHandle(ServiceName requestHandleQueueServiceName, int requestHandleThreadSize) throws Exception{
         if(requestHandleThreadSize >= 1){
             requestHandleQueueHandlerContainer = new QueueHandlerContainerService();
+            if(factoryServiceName != null){
+                requestHandleQueueHandlerContainer.setServiceManagerName(factoryServiceName.getServiceManagerName());
+                requestHandleQueueHandlerContainer.setServiceName(factoryServiceName.getServiceName() + "$RequestHandleQueueHandlerContainer");
+            }
             requestHandleQueueHandlerContainer.create();
             if(requestHandleQueueServiceName == null){
                 DefaultQueueService requestHandleQueue = new DefaultQueueService();
@@ -372,11 +394,15 @@ public class ServerConnectionImpl implements ServerConnection{
     
     protected void recycleMessage(MessageImpl msg){
         if(msg != null){
-            if(messageBuffer.size() <= messageRecycleBufferSize){
-                msg.clear();
-                synchronized(messageBuffer){
+            synchronized(messageBuffer){
+                if(msg.isPayout()){
+                    msg.setPayout(false);
                     if(messageBuffer.size() <= messageRecycleBufferSize){
+                        msg.clear();
                         messageBuffer.add(msg);
+                    }
+                    if(messagePayoutCount > 0){
+                        messagePayoutCount--;
                     }
                 }
             }
@@ -385,15 +411,34 @@ public class ServerConnectionImpl implements ServerConnection{
     
     protected void recycleWindow(Window window){
         if(window != null){
-            if(windowBuffer.size() <= windowRecycleBufferSize){
-                window.clear();
-                synchronized(windowBuffer){
-                    if(windowBuffer.size() <= windowRecycleBufferSize){
-                        windowBuffer.add(window);
+            synchronized(windowBuffer){
+                if(windowBuffer.size() <= windowRecycleBufferSize && window.isPayout()){
+                    window.clear();
+                    windowBuffer.add(window);
+                    if(windowPayoutCount > 0){
+                        windowPayoutCount--;
                     }
                 }
             }
         }
+    }
+    
+    protected Window createWindow(){
+        Window window = null;
+        synchronized(windowBuffer){
+            if(windowBuffer.size() != 0){
+                window = (Window)windowBuffer.remove(0);
+                window.setPayout(true);
+            }
+            windowPayoutCount++;
+            if(maxWindowPayoutCount < windowPayoutCount){
+                maxWindowPayoutCount = windowPayoutCount;
+            }
+        }
+        if(window == null){
+            window = new Window();
+        }
+        return window;
     }
     
     protected void recycleSendRequest(SendRequest req){
@@ -561,10 +606,6 @@ public class ServerConnectionImpl implements ServerConnection{
         return stopReceiveMessageId;
     }
     
-    public void setFactoryServiceName(ServiceName name){
-        factoryServiceName = name;
-    }
-    
     public int getMaxWindowCount(){
         return maxWindowCount;
     }
@@ -573,53 +614,136 @@ public class ServerConnectionImpl implements ServerConnection{
         return sendCount == 0 ? 0.0d : (double)sendPacketCount / (double)sendCount;
     }
     
-    public long getAverageAsynchSendProcessTime(){
-        return asynchAcceptQueueHandlerContainer == null ? 0 : asynchAcceptQueueHandlerContainer.getAverageHandleProcessTime();
+    public double getAverageAsynchSendProcessTime(){
+        return asynchAcceptQueueHandlerContainer == null ? 0.0d : asynchAcceptQueueHandlerContainer.getAverageHandleProcessTime();
     }
     
-    public long getAverageRequestHandleProcessTime(){
-        return requestHandleQueueHandlerContainer == null ? 0 : requestHandleQueueHandlerContainer.getAverageHandleProcessTime();
+    public double getAverageRequestHandleProcessTime(){
+        return requestHandleQueueHandlerContainer == null ? 0.0d : requestHandleQueueHandlerContainer.getAverageHandleProcessTime();
     }
     
-    public double getMessageRecycleRate(){
-        return (double)recycleMessageCount/((double)newMessageCount + (double)recycleMessageCount);
+    public int getMaxMessagePayoutCount(){
+        return maxMessagePayoutCount;
     }
     
-    public double getWindowRecycleRate(){
-        return (double)recycleWindowCount/((double)newWindowCount + (double)recycleWindowCount);
+    public int getMessagePayoutCount(){
+        return messagePayoutCount;
+    }
+    
+    public int getMaxWindowPayoutCount(){
+        return maxWindowPayoutCount;
+    }
+    
+    public int getWindowPayoutCount(){
+        return windowPayoutCount;
+    }
+    
+    public void enabledClient(String address, int port){
+        if(disabledClients.containsKey(address)){
+            Set portSet = (Set)disabledClients.get(address);
+            if(port > 0){
+                if(portSet != null){
+                    portSet.remove(new Integer(port));
+                }
+            }else if(portSet != null){
+                disabledClients.remove(address);
+            }
+        }
+        setEnabledClient(address, port, true);
+    }
+    
+    public void disabledClient(String address, int port){
+        if(disabledClients.containsKey(address)){
+            Set portSet = (Set)disabledClients.get(address);
+            if(port > 0){
+                if(portSet != null){
+                    portSet.add(new Integer(port));
+                }
+            }else if(portSet != null){
+                disabledClients.put(address, null);
+            }
+        }else{
+            if(port > 0){
+                Set portSet = Collections.synchronizedSet(new HashSet());
+                portSet.add(new Integer(port));
+                disabledClients.put(address, portSet);
+            }else{
+                disabledClients.put(address, null);
+            }
+        }
+        setEnabledClient(address, port, false);
+    }
+    
+    private void setEnabledClient(String address, int port, boolean isEnabled){
+        ServerConnectionImpl.ClientImpl[] clientArray = (ServerConnectionImpl.ClientImpl[])clients.toArray(new ServerConnectionImpl.ClientImpl[clients.size()]);
+        for(int i = 0; i < clientArray.length; i++){
+            Socket socket = clientArray[i].getSocket();
+            if(socket == null || clientArray[i].isEnabled() == isEnabled){
+                continue;
+            }
+            InetSocketAddress remoteAddress = (InetSocketAddress)socket.getRemoteSocketAddress();
+            if(remoteAddress == null){
+                continue;
+            }
+            if(remoteAddress.getAddress().getHostAddress().equals(address)
+                && (port <= 0 || port == remoteAddress.getPort())
+            ){
+                clientArray[i].setEnabled(isEnabled);
+            }
+        }
+    }
+    
+    private boolean isDisableClient(ServerConnectionImpl.ClientImpl client){
+        Socket socket = client.getSocket();
+        if(socket == null){
+            return false;
+        }
+        InetSocketAddress remoteAddress = (InetSocketAddress)socket.getRemoteSocketAddress();
+        if(remoteAddress == null){
+            return false;
+        }
+        if(disabledClients.containsKey(remoteAddress.getAddress().getHostAddress())){
+            Set portSet = (Set)disabledClients.get(remoteAddress.getAddress().getHostAddress());
+            return portSet == null || portSet.contains(new Integer(remoteAddress.getPort()));
+        }else{
+            return false;
+        }
     }
     
     public Message createMessage(String subject, String key) throws MessageCreateException{
         MessageImpl message = null;
-        if(messageBuffer.size() != 0){
-            synchronized(messageBuffer){
-                if(messageBuffer.size() != 0){
-                    message = (MessageImpl)messageBuffer.remove(0);
-                    recycleMessageCount++;
-                }
+        synchronized(messageBuffer){
+            if(messageBuffer.size() != 0){
+                message = (MessageImpl)messageBuffer.remove(0);
+                message.setPayout(true);
+            }
+            messagePayoutCount++;
+            if(maxMessagePayoutCount < messagePayoutCount){
+                maxMessagePayoutCount = messagePayoutCount;
             }
         }
         if(message == null){
             message = multicastAddress == null ? new MessageImpl() : new MulticastMessageImpl();
-            newMessageCount++;
         }
+        message.setServerConnection(this);
         message.setSubject(subject, key);
         return message;
     }
     
     protected MessageImpl copyMessage(MessageImpl msg){
         MessageImpl message = null;
-        if(messageBuffer.size() != 0){
-            synchronized(messageBuffer){
-                if(messageBuffer.size() != 0){
-                    message = (MessageImpl)messageBuffer.remove(0);
-                    recycleMessageCount++;
-                }
+        synchronized(messageBuffer){
+            if(messageBuffer.size() != 0){
+                message = (MessageImpl)messageBuffer.remove(0);
+                message.setPayout(true);
+            }
+            messagePayoutCount++;
+            if(maxMessagePayoutCount < messagePayoutCount){
+                maxMessagePayoutCount = messagePayoutCount;
             }
         }
         if(message == null){
             message = multicastAddress == null ? new MessageImpl() : new MulticastMessageImpl();
-            newMessageCount++;
         }
         msg.copy(message);
         return message;
@@ -639,7 +763,7 @@ public class ServerConnectionImpl implements ServerConnection{
     }
     
     private void sendMessage(DatagramSocket sendSocket, InetAddress destAddress, MessageImpl message, int destPort, boolean isRetry) throws IOException{
-        List windows = message.getWindows(this, windowSize, externalizer);
+        List windows = message.getWindows(this, windowSize);
         maxWindowCount = Math.max(maxWindowCount, windows.size());
         List packets = new ArrayList();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -824,8 +948,9 @@ public class ServerConnectionImpl implements ServerConnection{
     private synchronized Set allocateSequence(MessageImpl message){
         currentSequence++;
         message.setSequence(currentSequence);
-        final long currentTime = System.currentTimeMillis();
-        message.setSendTime(currentTime);
+        if(message.getSendTime() < 0){
+            message.setSendTime(System.currentTimeMillis());
+        }
         Set result = null;
         if(newClients.size() != 0){
             final ClientImpl[] clientArray = (ClientImpl[])newClients.toArray(new ClientImpl[newClients.size()]);
@@ -854,10 +979,13 @@ public class ServerConnectionImpl implements ServerConnection{
     
     private int addSendMessageCache(MessageImpl message, MessageCache sendMessageCache) throws IOException{
         final long currentTime = System.currentTimeMillis();
+        if(message.getSendTime() < 0){
+            message.setSendTime(currentTime);
+        }
         List windows = null;
         synchronized(sendMessageCache){
             final Integer seq = new Integer(message.getSequence());
-            windows = message.getWindows(this, windowSize, externalizer);
+            windows = message.getWindows(this, windowSize);
             if(!sendMessageCache.contains(message)){
                 sendMessageCache.add(message);
             }
@@ -944,8 +1072,8 @@ public class ServerConnectionImpl implements ServerConnection{
         sendProcessTime = 0;
     }
     
-    public long getAverageSendProcessTime(){
-        return sendCount == 0 ? 0 : (sendProcessTime / sendCount);
+    public double getAverageSendProcessTime(){
+        return sendCount == 0 ? 0.0d : ((double)sendProcessTime / (double)sendCount);
     }
     
     public Set getClients(){
@@ -957,11 +1085,13 @@ public class ServerConnectionImpl implements ServerConnection{
     }
     
     public Set getClientIds(){
-        return new HashSet(clientMap.keySet());
+        synchronized(clientMap){
+            return new HashSet(clientMap.keySet());
+        }
     }
     
     public Set getReceiveClientIds(Message message){
-        Set result = new HashSet();
+        final Set result = new HashSet();
         final Iterator clientItr = clients.iterator();
         while(clientItr.hasNext()){
             ClientImpl client = (ClientImpl)clientItr.next();
@@ -1017,7 +1147,7 @@ public class ServerConnectionImpl implements ServerConnection{
         }
         
         if(clientAcceptor != null){
-            clientAcceptor.stop(1000);
+            clientAcceptor.stopNoWait();
             clientAcceptor = null;
         }
         if(sendQueueHandlerContainer != null){
@@ -1144,15 +1274,20 @@ public class ServerConnectionImpl implements ServerConnection{
                                 }
                                 client = new ClientImpl(channel, sendSocket == null ? (sendSocketAddress == null ? new DatagramSocket() : new DatagramSocket(sendSocketAddress)) : null);
                                 client.setDestPort(destPort);
+                                if(isDisableClient(client)){
+                                    client.setEnabled(false);
+                                }
                                 channel.register(
                                     key.selector(),
                                     SelectionKey.OP_READ,
                                     client
                                 );
                                 final Set tmpClients = new LinkedHashSet();
-                                tmpClients.addAll(clients);
-                                tmpClients.add(client);
-                                clients = tmpClients;
+                                synchronized(ClientAcceptor.this){
+                                    tmpClients.addAll(clients);
+                                    tmpClients.add(client);
+                                    clients = tmpClients;
+                                }
                                 newClients.add(client);
                                 clientMap.put(client.getId(), client);
                             }
@@ -1191,10 +1326,15 @@ public class ServerConnectionImpl implements ServerConnection{
                 }
                 ClientImpl client = new ClientImpl(socket, sendSocket == null ? (sendSocketAddress == null ? new DatagramSocket() : new DatagramSocket(sendSocketAddress)) : null);
                 client.setDestPort(destPort);
+                if(isDisableClient(client)){
+                    client.setEnabled(false);
+                }
                 final Set tmpClients = new LinkedHashSet();
-                tmpClients.addAll(clients);
-                tmpClients.add(client);
-                clients = tmpClients;
+                synchronized(ClientAcceptor.this){
+                    tmpClients.addAll(clients);
+                    tmpClients.add(client);
+                    clients = tmpClients;
+                }
                 newClients.add(client);
                 clientMap.put(client.getId(), client);
             }
@@ -1237,6 +1377,9 @@ public class ServerConnectionImpl implements ServerConnection{
         private int currentSequence = 0;
         private MessageCache sendMessageCache;
         private Object socketLock = new Object();
+        private boolean isClosing;
+        private boolean isClosed;
+        private final Object closeLock = new Object();
         
         public ClientImpl(SocketChannel sc, DatagramSocket ss){
             socketChannel = sc;
@@ -1277,8 +1420,6 @@ public class ServerConnectionImpl implements ServerConnection{
             ClientImpl.this.currentSequence++;
             MessageImpl result = copy ? copyMessage(message) : message;
             result.setSequence(ClientImpl.this.currentSequence);
-            final long currentTime = System.currentTimeMillis();
-            result.setSendTime(currentTime);
             return result;
         }
         
@@ -1396,7 +1537,7 @@ public class ServerConnectionImpl implements ServerConnection{
         }
         
         public synchronized void send(Message message) throws MessageSendException{
-            if(!isEnabled || (sendSocket == null && ServerConnectionImpl.this.sendSocket == null)){
+            if(!isEnabled || isClosed || isClosing){
                 return;
             }
             MessageImpl copyMsg = null;
@@ -1453,6 +1594,9 @@ public class ServerConnectionImpl implements ServerConnection{
         }
         
         public void receive(SelectionKey key){
+            if(!isEnabled || isClosed || isClosing){
+                return;
+            }
             try{
                 int readLength = 0;
                 if(socketChannel != null){
@@ -1521,6 +1665,9 @@ public class ServerConnectionImpl implements ServerConnection{
         }
         
         public void writeResponse(SelectionKey key){
+            if(!isEnabled || isClosed || isClosing){
+                return;
+            }
             ByteBuffer buf = null;
             try{
                 if(socketChannel != null && responseQueue != null){
@@ -1542,6 +1689,9 @@ public class ServerConnectionImpl implements ServerConnection{
         }
         
         protected void sendServerMessage(ServerMessage message, SelectionKey key){
+            if(!isEnabled || isClosed || isClosing){
+                return;
+            }
             try{
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 if(externalizer == null){
@@ -1626,90 +1776,113 @@ public class ServerConnectionImpl implements ServerConnection{
             lostCount = 0;
         }
         
-        public long getAverageSendProcessTime(){
-            return sendCount == 0 ? 0 : (sendProcessTime / sendCount);
+        public double getAverageSendProcessTime(){
+            return sendCount == 0 ? 0.0d : ((double)sendProcessTime / (double)sendCount);
         }
         
         
         public void close(){
             close(false, null);
         }
-        protected synchronized void close(boolean isClose, Throwable reason){
-            if(logger != null){
-                if(!isClose && clientClosedMessageId != null){
-                    logger.write(
-                        clientClosedMessageId,
-                        new Object[]{this},
-                        reason
-                    );
-                }else if(isClose && clientCloseMessageId != null){
-                    logger.write(
-                        clientCloseMessageId,
-                        new Object[]{this},
-                        reason
-                    );
-                }
+        protected void close(boolean isClose, Throwable reason){
+            if(isClosing || isClosed){
+                return;
             }
-            if(subjects.size() != 0){
-                Iterator entries = subjects.entrySet().iterator();
-                while(entries.hasNext()){
-                    Map.Entry entry = (Map.Entry)entries.next();
-                    String subject = (String)entry.getKey();
-                    Set keySet = (Set)entry.getValue();
-                    if(serverConnectionListeners != null && !keySet.isEmpty()){
-                        String[] removeKeys = (String[])keySet.toArray(new String[0]);
-                        for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
-                            ((ServerConnectionListener)serverConnectionListeners.get(i)).onRemoveSubject(ClientImpl.this, subject, removeKeys);
+            synchronized(closeLock){
+                if(isClosed){
+                    return;
+                }
+                isClosing = true;
+                try{
+                    if(logger != null){
+                        if(!isClose && clientClosedMessageId != null){
+                            logger.write(
+                                clientClosedMessageId,
+                                new Object[]{this},
+                                reason
+                            );
+                        }else if(isClose && clientCloseMessageId != null){
+                            logger.write(
+                                clientCloseMessageId,
+                                new Object[]{this},
+                                reason
+                            );
                         }
                     }
-                }
-            }
-            if(isStartReceive){
-                isStartReceive = false;
-                if(serverConnectionListeners != null){
-                    for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
-                        ((ServerConnectionListener)serverConnectionListeners.get(i)).onStopReceive(ClientImpl.this);
+                    final Set tmpClients = new LinkedHashSet();
+                    if(clientAcceptor != null){
+                        synchronized(clientAcceptor){
+                            tmpClients.addAll(clients);
+                            tmpClients.remove(ClientImpl.this);
+                            clients = tmpClients;
+                        }
+                    }else{
+                        tmpClients.addAll(clients);
+                        tmpClients.remove(ClientImpl.this);
+                        clients = tmpClients;
                     }
-                }
-            }
-            Object id = getId();
-            if(requestDispatcher != null){
-                requestDispatcher.stopNoWait();
-                requestDispatcher = null;
-            }
-            synchronized(socketLock){
-                if(responseQueue != null){
-                    responseQueue.release();
-                    responseQueue = null;
-                }
-                if(socketChannel != null){
-                    try{
-                        socketChannel.close();
-                    }catch(IOException e){
+                    clientMap.remove(id);
+                    newClients.remove(ClientImpl.this);
+                    if(subjects.size() != 0){
+                        Object[] entries = subjects.entrySet().toArray();
+                        for(int i = 0; i < entries.length; i++){
+                            Map.Entry entry = (Map.Entry)entries[i];
+                            String subject = (String)entry.getKey();
+                            Set keySet = (Set)entry.getValue();
+                            subjects.remove(subject);
+                            if(serverConnectionListeners != null && !keySet.isEmpty()){
+                                String[] removeKeys = (String[])keySet.toArray(new String[0]);
+                                for(int j = 0, jmax = serverConnectionListeners.size(); j < jmax; j++){
+                                    ((ServerConnectionListener)serverConnectionListeners.get(j)).onRemoveSubject(ClientImpl.this, subject, removeKeys);
+                                }
+                            }
+                        }
                     }
-                    socketChannel = null;
-                }
-                if(socket != null){
-                    try{
-                        socket.close();
-                    }catch(IOException e){
+                    if(isStartReceive){
+                        isStartReceive = false;
+                        if(serverConnectionListeners != null){
+                            for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
+                                ((ServerConnectionListener)serverConnectionListeners.get(i)).onStopReceive(ClientImpl.this);
+                            }
+                        }
                     }
-                    socket = null;
-                }
-            }
-            if(sendSocket != null){
-                sendSocket.close();
-                sendSocket = null;
-            }
-            final Set tmpClients = new LinkedHashSet();
-            tmpClients.addAll(clients);
-            tmpClients.remove(ClientImpl.this);
-            clients = tmpClients;
-            clientMap.remove(id);
-            newClients.remove(ClientImpl.this);
-            if(serverConnectionListeners != null){
-                for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
-                    ((ServerConnectionListener)serverConnectionListeners.get(i)).onClose(ClientImpl.this);
+                    Object id = getId();
+                    if(requestDispatcher != null){
+                        requestDispatcher.stopNoWait();
+                        requestDispatcher = null;
+                    }
+                    synchronized(socketLock){
+                        if(responseQueue != null){
+                            responseQueue.release();
+                            responseQueue = null;
+                        }
+                        if(socketChannel != null){
+                            try{
+                                socketChannel.close();
+                            }catch(IOException e){
+                            }
+                            socketChannel = null;
+                        }
+                        if(socket != null){
+                            try{
+                                socket.close();
+                            }catch(IOException e){
+                            }
+                            socket = null;
+                        }
+                    }
+                    if(sendSocket != null){
+                        sendSocket.close();
+                        sendSocket = null;
+                    }
+                    if(serverConnectionListeners != null){
+                        for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
+                            ((ServerConnectionListener)serverConnectionListeners.get(i)).onClose(ClientImpl.this);
+                        }
+                    }
+                }finally{
+                    isClosing = false;
+                    isClosed = true;
                 }
             }
         }
@@ -1744,21 +1917,23 @@ public class ServerConnectionImpl implements ServerConnection{
                     return externalizer.readExternal(bais);
                 }
             }catch(ClassNotFoundException e){
-                return ClientImpl.this;
+                return null;
             }catch(SocketTimeoutException e){
-                return ClientImpl.this;
+                return null;
             }catch(SocketException e){
+                ClientImpl.this.close(false, e);
                 return null;
             }catch(EOFException e){
+                ClientImpl.this.close(false, e);
                 return null;
             }catch(IOException e){
-                return ClientImpl.this;
+                ClientImpl.this.close(true, e);
+                return null;
             }
         }
         
         public void consume(Object paramObj, DaemonControl ctrl) throws Throwable{
             if(paramObj == null){
-                ClientImpl.this.close(true, null);
                 return;
             }
             if(!(paramObj instanceof ClientMessage)){
@@ -1909,7 +2084,7 @@ public class ServerConnectionImpl implements ServerConnection{
                                     }
                                 }
                                 try{
-                                    interpolateResMessage.addWindows(msg.getWindows(ServerConnectionImpl.this, windowSize, externalizer));
+                                    interpolateResMessage.addWindows(msg.getWindows(ServerConnectionImpl.this, windowSize));
                                     recycleMessage(msg);
                                 }catch(IOException e){}
                             }
@@ -1964,7 +2139,7 @@ public class ServerConnectionImpl implements ServerConnection{
                         for(int i = 0; i < messages.size(); i++){
                             MessageImpl msg = (MessageImpl)messages.get(i);
                             try{
-                                interpolateResMessage.addWindows(msg.getWindows(ServerConnectionImpl.this, windowSize, externalizer));
+                                interpolateResMessage.addWindows(msg.getWindows(ServerConnectionImpl.this, windowSize));
                                 recycleMessage(msg);
                             }catch(IOException e){}
                         }
@@ -2064,7 +2239,9 @@ public class ServerConnectionImpl implements ServerConnection{
             if(subjects == null){
                 return null;
             }
-            return new HashSet(subjects.keySet());
+            synchronized(subjects){
+                return new HashSet(subjects.keySet());
+            }
         }
         
         public Set getKeys(String subject){

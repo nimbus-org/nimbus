@@ -92,6 +92,11 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
     private String template;
     
     /**
+     * &lt;service-property&gt;要素で指定されたプロパティ。<p>
+     */
+    private Map properties = new LinkedHashMap();
+    
+    /**
      * 空のインスタンスを生成する。<p>
      */
     public ServiceMetaData(){
@@ -309,6 +314,87 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
     }
     
     /**
+     * プロパティ名の集合を取得する。<p>
+     *
+     * @return &lt;service-property&gt;要素で指定されたプロパティ名の集合
+     */
+    public Set getPropertyNameSet(){
+        return properties.keySet();
+    }
+    
+    /**
+     * 指定されたプロパティ名の&lt;service-property&gt;要素で指定されたプロパティが存在するか判定する。<p>
+     *
+     * @param property プロパティ名
+     * @return &lt;service-property&gt;要素で指定されたプロパティ名が存在する場合true
+     */
+    public boolean existsProperty(String property){
+        return properties.containsKey(property);
+    }
+    
+    /**
+     * 指定されたプロパティ名の&lt;service-property&gt;要素で指定されたプロパティ値を取得する。<p>
+     * 該当するプロパティ名の&lt;service-property&gt;要素が指定されていない場合は、nullを返す。<br>
+     *
+     * @param property プロパティ名
+     * @return &lt;service-property&gt;要素で指定されたプロパティ値
+     */
+    public String getProperty(String property){
+        ServicePropertyMetaData propData
+            = (ServicePropertyMetaData)properties.get(property);
+        return propData == null ? null : propData.getValue();
+    }
+    
+    /**
+     * &lt;service-property&gt;要素で指定されたプロパティを取得する。<p>
+     * &lt;service-property&gt;要素が指定されていない場合は、空のPropertiesを返す。<br>
+     *
+     * @return &lt;service-property&gt;要素で指定されたプロパティ
+     */
+    public Properties getProperties(){
+        final Properties props = new Properties();
+        Iterator propDatas = properties.values().iterator();
+        while(propDatas.hasNext()){
+            ServicePropertyMetaData propData = (ServicePropertyMetaData)propDatas.next();
+            props.setProperty(propData.getName(), propData.getValue() == null ? "" : propData.getValue());
+        }
+        return props;
+    }
+    
+    /**
+     * 指定されたプロパティ名の&lt;service-property&gt;要素で指定されたプロパティ値を設定する。<p>
+     *
+     * @param property プロパティ名
+     * @param value &lt;service-property&gt;要素で指定されたプロパティ値
+     */
+    public void setProperty(String property, String value){
+        ServicePropertyMetaData propData
+            = (ServicePropertyMetaData)properties.get(property);
+        if(propData == null){
+            propData = new ServicePropertyMetaData(this);
+        }
+        propData.setName(property);
+        propData.setValue(value);
+        properties.put(property, propData);
+    }
+    
+    /**
+     * 指定されたプロパティ名の&lt;service-property&gt;要素で指定されたプロパティを削除する。<p>
+     *
+     * @param property プロパティ名
+     */
+    public void removeProperty(String property){
+        properties.remove(property);
+    }
+    
+    /**
+     * &lt;service-property&gt;要素で指定された全てのプロパティを削除する。<p>
+     */
+    public void clearProperties(){
+        properties.clear();
+    }
+    
+    /**
      * この&lt;service&gt;要素の子要素&lt;optional-config&gt;要素を取得する。<p>
      *
      * @return 子要素&lt;optional-config&gt;要素
@@ -482,6 +568,18 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
                 result.invokes.add(invoke);
             }
         }
+        if(templateData.properties.size() != 0){
+            Iterator entries = templateData.properties.entrySet().iterator();
+            while(entries.hasNext()){
+                Map.Entry entry = (Map.Entry)entries.next();
+                ServicePropertyMetaData propData = (ServicePropertyMetaData)entry.getValue();
+                if(propData.isExtends() && !result.properties.containsKey(entry.getKey())){
+                    propData = (ServicePropertyMetaData)propData.clone();
+                    propData.setParent(result);
+                    result.properties.put(entry.getKey(), propData);
+                }
+            }
+        }
         if(result.optionalConfig == null){
             result.optionalConfig = templateData.optionalConfig;
         }
@@ -634,6 +732,42 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
         final boolean ifdefMatch
             = ifdefData == null ? true : ifdefData.isMatch();
         
+        final Iterator propElements = getChildrenByTagName(
+            element,
+            ServicePropertyMetaData.SERVICE_PROPERTY_TAG_NAME
+        );
+        while(propElements.hasNext()){
+            ServicePropertyMetaData propData
+                = new ServicePropertyMetaData(this);
+            if(ifdefData != null){
+                propData.setIfDefMetaData(ifdefData);
+                ifdefData.addChild(propData);
+            }
+            propData.importXML((Element)propElements.next());
+            if(ifdefMatch){
+                properties.put(
+                    propData.getName(),
+                    propData
+                );
+                String prop = propData.getValue();
+                // システムプロパティの置換
+                prop = Utility.replaceSystemProperty(prop);
+                // サービスローダ構成プロパティの置換
+                prop = Utility.replaceServiceLoderConfig(
+                    prop,
+                    myLoader == null ? null : myLoader.getConfig()
+                );
+                // マネージャプロパティの置換
+                prop = Utility.replaceManagerProperty(
+                    manager,
+                    prop
+                );
+                // サーバプロパティの置換
+                prop = Utility.replaceServerProperty(prop);
+                propData.setValue(prop);
+            }
+        }
+        
         final Element optionalConfig = getOptionalChild(element, OPT_CONF_TAG_NAME);
         if(ifdefMatch){
             this.optionalConfig = optionalConfig;
@@ -686,7 +820,9 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
                 .append("=\"").append(isCreateTemplate).append("\"");
         }
         
-        if(constructor == null && fields.size() == 0
+        if(constructor == null
+             && properties.size() == 0
+             && fields.size() == 0
              && attributes.size() == 0 && invokes.size() == 0
              && depends.size() == 0
              && (ifDefMetaDataList == null || ifDefMetaDataList.size() == 0)
@@ -694,6 +830,23 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
             buf.append("/>");
         }else{
             buf.append('>');
+            if(properties.size() != 0){
+                buf.append(LINE_SEPARATOR);
+                final StringBuilder subBuf = new StringBuilder();
+                final Iterator props = properties.values().iterator();
+                while(props.hasNext()){
+                    final ServicePropertyMetaData propData
+                        = (ServicePropertyMetaData)props.next();
+                    if(propData.getIfDefMetaData() != null){
+                        continue;
+                    }
+                    propData.toXML(subBuf);
+                    if(props.hasNext()){
+                        subBuf.append(LINE_SEPARATOR);
+                    }
+                }
+                buf.append(addIndent(subBuf));
+            }
             if(constructor != null && constructor.getIfDefMetaData() == null){
                 buf.append(LINE_SEPARATOR);
                 buf.append(
@@ -786,6 +939,15 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
      */
     public Object clone(){
         ServiceMetaData clone = (ServiceMetaData)super.clone();
+        clone.properties = new LinkedHashMap();
+        Iterator entries = properties.entrySet().iterator();
+        while(entries.hasNext()){
+            Map.Entry entry = (Map.Entry)entries.next();
+            ServicePropertyMetaData propData = (ServicePropertyMetaData)entry.getValue();
+            propData = (ServicePropertyMetaData)propData.clone();
+            propData.setParent(clone);
+            clone.properties.put(entry.getKey(), propData);
+        }
         clone.depends = new ArrayList();
         for(int i = 0; i < depends.size(); i++){
             DependsMetaData deps = (DependsMetaData)depends.get(i);

@@ -32,7 +32,10 @@
 // パッケージ
 package jp.ossc.nimbus.service.beancontrol;
 // インポート
+
 import java.beans.PropertyEditor;
+import java.util.Set;
+import java.io.File;
 
 import jp.ossc.nimbus.service.beancontrol.resource.*;
 import jp.ossc.nimbus.core.*;
@@ -92,12 +95,15 @@ public interface BeanFlowInvokerFactoryCallBack {
 	 * @return PropertyEditor
 	 */
 	public PropertyEditor findPropEditor(Class cls);
+	
+    public File findResource(String name);
 
 	public boolean isManageExecBeanFlow();
 	
 	public BeanFlowInvoker createFlow(String key) ;
     public BeanFlowInvoker createFlow(String key, String caller, boolean isOverwride);
     public boolean containsFlow(String key);
+    public Set getBeanFlowKeySet();
 
 	public ServiceLoader getServiceLoader();
     public ServiceManager getServiceManager();

@@ -32,6 +32,8 @@
 package jp.ossc.nimbus.service.template;
 
 import java.io.File;
+import java.io.Writer;
+import java.io.IOException;
 import java.io.Serializable;
 import java.io.StringWriter;
 import java.util.Properties;
@@ -47,7 +49,7 @@ import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.resource.loader.StringResourceLoader;
 import org.apache.velocity.runtime.resource.util.StringResourceRepository;
 
-import jp.ossc.nimbus.core.ServiceBase;
+import jp.ossc.nimbus.core.*;
 
 /**
  * Apache Velocityを使った{@link TemplateEngine}サービス。<p>
@@ -129,7 +131,26 @@ public class VelocityTemplateEngineService extends ServiceBase implements Templa
         Properties props = properties == null ? new Properties() : properties;
         props.setProperty(RuntimeConstants.RESOURCE_LOADER, "string, file");
         if(templateFileRootDirectory != null){
-            props.setProperty(RuntimeConstants.FILE_RESOURCE_LOADER_PATH, templateFileRootDirectory.getCanonicalPath());
+            File resourceDir = templateFileRootDirectory;
+            if(!resourceDir.exists()){
+                if(getServiceNameObject() != null){
+                    ServiceMetaData metaData = ServiceManagerFactory.getServiceMetaData(getServiceNameObject());
+                    if(metaData != null){
+                        jp.ossc.nimbus.core.ServiceLoader loader = metaData.getServiceLoader();
+                        if(loader != null){
+                            String filePath = loader.getServiceURL().getFile();
+                            if(filePath != null){
+                                File serviceDefDir = new File(filePath).getParentFile();
+                                File dir = new File(serviceDefDir, resourceDir.getPath());
+                                if(dir.exists()){
+                                    resourceDir = dir;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            props.setProperty(RuntimeConstants.FILE_RESOURCE_LOADER_PATH, resourceDir.getCanonicalPath());
         }
         props.setProperty("string." + RuntimeConstants.RESOURCE_LOADER + '.' + StringResourceLoader.REPOSITORY_STATIC, "false");
         stringRespositoryName = props.getProperty(StringResourceLoader.REPOSITORY_NAME);
@@ -185,6 +206,14 @@ public class VelocityTemplateEngineService extends ServiceBase implements Templa
             throw new TemplateTransformException("Transform failed. name=" + name, e);
         }
         return sw.toString();
+    }
+    
+    public void transform(String name, Map dataMap, Writer writer) throws TemplateTransformException, IOException{
+        try{
+            writer.write(transform(name, dataMap));
+        }catch(IOException e){
+            throw e;
+        }
     }
     
     private static class TemplateResource implements Serializable{

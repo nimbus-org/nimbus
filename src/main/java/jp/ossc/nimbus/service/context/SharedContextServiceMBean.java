@@ -69,16 +69,16 @@ public interface SharedContextServiceMBean extends DefaultContextServiceMBean{
     public ServiceName getRequestConnectionFactoryServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ClusterService}サービスのサービス名を設定する。<p>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster Cluster}サービスのサービス名を設定する。<p>
      * 
-     * @param name ClusterServiceサービスのサービス名
+     * @param name Clusterサービスのサービス名
      */
     public void setClusterServiceName(ServiceName name);
     
     /**
-     * {@link jp.ossc.nimbus.service.keepalive.ClusterService ClusterService}サービスのサービス名を取得する。<p>
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster Cluster}サービスのサービス名を取得する。<p>
      * 
-     * @return ClusterServiceサービスのサービス名
+     * @return Clusterサービスのサービス名
      */
     public ServiceName getClusterServiceName();
     
@@ -218,6 +218,22 @@ public interface SharedContextServiceMBean extends DefaultContextServiceMBean{
      * @return trueの場合、クライアントモード
      */
     public boolean isClient();
+    
+    /**
+     * クライアントモードの時に、ローカルのインデックスを有効化するかどうかを設定する。<p>
+     * デフォルトは、trueで有効。<br>
+     * falseにした場合、インデックスを使った検索は、サーバモードのノードに要求する。<br>
+     *
+     * @param isEnabled クライアントモードの時に、ローカルのインデックスを有効化する場合は、true
+     */
+    public void setEnabledIndexOnClient(boolean isEnabled);
+    
+    /**
+     * クライアントモードの時に、ローカルのインデックスを有効化するかどうかを判定する。<p>
+     *
+     * @return trueの場合は、クライアントモードの時に、ローカルのインデックスを有効化する
+     */
+    public boolean isEnabledIndexOnClient();
     
     /**
      * 同期時のタイムアウト[ms]を設定する。<p>
@@ -535,4 +551,49 @@ public interface SharedContextServiceMBean extends DefaultContextServiceMBean{
      * キャッシュのヒット率をリセットする。<p>
      */
     public void resetCacheHitRatio();
+    
+    /**
+     * 現在ロックされているキーの集合を取得する。<p>
+     *
+     * @return ロックされているキーの集合
+     */
+    public Set getLockedKeySet();
+    
+    /**
+     * 現在ロックされている数を取得する。<p>
+     *
+     * @return ロックされている数
+     */
+    public int getLockedCount();
+    
+    /**
+     * ロックされていた時間の平均時間[ms]を取得する。<p>
+     *
+     * @return ロックされていた時間の平均時間[ms]
+     */
+    public double getAverageLockTime();
+    
+    /**
+     * ロックされていた時間の最大時間[ms]を取得する。<p>
+     *
+     * @return ロックされていた時間の最大時間[ms]
+     */
+    public long getMaxLockTime();
+    
+    /**
+     * ロック情報を表示する。<p>
+     *
+     * @return ロック情報文字列
+     */
+    public String displayLocks();
+    
+    /**
+     * 分散サーバとの通信の健全性をチェックする。<p>
+     * 
+     * @param isContainsClient 健全性をチェックする対象として、クライアントモードも含める場合は、true
+     * @param timeout タイムアウト
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public void healthCheck(boolean isContainsClient, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
 }

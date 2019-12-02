@@ -36,6 +36,7 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 import java.io.Externalizable;
 import java.io.ObjectOutput;
 import java.io.ObjectInput;
@@ -52,10 +53,10 @@ import jp.ossc.nimbus.beans.IndexNotFoundException;
  */
 public class SharedContextIndexManager implements Externalizable, Cloneable{
     
-    protected Map nameIndexMap = new HashMap();
-    protected Map singleIndexMap = new HashMap();
-    protected Map complexIndexMap = new HashMap();
-    protected Set keySet = new HashSet();
+    protected ConcurrentHashMap nameIndexMap = new ConcurrentHashMap();
+    protected ConcurrentHashMap singleIndexMap = new ConcurrentHashMap();
+    protected ConcurrentHashMap complexIndexMap = new ConcurrentHashMap();
+    protected ConcurrentHashMap keySet = new ConcurrentHashMap();
     
     public SharedContextIndexManager(){
     }
@@ -81,25 +82,25 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
                     throw new IllegalArgumentException("Duplicate index. newIndex=" + name + ", duplicateIndex=" + singleIndex.getName());
                 }
             }else{
-                singleIndexMap.put(propName, index);
+                singleIndexMap.putIfAbsent(propName, index);
             }
         }else{
             if(complexIndexMap.containsKey(indexedPropertyNames)){
                 throw new IllegalArgumentException("Duplicate index. newIndex=" + name + ", duplicateIndex=" + ((SharedContextIndex)complexIndexMap.get(indexedPropertyNames)).getName());
             }
-            complexIndexMap.put(indexedPropertyNames, index);
+            complexIndexMap.putIfAbsent(indexedPropertyNames, index);
             Iterator itr = indexedPropertyNames.iterator();
             while(itr.hasNext()){
                 String propName = (String)itr.next();
                 SharedContextIndex singleIndex = (SharedContextIndex)singleIndexMap.get(propName);
                 if(singleIndex == null){
                     singleIndex = new SharedContextIndex(new String[]{propName});
-                    singleIndexMap.put(propName, singleIndex);
+                    singleIndexMap.putIfAbsent(propName, singleIndex);
                 }
                 singleIndex.addLinkedIndex(name);
             }
         }
-        nameIndexMap.put(name, index);
+        nameIndexMap.putIfAbsent(name, index);
     }
     
     public void removeIndex(String name){
@@ -130,6 +131,13 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
                 }
             }
         }
+    }
+    
+    public void clearIndex(){
+        nameIndexMap.clear();
+        singleIndexMap.clear();
+        complexIndexMap.clear();
+        keySet.clear();
     }
     
     public SharedContextIndex getIndex(String name){
@@ -165,7 +173,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
     }
     
     public boolean hasIndex(String name, String[] propNames){
-        if(getIndex(name) != null){
+        if(name != null && getIndex(name) != null){
             return true;
         }
         return propNames == null ? false : getIndexBy(propNames) != null;
@@ -175,8 +183,8 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
         return !nameIndexMap.isEmpty();
     }
     
-    public synchronized boolean add(Object key, Object value) throws IndexPropertyAccessException{
-        if(!keySet.add(key)){
+    public boolean add(Object key, Object value) throws IndexPropertyAccessException{
+        if(keySet.putIfAbsent(key, key) != null){
             return false;
         }
         Iterator itr = singleIndexMap.values().iterator();
@@ -192,7 +200,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
         return true;
     }
     
-    public synchronized void remove(Object key, Object value) throws IndexPropertyAccessException{
+    public void remove(Object key, Object value) throws IndexPropertyAccessException{
         Iterator itr = singleIndexMap.values().iterator();
         while(itr.hasNext()){
             SharedContextIndex index = (SharedContextIndex)itr.next();
@@ -206,7 +214,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
         keySet.remove(key);
     }
     
-    public synchronized void replace(Object key, Object oldValue, Object newValue) throws IndexPropertyAccessException{
+    public void replace(Object key, Object oldValue, Object newValue) throws IndexPropertyAccessException{
         Iterator itr = singleIndexMap.values().iterator();
         while(itr.hasNext()){
             SharedContextIndex index = (SharedContextIndex)itr.next();
@@ -219,12 +227,12 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
         }
     }
     
-    public synchronized boolean addAll(Map c){
+    public boolean addAll(Map c){
         boolean modify = false;
         Iterator entries = c.entrySet().iterator();
         while(entries.hasNext()){
             Map.Entry entry = (Map.Entry)entries.next();
-            if(keySet.add(entry.getKey())){
+            if(keySet.putIfAbsent(entry.getKey(), entry.getKey()) == null){
                 Iterator itr = singleIndexMap.values().iterator();
                 while(itr.hasNext()){
                     SharedContextIndex index = (SharedContextIndex)itr.next();
@@ -241,8 +249,8 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
         return modify;
     }
     
-    public synchronized void retainAll(Map c){
-        Iterator keys = keySet.iterator();
+    public void retainAll(Map c){
+        Iterator keys = keySet.keySet().iterator();
         while(keys.hasNext()){
             Object key = keys.next();
             if(!c.containsKey(key)){
@@ -261,7 +269,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
         }
     }
     
-    public synchronized void clear(){
+    public void clear(){
         Iterator itr = singleIndexMap.values().iterator();
         while(itr.hasNext()){
             SharedContextIndex index = (SharedContextIndex)itr.next();
@@ -278,11 +286,11 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
     public Set keySet(){
         return keySet(null);
     }
-    public synchronized Set keySet(Set result){
+    public Set keySet(Set result){
         if(result == null){
             result = new HashSet();
         }
-        result.addAll(keySet);
+        result.addAll(keySet.keySet());
         return result;
     }
     
@@ -767,44 +775,42 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
         writeExternal(out, true);
     }
     public void writeExternal(ObjectOutput out, boolean writeValue) throws IOException{
-        synchronized(this){
-            out.writeInt(nameIndexMap.size());
-            Iterator itr = nameIndexMap.values().iterator();
-            while(itr.hasNext()){
-                SharedContextIndex index = (SharedContextIndex)itr.next();
-                index.writeExternal(out, writeValue);
-            }
-            out.writeInt(singleIndexMap.size());
-            itr = singleIndexMap.entrySet().iterator();
-            while(itr.hasNext()){
-                Map.Entry entry = (Map.Entry)itr.next();
-                out.writeObject(entry.getKey());
-                ((SharedContextIndex)entry.getValue()).writeExternal(out, writeValue);
-            }
-            out.writeInt(complexIndexMap.size());
-            itr = complexIndexMap.entrySet().iterator();
-            while(itr.hasNext()){
-                Map.Entry entry = (Map.Entry)itr.next();
-                out.writeObject(entry.getKey());
-                ((SharedContextIndex)entry.getValue()).writeExternal(out, writeValue);
-            }
-            if(writeValue){
-                out.writeObject(keySet);
-            }
+        out.writeInt(nameIndexMap.size());
+        Iterator itr = nameIndexMap.values().iterator();
+        while(itr.hasNext()){
+            SharedContextIndex index = (SharedContextIndex)itr.next();
+            index.writeExternal(out, writeValue);
+        }
+        out.writeInt(singleIndexMap.size());
+        itr = singleIndexMap.entrySet().iterator();
+        while(itr.hasNext()){
+            Map.Entry entry = (Map.Entry)itr.next();
+            out.writeObject(entry.getKey());
+            ((SharedContextIndex)entry.getValue()).writeExternal(out, writeValue);
+        }
+        out.writeInt(complexIndexMap.size());
+        itr = complexIndexMap.entrySet().iterator();
+        while(itr.hasNext()){
+            Map.Entry entry = (Map.Entry)itr.next();
+            out.writeObject(entry.getKey());
+            ((SharedContextIndex)entry.getValue()).writeExternal(out, writeValue);
+        }
+        if(writeValue){
+            out.writeObject(keySet);
         }
     }
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException{
         readExternal(in, true);
     }
     public void readExternal(ObjectInput in, boolean readValue) throws IOException, ClassNotFoundException{
-        nameIndexMap = new HashMap();
+        nameIndexMap = new ConcurrentHashMap();
         int size = in.readInt();
         for(int i = 0; i < size; i++){
             SharedContextIndex index = new SharedContextIndex();
             index.readExternal(in, readValue);
             nameIndexMap.put(index.getName(), index);
         }
-        singleIndexMap = new HashMap();
+        singleIndexMap = new ConcurrentHashMap();
         size = in.readInt();
         for(int i = 0; i < size; i++){
             SharedContextIndex index = new SharedContextIndex();
@@ -812,7 +818,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
             index.readExternal(in, readValue);
             singleIndexMap.put(propName, index);
         }
-        complexIndexMap = new HashMap();
+        complexIndexMap = new ConcurrentHashMap();
         size = in.readInt();
         for(int i = 0; i < size; i++){
             SharedContextIndex index = new SharedContextIndex();
@@ -821,9 +827,9 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
             complexIndexMap.put(propNames, index);
         }
         if(readValue){
-            keySet = (HashSet)in.readObject();
+            keySet = (ConcurrentHashMap)in.readObject();
         }else{
-            keySet = new HashSet();
+            keySet = new ConcurrentHashMap();
         }
     }
     
@@ -834,15 +840,15 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
         }catch(CloneNotSupportedException e){
             return null;
         }
-        clone.nameIndexMap = new HashMap();
-        clone.singleIndexMap = new HashMap();
-        clone.complexIndexMap = new HashMap();
+        clone.nameIndexMap = new ConcurrentHashMap();
+        clone.singleIndexMap = new ConcurrentHashMap();
+        clone.complexIndexMap = new ConcurrentHashMap();
         Iterator itr = nameIndexMap.entrySet().iterator();
         while(itr.hasNext()){
             Map.Entry entry = (Map.Entry)itr.next();
             clone.setIndexInternal((String)entry.getKey(), ((SharedContextIndex)entry.getValue()).cloneEmpty(), true);
         }
-        clone.keySet = new HashSet();
+        clone.keySet = new ConcurrentHashMap();
         return clone;
     }
     

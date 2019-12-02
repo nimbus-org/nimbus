@@ -125,7 +125,11 @@ public class ScheduledTestResourceImpl extends TestResourceBaseImpl implements S
         while (itr.hasNext()) {
             double val = ((Double) itr.next()).doubleValue();
             if (!Double.isNaN(val)) {
-                result += val;
+                if(Double.isNaN(result)){
+                    result = val;
+                 } else {
+                     result += val;
+                 }
             }
         }
         return result;

@@ -209,6 +209,68 @@ public class RecordSchema{
     }
     
     /**
+     * レコードの表層的なスキーマ定義を作成する。<p>
+     *
+     * @param propertyNames 表層的に見せたいプロパティ名の配列
+     * @param isIgnoreUnknown trueの場合、存在しないプロパティを指定された場合に、無視する。falseの場合は、例外をthrowする
+     * @exception PropertySchemaDefineException プロパティのスキーマ定義に失敗した場合
+     */
+    public RecordSchema createSuperficialRecordSchema(String[] propertyNames, boolean isIgnoreUnknown){
+        RecordSchema superficial = new RecordSchema();
+        List schemata = new ArrayList(propertyNames.length);
+        if(propertyNames != null){
+            for(int i = 0; i < propertyNames.length; i++){
+                final int index = getPropertyIndex(propertyNames[i]);
+                if(index == -1){
+                    if(isIgnoreUnknown){
+                        continue;
+                    }else{
+                        throw new PropertySchemaDefineException(
+                            this.schema,
+                            "Property name is not undefined. name=" + propertyNames[i]
+                        );
+                    }
+                }
+                schemata.add(getPropertySchema(index));
+            }
+        }
+        PropertySchema[] propSchemata = (PropertySchema[])schemata.toArray(new PropertySchema[schemata.size()]);
+        superficial.setPropertySchemata(propSchemata);
+        return superficial;
+    }
+    
+    /**
+     * レコードの表層的なスキーマ定義を作成する。<p>
+     *
+     * @param propertyIndexes 表層的に見せたいプロパティのインデックス配列
+     * @param isIgnoreUnknown trueの場合、存在しないプロパティを指定された場合に、無視する。falseの場合は、例外をthrowする
+     * @exception PropertySchemaDefineException プロパティのスキーマ定義に失敗した場合
+     */
+    public RecordSchema createSuperficialRecordSchema(int[] propertyIndexes, boolean isIgnoreUnknown){
+        RecordSchema superficial = new RecordSchema();
+        List schemata = new ArrayList(propertyIndexes.length);
+        if(propertyIndexes != null){
+            for(int i = 0; i < propertyIndexes.length; i++){
+                PropertySchema propSchema = getPropertySchema(propertyIndexes[i]);
+                if(propSchema == null){
+                    if(isIgnoreUnknown){
+                        continue;
+                    }else{
+                        throw new PropertySchemaDefineException(
+                            this.schema,
+                            "Property index is not undefined. index=" + propertyIndexes[i]
+                        );
+                    }
+                }
+                schemata.add(propSchema);
+            }
+        }
+        PropertySchema[] propSchemata = (PropertySchema[])schemata.toArray(new PropertySchema[schemata.size()]);
+        superficial.setPropertySchemata(propSchemata);
+        return superficial;
+    }
+    
+    /**
      * レコードのスキーマ定義を設定する。<p>
      *
      * @param schema レコードのスキーマ定義
@@ -351,7 +413,22 @@ public class RecordSchema{
         final String lineSep = System.getProperty("line.separator");
         for(int i = 0; i < schemata.length; i++){
             PropertySchema propertySchema = schemata[i];
-            buf.append(propertySchema.getSchema());
+            
+            Class propertySchemaType = propertySchema.getClass();
+            if(RecordListPropertySchema.class.equals(propertySchemaType)){
+                buf.append(PROPERTY_SCHEMA_ALIAS_NAME_LIST);
+            }else if(RecordPropertySchema.class.equals(propertySchemaType)){
+                buf.append(PROPERTY_SCHEMA_ALIAS_NAME_RECORD);
+            }else if(XpathPropertySchema.class.equals(propertySchemaType)){
+                buf.append(PROPERTY_SCHEMA_ALIAS_NAME_XPATH);
+            }else if(ValidatorPropertySchema.class.equals(propertySchemaType)){
+                buf.append(PROPERTY_SCHEMA_ALIAS_NAME_VALIDATOR);
+            }else if(InterpreterConstrainPropertySchema.class.equals(propertySchemaType)){
+                buf.append(PROPERTY_SCHEMA_ALIAS_NAME_INTERPRETER);
+            }else{
+                buf.append(propertySchemaType.getName());
+            }
+            buf.append(':').append(propertySchema.getSchema());
             if(i != schemata.length - 1){
                 buf.append(lineSep);
             }

@@ -234,11 +234,11 @@ public class StoreCacheOverflowActionService extends ServiceBase
             }
             if(newRef != null){
                 try{
-                    ref.set(this, null);
+                    references.put(ref, newRef);
                     ref.addLinkedReference(this);
                     ref.addCacheRemoveListener(this);
                     ref.addCacheChangeListener(this);
-                    references.put(ref, newRef);
+                    ref.set(this, null);
                     if(validator != null){
                         validator.remove(ref);
                     }

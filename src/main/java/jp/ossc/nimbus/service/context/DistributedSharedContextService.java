@@ -51,7 +51,7 @@ import jp.ossc.nimbus.beans.BeanTableIndexKeyFactory;
 import jp.ossc.nimbus.beans.IndexPropertyAccessException;
 import jp.ossc.nimbus.beans.IndexNotFoundException;
 import jp.ossc.nimbus.service.cache.CacheMap;
-import jp.ossc.nimbus.service.keepalive.ClusterService;
+import jp.ossc.nimbus.service.keepalive.Cluster;
 import jp.ossc.nimbus.service.publish.RequestMessageListener;
 import jp.ossc.nimbus.service.publish.Message;
 import jp.ossc.nimbus.service.publish.MessageException;
@@ -96,11 +96,14 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     private int parallelRequestThreadSize;
     private ServiceName parallelRequestQueueServiceName;
     private QueueHandlerContainerService parallelRequestQueueHandlerContainer;
+    private ServiceName threadContextServiceName;
+    private Context threadContext;
     private ServiceName sharedContextTransactionManagerServiceName;
     
     private String subject = DEFAULT_SUBJECT;
     private String clientSubject;
     private boolean isClient;
+    private boolean isEnabledIndexOnClient = true;
     
     private long synchronizeTimeout = 10000l;
     private long rehashTimeout = 10000l;
@@ -118,7 +121,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     
     private RequestServerConnection serverConnection;
     private MessageReceiver messageReceiver;
-    private ClusterService cluster;
+    private Cluster cluster;
     private Message targetMessage;
     
     private SharedContextService[] sharedContextArray;
@@ -207,10 +210,18 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         return isClient;
     }
     
+    public void setEnabledIndexOnClient(boolean isEnabled){
+        isEnabledIndexOnClient = isEnabled;
+    }
+    public boolean isEnabledIndexOnClient(){
+        return isEnabledIndexOnClient;
+    }
+    
     public void setRehashEnabled(boolean isEnabled) throws SharedContextSendException, SharedContextTimeoutException{
         if(getState() == STARTED){
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_REHASH_SWITCH));
+                message = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_REHASH_SWITCH));
                 message.setSubject(clientSubject, null);
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
@@ -307,6 +318,13 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     }
     public ServiceName getParallelRequestQueueServiceName(){
         return parallelRequestQueueServiceName;
+    }
+    
+    public void setThreadContextServiceName(ServiceName name){
+        threadContextServiceName = name;
+    }
+    public ServiceName getThreadContextServiceName(){
+        return threadContextServiceName;
     }
     
     public void setWaitConnectAllOnStart(boolean isWait){
@@ -415,6 +433,15 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         indexMap.remove(name);
     }
     
+    public void clearIndex(){
+        if(getState() == STARTED){
+            for(int i = 0; i < sharedContextArray.length; i++){
+                sharedContextArray[i].clearIndex();
+            }
+        }
+        indexMap.clear();
+    }
+    
     public boolean isMainDistributed(){
         return isMainDistributed;
     }
@@ -440,6 +467,60 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 sharedContextArray[i].resetCacheHitRatio();
             }
         }
+    }
+    
+    public Set getLockedKeySet(){
+        Set keySet = new HashSet();
+        if(getState() == STARTED){
+            for(int i = 0; i < sharedContextArray.length; i++){
+                keySet.addAll(sharedContextArray[i].getLockedKeySet());
+            }
+        }
+        return keySet;
+    }
+    
+    public int getLockedCount(){
+        int lockedCount = 0;
+        if(getState() == STARTED){
+            for(int i = 0; i < sharedContextArray.length; i++){
+                lockedCount += sharedContextArray[i].getLockedCount();
+            }
+        }
+        return lockedCount;
+    }
+    
+    public double getAverageLockTime(){
+        double result = 0;
+        if(getState() == STARTED){
+            for(int i = 0; i < sharedContextArray.length; i++){
+                result += sharedContextArray[i].getAverageLockTime();
+            }
+            result /= (double)sharedContextArray.length;
+        }
+        return result;
+    }
+    
+    public long getMaxLockTime(){
+        long result = 0;
+        if(getState() == STARTED){
+            for(int i = 0; i < sharedContextArray.length; i++){
+                long maxLockTime = sharedContextArray[i].getMaxLockTime();
+                if(result < maxLockTime){
+                    result = maxLockTime;
+                }
+            }
+        }
+        return result;
+    }
+    
+    public String displayLocks(){
+        StringBuilder buf = new StringBuilder();
+        if(getState() == STARTED){
+            for(int i = 0; i < sharedContextArray.length; i++){
+                buf.append(sharedContextArray[i].displayLocks());
+            }
+        }
+        return buf.toString();
     }
     
     /**
@@ -495,16 +576,22 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             parallelRequestQueueHandlerContainer.setQueueHandler(new ParallelRequestQueueHandler());
             parallelRequestQueueHandlerContainer.start();
         }
+        if(threadContextServiceName != null){
+            threadContext = (Context)ServiceManagerFactory.getServiceObject(threadContextServiceName);
+        }
         
         ServerConnectionFactory factory = (ServerConnectionFactory)ServiceManagerFactory.getServiceObject(requestConnectionFactoryServiceName);
         serverConnection = (RequestServerConnection)factory.getServerConnection();
         messageReceiver = (MessageReceiver)ServiceManagerFactory.getServiceObject(requestConnectionFactoryServiceName);
         clientSubject = subject + CLIENT_SUBJECT_SUFFIX;
         targetMessage = serverConnection.createMessage(subject, null);
+        Message tmpMessage = targetMessage;
+        targetMessage = (Message)targetMessage.clone();
+        tmpMessage.recycle();
         if(clusterServiceName == null){
             throw new IllegalArgumentException("ClusterServiceName must be specified.");
         }
-        cluster = (ClusterService)ServiceManagerFactory.getServiceObject(clusterServiceName);
+        cluster = (Cluster)ServiceManagerFactory.getServiceObject(clusterServiceName);
         
         if(interpreterServiceName != null){
             interpreter = (Interpreter)ServiceManagerFactory.getServiceObject(interpreterServiceName);
@@ -546,6 +633,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             sharedContextArray[i].setExecuteThreadSize(executeThreadSize);
             sharedContextArray[i].setSubject(subject + "$" + i);
             sharedContextArray[i].setClient(isClient || isRehashEnabled ? true : false);
+            sharedContextArray[i].setEnabledIndexOnClient(isEnabledIndexOnClient);
             sharedContextArray[i].setSynchronizeTimeout(synchronizeTimeout);
             sharedContextArray[i].setDefaultTimeout(defaultTimeout);
             sharedContextArray[i].setSynchronizeOnStart(false);
@@ -572,7 +660,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             }
             sharedContextArray[i].start();
         }
-        distributeInfo = new DistributeInfo(getId(), distributedSize);
+        distributeInfo = new DistributeInfo(getId(), sharedContextArray);
         serverConnection.addServerConnectionListener(this);
         messageReceiver.addSubject(this, isClient ? clientSubject :  subject);
         if(!isClient){
@@ -603,7 +691,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
      */
     public void stopService() throws Exception{
         if(serverConnection != null){
-	        serverConnection.removeServerConnectionListener(this);
+            serverConnection.removeServerConnectionListener(this);
         }
         
         if(messageReceiver != null){
@@ -644,9 +732,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             return;
         }
         if(parallelRequestQueueHandlerContainer == null){
+            long start = System.currentTimeMillis();
+            final boolean isNoTimeout = timeout <= 0;
             for(int i = 0; i < sharedContextArray.length; i++){
-                long start = System.currentTimeMillis();
-                final boolean isNoTimeout = timeout <= 0;
                 timeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
                 if(!isNoTimeout && timeout < 0){
                     throw new SharedContextTimeoutException("There is a node that is not possible yet synchronized. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
@@ -666,6 +754,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     new SynchronizeParallelRequest(sharedContextArray[i], timeout),
                     responseQueue
                 );
+                if(threadContext != null){
+                    asynchContext.putThreadContextAll(threadContext);
+                }
                 parallelRequestQueueHandlerContainer.push(asynchContext);
             }
             for(int i = 0; i < sharedContextArray.length; i++){
@@ -701,8 +792,12 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             return;
         }
         if(isMain()){
+            getLogger().write("DSCS_00004", new Object[]{getServiceNameObject()});
+            final boolean isNoTimeout = timeout <= 0;
+            long currentTimeout = timeout;
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_GET_DIST_INFO));
+                message = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_GET_DIST_INFO));
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() == 0){
                     DistributeGrid grid = new DistributeGrid();
@@ -710,16 +805,20 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     grid.rehash();
                     distributeInfo.apply(distributeInfo, sharedContextArray);
                 }else{
-                    message.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_GET_DIST_INFO, new Long(timeout)));
+                    message.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_GET_DIST_INFO, new Long(currentTimeout)));
                     long start = System.currentTimeMillis();
                     Message[] responses = null;
                     try{
-                        responses = serverConnection.request(message, 0, timeout);
+                        responses = serverConnection.request(
+                            message,
+                            isClient ? clientSubject : subject,
+                            null,
+                            0,
+                            currentTimeout
+                        );
                     }catch(RequestTimeoutException e){
                         throw new SharedContextTimeoutException("Timeout has occurred to get state of distribution.", e);
                     }
-                    final boolean isNoTimeout = timeout <= 0;
-                    timeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
                     DistributeGrid grid = new DistributeGrid();
                     grid.addDistributeInfo(distributeInfo);
                     for(int i = 0; i < responses.length; i++){
@@ -734,43 +833,71 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         info.apply(distributeInfo, sharedContextArray);
                     }
                     if(increaseDistributeInfos.size() != 0){
+                        currentTimeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
+                        if(!isNoTimeout && currentTimeout < 0){
+                            throw new SharedContextTimeoutException("timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - start));
+                        }
                         callback.setResponseCount(increaseDistributeInfos.size());
                         Iterator infos = increaseDistributeInfos.values().iterator();
                         while(infos.hasNext()){
                             info = (DistributeInfo)infos.next();
-                            Message rehashMessage = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_REHASH));
-                            rehashMessage.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_REHASH, info));
-                            rehashMessage.addDestinationId(info.getId());
-                            serverConnection.request(rehashMessage, 1, timeout, callback);
+                            message = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_REHASH));
+                            message.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_REHASH, info));
+                            message.addDestinationId(info.getId());
+                            serverConnection.request(
+                                message,
+                                isClient ? clientSubject : subject,
+                                null,
+                                1,
+                                timeout,
+                                callback
+                            );
                         }
-                        callback.waitResponse(timeout);
+                        callback.waitResponse(currentTimeout);
                     }
                     Map decreaseDistributeInfos = grid.getDecreaseDistributeInfos();
                     info = (DistributeInfo)decreaseDistributeInfos.remove(getId());
                     if(info != null){
+                        currentTimeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
+                        if(!isNoTimeout && currentTimeout < 0){
+                            throw new SharedContextTimeoutException("timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - start));
+                        }
                         info.apply(distributeInfo, sharedContextArray);
                     }
                     if(decreaseDistributeInfos.size() != 0){
+                        currentTimeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
+                        if(!isNoTimeout && currentTimeout < 0){
+                            throw new SharedContextTimeoutException("timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - start));
+                        }
                         callback.setResponseCount(decreaseDistributeInfos.size());
                         Iterator infos = decreaseDistributeInfos.values().iterator();
                         while(infos.hasNext()){
                             info = (DistributeInfo)infos.next();
-                            Message rehashMessage = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_REHASH));
-                            rehashMessage.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_REHASH, info));
-                            rehashMessage.addDestinationId(info.getId());
-                            serverConnection.request(rehashMessage, 1, timeout, callback);
+                            message = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_REHASH));
+                            message.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_REHASH, info));
+                            message.addDestinationId(info.getId());
+                            serverConnection.request(
+                                message,
+                                isClient ? clientSubject : subject,
+                                null,
+                                1,
+                                currentTimeout,
+                                callback
+                            );
                         }
-                        callback.waitResponse(timeout);
+                        callback.waitResponse(currentTimeout);
                     }
                 }
+                getLogger().write("DSCS_00005", new Object[]{getServiceNameObject()});
             }catch(MessageException e){
                 throw new SharedContextSendException(e);
             }catch(MessageSendException e){
                 throw new SharedContextSendException(e);
             }
         }else{
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_REHASH_REQUEST));
+                message = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_REHASH_REQUEST));
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
                     message.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_REHASH_REQUEST, new Long(timeout)));
@@ -811,8 +938,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 throw new UnsupportedOperationException();
             }
         }else{
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, null);
+                message = serverConnection.createMessage(subject, null);
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
                     message.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_LOAD));
@@ -853,8 +981,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 throw new UnsupportedOperationException();
             }
         }else{
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, key == null ? null : key.toString());
+                message = serverConnection.createMessage(subject, key == null ? null : key.toString());
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
                     message.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_LOAD, key));
@@ -895,8 +1024,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 throw new UnsupportedOperationException();
             }
         }else{
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, null);
+                message = serverConnection.createMessage(subject, null);
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
                     message.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_LOAD_KEY));
@@ -936,7 +1066,13 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     contextStore.clear();
                 }
                 if(parallelRequestQueueHandlerContainer == null){
+                    long start = System.currentTimeMillis();
+                    final boolean isNoTimeout = timeout <= 0;
                     for(int i = 0; i < sharedContextArray.length; i++){
+                        timeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
+                        if(!isNoTimeout && timeout < 0){
+                            throw new SharedContextTimeoutException("There is a node that is not possible yet save. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
+                        }
                         sharedContextArray[i].save(timeout);
                     }
                 }else{
@@ -952,6 +1088,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                             new SaveParallelRequest(sharedContextArray[i], timeout),
                             responseQueue
                         );
+                        if(threadContext != null){
+                            asynchContext.putThreadContextAll(threadContext);
+                        }
                         parallelRequestQueueHandlerContainer.push(asynchContext);
                     }
                     for(int i = 0; i < sharedContextArray.length; i++){
@@ -976,8 +1115,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 throw new UnsupportedOperationException();
             }
         }else{
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, null);
+                message = serverConnection.createMessage(subject, null);
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
                     message.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_SAVE, new Long(timeout)));
@@ -1018,8 +1158,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 throw new UnsupportedOperationException();
             }
         }else{
+            Message message = null;
             try{
-                Message message = serverConnection.createMessage(subject, key == null ? null : key.toString());
+                message = serverConnection.createMessage(subject, key == null ? null : key.toString());
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
                     message.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_SAVE, new Object[]{key, new Long(timeout)}));
@@ -1048,12 +1189,12 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         }
     }
     
-    public void lock(Object key) throws SharedContextSendException, SharedContextTimeoutException{
-        lock(key, defaultTimeout);
-    }
-    
     protected SharedContext selectDistributeContext(Object key){
         return sharedContextArray[getDataNodeIndex(key)];
+    }
+    
+    public void lock(Object key) throws SharedContextSendException, SharedContextTimeoutException{
+        lock(key, defaultTimeout);
     }
     
     public void lock(Object key, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
@@ -1064,12 +1205,209 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         return selectDistributeContext(key).lock(key, ifAcquireable, ifExist, timeout);
     }
     
-    public boolean unlock(Object key) throws SharedContextSendException{
+    public boolean unlock(Object key) throws SharedContextSendException, SharedContextTimeoutException{
         return unlock(key, false);
     }
     
-    public boolean unlock(Object key, boolean force) throws SharedContextSendException{
-        return selectDistributeContext(key).unlock(key, force);
+    public boolean unlock(Object key, boolean force) throws SharedContextSendException, SharedContextTimeoutException{
+        return unlock(key, force, defaultTimeout);
+    }
+    
+    public boolean unlock(Object key, boolean force, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+        return selectDistributeContext(key).unlock(key, force, timeout);
+    }
+    
+    public void locks(Set keys) throws SharedContextSendException, SharedContextTimeoutException{
+        locks(keys, defaultTimeout);
+    }
+    
+    public void locks(Set keys, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+        locks(keys, false, false, defaultTimeout);
+    }
+    
+    public boolean locks(Set keys, boolean ifAcquireable, boolean ifExist, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+        final long start = System.currentTimeMillis();
+        Map distMap = new HashMap();
+        Iterator itr = keys.iterator();
+        while(itr.hasNext()){
+            Object key = itr.next();
+            SharedContext context = selectDistributeContext(key);
+            Set set = (Set)distMap.get(context);
+            if(set == null){
+                set = new HashSet();
+                distMap.put(context, set);
+            }
+            set.add(key);
+        }
+        
+        boolean result = true;
+        try{
+            Iterator entries = distMap.entrySet().iterator();
+            if(parallelRequestQueueHandlerContainer == null){
+                int completed = 0;
+                while(entries.hasNext()){
+                    Map.Entry entry = (Map.Entry)entries.next();
+                    if(timeout > 0){
+                        final long currentTimeout = timeout - (start - System.currentTimeMillis());
+                        if(currentTimeout > 0){
+                            result &= ((SharedContext)entry.getKey()).locks((Set)entry.getValue(), ifAcquireable, ifExist, currentTimeout);
+                        }else{
+                            result = false;
+                            throw new SharedContextTimeoutException("There is a node that is not possible yet putAll. completed=" + completed + "notCompleted=" + (distMap.size() - completed));
+                        }
+                    }else{
+                        result &= ((SharedContext)entry.getKey()).locks((Set)entry.getValue(), ifAcquireable, ifExist, timeout);
+                    }
+                    completed++;
+                }
+            }else{
+                DefaultQueueService responseQueue = new DefaultQueueService();
+                try{
+                    responseQueue.create();
+                    responseQueue.start();
+                }catch(Exception e){
+                }
+                responseQueue.accept();
+                while(entries.hasNext()){
+                    Map.Entry entry = (Map.Entry)entries.next();
+                    AsynchContext asynchContext = new AsynchContext(
+                        new LocksParallelRequest((SharedContext)entry.getKey(), (Set)entry.getValue(), ifAcquireable, ifExist, timeout),
+                        responseQueue
+                    );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
+                    parallelRequestQueueHandlerContainer.push(asynchContext);
+                }
+                for(int i = 0; i < sharedContextArray.length; i++){
+                    AsynchContext asynchContext = (AsynchContext)responseQueue.get();
+                    if(asynchContext == null){
+                        result = false;
+                        break;
+                    }else{
+                        try{
+                            asynchContext.checkError();
+                        }catch(SharedContextSendException e){
+                            result = false;
+                            throw e;
+                        }catch(SharedContextTimeoutException e){
+                            result = false;
+                            throw e;
+                        }catch(Error e){
+                            result = false;
+                            throw e;
+                        }catch(Throwable th){
+                            result = false;
+                            // 起きないはず
+                            throw new SharedContextSendException(th);
+                        }
+                        result &= ((Boolean)asynchContext.getOutput()).booleanValue();
+                    }
+                }
+            }
+        }finally{
+            if(!result){
+                unlocks(keys);
+            }
+        }
+        return result;
+    }
+    
+    public Set unlocks(Set keys) throws SharedContextSendException, SharedContextTimeoutException{
+        return unlocks(keys, false);
+    }
+    
+    public Set unlocks(Set keys, boolean force) throws SharedContextSendException, SharedContextTimeoutException{
+        return unlocks(keys, force, defaultTimeout);
+    }
+    
+    public Set unlocks(Set keys, boolean force, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+        final long start = System.currentTimeMillis();
+        Map distMap = new HashMap();
+        Iterator itr = keys.iterator();
+        while(itr.hasNext()){
+            Object key = itr.next();
+            SharedContext context = selectDistributeContext(key);
+            Set set = (Set)distMap.get(context);
+            if(set == null){
+                set = new HashSet();
+                distMap.put(context, set);
+            }
+            set.add(key);
+        }
+        
+        Set result = null;
+        Iterator entries = distMap.entrySet().iterator();
+        if(parallelRequestQueueHandlerContainer == null){
+            int completed = 0;
+            while(entries.hasNext()){
+                Map.Entry entry = (Map.Entry)entries.next();
+                Set ret = null;
+                if(timeout > 0){
+                    final long currentTimeout = timeout - (start - System.currentTimeMillis());
+                    if(currentTimeout > 0){
+                        ret = ((SharedContext)entry.getKey()).unlocks((Set)entry.getValue(), force, currentTimeout);
+                    }else{
+                        throw new SharedContextTimeoutException("There is a node that is not possible yet unlocks. completed=" + completed + "notCompleted=" + (distMap.size() - completed));
+                    }
+                }else{
+                    ret = ((SharedContext)entry.getKey()).unlocks((Set)entry.getValue(), force, timeout);
+                }
+                if(ret != null){
+                    if(result == null){
+                        result = new HashSet();
+                    }
+                    result.addAll(ret);
+                }
+                completed++;
+            }
+        }else{
+            DefaultQueueService responseQueue = new DefaultQueueService();
+            try{
+                responseQueue.create();
+                responseQueue.start();
+            }catch(Exception e){
+            }
+            responseQueue.accept();
+            while(entries.hasNext()){
+                Map.Entry entry = (Map.Entry)entries.next();
+                AsynchContext asynchContext = new AsynchContext(
+                    new UnlocksParallelRequest((SharedContext)entry.getKey(), (Set)entry.getValue(), force, timeout),
+                    responseQueue
+                );
+                if(threadContext != null){
+                    asynchContext.putThreadContextAll(threadContext);
+                }
+                parallelRequestQueueHandlerContainer.push(asynchContext);
+            }
+            for(int i = 0; i < sharedContextArray.length; i++){
+                AsynchContext asynchContext = (AsynchContext)responseQueue.get();
+                if(asynchContext == null){
+                    break;
+                }else{
+                    try{
+                        asynchContext.checkError();
+                    }catch(SharedContextSendException e){
+                        throw e;
+                    }catch(SharedContextTimeoutException e){
+                        throw e;
+                    }catch(Error e){
+                        throw e;
+                    }catch(Throwable th){
+                        // 起きないはず
+                        throw new SharedContextSendException(th);
+                    }
+                    Set ret = (Set)asynchContext.getOutput();
+                    if(ret != null){
+                        if(result == null){
+                            result = new HashSet();
+                        }
+                        result.addAll(ret);
+                    }
+                }
+            }
+        }
+        return result;
     }
     
     public Object getLockOwner(Object key){
@@ -1163,9 +1501,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             map.put(entry.getKey(), entry.getValue());
         }
         
+        entries = distMap.entrySet().iterator();
         if(parallelRequestQueueHandlerContainer == null){
             int completed = 0;
-            entries = distMap.entrySet().iterator();
             while(entries.hasNext()){
                 Map.Entry entry = (Map.Entry)entries.next();
                 if(timeout > 0){
@@ -1194,6 +1532,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     new PutAllParallelRequest((SharedContext)entry.getKey(), (Map)entry.getValue(), timeout),
                     responseQueue
                 );
+                if(threadContext != null){
+                    asynchContext.putThreadContextAll(threadContext);
+                }
                 parallelRequestQueueHandlerContainer.push(asynchContext);
             }
             for(int i = 0; i < sharedContextArray.length; i++){
@@ -1260,6 +1601,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     new PutAllAsynchParallelRequest((SharedContext)entry.getKey(), (Map)entry.getValue()),
                     responseQueue
                 );
+                if(threadContext != null){
+                    asynchContext.putThreadContextAll(threadContext);
+                }
                 parallelRequestQueueHandlerContainer.push(asynchContext);
             }
             for(int i = 0; i < sharedContextArray.length; i++){
@@ -1288,9 +1632,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     
     public void clear(long timeout) throws SharedContextSendException, SharedContextTimeoutException{
         if(parallelRequestQueueHandlerContainer == null){
+            long start = System.currentTimeMillis();
+            final boolean isNoTimeout = timeout <= 0;
             for(int i = 0; i < sharedContextArray.length; i++){
-                long start = System.currentTimeMillis();
-                final boolean isNoTimeout = timeout <= 0;
                 timeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
                 if(!isNoTimeout && timeout < 0){
                     throw new SharedContextTimeoutException("There is a node that is not possible yet clear. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
@@ -1310,6 +1654,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     new ClearParallelRequest(sharedContextArray[i], timeout),
                     responseQueue
                 );
+                if(threadContext != null){
+                    asynchContext.putThreadContextAll(threadContext);
+                }
                 parallelRequestQueueHandlerContainer.push(asynchContext);
             }
             for(int i = 0; i < sharedContextArray.length; i++){
@@ -1358,6 +1705,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     new ClearAsynchParallelRequest(sharedContextArray[i]),
                     responseQueue
                 );
+                if(threadContext != null){
+                    asynchContext.putThreadContextAll(threadContext);
+                }
                 parallelRequestQueueHandlerContainer.push(asynchContext);
             }
             for(int i = 0; i < sharedContextArray.length; i++){
@@ -1386,8 +1736,14 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     
     public void analyzeIndex(String name, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
         if(parallelRequestQueueHandlerContainer == null){
+            long start = System.currentTimeMillis();
+            final boolean isNoTimeout = timeout <= 0;
             for(int i = 0; i < sharedContextArray.length; i++){
-                sharedContextArray[i].analyzeIndex(name);
+                timeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
+                if(!isNoTimeout && timeout < 0){
+                    throw new SharedContextTimeoutException("There is a node that is not possible yet analyzeIndex. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
+                }
+                sharedContextArray[i].analyzeIndex(name, timeout);
             }
         }else{
             DefaultQueueService responseQueue = new DefaultQueueService();
@@ -1399,9 +1755,12 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             responseQueue.accept();
             for(int i = 0; i < sharedContextArray.length; i++){
                 AsynchContext asynchContext = new AsynchContext(
-                    new AnalyzeIndexParallelRequest(sharedContextArray[i], name),
+                    new AnalyzeIndexParallelRequest(sharedContextArray[i], name, timeout),
                     responseQueue
                 );
+                if(threadContext != null){
+                    asynchContext.putThreadContextAll(threadContext);
+                }
                 parallelRequestQueueHandlerContainer.push(asynchContext);
             }
             for(int i = 0; i < sharedContextArray.length; i++){
@@ -1439,9 +1798,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     public Object executeInterpretQuery(String query, Map variables, long timeout) throws EvaluateException, SharedContextSendException, SharedContextTimeoutException{
         List result = new ArrayList();
         if(parallelRequestQueueHandlerContainer == null){
+            long start = System.currentTimeMillis();
+            final boolean isNoTimeout = timeout <= 0;
             for(int i = 0; i < sharedContextArray.length; i++){
-                long start = System.currentTimeMillis();
-                final boolean isNoTimeout = timeout <= 0;
                 timeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
                 if(!isNoTimeout && timeout < 0){
                     throw new SharedContextTimeoutException("nodeSize=" + sharedContextArray.length + ", responseCount=" + i);
@@ -1461,6 +1820,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     new ExecuteInterpretQueryParallelRequest(sharedContextArray[i], query, variables, timeout),
                     responseQueue
                 );
+                if(threadContext != null){
+                    asynchContext.putThreadContextAll(threadContext);
+                }
                 parallelRequestQueueHandlerContainer.push(asynchContext);
             }
             for(int i = 0; i < sharedContextArray.length; i++){
@@ -1531,9 +1893,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     public Set keySet(long timeout) throws SharedContextSendException, SharedContextTimeoutException{
         Set result = new HashSet();
         if(parallelRequestQueueHandlerContainer == null){
+            long start = System.currentTimeMillis();
+            final boolean isNoTimeout = timeout <= 0;
             for(int i = 0; i < sharedContextArray.length; i++){
-                long start = System.currentTimeMillis();
-                final boolean isNoTimeout = timeout <= 0;
                 timeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
                 if(!isNoTimeout && timeout < 0){
                     throw new SharedContextTimeoutException("nodeSize=" + sharedContextArray.length + ", responseCount=" + i);
@@ -1553,6 +1915,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     new KeySetParallelRequest(sharedContextArray[i], timeout),
                     responseQueue
                 );
+                if(threadContext != null){
+                    asynchContext.putThreadContextAll(threadContext);
+                }
                 parallelRequestQueueHandlerContainer.push(asynchContext);
             }
             for(int i = 0; i < sharedContextArray.length; i++){
@@ -1594,9 +1959,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     public int size(long timeout) throws SharedContextSendException, SharedContextTimeoutException{
         int result = 0;
         if(parallelRequestQueueHandlerContainer == null){
+            long start = System.currentTimeMillis();
+            final boolean isNoTimeout = timeout <= 0;
             for(int i = 0; i < sharedContextArray.length; i++){
-                long start = System.currentTimeMillis();
-                final boolean isNoTimeout = timeout <= 0;
                 timeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
                 if(!isNoTimeout && timeout < 0){
                     throw new SharedContextTimeoutException("nodeSize=" + sharedContextArray.length + ", responseCount=" + i);
@@ -1616,6 +1981,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     new SizeParallelRequest(sharedContextArray[i], timeout),
                     responseQueue
                 );
+                if(threadContext != null){
+                    asynchContext.putThreadContextAll(threadContext);
+                }
                 parallelRequestQueueHandlerContainer.push(asynchContext);
             }
             for(int i = 0; i < sharedContextArray.length; i++){
@@ -1676,9 +2044,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     
     public boolean containsValue(Object value, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
         if(parallelRequestQueueHandlerContainer == null){
+            long start = System.currentTimeMillis();
+            final boolean isNoTimeout = timeout <= 0;
             for(int i = 0; i < sharedContextArray.length; i++){
-                long start = System.currentTimeMillis();
-                final boolean isNoTimeout = timeout <= 0;
                 timeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
                 if(!isNoTimeout && timeout < 0){
                     throw new SharedContextTimeoutException("nodeSize=" + sharedContextArray.length + ", responseCount=" + i);
@@ -1700,6 +2068,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     new ContainsValueParallelRequest(sharedContextArray[i], value, timeout),
                     responseQueue
                 );
+                if(threadContext != null){
+                    asynchContext.putThreadContextAll(threadContext);
+                }
                 parallelRequestQueueHandlerContainer.push(asynchContext);
             }
             for(int i = 0; i < sharedContextArray.length; i++){
@@ -1827,6 +2198,57 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         return nodeIndex >= 0 ? sharedContextArray[nodeIndex].isMain() : false;
     }
     
+    public void healthCheck(boolean isContainsClient, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+        if(parallelRequestQueueHandlerContainer == null){
+            long start = System.currentTimeMillis();
+            final boolean isNoTimeout = timeout <= 0;
+            for(int i = 0; i < sharedContextArray.length; i++){
+                timeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
+                if(!isNoTimeout && timeout < 0){
+                    throw new SharedContextTimeoutException("nodeSize=" + sharedContextArray.length + ", responseCount=" + i);
+                }
+                sharedContextArray[i].healthCheck(isContainsClient, timeout);
+            }
+        }else{
+            DefaultQueueService responseQueue = new DefaultQueueService();
+            try{
+                responseQueue.create();
+                responseQueue.start();
+            }catch(Exception e){
+            }
+            responseQueue.accept();
+            for(int i = 0; i < sharedContextArray.length; i++){
+                AsynchContext asynchContext = new AsynchContext(
+                    new HealthCheckParallelRequest(sharedContextArray[i], isContainsClient, timeout),
+                    responseQueue
+                );
+                if(threadContext != null){
+                    asynchContext.putThreadContextAll(threadContext);
+                }
+                parallelRequestQueueHandlerContainer.push(asynchContext);
+            }
+            for(int i = 0; i < sharedContextArray.length; i++){
+                AsynchContext asynchContext = (AsynchContext)responseQueue.get();
+                if(asynchContext == null){
+                    break;
+                }else{
+                    try{
+                        asynchContext.checkError();
+                    }catch(SharedContextSendException e){
+                        throw e;
+                    }catch(SharedContextTimeoutException e){
+                        throw e;
+                    }catch(Error e){
+                        throw e;
+                    }catch(Throwable th){
+                        // 起きないはず
+                        throw new SharedContextSendException(th);
+                    }
+                }
+            }
+        }
+    }
+    
     public void addSharedContextUpdateListener(SharedContextUpdateListener listener){
         if(updateListeners == null){
             updateListeners = Collections.synchronizedList(new ArrayList());
@@ -1855,8 +2277,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     
     public String displayDistributeInfo() throws SharedContextSendException, SharedContextTimeoutException{
         DistributeGrid grid = new DistributeGrid();
+        Message message = null;
         try{
-            Message message = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_GET_DIST_INFO));
+            message = serverConnection.createMessage(subject, Integer.toString(DistributedSharedContextEvent.EVENT_GET_DIST_INFO));
             Set receiveClients = serverConnection.getReceiveClientIds(message);
             if(!isClient){
                 grid.addDistributeInfo(distributeInfo);
@@ -1950,6 +2373,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         rehash(((Long)event.value).longValue());
                         response = createResponseMessage(responseSubject, responseKey, null);
                     }catch(Throwable th){
+                        getLogger().write("DSCS_00003", new Object[]{getServiceNameObject()}, th);
                         response = createResponseMessage(responseSubject, responseKey, th);
                     }
                     try{
@@ -1982,6 +2406,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 }
             }
         };
+        rehashThread.setName(getServiceNameObject() + " Rehash thread " + sequence);
         rehashThread.start();
         return null;
     }
@@ -2152,8 +2577,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         if(serverConnection == null || clientSubject == null){
             return new HashSet();
         }
+        Message message = null;
         try{
-            Message message = serverConnection.createMessage(clientSubject, null);
+            message = serverConnection.createMessage(clientSubject, null);
             Set result = serverConnection.getReceiveClientIds(message);
             if(isClient){
                 result.add(getId());
@@ -2161,6 +2587,10 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             return result;
         }catch(MessageException e){
             return new HashSet();
+        }finally{
+            if(message != null){
+                message.recycle();
+            }
         }
     }
     
@@ -2168,8 +2598,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         if(serverConnection == null){
             return new HashSet();
         }
+        Message message = null;
         try{
-            Message message = serverConnection.createMessage(subject, null);
+            message = serverConnection.createMessage(subject, null);
             Set result = serverConnection.getReceiveClientIds(message);
             if(!isClient){
                 result.add(getId());
@@ -2177,6 +2608,10 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             return result;
         }catch(MessageException e){
             return new HashSet();
+        }finally{
+            if(message != null){
+                message.recycle();
+            }
         }
     }
     
@@ -2186,11 +2621,17 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     }
     public void onRemoveSubject(Client client, String subject, String[] keys){
         if(!getId().equals(client.getId()) && isMain() && subject.equals(this.subject)){
-            try{
-                rehash();
-            }catch(Throwable th){
-                getLogger().write("DSCS_00003", new Object[]{isClient ? clientSubject : subject}, th);
-            }
+            Thread thread = new Thread(){
+                public void run(){
+                    try{
+                        rehash();
+                    }catch(Throwable th){
+                        getLogger().write("DSCS_00003", new Object[]{getServiceNameObject()}, th);
+                    }
+                }
+            };
+            thread.setName(getServiceNameObject() + "Rehash thread on remove subject " + subject);
+            thread.start();
         }
     }
     public void onStartReceive(Client client, long from){
@@ -2254,9 +2695,17 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         public DistributeInfo(){
         }
         
-        public DistributeInfo(Object id, int distributedSize){
+        public DistributeInfo(Object id, SharedContext[] contexts){
             this.id = id;
-            serverFlagArray = new boolean[distributedSize];
+            serverFlagArray = new boolean[contexts.length];
+            for(int i = 0; i < contexts.length; i++){
+                final boolean isClient = contexts[i].isClient();
+                if(isClient){
+                    setClient(i);
+                }else{
+                    setServer(i);
+                }
+            }
         }
         
         public Object getId(){
@@ -2303,11 +2752,11 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final boolean isClient = !isServer(i);
                 if(isClient != contexts[i].isClient()){
                     contexts[i].setClient(isClient);
-                    if(isClient){
-                        info.setClient(i);
-                    }else{
-                        info.setServer(i);
-                    }
+                }
+                if(isClient){
+                    info.setClient(i);
+                }else{
+                    info.setServer(i);
                 }
             }
         }
@@ -2594,13 +3043,15 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     protected class AnalyzeIndexParallelRequest extends SharedContextParallelRequest{
         
         private String name;
+        private long timeout;
         
-        public AnalyzeIndexParallelRequest(SharedContext context, String name){
+        public AnalyzeIndexParallelRequest(SharedContext context, String name, long timeout){
             super(context);
             this.name = name;
+            this.timeout = timeout;
         }
         public Object execute() throws SharedContextIllegalIndexException, SharedContextSendException, SharedContextTimeoutException{
-            context.analyzeIndex(name);
+            context.analyzeIndex(name, timeout);
             return null;
         }
     }
@@ -2663,12 +3114,67 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         }
     }
     
+    protected class HealthCheckParallelRequest extends SharedContextParallelRequest{
+        
+        private long timeout;
+        private boolean isContainsClient;
+        
+        public HealthCheckParallelRequest(SharedContext context, boolean isContainsClient, long timeout){
+            super(context);
+            this.isContainsClient = isContainsClient;
+            this.timeout = timeout;
+        }
+        public Object execute() throws SharedContextIllegalIndexException, SharedContextSendException, SharedContextTimeoutException{
+            context.healthCheck(isContainsClient, timeout);
+            return null;
+        }
+    }
+    
+    protected class LocksParallelRequest extends SharedContextParallelRequest{
+        
+        private Set keys;
+        private long timeout;
+        private boolean ifAcquireable;
+        private boolean ifExist;
+        
+        public LocksParallelRequest(SharedContext context, Set keys, boolean ifAcquireable, boolean ifExist, long timeout){
+            super(context);
+            this.keys = keys;
+            this.ifAcquireable = ifAcquireable;
+            this.ifExist = ifExist;
+            this.timeout = timeout;
+        }
+        public Object execute() throws SharedContextIllegalIndexException, SharedContextSendException, SharedContextTimeoutException{
+            return context.locks(keys, ifAcquireable, ifExist, timeout) ? Boolean.TRUE : Boolean.FALSE;
+        }
+    }
+    
+    protected class UnlocksParallelRequest extends SharedContextParallelRequest{
+        
+        private Set keys;
+        private boolean force;
+        private long timeout;
+        
+        public UnlocksParallelRequest(SharedContext context, Set keys, boolean force, long timeout){
+            super(context);
+            this.keys = keys;
+            this.force = force;
+            this.timeout = timeout;
+        }
+        public Object execute() throws SharedContextIllegalIndexException, SharedContextSendException, SharedContextTimeoutException{
+            return context.unlocks(keys, force, timeout);
+        }
+    }
+    
     protected class ParallelRequestQueueHandler implements QueueHandler{
         public void handleDequeuedObject(Object obj) throws Throwable{
             if(obj == null){
                 return;
             }
             AsynchContext ac = (AsynchContext)obj;
+            if(threadContext != null){
+                ac.applyThreadContext(threadContext);
+            }
             ac.setOutput(
                 ((ParallelRequest)ac.getInput()).execute()
             );
@@ -2912,6 +3418,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchKeyParallelRequest(views[i], timeout, indexName, propNames),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -2969,6 +3478,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchNullParallelRequest(views[i], timeout, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -3026,6 +3538,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchNotNullParallelRequest(views[i], timeout, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -3092,6 +3607,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchByParallelRequest(views[i], timeout, value, indexName, propNames),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -3160,6 +3678,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchInParallelRequest(views[i], timeout, indexName, propNames, values),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -3228,6 +3749,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchByPropertyParallelRequest(views[i], timeout, prop, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -3294,6 +3818,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchInPropertyParallelRequest(views[i], timeout, indexName, propName, props),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -3358,6 +3885,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchByPropertyMapParallelRequest(views[i], timeout, props, indexName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -3424,6 +3954,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchInPropertyMapParallelRequest(views[i], timeout, indexName, props),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -3492,6 +4025,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchFromParallelRequest(views[i], timeout, fromValue, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -3560,6 +4096,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchFromPropertyParallelRequest(views[i], timeout, fromProp, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -3626,6 +4165,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchToParallelRequest(views[i], timeout, toValue, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -3694,6 +4236,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchToPropertyParallelRequest(views[i], timeout, toProp, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -3762,6 +4307,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchRangeParallelRequest(views[i], timeout, fromValue, toValue, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -3832,6 +4380,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchRangePropertyParallelRequest(views[i], timeout, fromProp, toProp, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -3903,6 +4454,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchFromParallelRequest(views[i], timeout, fromValue, inclusive, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -3973,6 +4527,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchFromPropertyParallelRequest(views[i], timeout, fromProp, inclusive, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -4041,6 +4598,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchToParallelRequest(views[i], timeout, toValue, inclusive, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -4111,6 +4671,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchToPropertyParallelRequest(views[i], timeout, toProp, inclusive, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -4183,6 +4746,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchRangeParallelRequest(views[i], timeout, fromValue, fromInclusive, toValue, toInclusive, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -4257,6 +4823,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                         new SearchRangePropertyParallelRequest(views[i], timeout, fromProp, fromInclusive, toProp, toInclusive, indexName, propName),
                         responseQueue
                     );
+                    if(threadContext != null){
+                        asynchContext.putThreadContextAll(threadContext);
+                    }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
                 for(int i = 0; i < sharedContextArray.length; i++){
@@ -4490,13 +5059,6 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             this.propName = propName;
         }
         
-/*
-        public Object execute() throws IndexNotFoundException, IndexPropertyAccessException, SharedContextSendException, SharedContextTimeoutException{
-            return view.searchFrom(timeout, fromValue, indexName, propName);
-        }
-*/
-        
-
         private boolean inclusive = true;
         
         public SearchFromParallelRequest(SharedContextView view, long timeout, Object fromValue, boolean inclusive, String indexName, String propName){
@@ -4525,13 +5087,6 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             this.propName = propName;
         }
         
-/*
-        public Object execute() throws IndexNotFoundException, SharedContextSendException, SharedContextTimeoutException{
-            return view.searchFromProperty(timeout, fromProp, indexName, propName);
-        }
-*/
-        
-
         private boolean inclusive;
         
         public SearchFromPropertyParallelRequest(SharedContextView view, long timeout, Object fromProp, boolean inclusive, String indexName, String propName){
@@ -4560,13 +5115,6 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             this.propName = propName;
         }
         
-/*
-        public Object execute() throws IndexNotFoundException, IndexPropertyAccessException, SharedContextSendException, SharedContextTimeoutException{
-            return view.searchTo(timeout, toValue, indexName, propName);
-        }
-*/
-        
-
         private boolean inclusive;
         
         public SearchToParallelRequest(SharedContextView view, long timeout, Object toValue, boolean inclusive, String indexName, String propName){
@@ -4595,13 +5143,6 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             this.propName = propName;
         }
         
-/*
-        public Object execute() throws IndexNotFoundException, SharedContextSendException, SharedContextTimeoutException{
-            return view.searchToProperty(timeout, toProp, indexName, propName);
-        }
-*/
-        
-
         private boolean inclusive;
         
         public SearchToPropertyParallelRequest(SharedContextView view, long timeout, Object toProp, boolean inclusive, String indexName, String propName){
@@ -4630,13 +5171,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             this.indexName = indexName;
             this.propName = propName;
         }
-/*
-        public Object execute() throws IndexNotFoundException, IndexPropertyAccessException, SharedContextSendException, SharedContextTimeoutException{
-            return view.searchRange(timeout, fromValue, toValue, indexName, propName);
-        }
-*/
         
-
         private boolean fromInclusive;
         private boolean toInclusive;
         
@@ -4667,13 +5202,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             this.indexName = indexName;
             this.propName = propName;
         }
-/*
-        public Object execute() throws IndexNotFoundException, IndexPropertyAccessException, SharedContextSendException, SharedContextTimeoutException{
-            return view.searchRangeProperty(timeout, fromProp, toProp, indexName, propName);
-        }
-*/
         
-
         private boolean fromInclusive;
         private boolean toInclusive;
         

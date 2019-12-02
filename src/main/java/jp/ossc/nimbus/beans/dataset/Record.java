@@ -77,6 +77,11 @@ public class Record implements Externalizable, Cloneable, Map{
     protected RecordSchema recordSchema;
     
     /**
+     * 表層的なレコードスキーマ。<p>
+     */
+    protected RecordSchema superficialRecordSchema;
+    
+    /**
      * プロパティ値を格納するマップ。<p>
      * キーはプロパティ名、値はプロパティ値。<br>
      */
@@ -91,6 +96,8 @@ public class Record implements Externalizable, Cloneable, Map{
      * レコードリストに格納した際の格納先のリスト。<p>
      */
     protected RecordList recordList;
+    
+    protected DataSet dataSet;
     
     /**
      * 未定義のレコードを生成する。<p>
@@ -160,7 +167,102 @@ public class Record implements Externalizable, Cloneable, Map{
      * @return レコードスキーマ
      */
     public RecordSchema getRecordSchema(){
-        return recordSchema;
+        return getSuperficialRecordSchema() == null ? recordSchema : getSuperficialRecordSchema();
+    }
+    
+    /**
+     * 表層的なレコードスキーマを取得する。<p>
+     *
+     * @return 表層的なレコードスキーマ
+     */
+    protected RecordSchema getSuperficialRecordSchema(){
+        return recordList == null ? superficialRecordSchema : recordList.getSuperficialRecordSchema();
+    }
+    
+    /**
+     * 表層的なプロパティを設定する。<p>
+     * {@link #setSuperficialProperties(String[], boolean) setSuperficialProperties(propertyNames, true)}と同じ。<br>
+     *
+     * @param propertyNames 表層的に見せたいプロパティ名の配列。nullを指定すると、クリアする
+     * @exception PropertySchemaDefineException プロパティのスキーマ定義に失敗した場合
+     */
+    public void setSuperficialProperties(String[] propertyNames) throws PropertySchemaDefineException{
+        setSuperficialProperties(propertyNames, true);
+    }
+    
+    /**
+     * 表層的なプロパティを設定する。<p>
+     * 表層的なプロパティ以外のプロパティは、参照及び設定できなくなる。<br>
+     *
+     * @param propertyNames 表層的に見せたいプロパティ名の配列。nullを指定すると、クリアする
+     * @param isIgnoreUnknown trueの場合、存在しないプロパティを指定された場合に、無視する。falseの場合は、例外をthrowする
+     * @exception PropertySchemaDefineException プロパティのスキーマ定義に失敗した場合
+     */
+    public void setSuperficialProperties(String[] propertyNames, boolean isIgnoreUnknown) throws PropertySchemaDefineException{
+        if(recordSchema == null){
+            throw new PropertySchemaDefineException("Schema is undefined.");
+        }
+        if(propertyNames == null){
+            setSuperficialRecordSchema(null);
+        }else{
+            setSuperficialRecordSchema(recordSchema.createSuperficialRecordSchema(propertyNames, isIgnoreUnknown));
+        }
+    }
+    
+    /**
+     * 表層的なプロパティを設定する。<p>
+     * {@link #setSuperficialProperties(int[], boolean) setSuperficialProperties(propertyIndexes, true)}と同じ。<br>
+     *
+     * @param propertyIndexes 表層的に見せたいプロパティのインデックス配列。nullを指定すると、クリアする
+     * @exception PropertySchemaDefineException プロパティのスキーマ定義に失敗した場合
+     */
+    public void setSuperficialProperties(int[] propertyIndexes) throws PropertySchemaDefineException{
+        setSuperficialProperties(propertyIndexes, true);
+    }
+    
+    /**
+     * 表層的なプロパティを設定する。<p>
+     * 表層的なプロパティ以外のプロパティは、参照及び設定できなくなる。<br>
+     *
+     * @param propertyIndexes 表層的に見せたいプロパティのインデックス配列。nullを指定すると、クリアする
+     * @param isIgnoreUnknown trueの場合、存在しないプロパティを指定された場合に、無視する。falseの場合は、例外をthrowする
+     * @exception PropertySchemaDefineException プロパティのスキーマ定義に失敗した場合
+     */
+    public void setSuperficialProperties(int[] propertyIndexes, boolean isIgnoreUnknown) throws PropertySchemaDefineException{
+        if(recordSchema == null){
+            throw new PropertySchemaDefineException("Schema is undefined.");
+        }
+        if(propertyIndexes == null){
+            setSuperficialRecordSchema(null);
+        }else{
+            setSuperficialRecordSchema(recordSchema.createSuperficialRecordSchema(propertyIndexes, isIgnoreUnknown));
+        }
+    }
+    
+    /**
+     * 表層的なレコードスキーマを設定する。<p>
+     *
+     * @param schema 表層的なレコードスキーマ
+     */
+    protected void setSuperficialRecordSchema(RecordSchema schema){
+        superficialRecordSchema = schema;
+    }
+    
+    /**
+     * 表層的なプロパティのインデックスから、実質的なプロパティのインデックスを取得する。<p>
+     *
+     * @param index 表層的なプロパティのインデックス
+     * @return 実質的なプロパティのインデックス
+     */
+    protected int getSubstantialIndex(int index){
+        if(getSuperficialRecordSchema() == null || recordSchema == null){
+            return index;
+        }
+        PropertySchema propSchema = getSuperficialRecordSchema().getPropertySchema(index);
+        if(propSchema == null){
+            return -1;
+        }
+        return recordSchema.getPropertyIndex(propSchema.getName());
     }
     
     /**
@@ -263,6 +365,37 @@ public class Record implements Externalizable, Cloneable, Map{
     }
     
     /**
+     * 親となるデータセットを取得する。<p>
+     *
+     * @return データセット
+     */
+    public DataSet getDataSet(){
+        return dataSet;
+    }
+    
+    /**
+     * 親となるデータセットを設定する。<p>
+     *
+     * @param ds データセット
+     */
+    protected void setDataSet(DataSet ds){
+        if(dataSet != ds){
+            dataSet = ds;
+            if(values != null && values.length > 0){
+                for(int i = 0; i < values.length; i ++){
+                    if(values[i] != null){
+                        if(values[i] instanceof Record){
+                            ((Record)values[i]).setDataSet(ds);
+                        }else if(values[i] instanceof RecordList){
+                            ((RecordList)values[i]).setDataSet(ds);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    /**
      * 指定された名前のプロパティを設定する。<p>
      *
      * @param name プロパティ名
@@ -271,15 +404,14 @@ public class Record implements Externalizable, Cloneable, Map{
      */
     public void setProperty(String name, Object val)
      throws PropertySetException{
-        if(recordSchema == null){
+        if(getRecordSchema() == null){
             throw new PropertySetException(null, "Schema is not initialized.");
         }
-        final PropertySchema propertySchema
-             = recordSchema.getPropertySchema(name);
-        if(propertySchema == null){
-            throw new PropertySetException(null, "No such property : " + name);
+        final int index = getRecordSchema().getPropertyIndex(name);
+        if(index == -1){
+            throw new PropertyGetException(null, "No such property : " + name);
         }
-        setProperty(recordSchema.getPropertyIndex(name), val);
+        setProperty(index, val);
     }
     
     /**
@@ -292,11 +424,11 @@ public class Record implements Externalizable, Cloneable, Map{
     public void setProperty(int index, Object val)
      throws PropertySetException{
         
-        if(recordSchema == null){
+        if(getRecordSchema() == null){
             throw new PropertySetException(null, "Schema is not initialized.");
         }
         final PropertySchema propertySchema
-             = recordSchema.getPropertySchema(index);
+             = getRecordSchema().getPropertySchema(index);
         if(propertySchema == null){
             throw new PropertySetException(null, "No such property : " + index);
         }
@@ -311,7 +443,7 @@ public class Record implements Externalizable, Cloneable, Map{
                             }
                         }
                     }
-                    values[index] = propertySchema.set(val);
+                    values[getSubstantialIndex(index)] = propertySchema.set(val);
                     recordList.indexManager.add(this);
                 }
             }else{
@@ -323,7 +455,7 @@ public class Record implements Externalizable, Cloneable, Map{
                         }
                     }
                 }
-                values[index] = propertySchema.set(val);
+                values[getSubstantialIndex(index)] = propertySchema.set(val);
                 recordList.indexManager.add(this);
             }
         }else{
@@ -334,7 +466,7 @@ public class Record implements Externalizable, Cloneable, Map{
                     }
                 }
             }
-            values[index] = propertySchema.set(val);
+            values[getSubstantialIndex(index)] = propertySchema.set(val);
         }
     }
     
@@ -347,10 +479,14 @@ public class Record implements Externalizable, Cloneable, Map{
      */
     public void setProperty(String name, boolean val)
      throws PropertySetException{
-        if(recordSchema == null){
+        if(getRecordSchema() == null){
             throw new PropertySetException(null, "Schema is not initialized.");
         }
-        setProperty(recordSchema.getPropertyIndex(name), val);
+        final int index = getRecordSchema().getPropertyIndex(name);
+        if(index == -1){
+            throw new PropertyGetException(null, "No such property : " + name);
+        }
+        setProperty(index, val);
     }
     
     /**
@@ -374,10 +510,14 @@ public class Record implements Externalizable, Cloneable, Map{
      */
     public void setProperty(String name, byte val)
      throws PropertySetException{
-        if(recordSchema == null){
+        if(getRecordSchema() == null){
             throw new PropertySetException(null, "Schema is not initialized.");
         }
-        setProperty(recordSchema.getPropertyIndex(name), val);
+        final int index = getRecordSchema().getPropertyIndex(name);
+        if(index == -1){
+            throw new PropertyGetException(null, "No such property : " + name);
+        }
+        setProperty(index, val);
     }
     
     /**
@@ -401,10 +541,14 @@ public class Record implements Externalizable, Cloneable, Map{
      */
     public void setProperty(String name, char val)
      throws PropertySetException{
-        if(recordSchema == null){
+        if(getRecordSchema() == null){
             throw new PropertySetException(null, "Schema is not initialized.");
         }
-        setProperty(recordSchema.getPropertyIndex(name), val);
+        final int index = getRecordSchema().getPropertyIndex(name);
+        if(index == -1){
+            throw new PropertyGetException(null, "No such property : " + name);
+        }
+        setProperty(index, val);
     }
     
     /**
@@ -428,10 +572,14 @@ public class Record implements Externalizable, Cloneable, Map{
      */
     public void setProperty(String name, short val)
      throws PropertySetException{
-        if(recordSchema == null){
+        if(getRecordSchema() == null){
             throw new PropertySetException(null, "Schema is not initialized.");
         }
-        setProperty(recordSchema.getPropertyIndex(name), val);
+        final int index = getRecordSchema().getPropertyIndex(name);
+        if(index == -1){
+            throw new PropertyGetException(null, "No such property : " + name);
+        }
+        setProperty(index, val);
     }
     
     /**
@@ -455,10 +603,14 @@ public class Record implements Externalizable, Cloneable, Map{
      */
     public void setProperty(String name, int val)
      throws PropertySetException{
-        if(recordSchema == null){
+        if(getRecordSchema() == null){
             throw new PropertySetException(null, "Schema is not initialized.");
         }
-        setProperty(recordSchema.getPropertyIndex(name), val);
+        final int index = getRecordSchema().getPropertyIndex(name);
+        if(index == -1){
+            throw new PropertyGetException(null, "No such property : " + name);
+        }
+        setProperty(index, val);
     }
     
     /**
@@ -482,10 +634,14 @@ public class Record implements Externalizable, Cloneable, Map{
      */
     public void setProperty(String name, long val)
      throws PropertySetException{
-        if(recordSchema == null){
+        if(getRecordSchema() == null){
             throw new PropertySetException(null, "Schema is not initialized.");
         }
-        setProperty(recordSchema.getPropertyIndex(name), val);
+        final int index = getRecordSchema().getPropertyIndex(name);
+        if(index == -1){
+            throw new PropertyGetException(null, "No such property : " + name);
+        }
+        setProperty(index, val);
     }
     
     /**
@@ -509,10 +665,14 @@ public class Record implements Externalizable, Cloneable, Map{
      */
     public void setProperty(String name, float val)
      throws PropertySetException{
-        if(recordSchema == null){
+        if(getRecordSchema() == null){
             throw new PropertySetException(null, "Schema is not initialized.");
         }
-        setProperty(recordSchema.getPropertyIndex(name), val);
+        final int index = getRecordSchema().getPropertyIndex(name);
+        if(index == -1){
+            throw new PropertyGetException(null, "No such property : " + name);
+        }
+        setProperty(index, val);
     }
     
     /**
@@ -536,10 +696,14 @@ public class Record implements Externalizable, Cloneable, Map{
      */
     public void setProperty(String name, double val)
      throws PropertySetException{
-        if(recordSchema == null){
+        if(getRecordSchema() == null){
             throw new PropertySetException(null, "Schema is not initialized.");
         }
-        setProperty(recordSchema.getPropertyIndex(name), val);
+        final int index = getRecordSchema().getPropertyIndex(name);
+        if(index == -1){
+            throw new PropertyGetException(null, "No such property : " + name);
+        }
+        setProperty(index, val);
     }
     
     /**
@@ -562,15 +726,14 @@ public class Record implements Externalizable, Cloneable, Map{
      * @exception PropertyGetException プロパティの取得に失敗した場合
      */
     public Object getProperty(String name) throws PropertyGetException{
-        if(recordSchema == null){
+        if(getRecordSchema() == null){
             throw new PropertyGetException(null, "Schema is not initialized.");
         }
-        final PropertySchema propertySchema
-             = recordSchema.getPropertySchema(name);
-        if(propertySchema == null){
+        final int index = getRecordSchema().getPropertyIndex(name);
+        if(index == -1){
             throw new PropertyGetException(null, "No such property : " + name);
         }
-        return getProperty(recordSchema.getPropertyIndex(name));
+        return getProperty(index);
     }
     
     /**
@@ -581,15 +744,15 @@ public class Record implements Externalizable, Cloneable, Map{
      * @exception PropertyGetException プロパティの取得に失敗した場合
      */
     public Object getProperty(int index) throws PropertyGetException{
-        if(recordSchema == null){
+        if(getRecordSchema() == null){
             throw new PropertyGetException(null, "Schema is not initialized.");
         }
         final PropertySchema propertySchema
-             = recordSchema.getPropertySchema(index);
+             = getRecordSchema().getPropertySchema(index);
         if(propertySchema == null){
             throw new PropertyGetException(null, "No such property : " + index);
         }
-        return propertySchema.get(values == null ? null : values[index]);
+        return propertySchema.get(values == null ? null : values[getSubstantialIndex(index)]);
     }
     
     /**
@@ -600,10 +763,14 @@ public class Record implements Externalizable, Cloneable, Map{
      * @exception PropertyGetException プロパティの取得に失敗した場合
      */
     public boolean getBooleanProperty(String name) throws PropertyGetException{
-        if(recordSchema == null){
+        if(getRecordSchema() == null){
             throw new PropertyGetException(null, "Schema is not initialized.");
         }
-        return getBooleanProperty(recordSchema.getPropertyIndex(name));
+        final int index = getRecordSchema().getPropertyIndex(name);
+        if(index == -1){
+            throw new PropertyGetException(null, "No such property : " + name);
+        }
+        return getBooleanProperty(index);
     }
     
     /**
@@ -629,7 +796,7 @@ public class Record implements Externalizable, Cloneable, Map{
             return ((Number)ret).intValue() == 0 ? false : true;
         }
         throw new PropertyGetException(
-            recordSchema.getPropertySchema(index),
+            getRecordSchema().getPropertySchema(index),
             "The type is unmatch. value=" + ret
         );
     }
@@ -642,10 +809,14 @@ public class Record implements Externalizable, Cloneable, Map{
      * @exception PropertyGetException プロパティの取得に失敗した場合
      */
     public byte getByteProperty(String name) throws PropertyGetException{
-        if(recordSchema == null){
+        if(getRecordSchema() == null){
             throw new PropertyGetException(null, "Schema is not initialized.");
         }
-        return getByteProperty(recordSchema.getPropertyIndex(name));
+        final int index = getRecordSchema().getPropertyIndex(name);
+        if(index == -1){
+            throw new PropertyGetException(null, "No such property : " + name);
+        }
+        return getByteProperty(index);
     }
     
     /**
@@ -670,7 +841,7 @@ public class Record implements Externalizable, Cloneable, Map{
             }
         }
         throw new PropertyGetException(
-            recordSchema.getPropertySchema(index),
+            getRecordSchema().getPropertySchema(index),
             "The type is unmatch. value=" + ret
         );
     }
@@ -683,10 +854,14 @@ public class Record implements Externalizable, Cloneable, Map{
      * @exception PropertyGetException プロパティの取得に失敗した場合
      */
     public short getShortProperty(String name) throws PropertyGetException{
-        if(recordSchema == null){
+        if(getRecordSchema() == null){
             throw new PropertyGetException(null, "Schema is not initialized.");
         }
-        return getShortProperty(recordSchema.getPropertyIndex(name));
+        final int index = getRecordSchema().getPropertyIndex(name);
+        if(index == -1){
+            throw new PropertyGetException(null, "No such property : " + name);
+        }
+        return getShortProperty(index);
     }
     
     /**
@@ -711,7 +886,7 @@ public class Record implements Externalizable, Cloneable, Map{
             }
         }
         throw new PropertyGetException(
-            recordSchema.getPropertySchema(index),
+            getRecordSchema().getPropertySchema(index),
             "The type is unmatch. value=" + ret
         );
     }
@@ -724,10 +899,14 @@ public class Record implements Externalizable, Cloneable, Map{
      * @exception PropertyGetException プロパティの取得に失敗した場合
      */
     public int getIntProperty(String name) throws PropertyGetException{
-        if(recordSchema == null){
+        if(getRecordSchema() == null){
             throw new PropertyGetException(null, "Schema is not initialized.");
         }
-        return getIntProperty(recordSchema.getPropertyIndex(name));
+        final int index = getRecordSchema().getPropertyIndex(name);
+        if(index == -1){
+            throw new PropertyGetException(null, "No such property : " + name);
+        }
+        return getIntProperty(index);
     }
     
     /**
@@ -752,7 +931,7 @@ public class Record implements Externalizable, Cloneable, Map{
             }
         }
         throw new PropertyGetException(
-            recordSchema.getPropertySchema(index),
+            getRecordSchema().getPropertySchema(index),
             "The type is unmatch. value=" + ret
         );
     }
@@ -765,10 +944,14 @@ public class Record implements Externalizable, Cloneable, Map{
      * @exception PropertyGetException プロパティの取得に失敗した場合
      */
     public long getLongProperty(String name) throws PropertyGetException{
-        if(recordSchema == null){
+        if(getRecordSchema() == null){
             throw new PropertyGetException(null, "Schema is not initialized.");
         }
-        return getLongProperty(recordSchema.getPropertyIndex(name));
+        final int index = getRecordSchema().getPropertyIndex(name);
+        if(index == -1){
+            throw new PropertyGetException(null, "No such property : " + name);
+        }
+        return getLongProperty(index);
     }
     
     /**
@@ -793,7 +976,7 @@ public class Record implements Externalizable, Cloneable, Map{
             }
         }
         throw new PropertyGetException(
-            recordSchema.getPropertySchema(index),
+            getRecordSchema().getPropertySchema(index),
             "The type is unmatch. value=" + ret
         );
     }
@@ -806,10 +989,14 @@ public class Record implements Externalizable, Cloneable, Map{
      * @exception PropertyGetException プロパティの取得に失敗した場合
      */
     public float getFloatProperty(String name) throws PropertyGetException{
-        if(recordSchema == null){
+        if(getRecordSchema() == null){
             throw new PropertyGetException(null, "Schema is not initialized.");
         }
-        return getFloatProperty(recordSchema.getPropertyIndex(name));
+        final int index = getRecordSchema().getPropertyIndex(name);
+        if(index == -1){
+            throw new PropertyGetException(null, "No such property : " + name);
+        }
+        return getFloatProperty(index);
     }
     
     /**
@@ -834,7 +1021,7 @@ public class Record implements Externalizable, Cloneable, Map{
             }
         }
         throw new PropertyGetException(
-            recordSchema.getPropertySchema(index),
+            getRecordSchema().getPropertySchema(index),
             "The type is unmatch. value=" + ret
         );
     }
@@ -847,10 +1034,14 @@ public class Record implements Externalizable, Cloneable, Map{
      * @exception PropertyGetException プロパティの取得に失敗した場合
      */
     public double getDoubleProperty(String name) throws PropertyGetException{
-        if(recordSchema == null){
+        if(getRecordSchema() == null){
             throw new PropertyGetException(null, "Schema is not initialized.");
         }
-        return getDoubleProperty(recordSchema.getPropertyIndex(name));
+        final int index = getRecordSchema().getPropertyIndex(name);
+        if(index == -1){
+            throw new PropertyGetException(null, "No such property : " + name);
+        }
+        return getDoubleProperty(index);
     }
     
     /**
@@ -875,7 +1066,7 @@ public class Record implements Externalizable, Cloneable, Map{
             }
         }
         throw new PropertyGetException(
-            recordSchema.getPropertySchema(index),
+            getRecordSchema().getPropertySchema(index),
             "The type is unmatch. value=" + ret
         );
     }
@@ -888,10 +1079,14 @@ public class Record implements Externalizable, Cloneable, Map{
      * @exception PropertyGetException プロパティの取得に失敗した場合
      */
     public String getStringProperty(String name) throws PropertyGetException{
-        if(recordSchema == null){
+        if(getRecordSchema() == null){
             throw new PropertyGetException(null, "Schema is not initialized.");
         }
-        return getStringProperty(recordSchema.getPropertyIndex(name));
+        final int index = getRecordSchema().getPropertyIndex(name);
+        if(index == -1){
+            throw new PropertyGetException(null, "No such property : " + name);
+        }
+        return getStringProperty(index);
     }
     
     /**
@@ -920,15 +1115,14 @@ public class Record implements Externalizable, Cloneable, Map{
      * @exception PropertyGetException プロパティの取得に失敗した場合
      */
     public Object getFormatProperty(String name) throws PropertyGetException{
-        if(recordSchema == null){
+        if(getRecordSchema() == null){
             throw new PropertyGetException(null, "Schema is not initialized.");
         }
-        final PropertySchema propertySchema
-             = recordSchema.getPropertySchema(name);
-        if(propertySchema == null){
+        final int index = getRecordSchema().getPropertyIndex(name);
+        if(index == -1){
             throw new PropertyGetException(null, "No such property : " + name);
         }
-        return getFormatProperty(recordSchema.getPropertyIndex(name));
+        return getFormatProperty(index);
     }
     
     /**
@@ -939,11 +1133,11 @@ public class Record implements Externalizable, Cloneable, Map{
      * @exception PropertyGetException プロパティの取得に失敗した場合
      */
     public Object getFormatProperty(int index) throws PropertyGetException{
-        if(recordSchema == null){
+        if(getRecordSchema() == null){
             throw new PropertyGetException(null, "Schema is not initialized.");
         }
         final PropertySchema propertySchema
-             = recordSchema.getPropertySchema(index);
+             = getRecordSchema().getPropertySchema(index);
         if(propertySchema == null){
             throw new PropertyGetException(null, "No such property : " + index);
         }
@@ -958,15 +1152,14 @@ public class Record implements Externalizable, Cloneable, Map{
      * @exception PropertySetException プロパティの設定に失敗した場合
      */
     public void setParseProperty(String name, Object val) throws PropertySetException{
-        if(recordSchema == null){
+        if(getRecordSchema() == null){
             throw new PropertySetException(null, "Schema is not initialized.");
         }
-        final PropertySchema propertySchema
-             = recordSchema.getPropertySchema(name);
-        if(propertySchema == null){
-            throw new PropertySetException(null, "No such property : " + name);
+        final int index = getRecordSchema().getPropertyIndex(name);
+        if(index == -1){
+            throw new PropertyGetException(null, "No such property : " + name);
         }
-        setParseProperty(recordSchema.getPropertyIndex(name), val);
+        setParseProperty(index, val);
     }
     
     /**
@@ -977,11 +1170,11 @@ public class Record implements Externalizable, Cloneable, Map{
      * @exception PropertySetException プロパティの設定に失敗した場合
      */
     public void setParseProperty(int index, Object val) throws PropertySetException{
-        if(recordSchema == null){
+        if(getRecordSchema() == null){
             throw new PropertySetException(null, "Schema is not initialized.");
         }
         final PropertySchema propertySchema
-             = recordSchema.getPropertySchema(index);
+             = getRecordSchema().getPropertySchema(index);
         if(propertySchema == null){
             throw new PropertySetException(null, "No such property : " + index);
         }
@@ -996,10 +1189,10 @@ public class Record implements Externalizable, Cloneable, Map{
      * @exception PropertyValidateException プロパティの検証時に例外が発生した場合
      */
     public boolean validate() throws PropertyGetException, PropertyValidateException{
-        if(recordSchema == null){
+        if(getRecordSchema() == null){
             throw new PropertyGetException(null, "Schema is not initialized.");
         }
-        final PropertySchema[] schemata = recordSchema.getPropertySchemata();
+        final PropertySchema[] schemata = getRecordSchema().getPropertySchemata();
         for(int i = 0; i < schemata.length; i++){
             if(!schemata[i].validate(getProperty(i))){
                 return false;
@@ -1017,15 +1210,14 @@ public class Record implements Externalizable, Cloneable, Map{
      * @exception PropertyValidateException プロパティの検証時に例外が発生した場合
      */
     public boolean validateProperty(String name) throws PropertyGetException, PropertyValidateException{
-        if(recordSchema == null){
+        if(getRecordSchema() == null){
             throw new PropertyGetException(null, "Schema is not initialized.");
         }
-        final PropertySchema propertySchema
-             = recordSchema.getPropertySchema(name);
-        if(propertySchema == null){
+        final int index = getRecordSchema().getPropertyIndex(name);
+        if(index == -1){
             throw new PropertyGetException(null, "No such property : " + name);
         }
-        return validateProperty(recordSchema.getPropertyIndex(name));
+        return validateProperty(index);
     }
     
     /**
@@ -1037,11 +1229,11 @@ public class Record implements Externalizable, Cloneable, Map{
      * @exception PropertyValidateException プロパティの検証時に例外が発生した場合
      */
     public boolean validateProperty(int index) throws PropertyGetException, PropertyValidateException{
-        if(recordSchema == null){
+        if(getRecordSchema() == null){
             throw new PropertyGetException(null, "Schema is not initialized.");
         }
         final PropertySchema propertySchema
-             = recordSchema.getPropertySchema(index);
+             = getRecordSchema().getPropertySchema(index);
         if(propertySchema == null){
             throw new PropertyGetException(null, "No such property : " + index);
         }
@@ -1110,8 +1302,8 @@ public class Record implements Externalizable, Cloneable, Map{
         buf.append('{');
         if(values != null){
             for(int i = 0; i < values.length; i++){
-                if(recordSchema != null){
-                    buf.append(recordSchema.getPropertyName(i));
+                if(getRecordSchema() != null){
+                    buf.append(getRecordSchema().getPropertyName(i));
                     buf.append('=');
                 }
                 buf.append(values[i]);
@@ -1126,7 +1318,7 @@ public class Record implements Externalizable, Cloneable, Map{
     
     // java.util.MapのJavaDoc
     public int size(){
-        return recordSchema == null ? 0 : recordSchema.getPropertySize();
+        return getRecordSchema() == null ? 0 : getRecordSchema().getPropertySize();
     }
     
     // java.util.MapのJavaDoc
@@ -1136,7 +1328,7 @@ public class Record implements Externalizable, Cloneable, Map{
     
     // java.util.MapのJavaDoc
     public boolean containsKey(Object key){
-        return recordSchema == null ? false : recordSchema.getPropertySchema(
+        return getRecordSchema() == null ? false : getRecordSchema().getPropertySchema(
             key == null ? (String)key : key.toString()
         ) != null;
     }
@@ -1146,10 +1338,11 @@ public class Record implements Externalizable, Cloneable, Map{
         if(values == null){
             return false;
         }
-        for(int i = 0; i < values.length; i++){
-            if(value == null &&  values[i] == null){
+        for(int i = 0, imax = size(); i < imax; i++){
+            Object val = getProperty(i);
+            if(value == null &&  val == null){
                 return true;
-            }else if(value != null && value.equals(values[i])){
+            }else if(value != null && value.equals(val)){
                 return true;
             }
         }
@@ -1252,10 +1445,6 @@ public class Record implements Externalizable, Cloneable, Map{
         }
         final Record record = (Record)o;
         
-        if(recordSchema != record.recordSchema){
-            return false;
-        }
-        
         if(values == record.values){
             return true;
         }
@@ -1279,9 +1468,6 @@ public class Record implements Externalizable, Cloneable, Map{
     // java.util.MapのJavaDoc
     public int hashCode(){
         int hashCode = 0;
-        if(schema != null){
-            hashCode += schema.hashCode();
-        }
         if(values != null){
             for(int i = 0; i < values.length; i++){
                 if(values[i] != null){
@@ -1300,9 +1486,9 @@ public class Record implements Externalizable, Cloneable, Map{
         
         public KeySet(){
             keys = new ArrayList();
-            if(recordSchema != null){
+            if(getRecordSchema() != null){
                 final PropertySchema[] schemata
-                     = recordSchema.getPropertySchemata();
+                     = getRecordSchema().getPropertySchemata();
                 for(int i = 0; i < schemata.length; i++){
                     keys.add(schemata[i].getName());
                 }
@@ -1371,6 +1557,10 @@ public class Record implements Externalizable, Cloneable, Map{
             return keys.hashCode();
         }
         
+        public String toString(){
+            return keys.toString();
+        }
+        
         protected class KeySetIterator implements Iterator, Serializable{
             
             private static final long serialVersionUID = -1219165095772883511L;
@@ -1398,9 +1588,9 @@ public class Record implements Externalizable, Cloneable, Map{
         
         public Values(){
             valueList = new ArrayList();
-            if(recordSchema != null){
+            if(getRecordSchema() != null){
                 final PropertySchema[] schemata
-                     = recordSchema.getPropertySchemata();
+                     = getRecordSchema().getPropertySchemata();
                 for(int i = 0; i < schemata.length; i++){
                     valueList.add(Record.this.getProperty(schemata[i].getName()));
                 }
@@ -1433,7 +1623,7 @@ public class Record implements Externalizable, Cloneable, Map{
             if(index == -1){
                 return false;
             }
-            return Record.this.remove(recordSchema.getPropertyName(index)) != null;
+            return Record.this.remove(getRecordSchema().getPropertyName(index)) != null;
         }
         public boolean containsAll(Collection c){
             return valueList.containsAll(c);
@@ -1473,6 +1663,10 @@ public class Record implements Externalizable, Cloneable, Map{
             return valueList.hashCode();
         }
         
+        public String toString(){
+            return valueList.toString();
+        }
+        
         protected class ValuesIterator implements Iterator, Serializable{
             
             private static final long serialVersionUID = 167532200775957747L;
@@ -1500,9 +1694,9 @@ public class Record implements Externalizable, Cloneable, Map{
         
         public EntrySet(){
             entries = new ArrayList();
-            if(recordSchema != null){
+            if(getRecordSchema() != null){
                 final PropertySchema[] schemata
-                     = recordSchema.getPropertySchemata();
+                     = getRecordSchema().getPropertySchemata();
                 for(int i = 0; i < schemata.length; i++){
                     entries.add(new Entry(schemata[i].getName()));
                 }
@@ -1574,6 +1768,10 @@ public class Record implements Externalizable, Cloneable, Map{
             return entries.hashCode();
         }
         
+        public String toString(){
+            return entries.toString();
+        }
+        
         protected class Entry implements Map.Entry, Serializable{
             
             private static final long serialVersionUID = 5572280646230618952L;
@@ -1635,6 +1833,16 @@ public class Record implements Externalizable, Cloneable, Map{
     
     protected void writeSchema(ObjectOutput out) throws IOException{
         out.writeObject(schema);
+        if(superficialRecordSchema == null){
+            out.writeObject(null);
+        }else{
+            PropertySchema[] propSchemata = superficialRecordSchema.getPropertySchemata();
+            String[] propNames = new String[propSchemata.length];
+            for(int i = 0; i < propNames.length; i++){
+                propNames[i] = propSchemata[i].getName();
+            }
+            out.writeObject(propNames);
+        }
     }
     
     protected void writeExternalValues(ObjectOutput out) throws IOException{
@@ -1650,6 +1858,10 @@ public class Record implements Externalizable, Cloneable, Map{
         schema = (String)in.readObject();
         if(schema != null){
             recordSchema = RecordSchema.getInstance(schema);
+        }
+        String[] propNames = (String[])in.readObject();
+        if(recordSchema != null && propNames != null){
+            superficialRecordSchema = recordSchema.createSuperficialRecordSchema(propNames, true);
         }
     }
     

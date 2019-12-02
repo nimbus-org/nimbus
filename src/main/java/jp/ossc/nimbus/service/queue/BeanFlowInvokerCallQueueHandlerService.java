@@ -324,12 +324,7 @@ public class BeanFlowInvokerCallQueueHandlerService extends ServiceBase
             asynchCtx.setOutput(output);
             asynchCtx.setInput(null);
             asynchCtx.clearThreadContext();
-            if(asynchCtx.getResponseQueue() != null){
-                asynchCtx.getResponseQueue().push(asynchCtx);
-            }else if(monitor != null && monitor instanceof BeanFlowMonitorImpl){
-                BeanFlowMonitorImpl monitorImpl = (BeanFlowMonitorImpl)monitor;
-                monitorImpl.removeAsynchContext((BeanFlowAsynchContext)asynchCtx);
-            }
+            asynchCtx.response();
         }
     }
 
@@ -358,19 +353,12 @@ public class BeanFlowInvokerCallQueueHandlerService extends ServiceBase
             if(obj instanceof AsynchContext){
                 AsynchContext asynchCtx = (AsynchContext)obj;
                 asynchCtx.setThrowable(th);
-                if(asynchCtx.getResponseQueue() != null){
-                    asynchCtx.getResponseQueue().push(asynchCtx);
-                }else if(asynchCtx instanceof BeanFlowAsynchContext){
-                    BeanFlowMonitorImpl monitor = (BeanFlowMonitorImpl)((BeanFlowAsynchContext)asynchCtx).getBeanFlowMonitor();
-                    if(monitor != null){
-                        monitor.removeAsynchContext((BeanFlowAsynchContext)asynchCtx);
-                    }
-                }
+                asynchCtx.setInput(null);
+                asynchCtx.clearThreadContext();
                 if(retryOverErrorLogMessageId != null){
                     getLogger().write(retryOverErrorLogMessageId, obj, th);
                 }
-                asynchCtx.setInput(null);
-                asynchCtx.clearThreadContext();
+                asynchCtx.response();
             }else{
                 if((th instanceof BeanFlowNotFoundException)
                      || (th instanceof NoSuchBeanFlowException)){

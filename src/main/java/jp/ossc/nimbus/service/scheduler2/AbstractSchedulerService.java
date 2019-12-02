@@ -41,7 +41,7 @@ import jp.ossc.nimbus.service.context.Context;
 import jp.ossc.nimbus.service.sequence.Sequence;
 import jp.ossc.nimbus.service.aop.interceptor.ThreadContextKey;
 import jp.ossc.nimbus.service.transaction.TransactionManagerFactory;
-import jp.ossc.nimbus.service.keepalive.ClusterService;
+import jp.ossc.nimbus.service.keepalive.Cluster;
 import jp.ossc.nimbus.service.system.Time;
 
 /**
@@ -86,11 +86,13 @@ public abstract class AbstractSchedulerService extends ServiceBase
     protected Sequence sequence;
     
     protected ServiceName clusterServiceName;
-    protected ClusterService cluster;
+    protected Cluster cluster;
     protected ClusterListener clusterListener;
     
     protected ServiceName timeServiceName;
     protected Time time;
+    
+    protected boolean isControlCluster = true;
     
     // AbstractSchedulerServiceMBeanのJavaDoc
     public void setScheduleTickerInterval(long interval){
@@ -191,6 +193,15 @@ public abstract class AbstractSchedulerService extends ServiceBase
         return timeServiceName;
     }
     
+    // AbstractSchedulerServiceMBeanのJavaDoc
+    public boolean isControlCluster(){
+        return isControlCluster;
+    }
+    // AbstractSchedulerServiceMBeanのJavaDoc
+    public void setControlCluster(boolean isControl){
+        isControlCluster = isControl;
+    }
+    
     /**
      * サービスの生成前処理を行う。<p>
      *
@@ -271,13 +282,12 @@ public abstract class AbstractSchedulerService extends ServiceBase
         scheduleTicker.start();
         
         if(clusterServiceName != null){
-            cluster = (ClusterService)ServiceManagerFactory.getServiceObject(clusterServiceName);
-            if(cluster.isJoin()){
-                throw new IllegalArgumentException("ClusterService already join.");
-            }
+            cluster = (Cluster)ServiceManagerFactory.getServiceObject(clusterServiceName);
             clusterListener = new ClusterListener();
             cluster.addClusterListener(clusterListener);
-            cluster.join();
+            if(isControlCluster && !cluster.isJoin()){
+                cluster.join();
+            }
         }else{
             scheduleTicker.resume();
         }
@@ -301,7 +311,9 @@ public abstract class AbstractSchedulerService extends ServiceBase
         if(cluster != null){
             cluster.removeClusterListener(clusterListener);
             clusterListener = null;
-            cluster.leave();
+            if(isControlCluster && cluster.isJoin()){
+                cluster.leave();
+            }
             cluster = null;
         }
         

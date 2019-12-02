@@ -52,6 +52,11 @@ public class DefaultServiceLoaderConfig implements ServiceLoaderConfig{
     }
     
     // ServiceLoaderConfigのJavaDoc
+    public boolean existsProperty(String name){
+        return properties.containsKey(name);
+    }
+    
+    // ServiceLoaderConfigのJavaDoc
     public String getProperty(String name){
         return properties.getProperty(name);
     }

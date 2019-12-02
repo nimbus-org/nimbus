@@ -112,16 +112,32 @@ public class DataSet implements java.io.Serializable, Cloneable{
     protected Map headerMap;
     
     /**
+     * 表層的なヘッダー名の集合。<p>
+     */
+    protected Set superficialHeaderNames;
+    
+    /**
      * レコードリストのマップ。<p>
      * キーはレコードリスト名、値は{@link RecordList レコードリスト}
      */
     protected Map recordListMap;
     
     /**
+     * 表層的なレコードリスト名の集合。<p>
+     */
+    protected Set superficialRecordListNames;
+    
+    /**
      * ネストされたレコードリストのスキーマのマップ。<p>
      * キーはレコードリスト名、値は{@link RecordSchema レコードスキーマ}
      */
     protected transient Map nestedRecordListMap;
+    
+    /**
+     * ネストされたレコードリストの表層的なスキーマのマップ。<p>
+     * キーはレコードリスト名、値は{@link RecordSchema レコードスキーマ}
+     */
+    protected transient Map superficialNestedRecordListMap;
     
     /**
      * ネストされたレコードリストのクラスのマップ。<p>
@@ -134,6 +150,12 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * キーはレコード名、値は{@link RecordSchema レコードスキーマ}
      */
     protected transient Map nestedRecordMap;
+    
+    /**
+     * ネストされたレコードの表層的なスキーマのマップ。<p>
+     * キーはレコード名、値は{@link RecordSchema レコードスキーマ}
+     */
+    protected transient Map superficialNestedRecordMap;
     
     /**
      * ネストされたレコードのクラスのマップ。<p>
@@ -223,7 +245,9 @@ public class DataSet implements java.io.Serializable, Cloneable{
      */
     protected Header createHeader(String name, String schema)
      throws PropertySchemaDefineException{
-        return new Header(name, schema);
+        Header header = new Header(name, schema);
+        header.setDataSet(this);
+        return header;
     }
     
     /**
@@ -236,7 +260,9 @@ public class DataSet implements java.io.Serializable, Cloneable{
      */
     protected Header createHeader(String name, RecordSchema schema)
      throws PropertySchemaDefineException{
-        return new Header(name, schema);
+        Header header = new Header(name, schema);
+        header.setDataSet(this);
+        return header;
     }
     
     /**
@@ -310,6 +336,7 @@ public class DataSet implements java.io.Serializable, Cloneable{
         if(headerMap == null){
             headerMap = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
         }
+        header.setDataSet(this);
         headerMap.put(name, header);
     }
     
@@ -345,7 +372,9 @@ public class DataSet implements java.io.Serializable, Cloneable{
      */
     protected RecordList createRecordList(String name, String schema)
      throws PropertySchemaDefineException{
-        return new RecordList(name, schema, isSynchronized);
+        RecordList list =  new RecordList(name, schema, isSynchronized);
+        list.setDataSet(this);
+        return list;
     }
     
     /**
@@ -358,7 +387,9 @@ public class DataSet implements java.io.Serializable, Cloneable{
      */
     protected RecordList createRecordList(String name, RecordSchema schema)
      throws PropertySchemaDefineException{
-        return new RecordList(name, schema, isSynchronized);
+        RecordList list =  new RecordList(name, schema, isSynchronized);
+        list.setDataSet(this);
+        return list;
     }
     
     /**
@@ -506,6 +537,7 @@ public class DataSet implements java.io.Serializable, Cloneable{
         if(recordListMap == null){
             recordListMap = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
         }
+        list.setDataSet(this);
         recordListMap.put(name, list);
     }
     
@@ -537,6 +569,23 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
+     * 指定した名前のネストした{@link RecordList レコードリスト}の表層的なスキーマを設定する。<p>
+     *
+     * @param name レコードリスト名
+     * @param schema スキーマ
+     */
+    public void setSuperficialNestedRecordListSchema(String name, RecordSchema schema){
+        
+        if(superficialNestedRecordListMap == null){
+            superficialNestedRecordListMap = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
+        }
+        superficialNestedRecordListMap.put(
+            name,
+            schema == null ? null : schema.getSchema()
+        );
+    }
+    
+    /**
      * 指定した名前のネストした{@link RecordList レコードリスト}のスキーマを取得する。<p>
      *
      * @param name レコードリスト名
@@ -547,7 +596,12 @@ public class DataSet implements java.io.Serializable, Cloneable{
         if(nestedRecordListMap == null){
             return null;
         }
-        final String schema = (String)nestedRecordListMap.get(name);
+        String schema = null;
+        if(superficialNestedRecordListMap != null && superficialNestedRecordListMap.containsKey(name)){
+            schema = (String)superficialNestedRecordListMap.get(name);
+        }else{
+            schema = (String)nestedRecordListMap.get(name);
+        }
         return schema == null ? null : RecordSchema.getInstance(schema);
     }
     
@@ -557,7 +611,8 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @return ネストしたレコードリスト名配列
      */
     public String[] getNestedRecordListSchemaNames(){
-        return nestedRecordListMap == null ? new String[0] : (String[])nestedRecordListMap.keySet().toArray(new String[nestedRecordListMap.size()]);
+        Map map = getNestedRecordListSchemaMap();
+        return (String[])map.keySet().toArray(new String[map.size()]);
     }
     
     /**
@@ -566,7 +621,8 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @return ネストしたレコードリストの数
      */
     public int getNestedRecordListSchemaSize(){
-        return nestedRecordListMap == null ? 0 : nestedRecordListMap.size();
+        Map map = getNestedRecordListSchemaMap();
+        return map == null ? 0 : map.size();
     }
     
     /**
@@ -575,10 +631,23 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @return ネストしたレコードリストのマップ。キーはレコードリスト名、値はスキーマ文字列
      */
     public Map getNestedRecordListSchemaMap(){
-        if(nestedRecordListMap == null){
-            nestedRecordListMap = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
+        Map result = new LinkedHashMap();
+        if(nestedRecordListMap != null){
+            Iterator names = nestedRecordListMap.keySet().iterator();
+            while(names.hasNext()){
+                String name = (String)names.next();
+                String schema = null;
+                if(superficialNestedRecordListMap != null && superficialNestedRecordListMap.containsKey(name)){
+                    schema = (String)superficialNestedRecordListMap.get(name);
+                }else{
+                    schema = (String)nestedRecordListMap.get(name);
+                }
+                if(schema != null){
+                    result.put(name, schema);
+                }
+            }
         }
-        return nestedRecordListMap;
+        return result;
     }
     
     /**
@@ -615,6 +684,23 @@ public class DataSet implements java.io.Serializable, Cloneable{
         nestedRecordMap.put(
             name,
             schema.getSchema()
+        );
+    }
+    
+    /**
+     * 指定した名前のネストした{@link Record レコード}の表層的なスキーマを設定する。<p>
+     *
+     * @param name レコード名
+     * @param schema スキーマ
+     */
+    public void setSuperficialNestedRecordSchema(String name, RecordSchema schema){
+        
+        if(superficialNestedRecordMap == null){
+            superficialNestedRecordMap = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
+        }
+        superficialNestedRecordMap.put(
+            name,
+            schema == null ? null : schema.getSchema()
         );
     }
     
@@ -664,7 +750,12 @@ public class DataSet implements java.io.Serializable, Cloneable{
         if(nestedRecordMap == null){
             return null;
         }
-        final String schema = (String)nestedRecordMap.get(name);
+        String schema = null;
+        if(superficialNestedRecordMap != null && superficialNestedRecordMap.containsKey(name)){
+            schema = (String)superficialNestedRecordMap.get(name);
+        }else{
+            schema = (String)nestedRecordMap.get(name);
+        }
         return schema == null ? null : RecordSchema.getInstance(schema);
     }
     
@@ -674,7 +765,8 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @return ネストしたレコード名配列
      */
     public String[] getNestedRecordSchemaNames(){
-        return nestedRecordMap == null ? new String[0] : (String[])nestedRecordMap.keySet().toArray(new String[nestedRecordMap.size()]);
+        Map map = getNestedRecordSchemaMap();
+        return (String[])map.keySet().toArray(new String[map.size()]);
     }
     
     /**
@@ -683,7 +775,8 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @return ネストしたレコードの数
      */
     public int getNestedRecordSchemaSize(){
-        return nestedRecordMap == null ? 0 : nestedRecordMap.size();
+        Map map = getNestedRecordSchemaMap();
+        return map.size();
     }
     
     /**
@@ -692,10 +785,23 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @return ネストしたレコードのマップ。キーはレコード名、値はスキーマ文字列
      */
     public Map getNestedRecordSchemaMap(){
-        if(nestedRecordMap == null){
-            nestedRecordMap = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
+        Map result = new LinkedHashMap();
+        if(nestedRecordMap != null){
+            Iterator names = nestedRecordMap.keySet().iterator();
+            while(names.hasNext()){
+                String name = (String)names.next();
+                String schema = null;
+                if(superficialNestedRecordMap != null && superficialNestedRecordMap.containsKey(name)){
+                    schema = (String)superficialNestedRecordMap.get(name);
+                }else{
+                    schema = (String)nestedRecordMap.get(name);
+                }
+                if(schema != null){
+                    result.put(name, schema);
+                }
+            }
         }
-        return nestedRecordMap;
+        return result;
     }
     
     /**
@@ -764,6 +870,29 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
+     * 表層的なヘッダを設定する。<p>
+     * 表層的なヘッダ以外のヘッダは、参照できなくなる。<br>
+     *
+     * @param names 表層的に見せたいヘッダ名の配列。nullを指定すると、クリアする
+     */
+    public void setSuperficialHeaders(String[] names){
+        if(superficialHeaderNames == null){
+            if(names == null){
+                return;
+            }
+            superficialHeaderNames = new HashSet();
+        }
+        if(names == null){
+            superficialHeaderNames = null;
+        }else{
+            superficialHeaderNames.clear();
+            for(int i = 0; i < names.length; i++){
+                superficialHeaderNames.add(names[i]);
+            }
+        }
+    }
+    
+    /**
      * 名前を持たない{@link Header ヘッダー}を取得する。<p>
      * {@link #getHeader(String) getHeader(null)}を呼び出すのと同じ。<br>
      *
@@ -780,6 +909,9 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @return ヘッダー
      */
     public Header getHeader(String name){
+        if(superficialHeaderNames != null && !superficialHeaderNames.contains(name)){
+            return null;
+        }
         return headerMap == null ? null : (Header)headerMap.get(name);
     }
     
@@ -789,7 +921,15 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @return ヘッダー名配列
      */
     public String[] getHeaderNames(){
-        return headerMap == null ? new String[0] : (String[])headerMap.keySet().toArray(new String[headerMap.size()]);
+        if(headerMap == null || (superficialHeaderNames != null && superficialHeaderNames.size() == 0)){
+            return new String[0];
+        }else if(superficialHeaderNames == null){
+            return (String[])headerMap.keySet().toArray(new String[headerMap.size()]);
+        }else{
+            List result = new ArrayList(headerMap.keySet());
+            result.retainAll(superficialHeaderNames);
+            return (String[])result.toArray(new String[result.size()]);
+        }
     }
     
     /**
@@ -798,7 +938,15 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @return ヘッダーの数
      */
     public int getHeaderSize(){
-        return headerMap == null ? 0 : headerMap.size();
+        if(headerMap == null || (superficialHeaderNames != null && superficialHeaderNames.size() == 0)){
+            return 0;
+        }else if(superficialHeaderNames == null){
+            return headerMap.size();
+        }else{
+            List result = new ArrayList(headerMap.keySet());
+            result.retainAll(superficialHeaderNames);
+            return result.size();
+        }
     }
     
     /**
@@ -810,7 +958,15 @@ public class DataSet implements java.io.Serializable, Cloneable{
         if(headerMap == null){
             headerMap = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
         }
-        return headerMap;
+        if(superficialHeaderNames != null && superficialHeaderNames.size() == 0){
+            return new LinkedHashMap();
+        }else if(superficialHeaderNames == null){
+            return headerMap;
+        }else{
+            Map result = new LinkedHashMap(headerMap);
+            result.keySet().retainAll(superficialHeaderNames);
+            return result;
+        }
     }
     
     /**
@@ -826,6 +982,7 @@ public class DataSet implements java.io.Serializable, Cloneable{
         if(header != null){
             header.setName(name);
         }
+        header.setDataSet(this);
         headerMap.put(name, header);
     }
     
@@ -838,7 +995,31 @@ public class DataSet implements java.io.Serializable, Cloneable{
         if(headerMap == null){
             headerMap = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
         }
+        header.setDataSet(this);
         headerMap.put(header.getName(), header);
+    }
+    
+    /**
+     * 表層的なレコードリストを設定する。<p>
+     * 表層的なレコードリスト以外のレコードリストは、参照できなくなる。<br>
+     *
+     * @param names 表層的に見せたいレコードリスト名の配列。nullを指定すると、クリアする
+     */
+    public void setSuperficialRecordLists(String[] names){
+        if(superficialRecordListNames == null){
+            if(names == null){
+                return;
+            }
+            superficialRecordListNames = new HashSet();
+        }
+        if(names == null){
+            superficialRecordListNames = null;
+        }else{
+            superficialRecordListNames.clear();
+            for(int i = 0; i < names.length; i++){
+                superficialRecordListNames.add(names[i]);
+            }
+        }
     }
     
     /**
@@ -858,6 +1039,9 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @return レコードリスト
      */
     public RecordList getRecordList(String name){
+        if(superficialRecordListNames != null && !superficialRecordListNames.contains(name)){
+            return null;
+        }
         return recordListMap == null ? null : (RecordList)recordListMap.get(name);
     }
     
@@ -867,7 +1051,15 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @return レコードリスト名配列
      */
     public String[] getRecordListNames(){
-        return recordListMap == null ? new String[0] : (String[])recordListMap.keySet().toArray(new String[recordListMap.size()]);
+        if(recordListMap == null || (superficialRecordListNames != null && superficialRecordListNames.size() == 0)){
+            return new String[0];
+        }else if(superficialRecordListNames == null){
+            return (String[])recordListMap.keySet().toArray(new String[recordListMap.size()]);
+        }else{
+            List result = new ArrayList(recordListMap.keySet());
+            result.retainAll(superficialRecordListNames);
+            return (String[])result.toArray(new String[result.size()]);
+        }
     }
     
     /**
@@ -876,7 +1068,15 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @return レコードリストの数
      */
     public int getRecordListSize(){
-        return recordListMap == null ? 0 : recordListMap.size();
+        if(recordListMap == null || (superficialRecordListNames != null && superficialRecordListNames.size() == 0)){
+            return 0;
+        }else if(superficialRecordListNames == null){
+            return recordListMap.size();
+        }else{
+            List result = new ArrayList(recordListMap.keySet());
+            result.retainAll(superficialRecordListNames);
+            return result.size();
+        }
     }
     
     /**
@@ -888,7 +1088,15 @@ public class DataSet implements java.io.Serializable, Cloneable{
         if(recordListMap == null){
             recordListMap = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
         }
-        return recordListMap;
+        if(superficialRecordListNames != null && superficialRecordListNames.size() == 0){
+            return new LinkedHashMap();
+        }else if(superficialRecordListNames == null){
+            return recordListMap;
+        }else{
+            Map result = new LinkedHashMap(recordListMap);
+            result.keySet().retainAll(superficialRecordListNames);
+            return result;
+        }
     }
     
     /**
@@ -900,6 +1108,7 @@ public class DataSet implements java.io.Serializable, Cloneable{
         if(recordListMap == null){
             recordListMap = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
         }
+        recList.setDataSet(this);
         recordListMap.put(recList.getName(), recList);
     }
     
@@ -911,7 +1120,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
      */
     public RecordList createNestedRecordList(String name){
         if(nestedRecordListMap == null
-             || !nestedRecordListMap.containsKey(name)){
+             || !nestedRecordListMap.containsKey(name)
+             || (superficialNestedRecordListMap != null
+                && superficialNestedRecordListMap.containsKey(name)
+                && superficialNestedRecordListMap.get(name) == null)
+        ){
             return null;
         }
         if(nestedRecordListClassMap != null){
@@ -929,10 +1142,14 @@ public class DataSet implements java.io.Serializable, Cloneable{
                 }
             }
         }
-        return createRecordList(
+        RecordList list = createRecordList(
             name,
             RecordSchema.getInstance((String)nestedRecordListMap.get(name))
         );
+        if(superficialNestedRecordListMap != null && superficialNestedRecordListMap.containsKey(name)){
+            list.setSuperficialRecordSchema(RecordSchema.getInstance((String)superficialNestedRecordListMap.get(name)));
+        }
+        return list;
     }
     
     /**
@@ -943,7 +1160,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
      */
     public Record createNestedRecord(String name){
         if(nestedRecordMap == null
-             || !nestedRecordMap.containsKey(name)){
+             || !nestedRecordMap.containsKey(name)
+             || (superficialNestedRecordMap != null
+                && superficialNestedRecordMap.containsKey(name)
+                && superficialNestedRecordMap.get(name) == null)
+        ){
             return null;
         }
         if(nestedRecordClassMap != null){
@@ -955,9 +1176,14 @@ public class DataSet implements java.io.Serializable, Cloneable{
                 }
             }
         }
-        return new Record(
+        Record record = new Record(
             RecordSchema.getInstance((String)nestedRecordMap.get(name))
         );
+        if(superficialNestedRecordMap != null && superficialNestedRecordMap.containsKey(name)){
+            record.setSuperficialRecordSchema(RecordSchema.getInstance((String)superficialNestedRecordMap.get(name)));
+        }
+        record.setDataSet(this);
+        return record;
     }
     
     /**
@@ -995,11 +1221,7 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @exception PropertyValidateException プロパティの検証時に例外が発生した場合
      */
     public boolean validateHeader() throws PropertyGetException, PropertyValidateException{
-        Header header = getHeader();
-        if(header == null){
-            return false;
-        }
-        return header.validate();
+        return validateHeader(null);
     }
     
     /**
@@ -1011,11 +1233,10 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @exception PropertyValidateException プロパティの検証時に例外が発生した場合
      */
     public boolean validateHeader(String name) throws PropertyGetException, PropertyValidateException{
-        Header header = getHeader(name);
-        if(header == null){
-            return false;
+        if(headerMap == null || headerMap.size() == 0 || !headerMap.containsKey(name)){
+            return true;
         }
-        return header.validate();
+        return ((Header)headerMap.get(name)).validate();
     }
     
     /**
@@ -1047,11 +1268,7 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @exception PropertyValidateException プロパティの検証時に例外が発生した場合
      */
     public boolean validateRecordList() throws PropertyGetException, PropertyValidateException{
-        RecordList recordList = getRecordList();
-        if(recordList == null){
-            return false;
-        }
-        return recordList.validate();
+        return validateRecordList(null);
     }
     
     /**
@@ -1063,11 +1280,10 @@ public class DataSet implements java.io.Serializable, Cloneable{
      * @exception PropertyValidateException プロパティの検証時に例外が発生した場合
      */
     public boolean validateRecordList(String name) throws PropertyGetException, PropertyValidateException{
-        RecordList recordList = getRecordList(name);
-        if(recordList == null){
-            return false;
+        if(recordListMap == null || recordListMap.size() == 0 || !recordListMap.containsKey(name)){
+            return true;
         }
-        return recordList.validate();
+        return ((RecordList)recordListMap.get(name)).validate();
     }
     
     /**
@@ -1151,6 +1367,9 @@ public class DataSet implements java.io.Serializable, Cloneable{
             dataSet.nestedRecordListClassMap = null;
             dataSet.nestedRecordMap = null;
             dataSet.nestedRecordClassMap = null;
+            dataSet.superficialRecordListNames = null;
+            dataSet.superficialNestedRecordListMap = null;
+            dataSet.superficialNestedRecordMap = null;
         }catch(CloneNotSupportedException e){
             return null;
         }
@@ -1162,9 +1381,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
             for(int i = 0; i < headerNames.length; i++){
                 final Header header = getHeader(headerNames[i]);
                 if(header != null){
+                    Record cloneHeader = hasData ? header.cloneRecord() : header.cloneSchema();
+                    cloneHeader.setDataSet(dataSet);
                     dataSet.headerMap.put(
                         headerNames[i],
-                        hasData ? header.cloneRecord() : header.cloneSchema()
+                        cloneHeader
                     );
                 }
             }
@@ -1177,13 +1398,18 @@ public class DataSet implements java.io.Serializable, Cloneable{
             for(int i = 0; i < recListNames.length; i++){
                 final RecordList recList = getRecordList(recListNames[i]);
                 if(recList != null){
+                    RecordList cloneRecList = hasData ? recList.cloneRecordList() : recList.cloneSchema();
+                    cloneRecList.setDataSet(dataSet);
                     dataSet.recordListMap.put(
                         recListNames[i],
-                        hasData ? recList.cloneRecordList()
-                             : recList.cloneSchema()
+                        cloneRecList
                     );
                 }
             }
+        }
+        if(superficialRecordListNames != null && superficialRecordListNames.size() != 0){
+            dataSet.superficialRecordListNames = new HashSet();
+            dataSet.superficialRecordListNames.addAll(superficialRecordListNames);
         }
         if(nestedRecordListMap != null && nestedRecordListMap.size() != 0){
             dataSet.nestedRecordListMap
@@ -1195,6 +1421,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
                  = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
             dataSet.nestedRecordListClassMap.putAll(nestedRecordListClassMap);
         }
+        if(superficialNestedRecordListMap != null && superficialNestedRecordListMap.size() != 0){
+            dataSet.superficialNestedRecordListMap
+                 = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
+            dataSet.superficialNestedRecordListMap.putAll(superficialNestedRecordListMap);
+        }
         if(nestedRecordMap != null && nestedRecordMap.size() != 0){
             dataSet.nestedRecordMap
                  = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
@@ -1204,6 +1435,11 @@ public class DataSet implements java.io.Serializable, Cloneable{
             dataSet.nestedRecordClassMap
                  = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
             dataSet.nestedRecordClassMap.putAll(nestedRecordClassMap);
+        }
+        if(superficialNestedRecordMap != null && superficialNestedRecordMap.size() != 0){
+            dataSet.superficialNestedRecordMap
+                 = isSynchronized ? Collections.synchronizedMap(new LinkedHashMap()) : new LinkedHashMap();
+            dataSet.superficialNestedRecordMap.putAll(superficialNestedRecordMap);
         }
         return dataSet;
     }

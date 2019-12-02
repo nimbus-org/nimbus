@@ -84,5 +84,6 @@ public class DailyRollingFileAppenderWriterService
         if(datePattern != null){
             daily.setDatePattern(datePattern);
         }
+        daily.activateOptions();
     }
 }

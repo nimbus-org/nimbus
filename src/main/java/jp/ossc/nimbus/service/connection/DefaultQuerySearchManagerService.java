@@ -41,11 +41,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.io.Serializable;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.IOException;
 
 import jp.ossc.nimbus.core.ServiceBase;
 import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.service.cache.CacheMap;
+import jp.ossc.nimbus.util.converter.StreamConverter;
+import jp.ossc.nimbus.util.converter.BeanJSONConverter;
+import jp.ossc.nimbus.util.converter.ConvertException;
 
 /**
  * デフォルト検索管理。<p>
@@ -60,6 +66,7 @@ public class DefaultQuerySearchManagerService extends ServiceBase implements Que
     private Map statementProps;
     private Map resultSetProps;
     private Class outputClass;
+    private Cloneable outputObject;
     private boolean isUnique;
     private ServiceName connectionFactoryServiceName;
     private ConnectionFactory connectionFactory;
@@ -67,6 +74,8 @@ public class DefaultQuerySearchManagerService extends ServiceBase implements Que
     private PersistentManager persistentManager;
     private ServiceName cacheMapServiceName;
     private CacheMap cacheMap;
+    private ServiceName streamConverterServiceName;
+    private StreamConverter streamConverter;
     private Map keyMap;
     private long caheHitCount;
     private long caheNoHitCount;
@@ -111,6 +120,13 @@ public class DefaultQuerySearchManagerService extends ServiceBase implements Que
         return outputClass;
     }
 
+    public void setOutputObject(Cloneable obj){
+        outputObject = obj;
+    }
+    public Cloneable getOutputObject(){
+        return outputObject;
+    }
+
     public void setUnique(boolean isUnique){
         this.isUnique = isUnique;
     }
@@ -138,6 +154,13 @@ public class DefaultQuerySearchManagerService extends ServiceBase implements Que
     public ServiceName getCacheMapServiceName(){
         return cacheMapServiceName;
     }
+    
+    public void setStreamConverterServiceName(ServiceName name){
+        streamConverterServiceName = name;
+    }
+    public ServiceName getStreamConverterServiceName(){
+        return streamConverterServiceName;
+    }
 
     public void setConnectionFactory(ConnectionFactory factory){
         connectionFactory = factory;
@@ -149,6 +172,10 @@ public class DefaultQuerySearchManagerService extends ServiceBase implements Que
 
     public void setCacheMap(CacheMap map){
         cacheMap = map;
+    }
+    
+    public void setStreamConverter(StreamConverter converter){
+        streamConverter = converter;
     }
 
     public float getCacheHitRatio(){
@@ -182,6 +209,12 @@ public class DefaultQuerySearchManagerService extends ServiceBase implements Que
         }
         if(query == null || query.length() == 0){
             throw new IllegalArgumentException("Query is null.");
+        }
+        if(streamConverterServiceName != null){
+            streamConverter = (StreamConverter)ServiceManagerFactory.getServiceObject(streamConverterServiceName);
+        }
+        if(streamConverter == null){
+            streamConverter = new BeanJSONConverter();
         }
     }
     public void stopService() throws Exception{
@@ -235,15 +268,27 @@ public class DefaultQuerySearchManagerService extends ServiceBase implements Que
             Connection con = null;
             try{
                 con = connectionFactory.getConnection();
+                Object output = outputClass == null ? null : (isUnique ? outputClass.newInstance() : outputClass);
+                if(output == null && outputObject != null){
+                    try{
+                        output = outputObject.getClass().getMethod("clone", (Class[])null).invoke(outputObject, (Object[])null);
+                    }catch(NoSuchMethodException e){
+                        throw new PersistentException(e);
+                    }catch(IllegalAccessException e){
+                        throw new PersistentException(e);
+                    }catch(java.lang.reflect.InvocationTargetException e){
+                        throw new PersistentException(e);
+                    }
+                }
                 result = persistentManager.loadQuery(
                     con,
                     query,
                     key,
-                    outputClass == null ? null : (isUnique ? outputClass.newInstance() : outputClass),
+                    output,
                     statementProps,
                     resultSetProps
                 );
-                if(outputClass == null && isUnique){
+                if(outputObject == null && outputClass == null && isUnique){
                     List list = (List)result;
                     if(list.size() == 0){
                         result = null;
@@ -274,7 +319,31 @@ public class DefaultQuerySearchManagerService extends ServiceBase implements Que
         }
         return result;
     }
-
+    
+    public InputStream searchAndRead(Object key) throws ConnectionFactoryException, PersistentException{
+        Object result = search(key);
+        if(result == null){
+            return null;
+        }
+        try{
+            return streamConverter.convertToStream(result);
+        }catch(ConvertException e){
+            throw new PersistentException(e);
+        }
+    }
+    
+    public void searchAndWrite(Object key, OutputStream os) throws ConnectionFactoryException, PersistentException, IOException{
+        InputStream is = searchAndRead(key);
+        if(is != null){
+            byte[] bytes = new byte[1024];
+            int length = 0;
+            while((length = is.read(bytes, 0, bytes.length)) > 0){
+                os.write(bytes, 0, length);
+            }
+            os.flush();
+        }
+    }
+    
     private static class Key implements Serializable{
 
         private final Object key;
@@ -305,7 +374,7 @@ public class DefaultQuerySearchManagerService extends ServiceBase implements Que
             }else{
                 this.key = key;
             }
-            hashCode = this.key.hashCode();
+            hashCode = this.key == null ? 0 : this.key.hashCode();
         }
         public int hashCode(){
             return hashCode;
