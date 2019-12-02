@@ -46,8 +46,10 @@ import jp.ossc.nimbus.service.trade.TradeSignCalcUtil.PeriodicPrice;
  */
 public class BollingerBandStaticTradeSignFactoryService extends FactoryServiceBase implements BollingerBandStaticTradeSignFactoryServiceMBean{
 
-    private static final long serialVersionUID = 1582716970236818998L;
-    
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
     protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
     protected boolean isShortSelling;
     protected boolean isOnlyReverseTrade;
@@ -133,7 +135,7 @@ public class BollingerBandStaticTradeSignFactoryService extends FactoryServiceBa
     }
     
     protected Object createInstance() throws Exception{
-        TradeSignImpl ts = new TradeSignImpl();
+        BollingerBandStaticTradeSign ts = new BollingerBandStaticTradeSign();
         
         ts.setGeneCrossoverType(geneCrossoverType);
         ts.setShortSelling(isShortSelling);
@@ -150,10 +152,12 @@ public class BollingerBandStaticTradeSignFactoryService extends FactoryServiceBa
         return ts;
     }
     
-    public static class TradeSignImpl implements TradeSign, java.io.Serializable, Cloneable{
+    public static class BollingerBandStaticTradeSign implements TradeSign, java.io.Serializable, Cloneable{
         
-        private static final long serialVersionUID = 6288775239136336217L;
-        
+        /**
+         * 
+         */
+        private static final long serialVersionUID = 1L;
         protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
         protected boolean isShortSelling;
         protected int period;
@@ -270,9 +274,9 @@ public class BollingerBandStaticTradeSignFactoryService extends FactoryServiceBa
         }
         
         public Object clone(){
-            TradeSignImpl clone = null;
+            BollingerBandStaticTradeSign clone = null;
             try{
-                clone = (TradeSignImpl)super.clone();
+                clone = (BollingerBandStaticTradeSign)super.clone();
             }catch(CloneNotSupportedException e){
                 return null;
             }

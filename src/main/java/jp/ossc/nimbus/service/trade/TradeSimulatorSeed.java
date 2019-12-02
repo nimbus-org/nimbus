@@ -42,8 +42,6 @@ import jp.ossc.nimbus.service.ga.*;
  */
 public abstract class TradeSimulatorSeed implements Seed, Cloneable, java.io.Serializable{
     
-    private static final long serialVersionUID = 6679383861292001273L;
-    
     protected TradeSimulator tradeSimulator;
     protected DefaultGenom genom;
     protected Number fitness;

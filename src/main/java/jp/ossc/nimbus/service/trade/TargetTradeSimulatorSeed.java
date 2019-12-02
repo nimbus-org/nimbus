@@ -42,8 +42,6 @@ import jp.ossc.nimbus.service.ga.*;
  */
 public class TargetTradeSimulatorSeed extends TradeSimulatorSeed{
     
-    private static final long serialVersionUID = 6714461249206680901L;
-    
     protected double averageProfitRatio = Double.NaN;
     protected double averageProfitRatioWithHolding = Double.NaN;
     protected double averageProfitAndLossRatio = Double.NaN;

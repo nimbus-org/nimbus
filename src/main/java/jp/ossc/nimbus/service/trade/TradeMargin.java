@@ -39,8 +39,6 @@ package jp.ossc.nimbus.service.trade;
  */
 public class TradeMargin implements java.io.Serializable{
     
-    private static final long serialVersionUID = 3343887295641288603L;
-    
     protected double initial;
     protected double minimum;
     protected double current;

@@ -46,8 +46,6 @@ import jp.ossc.nimbus.core.FactoryServiceBase;
  */
 public class DefaultTradeSimulatorFactoryService extends FactoryServiceBase implements DefaultTradeSimulatorFactoryServiceMBean{
     
-    private static final long serialVersionUID = -8197183706685174907L;
-    
     protected boolean isShortSelling;
     protected int tradeStartMargin;
     protected int tradeEndMargin;
@@ -82,8 +80,6 @@ public class DefaultTradeSimulatorFactoryService extends FactoryServiceBase impl
     }
     
     public static class TradeSimulatorImpl implements TradeSimulator, java.io.Serializable, Cloneable{
-        
-        private static final long serialVersionUID = -1925425331800201030L;
         
         protected boolean isShortSelling;
         protected int tradeStartMargin;

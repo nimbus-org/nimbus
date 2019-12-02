@@ -32,21 +32,18 @@
 package jp.ossc.nimbus.service.trade;
 
 import java.util.*;
-import java.io.*;
 
 /**
  * 取引パフォーマンス。<p>
  *
  * @author M.Takata
  */
-public class TradePerformance implements Serializable{
-    
-    private static final long serialVersionUID = 5813378344320353263L;
+public class TradePerformance{
     
     /**
      * 取引シミュレータ。<p>
      */
-    protected transient TradeSimulator tradeSimulator;
+    protected TradeSimulator tradeSimulator;
     
     /**
      * 引き分けの取引を勝ち取引に含めるかどうか。<p>
@@ -914,6 +911,7 @@ public class TradePerformance implements Serializable{
      * 計算する。<p>
      */
     public void calculate(){
+        clear();
         
         final TradeTarget target = tradeSimulator.getTarget();
         final TimeSeries ts = target.getTimeSeries();

@@ -41,9 +41,6 @@ import java.util.Date;
  * @author M.Takata
  */
 public class Trade implements Comparable<Trade>, java.io.Serializable{
-    
-    private static final long serialVersionUID = 8780116966411538342L;
-    
     protected Date startTime;
     protected double startValue;
     protected Date endTime;

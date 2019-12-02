@@ -41,6 +41,11 @@ import jp.ossc.nimbus.service.ga.Gene;
  */
 public interface TradeSign{
     
+    public static final String MOVINGAVG_SHORT_PERIOD = "shortPeriod";
+    public static final String MOVINGAVG_SHOT_PERIOD_DESCRIPTION = "移動平均短期";
+    public static final String MOVINGAVG_LONG_PERIOD  = "longPeriod";
+    public static final String MOVINGAVG_LONG_PERIOD_DESCRIPTION = "移動平均長期";
+    
     /**
      * 遺伝子を取得する。<p>
      *

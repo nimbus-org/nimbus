@@ -45,9 +45,11 @@ import jp.ossc.nimbus.service.trade.TradeSignCalcUtil.PeriodicPrice;
  * @author M.Aono
  */
 public class MovingAverageTradeSignFactoryService extends FactoryServiceBase implements MovingAverageTradeSignFactoryServiceMBean{
-    
-    private static final long serialVersionUID = 1166919576071529622L;
-    
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
     protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
     protected boolean isShortSelling;
     protected boolean isOnlyReverseTrade;
@@ -131,42 +133,44 @@ public class MovingAverageTradeSignFactoryService extends FactoryServiceBase imp
     public IntegerGene getLongPeriodGene(){
         return longPeriodGene;
     }
-    
+
     protected Object createInstance() throws Exception{
-        TradeSignImpl ts = new TradeSignImpl();
-        
+        MovingAverageTradeSign ts = new MovingAverageTradeSign();
+
         ts.setGeneCrossoverType(geneCrossoverType);
         ts.setShortSelling(isShortSelling);
-        
+
         ts.setShortPeriod(shortPeriod);
         if(shortPeriodGene != null){
             ts.getComplexGene().addGene(shortPeriodGene.cloneGene());
         }
-        ts.setShortPeriod(longPeriod);
+        ts.setLongPeriod(longPeriod);
         if(longPeriodGene != null){
             ts.getComplexGene().addGene(longPeriodGene.cloneGene());
         }
-        
+
         return ts;
     }
-    
-    public static class TradeSignImpl implements TradeSign, java.io.Serializable, Cloneable{
-        
-        private static final long serialVersionUID = -9125073959763082588L;
-        
+
+    public static class MovingAverageTradeSign implements TradeSign, java.io.Serializable, Cloneable{
+
+        /**
+         * 
+         */
+        private static final long serialVersionUID = 1L;
         protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
         protected boolean isShortSelling;
         protected int shortPeriod;
         protected int longPeriod;
-        
+
         protected TradeTarget tradeTarget;
         protected Sign[] signs;
         protected ComplexGene complexGene;
-        
+
         public void setGeneCrossoverType(int crossoverType){
             geneCrossoverType = crossoverType;
         }
-        
+
         protected ComplexGene getComplexGene(){
             if(complexGene == null){
                 complexGene = new ComplexGene();
@@ -174,21 +178,22 @@ public class MovingAverageTradeSignFactoryService extends FactoryServiceBase imp
             }
             return complexGene;
         }
-        
+
         public Gene getGene(){
             return complexGene;
         }
-        
+
         public void setShortSelling(boolean isShort){
             isShortSelling = isShort;
         }
         public boolean isShortSelling(){
             return isShortSelling;
         }
-        
+
         public void setShortPeriod(int period){
             shortPeriod = period;
         }
+
         public int getShortPeriod(){
             if(complexGene != null){
                 IntegerGene gene = (IntegerGene)complexGene.getGene("shortPeriod");
@@ -202,7 +207,7 @@ public class MovingAverageTradeSignFactoryService extends FactoryServiceBase imp
         public void setLongPeriod(int period){
             longPeriod = period;
         }
-        
+
         public int getLongPeriod(){
             if(complexGene != null){
                 IntegerGene gene = (IntegerGene)complexGene.getGene("longPeriod");
@@ -212,12 +217,12 @@ public class MovingAverageTradeSignFactoryService extends FactoryServiceBase imp
             }
             return longPeriod;
         }
-        
+
         public void setTarget(TradeTarget target){
             tradeTarget = target;
         }
-        
-        public void calculate() throws Exception{            
+
+        public void calculate() throws Exception{
             TimeSeries<TimeSeries.Element> ts = tradeTarget.getTimeSeries();
             signs = new Sign[ts.size()];
             int shortPeriod = getShortPeriod();
@@ -225,7 +230,7 @@ public class MovingAverageTradeSignFactoryService extends FactoryServiceBase imp
             if(ts.size() < longPeriod){
                 return;
             }
-            
+
             //短期移動平均
             PeriodicPrice shortPeriodicPrice = new PeriodicPrice(shortPeriod);
             //長期移動平均
@@ -237,7 +242,7 @@ public class MovingAverageTradeSignFactoryService extends FactoryServiceBase imp
                 signs[i] = new Sign(Sign.Type.NA);
                 if(element.getVolume() == 0d){
                     continue;
-                }               
+                }
                 double shotAverage = shortPeriodicPrice.addAverage(element.getCloseValue());
                 double longAverage = longPeriodicPrice.addAverage(element.getCloseValue());
                 if(longPeriod <= i + 1){
@@ -260,15 +265,15 @@ public class MovingAverageTradeSignFactoryService extends FactoryServiceBase imp
                 }
             }
         }
-        
+
         public Sign getSign(int index, Trade trade){
                 return signs[index];
         }
-        
+
         public Object clone(){
-            TradeSignImpl clone = null;
+            MovingAverageTradeSign clone = null;
             try{
-                clone = (TradeSignImpl)super.clone();
+                clone = (MovingAverageTradeSign)super.clone();
             }catch(CloneNotSupportedException e){
                 return null;
             }
@@ -277,7 +282,7 @@ public class MovingAverageTradeSignFactoryService extends FactoryServiceBase imp
             }
             return clone;
         }
-        
+
         public enum Reason{
             GOLDEN_CROSS,
             DEAD_CROSS,
