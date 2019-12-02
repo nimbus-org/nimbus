@@ -97,6 +97,16 @@ public class NumberValidator implements Validator, java.io.Serializable{
     protected BigDecimal notEqualValue;
     
     /**
+     * 検証値の整数部の桁数を検証する閾値。<p>
+     */
+    protected int integerDigits = -1;
+    
+    /**
+     * 検証値の小数部の桁数を検証する閾値。<p>
+     */
+    protected int fractionDigits = -1;
+    
+    /**
      * nullを許容するかどうかを設定する。<p>
      * デフォルトは、true。<br>
      * 
@@ -281,6 +291,44 @@ public class NumberValidator implements Validator, java.io.Serializable{
     }
     
     /**
+     * 検証値の整数部の桁数を検証する閾値を設定する。<p>
+     * デフォルトは、-1で桁数チェックしない。<br>
+     * 
+     * @param digits 閾値
+     */
+    public void setIntegerDigits(int digits) {
+        integerDigits = digits;
+    }
+    
+    /**
+     * 検証値の整数部の桁数を検証する閾値を取得する。<p>
+     * 
+     * @return 閾値
+     */
+    public int getIntegerDigits() {
+        return integerDigits;
+    }
+    
+    /**
+     * 検証値の小数部の桁数を検証する閾値を設定する。<p>
+     * デフォルトは、-1で桁数チェックしない。<br>
+     * 
+     * @param digits 閾値
+     */
+    public void setFractionDigits(int digits) {
+        fractionDigits = digits;
+    }
+    
+    /**
+     * 検証値の小数部の桁数を検証する閾値を取得する。<p>
+     * 
+     * @return 閾値
+     */
+    public int getFractionDigits() {
+        return fractionDigits;
+    }
+
+    /**
      * 指定されたオブジェクトが適切な数値かどうかを検証する。<p>
      *
      * @param obj 検証対象のオブジェクト
@@ -357,6 +405,9 @@ public class NumberValidator implements Validator, java.io.Serializable{
                 return false;
             }
         }
+        if(!validateDigits(String.valueOf(val))) {
+            return false;
+        }
         return true;
     }
     
@@ -397,6 +448,9 @@ public class NumberValidator implements Validator, java.io.Serializable{
             if(notEqualValue.shortValue() == val){
                 return false;
             }
+        }
+        if(!validateDigits(String.valueOf(val))) {
+            return false;
         }
         return true;
     }
@@ -439,6 +493,9 @@ public class NumberValidator implements Validator, java.io.Serializable{
                 return false;
             }
         }
+        if(!validateDigits(String.valueOf(val))) {
+            return false;
+        }
         return true;
     }
     
@@ -479,6 +536,9 @@ public class NumberValidator implements Validator, java.io.Serializable{
             if(notEqualValue.longValue() == val){
                 return false;
             }
+        }
+        if(!validateDigits(String.valueOf(val))) {
+            return false;
         }
         return true;
     }
@@ -527,6 +587,9 @@ public class NumberValidator implements Validator, java.io.Serializable{
                 return false;
             }
         }
+        if(!validateDigits(String.valueOf(val))) {
+            return false;
+        }
         return true;
     }
     
@@ -573,6 +636,9 @@ public class NumberValidator implements Validator, java.io.Serializable{
             if(notEqualValue.doubleValue() == val){
                 return false;
             }
+        }
+        if(!validateDigits(String.valueOf(val))) {
+            return false;
         }
         return true;
     }
@@ -625,6 +691,9 @@ public class NumberValidator implements Validator, java.io.Serializable{
                 return false;
             }
         }
+        if(!validateDigits(String.valueOf(val))) {
+            return false;
+        }
         return true;
     }
     
@@ -676,6 +745,9 @@ public class NumberValidator implements Validator, java.io.Serializable{
                 return false;
             }
         }
+        if(!validateDigits(String.valueOf(val))) {
+            return false;
+        }
         return true;
     }
     
@@ -704,5 +776,23 @@ public class NumberValidator implements Validator, java.io.Serializable{
         }catch(NumberFormatException e){
             return false;
         }
+    }
+    
+    protected boolean validateDigits(String val) {
+        if(integerDigits != -1) {
+            String tmpVal = val.startsWith("-") ? val.substring(1) : val;
+            tmpVal = tmpVal.indexOf(".") == -1 ? tmpVal : tmpVal.substring(0, tmpVal.indexOf("."));
+            if(tmpVal.length() > integerDigits) {
+                return false;
+            }
+        }
+        if(fractionDigits != -1 && val.indexOf(".") != -1) {
+            String tmpVal = val.substring(val.indexOf(".") + 1);
+            if(tmpVal.length() > fractionDigits){
+                return false;
+            }
+        }
+        return true;
+        
     }
 }
