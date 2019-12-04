@@ -1265,10 +1265,11 @@ public class BeanExchangeConverter implements BindingConverter{
     
     private void putPropertyMapping(Map propMapping, String inputProperty, ExchangeMapping outputMapping){
         if(propMapping.containsKey(inputProperty)){
-            Object om =propMapping.get(inputProperty);
+            Object om = propMapping.get(inputProperty);
             List list = null;
             if(om instanceof ExchangeMapping){
                 list = new ArrayList();
+                list.add(om);
                 propMapping.put(inputProperty, list);
             }else{
                 list = (List)om;
