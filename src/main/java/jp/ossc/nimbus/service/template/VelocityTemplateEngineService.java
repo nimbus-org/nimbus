@@ -63,6 +63,7 @@ public class VelocityTemplateEngineService extends ServiceBase implements Templa
     private File templateFileRootDirectory;
     private Properties properties;
     private Map templateMap;
+    private Map contextMap;
     private String characterEncoding;
     
     private VelocityEngine engine;
@@ -91,6 +92,10 @@ public class VelocityTemplateEngineService extends ServiceBase implements Templa
     
     public void setTemplate(String name, String template){
         setTemplate(name, template, null);
+    }
+    
+    public void setVelocityContext(String name, Object value){
+        contextMap.put(name, value);
     }
     
     public void setTemplate(String name, String template, String encoding){
@@ -124,6 +129,7 @@ public class VelocityTemplateEngineService extends ServiceBase implements Templa
     
     public void createService() throws Exception{
         templateMap = Collections.synchronizedMap(new HashMap());
+        contextMap = new HashMap();
     }
     
     public void startService() throws Exception{
@@ -182,6 +188,7 @@ public class VelocityTemplateEngineService extends ServiceBase implements Templa
     
     public void destroyService() throws Exception{
         templateMap = null;
+        contextMap = null;
     }
     
     public String transform(String name, Map dataMap) throws TemplateTransformException{
@@ -201,7 +208,17 @@ public class VelocityTemplateEngineService extends ServiceBase implements Templa
         }
         StringWriter sw = new StringWriter();
         try{
-            template.merge(new VelocityContext(dataMap), sw);
+            VelocityContext context = new VelocityContext(dataMap);
+            if(contextMap != null && contextMap.size() > 0){
+                Iterator entries = contextMap.entrySet().iterator();
+                while(entries.hasNext()){
+                    Map.Entry entry = (Map.Entry)entries.next();
+                    if(!context.containsKey((String)entry.getKey())){
+                        context.put((String)entry.getKey(), entry.getValue());
+                    }
+                }
+            }
+            template.merge(context, sw);
         }catch(Exception e){
             throw new TemplateTransformException("Transform failed. name=" + name, e);
         }
