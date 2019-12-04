@@ -717,7 +717,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                 }
                 request.setRequestObject(requestObj);
                 return true;
-            }else if(Number.class.isAssignableFrom(requestObjClass)){
+            }else if(requestObjClass != null && Number.class.isAssignableFrom(requestObjClass)){
                 if(pathParameters != null && pathParameters.size() != 0){
                     String valStr = (String)pathParameters.values().iterator().next();
                     try{
