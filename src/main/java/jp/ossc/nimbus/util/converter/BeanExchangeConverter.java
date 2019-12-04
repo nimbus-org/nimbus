@@ -150,19 +150,7 @@ public class BeanExchangeConverter implements BindingConverter{
         if(propertyMapping == null){
             propertyMapping = new HashMap();
         }
-        Object outProp = propertyMapping.get(inputProperty);
-        if(outProp == null){
-            propertyMapping.put(inputProperty, new ExchangeMapping(outputProperty, converter));
-        }else{
-            List outProps = null;
-            if(outProp instanceof ExchangeMapping){
-                outProps = new ArrayList();
-                outProps.add(outProp);
-            }else{
-                outProps = (List)outProp;
-            }
-            outProps.add(new ExchangeMapping(outputProperty, converter));
-        }
+        putPropertyMapping(propertyMapping, inputProperty, new ExchangeMapping(outputProperty, converter));
     }
     
     /**
@@ -843,13 +831,13 @@ public class BeanExchangeConverter implements BindingConverter{
                                     Iterator propMaps = ((List)propMap).iterator();
                                     while(propMaps.hasNext()){
                                         Object[] inOutProp = (Object[])propMaps.next();
-                                        propMapping.put(inOutProp[0], inOutProp[1]);
+                                        putPropertyMapping(propMapping, (String)inOutProp[0], (ExchangeMapping)inOutProp[1]);
                                     }
                                 }else{
-                                    propMapping.put(((Object[])propMap)[0], ((Object[])propMap)[1]);
+                                    putPropertyMapping(propMapping, (String)((Object[])propMap)[0], (ExchangeMapping)((Object[])propMap)[1]);
                                 }
                             }else{
-                                propMapping.put(inputProp, new ExchangeMapping(outputProp, null));
+                                putPropertyMapping(propMapping, (String)inputProp, new ExchangeMapping(outputProp, null));
                             }
                         }
                     }
@@ -871,13 +859,13 @@ public class BeanExchangeConverter implements BindingConverter{
                                     Iterator propMaps = ((List)propMap).iterator();
                                     while(propMaps.hasNext()){
                                         Object[] inOutProp = (Object[])propMaps.next();
-                                        propMapping.put(inOutProp[0], inOutProp[1]);
+                                        putPropertyMapping(propMapping, (String)inOutProp[0], (ExchangeMapping)inOutProp[1]);
                                     }
                                 }else{
-                                    propMapping.put(((Object[])propMap)[0], ((Object[])propMap)[1]);
+                                    putPropertyMapping(propMapping, (String)((Object[])propMap)[0], (ExchangeMapping)((Object[])propMap)[1]);
                                 }
                             }else{
-                                propMapping.put(inputProp, new ExchangeMapping(outputProp, null));
+                                putPropertyMapping(propMapping, (String)inputProp, new ExchangeMapping(outputProp, null));
                             }
                         }
                     }
@@ -897,13 +885,13 @@ public class BeanExchangeConverter implements BindingConverter{
                                 Iterator propMaps = ((List)propMap).iterator();
                                 while(propMaps.hasNext()){
                                     Object[] inOutProp = (Object[])propMaps.next();
-                                    propMapping.put(inOutProp[0], inOutProp[1]);
+                                    putPropertyMapping(propMapping, (String)inOutProp[0], (ExchangeMapping)inOutProp[1]);
                                 }
                             }else{
-                                propMapping.put(((Object[])propMap)[0], ((Object[])propMap)[1]);
+                                putPropertyMapping(propMapping, (String)((Object[])propMap)[0], (ExchangeMapping)((Object[])propMap)[1]);
                             }
                         }else{
-                            propMapping.put(inputProp, new ExchangeMapping(outputProp, null));
+                            putPropertyMapping(propMapping, (String)inputProp, new ExchangeMapping(outputProp, null));
                         }
                     }
                 }
@@ -1272,6 +1260,22 @@ public class BeanExchangeConverter implements BindingConverter{
             for(int i = 0, imax = outputProps.size(); i < imax; i++){
                 setOutputProperty(output, outputProps.get(i), value, false, isInputAutoMapping);
             }
+        }
+    }
+    
+    private void putPropertyMapping(Map propMapping, String inputProperty, ExchangeMapping outputMapping){
+        if(propMapping.containsKey(inputProperty)){
+            Object om =propMapping.get(inputProperty);
+            List list = null;
+            if(om instanceof ExchangeMapping){
+                list = new ArrayList();
+                propMapping.put(inputProperty, list);
+            }else{
+                list = (List)om;
+            }
+            list.add(outputMapping);
+        }else{
+            propMapping.put(inputProperty, outputMapping);
         }
     }
     
