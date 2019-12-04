@@ -1948,8 +1948,8 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
                     if(currentElement.parameterPath == null){
                         currentElement.parameterPath = (ResourcePath.ParameterPath)pathElement;
                         currentElement.parameterChild = new ResourceTreeElement();
-                        currentElement = currentElement.parameterChild;
                     }
+                    currentElement = currentElement.parameterChild;
                 }else{
                     String subPath = (String)pathElement;
                     Map currentMap = currentElement == null ? treeMap : currentElement.children;
