@@ -608,7 +608,7 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
                     Object valid = parseValidator(schema, val);
                     if(valid != null){
                         if(valid instanceof ServiceName){
-                            parseConverterName = (ServiceName)valid;
+                            validatorName = (ServiceName)valid;
                         }else{
                             validator = (Validator)valid;
                         }
