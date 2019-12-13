@@ -426,7 +426,9 @@ public class RequestConnectionFactoryService extends ServiceBase
                 long curTimeout = timeout;
                 serverConnectWaitMonitor.initMonitor();
                 Set requestClients = serverConnection.getReceiveClientIds(message);
-                if(requestClients.size() == 0){
+                if((replyCount <= 0 && serverConnection.getClientCount() == 0)
+                    || (replyCount > 0 && requestClients.size() == 0)
+                ){
                     try{
                         if(!serverConnectWaitMonitor.waitMonitor(curTimeout)){
                             throw new RequestTimeoutException("Destination not be found.");
@@ -434,7 +436,9 @@ public class RequestConnectionFactoryService extends ServiceBase
                     }catch(InterruptedException e){
                     }
                     requestClients = serverConnection.getReceiveClientIds(message);
-                    if(requestClients.size() == 0){
+                    if((replyCount <= 0 && serverConnection.getClientCount() == 0)
+                        || (replyCount > 0 && requestClients.size() == 0)
+                    ){
                         throw new RequestTimeoutException("Destination not be found.");
                     }
                 }
@@ -492,7 +496,9 @@ public class RequestConnectionFactoryService extends ServiceBase
                 long curTimeout = timeout;
                 serverConnectWaitMonitor.initMonitor();
                 Set requestClients = serverConnection.getReceiveClientIds(message);
-                if(requestClients.size() == 0){
+                if((replyCount <= 0 && serverConnection.getClientCount() == 0)
+                    || (replyCount > 0 && requestClients.size() == 0)
+                ){
                     final long startTime = System.currentTimeMillis();
                     try{
                         if(!serverConnectWaitMonitor.waitMonitor(curTimeout)){
@@ -502,7 +508,9 @@ public class RequestConnectionFactoryService extends ServiceBase
                     }catch(InterruptedException e){
                     }
                     requestClients = serverConnection.getReceiveClientIds(message);
-                    if(requestClients.size() == 0){
+                    if((replyCount <= 0 && serverConnection.getClientCount() == 0)
+                        || (replyCount > 0 && requestClients.size() == 0)
+                    ){
                         callback.onResponse(null, null, true);
                         return;
                     }
@@ -558,18 +566,25 @@ public class RequestConnectionFactoryService extends ServiceBase
                     throw new MessageSendException("Closed.");
                 }
                 serverConnectWaitMonitor.initMonitor();
+                
                 Set requestClients = serverConnection.getReceiveClientIds(message);
-                if(requestClients.size() == 0){
+                long curTimeout = timeout;
+                while((replyCount <= 0 && serverConnection.getClientCount() == 0)
+                    || (replyCount > 0 && requestClients.size() == 0)
+                ){
                     try{
-                        if(!serverConnectWaitMonitor.waitMonitor(timeout)){
+                        if(!serverConnectWaitMonitor.waitMonitor(curTimeout)){
                             throw new RequestTimeoutException("Destination not be found.");
+                        }
+                        if(curTimeout > 0){
+                            curTimeout = curTimeout - (System.currentTimeMillis() - sendStartTime);
+                            if(curTimeout <= 0){
+                                throw new RequestTimeoutException("Destination not be found.");
+                            }
                         }
                     }catch(InterruptedException e){
                     }
                     requestClients = serverConnection.getReceiveClientIds(message);
-                    if(requestClients.size() == 0){
-                        throw new RequestTimeoutException("Destination not be found.");
-                    }
                 }
                 int sequence = getSequence();
                 try{
@@ -577,7 +592,7 @@ public class RequestConnectionFactoryService extends ServiceBase
                 }catch(MessageException e){
                     throw new MessageSendException(e);
                 }
-                ResponseContainer container = new ResponseContainer(sequence, requestClients, replyCount, timeout);
+                ResponseContainer container = new ResponseContainer(sequence, requestClients, replyCount, curTimeout);
                 Integer sequenceVal = new Integer(sequence);
                 responseMap.put(sequenceVal, container);
                 if(timeout > 0){
