@@ -561,6 +561,13 @@ public interface KubernetesClusterServiceMBean extends ServiceBaseMBean{
     public Set getClientMembers();
     
     /**
+     * 現在のクラスタメンバとなり得るPODのリストを取得する。<p>
+     *
+     * @return 現在のクラスタメンバとなり得るPODのリスト
+     */
+    public List getPodMembers();
+    
+    /**
      * このサービスのUIDを取得する。<p>
      *
      * @return UID

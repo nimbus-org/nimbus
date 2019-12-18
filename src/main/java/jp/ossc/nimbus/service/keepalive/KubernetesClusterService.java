@@ -59,7 +59,7 @@ import io.kubernetes.client.util.Watch;
  */
 public class KubernetesClusterService extends ServiceBase implements Cluster, KubernetesClusterServiceMBean{
     
-//    private static final long serialVersionUID = 4503189967951662029L;
+    private static final long serialVersionUID = 2622943795385089220L;
     
     protected static final int MESSAGE_ID_ADD_REQ = 1;
     protected static final int MESSAGE_ID_MEMBER_CHANGE_REQ = 2;
@@ -381,6 +381,19 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
         }
         synchronized(clientMembers){
             return new HashSet(clientMembers.values());
+        }
+    }
+    
+    public List getPodMembers(){
+        if(podMembers == null){
+            return null;
+        }
+        synchronized(podMembers){
+            List result = new ArrayList(podMembers);
+            if(uid != null){
+                result.add(uid.getAddress());
+            }
+            return result;
         }
     }
     

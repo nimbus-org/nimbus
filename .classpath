@@ -143,8 +143,8 @@
   <classpathentry kind="var" path="M2_REPO/jtidy/jtidy/1.0/jtidy-1.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/bouncycastle/bcprov-jdk15on/1.62/bcprov-jdk15on-1.62.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/bouncycastle/bcpkix-jdk15on/1.62/bcpkix-jdk15on-1.62.jar"/>
-  <classpathentry kind="var" path="M2_REPO/io/kubernetes/client-java/5.0.0/client-java-5.0.0.jar"/>
-  <classpathentry kind="var" path="M2_REPO/io/kubernetes/client-java-api/5.0.0/client-java-api-5.0.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/io/kubernetes/client-java/6.0.1/client-java-6.0.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/io/kubernetes/client-java-api/6.0.1/client-java-api-6.0.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/io/sundr/builder-annotations/0.18.0/builder-annotations-0.18.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/io/sundr/sundr-core/0.18.0/sundr-core-0.18.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/io/sundr/sundr-codegen/0.18.0/sundr-codegen-0.18.0.jar"/>
@@ -155,7 +155,7 @@
   <classpathentry kind="var" path="M2_REPO/com/squareup/okhttp/logging-interceptor/2.7.5/logging-interceptor-2.7.5.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/joda/joda-convert/1.2/joda-convert-1.2.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/commons/commons-lang3/3.7/commons-lang3-3.7.jar"/>
-  <classpathentry kind="var" path="M2_REPO/io/kubernetes/client-java-proto/5.0.0/client-java-proto-5.0.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/io/kubernetes/client-java-proto/6.0.1/client-java-proto-6.0.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/yaml/snakeyaml/1.19/snakeyaml-1.19.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/commons/commons-compress/1.18/commons-compress-1.18.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/squareup/okhttp/okhttp-ws/2.7.5/okhttp-ws-2.7.5.jar"/>
