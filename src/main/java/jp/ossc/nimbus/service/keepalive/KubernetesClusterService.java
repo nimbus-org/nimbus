@@ -1447,7 +1447,7 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
         
         public boolean onStart(){
             try{
-                V1PodList podList = api.listNamespacedPod(namespace, Boolean.FALSE, (String)null, (String)null, fieldSelector, labelSelector, (Integer)null, (String)null, podWatchTimeout, Boolean.FALSE);
+                V1PodList podList = api.listNamespacedPod(namespace, (String)null, (String)null, fieldSelector, labelSelector, (Integer)null, (String)null, podWatchTimeout, Boolean.FALSE);
                 resourceVersion = podList.getMetadata().getResourceVersion();
                 podMembers.clear();
                 Iterator pods = podList.getItems().iterator();
@@ -1475,7 +1475,7 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
             try{
                 return Watch.createWatch(
                     client,
-                    api.listNamespacedPodCall(namespace, Boolean.FALSE, (String)null, (String)null, fieldSelector, labelSelector, (Integer)null, resourceVersion, podWatchTimeout, Boolean.TRUE, null, null),
+                    api.listNamespacedPodCall(namespace, (String)null, (String)null, fieldSelector, labelSelector, (Integer)null, resourceVersion, podWatchTimeout, Boolean.TRUE, null, null),
                     new TypeToken<Watch.Response<V1Pod>>(){}.getType()
                 );
             }catch(Throwable th){
