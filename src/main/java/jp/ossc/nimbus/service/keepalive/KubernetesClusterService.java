@@ -390,8 +390,8 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
         }
         synchronized(podMembers){
             List result = new ArrayList(podMembers);
-            if(socket != null){
-                result.add(socket.getInetAddress());
+            if(uid != null){
+                result.add(new InetSocketAddress(uid.getAddress(), uid.getPort()));
             }
             return result;
         }
@@ -1395,7 +1395,7 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
     
     public static class ClusterUID extends jp.ossc.nimbus.service.keepalive.ClusterUID{
         
-//        private static final long serialVersionUID = 2185113122895103559L;
+        private static final long serialVersionUID = 9158212998400296210L;
         
         protected int port = 0;
         protected transient long lastHeartBeatTime;
