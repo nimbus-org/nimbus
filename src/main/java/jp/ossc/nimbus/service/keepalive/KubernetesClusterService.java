@@ -390,8 +390,8 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
         }
         synchronized(podMembers){
             List result = new ArrayList(podMembers);
-            if(uid != null){
-                result.add(uid.getAddress());
+            if(socket != null){
+                result.add(socket.getInetAddress());
             }
             return result;
         }
