@@ -769,6 +769,11 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
             } else {
                 throw e;
             }
+        } catch(Exception e) {
+            if(!(e instanceof TestStatusException)) {
+                scenarioGroupEndAction();
+            }
+            throw e;
         } finally {
             if (isWait) {
                 // シナリオコンボボックスを設定
@@ -860,6 +865,11 @@ public class ScenarioTestView extends JFrame implements ActionListener, Componen
             } else {
                 throw e;
             }
+        } catch(Exception e) {
+            if(!(e instanceof TestStatusException)) {
+                scenarioCancelAction();
+            }
+            throw e;
         } finally {
             if (isWait) {
                 // シナリオ系コンポーネントの設定（初期化）
