@@ -34,15 +34,22 @@ package jp.ossc.nimbus.service.aop.interceptor.servlet;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
 import jp.ossc.nimbus.beans.Property;
 import jp.ossc.nimbus.beans.PropertyAccess;
+import jp.ossc.nimbus.beans.dataset.RecordList;
+import jp.ossc.nimbus.beans.dataset.Record;
+import jp.ossc.nimbus.beans.dataset.PropertySchema;
+import jp.ossc.nimbus.recset.RecordSet;
 import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.service.aop.InterceptorChain;
 import jp.ossc.nimbus.service.aop.ServletFilterInvocationContext;
+import jp.ossc.nimbus.service.aop.interceptor.ThreadContextKey;
 import jp.ossc.nimbus.service.context.Context;
 
 /**
@@ -59,7 +66,8 @@ public class HttpServletRequestTransferInterceptorService extends ServletFilterI
     protected ServiceName threadContextServiceName;
     protected Context threadContext;
     protected PropertyAccess propertyAccess;
-    protected Map requestPropertyAndContextKeyMapping;
+    protected String codeMasterContextKey = ThreadContextKey.CODEMASTER;
+    protected List transferSettings;
 
     public void setThreadContextServiceName(ServiceName name) {
         threadContextServiceName = name;
@@ -70,13 +78,37 @@ public class HttpServletRequestTransferInterceptorService extends ServletFilterI
     }
 
     public void setRequestPropertyAndContextKeyMapping(Map mapping) {
-        requestPropertyAndContextKeyMapping = mapping;
+        Iterator entries = mapping.entrySet().iterator();
+        while(entries.hasNext()){
+            Map.Entry entry = (Map.Entry)entries.next();
+            TransferSetting setting = new TransferSetting();
+            setting.setRequestProperty((String)entry.getKey());
+            setting.setContextKey((String)entry.getValue());
+            setTransferSetting(setting);
+        }
     }
-
-    public Map getRequestPropertyAndContextKeyMapping() {
-        return requestPropertyAndContextKeyMapping;
+    
+    public void setCodeMasterContextKey(String key){
+        codeMasterContextKey = key;
     }
-
+    public String getCodeMasterContextKey(){
+        return codeMasterContextKey;
+    }
+    
+    public void setTransferSetting(TransferSetting setting){
+        transferSettings.add(setting);
+    }
+    
+    public void clearTransferSettings(){
+        if(transferSettings != null){
+            transferSettings.clear();
+        }
+    }
+    
+    public List getTransferSettings(){
+        return transferSettings == null ? null : new ArrayList(transferSettings);
+    }
+    
     /**
      * サービスの生成処理を行う。
      * <p>
@@ -84,6 +116,7 @@ public class HttpServletRequestTransferInterceptorService extends ServletFilterI
      * @exception Exception サービスの生成に失敗した場合
      */
     public void createService() throws Exception {
+        transferSettings = new ArrayList();
         propertyAccess = new PropertyAccess();
         propertyAccess.setIgnoreNullProperty(true);
     }
@@ -95,21 +128,9 @@ public class HttpServletRequestTransferInterceptorService extends ServletFilterI
      * @exception Exception サービスの開始に失敗した場合
      */
     public void startService() throws Exception {
-        if (requestPropertyAndContextKeyMapping == null || requestPropertyAndContextKeyMapping.size() == 0) {
-            throw new IllegalArgumentException("RequestPropertyAndContextKeyMapping must be specified.");
-        }
         if (threadContextServiceName != null) {
             threadContext = (Context) ServiceManagerFactory.getServiceObject(threadContextServiceName);
         }
-        Iterator entries = requestPropertyAndContextKeyMapping.entrySet().iterator();
-        while (entries.hasNext()) {
-            Map.Entry entry = (Map.Entry) entries.next();
-            Property prop = propertyAccess.getProperty((String) entry.getKey());
-            if (!prop.isReadable(HttpServletRequest.class)) {
-                throw new IllegalArgumentException("'" + entry.getKey() + "' cannot acquire from a request. value=null");
-            }
-        }
-
     }
 
     /**
@@ -126,20 +147,122 @@ public class HttpServletRequestTransferInterceptorService extends ServletFilterI
      *                、呼び出し元には伝播されない。
      */
     public Object invokeFilter(ServletFilterInvocationContext context, InterceptorChain chain) throws Throwable {
-        if (getState() == STARTED) {
+        if (getState() == STARTED && transferSettings != null && transferSettings.size() != 0) {
             final HttpServletRequest request = (HttpServletRequest) context.getServletRequest();
-            Iterator entries = requestPropertyAndContextKeyMapping.entrySet().iterator();
-            while (entries.hasNext()) {
-                Map.Entry entry = (Map.Entry) entries.next();
-                Object value = null;
-                try {
-                    value = propertyAccess.get(request, (String) entry.getKey());
-                } catch (InvocationTargetException e) {
-                    throw e.getTargetException();
-                }
-                threadContext.put(entry.getValue(), value);
+            Iterator itr = transferSettings.iterator();
+            while(itr.hasNext()){
+                TransferSetting setting = (TransferSetting)itr.next();
+                Map codeMasters = (Map)threadContext.get(codeMasterContextKey);
+                setting.transfer(propertyAccess, request, threadContext, codeMasters);
             }
         }
         return chain.invokeNext(context);
+    }
+    
+    public static class TransferSetting implements java.io.Serializable{
+        private static final long serialVersionUID = 7998921206986731545L;
+        
+        protected String requestProperty;
+        protected String contextKey;
+        protected String codeMasterName;
+        protected String codeMasterProperty;
+        
+        /**
+         * リクエストから取得するプロパティ名を設定する。<p>
+         *
+         * @param property プロパティ名
+         */
+        public void setRequestProperty(String property){
+            requestProperty = property;
+        }
+        
+        /**
+         * コンテキストに設定するキー名を設定する。<p>
+         *
+         * @param key キー名
+         */
+        public void setContextKey(String key){
+            contextKey = key;
+        }
+        
+        /**
+         * リクエストから取得した値をキーにして、コンテキストに設定する値を引きにいくコードマスタ名を設定する。<p>
+         *
+         * @param name コードマスタ名
+         */
+        public void setCodeMasterName(String name){
+            codeMasterName = name;
+        }
+        
+        /**
+         * コードマスタのレコードから取得する値のプロパティ名を設定する。<p>
+         *
+         * @param property プロパティ名
+         */
+        public void setCodeMasterProperty(String property){
+            codeMasterProperty = property;
+        }
+        
+        public String toString(){
+            StringBuilder buf = new StringBuilder();
+            buf.append("{requestProperty=").append(requestProperty);
+            buf.append(",contextKey=").append(contextKey);
+            if(codeMasterName != null){
+                buf.append(",codeMasterName=").append(codeMasterName);
+            }
+            if(codeMasterProperty != null){
+                buf.append(",codeMasterProperty=").append(codeMasterProperty);
+            }
+            buf.append('}');
+            return buf.toString();
+        }
+        
+        protected void transfer(PropertyAccess propertyAccess, HttpServletRequest request, Context context, Map codeMasters) throws Throwable{
+            Object value = null;
+            try{
+                value = propertyAccess.get(request, requestProperty);
+            }catch (InvocationTargetException e) {
+                throw e.getTargetException();
+            }
+            if(codeMasterName != null){
+                if(codeMasters == null){
+                    throw new IllegalArgumentException("CodeMaster did not bind on context.");
+                }
+                Object master = codeMasters.get(codeMasterName);
+                if(master == null){
+                    throw new IllegalArgumentException("Master did not find on CodeMaster. codeMasterName=" + codeMasterName);
+                }
+                if(master instanceof RecordSet){
+                    RecordSet recset = (RecordSet)master;
+                    value = recset.get(value == null ? null : value.toString());
+                    if(value != null && codeMasterProperty != null){
+                        try{
+                            value = propertyAccess.get(value, codeMasterProperty);
+                        }catch (InvocationTargetException e) {
+                            throw e.getTargetException();
+                        }
+                    }
+                }else if(master instanceof RecordList){
+                    RecordList recordList = (RecordList)master;
+                    PropertySchema[] schemata = recordList.getRecordSchema().getPrimaryKeyPropertySchemata();
+                    if(schemata == null || schemata.length != 1){
+                        throw new IllegalArgumentException("Size of primary key property not equal 1. = schema=" + recordList.getRecordSchema());
+                    }
+                    Record key = recordList.createRecord();
+                    key.setProperty(schemata[0].getName(), value);
+                    value = recordList.searchByPrimaryKey(key);
+                    if(value != null && codeMasterProperty != null){
+                        try{
+                            value = propertyAccess.get(value, codeMasterProperty);
+                        }catch (InvocationTargetException e) {
+                            throw e.getTargetException();
+                        }
+                    }
+                }else{
+                    throw new IllegalArgumentException("Unsupported master type. type=" + master.getClass());
+                }
+            }
+            context.put(contextKey, value);
+        }
     }
 }
