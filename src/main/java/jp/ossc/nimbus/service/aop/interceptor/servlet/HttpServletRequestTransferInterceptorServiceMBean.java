@@ -32,6 +32,7 @@
 package jp.ossc.nimbus.service.aop.interceptor.servlet;
 
 import java.util.Map;
+import java.util.List;
 
 import jp.ossc.nimbus.core.ServiceName;
 
@@ -65,12 +66,38 @@ public interface HttpServletRequestTransferInterceptorServiceMBean extends Servl
      * @param mapping マッピング
      */
     public void setRequestPropertyAndContextKeyMapping(Map mapping);
-
+    
     /**
-     * HttpServletRequestオブジェクトのプロパティ名とThreadContextに設定するキー名のマッピングを取得する。<p>
+     * ThreadContextサービスのコードマスタのキー名を設定する。<p>
+     * デフォルトは、{@link jp.ossc.nimbus.service.aop.interceptor.ThreadContextKey#CODEMASTER}。<br>
      *
-     * @return マッピング
+     * @param key コードマスタのキー名
      */
-    public Map getRequestPropertyAndContextKeyMapping();
-
+    public void setCodeMasterContextKey(String key);
+    
+    /**
+     * ThreadContextサービスのコードマスタのキー名を取得する。<p>
+     *
+     * @return コードマスタのキー名
+     */
+    public String getCodeMasterContextKey();
+    
+    /**
+     * 移し替え設定を設定する。<p>
+     *
+     * @param setting 移し替え設定
+     */
+    public void setTransferSetting(HttpServletRequestTransferInterceptorService.TransferSetting setting);
+    
+    /**
+     * 移し替え設定を削除する。<p>
+     */
+    public void clearTransferSettings();
+    
+    /**
+     * 移し替え設定のリストを取得する。<p>
+     *
+     * @return 移し替え設定のリスト
+     */
+    public List getTransferSettings();
 }
