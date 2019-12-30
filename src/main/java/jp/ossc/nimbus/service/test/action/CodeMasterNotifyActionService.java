@@ -143,9 +143,6 @@ public class CodeMasterNotifyActionService extends ServiceBase implements TestAc
         if(jmsTopicSessionFactoryServiceName != null){
             jmsTopicSessionFactory = (JMSSessionFactory)ServiceManagerFactory.getServiceObject(jmsTopicSessionFactoryServiceName);
         }
-        if(serverConnectionFactory == null && serverConnectionFactoryServiceName == null){
-            throw new IllegalArgumentException("ServerConnectionFactory is null.");
-        }
         if((jndiFinder == null || jmsTopicSessionFactory == null || topicName == null)
             && ((serverConnectionFactory == null && serverConnectionFactoryServiceName == null) || subject == null)){
             throw new IllegalArgumentException("JndiFinder and JMSTopicSessionFactory and TopicName, or ServerConnectionFactory and Subject must be specified.");
