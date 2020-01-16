@@ -427,10 +427,12 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
         }
         if(authenticatedInfo == null && authenticateStore != null){
             authenticatedInfo = authenticateStore.activate(request, requestObject);
-            if(session == null){
-                session = request.getSession(true);
+            if(authenticatedInfo != null) {
+                if(session == null){
+                    session = request.getSession(true);
+                }
+                session.setAttribute(authenticatedInfoAttributeName, new AuthenticatedInfo(authenticatedInfo, authenticateStoreServiceName));
             }
-            session.setAttribute(authenticatedInfoAttributeName, new AuthenticatedInfo(authenticatedInfo, authenticateStoreServiceName));
         }
         if(authenticatedInfo == null){
             throw new NoAuthenticateException("AuthenticatedInfo is null.");
