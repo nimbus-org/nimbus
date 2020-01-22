@@ -57,6 +57,11 @@ public class UnicodeHexBufferedReader extends BufferedReader implements StringCo
      */
     public static final int STRING_TO_UNICODE = REVERSE_CONVERT;
     
+    /**
+     * ASCII文字列以外→16進表現ユニコード文字列変換を表す変換種別定数。<p>
+     */
+    public static final int STRING_TO_UNICODE_EXCLUDE_ASCII = 3;
+    
     private int convertType = UNICODE_TO_STRING;
     
     private ReaderWrapper readerWrapper;
@@ -139,12 +144,28 @@ public class UnicodeHexBufferedReader extends BufferedReader implements StringCo
      * @return 16進表現ユニコード文字列
      */
     public static String convertUnicode(String unicodeStr){
+        return convertUnicode(unicodeStr, false);
+    }
+    
+    /**
+     * 指定された文字列を16進表現ユニコード文字列に変換する。<p>
+     *
+     * @param unicodeStr 文字列
+     * @param excludeAscii ASCII文字を除外する場合true
+     * @return 16進表現ユニコード文字列
+     */
+    public static String convertUnicode(String unicodeStr, boolean excludeAscii){
         String str = null;
         if(unicodeStr != null){
             final int len = unicodeStr.length();
             final StringBuilder buf = new StringBuilder(len*6);
             for(int i = 0;i<len;i++){
-                convertUnicode(unicodeStr.charAt(i), buf);
+                char c = unicodeStr.charAt(i);
+                if(excludeAscii && c >= 0x00 && c <= 0x7f){
+                    buf.append(c);
+                }else{
+                    convertUnicode(unicodeStr.charAt(i), buf);
+                }
             }
             str = buf.toString();
         }
@@ -323,6 +344,8 @@ public class UnicodeHexBufferedReader extends BufferedReader implements StringCo
         switch(convertType){
         case STRING_TO_UNICODE:
             return convertUnicode(str);
+        case STRING_TO_UNICODE_EXCLUDE_ASCII:
+            return convertUnicode(str, true);
         case UNICODE_TO_STRING:
         default:
             return convertString(str);
@@ -333,6 +356,7 @@ public class UnicodeHexBufferedReader extends BufferedReader implements StringCo
         switch(type){
         case UNICODE_TO_STRING:
         case STRING_TO_UNICODE:
+        case STRING_TO_UNICODE_EXCLUDE_ASCII:
             convertType = type;
             break;
         default:
