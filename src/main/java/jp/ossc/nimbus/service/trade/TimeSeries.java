@@ -99,7 +99,7 @@ public abstract class TimeSeries<E extends TimeSeries.Element> extends ArrayList
         }
         int toIndex = to == null ? size() : Collections.binarySearch(this, new Element(to, 0d));
         if(toIndex < 0){
-            toIndex = -fromIndex - 1;
+            toIndex = -toIndex - 1;
         }
         TimeSeries<E> result = null;
         try{
