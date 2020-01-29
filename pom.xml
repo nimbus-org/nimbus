@@ -527,6 +527,18 @@
         </dependency>
         
         <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-lambda-java-core</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-lambda-java-events</artifactId>
+            <version>2.2.7</version>
+        </dependency>
+        
+        <dependency>
             <groupId>jtidy</groupId>
             <artifactId>jtidy</artifactId>
             <version>1.0</version>
@@ -965,6 +977,7 @@
                                 <param>7</param>
                                 <param>8</param>
                                 <param>9</param>
+                                <param>11</param>
                             </checkJavaVersions>
                             <replaceTargetDirs>
                                 <param>jp/ossc/nimbus/**</param>
