@@ -146,10 +146,10 @@ public class Utility{
     }
     
     /**
-     * 指定された文字列内のプロパティ参照文字列をシステムプロパティの値に置換する。<p>
+     * 指定された文字列内のプロパティ参照文字列をシステムプロパティまたは環境変数の値に置換する。<p>
      *
      * @param str 文字列
-     * @return プロパティ参照文字列をシステムプロパティの値に置換した文字列
+     * @return プロパティ参照文字列をシステムプロパティまたは環境変数の値に置換した文字列
      */
     public static String replaceSystemProperty(String str){
         String result = str;
@@ -171,6 +171,9 @@ public class Utility{
         String prop = null;
         if(propStr != null && propStr.length() != 0){
             prop = System.getProperty(propStr);
+            if(prop == null){
+                System.getenv(propStr);
+            }
         }
         if(prop == null){
             return result.substring(0, endIndex + SYSTEM_PROPERTY_END.length())
