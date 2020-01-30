@@ -301,8 +301,8 @@ public class Record implements Externalizable, Cloneable, Map{
                     ){
                         throw new PropertySchemaDefineException("It is not compatible. old=" + oldProp + ", new=" + props[i]);
                     }
+                    newValues[i] = getProperty(oldProp.getName());
                 }
-                newValues[i] = getProperty(oldProp.getName());
             }
             values = newValues;
         }
