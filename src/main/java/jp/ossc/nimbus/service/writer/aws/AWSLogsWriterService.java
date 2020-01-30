@@ -154,7 +154,7 @@ public class AWSLogsWriterService extends ServiceBase implements AWSLogsWriterSe
      * @exception Exception サービスの生成処理に失敗した場合
      */
     public void createService() throws Exception{
-        recordBuffer = new ArrayList();
+        recordBuffer = new LinkedList();
     }
     
     /**
@@ -203,7 +203,13 @@ public class AWSLogsWriterService extends ServiceBase implements AWSLogsWriterSe
                 .withLogGroupName(logGroupName)
                 .withLogStreamNamePrefix(logStreamName)
         );
-        sequenceToken = result.getNextToken();
+        
+        if(result.getLogStreams().size() > 0){
+            sequenceToken = result.getLogStreams().get(0).getUploadSequenceToken();
+        }else{
+            sequenceToken = result.getNextToken();
+        }
+        
         if(bufferTimeout > 0 && bufferSize > 0){
             bufferTimeoutTimer = new Timer(true);
         }
@@ -223,12 +229,15 @@ public class AWSLogsWriterService extends ServiceBase implements AWSLogsWriterSe
             }
         }
         if(bufferSize > 0 && recordBuffer.size() > 0){
-            writeBuffer(true);
+            writeBuffer(null, true);
         }
         recordBuffer.clear();
     }
     
     public void write(WritableRecord rec) throws MessageWriteException{
+        if(rec == null){
+            return;
+        }
         if(bufferSize <= 0){
             PutLogEventsRequest logEvent = new PutLogEventsRequest()
                 .withLogGroupName(logGroupName)
@@ -239,106 +248,87 @@ public class AWSLogsWriterService extends ServiceBase implements AWSLogsWriterSe
                         .withMessage(rec.toString())
                         .withTimestamp(new Long(System.currentTimeMillis()))
                 );
-            try{
-                PutLogEventsResult result = awsLogsClient.putLogEvents(logEvent);
-                sequenceToken = result.getNextSequenceToken();
-                RejectedLogEventsInfo rejected = result.getRejectedLogEventsInfo();
-                if(rejected != null){
-                    throw new MessageWriteException("Log rejected. reason=" + rejected);
+            while(true){
+                try{
+                    PutLogEventsResult result = awsLogsClient.putLogEvents(logEvent);
+                    sequenceToken = result.getNextSequenceToken();
+                    RejectedLogEventsInfo rejected = result.getRejectedLogEventsInfo();
+                    if(rejected != null){
+                        throw new MessageWriteException("Log rejected. reason=" + rejected);
+                    }
+                }catch(InvalidSequenceTokenException e){
+                    sequenceToken = e.getExpectedSequenceToken();
+                    logEvent = logEvent.withSequenceToken(sequenceToken);
+                    continue;
+                }catch(AmazonServiceException e){
+                    throw new MessageWriteException(e);
                 }
-            }catch(AmazonServiceException e){
-                throw new MessageWriteException(e);
+                break;
             }
         }else{
-            if(bufferTimeoutTimer != null && bufferTimeoutTimerTask == null){
-                synchronized(bufferTimeoutTimer){
-                    if(bufferTimeoutTimer != null
-                         && bufferTimeoutTimerTask == null){
-                        bufferTimeoutTimerTask = new TimerTask(){
-                            public void run(){
-                                try{
-                                    writeBuffer();
-                                }catch(MessageWriteException e){
-                                }
-                            }
-                        };
-                        bufferTimeoutTimer.schedule(
-                            bufferTimeoutTimerTask,
-                            bufferTimeout
-                        );
-                    }
-                }
-            }
-            synchronized(recordBuffer){
-                recordBuffer.add(rec);
-            }
-            if(recordBuffer.size() >= bufferSize){
-                writeBuffer();
-            }
+            writeBuffer(rec, false);
         }
     }
     
-    protected void writeBuffer() throws MessageWriteException{
-        writeBuffer(false);
-    }
-    protected void writeBuffer(boolean force) throws MessageWriteException{
+    protected void writeBuffer(WritableRecord rec, boolean all) throws MessageWriteException{
         synchronized(recordBuffer){
-            if(bufferTimeoutTimer != null && bufferTimeoutTimerTask != null){
-                synchronized(bufferTimeoutTimer){
-                    if(bufferTimeoutTimer != null
-                         && bufferTimeoutTimerTask != null){
-                        bufferTimeoutTimerTask.cancel();
-                        bufferTimeoutTimerTask = null;
-                    }
-                }
+            if(rec == null){
+                bufferTimeoutTimerTask = null;
+            }else{
+                recordBuffer.add(rec);
             }
             if(recordBuffer.size() == 0){
                 return;
             }
-            int maxSize = recordBuffer.size();
-            if(!force && maxSize > bufferSize){
-                maxSize = bufferSize;
+            if(all || rec == null || recordBuffer.size() >= bufferSize){
+                List logEvents = new ArrayList();
+                do{
+                    final int maxSize = Math.min(recordBuffer.size(), bufferSize);
+                    Iterator itr = recordBuffer.iterator();
+                    for(int i = 0; i < maxSize; i++){
+                        rec = (WritableRecord)itr.next();
+                        logEvents.add(
+                            new InputLogEvent()
+                                .withMessage(rec.toString())
+                                .withTimestamp(new Long(System.currentTimeMillis()))
+                        );
+                    }
+                    PutLogEventsRequest request = new PutLogEventsRequest()
+                        .withLogGroupName(logGroupName)
+                        .withLogStreamName(logStreamName)
+                        .withSequenceToken(sequenceToken)
+                        .withLogEvents(logEvents);
+                    while(true){
+                        try{
+                            PutLogEventsResult result = awsLogsClient.putLogEvents(request);
+                            sequenceToken = result.getNextSequenceToken();
+                            RejectedLogEventsInfo rejected = result.getRejectedLogEventsInfo();
+                            if(rejected != null){
+                                throw new MessageWriteException("Log rejected. reason=" + rejected);
+                            }
+                        }catch(InvalidSequenceTokenException e){
+                            sequenceToken = e.getExpectedSequenceToken();
+                            request = request.withSequenceToken(sequenceToken);
+                            continue;
+                        }catch(AmazonServiceException e){
+                            throw new MessageWriteException(e);
+                        }
+                        break;
+                    }
+                    for(int i = 0; i < maxSize; i++){
+                        recordBuffer.remove(0);
+                    }
+                    logEvents.clear();
+                }while((all && recordBuffer.size() != 0) || recordBuffer.size() > bufferSize);
             }
-            List logEvents = new ArrayList();
-            for(int i = 0; i < maxSize; i++){
-                final WritableRecord rec
-                    = (WritableRecord)recordBuffer.get(i);
-                logEvents.add(
-                    new InputLogEvent()
-                        .withMessage(rec.toString())
-                        .withTimestamp(new Long(System.currentTimeMillis()))
-                );
-            }
-            PutLogEventsRequest request = new PutLogEventsRequest()
-                .withLogGroupName(logGroupName)
-                .withLogStreamName(logStreamName)
-                .withSequenceToken(sequenceToken)
-                .withLogEvents(logEvents);
-            try{
-                PutLogEventsResult result = awsLogsClient.putLogEvents(request);
-                sequenceToken = result.getNextSequenceToken();
-                RejectedLogEventsInfo rejected = result.getRejectedLogEventsInfo();
-                if(rejected != null){
-                    throw new MessageWriteException("Log rejected. reason=" + rejected);
-                }
-            }catch(AmazonServiceException e){
-                throw new MessageWriteException(e);
-            }
-            for(int i = 0; i < maxSize; i++){
-                recordBuffer.remove(0);
-            }
-            if(recordBuffer.size() >= bufferSize){
-                writeBuffer();
-            }
-            if(bufferTimeoutTimer != null && bufferTimeoutTimerTask == null
-                && recordBuffer.size() != 0){
+            
+            if(recordBuffer.size() > 0 && bufferTimeoutTimer != null && bufferTimeoutTimerTask == null){
                 synchronized(bufferTimeoutTimer){
-                    if(bufferTimeoutTimer != null
-                         && bufferTimeoutTimerTask == null){
+                    if(bufferTimeoutTimer != null && bufferTimeoutTimerTask == null){
                         bufferTimeoutTimerTask = new TimerTask(){
                             public void run(){
                                 try{
-                                    writeBuffer();
+                                    writeBuffer(null, false);
                                 }catch(MessageWriteException e){
                                 }
                             }
