@@ -34,6 +34,7 @@ package jp.ossc.nimbus.serverless.aws;
 import java.lang.reflect.Method;
 
 import jp.ossc.nimbus.beans.ServiceNameEditor;
+import jp.ossc.nimbus.beans.PropertyAccess;
 import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.service.aop.InterceptorChainFactory;
@@ -51,6 +52,7 @@ import com.amazonaws.services.lambda.runtime.Context;
  *   <tr><td>{@link #ENV_SERVICE_DEFINITION_FILTER}</td><td>サービス定義ファイルの配置ディレクトリの配下の、サービス定義ファイルを特定するフィルタ文字列を指定する</td></tr>
  *   <tr><td>{@link #ENV_SERVICE_DEFINITION_PATHS}</td><td>サービス定義ファイルのパスをパスセパレータ区切りで指定する</td></tr>
  *   <tr><td>{@link #ENV_INTERCEPTOR_CHAIN_FACTORY_SERVICE_NAME}</td><td>{@link InterceptorChainFactory}サービスのサービス名を指定する</td></tr>
+ *   <tr><td>{@link #CONTEXT_PROPERTIES}</td><td>初期化時に、com.amazonaws.services.lambda.runtime.Contextから取得して、システムプロパティに転写するプロパティ名を、カンマ区切りで指定する。システムプロパティ名は、com.amazonaws.services.lambda.runtime.Context.プロパティ名となる。</td></tr>
  * </table>
  *
  * @author M.Takata
@@ -61,11 +63,13 @@ public abstract class NimbusRequestHandler<I,O,CI,CO>{
     protected static final String ENV_SERVICE_DEFINITION_FILTER = "SERVICE_DEFINITION_FILTER";
     protected static final String ENV_SERVICE_DEFINITION_PATHS = "SERVICE_DEFINITION_PATHS";
     protected static final String ENV_INTERCEPTOR_CHAIN_FACTORY_SERVICE_NAME = "INTERCEPTOR_CHAIN_FACTORY_SERVICE_NAME";
+    protected static final String ENV_CONTEXT_PROPERTIES = "CONTEXT_PROPERTIES";
     
     protected boolean isInitialized;
     protected boolean initializeResult;
     protected InterceptorChainFactory interceptorChainFactory;
     protected Method processHandleRequestMethod;
+    protected PropertyAccess propertyAccess;
     
     /**
      * 環境変数からサービス定義ファイルの配置ディレクトリを取得する。<p>
@@ -109,6 +113,19 @@ public abstract class NimbusRequestHandler<I,O,CI,CO>{
      */
     protected ServiceName getInterceptorChainFactoryServiceName(){
         return getEnvServiceName(ENV_INTERCEPTOR_CHAIN_FACTORY_SERVICE_NAME);
+    }
+    
+    /**
+     * 環境変数からシステムプロパティに転写するコンテキストのプロパティ名配列を取得する。<p>
+     *
+     * @return システムプロパティに転写するコンテキストのプロパティ名配列
+     */
+    protected String[] getContextProperties(){
+        String value = System.getenv(ENV_CONTEXT_PROPERTIES);
+        if(value == null || value.length() == 0){
+            return null;
+        }
+        return value.split(",");
     }
     
     /**
@@ -162,6 +179,16 @@ public abstract class NimbusRequestHandler<I,O,CI,CO>{
         return initializeResult;
     }
     
+    protected void setSystemProperty(Context context, String propertyName){
+        try{
+            Object value = propertyAccess.get(context, propertyName);
+            if(value != null){
+                System.setProperty(Context.class.getName() + '.' + propertyName, value.toString());
+            }
+        }catch(Exception e){
+        }
+    }
+    
     /**
      * 初期化処理を行う。<p>
      * サービス定義の読み込みを行う。<br>
@@ -170,6 +197,16 @@ public abstract class NimbusRequestHandler<I,O,CI,CO>{
      * @return 初期化処理結果
      */
     protected boolean init(Context context){
+        propertyAccess = new PropertyAccess();
+        propertyAccess.setIgnoreNullProperty(true);
+        
+        String[] contextProperties = getContextProperties();
+        if(contextProperties != null){
+            for(int i = 0; i < contextProperties.length; i++){
+                setSystemProperty(context, contextProperties[i]);
+            }
+        }
+        
         String[] dirs = getServiceDefinitionDirectories();
         if(dirs != null){
             String filter = getServiceDefinitionFilter();
@@ -263,7 +300,7 @@ public abstract class NimbusRequestHandler<I,O,CI,CO>{
      * @param context 要求コンテキスト
      * @exception Throwable リクエスト処理で例外が発生した場合
      */
-    protected void processHandleRequest(RequestContext<CI, CO> context) throws Throwable{
+    public void processHandleRequest(RequestContext<CI, CO> context) throws Throwable{
         if(processValidate(context)){
             processRequest(context);
         }
