@@ -356,6 +356,33 @@ public class CSVCompareEvaluateActionService extends ServiceBase implements Eval
                     return false;
                 }
             }
+            if(ignoreNames == null && ignoreIndexes == null && ignoreRegexPatternMap != null) {
+                srccsv = srccsvr.readCSVLineList(srccsv);
+                if(srccsv != null && srccsv.size() != 0){
+                    Map tmpIgnoreRegexPatternMap = null;
+                    for(int i = 0; i < srccsv.size(); i++){
+                        if(ignoreRegexPatternMap.containsKey(srccsv.get(i))){
+                            if(tmpIgnoreRegexPatternMap == null) {
+                                tmpIgnoreRegexPatternMap = new HashMap();
+                            }
+                            tmpIgnoreRegexPatternMap.put(new Integer(i), ignoreRegexPatternMap.remove(srccsv.get(i)));
+                        }
+                    }
+                    if(tmpIgnoreRegexPatternMap != null){
+                        ignoreRegexPatternMap = tmpIgnoreRegexPatternMap;
+                    }
+                }
+                if(isOutputFileAfterEdit){
+                    writeCSV(srccsvw, srccsv, ignores, ignoreRegexPatternMap);
+                }
+                dstcsv = dstcsvr.readCSVLineList(dstcsv);
+                if(isOutputFileAfterEdit){
+                    writeCSV(dstcsvw, dstcsv, ignores, ignoreRegexPatternMap);
+                }
+                if(!compareCSVList(srccsv, dstcsv, ignores, ignoreRegexPatternMap)){
+                    return false;
+                }
+            }
             do{
                 if(srccsv != null){
                     srccsv = srccsvr.readCSVLineList(srccsv);
@@ -422,6 +449,8 @@ public class CSVCompareEvaluateActionService extends ServiceBase implements Eval
     protected boolean compareCSVList(List src, List dst, boolean[] ignores, Map ignoreRegexPatternMap){
         if(src == null){
             return dst == null ? true : false;
+        } else if(dst == null){
+            return false;
         }
         if(src.size() != dst.size()){
             return false;
