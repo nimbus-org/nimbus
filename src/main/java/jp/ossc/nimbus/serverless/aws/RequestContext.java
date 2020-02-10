@@ -45,15 +45,8 @@ public class RequestContext<I,O>{
     protected I input;
     protected O output;
     
-    public RequestContext(I input, Context context){
+    public RequestContext(Context context){
         this.context = context;
-        this.input = input;
-    }
-    
-    public RequestContext(I input, O output, Context context){
-        this.context = context;
-        this.input = input;
-        this.output = output;
     }
     
     public Context getContext(){

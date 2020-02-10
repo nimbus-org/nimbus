@@ -48,7 +48,7 @@ public class APIGatewayRequestContext<I,O> extends RequestContext<I,O>{
     protected APIGatewayProxyResponseEvent response;
     
     public APIGatewayRequestContext(APIGatewayProxyRequestEvent request, Context context){
-        super(null, context);
+        super(context);
         this.request = request;
         response = new APIGatewayProxyResponseEvent();
     }

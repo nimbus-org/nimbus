@@ -96,8 +96,9 @@ public abstract class RequestStreamHandler<I,O> extends NimbusRequestHandler<Inp
         if(!processInit(context)){
             outputIs = processInitError(context);
         }else{
-            RequestContext<I, O> rc = processCreateRequestContext(is, context);
+            RequestContext<I, O> rc = processCreateRequestContext(context);
             try{
+                rc.setInput(processConvertToInput(is, rc));
                 if(interceptorChainFactory == null){
                     processHandleRequest(rc);
                 }else{

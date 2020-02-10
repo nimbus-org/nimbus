@@ -247,8 +247,8 @@ public abstract class NimbusRequestHandler<I,O,CI,CO>{
      * @param context コンテキスト
      * @return 要求コンテキスト
      */
-    protected RequestContext<CI, CO> processCreateRequestContext(I input, Context context){
-        return new RequestContext<CI, CO>(processConvertToRequestContextInput(input, context), context);
+    protected RequestContext<CI, CO> processCreateRequestContext(Context context){
+        return new RequestContext<CI, CO>(context);
     }
     
     /**
@@ -256,10 +256,10 @@ public abstract class NimbusRequestHandler<I,O,CI,CO>{
      * 入力型から要求コンテキストの入力型へキャストする。<br/>
      *
      * @param input 入力
-     * @param context コンテキスト
+     * @param context 要求コンテキスト
      * @return 要求コンテキストの入力
      */
-    protected CI processConvertToRequestContextInput(I input, Context context){
+    protected CI processConvertToInput(I input, RequestContext<CI, CO> context){
         return (CI)input;
     }
     
