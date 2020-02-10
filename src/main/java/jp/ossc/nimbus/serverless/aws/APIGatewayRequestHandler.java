@@ -126,6 +126,7 @@ public abstract class APIGatewayRequestHandler<I,O> extends NimbusRequestHandler
         }else{
             RequestContext<I, O> rc = processCreateRequestContext(input, context);
             try{
+                rc.setInput(processConvertToRequestContextInput(input, context));
                 if(interceptorChainFactory == null){
                     processHandleRequest(rc);
                 }else{
@@ -140,7 +141,6 @@ public abstract class APIGatewayRequestHandler<I,O> extends NimbusRequestHandler
     
     protected RequestContext<I,O> processCreateRequestContext(APIGatewayProxyRequestEvent request, Context context){
         APIGatewayRequestContext<I,O> rc = new APIGatewayRequestContext<I,O>(request, context);
-        rc.setInput(processConvertToRequestContextInput(request, context));
         return rc;
     }
     
@@ -272,6 +272,9 @@ public abstract class APIGatewayRequestHandler<I,O> extends NimbusRequestHandler
             if(outputBody != null){
                 response.setBody(outputBody.toString());
             }
+        }
+        if(response.getStatusCode() == null){
+            response.setStatusCode(Integer.valueOf(200));
         }
         return response;
     }
