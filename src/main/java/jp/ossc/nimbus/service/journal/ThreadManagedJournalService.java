@@ -105,6 +105,8 @@ public class ThreadManagedJournalService
     private Daemon[] mDaemon ;
     private int mJournalLevel;
     
+    private boolean isSynchronizedWrite;
+    
     /**
      * サービスの生成処理を行う。<p>
      * インスタンス変数の初期化を行う。<br>
@@ -163,24 +165,6 @@ public class ThreadManagedJournalService
             );
         }
         
-        if(mQueueServiceName == null){
-            if(mQueue == null) {
-                if(getDefaultQueueService() == null){
-                    final DefaultQueueService defaultQueue
-                         = new DefaultQueueService();
-                    defaultQueue.create();
-                    defaultQueue.start();
-                    setDefaultQueueService(defaultQueue);
-                }else{
-                    getDefaultQueueService().start();
-                }
-                mQueue = getDefaultQueueService();
-            }
-        }else{
-            mQueue = (Queue)ServiceManagerFactory
-                .getServiceObject(mQueueServiceName);
-        }
-        
         // カテゴリの登録
         if(categories == null) {
             categories = new ArrayList();
@@ -195,18 +179,37 @@ public class ThreadManagedJournalService
             }
         }
         
-        // キュー取得待ちを開始する
-        mQueue.accept();
-        
-        if(mQueue instanceof QueueHandlerContainer){
-            ((QueueHandlerContainer)mQueue).setQueueHandler(this);
-            ((QueueHandlerContainer)mQueue).start();
-        }else{
-            mDaemon = new Daemon[writeDaemonSize];
-            for(int i = 0; i < writeDaemonSize; i++){
-                mDaemon[i] = new Daemon(this);
-                mDaemon[i].setName("Nimbus JournalWriterDaemon " + getServiceNameObject() + '[' + (i + 1) + ']');
-                mDaemon[i].start();
+        if(!isSynchronizedWrite()){
+            if(mQueueServiceName == null){
+                if(mQueue == null) {
+                    if(getDefaultQueueService() == null){
+                        final DefaultQueueService defaultQueue
+                             = new DefaultQueueService();
+                        defaultQueue.create();
+                        defaultQueue.start();
+                        setDefaultQueueService(defaultQueue);
+                    }else{
+                        getDefaultQueueService().start();
+                    }
+                    mQueue = getDefaultQueueService();
+                }
+            }else{
+                mQueue = (Queue)ServiceManagerFactory
+                    .getServiceObject(mQueueServiceName);
+            }
+            // キュー取得待ちを開始する
+            mQueue.accept();
+            
+            if(mQueue instanceof QueueHandlerContainer){
+                ((QueueHandlerContainer)mQueue).setQueueHandler(this);
+                ((QueueHandlerContainer)mQueue).start();
+            }else{
+                mDaemon = new Daemon[writeDaemonSize];
+                for(int i = 0; i < writeDaemonSize; i++){
+                    mDaemon[i] = new Daemon(this);
+                    mDaemon[i].setName("Nimbus JournalWriterDaemon " + getServiceNameObject() + '[' + (i + 1) + ']');
+                    mDaemon[i].start();
+                }
             }
         }
     }
@@ -218,24 +221,26 @@ public class ThreadManagedJournalService
      */
     public void stopService(){
         
-        if(mDaemon != null){
-            for(int i = 0; i < mDaemon.length; i++){
-                mDaemon[i].stop();
+        if(!isSynchronizedWrite()){
+            if(mDaemon != null){
+                for(int i = 0; i < mDaemon.length; i++){
+                    mDaemon[i].stop();
+                }
             }
-        }
-        
-        if(mQueue instanceof QueueHandlerContainer){
-            ((QueueHandlerContainer)mQueue).stop();
-        }
-        
-        // キュー取得待ちを開放する
-        mQueue.release();
-        
-        // Queueサービスを無名サービスとして生成している場合、
-        // そのサービスを停止する
-        if(mQueue == getDefaultQueueService()){
-            getDefaultQueueService().stop();
-            mQueue = null;
+            
+            if(mQueue instanceof QueueHandlerContainer){
+                ((QueueHandlerContainer)mQueue).stop();
+            }
+            
+            // キュー取得待ちを開放する
+            mQueue.release();
+            
+            // Queueサービスを無名サービスとして生成している場合、
+            // そのサービスを停止する
+            if(mQueue == getDefaultQueueService()){
+                getDefaultQueueService().stop();
+                mQueue = null;
+            }
         }
         
         categories.clear();
@@ -259,9 +264,11 @@ public class ThreadManagedJournalService
         
         // QueueFactoryサービスを無名サービスとして生成している場合、
         // そのサービスを破棄する
-        if(mQueue == getDefaultQueueService()){
-            getDefaultQueueService().destroy();
-            setDefaultQueueService(null);
+        if(!isSynchronizedWrite()){
+            if(mQueue == getDefaultQueueService()){
+                getDefaultQueueService().destroy();
+                setDefaultQueueService(null);
+            }
         }
         mQueue = null;
         
@@ -393,7 +400,11 @@ public class ThreadManagedJournalService
         if(getState() != STARTED){
             return;
         }
-        mQueue.push(jr);
+        if(isSynchronizedWrite()){
+            consume(jr, null);
+        }else{
+            mQueue.push(jr);
+        }
     }
     
     // Journal のJavaDoc
@@ -760,6 +771,15 @@ public class ThreadManagedJournalService
     // ThreadManagedJournalServiceMBean のJavaDoc
     public int getWriteDaemonSize(){
         return writeDaemonSize;
+    }
+    
+    // ThreadManagedJournalServiceMBean のJavaDoc
+    public void setSynchronizedWrite(boolean isSynch){
+        isSynchronizedWrite = isSynch;
+    }
+    // ThreadManagedJournalServiceMBean のJavaDoc
+    public boolean isSynchronizedWrite(){
+        return isSynchronizedWrite;
     }
     
     /**
