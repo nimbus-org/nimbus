@@ -133,4 +133,19 @@ public interface ThreadManagedJournalServiceMBean extends ServiceBaseMBean{
     
     public void setWriteDaemonSize(int size);
     public int getWriteDaemonSize();
+    
+    /**
+     * {@link jp.ossc.nimbus.service.writer.Category Category}サービスへの出力を同期的に行うかどうかを設定する。<p>
+     * デフォルトは、falseで、非同期に出力する。<br>
+     *
+     * @param isSynch 出力を同期的に行う場合、true
+     */
+    public void setSynchronizedWrite(boolean isSynch);
+    
+    /**
+     * {@link jp.ossc.nimbus.service.writer.Category Category}サービスへの出力を同期的に行うかどうかを判定する。<p>
+     *
+     * @return trueの場合、出力を同期的に行う
+     */
+    public boolean isSynchronizedWrite();
 }
