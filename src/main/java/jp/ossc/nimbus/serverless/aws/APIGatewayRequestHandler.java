@@ -111,9 +111,8 @@ public abstract class APIGatewayRequestHandler<I,O> extends NimbusRequestHandler
      * <ol>
      * <li>{@link #processInit(Context) 初期化処理}を行う。初期化処理で失敗した場合は、{@link #processInitError(Context) 初期化エラー処理}を行う。</li>
      * <li>初期化処理に成功すると、{@link #processCreateRequestContext(Object, Context) 要求コンテキストの生成}を行う。</li>
-     * <li>{@link InterceptorChainFactory}が設定されていない場合は、{@link #processHandleRequest(RequestContext) リクエスト処理}にを行う。設定されている場合は、{@link #processHandleRequestWithInterceptorChain(RequestContext) インターセプタ付きリクエスト処理}を行う。</li>
-     * <li>例外が発生した場合は、{@link #processHandleError(RequestContext, Throwable) エラー処理}を行う。</li>
-     * <li>{@link #processConvertToOutput(RequestContext) 出力変換処理}を行う。</li>
+     * <li>{@link InterceptorChainFactory}が設定されていない場合は、{@link #processHandleRequest(Object,RequestContext) リクエスト処理}にを行う。設定されている場合は、{@link #processHandleRequestWithInterceptorChain(RequestContext) インターセプタ付きリクエスト処理}を行う。</li>
+     * <li>例外が発生した場合は、{@link #processHandleError(Object, RequestContext, Throwable) エラー処理}を行う。</li>
      * </ol>
      *
      * @param input 入力
@@ -126,16 +125,14 @@ public abstract class APIGatewayRequestHandler<I,O> extends NimbusRequestHandler
         }else{
             RequestContext<I, O> rc = processCreateRequestContext(input, context);
             try{
-                rc.setInput(processConvertToRequestContextInput(input, context));
                 if(interceptorChainFactory == null){
-                    processHandleRequest(rc);
+                    return processHandleRequest(input, rc);
                 }else{
-                    processHandleRequestWithInterceptorChain(rc);
+                    return processHandleRequestWithInterceptorChain(input, rc);
                 }
             }catch(Throwable th){
-                processHandleError(rc, th);
+                return processHandleError(input, rc, th);
             }
-            return processConvertToOutput(rc);
         }
     }
     
@@ -149,10 +146,11 @@ public abstract class APIGatewayRequestHandler<I,O> extends NimbusRequestHandler
      * {@link APIGatewayProxyRequestEvent リクエスト}のパラメータやボディを、入力変換の{@link Converter}を使って変換する。<br/>
      *
      * @param request リクエスト
-     * @param context コンテキスト
+     * @param context 要求コンテキスト
      * @return 要求コンテキストの入力
+     * @exception Throwable 入力変換処理で例外が発生した場合
      */
-    protected I processConvertToRequestContextInput(APIGatewayProxyRequestEvent request, Context context){
+    protected I processConvertToInput(APIGatewayProxyRequestEvent request, RequestContext<I, O> context) throws Throwable{
         Converter converter = inputConverter;
         if(converter != null && converter instanceof StreamStringConverter){
             String characterEncoding = getCharacterEncoding(request);
@@ -236,10 +234,11 @@ public abstract class APIGatewayRequestHandler<I,O> extends NimbusRequestHandler
      * デフォルトでは、nullを返す。必要に応じて、オーバーライドしてください。<br>
      *
      * @param request リクエスト
-     * @param context コンテキスト
+     * @param context 要求コンテキスト
      * @return 要求コンテキストの入力
+     * @exception Throwable 入力変換処理で例外が発生した場合
      */
-    protected I processCreateInputObject(APIGatewayProxyRequestEvent request, Context context){
+    protected I processCreateInputObject(APIGatewayProxyRequestEvent request, RequestContext<I, O> context) throws Throwable{
         return null;
     }
     
@@ -249,8 +248,9 @@ public abstract class APIGatewayRequestHandler<I,O> extends NimbusRequestHandler
      *
      * @param context 要求コンテキスト
      * @return レスポンス
+     * @exception Throwable 出力変換処理で例外が発生した場合
      */
-    protected APIGatewayProxyResponseEvent processConvertToOutput(RequestContext<I, O> context){
+    protected APIGatewayProxyResponseEvent processConvertToOutput(RequestContext<I, O> context) throws Throwable{
         APIGatewayRequestContext<I,O> rc = (APIGatewayRequestContext)context;
         O output = rc.getOutput();
         APIGatewayProxyResponseEvent response = rc.getResponse();
@@ -295,7 +295,8 @@ public abstract class APIGatewayRequestHandler<I,O> extends NimbusRequestHandler
     
     protected String getCharacterEncoding(APIGatewayProxyRequestEvent request){
         String characterEncoding = "UTF-8";
-        final String contentType = request.getHeaders().get("Content-Type");
+        Map<String,String> headers = request.getHeaders();
+        final String contentType = headers == null ? null : headers.get("Content-Type");
         if(contentType == null){
             return characterEncoding;
         }

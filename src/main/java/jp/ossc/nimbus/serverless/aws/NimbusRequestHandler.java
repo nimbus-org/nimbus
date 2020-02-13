@@ -230,7 +230,7 @@ public abstract class NimbusRequestHandler<I,O,CI,CO>{
                 try{
                     processHandleRequestMethod = getClass().getMethod(
                         "processHandleRequest",
-                        new Class[]{RequestContext.class}
+                        new Class[]{Object.class, RequestContext.class}
                     );
                 }catch(Exception e){
                 }
@@ -241,7 +241,6 @@ public abstract class NimbusRequestHandler<I,O,CI,CO>{
     
     /**
      * 要求コンテキストの生成を行う。<p>
-     * {@link #processConvertToRequestContextInput(Object, Context) 入力変換処理}を行い、要求コンテキストを生成する。<br/>
      *
      * @param input 入力
      * @param context コンテキスト
@@ -258,8 +257,9 @@ public abstract class NimbusRequestHandler<I,O,CI,CO>{
      * @param input 入力
      * @param context 要求コンテキスト
      * @return 要求コンテキストの入力
+     * @exception Throwable 入力変換処理で例外が発生した場合
      */
-    protected CI processConvertToInput(I input, RequestContext<CI, CO> context){
+    protected CI processConvertToInput(I input, RequestContext<CI, CO> context) throws Throwable{
         return (CI)input;
     }
     
@@ -269,41 +269,50 @@ public abstract class NimbusRequestHandler<I,O,CI,CO>{
      *
      * @param context 要求コンテキスト
      * @return 出力
+     * @exception Throwable 出力変換処理で例外が発生した場合
      */
-    protected O processConvertToOutput(RequestContext<CI, CO> context){
+    protected O processConvertToOutput(RequestContext<CI, CO> context) throws Throwable{
         return (O)context.getOutput();
     }
     
     /**
      * {@link InterceptorChain}を経由して、{@link #processHandleRequest(RequestContext) リクエスト処理}を行う。<p>
      *
+     * @param input 入力
      * @param context 要求コンテキスト
+     * @return 出力
      * @exception Throwable リクエスト処理で例外が発生した場合
      */
-    protected void processHandleRequestWithInterceptorChain(RequestContext<CI, CO> context) throws Throwable{
+    protected O processHandleRequestWithInterceptorChain(I input, RequestContext<CI, CO> context) throws Throwable{
         final InterceptorChain chain = interceptorChainFactory.getInterceptorChain(context.getContext().getFunctionName());
         final InvocationContext ic = new DefaultMethodInvocationContext(
             this,
             processHandleRequestMethod,
-            new Object[]{context}
+            new Object[]{input, context}
         );
-        chain.invokeNext(ic);
+        return (O)chain.invokeNext(ic);
     }
     
     /**
      * リクエスト処理を行う。<p>
      * <ol>
+     * <li>{@link #processConvertToInput(Object,RequestContext) 入力変換処理}を行い、要求コンテキストに入力を設定する。</li>
      * <li>{@link #processValidate(RequestContext) 検証処理}を行う。</li>
      * <li>検証処理に成功した場合、{@link #processRequest(RequestContext) リクエスト処理}を行う。</li>
+     * <li>{@link #processConvertToOutput(Object,RequestContext) 出力変換処理}を行う。</li>
      * </ol>
      *
+     * @param input 入力
      * @param context 要求コンテキスト
+     * @return 出力
      * @exception Throwable リクエスト処理で例外が発生した場合
      */
-    public void processHandleRequest(RequestContext<CI, CO> context) throws Throwable{
+    public O processHandleRequest(I input, RequestContext<CI, CO> context) throws Throwable{
+        context.setInput(processConvertToInput(input, context));
         if(processValidate(context)){
             processRequest(context);
         }
+        return processConvertToOutput(context);
     }
     
     /**
@@ -341,16 +350,18 @@ public abstract class NimbusRequestHandler<I,O,CI,CO>{
      * 例外が発生した場合のエラー処理を実装する。<p>
      * デフォルトでは、{@link Error}または{@link RuntimeException}の場合は、再スロー。それ以外の場合は、エラーログを出力する。必要に応じて、オーバーライドしてください。<br>
      *
+     * @param input 入力
      * @param context 要求コンテキスト
+     * @return 出力
      */
-    protected void processHandleError(RequestContext<CI, CO> context, Throwable th){
+    protected O processHandleError(I input, RequestContext<CI, CO> context, Throwable th){
         if(th instanceof Error){
             throw (Error)th;
         }else if(th instanceof RuntimeException){
             throw (RuntimeException)th;
         }else{
             ServiceManagerFactory.getLogger().write("ERROR", "Error occured.", th);
-            return;
+            return null;
         }
     }
 }
