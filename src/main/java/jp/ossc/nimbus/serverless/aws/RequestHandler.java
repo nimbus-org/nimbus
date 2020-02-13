@@ -45,10 +45,8 @@ public abstract class RequestHandler<I,O> extends NimbusRequestHandler<I,O,I,O> 
      * <ol>
      * <li>{@link #processInit(Context) 初期化処理}を行う。初期化処理で失敗した場合は、{@link #processInitError(Context) 初期化エラー処理}を行う。</li>
      * <li>初期化処理に成功すると、{@link #processCreateRequestContext(Context) 要求コンテキストの生成}を行う。</li>
-     * <li>{@link #processConvertToInput(Object,RequestContext) 入力変換処理}を行い、RequestContextに入力を設定する。</li>
-     * <li>{@link InterceptorChainFactory}が設定されていない場合は、{@link #processHandleRequest(RequestContext) リクエスト処理}にを行う。設定されている場合は、{@link #processHandleRequestWithInterceptorChain(RequestContext) インターセプタ付きリクエスト処理}を行う。</li>
-     * <li>例外が発生した場合は、{@link #processHandleError(RequestContext, Throwable) エラー処理}を行う。</li>
-     * <li>{@link #processConvertToOutput(RequestContext) 出力変換処理}を行う。</li>
+     * <li>{@link InterceptorChainFactory}が設定されていない場合は、{@link #processHandleRequest(Object,RequestContext) リクエスト処理}にを行う。設定されている場合は、{@link #processHandleRequestWithInterceptorChain(Object,RequestContext) インターセプタ付きリクエスト処理}を行う。</li>
+     * <li>例外が発生した場合は、{@link #processHandleError(Object, RequestContext, Throwable) エラー処理}を行う。</li>
      * </ol>
      *
      * @param input 入力
@@ -61,16 +59,14 @@ public abstract class RequestHandler<I,O> extends NimbusRequestHandler<I,O,I,O> 
         }else{
             RequestContext<I, O> rc = processCreateRequestContext(context);
             try{
-                rc.setInput(processConvertToInput(input, rc));
                 if(interceptorChainFactory == null){
-                    processHandleRequest(rc);
+                    return processHandleRequest(input, rc);
                 }else{
-                    processHandleRequestWithInterceptorChain(rc);
+                    return processHandleRequestWithInterceptorChain(input, rc);
                 }
             }catch(Throwable th){
-                processHandleError(rc, th);
+                return processHandleError(input, rc, th);
             }
-            return processConvertToOutput(rc);
         }
     }
 }

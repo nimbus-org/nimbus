@@ -98,16 +98,14 @@ public abstract class RequestStreamHandler<I,O> extends NimbusRequestHandler<Inp
         }else{
             RequestContext<I, O> rc = processCreateRequestContext(context);
             try{
-                rc.setInput(processConvertToInput(is, rc));
                 if(interceptorChainFactory == null){
-                    processHandleRequest(rc);
+                    outputIs = processHandleRequest(is, rc);
                 }else{
-                    processHandleRequestWithInterceptorChain(rc);
+                    outputIs = processHandleRequestWithInterceptorChain(is, rc);
                 }
             }catch(Throwable th){
-                processHandleError(rc, th);
+                outputIs = processHandleError(is, rc, th);
             }
-            outputIs = processConvertToOutput(rc.getOutput());
         }
         new StreamExchangeConverter().convert(outputIs, os);
     }
@@ -116,11 +114,12 @@ public abstract class RequestStreamHandler<I,O> extends NimbusRequestHandler<Inp
      * 入力変換処理を行う。<p>
      * 入力ストリームを、入力変換の{@link StreamConverter}を使って変換する。<br/>
      *
-     * @param is 入力ストリーム
-     * @param context コンテキスト
+     * @param input 入力
+     * @param context 要求コンテキスト
      * @return 要求コンテキストの入力
+     * @exception Throwable 入力変換処理で例外が発生した場合
      */
-    protected I processConvertToRequestContextInput(InputStream is, Context context){
+    protected I processConvertToInput(InputStream is, RequestContext<I, O> context) throws Throwable{
         StreamConverter converter = inputStreamConverter;
         Object inputObj = processCreateInputObject(context);
         if(inputObj == null){
@@ -147,10 +146,11 @@ public abstract class RequestStreamHandler<I,O> extends NimbusRequestHandler<Inp
      * 要求コンテキストの入力となるオブジェクトを生成する。<p>
      * デフォルトでは、nullを返す。必要に応じて、オーバーライドしてください。<br>
      *
-     * @param context コンテキスト
+     * @param context 要求コンテキスト
      * @return 要求コンテキストの入力
+     * @exception Throwable 入力変換処理で例外が発生した場合
      */
-    protected I processCreateInputObject(Context context){
+    protected I processCreateInputObject(RequestContext<I, O> context) throws Throwable{
         return null;
     }
     

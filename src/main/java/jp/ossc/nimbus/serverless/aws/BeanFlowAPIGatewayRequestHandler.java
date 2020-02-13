@@ -121,21 +121,14 @@ public class BeanFlowAPIGatewayRequestHandler extends APIGatewayRequestHandler<O
      * 入力フローを実行して、その戻り値を要求コンテキストの入力として返す。<p>
      * 入力フローが存在しない場合は、nullを返す。<br>
      *
-     * @param context コンテキスト
+     * @param context 要求コンテキスト
      * @return 要求コンテキストの入力
+     * @exception Throwable 入力変換処理で例外が発生した場合
      */
-    protected Object processCreateInputObject(Context context){
+    protected Object processCreateInputObject(RequestContext<Object, Object> context) throws Throwable{
         if(beanFlowInvokerFactory.containsFlow(inputFlowName)){
             final BeanFlowInvoker inputFlow = beanFlowInvokerFactory.createFlow(inputFlowName);
-            try{
-                return inputFlow.invokeFlow(context);
-            }catch(Error e){
-                throw e;
-            }catch(RuntimeException e){
-                throw e;
-            }catch(Exception e){
-                return null;
-            }
+            return inputFlow.invokeFlow(context);
         }else{
             return null;
         }
