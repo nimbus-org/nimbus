@@ -588,4 +588,19 @@ public interface LogServiceMBean extends ServiceBaseMBean {
      * @return trueの場合は、デーモンスレッド
      */
     public boolean isDaemon();
+    
+    /**
+     * {@link LogCategory}サービスへの書き出しを同期的に行うかどうかを設定する。<p>
+     * デフォルトはfalseで、非同期に書き出す。<br>
+     *
+     * @param isSynch 同期的に書き出す場合は、true
+     */
+    public void setSynchronizedWrite(boolean isSynch);
+    
+    /**
+     * {@link LogCategory}サービスへの書き出しを同期的に行うかどうかを判定する。<p>
+     *
+     * @return trueの場合、同期的に書き出す
+     */
+    public boolean isSynchronizedWrite();
 }

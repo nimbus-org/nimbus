@@ -251,6 +251,8 @@ public class LogService extends ServiceBase
     
     private boolean isDaemon = true;
     
+    private boolean isSynchronizedWrite;
+    
     /**
      * 生成処理を行う。<p>
      * このメソッドには、以下の実装が行われている。<br>
@@ -394,21 +396,23 @@ public class LogService extends ServiceBase
         }
         
         // Queueサービスの生成または取得
-        if(getQueueServiceName() == null){
-            if(getDefaultQueueService() == null){
-                final DefaultQueueService defaultQueue
-                     = new DefaultQueueService();
-                defaultQueue.create();
-                defaultQueue.start();
-                setDefaultQueueService(defaultQueue);
+        if(!isSynchronizedWrite()){
+            if(getQueueServiceName() == null){
+                if(getDefaultQueueService() == null){
+                    final DefaultQueueService defaultQueue
+                         = new DefaultQueueService();
+                    defaultQueue.create();
+                    defaultQueue.start();
+                    setDefaultQueueService(defaultQueue);
+                }else{
+                    getDefaultQueueService().start();
+                }
+                setQueueService(getDefaultQueueService());
             }else{
-                getDefaultQueueService().start();
+                setQueueService((Queue)ServiceManagerFactory
+                        .getServiceObject(getQueueServiceName())
+                );
             }
-            setQueueService(getDefaultQueueService());
-        }else{
-            setQueueService((Queue)ServiceManagerFactory
-                    .getServiceObject(getQueueServiceName())
-            );
         }
         
         // MessageRecordFactoryサービスの生成または取得
@@ -440,13 +444,15 @@ public class LogService extends ServiceBase
             );
         }
         
-        // キュー取得待ちを開始する
-        queue.accept();
-        
-        daemon.setDaemon(isDaemon);
-        
-        // デーモン起動
-        daemon.start();
+        if(!isSynchronizedWrite()){
+            // キュー取得待ちを開始する
+            queue.accept();
+            
+            daemon.setDaemon(isDaemon);
+            
+            // デーモン起動
+            daemon.start();
+        }
     }
     
     protected void initDefaultCategory() throws Exception{
@@ -536,11 +542,13 @@ public class LogService extends ServiceBase
      */
     public void stopService(){
         
-        // デーモン停止
-        daemon.stop();
-        
-        // キュー取得待ちを開放する
-        queue.release();
+        if(!isSynchronizedWrite()){
+            // デーモン停止
+            daemon.stop();
+            
+            // キュー取得待ちを開放する
+            queue.release();
+        }
         
         // デフォルトのMessageWriterサービスを無名サービスとして生成して
         // いる場合、そのサービスを停止する
@@ -928,6 +936,13 @@ public class LogService extends ServiceBase
         return (String[])contextKeys.toArray(new String[contextKeys.size()]);
     }
     
+    public void setSynchronizedWrite(boolean isSynch){
+        isSynchronizedWrite = isSynch;
+    }
+    public boolean isSynchronizedWrite(){
+        return isSynchronizedWrite;
+    }
+    
     protected String getDefaultFormat(){
         return defaultFormat;
     }
@@ -1118,7 +1133,11 @@ public class LogService extends ServiceBase
      */
     protected void enqueue(LogEnqueuedRecord enqueuedRecord){
         preEnqueue(enqueuedRecord);
-        queue.push(enqueuedRecord);
+        if(isSynchronizedWrite()){
+            dequeue(enqueuedRecord);
+        }else{
+            queue.push(enqueuedRecord);
+        }
     }
     
     /**
