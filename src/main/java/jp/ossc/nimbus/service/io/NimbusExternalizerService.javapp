@@ -498,86 +498,166 @@ public class NimbusExternalizerService extends SerializableExternalizerService
         
         private class PutFieldImpl extends PutField{
             
+            private final PutFieldImpl superPutField;
             private final MetaClass metaClass;
             private final byte[] primVals;
             private final Object[] objVals;
             
             PutFieldImpl(MetaClass meta){
                 metaClass = meta;
+                superPutField = metaClass.getSuperMetaClass() == null ? null : new PutFieldImpl(metaClass.getSuperMetaClass());
                 primVals = new byte[metaClass.getPrimDataSize()];
                 objVals = new Object[metaClass.getNumObjFields()];
             }
             
             public void put(String name, boolean val){
-                primVals[metaClass.getFieldOffset(name, Boolean.TYPE)] = (byte) (val ? 1 : 0);
+                final int offset = metaClass.getFieldOffset(name, Boolean.TYPE);
+                if(offset == -1){
+                    if(superPutField != null){
+                        superPutField.put(name, val);
+                    }else{
+                        throw new ArrayIndexOutOfBoundsException(offset);
+                    }
+                }else{
+                    primVals[offset] = (byte) (val ? 1 : 0);
+                }
             }
             
             public void put(String name, byte val){
-                primVals[metaClass.getFieldOffset(name, Byte.TYPE)] = val;
+                final int offset = metaClass.getFieldOffset(name, Byte.TYPE);
+                if(offset == -1){
+                    if(superPutField != null){
+                        superPutField.put(name, val);
+                    }else{
+                        throw new ArrayIndexOutOfBoundsException(offset);
+                    }
+                }else{
+                    primVals[offset] = val;
+                }
             }
             
             public void put(String name, char val){
                 final int offset = metaClass.getFieldOffset(name, Character.TYPE);
-                primVals[offset + 1] = (byte) (val      );
-                primVals[offset    ] = (byte) (val >>> 8);
+                if(offset == -1){
+                    if(superPutField != null){
+                        superPutField.put(name, val);
+                    }else{
+                        throw new ArrayIndexOutOfBoundsException(offset);
+                    }
+                }else{
+                    primVals[offset + 1] = (byte) (val      );
+                    primVals[offset    ] = (byte) (val >>> 8);
+                }
             }
             
             public void put(String name, short val){
                 final int offset = metaClass.getFieldOffset(name, Short.TYPE);
-                primVals[offset + 1] = (byte) (val      );
-                primVals[offset    ] = (byte) (val >>> 8);
+                if(offset == -1){
+                    if(superPutField != null){
+                        superPutField.put(name, val);
+                    }else{
+                        throw new ArrayIndexOutOfBoundsException(offset);
+                    }
+                }else{
+                    primVals[offset + 1] = (byte) (val      );
+                    primVals[offset    ] = (byte) (val >>> 8);
+                }
             }
             
             public void put(String name, int val) {
                 final int offset = metaClass.getFieldOffset(name, Integer.TYPE);
-                primVals[offset + 3] = (byte) (val       );
-                primVals[offset + 2] = (byte) (val >>>  8);
-                primVals[offset + 1] = (byte) (val >>> 16);
-                primVals[offset    ] = (byte) (val >>> 24);
+                if(offset == -1){
+                    if(superPutField != null){
+                        superPutField.put(name, val);
+                    }else{
+                        throw new ArrayIndexOutOfBoundsException(offset);
+                    }
+                }else{
+                    primVals[offset + 3] = (byte) (val       );
+                    primVals[offset + 2] = (byte) (val >>>  8);
+                    primVals[offset + 1] = (byte) (val >>> 16);
+                    primVals[offset    ] = (byte) (val >>> 24);
+                }
             }
             
             public void put(String name, float val) {
                 final int offset = metaClass.getFieldOffset(name, Float.TYPE);
-                final int intBits = Float.floatToIntBits(val);
-                primVals[offset + 3] = (byte) (intBits       );
-                primVals[offset + 2] = (byte) (intBits >>>  8);
-                primVals[offset + 1] = (byte) (intBits >>> 16);
-                primVals[offset    ] = (byte) (intBits >>> 24);
+                if(offset == -1){
+                    if(superPutField != null){
+                        superPutField.put(name, val);
+                    }else{
+                        throw new ArrayIndexOutOfBoundsException(offset);
+                    }
+                }else{
+                    final int intBits = Float.floatToIntBits(val);
+                    primVals[offset + 3] = (byte) (intBits       );
+                    primVals[offset + 2] = (byte) (intBits >>>  8);
+                    primVals[offset + 1] = (byte) (intBits >>> 16);
+                    primVals[offset    ] = (byte) (intBits >>> 24);
+                }
             }
             
             public void put(String name, long val) {
-                final int intBits = Float.floatToIntBits(val);
                 final int offset = metaClass.getFieldOffset(name, Long.TYPE);
-                primVals[offset + 7] = (byte) (val       );
-                primVals[offset + 6] = (byte) (val >>>  8);
-                primVals[offset + 5] = (byte) (val >>> 16);
-                primVals[offset + 4] = (byte) (val >>> 24);
-                primVals[offset + 3] = (byte) (val >>> 32);
-                primVals[offset + 2] = (byte) (val >>> 40);
-                primVals[offset + 1] = (byte) (val >>> 48);
-                primVals[offset    ] = (byte) (val >>> 56);
+                if(offset == -1){
+                    if(superPutField != null){
+                        superPutField.put(name, val);
+                    }else{
+                        throw new ArrayIndexOutOfBoundsException(offset);
+                    }
+                }else{
+                    final int intBits = Float.floatToIntBits(val);
+                    primVals[offset + 7] = (byte) (val       );
+                    primVals[offset + 6] = (byte) (val >>>  8);
+                    primVals[offset + 5] = (byte) (val >>> 16);
+                    primVals[offset + 4] = (byte) (val >>> 24);
+                    primVals[offset + 3] = (byte) (val >>> 32);
+                    primVals[offset + 2] = (byte) (val >>> 40);
+                    primVals[offset + 1] = (byte) (val >>> 48);
+                    primVals[offset    ] = (byte) (val >>> 56);
+                }
             }
             
             public void put(String name, double val) {
                 final int offset = metaClass.getFieldOffset(name, Double.TYPE);
-                final long longBits = Double.doubleToLongBits(val);
-                primVals[offset + 7] = (byte) (longBits       );
-                primVals[offset + 6] = (byte) (longBits >>>  8);
-                primVals[offset + 5] = (byte) (longBits >>> 16);
-                primVals[offset + 4] = (byte) (longBits >>> 24);
-                primVals[offset + 3] = (byte) (longBits >>> 32);
-                primVals[offset + 2] = (byte) (longBits >>> 40);
-                primVals[offset + 1] = (byte) (longBits >>> 48);
-                primVals[offset    ] = (byte) (longBits >>> 56);
+                if(offset == -1){
+                    if(superPutField != null){
+                        superPutField.put(name, val);
+                    }else{
+                        throw new ArrayIndexOutOfBoundsException(offset);
+                    }
+                }else{
+                    final long longBits = Double.doubleToLongBits(val);
+                    primVals[offset + 7] = (byte) (longBits       );
+                    primVals[offset + 6] = (byte) (longBits >>>  8);
+                    primVals[offset + 5] = (byte) (longBits >>> 16);
+                    primVals[offset + 4] = (byte) (longBits >>> 24);
+                    primVals[offset + 3] = (byte) (longBits >>> 32);
+                    primVals[offset + 2] = (byte) (longBits >>> 40);
+                    primVals[offset + 1] = (byte) (longBits >>> 48);
+                    primVals[offset    ] = (byte) (longBits >>> 56);
+                }
             }
             
             public void put(String name, Object val) {
-                objVals[metaClass.getFieldOffset(name, Object.class)] = val;
+                final int offset = metaClass.getFieldOffset(name, Object.class);
+                if(offset == -1){
+                    if(superPutField != null){
+                        superPutField.put(name, val);
+                    }else{
+                        throw new ArrayIndexOutOfBoundsException(offset);
+                    }
+                }else{
+                    objVals[offset] = val;
+                }
             }
             
             public void write(ObjectOutput out) throws IOException{
                 if(NimbusObjectOutputStream.this != out){
                     throw new IllegalArgumentException("wrong stream");
+                }
+                if(superPutField != null){
+                    superPutField.write(out);
                 }
                 out.write(primVals, 0, primVals.length);
                 
@@ -981,12 +1061,14 @@ public class NimbusExternalizerService extends SerializableExternalizerService
         
         private class GetFieldImpl extends GetField{
             
+            private final GetFieldImpl superGetField;
             private final MetaClass metaClass;
             private final byte[] primVals;
             private final Object[] objVals;
             
             GetFieldImpl(MetaClass meta){
                 metaClass = meta;
+                superGetField = metaClass.getSuperMetaClass() == null ? null : new GetFieldImpl(metaClass.getSuperMetaClass());
                 primVals = new byte[metaClass.getPrimDataSize()];
                 objVals = new Object[metaClass.getNumObjFields()];
             }
@@ -1001,64 +1083,88 @@ public class NimbusExternalizerService extends SerializableExternalizerService
             
             public boolean get(String name, boolean val) throws IOException{
                 final int offset = metaClass.getFieldOffset(name, Boolean.TYPE);
-                return offset >= 0 ? primVals[offset] != 0 : val;
+                if(offset == -1){
+                    return superGetField == null ? val : superGetField.get(name, val);
+                }else{
+                    return primVals[offset] != 0;
+                }
             }
             
             public byte get(String name, byte val) throws IOException{
                 final int offset = metaClass.getFieldOffset(name, Byte.TYPE);
-                return offset >= 0 ? primVals[offset] : val;
+                if(offset == -1){
+                    return superGetField == null ? val : superGetField.get(name, val);
+                }else{
+                    return primVals[offset];
+                }
             }
             
             public char get(String name, char val) throws IOException{
                 final int offset = metaClass.getFieldOffset(name, Character.TYPE);
-                return offset >= 0 ? (char)((primVals[offset + 1] & 0xFF) + (primVals[offset] << 8)) : val;
+                if(offset == -1){
+                    return superGetField == null ? val : superGetField.get(name, val);
+                }else{
+                    return (char)((primVals[offset + 1] & 0xFF) + (primVals[offset] << 8));
+                }
             }
             
             public short get(String name, short val) throws IOException{
                 final int offset = metaClass.getFieldOffset(name, Short.TYPE);
-                return offset >= 0 ? (short)((primVals[offset + 1] & 0xFF) + (primVals[offset] << 8)) : val;
+                if(offset == -1){
+                    return superGetField == null ? val : superGetField.get(name, val);
+                }else{
+                    return (short)((primVals[offset + 1] & 0xFF) + (primVals[offset] << 8));
+                }
             }
             
             public int get(String name, int val) throws IOException{
                 final int offset = metaClass.getFieldOffset(name, Integer.TYPE);
-                return offset >= 0 ?
-                    ((primVals[offset + 3] & 0xFF)      ) +
-                    ((primVals[offset + 2] & 0xFF) <<  8) +
-                    ((primVals[offset + 1] & 0xFF) << 16) +
-                    ((primVals[offset    ]       ) << 24)
-                        : val;
+                if(offset == -1){
+                    return superGetField == null ? val : superGetField.get(name, val);
+                }else{
+                    return ((primVals[offset + 3] & 0xFF)      ) +
+                           ((primVals[offset + 2] & 0xFF) <<  8) +
+                           ((primVals[offset + 1] & 0xFF) << 16) +
+                           ((primVals[offset    ]       ) << 24);
+                }
             }
             
             public float get(String name, float val) throws IOException{
                 final int offset = metaClass.getFieldOffset(name, Float.TYPE);
-                return offset >= 0 ? 
-                    Float.intBitsToFloat(
-                        ((primVals[offset + 3] & 0xFF)      ) +
-                        ((primVals[offset + 2] & 0xFF) <<  8) +
-                        ((primVals[offset + 1] & 0xFF) << 16) +
-                        ((primVals[offset    ]       ) << 24)
-                    )
-                        : val;
+                if(offset == -1){
+                    return superGetField == null ? val : superGetField.get(name, val);
+                }else{
+                    return Float.intBitsToFloat(
+                       ((primVals[offset + 3] & 0xFF)      ) +
+                       ((primVals[offset + 2] & 0xFF) <<  8) +
+                       ((primVals[offset + 1] & 0xFF) << 16) +
+                       ((primVals[offset    ]       ) << 24)
+                    );
+                }
             }
             
             public long get(String name, long val) throws IOException{
                 final int offset = metaClass.getFieldOffset(name, Long.TYPE);
-                return offset >= 0 ? 
-                    ((primVals[offset + 7] & 0xFFL)      ) +
-                    ((primVals[offset + 6] & 0xFFL) <<  8) +
-                    ((primVals[offset + 5] & 0xFFL) << 16) +
-                    ((primVals[offset + 4] & 0xFFL) << 24) +
-                    ((primVals[offset + 3] & 0xFFL) << 32) +
-                    ((primVals[offset + 2] & 0xFFL) << 40) +
-                    ((primVals[offset + 1] & 0xFFL) << 48) +
-                    (((long) primVals[offset])      << 56)
-                        : val;
+                if(offset == -1){
+                    return superGetField == null ? val : superGetField.get(name, val);
+                }else{
+                    return ((primVals[offset + 7] & 0xFFL)      ) +
+                           ((primVals[offset + 6] & 0xFFL) <<  8) +
+                           ((primVals[offset + 5] & 0xFFL) << 16) +
+                           ((primVals[offset + 4] & 0xFFL) << 24) +
+                           ((primVals[offset + 3] & 0xFFL) << 32) +
+                           ((primVals[offset + 2] & 0xFFL) << 40) +
+                           ((primVals[offset + 1] & 0xFFL) << 48) +
+                           (((long) primVals[offset])      << 56);
+                }
             }
             
             public double get(String name, double val) throws IOException{
                 final int offset = metaClass.getFieldOffset(name, Double.TYPE);
-                return offset >= 0 ? 
-                    Double.longBitsToDouble(
+                if(offset == -1){
+                    return superGetField == null ? val : superGetField.get(name, val);
+                }else{
+                    return Double.longBitsToDouble(
                         ((primVals[offset + 7] & 0xFFL)      ) +
                         ((primVals[offset + 6] & 0xFFL) <<  8) +
                         ((primVals[offset + 5] & 0xFFL) << 16) +
@@ -1067,20 +1173,23 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                         ((primVals[offset + 2] & 0xFFL) << 40) +
                         ((primVals[offset + 1] & 0xFFL) << 48) +
                         (((long) primVals[offset])      << 56)
-                    )
-                        : val;
+                    );
+                }
             }
             
             public Object get(String name, Object val) throws IOException{
                 final int offset = metaClass.getFieldOffset(name, Object.class);
-                if(offset >= 0){
-                    return objVals[offset];
+                if(offset == -1){
+                    return superGetField == null ? val : superGetField.get(name, val);
                 }else{
-                    return val;
+                    return objVals[offset];
                 }
             }
             
             void readFields() throws IOException, ClassNotFoundException{
+                if(superGetField != null){
+                    superGetField.readFields();
+                }
                 readFully(primVals, 0, primVals.length);
                 ObjectStreamField[] fields = metaClass.getFields();
                 for(int i = 0; i < objVals.length; i++){
@@ -1159,6 +1268,11 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                     Void.TYPE
                 );
                 fieldReflector = new FieldReflector(externalizer, clazz, getSerialFields(clazz));
+            }else{
+                constructor = getSerializableConstructor(clazz);
+                if(constructor != null){
+                    fieldReflector = new FieldReflector(externalizer, clazz, getSerialFields(clazz));
+                }
             }
             writeReplaceMethod = getInheritableMethod(clazz, "writeReplace", null, Object.class);
             readResolveMethod = getInheritableMethod(clazz, "readResolve", null, Object.class);
@@ -1174,6 +1288,10 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                     metaClass = metaClass.superMetaClass;
                 }
             }
+        }
+        
+        public MetaClass getSuperMetaClass(){
+            return superMetaClass;
         }
         
         public Class getTargetClass(){
@@ -1383,7 +1501,7 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                     throw (InternalError)new InternalError().initCause(ex);
                 }
             }else{
-                throw new UnsupportedOperationException();
+                return null;
             }
         }
         public void defaultReadObject(Object obj, NimbusObjectInputStream ois) throws IOException, ClassNotFoundException{
@@ -1492,8 +1610,7 @@ public class NimbusExternalizerService extends SerializableExternalizerService
         
         private static ObjectStreamField[] getSerialFields(Class clazz) throws InvalidClassException{
             ObjectStreamField[] fields;
-            if(Serializable.class.isAssignableFrom(clazz)
-                && !Externalizable.class.isAssignableFrom(clazz)
+            if(!Externalizable.class.isAssignableFrom(clazz)
                 && !Proxy.isProxyClass(clazz)
                 && !clazz.isInterface()
             ){
@@ -1820,38 +1937,38 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                     typeCodes[i] = f.getTypeCode();
                     typeList.add((rf != null) ? rf.getType() : null);
                 }catch(NoSuchFieldException ex){
-                    switch(f.getTypeCode()){
-                    case 'Z':
-                    case 'B':
-                        fieldOffsets[i] = primDataSize;
-                        primDataSize++;
-                        break;
-                    case 'C':
-                    case 'S':
-                        fieldOffsets[i] = primDataSize;
-                        primDataSize += 2;
-                        break;
-                    case 'I':
-                    case 'F':
-                        fieldOffsets[i] = primDataSize;
-                        primDataSize += 4;
-                        break;
-                    case 'J':
-                    case 'D':
-                        fieldOffsets[i] = primDataSize;
-                        primDataSize += 8;
-                        break;
-                    case '[':
-                    case 'L':
-                        fieldOffsets[i] = numObjFields;
-                        numObjFields++;
-                        if(firstObjIndex == -1){
-                            firstObjIndex = i;
-                        }
-                        break;
-                    default:
-                        throw new InternalError();
+                }
+                switch(f.getTypeCode()){
+                case 'Z':
+                case 'B':
+                    fieldOffsets[i] = primDataSize;
+                    primDataSize++;
+                    break;
+                case 'C':
+                case 'S':
+                    fieldOffsets[i] = primDataSize;
+                    primDataSize += 2;
+                    break;
+                case 'I':
+                case 'F':
+                    fieldOffsets[i] = primDataSize;
+                    primDataSize += 4;
+                    break;
+                case 'J':
+                case 'D':
+                    fieldOffsets[i] = primDataSize;
+                    primDataSize += 8;
+                    break;
+                case '[':
+                case 'L':
+                    fieldOffsets[i] = numObjFields;
+                    numObjFields++;
+                    if(firstObjIndex == -1){
+                        firstObjIndex = i;
                     }
+                    break;
+                default:
+                    throw new InternalError();
                 }
             }
             types = (Class[])typeList.toArray(new Class[typeList.size()]);
