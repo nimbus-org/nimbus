@@ -31,6 +31,7 @@
  */
 package jp.ossc.nimbus.util.converter;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -236,6 +237,24 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
      * デフォルトは、trueでユニコードエスケープする。<br>
      */
     protected boolean isUnicodeEscape = true;
+    
+    /**
+     * Javaオブジェクト→JSON変換時に整形した文字列として出力するかどうかのフラグ。<p>
+     * デフォルトは、falseで整形しない。<br>
+     */
+    protected boolean isFormat = false;
+    
+    /**
+     * Javaオブジェクト→JSON変換時に整形した文字列として出力する場合に使用する改行コード。<p>
+     * デフォルトは、システムプロパティの"line.separator"。<br>
+     */
+    protected String lineSeparator = System.getProperty("line.separator");
+    
+    /**
+     * データセット→JSON変換時に整形した文字列として出力する場合に使用するインデント文字列。<p>
+     * デフォルトは、タブ文字。<br>
+     */
+    protected String indentString = "\t";
     
     /**
      * バインドされたDataSetを複製するかどうかのフラグ。<p>
@@ -575,6 +594,63 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
     }
     
     /**
+     * Javaオブジェクト→JSON変換時に整形した文字列として出力するかどうかを判定する。<p>
+     *
+     * @return trueの場合、整形する
+     */
+    public boolean isFormat(){
+        return isFormat;
+    }
+    
+    /**
+     * Javaオブジェクト→JSON変換時に整形した文字列として出力するかどうかを設定する。<p>
+     * デフォルトは、falseで整形しない。<br>
+     *
+     * @param isFormat 整形する場合true
+     */
+    public void setFormat(boolean isFormat){
+        this.isFormat = isFormat;
+    }
+    
+    /**
+     * Javaオブジェクト→JSON変換時に整形した文字列として出力する場合に使用する改行コードを取得する。<p>
+     * 
+     * @return 改行コード文字列
+     */
+    public String getLineSeparator(){
+        return lineSeparator;
+    }
+    
+    /**
+     * Javaオブジェクト→JSON変換時に整形した文字列として出力する場合に使用する改行コードを設定する。<p>
+     * デフォルトは、システムプロパティの"line.separator"。<br>
+     * 
+     * @param ls 改行コード文字列
+     */
+    public void setLineSeparator(String ls){
+        lineSeparator = ls;
+    }
+    
+    /**
+     * データセット→JSON変換時に整形した文字列として出力する場合に使用するインデント文字列を取得する。<p>
+     *
+     * @return インデント文字列
+     */
+    public String getIndent(){
+        return indentString;
+    }
+    
+    /**
+     * データセット→JSON変換時に整形した文字列として出力する場合に使用するインデント文字列を設定する。<p>
+     * デフォルトは、タブ文字。<br>
+     *
+     * @param indent インデント文字列
+     */
+    public void setIndent(String indent){
+        indentString = indent;
+    }
+    
+    /**
      * データセット→JSON変換時に整形した文字列として出力する場合に２バイト文字をユニコードエスケープするかどうかを判定する。<p>
      *
      * @return エスケープする場合true
@@ -672,6 +748,10 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                 return toDataSet((File)obj);
             }else if(obj instanceof InputStream){
                 return toDataSet((InputStream)obj);
+            }else if(obj instanceof byte[]){
+                return toDataSet((byte[])obj);
+            }else if(obj instanceof String){
+                return toDataSet((String)obj);
             }else{
                 throw new ConvertException(
                     "Invalid input type : " + obj.getClass()
@@ -779,43 +859,48 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                 dsName = "";
             }
             buf.append(OBJECT_ENCLOSURE_START);
-            appendName(buf, dsName);
+            appendName(buf, dsName, 1);
             buf.append(PROPERTY_SEPARATOR);
             buf.append(OBJECT_ENCLOSURE_START);
             
             boolean isOutput = false;
             // スキーマ出力
             if(isOutputSchema){
-                appendName(buf, NAME_SCHEMA);
+                appendName(buf, NAME_SCHEMA, 2);
                 buf.append(PROPERTY_SEPARATOR);
                 buf.append(OBJECT_ENCLOSURE_START);
                 
                 // ヘッダのスキーマ出力
                 final String[] headerNames = dataSet.getHeaderNames();
                 if(headerNames != null && headerNames.length > 0){
-                    appendName(buf, NAME_HEADER);
+                    appendName(buf, NAME_HEADER, 3);
                     buf.append(PROPERTY_SEPARATOR);
                     buf.append(OBJECT_ENCLOSURE_START);
                     for(int i = 0, imax = headerNames.length; i < imax; i++){
                         final Header header = dataSet.getHeader(headerNames[i]);
                         appendName(
                             buf,
-                            headerNames[i] == null ? "" : headerNames[i]
+                            headerNames[i] == null ? "" : headerNames[i],
+                            4
                         );
                         buf.append(PROPERTY_SEPARATOR);
                         if(isOutputJSONSchema){
                             RecordSchema schema = header.getRecordSchema();
                             if(schema == null){
-                                appendValue(buf, null, null);
+                                appendValue(buf, null, null, 4);
                             }else{
-                                appendSchema(buf, schema);
+                                appendSchema(buf, schema, 4);
                             }
                         }else{
-                            appendValue(buf, header.getSchema() == null ? null : header.getSchema().getClass(), header.getSchema());
+                            appendValue(buf, header.getSchema() == null ? null : header.getSchema().getClass(), header.getSchema(), 4);
                         }
                         if(i != imax - 1){
                             buf.append(ARRAY_SEPARATOR);
                         }
+                    }
+                    if(isFormat()){
+                        buf.append(getLineSeparator());
+                        appendIndent(buf, 3);
                     }
                     buf.append(OBJECT_ENCLOSURE_END);
                     isOutput = true;
@@ -827,7 +912,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                     if(isOutput){
                         buf.append(ARRAY_SEPARATOR);
                     }
-                    appendName(buf, NAME_RECORD_LIST);
+                    appendName(buf, NAME_RECORD_LIST, 3);
                     buf.append(PROPERTY_SEPARATOR);
                     buf.append(OBJECT_ENCLOSURE_START);
                     for(int i = 0, imax = recListNames.length; i < imax; i++){
@@ -835,22 +920,27 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                              = dataSet.getRecordList(recListNames[i]);
                         appendName(
                             buf,
-                            recListNames[i] == null ? "" : recListNames[i]
+                            recListNames[i] == null ? "" : recListNames[i],
+                            4
                         );
                         buf.append(PROPERTY_SEPARATOR);
                         if(isOutputJSONSchema){
                             RecordSchema schema = recList.getRecordSchema();
                             if(schema == null){
-                                appendValue(buf, null, null);
+                                appendValue(buf, null, null, 4);
                             }else{
-                                appendSchema(buf, schema);
+                                appendSchema(buf, schema, 4);
                             }
                         }else{
-                            appendValue(buf, recList.getSchema() == null ? null : recList.getSchema().getClass(), recList.getSchema());
+                            appendValue(buf, recList.getSchema() == null ? null : recList.getSchema().getClass(), recList.getSchema(), 4);
                         }
                         if(i != imax - 1){
                             buf.append(ARRAY_SEPARATOR);
                         }
+                    }
+                    if(isFormat()){
+                        buf.append(getLineSeparator());
+                        appendIndent(buf, 3);
                     }
                     buf.append(OBJECT_ENCLOSURE_END);
                     isOutput = true;
@@ -862,26 +952,30 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                     if(isOutput){
                         buf.append(ARRAY_SEPARATOR);
                     }
-                    appendName(buf, NAME_NESTED_RECORD);
+                    appendName(buf, NAME_NESTED_RECORD, 3);
                     buf.append(PROPERTY_SEPARATOR);
                     buf.append(OBJECT_ENCLOSURE_START);
                     for(int i = 0, imax = recNames.length; i < imax; i++){
                         final RecordSchema recSchema
                              = dataSet.getNestedRecordSchema(recNames[i]);
-                        appendName(buf, recNames[i]);
+                        appendName(buf, recNames[i], 4);
                         buf.append(PROPERTY_SEPARATOR);
                         if(isOutputJSONSchema){
                             if(recSchema == null){
-                                appendValue(buf, null, null);
+                                appendValue(buf, null, null, 4);
                             }else{
-                                appendSchema(buf, recSchema);
+                                appendSchema(buf, recSchema, 4);
                             }
                         }else{
-                            appendValue(buf, recSchema.getSchema() == null ? null : recSchema.getSchema().getClass(), recSchema.getSchema());
+                            appendValue(buf, recSchema.getSchema() == null ? null : recSchema.getSchema().getClass(), recSchema.getSchema(), 4);
                         }
                         if(i != imax - 1){
                             buf.append(ARRAY_SEPARATOR);
                         }
+                    }
+                    if(isFormat()){
+                        buf.append(getLineSeparator());
+                        appendIndent(buf, 3);
                     }
                     buf.append(OBJECT_ENCLOSURE_END);
                     isOutput = true;
@@ -893,31 +987,39 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                     if(isOutput){
                         buf.append(ARRAY_SEPARATOR);
                     }
-                    appendName(buf, NAME_NESTED_RECORD_LIST);
+                    appendName(buf, NAME_NESTED_RECORD_LIST, 3);
                     buf.append(PROPERTY_SEPARATOR);
                     buf.append(OBJECT_ENCLOSURE_START);
                     for(int i = 0, imax = recListNames.length; i < imax; i++){
                         final RecordSchema recSchema
                              = dataSet.getNestedRecordListSchema(recListNames[i]);
-                        appendName(buf, recListNames[i]);
+                        appendName(buf, recListNames[i], 4);
                         buf.append(PROPERTY_SEPARATOR);
                         if(isOutputJSONSchema){
                             if(recSchema == null){
-                                appendValue(buf, null, null);
+                                appendValue(buf, null, null, 4);
                             }else{
-                                appendSchema(buf, recSchema);
+                                appendSchema(buf, recSchema, 4);
                             }
                         }else{
-                            appendValue(buf, recSchema.getSchema() == null ? null : recSchema.getSchema().getClass(), recSchema.getSchema());
+                            appendValue(buf, recSchema.getSchema() == null ? null : recSchema.getSchema().getClass(), recSchema.getSchema(), 4);
                         }
                         if(i != imax - 1){
                             buf.append(ARRAY_SEPARATOR);
                         }
                     }
+                    if(isFormat()){
+                        buf.append(getLineSeparator());
+                        appendIndent(buf, 3);
+                    }
                     buf.append(OBJECT_ENCLOSURE_END);
                     isOutput = true;
                 }
                 
+                if(isFormat()){
+                    buf.append(getLineSeparator());
+                    appendIndent(buf, 2);
+                }
                 buf.append(OBJECT_ENCLOSURE_END);
             }
             
@@ -927,20 +1029,25 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                 if(isOutput){
                     buf.append(ARRAY_SEPARATOR);
                 }
-                appendName(buf, NAME_HEADER);
+                appendName(buf, NAME_HEADER, 2);
                 buf.append(PROPERTY_SEPARATOR);
                 buf.append(OBJECT_ENCLOSURE_START);
                 for(int i = 0, imax = headerNames.length; i < imax; i++){
                     final Header header = dataSet.getHeader(headerNames[i]);
                     appendName(
                         buf,
-                        headerNames[i] == null ? "" : headerNames[i]
+                        headerNames[i] == null ? "" : headerNames[i],
+                        3
                     );
                     buf.append(PROPERTY_SEPARATOR);
-                    appendValue(buf, header == null ? null : header.getClass(), header);
+                    appendValue(buf, header == null ? null : header.getClass(), header, 3);
                     if(i != imax - 1){
                         buf.append(ARRAY_SEPARATOR);
                     }
+                }
+                if(isFormat()){
+                    buf.append(getLineSeparator());
+                    appendIndent(buf, 2);
                 }
                 buf.append(OBJECT_ENCLOSURE_END);
                 isOutput = true;
@@ -952,35 +1059,48 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                 if(isOutput){
                     buf.append(ARRAY_SEPARATOR);
                 }
-                appendName(buf, NAME_RECORD_LIST);
+                appendName(buf, NAME_RECORD_LIST, 2);
                 buf.append(PROPERTY_SEPARATOR);
                 buf.append(OBJECT_ENCLOSURE_START);
                 for(int i = 0, imax = recListNames.length; i < imax; i++){
                     final RecordList recList = dataSet.getRecordList(recListNames[i]);
                     appendName(
                         buf,
-                        recListNames[i] == null ? "" : recListNames[i]
+                        recListNames[i] == null ? "" : recListNames[i],
+                        3
                     );
                     buf.append(PROPERTY_SEPARATOR);
                     if(isOutputVTLTemplate && recList.size() > 0){
                         buf.append(ARRAY_ENCLOSURE_START);
                         buf.append("#foreach( $record in $").append(recListNames[i]).append(" )");
                         buf.append("#if( $velocityCount != 1 )").append(ARRAY_SEPARATOR).append("#end");
-                        appendValue(buf, recList.get(0).getClass(), recList.get(0));
+                        appendValue(buf, recList.get(0).getClass(), recList.get(0), 3);
                         buf.append("#end");
                         buf.append(ARRAY_ENCLOSURE_END);
                     }else{
-                        appendArray(buf, recList);
+                        appendArray(buf, recList, 3);
                     }
                     if(i != imax - 1){
                         buf.append(ARRAY_SEPARATOR);
                     }
                 }
+                if(isFormat()){
+                    buf.append(getLineSeparator());
+                    appendIndent(buf, 2);
+                }
                 buf.append(OBJECT_ENCLOSURE_END);
                 isOutput = true;
             }
             
+            if(isFormat()){
+                buf.append(getLineSeparator());
+                appendIndent(buf, 1);
+            }
             buf.append(OBJECT_ENCLOSURE_END);
+            if(isFormat()){
+                buf.append(getLineSeparator());
+                appendIndent(buf, 0);
+            }
             buf.append(OBJECT_ENCLOSURE_END);
             
             String str = buf.toString();
@@ -993,54 +1113,76 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
         return result;
     }
     
-    private StringBuilder appendSchema(StringBuilder buf, RecordSchema schema){
+    private StringBuilder appendSchema(StringBuilder buf, RecordSchema schema, int indent){
         final PropertySchema[] props = schema.getPropertySchemata();
         buf.append(OBJECT_ENCLOSURE_START);
         for(int j = 0; j < props.length; j++){
-            appendName(buf, camelSnakeConvertMode == CAMEL_SNAKE_NON ? props[j].getName() : camelSnakeConvert(props[j].getName()));
+            appendName(buf, camelSnakeConvertMode == CAMEL_SNAKE_NON ? props[j].getName() : camelSnakeConvert(props[j].getName()), indent + 1);
             buf.append(PROPERTY_SEPARATOR);
             buf.append(OBJECT_ENCLOSURE_START);
-            appendName(buf, NAME_INDEX);
+            appendName(buf, NAME_INDEX, indent + 2);
             buf.append(PROPERTY_SEPARATOR);
             buf.append(j);
             buf.append(ARRAY_SEPARATOR);
             
-            appendName(buf, NAME_TYPE);
+            appendName(buf, NAME_TYPE, indent + 2);
             buf.append(PROPERTY_SEPARATOR);
             String nestedSchemaName = null;
             if(props[j] instanceof RecordListPropertySchema){
-                appendValue(buf, String.class, NAME_NESTED_RECORD_LIST);
+                appendValue(buf, String.class, NAME_NESTED_RECORD_LIST, indent + 2);
                 nestedSchemaName = ((RecordListPropertySchema)props[j]).getRecordListName();
             }else if(props[j] instanceof RecordPropertySchema){
-                appendValue(buf, String.class, NAME_NESTED_RECORD);
+                appendValue(buf, String.class, NAME_NESTED_RECORD, indent + 2);
                 nestedSchemaName = ((RecordPropertySchema)props[j]).getRecordName();
             }else{
-                appendValue(buf, String.class, NAME_VALUE);
+                appendValue(buf, String.class, NAME_VALUE, indent + 2);
             }
             
             if(nestedSchemaName != null){
                 buf.append(ARRAY_SEPARATOR);
-                appendName(buf, NAME_SCHEMA);
+                appendName(buf, NAME_SCHEMA, indent + 2);
                 buf.append(PROPERTY_SEPARATOR);
-                appendValue(buf, String.class, nestedSchemaName);
+                appendValue(buf, String.class, nestedSchemaName, indent + 2);
+            }
+            if(isFormat()){
+                buf.append(getLineSeparator());
+                appendIndent(buf, indent + 1);
             }
             buf.append(OBJECT_ENCLOSURE_END);
             if(j != props.length - 1){
                 buf.append(ARRAY_SEPARATOR);
             }
         }
+        if(isFormat()){
+            buf.append(getLineSeparator());
+            appendIndent(buf, indent);
+        }
         buf.append(OBJECT_ENCLOSURE_END);
         return buf;
     }
     
-    private StringBuilder appendName(StringBuilder buf, String name){
+    private StringBuilder appendIndent(StringBuilder buf, int indent){
+        if(indent <= 0){
+            return buf;
+        }
+        for(int i = 0; i < indent; i++){
+            buf.append(getIndent());
+        }
+        return buf;
+    }
+    
+    private StringBuilder appendName(StringBuilder buf, String name, int indent){
+        if(isFormat()){
+            buf.append(getLineSeparator());
+            appendIndent(buf, indent);
+        }
         buf.append(STRING_ENCLOSURE);
         buf.append(escape(name));
         buf.append(STRING_ENCLOSURE);
         return buf;
     }
     
-    private StringBuilder appendValue(StringBuilder buf, Class type, Object value){
+    private StringBuilder appendValue(StringBuilder buf, Class type, Object value, int indent){
         if(type == null){
             if(value == null) {
                 buf.append(NULL_VALUE);
@@ -1098,7 +1240,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                     buf.append(value);
                 }
             }else if(type.isArray() || Collection.class.isAssignableFrom(type)){
-                appendArray(buf, value);
+                appendArray(buf, value, indent);
             }else if(Record.class.isAssignableFrom(type)){
                 Record rec = (Record)value;
                 RecordSchema schema = rec.getRecordSchema();
@@ -1110,10 +1252,12 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                 ){
                     isOutputPropertyName = false;
                 }
+                int indent2 = indent;
                 if(isOutputPropertyName){
                     buf.append(OBJECT_ENCLOSURE_START);
                 }else{
                     buf.append(ARRAY_ENCLOSURE_START);
+                    indent2++;
                 }
                 boolean isOutput = false;
                 RecordList parentList = rec.getRecordList();
@@ -1130,17 +1274,20 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                                 buf.append(ARRAY_SEPARATOR);
                             }
                             if(isOutputPropertyName){
-                                appendName(buf, camelSnakeConvertMode == CAMEL_SNAKE_NON ? propSchema.getName() : camelSnakeConvert(propSchema.getName()));
+                                appendName(buf, camelSnakeConvertMode == CAMEL_SNAKE_NON ? propSchema.getName() : camelSnakeConvert(propSchema.getName()), indent2 + 1);
                                 buf.append(PROPERTY_SEPARATOR);
+                            }else if(isFormat()){
+                                buf.append(getLineSeparator());
+                                appendIndent(buf, indent2 + 1);
                             }
                             if(propSchema instanceof RecordPropertySchema){
-                                appendValue(buf, propSchema.getType(), prop);
+                                appendValue(buf, propSchema.getType(), prop, indent2 + 1);
                             }else if(propSchema instanceof RecordListPropertySchema){
                                 buf.append(ARRAY_ENCLOSURE_START);
                                 if(((RecordList)prop).size() > 0) {
                                     buf.append("#foreach( $record in $").append(propSchema.getName()).append(" )");
                                     buf.append("#if( $velocityCount != 1 )").append(ARRAY_SEPARATOR).append("#end");
-                                    appendValue(buf, ((RecordList)prop).get(0).getClass(), ((RecordList)prop).get(0));
+                                    appendValue(buf, ((RecordList)prop).get(0).getClass(), ((RecordList)prop).get(0), indent2 + 1);
                                     buf.append("#end");
                                 }
                                 buf.append(ARRAY_ENCLOSURE_END);
@@ -1166,17 +1313,17 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                             buf.append("#if( $isOutput )").append(ARRAY_SEPARATOR).append("#end");
                             
                             if(isOutputPropertyName){
-                                appendName(buf, camelSnakeConvertMode == CAMEL_SNAKE_NON ? propSchema.getName() : camelSnakeConvert(propSchema.getName()));
+                                appendName(buf, camelSnakeConvertMode == CAMEL_SNAKE_NON ? propSchema.getName() : camelSnakeConvert(propSchema.getName()), indent2 + 1);
                                 buf.append(PROPERTY_SEPARATOR);
                             }
                             if(propSchema instanceof RecordPropertySchema){
-                                appendValue(buf, propSchema.getType(), prop);
+                                appendValue(buf, propSchema.getType(), prop, indent2 + 1);
                             }else if(propSchema instanceof RecordListPropertySchema){
                                 buf.append(ARRAY_ENCLOSURE_START);
                                 if(((RecordList)prop).size() > 0) {
                                     buf.append("#foreach( $record in $").append(propSchema.getName()).append(" )");
                                     buf.append("#if( $velocityCount != 1 )").append(ARRAY_SEPARATOR).append("#end");
-                                    appendValue(buf, ((RecordList)prop).get(0).getClass(), ((RecordList)prop).get(0));
+                                    appendValue(buf, ((RecordList)prop).get(0).getClass(), ((RecordList)prop).get(0), indent2 + 1);
                                     buf.append("#end");
                                 }
                                 buf.append(ARRAY_ENCLOSURE_END);
@@ -1208,13 +1355,19 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                             if(isOutput){
                                 buf.append(ARRAY_SEPARATOR);
                             }
-                            appendName(buf, camelSnakeConvertMode == CAMEL_SNAKE_NON ? propSchema.getName() : camelSnakeConvert(propSchema.getName()));
+                            appendName(buf, camelSnakeConvertMode == CAMEL_SNAKE_NON ? propSchema.getName() : camelSnakeConvert(propSchema.getName()), indent2 + 1);
                             buf.append(PROPERTY_SEPARATOR);
-                        }else if(isOutput){
-                            buf.append(ARRAY_SEPARATOR);
+                        }else{
+                            if(isOutput){
+                                buf.append(ARRAY_SEPARATOR);
+                            }
+                            if(isFormat()){
+                                buf.append(getLineSeparator());
+                                appendIndent(buf, indent2 + 1);
+                            }
                         }
                         if((prop == null && !isConvert) || (formatProp == null && isConvert)){
-                            appendValue(buf, propSchema.getType(), null);
+                            appendValue(buf, propSchema.getType(), null, indent2 + 1);
                         }else{
                             Object resultProp = isConvert ? formatProp : prop;
                             Class propType = propSchema.getType();
@@ -1223,12 +1376,13 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                             }
                             if(propType != null &&
                                     (propType.isArray() || Collection.class.isAssignableFrom(propType))){
-                                appendArray(buf, resultProp);
+                                appendArray(buf, resultProp, indent2 + 1);
                             }else{
                                 appendValue(
                                     buf,
                                     propType,
-                                    resultProp
+                                    resultProp,
+                                    indent2 + 1
                                 );
                             }
                         }
@@ -1236,8 +1390,16 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                     isOutput = true;
                 }
                 if(isOutputPropertyName){
+                    if(isFormat()){
+                        buf.append(getLineSeparator());
+                        appendIndent(buf, indent);
+                    }
                     buf.append(OBJECT_ENCLOSURE_END);
                 }else{
+                    if(isFormat()){
+                        buf.append(getLineSeparator());
+                        appendIndent(buf, indent);
+                    }
                     buf.append(ARRAY_ENCLOSURE_END);
                 }
             }else{
@@ -1249,11 +1411,15 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
         return buf;
     }
     
-    private StringBuilder appendArray(StringBuilder buf, Object array){
+    private StringBuilder appendArray(StringBuilder buf, Object array, int indent){
         buf.append(ARRAY_ENCLOSURE_START);
         if(array.getClass().isArray()){
             for(int i = 0, imax = Array.getLength(array); i < imax; i++){
-                appendValue(buf, Array.get(array, i) == null ? null : Array.get(array, i).getClass(), Array.get(array, i));
+                if(isFormat()){
+                    buf.append(getLineSeparator());
+                    appendIndent(buf, indent + 1);
+                }
+                appendValue(buf, Array.get(array, i) == null ? null : Array.get(array, i).getClass(), Array.get(array, i), indent + 1);
                 if(i != imax - 1){
                     buf.append(ARRAY_SEPARATOR);
                 }
@@ -1261,7 +1427,11 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
         }else if(List.class.isAssignableFrom(array.getClass())){
             List list = (List)array;
             for(int i = 0, imax = list.size(); i < imax; i++){
-                appendValue(buf, list.get(i) == null ? null : list.get(i).getClass(), list.get(i));
+                if(isFormat()){
+                    buf.append(getLineSeparator());
+                    appendIndent(buf, indent + 1);
+                }
+                appendValue(buf, list.get(i) == null ? null : list.get(i).getClass(), list.get(i), indent + 1);
                 if(i != imax - 1){
                     buf.append(ARRAY_SEPARATOR);
                 }
@@ -1269,12 +1439,20 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
         }else if(Collection.class.isAssignableFrom(array.getClass())){
             Iterator itr = ((Collection)array).iterator();
             while(itr.hasNext()){
+                if(isFormat()){
+                    buf.append(getLineSeparator());
+                    appendIndent(buf, indent + 1);
+                }
                 Object obj = itr.next();
-                appendValue(buf, obj == null ? null : obj.getClass(), obj);
+                appendValue(buf, obj == null ? null : obj.getClass(), obj, indent + 1);
                 if(itr.hasNext()){
                     buf.append(ARRAY_SEPARATOR);
                 }
             }
+        }
+        if(isFormat()){
+            buf.append(getLineSeparator());
+            appendIndent(buf, indent);
         }
         buf.append(ARRAY_ENCLOSURE_END);
         return buf;
@@ -1408,6 +1586,16 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
         }catch(IOException e){
             throw new ConvertException(e);
         }
+    }
+    
+    protected DataSet toDataSet(byte[] bytes) throws ConvertException{
+        return toDataSet(new ByteArrayInputStream(bytes), null);
+    }
+    
+    protected DataSet toDataSet(String str) throws ConvertException{
+        final StringStreamConverter ssc = new StringStreamConverter();
+        ssc.setCharacterEncodingToStream(getCharacterEncodingToStream());
+        return toDataSet(ssc.convertToStream(str), null);
     }
     
     protected DataSet toDataSet(InputStream is) throws ConvertException{
@@ -1929,11 +2117,11 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
         final String name = unescape(buf.toString());
         buf.setLength(0);
         
-        c = reader.read();
+        c = skipWhitespace(reader);
         if(c != ':'){
             throw new ConvertException("JSON name and value must be separated ':'.");
         }
-        c = reader.read();
+        c = skipWhitespace(reader);
         
         Object value = null;
         switch(c){

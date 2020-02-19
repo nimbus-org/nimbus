@@ -1931,7 +1931,7 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
         }
         buf.setLength(0);
         
-        c = reader.read();
+        c = skipWhitespace(reader);
         if(c != ':'){
             throw new ConvertException("JSON name and value must be separated ':'.");
         }
