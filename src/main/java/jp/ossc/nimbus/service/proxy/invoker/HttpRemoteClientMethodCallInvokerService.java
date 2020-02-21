@@ -53,7 +53,7 @@ import jp.ossc.nimbus.service.proxy.RemoteServiceCallException;
 /**
  * HTTPリモートクライアントメソッド呼び出しInvoker。<p>
  * HTTP経由で、リモートサーバ上のサービスを呼び出すためのInvokerである。<br>
- * リモートのServletコンテナに、{@link jp.ossc.nimbus.servlet.RemoteServiceServerServlet RemoteServiceServerServlet}がされていなければならない。<br>
+ * リモートのServletコンテナに、{@link jp.ossc.nimbus.servlet.RemoteServiceServerServlet RemoteServiceServerServlet}が配置されていなければならない。<br>
  *
  * @author M.Takata
  */
