@@ -41,7 +41,7 @@ import jp.ossc.nimbus.core.ServiceBase;
 import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.service.repository.Repository;
-import jp.ossc.nimbus.service.keepalive.ClusterService;
+import jp.ossc.nimbus.service.keepalive.Cluster;
 import jp.ossc.nimbus.service.sequence.Sequence;
 import jp.ossc.nimbus.service.sequence.NumberSequenceService;
 
@@ -56,7 +56,7 @@ public class ClusterConnectionFactoryService extends ServiceBase
     private static final long serialVersionUID = 5192146255493285628L;
     
     private ServiceName clusterServiceName;
-    private ClusterService cluster;
+    private Cluster cluster;
     private String clusterOptionKey;
     private boolean isClusterJoin = true;
     private ServiceName clientConnectionFactoryServiceName;
@@ -206,10 +206,10 @@ public class ClusterConnectionFactoryService extends ServiceBase
         return isStartReceiveFromLastReceiveTime;
     }
     
-    public void setClusterService(ClusterService cluster){
+    public void setClusterService(Cluster cluster){
         this.cluster = cluster;
     }
-    public ClusterService getClusterService(){
+    public Cluster getClusterService(){
         return cluster;
     }
     
@@ -226,7 +226,7 @@ public class ClusterConnectionFactoryService extends ServiceBase
                 .getServiceObject(jndiRepositoryServiceName);
         }
         if(clusterServiceName != null){
-            cluster = (ClusterService)ServiceManagerFactory.getServiceObject(clusterServiceName);
+            cluster = (Cluster)ServiceManagerFactory.getServiceObject(clusterServiceName);
         }
         if(cluster == null){
             throw new IllegalArgumentException("ClusterService is null.");
