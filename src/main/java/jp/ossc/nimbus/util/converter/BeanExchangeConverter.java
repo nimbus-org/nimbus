@@ -228,6 +228,24 @@ public class BeanExchangeConverter implements BindingConverter{
     
     /**
      * 出力オブジェクトのプロパティを基準にして、入力オブジェクトと出力オブジェクトのプロパティ交換を行う場合に、一部のプロパティ交換のみ個別に設定する。<p>
+     * 交換時の出力オブジェクト側のプロパティを、このマッピングのキーで指定した値と異なるプロパティにしたい場合は、{@link #setPartPropertyMapping(String,String,String)}で個別に指定する必要がある。<br>
+     *
+     * @param mapping キーが個別に指定する出力オブジェクト側のプロパティ、値が入力オブジェクト側のプロパティとなるマッピング
+     */
+    public void setPartPropertyMappings(Map mapping){
+        if(mapping == null){
+            clearPartPropertyMappings();
+            return;
+        }
+        Iterator entries = mapping.entrySet().iterator();
+        while(entries.hasNext()){
+            Map.Entry entry = (Map.Entry)entries.next();
+            setPartPropertyMapping((String)entry.getKey(), (String)entry.getValue(), null);
+        }
+    }
+    
+    /**
+     * 出力オブジェクトのプロパティを基準にして、入力オブジェクトと出力オブジェクトのプロパティ交換を行う場合に、一部のプロパティ交換のみ個別に設定する。<p>
      * 出力オブジェクトが配列やリストの場合で、入力オブジェクト側のプロパティ（配列やリスト）を展開したい場合は、inputPropertyで指定するプロパティ名の末尾に"-<"を付加する。<br>
      *
      * @param partOutputProperty 個別に指定する出力オブジェクト側のプロパティ
