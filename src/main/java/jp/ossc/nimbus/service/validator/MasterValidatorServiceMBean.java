@@ -242,4 +242,19 @@ public interface MasterValidatorServiceMBean extends ServiceBaseMBean{
      * @return 検証する値またはそのプロパティを表すキー文字列
      */
     public String getBindDataMap(String name);
+    
+    /**
+     * 検証する値がnullの場合に、検証結果をtrueとするかどうかを設定する。<p>
+     * デフォルトは、falseで、nullを通常の検証処理で検証する。
+     *
+     * @param isAllow 検証する値がnullの場合に、検証結果をtrueとする場合、true
+     */
+    public void setNullAllow(boolean isAllow);
+    
+    /**
+     * 検証する値がnullの場合に、検証結果をtrueとするかどうかを判定する。<p>
+     *
+     * @return trueの場合、検証する値がnullの場合に、検証結果をtrueとする
+     */
+    public boolean isNullAllow();
 }

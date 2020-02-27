@@ -89,6 +89,8 @@ public class MasterValidatorService extends ServiceBase
     private String codeMasterThreadContextKey
          = jp.ossc.nimbus.service.aop.interceptor.ThreadContextKey.CODEMASTER;
     
+    private boolean isNullAllow;
+    
     private String codeMasterName;
     private String searchCondition;
     private Map bindDataMap;
@@ -240,6 +242,13 @@ public class MasterValidatorService extends ServiceBase
              : BIND_DATA_VALUE_KEY + '.' + prop.getPropertyName();
     }
     
+    public void setNullAllow(boolean isAllow){
+        isNullAllow = isAllow;
+    }
+    public boolean isNullAllow(){
+        return isNullAllow;
+    }
+    
     /**
      * サービスの開始処理を行う。<p>
      *
@@ -295,6 +304,9 @@ public class MasterValidatorService extends ServiceBase
      * @exception ValidateException 検証に失敗した場合
      */
     public boolean validate(Object obj) throws ValidateException{
+        if(obj == null && isNullAllow){
+            return true;
+        }
         if(connectionFactory != null){
             if(persistentManager != null){
                 Connection con = null;

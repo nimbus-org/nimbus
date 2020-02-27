@@ -419,6 +419,14 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
             throw new PropertySchemaDefineException(schema, "Illegal object format : " + val, e);
         }
         
+        if(object instanceof Service){
+            try{
+                ((Service)object).create();
+            }catch(Exception e){
+                throw new PropertySchemaDefineException(schema, "Illegal object format : " + val, e);
+            }
+        }
+        
         if(properties != null && properties.size() != 0){
             for(int i = 0, imax = properties.size(); i < imax; i++){
                 String property = (String)properties.get(i);
@@ -517,6 +525,15 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
                 }
             }
         }
+        
+        if(object instanceof Service){
+            try{
+                ((Service)object).start();
+            }catch(Exception e){
+                throw new PropertySchemaDefineException(schema, "Illegal object format : " + val, e);
+            }
+        }
+        
         Object old = objectManager.putIfAbsent(val, object);
         if(old != null){
             object = old;
