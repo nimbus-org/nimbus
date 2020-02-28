@@ -206,7 +206,7 @@ public class TcpKeepAliveCheckerService extends AbstractKeepAliveCheckerService 
         if (localAddress == null) {
             return isReturnCheckTargetTcpAddress ? socketAddress : null;
         }
-        return new InetSocketAddress(localAddress.getHostAddress(), responsePort);
+        return new InetSocketAddress(localAddress, responsePort);
     }
     
 }
