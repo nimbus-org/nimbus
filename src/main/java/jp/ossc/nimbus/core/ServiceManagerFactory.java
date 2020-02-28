@@ -705,8 +705,22 @@ public class ServiceManagerFactory implements Serializable{
      * @return 全て起動されている場合true
      */
     public static boolean checkLoadManagerCompleted(Set notStarted){
+        return checkLoadManagerCompleted(notStarted, true);
+    }
+    
+    /**
+     * ロードしたサービス定義に定義されたサービスが全て起動されているか調べる。<p>
+     * 起動されていないサービス名を{@link ServiceName}として、notStartedに格納して返す。<br>
+     * 
+     * @param notStarted 起動できなかったサービス名の集合を格納するセット
+     * @param isOutputLog ログを出力する場合true
+     * @return 全て起動されている場合true
+     */
+    public static boolean checkLoadManagerCompleted(Set notStarted, boolean isOutputLog){
         
-        logger.write(SVCMF00013);
+        if(isOutputLog){
+            logger.write(SVCMF00013);
+        }
         final Set tmpNotStarted = new HashSet();
         final ServiceManager[] managers = findManagers();
         final StringBuilder message = new StringBuilder();
@@ -780,7 +794,9 @@ public class ServiceManagerFactory implements Serializable{
             if(notStarted != null){
                 notStarted.addAll(tmpNotStarted);
             }
-            logger.write(SVCMF00014, message.toString());
+            if(isOutputLog){
+                logger.write(SVCMF00014, message.toString());
+            }
         }
         return isSuccess;
     }
@@ -806,7 +822,26 @@ public class ServiceManagerFactory implements Serializable{
         Set managerNames,
         Set notStarted
     ){
-        logger.write(SVCMF00013);
+        return checkLoadManagerCompletedBy(managerNames, notStarted, true);
+    }
+    
+    /**
+     * ロードしたサービス定義に定義されたサービスが全て起動されているか調べる。<p>
+     * 起動されていないサービス名を{@link ServiceName}として、notStartedに格納して返す。<br>
+     * 
+     * @param managerNames チェックするマネージャ名の集合
+     * @param notStarted 起動できなかったサービス名の集合を格納するセット
+     * @param isOutputLog ログを出力する場合true
+     * @return 全て起動されている場合true
+     */
+    public static boolean checkLoadManagerCompletedBy(
+        Set managerNames,
+        Set notStarted,
+        boolean isOutputLog
+    ){
+        if(isOutputLog){
+            logger.write(SVCMF00013);
+        }
         final Set tmpNotStarted = new HashSet();
         final ServiceManager[] managers = findManagers();
         final StringBuilder message = new StringBuilder();
@@ -886,7 +921,9 @@ public class ServiceManagerFactory implements Serializable{
             if(notStarted != null){
                 notStarted.addAll(tmpNotStarted);
             }
-            logger.write(SVCMF00014, message.toString());
+            if(isOutputLog){
+                logger.write(SVCMF00014, message.toString());
+            }
         }
         return isSuccess;
     }
@@ -912,7 +949,26 @@ public class ServiceManagerFactory implements Serializable{
         String managerName,
         Set notStarted
     ){
-        logger.write(SVCMF00013);
+        return checkLoadManagerCompletedBy(managerName, notStarted, true);
+    }
+    
+    /**
+     * ロードしたサービス定義に定義されたサービスが全て起動されているか調べる。<p>
+     * 起動されていないサービス名を{@link ServiceName}として、notStartedに格納して返す。<br>
+     * 
+     * @param managerName チェックするマネージャ名
+     * @param notStarted 起動できなかったサービス名の集合を格納するセット
+     * @param isOutputLog ログを出力する場合true
+     * @return 全て起動されている場合true
+     */
+    public static boolean checkLoadManagerCompletedBy(
+        String managerName,
+        Set notStarted,
+        boolean isOutputLog
+    ){
+        if(isOutputLog){
+            logger.write(SVCMF00013);
+        }
         final Set tmpNotStarted = new HashSet();
         final ServiceManager manager = findManager(managerName);
         final StringBuilder message = new StringBuilder();
@@ -972,7 +1028,9 @@ public class ServiceManagerFactory implements Serializable{
             if(notStarted != null){
                 notStarted.addAll(tmpNotStarted);
             }
-            logger.write(SVCMF00014, message.toString());
+            if(isOutputLog){
+                logger.write(SVCMF00014, message.toString());
+            }
         }
         return isSuccess;
     }

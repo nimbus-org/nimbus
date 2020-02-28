@@ -109,6 +109,9 @@ import jp.ossc.nimbus.util.converter.*;
  *     <tr><td>method</td><td>メソッドのシグニチャ。メソッド名(引数の型,引数の型,...)</td></tr>
  *     <tr><td>args</td><td>引数の値。引数が複数存在する場合は、このパラメータを引数の順番通りに複数指定する。</td></tr>
  *     <tr><td>argTypes</td><td>argsで指定した引数の値を示す文字列を、引数の型にキャスト可能なオブジェクトに変換するPropertyEditorの型を指定する。空文字や指定しない場合は、引数の型に合うPropertyEditorで変換する。</td></tr>
+ *     <tr><td rowspan="3">7</td><td rowspan="4"><nobr>サービスロード完了チェック</nobr></td><td>responseType</td><td>json</td><td rowspan="3"><code>{"causes":["Nimbus#Service1","Nimbus#Service2"]}</code></td></tr>
+ *     <tr><td>action</td><td>checkLoadManagerCompleted</td></tr>
+ *     <tr><td>managerName</td><td>マネージャ名。複数指定可能。指定しない場合は、全てのマネージャを対象とする。</td></tr>
  * </table>
  * <p>
  * 以下に、サーブレットのweb.xml定義例を示す。<br>
@@ -669,6 +672,8 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
                 return;
             }
             processCallOperationResponse(req, resp, responseType);
+        }else if(action.equals("checkLoadManagerCompleted")){
+            processCheckLoadManagerCompleted(req, resp, responseType);
         }else{
             resp.sendError(HttpServletResponse.SC_NOT_FOUND);
         }
@@ -1270,6 +1275,57 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
             buf.append("</html>");
         }
         resp.getWriter().println(buf.toString());
+    }
+    
+    /**
+     * サービスロード完了チェックリクエスト処理を行う。<p>
+     *
+     * @param req HTTPリクエスト
+     * @param resp HTTPレスポンス
+     * @param responseType レスポンス種別
+     * @exception ServletException 
+     * @exception IOException 
+     */
+    protected void processCheckLoadManagerCompleted(
+        HttpServletRequest req,
+        HttpServletResponse resp,
+        String responseType
+    ) throws ServletException, IOException{
+        final String[] managerNames = req.getParameterValues("managerName");
+        boolean result = true;
+        Set notStarted = new LinkedHashSet();
+        if(managerNames == null || managerNames.length == 0){
+            result &= ServiceManagerFactory.checkLoadManagerCompleted(notStarted, false);
+        }else{
+            for(int i = 0; i < managerNames.length; i++){
+                result &= ServiceManagerFactory.checkLoadManagerCompletedBy(
+                    managerNames[i],
+                    notStarted,
+                    false
+                );
+            }
+        }
+        final StringBuilder buf = new StringBuilder();
+        if(!result){
+            if("json".equals(responseType)){
+                resp.setContentType("application/json;charset=UTF-8");
+                Map json = new HashMap();
+                json.put("causes", notStarted);
+                buf.append(
+                    toStringConverter.convertToObject(jsonConverter.convertToStream(json))
+                );
+            }else{
+                resp.setContentType("text/html;charset=UTF-8");
+                buf.append("<html>");
+                buf.append("<head><title>Nimbus Call Method</title></head>");
+                buf.append("<body>");
+                buf.append("causes : ").append(notStarted);
+                buf.append("</body>");
+                buf.append("</html>");
+            }
+            resp.getWriter().println(buf.toString());
+            resp.sendError(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
+        }
     }
     
     /**
