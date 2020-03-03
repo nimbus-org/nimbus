@@ -172,7 +172,7 @@ public class Utility{
         if(propStr != null && propStr.length() != 0){
             prop = System.getProperty(propStr);
             if(prop == null){
-                System.getenv(propStr);
+                prop = System.getenv(propStr);
             }
         }
         if(prop == null){
