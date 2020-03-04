@@ -73,6 +73,7 @@ public class ClientBeanFlowInvokerFactoryService extends ServiceBase
     private ServiceName contextServiceName;
     private String clusterOptionKey;
     private String[] contextKeys;
+    private String[] disabledContextKeys;
     private Map flowMap;
     
     private ServiceName asynchInvokeQueueHandlerContainerServiceName;
@@ -113,6 +114,15 @@ public class ClientBeanFlowInvokerFactoryService extends ServiceBase
     // ClientBeanFlowInvokerFactoryServiceMBeanのJavaDoc
     public String[] getContextKeys(){
         return contextKeys;
+    }
+    
+    // ClientBeanFlowInvokerFactoryServiceMBeanのJavaDoc
+    public void setDisabledContextKeys(String[] keys){
+        disabledContextKeys = keys;
+    }
+    // ClientBeanFlowInvokerFactoryServiceMBeanのJavaDoc
+    public String[] getDisabledContextKeys(){
+        return disabledContextKeys;
     }
     
     // ClientBeanFlowInvokerFactoryServiceMBeanのJavaDoc
@@ -221,6 +231,19 @@ public class ClientBeanFlowInvokerFactoryService extends ServiceBase
     public BeanFlowInvoker createFlow(String flowName, String caller, boolean isOverwride){
         BeanFlowInvokerServer server = selectBeanFlowInvokerServer(flowName);
         try{
+            String[] contextKeys = null;
+            if(contextServiceName != null){
+                if(disabledContextKeys != null && disabledContextKeys.length > 0){
+                    Context context = (Context)ServiceManagerFactory.getServiceObject(contextServiceName);
+                    Set keySet = new HashSet(context.keySet());
+                    for(int i = 0; i < disabledContextKeys.length; i++){
+                        keySet.remove(disabledContextKeys[i]);
+                    }
+                    contextKeys = (String[])keySet.toArray(new String[keySet.size()]);
+                }else{
+                    contextKeys = this.contextKeys;
+                }
+            }
             return new BeanFlowInvokerImpl(server.createFlow(flowName, caller, isOverwride), server, contextServiceName, contextKeys, asynchInvokeQueueHandlerContainer);
         }catch(RemoteException e){
             throw new BeanFlowRemoteException(flowName,"Remote error occured.", e);
