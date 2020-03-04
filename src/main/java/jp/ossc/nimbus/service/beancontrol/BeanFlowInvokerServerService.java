@@ -533,10 +533,11 @@ public class BeanFlowInvokerServerService extends ServiceBase
         public Object invokeFlow(Object id, Object obj, Map ctx) throws Exception, NoSuchBeanFlowIdException{
             BeanFlowInvoker invoker = getBeanFlowInvoker(id);
             BeanFlowMonitor monitor = getBeanFlowMonitor(id);
-            if(ctx != null && ctx.size() != 0){
-                Context context = getContext();
-                if(context != null){
-                    context.putAll(ctx);
+            Context threadContext = getContext();
+            if(threadContext != null){
+                threadContext.clear();
+                if(ctx != null && ctx.size() != 0){
+                    threadContext.putAll(ctx);
                 }
             }
             InterceptorChain chain = getInterceptorChain(invoker.getFlowName());
@@ -563,6 +564,9 @@ public class BeanFlowInvokerServerService extends ServiceBase
                     }
                 }
             }finally{
+                if(threadContext != null){
+                    threadContext.clear();
+                }
                 synchronized(monitorMap){
                     flowMap.remove(id);
                     monitorMap.remove(id);
@@ -573,34 +577,41 @@ public class BeanFlowInvokerServerService extends ServiceBase
         public void invokeAsynchFlow(Object id, Object input, Map ctx, BeanFlowAsynchInvokeCallback callback, int maxAsynchWait) throws NoSuchBeanFlowIdException, Exception{
             BeanFlowInvoker invoker = getBeanFlowInvoker(id);
             BeanFlowMonitor monitor = getBeanFlowMonitor(id);
-            if(ctx != null && ctx.size() != 0){
-                Context context = getContext();
-                if(context != null){
-                    context.putAll(ctx);
+            Context threadContext = getContext();
+            if(threadContext != null){
+                threadContext.clear();
+                if(ctx != null && ctx.size() != 0){
+                    threadContext.putAll(ctx);
                 }
             }
             BeanFlowAsynchInvokeCallbackImpl callbackWrapper = callback == null ? null : new BeanFlowAsynchInvokeCallbackImpl(id, callback);
             InterceptorChain chain = getInterceptorChain(invoker.getFlowName());
             Object beanFlowAsynchContext = null;
-            if(chain == null){
-                beanFlowAsynchContext = invoker.invokeAsynchFlow(input, monitor, callbackWrapper, maxAsynchWait);
-            }else{
-                DefaultMethodInvocationContext context = new DefaultMethodInvocationContext(
-                    invoker,
-                    invokeAsynchFlowMethod,
-                    new Object[]{input, monitor, callbackWrapper, new Integer(maxAsynchWait)}
-                );
-                try{
-                    chain.setCurrentInterceptorIndex(-1);
-                    beanFlowAsynchContext = chain.invokeNext(context);
-                }catch(Throwable e){
-                    if(e instanceof Exception){
-                        throw (Exception)e;
-                    }else{
-                        throw (Error)e;
+            try{
+                if(chain == null){
+                    beanFlowAsynchContext = invoker.invokeAsynchFlow(input, monitor, callbackWrapper, maxAsynchWait);
+                }else{
+                    DefaultMethodInvocationContext context = new DefaultMethodInvocationContext(
+                        invoker,
+                        invokeAsynchFlowMethod,
+                        new Object[]{input, monitor, callbackWrapper, new Integer(maxAsynchWait)}
+                    );
+                    try{
+                        chain.setCurrentInterceptorIndex(-1);
+                        beanFlowAsynchContext = chain.invokeNext(context);
+                    }catch(Throwable e){
+                        if(e instanceof Exception){
+                            throw (Exception)e;
+                        }else{
+                            throw (Error)e;
+                        }
+                    }finally{
+                        chain.setCurrentInterceptorIndex(-1);
                     }
-                }finally{
-                    chain.setCurrentInterceptorIndex(-1);
+                }
+            }finally{
+                if(threadContext != null){
+                    threadContext.clear();
                 }
             }
             if(callback != null){
@@ -762,6 +773,10 @@ public class BeanFlowInvokerServerService extends ServiceBase
                 end(id);
                 if(callback != null){
                     callback.reply(output, th);
+                }
+                Context threadContext = getContext();
+                if(threadContext != null){
+                    threadContext.clear();
                 }
             }
         }

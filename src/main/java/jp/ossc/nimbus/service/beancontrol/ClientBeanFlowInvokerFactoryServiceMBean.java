@@ -102,6 +102,21 @@ public interface ClientBeanFlowInvokerFactoryServiceMBean extends ServiceBaseMBe
     public String[] getContextKeys();
     
     /**
+     * {@link jp.ossc.nimbus.service.beancontrol.BeanFlowInvokerServer#invokeFlow(Object, Object, Map)}の第３引数に指定するコンテキスト情報のキーに含めたくないキーを設定する。<p>
+     * 指定しない場合は、{@link #getContextKeys()}に該当するコンテキスト情報を引き渡す。<br>
+     *
+     * @param keys コンテキスト情報のキー
+     */
+    public void setDisabledContextKeys(String[] keys);
+    
+    /**
+     * {@link jp.ossc.nimbus.service.beancontrol.BeanFlowInvokerServer#invokeFlow(Object, Object, Map)}の第３引数に指定するコンテキスト情報のキーに含めたくないキーを取得する。<p>
+     *
+     * @return コンテキスト情報のキー
+     */
+    public String[] getDisabledContextKeys();
+    
+    /**
      * {@link jp.ossc.nimbus.service.queue.QueueHandlerContainer QueueHandlerContainer}サービスのサービス名を設定する。<p>
      *
      * @param name QueueHandlerContainerサービスのサービス名
