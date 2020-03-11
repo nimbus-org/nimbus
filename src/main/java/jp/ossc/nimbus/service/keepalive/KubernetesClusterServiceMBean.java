@@ -280,6 +280,21 @@ public interface KubernetesClusterServiceMBean extends ServiceBaseMBean{
     public Integer getPodWatchTimeout();
     
     /**
+     * Podを監視する際のHTTP通信の応答タイムアウトを設定する。<p>
+     * デフォルトは、3[s]。<br>
+     *
+     * @param seconds タイムアウト[s]
+     */
+    public void setHttpReadTimeout(int seconds);
+    
+    /**
+     * Podを監視する際のHTTP通信の応答タイムアウトを取得する。<p>
+     *
+     * @return タイムアウト[s]
+     */
+    public int getHttpReadTimeout();
+    
+    /**
      * ポート番号を設定する。<p>
      * デフォルトは、1500。<br>
      *

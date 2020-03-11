@@ -89,6 +89,7 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
     protected String fieldSelector;
     protected String labelSelector;
     protected Integer podWatchTimeout = new Integer(5);
+    protected int httpReadTimeout = 3;
     
     protected int port = 1500;
     protected boolean isAnonymousPort = false;
@@ -119,7 +120,7 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
     protected transient List members;
     protected transient Set memberAddresses;
     protected transient Map clientMembers;
-    protected transient List podMembers;
+    protected transient Set podMembers;
     
     protected final SynchronizeMonitor addMonitor = new WaitSynchronizeMonitor();
     
@@ -232,6 +233,13 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
     }
     public Integer getPodWatchTimeout(){
         return podWatchTimeout;
+    }
+    
+    public void setHttpReadTimeout(int seconds){
+        httpReadTimeout = seconds;
+    }
+    public int getHttpReadTimeout(){
+        return httpReadTimeout;
     }
     
     public void setPort(int port){
@@ -390,7 +398,7 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
         }
         synchronized(podMembers){
             List result = new ArrayList(podMembers);
-            if(uid != null){
+            if(uid != null && !isClient){
                 result.add(new InetSocketAddress(uid.getAddress(), uid.getPort()));
             }
             return result;
@@ -455,7 +463,7 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
         clientMembers = Collections.synchronizedMap(new HashMap());
         mainReqMembers = Collections.synchronizedSet(new HashSet());
         listeners = new ArrayList();
-        podMembers = Collections.synchronizedList(new ArrayList());
+        podMembers = Collections.synchronizedSet(new LinkedHashSet());
     }
     
     public void startService() throws Exception{
@@ -514,6 +522,9 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
             client = Config.fromConfig(reader);
         }else{
             client = Config.fromCluster();
+        }
+        if(httpReadTimeout > 0){
+            client.getHttpClient().setReadTimeout(httpReadTimeout, java.util.concurrent.TimeUnit.SECONDS);
         }
         
         uidWithOption = new KubernetesClusterService.ClusterUID(
@@ -758,6 +769,7 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
         client.fieldSelector = fieldSelector;
         client.labelSelector = labelSelector;
         client.podWatchTimeout = podWatchTimeout;
+        client.httpReadTimeout = httpReadTimeout;
         client.port = port;
         client.isAnonymousPort = isAnonymousPort;
         client.receiveBufferSize = receiveBufferSize;
@@ -1493,7 +1505,7 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                 );
             }catch(Throwable th){
                 Throwable cause = th.getCause();
-                if(cause != null && (cause instanceof ConnectException)){
+                if(cause != null && (cause instanceof ConnectException || cause instanceof SocketTimeoutException)){
                     Thread.sleep(1000L);
                     return null;
                 }
@@ -1509,16 +1521,21 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
             Watch watcher = (Watch)dequed;
             try{
                 Iterator itr = watcher.iterator();
+                InetAddress loopbackAddress = InetAddress.getLoopbackAddress();
                 while(itr.hasNext()){
                     Watch.Response response = (Watch.Response)itr.next();
+                    if(response == null){
+                        continue;
+                    }
                     V1Pod pod = (V1Pod)response.object;
                     InetAddress address = InetAddress.getByName(pod.getStatus().getPodIP());
-                    if(!uid.getAddress().equals(address)){
+                    if(uid.getAddress().equals(address) || loopbackAddress.equals(address)){
                         continue;
                     }
                     final EventType eventType = EventType.getByType(response.type);
                     switch(eventType){
                     case ADDED:
+                    case MODIFIED:
                         podMembers.add(new InetSocketAddress(address, port));
                         break;
                     case DELETED:
@@ -1528,6 +1545,10 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                     resourceVersion = pod.getMetadata().getResourceVersion();
                 }
             }catch(Throwable th){
+                Throwable cause = th.getCause();
+                if(cause != null && (cause instanceof ConnectException || cause instanceof SocketTimeoutException)){
+                    return;
+                }
                 getLogger().write(MSG_ID_MESSAGE_IO_ERROR, getServiceNameObject(), th);
             }finally{
                 watcher.close();
