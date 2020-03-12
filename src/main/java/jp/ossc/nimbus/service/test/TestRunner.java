@@ -265,6 +265,10 @@ public class TestRunner {
                 final Document doc = builder.parse(inputSource);
                 if(handler.isError()){
                     ServiceManagerFactory.getLogger().write("TR___00004", runnerDefPath);
+                    try {
+                        Thread.sleep(exitSleepTime);
+                    } catch(InterruptedException e) {
+                    }
                     System.exit(-1);
                 }
                 final Element root = doc.getDocumentElement();
@@ -396,6 +400,10 @@ public class TestRunner {
                 }
             }catch(Exception e){
                 ServiceManagerFactory.getLogger().write("TR___00004", runnerDefPath, e);
+                try {
+                    Thread.sleep(exitSleepTime);
+                } catch(InterruptedException e2) {
+                }
                 System.exit(-1);
             }
             
@@ -406,6 +414,10 @@ public class TestRunner {
             }catch(Exception e){
                 // TODO
                 ServiceManagerFactory.getLogger().write("TR___00006", e);
+                try {
+                    Thread.sleep(exitSleepTime);
+                } catch(InterruptedException e2) {
+                }
                 System.exit(-1);
             }
             for(int i = 0; i < groups.length; i++){
