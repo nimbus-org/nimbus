@@ -58,6 +58,8 @@ public class TestRunner {
     
     private static final String USAGE_RESOURCE = "jp/ossc/nimbus/service/test/TestRunnerUsage.txt";
     
+    private static long exitSleepTime = 0l;
+    
     static {
         NimbusEntityResolver.registerDTD("-//Nimbus//DTD Nimbus Test Runner 1.0//JA", "jp/ossc/nimbus/service/test/testrunner_1_0.dtd");
     }
@@ -192,6 +194,8 @@ public class TestRunner {
                 validate = true;
             }else if(args[i].equals("-userId")){
                 userId = args[++i];
+            }else if(args[i].equals("-sleep")){
+                exitSleepTime = Long.parseLong(args[++i]);
             }else if(args[i].equals("-servicedir")){
                 if(serviceDirs == null){
                     serviceDirs = new ArrayList();
@@ -218,16 +222,28 @@ public class TestRunner {
                 for(int i = 0, max = serviceDirs.size(); i < max; i++){
                     String[] params = (String[])serviceDirs.get(i);
                     if(!ServiceManagerFactory.loadManagers(params[0], params[1], false, validate)){
+                        try {
+                            Thread.sleep(exitSleepTime);
+                        } catch(InterruptedException e) {
+                        }
                         System.exit(-1);
                     }
                 }
             }
             for(int i = 0, max = servicePaths.size(); i < max; i++){
                 if(!ServiceManagerFactory.loadManager((String)servicePaths.get(i), false, validate)){
+                    try {
+                        Thread.sleep(exitSleepTime);
+                    } catch(InterruptedException e) {
+                    }
                     System.exit(-1);
                 }
             }
             if(!ServiceManagerFactory.checkLoadManagerCompleted()){
+                try {
+                    Thread.sleep(exitSleepTime);
+                } catch(InterruptedException e) {
+                }
                 System.exit(-1);
             }
             
@@ -249,6 +265,10 @@ public class TestRunner {
                 final Document doc = builder.parse(inputSource);
                 if(handler.isError()){
                     ServiceManagerFactory.getLogger().write("TR___00004", runnerDefPath);
+                    try {
+                        Thread.sleep(exitSleepTime);
+                    } catch(InterruptedException e) {
+                    }
                     System.exit(-1);
                 }
                 final Element root = doc.getDocumentElement();
@@ -380,6 +400,10 @@ public class TestRunner {
                 }
             }catch(Exception e){
                 ServiceManagerFactory.getLogger().write("TR___00004", runnerDefPath, e);
+                try {
+                    Thread.sleep(exitSleepTime);
+                } catch(InterruptedException e2) {
+                }
                 System.exit(-1);
             }
             
@@ -390,6 +414,10 @@ public class TestRunner {
             }catch(Exception e){
                 // TODO
                 ServiceManagerFactory.getLogger().write("TR___00006", e);
+                try {
+                    Thread.sleep(exitSleepTime);
+                } catch(InterruptedException e2) {
+                }
                 System.exit(-1);
             }
             for(int i = 0; i < groups.length; i++){
