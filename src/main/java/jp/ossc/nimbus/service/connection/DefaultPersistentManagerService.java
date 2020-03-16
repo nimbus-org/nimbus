@@ -264,6 +264,9 @@ public class DefaultPersistentManagerService extends ServiceBase
                         && inputPropList.size() != metadata.getParameterCount()){
                         throw new PersistentException("Illegal sql : " + sql);
                     }
+                    if(metadata.getParameterCount() == 0 && input != null){
+                        input = null;
+                    }
                 }catch(IncompatibleClassChangeError e){
                 }
                 if(input != null){
@@ -1240,6 +1243,9 @@ public class DefaultPersistentManagerService extends ServiceBase
                     && inputPropList.size() != metadata.getParameterCount()){
                     throw new PersistentException("Illegal sql : " + sql);
                 }
+                if(metadata.getParameterCount() == 0 && input != null){
+                    input = null;
+                }
             }catch(IncompatibleClassChangeError e){
             }
             if(input != null){
@@ -1353,6 +1359,9 @@ public class DefaultPersistentManagerService extends ServiceBase
                 if(inputPropList != null
                     && (inputPropList.size() != metadata.getParameterCount())){
                     throw new PersistentException("Illegal sql : " + sql);
+                }
+                if(metadata.getParameterCount() == 0 && input != null){
+                    input = null;
                 }
             }catch(SQLException e){
                 throw new PersistentException("Illegal sql : " + sql, e);
