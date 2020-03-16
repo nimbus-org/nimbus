@@ -425,6 +425,10 @@ public class SharedQueueService extends SharedContextService
                         if(size() == 0){
                             return EMPTY;
                         }else{
+                            if(!isMain()){
+                                getLogger().write("SQS__00001", new Object[]{subject});
+                                synchronize();
+                            }
                             continue;
                         }
                     }
