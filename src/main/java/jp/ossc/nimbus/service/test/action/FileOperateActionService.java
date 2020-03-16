@@ -284,7 +284,7 @@ public class FileOperateActionService extends ServiceBase implements TestAction,
             File parentFile = file;
             while((parentFile = parentFile.getParentFile()) != null && !parentFile.exists());
             
-            if(parentFile == null){
+            if(parentFile == null || ".".equals(parentFile.getPath())){
                 parentFile = new File(context.getCurrentDirectory().getAbsolutePath());
             }else{
                 path = path.substring(parentFile.getPath().length() + 1);
