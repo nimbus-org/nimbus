@@ -31,17 +31,35 @@
  */
 package jp.ossc.nimbus.service.test;
 
-import java.io.*;
-import java.util.*;
-import javax.xml.parsers.*;
-import org.w3c.dom.*;
-import org.xml.sax.*;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.xml.sax.ErrorHandler;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
+
+import jp.ossc.nimbus.beans.ServiceNameEditor;
 import jp.ossc.nimbus.core.MetaData;
 import jp.ossc.nimbus.core.NimbusEntityResolver;
 import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.core.ServiceName;
-import jp.ossc.nimbus.beans.ServiceNameEditor;
+import jp.ossc.nimbus.service.beancontrol.BeanFlowCoverageRepoter;
 
 /**
  * テスト実行。
@@ -547,7 +565,20 @@ public class TestRunner {
             // レポート
             if(testReporterList != null){
                 for(int i = 0; i < testReporterList.size(); i++){
-                    ((TestReporter)testReporterList.get(i)).report(testController);
+                    Object service = testReporterList.get(i);
+                    if (TestReporter.class.isAssignableFrom(service.getClass())) {
+                        TestReporter reporter = (TestReporter) service;
+                        reporter.report(testController);
+                    } else if(BeanFlowCoverageRepoter.class.isAssignableFrom(service.getClass())) {
+                        BeanFlowCoverageRepoter reporter = (BeanFlowCoverageRepoter) service;
+                        try {
+                            reporter.report();
+                        } catch(Exception e) {
+                            if(verbose){
+                                ServiceManagerFactory.getLogger().write("TR___00018", groups[i].getScenarioGroupId(), e);
+                            }
+                        }
+                    }
                 }
             }
             
