@@ -446,6 +446,7 @@ TR___00014,\tScenario fail    : @0\\, status=@1,100,jp.ossc.nimbus.service.log.S
 TR___00015,\tScenario error   : @0\\, status=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 TR___00016,Scenario group end : @0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 TR___00017,Scenario group error : @0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+TR___00018,Reporter error,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 CTR__00001,It failed to get result of test.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 TC___00001,Test resource definition XML warning : @0 : file=@1\\, line=@2\\, column=@3,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 TC___00002,Test resource definition XML error : @0 : file=@1\\, line=@2\\, column=@3,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
