@@ -306,14 +306,12 @@ public class TestRunner {
                         final String reporterServiceNameStr = MetaData.getElementContent(reporterElement);
                         editor.setAsText(reporterServiceNameStr);
                         final ServiceName reporterServiceName = (ServiceName)editor.getValue();
-                        TestReporter testReporter = (TestReporter)ServiceManagerFactory.getServiceObject(reporterServiceName);
-                        testReporterList.add(testReporter);
+                        testReporterList.add(ServiceManagerFactory.getServiceObject(reporterServiceName));
                     }
                 }else{
                     editor.setAsText("Nimbus#TestReporter");
                     final ServiceName reporterServiceName = (ServiceName)editor.getValue();
-                    TestReporter testReporter = (TestReporter)ServiceManagerFactory.getServiceObject(reporterServiceName);
-                    testReporterList.add(testReporter);
+                    testReporterList.add(ServiceManagerFactory.getServiceObject(reporterServiceName));
                 }
                 
                 final Element phaseElement = MetaData.getOptionalChild(root, "phase");
