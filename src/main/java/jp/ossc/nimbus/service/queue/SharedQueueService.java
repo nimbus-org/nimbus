@@ -419,15 +419,22 @@ public class SharedQueueService extends SharedContextService
             Object element = null;
             do{
                 String id = null;
+                String localId = null;
+                String preLocalId = null;
                 try{
                     id = (String)lockFirst();
                     if(id == null){
                         if(size() == 0){
                             return EMPTY;
                         }else{
-                            if(!isMain()){
-                                getLogger().write("SQS__00001", new Object[]{subject});
-                                synchronize();
+                            if(!isClient() && !isMain()){
+                                localId = (String)((SortedMap)context).firstKey();
+                                if(preLocalId != null && preLocalId.equals(localId)){
+                                    getLogger().write("SQS__00001", new Object[]{subject});
+                                    synchronize();
+                                }else{
+                                    preLocalId = localId;
+                                }
                             }
                             continue;
                         }
