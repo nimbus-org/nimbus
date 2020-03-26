@@ -348,7 +348,7 @@ public class DataSetJSONJournalEditorService extends ImmutableJournalEditorServi
         }else if(Record.class.isAssignableFrom(type)){
             Record rec = (Record)value;
             RecordSchema schema = rec.getRecordSchema();
-            PropertySchema[] propSchemata = schema.getPropertySchemata();
+            PropertySchema[] propSchemata = schema == null ? null : schema.getPropertySchemata();
             boolean isOutputPropertyName = true;
             if((rec instanceof Header && !isOutputPropertyNameOfHeader)
                 || (!(rec instanceof Header)
@@ -361,7 +361,7 @@ public class DataSetJSONJournalEditorService extends ImmutableJournalEditorServi
             }else{
                 buf.append(ARRAY_ENCLOSURE_START);
             }
-            for(int i = 0, imax = propSchemata.length; i < imax; i++){
+            for(int i = 0, imax = propSchemata == null ? 0 : propSchemata.length; i < imax; i++){
                 Object prop = rec.getProperty(i);
                 PropertySchema propSchema = propSchemata[i];
                 boolean hasConverter = false;
