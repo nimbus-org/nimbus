@@ -191,7 +191,7 @@ public class RecordJournalEditorService extends BlockJournalEditorServiceBase
     ){
         buf.append(PROPERTIES_HEADER);
         final RecordSchema schema = bean.getRecordSchema();
-        final PropertySchema[] props = schema.getPropertySchemata();
+        final PropertySchema[] props = schema == null ? null : schema.getPropertySchemata();
         if(props == null || props.length == 0){
             buf.append(NULL_STRING);
             return buf;
