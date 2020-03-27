@@ -38,44 +38,42 @@ import jp.ossc.nimbus.core.*;
  * OAuth2 スコープマッチのデフォルト実装クラス。
  * <p>
  *
- * @author M.Takata
+ * @author T.Tashiro
  */
 public class DefaultOAuth2ScopeMatcherService extends ServiceBase
         implements OAuth2ScopeMatcher, DefaultOAuth2ScopeMatcherServiceMBean {
-
+    
     private boolean isPartialMatch;
-
-    public boolean isPartialMatch() {
+    
+    public boolean isPartialMatch(){
         return this.isPartialMatch;
     }
-
-    public void setPartialMatch(boolean isPartialMatch) {
+    
+    public void setPartialMatch(boolean isPartialMatch){
         this.isPartialMatch = isPartialMatch;
     }
-
-    public boolean match(String[] resorceScopes, String[] clientScopes) {
+    
+    public boolean match(String[] resorceScopes, String[] clientScopes){
         Set resorceScopeSet = new HashSet();
         Set clientScopeSet = new HashSet();
-
-        if (resorceScopes != null) {
-
-            for (String scope : resorceScopes) {
+        
+        if(resorceScopes != null){
+            for(String scope : resorceScopes){
                 resorceScopeSet.add(scope);
             }
-
         }
-        if (resorceScopeSet.isEmpty()) {
+        
+        if(resorceScopeSet.isEmpty()){
             return true;
         }
-
-        if (clientScopes != null) {
-            for (String scope : clientScopes) {
+        
+        if(clientScopes != null){
+            for(String scope : clientScopes){
                 clientScopeSet.add(scope);
             }
         }
-
+        
         return isPartialMatch() ? clientScopeSet.removeAll(resorceScopeSet)
                 : clientScopeSet.containsAll(resorceScopeSet);
-
     }
 }

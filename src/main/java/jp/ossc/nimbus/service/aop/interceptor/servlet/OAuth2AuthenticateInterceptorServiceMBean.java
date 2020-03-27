@@ -41,34 +41,111 @@ import jp.ossc.nimbus.core.*;
  * @see OAuth2AuthenticateInterceptorService
  */
 public interface OAuth2AuthenticateInterceptorServiceMBean extends ServletFilterInterceptorServiceMBean {
-
+    
     public static final String DEFAULT_ACTION_NAME = "introspection";
     public static final String DEFAULT_TOKEN_HEADER_NAME = "Authorization";
     public static final String DEFAULT_TOKEN_PARAMETER_NAME = "token";
-
+    
     /**
-     * リクエストされているリソースのスコープを解決する{@link jp.ossc.nimbus.service.aop.interceptor.OAuth2ScopeResolver
-     * OAuth2ScopeResolver}サービスのサービス名を設定する。
-     * <p>
+     * トークンをHTTPヘッダで受け取る場合の、HTTPヘッダ名を取得する。<p>
      *
+     * @return HTTPヘッダ名
+     */
+    public String getTokenHeaderName();
+    
+    /**
+     * トークンをHTTPヘッダで受け取る場合の、HTTPヘッダ名を設定する。<p>
+     * デフォルトは、{@link #DEFAULT_TOKEN_HEADER_NAME}。<br>
+     *
+     * @param name HTTPヘッダ名
+     */
+    public void setTokenHeaderName(String name);
+    
+    /**
+     * トークンをパラメータで受け取る場合の、パラメータ名を取得する。<p>
+     *
+     * @return パラメータ名
+     */
+    public String getTokenParameterName();
+    
+    /**
+     * トークンをパラメータで受け取る場合の、パラメータ名を設定する。<p>
+     * デフォルトは、{@link #DEFAULT_TOKEN_PARAMETER_NAME}。<br>
+     *
+     * @param name パラメータ名
+     */
+    public void setTokenParameterName(String name);
+    
+    /**
+     * OAuth2の認可サーバのイントロスペクトエンドポイントに、要求するスコープを指定する場合の、パラメータ名を取得する。<p>
+     *
+     * @return パラメータ名
+     */
+    public String getScopeParameterName();
+    
+    /**
+     * OAuth2の認可サーバのイントロスペクトエンドポイントに、要求するスコープを指定する場合の、パラメータ名を設定する。<p>
+     *
+     * @param name パラメータ名
+     */
+    public void setScopeParameterName(String name);
+    
+    /**
+     * OAuth2の認可サーバのイントロスペクトエンドポイントを指す{@link jp.ossc.nimbus.service.http.HttpClientFactory HttpClientFactory}のアクション名を取得する。<p>
+     *
+     * @return アクション名
+     */
+    public String getActionName();
+    
+    /**
+     * OAuth2の認可サーバのイントロスペクトエンドポイントを指す{@link jp.ossc.nimbus.service.http.HttpClientFactory HttpClientFactory}のアクション名を設定する。<p>
+     * デフォルトは、{@link #DEFAULT_ACTION_NAME}。<br>
+     *
+     * @param name アクション名
+     */
+    public void setActionName(String name);
+    
+    /**
+     * {@link jp.ossc.nimbus.service.http.HttpClientFactory HttpClientFactory}サービスのサービス名を設定する。<p>
+     * 
+     * @param name HttpClientFactoryサービスのサービス名
+     */
+    public void setHttpClientFactoryServiceName(ServiceName name);
+    
+    /**
+     * {@link jp.ossc.nimbus.service.http.HttpClientFactory HttpClientFactory}サービスのサービス名を取得する。<p>
+     * 
+     * @return HttpClientFactoryサービスのサービス名
+     */
+    public ServiceName getHttpClientFactoryServiceName();
+    
+    /**
+     * {@link jp.ossc.nimbus.service.aop.interceptor.OAuth2ScopeResolver OAuth2ScopeResolver}サービスのサービス名を設定する。<p>
+     * トークン内のスコープと要求スコープが合致するか検証する必要がない場合は、設定する必要はない。<br>
+     * 
      * @param name OAuth2ScopeResolverサービスのサービス名
      */
     public void setOAuth2ScopeResolverServiceName(ServiceName name);
-
+    
     /**
-     * リクエストされているリソースのスコープを解決する{@link jp.ossc.nimbus.service.aop.interceptor.OAuth2ScopeResolver
-     * OAuth2ScopeResolver}サービスのサービス名を取得する。
-     * <p>
-     *
+     * {@link jp.ossc.nimbus.service.aop.interceptor.OAuth2ScopeResolver OAuth2ScopeResolver}サービスのサービス名を取得する。<p>
+     * 
      * @return OAuth2ScopeResolverサービスのサービス名
      */
     public ServiceName getOAuth2ScopeResolverServiceName();
-
-    public void setHttpClientFactoryServiceName(ServiceName name);
-
-    public ServiceName getHttpClientFactoryServiceName();
-
-    public void setActionName(String name);
-
-    public String getActionName();
+    
+    /**
+     * {@link jp.ossc.nimbus.service.aop.interceptor.OAuth2ScopeMatcher OAuth2ScopeMatcher}サービスのサービス名を設定する。<p>
+     * イントロスペクトエンドポイントの呼び出し後に、トークン内のスコープと要求スコープが合致するか検証する必要がない場合は、設定する必要はない。<br>
+     * 
+     * @param name OAuth2ScopeMatcherサービスのサービス名
+     */
+    public void setOAuth2ScopeMatcherServiceName(ServiceName name);
+    
+    /**
+     * {@link jp.ossc.nimbus.service.aop.interceptor.OAuth2ScopeMatcher OAuth2ScopeMatcher}サービスのサービス名を取得する。<p>
+     * 
+     * @return OAuth2ScopeMatcherサービスのサービス名
+     */
+    public ServiceName getOAuth2ScopeMatcherServiceName();
 }

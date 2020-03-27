@@ -41,9 +41,19 @@ import jp.ossc.nimbus.core.*;
  * @see DefaultOAuth2ScopeResolverService
  */
 public interface DefaultOAuth2ScopeMatcherServiceMBean extends ServiceBaseMBean {
-
+    
+    /**
+     * 要求スコープとトークンのスコープが合致するかを、部分一致で判定するかどうか。<p>
+     *
+     * @return trueの場合は、要求スコープとトークンのスコープが合致するかを、部分一致で判定する
+     */
     public boolean isPartialMatch();
-
+    
+    /**
+     * 要求スコープとトークンのスコープが合致するかを、部分一致で判定するかどうかを設定する。<p>
+     *
+     * @param isPartialMatch 要求スコープとトークンのスコープが合致するかを、部分一致で判定する場合は、true
+     */
     public void setPartialMatch(boolean isPartialMatch);
-
+    
 }

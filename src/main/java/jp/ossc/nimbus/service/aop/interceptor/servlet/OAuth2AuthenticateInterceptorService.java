@@ -55,15 +55,15 @@ import jp.ossc.nimbus.util.converter.BeanJSONConverter;
 /**
  * OAuth2認証インターセプタ。
  * <p>
- * OAuth 2.0の拡張規格である<a href=
- * "https://tools.ietf.org/html/rfc7662">RFC7662</a>のイントロスペクションエンドポイントを使った認可処理を行う。<br>
+ * OAuth 2.0の拡張規格である<a href="https://tools.ietf.org/html/rfc7662">RFC7662</a>のイントロスペクションエンドポイントを使った認可処理を行う。<br>
  *
  * @author T.Tashiro
  */
 public class OAuth2AuthenticateInterceptorService extends ServletFilterInterceptorService
         implements OAuth2AuthenticateInterceptorServiceMBean {
-
+    
     private static final Pattern CHALLENGE_PATTERN = Pattern.compile("^Bearer ([^ ]+)$", Pattern.CASE_INSENSITIVE);
+    
     private ServiceName oAuth2ScopeResolverServiceName;
     private OAuth2ScopeResolver oAuth2ScopeResolver;
     private ServiceName oAuth2ScopeMatcherServiceName;
@@ -74,108 +74,101 @@ public class OAuth2AuthenticateInterceptorService extends ServletFilterIntercept
     private String tokenHeaderName = DEFAULT_TOKEN_HEADER_NAME;
     private String tokenParameterName = DEFAULT_TOKEN_PARAMETER_NAME;
     private String scopeParameterName;
-
-    public ServiceName getOAuth2ScopeMatcherServiceName() {
-        return this.oAuth2ScopeMatcherServiceName;
-    }
-
-    public void setOAuth2ScopeMatcherServiceName(ServiceName oAuth2ScopeMatcherServiceName) {
-        this.oAuth2ScopeMatcherServiceName = oAuth2ScopeMatcherServiceName;
-    }
-
-    public void setOAuth2ScopeMatcher(OAuth2ScopeMatcher oAuth2ScopeMatcher) {
-        this.oAuth2ScopeMatcher = oAuth2ScopeMatcher;
-    }
-
-    public String getTokenHeaderName() {
+    
+    public String getTokenHeaderName(){
         return this.tokenHeaderName;
     }
-
-    public void setTokenHeaderName(String tokenHeaderName) {
+    public void setTokenHeaderName(String tokenHeaderName){
         this.tokenHeaderName = tokenHeaderName;
     }
-
-    public String getTokenParameterName() {
+    
+    public String getTokenParameterName(){
         return this.tokenParameterName;
     }
-
-    public void setTokenParameterName(String tokenParameterName) {
+    public void setTokenParameterName(String tokenParameterName){
         this.tokenParameterName = tokenParameterName;
     }
-
-    public String getScopeParameterName() {
+    
+    public String getScopeParameterName(){
         return this.scopeParameterName;
     }
-
-    public void setScopeParameterName(String scopeParameterName) {
+    public void setScopeParameterName(String scopeParameterName){
         this.scopeParameterName = scopeParameterName;
     }
-
-    public String getActionName() {
+    
+    public String getActionName(){
         return this.actionName;
     }
-
-    public void setActionName(String actionName) {
+    public void setActionName(String actionName){
         this.actionName = actionName;
     }
-
-    public void setHttpClientFactory(HttpClientFactory httpClientFactory) {
-        this.httpClientFactory = httpClientFactory;
-    }
-
-    public void setHttpClientFactoryServiceName(ServiceName name) {
+    
+    public void setHttpClientFactoryServiceName(ServiceName name){
         httpClientFactoryServiceName = name;
     }
-
-    public ServiceName getHttpClientFactoryServiceName() {
+    public ServiceName getHttpClientFactoryServiceName(){
         return httpClientFactoryServiceName;
     }
-
-    public void setOAuth2ScopeResolverServiceName(ServiceName name) {
+    
+    public void setOAuth2ScopeResolverServiceName(ServiceName name){
         oAuth2ScopeResolverServiceName = name;
     }
-
-    public ServiceName getOAuth2ScopeResolverServiceName() {
+    public ServiceName getOAuth2ScopeResolverServiceName(){
         return oAuth2ScopeResolverServiceName;
     }
-
-    public void setOAuth2ScopeResolver(OAuth2ScopeResolver resolver) {
+    
+    public ServiceName getOAuth2ScopeMatcherServiceName(){
+        return this.oAuth2ScopeMatcherServiceName;
+    }
+    public void setOAuth2ScopeMatcherServiceName(ServiceName oAuth2ScopeMatcherServiceName){
+        this.oAuth2ScopeMatcherServiceName = oAuth2ScopeMatcherServiceName;
+    }
+    
+    public void setHttpClientFactory(HttpClientFactory httpClientFactory){
+        this.httpClientFactory = httpClientFactory;
+    }
+    
+    public void setOAuth2ScopeResolver(OAuth2ScopeResolver resolver){
         oAuth2ScopeResolver = resolver;
     }
-
+    
+    public void setOAuth2ScopeMatcher(OAuth2ScopeMatcher oAuth2ScopeMatcher){
+        this.oAuth2ScopeMatcher = oAuth2ScopeMatcher;
+    }
+    
     /**
      * サービスの開始処理を行う。
      * <p>
      *
      * @exception Exception サービスの開始に失敗した場合
      */
-    public void startService() throws Exception {
-        if (oAuth2ScopeResolverServiceName != null) {
+    public void startService() throws Exception{
+        if(oAuth2ScopeResolverServiceName != null){
             oAuth2ScopeResolver = (OAuth2ScopeResolver) ServiceManagerFactory
                     .getServiceObject(oAuth2ScopeResolverServiceName);
         }
-        if (oAuth2ScopeMatcherServiceName != null) {
+        if(oAuth2ScopeMatcherServiceName != null){
             oAuth2ScopeMatcher = (OAuth2ScopeMatcher) ServiceManagerFactory
                     .getServiceObject(oAuth2ScopeMatcherServiceName);
         }
-        if (httpClientFactoryServiceName != null) {
+        if(httpClientFactoryServiceName != null){
             httpClientFactory = (HttpClientFactory) ServiceManagerFactory
                     .getServiceObject(httpClientFactoryServiceName);
         }
-        if (httpClientFactory == null) {
-            throw new IllegalArgumentException("It is necessary to set httpClientFactory.");
+        if(httpClientFactory == null){
+            throw new IllegalArgumentException("It is necessary to set HttpClientFactory.");
         }
     }
-
+    
     /**
      * サービスの停止処理を行う。
      * <p>
      *
      * @exception Exception サービスの停止に失敗した場合
      */
-    public void stopService() throws Exception {
+    public void stopService() throws Exception{
     }
-
+    
     /**
      * イントロスペクトエンドポイントを呼び出してアクセストークンの検証を行い、次のインターセプタを呼び出す。
      * <p>
@@ -186,96 +179,76 @@ public class OAuth2AuthenticateInterceptorService extends ServletFilterIntercept
      * @return 呼び出し結果の戻り値
      * @exception Throwable 呼び出し先で例外が発生した場合、またはこのインターセプタでアクセストークンの検証に失敗した場合。
      */
-    public Object invokeFilter(ServletFilterInvocationContext context, InterceptorChain chain) throws Throwable {
-
-        if (getState() == STARTED) {
+    public Object invokeFilter(ServletFilterInvocationContext context, InterceptorChain chain) throws Throwable{
+        
+        if(getState() == STARTED){
             String[] scopes = null;
-
-            if (oAuth2ScopeResolver != null) {
+            
+            if(oAuth2ScopeResolver != null){
                 scopes = oAuth2ScopeResolver.resolve(context);
-
             }
-
-            // ------------------------------------------------------------------------------
-            // 田代記述分
-            // ------------------------------------------------------------------------------
-
-            // クライアントを生成する
-            HttpClient client = httpClientFactory.createHttpClient();
-
-            // リクエストを生成する
-            HttpRequest request = httpClientFactory.createRequest(actionName);
-
-            final HttpServletRequest requestByContext = (HttpServletRequest) context.getServletRequest();
-
-            String tokenHeader = requestByContext.getHeader(tokenHeaderName);
-            String token = null;
-
-            if (tokenHeader != null) {
-                Matcher matcher = CHALLENGE_PATTERN.matcher(tokenHeader.trim());
-
-                if (matcher.matches()) {
-                    token = matcher.group(1);
-                }
-            }
-            if (token == null) {
-                token = requestByContext.getParameter(tokenParameterName);
-            }
-
-            if (token == null) {
-
-                throw new NoAuthenticateException("token = null");
-            }
-            request.setParameter("token", token);
-
-            if (scopeParameterName != null) {
-                request.setParameter(scopeParameterName, String.join(" ", scopes));
-
-            }
-
-            // リクエストして、応答を受け取る
-            HttpResponse response = client.executeRequest(request);
-
-            // 応答のステータスコードを判定する
-            if (response.getStatusCode() == 200) {
-
-                // HTTPCLientFactoryのレスポンスのコンバータにあわせて受け入れるか否か
-                // プロパティゲッターでいける説
-                // HttpClientFactoryのレスポンスのコンバータにBeanJsonConveterを設定すれば下は動く
-                InputStream responseByOauth = response.getInputStream();
-                BeanJSONConverter beanJSONConverter = new BeanJSONConverter();
-
-                beanJSONConverter.setCharacterEncodingToObject(response.getCharacterEncoding());
-                Map responseJson = (Map) beanJSONConverter.convertToObject(responseByOauth);
-
-                Boolean active = (Boolean) responseJson.get("active");
-                if (active == null || !active) {
-                    throw new IllegalAuthenticateException("active is null or false,response=" + responseJson);
-                }
-
-                if (oAuth2ScopeMatcher != null) {
-                    String clientScope = (String) responseJson.get("scope");
-                    String[] clientScopes = null;
-                    if (clientScope != null) {
-                        clientScopes = clientScope.split(" ");
+            
+            final HttpClient client = httpClientFactory.createHttpClient();
+            try{
+                HttpRequest request = httpClientFactory.createRequest(actionName);
+                
+                final HttpServletRequest requestByContext = (HttpServletRequest) context.getServletRequest();
+                
+                String tokenHeader = requestByContext.getHeader(tokenHeaderName);
+                String token = null;
+                if(tokenHeader != null){
+                    Matcher matcher = CHALLENGE_PATTERN.matcher(tokenHeader.trim());
+                    if(matcher.matches()){
+                        token = matcher.group(1);
                     }
-
-                    if (!oAuth2ScopeMatcher.match(scopes, clientScopes)) {
-                        throw new IllegalAuthenticateException("scope is unmatched,resourceScope="
-                                + String.join(" ", scopes) + ",clientScope=" + clientScope);
-                    }
-
                 }
-
-            } else {
-                throw new IllegalAuthenticateException("status code error.statusCode=" + response.getStatusCode()
-                        + ",statusMessage=" + response.getStatusMessage());
+                if(token == null){
+                    token = requestByContext.getParameter(tokenParameterName);
+                }
+                
+                if(token == null){
+                    throw new NoAuthenticateException("token is null.");
+                }
+                request.setParameter("token", token);
+                
+                if(scopeParameterName != null && scopes != null && scopes.length != 0){
+                    request.setParameter(scopeParameterName, String.join(" ", scopes));
+                }
+                
+                HttpResponse response = client.executeRequest(request);
+                if(response.getStatusCode() == 200){
+                    
+                    final InputStream responseStream = response.getInputStream();
+                    final BeanJSONConverter beanJSONConverter = new BeanJSONConverter();
+                    if(response.getCharacterEncoding() != null){
+                        beanJSONConverter.setCharacterEncodingToObject(response.getCharacterEncoding());
+                    }
+                    final Map responseMap = (Map)beanJSONConverter.convertToObject(responseStream);
+                    Boolean active = (Boolean)responseMap.get("active");
+                    if(active == null || !active.booleanValue()){
+                        throw new IllegalAuthenticateException("Token is not active. response=" + responseMap);
+                    }
+                    
+                    if(scopes != null && oAuth2ScopeMatcher != null){
+                        String clientScope = (String)responseMap.get("scope");
+                        String[] clientScopes = null;
+                        if(clientScope != null){
+                            clientScopes = clientScope.split(" ");
+                        }
+                        
+                        if(!oAuth2ScopeMatcher.match(scopes, clientScopes)){
+                            throw new IllegalAuthenticateException("scope is unmatched. resourceScope="
+                                    + String.join(" ", scopes) + ", clientScope=" + clientScope);
+                        }
+                    }
+                }else{
+                    throw new IllegalAuthenticateException("status code error. statusCode=" + response.getStatusCode()
+                            + ", message=" + response.getStatusMessage());
+                }
+            }finally{
+                client.close();
             }
-
         }
-
-        // 下りにしたい処理はここに書く
-
         return chain.invokeNext(context);
     }
 }
