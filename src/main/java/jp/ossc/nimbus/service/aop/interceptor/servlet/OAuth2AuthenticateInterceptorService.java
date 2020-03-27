@@ -63,7 +63,7 @@ import jp.ossc.nimbus.util.converter.BeanJSONConverter;
 public class OAuth2AuthenticateInterceptorService extends ServletFilterInterceptorService
         implements OAuth2AuthenticateInterceptorServiceMBean {
 
-    private static final Pattern CHALLENGE_PATTERN = Pattern.compile("^Bearer ([^ ]+) $", Pattern.CASE_INSENSITIVE);
+    private static final Pattern CHALLENGE_PATTERN = Pattern.compile("^Bearer ([^ ]+)$", Pattern.CASE_INSENSITIVE);
     private ServiceName oAuth2ScopeResolverServiceName;
     private OAuth2ScopeResolver oAuth2ScopeResolver;
     private ServiceName oAuth2ScopeMatcherServiceName;
@@ -212,7 +212,7 @@ public class OAuth2AuthenticateInterceptorService extends ServletFilterIntercept
             String token = null;
 
             if (tokenHeader != null) {
-                Matcher matcher = CHALLENGE_PATTERN.matcher(tokenHeader);
+                Matcher matcher = CHALLENGE_PATTERN.matcher(tokenHeader.trim());
 
                 if (matcher.matches()) {
                     token = matcher.group(1);

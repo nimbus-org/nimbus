@@ -972,54 +972,61 @@ public class ServiceManagerFactory implements Serializable{
         final Set tmpNotStarted = new HashSet();
         final ServiceManager manager = findManager(managerName);
         final StringBuilder message = new StringBuilder();
-        if(manager.existFailedService()){
-            final Iterator failedServices
-                 = manager.getFailedServices().iterator();
-            while(failedServices.hasNext()){
-                final String failedService
-                     = (String)failedServices.next();
-                final ServiceName name
-                     = new ServiceName(managerName, failedService);
-                tmpNotStarted.add(name);
-                message.append(name);
-                final Throwable cause
-                     = manager.getFailedCause(failedService);
-                if(cause != null){
-                    message.append(CAUSE_THROWABLE);
-                    message.append(cause);
-                }
-                if(failedServices.hasNext()){
-                    message.append(LINE_SEPARAOTR);
+        if(manager == null){
+            final ServiceName name
+                 = new ServiceName(managerName, managerName);
+            tmpNotStarted.add(name);
+            message.append(name);
+        }else{
+            if(manager.existFailedService()){
+                final Iterator failedServices
+                     = manager.getFailedServices().iterator();
+                while(failedServices.hasNext()){
+                    final String failedService
+                         = (String)failedServices.next();
+                    final ServiceName name
+                         = new ServiceName(managerName, failedService);
+                    tmpNotStarted.add(name);
+                    message.append(name);
+                    final Throwable cause
+                         = manager.getFailedCause(failedService);
+                    if(cause != null){
+                        message.append(CAUSE_THROWABLE);
+                        message.append(cause);
+                    }
+                    if(failedServices.hasNext()){
+                        message.append(LINE_SEPARAOTR);
+                    }
                 }
             }
-        }
-        boolean mustInsertLine = message.length() != 0;
-        if(manager.existWaitingService()){
-            final Iterator waitingServices
-                 = manager.getWaitingServices().iterator();
-            while(waitingServices.hasNext()){
-                final String waitingService
-                     = (String)waitingServices.next();
-                final ServiceName name
-                     = new ServiceName(managerName, waitingService);
-                if(!tmpNotStarted.contains(name)
-                    && !waitingService.equals(managerName)){
-                    tmpNotStarted.add(name);
-                }else{
-                    continue;
-                }
-                if(mustInsertLine){
-                    message.append(LINE_SEPARAOTR);
-                    mustInsertLine = false;
-                }
-                message.append(name);
-                final Set causes = manager.getWaitingCauses(waitingService);
-                if(causes != null && causes.size() != 0){
-                    message.append(CAUSE_SERVICES);
-                    message.append(causes);
-                }
-                if(waitingServices.hasNext()){
-                    message.append(LINE_SEPARAOTR);
+            boolean mustInsertLine = message.length() != 0;
+            if(manager.existWaitingService()){
+                final Iterator waitingServices
+                     = manager.getWaitingServices().iterator();
+                while(waitingServices.hasNext()){
+                    final String waitingService
+                         = (String)waitingServices.next();
+                    final ServiceName name
+                         = new ServiceName(managerName, waitingService);
+                    if(!tmpNotStarted.contains(name)
+                        && !waitingService.equals(managerName)){
+                        tmpNotStarted.add(name);
+                    }else{
+                        continue;
+                    }
+                    if(mustInsertLine){
+                        message.append(LINE_SEPARAOTR);
+                        mustInsertLine = false;
+                    }
+                    message.append(name);
+                    final Set causes = manager.getWaitingCauses(waitingService);
+                    if(causes != null && causes.size() != 0){
+                        message.append(CAUSE_SERVICES);
+                        message.append(causes);
+                    }
+                    if(waitingServices.hasNext()){
+                        message.append(LINE_SEPARAOTR);
+                    }
                 }
             }
         }
