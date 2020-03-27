@@ -29,46 +29,24 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-package jp.ossc.nimbus.service.aop.interceptor.servlet;
-
-import jp.ossc.nimbus.core.*;
+package jp.ossc.nimbus.service.aop.interceptor;
 
 /**
- * {@link OAuth2AuthenticateInterceptorService}のMBeanインタフェース。
+ * OAuth2 スコープのマッチ。
  * <p>
- * 
+ *
  * @author T.Tashiro
- * @see OAuth2AuthenticateInterceptorService
  */
-public interface OAuth2AuthenticateInterceptorServiceMBean extends ServletFilterInterceptorServiceMBean {
-
-    public static final String DEFAULT_ACTION_NAME = "introspection";
-    public static final String DEFAULT_TOKEN_HEADER_NAME = "Authorization";
-    public static final String DEFAULT_TOKEN_PARAMETER_NAME = "token";
+public interface OAuth2ScopeMatcher {
 
     /**
-     * リクエストされているリソースのスコープを解決する{@link jp.ossc.nimbus.service.aop.interceptor.OAuth2ScopeResolver
-     * OAuth2ScopeResolver}サービスのサービス名を設定する。
+     * クライアントのスコープがリソースに対してアクセスすることを許可されているか確認する。
      * <p>
      *
-     * @param name OAuth2ScopeResolverサービスのサービス名
+     * @param resorceScopes リソーススコープ
+     * @param clientScopes  クライアントスコープ
+     * @return この呼び出しに対するスコープマッチ。truenの場合クライアントのスコープがリソースに対してアクセスすることを許可されている。
      */
-    public void setOAuth2ScopeResolverServiceName(ServiceName name);
+    public boolean match(String[] resorceScopes, String[] clientScopes);
 
-    /**
-     * リクエストされているリソースのスコープを解決する{@link jp.ossc.nimbus.service.aop.interceptor.OAuth2ScopeResolver
-     * OAuth2ScopeResolver}サービスのサービス名を取得する。
-     * <p>
-     *
-     * @return OAuth2ScopeResolverサービスのサービス名
-     */
-    public ServiceName getOAuth2ScopeResolverServiceName();
-
-    public void setHttpClientFactoryServiceName(ServiceName name);
-
-    public ServiceName getHttpClientFactoryServiceName();
-
-    public void setActionName(String name);
-
-    public String getActionName();
 }

@@ -29,46 +29,53 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
-package jp.ossc.nimbus.service.aop.interceptor.servlet;
+package jp.ossc.nimbus.service.aop.interceptor;
 
+import java.util.*;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link OAuth2AuthenticateInterceptorService}のMBeanインタフェース。
+ * OAuth2 スコープマッチのデフォルト実装クラス。
  * <p>
- * 
- * @author T.Tashiro
- * @see OAuth2AuthenticateInterceptorService
+ *
+ * @author M.Takata
  */
-public interface OAuth2AuthenticateInterceptorServiceMBean extends ServletFilterInterceptorServiceMBean {
+public class DefaultOAuth2ScopeMatcherService extends ServiceBase
+        implements OAuth2ScopeMatcher, DefaultOAuth2ScopeMatcherServiceMBean {
 
-    public static final String DEFAULT_ACTION_NAME = "introspection";
-    public static final String DEFAULT_TOKEN_HEADER_NAME = "Authorization";
-    public static final String DEFAULT_TOKEN_PARAMETER_NAME = "token";
+    private boolean isPartialMatch;
 
-    /**
-     * リクエストされているリソースのスコープを解決する{@link jp.ossc.nimbus.service.aop.interceptor.OAuth2ScopeResolver
-     * OAuth2ScopeResolver}サービスのサービス名を設定する。
-     * <p>
-     *
-     * @param name OAuth2ScopeResolverサービスのサービス名
-     */
-    public void setOAuth2ScopeResolverServiceName(ServiceName name);
+    public boolean isPartialMatch() {
+        return this.isPartialMatch;
+    }
 
-    /**
-     * リクエストされているリソースのスコープを解決する{@link jp.ossc.nimbus.service.aop.interceptor.OAuth2ScopeResolver
-     * OAuth2ScopeResolver}サービスのサービス名を取得する。
-     * <p>
-     *
-     * @return OAuth2ScopeResolverサービスのサービス名
-     */
-    public ServiceName getOAuth2ScopeResolverServiceName();
+    public void setPartialMatch(boolean isPartialMatch) {
+        this.isPartialMatch = isPartialMatch;
+    }
 
-    public void setHttpClientFactoryServiceName(ServiceName name);
+    public boolean match(String[] resorceScopes, String[] clientScopes) {
+        Set resorceScopeSet = new HashSet();
+        Set clientScopeSet = new HashSet();
 
-    public ServiceName getHttpClientFactoryServiceName();
+        if (resorceScopes != null) {
 
-    public void setActionName(String name);
+            for (String scope : resorceScopes) {
+                resorceScopeSet.add(scope);
+            }
 
-    public String getActionName();
+        }
+        if (resorceScopeSet.isEmpty()) {
+            return true;
+        }
+
+        if (clientScopes != null) {
+            for (String scope : clientScopes) {
+                clientScopeSet.add(scope);
+            }
+        }
+
+        return isPartialMatch() ? clientScopeSet.removeAll(resorceScopeSet)
+                : clientScopeSet.containsAll(resorceScopeSet);
+
+    }
 }
