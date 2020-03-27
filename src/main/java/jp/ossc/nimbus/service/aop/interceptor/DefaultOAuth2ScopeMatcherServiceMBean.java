@@ -34,11 +34,11 @@ package jp.ossc.nimbus.service.aop.interceptor;
 import jp.ossc.nimbus.core.*;
 
 /**
- * {@link DefaultOAuth2ScopeResolverService}のMBeanインタフェース。
+ * {@link DefaultOAuth2ScopeMatcherService}のMBeanインタフェース。
  * <p>
  * 
- * @author M.Takata
- * @see DefaultOAuth2ScopeResolverService
+ * @author T.Tashiro
+ * @see DefaultOAuth2ScopeMatcherService
  */
 public interface DefaultOAuth2ScopeMatcherServiceMBean extends ServiceBaseMBean {
     
