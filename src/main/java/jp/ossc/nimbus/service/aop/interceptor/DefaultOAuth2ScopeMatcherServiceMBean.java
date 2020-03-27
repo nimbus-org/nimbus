@@ -51,6 +51,7 @@ public interface DefaultOAuth2ScopeMatcherServiceMBean extends ServiceBaseMBean 
     
     /**
      * 要求スコープとトークンのスコープが合致するかを、部分一致で判定するかどうかを設定する。<p>
+     * デフォルトは、trueで、部分一致。<br>
      *
      * @param isPartialMatch 要求スコープとトークンのスコープが合致するかを、部分一致で判定する場合は、true
      */

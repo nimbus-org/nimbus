@@ -43,7 +43,7 @@ import jp.ossc.nimbus.core.*;
 public class DefaultOAuth2ScopeMatcherService extends ServiceBase
         implements OAuth2ScopeMatcher, DefaultOAuth2ScopeMatcherServiceMBean {
     
-    private boolean isPartialMatch;
+    private boolean isPartialMatch = true;
     
     public boolean isPartialMatch(){
         return this.isPartialMatch;
