@@ -1311,6 +1311,9 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
                 resp.setContentType("application/json;charset=UTF-8");
                 Map json = new HashMap();
                 json.put("result", result);
+                buf.append(
+                    toStringConverter.convertToObject(jsonConverter.convertToStream(json))
+                );
             }else{
                 resp.setContentType("text/html;charset=UTF-8");
                 buf.append("<html>");
