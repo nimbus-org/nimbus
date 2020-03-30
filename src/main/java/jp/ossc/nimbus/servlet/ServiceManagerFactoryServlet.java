@@ -1306,10 +1306,29 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
             }
         }
         final StringBuilder buf = new StringBuilder();
-        if(!result){
+        if(result){
             if("json".equals(responseType)){
                 resp.setContentType("application/json;charset=UTF-8");
                 Map json = new HashMap();
+                json.put("result", result);
+                buf.append(
+                    toStringConverter.convertToObject(jsonConverter.convertToStream(json))
+                );
+            }else{
+                resp.setContentType("text/html;charset=UTF-8");
+                buf.append("<html>");
+                buf.append("<head><title>Nimbus CheckLoadManagerCompleted</title></head>");
+                buf.append("<body>");
+                buf.append("Completed");
+                buf.append("</body>");
+                buf.append("</html>");
+            }
+            resp.getWriter().println(buf.toString());
+        }else{
+            if("json".equals(responseType)){
+                resp.setContentType("application/json;charset=UTF-8");
+                Map json = new HashMap();
+                json.put("result", result);
                 json.put("causes", notStarted);
                 buf.append(
                     toStringConverter.convertToObject(jsonConverter.convertToStream(json))
@@ -1317,14 +1336,14 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
             }else{
                 resp.setContentType("text/html;charset=UTF-8");
                 buf.append("<html>");
-                buf.append("<head><title>Nimbus Call Method</title></head>");
+                buf.append("<head><title>Nimbus CheckLoadManagerCompleted</title></head>");
                 buf.append("<body>");
                 buf.append("causes : ").append(notStarted);
                 buf.append("</body>");
                 buf.append("</html>");
             }
             resp.getWriter().println(buf.toString());
-            resp.sendError(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
+            resp.setStatus(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
         }
     }
     
