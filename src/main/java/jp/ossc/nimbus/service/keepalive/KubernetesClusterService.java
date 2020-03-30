@@ -1499,11 +1499,12 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                 );
                 resourceVersion = podList.getMetadata().getResourceVersion();
                 podMembers.clear();
+                InetAddress loopbackAddress = InetAddress.getLoopbackAddress();
                 Iterator pods = podList.getItems().iterator();
                 while(pods.hasNext()){
                     V1Pod pod = (V1Pod)pods.next();
                     InetAddress address = InetAddress.getByName(pod.getStatus().getPodIP());
-                    if(!uid.getAddress().equals(address)){
+                    if(!uid.getAddress().equals(address) && !loopbackAddress.equals(address)){
                         podMembers.add(new InetSocketAddress(address, port));
                     }
                 }
