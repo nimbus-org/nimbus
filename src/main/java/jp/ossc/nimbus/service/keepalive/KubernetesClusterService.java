@@ -43,10 +43,10 @@ import jp.ossc.nimbus.util.SynchronizeMonitor;
 import jp.ossc.nimbus.util.WaitSynchronizeMonitor;
 
 import com.google.gson.reflect.TypeToken;
-import io.kubernetes.client.ApiClient;
-import io.kubernetes.client.apis.CoreV1Api;
-import io.kubernetes.client.models.V1PodList;
-import io.kubernetes.client.models.V1Pod;
+import io.kubernetes.client.openapi.ApiClient;
+import io.kubernetes.client.openapi.apis.CoreV1Api;
+import io.kubernetes.client.openapi.models.V1PodList;
+import io.kubernetes.client.openapi.models.V1Pod;
 import io.kubernetes.client.informer.EventType;
 import io.kubernetes.client.util.Config;
 import io.kubernetes.client.util.Watch;
@@ -89,7 +89,8 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
     protected String fieldSelector;
     protected String labelSelector;
     protected Integer podWatchTimeout = new Integer(5);
-    protected int httpReadTimeout = 3;
+    protected int writeTimeout = 3000;
+    protected int readTimeout = 3000;
     
     protected int port = 1500;
     protected boolean isAnonymousPort = false;
@@ -235,11 +236,18 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
         return podWatchTimeout;
     }
     
-    public void setHttpReadTimeout(int seconds){
-        httpReadTimeout = seconds;
+    public void setWriteTimeout(int millis){
+        writeTimeout = millis;
     }
-    public int getHttpReadTimeout(){
-        return httpReadTimeout;
+    public int getWriteTimeout(){
+        return writeTimeout;
+    }
+    
+    public void setReadTimeout(int millis){
+        readTimeout = millis;
+    }
+    public int getReadTimeout(){
+        return readTimeout;
     }
     
     public void setPort(int port){
@@ -523,8 +531,12 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
         }else{
             client = Config.fromCluster();
         }
-        if(httpReadTimeout > 0){
-            client.getHttpClient().setReadTimeout(httpReadTimeout, java.util.concurrent.TimeUnit.SECONDS);
+        
+        if(writeTimeout > 0){
+            client.setWriteTimeout(writeTimeout);
+        }
+        if(readTimeout > 0){
+            client.setReadTimeout(readTimeout);
         }
         
         uidWithOption = new KubernetesClusterService.ClusterUID(
@@ -769,7 +781,8 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
         client.fieldSelector = fieldSelector;
         client.labelSelector = labelSelector;
         client.podWatchTimeout = podWatchTimeout;
-        client.httpReadTimeout = httpReadTimeout;
+        client.writeTimeout = writeTimeout;
+        client.readTimeout = readTimeout;
         client.port = port;
         client.isAnonymousPort = isAnonymousPort;
         client.receiveBufferSize = receiveBufferSize;
@@ -1472,7 +1485,18 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
         
         public boolean onStart(){
             try{
-                V1PodList podList = api.listNamespacedPod(namespace, (String)null, (String)null, fieldSelector, labelSelector, (Integer)null, (String)null, podWatchTimeout, Boolean.FALSE);
+                V1PodList podList = api.listNamespacedPod(
+                    namespace,
+                    (String)null,
+                    Boolean.FALSE,
+                    (String)null,
+                    fieldSelector,
+                    labelSelector,
+                    (Integer)null,
+                    (String)null,
+                    podWatchTimeout,
+                    Boolean.FALSE
+                );
                 resourceVersion = podList.getMetadata().getResourceVersion();
                 podMembers.clear();
                 Iterator pods = podList.getItems().iterator();
@@ -1500,7 +1524,19 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
             try{
                 return Watch.createWatch(
                     client,
-                    api.listNamespacedPodCall(namespace, (String)null, (String)null, fieldSelector, labelSelector, (Integer)null, resourceVersion, podWatchTimeout, Boolean.TRUE, null, null),
+                    api.listNamespacedPodCall(
+                        namespace,
+                        (String)null,
+                        Boolean.FALSE,
+                        (String)null,
+                        fieldSelector,
+                        labelSelector,
+                        (Integer)null,
+                        resourceVersion,
+                        podWatchTimeout,
+                        Boolean.TRUE,
+                        null
+                    ),
                     new TypeToken<Watch.Response<V1Pod>>(){}.getType()
                 );
             }catch(Throwable th){
