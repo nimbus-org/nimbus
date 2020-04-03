@@ -42,36 +42,167 @@ import jp.ossc.nimbus.service.scheduler2.AbstractScheduleExecutorServiceMBean;
  */
 public interface KuberneteseScheduleExecutorServiceMBean extends AbstractScheduleExecutorServiceMBean{
     
+    /**
+     * デフォルトのスケジュール実行種別。<p>
+     */
+    public static final String DEFAULT_EXECUTOR_TYPE = "K8S";
+    
+    /**
+     * 使用するAPIのクラスを設定する。<p>
+     *
+     * @param classes 使用するAPIのクラス配列
+     */
+    public void setApiClasses(Class[] classes);
+    
+    /**
+     * 使用するAPIのクラスを取得する。<p>
+     *
+     * @return 使用するAPIのクラス配列
+     */
+    public Class[] getApiClasses();
+    
+    /**
+     * kube-apiserverのURLを設定する。<p>
+     *
+     * @param url kube-apiserverのURL
+     */
     public void setURL(String url);
+    
+    /**
+     * kube-apiserverのURLを取得する。<p>
+     *
+     * @return kube-apiserverのURL
+     */
     public String getURL();
     
+    /**
+     * kube-apiserverとの通信でTLS/SSLを有効にするかどうかを設定する。<p>
+     * デフォルトは、trueで有効。<br>
+     *
+     * @param isValidate 有効にする場合は、true
+     */
     public void setValidateSSL(boolean isValidate);
+    
+    /**
+     * kube-apiserverとの通信でTLS/SSLを有効にするかどうかを判定する。<p>
+     *
+     * @return trueの場合、有効
+     */
     public boolean isValidateSSL();
     
+    /**
+     * kube-apiserverとの認証に使用するユーザを設定する。<p>
+     *
+     * @param user 認証ユーザ
+     */
     public void setUser(String user);
+    
+    /**
+     * kube-apiserverとの認証に使用するユーザを取得する。<p>
+     *
+     * @return 認証ユーザ
+     */
     public String getUser();
     
+    /**
+     * kube-apiserverとの認証に使用するパスワードを設定する。<p>
+     *
+     * @param password パスワード
+     */
     public void setPassword(String password);
+    
+    /**
+     * kube-apiserverとの認証に使用するパスワードを取得する。<p>
+     *
+     * @return パスワード
+     */
     public String getPassword();
     
+    /**
+     * kube-apiserverとの認証に使用する認証トークンを設定する。<p>
+     *
+     * @param token 認証トークン
+     */
     public void setToken(String token);
+    
+    /**
+     * kube-apiserverとの認証に使用する認証トークンを取得する。<p>
+     *
+     * @return 認証トークン
+     */
     public String getToken();
     
+    /**
+     * kube-apiserverとの認証に使用する設定ファイルのパスを設定する。<p>
+     *
+     * @param path 設定ファイルのパス
+     */
     public void setConfigFilePath(String path);
+    
+    /**
+     * kube-apiserverとの認証に使用する設定ファイルのパスを取得する。<p>
+     *
+     * @return 設定ファイルのパス
+     */
     public String getConfigFilePath();
     
+    /**
+     * kube-apiserverとの認証に使用する設定ファイルの文字コードを設定する。<p>
+     * デフォルトは、OSの文字コード。<br>
+     *
+     * @param encode 設定ファイルの文字コード
+     */
     public void setConfigFileEncoding(String encode);
+    
+    /**
+     * kube-apiserverとの認証に使用する設定ファイルの文字コードを取得する。<p>
+     *
+     * @return 設定ファイルの文字コード
+     */
     public String getConfigFileEncoding();
     
+    /**
+     * Podを監視する際のHTTP通信の接続タイムアウトを設定する。<p>
+     * デフォルトは、3000[ms]。<br>
+     *
+     * @param millis タイムアウト[ms]
+     */
     public void setWriteTimeout(int millis);
+    
+    /**
+     * Podを監視する際のHTTP通信の接続タイムアウトを取得する。<p>
+     *
+     * @return タイムアウト[ms]
+     */
     public int getWriteTimeout();
     
+    /**
+     * Podを監視する際のHTTP通信の応答タイムアウトを設定する。<p>
+     * デフォルトは、3000[ms]。<br>
+     *
+     * @param millis タイムアウト[ms]
+     */
     public void setReadTimeout(int millis);
+    
+    /**
+     * Podを監視する際のHTTP通信の応答タイムアウトを取得する。<p>
+     *
+     * @return タイムアウト[ms]
+     */
     public int getReadTimeout();
     
-    public void setApiClass(Class clazz);
-    public Class getApiClass();
-    
+    /**
+     * APIクラスのメソッドで、タスクとして使用しないメソッド名を設定する。<p>
+     * Object.classのメソッドと、setApiClientメソッドは、自動で含まれる。<br>
+     *
+     * @param methodNames メソッド名の集合
+     */
     public void setNotApiMethodNames(Set methodNames);
+    
+    /**
+     * APIクラスのメソッドで、タスクとして使用しないメソッド名を取得する。<p>
+     *
+     * @return メソッド名の集合
+     */
     public Set getNotApiMethodNames();
 }

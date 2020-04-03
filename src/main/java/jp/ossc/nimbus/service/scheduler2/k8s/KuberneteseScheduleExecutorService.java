@@ -44,15 +44,18 @@ import jp.ossc.nimbus.beans.Property;
 import jp.ossc.nimbus.beans.NoSuchPropertyException;
 import jp.ossc.nimbus.beans.dataset.Record;
 import jp.ossc.nimbus.service.scheduler2.*;
-import jp.ossc.nimbus.util.converter.Converter;
-import jp.ossc.nimbus.util.converter.ConvertException;
+import jp.ossc.nimbus.util.converter.*;
 
 /**
  * Kuberneteseのコントロールプレーンを呼び出すスケジュール実行。<p>
  *
  * @author M.Takata
  */
-public abstract class KuberneteseScheduleExecutorService extends AbstractScheduleExecutorService implements KuberneteseScheduleExecutorServiceMBean{
+public class KuberneteseScheduleExecutorService extends AbstractScheduleExecutorService implements KuberneteseScheduleExecutorServiceMBean{
+    
+    {
+        type = DEFAULT_EXECUTOR_TYPE;
+    }
     
     protected String url;
     protected boolean isValidateSSL = true;
@@ -63,12 +66,19 @@ public abstract class KuberneteseScheduleExecutorService extends AbstractSchedul
     protected String configFileEncoding;
     protected int writeTimeout = 3000;
     protected int readTimeout = 3000;
-    protected Class apiClass;
+    protected Class[] apiClasses;
     
     protected PropertyAccess propertyAccess;
     protected transient ApiClient client;
-    protected transient Object api;
+    protected transient Map apiMap;
     protected Set notApiMethodNames;
+    
+    public void setApiClasses(Class[] classes){
+        apiClasses = classes;
+    }
+    public Class[] getApiClasses(){
+        return apiClasses;
+    }
     
     public void setURL(String url){
         this.url = url;
@@ -133,13 +143,6 @@ public abstract class KuberneteseScheduleExecutorService extends AbstractSchedul
         return readTimeout;
     }
     
-    public void setApiClass(Class clazz){
-        apiClass = clazz;
-    }
-    public Class getApiClass(){
-        return apiClass;
-    }
-    
     public void setNotApiMethodNames(Set methodNames){
         notApiMethodNames = methodNames;
     }
@@ -196,8 +199,6 @@ public abstract class KuberneteseScheduleExecutorService extends AbstractSchedul
         if(readTimeout > 0){
             client.setReadTimeout(readTimeout);
         }
-        api = createAPI(client);
-        
         if(notApiMethodNames == null){
             notApiMethodNames = new HashSet();
         }
@@ -206,6 +207,32 @@ public abstract class KuberneteseScheduleExecutorService extends AbstractSchedul
         for(int i = 0; i < methods.length; i++){
             notApiMethodNames.add(methods[i].getName());
         }
+        
+        if(apiClasses == null || apiClasses.length == 0){
+            throw new IllegalArgumentException("ApiClasses is null");
+        }
+        apiMap = new HashMap();
+        for(int i = 0; i < apiClasses.length; i++){
+            apiMap.put(apiClasses[i].getSimpleName(), createAPI(client, apiClasses[i]));
+        }
+        BeanJSONConverter beanJSONConverter = new BeanJSONConverter();
+        beanJSONConverter.setConvertType(BeanJSONConverter.OBJECT_TO_JSON);
+        beanJSONConverter.setIgnoreUnknownProperty(true);
+        beanJSONConverter.setOutputNullProperty(false);
+        DateFormatConverter dfc = new DateFormatConverter();
+        dfc.setFormat("yyyy/MM/dd HH:mm:ss.SSS");
+        dfc.setConvertType(DateFormatConverter.DATE_TO_STRING);
+        beanJSONConverter.setFormatConverter(java.util.Date.class, dfc);
+        
+        StringStreamConverter stringStreamConverter = new StringStreamConverter();
+        stringStreamConverter.setConvertType(StringStreamConverter.STREAM_TO_STRING);
+        
+        CustomConverter customConverter = new CustomConverter();
+        customConverter.add(beanJSONConverter);
+        customConverter.add(stringStreamConverter);
+        
+        addAutoInputConvertMappings(beanJSONConverter);
+        addAutoOutputConvertMappings(customConverter);
     }
     
     protected void convertInput(Schedule schedule) throws ConvertException{
@@ -274,18 +301,32 @@ public abstract class KuberneteseScheduleExecutorService extends AbstractSchedul
         return result;
     }
     
+    public boolean controlState(String id, int cntrolState) throws ScheduleStateControlException {
+        return false;
+    }
+    
     protected Schedule executeInternal(Schedule schedule) throws Throwable{
-        Object response = executeRequest(schedule.getTaskName(), (Record)schedule.getInput());
+        String taskName = schedule.getTaskName();
+        if(taskName == null || taskName.indexOf('.') == -1){
+            throw new IllegalArgumentException("illgal task name. task name is \"apiClass.methodName\". taskName=" + taskName);
+        }
+        String apiName = taskName.substring(0, taskName.indexOf('.'));
+        Object api = apiMap.get(apiName);
+        if(api == null){
+            throw new IllegalArgumentException("Not supported api. api=" + apiName);
+        }
+        String methodName = taskName.substring(taskName.indexOf('.') + 1);
+        Object response = executeRequest(api, methodName, (Record)schedule.getInput());
         schedule.setOutput(response);
         return schedule;
     }
     
-    protected Object executeRequest(String methodName, Record params) throws Throwable{
+    protected Object executeRequest(Object api, String methodName, Record params) throws Throwable{
         Class[] paramTypes = new Class[params == null ? 0 : params.size()];
         for(int i = 0; i < paramTypes.length; i++){
             paramTypes[i] = params.getRecordSchema().getPropertySchema(i).getType();
         }
-        Method method = getApiClass().getMethod(methodName, paramTypes);
+        Method method = api.getClass().getMethod(methodName, paramTypes);
         Object[] paramValues = new Object[paramTypes.length];
         for(int i = 0; i < paramTypes.length; i++){
             paramValues[i] = params.getProperty(i);
@@ -297,9 +338,9 @@ public abstract class KuberneteseScheduleExecutorService extends AbstractSchedul
         }
     }
     
-    protected Object createAPI(ApiClient client) throws Exception{
-        Object api = getApiClass().newInstance();
-        getApiClass().getMethod(
+    protected Object createAPI(ApiClient client, Class apiClass) throws Exception{
+        Object api = apiClass.newInstance();
+        apiClass.getMethod(
             "setApiClient",
             new Class[]{ApiClient.class}
         ).invoke(
@@ -333,61 +374,36 @@ public abstract class KuberneteseScheduleExecutorService extends AbstractSchedul
     }
     
     protected void addAutoInputConvertMappings(Converter converter) throws Exception{
-        Class bindType = null;
-        Method[] methods = getApiClass().getMethods();
-        for(int i = 0; i < methods.length; i++){
-            if(notApiMethodNames.contains(methods[i].getName())){
-                continue;
-            }
-            String taskName = methods[i].getName();
-            if(getInputConvertMapping(taskName) == null){
-                BindingConvertMapping bindingMapping = new BindingConvertMapping();
-                bindingMapping.setTaskName(taskName);
-                StringBuilder schema = new StringBuilder();
-                Class[] paramTypes = methods[i].getParameterTypes();
-                for(int j = 0; j < paramTypes.length; j++){
-                    if(j != 0){
-                        schema.append('\n');
-                    }
-                    schema.append(':')
-                          .append('p').append(i).append(',')
-                          .append(paramTypes[i].getName());
+        Iterator entries = apiMap.entrySet().iterator();
+        while(entries.hasNext()){
+            Map.Entry entry = (Map.Entry)entries.next();
+            Class apiClass = entry.getValue().getClass();
+            Method[] methods = apiClass.getMethods();
+            for(int i = 0; i < methods.length; i++){
+                if(notApiMethodNames.contains(methods[i].getName())){
+                    continue;
                 }
-                Record record = new Record(schema.toString());
-                bindingMapping.setBindObject(record);
-                bindingMapping.setConverter(converter);
-                addInputConvertMapping(bindingMapping);
-            }
-        }
-    }
-    
-    protected void addInputConvertMapping(String taskName, Converter converter) throws Exception{
-        Object bindObject = null;
-        Method[] methods = getApiClass().getMethods();
-        for(int i = 0; i < methods.length; i++){
-            if(taskName.equals(methods[i].getName())){
-                StringBuilder schema = new StringBuilder();
-                Class[] paramTypes = methods[i].getParameterTypes();
-                for(int j = 0; j < paramTypes.length; j++){
-                    if(j != 0){
-                        schema.append('\n');
+                String taskName = entry.getKey() + "." + methods[i].getName();
+                if(getInputConvertMapping(taskName) == null){
+                    BindingConvertMapping bindingMapping = new BindingConvertMapping();
+                    bindingMapping.setTaskName(taskName);
+                    StringBuilder schema = new StringBuilder();
+                    Class[] paramTypes = methods[i].getParameterTypes();
+                    for(int j = 0; j < paramTypes.length; j++){
+                        if(j != 0){
+                            schema.append('\n');
+                        }
+                        schema.append(':')
+                              .append('p').append(j).append(',')
+                              .append(paramTypes[j].getName());
                     }
-                    schema.append(':')
-                          .append('p').append(i).append(',')
-                          .append(paramTypes[i].getName());
+                    Record record = new Record(schema.toString());
+                    bindingMapping.setBindObject(record);
+                    bindingMapping.setConverter(converter);
+                    addInputConvertMapping(bindingMapping);
                 }
-                bindObject = schema.length() == 0 ? new Record() : new Record(schema.toString());
-                break;
             }
         }
-        if(bindObject == null){
-            throw new IllegalArgumentException("Method is not found. client=" + getApiClass().getName() + ", taskName=" + taskName);
-        }
-        BindingConvertMapping bindingMapping = new BindingConvertMapping();
-        bindingMapping.setTaskName(taskName);
-        bindingMapping.setBindObject(bindObject);
-        bindingMapping.setConverter(converter);
-        addInputConvertMapping(bindingMapping);
     }
     
     protected void addAutoOutputConvertMappings(Converter converter) throws Exception{
