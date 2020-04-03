@@ -35,9 +35,11 @@ import java.io.File;
 import java.io.Writer;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Set;
+import java.util.LinkedHashSet;
 import java.util.Collections;
 import java.util.Locale;
 import javax.servlet.ServletContext;
@@ -45,6 +47,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.thymeleaf.*;
+import org.thymeleaf.dialect.IDialect;
+import org.thymeleaf.linkbuilder.ILinkBuilder;
 import org.thymeleaf.templateresolver.*;
 import org.thymeleaf.templatemode.*;
 import org.thymeleaf.templateresource.*;
@@ -85,6 +89,8 @@ public class ThymeleafTemplateEngineService extends ServiceBase implements Templ
     private Property httpServletRequestProperty;
     private Property httpServletResponseProperty;
     private ServiceName messageRecordFactoryServiceName;
+    private Set dialects;
+    private Set linkBuilders;
     
     private Map templateMap;
     private File templateFileDirectory;
@@ -256,6 +262,20 @@ public class ThymeleafTemplateEngineService extends ServiceBase implements Templ
         messageRecordFactory = factory;
     }
     
+    public void addDialect(IDialect dialect){
+        if(dialects == null){
+            dialects = new LinkedHashSet();
+        }
+        dialects.add(dialect);
+    }
+    
+    public void addLinkBuilder(ILinkBuilder linkBuilder){
+        if(linkBuilders == null){
+            linkBuilders = new LinkedHashSet();
+        }
+        linkBuilders.add(linkBuilder);
+    }
+    
     public void createService() throws Exception{
         templateMap = Collections.synchronizedMap(new HashMap());
     }
@@ -334,6 +354,18 @@ public class ThymeleafTemplateEngineService extends ServiceBase implements Templ
         
         if(messageRecordFactory != null || super.getMessageRecordFactory() != null){
             engine.addMessageResolver(new MessageResolver());
+        }
+        if(dialects != null){
+            Iterator itr = dialects.iterator();
+            while(itr.hasNext()){
+                engine.addDialect((IDialect)itr.next());
+            }
+        }
+        if(linkBuilders != null){
+            Iterator itr = linkBuilders.iterator();
+            while(itr.hasNext()){
+                engine.addLinkBuilder((ILinkBuilder)itr.next());
+            }
         }
         
         if(httpServletRequestProperty != null && servletContextProperty == null){
