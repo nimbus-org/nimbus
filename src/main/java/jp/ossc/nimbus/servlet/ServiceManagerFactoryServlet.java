@@ -415,9 +415,15 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
         final boolean isValidate = isValidate();
         
         final String[] serviceDirs = getServiceDirs();
+        final Set urls = new LinkedHashSet();
         if(serviceDirs != null && serviceDirs.length != 0){
             final String serviceFileFilter = getServiceFileFilter();
             for(int i = 0; i < serviceDirs.length; i++){
+                ServiceManagerFactory.convertServiceDefinitionURLs(
+                    serviceDirs[i],
+                    serviceFileFilter,
+                    urls
+                );
                 ServiceManagerFactory.loadManagers(
                     serviceDirs[i],
                     serviceFileFilter,
@@ -430,6 +436,10 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
         final String[] servicePaths = getServicePaths();
         if(servicePaths != null && servicePaths.length != 0){
             for(int i = 0; i < servicePaths.length; i++){
+                ServiceManagerFactory.convertServiceDefinitionURL(
+                    servicePaths[i],
+                    urls
+                );
                 ServiceManagerFactory.loadManager(
                     servicePaths[i],
                     true,
@@ -441,7 +451,7 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
         if(isCheckLoadManagerCompleted()){
             final String[] managerNames = getCheckLoadManagerCompletedBy();
             if(managerNames == null || managerNames.length == 0){
-                ServiceManagerFactory.checkLoadManagerCompleted();
+                ServiceManagerFactory.checkLoadManagerCompleted(urls, null, true);
             }else{
                 for(int i = 0; i < managerNames.length; i++){
                     ServiceManagerFactory.checkLoadManagerCompletedBy(
@@ -1295,7 +1305,31 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
         boolean result = true;
         Set notStarted = new LinkedHashSet();
         if(managerNames == null || managerNames.length == 0){
-            result &= ServiceManagerFactory.checkLoadManagerCompleted(notStarted, false);
+            
+            final String[] serviceDirs = getServiceDirs();
+            final Set urls = new LinkedHashSet();
+            if(serviceDirs != null && serviceDirs.length != 0){
+                final String serviceFileFilter = getServiceFileFilter();
+                for(int i = 0; i < serviceDirs.length; i++){
+                    ServiceManagerFactory.convertServiceDefinitionURLs(
+                        serviceDirs[i],
+                        serviceFileFilter,
+                        urls
+                    );
+                }
+            }
+            
+            final String[] servicePaths = getServicePaths();
+            if(servicePaths != null && servicePaths.length != 0){
+                for(int i = 0; i < servicePaths.length; i++){
+                    ServiceManagerFactory.convertServiceDefinitionURL(
+                        servicePaths[i],
+                        urls
+                    );
+                }
+            }
+            
+            result &= ServiceManagerFactory.checkLoadManagerCompleted(urls, notStarted, false);
         }else{
             for(int i = 0; i < managerNames.length; i++){
                 result &= ServiceManagerFactory.checkLoadManagerCompletedBy(
