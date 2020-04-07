@@ -490,7 +490,6 @@ public class ServiceManagerFactory implements Serializable{
             loader.start();
         }catch(Exception e){
             logger.write(SVCMF00008, url, e);
-            loader.destroy();
             return false;
         }
         
@@ -690,6 +689,62 @@ public class ServiceManagerFactory implements Serializable{
     }
     
     /**
+     * 指定されたディレクトリのサービス定義から、URLに変換する。<p>
+     *
+     * @param dir サービス定義があるディレクトリのパス
+     * @param urls URLを格納する集合
+     * @return URLを格納した集合
+     */
+    public static Set convertServiceDefinitionURLs(String dir, Set urls){
+        return convertServiceDefinitionURLs(dir, null, urls);
+    }
+    
+    /**
+     * 指定されたディレクトリのサービス定義から、URLに変換する。<p>
+     *
+     * @param dir サービス定義があるディレクトリのパス
+     * @param filter サービス定義ファイルを抽出するフィルター。フィルターの指定方法は、{@link RecurciveSearchFile#listAllTreeFiles(String, int)}を参照。
+     * @param urls URLを格納する集合
+     * @return URLを格納した集合
+     */
+    public static Set convertServiceDefinitionURLs(String dir, String filter, Set urls){
+        if(urls == null){
+            urls = new LinkedHashSet();
+        }
+        RecurciveSearchFile dirFile = new RecurciveSearchFile(dir);
+        String[] paths = filter == null ? dirFile.listAllTree() : dirFile.listAllTree(filter);
+        if(paths == null || paths.length == 0){
+            return urls;
+        }
+        Arrays.sort(paths);
+        for(int i = 0; i < paths.length; i++){
+            urls = convertServiceDefinitionURL(paths[i], urls);
+        }
+        return urls;
+    }
+    
+    /**
+     * 指定されたパスから、URLに変換する。<p>
+     *
+     * @param path サービス定義ファイルのパス
+     * @param urls URLを格納する集合
+     * @return URLを格納した集合
+     */
+    public static Set convertServiceDefinitionURL(String path, Set urls){
+        if(urls == null){
+            urls = new LinkedHashSet();
+        }
+        URL url = null;
+        try{
+            url = Utility.convertServicePathToURL(path);
+        }catch(IllegalArgumentException e){
+            return urls;
+        }
+        urls.add(url);
+        return urls;
+    }
+    
+    /**
      * ロードしたサービス定義に定義されたサービスが全て起動されているか調べる。<p>
      * @return 全て起動されている場合true
      */
@@ -712,11 +767,25 @@ public class ServiceManagerFactory implements Serializable{
      * ロードしたサービス定義に定義されたサービスが全て起動されているか調べる。<p>
      * 起動されていないサービス名を{@link ServiceName}として、notStartedに格納して返す。<br>
      * 
+     * @param urls 読み込み対象のサービス定義のURLを指定するセット
      * @param notStarted 起動できなかったサービス名の集合を格納するセット
      * @param isOutputLog ログを出力する場合true
      * @return 全て起動されている場合true
      */
     public static boolean checkLoadManagerCompleted(Set notStarted, boolean isOutputLog){
+        return checkLoadManagerCompleted(null, notStarted, isOutputLog);
+    }
+    
+    /**
+     * ロードしたサービス定義に定義されたサービスが全て起動されているか調べる。<p>
+     * 起動されていないサービス名を{@link ServiceName}として、notStartedに格納して返す。<br>
+     * 
+     * @param urls 読み込み対象のサービス定義のURLを指定するセット
+     * @param notStarted 起動できなかったサービス名の集合を格納するセット
+     * @param isOutputLog ログを出力する場合true
+     * @return 全て起動されている場合true
+     */
+    public static boolean checkLoadManagerCompleted(Set urls, Set notStarted, boolean isOutputLog){
         
         if(isOutputLog){
             logger.write(SVCMF00013);
@@ -789,7 +858,20 @@ public class ServiceManagerFactory implements Serializable{
                 }
             }
         }
-        final boolean isSuccess = tmpNotStarted.size() == 0;
+        boolean isSuccess = tmpNotStarted.size() == 0;
+        if(urls == null || urls.size() == 0){
+            urls = new HashSet(loaders.keySet());
+        }
+        Iterator itr = urls.iterator();
+        while(itr.hasNext()){
+            Object url = itr.next();
+            ServiceLoader loader = (ServiceLoader)loaders.get(url);
+            if(loader == null || loader.getState() != Service.STARTED){
+                message.append(LINE_SEPARAOTR);
+                message.append(url);
+                isSuccess = false;
+            }
+        }
         if(!isSuccess){
             if(notStarted != null){
                 notStarted.addAll(tmpNotStarted);
