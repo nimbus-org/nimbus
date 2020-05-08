@@ -33,7 +33,10 @@ package jp.ossc.nimbus.service.journal.editor;
 
 import java.io.Serializable;
 
+import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
+import jp.ossc.nimbus.util.converter.StringConverter;
+import jp.ossc.nimbus.util.converter.ConvertException;
 
 /**
  * バイト配列を文字列にフォーマットするエディタ。<p>
@@ -55,6 +58,8 @@ public class ByteArrayJournalEditorService
     private String convertMode = CONVERT_HEX;
     private int convertModeValue;
     private String encode;
+    private ServiceName stringConverterServiceName;
+    private StringConverter stringConverter;
     
     public void setConvertMode(String mode){
         if(mode != null){
@@ -63,6 +68,18 @@ public class ByteArrayJournalEditorService
     }
     public String getConvertMode(){
         return convertMode;
+    }
+    
+    public void setStringConverterServiceName(ServiceName name){
+        stringConverterServiceName = name;
+    }
+    
+    public ServiceName getStringConverterServiceName(){
+        return stringConverterServiceName;
+    }
+    
+    public void setStringConverter(StringConverter converter){
+        stringConverter = converter;
     }
     
     public void startService() throws Exception{
@@ -79,6 +96,9 @@ public class ByteArrayJournalEditorService
             new String(new byte[0], convertMode);
             encode = convertMode;
             convertModeValue = CONVERT_ENCODE_VALUE;
+            if(stringConverterServiceName != null){
+                stringConverter = (StringConverter)ServiceManagerFactory.getServiceObject(stringConverterServiceName);
+            }
         }
     }
     
@@ -172,7 +192,14 @@ public class ByteArrayJournalEditorService
         StringBuilder buf
     ){
         try{
-            buf.append(new String(bytes, encode));
+            String str = new String(bytes, encode);
+            if(stringConverter != null && str != null){
+                try{
+                    str = stringConverter.convert(str);
+                }catch(ConvertException e){
+                }
+            }
+            buf.append(str);
         }catch(java.io.UnsupportedEncodingException e){
             // 起こらない
         }

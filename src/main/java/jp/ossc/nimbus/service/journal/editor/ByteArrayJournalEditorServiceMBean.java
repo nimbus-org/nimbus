@@ -31,6 +31,8 @@
  */
 package jp.ossc.nimbus.service.journal.editor;
 
+import jp.ossc.nimbus.core.ServiceName;
+
 /**
  * {@link ByteArrayJournalEditorService}のMBeanインタフェース。<p>
  * 
@@ -79,4 +81,18 @@ public interface ByteArrayJournalEditorServiceMBean
      * @return 変換モード
      */
     public String getConvertMode();
+    
+    /**
+     * 変換モードが、文字列エンコード変換モードの場合に、エンコードした文字列に対して、更に変換を掛ける{@link jp.ossc.nimbus.util.converter.StringConverter StringConverter}のサービス名を設定する。<p>
+     *
+     * @param name StringConverterのサービス名
+     */
+    public void setStringConverterServiceName(ServiceName name);
+    
+    /**
+     * 変換モードが、文字列エンコード変換モードの場合に、エンコードした文字列に対して、更に変換を掛ける{@link jp.ossc.nimbus.util.converter.StringConverter StringConverter}のサービス名を取得する。<p>
+     *
+     * @return StringConverterのサービス名
+     */
+    public ServiceName getStringConverterServiceName();
 }
