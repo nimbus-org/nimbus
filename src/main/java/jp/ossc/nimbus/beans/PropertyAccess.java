@@ -32,6 +32,7 @@
 package jp.ossc.nimbus.beans;
 
 import java.util.*;
+import java.util.concurrent.*;
 import java.lang.reflect.InvocationTargetException;
 
 /**
@@ -44,7 +45,7 @@ public class PropertyAccess{
     
     private boolean isIgnoreNullProperty = false;
     
-    private Map propertyCache = Collections.synchronizedMap(new HashMap());
+    private ConcurrentMap propertyCache = new ConcurrentHashMap();
     
     private static PropertyAccess instance;
     
@@ -145,7 +146,7 @@ public class PropertyAccess{
         if(property == null){
             property = PropertyFactory.createProperty(prop);
             property.setIgnoreNullProperty(isIgnoreNullProperty);
-            Property exists = (Property)propertyCache.put(prop, property);
+            Property exists = (Property)propertyCache.putIfAbsent(prop, property);
             if(exists != null){
                 property = exists;
             }
