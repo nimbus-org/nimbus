@@ -56,6 +56,8 @@ public class SimpleElement implements WritableElement, java.io.Serializable {
     
     protected String nullString = null;
     
+    protected boolean isConvertString;
+    
     /**
      * 空のインスタンスを生成する。<p>
      */
@@ -160,6 +162,25 @@ public class SimpleElement implements WritableElement, java.io.Serializable {
     }
     
     /**
+     * {@link #toObject()}で、文字列に変換して返すかどうかを設定する。<p>
+     * デフォルトは、false。<br>
+     * 
+     * @param isConvert 文字列に変換する場合は、true
+     */
+    public void setConvertString(boolean isConvert){
+        isConvertString = isConvert;
+    }
+    
+    /**
+     * {@link #toObject()}で、文字列に変換して返すかどうかを判定する。<p>
+     * 
+     * @return trueの場合、文字列に変換する
+     */
+    public boolean isConvertString(){
+        return isConvertString;
+    }
+    
+    /**
      * この要素の値をそのまま文字列にして取得する。<p>
      * 
      * @return この要素の値のtoString()を呼び出した結果
@@ -186,11 +207,15 @@ public class SimpleElement implements WritableElement, java.io.Serializable {
     
     /**
      * この要素のオブジェクトをそのまま取得する。<p>
-     * {@link #getValue()}と同じ値を返す。<br>
+     * {@link #getValue()}と同じ値を返す。但し、{@link #isConvertString()}がtrueの場合は、{@link #toString()}と同じ値を返す。<br>
      * 
      * @return この要素のオブジェクト
      */
     public Object toObject(){
-        return mValue;
+        if(isConvertString){
+            return toString();
+        }else{
+            return mValue;
+        }
     }
 }
