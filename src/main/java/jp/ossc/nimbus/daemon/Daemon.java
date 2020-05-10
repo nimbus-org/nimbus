@@ -442,6 +442,10 @@ public class Daemon implements Runnable, DaemonControl{
         susupendMonitor.notifyMonitor();
     }
     
+    public long getLastProvideTime(){
+        return lastProvideTime;
+    }
+    
     /**
      * デーモンスレッドを実行する。<p>
      */
