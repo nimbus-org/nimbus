@@ -84,4 +84,12 @@ public interface DaemonControl{
      * @exception InterruptedException インターラプトされた場合
      */
     public void sleep(long interval, boolean isFirstSleep) throws InterruptedException;
+    
+    /**
+     * 最後に供給した時刻を取得する。<p>
+     * まだ、供給したことがない場合は、-1。<br>
+     *
+     * @return 最後に供給した時刻
+     */
+    public long getLastProvideTime();
 }
