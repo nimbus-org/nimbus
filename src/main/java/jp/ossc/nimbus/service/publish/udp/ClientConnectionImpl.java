@@ -992,6 +992,25 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
         messageBuffer = new LinkedList();
     }
     
+    public void resetCount(){
+        receiveCount = 0;
+        receivePacketCount = 0;
+        onMessageProcessTime = 0;
+        noContinuousMessageCount = 0;
+        wasteWindowCount = 0;
+        missingWindowRequestCount = 0;
+        missingWindowRequestTimeoutCount = 0;
+        missingWindowResponseTime = 0;
+        maxMissingWindowSize = 0;
+        newMessagePollingCount = 0;
+        newMessagePollingTimeoutCount = 0;
+        newMessagePollingResponseTime = 0;
+        lostCount = 0;
+        lastReceiveTime = -1;
+        totalMessageLatency = 0;
+        maxMessageLatency = 0;
+    }
+    
     public void close(){
         close(false, null);
     }
@@ -1062,6 +1081,13 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
             receiveSocket.close();
             receiveSocket = null;
         }
+        if(subjects != null){
+            subjects.clear();
+        }
+        messageListener = null;
+        id = null;
+        serviceManagerName = null;
+        requestId = 0;
         isClosing = false;
     }
     
@@ -1955,21 +1981,7 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
         }
         
         public void resetCount(){
-            ClientConnectionImpl.this.receiveCount = 0;
-            ClientConnectionImpl.this.receivePacketCount = 0;
-            ClientConnectionImpl.this.onMessageProcessTime = 0;
-            ClientConnectionImpl.this.noContinuousMessageCount = 0;
-            ClientConnectionImpl.this.wasteWindowCount = 0;
-            ClientConnectionImpl.this.missingWindowRequestCount = 0;
-            ClientConnectionImpl.this.missingWindowRequestTimeoutCount = 0;
-            ClientConnectionImpl.this.missingWindowResponseTime = 0;
-            ClientConnectionImpl.this.newMessagePollingCount = 0;
-            ClientConnectionImpl.this.newMessagePollingTimeoutCount = 0;
-            ClientConnectionImpl.this.newMessagePollingResponseTime = 0;
-            ClientConnectionImpl.this.lostCount = 0;
-            ClientConnectionImpl.this.lastReceiveTime = -1;
-            ClientConnectionImpl.this.totalMessageLatency = 0;
-            ClientConnectionImpl.this.maxMessageLatency = 0;
+            ClientConnectionImpl.this.resetCount();
         }
         
         public long getAverageOnMessageProcessTime(){
