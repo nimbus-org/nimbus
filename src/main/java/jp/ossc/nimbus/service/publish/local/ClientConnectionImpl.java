@@ -250,6 +250,12 @@ public class ClientConnectionImpl implements ClientConnection{
         return lastReceiveTime;
     }
     
+    public void resetCount(){
+        receiveCount = 0;
+        onMessageProcessTime = 0;
+        lastReceiveTime = 0;
+    }
+    
     public synchronized void close(){
         if(serviceName != null){
             ServiceManagerFactory.unregisterService(
@@ -261,7 +267,13 @@ public class ClientConnectionImpl implements ClientConnection{
         if(isConnected){
             serverConnection.close(this.id);
         }
+        if(subjects != null){
+            subjects.clear();
+        }
+        messageListener = null;
+        resetCount();
         isStartReceive = false;
+        id = null;
         isConnected = false;
     }
     
@@ -322,8 +334,7 @@ public class ClientConnectionImpl implements ClientConnection{
         }
         
         public void resetCount(){
-            ClientConnectionImpl.this.receiveCount = 0;
-            ClientConnectionImpl.this.onMessageProcessTime = 0;
+            ClientConnectionImpl.this.resetCount();
         }
         
         public long getAverageOnMessageProcessTime(){
