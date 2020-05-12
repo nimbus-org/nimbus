@@ -110,7 +110,7 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
     private SocketFactory socketFactory;
     private String receiveAddress;
     private int receivePort;
-    private Externalizer externalizer;
+    protected Externalizer externalizer;
     
     private String bindAddressPropertyName = BIND_ADDRESS_PROPERTY;
     private String bindPortPropertyName = BIND_PORT_PROPERTY;
@@ -145,7 +145,7 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
     private int messagePayoutCount;
     private int maxMessagePayoutCount;
     
-    private transient List messageBuffer;
+    protected transient List messageBuffer;
     
     private transient Socket socket;
     private transient InetAddress receiveGroup;
