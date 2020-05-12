@@ -419,23 +419,12 @@ public class SharedQueueService extends SharedContextService
             Object element = null;
             do{
                 String id = null;
-                String localId = null;
-                String preLocalId = null;
                 try{
                     id = (String)lockFirst();
                     if(id == null){
                         if(size() == 0){
                             return EMPTY;
                         }else{
-                            if(!isClient() && !isMain()){
-                                localId = (String)((SortedMap)context).firstKey();
-                                if(preLocalId != null && preLocalId.equals(localId)){
-                                    getLogger().write("SQS__00001", new Object[]{subject});
-                                    synchronize();
-                                }else{
-                                    preLocalId = localId;
-                                }
-                            }
                             continue;
                         }
                     }
@@ -469,7 +458,7 @@ public class SharedQueueService extends SharedContextService
     }
     
     protected Object lockFirst(long timeout) throws SharedContextSendException, SharedContextTimeoutException{
-        if(isMain()){
+        if(!isClient()){
             List keys = null;
             if(context.size() != 0){
                 synchronized(context){
@@ -691,7 +680,7 @@ public class SharedQueueService extends SharedContextService
     }
     
     protected Message onLockFirst(SharedContextEvent event, final Object sourceId, final int sequence, final String responseSubject, final String responseKey){
-        if(isMain(sourceId)){
+        if(!isClient()){
             final Object[] params = (Object[])event.value;
             final long threadId = ((Long)params[0]).longValue();
             long timeout = ((Long)params[1]).longValue();
