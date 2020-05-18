@@ -929,12 +929,17 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
         try{
             ois = new ObjectInputStream(is);
             final int messageId = ois.readInt();
-            KubernetesClusterService.ClusterUID agentFromUID = (KubernetesClusterService.ClusterUID)ois.readObject();
-            if(agentFromUID != null){
-                fromUID = agentFromUID;
-            }
             if(uid.equals(fromUID)){
                 return;
+            }
+            KubernetesClusterService.ClusterUID agentFromUID = (KubernetesClusterService.ClusterUID)ois.readObject();
+            if(agentFromUID != null){
+                synchronized(members){
+                    if(!members.contains(fromUID)){
+                        return;
+                    }
+                }
+                fromUID = agentFromUID;
             }
             int memberSize = 0;
             List newMembers = null;
@@ -1677,7 +1682,6 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
     
     protected class HeartBeater implements DaemonRunnable{
         
-        protected long lastSendTime = -1;
         protected int heartBeatFailedCount;
         protected KubernetesClusterService.ClusterUID targetMember;
         
@@ -1696,7 +1700,13 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
             if(!isJoin){
                 return;
             }
-            lastSendTime = System.currentTimeMillis();
+            long checkStandartTime = 0;
+            if(ctrl.getLastProvideTime() >= 0){
+                checkStandartTime = ctrl.getLastProvideTime() + heartBeatInterval;
+            }else{
+                checkStandartTime = System.currentTimeMillis();
+            }
+            
             KubernetesClusterService.ClusterUID[] clients = null;
             if(isMain){
                 sendMessage(MESSAGE_ID_MAIN_HELLO_REQ);
@@ -1704,14 +1714,14 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                     clients = clientMembers.size() == 0 ? null : (KubernetesClusterService.ClusterUID[])clientMembers.values().toArray(new KubernetesClusterService.ClusterUID[clientMembers.size()]);
                     if(clients != null){
                         for(int i = 0; i < clients.length; i++){
-                            if(lastSendTime - ((heartBeatInterval + heartBeatResponseTimeout) * heartBeatRetryCount) > clients[i].lastHeartBeatTime){
+                            if(checkStandartTime - ((heartBeatInterval + heartBeatResponseTimeout) * heartBeatRetryCount) > clients[i].lastHeartBeatTime){
                                 clientMembers.remove(clients[i]);
                                 getLogger().write(MSG_ID_MESSAGE_CLIENT_REMOVE, new Object[]{getServiceNameObject(), clients[i]});
                             }
                         }
                     }
                 }
-            }else if(isMainRequesting && mainRequestingTime < lastSendTime - ((heartBeatInterval + heartBeatResponseTimeout) * heartBeatRetryCount)){
+            }else if(isMainRequesting && mainRequestingTime < checkStandartTime - ((heartBeatInterval + heartBeatResponseTimeout) * heartBeatRetryCount)){
                 synchronized(mainReqMembers){
                     if(isMainRequesting){
                         mainRequestingTime = System.currentTimeMillis();
@@ -1763,7 +1773,7 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                     tmpLastReceiveUID = lastReceiveUID;
                     tmpLastReceiveTime = lastReceiveTime;
                 }
-                if(!isClient && tmpLastReceiveUID != null && tmpLastReceiveTime < (lastSendTime - ((heartBeatInterval + heartBeatResponseTimeout) * heartBeatRetryCount))){
+                if(!isClient && tmpLastReceiveUID != null && tmpLastReceiveTime < (checkStandartTime - ((heartBeatInterval + heartBeatResponseTimeout) * heartBeatRetryCount))){
                     synchronized(lastReceiveUIDLockObj){
                         lastReceiveUID = null;
                         lastReceiveTime = -1;
