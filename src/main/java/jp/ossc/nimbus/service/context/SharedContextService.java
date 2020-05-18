@@ -334,7 +334,7 @@ public class SharedContextService extends DefaultContextService
                 Message message = serverConnection.createMessage(subject, null);
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
-                    message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_CHANGE_MODE, cluster.getUID(), isClient));
+                    message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_CHANGE_MODE, cluster.getUID(), isClient ? Boolean.TRUE : Boolean.FALSE));
                     serverConnection.sendAsynch(message);
                 }else{
                     message.recycle();

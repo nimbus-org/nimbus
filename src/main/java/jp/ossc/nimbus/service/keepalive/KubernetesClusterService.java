@@ -413,7 +413,7 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
         }
     }
     
-    public ClusterUID getUID(){
+    public jp.ossc.nimbus.service.keepalive.ClusterUID getUID(){
         return uid;
     }
     

@@ -344,7 +344,7 @@ public class ClusterService extends ServiceBase implements Cluster, ClusterServi
         }
     }
     
-    public ClusterUID getUID(){
+    public jp.ossc.nimbus.service.keepalive.ClusterUID getUID(){
         return uid;
     }
     
