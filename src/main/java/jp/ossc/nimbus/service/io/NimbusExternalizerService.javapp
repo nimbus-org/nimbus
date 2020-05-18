@@ -32,18 +32,19 @@
 package jp.ossc.nimbus.service.io;
 
 import sun.misc.Unsafe;
-@START<JAVA9@
+@START<=JAVA8@
 import sun.reflect.ReflectionFactory;
-@END<JAVA9@
-@START=JAVA9@
+@END<=JAVA8@
+@START>JAVA8@
 import jdk.internal.reflect.ReflectionFactory;
-@END=JAVA9@
+@END>JAVA8@
 
 import java.io.*;
 import java.util.*;
 import java.util.concurrent.*;
 import java.lang.reflect.*;
 import java.security.AccessController;
+import java.security.PrivilegedAction;
 
 import jp.ossc.nimbus.core.NimbusClassLoader;
 import jp.ossc.nimbus.util.ClassMappingTree;
@@ -1201,7 +1202,14 @@ public class NimbusExternalizerService extends SerializableExternalizerService
     
     private static class MetaClass{
         
-        private static final ReflectionFactory reflFactory = (ReflectionFactory)AccessController.doPrivileged(new ReflectionFactory.GetReflectionFactoryAction());
+        private static final ReflectionFactory reflFactory = (ReflectionFactory)AccessController.doPrivileged(
+            new PrivilegedAction(){
+                public Object run(){
+                    return ReflectionFactory.getReflectionFactory();
+                }
+            }
+        );
+
         private static final ObjectStreamField[] NO_FIELDS = new ObjectStreamField[0];
         
         protected static final byte TAG_NULL = (byte)0;

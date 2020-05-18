@@ -47,6 +47,7 @@ import java.net.UnknownHostException;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.text.SimpleDateFormat;
+import java.util.Iterator;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Map;
@@ -843,6 +844,15 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
         return lastReceiveTime;
     }
     
+    public void resetCount(){
+        receiveCount = 0;
+        receiveProcessTime = 0;
+        onMessageProcessTime = 0;
+        lastReceiveTime = -1;
+        totalMessageLatency = 0;
+        maxMessageLatency = 0;
+    }
+    
     public void close(){
         close(false, null);
     }
@@ -869,6 +879,17 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
                 );
             }
         }
+        if(requestMonitorMap != null){
+            synchronized(requestMonitorMap){
+                Iterator entries = requestMonitorMap.entrySet().iterator();
+                while(entries.hasNext()){
+                    Map.Entry entry = (Map.Entry)entries.next();
+                    SynchronizeMonitor responseMonitor = (SynchronizeMonitor)entry.getValue();
+                    responseMonitor.releaseAllMonitor();
+                    entries.remove();
+                }
+            }
+        }
         if(serviceName != null){
             ServiceManagerFactory.unregisterService(
                 serviceName.getServiceManagerName(),
@@ -891,9 +912,18 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
             }catch(IOException e){}
             socket = null;
         }
-        isClosing = false;
+        if(subjects != null){
+            subjects.clear();
+        }
         isStartReceive = false;
         isConnected = false;
+        messageListener = null;
+        id = null;
+        serviceManagerName = null;
+        resetCount();
+        requestId = 0;
+        receiveBytes = null;
+        isClosing = false;
     }
     
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException{
@@ -990,12 +1020,7 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
         }
         
         public void resetCount(){
-            ClientConnectionImpl.this.receiveCount = 0;
-            ClientConnectionImpl.this.receiveProcessTime = 0;
-            ClientConnectionImpl.this.onMessageProcessTime = 0;
-            ClientConnectionImpl.this.lastReceiveTime = -1;
-            ClientConnectionImpl.this.totalMessageLatency = 0;
-            ClientConnectionImpl.this.maxMessageLatency = 0;
+            ClientConnectionImpl.this.resetCount();
         }
         
         public long getAverageReceiveProcessTime(){
