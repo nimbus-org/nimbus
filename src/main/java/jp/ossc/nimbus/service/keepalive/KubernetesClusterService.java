@@ -1234,6 +1234,8 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                             }else{
                                 sendMessage(MESSAGE_ID_ADD_REQ_REQ, fromUID);
                             }
+                        }else{
+                            sendMessage(MESSAGE_ID_ADD_REQ_REQ, (KubernetesClusterService.ClusterUID)members.get(0), fromUID);
                         }
                     }
                 }
@@ -1683,6 +1685,7 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
     protected class HeartBeater implements DaemonRunnable{
         
         protected int heartBeatFailedCount;
+        protected KubernetesClusterService.ClusterUID targetedMember;
         protected KubernetesClusterService.ClusterUID targetMember;
         
         public boolean onStart(){return true;}
@@ -1700,11 +1703,11 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
             if(!isJoin){
                 return;
             }
-            long checkStandartTime = 0;
+            long checkStandardTime = 0;
             if(ctrl.getLastProvideTime() >= 0){
-                checkStandartTime = ctrl.getLastProvideTime() + heartBeatInterval;
+                checkStandardTime = ctrl.getLastProvideTime() + heartBeatInterval;
             }else{
-                checkStandartTime = System.currentTimeMillis();
+                checkStandardTime = System.currentTimeMillis();
             }
             
             KubernetesClusterService.ClusterUID[] clients = null;
@@ -1714,14 +1717,14 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                     clients = clientMembers.size() == 0 ? null : (KubernetesClusterService.ClusterUID[])clientMembers.values().toArray(new KubernetesClusterService.ClusterUID[clientMembers.size()]);
                     if(clients != null){
                         for(int i = 0; i < clients.length; i++){
-                            if(checkStandartTime - ((heartBeatInterval + heartBeatResponseTimeout) * heartBeatRetryCount) > clients[i].lastHeartBeatTime){
+                            if(checkStandardTime - ((heartBeatInterval + heartBeatResponseTimeout) * heartBeatRetryCount) > clients[i].lastHeartBeatTime){
                                 clientMembers.remove(clients[i]);
                                 getLogger().write(MSG_ID_MESSAGE_CLIENT_REMOVE, new Object[]{getServiceNameObject(), clients[i]});
                             }
                         }
                     }
                 }
-            }else if(isMainRequesting && mainRequestingTime < checkStandartTime - ((heartBeatInterval + heartBeatResponseTimeout) * heartBeatRetryCount)){
+            }else if(isMainRequesting && mainRequestingTime < checkStandardTime - ((heartBeatInterval + heartBeatResponseTimeout) * heartBeatRetryCount)){
                 synchronized(mainReqMembers){
                     if(isMainRequesting){
                         mainRequestingTime = System.currentTimeMillis();
@@ -1732,31 +1735,50 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                 }
             }
             
-            KubernetesClusterService.ClusterUID member = null;
+            KubernetesClusterService.ClusterUID tmpTargetedMember = null;
+            KubernetesClusterService.ClusterUID tmpTargetMember = null;
+            long tmpLastReceiveTime = 0l;
+            synchronized(lastReceiveUIDLockObj){
+                tmpLastReceiveTime = lastReceiveTime;
+            }
             synchronized(members){
                 if(isClient){
                     if(members.size() > 0){
-                        member = (KubernetesClusterService.ClusterUID)members.get(0);
+                        tmpTargetMember = (KubernetesClusterService.ClusterUID)members.get(0);
                     }
                 }else{
                     if(members.size() > 1){
                         int index = members.indexOf(uid);
-                        if(index == -1){
-                            return;
+                        if(index != -1){
+                            if(index == members.size() - 1){
+                                tmpTargetMember = (KubernetesClusterService.ClusterUID)members.get(0);
+                            }else{
+                                tmpTargetMember = (KubernetesClusterService.ClusterUID)members.get(index + 1);
+                            }
+                            if(index == 0){
+                                tmpTargetedMember = (KubernetesClusterService.ClusterUID)members.get(members.size() - 1);
+                            }else{
+                                tmpTargetedMember = (KubernetesClusterService.ClusterUID)members.get(index - 1);
+                            }
                         }
-                        if(index == members.size() - 1){
-                            index = 0;
-                        }else{
-                            index += 1;
-                        }
-                        member = (KubernetesClusterService.ClusterUID)members.get(index);
-                        if(!member.equals(targetMember)){
+                        if((tmpTargetMember == null && targetMember != null)
+                            || (tmpTargetMember != null && targetMember == null)
+                            || !tmpTargetMember.equals(targetMember)
+                         ){
                             heartBeatFailedCount = 0;
+                        }
+                        if((tmpTargetedMember == null && targetedMember != null)
+                            || (tmpTargetedMember != null && targetedMember == null)
+                            || !tmpTargetedMember.equals(targetedMember)
+                         ){
+                            tmpLastReceiveTime = System.currentTimeMillis();
                         }
                     }
                 }
             }
-            if(isClient && member == null){
+            targetMember = tmpTargetMember;
+            targetedMember = tmpTargetedMember;
+            if(isClient && targetMember == null){
                 synchronized(addMonitor){
                     addMonitor.initMonitor();
                     sendMessage(MESSAGE_ID_ADD_REQ);
@@ -1766,41 +1788,38 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                         return;
                     }
                 }
-            }else if(member != null && !member.equals(uid)){
-                KubernetesClusterService.ClusterUID tmpLastReceiveUID = null;
-                long tmpLastReceiveTime = 0l;
-                synchronized(lastReceiveUIDLockObj){
-                    tmpLastReceiveUID = lastReceiveUID;
-                    tmpLastReceiveTime = lastReceiveTime;
-                }
-                if(!isClient && tmpLastReceiveUID != null && tmpLastReceiveTime < (checkStandartTime - ((heartBeatInterval + heartBeatResponseTimeout) * heartBeatRetryCount))){
+            }else if(targetMember != null && !targetMember.equals(uid)){
+                if(!isClient
+                    && targetedMember != null
+                    && tmpLastReceiveTime < (checkStandardTime - ((heartBeatInterval + heartBeatResponseTimeout) * heartBeatRetryCount))
+                ){
                     synchronized(lastReceiveUIDLockObj){
                         lastReceiveUID = null;
                         lastReceiveTime = -1;
                     }
                     if(isMainRequesting){
                         synchronized(mainReqMembers){
-                            mainReqMembers.remove(tmpLastReceiveUID);
+                            mainReqMembers.remove(targetedMember);
                         }
                     }
                     boolean isMemberChange = false;
                     List tmpOldMembers = null;
                     List tmpNewMembers = null;
                     synchronized(members){
-                        if(members.contains(tmpLastReceiveUID)){
+                        if(members.contains(targetedMember)){
                             tmpOldMembers = new ArrayList(members);
-                            members.remove(tmpLastReceiveUID);
-                            memberAddresses.remove(new InetSocketAddress(tmpLastReceiveUID.getAddress(), tmpLastReceiveUID.getPort()));
+                            members.remove(targetedMember);
+                            memberAddresses.remove(new InetSocketAddress(targetedMember.getAddress(), targetedMember.getPort()));
                             tmpNewMembers = new ArrayList(members);
                             isMemberChange = true;
                         }
                     }
                     if(isMemberChange){
                         if(isMain && !isMainDoubt){
-                            getLogger().write(MSG_ID_MESSAGE_MEMBER_REMOVE, new Object[]{getServiceNameObject(), tmpLastReceiveUID});
+                            getLogger().write(MSG_ID_MESSAGE_MEMBER_REMOVE, new Object[]{getServiceNameObject(), targetedMember});
                             sendMessage(MESSAGE_ID_MEMBER_CHANGE_REQ);
                         }else if(!isClient){
-                            sendMessage(MESSAGE_ID_BYE_REQ, tmpLastReceiveUID, null);
+                            sendMessage(MESSAGE_ID_BYE_REQ, targetedMember, null);
                             if(members.indexOf(uid) == 0){
                                 if(members.size() == 1){
                                     isMain = true;
@@ -1835,11 +1854,10 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                         eventQueue.push(new ClusterEvent(ClusterEvent.EVENT_MEMBER_CHANGE, tmpOldMembers, tmpNewMembers));
                     }
                 }
-                targetMember = member;
                 try{
                     boolean isNotify = false;
                     synchronized(helloMonitor){
-                        helloTarget = member;
+                        helloTarget = targetMember;
                         helloMonitor.initMonitor();
                         sendMessage(MESSAGE_ID_HELLO_REQ, helloTarget);
                         try{
@@ -1885,27 +1903,27 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                             }else{
                                 if(isMainRequesting){
                                     synchronized(mainReqMembers){
-                                        mainReqMembers.remove(member);
+                                        mainReqMembers.remove(targetMember);
                                     }
                                 }
                                 boolean isMemberChange = false;
                                 List tmpOldMembers = null;
                                 List tmpNewMembers = null;
                                 synchronized(members){
-                                    if(members.contains(member)){
+                                    if(members.contains(targetMember)){
                                         tmpOldMembers = new ArrayList(members);
-                                        members.remove(member);
-                                        memberAddresses.remove(new InetSocketAddress(member.getAddress(), member.getPort()));
+                                        members.remove(targetMember);
+                                        memberAddresses.remove(new InetSocketAddress(targetMember.getAddress(), targetMember.getPort()));
                                         tmpNewMembers = new ArrayList(members);
                                         isMemberChange = true;
                                     }
                                 }
                                 if(isMemberChange){
                                     if(isMain && !isMainDoubt){
-                                        getLogger().write(MSG_ID_MESSAGE_MEMBER_REMOVE, new Object[]{getServiceNameObject(), member});
+                                        getLogger().write(MSG_ID_MESSAGE_MEMBER_REMOVE, new Object[]{getServiceNameObject(), targetMember});
                                         sendMessage(MESSAGE_ID_MEMBER_CHANGE_REQ);
                                     }else if(!isClient){
-                                        sendMessage(MESSAGE_ID_BYE_REQ, member, null);
+                                        sendMessage(MESSAGE_ID_BYE_REQ, targetMember, null);
                                     }
                                     eventQueue.push(new ClusterEvent(ClusterEvent.EVENT_MEMBER_CHANGE, tmpOldMembers, tmpNewMembers));
                                 }
