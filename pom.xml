@@ -795,8 +795,13 @@
                         <goals>
                             <goal>rmic</goal>
                         </goals>
+                        <configuration>
+                            <noLocalStubs>false</noLocalStubs>
+                            <verbose>false</verbose>
+                        </configuration>
                     </execution>
                 </executions>
+<!--
                 <dependencies>
                   <dependency>
                       <groupId>org.glassfish.corba</groupId>
@@ -804,6 +809,7 @@
                       <version>4.2.1</version>
                   </dependency>
                 </dependencies>
+-->
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
