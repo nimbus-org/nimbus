@@ -693,6 +693,23 @@ public interface SharedContext extends Context{
     public void analyzeIndex(String name, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
+     * 全てのインデックスを再解析する。<p>
+     * 
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public void analyzeAllIndex() throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 全てのインデックスを再解析する。<p>
+     * 
+     * @param timeout タイムアウト[ms]
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public void analyzeAllIndex(long timeout) throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
      * 検索を行うビューを作成する。<p>
      * 
      * @return 検索ビュー

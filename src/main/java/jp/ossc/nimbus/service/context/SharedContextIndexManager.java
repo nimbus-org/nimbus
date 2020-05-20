@@ -140,6 +140,10 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
         keySet.clear();
     }
     
+    public String[] getIndexNames(){
+        return (String[])nameIndexMap.keySet().toArray(new String[nameIndexMap.size()]);
+    }
+    
     public SharedContextIndex getIndex(String name){
         return (SharedContextIndex)nameIndexMap.get(name);
     }
