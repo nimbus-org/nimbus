@@ -40,6 +40,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import jp.ossc.nimbus.beans.*;
 import jp.ossc.nimbus.core.*;
+import jp.ossc.nimbus.daemon.*;
 import jp.ossc.nimbus.service.publish.*;
 import jp.ossc.nimbus.service.keepalive.Cluster;
 import jp.ossc.nimbus.service.keepalive.ClusterListener;
@@ -152,8 +153,10 @@ public class SharedContextService extends DefaultContextService
     protected SharedContextTransactionManager sharedContextTransactionManager;
     
     protected long synchronizeTimeout = 5000l;
-    
     protected long defaultTimeout = 1000l;
+    protected long forcedLockTimeout = 60000L;
+    protected long forcedWholeLockTimeout = 300000L;
+    protected long forcedLockTimeoutCheckInterval = -1L;
     
     protected String subject = DEFAULT_SUBJECT;
     protected String clientSubject;
@@ -176,6 +179,7 @@ public class SharedContextService extends DefaultContextService
     protected boolean isMain;
     protected long caheHitCount;
     protected long caheNoHitCount;
+    protected transient Daemon forcedLockTimeoutChecker;
     
     public void setRequestConnectionFactoryServiceName(ServiceName name){
         requestConnectionFactoryServiceName = name;
@@ -399,6 +403,27 @@ public class SharedContextService extends DefaultContextService
     }
     public long getDefaultTimeout(){
         return defaultTimeout;
+    }
+    
+    public void setForcedLockTimeout(long timeout){
+        forcedLockTimeout = timeout;
+    }
+    public long getForcedLockTimeout(){
+        return forcedLockTimeout;
+    }
+    
+    public void setForcedWholeLockTimeout(long timeout){
+        forcedWholeLockTimeout = timeout;
+    }
+    public long getForcedWholeLockTimeout(){
+        return forcedWholeLockTimeout;
+    }
+    
+    public void setForcedLockTimeoutCheckInterval(long interval){
+        forcedLockTimeoutCheckInterval = interval;
+    }
+    public long getForcedLockTimeoutCheckInterval(){
+        return forcedLockTimeoutCheckInterval;
     }
     
     public void setClientCacheMap(CacheMap map){
@@ -694,6 +719,10 @@ public class SharedContextService extends DefaultContextService
                 }
             }
         }
+        if(forcedLockTimeoutCheckInterval > 0){
+            forcedLockTimeoutChecker = new Daemon(new ForcedLockTimeoutChecker());
+            forcedLockTimeoutChecker.start();
+        }
     }
     
     protected void waitConnectMain() throws Exception{
@@ -715,6 +744,11 @@ public class SharedContextService extends DefaultContextService
      * @exception Exception サービスの停止処理に失敗した場合
      */
     public void stopService() throws Exception{
+        if(forcedLockTimeoutChecker != null){
+            forcedLockTimeoutChecker.stop(100);
+            forcedLockTimeoutChecker = null;
+        }
+        
         unlockAll();
         if(cluster != null){
             cluster.removeClusterListener(this);
@@ -1045,6 +1079,8 @@ public class SharedContextService extends DefaultContextService
     }
     
     protected synchronized void synchronizeForClient(long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+        final long start = System.currentTimeMillis();
+        long currentTimeout = timeout;
         if(cacheMap != null){
             Object[] keys = null;
             synchronized(context){
@@ -1059,39 +1095,59 @@ public class SharedContextService extends DefaultContextService
                 ((SharedContextUpdateListener)updateListeners.get(i)).onClearSynchronize(this);
             }
         }
-        super.clear();
-        indexManager.clear();
         Message message = null;
         try{
             message = serverConnection.createMessage(subject, null);
             Set receiveClients = serverConnection.getReceiveClientIds(message);
             if(receiveClients.size() != 0){
                 message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_GET_ALL));
+                if(currentTimeout > 0){
+                    currentTimeout = timeout - (System.currentTimeMillis() - start);
+                    if(currentTimeout <= 0){
+                        throw new SharedContextTimeoutException();
+                    }
+                }
                 Message[] responses = serverConnection.request(
                     message,
                     isClient ? clientSubject : subject,
                     null,
                     1,
-                    timeout
+                    currentTimeout
                 );
                 Map result = (Map)responses[0].getObject();
                 responses[0].recycle();
                 if(result != null){
-                    Iterator entries = result.entrySet().iterator();
-                    while(entries.hasNext()){
-                        Map.Entry entry = (Map.Entry)entries.next();
-                        boolean isPut = true;
-                        if(updateListeners != null){
-                            for(int i = 0; i < updateListeners.size(); i++){
-                                if(!((SharedContextUpdateListener)updateListeners.get(i)).onPutSynchronize(this, entry.getKey(), entry.getValue())){
-                                    isPut = false;
-                                    break;
+                    Object id = cluster.getUID();
+                    if(currentTimeout > 0){
+                        currentTimeout = timeout - (System.currentTimeMillis() - start);
+                        if(currentTimeout <= 0){
+                            throw new SharedContextTimeoutException();
+                        }
+                    }
+                    if(!referLock.acquireForLock(id, currentTimeout)){
+                        throw new SharedContextTimeoutException();
+                    }
+                    try{
+                        super.clear();
+                        indexManager.clear();
+                        Iterator entries = result.entrySet().iterator();
+                        while(entries.hasNext()){
+                            Map.Entry entry = (Map.Entry)entries.next();
+                            boolean isPut = true;
+                            if(updateListeners != null){
+                                for(int i = 0; i < updateListeners.size(); i++){
+                                    if(!((SharedContextUpdateListener)updateListeners.get(i)).onPutSynchronize(this, entry.getKey(), entry.getValue())){
+                                        isPut = false;
+                                        break;
+                                    }
                                 }
                             }
+                            if(isPut && entry.getValue() != null){
+                                indexManager.add(entry.getKey(), entry.getValue());
+                            }
                         }
-                        if(isPut && entry.getValue() != null){
-                            indexManager.add(entry.getKey(), entry.getValue());
-                        }
+                    }finally{
+                        referLock.releaseForLock(id);
                     }
                 }
             }else{
@@ -1107,6 +1163,8 @@ public class SharedContextService extends DefaultContextService
     }
     
     protected synchronized void synchronizeWithMain(long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+        final long start = System.currentTimeMillis();
+        long currentTimeout = timeout;
         Message message = null;
         try{
             message = serverConnection.createMessage(subject, null);
@@ -1127,27 +1185,41 @@ public class SharedContextService extends DefaultContextService
                         ((SharedContextUpdateListener)updateListeners.get(i)).onClearSynchronize(this);
                     }
                 }
-                super.clear();
-                indexManager.clear();
                 if(result != null){
-                    Iterator entries = result.entrySet().iterator();
-                    while(entries.hasNext()){
-                        Map.Entry entry = (Map.Entry)entries.next();
-                        boolean isPut = true;
-                        if(updateListeners != null){
-                            for(int i = 0; i < updateListeners.size(); i++){
-                                if(!((SharedContextUpdateListener)updateListeners.get(i)).onPutSynchronize(this, entry.getKey(), entry.getValue())){
-                                    isPut = false;
-                                    break;
+                    Object id = cluster.getUID();
+                    if(currentTimeout > 0){
+                        currentTimeout = timeout - (System.currentTimeMillis() - start);
+                        if(currentTimeout <= 0){
+                            throw new SharedContextTimeoutException();
+                        }
+                    }
+                    if(!referLock.acquireForLock(id, currentTimeout)){
+                        throw new SharedContextTimeoutException();
+                    }
+                    try{
+                        super.clear();
+                        indexManager.clear();
+                        Iterator entries = result.entrySet().iterator();
+                        while(entries.hasNext()){
+                            Map.Entry entry = (Map.Entry)entries.next();
+                            boolean isPut = true;
+                            if(updateListeners != null){
+                                for(int i = 0; i < updateListeners.size(); i++){
+                                    if(!((SharedContextUpdateListener)updateListeners.get(i)).onPutSynchronize(this, entry.getKey(), entry.getValue())){
+                                        isPut = false;
+                                        break;
+                                    }
+                                }
+                            }
+                            if(isPut){
+                                super.put(entry.getKey(), wrapCachedReference(entry.getKey(), entry.getValue()));
+                                if(entry.getValue() != null){
+                                    indexManager.add(entry.getKey(), entry.getValue());
                                 }
                             }
                         }
-                        if(isPut){
-                            super.put(entry.getKey(), wrapCachedReference(entry.getKey(), entry.getValue()));
-                            if(entry.getValue() != null){
-                                indexManager.add(entry.getKey(), entry.getValue());
-                            }
-                        }
+                    }finally{
+                        referLock.releaseForLock(id);
                     }
                 }
             }else{
@@ -5424,6 +5496,11 @@ public class SharedContextService extends DefaultContextService
             return result;
         }
         
+        public long getCurrentLockProcessTime(){
+            final long tmpLockStartTime = lockStartTime;
+            return tmpLockStartTime == -1 ? tmpLockStartTime : System.currentTimeMillis() - tmpLockStartTime;
+        }
+        
         public long getLockProcessTime(){
             return lockProcessTime;
         }
@@ -5802,7 +5879,7 @@ public class SharedContextService extends DefaultContextService
         protected int useCount;
         protected final SynchronizeMonitor useMonitor = new WaitSynchronizeMonitor();
         protected final SynchronizeMonitor lockMonitor = new WaitSynchronizeMonitor();
-        protected final Set lockOwners = new HashSet();
+        protected final Map lockOwners = new HashMap();
         
         public boolean acquireForUse(long timeout){
             if(lockOwners.size() > 0 || lockMonitor.isWait()){
@@ -5856,7 +5933,9 @@ public class SharedContextService extends DefaultContextService
             final long start = System.currentTimeMillis();
             synchronized(useMonitor){
                 if(useCount <= 0){
-                    lockOwners.add(id);
+                    if(!lockOwners.containsKey(id)){
+                        lockOwners.put(id, new Long(System.currentTimeMillis()));
+                    }
                     return true;
                 }else{
                     lockMonitor.initMonitor();
@@ -5891,6 +5970,21 @@ public class SharedContextService extends DefaultContextService
                 }
             }
         }
+        
+        public Object[] getOwners(){
+            synchronized(useMonitor){
+                return lockOwners.keySet().toArray();
+            }
+        }
+        
+        public long getCurrentLockProcessTime(Object id){
+            Long lockStartTime = null;
+            synchronized(useMonitor){
+                lockStartTime = (Long)lockOwners.get(id);
+            }
+            return lockStartTime == -1 ? lockStartTime.longValue() : System.currentTimeMillis() - lockStartTime.longValue();
+        }
+        
         public void close(){
             useMonitor.close();
             lockMonitor.close();
@@ -8482,5 +8576,70 @@ public class SharedContextService extends DefaultContextService
             type = (byte)in.read();
             arguments = (Object[])in.readObject();
         }
+    }
+    
+    protected class ForcedLockTimeoutChecker implements DaemonRunnable{
+        public boolean onStart(){return true;}
+        public boolean onStop(){return true;}
+        public boolean onSuspend(){return true;}
+        public boolean onResume(){return true;}
+        
+        public Object provide(DaemonControl ctrl) throws Throwable{
+            ctrl.sleep(forcedLockTimeoutCheckInterval, false);
+            return null;
+        }
+        
+        public void consume(Object received, DaemonControl ctrl) throws Throwable{
+            if(forcedLockTimeout > 0){
+                final Iterator entries = keyLockMap.entrySet().iterator();
+                Object myId = cluster.getUID();
+                while(entries.hasNext()){
+                    Map.Entry entry = (Map.Entry)entries.next();
+                    Object key = entry.getKey();
+                    Lock lock = (Lock)entry.getValue();
+                    final long lockProcessTime = lock.getCurrentLockProcessTime();
+                    if(lockProcessTime >=  forcedLockTimeout){
+                        try{
+                            unlock(key, true);
+                        }catch(SharedContextSendException e){
+                            lock.release(myId, true);
+                        }
+                        getLogger().write("SCS__00010", new Object[]{subject, key});
+                    }
+                }
+            }
+            if(forcedWholeLockTimeout > 0){
+                Object[] owners = updateLock.getOwners();
+                for(int i = 0; i < owners.length; i++){
+                    final long lockProcessTime = updateLock.getCurrentLockProcessTime(owners[i]);
+                    if(lockProcessTime >=  forcedWholeLockTimeout){
+                        try{
+                            Message message = serverConnection.createMessage(subject, null);
+                            message.setSubject(clientSubject, null);
+                            Set receiveClients = serverConnection.getReceiveClientIds(message);
+                            if(receiveClients.size() != 0){
+                                message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_RELEASE_UPDATE_LOCK, owners[i]));
+                                serverConnection.sendAsynch(message);
+                            }else{
+                                message.recycle();
+                            }
+                        }catch(MessageException e){
+                        }catch(MessageSendException e){
+                        }
+                        updateLock.releaseForLock(owners[i]);
+                        getLogger().write("SCS__00011", new Object[]{subject, owners[i]});
+                    }
+                }
+                owners = referLock.getOwners();
+                for(int i = 0; i < owners.length; i++){
+                    final long lockProcessTime = referLock.getCurrentLockProcessTime(owners[i]);
+                    if(lockProcessTime >=  forcedWholeLockTimeout){
+                        referLock.releaseForLock(owners[i]);
+                    }
+                }
+            }
+        }
+        
+        public void garbage(){}
     }
 }

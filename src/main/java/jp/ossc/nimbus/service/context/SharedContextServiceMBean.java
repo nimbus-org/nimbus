@@ -266,6 +266,55 @@ public interface SharedContextServiceMBean extends DefaultContextServiceMBean{
     public long getDefaultTimeout();
     
     /**
+     * 強制ロックタイムアウト[ms]を設定する。<p>
+     * ここで指定した時間以上、ロックが残っている場合に、ロックを強制的に開放する。<br>
+     * デフォルト値は、1分。<br>
+     * 但し、{@link #setForcedLockTimeoutCheckInterval(long)}に有効な値が設定されている場合のみ、有効。<br>
+     * 
+     * @param timeout 強制ロックタイムアウト[ms]
+     */
+    public void setForcedLockTimeout(long timeout);
+    
+    /**
+     * 強制ロックタイムアウト[ms]を取得する。<p>
+     * 
+     * @return 強制ロックタイムアウト[ms]
+     */
+    public long getForcedLockTimeout();
+    
+    /**
+     * 強制全体ロックタイムアウト[ms]を設定する。<p>
+     * ここで指定した時間以上、全体ロックが残っている場合に、全体ロックを強制的に開放する。<br>
+     * デフォルト値は、5分。<br>
+     * 但し、{@link #setForcedLockTimeoutCheckInterval(long)}に有効な値が設定されている場合のみ、有効。<br>
+     * 
+     * @param timeout 強制全体ロックタイムアウト[ms]
+     */
+    public void setForcedWholeLockTimeout(long timeout);
+    
+    /**
+     * 強制全体ロックタイムアウト[ms]を取得する。<p>
+     * 
+     * @return 強制全体ロックタイムアウト[ms]
+     */
+    public long getForcedWholeLockTimeout();
+    
+    /**
+     * 強制ロックタイムアウトを監視する間隔[ms]を設定する。<p>
+     * デフォルトは、-1で、強制ロックタイムアウトを監視しない。<br>
+     * 
+     * @param interval 強制ロックタイムアウトを監視する間隔[ms]
+     */
+    public void setForcedLockTimeoutCheckInterval(long interval);
+    
+    /**
+     * 強制ロックタイムアウトを監視する間隔[ms]を取得する。<p>
+     * 
+     * @return 強制ロックタイムアウトを監視する間隔[ms]
+     */
+    public long getForcedLockTimeoutCheckInterval();
+    
+    /**
      * サービスの開始時に他のコンテキストとのデータ同期を行うかどうかを設定する。<p>
      * デフォルトは、trueでデータ同期する。<br>
      *
