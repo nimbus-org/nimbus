@@ -408,10 +408,45 @@ public interface SharedContextServiceMBean extends DefaultContextServiceMBean{
     
     /**
      * 指定したインデックスを張りなおす。<p>
-     *
+     * 
      * @param name インデックス名
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     * @see #analyzeIndex(String, long)
      */
-    public void analyzeIndex(String name);
+    public void analyzeIndex(String name) throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 指定したインデックスを張りなおす。<p>
+     * クライアントモードの場合は、{@link #isEnabledIndexOnClient()}の値により動作が変わる。trueの場合、ローカルに保持しているインデックスが存在すればローカルのインデックスを張り直し、存在しなければサーバのインデックスを張り直す。falseの場合、サーバのインデックスを張り直す。また、クライアントモードはデータを全て保持していないため、{@link #synchronize()}で、サーバからデータを取得してインデックスを張り直すため、全てのインデックスが張り直されるので、{@link #analyzeAllIndex()}と同じ動作になる。<br>
+     * サーバモードの場合は、ローカルのインデックスを張り直す。<br>
+     * 
+     * @param name インデックス名
+     * @param timeout タイムアウト[ms]
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public void analyzeIndex(String name, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 全てのインデックスを張りなおす。<p>
+     * 
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     * @see #analyzeAllIndex(long)
+     */
+    public void analyzeAllIndex() throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 全てのインデックスを張りなおす。<p>
+     * クライアントモードの場合は、{@link #isEnabledIndexOnClient()}の値により動作が変わる。trueの場合、ローカルのインデックスを張り直す。falseの場合、サーバのインデックスを張り直す。ローカルのインデックスを張り直す場合は、クライアントモードはデータを全て保持していないため、{@link #synchronize()}で、サーバからデータを取得してインデックスを張り直す。<br>
+     * サーバモードの場合は、ローカルのインデックスを張り直す。<br>
+     * 
+     * @param timeout タイムアウト[ms]
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public void analyzeAllIndex(long timeout) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
      * コンテキスト同期を行う。<p>

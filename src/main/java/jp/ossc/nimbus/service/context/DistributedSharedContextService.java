@@ -1824,6 +1824,63 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         }
     }
     
+    public void analyzeAllIndex() throws SharedContextSendException, SharedContextTimeoutException{
+        analyzeAllIndex(synchronizeTimeout);
+    }
+    
+    public void analyzeAllIndex(long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+        if(parallelRequestQueueHandlerContainer == null){
+            long start = System.currentTimeMillis();
+            final boolean isNoTimeout = timeout <= 0;
+            for(int i = 0; i < sharedContextArray.length; i++){
+                timeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
+                if(!isNoTimeout && timeout < 0){
+                    throw new SharedContextTimeoutException("There is a node that is not possible yet analyzeIndex. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
+                }
+                sharedContextArray[i].analyzeAllIndex(timeout);
+            }
+        }else{
+            DefaultQueueService responseQueue = new DefaultQueueService();
+            try{
+                responseQueue.create();
+                responseQueue.start();
+            }catch(Exception e){
+            }
+            responseQueue.accept();
+            for(int i = 0; i < sharedContextArray.length; i++){
+                AsynchContext asynchContext = new AsynchContext(
+                    new AnalyzeAllIndexParallelRequest(sharedContextArray[i], timeout),
+                    responseQueue
+                );
+                if(threadContext != null){
+                    asynchContext.putThreadContextAll(threadContext);
+                }
+                parallelRequestQueueHandlerContainer.push(asynchContext);
+            }
+            for(int i = 0; i < sharedContextArray.length; i++){
+                AsynchContext asynchContext = (AsynchContext)responseQueue.get();
+                if(asynchContext == null){
+                    break;
+                }else{
+                    try{
+                        asynchContext.checkError();
+                    }catch(SharedContextIllegalIndexException e){
+                        throw e;
+                    }catch(SharedContextSendException e){
+                        throw e;
+                    }catch(SharedContextTimeoutException e){
+                        throw e;
+                    }catch(Error e){
+                        throw e;
+                    }catch(Throwable th){
+                        // 起きないはず
+                        throw new SharedContextSendException(th);
+                    }
+                }
+            }
+        }
+    }
+    
     public SharedContextView createView(){
         return new DistributedSharedContextView();
     }
@@ -3089,6 +3146,20 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         }
         public Object execute() throws SharedContextIllegalIndexException, SharedContextSendException, SharedContextTimeoutException{
             context.analyzeIndex(name, timeout);
+            return null;
+        }
+    }
+    
+    protected class AnalyzeAllIndexParallelRequest extends SharedContextParallelRequest{
+        
+        private long timeout;
+        
+        public AnalyzeAllIndexParallelRequest(SharedContext context, long timeout){
+            super(context);
+            this.timeout = timeout;
+        }
+        public Object execute() throws SharedContextIllegalIndexException, SharedContextSendException, SharedContextTimeoutException{
+            context.analyzeAllIndex(timeout);
             return null;
         }
     }

@@ -456,6 +456,36 @@ public class SharedContextService extends DefaultContextService
         indexManager.clearIndex();
     }
     
+    public void analyzeAllIndex() throws SharedContextSendException, SharedContextTimeoutException{
+        analyzeAllIndex(synchronizeTimeout);
+    }
+    
+    public void analyzeAllIndex(long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+        if(isClient){
+            if(isEnabledIndexOnClient){
+                synchronize(timeout);
+            }else{
+                String[] indexNames = indexManager.getIndexNames();
+                final long start = System.currentTimeMillis();
+                long currentTimeout = timeout;
+                for(int i = 0; i < indexNames.length; i++){
+                    if(timeout > 0){
+                        currentTimeout = timeout - (System.currentTimeMillis() - start);
+                        if(currentTimeout <= 0){
+                            throw new SharedContextTimeoutException();
+                        }
+                    }
+                    analyzeIndex(indexNames[i], currentTimeout);
+                }
+            }
+        }else{
+            String[] indexNames = indexManager.getIndexNames();
+            for(int i = 0; i < indexNames.length; i++){
+                indexManager.replaceIndex(name, new LocalSharedContext());
+            }
+        }
+    }
+    
     public void analyzeIndex(String name) throws SharedContextSendException, SharedContextTimeoutException{
         analyzeIndex(name, synchronizeTimeout);
     }
@@ -1101,7 +1131,7 @@ public class SharedContextService extends DefaultContextService
             Set receiveClients = serverConnection.getReceiveClientIds(message);
             if(receiveClients.size() != 0){
                 message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_GET_ALL));
-                if(currentTimeout > 0){
+                if(timeout > 0){
                     currentTimeout = timeout - (System.currentTimeMillis() - start);
                     if(currentTimeout <= 0){
                         throw new SharedContextTimeoutException();
@@ -1118,7 +1148,7 @@ public class SharedContextService extends DefaultContextService
                 responses[0].recycle();
                 if(result != null){
                     Object id = cluster.getUID();
-                    if(currentTimeout > 0){
+                    if(timeout > 0){
                         currentTimeout = timeout - (System.currentTimeMillis() - start);
                         if(currentTimeout <= 0){
                             throw new SharedContextTimeoutException();
@@ -1187,7 +1217,7 @@ public class SharedContextService extends DefaultContextService
                 }
                 if(result != null){
                     Object id = cluster.getUID();
-                    if(currentTimeout > 0){
+                    if(timeout > 0){
                         currentTimeout = timeout - (System.currentTimeMillis() - start);
                         if(currentTimeout <= 0){
                             throw new SharedContextTimeoutException();
@@ -4969,7 +4999,9 @@ public class SharedContextService extends DefaultContextService
             return null;
         }
         try{
-            analyzeIndex((String)event.key, ((Long)event.value).longValue());
+            if(indexManager.hasIndex(name)){
+                indexManager.replaceIndex((String)event.key, new LocalSharedContext());
+            }
             return createResponseMessage(responseSubject, responseKey, null);
         }catch(Throwable th){
             getLogger().write("SCS__00008", new Object[]{isClient ? clientSubject : subject, event.key}, th);
@@ -6347,6 +6379,14 @@ public class SharedContextService extends DefaultContextService
         }
         
         public void analyzeIndex(String name, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+            throw new UnsupportedOperationException();
+        }
+        
+        public void analyzeAllIndex() throws SharedContextSendException, SharedContextTimeoutException{
+            throw new UnsupportedOperationException();
+        }
+        
+        public void analyzeAllIndex(long timeout) throws SharedContextSendException, SharedContextTimeoutException{
             throw new UnsupportedOperationException();
         }
         

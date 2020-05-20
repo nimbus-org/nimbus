@@ -589,11 +589,40 @@ public interface DistributedSharedContextServiceMBean extends ServiceBaseMBean{
     public void removeIndex(String name);
     
     /**
-     * 指定したインデックスを張りなおす。<p>
+     * インデックスを再解析する。<p>
      *
      * @param name インデックス名
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
      */
-    public void analyzeIndex(String name);
+    public void analyzeIndex(String name) throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * インデックスを再解析する。<p>
+     *
+     * @param name インデックス名
+     * @param timeout タイムアウト
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public void analyzeIndex(String name, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 全てのインデックスを再解析する。<p>
+     * 
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public void analyzeAllIndex() throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 全てのインデックスを再解析する。<p>
+     * 
+     * @param timeout タイムアウト[ms]
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public void analyzeAllIndex(long timeout) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
      * コンテキスト分散の再配置を行う。<p>
