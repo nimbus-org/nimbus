@@ -700,7 +700,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         distributeInfo = new DistributeInfo(getId(), sharedContextArray);
         serverConnection.addServerConnectionListener(this);
         messageReceiver.addSubject(this, isClient ? clientSubject :  subject);
-        if(!isClient){
+        if(isMain()){
             rehash();
         }
         for(int i = 0; i < sharedContextArray.length; i++){
@@ -2712,6 +2712,19 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     public void onConnect(Client client){
     }
     public void onAddSubject(Client client, String subject, String[] keys){
+        if(!getId().equals(client.getId()) && isMain() && subject.equals(this.subject)){
+            Thread thread = new Thread(){
+                public void run(){
+                    try{
+                        rehash();
+                    }catch(Throwable th){
+                        getLogger().write("DSCS_00003", new Object[]{getServiceNameObject()}, th);
+                    }
+                }
+            };
+            thread.setName(getServiceNameObject() + "Rehash thread on remove subject " + subject);
+            thread.start();
+        }
     }
     public void onRemoveSubject(Client client, String subject, String[] keys){
         if(!getId().equals(client.getId()) && isMain() && subject.equals(this.subject)){
@@ -2902,7 +2915,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             Set infoSet = new HashSet(distributeInfos.values());
             DistributeInfo[] infos = (DistributeInfo[])infoSet.toArray(new DistributeInfo[infoSet.size()]);
             for(int i = 0; i < serverCounts.length; i++){
-                if(serverCounts[i] < replicationSize){
+                if(serverCounts[i] == replicationSize){
+                    continue;
+                }else if(serverCounts[i] < replicationSize){
                     Arrays.sort(infos, DistributeInfoComparator.INSTANCE);
                     for(int j = 0; j < infos.length; j++){
                         if(!infos[j].isServer(i)){
@@ -2910,6 +2925,18 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                             serverCounts[i]++;
                             increaseInfos.put(infos[j].getId(), infos[j]);
                             if(serverCounts[i] >= replicationSize){
+                                break;
+                            }
+                        }
+                    }
+                }else{
+                    Arrays.sort(infos, DistributeInfoComparator.INSTANCE);
+                    for(int j = infos.length; --j >= 0;){
+                        if(infos[j].isServer(i)){
+                            infos[j].setClient(i);
+                            serverCounts[i]--;
+                            decreaseInfos.put(infos[j].getId(), infos[j]);
+                            if(serverCounts[i] <= replicationSize){
                                 break;
                             }
                         }
