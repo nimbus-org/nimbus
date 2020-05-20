@@ -108,6 +108,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     private long synchronizeTimeout = 10000l;
     private long rehashTimeout = 10000l;
     private long defaultTimeout = 1000l;
+    private long forcedLockTimeout = 60000L;
+    private long forcedWholeLockTimeout = 300000L;
+    private long forcedLockTimeoutCheckInterval = -1L;
     
     private boolean isWaitConnectAllOnStart = false;
     private long waitConnectTimeout = 60000l;
@@ -393,6 +396,37 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         return defaultTimeout;
     }
     
+    public void setForcedLockTimeout(long timeout){
+        forcedLockTimeout = timeout;
+        if(getState() == STARTED){
+            for(int i = 0; i < sharedContextArray.length; i++){
+                sharedContextArray[i].setForcedLockTimeout(forcedLockTimeout);
+            }
+        }
+    }
+    public long getForcedLockTimeout(){
+        return forcedLockTimeout;
+    }
+    
+    public void setForcedWholeLockTimeout(long timeout){
+        forcedWholeLockTimeout = timeout;
+        if(getState() == STARTED){
+            for(int i = 0; i < sharedContextArray.length; i++){
+                sharedContextArray[i].setForcedWholeLockTimeout(forcedWholeLockTimeout);
+            }
+        }
+    }
+    public long getForcedWholeLockTimeout(){
+        return forcedWholeLockTimeout;
+    }
+    
+    public void setForcedLockTimeoutCheckInterval(long interval){
+        forcedLockTimeoutCheckInterval = interval;
+    }
+    public long getForcedLockTimeoutCheckInterval(){
+        return forcedLockTimeoutCheckInterval;
+    }
+    
     public void setManagedDataNode(boolean isManage){
         isManagedDataNode = isManage;
     }
@@ -636,6 +670,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             sharedContextArray[i].setEnabledIndexOnClient(isEnabledIndexOnClient);
             sharedContextArray[i].setSynchronizeTimeout(synchronizeTimeout);
             sharedContextArray[i].setDefaultTimeout(defaultTimeout);
+            sharedContextArray[i].setForcedLockTimeout(forcedLockTimeout);
+            sharedContextArray[i].setForcedWholeLockTimeout(forcedWholeLockTimeout);
+            sharedContextArray[i].setForcedLockTimeoutCheckInterval(forcedLockTimeoutCheckInterval);
             sharedContextArray[i].setSynchronizeOnStart(false);
             sharedContextArray[i].setSaveOnlyMain(true);
             sharedContextArray[i].setClearBeforeSave(false);

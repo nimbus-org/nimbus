@@ -348,6 +348,8 @@ SCS__00006,応答に失敗しました。: subject=@0\\, response=@1
 SCS__00007,ロックの解除に失敗しました。subject=@0\\, key=@1
 SCS__00008,キーインデックスの再構成に失敗しました。subject=@0\\, keyIndex=@1
 SCS__00009,キー"@0"の更新要求が古いため、破棄しました。: subject=@1
+SCS__00010,ロックを強制的に開放しました。subject=@0\\, key=@1
+SCS__00011,全体ロックを強制的に開放しました。subject=@0\\, id=@1
 DSCS_00001,応答メッセージが生成できませんでした。: subject=@0\\, responseSubject=@1\\, responseKey=@2\\, response=@3
 DSCS_00002,応答に失敗しました。: subject=@0\\, response=@1
 DSCS_00003,リハッシュに失敗しました。: service=@0
