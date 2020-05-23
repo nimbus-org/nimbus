@@ -1972,21 +1972,25 @@ public class SharedContextService extends DefaultContextService
             }catch(RequestTimeoutException e){
                 timeoutException = new SharedContextTimeoutException(e);
             }
+            Object old = null;
             final boolean isContainsKey = super.containsKey(key);
             if(isClient){
                 if(isContainsKey){
-                    result = super.put(key, wrapCachedReference(key, value));
-                    result = unwrapCachedReference(result, false, true);
+                    old = super.put(key, wrapCachedReference(key, value));
+                    old = unwrapCachedReference(old, false, true);
                 }
             }else{
-                result = super.put(key, wrapCachedReference(key, value));
-                result = unwrapCachedReference(result, false, true);
+                old = super.put(key, wrapCachedReference(key, value));
+                old = unwrapCachedReference(old, false, true);
+                if(isMain()){
+                    result = old;
+                }
             }
-            if(isContainsKey && result != null){
+            if(isContainsKey){
                 if(value != null){
-                    indexManager.replace(key, result, value);
+                    indexManager.replace(key, old, value);
                 }else{
-                    indexManager.remove(key, result);
+                    indexManager.remove(key, old);
                 }
             }else if(value != null){
                 indexManager.add(key, value);
@@ -2026,7 +2030,7 @@ public class SharedContextService extends DefaultContextService
                 result = super.put(key, wrapCachedReference(key, value));
                 result = unwrapCachedReference(result, false, true);
             }
-            if(isContainsKey && result != null){
+            if(isContainsKey){
                 if(value != null){
                     indexManager.replace(key, result, value);
                 }else{
@@ -2094,7 +2098,7 @@ public class SharedContextService extends DefaultContextService
                 removed = super.put(key, wrapCachedReference(key, value));
                 removed = unwrapCachedReference(removed, false, true);
             }
-            if(isContainsKey && removed != null){
+            if(isContainsKey){
                 if(value != null){
                     indexManager.replace(key, removed, value);
                 }else{
@@ -2471,17 +2475,11 @@ public class SharedContextService extends DefaultContextService
                         timeout
                     );
                     if(responses != null){
-                        if(isMain()){
-                            for(int i = 0; i < responses.length; i++){
-                                responses[i].recycle();
+                        for(int i = 0; i < responses.length; i++){
+                            if(responses[i].getObject() != null){
+                                result = responses[i].getObject();
                             }
-                        }else{
-                            for(int i = 0; i < responses.length; i++){
-                                if(responses[i].getObject() != null){
-                                    result = responses[i].getObject();
-                                }
-                                responses[i].recycle();
-                            }
+                            responses[i].recycle();
                         }
                     }
                 }else if(isClient){
@@ -2494,16 +2492,12 @@ public class SharedContextService extends DefaultContextService
             }catch(RequestTimeoutException e){
                 timeoutException = new SharedContextTimeoutException(e);
             }
+            Object removed = super.remove(key);
+            removed = unwrapCachedReference(removed, false, true);
             if(isMain()){
-                result = super.remove(key);
-                result = unwrapCachedReference(result, false, true);
-            }else{
-                Object removed = super.remove(key);
-                unwrapCachedReference(removed, false, true);
+                result = removed;
             }
-            if(result != null){
-                indexManager.remove(key, result);
-            }
+            indexManager.remove(key, result);
             if(timeoutException != null){
                 throw timeoutException;
             }
@@ -2534,9 +2528,7 @@ public class SharedContextService extends DefaultContextService
             updateLock.acquireForUse(-1);
             result = super.remove(key);
             result = unwrapCachedReference(result, false, true);
-            if(result != null){
-                indexManager.remove(key, result);
-            }
+            indexManager.remove(key, result);
             if(updateListeners != null){
                 for(int i = 0; i < updateListeners.size(); i++){
                     ((SharedContextUpdateListener)updateListeners.get(i)).onRemoveAfter(this, true, key, result);
@@ -2593,9 +2585,7 @@ public class SharedContextService extends DefaultContextService
             }else{
                 super.remove(key);
             }
-            if(removed != null){
-                indexManager.remove(key, removed);
-            }
+            indexManager.remove(key, removed);
         }finally{
             updateLock.releaseForUse();
         }
@@ -2691,7 +2681,7 @@ public class SharedContextService extends DefaultContextService
                     old = super.put(entry.getKey(), wrapCachedReference(entry.getKey(), entry.getValue()));
                     old = unwrapCachedReference(old, false, true);
                 }
-                if(isContainsKey && old != null){
+                if(isContainsKey){
                     if(entry.getValue() != null){
                         indexManager.replace(entry.getKey(), old, entry.getValue());
                     }else{
@@ -2752,7 +2742,7 @@ public class SharedContextService extends DefaultContextService
                     old = super.put(entry.getKey(), wrapCachedReference(entry.getKey(), entry.getValue()));
                     old = unwrapCachedReference(old, false, true);
                 }
-                if(isContainsKey && old != null){
+                if(isContainsKey){
                     if(entry.getValue() != null){
                         indexManager.replace(entry.getKey(), old, entry.getValue());
                     }else{
@@ -2844,7 +2834,7 @@ public class SharedContextService extends DefaultContextService
                     old = super.put(entry.getKey(), wrapCachedReference(entry.getKey(), entry.getValue()));
                     old = unwrapCachedReference(old, false, true);
                 }
-                if(isContainsKey && old != null){
+                if(isContainsKey){
                     if(entry.getValue() != null){
                         indexManager.replace(entry.getKey(), old, entry.getValue());
                     }else{
@@ -2936,9 +2926,7 @@ public class SharedContextService extends DefaultContextService
                 }
                 Object removed = super.remove(keys[i]);
                 removed = unwrapCachedReference(removed, false, true);
-                if(removed != null){
-                    indexManager.remove(keys[i], removed);
-                }
+                indexManager.remove(keys[i], removed);
                 if(updateListeners != null){
                     for(int j = 0; j < updateListeners.size(); j++){
                         ((SharedContextUpdateListener)updateListeners.get(j)).onRemoveAfter(this, true, keys[i], removed);
@@ -2978,9 +2966,7 @@ public class SharedContextService extends DefaultContextService
                 }
                 Object removed = super.remove(keys[i]);
                 removed = unwrapCachedReference(removed, false, true);
-                if(removed != null){
-                    indexManager.remove(keys[i], removed);
-                }
+                indexManager.remove(keys[i], removed);
                 if(updateListeners != null){
                     for(int j = 0; j < updateListeners.size(); j++){
                         ((SharedContextUpdateListener)updateListeners.get(j)).onRemoveAfter(this, true, keys[i], removed);
@@ -4042,7 +4028,7 @@ public class SharedContextService extends DefaultContextService
                 result = old;
             }
         }
-        if(isContainsKey && old != null){
+        if(isContainsKey){
             if(event.value != null){
                 indexManager.replace(event.key, old, event.value);
             }else{
@@ -4103,7 +4089,7 @@ public class SharedContextService extends DefaultContextService
                     old = super.put(entry.getKey(), wrapCachedReference(entry.getKey(), entry.getValue()));
                     old = unwrapCachedReference(old, false, true);
                 }
-                if(isContainsKey && old != null){
+                if(isContainsKey){
                     if(entry.getValue() != null){
                         indexManager.replace(entry.getKey(), old, entry.getValue());
                     }else{
@@ -4146,7 +4132,7 @@ public class SharedContextService extends DefaultContextService
             old = super.put(event.key, wrapCachedReference(event.key, event.value));
             old = unwrapCachedReference(old, false, true);
         }
-        if(isContainsKey && old != null){
+        if(isContainsKey){
             if(event.value != null){
                 indexManager.replace(event.key, old, event.value);
             }else{
@@ -4352,9 +4338,7 @@ public class SharedContextService extends DefaultContextService
         }
         Object removed = super.remove(event.key);
         removed = unwrapCachedReference(removed, false, true);
-        if(removed != null){
-            indexManager.remove(event.key, removed);
-        }
+        indexManager.remove(event.key, removed);
         if(updateListeners != null){
             for(int i = 0; i < updateListeners.size(); i++){
                 ((SharedContextUpdateListener)updateListeners.get(i)).onRemoveAfter(this, false, event.key, removed);
@@ -4395,9 +4379,7 @@ public class SharedContextService extends DefaultContextService
             }
             Object removed = super.remove(keys[i]);
             removed = unwrapCachedReference(removed, false, true);
-            if(removed != null){
-                indexManager.remove(keys[i], removed);
-            }
+            indexManager.remove(keys[i], removed);
             if(updateListeners != null){
                 for(int j = 0; j < updateListeners.size(); j++){
                     ((SharedContextUpdateListener)updateListeners.get(j)).onRemoveAfter(this, false, event.key, removed);
@@ -4476,6 +4458,9 @@ public class SharedContextService extends DefaultContextService
     }
     
     protected Message onSynchronizeAll(final SharedContextEvent event, final Object sourceId, final int sequence, final String responseSubject, final String responseKey){
+        if(isMain(sourceId)){
+            return createResponseMessage(responseSubject, responseKey, Boolean.TRUE);
+        }
         Thread synchronizeThread = new Thread(){
             public void run(){
                 Message response = null;
@@ -5045,69 +5030,141 @@ public class SharedContextService extends DefaultContextService
                     result = indexManager.searchInProperty((String)args[0], (Map[])args[1]);
                     break;
                 case SearchEvent.TYPE_FROM:
-                    if(args[0] == null){
-                        result = indexManager.searchFrom((Object)args[3], ((Boolean)args[4]).booleanValue(), (String)args[1], (String)args[2]);
+                    if(args.length < 5){
+                        if(args[0] == null){
+                            result = indexManager.searchFrom((Object)args[3], (String)args[1], (String)args[2]);
+                        }else{
+                            result = indexManager.createTemporaryIndex(
+                                (Set)args[0],
+                                (String)args[1],
+                                (String)args[2]
+                            ).searchFrom((Object)args[3]);
+                        }
                     }else{
-                        result = indexManager.createTemporaryIndex(
-                            (Set)args[0],
-                            (String)args[1],
-                            (String)args[2]
-                        ).searchFrom((Object)args[3], ((Boolean)args[4]).booleanValue());
+                        if(args[0] == null){
+                            result = indexManager.searchFrom((Object)args[3], ((Boolean)args[4]).booleanValue(), (String)args[1], (String)args[2]);
+                        }else{
+                            result = indexManager.createTemporaryIndex(
+                                (Set)args[0],
+                                (String)args[1],
+                                (String)args[2]
+                            ).searchFrom((Object)args[3], ((Boolean)args[4]).booleanValue());
+                        }
                     }
                     break;
                 case SearchEvent.TYPE_FROM_PROP:
-                    if(args[0] == null){
-                        result = indexManager.searchFromProperty((Object)args[3], ((Boolean)args[4]).booleanValue(), (String)args[1], (String)args[2]);
+                    if(args.length < 5){
+                        if(args[0] == null){
+                            result = indexManager.searchFromProperty((Object)args[3], (String)args[1], (String)args[2]);
+                        }else{
+                            result = indexManager.createTemporaryIndex(
+                                (Set)args[0],
+                                (String)args[1],
+                                (String)args[2]
+                            ).searchFromProperty((Object)args[3]);
+                        }
                     }else{
-                        result = indexManager.createTemporaryIndex(
-                            (Set)args[0],
-                            (String)args[1],
-                            (String)args[2]
-                        ).searchFromProperty((Object)args[3], ((Boolean)args[4]).booleanValue());
+                        if(args[0] == null){
+                            result = indexManager.searchFromProperty((Object)args[3], ((Boolean)args[4]).booleanValue(), (String)args[1], (String)args[2]);
+                        }else{
+                            result = indexManager.createTemporaryIndex(
+                                (Set)args[0],
+                                (String)args[1],
+                                (String)args[2]
+                            ).searchFromProperty((Object)args[3], ((Boolean)args[4]).booleanValue());
+                        }
                     }
                     break;
                 case SearchEvent.TYPE_TO:
-                    if(args[0] == null){
-                        result = indexManager.searchTo((Object)args[3], ((Boolean)args[4]).booleanValue(), (String)args[1], (String)args[2]);
+                    if(args.length < 5){
+                        if(args[0] == null){
+                            result = indexManager.searchTo((Object)args[3], (String)args[1], (String)args[2]);
+                        }else{
+                            result = indexManager.createTemporaryIndex(
+                                (Set)args[0],
+                                (String)args[1],
+                                (String)args[2]
+                            ).searchTo((Object)args[3]);
+                        }
                     }else{
-                        result = indexManager.createTemporaryIndex(
-                            (Set)args[0],
-                            (String)args[1],
-                            (String)args[2]
-                        ).searchTo((Object)args[3], ((Boolean)args[4]).booleanValue());
+                        if(args[0] == null){
+                            result = indexManager.searchTo((Object)args[3], ((Boolean)args[4]).booleanValue(), (String)args[1], (String)args[2]);
+                        }else{
+                            result = indexManager.createTemporaryIndex(
+                                (Set)args[0],
+                                (String)args[1],
+                                (String)args[2]
+                            ).searchTo((Object)args[3], ((Boolean)args[4]).booleanValue());
+                        }
                     }
                     break;
                 case SearchEvent.TYPE_TO_PROP:
-                    if(args[0] == null){
-                        result = indexManager.searchToProperty((Object)args[3], ((Boolean)args[4]).booleanValue(), (String)args[1], (String)args[2]);
+                    if(args.length < 5){
+                        if(args[0] == null){
+                            result = indexManager.searchToProperty((Object)args[3], (String)args[1], (String)args[2]);
+                        }else{
+                            result = indexManager.createTemporaryIndex(
+                                (Set)args[0],
+                                (String)args[1],
+                                (String)args[2]
+                            ).searchToProperty((Object)args[3]);
+                        }
                     }else{
-                        result = indexManager.createTemporaryIndex(
-                            (Set)args[0],
-                            (String)args[1],
-                            (String)args[2]
-                        ).searchToProperty((Object)args[3], ((Boolean)args[4]).booleanValue());
+                        if(args[0] == null){
+                            result = indexManager.searchToProperty((Object)args[3], ((Boolean)args[4]).booleanValue(), (String)args[1], (String)args[2]);
+                        }else{
+                            result = indexManager.createTemporaryIndex(
+                                (Set)args[0],
+                                (String)args[1],
+                                (String)args[2]
+                            ).searchToProperty((Object)args[3], ((Boolean)args[4]).booleanValue());
+                        }
                     }
                     break;
                 case SearchEvent.TYPE_RANGE:
-                    if(args[0] == null){
-                        result = indexManager.searchRange((Object)args[3], ((Boolean)args[4]).booleanValue(), (Object)args[5], ((Boolean)args[6]).booleanValue(), (String)args[1], (String)args[2]);
+                    if(args.length < 6){
+                        if(args[0] == null){
+                            result = indexManager.searchRange((Object)args[3], (Object)args[4], (String)args[1], (String)args[2]);
+                        }else{
+                            result = indexManager.createTemporaryIndex(
+                                (Set)args[0],
+                                (String)args[1],
+                                (String)args[2]
+                            ).searchRange((Object)args[3], (Object)args[4]);
+                        }
                     }else{
-                        result = indexManager.createTemporaryIndex(
-                            (Set)args[0],
-                            (String)args[1],
-                            (String)args[2]
-                        ).searchRange((Object)args[3], ((Boolean)args[4]).booleanValue(), (Object)args[5], ((Boolean)args[6]).booleanValue());
+                        if(args[0] == null){
+                            result = indexManager.searchRange((Object)args[3], ((Boolean)args[4]).booleanValue(), (Object)args[5], ((Boolean)args[6]).booleanValue(), (String)args[1], (String)args[2]);
+                        }else{
+                            result = indexManager.createTemporaryIndex(
+                                (Set)args[0],
+                                (String)args[1],
+                                (String)args[2]
+                            ).searchRange((Object)args[3], ((Boolean)args[4]).booleanValue(), (Object)args[5], ((Boolean)args[6]).booleanValue());
+                        }
                     }
                     break;
                 case SearchEvent.TYPE_RANGE_PROP:
-                    if(args[0] == null){
-                        result = indexManager.searchRangeProperty((Object)args[3], ((Boolean)args[4]).booleanValue(), (Object)args[5], ((Boolean)args[6]).booleanValue(), (String)args[1], (String)args[2]);
+                    if(args.length < 6){
+                        if(args[0] == null){
+                            result = indexManager.searchRangeProperty((Object)args[3], (Object)args[4], (String)args[1], (String)args[2]);
+                        }else{
+                            result = indexManager.createTemporaryIndex(
+                                (Set)args[0],
+                                (String)args[1],
+                                (String)args[2]
+                            ).searchRangeProperty((Object)args[3], (Object)args[4]);
+                        }
                     }else{
-                        result = indexManager.createTemporaryIndex(
-                            (Set)args[0],
-                            (String)args[1],
-                            (String)args[2]
-                        ).searchRangeProperty((Object)args[3], ((Boolean)args[4]).booleanValue(), (Object)args[5], ((Boolean)args[6]).booleanValue());
+                        if(args[0] == null){
+                            result = indexManager.searchRangeProperty((Object)args[3], ((Boolean)args[4]).booleanValue(), (Object)args[5], ((Boolean)args[6]).booleanValue(), (String)args[1], (String)args[2]);
+                        }else{
+                            result = indexManager.createTemporaryIndex(
+                                (Set)args[0],
+                                (String)args[1],
+                                (String)args[2]
+                            ).searchRangeProperty((Object)args[3], ((Boolean)args[4]).booleanValue(), (Object)args[5], ((Boolean)args[6]).booleanValue());
+                        }
                     }
                     break;
                 }
@@ -7940,7 +7997,7 @@ public class SharedContextService extends DefaultContextService
                                 new SharedContextEvent(
                                     SharedContextEvent.EVENT_SEARCH_INDEX,
                                     null,
-                                    new SearchEvent(SearchEvent.TYPE_RANGE_PROP, new Object[]{fromProp, toProp, indexName, propName, resultSet})
+                                    new SearchEvent(SearchEvent.TYPE_RANGE_PROP, new Object[]{resultSet, indexName, propName, fromProp, toProp})
                                 )
                             );
                             Message[] responses = serverConnection.request(
@@ -8506,7 +8563,7 @@ public class SharedContextService extends DefaultContextService
                                 new SharedContextEvent(
                                     SharedContextEvent.EVENT_SEARCH_INDEX,
                                     null,
-                                    new SearchEvent(SearchEvent.TYPE_RANGE_PROP, new Object[]{fromProp, fromInclusive ? Boolean.TRUE : Boolean.FALSE, toProp, toInclusive ? Boolean.TRUE : Boolean.FALSE, indexName, propName, resultSet})
+                                    new SearchEvent(SearchEvent.TYPE_RANGE_PROP, new Object[]{resultSet, indexName, propName, fromProp, fromInclusive ? Boolean.TRUE : Boolean.FALSE, toProp, toInclusive ? Boolean.TRUE : Boolean.FALSE})
                                 )
                             );
                             Message[] responses = serverConnection.request(

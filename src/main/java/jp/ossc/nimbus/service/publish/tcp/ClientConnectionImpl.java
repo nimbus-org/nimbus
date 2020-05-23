@@ -123,6 +123,7 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
     private transient Daemon messageReceiveDaemon;
     private transient boolean isClosing;
     private transient boolean isConnected;
+    private transient boolean isConnecting;
     private transient boolean isReconnecting;
     private transient Object id;
     private transient String serviceManagerName;
@@ -131,13 +132,14 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
     private transient long receiveProcessTime;
     private transient long onMessageProcessTime;
     private transient boolean isStartReceive;
-    private transient Map requestMonitorMap;
+    private transient Map requestMonitorMap = new HashMap();
     private transient short requestId;
     private transient byte[] receiveBytes;
     private transient boolean isServerClosed;
     private transient long lastReceiveTime = -1;
     private transient long totalMessageLatency;
     private transient long maxMessageLatency;
+    private transient Object connectLock = "connectLock";
     
     public ClientConnectionImpl(){}
     
@@ -338,87 +340,94 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
         connect(null);
     }
     
-    public synchronized void connect(Object id) throws ConnectException{
-        if(socket != null){
-            return;
-        }
-        isConnected = false;
-        InetAddress bindAddress = null;
-        int bindPort = 0;
-        try{
-            bindAddress = getBindAddress();
-            bindPort = getBindPort();
-            if(socketFactory == null){
-                socket = new Socket(
-                    address,
-                    port,
-                    bindAddress,
-                    bindPort
-                );
-            }else{
-                socket = socketFactory.createSocket(
-                    address,
-                    port,
-                    bindAddress,
-                    bindPort
-                );
+    public void connect(Object id) throws ConnectException{
+        synchronized(connectLock){
+            if(socket != null){
+                return;
             }
-        }catch(UnknownHostException e){
-            throw new ConnectException("address=" + address + ", port=" + port + ", bindAddress=" + bindAddress + ", bindPort=" + bindPort, e);
-        }catch(NumberFormatException e){
-            throw new ConnectException(e);
-        }catch(IOException e){
-            throw new ConnectException("address=" + address + ", port=" + port + ", bindAddress=" + bindAddress + ", bindPort=" + bindPort, e);
-        }
-        try{
-            if(messageReceiveDaemon == null){
-                messageReceiveDaemon = new Daemon(this);
-                messageReceiveDaemon.setDaemon(true);
-                messageReceiveDaemon.setName("Nimbus Publish(TCP) ClientConnection SocketReader " + socket.getLocalSocketAddress());
-                messageReceiveDaemon.start();
-            }
-            this.id = id == null ? socket.getLocalSocketAddress() : id;
+            isConnecting = true;
             try{
-                if(connectMessageId != null){
-                    ServiceManagerFactory.getLogger().write(
-                        connectMessageId,
-                        new Object[]{ClientConnectionImpl.this}
-                    );
+                isConnected = false;
+                InetAddress bindAddress = null;
+                int bindPort = 0;
+                try{
+                    bindAddress = getBindAddress();
+                    bindPort = getBindPort();
+                    if(socketFactory == null){
+                        socket = new Socket(
+                            address,
+                            port,
+                            bindAddress,
+                            bindPort
+                        );
+                    }else{
+                        socket = socketFactory.createSocket(
+                            address,
+                            port,
+                            bindAddress,
+                            bindPort
+                        );
+                    }
+                }catch(UnknownHostException e){
+                    throw new ConnectException("address=" + address + ", port=" + port + ", bindAddress=" + bindAddress + ", bindPort=" + bindPort, e);
+                }catch(NumberFormatException e){
+                    throw new ConnectException(e);
+                }catch(IOException e){
+                    throw new ConnectException("address=" + address + ", port=" + port + ", bindAddress=" + bindAddress + ", bindPort=" + bindPort, e);
                 }
-                send(new IdMessage(this.id));
-            }catch(IOException e){
-                throw new ConnectException(e);
-            }catch(MessageSendException e){
-                throw new ConnectException(e);
-            }
-            if(serviceManagerName != null && serverServiceName != null){
-                ServiceManager manager = ServiceManagerFactory.findManager(serviceManagerName);
-                if(manager != null){
-                    final ClientConnectionService ccs = new ClientConnectionService();
+                try{
+                    if(messageReceiveDaemon == null){
+                        messageReceiveDaemon = new Daemon(this);
+                        messageReceiveDaemon.setDaemon(true);
+                        messageReceiveDaemon.setName("Nimbus Publish(TCP) ClientConnection SocketReader " + socket.getLocalSocketAddress());
+                        messageReceiveDaemon.start();
+                    }
+                    this.id = id == null ? socket.getLocalSocketAddress() : id;
                     try{
-                        String name = serverServiceName.getServiceName() + '$' + socket.getLocalSocketAddress();
-                        name = name.replaceAll(":", "\\$");
-                        if(!manager.isRegisteredService(name) && manager.registerService(name, ccs)){
-                            serviceName = ccs.getServiceNameObject();
-                            manager.createService(ccs.getServiceName());
-                            manager.startService(ccs.getServiceName());
+                        if(connectMessageId != null){
+                            ServiceManagerFactory.getLogger().write(
+                                connectMessageId,
+                                new Object[]{ClientConnectionImpl.this}
+                            );
                         }
-                    }catch(Exception e){
+                        send(new IdMessage(this.id));
+                    }catch(IOException e){
+                        throw new ConnectException(e);
+                    }catch(MessageSendException e){
                         throw new ConnectException(e);
                     }
+                    if(serviceManagerName != null && serverServiceName != null){
+                        ServiceManager manager = ServiceManagerFactory.findManager(serviceManagerName);
+                        if(manager != null){
+                            final ClientConnectionService ccs = new ClientConnectionService();
+                            try{
+                                String name = serverServiceName.getServiceName() + '$' + socket.getLocalSocketAddress();
+                                name = name.replaceAll(":", "\\$");
+                                if(!manager.isRegisteredService(name) && manager.registerService(name, ccs)){
+                                    serviceName = ccs.getServiceNameObject();
+                                    manager.createService(ccs.getServiceName());
+                                    manager.startService(ccs.getServiceName());
+                                }
+                            }catch(Exception e){
+                                throw new ConnectException(e);
+                            }
+                        }
+                    }
+                }catch(ConnectException e){
+                    if(socket != null){
+                        try{
+                            socket.close();
+                        }catch(IOException e2){}
+                        socket = null;
+                    }
+                    throw e;
                 }
+                isConnected = true;
+                isServerClosed = false;
+            }finally{
+                isConnecting = false;
             }
-        }catch(ConnectException e){
-            if(socket != null){
-                try{
-                    socket.close();
-                }catch(IOException e2){}
-                socket = null;
-            }
-            throw e;
         }
-        isConnected = true;
-        isServerClosed = false;
     }
     
     public void addSubject(String subject) throws MessageSendException{
@@ -435,11 +444,11 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
         try{
             send(new AddMessage(subject, keys));
         }catch(SocketTimeoutException e){
-            throw new MessageSendException(e);
+            throw new MessageSendException(toString(), e);
         }catch(SocketException e){
-            throw new MessageSendException(e);
+            throw new MessageSendException(toString(), e);
         }catch(IOException e){
-            throw new MessageSendException(e);
+            throw new MessageSendException(toString(), e);
         }
         if(subjects == null){
             subjects = Collections.synchronizedMap(new HashMap());
@@ -472,11 +481,11 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
         try{
             send(new RemoveMessage(subject, keys));
         }catch(SocketTimeoutException e){
-            throw new MessageSendException(e);
+            throw new MessageSendException(toString(), e);
         }catch(SocketException e){
-            throw new MessageSendException(e);
+            throw new MessageSendException(toString(), e);
         }catch(IOException e){
-            throw new MessageSendException(e);
+            throw new MessageSendException(toString(), e);
         }
         if(subjects != null){
             Set keySet = (Set)subjects.get(subject);
@@ -523,11 +532,11 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
             send(new StartReceiveMessage(from));
             isStartReceive = true;
         }catch(SocketTimeoutException e){
-            throw new MessageSendException(e);
+            throw new MessageSendException(toString(), e);
         }catch(SocketException e){
-            throw new MessageSendException(e);
+            throw new MessageSendException(toString(), e);
         }catch(IOException e){
-            throw new MessageSendException(e);
+            throw new MessageSendException(toString(), e);
         }
     }
     
@@ -552,11 +561,11 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
             send(new StopReceiveMessage());
             isStartReceive = false;
         }catch(SocketTimeoutException e){
-            throw new MessageSendException(e);
+            throw new MessageSendException(toString(), e);
         }catch(SocketException e){
-            throw new MessageSendException(e);
+            throw new MessageSendException(toString(), e);
         }catch(IOException e){
-            throw new MessageSendException(e);
+            throw new MessageSendException(toString(), e);
         }
     }
     
@@ -578,15 +587,17 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
         boolean isBye = message.getMessageType() == ClientMessage.MESSAGE_BYE;
         try{
             if(!isBye && isAcknowledge){
-                if(requestMonitorMap == null){
-                    requestMonitorMap = new HashMap();
-                }
-                synchronized(requestMonitorMap){
-                    message.setRequestId(requestId++);
-                    responseMonitor = new WaitSynchronizeMonitor();
-                    responseMonitor.initMonitor();
-                    reqId = new Short(message.getRequestId());
-                    requestMonitorMap.put(reqId, responseMonitor);
+                synchronized(connectLock){
+                    synchronized(requestMonitorMap){
+                        if(!isConnecting && (isClosing || !isConnected)){
+                            throw new ConnectionClosedException();
+                        }
+                        message.setRequestId(requestId++);
+                        responseMonitor = new WaitSynchronizeMonitor();
+                        responseMonitor.initMonitor();
+                        reqId = new Short(message.getRequestId());
+                        requestMonitorMap.put(reqId, responseMonitor);
+                    }
                 }
             }
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -598,22 +609,36 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
                 externalizer.writeExternal(message, baos);
             }
             byte[] bytes = baos.toByteArray();
-            synchronized(this){
+            synchronized(connectLock){
                 if(socket == null){
-                    throw new MessageSendException("No connected.");
+                    throw new ConnectionClosedException();
                 }
                 DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
-                dos.writeInt(bytes.length);
-                dos.write(bytes);
-                dos.flush();
+                try{
+                    dos.writeInt(bytes.length);
+                    dos.write(bytes);
+                    dos.flush();
+                }catch(SocketException e){
+                    throw new ConnectionClosedException(e);
+                }
             }
             if(!isBye && isAcknowledge){
                 try{
                     if(!responseMonitor.waitMonitor(responseTimeout)){
-                        throw new MessageSendException("Acknowledge is timed out.");
+                        synchronized(connectLock){
+                            if(!isConnecting && (isClosing || !isConnected)){
+                                throw new ConnectionClosedException();
+                            }
+                        }
+                        throw new MessageSendException("Acknowledge is timed out. " + toString());
                     }
                 }catch(InterruptedException e){
-                    throw new MessageSendException("Acknowledge is interrupted.", e);
+                    synchronized(connectLock){
+                        if(!isConnecting && (isClosing || !isConnected)){
+                            throw new ConnectionClosedException();
+                        }
+                    }
+                    throw new MessageSendException("Acknowledge is interrupted. " + toString(), e);
                 }
             }
         }finally{
@@ -651,17 +676,11 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
                 final short messageType = message.getMessageType();
                 switch(messageType){
                 case MessageImpl.MESSAGE_TYPE_SERVER_CLOSE:
-                    if(serverCloseMessageId != null){
-                        ServiceManagerFactory.getLogger().write(
-                            serverCloseMessageId,
-                            new Object[]{this}
-                        );
-                    }
                     isServerClosed = true;
                     close(true, null);
                     return null;
                 case MessageImpl.MESSAGE_TYPE_SERVER_RESPONSE:
-                    if(isAcknowledge && requestMonitorMap != null){
+                    if(isAcknowledge){
                         synchronized(requestMonitorMap){
                             Object reqId = null;
                             try{
@@ -703,25 +722,9 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
                 return null;
             }
         }catch(EOFException e){
-            if(isClosing){
-                return null;
-            }
-            if(reconnectCount > 0){
-                if(receiveWarnMessageId != null){
-                    ServiceManagerFactory.getLogger().write(
-                        receiveWarnMessageId,
-                        new Object[]{this},
-                        e
-                    );
-                }
-                reconnect();
-                return receive();
-            }else if(length == 0){
-                close(true, e);
-                return null;
-            }else{
-                throw new MessageCommunicateException("length=" + length + ", receiveBytes=" + (receiveBytes == null ? "null" : Integer.toString(receiveBytes.length)), e);
-            }
+            isServerClosed = true;
+            close(true, e);
+            return null;
         }catch(IOException e){
             if(isClosing){
                 return null;
@@ -737,7 +740,7 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
     
     private void reconnect() throws ConnectException, MessageSendException{
         boolean isNowReconnecting = isReconnecting;
-        synchronized(this){
+        synchronized(connectLock){
             if(isNowReconnecting){
                 return;
             }
@@ -857,78 +860,85 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
         close(false, null);
     }
     
-    private synchronized void close(boolean isClosed, Throwable reason){
-        if(!isConnected){
-            return;
-        }
-        isClosing = true;
-        if(isClosed){
-            if(closedMessageId != null){
-                ServiceManagerFactory.getLogger().write(
-                    closedMessageId,
-                    new Object[]{ClientConnectionImpl.this},
-                    reason
-                );
+    private void close(boolean isClosed, Throwable reason){
+        synchronized(connectLock){
+            if(!isConnected){
+                return;
             }
-        }else{
-            if(closeMessageId != null){
-                ServiceManagerFactory.getLogger().write(
-                    closeMessageId,
-                    new Object[]{ClientConnectionImpl.this},
-                    reason
-                );
+            isClosing = true;
+            if(isClosed){
+                if(isServerClosed && serverCloseMessageId != null){
+                    ServiceManagerFactory.getLogger().write(
+                        serverCloseMessageId,
+                        new Object[]{this}
+                    );
+                }else if(closedMessageId != null){
+                    ServiceManagerFactory.getLogger().write(
+                        closedMessageId,
+                        new Object[]{ClientConnectionImpl.this},
+                        reason
+                    );
+                }
+            }else{
+                if(closeMessageId != null){
+                    ServiceManagerFactory.getLogger().write(
+                        closeMessageId,
+                        new Object[]{ClientConnectionImpl.this},
+                        reason
+                    );
+                }
             }
-        }
-        if(requestMonitorMap != null){
             synchronized(requestMonitorMap){
                 Iterator entries = requestMonitorMap.entrySet().iterator();
                 while(entries.hasNext()){
                     Map.Entry entry = (Map.Entry)entries.next();
                     SynchronizeMonitor responseMonitor = (SynchronizeMonitor)entry.getValue();
-                    responseMonitor.releaseAllMonitor();
+                    responseMonitor.close();
                     entries.remove();
                 }
             }
-        }
-        if(serviceName != null){
-            ServiceManagerFactory.unregisterService(
-                serviceName.getServiceManagerName(),
-                serviceName.getServiceName()
-            );
-            serviceName = null;
-        }
-        if(messageReceiveDaemon != null){
-            messageReceiveDaemon.stopNoWait();
-            messageReceiveDaemon = null;
-        }
-        if(socket != null){
-            try{
-                send(new ByeMessage());
-            }catch(IOException e){
-            }catch(MessageSendException e){
+            if(serviceName != null){
+                ServiceManagerFactory.unregisterService(
+                    serviceName.getServiceManagerName(),
+                    serviceName.getServiceName()
+                );
+                serviceName = null;
             }
-            try{
-                socket.close();
-            }catch(IOException e){}
-            socket = null;
+            if(messageReceiveDaemon != null){
+                messageReceiveDaemon.stopNoWait();
+                messageReceiveDaemon = null;
+            }
+            if(socket != null){
+                try{
+                    send(new ByeMessage());
+                }catch(IOException e){
+                }catch(MessageSendException e){
+                }
+                try{
+                    socket.close();
+                }catch(IOException e){}
+                socket = null;
+            }
+            if(subjects != null){
+                subjects.clear();
+            }
+            isStartReceive = false;
+            isConnected = false;
+            messageListener = null;
+            id = null;
+            serviceManagerName = null;
+            resetCount();
+            requestId = 0;
+            receiveBytes = null;
+            isClosing = false;
         }
-        if(subjects != null){
-            subjects.clear();
-        }
-        isStartReceive = false;
-        isConnected = false;
-        messageListener = null;
-        id = null;
-        serviceManagerName = null;
-        resetCount();
-        requestId = 0;
-        receiveBytes = null;
-        isClosing = false;
     }
     
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException{
         in.defaultReadObject();
         messageBuffer = new LinkedList();
+        requestMonitorMap = new HashMap();
+        connectLock = "connectLock";
     }
     
     private long startTime;

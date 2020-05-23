@@ -521,7 +521,6 @@ public class QueueHandlerContainerService extends ServiceBase
         }
         isSuspend = false;
         if(getQueueService() == null){
-            suspendMonitor.notifyAllMonitor();
             suspendMonitor.releaseAllMonitor();
         }else{
             if(daemons != null){

@@ -193,7 +193,7 @@ public class SleepSynchronizeMonitor implements SynchronizeMonitor, java.io.Seri
         }
         try{
             long waitTime = timeout;
-            while(!monitorFlag.isNotify){
+            while(monitorFlagMap.containsKey(currentThread) && !monitorFlag.isNotify){
                 if(timeout > 0){
                     if(waitTime >= 0){
                         try{
@@ -230,7 +230,7 @@ public class SleepSynchronizeMonitor implements SynchronizeMonitor, java.io.Seri
         synchronized(monitorFlag){
             boolean isNotify = monitorFlag.isNotify;
             monitorFlag.isNotify = false;
-            return isNotify;
+            return isNotify && monitorFlagMap.containsKey(currentThread);
         }
     }
     
@@ -396,7 +396,7 @@ public class SleepSynchronizeMonitor implements SynchronizeMonitor, java.io.Seri
     
     public void close(){
         isClosed = true;
-        notifyAllMonitor();
+        releaseAllMonitor();
     }
     
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException{

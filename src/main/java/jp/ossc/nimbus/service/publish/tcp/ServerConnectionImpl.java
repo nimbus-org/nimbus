@@ -1483,13 +1483,15 @@ public class ServerConnectionImpl implements ServerConnection{
         private boolean handleMessage(ClientMessage message){
             Set keySet = null;
             String[] keys = null;
-            boolean isClosed = false;
             switch(message.getMessageType()){
             case ClientMessage.MESSAGE_ID:
                 IdMessage idMessage = (IdMessage)message;
                 clientMap.remove(getId());
                 this.id = idMessage.getId();
                 clientMap.put(getId(), this);
+                if(isAcknowledge){
+                    sendAcknowledge(message.getRequestId());
+                }
                 if(serverConnectionListeners != null){
                     for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
                         ((ServerConnectionListener)serverConnectionListeners.get(i)).onConnect(ClientImpl.this);
@@ -1522,6 +1524,9 @@ public class ServerConnectionImpl implements ServerConnection{
                         }
                     }
                 }
+                if(isAcknowledge){
+                    sendAcknowledge(message.getRequestId());
+                }
                 if(serverConnectionListeners != null && !addKeysList.isEmpty()){
                     String[] addkeys = (String[])addKeysList.toArray(new String[0]);
                     for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
@@ -1533,26 +1538,28 @@ public class ServerConnectionImpl implements ServerConnection{
                 List removeKeysList = Collections.synchronizedList(new ArrayList());
                 RemoveMessage removeMessage = (RemoveMessage)message;
                 keySet = (Set)subjects.get(removeMessage.getSubject());
-                if(keySet == null){
-                    break;
-                }
-                keys = removeMessage.getKeys();
-                if(keys == null){
-                    if(keySet.remove(null)){
-                        removeKeysList.add(null);
-                    }
-                    if(keySet.size() == 0){
-                        subjects.remove(removeMessage.getSubject());
-                    }
-                }else{
-                    for(int i = 0; i < keys.length; i++){
-                        if(keySet.remove(keys[i])){
-                            removeKeysList.add(keys[i]);
+                if(keySet != null){
+                    keys = removeMessage.getKeys();
+                    if(keys == null){
+                        if(keySet.remove(null)){
+                            removeKeysList.add(null);
+                        }
+                        if(keySet.size() == 0){
+                            subjects.remove(removeMessage.getSubject());
+                        }
+                    }else{
+                        for(int i = 0; i < keys.length; i++){
+                            if(keySet.remove(keys[i])){
+                                removeKeysList.add(keys[i]);
+                            }
+                        }
+                        if(keySet.size() == 0){
+                            subjects.remove(removeMessage.getSubject());
                         }
                     }
-                    if(keySet.size() == 0){
-                        subjects.remove(removeMessage.getSubject());
-                    }
+                }
+                if(isAcknowledge){
+                    sendAcknowledge(message.getRequestId());
                 }
                 if(serverConnectionListeners != null && !removeKeysList.isEmpty()){
                     String[] removeKeys = (String[])removeKeysList.toArray(new String[0]);
@@ -1599,10 +1606,17 @@ public class ServerConnectionImpl implements ServerConnection{
                     }else{
                         isStartReceive = true;
                     }
+                    if(isAcknowledge){
+                        sendAcknowledge(message.getRequestId());
+                    }
                     if(serverConnectionListeners != null){
                         for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
                             ((ServerConnectionListener)serverConnectionListeners.get(i)).onStartReceive(ClientImpl.this, fromTime);
                         }
+                    }
+                }else{
+                    if(isAcknowledge){
+                        sendAcknowledge(message.getRequestId());
                     }
                 }
                 break;
@@ -1615,32 +1629,39 @@ public class ServerConnectionImpl implements ServerConnection{
                         );
                     }
                     isStartReceive = false;
+                    if(isAcknowledge){
+                        sendAcknowledge(message.getRequestId());
+                    }
                     if(serverConnectionListeners != null){
                         for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
                             ((ServerConnectionListener)serverConnectionListeners.get(i)).onStopReceive(ClientImpl.this);
                         }
                     }
+                }else{
+                    if(isAcknowledge){
+                        sendAcknowledge(message.getRequestId());
+                    }
                 }
                 break;
             case ClientMessage.MESSAGE_BYE:
                 ClientImpl.this.close();
-                isClosed = true;
                 break;
             default:
             }
-            if(!isClosed && isAcknowledge){
-                final MessageImpl response = createMessage(MessageImpl.MESSAGE_TYPE_SERVER_RESPONSE);
-                try{
-                    response.setObject(new Short(message.getRequestId()));
-                    send(response);
-                }catch(MessageSendException e){
-                }catch(MessageException e){
-                    // 起こらないはず
-                }finally{
-                    recycleMessage(response);
-                }
-            }
             return isClosed;
+        }
+        
+        protected void sendAcknowledge(short requestId){
+            final MessageImpl response = createMessage(MessageImpl.MESSAGE_TYPE_SERVER_RESPONSE);
+            try{
+                response.setObject(new Short(requestId));
+                send(response);
+            }catch(MessageSendException e){
+            }catch(MessageException e){
+                // 起こらないはず
+            }finally{
+                recycleMessage(response);
+            }
         }
         
         public void garbage(){}

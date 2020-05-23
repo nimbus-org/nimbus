@@ -99,6 +99,7 @@ public class WaitSynchronizeMonitor implements SynchronizeMonitor, java.io.Seria
     public synchronized void releaseMonitor(){
         final Thread currentThread = Thread.currentThread();
         monitorFlagMap.remove(currentThread);
+        notifyAll();
     }
     
     /**
@@ -106,6 +107,7 @@ public class WaitSynchronizeMonitor implements SynchronizeMonitor, java.io.Seria
      */
     public synchronized void releaseAllMonitor(){
         monitorFlagMap.clear();
+        notifyAll();
     }
     
     /**
@@ -162,7 +164,7 @@ public class WaitSynchronizeMonitor implements SynchronizeMonitor, java.io.Seria
         monitorFlag.isWait = true;
         try{
             long waitTime = timeout;
-            while(!monitorFlag.isNotify){
+            while(monitorFlagMap.containsKey(currentThread) && !monitorFlag.isNotify){
                 if(timeout > 0){
                     if(waitTime >= 0){
                         wait(waitTime);
@@ -183,7 +185,7 @@ public class WaitSynchronizeMonitor implements SynchronizeMonitor, java.io.Seria
         }
         boolean isNotify = monitorFlag.isNotify;
         monitorFlag.isNotify = false;
-        return isNotify;
+        return isNotify && monitorFlagMap.containsKey(currentThread);
     }
     
     /**
@@ -296,7 +298,7 @@ public class WaitSynchronizeMonitor implements SynchronizeMonitor, java.io.Seria
     
     public synchronized void close(){
         isClosed = true;
-        notifyAllMonitor();
+        releaseAllMonitor();
     }
     
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException{
