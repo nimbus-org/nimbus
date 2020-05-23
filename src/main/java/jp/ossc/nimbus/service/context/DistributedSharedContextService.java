@@ -2712,7 +2712,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     public void onConnect(Client client){
     }
     public void onAddSubject(Client client, String subject, String[] keys){
-        if(!getId().equals(client.getId()) && isMain() && subject.equals(this.subject)){
+        if(!getId().equals(client.getId()) && client.isStartReceive() && isMain() && subject.equals(this.subject)){
             Thread thread = new Thread(){
                 public void run(){
                     try{
@@ -2722,7 +2722,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }
                 }
             };
-            thread.setName(getServiceNameObject() + "Rehash thread on remove subject " + subject);
+            thread.setName(getServiceNameObject() + "Rehash thread on add subject " + subject);
             thread.start();
         }
     }
@@ -2742,6 +2742,19 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         }
     }
     public void onStartReceive(Client client, long from){
+        if(!getId().equals(client.getId()) && isMain() && client.getSubjects().contains(this.subject)){
+            Thread thread = new Thread(){
+                public void run(){
+                    try{
+                        rehash();
+                    }catch(Throwable th){
+                        getLogger().write("DSCS_00003", new Object[]{getServiceNameObject()}, th);
+                    }
+                }
+            };
+            thread.setName(getServiceNameObject() + "Rehash thread on start receive subject " + subject);
+            thread.start();
+        }
     }
     public void onStopReceive(Client client){
     }
@@ -3043,14 +3056,15 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         
         public void waitResponse(long timeout) throws SharedContextSendException, SharedContextTimeoutException{
             try{
+                long start = System.currentTimeMillis();
                 if(!monitor.waitMonitor(timeout)){
-                    throw new SharedContextTimeoutException();
+                    throw new SharedContextTimeoutException("responseCount=" + responseCount + ", currentResponseCount=" + currentResponseCount + ", isTimeout=" + isTimeout + ", processTime=" + (System.currentTimeMillis() - start) + ", timeout=" + timeout);
                 }
             }catch(InterruptedException e){
                 throw new SharedContextTimeoutException(e);
             }
             if(isTimeout){
-                throw new SharedContextTimeoutException();
+                throw new SharedContextTimeoutException("responseCount=" + responseCount + ", currentResponseCount=" + currentResponseCount + ", isTimeout=" + isTimeout);
             }
             if(throwable != null){
                 if(throwable instanceof SharedContextSendException){

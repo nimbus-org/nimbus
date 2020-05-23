@@ -154,7 +154,14 @@ public class SharedContextIndex implements Externalizable, Cloneable{
     }
     
     public void remove(Object key, Object value) throws IndexPropertyAccessException{
-        if(value instanceof List){
+        if(value == null){
+            nullKeySet.remove(key);
+            Iterator itr = indexKeyMap.values().iterator();
+            while(itr.hasNext()){
+                ConcurrentHashMap keys = (ConcurrentHashMap)itr.next();
+                keys.remove(key);
+            }
+        }else if(value instanceof List){
             List list = (List)value;
             Set keySet = null;
             for(int i = 0, imax = list.size(); i < imax; i++){

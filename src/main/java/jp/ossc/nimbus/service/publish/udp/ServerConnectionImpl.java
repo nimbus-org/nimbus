@@ -853,8 +853,9 @@ public class ServerConnectionImpl implements ServerConnection{
                     while(clientItr.hasNext()){
                         ClientImpl client = (ClientImpl)clientItr.next();
                         if(client == null
-                            || !client.isStartReceive()
-                            || !client.isTargetMessage(message)){
+                            || ((firstClients == null || !firstClients.contains(client))
+                                    && (!client.isStartReceive() || !client.isTargetMessage(message)))
+                        ){
                             continue;
                         }
                         currentClients.add(client);
@@ -914,9 +915,7 @@ public class ServerConnectionImpl implements ServerConnection{
                         Iterator firstClientItr = firstClients.iterator();
                         while(firstClientItr.hasNext()){
                             ClientImpl client = (ClientImpl)firstClientItr.next();
-                            if(client.isStartReceive()){
-                                client.send(message);
-                            }
+                            client.send(message);
                         }
                     }
                     sendMessage(sendSocket, multicastAddress, (MessageImpl)message, destPort, true);
@@ -956,12 +955,24 @@ public class ServerConnectionImpl implements ServerConnection{
             final ClientImpl[] clientArray = (ClientImpl[])newClients.toArray(new ClientImpl[newClients.size()]);
             for(int i = 0; i < clientArray.length; i++){
                 if(clientArray[i].isStartReceive() && clientArray[i].isFirstMessage()){
-                    if(clientArray[i].setFirstMessage(message)){
-                        newClients.remove(clientArray[i]);
-                        if(result == null){
-                            result = new HashSet();
+                    if(multicastAddress == null){
+                        if(clientArray[i].isTargetMessage(message)){
+                            if(clientArray[i].setFirstMessage(message)){
+                                newClients.remove(clientArray[i]);
+                                if(result == null){
+                                    result = new HashSet();
+                                }
+                                result.add(clientArray[i]);
+                            }
                         }
-                        result.add(clientArray[i]);
+                    }else{
+                        if(clientArray[i].setFirstMessage(message)){
+                            newClients.remove(clientArray[i]);
+                            if(result == null){
+                                result = new HashSet();
+                            }
+                            result.add(clientArray[i]);
+                        }
                     }
                 }
             }
@@ -1954,15 +1965,13 @@ public class ServerConnectionImpl implements ServerConnection{
                 this.id = idMessage.getId();
                 clientMap.put(getId(), this);
                 this.destPort = idMessage.getReceivePort();
+                if(isAcknowledge){
+                    sendAcknowledge(message.getRequestId(), key);
+                }
                 if(serverConnectionListeners != null){
                     for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
                         ((ServerConnectionListener)serverConnectionListeners.get(i)).onConnect(ClientImpl.this);
                     }
-                }
-                if(isAcknowledge){
-                    ServerMessage resposne = new ServerMessage(ServerMessage.MESSAGE_SERVER_RES);
-                    resposne.setRequestId(message.getRequestId());
-                    sendServerMessage(resposne, key);
                 }
                 if(logger != null && clientConnectMessageId != null){
                     logger.write(
@@ -1991,16 +2000,14 @@ public class ServerConnectionImpl implements ServerConnection{
                         }
                     }
                 }
+                if(isAcknowledge){
+                    sendAcknowledge(message.getRequestId(), key);
+                }
                 if(serverConnectionListeners != null && !addKeysList.isEmpty()){
                     String[] addkeys = (String[])addKeysList.toArray(new String[0]);
                     for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
                         ((ServerConnectionListener)serverConnectionListeners.get(i)).onAddSubject(ClientImpl.this, addMessage.getSubject(), addkeys);
                     }
-                }
-                if(isAcknowledge){
-                    ServerMessage resposne = new ServerMessage(ServerMessage.MESSAGE_SERVER_RES);
-                    resposne.setRequestId(message.getRequestId());
-                    sendServerMessage(resposne, key);
                 }
                 break;
             case ClientMessage.MESSAGE_REMOVE:
@@ -2026,17 +2033,15 @@ public class ServerConnectionImpl implements ServerConnection{
                             subjects.remove(removeMessage.getSubject());
                         }
                     }
-                    if(serverConnectionListeners != null && !removeKeysList.isEmpty()){
-                        String[] removeKeys = (String[])removeKeysList.toArray(new String[0]);
-                        for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
-                            ((ServerConnectionListener)serverConnectionListeners.get(i)).onRemoveSubject(ClientImpl.this, removeMessage.getSubject(), removeKeys);
-                        }
-                    }
                 }
                 if(isAcknowledge){
-                    ServerMessage resposne = new ServerMessage(ServerMessage.MESSAGE_SERVER_RES);
-                    resposne.setRequestId(message.getRequestId());
-                    sendServerMessage(resposne, key);
+                    sendAcknowledge(message.getRequestId(), key);
+                }
+                if(serverConnectionListeners != null && !removeKeysList.isEmpty()){
+                    String[] removeKeys = (String[])removeKeysList.toArray(new String[0]);
+                    for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
+                        ((ServerConnectionListener)serverConnectionListeners.get(i)).onRemoveSubject(ClientImpl.this, removeMessage.getSubject(), removeKeys);
+                    }
                 }
                 break;
             case jp.ossc.nimbus.service.publish.udp.ClientMessage.MESSAGE_INTERPOLATE_REQ:
@@ -2190,16 +2195,18 @@ public class ServerConnectionImpl implements ServerConnection{
                         }
                     }
                     isStartReceive = true;
+                    if(isAcknowledge){
+                        sendAcknowledge(message.getRequestId(), key);
+                    }
                     if(serverConnectionListeners != null){
                         for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
                             ((ServerConnectionListener)serverConnectionListeners.get(i)).onStartReceive(ClientImpl.this, fromTime);
                         }
                     }
-                }
-                if(isAcknowledge){
-                    ServerMessage resposne = new ServerMessage(ServerMessage.MESSAGE_SERVER_RES);
-                    resposne.setRequestId(message.getRequestId());
-                    sendServerMessage(resposne, key);
+                }else{
+                    if(isAcknowledge){
+                        sendAcknowledge(message.getRequestId(), key);
+                    }
                 }
                 break;
             case ClientMessage.MESSAGE_STOP_RECEIVE:
@@ -2212,25 +2219,32 @@ public class ServerConnectionImpl implements ServerConnection{
                     }
                     isStartReceive = false;
                     firstMessage = null;
+                    if(isAcknowledge){
+                        sendAcknowledge(message.getRequestId(), key);
+                    }
                     if(serverConnectionListeners != null){
                         for(int i = 0, imax = serverConnectionListeners.size(); i < imax; i++){
                             ((ServerConnectionListener)serverConnectionListeners.get(i)).onStopReceive(ClientImpl.this);
                         }
                     }
-                }
-                if(isAcknowledge){
-                    ServerMessage resposne = new ServerMessage(ServerMessage.MESSAGE_SERVER_RES);
-                    resposne.setRequestId(message.getRequestId());
-                    sendServerMessage(resposne, key);
+                }else{
+                    if(isAcknowledge){
+                        sendAcknowledge(message.getRequestId(), key);
+                    }
                 }
                 break;
             case ClientMessage.MESSAGE_BYE:
                 ClientImpl.this.close();
-                isClosed = true;
                 break;
             default:
             }
             return isClosed;
+        }
+        
+        protected void sendAcknowledge(short requestId, SelectionKey key){
+            ServerMessage resposne = new ServerMessage(ServerMessage.MESSAGE_SERVER_RES);
+            resposne.setRequestId(requestId);
+            sendServerMessage(resposne, key);
         }
         
         public void garbage(){}
@@ -2285,8 +2299,9 @@ public class ServerConnectionImpl implements ServerConnection{
                 while(clientItr.hasNext()){
                     ClientImpl client = (ClientImpl)clientItr.next();
                     if(client == null
-                        || !client.isStartReceive()
-                        || !client.isTargetMessage(message)){
+                        || ((firstClients == null || !firstClients.contains(client))
+                                && (!client.isStartReceive() || !client.isTargetMessage(message)))
+                    ){
                         continue;
                     }
                     SendRequest sendRequest = createSendRequest(client, message);
@@ -2313,9 +2328,7 @@ public class ServerConnectionImpl implements ServerConnection{
                     Iterator firstClientItr = firstClients.iterator();
                     while(firstClientItr.hasNext()){
                         ClientImpl client = (ClientImpl)firstClientItr.next();
-                        if(client.isStartReceive()){
-                            client.send(message);
-                        }
+                        client.send(message);
                     }
                 }
                 sendMessage(sendSocket, multicastAddress, message, destPort, false);

@@ -161,6 +161,7 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
     private transient DefaultQueueService receivePacketQueue;
     private transient boolean isClosing;
     private transient boolean isConnected;
+    private transient boolean isConnecting;
     private transient boolean isReconnecting;
     private transient Object id;
     private transient String serviceManagerName;
@@ -185,6 +186,7 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
     private transient long lastReceiveTime = -1;
     private transient long totalMessageLatency;
     private transient long maxMessageLatency;
+    private transient Object connectLock = "connectLock";
     
     public ClientConnectionImpl(){}
     
@@ -494,169 +496,176 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
         connect(id, false);
     }
     
-    private synchronized void connect(Object id, boolean isReconnect) throws ConnectException{
-        if(socket != null){
-            return;
-        }
-        isConnected = false;
-        try{
+    private void connect(Object id, boolean isReconnect) throws ConnectException{
+        synchronized(connectLock){
+            if(socket != null){
+                return;
+            }
+            isConnecting = true;
             try{
-                if(socketFactory == null){
-                    socket = new Socket(
-                        address,
-                        port,
-                        getBindAddress(),
-                        getBindPort()
-                    );
-                }else{
-                    socket = socketFactory.createSocket(
-                        address,
-                        port,
-                        getBindAddress(),
-                        getBindPort()
-                    );
-                }
-                if(responseTimeout > 0){
-                    socket.setSoTimeout((int)responseTimeout);
-                }
-                if(!isReconnect){
-                    if(receiveAddress != null){
-                        receiveGroup = InetAddress.getByName(receiveAddress);
-                        InetAddress bindAddress = getUDPBindAddress();
-                        if(bindAddress == null){
-                            receiveSocket = receiveGroup.isMulticastAddress() ? new MulticastSocket(receivePort) : new DatagramSocket(receivePort);
-                        }else{
-                            final InetSocketAddress address = new InetSocketAddress(bindAddress, receivePort);
-                            receiveSocket = receiveGroup.isMulticastAddress() ? new MulticastSocket(address) : new DatagramSocket(address);
-                        }
-                        if(receiveGroup.isMulticastAddress()){
-                            NetworkInterface[] networkInterfaces = getNetworkInterfaces();
-                            if(networkInterfaces == null){
-                                ((MulticastSocket)receiveSocket).joinGroup(receiveGroup);
+                isConnected = false;
+                try{
+                    if(socketFactory == null){
+                        socket = new Socket(
+                            address,
+                            port,
+                            getBindAddress(),
+                            getBindPort()
+                        );
+                    }else{
+                        socket = socketFactory.createSocket(
+                            address,
+                            port,
+                            getBindAddress(),
+                            getBindPort()
+                        );
+                    }
+                    if(responseTimeout > 0){
+                        socket.setSoTimeout((int)responseTimeout);
+                    }
+                    if(!isReconnect){
+                        if(receiveAddress != null){
+                            receiveGroup = InetAddress.getByName(receiveAddress);
+                            InetAddress bindAddress = getUDPBindAddress();
+                            if(bindAddress == null){
+                                receiveSocket = receiveGroup.isMulticastAddress() ? new MulticastSocket(receivePort) : new DatagramSocket(receivePort);
                             }else{
-                                for(int i = 0; i < networkInterfaces.length; i++){
-                                    ((MulticastSocket)receiveSocket).joinGroup(new InetSocketAddress(receiveGroup, receivePort), networkInterfaces[i]);
+                                final InetSocketAddress address = new InetSocketAddress(bindAddress, receivePort);
+                                receiveSocket = receiveGroup.isMulticastAddress() ? new MulticastSocket(address) : new DatagramSocket(address);
+                            }
+                            if(receiveGroup.isMulticastAddress()){
+                                NetworkInterface[] networkInterfaces = getNetworkInterfaces();
+                                if(networkInterfaces == null){
+                                    ((MulticastSocket)receiveSocket).joinGroup(receiveGroup);
+                                }else{
+                                    for(int i = 0; i < networkInterfaces.length; i++){
+                                        ((MulticastSocket)receiveSocket).joinGroup(new InetSocketAddress(receiveGroup, receivePort), networkInterfaces[i]);
+                                    }
                                 }
                             }
-                        }
-                    }else{
-                        InetAddress bindAddress = getUDPBindAddress();
-                        if(bindAddress == null){
-                            receiveSocket = new DatagramSocket(receivePort);
                         }else{
-                            receiveSocket = new DatagramSocket(new InetSocketAddress(bindAddress, receivePort));
-                        }
-                    }
-                    if(receivePort == 0){
-                        receivePortReal = receiveSocket.getLocalPort();
-                    }else{
-                        receivePortReal = receivePort;
-                    }
-                    if(receiveSocket != null){
-                        try{
-                            int receiveBufferSize = receiveSocket.getReceiveBufferSize();
-                            if(receiveBufferSize < windowSize){
-                                receiveSocket.setReceiveBufferSize(windowSize);
+                            InetAddress bindAddress = getUDPBindAddress();
+                            if(bindAddress == null){
+                                receiveSocket = new DatagramSocket(receivePort);
+                            }else{
+                                receiveSocket = new DatagramSocket(new InetSocketAddress(bindAddress, receivePort));
                             }
-                        }catch(SocketException e){
+                        }
+                        if(receivePort == 0){
+                            receivePortReal = receiveSocket.getLocalPort();
+                        }else{
+                            receivePortReal = receivePort;
+                        }
+                        if(receiveSocket != null){
+                            try{
+                                int receiveBufferSize = receiveSocket.getReceiveBufferSize();
+                                if(receiveBufferSize < windowSize){
+                                    receiveSocket.setReceiveBufferSize(windowSize);
+                                }
+                            }catch(SocketException e){
+                            }
                         }
                     }
-                }
-            }catch(UnknownHostException e){
-                throw new ConnectException(e);
-            }catch(NumberFormatException e){
-                throw new ConnectException(e);
-            }catch(IOException e){
-                throw new ConnectException(e);
-            }
-            
-            if(receivePacketQueue == null){
-                receivePacketQueue = new DefaultQueueService();
-                try{
-                    receivePacketQueue.create();
-                    receivePacketQueue.start();
-                }catch(Exception e){
+                }catch(UnknownHostException e){
+                    throw new ConnectException(e);
+                }catch(NumberFormatException e){
+                    throw new ConnectException(e);
+                }catch(IOException e){
                     throw new ConnectException(e);
                 }
-            }
-            if(packetReceiveDaemon == null){
-                packetReceiveDaemon = new Daemon(new PacketReceiver());
-                packetReceiveDaemon.setDaemon(true);
-                packetReceiveDaemon.setName("Nimbus Publish(UDP) ClientConnection PacketReceiver " + socket.getLocalSocketAddress());
-                packetReceiveDaemon.start();
-            }
-            
-            if(replyReceiveDaemon == null){
-                replyReceiveDaemon = new Daemon(new ReplyReceiver());
-                replyReceiveDaemon.setDaemon(true);
-                replyReceiveDaemon.setName("Nimbus Publish(UDP) ClientConnection ReplyReceiver " + socket.getLocalSocketAddress());
-                replyReceiveDaemon.start();
-            }
-            
-            if(messageReceiveDaemon == null){
-                messageReceiveDaemon = new Daemon(new MessageReceiver());
-                messageReceiveDaemon.setDaemon(true);
-                messageReceiveDaemon.setName("Nimbus Publish(UDP) ClientConnection MessageReceiver " + socket.getLocalSocketAddress());
-            }
-            
-            if(missingWindowCheckDaemon == null){
-                missingWindowCheckDaemon = new Daemon(new MissingWindowChecker((MessageReceiver)messageReceiveDaemon.getDaemonRunnable()));
-                missingWindowCheckDaemon.setDaemon(true);
-                missingWindowCheckDaemon.setName("Nimbus Publish(UDP) ClientConnection MissingWindowChecker " + socket.getLocalSocketAddress());
-                ((MessageReceiver)messageReceiveDaemon.getDaemonRunnable()).setPacketReceiver((PacketReceiver)packetReceiveDaemon.getDaemonRunnable());
-                ((MessageReceiver)messageReceiveDaemon.getDaemonRunnable()).setMissingWindowChecker((MissingWindowChecker)missingWindowCheckDaemon.getDaemonRunnable());
-            }
-            messageReceiveDaemon.start();
-            missingWindowCheckDaemon.start();
-            
-            this.id = id == null ? socket.getLocalSocketAddress() : id;
-            try{
-                if(connectMessageId != null){
-                    ServiceManagerFactory.getLogger().write(
-                        connectMessageId,
-                        new Object[]{ClientConnectionImpl.this}
-                    );
-                }
-                IdMessage message = new IdMessage(this.id);
-                message.setReceivePort(receivePortReal);
-                send(message, isAcknowledge);
-            }catch(IOException e){
-                throw new ConnectException(e);
-            }catch(ClassNotFoundException e){
-                throw new ConnectException(e);
-            }
-            if(serverServiceName != null){
-                ServiceManager manager = ServiceManagerFactory.findManager(serviceManagerName == null ? serverServiceName.getServiceManagerName() : serviceManagerName);
-                if(manager != null){
-                    final ClientConnectionService ccs = new ClientConnectionService();
+                
+                if(receivePacketQueue == null){
+                    receivePacketQueue = new DefaultQueueService();
                     try{
-                        String name = serverServiceName.getServiceName() + '$' + socket.getLocalSocketAddress();
-                        name = name.replaceAll(":", "\\$");
-                        if(!manager.isRegisteredService(name) && manager.registerService(name, ccs)){
-                            serviceName = ccs.getServiceNameObject();
-                            manager.createService(ccs.getServiceName());
-                            manager.startService(ccs.getServiceName());
-                        }
+                        receivePacketQueue.create();
+                        receivePacketQueue.start();
                     }catch(Exception e){
                         throw new ConnectException(e);
                     }
                 }
-            }
-        }catch(ConnectException e){
-            if(socket != null){
+                if(packetReceiveDaemon == null){
+                    packetReceiveDaemon = new Daemon(new PacketReceiver());
+                    packetReceiveDaemon.setDaemon(true);
+                    packetReceiveDaemon.setName("Nimbus Publish(UDP) ClientConnection PacketReceiver " + socket.getLocalSocketAddress());
+                    packetReceiveDaemon.start();
+                }
+                
+                if(replyReceiveDaemon == null){
+                    replyReceiveDaemon = new Daemon(new ReplyReceiver());
+                    replyReceiveDaemon.setDaemon(true);
+                    replyReceiveDaemon.setName("Nimbus Publish(UDP) ClientConnection ReplyReceiver " + socket.getLocalSocketAddress());
+                    replyReceiveDaemon.start();
+                }
+                
+                if(messageReceiveDaemon == null){
+                    messageReceiveDaemon = new Daemon(new MessageReceiver());
+                    messageReceiveDaemon.setDaemon(true);
+                    messageReceiveDaemon.setName("Nimbus Publish(UDP) ClientConnection MessageReceiver " + socket.getLocalSocketAddress());
+                }
+                
+                if(missingWindowCheckDaemon == null){
+                    missingWindowCheckDaemon = new Daemon(new MissingWindowChecker((MessageReceiver)messageReceiveDaemon.getDaemonRunnable()));
+                    missingWindowCheckDaemon.setDaemon(true);
+                    missingWindowCheckDaemon.setName("Nimbus Publish(UDP) ClientConnection MissingWindowChecker " + socket.getLocalSocketAddress());
+                    ((MessageReceiver)messageReceiveDaemon.getDaemonRunnable()).setPacketReceiver((PacketReceiver)packetReceiveDaemon.getDaemonRunnable());
+                    ((MessageReceiver)messageReceiveDaemon.getDaemonRunnable()).setMissingWindowChecker((MissingWindowChecker)missingWindowCheckDaemon.getDaemonRunnable());
+                }
+                messageReceiveDaemon.start();
+                missingWindowCheckDaemon.start();
+                
+                this.id = id == null ? socket.getLocalSocketAddress() : id;
                 try{
-                    socket.close();
-                }catch(IOException e2){}
-                socket = null;
+                    if(connectMessageId != null){
+                        ServiceManagerFactory.getLogger().write(
+                            connectMessageId,
+                            new Object[]{ClientConnectionImpl.this}
+                        );
+                    }
+                    IdMessage message = new IdMessage(this.id);
+                    message.setReceivePort(receivePortReal);
+                    send(message, isAcknowledge);
+                }catch(IOException e){
+                    throw new ConnectException(e);
+                }catch(ClassNotFoundException e){
+                    throw new ConnectException(e);
+                }catch(MessageSendException e){
+                    throw new ConnectException(e);
+                }
+                if(serverServiceName != null){
+                    ServiceManager manager = ServiceManagerFactory.findManager(serviceManagerName == null ? serverServiceName.getServiceManagerName() : serviceManagerName);
+                    if(manager != null){
+                        final ClientConnectionService ccs = new ClientConnectionService();
+                        try{
+                            String name = serverServiceName.getServiceName() + '$' + socket.getLocalSocketAddress();
+                            name = name.replaceAll(":", "\\$");
+                            if(!manager.isRegisteredService(name) && manager.registerService(name, ccs)){
+                                serviceName = ccs.getServiceNameObject();
+                                manager.createService(ccs.getServiceName());
+                                manager.startService(ccs.getServiceName());
+                            }
+                        }catch(Exception e){
+                            throw new ConnectException(e);
+                        }
+                    }
+                }
+                isConnected = true;
+                isServerClosed = false;
+            }catch(ConnectException e){
+                if(socket != null){
+                    try{
+                        socket.close();
+                    }catch(IOException e2){}
+                    socket = null;
+                }
+                if(!isReconnect && receiveSocket != null){
+                    receiveSocket.close();
+                    receiveSocket = null;
+                }
+                throw e;
+            }finally{
+                isConnecting = false;
             }
-            if(!isReconnect && receiveSocket != null){
-                receiveSocket.close();
-                receiveSocket = null;
-            }
-            throw e;
         }
-        isConnected = true;
-        isServerClosed = false;
     }
     
     public void addSubject(String subject) throws MessageSendException{
@@ -835,7 +844,7 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
         return keySet == null ? new HashSet() : keySet;
     }
     
-    private ServerMessage send(ClientMessage message, boolean reply) throws IOException, ClassNotFoundException{
+    private ServerMessage send(ClientMessage message, boolean reply) throws IOException, ClassNotFoundException, MessageSendException{
         ReplyReceiver replyReceiver = null;
         Short reqId = null;
         if(reply){
@@ -854,11 +863,18 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
                 externalizer.writeExternal(message, baos);
             }
             byte[] bytes = baos.toByteArray();
-            synchronized(this){
+            synchronized(connectLock){
+                if(socket == null){
+                    throw new ConnectionClosedException();
+                }
                 DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
-                dos.writeInt(bytes.length);
-                dos.write(bytes);
-                dos.flush();
+                try{
+                    dos.writeInt(bytes.length);
+                    dos.write(bytes);
+                    dos.flush();
+                }catch(SocketException e){
+                    throw new ConnectionClosedException(e);
+                }
             }
             if(reply){
                 return replyReceiver.waitReply(reqId, responseTimeout);
@@ -878,7 +894,7 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
     
     private void reconnect() throws ConnectException, MessageSendException{
         boolean isNowReconnecting = isReconnecting;
-        synchronized(this){
+        synchronized(connectLock){
             if(isNowReconnecting){
                 return;
             }
@@ -990,6 +1006,7 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException{
         in.defaultReadObject();
         messageBuffer = new LinkedList();
+        connectLock = "connectLock";
     }
     
     public void resetCount(){
@@ -1015,80 +1032,89 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
         close(false, null);
     }
     
-    private synchronized void close(boolean isClosed, Throwable reason){
-        if(!isConnected){
-            return;
-        }
-        isClosing = true;
-        if(isClosed){
-            if(closedMessageId != null){
-                ServiceManagerFactory.getLogger().write(
-                    closedMessageId,
-                    new Object[]{ClientConnectionImpl.this},
-                    reason
+    private void close(boolean isClosed, Throwable reason){
+        synchronized(connectLock){
+            if(!isConnected){
+                return;
+            }
+            isClosing = true;
+            if(isClosed){
+                if(isServerClosed && serverCloseMessageId != null){
+                    ServiceManagerFactory.getLogger().write(
+                        serverCloseMessageId,
+                        new Object[]{ClientConnectionImpl.this}
+                    );
+                }else if(closedMessageId != null){
+                    ServiceManagerFactory.getLogger().write(
+                        closedMessageId,
+                        new Object[]{ClientConnectionImpl.this},
+                        reason
+                    );
+                }
+            }else{
+                if(closeMessageId != null){
+                    ServiceManagerFactory.getLogger().write(
+                        closeMessageId,
+                        new Object[]{ClientConnectionImpl.this},
+                        reason
+                    );
+                }
+            }
+            isStartReceive = false;
+            isConnected = false;
+            if(serviceName != null){
+                ServiceManagerFactory.unregisterService(
+                    serviceName.getServiceManagerName(),
+                    serviceName.getServiceName()
                 );
+                serviceName = null;
             }
-        }else{
-            if(closeMessageId != null){
-                ServiceManagerFactory.getLogger().write(
-                    closeMessageId,
-                    new Object[]{ClientConnectionImpl.this},
-                    reason
-                );
+            if(missingWindowCheckDaemon != null){
+                missingWindowCheckDaemon.stopNoWait();
+                missingWindowCheckDaemon = null;
             }
-        }
-        isStartReceive = false;
-        isConnected = false;
-        if(serviceName != null){
-            ServiceManagerFactory.unregisterService(
-                serviceName.getServiceManagerName(),
-                serviceName.getServiceName()
-            );
-            serviceName = null;
-        }
-        if(missingWindowCheckDaemon != null){
-            missingWindowCheckDaemon.stopNoWait();
-            missingWindowCheckDaemon = null;
-        }
-        if(messageReceiveDaemon != null){
-            messageReceiveDaemon.stopNoWait();
-            messageReceiveDaemon = null;
-        }
-        if(replyReceiveDaemon != null){
-            replyReceiveDaemon.stopNoWait();
-            replyReceiveDaemon = null;
-        }
-        if(socket != null){
-            try{
-                send(new ByeMessage(), false);
-            }catch(IOException e){
-            }catch(ClassNotFoundException e){
+            if(messageReceiveDaemon != null){
+                messageReceiveDaemon.stopNoWait();
+                messageReceiveDaemon = null;
             }
-            try{
-                socket.close();
-            }catch(IOException e){}
-            socket = null;
+            if(replyReceiveDaemon != null){
+                replyReceiveDaemon.stopNoWait();
+                replyReceiveDaemon = null;
+            }
+            if(socket != null){
+                try{
+                    send(new ByeMessage(), false);
+                }catch(IOException e){
+                }catch(ClassNotFoundException e){
+                }catch(MessageSendException e){
+                }
+                try{
+                    socket.close();
+                }catch(IOException e){}
+                socket = null;
+            }
+            if(packetReceiveDaemon != null){
+                packetReceiveDaemon.stopNoWait();
+                packetReceiveDaemon = null;
+                receivePacketQueue.stop();
+                receivePacketQueue.destroy();
+                receivePacketQueue = null;
+            }
+            if(receiveSocket != null){
+                receiveGroup = null;
+                receiveSocket.close();
+                receiveSocket = null;
+            }
+            if(subjects != null){
+                subjects.clear();
+            }
+            messageListener = null;
+            id = null;
+            serviceManagerName = null;
+            resetCount();
+            requestId = 0;
+            isClosing = false;
         }
-        if(packetReceiveDaemon != null){
-            packetReceiveDaemon.stopNoWait();
-            packetReceiveDaemon = null;
-            receivePacketQueue.stop();
-            receivePacketQueue.destroy();
-            receivePacketQueue = null;
-        }
-        if(receiveSocket != null){
-            receiveGroup = null;
-            receiveSocket.close();
-            receiveSocket = null;
-        }
-        if(subjects != null){
-            subjects.clear();
-        }
-        messageListener = null;
-        id = null;
-        serviceManagerName = null;
-        requestId = 0;
-        isClosing = false;
     }
     
     public String toString(){
@@ -1109,19 +1135,34 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
     private class ReplyReceiver implements DaemonRunnable{
         public Map replyMonitorMap = Collections.synchronizedMap(new HashMap());
         public Map responseMap = Collections.synchronizedMap(new HashMap());
+        private boolean isStop;
         
-        public void openMonitor(Short requestId){
-            SynchronizeMonitor replyMonitor = new WaitSynchronizeMonitor();
-            replyMonitor.initMonitor();
-            replyMonitorMap.put(requestId, replyMonitor);
+        public void openMonitor(Short requestId) throws ConnectionClosedException{
+            synchronized(replyMonitorMap){
+                if(isStop){
+                    throw new ConnectionClosedException();
+                }
+                SynchronizeMonitor replyMonitor = new WaitSynchronizeMonitor();
+                replyMonitor.initMonitor();
+                replyMonitorMap.put(requestId, replyMonitor);
+            }
         }
         
-        public ServerMessage waitReply(Short requestId, long timeout) throws SocketTimeoutException{
-            SynchronizeMonitor replyMonitor = (SynchronizeMonitor)replyMonitorMap.get(requestId);
+        public ServerMessage waitReply(Short requestId, long timeout) throws SocketTimeoutException, ConnectionClosedException{
+            SynchronizeMonitor replyMonitor = null;
+            synchronized(replyMonitorMap){
+                replyMonitor = (SynchronizeMonitor)replyMonitorMap.get(requestId);
+                if(isStop || replyMonitor == null){
+                    throw new ConnectionClosedException();
+                }
+            }
             try{
                 if(replyMonitor.waitMonitor(timeout)){
                     return (ServerMessage)responseMap.remove(requestId);
                 }else{
+                    if(isStop){
+                        throw new ConnectionClosedException();
+                    }
                     throw new SocketTimeoutException("Reply timed out.");
                 }
             }catch(InterruptedException e){
@@ -1132,12 +1173,22 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
         public void closeMonitor(Short requestId){
             SynchronizeMonitor replyMonitor = (SynchronizeMonitor)replyMonitorMap.remove(requestId);
             if(replyMonitor != null){
-                replyMonitor.releaseAllMonitor();
+                replyMonitor.close();
             }
         }
         
         public boolean onStart(){return true;}
-        public boolean onStop(){return true;}
+        public boolean onStop(){
+            synchronized(replyMonitorMap){
+                isStop = true;
+                Iterator itr = replyMonitorMap.values().iterator();
+                while(itr.hasNext()){
+                    ((SynchronizeMonitor)itr.next()).close();
+                    itr.remove();
+                }
+            }
+            return true;
+        }
         public boolean onSuspend(){return true;}
         public boolean onResume(){return true;}
         public Object provide(DaemonControl ctrl) throws Throwable{
@@ -1159,12 +1210,6 @@ public class ClientConnectionImpl implements ClientConnection, Serializable{
                     return null;
                 }
                 if(message != null && message.getMessageType() == ServerMessage.MESSAGE_SERVER_CLOSE_REQ){
-                    if(serverCloseMessageId != null){
-                        ServiceManagerFactory.getLogger().write(
-                            serverCloseMessageId,
-                            new Object[]{ClientConnectionImpl.this}
-                        );
-                    }
                     isServerClosed = true;
                     close(true, null);
                     return null;

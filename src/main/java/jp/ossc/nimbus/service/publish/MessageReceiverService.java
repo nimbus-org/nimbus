@@ -731,6 +731,7 @@ public class MessageReceiverService extends ServiceBase implements MessageReceiv
                 throw new MessageSendException("ClientConnection is null.");
             }
             Map newUnmodifiedKeyAndMessageListenerMap = null;
+            Map currentUnmodifiedKeyAndMessageListenerMap = unmodifiedKeyAndMessageListenerMap;
             boolean isModified = false;
             if(keys == null || keys.length == 0){
                 Set listeners = (Set)keyAndMessageListenerMap.get(null);
@@ -739,19 +740,23 @@ public class MessageReceiverService extends ServiceBase implements MessageReceiv
                     keyAndMessageListenerMap.put(null, listeners);
                 }
                 isModified = listeners.add(listener);
-                if(clientConnection != null && isModified){
-                    try{
-                        clientConnection.addSubject(subject);
-                    }catch(MessageSendException e){
-                        keyAndMessageListenerMap.remove(null);
-                        throw e;
-                    }
-                }
                 if(isModified){
                     if(newUnmodifiedKeyAndMessageListenerMap == null){
                         newUnmodifiedKeyAndMessageListenerMap = shallowCopyUnmodifiedKeyAndMessageListenerMap();
                     }
                     newUnmodifiedKeyAndMessageListenerMap.put(null, shallowCopyUnmodifiedListenerSet(listeners));
+                }
+                if(newUnmodifiedKeyAndMessageListenerMap != null){
+                    unmodifiedKeyAndMessageListenerMap = newUnmodifiedKeyAndMessageListenerMap;
+                }
+                if(clientConnection != null && isModified){
+                    try{
+                        clientConnection.addSubject(subject);
+                    }catch(MessageSendException e){
+                        keyAndMessageListenerMap.remove(null);
+                        unmodifiedKeyAndMessageListenerMap = currentUnmodifiedKeyAndMessageListenerMap;
+                        throw e;
+                    }
                 }
             }else{
                 Set firstKeySet = new HashSet();
@@ -774,6 +779,9 @@ public class MessageReceiverService extends ServiceBase implements MessageReceiv
                         newUnmodifiedKeyAndMessageListenerMap.put(keys[i], shallowCopyUnmodifiedListenerSet(listeners));
                     }
                 }
+                if(newUnmodifiedKeyAndMessageListenerMap != null){
+                    unmodifiedKeyAndMessageListenerMap = newUnmodifiedKeyAndMessageListenerMap;
+                }
                 if(clientConnection != null && firstKeySet.size() != 0){
                     try{
                         clientConnection.addSubject(subject, (String[])firstKeySet.toArray(new String[firstKeySet.size()]));
@@ -781,12 +789,10 @@ public class MessageReceiverService extends ServiceBase implements MessageReceiv
                         for(int i = 0; i < keys.length; i++){
                             keyAndMessageListenerMap.remove(keys[i]);
                         }
+                        unmodifiedKeyAndMessageListenerMap = currentUnmodifiedKeyAndMessageListenerMap;
                         throw e;
                     }
                 }
-            }
-            if(newUnmodifiedKeyAndMessageListenerMap != null){
-                unmodifiedKeyAndMessageListenerMap = newUnmodifiedKeyAndMessageListenerMap;
             }
         }
 
@@ -795,6 +801,7 @@ public class MessageReceiverService extends ServiceBase implements MessageReceiv
                 throw new MessageSendException("ClientConnection is null.");
             }
             Map newUnmodifiedKeyAndMessageListenerMap = null;
+            Map currentUnmodifiedKeyAndMessageListenerMap = unmodifiedKeyAndMessageListenerMap;
             boolean isModified = false;
             if(keys == null || keys.length == 0){
                 Set listeners = (Set)keyAndMessageListenerMap.get(null);

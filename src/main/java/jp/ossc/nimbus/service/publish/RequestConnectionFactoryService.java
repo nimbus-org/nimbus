@@ -42,6 +42,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.HashSet;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -219,19 +220,6 @@ public class RequestConnectionFactoryService extends ServiceBase
     }
     
     public void addSubject(MessageListener listener, String subject, String[] keys) throws MessageSendException{
-        if(listener instanceof RequestMessageListener){
-            if(keys == null || keys.length == 0){
-                if(messageReceiver.existsMessageListener(subject, null)){
-                    throw new MessageSendException("Listener already exists : subject=" + subject);
-                }
-            }else{
-                for(int i = 0; i < keys.length; i++){
-                    if(messageReceiver.existsMessageListener(subject, keys[i])){
-                        throw new MessageSendException("Listener already exists : subject=" + subject + ", key=" + keys[i]);
-                    }
-                }
-            }
-        }
         listener = getMessageListenerWrapper(listener, true);
         messageReceiver.addSubject(listener, subject, keys);
     }
@@ -356,9 +344,9 @@ public class RequestConnectionFactoryService extends ServiceBase
             ResponseContainer[] containers = null;
             synchronized(responseMap){
                 containers = (ResponseContainer[])responseMap.values().toArray(new ResponseContainer[responseMap.size()]);
-            }
-            for(int i = 0; i < containers.length; i++){
-                containers[i].onClose(client.getId());
+                for(int i = 0; i < containers.length; i++){
+                    containers[i].onClose(client.getId());
+                }
             }
         }
         
@@ -423,34 +411,39 @@ public class RequestConnectionFactoryService extends ServiceBase
                 if(isClosed){
                     throw new MessageSendException("Closed.");
                 }
+                ResponseContainer container = null;
                 long curTimeout = timeout;
-                serverConnectWaitMonitor.initMonitor();
-                Set requestClients = serverConnection.getReceiveClientIds(message);
-                while(requestClients.size() == 0){
-                    try{
-                        if(!serverConnectWaitMonitor.waitMonitor(curTimeout)){
-                            throw new RequestTimeoutException("Destination not be found.");
-                        }
-                    }catch(InterruptedException e){
-                    }
-                    if(timeout > 0){
-                        curTimeout = curTimeout - (System.currentTimeMillis() - sendStartTime);
-                        if(curTimeout <= 0){
-                            throw new RequestTimeoutException("Destination not be found.");
-                        }
-                    }
+                Set requestClients = null;
+                Integer sequenceVal = null;
+                synchronized(responseMap){
+                    serverConnectWaitMonitor.initMonitor();
                     requestClients = serverConnection.getReceiveClientIds(message);
+                    while(requestClients.size() == 0){
+                        try{
+                            if(!serverConnectWaitMonitor.waitMonitor(curTimeout)){
+                                throw new RequestTimeoutException("Destination not be found.");
+                            }
+                        }catch(InterruptedException e){
+                        }
+                        if(timeout > 0){
+                            curTimeout = curTimeout - (System.currentTimeMillis() - sendStartTime);
+                            if(curTimeout <= 0){
+                                throw new RequestTimeoutException("Destination not be found.");
+                            }
+                        }
+                        requestClients = serverConnection.getReceiveClientIds(message);
+                    }
+                    int sequence = getSequence();
+                    try{
+                        message.setObject(new RequestMessage(messageReceiver.getId(), sequence, responseSubject, responseKey, message.getObject()));
+                    }catch(MessageException e){
+                        throw new MessageSendException(e);
+                    }
+                    container = new ResponseContainer(sequence, requestClients, replyCount);
+                    sequenceVal = new Integer(sequence);
+                    responseMap.put(sequenceVal, container);
+                    container.init();
                 }
-                int sequence = getSequence();
-                try{
-                    message.setObject(new RequestMessage(messageReceiver.getId(), sequence, responseSubject, responseKey, message.getObject()));
-                }catch(MessageException e){
-                    throw new MessageSendException(e);
-                }
-                ResponseContainer container = new ResponseContainer(sequence, requestClients, replyCount);
-                Integer sequenceVal = new Integer(sequence);
-                responseMap.put(sequenceVal, container);
-                container.init();
                 try{
                     serverConnection.send(message);
                 }finally{
@@ -493,37 +486,41 @@ public class RequestConnectionFactoryService extends ServiceBase
                     throw new MessageSendException("Closed.");
                 }
                 long curTimeout = timeout;
-                serverConnectWaitMonitor.initMonitor();
-                Set requestClients = serverConnection.getReceiveClientIds(message);
-                while(requestClients.size() == 0){
-                    final long startTime = System.currentTimeMillis();
+                ResponseContainer container = null;
+                Integer sequenceVal = null;
+                synchronized(responseMap){
+                    serverConnectWaitMonitor.initMonitor();
+                    Set requestClients = serverConnection.getReceiveClientIds(message);
+                    while(requestClients.size() == 0){
+                        final long startTime = System.currentTimeMillis();
+                        try{
+                            if(!serverConnectWaitMonitor.waitMonitor(curTimeout)){
+                                callback.onResponse(null, null, true);
+                                return;
+                            }
+                        }catch(InterruptedException e){
+                        }
+                        requestClients = serverConnection.getReceiveClientIds(message);
+                        if(timeout > 0){
+                            curTimeout = curTimeout - (System.currentTimeMillis() - startTime);
+                            if(curTimeout <= 0){
+                                callback.onResponse(null, null, true);
+                                return;
+                            }
+                        }
+                    }
+                    int sequence = getSequence();
                     try{
-                        if(!serverConnectWaitMonitor.waitMonitor(curTimeout)){
-                            callback.onResponse(null, null, true);
-                            return;
-                        }
-                    }catch(InterruptedException e){
+                        message.setObject(new RequestMessage(messageReceiver.getId(), sequence, responseSubject, responseKey, message.getObject()));
+                    }catch(MessageException e){
+                        throw new MessageSendException(e);
                     }
-                    requestClients = serverConnection.getReceiveClientIds(message);
+                    sequenceVal = new Integer(sequence);
+                    container = new ResponseContainer(sequence, sequenceVal, requestClients, replyCount, curTimeout, callback);
+                    responseMap.put(sequenceVal, container);
                     if(timeout > 0){
-                        curTimeout = curTimeout - (System.currentTimeMillis() - startTime);
-                        if(curTimeout <= 0){
-                            callback.onResponse(null, null, true);
-                            return;
-                        }
+                        container.startTimer();
                     }
-                }
-                int sequence = getSequence();
-                try{
-                    message.setObject(new RequestMessage(messageReceiver.getId(), sequence, responseSubject, responseKey, message.getObject()));
-                }catch(MessageException e){
-                    throw new MessageSendException(e);
-                }
-                Integer sequenceVal = new Integer(sequence);
-                ResponseContainer container = new ResponseContainer(sequence, sequenceVal, requestClients, replyCount, curTimeout, callback);
-                responseMap.put(sequenceVal, container);
-                if(timeout > 0){
-                    container.startTimer();
                 }
                 try{
                     container.setResponseStartTime(System.currentTimeMillis());
@@ -556,38 +553,42 @@ public class RequestConnectionFactoryService extends ServiceBase
                 if(isClosed){
                     throw new MessageSendException("Closed.");
                 }
-                serverConnectWaitMonitor.initMonitor();
-                
-                Set requestClients = serverConnection.getReceiveClientIds(message);
-                long curTimeout = timeout;
-                while(requestClients.size() == 0){
+                ResponseContainer container = null;
+                Integer sequenceVal = null;
+                synchronized(responseMap){
+                    serverConnectWaitMonitor.initMonitor();
+                    
+                    Set requestClients = serverConnection.getReceiveClientIds(message);
+                    long curTimeout = timeout;
+                    while(requestClients.size() == 0){
+                        try{
+                            if(!serverConnectWaitMonitor.waitMonitor(curTimeout)){
+                                throw new RequestTimeoutException("Destination not be found.");
+                            }
+                        }catch(InterruptedException e){
+                        }
+                        if(timeout > 0){
+                            curTimeout = curTimeout - (System.currentTimeMillis() - sendStartTime);
+                            if(curTimeout <= 0){
+                                throw new RequestTimeoutException("Destination not be found.");
+                            }
+                        }
+                        requestClients = serverConnection.getReceiveClientIds(message);
+                    }
+                    int sequence = getSequence();
                     try{
-                        if(!serverConnectWaitMonitor.waitMonitor(curTimeout)){
-                            throw new RequestTimeoutException("Destination not be found.");
-                        }
-                    }catch(InterruptedException e){
+                        message.setObject(new RequestMessage(messageReceiver.getId(), sequence, responseSubject, responseKey, message.getObject()));
+                    }catch(MessageException e){
+                        throw new MessageSendException(e);
                     }
+                    container = new ResponseContainer(sequence, requestClients, replyCount, curTimeout);
+                    sequenceVal = new Integer(sequence);
+                    responseMap.put(sequenceVal, container);
                     if(timeout > 0){
-                        curTimeout = curTimeout - (System.currentTimeMillis() - sendStartTime);
-                        if(curTimeout <= 0){
-                            throw new RequestTimeoutException("Destination not be found.");
-                        }
+                        container.startTimer();
                     }
-                    requestClients = serverConnection.getReceiveClientIds(message);
+                    container.init();
                 }
-                int sequence = getSequence();
-                try{
-                    message.setObject(new RequestMessage(messageReceiver.getId(), sequence, responseSubject, responseKey, message.getObject()));
-                }catch(MessageException e){
-                    throw new MessageSendException(e);
-                }
-                ResponseContainer container = new ResponseContainer(sequence, requestClients, replyCount, curTimeout);
-                Integer sequenceVal = new Integer(sequence);
-                responseMap.put(sequenceVal, container);
-                if(timeout > 0){
-                    container.startTimer();
-                }
-                container.init();
                 try{
                     serverConnection.send(message);
                 }finally{
@@ -680,6 +681,7 @@ public class RequestConnectionFactoryService extends ServiceBase
             private final int sequence;
             private SynchronizeMonitor monitor = new WaitSynchronizeMonitor();
             private List responseList = new ArrayList();
+            private final Set targetRequestClients;
             private final Set requestClients;
             private final int requestCount;
             private final int replyCount;
@@ -690,14 +692,16 @@ public class RequestConnectionFactoryService extends ServiceBase
             
             public ResponseContainer(int seq, Set requestClients, int replyCount){
                 this.sequence = seq;
-                this.requestClients = requestClients;
+                this.targetRequestClients = requestClients;
+                this.requestClients = new HashSet(requestClients);
                 requestCount = requestClients.size();
                 this.replyCount = replyCount;
             }
             
             public ResponseContainer(int seq, Set requestClients, int replyCount, long timeout){
                 this.sequence = seq;
-                this.requestClients = requestClients;
+                this.targetRequestClients = requestClients;
+                this.requestClients = new HashSet(requestClients);
                 requestCount = requestClients.size();
                 this.replyCount = replyCount;
                 this.timeout = timeout;
@@ -706,7 +710,8 @@ public class RequestConnectionFactoryService extends ServiceBase
             public ResponseContainer(int seq, Object key, Set requestClients, int replyCount, long timeout, RequestServerConnection.ResponseCallBack callback){
                 this.sequence = seq;
                 this.key = key;
-                this.requestClients = requestClients;
+                this.targetRequestClients = requestClients;
+                this.requestClients = new HashSet(requestClients);
                 requestCount = requestClients.size();
                 this.replyCount = replyCount;
                 this.timeout = timeout;
@@ -782,7 +787,14 @@ public class RequestConnectionFactoryService extends ServiceBase
                                 responses = responseList.size() == 0 ? null : (Message[])responseList.toArray(new Message[responseList.size()]);
                             }
                             synchronized(requestClients){
-                                throw new RequestTimeoutException("No responce destinations: sequence=" + sequence + ", clients=" + requestClients + ", timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - startTime), responses);
+                                throw new RequestTimeoutException(
+                                    "No responce destinations: sequence=" + sequence
+                                        + ", requestClients=" + targetRequestClients
+                                        + ", noResponseClients=" + requestClients
+                                        + ", timeout=" + timeout
+                                        + ", processTime=" + (System.currentTimeMillis() - startTime),
+                                    responses
+                                );
                             }
                         }
                     }catch(InterruptedException e){
@@ -797,7 +809,14 @@ public class RequestConnectionFactoryService extends ServiceBase
                 }
                 if(replyCount > 0 && (responses == null || responses.length < replyCount)){
                     synchronized(requestClients){
-                        throw new RequestTimeoutException("No responce destinations: sequence=" + sequence + ", clients=" + requestClients + ", timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - startTime), responses);
+                        throw new RequestTimeoutException(
+                            "No responce destinations: sequence=" + sequence
+                                + ", requestClients=" + targetRequestClients
+                                + ", noResponseClients=" + requestClients
+                                + ", timeout=" + timeout
+                                + ", processTime=" + (System.currentTimeMillis() - startTime),
+                            responses
+                        );
                     }
                 }
                 return responses;

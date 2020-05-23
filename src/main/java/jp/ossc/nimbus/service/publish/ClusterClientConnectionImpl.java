@@ -261,14 +261,18 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
                 Iterator connections = connectionMap.values().iterator();
                 while(connections.hasNext()){
                     ClientConnection connection = ((ClusterConnection)connections.next()).clientConnection;
-                    try{
-                        connection.addSubject(subject, keys);
-                    }catch(ConnectionClosedException e){
+                    synchronized(connection){
+                        try{
+                            connection.addSubject(subject, keys);
+                        }catch(ConnectionClosedException e){
+                        }
                     }
                 }
             }else if(currentUID != null){
                 ClientConnection connection = ((ClusterConnection)connectionMap.get(currentUID)).clientConnection;
-                connection.addSubject(subject, keys);
+                synchronized(connection){
+                    connection.addSubject(subject, keys);
+                }
             }
         }
     }
@@ -542,52 +546,56 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
         return false;
     }
     
-    private synchronized void addSubject(ClientConnection connection) throws MessageCommunicateException{
-        if(subjects != null){
-            Object[] subjectArray = subjects.keySet().toArray();
-            for(int j = 0; j < subjectArray.length; j++){
-                Object subject = subjectArray[j];
-                Set keySet = (Set)subjects.get(subject);
-                if(keySet != null){
-                    String[] keys = (String[])keySet.toArray(new String[keySet.size()]);
-                    boolean containsNull = false;
-                    List keyList = new ArrayList();
-                    for(int k = 0; k < keys.length; k++){
-                        if(keys[k] == null){
-                            containsNull = true;
-                        }else{
-                            keyList.add(keys[k]);
+    private void addSubject(ClientConnection connection) throws MessageCommunicateException{
+        synchronized(connection){
+            if(subjects != null){
+                Object[] subjectArray = subjects.keySet().toArray();
+                for(int j = 0; j < subjectArray.length; j++){
+                    Object subject = subjectArray[j];
+                    Set keySet = (Set)subjects.get(subject);
+                    if(keySet != null){
+                        String[] keys = (String[])keySet.toArray(new String[keySet.size()]);
+                        boolean containsNull = false;
+                        List keyList = new ArrayList();
+                        for(int k = 0; k < keys.length; k++){
+                            if(keys[k] == null){
+                                containsNull = true;
+                            }else{
+                                keyList.add(keys[k]);
+                            }
+                        }
+                        if(containsNull){
+                            connection.addSubject((String)subject);
+                            keys = (String[])keyList.toArray(new String[keyList.size()]);
+                        }
+                        if(keys != null && keys.length != 0){
+                            connection.addSubject((String)subject, keys);
                         }
                     }
-                    if(containsNull){
-                        connection.addSubject((String)subject);
-                        keys = (String[])keyList.toArray(new String[keyList.size()]);
-                    }
-                    if(keys != null && keys.length != 0){
-                        connection.addSubject((String)subject, keys);
-                    }
                 }
             }
         }
     }
     
-    private synchronized void startReceive(ClientConnection connection) throws MessageCommunicateException{
-        if(isStartReceive && !connection.isStartReceive()){
-            if(isMultiple){
-                connection.startReceive(-1l);
-            }else{
-                long time = fromTime;
-                if(isStartReceiveFromLastReceiveTime && lastReceiveTime >= 0){
-                    time = lastReceiveTime - failoverBufferTime;
-                }else if(fromTime <= 0){
-                    time = System.currentTimeMillis() - failoverBufferTime;
+    private void startReceive(ClientConnection connection) throws MessageCommunicateException{
+        synchronized(connection){
+            if(isStartReceive && !connection.isStartReceive()){
+                if(isMultiple){
+                    connection.startReceive(-1l);
+                }else{
+                    long time = fromTime;
+                    if(isStartReceiveFromLastReceiveTime && lastReceiveTime >= 0){
+                        time = lastReceiveTime - failoverBufferTime;
+                    }else if(fromTime <= 0){
+                        time = System.currentTimeMillis() - failoverBufferTime;
+                    }
+                    connection.startReceive(time);
                 }
-                connection.startReceive(time);
             }
         }
     }
     
-    public synchronized void memberInit(Object myId, List members){
+    public void memberInit(Object myId, List members){
         updateConnectionList();
         Object member = null;
         if(!isConnected && !isConnecting){
@@ -687,7 +695,7 @@ public class ClusterClientConnectionImpl implements ClientConnection, ClusterLis
         }
     }
     
-    public synchronized void memberChange(List oldMembers, List newMembers){
+    public void memberChange(List oldMembers, List newMembers){
         Set removedMembers = new HashSet(oldMembers);
         removedMembers.removeAll(newMembers);
         Iterator rmMembers = removedMembers.iterator();
