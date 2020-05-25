@@ -187,4 +187,19 @@ public interface SCPClientFactoryServiceMBean extends ServiceBaseMBean{
      * @return ホームディレクトリ
      */
     public File getHomeDirectory();
+    
+    /**
+     * ローカルとリモートが異なるファイルセパレータを使用する場合に、リモートのファイルセパレータを設定する。<p>
+     * ローカルとリモートが同じファイルセパレータを使用する場合は、設定する必要はない。<br>
+     *
+     * @param separator リモートのファイルセパレータ
+     */
+    public void setRemoteFileSeparator(String separator);
+    
+    /**
+     * ローカルとリモートが異なるファイルセパレータを使用する場合に、リモートのファイルセパレータを取得する。<p>
+     *
+     * @return リモートのファイルセパレータ
+     */
+    public String getRemoteFileSeparator();
 }

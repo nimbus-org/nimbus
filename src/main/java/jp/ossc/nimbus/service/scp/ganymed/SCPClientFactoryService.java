@@ -57,6 +57,7 @@ public class SCPClientFactoryService extends ServiceBase
     private String userName;
     private String password = "";
     private File pemFile;
+    private String remoteFileSeparator;
     
     private String[] serverHostKeyAlgorithms;
     
@@ -132,6 +133,13 @@ public class SCPClientFactoryService extends ServiceBase
         return homeDir;
     }
     
+    public void setRemoteFileSeparator(String separator){
+        remoteFileSeparator = separator;
+    }
+    public String getRemoteFileSeparator(){
+        return remoteFileSeparator;
+    }
+    
     public SCPClient createSCPClient() throws SCPException{
         SCPClientImpl client = new SCPClientImpl();
         client.setScpClientFactoryServiceName(getServiceNameObject());
@@ -147,6 +155,7 @@ public class SCPClientFactoryService extends ServiceBase
         if(serverHostKeyAlgorithms != null){
             client.setServerHostKeyAlgorithms(serverHostKeyAlgorithms);
         }
+        client.setRemoteFileSeparator(remoteFileSeparator);
         if(userName != null){
             if(pemFile == null){
                 if(port > 0){
