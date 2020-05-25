@@ -458,7 +458,7 @@ public class SharedQueueService extends SharedContextService
     }
     
     protected Object lockFirst(long timeout) throws SharedContextSendException, SharedContextTimeoutException{
-        if(isMain()){
+        if(!isClient()){
             List keys = null;
             if(context.size() != 0){
                 synchronized(context){
@@ -680,7 +680,7 @@ public class SharedQueueService extends SharedContextService
     }
     
     protected Message onLockFirst(SharedContextEvent event, final Object sourceId, final int sequence, final String responseSubject, final String responseKey){
-        if(isMain(sourceId)){
+        if(!isClient()){
             final Object[] params = (Object[])event.value;
             final long threadId = ((Long)params[0]).longValue();
             long timeout = ((Long)params[1]).longValue();
