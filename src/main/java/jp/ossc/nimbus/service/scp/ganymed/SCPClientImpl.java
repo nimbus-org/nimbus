@@ -42,6 +42,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
 
 import ch.ethz.ssh2.Connection;
 import ch.ethz.ssh2.SCPClient;
@@ -58,12 +59,15 @@ import jp.ossc.nimbus.service.scp.SCPException;
  */
 public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
     
+    private static final String LOCAL_FILE_SEPARATOR = System.getProperty("file.separator");
+    
     private int connectionTimeout;
     private int keyExchangeTimeout;
     private Boolean isTcpNoDelay;
     private ServiceName scpClientFactoryServiceName;
     
     private String[] serverHostKeyAlgorithms;
+    private String remoteFileSeparator;
     
     private File homeDir;
     
@@ -111,6 +115,13 @@ public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
     
     public void setScpClientFactoryServiceName(ServiceName name) {
         scpClientFactoryServiceName = name;
+    }
+    
+    public void setRemoteFileSeparator(String separator){
+        remoteFileSeparator = separator;
+    }
+    public String getRemoteFileSeparator(){
+        return remoteFileSeparator;
     }
     
     public void connect(String user, String host, String password) throws SCPException{
@@ -206,7 +217,7 @@ public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
             File file = new File(remote);
             String name = file.getName();
             localFile = homeDir == null ? new File(name) : new File(homeDir, name);
-            scpClient.get(remote, homeDir == null ? "." : homeDir.getPath());
+            scpClient.get(toRemoteFilePath(remote), homeDir == null ? "." : homeDir.getPath());
         }catch(IOException e){
             throw new SCPException(scpClientFactoryServiceName, "It failed to get! file=" + remote, e);
         }
@@ -227,7 +238,7 @@ public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
                 localFile = new File(homeDir, local);
             }
             final String targetDir = localFile.getParentFile() == null ? "." : localFile.getParentFile().getPath();
-            scpClient.get(remote, targetDir);
+            scpClient.get(toRemoteFilePath(remote), targetDir);
             File remoteFile = new File(remote);
             final String name = remoteFile.getName();
             File getFile = new File(targetDir, name);
@@ -260,7 +271,7 @@ public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
         }
         List localFiles = new ArrayList();
         Session session = null;
-        final String cmd = "scp -f " + remote;
+        final String cmd = "scp -f " + toRemoteFilePath(remote);
         File localFile = null;
         try{
             session = connection.openSession();
@@ -413,9 +424,9 @@ public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
             File remoteFile = new File(remote);
             if(localFile.getName().equals(remoteFile.getName())){
                 if(mode == null){
-                    scpClient.put(localFile.getPath(), remoteFile.getParentFile() == null ? "." : remoteFile.getParentFile().getPath());
+                    scpClient.put(localFile.getPath(), remoteFile.getParentFile() == null ? "." : toRemoteFilePath(remoteFile.getParentFile().getPath()));
                 }else{
-                    scpClient.put(localFile.getPath(), remoteFile.getParentFile() == null ? "." : remoteFile.getParentFile().getPath(), mode);
+                    scpClient.put(localFile.getPath(), remoteFile.getParentFile() == null ? "." : toRemoteFilePath(remoteFile.getParentFile().getPath()), mode);
                 }
             }else{
                 FileInputStream fis = null;
@@ -437,9 +448,9 @@ public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
                     }
                 }
                 if(mode == null){
-                    scpClient.put(baos.toByteArray(), remoteFile.getName(), remoteFile.getParentFile() == null ? "." : remoteFile.getParentFile().getPath());
+                    scpClient.put(baos.toByteArray(), remoteFile.getName(), remoteFile.getParentFile() == null ? "." : toRemoteFilePath(remoteFile.getParentFile().getPath()));
                 }else{
-                    scpClient.put(baos.toByteArray(), remoteFile.getName(), remoteFile.getParentFile() == null ? "." : remoteFile.getParentFile().getPath(), mode);
+                    scpClient.put(baos.toByteArray(), remoteFile.getName(), remoteFile.getParentFile() == null ? "." : toRemoteFilePath(remoteFile.getParentFile().getPath()), mode);
                 }
             }
         }catch(IOException e){
@@ -467,14 +478,23 @@ public class SCPClientImpl implements jp.ossc.nimbus.service.scp.SCPClient{
         try{
             for(int i = 0; i < localFiles.length; i++){
                 if(mode == null){
-                    scpClient.put(localFiles[i].getPath(), remoteDir);
+                    scpClient.put(localFiles[i].getPath(), toRemoteFilePath(remoteDir));
                 }else{
-                    scpClient.put(localFiles[i].getPath(), remoteDir, mode);
+                    scpClient.put(localFiles[i].getPath(), toRemoteFilePath(remoteDir), mode);
                 }
             }
         }catch(IOException e){
             throw new SCPException(scpClientFactoryServiceName, "It failed to mput! local=" + local, e);
         }
+    }
+    
+    private String toRemoteFilePath(String path){
+        if(remoteFileSeparator == null
+            || remoteFileSeparator.equals(LOCAL_FILE_SEPARATOR)
+        ){
+            return path;
+        }
+        return path.replaceAll(Matcher.quoteReplacement(LOCAL_FILE_SEPARATOR), Matcher.quoteReplacement(remoteFileSeparator));
     }
     
     public void close() throws SCPException{
