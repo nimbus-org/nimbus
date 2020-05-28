@@ -251,6 +251,12 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
     protected ClassMappingTree implementsTypeMap;
     
     /**
+     * オブジェクトからプロパティを取得する際にエラーが発生した場合、そのプロパティを無視するかどうかのフラグ。<p>
+     * デフォルトは、falseで、変換エラーとする。<br>
+     */
+    protected boolean isIgnoreExceptionProperty;
+    
+    /**
      * Javaオブジェクト→JSON変換を行うコンバータを生成する。<p>
      */
     public BeanJSONConverter(){
@@ -953,6 +959,25 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
     }
     
     /**
+     * オブジェクトからプロパティを取得する際にエラーが発生した場合、そのプロパティを無視するかどうかを設定する。<p>
+     * デフォルトは、falseで、変換エラーとする。<br>
+     *
+     * @param isIgnore 無視する場合、true
+     */
+    public void setIgnoreExceptionProperty(boolean isIgnore){
+        isIgnoreExceptionProperty = isIgnore;
+    }
+    
+    /**
+     * オブジェクトからプロパティを取得する際にエラーが発生した場合、そのプロパティを無視するかどうかを判定する。<p>
+     *
+     * @return trueの場合、無視する
+     */
+    public boolean isIgnoreExceptionProperty(){
+        return isIgnoreExceptionProperty;
+    }
+    
+    /**
      * 指定されたオブジェクトを変換する。<p>
      *
      * @param obj 変換対象のオブジェクト
@@ -1331,7 +1356,14 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
                     if(!props[i].isReadable(value)){
                         continue;
                     }
-                    Object propValue = props[i].getProperty(value);
+                    Object propValue = null;
+                    try{
+                        propValue = props[i].getProperty(value);
+                    }catch(InvocationTargetException e){
+                        if(isIgnoreExceptionProperty){
+                            continue;
+                        }
+                    }
                     if(propValue == value){
                         continue;
                     }
@@ -1980,7 +2012,6 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
             }else if(!(jsonObj instanceof Map)){
                 Property property = mappedProp != null ? mappedProp : propertyAccess.getProperty(name);
                 try{
-                    
                     propType = getPropertyType(property, jsonObj, value);
                 }catch(NoSuchPropertyException e){
                     if(!isIgnoreUnknownProperty){
