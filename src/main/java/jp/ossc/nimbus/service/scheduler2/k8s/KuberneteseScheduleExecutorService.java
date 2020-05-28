@@ -2,18 +2,18 @@
  * This software is distributed under following license based on modified BSD
  * style license.
  * ----------------------------------------------------------------------
- * 
+ *
  * Copyright 2003 The Nimbus Project. All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
- * 
+ *
  * 1. Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer. 
+ *    this list of conditions and the following disclaimer.
  * 2. Redistributions in binary form must reproduce the above copyright notice,
  *    this list of conditions and the following disclaimer in the documentation
  *    and/or other materials provided with the distribution.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE NIMBUS PROJECT ``AS IS'' AND ANY EXPRESS
  * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN
@@ -24,27 +24,47 @@
  * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- * 
+ *
  * The views and conclusions contained in the software and documentation are
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the Nimbus Project.
  */
 package jp.ossc.nimbus.service.scheduler2.k8s;
 
-import java.io.*;
-import java.util.*;
-import java.lang.reflect.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import io.kubernetes.client.openapi.ApiClient;
 import io.kubernetes.client.util.Config;
-
-import jp.ossc.nimbus.core.*;
-import jp.ossc.nimbus.beans.PropertyAccess;
-import jp.ossc.nimbus.beans.Property;
+import com.google.gson.Gson;
 import jp.ossc.nimbus.beans.NoSuchPropertyException;
+import jp.ossc.nimbus.beans.Property;
+import jp.ossc.nimbus.beans.PropertyAccess;
 import jp.ossc.nimbus.beans.dataset.Record;
-import jp.ossc.nimbus.service.scheduler2.*;
-import jp.ossc.nimbus.util.converter.*;
+import jp.ossc.nimbus.core.ServiceManagerFactory;
+import jp.ossc.nimbus.core.ServiceMetaData;
+import jp.ossc.nimbus.core.Utility;
+import jp.ossc.nimbus.service.scheduler2.AbstractScheduleExecutorService;
+import jp.ossc.nimbus.service.scheduler2.DefaultSchedule;
+import jp.ossc.nimbus.service.scheduler2.Schedule;
+import jp.ossc.nimbus.service.scheduler2.ScheduleStateControlException;
+import jp.ossc.nimbus.util.converter.BeanJSONConverter;
+import jp.ossc.nimbus.util.converter.ConvertException;
+import jp.ossc.nimbus.util.converter.Converter;
+import jp.ossc.nimbus.util.converter.CustomConverter;
+import jp.ossc.nimbus.util.converter.DateFormatConverter;
+import jp.ossc.nimbus.util.converter.StringStreamConverter;
 
 /**
  * Kuberneteseのコントロールプレーンを呼び出すスケジュール実行。<p>
@@ -52,11 +72,11 @@ import jp.ossc.nimbus.util.converter.*;
  * @author M.Takata
  */
 public class KuberneteseScheduleExecutorService extends AbstractScheduleExecutorService implements KuberneteseScheduleExecutorServiceMBean{
-    
+
     {
         type = DEFAULT_EXECUTOR_TYPE;
     }
-    
+
     protected String url;
     protected boolean isValidateSSL = true;
     protected String user;
@@ -67,95 +87,95 @@ public class KuberneteseScheduleExecutorService extends AbstractScheduleExecutor
     protected int writeTimeout = 3000;
     protected int readTimeout = 3000;
     protected Class[] apiClasses;
-    
+
     protected PropertyAccess propertyAccess;
     protected transient ApiClient client;
     protected transient Map apiMap;
     protected Set notApiMethodNames;
-    
+
     public void setApiClasses(Class[] classes){
         apiClasses = classes;
     }
     public Class[] getApiClasses(){
         return apiClasses;
     }
-    
+
     public void setURL(String url){
         this.url = url;
     }
     public String getURL(){
         return url;
     }
-    
+
     public void setValidateSSL(boolean isValidate){
         isValidateSSL = isValidate;
     }
     public boolean isValidateSSL(){
         return isValidateSSL;
     }
-    
+
     public void setUser(String user){
         this.user = user;
     }
     public String getUser(){
         return user;
     }
-    
+
     public void setPassword(String password){
         this.password = password;
     }
     public String getPassword(){
         return password;
     }
-    
+
     public void setToken(String token){
         this.token = token;
     }
     public String getToken(){
         return token;
     }
-    
+
     public void setConfigFilePath(String path){
         configFilePath = path;
     }
     public String getConfigFilePath(){
         return configFilePath;
     }
-    
+
     public void setConfigFileEncoding(String encode){
         configFileEncoding = encode;
     }
     public String getConfigFileEncoding(){
         return configFileEncoding;
     }
-    
+
     public void setWriteTimeout(int millis){
         writeTimeout = millis;
     }
     public int getWriteTimeout(){
         return writeTimeout;
     }
-    
+
     public void setReadTimeout(int millis){
         readTimeout = millis;
     }
     public int getReadTimeout(){
         return readTimeout;
     }
-    
+
     public void setNotApiMethodNames(Set methodNames){
         notApiMethodNames = methodNames;
     }
     public Set getNotApiMethodNames(){
         return notApiMethodNames == null ? null : new HashSet(notApiMethodNames);
     }
-    
+
     public void createService() throws Exception{
         propertyAccess = new PropertyAccess();
     }
-    
+
     public void startService() throws Exception{
-        
+
         if(url != null){
             if(user != null){
                 client = Config.fromUserPassword(url, user, password, isValidateSSL);
@@ -192,7 +212,7 @@ public class KuberneteseScheduleExecutorService extends AbstractScheduleExecutor
         }else{
             client = Config.fromCluster();
         }
-        
+
         if(writeTimeout > 0){
             client.setWriteTimeout(writeTimeout);
         }
@@ -207,7 +227,7 @@ public class KuberneteseScheduleExecutorService extends AbstractScheduleExecutor
         for(int i = 0; i < methods.length; i++){
             notApiMethodNames.add(methods[i].getName());
         }
-        
+
         if(apiClasses == null || apiClasses.length == 0){
             throw new IllegalArgumentException("ApiClasses is null");
         }
@@ -218,23 +238,28 @@ public class KuberneteseScheduleExecutorService extends AbstractScheduleExecutor
         BeanJSONConverter beanJSONConverter = new BeanJSONConverter();
         beanJSONConverter.setConvertType(BeanJSONConverter.OBJECT_TO_JSON);
         beanJSONConverter.setIgnoreUnknownProperty(true);
+        beanJSONConverter.setIgnoreExceptionProperty(true);
         beanJSONConverter.setOutputNullProperty(false);
         DateFormatConverter dfc = new DateFormatConverter();
         dfc.setFormat("yyyy/MM/dd HH:mm:ss.SSS");
         dfc.setConvertType(DateFormatConverter.DATE_TO_STRING);
         beanJSONConverter.setFormatConverter(java.util.Date.class, dfc);
         
-        StringStreamConverter stringStreamConverter = new StringStreamConverter();
-        stringStreamConverter.setConvertType(StringStreamConverter.STREAM_TO_STRING);
-        
-        CustomConverter customConverter = new CustomConverter();
-        customConverter.add(beanJSONConverter);
-        customConverter.add(stringStreamConverter);
-        
         addAutoInputConvertMappings(beanJSONConverter);
-        addAutoOutputConvertMappings(customConverter);
+        final Gson gson = new Gson();
+        addAutoOutputConvertMappings(
+            new Converter(){
+                public Object convert(Object obj) throws ConvertException{
+                    try{
+                        return gson.toJson(obj);
+                    }catch(Exception e){
+                        throw new ConvertException(e);
+                    }
+                }
+            }
+        );
     }
-    
+
     protected void convertInput(Schedule schedule) throws ConvertException{
         if(schedule.getInput() != null && schedule.getInput() instanceof String){
             String input = (String)schedule.getInput();
@@ -246,7 +271,7 @@ public class KuberneteseScheduleExecutorService extends AbstractScheduleExecutor
         }
         super.convertInput(schedule);
     }
-    
+
     /**
      * 指定された文字列内のプロパティ参照文字列をスケジュールのプロパティの値で置換する。<p>
      *
@@ -300,11 +325,11 @@ public class KuberneteseScheduleExecutorService extends AbstractScheduleExecutor
         }
         return result;
     }
-    
+
     public boolean controlState(String id, int cntrolState) throws ScheduleStateControlException {
         return false;
     }
-    
+
     protected Schedule executeInternal(Schedule schedule) throws Throwable{
         String taskName = schedule.getTaskName();
         if(taskName == null || taskName.indexOf('.') == -1){
@@ -320,7 +345,7 @@ public class KuberneteseScheduleExecutorService extends AbstractScheduleExecutor
         schedule.setOutput(response);
         return schedule;
     }
-    
+
     protected Object executeRequest(Object api, String methodName, Record params) throws Throwable{
         Class[] paramTypes = new Class[params == null ? 0 : params.size()];
         for(int i = 0; i < paramTypes.length; i++){
@@ -337,7 +362,7 @@ public class KuberneteseScheduleExecutorService extends AbstractScheduleExecutor
             throw e.getTargetException();
         }
     }
-    
+
     protected Object createAPI(ApiClient client, Class apiClass) throws Exception{
         Object api = apiClass.newInstance();
         apiClass.getMethod(
@@ -349,7 +374,7 @@ public class KuberneteseScheduleExecutorService extends AbstractScheduleExecutor
         );
         return api;
     }
-    
+
     protected ConvertMapping getConvertMapping(List convertMappings, String taskName){
         if(convertMappings == null){
             return null;
@@ -364,15 +389,15 @@ public class KuberneteseScheduleExecutorService extends AbstractScheduleExecutor
         }
         return null;
     }
-    
+
     protected ConvertMapping getInputConvertMapping(String taskName){
         return getConvertMapping(inputConvertMappings, taskName);
     }
-    
+
     protected ConvertMapping getOutputConvertMapping(String taskName){
         return getConvertMapping(outputConvertMappings, taskName);
     }
-    
+
     protected void addAutoInputConvertMappings(Converter converter) throws Exception{
         Iterator entries = apiMap.entrySet().iterator();
         while(entries.hasNext()){
@@ -405,13 +430,13 @@ public class KuberneteseScheduleExecutorService extends AbstractScheduleExecutor
             }
         }
     }
-    
+
     protected void addAutoOutputConvertMappings(Converter converter) throws Exception{
         if(getOutputConvertMapping(null) == null){
             addOutputConvertMapping(null, converter);
         }
     }
-    
+
     protected void addOutputConvertMapping(String taskName, Converter converter) throws Exception{
         ConvertMapping mapping = new ConvertMapping();
         mapping.setTaskName(taskName);
