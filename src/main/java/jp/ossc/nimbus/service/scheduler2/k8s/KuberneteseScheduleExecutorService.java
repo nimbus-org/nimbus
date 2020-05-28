@@ -47,6 +47,7 @@ import java.util.Set;
 
 import io.kubernetes.client.openapi.ApiClient;
 import io.kubernetes.client.util.Config;
+import com.google.gson.Gson;
 import jp.ossc.nimbus.beans.NoSuchPropertyException;
 import jp.ossc.nimbus.beans.Property;
 import jp.ossc.nimbus.beans.PropertyAccess;
@@ -243,16 +244,20 @@ public class KuberneteseScheduleExecutorService extends AbstractScheduleExecutor
         dfc.setFormat("yyyy/MM/dd HH:mm:ss.SSS");
         dfc.setConvertType(DateFormatConverter.DATE_TO_STRING);
         beanJSONConverter.setFormatConverter(java.util.Date.class, dfc);
-
-        StringStreamConverter stringStreamConverter = new StringStreamConverter();
-        stringStreamConverter.setConvertType(StringStreamConverter.STREAM_TO_STRING);
-
-        CustomConverter customConverter = new CustomConverter();
-        customConverter.add(beanJSONConverter);
-        customConverter.add(stringStreamConverter);
-
+        
         addAutoInputConvertMappings(beanJSONConverter);
-        addAutoOutputConvertMappings(customConverter);
+        final Gson gson = new Gson();
+        addAutoOutputConvertMappings(
+            new Converter(){
+                public Object convert(Object obj) throws ConvertException{
+                    try{
+                        return gson.toJson(obj);
+                    }catch(Exception e){
+                        throw new ConvertException(e);
+                    }
+                }
+            }
+        );
     }
 
     protected void convertInput(Schedule schedule) throws ConvertException{
