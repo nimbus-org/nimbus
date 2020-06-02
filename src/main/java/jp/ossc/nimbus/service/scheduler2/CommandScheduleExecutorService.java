@@ -63,7 +63,7 @@ import jp.ossc.nimbus.io.CSVReader;
  *     "commands":["コマンドまたは引数","コマンドまたは引数",...],
  *     "environments":{"変数名":"値","変数名":"値",...},
  *     "workDir":"コマンドの作業ディレクトリ",
- *     "timeout":1000,
+ *     "waitTime":1000,
  *     "logFile":{"file":"ログファイルパス", "encoding":"ファイルの文字コード"},
  *     "waitPattern":"出力内容の正規表現"
  * }
