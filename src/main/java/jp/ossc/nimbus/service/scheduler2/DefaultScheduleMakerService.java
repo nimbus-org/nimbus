@@ -114,9 +114,6 @@ public class DefaultScheduleMakerService extends ServiceBase
         if(master.getId() == null){
             throw new IllegalScheduleMasterException("Id is null.");
         }
-        if(master.getTaskName() == null){
-            throw new IllegalScheduleMasterException("TaskName is null. id=" + master.getId());
-        }
         if(master.getStartTime() == null){
             throw new IllegalScheduleMasterException("StartTime is null. id=" + master.getId());
         }
