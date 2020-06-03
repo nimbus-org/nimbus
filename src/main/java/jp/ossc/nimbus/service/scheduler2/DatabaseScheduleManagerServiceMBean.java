@@ -297,6 +297,20 @@ public interface DatabaseScheduleManagerServiceMBean extends ServiceBaseMBean{
     public void setScheduleGroupDependsTableSchema(DatabaseScheduleManagerService.ScheduleGroupDependsTableSchema schema);
     
     /**
+     * スケジュールIDを更新するSQLを設定する。<p>
+     *
+     * @param query SQL
+     */
+    public void setNextScheduleIdUpdateQuery(String query);
+    
+    /**
+     * スケジュールIDを更新するSQLを取得する。<p>
+     *
+     * @return SQL
+     */
+    public String getNextScheduleIdUpdateQuery();
+    
+    /**
      * スケジュールIDを発番するSQLを設定する。<p>
      *
      * @param query SQL

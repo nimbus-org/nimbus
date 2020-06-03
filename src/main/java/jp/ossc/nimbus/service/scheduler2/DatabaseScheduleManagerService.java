@@ -91,6 +91,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
     protected ScheduleDependsTableSchema scheduleDependsTableSchema = new ScheduleDependsTableSchema();
     protected ScheduleGroupDependsTableSchema scheduleGroupDependsTableSchema = new ScheduleGroupDependsTableSchema();
     
+    protected String nextScheduleIdUpdateQuery;
     protected String nextScheduleIdSelectQuery;
     
     protected String dateFormat = DEFAULT_DATE_FORMAT;
@@ -266,6 +267,15 @@ public class DatabaseScheduleManagerService extends ServiceBase
     // DatabaseScheduleManagerServiceMBeanのJavaDoc
     public void setScheduleGroupDependsTableSchema(ScheduleGroupDependsTableSchema schema){
         scheduleGroupDependsTableSchema = schema;
+    }
+    
+    // DatabaseScheduleManagerServiceMBeanのJavaDoc
+    public void setNextScheduleIdUpdateQuery(String query){
+        nextScheduleIdUpdateQuery = query;
+    }
+    // DatabaseScheduleManagerServiceMBeanのJavaDoc
+    public String getNextScheduleIdUpdateQuery(){
+        return nextScheduleIdUpdateQuery;
     }
     
     // DatabaseScheduleManagerServiceMBeanのJavaDoc
@@ -867,6 +877,11 @@ public class DatabaseScheduleManagerService extends ServiceBase
         ResultSet rs = null;
         try{
             if(nextScheduleIdSelectQuery != null){
+                if(nextScheduleIdUpdateQuery != null){
+                    nextScheduleIdStatement.executeUpdate(
+                        nextScheduleIdUpdateQuery
+                    );
+                }
                 rs = nextScheduleIdStatement.executeQuery(
                     nextScheduleIdSelectQuery
                 );
