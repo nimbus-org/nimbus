@@ -94,9 +94,12 @@ public class RecordListCSVConverter implements BindingStreamConverter, StreamStr
     protected boolean isEnclose;
     protected String lineSeparator = CSVWriter.DEFAULT_LINE_SEPARATOR;
     protected String nullValue;
+    protected String commentPrefix;
+    protected boolean isUnescapeLineSeparatorInEnclosure;
     
     protected boolean isIgnoreEmptyLine;
     protected boolean isIgnoreLineEndSeparator;
+    protected boolean isEscapeLineSeparatorInEnclosure;
     protected CSVReader csvReader;
     protected CSVWriter csvWriter;
     
@@ -410,6 +413,62 @@ public class RecordListCSVConverter implements BindingStreamConverter, StreamStr
     }
     
     /**
+     * コメント行の前置文字列を設定する。<p>
+     *
+     * @param value コメント行の前置文字列
+     */
+    public void setCommentPrefix(String value){
+        commentPrefix = value;
+    }
+    
+    /**
+     * コメント行の前置文字列を取得する。<p>
+     *
+     * @return コメント行の前置文字列
+     */
+    public String getCommentPrefix(){
+        return commentPrefix;
+    }
+    
+    /**
+     * 囲み文字で囲まれたCSV要素の場合に、エスケープされた改行をアンエスケープするかどうかを設定する。<p>
+     * デフォルトは、falseでアンエスケープしない。<br>
+     * 
+     * @param isUnescape アンエスケープする場合true
+     */
+    public void setUnescapeLineSeparatorInEnclosure(boolean isUnescape){
+        isUnescapeLineSeparatorInEnclosure = isUnescape;
+    }
+    
+    /**
+     * 囲み文字で囲まれたCSV要素の場合に、エスケープされた改行をアンエスケープするかどうかを判定する。<p>
+     * 
+     * @return trueの場合、アンエスケープする
+     */
+    public boolean isUnescapeLineSeparatorInEnclosure(){
+        return isUnescapeLineSeparatorInEnclosure;
+    }
+    
+    /**
+     * CSVの要素を囲み文字で囲む場合に、改行をエスケープするかどうかを設定する。<p>
+     * デフォルトは、falseでエスケープしない。<br>
+     * 
+     * @param isEscape エスケープする場合true
+     */
+    public void setEscapeLineSeparatorInEnclosure(boolean isEscape){
+        isEscapeLineSeparatorInEnclosure = isEscape;
+    }
+    
+    /**
+     * CSVの要素を囲み文字で囲む場合に、改行をエスケープするかどうかを判定する。<p>
+     * 
+     * @return trueの場合、エスケープする
+     */
+    public boolean isEscapeLineSeparatorInEnclosure(){
+        return isEscapeLineSeparatorInEnclosure;
+    }
+    
+    /**
      * CSVファイルを読み込む際に使用する{@link CSVReader}を設定する。<p>
      *
      * @param reader CSVReader
@@ -510,6 +569,7 @@ public class RecordListCSVConverter implements BindingStreamConverter, StreamStr
                 writer.setEnclose(isEnclose);
                 writer.setLineSeparator(lineSeparator);
                 writer.setNullValue(nullValue);
+                writer.setEscapeLineSeparatorInEnclosure(isEscapeLineSeparatorInEnclosure);
             }
             if(isExistsSchema){
                 writer.writeElement(schema.getSchema());
@@ -582,6 +642,8 @@ public class RecordListCSVConverter implements BindingStreamConverter, StreamStr
                 reader.setIgnoreLineEndSeparator(isIgnoreLineEndSeparator);
                 reader.setEnclosed(isEnclose);
                 reader.setNullValue(nullValue);
+                reader.setCommentPrefix(commentPrefix);
+                reader.setUnescapeLineSeparatorInEnclosure(isUnescapeLineSeparatorInEnclosure);
             }
             if(recList == null){
                 recList = new RecordList();
