@@ -50,6 +50,10 @@ public class ScriptEngineInterpreterService extends ServiceBase
     
     private static final long serialVersionUID = -649936290793723124L;
     
+    private static final String SCRIPT_REPLACEMENT = "\\$script";
+    private static final String LAST_STEP_REPLACEMENT = "\\$lastStep";
+    private static final String LAST_STEP = "$lastStep";
+    
     private String extension;
     private String mimeType;
     private String engineName;
@@ -58,6 +62,9 @@ public class ScriptEngineInterpreterService extends ServiceBase
     private boolean isCompilable;
     private ClassLoader classLoader;
     private boolean isNewScriptEngineByEvaluate = true;
+    private boolean isWrapByFunction;
+    private String wrapperFunction = "function wrapper(){$script\nreturn $lastStep}\nwrapper();";
+    private String stepDelimitor = ";";
     
     private ScriptEngineManager scriptEngineManager;
     private ScriptEngine scriptEngine;
@@ -108,6 +115,27 @@ public class ScriptEngineInterpreterService extends ServiceBase
     }
     public boolean isNewScriptEngineByEvaluate(){
         return isNewScriptEngineByEvaluate;
+    }
+    
+    public void setWrapByFunction(boolean isWrap){
+        isWrapByFunction = isWrap;
+    }
+    public boolean isWrapByFunction(){
+        return isWrapByFunction;
+    }
+    
+    public void setWrapperFunction(String wrapper){
+        wrapperFunction = wrapper;
+    }
+    public String getWrapperFunction(){
+        return wrapperFunction;
+    }
+    
+    public void setStepDelimitor(String delimitor){
+        stepDelimitor = delimitor;
+    }
+    public String getStepDelimitor(){
+        return stepDelimitor;
     }
     
     public void setClassLoader(ClassLoader loader){
@@ -184,6 +212,26 @@ public class ScriptEngineInterpreterService extends ServiceBase
         return isCompilable;
     }
     
+    public String wrapByFunction(String code){
+        if(wrapperFunction.lastIndexOf(LAST_STEP) == -1){
+            return wrapperFunction.replaceAll(SCRIPT_REPLACEMENT, code);
+        }else{
+            int index = code.lastIndexOf(stepDelimitor);
+            if(index != -1){
+                index = code.lastIndexOf(stepDelimitor, index - 1);
+            }
+            if(index == -1){
+                String function = wrapperFunction.replaceAll(SCRIPT_REPLACEMENT, "");
+                return function.replaceAll(LAST_STEP_REPLACEMENT, code);
+            }else{
+                String script = code.substring(0, index + 1);
+                String lastStep = code.substring(index + 1, code.length());
+                String function = wrapperFunction.replaceAll(SCRIPT_REPLACEMENT, script);
+                return function.replaceAll(LAST_STEP_REPLACEMENT, lastStep);
+            }
+        }
+    }
+    
     public CompiledInterpreter compile(String code) throws EvaluateException{
         if(!isCompilable){
             throw new EvaluateException("Compile is not supported.");
@@ -194,7 +242,7 @@ public class ScriptEngineInterpreterService extends ServiceBase
         }
         final Compilable compilable = (Compilable)engine;
         try{
-            final CompiledScript compiled = compilable.compile(code);
+            final CompiledScript compiled = compilable.compile(isWrapByFunction ? wrapByFunction(code) : code);
             return new CompiledInterpreter(){
                 
                 public Object evaluate() throws EvaluateException{
@@ -230,9 +278,9 @@ public class ScriptEngineInterpreterService extends ServiceBase
         engine.getBindings(ScriptContext.ENGINE_SCOPE).putAll(engineBindings);
         try{
             if(variables == null || variables.size() == 0){
-                return engine.eval(code);
+                return engine.eval(isWrapByFunction ? wrapByFunction(code) : code);
             }else{
-                return engine.eval(code, new SimpleBindings(variables));
+                return engine.eval(isWrapByFunction ? wrapByFunction(code) : code, new SimpleBindings(variables));
             }
         }catch(ScriptException e){
             throw new EvaluateException(e);
