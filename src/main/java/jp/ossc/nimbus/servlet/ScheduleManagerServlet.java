@@ -1220,7 +1220,9 @@ public class ScheduleManagerServlet extends HttpServlet{
             try{
                 Schedule schedule = scheduleManager.findSchedule(id);
                 schedules = new ArrayList(1);
-                schedules.add(schedule);
+                if(schedule != null){
+                    schedules.add(schedule);
+                }
             }catch(ScheduleManageException e){
                 exception = e;
             }
