@@ -1572,6 +1572,9 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                         continue;
                     }
                     V1Pod pod = (V1Pod)response.object;
+                    if(pod.getStatus().getPodIP() == null){
+                        continue;
+                    }
                     InetAddress address = InetAddress.getByName(pod.getStatus().getPodIP());
                     if(uid.getAddress().equals(address) || loopbackAddress.equals(address)){
                         continue;
