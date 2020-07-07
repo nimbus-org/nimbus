@@ -55,17 +55,18 @@ import jp.ossc.nimbus.util.converter.*;
  *     <tr bgcolor="#cccccc"><th>#</th><th>パラメータ名</th><th>値の説明</th><th>デフォルト</th></tr>
  *     <tr><td>1</td><td>ServicePaths</td><td>ロードするサービス定義ファイルのパスをカンマ区切りで指定する。<br>パスは、絶対パス、相対パス、クラスパスが指定できる。<br>ここで指定されたサービス定義は、サーブレットの初期化時に指定された順番にロードされ、サーブレットの破棄時に指定された順と逆順でアンロードされる。</td><td></td></tr>
  *     <tr><td>2</td><td>ServiceDirs</td><td>ロードするサービス定義ファイルがあるディレクトリのパスをカンマ区切りで指定する。<br>パスは、絶対パス、相対パスが指定できる。<br>ここで指定されたディレクトリは、サーブレットの初期化時に指定された順番にロードされ、サーブレットの破棄時に指定された順と逆順でアンロードされる。<br>また、ServicePathsよりも先に処理される。</td><td></td></tr>
- *     <tr><td>3</td><td>ServiceFileFilter</td><td>ServiceDirsと共に指定することで、ServiceDirsで指定したディレクトリのサービス定義ファイルのファイル名を正規表現で絞り込む。<br>フィルターの指定方法は、{@link jp.ossc.nimbus.io.RecurciveSearchFile#listAllTreeFiles(String, int)}を参照。</td><td></td></tr>
- *     <tr><td>4</td><td>CheckLoadManagerCompleted</td><td>サービス定義のロード完了チェックを行うかどうかを指定する。<br>チェックを行う場合は、trueを指定する。</td><td>false</td></tr>
- *     <tr><td>5</td><td>CheckLoadManagerCompletedBy</td><td>サービス定義のロード完了チェックをServiceManager単位で行いたい場合に、ServiceManagerの名前を指定する。<br>初期化パラメータCheckLoadManagerCompletedがtrueの場合だけ、有効である。</td><td></td></tr>
- *     <tr><td>6</td><td>Validate</td><td>サービス定義の検証を行うかどうかを指定する。<br>検証を行う場合は、trueを指定する。</td><td>false</td></tr>
- *     <tr><td>7</td><td>ConsoleEnabled</td><td>このサーブレットが提供する管理コンソール及びWebサービスを有効にするかどうかを指定する。<br>有効にする場合は、trueを指定する。</td><td>false</td></tr>
- *     <tr><td>8</td><td>AttributeSetEnabled</td><td>このサーブレットが提供する管理コンソール及びWebサービスで、サービスの属性を変更する機能を有効にするかどうかを指定する。<br>有効にする場合は、trueを指定する。</td><td>false</td></tr>
- *     <tr><td>9</td><td>AttributeMaxLength</td><td>このサーブレットが提供する管理コンソールで、サービスの属性を表示する場合に表示する属性値の最大長を指定する。</td><td>制限なし</td></tr>
- *     <tr><td>10</td><td>MethodCallEnabled</td><td>このサーブレットが提供する管理コンソール及びWebサービスで、サービスの操作を実行する機能を有効にするかどうかを指定する。<br>有効にする場合は、trueを指定する。</td><td>false</td></tr>
- *     <tr><td>11</td><td>IgnoreMethods</td><td>このサーブレットが提供する管理コンソール及びWebサービスで、無効にしたいサービスのメソッドを指定する。</td><td>false</td></tr>
- *     <tr><td>12</td><td>JSONConverterServiceName</td><td>JSON形式での応答を要求する場合に使用する{@link BeanJSONConverter}サービスのサービス名を指定する。</td><td>指定しない場合は、内部生成される。</td></tr>
- *     <tr><td>13</td><td>UnicodeEscape</td><td>JSON形式での応答を要求する場合に、２バイト文字をユニコードエスケープするかどうかを指定する。</td><td>true</td></tr>
+ *     <tr><td>3</td><td>PostServiceDirs</td><td>最後にロードするサービス定義ファイルがあるディレクトリのパスをカンマ区切りで指定する。<br>パスは、絶対パス、相対パスが指定できる。<br>ここで指定されたディレクトリは、サーブレットの初期化時に指定された順番にロードされ、サーブレットの破棄時に指定された順と逆順でアンロードされる。</td><td></td></tr>
+ *     <tr><td>4</td><td>ServiceFileFilter</td><td>ServiceDirsと共に指定することで、ServiceDirsで指定したディレクトリのサービス定義ファイルのファイル名を正規表現で絞り込む。<br>フィルターの指定方法は、{@link jp.ossc.nimbus.io.RecurciveSearchFile#listAllTreeFiles(String, int)}を参照。</td><td></td></tr>
+ *     <tr><td>5</td><td>CheckLoadManagerCompleted</td><td>サービス定義のロード完了チェックを行うかどうかを指定する。<br>チェックを行う場合は、trueを指定する。</td><td>false</td></tr>
+ *     <tr><td>6</td><td>CheckLoadManagerCompletedBy</td><td>サービス定義のロード完了チェックをServiceManager単位で行いたい場合に、ServiceManagerの名前を指定する。<br>初期化パラメータCheckLoadManagerCompletedがtrueの場合だけ、有効である。</td><td></td></tr>
+ *     <tr><td>7</td><td>Validate</td><td>サービス定義の検証を行うかどうかを指定する。<br>検証を行う場合は、trueを指定する。</td><td>false</td></tr>
+ *     <tr><td>8</td><td>ConsoleEnabled</td><td>このサーブレットが提供する管理コンソール及びWebサービスを有効にするかどうかを指定する。<br>有効にする場合は、trueを指定する。</td><td>false</td></tr>
+ *     <tr><td>9</td><td>AttributeSetEnabled</td><td>このサーブレットが提供する管理コンソール及びWebサービスで、サービスの属性を変更する機能を有効にするかどうかを指定する。<br>有効にする場合は、trueを指定する。</td><td>false</td></tr>
+ *     <tr><td>10</td><td>AttributeMaxLength</td><td>このサーブレットが提供する管理コンソールで、サービスの属性を表示する場合に表示する属性値の最大長を指定する。</td><td>制限なし</td></tr>
+ *     <tr><td>11</td><td>MethodCallEnabled</td><td>このサーブレットが提供する管理コンソール及びWebサービスで、サービスの操作を実行する機能を有効にするかどうかを指定する。<br>有効にする場合は、trueを指定する。</td><td>false</td></tr>
+ *     <tr><td>12</td><td>IgnoreMethods</td><td>このサーブレットが提供する管理コンソール及びWebサービスで、無効にしたいサービスのメソッドを指定する。</td><td>false</td></tr>
+ *     <tr><td>13</td><td>JSONConverterServiceName</td><td>JSON形式での応答を要求する場合に使用する{@link BeanJSONConverter}サービスのサービス名を指定する。</td><td>指定しない場合は、内部生成される。</td></tr>
+ *     <tr><td>14</td><td>UnicodeEscape</td><td>JSON形式での応答を要求する場合に、２バイト文字をユニコードエスケープするかどうかを指定する。</td><td>true</td></tr>
  * </table>
  * <p>
  * Webサービスは、クエリ指定でのGETリクエストに対して、JSONでデータを応答する。<br>
@@ -155,6 +156,11 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
      * ロードするサービス定義ファイルのあるディレクトリを指定するための初期化パラメータ名。<p>
      */
     protected static final String INIT_PARAM_NAME_SERVICE_DIRS = "ServiceDirs";
+    
+    /**
+     * 最後にロードするサービス定義ファイルのあるディレクトリを指定するための初期化パラメータ名。<p>
+     */
+    protected static final String INIT_PARAM_NAME_POST_SERVICE_DIRS = "PostServiceDirs";
     
     /**
      * ロードするサービス定義ファイルのあるディレクトリのファイル名フィルターを正規表現で指定するための初期化パラメータ名。<p>
@@ -448,6 +454,24 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
             }
         }
         
+        final String[] postServiceDirs = getPostServiceDirs();
+        if(postServiceDirs != null && postServiceDirs.length != 0){
+            final String serviceFileFilter = getServiceFileFilter();
+            for(int i = 0; i < postServiceDirs.length; i++){
+                ServiceManagerFactory.convertServiceDefinitionURLs(
+                    postServiceDirs[i],
+                    serviceFileFilter,
+                    urls
+                );
+                ServiceManagerFactory.loadManagers(
+                    postServiceDirs[i],
+                    serviceFileFilter,
+                    true,
+                    isValidate
+                );
+            }
+        }
+        
         if(isCheckLoadManagerCompleted()){
             final String[] managerNames = getCheckLoadManagerCompletedBy();
             if(managerNames == null || managerNames.length == 0){
@@ -544,6 +568,21 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
     private String[] getServiceDirs(){
         final ServletConfig config = getServletConfig();
         final String serviceDirString = config.getInitParameter(INIT_PARAM_NAME_SERVICE_DIRS);
+        if(serviceDirString == null){
+            return null;
+        }
+        final StringArrayEditor editor = new StringArrayEditor();
+        editor.setAsText(serviceDirString);
+        String[] serviceDirs = (String[])editor.getValue();
+        for(int i = 0; i < serviceDirs.length; i++){
+            serviceDirs[i] = getRealPath(serviceDirs[i]);
+        }
+        return serviceDirs;
+    }
+    
+    private String[] getPostServiceDirs(){
+        final ServletConfig config = getServletConfig();
+        final String serviceDirString = config.getInitParameter(INIT_PARAM_NAME_POST_SERVICE_DIRS);
         if(serviceDirString == null){
             return null;
         }
@@ -1329,6 +1368,18 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
                 }
             }
             
+            final String[] postServiceDirs = getPostServiceDirs();
+            if(postServiceDirs != null && postServiceDirs.length != 0){
+                final String serviceFileFilter = getServiceFileFilter();
+                for(int i = 0; i < postServiceDirs.length; i++){
+                    ServiceManagerFactory.convertServiceDefinitionURLs(
+                        postServiceDirs[i],
+                        serviceFileFilter,
+                        urls
+                    );
+                }
+            }
+            
             result &= ServiceManagerFactory.checkLoadManagerCompleted(urls, notStarted, false);
         }else{
             for(int i = 0; i < managerNames.length; i++){
@@ -1829,6 +1880,18 @@ public class ServiceManagerFactoryServlet extends HttpServlet{
      * サービス定義のアンロードを行う。<br>
      */
     public void destroy(){
+        
+        final String[] postServiceDirs = getPostServiceDirs();
+        if(postServiceDirs != null && postServiceDirs.length != 0){
+            final String serviceFileFilter = getServiceFileFilter();
+            for(int i = postServiceDirs.length; --i >= 0;){
+                ServiceManagerFactory.unloadManagers(
+                    postServiceDirs[i],
+                    serviceFileFilter
+                );
+            }
+        }
+        
         final String[] servicePaths = getServicePaths();
         if(servicePaths != null && servicePaths.length != 0){
             for(int i = servicePaths.length; --i >= 0;){
