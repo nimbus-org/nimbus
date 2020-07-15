@@ -2307,6 +2307,9 @@ public class ServiceManagerFactory implements Serializable{
      *  [-dir path filter]
      *   サービス定義ファイルのディレクトリとサービス定義ファイルを特定するフィルタを指定する。
      * 
+     *  [-postdir path filter]
+     *   最後に読み込むサービス定義ファイルのディレクトリとサービス定義ファイルを特定するフィルタを指定する。
+     * 
      *  [-help]
      *   ヘルプを表示します。
      * 
@@ -2329,6 +2332,7 @@ public class ServiceManagerFactory implements Serializable{
         
         final List servicePaths = new ArrayList();
         final List serviceDirs = new ArrayList();
+        final List postServiceDirs = new ArrayList();
         boolean validate = false;
         boolean server = false;
         for(int i = 0; i < args.length; i++){
@@ -2340,12 +2344,16 @@ public class ServiceManagerFactory implements Serializable{
                 if(i + 2 < args.length){
                     serviceDirs.add(new String[]{args[++i], args[++i]});
                 }
+            }else if(args[i].equals("-postdir")){
+                if(i + 2 < args.length){
+                    postServiceDirs.add(new String[]{args[++i], args[++i]});
+                }
             }else{
                 servicePaths.add(args[i]);
             }
         }
         
-        if(servicePaths.size() == 0 && serviceDirs.size() == 0){
+        if(servicePaths.size() == 0 && serviceDirs.size() == 0 && postServiceDirs.size() == 0){
             usage();
             return;
         }
@@ -2354,6 +2362,10 @@ public class ServiceManagerFactory implements Serializable{
             new Thread(
                 new Runnable(){
                     public void run(){
+                        for(int i = postServiceDirs.size(); --i >= 0;){
+                            String[] params = (String[])postServiceDirs.get(i);
+                            ServiceManagerFactory.unloadManagers(params[0], params[1]);
+                        }
                         for(int i = servicePaths.size(); --i >= 0;){
                             ServiceManagerFactory.unloadManager((String)servicePaths.get(i));
                         }
@@ -2375,6 +2387,13 @@ public class ServiceManagerFactory implements Serializable{
         }
         for(int i = 0, max = servicePaths.size(); i < max; i++){
             if(!ServiceManagerFactory.loadManager((String)servicePaths.get(i), false, validate)){
+                Thread.sleep(1000);
+                System.exit(-1);
+            }
+        }
+        for(int i = 0, max = postServiceDirs.size(); i < max; i++){
+            String[] params = (String[])postServiceDirs.get(i);
+            if(!ServiceManagerFactory.loadManagers(params[0], params[1], false, validate)){
                 Thread.sleep(1000);
                 System.exit(-1);
             }
