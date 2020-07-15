@@ -60,6 +60,7 @@ public class UserIdInputView extends JFrame implements ActionListener, KeyListen
     private boolean isWindowClosed;
     private List serviceDirs;
     private List servicePaths;
+    private List postServiceDirs;
     
     private TestController testController = null;
     
@@ -68,9 +69,10 @@ public class UserIdInputView extends JFrame implements ActionListener, KeyListen
         this.testController = testController;
     }
     
-    public UserIdInputView(List serviceDirs, List servicePaths) throws Exception {
+    public UserIdInputView(List serviceDirs, List servicePaths, List postServiceDirs) throws Exception {
         this.serviceDirs = serviceDirs;
         this.servicePaths = servicePaths;
+        this.postServiceDirs = postServiceDirs;
         initialize();
     }
     public boolean isWindowClosed(){
@@ -79,6 +81,12 @@ public class UserIdInputView extends JFrame implements ActionListener, KeyListen
     public synchronized void setWindowClosed(boolean isClosed){
         isWindowClosed = isClosed;
         if(isWindowClosed){
+            if(postServiceDirs != null){
+                for(int i = postServiceDirs.size(); --i >= 0;){
+                    String[] params = (String[])postServiceDirs.get(i);
+                    ServiceManagerFactory.unloadManagers(params[0], params[1]);
+                }
+            }
             if(servicePaths != null){
                 for(int i = servicePaths.size(); --i >= 0;){
                     ServiceManagerFactory.unloadManager((String)servicePaths.get(i));
@@ -136,7 +144,7 @@ public class UserIdInputView extends JFrame implements ActionListener, KeyListen
     }
     
     public static void main(String[] args) throws Exception{
-        UserIdInputView view = new UserIdInputView(null, null);
+        UserIdInputView view = new UserIdInputView(null, null, null);
         view.setVisible(true);
     }
     

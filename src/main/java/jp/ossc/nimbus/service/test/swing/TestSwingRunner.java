@@ -178,6 +178,7 @@ public class TestSwingRunner{
         }
         
         List serviceDirs = null;
+        List postServiceDirs = null;
         final List servicePaths = new ArrayList();
         boolean validate = false;
         String userId = null;
@@ -192,12 +193,17 @@ public class TestSwingRunner{
                     serviceDirs = new ArrayList();
                 }
                 serviceDirs.add(new String[]{args[++i], args[++i]});
+            }else if(args[i].equals("-postservicedir")){
+                if(postServiceDirs == null){
+                    postServiceDirs = new ArrayList();
+                }
+                postServiceDirs.add(new String[]{args[++i], args[++i]});
             }else{
                 servicePaths.add(args[i]);
             }
         }
         
-        if(servicePaths.size() == 0 && serviceDirs == null){
+        if(servicePaths.size() == 0 && serviceDirs == null && postServiceDirs == null){
             usage();
             return;
         }
@@ -214,6 +220,15 @@ public class TestSwingRunner{
             if(!ServiceManagerFactory.loadManager((String)servicePaths.get(i), false, validate)){
                 Thread.sleep(exitSleepTime);
                 System.exit(-1);
+            }
+        }
+        if(postServiceDirs != null){
+            for(int i = 0, max = postServiceDirs.size(); i < max; i++){
+                String[] params = (String[])postServiceDirs.get(i);
+                if(!ServiceManagerFactory.loadManagers(params[0], params[1], false, validate)){
+                    Thread.sleep(exitSleepTime);
+                    System.exit(-1);
+                }
             }
         }
         if(!ServiceManagerFactory.checkLoadManagerCompleted()){
@@ -240,7 +255,7 @@ public class TestSwingRunner{
         }
         
         // GUI を起動
-        final UserIdInputView view = new UserIdInputView(serviceDirs, servicePaths);
+        final UserIdInputView view = new UserIdInputView(serviceDirs, servicePaths, postServiceDirs);
         view.setTestController(testController);
         view.setVisible(true);
         view.addWindowListener(
