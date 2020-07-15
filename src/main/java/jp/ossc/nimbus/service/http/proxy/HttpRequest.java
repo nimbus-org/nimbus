@@ -76,20 +76,24 @@ public class HttpRequest{
     }
     
     /**
-     * インタンスを生成する。<p>
      * ヘッダの読み込みまで行う。<br>
      * ボディは、ストリームの読み込みは行わず、ボディの開始位置のストリームを格納する。<br>
      *
      * @param is HTTPリクエストの要求ストリーム
+     * @return 空要求の場合、false
      * @exception Exception ヘッダの読み込みに失敗した場合
      */
-    public HttpRequest(InputStream is) throws Exception{
+    public boolean read(InputStream is) throws Exception{
         header = new RequestHeader();
-        header.read(is);
+        if(!header.read(is)){
+            header = null;
+            return false;
+        }
         if(HTTP_METHOD_POST.equals(header.method)
                 || HTTP_METHOD_PUT.equals(header.method)){
             body = new RequestBody(header, is);
         }
+        return true;
     }
     
     /**
@@ -333,14 +337,18 @@ public class HttpRequest{
          * リクエストヘッダを読み込む。<p>
          *
          * @param is HTTPリクエストの入力ストリーム
+         * @return 空要求の場合、false
          * @exception Exception 読み込み及び解析に失敗した場合
          */
-        public void read(InputStream is) throws Exception{
+        public boolean read(InputStream is) throws Exception{
             final StringWriter sw = new StringWriter();
             final PrintWriter pw = new PrintWriter(sw);
             final ByteArrayOutputStream baos = new ByteArrayOutputStream();
             String requestLine = readLine(is, baos);
             requestLine = requestLine.trim();
+            if(requestLine.length() == 0){
+                return false;
+            }
             pw.println(requestLine);
             String[] requests = requestLine.split(" ");
             if(requests.length != 3){
@@ -398,6 +406,7 @@ public class HttpRequest{
             }while(true);
             pw.close();
             header = sw.toString();
+            return true;
         }
         
         /**
