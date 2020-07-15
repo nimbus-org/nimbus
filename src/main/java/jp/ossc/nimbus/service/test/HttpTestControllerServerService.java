@@ -183,7 +183,8 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
     
     public void doProcess(HttpRequest request, HttpResponse response) throws Exception {
         String acceptStr = request.getHeader().getHeader("Accept");
-        ContentType contentType = new ContentType(request.getHeader().getHeader("Content-Type"));
+        String contentTypeStr = request.getHeader().getHeader("Content-Type");
+        ContentType contentType = contentTypeStr == null ? null : new ContentType(contentTypeStr);
         boolean isJSON = true;
         if (acceptStr != null) {
             Accept accept = new Accept(acceptStr);
@@ -201,7 +202,7 @@ public class HttpTestControllerServerService extends HttpProcessServiceBase impl
         String body = null;
         if (request.getBody() != null) {
             request.getBody().read();
-            if (!"multipart/form-data".equalsIgnoreCase(contentType.getMediaType())) {
+            if (contentType != null && !"multipart/form-data".equalsIgnoreCase(contentType.getMediaType())) {
                 body = request.getBody().toString();
             }
         }
