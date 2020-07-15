@@ -144,7 +144,11 @@ public abstract class HttpProcessServiceBase extends ServiceBase
         OutputStream os = socket.getOutputStream();
         HttpRequest request = null;
         try{
-            request = new HttpRequest(is);
+            request = new HttpRequest();
+            if(!request.read(is)){
+                socket.close();
+                return;
+            }
             
             if("CONNECT".equals(request.header.method)){
                 TunnelProxy tunnelProxy = null;
@@ -220,7 +224,7 @@ public abstract class HttpProcessServiceBase extends ServiceBase
                 request.body.setDecompress(isRequestStreamInflate());
             }
         }catch(Exception e){
-            getLogger().write(MSG_ID_00001, e);
+            getLogger().write(MSG_ID_00001, socket.getRemoteSocketAddress(), e);
             HttpResponse response = new HttpResponse();
             response.setStatusCode(400);
             response.setStatusMessage(e.getMessage());

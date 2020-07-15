@@ -426,7 +426,7 @@ WSSV_00001,Unexpected exception occured.,100,jp.ossc.nimbus.service.log.SYSTEM_W
 WSSV_00002,Illegal Accept header. header=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 WSSV_00003,Illegal Accept-Charset header. header=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 WSSV_00004,Charset of Accept-Charset header is not supported. header=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
-HPS__00001,Received bad request,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+HPS__00001,Received bad request.remoteAddress=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 HPS__00002,Unexpected error occured.,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 HPS__00003,Client abort.url=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY,false
 RSS__00001,Unexpected error occured on "@0".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
