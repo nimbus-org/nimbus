@@ -306,7 +306,11 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
     }
     
     public void endScenarioGroup() throws Exception {
-        String scenarioGroupId = getCurrentScenarioGroup().getScenarioGroupId();
+        TestScenarioGroup group = getCurrentScenarioGroup();
+        if(group == null){
+            return;
+        }
+        String scenarioGroupId = group.getScenarioGroupId();
         request("endScenarioGroup", null);
         if (testResourceManager != null) {
             downloadScenarioGroupResult(testResourceFileBaseDirectory, scenarioGroupId, RESPONSE_FILE_TYPE_DEFAULT);
@@ -343,7 +347,11 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
     }
     
     public void endScenario(String scenarioId) throws Exception {
-        String scenarioGroupId = getCurrentScenarioGroup().getScenarioGroupId();
+        TestScenarioGroup group = getCurrentScenarioGroup();
+        if(group == null){
+            return;
+        }
+        String scenarioGroupId = group.getScenarioGroupId();
         Map params = new HashMap();
         params.put("scenarioId", scenarioId);
         request("endScenario", params);
@@ -372,7 +380,11 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
     }
     
     public void endTestCase(String scenarioId, String testcaseId) throws Exception {
-        String scenarioGroupId = getCurrentScenarioGroup().getScenarioGroupId();
+        TestScenarioGroup group = getCurrentScenarioGroup();
+        if(group == null){
+            return;
+        }
+        String scenarioGroupId = group.getScenarioGroupId();
         Map params = new HashMap();
         params.put("scenarioId", scenarioId);
         params.put("testcaseId", testcaseId);
