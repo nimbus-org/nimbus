@@ -727,13 +727,25 @@ public class TableCreatorService extends ServiceBase
             if(existsTable(stmt)){
                 if(preDropTableQueries != null){
                     for(int i = 0; i < preDropTableQueries.length; i++){
-                        stmt.executeUpdate(preDropTableQueries[i]);
+                        try{
+                            stmt.executeUpdate(preDropTableQueries[i]);
+                        }catch(SQLException e){
+                            handleSQLException(e, ignoreSQLExceptionErrorCodeOnDropTable);
+                        }
                     }
                 }
-                stmt.executeUpdate(dropTableQuery);
+                try{
+                    stmt.executeUpdate(dropTableQuery);
+                }catch(SQLException e){
+                    handleSQLException(e, ignoreSQLExceptionErrorCodeOnDropTable);
+                }
                 if(postDropTableQueries != null){
                     for(int i = 0; i < postDropTableQueries.length; i++){
-                        stmt.executeUpdate(postDropTableQueries[i]);
+                        try{
+                            stmt.executeUpdate(postDropTableQueries[i]);
+                        }catch(SQLException e){
+                            handleSQLException(e, ignoreSQLExceptionErrorCodeOnDropTable);
+                        }
                     }
                 }
             }
@@ -803,13 +815,25 @@ public class TableCreatorService extends ServiceBase
             if(!existsTable(stmt)){
                 if(preCreateTableQueries != null){
                     for(int i = 0; i < preCreateTableQueries.length; i++){
-                        stmt.executeUpdate(preCreateTableQueries[i]);
+                        try{
+                            stmt.executeUpdate(preCreateTableQueries[i]);
+                        }catch(SQLException e){
+                            handleSQLException(e, ignoreSQLExceptionErrorCodeOnCreateTable);
+                        }
                     }
                 }
-                stmt.executeUpdate(createTableQuery);
+                try{
+                    stmt.executeUpdate(createTableQuery);
+                }catch(SQLException e){
+                    handleSQLException(e, ignoreSQLExceptionErrorCodeOnCreateTable);
+                }
                 if(postCreateTableQueries != null){
                     for(int i = 0; i < postCreateTableQueries.length; i++){
-                        stmt.executeUpdate(postCreateTableQueries[i]);
+                        try{
+                            stmt.executeUpdate(postCreateTableQueries[i]);
+                        }catch(SQLException e){
+                            handleSQLException(e, ignoreSQLExceptionErrorCodeOnCreateTable);
+                        }
                     }
                 }
             }
