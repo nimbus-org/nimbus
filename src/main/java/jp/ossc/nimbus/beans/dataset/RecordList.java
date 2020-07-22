@@ -831,6 +831,68 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
+     * 全てのレコードの指定されたプロパティの値を取得する。<p>
+     *
+     * @param name プロパティ名
+     * @return 指定されたプロパティの値のリスト
+     * @exception PropertyGetException プロパティの取得に失敗した場合
+     */
+    public List getPropertyList(String name){
+        final int index = getRecordSchema().getPropertyIndex(name);
+        if(index == -1){
+            throw new PropertyGetException(null, "No such property : " + name);
+        }
+        return getPropertyList(index);
+    }
+    
+    /**
+     * 全てのレコードの指定されたプロパティの値を取得する。<p>
+     *
+     * @param index プロパティのインデックス 
+     * @return 指定されたプロパティの値のリスト
+     * @exception PropertyGetException プロパティの取得に失敗した場合
+     */
+    public List getPropertyList(int index){
+        List result = new ArrayList();
+        final Iterator itr = records.iterator();
+        while(itr.hasNext()){
+            Record record = (Record)itr.next();
+            result.add(record.getProperty(index));
+        }
+        return result;
+    }
+    
+    /**
+     * 全てのレコードの指定されたプロパティの値を取得する。<p>
+     *
+     * @param name プロパティ名
+     * @return 指定されたプロパティの値の集合
+     */
+    public Set getPropertySet(String name){
+        final int index = getRecordSchema().getPropertyIndex(name);
+        if(index == -1){
+            throw new PropertyGetException(null, "No such property : " + name);
+        }
+        return getPropertySet(index);
+    }
+    
+    /**
+     * 全てのレコードの指定されたプロパティの値を取得する。<p>
+     *
+     * @param index プロパティのインデックス 
+     * @return 指定されたプロパティの値の集合
+     */
+    public Set getPropertySet(int index){
+        Set result = new HashSet();
+        final Iterator itr = records.iterator();
+        while(itr.hasNext()){
+            Record record = (Record)itr.next();
+            result.add(record.getProperty(index));
+        }
+        return result;
+    }
+    
+    /**
      * 指定されたプロパティ名のプロパティをソートキーにして、昇順でソートする。<p>
      *
      * @param orderBy ソートキーとなるプロパティ名配列

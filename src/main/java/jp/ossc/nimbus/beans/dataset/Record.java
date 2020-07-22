@@ -409,7 +409,7 @@ public class Record implements Externalizable, Cloneable, Map{
         }
         final int index = getRecordSchema().getPropertyIndex(name);
         if(index == -1){
-            throw new PropertyGetException(null, "No such property : " + name);
+            throw new PropertySetException(null, "No such property : " + name);
         }
         setProperty(index, val);
     }
@@ -484,7 +484,7 @@ public class Record implements Externalizable, Cloneable, Map{
         }
         final int index = getRecordSchema().getPropertyIndex(name);
         if(index == -1){
-            throw new PropertyGetException(null, "No such property : " + name);
+            throw new PropertySetException(null, "No such property : " + name);
         }
         setProperty(index, val);
     }
@@ -515,7 +515,7 @@ public class Record implements Externalizable, Cloneable, Map{
         }
         final int index = getRecordSchema().getPropertyIndex(name);
         if(index == -1){
-            throw new PropertyGetException(null, "No such property : " + name);
+            throw new PropertySetException(null, "No such property : " + name);
         }
         setProperty(index, val);
     }
@@ -546,7 +546,7 @@ public class Record implements Externalizable, Cloneable, Map{
         }
         final int index = getRecordSchema().getPropertyIndex(name);
         if(index == -1){
-            throw new PropertyGetException(null, "No such property : " + name);
+            throw new PropertySetException(null, "No such property : " + name);
         }
         setProperty(index, val);
     }
@@ -577,7 +577,7 @@ public class Record implements Externalizable, Cloneable, Map{
         }
         final int index = getRecordSchema().getPropertyIndex(name);
         if(index == -1){
-            throw new PropertyGetException(null, "No such property : " + name);
+            throw new PropertySetException(null, "No such property : " + name);
         }
         setProperty(index, val);
     }
@@ -608,7 +608,7 @@ public class Record implements Externalizable, Cloneable, Map{
         }
         final int index = getRecordSchema().getPropertyIndex(name);
         if(index == -1){
-            throw new PropertyGetException(null, "No such property : " + name);
+            throw new PropertySetException(null, "No such property : " + name);
         }
         setProperty(index, val);
     }
@@ -639,7 +639,7 @@ public class Record implements Externalizable, Cloneable, Map{
         }
         final int index = getRecordSchema().getPropertyIndex(name);
         if(index == -1){
-            throw new PropertyGetException(null, "No such property : " + name);
+            throw new PropertySetException(null, "No such property : " + name);
         }
         setProperty(index, val);
     }
@@ -670,7 +670,7 @@ public class Record implements Externalizable, Cloneable, Map{
         }
         final int index = getRecordSchema().getPropertyIndex(name);
         if(index == -1){
-            throw new PropertyGetException(null, "No such property : " + name);
+            throw new PropertySetException(null, "No such property : " + name);
         }
         setProperty(index, val);
     }
@@ -701,7 +701,7 @@ public class Record implements Externalizable, Cloneable, Map{
         }
         final int index = getRecordSchema().getPropertyIndex(name);
         if(index == -1){
-            throw new PropertyGetException(null, "No such property : " + name);
+            throw new PropertySetException(null, "No such property : " + name);
         }
         setProperty(index, val);
     }
@@ -1157,7 +1157,7 @@ public class Record implements Externalizable, Cloneable, Map{
         }
         final int index = getRecordSchema().getPropertyIndex(name);
         if(index == -1){
-            throw new PropertyGetException(null, "No such property : " + name);
+            throw new PropertySetException(null, "No such property : " + name);
         }
         setParseProperty(index, val);
     }
