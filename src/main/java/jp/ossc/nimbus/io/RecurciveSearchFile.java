@@ -794,6 +794,9 @@ public class RecurciveSearchFile extends File implements Serializable {
     
     public static void dataCopy(File fromFile, File toFile) throws IOException {
         FileInputStream fis = new FileInputStream(fromFile);
+        if(toFile.getParentFile() != null && !toFile.getParentFile().exists()){
+            toFile.getParentFile().mkdirs();
+        }
         FileOutputStream fos = new FileOutputStream(toFile);
         try {
             byte[] buf = new byte[1024];
