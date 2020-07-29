@@ -737,16 +737,16 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
     }
     
     public void generateTestScenarioGroupEvidenceFile(String scenarioGroupId) throws Exception {
-        File targetDir = new File(testResourceFileBaseDirectory, scenarioGroupId);
-        if (!targetDir.exists()) {
-            return;
-        }
         if (isUploadEvidenceServer) {
             Map params = new HashMap();
             params.put("scenarioGroupId", scenarioGroupId);
             request("generateTestScenarioGroupEvidenceFile", params);
         }
         if (testResourceManager != null && testResourceManager instanceof UploadableTestResourceManager) {
+            File targetDir = new File(testResourceFileBaseDirectory, scenarioGroupId);
+            if (!targetDir.exists()) {
+                return;
+            }
             TestScenarioGroupResource testScenarioGroupResource = getTestScenarioGroupResource(scenarioGroupId);
             if (testScenarioGroupResource != null) {
                 Map actionEvidenceFileNameMap = testScenarioGroupResource.getActionEvidenceFileNameMap();
@@ -774,10 +774,6 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
     }
     
     public void generateTestScenarioEvidenceFile(String scenarioGroupId, String scenarioId) throws Exception {
-        File targetDir = new File(testResourceFileBaseDirectory, scenarioGroupId + File.separator + scenarioId);
-        if (!targetDir.exists()) {
-            return;
-        }
         if (isUploadEvidenceServer) {
             Map params = new HashMap();
             params.put("scenarioGroupId", scenarioGroupId);
@@ -785,6 +781,10 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
             request("generateTestScenarioEvidenceFile", params);
         }
         if (testResourceManager != null && testResourceManager instanceof UploadableTestResourceManager) {
+            File targetDir = new File(testResourceFileBaseDirectory, scenarioGroupId + File.separator + scenarioId);
+            if (!targetDir.exists()) {
+                return;
+            }
             TestScenarioResource testScenarioResource = getTestScenarioResource(scenarioGroupId, scenarioId);
             if (testScenarioResource != null) {
                 Map actionEvidenceFileNameMap = testScenarioResource.getActionEvidenceFileNameMap();
@@ -812,10 +812,6 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
     }
     
     public void generateTestCaseEvidenceFile(String scenarioGroupId, String scenarioId, String testcaseId) throws Exception {
-        File targetDir = new File(testResourceFileBaseDirectory, scenarioGroupId + File.separator + scenarioId + File.separator + testcaseId);
-        if (!targetDir.exists()) {
-            return;
-        }
         if (isUploadEvidenceServer) {
             Map params = new HashMap();
             params.put("scenarioGroupId", scenarioGroupId);
@@ -824,6 +820,10 @@ public class HttpTestControllerClientService extends ServiceBase implements Test
             request("generateTestCaseEvidenceFile", params);
         }
         if (testResourceManager != null && testResourceManager instanceof UploadableTestResourceManager) {
+            File targetDir = new File(testResourceFileBaseDirectory, scenarioGroupId + File.separator + scenarioId + File.separator + testcaseId);
+            if (!targetDir.exists()) {
+                return;
+            }
             TestCaseResource testCaseResource = getTestCaseResource(scenarioGroupId, scenarioId, testcaseId);
             if (testCaseResource != null) {
                 Map actionEvidenceFileNameMap = testCaseResource.getActionEvidenceFileNameMap();

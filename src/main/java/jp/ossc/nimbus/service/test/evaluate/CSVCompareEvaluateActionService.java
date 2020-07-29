@@ -395,7 +395,7 @@ public class CSVCompareEvaluateActionService extends ServiceBase implements Eval
                     writeCSV(dstcsvw, dstcsv, ignores, ignoreRegexPatternMap);
                 }
                 result &= compareCSVList(srccsv, dstcsv, ignores, ignoreRegexPatternMap);
-            }while(isOutputFileAfterEdit ? (srccsv != null || dstcsv != null) : result);
+            }while(isOutputFileAfterEdit ? (srccsv != null || dstcsv != null) : (result && (srccsv != null || dstcsv != null)));
         }finally{
             if(srcisr != null){
                 try{
