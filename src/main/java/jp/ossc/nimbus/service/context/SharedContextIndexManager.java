@@ -309,7 +309,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException{
         SharedContextIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchNull(result);
         }
@@ -326,7 +326,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException{
         SharedContextIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchNotNull(result);
         }
@@ -338,7 +338,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
     public Set searchKey(Set result, String indexName, String[] propNames) throws IndexNotFoundException{
         SharedContextIndex index = indexName == null ? getIndexBy(propNames) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(propNames) : new IndexNotFoundException(indexName);
         }else{
             return index.searchKey(result);
         }
@@ -351,7 +351,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException, IndexPropertyAccessException{
         SharedContextIndex index = indexName == null ? getIndexBy(propNames) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(propNames) : new IndexNotFoundException(indexName);
         }else{
             return index.searchByPrimary(value);
         }
@@ -373,7 +373,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException, IndexPropertyAccessException{
         SharedContextIndex index = indexName == null ? getIndexBy(propNames) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(propNames) : new IndexNotFoundException(indexName);
         }else{
             return index.searchBy(result, value);
         }
@@ -395,7 +395,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException, IndexPropertyAccessException{
         SharedContextIndex index = indexName == null ? getIndexBy(propNames) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(propNames) : new IndexNotFoundException(indexName);
         }else{
             return index.searchIn(result, values);
         }
@@ -417,7 +417,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
     ){
         SharedContextIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchByProperty(result, prop);
         }
@@ -439,7 +439,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
     ){
         SharedContextIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchInProperty(result, props);
         }
@@ -459,7 +459,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException, IllegalArgumentException{
         SharedContextIndex index = indexName == null ? getIndexBy(props.keySet()) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException((String[])props.keySet().toArray(new String[props.size()])) : new IndexNotFoundException(indexName);
         }else{
             return index.searchByProperty(result, props);
         }
@@ -479,7 +479,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException, IllegalArgumentException{
         SharedContextIndex index = indexName == null ? getIndexBy(props[0].keySet()) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException((String[])props[0].keySet().toArray(new String[props[0].size()])) : new IndexNotFoundException(indexName);
         }else{
             return index.searchInProperty(result, props);
         }
@@ -501,7 +501,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException, IndexPropertyAccessException{
         SharedContextIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchFrom(result, fromValue);
         }
@@ -523,7 +523,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException{
         SharedContextIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchFromProperty(result, fromProp);
         }
@@ -545,7 +545,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException, IndexPropertyAccessException{
         SharedContextIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchTo(result, toValue);
         }
@@ -567,7 +567,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException{
         SharedContextIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchToProperty(result, toProp);
         }
@@ -591,7 +591,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException, IndexPropertyAccessException{
         SharedContextIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchRange(result, fromValue, toValue);
         }
@@ -615,7 +615,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException{
         SharedContextIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchRangeProperty(result, fromProp, toProp);
         }
@@ -640,7 +640,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException, IndexPropertyAccessException{
         SharedContextIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchFrom(result, fromValue, inclusive);
         }
@@ -664,7 +664,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException{
         SharedContextIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchFromProperty(result, fromProp, inclusive);
         }
@@ -688,7 +688,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException, IndexPropertyAccessException{
         SharedContextIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchTo(result, toValue, inclusive);
         }
@@ -712,7 +712,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException{
         SharedContextIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchToProperty(result, toProp, inclusive);
         }
@@ -740,7 +740,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException, IndexPropertyAccessException{
         SharedContextIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchRange(result, fromValue, fromInclusive, toValue, toInclusive);
         }
@@ -768,7 +768,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException{
         SharedContextIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchRangeProperty(result, fromProp, fromInclusive, toProp, toInclusive);
         }
@@ -905,7 +905,7 @@ public class SharedContextIndexManager implements Externalizable, Cloneable{
             index = getIndexBy(propNames);
         }
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(propNames) : new IndexNotFoundException(indexName);
         }
         index = index.clone(resultSet);
         return index;

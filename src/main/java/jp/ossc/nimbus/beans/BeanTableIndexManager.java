@@ -417,7 +417,7 @@ public class BeanTableIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException{
         BeanTableIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchNull(result);
         }
@@ -434,7 +434,7 @@ public class BeanTableIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException{
         BeanTableIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchNotNull(result);
         }
@@ -446,7 +446,7 @@ public class BeanTableIndexManager implements Externalizable, Cloneable{
     public Set searchKeyElement(Set result, String indexName, String[] propNames) throws IndexNotFoundException{
         BeanTableIndex index = indexName == null ? getIndexBy(propNames) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(propNames) : new IndexNotFoundException(indexName);
         }else{
             return index.searchKeyElement(result);
         }
@@ -459,7 +459,7 @@ public class BeanTableIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException, IndexPropertyAccessException{
         BeanTableIndex index = indexName == null ? getIndexBy(propNames) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(propNames) : new IndexNotFoundException(indexName);
         }else{
             return index.searchByPrimaryElement(element);
         }
@@ -481,7 +481,7 @@ public class BeanTableIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException, IndexPropertyAccessException{
         BeanTableIndex index = indexName == null ? getIndexBy(propNames) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(propNames) : new IndexNotFoundException(indexName);
         }else{
             return index.searchByElement(element, result);
         }
@@ -503,7 +503,7 @@ public class BeanTableIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException, IndexPropertyAccessException{
         BeanTableIndex index = indexName == null ? getIndexBy(propNames) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(propNames) : new IndexNotFoundException(indexName);
         }else{
             return index.searchInElement(result, elements);
         }
@@ -525,7 +525,7 @@ public class BeanTableIndexManager implements Externalizable, Cloneable{
     ){
         BeanTableIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchBy(value, result);
         }
@@ -547,7 +547,7 @@ public class BeanTableIndexManager implements Externalizable, Cloneable{
     ){
         BeanTableIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchIn(result, values);
         }
@@ -567,7 +567,7 @@ public class BeanTableIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException, IllegalArgumentException{
         BeanTableIndex index = indexName == null ? getIndexBy(keys.keySet()) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException((String[])keys.keySet().toArray(new String[keys.size()])) : new IndexNotFoundException(indexName);
         }else{
             return index.searchBy(keys, result);
         }
@@ -587,7 +587,7 @@ public class BeanTableIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException, IllegalArgumentException{
         BeanTableIndex index = indexName == null ? getIndexBy(keys[0].keySet()) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException((String[])keys[0].keySet().toArray(new String[keys[0].size()])) : new IndexNotFoundException(indexName);
         }else{
             return index.searchIn(result, keys);
         }
@@ -609,7 +609,7 @@ public class BeanTableIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException, IndexPropertyAccessException{
         BeanTableIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchFromElement(from, result);
         }
@@ -631,7 +631,7 @@ public class BeanTableIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException{
         BeanTableIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchFrom(from, result);
         }
@@ -653,7 +653,7 @@ public class BeanTableIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException, IndexPropertyAccessException{
         BeanTableIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchToElement(to, result);
         }
@@ -675,7 +675,7 @@ public class BeanTableIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException{
         BeanTableIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchTo(to, result);
         }
@@ -699,7 +699,7 @@ public class BeanTableIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException, IndexPropertyAccessException{
         BeanTableIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchRangeElement(from, to, result);
         }
@@ -723,7 +723,7 @@ public class BeanTableIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException{
         BeanTableIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchRange(from, to, result);
         }
@@ -748,7 +748,7 @@ public class BeanTableIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException, IndexPropertyAccessException{
         BeanTableIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchFromElement(from, inclusive, result);
         }
@@ -772,7 +772,7 @@ public class BeanTableIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException{
         BeanTableIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchFrom(from, inclusive, result);
         }
@@ -796,7 +796,7 @@ public class BeanTableIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException, IndexPropertyAccessException{
         BeanTableIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchToElement(to, inclusive, result);
         }
@@ -820,7 +820,7 @@ public class BeanTableIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException{
         BeanTableIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchTo(to, inclusive, result);
         }
@@ -848,7 +848,7 @@ public class BeanTableIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException, IndexPropertyAccessException{
         BeanTableIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchRangeElement(from, fromInclusive, to, toInclusive, result);
         }
@@ -876,7 +876,7 @@ public class BeanTableIndexManager implements Externalizable, Cloneable{
     ) throws IndexNotFoundException{
         BeanTableIndex index = indexName == null ? getIndexBy(new String[]{propName}) : getIndex(indexName);
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(new String[]{propName}) : new IndexNotFoundException(indexName);
         }else{
             return index.searchRange(from, fromInclusive, to, toInclusive, result);
         }
