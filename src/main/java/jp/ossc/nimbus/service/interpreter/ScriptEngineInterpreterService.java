@@ -227,7 +227,7 @@ public class ScriptEngineInterpreterService extends ServiceBase
                 String script = code.substring(0, index + 1);
                 String lastStep = code.substring(index + 1, code.length());
                 String function = wrapperFunction.replaceAll(SCRIPT_REPLACEMENT, script);
-                return function.replaceAll(LAST_STEP_REPLACEMENT, lastStep);
+                return function.replaceAll(LAST_STEP_REPLACEMENT, lastStep.replaceAll("[\\n\\r]", ""));
             }
         }
     }
