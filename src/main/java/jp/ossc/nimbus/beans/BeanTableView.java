@@ -838,7 +838,7 @@ public class BeanTableView implements Cloneable{
             index = indexManager.getIndexBy(propNames);
         }
         if(index == null){
-            throw new IndexNotFoundException();
+            throw indexName == null ? new IndexNotFoundException(propNames) : new IndexNotFoundException(indexName);
         }
         index = index.cloneEmpty(false);
         Iterator itr = resultSet.iterator();

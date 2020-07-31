@@ -35,6 +35,11 @@ public class IndexNotFoundException extends RuntimeException{
     
     private static final long serialVersionUID = 7818798545275508641L;
     
-    public IndexNotFoundException(){
+    public IndexNotFoundException(String indexName){
+        super("indexName=" + indexName);
+    }
+    
+    public IndexNotFoundException(String[] propNames){
+        super("propertyNames=" + (propNames == null ? "null" : java.util.Arrays.asList(propNames).toString()));
     }
 }
