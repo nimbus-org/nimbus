@@ -31,10 +31,14 @@
  */
 package jp.ossc.nimbus.service.test.action;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.io.BufferedReader;
 import java.io.Reader;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
+import java.util.HashMap;
 
 import jp.ossc.nimbus.core.ServiceBase;
 import jp.ossc.nimbus.core.ServiceName;
@@ -44,6 +48,7 @@ import jp.ossc.nimbus.service.test.TestAction;
 import jp.ossc.nimbus.service.test.TestActionEstimation;
 import jp.ossc.nimbus.service.scheduler2.DefaultScheduleMaster;
 import jp.ossc.nimbus.service.scheduler2.ScheduleManager;
+import jp.ossc.nimbus.service.interpreter.Interpreter;
 
 /**
  * {@link ScheduleManager}を使って、スケジュールを作成するテストアクション。<p>
@@ -57,6 +62,8 @@ public class ScheduleMakeActionService extends ServiceBase implements TestAction
     
     protected ServiceName scheduleManagerServiceName;
     protected ScheduleManager scheduleManager;
+    protected ServiceName interpreterServiceName;
+    protected Interpreter interpreter;
     protected double expectedCost = Double.NaN;
 
     public void setScheduleManagerServiceName(ServiceName name){
@@ -66,12 +73,22 @@ public class ScheduleMakeActionService extends ServiceBase implements TestAction
         return scheduleManagerServiceName;
     }
     
+    public void setInterpreterServiceName(ServiceName name){
+        interpreterServiceName = name;
+    }
+    public ServiceName getInterpreterServiceName(){
+        return interpreterServiceName;
+    }
+    
     public void startService() throws Exception{
         if(scheduleManagerServiceName != null){
             scheduleManager = (ScheduleManager)ServiceManagerFactory.getServiceObject(scheduleManagerServiceName);
         }
         if(scheduleManager == null){
             throw new IllegalArgumentException("ScheduleManager is null.");
+        }
+        if(interpreterServiceName != null){
+            interpreter = (Interpreter)ServiceManagerFactory.getServiceObject(interpreterServiceName);
         }
     }
     
@@ -80,8 +97,10 @@ public class ScheduleMakeActionService extends ServiceBase implements TestAction
      * リソースのフォーマットは、以下。<br>
      * <pre>
      * masterId
+     * script
      * </pre>
      * masterIdは、作成するスケジュールのマスタIDを指定する。<br>
+     * scriptは、{@link ScheduleMaster}を編集するスクリプトを指定する。スクリプトは、{@link Interpreter#evaluate(String,Map)}で評価され、引数の変数マップには、"context"で{@link TestContext}、"master"で{@link ScheduleMaster}が渡される。<br>
      *
      * @param context コンテキスト
      * @param actionId アクションID
@@ -91,10 +110,32 @@ public class ScheduleMakeActionService extends ServiceBase implements TestAction
     public Object execute(TestContext context, String actionId, Reader resource) throws Exception{
         BufferedReader br = new BufferedReader(resource);
         String masterId = null;
+        String script = null;
         try{
             masterId = br.readLine();
             if(masterId == null){
                 throw new Exception("Unexpected EOF on masterId");
+            }
+            String line = null;
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            try{
+                while((line = br.readLine()) != null){
+                    pw.println(line);
+                }
+                pw.flush();
+                script = sw.toString();
+                if(script.length() == 0){
+                    script = null;
+                }
+            }finally{
+                sw.close();
+                pw.close();
+            }
+            if(script != null){
+                if(interpreter == null){
+                    throw new UnsupportedOperationException("Interpreter is null.");
+                }
             }
         }finally{
             br.close();
@@ -124,6 +165,9 @@ public class ScheduleMakeActionService extends ServiceBase implements TestAction
             cal.set(Calendar.DAY_OF_YEAR, 1);
             startTime = cal.getTime();
         }
+        if(master.isTemplate()){
+            master.setTemplate(false);
+        }
         master.setStartTime(startTime);
         final Date endTime = master.getEndTime();
         if(endTime != null){
@@ -132,6 +176,12 @@ public class ScheduleMakeActionService extends ServiceBase implements TestAction
         final Date retryEndTime = master.getRetryEndTime();
         if(retryEndTime != null){
             master.setRetryEndTime(new Date(retryEndTime.getTime() + offset));
+        }
+        if(script != null){
+            final Map params = new HashMap();
+            params.put("context", context);
+            params.put("master", master);
+            interpreter.evaluate(script, params);
         }
         return scheduleManager.makeSchedule(now, master);
     }
