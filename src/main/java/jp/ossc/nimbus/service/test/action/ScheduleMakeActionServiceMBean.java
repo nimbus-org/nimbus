@@ -57,6 +57,20 @@ public interface ScheduleMakeActionServiceMBean extends ServiceBaseMBean{
     public ServiceName getScheduleManagerServiceName();
     
     /**
+     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}サービスのサービス名を設定する。<p>
+     *
+     * @param name Interpreterサービスのサービス名
+     */
+    public void setInterpreterServiceName(ServiceName name);
+    
+    /**
+     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}サービスのサービス名を取得する。<p>
+     *
+     * @return Interpreterサービスのサービス名
+     */
+    public ServiceName getInterpreterServiceName();
+    
+    /**
      * このアクションのリソース定義を作成する際のデフォルトの想定コストを設定する。<p>
      * 
      * @param cost 想定コスト
