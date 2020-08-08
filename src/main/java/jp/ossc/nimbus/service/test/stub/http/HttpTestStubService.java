@@ -300,8 +300,11 @@ public class HttpTestStubService extends HttpProcessServiceBase implements TestS
         }
         if(resourceDirectory == null){
             resourceDirectory = serviceDefDir == null ? new File(id) : new File(serviceDefDir, id);
-        }else if(!resourceDirectory.isAbsolute() && !resourceDirectory.exists() && serviceDefDir != null){
-            resourceDirectory = new File(serviceDefDir, resourceDirectory.getPath());
+        }else{
+            if(!resourceDirectory.isAbsolute() && !resourceDirectory.exists() && serviceDefDir != null){
+                resourceDirectory = new File(serviceDefDir, resourceDirectory.getPath());
+            }
+            resourceDirectory = new File(resourceDirectory, id);
         }
         if(!resourceDirectory.exists()){
             resourceDirectory.mkdirs();
@@ -730,6 +733,30 @@ public class HttpTestStubService extends HttpProcessServiceBase implements TestS
                 throw new Exception("Testcase not found. scenarioGroupId=" + this.scenarioGroupId + ", scenarioId=" + this.scenarioId + ", testcaseId=" + testcaseId);
             }
             this.testcaseId = testcaseId;
+            Map responseMapByTestCase = (Map)responseMap.get(testcaseId);
+            Set responseFiles = new HashSet();
+            if(responseMapByTestCase != null){
+                Iterator itr = responseMapByTestCase.values().iterator();
+                while(itr.hasNext()){
+                    ResponseList list = (ResponseList)itr.next();
+                    list.reset();
+                    responseFiles.addAll(list.files());
+                }
+            }
+            Map evidenceMapByTestCase = (Map)evidenceMap.get(testcaseId);
+            if(evidenceMapByTestCase != null){
+                Iterator itr = evidenceMapByTestCase.values().iterator();
+                while(itr.hasNext()){
+                    List list = (List)itr.next();
+                    Iterator files = list.iterator();
+                    while(files.hasNext()){
+                        File file = (File)files.next();
+                        if(!responseFiles.contains(file)){
+                            file.delete();
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -801,6 +828,14 @@ public class HttpTestStubService extends HttpProcessServiceBase implements TestS
                     return null;
                 }
             }
+        }
+        
+        public List files(){
+            return list;
+        }
+        
+        public void reset(){
+            requestCount = 0;
         }
     }
     
