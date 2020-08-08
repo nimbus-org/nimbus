@@ -139,4 +139,19 @@ public interface HttpProcessServiceBaseMBean extends ServiceBaseMBean{
      * @param password プロキシのBASIC認証パスワード
      */
     public void setProxyPassword(String password);
+    
+    /**
+     * トンネリング通信をサポートするかどうかを判定する。<p>
+     *
+     * @return trueの場合、トンネリング通信をサポートする
+     */
+    public boolean isSupportTunnelling();
+    
+    /**
+     * トンネリング通信をサポートするかどうかを設定する。<p>
+     * デフォルトは、falseで、サポートしない。
+     *
+     * @param isSupport トンネリング通信をサポートする場合true
+     */
+    public void setSupportTunnelling(boolean isSupport);
 }

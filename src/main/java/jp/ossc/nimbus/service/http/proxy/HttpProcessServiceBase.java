@@ -63,6 +63,7 @@ public abstract class HttpProcessServiceBase extends ServiceBase
     protected int proxyPort = 80;
     protected String proxyUser;
     protected String proxyPassword;
+    protected boolean isSupportTunnelling = false;
     
     // HttpProcessServiceBaseMBean のJavaDoc
     public void setRequestStreamInflate(boolean isInflate){
@@ -128,6 +129,15 @@ public abstract class HttpProcessServiceBase extends ServiceBase
         proxyPassword = password;
     }
     
+    // HttpProcessServiceBaseMBean のJavaDoc
+    public boolean isSupportTunnelling(){
+        return isSupportTunnelling;
+    }
+    // HttpProcessServiceBaseMBean のJavaDoc
+    public void setSupportTunnelling(boolean isSupport){
+        isSupportTunnelling = isSupport;
+    }
+    
     public void setTunnelSocketFactory(SocketFactory factory){
         tunnelSocketFactory = factory;
     }
@@ -150,7 +160,7 @@ public abstract class HttpProcessServiceBase extends ServiceBase
                 return;
             }
             
-            if("CONNECT".equals(request.header.method)){
+            if("CONNECT".equals(request.header.method) && isSupportTunnelling){
                 TunnelProxy tunnelProxy = null;
                 try{
                     tunnelProxy = new TunnelProxy(socket, request.header.url);
