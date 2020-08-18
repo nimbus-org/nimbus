@@ -39,6 +39,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import javax.transaction.TransactionManager;
 
 import jp.ossc.nimbus.beans.ServiceNameEditor;
 import jp.ossc.nimbus.core.Utility;
@@ -47,6 +48,8 @@ import jp.ossc.nimbus.core.Service;
 import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.service.log.LogService;
 import jp.ossc.nimbus.service.interpreter.Interpreter;
+import jp.ossc.nimbus.service.transaction.TransactionManagerFactory;
+import jp.ossc.nimbus.service.transaction.TransactionManagerFactoryException;
 
 /**
  * 業務フローコンパイラー。<p>
@@ -186,6 +189,13 @@ public class Compiler{
             if(clazz != null){
                 factory.setBeanFlowInvokerAccessClass(clazz);
             }
+            factory.setTransactionManagerFactory(
+                new TransactionManagerFactory(){
+                    public TransactionManager getTransactionManager() throws TransactionManagerFactoryException{
+                        return null;
+                    }
+                }
+            );
         }
         
         LogService logger = new LogService();
