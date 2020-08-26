@@ -93,8 +93,14 @@ public class VelocityTemplateEngineService extends ServiceBase implements Templa
         engine = new VelocityEngine();
         Properties props = properties == null ? new Properties() : properties;
         if(templateResourceDirectory != null){
+            // 1系用設定
+            props.setProperty("file.resource.loader.path", templateResourceDirectory.getCanonicalPath());
+            // 2系用設定
             props.setProperty(RuntimeConstants.FILE_RESOURCE_LOADER_PATH, templateResourceDirectory.getCanonicalPath());
         }
+        // 1系用設定
+        props.setProperty("file.resource.loader.cache", Boolean.FALSE.toString());
+        // 2系用設定
         props.setProperty(RuntimeConstants.FILE_RESOURCE_LOADER_CACHE, Boolean.FALSE.toString());
         engine.init(props);
     }
