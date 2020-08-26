@@ -5203,8 +5203,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
         PreparedStatement st = null;
         try{
             StringBuilder buf = new StringBuilder();
-            buf.append("delete from A.");
-            buf.append(scheduleTableSchema.table);
+            buf.append("delete from ");
+            buf.append(scheduleTableSchema.table).append(" A");
             boolean isAppendWhere = false;
             if(masterGroupId != null || groupId != null){
                 buf.append(", (select ").append(scheduleGroupTableSchema.id).append(" from ").append(scheduleGroupTableSchema.table);
