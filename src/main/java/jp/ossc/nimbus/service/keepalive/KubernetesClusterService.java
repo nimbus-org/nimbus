@@ -122,6 +122,7 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
     protected transient Set memberAddresses;
     protected transient Map clientMembers;
     protected transient Set podMembers;
+    protected transient Set podMemberAddresses;
     
     protected final SynchronizeMonitor addMonitor = new WaitSynchronizeMonitor();
     
@@ -472,6 +473,7 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
         mainReqMembers = Collections.synchronizedSet(new HashSet());
         listeners = new ArrayList();
         podMembers = Collections.synchronizedSet(new LinkedHashSet());
+        podMemberAddresses = Collections.synchronizedSet(new HashSet());
     }
     
     public void startService() throws Exception{
@@ -924,6 +926,10 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
         }
     }
     
+    protected boolean isPodMember(KubernetesClusterService.ClusterUID uid){
+        return podMemberAddresses.contains(uid.getAddress());
+    }
+    
     protected void handleMessage(KubernetesClusterService.ClusterUID fromUID, InputStream is){
         ObjectInputStream ois = null;
         try{
@@ -940,6 +946,9 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                     }
                 }
                 fromUID = agentFromUID;
+            }
+            if(!fromUID.isClient() && !isPodMember(fromUID)){
+                return;
             }
             int memberSize = 0;
             List newMembers = null;
@@ -1506,6 +1515,7 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                 );
                 resourceVersion = podList.getMetadata().getResourceVersion();
                 podMembers.clear();
+                podMemberAddresses.clear();
                 InetAddress loopbackAddress = InetAddress.getLoopbackAddress();
                 Iterator pods = podList.getItems().iterator();
                 while(pods.hasNext()){
@@ -1513,6 +1523,7 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                     InetAddress address = InetAddress.getByName(pod.getStatus().getPodIP());
                     if(!uid.getAddress().equals(address) && !loopbackAddress.equals(address)){
                         podMembers.add(new InetSocketAddress(address, port));
+                        podMemberAddresses.add(address);
                     }
                 }
             }catch(Exception e){
@@ -1584,9 +1595,11 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                     case ADDED:
                     case MODIFIED:
                         podMembers.add(new InetSocketAddress(address, port));
+                        podMemberAddresses.add(address);
                         break;
                     case DELETED:
                         podMembers.remove(new InetSocketAddress(address, port));
+                        podMemberAddresses.remove(address);
                         break;
                     }
                     resourceVersion = pod.getMetadata().getResourceVersion();
