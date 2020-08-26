@@ -47,6 +47,7 @@ import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.resource.loader.StringResourceLoader;
+import org.apache.velocity.runtime.resource.loader.FileResourceLoader;
 import org.apache.velocity.runtime.resource.util.StringResourceRepository;
 
 import jp.ossc.nimbus.core.*;
@@ -156,6 +157,10 @@ public class VelocityTemplateEngineService extends ServiceBase implements Templa
                     }
                 }
             }
+            props.setProperty("file." + RuntimeConstants.RESOURCE_LOADER + ".class", FileResourceLoader.class.getName());
+            // 1系用設定
+            props.setProperty("file.resource.loader.path", resourceDir.getCanonicalPath());
+            // 2系用設定
             props.setProperty(RuntimeConstants.FILE_RESOURCE_LOADER_PATH, resourceDir.getCanonicalPath());
         }
         props.setProperty("string." + RuntimeConstants.RESOURCE_LOADER + ".class", StringResourceLoader.class.getName());
