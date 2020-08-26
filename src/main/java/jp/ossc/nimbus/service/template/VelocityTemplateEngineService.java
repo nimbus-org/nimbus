@@ -158,6 +158,7 @@ public class VelocityTemplateEngineService extends ServiceBase implements Templa
             }
             props.setProperty(RuntimeConstants.FILE_RESOURCE_LOADER_PATH, resourceDir.getCanonicalPath());
         }
+        props.setProperty("string." + RuntimeConstants.RESOURCE_LOADER + ".class", StringResourceLoader.class.getName());
         props.setProperty("string." + RuntimeConstants.RESOURCE_LOADER + '.' + StringResourceLoader.REPOSITORY_STATIC, "false");
         stringRespositoryName = props.getProperty(StringResourceLoader.REPOSITORY_NAME);
         if(stringRespositoryName == null){
