@@ -41,6 +41,7 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Collections;
+import java.lang.reflect.Method;
 
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
@@ -69,6 +70,23 @@ public class VelocityTemplateEngineService extends ServiceBase implements Templa
     
     private VelocityEngine engine;
     private String stringRespositoryName;
+    
+    private static Method CONTEXT_CONTAINS_KEY_METHOD;
+    private static Method CONTEXT_PUT_METHOD;
+    
+    static{
+         Method[] methods = org.apache.velocity.context.Context.class.getMethods();
+         for(int i = 0; i < methods.length; i++){
+            if(methods[i].getName().equals("containsKey")){
+                CONTEXT_CONTAINS_KEY_METHOD = methods[i];
+            }else if(methods[i].getName().equals("put")){
+                CONTEXT_PUT_METHOD = methods[i];
+            }
+            if(CONTEXT_CONTAINS_KEY_METHOD != null && CONTEXT_PUT_METHOD != null){
+                break;
+            }
+         }
+    }
     
     public void setTemplateFileRootDirectory(File dir){
         templateFileRootDirectory = dir;
@@ -219,8 +237,8 @@ public class VelocityTemplateEngineService extends ServiceBase implements Templa
                 Iterator entries = contextMap.entrySet().iterator();
                 while(entries.hasNext()){
                     Map.Entry entry = (Map.Entry)entries.next();
-                    if(!context.containsKey((String)entry.getKey())){
-                        context.put((String)entry.getKey(), entry.getValue());
+                    if(!((Boolean)CONTEXT_CONTAINS_KEY_METHOD.invoke(context, new Object[]{entry.getKey()})).booleanValue()){
+                        CONTEXT_PUT_METHOD.invoke(context, new Object[]{entry.getKey(), entry.getValue()});
                     }
                 }
             }

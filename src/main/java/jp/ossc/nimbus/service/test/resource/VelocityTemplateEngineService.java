@@ -44,6 +44,7 @@ import java.util.Map;
 import java.util.List;
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.lang.reflect.Method;
 
 import org.apache.velocity.Template;
 import org.apache.velocity.context.Context;
@@ -70,6 +71,18 @@ public class VelocityTemplateEngineService extends ServiceBase implements Templa
     
     private VelocityEngine engine;
     private CSVReader csvReader;
+    
+    private static Method CONTEXT_PUT_METHOD;
+    
+    static{
+         Method[] methods = org.apache.velocity.context.Context.class.getMethods();
+         for(int i = 0; i < methods.length; i++){
+            if(methods[i].getName().equals("put")){
+                CONTEXT_PUT_METHOD = methods[i];
+                break;
+            }
+         }
+    }
     
     public void setTemplateResourceDirectory(File dir){
         templateResourceDirectory = dir;
@@ -162,10 +175,10 @@ public class VelocityTemplateEngineService extends ServiceBase implements Templa
                             }
                             records.add(record);
                         }
-                        context.put(name, records);
+                        CONTEXT_PUT_METHOD.invoke(context, new Object[]{name, records});
                     }else{
                         String value = replaceProperty(line.substring(index + 1));
-                        context.put(line.substring(0, index), value);
+                        CONTEXT_PUT_METHOD.invoke(context, new Object[]{line.substring(0, index), value});
                     }
                 }
             }finally{
