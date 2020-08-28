@@ -95,6 +95,11 @@ public interface KubernetesClusterServiceMBean extends ServiceBaseMBean{
     public static final String MSG_ID_MESSAGE_MEMBAER_MERGE = "CLST_00010";
     
     /**
+     * クラスタに参加できなかった旨のログメッセージID。<p>
+     */
+    public static final String MSG_ID_MESSAGE_JOIN_ERROR = "CLST_00011";
+    
+    /**
      * クラスタを組むサービスのサービス名を設定する。<p>
      *
      * @param name サービス名

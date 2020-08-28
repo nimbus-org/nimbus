@@ -671,6 +671,11 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                         sendMessage(MESSAGE_ID_ADD_REQ);
                         if(addMonitor.waitMonitor(addMemberResponseTimeout)){
                             break;
+                        }else if(i == addMemberRetryCount && podMembers.size() != 0){
+                            getLogger().write(
+                                MSG_ID_MESSAGE_JOIN_ERROR,
+                                new Object[]{getServiceNameObject(), podMembers}
+                            );
                         }
                     }
                 }
@@ -926,10 +931,6 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
         }
     }
     
-    protected boolean isPodMember(KubernetesClusterService.ClusterUID uid){
-        return podMemberAddresses.contains(uid.getAddress());
-    }
-    
     protected void handleMessage(KubernetesClusterService.ClusterUID fromUID, InputStream is){
         ObjectInputStream ois = null;
         try{
@@ -946,9 +947,6 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                     }
                 }
                 fromUID = agentFromUID;
-            }
-            if(!fromUID.isClient() && !isPodMember(fromUID)){
-                return;
             }
             int memberSize = 0;
             List newMembers = null;
@@ -1563,7 +1561,7 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                         Boolean.TRUE,
                         null
                     ),
-                    new TypeToken<Watch.Response<V1PodList>>(){}.getType()
+                    new TypeToken<Watch.Response<V1Pod>>(){}.getType()
                 );
             }catch(Throwable th){
                 Throwable cause = th.getCause();
@@ -1583,13 +1581,10 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
             Watch watcher = (Watch)dequed;
             try{
                 InetAddress loopbackAddress = InetAddress.getLoopbackAddress();
+                String version = resourceVersion;
                 Set newPodMembers = null;
                 Set newPodMemberAddresses = null;
-                while(watcher.hasNext()){
-                    Watch.Response response = (Watch.Response)watcher.next();
-                    if(response == null || resourceVersion == ((V1PodList)response.object).getMetadata().getResourceVersion()){
-                        continue;
-                    }
+                if(watcher.hasNext()){
                     V1PodList podList = api.listNamespacedPod(
                         namespace,
                         (String)null,
@@ -1620,12 +1615,13 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                             newPodMembers.add(new InetSocketAddress(address, port));
                         }
                     }
-                    resourceVersion = podList.getMetadata().getResourceVersion();
+                    version = podList.getMetadata().getResourceVersion();
                 }
                 if(newPodMembers != null){
                     podMembers = newPodMembers;
                     podMemberAddresses = newPodMemberAddresses;
                 }
+                resourceVersion = version;
             }catch(Throwable th){
                 Throwable cause = th.getCause();
                 if(cause != null && (cause instanceof ConnectException || cause instanceof SocketTimeoutException)){
