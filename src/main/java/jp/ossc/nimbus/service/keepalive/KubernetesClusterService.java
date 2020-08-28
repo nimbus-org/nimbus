@@ -1561,7 +1561,7 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                         Boolean.TRUE,
                         null
                     ),
-                    new TypeToken<Watch.Response<V1Pod>>(){}.getType()
+                    new TypeToken<Watch.Response<V1PodList>>(){}.getType()
                 );
             }catch(Throwable th){
                 Throwable cause = th.getCause();
