@@ -122,6 +122,7 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
     protected transient Set memberAddresses;
     protected transient Map clientMembers;
     protected transient Set podMembers;
+    protected transient Set podMemberAddresses;
     
     protected final SynchronizeMonitor addMonitor = new WaitSynchronizeMonitor();
     
@@ -471,7 +472,8 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
         clientMembers = Collections.synchronizedMap(new HashMap());
         mainReqMembers = Collections.synchronizedSet(new HashSet());
         listeners = new ArrayList();
-        podMembers = Collections.synchronizedSet(new LinkedHashSet());
+        podMembers = new HashSet();
+        podMemberAddresses = new HashSet();
     }
     
     public void startService() throws Exception{
@@ -669,6 +671,11 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                         sendMessage(MESSAGE_ID_ADD_REQ);
                         if(addMonitor.waitMonitor(addMemberResponseTimeout)){
                             break;
+                        }else if(i == addMemberRetryCount && podMembers.size() != 0){
+                            getLogger().write(
+                                MSG_ID_MESSAGE_JOIN_ERROR,
+                                new Object[]{getServiceNameObject(), podMembers}
+                            );
                         }
                     }
                 }
@@ -1505,16 +1512,25 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                     Boolean.FALSE
                 );
                 resourceVersion = podList.getMetadata().getResourceVersion();
-                podMembers.clear();
+                Set newPodMembers = new HashSet();
+                Set newPodMemberAddresses = new HashSet();
                 InetAddress loopbackAddress = InetAddress.getLoopbackAddress();
                 Iterator pods = podList.getItems().iterator();
                 while(pods.hasNext()){
                     V1Pod pod = (V1Pod)pods.next();
+                    if(pod == null || pod.getStatus() == null || pod.getStatus().getPodIP() == null){
+                        continue;
+                    }
                     InetAddress address = InetAddress.getByName(pod.getStatus().getPodIP());
-                    if(!uid.getAddress().equals(address) && !loopbackAddress.equals(address)){
-                        podMembers.add(new InetSocketAddress(address, port));
+                    if(uid.getAddress().equals(address) || loopbackAddress.equals(address)){
+                        continue;
+                    }
+                    if(newPodMemberAddresses.add(address)){
+                        newPodMembers.add(new InetSocketAddress(address, port));
                     }
                 }
+                podMembers = newPodMembers;
+                podMemberAddresses = newPodMemberAddresses;
             }catch(Exception e){
                 getLogger().write(MSG_ID_MESSAGE_IO_ERROR, getServiceNameObject(), e);
                 return false;
@@ -1545,7 +1561,7 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                         Boolean.TRUE,
                         null
                     ),
-                    new TypeToken<Watch.Response<V1Pod>>(){}.getType()
+                    new TypeToken<Watch.Response<V1PodList>>(){}.getType()
                 );
             }catch(Throwable th){
                 Throwable cause = th.getCause();
@@ -1564,33 +1580,48 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
             }
             Watch watcher = (Watch)dequed;
             try{
-                Iterator itr = watcher.iterator();
                 InetAddress loopbackAddress = InetAddress.getLoopbackAddress();
-                while(itr.hasNext()){
-                    Watch.Response response = (Watch.Response)itr.next();
-                    if(response == null){
-                        continue;
+                String version = resourceVersion;
+                Set newPodMembers = null;
+                Set newPodMemberAddresses = null;
+                if(watcher.hasNext()){
+                    V1PodList podList = api.listNamespacedPod(
+                        namespace,
+                        (String)null,
+                        Boolean.FALSE,
+                        (String)null,
+                        fieldSelector,
+                        labelSelector,
+                        (Integer)null,
+                        (String)null,
+                        podWatchTimeout,
+                        Boolean.FALSE
+                    );
+                    if(newPodMembers == null){
+                        newPodMembers = new HashSet();
+                        newPodMemberAddresses = new HashSet();
                     }
-                    V1Pod pod = (V1Pod)response.object;
-                    if(pod == null || pod.getStatus() == null || pod.getStatus().getPodIP() == null){
-                        continue;
+                    Iterator pods = podList.getItems().iterator();
+                    while(pods.hasNext()){
+                        V1Pod pod = (V1Pod)pods.next();
+                        if(pod == null || pod.getStatus() == null || pod.getStatus().getPodIP() == null){
+                            continue;
+                        }
+                        InetAddress address = InetAddress.getByName(pod.getStatus().getPodIP());
+                        if(uid.getAddress().equals(address) || loopbackAddress.equals(address)){
+                            continue;
+                        }
+                        if(newPodMemberAddresses.add(address)){
+                            newPodMembers.add(new InetSocketAddress(address, port));
+                        }
                     }
-                    InetAddress address = InetAddress.getByName(pod.getStatus().getPodIP());
-                    if(uid.getAddress().equals(address) || loopbackAddress.equals(address)){
-                        continue;
-                    }
-                    final EventType eventType = EventType.getByType(response.type);
-                    switch(eventType){
-                    case ADDED:
-                    case MODIFIED:
-                        podMembers.add(new InetSocketAddress(address, port));
-                        break;
-                    case DELETED:
-                        podMembers.remove(new InetSocketAddress(address, port));
-                        break;
-                    }
-                    resourceVersion = pod.getMetadata().getResourceVersion();
+                    version = podList.getMetadata().getResourceVersion();
                 }
+                if(newPodMembers != null){
+                    podMembers = newPodMembers;
+                    podMemberAddresses = newPodMemberAddresses;
+                }
+                resourceVersion = version;
             }catch(Throwable th){
                 Throwable cause = th.getCause();
                 if(cause != null && (cause instanceof ConnectException || cause instanceof SocketTimeoutException)){
