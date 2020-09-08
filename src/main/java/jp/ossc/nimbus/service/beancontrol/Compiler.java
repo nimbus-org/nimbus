@@ -517,6 +517,7 @@ public class Compiler{
                 System.out.println(e.toString());
                 System.out.println("If you want to know details, specify option v.");
             }
+            System.exit(-1);
         }
     }
 }
