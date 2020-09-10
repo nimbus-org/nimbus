@@ -57,6 +57,7 @@ import jp.ossc.nimbus.core.ServiceLoader;
 import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.core.ServiceMetaData;
 import jp.ossc.nimbus.core.ServiceName;
+import jp.ossc.nimbus.beans.StringArrayEditor;
 import jp.ossc.nimbus.io.CSVReader;
 import jp.ossc.nimbus.io.RecurciveSearchFile;
 import jp.ossc.nimbus.service.http.proxy.HttpProcessServiceBase;
@@ -134,6 +135,8 @@ public class HttpTestStubService extends HttpProcessServiceBase implements TestS
     protected boolean isSafeMultithread = true;
     protected boolean isSaveRequestFile = true;
     protected boolean isCacheResponse;
+    protected boolean isAutoOptionsResponse;
+    protected String[] allowMethods = new String[]{"OPTIONS", "GET", "HEAD", "POST", "PUT", "PATCH", "DELETE"};
 
     protected Map responseMap;
     protected Map binaryMap;
@@ -252,6 +255,20 @@ public class HttpTestStubService extends HttpProcessServiceBase implements TestS
     public void setCacheResponse(boolean isCache){
         isCacheResponse = isCache;
     }
+    
+    public boolean isAutoOptionsResponse(){
+        return isAutoOptionsResponse;
+    }
+    public void setAutoOptionsResponse(boolean isAuto){
+        isAutoOptionsResponse = isAuto;
+    }
+    
+    public void setAllowMethods(String[] methods){
+        allowMethods = methods;
+    }
+    public String[] getAllowMethods(){
+        return allowMethods;
+    }
 
     public void setStubResourceManager(StubResourceManager manager) {
         stubResourceManager = manager;
@@ -347,6 +364,29 @@ public class HttpTestStubService extends HttpProcessServiceBase implements TestS
                 Map.Entry entry = (Map.Entry)entries.next();
                 response.setHeaders((String)entry.getKey(), (String[])entry.getValue());
             }
+        }
+        if(isAutoOptionsResponse
+            && "OPTIONS".equals(request.getHeader().getMethod())
+        ){
+            response.setStatusCode(204);
+            StringArrayEditor stringArrayEditor = new StringArrayEditor();
+            stringArrayEditor.setValue(allowMethods);
+            String allowMethod = stringArrayEditor.getAsText();
+            response.setHeader("Connection", "close");
+            if(request.getHeader().getHeader("Access-Control-Request-Method ") != null){
+                response.setHeader("Allow", allowMethod);
+            }else{
+                response.setHeader("Access-Control-Allow-Methods", allowMethod);
+                String origin = request.getHeader().getHeader("Origin");
+                if(origin != null){
+                    response.setHeader("Access-Control-Allow-Origin", origin);
+                }
+                String requestHeaders = request.getHeader().getHeader("Access-Control-Request-Headers");
+                if(requestHeaders != null){
+                    response.setHeader("Access-Control-Allow-Headers", requestHeaders);
+                }
+            }
+            return;
         }
         if(isSafeMultithread){
             synchronized(lock){
