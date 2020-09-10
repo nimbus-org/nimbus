@@ -222,4 +222,35 @@ public interface HttpTestStubServiceMBean extends HttpProcessServiceBaseMBean, T
      * @param isCache キャッシュする場合、true
      */
     public void setCacheResponse(boolean isCache);
+    
+    /**
+     * OPTIONリクエストに自動で応答するかどうかを判定する。<p>
+     *
+     * @return trueの場合、自動で応答するか
+     */
+    public boolean isAutoOptionsResponse();
+    
+    /**
+     * OPTIONリクエストに自動で応答するかどうかを設定する。<p>
+     * デフォルトは、false。
+     *
+     * @param isAuto 自動で応答する場合、true
+     */
+    public void setAutoOptionsResponse(boolean isAuto);
+    
+    /**
+     * OPTIONリクエストに自動応答する場合に返すAllowヘッダを設定する。<p>
+     * CORSの場合は、Access-Control-Allow-Methodsヘッダに設定する。<br>
+     * デフォルトは、"OPTIONS", "GET", "HEAD", "POST", "PUT", "PATCH", "DELETE"。<br>
+     *
+     * @param methods HTTPメソッド名の配列
+     */
+    public void setAllowMethods(String[] methods);
+    
+    /**
+     * OPTIONリクエストに自動応答する場合に返すAllowヘッダを取得する。<p>
+     *
+     * @return HTTPメソッド名の配列
+     */
+    public String[] getAllowMethods();
 }
