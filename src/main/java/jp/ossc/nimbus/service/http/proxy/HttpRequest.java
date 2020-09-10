@@ -216,7 +216,10 @@ public class HttpRequest{
          * @return ヘッダ値
          */
         public String getHeader(String name){
-            final String[] vals = (String[])headerMap.get(name);
+            String[] vals = (String[])headerMap.get(name);
+            if(vals == null){
+                vals = (String[])headerMap.get(name.toLowerCase());
+            }
             return vals == null ? null : vals[0];
         }
         
@@ -570,6 +573,7 @@ public class HttpRequest{
             }else{
                 final int contentLength = header.getContentLength();
                 if(contentLength <= 0){
+                    body = new byte[0];
                     return;
                 }
                 final byte[] readBytes = new byte[contentLength + 1];
