@@ -758,12 +758,14 @@ public class SharedContextService extends DefaultContextService
     protected void waitConnectMain() throws Exception{
         if(!isWaitConnectAllOnStart){
             long startTime = System.currentTimeMillis();
-            while(!serverConnection.getReceiveClientIds(allTargetMessage).contains(getMainId())){
+            Set currentMembers = serverConnection.getReceiveClientIds(allTargetMessage);
+            while(!currentMembers.contains(getMainId())){
                 Thread.sleep(100l);
                 long elapsedTime = System.currentTimeMillis() - startTime;
                 if(elapsedTime >= waitConnectTimeout){
-                    throw new Exception("A timeout occurred while waiting for main to connect. elapsedTime=" + elapsedTime);
+                    throw new Exception("A timeout occurred while waiting for main to connect. elapsedTime=" + elapsedTime + ", mainId=" + getMainId() + ", currentMembers=" + currentMembers);
                 }
+                currentMembers = serverConnection.getReceiveClientIds(allTargetMessage);
             }
         }
     }
