@@ -1285,7 +1285,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                             }else if(propSchema instanceof RecordListPropertySchema){
                                 buf.append(ARRAY_ENCLOSURE_START);
                                 if(((RecordList)prop).size() > 0) {
-                                    buf.append("#foreach( $record in $").append(propSchema.getName()).append(" )");
+                                    buf.append("#foreach( $record in $record.").append(propSchema.getName()).append(" )");
                                     buf.append("#if( $velocityCount != 1 )").append(ARRAY_SEPARATOR).append("#end");
                                     appendValue(buf, ((RecordList)prop).get(0).getClass(), ((RecordList)prop).get(0), indent2 + 1);
                                     buf.append("#end");
@@ -1321,7 +1321,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                             }else if(propSchema instanceof RecordListPropertySchema){
                                 buf.append(ARRAY_ENCLOSURE_START);
                                 if(((RecordList)prop).size() > 0) {
-                                    buf.append("#foreach( $record in $").append(propSchema.getName()).append(" )");
+                                    buf.append("#foreach( $record in $record").append(propSchema.getName()).append(" )");
                                     buf.append("#if( $velocityCount != 1 )").append(ARRAY_SEPARATOR).append("#end");
                                     appendValue(buf, ((RecordList)prop).get(0).getClass(), ((RecordList)prop).get(0), indent2 + 1);
                                     buf.append("#end");

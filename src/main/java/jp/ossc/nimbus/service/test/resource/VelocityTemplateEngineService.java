@@ -52,6 +52,7 @@ import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.runtime.RuntimeConstants;
 
+import jp.ossc.nimbus.beans.*;
 import jp.ossc.nimbus.core.ServiceBase;
 import jp.ossc.nimbus.core.Utility;
 import jp.ossc.nimbus.io.CSVReader;
@@ -156,6 +157,7 @@ public class VelocityTemplateEngineService extends ServiceBase implements Templa
             CSVReader reader = csvReader == null ? new CSVReader() : csvReader.cloneReader();
             reader.setReader(encoding == null ? new FileReader(dataFile) : new InputStreamReader(new FileInputStream(dataFile), encoding));
             try{
+                Map tmpMap = new HashMap();
                 String line = null;
                 while((line = reader.readLine()) != null){
                     if(line.length() == 0){
@@ -175,10 +177,23 @@ public class VelocityTemplateEngineService extends ServiceBase implements Templa
                             }
                             records.add(record);
                         }
-                        CONTEXT_PUT_METHOD.invoke(context, new Object[]{name, records});
+                        Property property = PropertyFactory.createProperty(name);
+                        if(property instanceof NestedProperty){
+                            property.setProperty(tmpMap, records);
+                        }else{
+                            CONTEXT_PUT_METHOD.invoke(context, new Object[]{name, records});
+                            tmpMap.put(name, records);
+                        }
                     }else{
+                        String name = line.substring(0, index);
                         String value = replaceProperty(line.substring(index + 1));
-                        CONTEXT_PUT_METHOD.invoke(context, new Object[]{line.substring(0, index), value});
+                        Property property = PropertyFactory.createProperty(name);
+                        if(property instanceof NestedProperty){
+                            property.setProperty(tmpMap, value);
+                        }else{
+                            CONTEXT_PUT_METHOD.invoke(context, new Object[]{name, value});
+                            tmpMap.put(name, value);
+                        }
                     }
                 }
             }finally{
