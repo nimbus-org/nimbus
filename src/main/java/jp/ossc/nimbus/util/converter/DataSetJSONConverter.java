@@ -264,6 +264,8 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
     
     protected boolean isOutputVTLTemplate = false;
     
+    protected String vtlForEachCountName = "velocityCount";
+    
     /**
      * プロパティ名のキャメルケースとスネークケース変換を行うかのフラグ。
      * デフォルトは、0で変換しない。<br>
@@ -471,6 +473,25 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
      */
     public boolean isOutputVTLTemplate(){
         return isOutputVTLTemplate;
+    }
+    
+    /**
+     * VTL(Velocity Template Language) のforeachで使用するループカウント変数名を設定する。<p>
+     * デフォルトは、1系の"velocityCount"。2系では、"foreach.count"なので、設定する必要がある。<br>
+     *
+     * @param name foreachで使用するループカウント変数名
+     */
+    public void setVTLForEachCountName(String name){
+        vtlForEachCountName = name;
+    }
+    
+    /**
+     * VTL(Velocity Template Language) のforeachで使用するループカウント変数名を取得する。<p>
+     *
+     * @return foreachで使用するループカウント変数名
+     */
+    public String getVTLForEachCountName(){
+        return vtlForEachCountName;
     }
     
     /**
@@ -1073,7 +1094,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                     if(isOutputVTLTemplate && recList.size() > 0){
                         buf.append(ARRAY_ENCLOSURE_START);
                         buf.append("#foreach( $record in $").append(recListNames[i]).append(" )");
-                        buf.append("#if( $velocityCount != 1 )").append(ARRAY_SEPARATOR).append("#end");
+                        buf.append("#if( $").append(vtlForEachCountName).append(" != 1 )").append(ARRAY_SEPARATOR).append("#end");
                         appendValue(buf, recList.get(0).getClass(), recList.get(0), 3);
                         buf.append("#end");
                         buf.append(ARRAY_ENCLOSURE_END);
@@ -1291,7 +1312,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                                         buf.append("#foreach( $record in ");
                                     }
                                     buf.append(propSchema.getName()).append(" )");
-                                    buf.append("#if( $velocityCount != 1 )").append(ARRAY_SEPARATOR).append("#end");
+                                    buf.append("#if( $").append(vtlForEachCountName).append(" != 1 )").append(ARRAY_SEPARATOR).append("#end");
                                     appendValue(buf, ((RecordList)prop).get(0).getClass(), ((RecordList)prop).get(0), indent2 + 1);
                                     buf.append("#end");
                                 }
@@ -1332,7 +1353,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                                         buf.append("#foreach( $record in ");
                                     }
                                     buf.append(propSchema.getName()).append(" )");
-                                    buf.append("#if( $velocityCount != 1 )").append(ARRAY_SEPARATOR).append("#end");
+                                    buf.append("#if( $").append(vtlForEachCountName).append(" != 1 )").append(ARRAY_SEPARATOR).append("#end");
                                     appendValue(buf, ((RecordList)prop).get(0).getClass(), ((RecordList)prop).get(0), indent2 + 1);
                                     buf.append("#end");
                                 }
