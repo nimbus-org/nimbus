@@ -1302,6 +1302,14 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                                 appendIndent(buf, indent2 + 1);
                             }
                             if(propSchema instanceof RecordPropertySchema){
+                                buf.append("#set( $parentRecord = $");
+                                if(parentList != null){
+                                    buf.append("record.");
+                                }else if(headerName != null){
+                                    buf.append(headerName).append("[0].");
+                                }
+                                buf.append(propSchema.getName());
+                                buf.append("[0] )");
                                 appendValue(buf, propSchema.getType(), prop, indent2 + 1);
                             }else if(propSchema instanceof RecordListPropertySchema){
                                 buf.append(ARRAY_ENCLOSURE_START);
@@ -1323,6 +1331,8 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                                     buf.append("record.");
                                 }else if(headerName != null){
                                     buf.append(headerName).append("[0].");
+                                }else{
+                                    buf.append("parentRecord.");
                                 }
                                 buf.append(propSchema.getName());
                             }
@@ -1334,6 +1344,8 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                                 buf.append("record.");
                             }else if(headerName != null){
                                 buf.append(headerName).append("[0].");
+                            }else{
+                                buf.append("parentRecord.");
                             }
                             buf.append(propSchema.getName()).append(" )");
                             buf.append("#if( $isOutput )").append(ARRAY_SEPARATOR).append("#end");
@@ -1343,6 +1355,14 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                                 buf.append(PROPERTY_SEPARATOR);
                             }
                             if(propSchema instanceof RecordPropertySchema){
+                                buf.append("#set( $parentRecord = $");
+                                if(parentList != null){
+                                    buf.append("record.");
+                                }else if(headerName != null){
+                                    buf.append(headerName).append("[0].");
+                                }
+                                buf.append(propSchema.getName());
+                                buf.append("[0] )");
                                 appendValue(buf, propSchema.getType(), prop, indent2 + 1);
                             }else if(propSchema instanceof RecordListPropertySchema){
                                 buf.append(ARRAY_ENCLOSURE_START);
@@ -1364,6 +1384,8 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                                     buf.append("record.");
                                 }else if(headerName != null){
                                     buf.append(headerName).append("[0].");
+                                }else{
+                                    buf.append("parentRecord.");
                                 }
                                 buf.append(propSchema.getName());
                             }
