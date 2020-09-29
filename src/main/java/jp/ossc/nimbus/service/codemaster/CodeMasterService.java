@@ -1191,7 +1191,7 @@ public class CodeMasterService extends ServiceBase
             for(int cnt= mTimeList.size()-1; cnt > -1 ;cnt--){
                 Map map = (Map)mTimeList.get(cnt) ;
                 Date tmpTime = (Date)map.get(FIND_DATE_KEY) ;
-                if(tmpTime.before(time)){
+                if(tmpTime.before(time) || tmpTime.equals(time)){
                     if(cnt== mTimeList.size()-1){
                         mTimeList.add(rec) ;
                     }else{
