@@ -284,6 +284,15 @@ public interface ScheduleManager{
     public boolean reschedule(String id, Date time, Object output) throws ScheduleManageException;
     
     /**
+     * スケジュールを一括削除する。<p>
+     *
+     * @param ids スケジュールのIDのリスト
+     * @return スケジュールが全て削除された場合true
+     * @exception ScheduleManageException スケジュールの削除に失敗した場合
+     */
+    public boolean removeSchedules(List ids) throws ScheduleManageException;
+    
+    /**
      * スケジュールを削除する。<p>
      *
      * @param id スケジュールのID

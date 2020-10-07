@@ -157,14 +157,13 @@ public class ScheduleRemoveActionService extends ServiceBase implements TestActi
             br = null;
         }
         
-        List result = new ArrayList();
+        List ids = new ArrayList();
         Iterator itr = removeSchedules.iterator();
         while(itr.hasNext()){
             String id = ((Schedule)itr.next()).getId();
-            if(scheduleManager.removeSchedule(id)){
-                result.add(id);
-            }
+            ids.add(id);
         }
-        return result;
+        scheduleManager.removeSchedules(ids);
+        return ids;
     }
 }

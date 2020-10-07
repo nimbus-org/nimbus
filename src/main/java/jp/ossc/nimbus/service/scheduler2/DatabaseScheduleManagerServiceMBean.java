@@ -471,6 +471,27 @@ public interface DatabaseScheduleManagerServiceMBean extends ServiceBaseMBean{
     public Properties getInputFormatConverterMapping();
     
     /**
+     * バッチ実行を行うかどうかを判定する。<p>
+     *
+     * @return trueの場合は、バッチ実行を行う
+     */
+    public boolean isBatchExecute();
+    
+    /**
+     * バッチ実行を行う場合のバッチ実行件数を設定する。<p>
+     *
+     * @param count バッチ実行件数
+     */
+    public void setBatchExecuteCount(int count);
+    
+    /**
+     * バッチ実行を行う場合のバッチ実行件数を取得する。<p>
+     *
+     * @return バッチ実行件数
+     */
+    public int getBatchExecuteCount();
+    
+    /**
      * 指定された日付のスケジュールを作成する。<p>
      *
      * @param date 日付

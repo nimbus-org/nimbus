@@ -124,6 +124,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
     protected Map inputParseConverterMap;
     protected Properties inputFormatConverterMapping;
     protected Map inputFormatConverterMap;
+    protected boolean isBatchExecute;
+    protected int batchExecuteCount;
     
     // DatabaseScheduleManagerServiceMBeanのJavaDoc
     public void setDefaultScheduleMakerServiceName(ServiceName name){
@@ -415,6 +417,20 @@ public class DatabaseScheduleManagerService extends ServiceBase
         if(timeoverChecker != null){
             timeoverChecker.suspend();
         }
+    }
+    
+    public void setBatchExecute(boolean isBatch){
+        isBatchExecute = isBatch;
+    }
+    public boolean isBatchExecute(){
+        return isBatchExecute;
+    }
+    
+    public void setBatchExecuteCount(int count){
+        batchExecuteCount = count;
+    }
+    public int getBatchExecuteCount(){
+        return batchExecuteCount;
     }
     
     public void setInputParseConverterMap(String executorType, Converter converter)
@@ -786,7 +802,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 if(schedules == null || schedules.length == 0){
                     continue;
                 }
-                for(int j = 0; j < schedules.length; j++){
+                for(int j = 0, jmax = schedules.length; j < jmax; j++){
                     addSchedule(
                         st,
                         ps1,
@@ -795,7 +811,10 @@ public class DatabaseScheduleManagerService extends ServiceBase
                         ps4,
                         ps5,
                         schedules[j],
-                        groupMap
+                        groupMap,
+                        isBatchExecute,
+                        j,
+                        j == jmax - 1
                     );
                     result.add(schedules[j]);
                 }
@@ -862,6 +881,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
      * @param scheduleGroupInsertStatement スケジュールグループをINSERTするStatement
      * @param schedule スケジュール
      * @param groupMap マスタグループIDに対して発行したグループIDのマップ
+     * @param count 複数件追加する場合の、現在の件数
      * @exception ScheduleManageException スケジュールの追加に失敗した場合
      */
     protected void addSchedule(
@@ -872,7 +892,10 @@ public class DatabaseScheduleManagerService extends ServiceBase
         PreparedStatement scheduleGroupDependsInsertStatement,
         PreparedStatement scheduleGroupInsertStatement,
         Schedule schedule,
-        Map groupMap
+        Map groupMap,
+        boolean isBatchExecute,
+        int count,
+        boolean isLast
     ) throws ScheduleManageException{
         ResultSet rs = null;
         try{
@@ -1087,7 +1110,11 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 ++index,
                 now
             );
-            scheduleInsertStatement.executeUpdate();
+            if(isBatchExecute){
+                scheduleInsertStatement.addBatch();
+            }else{
+                scheduleInsertStatement.executeUpdate();
+            }
             
             final ScheduleDepends[] depends = schedule.getDepends();
             if(depends != null && depends.length != 0){
@@ -1116,7 +1143,11 @@ public class DatabaseScheduleManagerService extends ServiceBase
                         6,
                         now
                     );
-                    scheduleDependsInsertStatement.executeUpdate();
+                    if(isBatchExecute){
+                        scheduleDependsInsertStatement.addBatch();
+                    }else{
+                        scheduleDependsInsertStatement.executeUpdate();
+                    }
                 }
             }
             final ScheduleDepends[] dependsOnGroup = schedule.getDependsOnGroup();
@@ -1146,7 +1177,11 @@ public class DatabaseScheduleManagerService extends ServiceBase
                         6,
                         now
                     );
-                    scheduleDependsInsertStatement.executeUpdate();
+                    if(isBatchExecute){
+                        scheduleDependsInsertStatement.addBatch();
+                    }else{
+                        scheduleDependsInsertStatement.executeUpdate();
+                    }
                 }
             }
             
@@ -1183,7 +1218,11 @@ public class DatabaseScheduleManagerService extends ServiceBase
                                 4,
                                 now
                             );
-                            scheduleGroupDependsInsertStatement.executeUpdate();
+                            if(isBatchExecute){
+                                scheduleGroupDependsInsertStatement.addBatch();
+                            }else{
+                                scheduleGroupDependsInsertStatement.executeUpdate();
+                            }
                         }
                         rs.close();
                         rs = null;
@@ -1201,7 +1240,11 @@ public class DatabaseScheduleManagerService extends ServiceBase
                         4,
                         now
                     );
-                    scheduleGroupInsertStatement.executeUpdate();
+                    if(isBatchExecute){
+                        scheduleGroupInsertStatement.addBatch();
+                    }else{
+                        scheduleGroupInsertStatement.executeUpdate();
+                    }
                 }
             }
             
@@ -1236,9 +1279,20 @@ public class DatabaseScheduleManagerService extends ServiceBase
                             6,
                             now
                         );
-                        scheduleDependsInsertStatement.executeUpdate();
+                        if(isBatchExecute){
+                            scheduleDependsInsertStatement.addBatch();
+                        }else{
+                            scheduleDependsInsertStatement.executeUpdate();
+                        }
                     }
                 }
+            }
+            if(isBatchExecute && (count % batchExecuteCount == 0 || isLast)){
+                scheduleInsertStatement.executeBatch();
+                scheduleDependsInsertStatement.executeBatch();
+                scheduleGroupDependsMasterSelectStatement.executeBatch();
+                scheduleGroupDependsInsertStatement.executeBatch();
+                scheduleGroupInsertStatement.executeBatch();
             }
         }catch(IOException e){
             throw new ScheduleManageException(e);
@@ -4914,7 +4968,10 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 ps4,
                 ps5,
                 schedule,
-                null
+                null,
+                false,
+                0,
+                true
             );
         }catch(SQLException e){
             throw new ScheduleManageException(e);
@@ -5064,6 +5121,54 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 }catch(SQLException e){
                 }
             }
+            if(st != null){
+                try{
+                    st.close();
+                }catch(SQLException e){
+                }
+            }
+            if(con != null){
+                try{
+                    con.close();
+                }catch(SQLException e){
+                }
+            }
+        }
+    }
+    
+    // ScheduleManagerのJavaDoc
+    public boolean removeSchedules(List ids) throws ScheduleManageException{
+        Connection con = null;
+        try{
+            con = connectionFactory.getConnection();
+        }catch(ConnectionFactoryException e){
+            throw new ScheduleManageException(e);
+        }
+        PreparedStatement st = null;
+        try{
+            st = con.prepareStatement(
+                "delete from " + scheduleTableSchema.table
+                    + " where " + scheduleTableSchema.id + "=?"
+            );
+            int deleteCount = 0;
+            for(int i = 0, imax = ids.size(); i < imax; i++){
+                st.setString(1, (String)ids.get(i));
+                if(isBatchExecute){
+                    st.addBatch();
+                    if(i % batchExecuteCount == 0 || i == imax - 1){
+                        int[] updateCounts = st.executeBatch();
+                        for(int j = 0; j < updateCounts.length; j++){
+                            deleteCount += updateCounts[j];
+                        }
+                    }
+                }else{
+                    deleteCount += st.executeUpdate();
+                }
+            }
+            return deleteCount == ids.size();
+        }catch(SQLException e){
+            throw new ScheduleManageException(e);
+        }finally{
             if(st != null){
                 try{
                     st.close();
