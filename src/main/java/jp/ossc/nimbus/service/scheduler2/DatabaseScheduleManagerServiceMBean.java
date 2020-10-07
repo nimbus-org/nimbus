@@ -471,6 +471,14 @@ public interface DatabaseScheduleManagerServiceMBean extends ServiceBaseMBean{
     public Properties getInputFormatConverterMapping();
     
     /**
+     * バッチ実行を行うかどうかを設定する。<p>
+     * デフォルトはfalseで、バッチ実行しない。<br>
+     *
+     * @param isBatch バッチ実行を行う場合は、true
+     */
+    public void setBatchExecute(boolean isBatch);
+     
+    /**
      * バッチ実行を行うかどうかを判定する。<p>
      *
      * @return trueの場合は、バッチ実行を行う
