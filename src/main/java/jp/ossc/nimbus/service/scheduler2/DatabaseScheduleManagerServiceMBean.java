@@ -477,6 +477,7 @@ public interface DatabaseScheduleManagerServiceMBean extends ServiceBaseMBean{
      * @param isBatch バッチ実行を行う場合は、true
      */
     public void setBatchExecute(boolean isBatch);
+     
     /**
      * バッチ実行を行うかどうかを判定する。<p>
      *
