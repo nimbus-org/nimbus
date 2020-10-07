@@ -1656,6 +1656,16 @@ public class DefaultScheduleManagerService extends ServiceBase
     }
     
     // ScheduleManagerのJavaDoc
+    public boolean removeSchedules(List ids) throws ScheduleManageException{
+        boolean result = true;
+        Iterator itr = ids.iterator();
+        while(itr.hasNext()){
+            result &= removeSchedule((String)itr.next());
+        }
+        return result;
+    }
+    
+    // ScheduleManagerのJavaDoc
     public boolean removeSchedule(String id) throws ScheduleManageException{
         final Schedule schedule = (Schedule)scheduleMap.get(id);
         if(schedule == null){
