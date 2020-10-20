@@ -226,6 +226,21 @@ public interface ScheduleManager{
     public List findSchedules(Date from, Date to, int[] states, String masterId, String masterGroupId, String groupId) throws ScheduleManageException;
     
     /**
+     * 指定された期間、状態、マスタID、マスタグループIDのスケジュールを検索する。<p>
+     *
+     * @param from 期間の開始日時
+     * @param to 期間の終了日時
+     * @param states スケジュール状態の配列
+     * @param masterId スケジュールマスタのID
+     * @param masterGroupId スケジュールマスタのグループID
+     * @param groupId スケジュールのグループID
+     * @param limit 最大取得件数
+     * @return スケジュールリスト
+     * @exception ScheduleManageException スケジュールの検索に失敗した場合
+     */
+    public List findSchedules(Date from, Date to, int[] states, String masterId, String masterGroupId, String groupId, int limit) throws ScheduleManageException;
+    
+    /**
      * 指定された日時と実行種別で実行可能なスケジュールを検索する。<p>
      *
      * @param date 日時
