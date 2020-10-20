@@ -498,6 +498,21 @@ public interface StreamExchangeInterceptorServiceMBean
     public boolean isRequestStreamInflate();
     
     /**
+     * ジャーナルを開始するかどうかを設定する。<br>
+     * デフォルトは、trueで、開始する。falseにすると、ジャーナルが開始されている場合だけ、ジャーナルを出力する。<br>
+     *
+     * @param isStart ジャーナルを開始する場合true
+     */
+    public void setStartJournal(boolean isStart);
+    
+    /**
+     * ジャーナルを開始するかどうかを判定する。<br>
+     *
+     * @return trueの場合、ジャーナルを開始する
+     */
+    public boolean isStartJournal();
+    
+    /**
      * 要求オブジェクトをBeanFlowで取得する場合に使用する{@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}のサービス名を設定する。<p>
      *
      * @param name BeanFlowInvokerFactoryのサービス名

@@ -231,4 +231,19 @@ public interface ServletRequestExchangeInterceptorServiceMBean
      * @return キー名
      */
     public String getRequestObjectContextKey();
+    
+    /**
+     * ジャーナルを開始するかどうかを設定する。<br>
+     * デフォルトは、trueで、開始する。falseにすると、ジャーナルが開始されている場合だけ、ジャーナルを出力する。<br>
+     *
+     * @param isStart ジャーナルを開始する場合true
+     */
+    public void setStartJournal(boolean isStart);
+    
+    /**
+     * ジャーナルを開始するかどうかを判定する。<br>
+     *
+     * @return trueの場合、ジャーナルを開始する
+     */
+    public boolean isStartJournal();
 }
