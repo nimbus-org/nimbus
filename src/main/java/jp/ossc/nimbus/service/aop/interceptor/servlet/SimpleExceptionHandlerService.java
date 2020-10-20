@@ -135,7 +135,7 @@ public class SimpleExceptionHandlerService extends ServiceBase
                 log.write(logMessageCode);
             }
         }
-        if(journal != null){
+        if(journal != null && journal.isStartJournal()){
             journal.addInfo(
                 exceptionJournalKey,
                 th,

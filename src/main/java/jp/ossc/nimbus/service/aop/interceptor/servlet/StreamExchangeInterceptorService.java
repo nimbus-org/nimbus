@@ -117,6 +117,7 @@ public class StreamExchangeInterceptorService
          = DEFAULT_RESPONSE_OBJECT_CONTEXT_KEY;
     
     protected boolean isRequestStreamInflate = true;
+    protected boolean isStartJournal = true;
     
     protected String exchangeJournalKey = DEFAULT_EXCHANGE_JOURNAL_KEY;
     protected String exchangeRequestJournalKey = DEFAULT_EXCHANGE_REQ_JOURNAL_KEY;
@@ -295,6 +296,16 @@ public class StreamExchangeInterceptorService
     // StreamExchangeInterceptorServiceMBean のJavaDoc
     public boolean isRequestStreamInflate(){
         return isRequestStreamInflate;
+    }
+    
+    // StreamExchangeInterceptorServiceMBean のJavaDoc
+    public void setStartJournal(boolean isStart){
+        isStartJournal = isStart;
+    }
+    
+    // StreamExchangeInterceptorServiceMBean のJavaDoc
+    public boolean isStartJournal(){
+        return isStartJournal;
     }
     
     // StreamExchangeInterceptorServiceMBean のJavaDoc
@@ -793,16 +804,19 @@ public class StreamExchangeInterceptorService
         if(getState() != STARTED){
             return chain.invokeNext(context);
         }
+        boolean isStartedJournal = false;
         try{
-            if(journal != null){
+            if(journal != null && isStartJournal()){
                 journal.startJournal(exchangeJournalKey, exchangeEditorFinder);
+                
             }
+            isStartedJournal = journal.isStartJournal();
             final ServletRequest request = context.getServletRequest();
             final ByteArrayOutputStream baos = new ByteArrayOutputStream();
             byte[] bytes = new byte[2048];
             if(requestStreamConverter != null){
                 try{
-                    if(journal != null){
+                    if(journal != null && isStartedJournal){
                         journal.addStartStep(
                             exchangeRequestJournalKey,
                             exchangeRequestEditorFinder
@@ -819,7 +833,7 @@ public class StreamExchangeInterceptorService
                             sis.close();
                         }
                     }
-                    if(journal != null){
+                    if(journal != null && isStartedJournal){
                         journal.addInfo(
                             requestBytesJournalKey,
                             baos.toByteArray(),
@@ -877,7 +891,7 @@ public class StreamExchangeInterceptorService
                     }else{
                         requestObj = rsc.convertToObject(is);
                     }
-                    if(journal != null){
+                    if(journal != null && isStartedJournal){
                         journal.addInfo(
                             requestObjectJournalKey,
                             requestObj,
@@ -889,7 +903,7 @@ public class StreamExchangeInterceptorService
                         threadContext.put(requestObjectContextKey, requestObj);
                     }
                 }catch(Exception e){
-                    if(journal != null){
+                    if(journal != null && isStartedJournal){
                         journal.addInfo(
                             exceptionJournalKey,
                             e,
@@ -898,7 +912,7 @@ public class StreamExchangeInterceptorService
                     }
                     throw new InputExchangeException(e);
                 }catch(Throwable th){
-                    if(journal != null){
+                    if(journal != null && isStartedJournal){
                         journal.addInfo(
                             exceptionJournalKey,
                             th,
@@ -907,7 +921,7 @@ public class StreamExchangeInterceptorService
                     }
                     throw th;
                 }finally{
-                   if(journal != null){
+                   if(journal != null && isStartedJournal){
                         journal.addEndStep();
                     }
                 }
@@ -919,7 +933,7 @@ public class StreamExchangeInterceptorService
                 final ServletResponse response = context.getServletResponse();
                 if(!response.isCommitted()){
                     try{
-                        if(journal != null){
+                        if(journal != null && isStartedJournal){
                             journal.addStartStep(
                                 exchangeResponseJournalKey,
                                 exchangeResponseEditorFinder
@@ -932,7 +946,7 @@ public class StreamExchangeInterceptorService
                         if(responseObj == null && threadContext != null){
                             responseObj = threadContext.get(responseObjectContextKey);
                         }
-                        if(journal != null){
+                        if(journal != null && isStartedJournal){
                             journal.addInfo(
                                 responseObjectJournalKey,
                                 responseObj,
@@ -956,7 +970,7 @@ public class StreamExchangeInterceptorService
                                 baos.write(bytes, 0, readLen);
                                 sos.write(bytes, 0, readLen);
                             }
-                            if(journal != null){
+                            if(journal != null && isStartedJournal){
                                 journal.addInfo(
                                     responseBytesJournalKey,
                                     baos.toByteArray(),
@@ -965,7 +979,7 @@ public class StreamExchangeInterceptorService
                             }
                         }
                     }catch(Exception e){
-                        if(journal != null){
+                        if(journal != null && isStartedJournal){
                             journal.addInfo(
                                 exceptionJournalKey,
                                 e,
@@ -974,7 +988,7 @@ public class StreamExchangeInterceptorService
                         }
                         throw new OutputExchangeException(e);
                     }catch(Throwable th){
-                        if(journal != null){
+                        if(journal != null && isStartedJournal){
                             journal.addInfo(
                                 exceptionJournalKey,
                                 th,
@@ -983,7 +997,7 @@ public class StreamExchangeInterceptorService
                         }
                         throw th;
                     }finally{
-                        if(journal != null){
+                        if(journal != null && isStartedJournal){
                             journal.addEndStep();
                         }
                     }
@@ -991,7 +1005,7 @@ public class StreamExchangeInterceptorService
             }
             return ret;
         }catch(Throwable th){
-           if(journal != null){
+           if(journal != null && isStartedJournal){
                 journal.addInfo(
                     exceptionJournalKey,
                     th,
@@ -1000,7 +1014,7 @@ public class StreamExchangeInterceptorService
            }
            throw th;
         }finally{
-            if(journal != null){
+            if(journal != null && isStartedJournal){
                 journal.endJournal();
             }
         }

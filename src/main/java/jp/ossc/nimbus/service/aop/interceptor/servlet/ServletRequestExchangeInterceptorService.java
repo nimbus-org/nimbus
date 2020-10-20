@@ -74,6 +74,8 @@ public class ServletRequestExchangeInterceptorService
     protected String requestObjectJournalKey = DEFAULT_REQUEST_OBJECT_JOURNAL_KEY;
     protected String exceptionJournalKey = DEFAULT_EXCEPTION_JOURNAL_KEY;
     
+    protected boolean isStartJournal = true;
+    
     protected String requestObjectAttributeName
          = DEFAULT_REQUEST_OBJECT_ATTRIBUTE_NAME;
     
@@ -177,6 +179,15 @@ public class ServletRequestExchangeInterceptorService
     // ServletRequestExchangeInterceptorServiceMBean のJavaDoc
     public String getRequestObjectContextKey(){
         return requestObjectContextKey;
+    }
+    
+    // ServletRequestExchangeInterceptorServiceMBean のJavaDoc
+    public void setStartJournal(boolean isStart){
+        isStartJournal = isStart;
+    }
+    // ServletRequestExchangeInterceptorServiceMBean のJavaDoc
+    public boolean isStartJournal(){
+        return isStartJournal;
     }
     
     /**
@@ -351,10 +362,12 @@ public class ServletRequestExchangeInterceptorService
         if(getState() != STARTED){
             return chain.invokeNext(context);
         }
+        boolean isStartedJournal = false;
         try{
-            if(journal != null){
+            if(journal != null && isStartJournal()){
                 journal.startJournal(exchangeJournalKey, exchangeEditorFinder);
             }
+            isStartedJournal = journal.isStartJournal();
             final ServletRequest request = context.getServletRequest();
             Object requestObj = null;
             try{
@@ -362,7 +375,7 @@ public class ServletRequestExchangeInterceptorService
             }catch(Exception e){
                 throw new InputExchangeException(e);
             }
-            if(journal != null){
+            if(journal != null && isStartedJournal){
                 journal.addInfo(
                     requestObjectJournalKey,
                     requestObj,
@@ -374,7 +387,7 @@ public class ServletRequestExchangeInterceptorService
             final Object ret = chain.invokeNext(context);
             return ret;
         }catch(Throwable th){
-           if(journal != null){
+           if(journal != null && isStartedJournal){
                 journal.addInfo(
                     exceptionJournalKey,
                     th,
@@ -383,7 +396,7 @@ public class ServletRequestExchangeInterceptorService
            }
            throw th;
         }finally{
-            if(journal != null){
+            if(journal != null && isStartedJournal){
                 journal.endJournal();
             }
         }

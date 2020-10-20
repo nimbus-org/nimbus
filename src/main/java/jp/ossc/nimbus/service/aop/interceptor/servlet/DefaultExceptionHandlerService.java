@@ -263,7 +263,7 @@ public class DefaultExceptionHandlerService extends ServiceBase
                 log.write(logMessageCode, logMessageArguments);
             }
         }
-        if(journal != null){
+        if(journal != null && journal.isStartJournal()){
             journal.addInfo(
                 exceptionJournalKey,
                 th,
