@@ -1214,6 +1214,16 @@ public class ScheduleManagerServlet extends HttpServlet{
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Parameter 'search_state' is illegal." + e.toString());
             return;
         }
+        int limit = -1;
+        try{
+            int[] limits = getIntParameterValues(req, "limit");
+            if(limits != null && limits.length != 0){
+                limit = limits[0];
+            }
+        }catch(NumberFormatException e){
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Parameter 'limit' is illegal." + e.toString());
+            return;
+        }
         Exception exception = null;
         List schedules = null;
         if(id != null && id.length() != 0){
@@ -1239,7 +1249,7 @@ public class ScheduleManagerServlet extends HttpServlet{
                 states = new int[]{Schedule.STATE_INITIAL,Schedule.STATE_RETRY};
             }
             try{
-                schedules = scheduleManager.findSchedules(from, to, states, masterId, masterGroupId, groupId);
+                schedules = scheduleManager.findSchedules(from, to, states, masterId, masterGroupId, groupId, limit);
             }catch(ScheduleManageException e){
                 exception = e;
             }

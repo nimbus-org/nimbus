@@ -746,12 +746,17 @@ public class DefaultScheduleManagerService extends ServiceBase
     // ScheduleManagerのJavaDoc
     public List findSchedules(Date from, Date to, int[] states)
      throws ScheduleManageException{
-        return findSchedules(from, to, states, null, null, null, null, null);
+        return findSchedules(from, to, states, null, null, null, null, null, -1);
     }
     
     // ScheduleManagerのJavaDoc
     public List findSchedules(Date from, Date to, int[] states, String masterId, String masterGroupId, String groupId) throws ScheduleManageException{
-        return findSchedules(from, to, states, masterId, masterGroupId, groupId, null, null);
+        return findSchedules(from, to, states, masterId, masterGroupId, groupId, null, null, -1);
+    }
+    
+    // ScheduleManagerのJavaDoc
+    public List findSchedules(Date from, Date to, int[] states, String masterId, String masterGroupId, String groupId, int limit) throws ScheduleManageException{
+        return findSchedules(from, to, states, masterId, masterGroupId, groupId, null, null, limit);
     }
     
     /**
@@ -776,7 +781,8 @@ public class DefaultScheduleManagerService extends ServiceBase
         String masterGroupId,
         String groupId,
         String[] executorTypes,
-        String executorKey
+        String executorKey,
+        int limit
     ) throws ScheduleManageException{
         if(from != null && to != null){
             if(from.after(to)){
@@ -906,6 +912,9 @@ public class DefaultScheduleManagerService extends ServiceBase
                 }
             }
         }
+        if(limit > 0){
+            schedules = schedules.subList(0, limit);
+        }
         return schedules;
     }
     
@@ -926,7 +935,8 @@ public class DefaultScheduleManagerService extends ServiceBase
             null,
             null,
             executorTypes,
-            executorKey
+            executorKey,
+            -1
         );
         if(schedules == null || schedules.size() == 0){
             return schedules;
@@ -1792,7 +1802,7 @@ public class DefaultScheduleManagerService extends ServiceBase
     
     // ScheduleManagerのJavaDoc
     public boolean removeSchedule(Date from, Date to, int[] states, String masterId, String masterGroupId, String groupId) throws ScheduleManageException{
-        List schedules = findSchedules(from, to, states, masterId, masterGroupId, groupId);
+        List schedules = findSchedules(from, to, states, masterId, masterGroupId, groupId, -1);
         boolean isRemove = false;
         for(int i = 0, imax = schedules.size(); i < imax; i++){
             isRemove |= removeSchedule(((Schedule)schedules.get(i)).getId());

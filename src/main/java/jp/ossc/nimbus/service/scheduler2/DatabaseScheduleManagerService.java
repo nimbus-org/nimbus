@@ -2636,12 +2636,17 @@ public class DatabaseScheduleManagerService extends ServiceBase
     // ScheduleManagerのJavaDoc
     public List findSchedules(Date from, Date to, int[] states)
      throws ScheduleManageException{
-        return findSchedules(from, to, states, null, null, null, null, null, false);
+        return findSchedules(from, to, states, null, null, null, null, null, false, -1);
     }
     
     // ScheduleManagerのJavaDoc
     public List findSchedules(Date from, Date to, int[] states, String masterId, String masterGroupId, String groupId) throws ScheduleManageException{
-        return findSchedules(from, to, states, masterId, masterGroupId, groupId, null, null, false);
+        return findSchedules(from, to, states, masterId, masterGroupId, groupId, null, null, false, -1);
+    }
+    
+    // ScheduleManagerのJavaDoc
+    public List findSchedules(Date from, Date to, int[] states, String masterId, String masterGroupId, String groupId, int limit) throws ScheduleManageException{
+        return findSchedules(from, to, states, masterId, masterGroupId, groupId, null, null, false, limit);
     }
     
     protected StringBuilder concatQuery(StringBuilder buf, String s1, String s2){
@@ -2662,7 +2667,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
         String groupId,
         String[] executorTypes,
         String executorKey,
-        boolean isLock
+        boolean isLock,
+        int limit
     ) throws ScheduleManageException{
         Connection con = null;
         try{
@@ -2783,6 +2789,9 @@ public class DatabaseScheduleManagerService extends ServiceBase
             if(isLock){
                 buf.append(" for update");
             }
+            if(limit > 0){
+                buf.append(" limit ").append(limit);
+            }
             st = con.prepareStatement(buf.toString());
             buf = null;
             final SimpleDateFormat format = new SimpleDateFormat(
@@ -2882,7 +2891,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
             null,
             executorTypes,
             executorKey,
-            isLockForFindExecutable
+            isLockForFindExecutable,
+            -1
         );
         Connection con = null;
         try{
