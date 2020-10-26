@@ -1302,15 +1302,19 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                                 appendIndent(buf, indent2 + 1);
                             }
                             if(propSchema instanceof RecordPropertySchema){
+                                buf.append("#if( $parentRecord )#set( $oldParentRecord_").append(propSchema.getName()).append(indent2).append(" = $parentRecord)#end");
                                 buf.append("#set( $parentRecord = $");
                                 if(parentList != null){
                                     buf.append("record.");
                                 }else if(headerName != null){
                                     buf.append(headerName).append("[0].");
+                                }else{
+                                    buf.append("parentRecord.");
                                 }
                                 buf.append(propSchema.getName());
                                 buf.append("[0] )");
                                 appendValue(buf, propSchema.getType(), prop, indent2 + 1);
+                                buf.append("#if( $oldParentRecord_").append(propSchema.getName()).append(indent2).append(" )#set( $parentRecord = $oldParentRecord_").append(propSchema.getName()).append(indent2).append(")#end");
                             }else if(propSchema instanceof RecordListPropertySchema){
                                 buf.append(ARRAY_ENCLOSURE_START);
                                 if(((RecordList)prop).size() > 0) {
@@ -1355,15 +1359,19 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                                 buf.append(PROPERTY_SEPARATOR);
                             }
                             if(propSchema instanceof RecordPropertySchema){
+                                buf.append("#if( $parentRecord )#set( $oldParentRecord_").append(propSchema.getName()).append(indent2).append(" = $parentRecord)#end");
                                 buf.append("#set( $parentRecord = $");
                                 if(parentList != null){
                                     buf.append("record.");
                                 }else if(headerName != null){
                                     buf.append(headerName).append("[0].");
+                                }else{
+                                    buf.append("parentRecord.");
                                 }
                                 buf.append(propSchema.getName());
                                 buf.append("[0] )");
                                 appendValue(buf, propSchema.getType(), prop, indent2 + 1);
+                                buf.append("#if( $oldParentRecord_").append(propSchema.getName()).append(indent2).append(" )#set( $parentRecord = $oldParentRecord_").append(propSchema.getName()).append(indent2).append(")#end");
                             }else if(propSchema instanceof RecordListPropertySchema){
                                 buf.append(ARRAY_ENCLOSURE_START);
                                 if(((RecordList)prop).size() > 0) {
