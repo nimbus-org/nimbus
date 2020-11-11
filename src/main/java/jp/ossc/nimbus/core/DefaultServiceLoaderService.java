@@ -1199,6 +1199,11 @@ public class DefaultServiceLoaderService extends ServiceBase
                 manager.destroy();
             }
         }
+    }
+    
+    protected void postStartService() throws Exception{
+        super.postStartService();
+        
         if(isCheckLoadManagerCompleted){
             if(checkLoadManagerNames == null){
                 ServiceManagerFactory.checkLoadManagerCompleted();
