@@ -229,6 +229,7 @@ public class DatabaseContextStoreService extends ServiceBase
         protected boolean isSynchronizedRecordList = true;
         protected boolean isLockOnLoad = false;
         protected int batchLoadCount;
+        protected long loadTimeout;
         
         /**
          * キーがユニークキーかどうかを設定する。<p>
@@ -633,11 +634,21 @@ public class DatabaseContextStoreService extends ServiceBase
             isSynchronizedRecordList = isSynch;
         }
         
+        /**
+         * 読み込み時に使用するタイムアウト[ms]を設定する。<p>
+         * デフォルトは、0。
+         *
+         * @param timeout タイムアウト[ms]
+         */
+        public void setLoadTimeout(long timeout){
+            loadTimeout = timeout;
+        }
+        
         public void load(Context context, ConnectionFactory factory, PersistentManager pm) throws Exception{
             if(parallelSelectQuery != null && keySelectQuery != null){
                 loadParallel(context, factory, pm);
             }else if(selectQuery != null){
-                load(context, factory, pm, selectQuery, null, false);
+                load(context, factory, pm, selectQuery, null, false, loadTimeout);
             }else{
                 throw new UnsupportedOperationException("selectQuery is null.");
             }
@@ -649,7 +660,7 @@ public class DatabaseContextStoreService extends ServiceBase
         
         public void load(Context context, ConnectionFactory factory, PersistentManager pm, Object key) throws Exception{
             if(selectWhereQuery != null){
-                load(context, factory, pm, selectWhereQuery, key, true);
+                load(context, factory, pm, selectWhereQuery, key, true, 0);
             }else{
                 throw new UnsupportedOperationException("selectWhereQuery is null.");
             }
@@ -683,8 +694,9 @@ public class DatabaseContextStoreService extends ServiceBase
                 return;
             }
             if(parallelSize <= 1){
+                long startTime = System.currentTimeMillis();
                 for(int i = 0; i < inputList.size(); i++){
-                    load(context, factory, pm, parallelSelectQuery, inputList.get(i), false);
+                    load(context, factory, pm, parallelSelectQuery, inputList.get(i), false, calculateTimeout(loadTimeout, startTime));
                 }
             }else{
                 QueueHandlerContainerService qhc = new QueueHandlerContainerService();
@@ -810,7 +822,8 @@ public class DatabaseContextStoreService extends ServiceBase
             }
         }
         
-        protected void load(Context context, ConnectionFactory factory, PersistentManager pm, String query, Object input, boolean isAsynch) throws Exception{
+        protected void load(Context context, ConnectionFactory factory, PersistentManager pm, String query, Object input, boolean isAsynch, long timeout) throws Exception{
+            final long startTime = System.currentTimeMillis();
             Map statementProps = null;
             if(fetchSize != 0){
                 statementProps = new HashMap();
@@ -980,13 +993,25 @@ public class DatabaseContextStoreService extends ServiceBase
                         }else{
                             if(isDist && batchLoadCount <= 1){
                                 if(isLockOnLoad && context instanceof SharedContext){
-                                    ((SharedContext)context).lock(key);
+                                    if(timeout > 0){
+                                        ((SharedContext)context).lock(key, calculateTimeout(timeout, startTime));
+                                    }else{
+                                        ((SharedContext)context).lock(key);
+                                    }
                                 }
                                 try{
-                                    context.put(key, output);
+                                    if(timeout > 0 && context instanceof SharedContext){
+                                        ((SharedContext)context).put(key, output, calculateTimeout(timeout, startTime));
+                                    }else{
+                                        context.put(key, output);
+                                    }
                                 }finally{
                                     if(isLockOnLoad && context instanceof SharedContext){
-                                        ((SharedContext)context).unlock(key);
+                                        if(timeout > 0){
+                                            ((SharedContext)context).unlock(key, false, calculateTimeout(timeout, startTime));
+                                        }else{
+                                            ((SharedContext)context).unlock(key);
+                                        }
                                     }
                                 }
                             }else{
@@ -1021,13 +1046,25 @@ public class DatabaseContextStoreService extends ServiceBase
                             }else{
                                 if(isDist && batchLoadCount <= 1){
                                     if(isLockOnLoad && context instanceof SharedContext){
-                                        ((SharedContext)context).lock(key);
+                                        if(timeout > 0){
+                                            ((SharedContext)context).lock(preKey, calculateTimeout(timeout, startTime));
+                                        }else{
+                                            ((SharedContext)context).lock(preKey);
+                                        }
                                     }
                                     try{
-                                        context.put(preKey, list);
+                                        if(timeout > 0 && context instanceof SharedContext){
+                                            ((SharedContext)context).put(preKey, list, calculateTimeout(timeout, startTime));
+                                        }else{
+                                            context.put(preKey, list);
+                                        }
                                     }finally{
                                         if(isLockOnLoad && context instanceof SharedContext){
-                                            ((SharedContext)context).unlock(key);
+                                            if(timeout > 0){
+                                                ((SharedContext)context).unlock(preKey, false, calculateTimeout(timeout, startTime));
+                                            }else{
+                                                ((SharedContext)context).unlock(preKey);
+                                            }
                                         }
                                     }
                                 }else{
@@ -1053,14 +1090,26 @@ public class DatabaseContextStoreService extends ServiceBase
                         Set keys = null;
                         if(isLockOnLoad && context instanceof SharedContext){
                             keys = new HashSet(tmpContext.keySet());
-                            ((SharedContext)context).locks(keys);
+                            if(timeout > 0){
+                                ((SharedContext)context).locks(keys, calculateTimeout(timeout, startTime));
+                            }else{
+                                ((SharedContext)context).locks(keys);
+                            }
                         }
                         try{
-                            context.putAll(tmpContext);
+                            if(timeout > 0 && context instanceof SharedContext){
+                                ((SharedContext)context).putAll(tmpContext, calculateTimeout(timeout, startTime));
+                            }else{
+                                context.putAll(tmpContext);
+                            }
                             tmpContext.clear();
                         }finally{
                             if(isLockOnLoad && context instanceof SharedContext){
-                                ((SharedContext)context).unlocks(keys);
+                                if(timeout > 0){
+                                    ((SharedContext)context).unlocks(keys, false, calculateTimeout(timeout, startTime));
+                                }else{
+                                    ((SharedContext)context).unlocks(keys);
+                                }
                             }
                         }
                     }
@@ -1078,13 +1127,25 @@ public class DatabaseContextStoreService extends ServiceBase
                     }else{
                         if(isDist && batchLoadCount <= 1){
                             if(isLockOnLoad && context instanceof SharedContext){
-                                ((SharedContext)context).lock(key);
+                                if(timeout > 0){
+                                    ((SharedContext)context).lock(key, calculateTimeout(timeout, startTime));
+                                }else{
+                                    ((SharedContext)context).lock(key);
+                                }
                             }
                             try{
-                                context.put(key, list);
+                                if(timeout > 0 && context instanceof SharedContext){
+                                    ((SharedContext)context).put(key, list, calculateTimeout(timeout, startTime));
+                                }else{
+                                    context.put(key, list);
+                                }
                             }finally{
                                 if(isLockOnLoad && context instanceof SharedContext){
-                                    ((SharedContext)context).unlock(key);
+                                    if(timeout > 0){
+                                        ((SharedContext)context).unlock(key, false, calculateTimeout(timeout, startTime));
+                                    }else{
+                                        ((SharedContext)context).unlock(key);
+                                    }
                                 }
                             }
                         }else{
@@ -1096,13 +1157,25 @@ public class DatabaseContextStoreService extends ServiceBase
                     Set keys = null;
                     if(isLockOnLoad && context instanceof SharedContext){
                         keys = new HashSet(tmpContext.keySet());
-                        ((SharedContext)context).locks(keys);
+                        if(timeout > 0){
+                            ((SharedContext)context).locks(keys, calculateTimeout(timeout, startTime));
+                        }else{
+                            ((SharedContext)context).locks(keys);
+                        }
                     }
                     try{
-                        context.putAll(tmpContext);
+                        if(timeout > 0 && context instanceof SharedContext){
+                            ((SharedContext)context).putAll(tmpContext, calculateTimeout(timeout, startTime));
+                        }else{
+                            context.putAll(tmpContext);
+                        }
                     }finally{
                         if(isLockOnLoad && context instanceof SharedContext){
-                            ((SharedContext)context).unlocks(keys);
+                            if(timeout > 0){
+                                ((SharedContext)context).unlocks(keys, false, calculateTimeout(timeout, startTime));
+                            }else{
+                                ((SharedContext)context).unlocks(keys);
+                            }
                         }
                     }
                 }
@@ -1131,6 +1204,17 @@ public class DatabaseContextStoreService extends ServiceBase
                     }catch(SQLException e){}
                 }
             }
+        }
+        
+        private long calculateTimeout(long timeout, long startTime) throws SharedContextTimeoutException{
+            if(timeout <= 0){
+                return timeout;
+            }
+            final long currentTimeout = timeout - (System.currentTimeMillis() - startTime);
+            if(currentTimeout <= 0){
+                throw new SharedContextTimeoutException("timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - startTime));
+            }
+            return currentTimeout;
         }
         
         public void clear(ConnectionFactory factory, PersistentManager pm) throws Exception{
@@ -1480,7 +1564,7 @@ public class DatabaseContextStoreService extends ServiceBase
                     return;
                 }
                 Object[] params = (Object[])ac.getInput();
-                load((Context)params[0], (ConnectionFactory)params[1], (PersistentManager)params[2], parallelSelectQuery, params[3], false);
+                load((Context)params[0], (ConnectionFactory)params[1], (PersistentManager)params[2], parallelSelectQuery, params[3], false, loadTimeout);
                 ac.getResponseQueue().push(ac);
             }
             public boolean handleError(Object obj, Throwable th) throws Throwable{
