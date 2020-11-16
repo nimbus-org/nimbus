@@ -1316,7 +1316,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
-                for(int i = 0; i < sharedContextArray.length; i++){
+	            entries = distMap.entrySet().iterator();
+                while(entries.hasNext()){
+                    Map.Entry entry = (Map.Entry)entries.next();
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get();
                     if(asynchContext == null){
                         result = false;
@@ -1417,7 +1419,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 }
                 parallelRequestQueueHandlerContainer.push(asynchContext);
             }
-            for(int i = 0; i < sharedContextArray.length; i++){
+            entries = distMap.entrySet().iterator();
+            while(entries.hasNext()){
+                Map.Entry entry = (Map.Entry)entries.next();
                 AsynchContext asynchContext = (AsynchContext)responseQueue.get();
                 if(asynchContext == null){
                     break;
@@ -1574,7 +1578,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 }
                 parallelRequestQueueHandlerContainer.push(asynchContext);
             }
-            for(int i = 0; i < sharedContextArray.length; i++){
+            entries = distMap.entrySet().iterator();
+            while(entries.hasNext()){
+                Map.Entry entry = (Map.Entry)entries.next();
                 AsynchContext asynchContext = (AsynchContext)responseQueue.get();
                 if(asynchContext == null){
                     break;
@@ -1618,8 +1624,8 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             map.put(entry.getKey(), entry.getValue());
         }
         
+        entries = distMap.entrySet().iterator();
         if(parallelRequestQueueHandlerContainer == null){
-            entries = distMap.entrySet().iterator();
             while(entries.hasNext()){
                 Map.Entry entry = (Map.Entry)entries.next();
                 ((SharedContext)entry.getKey()).putAllAsynch((Map)entry.getValue());
@@ -1643,7 +1649,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 }
                 parallelRequestQueueHandlerContainer.push(asynchContext);
             }
-            for(int i = 0; i < sharedContextArray.length; i++){
+            entries = distMap.entrySet().iterator();
+            while(entries.hasNext()){
+                Map.Entry entry = (Map.Entry)entries.next();
                 AsynchContext asynchContext = (AsynchContext)responseQueue.get();
                 if(asynchContext == null){
                     break;
@@ -3632,7 +3640,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
-                for(int i = 0; i < sharedContextArray.length; i++){
+                for(int i = 0; i < views.length; i++){
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get();
                     if(asynchContext == null){
                         break;
@@ -3692,7 +3700,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
-                for(int i = 0; i < sharedContextArray.length; i++){
+                for(int i = 0; i < views.length; i++){
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get();
                     if(asynchContext == null){
                         break;
@@ -3761,7 +3769,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
-                for(int i = 0; i < sharedContextArray.length; i++){
+                for(int i = 0; i < views.length; i++){
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get();
                     if(asynchContext == null){
                         break;
@@ -3832,7 +3840,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
-                for(int i = 0; i < sharedContextArray.length; i++){
+                for(int i = 0; i < views.length; i++){
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get();
                     if(asynchContext == null){
                         break;
@@ -3903,7 +3911,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
-                for(int i = 0; i < sharedContextArray.length; i++){
+                for(int i = 0; i < views.length; i++){
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get();
                     if(asynchContext == null){
                         break;
@@ -3972,7 +3980,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
-                for(int i = 0; i < sharedContextArray.length; i++){
+                for(int i = 0; i < views.length; i++){
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get();
                     if(asynchContext == null){
                         break;
@@ -4039,7 +4047,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
-                for(int i = 0; i < sharedContextArray.length; i++){
+                for(int i = 0; i < views.length; i++){
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get();
                     if(asynchContext == null){
                         break;
@@ -4108,7 +4116,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
-                for(int i = 0; i < sharedContextArray.length; i++){
+                for(int i = 0; i < views.length; i++){
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get();
                     if(asynchContext == null){
                         break;
@@ -4179,7 +4187,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
-                for(int i = 0; i < sharedContextArray.length; i++){
+                for(int i = 0; i < views.length; i++){
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get();
                     if(asynchContext == null){
                         break;
@@ -4250,7 +4258,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
-                for(int i = 0; i < sharedContextArray.length; i++){
+                for(int i = 0; i < views.length; i++){
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get();
                     if(asynchContext == null){
                         break;
@@ -4319,7 +4327,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
-                for(int i = 0; i < sharedContextArray.length; i++){
+                for(int i = 0; i < views.length; i++){
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get();
                     if(asynchContext == null){
                         break;
@@ -4390,7 +4398,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
-                for(int i = 0; i < sharedContextArray.length; i++){
+                for(int i = 0; i < views.length; i++){
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get();
                     if(asynchContext == null){
                         break;
@@ -4461,7 +4469,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
-                for(int i = 0; i < sharedContextArray.length; i++){
+                for(int i = 0; i < views.length; i++){
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get();
                     if(asynchContext == null){
                         break;
@@ -4534,7 +4542,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
-                for(int i = 0; i < sharedContextArray.length; i++){
+                for(int i = 0; i < views.length; i++){
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get();
                     if(asynchContext == null){
                         break;
@@ -4608,7 +4616,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
-                for(int i = 0; i < sharedContextArray.length; i++){
+                for(int i = 0; i < views.length; i++){
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get();
                     if(asynchContext == null){
                         break;
@@ -4681,7 +4689,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
-                for(int i = 0; i < sharedContextArray.length; i++){
+                for(int i = 0; i < views.length; i++){
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get();
                     if(asynchContext == null){
                         break;
@@ -4752,7 +4760,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
-                for(int i = 0; i < sharedContextArray.length; i++){
+                for(int i = 0; i < views.length; i++){
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get();
                     if(asynchContext == null){
                         break;
@@ -4825,7 +4833,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
-                for(int i = 0; i < sharedContextArray.length; i++){
+                for(int i = 0; i < views.length; i++){
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get();
                     if(asynchContext == null){
                         break;
@@ -4900,7 +4908,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
-                for(int i = 0; i < sharedContextArray.length; i++){
+                for(int i = 0; i < views.length; i++){
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get();
                     if(asynchContext == null){
                         break;
@@ -4977,7 +4985,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }
                     parallelRequestQueueHandlerContainer.push(asynchContext);
                 }
-                for(int i = 0; i < sharedContextArray.length; i++){
+                for(int i = 0; i < views.length; i++){
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get();
                     if(asynchContext == null){
                         break;
