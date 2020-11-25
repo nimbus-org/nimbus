@@ -496,11 +496,25 @@ public interface ClusterServiceMBean extends ServiceBaseMBean{
     public List getMembers();
     
     /**
+     * 現在のクラスタメンバ数を取得する。<p>
+     *
+     * @return 現在のクラスタメンバ数
+     */
+    public int getMemberSize();
+    
+    /**
      * 現在のクライアントメンバのUIDのリストを取得する。<p>
      *
      * @return 現在のクライアントメンバ
      */
     public Set getClientMembers();
+    
+    /**
+     * 現在のクライアントメンバ数を取得する。<p>
+     *
+     * @return 現在のクライアントメンバ数
+     */
+    public int getClientMemberSize();
     
     /**
      * このサービスのUIDを取得する。<p>
