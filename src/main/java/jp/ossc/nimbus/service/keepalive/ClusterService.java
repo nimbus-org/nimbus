@@ -335,17 +335,8 @@ public class ClusterService extends ServiceBase implements Cluster, ClusterServi
         }
     }
     
-    public String getMemberString(){
-        return getMembers() == null ? "" : getMembers().toString();
-    }
-    
     public int getMemberSize(){
-        if(members == null){
-            return 0;
-        }
-        synchronized(members){
-            return members.size();
-        }
+        return getMembers() == null ? 0 : getMembers().size();
     }
     
     public Set getClientMembers(){
@@ -357,17 +348,8 @@ public class ClusterService extends ServiceBase implements Cluster, ClusterServi
         }
     }
     
-    public String getClientMemberString(){
-        return getClientMembers() == null ? "" : getClientMembers().toString();
-    }
-    
     public int getClientMemberSize(){
-        if(clientMembers == null){
-            return 0;
-        }
-        synchronized(clientMembers){
-            return clientMembers.values().size();
-        }
+        return getClientMembers() == null ? 0 : getClientMembers().size();
     }
     
     public jp.ossc.nimbus.service.keepalive.ClusterUID getUID(){
