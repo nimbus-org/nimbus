@@ -335,30 +335,12 @@ public class ClusterService extends ServiceBase implements Cluster, ClusterServi
         }
     }
     
-    public int getMemberSize(){
-        if(members == null){
-            return 0;
-        }
-        synchronized(members){
-            return members.size();
-        }
-    }
-    
     public Set getClientMembers(){
         if(clientMembers == null){
             return null;
         }
         synchronized(clientMembers){
             return new HashSet(clientMembers.values());
-        }
-    }
-    
-    public int getClientMemberSize(){
-        if(clientMembers == null){
-            return 0;
-        }
-        synchronized(clientMembers){
-            return clientMembers.values().size();
         }
     }
     
