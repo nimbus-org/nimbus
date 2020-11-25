@@ -335,6 +335,10 @@ public class ClusterService extends ServiceBase implements Cluster, ClusterServi
         }
     }
     
+    public String getMemberString(){
+        return getMembers() == null ? "" : getMembers().toString();
+    }
+    
     public int getMemberSize(){
         if(members == null){
             return 0;
@@ -351,6 +355,10 @@ public class ClusterService extends ServiceBase implements Cluster, ClusterServi
         synchronized(clientMembers){
             return new HashSet(clientMembers.values());
         }
+    }
+    
+    public String getClientMemberString(){
+        return getClientMembers() == null ? "" : getClientMembers().toString();
     }
     
     public int getClientMemberSize(){

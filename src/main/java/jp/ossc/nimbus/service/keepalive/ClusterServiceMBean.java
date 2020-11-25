@@ -496,6 +496,13 @@ public interface ClusterServiceMBean extends ServiceBaseMBean{
     public List getMembers();
     
     /**
+     * 現在のクラスタメンバのUIDのリストの文字列を取得する。<p>
+     *
+     * @return 現在のクラスタメンバの文字列
+     */
+    public String getMemberString();
+    
+    /**
      * 現在のクラスタメンバ数を取得する。<p>
      *
      * @return 現在のクラスタメンバ数
@@ -508,6 +515,13 @@ public interface ClusterServiceMBean extends ServiceBaseMBean{
      * @return 現在のクライアントメンバ
      */
     public Set getClientMembers();
+    
+    /**
+     * 現在のクライアントメンバのUIDのリストの文字列を取得する。<p>
+     *
+     * @return 現在のクライアントメンバの文字列
+     */
+    public String getClientMemberString();
     
     /**
      * 現在のクライアントメンバ数を取得する。<p>
