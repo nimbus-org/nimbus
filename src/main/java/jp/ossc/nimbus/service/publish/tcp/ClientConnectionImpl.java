@@ -419,6 +419,10 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
                             socket.close();
                         }catch(IOException e2){}
                         socket = null;
+                        if(messageReceiveDaemon != null){
+                            messageReceiveDaemon.stopNoWait();
+                            messageReceiveDaemon = null;
+                        }
                     }
                     throw e;
                 }
@@ -656,6 +660,9 @@ public class ClientConnectionImpl implements ClientConnection, DaemonRunnable, S
     
     private Message receive() throws MessageCommunicateException{
         if(socket == null){
+            try{
+                Thread.sleep(100);
+            }catch(InterruptedException e){}
             return null;
         }
         int length = 0;
