@@ -167,4 +167,9 @@
   <classpathentry kind="var" path="M2_REPO/org/attoparser/attoparser/2.0.5.RELEASE/attoparser-2.0.5.RELEASE.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/unbescape/unbescape/1.1.6.RELEASE/unbescape-1.1.6.RELEASE.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/freemarker/freemarker/2.3.29/freemarker-2.3.29.jar"/>
+  <classpathentry kind="var" path="M2_REPO/io/prometheus/simpleclient/0.9.0/simpleclient-0.9.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/io/prometheus/simpleclient_hotspot/0.9.0/simpleclient_hotspot-0.9.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/io/prometheus/simpleclient_httpserver/0.9.0/simpleclient_httpserver-0.9.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/io/prometheus/simpleclient_common/0.9.0/simpleclient_common-0.9.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/io/prometheus/simpleclient_pushgateway/0.9.0/simpleclient_pushgateway-0.9.0.jar"/>
 </classpath>
