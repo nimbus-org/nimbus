@@ -739,12 +739,12 @@ public class SharedContextService extends DefaultContextService
             final Object myId = cluster.getUID();
             String mySubject = parentSubject != null ? parentSubject : subject;
             while(true){
-                List clusterMembers = cluster.getMembers();
-                Set clientIds = serverConnection.getClientIds();
+                Set clientIds = serverConnection.getReceiveClientIds(allTargetMessage);
                 clientIds.add(myId);
-                int clientSize = clientIds.size();
+                Set expectedIds = new HashSet();
+                List clusterMembers = cluster.getMembers();
                 if(subjectClusterOptionKey == null){
-                    clientIds.addAll(clusterMembers);
+                    expectedIds.addAll(clusterMembers);
                 }else{
                     Iterator itr = clusterMembers.iterator();
                     while(itr.hasNext()){
@@ -752,28 +752,22 @@ public class SharedContextService extends DefaultContextService
                         Object option = uid.getOption(subjectClusterOptionKey);
                         if(option instanceof String){
                             if(mySubject.equals(option)){
-                                clientIds.add(uid);
+                                expectedIds.add(uid);
                             }
                         }else{
                             if(((Collection)option).contains(mySubject)){
-                                clientIds.add(uid);
+                                expectedIds.add(uid);
                             }
                         }
                     }
                 }
                 
-                if(clientIds.size() == clientSize){
-                    clientIds = serverConnection.getReceiveClientIds(allTargetMessage);
-                    clientIds.add(myId);
-                    clientSize = clientIds.size();
-                    clientIds.addAll(clusterMembers);
-                    if(clientIds.size() == clientSize){
-                        break;
-                    }
+                if(expectedIds.containsAll(clientIds)){
+                    break;
                 }
                 long elapsedTime = System.currentTimeMillis() - startTime;
                 if(elapsedTime >= waitConnectTimeout){
-                    throw new Exception("A timeout occurred while waiting for all to connect. elapsedTime=" + elapsedTime);
+                    throw new Exception("A timeout occurred while waiting for all to connect. elapsedTime=" + elapsedTime + ", expectedIds=" + expectedIds + ", clientIds=" + clientIds);
                 }
                 Thread.sleep(100l);
             }
