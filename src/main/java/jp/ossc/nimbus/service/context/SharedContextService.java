@@ -44,6 +44,7 @@ import jp.ossc.nimbus.daemon.*;
 import jp.ossc.nimbus.service.publish.*;
 import jp.ossc.nimbus.service.keepalive.Cluster;
 import jp.ossc.nimbus.service.keepalive.ClusterListener;
+import jp.ossc.nimbus.service.keepalive.ClusterUID;
 import jp.ossc.nimbus.service.cache.CacheMap;
 import jp.ossc.nimbus.service.cache.CacheRemoveListener;
 import jp.ossc.nimbus.service.cache.CachedReference;
@@ -164,6 +165,7 @@ public class SharedContextService extends DefaultContextService
     protected boolean isSynchronizeOnStart = true;
     protected boolean isSaveOnlyMain;
     protected boolean isWaitConnectAllOnStart = false;
+    protected String subjectClusterOptionKey;
     protected long waitConnectTimeout = 60000l;
     
     protected ConcurrentMap keyLockMap;
@@ -382,6 +384,13 @@ public class SharedContextService extends DefaultContextService
     }
     public boolean isWaitConnectAllOnStart(){
         return isWaitConnectAllOnStart;
+    }
+    
+    public void setSubjectClusterOptionKey(String key){
+        subjectClusterOptionKey = key;
+    }
+    public String getSubjectClusterOptionKey(){
+        return subjectClusterOptionKey;
     }
     
     public void setWaitConnectTimeout(long timeout){
@@ -665,12 +674,20 @@ public class SharedContextService extends DefaultContextService
         }
         
         executeQueueHandlerContainer = new QueueHandlerContainerService();
+        if(getServiceManagerName() != null){
+            executeQueueHandlerContainer.setServiceManagerName(getServiceManagerName());
+        }
+        executeQueueHandlerContainer.setServiceName(getServiceName() + "$ExecuteQueueHandlerContainer");
         executeQueueHandlerContainer.create();
         executeQueueHandlerContainer.setQueueHandlerSize(executeThreadSize);
         if(executeQueueServiceName != null){
             executeQueueHandlerContainer.setQueueServiceName(executeQueueServiceName);
         }else if(executeThreadSize > 0){
             DefaultQueueService executeQueue = new DefaultQueueService();
+            if(getServiceManagerName() != null){
+                executeQueue.setServiceManagerName(getServiceManagerName());
+            }
+            executeQueue.setServiceName(getServiceName() + "$ExecuteQueue");
             executeQueue.create();
             executeQueue.start();
             executeQueueHandlerContainer.setQueueService(executeQueue);
@@ -720,7 +737,24 @@ public class SharedContextService extends DefaultContextService
                 Set clientIds = serverConnection.getClientIds();
                 clientIds.add(myId);
                 int clientSize = clientIds.size();
-                clientIds.addAll(clusterMembers);
+                if(subjectClusterOptionKey == null){
+                    clientIds.addAll(clusterMembers);
+                }else{
+                    Iterator itr = clusterMembers.iterator();
+                    while(itr.hasNext()){
+                        ClusterUID uid = (ClusterUID)itr.next();
+                        Object option = uid.getOption(subjectClusterOptionKey);
+                        if(option instanceof String){
+                            if(subject.equals(option)){
+                                clientIds.add(uid);
+                            }
+                        }else{
+                            if(((Collection)option).contains(subject)){
+                                clientIds.add(uid);
+                            }
+                        }
+                    }
+                }
                 
                 if(clientIds.size() == clientSize){
                     clientIds = serverConnection.getReceiveClientIds(allTargetMessage);
