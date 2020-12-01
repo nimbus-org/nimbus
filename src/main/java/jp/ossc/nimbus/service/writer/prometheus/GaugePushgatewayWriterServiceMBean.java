@@ -1,5 +1,8 @@
 package jp.ossc.nimbus.service.writer.prometheus;
 
+import java.util.List;
+import java.util.Map;
+
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
@@ -38,46 +41,46 @@ public interface GaugePushgatewayWriterServiceMBean extends ServiceBaseMBean {
     public void setHelp(String help);
     
     /**
-     * Prometeusに出力する際のLabelのKey名の配列を取得する。<p>
+     * Prometeusに出力する際のLabelのKey名のリストを取得する。<p>
      * 
-     * @return Key名の配列
+     * @return Key名のリスト
      */
-    public String[] getLabelNames();
+    public List getLabelPropertyList();
     
     /**
-     * Prometeusに出力する際のLabelのKey名の配列を設定する。<p>
+     * Prometeusに出力する際のLabelのKey名のリストを設定する。<p>
      * 
-     * @param names Key名の配列
+     * @param names Key名のリスト
      */
-    public void setLabelNames(String[] names);
+    public void setLabelPropertyList(List list);
     
     /**
-     * Prometeusに出力する際のLabelのValue値を{@link WritableRecord}から取得する際のプロパティ名の配列を取得する。<p>
+     * Prometeusに出力する際の固定で出力したいLabelのKey名とVallueのMapを取得する。<p>
      * 
-     * @return プロパティ名の配列
+     * @return LabelのKey名とVallueのMap
      */
-    public String[] getLabelPropertyNames();
+    public Map getFixedLabelMap();
+
+    /**
+     * Prometeusに出力する際の固定で出力したいLabelのKey名とVallueのMapを設定する。<p>
+     * 
+     * @param labelMap LabelのKey名とVallueのMap
+     */
+    public void setFixedLabelMap(Map labelMap);
     
     /**
-     * Prometeusに出力する際のLabelのValue値を{@link WritableRecord}から取得する際のプロパティ名の配列を設定する。<p>
+     * Prometeusに出力する際のValueの値を{@link WritableRecord}から取得する際のプロパティ名のリストを取得する。<p>
      * 
-     * @param propertyNames プロパティ名の配列
+     * @return プロパティ名のリスト
      */
-    public void setLabelPropertyNames(String[] propertyNames);
+    public List getValuePropertyList();
     
     /**
-     * Prometeusに出力する際のValueの値を{@link WritableRecord}から取得する際のプロパティ名を取得する。<p>
+     * Prometeusに出力する際のValueの値を{@link WritableRecord}から取得する際のプロパティ名のリストを設定する。<p>
      * 
-     * @return プロパティ名
+     * @param propertyName プロパティ名のリスト
      */
-    public String getValuePropertyName();
-    
-    /**
-     * Prometeusに出力する際のValueの値を{@link WritableRecord}から取得する際のプロパティ名を設定する。<p>
-     * 
-     * @param propertyName プロパティ名
-     */
-    public void setValuePropertyName(String propertyName);
+    public void setValuePropertyList(List list);
     
     /**
      * Prometeusに出力する際のValueの値を{@link WritableRecord}から取得した際にnullだった場合にValueとして設定する値を取得する。<p>
