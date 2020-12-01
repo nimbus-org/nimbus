@@ -681,6 +681,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 sharedContextArray[i].setSharedContextTransactionManagerServiceName(sharedContextTransactionManagerServiceName);
             }
             sharedContextArray[i].setExecuteThreadSize(executeThreadSize);
+            sharedContextArray[i].setParentSubject(subject);
             sharedContextArray[i].setSubject(subject + "$" + i);
             sharedContextArray[i].setClient(isClient || isRehashEnabled ? true : false);
             sharedContextArray[i].setEnabledIndexOnClient(isEnabledIndexOnClient);

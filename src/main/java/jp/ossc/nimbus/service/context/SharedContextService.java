@@ -160,6 +160,7 @@ public class SharedContextService extends DefaultContextService
     protected long forcedLockTimeoutCheckInterval = -1L;
     
     protected String subject = DEFAULT_SUBJECT;
+    protected String parentSubject;
     protected String clientSubject;
     
     protected boolean isSynchronizeOnStart = true;
@@ -251,6 +252,10 @@ public class SharedContextService extends DefaultContextService
     }
     public String getSubject(){
         return subject;
+    }
+    
+    protected void setParentSubject(String subject){
+        parentSubject = subject;
     }
     
     public synchronized void setClient(boolean isClient) throws SharedContextSendException, SharedContextTimeoutException{
@@ -732,6 +737,7 @@ public class SharedContextService extends DefaultContextService
         if(isWaitConnectAllOnStart){
             final long startTime = System.currentTimeMillis();
             final Object myId = cluster.getUID();
+            String mySubject = parentSubject != null ? parentSubject : subject;
             while(true){
                 List clusterMembers = cluster.getMembers();
                 Set clientIds = serverConnection.getClientIds();
@@ -745,11 +751,11 @@ public class SharedContextService extends DefaultContextService
                         ClusterUID uid = (ClusterUID)itr.next();
                         Object option = uid.getOption(subjectClusterOptionKey);
                         if(option instanceof String){
-                            if(subject.equals(option)){
+                            if(mySubject.equals(option)){
                                 clientIds.add(uid);
                             }
                         }else{
-                            if(((Collection)option).contains(subject)){
+                            if(((Collection)option).contains(mySubject)){
                                 clientIds.add(uid);
                             }
                         }
