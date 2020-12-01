@@ -1,5 +1,7 @@
 package jp.ossc.nimbus.service.writer.prometheus;
 
+import java.util.Map;
+
 import jp.ossc.nimbus.core.ServiceBaseMBean;
 
 /**
@@ -64,6 +66,20 @@ public interface GaugeWriterServiceMBean extends ServiceBaseMBean {
      * @param propertyNames プロパティ名の配列
      */
     public void setLabelPropertyNames(String[] propertyNames);
+    
+    /**
+     * Prometeusに出力する際の固定で出力したいLabelのKey名とVallueのMapを取得する。<p>
+     * 
+     * @return LabelのKey名とVallueのMap
+     */
+    public Map getFixedLabelMap();
+
+    /**
+     * Prometeusに出力する際の固定で出力したいLabelのKey名とVallueのMapを設定する。<p>
+     * 
+     * @param labelMap LabelのKey名とVallueのMap
+     */
+    public void setFixedLabelMap(Map labelMap);
     
     /**
      * Prometeusに出力する際のValueの値を{@link WritableRecord}から取得する際のプロパティ名を取得する。<p>
