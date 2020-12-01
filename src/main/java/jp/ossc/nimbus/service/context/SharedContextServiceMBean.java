@@ -375,6 +375,20 @@ public interface SharedContextServiceMBean extends DefaultContextServiceMBean{
     public long getWaitConnectTimeout();
     
     /**
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster Cluster}サービスのオプションから接続相手のサブジェクトを取得する際のキーを設定する。<br>
+     *
+     * @param key Clusterサービスのオプションのキー
+     */
+    public void setSubjectClusterOptionKey(String key);
+    
+    /**
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster Cluster}サービスのオプションから接続相手のサブジェクトを取得する際のキーを取得する。<br>
+     *
+     * @return Clusterサービスのオプションのキー
+     */
+    public String getSubjectClusterOptionKey();
+    
+    /**
      * {@link SharedContextUpdateListener}サービスのサービス名配列を設定する。<p>
      * 
      * @param names SharedContextUpdateListenerサービスのサービス名配列

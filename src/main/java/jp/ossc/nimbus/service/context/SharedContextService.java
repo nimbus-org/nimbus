@@ -44,6 +44,7 @@ import jp.ossc.nimbus.daemon.*;
 import jp.ossc.nimbus.service.publish.*;
 import jp.ossc.nimbus.service.keepalive.Cluster;
 import jp.ossc.nimbus.service.keepalive.ClusterListener;
+import jp.ossc.nimbus.service.keepalive.ClusterUID;
 import jp.ossc.nimbus.service.cache.CacheMap;
 import jp.ossc.nimbus.service.cache.CacheRemoveListener;
 import jp.ossc.nimbus.service.cache.CachedReference;
@@ -159,11 +160,13 @@ public class SharedContextService extends DefaultContextService
     protected long forcedLockTimeoutCheckInterval = -1L;
     
     protected String subject = DEFAULT_SUBJECT;
+    protected String parentSubject;
     protected String clientSubject;
     
     protected boolean isSynchronizeOnStart = true;
     protected boolean isSaveOnlyMain;
     protected boolean isWaitConnectAllOnStart = false;
+    protected String subjectClusterOptionKey;
     protected long waitConnectTimeout = 60000l;
     
     protected ConcurrentMap keyLockMap;
@@ -249,6 +252,10 @@ public class SharedContextService extends DefaultContextService
     }
     public String getSubject(){
         return subject;
+    }
+    
+    protected void setParentSubject(String subject){
+        parentSubject = subject;
     }
     
     public synchronized void setClient(boolean isClient) throws SharedContextSendException, SharedContextTimeoutException{
@@ -382,6 +389,13 @@ public class SharedContextService extends DefaultContextService
     }
     public boolean isWaitConnectAllOnStart(){
         return isWaitConnectAllOnStart;
+    }
+    
+    public void setSubjectClusterOptionKey(String key){
+        subjectClusterOptionKey = key;
+    }
+    public String getSubjectClusterOptionKey(){
+        return subjectClusterOptionKey;
     }
     
     public void setWaitConnectTimeout(long timeout){
@@ -665,12 +679,20 @@ public class SharedContextService extends DefaultContextService
         }
         
         executeQueueHandlerContainer = new QueueHandlerContainerService();
+        if(getServiceManagerName() != null){
+            executeQueueHandlerContainer.setServiceManagerName(getServiceManagerName());
+        }
+        executeQueueHandlerContainer.setServiceName(getServiceName() + "$ExecuteQueueHandlerContainer");
         executeQueueHandlerContainer.create();
         executeQueueHandlerContainer.setQueueHandlerSize(executeThreadSize);
         if(executeQueueServiceName != null){
             executeQueueHandlerContainer.setQueueServiceName(executeQueueServiceName);
         }else if(executeThreadSize > 0){
             DefaultQueueService executeQueue = new DefaultQueueService();
+            if(getServiceManagerName() != null){
+                executeQueue.setServiceManagerName(getServiceManagerName());
+            }
+            executeQueue.setServiceName(getServiceName() + "$ExecuteQueue");
             executeQueue.create();
             executeQueue.start();
             executeQueueHandlerContainer.setQueueService(executeQueue);
@@ -715,25 +737,37 @@ public class SharedContextService extends DefaultContextService
         if(isWaitConnectAllOnStart){
             final long startTime = System.currentTimeMillis();
             final Object myId = cluster.getUID();
+            String mySubject = parentSubject != null ? parentSubject : subject;
             while(true){
-                List clusterMembers = cluster.getMembers();
-                Set clientIds = serverConnection.getClientIds();
+                Set clientIds = serverConnection.getReceiveClientIds(allTargetMessage);
                 clientIds.add(myId);
-                int clientSize = clientIds.size();
-                clientIds.addAll(clusterMembers);
-                
-                if(clientIds.size() == clientSize){
-                    clientIds = serverConnection.getReceiveClientIds(allTargetMessage);
-                    clientIds.add(myId);
-                    clientSize = clientIds.size();
-                    clientIds.addAll(clusterMembers);
-                    if(clientIds.size() == clientSize){
-                        break;
+                Set expectedIds = new HashSet();
+                List clusterMembers = cluster.getMembers();
+                if(subjectClusterOptionKey == null){
+                    expectedIds.addAll(clusterMembers);
+                }else{
+                    Iterator itr = clusterMembers.iterator();
+                    while(itr.hasNext()){
+                        ClusterUID uid = (ClusterUID)itr.next();
+                        Object option = uid.getOption(subjectClusterOptionKey);
+                        if(option instanceof String){
+                            if(mySubject.equals(option)){
+                                expectedIds.add(uid);
+                            }
+                        }else{
+                            if(((Collection)option).contains(mySubject)){
+                                expectedIds.add(uid);
+                            }
+                        }
                     }
+                }
+                
+                if(expectedIds.containsAll(clientIds)){
+                    break;
                 }
                 long elapsedTime = System.currentTimeMillis() - startTime;
                 if(elapsedTime >= waitConnectTimeout){
-                    throw new Exception("A timeout occurred while waiting for all to connect. elapsedTime=" + elapsedTime);
+                    throw new Exception("A timeout occurred while waiting for all to connect. elapsedTime=" + elapsedTime + ", expectedIds=" + expectedIds + ", clientIds=" + clientIds);
                 }
                 Thread.sleep(100l);
             }

@@ -495,6 +495,20 @@ public interface DistributedSharedContextServiceMBean extends ServiceBaseMBean{
     public long getWaitConnectTimeout();
     
     /**
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster Cluster}サービスのオプションから接続相手のサブジェクトを取得する際のキーを設定する。<br>
+     *
+     * @param key Clusterサービスのオプションのキー
+     */
+    public void setSubjectClusterOptionKey(String key);
+    
+    /**
+     * {@link jp.ossc.nimbus.service.keepalive.Cluster Cluster}サービスのオプションから接続相手のサブジェクトを取得する際のキーを取得する。<br>
+     *
+     * @return Clusterサービスのオプションのキー
+     */
+    public String getSubjectClusterOptionKey();
+    
+    /**
      * サービスの開始時に、{@link ContextStore}サービスを使って読み込み処理を行うかどうかを設定する。<p>
      * デフォルトは、false。<br>
      *

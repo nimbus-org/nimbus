@@ -114,6 +114,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     
     private boolean isWaitConnectAllOnStart = false;
     private long waitConnectTimeout = 60000l;
+    private String subjectClusterOptionKey;
     
     private boolean isLoadKeyOnStart;
     private boolean isLoadOnStart;
@@ -342,6 +343,13 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     }
     public long getWaitConnectTimeout(){
         return waitConnectTimeout;
+    }
+    
+    public void setSubjectClusterOptionKey(String key){
+        subjectClusterOptionKey = key;
+    }
+    public String getSubjectClusterOptionKey(){
+        return subjectClusterOptionKey;
     }
     
     public void setLoadKeyOnStart(boolean isLoad){
@@ -597,10 +605,18 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         
         if(parallelRequestThreadSize > 0){
             parallelRequestQueueHandlerContainer =  new QueueHandlerContainerService();
+            if(getServiceManagerName() != null){
+                parallelRequestQueueHandlerContainer.setServiceManagerName(getServiceManagerName());
+            }
+            parallelRequestQueueHandlerContainer.setServiceName(getServiceName() + "$ParallelRequestQueueHandlerContainer");
             parallelRequestQueueHandlerContainer.create();
             parallelRequestQueueHandlerContainer.setQueueHandlerSize(parallelRequestThreadSize);
             if(parallelRequestQueueServiceName == null){
                 DefaultQueueService parallelRequestQueue = new DefaultQueueService();
+                if(getServiceManagerName() != null){
+                    parallelRequestQueue.setServiceManagerName(getServiceManagerName());
+                }
+                parallelRequestQueue.setServiceName(getServiceName() + "$ParallelRequestQueue");
                 parallelRequestQueue.create();
                 parallelRequestQueue.start();
                 parallelRequestQueueHandlerContainer.setQueueService(parallelRequestQueue);
@@ -665,6 +681,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 sharedContextArray[i].setSharedContextTransactionManagerServiceName(sharedContextTransactionManagerServiceName);
             }
             sharedContextArray[i].setExecuteThreadSize(executeThreadSize);
+            sharedContextArray[i].setParentSubject(subject);
             sharedContextArray[i].setSubject(subject + "$" + i);
             sharedContextArray[i].setClient(isClient || isRehashEnabled ? true : false);
             sharedContextArray[i].setEnabledIndexOnClient(isEnabledIndexOnClient);
@@ -680,6 +697,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             sharedContextArray[i].setLoadKeyOnStart(false);
             sharedContextArray[i].setSaveOnStop(false);
             sharedContextArray[i].setWaitConnectAllOnStart(isWaitConnectAllOnStart());
+            sharedContextArray[i].setSubjectClusterOptionKey(subjectClusterOptionKey);
             sharedContextArray[i].setWaitConnectTimeout(waitConnectTimeout);
             if(updateListeners != null){
                 for(int j = 0; j < updateListeners.size(); j++){
