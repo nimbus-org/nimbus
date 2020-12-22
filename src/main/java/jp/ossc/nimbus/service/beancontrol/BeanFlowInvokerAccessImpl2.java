@@ -1264,7 +1264,11 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
             if(val instanceof BigInteger){
                 return new BigDecimal((BigInteger)val);
             }else{
-                return new BigDecimal(val.doubleValue());
+                try{
+                    return new BigDecimal(val.toString());
+                }catch(NumberFormatException e){
+                    return new BigDecimal(val.doubleValue());
+                }
             }
         }else{
             return val;

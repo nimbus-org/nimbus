@@ -700,7 +700,11 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
             }else if(value instanceof BigInteger){
                 result = new BigDecimal((BigInteger)value);
             }else if(value instanceof Double || value instanceof Float){
-                result = new BigDecimal(((Number)value).doubleValue());
+                try{
+                    result = new BigDecimal(((Number)value).toString());
+                }catch(NumberFormatException e){
+                    result = new BigDecimal(((Number)value).doubleValue());
+                }
             }else if(value instanceof Number){
                 result = BigDecimal.valueOf(((Number)value).longValue());
             }else{

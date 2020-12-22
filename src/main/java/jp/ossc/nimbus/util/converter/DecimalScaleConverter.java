@@ -132,7 +132,12 @@ public class DecimalScaleConverter implements Converter{
                 retType = BigDecimal.class;
             }
         }else if(obj instanceof Number){
-            retVal = new BigDecimal(((Number)obj).doubleValue()).setScale(scale, roundingMode);
+            try{
+                retVal = new BigDecimal(((Number)obj).toString());
+            }catch(NumberFormatException e){
+                retVal = new BigDecimal(((Number)obj).doubleValue());
+            }
+            retVal = retVal.setScale(scale, roundingMode);
             if(retType == null){
                 if(obj instanceof Float){
                     retType = Float.class;
