@@ -1526,9 +1526,6 @@ public class NimbusExternalizerService extends SerializableExternalizerService
         }
         public Object readObject(Object obj, NimbusObjectInputStream ois) throws IOException, ClassNotFoundException{
             final int referenceId = ois.readInt(isDisabledNumberCompression, false);
-            if(obj != null){
-                ois.registerReference(this, referenceId, obj);
-            }
             if(clazz.isArray()){
                 final Class componentType = clazz.getComponentType();
                 if(componentType.isPrimitive()){
@@ -1612,6 +1609,9 @@ public class NimbusExternalizerService extends SerializableExternalizerService
                     obj = invokeReadResolve(obj);
                     ois.registerReference(this, referenceId, obj);
                 }
+            }
+            if(obj != null){
+                ois.registerReference(this, referenceId, obj);
             }
             return obj;
         }
