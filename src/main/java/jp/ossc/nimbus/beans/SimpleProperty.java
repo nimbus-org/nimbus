@@ -1255,7 +1255,11 @@ public class SimpleProperty implements Property, Serializable, Comparable{
             if(val instanceof BigInteger){
                 return new BigDecimal((BigInteger)val);
             }else{
-                return new BigDecimal(val.doubleValue());
+                try{
+                    return new BigDecimal(val.toString());
+                }catch(NumberFormatException e){
+                    return new BigDecimal(val.doubleValue());
+                }
             }
         }else{
             return val;

@@ -133,7 +133,11 @@ public class NumberCastConverter implements Converter{
             }else if(clazz.equals(Double.class)
                 || clazz.equals(Float.class)
             ){
-                return new BigDecimal(retVal.doubleValue());
+                try{
+                    return new BigDecimal(retVal.toString());
+                }catch(NumberFormatException e){
+                    return new BigDecimal(retVal.doubleValue());
+                }
             }else{
                 return BigDecimal.valueOf(retVal.longValue());
             }

@@ -887,7 +887,11 @@ public class  TransactionLoggingConnection extends ConnectionWrapper {
                 if(arg1 instanceof Float){
                     arg1 = new BigDecimal(arg1.toString()).setScale(arg3);
                 }else if(arg1 instanceof Double){
-                    arg1 = new BigDecimal(((Double)arg1).doubleValue()).setScale(arg3);
+                    try{
+                        arg1 = new BigDecimal(((Double)arg1).toString()).setScale(arg3);
+                    }catch(NumberFormatException e){
+                        arg1 = new BigDecimal(((Double)arg1).doubleValue()).setScale(arg3);
+                    }
                 }else if(arg1 instanceof BigDecimal){
                     arg1 = ((BigDecimal)arg1).setScale(arg3);
                 }
