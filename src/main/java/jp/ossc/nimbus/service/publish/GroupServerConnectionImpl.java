@@ -130,7 +130,7 @@ public class GroupServerConnectionImpl implements ServerConnection{
                 } catch (MessageException ex) {
                     throw new MessageSendException("Message Cast Error.", ex);
                 }
-                connection.send(castMessage);
+                connection.sendAsynch(castMessage);
                 isSend = true;
             }
         }
