@@ -650,36 +650,91 @@ public class DataSetServletRequestParameterConverter implements BindingConverter
             final Object[] vals = (Object[])entry.getValue();
             try{
                 if(prop instanceof NestedProperty){
-                    Property thisProp = ((NestedProperty)prop).getThisProperty();
-                    if(thisProp instanceof NestedProperty){
-                        Property nestedProp = ((NestedProperty)prop).getNestedProperty();
-                        Property nestedProp2 = ((NestedProperty)thisProp).getNestedProperty();
-                        if(nestedProp2 instanceof IndexedProperty){
-                            Property thisProp2 = ((NestedProperty)thisProp).getThisProperty();
-                            Object thisObj = thisProp2.getProperty(ds);
-                            if(thisObj == null){
-                                if(isIgnoreUnknownParameter){
-                                    continue;
-                                }else{
-                                    throw new ConvertException("Parameter '" + propStr + "' is illegal.");
-                                }
-                            }
-                            if(thisObj instanceof RecordList){
+                    Property firstThisProp = ((NestedProperty)prop).getFirstThisProperty();
+                    Object thisObj = firstThisProp.getProperty(ds);
+                    if(thisObj == null){
+                        Object targetObj = ds.getHeader();
+                        if(targetObj != null){
+                            setRecordProperty(
+                                (Record)targetObj,
+                                prop.getPropertyName(),
+                                prop.getPropertyType(targetObj),
+                                vals
+                            );
+                        }else{
+                            targetObj = ds.getRecordList();
+                            if(targetObj != null){
                                 setRecordListProperty(
-                                    (RecordList)thisObj,
-                                    nestedProp.getPropertyName(),
-                                    ((IndexedProperty)nestedProp2).getIndex(),
+                                    (RecordList)targetObj,
+                                    prop.getPropertyName(),
                                     vals
                                 );
+                            }else if(isIgnoreUnknownParameter){
+                                continue;
                             }else{
-                                // ありえない
-                                prop.setProperty(
-                                    ds,
-                                    vals[vals.length - 1]
-                                );
+                                throw new ConvertException("Parameter '" + propStr + "' is illegal.");
+                            }
+                        }
+                    }else{
+                        Property thisProp = ((NestedProperty)prop).getThisProperty();
+                        if(thisProp instanceof NestedProperty){
+                            Property nestedProp = ((NestedProperty)prop).getNestedProperty();
+                            Property nestedProp2 = ((NestedProperty)thisProp).getNestedProperty();
+                            if(nestedProp2 instanceof IndexedProperty){
+                                Property thisProp2 = ((NestedProperty)thisProp).getThisProperty();
+                                thisObj = thisProp2.getProperty(ds);
+                                if(thisObj == null){
+                                    if(isIgnoreUnknownParameter){
+                                        continue;
+                                    }else{
+                                        throw new ConvertException("Parameter '" + propStr + "' is illegal.");
+                                    }
+                                }
+                                if(thisObj instanceof RecordList){
+                                    setRecordListProperty(
+                                        (RecordList)thisObj,
+                                        nestedProp.getPropertyName(),
+                                        ((IndexedProperty)nestedProp2).getIndex(),
+                                        vals
+                                    );
+                                }else{
+                                    // ありえない
+                                    prop.setProperty(
+                                        ds,
+                                        vals[vals.length - 1]
+                                    );
+                                }
+                            }else{
+                                thisObj = thisProp.getProperty(ds);
+                                if(thisObj == null){
+                                    if(isIgnoreUnknownParameter){
+                                        continue;
+                                    }else{
+                                        throw new ConvertException("Parameter '" + propStr + "' is illegal.");
+                                    }
+                                }
+                                if(thisObj instanceof RecordList){
+                                    setRecordListProperty(
+                                        (RecordList)thisObj,
+                                        nestedProp.getPropertyName(),
+                                        vals
+                                    );
+                                }else if(thisObj instanceof Record){
+                                    setRecordProperty(
+                                        (Record)thisObj,
+                                        nestedProp.getPropertyName(),
+                                        nestedProp.getPropertyType(thisObj),
+                                        vals
+                                    );
+                                }else{
+                                    nestedProp.setProperty(
+                                        thisObj,
+                                        vals[vals.length - 1]
+                                    );
+                                }
                             }
                         }else{
-                            Object thisObj = thisProp.getProperty(ds);
+                            thisObj = thisProp.getProperty(ds);
                             if(thisObj == null){
                                 if(isIgnoreUnknownParameter){
                                     continue;
@@ -687,6 +742,7 @@ public class DataSetServletRequestParameterConverter implements BindingConverter
                                     throw new ConvertException("Parameter '" + propStr + "' is illegal.");
                                 }
                             }
+                            Property nestedProp = ((NestedProperty)prop).getNestedProperty();
                             if(thisObj instanceof RecordList){
                                 setRecordListProperty(
                                     (RecordList)thisObj,
@@ -707,38 +763,28 @@ public class DataSetServletRequestParameterConverter implements BindingConverter
                                 );
                             }
                         }
+                    }
+                }else{
+                    Object targetObj = ds.getHeader();
+                    if(targetObj != null){
+                        setRecordProperty(
+                            (Record)targetObj,
+                            prop.getPropertyName(),
+                            prop.getPropertyType(targetObj),
+                            vals
+                        );
                     }else{
-                        Object thisObj = thisProp.getProperty(ds);
-                        if(thisObj == null){
-                            if(isIgnoreUnknownParameter){
-                                continue;
-                            }else{
-                                throw new ConvertException("Parameter '" + propStr + "' is illegal.");
-                            }
-                        }
-                        Property nestedProp = ((NestedProperty)prop).getNestedProperty();
-                        if(thisObj instanceof RecordList){
+                        targetObj = ds.getRecordList();
+                        if(targetObj != null){
                             setRecordListProperty(
-                                (RecordList)thisObj,
-                                nestedProp.getPropertyName(),
-                                vals
-                            );
-                        }else if(thisObj instanceof Record){
-                            setRecordProperty(
-                                (Record)thisObj,
-                                nestedProp.getPropertyName(),
-                                nestedProp.getPropertyType(thisObj),
+                                (RecordList)targetObj,
+                                prop.getPropertyName(),
                                 vals
                             );
                         }else{
-                            nestedProp.setProperty(
-                                thisObj,
-                                vals[vals.length - 1]
-                            );
+                            throw new ConvertException("Parameter '" + propStr + "' is illegal.");
                         }
                     }
-                }else{
-                    throw new ConvertException("Parameter '" + propStr + "' is illegal.");
                 }
             }catch(PropertySetException e){
                 Throwable cause = e.getCause();
