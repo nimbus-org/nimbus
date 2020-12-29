@@ -68,6 +68,11 @@ public interface ServletRequestExchangeInterceptorServiceMBean
     public static final String DEFAULT_EXCEPTION_JOURNAL_KEY = "Exception";
     
     /**
+     * デフォルトの要求オブジェクトBeanFlow名の前置詞。<p>
+     */
+    public static final String DEFAULT_REQUEST_OBJECT_FLOW_NAME_PREFIX = "request";
+    
+    /**
      * サーブレットリクエストを要求オブジェクトに変換する{@link jp.ossc.nimbus.util.converter.Converter Converter}サービス名を設定する。<p>
      *
      * @param name Converterサービス名
@@ -246,4 +251,48 @@ public interface ServletRequestExchangeInterceptorServiceMBean
      * @return trueの場合、ジャーナルを開始する
      */
     public boolean isStartJournal();
+    
+    /**
+     * 要求オブジェクトをBeanFlowで取得する場合に使用する{@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}のサービス名を設定する。<p>
+     *
+     * @param name BeanFlowInvokerFactoryのサービス名
+     */
+    public void setBeanFlowInvokerFactoryServiceName(ServiceName name);
+    
+    /**
+     * 要求オブジェクトをBeanFlowで取得する場合に使用する{@link jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory BeanFlowInvokerFactory}のサービス名を取得する。<p>
+     *
+     * @return BeanFlowInvokerFactoryのサービス名
+     */
+    public ServiceName getBeanFlowInvokerFactoryServiceName();
+    
+    /**
+     * 要求オブジェクトをBeanFlowで取得する場合に、呼び出すフロー名として、リクエストされたサーブレットパスの前に付加するプレフィクスを設定する。<p>
+     *
+     * @param prefix プレフィクス
+     * @see #DEFAULT_REQUEST_OBJECT_FLOW_NAME_PREFIX
+     */
+    public void setRequestObjectFlowNamePrefix(String prefix);
+    
+    /**
+     * 要求オブジェクトをBeanFlowで取得する場合に、呼び出すフロー名として、リクエストされたサーブレットパスの前に付加するプレフィクスを取得する。<p>
+     *
+     * @return プレフィクス
+     */
+    public String getRequestObjectFlowNamePrefix();
+    
+    /**
+     * 要求オブジェクトをBeanFlowで取得する場合にフロー名を特定する{@link jp.ossc.nimbus.servlet.BeanFlowSelector BeanFlowSelector}のサービス名を設定する。<p>
+     * 指定しない場合は、{@link jp.ossc.nimbus.servlet.DefaultBeanFlowSelectorService DefaultBeanFlowSelectorService}が適用される。
+     *
+     * @param name BeanFlowSelectorのサービス名
+     */
+    public void setBeanFlowSelectorServiceName(ServiceName name);
+    
+    /**
+     * 要求オブジェクトをBeanFlowで取得する場合にフロー名を特定する{@link jp.ossc.nimbus.servlet.BeanFlowSelector BeanFlowSelector}のサービス名を取得する。<p>
+     *
+     * @return BeanFlowSelectorのサービス名
+     */
+    public ServiceName getBeanFlowSelectorServiceName();
 }

@@ -31,14 +31,28 @@
  */
 package jp.ossc.nimbus.service.aop.interceptor.servlet;
 
-import javax.servlet.*;
+import java.util.HashMap;
+import java.util.Map;
 
-import jp.ossc.nimbus.core.*;
-import jp.ossc.nimbus.service.aop.*;
-import jp.ossc.nimbus.service.context.*;
-import jp.ossc.nimbus.service.journal.*;
-import jp.ossc.nimbus.service.journal.editorfinder.*;
-import jp.ossc.nimbus.util.converter.*;
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
+
+import jp.ossc.nimbus.beans.dataset.DataSet;
+import jp.ossc.nimbus.beans.dataset.Record;
+import jp.ossc.nimbus.beans.dataset.RecordList;
+import jp.ossc.nimbus.core.ServiceManagerFactory;
+import jp.ossc.nimbus.core.ServiceName;
+import jp.ossc.nimbus.service.aop.InterceptorChain;
+import jp.ossc.nimbus.service.aop.ServletFilterInvocationContext;
+import jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvoker;
+import jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory;
+import jp.ossc.nimbus.service.context.Context;
+import jp.ossc.nimbus.service.journal.Journal;
+import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
+import jp.ossc.nimbus.servlet.BeanFlowSelector;
+import jp.ossc.nimbus.servlet.DefaultBeanFlowSelectorService;
+import jp.ossc.nimbus.util.converter.BindingConverter;
+import jp.ossc.nimbus.util.converter.Converter;
 
 /**
  * サーブレットリクエスト交換インターセプタ。<p>
@@ -61,6 +75,12 @@ public class ServletRequestExchangeInterceptorService
     protected ServiceName journalServiceName;
     protected Journal journal;
     
+    protected ServiceName beanFlowInvokerFactoryServiceName;
+    protected BeanFlowInvokerFactory beanFlowInvokerFactory;
+    
+    protected ServiceName beanFlowSelectorServiceName;
+    protected BeanFlowSelector beanFlowSelector;
+    
     protected ServiceName exchangeEditorFinderServiceName;
     protected EditorFinder exchangeEditorFinder;
     
@@ -81,6 +101,10 @@ public class ServletRequestExchangeInterceptorService
     
     protected String requestObjectContextKey
          = DEFAULT_REQUEST_OBJECT_CONTEXT_KEY;
+    
+    protected String requestObjectFlowNamePrefix = DEFAULT_REQUEST_OBJECT_FLOW_NAME_PREFIX;
+    
+    protected Map requestObjectTypeMap;
     
     // ServletRequestExchangeInterceptorServiceMBean のJavaDoc
     public void setConverterServiceName(ServiceName name){
@@ -190,6 +214,36 @@ public class ServletRequestExchangeInterceptorService
         return isStartJournal;
     }
     
+    public void setBeanFlowInvokerFactoryServiceName(ServiceName name){
+        beanFlowInvokerFactoryServiceName = name;
+    }
+    public ServiceName getBeanFlowInvokerFactoryServiceName(){
+        return beanFlowInvokerFactoryServiceName;
+    }
+    
+    public void setRequestObjectFlowNamePrefix(String prefix){
+        requestObjectFlowNamePrefix = prefix;
+    }
+    public String getRequestObjectFlowNamePrefix(){
+        return requestObjectFlowNamePrefix;
+    }
+    
+    public void setBeanFlowSelectorServiceName(ServiceName name){
+        beanFlowSelectorServiceName = name;
+    }
+    public ServiceName getBeanFlowSelectorServiceName(){
+        return beanFlowSelectorServiceName;
+    }
+    
+    /**
+     * サービスの生成処理を行う。<p>
+     *
+     * @exception Exception サービスの生成に失敗した場合
+     */
+    public void createService() throws Exception{
+        requestObjectTypeMap = new HashMap();
+    }
+    
     /**
      * サービスの開始処理を行う。<p>
      *
@@ -235,6 +289,50 @@ public class ServletRequestExchangeInterceptorService
                     exceptionEditorFinderServiceName
                 );
         }
+        
+        if(beanFlowInvokerFactoryServiceName != null){
+            beanFlowInvokerFactory = (BeanFlowInvokerFactory)ServiceManagerFactory
+                .getServiceObject(
+                    beanFlowInvokerFactoryServiceName
+                );
+        }
+        
+        if(beanFlowInvokerFactory != null){
+            if(beanFlowSelectorServiceName != null){
+                beanFlowSelector = (BeanFlowSelector)ServiceManagerFactory
+                    .getServiceObject(
+                        beanFlowSelectorServiceName
+                    );
+            }
+            if(beanFlowSelector == null){
+                beanFlowSelector = new DefaultBeanFlowSelectorService();
+                ((DefaultBeanFlowSelectorService)beanFlowSelector).create();
+                ((DefaultBeanFlowSelectorService)beanFlowSelector).start();
+            }
+        }
+        
+    }
+    
+    /**
+     * サービスの破棄処理を行う。<p>
+     *
+     * @exception Exception サービスの破棄に失敗した場合
+     */
+    public void destroyService() throws Exception{
+        requestObjectTypeMap = null;
+    }
+    
+    /**
+     * サーブレットパスに対する要求オブジェクトまたはそのクラスを設定する。<p>
+     *
+     * @param path サーブレットパス
+     * @param type 要求オブジェクトまたはそのクラス
+     */
+    public void setRequestObjectType(String path, Object type){
+        if(!(type instanceof Class) && !(type instanceof Cloneable)){
+            throw new IllegalArgumentException("Not cloneable. type=" + type);
+        }
+        requestObjectTypeMap.put(path, type);
     }
     
     /**
@@ -367,11 +465,50 @@ public class ServletRequestExchangeInterceptorService
             if(journal != null && isStartJournal()){
                 journal.startJournal(exchangeJournalKey, exchangeEditorFinder);
             }
-            isStartedJournal = journal.isStartJournal();
+            if(journal != null) {
+                isStartedJournal = journal.isStartJournal();
+            }
             final ServletRequest request = context.getServletRequest();
+            
             Object requestObj = null;
             try{
-                requestObj = converter.convert(request);
+                if(converter instanceof BindingConverter
+                        && request instanceof HttpServletRequest
+                    ){
+                    final HttpServletRequest httpReq = (HttpServletRequest)request;
+                    if(requestObjectTypeMap.size() != 0){
+                        String reqPath = httpReq.getServletPath();
+                        if(httpReq.getPathInfo() != null){
+                            reqPath = reqPath + httpReq.getPathInfo();
+                        }
+                        requestObj = requestObjectTypeMap.get(reqPath);
+                        if(!(requestObj instanceof Class)){
+                            if(requestObj instanceof DataSet){
+                                requestObj = ((DataSet)requestObj).cloneSchema();
+                            }else if(requestObj instanceof RecordList){
+                                requestObj = ((RecordList)requestObj).cloneSchema();
+                            }else if(requestObj instanceof Record){
+                                requestObj = ((Record)requestObj).cloneSchema();
+                            }else{
+                                requestObj = requestObj.getClass().getMethod("clone", (Class[])null).invoke(requestObj, (Object[])null);
+                            }
+                        }
+                    }
+                    if(requestObj == null && beanFlowInvokerFactory != null){
+                        String requestObjectFlowName = beanFlowSelector.selectBeanFlow(httpReq);
+                        if(requestObjectFlowNamePrefix != null){
+                            requestObjectFlowName = requestObjectFlowNamePrefix + requestObjectFlowName;
+                        }
+                        if(beanFlowInvokerFactory.containsFlow(requestObjectFlowName)){
+                            final BeanFlowInvoker beanFlowInvoker
+                                = beanFlowInvokerFactory.createFlow(requestObjectFlowName);
+                            requestObj = beanFlowInvoker.invokeFlow(context);
+                        }
+                    }
+                    requestObj = ((BindingConverter)converter).convert(httpReq, requestObj);
+                } else {
+                    requestObj = converter.convert(request);
+                }
             }catch(Exception e){
                 throw new InputExchangeException(e);
             }
