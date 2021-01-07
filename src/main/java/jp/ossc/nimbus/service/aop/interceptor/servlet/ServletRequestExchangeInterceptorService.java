@@ -472,42 +472,46 @@ public class ServletRequestExchangeInterceptorService
             
             Object requestObj = null;
             try{
-                if(converter instanceof BindingConverter
-                        && request instanceof HttpServletRequest
-                    ){
-                    final HttpServletRequest httpReq = (HttpServletRequest)request;
-                    if(requestObjectTypeMap.size() != 0){
-                        String reqPath = httpReq.getServletPath();
-                        if(httpReq.getPathInfo() != null){
-                            reqPath = reqPath + httpReq.getPathInfo();
-                        }
-                        requestObj = requestObjectTypeMap.get(reqPath);
-                        if(!(requestObj instanceof Class)){
-                            if(requestObj instanceof DataSet){
-                                requestObj = ((DataSet)requestObj).cloneSchema();
-                            }else if(requestObj instanceof RecordList){
-                                requestObj = ((RecordList)requestObj).cloneSchema();
-                            }else if(requestObj instanceof Record){
-                                requestObj = ((Record)requestObj).cloneSchema();
-                            }else{
-                                requestObj = requestObj.getClass().getMethod("clone", (Class[])null).invoke(requestObj, (Object[])null);
+                if(beanFlowInvokerFactory == null) {
+                    requestObj = converter.convert(request);
+                } else {
+                    if(converter instanceof BindingConverter
+                            && request instanceof HttpServletRequest
+                        ){
+                        final HttpServletRequest httpReq = (HttpServletRequest)request;
+                        if(requestObjectTypeMap.size() != 0){
+                            String reqPath = httpReq.getServletPath();
+                            if(httpReq.getPathInfo() != null){
+                                reqPath = reqPath + httpReq.getPathInfo();
+                            }
+                            requestObj = requestObjectTypeMap.get(reqPath);
+                            if(!(requestObj instanceof Class)){
+                                if(requestObj instanceof DataSet){
+                                    requestObj = ((DataSet)requestObj).cloneSchema();
+                                }else if(requestObj instanceof RecordList){
+                                    requestObj = ((RecordList)requestObj).cloneSchema();
+                                }else if(requestObj instanceof Record){
+                                    requestObj = ((Record)requestObj).cloneSchema();
+                                }else{
+                                    requestObj = requestObj.getClass().getMethod("clone", (Class[])null).invoke(requestObj, (Object[])null);
+                                }
                             }
                         }
-                    }
-                    if(requestObj == null && beanFlowInvokerFactory != null){
-                        String requestObjectFlowName = beanFlowSelector.selectBeanFlow(httpReq);
-                        if(requestObjectFlowNamePrefix != null){
-                            requestObjectFlowName = requestObjectFlowNamePrefix + requestObjectFlowName;
+                        if(requestObj == null){
+                            String requestObjectFlowName = beanFlowSelector.selectBeanFlow(httpReq);
+                            if(requestObjectFlowNamePrefix != null){
+                                requestObjectFlowName = requestObjectFlowNamePrefix + requestObjectFlowName;
+                            }
+                            if(beanFlowInvokerFactory.containsFlow(requestObjectFlowName)){
+                                final BeanFlowInvoker beanFlowInvoker
+                                    = beanFlowInvokerFactory.createFlow(requestObjectFlowName);
+                                requestObj = beanFlowInvoker.invokeFlow(context);
+                            }
                         }
-                        if(beanFlowInvokerFactory.containsFlow(requestObjectFlowName)){
-                            final BeanFlowInvoker beanFlowInvoker
-                                = beanFlowInvokerFactory.createFlow(requestObjectFlowName);
-                            requestObj = beanFlowInvoker.invokeFlow(context);
-                        }
+                        requestObj = ((BindingConverter)converter).convert(httpReq, requestObj);
+                    } else {
+                        requestObj = converter.convert(request);
                     }
-                    requestObj = ((BindingConverter)converter).convert(httpReq, requestObj);
-                } else {
-                    requestObj = converter.convert(request);
                 }
             }catch(Exception e){
                 throw new InputExchangeException(e);
