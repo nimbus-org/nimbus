@@ -1456,6 +1456,7 @@ public class DefaultServiceManagerService extends ServiceBase
         final String targetMng,
         final String targetService,
         final String waitService,
+        final int state,
         final Set completed,
         final boolean isInit
     ){
@@ -1468,7 +1469,6 @@ public class DefaultServiceManagerService extends ServiceBase
         addWaitingServiceCause(cause, waitService);
         ServiceManagerFactory.addRegistrationListener(
             new RegistrationListener(){
-                private final int state = getState();
                 public void registered(RegistrationEvent e){
                     final ServiceManager manager
                          = (ServiceManager)e.getRegistration();
@@ -1652,6 +1652,7 @@ public class DefaultServiceManagerService extends ServiceBase
                             managerName,
                             dependsServiceName,
                             serviceName,
+                            state,
                             new HashSet(),
                             isInit
                         );

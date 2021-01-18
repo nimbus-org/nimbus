@@ -266,7 +266,7 @@ public class ServiceManagerFactoryTest extends TestCase{
                     true
                 )
             );
-            assertTrue(ServiceManagerFactory.checkLoadManagerCompleted());
+            assertFalse(ServiceManagerFactory.checkLoadManagerCompleted());
             final ServiceManager manager = ServiceManagerFactory.findManager();
             assertNull(manager);
         }finally{
