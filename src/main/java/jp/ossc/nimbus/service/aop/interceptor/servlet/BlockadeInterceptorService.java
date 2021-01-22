@@ -517,21 +517,21 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
             try {
                 key = propertyAccess.get(checkTargetObject, (String) entry.getKey());
             } catch (IllegalArgumentException e) {
-                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + entry.getKey() + "' cannot acquire from a CheckTargetObject.", e);
+                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + entry.getKey() + "' cannot acquire from a CheckTargetObject. target=" + checkTargetObject, e);
             } catch (NoSuchPropertyException e) {
-                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + entry.getKey() + "' cannot acquire from a CheckTargetObject.", e);
+                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + entry.getKey() + "' cannot acquire from a CheckTargetObject. target=" + checkTargetObject, e);
             } catch (InvocationTargetException e) {
-                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + entry.getKey() + "' cannot acquire from a CheckTargetObject.",
+                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + entry.getKey() + "' cannot acquire from a CheckTargetObject. target=" + checkTargetObject,
                         e.getTargetException());
             }
             try {
                 propertyAccess.set(primaryKey, (String) entry.getValue(), key);
             } catch (IllegalArgumentException e) {
-                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + entry.getKey() + "' cannot set to a record.", e);
+                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + key + "' cannot set to a record. record=" + primaryKey, e);
             } catch (NoSuchPropertyException e) {
-                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + entry.getKey() + "' cannot set to a record.", e);
+                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + key + "' cannot set to a record. record=" + primaryKey, e);
             } catch (InvocationTargetException e) {
-                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + entry.getKey() + "' cannot set to a record.",
+                throw new BlockadeProcessException("SpecialUserCodeMaster value '" + key + "' cannot set to a record. record=" + primaryKey,
                         e.getTargetException());
             }
         }
