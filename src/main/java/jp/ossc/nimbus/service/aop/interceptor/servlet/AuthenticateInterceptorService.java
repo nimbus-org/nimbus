@@ -324,6 +324,13 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
         if(loginPath != null) {
             for(int i = 0; i < loginPath.length; i++){
                 if(loginPath[i].equals(reqPath)){
+                    HttpSession session = request.getSession(false);
+                    if(session != null && isSessionInvalidate){
+                        try{
+                            session.invalidate();
+                        } catch(IllegalStateException e){
+                        }
+                    }
                     Object ret = chain.invokeNext(context);
                     newAuthenticatedInfo(request);
                     return ret;
@@ -353,13 +360,6 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
         }
         if(authenticatedInfo != null){
             HttpSession session = request.getSession(false);
-            if(session != null && isSessionInvalidate){
-                try{
-                    session.invalidate();
-                } catch(IllegalStateException e){
-                }
-                session = null;
-            }
             if(session == null){
                 session = request.getSession(true);
             }
@@ -497,6 +497,14 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
                 AuthenticateStore authenticateStore = (AuthenticateStore)ServiceManagerFactory.getServiceObject(authenticateStoreServiceName);
                 authenticateStore.deactivate(event.getSession(), authenticatedInfo);
             }
+        }
+        
+        public String toString(){
+            StringBuilder buf = new StringBuilder(super.toString()).append('{');
+            buf.append("authenticatedInfo=").append(authenticatedInfo);
+            buf.append(", authenticateStoreServiceName=").append(authenticateStoreServiceName);
+            buf.append('}');
+            return buf.toString();
         }
     }
 }
