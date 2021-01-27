@@ -366,7 +366,7 @@ public class FileContextStoreService extends ServiceBase implements FileContextS
         }
     }
     
-    public void load(Context context, Object key) throws Exception{
+    public boolean load(Context context, Object key) throws Exception{
         if(!isSupportByKey){
             throw new UnsupportedOperationException();
         }
@@ -376,7 +376,7 @@ public class FileContextStoreService extends ServiceBase implements FileContextS
             if(valueFile == null && keyFileMap.size() == 0){
                 synchronized(entireFile){
                     if(!entireFile.exists()){
-                        return;
+                        return false;
                     }
                     FileInputStream fis = new FileInputStream(entireFile);
                     DataInputStream dis = new DataInputStream(fis);
@@ -432,6 +432,7 @@ public class FileContextStoreService extends ServiceBase implements FileContextS
                 }
             }
         }
+        return value != null;
     }
     
     public boolean isSupportSaveByKey(){

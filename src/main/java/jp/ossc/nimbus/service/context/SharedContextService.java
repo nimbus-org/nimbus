@@ -922,7 +922,11 @@ public class SharedContextService extends DefaultContextService
     
     public void load(Object key, long timeout) throws Exception{
         if(isMain()){
-            super.load(key);
+            if(contextStore != null){
+                if(!contextStore.load(this, key)){
+                    remove(key, timeout);
+                }
+            }
         }else{
             Message message = null;
             try{
