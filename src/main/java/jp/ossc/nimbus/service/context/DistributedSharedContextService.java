@@ -1031,7 +1031,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     public void load(Object key, long timeout) throws Exception{
         if(isMain()){
             if(contextStore != null){
-                contextStore.load(this, key);
+                if(!contextStore.load(this, key)){
+                    remove(key, timeout);
+                }
             }else{
                 throw new UnsupportedOperationException();
             }
@@ -1041,7 +1043,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 message = serverConnection.createMessage(subject, key == null ? null : key.toString());
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
-                    message.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_LOAD, key));
+                    message.setObject(new DistributedSharedContextEvent(DistributedSharedContextEvent.EVENT_LOAD, new Object[]{key, new Long(timeout)}));
                     try{
                         Message[] responses = serverConnection.request(
                             message,
@@ -2589,9 +2591,10 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     try{
                         if(contextStore != null){
                             if(event.value == null){
-                                contextStore.load(DistributedSharedContextService.this);
+                                DistributedSharedContextService.this.load();
                             }else{
-                                contextStore.load(DistributedSharedContextService.this, event.value);
+                                Object[] args = (Object[])event.value;
+                                DistributedSharedContextService.this.load(args[0], ((Long)args[1]).longValue());
                             }
                         }else{
                             throw new UnsupportedOperationException();

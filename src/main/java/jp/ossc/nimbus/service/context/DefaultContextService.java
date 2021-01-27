@@ -207,7 +207,9 @@ public class DefaultContextService extends ServiceBase
     
     public void load(Object key) throws Exception{
         if(contextStore != null){
-            contextStore.load(this, key);
+            if(!contextStore.load(this, key)){
+                remove(key);
+            }
         }
     }
     

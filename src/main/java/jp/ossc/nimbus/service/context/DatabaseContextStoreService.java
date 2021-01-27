@@ -156,10 +156,12 @@ public class DatabaseContextStoreService extends ServiceBase
         }
     }
     
-    public void load(Context context, Object key) throws Exception{
+    public boolean load(Context context, Object key) throws Exception{
+        Set loadKeys = new HashSet();
         for(int i = 0; i < databaseMappings.size(); i++){
-            ((DatabaseMapping)databaseMappings.get(i)).load(context, connectionFactory, persistentManager, key);
+            loadKeys.addAll(((DatabaseMapping)databaseMappings.get(i)).load(context, connectionFactory, persistentManager, key));
         }
+        return loadKeys.contains(key);
     }
     
     public boolean isSupportSaveByKey(){
@@ -658,9 +660,9 @@ public class DatabaseContextStoreService extends ServiceBase
             return selectWhereQuery != null;
         }
         
-        public void load(Context context, ConnectionFactory factory, PersistentManager pm, Object key) throws Exception{
+        public Set load(Context context, ConnectionFactory factory, PersistentManager pm, Object key) throws Exception{
             if(selectWhereQuery != null){
-                load(context, factory, pm, selectWhereQuery, key, true, 0);
+                return load(context, factory, pm, selectWhereQuery, key, true, 0);
             }else{
                 throw new UnsupportedOperationException("selectWhereQuery is null.");
             }
@@ -822,7 +824,8 @@ public class DatabaseContextStoreService extends ServiceBase
             }
         }
         
-        protected void load(Context context, ConnectionFactory factory, PersistentManager pm, String query, Object input, boolean isAsynch, long timeout) throws Exception{
+        protected Set load(Context context, ConnectionFactory factory, PersistentManager pm, String query, Object input, boolean isAsynch, long timeout) throws Exception{
+            final Set loadKeys = new HashSet();
             final long startTime = System.currentTimeMillis();
             Map statementProps = null;
             if(fetchSize != 0){
@@ -1018,6 +1021,7 @@ public class DatabaseContextStoreService extends ServiceBase
                                 tmpContext.put(key, output);
                             }
                         }
+                        loadKeys.add(key);
                     }else{
                         if(preKey == null || key.equals(preKey)){
                             if(list == null){
@@ -1071,6 +1075,7 @@ public class DatabaseContextStoreService extends ServiceBase
                                     tmpContext.put(preKey, list);
                                 }
                             }
+                            loadKeys.add(preKey);
                             if(valueClass != null){
                                 list = new ArrayList();
                             }else if(valueRecordList != null){
@@ -1152,6 +1157,7 @@ public class DatabaseContextStoreService extends ServiceBase
                             tmpContext.put(key, list);
                         }
                     }
+                    loadKeys.add(key);
                 }
                 if(tmpContext != null && tmpContext.size() != 0){
                     Set keys = null;
@@ -1204,6 +1210,7 @@ public class DatabaseContextStoreService extends ServiceBase
                     }catch(SQLException e){}
                 }
             }
+            return loadKeys;
         }
         
         private long calculateTimeout(long timeout, long startTime) throws SharedContextTimeoutException{

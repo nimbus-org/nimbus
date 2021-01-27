@@ -762,7 +762,7 @@ public class SharedContextService extends DefaultContextService
                     }
                 }
                 
-                if(expectedIds.containsAll(clientIds)){
+                if(clientIds.containsAll(expectedIds)){
                     break;
                 }
                 long elapsedTime = System.currentTimeMillis() - startTime;
@@ -922,14 +922,18 @@ public class SharedContextService extends DefaultContextService
     
     public void load(Object key, long timeout) throws Exception{
         if(isMain()){
-            super.load(key);
+            if(contextStore != null){
+                if(!contextStore.load(this, key)){
+                    remove(key, timeout);
+                }
+            }
         }else{
             Message message = null;
             try{
                 message = serverConnection.createMessage(subject, key == null ? null : key.toString());
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
-                    message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_LOAD, key));
+                    message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_LOAD, key, new Long(timeout)));
                     Message[] responses = serverConnection.request(
                         message,
                         isClient ? clientSubject : subject,
@@ -4974,7 +4978,11 @@ public class SharedContextService extends DefaultContextService
                         if(event.key == null){
                             SharedContextService.super.load();
                         }else{
-                            SharedContextService.super.load(event.key);
+                            if(SharedContextService.this.contextStore != null){
+                                if(!SharedContextService.this.contextStore.load(SharedContextService.this, event.key)){
+                                    SharedContextService.this.remove(event.key, ((Long)event.value).longValue());
+                                }
+                            }
                         }
                         response = createResponseMessage(responseSubject, responseKey, null);
                     }catch(Throwable th){

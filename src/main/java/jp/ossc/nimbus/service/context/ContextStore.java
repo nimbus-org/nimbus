@@ -83,9 +83,10 @@ public interface ContextStore{
      *
      * @param context コンテキスト
      * @param key キー
+     * @return 読み込んだ場合true、読み込むキーが存在しない場合false
      * @exception Exception 失敗した場合
      */
-    public void load(Context context, Object key) throws Exception;
+    public boolean load(Context context, Object key) throws Exception;
     
     /**
      * キー指定での保存をサポートするかどうかを判定する。<p>
