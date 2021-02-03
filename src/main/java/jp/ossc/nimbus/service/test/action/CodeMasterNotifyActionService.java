@@ -72,6 +72,7 @@ public class CodeMasterNotifyActionService extends ServiceBase implements TestAc
     protected ServiceName serverConnectionFactoryServiceName;
     protected ServerConnectionFactory serverConnectionFactory;
     protected String subject;
+    protected boolean isSendAsynch = true;
     
     protected ServiceName interpreterServiceName;
     protected Interpreter interpreter;
@@ -111,6 +112,13 @@ public class CodeMasterNotifyActionService extends ServiceBase implements TestAc
     }
     public String getSubject(){
         return subject;
+    }
+    
+    public void setSendAsynch(boolean isAsynch){
+        isSendAsynch = isAsynch;
+    }
+    public boolean isSendAsynch(){
+        return isSendAsynch;
     }
     
     public void setInterpreterServiceName(ServiceName name){
@@ -257,7 +265,11 @@ public class CodeMasterNotifyActionService extends ServiceBase implements TestAc
                 params.put("notifyBean", notifyBean);
                 interpreter.evaluate(dataAndDataBindScript, params);
             }
-            notifyBean.addMessageAndSend();
+            if(isSendAsynch){
+                notifyBean.addMessageAndSend();
+            }else{
+                notifyBean.addMessageAndRequest();
+            }
         }finally{
             br.close();
             br = null;
