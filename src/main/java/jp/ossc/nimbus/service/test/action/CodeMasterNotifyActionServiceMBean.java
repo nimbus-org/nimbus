@@ -113,6 +113,21 @@ public interface CodeMasterNotifyActionServiceMBean extends ServiceBaseMBean{
     public String getSubject();
     
     /**
+     * 更新通知を非同期送信するかどうかを設定する。<p>
+     * デフォルトは、trueで非同期。<br>
+     *
+     * @param isAsynch 更新通知を非同期送信する場合は、true
+     */
+    public void setSendAsynch(boolean isAsynch);
+    
+    /**
+     * 更新通知を非同期送信するかどうかを判定する。<p>
+     *
+     * @return trueの場合、更新通知を非同期送信する
+     */
+    public boolean isSendAsynch();
+    
+    /**
      * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}サービスのサービス名を設定する。<p>
      *
      * @param name Interpreterサービスのサービス名
