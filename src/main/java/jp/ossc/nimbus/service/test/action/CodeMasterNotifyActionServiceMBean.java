@@ -128,6 +128,21 @@ public interface CodeMasterNotifyActionServiceMBean extends ServiceBaseMBean{
     public boolean isSendAsynch();
     
     /**
+     * 更新通知を同期送信する場合のタイムアウト[ms]を設定する。<p>
+     * デフォルトは、10000[ms]。<br>
+     *
+     * @param timeout 更新通知を同期送信する場合のタイムアウト
+     */
+    public void setTimeout(long timeout);
+    
+    /**
+     * 更新通知を同期送信する場合のタイムアウト[ms]を取得する。<p>
+     *
+     * @return 更新通知を同期送信する場合のタイムアウト
+     */
+    public long getTimeout();
+    
+    /**
      * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}サービスのサービス名を設定する。<p>
      *
      * @param name Interpreterサービスのサービス名
