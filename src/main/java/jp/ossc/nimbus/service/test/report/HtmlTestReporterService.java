@@ -33,9 +33,10 @@ package jp.ossc.nimbus.service.test.report;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
@@ -62,6 +63,7 @@ public class HtmlTestReporterService extends ServiceBase implements HtmlTestRepo
     private File outputPath;
     private File downloadDir;
     private boolean isDownloadErrorOnly = true;
+    private String encoding = "UTF-8";
 
     public File getOutputPath() {
         return outputPath;
@@ -77,6 +79,13 @@ public class HtmlTestReporterService extends ServiceBase implements HtmlTestRepo
 
     public void setDownloadErrorOnly(boolean errorOnly) {
         isDownloadErrorOnly = errorOnly;
+    }
+
+    public void setEncoding(String encoding){
+        this.encoding = encoding;
+    }
+    public String getEncoding(){
+        return encoding;
     }
 
     public void startService() throws Exception {
@@ -103,9 +112,19 @@ public class HtmlTestReporterService extends ServiceBase implements HtmlTestRepo
         PrintWriter pw = null;
         try {
             TestScenarioGroup[] groups = controller.getScenarioGroups();
-            pw = new PrintWriter(new BufferedWriter(new FileWriter(new File(outputPath, "index.html"))));
+            pw = new PrintWriter(
+                new BufferedWriter(
+                    new OutputStreamWriter(
+                        new FileOutputStream(new File(outputPath, "index.html")),
+                        encoding
+                    )
+                )
+            );
             pw.println("<html>");
-            pw.println("<head><title>Test Result</title></head>");
+            pw.println("<head><title>Test Result</title>");
+            pw.print("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=");
+            pw.print(encoding);
+            pw.println("\"/></head>");
             pw.println("<body>");
             pw.println("<table border=\"1\" cellspacing=\"0\" cellpadding=\"3\" width=\"70%\">");
             pw.println("<tr bgcolor=\"#cccccc\">");
@@ -200,7 +219,7 @@ public class HtmlTestReporterService extends ServiceBase implements HtmlTestRepo
                 pw.println("<tr>");
             }
             isFirst = false;
-            if(isDownloadErrorOnly && !scenario.getStatus().getResult()){
+            if(!isDownloadErrorOnly || (isDownloadErrorOnly && !scenario.getStatus().getResult())){
                 String downloadFilepath = downloadResult(controller, scenario.getScenarioGroupId(), scenario.getScenarioId(), null);
                 pw.println("<td rowspan=\"" + caseCount + "\"" + "scope=\"rowgroup\"><a href=\"" + downloadFilepath + "\">" + scenarioId + "</a></td>");
             } else {
@@ -227,7 +246,7 @@ public class HtmlTestReporterService extends ServiceBase implements HtmlTestRepo
     }
 
     private void reportTestCase(PrintWriter pw, TestController controller, TestCase testCase) throws Exception {
-        if(isDownloadErrorOnly && testCase.getStatus() != null && !testCase.getStatus().getResult()){
+        if(!isDownloadErrorOnly || (isDownloadErrorOnly && testCase.getStatus() != null && !testCase.getStatus().getResult())){
             String downloadFilepath = downloadResult(controller, testCase.getScenarioGroupId(), testCase.getScenarioId(), testCase.getTestCaseId());
             pw.println("<td scope=\"row\"><a href=\"" + downloadFilepath + "\">" + testCase.getTestCaseId() + "</a></td>");
         } else {
@@ -277,7 +296,8 @@ public class HtmlTestReporterService extends ServiceBase implements HtmlTestRepo
         } else {
             result = controller.downloadScenarioResult(downloadDir, scenarioGroupId, scenarioId, TestController.RESPONSE_FILE_TYPE_ZIP);
         }
-        return result.getAbsolutePath();
+        
+        return "." + result.getAbsolutePath().substring(outputPath.getAbsolutePath().length());
     }
 
 }

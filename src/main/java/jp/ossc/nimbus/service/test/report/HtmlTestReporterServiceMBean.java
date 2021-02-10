@@ -61,4 +61,19 @@ public interface HtmlTestReporterServiceMBean extends ServiceBaseMBean{
      * @param errorOnly エラーが発生したシナリオ、またはテストケースのみをダウンロードするか
      */
     public void setDownloadErrorOnly(boolean errorOnly);
+
+    /**
+     * 出力するHTMLの文字コードを設定する。<p>
+     * デフォルトは、UTF-8。<br>
+     *
+     * @param encoding 文字コード
+     */
+    public void setEncoding(String encoding);
+    
+    /**
+     * 出力するHTMLの文字コードを取得する。<p>
+     *
+     * @return 文字コード
+     */
+    public String getEncoding();
 }
