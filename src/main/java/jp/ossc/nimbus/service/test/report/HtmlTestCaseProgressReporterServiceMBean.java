@@ -45,4 +45,19 @@ import jp.ossc.nimbus.core.ServiceBaseMBean;
 public interface HtmlTestCaseProgressReporterServiceMBean extends ServiceBaseMBean{
     public File getOutputPath();
     public void setOutputPath(File outputPath) throws IOException;
+
+    /**
+     * 出力するHTMLの文字コードを設定する。<p>
+     * デフォルトは、UTF-8。<br>
+     *
+     * @param encoding 文字コード
+     */
+    public void setEncoding(String encoding);
+    
+    /**
+     * 出力するHTMLの文字コードを取得する。<p>
+     *
+     * @return 文字コード
+     */
+    public String getEncoding();
 }

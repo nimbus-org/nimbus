@@ -34,8 +34,9 @@ package jp.ossc.nimbus.service.test.report;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -63,6 +64,7 @@ public class HtmlTestCaseProgressReporterService extends ServiceBase implements 
     
     private static final long serialVersionUID = 8999894352277844390L;
     private File outputPath;
+    private String encoding = "UTF-8";
     
     public File getOutputPath() {
         return outputPath;
@@ -70,6 +72,13 @@ public class HtmlTestCaseProgressReporterService extends ServiceBase implements 
     
     public void setOutputPath(File outputPath) throws IOException {
         this.outputPath = outputPath == null ? null : outputPath.getCanonicalFile();
+    }
+
+    public void setEncoding(String encoding){
+        this.encoding = encoding;
+    }
+    public String getEncoding(){
+        return encoding;
     }
     
     public void startService() throws Exception {
@@ -89,9 +98,19 @@ public class HtmlTestCaseProgressReporterService extends ServiceBase implements 
         PrintWriter pw = null;
         try {
             TestScenarioGroup[] groups = controller.getScenarioGroups();
-            pw = new PrintWriter(new BufferedWriter(new FileWriter(new File(outputPath, "index.html"))));
+            pw = new PrintWriter(
+                new BufferedWriter(
+                    new OutputStreamWriter(
+                        new FileOutputStream(new File(outputPath, "index.html")),
+                        encoding
+                    )
+                )
+            );
             pw.println("<html>");
-            pw.println("<head><title>TestCase Create Progress</title></head>");
+            pw.println("<head><title>TestCase Create Progress</title>");
+            pw.print("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=");
+            pw.print(encoding);
+            pw.println("\"/></head>");
             pw.println("<body>");
             pw.println("<table border=\"1\" cellspacing=\"0\" cellpadding=\"3\" width=\"100%\">");
             pw.println("<tr bgcolor=\"#cccccc\">");
