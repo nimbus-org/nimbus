@@ -189,13 +189,22 @@ public class HtmlBeanFlowCoverageRepoterService extends ServiceBase
             Map.Entry flowFileEntry = (Map.Entry)resources.next();
             String flowFileName = (String)flowFileEntry.getKey();
             Map coverageMap = (Map) flowFileEntry.getValue();
-            pw.println("<tr><td rowspan=\"" + (coverageMap.size() + 1)  + "\"><a target=\"sourcefile\" href=\"" + new File(flowFileName).toURI().toURL() + "\">" + flowFileName + "</a></td></tr>");
+            if(coverageMap.size() == 1){
+                pw.println("<tr><td><a target=\"sourcefile\" href=\"" + new File(flowFileName).toURI().toURL() + "\">" + flowFileName + "</a></td>");
+            }else{
+                pw.println("<tr><td rowspan=\"" + coverageMap.size()  + "\"><a target=\"sourcefile\" href=\"" + new File(flowFileName).toURI().toURL() + "\">" + flowFileName + "</a></td>");
+            }
             final Iterator coverages = coverageMap.entrySet().iterator();
+            boolean isFirst = true;
             while(coverages.hasNext()){
                 Map.Entry coverage = (Map.Entry)coverages.next();
                 String flowName = (String)coverage.getKey();
                 BeanFlowCoverage beanflowCoverage = (BeanFlowCoverage)coverage.getValue();
-                pw.println("<tr><td>" + "<a target=\"flowfile\" href=\"" + new File(outputPath + "/flows/" + converter.convert(++count) + ".html").toURI().toURL() + "\">" + flowName + "</a></td>");
+                if(!isFirst){
+                    pw.print("<tr>");
+                    isFirst = false;
+                }
+                pw.println("<td>" + "<a target=\"flowfile\" href=\"" + "./flows/" + converter.convert(++count) + ".html" + "\">" + flowName + "</a></td>");
                 pw.println("<td>" + beanflowCoverage.getCoveredElementCount() + "</td>");
                 pw.println("<td>" + beanflowCoverage.getElementCount() + "</td>");
                 double coverageRate = (double)beanflowCoverage.getCoveredElementCount() / (double)beanflowCoverage.getElementCount() * 100.0d;
