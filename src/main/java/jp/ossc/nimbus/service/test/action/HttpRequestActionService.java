@@ -375,6 +375,13 @@ public class HttpRequestActionService extends ServiceBase implements TestAction,
                             request.setParameter(line.substring(0, index), replace(line.substring(index + 1), replaceMap));
                         }
                     }
+                }else if("querystring".equals(bodyType)){
+                    String query = br.readLine();
+                    if(query == null){
+                        throw new Exception("Unexpected EOF on querystring");
+                    }
+                    query = replace(query, replaceMap);
+                    request.setQueryString(query);
                 }else{
                     throw new Exception("Unknown bodyType : " + bodyType);
                 }
