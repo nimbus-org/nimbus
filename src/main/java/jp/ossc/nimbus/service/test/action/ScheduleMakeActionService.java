@@ -100,7 +100,7 @@ public class ScheduleMakeActionService extends ServiceBase implements TestAction
      * script
      * </pre>
      * masterIdは、作成するスケジュールのマスタIDを指定する。<br>
-     * scriptは、{@link ScheduleMaster}を編集するスクリプトを指定する。スクリプトは、{@link Interpreter#evaluate(String,Map)}で評価され、引数の変数マップには、"context"で{@link TestContext}、"master"で{@link ScheduleMaster}が渡される。<br>
+     * scriptは、{@link ScheduleMaster}を編集するスクリプトを指定する。スクリプトは、{@link Interpreter#evaluate(String,Map)}で評価され、引数の変数マップには、"context"で{@link TestContext}、"master"で{@link ScheduleMaster}、"date"でスケジュール作成日付のjava.util.Dateオブジェクトが渡される。<br>
      *
      * @param context コンテキスト
      * @param actionId アクションID
@@ -181,6 +181,7 @@ public class ScheduleMakeActionService extends ServiceBase implements TestAction
             final Map params = new HashMap();
             params.put("context", context);
             params.put("master", master);
+            params.put("date", now);
             interpreter.evaluate(script, params);
         }
         return scheduleManager.makeSchedule(now, master);
