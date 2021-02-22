@@ -87,13 +87,14 @@ import jp.ossc.nimbus.service.log.Logger;
 import jp.ossc.nimbus.service.writer.Category;
 import jp.ossc.nimbus.service.writer.MessageWriteException;
 import jp.ossc.nimbus.util.converter.Converter;
+import jp.ossc.nimbus.service.writer.prometheus.HelpProvider;
 
 /**
  * MBeanを監視するサービス。<p>
  *
  * @author M.Takata
  */
-public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, MBeanWatcherServiceMBean{
+public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, MBeanWatcherServiceMBean, HelpProvider{
 
     private static final long serialVersionUID = -1421073056315791503L;
 
@@ -124,6 +125,7 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     private Map contextMap;
     private boolean isConnectError;
     private PropertyAccess propertyAccess;
+    private Map descriptionMap;
     
     // MBeanWatcherServiceMBeanのJavaDoc
     public String getDescription(){
@@ -279,6 +281,20 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
             targetList = new ArrayList();
         }
         targetList.add(target);
+        if(descriptionMap == null){
+            descriptionMap = new HashMap();
+        }
+        if(target.getKey() != null && target.getDescription() != null){
+            descriptionMap.put(target.getKey(), target.getDescription());
+        }
+    }
+    
+    // MBeanWatcherServiceMBeanのJavaDoc
+    public String getKeyDescription(String key){
+        if(descriptionMap == null){
+            return null;
+        }
+        return (String)descriptionMap.get(key);
     }
 
     // MBeanWatcherServiceMBeanのJavaDoc
@@ -549,6 +565,14 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
     protected Map getContextMap(){
         return contextMap;
     }
+    
+    public String getHelp(){
+        return getDescription();
+    }
+    
+    public String getHelp(String key){
+        return getKeyDescription(key);
+    }
 
     /**
      * 監視対象。<p>
@@ -818,6 +842,51 @@ public class MBeanWatcherService extends ServiceBase implements DaemonRunnable, 
             StringBuilder buf = new StringBuilder(super.toString());
             buf.deleteCharAt(buf.length() - 1);
             buf.append(",format=").append(format);
+            buf.append('}');
+            return buf.toString();
+        }
+    }
+
+    /**
+     * ラベル。<p>
+     * 固定のラベルを出力する。<br>
+     *
+     * @author M.Takata
+     */
+    public static class Label extends Target{
+        
+        private static final long serialVersionUID = 952669908871899654l;
+        
+        protected String label;
+        
+        /**
+         * ラベルを設定する。<p>
+         *
+         * @param label ラベル
+         */
+        public void setLabel(String label){
+            this.label = label;
+        }
+        
+        /**
+         * ラベルを取得する。<p>
+         *
+         * @param connection JMX接続
+         * @return ラベル
+         */
+        public Object getValue(MBeanServerConnection connection){
+            return label;
+        }
+        
+        /**
+         * この監視対象の文字列表現を取得する。<p>
+         *
+         * @return 文字列表現
+         */
+        public String toString(){
+            StringBuilder buf = new StringBuilder(super.toString());
+            buf.deleteCharAt(buf.length() - 1);
+            buf.append(",label=").append(label);
             buf.append('}');
             return buf.toString();
         }
