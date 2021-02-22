@@ -68,6 +68,14 @@ public interface MBeanWatcherServiceMBean extends ServiceBaseMBean{
     public void setDescription(String desc);
     
     /**
+     * 出力キーに対する説明を取得する。<p>
+     *
+     * @param key 出力キー
+     * @return 説明
+     */
+    public String getKeyDescription(String key);
+    
+    /**
      * javax.management.MBeanServerConnectionのJNDI名のデフォルト値。<p>
      */
     public static final String DEFAULT_JMX_RMI_ADAPTOR_NAME = "jmx/invoker/RMIAdaptor";
