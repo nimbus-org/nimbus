@@ -31,6 +31,8 @@
  */
 package jp.ossc.nimbus.service.performance;
 
+import java.util.Map;
+
 import jp.ossc.nimbus.core.*;
 
 /**
@@ -295,6 +297,47 @@ public interface DefaultPerformanceRecorderServiceMBean extends ServiceBaseMBean
      * @return trueの場合、出力する
      */
     public boolean isOutputSum();
+    
+    /**
+     * 出力するラベルの名前と値のマッピングを設定する。<p>
+     *
+     * @param map 出力するラベルの名前と値のマッピング
+     */
+    public void setLabelMap(Map map);
+    
+    /**
+     * 出力するラベルの名前と値のマッピングを取得する。<p>
+     *
+     * @return 出力するラベルの名前と値のマッピング
+     */
+    public Map getLabelMap();
+    
+    public void setDescription(String desc);
+    public String getDescription();
+    
+    public void setDescriptionOfCount(String desc);
+    public String getDescriptionOfCount();
+    
+    public void setDescriptionOfBestPerformance(String desc);
+    public String getDescriptionOfBestPerformance();
+    
+    public void setDescriptionOfWorstPerformance(String desc);
+    public String getDescriptionOfWorstPerformance();
+    
+    public void setDescriptionOfAveragePerformance(String desc);
+    public String getDescriptionOfAveragePerformance();
+    
+    public void setDescriptionOfMedianPerformance(String desc);
+    public String getDescriptionOfMedianPerformance();
+    
+    public void setDescriptionOfSum(String desc);
+    public String getDescriptionOfSum();
+    
+    public void setDescriptionOfFirstTimestamp(String desc);
+    public String getDescriptionOfFirstTimestamp();
+    
+    public void setDescriptionOfLastTimestamp(String desc);
+    public String getDescriptionOfLastTimestamp();
     
     /**
      * 現在のパフォーマンス情報を表示する。<p>
