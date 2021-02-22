@@ -8,6 +8,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
+import java.util.HashSet;
 
 import io.prometheus.client.Gauge;
 import io.prometheus.client.Gauge.Builder;
@@ -33,6 +35,8 @@ public class GaugeWriterService extends ServiceBase implements MessageWriter, Ga
     protected List valuePropertyList;
     protected Double outputValueOnNullValue;
     
+    protected String[] labelNames;
+    protected Set labelPropertySet;
     protected Map gaugeMap;
     protected boolean isOutputLabel = false;
     protected Collection fixedLabelValues;
@@ -88,6 +92,7 @@ public class GaugeWriterService extends ServiceBase implements MessageWriter, Ga
     public void createService() throws Exception {
         gaugeMap = new LinkedHashMap();
         labelPropertyList = new ArrayList();
+        labelPropertySet = new HashSet();
         fixedLabelMap = new LinkedHashMap();
         valuePropertyList = new ArrayList();
     }
@@ -96,21 +101,18 @@ public class GaugeWriterService extends ServiceBase implements MessageWriter, Ga
         if(name == null || "".equals(name)){
             throw new IllegalArgumentException("Name is null or empty.");
         }
-        if(valuePropertyList == null || valuePropertyList.isEmpty()){
-            throw new IllegalArgumentException("ValuePropertyList is null or empty.");
-        }
-        int labelNamesSize = (labelPropertyList == null ? 0 : labelPropertyList.size()) + (fixedLabelMap == null ? 0 : fixedLabelMap.size());
+        int labelNamesSize = labelPropertyList.size() + fixedLabelMap.size();
+        labelPropertySet.addAll(labelPropertyList);
         List labelNameList = null;
         if(labelNamesSize > 0){
             isOutputLabel = true;
             labelNameList = new ArrayList();
-            if(labelPropertyList != null && labelPropertyList.size() > 0){
-                labelNameList.addAll(labelPropertyList);
-            }
-            if(fixedLabelMap != null && fixedLabelMap.size() > 0){
+            labelNameList.addAll(labelPropertyList);
+            if(fixedLabelMap.size() > 0){
                 labelNameList.addAll(fixedLabelMap.keySet());
                 fixedLabelValues = fixedLabelMap.values();
             }
+            labelNames = (String[]) labelNameList.toArray(new String[labelNameList.size()]);
         }
         for(int i = 0; i < valuePropertyList.size(); i++){
             String key = (String) valuePropertyList.get(i);
@@ -119,7 +121,7 @@ public class GaugeWriterService extends ServiceBase implements MessageWriter, Ga
                 builder = builder.help(help + "(" + key + ")");
             }
             if(isOutputLabel){
-                builder = builder.labelNames((String[]) labelNameList.toArray(new String[0]));
+                builder = builder.labelNames(labelNames);
             }
             gaugeMap.put(key, builder.register());
         }
@@ -145,42 +147,79 @@ public class GaugeWriterService extends ServiceBase implements MessageWriter, Ga
                 labelValueList.addAll(fixedLabelValues);
             }
         }
-        String[] labels = (String[]) labelValueList.toArray(new String[] {});
-        Iterator itr = gaugeMap.entrySet().iterator();
-        while (itr.hasNext()){
-            Entry entry = (Entry) itr.next();
-            String key = (String) entry.getKey();
-            WritableElement valueElement = (WritableElement) elementMap.get(key);
-            Object value = valueElement == null ? null : valueElement.getValue();
-            Double dValue = null;
-            if(value != null){
-                if(value instanceof Number){
-                    dValue = ((Number) value).doubleValue();
-                }else if(value instanceof Boolean){
-                    dValue = ((Boolean) value).booleanValue() ? 1d : 0d;
-                }else if(value instanceof Date){
-                    dValue = (double) (((Date) value).getTime());
-                }else{
-                    try{
-                        dValue = Double.parseDouble(value.toString());
-                    }catch (NumberFormatException e){
-                        throw new MessageWriteException("Could not parse daouble. value=" + value, e);
+        String[] labels = labelValueList == null ? null : (String[])labelValueList.toArray(new String[labelValueList.size()]);
+        if(valuePropertyList.isEmpty()){
+            Iterator itr = elementMap.entrySet().iterator();
+            while (itr.hasNext()){
+                Entry entry = (Entry) itr.next();
+                String key = (String) entry.getKey();
+                if(labelPropertySet.contains(key)){
+                    continue;
+                }
+                WritableElement valueElement = (WritableElement)entry.getValue();
+                Double dValue = toValue(valueElement);
+                Gauge gauge = (Gauge)gaugeMap.get(key);
+                if(gauge == null){
+                    Builder builder = Gauge.build().name(name + "_" + key.toLowerCase());
+                    if(help != null && !"".equals(help)){
+                        builder = builder.help(help + "(" + key + ")");
+                    }
+                    if(isOutputLabel){
+                        builder = builder.labelNames(labelNames);
+                    }
+                    gauge = builder.register();
+                    gaugeMap.put(key, gauge);
+                }
+                if(dValue != null){
+                    if(isOutputLabel){
+                        gauge.labels(labels).set(dValue);
+                    }else{
+                        gauge.set(dValue);
                     }
                 }
-            }else{
-                if(outputValueOnNullValue != null){
-                    dValue = outputValueOnNullValue;
-                }
             }
-            if(dValue != null){
-                Gauge gauge = (Gauge) entry.getValue();
-                if(isOutputLabel){
-                    gauge.labels(labels).set(dValue);
-                }else{
-                    gauge.set(dValue);
+            
+        }else{
+            Iterator itr = gaugeMap.entrySet().iterator();
+            while (itr.hasNext()){
+                Entry entry = (Entry) itr.next();
+                String key = (String) entry.getKey();
+                WritableElement valueElement = (WritableElement) elementMap.get(key);
+                Double dValue = toValue(valueElement);
+                if(dValue != null){
+                    Gauge gauge = (Gauge) entry.getValue();
+                    if(isOutputLabel){
+                        gauge.labels(labels).set(dValue);
+                    }else{
+                        gauge.set(dValue);
+                    }
                 }
             }
         }
     }
     
+    private Double toValue(WritableElement valueElement) throws MessageWriteException{
+        Object value = valueElement == null ? null : valueElement.getValue();
+        Double dValue = null;
+        if(value != null){
+            if(value instanceof Number){
+                dValue = ((Number) value).doubleValue();
+            }else if(value instanceof Boolean){
+                dValue = ((Boolean) value).booleanValue() ? 1d : 0d;
+            }else if(value instanceof Date){
+                dValue = (double) (((Date) value).getTime());
+            }else{
+                try{
+                    dValue = Double.parseDouble(value.toString());
+                }catch (NumberFormatException e){
+                    throw new MessageWriteException("Could not parse daouble. value=" + value, e);
+                }
+            }
+        }else{
+            if(outputValueOnNullValue != null){
+                dValue = outputValueOnNullValue;
+            }
+        }
+        return dValue;
+    }
 }
