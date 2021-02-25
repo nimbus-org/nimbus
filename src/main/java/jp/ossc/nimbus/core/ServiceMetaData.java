@@ -590,17 +590,19 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
             result.depends.add(deps);
         }
         if(templateData.ifDefMetaDataList != null && templateData.ifDefMetaDataList.size() != 0){
+            List addIfDefMetaDataList = new ArrayList();
             for(int i = 0; i < templateData.ifDefMetaDataList.size(); i++){
                 IfDefMetaData ifdef = (IfDefMetaData)templateData.ifDefMetaDataList.get(i);
                 ifdef = (IfDefMetaData)ifdef.clone();
                 ifdef.setParent(result);
-                if(result.ifDefMetaDataList == null){
-                    result.ifDefMetaDataList = new ArrayList();
-                }
-                result.ifDefMetaDataList.add(ifdef);
+                addIfDefMetaDataList.add(ifdef);
             }
+            if(result.ifDefMetaDataList == null){
+                result.ifDefMetaDataList = new ArrayList();
+            }
+            result.ifDefMetaDataList.addAll(0, addIfDefMetaDataList);
         }
-        result.importIfDef();
+        result.importIfDefOnApply();
         
         return result;
     }
@@ -717,6 +719,13 @@ public class ServiceMetaData extends ObjectMetaData implements Serializable{
     }
     
     public void importIfDef() throws DeploymentException{
+        if(getTemplateName() != null){
+            return;
+        }
+        importIfDefOnApply();
+    }
+    
+    protected void importIfDefOnApply() throws DeploymentException{
         super.importIfDef();
         
         for(int i = 0; i < depends.size(); i++){
