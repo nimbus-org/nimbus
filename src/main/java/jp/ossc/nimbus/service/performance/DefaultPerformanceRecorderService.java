@@ -51,13 +51,14 @@ import jp.ossc.nimbus.daemon.DaemonRunnableAdaptor;
 import jp.ossc.nimbus.daemon.DaemonControl;
 import jp.ossc.nimbus.service.writer.Category;
 import jp.ossc.nimbus.service.writer.MessageWriteException;
+import jp.ossc.nimbus.service.writer.prometheus.HelpProvider;
 
 /**
  * 処理時間を記録する。<p>
  *
  * @author M.Takata
  */
-public class DefaultPerformanceRecorderService extends ServiceBase implements PerformanceRecorder, DefaultPerformanceRecorderServiceMBean{
+public class DefaultPerformanceRecorderService extends ServiceBase implements PerformanceRecorder, DefaultPerformanceRecorderServiceMBean, HelpProvider{
 
     private static final long serialVersionUID = 2850022611534286801L;
 
@@ -77,6 +78,16 @@ public class DefaultPerformanceRecorderService extends ServiceBase implements Pe
     private boolean isOutputFirstTimestamp = true;
     private boolean isOutputLastTimestamp = true;
     private boolean isOutputSum = true;
+    private String description = "performance";
+    private String descriptionOfCount = "count";
+    private String descriptionOfBestPerformance = "best performance";
+    private String descriptionOfWorstPerformance = "worst performance";
+    private String descriptionOfAveragePerformance = "average performance";
+    private String descriptionOfMedianPerformance = "median performance";
+    private String descriptionOfSum = "sum";
+    private String descriptionOfFirstTimestamp = "first time";
+    private String descriptionOfLastTimestamp = "last time";
+    private Map labelMap;
     
     private Category category;
     private ThreadLocal threadLocal;
@@ -115,6 +126,13 @@ public class DefaultPerformanceRecorderService extends ServiceBase implements Pe
     }
     public ServiceName getCategoryServiceName(){
         return categoryServiceName;
+    }
+    
+    public void setLabelMap(Map map){
+        labelMap = map;
+    }
+    public Map getLabelMap(){
+        return labelMap;
     }
     
     public void setOutputNoAccessTime(boolean isOutput){
@@ -185,6 +203,69 @@ public class DefaultPerformanceRecorderService extends ServiceBase implements Pe
     }
     public boolean isOutputSum(){
         return isOutputSum;
+    }
+    
+    public void setDescription(String desc){
+        description = desc;
+    }
+    public String getDescription(){
+        return description;
+    }
+    
+    public void setDescriptionOfCount(String desc){
+        descriptionOfCount = desc;
+    }
+    public String getDescriptionOfCount(){
+        return descriptionOfCount;
+    }
+    
+    public void setDescriptionOfBestPerformance(String desc){
+        descriptionOfBestPerformance = desc;
+    }
+    public String getDescriptionOfBestPerformance(){
+        return descriptionOfBestPerformance;
+    }
+    
+    public void setDescriptionOfWorstPerformance(String desc){
+        descriptionOfWorstPerformance = desc;
+    }
+    public String getDescriptionOfWorstPerformance(){
+        return descriptionOfWorstPerformance;
+    }
+    
+    public void setDescriptionOfAveragePerformance(String desc){
+        descriptionOfAveragePerformance = desc;
+    }
+    public String getDescriptionOfAveragePerformance(){
+        return descriptionOfAveragePerformance;
+    }
+    
+    public void setDescriptionOfMedianPerformance(String desc){
+        descriptionOfMedianPerformance = desc;
+    }
+    public String getDescriptionOfMedianPerformance(){
+        return descriptionOfMedianPerformance;
+    }
+    
+    public void setDescriptionOfSum(String desc){
+        descriptionOfSum = desc;
+    }
+    public String getDescriptionOfSum(){
+        return descriptionOfSum;
+    }
+    
+    public void setDescriptionOfFirstTimestamp(String desc){
+        descriptionOfFirstTimestamp = desc;
+    }
+    public String getDescriptionOfFirstTimestamp(){
+        return descriptionOfFirstTimestamp;
+    }
+    
+    public void setDescriptionOfLastTimestamp(String desc){
+        descriptionOfLastTimestamp = desc;
+    }
+    public String getDescriptionOfLastTimestamp(){
+        return descriptionOfLastTimestamp;
     }
     
     public void setCategory(Category category){
@@ -258,6 +339,9 @@ public class DefaultPerformanceRecorderService extends ServiceBase implements Pe
         pw.print(RECORD_KEY_MEDIAN);
         pw.print("=");
         pw.println(merged.medianPerformance);
+        pw.print(RECORD_KEY_SUM);
+        pw.print("=");
+        pw.println(merged.total);
         SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS");
         pw.print(RECORD_KEY_FIRST_TIMESTAMP);
         pw.print("=");
@@ -267,6 +351,32 @@ public class DefaultPerformanceRecorderService extends ServiceBase implements Pe
         pw.println(merged.lastTime == -1 ? "-" : format.format(new Date(merged.lastTime)));
         pw.flush();
         return sw.toString();
+    }
+    
+    public String getHelp(){
+        return getDescription();
+    }
+    
+    public String getHelp(String key){
+        if(RECORD_KEY_COUNT.equals(key)){
+            return getDescriptionOfCount();
+        }else if(RECORD_KEY_BEST.equals(key)){
+            return getDescriptionOfBestPerformance();
+        }else if(RECORD_KEY_WORST.equals(key)){
+            return getDescriptionOfWorstPerformance();
+        }else if(RECORD_KEY_AVERAGE.equals(key)){
+            return getDescriptionOfAveragePerformance();
+        }else if(RECORD_KEY_MEDIAN.equals(key)){
+            return getDescriptionOfMedianPerformance();
+        }else if(RECORD_KEY_SUM.equals(key)){
+            return getDescriptionOfSum();
+        }else if(RECORD_KEY_FIRST_TIMESTAMP.equals(key)){
+            return getDescriptionOfFirstTimestamp();
+        }else if(RECORD_KEY_LAST_TIMESTAMP.equals(key)){
+            return getDescriptionOfLastTimestamp();
+        }else{
+            return null;
+        }
     }
     
     public void record(long startTime, long endTime){
@@ -315,6 +425,11 @@ public class DefaultPerformanceRecorderService extends ServiceBase implements Pe
                 merged.calculate();
                 
                 final Map record = new LinkedHashMap();
+                
+                if(labelMap != null){
+                    record.putAll(labelMap);
+                }
+                
                 if(isOutputTimestamp){
                     record.put(RECORD_KEY_TIMESTAMP, timestamp);
                 }
