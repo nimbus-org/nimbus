@@ -65,6 +65,7 @@ public class ScriptEngineInterpreterService extends ServiceBase
     private boolean isWrapByFunction;
     private String wrapperFunction = "function wrapper(){$script\nreturn $lastStep}\nwrapper();";
     private String stepDelimitor = ";";
+    private Map<String, Class> scriptEngineFactoryByEngineName;
     
     private ScriptEngineManager scriptEngineManager;
     private ScriptEngine scriptEngine;
@@ -145,9 +146,14 @@ public class ScriptEngineInterpreterService extends ServiceBase
         return classLoader;
     }
     
+    public void setScriptEngineFactoryByEngineName(String name, Class clazz){
+        scriptEngineFactoryByEngineName.put(name, clazz);
+    }
+    
     public void createService() throws Exception{
         globalBindings = new HashMap<String, Object>();
         engineBindings = Collections.synchronizedMap(new HashMap<String, Object>());
+        scriptEngineFactoryByEngineName = new HashMap<String, Class>();
     }
     
     public void startService() throws Exception{
@@ -156,6 +162,15 @@ public class ScriptEngineInterpreterService extends ServiceBase
         }else{
             scriptEngineManager = new ScriptEngineManager(classLoader);
         }
+        
+        if(!scriptEngineFactoryByEngineName.isEmpty()){
+            Iterator<Map.Entry<String, Class>> entries = scriptEngineFactoryByEngineName.entrySet().iterator();
+            while(entries.hasNext()){
+                Map.Entry<String, Class> entry = entries.next();
+                scriptEngineManager.registerEngineName(entry.getKey(), (ScriptEngineFactory)entry.getValue().newInstance());
+            }
+        }
+        
         ScriptEngine engine = createScriptEngine();
         if(engine == null){
             throw new IllegalArgumentException("ScriptEngine not found.");
