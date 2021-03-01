@@ -43,6 +43,14 @@ import jp.ossc.nimbus.core.*;
 public interface ScriptEngineInterpreterServiceMBean extends ServiceBaseMBean{
     
     /**
+     * 指定されたエンジン名で、javax.script.ScriptEngineFactoryを登録する。<p>
+     *
+     * @param name エンジン名
+     * @param clazz javax.script.ScriptEngineFactoryのクラス
+     */
+    public void setScriptEngineFactoryByEngineName(String name, Class clazz);
+    
+    /**
      * スクリプトエンジンを特定するための、拡張子を設定する。<p>
      *
      * @param ext 拡張子
