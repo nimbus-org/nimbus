@@ -123,7 +123,7 @@ public class SharedContextAuthenticateStoreService extends ServiceBase implement
     public Object activate(HttpServletRequest request, Object authenticatedKey) throws AuthenticateStoreException{
         try{
             Object key = keyPropertyOnActivate == null ? authenticatedKey : propertyAccess.get(authenticatedKey, keyPropertyOnActivate);
-            return sharedContext.get(key, timeout);
+            return key == null ? null : sharedContext.get(key, timeout);
         }catch(Exception e){
             throw new AuthenticateStoreException(e);
         }
