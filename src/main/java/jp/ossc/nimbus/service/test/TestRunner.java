@@ -516,12 +516,12 @@ public class TestRunner {
                                                 }
                                             }else{
                                                 int ErrorContinue = testCases[k].getTestCaseResource().getErrorContinue();
+                                                if(verbose){
+                                                    ServiceManagerFactory.getLogger().write("TR___00011", new Object[]{testCases[k].getTestCaseId(), testCases[k].getStatus()});
+                                                }
                                                 if(!(ErrorContinue == TestResourceBase.CONTINUE_TYPE_TRUE 
                                                         || (ErrorContinue == TestResourceBase.CONTINUE_TYPE_DEFAULT  && defaultTestCaseErrorContinue == TestResourceBase.CONTINUE_TYPE_TRUE))){
                                                     break;
-                                                }
-                                                if(verbose){
-                                                    ServiceManagerFactory.getLogger().write("TR___00011", new Object[]{testCases[k].getTestCaseId(), testCases[k].getStatus()});
                                                 }
                                             }
                                         }catch(Exception e){
