@@ -38,6 +38,8 @@ package jp.ossc.nimbus.util.validator;
  */
 public class VersionValidator implements Validator, java.io.Serializable{
     
+    private static final long serialVersionUID = -4492562526492747541L;
+    
     /**
      * 比較種別：より大きい(>)。<p>
      */
