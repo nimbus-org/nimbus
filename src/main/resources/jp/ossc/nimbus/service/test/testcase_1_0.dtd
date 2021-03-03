@@ -93,7 +93,7 @@ The DOCTYPE is:
 
 <!-- errorContinue属性は、エラー発生時の継続有無を定義します。未設定時はfalseで継続無しです。
 -->
-<!ATTLIST testcase errorContinue (true|false) "false">
+<!ATTLIST testcase errorContinue (true|false) #IMPLIED>
 
 <!-- title要素は、テストの内容に関するタイトルを定義します。
 -->
