@@ -524,7 +524,10 @@ public class ServletRequestExchangeInterceptorService
                 );
             }
             request.setAttribute(requestObjectAttributeName, requestObj);
-                
+            if(threadContext != null){
+                threadContext.put(requestObjectContextKey, requestObj);
+            }
+            
             final Object ret = chain.invokeNext(context);
             return ret;
         }catch(Throwable th){
