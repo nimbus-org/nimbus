@@ -276,9 +276,6 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
             threadContext = (Context)ServiceManagerFactory
                 .getServiceObject(threadContextServiceName);
         }
-        if(authenticatedInfoMapping == null || authenticatedInfoMapping.size() == 0){
-            throw new IllegalArgumentException("AuthenticatedInfoMapping must be specified.");
-        }
         if(authenticateStoreServiceName != null){
             authenticateStore = (AuthenticateStore)ServiceManagerFactory.getServiceObject(authenticateStoreServiceName);
         }
@@ -437,37 +434,39 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
         if(authenticatedInfo == null){
             throw new NoAuthenticateException("AuthenticatedInfo is null.");
         }
-        Iterator entries = authenticatedInfoMapping.entrySet().iterator();
-        while(entries.hasNext()){
-            Map.Entry entry = (Map.Entry)entries.next();
-            Object requestValue = null;
-            try{
-                requestValue = propertyAccess.get(requestObject, (String)entry.getKey());
-            }catch(IllegalArgumentException e){
-                throw new IllegalAuthenticateException("Authenticated value '" + entry.getKey() + "' cannot acquire from a request.", e);
-            }catch(NoSuchPropertyException e){
-                throw new IllegalAuthenticateException("Authenticated value '" + entry.getKey() + "' cannot acquire from a request.", e);
-            }catch(InvocationTargetException e){
-                throw new IllegalAuthenticateException("Authenticated value '" + entry.getKey() + "' cannot acquire from a request.", e.getTargetException());
-            }
-            if(requestValue == null){
-                throw new IllegalAuthenticateException("Authenticated value '" + entry.getKey() + "' cannot acquire from a request. value=null");
-            }
-            Object authenticatedValue = null;
-            try{
-                authenticatedValue = propertyAccess.get(authenticatedInfo, (String)entry.getValue());
-            }catch(IllegalArgumentException e){
-                throw new IllegalAuthenticateException("Authenticated value '" + entry.getValue() + "' cannot acquire from a session.", e);
-            }catch(NoSuchPropertyException e){
-                throw new IllegalAuthenticateException("Authenticated value '" + entry.getValue() + "' cannot acquire from a session.", e);
-            }catch(InvocationTargetException e){
-                throw new IllegalAuthenticateException("Authenticated value '" + entry.getValue() + "' cannot acquire from a session.", e.getTargetException());
-            }
-            if(authenticatedValue == null){
-                throw new IllegalAuthenticateException("Authenticated value '" + entry.getValue() + "' cannot acquire from a session. value=null");
-            }
-            if(!requestValue.equals(authenticatedValue)){
-                throw new IllegalAuthenticateException("Authenticated value '" + entry.getKey() + "' and '" + entry.getValue() + "' are not in agreement. requestValue=" + requestValue + ", authenticatedValue=" + authenticatedValue);
+        if(authenticatedInfoMapping != null){
+            Iterator entries = authenticatedInfoMapping.entrySet().iterator();
+            while(entries.hasNext()){
+                Map.Entry entry = (Map.Entry)entries.next();
+                Object requestValue = null;
+                try{
+                    requestValue = propertyAccess.get(requestObject, (String)entry.getKey());
+                }catch(IllegalArgumentException e){
+                    throw new IllegalAuthenticateException("Authenticated value '" + entry.getKey() + "' cannot acquire from a request.", e);
+                }catch(NoSuchPropertyException e){
+                    throw new IllegalAuthenticateException("Authenticated value '" + entry.getKey() + "' cannot acquire from a request.", e);
+                }catch(InvocationTargetException e){
+                    throw new IllegalAuthenticateException("Authenticated value '" + entry.getKey() + "' cannot acquire from a request.", e.getTargetException());
+                }
+                if(requestValue == null){
+                    throw new IllegalAuthenticateException("Authenticated value '" + entry.getKey() + "' cannot acquire from a request. value=null");
+                }
+                Object authenticatedValue = null;
+                try{
+                    authenticatedValue = propertyAccess.get(authenticatedInfo, (String)entry.getValue());
+                }catch(IllegalArgumentException e){
+                    throw new IllegalAuthenticateException("Authenticated value '" + entry.getValue() + "' cannot acquire from a session.", e);
+                }catch(NoSuchPropertyException e){
+                    throw new IllegalAuthenticateException("Authenticated value '" + entry.getValue() + "' cannot acquire from a session.", e);
+                }catch(InvocationTargetException e){
+                    throw new IllegalAuthenticateException("Authenticated value '" + entry.getValue() + "' cannot acquire from a session.", e.getTargetException());
+                }
+                if(authenticatedValue == null){
+                    throw new IllegalAuthenticateException("Authenticated value '" + entry.getValue() + "' cannot acquire from a session. value=null");
+                }
+                if(!requestValue.equals(authenticatedValue)){
+                    throw new IllegalAuthenticateException("Authenticated value '" + entry.getKey() + "' and '" + entry.getValue() + "' are not in agreement. requestValue=" + requestValue + ", authenticatedValue=" + authenticatedValue);
+                }
             }
         }
         
