@@ -43,6 +43,10 @@ import org.apache.commons.httpclient.methods.multipart.FilePart;
 import org.apache.commons.httpclient.auth.AuthState;
 
 import jp.ossc.nimbus.core.*;
+import jp.ossc.nimbus.beans.dataset.Record;
+import jp.ossc.nimbus.beans.dataset.RecordSchema;
+import jp.ossc.nimbus.beans.dataset.PropertySchema;
+import jp.ossc.nimbus.beans.dataset.DefaultPropertySchema;
 import jp.ossc.nimbus.service.http.*;
 import jp.ossc.nimbus.util.converter.*;
 
@@ -579,9 +583,6 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
         if(queryString != null){
             method.setQueryString(queryString);
         }
-        if(parameterMap != null){
-            initParameter(method, parameterMap);
-        }
         if(inputStream != null){
             final ByteArrayOutputStream baos = new ByteArrayOutputStream();
             final byte[] bytes = new byte[1024];
@@ -594,7 +595,67 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
             inputBytes = outputStream.toByteArray();
         }else if(inputObject != null){
             if(streamConverter == null && streamConverterServiceName == null){
-                throw new HttpRequestCreateException(httpClientFactoryServiceName, "StreamConverter is null.");
+                if(inputObject instanceof Record){
+                    Record record = (Record)inputObject;
+                    RecordSchema schema = record.getRecordSchema();
+                    if(schema == null){
+                        throw new HttpRequestCreateException(httpClientFactoryServiceName, "Schema is null.");
+                    }
+                    PropertySchema[] propSchemata = schema.getPropertySchemata();
+                    for(int i = 0, imax = propSchemata.length; i < imax; i++){
+                        final PropertySchema propSchema = propSchemata[i];
+                        String propName = propSchema.getName();
+                        Object val = null;
+                        if(propSchema instanceof DefaultPropertySchema && ((DefaultPropertySchema)propSchema).getFormatConverter() != null){
+                            val = record.getFormatProperty(i);
+                            if(val != null){
+                                setParameter(propName, val.toString());
+                            }
+                        }else{
+                            val = record.getProperty(propName);
+                            if(val != null){
+                                Class propType = propSchema.getType();
+                                if(propType.isArray()){
+                                    for(int j = 0, jmax = Array.getLength(val); j < jmax; j++){
+                                        Object element = Array.get(val, j);
+                                        setParameter(propName, element == null ? null : element.toString());
+                                    }
+                                }else{
+                                    setParameter(propName, val.toString());
+                                }
+                            }
+                        }
+                    }
+                }else if(inputObject instanceof Map){
+                    Map map = (Map)inputObject;
+                    Iterator entries = map.entrySet().iterator();
+                    while(entries.hasNext()){
+                        final Map.Entry entry = (Map.Entry)entries.next();
+                        String propName = entry.getKey().toString();
+                        Object val = entry.getValue();
+                        if(val == null){
+                            setParameter(propName, null);
+                        }else{
+                            Class propType = val.getClass();
+                            if(propType.isArray()){
+                                for(int i = 0, imax = Array.getLength(val); i < imax; i++){
+                                    Object element = Array.get(val, i);
+                                    setParameter(propName, element == null ? null : element.toString());
+                                }
+                            }else if(val instanceof Collection){
+                                Iterator itr = ((Collection)val).iterator();
+                                while(itr.hasNext()){
+                                    Object element = itr.next();
+                                    setParameter(propName, element == null ? null : element.toString());
+                                }
+                            }else{
+                                setParameter(propName, val.toString());
+                            }
+                        }
+                    }
+                }else{
+                    throw new HttpRequestCreateException(httpClientFactoryServiceName, "StreamConverter is null.");
+                }
             }else{
                 final ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 final byte[] bytes = new byte[1024];
@@ -623,6 +684,9 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
                 method,
                 compress(inputBytes)
             );
+        }
+        if(parameterMap != null){
+            initParameter(method, parameterMap);
         }
         if(headerMap != null){
             final Iterator names = headerMap.keySet().iterator();
