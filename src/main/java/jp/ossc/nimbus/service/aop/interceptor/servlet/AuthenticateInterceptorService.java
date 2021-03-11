@@ -431,8 +431,9 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
             }
         }
         Object authenticatedInfo = null;
+        HttpSession session = null;
         if(isSessionUse){
-            HttpSession session = request.getSession(false);
+            session = request.getSession(false);
             if(session != null){
                 authenticatedInfo = session.getAttribute(authenticatedInfoAttributeName);
                 if(authenticatedInfo != null && authenticatedInfo instanceof AuthenticatedInfo){
