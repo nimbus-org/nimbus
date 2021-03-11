@@ -34,6 +34,9 @@ package jp.ossc.nimbus.service.http.httpclient;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
+import org.apache.commons.httpclient.HttpMethodBase;
+import org.apache.commons.httpclient.methods.PostMethod;
+
 import jp.ossc.nimbus.service.http.RESTHttpRequest;
 
 /**
@@ -41,7 +44,17 @@ import jp.ossc.nimbus.service.http.RESTHttpRequest;
  *
  * @author M.Takata
  */
-public class RESTPutHttpRequestImpl extends PutHttpRequestImpl implements RESTHttpRequest{
+public class RESTPutHttpRequestImpl extends PostHttpRequestImpl implements RESTHttpRequest{
+    
+    /**
+     * {@link PostMethod}を生成する。<p>
+     *
+     * @return PostMethod
+     * @exception Exception PostMethodの生成に失敗した場合
+     */
+    protected HttpMethodBase instanciateHttpMethod() throws Exception{
+        return new PutMethod();
+    }
     
     /**
      * リクエストするリソースを特定するキーを追加する。<p>
@@ -78,5 +91,11 @@ public class RESTPutHttpRequestImpl extends PutHttpRequestImpl implements RESTHt
             buf.append(url.substring(offset));
         }
         url = buf.toString();
+    }
+    
+    private class PutMethod extends PostMethod{
+        public String getName() {
+            return "PUT";
+        }
     }
 }
