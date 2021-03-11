@@ -101,6 +101,7 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
     protected boolean isStoreCreate = true;
     protected boolean isStoreDestroy = true;
     protected boolean isSessionInvalidate = false;
+    protected boolean isSessionUse = true;
     protected boolean isLogoutSessionInvalidate = false;
 
     // AuthenticateInterceptorServiceMBean のJavaDoc
@@ -209,6 +210,15 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
     // AuthenticateInterceptorServiceMBean のJavaDoc
     public boolean isSessionInvalidate(){
         return isSessionInvalidate;
+    }
+
+    // AuthenticateInterceptorServiceMBean のJavaDoc
+    public void setSessionUse(boolean isUse){
+        isSessionUse = isUse;
+    }
+    // AuthenticateInterceptorServiceMBean のJavaDoc
+    public boolean isSessionUse(){
+        return isSessionUse;
     }
 
     // AuthenticateInterceptorServiceMBean のJavaDoc
@@ -321,11 +331,13 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
         if(loginPath != null) {
             for(int i = 0; i < loginPath.length; i++){
                 if(loginPath[i].equals(reqPath)){
-                    HttpSession session = request.getSession(false);
-                    if(session != null && isSessionInvalidate){
-                        try{
-                            session.invalidate();
-                        } catch(IllegalStateException e){
+                    if(isSessionUse){
+                        HttpSession session = request.getSession(false);
+                        if(session != null && isSessionInvalidate){
+                            try{
+                                session.invalidate();
+                            } catch(IllegalStateException e){
+                            }
                         }
                     }
                     Object ret = chain.invokeNext(context);
@@ -356,11 +368,13 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
             authenticatedInfo = threadContext.get(authenticatedInfoContextKey);
         }
         if(authenticatedInfo != null){
-            HttpSession session = request.getSession(false);
-            if(session == null){
-                session = request.getSession(true);
+            if(isSessionUse){
+                HttpSession session = request.getSession(false);
+                if(session == null){
+                    session = request.getSession(true);
+                }
+                session.setAttribute(authenticatedInfoAttributeName, new AuthenticatedInfo(authenticatedInfo, authenticateStoreServiceName));
             }
-            session.setAttribute(authenticatedInfoAttributeName, new AuthenticatedInfo(authenticatedInfo, authenticateStoreServiceName));
             if(authenticateStore != null && isStoreCreate){
                 authenticateStore.create(request, authenticatedInfo);
             }
@@ -393,12 +407,14 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
                 authenticateStore.destroy(request, requestObject);
             }
         }finally{
-            HttpSession session = request.getSession(false);
-            if(session != null){
-                if(isLogoutSessionInvalidate) {
-                    session.invalidate();
-                } else {
-                    session.removeAttribute(authenticatedInfoAttributeName);
+            if(isSessionUse){
+                HttpSession session = request.getSession(false);
+                if(session != null){
+                    if(isLogoutSessionInvalidate) {
+                        session.invalidate();
+                    } else {
+                        session.removeAttribute(authenticatedInfoAttributeName);
+                    }
                 }
             }
         }
@@ -415,16 +431,18 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
             }
         }
         Object authenticatedInfo = null;
-        HttpSession session = request.getSession(false);
-        if(session != null){
-            authenticatedInfo = session.getAttribute(authenticatedInfoAttributeName);
-            if(authenticatedInfo != null && authenticatedInfo instanceof AuthenticatedInfo){
-                authenticatedInfo = ((AuthenticatedInfo)authenticatedInfo).authenticatedInfo;
+        if(isSessionUse){
+            HttpSession session = request.getSession(false);
+            if(session != null){
+                authenticatedInfo = session.getAttribute(authenticatedInfoAttributeName);
+                if(authenticatedInfo != null && authenticatedInfo instanceof AuthenticatedInfo){
+                    authenticatedInfo = ((AuthenticatedInfo)authenticatedInfo).authenticatedInfo;
+                }
             }
         }
         if(authenticatedInfo == null && authenticateStore != null){
             authenticatedInfo = authenticateStore.activate(request, requestObject);
-            if(authenticatedInfo != null) {
+            if(isSessionUse && authenticatedInfo != null) {
                 if(session == null){
                     session = request.getSession(true);
                 }
@@ -455,14 +473,14 @@ public class AuthenticateInterceptorService extends ServletFilterInterceptorServ
                 try{
                     authenticatedValue = propertyAccess.get(authenticatedInfo, (String)entry.getValue());
                 }catch(IllegalArgumentException e){
-                    throw new IllegalAuthenticateException("Authenticated value '" + entry.getValue() + "' cannot acquire from a session.", e);
+                    throw new IllegalAuthenticateException("Authenticated value '" + entry.getValue() + "' cannot acquire from a store.", e);
                 }catch(NoSuchPropertyException e){
-                    throw new IllegalAuthenticateException("Authenticated value '" + entry.getValue() + "' cannot acquire from a session.", e);
+                    throw new IllegalAuthenticateException("Authenticated value '" + entry.getValue() + "' cannot acquire from a store.", e);
                 }catch(InvocationTargetException e){
-                    throw new IllegalAuthenticateException("Authenticated value '" + entry.getValue() + "' cannot acquire from a session.", e.getTargetException());
+                    throw new IllegalAuthenticateException("Authenticated value '" + entry.getValue() + "' cannot acquire from a store.", e.getTargetException());
                 }
                 if(authenticatedValue == null){
-                    throw new IllegalAuthenticateException("Authenticated value '" + entry.getValue() + "' cannot acquire from a session. value=null");
+                    throw new IllegalAuthenticateException("Authenticated value '" + entry.getValue() + "' cannot acquire from a store. value=null");
                 }
                 if(!requestValue.equals(authenticatedValue)){
                     throw new IllegalAuthenticateException("Authenticated value '" + entry.getKey() + "' and '" + entry.getValue() + "' are not in agreement. requestValue=" + requestValue + ", authenticatedValue=" + authenticatedValue);
