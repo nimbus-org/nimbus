@@ -803,7 +803,7 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
     }
     
     // PropertySchemaのJavaDoc
-    public Object get(Object val) throws PropertyGetException{
+    public Object get(DataSet ds, Record rec, Object val) throws PropertyGetException{
         return val;
     }
     
@@ -1028,7 +1028,7 @@ public class DefaultPropertySchema implements PropertySchema, Serializable{
         }
     }
     
-    private boolean isAssignableFrom(Class thisClass, Class thatClass){
+    protected boolean isAssignableFrom(Class thisClass, Class thatClass){
         if(isNumber(thisClass) && isNumber(thatClass)){
             if(Byte.TYPE.equals(thisClass)
                 || Byte.class.equals(thisClass)){

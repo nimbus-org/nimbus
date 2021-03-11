@@ -86,11 +86,13 @@ public interface PropertySchema{
     /**
      * プロパティの値を取得する時に呼び出される。<p>
      *
+     * @param ds 親データセット
+     * @param rec このプロパティを持つレコード
      * @param val 取得しようとしているプロパティの値
      * @return 取得されるプロパティの値
      * @exception PropertyGetException プロパティの取得に失敗した場合
      */
-    public Object get(Object val) throws PropertyGetException;
+    public Object get(DataSet ds, Record rec, Object val) throws PropertyGetException;
     
     /**
      * フォーマットされたプロパティの値を取得する時に呼び出される。<p>

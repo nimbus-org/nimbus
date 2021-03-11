@@ -173,7 +173,7 @@ public class RecordPropertySchema implements PropertySchema, java.io.Serializabl
     }
     
     // PropertySchemaのJavaDoc
-    public Object get(Object val) throws PropertyGetException{
+    public Object get(DataSet ds, Record rec, Object val) throws PropertyGetException{
         return val;
     }
     
