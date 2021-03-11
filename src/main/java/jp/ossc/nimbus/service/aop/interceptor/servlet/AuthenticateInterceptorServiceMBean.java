@@ -231,6 +231,21 @@ public interface AuthenticateInterceptorServiceMBean
     public boolean isSessionInvalidate();
     
     /**
+     * セッションを利用するかどうかを設定する。<p>
+     * デフォルトは、trueで利用する。<br>
+     * 
+     * @param isUse セッションを利用する場合true
+     */
+    public void setSessionUse(boolean isUse);
+    
+    /**
+     * セッションを利用するかどうかを判定する。<p>
+     * 
+     * @return trueの場合、セッションを利用する
+     */
+    public boolean isSessionUse();
+    
+    /**
      * ログアウト時に、セッションがすでに存在する場合にそのセッション無効化するかどうかを設定する。<p>
      * デフォルトは、falseで無効化しない。<br>
      * 
