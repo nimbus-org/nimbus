@@ -180,7 +180,7 @@ public class RecordListPropertySchema implements PropertySchema, java.io.Seriali
     }
     
     // PropertySchemaのJavaDoc
-    public Object get(Object val) throws PropertyGetException{
+    public Object get(DataSet ds, Record rec, Object val) throws PropertyGetException{
         return val;
     }
     

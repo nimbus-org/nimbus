@@ -81,6 +81,11 @@ public class RecordSchema{
      */
     public static final String PROPERTY_SCHEMA_ALIAS_NAME_INTERPRETER = "INTERPRETER";
     
+    /**
+     * プロパティスキーマの実装クラス名のエイリアス {@link InterpreterViewPropertySchema}のエイリアス。<p>
+     */
+    public static final String PROPERTY_SCHEMA_ALIAS_NAME_VIEW = "VIEW";
+    
     private static final String PROP_SCHEMA_CLASS_DELIMETER = ":";
     
     protected static final ConcurrentMap recordSchemaManager = new ConcurrentHashMap();
@@ -113,6 +118,10 @@ public class RecordSchema{
         propertySchemaAliasMap.put(
             PROPERTY_SCHEMA_ALIAS_NAME_INTERPRETER,
             "jp.ossc.nimbus.beans.dataset.InterpreterConstrainPropertySchema"
+        );
+        propertySchemaAliasMap.put(
+            PROPERTY_SCHEMA_ALIAS_NAME_VIEW,
+            "jp.ossc.nimbus.beans.dataset.InterpreterViewPropertySchema"
         );
     }
     
@@ -425,6 +434,8 @@ public class RecordSchema{
                 buf.append(PROPERTY_SCHEMA_ALIAS_NAME_VALIDATOR);
             }else if(InterpreterConstrainPropertySchema.class.equals(propertySchemaType)){
                 buf.append(PROPERTY_SCHEMA_ALIAS_NAME_INTERPRETER);
+            }else if(InterpreterViewPropertySchema.class.equals(propertySchemaType)){
+                buf.append(PROPERTY_SCHEMA_ALIAS_NAME_VIEW);
             }else{
                 buf.append(propertySchemaType.getName());
             }

@@ -752,7 +752,7 @@ public class Record implements Externalizable, Cloneable, Map{
         if(propertySchema == null){
             throw new PropertyGetException(null, "No such property : " + index);
         }
-        return propertySchema.get(values == null ? null : values[getSubstantialIndex(index)]);
+        return propertySchema.get(dataSet, this, values == null ? null : values[getSubstantialIndex(index)]);
     }
     
     /**
