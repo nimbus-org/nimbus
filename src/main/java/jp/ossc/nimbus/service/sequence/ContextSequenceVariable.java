@@ -32,6 +32,7 @@
 package jp.ossc.nimbus.service.sequence;
 
 import jp.ossc.nimbus.core.*;
+import jp.ossc.nimbus.beans.*;
 import jp.ossc.nimbus.service.context.Context;
 
 /**
@@ -48,7 +49,7 @@ public class ContextSequenceVariable
     public static final char DELIMITER = '%';
     private static final String EMPTY = "";
     
-    private String key;
+    private Property key;
     private ServiceName contextServiceName;
     
     /**
@@ -60,8 +61,8 @@ public class ContextSequenceVariable
     public ContextSequenceVariable(
         String key,
         ServiceName context
-    ){
-        this.key = key.substring(1, key.length() - 1);
+    ) throws IllegalArgumentException{
+        this.key = PropertyFactory.createProperty(key.substring(1, key.length() - 1));
         contextServiceName = context;
     }
     
@@ -92,7 +93,12 @@ public class ContextSequenceVariable
         }
         final Context context = (Context)ServiceManagerFactory
             .getServiceObject(contextServiceName);
-        final Object val = context.get(key);
+        Object val = null;
+        try{
+            val = key.getProperty(context);
+        }catch(NoSuchPropertyException e){
+        }catch(java.lang.reflect.InvocationTargetException e){
+        }
         return val == null ? EMPTY : val.toString();
     }
 }
