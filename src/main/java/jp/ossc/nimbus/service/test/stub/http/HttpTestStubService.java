@@ -571,6 +571,11 @@ public class HttpTestStubService extends HttpProcessServiceBase implements TestS
                                 }
                             }
                         }
+                    }else if(interpreter != null && data.interpretScript != null){
+                        Map variables = new HashMap();
+                        variables.put("request", request);
+                        variables.put("responseObj", response);
+                        interpreter.evaluate(data.interpretScript, variables);
                     }
                 }finally{
                     if(osw != null){
