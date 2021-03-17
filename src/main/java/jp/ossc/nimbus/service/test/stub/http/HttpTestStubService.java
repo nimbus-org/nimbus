@@ -94,7 +94,7 @@ import jp.ossc.nimbus.service.test.TestStub;
  * statusは、応答するHTTPステータスを指定する。それに続いてカンマで区切り、応答するメッセージをmessageで指定する。この行に、空文字を指定すると、200応答する。また、messageが不要な場合は、statusのみ指定する。<br>
  * headerNameは、HTTPヘッダ名を指定する。それに続いて":"を挟んで、ヘッダ値をheaderValueとして指定する。この行は、複数指定が可能なため、終わりを示すために、空行を１行入れる。ヘッダが不要な場合は、指定する必要はない。<br>
  * sleepは、応答時間を調整するために、指定されたミリ秒の間スリープする場合に、指定する。必要がない場合は、この行は必要ない。<br>
- * interpreter:startとinterpreter:endの行で挟んで、応答するボディを編集するスクリプトをscriptに指定できる。scriptは、{@link Interpreter#evaluate(String,Map)}で評価され、引数の変数マップには、"request"で{@link HttpRequest}が、"response"でボディ文字列が渡される。スクリプトを指定する必要がない場合は、この行は必要ない。<br>
+ * interpreter:startとinterpreter:endの行で挟んで、応答するボディを編集するスクリプトをscriptに指定できる。scriptは、{@link Interpreter#evaluate(String,Map)}で評価され、引数の変数マップには、"request"で{@link HttpRequest}が、"response"でボディ文字列が、"responseObj"で{@link HttpResponse}が渡される。スクリプトを指定する必要がない場合は、この行は必要ない。<br>
  * bodyTypeは、"text"、"binary"のいずれかを指定する。HTTPボディが必要ない場合は、この行以下は必要ない。<br>
  * bodyは、bodyTypeによって、記述方法が異なる。<br>
  * <ul>
@@ -546,6 +546,7 @@ public class HttpTestStubService extends HttpProcessServiceBase implements TestS
                                 Map variables = new HashMap();
                                 variables.put("request", request);
                                 variables.put("response", responseStr);
+                                variables.put("responseObj", response);
                                 responseStr = (String)interpreter.evaluate(data.interpretScript, variables);
                             }
                             if(responseStr != null){
