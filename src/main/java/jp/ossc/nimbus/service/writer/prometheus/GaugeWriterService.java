@@ -214,17 +214,22 @@ public class GaugeWriterService extends ServiceBase implements MessageWriter, Ga
                 Double dValue = toValue(valueElement);
                 Gauge gauge = (Gauge)gaugeMap.get(key);
                 if(gauge == null){
-                    Builder builder = Gauge.build().name(name + "_" + key.toLowerCase());
-                    if(help != null && !"".equals(help)){
-                        builder = builder.help(help + "(" + key + ")");
-                    }else if(getHelpProvider() != null){
-                        builder = builder.help(getHelpProvider().getHelp() + "(" + getHelpProvider().getHelp(key) + ")");
+                    synchronized(gaugeMap){
+                        gauge = (Gauge)gaugeMap.get(key);
+                        if(gauge == null){
+                            Builder builder = Gauge.build().name(name + "_" + key.toLowerCase());
+                            if(help != null && !"".equals(help)){
+                                builder = builder.help(help + "(" + key + ")");
+                            }else if(getHelpProvider() != null){
+                                builder = builder.help(getHelpProvider().getHelp() + "(" + getHelpProvider().getHelp(key) + ")");
+                            }
+                            if(isOutputLabel){
+                                builder = builder.labelNames(labelNames);
+                            }
+                            gauge = builder.register();
+                            gaugeMap.put(key, gauge);
+                        }
                     }
-                    if(isOutputLabel){
-                        builder = builder.labelNames(labelNames);
-                    }
-                    gauge = builder.register();
-                    gaugeMap.put(key, gauge);
                 }
                 if(dValue != null){
                     if(isOutputLabel){
