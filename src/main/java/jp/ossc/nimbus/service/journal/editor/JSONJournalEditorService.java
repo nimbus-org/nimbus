@@ -44,6 +44,7 @@ import java.util.Stack;
 import jp.ossc.nimbus.core.ServiceBase;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 import jp.ossc.nimbus.service.journal.JournalEditor;
+import jp.ossc.nimbus.util.ClassMappingTree;
 
 /**
  * 任意のオブジェクトをJSON形式文字列に編集するジャーナルエディター。<p>
@@ -93,6 +94,8 @@ public class JSONJournalEditorService extends ServiceBase
     protected boolean isExpandArrayValue = false;
     protected int maxArraySize = -1;
     protected boolean isExpandMapValue = false;
+    protected Class[] excludeExpandMapClasses;
+    protected ClassMappingTree excludeExpandMap;
     protected int maxMapSize = -1;
     protected String[] secretProperties;
     protected Set secretPropertySet;
@@ -125,12 +128,19 @@ public class JSONJournalEditorService extends ServiceBase
         return maxMapSize;
     }
     
-    @Override
     public void setExpandMapValue(boolean isExpand){
         isExpandMapValue = isExpand;
     }
     public boolean isExpandMapValue(){
         return isExpandMapValue;
+    }
+    
+    public void setExcludeExpandMapClasses(Class[] classes){
+        excludeExpandMapClasses = classes;
+    }
+    
+    public Class[] getExcludeExpandMapClasses(){
+        return excludeExpandMapClasses;
     }
     
     public void setSecretProperties(String[] names){
@@ -197,6 +207,12 @@ public class JSONJournalEditorService extends ServiceBase
             disabledPropertySet = new HashSet(disabledProperties.length);
             for(int i = 0; i < disabledProperties.length; i++){
                 disabledPropertySet.add(disabledProperties[i]);
+            }
+        }
+        if(excludeExpandMapClasses != null){
+            excludeExpandMap = new ClassMappingTree();
+            for(int i = 0; i < excludeExpandMapClasses.length; i++){
+                excludeExpandMap.add(excludeExpandMapClasses[i], excludeExpandMapClasses[i]);
             }
         }
     }
@@ -293,7 +309,7 @@ public class JSONJournalEditorService extends ServiceBase
                 buf.append(escape(value.toString()));
                 buf.append(STRING_ENCLOSURE);
             }else if(Map.class.isAssignableFrom(type)){
-                if(isExpandMapValue){
+                if(isExpandMapValue && (excludeExpandMap == null || excludeExpandMap.getValue(type) == null)){
                     appendMap(buf, finder, (Map)value, stack);
                 }else{
                     appendUnknownValue(buf, finder, type, value, stack);

@@ -38,7 +38,7 @@ package jp.ossc.nimbus.service.journal.editor;
  * @see DataSetJSONJournalEditorService
  */
 public interface DataSetJSONJournalEditorServiceMBean
- extends ImmutableJournalEditorServiceBaseMBean{
+ extends JSONJournalEditorServiceMBean{
     
     /**
      * スキーマ情報を出力するかどうかを設定する。<p>

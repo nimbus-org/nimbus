@@ -52,6 +52,9 @@ public interface JSONJournalEditorServiceMBean extends ServiceBaseMBean{
     public void setExpandMapValue(boolean isExpand);
     public boolean isExpandMapValue();
     
+    public void setExcludeExpandMapClasses(Class[] classes);
+    public Class[] getExcludeExpandMapClasses();
+    
     public void setMaxMapSize(int max);
     public int getMaxMapSize();
     
