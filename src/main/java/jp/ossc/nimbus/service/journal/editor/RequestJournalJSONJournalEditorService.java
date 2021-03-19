@@ -92,7 +92,7 @@ public class RequestJournalJSONJournalEditorService extends JSONJournalEditorSer
                         buf.append(ARRAY_SEPARATOR);
                     }
                     if(isOutput){
-                        Object infoObj = record.toObject(finder);
+                        Object infoObj = record.toObject();
                         JournalEditor editor = record.getJournalEditor();
                         if(editor != null && editor instanceof JSONJournalEditorService){
                             buf.append(infoObj);

@@ -42,50 +42,16 @@ import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
  * 
  * @author M.Takata
  */
-public class DataSetJSONJournalEditorService extends ImmutableJournalEditorServiceBase
+public class DataSetJSONJournalEditorService extends JSONJournalEditorService
  implements DataSetJSONJournalEditorServiceMBean{
     
     private static final long serialVersionUID = 3264007026021831179L;
-    
-    private static final String STRING_ENCLOSURE = "\"";
-    
-    private static final String ARRAY_SEPARATOR = ",";
-    private static final String ARRAY_ENCLOSURE_START = "[";
-    private static final String ARRAY_ENCLOSURE_END = "]";
-    
-    private static final String OBJECT_ENCLOSURE_START = "{";
-    private static final String OBJECT_ENCLOSURE_END = "}";
-    private static final String PROPERTY_SEPARATOR = ":";
-    
-    private static final String NULL_VALUE = "null";
-    private static final String BOOLEAN_VALUE_TRUE = "true";
-    private static final String BOOLEAN_VALUE_FALSE = "false";
     
     private static final String NAME_SCHEMA = "schema";
     private static final String NAME_HEADER = "header";
     private static final String NAME_RECORD_LIST = "recordList";
     private static final String NAME_NESTED_RECORD_LIST = "nestedRecordList";
     private static final String NAME_NESTED_RECORD = "nestedRecord";
-    
-    private static final char ESCAPE = '\\';
-    
-    private static final char QUOTE = '"';
-    private static final char BACK_SLASH = '\\';
-    private static final char SLASH = '/';
-    private static final char BACK_SPACE = '\b';
-    private static final char CHANGE_PAGE = '\f';
-    private static final char LF = '\n';
-    private static final char CR = '\r';
-    private static final char TAB = '\t';
-    
-    private static final String ESCAPE_QUOTE = "\\\"";
-    private static final String ESCAPE_BACK_SLASH = "\\\\";
-    private static final String ESCAPE_SLASH = "\\/";
-    private static final String ESCAPE_BACK_SPACE = "\\b";
-    private static final String ESCAPE_CHANGE_PAGE = "\\f";
-    private static final String ESCAPE_LF = "\\n";
-    private static final String ESCAPE_CR = "\\r";
-    private static final String ESCAPE_TAB = "\\b";
     
     private boolean isOutputSchema = true;
     private boolean isOutputPropertyNameOfHeader = true;
@@ -118,12 +84,10 @@ public class DataSetJSONJournalEditorService extends ImmutableJournalEditorServi
         return isOutputPropertyNameOfRecordList;
     }
     
-    protected String toString(
-        EditorFinder finder,
-        Object key,
-        Object value,
-        StringBuilder buf
-    ){
+    protected StringBuilder appendUnknownValue(StringBuilder buf, EditorFinder finder, Class type, Object value, Stack stack){
+        if(!(value instanceof DataSet)){
+            return super.appendUnknownValue(buf, finder, type, value, stack);
+        }
         final DataSet dataSet = (DataSet)value;
         String dsName = dataSet.getName();
         if(dsName == null){
@@ -154,7 +118,7 @@ public class DataSetJSONJournalEditorService extends ImmutableJournalEditorServi
                         headerNames[i] == null ? "" : headerNames[i]
                     );
                     buf.append(PROPERTY_SEPARATOR);
-                    appendValue(buf, null, header.getSchema());
+                    appendValue(buf, finder, null, header.getSchema(), stack);
                     if(i != imax - 1){
                         buf.append(ARRAY_SEPARATOR);
                     }
@@ -180,7 +144,7 @@ public class DataSetJSONJournalEditorService extends ImmutableJournalEditorServi
                         recListNames[i] == null ? "" : recListNames[i]
                     );
                     buf.append(PROPERTY_SEPARATOR);
-                    appendValue(buf, null, recList.getSchema());
+                    appendValue(buf, finder, null, recList.getSchema(), stack);
                     if(i != imax - 1){
                         buf.append(ARRAY_SEPARATOR);
                     }
@@ -203,7 +167,7 @@ public class DataSetJSONJournalEditorService extends ImmutableJournalEditorServi
                          = dataSet.getNestedRecordSchema(recNames[i]);
                     appendName(buf, recNames[i]);
                     buf.append(PROPERTY_SEPARATOR);
-                    appendValue(buf, null, recSchema.getSchema());
+                    appendValue(buf, finder, null, recSchema.getSchema(), stack);
                     if(i != imax - 1){
                         buf.append(ARRAY_SEPARATOR);
                     }
@@ -226,7 +190,7 @@ public class DataSetJSONJournalEditorService extends ImmutableJournalEditorServi
                          = dataSet.getNestedRecordListSchema(recListNames[i]);
                     appendName(buf, recListNames[i]);
                     buf.append(PROPERTY_SEPARATOR);
-                    appendValue(buf, null, recSchema.getSchema());
+                    appendValue(buf, finder, null, recSchema.getSchema(), stack);
                     if(i != imax - 1){
                         buf.append(ARRAY_SEPARATOR);
                     }
@@ -254,7 +218,7 @@ public class DataSetJSONJournalEditorService extends ImmutableJournalEditorServi
                     headerNames[i] == null ? "" : headerNames[i]
                 );
                 buf.append(PROPERTY_SEPARATOR);
-                appendValue(buf, null, header);
+                appendValue(buf, finder, null, header, stack);
                 if(i != imax - 1){
                     buf.append(ARRAY_SEPARATOR);
                 }
@@ -280,7 +244,7 @@ public class DataSetJSONJournalEditorService extends ImmutableJournalEditorServi
                     recListNames[i] == null ? "" : recListNames[i]
                 );
                 buf.append(PROPERTY_SEPARATOR);
-                appendArray(buf, recList);
+                appendArray(buf, finder, recList, stack);
                 if(i != imax - 1){
                     buf.append(ARRAY_SEPARATOR);
                 }
@@ -291,61 +255,14 @@ public class DataSetJSONJournalEditorService extends ImmutableJournalEditorServi
         
         buf.append(OBJECT_ENCLOSURE_END);
         buf.append(OBJECT_ENCLOSURE_END);
-        return buf.toString();
-    }
-    
-    private StringBuilder appendName(StringBuilder buf, String name){
-        buf.append(STRING_ENCLOSURE);
-        buf.append(escape(name));
-        buf.append(STRING_ENCLOSURE);
         return buf;
     }
     
-    private StringBuilder appendValue(StringBuilder buf, Class type, Object value){
+    protected StringBuilder appendValue(StringBuilder buf, EditorFinder finder, Class type, Object value, Stack stack){
         if(type == null && value != null){
             type = value.getClass();
         }
-        if(value == null){
-            if(type == null){
-                buf.append(NULL_VALUE);
-            }else if(Number.class.isAssignableFrom(type)
-                || (type.isPrimitive()
-                    && (Byte.TYPE.equals(type)
-                        || Short.TYPE.equals(type)
-                        || Integer.TYPE.equals(type)
-                        || Long.TYPE.equals(type)
-                        || Float.TYPE.equals(type)
-                        || Double.TYPE.equals(type)))
-            ){
-                buf.append('0');
-            }else if(Boolean.class.equals(type)
-                || Boolean.TYPE.equals(type)
-            ){
-                buf.append(BOOLEAN_VALUE_FALSE);
-            }else{
-                buf.append(NULL_VALUE);
-            }
-        }else if(Boolean.class.equals(type)
-            || Boolean.TYPE.equals(type)
-        ){
-            if(((Boolean)value).booleanValue()){
-                buf.append(BOOLEAN_VALUE_TRUE);
-            }else{
-                buf.append(BOOLEAN_VALUE_FALSE);
-            }
-        }else if(Number.class.isAssignableFrom(type)
-            || (type.isPrimitive()
-                && (Byte.TYPE.equals(type)
-                    || Short.TYPE.equals(type)
-                    || Integer.TYPE.equals(type)
-                    || Long.TYPE.equals(type)
-                    || Float.TYPE.equals(type)
-                    || Double.TYPE.equals(type)))
-        ){
-            buf.append(value);
-        }else if(type.isArray() || Collection.class.isAssignableFrom(type)){
-            appendArray(buf, value);
-        }else if(Record.class.isAssignableFrom(type)){
+        if(Record.class.isAssignableFrom(type)){
             Record rec = (Record)value;
             RecordSchema schema = rec.getRecordSchema();
             PropertySchema[] propSchemata = schema == null ? null : schema.getPropertySchemata();
@@ -361,9 +278,17 @@ public class DataSetJSONJournalEditorService extends ImmutableJournalEditorServi
             }else{
                 buf.append(ARRAY_ENCLOSURE_START);
             }
+            boolean isAppend = false;
             for(int i = 0, imax = propSchemata == null ? 0 : propSchemata.length; i < imax; i++){
                 Object prop = rec.getProperty(i);
                 PropertySchema propSchema = propSchemata[i];
+                if(!isOutputProperty(propSchema.getName())){
+                    continue;
+                }
+                if(isAppend){
+                    buf.append(ARRAY_SEPARATOR);
+                }
+                isAppend = true;
                 boolean hasConverter = false;
                 if(propSchema instanceof DefaultPropertySchema){
                     hasConverter = ((DefaultPropertySchema)propSchema).getFormatConverter() != null;
@@ -373,7 +298,7 @@ public class DataSetJSONJournalEditorService extends ImmutableJournalEditorServi
                     buf.append(PROPERTY_SEPARATOR);
                 }
                 if(prop == null){
-                    appendValue(buf, propSchema.getType(), null);
+                    appendValue(buf, finder, propSchema.getType(), null, stack);
                 }else{
                     Class propType = propSchema.getType();
                     if(propType == null){
@@ -381,7 +306,7 @@ public class DataSetJSONJournalEditorService extends ImmutableJournalEditorServi
                     }
                     if(propType.isArray()
                         || Collection.class.isAssignableFrom(propType)){
-                        appendArray(buf, rec.getProperty(i));
+                        appendArray(buf, finder, rec.getProperty(i), stack);
                     }else if(Number.class.isAssignableFrom(propType)
                         || (propType.isPrimitive()
                             && (Byte.TYPE.equals(propType)
@@ -395,16 +320,15 @@ public class DataSetJSONJournalEditorService extends ImmutableJournalEditorServi
                     ){
                         appendValue(
                             buf,
+                            finder,
                             propType,
                             hasConverter
-                                ? rec.getFormatProperty(i) : rec.getProperty(i)
+                                ? rec.getFormatProperty(i) : rec.getProperty(i),
+                            stack
                         );
                     }else{
-                        appendValue(buf, null, rec.getFormatProperty(i));
+                        appendValue(buf, finder, null, rec.getFormatProperty(i), stack);
                     }
-                }
-                if(i != imax - 1){
-                    buf.append(ARRAY_SEPARATOR);
                 }
             }
             if(isOutputPropertyName){
@@ -412,162 +336,9 @@ public class DataSetJSONJournalEditorService extends ImmutableJournalEditorServi
             }else{
                 buf.append(ARRAY_ENCLOSURE_END);
             }
+            return buf;
         }else{
-            buf.append(STRING_ENCLOSURE);
-            buf.append(escape(value.toString()));
-            buf.append(STRING_ENCLOSURE);
+            return super.appendValue(buf, finder, type, value, stack);
         }
-        return buf;
-    }
-    
-    private StringBuilder appendArray(StringBuilder buf, Object array){
-        buf.append(ARRAY_ENCLOSURE_START);
-        if(array.getClass().isArray()){
-            for(int i = 0, imax = Array.getLength(array); i < imax; i++){
-                appendValue(buf, null, Array.get(array, i));
-                if(i != imax - 1){
-                    buf.append(ARRAY_SEPARATOR);
-                }
-            }
-        }else if(List.class.isAssignableFrom(array.getClass())){
-            List list = (List)array;
-            for(int i = 0, imax = list.size(); i < imax; i++){
-                appendValue(buf, null, list.get(i));
-                if(i != imax - 1){
-                    buf.append(ARRAY_SEPARATOR);
-                }
-            }
-        }else if(Collection.class.isAssignableFrom(array.getClass())){
-            Iterator itr = ((Collection)array).iterator();
-            while(itr.hasNext()){
-                appendValue(buf, null, itr.next());
-                if(itr.hasNext()){
-                    buf.append(ARRAY_SEPARATOR);
-                }
-            }
-        }
-        buf.append(ARRAY_ENCLOSURE_END);
-        return buf;
-    }
-    
-    private String escape(String str){
-        if(str == null || str.length() == 0){
-            return str;
-        }
-        boolean isEscape = false;
-        final StringBuilder buf = new StringBuilder();
-        for(int i = 0, imax = str.length(); i < imax; i++){
-            final char c = str.charAt(i);
-            
-            switch(c){
-            case QUOTE:
-                buf.append(ESCAPE_QUOTE);
-                isEscape = true;
-                break;
-            case BACK_SLASH:
-                buf.append(ESCAPE_BACK_SLASH);
-                isEscape = true;
-                break;
-            case SLASH:
-                buf.append(ESCAPE_SLASH);
-                isEscape = true;
-                break;
-            case BACK_SPACE:
-                buf.append(ESCAPE_BACK_SPACE);
-                isEscape = true;
-                break;
-            case CHANGE_PAGE:
-                buf.append(ESCAPE_CHANGE_PAGE);
-                isEscape = true;
-                break;
-            case LF:
-                buf.append(ESCAPE_LF);
-                isEscape = true;
-                break;
-            case CR:
-                buf.append(ESCAPE_CR);
-                isEscape = true;
-                break;
-            case TAB:
-                buf.append(ESCAPE_TAB);
-                isEscape = true;
-                break;
-            default:
-                if(!(c == 0x20
-                     || c == 0x21
-                     || (0x23 <= c && c <= 0x5B)
-                     || (0x5D <= c && c <= 0x7E))
-                ){
-                    isEscape = true;
-                    toUnicode(c, buf);
-                }else{
-                    buf.append(c);
-                }
-            }
-        }
-        return isEscape ? buf.toString() : str;
-    }
-    
-    private StringBuilder toUnicode(char c, StringBuilder buf){
-        buf.append(ESCAPE);
-        buf.append('u');
-        int mask = 0xf000;
-        for(int i = 0; i < 4; i++){
-            mask = 0xf000 >> (i * 4);
-            int val = c & mask;
-            val = val << (i * 4);
-            switch(val){
-            case 0x0000:
-                buf.append('0');
-                break;
-            case 0x1000:
-                buf.append('1');
-                break;
-            case 0x2000:
-                buf.append('2');
-                break;
-            case 0x3000:
-                buf.append('3');
-                break;
-            case 0x4000:
-                buf.append('4');
-                break;
-            case 0x5000:
-                buf.append('5');
-                break;
-            case 0x6000:
-                buf.append('6');
-                break;
-            case 0x7000:
-                buf.append('7');
-                break;
-            case 0x8000:
-                buf.append('8');
-                break;
-            case 0x9000:
-                buf.append('9');
-                break;
-            case 0xa000:
-                buf.append('a');
-                break;
-            case 0xb000:
-                buf.append('b');
-                break;
-            case 0xc000:
-                buf.append('c');
-                break;
-            case 0xd000:
-                buf.append('d');
-                break;
-            case 0xe000:
-                buf.append('e');
-                break;
-            case 0xf000:
-                buf.append('f');
-                break;
-            default:
-            }
-        }
-        return buf;
     }
 }
