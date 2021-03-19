@@ -39,6 +39,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Stack;
 
 import jp.ossc.nimbus.core.ServiceBase;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
@@ -92,6 +93,7 @@ public class JSONJournalEditorService extends ServiceBase
     protected boolean isExpandArrayValue = false;
     protected int maxArraySize = -1;
     protected boolean isExpandMapValue = false;
+    protected int maxMapSize = -1;
     protected String[] secretProperties;
     protected Set secretPropertySet;
     protected String secretString = DEFAULT_SECRET_STRING;
@@ -100,6 +102,7 @@ public class JSONJournalEditorService extends ServiceBase
     protected String[] disabledProperties;
     protected Set disabledPropertySet;
     protected boolean isOutputKey = true;
+    protected boolean isUnicodeEscape = false;
     
     public void setExpandArrayValue(boolean isExpand){
         isExpandArrayValue = isExpand;
@@ -115,6 +118,14 @@ public class JSONJournalEditorService extends ServiceBase
         return maxArraySize;
     }
     
+    public void setMaxMapSize(int max){
+        maxMapSize = max;
+    }
+    public int getMaxMapSize(){
+        return maxMapSize;
+    }
+    
+    @Override
     public void setExpandMapValue(boolean isExpand){
         isExpandMapValue = isExpand;
     }
@@ -161,6 +172,13 @@ public class JSONJournalEditorService extends ServiceBase
         return isOutputKey;
     }
     
+    public boolean isUnicodeEscape(){
+        return isUnicodeEscape;
+    }
+    public void setUnicodeEscape(boolean isEscape){
+        isUnicodeEscape = isEscape;
+    }
+    
     protected void preStartService() throws Exception{
         super.preStartService();
         if(secretProperties != null && secretProperties.length != 0){
@@ -190,13 +208,60 @@ public class JSONJournalEditorService extends ServiceBase
         return buf;
     }
     
-    protected StringBuilder appendValue(StringBuilder buf, EditorFinder finder, Class type, Object value){
-        if(type == null && value != null){
-            type = value.getClass();
+    protected boolean isRecursiveCall(Stack<Object> stack){
+        return stack.size() > 1;
+    }
+    
+    protected boolean isRecursiveInstance(Object value, Stack<Object> stack){
+        if(value == null || stack.size() == 1){
+            return false;
         }
-        if(value == null){
-            if(type == null){
-                buf.append(NULL_VALUE);
+        for(int i = 0, imax = stack.size() - 1; i < imax; i++){
+            if(stack.get(i) == value){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    protected StringBuilder appendValue(StringBuilder buf, EditorFinder finder, Class type, Object value, Stack stack){
+        try{
+            stack.push(value);
+            if(isRecursiveInstance(value, stack)){
+                buf.append("recursive instance");
+                return buf;
+            }
+            if(type == null && value != null){
+                type = value.getClass();
+            }
+            if(value == null){
+                if(type == null){
+                    buf.append(NULL_VALUE);
+                }else if(Number.class.isAssignableFrom(type)
+                    || (type.isPrimitive()
+                        && (Byte.TYPE.equals(type)
+                            || Short.TYPE.equals(type)
+                            || Integer.TYPE.equals(type)
+                            || Long.TYPE.equals(type)
+                            || Float.TYPE.equals(type)
+                            || Double.TYPE.equals(type)))
+                ){
+                    buf.append('0');
+                }else if(Boolean.class.equals(type)
+                    || Boolean.TYPE.equals(type)
+                ){
+                    buf.append(BOOLEAN_VALUE_FALSE);
+                }else{
+                    buf.append(NULL_VALUE);
+                }
+            }else if(Boolean.class.equals(type)
+                || Boolean.TYPE.equals(type)
+            ){
+                if(((Boolean)value).booleanValue()){
+                    buf.append(BOOLEAN_VALUE_TRUE);
+                }else{
+                    buf.append(BOOLEAN_VALUE_FALSE);
+                }
             }else if(Number.class.isAssignableFrom(type)
                 || (type.isPrimitive()
                     && (Byte.TYPE.equals(type)
@@ -206,57 +271,43 @@ public class JSONJournalEditorService extends ServiceBase
                         || Float.TYPE.equals(type)
                         || Double.TYPE.equals(type)))
             ){
-                buf.append('0');
-            }else if(Boolean.class.equals(type)
-                || Boolean.TYPE.equals(type)
-            ){
-                buf.append(BOOLEAN_VALUE_FALSE);
+                if((value instanceof Float && (((Float)value).isNaN() || ((Float)value).isInfinite()))
+                        || (value instanceof Double && (((Double)value).isNaN() || ((Double)value).isInfinite()))
+                ){
+                    buf.append(STRING_ENCLOSURE);
+                    buf.append(escape(value.toString()));
+                    buf.append(STRING_ENCLOSURE);
+                }else{
+                    buf.append(value);
+                }
+            }else if(type.isArray() || Collection.class.isAssignableFrom(type)){
+                if(isExpandArrayValue){
+                    appendArray(buf, finder, value, stack);
+                }else{
+                    appendUnknownValue(buf, finder, type, value, stack);
+                }
+            }else if(CharSequence.class.isAssignableFrom(type)
+                 || Character.class.equals(type)
+                 || Character.TYPE.equals(type)){
+                buf.append(STRING_ENCLOSURE);
+                buf.append(escape(value.toString()));
+                buf.append(STRING_ENCLOSURE);
+            }else if(Map.class.isAssignableFrom(type)){
+                if(isExpandMapValue){
+                    appendMap(buf, finder, (Map)value, stack);
+                }else{
+                    appendUnknownValue(buf, finder, type, value, stack);
+                }
             }else{
-                buf.append(NULL_VALUE);
+                appendUnknownValue(buf, finder, type, value, stack);
             }
-        }else if(Boolean.class.equals(type)
-            || Boolean.TYPE.equals(type)
-        ){
-            if(((Boolean)value).booleanValue()){
-                buf.append(BOOLEAN_VALUE_TRUE);
-            }else{
-                buf.append(BOOLEAN_VALUE_FALSE);
-            }
-        }else if(Number.class.isAssignableFrom(type)
-            || (type.isPrimitive()
-                && (Byte.TYPE.equals(type)
-                    || Short.TYPE.equals(type)
-                    || Integer.TYPE.equals(type)
-                    || Long.TYPE.equals(type)
-                    || Float.TYPE.equals(type)
-                    || Double.TYPE.equals(type)))
-        ){
-            buf.append(value);
-        }else if(type.isArray() || Collection.class.isAssignableFrom(type)){
-            if(isExpandArrayValue){
-                appendArray(buf, finder, value);
-            }else{
-                appendUnknownValue(buf, finder, type, value);
-            }
-        }else if(CharSequence.class.isAssignableFrom(type)
-             || Character.class.equals(type)
-             || Character.TYPE.equals(type)){
-            buf.append(STRING_ENCLOSURE);
-            buf.append(escape(value.toString()));
-            buf.append(STRING_ENCLOSURE);
-        }else if(Map.class.isAssignableFrom(type)){
-            if(isExpandMapValue){
-                appendMap(buf, finder, (Map)value);
-            }else{
-                appendUnknownValue(buf, finder, type, value);
-            }
-        }else{
-            appendUnknownValue(buf, finder, type, value);
+            return buf;
+        }finally{
+            stack.pop();
         }
-        return buf;
     }
     
-    protected StringBuilder appendUnknownValue(StringBuilder buf, EditorFinder finder, Class type, Object value){
+    protected StringBuilder appendUnknownValue(StringBuilder buf, EditorFinder finder, Class type, Object value, Stack stack){
         JournalEditor editor = finder.findEditor(value);
         if(editor != null && editor != this){
             value = editor.toObject(finder, null, value);
@@ -275,10 +326,11 @@ public class JSONJournalEditorService extends ServiceBase
         return buf;
     }
     
-    protected StringBuilder appendMap(StringBuilder buf, EditorFinder finder, Map map){
+    protected StringBuilder appendMap(StringBuilder buf, EditorFinder finder, Map map, Stack stack){
         buf.append(OBJECT_ENCLOSURE_START);
         Iterator itr = map.entrySet().iterator();
         boolean isOutput = false;
+        int i = 0;
         while(itr.hasNext()){
             Map.Entry entry = (Map.Entry)itr.next();
             Object key = entry.getKey();
@@ -289,13 +341,19 @@ public class JSONJournalEditorService extends ServiceBase
             if(isOutput){
                 buf.append(ARRAY_SEPARATOR);
             }
+            if(maxMapSize >= 0 && i >= maxMapSize){
+                buf.append("\"... length\":" + map.size());
+                break;
+            }
             isOutput = true;
             appendProperty(
                 buf,
                 finder,
                 name,
-                entry.getValue()
+                entry.getValue(),
+                stack
             );
+            i++;
         }
         buf.append(OBJECT_ENCLOSURE_END);
         return buf;
@@ -321,26 +379,26 @@ public class JSONJournalEditorService extends ServiceBase
         return name != null && secretPropertySet != null && secretPropertySet.contains(name);
     }
     
-    protected StringBuilder appendProperty(StringBuilder buf, EditorFinder finder, String name, Object value){
+    protected StringBuilder appendProperty(StringBuilder buf, EditorFinder finder, String name, Object value, Stack stack){
         appendName(buf, name);
         buf.append(PROPERTY_SEPARATOR);
         if(isSecretProperty(name)){
-            appendValue(buf, finder, null, secretString);
+            appendValue(buf, finder, null, secretString, stack);
         }else{
-            appendValue(buf, finder, null, value);
+            appendValue(buf, finder, null, value, stack);
         }
         return buf;
     }
     
-    protected StringBuilder appendArray(StringBuilder buf, EditorFinder finder, Object array){
+    protected StringBuilder appendArray(StringBuilder buf, EditorFinder finder, Object array, Stack stack){
         buf.append(ARRAY_ENCLOSURE_START);
         if(array.getClass().isArray()){
             for(int i = 0, imax = Array.getLength(array); i < imax; i++){
                 if(maxArraySize >= 0 && i >= maxArraySize){
-                    buf.append("...");
+                    buf.append("\"... length=" + imax + '"');
                     break;
                 }
-                appendValue(buf, finder, null, Array.get(array, i));
+                appendValue(buf, finder, null, Array.get(array, i), stack);
                 if(i != imax - 1){
                     buf.append(ARRAY_SEPARATOR);
                 }
@@ -349,37 +407,35 @@ public class JSONJournalEditorService extends ServiceBase
             List list = (List)array;
             for(int i = 0, imax = list.size(); i < imax; i++){
                 if(maxArraySize >= 0 && i >= maxArraySize){
-                    buf.append("...");
+                    buf.append("\"... length=" + imax + '"');
                     break;
                 }
-                appendValue(buf, finder, null, list.get(i));
+                appendValue(buf, finder, null, list.get(i), stack);
                 if(i != imax - 1){
                     buf.append(ARRAY_SEPARATOR);
                 }
             }
         }else if(Collection.class.isAssignableFrom(array.getClass())){
-            Iterator itr = ((Collection)array).iterator();
-            int i = 0;
-            while(itr.hasNext()){
+            Object[] elements = ((Collection)array).toArray();
+            for(int i = 0, imax = elements.length; i < imax; i++){
                 if(maxArraySize >= 0 && i >= maxArraySize){
-                    buf.append("...");
+                    buf.append("\"... length=" + imax + '"');
                     break;
                 }
-                appendValue(buf, finder, null, itr.next());
-                if(itr.hasNext()){
+                appendValue(buf, finder, null, elements[i], stack);
+                if(i != imax - 1){
                     buf.append(ARRAY_SEPARATOR);
                 }
-                i++;
             }
         }else if(Enumeration.class.isAssignableFrom(array.getClass())){
             Enumeration enm = (Enumeration)array;
             int i = 0;
             while(enm.hasMoreElements()){
                 if(maxArraySize >= 0 && i >= maxArraySize){
-                    buf.append("...");
+                    buf.append("\"... length=?\"");
                     break;
                 }
-                appendValue(buf, finder, null, enm.nextElement());
+                appendValue(buf, finder, null, enm.nextElement(), stack);
                 if(enm.hasMoreElements()){
                     buf.append(ARRAY_SEPARATOR);
                 }
@@ -433,10 +489,11 @@ public class JSONJournalEditorService extends ServiceBase
                 isEscape = true;
                 break;
             default:
-                if(!(c == 0x20
-                     || c == 0x21
-                     || (0x23 <= c && c <= 0x5B)
-                     || (0x5D <= c && c <= 0x7E))
+                if(isUnicodeEscape
+                    && !(c == 0x20
+                        || c == 0x21
+                        || (0x23 <= c && c <= 0x5B)
+                        || (0x5D <= c && c <= 0x7E))
                 ){
                     isEscape = true;
                     toUnicode(c, buf);
@@ -517,10 +574,10 @@ public class JSONJournalEditorService extends ServiceBase
     
     protected StringBuilder toString(StringBuilder buf, EditorFinder finder, String key, Object value){
         if(key == null || !isOutputKey()){
-            appendValue(buf, finder, null, value);
+            appendValue(buf, finder, null, value, new Stack());
         }else{
             buf.append(OBJECT_ENCLOSURE_START);
-            appendProperty(buf, finder, key, value);
+            appendProperty(buf, finder, key, value, new Stack());
             buf.append(OBJECT_ENCLOSURE_END);
         }
         return buf;

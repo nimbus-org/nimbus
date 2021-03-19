@@ -31,6 +31,8 @@
  */
 package jp.ossc.nimbus.service.journal.editor;
 
+import java.util.Stack;
+
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
@@ -44,26 +46,26 @@ public class JournalServletResponseWrapperJSONJournalEditorService
     
     private static final long serialVersionUID = 3443962474343234566L;
     
-    protected StringBuilder appendUnknownValue(StringBuilder buf, EditorFinder finder, Class type, Object value){
+    protected StringBuilder appendUnknownValue(StringBuilder buf, EditorFinder finder, Class type, Object value, Stack stack){
         if(!(value instanceof JournalServletResponseWrapper)){
-            return super.appendUnknownValue(buf, finder, type, value);
+            return super.appendUnknownValue(buf, finder, type, value, stack);
         }
         final JournalServletResponseWrapper response = (JournalServletResponseWrapper)value;
         
         buf.append(OBJECT_ENCLOSURE_START);
-        boolean isAppended = appendServletResponse(buf, finder, response, false);
-        appendJournalServletResponseWrapper(buf, finder, response, isAppended);
+        boolean isAppended = appendServletResponse(buf, finder, response, false, stack);
+        appendJournalServletResponseWrapper(buf, finder, response, isAppended, stack);
         buf.append(OBJECT_ENCLOSURE_END);
         return buf;
     }
     
-    protected boolean appendJournalServletResponseWrapper(StringBuilder buf, EditorFinder finder, JournalServletResponseWrapper response, boolean isAppended){
-        isAppended |= appendContentLength(buf, finder, response, isAppended);
-        isAppended |= appendContent(buf, finder, response, isAppended);
+    protected boolean appendJournalServletResponseWrapper(StringBuilder buf, EditorFinder finder, JournalServletResponseWrapper response, boolean isAppended, Stack stack){
+        isAppended |= appendContentLength(buf, finder, response, isAppended, stack);
+        isAppended |= appendContent(buf, finder, response, isAppended, stack);
         return isAppended;
     }
     
-    protected boolean appendContentLength(StringBuilder buf, EditorFinder finder, JournalServletResponseWrapper response, boolean isAppended){
+    protected boolean appendContentLength(StringBuilder buf, EditorFinder finder, JournalServletResponseWrapper response, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_CONTENT_LENGTH)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -72,7 +74,8 @@ public class JournalServletResponseWrapperJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_CONTENT_LENGTH,
-                new Integer(response.getContentLength())
+                new Integer(response.getContentLength()),
+                stack
             );
             return true;
         }else{
@@ -80,7 +83,7 @@ public class JournalServletResponseWrapperJSONJournalEditorService
         }
     }
     
-    protected boolean appendContent(StringBuilder buf, EditorFinder finder, JournalServletResponseWrapper response, boolean isAppended){
+    protected boolean appendContent(StringBuilder buf, EditorFinder finder, JournalServletResponseWrapper response, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_CONTENT)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -89,7 +92,8 @@ public class JournalServletResponseWrapperJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_CONTENT,
-                response.getContent()
+                response.getContent(),
+                stack
             );
             return true;
         }else{

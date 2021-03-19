@@ -31,6 +31,8 @@
  */
 package jp.ossc.nimbus.service.journal.editor;
 
+import java.util.Stack;
+
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
@@ -44,83 +46,83 @@ public class MethodJournalJSONJournalEditorService
     
     private static final long serialVersionUID = 1997221072061266863L;
     
-    protected StringBuilder appendUnknownValue(StringBuilder buf, EditorFinder finder, Class type, Object value){
+    protected StringBuilder appendUnknownValue(StringBuilder buf, EditorFinder finder, Class type, Object value, Stack stack){
         if(!(value instanceof MethodJournalData)){
-            return super.appendUnknownValue(buf, finder, type, value);
+            return super.appendUnknownValue(buf, finder, type, value, stack);
         }
         final MethodJournalData data = (MethodJournalData)value;
         
         buf.append(OBJECT_ENCLOSURE_START);
-        appendMethodJournalData(buf, finder, data, false);
+        appendMethodJournalData(buf, finder, data, false, stack);
         buf.append(OBJECT_ENCLOSURE_END);
         return buf;
     }
     
-    protected boolean appendMethodJournalData(StringBuilder buf, EditorFinder finder, MethodJournalData data, boolean isAppended){
-        isAppended |= appendTarget(buf, finder, data, isAppended);
-        isAppended |= appendOwnerClass(buf, finder, data, isAppended);
-        isAppended |= appendMethodName(buf, finder, data, isAppended);
-        isAppended |= appendParameterTypes(buf, finder, data, isAppended);
-        isAppended |= appendMessage(buf, finder, data, isAppended);
+    protected boolean appendMethodJournalData(StringBuilder buf, EditorFinder finder, MethodJournalData data, boolean isAppended, Stack stack){
+        isAppended |= appendTarget(buf, finder, data, isAppended, stack);
+        isAppended |= appendOwnerClass(buf, finder, data, isAppended, stack);
+        isAppended |= appendMethodName(buf, finder, data, isAppended, stack);
+        isAppended |= appendParameterTypes(buf, finder, data, isAppended, stack);
+        isAppended |= appendMessage(buf, finder, data, isAppended, stack);
         return isAppended;
     }
     
-    protected boolean appendTarget(StringBuilder buf, EditorFinder finder, MethodJournalData data, boolean isAppended){
+    protected boolean appendTarget(StringBuilder buf, EditorFinder finder, MethodJournalData data, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_TARGET)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
             }
-            appendProperty(buf, finder, PROPERTY_TARGET, data.getTarget());
+            appendProperty(buf, finder, PROPERTY_TARGET, data.getTarget(), stack);
             return true;
         }else{
             return false;
         }
     }
     
-    protected boolean appendOwnerClass(StringBuilder buf, EditorFinder finder, MethodJournalData data, boolean isAppended){
+    protected boolean appendOwnerClass(StringBuilder buf, EditorFinder finder, MethodJournalData data, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_OWNER_CLASS)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
             }
-            appendProperty(buf, finder, PROPERTY_OWNER_CLASS, data.getOwnerClass());
+            appendProperty(buf, finder, PROPERTY_OWNER_CLASS, data.getOwnerClass(), stack);
             return true;
         }else{
             return false;
         }
     }
     
-    protected boolean appendMethodName(StringBuilder buf, EditorFinder finder, MethodJournalData data, boolean isAppended){
+    protected boolean appendMethodName(StringBuilder buf, EditorFinder finder, MethodJournalData data, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_NAME)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
             }
-            appendProperty(buf, finder, PROPERTY_NAME, data.getName());
+            appendProperty(buf, finder, PROPERTY_NAME, data.getName(), stack);
             return true;
         }else{
             return false;
         }
     }
     
-    protected boolean appendParameterTypes(StringBuilder buf, EditorFinder finder, MethodJournalData data, boolean isAppended){
+    protected boolean appendParameterTypes(StringBuilder buf, EditorFinder finder, MethodJournalData data, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_PARAM_TYPES)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
             }
             appendName(buf, PROPERTY_PARAM_TYPES);
             buf.append(PROPERTY_SEPARATOR);
-            appendArray(buf, finder, data.getParameterTypes());
+            appendArray(buf, finder, data.getParameterTypes(), stack);
             return true;
         }else{
             return false;
         }
     }
     
-    protected boolean appendMessage(StringBuilder buf, EditorFinder finder, MethodJournalData data, boolean isAppended){
+    protected boolean appendMessage(StringBuilder buf, EditorFinder finder, MethodJournalData data, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_MESSAGE)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
             }
-            appendProperty(buf, finder, PROPERTY_MESSAGE, data.getMessage());
+            appendProperty(buf, finder, PROPERTY_MESSAGE, data.getMessage(), stack);
             return true;
         }else{
             return false;

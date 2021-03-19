@@ -35,6 +35,7 @@ import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Date;
+import java.util.Stack;
 
 import javax.servlet.http.HttpSession;
 
@@ -123,29 +124,29 @@ public class HttpSessionJSONJournalEditorService
         return name != null && secretAttributeSet != null && secretAttributeSet.contains(name);
     }
     
-    protected StringBuilder appendUnknownValue(StringBuilder buf, EditorFinder finder, Class type, Object value){
+    protected StringBuilder appendUnknownValue(StringBuilder buf, EditorFinder finder, Class type, Object value, Stack stack){
         if(!(value instanceof HttpSession)){
-            return super.appendUnknownValue(buf, finder, type, value);
+            return super.appendUnknownValue(buf, finder, type, value, stack);
         }
         final HttpSession session = (HttpSession)value;
         
         buf.append(OBJECT_ENCLOSURE_START);
-        appendHttpSession(buf, finder, session, false);
+        appendHttpSession(buf, finder, session, false, stack);
         buf.append(OBJECT_ENCLOSURE_END);
         return buf;
     }
     
-    protected boolean appendHttpSession(StringBuilder buf, EditorFinder finder, HttpSession session, boolean isAppended){
-        isAppended |= appendId(buf, finder, session, isAppended);
-        isAppended |= appendCreationTime(buf, finder, session, isAppended);
-        isAppended |= appendLastAccessedTime(buf, finder, session, isAppended);
-        isAppended |= appendMaxInactiveInterval(buf, finder, session, isAppended);
-        isAppended |= appendIsNew(buf, finder, session, isAppended);
-        isAppended |= appendAttributes(buf, finder, session, isAppended);
+    protected boolean appendHttpSession(StringBuilder buf, EditorFinder finder, HttpSession session, boolean isAppended, Stack stack){
+        isAppended |= appendId(buf, finder, session, isAppended, stack);
+        isAppended |= appendCreationTime(buf, finder, session, isAppended, stack);
+        isAppended |= appendLastAccessedTime(buf, finder, session, isAppended, stack);
+        isAppended |= appendMaxInactiveInterval(buf, finder, session, isAppended, stack);
+        isAppended |= appendIsNew(buf, finder, session, isAppended, stack);
+        isAppended |= appendAttributes(buf, finder, session, isAppended, stack);
         return isAppended;
     }
     
-    protected boolean appendId(StringBuilder buf, EditorFinder finder, HttpSession session, boolean isAppended){
+    protected boolean appendId(StringBuilder buf, EditorFinder finder, HttpSession session, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_ID)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -154,7 +155,8 @@ public class HttpSessionJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_ID,
-                session.getId()
+                session.getId(),
+                stack
             );
             return true;
         }else{
@@ -162,7 +164,7 @@ public class HttpSessionJSONJournalEditorService
         }
     }
     
-    protected boolean appendCreationTime(StringBuilder buf, EditorFinder finder, HttpSession session, boolean isAppended){
+    protected boolean appendCreationTime(StringBuilder buf, EditorFinder finder, HttpSession session, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_CREATION_TIME)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -171,7 +173,8 @@ public class HttpSessionJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_CREATION_TIME,
-                new Date(session.getCreationTime())
+                new Date(session.getCreationTime()),
+                stack
             );
             return true;
         }else{
@@ -179,7 +182,7 @@ public class HttpSessionJSONJournalEditorService
         }
     }
     
-    protected boolean appendLastAccessedTime(StringBuilder buf, EditorFinder finder, HttpSession session, boolean isAppended){
+    protected boolean appendLastAccessedTime(StringBuilder buf, EditorFinder finder, HttpSession session, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_LAST_ACCESSED_TIME)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -188,7 +191,8 @@ public class HttpSessionJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_LAST_ACCESSED_TIME,
-                new Date(session.getLastAccessedTime())
+                new Date(session.getLastAccessedTime()),
+                stack
             );
             return true;
         }else{
@@ -196,7 +200,7 @@ public class HttpSessionJSONJournalEditorService
         }
     }
     
-    protected boolean appendMaxInactiveInterval(StringBuilder buf, EditorFinder finder, HttpSession session, boolean isAppended){
+    protected boolean appendMaxInactiveInterval(StringBuilder buf, EditorFinder finder, HttpSession session, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_MAX_INACTIVE_INTERVAL)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -205,7 +209,8 @@ public class HttpSessionJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_MAX_INACTIVE_INTERVAL,
-                new Integer(session.getMaxInactiveInterval())
+                new Integer(session.getMaxInactiveInterval()),
+                stack
             );
             return true;
         }else{
@@ -213,7 +218,7 @@ public class HttpSessionJSONJournalEditorService
         }
     }
     
-    protected boolean appendIsNew(StringBuilder buf, EditorFinder finder, HttpSession session, boolean isAppended){
+    protected boolean appendIsNew(StringBuilder buf, EditorFinder finder, HttpSession session, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_IS_NEW)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -222,7 +227,8 @@ public class HttpSessionJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_IS_NEW,
-                session.isNew() ? Boolean.TRUE : Boolean.FALSE
+                session.isNew() ? Boolean.TRUE : Boolean.FALSE,
+                stack
             );
             return true;
         }else{
@@ -230,7 +236,7 @@ public class HttpSessionJSONJournalEditorService
         }
     }
     
-    protected boolean appendAttributes(StringBuilder buf, EditorFinder finder, HttpSession session, boolean isAppended){
+    protected boolean appendAttributes(StringBuilder buf, EditorFinder finder, HttpSession session, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_ATTRIBUTE)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -252,9 +258,9 @@ public class HttpSessionJSONJournalEditorService
                 appendName(buf, name);
                 buf.append(PROPERTY_SEPARATOR);
                 if(isSecretAttribute(name)){
-                    appendValue(buf, finder, null, secretString);
+                    appendValue(buf, finder, null, secretString, stack);
                 }else{
-                    appendValue(buf, finder, null, session.getAttribute(name));
+                    appendValue(buf, finder, null, session.getAttribute(name), stack);
                 }
             }
             buf.append(OBJECT_ENCLOSURE_END);

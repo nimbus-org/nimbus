@@ -31,6 +31,8 @@
  */
 package jp.ossc.nimbus.service.journal.editor;
 
+import java.util.Stack;
+
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**
@@ -44,34 +46,34 @@ public class MethodThrowJournalJSONJournalEditorService
     
     private static final long serialVersionUID = -7753266262923061082L;
     
-    protected StringBuilder appendUnknownValue(StringBuilder buf, EditorFinder finder, Class type, Object value){
+    protected StringBuilder appendUnknownValue(StringBuilder buf, EditorFinder finder, Class type, Object value, Stack stack){
         if(!(value instanceof MethodThrowJournalData)){
-            return super.appendUnknownValue(buf, finder, type, value);
+            return super.appendUnknownValue(buf, finder, type, value, stack);
         }
         final MethodThrowJournalData data = (MethodThrowJournalData)value;
         
         buf.append(OBJECT_ENCLOSURE_START);
-        appendMethodThrowJournalData(buf, finder, data, false);
+        appendMethodThrowJournalData(buf, finder, data, false, stack);
         buf.append(OBJECT_ENCLOSURE_END);
         return buf;
     }
     
-    protected boolean appendMethodThrowJournalData(StringBuilder buf, EditorFinder finder, MethodThrowJournalData data, boolean isAppended){
-        isAppended |= appendTarget(buf, finder, data, isAppended);
-        isAppended |= appendOwnerClass(buf, finder, data, isAppended);
-        isAppended |= appendMethodName(buf, finder, data, isAppended);
-        isAppended |= appendParameterTypes(buf, finder, data, isAppended);
-        isAppended |= appendThrow(buf, finder, data, isAppended);
-        isAppended |= appendMessage(buf, finder, data, isAppended);
+    protected boolean appendMethodThrowJournalData(StringBuilder buf, EditorFinder finder, MethodThrowJournalData data, boolean isAppended, Stack stack){
+        isAppended |= appendTarget(buf, finder, data, isAppended, stack);
+        isAppended |= appendOwnerClass(buf, finder, data, isAppended, stack);
+        isAppended |= appendMethodName(buf, finder, data, isAppended, stack);
+        isAppended |= appendParameterTypes(buf, finder, data, isAppended, stack);
+        isAppended |= appendThrow(buf, finder, data, isAppended, stack);
+        isAppended |= appendMessage(buf, finder, data, isAppended, stack);
         return isAppended;
     }
     
-    protected boolean appendThrow(StringBuilder buf, EditorFinder finder, MethodThrowJournalData data, boolean isAppended){
+    protected boolean appendThrow(StringBuilder buf, EditorFinder finder, MethodThrowJournalData data, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_THROW)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
             }
-            appendProperty(buf, finder, PROPERTY_THROW, data.getThrowable());
+            appendProperty(buf, finder, PROPERTY_THROW, data.getThrowable(), stack);
             return true;
         }else{
             return false;
