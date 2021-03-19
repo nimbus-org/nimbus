@@ -34,6 +34,7 @@ package jp.ossc.nimbus.service.journal.editor;
 import java.util.Iterator;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Stack;
 
 import javax.servlet.http.Cookie;
 
@@ -194,32 +195,32 @@ public class JournalHttpServletResponseWrapperJSONJournalEditorService
         return name != null && secretCookieSet != null && secretCookieSet.contains(name);
     }
     
-    protected StringBuilder appendUnknownValue(StringBuilder buf, EditorFinder finder, Class type, Object value){
+    protected StringBuilder appendUnknownValue(StringBuilder buf, EditorFinder finder, Class type, Object value, Stack stack){
         if(!(value instanceof JournalHttpServletResponseWrapper)){
-            return super.appendUnknownValue(buf, finder, type, value);
+            return super.appendUnknownValue(buf, finder, type, value, stack);
         }
         final JournalHttpServletResponseWrapper response = (JournalHttpServletResponseWrapper)value;
         
         buf.append(OBJECT_ENCLOSURE_START);
-        boolean isAppended = appendServletResponse(buf, finder, response, false);
-        appendJournalHttpServletResponseWrapper(buf, finder, response, isAppended);
+        boolean isAppended = appendServletResponse(buf, finder, response, false, stack);
+        appendJournalHttpServletResponseWrapper(buf, finder, response, isAppended, stack);
         buf.append(OBJECT_ENCLOSURE_END);
         return buf;
     }
     
-    protected boolean appendJournalHttpServletResponseWrapper(StringBuilder buf, EditorFinder finder, JournalHttpServletResponseWrapper response, boolean isAppended){
-        isAppended |= appendContentLength(buf, finder, response, isAppended);
-        isAppended |= appendContent(buf, finder, response, isAppended);
-        isAppended |= appendHeaders(buf, finder, response, isAppended);
-        isAppended |= appendCookies(buf, finder, response, isAppended);
-        isAppended |= appendStatus(buf, finder, response, isAppended);
-        isAppended |= appendStatusMessage(buf, finder, response, isAppended);
-        isAppended |= appendIsSentError(buf, finder, response, isAppended);
-        isAppended |= appendRedirectLocation(buf, finder, response, isAppended);
+    protected boolean appendJournalHttpServletResponseWrapper(StringBuilder buf, EditorFinder finder, JournalHttpServletResponseWrapper response, boolean isAppended, Stack stack){
+        isAppended |= appendContentLength(buf, finder, response, isAppended, stack);
+        isAppended |= appendContent(buf, finder, response, isAppended, stack);
+        isAppended |= appendHeaders(buf, finder, response, isAppended, stack);
+        isAppended |= appendCookies(buf, finder, response, isAppended, stack);
+        isAppended |= appendStatus(buf, finder, response, isAppended, stack);
+        isAppended |= appendStatusMessage(buf, finder, response, isAppended, stack);
+        isAppended |= appendIsSentError(buf, finder, response, isAppended, stack);
+        isAppended |= appendRedirectLocation(buf, finder, response, isAppended, stack);
         return isAppended;
     }
     
-    protected boolean appendContentLength(StringBuilder buf, EditorFinder finder, JournalHttpServletResponseWrapper response, boolean isAppended){
+    protected boolean appendContentLength(StringBuilder buf, EditorFinder finder, JournalHttpServletResponseWrapper response, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_CONTENT_LENGTH)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -228,7 +229,8 @@ public class JournalHttpServletResponseWrapperJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_CONTENT_LENGTH,
-                new Integer(response.getContentLength())
+                new Integer(response.getContentLength()),
+                stack
             );
             return true;
         }else{
@@ -236,7 +238,7 @@ public class JournalHttpServletResponseWrapperJSONJournalEditorService
         }
     }
     
-    protected boolean appendContent(StringBuilder buf, EditorFinder finder, JournalHttpServletResponseWrapper response, boolean isAppended){
+    protected boolean appendContent(StringBuilder buf, EditorFinder finder, JournalHttpServletResponseWrapper response, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_CONTENT)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -245,7 +247,8 @@ public class JournalHttpServletResponseWrapperJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_CONTENT,
-                response.getContent()
+                response.getContent(),
+                stack
             );
             return true;
         }else{
@@ -253,7 +256,7 @@ public class JournalHttpServletResponseWrapperJSONJournalEditorService
         }
     }
     
-    protected boolean appendHeaders(StringBuilder buf, EditorFinder finder, JournalHttpServletResponseWrapper response, boolean isAppended){
+    protected boolean appendHeaders(StringBuilder buf, EditorFinder finder, JournalHttpServletResponseWrapper response, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_HEADER)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -275,9 +278,9 @@ public class JournalHttpServletResponseWrapperJSONJournalEditorService
                 appendName(buf, name);
                 buf.append(PROPERTY_SEPARATOR);
                 if(isSecretHeader(name)){
-                    appendValue(buf, finder, null, secretString);
+                    appendValue(buf, finder, null, secretString, stack);
                 }else{
-                    appendArray(buf, finder, response.getHeaders(name));
+                    appendArray(buf, finder, response.getHeaders(name), stack);
                 }
             }
             buf.append(OBJECT_ENCLOSURE_END);
@@ -287,7 +290,7 @@ public class JournalHttpServletResponseWrapperJSONJournalEditorService
         }
     }
     
-    protected boolean appendCookies(StringBuilder buf, EditorFinder finder, JournalHttpServletResponseWrapper response, boolean isAppended){
+    protected boolean appendCookies(StringBuilder buf, EditorFinder finder, JournalHttpServletResponseWrapper response, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_HEADER)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -313,9 +316,9 @@ public class JournalHttpServletResponseWrapperJSONJournalEditorService
                 buf.append(OBJECT_ENCLOSURE_START);
                 if(isOutputProperty(PROPERTY_COOKIE_VALUE)){
                     if(isSecretCookie(name)){
-                        appendProperty(buf, finder, PROPERTY_COOKIE_VALUE, secretString);
+                        appendProperty(buf, finder, PROPERTY_COOKIE_VALUE, secretString, stack);
                     }else{
-                        appendProperty(buf, finder, PROPERTY_COOKIE_VALUE, cookie.getValue());
+                        appendProperty(buf, finder, PROPERTY_COOKIE_VALUE, cookie.getValue(), stack);
                     }
                     isOutputCookie = true;
                 }
@@ -323,42 +326,42 @@ public class JournalHttpServletResponseWrapperJSONJournalEditorService
                     if(isOutputCookie){
                         buf.append(ARRAY_SEPARATOR);
                     }
-                    appendProperty(buf, finder, PROPERTY_COOKIE_COMMENT, cookie.getComment());
+                    appendProperty(buf, finder, PROPERTY_COOKIE_COMMENT, cookie.getComment(), stack);
                     isOutputCookie = true;
                 }
                 if(isOutputProperty(PROPERTY_COOKIE_DOMAIN)){
                     if(isOutputCookie){
                         buf.append(ARRAY_SEPARATOR);
                     }
-                    appendProperty(buf, finder, PROPERTY_COOKIE_DOMAIN, cookie.getDomain());
+                    appendProperty(buf, finder, PROPERTY_COOKIE_DOMAIN, cookie.getDomain(), stack);
                     isOutputCookie = true;
                 }
                 if(isOutputProperty(PROPERTY_COOKIE_MAX_AGE)){
                     if(isOutputCookie){
                         buf.append(ARRAY_SEPARATOR);
                     }
-                    appendProperty(buf, finder, PROPERTY_COOKIE_MAX_AGE, new Integer(cookie.getMaxAge()));
+                    appendProperty(buf, finder, PROPERTY_COOKIE_MAX_AGE, new Integer(cookie.getMaxAge()), stack);
                     isOutputCookie = true;
                 }
                 if(isOutputProperty(PROPERTY_COOKIE_PATH)){
                     if(isOutputCookie){
                         buf.append(ARRAY_SEPARATOR);
                     }
-                    appendProperty(buf, finder, PROPERTY_COOKIE_PATH, cookie.getPath());
+                    appendProperty(buf, finder, PROPERTY_COOKIE_PATH, cookie.getPath(), stack);
                     isOutputCookie = true;
                 }
                 if(isOutputProperty(PROPERTY_COOKIE_SECURE)){
                     if(isOutputCookie){
                         buf.append(ARRAY_SEPARATOR);
                     }
-                    appendProperty(buf, finder, PROPERTY_COOKIE_SECURE, cookie.getSecure() ? Boolean.TRUE : Boolean.FALSE);
+                    appendProperty(buf, finder, PROPERTY_COOKIE_SECURE, cookie.getSecure() ? Boolean.TRUE : Boolean.FALSE, stack);
                     isOutputCookie = true;
                 }
                 if(isOutputProperty(PROPERTY_COOKIE_VERSION)){
                     if(isOutputCookie){
                         buf.append(ARRAY_SEPARATOR);
                     }
-                    appendProperty(buf, finder, PROPERTY_COOKIE_VERSION, new Integer(cookie.getVersion()));
+                    appendProperty(buf, finder, PROPERTY_COOKIE_VERSION, new Integer(cookie.getVersion()), stack);
                     isOutputCookie = true;
                 }
                 buf.append(OBJECT_ENCLOSURE_END);
@@ -370,7 +373,7 @@ public class JournalHttpServletResponseWrapperJSONJournalEditorService
         }
     }
     
-    protected boolean appendStatus(StringBuilder buf, EditorFinder finder, JournalHttpServletResponseWrapper response, boolean isAppended){
+    protected boolean appendStatus(StringBuilder buf, EditorFinder finder, JournalHttpServletResponseWrapper response, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_STATUS)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -379,7 +382,8 @@ public class JournalHttpServletResponseWrapperJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_STATUS,
-                new Integer(response.getStatus())
+                new Integer(response.getStatus()),
+                stack
             );
             return true;
         }else{
@@ -387,7 +391,7 @@ public class JournalHttpServletResponseWrapperJSONJournalEditorService
         }
     }
     
-    protected boolean appendStatusMessage(StringBuilder buf, EditorFinder finder, JournalHttpServletResponseWrapper response, boolean isAppended){
+    protected boolean appendStatusMessage(StringBuilder buf, EditorFinder finder, JournalHttpServletResponseWrapper response, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_STATUS_MESSAGE)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -396,7 +400,8 @@ public class JournalHttpServletResponseWrapperJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_STATUS_MESSAGE,
-                response.getStatusMessage()
+                response.getStatusMessage(),
+                stack
             );
             return true;
         }else{
@@ -404,7 +409,7 @@ public class JournalHttpServletResponseWrapperJSONJournalEditorService
         }
     }
     
-    protected boolean appendIsSentError(StringBuilder buf, EditorFinder finder, JournalHttpServletResponseWrapper response, boolean isAppended){
+    protected boolean appendIsSentError(StringBuilder buf, EditorFinder finder, JournalHttpServletResponseWrapper response, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_IS_SENT_ERROR)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -413,7 +418,8 @@ public class JournalHttpServletResponseWrapperJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_IS_SENT_ERROR,
-                response.isSentError() ? Boolean.TRUE : Boolean.FALSE
+                response.isSentError() ? Boolean.TRUE : Boolean.FALSE,
+                stack
             );
             return true;
         }else{
@@ -421,7 +427,7 @@ public class JournalHttpServletResponseWrapperJSONJournalEditorService
         }
     }
     
-    protected boolean appendRedirectLocation(StringBuilder buf, EditorFinder finder, JournalHttpServletResponseWrapper response, boolean isAppended){
+    protected boolean appendRedirectLocation(StringBuilder buf, EditorFinder finder, JournalHttpServletResponseWrapper response, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_REDIRECT_LOCATION)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -430,7 +436,8 @@ public class JournalHttpServletResponseWrapperJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_REDIRECT_LOCATION,
-                response.getRedirectLocation()
+                response.getRedirectLocation(),
+                stack
             );
             return true;
         }else{

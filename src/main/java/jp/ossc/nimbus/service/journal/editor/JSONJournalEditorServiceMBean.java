@@ -52,6 +52,9 @@ public interface JSONJournalEditorServiceMBean extends ServiceBaseMBean{
     public void setExpandMapValue(boolean isExpand);
     public boolean isExpandMapValue();
     
+    public void setMaxMapSize(int max);
+    public int getMaxMapSize();
+    
     public void setSecretProperties(String[] names);
     public String[] getSecretProperties();
     
@@ -63,4 +66,7 @@ public interface JSONJournalEditorServiceMBean extends ServiceBaseMBean{
     
     public void setDisabledProperties(String[] names);
     public String[] getDisabledProperties();
+    
+    public boolean isUnicodeEscape();
+    public void setUnicodeEscape(boolean isEscape);
 }

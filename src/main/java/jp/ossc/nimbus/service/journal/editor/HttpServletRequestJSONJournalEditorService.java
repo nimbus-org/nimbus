@@ -34,6 +34,7 @@ package jp.ossc.nimbus.service.journal.editor;
 import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Stack;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Cookie;
@@ -195,38 +196,38 @@ public class HttpServletRequestJSONJournalEditorService
         return name != null && secretCookieSet != null && secretCookieSet.contains(name);
     }
     
-    protected StringBuilder appendUnknownValue(StringBuilder buf, EditorFinder finder, Class type, Object value){
+    protected StringBuilder appendUnknownValue(StringBuilder buf, EditorFinder finder, Class type, Object value, Stack stack){
         if(!(value instanceof HttpServletRequest)){
-            return super.appendUnknownValue(buf, finder, type, value);
+            return super.appendUnknownValue(buf, finder, type, value, stack);
         }
         final HttpServletRequest request = (HttpServletRequest)value;
         
         buf.append(OBJECT_ENCLOSURE_START);
-        boolean isAppended = appendServletRequest(buf, finder, request, false);
-        appendHttpServletRequest(buf, finder, request, isAppended);
+        boolean isAppended = appendServletRequest(buf, finder, request, false, stack);
+        appendHttpServletRequest(buf, finder, request, isAppended, stack);
         buf.append(OBJECT_ENCLOSURE_END);
         return buf;
     }
     
-    protected boolean appendHttpServletRequest(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended){
-        isAppended |= appendRequestURL(buf, finder, request, isAppended);
-        isAppended |= appendRequestURI(buf, finder, request, isAppended);
-        isAppended |= appendServletPath(buf, finder, request, isAppended);
-        isAppended |= appendContextPath(buf, finder, request, isAppended);
-        isAppended |= appendPathInfo(buf, finder, request, isAppended);
-        isAppended |= appendPathTranslated(buf, finder, request, isAppended);
-        isAppended |= appendQuery(buf, finder, request, isAppended);
-        isAppended |= appendSessionId(buf, finder, request, isAppended);
-        isAppended |= appendMethod(buf, finder, request, isAppended);
-        isAppended |= appendAuthType(buf, finder, request, isAppended);
-        isAppended |= appendRemoteUser(buf, finder, request, isAppended);
-        isAppended |= appendUserPrincipal(buf, finder, request, isAppended);
-        isAppended |= appendHeaders(buf, finder, request, isAppended);
-        isAppended |= appendCookies(buf, finder, request, isAppended);
+    protected boolean appendHttpServletRequest(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended, Stack stack){
+        isAppended |= appendRequestURL(buf, finder, request, isAppended, stack);
+        isAppended |= appendRequestURI(buf, finder, request, isAppended, stack);
+        isAppended |= appendServletPath(buf, finder, request, isAppended, stack);
+        isAppended |= appendContextPath(buf, finder, request, isAppended, stack);
+        isAppended |= appendPathInfo(buf, finder, request, isAppended, stack);
+        isAppended |= appendPathTranslated(buf, finder, request, isAppended, stack);
+        isAppended |= appendQuery(buf, finder, request, isAppended, stack);
+        isAppended |= appendSessionId(buf, finder, request, isAppended, stack);
+        isAppended |= appendMethod(buf, finder, request, isAppended, stack);
+        isAppended |= appendAuthType(buf, finder, request, isAppended, stack);
+        isAppended |= appendRemoteUser(buf, finder, request, isAppended, stack);
+        isAppended |= appendUserPrincipal(buf, finder, request, isAppended, stack);
+        isAppended |= appendHeaders(buf, finder, request, isAppended, stack);
+        isAppended |= appendCookies(buf, finder, request, isAppended, stack);
         return isAppended;
     }
     
-    protected boolean appendRequestURL(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended){
+    protected boolean appendRequestURL(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_REQUEST_URL)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -235,7 +236,8 @@ public class HttpServletRequestJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_REQUEST_URL,
-                request.getRequestURL()
+                request.getRequestURL(),
+                stack
             );
             return true;
         }else{
@@ -243,7 +245,7 @@ public class HttpServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendRequestURI(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended){
+    protected boolean appendRequestURI(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_REQUEST_URI)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -252,7 +254,8 @@ public class HttpServletRequestJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_REQUEST_URI,
-                request.getRequestURI()
+                request.getRequestURI(),
+                stack
             );
             return true;
         }else{
@@ -260,7 +263,7 @@ public class HttpServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendServletPath(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended){
+    protected boolean appendServletPath(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_SERVLET_PATH)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -269,7 +272,8 @@ public class HttpServletRequestJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_SERVLET_PATH,
-                request.getServletPath()
+                request.getServletPath(),
+                stack
             );
             return true;
         }else{
@@ -277,7 +281,7 @@ public class HttpServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendContextPath(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended){
+    protected boolean appendContextPath(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_CONTEXT_PATH)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -286,7 +290,8 @@ public class HttpServletRequestJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_CONTEXT_PATH,
-                request.getContextPath()
+                request.getContextPath(),
+                stack
             );
             return true;
         }else{
@@ -294,7 +299,7 @@ public class HttpServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendPathInfo(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended){
+    protected boolean appendPathInfo(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_PATH_INFO)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -303,7 +308,8 @@ public class HttpServletRequestJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_PATH_INFO,
-                request.getPathInfo()
+                request.getPathInfo(),
+                stack
             );
             return true;
         }else{
@@ -311,7 +317,7 @@ public class HttpServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendPathTranslated(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended){
+    protected boolean appendPathTranslated(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_PATH_TRANSLATED)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -320,7 +326,8 @@ public class HttpServletRequestJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_PATH_TRANSLATED,
-                request.getPathTranslated()
+                request.getPathTranslated(),
+                stack
             );
             return true;
         }else{
@@ -328,7 +335,7 @@ public class HttpServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendQuery(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended){
+    protected boolean appendQuery(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_QUERY)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -337,7 +344,8 @@ public class HttpServletRequestJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_QUERY,
-                request.getQueryString()
+                request.getQueryString(),
+                stack
             );
             return true;
         }else{
@@ -345,7 +353,7 @@ public class HttpServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendSessionId(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended){
+    protected boolean appendSessionId(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_SESSION_ID)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -354,7 +362,8 @@ public class HttpServletRequestJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_SESSION_ID,
-                request.getRequestedSessionId()
+                request.getRequestedSessionId(),
+                stack
             );
             if(request.isRequestedSessionIdFromCookie()){
                 buf.append("(").append("From Cookie").append(")");
@@ -367,7 +376,7 @@ public class HttpServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendMethod(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended){
+    protected boolean appendMethod(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_METHOD)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -376,7 +385,8 @@ public class HttpServletRequestJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_METHOD,
-                request.getMethod()
+                request.getMethod(),
+                stack
             );
             return true;
         }else{
@@ -384,7 +394,7 @@ public class HttpServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendAuthType(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended){
+    protected boolean appendAuthType(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_AUTH_TYPE)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -393,7 +403,8 @@ public class HttpServletRequestJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_AUTH_TYPE,
-                request.getAuthType()
+                request.getAuthType(),
+                stack
             );
             return true;
         }else{
@@ -401,7 +412,7 @@ public class HttpServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendRemoteUser(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended){
+    protected boolean appendRemoteUser(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_REMOTE_USER)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -410,7 +421,8 @@ public class HttpServletRequestJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_REMOTE_USER,
-                request.getRemoteUser()
+                request.getRemoteUser(),
+                stack
             );
             return true;
         }else{
@@ -418,7 +430,7 @@ public class HttpServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendUserPrincipal(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended){
+    protected boolean appendUserPrincipal(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_USER_PRINCIPAL)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -427,7 +439,8 @@ public class HttpServletRequestJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_USER_PRINCIPAL,
-                request.getUserPrincipal()
+                request.getUserPrincipal(),
+                stack
             );
             return true;
         }else{
@@ -435,7 +448,7 @@ public class HttpServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendHeaders(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended){
+    protected boolean appendHeaders(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_HEADER)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -457,9 +470,9 @@ public class HttpServletRequestJSONJournalEditorService
                 appendName(buf, name);
                 buf.append(PROPERTY_SEPARATOR);
                 if(isSecretHeader(name)){
-                    appendValue(buf, finder, null, secretString);
+                    appendValue(buf, finder, null, secretString, stack);
                 }else{
-                    appendArray(buf, finder, request.getHeaders(name));
+                    appendArray(buf, finder, request.getHeaders(name), stack);
                 }
             }
             buf.append(OBJECT_ENCLOSURE_END);
@@ -469,7 +482,7 @@ public class HttpServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendCookies(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended){
+    protected boolean appendCookies(StringBuilder buf, EditorFinder finder, HttpServletRequest request, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_HEADER)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -495,9 +508,9 @@ public class HttpServletRequestJSONJournalEditorService
                 buf.append(OBJECT_ENCLOSURE_START);
                 if(isOutputProperty(PROPERTY_COOKIE_VALUE)){
                     if(isSecretCookie(name)){
-                        appendProperty(buf, finder, PROPERTY_COOKIE_VALUE, secretString);
+                        appendProperty(buf, finder, PROPERTY_COOKIE_VALUE, secretString, stack);
                     }else{
-                        appendProperty(buf, finder, PROPERTY_COOKIE_VALUE, cookie.getValue());
+                        appendProperty(buf, finder, PROPERTY_COOKIE_VALUE, cookie.getValue(), stack);
                     }
                     isOutputCookie = true;
                 }
@@ -505,42 +518,42 @@ public class HttpServletRequestJSONJournalEditorService
                     if(isOutputCookie){
                         buf.append(ARRAY_SEPARATOR);
                     }
-                    appendProperty(buf, finder, PROPERTY_COOKIE_COMMENT, cookie.getComment());
+                    appendProperty(buf, finder, PROPERTY_COOKIE_COMMENT, cookie.getComment(), stack);
                     isOutputCookie = true;
                 }
                 if(isOutputProperty(PROPERTY_COOKIE_DOMAIN)){
                     if(isOutputCookie){
                         buf.append(ARRAY_SEPARATOR);
                     }
-                    appendProperty(buf, finder, PROPERTY_COOKIE_DOMAIN, cookie.getDomain());
+                    appendProperty(buf, finder, PROPERTY_COOKIE_DOMAIN, cookie.getDomain(), stack);
                     isOutputCookie = true;
                 }
                 if(isOutputProperty(PROPERTY_COOKIE_MAX_AGE)){
                     if(isOutputCookie){
                         buf.append(ARRAY_SEPARATOR);
                     }
-                    appendProperty(buf, finder, PROPERTY_COOKIE_MAX_AGE, new Integer(cookie.getMaxAge()));
+                    appendProperty(buf, finder, PROPERTY_COOKIE_MAX_AGE, new Integer(cookie.getMaxAge()), stack);
                     isOutputCookie = true;
                 }
                 if(isOutputProperty(PROPERTY_COOKIE_PATH)){
                     if(isOutputCookie){
                         buf.append(ARRAY_SEPARATOR);
                     }
-                    appendProperty(buf, finder, PROPERTY_COOKIE_PATH, cookie.getPath());
+                    appendProperty(buf, finder, PROPERTY_COOKIE_PATH, cookie.getPath(), stack);
                     isOutputCookie = true;
                 }
                 if(isOutputProperty(PROPERTY_COOKIE_SECURE)){
                     if(isOutputCookie){
                         buf.append(ARRAY_SEPARATOR);
                     }
-                    appendProperty(buf, finder, PROPERTY_COOKIE_SECURE, cookie.getSecure() ? Boolean.TRUE : Boolean.FALSE);
+                    appendProperty(buf, finder, PROPERTY_COOKIE_SECURE, cookie.getSecure() ? Boolean.TRUE : Boolean.FALSE, stack);
                     isOutputCookie = true;
                 }
                 if(isOutputProperty(PROPERTY_COOKIE_VERSION)){
                     if(isOutputCookie){
                         buf.append(ARRAY_SEPARATOR);
                     }
-                    appendProperty(buf, finder, PROPERTY_COOKIE_VERSION, new Integer(cookie.getVersion()));
+                    appendProperty(buf, finder, PROPERTY_COOKIE_VERSION, new Integer(cookie.getVersion()), stack);
                     isOutputCookie = true;
                 }
                 buf.append(OBJECT_ENCLOSURE_END);

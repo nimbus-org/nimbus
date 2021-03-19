@@ -31,6 +31,8 @@
  */
 package jp.ossc.nimbus.service.journal.editor;
 
+import java.util.Stack;
+
 import javax.servlet.ServletResponse;
 
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
@@ -46,28 +48,28 @@ public class ServletResponseJSONJournalEditorService
     
     private static final long serialVersionUID = -1841071109971741467L;
     
-    protected StringBuilder appendUnknownValue(StringBuilder buf, EditorFinder finder, Class type, Object value){
+    protected StringBuilder appendUnknownValue(StringBuilder buf, EditorFinder finder, Class type, Object value, Stack stack){
         if(!(value instanceof ServletResponse)){
-            return super.appendUnknownValue(buf, finder, type, value);
+            return super.appendUnknownValue(buf, finder, type, value, stack);
         }
         final ServletResponse response = (ServletResponse)value;
         
         buf.append(OBJECT_ENCLOSURE_START);
-        appendServletResponse(buf, finder, response, false);
+        appendServletResponse(buf, finder, response, false, stack);
         buf.append(OBJECT_ENCLOSURE_END);
         return buf;
     }
     
-    protected boolean appendServletResponse(StringBuilder buf, EditorFinder finder, ServletResponse response, boolean isAppended){
-        isAppended |= appendBufferSize(buf, finder, response, isAppended);
-        isAppended |= appendCharacterEncoding(buf, finder, response, isAppended);
-        isAppended |= appendContentType(buf, finder, response, isAppended);
-        isAppended |= appendLocale(buf, finder, response, isAppended);
-        isAppended |= appendIsCommitted(buf, finder, response, isAppended);
+    protected boolean appendServletResponse(StringBuilder buf, EditorFinder finder, ServletResponse response, boolean isAppended, Stack stack){
+        isAppended |= appendBufferSize(buf, finder, response, isAppended, stack);
+        isAppended |= appendCharacterEncoding(buf, finder, response, isAppended, stack);
+        isAppended |= appendContentType(buf, finder, response, isAppended, stack);
+        isAppended |= appendLocale(buf, finder, response, isAppended, stack);
+        isAppended |= appendIsCommitted(buf, finder, response, isAppended, stack);
         return isAppended;
     }
     
-    protected boolean appendBufferSize(StringBuilder buf, EditorFinder finder, ServletResponse response, boolean isAppended){
+    protected boolean appendBufferSize(StringBuilder buf, EditorFinder finder, ServletResponse response, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_BUFFER_SIZE)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -76,7 +78,8 @@ public class ServletResponseJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_BUFFER_SIZE,
-                new Integer(response.getBufferSize())
+                new Integer(response.getBufferSize()),
+                stack
             );
             return true;
         }else{
@@ -84,7 +87,7 @@ public class ServletResponseJSONJournalEditorService
         }
     }
     
-    protected boolean appendCharacterEncoding(StringBuilder buf, EditorFinder finder, ServletResponse response, boolean isAppended){
+    protected boolean appendCharacterEncoding(StringBuilder buf, EditorFinder finder, ServletResponse response, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_CHARACTER_ENCODING)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -93,7 +96,8 @@ public class ServletResponseJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_CHARACTER_ENCODING,
-                response.getCharacterEncoding()
+                response.getCharacterEncoding(),
+                stack
             );
             return true;
         }else{
@@ -101,7 +105,7 @@ public class ServletResponseJSONJournalEditorService
         }
     }
     
-    protected boolean appendContentType(StringBuilder buf, EditorFinder finder, ServletResponse response, boolean isAppended){
+    protected boolean appendContentType(StringBuilder buf, EditorFinder finder, ServletResponse response, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_CONTENT_TYPE)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -110,7 +114,8 @@ public class ServletResponseJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_CONTENT_TYPE,
-                response.getContentType()
+                response.getContentType(),
+                stack
             );
             return true;
         }else{
@@ -118,7 +123,7 @@ public class ServletResponseJSONJournalEditorService
         }
     }
     
-    protected boolean appendLocale(StringBuilder buf, EditorFinder finder, ServletResponse response, boolean isAppended){
+    protected boolean appendLocale(StringBuilder buf, EditorFinder finder, ServletResponse response, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_LOCALE)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -127,7 +132,8 @@ public class ServletResponseJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_LOCALE,
-                response.getLocale()
+                response.getLocale(),
+                stack
             );
             return true;
         }else{
@@ -135,7 +141,7 @@ public class ServletResponseJSONJournalEditorService
         }
     }
     
-    protected boolean appendIsCommitted(StringBuilder buf, EditorFinder finder, ServletResponse response, boolean isAppended){
+    protected boolean appendIsCommitted(StringBuilder buf, EditorFinder finder, ServletResponse response, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_IS_COMMITTED)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -144,7 +150,8 @@ public class ServletResponseJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_IS_COMMITTED,
-                response.isCommitted() ? Boolean.TRUE : Boolean.FALSE
+                response.isCommitted() ? Boolean.TRUE : Boolean.FALSE,
+                stack
             );
             return true;
         }else{

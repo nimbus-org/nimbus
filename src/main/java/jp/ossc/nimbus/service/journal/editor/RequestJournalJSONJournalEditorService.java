@@ -31,6 +31,8 @@
  */
 package jp.ossc.nimbus.service.journal.editor;
 
+import java.util.Stack;
+
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 import jp.ossc.nimbus.service.journal.JournalRecord;
 import jp.ossc.nimbus.service.journal.RequestJournal;
@@ -51,23 +53,23 @@ public class RequestJournalJSONJournalEditorService extends JSONJournalEditorSer
     public static final String PROPERTY_END_TIME = "EndTime";
     public static final String PROPERTY_PERFORMANCE = "Performance";
     
-    protected StringBuilder appendUnknownValue(StringBuilder buf, EditorFinder finder, Class type, Object value){
+    protected StringBuilder appendUnknownValue(StringBuilder buf, EditorFinder finder, Class type, Object value, Stack stack){
         if(!(value instanceof RequestJournal)){
-            return super.appendUnknownValue(buf, finder, type, value);
+            return super.appendUnknownValue(buf, finder, type, value, stack);
         }
         RequestJournal request = (RequestJournal)value;
         
         buf.append(OBJECT_ENCLOSURE_START);
         boolean isOutput = false;
         if(isOutputProperty(PROPERTY_REQUEST_ID)){
-            appendProperty(buf, finder, PROPERTY_REQUEST_ID, request.getRequestId());
+            appendProperty(buf, finder, PROPERTY_REQUEST_ID, request.getRequestId(), stack);
             isOutput = true;
         }
         if(isOutputProperty(PROPERTY_START_TIME)){
             if(isOutput){
                 buf.append(ARRAY_SEPARATOR);
             }
-            appendProperty(buf, finder, PROPERTY_START_TIME, request.getStartTime());
+            appendProperty(buf, finder, PROPERTY_START_TIME, request.getStartTime(), stack);
             isOutput = true;
         }
         if(isOutputProperty(PROPERTY_JOURNAL_RECORD)){
@@ -96,7 +98,7 @@ public class RequestJournalJSONJournalEditorService extends JSONJournalEditorSer
                             buf.append(infoObj);
                         }else{
                             buf.append(OBJECT_ENCLOSURE_START);
-                            appendProperty(buf, finder, record.getKey(), infoObj);
+                            appendProperty(buf, finder, record.getKey(), infoObj, stack);
                             buf.append(OBJECT_ENCLOSURE_END);
                         }
                         isOutputPre = isOutput;
@@ -110,7 +112,7 @@ public class RequestJournalJSONJournalEditorService extends JSONJournalEditorSer
             if(isOutput){
                 buf.append(ARRAY_SEPARATOR);
             }
-            appendProperty(buf, finder, PROPERTY_END_TIME, request.getEndTime());
+            appendProperty(buf, finder, PROPERTY_END_TIME, request.getEndTime(), stack);
             isOutput = true;
         }
         if(isOutputProperty(PROPERTY_PERFORMANCE)){
@@ -121,7 +123,8 @@ public class RequestJournalJSONJournalEditorService extends JSONJournalEditorSer
                 buf,
                 finder,
                 PROPERTY_PERFORMANCE,
-                new Long(request.getEndTime().getTime() - request.getStartTime().getTime())
+                new Long(request.getEndTime().getTime() - request.getStartTime().getTime()),
+                stack
             );
             isOutput = true;
         }

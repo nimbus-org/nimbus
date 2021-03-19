@@ -34,6 +34,7 @@ package jp.ossc.nimbus.service.journal.editor;
 import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Stack;
 
 import javax.servlet.ServletRequest;
 
@@ -190,34 +191,34 @@ public class ServletRequestJSONJournalEditorService
         return name != null && secretParameterSet != null && secretParameterSet.contains(name);
     }
     
-    protected StringBuilder appendUnknownValue(StringBuilder buf, EditorFinder finder, Class type, Object value){
+    protected StringBuilder appendUnknownValue(StringBuilder buf, EditorFinder finder, Class type, Object value, Stack stack){
         if(!(value instanceof ServletRequest)){
-            return super.appendUnknownValue(buf, finder, type, value);
+            return super.appendUnknownValue(buf, finder, type, value, stack);
         }
         final ServletRequest request = (ServletRequest)value;
         
         buf.append(OBJECT_ENCLOSURE_START);
-        appendServletRequest(buf, finder, request, false);
+        appendServletRequest(buf, finder, request, false, stack);
         buf.append(OBJECT_ENCLOSURE_END);
         return buf;
     }
     
-    protected boolean appendServletRequest(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended){
-        isAppended |= appendSentServer(buf, finder, request, isAppended);
-        isAppended |= appendReceivedServer(buf, finder, request, isAppended);
-        isAppended |= appendHost(buf, finder, request, isAppended);
-        isAppended |= appendProtocol(buf, finder, request, isAppended);
-        isAppended |= appendScheme(buf, finder, request, isAppended);
-        isAppended |= appendLocale(buf, finder, request, isAppended);
-        isAppended |= appendContentType(buf, finder, request, isAppended);
-        isAppended |= appendContentLength(buf, finder, request, isAppended);
-        isAppended |= appendCharacterEncoding(buf, finder, request, isAppended);
-        isAppended |= appendAttributes(buf, finder, request, isAppended);
-        isAppended |= appendParameters(buf, finder, request, isAppended);
+    protected boolean appendServletRequest(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended, Stack stack){
+        isAppended |= appendSentServer(buf, finder, request, isAppended, stack);
+        isAppended |= appendReceivedServer(buf, finder, request, isAppended, stack);
+        isAppended |= appendHost(buf, finder, request, isAppended, stack);
+        isAppended |= appendProtocol(buf, finder, request, isAppended, stack);
+        isAppended |= appendScheme(buf, finder, request, isAppended, stack);
+        isAppended |= appendLocale(buf, finder, request, isAppended, stack);
+        isAppended |= appendContentType(buf, finder, request, isAppended, stack);
+        isAppended |= appendContentLength(buf, finder, request, isAppended, stack);
+        isAppended |= appendCharacterEncoding(buf, finder, request, isAppended, stack);
+        isAppended |= appendAttributes(buf, finder, request, isAppended, stack);
+        isAppended |= appendParameters(buf, finder, request, isAppended, stack);
         return isAppended;
     }
     
-    protected boolean appendSentServer(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended){
+    protected boolean appendSentServer(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_SENT_SERVER)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -226,7 +227,8 @@ public class ServletRequestJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_SENT_SERVER,
-                request.getRemoteAddr() + ":" + request.getRemotePort()
+                request.getRemoteAddr() + ":" + request.getRemotePort(),
+                stack
             );
             return true;
         }else{
@@ -234,7 +236,7 @@ public class ServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendReceivedServer(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended){
+    protected boolean appendReceivedServer(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_RECEIVED_SERVER)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -243,7 +245,8 @@ public class ServletRequestJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_RECEIVED_SERVER,
-                request.getLocalAddr() + ":" + request.getLocalPort() + "(" + request.getLocalName() + ")"
+                request.getLocalAddr() + ":" + request.getLocalPort() + "(" + request.getLocalName() + ")",
+                stack
             );
             return true;
         }else{
@@ -251,7 +254,7 @@ public class ServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendHost(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended){
+    protected boolean appendHost(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_HOST)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -260,7 +263,8 @@ public class ServletRequestJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_HOST,
-                request.getServerName() + ":" + request.getServerPort()
+                request.getServerName() + ":" + request.getServerPort(),
+                stack
             );
             return true;
         }else{
@@ -268,7 +272,7 @@ public class ServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendProtocol(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended){
+    protected boolean appendProtocol(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_PROTOCOL)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -277,7 +281,8 @@ public class ServletRequestJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_PROTOCOL,
-                request.getProtocol()
+                request.getProtocol(),
+                stack
             );
             return true;
         }else{
@@ -285,7 +290,7 @@ public class ServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendScheme(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended){
+    protected boolean appendScheme(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_SCHEME)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -294,7 +299,8 @@ public class ServletRequestJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_SCHEME,
-                request.getScheme()
+                request.getScheme(),
+                stack
             );
             return true;
         }else{
@@ -302,21 +308,21 @@ public class ServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendLocale(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended){
+    protected boolean appendLocale(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_LOCALE)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
             }
             appendName(buf, PROPERTY_LOCALE);
             buf.append(PROPERTY_SEPARATOR);
-            appendArray(buf, finder, request.getLocales());
+            appendArray(buf, finder, request.getLocales(), stack);
             return true;
         }else{
             return false;
         }
     }
     
-    protected boolean appendContentType(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended){
+    protected boolean appendContentType(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_CONTENT_TYPE)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -325,7 +331,8 @@ public class ServletRequestJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_CONTENT_TYPE,
-                request.getContentType()
+                request.getContentType(),
+                stack
             );
             return true;
         }else{
@@ -333,7 +340,7 @@ public class ServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendContentLength(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended){
+    protected boolean appendContentLength(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_CONTENT_LENGTH)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -342,7 +349,8 @@ public class ServletRequestJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_CONTENT_LENGTH,
-                new Integer(request.getContentLength())
+                new Integer(request.getContentLength()),
+                stack
             );
             return true;
         }else{
@@ -350,7 +358,7 @@ public class ServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendCharacterEncoding(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended){
+    protected boolean appendCharacterEncoding(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_CHARACTER_ENCODING)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -359,7 +367,8 @@ public class ServletRequestJSONJournalEditorService
                 buf,
                 finder,
                 PROPERTY_CHARACTER_ENCODING,
-                request.getCharacterEncoding()
+                request.getCharacterEncoding(),
+                stack
             );
             return true;
         }else{
@@ -367,7 +376,7 @@ public class ServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendAttributes(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended){
+    protected boolean appendAttributes(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_ATTRIBUTES)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -389,9 +398,9 @@ public class ServletRequestJSONJournalEditorService
                 appendName(buf, name);
                 buf.append(PROPERTY_SEPARATOR);
                 if(isSecretAttribute(name)){
-                    appendValue(buf, finder, null, secretString);
+                    appendValue(buf, finder, null, secretString, stack);
                 }else{
-                    appendValue(buf, finder, null, request.getAttribute(name));
+                    appendValue(buf, finder, null, request.getAttribute(name), stack);
                 }
             }
             buf.append(OBJECT_ENCLOSURE_END);
@@ -401,7 +410,7 @@ public class ServletRequestJSONJournalEditorService
         }
     }
     
-    protected boolean appendParameters(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended){
+    protected boolean appendParameters(StringBuilder buf, EditorFinder finder, ServletRequest request, boolean isAppended, Stack stack){
         if(isOutputProperty(PROPERTY_PARAMETERS)){
             if(isAppended){
                 buf.append(ARRAY_SEPARATOR);
@@ -423,9 +432,9 @@ public class ServletRequestJSONJournalEditorService
                 appendName(buf, name);
                 buf.append(PROPERTY_SEPARATOR);
                 if(isSecretParameter(name)){
-                    appendValue(buf, finder, null, secretString);
+                    appendValue(buf, finder, null, secretString, stack);
                 }else{
-                    appendArray(buf, finder, request.getParameterValues(name));
+                    appendArray(buf, finder, request.getParameterValues(name), stack);
                 }
             }
             buf.append(OBJECT_ENCLOSURE_END);
