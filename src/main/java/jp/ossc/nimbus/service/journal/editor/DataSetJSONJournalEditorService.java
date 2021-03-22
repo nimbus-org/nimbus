@@ -262,7 +262,7 @@ public class DataSetJSONJournalEditorService extends JSONJournalEditorService
         if(type == null && value != null){
             type = value.getClass();
         }
-        if(Record.class.isAssignableFrom(type)){
+        if(value != null && Record.class.isAssignableFrom(type)){
             Record rec = (Record)value;
             RecordSchema schema = rec.getRecordSchema();
             PropertySchema[] propSchemata = schema == null ? null : schema.getPropertySchemata();
