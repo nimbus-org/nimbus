@@ -59,6 +59,7 @@ public class MethodCallJournalJSONJournalEditorService
     }
     
     protected boolean appendMethodCallJournalData(StringBuilder buf, EditorFinder finder, MethodCallJournalData data, boolean isAppended, Stack stack){
+        isAppended |= appendTarget(buf, finder, data, isAppended, stack);
         isAppended |= appendOwnerClass(buf, finder, data, isAppended, stack);
         isAppended |= appendMethodName(buf, finder, data, isAppended, stack);
         isAppended |= appendParameterTypes(buf, finder, data, isAppended, stack);
