@@ -34,35 +34,35 @@ package jp.ossc.nimbus.util;
 import java.util.*;
 
 /**
- * ƒpƒXƒ[ƒh¶¬ŠíB<p>
+ * ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ç”Ÿæˆå™¨ã€‚<p>
  *
  * @author M.Takata
  */
 public class PasswordGenerator{
     
     /**
-     * ƒAƒ‹ƒtƒ@ƒxƒbƒg¬•¶š”z—ñB<p>
+     * ã‚¢ãƒ«ãƒ•ã‚¡ãƒ™ãƒƒãƒˆå°æ–‡å­—é…åˆ—ã€‚<p>
      */
     public static final char[] LOWERCASE_ALPHABET ={
         'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'
     };
     
     /**
-     * ƒAƒ‹ƒtƒ@ƒxƒbƒg‘å•¶š”z—ñB<p>
+     * ã‚¢ãƒ«ãƒ•ã‚¡ãƒ™ãƒƒãƒˆå¤§æ–‡å­—é…åˆ—ã€‚<p>
      */
     public static final char[] UPPPERCASE_ALPHABET ={
         'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'
     };
     
     /**
-     * ”š”z—ñB<p>
+     * æ•°å­—é…åˆ—ã€‚<p>
      */
     public static final char[] NUMBER ={
         '0','1','2','3','4','5','6','7','8','9'
     };
     
     /**
-     * ‹L†”z—ñB<p>
+     * è¨˜å·é…åˆ—ã€‚<p>
      */
     public static final char[] SYMBOL ={
         '!','"','#','$','%','&','\'','(',')','*','+',',','-','.','/',':',';','<','=','>','?','@','[','\\',']','^','_','`','{','|','}','~'
@@ -72,15 +72,15 @@ public class PasswordGenerator{
     private final List elements = new ArrayList();
     
     /**
-     * ‹ó‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * ç©ºã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      */
     public PasswordGenerator(){
     }
     
     /**
-     * w’è‚µ‚½ƒpƒXƒ[ƒh—v‘f‚ğ‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰è¦ç´ ã‚’æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param elements ƒpƒXƒ[ƒh—v‘f‚Ì”z—ñ
+     * @param elements ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰è¦ç´ ã®é…åˆ—
      */
     public PasswordGenerator(PasswordElement[] elements){
         for(int i = 0; i < elements.length; i++){
@@ -89,9 +89,9 @@ public class PasswordGenerator{
     }
     
     /**
-     * w’è‚µ‚½ƒpƒXƒ[ƒh—v‘f‚ğİ’è‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰è¦ç´ ã‚’è¨­å®šã™ã‚‹ã€‚<p>
      *
-     * @param elements ƒpƒXƒ[ƒh—v‘f‚Ì”z—ñ
+     * @param elements ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰è¦ç´ ã®é…åˆ—
      */
     public setElements(PasswordElement[] elements){
         elements.clear();
@@ -101,26 +101,26 @@ public class PasswordGenerator{
     }
     
     /**
-     * w’è‚µ‚½ƒpƒXƒ[ƒh—v‘f‚ğ’Ç‰Á‚·‚éB<p>
+     * æŒ‡å®šã—ãŸãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰è¦ç´ ã‚’è¿½åŠ ã™ã‚‹ã€‚<p>
      *
-     * @param element ƒpƒXƒ[ƒh—v‘f
+     * @param element ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰è¦ç´ 
      */
     public void addElement(PasswordElement element){
         elements.add(element);
     }
     
     /**
-     * İ’è‚³‚ê‚½ƒpƒXƒ[ƒh—v‘f‚ğƒNƒŠƒA‚·‚éB<p>
+     * è¨­å®šã•ã‚ŒãŸãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰è¦ç´ ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹ã€‚<p>
      */
     public void clear(){
         elements.clear();
     }
     
     /**
-     * w’è‚³‚ê‚½’·‚³‚ÌƒpƒXƒ[ƒh‚ğ¶¬‚·‚éB<p>
+     * æŒ‡å®šã•ã‚ŒãŸé•·ã•ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
      *
-     * @param length ƒpƒXƒ[ƒh’·
-     * @return ƒpƒXƒ[ƒh
+     * @param length ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰é•·
+     * @return ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
      */
     public String generate(int length){
         final List result = new ArrayList(length);
@@ -157,7 +157,7 @@ public class PasswordGenerator{
     }
     
     /**
-     * ƒpƒXƒ[ƒh—v‘fB<p>
+     * ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰è¦ç´ ã€‚<p>
      *
      * @author M.Takata
      */
@@ -168,20 +168,20 @@ public class PasswordGenerator{
         protected int count;
         
         /**
-         * w’è‚³‚ê‚½•¶š‚ğƒpƒXƒ[ƒh‚Ì—v‘f‚Æ‚µ‚Ä‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—ã‚’ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã®è¦ç´ ã¨ã—ã¦æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          *
-         * @param chars ƒpƒXƒ[ƒh‚Ì—v‘f‚Æ‚È‚é•¶š”z—ñB
+         * @param chars ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã®è¦ç´ ã¨ãªã‚‹æ–‡å­—é…åˆ—ã€‚
          */
         public PasswordElement(char[] chars){
             this.chars = chars;
         }
         
         /**
-         * w’è‚³‚ê‚½•¶š‚ğƒpƒXƒ[ƒh‚Ì—v‘f‚Æ‚µ‚Ä‚¿AÅ¬oŒ»‰ñ”‚ÆÅ‘åoŒ»‰ñ”‚ğw’è‚µ‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—ã‚’ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã®è¦ç´ ã¨ã—ã¦æŒã¡ã€æœ€å°å‡ºç¾å›æ•°ã¨æœ€å¤§å‡ºç¾å›æ•°ã‚’æŒ‡å®šã—ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          *
-         * @param chars ƒpƒXƒ[ƒh‚Ì—v‘f‚Æ‚È‚é•¶š”z—ñB
-         * @param min Å¬oŒ»‰ñ”
-         * @param max Å‘åoŒ»‰ñ”B‰½“x‚Å‚àoŒ»‚µ‚Ä—Ç‚¢ê‡‚ÍA0
+         * @param chars ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã®è¦ç´ ã¨ãªã‚‹æ–‡å­—é…åˆ—ã€‚
+         * @param min æœ€å°å‡ºç¾å›æ•°
+         * @param max æœ€å¤§å‡ºç¾å›æ•°ã€‚ä½•åº¦ã§ã‚‚å‡ºç¾ã—ã¦è‰¯ã„å ´åˆã¯ã€0
          */
         public PasswordElement(char[] chars, int min, int max){
             this(chars);
@@ -190,46 +190,46 @@ public class PasswordGenerator{
         }
         
         /**
-         * Å¬oŒ»‰ñ”‚ğİ’è‚·‚éB<p>
+         * æœ€å°å‡ºç¾å›æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param min Å¬oŒ»‰ñ”
+         * @param min æœ€å°å‡ºç¾å›æ•°
          */
         public void setMinCount(int min){
             minCount = min;
         }
         
         /**
-         * Å‘åoŒ»‰ñ”‚ğİ’è‚·‚éB<p>
+         * æœ€å¤§å‡ºç¾å›æ•°ã‚’è¨­å®šã™ã‚‹ã€‚<p>
          *
-         * @param max Å‘åoŒ»‰ñ”B‰½“x‚Å‚àoŒ»‚µ‚Ä—Ç‚¢ê‡‚ÍA0
+         * @param max æœ€å¤§å‡ºç¾å›æ•°ã€‚ä½•åº¦ã§ã‚‚å‡ºç¾ã—ã¦è‰¯ã„å ´åˆã¯ã€0
          */
         public void setMaxCount(int max){
             maxCount = max;
         }
         
         /**
-         * ‚Ü‚¾oŒ»‚µ‚Ä‚à—Ç‚¢‚©‚ğ”»’è‚·‚éB<p>
+         * ã¾ã å‡ºç¾ã—ã¦ã‚‚è‰¯ã„ã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return ‚Ü‚¾oŒ»‚µ‚Ä‚à—Ç‚¢ê‡‚ÍAtrue
+         * @return ã¾ã å‡ºç¾ã—ã¦ã‚‚è‰¯ã„å ´åˆã¯ã€true
          */
         public boolean hasNext(){
             return maxCount == 0 || count < maxCount;
         }
         
         /**
-         * ‚Ü‚¾oŒ»‚·‚×‚«‚©‚ğ”»’è‚·‚éB<p>
+         * ã¾ã å‡ºç¾ã™ã¹ãã‹ã‚’åˆ¤å®šã™ã‚‹ã€‚<p>
          *
-         * @return ‚Ü‚¾oŒ»‚·‚×‚«‚©ê‡‚ÍAtrue
+         * @return ã¾ã å‡ºç¾ã™ã¹ãã‹å ´åˆã¯ã€true
          */
         public boolean isNecessary(){
             return minCount > count;
         }
         
         /**
-         * Ÿ‚Ì•¶š‚ğ•Ô‚·B<p>
+         * æ¬¡ã®æ–‡å­—ã‚’è¿”ã™ã€‚<p>
          *
-         * @param random —”
-         * @return Ÿ‚Ì•¶š
+         * @param random ä¹±æ•°
+         * @return æ¬¡ã®æ–‡å­—
          */
         public char next(Random random){
             count++;
@@ -237,9 +237,9 @@ public class PasswordGenerator{
         }
         
         /**
-         * •¡»‚ğ¶¬‚·‚éB<p>
+         * è¤‡è£½ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          *
-         * @return •¡»
+         * @return è¤‡è£½
          */
         public Object clone(){
             PasswordElement clone = null;
@@ -254,24 +254,24 @@ public class PasswordGenerator{
     }
     
     /**
-     * ƒAƒ‹ƒtƒ@ƒxƒbƒg¬•¶š‚ÌƒpƒXƒ[ƒh—v‘fB<p>
+     * ã‚¢ãƒ«ãƒ•ã‚¡ãƒ™ãƒƒãƒˆå°æ–‡å­—ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰è¦ç´ ã€‚<p>
      *
      * @author M.Takata
      */
     public static class LowercaseAlphabetElement extends PasswordElement{
         
         /**
-         * ƒAƒ‹ƒtƒ@ƒxƒbƒg¬•¶š‚ğƒpƒXƒ[ƒh‚Ì—v‘f‚Æ‚µ‚Ä‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * ã‚¢ãƒ«ãƒ•ã‚¡ãƒ™ãƒƒãƒˆå°æ–‡å­—ã‚’ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã®è¦ç´ ã¨ã—ã¦æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          */
         public LowercaseAlphabetElement(){
             super(LOWERCASE_ALPHABET);
         }
         
         /**
-         * ƒAƒ‹ƒtƒ@ƒxƒbƒg¬•¶š‚ğƒpƒXƒ[ƒh‚Ì—v‘f‚Æ‚µ‚Ä‚¿AÅ¬oŒ»‰ñ”‚ÆÅ‘åoŒ»‰ñ”‚ğw’è‚µ‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * ã‚¢ãƒ«ãƒ•ã‚¡ãƒ™ãƒƒãƒˆå°æ–‡å­—ã‚’ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã®è¦ç´ ã¨ã—ã¦æŒã¡ã€æœ€å°å‡ºç¾å›æ•°ã¨æœ€å¤§å‡ºç¾å›æ•°ã‚’æŒ‡å®šã—ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          *
-         * @param min Å¬oŒ»‰ñ”
-         * @param max Å‘åoŒ»‰ñ”B‰½“x‚Å‚àoŒ»‚µ‚Ä—Ç‚¢ê‡‚ÍA0
+         * @param min æœ€å°å‡ºç¾å›æ•°
+         * @param max æœ€å¤§å‡ºç¾å›æ•°ã€‚ä½•åº¦ã§ã‚‚å‡ºç¾ã—ã¦è‰¯ã„å ´åˆã¯ã€0
          */
         public LowercaseAlphabetElement(int min, int max){
             super(LOWERCASE_ALPHABET, min, max);
@@ -279,24 +279,24 @@ public class PasswordGenerator{
     }
     
     /**
-     * ƒAƒ‹ƒtƒ@ƒxƒbƒg‘å•¶š‚ÌƒpƒXƒ[ƒh—v‘fB<p>
+     * ã‚¢ãƒ«ãƒ•ã‚¡ãƒ™ãƒƒãƒˆå¤§æ–‡å­—ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰è¦ç´ ã€‚<p>
      *
      * @author M.Takata
      */
     public static class UppercaseAlphabetElement extends PasswordElement{
         
         /**
-         * ƒAƒ‹ƒtƒ@ƒxƒbƒg‘å•¶š‚ğƒpƒXƒ[ƒh‚Ì—v‘f‚Æ‚µ‚Ä‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * ã‚¢ãƒ«ãƒ•ã‚¡ãƒ™ãƒƒãƒˆå¤§æ–‡å­—ã‚’ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã®è¦ç´ ã¨ã—ã¦æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          */
         public UppercaseAlphabetElement(){
             super(UPPPERCASE_ALPHABET);
         }
         
         /**
-         * ƒAƒ‹ƒtƒ@ƒxƒbƒg‘å•¶š‚ğƒpƒXƒ[ƒh‚Ì—v‘f‚Æ‚µ‚Ä‚¿AÅ¬oŒ»‰ñ”‚ÆÅ‘åoŒ»‰ñ”‚ğw’è‚µ‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * ã‚¢ãƒ«ãƒ•ã‚¡ãƒ™ãƒƒãƒˆå¤§æ–‡å­—ã‚’ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã®è¦ç´ ã¨ã—ã¦æŒã¡ã€æœ€å°å‡ºç¾å›æ•°ã¨æœ€å¤§å‡ºç¾å›æ•°ã‚’æŒ‡å®šã—ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          *
-         * @param min Å¬oŒ»‰ñ”
-         * @param max Å‘åoŒ»‰ñ”B‰½“x‚Å‚àoŒ»‚µ‚Ä—Ç‚¢ê‡‚ÍA0
+         * @param min æœ€å°å‡ºç¾å›æ•°
+         * @param max æœ€å¤§å‡ºç¾å›æ•°ã€‚ä½•åº¦ã§ã‚‚å‡ºç¾ã—ã¦è‰¯ã„å ´åˆã¯ã€0
          */
         public UppercaseAlphabetElement(int min, int max){
             super(UPPPERCASE_ALPHABET, min, max);
@@ -304,24 +304,24 @@ public class PasswordGenerator{
     }
     
     /**
-     * ”š‚ÌƒpƒXƒ[ƒh—v‘fB<p>
+     * æ•°å­—ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰è¦ç´ ã€‚<p>
      *
      * @author M.Takata
      */
     public static class NumberElement extends PasswordElement{
         
         /**
-         * ”š‚ğƒpƒXƒ[ƒh‚Ì—v‘f‚Æ‚µ‚Ä‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * æ•°å­—ã‚’ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã®è¦ç´ ã¨ã—ã¦æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          */
         public NumberElement(){
             super(NUMBER);
         }
         
         /**
-         * ”š‚ğƒpƒXƒ[ƒh‚Ì—v‘f‚Æ‚µ‚Ä‚¿AÅ¬oŒ»‰ñ”‚ÆÅ‘åoŒ»‰ñ”‚ğw’è‚µ‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * æ•°å­—ã‚’ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã®è¦ç´ ã¨ã—ã¦æŒã¡ã€æœ€å°å‡ºç¾å›æ•°ã¨æœ€å¤§å‡ºç¾å›æ•°ã‚’æŒ‡å®šã—ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          *
-         * @param min Å¬oŒ»‰ñ”
-         * @param max Å‘åoŒ»‰ñ”B‰½“x‚Å‚àoŒ»‚µ‚Ä—Ç‚¢ê‡‚ÍA0
+         * @param min æœ€å°å‡ºç¾å›æ•°
+         * @param max æœ€å¤§å‡ºç¾å›æ•°ã€‚ä½•åº¦ã§ã‚‚å‡ºç¾ã—ã¦è‰¯ã„å ´åˆã¯ã€0
          */
         public NumberElement(int min, int max){
             super(NUMBER, min, max);
@@ -329,24 +329,24 @@ public class PasswordGenerator{
     }
     
     /**
-     * ‹L†‚ÌƒpƒXƒ[ƒh—v‘fB<p>
+     * è¨˜å·ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰è¦ç´ ã€‚<p>
      *
      * @author M.Takata
      */
     public static class SymbolElement extends PasswordElement{
         
         /**
-         * ‹L†‚ğƒpƒXƒ[ƒh‚Ì—v‘f‚Æ‚µ‚Ä‚ÂƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * è¨˜å·ã‚’ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã®è¦ç´ ã¨ã—ã¦æŒã¤ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          */
         public SymbolElement(){
             super(SYMBOL);
         }
         
         /**
-         * ‹L†‚ğƒpƒXƒ[ƒh‚Ì—v‘f‚Æ‚µ‚Ä‚¿AÅ¬oŒ»‰ñ”‚ÆÅ‘åoŒ»‰ñ”‚ğw’è‚µ‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éB<p>
+         * è¨˜å·ã‚’ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã®è¦ç´ ã¨ã—ã¦æŒã¡ã€æœ€å°å‡ºç¾å›æ•°ã¨æœ€å¤§å‡ºç¾å›æ•°ã‚’æŒ‡å®šã—ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚<p>
          *
-         * @param min Å¬oŒ»‰ñ”
-         * @param max Å‘åoŒ»‰ñ”B‰½“x‚Å‚àoŒ»‚µ‚Ä—Ç‚¢ê‡‚ÍA0
+         * @param min æœ€å°å‡ºç¾å›æ•°
+         * @param max æœ€å¤§å‡ºç¾å›æ•°ã€‚ä½•åº¦ã§ã‚‚å‡ºç¾ã—ã¦è‰¯ã„å ´åˆã¯ã€0
          */
         public SymbolElement(int min, int max){
             super(SYMBOL, min, max);
