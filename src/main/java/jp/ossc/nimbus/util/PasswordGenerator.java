@@ -93,8 +93,8 @@ public class PasswordGenerator{
      *
      * @param elements パスワード要素の配列
      */
-    public setElements(PasswordElement[] elements){
-        elements.clear();
+    public void setElements(PasswordElement[] elements){
+        clear();
         for(int i = 0; i < elements.length; i++){
             addElement(elements[i]);
         }
