@@ -181,10 +181,22 @@ public class ConcatenatedProperty implements Property, java.io.Serializable{
         if(index == -1 || index == 0 || index == prop.length() - 1){
             throw new IllegalArgumentException(MSG_00001 + prop);
         }
-        thisProperty = PropertyFactory.createProperty(prop.substring(0, index).trim());
-        concatProperty = PropertyFactory.createProperty(
-            prop.substring(index + 1).trim()
-        );
+        String propStr = prop.substring(0, index).trim();
+        if(StringProperty.isEncloused(propStr)){
+            StringProperty property = new StringProperty();
+            property.parse(propStr);
+            thisProperty = property;
+        }else{
+            thisProperty = PropertyFactory.createProperty(propStr);
+        }
+        propStr = prop.substring(index + 1).trim();
+        if(StringProperty.isEncloused(propStr)){
+            StringProperty property = new StringProperty();
+            property.parse(propStr);
+            concatProperty = property;
+        }else{
+            concatProperty = PropertyFactory.createProperty(propStr);
+        }
     }
     
     public Class getPropertyType(Class clazz){
@@ -451,6 +463,94 @@ public class ConcatenatedProperty implements Property, java.io.Serializable{
             }else{
                 return -1;
             }
+        }
+    }
+    
+    public static class StringProperty implements Property, java.io.Serializable{
+        
+        private String string;
+        private boolean isIgnoreNullProperty;
+        
+        public StringProperty(){
+        }
+        
+        public StringProperty(String str){
+            string = str;
+        }
+        
+        public String getPropertyName(){
+            return string;
+        }
+        
+        public Class getPropertyType(Class clazz) throws NoSuchPropertyException{
+            return String.class;
+        }
+        
+        public Type getPropertyGenericType(Class clazz) throws NoSuchPropertyException{
+            return getPropertyType(clazz);
+        }
+        
+        public Class getPropertyType(Object obj) throws NoSuchPropertyException, InvocationTargetException{
+            return getPropertyType((Class)null);
+        }
+        
+        public Type getPropertyGenericType(Object obj) throws NoSuchPropertyException, InvocationTargetException{
+            return getPropertyType(obj);
+        }
+        
+        public Object getProperty(Object obj) throws NoSuchPropertyException, InvocationTargetException{
+            return string;
+        }
+        
+        public void setProperty(Object obj, Object value) throws NoSuchPropertyException, InvocationTargetException{
+            throw new UnsupportedOperationException();
+        }
+        
+        public void setProperty(Object obj, Class type, Object value) throws NoSuchPropertyException, InvocationTargetException{
+            throw new UnsupportedOperationException();
+        }
+        
+        public void parse(String prop) throws IllegalArgumentException{
+            String propStr = prop.trim();
+            if(isEncloused(prop)){
+                string = propStr.substring(1, propStr.length() - 1);
+            }else{
+                string = prop;
+            }
+        }
+        
+        public static boolean isEncloused(String prop){
+            return prop.length() > 2
+                && ((prop.indexOf(0) == '\'' && prop.indexOf(prop.length() - 1) == '\'')
+                    || (prop.indexOf(0) == '"' && prop.indexOf(prop.length() - 1) == '"'));
+        }
+        
+        public boolean isReadable(Class clazz){
+            return true;
+        }
+        
+        public boolean isReadable(Object obj){
+            return true;
+        }
+        
+        public boolean isWritable(Class targetClass, Class clazz){
+            return false;
+        }
+        
+        public boolean isWritable(Object obj, Class clazz){
+            return false;
+        }
+        
+        public void setIgnoreNullProperty(boolean isIgnore){
+            isIgnoreNullProperty = isIgnore;
+        }
+        
+        public boolean isIgnoreNullProperty(){
+            return isIgnoreNullProperty;
+        }
+        
+        public String toString(){
+            return "ConcatenatedProperty$StringProperty{'" + string + "'}";
         }
     }
 }
