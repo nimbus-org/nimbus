@@ -90,6 +90,7 @@ public class PropertyFactory implements java.io.Serializable{
         boolean isIndexedStart = false;
         boolean isMappedStart = false;
         boolean isGroupStart = false;
+        boolean isStringStart = false;
         for(int i = 0, max = prop.length(); i < max; i++){
             final char c = prop.charAt(i);
             switch(c){
@@ -106,7 +107,7 @@ public class PropertyFactory implements java.io.Serializable{
                 }
                 break;
             case '.':
-                if(isEscape || isMappedStart || isIndexedStart){
+                if(isEscape || isMappedStart || isIndexedStart || isStringStart){
                     buf.append(c);
                     isEscape = false;
                 }else{
@@ -140,25 +141,26 @@ public class PropertyFactory implements java.io.Serializable{
                 }
                 break;
             case '|':
-                if(isEscape || isMappedStart || isIndexedStart){
+                if(isEscape || isMappedStart || isIndexedStart || isStringStart){
                     buf.append(c);
                     isEscape = false;
                 }else{
                     if(i == max - 1){
                         throw new IllegalArgumentException("'|' must not be last. : " + prop);
                     }
+                    String propStr = buf.toString().trim();
                     if(property == null){
-                        if(buf.length() == 0){
+                        if(propStr.length() == 0){
                             throw new IllegalArgumentException("Before '|', a literal is required. : " + prop);
                         }
                         property = new OrProperty();
-                        ((OrProperty)property).setFirstProperty(new SimpleProperty(buf.toString()));
-                    }else if(buf.length() == 0){
+                        ((OrProperty)property).setFirstProperty(new SimpleProperty(propStr));
+                    }else if(propStr.length() == 0){
                         Property tmpProperty = property;
                         property = new OrProperty();
                         ((OrProperty)property).setFirstProperty(tmpProperty);
                     }else{
-                        SimpleProperty next = new SimpleProperty(buf.toString());
+                        SimpleProperty next = new SimpleProperty(propStr);
                         if(property instanceof NestedProperty){
                             ((NestedProperty)property).setNestedProperty(next);
                         }else if(property instanceof OrProperty){
@@ -174,25 +176,27 @@ public class PropertyFactory implements java.io.Serializable{
                 }
                 break;
             case '+':
-                if(isEscape || isMappedStart || isIndexedStart){
+                if(isEscape || isMappedStart || isIndexedStart || isStringStart){
                     buf.append(c);
                     isEscape = false;
                 }else{
                     if(i == max - 1){
                         throw new IllegalArgumentException("'+' must not be last. : " + prop);
                     }
+                    String propStr = buf.toString().trim();
                     if(property == null){
-                        if(buf.length() == 0){
+                        if(propStr.length() == 0){
                             throw new IllegalArgumentException("Before '+', a literal is required. : " + prop);
                         }
                         property = new ConcatenatedProperty();
-                        ((ConcatenatedProperty)property).setThisProperty(new SimpleProperty(buf.toString()));
-                    }else if(buf.length() == 0){
+                        Property thisProp = new SimpleProperty(propStr);
+                        ((ConcatenatedProperty)property).setThisProperty(thisProp);
+                    }else if(propStr.length() == 0){
                         Property tmpProperty = property;
                         property = new ConcatenatedProperty();
                         ((ConcatenatedProperty)property).setThisProperty(tmpProperty);
                     }else{
-                        SimpleProperty next = new SimpleProperty(buf.toString());
+                        Property next = new SimpleProperty(propStr);
                         if(property instanceof NestedProperty){
                             ((NestedProperty)property).setNestedProperty(next);
                         }else if(property instanceof OrProperty){
@@ -209,7 +213,7 @@ public class PropertyFactory implements java.io.Serializable{
                 break;
             case '[':
                 buf.append(c);
-                if(isEscape || isMappedStart || isIndexedStart){
+                if(isEscape || isMappedStart || isIndexedStart || isStringStart){
                     isEscape = false;
                 }else{
                     if(i == max - 1){
@@ -237,21 +241,22 @@ public class PropertyFactory implements java.io.Serializable{
                 break;
             case ']':
                 buf.append(c);
-                if(isEscape || isMappedStart){
+                if(isEscape || isMappedStart || isStringStart){
                     isEscape = false;
                 }else{
                     if(!isIndexedStart){
                         throw new IllegalArgumentException("Before ']', '[' is required. : " + prop);
                     }
-                    if(buf.length() == 0){
+                    String propStr = buf.toString().trim();
+                    if(propStr.length() == 0){
                         throw new IllegalArgumentException("Before ']', a literal is required. : " + prop);
                     }
                     if(property == null){
                         property = new IndexedProperty();
-                        property.parse(buf.toString());
+                        property.parse(propStr);
                     }else{
                         IndexedProperty next = new IndexedProperty();
-                        next.parse(buf.toString());
+                        next.parse(propStr);
                         if(property instanceof NestedProperty){
                             ((NestedProperty)property).setNestedProperty(next);
                         }else if(property instanceof OrProperty){
@@ -266,7 +271,7 @@ public class PropertyFactory implements java.io.Serializable{
                 break;
             case '(':
                 buf.append(c);
-                if(isEscape || isMappedStart || isIndexedStart){
+                if(isEscape || isMappedStart || isIndexedStart || isStringStart){
                     isEscape = false;
                 }else{
                     if(i == max - 1){
@@ -294,21 +299,22 @@ public class PropertyFactory implements java.io.Serializable{
                 break;
             case ')':
                 buf.append(c);
-                if(isEscape || isIndexedStart){
+                if(isEscape || isIndexedStart || isStringStart){
                     isEscape = false;
                 }else{
                     if(!isMappedStart){
                         throw new IllegalArgumentException("Before ')', '(' is required. : " + prop);
                     }
-                    if(buf.length() == 0){
+                    String propStr = buf.toString().trim();
+                    if(propStr.length() == 0){
                         throw new IllegalArgumentException("Before ')', a literal is required. : " + prop);
                     }
                     if(property == null){
                         property = new MappedProperty();
-                        property.parse(buf.toString());
+                        property.parse(propStr);
                     }else{
                         MappedProperty next = new MappedProperty();
-                        next.parse(buf.toString());
+                        next.parse(propStr);
                         if(property instanceof NestedProperty){
                             ((NestedProperty)property).setNestedProperty(next);
                         }else if(property instanceof OrProperty){
@@ -322,7 +328,7 @@ public class PropertyFactory implements java.io.Serializable{
                 }
                 break;
             case '{':
-                if(isEscape || isMappedStart || isIndexedStart){
+                if(isEscape || isMappedStart || isIndexedStart || isStringStart){
                     buf.append(c);
                     isEscape = false;
                 }else{
@@ -422,6 +428,39 @@ public class PropertyFactory implements java.io.Serializable{
                     }
                 }
                 break;
+            case '\'':
+            case '"':
+                if(isEscape || isMappedStart || isIndexedStart){
+                    buf.append(c);
+                    isEscape = false;
+                }else{
+                    if(!isStringStart){
+                        isStringStart = true;
+                        buf.setLength(0);
+                        if(i == max - 1){
+                            throw new IllegalArgumentException("'" + c + "' must not be last. : " + prop);
+                        }
+                    }else{
+                        if(property == null){
+                            if(buf.length() == 0){
+                                throw new IllegalArgumentException("Before '" + c + "', a literal is required. : " + prop);
+                            }
+                            property = new ConcatenatedProperty.StringProperty(buf.toString());
+                        }else{
+                            ConcatenatedProperty.StringProperty next = new ConcatenatedProperty.StringProperty(buf.toString());
+                            if(property instanceof NestedProperty){
+                                ((NestedProperty)property).setNestedProperty(next);
+                            }else if(property instanceof OrProperty){
+                                ((OrProperty)property).setSecondProperty(next);
+                            }else if(property instanceof ConcatenatedProperty){
+                                ((ConcatenatedProperty)property).setConcatenatedProperty(next);
+                            }
+                        }
+                        isStringStart = false;
+                        buf.setLength(0);
+                    }
+                }
+                break;
             default:
                 if(isEscape){
                     buf.append('\\');
@@ -429,7 +468,7 @@ public class PropertyFactory implements java.io.Serializable{
                 }
                 buf.append(c);
                 if(i == max - 1){
-                    SimpleProperty next = new SimpleProperty(buf.toString());
+                    Property next = new SimpleProperty(buf.toString().trim());
                     if(property == null){
                         property = next;
                     }else if(property instanceof NestedProperty){
