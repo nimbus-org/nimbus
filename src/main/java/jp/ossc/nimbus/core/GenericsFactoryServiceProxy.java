@@ -238,6 +238,13 @@ public class GenericsFactoryServiceProxy extends FactoryServiceBase
         );
         metaData.setCode(serviceData.getCode());
         metaData.setConstructor(serviceData.getConstructor());
+        
+        final Iterator propertyNames = serviceData.getPropertyNameSet().iterator();
+        while(propertyNames.hasNext()){
+            String propertyName = (String)propertyNames.next();
+            metaData.setProperty(propertyName, serviceData.getProperty(propertyName));
+        }
+        
         final Iterator fields = serviceData.getFields().iterator();
         while(fields.hasNext()){
             metaData.addField((FieldMetaData)fields.next());
