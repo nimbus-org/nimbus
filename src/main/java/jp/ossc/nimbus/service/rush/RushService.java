@@ -263,6 +263,10 @@ public class RushService extends ServiceBase implements RushServiceMBean{
             rushThreads = new Daemon[clientSize];
             for(int i = 0; i < clientSize; i++){
                 RushClient client = (RushClient)ServiceManagerFactory.getServiceObject(rushClientFactoryServiceName);
+                client.setId(i);
+                if(messageReceiver != null){
+                    client.setNodeId(messageReceiver.getId());
+                }
                 if(i == 0){
                     int requestId = 0;
                     if(connectRequest != null){
@@ -279,7 +283,7 @@ public class RushService extends ServiceBase implements RushServiceMBean{
                     }
                 }
                 rushThreads[i] = new Daemon(
-                    new RushTask(client, i)
+                    new RushTask(client)
                 );
                 rushThreads[i].setName(
                     getServiceName() + " Rush thread[" + i + "]"
@@ -297,7 +301,7 @@ public class RushService extends ServiceBase implements RushServiceMBean{
                     monitor = new WaitSynchronizeMonitor();
                     monitor.initMonitor();
                     messageReceiver.addSubject(new MyMessageListener(connection, monitor), subject);
-                    System.out.println("主ノードからの開始要求を待機してます。id=" + messageReceiver.getId());
+                    getLogger().write("RS___00001", messageReceiver.getId());
                     try{
                         monitor.waitMonitor();
                     }catch(InterruptedException e){
@@ -344,9 +348,9 @@ public class RushService extends ServiceBase implements RushServiceMBean{
                     Object clientId = itr.next();
                     message = connection.createMessage(subject, null);
                     message.addDestinationId(clientId);
-                    System.out.println("クラスタメンバ " + clientId + " に開始要求を送信します。");
+                    getLogger().write("RS___00006", clientId);
                     connection.request(message, 1, 0);
-                    System.out.println("クラスタメンバ " + clientId + " が開始しました。");
+                    getLogger().write("RS___00007", clientId);
                 }
             }else if(monitor != null){
                 monitor.notifyMonitor();
@@ -401,7 +405,7 @@ public class RushService extends ServiceBase implements RushServiceMBean{
         }
     }
     
-    public static class MyMessageListener implements RequestMessageListener{
+    public class MyMessageListener implements RequestMessageListener{
         private ServerConnection connection;
         private SynchronizeMonitor monitor;
         
@@ -421,7 +425,7 @@ public class RushService extends ServiceBase implements RushServiceMBean{
             if(monitor == null){
                 return null;
             }
-            System.out.println("クラスタコントローラからの開始要求が来ました。sourceId=" + sourceId);
+            getLogger().write("RS___00003", sourceId);
             monitor.initMonitor();
             monitor.notifyMonitor();
             try{
@@ -429,12 +433,11 @@ public class RushService extends ServiceBase implements RushServiceMBean{
             }catch(InterruptedException e){
             }
             monitor.releaseMonitor();
-            System.out.println("クラスタコントローラに開始処理完了を通知します。");
+            getLogger().write("RS___00004", sourceId);
             try{
                 return connection.createMessage(responseSubject, responseKey);
             }catch(Exception e){
-                System.out.println("クラスタコントローラに開始処理完了を通知できませんでした。");
-                e.printStackTrace();
+                getLogger().write("RS___00005", sourceId, e);
                 return null;
             }
         }
@@ -443,7 +446,6 @@ public class RushService extends ServiceBase implements RushServiceMBean{
     private class RushTask implements DaemonRunnable{
         
         private final RushClient client;
-        private int id;
         private Random randomSeed;
         private int count = 0;
         private long startTime;
@@ -451,9 +453,8 @@ public class RushService extends ServiceBase implements RushServiceMBean{
         private int totalRequestCount = 0;
         private final List myRequests = new ArrayList();
         
-        public RushTask(RushClient client, int id){
+        public RushTask(RushClient client){
             this.client = client;
-            this.id = id;
         }
         
         public boolean onStart(){
@@ -473,7 +474,7 @@ public class RushService extends ServiceBase implements RushServiceMBean{
             int retry = 0;
             while(true){
                 try{
-                    client.connect(id, connectRequest);
+                    client.connect(connectRequest);
                     break;
                 }catch(Exception e){
                     if(connectRetryCount > retry){
@@ -495,7 +496,7 @@ public class RushService extends ServiceBase implements RushServiceMBean{
                 }
             };
             startTime = System.currentTimeMillis();
-            System.out.println("接続完了 clientId=" + id);
+            getLogger().write("RS___00002", client.getId());
             return true;
         }
         
@@ -689,7 +690,7 @@ public class RushService extends ServiceBase implements RushServiceMBean{
         
         public void garbage(){
             try{
-                client.close(id, closeRequest);
+                client.close(closeRequest);
             }catch(Exception e){
                 getLogger().write(
                     "ERROR",
@@ -727,7 +728,7 @@ public class RushService extends ServiceBase implements RushServiceMBean{
                 }
             }
             try{
-                client.request(id, roopCount, count, request);
+                client.request(roopCount, count, request);
             }catch(Exception e){
                 getLogger().write(
                     "WARN",

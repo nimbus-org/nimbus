@@ -39,31 +39,49 @@ package jp.ossc.nimbus.service.rush;
 public interface RushClient{
     
     /**
-     * 接続要求を処理する。<p>
+     * クライアントIDを設定する。<p>
      *
      * @param id クライアントID
+     */
+    public void setId(int id);
+    
+    /**
+     * クライアントIDを設定取得する。<p>
+     *
+     * @return クライアントID
+     */
+    public int getId();
+    
+    /**
+     * ノードIDを設定する。<p>
+     *
+     * @param id ノードID
+     */
+    public void setNodeId(Object id);
+    
+    /**
+     * 接続要求を処理する。<p>
+     *
      * @param request リクエスト
      * @exception Exception 要求に失敗した場合
      */
-    public void connect(int id, Request request) throws Exception;
+    public void connect(Request request) throws Exception;
     
     /**
      * 要求を処理する。<p>
      *
-     * @param id クライアントID
      * @param roopCount 現在のループ番号
      * @param count 現在の要求番号
      * @param request リクエスト
      * @exception Exception 要求に失敗した場合
      */
-    public void request(int id, int roopCount, int count, Request request) throws Exception;
+    public void request(int roopCount, int count, Request request) throws Exception;
     
     /**
      * 切断要求を処理する。<p>
      *
-     * @param id クライアントID
      * @param request リクエスト
      * @exception Exception 要求に失敗した場合
      */
-    public void close(int id, Request request) throws Exception;
+    public void close(Request request) throws Exception;
 }
