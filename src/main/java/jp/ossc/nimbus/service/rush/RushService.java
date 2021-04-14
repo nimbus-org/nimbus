@@ -342,7 +342,7 @@ public class RushService extends ServiceBase implements RushServiceMBean{
                     }
                     message = connection.createMessage(subject, null);
                     clients = connection.getReceiveClientIds(message);
-                }while(clients.size() < rushMemberSize);
+                }while(clients.size() < rushMemberSize - 1);
                 Iterator itr = clients.iterator();
                 while(itr.hasNext()){
                     Object clientId = itr.next();
