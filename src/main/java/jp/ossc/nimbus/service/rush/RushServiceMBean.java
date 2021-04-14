@@ -292,4 +292,30 @@ public interface RushServiceMBean extends ServiceBaseMBean{
      * @return サブジェクト
      */
     public String getSubject();
+    
+    /**
+     * サービスの開始時に、ラッシュを開始するかどうかを判定する。<p>
+     *
+     * @return trueの場合、サービスの開始時に、ラッシュを開始する
+     */
+    public boolean isStartRushOnStart();
+    
+    /**
+     * サービスの開始時に、ラッシュを開始するかどうかを設定する。<p>
+     *
+     * @param isStart サービスの開始時に、ラッシュを開始する場合は、true
+     */
+    public void setStartRushOnStart(boolean isStart);
+    
+    /**
+     * ラッシュを開始する。<p>
+     *
+     * @exception Exception ラッシュの開始に失敗した場合
+     */
+    public void startRush() throws Exception;
+    
+    /**
+     * ラッシュを停止する。<p>
+     */
+    public void stopRush();
 }

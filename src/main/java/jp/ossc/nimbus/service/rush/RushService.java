@@ -207,6 +207,13 @@ public class RushService extends ServiceBase implements RushServiceMBean{
         return subject;
     }
     
+    public boolean isStartRushOnStart(){
+        return isStartRushOnStart;
+    }
+    public void setStartRushOnStart(boolean isStart){
+        isStartRushOnStart = isStart;
+    }
+    
     public void setConnectRequest(Request request){
         connectRequest = request;
     }
