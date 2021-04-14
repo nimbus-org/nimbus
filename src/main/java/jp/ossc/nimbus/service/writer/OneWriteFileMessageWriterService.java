@@ -52,6 +52,8 @@ public class OneWriteFileMessageWriterService extends ServiceBase
     private String file;
 
     private boolean isEveryTimeCloseStream = true;
+    
+    private boolean isImmediateFlush;
 
     private FileName fileName;
 
@@ -109,6 +111,16 @@ public class OneWriteFileMessageWriterService extends ServiceBase
     // OneWriteFileMessageWriterServiceMBeanのJavaDoc
     public boolean isEveryTimeCloseStream(){
         return isEveryTimeCloseStream;
+    }
+    
+    // OneWriteFileMessageWriterServiceMBeanのJavaDoc
+    public void setImmediateFlush(boolean flush){
+        isImmediateFlush = flush;
+    }
+    
+    // OneWriteFileMessageWriterServiceMBeanのJavaDoc
+    public boolean isImmediateFlush(){
+        return isImmediateFlush;
     }
 
     // OneWriteFileMessageWriterServiceMBeanのJavaDoc
@@ -287,14 +299,17 @@ public class OneWriteFileMessageWriterService extends ServiceBase
             }
             if(encoding == null){
                 fos.write(rec.toString().getBytes());
-                if(isAppend && separator != null){
+                if(separator != null){
                     fos.write(separator.getBytes());
                 }
             }else{
                 fos.write(rec.toString().getBytes(encoding));
-                if(isAppend && separator != null){
+                if(separator != null){
                     fos.write(separator.getBytes(encoding));
                 }
+            }
+            if(isImmediateFlush){
+                fos.flush();
             }
         }catch(IOException e){
             throw new MessageWriteException(e);
