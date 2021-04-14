@@ -148,6 +148,20 @@ public interface OneWriteFileMessageWriterServiceMBean
     public boolean isEveryTimeCloseStream();
     
     /**
+     * 毎回フラッシュするかを設定する。<p>
+     *
+     * @param flush 毎回フラッシュする場合true
+     */
+    public void setImmediateFlush(boolean flush);
+    
+    /**
+     * 毎回フラッシュするかを調べる。<p>
+     *
+     * @return trueの場合、毎回フラッシュする
+     */
+    public boolean isImmediateFlush();
+    
+    /**
      * コンテキストサービス名を設定する。<p>
      *
      * @param name コンテキストサービス名
