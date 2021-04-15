@@ -2411,5 +2411,16 @@ public class ServiceManagerFactory implements Serializable{
                 }catch(InterruptedException ignore){}
             }
         }
+        for(int i = postServiceDirs.size(); --i >= 0;){
+            String[] params = (String[])postServiceDirs.get(i);
+            ServiceManagerFactory.unloadManagers(params[0], params[1]);
+        }
+        for(int i = servicePaths.size(); --i >= 0;){
+            ServiceManagerFactory.unloadManager((String)servicePaths.get(i));
+        }
+        for(int i = serviceDirs.size(); --i >= 0;){
+            String[] params = (String[])serviceDirs.get(i);
+            ServiceManagerFactory.unloadManagers(params[0], params[1]);
+        }
     }
 }
