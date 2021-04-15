@@ -251,6 +251,10 @@ public class RushService extends ServiceBase implements RushServiceMBean{
             }
             cluster = (Cluster)ServiceManagerFactory.getServiceObject(clusterServiceName);
         }
+    }
+    
+    protected void postStartService() throws Exception{
+        super.postStartService();
         if(isStartRushOnStart){
             startRush();
         }
