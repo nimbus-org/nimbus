@@ -45,6 +45,7 @@ public class HTTPServerService extends ServiceBase {
     private static final long serialVersionUID = 5975106195065729828L;
 
     protected int port;
+    protected boolean isDaemon = false;
     
     protected HTTPServer server;
     
@@ -55,12 +56,19 @@ public class HTTPServerService extends ServiceBase {
     public void setPort(int port) {
         this.port = port;
     }
+    
+    public void setDaemon(boolean daemon){
+        isDaemon = daemon;
+    }
+    public boolean isDaemon(){
+        return isDaemon;
+    }
 
     public void startService() throws Exception{
         if(port <= 0) {
             throw new IllegalArgumentException("Port is illegal value. port=" + port);
         }
-        server = new HTTPServer(port);
+        server = new HTTPServer(port, isDaemon);
         DefaultExports.initialize();
     }
     
