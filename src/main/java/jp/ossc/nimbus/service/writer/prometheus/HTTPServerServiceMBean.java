@@ -54,4 +54,19 @@ public interface HTTPServerServiceMBean extends ServiceBaseMBean {
      */
     public void setPort(int port);
     
+    /**
+     * デーモンスレッドにするかどうかを設定する。<p>
+     * デフォルトは、false。<br>
+     *
+     * @param daemon デーモンスレッドにする場合、true
+     */
+    public void setDaemon(boolean daemon);
+    
+    /**
+     * デーモンスレッドにするかどうかを判定する。<p>
+     *
+     * @return trueの場合、デーモンスレッドにする
+     */
+    public boolean isDaemon();
+    
 }
