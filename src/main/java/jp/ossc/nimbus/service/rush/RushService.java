@@ -91,6 +91,8 @@ public class RushService extends ServiceBase implements RushServiceMBean{
     private Daemon[] rushThreads;
     private int rushMemberIndex;
     private int rushClientSize;
+    private double rushRoopPerSecond;
+    private double rushRequestPerSecond;
     
     public void setClientSize(int size){
         clientSize = size;
@@ -311,6 +313,8 @@ public class RushService extends ServiceBase implements RushServiceMBean{
                 }
             }
             rushClientSize = (clientSize / rushMemberSize) + (rushMemberIndex == rushMemberSize - 1 ? clientSize % rushMemberSize : 0);
+            rushRoopPerSecond = roopPerSecond / (double)rushMemberSize;
+            rushRequestPerSecond = requestPerSecond / (double)rushMemberSize;
             rushThreads = new Daemon[rushClientSize];
             final int idOffset = (clientSize / rushMemberSize * rushMemberIndex);
             for(int i = 0; i < rushThreads.length; i++){
@@ -602,13 +606,13 @@ public class RushService extends ServiceBase implements RushServiceMBean{
                 return;
             }
             long myRoopProcessTime = roopTime;
-            if(roopPerSecond > 0){
-                myRoopProcessTime = (long)((double)(1000l * rushClientSize) / roopPerSecond);
+            if(rushRoopPerSecond > 0){
+                myRoopProcessTime = (long)((double)(1000l * rushClientSize) / rushRoopPerSecond);
             }
             int requestCount = 0;
             final long roopStartTime = System.currentTimeMillis();
-            if(requestPerSecond > 0){
-                myRoopProcessTime = (long)((double)(1000l * rushClientSize * totalRequestCount) / requestPerSecond);
+            if(rushRequestPerSecond > 0){
+                myRoopProcessTime = (long)((double)(1000l * rushClientSize * totalRequestCount) / rushRequestPerSecond);
             }
             RandomGroup randomGroup = null;
             while(isRushing && currentRequests.size() != 0){
