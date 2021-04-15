@@ -264,6 +264,21 @@ public interface RushServiceMBean extends ServiceBaseMBean{
     public int getRushMemberSize();
     
     /**
+     * ラッシュメンバの開始待ちタイムアウト[ms]を設定する。<p>
+     * デフォルトは、60[秒]。<br/>
+     *
+     * @param timeout タイムアウト[ms]
+     */
+    public void setRushMemberStartTimeout(long timeout);
+    
+    /**
+     * ラッシュメンバの開始待ちタイムアウト[ms]を取得する。<p>
+     *
+     * @return タイムアウト[ms]
+     */
+    public long getRushMemberStartTimeout();
+    
+    /**
      * {@link jp.ossc.nimbus.service.publish.RequestConnectionFactoryService RequestConnectionFactoryService}サービスのサービス名を設定する。<p>
      * 複数のラッシュサービスを起動して連動させる場合に、設定する。<br>
      *

@@ -47,6 +47,7 @@ import jp.ossc.nimbus.service.publish.RequestMessageListener;
 import jp.ossc.nimbus.service.publish.Message;
 import jp.ossc.nimbus.service.publish.MessageReceiver;
 import jp.ossc.nimbus.service.publish.RequestConnectionFactoryService;
+import jp.ossc.nimbus.service.publish.MessageCommunicateException;
 import jp.ossc.nimbus.util.converter.*;
 import jp.ossc.nimbus.util.SynchronizeMonitor;
 import jp.ossc.nimbus.util.WaitSynchronizeMonitor;
@@ -75,6 +76,7 @@ public class RushService extends ServiceBase implements RushServiceMBean{
     private ServiceName requestConnectionFactoryServiceName;
     private String subject = "Rush";
     private int rushMemberSize = 1;
+    private long rushMemberStartTimeout = 60000l;
     private Request connectRequest;
     private int connectRetryCount = 0;
     private long connectRetryInterval = 0;
@@ -87,6 +89,8 @@ public class RushService extends ServiceBase implements RushServiceMBean{
     private MessageReceiver messageReceiver;
     private boolean isRushing;
     private Daemon[] rushThreads;
+    private int rushMemberIndex;
+    private int rushClientSize;
     
     public void setClientSize(int size){
         clientSize = size;
@@ -193,6 +197,13 @@ public class RushService extends ServiceBase implements RushServiceMBean{
         return rushMemberSize;
     }
     
+    public void setRushMemberStartTimeout(long timeout){
+        rushMemberStartTimeout = timeout;
+    }
+    public long getRushMemberStartTimeout(){
+        return rushMemberStartTimeout;
+    }
+    
     public void setRequestConnectionFactoryServiceName(ServiceName name){
         requestConnectionFactoryServiceName = name;
     }
@@ -271,10 +282,40 @@ public class RushService extends ServiceBase implements RushServiceMBean{
         isRushing = true;
         
         try{
-            rushThreads = new Daemon[clientSize];
-            for(int i = 0; i < clientSize; i++){
+            RequestServerConnection connection = null;
+            if(requestConnectionFactory != null){
+                connection = (RequestServerConnection)requestConnectionFactory.getServerConnection();
+            }
+            SynchronizeMonitor monitor = null;
+            Set clients = null;
+            if(connection != null){
+                if(cluster.isMain()){
+                    rushMemberIndex = 0;
+                    messageReceiver.addSubject(new MyMessageListener(connection), subject);
+                    Message message = null;
+                    getLogger().write("RS___00009");
+                    do{
+                        Thread.sleep(1000l);
+                        message = connection.createMessage(subject, null);
+                        clients = connection.getReceiveClientIds(message);
+                    }while(clients.size() < rushMemberSize - 1);
+                    getLogger().write("RS___00010", clients);
+                }else{
+                    monitor = new WaitSynchronizeMonitor();
+                    monitor.initMonitor();
+                    messageReceiver.addSubject(new MyMessageListener(connection, monitor), subject);
+                    getLogger().write("RS___00001", messageReceiver.getId());
+                    monitor.waitMonitor();
+                    getLogger().write("RS___00011");
+                    monitor.releaseMonitor();
+                }
+            }
+            rushClientSize = (clientSize / rushMemberSize) + (rushMemberIndex == rushMemberSize - 1 ? clientSize % rushMemberSize : 0);
+            rushThreads = new Daemon[rushClientSize];
+            final int idOffset = (clientSize / rushMemberSize * rushMemberIndex);
+            for(int i = 0; i < rushThreads.length; i++){
                 RushClient client = (RushClient)ServiceManagerFactory.getServiceObject(rushClientFactoryServiceName);
-                client.setId(i);
+                client.setId(idOffset + i);
                 if(messageReceiver != null){
                     client.setNodeId(messageReceiver.getId());
                 }
@@ -300,35 +341,12 @@ public class RushService extends ServiceBase implements RushServiceMBean{
                     getServiceName() + " Rush thread[" + i + "]"
                 );
             }
-            RequestServerConnection connection = null;
-            if(requestConnectionFactory != null){
-                connection = (RequestServerConnection)requestConnectionFactory.getServerConnection();
-            }
-            SynchronizeMonitor monitor = null;
-            if(connection != null){
-                if(cluster.isMain()){
-                    messageReceiver.addSubject(new MyMessageListener(connection), subject);
-                }else{
-                    monitor = new WaitSynchronizeMonitor();
-                    monitor.initMonitor();
-                    messageReceiver.addSubject(new MyMessageListener(connection, monitor), subject);
-                    getLogger().write("RS___00001", messageReceiver.getId());
-                    try{
-                        monitor.waitMonitor();
-                    }catch(InterruptedException e){
-                    }
-                    monitor.releaseMonitor();
-                }
-            }
             if(connectStepSize > 0){
                 int connectSize = 0;
                 for(int i = 0; i < rushThreads.length; i++){
                     if(connectSize >= connectStepSize){
                         connectSize = 0;
-                        try{
-                            Thread.sleep(connectStepInterval);
-                        }catch(InterruptedException e){
-                        }
+                        Thread.sleep(connectStepInterval);
                         if(!isRushing){
                             return;
                         }
@@ -343,25 +361,26 @@ public class RushService extends ServiceBase implements RushServiceMBean{
             }
             
             if(connection != null && cluster.isMain()){
-                int memberSize = 0;
                 Message message = null;
-                Set clients = null;
-                do{
-                    try{
-                        Thread.sleep(1000l);
-                    }catch(InterruptedException e){
-                    }
-                    message = connection.createMessage(subject, null);
-                    clients = connection.getReceiveClientIds(message);
-                }while(clients.size() < rushMemberSize - 1);
                 Iterator itr = clients.iterator();
+                int index = 0;
                 while(itr.hasNext()){
                     Object clientId = itr.next();
                     message = connection.createMessage(subject, null);
+                    message.setObject(Integer.valueOf(++index));
                     message.addDestinationId(clientId);
                     getLogger().write("RS___00006", clientId);
-                    connection.request(message, 1, 0);
-                    getLogger().write("RS___00007", clientId);
+                    try{
+                        Message[] responses = connection.request(message, 1, rushMemberStartTimeout);
+                        Object response = responses[0].getObject();
+                        if(response != null){
+                            getLogger().write("RS___00008", clientId, (Throwable)response);
+                        }else{
+                            getLogger().write("RS___00007", clientId);
+                        }
+                    }catch(MessageCommunicateException e){
+                        getLogger().write("RS___00008", clientId, e);
+                    }
                 }
             }else if(monitor != null){
                 monitor.notifyMonitor();
@@ -370,15 +389,12 @@ public class RushService extends ServiceBase implements RushServiceMBean{
             if(rushThreads != null){
                 synchronized(rushThreads){
                     if(rushThreads != null){
-                        try{
-                            for(int i = 0; i < rushThreads.length; i++){
-                                if(rushThreads[i].getDaemonThread() != null){
-                                    rushThreads[i].getDaemonThread().join();
-                                }
+                        for(int i = 0; i < rushThreads.length; i++){
+                            if(rushThreads[i].getDaemonThread() != null){
+                                rushThreads[i].getDaemonThread().join();
                             }
-                            rushThreads = null;
-                        }catch(InterruptedException e){
                         }
+                        rushThreads = null;
                     }
                 }
             }
@@ -435,6 +451,19 @@ public class RushService extends ServiceBase implements RushServiceMBean{
         public Message onRequestMessage(Object sourceId, int sequence, Message message, String responseSubject, String responseKey){
             if(monitor == null){
                 return null;
+            }
+            try{
+                Integer index = (Integer)message.getObject();
+                rushMemberIndex = index.intValue();
+            }catch(Exception e){
+                try{
+                    Message responseMessage = connection.createMessage(responseSubject, responseKey);
+                    responseMessage.setObject(e);
+                    return responseMessage;
+                }catch(Exception e2){
+                    getLogger().write("RS___00005", sourceId, e2);
+                    return null;
+                }
             }
             getLogger().write("RS___00003", sourceId);
             monitor.initMonitor();
@@ -574,12 +603,12 @@ public class RushService extends ServiceBase implements RushServiceMBean{
             }
             long myRoopProcessTime = roopTime;
             if(roopPerSecond > 0){
-                myRoopProcessTime = (long)((double)(1000l * clientSize) / roopPerSecond);
+                myRoopProcessTime = (long)((double)(1000l * rushClientSize) / roopPerSecond);
             }
             int requestCount = 0;
             final long roopStartTime = System.currentTimeMillis();
             if(requestPerSecond > 0){
-                myRoopProcessTime = (long)((double)(1000l * clientSize * totalRequestCount) / requestPerSecond);
+                myRoopProcessTime = (long)((double)(1000l * rushClientSize * totalRequestCount) / requestPerSecond);
             }
             RandomGroup randomGroup = null;
             while(isRushing && currentRequests.size() != 0){

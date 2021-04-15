@@ -487,3 +487,7 @@ RS___00004,Responds to the primary node with a start completion. mainId=@0,50,jp
 RS___00005,Could not respond to the main node to complete the start. mainId=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 RS___00006,Notifies member node of the start request. id=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 RS___00007,Rush for member node started. id=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+RS___00008,Failed to start rush on member node. id=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+RS___00009,Wait for a member node to start.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+RS___00010,A member nodes has been activated. nodes=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+RS___00011,Accepted start request from main node.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
