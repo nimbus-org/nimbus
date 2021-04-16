@@ -39,6 +39,9 @@ import jp.ossc.nimbus.beans.dataset.*;
 import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.io.*;
 import jp.ossc.nimbus.daemon.*;
+import jp.ossc.nimbus.service.aop.interceptor.ThreadContextKey;
+import jp.ossc.nimbus.service.context.Context;
+import jp.ossc.nimbus.service.journal.Journal;
 import jp.ossc.nimbus.service.keepalive.Cluster;
 import jp.ossc.nimbus.service.publish.ServerConnectionFactory;
 import jp.ossc.nimbus.service.publish.ServerConnection;
@@ -59,6 +62,7 @@ import jp.ossc.nimbus.util.WaitSynchronizeMonitor;
  */
 public class RushService extends ServiceBase implements RushServiceMBean{
     
+    private String scenarioName;
     private int clientSize = 1;
     private int roopCount;
     private long rushTime;
@@ -74,7 +78,8 @@ public class RushService extends ServiceBase implements RushServiceMBean{
     private ServiceName rushClientFactoryServiceName;
     private ServiceName clusterServiceName;
     private ServiceName requestConnectionFactoryServiceName;
-    private String subject = "Rush";
+    private ServiceName threadContextServiceName;
+    private ServiceName journalServiceName;
     private int rushMemberSize = 1;
     private long rushMemberStartTimeout = 60000l;
     private Request connectRequest;
@@ -87,12 +92,21 @@ public class RushService extends ServiceBase implements RushServiceMBean{
     private Cluster cluster;
     private ServerConnectionFactory requestConnectionFactory;
     private MessageReceiver messageReceiver;
+    private Context threadContext;
+    private Journal journal;
     private boolean isRushing;
     private Daemon[] rushThreads;
     private int rushMemberIndex;
     private int rushClientSize;
     private double rushRoopPerSecond;
     private double rushRequestPerSecond;
+    
+    public void setScenarioName(String name){
+        scenarioName = name;
+    }
+    public String getScenarioName(){
+        return scenarioName;
+    }
     
     public void setClientSize(int size){
         clientSize = size;
@@ -213,11 +227,18 @@ public class RushService extends ServiceBase implements RushServiceMBean{
         return requestConnectionFactoryServiceName;
     }
     
-    public void setSubject(String subject){
-        this.subject = subject;
+    public void setThreadContextServiceName(ServiceName name){
+        threadContextServiceName = name;
     }
-    public String getSubject(){
-        return subject;
+    public ServiceName getThreadContextServiceName(){
+        return threadContextServiceName;
+    }
+    
+    public void setJournalServiceName(ServiceName name){
+        journalServiceName = name;
+    }
+    public ServiceName getJournalServiceName(){
+        return journalServiceName;
     }
     
     public boolean isStartRushOnStart(){
@@ -264,6 +285,16 @@ public class RushService extends ServiceBase implements RushServiceMBean{
             }
             cluster = (Cluster)ServiceManagerFactory.getServiceObject(clusterServiceName);
         }
+        if(threadContextServiceName != null){
+            threadContext = (Context)ServiceManagerFactory.getServiceObject(threadContextServiceName);
+        }
+        if(journalServiceName != null){
+            journal = (Journal)ServiceManagerFactory.getServiceObject(journalServiceName);
+        }
+        
+        if(scenarioName == null){
+            scenarioName = getServiceNameObject().toString();
+        }
     }
     
     protected void postStartService() throws Exception{
@@ -293,22 +324,22 @@ public class RushService extends ServiceBase implements RushServiceMBean{
             if(connection != null){
                 if(cluster.isMain()){
                     rushMemberIndex = 0;
-                    messageReceiver.addSubject(new MyMessageListener(connection), subject);
+                    messageReceiver.addSubject(new MyMessageListener(connection), scenarioName);
                     Message message = null;
-                    getLogger().write("RS___00009");
+                    getLogger().write("RS___00009", scenarioName);
                     do{
                         Thread.sleep(1000l);
-                        message = connection.createMessage(subject, null);
+                        message = connection.createMessage(scenarioName, null);
                         clients = connection.getReceiveClientIds(message);
                     }while(clients.size() < rushMemberSize - 1);
-                    getLogger().write("RS___00010", clients);
+                    getLogger().write("RS___00010", new Object[]{scenarioName, clients});
                 }else{
                     monitor = new WaitSynchronizeMonitor();
                     monitor.initMonitor();
-                    messageReceiver.addSubject(new MyMessageListener(connection, monitor), subject);
-                    getLogger().write("RS___00001", messageReceiver.getId());
+                    messageReceiver.addSubject(new MyMessageListener(connection, monitor), scenarioName);
+                    getLogger().write("RS___00001", new Object[]{scenarioName, messageReceiver.getId()});
                     monitor.waitMonitor();
-                    getLogger().write("RS___00011");
+                    getLogger().write("RS___00011", scenarioName);
                     monitor.releaseMonitor();
                 }
             }
@@ -320,9 +351,6 @@ public class RushService extends ServiceBase implements RushServiceMBean{
             for(int i = 0; i < rushThreads.length; i++){
                 RushClient client = (RushClient)ServiceManagerFactory.getServiceObject(rushClientFactoryServiceName);
                 client.setId(idOffset + i);
-                if(messageReceiver != null){
-                    client.setNodeId(messageReceiver.getId());
-                }
                 if(i == 0){
                     int requestId = 0;
                     if(connectRequest != null){
@@ -370,20 +398,20 @@ public class RushService extends ServiceBase implements RushServiceMBean{
                 int index = 0;
                 while(itr.hasNext()){
                     Object clientId = itr.next();
-                    message = connection.createMessage(subject, null);
+                    message = connection.createMessage(scenarioName, null);
                     message.setObject(Integer.valueOf(++index));
                     message.addDestinationId(clientId);
-                    getLogger().write("RS___00006", clientId);
+                    getLogger().write("RS___00006", new Object[]{scenarioName, clientId});
                     try{
                         Message[] responses = connection.request(message, 1, rushMemberStartTimeout);
                         Object response = responses[0].getObject();
                         if(response != null){
-                            getLogger().write("RS___00008", clientId, (Throwable)response);
+                            getLogger().write("RS___00008", new Object[]{scenarioName, clientId}, (Throwable)response);
                         }else{
-                            getLogger().write("RS___00007", clientId);
+                            getLogger().write("RS___00007", new Object[]{scenarioName, clientId});
                         }
                     }catch(MessageCommunicateException e){
-                        getLogger().write("RS___00008", clientId, e);
+                        getLogger().write("RS___00008", new Object[]{scenarioName, clientId}, e);
                     }
                 }
             }else if(monitor != null){
@@ -465,11 +493,11 @@ public class RushService extends ServiceBase implements RushServiceMBean{
                     responseMessage.setObject(e);
                     return responseMessage;
                 }catch(Exception e2){
-                    getLogger().write("RS___00005", sourceId, e2);
+                    getLogger().write("RS___00005", new Object[]{scenarioName, sourceId}, e2);
                     return null;
                 }
             }
-            getLogger().write("RS___00003", sourceId);
+            getLogger().write("RS___00003", new Object[]{scenarioName, sourceId});
             monitor.initMonitor();
             monitor.notifyMonitor();
             try{
@@ -477,11 +505,11 @@ public class RushService extends ServiceBase implements RushServiceMBean{
             }catch(InterruptedException e){
             }
             monitor.releaseMonitor();
-            getLogger().write("RS___00004", sourceId);
+            getLogger().write("RS___00004", new Object[]{scenarioName, sourceId});
             try{
                 return connection.createMessage(responseSubject, responseKey);
             }catch(Exception e){
-                getLogger().write("RS___00005", sourceId, e);
+                getLogger().write("RS___00005", new Object[]{scenarioName, sourceId}, e);
                 return null;
             }
         }
@@ -518,6 +546,11 @@ public class RushService extends ServiceBase implements RushServiceMBean{
             int retry = 0;
             while(true){
                 try{
+                    if(journal != null){
+                        journal.startJournal(JOURNAL_KEY_REQUEST);
+                    }
+                    putThreadContext(-1, -1);
+                    addJournal(-1, -1);
                     client.connect(connectRequest);
                     break;
                 }catch(Exception e){
@@ -537,10 +570,14 @@ public class RushService extends ServiceBase implements RushServiceMBean{
                         e
                     );
                     return false;
+                }finally{
+                    if(journal != null){
+                        journal.endJournal();
+                    }
                 }
             };
             startTime = System.currentTimeMillis();
-            getLogger().write("RS___00002", client.getId());
+            getLogger().write("RS___00002", new Object[]{scenarioName, client.getId()});
             return true;
         }
         
@@ -734,6 +771,11 @@ public class RushService extends ServiceBase implements RushServiceMBean{
         
         public void garbage(){
             try{
+                if(journal != null){
+                    journal.startJournal(JOURNAL_KEY_REQUEST);
+                }
+                putThreadContext(-1, -1);
+                addJournal(-1, -1);
                 client.close(closeRequest);
             }catch(Exception e){
                 getLogger().write(
@@ -741,6 +783,30 @@ public class RushService extends ServiceBase implements RushServiceMBean{
                     "切断に失敗しました。",
                     e
                 );
+            }finally{
+                if(journal != null){
+                    journal.endJournal();
+                }
+            }
+        }
+        
+        private void putThreadContext(int roopCount, int count){
+            if(threadContext != null){
+                threadContext.put(THREAD_CONTEXT_KEY_SCENARIO_NAME, scenarioName);
+                threadContext.put(THREAD_CONTEXT_KEY_NODE_ID, messageReceiver.getId());
+                threadContext.put(THREAD_CONTEXT_KEY_CLIENT_ID, client.getId());
+                threadContext.put(THREAD_CONTEXT_KEY_ROOP_NO, roopCount);
+                threadContext.put(THREAD_CONTEXT_KEY_REQUEST_NO, count);
+            }
+        }
+        
+        private void addJournal(int roopCount, int count){
+            if(journal != null){
+                journal.addInfo(JOURNAL_KEY_SCENARIO_NAME, scenarioName);
+                journal.addInfo(JOURNAL_KEY_NODE_ID, messageReceiver.getId());
+                journal.addInfo(JOURNAL_KEY_CLIENT_ID, client.getId());
+                journal.addInfo(JOURNAL_KEY_ROOP_NO, roopCount);
+                journal.addInfo(JOURNAL_KEY_REQUEST_NO, count);
             }
         }
         
@@ -772,6 +838,11 @@ public class RushService extends ServiceBase implements RushServiceMBean{
                 }
             }
             try{
+                if(journal != null){
+                    journal.startJournal(JOURNAL_KEY_REQUEST);
+                }
+                putThreadContext(roopCount, count);
+                addJournal(roopCount, count);
                 client.request(roopCount, count, request);
             }catch(Exception e){
                 getLogger().write(
@@ -783,6 +854,9 @@ public class RushService extends ServiceBase implements RushServiceMBean{
             }finally{
                 if(isCountDown){
                     request.countDown();
+                }
+                if(journal != null){
+                    journal.endJournal();
                 }
             }
             return true;

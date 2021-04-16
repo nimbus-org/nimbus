@@ -43,6 +43,19 @@ import jp.ossc.nimbus.core.*;
  */
 public interface RushServiceMBean extends ServiceBaseMBean{
     
+    public static final String THREAD_CONTEXT_KEY_SCENARIO_NAME = "SCENARIO_NAME";
+    public static final String THREAD_CONTEXT_KEY_NODE_ID = "NODE_ID";
+    public static final String THREAD_CONTEXT_KEY_CLIENT_ID = "CLIENT_ID";
+    public static final String THREAD_CONTEXT_KEY_ROOP_NO = "ROOP_NO";
+    public static final String THREAD_CONTEXT_KEY_REQUEST_NO = "REQUEST_NO";
+    
+    public static final String JOURNAL_KEY_REQUEST = "Request";
+    public static final String JOURNAL_KEY_SCENARIO_NAME = "ScenarioName";
+    public static final String JOURNAL_KEY_NODE_ID = "NodeId";
+    public static final String JOURNAL_KEY_CLIENT_ID = "ClientId";
+    public static final String JOURNAL_KEY_ROOP_NO = "RoopNo";
+    public static final String JOURNAL_KEY_REQUEST_NO = "RequestNo";
+    
     /**
      * クライアント数を設定する。<p>
      * ラッシュの並列度を実現するクライアント数。デフォルトは、1。<br>
@@ -294,19 +307,48 @@ public interface RushServiceMBean extends ServiceBaseMBean{
     public ServiceName getRequestConnectionFactoryServiceName();
     
     /**
-     * 他のラッシュサービスとの通信で使用するサブジェクトを設定する。<p>
-     * デフォルトは、"Rush"。<br>
+     * {@link jp.ossc.nimbus.service.context.ThreadContextService ThreadContextService}サービスのサービス名を設定する。<p>
      *
-     * @param subject サブジェクト
+     * @param name ThreadContextServiceサービスのサービス名
      */
-    public void setSubject(String subject);
+    public void setThreadContextServiceName(ServiceName name);
     
     /**
-     * 他のラッシュサービスとの通信で使用するサブジェクトを取得する。<p>
+     * {@link jp.ossc.nimbus.service.context.ThreadContextService ThreadContextService}サービスのサービス名を取得する。<p>
      *
-     * @return サブジェクト
+     * @return ThreadContextServiceサービスのサービス名
      */
-    public String getSubject();
+    public ServiceName getThreadContextServiceName();
+    
+    /**
+     * ジャーナルを出力する{@link jp.ossc.nimbus.service.journal.Journal Journal}サービスのサービス名を設定する。<p>
+     *
+     * @param name Journalサービスのサービス名
+     */
+    public void setJournalServiceName(ServiceName name);
+    
+    /**
+     * ジャーナルを出力する{@link jp.ossc.nimbus.service.journal.Journal Journal}サービスのサービス名を取得する。<p>
+     *
+     * @return Journalサービスのサービス名
+     */
+    public ServiceName getJournalServiceName();
+    
+    /**
+     * シナリオ名を設定する。<p>
+     * 他のラッシュサービスとの通信で使用するサブジェクトとしても使用する。<p>
+     * デフォルトは、マネージャ名#サービス名。<br>
+     *
+     * @param name シナリオ名
+     */
+    public void setScenarioName(String name);
+    
+    /**
+     * シナリオ名を取得する。<p>
+     *
+     * @return シナリオ名
+     */
+    public String getScenarioName();
     
     /**
      * サービスの開始時に、ラッシュを開始するかどうかを判定する。<p>

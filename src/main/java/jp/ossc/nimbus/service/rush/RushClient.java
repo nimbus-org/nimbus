@@ -53,13 +53,6 @@ public interface RushClient{
     public int getId();
     
     /**
-     * ノードIDを設定する。<p>
-     *
-     * @param id ノードID
-     */
-    public void setNodeId(Object id);
-    
-    /**
      * 接続要求を処理する。<p>
      *
      * @param request リクエスト
