@@ -480,14 +480,14 @@ RPC__00002,Processing time exceeded threshold. timestamp=@0\\, elapsed=@1\\, thr
 RPC__00003,Processing time exceeded threshold. timestamp=@0\\, elapsed=@1\\, thread=@2\\, args=@3\\, stacktrace=@4,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 RPC__00004,Processing time exceeded threshold. timestamp=@0\\, elapsed=@1\\, thread=@2\\, args=@3\\, stacktrace=@4,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 RPC__00005,Processing time exceeded threshold. timestamp=@0\\, elapsed=@1\\, thread=@2\\, args=@3\\, stacktrace=@4,200,jp.ossc.nimbus.service.log.SYSTEM_FATAL_CATEGORY
-RS___00001,Waiting for a start request from the main node. id=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
-RS___00002,The client connection has been completed. clientId=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
-RS___00003,Accepted start request from the main node. mainId=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
-RS___00004,Responds to the primary node with a start completion. mainId=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
-RS___00005,Could not respond to the main node to complete the start. mainId=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
-RS___00006,Notifies member node of the start request. id=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
-RS___00007,Rush for member node started. id=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
-RS___00008,Failed to start rush on member node. id=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
-RS___00009,Wait for a member node to start.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
-RS___00010,A member nodes has been activated. nodes=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
-RS___00011,Accepted start request from main node.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+RS___00001,Waiting for a start request from the main node. scenaio=@0\\, id=@1,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+RS___00002,The client connection has been completed. scenaio=@0\\, clientId=@1,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+RS___00003,Accepted start request from the main node. scenaio=@0\\, mainId=@1,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+RS___00004,Responds to the primary node with a start completion. scenaio=@0\\, mainId=@1,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+RS___00005,Could not respond to the main node to complete the start. scenaio=@0\\, mainId=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+RS___00006,Notifies member node of the start request. scenaio=@0\\, id=@1,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+RS___00007,Rush for member node started. scenaio=@0\\, id=@1,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+RS___00008,Failed to start rush on member node. scenaio=@0\\, id=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+RS___00009,Wait for a member node to start. scenaio=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+RS___00010,A member nodes has been activated. scenaio=@0\\, nodes=@1,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+RS___00011,Accepted start request from main node. scenaio=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY

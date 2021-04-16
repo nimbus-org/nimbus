@@ -87,20 +87,6 @@ public interface HttpRushClientServiceMBean extends ServiceBaseMBean{
     public ServiceName getRecordListStreamConverterServiceName();
     
     /**
-     * {@link jp.ossc.nimbus.service.context.ThreadContextService ThreadContextService}サービスのサービス名を設定する。<p>
-     *
-     * @param name ThreadContextServiceサービスのサービス名
-     */
-    public void setThreadContextServiceName(ServiceName name);
-    
-    /**
-     * {@link jp.ossc.nimbus.service.context.ThreadContextService ThreadContextService}サービスのサービス名を取得する。<p>
-     *
-     * @return ThreadContextServiceサービスのサービス名
-     */
-    public ServiceName getThreadContextServiceName();
-    
-    /**
      * 文字エンコーディングを設定する。<p>
      *
      * @param encoding 文字エンコーディング

@@ -42,8 +42,6 @@ import java.io.IOException;
 import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.beans.dataset.RecordList;
 import jp.ossc.nimbus.service.rush.*;
-import jp.ossc.nimbus.service.context.Context;
-import jp.ossc.nimbus.service.aop.interceptor.ThreadContextKey;
 import jp.ossc.nimbus.service.http.HttpClientFactory;
 import jp.ossc.nimbus.service.http.HttpClient;
 import jp.ossc.nimbus.service.http.HttpResponse;
@@ -62,20 +60,17 @@ import jp.ossc.nimbus.util.converter.ConvertException;
  */
 public class HttpRushClientService extends ServiceBase implements RushClient, HttpRushClientServiceMBean{
     
-    private ServiceName threadContextServiceName;
     private ServiceName httpClientFactoryServiceName;
     private ServiceName templateEngineServiceName;
     private ServiceName recordListConverterServiceName;
     private String encoding;
     
     private int id;
-    private Object nodeId;
     private HttpClientFactory httpClientFactory;
     private HttpClient client;
     private Map session;
     private TemplateEngine templateEngine;
     private StreamStringConverter recordListConverter;
-    private Context threadContext;
     
     public void setHttpClientFactoryServiceName(ServiceName name){
         httpClientFactoryServiceName = name;
@@ -96,13 +91,6 @@ public class HttpRushClientService extends ServiceBase implements RushClient, Ht
     }
     public ServiceName getRecordListStreamConverterServiceName(){
         return recordListConverterServiceName;
-    }
-    
-    public void setThreadContextServiceName(ServiceName name){
-        threadContextServiceName = name;
-    }
-    public ServiceName getThreadContextServiceName(){
-        return threadContextServiceName;
     }
     
     public void setEncoding(String encoding){
@@ -128,9 +116,6 @@ public class HttpRushClientService extends ServiceBase implements RushClient, Ht
         }
         if(recordListConverterServiceName != null){
             recordListConverter = (StreamStringConverter)ServiceManagerFactory.getServiceObject(recordListConverterServiceName);
-        }
-        if(threadContextServiceName != null){
-            threadContext = (Context)ServiceManagerFactory.getServiceObject(threadContextServiceName);
         }
         if(recordListConverter == null){
             recordListConverter = new RecordListCSVConverter(
@@ -178,27 +163,17 @@ public class HttpRushClientService extends ServiceBase implements RushClient, Ht
         return id;
     }
     
-    public void setNodeId(Object id){
-        nodeId = id;
-    }
-    
     public void connect(Request request) throws Exception{
         if(client == null){
             client = httpClientFactory.createHttpClient();
         }
         session.clear();
         if(request != null){
-            if(threadContext != null){
-                threadContext.put(ThreadContextKey.REQUEST_ID, (nodeId == null ? String.valueOf(id) : nodeId.toString() + id) + "_connect");
-            }
             request(-1, -1, request);
         }
     }
     
     public void request(int roopCount, int count, Request request) throws Exception{
-        if(threadContext != null && roopCount >= 0){
-            threadContext.put(ThreadContextKey.REQUEST_ID, (nodeId == null ? String.valueOf(id) : nodeId.toString() + '_' + id) + "_request_" + roopCount + '_' + count);
-        }
         HttpRequest httpRequest = (HttpRequest)request;
         jp.ossc.nimbus.service.http.HttpRequest req = httpClientFactory.createRequest(httpRequest.getAction());
         httpRequest.setupRequest(client, req, session, id, roopCount, count);
@@ -208,9 +183,6 @@ public class HttpRushClientService extends ServiceBase implements RushClient, Ht
     
     public void close(Request request) throws Exception{
         if(request != null){
-            if(threadContext != null){
-                threadContext.put(ThreadContextKey.REQUEST_ID, (nodeId == null ? String.valueOf(id) : nodeId.toString() + '_' + id) + "_close");
-            }
             request(-1, -1, request);
         }
         session.clear();
