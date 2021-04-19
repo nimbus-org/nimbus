@@ -60,6 +60,15 @@ public interface RushClient{
     public void init() throws Exception;
     
     /**
+     * 指定された要求を処理するかどうかを判定する。<p>
+     *
+     * @param request 要求
+     * @return 処理する場合、null。処理しない場合、処理しない理由
+     * @exception Exception 判定に失敗した場合
+     */
+    public String isRequest(Request request) throws Exception;
+    
+    /**
      * 接続要求を処理する。<p>
      *
      * @param request リクエスト

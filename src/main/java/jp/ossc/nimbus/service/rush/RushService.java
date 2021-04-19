@@ -745,18 +745,18 @@ public class RushService extends ServiceBase implements RushServiceMBean{
                     }
                     if(req instanceof RandomGroup.SequenceGroup){
                         RandomGroup.SequenceGroup sequenceGroup = (RandomGroup.SequenceGroup)req;
-                        boolean isError = false;
+                        boolean isSkip = false;
                         Iterator sequenceItr = sequenceGroup.iterator();
                         while(isRushing && sequenceItr.hasNext()){
                             Request request = (Request)sequenceItr.next();
                             if(request.sequenceCount > 0){
                                 for(int i = 0, imax = request.sequenceCount; i < imax; i++){
-                                    if(isError){
+                                    if(isSkip){
                                         if(i == imax - 1){
                                             request.countDown();
                                         }
                                     }else{
-                                        isError |= !request(
+                                        isSkip |= !request(
                                             count,
                                             request,
                                             i == imax - 1,
@@ -767,10 +767,10 @@ public class RushService extends ServiceBase implements RushServiceMBean{
                                     }
                                 }
                             }else{
-                                if(isError){
+                                if(isSkip){
                                     request.countDown();
                                 }else{
-                                    isError |= !request(
+                                    isSkip |= !request(
                                         count,
                                         request,
                                         requestInterval > 0 ? requestInterval : calcTPSInterval(totalRequestCount, requestCount, myRoopProcessTime, System.currentTimeMillis() - roopStartTime)
@@ -919,25 +919,29 @@ public class RushService extends ServiceBase implements RushServiceMBean{
                 }
             }
             try{
-                if(journal != null){
-                    journal.startJournal(JOURNAL_KEY_REQUEST);
+                String cause = client.isRequest(request);
+                if(cause != null){
+                    getLogger().write("RS___00015", new Object[]{scenarioName, client.getId(), roopCount, count, request, cause});
+                    return false;
                 }
-                putThreadContext(roopCount, count);
-                addJournal(roopCount, count);
-                client.request(roopCount, count, request);
+                try{
+                    if(journal != null){
+                        journal.startJournal(JOURNAL_KEY_REQUEST);
+                    }
+                    putThreadContext(roopCount, count);
+                    addJournal(roopCount, count);
+                    client.request(roopCount, count, request);
+                }finally{
+                    if(journal != null){
+                        journal.endJournal();
+                    }
+                }
             }catch(Exception e){
-                getLogger().write(
-                    "WARN",
-                    "リクエストに失敗しました。request=" + request,
-                    e
-                );
+                getLogger().write("RS___00014", new Object[]{scenarioName, client.getId(), roopCount, count, request}, e);
                 return false;
             }finally{
                 if(isCountDown){
                     request.countDown();
-                }
-                if(journal != null){
-                    journal.endJournal();
                 }
             }
             return true;

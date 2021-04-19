@@ -39,6 +39,8 @@ import jp.ossc.nimbus.beans.PropertyFactory;
 import jp.ossc.nimbus.beans.Property;
 import jp.ossc.nimbus.beans.dataset.RecordSchema;
 import jp.ossc.nimbus.beans.dataset.RecordList;
+import jp.ossc.nimbus.service.interpreter.Interpreter;
+import jp.ossc.nimbus.service.interpreter.CompiledInterpreter;
 import jp.ossc.nimbus.service.rush.RushClient;
 import jp.ossc.nimbus.service.rush.Request;
 import jp.ossc.nimbus.service.rush.RequestParameterSelector;
@@ -73,12 +75,19 @@ public class HttpRequest extends Request{
     private String requestStreamTemplate;
     private File requestStreamTemplateFile;
     private Object requestObject;
+    private String condition;
+    private String preInterpreterCode;
+    private String postInterpreterCode;
     
     private Map responseHeaderToSessionMap;
     private Map responseToSessionMap;
     
     private HttpRushClientService rushClient;
     private String templateName;
+    private int requestId;
+    private CompiledInterpreter compiledCondition;
+    private CompiledInterpreter compiledPreInterpreterCode;
+    private CompiledInterpreter compiledPostInterpreterCode;
     
     /**
      * {@link jp.ossc.nimbus.service.http.HttpRequest HttpRequest}のアクション名を設定する。<p>
@@ -368,8 +377,39 @@ public class HttpRequest extends Request{
         responseToSessionMap = tmpMap;
     }
     
+    /**
+     * このリクエストを処理する条件式を設定する。<p>
+     * 条件式内では、セッションキーを変数として参照できる。<br>
+     *
+     * @param condition 条件式
+     */
+    public void setCondition(String condition){
+        this.condition = condition;
+    }
+    
+    /**
+     * このリクエストを処理する直前に実行するコードを設定する。<p>
+     * コード内では、"session"でセッションのマップを、"request"で、{@link jp.ossc.nimbus.service.http.HttpRequest HttpRequest}を変数として参照できる。<br>
+     *
+     * @param code インタープリタ実行するコード
+     */
+    public void setPreInterpreterCode(String code){
+        preInterpreterCode = code;
+    }
+    
+    /**
+     * このリクエストを処理した直後に実行するコードを設定する。<p>
+     * コード内では、"session"でセッションのマップを、"response"で、{@link jp.ossc.nimbus.service.http.HttpResponse HttpResponse}を変数として参照できる。<br>
+     *
+     * @param code インタープリタ実行するコード
+     */
+    public void setPostInterpreterCode(String code){
+        postInterpreterCode = code;
+    }
+    
     public void init(RushClient client, int requestId) throws Exception{
         rushClient = (HttpRushClientService)client;
+        this.requestId = requestId;
         if(parameterString != null){
             parameterList = rushClient.convertToRecordList(parameterString, parameterListSchema == null ? null : new RecordList(null, parameterListSchema));
         }else if(parameterFile != null){
@@ -395,16 +435,59 @@ public class HttpRequest extends Request{
                 rushClient.setTemplateFile(templateName, requestStreamTemplateFile);
             }
         }
+        if(condition != null){
+            compiledCondition = rushClient.compileInterpreter(condition);
+        }
+        if(preInterpreterCode != null){
+            compiledPreInterpreterCode = rushClient.compileInterpreter(preInterpreterCode);
+        }
+        if(postInterpreterCode != null){
+            compiledPostInterpreterCode = rushClient.compileInterpreter(postInterpreterCode);
+        }
+    }
+    
+    public String checkCondition(Interpreter interpreter, Map session) throws Exception{
+        if(condition == null){
+            return null;
+        }
+        Object ret = null;
+        if(compiledCondition != null){
+            ret = compiledCondition.evaluate(session);
+        }else{
+            ret = interpreter.evaluate(condition, session);
+        }
+        if(ret == null || !(ret instanceof Boolean)){
+            throw new Exception("Not returning a boolean. condition=" + condition + ", return=" + ret);
+        }
+        Boolean result = (Boolean)ret;
+        if(result.booleanValue()){
+            return null;
+        }else{
+            return "condition=" + condition + ", session=" + session;
+        }
     }
     
     public void setupRequest(
         HttpClient client,
+        Interpreter interpreter,
         jp.ossc.nimbus.service.http.HttpRequest request,
         Map session,
         int id,
         int roopCount,
         int count
     ) throws Exception{
+        
+        if(preInterpreterCode != null){
+            Map variables = new HashMap();
+            variables.put("session", session);
+            variables.put("request", request);
+            if(compiledPreInterpreterCode != null){
+                compiledPreInterpreterCode.evaluate(variables);
+            }else{
+                interpreter.evaluate(preInterpreterCode, variables);
+            }
+        }
+        
         if(headerMap != null){
             Iterator entries = headerMap.entrySet().iterator();
             while(entries.hasNext()){
@@ -498,6 +581,7 @@ public class HttpRequest extends Request{
     
     public void handleResponse(
         HttpClient client,
+        Interpreter interpreter,
         HttpResponse response,
         Map session,
         int id,
@@ -521,7 +605,52 @@ public class HttpRequest extends Request{
                 session.put((String)entry.getValue(), param);
             }
         }
+        
+        if(postInterpreterCode != null){
+            Map variables = new HashMap();
+            variables.put("session", session);
+            variables.put("response", response);
+            if(compiledPostInterpreterCode != null){
+                compiledPostInterpreterCode.evaluate(variables);
+            }else{
+                interpreter.evaluate(postInterpreterCode, variables);
+            }
+        }
     }
+    
+    public void handleException(
+        HttpClient client,
+        Exception e,
+        Map session,
+        int id,
+        int roopCount,
+        int count
+    ) throws Exception{
+        if(responseHeaderToSessionMap != null){
+            Iterator entries = responseHeaderToSessionMap.entrySet().iterator();
+            while(entries.hasNext()){
+                Map.Entry entry = (Map.Entry)entries.next();
+                session.remove((String)entry.getValue());
+            }
+        }
+        if(responseToSessionMap != null){
+            Iterator entries = responseToSessionMap.entrySet().iterator();
+            while(entries.hasNext()){
+                Map.Entry entry = (Map.Entry)entries.next();
+                session.remove((String)entry.getValue());
+            }
+        }
+    }
+    
+    public String toString(){
+        final StringBuilder buf = new StringBuilder(super.toString());
+        buf.append('{');
+        buf.append("action=").append(action);
+        buf.append(", requestId=").append(requestId);
+        buf.append('}');
+        return buf.toString();
+    }
+    
     
     public static class FileParameter{
         public File file;
