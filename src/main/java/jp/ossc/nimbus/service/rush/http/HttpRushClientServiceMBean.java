@@ -87,6 +87,20 @@ public interface HttpRushClientServiceMBean extends ServiceBaseMBean{
     public ServiceName getRecordListStreamConverterServiceName();
     
     /**
+     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}サービスのサービス名を設定する。<p>
+     *
+     * @param name Interpreterサービスのサービス名
+     */
+    public void setInterpreterServiceName(ServiceName name);
+    
+    /**
+     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}サービスのサービス名を取得する。<p>
+     *
+     * @return Interpreterサービスのサービス名
+     */
+    public ServiceName getInterpreterServiceName();
+    
+    /**
      * 文字エンコーディングを設定する。<p>
      *
      * @param encoding 文字エンコーディング
