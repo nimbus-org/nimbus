@@ -491,3 +491,5 @@ RS___00008,Failed to start rush on member node. scenaio=@0\\, id=@1,150,jp.ossc.
 RS___00009,Wait for a member node to start. scenaio=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 RS___00010,A member nodes has been activated. scenaio=@0\\, nodes=@1,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 RS___00011,Accepted start request from main node. scenaio=@0,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+RS___00012,Failed to connect the client. scenaio=@0\\, clientId=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+RS___00013,Failed to disconnect the client. scenaio=@0\\, clientId=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY

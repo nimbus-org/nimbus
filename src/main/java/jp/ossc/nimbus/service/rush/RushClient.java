@@ -53,6 +53,13 @@ public interface RushClient{
     public int getId();
     
     /**
+     * 初期化処理する。<p>
+     *
+     * @exception Exception 初期化処理に失敗した場合
+     */
+    public void init() throws Exception;
+    
+    /**
      * 接続要求を処理する。<p>
      *
      * @param request リクエスト
@@ -77,4 +84,11 @@ public interface RushClient{
      * @exception Exception 要求に失敗した場合
      */
     public void close(Request request) throws Exception;
+    
+    /**
+     * 終了処理する。<p>
+     *
+     * @exception Exception 終了処理に失敗した場合
+     */
+    public void close() throws Exception;
 }
