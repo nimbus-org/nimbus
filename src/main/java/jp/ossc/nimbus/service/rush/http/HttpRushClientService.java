@@ -163,11 +163,14 @@ public class HttpRushClientService extends ServiceBase implements RushClient, Ht
         return id;
     }
     
-    public void connect(Request request) throws Exception{
+    public void init() throws Exception{
         if(client == null){
             client = httpClientFactory.createHttpClient();
         }
         session.clear();
+    }
+    
+    public void connect(Request request) throws Exception{
         if(request != null){
             request(-1, -1, request);
         }
@@ -185,6 +188,9 @@ public class HttpRushClientService extends ServiceBase implements RushClient, Ht
         if(request != null){
             request(-1, -1, request);
         }
+    }
+    
+    public void close() throws Exception{
         session.clear();
         if(client != null){
             client.close();

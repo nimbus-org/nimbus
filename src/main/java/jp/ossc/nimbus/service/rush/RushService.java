@@ -82,11 +82,11 @@ public class RushService extends ServiceBase implements RushServiceMBean{
     private ServiceName journalServiceName;
     private int rushMemberSize = 1;
     private long rushMemberStartTimeout = 60000l;
-    private Request connectRequest;
+    private List connectRequests;
     private int connectRetryCount = 0;
     private long connectRetryInterval = 0;
     private List requests;
-    private Request closeRequest;
+    private List closeRequests;
     private boolean isStartRushOnStart;
     
     private Cluster cluster;
@@ -248,10 +248,33 @@ public class RushService extends ServiceBase implements RushServiceMBean{
         isStartRushOnStart = isStart;
     }
     
+    /**
+     * 接続要求を設定する。<p>
+     *
+     * @param request 接続要求
+     */
     public void setConnectRequest(Request request){
-        connectRequest = request;
+        setConnectRequests(new Request[]{request});
     }
     
+    /**
+     * 複数の接続要求を設定する。<p>
+     * 指定された配列要素の順番通りに1回づつ処理する。<br/>
+     *
+     * @param requests 接続要求の配列
+     */
+    public void setConnectRequests(Request[] requests){
+        this.connectRequests.clear();
+        for(int i = 0; i < requests.length; i++){
+            this.connectRequests.add(requests[i]);
+        }
+    }
+    
+    /**
+     * ループする複数の要求を設定する。<p>
+     *
+     * @param requests 要求の配列
+     */
     public void setRequests(Request[] requests){
         this.requests.clear();
         for(int i = 0; i < requests.length; i++){
@@ -259,16 +282,41 @@ public class RushService extends ServiceBase implements RushServiceMBean{
         }
     }
     
+    /**
+     * ループする要求を追加する。<p>
+     *
+     * @param request 要求
+     */
     public void addRequest(Request request){
         requests.add(request);
     }
     
+    /**
+     * 切断要求を設定する。<p>
+     *
+     * @param request 切断要求
+     */
     public void setCloseRequest(Request request){
-        closeRequest = request;
+        setCloseRequests(new Request[]{request});
+    }
+    
+    /**
+     * 複数の切断要求を設定する。<p>
+     * 指定された配列要素の順番通りに1回づつ処理する。<br/>
+     *
+     * @param requests 切断要求の配列
+     */
+    public void setCloseRequests(Request[] requests){
+        this.closeRequests.clear();
+        for(int i = 0; i < requests.length; i++){
+            this.closeRequests.add(requests[i]);
+        }
     }
     
     public void createService() throws Exception{
+        connectRequests = new LinkedList();
         requests = new LinkedList();
+        closeRequests = new LinkedList();
     }
     
     public void startService() throws Exception{
@@ -353,8 +401,11 @@ public class RushService extends ServiceBase implements RushServiceMBean{
                 client.setId(idOffset + i);
                 if(i == 0){
                     int requestId = 0;
-                    if(connectRequest != null){
-                        connectRequest.init(client, requestId++);
+                    if(connectRequests != null){
+                        Iterator itr = connectRequests.iterator();
+                        while(itr.hasNext()){
+                            ((Request)itr.next()).init(client, requestId++);
+                        }
                     }
                     if(requests != null){
                         Iterator itr = requests.iterator();
@@ -362,8 +413,11 @@ public class RushService extends ServiceBase implements RushServiceMBean{
                             ((Request)itr.next()).init(client, requestId++);
                         }
                     }
-                    if(closeRequest != null){
-                        closeRequest.init(client, requestId++);
+                    if(closeRequests != null){
+                        Iterator itr = closeRequests.iterator();
+                        while(itr.hasNext()){
+                            ((Request)itr.next()).init(client, requestId++);
+                        }
                     }
                 }
                 rushThreads[i] = new Daemon(
@@ -546,33 +600,57 @@ public class RushService extends ServiceBase implements RushServiceMBean{
             int retry = 0;
             while(true){
                 try{
-                    if(journal != null){
-                        journal.startJournal(JOURNAL_KEY_REQUEST);
-                    }
-                    putThreadContext(-1, -1);
-                    addJournal(-1, -1);
-                    client.connect(connectRequest);
-                    break;
+                    client.init();
                 }catch(Exception e){
-                    if(connectRetryCount > retry){
-                        try{
-                            if(connectRetryInterval > 0){
-                                Thread.sleep(connectRetryInterval);
+                    getLogger().write("RS___00012", new Object[]{scenarioName, client.getId()}, e);
+                    return false;
+                }
+                Iterator itr = connectRequests.iterator();
+                if(itr.hasNext()){
+                    Request connectRequest = (Request)itr.next();
+                    try{
+                        if(journal != null){
+                            journal.startJournal(JOURNAL_KEY_REQUEST);
+                        }
+                        putThreadContext(-1, -1);
+                        addJournal(-1, -1);
+                        client.connect(connectRequest);
+                        break;
+                    }catch(Exception e){
+                        if(connectRetryCount > retry){
+                            try{
+                                if(connectRetryInterval > 0){
+                                    Thread.sleep(connectRetryInterval);
+                                }
+                                retry++;
+                                continue;
+                            }catch(InterruptedException e2){
                             }
-                            retry++;
-                            continue;
-                        }catch(InterruptedException e2){
+                        }
+                        getLogger().write("RS___00012", new Object[]{scenarioName, client.getId()}, e);
+                        return false;
+                    }finally{
+                        if(journal != null){
+                            journal.endJournal();
                         }
                     }
-                    getLogger().write(
-                        "ERROR",
-                        "接続に失敗しました。",
-                        e
-                    );
-                    return false;
-                }finally{
-                    if(journal != null){
-                        journal.endJournal();
+                }
+                while(itr.hasNext()){
+                    Request connectRequest = (Request)itr.next();
+                    try{
+                        if(journal != null){
+                            journal.startJournal(JOURNAL_KEY_REQUEST);
+                        }
+                        putThreadContext(-1, -1);
+                        addJournal(-1, -1);
+                        client.connect(connectRequest);
+                    }catch(Exception e){
+                        getLogger().write("RS___00012", new Object[]{scenarioName, client.getId()}, e);
+                        return false;
+                    }finally{
+                        if(journal != null){
+                            journal.endJournal();
+                        }
                     }
                 }
             };
@@ -771,22 +849,25 @@ public class RushService extends ServiceBase implements RushServiceMBean{
         
         public void garbage(){
             try{
-                if(journal != null){
-                    journal.startJournal(JOURNAL_KEY_REQUEST);
+                Iterator itr = closeRequests.iterator();
+                while(itr.hasNext()){
+                    try{
+                        Request closeRequest = (Request)itr.next();
+                        if(journal != null){
+                            journal.startJournal(JOURNAL_KEY_REQUEST);
+                        }
+                        putThreadContext(-1, -1);
+                        addJournal(-1, -1);
+                        client.close(closeRequest);
+                    }finally{
+                        if(journal != null){
+                            journal.endJournal();
+                        }
+                    }
                 }
-                putThreadContext(-1, -1);
-                addJournal(-1, -1);
-                client.close(closeRequest);
+                client.close();
             }catch(Exception e){
-                getLogger().write(
-                    "ERROR",
-                    "切断に失敗しました。",
-                    e
-                );
-            }finally{
-                if(journal != null){
-                    journal.endJournal();
-                }
+                getLogger().write("RS___00013", new Object[]{scenarioName, client.getId()}, e);
             }
         }
         
