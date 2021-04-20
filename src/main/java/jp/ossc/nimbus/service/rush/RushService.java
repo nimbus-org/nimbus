@@ -693,11 +693,12 @@ public class RushService extends ServiceBase implements RushServiceMBean{
                     Request req = (Request)myRequests.get(i);
                     req.resetCount();
                     totalRequestCount += req.sequenceCount > 0 ? (req.count * req.sequenceCount) : req.count;
-                    if(req.randomGroup != null){
-                        if(randomGroup == null
-                            || !randomGroup.getName().equals(req.randomGroup)
-                        ){
-                            randomGroup = new RandomGroup(req.randomGroup);
+                    if(req.randomGroup != null || req.randomAllGroup != null){
+                        if(req.randomGroup != null && (randomGroup == null || randomGroup.isAll() || !randomGroup.getName().equals(req.randomGroup))){
+                            randomGroup = new RandomGroup(req.randomGroup, false);
+                            currentRequests.add(randomGroup);
+                        }else if(req.randomAllGroup != null && (randomGroup == null || !randomGroup.isAll() || !randomGroup.getName().equals(req.randomAllGroup))){
+                            randomGroup = new RandomGroup(req.randomAllGroup, true);
                             currentRequests.add(randomGroup);
                         }
                         if(req.sequenceGroup != null){
@@ -732,86 +733,23 @@ public class RushService extends ServiceBase implements RushServiceMBean{
             if(rushRequestPerSecond > 0){
                 myRoopProcessTime = (long)((double)(1000l * rushClientSize * totalRequestCount) / rushRequestPerSecond);
             }
-            RandomGroup randomGroup = null;
             while(isRushing && currentRequests.size() != 0){
                 final Iterator itr = currentRequests.iterator();
-                while(isRushing && itr.hasNext()){
-                    Object req = itr.next();
+                RandomGroup randomGroup = null;
+                while(isRushing && (randomGroup != null || itr.hasNext())){
+                    Object req = randomGroup == null ? itr.next() : randomGroup;
                     if(req instanceof RandomGroup){
                         randomGroup = (RandomGroup)req;
                         if(randomSeed == null){
                             randomSeed = new Random();
                         }
                         req = randomGroup.random(randomSeed);
-                    }else{
-                        randomGroup = null;
-                    }
-                    if(req instanceof RandomGroup.SequenceGroup){
-                        RandomGroup.SequenceGroup sequenceGroup = (RandomGroup.SequenceGroup)req;
-                        boolean isSkip = false;
-                        Iterator sequenceItr = sequenceGroup.iterator();
-                        while(isRushing && sequenceItr.hasNext()){
-                            Request request = (Request)sequenceItr.next();
-                            if(request.sequenceCount > 0){
-                                for(int i = 0, imax = request.sequenceCount; i < imax; i++){
-                                    if(isSkip){
-                                        if(i == imax - 1){
-                                            request.countDown();
-                                        }
-                                    }else{
-                                        isSkip |= !request(
-                                            count,
-                                            request,
-                                            i == imax - 1,
-                                            i,
-                                            requestInterval > 0 ? requestInterval : calcTPSInterval(totalRequestCount, requestCount, myRoopProcessTime, System.currentTimeMillis() - roopStartTime)
-                                        );
-                                        requestCount++;
-                                    }
-                                }
-                            }else{
-                                if(isSkip){
-                                    request.countDown();
-                                }else{
-                                    isSkip |= !request(
-                                        count,
-                                        request,
-                                        requestInterval > 0 ? requestInterval : calcTPSInterval(totalRequestCount, requestCount, myRoopProcessTime, System.currentTimeMillis() - roopStartTime)
-                                    );
-                                    requestCount++;
-                                }
-                            }
-                            if(!request.isRemainCount()){
-                                sequenceItr.remove();
-                                request.resetCount();
-                            }
-                        }
-                        if(sequenceGroup.size() == 0){
-                            randomGroup.remove(sequenceGroup);
-                            if(randomGroup.size() == 0){
-                                itr.remove();
-                            }
+                        requestCount = consumeRequest(itr, req, randomGroup, roopStartTime, myRoopProcessTime, requestCount);
+                        if(!randomGroup.isAll() || randomGroup.size() == 0){
+                            randomGroup = null;
                         }
                     }else{
-                        Request request = (Request)req;
-                        final long st = System.currentTimeMillis();
-                        request(
-                            count,
-                            request,
-                            requestInterval > 0 ? requestInterval : calcTPSInterval(totalRequestCount, requestCount, myRoopProcessTime, System.currentTimeMillis() - roopStartTime)
-                        );
-                        requestCount++;
-                        if(!request.isRemainCount()){
-                            if(randomGroup == null){
-                                itr.remove();
-                            }else{
-                                randomGroup.remove(request);
-                                if(randomGroup.size() == 0){
-                                    itr.remove();
-                                }
-                            }
-                            request.resetCount();
-                        }
+                        requestCount = consumeRequest(itr, req, null, roopStartTime, myRoopProcessTime, requestCount);
                     }
                     processTime = System.currentTimeMillis() - startTime;
                     if(rushTime > 0 && processTime >= rushTime){
@@ -848,6 +786,77 @@ public class RushService extends ServiceBase implements RushServiceMBean{
             
             count++;
             processTime = System.currentTimeMillis() - startTime;
+        }
+        
+        private int consumeRequest(Iterator reqItr, Object req, RandomGroup randomGroup, long roopStartTime, long myRoopProcessTime, int requestCount) throws Throwable{
+            if(req instanceof RandomGroup.SequenceGroup){
+                RandomGroup.SequenceGroup sequenceGroup = (RandomGroup.SequenceGroup)req;
+                boolean isSkip = false;
+                Iterator sequenceItr = sequenceGroup.iterator();
+                while(isRushing && sequenceItr.hasNext()){
+                    Request request = (Request)sequenceItr.next();
+                    if(request.sequenceCount > 0){
+                        for(int i = 0, imax = request.sequenceCount; i < imax; i++){
+                            if(isSkip){
+                                if(i == imax - 1){
+                                    request.countDown();
+                                }
+                            }else{
+                                isSkip |= !request(
+                                    count,
+                                    request,
+                                    i == imax - 1,
+                                    i,
+                                    requestInterval > 0 ? requestInterval : calcTPSInterval(totalRequestCount, requestCount, myRoopProcessTime, System.currentTimeMillis() - roopStartTime)
+                                );
+                                requestCount++;
+                            }
+                        }
+                    }else{
+                        if(isSkip){
+                            request.countDown();
+                        }else{
+                            isSkip |= !request(
+                                count,
+                                request,
+                                requestInterval > 0 ? requestInterval : calcTPSInterval(totalRequestCount, requestCount, myRoopProcessTime, System.currentTimeMillis() - roopStartTime)
+                            );
+                            requestCount++;
+                        }
+                    }
+                    if(!request.isRemainCount()){
+                        sequenceItr.remove();
+                        request.resetCount();
+                    }
+                }
+                if(sequenceGroup.size() == 0){
+                    randomGroup.remove(sequenceGroup);
+                    if(randomGroup.size() == 0){
+                        reqItr.remove();
+                    }
+                }
+            }else{
+                Request request = (Request)req;
+                final long st = System.currentTimeMillis();
+                request(
+                    count,
+                    request,
+                    requestInterval > 0 ? requestInterval : calcTPSInterval(totalRequestCount, requestCount, myRoopProcessTime, System.currentTimeMillis() - roopStartTime)
+                );
+                requestCount++;
+                if(!request.isRemainCount()){
+                    if(randomGroup == null){
+                        reqItr.remove();
+                    }else{
+                        randomGroup.remove(request);
+                        if(randomGroup.size() == 0){
+                            reqItr.remove();
+                        }
+                    }
+                    request.resetCount();
+                }
+            }
+            return requestCount;
         }
         
         public void garbage(){
@@ -953,14 +962,20 @@ public class RushService extends ServiceBase implements RushServiceMBean{
         private class RandomGroup{
             private final String name;
             private final List list = new ArrayList();
+            private boolean isAll = false;
             private int totalCount;
             
-            public RandomGroup(String name){
+            public RandomGroup(String name, boolean isAll){
                 this.name = name;
+                this.isAll = isAll;
             }
             
             public String getName(){
                 return name;
+            }
+            
+            public boolean isAll(){
+                return isAll;
             }
             
             public void add(Object req){

@@ -38,6 +38,7 @@ package jp.ossc.nimbus.service.rush;
  */
 public abstract class Request{
     protected int count = 1;
+    protected String randomAllGroup;
     protected String randomGroup;
     protected String sequenceGroup;
     protected int sequenceCount;
@@ -68,7 +69,7 @@ public abstract class Request{
     
     /**
      * ランダムグループ名を設定する。<p>
-     * 同じランダムグループ内のリクエストは、順不同で処理される。<br>
+     * 同じランダムグループ内のどれか１つのリクエストがランダムに選択されて処理される。<br>
      *
      * @param group ランダムグループ名
      */
@@ -86,8 +87,27 @@ public abstract class Request{
     }
     
     /**
+     * ランダムオールグループ名を設定する。<p>
+     * 同じランダムオールグループ内のリクエストは、順不同で全て処理される。<br>
+     *
+     * @param group ランダムオールグループ名
+     */
+    public void setRandomAllGroup(String group){
+        randomAllGroup = group;
+    }
+    
+    /**
+     * ランダムオールグループ名を取得する。<p>
+     *
+     * @return ランダムオールグループ名
+     */
+    public String getRandomAllGroup(){
+        return randomAllGroup;
+    }
+    
+    /**
      * 直列グループ名を設定する。<p>
-     * 同じ直列グループ内のリクエストは、同一順序で処理される。<br>
+     * ランダムグループ内の同じ直列グループ内のリクエストは、同一順序で処理される。<br>
      *
      * @param group 直列グループ名
      */
