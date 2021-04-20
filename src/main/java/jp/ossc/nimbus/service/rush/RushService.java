@@ -100,6 +100,7 @@ public class RushService extends ServiceBase implements RushServiceMBean{
     private int rushClientSize;
     private double rushRoopPerSecond;
     private double rushRequestPerSecond;
+    private int rushConnectStepSize = 0;
     
     public void setScenarioName(String name){
         scenarioName = name;
@@ -427,24 +428,6 @@ public class RushService extends ServiceBase implements RushServiceMBean{
                     getServiceName() + " Rush thread[" + i + "]"
                 );
             }
-            if(connectStepSize > 0){
-                int connectSize = 0;
-                for(int i = 0; i < rushThreads.length; i++){
-                    if(connectSize >= connectStepSize){
-                        connectSize = 0;
-                        Thread.sleep(connectStepInterval);
-                        if(!isRushing){
-                            return;
-                        }
-                    }
-                    rushThreads[i].start();
-                    connectSize++;
-                }
-            }else{
-                for(int i = 0; i < rushThreads.length; i++){
-                    rushThreads[i].start();
-                }
-            }
             
             if(connection != null && cluster.isMain()){
                 Message message = null;
@@ -470,6 +453,26 @@ public class RushService extends ServiceBase implements RushServiceMBean{
                 }
             }else if(monitor != null){
                 monitor.notifyMonitor();
+            }
+            
+            rushConnectStepSize = (connectStepSize / rushMemberSize) + (rushMemberIndex == rushMemberSize - 1 ? connectStepSize % rushMemberSize : 0);
+            if(rushConnectStepSize > 0){
+                int connectSize = 0;
+                for(int i = 0; i < rushThreads.length; i++){
+                    if(connectSize >= rushConnectStepSize){
+                        connectSize = 0;
+                        Thread.sleep(connectStepInterval);
+                        if(!isRushing){
+                            return;
+                        }
+                    }
+                    rushThreads[i].start();
+                    connectSize++;
+                }
+            }else{
+                for(int i = 0; i < rushThreads.length; i++){
+                    rushThreads[i].start();
+                }
             }
             
             if(rushThreads != null){
