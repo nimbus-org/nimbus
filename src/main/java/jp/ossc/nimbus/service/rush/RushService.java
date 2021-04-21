@@ -60,7 +60,7 @@ import jp.ossc.nimbus.util.WaitSynchronizeMonitor;
  *
  * @author M.Takata
  */
-public class RushService extends ServiceBase implements RushServiceMBean{
+public class RushService extends ServiceBase implements Rush, RushServiceMBean{
     
     private String scenarioName;
     private int clientSize = 1;
@@ -88,6 +88,7 @@ public class RushService extends ServiceBase implements RushServiceMBean{
     private List requests;
     private List closeRequests;
     private boolean isStartRushOnStart;
+    private boolean isNoWait = true;
     
     private Cluster cluster;
     private ServerConnectionFactory requestConnectionFactory;
@@ -249,6 +250,13 @@ public class RushService extends ServiceBase implements RushServiceMBean{
         isStartRushOnStart = isStart;
     }
     
+    public boolean isNoWait(){
+        return isNoWait;
+    }
+    public void setNoWait(boolean noWait){
+        isNoWait = noWait;
+    }
+    
     /**
      * 接続要求を設定する。<p>
      *
@@ -349,7 +357,7 @@ public class RushService extends ServiceBase implements RushServiceMBean{
     protected void postStartService() throws Exception{
         super.postStartService();
         if(isStartRushOnStart){
-            startRush();
+            startRush(isNoWait);
         }
     }
     
@@ -357,138 +365,134 @@ public class RushService extends ServiceBase implements RushServiceMBean{
         stopRush();
     }
     
-    public void startRush() throws Exception{
+    public void startRush(boolean noWait) throws Exception{
         if(getState() != STARTED || isRushing){
             return;
         }
         isRushing = true;
         
-        try{
-            RequestServerConnection connection = null;
-            if(requestConnectionFactory != null){
-                connection = (RequestServerConnection)requestConnectionFactory.getServerConnection();
-            }
-            SynchronizeMonitor monitor = null;
-            Set clients = null;
-            if(connection != null){
-                if(cluster.isMain()){
-                    rushMemberIndex = 0;
-                    messageReceiver.addSubject(new MyMessageListener(connection), scenarioName);
-                    Message message = null;
-                    getLogger().write("RS___00009", scenarioName);
-                    do{
-                        Thread.sleep(1000l);
-                        message = connection.createMessage(scenarioName, null);
-                        clients = connection.getReceiveClientIds(message);
-                    }while(clients.size() < rushMemberSize - 1);
-                    getLogger().write("RS___00010", new Object[]{scenarioName, clients});
-                }else{
-                    monitor = new WaitSynchronizeMonitor();
-                    monitor.initMonitor();
-                    messageReceiver.addSubject(new MyMessageListener(connection, monitor), scenarioName);
-                    getLogger().write("RS___00001", new Object[]{scenarioName, messageReceiver.getId()});
-                    monitor.waitMonitor();
-                    getLogger().write("RS___00011", scenarioName);
-                    monitor.releaseMonitor();
-                }
-            }
-            rushClientSize = (clientSize / rushMemberSize) + (rushMemberIndex == rushMemberSize - 1 ? clientSize % rushMemberSize : 0);
-            rushRoopPerSecond = roopPerSecond / (double)rushMemberSize;
-            rushRequestPerSecond = requestPerSecond / (double)rushMemberSize;
-            rushThreads = new Daemon[rushClientSize];
-            final int idOffset = (clientSize / rushMemberSize * rushMemberIndex);
-            for(int i = 0; i < rushThreads.length; i++){
-                RushClient client = (RushClient)ServiceManagerFactory.getServiceObject(rushClientFactoryServiceName);
-                client.setId(idOffset + i);
-                if(i == 0){
-                    int requestId = 0;
-                    if(connectRequests != null){
-                        Iterator itr = connectRequests.iterator();
-                        while(itr.hasNext()){
-                            ((Request)itr.next()).init(client, requestId++);
-                        }
-                    }
-                    if(requests != null){
-                        Iterator itr = requests.iterator();
-                        while(itr.hasNext()){
-                            ((Request)itr.next()).init(client, requestId++);
-                        }
-                    }
-                    if(closeRequests != null){
-                        Iterator itr = closeRequests.iterator();
-                        while(itr.hasNext()){
-                            ((Request)itr.next()).init(client, requestId++);
-                        }
-                    }
-                }
-                rushThreads[i] = new Daemon(
-                    new RushTask(client)
-                );
-                rushThreads[i].setName(
-                    getServiceName() + " Rush thread[" + i + "]"
-                );
-            }
-            
-            if(connection != null && cluster.isMain()){
+        RequestServerConnection connection = null;
+        if(requestConnectionFactory != null){
+            connection = (RequestServerConnection)requestConnectionFactory.getServerConnection();
+        }
+        SynchronizeMonitor monitor = null;
+        Set clients = null;
+        if(connection != null){
+            if(cluster.isMain()){
+                rushMemberIndex = 0;
+                messageReceiver.addSubject(new MyMessageListener(connection), scenarioName);
                 Message message = null;
-                Iterator itr = clients.iterator();
-                int index = 0;
-                while(itr.hasNext()){
-                    Object clientId = itr.next();
+                getLogger().write("RS___00009", scenarioName);
+                do{
+                    Thread.sleep(1000l);
                     message = connection.createMessage(scenarioName, null);
-                    message.setObject(Integer.valueOf(++index));
-                    message.addDestinationId(clientId);
-                    getLogger().write("RS___00006", new Object[]{scenarioName, clientId});
-                    try{
-                        Message[] responses = connection.request(message, 1, rushMemberStartTimeout);
-                        Object response = responses[0].getObject();
-                        if(response != null){
-                            getLogger().write("RS___00008", new Object[]{scenarioName, clientId}, (Throwable)response);
-                        }else{
-                            getLogger().write("RS___00007", new Object[]{scenarioName, clientId});
-                        }
-                    }catch(MessageCommunicateException e){
-                        getLogger().write("RS___00008", new Object[]{scenarioName, clientId}, e);
-                    }
-                }
-            }else if(monitor != null){
-                monitor.notifyMonitor();
-            }
-            
-            rushConnectStepSize = (connectStepSize / rushMemberSize) + (rushMemberIndex == rushMemberSize - 1 ? connectStepSize % rushMemberSize : 0);
-            if(rushConnectStepSize > 0){
-                int connectSize = 0;
-                for(int i = 0; i < rushThreads.length; i++){
-                    if(connectSize >= rushConnectStepSize){
-                        connectSize = 0;
-                        Thread.sleep(connectStepInterval);
-                        if(!isRushing){
-                            return;
-                        }
-                    }
-                    rushThreads[i].start();
-                    connectSize++;
-                }
+                    clients = connection.getReceiveClientIds(message);
+                }while(clients.size() < rushMemberSize - 1);
+                getLogger().write("RS___00010", new Object[]{scenarioName, clients});
             }else{
-                for(int i = 0; i < rushThreads.length; i++){
-                    rushThreads[i].start();
-                }
+                monitor = new WaitSynchronizeMonitor();
+                monitor.initMonitor();
+                messageReceiver.addSubject(new MyMessageListener(connection, monitor), scenarioName);
+                getLogger().write("RS___00001", new Object[]{scenarioName, messageReceiver.getId()});
+                monitor.waitMonitor();
+                getLogger().write("RS___00011", scenarioName);
+                monitor.releaseMonitor();
             }
-            
-            if(rushThreads != null){
-                synchronized(rushThreads){
-                    if(rushThreads != null){
-                        for(int i = 0; i < rushThreads.length; i++){
-                            if(rushThreads[i].getDaemonThread() != null){
-                                rushThreads[i].getDaemonThread().join();
-                            }
-                        }
-                        rushThreads = null;
+        }
+        rushClientSize = (clientSize / rushMemberSize) + (rushMemberIndex == rushMemberSize - 1 ? clientSize % rushMemberSize : 0);
+        rushRoopPerSecond = roopPerSecond / (double)rushMemberSize;
+        rushRequestPerSecond = requestPerSecond / (double)rushMemberSize;
+        rushThreads = new Daemon[rushClientSize];
+        final int idOffset = (clientSize / rushMemberSize * rushMemberIndex);
+        for(int i = 0; i < rushThreads.length; i++){
+            RushClient client = (RushClient)ServiceManagerFactory.getServiceObject(rushClientFactoryServiceName);
+            client.setId(idOffset + i);
+            if(i == 0){
+                int requestId = 0;
+                if(connectRequests != null){
+                    Iterator itr = connectRequests.iterator();
+                    while(itr.hasNext()){
+                        ((Request)itr.next()).init(client, requestId++);
+                    }
+                }
+                if(requests != null){
+                    Iterator itr = requests.iterator();
+                    while(itr.hasNext()){
+                        ((Request)itr.next()).init(client, requestId++);
+                    }
+                }
+                if(closeRequests != null){
+                    Iterator itr = closeRequests.iterator();
+                    while(itr.hasNext()){
+                        ((Request)itr.next()).init(client, requestId++);
                     }
                 }
             }
-        }finally{
-            isRushing = false;
+            rushThreads[i] = new Daemon(
+                new RushTask(client)
+            );
+            rushThreads[i].setName(
+                getServiceName() + " Rush thread[" + i + "]"
+            );
+        }
+        
+        if(connection != null && cluster.isMain()){
+            Message message = null;
+            Iterator itr = clients.iterator();
+            int index = 0;
+            while(itr.hasNext()){
+                Object clientId = itr.next();
+                message = connection.createMessage(scenarioName, null);
+                message.setObject(Integer.valueOf(++index));
+                message.addDestinationId(clientId);
+                getLogger().write("RS___00006", new Object[]{scenarioName, clientId});
+                try{
+                    Message[] responses = connection.request(message, 1, rushMemberStartTimeout);
+                    Object response = responses[0].getObject();
+                    if(response != null){
+                        getLogger().write("RS___00008", new Object[]{scenarioName, clientId}, (Throwable)response);
+                    }else{
+                        getLogger().write("RS___00007", new Object[]{scenarioName, clientId});
+                    }
+                }catch(MessageCommunicateException e){
+                    getLogger().write("RS___00008", new Object[]{scenarioName, clientId}, e);
+                }
+            }
+        }else if(monitor != null){
+            monitor.notifyMonitor();
+        }
+        
+        rushConnectStepSize = (connectStepSize / rushMemberSize) + (rushMemberIndex == rushMemberSize - 1 ? connectStepSize % rushMemberSize : 0);
+        if(rushConnectStepSize > 0){
+            int connectSize = 0;
+            for(int i = 0; i < rushThreads.length; i++){
+                if(connectSize >= rushConnectStepSize){
+                    connectSize = 0;
+                    Thread.sleep(connectStepInterval);
+                    if(!isRushing){
+                        return;
+                    }
+                }
+                rushThreads[i].start();
+                connectSize++;
+            }
+        }else{
+            for(int i = 0; i < rushThreads.length; i++){
+                rushThreads[i].start();
+            }
+        }
+        
+        if(!noWait && rushThreads != null){
+            synchronized(rushThreads){
+                if(rushThreads != null){
+                    for(int i = 0; i < rushThreads.length; i++){
+                        if(rushThreads[i].getDaemonThread() != null){
+                            rushThreads[i].getDaemonThread().join();
+                        }
+                    }
+                    rushThreads = null;
+                }
+            }
         }
     }
     
@@ -618,7 +622,6 @@ public class RushService extends ServiceBase implements RushServiceMBean{
                         putThreadContext(-1, -1);
                         addJournal(-1, -1);
                         client.connect(connectRequest);
-                        break;
                     }catch(Exception e){
                         if(connectRetryCount > retry){
                             try{
@@ -656,7 +659,8 @@ public class RushService extends ServiceBase implements RushServiceMBean{
                         }
                     }
                 }
-            };
+                break;
+            }
             startTime = System.currentTimeMillis();
             getLogger().write("RS___00002", new Object[]{scenarioName, client.getId()});
             return true;
@@ -1214,7 +1218,7 @@ public class RushService extends ServiceBase implements RushServiceMBean{
         }
         RushService rush = (RushService)ServiceManagerFactory.getServiceObject(serviceName);
         try{
-            rush.startRush();
+            rush.startRush(false);
         }finally{
             if(servicePaths != null){
                 for(int i = servicePaths.size(); --i >= 0;){

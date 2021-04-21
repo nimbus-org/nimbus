@@ -495,3 +495,4 @@ RS___00012,Failed to connect the client. scenaio=@0\\, clientId=@1,150,jp.ossc.n
 RS___00013,Failed to disconnect the client. scenaio=@0\\, clientId=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 RS___00014,Request failed. scenaio=@0\\, clientId=@1\\, roopNo=@2\\, requestNo=@3\\, request=@4,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 RS___00015,Request skipped. scenaio=@0\\, clientId=@1\\, roopNo=@2\\, requestNo=@3\\, request=@4\\, cause=@5,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+PRS__00001,Failed to start rush. scenaio=@0,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
