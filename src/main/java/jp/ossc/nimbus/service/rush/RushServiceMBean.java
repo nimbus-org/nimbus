@@ -367,9 +367,26 @@ public interface RushServiceMBean extends ServiceBaseMBean{
     /**
      * ラッシュを開始する。<p>
      *
+     * @param noWait ラッシュが終了するのを待つ場合、false
      * @exception Exception ラッシュの開始に失敗した場合
      */
-    public void startRush() throws Exception;
+    public void startRush(boolean noWait) throws Exception;
+    
+    /**
+     * サービスの開始時に、ラッシュを開始する時に、ラッシュが終了するのを待つかどうかを判定する。<p>
+     * デフォルトは、trueで、待たない。<br>
+     *
+     * @return falseの場合は、待つ
+     */
+    public boolean isNoWait();
+    
+    /**
+     * サービスの開始時に、ラッシュを開始する時に、ラッシュが終了するのを待つかどうかを設定する。<p>
+     * デフォルトは、trueで、待たない。<br>
+     *
+     * @param noWait 待つ場合は、false
+     */
+    public void setNoWait(boolean noWait);
     
     /**
      * ラッシュを停止する。<p>
