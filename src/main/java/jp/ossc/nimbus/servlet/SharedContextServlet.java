@@ -930,7 +930,7 @@ public class SharedContextServlet extends HttpServlet{
                 buf.append("<form method=\"POST\" action=\"").append(getCurrentPath(req)).append("\">");
                 buf.append("<input type=\"hidden\" name=\"action\" value=\"update\"/>");
                 buf.append("<input type=\"hidden\" name=\"name\" value=\"").append(contextName).append("\"/>");
-                buf.append("<textarea name=\"key\" hidden>").append(URLEncoder.encode(key, "UTF-8")).append("</textarea>");
+                buf.append("<textarea name=\"key\" hidden>").append(key).append("</textarea>");
             }
             buf.append("<table border=\"1\" cellspacing=\"0\" cellpadding=\"3\" width=\"90%\">");
             buf.append("<tr><th bgcolor=\"#cccccc\">type</th><td colspan=\"4\">").append(value.getClass().getName()).append("</td></tr>");
