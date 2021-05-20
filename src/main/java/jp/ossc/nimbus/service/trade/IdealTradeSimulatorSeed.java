@@ -42,6 +42,8 @@ import jp.ossc.nimbus.service.ga.*;
  */
 public class IdealTradeSimulatorSeed extends TradeSimulatorSeed{
     
+    private static final long serialVersionUID = -6532432369180441255L;
+    
     protected TradeSimulator idealTradeSimulator;
     
     public void setIdealTradeSimulator(TradeSimulator tradeSimulator){

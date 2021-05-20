@@ -49,7 +49,7 @@ public class MACDTradeSignFactoryService extends FactoryServiceBase implements M
     /**
      * 
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -1989092545417501804L;
     protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
     protected boolean isShortSelling;
     protected boolean isOnlyReverseTrade;
@@ -187,7 +187,7 @@ public class MACDTradeSignFactoryService extends FactoryServiceBase implements M
         /**
          * 
          */
-        private static final long serialVersionUID = 1L;
+        private static final long serialVersionUID = 5639188042889402304L;
         protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
         protected boolean isShortSelling;
         protected int shortEMAPeriod;

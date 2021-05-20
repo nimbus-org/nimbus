@@ -54,6 +54,8 @@ import jp.ossc.nimbus.service.ga.GeneticAlgorithm;
  * @author M.Takata
  */
 public class GeneticAlgorithmTradeSimulatorFactoryService extends FactoryServiceBase implements GeneticAlgorithmTradeSimulatorFactoryServiceMBean{
+    
+    private static final long serialVersionUID = 7218981434381481699L;
 
     protected ServiceName tradeSimulatorSeedServiceName;
     protected ServiceName geneticAlgorithmServiceName;
@@ -160,6 +162,8 @@ public class GeneticAlgorithmTradeSimulatorFactoryService extends FactoryService
     }
 
     public static class GeneticAlgorithmTradeSimulator implements TradeSimulator, java.io.Serializable, Cloneable{
+        
+        private static final long serialVersionUID = -5165734409811194663L;
         protected TradeSimulatorSeed tradeSimulatorSeed;
         protected GeneticAlgorithm geneticAlgorithm;
         protected int forwardTestTerm;

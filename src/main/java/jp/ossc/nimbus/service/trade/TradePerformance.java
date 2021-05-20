@@ -39,147 +39,21 @@ import java.util.*;
  *
  * @author M.Takata
  */
-public class TradePerformance implements Serializable{
+public class TradePerformance extends AbstractTradePerformance implements Serializable{
     
     /**
      * シリアライズUID
      */
-    private static final long serialVersionUID = 1L;
-
+    private static final long serialVersionUID = 5813378344320353263L;
+    
     /**
      * 取引シミュレータ。<p>
      */
     transient protected TradeSimulator tradeSimulator;
     
-    /**
-     * 引き分けの取引を勝ち取引に含めるかどうか。<p>
-     * デフォルトは、trueで含める。<br>
-     */
-    protected boolean isContainsDrawToWin = true;
-    
     protected int timeSeriesIndex = -1;
     protected int tradeIndex = -1;
     protected Trade currentTrade;
-    
-    /**
-     * 総利益。<p>
-     */
-    protected double totalProfit;
-    
-    /**
-     * 総利益率。<p>
-     */
-    protected double totalProfitRatio;
-    
-    /**
-     * 保有中取引の総利益。<p>
-     */
-    protected double totalProfitInHolding;
-    
-    /**
-     * 保有中取引の総利益率。<p>
-     */
-    protected double totalProfitRatioInHolding;
-    
-    /**
-     * 総損失。<p>
-     */
-    protected double totalLoss;
-    
-    /**
-     * 総損失率。<p>
-     */
-    protected double totalLossRatio;
-    
-    /**
-     * 保有中取引の総損失。<p>
-     */
-    protected double totalLossInHolding;
-    
-    /**
-     * 保有中取引の総損失率。<p>
-     */
-    protected double totalLossRatioInHolding;
-    
-    /**
-     * 取引回数。<p>
-     */
-    protected int tradeNum;
-    
-    /**
-     * 保有中取引の取引回数。<p>
-     */
-    protected int tradeNumInHolding;
-    
-    /**
-     * 勝ち取引回数。<p>
-     */
-    protected int winTradeNum;
-    
-    /**
-     * 保有中取引の勝ち取引回数。<p>
-     */
-    protected int winTradeNumInHolding;
-    
-    /**
-     * 最大利益。<p>
-     */
-    protected double maxProfit;
-    
-    /**
-     * 保有中取引の最大利益。<p>
-     */
-    protected double maxProfitInHolding;
-    
-    /**
-     * 最大利益率。<p>
-     */
-    protected double maxProfitRatio;
-    
-    /**
-     * 保有中取引の最大利益率。<p>
-     */
-    protected double maxProfitRatioInHolding;
-    
-    /**
-     * 最大損失。<p>
-     */
-    protected double maxLoss;
-    
-    /**
-     * 保有中取引の最大損失。<p>
-     */
-    protected double maxLossInHolding;
-    
-    /**
-     * 最大損失率。<p>
-     */
-    protected double maxLossRatio;
-    
-    /**
-     * 保有中取引の最大損失率。<p>
-     */
-    protected double maxLossRatioInHolding;
-    
-    /**
-     * 取引対象開始日時。<p>
-     */
-    protected Date tradeTargetStartTime;
-    
-    /**
-     * 取引対象終了日時。<p>
-     */
-    protected Date tradeTargetEndTime;
-    
-    /**
-     * 総保有期間[ms]。<p>
-     */
-    protected long totalHoldingTermMillis;
-    
-    /**
-     * 保有中取引の総保有期間[ms]。<p>
-     */
-    protected long totalHoldingTermMillisInHolding;
     
     /**
      * 計算対象となる取引シミュレータを設定する。<p>
@@ -190,35 +64,6 @@ public class TradePerformance implements Serializable{
         tradeSimulator = simulator;
     }
     
-    
-    /**
-     * 引き分けの取引を勝ち取引に含めるかどうかを設定する。<p>
-     * デフォルトは、trueで含める。<br>
-     *
-     * @param isContains 引き分けの取引を勝ち取引に含める場合は、true。引き分けの取引を負け取引に含める場合は、false
-     */
-    public void setContainsDrawToWin(boolean isContains){
-        isContainsDrawToWin = isContains;
-    }
-    
-    /**
-     * 引き分けの取引を勝ち取引に含めるかどうかを判定する。<p>
-     *
-     * @return trueの場合は、引き分けの取引を勝ち取引に含める。falseの場合は、引き分けの取引を負け取引に含める
-     */
-    public boolean isContainsDrawToWin(){
-        return isContainsDrawToWin;
-    }
-    
-    /**
-     * 総利益を取得する。<p>
-     *
-     * @return 総利益
-     */
-    public double getTotalProfit(){
-        return totalProfit;
-    }
-    
     /**
      * 保有中取引の総利益を取得する。<p>
      *
@@ -226,56 +71,11 @@ public class TradePerformance implements Serializable{
      */
     public double getTotalProfitInHolding(){
         if(currentTrade == null){
-            return totalProfitInHolding;
+            return super.getTotalProfitInHolding();
         }else{
             final double profit = currentTrade.getProfit(getCurrentTimeSeriesElement().getValue());
-            return profit > 0 ? (totalProfitInHolding + profit) : totalProfitInHolding;
+            return profit > 0 ? (super.getTotalProfitInHolding() + profit) : super.getTotalProfitInHolding();
         }
-    }
-    
-    /**
-     * 保有中取引を含む総利益を取得する。<p>
-     *
-     * @return 保有中取引を含む総評価利益
-     */
-    public double getTotalProfitWithHolding(){
-        return totalProfit + getTotalProfitInHolding();
-    }
-    
-    /**
-     * 平均利益を取得する。<p>
-     *
-     * @return 平均利益
-     */
-    public double getAverageProfit(){
-        return winTradeNum == 0 ? 0d  : totalProfit / (double)winTradeNum;
-    }
-    
-    /**
-     * 保有中取引の平均利益を取得する。<p>
-     *
-     * @return 保有中取引の平均利益
-     */
-    public double getAverageProfitInHolding(){
-        return getWinTradeNumInHolding() == 0 ? 0d  : (getTotalProfitInHolding() / (double)getWinTradeNumInHolding());
-    }
-    
-    /**
-     * 保有中取引を含む平均利益を取得する。<p>
-     *
-     * @return 保有中取引を含む平均利益
-     */
-    public double getAverageProfitWithHolding(){
-        return getWinTradeNumWithHolding() == 0 ? 0d  : (getTotalProfitWithHolding() / (double)getWinTradeNumWithHolding());
-    }
-    
-    /**
-     * 最大利益を取得する。<p>
-     *
-     * @return 最大利益
-     */
-    public double getMaxProfit(){
-        return maxProfit;
     }
     
     /**
@@ -285,29 +85,11 @@ public class TradePerformance implements Serializable{
      */
     public double getMaxProfitInHolding(){
         if(currentTrade == null){
-            return maxProfitInHolding;
+            return super.getMaxProfitInHolding();
         }else{
             final double profit = currentTrade.getProfit(getCurrentTimeSeriesElement().getValue());
-            return Math.max(maxProfitInHolding, profit);
+            return Math.max(super.getMaxProfitInHolding(), profit);
         }
-    }
-    
-    /**
-     * 保有中取引を含む最大利益を取得する。<p>
-     *
-     * @return 保有中取引を含む最大利益
-     */
-    public double getMaxProfitWithHolding(){
-        return Math.max(maxProfit, getMaxProfitInHolding());
-    }
-    
-    /**
-     * 総利益率を取得する。<p>
-     *
-     * @return 総利益率
-     */
-    public double getTotalProfitRatio(){
-        return totalProfitRatio;
     }
     
     /**
@@ -317,56 +99,11 @@ public class TradePerformance implements Serializable{
      */
     public double getTotalProfitRatioInHolding(){
         if(currentTrade == null){
-            return totalProfitRatioInHolding;
+            return super.getTotalProfitRatioInHolding();
         }else{
             final double profitRatio = currentTrade.getProfitRatio(getCurrentTimeSeriesElement().getValue());
-            return profitRatio > 0 ? (totalProfitRatioInHolding + profitRatio) : totalProfitRatioInHolding;
+            return profitRatio > 0 ? (super.getTotalProfitRatioInHolding() + profitRatio) : super.getTotalProfitRatioInHolding();
         }
-    }
-    
-    /**
-     * 保有中取引を含む総利益率を取得する。<p>
-     *
-     * @return 保有中取引を含む総利益率
-     */
-    public double getTotalProfitRatioWithHolding(){
-        return totalProfitRatio + getTotalProfitRatioInHolding();
-    }
-    
-    /**
-     * 平均利益率を取得する。<p>
-     *
-     * @return 平均利益率
-     */
-    public double getAverageProfitRatio(){
-        return winTradeNum == 0 ? 0d  : totalProfitRatio / (double)winTradeNum;
-    }
-    
-    /**
-     * 保有中取引の平均利益率を取得する。<p>
-     *
-     * @return 保有中取引の平均利益率
-     */
-    public double getAverageProfitRatioInHolding(){
-        return getWinTradeNumInHolding() == 0 ? 0d  : (getTotalProfitRatioInHolding() / (double)getWinTradeNumInHolding());
-    }
-    
-    /**
-     * 保有中取引を含む平均利益率を取得する。<p>
-     *
-     * @return 保有中取引を含む平均利益率
-     */
-    public double getAverageProfitRatioWithHolding(){
-        return getWinTradeNumWithHolding() == 0 ? 0d  : (getTotalProfitRatioWithHolding() / (double)getWinTradeNumWithHolding());
-    }
-    
-    /**
-     * 最大利益率を取得する。<p>
-     *
-     * @return 最大利益率
-     */
-    public double getMaxProfitRatio(){
-        return maxProfitRatio;
     }
     
     /**
@@ -376,29 +113,11 @@ public class TradePerformance implements Serializable{
      */
     public double getMaxProfitRatioInHolding(){
         if(currentTrade == null){
-            return maxProfitRatioInHolding;
+            return super.getMaxProfitRatioInHolding();
         }else{
             final double profitRatio = currentTrade.getProfitRatio(getCurrentTimeSeriesElement().getValue());
-            return Math.max(maxProfitRatioInHolding, profitRatio);
+            return Math.max(super.getMaxProfitRatioInHolding(), profitRatio);
         }
-    }
-    
-    /**
-     * 保有中取引を含む最大利益率を取得する。<p>
-     *
-     * @return 保有中取引を含む最大利益率
-     */
-    public double getMaxProfitRatioWithHolding(){
-        return Math.max(maxProfitRatio, getMaxProfitRatioInHolding());
-    }
-    
-    /**
-     * 総損失を取得する。<p>
-     *
-     * @return 総損失
-     */
-    public double getTotalLoss(){
-        return totalLoss;
     }
     
     /**
@@ -408,59 +127,11 @@ public class TradePerformance implements Serializable{
      */
     public double getTotalLossInHolding(){
         if(currentTrade == null){
-            return totalLossInHolding;
+            return super.getTotalLossInHolding();
         }else{
             final double profit = currentTrade.getProfit(getCurrentTimeSeriesElement().getValue());
-            return profit < 0 ? (totalLossInHolding + profit) : totalLossInHolding;
+            return profit < 0 ? (super.getTotalLossInHolding() + profit) : super.getTotalLossInHolding();
         }
-    }
-    
-    /**
-     * 保有中取引を含む総損失を取得する。<p>
-     *
-     * @return 保有中取引を含む総損失
-     */
-    public double getTotalLossWithHolding(){
-        return totalLoss + getTotalLossInHolding();
-    }
-    
-    /**
-     * 平均損失を取得する。<p>
-     *
-     * @return 平均損失
-     */
-    public double getAverageLoss(){
-        final int lossTradeNum = tradeNum - winTradeNum;
-        return lossTradeNum == 0 ? 0d : totalLoss / (double)lossTradeNum;
-    }
-    
-    /**
-     * 保有中取引の平均損失を取得する。<p>
-     *
-     * @return 保有中取引の平均損失
-     */
-    public double getAverageLossInHolding(){
-        final int lossTradeNum = getTradeNumInHolding() - getWinTradeNumInHolding();
-        return lossTradeNum == 0 ? 0d : getTotalLossInHolding() / (double)lossTradeNum;
-    }
-    
-    /**
-     * 保有中取引を含む平均損失を取得する。<p>
-     *
-     * @return 保有中取引を含む平均損失
-     */
-    public double getAverageLossWithHolding(){
-        final int lossTradeNum = getTradeNumWithHolding() - getWinTradeNumWithHolding();
-        return lossTradeNum == 0 ? 0d : (getTotalLossWithHolding() / (double)lossTradeNum);
-    }
-    
-    /**
-     * 最大損失を取得する。<p>
-     *
-     * @return 最大損失
-     */
-    public double getMaxLoss(){
-        return maxLoss;
     }
     
     /**
@@ -470,29 +141,11 @@ public class TradePerformance implements Serializable{
      */
     public double getMaxLossInHolding(){
         if(currentTrade == null){
-            return maxLossInHolding;
+            return super.getMaxLossInHolding();
         }else{
             final double profit = currentTrade.getProfit(getCurrentTimeSeriesElement().getValue());
-            return Math.min(maxLossInHolding, profit);
+            return Math.min(super.getMaxLossInHolding(), profit);
         }
-    }
-    
-    /**
-     * 保有中取引を含む最大損失を取得する。<p>
-     *
-     * @return 保有中取引を含む最大損失
-     */
-    public double getMaxLossWithHolding(){
-        return Math.max(maxLoss, getMaxLossInHolding());
-    }
-    
-    /**
-     * 総損失率を取得する。<p>
-     *
-     * @return 総損失率
-     */
-    public double getTotalLossRatio(){
-        return totalLossRatio;
     }
     
     /**
@@ -502,59 +155,11 @@ public class TradePerformance implements Serializable{
      */
     public double getTotalLossRatioInHolding(){
         if(currentTrade == null){
-            return totalLossRatioInHolding;
+            return super.getTotalLossRatioInHolding();
         }else{
             final double profitRatio = currentTrade.getProfitRatio(getCurrentTimeSeriesElement().getValue());
-            return profitRatio < 0 ? (totalLossRatioInHolding + profitRatio) : totalLossRatioInHolding;
+            return profitRatio < 0 ? (super.getTotalLossRatioInHolding() + profitRatio) : super.getTotalLossRatioInHolding();
         }
-    }
-    
-    /**
-     * 保有中取引を含む総損失率を取得する。<p>
-     *
-     * @return 保有中取引を含む総損失率
-     */
-    public double getTotalLossRatioWithHolding(){
-        return totalLossRatio + getTotalLossRatioInHolding();
-    }
-    
-    /**
-     * 平均損失率を取得する。<p>
-     *
-     * @return 平均損失率
-     */
-    public double getAverageLossRatio(){
-        final int lossTradeNum = tradeNum - winTradeNum;
-        return lossTradeNum == 0 ? 0d : totalLossRatio / (double)lossTradeNum;
-    }
-    
-    /**
-     * 保有中取引の平均損失率を取得する。<p>
-     *
-     * @return 保有中取引の平均損失率
-     */
-    public double getAverageLossRatioInHolding(){
-        final int lossTradeNum = getTradeNumInHolding() - getWinTradeNumInHolding();
-        return lossTradeNum == 0 ? 0d : getTotalLossRatioInHolding() / (double)lossTradeNum;
-    }
-    
-    /**
-     * 保有中取引を含む平均損失率を取得する。<p>
-     *
-     * @return 保有中取引を含む平均損失率
-     */
-    public double getAverageLossRatioWithHolding(){
-        final int lossTradeNum = getTradeNumWithHolding() - getWinTradeNumWithHolding();
-        return lossTradeNum == 0 ? 0d : (getTotalLossRatioWithHolding() / (double)lossTradeNum);
-    }
-    
-    /**
-     * 最大損失率を取得する。<p>
-     *
-     * @return 最大損失率
-     */
-    public double getMaxLossRatio(){
-        return maxLossRatio;
     }
     
     /**
@@ -564,164 +169,11 @@ public class TradePerformance implements Serializable{
      */
     public double getMaxLossRatioInHolding(){
         if(currentTrade == null){
-            return maxLossRatioInHolding;
+            return super.getMaxLossRatioInHolding();
         }else{
             final double profitRatio = currentTrade.getProfitRatio(getCurrentTimeSeriesElement().getValue());
-            return Math.min(maxLossRatioInHolding, profitRatio);
+            return Math.min(super.getMaxLossRatioInHolding(), profitRatio);
         }
-    }
-    
-    /**
-     * 保有中取引を含む最大損失率を取得する。<p>
-     *
-     * @return 保有中取引を含む最大損失率
-     */
-    public double getMaxLossRatioWithHolding(){
-        return Math.max(maxLossRatio, getMaxLossRatioInHolding());
-    }
-    
-    /**
-     * 総損益を取得する。<p>
-     *
-     * @return 総損益
-     */
-    public double getTotalProfitAndLoss(){
-        return totalProfit + totalLoss;
-    }
-    
-    /**
-     * 保有中取引の総損益を取得する。<p>
-     *
-     * @return 保有中取引の総損益
-     */
-    public double getTotalProfitAndLossInHolding(){
-        return getTotalProfitInHolding() + getTotalLossInHolding();
-    }
-    
-    /**
-     * 保有中取引を含む総損益を取得する。<p>
-     *
-     * @return 保有中取引を含む総損益
-     */
-    public double getTotalProfitAndLossWithHolding(){
-        return getTotalProfitAndLoss() + getTotalProfitAndLossInHolding();
-    }
-    
-    /**
-     * 平均損益を取得する。<p>
-     *
-     * @return 平均損益
-     */
-    public double getAverageProfitAndLoss(){
-        return tradeNum == 0 ? 0d : (getTotalProfitAndLoss() / (double)tradeNum);
-    }
-    
-    /**
-     * 保有中取引の平均損益を取得する。<p>
-     *
-     * @return 保有中取引の平均損益
-     */
-    public double getAverageProfitAndLossInHolding(){
-        return getTradeNumInHolding() == 0 ? 0d : (getTotalProfitAndLossInHolding() / (double)getTradeNumInHolding());
-    }
-    
-    /**
-     * 保有中取引を含む平均損益を取得する。<p>
-     *
-     * @return 保有中取引を含む平均損益
-     */
-    public double getAverageProfitAndLossWithHolding(){
-        return getTradeNumWithHolding() == 0 ? 0d : (getTotalProfitAndLossWithHolding() / (double)getTradeNumWithHolding());
-    }
-    
-    /**
-     * 総損益率を取得する。<p>
-     *
-     * @return 総損益率
-     */
-    public double getTotalProfitAndLossRatio(){
-        return totalProfitRatio + totalLossRatio;
-    }
-    
-    /**
-     * 保有中取引の総損益率を取得する。<p>
-     *
-     * @return 保有中取引の総損益率
-     */
-    public double getTotalProfitAndLossRatioInHolding(){
-        return getTotalProfitRatioInHolding() + getTotalLossRatioInHolding();
-    }
-    
-    /**
-     * 保有中取引を含む総損益率を取得する。<p>
-     *
-     * @return 保有中取引を含む総損益率
-     */
-    public double getTotalProfitAndLossRatioWithHolding(){
-        return getTotalProfitAndLossRatio() + getTotalProfitAndLossRatioInHolding();
-    }
-    
-    /**
-     * 平均損益率を取得する。<p>
-     *
-     * @return 平均損益率
-     */
-    public double getAverageProfitAndLossRatio(){
-        return tradeNum == 0 ? 0d : (getTotalProfitAndLossRatio() / (double)tradeNum);
-    }
-    
-    /**
-     * 保有中取引の平均損益率を取得する。<p>
-     *
-     * @return 保有中取引の平均損益率
-     */
-    public double getAverageProfitAndLossRatioInHolding(){
-        return getTradeNumInHolding() == 0 ? 0d : (getTotalProfitAndLossRatioInHolding() / (double)getTradeNumInHolding());
-    }
-    
-    /**
-     * 保有中取引を含む平均損率益を取得する。<p>
-     *
-     * @return 保有中取引を含む平均損益率
-     */
-    public double getAverageProfitAndLossRatioWithHolding(){
-        return getTradeNumWithHolding() == 0 ? 0d : (getTotalProfitAndLossRatioWithHolding() / (double)getTradeNumWithHolding());
-    }
-    
-    /**
-     * 損益要因を取得する。<p>
-     *
-     * @return 損益要因
-     */
-    public double getProfitFactor(){
-        return totalLoss == 0d ? 0d : Math.abs(totalProfit / totalLoss);
-    }
-    
-    /**
-     * 保有中取引の損益要因を取得する。<p>
-     *
-     * @return 保有中取引の損益要因
-     */
-    public double getProfitFactorInHolding(){
-        return getTotalLossInHolding() == 0d ? 0d : Math.abs(getTotalProfitInHolding() / getTotalLossInHolding());
-    }
-    
-    /**
-     * 保有中取引を含む損益要因を取得する。<p>
-     *
-     * @return 保有中取引を含む損益要因
-     */
-    public double getProfitFactorWithHolding(){
-        return getTotalLossWithHolding() == 0d ? 0d : Math.abs(getTotalProfitWithHolding() / getTotalLossWithHolding());
-    }
-    
-    /**
-     * 取引回数を取得する。<p>
-     *
-     * @return 取引回数
-     */
-    public int getTradeNum(){
-        return tradeNum;
     }
     
     /**
@@ -731,28 +183,10 @@ public class TradePerformance implements Serializable{
      */
     public int getTradeNumInHolding(){
         if(currentTrade == null){
-            return tradeNumInHolding;
+            return super.getTradeNumInHolding();
         }else{
-            return tradeNumInHolding + 1;
+            return super.getTradeNumInHolding() + 1;
         }
-    }
-    
-    /**
-     * 保有中取引を含む取引回数を取得する。<p>
-     *
-     * @return 保有中取引を含む取引回数
-     */
-    public int getTradeNumWithHolding(){
-        return tradeNum + getTradeNumInHolding();
-    }
-    
-    /**
-     * 勝ち取引回数を取得する。<p>
-     *
-     * @return 勝ち取引回数
-     */
-    public int getWinTradeNum(){
-        return winTradeNum;
     }
     
     /**
@@ -762,115 +196,12 @@ public class TradePerformance implements Serializable{
      */
     public int getWinTradeNumInHolding(){
         if(currentTrade == null){
-            return winTradeNumInHolding;
+            return super.getWinTradeNumInHolding();
         }else{
             final double profit = currentTrade.getProfit(getCurrentTimeSeriesElement().getValue());
             final boolean win = isContainsDrawToWin ? profit >= 0 : profit > 0;
-            return win ? (winTradeNumInHolding + 1) : winTradeNumInHolding;
+            return win ? (super.getWinTradeNumInHolding() + 1) : super.getWinTradeNumInHolding();
         }
-    }
-    
-    /**
-     * 保有中取引を含む勝ち取引回数を取得する。<p>
-     *
-     * @return 保有中取引を含む勝ち取引回数
-     */
-    public int getWinTradeNumWithHolding(){
-        return winTradeNum + getWinTradeNumInHolding();
-    }
-    
-    /**
-     * 勝率を取得する。<p>
-     *
-     * @return 勝率
-     */
-    public float getWinTradeRatio(){
-        return tradeNum == 0 ? 0f : (float)winTradeNum / (float)tradeNum;
-    }
-    
-    /**
-     * 保有中取引の勝率を取得する。<p>
-     *
-     * @return 保有中取引の勝率
-     */
-    public float getWinTradeRatioInHolding(){
-        return getTradeNumInHolding() == 0 ? 0f : (float)getWinTradeNumInHolding() / (float)getTradeNumInHolding();
-    }
-    
-    /**
-     * 保有中取引を含む勝率を取得する。<p>
-     *
-     * @return 保有中取引を含む勝率
-     */
-    public float getWinTradeRatioWithHolding(){
-        return getTradeNumWithHolding() == 0 ? 0f : (float)(winTradeNum + getWinTradeNumInHolding()) / (float)getTradeNumWithHolding();
-    }
-    
-    /**
-     * 負け取引回数を取得する。<p>
-     *
-     * @return 負け取引回数
-     */
-    public int getLoseTradeNum(){
-        return tradeNum - winTradeNum;
-    }
-    
-    /**
-     * 保有中取引の負け取引回数を取得する。<p>
-     *
-     * @return 保有中取引の負け取引回数
-     */
-    public int getLoseTradeNumInHolding(){
-        return getTradeNumInHolding() - getWinTradeNumInHolding();
-    }
-    
-    /**
-     * 保有中取引を含む負け取引回数を取得する。<p>
-     *
-     * @return 保有中取引を含む負け取引回数
-     */
-    public int getLoseTradeNumWithHolding(){
-        return (getTradeNumWithHolding()) - (winTradeNum + getWinTradeNumInHolding());
-    }
-    
-    /**
-     * 取引対象開始日時。<p>
-     *
-     * @return 取引対象開始日時
-     */
-    public Date getTradeTargetStartTime(){
-        return tradeTargetStartTime;
-    }
-    
-    /**
-     * 取引対象終了日時。<p>
-     *
-     * @return 取引対象終了日時
-     */
-    public Date getTradeTargetEndTime(){
-        return tradeTargetEndTime;
-    }
-    
-    /**
-     * 取引対象期間。<p>
-     *
-     * @param unitMillis 単位時間[ms]
-     * @return 取引対象期間
-     */
-    public double getTradeTargetTerm(long unitMillis){
-        if(tradeTargetStartTime == null || tradeTargetEndTime == null){
-            return 0d;
-        }
-        return (double)(tradeTargetEndTime.getTime() - tradeTargetStartTime.getTime()) / (double)unitMillis;
-    }
-    
-    /**
-     * 取引率。<p>
-     *
-     * @return 取引率
-     */
-    public float getTradeRatio(){
-        return (float)((double)totalHoldingTermMillis / getTradeTargetTerm(1l));
     }
     
     /**
@@ -880,38 +211,11 @@ public class TradePerformance implements Serializable{
      */
     public float getTradeRatioWithHolding(){
         if(currentTrade == null){
-            return (float)((double)(totalHoldingTermMillis + totalHoldingTermMillisInHolding) / getTradeTargetTerm(1l));
+            return super.getTradeRatioWithHolding();
         }else{
             final long holdingTerm = currentTrade.getHoldingTermInMillis(getCurrentTimeSeriesElement().getTime());
             return (float)((double)(totalHoldingTermMillis + totalHoldingTermMillisInHolding + holdingTerm) / getTradeTargetTerm(1l));
         }
-    }
-    
-    /**
-     * 精算率。<p>
-     *
-     * @return 精算率
-     */
-    public double getPayOffRatio(){
-        return getAverageLoss() == 0 ? 0d : Math.abs(getAverageProfit() / getAverageLoss());
-    }
-    
-    /**
-     * 保有中取引の精算率。<p>
-     *
-     * @return 保有中取引の精算率
-     */
-    public double getPayOffRatioInHolding(){
-        return getAverageLossInHolding() == 0 ? 0d : Math.abs(getAverageProfitInHolding() / getAverageLossInHolding());
-    }
-    
-    /**
-     * 保有中取引を含む精算率。<p>
-     *
-     * @return 保有中取引を含む精算率
-     */
-    public double getPayOffRatioWithHolding(){
-        return getAverageLossWithHolding() == 0 ? 0d : Math.abs(getAverageProfitWithHolding() / getAverageLossWithHolding());
     }
     
     /**
@@ -1013,11 +317,11 @@ public class TradePerformance implements Serializable{
         
         final TradeTarget target = tradeSimulator.getTarget();
         final TimeSeries ts = target.getTimeSeries();
+        timeSeriesIndex++;
         if(timeSeriesIndex >= ts.size()){
             currentTrade = null;
             return null;
         }
-        timeSeriesIndex++;
         final E element = (E)ts.get(timeSeriesIndex);
         if(tradeTargetStartTime == null){
             tradeTargetStartTime = element.getTime();
@@ -1091,60 +395,6 @@ public class TradePerformance implements Serializable{
         timeSeriesIndex = -1;
         tradeIndex = -1;
         currentTrade = null;
-        totalProfit = 0.0d;
-        totalProfitInHolding = 0.0d;
-        totalProfitRatio = 0.0d;
-        totalProfitRatioInHolding = 0.0d;
-        totalLoss = 0.0d;
-        totalLossInHolding = 0.0d;
-        totalLossRatio = 0.0d;
-        totalLossRatioInHolding = 0.0d;
-        tradeNum = 0;
-        tradeNumInHolding = 0;
-        winTradeNum = 0;
-        winTradeNumInHolding = 0;
-        maxProfit = 0d;
-        maxProfitInHolding = 0d;
-        maxLoss = 0d;
-        maxLossInHolding = 0d;
-        maxProfitRatio = 0d;
-        maxProfitRatioInHolding = 0d;
-        maxLossRatio = 0d;
-        maxLossRatioInHolding = 0d;
-        tradeTargetStartTime = null;
-        tradeTargetEndTime = null;
-        totalHoldingTermMillis = 0;
-        totalHoldingTermMillisInHolding = 0;
-    }
-    
-    public String toString(){
-        final StringBuilder buf = new StringBuilder(super.toString());
-        buf.append('{');
-        buf.append("totalProfit=").append(totalProfit);
-        buf.append(", totalProfitInHolding=").append(getTotalProfitInHolding());
-        buf.append(", totalProfitRatio=").append(totalProfitRatio);
-        buf.append(", totalProfitRatioInHolding=").append(getTotalProfitRatioInHolding());
-        buf.append(", totalLoss=").append(totalLoss);
-        buf.append(", totalLossInHolding=").append(getTotalLossInHolding());
-        buf.append(", totalLossRatio=").append(totalLossRatio);
-        buf.append(", totalLossRatioInHolding=").append(getTotalLossRatioInHolding());
-        buf.append(", tradeNum=").append(tradeNum);
-        buf.append(", tradeNumInHolding=").append(getTradeNumInHolding());
-        buf.append(", winTradeNum=").append(winTradeNum);
-        buf.append(", winTradeNumInHolding=").append(getWinTradeNumInHolding());
-        buf.append(", maxProfit=").append(maxProfit);
-        buf.append(", maxProfitInHolding=").append(getMaxProfitInHolding());
-        buf.append(", maxLoss=").append(maxLoss);
-        buf.append(", maxLossInHolding=").append(getMaxLossInHolding());
-        buf.append(", maxProfitRatio=").append(maxProfitRatio);
-        buf.append(", maxProfitRatioInHolding=").append(getMaxProfitRatioInHolding());
-        buf.append(", maxLossRatio=").append(maxLossRatio);
-        buf.append(", maxLossRatioInHolding=").append(getMaxLossRatioInHolding());
-        buf.append(", tradeTargetStartTime=").append(tradeTargetStartTime);
-        buf.append(", tradeTargetEndTime=").append(tradeTargetEndTime);
-        buf.append(", totalHoldingTermMillis=").append(totalHoldingTermMillis);
-        buf.append(", totalHoldingTermMillisInHolding=").append(totalHoldingTermMillisInHolding);
-        buf.append('}');
-        return buf.toString();
+        super.clear();
     }
 }

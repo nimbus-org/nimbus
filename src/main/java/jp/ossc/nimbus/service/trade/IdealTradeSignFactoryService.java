@@ -44,6 +44,8 @@ import jp.ossc.nimbus.service.ga.FloatGene;
  */
 public class IdealTradeSignFactoryService extends FactoryServiceBase implements IdealTradeSignFactoryServiceMBean{
     
+    private static final long serialVersionUID = 4750779147218716318L;
+    
     protected boolean isShortSelling;
     protected float targetProfitRatio;
     protected FloatGene targetProfitRatioGene;
@@ -98,6 +100,8 @@ public class IdealTradeSignFactoryService extends FactoryServiceBase implements 
     }
     
     public static class IdealTradeSign implements TradeSign, java.io.Serializable, Cloneable{
+        
+        private static final long serialVersionUID = -8604598027868137267L;
         
         protected boolean isShortSelling;
         protected float targetProfitRatio;
