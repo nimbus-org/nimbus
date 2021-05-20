@@ -41,6 +41,8 @@ import java.util.List;
  */
 public class SingleTimeSeries extends TimeSeries<TimeSeries.Element>{
     
+    private static final long serialVersionUID = -4035112273824896637L;
+    
     /**
      * 空のインスタンスを生成する。<p>
      */

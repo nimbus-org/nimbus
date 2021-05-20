@@ -46,6 +46,8 @@ import jp.ossc.nimbus.service.ga.ComplexGene;
  * @author M.Takata
  */
 public class PairTradeSignFactoryService extends FactoryServiceBase implements PairTradeSignFactoryServiceMBean{
+    
+    private static final long serialVersionUID = 7926073316434920514L;
     protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
     protected boolean isShortSelling;
     protected ServiceName buyTradeSignServiceName;
@@ -105,6 +107,7 @@ public class PairTradeSignFactoryService extends FactoryServiceBase implements P
     }
     
     public static class PairTradeSign implements TradeSign, java.io.Serializable, Cloneable{
+        private static final long serialVersionUID = 7917725375782229270L;
         
         protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
         protected boolean isShortSelling;

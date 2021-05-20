@@ -49,7 +49,7 @@ public class BollingerBandStaticTradeSignFactoryService extends FactoryServiceBa
     /**
      * 
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1582716970236818998L;
     protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
     protected boolean isShortSelling;
     protected boolean isOnlyReverseTrade;
@@ -157,7 +157,7 @@ public class BollingerBandStaticTradeSignFactoryService extends FactoryServiceBa
         /**
          * 
          */
-        private static final long serialVersionUID = 1L;
+        private static final long serialVersionUID = 6288775239136336217L;
         protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
         protected boolean isShortSelling;
         protected int period;

@@ -49,7 +49,7 @@ public class MovingAverageTradeSignFactoryService extends FactoryServiceBase imp
     /**
      * 
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1166919576071529622L;
     protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
     protected boolean isShortSelling;
     protected boolean isOnlyReverseTrade;
@@ -157,7 +157,7 @@ public class MovingAverageTradeSignFactoryService extends FactoryServiceBase imp
         /**
          * 
          */
-        private static final long serialVersionUID = 1L;
+        private static final long serialVersionUID = -2494470456130293025L;
         protected int geneCrossoverType = ComplexGene.CROSSOVER_ALL_POINT;
         protected boolean isShortSelling;
         protected int shortPeriod;
