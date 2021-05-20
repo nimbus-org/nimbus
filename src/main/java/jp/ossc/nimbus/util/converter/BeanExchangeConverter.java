@@ -37,6 +37,7 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.lang.reflect.InvocationTargetException;
@@ -70,6 +71,21 @@ import jp.ossc.nimbus.util.ClassMappingTree;
  */
 public class BeanExchangeConverter implements BindingConverter{
     
+    /**
+     * キャメルスネーク変換を行わないを表す変換定数。<p>
+     */
+    public static final int CAMEL_SNAKE_NON = 0;
+    
+    /**
+     * キャメル→スネークを表す変換定数。<p>
+     */
+    public static final int CAMEL_TO_SNAKE = 1;
+    
+    /**
+     * スネーク→キャメルを表す変換定数。<p>
+     */
+    public static final int SNAKE_TO_CAMEL = 2;
+    
     private Object output;
     private Map propertyMapping;
     private Map partPropertyMapping;
@@ -82,6 +98,9 @@ public class BeanExchangeConverter implements BindingConverter{
     private boolean isMakeSchema;
     private boolean isNarrowCast;
     private ClassMappingTree nestConvertClassTypeMap;
+    private int camelSnakeConvertMode = 0;
+    private String[] camelSnakeIgnorePropertyNames;
+    private boolean isUpperCaseStartCamelProperty = false;
     
     /**
      * 空のインスタンスを生成する。<p>
@@ -687,6 +706,66 @@ public class BeanExchangeConverter implements BindingConverter{
     }
     
     /**
+     * プロパティ名のキャメルケースとスネークケース変換モードを設定する。<p>
+     * デフォルトは、0で変換しない。<br>
+     * 
+     * @param mode プロパティ名のキャメルケースとスネークケース変換モード
+     * @see #CAMEL_SNAKE_NON
+     * @see #CAMEL_TO_SNAKE
+     * @see #SNAKE_TO_CAMEL
+     */
+    public void setCamelSnakeConvertMode(int mode) {
+        camelSnakeConvertMode = mode;
+    }
+    
+    /**
+     * プロパティ名のキャメルケースとスネークケース変換モードを取得する。<p>
+     * 
+     * @return プロパティ名のキャメルケースとスネークケース変換モード
+     */
+    public int getCamelSnakeConvertMode() {
+        return camelSnakeConvertMode;
+    }
+    
+    /**
+     * プロパティ名のキャメルケースとスネークケース変換を行う際の無視プロパティ名の配列を設定する。<p>
+     * 
+     * @param propertyNames プロパティ名のキャメルケースとスネークケース変換を行う際の無視プロパティ名の配列
+     */
+    public void setCamelSnakeIgnorePropertyNames(String[] propertyNames) {
+        camelSnakeIgnorePropertyNames = propertyNames;
+    }
+    
+    /**
+     * プロパティ名のキャメルケースとスネークケース変換を行う際の無視プロパティ名の配列を取得する。<p>
+     * 
+     * @return プロパティ名のキャメルケースとスネークケース変換を行う際の無視プロパティ名の配列
+     */
+    public String[] getCamelSnakeIgnorePropertyNames() {
+        return camelSnakeIgnorePropertyNames;
+    }
+    
+    /**
+     * プロパティ名をキャメルケース変換する際に最初の文字を大文字設定するかを取得する。<p>
+     * デフォルトは、fasleで大文字設定しない。<br>
+     * 
+     * @return プロパティ名をキャメルケース変換する際に最初の文字を大文字設定するか
+     */
+    public boolean isUpperCaseStartCamelProperty() {
+        return isUpperCaseStartCamelProperty;
+    }
+    
+    /**
+     * プロパティ名をキャメルケース変換する際に最初の文字を大文字設定するかを設定する。<p>
+     * デフォルトは、fasleで大文字設定しない。<br>
+     * 
+     * @param isUpperCaseStart プロパティ名をキャメルケース変換する際に最初の文字を大文字設定するか
+     */
+    public void setUpperCaseStartCamelProperty(boolean isUpperCaseStart) {
+        isUpperCaseStartCamelProperty = isUpperCaseStart;
+    }
+    
+    /**
      * 指定されたオブジェクトを変換する。<p>
      *
      * @param obj 変換対象のオブジェクト
@@ -855,6 +934,9 @@ public class BeanExchangeConverter implements BindingConverter{
                                     putPropertyMapping(propMapping, (String)((Object[])propMap)[0], (ExchangeMapping)((Object[])propMap)[1]);
                                 }
                             }else{
+                                if(isCamelSnakeConvert()){
+                                    inputProp = camelSnakeConvert((String)inputProp);
+                                }
                                 putPropertyMapping(propMapping, (String)inputProp, new ExchangeMapping(outputProp, null));
                             }
                         }
@@ -883,6 +965,9 @@ public class BeanExchangeConverter implements BindingConverter{
                                     putPropertyMapping(propMapping, (String)((Object[])propMap)[0], (ExchangeMapping)((Object[])propMap)[1]);
                                 }
                             }else{
+                                if(isCamelSnakeConvert()){
+                                    inputProp = camelSnakeConvert((String)inputProp);
+                                }
                                 putPropertyMapping(propMapping, (String)inputProp, new ExchangeMapping(outputProp, null));
                             }
                         }
@@ -909,6 +994,9 @@ public class BeanExchangeConverter implements BindingConverter{
                                 putPropertyMapping(propMapping, (String)((Object[])propMap)[0], (ExchangeMapping)((Object[])propMap)[1]);
                             }
                         }else{
+                            if(isCamelSnakeConvert()){
+                                inputProp = camelSnakeConvert((String)inputProp);
+                            }
                             putPropertyMapping(propMapping, (String)inputProp, new ExchangeMapping(outputProp, null));
                         }
                     }
@@ -1542,6 +1630,52 @@ public class BeanExchangeConverter implements BindingConverter{
         }else{
             return thisClass.isAssignableFrom(thatClass);
         }
+    }
+    
+    private boolean isCamelSnakeConvert(){
+        return (camelSnakeConvertMode == SNAKE_TO_CAMEL || camelSnakeConvertMode == CAMEL_TO_SNAKE);
+    }
+    
+    private String camelSnakeConvert(String str) {
+        if(camelSnakeConvertMode != SNAKE_TO_CAMEL && camelSnakeConvertMode != CAMEL_TO_SNAKE) {
+            return str;
+        }
+        if(camelSnakeIgnorePropertyNames != null && Arrays.asList(camelSnakeIgnorePropertyNames).contains(str)) {
+            return str;
+        }
+        StringBuilder sb = null;
+        if(camelSnakeConvertMode == CAMEL_TO_SNAKE) {
+            sb = new StringBuilder(str.toLowerCase());
+            if(isUpperCaseStartCamelProperty && Character.isLowerCase(sb.charAt(0))) {
+                sb.setCharAt(0, Character.toUpperCase(sb.charAt(0)));
+            }
+            int i = 0;
+            while ((i = sb.indexOf("_")) > 0) {
+                char c = sb.charAt(i + 1);
+                c = Character.toUpperCase(c);
+                sb.setCharAt(i + 1, c);
+                sb.deleteCharAt(i);
+            }
+        } else if(camelSnakeConvertMode == SNAKE_TO_CAMEL) {
+            sb = new StringBuilder(str);
+            if(isUpperCaseStartCamelProperty && Character.isUpperCase(sb.charAt(0))) {
+                sb.setCharAt(0, Character.toLowerCase(sb.charAt(0)));
+            }
+            for (int i = 0; i < sb.length(); i++) {
+                char c = sb.charAt(i);
+                if (Character.isUpperCase(c)) {
+                    char c2 = sb.charAt(i + 1);
+                    if (Character.isUpperCase(c2)) {
+                        sb.setCharAt(i, Character.toLowerCase(c));
+                    } else {
+                        sb.insert(i, '_');
+                        sb.setCharAt(i + 1, Character.toLowerCase(c));
+                        i++;
+                    }
+                }
+            }
+        }
+       return sb.toString();
     }
     
     private class PropertyAccessType{
