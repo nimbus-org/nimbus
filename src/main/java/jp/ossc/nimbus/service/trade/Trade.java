@@ -51,6 +51,7 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
     protected boolean isShortSelling;
     protected Enum<?> reason;
     protected long volume = 1;
+    protected int leverage = 1;
     
     /**
      * 空のインスタンスを生成する。<p>
@@ -170,6 +171,25 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
     }
     
     /**
+     * レバレッジを設定する。<p>
+     * デフォルトは、1。<br>
+     *
+     * @param leverage レバレッジ
+     */
+    public void setLeverage(int leverage){
+        this.leverage = leverage;
+    }
+    
+    /**
+     * レバレッジを取得する。<p>
+     *
+     * @return レバレッジ
+     */
+    public int getLeverage(){
+        return leverage;
+    }
+    
+    /**
      * 指定された時系列要素に取引を開始したことを設定する。<p>
      *
      * @param element 取引を開始した時系列要素
@@ -229,6 +249,7 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
         endValue = 0;
         reason = null;
         volume = 1;
+        leverage = 1;
     }
     
     /**
@@ -349,14 +370,7 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
      * @exception IllegalStateException 取引が成立していない場合
      */
     public double getProfit() throws IllegalStateException{
-        if(startTime != null && endTime != null){
-            return (isShortSelling ? (startValue - endValue) : (endValue - startValue)) * (double)volume;
-        }else{
-            final SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS");
-            String startTimeStr = startTime == null ? null : format.format(startTime);
-            String endTimeStr = endTime == null ? null : format.format(endTime);
-            throw new IllegalStateException("Trade is not over. startTime=" + startTimeStr + ", endTime=" + endTimeStr);
-        }
+        return getProfitRatio() * (double)volume;
     }
     
     /**
@@ -366,11 +380,7 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
      * @exception IllegalStateException 取引が開始していない場合
      */
     public double getProfit(double value) throws IllegalStateException{
-        if(startTime != null){
-            return (isShortSelling ? (startValue - value) : (value - startValue)) * (double)volume;
-        }else{
-            throw new IllegalStateException("Trade is not start.");
-        }
+        return getProfitRatio(value) * (double)volume;
     }
     
     /**
@@ -380,7 +390,14 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
      * @exception IllegalStateException 取引が成立していない場合
      */
     public double getProfitRatio() throws IllegalStateException{
-        return getProfit() / startValue;
+        if(startTime != null && endTime != null){
+            return getProfitRatio(endValue);
+        }else{
+            final SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS");
+            String startTimeStr = startTime == null ? null : format.format(startTime);
+            String endTimeStr = endTime == null ? null : format.format(endTime);
+            throw new IllegalStateException("Trade is not over. startTime=" + startTimeStr + ", endTime=" + endTimeStr);
+        }
     }
     
     /**
@@ -390,7 +407,11 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
      * @exception IllegalStateException 取引が開始していない場合
      */
     public double getProfitRatio(double value) throws IllegalStateException{
-        return getProfit(value) / startValue;
+        if(startTime != null){
+            return (isShortSelling ? (startValue - value) : (value - startValue)) / startValue * leverage;
+        }else{
+            throw new IllegalStateException("Trade is not start");
+        }
     }
     
     public int compareTo(Trade trade){
@@ -421,6 +442,7 @@ public class Trade implements Comparable<Trade>, java.io.Serializable{
         buf.append(", startValue=" + startValue);
         buf.append(", endValue=" + endValue);
         buf.append(", volume=" + volume);
+        buf.append(", leverage=" + leverage);
         buf.append(", isShortSelling=" + isShortSelling);
         buf.append('}');
         return buf.toString();
