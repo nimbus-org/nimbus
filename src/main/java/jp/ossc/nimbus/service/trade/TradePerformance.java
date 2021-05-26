@@ -317,11 +317,10 @@ public class TradePerformance extends AbstractTradePerformance implements Serial
         
         final TradeTarget target = tradeSimulator.getTarget();
         final TimeSeries ts = target.getTimeSeries();
-        timeSeriesIndex++;
-        if(timeSeriesIndex >= ts.size()){
-            currentTrade = null;
+        if(timeSeriesIndex + 1 >= ts.size()){
             return null;
         }
+        timeSeriesIndex++;
         final E element = (E)ts.get(timeSeriesIndex);
         if(tradeTargetStartTime == null){
             tradeTargetStartTime = element.getTime();

@@ -314,11 +314,10 @@ public class TotalTradePerformance extends AbstractTradePerformance implements S
             currentTradeStartTime = null;
         }
         
-        timeSeriesIndex++;
-        if(timeSeriesIndex >= mergeTimeSeries.size()){
-            mergeTimeSeries = null;
+        if(timeSeriesIndex + 1 >= mergeTimeSeries.size()){
             return null;
         }
+        timeSeriesIndex++;
         final boolean hadTrade = !currentTrades.isEmpty();
         currentTrades.clear();
         currentTargets.clear();
