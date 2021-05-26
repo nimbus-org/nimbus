@@ -799,7 +799,8 @@ public abstract class AbstractTradePerformance implements Serializable{
      * @return 取引率
      */
     public float getTradeRatio(){
-        return (float)((double)totalHoldingTermMillis / getTradeTargetTerm(1l));
+        final double tradeTargetTerm = getTradeTargetTerm(1l);
+        return tradeTargetTerm == 0d ? 0f : (float)((double)totalHoldingTermMillis / tradeTargetTerm);
     }
     
     /**
@@ -808,7 +809,8 @@ public abstract class AbstractTradePerformance implements Serializable{
      * @return 保有中取引を含む取引率
      */
     public float getTradeRatioWithHolding(){
-        return (float)((double)(totalHoldingTermMillis + totalHoldingTermMillisInHolding) / getTradeTargetTerm(1l));
+        final double tradeTargetTerm = getTradeTargetTerm(1l);
+        return tradeTargetTerm == 0d ? 0f : (float)((double)(totalHoldingTermMillis + totalHoldingTermMillisInHolding) / tradeTargetTerm);
     }
     
     /**
