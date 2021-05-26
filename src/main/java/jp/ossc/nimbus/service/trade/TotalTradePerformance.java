@@ -317,6 +317,8 @@ public class TotalTradePerformance extends AbstractTradePerformance implements S
         timeSeriesIndex++;
         if(timeSeriesIndex >= mergeTimeSeries.size()){
             mergeTimeSeries = null;
+            currentTrades = null;
+            currentTargets = null;
             return null;
         }
         final boolean hadTrade = !currentTrades.isEmpty();
