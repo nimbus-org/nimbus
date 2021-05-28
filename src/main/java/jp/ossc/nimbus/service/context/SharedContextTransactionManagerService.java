@@ -176,6 +176,26 @@ public class SharedContextTransactionManagerService extends ServiceBase
             return value;
         }
         
+        public Object getUpdateTemplate(SharedContext context, Object key, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+            long curTimeout = timeout;
+            long start = System.currentTimeMillis();
+            Map contextView = (Map)contextViewMap.get(context);
+            if(contextView != null && contextView.containsKey(key)){
+                Object value = contextView.get(key);
+                return (value != null && value instanceof SharedContextValueDifferenceSupport) ? ((SharedContextValueDifferenceSupport)value).getUpdateTemplate() : null;
+            }
+            if(lockMode == LOCK_MODE_PESSIMISTIC){
+                context.lock(key, curTimeout);
+            }
+            if(timeout > 0){
+                curTimeout = timeout - (System.currentTimeMillis() - start);
+                if(curTimeout <= 0){
+                    throw new SharedContextTimeoutException();
+                }
+            }
+            return context.getUpdateTemplate(key, curTimeout, false);
+        }
+        
         public Object put(SharedContext context, Object key, Object value, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
             long curTimeout = timeout;
             long start = System.currentTimeMillis();

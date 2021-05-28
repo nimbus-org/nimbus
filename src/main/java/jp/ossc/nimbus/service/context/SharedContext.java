@@ -223,6 +223,38 @@ public interface SharedContext extends Context{
     public void putAsynch(Object key, Object value) throws SharedContextSendException;
     
     /**
+     * 指定したキーの値を差分更新するためのテンプレートとなるオブジェクトを取得する。<p>
+     *
+     * @param key キー
+     * @return 差分更新するためのテンプレートとなるオブジェクト
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     */
+    public Object getUpdateTemplate(Object key) throws SharedContextSendException;
+
+    /**
+     * 指定したキーの値を差分更新するためのテンプレートとなるオブジェクトを取得する。<p>
+     *
+     * @param key キー
+     * @param timeout タイムアウト[ms]
+     * @return 差分更新するためのテンプレートとなるオブジェクト
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public Object getUpdateTemplate(Object key, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
+
+    /**
+     * 指定したキーの値を差分更新するためのテンプレートとなるオブジェクトを取得する。<p>
+     *
+     * @param key キー
+     * @param timeout タイムアウト[ms]
+     * @param withTransaction trueの場合、トランザクションを考慮する
+     * @return 差分更新するためのテンプレートとなるオブジェクト
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public Object getUpdateTemplate(Object key, long timeout, boolean withTransaction) throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
      * 指定したキーで、指定した差分を更新する。<p>
      *
      * @param key キー

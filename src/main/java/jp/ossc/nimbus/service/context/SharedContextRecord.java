@@ -101,6 +101,12 @@ public class SharedContextRecord extends Record implements SharedContextValueDif
         return updateVersion;
     }
     
+    public Object getUpdateTemplate(){
+        SharedContextRecord clone = (SharedContextRecord)cloneSchema();
+        clone.updateVersion = updateVersion;
+        return clone;
+    }
+    
     protected static int compareToUpdateVersion(int ver1, int ver2){
         long version1 = ver1;
         long version2 = ver2;

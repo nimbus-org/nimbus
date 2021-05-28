@@ -231,5 +231,17 @@ public interface SharedContextTransactionManager{
          * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
          */
         public Object remove(SharedContext context, Object key, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
+        
+        /**
+         * トランザクションに登録されたキーの値を差分更新するためのテンプレートとなるオブジェクトを取得する。<p>
+         *
+         * @param context 共有コンテキスト
+         * @param key キー
+         * @param timeout タイムアウト[ms]
+         * @return 差分更新するためのテンプレートとなるオブジェクト
+         * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+         * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+         */
+        public Object getUpdateTemplate(SharedContext context, Object key, long timeout) throws SharedContextSendException, SharedContextTimeoutException;
     }
 }
