@@ -175,6 +175,12 @@ public class SharedContextRecordList extends RecordList implements SharedContext
         return updateVersion;
     }
     
+    public Object getUpdateTemplate(){
+        SharedContextRecordList clone = (SharedContextRecordList)cloneSchema();
+        clone.updateVersion = updateVersion;
+        return clone;
+    }
+    
     public Record createRecord(){
         if(recordClass == null){
             SharedContextRecord record = new SharedContextRecord(recordSchema);
@@ -261,6 +267,14 @@ public class SharedContextRecordList extends RecordList implements SharedContext
         return diff;
     }
     
+    /**
+     * 指定されたレコードを削除した場合の差分情報を取得する。<p>
+     *
+     * @param record 削除するレコード
+     * @param diff 差分
+     * @return 差分
+     * @exception SharedContextUpdateException 差分情報の取得に失敗した場合
+     */
     public SharedContextValueDifference updateRemove(Record record, SharedContextValueDifference diff) throws SharedContextUpdateException{
         if(diff == null){
             diff = new Difference();
@@ -271,6 +285,13 @@ public class SharedContextRecordList extends RecordList implements SharedContext
         return diff;
     }
     
+    /**
+     * 全件削除の差分情報を取得する。<p>
+     *
+     * @param diff 差分
+     * @return 差分
+     * @exception SharedContextUpdateException 差分情報の取得に失敗した場合
+     */
     public SharedContextValueDifference updateClear(SharedContextValueDifference diff) throws SharedContextUpdateException{
         if(diff == null){
             diff = new Difference();

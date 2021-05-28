@@ -1523,6 +1523,18 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
         selectDistributeContext(key).putAsynch(key, value);
     }
     
+    public Object getUpdateTemplate(Object key) throws SharedContextSendException{
+        return getUpdateTemplate(key, defaultTimeout);
+    }
+    
+    public Object getUpdateTemplate(Object key, long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+        return getUpdateTemplate(key, timeout, false);
+    }
+    
+    public Object getUpdateTemplate(Object key, long timeout, boolean withTransaction) throws SharedContextSendException, SharedContextTimeoutException{
+        return selectDistributeContext(key).getUpdateTemplate(key, timeout, withTransaction);
+    }
+    
     public void update(Object key, SharedContextValueDifference diff) throws SharedContextSendException{
         update(key, diff, defaultTimeout);
     }

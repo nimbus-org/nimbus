@@ -68,4 +68,11 @@ public interface SharedContextValueDifferenceSupport{
      * @return このオブジェクトの複製
      */
     public Object clone();
+    
+    /**
+     * このオブジェクトの更新を行うためのテンプレートとなるオブジェクトを取得する。<p>
+     *
+     * @return このオブジェクトの更新を行うためのテンプレートとなるオブジェクト
+     */
+    public Object getUpdateTemplate();
 }
