@@ -32,6 +32,7 @@
 package jp.ossc.nimbus.service.context;
 
 import java.util.Set;
+import java.util.List;
 import java.util.Map;
 
 import jp.ossc.nimbus.beans.IndexPropertyAccessException;
@@ -51,6 +52,67 @@ public interface SharedContextView{
      * @return 検索結果のキー集合
      */
     public Set getResultSet();
+    
+    /**
+     * 検索結果の値集合を取得する。<p>
+     *
+     * @return 検索結果の値集合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public Set getResultValueSet() throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 検索結果の値集合を取得する。<p>
+     *
+     * @param timeout タイムアウト[ms]
+     * @return 検索結果の値集合
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public Set getResultValueSet(long timeout) throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 検索結果の値リストを取得する。<p>
+     *
+     * @return 検索結果の値リスト
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public List getResultValueList() throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 検索結果の値リストを取得する。<p>
+     *
+     * @param timeout タイムアウト[ms]
+     * @return 検索結果の値リスト
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public List getResultValueList(long timeout) throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 検索結果の昇順ソートされた値リストを取得する。<p>
+     *
+     * @param timeout タイムアウト[ms]
+     * @param propName プロパティ名
+     * @return 検索結果の値リスト
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public List getResultValueList(long timeout, String[] propNames) throws SharedContextSendException, SharedContextTimeoutException;
+    
+    /**
+     * 検索結果のソートされた値リストを取得する。<p>
+     *
+     * @param timeout タイムアウト[ms]
+     * @param propName プロパティ名
+     * @param isAsc propNameで指定したプロパティ名のソート方向を示すフラグ。trueを指定すると昇順
+     * @return 検索結果の値リスト
+     * @exception SharedContextSendException 分散サーバへのメッセージ送信に失敗した場合
+     * @exception SharedContextTimeoutException 分散サーバからの応答待ちでタイムアウトした場合
+     */
+    public List getResultValueList(long timeout, String[] propNames, boolean[] isAsc) throws SharedContextSendException, SharedContextTimeoutException;
     
     /**
      * 論理演算状態を論理積（AND）にする。<p>

@@ -50,6 +50,9 @@ import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.beans.BeanTableIndexKeyFactory;
 import jp.ossc.nimbus.beans.IndexPropertyAccessException;
 import jp.ossc.nimbus.beans.IndexNotFoundException;
+import jp.ossc.nimbus.beans.BeanTableView;
+import jp.ossc.nimbus.beans.dataset.Record;
+import jp.ossc.nimbus.beans.dataset.RecordList;
 import jp.ossc.nimbus.service.cache.CacheMap;
 import jp.ossc.nimbus.service.keepalive.Cluster;
 import jp.ossc.nimbus.service.publish.RequestMessageListener;
@@ -790,7 +793,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             final long start = System.currentTimeMillis();
             final boolean isNoTimeout = timeout <= 0;
             for(int i = 0; i < sharedContextArray.length; i++){
-                if(!isNoTimeout && timeout < 0){
+                if(!isNoTimeout && timeout <= 0){
                     throw new SharedContextTimeoutException("There is a node that is not possible yet synchronized. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                 }
                 sharedContextArray[i].synchronize(timeout);
@@ -817,7 +820,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             final long start = System.currentTimeMillis();
             final boolean isNoTimeout = timeout <= 0;
             for(int i = 0; i < sharedContextArray.length; i++){
-                if(!isNoTimeout && timeout < 0){
+                if(!isNoTimeout && timeout <= 0){
                     throw new SharedContextTimeoutException("There is a node that is not possible yet synchronized. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                 }
                 AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -895,7 +898,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     }
                     if(increaseDistributeInfos.size() != 0){
                         currentTimeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
-                        if(!isNoTimeout && currentTimeout < 0){
+                        if(!isNoTimeout && currentTimeout <= 0){
                             throw new SharedContextTimeoutException("timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - start));
                         }
                         callback.setResponseCount(increaseDistributeInfos.size());
@@ -920,14 +923,14 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     info = (DistributeInfo)decreaseDistributeInfos.remove(getId());
                     if(info != null){
                         currentTimeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
-                        if(!isNoTimeout && currentTimeout < 0){
+                        if(!isNoTimeout && currentTimeout <= 0){
                             throw new SharedContextTimeoutException("timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - start));
                         }
                         info.apply(distributeInfo, sharedContextArray);
                     }
                     if(decreaseDistributeInfos.size() != 0){
                         currentTimeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
-                        if(!isNoTimeout && currentTimeout < 0){
+                        if(!isNoTimeout && currentTimeout <= 0){
                             throw new SharedContextTimeoutException("timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - start));
                         }
                         callback.setResponseCount(decreaseDistributeInfos.size());
@@ -1132,7 +1135,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     final long start = System.currentTimeMillis();
                     final boolean isNoTimeout = timeout <= 0;
                     for(int i = 0; i < sharedContextArray.length; i++){
-                        if(!isNoTimeout && timeout < 0){
+                        if(!isNoTimeout && timeout <= 0){
                             throw new SharedContextTimeoutException("There is a node that is not possible yet save. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                         }
                         sharedContextArray[i].save(timeout);
@@ -1159,7 +1162,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                     final long start = System.currentTimeMillis();
                     final boolean isNoTimeout = timeout <= 0;
                     for(int i = 0; i < sharedContextArray.length; i++){
-                        if(!isNoTimeout && timeout < 0){
+                        if(!isNoTimeout && timeout <= 0){
                             throw new SharedContextTimeoutException("There is a node that is not possible yet save. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                         }
                         AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -1354,7 +1357,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 int completed = 0;
                 while(entries.hasNext()){
                     Map.Entry entry = (Map.Entry)entries.next();
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet locks. completed=" + completed + "notCompleted=" + (distMap.size() - completed));
                     }
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -1465,7 +1468,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             entries = distMap.entrySet().iterator();
             while(entries.hasNext()){
                 Map.Entry entry = (Map.Entry)entries.next();
-                if(!isNoTimeout && timeout < 0){
+                if(!isNoTimeout && timeout <= 0){
                     throw new SharedContextTimeoutException("There is a node that is not possible yet unlocks. completed=" + completed + "notCompleted=" + (distMap.size() - completed));
                 }
                 AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -1644,7 +1647,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             entries = distMap.entrySet().iterator();
             while(entries.hasNext()){
                 Map.Entry entry = (Map.Entry)entries.next();
-                if(!isNoTimeout && timeout < 0){
+                if(!isNoTimeout && timeout <= 0){
                     throw new SharedContextTimeoutException("There is a node that is not possible yet putAll. completed=" + completed + "notCompleted=" + (distMap.size() - completed));
                 }
                 AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -1722,7 +1725,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             final boolean isNoTimeout = timeout <= 0;
             for(int i = 0; i < sharedContextArray.length; i++){
                 timeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
-                if(!isNoTimeout && timeout < 0){
+                if(!isNoTimeout && timeout <= 0){
                     throw new SharedContextTimeoutException("There is a node that is not possible yet clear. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                 }
                 sharedContextArray[i].clear(timeout);
@@ -1748,7 +1751,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             final long start = System.currentTimeMillis();
             final boolean isNoTimeout = timeout <= 0;
             for(int i = 0; i < sharedContextArray.length; i++){
-                if(!isNoTimeout && timeout < 0){
+                if(!isNoTimeout && timeout <= 0){
                     throw new SharedContextTimeoutException("There is a node that is not possible yet clear. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                 }
                 AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -1807,7 +1810,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             final boolean isNoTimeout = timeout <= 0;
             for(int i = 0; i < sharedContextArray.length; i++){
                 timeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
-                if(!isNoTimeout && timeout < 0){
+                if(!isNoTimeout && timeout <= 0){
                     throw new SharedContextTimeoutException("There is a node that is not possible yet analyzeIndex. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                 }
                 sharedContextArray[i].analyzeIndex(name, timeout);
@@ -1833,7 +1836,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             final long start = System.currentTimeMillis();
             final boolean isNoTimeout = timeout <= 0;
             for(int i = 0; i < sharedContextArray.length; i++){
-                if(!isNoTimeout && timeout < 0){
+                if(!isNoTimeout && timeout <= 0){
                     throw new SharedContextTimeoutException("There is a node that is not possible yet analyzeIndex. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                 }
                 AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -1870,7 +1873,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             final boolean isNoTimeout = timeout <= 0;
             for(int i = 0; i < sharedContextArray.length; i++){
                 timeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
-                if(!isNoTimeout && timeout < 0){
+                if(!isNoTimeout && timeout <= 0){
                     throw new SharedContextTimeoutException("There is a node that is not possible yet analyzeAllIndex. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                 }
                 sharedContextArray[i].analyzeAllIndex(timeout);
@@ -1896,7 +1899,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             final long start = System.currentTimeMillis();
             final boolean isNoTimeout = timeout <= 0;
             for(int i = 0; i < sharedContextArray.length; i++){
-                if(!isNoTimeout && timeout < 0){
+                if(!isNoTimeout && timeout <= 0){
                     throw new SharedContextTimeoutException("There is a node that is not possible yet analyzeAllIndex. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                 }
                 AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -1937,7 +1940,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             final long start = System.currentTimeMillis();
             final boolean isNoTimeout = timeout <= 0;
             for(int i = 0; i < sharedContextArray.length; i++){
-                if(!isNoTimeout && timeout < 0){
+                if(!isNoTimeout && timeout <= 0){
                     throw new SharedContextTimeoutException("There is a node that is not possible yet executeInterpretQuery. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                 }
                 result.add(sharedContextArray[i].executeInterpretQuery(query, variables, timeout));
@@ -1964,7 +1967,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             final long start = System.currentTimeMillis();
             final boolean isNoTimeout = timeout <= 0;
             for(int i = 0; i < sharedContextArray.length; i++){
-                if(!isNoTimeout && timeout < 0){
+                if(!isNoTimeout && timeout <= 0){
                     throw new SharedContextTimeoutException("There is a node that is not possible yet executeInterpretQuery. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                 }
                 AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -2038,7 +2041,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             final long start = System.currentTimeMillis();
             final boolean isNoTimeout = timeout <= 0;
             for(int i = 0; i < sharedContextArray.length; i++){
-                if(!isNoTimeout && timeout < 0){
+                if(!isNoTimeout && timeout <= 0){
                     throw new SharedContextTimeoutException("There is a node that is not possible yet keySet. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                 }
                 result.addAll(sharedContextArray[i].keySet(timeout));
@@ -2065,7 +2068,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             final long start = System.currentTimeMillis();
             final boolean isNoTimeout = timeout <= 0;
             for(int i = 0; i < sharedContextArray.length; i++){
-                if(!isNoTimeout && timeout < 0){
+                if(!isNoTimeout && timeout <= 0){
                     throw new SharedContextTimeoutException("There is a node that is not possible yet keySet. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                 }
                 AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -2110,7 +2113,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             final long start = System.currentTimeMillis();
             final boolean isNoTimeout = timeout <= 0;
             for(int i = 0; i < sharedContextArray.length; i++){
-                if(!isNoTimeout && timeout < 0){
+                if(!isNoTimeout && timeout <= 0){
                     throw new SharedContextTimeoutException("There is a node that is not possible yet size. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                 }
                 result += sharedContextArray[i].size(timeout);
@@ -2137,7 +2140,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             final long start = System.currentTimeMillis();
             final boolean isNoTimeout = timeout <= 0;
             for(int i = 0; i < sharedContextArray.length; i++){
-                if(!isNoTimeout && timeout < 0){
+                if(!isNoTimeout && timeout <= 0){
                     throw new SharedContextTimeoutException("There is a node that is not possible yet size. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                 }
                 AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -2201,7 +2204,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             final long start = System.currentTimeMillis();
             final boolean isNoTimeout = timeout <= 0;
             for(int i = 0; i < sharedContextArray.length; i++){
-                if(!isNoTimeout && timeout < 0){
+                if(!isNoTimeout && timeout <= 0){
                     throw new SharedContextTimeoutException("There is a node that is not possible yet containsValue. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                 }
                 if(sharedContextArray[i].containsValue(value, timeout)){
@@ -2230,7 +2233,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             final long start = System.currentTimeMillis();
             final boolean isNoTimeout = timeout <= 0;
             for(int i = 0; i < sharedContextArray.length; i++){
-                if(!isNoTimeout && timeout < 0){
+                if(!isNoTimeout && timeout <= 0){
                     throw new SharedContextTimeoutException("There is a node that is not possible yet containsValue. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                 }
                 AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -2363,7 +2366,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             final long start = System.currentTimeMillis();
             final boolean isNoTimeout = timeout <= 0;
             for(int i = 0; i < sharedContextArray.length; i++){
-                if(!isNoTimeout && timeout < 0){
+                if(!isNoTimeout && timeout <= 0){
                     throw new SharedContextTimeoutException("There is a node that is not possible yet healthCheck. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                 }
                 sharedContextArray[i].healthCheck(isContainsClient, timeout);
@@ -2390,7 +2393,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             final long start = System.currentTimeMillis();
             final boolean isNoTimeout = timeout <= 0;
             for(int i = 0; i < sharedContextArray.length; i++){
-                if(!isNoTimeout && timeout < 0){
+                if(!isNoTimeout && timeout <= 0){
                     throw new SharedContextTimeoutException("There is a node that is not possible yet healthCheck. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                 }
                 AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -2593,7 +2596,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                                 final long start = System.currentTimeMillis();
                                 final boolean isNoTimeout = timeout <= 0;
                                 for(int i = 0; i < sharedContextArray.length; i++){
-                                    if(!isNoTimeout && timeout < 0){
+                                    if(!isNoTimeout && timeout <= 0){
                                         throw new SharedContextTimeoutException();
                                     }
                                     sharedContextArray[i].save(timeout);
@@ -3465,6 +3468,76 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             return result;
         }
         
+        public Set getResultValueSet() throws SharedContextSendException, SharedContextTimeoutException{
+            return getResultValueSet(defaultTimeout);
+        }
+        
+        public Set getResultValueSet(long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+            Set keySet = getResultSet();
+            if(keySet == null){
+                return null;
+            }
+            Set resultValueSet = new LinkedHashSet();
+            final long start = System.currentTimeMillis();
+            long currentTimeout = timeout;
+            Iterator keys = keySet.iterator();
+            while(keys.hasNext()){
+                if(timeout > 0){
+                    currentTimeout = timeout - (System.currentTimeMillis() - start);
+                    if(currentTimeout <= 0){
+                        throw new SharedContextTimeoutException();
+                    }
+                }
+                resultValueSet.add(get(keys.next(), currentTimeout));
+            }
+            
+            return resultValueSet;
+        }
+        
+        public List getResultValueList() throws SharedContextSendException, SharedContextTimeoutException{
+            return getResultValueList(defaultTimeout);
+        }
+        
+        public List getResultValueList(long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+            Set keySet = getResultSet();
+            if(keySet == null){
+                return null;
+            }
+            List resultValueList = new ArrayList();
+            final long start = System.currentTimeMillis();
+            long currentTimeout = timeout;
+            Iterator keys = keySet.iterator();
+            while(keys.hasNext()){
+                if(timeout > 0){
+                    currentTimeout = timeout - (System.currentTimeMillis() - start);
+                    if(currentTimeout <= 0){
+                        throw new SharedContextTimeoutException();
+                    }
+                }
+                resultValueList.add(get(keys.next(), currentTimeout));
+            }
+            
+            return resultValueList;
+        }
+        
+        public List getResultValueList(long timeout, String[] propNames) throws SharedContextSendException, SharedContextTimeoutException{
+            return getResultValueList(timeout, propNames, null);
+        }
+        
+        public List getResultValueList(long timeout, String[] propNames, boolean[] isAsc) throws SharedContextSendException, SharedContextTimeoutException{
+            List resultValueList = getResultValueList(timeout);
+            if(resultValueList == null || resultValueList.size() == 0){
+                return resultValueList;
+            }
+            Object template = resultValueList.get(0);
+            if(template instanceof Record){
+                RecordList.sort(resultValueList, propNames, isAsc);
+            }else{
+                Collections.sort(resultValueList, new BeanTableView.BeanComparator(template.getClass(), propNames, isAsc));
+            }
+            return resultValueList;
+        }
+        
         public SharedContextView and(){
             for(int i = 0; i < views.length; i++){
                 views[i].and();
@@ -3621,7 +3694,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchKey. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     views[i].searchKey(timeout, indexName, propNames);
@@ -3648,7 +3721,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < sharedContextArray.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchKey. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -3687,7 +3760,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchNull. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     views[i].searchNull(timeout, indexName, propName);
@@ -3714,7 +3787,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchNull. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -3753,7 +3826,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchNotNull. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     views[i].searchNotNull(timeout, indexName, propName);
@@ -3780,7 +3853,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchNotNull. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -3828,7 +3901,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchBy. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     views[i].searchBy(timeout, value, indexName, propNames);
@@ -3855,7 +3928,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchBy. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -3905,7 +3978,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchIn. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     views[i].searchIn(timeout, indexName, propNames, values);
@@ -3932,7 +4005,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchIn. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -3982,7 +4055,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchByProperty. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     views[i].searchByProperty(timeout, prop, indexName, propName);
@@ -4009,7 +4082,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchByProperty. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -4057,7 +4130,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchInProperty. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     views[i].searchInProperty(timeout, indexName, propName, props);
@@ -4084,7 +4157,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchInProperty. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -4130,7 +4203,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchByProperty. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     views[i].searchByProperty(timeout, props, indexName);
@@ -4157,7 +4230,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchByProperty. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -4206,7 +4279,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
                     timeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchInProperty. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     views[i].searchInProperty(timeout, indexName, props);
@@ -4232,7 +4305,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchInProperty. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -4282,7 +4355,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchFrom. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     views[i].searchFrom(timeout, fromValue, indexName, propName);
@@ -4309,7 +4382,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchFrom. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -4359,7 +4432,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchFromProperty. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     views[i].searchFromProperty(timeout, fromProp, indexName, propName);
@@ -4386,7 +4459,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchFromProperty. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -4434,7 +4507,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchTo. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     views[i].searchTo(timeout, toValue, indexName, propName);
@@ -4461,7 +4534,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchTo. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -4511,7 +4584,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchToProperty. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     views[i].searchToProperty(timeout, toProp, indexName, propName);
@@ -4538,7 +4611,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchToProperty. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -4588,7 +4661,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchRange. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     views[i].searchRange(timeout, fromValue, toValue, indexName, propName);
@@ -4615,7 +4688,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchRange. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -4667,7 +4740,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchRangeProperty. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     views[i].searchRangeProperty(timeout, fromProp, toProp, indexName, propName);
@@ -4694,7 +4767,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchRangeProperty. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -4747,7 +4820,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchFrom. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     views[i].searchFrom(timeout, fromValue, inclusive, indexName, propName);
@@ -4774,7 +4847,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchFrom. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -4826,7 +4899,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchFromProperty. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     views[i].searchFromProperty(timeout, fromProp, inclusive, indexName, propName);
@@ -4853,7 +4926,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchFromProperty. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -4903,7 +4976,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchTo. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     views[i].searchTo(timeout, toValue, inclusive, indexName, propName);
@@ -4930,7 +5003,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchTo. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -4982,7 +5055,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchToProperty. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     views[i].searchToProperty(timeout, toProp, inclusive, indexName, propName);
@@ -5009,7 +5082,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchToProperty. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -5063,7 +5136,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchRange. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     views[i].searchRange(timeout, fromValue, fromInclusive, toValue, toInclusive, indexName, propName);
@@ -5090,7 +5163,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchRange. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
@@ -5146,7 +5219,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchRangeProperty. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     views[i].searchRangeProperty(timeout, fromProp, fromInclusive, toProp, toInclusive, indexName, propName);
@@ -5173,7 +5246,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
                 final long start = System.currentTimeMillis();
                 final boolean isNoTimeout = timeout <= 0;
                 for(int i = 0; i < views.length; i++){
-                    if(!isNoTimeout && timeout < 0){
+                    if(!isNoTimeout && timeout <= 0){
                         throw new SharedContextTimeoutException("There is a node that is not possible yet searchRangeProperty. completed=" + i + "notCompleted=" + (sharedContextArray.length - i));
                     }
                     AsynchContext asynchContext = (AsynchContext)responseQueue.get(timeout);
