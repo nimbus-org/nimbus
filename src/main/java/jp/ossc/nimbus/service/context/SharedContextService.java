@@ -39,6 +39,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.lang.reflect.InvocationTargetException;
 
 import jp.ossc.nimbus.beans.*;
+import jp.ossc.nimbus.beans.dataset.*;
 import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.daemon.*;
 import jp.ossc.nimbus.service.publish.*;
@@ -1648,8 +1649,8 @@ public class SharedContextService extends DefaultContextService
                             return result;
                         }
                         currentTimeout = isNoTimeout ? currentTimeout : timeout - (System.currentTimeMillis() - start);
-                        if(!isNoTimeout && timeout <= 0){
-                            throw new SharedContextTimeoutException();
+                        if(!isNoTimeout && currentTimeout <= 0){
+                            throw new SharedContextTimeoutException("keys=" + keys.size() + ", timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - start));
                         }
                     }else{
                         if(ifAcquireable){
@@ -1736,6 +1737,9 @@ public class SharedContextService extends DefaultContextService
                     throw new NoConnectServerException("Main server is not found.");
                 }
                 currentTimeout = isNoTimeout ? currentTimeout : timeout - (System.currentTimeMillis() - start);
+                if(!isNoTimeout && currentTimeout <= 0){
+                    throw new SharedContextTimeoutException();
+                }
                 keyItr = keys.iterator();
                 while(keyItr.hasNext()){
                     Object key = keyItr.next();
@@ -1760,7 +1764,7 @@ public class SharedContextService extends DefaultContextService
                         }
                     }
                     currentTimeout = isNoTimeout ? currentTimeout : timeout - (System.currentTimeMillis() - start);
-                    if(!isNoTimeout && timeout <= 0){
+                    if(!isNoTimeout && currentTimeout <= 0){
                         throw new SharedContextTimeoutException();
                     }
                 }
@@ -2173,12 +2177,10 @@ public class SharedContextService extends DefaultContextService
     
     public Object getUpdateTemplate(Object key, long timeout, boolean withTransaction) throws SharedContextSendException, SharedContextTimeoutException{
         Object value = null;
-        final boolean isNoTimeout = timeout <= 0;
-        long currentTimeout = timeout;
         if(withTransaction && sharedContextTransactionManager != null){
             SharedContextTransactionManager.SharedContextTransaction transaction = sharedContextTransactionManager.getTransaction();
             if(transaction != null && (transaction.getState() == SharedContextTransactionManager.SharedContextTransaction.STATE_BEGIN)){
-                return transaction.getUpdateTemplate(this, key, currentTimeout);
+                return transaction.getUpdateTemplate(this, key, timeout);
             }
         }
         if(isClient){
@@ -2195,7 +2197,7 @@ public class SharedContextService extends DefaultContextService
                             clientSubject,
                             key == null ? null : key.toString(),
                             1,
-                            currentTimeout
+                            timeout
                         );
                         Object result = responses[0].getObject();
                         responses[0].recycle();
@@ -2254,40 +2256,33 @@ public class SharedContextService extends DefaultContextService
                 }
             }
         }
+        final boolean isNoTimeout = timeout <= 0;
+        long currentTimeout = timeout;
         try{
             Object oldValue = null;
-            long startTime = System.currentTimeMillis();
+            long start = System.currentTimeMillis();
             if(!updateLock.acquireForUse(timeout)){
                 throw new SharedContextTimeoutException();
             }
-            if(timeout > 0){
-                timeout -= (System.currentTimeMillis() - startTime);
-                if(timeout <= 0){
-                    throw new SharedContextTimeoutException();
-                }
-                startTime = System.currentTimeMillis();
-            }
-            if(!referLock.acquireForUse(timeout)){
+            currentTimeout = isNoTimeout ? currentTimeout : timeout - (System.currentTimeMillis() - start);
+            if(!isNoTimeout && currentTimeout <= 0){
                 throw new SharedContextTimeoutException();
             }
-            if(timeout > 0){
-                timeout -= (System.currentTimeMillis() - startTime);
-                if(timeout <= 0){
-                    throw new SharedContextTimeoutException();
-                }
-                startTime = System.currentTimeMillis();
+            if(!referLock.acquireForUse(currentTimeout)){
+                throw new SharedContextTimeoutException();
+            }
+            currentTimeout = isNoTimeout ? currentTimeout : timeout - (System.currentTimeMillis() - start);
+            if(!isNoTimeout && currentTimeout <= 0){
+                throw new SharedContextTimeoutException();
             }
             Object current = getRawLocal(key);
             Object currentValue = unwrapCachedReference(current, false, false);
             if(currentValue == null){
                 if(isClient && isEnabledIndexOnClient){
-                    currentValue = get(key, timeout);
-                    if(timeout > 0){
-                        timeout -= (System.currentTimeMillis() - startTime);
-                        if(timeout <= 0){
-                            throw new SharedContextTimeoutException();
-                        }
-                        startTime = System.currentTimeMillis();
+                    currentValue = get(key, currentTimeout);
+                    currentTimeout = isNoTimeout ? currentTimeout : timeout - (System.currentTimeMillis() - start);
+                    if(!isNoTimeout && currentTimeout <= 0){
+                        throw new SharedContextTimeoutException();
                     }
                 }
                 if(currentValue == null
@@ -2319,7 +2314,7 @@ public class SharedContextService extends DefaultContextService
                         isClient ? clientSubject : subject,
                         key == null ? null : key.toString(),
                         0,
-                        timeout
+                        currentTimeout
                     );
                     for(int i = 0; i < responses.length; i++){
                         Object ret = responses[i].getObject();
@@ -3177,12 +3172,12 @@ public class SharedContextService extends DefaultContextService
             }
         }
         try{
-            long startTime = System.currentTimeMillis();
+            long start = System.currentTimeMillis();
             if(!referLock.acquireForUse(currentTimeout)){
                 throw new SharedContextTimeoutException();
             }
             if(!isNoTimeout && currentTimeout <= 0){
-                currentTimeout -= (System.currentTimeMillis() - startTime);
+                currentTimeout = isNoTimeout ? currentTimeout : timeout - (System.currentTimeMillis() - start);
                 if(currentTimeout <= 0){
                     throw new SharedContextTimeoutException();
                 }
@@ -3207,11 +3202,10 @@ public class SharedContextService extends DefaultContextService
                     }
                     if(lock != null){
                         lock.init();
-                        final long start = System.currentTimeMillis();
                         if(!lock.waitLock(currentTimeout)){
                             throw new SharedContextTimeoutException();
                         }
-                        currentTimeout = isNoTimeout ? timeout : currentTimeout - (System.currentTimeMillis() - start);
+                        currentTimeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
                         if(!isNoTimeout && currentTimeout <= 0){
                             throw new SharedContextTimeoutException();
                         }
@@ -5954,13 +5948,14 @@ public class SharedContextService extends DefaultContextService
                     }else{
                         message.setDestinationIds(receiveClients);
                         long currentTimeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - startTime);
-                        if(!isNoTimeout && timeout <= 0){
+                        if(!isNoTimeout && currentTimeout <= 0){
                             Message response = createResponseMessage(responseSubject, responseKey, new SharedContextTimeoutException());
                             try{
                                 serverConnection.response(sourceId, sequence, response);
                             }catch(MessageSendException e){
                                 getLogger().write("SCS__00006", new Object[]{isClient ? clientSubject : subject, response}, e);
                             }
+                            return;
                         }
                         message.setObject(
                             new SharedContextEvent(
@@ -6702,6 +6697,76 @@ public class SharedContextService extends DefaultContextService
         
         public Set getResultSet(){
             return resultSet == null ? indexManager.keySet() : resultSet;
+        }
+        
+        public Set getResultValueSet() throws SharedContextSendException, SharedContextTimeoutException{
+            return getResultValueSet(defaultTimeout);
+        }
+        
+        public Set getResultValueSet(long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+            Set keySet = getResultSet();
+            if(keySet == null){
+                return null;
+            }
+            Set resultValueSet = new LinkedHashSet();
+            final long start = System.currentTimeMillis();
+            long currentTimeout = timeout;
+            Iterator keys = keySet.iterator();
+            while(keys.hasNext()){
+                if(timeout > 0){
+                    currentTimeout = timeout - (System.currentTimeMillis() - start);
+                    if(currentTimeout <= 0){
+                        throw new SharedContextTimeoutException();
+                    }
+                }
+                resultValueSet.add(get(keys.next(), currentTimeout));
+            }
+            
+            return resultValueSet;
+        }
+        
+        public List getResultValueList() throws SharedContextSendException, SharedContextTimeoutException{
+            return getResultValueList(defaultTimeout);
+        }
+        
+        public List getResultValueList(long timeout) throws SharedContextSendException, SharedContextTimeoutException{
+            Set keySet = getResultSet();
+            if(keySet == null){
+                return null;
+            }
+            List resultValueList = new ArrayList();
+            final long start = System.currentTimeMillis();
+            long currentTimeout = timeout;
+            Iterator keys = keySet.iterator();
+            while(keys.hasNext()){
+                if(timeout > 0){
+                    currentTimeout = timeout - (System.currentTimeMillis() - start);
+                    if(currentTimeout <= 0){
+                        throw new SharedContextTimeoutException();
+                    }
+                }
+                resultValueList.add(get(keys.next(), currentTimeout));
+            }
+            
+            return resultValueList;
+        }
+        
+        public List getResultValueList(long timeout, String[] propNames) throws SharedContextSendException, SharedContextTimeoutException{
+            return getResultValueList(timeout, propNames, null);
+        }
+        
+        public List getResultValueList(long timeout, String[] propNames, boolean[] isAsc) throws SharedContextSendException, SharedContextTimeoutException{
+            List resultValueList = getResultValueList(timeout);
+            if(resultValueList == null || resultValueList.size() == 0){
+                return resultValueList;
+            }
+            Object template = resultValueList.get(0);
+            if(template instanceof Record){
+                RecordList.sort(resultValueList, propNames, isAsc);
+            }else{
+                Collections.sort(resultValueList, new BeanTableView.BeanComparator(template.getClass(), propNames, isAsc));
+            }
+            return resultValueList;
         }
         
         public SharedContextView and(){

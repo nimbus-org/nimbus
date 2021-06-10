@@ -1234,7 +1234,7 @@ public class BeanTableView implements Cloneable{
         return clone;
     }
     
-    protected static class BeanComparator implements Comparator, Externalizable{
+    public static class BeanComparator implements Comparator, Externalizable{
         
         protected SimpleProperty[] properties;
         protected boolean[] isAsc;
