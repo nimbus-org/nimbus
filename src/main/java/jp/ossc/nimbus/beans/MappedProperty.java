@@ -667,7 +667,15 @@ public class MappedProperty extends SimpleProperty implements Serializable{
         if(mappedWriteMethodCache.containsKey(clazz)){
             final Object methodObj = mappedWriteMethodCache.get(clazz);
             if(methodObj instanceof Method){
-                return (Method)methodObj;
+                if(param == null){
+                    return (Method)methodObj;
+                }
+                Method setMethod = (Method)methodObj;
+                if(isAssignableFrom(setMethod.getParameterTypes()[1], param)){
+                    return setMethod;
+                }else{
+                    return null;
+                }
             }
             final Map overloadMap = (Map)methodObj;
             if(param == null){
