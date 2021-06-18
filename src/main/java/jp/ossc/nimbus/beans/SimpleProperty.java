@@ -940,7 +940,19 @@ public class SimpleProperty implements Property, Serializable, Comparable{
         if(setMethodCache.containsKey(clazz)){
             final Object methodObj = setMethodCache.get(clazz);
             if(methodObj instanceof Method){
-                return (Method)methodObj;
+                if(valClazz == null){
+                    return (Method)methodObj;
+                }
+                Method writeMethod = (Method)methodObj;
+                if(isAssignableFrom(writeMethod.getParameterTypes()[0], valClazz)){
+                    return writeMethod;
+                }else{
+                    if(isThrow){
+                        throw new NoSuchWritablePropertyException(clazz, property);
+                    }else{
+                        return null;
+                    }
+                }
             }
             if(valClazz == null){
                 if(isThrow){
