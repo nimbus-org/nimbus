@@ -728,7 +728,9 @@ public class IndexedProperty extends SimpleProperty implements Serializable{
                     return (Method)methodObj;
                 }
                 Method setMethod = (Method)methodObj;
-                if(isAssignableFrom(setMethod.getParameterTypes()[1], param)){
+                final Class primitiveClazz = toPrimitive(param);
+                final Class paramType = setMethod.getParameterTypes()[1];
+                if(isAssignableFrom(paramType, param) || paramType.equals(primitiveClazz)){
                     return setMethod;
                 }else{
                     return null;
