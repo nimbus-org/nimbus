@@ -525,7 +525,7 @@ public class DateKey{
             throw new IllegalArgumentException("expected OR or AND.");
         }
         public void validate(){
-            if(day == 0 && !isEnd){
+            if(day == 0 && !isEnd && dateKey == null){
                 throw new IllegalArgumentException(
                     "DAY@ is null"
                 );
