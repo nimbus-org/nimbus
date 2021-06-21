@@ -280,11 +280,20 @@ public class DateKey{
                 }else if(OPEN.equals(token)){
                     final StringBuilder buf = new StringBuilder();
                     int tmpIndex = index;
-                    while(!(token = (String)tokens.next()).equals(CLOSE)){
+                    int openCount = 1;
+                    while(true){
+                        token = (String)tokens.next();
+                        if(OPEN.equals(token)){
+                            openCount++;
+                        }else if(CLOSE.equals(token)){
+                            openCount--;
+                        }
+                        if(openCount == 0){
+                            break;
+                        }
                         index += token.length();
                         buf.append(token);
                     }
-                    index += token.length();
                     curCond = parse(buf.toString(), tmpIndex);
                 }else if(CLOSE.equals(token)){
                     throw new IllegalArgumentException(
@@ -297,15 +306,15 @@ public class DateKey{
                         "Invalid token " + token
                     );
                 }
+                if(notCond != null){
+                    notCond.add(curCond);
+                    curCond = notCond;
+                    notCond = null;
+                }
                 if(cond == null){
                     cond = curCond;
                 }else{
                     cond.add(curCond);
-                }
-                if(notCond != null){
-                    notCond.add(cond);
-                    cond = notCond;
-                    notCond = null;
                 }
                 index += token.length();
             }
@@ -314,13 +323,19 @@ public class DateKey{
             }
             cond.validate();
         }catch(IllegalArgumentException e){
-            throw new IllegalArgumentException(e.getMessage() + " : " + index);
+            throw new IllegalArgumentException("key=" + key + ", index=" + index, e);
         }catch(NoSuchElementException e){
-            throw new IllegalArgumentException(
-                "The expected token is not found : " + index
-            );
+            throw new IllegalArgumentException("key=" + key + ", index=" + index, e);
         }
         return cond;
+    }
+    
+    public String toString(){
+        final StringBuilder buf = new StringBuilder(super.toString());
+        buf.append('{');
+        buf.append("condition=").append(condition);
+        buf.append('}');
+        return buf.toString();
     }
     
     /**
@@ -408,6 +423,16 @@ public class DateKey{
                 );
             }
         }
+        
+        public String toString(){
+            final StringBuilder buf = new StringBuilder("Week");
+            buf.append('{');
+            buf.append("numberOfWeek=").append(numberOfWeek);
+            buf.append(",week=").append(week);
+            buf.append(",isEnd=").append(isEnd);
+            buf.append('}');
+            return buf.toString();
+        }
     }
     
     /**
@@ -444,6 +469,14 @@ public class DateKey{
                 );
             }
         }
+        
+        public String toString(){
+            final StringBuilder buf = new StringBuilder("Year");
+            buf.append('{');
+            buf.append("year=").append(year);
+            buf.append('}');
+            return buf.toString();
+        }
     }
     
     /**
@@ -479,6 +512,14 @@ public class DateKey{
                     "MONTH@ is null"
                 );
             }
+        }
+        
+        public String toString(){
+            final StringBuilder buf = new StringBuilder("Month");
+            buf.append('{');
+            buf.append("month=").append(month);
+            buf.append('}');
+            return buf.toString();
         }
     }
     
@@ -531,6 +572,16 @@ public class DateKey{
                 );
             }
         }
+        
+        public String toString(){
+            final StringBuilder buf = new StringBuilder("Day");
+            buf.append('{');
+            buf.append("day=").append(day);
+            buf.append(",dateKey=").append(dateKey);
+            buf.append(",isEnd=").append(isEnd);
+            buf.append('}');
+            return buf.toString();
+        }
     }
     
     /**
@@ -566,6 +617,15 @@ public class DateKey{
             }
             condition1.validate();
             condition2.validate();
+        }
+        
+        public String toString(){
+            final StringBuilder buf = new StringBuilder("And");
+            buf.append('{');
+            buf.append("condition1=").append(condition1);
+            buf.append(",condition2=").append(condition2);
+            buf.append('}');
+            return buf.toString();
         }
     }
     
@@ -603,6 +663,15 @@ public class DateKey{
             condition1.validate();
             condition2.validate();
         }
+        
+        public String toString(){
+            final StringBuilder buf = new StringBuilder("Or");
+            buf.append('{');
+            buf.append("condition1=").append(condition1);
+            buf.append(",condition2=").append(condition2);
+            buf.append('}');
+            return buf.toString();
+        }
     }
     
     /**
@@ -627,6 +696,14 @@ public class DateKey{
                 );
             }
             condition.validate();
+        }
+        
+        public String toString(){
+            final StringBuilder buf = new StringBuilder("Not");
+            buf.append('{');
+            buf.append("condition=").append(condition);
+            buf.append('}');
+            return buf.toString();
         }
     }
 }
