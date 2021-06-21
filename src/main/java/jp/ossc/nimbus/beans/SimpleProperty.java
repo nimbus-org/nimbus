@@ -944,7 +944,9 @@ public class SimpleProperty implements Property, Serializable, Comparable{
                     return (Method)methodObj;
                 }
                 Method writeMethod = (Method)methodObj;
-                if(isAssignableFrom(writeMethod.getParameterTypes()[0], valClazz)){
+                final Class primitiveClazz = toPrimitive(valClazz);
+                final Class paramType = writeMethod.getParameterTypes()[0];
+                if(isAssignableFrom(paramType, valClazz) || paramType.equals(primitiveClazz)){
                     return writeMethod;
                 }else{
                     if(isThrow){
