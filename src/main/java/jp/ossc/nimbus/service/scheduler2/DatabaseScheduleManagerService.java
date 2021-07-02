@@ -2786,6 +2786,12 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 concatQuery(buf, "A." + scheduleTableSchema.date, "A." + scheduleTableSchema.time);
                 buf.append("<=?");
             }
+            
+            buf.append(" order by ")
+                .append("A." + scheduleTableSchema.date)
+                .append(", A." + scheduleTableSchema.time)
+                .append(", A." + scheduleTableSchema.id);
+            
             if(limit > 0){
                 buf.append(" limit ").append(limit);
             }
