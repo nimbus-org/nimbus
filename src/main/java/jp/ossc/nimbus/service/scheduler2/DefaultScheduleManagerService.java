@@ -927,6 +927,11 @@ public class DefaultScheduleManagerService extends ServiceBase
     // ScheduleManagerのJavaDoc
     public List findExecutableSchedules(Date date, String[] executorTypes, String executorKey)
      throws ScheduleManageException{
+        return findExecutableSchedules(date, executorTypes, null, -1);
+    }
+    
+    public List findExecutableSchedules(Date date, String[] executorTypes, String executorKey, int limit)
+     throws ScheduleManageException{
         final List schedules = findSchedules(
             null,
             date,
@@ -936,7 +941,7 @@ public class DefaultScheduleManagerService extends ServiceBase
             null,
             executorTypes,
             executorKey,
-            -1
+            limit
         );
         if(schedules == null || schedules.size() == 0){
             return schedules;

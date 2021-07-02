@@ -289,6 +289,7 @@ AS___00005,Unexpected error occured on Scheduler "@0".,150,jp.ossc.nimbus.servic
 AS___00006,It failed in state transition @3->@4 of the schedule "@1:@2" of ScheduleManager "@0".,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 AS___00007,It failed to entry of the schedule "@1:@2" of ScheduleManager "@0".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 AS___00008,ScheduleExecutor is not found : "@1:@2" of ScheduleManager "@0".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
+AS___00009,Scheduler "@0" does not have the resources to execute the schedule.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 ASE__00001,The schedule "@1:@2" of ScheduleManager "@0" was begun.input=@3,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 ASE__00002,The schedule "@1:@2" of ScheduleManager "@0" was ended.output=@3,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 ASE__00003,It failed in execution of the schedule "@1:@2" of ScheduleManager "@0".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY

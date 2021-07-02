@@ -81,6 +81,11 @@ public interface AbstractSchedulerServiceMBean extends ServiceBaseMBean{
     public static final String MSG_ID_NOT_FOUND_EXECUTOR_ERROR = "AS___00008";
     
     /**
+     * スケジュールを実行するリソースが足りない場合のログメッセージID。<p>
+     */
+    public static final String MSG_ID_RESOURCE_NOT_ENOUGH_ERROR = "AS___00009";
+    
+    /**
      * 実行すべきスケジュールを{@link ScheduleManager}に確認しにいく間隔[ms]を設定する。<p>
      * デフォルトは、1000[ms]。<br>
      *
@@ -94,6 +99,20 @@ public interface AbstractSchedulerServiceMBean extends ServiceBaseMBean{
      * @return 間隔[ms]
      */
     public long getScheduleTickerInterval();
+    
+    /**
+     * 実行可能なスケジュールを検索する際の最大件数を設定する。<p>
+     *
+     * @param limit 最大件数
+     */
+    public void setScheduleFetchLimit(int limit);
+    
+    /**
+     * 実行可能なスケジュールを検索する際の最大件数を取得する。<p>
+     *
+     * @return 最大件数
+     */
+    public int getScheduleFetchLimit();
     
     /**
      * {@link ScheduleManager}サービスのサービス名を設定する。<p>

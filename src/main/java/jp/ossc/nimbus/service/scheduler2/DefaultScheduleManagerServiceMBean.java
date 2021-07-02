@@ -301,6 +301,18 @@ public interface DefaultScheduleManagerServiceMBean extends ServiceBaseMBean{
     public List findExecutableSchedules(Date date, String[] executorTypes, String executorKey) throws ScheduleManageException;
     
     /**
+     * 指定された実行キーと実行種別、日時で実行可能なスケジュールを検索する。<p>
+     *
+     * @param date 日時
+     * @param executorTypes 実行種別配列
+     * @param executorKey 実行キー
+     * @param limit 最大件数
+     * @return スケジュールリスト
+     * @exception ScheduleManageException スケジュールの検索に失敗した場合
+     */
+    public List findExecutableSchedules(Date date, String[] executorTypes, String executorKey, int limit) throws ScheduleManageException;
+    
+    /**
      * スケジュールを登録する。<p>
      *
      * @param masterId スケジュールマスタID

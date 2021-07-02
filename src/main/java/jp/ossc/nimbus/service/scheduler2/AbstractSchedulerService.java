@@ -92,6 +92,8 @@ public abstract class AbstractSchedulerService extends ServiceBase
     protected ServiceName timeServiceName;
     protected Time time;
     
+    protected int scheduleFetchLimit = -1;
+    
     protected boolean isControlCluster = true;
     
     // AbstractSchedulerServiceMBeanのJavaDoc
@@ -101,6 +103,15 @@ public abstract class AbstractSchedulerService extends ServiceBase
     // AbstractSchedulerServiceMBeanのJavaDoc
     public long getScheduleTickerInterval(){
         return scheduleTickerInterval;
+    }
+    
+    // AbstractSchedulerServiceMBeanのJavaDoc
+    public void setScheduleFetchLimit(int limit){
+        scheduleFetchLimit = limit;
+    }
+    // AbstractSchedulerServiceMBeanのJavaDoc
+    public int getScheduleFetchLimit(){
+        return scheduleFetchLimit;
     }
     
     // AbstractSchedulerServiceMBeanのJavaDoc
@@ -448,6 +459,15 @@ public abstract class AbstractSchedulerService extends ServiceBase
     }
     
     /**
+     * スケジュールを検索する最大件数を計算する。<p>
+     *
+     * @return スケジュールを検索する最大件数
+     */
+    protected int calculateScheduleFetchLimit(){
+        return scheduleFetchLimit;
+    }
+    
+    /**
      * スケジュールを投入するキューがJTAをサポートするかどうかを判定する。<p>
      *
      * @return JTAをサポートする場合は、true
@@ -630,16 +650,17 @@ public abstract class AbstractSchedulerService extends ServiceBase
                     final String[] executorTypes = (String[])scheduleExecutors.keySet().toArray(
                         new String[scheduleExecutors.size()]
                     );
-                    if(executorKey == null){
-                        scheduleList = scheduleManager.findExecutableSchedules(
-                            time == null ? new Date() : new Date(time.currentTimeMillis()),
-                            executorTypes
-                        );
+                    final int limit = calculateScheduleFetchLimit();
+                    if(limit == 0){
+                        getLogger().write(MSG_ID_RESOURCE_NOT_ENOUGH_ERROR, getServiceNameObject());
+                        rollbackMark = true;
+                        return;
                     }else{
                         scheduleList = scheduleManager.findExecutableSchedules(
                             time == null ? new Date() : new Date(time.currentTimeMillis()),
                             executorTypes,
-                            executorKey
+                            executorKey,
+                            limit
                         );
                     }
                 }catch(ScheduleManageException e){
