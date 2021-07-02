@@ -175,11 +175,7 @@ public class DefaultSchedulerService extends AbstractSchedulerService
         if(queueHandlerContainer.getStandbyQueueHandlerSize() == 0){
             return 0;
         }else{
-            if(scheduleFetchLimit < 0){
-                return queueHandlerContainer.getStandbyQueueHandlerSize();
-            }else{
-                return Math.min(scheduleFetchLimit, queueHandlerContainer.getStandbyQueueHandlerSize());
-            }
+            return scheduleFetchLimit;
         }
     }
     
