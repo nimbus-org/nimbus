@@ -2882,6 +2882,11 @@ public class DatabaseScheduleManagerService extends ServiceBase
     // ScheduleManagerのJavaDoc
     public List findExecutableSchedules(Date date, String[] executorTypes, String executorKey)
      throws ScheduleManageException{
+        return findExecutableSchedules(date, executorTypes, null, -1);
+    }
+    
+    public List findExecutableSchedules(Date date, String[] executorTypes, String executorKey, int limit)
+     throws ScheduleManageException{
         final List result = findSchedules(
             null,
             date,
@@ -2892,7 +2897,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
             executorTypes,
             executorKey,
             isLockForFindExecutable,
-            -1
+            limit
         );
         Connection con = null;
         try{

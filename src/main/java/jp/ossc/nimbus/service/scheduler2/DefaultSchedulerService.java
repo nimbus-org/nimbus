@@ -171,6 +171,18 @@ public class DefaultSchedulerService extends AbstractSchedulerService
         return requestQueue;
     }
     
+    protected int calculateScheduleFetchLimit(){
+        if(queueHandlerContainer.getStandbyQueueHandlerSize() == 0){
+            return 0;
+        }else{
+            if(scheduleFetchLimit < 0){
+                return queueHandlerContainer.getStandbyQueueHandlerSize();
+            }else{
+                return Math.min(scheduleFetchLimit, queueHandlerContainer.getStandbyQueueHandlerSize());
+            }
+        }
+    }
+    
     /**
      * トランザクション参加不可能なのでfalseを返す。<p>
      *
