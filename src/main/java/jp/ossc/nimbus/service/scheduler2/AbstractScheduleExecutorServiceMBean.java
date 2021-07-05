@@ -91,6 +91,11 @@ public interface AbstractScheduleExecutorServiceMBean extends ServiceBaseMBean{
     public static final String MSG_ID_STATE_TRANS_ERROR = "ASE__00009";
     
     /**
+     * 動的スケジュールの作成に失敗した場合のログメッセージID。<p>
+     */
+    public static final String MSG_ID_DYNAMIC_REPEAT_ERROR = "ASE__00011";
+    
+    /**
      * ジャーナル開始時のジャーナルキー。<p>
      */
     public static final String JOURNAL_KEY_EXECUTE = "Execute";

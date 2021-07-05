@@ -60,6 +60,8 @@ public class DefaultScheduleMaster
     
     protected long repeatInterval;
     
+    protected boolean isDynamicRepeat;
+    
     protected long retryInterval;
     
     protected Date retryEndTime;
@@ -127,6 +129,7 @@ public class DefaultScheduleMaster
             startTime,
             null,
             0l,
+            false,
             0l,
             null,
             0l,
@@ -184,6 +187,7 @@ public class DefaultScheduleMaster
             startTime,
             null,
             0l,
+            false,
             retryInterval,
             retryEndTime,
             maxDelayTime,
@@ -207,6 +211,7 @@ public class DefaultScheduleMaster
      * @param startTime 開始時刻
      * @param endTime 終了時刻
      * @param repeatInterval 繰り返し実行間隔[ms]
+     * @param isDynamicRepeat 動的繰り返しフラグ
      * @param retryInterval リトライ実行間隔[ms]
      * @param retryEndTime リトライ終了時刻
      * @param maxDelayTime 最大遅延時間[ms]
@@ -226,6 +231,7 @@ public class DefaultScheduleMaster
         Date startTime,
         Date endTime,
         long repeatInterval,
+        boolean isDynamicRepeat,
         long retryInterval,
         Date retryEndTime,
         long maxDelayTime,
@@ -244,6 +250,7 @@ public class DefaultScheduleMaster
         setStartTime(startTime);
         setEndTime(endTime);
         setRepeatInterval(repeatInterval);
+        setDynamicRepeat(isDynamicRepeat);
         setRetryInterval(retryInterval);
         setRetryEndTime(retryEndTime);
         setMaxDelayTime(maxDelayTime);
@@ -349,6 +356,16 @@ public class DefaultScheduleMaster
     // ScheduleMasterのJavaDoc
     public void setRepeatInterval(long interval){
         repeatInterval = interval;
+    }
+    
+    // ScheduleMasterのJavaDoc
+    public void setDynamicRepeat(boolean isDynamic){
+        isDynamicRepeat = isDynamic;
+    }
+    
+    // ScheduleMasterのJavaDoc
+    public boolean isDynamicRepeat(){
+        return isDynamicRepeat;
     }
     
     // ScheduleMasterのJavaDoc
@@ -621,6 +638,7 @@ public class DefaultScheduleMaster
         buf.append(",endTime=")
             .append(endTime == null ? null : format.format(endTime));
         buf.append(",repeatInterval=").append(repeatInterval);
+        buf.append(",isDynamicRepeat=").append(isDynamicRepeat);
         buf.append(",retryInterval=").append(retryInterval);
         buf.append(",retryEndTime=")
             .append(retryEndTime == null ? null : format.format(retryEndTime));

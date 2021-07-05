@@ -320,6 +320,20 @@ public interface Schedule{
     public Date getInitialTime();
     
     /**
+     * スケジュール繰り返し間隔[ms]を取得する。<p>
+     *
+     * @return 繰り返し間隔
+     */
+    public long getRepeatInterval();
+    
+    /**
+     * スケジュール繰り返し終了時刻を取得する。<p>
+     *
+     * @return スケジュール繰り返し終了時刻
+     */
+    public Date getRepeatEndTime();
+    
+    /**
      * スケジュールリトライ実行間隔[ms]を取得する。<p>
      *
      * @return リトライ実行間隔
@@ -467,4 +481,11 @@ public interface Schedule{
      * @param time スケジュールの終了時刻
      */
     public void setExecuteEndTime(Date time);
+    
+    /**
+     * 複製を作成する。<p>
+     *
+     * @return 複製
+     */
+    public Object clone();
 }

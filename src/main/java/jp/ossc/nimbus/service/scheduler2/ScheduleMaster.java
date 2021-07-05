@@ -127,6 +127,21 @@ public interface ScheduleMaster extends Cloneable{
     public void setRepeatInterval(long interval);
     
     /**
+     * スケジュール繰り返しを動的に行うかどうかを設定する。<p>
+     *
+     * @param isDynamic 動的に行う場合、true
+     */
+    public void setDynamicRepeat(boolean isDynamic);
+    
+    /**
+     * スケジュール繰り返しを動的に行うかどうかを判定する。<p>
+     *
+     * @return trueの場合、動的に行う
+     */
+    public boolean isDynamicRepeat();
+    
+    
+    /**
      * スケジュールリトライ実行間隔[ms]を取得する。<p>
      *
      * @return リトライ実行間隔
