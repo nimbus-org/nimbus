@@ -5024,7 +5024,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     + scheduleTableSchema.rowVersion + ','
                     + scheduleTableSchema.updateUserId + ','
                     + scheduleTableSchema.updateTime
-                    + ") values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,0,'" + updateUserId + "',?)"
+                    + ") values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,0,'" + updateUserId + "',?)"
             );
             ps2 = con.prepareStatement(
                 "insert into " + scheduleDependsTableSchema.table

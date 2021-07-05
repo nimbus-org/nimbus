@@ -40,7 +40,7 @@ import java.text.SimpleDateFormat;
  * @author M.Takata
  */
 public class DefaultScheduleMaster
- implements ScheduleMaster, java.io.Serializable, Comparable{
+ implements ScheduleMaster, java.io.Serializable, Comparable, Cloneable{
     
     private static final long serialVersionUID = -4016419359156060172L;
     

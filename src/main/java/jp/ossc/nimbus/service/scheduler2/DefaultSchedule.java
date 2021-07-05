@@ -44,7 +44,7 @@ import java.text.SimpleDateFormat;
  * @author M.Takata
  */
 public class DefaultSchedule
- implements Schedule, Serializable, Comparable{
+ implements Schedule, Serializable, Comparable, Cloneable{
     
     private static final long serialVersionUID = -2668833951199708052L;
     

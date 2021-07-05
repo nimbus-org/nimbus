@@ -647,6 +647,7 @@ public abstract class AbstractScheduleExecutorService extends ServiceBase
         }finally{
             if(result != null && result.getRepeatInterval() > 0){
                 final Date repeatTime = calculateRepeatTime(
+                    result.getTime(),
                     result.getRepeatInterval(),
                     result.getRepeatEndTime()
                 );
@@ -664,6 +665,9 @@ public abstract class AbstractScheduleExecutorService extends ServiceBase
                         if(ownSchedules.isEmpty()){
                             Schedule nextSchedule = (Schedule)result.clone();
                             nextSchedule.setTime(repeatTime);
+                            if(nextSchedule instanceof DefaultSchedule){
+                                ((DefaultSchedule)nextSchedule).setInitialTime(repeatTime);
+                            }
                             scheduleManager.addSchedule(nextSchedule);
                         }
                     }catch(ScheduleManageException e){
@@ -760,15 +764,18 @@ public abstract class AbstractScheduleExecutorService extends ServiceBase
     /**
      * 繰り返し日時を計算する。<p>
      *
+     * @param currentTime 現在時刻
      * @param interval 繰り返し間隔
      * @param endTime 繰り返し終了時刻
      * @return 繰り返し日時。繰り返し終了時刻を過ぎている場合は、null
      */
     protected Date calculateRepeatTime(
+        Date currentTime,
         long interval,
         Date endTime
     ){
         final Calendar offset = Calendar.getInstance();
+        offset.setTime(currentTime);
         Calendar end = null;
         if(endTime != null){
             end = Calendar.getInstance();
