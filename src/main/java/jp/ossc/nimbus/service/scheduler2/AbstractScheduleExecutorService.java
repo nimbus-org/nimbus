@@ -655,7 +655,7 @@ public abstract class AbstractScheduleExecutorService extends ServiceBase
                     try{
                         final List ownSchedules = scheduleManager.findSchedules(
                             repeatTime,
-                            null,
+                            result.getRepeatEndTime(),
                             null,
                             result.getMasterId(),
                             null,
