@@ -1084,6 +1084,8 @@ public class DefaultScheduleManagerService extends ServiceBase
         String[] depends,
         String executorKey,
         String executorType,
+        long repeatInterval,
+        Date repeatEndTime,
         long retryInterval,
         Date retryEndTime,
         long maxDelayTime
@@ -1108,6 +1110,8 @@ public class DefaultScheduleManagerService extends ServiceBase
                 null,
                 executorKey,
                 executorType,
+                repeatInterval,
+                repeatEndTime,
                 retryInterval,
                 retryEndTime,
                 maxDelayTime

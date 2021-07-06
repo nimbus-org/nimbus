@@ -734,6 +734,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     + scheduleTableSchema.output + ','
                     + scheduleTableSchema.initialDate + ','
                     + scheduleTableSchema.initialTime + ','
+                    + scheduleTableSchema.repeatInterval + ','
+                    + scheduleTableSchema.repeatEndTime + ','
                     + scheduleTableSchema.retryInterval + ','
                     + scheduleTableSchema.retryEndTime + ','
                     + scheduleTableSchema.maxDelayTime + ','
@@ -747,7 +749,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     + scheduleTableSchema.rowVersion + ','
                     + scheduleTableSchema.updateUserId + ','
                     + scheduleTableSchema.updateTime
-                    + ") values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,0,'" + updateUserId + "',?)"
+                    + ") values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,0,'" + updateUserId + "',?)"
             );
             ps2 = con.prepareStatement(
                 "insert into " + scheduleDependsTableSchema.table
@@ -1009,6 +1011,29 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 scheduleInsertStatement.setString(
                     ++index,
                     format.format(initialTime)
+                );
+            }
+            if(schedule.getRepeatInterval() > 0){
+                scheduleInsertStatement.setLong(
+                    ++index,
+                    schedule.getRepeatInterval()
+                );
+            }else{
+                scheduleInsertStatement.setNull(
+                    ++index,
+                    Types.DECIMAL
+                );
+            }
+            format.applyPattern(dateFormat + timeFormat);
+            if(schedule.getRepeatEndTime() == null){
+                scheduleInsertStatement.setNull(
+                    ++index,
+                    Types.CHAR
+                );
+            }else{
+                scheduleInsertStatement.setString(
+                    ++index,
+                    format.format(schedule.getRepeatEndTime())
                 );
             }
             if(schedule.getRetryInterval() > 0){
@@ -1380,6 +1405,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append("A.").append(scheduleMasterTableSchema.startTime).append(" as ").append(scheduleMasterTableSchema.startTime).append(',')
                 .append("A.").append(scheduleMasterTableSchema.endTime).append(" as ").append(scheduleMasterTableSchema.endTime).append(',')
                 .append("A.").append(scheduleMasterTableSchema.repeatInterval).append(" as ").append(scheduleMasterTableSchema.repeatInterval).append(',')
+                .append("A.").append(scheduleMasterTableSchema.dynamicRepeat).append(" as ").append(scheduleMasterTableSchema.dynamicRepeat).append(',')
                 .append("A.").append(scheduleMasterTableSchema.retryInterval).append(" as ").append(scheduleMasterTableSchema.retryInterval).append(',')
                 .append("A.").append(scheduleMasterTableSchema.retryEndTime).append(" as ").append(scheduleMasterTableSchema.retryEndTime).append(',')
                 .append("A.").append(scheduleMasterTableSchema.maxDelayTime).append(" as ").append(scheduleMasterTableSchema.maxDelayTime).append(',')
@@ -1602,6 +1628,9 @@ public class DatabaseScheduleManagerService extends ServiceBase
         if(!rs.wasNull()){
             scheduleMaster.setRepeatInterval(longVal);
         }
+        String dynamicRepeatStr = rs.getString(scheduleMasterTableSchema.dynamicRepeat);
+        boolean isDynamicRepeat = dynamicRepeatStr != null && !"0".equals(dynamicRepeatStr);
+        scheduleMaster.setDynamicRepeat(isDynamicRepeat);
         longVal = rs.getLong(
             scheduleMasterTableSchema.retryInterval
         );
@@ -2040,7 +2069,15 @@ public class DatabaseScheduleManagerService extends ServiceBase
         str = rs.getString(scheduleTableSchema.initialDate)
             + rs.getString(scheduleTableSchema.initialTime);
         schedule.setInitialTime(format.parse(str));
-        long longVal = rs.getLong(scheduleTableSchema.retryInterval);
+        long longVal = rs.getLong(scheduleTableSchema.repeatInterval);
+        if(!rs.wasNull()){
+            schedule.setRepeatInterval(longVal);
+        }
+        final String repeatEndTimeStr = rs.getString(scheduleTableSchema.repeatEndTime);
+        if(repeatEndTimeStr != null){
+            schedule.setRepeatEndTime(format.parse(repeatEndTimeStr));
+        }
+        longVal = rs.getLong(scheduleTableSchema.retryInterval);
         if(!rs.wasNull()){
             schedule.setRetryInterval(longVal);
         }
@@ -2460,6 +2497,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append("A.").append(scheduleTableSchema.output).append(" as ").append(scheduleTableSchema.output).append(',')
                 .append("A.").append(scheduleTableSchema.initialDate).append(" as ").append(scheduleTableSchema.initialDate).append(',')
                 .append("A.").append(scheduleTableSchema.initialTime).append(" as ").append(scheduleTableSchema.initialTime).append(',')
+                .append("A.").append(scheduleTableSchema.repeatInterval).append(" as ").append(scheduleTableSchema.repeatInterval).append(',')
+                .append("A.").append(scheduleTableSchema.repeatEndTime).append(" as ").append(scheduleTableSchema.repeatEndTime).append(',')
                 .append("A.").append(scheduleTableSchema.retryInterval).append(" as ").append(scheduleTableSchema.retryInterval).append(',')
                 .append("A.").append(scheduleTableSchema.retryEndTime).append(" as ").append(scheduleTableSchema.retryEndTime).append(',')
                 .append("A.").append(scheduleTableSchema.maxDelayTime).append(" as ").append(scheduleTableSchema.maxDelayTime).append(',')
@@ -2547,6 +2586,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append("A.").append(scheduleTableSchema.output).append(" as ").append(scheduleTableSchema.output).append(',')
                     .append("A.").append(scheduleTableSchema.initialDate).append(" as ").append(scheduleTableSchema.initialDate).append(',')
                     .append("A.").append(scheduleTableSchema.initialTime).append(" as ").append(scheduleTableSchema.initialTime).append(',')
+                    .append("A.").append(scheduleTableSchema.repeatInterval).append(" as ").append(scheduleTableSchema.repeatInterval).append(',')
+                    .append("A.").append(scheduleTableSchema.repeatEndTime).append(" as ").append(scheduleTableSchema.repeatEndTime).append(',')
                     .append("A.").append(scheduleTableSchema.retryInterval).append(" as ").append(scheduleTableSchema.retryInterval).append(',')
                     .append("A.").append(scheduleTableSchema.retryEndTime).append(" as ").append(scheduleTableSchema.retryEndTime).append(',')
                     .append("A.").append(scheduleTableSchema.maxDelayTime).append(" as ").append(scheduleTableSchema.maxDelayTime).append(',')
@@ -2690,6 +2731,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append("A.").append(scheduleTableSchema.output).append(" as ").append(scheduleTableSchema.output).append(',')
                 .append("A.").append(scheduleTableSchema.initialDate).append(" as ").append(scheduleTableSchema.initialDate).append(',')
                 .append("A.").append(scheduleTableSchema.initialTime).append(" as ").append(scheduleTableSchema.initialTime).append(',')
+                .append("A.").append(scheduleTableSchema.repeatInterval).append(" as ").append(scheduleTableSchema.repeatInterval).append(',')
+                .append("A.").append(scheduleTableSchema.repeatEndTime).append(" as ").append(scheduleTableSchema.repeatEndTime).append(',')
                 .append("A.").append(scheduleTableSchema.retryInterval).append(" as ").append(scheduleTableSchema.retryInterval).append(',')
                 .append("A.").append(scheduleTableSchema.retryEndTime).append(" as ").append(scheduleTableSchema.retryEndTime).append(',')
                 .append("A.").append(scheduleTableSchema.maxDelayTime).append(" as ").append(scheduleTableSchema.maxDelayTime).append(',')
@@ -3829,6 +3872,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append("A.").append(scheduleTableSchema.output).append(" as ").append(scheduleTableSchema.output).append(',')
                     .append("A.").append(scheduleTableSchema.initialDate).append(" as ").append(scheduleTableSchema.initialDate).append(',')
                     .append("A.").append(scheduleTableSchema.initialTime).append(" as ").append(scheduleTableSchema.initialTime).append(',')
+                    .append("A.").append(scheduleTableSchema.repeatInterval).append(" as ").append(scheduleTableSchema.repeatInterval).append(',')
+                    .append("A.").append(scheduleTableSchema.repeatEndTime).append(" as ").append(scheduleTableSchema.repeatEndTime).append(',')
                     .append("A.").append(scheduleTableSchema.retryInterval).append(" as ").append(scheduleTableSchema.retryInterval).append(',')
                     .append("A.").append(scheduleTableSchema.retryEndTime).append(" as ").append(scheduleTableSchema.retryEndTime).append(',')
                     .append("A.").append(scheduleTableSchema.maxDelayTime).append(" as ").append(scheduleTableSchema.maxDelayTime).append(',')
@@ -3880,6 +3925,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append("A.").append(scheduleTableSchema.output).append(" as ").append(scheduleTableSchema.output).append(',')
                     .append("A.").append(scheduleTableSchema.initialDate).append(" as ").append(scheduleTableSchema.initialDate).append(',')
                     .append("A.").append(scheduleTableSchema.initialTime).append(" as ").append(scheduleTableSchema.initialTime).append(',')
+                    .append("A.").append(scheduleTableSchema.repeatInterval).append(" as ").append(scheduleTableSchema.repeatInterval).append(',')
+                    .append("A.").append(scheduleTableSchema.repeatEndTime).append(" as ").append(scheduleTableSchema.repeatEndTime).append(',')
                     .append("A.").append(scheduleTableSchema.retryInterval).append(" as ").append(scheduleTableSchema.retryInterval).append(',')
                     .append("A.").append(scheduleTableSchema.retryEndTime).append(" as ").append(scheduleTableSchema.retryEndTime).append(',')
                     .append("A.").append(scheduleTableSchema.maxDelayTime).append(" as ").append(scheduleTableSchema.maxDelayTime).append(',')
@@ -3920,6 +3967,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append(scheduleTableSchema.output).append(',')
                     .append(scheduleTableSchema.initialDate).append(',')
                     .append(scheduleTableSchema.initialTime).append(',')
+                    .append(scheduleTableSchema.repeatInterval).append(',')
+                    .append(scheduleTableSchema.repeatEndTime).append(',')
                     .append(scheduleTableSchema.retryInterval).append(',')
                     .append(scheduleTableSchema.retryEndTime).append(',')
                     .append(scheduleTableSchema.maxDelayTime).append(',')
@@ -4000,6 +4049,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append("E.").append(scheduleTableSchema.output).append(" as ").append(scheduleTableSchema.output).append(',')
                     .append("E.").append(scheduleTableSchema.initialDate).append(" as ").append(scheduleTableSchema.initialDate).append(',')
                     .append("E.").append(scheduleTableSchema.initialTime).append(" as ").append(scheduleTableSchema.initialTime).append(',')
+                    .append("E.").append(scheduleTableSchema.repeatInterval).append(" as ").append(scheduleTableSchema.repeatInterval).append(',')
+                    .append("E.").append(scheduleTableSchema.repeatEndTime).append(" as ").append(scheduleTableSchema.repeatEndTime).append(',')
                     .append("E.").append(scheduleTableSchema.retryInterval).append(" as ").append(scheduleTableSchema.retryInterval).append(',')
                     .append("E.").append(scheduleTableSchema.retryEndTime).append(" as ").append(scheduleTableSchema.retryEndTime).append(',')
                     .append("E.").append(scheduleTableSchema.maxDelayTime).append(" as ").append(scheduleTableSchema.maxDelayTime).append(',')
@@ -4021,6 +4072,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append("C.").append(scheduleTableSchema.output).append(',')
                     .append("C.").append(scheduleTableSchema.initialDate).append(',')
                     .append("C.").append(scheduleTableSchema.initialTime).append(',')
+                    .append("C.").append(scheduleTableSchema.repeatInterval).append(',')
+                    .append("C.").append(scheduleTableSchema.repeatEndTime).append(',')
                     .append("C.").append(scheduleTableSchema.retryInterval).append(',')
                     .append("C.").append(scheduleTableSchema.retryEndTime).append(',')
                     .append("C.").append(scheduleTableSchema.maxDelayTime).append(',')
@@ -4081,6 +4134,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append("E.").append(scheduleTableSchema.output).append(" as ").append(scheduleTableSchema.output).append(',')
                     .append("E.").append(scheduleTableSchema.initialDate).append(" as ").append(scheduleTableSchema.initialDate).append(',')
                     .append("E.").append(scheduleTableSchema.initialTime).append(" as ").append(scheduleTableSchema.initialTime).append(',')
+                    .append("E.").append(scheduleTableSchema.repeatInterval).append(" as ").append(scheduleTableSchema.repeatInterval).append(',')
+                    .append("E.").append(scheduleTableSchema.repeatEndTime).append(" as ").append(scheduleTableSchema.repeatEndTime).append(',')
                     .append("E.").append(scheduleTableSchema.retryInterval).append(" as ").append(scheduleTableSchema.retryInterval).append(',')
                     .append("E.").append(scheduleTableSchema.retryEndTime).append(" as ").append(scheduleTableSchema.retryEndTime).append(',')
                     .append("E.").append(scheduleTableSchema.maxDelayTime).append(" as ").append(scheduleTableSchema.maxDelayTime).append(',')
@@ -4102,6 +4157,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append("C.").append(scheduleTableSchema.output).append(',')
                     .append("C.").append(scheduleTableSchema.initialDate).append(',')
                     .append("C.").append(scheduleTableSchema.initialTime).append(',')
+                    .append("C.").append(scheduleTableSchema.repeatInterval).append(',')
+                    .append("C.").append(scheduleTableSchema.repeatEndTime).append(',')
                     .append("C.").append(scheduleTableSchema.retryInterval).append(',')
                     .append("C.").append(scheduleTableSchema.retryEndTime).append(',')
                     .append("C.").append(scheduleTableSchema.maxDelayTime).append(',')
@@ -4151,6 +4208,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append(scheduleTableSchema.output).append(',')
                     .append(scheduleTableSchema.initialDate).append(',')
                     .append(scheduleTableSchema.initialTime).append(',')
+                    .append(scheduleTableSchema.repeatInterval).append(',')
+                    .append(scheduleTableSchema.repeatEndTime).append(',')
                     .append(scheduleTableSchema.retryInterval).append(',')
                     .append(scheduleTableSchema.retryEndTime).append(',')
                     .append(scheduleTableSchema.maxDelayTime).append(',')
@@ -4247,6 +4306,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append("G.").append(scheduleTableSchema.output).append(" as ").append(scheduleTableSchema.output).append(',')
                     .append("G.").append(scheduleTableSchema.initialDate).append(" as ").append(scheduleTableSchema.initialDate).append(',')
                     .append("G.").append(scheduleTableSchema.initialTime).append(" as ").append(scheduleTableSchema.initialTime).append(',')
+                    .append("G.").append(scheduleTableSchema.repeatInterval).append(" as ").append(scheduleTableSchema.repeatInterval).append(',')
+                    .append("G.").append(scheduleTableSchema.repeatEndTime).append(" as ").append(scheduleTableSchema.repeatEndTime).append(',')
                     .append("G.").append(scheduleTableSchema.retryInterval).append(" as ").append(scheduleTableSchema.retryInterval).append(',')
                     .append("G.").append(scheduleTableSchema.retryEndTime).append(" as ").append(scheduleTableSchema.retryEndTime).append(',')
                     .append("G.").append(scheduleTableSchema.maxDelayTime).append(" as ").append(scheduleTableSchema.maxDelayTime).append(',')
@@ -4274,6 +4335,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append("AB.").append(scheduleTableSchema.output).append(',')
                     .append("AB.").append(scheduleTableSchema.initialDate).append(',')
                     .append("AB.").append(scheduleTableSchema.initialTime).append(',')
+                    .append("AB.").append(scheduleTableSchema.repeatInterval).append(',')
+                    .append("AB.").append(scheduleTableSchema.repeatEndTime).append(',')
                     .append("AB.").append(scheduleTableSchema.retryInterval).append(',')
                     .append("AB.").append(scheduleTableSchema.retryEndTime).append(',')
                     .append("AB.").append(scheduleTableSchema.maxDelayTime).append(',')
@@ -4415,6 +4478,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append("A.").append(scheduleTableSchema.output).append(" as ").append(scheduleTableSchema.output).append(',')
                 .append("A.").append(scheduleTableSchema.initialDate).append(" as ").append(scheduleTableSchema.initialDate).append(',')
                 .append("A.").append(scheduleTableSchema.initialTime).append(" as ").append(scheduleTableSchema.initialTime).append(',')
+                .append("A.").append(scheduleTableSchema.repeatInterval).append(" as ").append(scheduleTableSchema.repeatInterval).append(',')
+                .append("A.").append(scheduleTableSchema.repeatEndTime).append(" as ").append(scheduleTableSchema.repeatEndTime).append(',')
                 .append("A.").append(scheduleTableSchema.retryInterval).append(" as ").append(scheduleTableSchema.retryInterval).append(',')
                 .append("A.").append(scheduleTableSchema.retryEndTime).append(" as ").append(scheduleTableSchema.retryEndTime).append(',')
                 .append("A.").append(scheduleTableSchema.maxDelayTime).append(" as ").append(scheduleTableSchema.maxDelayTime).append(',')
@@ -4460,6 +4525,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append("A.").append(scheduleTableSchema.output).append(" as ").append(scheduleTableSchema.output).append(',')
                 .append("A.").append(scheduleTableSchema.initialDate).append(" as ").append(scheduleTableSchema.initialDate).append(',')
                 .append("A.").append(scheduleTableSchema.initialTime).append(" as ").append(scheduleTableSchema.initialTime).append(',')
+                .append("A.").append(scheduleTableSchema.repeatInterval).append(" as ").append(scheduleTableSchema.repeatInterval).append(',')
+                .append("A.").append(scheduleTableSchema.repeatEndTime).append(" as ").append(scheduleTableSchema.repeatEndTime).append(',')
                 .append("A.").append(scheduleTableSchema.retryInterval).append(" as ").append(scheduleTableSchema.retryInterval).append(',')
                 .append("A.").append(scheduleTableSchema.retryEndTime).append(" as ").append(scheduleTableSchema.retryEndTime).append(',')
                 .append("A.").append(scheduleTableSchema.maxDelayTime).append(" as ").append(scheduleTableSchema.maxDelayTime).append(',')
@@ -4495,6 +4562,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append(scheduleTableSchema.output).append(',')
                 .append(scheduleTableSchema.initialDate).append(',')
                 .append(scheduleTableSchema.initialTime).append(',')
+                .append(scheduleTableSchema.repeatInterval).append(',')
+                .append(scheduleTableSchema.repeatEndTime).append(',')
                 .append(scheduleTableSchema.retryInterval).append(',')
                 .append(scheduleTableSchema.retryEndTime).append(',')
                 .append(scheduleTableSchema.maxDelayTime).append(',')
@@ -4570,6 +4639,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append("E.").append(scheduleTableSchema.output).append(" as ").append(scheduleTableSchema.output).append(',')
                     .append("E.").append(scheduleTableSchema.initialDate).append(" as ").append(scheduleTableSchema.initialDate).append(',')
                     .append("E.").append(scheduleTableSchema.initialTime).append(" as ").append(scheduleTableSchema.initialTime).append(',')
+                    .append("E.").append(scheduleTableSchema.repeatInterval).append(" as ").append(scheduleTableSchema.repeatInterval).append(',')
+                    .append("E.").append(scheduleTableSchema.repeatEndTime).append(" as ").append(scheduleTableSchema.repeatEndTime).append(',')
                     .append("E.").append(scheduleTableSchema.retryInterval).append(" as ").append(scheduleTableSchema.retryInterval).append(',')
                     .append("E.").append(scheduleTableSchema.retryEndTime).append(" as ").append(scheduleTableSchema.retryEndTime).append(',')
                     .append("E.").append(scheduleTableSchema.maxDelayTime).append(" as ").append(scheduleTableSchema.maxDelayTime).append(',')
@@ -4591,6 +4662,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append("C.").append(scheduleTableSchema.output).append(',')
                     .append("C.").append(scheduleTableSchema.initialDate).append(',')
                     .append("C.").append(scheduleTableSchema.initialTime).append(',')
+                    .append("C.").append(scheduleTableSchema.repeatInterval).append(',')
+                    .append("C.").append(scheduleTableSchema.repeatEndTime).append(',')
                     .append("C.").append(scheduleTableSchema.retryInterval).append(',')
                     .append("C.").append(scheduleTableSchema.retryEndTime).append(',')
                     .append("C.").append(scheduleTableSchema.maxDelayTime).append(',')
@@ -4645,6 +4718,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append("E.").append(scheduleTableSchema.output).append(" as ").append(scheduleTableSchema.output).append(',')
                     .append("E.").append(scheduleTableSchema.initialDate).append(" as ").append(scheduleTableSchema.initialDate).append(',')
                     .append("E.").append(scheduleTableSchema.initialTime).append(" as ").append(scheduleTableSchema.initialTime).append(',')
+                    .append("E.").append(scheduleTableSchema.repeatInterval).append(" as ").append(scheduleTableSchema.repeatInterval).append(',')
+                    .append("E.").append(scheduleTableSchema.repeatEndTime).append(" as ").append(scheduleTableSchema.repeatEndTime).append(',')
                     .append("E.").append(scheduleTableSchema.retryInterval).append(" as ").append(scheduleTableSchema.retryInterval).append(',')
                     .append("E.").append(scheduleTableSchema.retryEndTime).append(" as ").append(scheduleTableSchema.retryEndTime).append(',')
                     .append("E.").append(scheduleTableSchema.maxDelayTime).append(" as ").append(scheduleTableSchema.maxDelayTime).append(',')
@@ -4666,6 +4741,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append("C.").append(scheduleTableSchema.output).append(',')
                     .append("C.").append(scheduleTableSchema.initialDate).append(',')
                     .append("C.").append(scheduleTableSchema.initialTime).append(',')
+                    .append("C.").append(scheduleTableSchema.repeatInterval).append(',')
+                    .append("C.").append(scheduleTableSchema.repeatEndTime).append(',')
                     .append("C.").append(scheduleTableSchema.retryInterval).append(',')
                     .append("C.").append(scheduleTableSchema.retryEndTime).append(',')
                     .append("C.").append(scheduleTableSchema.maxDelayTime).append(',')
@@ -4710,6 +4787,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append(scheduleTableSchema.output).append(',')
                     .append(scheduleTableSchema.initialDate).append(',')
                     .append(scheduleTableSchema.initialTime).append(',')
+                    .append(scheduleTableSchema.repeatInterval).append(',')
+                    .append(scheduleTableSchema.repeatEndTime).append(',')
                     .append(scheduleTableSchema.retryInterval).append(',')
                     .append(scheduleTableSchema.retryEndTime).append(',')
                     .append(scheduleTableSchema.maxDelayTime).append(',')
@@ -4753,6 +4832,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append("C.").append(scheduleTableSchema.output).append(',')
                     .append("C.").append(scheduleTableSchema.initialDate).append(',')
                     .append("C.").append(scheduleTableSchema.initialTime).append(',')
+                    .append("C.").append(scheduleTableSchema.repeatInterval).append(',')
+                    .append("C.").append(scheduleTableSchema.repeatEndTime).append(',')
                     .append("C.").append(scheduleTableSchema.retryInterval).append(',')
                     .append("C.").append(scheduleTableSchema.retryEndTime).append(',')
                     .append("C.").append(scheduleTableSchema.maxDelayTime).append(',')
@@ -4814,6 +4895,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append("A.").append(scheduleTableSchema.output).append(" as ").append(scheduleTableSchema.output).append(',')
                     .append("A.").append(scheduleTableSchema.initialDate).append(" as ").append(scheduleTableSchema.initialDate).append(',')
                     .append("A.").append(scheduleTableSchema.initialTime).append(" as ").append(scheduleTableSchema.initialTime).append(',')
+                    .append("A.").append(scheduleTableSchema.repeatInterval).append(" as ").append(scheduleTableSchema.repeatInterval).append(',')
+                    .append("A.").append(scheduleTableSchema.repeatEndTime).append(" as ").append(scheduleTableSchema.repeatEndTime).append(',')
                     .append("A.").append(scheduleTableSchema.retryInterval).append(" as ").append(scheduleTableSchema.retryInterval).append(',')
                     .append("A.").append(scheduleTableSchema.retryEndTime).append(" as ").append(scheduleTableSchema.retryEndTime).append(',')
                     .append("A.").append(scheduleTableSchema.maxDelayTime).append(" as ").append(scheduleTableSchema.maxDelayTime).append(',')
@@ -4926,6 +5009,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     + scheduleTableSchema.output + ','
                     + scheduleTableSchema.initialDate + ','
                     + scheduleTableSchema.initialTime + ','
+                    + scheduleTableSchema.repeatInterval + ','
+                    + scheduleTableSchema.repeatEndTime + ','
                     + scheduleTableSchema.retryInterval + ','
                     + scheduleTableSchema.retryEndTime + ','
                     + scheduleTableSchema.maxDelayTime + ','
@@ -4939,7 +5024,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     + scheduleTableSchema.rowVersion + ','
                     + scheduleTableSchema.updateUserId + ','
                     + scheduleTableSchema.updateTime
-                    + ") values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,0,'" + updateUserId + "',?)"
+                    + ") values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,0,'" + updateUserId + "',?)"
             );
             ps2 = con.prepareStatement(
                 "insert into " + scheduleDependsTableSchema.table
@@ -5051,6 +5136,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
         String[] depends,
         String executorKey,
         String executorType,
+        long repeatInterval,
+        Date repeatEndTime,
         long retryInterval,
         Date retryEndTime,
         long maxDelayTime
@@ -5075,6 +5162,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 null,
                 executorKey,
                 executorType,
+                repeatInterval,
+                repeatEndTime,
                 retryInterval,
                 retryEndTime,
                 maxDelayTime
@@ -6500,6 +6589,11 @@ public class DatabaseScheduleManagerService extends ServiceBase
         public static final String DEFAULT_REPEAT_INTERVAL = "REPEAT_INTERVAL";
         
         /**
+         * デフォルトの「動的繰り返し」のカラム名。<p>
+         */
+        public static final String DEFAULT_DYNAMIC_REPEAT = "DYNAMIC_REPEAT";
+        
+        /**
          * デフォルトの「リトライ間隔」のカラム名。<p>
          */
         public static final String DEFAULT_RETRY_INTERVAL  = "RETRY_INTERVAL";
@@ -6573,6 +6667,11 @@ public class DatabaseScheduleManagerService extends ServiceBase
          * 「繰り返し間隔」のカラム名。<p>
          */
         public String repeatInterval = DEFAULT_REPEAT_INTERVAL;
+        
+        /**
+         * 「動的繰り返し」のカラム名。<p>
+         */
+        public String dynamicRepeat = DEFAULT_DYNAMIC_REPEAT;
         
         /**
          * 「リトライ間隔」のカラム名。<p>
@@ -6845,6 +6944,16 @@ public class DatabaseScheduleManagerService extends ServiceBase
         public static final String DEFAULT_INITIAL_TIME   = "INITIAL_TIME";
         
         /**
+         * デフォルトの「繰り返し間隔」のカラム名。<p>
+         */
+        public static final String DEFAULT_REPEAT_INTERVAL = "REPEAT_INTERVAL";
+        
+        /**
+         * デフォルトの「繰り返し終了時刻」のカラム名。<p>
+         */
+        public static final String DEFAULT_REPEAT_END_TIME = "REPEAT_END_TIME";
+        
+        /**
          * デフォルトの「リトライ間隔」のカラム名。<p>
          */
         public static final String DEFAULT_RETRY_INTERVAL = "RETRY_INTERVAL";
@@ -7058,6 +7167,16 @@ public class DatabaseScheduleManagerService extends ServiceBase
          * 「初期開始時刻」のカラム名。<p>
          */
         public String initialTime = DEFAULT_INITIAL_TIME;
+        
+        /**
+         * 「繰り返し間隔」のカラム名。<p>
+         */
+        public String repeatInterval = DEFAULT_REPEAT_INTERVAL;
+        
+        /**
+         * 「繰り返し終了時刻」のカラム名。<p>
+         */
+        public String repeatEndTime = DEFAULT_REPEAT_END_TIME;
         
         /**
          * 「リトライ間隔」のカラム名。<p>

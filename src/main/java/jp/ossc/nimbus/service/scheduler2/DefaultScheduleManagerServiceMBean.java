@@ -323,6 +323,8 @@ public interface DefaultScheduleManagerServiceMBean extends ServiceBaseMBean{
      * @param depends 依存するスケジュールマスタIDの配列
      * @param executorKey ScheduleExecutorを特定するキー
      * @param executorType ScheduleExecutorの種類
+     * @param repeatInterval 繰り返し間隔[ms]
+     * @param repeatEndTime 繰り返し終了時刻
      * @param retryInterval リトライ間隔[ms]
      * @param retryEndTime リトライ終了時刻
      * @param maxDelayTime 最大遅延時間
@@ -337,6 +339,8 @@ public interface DefaultScheduleManagerServiceMBean extends ServiceBaseMBean{
         String[] depends,
         String executorKey,
         String executorType,
+        long repeatInterval,
+        Date repeatEndTime,
         long retryInterval,
         Date retryEndTime,
         long maxDelayTime

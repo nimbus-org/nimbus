@@ -184,6 +184,8 @@ public class DefaultScheduleMakerService extends ServiceBase
             master.getGroupDependsOnGroupMap(),
             master.getExecutorKey(),
             master.getExecutorType(),
+            0,
+            null,
             master.getRetryInterval(),
             master.getRetryEndTime(),
             master.getMaxDelayTime()
@@ -218,12 +220,14 @@ public class DefaultScheduleMakerService extends ServiceBase
                     master.getGroupDependsOnGroupMap(),
                     master.getExecutorKey(),
                     master.getExecutorType(),
+                    master.isDynamicRepeat() ? master.getRepeatInterval() : 0,
+                    master.isDynamicRepeat() ? master.getEndTime() : null,
                     master.getRetryInterval(),
                     master.getRetryEndTime(),
                     master.getMaxDelayTime()
                 )
             );
-        }while((time = calculateNextDate(offset, master.getRepeatInterval(), end)) != null);
+        }while(!master.isDynamicRepeat() && (time = calculateNextDate(offset, master.getRepeatInterval(), end)) != null);
         return (Schedule[])result.toArray(new Schedule[result.size()]);
     }
     

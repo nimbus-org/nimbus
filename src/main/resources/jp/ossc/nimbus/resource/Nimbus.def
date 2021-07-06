@@ -300,6 +300,7 @@ ASE__00007,The schedule "@1:@2" of ScheduleManager "@0" was aborted.,50,jp.ossc.
 ASE__00008,It failed in state change "@3" of the schedule "@1:@2" of ScheduleManager "@0".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 ASE__00009,It failed in state transition @3->@4 of the schedule "@1:@2" of ScheduleManager "@0".,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 ASE__00010,The schedule "@1:@2" of ScheduleManager "@0" was disabled.output=@3,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+ASE__00011,It failed in dynamic reapt schedule of the schedule "@1:@2" of ScheduleManager "@0".,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 BFSE_00001,The schedule "@1" of ScheduleManager "@0" was paused.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 BFSE_00002,The schedule "@1" of ScheduleManager "@0" was resumed.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 DSM__00001,ScheduleManager "@0" failed to check the control state.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY

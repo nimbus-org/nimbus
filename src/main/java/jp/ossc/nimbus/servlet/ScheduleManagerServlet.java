@@ -2083,6 +2083,14 @@ public class ScheduleManagerServlet extends HttpServlet{
         }
         String executorKey = getParameter(req, "executorKey");
         String executorType = getParameter(req, "executorType");
+        Long repeatInterval = getLongParameter(req, "repeatInterval");
+        Date repeatEndTime = null;
+        try{
+            repeatEndTime = getDateParameter(req, "repeatEndTime", "yyyyMMddHHmmssSSS", false);
+        }catch(ParseException e){
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Parameter 'repeatEndTime' is illegal." + e.toString());
+            return;
+        }
         Long retryInterval = getLongParameter(req, "retryInterval");
         Date retryEndTime = null;
         try{
@@ -2107,6 +2115,8 @@ public class ScheduleManagerServlet extends HttpServlet{
                 null,
                 executorKey,
                 executorType,
+                repeatInterval == null ? 0l : repeatInterval.longValue(),
+                repeatEndTime,
                 retryInterval == null ? 0l : retryInterval.longValue(),
                 retryEndTime,
                 maxDelayTime == null ? 0l : maxDelayTime.longValue()
@@ -3056,6 +3066,8 @@ public class ScheduleManagerServlet extends HttpServlet{
         buf.append(th("Depended"));
         buf.append(th("Output"));
         buf.append(th("InitialTime"));
+        buf.append(th("RepeatInterval"));
+        buf.append(th("RepeatEndTime"));
         buf.append(th("RetryInterval"));
         buf.append(th("RetryEndTime"));
         buf.append(th("Retry"));
@@ -3148,6 +3160,8 @@ public class ScheduleManagerServlet extends HttpServlet{
                 buf.append(td(button("ShowDepended", "javascript:showDepended('" + id + "');")));
                 buf.append(td(textarea(output, 50, 3)));
                 buf.append(td(formatDateTime(schedule.getInitialTime())));
+                buf.append(td(schedule.getRepeatInterval()));
+                buf.append(td(formatDateTime(schedule.getRepeatEndTime())));
                 buf.append(td(schedule.getRetryInterval()));
                 buf.append(td(formatDateTime(schedule.getRetryEndTime())));
                 buf.append(td(schedule.isRetry()));
@@ -3313,6 +3327,7 @@ public class ScheduleManagerServlet extends HttpServlet{
         buf.append(th("StartTime"));
         buf.append(th("EndTime"));
         buf.append(th("RepeatInterval"));
+        buf.append(th("DynamicRepeat"));
         buf.append(th("RetryInterval"));
         buf.append(th("RetryEndTime"));
         buf.append(th("MaxDelayTime"));
@@ -3356,6 +3371,7 @@ public class ScheduleManagerServlet extends HttpServlet{
                 buf.append(td(startTime));
                 buf.append(td(endTime));
                 buf.append(td(scheduleMaster.getRepeatInterval()));
+                buf.append(td(scheduleMaster.isDynamicRepeat()));
                 buf.append(td(scheduleMaster.getRetryInterval()));
                 buf.append(td(retryEndTime));
                 buf.append(td(scheduleMaster.getMaxDelayTime()));

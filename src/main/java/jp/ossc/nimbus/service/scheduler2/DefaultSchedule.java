@@ -44,7 +44,7 @@ import java.text.SimpleDateFormat;
  * @author M.Takata
  */
 public class DefaultSchedule
- implements Schedule, Serializable, Comparable{
+ implements Schedule, Serializable, Comparable, Cloneable{
     
     private static final long serialVersionUID = -2668833951199708052L;
     
@@ -79,6 +79,10 @@ public class DefaultSchedule
     protected boolean isRetry;
     
     protected Date initialTime;
+    
+    protected long repeatInterval;
+    
+    protected Date repeatEndTime;
     
     protected long retryInterval;
     
@@ -153,7 +157,7 @@ public class DefaultSchedule
         String executorKey,
         String executorType
     ){
-        this(masterId, masterGroupIds, time, taskName, input, depends, dependsInGroupMap, dependsOnGroup, groupDependsOnGroupMap, executorKey, executorType, 0, null, 0);
+        this(masterId, masterGroupIds, time, taskName, input, depends, dependsInGroupMap, dependsOnGroup, groupDependsOnGroupMap, executorKey, executorType, 0, null, 0, null, 0);
     }
     
     /**
@@ -170,6 +174,8 @@ public class DefaultSchedule
      * @param groupDependsOnGroupMap スケジュールが属するグループと依存するグループの依存情報の配列
      * @param executorKey ScheduleExecutorを特定するキー
      * @param executorType ScheduleExecutorの種類
+     * @param repeatInterval 繰り返し間隔[ms]
+     * @param repeatEndTime 繰り返し終了時刻
      * @param retryInterval リトライ間隔[ms]
      * @param retryEndTime リトライ終了時刻
      * @param maxDelayTime 最大遅延時間[ms]
@@ -186,6 +192,8 @@ public class DefaultSchedule
         Map groupDependsOnGroupMap,
         String executorKey,
         String executorType,
+        long repeatInterval,
+        Date repeatEndTime,
         long retryInterval,
         Date retryEndTime,
         long maxDelayTime
@@ -206,6 +214,8 @@ public class DefaultSchedule
         setExecutorKey(executorKey);
         setExecutorType(executorType);
         setInitialTime(time);
+        setRepeatInterval(repeatInterval);
+        setRepeatEndTime(repeatEndTime);
         setRetryInterval(retryInterval);
         setRetryEndTime(retryEndTime);
         setMaxDelayTime(maxDelayTime);
@@ -473,6 +483,34 @@ public class DefaultSchedule
      */
     public void setInitialTime(Date time){
         initialTime = time;
+    }
+    
+    // ScheduleのJavaDoc
+    public long getRepeatInterval(){
+        return repeatInterval;
+    }
+    
+    /**
+     * スケジュール繰り返し間隔[ms]を設定する。<p>
+     *
+     * @param interval 繰り返し間隔
+     */
+    public void setRepeatInterval(long interval){
+        repeatInterval = interval;
+    }
+    
+    // ScheduleのJavaDoc
+    public Date getRepeatEndTime(){
+        return repeatEndTime;
+    }
+    
+    /**
+     * スケジュール繰り返し終了時刻を設定する。<p>
+     *
+     * @param time スケジュール繰り返し終了時刻
+     */
+    public void setRepeatEndTime(Date time){
+        repeatEndTime = time;
     }
     
     // ScheduleのJavaDoc
@@ -778,6 +816,9 @@ public class DefaultSchedule
         buf.append(",output=").append(output);
         buf.append(",isRetry=").append(isRetry);
         buf.append(",initialTime=").append(initialTime == null ? null : format.format(initialTime));
+        buf.append(",repeatInterval=").append(repeatInterval);
+        buf.append(",repeatEndTime=")
+            .append(repeatEndTime == null ? null : format.format(repeatEndTime));
         buf.append(",retryInterval=").append(retryInterval);
         buf.append(",retryEndTime=")
             .append(retryEndTime == null ? null : format.format(retryEndTime));
@@ -793,5 +834,25 @@ public class DefaultSchedule
             .append(executeEndTime == null ? null : format.format(executeEndTime));
         buf.append('}');
         return buf.toString();
+    }
+    
+    public Object clone(){
+        DefaultSchedule schedule = null;
+        try{
+            schedule = (DefaultSchedule)super.clone();
+        }catch(CloneNotSupportedException e){
+        }
+        schedule.time = time == null ? null : (Date)time.clone();
+        schedule.initialTime = initialTime == null ? null : (Date)initialTime.clone();
+        schedule.repeatEndTime = repeatEndTime == null ? null : (Date)repeatEndTime.clone();
+        schedule.retryEndTime = retryEndTime == null ? null : (Date)retryEndTime.clone();
+        schedule.executeStartTime = null;
+        schedule.executeEndTime = null;
+        schedule.state = Schedule.STATE_INITIAL;
+        schedule.controlState = Schedule.CONTROL_STATE_INITIAL;
+        schedule.checkState = Schedule.CHECK_STATE_INITIAL;
+        schedule.output = null;
+        schedule.isRetry = false;
+        return schedule;
     }
 }
