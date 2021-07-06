@@ -5179,141 +5179,45 @@ public class SharedContextService extends DefaultContextService
                     result = indexManager.searchInProperty((String)args[0], (Map[])args[1]);
                     break;
                 case SearchEvent.TYPE_FROM:
-                    if(args.length < 5){
-                        if(args[0] == null){
-                            result = indexManager.searchFrom((Object)args[3], (String)args[1], (String)args[2]);
-                        }else{
-                            result = indexManager.createTemporaryIndex(
-                                (Set)args[0],
-                                (String)args[1],
-                                (String)args[2]
-                            ).searchFrom((Object)args[3]);
-                        }
+                    if(args.length < 4){
+                        result = indexManager.searchFrom((Object)args[2], (String)args[0], (String)args[1]);
                     }else{
-                        if(args[0] == null){
-                            result = indexManager.searchFrom((Object)args[3], ((Boolean)args[4]).booleanValue(), (String)args[1], (String)args[2]);
-                        }else{
-                            result = indexManager.createTemporaryIndex(
-                                (Set)args[0],
-                                (String)args[1],
-                                (String)args[2]
-                            ).searchFrom((Object)args[3], ((Boolean)args[4]).booleanValue());
-                        }
+                        result = indexManager.searchFrom((Object)args[2], ((Boolean)args[3]).booleanValue(), (String)args[0], (String)args[1]);
                     }
                     break;
                 case SearchEvent.TYPE_FROM_PROP:
-                    if(args.length < 5){
-                        if(args[0] == null){
-                            result = indexManager.searchFromProperty((Object)args[3], (String)args[1], (String)args[2]);
-                        }else{
-                            result = indexManager.createTemporaryIndex(
-                                (Set)args[0],
-                                (String)args[1],
-                                (String)args[2]
-                            ).searchFromProperty((Object)args[3]);
-                        }
+                    if(args.length < 4){
+                        result = indexManager.searchFromProperty((Object)args[2], (String)args[0], (String)args[1]);
                     }else{
-                        if(args[0] == null){
-                            result = indexManager.searchFromProperty((Object)args[3], ((Boolean)args[4]).booleanValue(), (String)args[1], (String)args[2]);
-                        }else{
-                            result = indexManager.createTemporaryIndex(
-                                (Set)args[0],
-                                (String)args[1],
-                                (String)args[2]
-                            ).searchFromProperty((Object)args[3], ((Boolean)args[4]).booleanValue());
-                        }
+                        result = indexManager.searchFromProperty((Object)args[2], ((Boolean)args[3]).booleanValue(), (String)args[0], (String)args[1]);
                     }
                     break;
                 case SearchEvent.TYPE_TO:
-                    if(args.length < 5){
-                        if(args[0] == null){
-                            result = indexManager.searchTo((Object)args[3], (String)args[1], (String)args[2]);
-                        }else{
-                            result = indexManager.createTemporaryIndex(
-                                (Set)args[0],
-                                (String)args[1],
-                                (String)args[2]
-                            ).searchTo((Object)args[3]);
-                        }
+                    if(args.length < 4){
+                        result = indexManager.searchTo((Object)args[2], (String)args[0], (String)args[1]);
                     }else{
-                        if(args[0] == null){
-                            result = indexManager.searchTo((Object)args[3], ((Boolean)args[4]).booleanValue(), (String)args[1], (String)args[2]);
-                        }else{
-                            result = indexManager.createTemporaryIndex(
-                                (Set)args[0],
-                                (String)args[1],
-                                (String)args[2]
-                            ).searchTo((Object)args[3], ((Boolean)args[4]).booleanValue());
-                        }
+                        result = indexManager.searchTo((Object)args[2], ((Boolean)args[3]).booleanValue(), (String)args[0], (String)args[1]);
                     }
                     break;
                 case SearchEvent.TYPE_TO_PROP:
-                    if(args.length < 5){
-                        if(args[0] == null){
-                            result = indexManager.searchToProperty((Object)args[3], (String)args[1], (String)args[2]);
-                        }else{
-                            result = indexManager.createTemporaryIndex(
-                                (Set)args[0],
-                                (String)args[1],
-                                (String)args[2]
-                            ).searchToProperty((Object)args[3]);
-                        }
+                    if(args.length < 4){
+                        result = indexManager.searchToProperty((Object)args[2], (String)args[0], (String)args[1]);
                     }else{
-                        if(args[0] == null){
-                            result = indexManager.searchToProperty((Object)args[3], ((Boolean)args[4]).booleanValue(), (String)args[1], (String)args[2]);
-                        }else{
-                            result = indexManager.createTemporaryIndex(
-                                (Set)args[0],
-                                (String)args[1],
-                                (String)args[2]
-                            ).searchToProperty((Object)args[3], ((Boolean)args[4]).booleanValue());
-                        }
+                        result = indexManager.searchToProperty((Object)args[2], ((Boolean)args[3]).booleanValue(), (String)args[0], (String)args[1]);
                     }
                     break;
                 case SearchEvent.TYPE_RANGE:
-                    if(args.length < 6){
-                        if(args[0] == null){
-                            result = indexManager.searchRange((Object)args[3], (Object)args[4], (String)args[1], (String)args[2]);
-                        }else{
-                            result = indexManager.createTemporaryIndex(
-                                (Set)args[0],
-                                (String)args[1],
-                                (String)args[2]
-                            ).searchRange((Object)args[3], (Object)args[4]);
-                        }
+                    if(args.length < 5){
+                        result = indexManager.searchRange((Object)args[2], (Object)args[3], (String)args[0], (String)args[1]);
                     }else{
-                        if(args[0] == null){
-                            result = indexManager.searchRange((Object)args[3], ((Boolean)args[4]).booleanValue(), (Object)args[5], ((Boolean)args[6]).booleanValue(), (String)args[1], (String)args[2]);
-                        }else{
-                            result = indexManager.createTemporaryIndex(
-                                (Set)args[0],
-                                (String)args[1],
-                                (String)args[2]
-                            ).searchRange((Object)args[3], ((Boolean)args[4]).booleanValue(), (Object)args[5], ((Boolean)args[6]).booleanValue());
-                        }
+                        result = indexManager.searchRange((Object)args[2], ((Boolean)args[3]).booleanValue(), (Object)args[4], ((Boolean)args[5]).booleanValue(), (String)args[0], (String)args[1]);
                     }
                     break;
                 case SearchEvent.TYPE_RANGE_PROP:
-                    if(args.length < 6){
-                        if(args[0] == null){
-                            result = indexManager.searchRangeProperty((Object)args[3], (Object)args[4], (String)args[1], (String)args[2]);
-                        }else{
-                            result = indexManager.createTemporaryIndex(
-                                (Set)args[0],
-                                (String)args[1],
-                                (String)args[2]
-                            ).searchRangeProperty((Object)args[3], (Object)args[4]);
-                        }
+                    if(args.length < 5){
+                        result = indexManager.searchRangeProperty((Object)args[2], (Object)args[3], (String)args[0], (String)args[1]);
                     }else{
-                        if(args[0] == null){
-                            result = indexManager.searchRangeProperty((Object)args[3], ((Boolean)args[4]).booleanValue(), (Object)args[5], ((Boolean)args[6]).booleanValue(), (String)args[1], (String)args[2]);
-                        }else{
-                            result = indexManager.createTemporaryIndex(
-                                (Set)args[0],
-                                (String)args[1],
-                                (String)args[2]
-                            ).searchRangeProperty((Object)args[3], ((Boolean)args[4]).booleanValue(), (Object)args[5], ((Boolean)args[6]).booleanValue());
-                        }
+                        result = indexManager.searchRangeProperty((Object)args[2], ((Boolean)args[3]).booleanValue(), (Object)args[4], ((Boolean)args[5]).booleanValue(), (String)args[0], (String)args[1]);
                     }
                     break;
                 }
@@ -7771,7 +7675,7 @@ public class SharedContextService extends DefaultContextService
                                 new SharedContextEvent(
                                     SharedContextEvent.EVENT_SEARCH_INDEX,
                                     null,
-                                    new SearchEvent(SearchEvent.TYPE_FROM, new Object[]{resultSet, indexName, propName, fromValue})
+                                    new SearchEvent(SearchEvent.TYPE_FROM, new Object[]{indexName, propName, fromValue})
                                 )
                             );
                             Message[] responses = serverConnection.request(
@@ -7799,7 +7703,7 @@ public class SharedContextService extends DefaultContextService
                                     resultSet = new HashSet();
                                 }
                             }else{
-                                operate(resultSet);
+                                operate(result);
                             }
                         }else{
                             throw new NoConnectServerException();
@@ -7813,13 +7717,12 @@ public class SharedContextService extends DefaultContextService
                     }
                 }else{
                     if(resultSet == null){
-                        resultSet = indexManager.searchFrom(resultSet, fromValue, indexName, propName);
+                        resultSet = indexManager.searchFrom(fromValue, indexName, propName);
                         if(resultSet == null){
                             resultSet = new HashSet();
                         }
                     }else{
-                        SharedContextIndex index = indexManager.createTemporaryIndex(resultSet, indexName, propName);
-                        operate(index.searchFrom(fromValue));
+                        operate(indexManager.searchFrom(fromValue, indexName, propName));
                     }
                 }
             }finally{
@@ -7862,7 +7765,7 @@ public class SharedContextService extends DefaultContextService
                                 new SharedContextEvent(
                                     SharedContextEvent.EVENT_SEARCH_INDEX,
                                     null,
-                                    new SearchEvent(SearchEvent.TYPE_FROM_PROP, new Object[]{resultSet, indexName, propName, fromProp})
+                                    new SearchEvent(SearchEvent.TYPE_FROM_PROP, new Object[]{indexName, propName, fromProp})
                                 )
                             );
                             Message[] responses = serverConnection.request(
@@ -7890,7 +7793,7 @@ public class SharedContextService extends DefaultContextService
                                     resultSet = new HashSet();
                                 }
                             }else{
-                                operate(resultSet);
+                                operate(result);
                             }
                         }else{
                             throw new NoConnectServerException();
@@ -7904,13 +7807,12 @@ public class SharedContextService extends DefaultContextService
                     }
                 }else{
                     if(resultSet == null){
-                        resultSet = indexManager.searchFromProperty(resultSet, fromProp, indexName, propName);
+                        resultSet = indexManager.searchFromProperty(fromProp, indexName, propName);
                         if(resultSet == null){
                             resultSet = new HashSet();
                         }
                     }else{
-                        SharedContextIndex index = indexManager.createTemporaryIndex(resultSet, indexName, propName);
-                        operate(index.searchFromProperty(fromProp));
+                        operate(indexManager.searchFromProperty(fromProp, indexName, propName));
                     }
                 }
             }finally{
@@ -7953,7 +7855,7 @@ public class SharedContextService extends DefaultContextService
                                 new SharedContextEvent(
                                     SharedContextEvent.EVENT_SEARCH_INDEX,
                                     null,
-                                    new SearchEvent(SearchEvent.TYPE_TO, new Object[]{resultSet, indexName, propName, toValue})
+                                    new SearchEvent(SearchEvent.TYPE_TO, new Object[]{indexName, propName, toValue})
                                 )
                             );
                             Message[] responses = serverConnection.request(
@@ -7981,7 +7883,7 @@ public class SharedContextService extends DefaultContextService
                                     resultSet = new HashSet();
                                 }
                             }else{
-                                operate(resultSet);
+                                operate(result);
                             }
                         }else{
                             throw new NoConnectServerException();
@@ -7995,13 +7897,12 @@ public class SharedContextService extends DefaultContextService
                     }
                 }else{
                     if(resultSet == null){
-                        resultSet = indexManager.searchTo(resultSet, toValue, indexName, propName);
+                        resultSet = indexManager.searchTo(toValue, indexName, propName);
                         if(resultSet == null){
                             resultSet = new HashSet();
                         }
                     }else{
-                        SharedContextIndex index = indexManager.createTemporaryIndex(resultSet, indexName, propName);
-                        operate(index.searchTo(toValue));
+                        operate(indexManager.searchTo(toValue, indexName, propName));
                     }
                 }
             }finally{
@@ -8044,7 +7945,7 @@ public class SharedContextService extends DefaultContextService
                                 new SharedContextEvent(
                                     SharedContextEvent.EVENT_SEARCH_INDEX,
                                     null,
-                                    new SearchEvent(SearchEvent.TYPE_TO_PROP, new Object[]{resultSet, indexName, propName, toProp})
+                                    new SearchEvent(SearchEvent.TYPE_TO_PROP, new Object[]{indexName, propName, toProp})
                                 )
                             );
                             Message[] responses = serverConnection.request(
@@ -8072,7 +7973,7 @@ public class SharedContextService extends DefaultContextService
                                     resultSet = new HashSet();
                                 }
                             }else{
-                                operate(resultSet);
+                                operate(result);
                             }
                         }else{
                             throw new NoConnectServerException();
@@ -8086,13 +7987,12 @@ public class SharedContextService extends DefaultContextService
                     }
                 }else{
                     if(resultSet == null){
-                        resultSet = indexManager.searchToProperty(resultSet, toProp, indexName, propName);
+                        resultSet = indexManager.searchToProperty(toProp, indexName, propName);
                         if(resultSet == null){
                             resultSet = new HashSet();
                         }
                     }else{
-                        SharedContextIndex index = indexManager.createTemporaryIndex(resultSet, indexName, propName);
-                        operate(index.searchToProperty(toProp));
+                        operate(indexManager.searchToProperty(toProp, indexName, propName));
                     }
                 }
             }finally{
@@ -8137,7 +8037,7 @@ public class SharedContextService extends DefaultContextService
                                 new SharedContextEvent(
                                     SharedContextEvent.EVENT_SEARCH_INDEX,
                                     null,
-                                    new SearchEvent(SearchEvent.TYPE_RANGE, new Object[]{resultSet, indexName, propName, fromValue, toValue})
+                                    new SearchEvent(SearchEvent.TYPE_RANGE, new Object[]{indexName, propName, fromValue, toValue})
                                 )
                             );
                             Message[] responses = serverConnection.request(
@@ -8165,7 +8065,7 @@ public class SharedContextService extends DefaultContextService
                                     resultSet = new HashSet();
                                 }
                             }else{
-                                operate(resultSet);
+                                operate(result);
                             }
                         }else{
                             throw new NoConnectServerException();
@@ -8179,13 +8079,12 @@ public class SharedContextService extends DefaultContextService
                     }
                 }else{
                     if(resultSet == null){
-                        resultSet = indexManager.searchRange(resultSet, fromValue, toValue, indexName, propName);
+                        resultSet = indexManager.searchRange(fromValue, toValue, indexName, propName);
                         if(resultSet == null){
                             resultSet = new HashSet();
                         }
                     }else{
-                        SharedContextIndex index = indexManager.createTemporaryIndex(resultSet, indexName, propName);
-                        operate(index.searchRange(fromValue, toValue));
+                        operate(indexManager.searchRange(fromValue, toValue, indexName, propName));
                     }
                 }
             }finally{
@@ -8230,7 +8129,7 @@ public class SharedContextService extends DefaultContextService
                                 new SharedContextEvent(
                                     SharedContextEvent.EVENT_SEARCH_INDEX,
                                     null,
-                                    new SearchEvent(SearchEvent.TYPE_RANGE_PROP, new Object[]{resultSet, indexName, propName, fromProp, toProp})
+                                    new SearchEvent(SearchEvent.TYPE_RANGE_PROP, new Object[]{indexName, propName, fromProp, toProp})
                                 )
                             );
                             Message[] responses = serverConnection.request(
@@ -8258,7 +8157,7 @@ public class SharedContextService extends DefaultContextService
                                     resultSet = new HashSet();
                                 }
                             }else{
-                                operate(resultSet);
+                                operate(result);
                             }
                         }else{
                             throw new NoConnectServerException();
@@ -8272,13 +8171,12 @@ public class SharedContextService extends DefaultContextService
                     }
                 }else{
                     if(resultSet == null){
-                        resultSet = indexManager.searchRangeProperty(resultSet, fromProp, toProp, indexName, propName);
+                        resultSet = indexManager.searchRangeProperty(fromProp, toProp, indexName, propName);
                         if(resultSet == null){
                             resultSet = new HashSet();
                         }
                     }else{
-                        SharedContextIndex index = indexManager.createTemporaryIndex(resultSet, indexName, propName);
-                        operate(index.searchRangeProperty(fromProp, toProp));
+                        operate(indexManager.searchRangeProperty(fromProp, toProp, indexName, propName));
                     }
                 }
             }finally{
@@ -8323,7 +8221,7 @@ public class SharedContextService extends DefaultContextService
                                 new SharedContextEvent(
                                     SharedContextEvent.EVENT_SEARCH_INDEX,
                                     null,
-                                    new SearchEvent(SearchEvent.TYPE_FROM, new Object[]{resultSet, indexName, propName, fromValue, inclusive ? Boolean.TRUE : Boolean.FALSE})
+                                    new SearchEvent(SearchEvent.TYPE_FROM, new Object[]{indexName, propName, fromValue, inclusive ? Boolean.TRUE : Boolean.FALSE})
                                 )
                             );
                             Message[] responses = serverConnection.request(
@@ -8351,7 +8249,7 @@ public class SharedContextService extends DefaultContextService
                                     resultSet = new HashSet();
                                 }
                             }else{
-                                operate(resultSet);
+                                operate(result);
                             }
                         }else{
                             throw new NoConnectServerException();
@@ -8365,13 +8263,12 @@ public class SharedContextService extends DefaultContextService
                     }
                 }else{
                     if(resultSet == null){
-                        resultSet = indexManager.searchFrom(resultSet, fromValue, inclusive, indexName, propName);
+                        resultSet = indexManager.searchFrom(fromValue, inclusive, indexName, propName);
                         if(resultSet == null){
                             resultSet = new HashSet();
                         }
                     }else{
-                        SharedContextIndex index = indexManager.createTemporaryIndex(resultSet, indexName, propName);
-                        operate(index.searchFrom(fromValue, inclusive));
+                        operate(indexManager.searchFrom(fromValue, inclusive, indexName, propName));
                     }
                 }
             }finally{
@@ -8416,7 +8313,7 @@ public class SharedContextService extends DefaultContextService
                                 new SharedContextEvent(
                                     SharedContextEvent.EVENT_SEARCH_INDEX,
                                     null,
-                                    new SearchEvent(SearchEvent.TYPE_FROM_PROP, new Object[]{resultSet, indexName, propName, fromProp, inclusive ? Boolean.TRUE : Boolean.FALSE})
+                                    new SearchEvent(SearchEvent.TYPE_FROM_PROP, new Object[]{indexName, propName, fromProp, inclusive ? Boolean.TRUE : Boolean.FALSE})
                                 )
                             );
                             Message[] responses = serverConnection.request(
@@ -8444,7 +8341,7 @@ public class SharedContextService extends DefaultContextService
                                     resultSet = new HashSet();
                                 }
                             }else{
-                                operate(resultSet);
+                                operate(result);
                             }
                         }else{
                             throw new NoConnectServerException();
@@ -8458,13 +8355,12 @@ public class SharedContextService extends DefaultContextService
                     }
                 }else{
                     if(resultSet == null){
-                        resultSet = indexManager.searchFromProperty(resultSet, fromProp, inclusive, indexName, propName);
+                        resultSet = indexManager.searchFromProperty(fromProp, inclusive, indexName, propName);
                         if(resultSet == null){
                             resultSet = new HashSet();
                         }
                     }else{
-                        SharedContextIndex index = indexManager.createTemporaryIndex(resultSet, indexName, propName);
-                        operate(index.searchFromProperty(fromProp, inclusive));
+                        operate(indexManager.searchFromProperty(fromProp, inclusive, indexName, propName));
                     }
                 }
             }finally{
@@ -8509,7 +8405,7 @@ public class SharedContextService extends DefaultContextService
                                 new SharedContextEvent(
                                     SharedContextEvent.EVENT_SEARCH_INDEX,
                                     null,
-                                    new SearchEvent(SearchEvent.TYPE_TO, new Object[]{resultSet, indexName, propName, toValue, inclusive ? Boolean.TRUE : Boolean.FALSE})
+                                    new SearchEvent(SearchEvent.TYPE_TO, new Object[]{indexName, propName, toValue, inclusive ? Boolean.TRUE : Boolean.FALSE})
                                 )
                             );
                             Message[] responses = serverConnection.request(
@@ -8537,7 +8433,7 @@ public class SharedContextService extends DefaultContextService
                                     resultSet = new HashSet();
                                 }
                             }else{
-                                operate(resultSet);
+                                operate(result);
                             }
                         }else{
                             throw new NoConnectServerException();
@@ -8551,13 +8447,12 @@ public class SharedContextService extends DefaultContextService
                     }
                 }else{
                     if(resultSet == null){
-                        resultSet = indexManager.searchTo(resultSet, toValue, inclusive, indexName, propName);
+                        resultSet = indexManager.searchTo(toValue, inclusive, indexName, propName);
                         if(resultSet == null){
                             resultSet = new HashSet();
                         }
                     }else{
-                        SharedContextIndex index = indexManager.createTemporaryIndex(resultSet, indexName, propName);
-                        operate(index.searchTo(toValue, inclusive));
+                        operate(indexManager.searchTo(toValue, inclusive, indexName, propName));
                     }
                 }
             }finally{
@@ -8602,7 +8497,7 @@ public class SharedContextService extends DefaultContextService
                                 new SharedContextEvent(
                                     SharedContextEvent.EVENT_SEARCH_INDEX,
                                     null,
-                                    new SearchEvent(SearchEvent.TYPE_TO_PROP, new Object[]{resultSet, indexName, propName, toProp, inclusive ? Boolean.TRUE : Boolean.FALSE})
+                                    new SearchEvent(SearchEvent.TYPE_TO_PROP, new Object[]{indexName, propName, toProp, inclusive ? Boolean.TRUE : Boolean.FALSE})
                                 )
                             );
                             Message[] responses = serverConnection.request(
@@ -8630,7 +8525,7 @@ public class SharedContextService extends DefaultContextService
                                     resultSet = new HashSet();
                                 }
                             }else{
-                                operate(resultSet);
+                                operate(result);
                             }
                         }else{
                             throw new NoConnectServerException();
@@ -8644,13 +8539,12 @@ public class SharedContextService extends DefaultContextService
                     }
                 }else{
                     if(resultSet == null){
-                        resultSet = indexManager.searchToProperty(resultSet, toProp, inclusive, indexName, propName);
+                        resultSet = indexManager.searchToProperty(toProp, inclusive, indexName, propName);
                         if(resultSet == null){
                             resultSet = new HashSet();
                         }
                     }else{
-                        SharedContextIndex index = indexManager.createTemporaryIndex(resultSet, indexName, propName);
-                        operate(index.searchToProperty(toProp, inclusive));
+                        operate(indexManager.searchToProperty(toProp, inclusive, indexName, propName));
                     }
                 }
             }finally{
@@ -8699,7 +8593,7 @@ public class SharedContextService extends DefaultContextService
                                 new SharedContextEvent(
                                     SharedContextEvent.EVENT_SEARCH_INDEX,
                                     null,
-                                    new SearchEvent(SearchEvent.TYPE_RANGE, new Object[]{resultSet, indexName, propName, fromValue, fromInclusive ? Boolean.TRUE : Boolean.FALSE, toValue, toInclusive ? Boolean.TRUE : Boolean.FALSE})
+                                    new SearchEvent(SearchEvent.TYPE_RANGE, new Object[]{indexName, propName, fromValue, fromInclusive ? Boolean.TRUE : Boolean.FALSE, toValue, toInclusive ? Boolean.TRUE : Boolean.FALSE})
                                 )
                             );
                             Message[] responses = serverConnection.request(
@@ -8727,7 +8621,7 @@ public class SharedContextService extends DefaultContextService
                                     resultSet = new HashSet();
                                 }
                             }else{
-                                operate(resultSet);
+                                operate(result);
                             }
                         }else{
                             throw new NoConnectServerException();
@@ -8741,13 +8635,12 @@ public class SharedContextService extends DefaultContextService
                     }
                 }else{
                     if(resultSet == null){
-                        resultSet = indexManager.searchRange(resultSet, fromValue, fromInclusive, toValue, toInclusive, indexName, propName);
+                        resultSet = indexManager.searchRange(fromValue, fromInclusive, toValue, toInclusive, indexName, propName);
                         if(resultSet == null){
                             resultSet = new HashSet();
                         }
                     }else{
-                        SharedContextIndex index = indexManager.createTemporaryIndex(resultSet, indexName, propName);
-                        operate(index.searchRange(fromValue, fromInclusive, toValue, toInclusive));
+                        operate(indexManager.searchRange(fromValue, fromInclusive, toValue, toInclusive, indexName, propName));
                     }
                 }
             }finally{
@@ -8796,7 +8689,7 @@ public class SharedContextService extends DefaultContextService
                                 new SharedContextEvent(
                                     SharedContextEvent.EVENT_SEARCH_INDEX,
                                     null,
-                                    new SearchEvent(SearchEvent.TYPE_RANGE_PROP, new Object[]{resultSet, indexName, propName, fromProp, fromInclusive ? Boolean.TRUE : Boolean.FALSE, toProp, toInclusive ? Boolean.TRUE : Boolean.FALSE})
+                                    new SearchEvent(SearchEvent.TYPE_RANGE_PROP, new Object[]{indexName, propName, fromProp, fromInclusive ? Boolean.TRUE : Boolean.FALSE, toProp, toInclusive ? Boolean.TRUE : Boolean.FALSE})
                                 )
                             );
                             Message[] responses = serverConnection.request(
@@ -8824,7 +8717,7 @@ public class SharedContextService extends DefaultContextService
                                     resultSet = new HashSet();
                                 }
                             }else{
-                                operate(resultSet);
+                                operate(result);
                             }
                         }else{
                             throw new NoConnectServerException();
@@ -8838,13 +8731,12 @@ public class SharedContextService extends DefaultContextService
                     }
                 }else{
                     if(resultSet == null){
-                        resultSet = indexManager.searchRangeProperty(resultSet, fromProp, fromInclusive, toProp, toInclusive, indexName, propName);
+                        resultSet = indexManager.searchRangeProperty(fromProp, fromInclusive, toProp, toInclusive, indexName, propName);
                         if(resultSet == null){
                             resultSet = new HashSet();
                         }
                     }else{
-                        SharedContextIndex index = indexManager.createTemporaryIndex(resultSet, indexName, propName);
-                        operate(index.searchRangeProperty(fromProp, fromInclusive, toProp, toInclusive));
+                        operate(indexManager.searchRangeProperty(fromProp, fromInclusive, toProp, toInclusive, indexName, propName));
                     }
                 }
             }finally{

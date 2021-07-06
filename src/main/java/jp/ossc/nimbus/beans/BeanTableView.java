@@ -826,7 +826,7 @@ public class BeanTableView implements Cloneable{
         return this;
     }
     
-    protected BeanTableIndex createTmporaryIndex(
+    protected BeanTableIndex createTemporaryIndex(
         String indexName,
         String[] propNames
     )throws IndexNotFoundException{
@@ -866,13 +866,12 @@ public class BeanTableView implements Cloneable{
         String propName
     ) throws IndexNotFoundException, IndexPropertyAccessException{
         if(resultSet == null){
-            resultSet = indexManager.searchFromElement(resultSet, from, indexName, propName);
+            resultSet = indexManager.searchFromElement(from, indexName, propName);
             if(resultSet == null){
                 resultSet = new HashSet();
             }
         }else{
-            BeanTableIndex index = createTmporaryIndex(indexName, new String[]{propName});
-            operate(index.searchFromElement(from));
+            operate(indexManager.searchFromElement(from, indexName, propName));
         }
         return this;
     }
@@ -897,13 +896,12 @@ public class BeanTableView implements Cloneable{
         String propName
     ) throws IndexNotFoundException, IndexPropertyAccessException{
         if(resultSet == null){
-            resultSet = indexManager.searchFromElement(resultSet, from, inclusive, indexName, propName);
+            resultSet = indexManager.searchFromElement(from, inclusive, indexName, propName);
             if(resultSet == null){
                 resultSet = new HashSet();
             }
         }else{
-            BeanTableIndex index = createTmporaryIndex(indexName, new String[]{propName});
-            operate(index.searchFromElement(from, inclusive));
+            operate(indexManager.searchFromElement(from, inclusive, indexName, propName));
         }
         return this;
     }
@@ -925,13 +923,12 @@ public class BeanTableView implements Cloneable{
         String propName
     ) throws IndexNotFoundException{
         if(resultSet == null){
-            resultSet = indexManager.searchFrom(resultSet, from, indexName, propName);
+            resultSet = indexManager.searchFrom(from, indexName, propName);
             if(resultSet == null){
                 resultSet = new HashSet();
             }
         }else{
-            BeanTableIndex index = createTmporaryIndex(indexName, new String[]{propName});
-            operate(index.searchFrom(from));
+            operate(indexManager.searchFrom(from, indexName, propName));
         }
         return this;
     }
@@ -955,13 +952,12 @@ public class BeanTableView implements Cloneable{
         String propName
     ) throws IndexNotFoundException{
         if(resultSet == null){
-            resultSet = indexManager.searchFrom(resultSet, from, inclusive, indexName, propName);
+            resultSet = indexManager.searchFrom(from, inclusive, indexName, propName);
             if(resultSet == null){
                 resultSet = new HashSet();
             }
         }else{
-            BeanTableIndex index = createTmporaryIndex(indexName, new String[]{propName});
-            operate(index.searchFrom(from, inclusive));
+            operate(indexManager.searchFrom(from, inclusive, indexName, propName));
         }
         return this;
     }
@@ -984,13 +980,12 @@ public class BeanTableView implements Cloneable{
         String propName
     ) throws IndexNotFoundException, IndexPropertyAccessException{
         if(resultSet == null){
-            resultSet = indexManager.searchToElement(resultSet, to, indexName, propName);
+            resultSet = indexManager.searchToElement(to, indexName, propName);
             if(resultSet == null){
                 resultSet = new HashSet();
             }
         }else{
-            BeanTableIndex index = createTmporaryIndex(indexName, new String[]{propName});
-            operate(index.searchToElement(to));
+            operate(indexManager.searchToElement(to, indexName, propName));
         }
         return this;
     }
@@ -1015,13 +1010,12 @@ public class BeanTableView implements Cloneable{
         String propName
     ) throws IndexNotFoundException, IndexPropertyAccessException{
         if(resultSet == null){
-            resultSet = indexManager.searchToElement(resultSet, to, inclusive, indexName, propName);
+            resultSet = indexManager.searchToElement(to, inclusive, indexName, propName);
             if(resultSet == null){
                 resultSet = new HashSet();
             }
         }else{
-            BeanTableIndex index = createTmporaryIndex(indexName, new String[]{propName});
-            operate(index.searchToElement(to, inclusive));
+            operate(indexManager.searchToElement(to, inclusive, indexName, propName));
         }
         return this;
     }
@@ -1043,13 +1037,12 @@ public class BeanTableView implements Cloneable{
         String propName
     ) throws IndexNotFoundException{
         if(resultSet == null){
-            resultSet = indexManager.searchTo(resultSet, to, indexName, propName);
+            resultSet = indexManager.searchTo(to, indexName, propName);
             if(resultSet == null){
                 resultSet = new HashSet();
             }
         }else{
-            BeanTableIndex index = createTmporaryIndex(indexName, new String[]{propName});
-            operate(index.searchTo(to));
+            operate(indexManager.searchTo(to, indexName, propName));
         }
         return this;
     }
@@ -1073,13 +1066,12 @@ public class BeanTableView implements Cloneable{
         String propName
     ) throws IndexNotFoundException{
         if(resultSet == null){
-            resultSet = indexManager.searchTo(resultSet, to, inclusive, indexName, propName);
+            resultSet = indexManager.searchTo(to, inclusive, indexName, propName);
             if(resultSet == null){
                 resultSet = new HashSet();
             }
         }else{
-            BeanTableIndex index = createTmporaryIndex(indexName, new String[]{propName});
-            operate(index.searchTo(to, inclusive));
+            operate(indexManager.searchTo(to, inclusive, indexName, propName));
         }
         return this;
     }
@@ -1104,13 +1096,12 @@ public class BeanTableView implements Cloneable{
         String propName
     ) throws IndexNotFoundException, IndexPropertyAccessException{
         if(resultSet == null){
-            resultSet = indexManager.searchRangeElement(resultSet, from, to, indexName, propName);
+            resultSet = indexManager.searchRangeElement(from, to, indexName, propName);
             if(resultSet == null){
                 resultSet = new HashSet();
             }
         }else{
-            BeanTableIndex index = createTmporaryIndex(indexName, new String[]{propName});
-            operate(index.searchRangeElement(from, to));
+            operate(indexManager.searchRangeElement(from, to, indexName, propName));
         }
         return this;
     }
@@ -1139,13 +1130,12 @@ public class BeanTableView implements Cloneable{
         String propName
     ) throws IndexNotFoundException, IndexPropertyAccessException{
         if(resultSet == null){
-            resultSet = indexManager.searchRangeElement(resultSet, from, fromInclusive, to, toInclusive, indexName, propName);
+            resultSet = indexManager.searchRangeElement(from, fromInclusive, to, toInclusive, indexName, propName);
             if(resultSet == null){
                 resultSet = new HashSet();
             }
         }else{
-            BeanTableIndex index = createTmporaryIndex(indexName, new String[]{propName});
-            operate(index.searchRangeElement(from, fromInclusive, to, toInclusive));
+            operate(indexManager.searchRangeElement(from, fromInclusive, to, toInclusive, indexName, propName));
         }
         return this;
     }
@@ -1169,13 +1159,12 @@ public class BeanTableView implements Cloneable{
         String propName
     ) throws IndexNotFoundException{
         if(resultSet == null){
-            resultSet = indexManager.searchRange(resultSet, from, to, indexName, propName);
+            resultSet = indexManager.searchRange(from, to, indexName, propName);
             if(resultSet == null){
                 resultSet = new HashSet();
             }
         }else{
-            BeanTableIndex index = createTmporaryIndex(indexName, new String[]{propName});
-            operate(index.searchRange(from, to));
+            operate(indexManager.searchRange(from, to, indexName, propName));
         }
         return this;
     }
@@ -1203,13 +1192,12 @@ public class BeanTableView implements Cloneable{
         String propName
     ) throws IndexNotFoundException{
         if(resultSet == null){
-            resultSet = indexManager.searchRange(resultSet, from, fromInclusive, to, toInclusive, indexName, propName);
+            resultSet = indexManager.searchRange(from, fromInclusive, to, toInclusive, indexName, propName);
             if(resultSet == null){
                 resultSet = new HashSet();
             }
         }else{
-            BeanTableIndex index = createTmporaryIndex(indexName, new String[]{propName});
-            operate(index.searchRange(from, fromInclusive, to, toInclusive));
+            operate(indexManager.searchRange(from, fromInclusive, to, toInclusive, indexName, propName));
         }
         return this;
     }
