@@ -51,6 +51,8 @@ public class AsynchContext implements java.io.Serializable, Cloneable{
     protected Queue responseQueue;
     protected Map threadContext;
     protected boolean isCancel;
+    protected long startTime;
+    protected long timeout;
     
     public AsynchContext(){
     }
@@ -90,6 +92,31 @@ public class AsynchContext implements java.io.Serializable, Cloneable{
     }
     public Object getOutput(){
         return output;
+    }
+    
+    public void startTimeout(long timeout){
+        startTimeout(System.currentTimeMillis(), timeout);
+    }
+    
+    public void startTimeout(long startTime, long timeout){
+        this.startTime = startTime;
+        this.timeout = timeout;
+    }
+    
+    public boolean isEnabledTimeout(){
+        return timeout > 0;
+    }
+    
+    public long geTimeout(){
+        return timeout;
+    }
+    
+    public long getCurrentTimeout(){
+        return getCurrentTimeout(System.currentTimeMillis());
+    }
+    
+    public long getCurrentTimeout(long currentTime){
+        return timeout > 0 ? (startTime + timeout - currentTime) : timeout;
     }
     
     public void response() throws Exception{
@@ -144,6 +171,8 @@ public class AsynchContext implements java.io.Serializable, Cloneable{
         responseQueue = null;
         threadContext = null;
         isCancel = false;
+        startTime = 0;
+        timeout = 0;
     }
     
     public Object clone(){
@@ -160,6 +189,8 @@ public class AsynchContext implements java.io.Serializable, Cloneable{
             clone.threadContext.putAll(threadContext);
         }
         clone.isCancel = false;
+        clone.startTime = 0;
+        clone.timeout = 0;
         return clone;
     }
     
@@ -170,6 +201,8 @@ public class AsynchContext implements java.io.Serializable, Cloneable{
         buf.append(", output=").append(output);
         buf.append(", throwable=").append(throwable);
         buf.append(", isCancel=").append(isCancel);
+        buf.append(", startTime=").append(startTime);
+        buf.append(", timeout=").append(timeout);
         buf.append('}');
         return buf.toString();
     }

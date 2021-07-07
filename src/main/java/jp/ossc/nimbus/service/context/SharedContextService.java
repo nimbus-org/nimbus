@@ -3753,7 +3753,7 @@ public class SharedContextService extends DefaultContextService
                 Message message = serverConnection.createMessage(subject, null);
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
                 if(receiveClients.size() != 0){
-                    message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_EXECUTE_INTERPRET, query, variables));
+                    message.setObject(new SharedContextEvent(SharedContextEvent.EVENT_EXECUTE_INTERPRET, query, new Object[]{variables, new Long(timeout)}));
                     Message[] responses = serverConnection.request(
                         message,
                         isClient ? clientSubject : subject,
@@ -3914,7 +3914,8 @@ public class SharedContextService extends DefaultContextService
             if(deadMembers.size() != 0){
                 Iterator ids = deadMembers.iterator();
                 while(ids.hasNext()){
-                    updateLock.releaseForLock(ids.next());
+                    Object id = ids.next();
+                    updateLock.releaseForLock(id);
                 }
             }
             isMain = isMain(newMembers, null);
@@ -5233,18 +5234,22 @@ public class SharedContextService extends DefaultContextService
     
     protected void onExecuteInterpret(final SharedContextEvent event, final Object sourceId, final int sequence, final String responseSubject, final String responseKey){
         if(isMain(sourceId)){
-            executeQueueHandlerContainer.push(
-                new AsynchContext(
-                    new Object[]{
-                        event.key,
-                        event.value,
-                        responseSubject,
-                        responseKey,
-                        sourceId,
-                        new Integer(sequence)
-                    }
-                )
+            final Object[] args = (Object[])event.value;
+            final long timeout = ((Long)args[1]).longValue();
+            AsynchContext asynchContext = new AsynchContext(
+                new Object[]{
+                    event.key,
+                    args[0],
+                    responseSubject,
+                    responseKey,
+                    sourceId,
+                    new Integer(sequence)
+                }
             );
+            if(timeout > 0){
+                asynchContext.startTimeout(timeout);
+            }
+            executeQueueHandlerContainer.push(asynchContext);
         }
     }
     
@@ -6148,6 +6153,15 @@ public class SharedContextService extends DefaultContextService
             final String responseKey = (String)params[3];
             final Object sourceId = params[4];
             final int sequence = ((Integer)params[5]).intValue();
+            if(ac.isEnabledTimeout() && ac.getCurrentTimeout() <= 0){
+                Message response = createResponseMessage(responseSubject, responseKey, new SharedContextTimeoutException());
+                try{
+                    serverConnection.response(sourceId, sequence, response);
+                }catch(MessageSendException e){
+                    getLogger().write("SCS__00006", new Object[]{isClient ? clientSubject : subject, response}, e);
+                }
+                return;
+            }
             Object ret = executeInterpretQueryLocal(query, variables);
             Message response = createResponseMessage(responseSubject, responseKey, ret);
             try{
