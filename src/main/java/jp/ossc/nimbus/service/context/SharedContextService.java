@@ -143,6 +143,7 @@ public class SharedContextService extends DefaultContextService
     protected CacheMap serverCacheMap;
     protected CacheMap cacheMap;
     protected boolean isClient;
+    protected boolean isThinClient;
     protected boolean isEnabledIndexOnClient = true;
     protected ServiceName[] sharedContextUpdateListenerServiceNames;
     protected ServiceName interpreterServiceName;
@@ -362,6 +363,13 @@ public class SharedContextService extends DefaultContextService
     }
     public boolean isClient(){
         return isClient;
+    }
+    
+    public void setThinClient(boolean isThin){
+        isThinClient = isThin;
+    }
+    public boolean isThinClient(){
+        return isThinClient;
     }
     
     public void setEnabledIndexOnClient(boolean isEnabled){
@@ -658,6 +666,9 @@ public class SharedContextService extends DefaultContextService
         updateLock = new SynchronizeLock();
         referLock = new SynchronizeLock();
         if(isClient){
+            if(isThinClient && isEnabledIndexOnClient){
+                throw new IllegalArgumentException("When ThinClient is true, EnabledIndexOnClient cannot be set to true.");
+            }
             if(clientCacheMapServiceName != null){
                 cacheMap = (CacheMap)ServiceManagerFactory.getServiceObject(clientCacheMapServiceName);
             }else if(clientCacheMap != null){
@@ -1165,6 +1176,10 @@ public class SharedContextService extends DefaultContextService
             for(int i = 0; i < updateListeners.size(); i++){
                 ((SharedContextUpdateListener)updateListeners.get(i)).onClearSynchronize(this);
             }
+        }
+        if(isThinClient){
+            healthCheck(false, timeout);
+            return;
         }
         Message message = null;
         try{
@@ -2019,7 +2034,7 @@ public class SharedContextService extends DefaultContextService
             Object old = null;
             final boolean isContainsKey = super.containsKey(key);
             if(isClient){
-                if(isContainsKey){
+                if(isContainsKey && (!isThinClient || cacheMap != null)){
                     old = super.put(key, wrapCachedReference(key, value));
                     old = unwrapCachedReference(old, false, true);
                 }
@@ -2068,7 +2083,7 @@ public class SharedContextService extends DefaultContextService
             updateLock.acquireForUse(-1);
             final boolean isContainsKey = super.containsKey(key);
             if(isClient){
-                if(isContainsKey){
+                if(isContainsKey && (!isThinClient || cacheMap != null)){
                     result = super.put(key, wrapCachedReference(key, value));
                     result = unwrapCachedReference(result, false, true);
                 }
@@ -2139,7 +2154,7 @@ public class SharedContextService extends DefaultContextService
             }
             final boolean isContainsKey = super.containsKey(key);
             if(isClient){
-                if(isContainsKey){
+                if(isContainsKey && (!isThinClient || cacheMap != null)){
                     super.put(key, wrapCachedReference(key, value));
                 }
             }else{
@@ -2784,7 +2799,7 @@ public class SharedContextService extends DefaultContextService
                 final boolean isContainsKey = super.containsKey(entry.getKey());
                 Object old = null;
                 if(isClient){
-                    if(isContainsKey){
+                    if(isContainsKey && (!isThinClient || cacheMap != null)){
                         old = super.put(entry.getKey(), wrapCachedReference(entry.getKey(), entry.getValue()));
                         old = unwrapCachedReference(old, false, true);
                     }
@@ -2847,7 +2862,7 @@ public class SharedContextService extends DefaultContextService
                 final boolean isContainsKey = super.containsKey(entry.getKey());
                 Object old = null;
                 if(isClient){
-                    if(isContainsKey){
+                    if(isContainsKey && (!isThinClient || cacheMap != null)){
                         old = super.put(entry.getKey(), wrapCachedReference(entry.getKey(), entry.getValue()));
                         old = unwrapCachedReference(old, false, true);
                     }
@@ -2939,7 +2954,7 @@ public class SharedContextService extends DefaultContextService
                 Object old = null;
                 final boolean isContainsKey = super.containsKey(entry.getKey());
                 if(isClient){
-                    if(isContainsKey){
+                    if(isContainsKey && (!isThinClient || cacheMap != null)){
                         old = super.put(entry.getKey(), wrapCachedReference(entry.getKey(), entry.getValue()));
                         old = unwrapCachedReference(old, false, true);
                     }else{
@@ -3228,7 +3243,9 @@ public class SharedContextService extends DefaultContextService
                                 synchronized(newLock){
                                     if(!newLock.isRemove()){
                                         result = newLock.updateValue(result);
-                                        super.put(key, wrapCachedReference(key, result));
+                                        if(!isThinClient || cacheMap != null){
+                                            super.put(key, wrapCachedReference(key, result));
+                                        }
                                     }
                                 }
                             }else{
@@ -4131,14 +4148,14 @@ public class SharedContextService extends DefaultContextService
         Object old = null;
         final boolean isContainsKey = super.containsKey(event.key);
         if(isClient){
-            if(isContainsKey){
+            if(isContainsKey && (!isThinClient || cacheMap != null)){
                 old = super.put(event.key, wrapCachedReference(event.key, event.value));
                 old = unwrapCachedReference(old, false, true);
             }else if(clientCacheLockMap.containsKey(event.key)){
                 ClientCacheLock lock = (ClientCacheLock)clientCacheLockMap.get(event.key);
                 if(lock != null){
                     synchronized(lock){
-                        if(super.containsKey(event.key)){
+                        if(super.containsKey(event.key) && (!isThinClient || cacheMap != null)){
                             old = super.put(event.key, wrapCachedReference(event.key, event.value));
                             old = unwrapCachedReference(old, false, true);
                         }else{
@@ -4197,14 +4214,14 @@ public class SharedContextService extends DefaultContextService
                 Object old = null;
                 final boolean isContainsKey = super.containsKey(entry.getKey());
                 if(isClient){
-                    if(isContainsKey){
+                    if(isContainsKey && (!isThinClient || cacheMap != null)){
                         old = super.put(entry.getKey(), wrapCachedReference(entry.getKey(), entry.getValue()));
                         old = unwrapCachedReference(old, false, true);
                     }else if(clientCacheLockMap.containsKey(entry.getKey())){
                         ClientCacheLock lock = (ClientCacheLock)clientCacheLockMap.get(entry.getKey());
                         if(lock != null){
                             synchronized(lock){
-                                if(super.containsKey(entry.getKey())){
+                                if(super.containsKey(entry.getKey()) && (!isThinClient || cacheMap != null)){
                                     old = super.put(entry.getKey(), wrapCachedReference(entry.getKey(), entry.getValue()));
                                     old = unwrapCachedReference(old, false, true);
                                 }else{
@@ -4242,14 +4259,14 @@ public class SharedContextService extends DefaultContextService
         Object old = null;
         final boolean isContainsKey = super.containsKey(event.key);
         if(isClient){
-            if(isContainsKey){
+            if(isContainsKey && (!isThinClient || cacheMap != null)){
                 old = super.put(event.key, wrapCachedReference(event.key, event.value));
                 old = unwrapCachedReference(old, false, true);
             }else if(clientCacheLockMap.containsKey(event.key)){
                 ClientCacheLock lock = (ClientCacheLock)clientCacheLockMap.get(event.key);
                 if(lock != null){
                     synchronized(lock){
-                        if(super.containsKey(event.key)){
+                        if(super.containsKey(event.key) && (!isThinClient || cacheMap != null)){
                             old = super.put(event.key, wrapCachedReference(event.key, event.value));
                             old = unwrapCachedReference(old, false, true);
                         }else{

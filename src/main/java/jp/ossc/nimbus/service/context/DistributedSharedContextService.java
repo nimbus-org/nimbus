@@ -106,6 +106,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     private String subject = DEFAULT_SUBJECT;
     private String clientSubject;
     private boolean isClient;
+    private boolean isThinClient;
     private boolean isEnabledIndexOnClient = true;
     
     private long synchronizeTimeout = 10000l;
@@ -215,6 +216,13 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     }
     public boolean isClient(){
         return isClient;
+    }
+    
+    public void setThinClient(boolean isThin){
+        isThinClient = isThin;
+    }
+    public boolean isThinClient(){
+        return isThinClient;
     }
     
     public void setEnabledIndexOnClient(boolean isEnabled){
@@ -686,6 +694,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             sharedContextArray[i].setExecuteThreadSize(executeThreadSize);
             sharedContextArray[i].setParentSubject(subject);
             sharedContextArray[i].setSubject(subject + "$" + i);
+            sharedContextArray[i].setThinClient(isThinClient);
             sharedContextArray[i].setClient(isClient || isRehashEnabled ? true : false);
             sharedContextArray[i].setEnabledIndexOnClient(isEnabledIndexOnClient);
             sharedContextArray[i].setSynchronizeTimeout(synchronizeTimeout);

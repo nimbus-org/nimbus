@@ -323,6 +323,21 @@ public interface DistributedSharedContextServiceMBean extends ServiceBaseMBean{
     public boolean isClient();
     
     /**
+     * Thinクライアントモードを設定する。<p>
+     * デフォルトは、falseでThinではない。<br>
+     *
+     * @param isThin Thinクライアントモードの場合、true
+     */
+    public void setThinClient(boolean isThin);
+    
+    /**
+     * Thinクライアントモードを判定する。<p>
+     *
+     * @return trueの場合、Thinクライアントモード
+     */
+    public boolean isThinClient();
+    
+    /**
      * クライアントモードの時に、ローカルのインデックスを有効化するかどうかを設定する。<p>
      * デフォルトは、trueで有効。<br>
      * falseにした場合、インデックスを使った検索は、サーバモードのノードに要求する。<br>
