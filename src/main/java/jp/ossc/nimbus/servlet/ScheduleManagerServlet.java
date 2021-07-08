@@ -92,6 +92,7 @@ import jp.ossc.nimbus.util.converter.StringStreamConverter;
  *     <tr><td>13</td><td>StopEntryEnabled</td><td>{@link Scheduler スケジューラ}へのスケジュール投入停止操作を有効にするかどうかを指定する。</td><td>false</td></tr>
  *     <tr><td>14</td><td>JSONConverterServiceName</td><td>JSON形式での応答を要求する場合に使用する{@link BeanJSONConverter}サービスのサービス名を指定する。</td><td>指定しない場合は、内部生成される。</td></tr>
  *     <tr><td>15</td><td>UnicodeEscape</td><td>JSON形式での応答を要求する場合に、２バイト文字をユニコードエスケープするかどうかを指定する。</td><td>true</td></tr>
+ *     <tr><td>16</td><td>ScheduleFindLimit</td><td>スケジュール検索時の最大件数を指定する。</td><td>100</td></tr>
  * </table>
  * <p>
  * Webサービスは、クエリ指定でのGETリクエストに対して、JSONでデータを応答する。<br>
@@ -669,6 +670,11 @@ public class ScheduleManagerServlet extends HttpServlet{
     protected static final String INIT_PARAM_NAME_JSON_CONVERTER_SERVICE_NAME = "JSONConverterServiceName";
     
     /**
+     * スケジュール検索時の最大件数を指定するための初期化パラメータ名。<p>
+     */
+    protected static final String INIT_PARAM_NAME_SCHEDULE_FIND_LIMIT = "ScheduleFindLimit";
+    
+    /**
      * JSON応答時に２バイト文字をユニコードエスケープするかどうかのフラグを指定するための初期化パラメータ名。<p>
      */
     protected static final String INIT_PARAM_NAME_UNICODE_ESCAPE = "UnicodeEscape";
@@ -681,6 +687,7 @@ public class ScheduleManagerServlet extends HttpServlet{
     private Scheduler scheduler;
     private BeanJSONConverter jsonConverter;
     private StringStreamConverter toStringConverter;
+    private int scheduleFindLimit;
     
     private ServiceName getScheduleManagerServiceName(){
         final ServletConfig config = getServletConfig();
@@ -787,6 +794,12 @@ public class ScheduleManagerServlet extends HttpServlet{
         return isEscape == null ? true : Boolean.valueOf(isEscape).booleanValue();
     }
     
+    private int getScheduleFindLimit() throws NumberFormatException{
+        final ServletConfig config = getServletConfig();
+        final String scheduleFindLimitStr = config.getInitParameter(INIT_PARAM_NAME_SCHEDULE_FIND_LIMIT);
+        return scheduleFindLimitStr == null ? -1 : Integer.parseInt(scheduleFindLimitStr);
+    }
+    
     /**
      * サーブレットの初期化を行う。<p>
      * サービス定義のロード及びロード完了チェックを行う。
@@ -822,6 +835,7 @@ public class ScheduleManagerServlet extends HttpServlet{
         if(schedulerServiceName != null){
             scheduler = (Scheduler)ServiceManagerFactory.getServiceObject(schedulerServiceName);
         }
+        scheduleFindLimit = getScheduleFindLimit();
     }
     
     /**
@@ -1161,7 +1175,7 @@ public class ScheduleManagerServlet extends HttpServlet{
                 buf.append("<html>");
                 buf.append(header(HEADER_SCHEDULE));
                 buf.append("<body>");
-                buf.append(scheduleSearchCondition(getCurrentPath(req), "", "", "", "", null, null, null));
+                buf.append(scheduleSearchCondition(getCurrentPath(req), "", "", "", "", null, null, null, -1));
                 try {
                     buf.append(schedules(req, schedules, null));
                 } catch(Exception e) {
@@ -1214,11 +1228,11 @@ public class ScheduleManagerServlet extends HttpServlet{
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Parameter 'search_state' is illegal." + e.toString());
             return;
         }
-        int limit = -1;
+        int limit = scheduleFindLimit;
         try{
             int[] limits = getIntParameterValues(req, "limit");
             if(limits != null && limits.length != 0){
-                limit = limits[0];
+                limit = scheduleFindLimit > 0 ? Math.min(limits[0], scheduleFindLimit) : limits[0];
             }
         }catch(NumberFormatException e){
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Parameter 'limit' is illegal." + e.toString());
@@ -1279,7 +1293,7 @@ public class ScheduleManagerServlet extends HttpServlet{
                 buf.append("<html>");
                 buf.append(header(HEADER_SCHEDULE));
                 buf.append("<body>");
-                buf.append(scheduleSearchCondition(getCurrentPath(req), id, groupId, masterId, masterGroupId, from, to, states));
+                buf.append(scheduleSearchCondition(getCurrentPath(req), id, groupId, masterId, masterGroupId, from, to, states, limit));
                 try {
                     buf.append(schedules(req, schedules, states));
                 } catch(Exception e) {
@@ -2914,9 +2928,10 @@ public class ScheduleManagerServlet extends HttpServlet{
      * @param from 検索条件値（from）
      * @param to 検索条件値（to）
      * @param states 検索条件値（states）
+     * @param limit 検索結果最大件数（limit）
      * @return スケジュール管理画面HTMLのスケジュール検索条件部分HTML
      */
-    private String scheduleSearchCondition(String action, String id, String groupId, String masterId, String masterGroupId, Date from, Date to, int[] states){
+    private String scheduleSearchCondition(String action, String id, String groupId, String masterId, String masterGroupId, Date from, Date to, int[] states, int limit){
         final StringBuilder buf = new StringBuilder();
         buf.append("<form name=\"schedule\" id=\"scheduleSearch\" action=\"" + action + "\" method=\"post\">");
         buf.append("<table border=\"1\">");
@@ -2939,7 +2954,10 @@ public class ScheduleManagerServlet extends HttpServlet{
         buf.append(td(stateCheckbox(states), null , 3));
         buf.append("</tr>");
         buf.append("<tr>");
-        buf.append(td(button("ScheduleSearch", "document.getElementById('scheduleSearch').submit();"), null, 8));
+        buf.append(td(button("ScheduleSearch", "document.getElementById('scheduleSearch').submit();"), null));
+        buf.append(th("Limit", "left"));
+        buf.append(td(text("limit", null, format(limit), 6), null, 7));
+        
         buf.append("</tr>");
         buf.append("</table>");
         buf.append(hidden("action", null, "schedule"));
