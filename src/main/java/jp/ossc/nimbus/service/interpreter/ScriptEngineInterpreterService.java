@@ -41,7 +41,7 @@ import jp.ossc.nimbus.beans.ServiceNameEditor;
 import jp.ossc.nimbus.beans.NimbusPropertyEditorManager;
 
 /**
- * ScriptEngineを使ってJavaコードを実行するインタープリタサービス。<p>
+ * ScriptEngineを使ってコードを実行するインタープリタサービス。<p>
  * 
  * @author M.Takata
  */
@@ -181,6 +181,7 @@ public class ScriptEngineInterpreterService extends ServiceBase
     
     public void stopService() throws Exception{
         scriptEngineManager = null;
+        scriptEngine = null;
     }
     
     public void destroyService() throws Exception{
@@ -290,15 +291,21 @@ public class ScriptEngineInterpreterService extends ServiceBase
         if(engine == null){
             throw new EvaluateException("ScriptEngine not found.");
         }
-        engine.getBindings(ScriptContext.ENGINE_SCOPE).putAll(engineBindings);
+        Bindings bindings = engine.getBindings(ScriptContext.ENGINE_SCOPE);
+        bindings.putAll(engineBindings);
+        if(variables != null && !variables.isEmpty()){
+            bindings.putAll(variables);
+        }
         try{
-            if(variables == null || variables.size() == 0){
-                return engine.eval(isWrapByFunction ? wrapByFunction(code) : code);
-            }else{
-                return engine.eval(isWrapByFunction ? wrapByFunction(code) : code, new SimpleBindings(variables));
-            }
+            return engine.eval(isWrapByFunction ? wrapByFunction(code) : code);
         }catch(ScriptException e){
             throw new EvaluateException(e);
+        }finally{
+            if(bindings instanceof AutoCloseable){
+                try{
+                    ((AutoCloseable)bindings).close();
+                }catch(Exception e){}
+            }
         }
     }
     
