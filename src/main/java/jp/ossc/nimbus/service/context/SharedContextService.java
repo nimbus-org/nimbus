@@ -51,6 +51,7 @@ import jp.ossc.nimbus.service.cache.CacheRemoveListener;
 import jp.ossc.nimbus.service.cache.CachedReference;
 import jp.ossc.nimbus.service.cache.KeyCachedReference;
 import jp.ossc.nimbus.service.cache.IllegalCachedReferenceException;
+import jp.ossc.nimbus.service.interpreter.CompiledInterpreter;
 import jp.ossc.nimbus.service.interpreter.Interpreter;
 import jp.ossc.nimbus.service.interpreter.EvaluateException;
 import jp.ossc.nimbus.service.queue.DefaultQueueService;
@@ -139,9 +140,12 @@ public class SharedContextService extends DefaultContextService
     protected Cluster cluster;
     protected ServiceName clientCacheMapServiceName;
     protected ServiceName serverCacheMapServiceName;
+    protected ServiceName interpreterCacheMapServiceName;
     protected CacheMap clientCacheMap;
     protected CacheMap serverCacheMap;
     protected CacheMap cacheMap;
+    protected CacheMap interpreterCacheMap;
+    
     protected boolean isClient;
     protected boolean isThinClient;
     protected boolean isEnabledIndexOnClient = true;
@@ -214,6 +218,13 @@ public class SharedContextService extends DefaultContextService
         return serverCacheMapServiceName;
     }
     
+    public void setInterpreterCacheMapServiceName(ServiceName name){
+        interpreterCacheMapServiceName = name;
+    }
+    public ServiceName getInterpreterCacheMapServiceName(){
+        return interpreterCacheMapServiceName;
+    }
+    
     public void setInterpreterServiceName(ServiceName name){
         interpreterServiceName = name;
     }
@@ -278,6 +289,9 @@ public class SharedContextService extends DefaultContextService
                             cacheMap = clientCacheMap;
                         }else{
                             cacheMap = null;
+                        }
+                        if(interpreterCacheMap != null){
+                            interpreterCacheMap.clear();
                         }
                     }else{
                         if(serverCacheMapServiceName != null){
@@ -679,6 +693,9 @@ public class SharedContextService extends DefaultContextService
                 cacheMap = (CacheMap)ServiceManagerFactory.getServiceObject(serverCacheMapServiceName);
             }else if(serverCacheMap != null){
                 cacheMap = serverCacheMap;
+            }
+            if(interpreterCacheMapServiceName != null){
+                interpreterCacheMap = (CacheMap)ServiceManagerFactory.getServiceObject(interpreterCacheMapServiceName);
             }
         }
         
@@ -3807,6 +3824,18 @@ public class SharedContextService extends DefaultContextService
             variables = new HashMap();
         }
         variables.put(interpretContextVariableName, new LocalSharedContext());
+        if(interpreterCacheMap != null && interpreter.isCompilable()){
+            CompiledInterpreter ci = (CompiledInterpreter)interpreterCacheMap.get(evaluate);
+            if(ci == null){
+                ci = interpreter.compile(evaluate);
+                synchronized(interpreter){
+                    if(!interpreterCacheMap.containsKey(evaluate)){
+                        interpreterCacheMap.put(evaluate, ci);
+                    }
+                }
+            }
+            return ci.evaluate(variables);
+        }
         return interpreter.evaluate(evaluate, variables);
     }
     

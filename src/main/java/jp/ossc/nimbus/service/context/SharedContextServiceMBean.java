@@ -113,6 +113,20 @@ public interface SharedContextServiceMBean extends DefaultContextServiceMBean{
     public ServiceName getServerCacheMapServiceName();
     
     /**
+     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}がコンパイル可能な場合に、コンパイルしたものをキャッシュする{@link jp.ossc.nimbus.service.cache.CacheMap CacheMap}サービスのサービス名を設定する。<p>
+     * 
+     * @param name CacheMapサービスのサービス名
+     */
+    public void setInterpreterCacheMapServiceName(ServiceName name);
+    
+    /**
+     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}がコンパイル可能な場合に、コンパイルしたものをキャッシュする{@link jp.ossc.nimbus.service.cache.CacheMap CacheMap}サービスのサービス名を取得する。<p>
+     * 
+     * @return CacheMapサービスのサービス名
+     */
+    public ServiceName getInterpreterCacheMapServiceName();
+    
+    /**
      * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}サービスのサービス名を設定する。<p>
      * インタープリタ実行をサポートする場合に、クエリを解釈するInterpreterを設定する。<br>
      * 
