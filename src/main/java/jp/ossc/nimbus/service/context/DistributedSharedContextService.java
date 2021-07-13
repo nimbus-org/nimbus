@@ -91,6 +91,7 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     private SharedContextKeyDistributor keyDistributor;
     private ServiceName contextStoreServiceName;
     private ContextStore contextStore;
+    private ServiceName interpreterCacheMapServiceName;
     private ServiceName interpreterServiceName;
     private Interpreter interpreter;
     private String interpretContextVariableName;
@@ -291,6 +292,13 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
     }
     public ServiceName getContextStoreServiceName(){
         return contextStoreServiceName;
+    }
+    
+    public void setInterpreterCacheMapServiceName(ServiceName name){
+        interpreterCacheMapServiceName = name;
+    }
+    public ServiceName getInterpreterCacheMapServiceName(){
+        return interpreterCacheMapServiceName;
     }
     
     public void setInterpreterServiceName(ServiceName name){
@@ -678,6 +686,9 @@ public class DistributedSharedContextService extends ServiceBase implements Dist
             }
             if(contextStoreServiceName != null){
                 sharedContextArray[i].setContextStoreServiceName(contextStoreServiceName);
+            }
+            if(interpreterCacheMapServiceName != null){
+                sharedContextArray[i].setInterpreterCacheMapServiceName(interpreterCacheMapServiceName);
             }
             if(interpreterServiceName != null){
                 sharedContextArray[i].setInterpreterServiceName(interpreterServiceName);
