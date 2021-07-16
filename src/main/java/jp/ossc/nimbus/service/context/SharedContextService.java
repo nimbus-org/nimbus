@@ -293,6 +293,9 @@ public class SharedContextService extends DefaultContextService
                         if(interpreterCacheMap != null){
                             interpreterCacheMap.clear();
                         }
+                        if(isThinClient && keyLockMap != null){
+                            keyLockMap.clear();
+                        }
                     }else{
                         if(serverCacheMapServiceName != null){
                             cacheMap = (CacheMap)ServiceManagerFactory.getServiceObject(serverCacheMapServiceName);
@@ -1378,16 +1381,15 @@ public class SharedContextService extends DefaultContextService
         final Object id = cluster.getUID();
         final boolean isNoTimeout = timeout <= 0;
         Lock lock = (Lock)keyLockMap.get(key);
-        if(lock == null){
+        if(lock == null && (!isClient || !isThinClient)){
             lock = new Lock(key);
             Lock old = (Lock)keyLockMap.putIfAbsent(key, lock);
             if(old != null){
                 lock = old;
             }
-        }
-        Object lockedOwner = lock.getOwner();
-        if(id.equals(lockedOwner) && Thread.currentThread().equals(lock.getOwnerThread())){
-            return true;
+            if(id.equals(lock.getOwner()) && Thread.currentThread().equals(lock.getOwnerThread())){
+                return true;
+            }
         }
         if(isMain()){
             if(ifExist && !super.containsKey(key)){
@@ -1464,14 +1466,18 @@ public class SharedContextService extends DefaultContextService
                 }
             }
         }else{
-            if(ifExist && !super.containsKey(key)){
+            final long start = System.currentTimeMillis();
+            if(ifExist && !containsKey(key, timeout)){
                 return false;
             }
-            if(ifAcquireable && !lock.isAcquireable(id)){
+            long currentTimeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
+            if(!isNoTimeout && currentTimeout <= 0){
+                throw new SharedContextTimeoutException();
+            }
+            if(ifAcquireable && lock != null && !lock.isAcquireable(id)){
                 return false;
             }
             Message message = null;
-            final long start = System.currentTimeMillis();
             try{
                 message = serverConnection.createMessage(subject, key == null ? null : key.toString());
                 Set receiveClients = serverConnection.getReceiveClientIds(message);
@@ -1485,7 +1491,7 @@ public class SharedContextService extends DefaultContextService
                                 new Long(Thread.currentThread().getId()),
                                 ifAcquireable ? Boolean.TRUE : Boolean.FALSE,
                                 ifExist ? Boolean.TRUE : Boolean.FALSE,
-                                new Long(timeout)
+                                new Long(currentTimeout)
                             }
                         )
                     );
@@ -1494,7 +1500,7 @@ public class SharedContextService extends DefaultContextService
                         isClient ? clientSubject : subject,
                         key == null ? null : key.toString(),
                         1,
-                        timeout
+                        currentTimeout
                     );
                     Object ret = responses[0].getObject();
                     responses[0].recycle();
@@ -1519,12 +1525,12 @@ public class SharedContextService extends DefaultContextService
                 unlock(key);
                 throw new SharedContextSendException(e);
             }catch(RequestTimeoutException e){
-                long currentTimeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
+                currentTimeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
                 if(!isNoTimeout && currentTimeout <= 0){
                     unlock(key);
                     throw new SharedContextTimeoutException("key=" + key + ", timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - start), e);
                 }else{
-                    return lock(key, ifAcquireable, ifExist, timeout);
+                    return lock(key, ifAcquireable, ifExist, currentTimeout);
                 }
             }catch(RuntimeException e){
                 unlock(key);
@@ -1533,7 +1539,7 @@ public class SharedContextService extends DefaultContextService
                 unlock(key);
                 throw e;
             }
-            long currentTimeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
+            currentTimeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
             if(!isNoTimeout && currentTimeout <= 0){
                 unlock(key);
                 throw new SharedContextTimeoutException("key=" + key + ", timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - start));
@@ -1659,16 +1665,15 @@ public class SharedContextService extends DefaultContextService
             while(keyItr.hasNext()){
                 Object key = keyItr.next();
                 Lock lock = (Lock)keyLockMap.get(key);
-                if(lock == null){
+                if(lock == null && (!isClient || !isThinClient)){
                     lock = new Lock(key);
                     Lock old = (Lock)keyLockMap.putIfAbsent(key, lock);
                     if(old != null){
                         lock = old;
                     }
-                }
-                Object lockedOwner = lock.getOwner();
-                if(id.equals(lockedOwner) && Thread.currentThread().equals(lock.getOwnerThread())){
-                    continue;
+                    if(id.equals(lock.getOwner()) && Thread.currentThread().equals(lock.getOwnerThread())){
+                        continue;
+                    }
                 }
                 if(isMain()){
                     if(ifExist && !super.containsKey(key)){
@@ -1693,8 +1698,12 @@ public class SharedContextService extends DefaultContextService
                         }
                     }
                 }else{
-                    if((ifExist && !super.containsKey(key))
-                        || (ifAcquireable && !lock.isAcquireable(id))){
+                    currentTimeout = isNoTimeout ? currentTimeout : timeout - (System.currentTimeMillis() - start);
+                    if(!isNoTimeout && currentTimeout <= 0){
+                        throw new SharedContextTimeoutException("keys=" + keys.size() + ", timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - start));
+                    }
+                    if((ifExist && !containsKey(key, currentTimeout))
+                        || (ifAcquireable && lock != null && !lock.isAcquireable(id))){
                         result = false;
                         return result;
                     }
@@ -1725,7 +1734,7 @@ public class SharedContextService extends DefaultContextService
                         if(ret instanceof Throwable){
                             throw new SharedContextSendException((Throwable)ret);
                         }else if(ret == null || !((Boolean)ret).booleanValue()){
-                            throw new SharedContextTimeoutException();
+                            throw new SharedContextTimeoutException("keys=" + keys.size() + ", timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - start));
                         }
                     }
                 }
@@ -1762,7 +1771,7 @@ public class SharedContextService extends DefaultContextService
                             result = false;
                             return result;
                         }else{
-                            throw new SharedContextTimeoutException("keys=" + keys.size() + ", timeout=" + timeout);
+                            throw new SharedContextTimeoutException("keys=" + keys.size() + ", timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - start));
                         }
                     }
                 }else{
@@ -1776,28 +1785,27 @@ public class SharedContextService extends DefaultContextService
                 while(keyItr.hasNext()){
                     Object key = keyItr.next();
                     Lock lock = (Lock)keyLockMap.get(key);
-                    if(lock == null){
+                    if(lock == null && (!isClient || !isThinClient)){
                         lock = new Lock(key);
                         Lock old = (Lock)keyLockMap.putIfAbsent(key, lock);
                         if(old != null){
                             lock = old;
                         }
+                        if(id.equals(lock.getOwner()) && Thread.currentThread().equals(lock.getOwnerThread())){
+                            continue;
+                        }
                     }
-                    Object lockedOwner = lock.getOwner();
-                    if(id.equals(lockedOwner) && Thread.currentThread().equals(lock.getOwnerThread())){
-                        continue;
-                    }
-                    if(!lock.acquire(id, ifAcquireable, currentTimeout)){
+                    if(lock != null && !lock.acquire(id, ifAcquireable, currentTimeout)){
                         if(ifAcquireable){
                             result = false;
                             return result;
                         }else{
-                            throw new SharedContextTimeoutException();
+                            throw new SharedContextTimeoutException("keys=" + keys.size() + ", timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - start));
                         }
                     }
                     currentTimeout = isNoTimeout ? currentTimeout : timeout - (System.currentTimeMillis() - start);
                     if(!isNoTimeout && currentTimeout <= 0){
-                        throw new SharedContextTimeoutException();
+                        throw new SharedContextTimeoutException("keys=" + keys.size() + ", timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - start));
                     }
                 }
             }
@@ -2652,7 +2660,7 @@ public class SharedContextService extends DefaultContextService
     }
     
     public Object removeLocal(Object key){
-        if(isMain() && !super.containsKey(key)){
+        if(!super.containsKey(key)){
             return null;
         }
         if(updateListeners != null){
@@ -4811,6 +4819,9 @@ public class SharedContextService extends DefaultContextService
     }
     
     protected Message onGotLock(final SharedContextEvent event, final Object sourceId, final int sequence, final String responseSubject, final String responseKey){
+        if(isClient && isThinClient){
+            return createResponseMessage(responseSubject, responseKey, Boolean.TRUE);
+        }
         Lock lock = (Lock)keyLockMap.get(event.key);
         if(lock == null){
             lock = new Lock(event.key);
@@ -4818,6 +4829,9 @@ public class SharedContextService extends DefaultContextService
             if(old != null){
                 lock = old;
             }
+        }
+        if(lock == null){
+            return createResponseMessage(responseSubject, responseKey, Boolean.TRUE);
         }
         final Object[] params = (Object[])event.value;
         final Object id = params[0];
@@ -4916,6 +4930,10 @@ public class SharedContextService extends DefaultContextService
             return null;
         }
         final long timeout = ((Long)params[2]).longValue();
+        if(isClient && isThinClient){
+            return createResponseMessage(responseSubject, responseKey, Boolean.TRUE);
+        }
+        
         final GotLocksResponseCallback callback = new GotLocksResponseCallback(keys, sourceId, sequence, responseSubject, responseKey);
         final List lockedLocks = new LinkedList();
         final List tasks = new LinkedList();
