@@ -100,6 +100,26 @@ public interface KubernetesClusterServiceMBean extends ServiceBaseMBean{
     public static final String MSG_ID_MESSAGE_JOIN_ERROR = "CLST_00011";
     
     /**
+     * クラスタから立ち去った旨のログメッセージID。<p>
+     */
+    public static final String MSG_ID_MESSAGE_LEAVE = "CLST_00012";
+    
+    /**
+     * クラスタから立ち去った通知をした旨のログメッセージID。<p>
+     */
+    public static final String MSG_ID_MESSAGE_NOTIFY_LEAVE = "CLST_00013";
+    
+    /**
+     * ハートビートがタイムアウトした旨のログメッセージID。<p>
+     */
+    public static final String MSG_ID_MESSAGE_HEARTBEAT_TIMEOUT = "CLST_00014";
+    
+    /**
+     * このクラスタが稼動系疑いに切り替わった旨のログメッセージID。<p>
+     */
+    public static final String MSG_ID_CHANGE_OPERATION_DOUBT_SYSTEM = "CLST_00015";
+    
+    /**
      * クラスタを組むサービスのサービス名を設定する。<p>
      *
      * @param name サービス名
@@ -268,6 +288,21 @@ public interface KubernetesClusterServiceMBean extends ServiceBaseMBean{
      * @return ラベル選択子
      */
     public String getLabelSelector();
+    
+    /**
+     * クラスタのメンバーとなるPodを特定するリソースバージョンを設定する。<p>
+     * 指定方法は、<a href="https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions">ここを参照</a>。<br>
+     *
+     * @param match リソースバージョン
+     */
+    public void setResourceVersionMatch(String match);
+    
+    /**
+     * クラスタのメンバーとなるPodを特定するリソースバージョンを取得する。<p>
+     *
+     * @return リソースバージョン
+     */
+    public String getResourceVersionMatch();
     
     /**
      * クラスタのメンバーとなるPodを監視する際のタイムアウト[s]を設定する。<p>
