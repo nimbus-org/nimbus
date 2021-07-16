@@ -1544,7 +1544,7 @@ public class SharedContextService extends DefaultContextService
                 unlock(key);
                 throw new SharedContextTimeoutException("key=" + key + ", timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - start));
             }
-            if(!lock.acquire(id, ifAcquireable, currentTimeout)){
+            if(lock != null && !lock.acquire(id, ifAcquireable, currentTimeout)){
                 unlock(key);
                 if(ifAcquireable){
                     return false;
