@@ -670,6 +670,11 @@ public class ClusterService extends ServiceBase implements Cluster, ClusterServi
                             isMain = false;
                             processChangeSub();
                             sendMessage(MESSAGE_ID_BYE_REQ);
+                            getLogger().write(
+                                MSG_ID_MESSAGE_LEAVE,
+                                getServiceNameObject(),
+                                e
+                            );
                             clusterMessageReceiver.stop(100);
                             if(unicastClusterMessageReceiver != null){
                                 unicastClusterMessageReceiver.stop(100);
@@ -719,6 +724,10 @@ public class ClusterService extends ServiceBase implements Cluster, ClusterServi
             }
             try{
                 sendMessage(MESSAGE_ID_BYE_REQ);
+                getLogger().write(
+                    MSG_ID_MESSAGE_LEAVE,
+                    getServiceNameObject()
+                );
             }catch(Exception e){
             }
             List tmpOldMembers = null;
@@ -1102,16 +1111,23 @@ public class ClusterService extends ServiceBase implements Cluster, ClusterServi
                         newMembers.add(ois.readObject());
                     }
                 }
-                if(!isClient && isMain && newMembers.indexOf(uid) != 0){
-                    eventQueue.push(new ClusterEvent(ClusterEvent.EVENT_CHANGE_SUB));
-                    isMain = false;
-                    synchronized(mainReqMembers){
-                        isMainRequesting = false;
+                if(!isClient && isMain){
+                    if(newMembers.indexOf(uid) != 0){
+                        eventQueue.push(new ClusterEvent(ClusterEvent.EVENT_CHANGE_SUB));
+                        isMain = false;
+                        synchronized(mainReqMembers){
+                            isMainRequesting = false;
+                        }
+                        getLogger().write(
+                            MSG_ID_CHANGE_STANDBY_SYSTEM,
+                            getServiceNameObject()
+                        );
+                    }else{
+                        getLogger().write(
+                            MSG_ID_CHANGE_OPERATION_SYSTEM,
+                            getServiceNameObject()
+                        );
                     }
-                    getLogger().write(
-                        MSG_ID_CHANGE_STANDBY_SYSTEM,
-                        getServiceNameObject()
-                    );
                 }
                 synchronized(members){
                     if((isClient || newMembers.contains(uid)) && !members.equals(newMembers)){
@@ -1145,10 +1161,18 @@ public class ClusterService extends ServiceBase implements Cluster, ClusterServi
                 }else if(isMainDoubt){
                     if(memberSize < members.size() || (memberSize == members.size() && uid.compareTo(fromUID) < 0)){
                         isMainDoubt = false;
+                        getLogger().write(
+                            MSG_ID_CHANGE_OPERATION_SYSTEM,
+                            getServiceNameObject()
+                        );
                     }
                 }else{
                     if(memberSize > members.size() || (memberSize == members.size() && uid.compareTo(fromUID) > 0)){
                         isMainDoubt = true;
+                        getLogger().write(
+                            MSG_ID_CHANGE_OPERATION_DOUBT_SYSTEM,
+                            getServiceNameObject()
+                        );
                         sendMessage(MESSAGE_ID_MEMBER_MERGE_REQ, fromUID);
                     }
                 }
@@ -1270,6 +1294,10 @@ public class ClusterService extends ServiceBase implements Cluster, ClusterServi
                     memberSize = ois.readInt();
                     if(memberSize > members.size() || (memberSize == members.size() && uid.compareTo(fromUID) > 0)){
                         isMainDoubt = true;
+                        getLogger().write(
+                            MSG_ID_CHANGE_OPERATION_DOUBT_SYSTEM,
+                            getServiceNameObject()
+                        );
                         sendMessage(MESSAGE_ID_MEMBER_MERGE_REQ, fromUID);
                     }
                 }else{
@@ -1697,6 +1725,10 @@ public class ClusterService extends ServiceBase implements Cluster, ClusterServi
                     && targetedMember != null
                     && tmpLastReceiveTime < (checkStandardTime - ((heartBeatInterval + heartBeatResponseTimeout) * heartBeatRetryCount))
                 ){
+                    getLogger().write(
+                        MSG_ID_MESSAGE_HEARTBEAT_TIMEOUT,
+                        new Object[]{getServiceNameObject(), targetedMember}
+                    );
                     synchronized(lastReceiveUIDLockObj){
                         lastReceiveUID = null;
                         lastReceiveTime = -1;
@@ -1726,6 +1758,10 @@ public class ClusterService extends ServiceBase implements Cluster, ClusterServi
                             sendMessage(MESSAGE_ID_MEMBER_CHANGE_REQ);
                         }else if(!isClient){
                             sendMessage(MESSAGE_ID_BYE_REQ, targetedMember, null);
+                            getLogger().write(
+                                MSG_ID_MESSAGE_NOTIFY_LEAVE,
+                                new Object[]{getServiceNameObject(), targetedMember}
+                            );
                             if(members.indexOf(uid) == 0){
                                 if(members.size() == 1){
                                     isMain = true;
@@ -1832,6 +1868,10 @@ public class ClusterService extends ServiceBase implements Cluster, ClusterServi
                                         sendMessage(MESSAGE_ID_MEMBER_CHANGE_REQ);
                                     }else if(!isClient){
                                         sendMessage(MESSAGE_ID_BYE_REQ, targetMember, null);
+                                        getLogger().write(
+                                            MSG_ID_MESSAGE_NOTIFY_LEAVE,
+                                            new Object[]{getServiceNameObject(), targetedMember}
+                                        );
                                     }
                                     eventQueue.push(new ClusterEvent(ClusterEvent.EVENT_MEMBER_CHANGE, tmpOldMembers, tmpNewMembers));
                                 }

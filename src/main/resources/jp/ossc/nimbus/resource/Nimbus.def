@@ -317,6 +317,10 @@ CLST_00008,Cluster @0 add client @1.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_C
 CLST_00009,Cluster @0 remove client @1.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 CLST_00010,Cluster @0 member marged. @1 -> @2,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
 CLST_00011,Cluster @0 could not join the cluster. member=@1,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+CLST_00012,Cluster @0 left.,50,jp.ossc.nimbus.service.log.SYSTEM_INFO_CATEGORY
+CLST_00013,Notified that member @1 left Cluster @0.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+CLST_00014,Heartbeat from member @1 of cluster @0 timed out.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
+CLST_00015,Cluster @0 changed into the active doubt system.,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 PCFT_00001,It failed in sending message. client=@0\\, message=@1,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY
 PCFT_00002,It failed in retrying to send message. client=@0\\, message=@1,150,jp.ossc.nimbus.service.log.SYSTEM_ERROR_CATEGORY
 PCFT_00003,It failed in receiving message. Try to reconnect.connection=@0,100,jp.ossc.nimbus.service.log.SYSTEM_WARN_CATEGORY

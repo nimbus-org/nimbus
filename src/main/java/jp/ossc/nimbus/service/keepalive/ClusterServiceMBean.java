@@ -95,6 +95,26 @@ public interface ClusterServiceMBean extends ServiceBaseMBean{
     public static final String MSG_ID_MESSAGE_MEMBAER_MERGE = "CLST_00010";
     
     /**
+     * クラスタから立ち去った旨のログメッセージID。<p>
+     */
+    public static final String MSG_ID_MESSAGE_LEAVE = "CLST_00012";
+    
+    /**
+     * クラスタから立ち去った通知をした旨のログメッセージID。<p>
+     */
+    public static final String MSG_ID_MESSAGE_NOTIFY_LEAVE = "CLST_00013";
+    
+    /**
+     * ハートビートがタイムアウトした旨のログメッセージID。<p>
+     */
+    public static final String MSG_ID_MESSAGE_HEARTBEAT_TIMEOUT = "CLST_00014";
+    
+    /**
+     * このクラスタが稼動系疑いに切り替わった旨のログメッセージID。<p>
+     */
+    public static final String MSG_ID_CHANGE_OPERATION_DOUBT_SYSTEM = "CLST_00015";
+    
+    /**
      * クラスタを組むサービスのサービス名を設定する。<p>
      *
      * @param name サービス名
