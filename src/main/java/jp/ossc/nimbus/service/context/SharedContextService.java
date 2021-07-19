@@ -189,6 +189,9 @@ public class SharedContextService extends DefaultContextService
     protected long caheHitCount;
     protected long caheNoHitCount;
     protected transient Daemon forcedLockTimeoutChecker;
+    protected long lockProcessTime;
+    protected int lockCount;
+    protected long maxLockTime;
     
     public void setRequestConnectionFactoryServiceName(ServiceName name){
         requestConnectionFactoryServiceName = name;
@@ -275,6 +278,9 @@ public class SharedContextService extends DefaultContextService
         if(getState() == STARTED){
             try{
                 if(this.isClient == isClient){
+                    return;
+                }
+                if(isThinClient && !isClient){
                     return;
                 }
                 Object id = cluster.getUID();
@@ -584,14 +590,7 @@ public class SharedContextService extends DefaultContextService
         if(keyLockMap == null){
             return keySet;
         }
-        Object[] locks = keyLockMap.values().toArray();
-        for(int i = 0; i < locks.length; i++){
-            Lock lock = (Lock)locks[i];
-            if(lock.getOwner() != null){
-                keySet.add(lock.getKey());
-            }
-        }
-        return keySet;
+        return keyLockMap.keySet();
         
     }
     
@@ -599,15 +598,7 @@ public class SharedContextService extends DefaultContextService
         if(keyLockMap == null){
             return 0;
         }
-        int lockCount = 0;
-        Object[] locks = keyLockMap.values().toArray();
-        for(int i = 0; i < locks.length; i++){
-            Lock lock = (Lock)locks[i];
-            if(lock.getOwner() != null){
-                lockCount++;
-            }
-        }
-        return lockCount;
+        return keyLockMap.size();
     }
     
     public double getAverageLockTime(){
@@ -621,6 +612,15 @@ public class SharedContextService extends DefaultContextService
             Lock lock = (Lock)locks[i];
             lockProcessTime += lock.getLockProcessTime();
             lockCount += lock.getLockCount();
+        }
+        if(Long.MAX_VALUE - this.lockProcessTime < lockProcessTime
+            || Integer.MAX_VALUE - this.lockCount < lockCount
+        ){
+            lockProcessTime += this.lockProcessTime / 10000;
+            lockCount += this.lockCount / 10000;
+        }else{
+            lockProcessTime += this.lockProcessTime;
+            lockCount += this.lockCount;
         }
         return (double)lockProcessTime / (double)lockCount;
     }
@@ -637,7 +637,42 @@ public class SharedContextService extends DefaultContextService
                 maxLockTime = lock.getMaxLockTime();
             }
         }
+        if(maxLockTime < this.maxLockTime){
+            maxLockTime = maxLockTime;
+        }
         return maxLockTime;
+    }
+    
+    protected void addLockMetrics(
+        long lockProcessTime,
+        int lockCount,
+        long maxLockTime
+    ){
+        if(Long.MAX_VALUE - this.lockProcessTime < lockProcessTime
+            || Integer.MAX_VALUE - this.lockCount < lockCount
+        ){
+            synchronized(this){
+                if(Long.MAX_VALUE - this.lockProcessTime < lockProcessTime
+                    || Integer.MAX_VALUE - this.lockCount < lockCount
+                ){
+                    this.lockProcessTime /= 10000;
+                    if(this.lockProcessTime == 0){
+                        this.lockProcessTime = 1;
+                    }
+                    this.lockCount /= 10000;
+                    if(this.lockCount == 0){
+                        this.lockCount = 1;
+                    }
+                }
+            }
+            addLockMetrics(lockProcessTime, lockCount, maxLockTime);
+            return;
+        }
+        this.lockProcessTime += lockProcessTime;
+        this.lockCount += lockCount;
+        if(this.maxLockTime < maxLockTime){
+            this.maxLockTime = maxLockTime;
+        }
     }
     
     public String displayLocks(){
@@ -1404,7 +1439,7 @@ public class SharedContextService extends DefaultContextService
                 long currentTimeout = isNoTimeout ? timeout : timeout - (System.currentTimeMillis() - start);
                 if(!isNoTimeout && currentTimeout <= 0){
                     lock.release(id, false);
-                    throw new SharedContextTimeoutException();
+                    throw new SharedContextTimeoutException("key=" + key + ", timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - start));
                 }else{
                     Message message = null;
                     try{
@@ -1434,7 +1469,7 @@ public class SharedContextService extends DefaultContextService
                                     throw new SharedContextSendException((Throwable)ret);
                                 }else if(ret == null || !((Boolean)ret).booleanValue()){
                                     unlock(key);
-                                    throw new SharedContextTimeoutException();
+                                    throw new SharedContextTimeoutException("key=" + key + ", timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - start));
                                 }
                             }
                         }
@@ -1512,7 +1547,7 @@ public class SharedContextService extends DefaultContextService
                         if(ifAcquireable){
                             return false;
                         }else{
-                            throw new SharedContextTimeoutException("key=" + key + ", timeout=" + timeout);
+                            throw new SharedContextTimeoutException("key=" + key + ", timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - start));
                         }
                     }
                 }else{
@@ -1549,7 +1584,7 @@ public class SharedContextService extends DefaultContextService
                 if(ifAcquireable){
                     return false;
                 }else{
-                    throw new SharedContextTimeoutException();
+                    throw new SharedContextTimeoutException("key=" + key + ", timeout=" + timeout + ", processTime=" + (System.currentTimeMillis() - start));
                 }
             }
         }
@@ -3302,6 +3337,15 @@ public class SharedContextService extends DefaultContextService
             referLock.acquireForUse(-1);
             Object raw = getRawLocal(key, false);
             if(cacheMap != null){
+                
+                if(caheHitCount + caheNoHitCount < 0){
+                    synchronized(this){
+                        if(caheHitCount + caheNoHitCount < 0){
+                            caheHitCount /= 10000;
+                            caheNoHitCount /= 10000;
+                        }
+                    }
+                }
                 if(raw != null){
                     caheHitCount++;
                 }else{
@@ -5699,6 +5743,10 @@ public class SharedContextService extends DefaultContextService
                     }
                     if(callbacks.size() != 0){
                         callback = (CallbackTask)callbacks.iterator().next();
+                    }
+                    if(callback == null){
+                        keyLockMap.remove(key);
+                        addLockMetrics(lockProcessTime, lockCount, maxLockTime);
                     }
                 }
             }
