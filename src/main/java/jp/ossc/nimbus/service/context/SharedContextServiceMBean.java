@@ -236,6 +236,13 @@ public interface SharedContextServiceMBean extends DefaultContextServiceMBean{
     /**
      * Thinクライアントモードを設定する。<p>
      * デフォルトは、falseでThinではない。<br>
+     * Thinクライアントは、データを完全に保持しない。そのため、いくつかの制約がある。<br>
+     * <ul>
+     * <li>サーバモードにモードを変更することができない。</li>
+     * <li>{@link SharedContextUpdateListener#onPutSynchronize(SharedContext, Object, Object)}が呼び出されない。</li>
+     * <li>{@link #setEnabledIndexOnClient(boolean) setEnabledIndexOnClient(true)}にすることができない。</li>
+     * <li>ロック情報を持たないため、{@link #getLockOwner(Object)}、{@link #getLockWaitCount(Object)}でロックに関する情報が取得できない。</li>
+     * </ul>
      *
      * @param isThin Thinクライアントモードの場合、true
      */
