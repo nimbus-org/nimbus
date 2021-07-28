@@ -1764,7 +1764,12 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
         
         public boolean onStart(){return true;}
         public boolean onStop(){return true;}
-        public boolean onSuspend(){return true;}
+        public boolean onSuspend(){
+            heartBeatFailedCount = 0;
+            targetedMember = null;
+            targetMember = null;
+            return true;
+        }
         public boolean onResume(){return true;}
         
         public Object provide(DaemonControl ctrl) throws Throwable{
@@ -1874,6 +1879,7 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                     synchronized(lastReceiveUIDLockObj){
                         lastReceiveUID = null;
                         lastReceiveTime = -1;
+                        targetedMember = null;
                     }
                     if(isMainRequesting){
                         synchronized(mainReqMembers){
@@ -2022,6 +2028,7 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                 synchronized(lastReceiveUIDLockObj){
                     lastReceiveUID = null;
                     lastReceiveTime = -1;
+                    targetedMember = null;
                 }
             }
         }
