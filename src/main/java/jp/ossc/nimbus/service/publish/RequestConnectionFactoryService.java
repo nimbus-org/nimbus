@@ -855,6 +855,9 @@ public class RequestConnectionFactoryService extends ServiceBase
     
     private class ResponseMessageListener implements MessageListener{
         public void onMessage(Message message){
+            if(getState() >= STOPPING){
+                return;
+            }
             Object obj = null;
             try{
                 obj = message.getObject();
@@ -879,7 +882,9 @@ public class RequestConnectionFactoryService extends ServiceBase
                     e.printStackTrace();
                     return;
                 }
-                serverConnection.reply(message, response);
+                if(serverConnection != null){
+                    serverConnection.reply(message, response);
+                }
             }
         }
     }
@@ -890,6 +895,9 @@ public class RequestConnectionFactoryService extends ServiceBase
             requestMessageListener = listener;
         }
         public void onMessage(Message message){
+            if(getState() >= STOPPING){
+                return;
+            }
             final long receiveStartTime = System.currentTimeMillis();
             long receiveEndTime = -1l;
             long receiveSendStartTime = -1l;
@@ -952,14 +960,16 @@ public class RequestConnectionFactoryService extends ServiceBase
                     int count = 0;
                     try{
                         do{
-                            Set receivers = serverConnection.getReceiveClientIds(responseMessage);
+                            Set receivers = serverConnection == null ? null : serverConnection.getReceiveClientIds(responseMessage);
                             if(receivers != null && receivers.contains(request.getSourceId())){
                                 count++;
                                 try{
-                                    if(isAsynchResponse){
-                                        serverConnection.sendAsynch(responseMessage);
-                                    }else{
-                                        serverConnection.send(responseMessage);
+                                    if(serverConnection != null){
+                                        if(isAsynchResponse){
+                                            serverConnection.sendAsynch(responseMessage);
+                                        }else{
+                                            serverConnection.send(responseMessage);
+                                        }
                                     }
                                     break;
                                 }catch(MessageSendException e){
@@ -1003,7 +1013,9 @@ public class RequestConnectionFactoryService extends ServiceBase
                         e.printStackTrace();
                         return;
                     }
-                    serverConnection.reply(message, response);
+                    if(serverConnection != null){
+                        serverConnection.reply(message, response);
+                    }
                 }else{
                     try{
                         requestMessageListener.onMessage(message);
