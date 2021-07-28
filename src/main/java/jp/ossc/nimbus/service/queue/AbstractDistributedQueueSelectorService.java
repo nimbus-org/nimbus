@@ -32,6 +32,7 @@
 package jp.ossc.nimbus.service.queue;
 
 import java.util.*;
+import java.lang.ref.*;
 
 import jp.ossc.nimbus.core.*;
 
@@ -51,7 +52,7 @@ public abstract class AbstractDistributedQueueSelectorService
     protected Queue[] queues;
 
     protected Map keyMap;
-    protected Set[] keySets;
+    protected KeyCounter[] keyCounters;
 
     protected ServiceName queueFactoryServiceName;
     protected int distributedSize = 2;
@@ -79,7 +80,7 @@ public abstract class AbstractDistributedQueueSelectorService
 
     public void preCreateService() throws Exception{
         super.preCreateService();
-        keyMap = new HashMap();
+        keyMap = new WeakHashMap();
     }
 
     public void preStartService() throws Exception{
@@ -104,9 +105,9 @@ public abstract class AbstractDistributedQueueSelectorService
         }else{
             throw new IllegalArgumentException("Queues must be specified.");
         }
-        keySets = new Set[queues.length];
+        keyCounters = new KeyCounter[queues.length];
         for(int i = 0; i < queues.length; i++){
-            keySets[i] = new HashSet();
+            keyCounters[i] = new KeyCounter();
         }
     }
 
@@ -125,7 +126,7 @@ public abstract class AbstractDistributedQueueSelectorService
 
     public void postDestroyService() throws Exception{
         keyMap = null;
-        keySets = null;
+        keyCounters = null;
         super.postDestroyService();
     }
 
@@ -136,7 +137,6 @@ public abstract class AbstractDistributedQueueSelectorService
             queue = (Queue)keyMap.get(key);
             if(queue == null){
                 double minOrder = 0;
-                Set keySet = null;
                 int index = 0;
                 for(int i = 0; i < queues.length; i++){
                     final double order = getQueueOrder(i, key, obj);
@@ -144,7 +144,6 @@ public abstract class AbstractDistributedQueueSelectorService
                         index = i;
                         minOrder = order;
                         queue = queues[i];
-                        keySet = keySets[i];
                     }
                 }
                 onNewKey(index, key, obj);
@@ -155,27 +154,59 @@ public abstract class AbstractDistributedQueueSelectorService
     }
 
     protected void onNewKey(int i, Object key, Object obj){
-        keySets[i].add(key);
+        keyCounters[i].add(key);
     }
 
     protected double getQueueOrder(int i, Object key, Object obj){
-        return ((double)keySets[i].size() + 1) * ((double)queues[i].getCount());
+        return ((double)keyCounters[i].count() + 1) * ((double)queues[i].getCount());
     }
 
     public Queue[] getQueues(){
         return queues;
     }
-
+    
+    public int getKeyCount(){
+        if(keyCounters == null){
+            return 0;
+        }
+        int count = 0;
+        for(int i = 0; i < keyCounters.length; i++){
+            count += keyCounters[i].count();
+        }
+        return count;
+    }
+    
     public void clear(){
         if(keyMap != null){
             synchronized(keyMap){
                 keyMap.clear();
-                for(int i = 0; i < keySets.length; i++){
-                    keySets[i].clear();
+                for(int i = 0; i < keyCounters.length; i++){
+                    keyCounters[i].clear();
                 }
             }
         }
     }
-
+    
     protected abstract Object getKey(Object obj);
+    
+    protected class KeyCounter{
+        Set keySet = new HashSet();
+        ReferenceQueue referenceQueue = new ReferenceQueue();
+        
+        public void add(Object key){
+            keySet.add(new WeakReference(key, referenceQueue));
+        }
+        
+        public int count(){
+            Reference ref = null;
+            while((ref = referenceQueue.poll()) != null){
+                keySet.remove(ref);
+            }
+            return keySet.size();
+        }
+        
+        public void clear(){
+            keySet.clear();
+        }
+    }
 }

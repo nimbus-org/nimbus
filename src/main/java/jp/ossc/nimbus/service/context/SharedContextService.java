@@ -4027,7 +4027,7 @@ public class SharedContextService extends DefaultContextService
     }
     
     public void removed(CachedReference ref){
-        if(ref == null){
+        if(ref == null || getState() >= STOPPED){
             return;
         }
         KeyCachedReference kcr = (KeyCachedReference)ref;

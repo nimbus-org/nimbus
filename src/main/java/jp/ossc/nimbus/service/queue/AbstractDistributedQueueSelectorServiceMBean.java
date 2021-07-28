@@ -50,4 +50,6 @@ public interface AbstractDistributedQueueSelectorServiceMBean
     
     public void setDistributedSize(int size);
     public int getDistributedSize();
+    
+    public int getKeyCount();
 }

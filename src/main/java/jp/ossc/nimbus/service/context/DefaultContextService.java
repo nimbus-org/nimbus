@@ -230,7 +230,7 @@ public class DefaultContextService extends ServiceBase
     
     // ContextのJavaDoc
     public Object get(Object key) {
-        Object val = context.get(key);
+        Object val = context == null ? null : context.get(key);
         if(val == null){
             return null;
         }else if(val instanceof ServiceName){
