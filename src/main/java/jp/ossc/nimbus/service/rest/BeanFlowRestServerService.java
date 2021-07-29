@@ -1976,6 +1976,9 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             ResourceTreeElement currentElement = null;
             for(int i = 0, imax = paths.size(); i < imax; i++){
                 Map currentMap = currentElement == null ? treeMap : currentElement.children;
+                if(currentMap == null){
+                    return null;
+                }
                 ResourceTreeElement element = (ResourceTreeElement)currentMap.get(paths.get(i));
                 if(element == null && currentElement != null && currentElement.parameterChild != null){
                     element = currentElement.parameterChild;
