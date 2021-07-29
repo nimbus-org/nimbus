@@ -91,6 +91,7 @@ import jp.ossc.nimbus.beans.PropertyAccess;
 import jp.ossc.nimbus.beans.SimpleProperty;
 import jp.ossc.nimbus.beans.ServiceNameEditor;
 import jp.ossc.nimbus.beans.dataset.DataSet;
+import jp.ossc.nimbus.beans.dataset.Header;
 import jp.ossc.nimbus.core.DeploymentException;
 import jp.ossc.nimbus.core.MetaData;
 import jp.ossc.nimbus.core.NimbusClassLoader;
@@ -771,6 +772,12 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
         }
         if(pathParameters != null && pathParameters.size() != 0){
+            if(requestObj instanceof DataSet){
+                Header header = ((DataSet)requestObj).getHeader();
+                if(header == null){
+                    requestObj = header;
+                }
+            }
             Iterator entries = pathParameters.entrySet().iterator();
             while(entries.hasNext()){
                 Map.Entry entry = (Map.Entry)entries.next();
