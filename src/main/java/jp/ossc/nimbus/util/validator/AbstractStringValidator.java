@@ -72,6 +72,16 @@ public abstract class AbstractStringValidator
     protected char[] whiteSpaceCharacters;
     
     /**
+     * 最小長。<p>
+     */
+    protected int minLength;
+    
+    /**
+     * 最大長。<p>
+     */
+    protected int maxLength;
+    
+    /**
      * nullを許容するかどうかを設定する。<p>
      * デフォルトは、true。<br>
      * 
@@ -169,6 +179,42 @@ public abstract class AbstractStringValidator
     }
     
     /**
+     * 最小長を設定する。<p>
+     *
+     * @param length 最小長
+     */
+    public void setMinLength(int length){
+        minLength = length;
+    }
+    
+    /**
+     * 最小長を取得する。<p>
+     *
+     * @return 最小長
+     */
+    public int getMinLength(){
+        return minLength;
+    }
+    
+    /**
+     * 最大長を設定する。<p>
+     *
+     * @param length 最大長
+     */
+    public void setMaxLength(int length){
+        maxLength = length;
+    }
+    
+    /**
+     * 最大長を取得する。<p>
+     *
+     * @return 最大長
+     */
+    public int getMaxLength(){
+        return maxLength;
+    }
+    
+    /**
      * 指定されたオブジェクトを検証する。<p>
      * nullチェック、Stringかどうかのチェック、空文字チェックを通過して、{@link #validateString(String)}を呼び出す。<br>
      *
@@ -193,8 +239,15 @@ public abstract class AbstractStringValidator
         if(isTrim){
             str = trim(str);
         }
-        if(str.length() == 0 && isAllowEmpty){
+        final int length = str.length();
+        if(length == 0 && isAllowEmpty){
             return true;
+        }
+        if(length < minLength){
+            return false;
+        }
+        if(maxLength > 0 && length > maxLength){
+            return false;
         }
         return validateString(str);
     }
