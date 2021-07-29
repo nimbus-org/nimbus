@@ -32,6 +32,9 @@
 package jp.ossc.nimbus.util.validator;
 
 import java.math.*;
+import java.lang.reflect.Array;
+import java.util.Collection;
+import java.util.Iterator;
 
 /**
  * 数値バリデータ。<p>
@@ -41,6 +44,12 @@ import java.math.*;
 public class NumberValidator implements Validator, java.io.Serializable{
     
     private static final long serialVersionUID = -1507930380189770984L;
+    
+    /**
+     * 配列を許容するかどうかのフラグ。<p>
+     * trueの場合、許容する。デフォルトは、false。<br>
+     */
+    protected boolean isAllowArray;
     
     /**
      * nullを許容するかどうかのフラグ。<p>
@@ -105,6 +114,25 @@ public class NumberValidator implements Validator, java.io.Serializable{
      * 検証値の小数部の桁数を検証する閾値。<p>
      */
     protected int fractionDigits = -1;
+    
+    /**
+     * 配列を許容するかどうかを設定する。<p>
+     * デフォルトは、false。<br>
+     * 
+     * @param isAllow trueの場合、許容する
+     */
+    public void setAllowArray(boolean isAllow){
+        isAllowArray = isAllow;
+    }
+    
+    /**
+     * nullを許容するかどうかを判定する。<p>
+     * 
+     * @return 許容する場合、true
+     */
+    public boolean isAllowArray(){
+        return isAllowArray;
+    }
     
     /**
      * nullを許容するかどうかを設定する。<p>
@@ -342,6 +370,23 @@ public class NumberValidator implements Validator, java.io.Serializable{
         if(!(obj instanceof Number)){
             if(obj instanceof String && isAllowNumberString){
                 return validateString((String)obj);
+            }else if(isAllowArray){
+                if(obj.getClass().isArray()){
+                    for(int i = 0, imax = Array.getLength(obj); i < imax; i++){
+                        if(!validate(Array.get(obj, i))){
+                            return false;
+                        }
+                    }
+                    return true;
+                }else if(obj instanceof Collection){
+                    Iterator itr = ((Collection)obj).iterator();
+                    while(itr.hasNext()){
+                        if(!validate(itr.next())){
+                            return false;
+                        }
+                    }
+                    return true;
+                }
             }
             return false;
         }
