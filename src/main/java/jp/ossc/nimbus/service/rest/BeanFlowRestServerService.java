@@ -1322,12 +1322,13 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         RestRequest request,
         RestResponse response,
         List paths,
-        ResourceMetaData resource
+        ResourceMetaData resource,
+        String methodPostfix
     ) throws Exception{
         if(journal != null){
             journal.addInfo(JOURNAL_KEY_REQUEST_OBJECT, request.getRequestObject());
         }
-        final String flowName = validateFlowPrefix + resource.resourcePath.path;
+        final String flowName = validateFlowPrefix + resource.resourcePath.path + methodPostfix;
         if(!beanFlowInvokerFactory.containsFlow(flowName)){
             return true;
         }
@@ -1541,7 +1542,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             if(!processReadRequestBody(request, response, paths, resource)){
                 return;
             }
-            if(processValidateRequestObject(request, response, paths, resource)){
+            if(processValidateRequestObject(request, response, paths, resource, postMethodFlowPostfix)){
                 if(!processExecute(request, response, paths, resource, postMethodFlowPostfix)){
                     return;
                 }
@@ -1604,7 +1605,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             if(!processReadQuery(request, response, paths, resource)){
                 return;
             }
-            if(processValidateRequestObject(request, response, paths, resource)){
+            if(processValidateRequestObject(request, response, paths, resource, getMethodFlowPostfix)){
                 if(!processExecute(request, response, paths, resource, getMethodFlowPostfix)){
                     return;
                 }
@@ -1664,7 +1665,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             if(!processReadQuery(request, response, paths, resource)){
                 return;
             }
-            if(processValidateRequestObject(request, response, paths, resource)){
+            if(processValidateRequestObject(request, response, paths, resource, headMethodFlowPostfix)){
                 if(!processExecute(request, response, paths, resource, headMethodFlowPostfix)){
                     return;
                 }
@@ -1729,7 +1730,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             if(!processReadRequestBody(request, response, paths, resource)){
                 return;
             }
-            if(processValidateRequestObject(request, response, paths, resource)){
+            if(processValidateRequestObject(request, response, paths, resource, putMethodFlowPostfix)){
                 if(!processExecute(request, response, paths, resource, putMethodFlowPostfix)){
                     return;
                 }
@@ -1792,7 +1793,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             if(!processReadQuery(request, response, paths, resource)){
                 return;
             }
-            if(processValidateRequestObject(request, response, paths, resource)){
+            if(processValidateRequestObject(request, response, paths, resource, deleteMethodFlowPostfix)){
                 if(!processExecute(request, response, paths, resource, deleteMethodFlowPostfix)){
                     return;
                 }
