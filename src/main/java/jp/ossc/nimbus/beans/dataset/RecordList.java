@@ -1402,6 +1402,55 @@ public class RecordList implements Externalizable, List, Cloneable, PartUpdate, 
     }
     
     /**
+     * 検証した結果を成功したかどうかを判定する。<p>
+     *
+     * @return 検証を成功した場合は、true
+     */
+    public boolean isValid(){
+        final Iterator itr = records.iterator();
+        while(itr.hasNext()){
+            Record record = (Record)itr.next();
+            if(!record.isValid()){
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    /**
+     * 検証を失敗したプロパティの名前集合を取得します。<p>
+     *
+     * @return 検証を失敗したプロパティの名前集合
+     */
+    public Set getInvalidPropertyNames(){
+        final Set result = new LinkedHashSet();
+        final Iterator itr = records.iterator();
+        int index = 0;
+        while(itr.hasNext()){
+            Record record = (Record)itr.next();
+            if(!record.isValid()){
+                Iterator propNames = record.getInvalidPropertyNames().iterator();
+                while(propNames.hasNext()){
+                    result.add('[' + index + "]." + propNames.next());
+                }
+            }
+            index++;
+        }
+        return result;
+    }
+    
+    /**
+     * 検証結果をクリアする。<p>
+     */
+    public void clearValidate(){
+        final Iterator itr = records.iterator();
+        while(itr.hasNext()){
+            Record record = (Record)itr.next();
+            record.clearValidate();
+        }
+    }
+    
+    /**
      * レコードリストを複製する。<p>
      *
      * @return 複製したレコードリスト

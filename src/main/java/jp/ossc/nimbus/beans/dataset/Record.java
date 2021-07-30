@@ -99,6 +99,8 @@ public class Record implements Externalizable, Cloneable, Map{
     
     protected DataSet dataSet;
     
+    protected transient Set invalidProperties;
+    
     /**
      * 未定義のレコードを生成する。<p>
      */
@@ -1192,9 +1194,16 @@ public class Record implements Externalizable, Cloneable, Map{
         if(getRecordSchema() == null){
             throw new PropertyGetException(null, "Schema is not initialized.");
         }
+        if(invalidProperties != null){
+            invalidProperties.clear();
+        }
         final PropertySchema[] schemata = getRecordSchema().getPropertySchemata();
         for(int i = 0; i < schemata.length; i++){
             if(!schemata[i].validate(getProperty(i))){
+                if(invalidProperties == null){
+                    invalidProperties = new LinkedHashSet();
+                }
+                invalidProperties.add(schemata[i]);
                 return false;
             }
         }
@@ -1237,7 +1246,100 @@ public class Record implements Externalizable, Cloneable, Map{
         if(propertySchema == null){
             throw new PropertyGetException(null, "No such property : " + index);
         }
-        return propertySchema.validate(getProperty(index));
+        if(invalidProperties != null){
+            invalidProperties.remove(propertySchema);
+        }
+        final boolean valid = propertySchema.validate(getProperty(index));
+        if(!valid){
+            if(invalidProperties == null){
+                invalidProperties = new LinkedHashSet();
+            }
+            invalidProperties.add(propertySchema);
+        }
+        return valid;
+    }
+    
+    /**
+     * 検証した結果を成功したかどうかを判定する。<p>
+     *
+     * @return 検証を成功した場合は、true
+     */
+    public boolean isValid(){
+        return invalidProperties == null || invalidProperties.size() == 0;
+    }
+    
+    /**
+     * 検証を失敗したプロパティスキーマの配列を取得します。<p>
+     *
+     * @return 検証を失敗したプロパティスキーマの配列
+     */
+    public PropertySchema[] getInvalidPropertySchemata(){
+        if(invalidProperties == null){
+            return new PropertySchema[0];
+        }
+        return (PropertySchema[])invalidProperties.toArray(new PropertySchema[invalidProperties.size()]);
+    }
+    
+    /**
+     * 検証を失敗したプロパティの名前集合を取得します。<p>
+     *
+     * @return 検証を失敗したプロパティの名前集合
+     */
+    public Set getInvalidPropertyNames(){
+        final Set result = new LinkedHashSet();
+        if(invalidProperties == null){
+            return result;
+        }
+        Iterator itr = invalidProperties.iterator();
+        while(itr.hasNext()){
+            PropertySchema propertySchema = (PropertySchema)itr.next();
+            Object prop = getProperty(propertySchema.getName());
+            if(prop instanceof Record){
+                Record rec = (Record)prop;
+                if(rec != null){
+                    Iterator propNames = rec.getInvalidPropertyNames().iterator();
+                    while(propNames.hasNext()){
+                        result.add(propertySchema.getName() + '.' + propNames.next());
+                    }
+                }else{
+                    result.add(propertySchema.getName());
+                }
+            }else if(prop instanceof RecordList){
+                RecordList recList = (RecordList)prop;
+                if(recList != null){
+                    Iterator propNames = recList.getInvalidPropertyNames().iterator();
+                    while(propNames.hasNext()){
+                        result.add(propertySchema.getName() + '.' + propNames.next());
+                    }
+                }else{
+                    result.add(propertySchema.getName());
+                }
+            }else{
+                result.add(propertySchema.getName());
+            }
+        }
+        return result;
+    }
+    
+    /**
+     * 検証結果をクリアする。<p>
+     */
+    public void clearValidate(){
+        if(invalidProperties != null){
+            Iterator itr = invalidProperties.iterator();
+            while(itr.hasNext()){
+                PropertySchema propertySchema = (PropertySchema)itr.next();
+                Object prop = getProperty(propertySchema.getName());
+                if(prop instanceof Record){
+                    Record rec = (Record)prop;
+                    rec.clearValidate();
+                }else if(prop instanceof RecordList){
+                    RecordList recList = (RecordList)prop;
+                    recList.clearValidate();
+                }
+            }
+            invalidProperties.clear();
+        }
     }
     
     /**
@@ -1249,6 +1351,7 @@ public class Record implements Externalizable, Cloneable, Map{
                 values[i] = null;
             }
         }
+        clearValidate();
     }
     
     /**

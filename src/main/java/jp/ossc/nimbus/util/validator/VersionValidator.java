@@ -36,7 +36,7 @@ package jp.ossc.nimbus.util.validator;
  * 
  * @author M.Takata
  */
-public class VersionValidator implements Validator, java.io.Serializable{
+public class VersionValidator extends AbstractStringValidator implements java.io.Serializable{
     
     private static final long serialVersionUID = -4492562526492747541L;
     
@@ -131,20 +131,24 @@ public class VersionValidator implements Validator, java.io.Serializable{
         return compareType;
     }
     
+    protected boolean validateNull(){
+        return !isAllowNull ? false : (targetVersion == null || targetVersion.length() == 0 ? true : false);
+    }
+    
     /**
      * 指定されたバージョン番号が適切かどうかを検証する。<p>
      *
-     * @param obj バージョン番号
+     * @param str バージョン番号
      * @return 検証結果。検証成功の場合true
      * @exception ValidateException 検証に失敗した場合
      */
-    public boolean validate(Object obj) throws ValidateException{
-        if(obj == null || obj.toString().length() == 0){
+    protected boolean validateString(String str) throws ValidateException{
+        if(str.length() == 0){
             return targetVersion == null || targetVersion.length() == 0 ? true : false;
         }else if(targetVersion == null){
             return false;
         }
-        final String version = obj.toString();
+        final String version = str;
         final String[] versions = version.split("\\.");
         boolean result = true;
         boolean isBreak = false;

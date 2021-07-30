@@ -31,6 +31,10 @@
  */
 package jp.ossc.nimbus.util.validator;
 
+import java.lang.reflect.Array;
+import java.util.Collection;
+import java.util.Iterator;
+
 /**
  * 文字列バリデータ抽象クラス。<p>
  * 
@@ -40,6 +44,12 @@ public abstract class AbstractStringValidator
  implements Validator, java.io.Serializable{
     
     private static final long serialVersionUID = -468946068283281754L;
+    
+    /**
+     * 配列を許容するかどうかのフラグ。<p>
+     * trueの場合、許容する。デフォルトは、false。<br>
+     */
+    protected boolean isAllowArray;
     
     /**
      * nullを許容するかどうかのフラグ。<p>
@@ -80,6 +90,25 @@ public abstract class AbstractStringValidator
      * 最大長。<p>
      */
     protected int maxLength;
+    
+    /**
+     * 配列を許容するかどうかを設定する。<p>
+     * デフォルトは、false。<br>
+     * 
+     * @param isAllow trueの場合、許容する
+     */
+    public void setAllowArray(boolean isAllow){
+        isAllowArray = isAllow;
+    }
+    
+    /**
+     * nullを許容するかどうかを判定する。<p>
+     * 
+     * @return 許容する場合、true
+     */
+    public boolean isAllowArray(){
+        return isAllowArray;
+    }
     
     /**
      * nullを許容するかどうかを設定する。<p>
@@ -214,6 +243,10 @@ public abstract class AbstractStringValidator
         return maxLength;
     }
     
+    protected boolean validateNull(){
+        return isAllowNull;
+    }
+    
     /**
      * 指定されたオブジェクトを検証する。<p>
      * nullチェック、Stringかどうかのチェック、空文字チェックを通過して、{@link #validateString(String)}を呼び出す。<br>
@@ -225,12 +258,30 @@ public abstract class AbstractStringValidator
      */
     public boolean validate(Object obj) throws ValidateException{
         if(obj == null){
-            return isAllowNull;
+            return validateNull();
         }
         String str = null;
         if(obj instanceof String){
             str = (String)obj;
         }else{
+            if(isAllowArray){
+                if(obj.getClass().isArray()){
+                    for(int i = 0, imax = Array.getLength(obj); i < imax; i++){
+                        if(!validate(Array.get(obj, i))){
+                            return false;
+                        }
+                    }
+                    return true;
+                }else if(obj instanceof Collection){
+                    Iterator itr = ((Collection)obj).iterator();
+                    while(itr.hasNext()){
+                        if(!validate(itr.next())){
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+            }
             if(!isAllowObject){
                 return false;
             }
