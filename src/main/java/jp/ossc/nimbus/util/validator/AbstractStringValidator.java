@@ -92,6 +92,16 @@ public abstract class AbstractStringValidator
     protected int maxLength;
     
     /**
+     * 最小配列長。<p>
+     */
+    protected int minArrayLength;
+    
+    /**
+     * 最大配列長。<p>
+     */
+    protected int maxArrayLength;
+    
+    /**
      * 配列を許容するかどうかを設定する。<p>
      * デフォルトは、false。<br>
      * 
@@ -243,6 +253,42 @@ public abstract class AbstractStringValidator
         return maxLength;
     }
     
+    /**
+     * 最小配列長を設定する。<p>
+     *
+     * @param length 最小配列長
+     */
+    public void setMinArrayLength(int length){
+        minArrayLength = length;
+    }
+    
+    /**
+     * 最小配列長を取得する。<p>
+     *
+     * @return 最小配列長
+     */
+    public int getMinArrayLength(){
+        return minArrayLength;
+    }
+    
+    /**
+     * 最大配列長を設定する。<p>
+     *
+     * @param length 最大配列長
+     */
+    public void setMaxArrayLength(int length){
+        maxArrayLength = length;
+    }
+    
+    /**
+     * 最大配列長を取得する。<p>
+     *
+     * @return 最大配列長
+     */
+    public int getMaxArrayLength(){
+        return maxArrayLength;
+    }
+    
     protected boolean validateNull(){
         return isAllowNull;
     }
@@ -266,13 +312,27 @@ public abstract class AbstractStringValidator
         }else{
             if(isAllowArray){
                 if(obj.getClass().isArray()){
-                    for(int i = 0, imax = Array.getLength(obj); i < imax; i++){
+                    final int arrayLength = Array.getLength(obj);
+                    if(arrayLength < minArrayLength){
+                        return false;
+                    }
+                    if(maxArrayLength > 0 && arrayLength > maxArrayLength){
+                        return false;
+                    }
+                    for(int i = 0, imax = arrayLength; i < imax; i++){
                         if(!validate(Array.get(obj, i))){
                             return false;
                         }
                     }
                     return true;
                 }else if(obj instanceof Collection){
+                    final int arrayLength = ((Collection)obj).size();
+                    if(arrayLength < minArrayLength){
+                        return false;
+                    }
+                    if(maxArrayLength > 0 && arrayLength > maxArrayLength){
+                        return false;
+                    }
                     Iterator itr = ((Collection)obj).iterator();
                     while(itr.hasNext()){
                         if(!validate(itr.next())){
