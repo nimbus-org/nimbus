@@ -774,7 +774,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         if(pathParameters != null && pathParameters.size() != 0){
             if(requestObj instanceof DataSet){
                 Header header = ((DataSet)requestObj).getHeader();
-                if(header == null){
+                if(header != null){
                     requestObj = header;
                 }
             }
