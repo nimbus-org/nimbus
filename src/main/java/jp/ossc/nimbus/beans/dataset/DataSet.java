@@ -1225,6 +1225,15 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
+     * 名前を持たない{@link Header ヘッダー}を検証した結果が成功したかどうかを判定する。<p>
+     *
+     * @return 検証を成功した場合は、true
+     */
+    public boolean isValidHeader(){
+        return isValidHeader(null);
+    }
+    
+    /**
      * 指定された{@link Header ヘッダー}を検証する。<p>
      *
      * @param name ヘッダー名
@@ -1237,6 +1246,19 @@ public class DataSet implements java.io.Serializable, Cloneable{
             return true;
         }
         return ((Header)headerMap.get(name)).validate();
+    }
+    
+    /**
+     * 指定された{@link Header ヘッダー}を検証した結果が成功したかどうかを判定する。<p>
+     *
+     * @param name ヘッダー名
+     * @return 検証を成功した場合は、true
+     */
+    public boolean isValidHeader(String name){
+        if(headerMap == null || headerMap.size() == 0 || !headerMap.containsKey(name)){
+            return true;
+        }
+        return ((Header)headerMap.get(name)).isValid();
     }
     
     /**
@@ -1261,6 +1283,71 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
+     * 全ての{@link Header ヘッダー}を検証した結果が成功したかどうかを判定する。<p>
+     *
+     * @return 検証を成功した場合は、true
+     */
+    public boolean isValidHeaders(){
+        if(headerMap == null || headerMap.size() == 0){
+            return true;
+        }
+        Iterator headers = headerMap.values().iterator();
+        while(headers.hasNext()){
+            Header header = (Header)headers.next();
+            if(!header.isValid()){
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    /**
+     * 検証を失敗した{@link Header ヘッダー}のプロパティの名前集合を取得します。<p>
+     *
+     * @return 検証を失敗したプロパティの名前集合
+     */
+    public Set getInvalidPropertyNamesOfHeaders(){
+        final Set result = new LinkedHashSet();
+        if(headerMap == null || headerMap.size() == 0){
+            return result;
+        }
+        Iterator headers = headerMap.values().iterator();
+        while(headers.hasNext()){
+            Header header = (Header)headers.next();
+            if(!header.isValid()){
+                Iterator propNames = header.getInvalidPropertyNames().iterator();
+                String prefix = null;
+                if(header.getName() != null
+                    || (headerMap.size() != 1)
+                    || (recordListMap != null && recordListMap.size() != 0)
+                ){
+                    prefix = header.getName() == null ? "Header." : ("Header(" + header.getName() +  ").");
+                }else{
+                    prefix = "";
+                }
+                while(propNames.hasNext()){
+                    result.add(prefix + propNames.next());
+                }
+            }
+        }
+        return result;
+    }
+    
+    /**
+     * {@link Header ヘッダー}の検証結果をクリアする。<p>
+     */
+    public void clearValidateHeaders(){
+        if(headerMap == null || headerMap.size() == 0){
+            return;
+        }
+        Iterator headers = headerMap.values().iterator();
+        while(headers.hasNext()){
+            Header header = (Header)headers.next();
+            header.clearValidate();
+        }
+    }
+    
+    /**
      * 名前を持たない{@link RecordList レコードリスト}を検証する。<p>
      *
      * @return 検証結果。trueの場合、検証成功
@@ -1272,9 +1359,18 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
+     * 名前を持たない{@link RecordList レコードリスト}を検証した結果が成功したかどうかを判定する。<p>
+     *
+     * @return 検証を成功した場合は、true
+     */
+    public boolean isValidRecordList(){
+        return isValidRecordList(null);
+    }
+    
+    /**
      * 指定された{@link RecordList レコードリスト}を検証する。<p>
      *
-     * @param name ヘッダー名
+     * @param name レコードリスト名
      * @return 検証結果。trueの場合、検証成功
      * @exception PropertyGetException プロパティの取得に失敗した場合
      * @exception PropertyValidateException プロパティの検証時に例外が発生した場合
@@ -1284,6 +1380,19 @@ public class DataSet implements java.io.Serializable, Cloneable{
             return true;
         }
         return ((RecordList)recordListMap.get(name)).validate();
+    }
+    
+    /**
+     * 指定された{@link RecordList レコードリスト}を検証した結果が成功したかどうかを判定する。<p>
+     *
+     * @param name レコードリスト名
+     * @return 検証を成功した場合は、true
+     */
+    public boolean isValidRecordList(String name){
+        if(recordListMap == null || recordListMap.size() == 0 || !recordListMap.containsKey(name)){
+            return true;
+        }
+        return ((RecordList)recordListMap.get(name)).isValid();
     }
     
     /**
@@ -1308,6 +1417,71 @@ public class DataSet implements java.io.Serializable, Cloneable{
     }
     
     /**
+     * 全ての{@link RecordList レコードリスト}を検証した結果が成功したかどうかを判定する。<p>
+     *
+     * @return 検証を成功した場合は、true
+     */
+    public boolean isValidRecordLists(){
+        if(recordListMap == null || recordListMap.size() == 0){
+            return true;
+        }
+        Iterator recordLists = recordListMap.values().iterator();
+        while(recordLists.hasNext()){
+            RecordList recordList = (RecordList)recordLists.next();
+            if(!recordList.isValid()){
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    /**
+     * 検証を失敗した{@link RecordList レコードリスト}のプロパティの名前集合を取得します。<p>
+     *
+     * @return 検証を失敗したプロパティの名前集合
+     */
+    public Set getInvalidPropertyNamesOfRecordLists(){
+        final Set result = new LinkedHashSet();
+        if(recordListMap == null || recordListMap.size() == 0){
+            return result;
+        }
+        Iterator recordLists = recordListMap.values().iterator();
+        while(recordLists.hasNext()){
+            RecordList recordList = (RecordList)recordLists.next();
+            if(!recordList.isValid()){
+                Iterator propNames = recordList.getInvalidPropertyNames().iterator();
+                String prefix = null;
+                if(recordList.getName() != null
+                    || (recordListMap.size() != 1)
+                    || (headerMap != null && headerMap.size() != 0)
+                ){
+                    prefix = recordList.getName() == null ? "RecordList." : ("RecordList(" + recordList.getName() +  ").");
+                }else{
+                    prefix = "";
+                }
+                while(propNames.hasNext()){
+                    result.add(prefix + propNames.next());
+                }
+            }
+        }
+        return result;
+    }
+    
+    /**
+     * {@link RecordList レコードリスト}の検証結果をクリアする。<p>
+     */
+    public void clearValidateRecordLists(){
+        if(recordListMap == null || recordListMap.size() == 0){
+            return;
+        }
+        Iterator recordLists = recordListMap.values().iterator();
+        while(recordLists.hasNext()){
+            RecordList recordList = (RecordList)recordLists.next();
+            recordList.clearValidate();
+        }
+    }
+    
+    /**
      * 全ての{@link Header ヘッダー}及び{@link RecordList レコードリスト}を検証する。<p>
      *
      * @return 検証結果。trueの場合、検証成功
@@ -1322,6 +1496,45 @@ public class DataSet implements java.io.Serializable, Cloneable{
             return false;
         }
         return true;
+    }
+    
+    /**
+     * 全ての{@link Header ヘッダー}及び{@link RecordList レコードリスト}を検証した結果が成功したかどうかを判定する。<p>
+     *
+     * @return 検証を成功した場合は、true
+     */
+    public boolean isValid(){
+        if(!isValidHeaders()){
+            return false;
+        }
+        if(!isValidRecordLists()){
+            return false;
+        }
+        return true;
+    }
+    
+    /**
+     * 検証を失敗したプロパティの名前集合を取得します。<p>
+     *
+     * @return 検証を失敗したプロパティの名前集合
+     */
+    public Set getInvalidPropertyNames(){
+        final Set result = new LinkedHashSet();
+        if(!isValidHeaders()){
+            result.addAll(getInvalidPropertyNamesOfHeaders());
+        }
+        if(!isValidRecordLists()){
+            result.addAll(getInvalidPropertyNamesOfRecordLists());
+        }
+        return result;
+    }
+    
+    /**
+     * 検証結果をクリアする。<p>
+     */
+    public void clearValidate(){
+        clearValidateHeaders();
+        clearValidateRecordLists();
     }
     
     /**
