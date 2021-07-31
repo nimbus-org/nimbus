@@ -1247,6 +1247,8 @@ public class BeanJSONConverter extends BufferedStreamConverter implements Bindin
                     if(propType.isArray()
                         || Collection.class.isAssignableFrom(propType)){
                         appendArray(buf, val, instanceSet, indent + 1);
+                    }else if(Map.class.isAssignableFrom(propType)){
+                        appendValue(buf, propType, val, instanceSet, indent + 1);
                     }else{
                         Object formatProp = record.getFormatProperty(i);
                         if(Number.class.isAssignableFrom(propType)
