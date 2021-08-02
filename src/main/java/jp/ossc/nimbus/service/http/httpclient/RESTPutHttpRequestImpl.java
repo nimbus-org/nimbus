@@ -47,10 +47,10 @@ import jp.ossc.nimbus.service.http.RESTHttpRequest;
 public class RESTPutHttpRequestImpl extends PostHttpRequestImpl implements RESTHttpRequest{
     
     /**
-     * {@link PostMethod}を生成する。<p>
+     * {@link PutMethod}を生成する。<p>
      *
-     * @return PostMethod
-     * @exception Exception PostMethodの生成に失敗した場合
+     * @return PutMethod
+     * @exception Exception PutMethodの生成に失敗した場合
      */
     protected HttpMethodBase instanciateHttpMethod() throws Exception{
         return new PutMethod();
@@ -93,7 +93,7 @@ public class RESTPutHttpRequestImpl extends PostHttpRequestImpl implements RESTH
         url = buf.toString();
     }
     
-    private class PutMethod extends PostMethod{
+    protected class PutMethod extends PostMethod{
         public String getName() {
             return "PUT";
         }

@@ -86,6 +86,13 @@ public class OptionsRestResponse extends BodyRestResponse{
     }
     
     /**
+     * PATCHメソッドを許容する旨のHTTPヘッダを設定する。<p>
+     */
+    public void allowPatch(){
+        response.addHeader("Allow", "PATCH");
+    }
+    
+    /**
      * DELETEメソッドを許容する旨のHTTPヘッダを設定する。<p>
      */
     public void allowDelete(){

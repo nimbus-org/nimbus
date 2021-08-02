@@ -76,6 +76,15 @@ public interface RestServer{
     public void processPut(PutRestRequest request, PutRestResponse response) throws Throwable;
     
     /**
+     * PATCHメソッドのRESTリクエストの処理を行う。<p>
+     *
+     * @param request RESTリクエスト
+     * @param response RESTレスポンス
+     * @exception Throwable 処理中に例外が発生した場合
+     */
+    public void processPatch(PatchRestRequest request, PatchRestResponse response) throws Throwable;
+    
+    /**
      * DELETEメソッドのRESTリクエストの処理を行う。<p>
      *
      * @param request RESTリクエスト

@@ -102,6 +102,14 @@ public class RestServlet extends HttpServlet{
                 .getServiceObject(restServerServiceName);
     }
     
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, java.io.IOException{
+        if("PATCH".equals(req.getMethod())){
+            doPatch(req, resp);
+        }else{
+            super.service(req, resp);
+        }
+    }
+    
     /**
      * PUTメソッド呼び出しを処理する。<p>
      * 
@@ -116,6 +124,25 @@ public class RestServlet extends HttpServlet{
     ) throws ServletException, IOException{
         try{
             restServer.processPut(new PutRestRequest(req), new PutRestResponse(resp));
+        }catch(Throwable e){
+            throw new ServletException(e);
+        }
+    }
+    
+    /**
+     * PATCHメソッド呼び出しを処理する。<p>
+     * 
+     * @param req HTTPリクエスト
+     * @param resp HTTPレスポンス
+     * @exception ServletException
+     * @exception IOException
+     */
+    protected void doPatch(
+        HttpServletRequest req,
+        HttpServletResponse resp
+    ) throws ServletException, IOException{
+        try{
+            restServer.processPatch(new PatchRestRequest(req), new PatchRestResponse(resp));
         }catch(Throwable e){
             throw new ServletException(e);
         }
@@ -216,6 +243,7 @@ public class RestServlet extends HttpServlet{
         if(reqPath.equals("/*")){
             OptionsRestResponse orr = new OptionsRestResponse(resp);
             orr.allowPut();
+            orr.allowPatch();
             orr.allowGet();
             orr.allowHead();
             orr.allowPost();

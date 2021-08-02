@@ -148,6 +148,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
     protected String getMethodFlowPostfix = DEFAULT_GET_METHOD_FLOW_POSTFIX;
     protected String headMethodFlowPostfix = DEFAULT_HEAD_METHOD_FLOW_POSTFIX;
     protected String putMethodFlowPostfix = DEFAULT_PUT_METHOD_FLOW_POSTFIX;
+    protected String patchMethodFlowPostfix = DEFAULT_PATCH_METHOD_FLOW_POSTFIX;
     protected String deleteMethodFlowPostfix = DEFAULT_DELETE_METHOD_FLOW_POSTFIX;
     protected ServiceName beanFlowInvokerFactoryServiceName;
     protected ServiceName journalServiceName;
@@ -225,6 +226,13 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
     }
     public String getPutMethodFlowPostfix(){
         return putMethodFlowPostfix;
+    }
+
+    public void setPatchMethodFlowPostfix(String postfix){
+        patchMethodFlowPostfix = postfix;
+    }
+    public String getPatchMethodFlowPostfix(){
+        return patchMethodFlowPostfix;
     }
 
     public void setDeleteMethodFlowPostfix(String postfix){
@@ -1757,6 +1765,72 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
     }
 
+    public void processPatch(PatchRestRequest request, PatchRestResponse response) throws Throwable{
+        ResourceMetaData resource = null;
+        try{
+            if(journal != null){
+                journal.startJournal(JOURNAL_KEY_REST_PROCESS, editorFinder);
+                if(sequence != null){
+                    String sequenceId = sequence.increment();
+                    if(context != null){
+                        context.put(requestIdKey, sequenceId);
+                    }
+                    journal.setRequestId(sequenceId);
+                }else if(context != null){
+                    journal.setRequestId(
+                        (String)context.get(requestIdKey)
+                    );
+                }
+                journal.addInfo(JOURNAL_KEY_REQUEST_URI, request.getURI());
+                journal.addInfo(JOURNAL_KEY_METHOD, request.getRequest().getMethod());
+            }
+            if(!processCheckAccept(request, response)){
+                return;
+            }
+            if(!processCheckContentType(request, response)){
+                return;
+            }
+            final List paths = ResourcePath.splitPath(request.getURI());
+            resource = processFindResource(request, response, paths);
+            if(resource == null){
+                return;
+            }
+            if(resource.patchData == null){
+                response.setResult(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+                return;
+            }
+            if(!processParsePathParameters(request, response, paths, resource)){
+                return;
+            }
+            if(!processCreateRequestObject(request, response, paths, resource, resource.patchData.requestData)){
+                return;
+            }
+            if(!processSetupResponseObject(request, response, paths, resource, resource.patchData.responseData)){
+                return;
+            }
+            if(!processReadRequestBody(request, response, paths, resource)){
+                return;
+            }
+            if(processValidateRequestObject(request, response, paths, resource, patchMethodFlowPostfix)){
+                if(!processExecute(request, response, paths, resource, patchMethodFlowPostfix)){
+                    return;
+                }
+            }
+            processWriteResponseBody(request, response, paths, resource);
+        }catch(Throwable th){
+            getLogger().write("BFRS_00031", new Object[]{resource == null ? request.getURI() : resource.resourcePath.path}, th);
+            if(journal != null){
+                journal.addInfo(JOURNAL_KEY_EXCEPTION, th);
+            }
+            response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+        }finally{
+            if(journal != null){
+                journal.addInfo(JOURNAL_KEY_RESULT_STATUS, new Integer(response.getResultStatus()));
+                journal.endJournal();
+            }
+        }
+    }
+
     public void processDelete(DeleteRestRequest request, DeleteRestResponse response) throws Throwable{
         ResourceMetaData resource = null;
         try{
@@ -1859,6 +1933,9 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             }
             if(resource.putData != null){
                 response.allowPut();
+            }
+            if(resource.patchData != null){
+                response.allowPatch();
             }
             if(resource.deleteData != null){
                 response.allowDelete();
@@ -2261,6 +2338,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         protected GetMetaData getData;
         protected HeadMetaData headData;
         protected PutMetaData putData;
+        protected PatchMetaData patchData;
         protected DeleteMetaData deleteData;
         protected OptionsMetaData optionsData;
         
@@ -2286,6 +2364,10 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         
         public PutMetaData getPutMetaData(){
             return putData;
+        }
+        
+        public PatchMetaData getPatchMetaData(){
+            return patchData;
         }
         
         public DeleteMetaData getDeleteMetaData(){
@@ -2345,6 +2427,15 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             if(putElement != null){
                 putData = new PutMetaData(ResourceMetaData.this);
                 putData.importXML(putElement);
+            }
+            
+            Element patchElement = getOptionalChild(
+                element,
+                PatchMetaData.TAG_NAME
+            );
+            if(patchElement != null){
+                patchData = new PatchMetaData(ResourceMetaData.this);
+                patchData.importXML(patchElement);
             }
             
             Element deleteElement = getOptionalChild(
@@ -3362,6 +3453,69 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
             );
             if(responseElement != null){
                 responseData = new ResponseMetaData(PutMetaData.this);
+                responseData.importXML(responseElement);
+            }
+        }
+    }
+
+    protected class PatchMetaData extends MetaData{
+
+//        private static final long serialVersionUID = -5753138646526386529L;
+
+        public static final String TAG_NAME = "patch";
+
+        protected String description;
+        protected RequestMetaData requestData;
+        protected ResponseMetaData responseData;
+
+        public PatchMetaData(ResourceMetaData parent){
+            super(parent);
+        }
+
+        public String getDescription(){
+            return description;
+        }
+
+        public RequestMetaData getRequestMetaData(){
+            return requestData;
+        }
+
+        public ResponseMetaData getResponseMetaData(){
+            return responseData;
+        }
+
+        public void importXML(Element element) throws DeploymentException{
+            super.importXML(element);
+            if(!element.getTagName().equals(TAG_NAME)){
+                throw new DeploymentException(
+                    "tag must be " + TAG_NAME + " : "
+                     + element.getTagName()
+                );
+            }
+
+            Element descElement = getOptionalChild(
+                element,
+                ResourceMetaData.DESCRIPTION_TAG_NAME
+            );
+            if(descElement != null){
+                description = getElementContent(descElement);
+            }
+
+            Element requestElement = getOptionalChild(
+                element,
+                RequestMetaData.TAG_NAME
+            );
+            if(requestElement != null){
+                requestData = new RequestMetaData(PatchMetaData.this);
+                requestData.importXML(requestElement);
+            }
+
+            Element responseElement = getOptionalChild(
+                element,
+                ResponseMetaData.TAG_NAME
+            );
+            if(responseElement != null){
+                responseData = new ResponseMetaData(PatchMetaData.this);
                 responseData.importXML(responseElement);
             }
         }
