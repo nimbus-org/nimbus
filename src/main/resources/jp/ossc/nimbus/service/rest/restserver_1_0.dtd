@@ -81,7 +81,7 @@ The DOCTYPE is:
 
 <!-- resource要素は、RESTサーバに存在するリソースを定義する要素です。
 -->
-<!ELEMENT resource (post? | get? | head? | put? | delete? | options?)*>
+<!ELEMENT resource (post? | get? | head? | put? | patch? | delete? | options?)*>
 
 <!-- name属性は、RESTサーバのリソースを示すURIを定義します。
 -->
@@ -102,6 +102,10 @@ The DOCTYPE is:
 <!-- put要素は、リソースのPUTメソッドを定義する要素です。
 -->
 <!ELEMENT put (description? | request? | response?)*>
+
+<!-- patch要素は、リソースのPUTメソッドを定義する要素です。
+-->
+<!ELEMENT patch (description? | request? | response?)*>
 
 <!-- delete要素は、リソースのDELETEメソッドを定義する要素です。
 -->

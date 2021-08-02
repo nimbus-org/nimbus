@@ -69,6 +69,11 @@ public interface BeanFlowRestServerServiceMBean extends ServiceBaseMBean{
     public static final String DEFAULT_PUT_METHOD_FLOW_POSTFIX = "$PUT";
     
     /**
+     * PATCHメソッド用BeanFlowの後置詞のデフォルト値。<p>
+     */
+    public static final String DEFAULT_PATCH_METHOD_FLOW_POSTFIX = "$PATCH";
+    
+    /**
      * DELETEメソッド用BeanFlowの後置詞のデフォルト値。<p>
      */
     public static final String DEFAULT_DELETE_METHOD_FLOW_POSTFIX = "$DELETE";
@@ -210,6 +215,21 @@ public interface BeanFlowRestServerServiceMBean extends ServiceBaseMBean{
      * @return フロー名の後置詞
      */
     public String getPutMethodFlowPostfix();
+    
+    /**
+     * PATCHメソッド処理フローのフロー名の後置詞を設定する。<p>
+     * デフォルトは、{@link #DEFAULT_PATCH_METHOD_FLOW_POSTFIX}。<br>
+     *
+     * @param postfix フロー名の後置詞
+     */
+    public void setPatchMethodFlowPostfix(String postfix);
+    
+    /**
+     * PATCHメソッド処理フローのフロー名の後置詞を取得する。<p>
+     *
+     * @return フロー名の後置詞
+     */
+    public String getPatchMethodFlowPostfix();
     
     /**
      * DELETEメソッド処理フローのフロー名の後置詞を設定する。<p>
