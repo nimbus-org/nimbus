@@ -1894,6 +1894,72 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         }
     }
 
+    public void processDeleteBody(DeleteBodyRestRequest request, DeleteRestResponse response) throws Throwable{
+        ResourceMetaData resource = null;
+        try{
+            if(journal != null){
+                journal.startJournal(JOURNAL_KEY_REST_PROCESS, editorFinder);
+                if(sequence != null){
+                    String sequenceId = sequence.increment();
+                    if(context != null){
+                        context.put(requestIdKey, sequenceId);
+                    }
+                    journal.setRequestId(sequenceId);
+                }else if(context != null){
+                    journal.setRequestId(
+                        (String)context.get(requestIdKey)
+                    );
+                }
+                journal.addInfo(JOURNAL_KEY_REQUEST_URI, request.getURI());
+                journal.addInfo(JOURNAL_KEY_METHOD, request.getRequest().getMethod());
+            }
+            if(!processCheckAccept(request, response)){
+                return;
+            }
+            if(!processCheckContentType(request, response)){
+                return;
+            }
+            final List paths = ResourcePath.splitPath(request.getURI());
+            resource = processFindResource(request, response, paths);
+            if(resource == null){
+                return;
+            }
+            if(resource.deleteData == null){
+                response.setResult(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+                return;
+            }
+            if(!processParsePathParameters(request, response, paths, resource)){
+                return;
+            }
+            if(!processCreateRequestObject(request, response, paths, resource, resource.deleteData.requestData)){
+                return;
+            }
+            if(!processSetupResponseObject(request, response, paths, resource, resource.deleteData.responseData)){
+                return;
+            }
+            if(!processReadRequestBody(request, response, paths, resource)){
+                return;
+            }
+            if(processValidateRequestObject(request, response, paths, resource, deleteMethodFlowPostfix)){
+                if(!processExecute(request, response, paths, resource, deleteMethodFlowPostfix)){
+                    return;
+                }
+            }
+            processWriteResponseBody(request, response, paths, resource);
+        }catch(Throwable th){
+            getLogger().write("BFRS_00031", new Object[]{resource == null ? request.getURI() : resource.resourcePath.path}, th);
+            if(journal != null){
+                journal.addInfo(JOURNAL_KEY_EXCEPTION, th);
+            }
+            response.setResult(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+        }finally{
+            if(journal != null){
+                journal.addInfo(JOURNAL_KEY_RESULT_STATUS, new Integer(response.getResultStatus()));
+                journal.endJournal();
+            }
+        }
+    }
+
     public void processOptions(OptionsRestRequest request, OptionsRestResponse response) throws Throwable{
         ResourceMetaData resource = null;
         try{

@@ -94,6 +94,15 @@ public interface RestServer{
     public void processDelete(DeleteRestRequest request, DeleteRestResponse response) throws Throwable;
     
     /**
+     * ボディ付きDELETEメソッドのRESTリクエストの処理を行う。<p>
+     *
+     * @param request RESTリクエスト
+     * @param response RESTレスポンス
+     * @exception Throwable 処理中に例外が発生した場合
+     */
+    public void processDeleteBody(DeleteBodyRestRequest request, DeleteRestResponse response) throws Throwable;
+    
+    /**
      * OPTIONSメソッドのRESTリクエストの処理を行う。<p>
      *
      * @param request RESTリクエスト
