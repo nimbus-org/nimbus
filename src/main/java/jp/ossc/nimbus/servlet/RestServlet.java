@@ -217,8 +217,13 @@ public class RestServlet extends HttpServlet{
         HttpServletRequest req,
         HttpServletResponse resp
     ) throws ServletException, IOException{
+        final int contentLength = req.getContentLength();
         try{
-            restServer.processDelete(new DeleteRestRequest(req), new DeleteRestResponse(resp));
+            if(contentLength > 0){
+                restServer.processDeleteBody(new DeleteBodyRestRequest(req), new DeleteRestResponse(resp));
+            }else{
+                restServer.processDelete(new DeleteRestRequest(req), new DeleteRestResponse(resp));
+            }
         }catch(Throwable e){
             throw new ServletException(e);
         }
