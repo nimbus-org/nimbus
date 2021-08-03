@@ -516,6 +516,21 @@ public interface TableCreatorServiceMBean extends ServiceBaseMBean{
     public boolean isBackupOnStop();
     
     /**
+     * サービスの開始時のテーブル操作で、失敗した場合に、サービスの起動を失敗させないようにするかを設定する。<p>
+     * デフォルトは、falseで、サービスの起動を失敗させる。<br>
+     *
+     * @param isSilent サービスの起動を失敗させないようにする場合は、true
+     */
+    public void setSilentOnStart(boolean isSilent);
+    
+    /**
+     * サービスの開始時のテーブル操作で、失敗した場合に、サービスの起動を失敗させないようにするかを判定する。<p>
+     *
+     * @return trueの場合は、サービスの起動を失敗させないようにする
+     */
+    public boolean isSilentOnStart();
+    
+    /**
      * テーブルを削除する際に無視するSQLExceptionのエラーコードを設定する。<p>
      * デフォルトでは、全てのSQLExceptionを無視しない。<br>
      *
