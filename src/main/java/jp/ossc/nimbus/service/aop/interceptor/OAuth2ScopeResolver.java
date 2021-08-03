@@ -45,7 +45,8 @@ public interface OAuth2ScopeResolver{
      *
      * @param context 呼び出しコンテキスト
      * @return この呼び出しに対するスコープの配列。スコープが解決できない場合は、null
+     * @exception スコープの解決に失敗した場合
      */
-    public String[] resolve(InvocationContext context);
+    public String[] resolve(InvocationContext context) throws Exception;
     
 }

@@ -92,6 +92,7 @@ import jp.ossc.nimbus.beans.SimpleProperty;
 import jp.ossc.nimbus.beans.ServiceNameEditor;
 import jp.ossc.nimbus.beans.dataset.DataSet;
 import jp.ossc.nimbus.beans.dataset.Header;
+import jp.ossc.nimbus.beans.dataset.RecordList;
 import jp.ossc.nimbus.core.DeploymentException;
 import jp.ossc.nimbus.core.MetaData;
 import jp.ossc.nimbus.core.NimbusClassLoader;
@@ -101,10 +102,14 @@ import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.core.ServiceMetaData;
 import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.core.Utility;
+import jp.ossc.nimbus.service.aop.InvocationContext;
+import jp.ossc.nimbus.service.aop.ServletFilterInvocationContext;
 import jp.ossc.nimbus.service.aop.interceptor.ThreadContextKey;
+import jp.ossc.nimbus.service.aop.interceptor.OAuth2ScopeResolver;
 import jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvoker;
 import jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory;
 import jp.ossc.nimbus.service.context.Context;
+import jp.ossc.nimbus.service.codemaster.CodeMasterFinder;
 import jp.ossc.nimbus.service.journal.Journal;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 import jp.ossc.nimbus.service.sequence.Sequence;
@@ -114,13 +119,14 @@ import jp.ossc.nimbus.util.converter.DataSetServletRequestParameterConverter;
 import jp.ossc.nimbus.util.converter.StreamConverter;
 import jp.ossc.nimbus.util.converter.StreamStringConverter;
 
+
 /**
  * アプリケーション処理をBeanFlowに委譲する{@link RestServer}インタフェース実装サービス。<p>
  *
  * @author M.Takata
  * @see <a href="restserver_1_0.dtd">RESTサーバ定義ファイルDTD</a>
  */
-public class BeanFlowRestServerService extends ServiceBase implements RestServer, BeanFlowRestServerServiceMBean{
+public class BeanFlowRestServerService extends ServiceBase implements RestServer, OAuth2ScopeResolver, BeanFlowRestServerServiceMBean{
 
     static{
         NimbusEntityResolver.registerDTD(
@@ -144,6 +150,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
     protected String documentBuilderFactoryClassName;
     protected boolean isValidate;
     protected String validateFlowPrefix = DEFAULT_VALIDATE_FLOW_PREFIX;
+    protected String scopeFlowPrefix = DEFAULT_SCOPE_FLOW_PREFIX;
     protected String postMethodFlowPostfix = DEFAULT_POST_METHOD_FLOW_POSTFIX;
     protected String getMethodFlowPostfix = DEFAULT_GET_METHOD_FLOW_POSTFIX;
     protected String headMethodFlowPostfix = DEFAULT_HEAD_METHOD_FLOW_POSTFIX;
@@ -155,6 +162,10 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
     protected ServiceName editorFinderServiceName;
     protected ServiceName sequenceServiceName;
     protected ServiceName contextServiceName;
+    protected ServiceName codeMasterFinderServiceName;
+    protected String scopeCodeMasterKey;
+    protected String scopeCodeMasterPathPropertyName = DEFAULT_SCOPE_CODEMASTER_PATH_PROPERTY_NAME;
+    protected String scopeCodeMasterScopePropertyName = DEFAULT_SCOPE_CODEMASTER_SCOPE_PROPERTY_NAME;
     protected String requestIdKey = ThreadContextKey.REQUEST_ID;
     protected long requestSizeThreshold = -1L;
     protected String defaultResponseCharacterEncoding = "UTF-8";
@@ -164,6 +175,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
     protected EditorFinder editorFinder;
     protected Sequence sequence;
     protected Context context;
+    protected CodeMasterFinder codeMasterFinder;
     protected RestServerMetaData restServerMetaData;
     protected PropertyAccess propertyAccess;
     protected Map requestConverterServiceNameMapping;
@@ -198,6 +210,13 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
     }
     public String getValidateFlowPrefix(){
         return validateFlowPrefix;
+    }
+
+    public void setScopeFlowPrefix(String prefix){
+        scopeFlowPrefix = prefix;
+    }
+    public String getScopeFlowPrefix(){
+        return scopeFlowPrefix;
     }
 
     public void setPostMethodFlowPostfix(String postfix){
@@ -276,12 +295,40 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
     public String getRequestIdKey(){
         return requestIdKey;
     }
-
+    
+    public void setScopeCodeMasterKey(String key) {
+        scopeCodeMasterKey = key;
+    }
+    public String getScopeCodeMasterKey() {
+        return scopeCodeMasterKey;
+    }
+    
+    public void setScopeCodeMasterPathPropertyName(String name) {
+        scopeCodeMasterPathPropertyName = name;
+    }
+    public String getScopeCodeMasterPathPropertyName() {
+        return scopeCodeMasterPathPropertyName;
+    }
+    
+    public void setScopeCodeMasterScopePropertyName(String name) {
+        scopeCodeMasterScopePropertyName = name;
+    }
+    public String getScopeCodeMasterScopePropertyName() {
+        return scopeCodeMasterScopePropertyName;
+    }
+    
     public void setContextServiceName(ServiceName name){
         contextServiceName = name;
     }
     public ServiceName getContextServiceName(){
         return contextServiceName;
+    }
+    
+    public void setCodeMasterFinderServiceName(ServiceName name) {
+        codeMasterFinderServiceName = name;
+    }
+    public ServiceName getCodeMasterFinderServiceName() {
+        return codeMasterFinderServiceName;
     }
 
     public void setRequestConverterServiceNames(Map mapping){
@@ -444,7 +491,10 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         if(editorFinderServiceName != null){
             editorFinder = (EditorFinder)ServiceManagerFactory.getServiceObject(editorFinderServiceName);
         }
-
+        if(codeMasterFinderServiceName != null){
+            codeMasterFinder = (CodeMasterFinder)ServiceManagerFactory.getServiceObject(codeMasterFinderServiceName);
+        }
+        
         reload();
     }
 
@@ -2053,6 +2103,63 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
         return loader != null ? loader.findEditor(cls) : NimbusPropertyEditorManager.findEditor(cls);
     }
     
+    // OAuth2ScopeResolver
+    public String[] resolve(InvocationContext context) throws Exception{
+        final ServletFilterInvocationContext sfic = (ServletFilterInvocationContext)context;
+        final RestRequest request = new RestRequest((HttpServletRequest)sfic.getServletRequest());
+        final RestResponse response = new RestResponse((HttpServletResponse)sfic.getServletResponse());
+        final List paths = ResourcePath.splitPath(request.getURI());
+        ResourceMetaData resource = processFindResource(request, response, paths);
+        if(resource == null){
+            return null;
+        }
+        final String method = request.getRequest().getMethod();
+        String methodPostfix = null;
+        if("GET".equals(method)){
+            methodPostfix = getMethodFlowPostfix;
+        }else if("POST".equals(method)){
+            methodPostfix = postMethodFlowPostfix;
+        }else if("HEAD".equals(method)){
+            methodPostfix = headMethodFlowPostfix;
+        }else if("PUT".equals(method)){
+            methodPostfix = putMethodFlowPostfix;
+        }else if("PATCH".equals(method)){
+            methodPostfix = patchMethodFlowPostfix;
+        }else if("DELETE".equals(method)){
+            methodPostfix = deleteMethodFlowPostfix;
+        }else{
+            return null;
+        }
+        if(scopeCodeMasterKey != null && (codeMasterFinder != null || this.context != null)){
+            Map codeMasters = null;
+            if(codeMasterFinder != null){
+                codeMasters = codeMasterFinder.getCodeMasters();
+            }else{
+                codeMasters = (Map)this.context.get(ThreadContextKey.CODEMASTER);
+            }
+            if(codeMasters == null){
+                throw new Exception("CodeMaster is null.");
+            }
+            final RecordList scopeCodeMaster = (RecordList)codeMasters.get(scopeCodeMasterKey);
+            if(scopeCodeMaster == null){
+                throw new Exception("ScopeCodeMaster is null.");
+            }
+            final Set scopeSet = scopeCodeMaster.createView().searchBy(
+                resource.resourcePath.path + methodPostfix,
+                null,
+                scopeCodeMasterPathPropertyName
+            ).getResultDistinctValueSet(scopeCodeMasterScopePropertyName);
+            return scopeSet == null ? null : (String[])scopeSet.toArray(new String[scopeSet.size()]);
+        }else{
+            final String flowName = scopeFlowPrefix + resource.resourcePath.path + methodPostfix;
+            if(!beanFlowInvokerFactory.containsFlow(flowName)){
+                return null;
+            }
+            BeanFlowInvoker flow = beanFlowInvokerFactory.createFlow(flowName);
+            return (String[])flow.invokeFlow(new RestContext(request, response));
+        }
+    }
+    
     protected class MyErrorHandler implements ErrorHandler{
         
         private boolean isError;
@@ -3526,7 +3633,7 @@ public class BeanFlowRestServerService extends ServiceBase implements RestServer
 
     protected class PatchMetaData extends MetaData{
 
-//        private static final long serialVersionUID = -5753138646526386529L;
+        private static final long serialVersionUID = -378118491020851825L;
 
         public static final String TAG_NAME = "patch";
 
