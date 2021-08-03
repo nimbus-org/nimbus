@@ -81,6 +81,7 @@ public class TableCreatorService extends ServiceBase
     private RecordList backupRecordList;
     private int insertBatchSize = 0;
     private int fetchSize = 0;
+    private boolean isSilentOnStart = false;
     private boolean isBackupOnStart = false;
     private boolean isRestoreOnStart = false;
     private boolean isDropTableOnStart = false;
@@ -249,6 +250,13 @@ public class TableCreatorService extends ServiceBase
     }
     public int getFetchSize(){
         return fetchSize;
+    }
+    
+    public void setSilentOnStart(boolean isSilent){
+        isSilentOnStart = isSilent;
+    }
+    public boolean isSilentOnStart(){
+        return isSilentOnStart;
     }
     
     public void setBackupOnStart(boolean isBackup){
@@ -454,22 +462,62 @@ public class TableCreatorService extends ServiceBase
         }
         try{
             if(isBackupOnStart){
-                backupRecords(con);
+                try{
+                    backupRecords(con);
+                }catch(Exception e){
+                    if(isSilentOnStart){
+                        getLogger().write("TCR__00001", new Object[]{getServiceNameObject(), "backupRecords"}, e);
+                    }else{
+                        throw e;
+                    }
+                }
             }
             if(isDeleteOnStart){
-                deleteRecords(con);
+                try{
+                    deleteRecords(con);
+                }catch(Exception e){
+                    if(isSilentOnStart){
+                        getLogger().write("TCR__00001", new Object[]{getServiceNameObject(), "deleteRecords"}, e);
+                    }else{
+                        throw e;
+                    }
+                }
             }
             if(isDropTableOnStart){
-                dropTable(con);
+                try{
+                    dropTable(con);
+                }catch(Exception e){
+                    if(isSilentOnStart){
+                        getLogger().write("TCR__00001", new Object[]{getServiceNameObject(), "dropTable"}, e);
+                    }else{
+                        throw e;
+                    }
+                }
             }
             if(isCreateTableOnStart){
                 createTable(con);
             }
             if(isInsertOnStart){
-                insertRecords(con);
+                try{
+                    insertRecords(con);
+                }catch(Exception e){
+                    if(isSilentOnStart){
+                        getLogger().write("TCR__00001", new Object[]{getServiceNameObject(), "insertRecords"}, e);
+                    }else{
+                        throw e;
+                    }
+                }
             }
             if(isRestoreOnStart){
-                restoreRecords(con);
+                try{
+                    restoreRecords(con);
+                }catch(Exception e){
+                    if(isSilentOnStart){
+                        getLogger().write("TCR__00001", new Object[]{getServiceNameObject(), "restoreRecords"}, e);
+                    }else{
+                        throw e;
+                    }
+                }
             }
             if(isTransacted){
                 con.commit();
