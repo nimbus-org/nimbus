@@ -49,6 +49,11 @@ public interface BeanFlowRestServerServiceMBean extends ServiceBaseMBean{
     public static final String DEFAULT_VALIDATE_FLOW_PREFIX = "validate";
     
     /**
+     * 要求スコープBeanFlowの前置詞のデフォルト値。<p>
+     */
+    public static final String DEFAULT_SCOPE_FLOW_PREFIX = "scope";
+    
+    /**
      * POSTメソッド用BeanFlowの後置詞のデフォルト値。<p>
      */
     public static final String DEFAULT_POST_METHOD_FLOW_POSTFIX = "$POST";
@@ -77,6 +82,16 @@ public interface BeanFlowRestServerServiceMBean extends ServiceBaseMBean{
      * DELETEメソッド用BeanFlowの後置詞のデフォルト値。<p>
      */
     public static final String DEFAULT_DELETE_METHOD_FLOW_POSTFIX = "$DELETE";
+    
+    /**
+     * スコープ解決用のコードマスタのパスプロパティ名のデフォルト値。<p>
+     */
+    public static final String DEFAULT_SCOPE_CODEMASTER_PATH_PROPERTY_NAME = "path";
+    
+    /**
+     * スコープ解決用のコードマスタのスコーププロパティ名のデフォルト値。<p>
+     */
+    public static final String DEFAULT_SCOPE_CODEMASTER_SCOPE_PROPERTY_NAME = "scope";
     
     public static final String JOURNAL_KEY_REST_PROCESS = "RestProcess";
     public static final String JOURNAL_KEY_REQUEST_URI = "RequestURI";
@@ -155,6 +170,21 @@ public interface BeanFlowRestServerServiceMBean extends ServiceBaseMBean{
      * @return フロー名の前置詞
      */
     public String getValidateFlowPrefix();
+    
+    /**
+     * 要求スコープ取得フローのフロー名の前置詞を設定する。<p>
+     * デフォルトは、{@link #DEFAULT_SCOPE_FLOW_PREFIX}。<br>
+     *
+     * @param prefix フロー名の前置詞
+     */
+    public void setScopeFlowPrefix(String prefix);
+    
+    /**
+     * 要求スコープ取得フローのフロー名の前置詞を取得する。<p>
+     *
+     * @return フロー名の前置詞
+     */
+    public String getScopeFlowPrefix();
     
     /**
      * POSTメソッド処理フローのフロー名の後置詞を設定する。<p>
@@ -317,6 +347,21 @@ public interface BeanFlowRestServerServiceMBean extends ServiceBaseMBean{
     public ServiceName getContextServiceName();
     
     /**
+     * {@link jp.ossc.nimbus.service.codemaster.CodeMasterFinder CodeMasterFinder}サービスのサービス名を設定する。<p>
+     * コードマスタの読み取り一貫性を保証したい場合は、この属性の代わりに、{@link #setContextServiceName(ServiceName)}を設定する。<br>
+     *
+     * @param name CodeMasterFinderサービスのサービス名
+     */
+    public void setCodeMasterFinderServiceName(ServiceName name);
+    
+    /**
+     * {@link jp.ossc.nimbus.service.codemaster.CodeMasterFinder CodeMasterFinder}サービスのサービス名を取得する。<p>
+     *
+     * @return CodeMasterFinderサービスのサービス名
+     */
+    public ServiceName getCodeMasterFinderServiceName();
+    
+    /**
      * Contextサービスに設定されたリクエストIDのキー名を設定する。<p>
      * デフォルトは、{@link jp.ossc.nimbus.service.aop.interceptor.ThreadContextKey#REQUEST_ID}。<br>
      *
@@ -332,6 +377,52 @@ public interface BeanFlowRestServerServiceMBean extends ServiceBaseMBean{
      * @see #setRequestIdKey(String)
      */
     public String getRequestIdKey();
+    
+    /**
+     * パスとスコープのマッピングを定義したコードマスタのキーを設定する。<p>
+     * パスとスコープのマッピングを定義したコードマスタは、{@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}を想定しており、{@link #getScopeCodeMasterPathPropertyName()}で決まるパスのプロパティと{@link #getScopeCodeMasterScopePropertyName()}で決まるスコープのプロパティを持つ必要がある。また、パスに対して{@link jp.ossc.nimbus.beans.dataset.RecordList#setIndex(String,String[]) インデックス}を設定しておく必要がある。<br>
+     * パスは、処理フロー名と同じである。<br>
+     *
+     * @param key コードマスタのキー
+     */
+    public void setScopeCodeMasterKey(String key);
+    
+    /**
+     * パスとスコープのマッピングを定義したコードマスタのキーを取得する。<p>
+     *
+     * @return コードマスタのキー
+     */
+    public String getScopeCodeMasterKey();
+    
+    /**
+     * パスとスコープのマッピングを定義したコードマスタのパスプロパティのプロパティ名を設定する。<p>
+     * デフォルトは、{@link #DEFAULT_SCOPE_CODEMASTER_PATH_PROPERTY_NAME}。<br>
+     * 
+     * @param name プロパティ名
+     */
+    public void setScopeCodeMasterPathPropertyName(String name);
+    
+    /**
+     * パスとスコープのマッピングを定義したコードマスタのパスプロパティのプロパティ名を取得する。<p>
+     * 
+     * @return プロパティ名
+     */
+    public String getScopeCodeMasterPathPropertyName();
+    
+    /**
+     * パスとスコープのマッピングを定義したコードマスタのスコーププロパティのプロパティ名を設定する。<p>
+     * デフォルトは、{@link #DEFAULT_SCOPE_CODEMASTER_SCOPE_PROPERTY_NAME}。<br>
+     * 
+     * @param name プロパティ名
+     */
+    public void setScopeCodeMasterScopePropertyName(String name);
+    
+    /**
+     * パスとスコープのマッピングを定義したコードマスタのスコーププロパティのプロパティ名を取得する。<p>
+     * 
+     * @return プロパティ名
+     */
+    public String getScopeCodeMasterScopePropertyName();
     
     /**
      * メディアタイプ毎のリクエストオブジェクトの変換を行う{@link jp.ossc.nimbus.util.converter.BindingStreamConverter BindingStreamConverter}サービスのサービス名のマッピングを設定する。<p>
