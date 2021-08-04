@@ -37,13 +37,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
-
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeUtility;
+import java.util.Base64;
 
 /**
  * BASE64文字列コンバータ。<p>
- * javax.mail.internet.MimeUtilityを使ってBASE64エンコードを行う。<br>
+ * java.util.Base64を使ってBASE64エンコードを行う。<br>
  *
  * @author M.Takata
  */
@@ -81,22 +79,29 @@ public class BASE64StringConverter extends StringStreamConverter implements Stri
      */
     public static final int DECODE_STREAM_TO_STRING = 6;
     
-    private int convertType = ENCODE;
+    protected int convertType = ENCODE;
     
     /**
      * 変換時に使用する文字エンコーディング。<p>
      */
-    private String characterEncoding;
+    protected String characterEncoding;
     
     /**
      * 文字列→ストリーム変換時に使用する文字エンコーディング。<p>
      */
-    private String characterEncodingToStream;
+    protected String characterEncodingToStream;
     
     /**
      * ストリーム→文字列変換時に使用する文字エンコーディング。<p>
      */
-    private String characterEncodingToObject;
+    protected String characterEncodingToObject;
+    
+    public BASE64StringConverter(){
+    }
+    
+    public BASE64StringConverter(int type){
+        setConvertType(type);
+    }
     
     /**
      * 変換種別を設定する。<p>
@@ -183,10 +188,10 @@ public class BASE64StringConverter extends StringStreamConverter implements Stri
         switch(convertType){
         case ENCODE:
         case ENCODE_STRING_TO_STREAM:
-            return encodeBytes(super.convertToByteArray(obj));
+            return encodeBytesInner(super.convertToByteArray(obj));
         case DECODE:
         case DECODE_STRING_TO_STREAM:
-            return decodeBytes(super.convertToByteArray(obj));
+            return decodeBytesInner(super.convertToByteArray(obj));
         default:
             throw new ConvertException("Illegal convert type : " + convertType);
         }
@@ -198,10 +203,10 @@ public class BASE64StringConverter extends StringStreamConverter implements Stri
         switch(convertType){
         case ENCODE:
         case ENCODE_STREAM_TO_STRING:
-            return toString(encodeBytes(bytes));
+            return toString(encodeBytesInner(bytes));
         case DECODE:
         case DECODE_STREAM_TO_STRING:
-            return toString(decodeBytes(bytes));
+            return toString(decodeBytesInner(bytes));
         default:
             throw new ConvertException("Illegal convert type : " + convertType);
         }
@@ -215,7 +220,25 @@ public class BASE64StringConverter extends StringStreamConverter implements Stri
      * @exception ConvertException エンコードに失敗した場合
      */
     public String encode(String str) throws ConvertException{
-        return encode(str, characterEncoding);
+        return encodeInner(str, characterEncoding);
+    }
+    
+    protected Base64.Encoder createEncoder(){
+        return Base64.getEncoder();
+    }
+    
+    protected String encodeInner(String str, String encoding) throws ConvertException{
+        byte[] bytes = null;
+        if(encoding == null){
+            bytes = str.getBytes();
+        }else{
+            try{
+                bytes = str.getBytes(encoding);
+            }catch(IOException e){
+                throw new ConvertException(e);
+            }
+        }
+        return new String(encodeBytesInner(bytes));
     }
     
     /**
@@ -240,6 +263,14 @@ public class BASE64StringConverter extends StringStreamConverter implements Stri
         return new String(encodeBytes(bytes));
     }
     
+    protected byte[] encodeBytesInner(byte[] bytes) throws ConvertException{
+        try{
+            return createEncoder().encode(bytes);
+        }catch(Exception e){
+            throw new ConvertException(e);
+        }
+    }
+    
     /**
      * 指定されたバイト配列をBASE64エンコードする。<p>
      *
@@ -248,23 +279,7 @@ public class BASE64StringConverter extends StringStreamConverter implements Stri
      * @exception ConvertException エンコードに失敗した場合
      */
     public static byte[] encodeBytes(byte[] bytes) throws ConvertException{
-        final ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        OutputStream os = null;
-        try{
-            os = MimeUtility.encode(baos, "base64");
-            os.write(bytes);
-        }catch(MessagingException e){
-            throw new ConvertException(e);
-        }catch(IOException e){
-            throw new ConvertException(e);
-        }finally{
-            if(os != null){
-                try{
-                    os.close();
-                }catch(IOException e){}
-            }
-        }
-        return baos.toByteArray();
+        return new BASE64StringConverter().encodeBytesInner(bytes);
     }
     
     /**
@@ -275,7 +290,24 @@ public class BASE64StringConverter extends StringStreamConverter implements Stri
      * @exception ConvertException デコードに失敗した場合
      */
     public String decode(String str) throws ConvertException{
-        return decode(str, characterEncoding);
+        return decodeInner(str, characterEncoding);
+    }
+    
+    protected Base64.Decoder createDecoder(){
+        return Base64.getDecoder();
+    }
+    
+    protected String decodeInner(String str, String encoding) throws ConvertException{
+        byte[] bytes = decodeBytesInner(str.getBytes());
+        if(encoding == null){
+            return new String(bytes);
+        }else{
+            try{
+                return new String(bytes, encoding);
+            }catch(IOException e){
+                throw new ConvertException(e);
+            }
+        }
     }
     
     /**
@@ -299,6 +331,14 @@ public class BASE64StringConverter extends StringStreamConverter implements Stri
         }
     }
     
+    protected byte[] decodeBytesInner(byte[] bytes) throws ConvertException{
+        try{
+            return createDecoder().decode(bytes);
+        }catch(Exception e){
+            throw new ConvertException(e);
+        }
+    }
+    
     /**
      * 指定されたBASE64バイト配列をデコードする。<p>
      *
@@ -307,26 +347,6 @@ public class BASE64StringConverter extends StringStreamConverter implements Stri
      * @exception ConvertException デコードに失敗した場合
      */
     public static byte[] decodeBytes(byte[] bytes) throws ConvertException{
-        final ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
-        byte[] outBytes = null;
-        InputStream is = null;
-        try{
-            is = MimeUtility.decode(bais, "base64");
-            byte[] tmpBytes = new byte[bytes.length];
-            int length = is.read(tmpBytes);
-            outBytes = new byte[length];
-            System.arraycopy(tmpBytes, 0, outBytes, 0, length);
-        }catch(MessagingException e){
-            throw new ConvertException(e);
-        }catch(IOException e){
-            throw new ConvertException(e);
-        }finally{
-            if(is != null){
-                try{
-                    is.close();
-                }catch(IOException e){}
-            }
-        }
-        return outBytes;
+        return new BASE64StringConverter().decodeBytesInner(bytes);
     }
 }
