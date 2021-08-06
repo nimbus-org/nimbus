@@ -261,8 +261,12 @@ public class DefaultPersistentManagerService extends ServiceBase
                     final ParameterMetaData metadata
                         = statement.getParameterMetaData();
                     if(inputPropList != null
+                        && metadata.getParameterCount() > 0
                         && inputPropList.size() != metadata.getParameterCount()){
-                        throw new PersistentException("Illegal sql : " + sql);
+                        throw new PersistentException(
+                            "The length of the argument does not match the number of parameters : argumentLength=" + inputPropList.size()
+                                + ", parameterLength=" + metadata.getParameterCount() + ", sql=" + sql
+                        );
                     }
                     if(metadata.getParameterCount() == 0 && input != null){
                         input = null;
@@ -318,8 +322,11 @@ public class DefaultPersistentManagerService extends ServiceBase
             if(outputPropList != null){
                 try{
                     ResultSetMetaData metadata = resultSet.getMetaData();
-                    if((outputPropList.size() != metadata.getColumnCount())){
-                        throw new PersistentException("Illegal sql : " + sql);
+                    if(outputPropList.size() != metadata.getColumnCount()){
+                        throw new PersistentException(
+                            "The length of the output does not match the number of colums : outputLength=" + outputPropList.size()
+                                + ", columsLength=" + metadata.getColumnCount() + ", sql=" + sql
+                        );
                     }
                     outputPropMap = new LinkedHashMap();
                     for(int i = 0, imax = outputPropList.size(); i < imax; i++){
@@ -1024,6 +1031,12 @@ public class DefaultPersistentManagerService extends ServiceBase
                 break;
             case Types.DECIMAL:
             case Types.NUMERIC:
+            case Types.TINYINT:
+            case Types.SMALLINT:
+            case Types.INTEGER:
+            case Types.FLOAT:
+            case Types.DOUBLE:
+            case Types.BIGINT:
                 if(Byte.TYPE.equals(type) || Byte.class.equals(type)){
                     value = new Byte(rs.getByte(index));
                 }else if(Short.TYPE.equals(type) || Short.class.equals(type)){
@@ -1076,6 +1089,7 @@ public class DefaultPersistentManagerService extends ServiceBase
                 value = rs.getObject(index);
                 break;
             }
+            
             return value;
         }catch(IOException e){
             throw new PersistentException(
@@ -1240,8 +1254,12 @@ public class DefaultPersistentManagerService extends ServiceBase
                 final ParameterMetaData metadata
                     = statement.getParameterMetaData();
                 if(inputPropList != null
+                    && metadata.getParameterCount() > 0
                     && inputPropList.size() != metadata.getParameterCount()){
-                    throw new PersistentException("Illegal sql : " + sql);
+                    throw new PersistentException(
+                        "The length of the argument does not match the number of parameters : argumentLength=" + inputPropList.size()
+                            + ", parameterLength=" + metadata.getParameterCount() + ", sql=" + sql
+                    );
                 }
                 if(metadata.getParameterCount() == 0 && input != null){
                     input = null;
@@ -1298,7 +1316,10 @@ public class DefaultPersistentManagerService extends ServiceBase
             try{
                 ResultSetMetaData metadata = resultSet.getMetaData();
                 if((outputPropList.size() != metadata.getColumnCount())){
-                    throw new PersistentException("Illegal sql : " + sql);
+                    throw new PersistentException(
+                        "The length of the output does not match the number of columns : outputLength=" + outputPropList.size()
+                            + ", columnLength=" + metadata.getColumnCount() + ", sql=" + sql
+                    );
                 }
                 outputPropMap = new LinkedHashMap();
                 for(int i = 0, imax = outputPropList.size(); i < imax; i++){
@@ -1358,7 +1379,10 @@ public class DefaultPersistentManagerService extends ServiceBase
                     = statement.getParameterMetaData();
                 if(inputPropList != null
                     && (inputPropList.size() != metadata.getParameterCount())){
-                    throw new PersistentException("Illegal sql : " + sql);
+                    throw new PersistentException(
+                        "The length of the argument does not match the number of parameters : argumentLength=" + inputPropList.size()
+                            + ", parameterLength=" + metadata.getParameterCount() + ", sql=" + sql
+                    );
                 }
                 if(metadata.getParameterCount() == 0 && input != null){
                     input = null;
@@ -2085,8 +2109,11 @@ public class DefaultPersistentManagerService extends ServiceBase
                 if(inputProps != null){
                     final ParameterMetaData metadata
                         = statement.getParameterMetaData();
-                    if(inputProps.size() != metadata.getParameterCount()){
-                        throw new PersistentException("Illegal sql : " + sql);
+                    if(metadata.getParameterCount() > 0 && inputProps.size() != metadata.getParameterCount()){
+                        throw new PersistentException(
+                            "The length of the argument does not match the number of parameters : argumentLength=" + inputProps.size()
+                                + ", parameterLength=" + metadata.getParameterCount() + ", sql=" + sql
+                        );
                     }
                 }
             }catch(SQLException e){
