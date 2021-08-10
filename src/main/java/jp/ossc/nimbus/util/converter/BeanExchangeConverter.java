@@ -101,6 +101,7 @@ public class BeanExchangeConverter implements BindingConverter{
     private int camelSnakeConvertMode = 0;
     private String[] camelSnakeIgnorePropertyNames;
     private boolean isUpperCaseStartCamelProperty = false;
+    private boolean isIgnoreNullProperty = false;
     
     /**
      * 空のインスタンスを生成する。<p>
@@ -767,6 +768,26 @@ public class BeanExchangeConverter implements BindingConverter{
     }
     
     /**
+     * null参照のプロパティを取得しようとした場合に、例外をthrowするかどうか、また、null値を設定するかどうかを設定する。<p>
+     * デフォルトは、false。<br>
+     *
+     * @param isIgnore null参照の時に例外をthrowしない場合はtrue
+     */
+    public void setIgnoreNullProperty(boolean isIgnore){
+        isIgnoreNullProperty = isIgnore;
+        propertyAccess.setIgnoreNullProperty(isIgnore);
+    }
+    
+    /**
+     * null参照のプロパティを取得しようとした場合に、例外をthrowするかどうか、また、null値を設定するかどうかを設定する。<p>
+     *
+     * @return null参照の時に例外をthrowしない、また、null値を設定しない場合はtrue
+     */
+    public boolean isIgnoreNullProperty(){
+        return isIgnoreNullProperty;
+    }
+    
+    /**
      * 指定されたオブジェクトを変換する。<p>
      *
      * @param obj 変換対象のオブジェクト
@@ -1353,7 +1374,9 @@ public class BeanExchangeConverter implements BindingConverter{
                             }
                         }
                     }
-                    outProp.setProperty(output, value);
+                    if(value != null || !isIgnoreNullProperty){
+                        outProp.setProperty(output, value);
+                    }
                 }catch(IllegalAccessException e){
                     throw new ConvertException("Output property set error. output=" + output + ", property=" + exchangeMapping.outputProperty + ", value=" + value, e);
                 }catch(InstantiationException e){
