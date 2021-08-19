@@ -781,37 +781,39 @@ public abstract class AbstractScheduleExecutorService extends ServiceBase
         Date endTime
     ){
         final Calendar offset = Calendar.getInstance();
-        offset.setTime(scheduledTime);
         Calendar end = null;
         if(endTime != null){
             end = Calendar.getInstance();
             end.setTime(endTime);
         }
-        if(interval > Integer.MAX_VALUE){
-            long offsetInterval = interval;
-            int tmpInterval = 0;
-            do{
-                if(offsetInterval >= Integer.MAX_VALUE){
-                    tmpInterval = Integer.MAX_VALUE;
-                }else{
-                    tmpInterval = (int)offsetInterval;
-                }
-                offset.add(Calendar.MILLISECOND, tmpInterval);
-                offsetInterval -= Integer.MAX_VALUE;
-            }while(offsetInterval > 0);
-        }else{
-            offset.add(Calendar.MILLISECOND, (int)interval);
-        }
-        if(end != null && offset.after(end)){
-            return null;
-        }else{
-            Date result = offset.getTime();
-            if(result.getTime() < System.currentTimeMillis()){
-                return calculateRepeatTime(result, interval, endTime);
+        do{
+            offset.setTime(scheduledTime);
+            if(interval > Integer.MAX_VALUE){
+                long offsetInterval = interval;
+                int tmpInterval = 0;
+                do{
+                    if(offsetInterval >= Integer.MAX_VALUE){
+                        tmpInterval = Integer.MAX_VALUE;
+                    }else{
+                        tmpInterval = (int)offsetInterval;
+                    }
+                    offset.add(Calendar.MILLISECOND, tmpInterval);
+                    offsetInterval -= Integer.MAX_VALUE;
+                }while(offsetInterval > 0);
             }else{
-                return result;
+                offset.add(Calendar.MILLISECOND, (int)interval);
             }
-        }
+            if(end != null && offset.after(end)){
+                return null;
+            }else{
+                Date result = offset.getTime();
+                if(result.getTime() < System.currentTimeMillis()){
+                    scheduledTime = result;
+                }else{
+                    return result;
+                }
+            }
+        }while(true);
     }
     
     /**
