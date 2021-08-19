@@ -374,6 +374,7 @@ public abstract class AbstractScheduleExecutorService extends ServiceBase
                         schedule.getMasterId()
                     }
                 );
+                addDynamicRepeatSchedule(result);
                 try{
                     scheduleManager.changeState(
                         schedule.getId(),
@@ -594,6 +595,7 @@ public abstract class AbstractScheduleExecutorService extends ServiceBase
                         result.getOutput()
                     }
                 );
+                addDynamicRepeatSchedule(result);
                 try{
                     scheduleManager.changeState(
                         result.getId(),
@@ -626,6 +628,7 @@ public abstract class AbstractScheduleExecutorService extends ServiceBase
                 },
                 th
             );
+            addDynamicRepeatSchedule(result == null ? schedule : result);
             try{
                 scheduleManager.changeState(
                     schedule.getId(),
@@ -645,49 +648,52 @@ public abstract class AbstractScheduleExecutorService extends ServiceBase
                 );
             }
         }finally{
-            if(result != null && result.getRepeatInterval() > 0){
-                final Date repeatTime = calculateRepeatTime(
-                    result.getTime(),
-                    result.getRepeatInterval(),
-                    result.getRepeatEndTime()
-                );
-                if(repeatTime != null){
-                    try{
-                        final List ownSchedules = scheduleManager.findSchedules(
-                            repeatTime,
-                            result.getRepeatEndTime(),
-                            null,
-                            result.getMasterId(),
-                            null,
-                            null,
-                            1
-                        );
-                        if(ownSchedules.isEmpty()){
-                            Schedule nextSchedule = (Schedule)result.clone();
-                            nextSchedule.setTime(repeatTime);
-                            if(nextSchedule instanceof DefaultSchedule){
-                                ((DefaultSchedule)nextSchedule).setInitialTime(repeatTime);
-                            }
-                            scheduleManager.addSchedule(nextSchedule);
-                        }
-                    }catch(ScheduleManageException e){
-                        getLogger().write(
-                            MSG_ID_DYNAMIC_REPEAT_ERROR,
-                            new Object[]{
-                                scheduleManagerServiceName,
-                                schedule.getId(),
-                                schedule.getMasterId()
-                            },
-                            e
-                        );
-                    }
-                }
-            }
             if(journal != null){
                 journal.endJournal();
             }
         }
         return result;
+    }
+    
+    protected void addDynamicRepeatSchedule(Schedule schedule){
+        if(schedule != null && schedule.getRepeatInterval() > 0){
+            final Date repeatTime = calculateRepeatTime(
+                schedule.getTime(),
+                schedule.getRepeatInterval(),
+                schedule.getRepeatEndTime()
+            );
+            if(repeatTime != null){
+                try{
+                    final List ownSchedules = scheduleManager.findSchedules(
+                        repeatTime,
+                        schedule.getRepeatEndTime(),
+                        null,
+                        schedule.getMasterId(),
+                        null,
+                        null,
+                        1
+                    );
+                    if(ownSchedules.isEmpty()){
+                        Schedule nextSchedule = (Schedule)schedule.clone();
+                        nextSchedule.setTime(repeatTime);
+                        if(nextSchedule instanceof DefaultSchedule){
+                            ((DefaultSchedule)nextSchedule).setInitialTime(repeatTime);
+                        }
+                        scheduleManager.addSchedule(nextSchedule);
+                    }
+                }catch(ScheduleManageException e){
+                    getLogger().write(
+                        MSG_ID_DYNAMIC_REPEAT_ERROR,
+                        new Object[]{
+                            scheduleManagerServiceName,
+                            schedule.getId(),
+                            schedule.getMasterId()
+                        },
+                        e
+                    );
+                }
+            }
+        }
     }
     
     /**
@@ -764,43 +770,50 @@ public abstract class AbstractScheduleExecutorService extends ServiceBase
     /**
      * 繰り返し日時を計算する。<p>
      *
-     * @param currentTime 現在時刻
+     * @param scheduledTime スケジュールされていた時刻
      * @param interval 繰り返し間隔
      * @param endTime 繰り返し終了時刻
      * @return 繰り返し日時。繰り返し終了時刻を過ぎている場合は、null
      */
     protected Date calculateRepeatTime(
-        Date currentTime,
+        Date scheduledTime,
         long interval,
         Date endTime
     ){
         final Calendar offset = Calendar.getInstance();
-        offset.setTime(currentTime);
         Calendar end = null;
         if(endTime != null){
             end = Calendar.getInstance();
             end.setTime(endTime);
         }
-        if(interval > Integer.MAX_VALUE){
-            long offsetInterval = interval;
-            int tmpInterval = 0;
-            do{
-                if(offsetInterval >= Integer.MAX_VALUE){
-                    tmpInterval = Integer.MAX_VALUE;
+        do{
+            offset.setTime(scheduledTime);
+            if(interval > Integer.MAX_VALUE){
+                long offsetInterval = interval;
+                int tmpInterval = 0;
+                do{
+                    if(offsetInterval >= Integer.MAX_VALUE){
+                        tmpInterval = Integer.MAX_VALUE;
+                    }else{
+                        tmpInterval = (int)offsetInterval;
+                    }
+                    offset.add(Calendar.MILLISECOND, tmpInterval);
+                    offsetInterval -= Integer.MAX_VALUE;
+                }while(offsetInterval > 0);
+            }else{
+                offset.add(Calendar.MILLISECOND, (int)interval);
+            }
+            if(end != null && offset.after(end)){
+                return null;
+            }else{
+                Date result = offset.getTime();
+                if(result.getTime() < System.currentTimeMillis()){
+                    scheduledTime = result;
                 }else{
-                    tmpInterval = (int)offsetInterval;
+                    return result;
                 }
-                offset.add(Calendar.MILLISECOND, tmpInterval);
-                offsetInterval -= Integer.MAX_VALUE;
-            }while(offsetInterval > 0);
-        }else{
-            offset.add(Calendar.MILLISECOND, (int)interval);
-        }
-        if(end != null && offset.after(end)){
-            return null;
-        }else{
-            return offset.getTime();
-        }
+            }
+        }while(true);
     }
     
     /**

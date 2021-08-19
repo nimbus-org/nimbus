@@ -2816,8 +2816,9 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 }else{
                     buf.append(" and ");
                 }
-                concatQuery(buf, "A." + scheduleTableSchema.date, "A." + scheduleTableSchema.time);
-                buf.append(">=?");
+                buf.append("(").append("A.").append(scheduleTableSchema.date).append(">?")
+                    .append(" or (").append("A.").append(scheduleTableSchema.date).append("=?")
+                    .append(" and ").append("A.").append(scheduleTableSchema.time).append(">=?))");
             }
             if(to != null){
                 if(!isAppendWhere){
@@ -2826,8 +2827,9 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 }else{
                     buf.append(" and ");
                 }
-                concatQuery(buf, "A." + scheduleTableSchema.date, "A." + scheduleTableSchema.time);
-                buf.append("<=?");
+                buf.append("(").append("A.").append(scheduleTableSchema.date).append("<?")
+                    .append(" or (").append("A.").append(scheduleTableSchema.date).append("=?")
+                    .append(" and ").append("A.").append(scheduleTableSchema.time).append("<=?))");
             }
             
             buf.append(" order by ")
@@ -2843,9 +2845,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
             }
             st = con.prepareStatement(buf.toString());
             buf = null;
-            final SimpleDateFormat format = new SimpleDateFormat(
-                dateFormat + timeFormat
-            );
+            final SimpleDateFormat dFormat = new SimpleDateFormat(dateFormat);
+            final SimpleDateFormat tFormat = new SimpleDateFormat(timeFormat);
             int index = 0;
             if(masterGroupId != null){
                 st.setString(++index, masterGroupId);
@@ -2875,10 +2876,14 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 }
             }
             if(from != null){
-                st.setString(++index, format.format(from));
+                st.setString(++index, dFormat.format(from));
+                st.setString(++index, dFormat.format(from));
+                st.setString(++index, tFormat.format(from));
             }
             if(to != null){
-                st.setString(++index, format.format(to));
+                st.setString(++index, dFormat.format(to));
+                st.setString(++index, dFormat.format(to));
+                st.setString(++index, tFormat.format(to));
             }
             rs = st.executeQuery();
             final List result = new ArrayList();
@@ -2978,8 +2983,10 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append(" and ").append(scheduleDependsTableSchema.dependsId).append(" is not null")
                 .append(" and ").append(scheduleDependsTableSchema.groupId).append(" is null) B")
                 .append(" where A.").append(scheduleTableSchema.masterId).append("=B.").append(scheduleDependsTableSchema.dependsId)
-                .append(" and ");
-            concatQuery(buf, "A." + scheduleTableSchema.initialDate, "A." + scheduleTableSchema.initialTime).append("<?")
+                .append(" and ")
+                .append("(A.").append(scheduleTableSchema.initialDate).append("<?")
+                .append(" or (A.").append(scheduleTableSchema.initialDate).append("=?")
+                .append(" and A.").append(scheduleTableSchema.initialTime).append("<?))")
                 .append(" and (((B.").append(scheduleDependsTableSchema.ignoreError).append("<>'1'")
                 .append(" and A.").append(scheduleTableSchema.state).append("<>'").append(scheduleTableSchema.stateString_END).append('\'')
                 .append(" and A.").append(scheduleTableSchema.state).append("<>'").append(scheduleTableSchema.stateString_DISABLE).append("')")
@@ -3017,8 +3024,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append(" and ").append(scheduleDependsTableSchema.dependsId).append(" is not null")
                 .append(" and ").append(scheduleDependsTableSchema.groupId).append(" is not null) F")
                 .append(" where E.MASTER_ID=F.DEPENDS_ID")
-                .append(" and ");
-            concatQuery(buf, "E.INITIAL_DATE", "E.INITIAL_TIME").append("<?")
+                .append(" and ")
+                .append("(E.INITIAL_DATE<? or (E.INITIAL_DATE=? and E.INITIAL_TIME<?))")
                 .append(" and (((F.IGNORE_ERROR<>'1'")
                 .append(" and E.STATE<>'").append(scheduleTableSchema.stateString_END).append('\'')
                 .append(" and E.STATE<>'").append(scheduleTableSchema.stateString_DISABLE).append("')")
@@ -3071,8 +3078,10 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append(" where C.MASTER_GROUP_ID=D.MASTER_GROUP_ID")
                 .append(" and C.ID in (select ")
                 .append(scheduleTableSchema.id).append(" from ").append(scheduleTableSchema.table)
-                .append(" where ");
-            concatQuery(buf, scheduleTableSchema.initialDate, scheduleTableSchema.initialTime).append("<?)) F")
+                .append(" where ")
+                .append(scheduleTableSchema.initialDate).append("<?")
+                .append(" or (").append(scheduleTableSchema.initialDate).append("=?")
+                .append(" and ").append(scheduleTableSchema.initialTime).append("<?))) F")
                 .append(" where E.GROUP_ID=F.GROUP_ID")
                 .append(" and E.MASTER_GROUP_ID=F.MASTER_GROUP_ID) G");
             st1Group = con.prepareStatement(buf.toString());
@@ -3145,8 +3154,9 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append(" and ").append(scheduleDependsTableSchema.groupId).append(" is null) B")
                 .append(" where A.").append(scheduleTableSchema.masterId).append("=B.").append(scheduleDependsTableSchema.dependsId)
                 .append(" and A.").append(scheduleTableSchema.id).append("<>?")
-                .append(" and ");
-            concatQuery(buf, "A." + scheduleTableSchema.initialDate, "A." + scheduleTableSchema.initialTime).append("=?")
+                .append(" and ")
+                .append("A.").append(scheduleTableSchema.initialDate).append("=?")
+                .append(" and A.").append(scheduleTableSchema.initialTime).append("=?")
                 .append(" and (((B.").append(scheduleDependsTableSchema.ignoreError).append("<>'1'")
                 .append(" and A.").append(scheduleTableSchema.state).append("<>'").append(scheduleTableSchema.stateString_END).append('\'')
                 .append(" and A.").append(scheduleTableSchema.state).append("<>'").append(scheduleTableSchema.stateString_DISABLE).append("')")
@@ -3187,8 +3197,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append(" and ").append(scheduleDependsTableSchema.dependsId).append(" is not null")
                 .append(" and ").append(scheduleDependsTableSchema.groupId).append(" is not null) F")
                 .append(" where E.MASTER_ID=F.DEPENDS_ID")
-                .append(" and ");
-            concatQuery(buf, "E.INITIAL_DATE", "E.INITIAL_TIME").append("=?")
+                .append(" and E.INITIAL_DATE=? and E.INITIAL_TIME=?")
                 .append(" and (((F.IGNORE_ERROR<>'1'")
                 .append(" and E.STATE<>'").append(scheduleTableSchema.stateString_END).append('\'')
                 .append(" and E.STATE<>'").append(scheduleTableSchema.stateString_DISABLE).append("')")
@@ -3243,8 +3252,9 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append(" where C.MASTER_GROUP_ID=D.MASTER_GROUP_ID")
                 .append(" and C.ID in (select ")
                 .append(scheduleTableSchema.id).append(" from ").append(scheduleTableSchema.table)
-                .append(" where ");
-            concatQuery(buf, scheduleTableSchema.initialDate, scheduleTableSchema.initialTime).append("=?)) F")
+                .append(" where ")
+                .append(scheduleTableSchema.initialDate).append("=?")
+                .append(" and ").append(scheduleTableSchema.initialTime).append("=?)) F")
                 .append(" where E.GROUP_ID=F.GROUP_ID")
                 .append(" and E.MASTER_GROUP_ID=F.MASTER_GROUP_ID union select ")
                 .append(scheduleTableSchema.id).append(" as ID from ").append(scheduleTableSchema.table)
@@ -3357,8 +3367,9 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append(" and ").append(scheduleDependsTableSchema.groupId).append(" is null) B")
                 .append(" where A.").append(scheduleTableSchema.masterId).append("=B.").append(scheduleDependsTableSchema.dependsId)
                 .append(" and A.").append(scheduleTableSchema.id).append("<>?")
-                .append(" and ");
-            concatQuery(buf, "A." + scheduleTableSchema.initialDate, "A." + scheduleTableSchema.initialTime).append("=?")
+                .append(" and ")
+                .append("A.").append(scheduleTableSchema.initialDate).append("=?")
+                .append(" and A.").append(scheduleTableSchema.initialTime).append("=?")
                 .append(" and (((B.").append(scheduleDependsTableSchema.ignoreError).append("<>'1'")
                 .append(" and A.").append(scheduleTableSchema.state).append("<>'").append(scheduleTableSchema.stateString_END).append('\'')
                 .append(" and A.").append(scheduleTableSchema.state).append("<>'").append(scheduleTableSchema.stateString_DISABLE).append("')")
@@ -3409,8 +3420,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append(" and E.STATE<>'").append(scheduleTableSchema.stateString_ABORT).append('\'')
                 .append(" and E.STATE<>'").append(scheduleTableSchema.stateString_END).append('\'')
                 .append(" and E.STATE<>'").append(scheduleTableSchema.stateString_DISABLE).append("'))")
-                .append(" and ");
-            concatQuery(buf, "E.INITIAL_DATE", "E.INITIAL_TIME").append("=?)")
+                .append(" and E.INITIAL_DATE=? and E.INITIAL_TIME=?)")
                 .append(" or (E.STATE='").append(scheduleTableSchema.stateString_ENTRY).append('\'')
                 .append(" or E.STATE='").append(scheduleTableSchema.stateString_RUN).append('\'')
                 .append(" or E.STATE='").append(scheduleTableSchema.stateString_PAUSE).append("'))) G,")
@@ -3432,8 +3442,9 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append(" where B.MASTER_GROUP_ID=C.").append(scheduleGroupTableSchema.masterGroupId)
                 .append(" and A.ID=C.").append(scheduleGroupTableSchema.id)
                 .append(" and A.ID<>? ")
-                .append(" and ");
-            concatQuery(buf, "A." + scheduleTableSchema.initialDate, "A." + scheduleTableSchema.initialTime).append("=?")
+                .append(" and ")
+                .append("A.").append(scheduleTableSchema.initialDate).append("=?")
+                .append(" and A.").append(scheduleTableSchema.initialTime).append("=?")
                 .append(" and A.STATE='").append(scheduleTableSchema.stateString_INITIAL).append("') D");
             st3Group = con.prepareStatement(buf.toString());
             
@@ -3442,10 +3453,10 @@ public class DatabaseScheduleManagerService extends ServiceBase
             
             buf = null;
             
-            final SimpleDateFormat format = new SimpleDateFormat(
-                dateFormat + timeFormat
-            );
+            final SimpleDateFormat dFormat = new SimpleDateFormat(dateFormat);
+            final SimpleDateFormat tFormat = new SimpleDateFormat(timeFormat);
             final Iterator itr = result.iterator();
+            String initialDate = null;
             String initialTime = null;
             Map isTopGroupMasterIDMap = null;
             Map dependsGroupMap = null;
@@ -3458,12 +3469,18 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     && schedule.getGroupDependsOnGroupMap().size() == 0){
                     continue;
                 }
-                initialTime = format.format(
+                initialDate = dFormat.format(
+                    schedule.getInitialTime() == null
+                        ? schedule.getTime() : schedule.getInitialTime()
+                );
+                initialTime = tFormat.format(
                     schedule.getInitialTime() == null
                         ? schedule.getTime() : schedule.getInitialTime()
                 );
                 if(schedule.getDepends() != null){
                     st1.setString(paramIndex++, schedule.getId());
+                    st1.setString(paramIndex++, initialDate);
+                    st1.setString(paramIndex++, initialDate);
                     st1.setString(paramIndex++, initialTime);
                     rs = st1.executeQuery();
                     rs.next();
@@ -3477,6 +3494,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     paramIndex = 1;
                     st2.setString(paramIndex++, schedule.getId());
                     st2.setString(paramIndex++, schedule.getId());
+                    st2.setString(paramIndex++, initialDate);
                     st2.setString(paramIndex++, initialTime);
                     st2.setString(paramIndex++, schedule.getId());
                     rs = st2.executeQuery();
@@ -3496,6 +3514,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                         paramIndex = 1;
                         st3.setString(paramIndex++, schedule.getId());
                         st3.setString(paramIndex++, schedule.getId());
+                        st3.setString(paramIndex++, initialDate);
                         st3.setString(paramIndex++, initialTime);
                         st3.setString(paramIndex++, schedule.getMasterId());
                         rs = st3.executeQuery();
@@ -3511,8 +3530,10 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 if(schedule.getDependsInGroupMap().size() != 0){
                     paramIndex = 1;
                     st1InGroup.setString(paramIndex++, schedule.getId());
-                    st1InGroup.setString(paramIndex++, initialTime);
                     st1InGroup.setString(paramIndex++, schedule.getId());
+                    st1InGroup.setString(paramIndex++, schedule.getId());
+                    st1InGroup.setString(paramIndex++, initialDate);
+                    st1InGroup.setString(paramIndex++, initialDate);
                     st1InGroup.setString(paramIndex++, initialTime);
                     rs = st1InGroup.executeQuery();
                     rs.next();
@@ -3527,6 +3548,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     st2InGroup.setString(paramIndex++, schedule.getId());
                     st2InGroup.setString(paramIndex++, schedule.getId());
                     st2InGroup.setString(paramIndex++, schedule.getId());
+                    st2InGroup.setString(paramIndex++, initialDate);
                     st2InGroup.setString(paramIndex++, initialTime);
                     st2InGroup.setString(paramIndex++, schedule.getId());
                     rs = st2InGroup.executeQuery();
@@ -3548,6 +3570,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                         st3InGroup.setString(paramIndex++, schedule.getId());
                         st3InGroup.setString(paramIndex++, schedule.getId());
                         st3InGroup.setString(paramIndex++, schedule.getId());
+                        st3InGroup.setString(paramIndex++, initialDate);
                         st3InGroup.setString(paramIndex++, initialTime);
                         st3InGroup.setString(paramIndex++, schedule.getMasterId());
                         rs = st3InGroup.executeQuery();
@@ -3564,6 +3587,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     paramIndex = 1;
                     st1Group.setString(paramIndex++, schedule.getId());
                     st1Group.setString(paramIndex++, schedule.getId());
+                    st1Group.setString(paramIndex++, initialDate);
+                    st1Group.setString(paramIndex++, initialDate);
                     st1Group.setString(paramIndex++, initialTime);
                     rs = st1Group.executeQuery();
                     rs.next();
@@ -3577,6 +3602,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     paramIndex = 1;
                     st2Group.setString(paramIndex++, schedule.getId());
                     st2Group.setString(paramIndex++, schedule.getId());
+                    st2Group.setString(paramIndex++, initialDate);
                     st2Group.setString(paramIndex++, initialTime);
                     st2Group.setString(paramIndex++, schedule.getId());
                     rs = st2Group.executeQuery();
@@ -3596,6 +3622,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                         paramIndex = 1;
                         st3Group.setString(paramIndex++, schedule.getId());
                         st3Group.setString(paramIndex++, schedule.getId());
+                        st3Group.setString(paramIndex++, initialDate);
                         st3Group.setString(paramIndex++, initialTime);
                         rs = st3Group.executeQuery();
                         rs.next();
@@ -3831,14 +3858,15 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }catch(ConnectionFactoryException e){
             throw new ScheduleManageException(e);
         }
-        Statement st = null;
+        PreparedStatement ps = null;
         ResultSet rs = null;
         try{
             StringBuilder buf = new StringBuilder();
             buf.append("select * from ").append(scheduleTableSchema.table)
-                .append(" where ").append(scheduleTableSchema.id).append("='").append(id).append('\'');
-            st = con.createStatement();
-            rs = st.executeQuery(buf.toString());
+                .append(" where ").append(scheduleTableSchema.id).append("=?");
+            ps = con.prepareStatement(buf.toString());
+            ps.setString(1, id);
+            rs = ps.executeQuery();
             final List result = new ArrayList();
             if(!rs.next()){
                 return result;
@@ -3846,16 +3874,21 @@ public class DatabaseScheduleManagerService extends ServiceBase
             Schedule schedule = setGroupDependsOnGroupOnSchedule(con, setGroupIdsOnSchedule(con, setDependsOnSchedule(con, createSchedule(rs))));
             rs.close();
             rs = null;
+            ps.close();
+            ps = null;
             if(schedule.getDepends() == null
                 && schedule.getDependsInGroupMap().size() == 0
                 && schedule.getDependsOnGroup() == null
                 && schedule.getGroupDependsOnGroupMap().size() == 0){
                 return result;
             }
-            final SimpleDateFormat format = new SimpleDateFormat(
-                dateFormat + timeFormat
+            final SimpleDateFormat dFormat = new SimpleDateFormat(dateFormat);
+            final SimpleDateFormat tFormat = new SimpleDateFormat(timeFormat);
+            final String initialDate = dFormat.format(
+                schedule.getInitialTime() == null
+                    ? schedule.getTime() : schedule.getInitialTime()
             );
-            final String initialTime = format.format(
+            final String initialTime = tFormat.format(
                 schedule.getInitialTime() == null
                     ? schedule.getTime() : schedule.getInitialTime()
             );
@@ -3887,11 +3920,11 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append(" from ").append(scheduleTableSchema.table).append(" A, ")
                     .append("(select ").append(scheduleDependsTableSchema.dependsId).append(',').append(scheduleDependsTableSchema.ignoreError)
                     .append(" from ").append(scheduleDependsTableSchema.table)
-                    .append(" where ").append(scheduleDependsTableSchema.id).append("='").append(id).append('\'')
+                    .append(" where ").append(scheduleDependsTableSchema.id).append("=?")
                     .append(" and ").append(scheduleDependsTableSchema.dependsId).append(" is not null")
                     .append(" and ").append(scheduleDependsTableSchema.groupId).append(" is null) B")
                     .append(" where A.").append(scheduleTableSchema.masterId).append("=B.").append(scheduleDependsTableSchema.dependsId)
-                    .append(" and A.").append(scheduleTableSchema.id).append("<>'").append(id).append('\'')
+                    .append(" and A.").append(scheduleTableSchema.id).append("<>?")
                     .append(" and ((((B.").append(scheduleDependsTableSchema.ignoreError).append("<>'1'")
                     .append(" and A.").append(scheduleTableSchema.state).append("<>'").append(scheduleTableSchema.stateString_END).append('\'')
                     .append(" and A.").append(scheduleTableSchema.state).append("<>'").append(scheduleTableSchema.stateString_DISABLE).append("')")
@@ -3900,17 +3933,27 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append(" and A.").append(scheduleTableSchema.state).append("<>'").append(scheduleTableSchema.stateString_ABORT).append('\'')
                     .append(" and A.").append(scheduleTableSchema.state).append("<>'").append(scheduleTableSchema.stateString_END).append('\'')
                     .append(" and A.").append(scheduleTableSchema.state).append("<>'").append(scheduleTableSchema.stateString_DISABLE).append("'))")
-                    .append(" and ");
-                concatQuery(buf, "A." + scheduleTableSchema.initialDate, "A." + scheduleTableSchema.initialTime).append("<'").append(initialTime).append("')")
+                    .append(" and ")
+                    .append("(A.").append(scheduleTableSchema.initialDate).append("<?")
+                    .append(" or (A.").append(scheduleTableSchema.initialDate).append("=?")
+                    .append(" and A.").append(scheduleTableSchema.initialTime).append("<?)))")
                     .append(" or (A.").append(scheduleTableSchema.state).append("='").append(scheduleTableSchema.stateString_ENTRY).append('\'')
                     .append(" or A.").append(scheduleTableSchema.state).append("='").append(scheduleTableSchema.stateString_RUN).append('\'')
                     .append(" or A.").append(scheduleTableSchema.state).append("='").append(scheduleTableSchema.stateString_PAUSE).append("'))");
-                rs = st.executeQuery(buf.toString());
+                ps = con.prepareStatement(buf.toString());
+                ps.setString(1, id);
+                ps.setString(2, id);
+                ps.setString(3, initialDate);
+                ps.setString(4, initialDate);
+                ps.setString(5, initialTime);
+                rs = ps.executeQuery();
                 while(rs.next()){
                     result.add(createSchedule(rs));
                 }
                 rs.close();
                 rs = null;
+                ps.close();
+                ps = null;
                 
                 // 自分と同じ時間で、自分が依存するスケジュールと自分のスケジュールを、IDの昇順で問い合わせる
                 buf.setLength(0);
@@ -3940,7 +3983,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append(" from ").append(scheduleTableSchema.table).append(" A,")
                     .append("(select ").append(scheduleDependsTableSchema.dependsId).append(',').append(scheduleDependsTableSchema.ignoreError)
                     .append(" from ").append(scheduleDependsTableSchema.table)
-                    .append(" where ").append(scheduleDependsTableSchema.id).append("='").append(id).append('\'')
+                    .append(" where ").append(scheduleDependsTableSchema.id).append("=?")
                     .append(" and ").append(scheduleDependsTableSchema.dependsId).append(" is not null")
                     .append(" and ").append(scheduleDependsTableSchema.groupId).append(" is null) B")
                     .append(" where A.").append(scheduleTableSchema.masterId).append("=B.").append(scheduleDependsTableSchema.dependsId)
@@ -3952,8 +3995,9 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append(" and A.").append(scheduleTableSchema.state).append("<>'").append(scheduleTableSchema.stateString_ABORT).append('\'')
                     .append(" and A.").append(scheduleTableSchema.state).append("<>'").append(scheduleTableSchema.stateString_END).append('\'')
                     .append(" and A.").append(scheduleTableSchema.state).append("<>'").append(scheduleTableSchema.stateString_DISABLE).append("'))")
-                    .append(" and ");
-                concatQuery(buf, "A." + scheduleTableSchema.initialDate, "A." + scheduleTableSchema.initialTime).append("='").append(initialTime).append("')")
+                    .append(" and ")
+                    .append(" A.").append(scheduleTableSchema.initialDate).append("=?")
+                    .append(" and A.").append(scheduleTableSchema.initialTime).append("=?)")
                     .append(" or (A.").append(scheduleTableSchema.state).append("='").append(scheduleTableSchema.stateString_ENTRY).append('\'')
                     .append(" or A.").append(scheduleTableSchema.state).append("='").append(scheduleTableSchema.stateString_RUN).append('\'')
                     .append(" or A.").append(scheduleTableSchema.state).append("='").append(scheduleTableSchema.stateString_PAUSE).append("'))")
@@ -3980,9 +4024,14 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append(scheduleTableSchema.executeStartTime).append(',')
                     .append(scheduleTableSchema.executeEndTime)
                     .append(" from ").append(scheduleTableSchema.table)
-                    .append(" where ").append(scheduleTableSchema.id).append("='").append(id).append("') C")
+                    .append(" where ").append(scheduleTableSchema.id).append("=?) C")
                     .append(" order by ").append(scheduleTableSchema.id);
-                rs = st.executeQuery(buf.toString());
+                ps = con.prepareStatement(buf.toString());
+                ps.setString(1, id);
+                ps.setString(2, initialDate);
+                ps.setString(3, initialTime);
+                ps.setString(4, id);
+                rs = ps.executeQuery();
                 final Map doubtSchedules = new HashMap();
                 boolean findMe = false;
                 while(rs.next()){
@@ -3997,6 +4046,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 }
                 rs.close();
                 rs = null;
+                ps.close();
+                ps = null;
                 
                 // 自分と同じ時間で、相互に依存するスケジュールのIDを問い合わせる
                 buf.setLength(0);
@@ -4004,11 +4055,11 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append("(select A.").append(scheduleTableSchema.id).append(" from ").append(scheduleTableSchema.table).append(" A,")
                     .append("(select ").append(scheduleDependsTableSchema.dependsId).append(',').append(scheduleDependsTableSchema.ignoreError)
                     .append(" from ").append(scheduleDependsTableSchema.table)
-                    .append(" where ").append(scheduleDependsTableSchema.id).append("='").append(id).append('\'')
+                    .append(" where ").append(scheduleDependsTableSchema.id).append("=?")
                     .append(" and ").append(scheduleDependsTableSchema.dependsId).append(" is not null")
                     .append(" and ").append(scheduleDependsTableSchema.groupId).append(" is null) B")
                     .append(" where A.").append(scheduleTableSchema.masterId).append("=B.").append(scheduleDependsTableSchema.dependsId)
-                    .append(" and A.").append(scheduleTableSchema.id).append("<>'").append(id).append('\'')
+                    .append(" and A.").append(scheduleTableSchema.id).append("<>?")
                     .append(" and ((((B.").append(scheduleDependsTableSchema.ignoreError).append("<>'1'")
                     .append(" and A.").append(scheduleTableSchema.state).append("<>'").append(scheduleTableSchema.stateString_END).append('\'')
                     .append(" and A.").append(scheduleTableSchema.state).append("<>'").append(scheduleTableSchema.stateString_DISABLE).append("')")
@@ -4017,20 +4068,29 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append(" and A.").append(scheduleTableSchema.state).append("<>'").append(scheduleTableSchema.stateString_ABORT).append('\'')
                     .append(" and A.").append(scheduleTableSchema.state).append("<>'").append(scheduleTableSchema.stateString_END).append('\'')
                     .append(" and A.").append(scheduleTableSchema.state).append("<>'").append(scheduleTableSchema.stateString_DISABLE).append("'))")
-                    .append(" and ");
-                concatQuery(buf, "A." + scheduleTableSchema.initialDate, "A." + scheduleTableSchema.initialTime).append("='").append(initialTime).append("')")
+                    .append(" and ")
+                    .append(" A.").append(scheduleTableSchema.initialDate).append("=?")
+                    .append(" and A.").append(scheduleTableSchema.initialTime).append("=?)")
                     .append(" or (A.").append(scheduleTableSchema.state).append("='").append(scheduleTableSchema.stateString_ENTRY).append('\'')
                     .append(" or A.").append(scheduleTableSchema.state).append("='").append(scheduleTableSchema.stateString_RUN).append('\'')
                     .append(" or A.").append(scheduleTableSchema.state).append("='").append(scheduleTableSchema.stateString_PAUSE).append("'))) C,")
                     .append(" (select ").append(scheduleTableSchema.id).append(" from ").append(scheduleDependsTableSchema.table)
-                    .append(" where ").append(scheduleDependsTableSchema.dependsId).append("='").append(schedule.getMasterId()).append("') D")
+                    .append(" where ").append(scheduleDependsTableSchema.dependsId).append("=?) D")
                     .append(" where C.").append(scheduleTableSchema.id).append("=D.").append(scheduleDependsTableSchema.id);
-                rs = st.executeQuery(buf.toString());
+                ps = con.prepareStatement(buf.toString());
+                ps.setString(1, id);
+                ps.setString(2, id);
+                ps.setString(3, initialDate);
+                ps.setString(4, initialTime);
+                ps.setString(5, schedule.getMasterId());
+                rs = ps.executeQuery();
                 while(rs.next()){
                     doubtSchedules.remove(rs.getString(1));
                 }
                 rs.close();
                 rs = null;
+                ps.close();
+                ps = null;
                 if(doubtSchedules.size() != 0){
                     result.addAll(doubtSchedules.values());
                 }
@@ -4089,14 +4149,14 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append("A.").append(scheduleGroupTableSchema.id).append(" as ID")
                     .append(" from ").append(scheduleGroupTableSchema.table).append(" A,")
                     .append("(select ").append(scheduleGroupTableSchema.groupId).append(" from ").append(scheduleGroupTableSchema.table)
-                    .append(" where ").append(scheduleGroupTableSchema.id).append("='").append(id).append("') B")
+                    .append(" where ").append(scheduleGroupTableSchema.id).append("=?) B")
                     .append(" where ").append("A.").append(scheduleGroupTableSchema.groupId).append("=B.").append(scheduleGroupTableSchema.groupId)
-                    .append(" and ").append("A.").append(scheduleGroupTableSchema.id).append("<>'").append(id).append("') D")
+                    .append(" and ").append("A.").append(scheduleGroupTableSchema.id).append("<>?) D")
                     .append(" where ").append("C.").append(scheduleTableSchema.id).append("=D.ID) E,")
                     .append("(select ").append(scheduleDependsTableSchema.dependsId).append(" as DEPENDS_ID,")
                     .append(scheduleDependsTableSchema.ignoreError).append(" as IGNORE_ERROR")
                     .append(" from ").append(scheduleDependsTableSchema.table)
-                    .append(" where ").append(scheduleDependsTableSchema.id).append("='").append(id).append('\'')
+                    .append(" where ").append(scheduleDependsTableSchema.id).append("=?")
                     .append(" and ").append(scheduleDependsTableSchema.dependsId).append(" is not null")
                     .append(" and ").append(scheduleDependsTableSchema.groupId).append(" is not null) F")
                     .append(" where E.MASTER_ID=F.DEPENDS_ID")
@@ -4109,17 +4169,25 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append(" and E.STATE<>'").append(scheduleTableSchema.stateString_ABORT).append('\'')
                     .append(" and E.STATE<>'").append(scheduleTableSchema.stateString_END).append('\'')
                     .append(" and E.STATE<>'").append(scheduleTableSchema.stateString_DISABLE).append("'))")
-                    .append(" and ");
-                concatQuery(buf, "E.INITIAL_DATE", "E.INITIAL_TIME").append("<'").append(initialTime).append("')")
+                    .append(" and (E.INITIAL_DATE < ? or (E.INITIAL_DATE=? and E.INITIAL_TIME<?)))")
                     .append(" or (E.STATE='").append(scheduleTableSchema.stateString_ENTRY).append('\'')
                     .append(" or E.STATE='").append(scheduleTableSchema.stateString_RUN).append('\'')
                     .append(" or E.STATE='").append(scheduleTableSchema.stateString_PAUSE).append("'))");
-                rs = st.executeQuery(buf.toString());
+                ps = con.prepareStatement(buf.toString());
+                ps.setString(1, id);
+                ps.setString(2, id);
+                ps.setString(3, id);
+                ps.setString(4, initialDate);
+                ps.setString(5, initialDate);
+                ps.setString(6, initialTime);
+                rs = ps.executeQuery();
                 while(rs.next()){
                     result.add(createSchedule(rs));
                 }
                 rs.close();
                 rs = null;
+                ps.close();
+                ps = null;
                 
                 // グループ内で、自分と同じ時間で、自分が依存するスケジュールと自分のスケジュールを、IDの昇順で問い合わせる
                 buf.setLength(0);
@@ -4174,14 +4242,14 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append("A.").append(scheduleGroupTableSchema.id).append(" as ID")
                     .append(" from ").append(scheduleGroupTableSchema.table).append(" A,")
                     .append("(select ").append(scheduleGroupTableSchema.groupId).append(" from ").append(scheduleGroupTableSchema.table)
-                    .append(" where ").append(scheduleGroupTableSchema.id).append("='").append(id).append("') B")
+                    .append(" where ").append(scheduleGroupTableSchema.id).append("=?) B")
                     .append(" where ").append("A.").append(scheduleGroupTableSchema.groupId).append("=B.").append(scheduleGroupTableSchema.groupId)
-                    .append(" and ").append("A.").append(scheduleGroupTableSchema.id).append("<>'").append(id).append("') D")
+                    .append(" and ").append("A.").append(scheduleGroupTableSchema.id).append("<>?) D")
                     .append(" where ").append("C.").append(scheduleTableSchema.id).append("=D.ID) E,")
                     .append("(select ").append(scheduleDependsTableSchema.dependsId).append(" as DEPENDS_ID,")
                     .append(scheduleDependsTableSchema.ignoreError).append(" as IGNORE_ERROR")
                     .append(" from ").append(scheduleDependsTableSchema.table)
-                    .append(" where ").append(scheduleDependsTableSchema.id).append("='").append(id).append('\'')
+                    .append(" where ").append(scheduleDependsTableSchema.id).append("=?")
                     .append(" and ").append(scheduleDependsTableSchema.dependsId).append(" is not null")
                     .append(" and ").append(scheduleDependsTableSchema.groupId).append(" is not null) F")
                     .append(" where E.MASTER_ID=F.DEPENDS_ID")
@@ -4193,8 +4261,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append(" and E.STATE<>'").append(scheduleTableSchema.stateString_ABORT).append('\'')
                     .append(" and E.STATE<>'").append(scheduleTableSchema.stateString_END).append('\'')
                     .append(" and E.STATE<>'").append(scheduleTableSchema.stateString_DISABLE).append("'))")
-                    .append(" and ");
-                concatQuery(buf, "E.INITIAL_DATE", "E.INITIAL_TIME").append("='").append(initialTime).append("')")
+                    .append(" and ")
+                    .append(" and E.INITIAL_DATE=? and E.INITIAL_TIME=?)")
                     .append(" or (E.STATE='").append(scheduleTableSchema.stateString_ENTRY).append('\'')
                     .append(" or E.STATE='").append(scheduleTableSchema.stateString_RUN).append('\'')
                     .append(" or E.STATE='").append(scheduleTableSchema.stateString_PAUSE).append("'))")
@@ -4221,9 +4289,16 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append(scheduleTableSchema.executeStartTime).append(',')
                     .append(scheduleTableSchema.executeEndTime)
                     .append(" from ").append(scheduleTableSchema.table)
-                    .append(" where ").append(scheduleTableSchema.id).append("='").append(id).append("') G")
+                    .append(" where ").append(scheduleTableSchema.id).append("=?) G")
                     .append(" order by ").append(scheduleTableSchema.id);
-                rs = st.executeQuery(buf.toString());
+                ps = con.prepareStatement(buf.toString());
+                ps.setString(1, id);
+                ps.setString(2, id);
+                ps.setString(3, id);
+                ps.setString(4, initialDate);
+                ps.setString(5, initialTime);
+                ps.setString(6, id);
+                rs = ps.executeQuery();
                 final Map doubtSchedules = new HashMap();
                 boolean findMe = false;
                 while(rs.next()){
@@ -4238,6 +4313,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 }
                 rs.close();
                 rs = null;
+                ps.close();
+                ps = null;
                 
                 // グループ内で、自分と同じ時間で、相互に依存するスケジュールのIDを問い合わせる
                 buf.setLength(0);
@@ -4254,18 +4331,18 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append("A.").append(scheduleGroupTableSchema.id).append(" as ID")
                     .append(" from ").append(scheduleGroupTableSchema.table).append(" A,")
                     .append("(select ").append(scheduleGroupTableSchema.groupId).append(" from ").append(scheduleGroupTableSchema.table)
-                    .append(" where ").append(scheduleGroupTableSchema.id).append("='").append(id).append("') B")
+                    .append(" where ").append(scheduleGroupTableSchema.id).append("=?) B")
                     .append(" where ").append("A.").append(scheduleGroupTableSchema.groupId).append("=B.").append(scheduleGroupTableSchema.groupId)
-                    .append(" and ").append("A.").append(scheduleGroupTableSchema.id).append("<>'").append(id).append("') D")
+                    .append(" and ").append("A.").append(scheduleGroupTableSchema.id).append("<>?) D")
                     .append(" where ").append("C.").append(scheduleTableSchema.id).append("=D.ID) E,")
                     .append("(select ").append(scheduleDependsTableSchema.dependsId).append(" as DEPENDS_ID,")
                     .append(scheduleDependsTableSchema.ignoreError).append(" as IGNORE_ERROR")
                     .append(" from ").append(scheduleDependsTableSchema.table)
-                    .append(" where ").append(scheduleDependsTableSchema.id).append("='").append(id).append('\'')
+                    .append(" where ").append(scheduleDependsTableSchema.id).append("=?")
                     .append(" and ").append(scheduleDependsTableSchema.dependsId).append(" is not null")
                     .append(" and ").append(scheduleDependsTableSchema.groupId).append(" is not null) F")
                     .append(" where E.MASTER_ID=F.DEPENDS_ID")
-                    .append(" and E.ID<>'").append(id).append('\'')
+                    .append(" and E.ID<>?")
                     .append(" and ((((F.IGNORE_ERROR<>'1'")
                     .append(" and E.STATE<>'").append(scheduleTableSchema.stateString_END).append('\'')
                     .append(" and E.STATE<>'").append(scheduleTableSchema.stateString_DISABLE).append("')")
@@ -4274,20 +4351,30 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append(" and E.STATE<>'").append(scheduleTableSchema.stateString_ABORT).append('\'')
                     .append(" and E.STATE<>'").append(scheduleTableSchema.stateString_END).append('\'')
                     .append(" and E.STATE<>'").append(scheduleTableSchema.stateString_DISABLE).append("'))")
-                    .append(" and ");
-                concatQuery(buf, "E.INITIAL_DATE", "E.INITIAL_TIME").append("='").append(initialTime).append("')")
+                    .append(" and ")
+                    .append(" and E.INITIAL_DATE=? and E.INITIAL_TIME=?)")
                     .append(" or (E.STATE='").append(scheduleTableSchema.stateString_ENTRY).append('\'')
                     .append(" or E.STATE='").append(scheduleTableSchema.stateString_RUN).append('\'')
                     .append(" or E.STATE='").append(scheduleTableSchema.stateString_PAUSE).append("'))) G,")
                     .append("(select ").append(scheduleDependsTableSchema.id).append(" from ").append(scheduleDependsTableSchema.table)
-                    .append(" where ").append(scheduleDependsTableSchema.dependsId).append("='").append(schedule.getMasterId()).append("') H")
+                    .append(" where ").append(scheduleDependsTableSchema.dependsId).append("=?) H")
                     .append(" where G.ID=H.").append(scheduleDependsTableSchema.id);
-                rs = st.executeQuery(buf.toString());
+                ps = con.prepareStatement(buf.toString());
+                ps.setString(1, id);
+                ps.setString(2, id);
+                ps.setString(3, id);
+                ps.setString(4, id);
+                ps.setString(5, initialDate);
+                ps.setString(6, initialTime);
+                ps.setString(7, schedule.getMasterId());
+                rs = ps.executeQuery();
                 while(rs.next()){
                     doubtSchedules.remove(rs.getString(1));
                 }
                 rs.close();
                 rs = null;
+                ps.close();
+                ps = null;
                 if(doubtSchedules.size() != 0){
                     result.addAll(doubtSchedules.values());
                 }
@@ -4353,7 +4440,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append(scheduleDependsTableSchema.dependsGroupId).append(" as MASTER_GROUP_ID,")
                     .append(scheduleDependsTableSchema.ignoreError).append(" as IGNORE_ERROR")
                     .append(" from ").append(scheduleDependsTableSchema.table)
-                    .append(" where ").append(scheduleDependsTableSchema.id).append("='").append(id).append('\'')
+                    .append(" where ").append(scheduleDependsTableSchema.id).append("=?")
                     .append(" and ").append(scheduleDependsTableSchema.dependsGroupId).append(" is not null) B")
                     .append(" where A.").append(scheduleGroupTableSchema.masterGroupId).append("=B.MASTER_GROUP_ID")
                     .append(" and ((B.IGNORE_ERROR<>'1'")
@@ -4372,30 +4459,37 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append("(select ")
                     .append(scheduleDependsTableSchema.dependsGroupId).append(" as MASTER_GROUP_ID")
                     .append(" from ").append(scheduleDependsTableSchema.table)
-                    .append(" where ").append(scheduleDependsTableSchema.id).append("='").append(id).append('\'')
+                    .append(" where ").append(scheduleDependsTableSchema.id).append("=?")
                     .append(" and ").append(scheduleDependsTableSchema.dependsGroupId).append(" is not null) D")
                     .append(" where C.").append(scheduleGroupTableSchema.masterGroupId).append("=D.MASTER_GROUP_ID")
                     .append(" and C.").append(scheduleGroupTableSchema.id).append(" in (select ")
                     .append(scheduleTableSchema.id).append(" from ").append(scheduleTableSchema.table)
-                    .append(" where ");
-                concatQuery(buf, scheduleTableSchema.initialDate, scheduleTableSchema.initialTime).append("<='").append(initialTime)
-                    .append("')) F,")
+                    .append(" where ")
+                    .append(scheduleTableSchema.initialDate).append("<?")
+                    .append(" or (").append(scheduleTableSchema.initialDate).append("=?")
+                    .append(" and ").append(scheduleTableSchema.initialTime).append("<=?))) F,")
                     .append(scheduleTableSchema.table).append(" G")
                     .append(" where E.").append(scheduleGroupTableSchema.groupId).append("=F.").append(scheduleGroupTableSchema.groupId)
                     .append(" and E.").append(scheduleGroupTableSchema.masterGroupId).append("=F.").append(scheduleGroupTableSchema.masterGroupId)
                     .append(" and F.").append(scheduleGroupTableSchema.id).append("=G.").append(scheduleTableSchema.id);
-                rs = st.executeQuery(buf.toString());
+                ps = con.prepareStatement(buf.toString());
+                ps.setString(1, id);
+                ps.setString(2, id);
+                ps.setString(3, initialDate);
+                ps.setString(4, initialDate);
+                ps.setString(5, initialTime);
+                rs = ps.executeQuery();
                 while(rs.next()){
                     result.add(createSchedule(rs));
                 }
                 rs.close();
                 rs = null;
+                ps.close();
+                ps = null;
             }
             if(schedule.getGroupDependsOnGroupMap().size() != 0){
                 //TODO : 
             }
-            st.close();
-            st = null;
             setDependsOnSchedules(con, result);
             setGroupIdsOnSchedules(con, result);
             setGroupDependsOnGroupOnSchedules(con, result);
@@ -4418,9 +4512,9 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 }catch(SQLException e){
                 }
             }
-            if(st != null){
+            if(ps != null){
                 try{
-                    st.close();
+                    ps.close();
                 }catch(SQLException e){
                 }
             }
@@ -4441,30 +4535,36 @@ public class DatabaseScheduleManagerService extends ServiceBase
         }catch(ConnectionFactoryException e){
             throw new ScheduleManageException(e);
         }
-        Statement st = null;
+        PreparedStatement ps = null;
         ResultSet rs = null;
         try{
             StringBuilder buf = new StringBuilder();
             buf.append("select *  from ").append(scheduleTableSchema.table)
-                .append(" where ").append(scheduleTableSchema.id).append("='").append(id).append('\'')
+                .append(" where ").append(scheduleTableSchema.id).append("=?")
                 .append(" and ").append(scheduleTableSchema.state).append("<>'").append(scheduleTableSchema.stateString_END).append('\'')
                 .append(" and ").append(scheduleTableSchema.state).append("<>'").append(scheduleTableSchema.stateString_DISABLE).append('\'');
-            st = con.createStatement();
-            rs = st.executeQuery(buf.toString());
+            ps = con.prepareStatement(buf.toString());
+            ps.setString(1, id);
+            rs = ps.executeQuery();
             final List result = new ArrayList();
             if(!rs.next()){
                 return result;
             }
             Schedule schedule = setGroupDependsOnGroupOnSchedule(con, setGroupIdsOnSchedule(con, setDependsOnSchedule(con, createSchedule(rs))));
-            final SimpleDateFormat format = new SimpleDateFormat(
-                dateFormat + timeFormat
+            final SimpleDateFormat dFormat = new SimpleDateFormat(dateFormat);
+            final SimpleDateFormat tFormat = new SimpleDateFormat(timeFormat);
+            final String initialDate = dFormat.format(
+                schedule.getInitialTime() == null
+                    ? schedule.getTime() : schedule.getInitialTime()
             );
-            final String initialTime = format.format(
+            final String initialTime = tFormat.format(
                 schedule.getInitialTime() == null
                     ? schedule.getTime() : schedule.getInitialTime()
             );
             rs.close();
             rs = null;
+            ps.close();
+            ps = null;
             
             // 自分より後の時間で、自分に依存するスケジュールを問い合わせる
             buf.setLength(0);
@@ -4493,24 +4593,34 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append(" from ").append(scheduleTableSchema.table).append(" A,")
                 .append("(select ").append(scheduleDependsTableSchema.id).append(',').append(scheduleDependsTableSchema.ignoreError)
                 .append(" from ").append(scheduleDependsTableSchema.table)
-                .append(" where ").append(scheduleDependsTableSchema.dependsId).append("='").append(schedule.getMasterId()).append('\'')
+                .append(" where ").append(scheduleDependsTableSchema.dependsId).append("=?")
                 .append(" and ").append(scheduleDependsTableSchema.dependsId).append(" is not null")
                 .append(" and ").append(scheduleDependsTableSchema.groupId).append(" is null")
-                .append(" and ").append(scheduleDependsTableSchema.id).append("<>'").append(id).append("\') B")
+                .append(" and ").append(scheduleDependsTableSchema.id).append("<>?) B")
                 .append(" where A.").append(scheduleTableSchema.id).append("=B.").append(scheduleDependsTableSchema.id)
                 .append(" and (A.").append(scheduleTableSchema.state).append("='").append(scheduleTableSchema.stateString_INITIAL).append('\'')
                 .append(" or A.").append(scheduleTableSchema.state).append("='").append(scheduleTableSchema.stateString_RETRY).append("')");
             if(schedule.getState() == Schedule.STATE_FAILED || schedule.getState() == Schedule.STATE_ABORT){
                 buf.append(" and B.").append(scheduleDependsTableSchema.ignoreError).append("<>'1'");
             }
-            buf.append(" and ");
-            concatQuery(buf, scheduleTableSchema.initialDate, scheduleTableSchema.initialTime).append(">'").append(initialTime).append('\'');
-            rs = st.executeQuery(buf.toString());
+            buf.append(" and (A.")
+                .append(scheduleTableSchema.initialDate).append(">?")
+                .append(" or (A.").append(scheduleTableSchema.initialDate).append("=?")
+                .append(" and A.").append(scheduleTableSchema.initialTime).append(">?))");
+            ps = con.prepareStatement(buf.toString());
+            ps.setString(1, schedule.getMasterId());
+            ps.setString(2, id);
+            ps.setString(3, initialDate);
+            ps.setString(4, initialDate);
+            ps.setString(5, initialTime);
+            rs = ps.executeQuery();
             while(rs.next()){
                 result.add(createSchedule(rs));
             }
             rs.close();
             rs = null;
+            ps.close();
+            ps = null;
             
             // 自分と同じ時間で、自分に依存するスケジュールと自分のスケジュールを、IDの昇順で問い合わせる
             buf.setLength(0);
@@ -4540,18 +4650,18 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append(" from ").append(scheduleTableSchema.table).append(" A,")
                 .append("(select ").append(scheduleDependsTableSchema.id).append(',').append(scheduleDependsTableSchema.ignoreError)
                 .append(" from ").append(scheduleDependsTableSchema.table)
-                .append(" where ").append(scheduleDependsTableSchema.dependsId).append("='").append(schedule.getMasterId()).append('\'')
+                .append(" where ").append(scheduleDependsTableSchema.dependsId).append("=?")
                 .append(" and ").append(scheduleDependsTableSchema.dependsId).append(" is not null")
                 .append(" and ").append(scheduleDependsTableSchema.groupId).append(" is null")
-                .append(" and ").append(scheduleDependsTableSchema.id).append("<>'").append(id).append("\') B")
+                .append(" and ").append(scheduleDependsTableSchema.id).append("<>?) B")
                 .append(" where A.").append(scheduleTableSchema.id).append("=B.").append(scheduleDependsTableSchema.id)
                 .append(" and (A.").append(scheduleTableSchema.state).append("='").append(scheduleTableSchema.stateString_INITIAL).append('\'')
                 .append(" or A.").append(scheduleTableSchema.state).append("='").append(scheduleTableSchema.stateString_RETRY).append("')");
             if(schedule.getState() == Schedule.STATE_FAILED || schedule.getState() == Schedule.STATE_ABORT){
                 buf.append(" and B.").append(scheduleDependsTableSchema.ignoreError).append("<>'1'");
             }
-            buf.append(" and ");
-            concatQuery(buf, scheduleTableSchema.initialDate, scheduleTableSchema.initialTime).append("='").append(initialTime).append("'")
+            buf.append(" and A.").append(scheduleTableSchema.initialDate).append("=?")
+                .append(" and A.").append(scheduleTableSchema.initialTime).append("=?")
                 .append(" union select ")
                 .append(scheduleTableSchema.id).append(',')
                 .append(scheduleTableSchema.masterId).append(',')
@@ -4575,9 +4685,15 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append(scheduleTableSchema.executeStartTime).append(',')
                 .append(scheduleTableSchema.executeEndTime)
                 .append(" from ").append(scheduleTableSchema.table)
-                .append(" where ").append(scheduleTableSchema.id).append("='").append(id).append("') C")
+                .append(" where ").append(scheduleTableSchema.id).append("=?) C")
                 .append(" order by ").append(scheduleTableSchema.id);
-            rs = st.executeQuery(buf.toString());
+            ps = con.prepareStatement(buf.toString());
+            ps.setString(1, schedule.getMasterId());
+            ps.setString(2, id);
+            ps.setString(3, initialDate);
+            ps.setString(4, initialTime);
+            ps.setString(5, id);
+            rs = ps.executeQuery();
             final Map doubtSchedules = new HashMap();
             boolean findMe = false;
             while(rs.next()){
@@ -4592,6 +4708,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
             }
             rs.close();
             rs = null;
+            ps.close();
+            ps = null;
             
             // 自分と同じ時間で、相互に依存するスケジュールのIDを問い合わせる
             buf.setLength(0);
@@ -4599,29 +4717,37 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 .append("(select A.").append(scheduleTableSchema.id).append(" from ").append(scheduleTableSchema.table).append(" A,")
                 .append("(select ").append(scheduleDependsTableSchema.dependsId).append(',').append(scheduleDependsTableSchema.ignoreError)
                 .append(" from ").append(scheduleDependsTableSchema.table)
-                .append(" where ").append(scheduleDependsTableSchema.id).append("='").append(id).append('\'')
+                .append(" where ").append(scheduleDependsTableSchema.id).append("=?")
                 .append(" and ").append(scheduleDependsTableSchema.dependsId).append(" is not null")
                 .append(" and ").append(scheduleDependsTableSchema.groupId).append(" is null) B")
                 .append(" where A.").append(scheduleTableSchema.masterId).append("=B.").append(scheduleDependsTableSchema.dependsId)
-                .append(" and A.").append(scheduleTableSchema.id).append("<>'").append(id).append('\'')
+                .append(" and A.").append(scheduleTableSchema.id).append("<>?")
                 .append(" and (A.").append(scheduleTableSchema.state).append("='").append(scheduleTableSchema.stateString_INITIAL).append('\'')
                 .append(" or A.").append(scheduleTableSchema.state).append("='").append(scheduleTableSchema.stateString_RETRY).append("')");
             if(schedule.getState() == Schedule.STATE_FAILED || schedule.getState() == Schedule.STATE_ABORT){
                 buf.append(" and B.").append(scheduleDependsTableSchema.ignoreError).append("<>'1'");
             }
-            buf.append(" and ");
-            concatQuery(buf, "A." + scheduleTableSchema.initialDate, "A." + scheduleTableSchema.initialTime).append("='").append(initialTime).append("') C,")
+            buf.append(" and A.").append(scheduleTableSchema.initialDate).append("=?")
+                .append(" and A.").append(scheduleTableSchema.initialTime).append("=?) C,")
                 .append(" (select ").append(scheduleTableSchema.id).append(" from ").append(scheduleDependsTableSchema.table)
-                .append(" where ").append(scheduleDependsTableSchema.dependsId).append("='").append(schedule.getMasterId()).append('\'')
+                .append(" where ").append(scheduleDependsTableSchema.dependsId).append("=?")
                 .append(" and ").append(scheduleDependsTableSchema.dependsId).append(" is not null")
                 .append(" and ").append(scheduleDependsTableSchema.groupId).append(" is null) D")
                 .append(" where C.").append(scheduleTableSchema.id).append("=D.").append(scheduleDependsTableSchema.id);
-            rs = st.executeQuery(buf.toString());
+            ps = con.prepareStatement(buf.toString());
+            ps.setString(1, id);
+            ps.setString(2, id);
+            ps.setString(3, initialDate);
+            ps.setString(4, initialTime);
+            ps.setString(5, schedule.getMasterId());
+            rs = ps.executeQuery();
             while(rs.next()){
                 doubtSchedules.remove(rs.getString(1));
             }
             rs.close();
             rs = null;
+            ps.close();
+            ps = null;
             if(doubtSchedules.size() != 0){
                 result.addAll(doubtSchedules.values());
             }
@@ -4679,31 +4805,43 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append("A.").append(scheduleGroupTableSchema.id).append(" as ID")
                     .append(" from ").append(scheduleGroupTableSchema.table).append(" A,")
                     .append("(select ").append(scheduleGroupTableSchema.groupId).append(" from ").append(scheduleGroupTableSchema.table)
-                    .append(" where ").append(scheduleGroupTableSchema.id).append("='").append(id).append("') B")
+                    .append(" where ").append(scheduleGroupTableSchema.id).append("=?) B")
                     .append(" where ").append("A.").append(scheduleGroupTableSchema.groupId).append("=B.").append(scheduleGroupTableSchema.groupId)
-                    .append(" and ").append("A.").append(scheduleGroupTableSchema.id).append("<>'").append(id).append("') D")
+                    .append(" and ").append("A.").append(scheduleGroupTableSchema.id).append("<>?) D")
                     .append(" where ").append("C.").append(scheduleTableSchema.id).append("=D.ID) E,")
                     .append("(select ").append(scheduleDependsTableSchema.id).append(" as ID,")
                     .append(scheduleDependsTableSchema.ignoreError).append(" as IGNORE_ERROR")
                     .append(" from ").append(scheduleDependsTableSchema.table)
-                    .append(" where ").append(scheduleDependsTableSchema.dependsId).append("='").append(schedule.getMasterId()).append('\'')
+                    .append(" where ").append(scheduleDependsTableSchema.dependsId).append("=?")
                     .append(" and ").append(scheduleDependsTableSchema.dependsId).append(" is not null")
                     .append(" and ").append(scheduleDependsTableSchema.groupId).append(" is not null")
-                    .append(" and ").append(scheduleDependsTableSchema.id).append("<>'").append(id).append("\') F")
+                    .append(" and ").append(scheduleDependsTableSchema.id).append("<>?) F")
                     .append(" where E.ID=F.ID")
                     .append(" and (E.STATE='").append(scheduleTableSchema.stateString_INITIAL).append('\'')
                     .append(" or E.STATE='").append(scheduleTableSchema.stateString_RETRY).append("')");
                 if(schedule.getState() == Schedule.STATE_FAILED || schedule.getState() == Schedule.STATE_ABORT){
                     buf.append(" and F.IGNORE_ERROR<>'1'");
                 }
-                buf.append(" and ");
-                concatQuery(buf, "E." + scheduleTableSchema.initialDate, "E." + scheduleTableSchema.initialTime).append(">'").append(initialTime).append('\'');
-                rs = st.executeQuery(buf.toString());
+                buf.append(" and (E.")
+                    .append(scheduleTableSchema.initialDate).append(">?")
+                    .append(" or (E.").append(scheduleTableSchema.initialDate).append("=?")
+                    .append(" and E.").append(scheduleTableSchema.initialTime).append(">?))");
+                ps = con.prepareStatement(buf.toString());
+                ps.setString(1, id);
+                ps.setString(2, id);
+                ps.setString(3, schedule.getMasterId());
+                ps.setString(4, id);
+                ps.setString(5, initialDate);
+                ps.setString(6, initialDate);
+                ps.setString(7, initialTime);
+                rs = ps.executeQuery();
                 while(rs.next()){
                     result.add(createSchedule(rs));
                 }
                 rs.close();
                 rs = null;
+                ps.close();
+                ps = null;
                 
                 // グループ内で、自分と同じ時間で、自分に依存するスケジュールと自分のスケジュールを、IDの昇順で問い合わせる
                 buf.setLength(0);
@@ -4758,25 +4896,24 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append("A.").append(scheduleGroupTableSchema.id).append(" as ID")
                     .append(" from ").append(scheduleGroupTableSchema.table).append(" A,")
                     .append("(select ").append(scheduleGroupTableSchema.groupId).append(" from ").append(scheduleGroupTableSchema.table)
-                    .append(" where ").append(scheduleGroupTableSchema.id).append("='").append(id).append("') B")
+                    .append(" where ").append(scheduleGroupTableSchema.id).append("=?) B")
                     .append(" where ").append("A.").append(scheduleGroupTableSchema.groupId).append("=B.").append(scheduleGroupTableSchema.groupId)
-                    .append(" and ").append("A.").append(scheduleGroupTableSchema.id).append("<>'").append(id).append("') D")
+                    .append(" and ").append("A.").append(scheduleGroupTableSchema.id).append("<>?) D")
                     .append(" where ").append("C.").append(scheduleTableSchema.id).append("=D.ID) E,")
                     .append("(select ").append(scheduleDependsTableSchema.id).append(" as ID,")
                     .append(scheduleDependsTableSchema.ignoreError).append(" as IGNORE_ERROR")
                     .append(" from ").append(scheduleDependsTableSchema.table)
-                    .append(" where ").append(scheduleDependsTableSchema.dependsId).append("='").append(schedule.getMasterId()).append('\'')
+                    .append(" where ").append(scheduleDependsTableSchema.dependsId).append("=?")
                     .append(" and ").append(scheduleDependsTableSchema.dependsId).append(" is not null")
                     .append(" and ").append(scheduleDependsTableSchema.groupId).append(" is not null")
-                    .append(" and ").append(scheduleDependsTableSchema.id).append("<>'").append(id).append("\') F")
+                    .append(" and ").append(scheduleDependsTableSchema.id).append("<>?) F")
                     .append(" where E.ID=F.ID")
                     .append(" and (E.STATE='").append(scheduleTableSchema.stateString_INITIAL).append('\'')
                     .append(" or E.STATE='").append(scheduleTableSchema.stateString_RETRY).append("')");
                 if(schedule.getState() == Schedule.STATE_FAILED || schedule.getState() == Schedule.STATE_ABORT){
                     buf.append(" and F.IGNORE_ERROR<>'1'");
                 }
-                buf.append(" and ");
-                concatQuery(buf, "E." + scheduleTableSchema.initialDate, "E." + scheduleTableSchema.initialTime).append("='").append(initialTime).append("'")
+                buf.append(" and E.").append(scheduleTableSchema.initialDate).append("=? and E.").append(scheduleTableSchema.initialTime).append("=?")
                     .append(" union select ")
                     .append(scheduleTableSchema.id).append(',')
                     .append(scheduleTableSchema.masterId).append(',')
@@ -4800,9 +4937,17 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append(scheduleTableSchema.executeStartTime).append(',')
                     .append(scheduleTableSchema.executeEndTime)
                     .append(" from ").append(scheduleTableSchema.table)
-                    .append(" where ").append(scheduleTableSchema.id).append("='").append(id).append("') G")
+                    .append(" where ").append(scheduleTableSchema.id).append("=?) G")
                     .append(" order by ").append(scheduleTableSchema.id);
-                rs = st.executeQuery(buf.toString());
+                ps = con.prepareStatement(buf.toString());
+                ps.setString(1, id);
+                ps.setString(2, id);
+                ps.setString(3, schedule.getMasterId());
+                ps.setString(4, id);
+                ps.setString(5, initialDate);
+                ps.setString(6, initialTime);
+                ps.setString(7, id);
+                rs = ps.executeQuery();
                 doubtSchedules.clear();
                 findMe = false;
                 while(rs.next()){
@@ -4817,6 +4962,8 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 }
                 rs.close();
                 rs = null;
+                ps.close();
+                ps = null;
                 
                 // グループ内で、自分と同じ時間で、相互に依存するスケジュールのIDを問い合わせる
                 buf.setLength(0);
@@ -4849,36 +4996,45 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append("A.").append(scheduleGroupTableSchema.id).append(" as ID")
                     .append(" from ").append(scheduleGroupTableSchema.table).append(" A,")
                     .append("(select ").append(scheduleGroupTableSchema.groupId).append(" from ").append(scheduleGroupTableSchema.table)
-                    .append(" where ").append(scheduleGroupTableSchema.id).append("='").append(id).append("') B")
+                    .append(" where ").append(scheduleGroupTableSchema.id).append("=?) B")
                     .append(" where ").append("A.").append(scheduleGroupTableSchema.groupId).append("=B.").append(scheduleGroupTableSchema.groupId)
-                    .append(" and ").append("A.").append(scheduleGroupTableSchema.id).append("<>'").append(id).append("') D")
+                    .append(" and ").append("A.").append(scheduleGroupTableSchema.id).append("<>?) D")
                     .append(" where ").append("C.").append(scheduleTableSchema.id).append("=D.ID) E,")
                     .append("(select ").append(scheduleDependsTableSchema.dependsId).append(" as DEPENDS_ID,")
                     .append(scheduleDependsTableSchema.ignoreError).append(" as IGNORE_ERROR")
                     .append(" from ").append(scheduleDependsTableSchema.table)
-                    .append(" where ").append(scheduleDependsTableSchema.id).append("='").append(id).append('\'')
+                    .append(" where ").append(scheduleDependsTableSchema.id).append("=?")
                     .append(" and ").append(scheduleDependsTableSchema.dependsId).append(" is not null")
                     .append(" and ").append(scheduleDependsTableSchema.groupId).append(" is not null) F")
                     .append(" where E.MASTER_ID=F.DEPENDS_ID")
-                    .append(" and E.ID<>'").append(id).append('\'')
+                    .append(" and E.ID<>?")
                     .append(" and (E.STATE='").append(scheduleTableSchema.stateString_INITIAL).append('\'')
                     .append(" or E.STATE='").append(scheduleTableSchema.stateString_RETRY).append("')");
                 if(schedule.getState() == Schedule.STATE_FAILED || schedule.getState() == Schedule.STATE_ABORT){
                     buf.append(" and F.IGNORE_ERROR<>'1'");
                 }
-                buf.append(" and ");
-                concatQuery(buf, "E." + scheduleTableSchema.initialDate, "E." + scheduleTableSchema.initialTime).append("='").append(initialTime).append("') G,")
+                buf.append(" and E.").append(scheduleTableSchema.initialDate).append("=? and E.").append(scheduleTableSchema.initialTime).append("=?) G,")
                     .append(" (select ").append(scheduleTableSchema.id).append(" as ID from ").append(scheduleDependsTableSchema.table)
-                    .append(" where ").append(scheduleDependsTableSchema.dependsId).append("='").append(schedule.getMasterId()).append('\'')
+                    .append(" where ").append(scheduleDependsTableSchema.dependsId).append("=?")
                     .append(" and ").append(scheduleDependsTableSchema.dependsId).append(" is not null")
                     .append(" and ").append(scheduleDependsTableSchema.groupId).append(" is not null) H")
                     .append(" where G.ID=H.ID");
-                rs = st.executeQuery(buf.toString());
+                ps = con.prepareStatement(buf.toString());
+                ps.setString(1, id);
+                ps.setString(2, id);
+                ps.setString(3, id);
+                ps.setString(4, id);
+                ps.setString(5, initialDate);
+                ps.setString(6, initialTime);
+                ps.setString(7, schedule.getMasterId());
+                rs = ps.executeQuery();
                 while(rs.next()){
                     doubtSchedules.remove(rs.getString(1));
                 }
                 rs.close();
                 rs = null;
+                ps.close();
+                ps = null;
                 if(doubtSchedules.size() != 0){
                     result.addAll(doubtSchedules.values());
                 }
@@ -4912,7 +5068,7 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append(" from ").append(scheduleDependsTableSchema.table).append(" B,")
                     .append("(select ").append(scheduleGroupTableSchema.groupId)
                     .append(" from ").append(scheduleGroupTableSchema.table)
-                    .append(" where ").append(scheduleGroupTableSchema.id).append("='").append(id).append("') C")
+                    .append(" where ").append(scheduleGroupTableSchema.id).append("=?) C")
                     .append(" where B.").append(scheduleDependsTableSchema.dependsGroupId).append("=C.").append(scheduleGroupTableSchema.groupId);
                 if(schedule.getState() == Schedule.STATE_FAILED || schedule.getState() == Schedule.STATE_ABORT){
                     buf.append(" and B.").append(scheduleDependsTableSchema.ignoreError).append("<>'1'");
@@ -4925,24 +5081,27 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     .append(" where ").append(scheduleTableSchema.id).append(" in (")
                     .append("select E.").append(scheduleGroupTableSchema.id).append(" from ").append(scheduleGroupTableSchema.table).append(" E,")
                     .append("(select ").append(scheduleGroupTableSchema.groupId).append(" from ").append(scheduleGroupTableSchema.table)
-                    .append(" where ").append(scheduleGroupTableSchema.id).append("='").append(id).append("') F")
+                    .append(" where ").append(scheduleGroupTableSchema.id).append("=?) F")
                     .append(" where ").append("E.").append(scheduleGroupTableSchema.groupId).append("=F.").append(scheduleGroupTableSchema.groupId).append(")) G) H")
-                    .append(" where A.").append(scheduleTableSchema.id).append("<>'").append(id).append('\'')
+                    .append(" where A.").append(scheduleTableSchema.id).append("<>?")
                     .append(" and A.").append(scheduleTableSchema.id).append("=D.ID")
                     .append(" and (A.").append(scheduleTableSchema.state).append("='").append(scheduleTableSchema.stateString_INITIAL).append('\'')
                     .append(" or A.").append(scheduleTableSchema.state).append("='").append(scheduleTableSchema.stateString_RETRY).append("')")
                     .append(" and ");
                 concatQuery(buf, "A." + scheduleTableSchema.initialDate, "A." + scheduleTableSchema.initialTime).append(">=H.INITIAL_DATETIME");
-                rs = st.executeQuery(buf.toString());
+                ps = con.prepareStatement(buf.toString());
+                ps.setString(1, id);
+                ps.setString(2, id);
+                ps.setString(3, id);
+                rs = ps.executeQuery();
                 while(rs.next()){
                     result.add(createSchedule(rs));
                 }
                 rs.close();
                 rs = null;
+                ps.close();
+                ps = null;
             }
-            
-            st.close();
-            st = null;
             
             setDependsOnSchedules(con, result);
             setGroupIdsOnSchedules(con, result);
@@ -4966,9 +5125,9 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 }catch(SQLException e){
                 }
             }
-            if(st != null){
+            if(ps != null){
                 try{
-                    st.close();
+                    ps.close();
                 }catch(SQLException e){
                 }
             }
@@ -5466,8 +5625,9 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 }else{
                     buf.append(" and (");
                 }
-                concatQuery(buf, "A." + scheduleTableSchema.date, "A." + scheduleTableSchema.time);
-                buf.append(">=?");
+                buf.append("(A.").append(scheduleTableSchema.date)
+                    .append(">? or (A.").append(scheduleTableSchema.date).append("=? and A.")
+                    .append(scheduleTableSchema.time).append(">=?))");
             }
             if(to != null){
                 if(!isAppendWhere){
@@ -5476,14 +5636,14 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 }else{
                     buf.append(" and ");
                 }
-                concatQuery(buf, "A." + scheduleTableSchema.date, "A." + scheduleTableSchema.time);
-                buf.append("<=?");
+                buf.append("(A.").append(scheduleTableSchema.date)
+                    .append("<? or (A.").append(scheduleTableSchema.date).append("=? and A.")
+                    .append(scheduleTableSchema.time).append("<=?))");
             }
             st = con.prepareStatement(buf.toString());
             buf = null;
-            final SimpleDateFormat format = new SimpleDateFormat(
-                dateFormat + timeFormat
-            );
+            final SimpleDateFormat dFormat = new SimpleDateFormat(dateFormat);
+            final SimpleDateFormat tFormat = new SimpleDateFormat(timeFormat);
             int index = 0;
             if(masterGroupId != null){
                 st.setString(++index, masterGroupId);
@@ -5505,10 +5665,14 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 }
             }
             if(from != null){
-                st.setString(++index, format.format(from));
+                st.setString(++index, dFormat.format(from));
+                st.setString(++index, dFormat.format(from));
+                st.setString(++index, tFormat.format(from));
             }
             if(to != null){
-                st.setString(++index, format.format(to));
+                st.setString(++index, dFormat.format(to));
+                st.setString(++index, dFormat.format(to));
+                st.setString(++index, tFormat.format(to));
             }
             return st.executeUpdate() != 0;
         }catch(SQLException e){
@@ -7943,16 +8107,15 @@ public class DatabaseScheduleManagerService extends ServiceBase
                 getLogger().write(MSG_ID_TIMEOVER_CHECK_ERROR, getServiceNameObject(), e);
                 return;
             }
-            Statement st = null;
-            PreparedStatement ps = null;
+            PreparedStatement ps1 = null;
+            PreparedStatement ps2 = null;
             ResultSet rs = null;
             try{
-                st = con.createStatement();
-                final SimpleDateFormat format = new SimpleDateFormat(
-                    dateFormat + timeFormat
-                );
+                final SimpleDateFormat format = new SimpleDateFormat(dateFormat + timeFormat);
+                final SimpleDateFormat dFormat = new SimpleDateFormat(dateFormat);
+                final SimpleDateFormat tFormat = new SimpleDateFormat(timeFormat);
                 final Calendar nowCal = Calendar.getInstance();
-                rs = st.executeQuery(
+                ps1 = con.prepareStatement(
                     "select " + scheduleTableSchema.id
                         + ',' + scheduleTableSchema.date
                         + ',' + scheduleTableSchema.time
@@ -7973,9 +8136,15 @@ public class DatabaseScheduleManagerService extends ServiceBase
                         + scheduleTableSchema.getStateString(Schedule.STATE_FAILED)
                         + "' and " + scheduleTableSchema.state + "<>'"
                         + scheduleTableSchema.getStateString(Schedule.STATE_ABORT)
-                        + "' and " + concatQuery(new StringBuilder(), scheduleTableSchema.date, scheduleTableSchema.time) + "<'"
-                        + format.format(nowCal.getTime()) + '\''
+                        + "' and (" + scheduleTableSchema.date + "<? or ("
+                        + scheduleTableSchema.date + "=? and "
+                        + scheduleTableSchema.time + "<?))"
                 );
+                final Date now = nowCal.getTime();
+                ps1.setString(1, dFormat.format(now));
+                ps1.setString(2, dFormat.format(now));
+                ps1.setString(3, tFormat.format(now));
+                rs = ps1.executeQuery();
                 final Calendar tmpCal = Calendar.getInstance();
                 while(rs.next()){
                     final Date time = format.parse(rs.getString(2) + rs.getString(3));
@@ -7986,9 +8155,9 @@ public class DatabaseScheduleManagerService extends ServiceBase
                         continue;
                     }
                     final String id = rs.getString(1);
-                    if(ps == null){
+                    if(ps2 == null){
                         String checkStateStr = scheduleTableSchema.getCheckStateString(Schedule.CHECK_STATE_TIMEOVER);
-                        ps = con.prepareStatement(
+                        ps2 = con.prepareStatement(
                             "update " + scheduleTableSchema.table
                                 + " set " + scheduleTableSchema.checkState + "='"
                                 + checkStateStr + "',"
@@ -7998,10 +8167,10 @@ public class DatabaseScheduleManagerService extends ServiceBase
                                 + " and " + scheduleTableSchema.checkState + "<>'" + checkStateStr + '\''
                         );
                     }
-                    ps.setTimestamp(1, new Timestamp(DatabaseScheduleManagerService.this.time == null ? System.currentTimeMillis() : DatabaseScheduleManagerService.this.time.currentTimeMillis()));
-                    ps.setString(2, id);
+                    ps2.setTimestamp(1, new Timestamp(DatabaseScheduleManagerService.this.time == null ? System.currentTimeMillis() : DatabaseScheduleManagerService.this.time.currentTimeMillis()));
+                    ps2.setString(2, id);
                     
-                    if(ps.executeUpdate() != 0){
+                    if(ps2.executeUpdate() != 0){
                         final String state = rs.getString(5);
                         final String masterId = rs.getString(6);
                         getLogger().write(
@@ -8020,9 +8189,15 @@ public class DatabaseScheduleManagerService extends ServiceBase
                     }catch(SQLException e){
                     }
                 }
-                if(st != null){
+                if(ps1 != null){
                     try{
-                        st.close();
+                        ps1.close();
+                    }catch(SQLException e){
+                    }
+                }
+                if(ps2 != null){
+                    try{
+                        ps2.close();
                     }catch(SQLException e){
                     }
                 }
