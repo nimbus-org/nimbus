@@ -438,6 +438,10 @@ public class Utility{
         if(prop != null){
             return prop;
         }
+        prop = System.getenv(name);
+        if(prop != null){
+            return prop;
+        }
         if(config != null){
             prop = config.getProperty(name);
             if(prop != null){
@@ -508,6 +512,10 @@ public class Utility{
         MetaData metaData
     ){
         boolean exists = System.getProperties().containsKey(name);
+        if(exists){
+            return exists;
+        }
+        exists = System.getenv(name) != null;
         if(exists){
             return exists;
         }
