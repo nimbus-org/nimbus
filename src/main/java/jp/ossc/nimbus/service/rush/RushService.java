@@ -71,6 +71,7 @@ public class RushService extends ServiceBase implements Rush, RushServiceMBean{
     private long roopTime = 0;
     private int connectStepSize = 0;
     private long connectStepInterval = 0;
+    private long connectTime = 0;
     private double roopPerSecond;
     private double requestPerSecond;
     private File roopLock;
@@ -101,7 +102,6 @@ public class RushService extends ServiceBase implements Rush, RushServiceMBean{
     private int rushClientSize;
     private double rushRoopPerSecond;
     private double rushRequestPerSecond;
-    private int rushConnectStepSize = 0;
     
     public void setScenarioName(String name){
         scenarioName = name;
@@ -164,6 +164,13 @@ public class RushService extends ServiceBase implements Rush, RushServiceMBean{
     }
     public long getConnectStepInterval(){
         return connectStepInterval;
+    }
+    
+    public void setConnectTime(long time){
+        connectTime = time;
+    }
+    public long getConnectTime(){
+        return connectTime;
     }
     
     public void setRoopPerSecond(double rps){
@@ -462,13 +469,14 @@ public class RushService extends ServiceBase implements Rush, RushServiceMBean{
             monitor.notifyMonitor();
         }
         
-        rushConnectStepSize = (connectStepSize / rushMemberSize) + (rushMemberIndex == rushMemberSize - 1 ? connectStepSize % rushMemberSize : 0);
+        final int rushConnectStepSize = connectTime > 0 ? 1 : ((connectStepSize / rushMemberSize) + (rushMemberIndex == rushMemberSize - 1 ? connectStepSize % rushMemberSize : 0));
+        final long rushConnectStepInterval = connectTime > 0 ? Math.max(1l, (long)(connectTime / rushClientSize)) : (connectStepInterval * rushMemberSize);
         if(rushConnectStepSize > 0){
             int connectSize = 0;
             for(int i = 0; i < rushThreads.length; i++){
                 if(connectSize >= rushConnectStepSize){
                     connectSize = 0;
-                    Thread.sleep(connectStepInterval);
+                    Thread.sleep(rushConnectStepInterval);
                     if(!isRushing){
                         return;
                     }

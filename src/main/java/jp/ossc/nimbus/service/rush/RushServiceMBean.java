@@ -176,6 +176,8 @@ public interface RushServiceMBean extends ServiceBaseMBean{
     
     /**
      * クライアントの接続を指定されたクライアント数ずつ段階的に行うように設定する。<p>
+     * {@link #setConnectStepInterval(long)}とセットで指定する。<br>
+     * {@link #setConnectTime(long)}とは排他で、そちらが優先。<br>
      *
      * @param size クライアント数
      */
@@ -190,6 +192,8 @@ public interface RushServiceMBean extends ServiceBaseMBean{
     
     /**
      * クライアントの接続を段階的に行う際の間隔[ms]を設定する。<p>
+     * {@link #setConnectStepSize(int)}とセットで指定する。<br>
+     * {@link #setConnectTime(long)}とは排他で、そちらが優先。<br>
      *
      * @param interval 間隔[ms]
      */
@@ -201,6 +205,21 @@ public interface RushServiceMBean extends ServiceBaseMBean{
      * @return 間隔[ms]
      */
     public long getConnectStepInterval();
+    
+    /**
+     * クライアントの接続を段階的に行う際の接続完了までの時間[ms]を設定する。<p>
+     * {@link #setConnectStepSize(int)}、{@link #setConnectStepInterval(long)}とは排他で、こちらが優先。<br>
+     *
+     * @param time 時間[ms]
+     */
+    public void setConnectTime(long time);
+    
+    /**
+     * クライアントの接続を段階的に行う際の接続完了までの時間[ms]を取得する。<p>
+     *
+     * @return 時間[ms]
+     */
+    public long getConnectTime();
     
     /**
      * ループとループの間で、処理を一時中断させるためのロックファイルを設定する。<p>
