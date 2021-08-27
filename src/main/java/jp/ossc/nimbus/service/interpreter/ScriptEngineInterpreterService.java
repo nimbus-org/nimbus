@@ -60,6 +60,7 @@ public class ScriptEngineInterpreterService extends ServiceBase
     private Map<String, Object> globalBindings;
     private Map<String, Object> engineBindings;
     private boolean isCompilable;
+    private boolean isNotCompile = false;
     private ClassLoader classLoader;
     private boolean isNewScriptEngineByEvaluate = false;
     private boolean isWrapByFunction;
@@ -139,6 +140,13 @@ public class ScriptEngineInterpreterService extends ServiceBase
         return stepDelimitor;
     }
     
+    public void setNotCompile(boolean isNotCompile){
+        this.isNotCompile = isNotCompile;
+    }
+    public boolean isNotCompile(){
+        return isNotCompile;
+    }
+    
     public void setClassLoader(ClassLoader loader){
         classLoader = loader;
     }
@@ -176,7 +184,7 @@ public class ScriptEngineInterpreterService extends ServiceBase
             throw new IllegalArgumentException("ScriptEngine not found.");
         }
         scriptEngineManager.getBindings().putAll(globalBindings);
-        isCompilable = engine instanceof Compilable;
+        isCompilable = !isNotCompile && engine instanceof Compilable;
     }
     
     public void stopService() throws Exception{
@@ -191,28 +199,35 @@ public class ScriptEngineInterpreterService extends ServiceBase
     
     private ScriptEngine createScriptEngine(){
         ScriptEngine engine = null;
-        if(extension != null){
-            engine = scriptEngineManager.getEngineByExtension(extension);
-            if(engine != null){
-                return engine;
+        try{
+            if(extension != null){
+                engine = scriptEngineManager.getEngineByExtension(extension);
+                if(engine != null){
+                    return engine;
+                }
             }
-        }
-        if(mimeType != null){
-            engine = scriptEngineManager.getEngineByMimeType(mimeType);
-            if(engine != null){
-                return engine;
+            if(mimeType != null){
+                engine = scriptEngineManager.getEngineByMimeType(mimeType);
+                if(engine != null){
+                    return engine;
+                }
             }
-        }
-        if(engineName != null){
-            engine = scriptEngineManager.getEngineByName(engineName);
-            if(engine != null){
-                return engine;
+            if(engineName != null){
+                engine = scriptEngineManager.getEngineByName(engineName);
+                if(engine != null){
+                    return engine;
+                }
             }
-        }
-        final List<ScriptEngineFactory> factories
-            = scriptEngineManager.getEngineFactories();
-        if(factories != null && factories.size() != 0){
-            return factories.get(0).getScriptEngine();
+            final List<ScriptEngineFactory> factories
+                = scriptEngineManager.getEngineFactories();
+            if(factories != null && factories.size() != 0){
+                return factories.get(0).getScriptEngine();
+            }
+        }finally{
+            if(engine != null && engineBindings != null){
+                Bindings bindings = engine.getBindings(ScriptContext.ENGINE_SCOPE);
+                bindings.putAll(engineBindings);
+            }
         }
         return null;
     }
@@ -266,14 +281,23 @@ public class ScriptEngineInterpreterService extends ServiceBase
                 }
                 
                 public Object evaluate(Map variables) throws EvaluateException{
+                    Bindings bindings = null;
                     try{
                         if(variables == null || variables.size() == 0){
                             return compiled.eval();
                         }else{
-                            return compiled.eval(new SimpleBindings(variables));
+                            bindings = engine.createBindings();
+                            bindings.putAll(variables);
+                            return compiled.eval(bindings);
                         }
                     }catch(ScriptException e){
                         throw new EvaluateException(e);
+                    }finally{
+                        if(bindings != null && bindings instanceof AutoCloseable){
+                            try{
+                                ((AutoCloseable)bindings).close();
+                            }catch(Exception e){}
+                        }
                     }
                 }
             };
@@ -291,17 +315,21 @@ public class ScriptEngineInterpreterService extends ServiceBase
         if(engine == null){
             throw new EvaluateException("ScriptEngine not found.");
         }
-        Bindings bindings = engine.getBindings(ScriptContext.ENGINE_SCOPE);
-        bindings.putAll(engineBindings);
+        Bindings bindings = null;
         if(variables != null && !variables.isEmpty()){
+            bindings = engine.createBindings();
             bindings.putAll(variables);
         }
         try{
-            return engine.eval(isWrapByFunction ? wrapByFunction(code) : code);
+            if(bindings != null){
+                return engine.eval(isWrapByFunction ? wrapByFunction(code) : code, bindings);
+            }else{
+                return engine.eval(isWrapByFunction ? wrapByFunction(code) : code);
+            }
         }catch(ScriptException e){
             throw new EvaluateException(e);
         }finally{
-            if(bindings instanceof AutoCloseable){
+            if(bindings != null && bindings instanceof AutoCloseable){
                 try{
                     ((AutoCloseable)bindings).close();
                 }catch(Exception e){}
@@ -337,6 +365,9 @@ public class ScriptEngineInterpreterService extends ServiceBase
         System.out.println();
         System.out.println(" [-encoding encode]");
         System.out.println("  実行するソースコードファイルの文字コードを指定します。");
+        System.out.println();
+        System.out.println(" [-enginename name]");
+        System.out.println("  インタープリタサービスのエンジン名を指定します。");
         System.out.println();
         System.out.println(" [-help]");
         System.out.println("  ヘルプを表示します。");
@@ -394,6 +425,7 @@ public class ScriptEngineInterpreterService extends ServiceBase
         List servicePaths = null;
         List files = null;
         String encode = null;
+        String engineName = null;
         Map params = null;
         StringWriter code = new StringWriter();
         PrintWriter codeWriter = new PrintWriter(code);
@@ -414,6 +446,8 @@ public class ScriptEngineInterpreterService extends ServiceBase
                     files = parsePaths(args[i]);
                 }else if(key.equals("-encoding")){
                     encode = args[i];
+                }else if(key.equals("-enginename")){
+                    engineName = args[i];
                 }else if(key.equals("-param")){
                     int index = args[i].indexOf("=");
                     if(index == -1){
@@ -452,6 +486,7 @@ public class ScriptEngineInterpreterService extends ServiceBase
                      || args[i].equals("-file")
                      || args[i].equals("-encoding")
                      || args[i].equals("-param")
+                     || args[i].equals("-enginename")
                 ){
                     option = true;
                     key = args[i];
@@ -509,6 +544,9 @@ public class ScriptEngineInterpreterService extends ServiceBase
         if(interpreter == null){
             ScriptEngineInterpreterService service = new ScriptEngineInterpreterService();
             service.create();
+            if(engineName != null){
+                service.setEngineName(engineName);
+            }
             service.start();
             interpreter = service;
         }
