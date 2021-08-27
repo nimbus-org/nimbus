@@ -206,6 +206,21 @@ public interface ScriptEngineInterpreterServiceMBean extends ServiceBaseMBean{
     public String getStepDelimitor();
     
     /**
+     * コンパイルをしないように設定する。<p>
+     * デフォルトは、falseで、コンパイル可能な場合は、コンパイルする。
+     *
+     * @param isNotCompile コンパイルしない場合は、true
+     */
+    public void setNotCompile(boolean isNotCompile);
+    
+    /**
+     * コンパイルをしないようかどうかを判定する。<p>
+     *
+     * @return trueの場合は、コンパイルしない
+     */
+    public boolean isNotCompile();
+    
+    /**
      * 指定されたスクリプトをインタプリタ実行する。<br>
      *
      * @return 実行結果
