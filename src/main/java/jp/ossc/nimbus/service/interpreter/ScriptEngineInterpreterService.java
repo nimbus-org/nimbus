@@ -61,7 +61,7 @@ public class ScriptEngineInterpreterService extends ServiceBase
     private Map<String, Object> engineBindings;
     private boolean isCompilable;
     private ClassLoader classLoader;
-    private boolean isNewScriptEngineByEvaluate = true;
+    private boolean isNewScriptEngineByEvaluate = false;
     private boolean isWrapByFunction;
     private String wrapperFunction = "function wrapper(){$script\nreturn $lastStep}\nwrapper();";
     private String stepDelimitor = ";";
