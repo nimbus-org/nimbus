@@ -429,6 +429,15 @@ public class BeanExchangeConverter implements BindingConverter{
     /**
      * 変換時に出力しないプロパティ名を設定する。<p>
      *
+     * @param names プロパティ名の配列
+     */
+    public void setDisabledPropertyNames(String[] names){
+        setDisabledPropertyNames(Object.class, names);
+    }
+    
+    /**
+     * 変換時に出力しないプロパティ名を設定する。<p>
+     *
      * @param type 対象のクラス
      * @param names プロパティ名の配列
      */
@@ -458,6 +467,15 @@ public class BeanExchangeConverter implements BindingConverter{
     /**
      * 変換時に出力するプロパティ名を設定する。<p>
      *
+     * @param names プロパティ名の配列
+     */
+    public void setEnabledPropertyNames(String[] names){
+        setEnabledPropertyNames(Object.class, names);
+    }
+    
+    /**
+     * 変換時に出力するプロパティ名を設定する。<p>
+     *
      * @param type 対象のクラス
      * @param names プロパティ名の配列
      */
@@ -482,6 +500,16 @@ public class BeanExchangeConverter implements BindingConverter{
                 pat.enabledPropertyNames.add(names[i]);
             }
         }
+    }
+    
+    /**
+     * 変換時に出力するプロパティ名かどうかを判定する。<p>
+     *
+     * @param name プロパティ名
+     * @return 出力する場合true
+     */
+    public boolean isEnabledPropertyName(String name){
+        return isEnabledPropertyName(Object.class, name);
     }
     
     /**
@@ -609,6 +637,13 @@ public class BeanExchangeConverter implements BindingConverter{
         }else{
             return type;
         }
+    }
+    
+    /**
+     * 型に対するプロパティの交換設定を削除する。<p>
+     */
+    public void clearTypeSettings(){
+        propertyAccessTypeMap = null;
     }
     
     /**
