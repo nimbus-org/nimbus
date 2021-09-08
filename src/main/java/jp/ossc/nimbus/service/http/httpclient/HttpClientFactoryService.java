@@ -68,6 +68,7 @@ public class HttpClientFactoryService extends ServiceBase
     protected int receiveBufferSize = -1;
     protected int sendBufferSize = -1;
     protected int soTimeout = -1;
+    protected Boolean isTcpNoDelay;
     protected Map actionRequestMap = new HashMap();
     protected Map actionResponseMap = new HashMap();
     protected Map credentialsMap = new HashMap();
@@ -157,6 +158,15 @@ public class HttpClientFactoryService extends ServiceBase
     // HttpClientFactoryServiceMBeanのJavaDoc
     public int getSoTimeout(){
         return soTimeout;
+    }
+    
+    // HttpClientFactoryServiceMBeanのJavaDoc
+    public void setTcpNoDelay(boolean isTcpNoDelay){
+        this.isTcpNoDelay = isTcpNoDelay ? Boolean.TRUE : Boolean.FALSE;
+    }
+    // HttpClientFactoryServiceMBeanのJavaDoc
+    public boolean isTcpNoDelay(){
+        return isTcpNoDelay == null ? false : isTcpNoDelay.booleanValue();
     }
     
     // HttpClientFactoryServiceMBeanのJavaDoc
@@ -779,6 +789,9 @@ public class HttpClientFactoryService extends ServiceBase
             }
             if(soTimeout != -1){
                 conParams.setSoTimeout(soTimeout);
+            }
+            if(isTcpNoDelay != null){
+                conParams.setTcpNoDelay(isTcpNoDelay.booleanValue());
             }
             
             

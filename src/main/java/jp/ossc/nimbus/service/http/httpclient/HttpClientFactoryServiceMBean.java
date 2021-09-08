@@ -131,6 +131,20 @@ public interface HttpClientFactoryServiceMBean extends ServiceBaseMBean{
     public int getSoTimeout();
     
     /**
+     * HTTPのソケットのTCP_NODELAY(Nagleアルゴリズム)を有効または無効に設定する。<p>
+     *
+     * @param isTcpNoDelay TCP_NODELAYを有効にする(Nagleアルゴリズムを無効にする)場合はtrue、無効にする(Nagleアルゴリズムを有効にする)場合はfalse。
+     */
+    public void setTcpNoDelay(boolean isTcpNoDelay);
+    
+    /**
+     * HTTPのソケットのTCP_NODELAY(Nagleアルゴリズム)が有効か判定する。<p>
+     *
+     * @return trueの場合、TCP_NODELAYが有効(Nagleアルゴリズムが無効)、falseの場合、TCP_NODELAYが無効(Nagleアルゴリズムが有効)
+     */
+    public boolean isTcpNoDelay();
+    
+    /**
      * リクエストのコンテントタイプを取得する。<p>
      *
      * @return コンテントタイプ
