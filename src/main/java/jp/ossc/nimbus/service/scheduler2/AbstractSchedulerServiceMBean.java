@@ -86,6 +86,11 @@ public interface AbstractSchedulerServiceMBean extends ServiceBaseMBean{
     public static final String MSG_ID_RESOURCE_NOT_ENOUGH_ERROR = "AS___00009";
     
     /**
+     * 動的スケジュールの作成に失敗した場合のログメッセージID。<p>
+     */
+    public static final String MSG_ID_DYNAMIC_REPEAT_ERROR = "ASE__00011";
+    
+    /**
      * 実行すべきスケジュールを{@link ScheduleManager}に確認しにいく間隔[ms]を設定する。<p>
      * デフォルトは、1000[ms]。<br>
      *

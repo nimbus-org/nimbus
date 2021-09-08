@@ -509,6 +509,7 @@ public abstract class AbstractSchedulerService extends ServiceBase
                     schedule.getMasterId()
                 }
             );
+            addDynamicRepeatSchedule(schedule);
             try{
                 scheduleManager.changeState(
                     schedule.getId(),
@@ -540,6 +541,7 @@ public abstract class AbstractSchedulerService extends ServiceBase
                 },
                 th
             );
+            addDynamicRepeatSchedule(schedule);
             try{
                 scheduleManager.changeState(
                     schedule.getId(),
@@ -559,6 +561,96 @@ public abstract class AbstractSchedulerService extends ServiceBase
             }
             return;
         }
+    }
+    
+    protected void addDynamicRepeatSchedule(Schedule schedule){
+        if(schedule != null && schedule.getRepeatInterval() > 0){
+            final Date repeatTime = calculateRepeatTime(
+                schedule.getTime(),
+                schedule.getRepeatInterval(),
+                schedule.getRepeatEndTime()
+            );
+            if(repeatTime != null){
+                try{
+                    final List ownSchedules = scheduleManager.findSchedules(
+                        repeatTime,
+                        schedule.getRepeatEndTime(),
+                        null,
+                        schedule.getMasterId(),
+                        null,
+                        null,
+                        1
+                    );
+                    if(ownSchedules.isEmpty()){
+                        Schedule nextSchedule = (Schedule)schedule.clone();
+                        nextSchedule.setTime(repeatTime);
+                        if(nextSchedule instanceof DefaultSchedule){
+                            ((DefaultSchedule)nextSchedule).setInitialTime(repeatTime);
+                        }
+                        scheduleManager.addSchedule(nextSchedule);
+                    }
+                }catch(ScheduleManageException e){
+                    getLogger().write(
+                        MSG_ID_DYNAMIC_REPEAT_ERROR,
+                        new Object[]{
+                            scheduleManagerServiceName,
+                            schedule.getId(),
+                            schedule.getMasterId()
+                        },
+                        e
+                    );
+                }
+            }
+        }
+    }
+    
+    /**
+     * 繰り返し日時を計算する。<p>
+     *
+     * @param scheduledTime スケジュールされていた時刻
+     * @param interval 繰り返し間隔
+     * @param endTime 繰り返し終了時刻
+     * @return 繰り返し日時。繰り返し終了時刻を過ぎている場合は、null
+     */
+    protected Date calculateRepeatTime(
+        Date scheduledTime,
+        long interval,
+        Date endTime
+    ){
+        final Calendar offset = Calendar.getInstance();
+        Calendar end = null;
+        if(endTime != null){
+            end = Calendar.getInstance();
+            end.setTime(endTime);
+        }
+        do{
+            offset.setTime(scheduledTime);
+            if(interval > Integer.MAX_VALUE){
+                long offsetInterval = interval;
+                int tmpInterval = 0;
+                do{
+                    if(offsetInterval >= Integer.MAX_VALUE){
+                        tmpInterval = Integer.MAX_VALUE;
+                    }else{
+                        tmpInterval = (int)offsetInterval;
+                    }
+                    offset.add(Calendar.MILLISECOND, tmpInterval);
+                    offsetInterval -= Integer.MAX_VALUE;
+                }while(offsetInterval > 0);
+            }else{
+                offset.add(Calendar.MILLISECOND, (int)interval);
+            }
+            if(end != null && offset.after(end)){
+                return null;
+            }else{
+                Date result = offset.getTime();
+                if(result.getTime() < System.currentTimeMillis()){
+                    scheduledTime = result;
+                }else{
+                    return result;
+                }
+            }
+        }while(true);
     }
     
     protected class ClusterListener implements jp.ossc.nimbus.service.keepalive.ClusterListener{
