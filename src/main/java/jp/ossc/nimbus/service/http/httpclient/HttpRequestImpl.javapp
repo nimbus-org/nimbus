@@ -829,7 +829,7 @@ public abstract class HttpRequestImpl implements HttpRequest, Cloneable{
      * @return HTTPメソッド
      * @exception HttpRequestCreateException HTTPメソッドの生成に失敗した場合
      */
-    public HttpMethodBase createHttpMethod() throws HttpRequestCreateException{
+    protected HttpMethodBase createHttpMethod() throws HttpRequestCreateException{
         HttpMethodBase httpMethod = null;
         try{
             httpMethod = instanciateHttpMethod();
