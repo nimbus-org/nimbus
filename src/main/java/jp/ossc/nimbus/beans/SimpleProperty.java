@@ -38,6 +38,7 @@ import java.math.*;
 import java.io.*;
 
 import jp.ossc.nimbus.beans.dataset.*;
+import jp.ossc.nimbus.beans.dataset.Record;
 
 /**
  * 単純プロパティ。<p>

@@ -34,6 +34,7 @@ package jp.ossc.nimbus.service.converter;
 import java.util.*;
 
 import jp.ossc.nimbus.beans.dataset.*;
+import jp.ossc.nimbus.beans.dataset.Record;
 import jp.ossc.nimbus.util.converter.ConvertException;
 
 /**

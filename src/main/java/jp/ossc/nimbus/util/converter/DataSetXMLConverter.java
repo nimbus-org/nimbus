@@ -43,6 +43,7 @@ import org.xml.sax.*;
 
 import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.beans.dataset.*;
+import jp.ossc.nimbus.beans.dataset.Record;
 
 /**
  * データセット⇔XMLコンバータ。<p>

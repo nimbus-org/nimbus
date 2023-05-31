@@ -40,6 +40,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import jp.ossc.nimbus.beans.*;
 import jp.ossc.nimbus.beans.dataset.*;
+import jp.ossc.nimbus.beans.dataset.Record;
 import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.daemon.*;
 import jp.ossc.nimbus.service.publish.*;

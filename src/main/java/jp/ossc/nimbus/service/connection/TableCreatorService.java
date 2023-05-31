@@ -36,6 +36,7 @@ import java.sql.*;
 
 import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.beans.dataset.*;
+import jp.ossc.nimbus.beans.dataset.Record;
 import jp.ossc.nimbus.io.CSVRecordReader;
 import jp.ossc.nimbus.io.FLVRecordReader;
 import jp.ossc.nimbus.io.CSVRecordWriter;

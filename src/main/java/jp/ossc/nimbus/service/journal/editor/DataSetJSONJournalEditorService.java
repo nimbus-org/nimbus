@@ -35,6 +35,7 @@ import java.lang.reflect.*;
 import java.util.*;
 
 import jp.ossc.nimbus.beans.dataset.*;
+import jp.ossc.nimbus.beans.dataset.Record;
 import jp.ossc.nimbus.service.journal.editorfinder.EditorFinder;
 
 /**

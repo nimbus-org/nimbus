@@ -36,6 +36,7 @@ import java.lang.reflect.*;
 import java.io.*;
 
 import jp.ossc.nimbus.beans.dataset.*;
+import jp.ossc.nimbus.beans.dataset.Record;
 
 /**
  * マッププロパティ。<p>

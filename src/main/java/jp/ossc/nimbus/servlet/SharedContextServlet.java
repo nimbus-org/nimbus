@@ -39,6 +39,7 @@ import javax.servlet.http.*;
 
 import jp.ossc.nimbus.beans.*;
 import jp.ossc.nimbus.beans.dataset.*;
+import jp.ossc.nimbus.beans.dataset.Record;
 import jp.ossc.nimbus.core.*;
 import jp.ossc.nimbus.service.context.*;
 import jp.ossc.nimbus.service.interpreter.*;

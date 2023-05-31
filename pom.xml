@@ -60,7 +60,7 @@
     <properties>
         <java.version>1.8</java.version>
         <filecontrol.java.version>1.8</filecontrol.java.version>
-        <compile.target>1.6</compile.target>
+        <compile.target>1.8</compile.target>
         <maven.compiler.source>${compile.target}</maven.compiler.source>
         <maven.compiler.target>${compile.target}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -75,6 +75,7 @@
         <!-- GPG Version 2.1 over options -->
         <gpgArguments1/>
         <gpgArguments2/>
+        <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
     </properties>
 
 <!-- for Maven central repository deploy 
@@ -661,10 +662,10 @@
     </dependencies>
 
     <build>
+        <finalName>${artifactId}-${maven.build.timestamp}</finalName>
 <!--
-        <finalName>${artifactId}-${timestamp}</finalName>
--->
         <finalName>${artifactId}-${version}</finalName>
+-->
         <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
         <testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
         <resources>
@@ -682,7 +683,6 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.7.0</version>
                     <configuration>
                         <useIncrementalCompilation>false</useIncrementalCompilation>
                         <encoding>${project.build.sourceEncoding}</encoding>
@@ -755,6 +755,7 @@
                     </execution>
                 </executions>
             </plugin>
+<!--
             <plugin>
                 <groupId>org.codehaus.gmaven</groupId>
                 <artifactId>gmaven-plugin</artifactId>
@@ -774,6 +775,7 @@
                     </execution>
                 </executions>
             </plugin>
+-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -861,15 +863,13 @@
                         </configuration>
                     </execution>
                 </executions>
-<!--
                 <dependencies>
                   <dependency>
                       <groupId>org.glassfish.corba</groupId>
                       <artifactId>rmic</artifactId>
-                      <version>4.2.1</version>
+                      <version>4.2.4</version>
                   </dependency>
                 </dependencies>
--->
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
