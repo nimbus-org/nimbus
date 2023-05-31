@@ -36,6 +36,7 @@ import java.util.*;
 
 import jp.ossc.nimbus.io.*;
 import jp.ossc.nimbus.beans.dataset.*;
+import jp.ossc.nimbus.beans.dataset.Record;
 
 /**
  * レコード⇔CSVコンバータ。<p>

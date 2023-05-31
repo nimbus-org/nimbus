@@ -39,6 +39,7 @@ import java.util.*;
 
 import jp.ossc.nimbus.beans.*;
 import jp.ossc.nimbus.beans.dataset.*;
+import jp.ossc.nimbus.beans.dataset.Record;
 import jp.ossc.nimbus.core.Utility;
 import jp.ossc.nimbus.util.ClassMappingTree;
 
