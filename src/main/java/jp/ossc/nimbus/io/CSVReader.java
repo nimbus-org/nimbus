@@ -497,7 +497,6 @@ public class CSVReader extends LineNumberReader{
                                 && line.charAt(i - 1) != separator
                                 && imax - 1 != i
                                 && line.charAt(i + 1) != separator)
-                                || (!inEnclosure && (imax - 1 == i || buf.length() != 0))
                             ){
                                 buf.append(c);
                             }else{
