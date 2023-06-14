@@ -1,0 +1,415 @@
+package jp.ossc.nimbus.service.aop.interceptor.servlet;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.security.Principal;
+import java.util.Enumeration;
+import java.util.Locale;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.StringTokenizer;
+
+@START<SERVLET_API6@
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletInputStream;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+@END<SERVLET_API6@
+@START>=SERVLET_API6@
+import java.util.Collection;
+import jakarta.servlet.AsyncContext;
+import jakarta.servlet.DispatcherType;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletConnection;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletInputStream;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpUpgradeHandler;
+import jakarta.servlet.http.Part;
+@END>=SERVLET_API6@
+
+public class MockHttpServletRequest2 implements HttpServletRequest {
+    protected ServletInputStream inputStream;
+
+    protected String address;
+    protected String name;
+    protected int port;
+    protected String characterEncoding;
+    protected HashMap map = new HashMap();
+
+    public MockHttpServletRequest2() {
+        super();
+    }
+    public MockHttpServletRequest2(ServletInputStream inputStream) {
+        super();
+        this.inputStream = inputStream;
+    }
+
+    public String getLocalAddr() {
+        return address;
+    }
+    public int getLocalPort() {
+        return port;
+    }
+    public int getRemotePort() {
+        return port;
+    }
+    public String getLocalName() {
+        return name;
+    }
+    public String getAuthType() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public String getContextPath() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public Cookie[] getCookies() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public long getDateHeader(String arg0) {
+        // TODO 自動生成されたメソッド・スタブ
+        return 0;
+    }
+
+    public String getHeader(String key) {
+        return null;
+    }
+
+    public Enumeration getHeaderNames() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public Enumeration getHeaders(String arg0) {
+        //notImplemented();
+        //圧縮解除テスト用。Content-Encodingが指定されたらgzipを返す
+        Enumeration vals = new StringTokenizer("gzip");
+        if(arg0.equals("Content-Encoding")){
+            return vals;
+
+        }
+
+         return null;
+    }
+
+    public int getIntHeader(String arg0) {
+        // TODO 自動生成されたメソッド・スタブ
+        return 0;
+    }
+
+    public String getMethod() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public String getPathInfo() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public String getPathTranslated() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public String getQueryString() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public String getRemoteUser() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public String getRequestURI() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public StringBuffer getRequestURL() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public String getRequestedSessionId() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public String getServletPath() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public HttpSession getSession() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public HttpSession getSession(boolean arg0) {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public Principal getUserPrincipal() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public boolean isRequestedSessionIdFromCookie() {
+        // TODO 自動生成されたメソッド・スタブ
+        return false;
+    }
+
+    public boolean isRequestedSessionIdFromURL() {
+        // TODO 自動生成されたメソッド・スタブ
+        return false;
+    }
+
+    public boolean isRequestedSessionIdFromUrl() {
+        // TODO 自動生成されたメソッド・スタブ
+        return false;
+    }
+
+    public boolean isRequestedSessionIdValid() {
+        // TODO 自動生成されたメソッド・スタブ
+        return false;
+    }
+
+    public boolean isUserInRole(String arg0) {
+        // TODO 自動生成されたメソッド・スタブ
+        return false;
+    }
+
+    public Object getAttribute(String arg0) {
+        return map.get(arg0);
+    }
+
+    public Enumeration getAttributeNames() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public String getCharacterEncoding() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public int getContentLength() {
+        // TODO 自動生成されたメソッド・スタブ
+        return 0;
+    }
+
+    public String getContentType() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public ServletInputStream getInputStream() throws IOException {
+        return this.inputStream;
+    }
+
+
+    public Locale getLocale() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public Enumeration getLocales() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public String getParameter(String arg0) {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public Map getParameterMap() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public Enumeration getParameterNames() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public String[] getParameterValues(String arg0) {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public String getProtocol() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public BufferedReader getReader() throws IOException {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public String getRealPath(String arg0) {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public String getRemoteAddr() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public String getRemoteHost() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+
+    public RequestDispatcher getRequestDispatcher(String arg0) {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public String getScheme() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public String getServerName() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+
+    public int getServerPort() {
+        // TODO 自動生成されたメソッド・スタブ
+        return 0;
+    }
+
+    public boolean isSecure() {
+        // TODO 自動生成されたメソッド・スタブ
+        return false;
+    }
+
+    public void removeAttribute(String arg0) {
+        // TODO 自動生成されたメソッド・スタブ
+
+    }
+
+    public void setAttribute(String arg0, Object arg1) {
+        map.put(arg0, arg1);
+
+    }
+
+    public void setCharacterEncoding(String arg0){
+    this.characterEncoding = arg0;
+
+    }
+@START>=SERVLET_API6@
+    @Override
+    public long getContentLengthLong() {
+        // TODO 自動生成されたメソッド・スタブ
+        return 0;
+    }
+    @Override
+    public ServletContext getServletContext() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+    @Override
+    public AsyncContext startAsync() throws IllegalStateException {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+    @Override
+    public AsyncContext startAsync(ServletRequest servletRequest, ServletResponse servletResponse) throws IllegalStateException {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+    @Override
+    public boolean isAsyncStarted() {
+        // TODO 自動生成されたメソッド・スタブ
+        return false;
+    }
+    @Override
+    public boolean isAsyncSupported() {
+        // TODO 自動生成されたメソッド・スタブ
+        return false;
+    }
+    @Override
+    public AsyncContext getAsyncContext() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+    @Override
+    public DispatcherType getDispatcherType() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+    @Override
+    public String getRequestId() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+    @Override
+    public String getProtocolRequestId() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+    @Override
+    public ServletConnection getServletConnection() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+    @Override
+    public String changeSessionId() {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+    @Override
+    public boolean authenticate(HttpServletResponse response) throws IOException, ServletException {
+        // TODO 自動生成されたメソッド・スタブ
+        return false;
+    }
+    @Override
+    public void login(String username, String password) throws ServletException {
+        // TODO 自動生成されたメソッド・スタブ
+
+    }
+    @Override
+    public void logout() throws ServletException {
+        // TODO 自動生成されたメソッド・スタブ
+
+    }
+    @Override
+    public Collection<Part> getParts() throws IOException, ServletException {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+    @Override
+    public Part getPart(String name) throws IOException, ServletException {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+    @Override
+    public <T extends HttpUpgradeHandler> T upgrade(Class<T> handlerClass) throws IOException, ServletException {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
+    }
+@END>=SERVLET_API6@
+
+}

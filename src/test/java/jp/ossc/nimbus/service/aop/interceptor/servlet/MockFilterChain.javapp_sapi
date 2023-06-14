@@ -1,0 +1,26 @@
+package jp.ossc.nimbus.service.aop.interceptor.servlet;
+
+import java.io.IOException;
+
+@START<SERVLET_API6@
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+@END<SERVLET_API6@
+@START>=SERVLET_API6@
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+@END>=SERVLET_API6@
+
+public class MockFilterChain implements FilterChain {
+
+	public void doFilter(ServletRequest arg0, ServletResponse arg1)
+			throws IOException, ServletException {
+		// TODO 自動生成されたメソッド・スタブ
+
+	}
+
+}
