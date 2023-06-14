@@ -1,0 +1,59 @@
+package jp.ossc.nimbus.service.aop.interceptor.servlet;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+
+@START<SERVLET_API6@
+import javax.servlet.ServletInputStream;
+@END<SERVLET_API6@
+@START>=SERVLET_API6@
+import jakarta.servlet.ReadListener;
+import jakarta.servlet.ServletInputStream;
+@END>=SERVLET_API6@
+
+public class MockServletInputStream extends ServletInputStream {
+
+    static int off = 0;
+    protected byte[] b;
+
+    public MockServletInputStream(byte[] b) {
+        super();
+        this.b = b;
+    }
+
+    public int read() throws IOException {
+        return 0;
+    }
+    public int read(byte[]b) throws IOException {
+        ByteArrayInputStream is = new ByteArrayInputStream(this.b);
+        if (off < this.b.length){
+            int len = is.read(b, off, b.length);
+            off = off + len;
+            return len;
+        }
+        else{
+            return -1;
+        }
+    }
+
+@START>=SERVLET_API6@
+    @Override
+    public boolean isFinished() {
+        // TODO 自動生成されたメソッド・スタブ
+        return false;
+    }
+
+    @Override
+    public boolean isReady() {
+        // TODO 自動生成されたメソッド・スタブ
+        return false;
+    }
+
+    @Override
+    public void setReadListener(ReadListener readListener) {
+        // TODO 自動生成されたメソッド・スタブ
+
+    }
+@END>=SERVLET_API6@
+
+}
