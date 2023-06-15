@@ -60,8 +60,18 @@
     <properties>
         <java.version>1.8</java.version>
         <filecontrol.java.version>1.8</filecontrol.java.version>
-        <!-- for servlet version -->
+        <!-- for servlet version 6 
         <servlet.api.version>6</servlet.api.version>
+        <servlet.api.dependency.groupId>jakarta.servlet</servlet.api.dependency.groupId>
+        <servlet.api.dependency.artifactId>jakarta.servlet-api</servlet.api.dependency.artifactId>
+        <servlet.api.dependency.version>6.0.0</servlet.api.dependency.version>
+        -->
+        <!-- for servlet version 4 -->
+        <servlet.api.version>4</servlet.api.version>
+        <servlet.api.dependency.groupId>javax.servlet</servlet.api.dependency.groupId>
+        <servlet.api.dependency.artifactId>servlet-api</servlet.api.dependency.artifactId>
+        <servlet.api.dependency.version>2.4-20030804.000000</servlet.api.dependency.version>
+        
         <compile.target>1.8</compile.target>
         <maven.compiler.source>${compile.target}</maven.compiler.source>
         <maven.compiler.target>${compile.target}</maven.compiler.target>
@@ -150,18 +160,10 @@
             <version>1.1</version>
         </dependency>
 
-<!-- for servlet version
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.4-20030804.000000</version>
-        </dependency>
--->
-
-        <dependency>
-            <groupId>jakarta.servlet</groupId>
-            <artifactId>jakarta.servlet-api</artifactId>
-            <version>6.0.0</version>
+            <groupId>${servlet.api.dependency.groupId}</groupId>
+            <artifactId>${servlet.api.dependency.artifactId}</artifactId>
+            <version>${servlet.api.dependency.version}</version>
             <scope>provided</scope>
         </dependency>
 
