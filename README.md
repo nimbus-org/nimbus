@@ -18,6 +18,11 @@ jarをクラスパス上に配置して利用します。
 
 サービス定義XMLファイルを記述して、Nimbusに読み込ませる事で、サービスをホスティングし、利用可能な状態にします。詳細は、Wikiを参照。
 
+# JavaDoc
+
+[こちら](https://nimbus-org.github.io/gh-pages/javadoc/1.2.5/index.html "JavaDoc")
+
+
 # ドキュメント
 
 [こちら](https://nimbus-org.github.io/gh-pages/documents/index.html "ドキュメント")
