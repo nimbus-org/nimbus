@@ -4,7 +4,7 @@
     <groupId>com.github.nimbus-org</groupId>
     <artifactId>nimbus</artifactId>
     <packaging>jar</packaging>
-    <version>1.2.5-SNAPSHOT</version>
+    <version>1.2.6-SNAPSHOT</version>
     <name>nimbus</name>
     <description>Nimbus Framework</description>
     <url>https://github.com/nimbus-org/nimbus</url>
@@ -349,9 +349,9 @@
         </dependency>
 
         <dependency>
-            <groupId>snappy</groupId>
+            <groupId>org.xerial.snappy</groupId>
             <artifactId>snappy-java</artifactId>
-            <version>1.1.2</version>
+            <version>1.1.10.3</version>
         </dependency>
 
         <dependency>
@@ -453,7 +453,7 @@
         <dependency>
             <groupId>com.google.cloud</groupId>
             <artifactId>google-cloud-logging</artifactId>
-            <version>1.39.0</version>
+            <version>3.15.5</version>
         </dependency>
 
         <dependency>
@@ -495,25 +495,25 @@
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-core</artifactId>
-            <version>1.11.530</version>
+            <version>1.12.515</version>
         </dependency>
         
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-sqs</artifactId>
-            <version>1.11.530</version>
+            <version>1.12.515</version>
         </dependency>
         
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-sagemaker</artifactId>
-            <version>1.11.530</version>
+            <version>1.12.515</version>
         </dependency>
         
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-lambda</artifactId>
-            <version>1.11.530</version>
+            <version>1.12.515</version>
         </dependency>
         
         <dependency>
@@ -525,13 +525,13 @@
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-glue</artifactId>
-            <version>1.11.530</version>
+            <version>1.12.515</version>
         </dependency>
         
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-cloudwatch</artifactId>
-            <version>1.11.530</version>
+            <version>1.12.515</version>
         </dependency>
         
         <dependency>
@@ -609,31 +609,37 @@
         <dependency>
           <groupId>io.prometheus</groupId>
           <artifactId>simpleclient</artifactId>
-          <version>0.9.0</version>
+          <version>0.16.0</version>
         </dependency>
         
         <dependency>
           <groupId>io.prometheus</groupId>
           <artifactId>simpleclient_hotspot</artifactId>
-          <version>0.9.0</version>
+          <version>0.16.0</version>
         </dependency>
         
         <dependency>
           <groupId>io.prometheus</groupId>
           <artifactId>simpleclient_httpserver</artifactId>
-          <version>0.9.0</version>
+          <version>0.16.0</version>
         </dependency>
         
         <dependency>
           <groupId>io.prometheus</groupId>
           <artifactId>simpleclient_pushgateway</artifactId>
-          <version>0.9.0</version>
+          <version>0.16.0</version>
         </dependency>
         
         <dependency>
             <groupId>com.google.api-client</groupId>
             <artifactId>google-api-client</artifactId>
-            <version>1.31.4</version>
+            <version>1.31.5</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.google.http-client</groupId>
+            <artifactId>google-http-client-jackson2</artifactId>
+            <version>1.43.3</version>
         </dependency>
         
         <dependency>
