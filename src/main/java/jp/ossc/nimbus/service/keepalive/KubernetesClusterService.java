@@ -44,6 +44,7 @@ import jp.ossc.nimbus.util.WaitSynchronizeMonitor;
 
 import com.google.gson.reflect.TypeToken;
 import io.kubernetes.client.openapi.ApiClient;
+import io.kubernetes.client.openapi.ApiException;
 import io.kubernetes.client.openapi.apis.CoreV1Api;
 import io.kubernetes.client.openapi.models.V1PodList;
 import io.kubernetes.client.openapi.models.V1Pod;
@@ -1569,6 +1570,10 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                 }
                 podMembers = newPodMembers;
                 podMemberAddresses = newPodMemberAddresses;
+            }catch(ApiException e){
+                ApiException apiException = (ApiException)e;
+                getLogger().write(MSG_ID_MESSAGE_IO_ERROR, getServiceNameObject(), new Exception(e.getResponseBody(), e));
+                return false;
             }catch(Exception e){
                 getLogger().write(MSG_ID_MESSAGE_IO_ERROR, getServiceNameObject(), e);
                 return false;
@@ -1602,6 +1607,10 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                     ),
                     new TypeToken<Watch.Response<V1PodList>>(){}.getType()
                 );
+            }catch(ApiException e){
+                ApiException apiException = (ApiException)e;
+                getLogger().write(MSG_ID_MESSAGE_IO_ERROR, getServiceNameObject(), new Exception(e.getResponseBody(), e));
+                return null;
             }catch(Throwable th){
                 Throwable cause = th.getCause();
                 if(cause != null && (cause instanceof ConnectException || cause instanceof SocketTimeoutException)){
@@ -1662,6 +1671,10 @@ public class KubernetesClusterService extends ServiceBase implements Cluster, Ku
                     podMemberAddresses = newPodMemberAddresses;
                 }
                 resourceVersion = version;
+            }catch(ApiException e){
+                ApiException apiException = (ApiException)e;
+                getLogger().write(MSG_ID_MESSAGE_IO_ERROR, getServiceNameObject(), new Exception(e.getResponseBody(), e));
+                return;
             }catch(Throwable th){
                 Throwable cause = th.getCause();
                 if(cause != null && (cause instanceof ConnectException || cause instanceof SocketTimeoutException)){
