@@ -66,6 +66,7 @@ import jp.ossc.nimbus.beans.NestedProperty;
 import jp.ossc.nimbus.beans.NoSuchPropertyException;
 import jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvokerFactory;
 import jp.ossc.nimbus.service.beancontrol.interfaces.BeanFlowInvoker;
+import jp.ossc.nimbus.service.journal.Journal;
 
 /**
  * サーブレットリクエストパラメータ→DataSetコンバータ。<p>
@@ -106,6 +107,11 @@ public class DataSetServletRequestParameterConverter implements BindingConverter
     public static final String DEFAULT_DATASET_DELIMITER = ":";
 
     public static final String DEFAULT_DATASET_PREFIX = "dataset";
+    
+    /**
+     * デフォルトのジャーナルのパラメータマップ要素名。<p>
+     */
+    public static final String DEFAULT_PARAMETERS_JOURNAL_KEY = "Parameters";
 
     protected static final String HEADER_CONTENT_TYPE = "Content-Type";
 
@@ -168,6 +174,13 @@ public class DataSetServletRequestParameterConverter implements BindingConverter
      * HTTPヘッダの文字エンコーディング。<p>
      */
     protected String headerEncoding;
+
+    /**
+     * Journalサービス。<p>
+     */
+    protected Journal journal;
+
+    protected String parametersJournalKey = DEFAULT_PARAMETERS_JOURNAL_KEY;
 
     /**
      * データセット名とデータセットのマッピングを設定する。<p>
@@ -345,6 +358,35 @@ public class DataSetServletRequestParameterConverter implements BindingConverter
     }
 
     /**
+     * ジャーナルを出力する{@link jp.ossc.nimbus.service.journal.Journal Journal}サービスを設定する。<p>
+     *
+     * @param journal Journalサービス
+     */
+    public void setJournal(Journal journal){
+        this.journal = journal;
+    }
+    
+    /**
+     * ジャーナルの要求パラメータのキー名を設定する。<p>
+     * デフォルト値は、{@link #DEFAULT_PARAMETERS_JOURNAL_KEY}。<br>
+     *
+     * @param key キー名
+     * @see #DEFAULT_PARAMETERS_JOURNAL_KEY
+     */
+    public void setParametersJournalKey(String key){
+        parametersJournalKey = key;
+    }
+    
+    /**
+     * ジャーナルの要求パラメータのキー名を取得する。<p>
+     *
+     * @return キー名
+     */
+    public String getParametersJournalKey(){
+        return parametersJournalKey;
+    }
+
+    /**
      * 指定されたオブジェクトを変換する。<p>
      *
      * @param req 変換対象のHttpServletRequestオブジェクト
@@ -357,6 +399,9 @@ public class DataSetServletRequestParameterConverter implements BindingConverter
         }
         HttpServletRequest request = (HttpServletRequest)req;
         Map paramMap = toParameterMap(request);
+        if(journal != null){
+            journal.addInfo(parametersJournalKey, paramMap, null);
+        }
         if(paramMap == null){
             return null;
         }
@@ -648,6 +693,9 @@ public class DataSetServletRequestParameterConverter implements BindingConverter
         HttpServletRequest request = (HttpServletRequest)req;
         DataSet ds = (DataSet)output;
         Map paramMap = toParameterMap(request);
+        if(journal != null){
+            journal.addInfo(parametersJournalKey, paramMap, null);
+        }
         if(paramMap == null){
             return output;
         }
