@@ -4,33 +4,33 @@ Copyright 2003 Nomura Research Institute, Ltd. All Rights Reserved
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; CHARSET=ISO-2022-JP">
-<title>Nimbus �W���[�i�� �p�b�P�[�W�R�����g�t�@�C��</title>
+<title>Nimbus ジャーナル パッケージコメントファイル</title>
 </head>
 <body>
-Nimbus��<b>�W���[�i���T�[�r�X</b>��񋟂��܂��B<p>
-�G���^�[�v���C�Y�ȃV�X�e�����\�z����ꍇ�A�e�w�ŃW���[�i�����擾����K�v������܂��B<br>
-�W���[�i���ɂ́A<br>
+Nimbusの<b>ジャーナルサービス</b>を提供します。<p>
+エンタープライズなシステムを構築する場合、各層でジャーナルを取得する必要があります。<br>
+ジャーナルには、<br>
 <ul>
-  <li>�A�N�Z�X�J�n����</li>
-  <li>�A�N�Z�X�I������</li>
-  <li>�A�N�Z�X����</li>
-  <li>�A�N�Z�X���ʎq</li>
-  <li>�A�N�Z�X�ɂ����o�͏��</li>
+  <li>アクセス開始時刻</li>
+  <li>アクセス終了時刻</li>
+  <li>アクセス時間</li>
+  <li>アクセス識別子</li>
+  <li>アクセスによる入出力情報</li>
 </ul>
-�Ȃǂ̂�����x���܂��������擾���܂��B<br>
-�A���A���o�͏��̓V�X�e����擾����w�ɂ���ĈقȂ�A�o�͂���t�H�[�}�b�g��}�̂��l�X�ł��B<br>
+などのある程度決まった情報を取得します。<br>
+但し、入出力情報はシステムや取得する層によって異なり、出力するフォーマットや媒体も様々です。<br>
 <p>
-�܂��A�A�v���P�[�V�����́A�C�ӂ̃I�u�W�F�N�g���W���[�i���ɏo�͂��܂��B<br>
-���̍ہA�n�����I�u�W�F�N�g���ɈႤ�t�H�[�}�b�g�ŏo�͂������Ȃ邩������܂���B<br>
-�Ⴆ�΁A������͂��̂܂܂����ǁAjava.util.Date�I�u�W�F�N�g�͈��̓��t�t�H�[�}�b�g�ŏo�͂������Ƃ��B<br>
-��O�I�u�W�F�N�g�Ȃ�΁A�X�^�b�N�g���[�X���o�͂������Ƃ��B<br>
-���̂悤��<B>�I�u�W�F�N�g���̏o�͕ҏW���s��</B>�T�O�𒊏ۉ������C���^�t�F�[�X���A<A HREF="JournalEditor.html">JournalEditor</A>�ł��B<br>
-�܂��A<B>�I�u�W�F�N�g���ɏo�͕ҏW���s��JournalEditor���}�b�s���O����@�\</B>�𒊏ۉ������C���^�t�F�[�X���A<A HREF="editorfinder/EditorFinder.html">EditorFinder</A>�ł��B<br>
+まず、アプリケーションは、任意のオブジェクトをジャーナルに出力します。<br>
+その際、渡したオブジェクト毎に違うフォーマットで出力したくなるかもしれません。<br>
+例えば、文字列はそのままだけど、java.util.Dateオブジェクトは一定の日付フォーマットで出力したいとか。<br>
+例外オブジェクトならば、スタックトレースを出力したいとか。<br>
+そのような<B>オブジェクト毎の出力編集を行う</B>概念を抽象化したインタフェースが、<A HREF="JournalEditor.html">JournalEditor</A>です。<br>
+また、<B>オブジェクト毎に出力編集を行うJournalEditorをマッピングする機能</B>を抽象化したインタフェースが、<A HREF="editorfinder/EditorFinder.html">EditorFinder</A>です。<br>
 <p>
-���Ɏ��ۂ̔}�̂ւ̏o�͂ł����A���̋@�\��<a href="../writer/package-summary.html">Writer�p�b�P�[�W</a>��<a href="../writer/Category.html">Category</a>���g�p���܂��B<br>
+次に実際の媒体への出力ですが、その機能は<a href="../writer/package-summary.html">Writerパッケージ</a>の<a href="../writer/Category.html">Category</a>を使用します。<br>
 <p>
-�����̗v���𖞂����A<B>�W���[�i�����擾����@�\</B>�𒊏ۉ������̂�<A HREF="Journal.html">Journal</A>�C���^�t�F�[�X�ł��B<br>
+これらの要件を満たしつつ、<B>ジャーナルを取得する機能</B>を抽象化したのが<A HREF="Journal.html">Journal</A>インタフェースです。<br>
 <p>
-���̃p�b�P�[�W�ł́AJournal�C���^�t�F�[�X�����������T�[�r�X��񋟂��܂��B<br>
+このパッケージでは、Journalインタフェースを実装したサービスを提供します。<br>
 </body>
 </html>

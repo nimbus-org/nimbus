@@ -4,25 +4,25 @@ Copyright 2003 Nomura Research Institute, Ltd. All Rights Reserved
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; CHARSET=ISO-2022-JP">
-<title>Nimbus Cache �p�b�P�[�W�R�����g�t�@�C��</title>
+<title>Nimbus Cache パッケージコメントファイル</title>
 </head>
 <body>
-Nimbus��<b>�L���b�V���T�[�r�X</b>��񋟂��܂��B<p>
-�L���b�V���Ƃ́A��ʓI�ɂ͎g�p�p�x�̍����f�[�^�������ȋL�����u�ɒ~���Ă������ɂ��A
-���������ᑬ�ȑ��u����ǂݏo�����ʂ��Ȃ��č��������邱�Ƃ��w���܂��B<br>
-Nimbus�̃L���b�V���́A����I�u�W�F�N�g���ꎞ�I�ɕێ����Ă����@�\�𒊏ۉ������C���^�t�F�[�X�ł��B<br>
-<B>�I�u�W�F�N�g���W���I�ɃL���b�V������</B><A HREF="Cache.html">Cache</A>�C���^�t�F�[�X�ƁA
-<B>�I�u�W�F�N�g���L�[�Ɋ֘A�t���ăL���b�V������</B><A HREF="CacheMap.html">CacheMap</A>�C���^�t�F�[�X������܂��B<br>
+Nimbusの<b>キャッシュサービス</b>を提供します。<p>
+キャッシュとは、一般的には使用頻度の高いデータを高速な記憶装置に蓄えておく事により、
+いちいち低速な装置から読み出す無駄を省いて高速化することを指します。<br>
+Nimbusのキャッシュは、あるオブジェクトを一時的に保持しておく機能を抽象化したインタフェースです。<br>
+<B>オブジェクトを集合的にキャッシュする</B><A HREF="Cache.html">Cache</A>インタフェースと、
+<B>オブジェクトをキーに関連付けてキャッシュする</B><A HREF="CacheMap.html">CacheMap</A>インタフェースがあります。<br>
 <p>
-�܂��A�����Ō����u�ꎞ�I�ɕێ�����v�Ƃ́A��������ɂ����āA�ێ����Ă������I�u�W�F�N�g������������A
-���ۂɕێ�����ꏊ�i�������A�t�@�C�����j���ς���Ă��܂��\�������鎖���������܂��B<br>
-���̎���Nimbus�̃L���b�V���ł́u���ӂ�v�ƌĂсA<B>���ӂ�̐���</B>���s���T�O�𒊏ۉ������C���^�t�F�[�X��<A HREF="OverflowController.html">OverflowController</A>�ł��B<br>
+また、ここで言う「一時的に保持する」とは、ある条件において、保持しておいたオブジェクトが揮発したり、
+実際に保持する場所（メモリ、ファイル等）が変わってしまう可能性がある事を示唆します。<br>
+この事をNimbusのキャッシュでは「あふれ」と呼び、<B>あふれの制御</B>を行う概念を抽象化したインタフェースが<A HREF="OverflowController.html">OverflowController</A>です。<br>
 <p>
-�܂��A���ӂꐧ��́A�傫���R�̊T�O�ɕ����鎖���ł��܂��B<br>
+また、あふれ制御は、大きく３つの概念に分ける事ができます。<br>
 <ul>
-<li>�u���ӂ�v�𔭐������邩�ǂ��������؂���<B>���ӂꌟ��</B>�i<A HREF="OverflowValidator.html">OverflowValidator</A>�j</li>
-<li>�u���ӂ�v�����������ꍇ�ɁA�ǂ̃I�u�W�F�N�g�����ӂꂳ���邩�����肷��<B>���ӂ�A���S���Y��</B>�i<A HREF="OverflowAlgorithm.html">OverflowAlgorithm</A>�j</li>
-<li>�u���ӂ�v�����������ꍇ�ɁA���ӂꂽ�I�u�W�F�N�g���ǂ����邩�����肷��<B>���ӂꓮ��</B>�i<A HREF="OverflowAction.html">OverflowAction</A>�j</li>
+<li>「あふれ」を発生させるかどうかを検証する<B>あふれ検証</B>（<A HREF="OverflowValidator.html">OverflowValidator</A>）</li>
+<li>「あふれ」が発生した場合に、どのオブジェクトをあふれさせるかを決定する<B>あふれアルゴリズム</B>（<A HREF="OverflowAlgorithm.html">OverflowAlgorithm</A>）</li>
+<li>「あふれ」が発生した場合に、あふれたオブジェクトをどうするかを決定する<B>あふれ動作</B>（<A HREF="OverflowAction.html">OverflowAction</A>）</li>
 </ul>
 </body>
 </html>

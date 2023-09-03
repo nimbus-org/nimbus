@@ -4,23 +4,23 @@ Copyright 2003 Nomura Research Institute, Ltd. All Rights Reserved
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; CHARSET=ISO-2022-JP">
-<title>Nimbus Beans �p�b�P�[�W�R�����g�t�@�C��</title>
+<title>Nimbus Beans パッケージコメントファイル</title>
 </head>
 <body>
-Nimbus��<b>Java Beans���C�u����</b>��񋟂��܂��B<p>
+Nimbusの<b>Java Beansライブラリ</b>を提供します。<p>
 
-Java Beans�K��ɑ�����Bean�̃v���p�e�B�ҏW�A�y��Java Beans�K����g������Bean�̃v���p�e�B�A�N�Z�X���T�|�[�g���郉�C�u������񋟂��܂��B<p>
+Java Beans規約に則ったBeanのプロパティ編集、及びJava Beans規約を拡張したBeanのプロパティアクセスをサポートするライブラリを提供します。<p>
 
-Java Beans�K��ɑ�����Bean�̃v���p�e�B��ҏW����@�\�Ƃ��āAJ2SE�ɂ�java.beans.PropertyEditor�C���^�t�F�[�X����`����Ă��܂��B<br>
-�������Ȃ���A���̎����N���X�́A���J����Ă��炸�A��������Ă���N���X���킸���ł��B�����ŁANimbus�ł́Ajava.beans.PropertyEditor�C���^�t�F�[�X�̎����N���X��<b><a href="NimbusPropertyEditorManager.html">�g�[</a></b>���Ē񋟂��܂��B<br>
-�܂��A�����̎����N���X�́ANimbus�̃T�[�r�X��`��BeanFlow��`�̃C���W�F�N�V�����Ŏg�p���܂��B<p>
+Java Beans規約に則ったBeanのプロパティを編集する機能として、J2SEにはjava.beans.PropertyEditorインタフェースが定義されています。<br>
+しかしながら、その実装クラスは、公開されておらず、実装されているクラスもわずかです。そこで、Nimbusでは、java.beans.PropertyEditorインタフェースの実装クラスを<b><a href="NimbusPropertyEditorManager.html">拡充</a></b>して提供します。<br>
+また、それらの実装クラスは、Nimbusのサービス定義やBeanFlow定義のインジェクションで使用します。<p>
 
-Java Beans�K����g������Bean�̃v���p�e�B�ɁA�ėp�I�ɃA�N�Z�X����@�\���AThe Apache Jakarta Project�� Commons BeanUtils(http://jakarta.apache.org/beanutils/)�Œ񋟂���Ă��܂��B<br>
-BeanUtils�ł́A�v���p�e�B�ɃA�N�Z�X����ۂɁA�C���^�v���^�I�Ƀv���p�e�B���������͂��āA���t���N�V�����𗘗p���ăv���p�e�B�ɃA�N�Z�X���܂��B<br>
-�������Ȃ���A���ۂ̗p�r�Ƃ��ẮA�������̃v���p�e�B�ɑ΂��āA�v���O���������삷��x�ɃA�N�Z�X���邽�߁A�C���^�v���^�I�ɖ���v���p�e�B������̉�͂��s���͖̂��ʂł��邵�A���̌�̃��t���N�V�������\�b�h�𖈉񌟍�����̂����ʂɂȂ��Ă��܂��܂��B<br>
-����́Astatic�ɊȒP�ɌĂяo���闘�֐���ǋ�������̌`�ł͂���܂����A�G���^�[�v���C�Y�V�X�e�����\�z����v���O���}�Ƃ��ẮA���\�ւ̈��e�����l�����链�܂���B<br>
-�����ŁANimbus�ł́A�v���p�e�B������̉�͂��v���R���p�C���I�ɍs���A�X�Ƀ��t���N�V�������\�b�h���L���b�V�����邱�ƂŁA���\�ւ̉e����ጸ������<b><a href="PropertyFactory.html">�v���p�e�B�ėp�A�N�Z�X�@�\</a></b>��񋟂��܂��B<br>
-�܂��AJava Beans�K��̊g���Ƃ����Ӗ��ł��ABeanUtils�����g�������A�N�Z�X�@�\�������Ă��܂��B<br>
-����ɁA�I�[�o�[���[�h���\�b�h�̌Ăяo����Apublic�ȃC���^�t�F�[�X����������public�łȂ��N���X�̃v���p�e�B�ւ̃A�N�Z�X�ȂǁA�ׂ��ȓ_���l������Ă��܂��B<br>
+Java Beans規約を拡張したBeanのプロパティに、汎用的にアクセスする機能が、The Apache Jakarta Projectの Commons BeanUtils(http://jakarta.apache.org/beanutils/)で提供されています。<br>
+BeanUtilsでは、プロパティにアクセスする際に、インタプリタ的にプロパティ文字列を解析して、リフレクションを利用してプロパティにアクセスします。<br>
+しかしながら、実際の用途としては、ある特定のプロパティに対して、プログラムが動作する度にアクセスするため、インタプリタ的に毎回プロパティ文字列の解析を行うのは無駄であるし、その後のリフレクションメソッドを毎回検索するのも無駄になってしまいます。<br>
+これは、staticに簡単に呼び出せる利便性を追求した一つの形ではありますが、エンタープライズシステムを構築するプログラマとしては、性能への悪影響を考えざる得ません。<br>
+そこで、Nimbusでは、プロパティ文字列の解析をプリコンパイル的に行い、更にリフレクションメソッドをキャッシュすることで、性能への影響を低減させた<b><a href="PropertyFactory.html">プロパティ汎用アクセス機能</a></b>を提供します。<br>
+また、Java Beans規約の拡張という意味でも、BeanUtilsよりも拡張したアクセス機能を持っています。<br>
+さらに、オーバーロードメソッドの呼び出しや、publicなインタフェースを実装したpublicでないクラスのプロパティへのアクセスなど、細かな点が考慮されています。<br>
 </body>
 </html>

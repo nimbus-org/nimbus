@@ -4,20 +4,20 @@ Copyright 2003 Nomura Research Institute, Ltd. All Rights Reserved
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; CHARSET=ISO-2022-JP">
-<title>Nimbus JNDI �p�b�P�[�W�R�����g�t�@�C��</title>
+<title>Nimbus JNDI パッケージコメントファイル</title>
 </head>
 <body>
-Nimbus��<b>JNDI�T�[�r�X</b>��񋟂��܂��B<p>
-JNDI�iJava Naming and Directory Interface�j�̐ڑ��ɂ́A�ڑ����JNDI�T�[�o���̐ڑ����������Ŏw�肷��K�v������܂��B
-�ijndi.properties�Őݒ肷����@������܂����A���̏ꍇ�ڑ��悪�P�Ɍ�����̂ŕ�����JNDI�T�[�o�ɐڑ�����ꍇ�Ȃǂɖ��ɂȂ�܂��j<br>
-�܂��A�ڑ�����JNDI�R���e�L�X�g���烊���[�g�I�u�W�F�N�g���擾����̂́A�ʏ�͒ʐM�R�X�g�������邽�߁A�������\�ɉe�����܂��B
-���̖����������邽�߂ɁAJNDI�R���e�L�X�g����擾���������[�g�I�u�W�F�N�g��ێ����Ă����āA����擾���Ȃ��ł��ςނ悤�ɑ΍􂵂��肵�܂��B
+Nimbusの<b>JNDIサービス</b>を提供します。<p>
+JNDI（Java Naming and Directory Interface）の接続には、接続先のJNDIサーバ等の接続情報を引数で指定する必要があります。
+（jndi.propertiesで設定する方法もありますが、その場合接続先が１つに限られるので複数のJNDIサーバに接続する場合などに問題になります）<br>
+また、接続したJNDIコンテキストからリモートオブジェクトを取得するのは、通常は通信コストがかかるため、処理性能に影響します。
+この問題を解決するために、JNDIコンテキストから取得したリモートオブジェクトを保持しておいて、毎回取得しないでも済むように対策したりします。
 <p>
-���̂悤�ɁAJNDI����̃����[�g�I�u�W�F�N�g�̎擾�́A���G�ȃp�����[�^�̎w���A���\�΍�Ȃǂ��K�v�ɂȂ�A�ȒP�Ɏ擾�ł���Ƃ͌������������̂�����܂��B<br>
-�����ŁA�擾���@��p�����[�^�̐ݒ蓙���A�T�[�r�X�̎����⑮���ݒ�ɒu�������鎖�ŁA
-<B>JNDI���烊���[�g�I�u�W�F�N�g���擾����</B>�Ƃ����Ȍ��Ȏ�i�����𒊏ۉ������C���^�t�F�[�X���A
-<A HREF="JndiFinder.html">JndiFinder</A>�ł��B<br>
+このように、JNDIからのリモートオブジェクトの取得は、複雑なパラメータの指定や、性能対策などが必要になり、簡単に取得できるとは言いがたいものがあります。<br>
+そこで、取得方法やパラメータの設定等を、サービスの実装や属性設定に置き換える事で、
+<B>JNDIからリモートオブジェクトを取得する</B>という簡潔な手段だけを抽象化したインタフェースが、
+<A HREF="JndiFinder.html">JndiFinder</A>です。<br>
 <p>
-���̃p�b�P�[�W�ł́A����JndiFinder�C���^�t�F�[�X�����������T�[�r�X��񋟂��܂��B<br>
+このパッケージでは、そのJndiFinderインタフェースを実装したサービスを提供します。<br>
 </body>
 </html>

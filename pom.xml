@@ -807,8 +807,8 @@
                     <author>true</author>
                     <showPrivate>false</showPrivate>
                     <encoding>UTF-8</encoding>
-                    <charset>Windows-31J</charset>
-                    <docencoding>Windows-31J</docencoding>
+                    <charset>UTF-8</charset>
+                    <docencoding>UTF-8</docencoding>
                     <javadocDirectory/>
                     <docfilessubdirs>true</docfilessubdirs>
                 </configuration>

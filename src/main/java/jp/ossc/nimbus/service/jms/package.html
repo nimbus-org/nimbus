@@ -4,26 +4,26 @@ Copyright 2003 Nomura Research Institute, Ltd. All Rights Reserved
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; CHARSET=ISO-2022-JP">
-<title>Nimbus JMS �p�b�P�[�W�R�����g�t�@�C��</title>
+<title>Nimbus JMS パッケージコメントファイル</title>
 </head>
 <body>
-Nimbus��<b>JMS���b�v�T�[�r�X</b>��񋟂��܂��B<p>
-JMS�̃C���^�t�F�[�X�́AJMS�N���C�A���g�̊ϓ_���猩��ƁAjavax.jms.Connection�Ajavax.jms.Session�Ajavax.jms.MessageConsumer�Ajavax.jms.MessageProducer�Ajavax.jms.Queue�Ajavax.jms.Topic����ȃC���^�t�F�[�X�ł��傤�B
-�����̃C���^�t�F�[�X���g�p�����ŁA�e�C���^�t�F�[�X���ɁA�p�����[�^���K�v�ɂȂ�܂��B
-���̃p�����[�^�́A����g�p�Ӑ}�̌��ł́A�Œ�̒l�ł��鎖�̕��������ƌ����܂��B
-�܂�A�A�v���P�[�V��������JMS���g�p����ꍇ�A�����̃p�����[�^�́A
-�A�v���P�[�V�����̋Ɩ��v���ł͂Ȃ��A�A�v���P�[�V�����̕����݌v���猈�܂��ՓI�ȗv���ƌ�����ł��傤�B<br>
-Nimbus��JMS���b�v�T�[�r�X�́A�����̃p�����[�^���T�[�r�X�̑����Őݒ肷�鎖�ɂ���āA
-�A�v���P�[�V�������p�����[�^���ӎ����鎖�Ȃ��A��^�I��JMS�𗘗p�ł���悤�Ƀ��b�v�������̂ł��B<br>
+Nimbusの<b>JMSラップサービス</b>を提供します。<p>
+JMSのインタフェースは、JMSクライアントの観点から見ると、javax.jms.Connection、javax.jms.Session、javax.jms.MessageConsumer、javax.jms.MessageProducer、javax.jms.Queue、javax.jms.Topicが主なインタフェースでしょう。
+これらのインタフェースを使用する上で、各インタフェース毎に、パラメータが必要になります。
+そのパラメータは、ある使用意図の元では、固定の値である事の方が多いと言えます。
+つまり、アプリケーションからJMSを使用する場合、それらのパラメータは、
+アプリケーションの業務要件ではなく、アプリケーションの方式設計から決まる基盤的な要件と言えるでしょう。<br>
+NimbusのJMSラップサービスは、これらのパラメータをサービスの属性で設定する事によって、
+アプリケーションがパラメータを意識する事なく、定型的にJMSを利用できるようにラップしたものです。<br>
 <p>
-<b>JMS Connection���擾����Ȍ��Ȏ�i</b>�𒊏ۉ������C���^�t�F�[�X��<a href="JMSConnectionFactory.html">JMSConnectionFactory</a>�ł��B<br>
+<b>JMS Connectionを取得する簡潔な手段</b>を抽象化したインタフェースが<a href="JMSConnectionFactory.html">JMSConnectionFactory</a>です。<br>
 <p>
-<b>JMS Session���擾����Ȍ��Ȏ�i</b>�𒊏ۉ������C���^�t�F�[�X��<a href="JMSSessionFactory.html">JMSSessionFactory</a>�ł��B<br>
+<b>JMS Sessionを取得する簡潔な手段</b>を抽象化したインタフェースが<a href="JMSSessionFactory.html">JMSSessionFactory</a>です。<br>
 <p>
-<b>JMS MessageConsumer���擾����Ȍ��Ȏ�i</b>�𒊏ۉ������C���^�t�F�[�X��<a href="JMSMessageConsumerFactory.html">JMSMessageConsumerFactory</a>�ł��B<br>
+<b>JMS MessageConsumerを取得する簡潔な手段</b>を抽象化したインタフェースが<a href="JMSMessageConsumerFactory.html">JMSMessageConsumerFactory</a>です。<br>
 <p>
-<b>JMS MessageProducer���擾����Ȍ��Ȏ�i</b>�𒊏ۉ������C���^�t�F�[�X��<a href="JMSMessageProducerFactory.html">JMSMessageProducerFactory</a>�ł��B<br>
+<b>JMS MessageProducerを取得する簡潔な手段</b>を抽象化したインタフェースが<a href="JMSMessageProducerFactory.html">JMSMessageProducerFactory</a>です。<br>
 <p>
-���̃p�b�P�[�W�ł́A�����̃C���^�t�F�[�X�����������T�[�r�X��񋟂��܂��B<br>
+このパッケージでは、これらのインタフェースを実装したサービスを提供します。<br>
 </body>
 </html>

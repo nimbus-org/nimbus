@@ -4,52 +4,52 @@ Copyright 2003 Nomura Research Institute, Ltd. All Rights Reserved
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; CHARSET=ISO-2022-JP">
-<title>Nimbus AOP �p�b�P�[�W�R�����g�t�@�C��</title>
+<title>Nimbus AOP パッケージコメントファイル</title>
 </head>
 <body>
-Nimbus��<b>�A�X�y�N�g�w���T�[�r�X</b>��񋟂��܂��B<p>
-�A�X�y�N�g�w���v���O���~���O�iAspect Oriented Programing:AOP�j�Ƃ́A�u���f�v�f
-�v�ƌĂ΂��I�u�W�F�N�g���ׂ����������A�e�I�u�W�F�N�g�ɕ��U������̂ł͂Ȃ��A
-�P��̃��W���[���u�A�X�y�N�g�v�ɂ܂Ƃ߂ċL�q���Ă����A�ォ��R���p�C���Ȃǂ̃c
-�[����p���āA�v���O�������������悤�Ƃ������̂ł��B<br>
+Nimbusの<b>アスペクト指向サービス</b>を提供します。<p>
+アスペクト指向プログラミング（Aspect Oriented Programing:AOP）とは、「横断要素
+」と呼ばれるオブジェクトを跨った処理を、各オブジェクトに分散させるのではなく、
+単一のモジュール「アスペクト」にまとめて記述しておき、後からコンパイラなどのツ
+ールを用いて、プログラムを結合しようというものです。<br>
 <p>
-Nimbus�̃A�X�y�N�g�w���T�[�r�X�ł́A���̂悤�ȁu�A�X�y�N�g�v��
-<B><A HREF="Interceptor.html">Interceptor</A></B>�Ƃ��Ď������A�N���X�t�@�C���̃o�C�g�R�[�h�𑀍삷�鎖�ŁA
-�����̃\�[�X�R�[�h�Ɏ�����鎖�Ȃ��A���I��Interceptor�����ݍ��ޏ������s���܂��B<br>
-�܂��A�N���X�t�@�C���̃o�C�g�R�[�h�𑀍삷��_�@�Ƃ��āA�ÓI�ϊ��Ɠ��I�ϊ���2��ނ�p�ӂ��Ă܂��B<br>
-�ÓI�ϊ��́Ajavac�ŃA�X�y�N�g�Ώۂ̃N���X���R���p�C��������ɁA
-�X��<B><A HREF="Compiler.html">Compiler</A></B>���g�p���āA�A�X�y�N�g�R���p�C���������܂��B<br>
-���I�ϊ��́AJVM���N���X�����[�h�����鎞�ɁA�A�X�y�N�g�R���p�C�����ă��[�h���܂��B<br>
-�ÓI�ϊ��́A���O�ɃN���X�t�@�C�����A�X�y�N�g�R���p�C�����Ă����̂ŁA
-���s���ɂ͒ʏ�̃N���X�Ɠ��l�Ɉ����邽�߁A���\����萫�ɗD��Ă��܂��B<br>
-�������AJVM�̋N�����ɃA�X�y�N�g�𓮓I�ɍ����ւ����肷�鎖�͂ł��܂���B<br>
-���I�ϊ��́A�N���X�̃��[�h���ɃA�X�y�N�g�R���p�C�������̂ŁA
-�N���X���[�_�̍\�������G�ȃA�v���P�[�V�����T�[�o�ł̓��삪�s����ł�������A
-�N���X�̃��[�h���Ԃ��኱�����Ȃ����肵�܂��B<br>
-�������AJVM�̋N�����ɃA�X�y�N�g�𓮓I�ɍ����ւ����肷�鎖���\�ɂȂ�܂��B<br>
-���ꂼ��̎g�������Ƃ��ẮA�J�����̃e�X�g�ȂǂŃA�X�y�N�g���g�p�������ꍇ�́A
-���I�ϊ��̕����g�����肪�ǂ��ꍇ���l�����܂��B<br>
-����ɑ΂��āA���^�p�ŃA�X�y�N�g���g�p�������ꍇ�́A
-���I�ϊ��̗��_�����󂷂�@��͏��Ȃ��̂ŁA�ÓI�ϊ��̕����ǂ��ł��傤�B<br>
+Nimbusのアスペクト指向サービスでは、そのような「アスペクト」を
+<B><A HREF="Interceptor.html">Interceptor</A></B>として実装し、クラスファイルのバイトコードを操作する事で、
+既存のソースコードに手を入れる事なく、動的にInterceptorを挟み込む処理を行います。<br>
+また、クラスファイルのバイトコードを操作する契機として、静的変換と動的変換の2種類を用意してます。<br>
+静的変換は、javacでアスペクト対象のクラスをコンパイルした後に、
+更に<B><A HREF="Compiler.html">Compiler</A></B>を使用して、アスペクトコンパイルをかけます。<br>
+動的変換は、JVMがクラスをロード時する時に、アスペクトコンパイルしてロードします。<br>
+静的変換は、事前にクラスファイルをアスペクトコンパイルしておくので、
+実行時には通常のクラスと同様に扱われるため、性能や安定性に優れています。<br>
+しかし、JVMの起動中にアスペクトを動的に差し替えたりする事はできません。<br>
+動的変換は、クラスのロード時にアスペクトコンパイルされるので、
+クラスローダの構造が複雑なアプリケーションサーバでの動作が不安定であったり、
+クラスのロード時間が若干長くなったりします。<br>
+しかし、JVMの起動中にアスペクトを動的に差し替えたりする事が可能になります。<br>
+それぞれの使い分けとしては、開発中のテストなどでアスペクトを使用したい場合は、
+動的変換の方が使い勝手が良い場合が考えられます。<br>
+それに対して、実運用でアスペクトを使用したい場合は、
+動的変換の利点を享受する機会は少ないので、静的変換の方が良いでしょう。<br>
 <p>
-�A�X�y�N�g�w�����l���鎞�A���p�p�r�Ƃ��čł��d�v�ȊT�O�́A
-<B>�u�{���̏����̑O�܂��͌�A�������͂��̗����ŁA����̏������s���v</B>�Ƃ������ł��傤�B<br>
-���̊T�O�𒊏ۉ������C���^�t�F�[�X���A<a href="Interceptor.html">Interceptor</a>�ł��B<br>
-�܂��A���́u����̏����v���s����ŁA<B>�{���s�����Ƃ��Ă��鏈���܂��͖{���̏����̌���</B>�𒊏ۉ������̂��A
-<a href="InvocationContext.html">InvocationContext</a>�ł��B<br>
+アスペクト指向を考える時、利用用途として最も重要な概念は、
+<B>「本来の処理の前または後、もしくはその両方で、特定の処理を行う」</B>という事でしょう。<br>
+その概念を抽象化したインタフェースが、<a href="Interceptor.html">Interceptor</a>です。<br>
+また、その「特定の処理」を行う上で、<B>本来行おうとしている処理または本来の処理の結果</B>を抽象化したのが、
+<a href="InvocationContext.html">InvocationContext</a>です。<br>
 <p>
-���ɁAInterceptor�Ƃ����T�O�ɃI�u�W�F�N�g�w���𗍂߂�ƁA
-���́u����̏����v���ו������čė��p�������ƍl����ł��傤�B<br>
-���̍ۂɁA<B>�ו�����������̏�����g�ݍ��킹�ď������s����</B>�Ƃ����T�O�����܂�܂��B<br>
-���̊T�O�𒊏ۉ������C���^�t�F�[�X���A<a href="InterceptorChainList.html">InterceptorChainList</a>�ł��B<br>
+次に、Interceptorという概念にオブジェクト指向を絡めると、
+その「特定の処理」を細分化して再利用したいと考えるでしょう。<br>
+その際に、<B>細分化した特定の処理を組み合わせて順次実行する</B>という概念が生まれます。<br>
+その概念を抽象化したインタフェースが、<a href="InterceptorChainList.html">InterceptorChainList</a>です。<br>
 <p>
-���̂悤�ɘA�˂�Interceptor�̒H�蒅����ɂ́A�u�{���̏����v���҂��Ă��܂��B<br>
-����<B>�{���̏������Ăяo��</B>�Ƃ����T�O�𒊏ۉ������C���^�t�F�[�X���A<a href="Invoker.html">Invoker</a>�ł��B<br>
+このように連ねたInterceptorの辿り着く先には、「本来の処理」が待っています。<br>
+その<B>本来の処理を呼び出す</B>という概念を抽象化したインタフェースが、<a href="Invoker.html">Invoker</a>です。<br>
 <p>
-����ɁA�����̑S�Ă̊T�O���q���ŁA<B>�u�{���̌Ăяo������`�d���Ȃ���A
-�����̓���̏�����A�ˁA�{���̌Ăяo�����s���߂��Ă���v</B>�Ƃ����T�O�𒊏ۉ������C���^�t�F�[�X���A
-<a href="InterceptorChain.html">InterceptorChain</a>�ł��B<br>
+さらに、これらの全ての概念を繋いで、<B>「本来の呼び出し情報を伝播しながら、
+複数の特定の処理を連ね、本来の呼び出しを行い戻ってくる」</B>という概念を抽象化したインタフェースが、
+<a href="InterceptorChain.html">InterceptorChain</a>です。<br>
 <p>
-���̃p�b�P�[�W�ł́A�����̊T�O����̉������T�[�r�X��񋟂��܂��B<br>
+このパッケージでは、これらの概念を具体化したサービスを提供します。<br>
 </body>
 </html>

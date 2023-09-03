@@ -4,21 +4,21 @@ Copyright 2003 Nomura Research Institute, Ltd. All Rights Reserved
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; CHARSET=ISO-2022-JP">
-<title>Nimbus �v���L�V �p�b�P�[�W�R�����g�t�@�C��</title>
+<title>Nimbus プロキシ パッケージコメントファイル</title>
 </head>
 <body>
-Nimbus��<b>�v���L�V�T�[�r�X</b>��񋟂��܂��B<p>
-�����[�g�T�[�o��̃T�[�r�X�������������[�J���ɂ���T�[�r�X�̂悤�ɌĂяo���v���L�V�@�\��񋟂��܂��B<br>
-�N���C�A���g���̃v���L�V�ƁA�T�[�o���̃v���L�V�����݂��A�e�v���L�V�ɂ́A<b><a href="../aop/Interceptor.html">�C���^�[�Z�v�^</a></b>�����ݍ��ދ@�\�������܂��B<br>
-�܂��A�N���C�A���g�v���L�V�ɂ́A�T�[�o�v���L�V���Ăяo�����߂�<b><a href="../aop/Invoker.html">Invoker</a></b>�@�\������A���R�ɍ����ւ��鎖���ł��܂��B<br>
-���l�ɁA�T�[�o�v���L�V�ɂ��A�Ăяo���Ώۂ̃T�[�r�X���Ăяo�����߂�<b><a href="../aop/Invoker.html">Invoker</a></b>�@�\������A���R�ɍ����ւ��鎖���ł��܂��B<br>
+Nimbusの<b>プロキシサービス</b>を提供します。<p>
+リモートサーバ上のサービスをあたかもローカルにあるサービスのように呼び出すプロキシ機能を提供します。<br>
+クライアント側のプロキシと、サーバ側のプロキシが存在し、各プロキシには、<b><a href="../aop/Interceptor.html">インターセプタ</a></b>を挟み込む機能を持ちます。<br>
+また、クライアントプロキシには、サーバプロキシを呼び出すための<b><a href="../aop/Invoker.html">Invoker</a></b>機能があり、自由に差し替える事ができます。<br>
+同様に、サーバプロキシにも、呼び出し対象のサービスを呼び出すための<b><a href="../aop/Invoker.html">Invoker</a></b>機能があり、自由に差し替える事ができます。<br>
 <p>
-�N���C�A���g�v���L�V�Ƃ��ẮA<a href="RemoteClientService.html">RemoteClientService</a>��p�ӂ��Ă��܂��B<br>
-�T�[�o�v���L�V�Ƃ��ẮA�ȉ��̂��̂�p�ӂ��Ă܂��B<br>
+クライアントプロキシとしては、<a href="RemoteClientService.html">RemoteClientService</a>を用意しています。<br>
+サーバプロキシとしては、以下のものを用意してます。<br>
 <ul>
-<li>RMI���g�p����<a href="RemoteServiceServerService.html">RemoteServiceServerService</a></li>
-<li>EJB���g�p����<a href="RemoteServiceServerSessionBean.html">RemoteServiceServerSessionBean</a></li>
+<li>RMIを使用する<a href="RemoteServiceServerService.html">RemoteServiceServerService</a></li>
+<li>EJBを使用する<a href="RemoteServiceServerSessionBean.html">RemoteServiceServerSessionBean</a></li>
 </ul>
-�܂��A�v���L�V��Invoker�ɂ��ẮA<a href="invoker/package-summary.html">�v���L�V�T�[�r�X�p��Invoker�T�[�r�X</a>���Q�Ƃ��ĉ������B<br>
+また、プロキシのInvokerについては、<a href="invoker/package-summary.html">プロキシサービス用のInvokerサービス</a>を参照して下さい。<br>
 </body>
 </html>

@@ -4,25 +4,25 @@ Copyright 2003 Nomura Research Institute, Ltd. All Rights Reserved
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; CHARSET=ISO-2022-JP">
-<title>Nimbus Core �p�b�P�[�W�R�����g�t�@�C��</title>
+<title>Nimbus Core パッケージコメントファイル</title>
 </head>
 <body>
-Nimbus��<b>�T�[�r�X���</b>��񋟂��܂��B<p>
-<b><a href="ServiceManagerFactory.html">�T�[�r�X���</a></b>�Ƃ́APOJO(<u>P</u>lain <u>O</u>ld <u>J</u>ava <u>O</u>bjects)�I�u�W�F�N�g���AWindows�̃T�[�r�X�̂悤��JavaVM��ɁA�z�X�e�B���O�����Ջ@�\�ł���B<br>
+Nimbusの<b>サービス基盤</b>を提供します。<p>
+<b><a href="ServiceManagerFactory.html">サービス基盤</a></b>とは、POJO(<u>P</u>lain <u>O</u>ld <u>J</u>ava <u>O</u>bjects)オブジェクトを、WindowsのサービスのようにJavaVM上に、ホスティングする基盤機能である。<br>
 <p>
-�T�[�r�X��Տ�Ƀz�X�e�B���O�����POJO�́A<b><a href="Service.html">�T�[�r�X</a></b>�ƌĂ΂��B<br>
-�T�[�r�X�́AJava Beans�Ō����v���p�e�B�̐ݒ�A�T�[�r�X�Ԃ̈ˑ��֌W�̐ݒ���s�������ł���B
-�܂��A�u�����v�A�u�N���v�A�u��~�v�A�u�j���v�̂S�̏�ԑJ�ڂ𐧌䂷�鎖���ł���B�T�[�r�X��J2EE��JMX(<u>J</u>ava <u>M</u>anagement <u>E</u>xtension)�ɑΉ����Ă���AJMX�Ǘ����\�[�X�Ƃ��Đ���\�ł���B<br>
+サービス基盤上にホスティングされるPOJOは、<b><a href="Service.html">サービス</a></b>と呼ばれる。<br>
+サービスは、Java Beansで言うプロパティの設定、サービス間の依存関係の設定を行う事ができる。
+また、「生成」、「起動」、「停止」、「破棄」の４つの状態遷移を制御する事ができる。サービスはJ2EEのJMX(<u>J</u>ava <u>M</u>anagement <u>E</u>xtension)に対応しており、JMX管理リソースとして制御可能である。<br>
 <p>
-�T�[�r�X��Տ�Ƀz�X�e�B���O���ꂽ�T�[�r�X�́A<b><a href="ServiceManager.html">�T�[�r�X�Ǘ�</a></b>�ɂ���ĊǗ������B<br>
-�T�[�r�X�Ǘ��́A�l�[�~���O�T�[�r�X�@�\�������A�T�[�r�X�̖��O���w�肷�鎖�ŁA�z�X�e�B���O���ꂽ�T�[�r�X��񋟂���B
-�܂��A�T�[�r�X�Ǘ��́A�T�[�r�X���O���[�s���O��������������A�T�[�r�X��Տ�ɕ����̃T�[�r�X�Ǘ����N�����鎖���ł���B<br>
+サービス基盤上にホスティングされたサービスは、<b><a href="ServiceManager.html">サービス管理</a></b>によって管理される。<br>
+サービス管理は、ネーミングサービス機能を持ち、サービスの名前を指定する事で、ホスティングされたサービスを提供する。
+また、サービス管理は、サービスをグルーピングする役割を持ち、サービス基盤上に複数のサービス管理を起動する事ができる。<br>
 <p>
-�T�[�r�X��T�[�r�X�Ǘ��̒�`�́A<b><a href="ServiceLoader.html">�T�[�r�X���[�_</a></b>�ɂ���ă��[�h�����B<br>
-�T�[�r�X���[�_�̎����ɂ���āA��`�̕��@�͓���ւ��\�ł��邪�A�f�t�H���g�̎����Ƃ��ẮAXML�t�@�C���ɂ��T�[�r�X��`�̓ǂݍ��݂��T�|�[�g���Ă���B
-�T�[�r�X��`XML�̏ڍׂ́A<a href="nimbus-service_1_0.dtd">�T�[�r�X��`�t�@�C��DTD</a>���Q�ƁB<br>
+サービスやサービス管理の定義は、<b><a href="ServiceLoader.html">サービスローダ</a></b>によってロードされる。<br>
+サービスローダの実装によって、定義の方法は入れ替え可能であるが、デフォルトの実装としては、XMLファイルによるサービス定義の読み込みをサポートしている。
+サービス定義XMLの詳細は、<a href="nimbus-service_1_0.dtd">サービス定義ファイルDTD</a>を参照。<br>
 <p>
-Nimbus�v���W�F�N�g�ł́A�l�X�ȋ@�\���񋟂���Ă��邪�A���ꂼ��̋@�\�́A�T�[�r�X�Ƃ��Ď�������Ă���B
-���̂��߁A���[�U�͕K�v�ȋ@�\�������A�v���p�e�B���J�X�^�}�C�Y����JavaVM��Ƀz�X�e�B���O���āA�g�p���鎖���ł���B<br>
+Nimbusプロジェクトでは、様々な機能が提供されているが、それぞれの機能は、サービスとして実装されている。
+そのため、ユーザは必要な機能だけを、プロパティをカスタマイズしてJavaVM上にホスティングして、使用する事ができる。<br>
 </body>
 </html>
