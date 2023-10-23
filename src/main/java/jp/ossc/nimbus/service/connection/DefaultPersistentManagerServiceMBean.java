@@ -46,8 +46,48 @@ public interface DefaultPersistentManagerServiceMBean
     public void setIgnoreNullProperty(boolean isIgnore);
     public boolean isIgnoreNullProperty();
     
+    /**
+     * java.sql.Typesの型と、Javaのクラスのマッピングを設定する。<p>
+     * 設定しない場合、デフォルトのマッピングが生成される。
+     *
+     * @param mapping java.sql.Typesの型のIntegerとJavaのクラスのマッピング
+     */
     public void setResultSetJDBCTypeMap(Map mapping);
+    
+    /**
+     * java.sql.Typesの型と、Javaのクラスのマッピングを取得する。<p>
+     *
+     * @return java.sql.Typesの型のIntegerとJavaのクラスのマッピング
+     */
     public Map getResultSetJDBCTypeMap();
     
+    /**
+     * java.sql.Typesの型と、Javaのクラスのマッピングを設定する。<p>
+     *
+     * @param jdbcType java.sql.Typesの型名
+     * @param javaType Javaのクラス
+     */
     public void setResultSetJDBCType(String jdbcType, Class javaType) throws IllegalArgumentException;
+    
+    /**
+     * ARRAY型の要素のデータベースの固有型名と、Javaのクラスのマッピングを設定する。<p>
+     *
+     * @param mapping ARRAY型の要素のデータベースの固有型名とJavaのクラスのマッピング
+     */
+    public void setArrayTypeMap(Map mapping);
+    
+    /**
+     * ARRAY型の要素のデータベースの固有型名と、Javaのクラスのマッピングを取得する。<p>
+     *
+     * @return ARRAY型の要素のデータベースの固有型名とJavaのクラスのマッピング
+     */
+    public Map getArrayTypeMap();
+    
+    /**
+     * ARRAY型の要素のデータベースの固有型名と、Javaのクラスのマッピングを取得する。<p>
+     *
+     * @param typeName ARRAY型の要素のデータベースの固有型名
+     * @param javaType Javaのクラス
+     */
+    public void setArrayType(String typeName, Class javaType);
 }

@@ -58,6 +58,9 @@ public class TableCreatorService extends ServiceBase
     private ServiceName connectionFactoryServiceName;
     private ConnectionFactory connectionFactory;
     
+    private ServiceName persistentManagerServiceName;
+    private PersistentManager persistentManager;
+    
     private ServiceName recordListConverterServiceName;
     private StreamConverter recordListConverter;
     
@@ -111,6 +114,13 @@ public class TableCreatorService extends ServiceBase
     }
     public ServiceName getConnectionFactoryServiceName(){
         return connectionFactoryServiceName;
+    }
+    
+    public void setPersistentManagerServiceName(ServiceName name){
+        persistentManagerServiceName = name;
+    }
+    public ServiceName getPersistentManagerServiceName(){
+        return persistentManagerServiceName;
     }
     
     public void setRecordListConverterServiceName(ServiceName name){
@@ -431,6 +441,12 @@ public class TableCreatorService extends ServiceBase
         if(connectionFactory == null){
             throw new IllegalArgumentException("ConnectionFactory is null.");
         }
+        
+        if(persistentManagerServiceName != null){
+            persistentManager = (PersistentManager)ServiceManagerFactory
+                .getServiceObject(persistentManagerServiceName);
+        }
+        
         if(recordListConverterServiceName != null){
             recordListConverter = (StreamConverter)ServiceManagerFactory
                 .getServiceObject(recordListConverterServiceName);
@@ -585,7 +601,7 @@ public class TableCreatorService extends ServiceBase
     
     public void executeAllQuery()
      throws ConnectionFactoryException, SQLException,
-            ConvertException, IOException{
+            ConvertException, IOException, PersistentException{
         final Connection con = connectionFactory.getConnection();
         if(isTransacted){
             if(con.getAutoCommit()){
@@ -633,7 +649,7 @@ public class TableCreatorService extends ServiceBase
     }
     
     protected void backupRecords(Connection con)
-     throws IOException, ConvertException, SQLException{
+     throws IOException, ConvertException, SQLException, PersistentException{
         if(selectQuery == null || backupRecordList == null || backupFilePath == null){
             return;
         }
@@ -654,23 +670,40 @@ public class TableCreatorService extends ServiceBase
             }
             if(recordListConverter != null){
                 RecordList recList = backupRecordList.cloneSchema();
-                if(fetchSize > 0){
-                    stmt.setFetchSize(fetchSize);
-                }
-                rs = stmt.executeQuery(selectQuery);
-                final RecordSchema schema = recList.getRecordSchema();
-                while(rs.next()){
-                    Record rec = recList.createRecord();
-                    for(int i = 0, imax = schema.getPropertySize(); i < imax; i++){
-                        final String name = schema.getPropertyName(i);
-                        rec.setProperty(name, rs.getObject(name));
+                
+                if(persistentManager == null){
+                    if(fetchSize > 0){
+                        stmt.setFetchSize(fetchSize);
                     }
-                    recList.addRecord(rec);
+                    rs = stmt.executeQuery(selectQuery);
+                    final RecordSchema schema = recList.getRecordSchema();
+                    while(rs.next()){
+                        Record rec = recList.createRecord();
+                        for(int i = 0, imax = schema.getPropertySize(); i < imax; i++){
+                            final String name = schema.getPropertyName(i);
+                            rec.setProperty(name, rs.getObject(name));
+                        }
+                        recList.addRecord(rec);
+                    }
+                    stmt.close();
+                    stmt = null;
+                    rs.close();
+                    rs = null;
+                }else{
+                    stmt.close();
+                    stmt = null;
+                    PersistentManager.Cursor cursor =persistentManager.createQueryCursor(con, selectQuery, null);
+                    if(fetchSize > 0){
+                        cursor.setFetchSize(fetchSize);
+                    }
+                    while(cursor.next()){
+                        Record rec = recList.createRecord();
+                        cursor.load(rec);
+                        recList.addRecord(rec);
+                    }
+                    cursor.close();
                 }
-                rs.close();
-                rs = null;
-                stmt.close();
-                stmt = null;
+                
                 final InputStream is = recordListConverter
                     .convertToStream(recList);
                 try{
@@ -690,25 +723,45 @@ public class TableCreatorService extends ServiceBase
                             : new OutputStreamWriter(fos, fileEncoding)
                     )
                 );
+                
                 Record rec = backupRecordList.createRecord();
-                if(fetchSize > 0){
-                    stmt.setFetchSize(fetchSize);
-                }
-                rs = stmt.executeQuery(selectQuery);
-                final RecordSchema schema = backupRecordList.getRecordSchema();
-                int count = 0;
-                while(rs.next()){
-                    rec.clear();
-                    for(int i = 0, imax = schema.getPropertySize(); i < imax; i++){
-                        final String name = schema.getPropertyName(i);
-                        rec.setProperty(name, rs.getObject(name));
+                if(persistentManager == null){
+                    if(fetchSize > 0){
+                        stmt.setFetchSize(fetchSize);
                     }
-                    flvWriter.writeRecord(rec);
-                    count++;
-                    if(count >= fetchSize){
-                        flvWriter.flush();
-                        count = 0;
+                    rs = stmt.executeQuery(selectQuery);
+                    final RecordSchema schema = backupRecordList.getRecordSchema();
+                    int count = 0;
+                    while(rs.next()){
+                        rec.clear();
+                        for(int i = 0, imax = schema.getPropertySize(); i < imax; i++){
+                            final String name = schema.getPropertyName(i);
+                            rec.setProperty(name, rs.getObject(name));
+                        }
+                        flvWriter.writeRecord(rec);
+                        count++;
+                        if(count >= fetchSize){
+                            flvWriter.flush();
+                            count = 0;
+                        }
                     }
+                }else{
+                    PersistentManager.Cursor cursor =persistentManager.createQueryCursor(con, selectQuery, null);
+                    if(fetchSize > 0){
+                        cursor.setFetchSize(fetchSize);
+                    }
+                    int count = 0;
+                    while(cursor.next()){
+                        rec.clear();
+                        cursor.load(rec);
+                        flvWriter.writeRecord(rec);
+                        count++;
+                        if(count >= fetchSize){
+                            flvWriter.flush();
+                            count = 0;
+                        }
+                    }
+                    cursor.close();
                 }
                 flvWriter.flush();
             }else{
@@ -722,26 +775,51 @@ public class TableCreatorService extends ServiceBase
                     )
                 );
                 Record rec = backupRecordList.createRecord();
-                if(fetchSize > 0){
-                    stmt.setFetchSize(fetchSize);
-                }
-                rs = stmt.executeQuery(selectQuery);
-                final RecordSchema schema = backupRecordList.getRecordSchema();
-                int count = 0;
-                while(rs.next()){
-                    rec.clear();
-                    for(int i = 0, imax = schema.getPropertySize(); i < imax; i++){
-                        final String name = schema.getPropertyName(i);
-                        rec.setProperty(name, rs.getObject(name));
+                if(persistentManager == null){
+                    if(fetchSize > 0){
+                        stmt.setFetchSize(fetchSize);
                     }
-                    csvWriter.writeRecord(rec);
-                    count++;
-                    if(count >= fetchSize){
-                        csvWriter.flush();
-                        count = 0;
+                    rs = stmt.executeQuery(selectQuery);
+                    final RecordSchema schema = backupRecordList.getRecordSchema();
+                    int count = 0;
+                    while(rs.next()){
+                        rec.clear();
+                        for(int i = 0, imax = schema.getPropertySize(); i < imax; i++){
+                            final String name = schema.getPropertyName(i);
+                            rec.setProperty(name, rs.getObject(name));
+                        }
+                        csvWriter.writeRecord(rec);
+                        count++;
+                        if(count >= fetchSize){
+                            csvWriter.flush();
+                            count = 0;
+                        }
                     }
+                }else{
+                    PersistentManager.Cursor cursor =persistentManager.createQueryCursor(con, selectQuery, null);
+                    if(fetchSize > 0){
+                        cursor.setFetchSize(fetchSize);
+                    }
+                    int count = 0;
+                    while(cursor.next()){
+                        rec.clear();
+                        cursor.load(rec);
+                        csvWriter.writeRecord(rec);
+                        count++;
+                        if(count >= fetchSize){
+                            csvWriter.flush();
+                            count = 0;
+                        }
+                    }
+                    cursor.close();
                 }
                 csvWriter.flush();
+            }
+        }catch(PersistentException e){
+            if(e.getCause() instanceof SQLException){
+                handleSQLException((SQLException)e.getCause(), ignoreSQLExceptionErrorCodeOnInsert);
+            }else{
+                throw e;
             }
         }catch(SQLException e){
             handleSQLException(e, ignoreSQLExceptionErrorCodeOnSelect);
@@ -894,7 +972,7 @@ public class TableCreatorService extends ServiceBase
     
     public void insertRecords()
      throws ConnectionFactoryException, IOException,
-            ConvertException, SQLException{
+            ConvertException, SQLException, PersistentException{
         final Connection con = connectionFactory.getConnection();
         try{
             insertRecords(con);
@@ -904,7 +982,7 @@ public class TableCreatorService extends ServiceBase
     }
     
     protected void insertRecords(Connection con)
-     throws IOException, ConvertException, SQLException{
+     throws IOException, ConvertException, SQLException, PersistentException{
         if(insertQuery == null){
             return;
         }
@@ -914,7 +992,6 @@ public class TableCreatorService extends ServiceBase
             if(existsTable(stmt)){
                 stmt.close();
                 stmt = null;
-                PreparedStatement pstmt = con.prepareStatement(insertQuery);
                 if(insertRecords != null){
                     is = new ByteArrayInputStream(insertRecords.getBytes());
                 }else if(insertRecordsFilePath != null){
@@ -949,51 +1026,75 @@ public class TableCreatorService extends ServiceBase
                 }
                 
                 RecordList recList = recordList;
-                if(recList != null){
-                    insertRecords(pstmt, recList);
-                }else if(recordListConverter != null){
-                    if(recordListSchema != null){
-                        recList = new RecordList();
-                        recList.setSchema(recordListSchema);
-                    }
-                    try{
-                        if(recList == null){
-                            recList = (RecordList)recordListConverter.convertToObject(is);
-                        }else{
-                            recList = (RecordList)((BindingStreamConverter)recordListConverter).convertToObject(is, recList);
-                        }
-                    }finally{
-                        is.close();
-                    }
-                    
-                    insertRecords(pstmt, recList);
-                }else if(flvReader != null){
-                    if(recordListSchema != null){
-                        flvReader.setRecordSchema(RecordSchema.getInstance(recordListSchema));
-                    }
-                    flvReader.setReader(
-                        fileEncoding == null ? new InputStreamReader(is)
-                            : new InputStreamReader(is, fileEncoding)
-                    );
-                    insertRecords(pstmt, flvReader);
+                PreparedStatement pstmt = null;
+                PersistentManager.BatchExecutor be = null;
+                if(persistentManager == null){
+                    pstmt = con.prepareStatement(insertQuery);
                 }else{
-                    if(csvReader == null){
-                        csvReader = new CSVRecordReader();
+                    be = persistentManager.createQueryBatchExecutor(con, insertQuery);
+                    if(insertBatchSize > 0){
+                        be.setAutoBatchPersistCount(insertBatchSize);
+                        be.setAutoCommitOnPersist(true);
                     }
-                    if(recordListSchema != null){
-                        csvReader.setRecordSchema(RecordSchema.getInstance(recordListSchema));
-                    }
-                    csvReader.setReader(
-                        fileEncoding == null ? new InputStreamReader(is)
-                            : new InputStreamReader(is, fileEncoding)
-                    );
-                    insertRecords(pstmt, csvReader);
                 }
-                
-                pstmt.close();
+                try{
+                    if(recList != null){
+                        insertRecords(be, pstmt, recList);
+                    }else if(recordListConverter != null){
+                        if(recordListSchema != null){
+                            recList = new RecordList();
+                            recList.setSchema(recordListSchema);
+                        }
+                        try{
+                            if(recList == null){
+                                recList = (RecordList)recordListConverter.convertToObject(is);
+                            }else{
+                                recList = (RecordList)((BindingStreamConverter)recordListConverter).convertToObject(is, recList);
+                            }
+                        }finally{
+                            is.close();
+                        }
+                        
+                        insertRecords(pstmt, recList);
+                    }else if(flvReader != null){
+                        if(recordListSchema != null){
+                            flvReader.setRecordSchema(RecordSchema.getInstance(recordListSchema));
+                        }
+                        flvReader.setReader(
+                            fileEncoding == null ? new InputStreamReader(is)
+                                : new InputStreamReader(is, fileEncoding)
+                        );
+                        insertRecords(be, pstmt, flvReader);
+                    }else{
+                        if(csvReader == null){
+                            csvReader = new CSVRecordReader();
+                        }
+                        if(recordListSchema != null){
+                            csvReader.setRecordSchema(RecordSchema.getInstance(recordListSchema));
+                        }
+                        csvReader.setReader(
+                            fileEncoding == null ? new InputStreamReader(is)
+                                : new InputStreamReader(is, fileEncoding)
+                        );
+                        insertRecords(be, pstmt, csvReader);
+                    }
+                }finally{
+                    if(be != null){
+                        be.close();
+                    }
+                    if(pstmt != null){
+                        pstmt.close();
+                    }
+                }
             }
             if(stmt != null){
                 stmt.close();
+            }
+        }catch(PersistentException e){
+            if(e.getCause() instanceof SQLException){
+                handleSQLException((SQLException)e.getCause(), ignoreSQLExceptionErrorCodeOnInsert);
+            }else{
+                throw e;
             }
         }catch(SQLException e){
             handleSQLException(e, ignoreSQLExceptionErrorCodeOnInsert);
@@ -1006,42 +1107,87 @@ public class TableCreatorService extends ServiceBase
         }
     }
     
-    protected void insertRecords(PreparedStatement pstmt, RecordList recList)
-     throws SQLException{
+    protected void insertRecords(PersistentManager.BatchExecutor be, PreparedStatement pstmt, RecordList recList)
+     throws SQLException, PersistentException{
         if(recList == null || recList.size() == 0){
             return;
         }
-        int batchCount = 0;
-        for(int i = 0, imax = recList.size(); i < imax; i++){
-            final Record rec = recList.getRecord(i);
-            batchCount = insertRecord(pstmt, rec, batchCount);
-        }
-        if(insertBatchSize > 0){
-            pstmt.executeBatch();
+        if(be != null){
+            for(int i = 0, imax = recList.size(); i < imax; i++){
+                try{
+                    be.addBatch(recList.getRecord(i));
+                }catch(PersistentException e){
+                    if(e.getCause() instanceof SQLException){
+                        handleSQLException((SQLException)e.getCause(), ignoreSQLExceptionErrorCodeOnInsert);
+                    }else{
+                        throw e;
+                    }
+                }
+            }
+            be.persist();
+        }else{
+            int batchCount = 0;
+            for(int i = 0, imax = recList.size(); i < imax; i++){
+                final Record rec = recList.getRecord(i);
+                batchCount = insertRecord(pstmt, rec, batchCount);
+            }
+            if(insertBatchSize > 0){
+                pstmt.executeBatch();
+            }
         }
     }
     
-    protected void insertRecords(PreparedStatement pstmt, CSVRecordReader reader)
-     throws SQLException, IOException{
+    protected void insertRecords(PersistentManager.BatchExecutor be, PreparedStatement pstmt, CSVRecordReader reader)
+     throws SQLException, IOException, PersistentException{
         Record rec = null;
-        int batchCount = 0;
-        while((rec = reader.readRecord(rec)) != null){
-            batchCount = insertRecord(pstmt, rec, batchCount);
-        }
-        if(insertBatchSize > 0){
-            pstmt.executeBatch();
+        if(be != null){
+            while((rec = reader.readRecord(rec)) != null){
+                try{
+                    be.addBatch(rec);
+                }catch(PersistentException e){
+                    if(e.getCause() instanceof SQLException){
+                        handleSQLException((SQLException)e.getCause(), ignoreSQLExceptionErrorCodeOnInsert);
+                    }else{
+                        throw e;
+                    }
+                }
+            }
+            be.persist();
+        }else{
+            int batchCount = 0;
+            while((rec = reader.readRecord(rec)) != null){
+                batchCount = insertRecord(pstmt, rec, batchCount);
+            }
+            if(insertBatchSize > 0){
+                pstmt.executeBatch();
+            }
         }
     }
     
-    protected void insertRecords(PreparedStatement pstmt, FLVRecordReader reader)
+    protected void insertRecords(PersistentManager.BatchExecutor be, PreparedStatement pstmt, FLVRecordReader reader)
      throws SQLException, IOException{
         Record rec = null;
-        int batchCount = 0;
-        while((rec = reader.readRecord(rec)) != null){
-            batchCount = insertRecord(pstmt, rec, batchCount);
-        }
-        if(insertBatchSize > 0){
-            pstmt.executeBatch();
+        if(be != null){
+            while((rec = reader.readRecord(rec)) != null){
+                try{
+                    be.addBatch(rec);
+                }catch(PersistentException e){
+                    if(e.getCause() instanceof SQLException){
+                        handleSQLException((SQLException)e.getCause(), ignoreSQLExceptionErrorCodeOnInsert);
+                    }else{
+                        throw e;
+                    }
+                }
+            }
+            be.persist();
+        }else{
+            int batchCount = 0;
+            while((rec = reader.readRecord(rec)) != null){
+                batchCount = insertRecord(pstmt, rec, batchCount);
+            }
+            if(insertBatchSize > 0){
+                pstmt.executeBatch();
+            }
         }
     }
     
@@ -1090,7 +1236,7 @@ public class TableCreatorService extends ServiceBase
     
     public void restoreRecords()
      throws ConnectionFactoryException, SQLException,
-            IOException, ConvertException{
+            IOException, ConvertException, PersistentException{
         final Connection con = connectionFactory.getConnection();
         try{
             restoreRecords(con);
@@ -1100,7 +1246,7 @@ public class TableCreatorService extends ServiceBase
     }
     
     protected void restoreRecords(Connection con)
-     throws IOException, ConvertException, SQLException{
+     throws IOException, ConvertException, SQLException, PersistentException{
         if(backupRecordList == null
             || insertQuery == null
         ){
@@ -1118,52 +1264,76 @@ public class TableCreatorService extends ServiceBase
             if(existsTable(stmt)){
                 stmt.close();
                 stmt = null;
-                PreparedStatement pstmt = con.prepareStatement(insertQuery);
-                
-                RecordList recList = backupRecordList;
-                if(backupFilePath != null && new File(backupFilePath).exists()){
-                    
-                    final FileInputStream fis = new FileInputStream(backupFilePath);
-                    if(recordListConverter != null){
-                        try{
-                            recList = backupRecordList.cloneSchema();
-                            recList = (RecordList)((BindingStreamConverter)recordListConverter)
-                                .convertToObject(fis, recList);
-                        }finally{
-                            fis.close();
-                        }
-                        insertRecords(pstmt, recList);
-                    }else if(flvReader != null){
-                        flvReader.setRecordSchema(backupRecordList.getRecordSchema());
-                        flvReader.setReader(
-                            fileEncoding == null ? new InputStreamReader(fis)
-                                : new InputStreamReader(fis, fileEncoding)
-                        );
-                        try{
-                            insertRecords(pstmt, flvReader);
-                        }finally{
-                            fis.close();
-                        }
-                    }else{
-                        if(csvReader == null){
-                            csvReader = new CSVRecordReader();
-                        }
-                        csvReader.setRecordSchema(backupRecordList.getRecordSchema());
-                        csvReader.setReader(
-                            fileEncoding == null ? new InputStreamReader(fis)
-                                : new InputStreamReader(fis, fileEncoding)
-                        );
-                        try{
-                            insertRecords(pstmt, csvReader);
-                        }finally{
-                            fis.close();
-                        }
+                PreparedStatement pstmt = null;
+                PersistentManager.BatchExecutor be = null;
+                if(persistentManager == null){
+                    pstmt = con.prepareStatement(insertQuery);
+                }else{
+                    be = persistentManager.createQueryBatchExecutor(con, insertQuery);
+                    if(insertBatchSize > 0){
+                        be.setAutoBatchPersistCount(insertBatchSize);
+                        be.setAutoCommitOnPersist(true);
                     }
                 }
-                pstmt.close();
+                
+                RecordList recList = backupRecordList;
+                try{
+                    if(backupFilePath != null && new File(backupFilePath).exists()){
+                        
+                        final FileInputStream fis = new FileInputStream(backupFilePath);
+                        if(recordListConverter != null){
+                            try{
+                                recList = backupRecordList.cloneSchema();
+                                recList = (RecordList)((BindingStreamConverter)recordListConverter)
+                                    .convertToObject(fis, recList);
+                            }finally{
+                                fis.close();
+                            }
+                            insertRecords(be, pstmt, recList);
+                        }else if(flvReader != null){
+                            flvReader.setRecordSchema(backupRecordList.getRecordSchema());
+                            flvReader.setReader(
+                                fileEncoding == null ? new InputStreamReader(fis)
+                                    : new InputStreamReader(fis, fileEncoding)
+                            );
+                            try{
+                                insertRecords(be, pstmt, flvReader);
+                            }finally{
+                                fis.close();
+                            }
+                        }else{
+                            if(csvReader == null){
+                                csvReader = new CSVRecordReader();
+                            }
+                            csvReader.setRecordSchema(backupRecordList.getRecordSchema());
+                            csvReader.setReader(
+                                fileEncoding == null ? new InputStreamReader(fis)
+                                    : new InputStreamReader(fis, fileEncoding)
+                            );
+                            try{
+                                insertRecords(be, pstmt, csvReader);
+                            }finally{
+                                fis.close();
+                            }
+                        }
+                    }
+                }finally{
+                    if(be != null){
+                        be.close();
+                    }
+                    if(pstmt != null){
+                        pstmt.close();
+                    }
+                }
             }
             if(stmt != null){
                 stmt.close();
+            }
+        }catch(PersistentException e){
+            if(e.getCause() instanceof SQLException){
+                handleSQLException((SQLException)e.getCause(), ignoreSQLExceptionErrorCodeOnInsert);
+            }else{
+                throw e;
             }
         }catch(SQLException e){
             handleSQLException(e, ignoreSQLExceptionErrorCodeOnInsert);
