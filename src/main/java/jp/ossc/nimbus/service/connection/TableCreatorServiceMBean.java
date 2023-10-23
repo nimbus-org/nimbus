@@ -61,6 +61,20 @@ public interface TableCreatorServiceMBean extends ServiceBaseMBean{
     public ServiceName getConnectionFactoryServiceName();
     
     /**
+     * {@link PersistentManager}サービスのサービス名を設定する。<p>
+     *
+     * @param name PersistentManagerのサービス名
+     */
+    public void setPersistentManagerServiceName(ServiceName name);
+    
+    /**
+     * {@link PersistentManager}サービスのサービス名を取得する。<p>
+     *
+     * @return PersistentManagerのサービス名
+     */
+    public ServiceName getPersistentManagerServiceName();
+    
+    /**
      * {@link jp.ossc.nimbus.util.converter.StreamConverter StreamConverter}サービスのサービス名を設定する。<p>
      * このStreamConverterを使って、{@link #setInsertRecords(String)}や{@link #setInsertRecordsFilePath(String)}で指定された挿入レコード文字列を{@link jp.ossc.nimbus.beans.dataset.RecordList RecordList}に変換して、テーブルにINSERTしていく。<br>
      * また、{@link #setBackupFilePath(String)}で指定されたファイルにバックアップする際や、同様にそのファイルから復元する際にも使用する。<br>
@@ -665,10 +679,11 @@ public interface TableCreatorServiceMBean extends ServiceBaseMBean{
      * @exception SQLException SQLの実行に失敗した場合
      * @exception ConvertException レコード文字列の変換に失敗した場合
      * @exception IOException レコードファイルが存在しない場合や、読み込みに失敗した場合
+     * @exception PersistentException クエリの実行に失敗した場合
      */
     public void insertRecords()
      throws ConnectionFactoryException, SQLException,
-            ConvertException, IOException;
+            ConvertException, IOException, PersistentException;
     
     /**
      * テーブルのレコードをバックアップする。<p>
@@ -680,10 +695,11 @@ public interface TableCreatorServiceMBean extends ServiceBaseMBean{
      * @exception SQLException SQLの実行に失敗した場合
      * @exception ConvertException レコード文字列の変換に失敗した場合
      * @exception IOException バックアップファイルのパスが存在しない場合や、書き込みに失敗した場合
+     * @exception PersistentException クエリの実行に失敗した場合
      */
     public void backupRecords()
      throws ConnectionFactoryException, SQLException,
-            IOException, ConvertException;
+            IOException, ConvertException, PersistentException;
     
     /**
      * テーブルのレコードを復元する。<p>
@@ -694,10 +710,11 @@ public interface TableCreatorServiceMBean extends ServiceBaseMBean{
      * @exception SQLException SQLの実行に失敗した場合
      * @exception ConvertException レコード文字列の変換に失敗した場合
      * @exception IOException バックアップファイルが存在しない場合や、読み込みに失敗した場合
+     * @exception PersistentException クエリの実行に失敗した場合
      */
     public void restoreRecords()
      throws ConnectionFactoryException, SQLException,
-            IOException, ConvertException;
+            IOException, ConvertException, PersistentException;
     
     /**
      * テーブルの削除、レコードの削除、テーブルの作成、レコードの挿入を順次行う。<p>
@@ -706,8 +723,9 @@ public interface TableCreatorServiceMBean extends ServiceBaseMBean{
      * @exception SQLException SQLの実行に失敗した場合
      * @exception ConvertException レコード文字列の変換に失敗した場合
      * @exception IOException ファイルが存在しない場合や、読み込みに失敗した場合
+     * @exception PersistentException クエリの実行に失敗した場合
      */
     public void executeAllQuery()
      throws ConnectionFactoryException, SQLException,
-            ConvertException, IOException;
+            ConvertException, IOException, PersistentException;
 }

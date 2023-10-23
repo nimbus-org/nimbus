@@ -90,6 +90,8 @@ public class DefaultPersistentManagerService extends ServiceBase
     private PropertyAccess propertyAccess;
     private boolean isIgnoreNullProperty;
     private Map resultSetJDBCTypeMap;
+    private Map arrayTypeClassMap;
+    private Map arrayTypeNameMap;
     
     public void setIgnoreNullProperty(boolean isIgnore){
         isIgnoreNullProperty = isIgnore;
@@ -118,6 +120,24 @@ public class DefaultPersistentManagerService extends ServiceBase
         resultSetJDBCTypeMap.put(type, javaType);
     }
     
+    public void setArrayTypeMap(Map mapping){
+        arrayTypeNameMap = mapping;
+        final Iterator entries = arrayTypeNameMap.entrySet().iterator();
+        arrayTypeClassMap.clear();
+        while(entries.hasNext()){
+            Map.Entry entry = (Map.Entry)entries.next();
+            arrayTypeClassMap.put(entry.getValue(), entry.getKey());
+        }
+    }
+    public Map getArrayTypeMap(){
+        return arrayTypeNameMap;
+    }
+    
+    public void setArrayType(String typeName, Class javaType){
+        arrayTypeNameMap.put(typeName, javaType);
+        arrayTypeClassMap.put(javaType, typeName);
+    }
+    
     public void createService() throws Exception{
         resultSetJDBCTypeMap = new HashMap();
         resultSetJDBCTypeMap.put(new Integer(Types.CHAR), String.class);
@@ -143,6 +163,8 @@ public class DefaultPersistentManagerService extends ServiceBase
         resultSetJDBCTypeMap.put(new Integer(Types.ARRAY), java.sql.Array.class);
         resultSetJDBCTypeMap.put(new Integer(Types.STRUCT), java.sql.Struct.class);
         resultSetJDBCTypeMap.put(new Integer(Types.REF), java.sql.Ref.class);
+        arrayTypeClassMap = new HashMap();
+        arrayTypeNameMap = new HashMap();
     }
     
     public void startService() throws Exception{
@@ -280,21 +302,21 @@ public class DefaultPersistentManagerService extends ServiceBase
                                 input,
                                 inputPropList.get(i).toString()
                             );
-                            setObject(statement, i + 1, param);
+                            setObject(con, statement, i + 1, param);
                         }
                     }else if(input.getClass().isArray()){
                         for(int i = 0, imax = Array.getLength(input); i < imax; i++){
                             Object param = Array.get(input, i);
-                            setObject(statement, i + 1, param);
+                            setObject(con, statement, i + 1, param);
                         }
                     }else if(input instanceof List){
                         List list = (List)input;
                         for(int i = 0, imax = list.size(); i < imax; i++){
                             Object param = list.get(i);
-                            setObject(statement, i + 1, param);
+                            setObject(con, statement, i + 1, param);
                         }
                     }else{
-                        setObject(statement, 1, input);
+                        setObject(con, statement, 1, input);
                     }
                 }
             }catch(NoSuchPropertyException e){
@@ -1085,6 +1107,16 @@ public class DefaultPersistentManagerService extends ServiceBase
             case Types.TIMESTAMP:
                 value = rs.getTimestamp(index);
                 break;
+            case Types.ARRAY:
+                java.sql.Array array = rs.getArray(index);
+                if(java.sql.Array.class.equals(type)){
+                    value = array;
+                }else if(arrayTypeClassMap.containsKey(type)){
+                    value = array.getArray(arrayTypeNameMap);
+                }else{
+                    value = array.getArray();
+                }
+                break;
             default:
                 value = rs.getObject(index);
                 break;
@@ -1105,6 +1137,7 @@ public class DefaultPersistentManagerService extends ServiceBase
     }
     
     private void setObject(
+        Connection con,
         PreparedStatement statement,
         int index,
         Object value
@@ -1162,6 +1195,13 @@ public class DefaultPersistentManagerService extends ServiceBase
                         new CharArrayReader(chars),
                         chars.length
                     );
+                    return;
+                }else if(value.getClass().isArray() && arrayTypeClassMap.containsKey(value.getClass().getComponentType())){
+                    final java.sql.Array array = con.createArrayOf(
+                        (String)arrayTypeClassMap.get(value.getClass().getComponentType()),
+                        (Object[])value
+                    );
+                    statement.setArray(index, array);
                     return;
                 }
             }
@@ -1273,21 +1313,21 @@ public class DefaultPersistentManagerService extends ServiceBase
                             input,
                             inputPropList.get(i).toString()
                         );
-                        setObject(statement, i + 1, param);
+                        setObject(con, statement, i + 1, param);
                     }
                 }else if(input.getClass().isArray()){
                     for(int i = 0, imax = Array.getLength(input); i < imax; i++){
                         Object param = Array.get(input, i);
-                        setObject(statement, i + 1, param);
+                        setObject(con, statement, i + 1, param);
                     }
                 }else if(input instanceof List){
                     List list = (List)input;
                     for(int i = 0, imax = list.size(); i < imax; i++){
                         Object param = list.get(i);
-                        setObject(statement, i + 1, param);
+                        setObject(con, statement, i + 1, param);
                     }
                 }else{
-                    setObject(statement, 1, input);
+                    setObject(con, statement, 1, input);
                 }
             }
         }catch(NoSuchPropertyException e){
@@ -1392,7 +1432,7 @@ public class DefaultPersistentManagerService extends ServiceBase
             }catch(IncompatibleClassChangeError e){
             }
             setStatementProperties(statement, statementProps);
-            return persistQueryInternal(sql, statement, input, inputPropList, false);
+            return persistQueryInternal(sql, con, statement, input, inputPropList, false);
         }finally{
             if(statement != null){
                 try{
@@ -1406,6 +1446,7 @@ public class DefaultPersistentManagerService extends ServiceBase
     
     private int persistQueryInternal(
         String sql,
+        Connection con,
         PreparedStatement statement,
         Object input,
         List inputProps,
@@ -1468,7 +1509,7 @@ public class DefaultPersistentManagerService extends ServiceBase
                         Object param = ((Property)properties.get(i)).getProperty(
                             beans.get(i)
                         );
-                        setObject(statement, i + 1, param);
+                        setObject(con, statement, i + 1, param);
                     }
                 }catch(NoSuchPropertyException e){
                     throw new PersistentException(
@@ -1502,7 +1543,7 @@ public class DefaultPersistentManagerService extends ServiceBase
                             Object param = ((Property)properties.get(j)).getProperty(
                                 bean
                             );
-                            setObject(statement, j + 1, param);
+                            setObject(con, statement, j + 1, param);
                         }
                     }catch(NoSuchPropertyException e){
                         throw new PersistentException(
@@ -1566,7 +1607,7 @@ public class DefaultPersistentManagerService extends ServiceBase
                                 bean,
                                 inputProps.get(i).toString()
                             );
-                            setObject(statement, i + 1, param);
+                            setObject(con, statement, i + 1, param);
                         }
                     }catch(NoSuchPropertyException e){
                         throw new PersistentException(
@@ -1624,7 +1665,7 @@ public class DefaultPersistentManagerService extends ServiceBase
                                     bean,
                                     propItr.next().toString()
                                 );
-                                setObject(statement, ++j, param);
+                                setObject(con, statement, ++j, param);
                             }
                         }catch(NoSuchPropertyException e){
                             throw new PersistentException(
@@ -1668,7 +1709,7 @@ public class DefaultPersistentManagerService extends ServiceBase
                             }
                         }
                     }else{
-                        setObject(statement, i + 1, bean);
+                        setObject(con, statement, i + 1, bean);
                         if(i == imax - 1){
                             if(isBatch){
                                 try{
@@ -1698,7 +1739,7 @@ public class DefaultPersistentManagerService extends ServiceBase
                                 input,
                                 inputProps.get(i).toString()
                             );
-                            setObject(statement, i + 1, param);
+                            setObject(con, statement, i + 1, param);
                         }
                     }else{
                         if(input instanceof Map){
@@ -1709,16 +1750,16 @@ public class DefaultPersistentManagerService extends ServiceBase
                                     input,
                                     propItr.next().toString()
                                 );
-                                setObject(statement, ++i, param);
+                                setObject(con, statement, ++i, param);
                             }
                         }else{
-                            setObject(statement, 1, input);
+                            setObject(con, statement, 1, input);
                         }
                     }
                 }else{
                     if(inputProps != null){
                         for(int i = 0, imax = inputProps.size(); i < imax; i++){
-                            setObject(statement, i + 1, null);
+                            setObject(con, statement, i + 1, null);
                         }
                     }else{
                         int parameterCount = 0;
@@ -1730,7 +1771,7 @@ public class DefaultPersistentManagerService extends ServiceBase
                         }catch(IncompatibleClassChangeError e){
                         }
                         if(parameterCount != 0){
-                            setObject(statement, 1, input);
+                            setObject(con, statement, 1, input);
                         }
                     }
                 }
@@ -2143,7 +2184,7 @@ public class DefaultPersistentManagerService extends ServiceBase
             if(statement == null){
                 throw new PersistentException("Closed");
             }
-            persistQueryInternal(sql, statement, input, inputProps, true);
+            persistQueryInternal(sql, connection, statement, input, inputProps, true);
             currentBatchCount++;
             if(autoBatchPersistCount > 0 && currentBatchCount >= autoBatchPersistCount){
                 return persist();
