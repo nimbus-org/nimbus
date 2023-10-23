@@ -639,7 +639,7 @@ public class TableCreatorService extends ServiceBase
     
     public void backupRecords()
      throws ConnectionFactoryException, SQLException,
-            IOException, ConvertException{
+            IOException, ConvertException, PersistentException{
         final Connection con = connectionFactory.getConnection();
         try{
             backupRecords(con);
@@ -1055,7 +1055,7 @@ public class TableCreatorService extends ServiceBase
                             is.close();
                         }
                         
-                        insertRecords(pstmt, recList);
+                        insertRecords(be, pstmt, recList);
                     }else if(flvReader != null){
                         if(recordListSchema != null){
                             flvReader.setRecordSchema(RecordSchema.getInstance(recordListSchema));
@@ -1165,7 +1165,7 @@ public class TableCreatorService extends ServiceBase
     }
     
     protected void insertRecords(PersistentManager.BatchExecutor be, PreparedStatement pstmt, FLVRecordReader reader)
-     throws SQLException, IOException{
+     throws SQLException, IOException, PersistentException{
         Record rec = null;
         if(be != null){
             while((rec = reader.readRecord(rec)) != null){
