@@ -102,6 +102,11 @@ public class TableCreatorService extends ServiceBase
     private int[] ignoreSQLExceptionErrorCodeOnDelete;
     private int[] ignoreSQLExceptionErrorCodeOnCreateTable;
     private int[] ignoreSQLExceptionErrorCodeOnInsert;
+    private String[] ignoreSQLExceptionSQLStateOnSelect;
+    private String[] ignoreSQLExceptionSQLStateOnDropTable;
+    private String[] ignoreSQLExceptionSQLStateOnDelete;
+    private String[] ignoreSQLExceptionSQLStateOnCreateTable;
+    private String[] ignoreSQLExceptionSQLStateOnInsert;
     private boolean isTransacted = false;
     private ClassMappingTree sqlTypeMap;
     private CSVRecordReader csvReader;
@@ -380,6 +385,41 @@ public class TableCreatorService extends ServiceBase
     }
     public int[] getIgnoreSQLExceptionErrorCodeOnInsert(){
         return ignoreSQLExceptionErrorCodeOnInsert;
+    }
+    
+    public void setIgnoreSQLExceptionSQLStateOnSelect(String[] state){
+        ignoreSQLExceptionSQLStateOnSelect = state;
+    }
+    public String[] getIgnoreSQLExceptionSQLStateOnSelect(){
+        return ignoreSQLExceptionSQLStateOnSelect;
+    }
+    
+    public void setIgnoreSQLExceptionSQLStateOnDropTable(String[] state){
+        ignoreSQLExceptionSQLStateOnDropTable = state;
+    }
+    public String[] getIgnoreSQLExceptionSQLStateOnDropTable(){
+        return ignoreSQLExceptionSQLStateOnDropTable;
+    }
+    
+    public void setIgnoreSQLExceptionSQLStateOnDelete(String[] state){
+        ignoreSQLExceptionSQLStateOnDelete = state;
+    }
+    public String[] getIgnoreSQLExceptionSQLStateOnDelete(){
+        return ignoreSQLExceptionSQLStateOnDelete;
+    }
+    
+    public void setIgnoreSQLExceptionSQLStateOnCreateTable(String[] state){
+        ignoreSQLExceptionSQLStateOnCreateTable = state;
+    }
+    public String[] getIgnoreSQLExceptionSQLStateOnCreateTable(){
+        return ignoreSQLExceptionSQLStateOnCreateTable;
+    }
+    
+    public void setIgnoreSQLExceptionSQLStateOnInsert(String[] state){
+        ignoreSQLExceptionSQLStateOnInsert = state;
+    }
+    public String[] getIgnoreSQLExceptionSQLStateOnInsert(){
+        return ignoreSQLExceptionSQLStateOnInsert;
     }
     
     public void setTransacted(boolean isTransacted){
@@ -817,12 +857,12 @@ public class TableCreatorService extends ServiceBase
             }
         }catch(PersistentException e){
             if(e.getCause() instanceof SQLException){
-                handleSQLException((SQLException)e.getCause(), ignoreSQLExceptionErrorCodeOnInsert);
+                handleSQLException((SQLException)e.getCause(), ignoreSQLExceptionErrorCodeOnInsert, ignoreSQLExceptionSQLStateOnInsert);
             }else{
                 throw e;
             }
         }catch(SQLException e){
-            handleSQLException(e, ignoreSQLExceptionErrorCodeOnSelect);
+            handleSQLException(e, ignoreSQLExceptionErrorCodeOnSelect, ignoreSQLExceptionSQLStateOnSelect);
         }finally{
             if(rs != null){
                 rs.close();
@@ -857,39 +897,50 @@ public class TableCreatorService extends ServiceBase
                         try{
                             stmt.executeUpdate(preDropTableQueries[i]);
                         }catch(SQLException e){
-                            handleSQLException(e, ignoreSQLExceptionErrorCodeOnDropTable);
+                            handleSQLException(e, ignoreSQLExceptionErrorCodeOnDropTable, ignoreSQLExceptionSQLStateOnDropTable);
                         }
                     }
                 }
                 try{
                     stmt.executeUpdate(dropTableQuery);
                 }catch(SQLException e){
-                    handleSQLException(e, ignoreSQLExceptionErrorCodeOnDropTable);
+                    handleSQLException(e, ignoreSQLExceptionErrorCodeOnDropTable, ignoreSQLExceptionSQLStateOnDropTable);
                 }
                 if(postDropTableQueries != null){
                     for(int i = 0; i < postDropTableQueries.length; i++){
                         try{
                             stmt.executeUpdate(postDropTableQueries[i]);
                         }catch(SQLException e){
-                            handleSQLException(e, ignoreSQLExceptionErrorCodeOnDropTable);
+                            handleSQLException(e, ignoreSQLExceptionErrorCodeOnDropTable, ignoreSQLExceptionSQLStateOnDropTable);
                         }
                     }
                 }
             }
             stmt.close();
         }catch(SQLException e){
-            handleSQLException(e, ignoreSQLExceptionErrorCodeOnDropTable);
+            handleSQLException(e, ignoreSQLExceptionErrorCodeOnDropTable, ignoreSQLExceptionSQLStateOnDropTable);
         }
     }
     
-    protected void handleSQLException(SQLException e, int[] ignoreErrorCodes) throws SQLException{
-        if(ignoreErrorCodes != null){
-            final int errorCode = e.getErrorCode();
+    protected void handleSQLException(SQLException e, int[] ignoreErrorCodes, String[] ignoreSQLStates) throws SQLException{
+        if(ignoreErrorCodes != null || ignoreSQLStates != null){
             boolean isIgnore = false;
-            for(int i = 0; i < ignoreErrorCodes.length; i++){
-                if(ignoreErrorCodes[i] == errorCode){
-                    isIgnore = true;
-                    break;
+            if(ignoreErrorCodes != null){
+                final int errorCode = e.getErrorCode();
+                for(int i = 0; i < ignoreErrorCodes.length; i++){
+                    if(ignoreErrorCodes[i] == errorCode){
+                        isIgnore = true;
+                        break;
+                    }
+                }
+            }
+            if(ignoreSQLStates != null && e.getSQLState() != null){
+                final String sqlState = e.getSQLState();
+                for(int i = 0; i < ignoreSQLStates.length; i++){
+                    if(sqlState.equals(ignoreSQLStates[i])){
+                        isIgnore = true;
+                        break;
+                    }
                 }
             }
             if(!isIgnore){
@@ -920,7 +971,7 @@ public class TableCreatorService extends ServiceBase
             }
             stmt.close();
         }catch(SQLException e){
-            handleSQLException(e, ignoreSQLExceptionErrorCodeOnDelete);
+            handleSQLException(e, ignoreSQLExceptionErrorCodeOnDelete, ignoreSQLExceptionSQLStateOnDelete);
         }
     }
     
@@ -945,28 +996,28 @@ public class TableCreatorService extends ServiceBase
                         try{
                             stmt.executeUpdate(preCreateTableQueries[i]);
                         }catch(SQLException e){
-                            handleSQLException(e, ignoreSQLExceptionErrorCodeOnCreateTable);
+                            handleSQLException(e, ignoreSQLExceptionErrorCodeOnCreateTable, ignoreSQLExceptionSQLStateOnCreateTable);
                         }
                     }
                 }
                 try{
                     stmt.executeUpdate(createTableQuery);
                 }catch(SQLException e){
-                    handleSQLException(e, ignoreSQLExceptionErrorCodeOnCreateTable);
+                    handleSQLException(e, ignoreSQLExceptionErrorCodeOnCreateTable, ignoreSQLExceptionSQLStateOnCreateTable);
                 }
                 if(postCreateTableQueries != null){
                     for(int i = 0; i < postCreateTableQueries.length; i++){
                         try{
                             stmt.executeUpdate(postCreateTableQueries[i]);
                         }catch(SQLException e){
-                            handleSQLException(e, ignoreSQLExceptionErrorCodeOnCreateTable);
+                            handleSQLException(e, ignoreSQLExceptionErrorCodeOnCreateTable, ignoreSQLExceptionSQLStateOnCreateTable);
                         }
                     }
                 }
             }
             stmt.close();
         }catch(SQLException e){
-            handleSQLException(e, ignoreSQLExceptionErrorCodeOnCreateTable);
+            handleSQLException(e, ignoreSQLExceptionErrorCodeOnCreateTable, ignoreSQLExceptionSQLStateOnCreateTable);
         }
     }
     
@@ -1092,12 +1143,12 @@ public class TableCreatorService extends ServiceBase
             }
         }catch(PersistentException e){
             if(e.getCause() instanceof SQLException){
-                handleSQLException((SQLException)e.getCause(), ignoreSQLExceptionErrorCodeOnInsert);
+                handleSQLException((SQLException)e.getCause(), ignoreSQLExceptionErrorCodeOnInsert, ignoreSQLExceptionSQLStateOnInsert);
             }else{
                 throw e;
             }
         }catch(SQLException e){
-            handleSQLException(e, ignoreSQLExceptionErrorCodeOnInsert);
+            handleSQLException(e, ignoreSQLExceptionErrorCodeOnInsert, ignoreSQLExceptionSQLStateOnInsert);
         }finally{
             if(is != null){
                 try{
@@ -1118,7 +1169,7 @@ public class TableCreatorService extends ServiceBase
                     be.addBatch(recList.getRecord(i));
                 }catch(PersistentException e){
                     if(e.getCause() instanceof SQLException){
-                        handleSQLException((SQLException)e.getCause(), ignoreSQLExceptionErrorCodeOnInsert);
+                        handleSQLException((SQLException)e.getCause(), ignoreSQLExceptionErrorCodeOnInsert, ignoreSQLExceptionSQLStateOnInsert);
                     }else{
                         throw e;
                     }
@@ -1146,7 +1197,7 @@ public class TableCreatorService extends ServiceBase
                     be.addBatch(rec);
                 }catch(PersistentException e){
                     if(e.getCause() instanceof SQLException){
-                        handleSQLException((SQLException)e.getCause(), ignoreSQLExceptionErrorCodeOnInsert);
+                        handleSQLException((SQLException)e.getCause(), ignoreSQLExceptionErrorCodeOnInsert, ignoreSQLExceptionSQLStateOnInsert);
                     }else{
                         throw e;
                     }
@@ -1173,7 +1224,7 @@ public class TableCreatorService extends ServiceBase
                     be.addBatch(rec);
                 }catch(PersistentException e){
                     if(e.getCause() instanceof SQLException){
-                        handleSQLException((SQLException)e.getCause(), ignoreSQLExceptionErrorCodeOnInsert);
+                        handleSQLException((SQLException)e.getCause(), ignoreSQLExceptionErrorCodeOnInsert, ignoreSQLExceptionSQLStateOnInsert);
                     }else{
                         throw e;
                     }
@@ -1212,7 +1263,7 @@ public class TableCreatorService extends ServiceBase
                     pstmt.setObject(j + 1, val);
                 }
             }catch(SQLException e){
-                handleSQLException(e, ignoreSQLExceptionErrorCodeOnInsert);
+                handleSQLException(e, ignoreSQLExceptionErrorCodeOnInsert, ignoreSQLExceptionSQLStateOnInsert);
             }
         }
         try{
@@ -1229,7 +1280,7 @@ public class TableCreatorService extends ServiceBase
                 pstmt.executeUpdate();
             }
         }catch(SQLException e){
-            handleSQLException(e, ignoreSQLExceptionErrorCodeOnInsert);
+            handleSQLException(e, ignoreSQLExceptionErrorCodeOnInsert, ignoreSQLExceptionSQLStateOnInsert);
         }
         return batchCount;
     }
@@ -1331,12 +1382,12 @@ public class TableCreatorService extends ServiceBase
             }
         }catch(PersistentException e){
             if(e.getCause() instanceof SQLException){
-                handleSQLException((SQLException)e.getCause(), ignoreSQLExceptionErrorCodeOnInsert);
+                handleSQLException((SQLException)e.getCause(), ignoreSQLExceptionErrorCodeOnInsert, ignoreSQLExceptionSQLStateOnInsert);
             }else{
                 throw e;
             }
         }catch(SQLException e){
-            handleSQLException(e, ignoreSQLExceptionErrorCodeOnInsert);
+            handleSQLException(e, ignoreSQLExceptionErrorCodeOnInsert, ignoreSQLExceptionSQLStateOnInsert);
         }
      }
 }

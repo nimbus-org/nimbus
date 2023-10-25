@@ -605,6 +605,66 @@ public interface TableCreatorServiceMBean extends ServiceBaseMBean{
     public int[] getIgnoreSQLExceptionErrorCodeOnInsert();
     
     /**
+     * テーブルを削除する際に無視するSQLExceptionのSQLStateを設定する。<p>
+     * デフォルトでは、全てのSQLExceptionを無視しない。<br>
+     *
+     * @param state SQLStateの配列
+     */
+    public void setIgnoreSQLExceptionSQLStateOnDropTable(String[] state);
+    
+    /**
+     * テーブルを削除する際に無視するSQLExceptionのSQLStateを取得する。<p>
+     *
+     * @return SQLStateの配列
+     */
+    public String[] getIgnoreSQLExceptionSQLStateOnDropTable();
+    
+    /**
+     * テーブルのレコードを削除する際に無視するSQLExceptionのSQLStateを設定する。<p>
+     * デフォルトでは、全てのSQLExceptionを無視しない。<br>
+     *
+     * @param state SQLStateの配列
+     */
+    public void setIgnoreSQLExceptionSQLStateOnDelete(String[] state);
+    
+    /**
+     * テーブルのレコードを削除する際に無視するSQLExceptionのSQLStateを取得する。<p>
+     *
+     * @return SQLStateの配列
+     */
+    public String[] getIgnoreSQLExceptionSQLStateOnDelete();
+    
+    /**
+     * テーブルを作成する際に無視するSQLExceptionのSQLStateを設定する。<p>
+     * デフォルトでは、全てのSQLExceptionを無視しない。<br>
+     *
+     * @param state SQLStateの配列
+     */
+    public void setIgnoreSQLExceptionSQLStateOnCreateTable(String[] state);
+    
+    /**
+     * テーブルを作成する際に無視するSQLExceptionのSQLStateを取得する。<p>
+     *
+     * @return SQLStateの配列
+     */
+    public String[] getIgnoreSQLExceptionSQLStateOnCreateTable();
+    
+    /**
+     * テーブルのレコードを挿入する際に無視するSQLExceptionのSQLStateを設定する。<p>
+     * デフォルトでは、全てのSQLExceptionを無視しない。<br>
+     *
+     * @param state SQLStateの配列
+     */
+    public void setIgnoreSQLExceptionSQLStateOnInsert(String[] state);
+    
+    /**
+     * テーブルのレコードを挿入する際に無視するSQLExceptionのSQLStateを取得する。<p>
+     *
+     * @return SQLStateの配列
+     */
+    public String[] getIgnoreSQLExceptionSQLStateOnInsert();
+    
+    /**
      * 一連のテーブル操作をトランザクション的に実行するかどうかを設定する。<p>
      * 一連のテーブル操作とは、サービスの開始時及び停止時のテーブル操作、{@link #executeAllQuery()}呼び出し時の操作である。<br>
      *
