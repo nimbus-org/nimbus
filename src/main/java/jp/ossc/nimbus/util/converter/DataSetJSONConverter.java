@@ -1684,7 +1684,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                 new StringReader(dataStr),
                 new StringBuilder(),
                 jsonObj,
-                false
+                true
             );
             if(jsonObj.size() == 0){
                 return ds;
@@ -2037,16 +2037,8 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
         boolean isStart
     ) throws ConvertException, IOException{
         int c = 0;
-        if(!isStart){
-            c = skipWhitespace(reader);
-            if(c == -1){
-                throw new ConvertException("It reached EOF on the way.");
-            }
-            if(c != '{'){
-                throw new ConvertException(
-                    "JSON object must be enclosed '{' and '}'"
-                );
-            }
+        if(isStart){
+            c = skipWhitespace(reader, '{');
         }
         do{
             c = readJSONProperty(reader, buf, jsonObj);
@@ -2060,24 +2052,12 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
     private int readJSONArray(
         Reader reader,
         StringBuilder buf,
-        List array,
-        boolean isStart
+        List array
     ) throws ConvertException, IOException{
         buf.setLength(0);
         int c = 0;
-        if(!isStart){
-            c = skipWhitespace(reader);
-            if(c == -1){
-                throw new ConvertException("It reached EOF on the way.");
-            }
-            if(c != '['){
-                throw new ConvertException(
-                    "JSON array must be enclosed '[' and ']'"
-                );
-            }
-        }
         do{
-            c = skipWhitespace(reader);
+            c = skipWhitespace(reader, (char)reader.read(), new char[]{'[', ']', '{', '"', '-', '+', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 't', 'f'});
             Object value = null;
             switch(c){
             case '"':
@@ -2097,55 +2077,36 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                     }
                 }while(true);
                 value = unescape(buf.toString());
-                if(c == -1){
-                    throw new ConvertException("It reached EOF on the way.");
-                }else{
-                    c = skipWhitespace(reader);
-                }
                 break;
             case '{':
                 value = new LinkedHashMap();
-                c = readJSONObject(reader, buf, (Map)value, true);
-                if(c == -1){
-                    throw new ConvertException("It reached EOF on the way.");
-                }else{
-                    c = skipWhitespace(reader);
-                }
+                c = readJSONObject(reader, buf, (Map)value, false);
+                c = reader.read();
                 break;
             case '[':
                 value = new ArrayList();
-                c = readJSONArray(reader, buf, (List)value, true);
-                if(c == -1){
-                    throw new ConvertException("It reached EOF on the way.");
-                }else{
-                    c = skipWhitespace(reader);
-                }
+                c = readJSONArray(reader, buf, (List)value);
+                c = reader.read();
                 break;
             default:
                 while(c != -1
                     && c != ','
                     && c != ']'
-                    && c != '}'
                     && !Character.isWhitespace((char)c)
                 ){
                     buf.append((char)c);
                     c = reader.read();
                 }
-                if(c == -1){
-                    throw new ConvertException("It reached EOF on the way.");
-                }
                 String str = unescape(buf.toString());
                 if(NULL_VALUE.equals(str)){
                     value = null;
-                }else if(str.length() != 0){
-                    value = str;
                 }else{
-                    buf.setLength(0);
-                    continue;
+                    value = str;
                 }
             }
             array.add(value);
             buf.setLength(0);
+            c = skipWhitespace(reader, (char)c, new char[]{',', ']'});
         }while(c == ',');
         return c;
     }
@@ -2153,7 +2114,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
     private int readJSONProperty(Reader reader, StringBuilder buf, Map jsonObj)
      throws ConvertException, IOException{
         buf.setLength(0);
-        int c = skipWhitespace(reader);
+        int c = skipWhitespace(reader, new char[]{'"', '}'});
         if(c == '"'){
             do{
                 c = reader.read();
@@ -2170,19 +2131,14 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                     break;
                 }
             }while(true);
-        }else if(c == '}'){
-            return c;
         }else{
-            throw new ConvertException("JSON name must be enclosed '\"'.");
+            return c;
         }
         final String name = unescape(buf.toString());
         buf.setLength(0);
         
-        c = skipWhitespace(reader);
-        if(c != ':'){
-            throw new ConvertException("JSON name and value must be separated ':'.");
-        }
-        c = skipWhitespace(reader);
+        c = skipWhitespace(reader, ':');
+        c = skipWhitespace(reader, (char)c, new char[]{'[', '{', '"', '-', '+', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 't', 'f'});
         
         Object value = null;
         switch(c){
@@ -2203,29 +2159,15 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                 }
             }while(true);
             value = unescape(buf.toString());
-            if(c == -1){
-                throw new ConvertException("It reached EOF on the way.");
-            }else{
-                c = skipWhitespace(reader);
-            }
             break;
         case '{':
             value = new LinkedHashMap();
-            c = readJSONObject(reader, buf, (Map)value, true);
-            if(c == -1){
-                throw new ConvertException("It reached EOF on the way.");
-            }else{
-                c = skipWhitespace(reader);
-            }
+            c = readJSONObject(reader, buf, (Map)value, false);
+            c = reader.read();
             break;
         case '[':
             value = new ArrayList();
-            c = readJSONArray(reader, buf, (List)value, true);
-            if(c == -1){
-                throw new ConvertException("It reached EOF on the way.");
-            }else{
-                c = skipWhitespace(reader);
-            }
+            c = readJSONArray(reader, buf, (List)value);
             break;
         default:
             while(c != -1
@@ -2237,18 +2179,14 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                 buf.append((char)c);
                 c = reader.read();
             }
-            if(c == -1){
-                throw new ConvertException("It reached EOF on the way.");
-            }
             String str = unescape(buf.toString());
             if(NULL_VALUE.equals(str)){
                 value = null;
-            }else if(str.length() != 0){
-                value = str;
             }else{
-                return c;
+                value = str;
             }
         }
+        c = skipWhitespace(reader, (char)c, new char[]{',', '}'});
         jsonObj.put(name, value);
         return c;
     }
@@ -2387,11 +2325,103 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
         return str;
     }
     
-    private int skipWhitespace(Reader reader) throws IOException{
+    private int skipWhitespace(Reader reader, char expectedChar) throws IOException, ConvertException{
         int c = 0;
         do{
             c = reader.read();
         }while(c != -1 && Character.isWhitespace((char)c));
+        if(c == -1){
+            throw new ConvertException("It reached EOF on the way.");
+        }
+        if(c != expectedChar){
+            throw new ConvertException("Unexpected terminating char. expected='" + expectedChar + "', actual='" + (char)c + "'");
+        }
+        return c;
+    }
+    
+    private int skipWhitespace(Reader reader, char[] expectedChars) throws IOException, ConvertException{
+        int c = 0;
+        do{
+            c = reader.read();
+        }while(c != -1 && Character.isWhitespace((char)c));
+        if(c == -1){
+            throw new ConvertException("It reached EOF on the way.");
+        }
+        boolean expected = false;
+        for(int i = 0; i < expectedChars.length; i++){
+            if(c == expectedChars[i]){
+                expected = true;
+                break;
+            }
+        }
+        if(!expected){
+            final StringBuilder buf = new StringBuilder();
+            for(int i = 0, imax = expectedChars.length; i < imax; i++){
+                buf.append('\'').append(expectedChars[i]).append('\'');
+                if(i != imax - 1){
+                    buf.append(',');
+                }
+            }
+                throw new ConvertException("Unexpected terminating char. expected=" + buf + ", actual='" + (char)c + "'");
+        }
+        return c;
+    }
+    
+    private int skipWhitespace(Reader reader, char curentChar, char expectedChar) throws IOException, ConvertException{
+        int c = curentChar;
+        if(c == -1){
+            throw new ConvertException("It reached EOF on the way.");
+        }
+        if(curentChar != expectedChar){
+            do{
+                c = reader.read();
+            }while(c != -1 && Character.isWhitespace((char)c));
+            if(c == -1){
+                throw new ConvertException("It reached EOF on the way.");
+            }
+        }
+        if(c != expectedChar){
+            throw new ConvertException("Unexpected terminating char. expected='" + expectedChar + "', actual='" + (char)c + "'");
+        }
+        return c;
+    }
+    
+    private int skipWhitespace(Reader reader, char curentChar, char[] expectedChars) throws IOException, ConvertException{
+        int c = curentChar;
+        if(c == -1){
+            throw new ConvertException("It reached EOF on the way.");
+        }
+        boolean expected = false;
+        for(int i = 0; i < expectedChars.length; i++){
+            if(c == expectedChars[i]){
+                expected = true;
+                break;
+            }
+        }
+        if(!expected){
+            do{
+                c = reader.read();
+            }while(c != -1 && Character.isWhitespace((char)c));
+            if(c == -1){
+                throw new ConvertException("It reached EOF on the way.");
+            }
+            for(int i = 0; i < expectedChars.length; i++){
+                if(c == expectedChars[i]){
+                    expected = true;
+                    break;
+                }
+            }
+            if(!expected){
+                final StringBuilder buf = new StringBuilder();
+                for(int i = 0, imax = expectedChars.length; i < imax; i++){
+                    buf.append('\'').append(expectedChars[i]).append('\'');
+                    if(i != imax - 1){
+                        buf.append(',');
+                    }
+                }
+                throw new ConvertException("Unexpected terminating char. expected=" + buf + ", actual='" + (char)c + "'");
+            }
+        }
         return c;
     }
     
