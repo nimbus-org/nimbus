@@ -2100,8 +2100,10 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
                 String str = unescape(buf.toString());
                 if(NULL_VALUE.equals(str)){
                     value = null;
-                }else{
+                }else if(str.length() != 0){
                     value = str;
+                }else{
+                    return c;
                 }
             }
             array.add(value);
@@ -2172,7 +2174,6 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
         default:
             while(c != -1
                 && c != ','
-                && c != ']'
                 && c != '}'
                 && !Character.isWhitespace((char)c)
             ){
@@ -2182,8 +2183,10 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
             String str = unescape(buf.toString());
             if(NULL_VALUE.equals(str)){
                 value = null;
-            }else{
+            }else if(str.length() != 0){
                 value = str;
+            }else{
+                return c;
             }
         }
         c = skipWhitespace(reader, (char)c, new char[]{',', '}'});
