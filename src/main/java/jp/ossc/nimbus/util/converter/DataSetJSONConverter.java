@@ -2057,7 +2057,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
         buf.setLength(0);
         int c = 0;
         do{
-            c = skipWhitespace(reader, (char)reader.read(), new char[]{'[', ']', '{', '"', '-', '+', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 't', 'f'});
+            c = skipWhitespace(reader, (char)reader.read(), new char[]{'[', ']', '{', '"', '-', '+', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 't', 'f', 'n'});
             Object value = null;
             switch(c){
             case '"':
@@ -2138,7 +2138,7 @@ public class DataSetJSONConverter extends BufferedStreamConverter implements Bin
         buf.setLength(0);
         
         c = skipWhitespace(reader, ':');
-        c = skipWhitespace(reader, (char)c, new char[]{'[', '{', '"', '-', '+', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 't', 'f'});
+        c = skipWhitespace(reader, (char)c, new char[]{'[', '{', '"', '-', '+', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 't', 'f', 'n'});
         
         Object value = null;
         switch(c){
