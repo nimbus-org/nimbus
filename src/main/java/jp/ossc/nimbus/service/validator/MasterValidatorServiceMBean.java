@@ -257,4 +257,49 @@ public interface MasterValidatorServiceMBean extends ServiceBaseMBean{
      * @return trueの場合、検証する値がnullの場合に、検証結果をtrueとする
      */
     public boolean isNullAllow();
+    
+    /**
+     * 検証する値が配列の場合に、配列要素を検証するかどうかを設定する。<p>
+     * デフォルトは、false。
+     *
+     * @param isSupport 検証する値が配列の場合に、配列要素を検証する場合、true
+     */
+    public void setSupportArray(boolean isSupport);
+    
+    /**
+     * 検証する値が配列の場合に、配列要素を検証するかどうかを判定する。<p>
+     *
+     * @return trueの場合、検証する値が配列の場合に、配列要素を検証する
+     */
+    public boolean isSupportArray();
+    
+    /**
+     * 最小配列長を設定する。<p>
+     * デフォルトは、0。
+     *
+     * @param length 最小配列長
+     */
+    public void setMinArrayLength(int length);
+    
+    /**
+     * 最小配列長を取得する。<p>
+     *
+     * @return 最小配列長
+     */
+    public int getMinArrayLength();
+    
+    /**
+     * 最大配列長を設定する。<p>
+     * デフォルトは、0で無制限。
+     *
+     * @param length 最大配列長
+     */
+    public void setMaxArrayLength(int length);
+    
+    /**
+     * 最大配列長を取得する。<p>
+     *
+     * @return 最大配列長
+     */
+    public int getMaxArrayLength();
 }

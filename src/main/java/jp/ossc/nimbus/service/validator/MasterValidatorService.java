@@ -34,6 +34,7 @@ package jp.ossc.nimbus.service.validator;
 import java.util.*;
 import java.sql.*;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Array;
 
 import jp.ossc.nimbus.beans.*;
 import jp.ossc.nimbus.beans.dataset.RecordList;
@@ -90,6 +91,10 @@ public class MasterValidatorService extends ServiceBase
          = jp.ossc.nimbus.service.aop.interceptor.ThreadContextKey.CODEMASTER;
     
     private boolean isNullAllow;
+    
+    private boolean isSupportArray;
+    private int minArrayLength = 0;
+    private int maxArrayLength = 0;
     
     private String codeMasterName;
     private String searchCondition;
@@ -249,6 +254,28 @@ public class MasterValidatorService extends ServiceBase
         return isNullAllow;
     }
     
+    public void setMinArrayLength(int length){
+        minArrayLength = length;
+    }
+    public int getMinArrayLength(){
+        return minArrayLength;
+    }
+    
+    public void setMaxArrayLength(int length){
+        maxArrayLength = length;
+    }
+    public int getMaxArrayLength(){
+        return maxArrayLength;
+    }
+    
+    public void setSupportArray(boolean isSupport){
+        isSupportArray = isSupport;
+    }
+    public boolean isSupportArray(){
+        return isSupportArray;
+    }
+
+    
     /**
      * サービスの開始処理を行う。<p>
      *
@@ -305,6 +332,23 @@ public class MasterValidatorService extends ServiceBase
      */
     public boolean validate(Object obj) throws ValidateException{
         if(obj == null && isNullAllow){
+            return true;
+        }
+        if(isSupportArray && obj != null && obj.getClass().isArray()){
+            
+            final int length = Array.getLength(obj);
+            if(length < minArrayLength){
+                return false;
+            }
+            if(maxArrayLength > 0 && length > maxArrayLength){
+                return false;
+            }
+            
+            for(int i = 0; i < length; i++){
+                if(!validate(Array.get(obj, i))){
+                    return false;
+                }
+            }
             return true;
         }
         if(connectionFactory != null){
