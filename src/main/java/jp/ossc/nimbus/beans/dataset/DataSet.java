@@ -981,8 +981,8 @@ public class DataSet implements java.io.Serializable, Cloneable{
         }
         if(header != null){
             header.setName(name);
+            header.setDataSet(this);
         }
-        header.setDataSet(this);
         headerMap.put(name, header);
     }
     
