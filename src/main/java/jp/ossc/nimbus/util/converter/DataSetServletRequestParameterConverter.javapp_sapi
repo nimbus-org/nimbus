@@ -32,6 +32,7 @@
 package jp.ossc.nimbus.util.converter;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.Collections;
 import java.util.Map;
@@ -174,6 +175,11 @@ public class DataSetServletRequestParameterConverter implements BindingConverter
      * HTTPヘッダの文字エンコーディング。<p>
      */
     protected String headerEncoding;
+    
+    /**
+     * HTTPボディで渡されたパラメータの文字エンコーディング。<p>
+     */
+    protected String bodyParameterEncoding;
 
     /**
      * Journalサービス。<p>
@@ -355,6 +361,24 @@ public class DataSetServletRequestParameterConverter implements BindingConverter
      */
     public String getHeaderEncoding(){
         return headerEncoding;
+    }
+
+    /**
+     * HTTPボディで渡されたパラメータの文字エンコーディングを設定する。<p>
+     *
+     * @param encoding 文字コード
+     */
+    public void setBodyParameterEncoding(String encoding){
+        bodyParameterEncoding = encoding;
+    }
+
+    /**
+     * HTTPボディで渡されたパラメータの文字エンコーディングを取得する。<p>
+     *
+     * @return 文字コード
+     */
+    public String getBodyParameterEncoding(){
+        return bodyParameterEncoding;
     }
 
     /**
@@ -626,6 +650,10 @@ public class DataSetServletRequestParameterConverter implements BindingConverter
             }catch(FileUploadException e){
                 throw new ConvertException(e);
             }
+            String encoding = bodyParameterEncoding;
+            if(encoding == null){
+                encoding = request.getCharacterEncoding();
+            }
             for(int i = 0; i < itemList.size(); i++){
                 FileItem item = (FileItem)itemList.get(i);
                 if(paramMap == null){
@@ -634,11 +662,19 @@ public class DataSetServletRequestParameterConverter implements BindingConverter
                 if(item.isFormField()){
                     String[] vals = (String[])paramMap.get(item.getFieldName());
                     if(vals == null){
-                        vals = new String[]{item.getString()};
+                        try{
+                            vals = new String[]{encoding == null ? item.getString() : item.getString(encoding)};
+                        }catch(UnsupportedEncodingException e){
+                            throw new ConvertException(e);
+                        }
                     }else{
                         String[] newVals = new String[vals.length + 1];
                         System.arraycopy(vals, 0, newVals, 0, vals.length);
-                        newVals[vals.length] = item.getString();
+                        try{
+                            newVals[vals.length] = encoding == null ? item.getString() : item.getString(encoding);
+                        }catch(UnsupportedEncodingException e){
+                            throw new ConvertException(e);
+                        }
                         vals = newVals;
                     }
                     paramMap.put(item.getFieldName(), vals);
