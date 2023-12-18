@@ -95,10 +95,10 @@ public class StatusDialogView extends JDialog {
                         }
                     }
                 }
-                for(Throwable ee = th.getCause(); ee != null; ee = ee.getCause()){
+                for(Throwable cause = th.getCause(); cause != null; cause = cause.getCause()){
                     stringBuilder.append(lineSp).append("Caused by: ")
-                        .append(ee).append(lineSp);
-                    final StackTraceElement[] elems = ee.getStackTrace();
+                        .append(cause).append(lineSp);
+                    final StackTraceElement[] elems = cause.getStackTrace();
                     if(elems != null){
                         for(int i = 0, max = elems.length; i < max; i++){
                             stringBuilder.append('\t');
@@ -135,24 +135,38 @@ public class StatusDialogView extends JDialog {
         Container contentPane = getContentPane();
         contentPane.add(scrollpane1, BorderLayout.CENTER);
         
-        // Statusオブジェクトを表示
-        StringBuilder stringBuilder = new StringBuilder();
-        
-        String lineSp = System.getProperty("line.separator");
-        
         if(throwObject != null){
-            
-            stringBuilder.append(throwObject.toString() + lineSp);
-            stringBuilder.append(lineSp);
-            
-            StackTraceElement[] stackTraceElementArray = throwObject.getStackTrace();
-            
-            for (int i=0; i<stackTraceElementArray.length; i++) {
-                StackTraceElement stackTraceElement = stackTraceElementArray[i];
-                stringBuilder.append(stackTraceElement.toString() + lineSp);
+            StringBuilder buf = new StringBuilder();
+            final String lineSeparator = System.getProperty("line.separator");
+            buf.append("例外： ").append(throwObject.toString()).append(lineSeparator);
+            final StackTraceElement[] elemss = throwObject.getStackTrace();
+            if(elemss != null){
+                for(int i = 0; i < elemss.length; i++){
+                    buf.append('\t');
+                    if(elemss[i] != null){
+                        buf.append(elemss[i].toString()).append(lineSeparator);
+                    }else{
+                        buf.append("null").append(lineSeparator);
+                    }
+                }
             }
-            area1.setText(stringBuilder.toString());
+            for(Throwable cause = throwObject.getCause(); cause != null; cause = cause.getCause()){
+                buf.append("Caused by:").append(cause.toString()).append(lineSeparator);
+                final StackTraceElement[] elems = cause.getStackTrace();
+                if(elems != null){
+                    for(int i = 0; i < elems.length; i++){
+                        buf.append('\t');
+                        if(elems[i] != null){
+                            buf.append(elems[i].toString()).append(lineSeparator);
+                        }else{
+                            buf.append("null").append(lineSeparator);
+                        }
+                    }
+                }
+            }
+            area1.setText(buf.toString());
         }
+        // Statusオブジェクトを表示
         area1.setCaretPosition(0);
     }
 
