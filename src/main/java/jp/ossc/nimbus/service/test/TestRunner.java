@@ -336,8 +336,9 @@ public class TestRunner {
                 if(phaseElement != null){
                     phase = MetaData.getElementContent(phaseElement, null);
                 }
-                
-                testController.setTestPhase(phase);
+                if(phase != null){
+                    testController.setTestPhase(phase);
+                }
                 if(verbose){
                     ServiceManagerFactory.getLogger().write("TR___00005", phase);
                 }
