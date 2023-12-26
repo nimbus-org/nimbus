@@ -7043,7 +7043,7 @@ public class SharedContextService extends DefaultContextService
                                     resultSet = new HashSet();
                                 }
                             }else{
-                                operate(resultSet);
+                                operate(result);
                             }
                         }else{
                             throw new NoConnectServerException();
@@ -7124,7 +7124,7 @@ public class SharedContextService extends DefaultContextService
                                     resultSet = new HashSet();
                                 }
                             }else{
-                                operate(resultSet);
+                                operate(result);
                             }
                         }else{
                             throw new NoConnectServerException();
@@ -7204,7 +7204,7 @@ public class SharedContextService extends DefaultContextService
                                     resultSet = new HashSet();
                                 }
                             }else{
-                                operate(resultSet);
+                                operate(result);
                             }
                         }else{
                             throw new NoConnectServerException();
@@ -7294,7 +7294,7 @@ public class SharedContextService extends DefaultContextService
                                     resultSet = new HashSet();
                                 }
                             }else{
-                                operate(resultSet);
+                                operate(result);
                             }
                         }else{
                             throw new NoConnectServerException();
@@ -7384,7 +7384,7 @@ public class SharedContextService extends DefaultContextService
                                     resultSet = new HashSet();
                                 }
                             }else{
-                                operate(resultSet);
+                                operate(result);
                             }
                         }else{
                             throw new NoConnectServerException();
@@ -7474,7 +7474,7 @@ public class SharedContextService extends DefaultContextService
                                     resultSet = new HashSet();
                                 }
                             }else{
-                                operate(resultSet);
+                                operate(result);
                             }
                         }else{
                             throw new NoConnectServerException();
@@ -7564,7 +7564,7 @@ public class SharedContextService extends DefaultContextService
                                     resultSet = new HashSet();
                                 }
                             }else{
-                                operate(resultSet);
+                                operate(result);
                             }
                         }else{
                             throw new NoConnectServerException();
@@ -7652,7 +7652,7 @@ public class SharedContextService extends DefaultContextService
                                     resultSet = new HashSet();
                                 }
                             }else{
-                                operate(resultSet);
+                                operate(result);
                             }
                         }else{
                             throw new NoConnectServerException();
@@ -7740,7 +7740,7 @@ public class SharedContextService extends DefaultContextService
                                     resultSet = new HashSet();
                                 }
                             }else{
-                                operate(resultSet);
+                                operate(result);
                             }
                         }else{
                             throw new NoConnectServerException();
