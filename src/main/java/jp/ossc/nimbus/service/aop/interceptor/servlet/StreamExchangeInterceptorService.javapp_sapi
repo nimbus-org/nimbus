@@ -815,9 +815,10 @@ public class StreamExchangeInterceptorService
         try{
             if(journal != null && isStartJournal()){
                 journal.startJournal(exchangeJournalKey, exchangeEditorFinder);
-                
             }
-            isStartedJournal = journal.isStartJournal();
+            if(journal != null){
+                isStartedJournal = journal.isStartJournal();
+            }
             final ServletRequest request = context.getServletRequest();
             final ByteArrayOutputStream baos = new ByteArrayOutputStream();
             byte[] bytes = new byte[2048];
