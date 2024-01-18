@@ -152,6 +152,34 @@ public interface BlockadeInterceptorServiceMBean
      * @return ThreadContextServiceサービスのサービス名
      */
     public ServiceName getThreadContextServiceName();
+
+    /**
+     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}サービスのサービス名を設定する。<p>
+     *
+     * @param name Interpreterサービスのサービス名
+     */
+    public void setInterpreterServiceName(ServiceName name);
+    
+    /**
+     * {@link jp.ossc.nimbus.service.interpreter.Interpreter Interpreter}サービスのサービス名を取得する。<p>
+     *
+     * @return Interpreterサービスのサービス名
+     */
+    public ServiceName getInterpreterServiceName();
+    
+    /**
+     * 特権ユーザを判定する判定式を設定する。<p>
+     *
+     * @param condition 特権ユーザを判定する判定式。引数に特権ユーザコードマスタ"codeMaster"と閉塞対象を示すオブジェクト"target"が渡される。戻り値はbooleanになる必要がある。
+     */
+    public void setSpecialUserCondition(String condition);
+    
+    /**
+     * 特権ユーザを判定する判定式を取得する。<p>
+     *
+     * @return 特権ユーザを判定する判定式
+     */
+    public String getSpecialUserCondition();
     
     /**
      * 閉塞コードマスタのコードマスタキーを設定する。<p>
