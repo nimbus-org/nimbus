@@ -60,6 +60,9 @@ import jp.ossc.nimbus.service.aop.InterceptorChain;
 import jp.ossc.nimbus.service.aop.ServletFilterInvocationContext;
 import jp.ossc.nimbus.service.codemaster.CodeMasterFinder;
 import jp.ossc.nimbus.service.context.Context;
+import jp.ossc.nimbus.service.interpreter.Interpreter;
+import jp.ossc.nimbus.service.interpreter.CompiledInterpreter;
+import jp.ossc.nimbus.service.interpreter.EvaluateException;
 
 /**
  * 閉塞インターセプタ。
@@ -135,6 +138,11 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
     private ServiceName threadContextServiceName;
     private Context threadContext;
     
+    private ServiceName interpreterServiceName;
+    private Interpreter interpreter;
+    private CompiledInterpreter compiledInterpreter;
+    private String specialUserCondition;
+    
     private String blockadeCodeMasterKey;
     private String specialUserCodeMasterKey;
     
@@ -193,6 +201,22 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
     
     public ServiceName getThreadContextServiceName() {
         return threadContextServiceName;
+    }
+    
+    public void setInterpreterServiceName(ServiceName name) {
+        interpreterServiceName = name;
+    }
+    
+    public ServiceName getInterpreterServiceName() {
+        return interpreterServiceName;
+    }
+    
+    public void setSpecialUserCondition(String condition) {
+        specialUserCondition = condition;
+    }
+    
+    public String getSpecialUserCondition() {
+        return specialUserCondition;
     }
     
     public void setBlockadeCodeMasterKey(String key) {
@@ -331,8 +355,11 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
         if (blockadeCodeMasterKey == null) {
             throw new IllegalArgumentException("BlockadeCodeMasterKey must be specified.");
         }
-        if (specialUserCodeMasterKey != null && (specialUserMapping == null || specialUserMapping.size() == 0)) {
-            throw new IllegalArgumentException("SpecialUserMapping must be specified.");
+        if (specialUserCodeMasterKey != null
+            && (specialUserMapping == null || specialUserMapping.size() == 0)
+            && (interpreterServiceName == null || specialUserCondition == null)
+        ) {
+            throw new IllegalArgumentException("SpecialUserMapping or SpecialUserCondition must be specified.");
         }
         if (codeMasterFinderServiceName != null) {
             codeMasterFinder = (CodeMasterFinder) ServiceManagerFactory.getServiceObject(codeMasterFinderServiceName);
@@ -340,6 +367,13 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
         if (threadContextServiceName != null) {
             threadContext = (Context) ServiceManagerFactory.getServiceObject(threadContextServiceName);
         }
+        if (interpreterServiceName != null && specialUserCondition != null) {
+            interpreter = (Interpreter) ServiceManagerFactory.getServiceObject(interpreterServiceName);
+            if(interpreter.isCompilable()){
+                compiledInterpreter = interpreter.compile(specialUserCondition);
+            }
+        }
+        
         pathPatternMap = null;
     }
     
@@ -407,7 +441,26 @@ public class BlockadeInterceptorService extends ServletFilterInterceptorService 
                     throw new BlockadeCheckTargetNotFoundException("CheckTargetObject is not found.");
                 }
             }
-            if (specialUserCodeMaster instanceof RecordList) {
+            if (interpreter != null && specialUserCondition != null) {
+                Map params = new HashMap(2);
+                params.put("codeMaster", specialUserCodeMaster);
+                params.put("target", checkTargetObject);
+                Object result = null;
+                try{
+                    if(compiledInterpreter != null){
+                        result = compiledInterpreter.evaluate(params);
+                    }else{
+                        result = interpreter.evaluate(specialUserCondition, params);
+                    }
+                    if(result != null && result instanceof Boolean){
+                        isSpecialUser = ((Boolean)result).booleanValue();
+                    }else{
+	                    throw new BlockadeProcessException("SpecialUserCondition did not return boolean. return=" + result + ", params=" + params);
+                    }
+                }catch(EvaluateException e){
+                    throw new BlockadeProcessException("Exception occured when evaluate specialUserCondition. params=" + params, e);
+                }
+            } else if (specialUserCodeMaster instanceof RecordList) {
                 RecordList list = (RecordList) specialUserCodeMaster;
                 Record primaryKey = list.createRecord();
                 applySpecialUserMapping(checkTargetObject, primaryKey);
