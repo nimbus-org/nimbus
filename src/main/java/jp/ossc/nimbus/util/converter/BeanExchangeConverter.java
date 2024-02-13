@@ -1191,8 +1191,7 @@ public class BeanExchangeConverter implements BindingConverter{
                                 setOutputProperty(recordList.get(i), exchangeMapping, values[i], false, isInputAutoMapping);
                             }else{
                                 Record preRec = recordList.getRecord(i - 1);
-                                Record rec = recordList.createRecord();
-                                rec.putAll(preRec);
+                                Record rec = preRec.cloneRecord();
                                 setOutputProperty(rec, exchangeMapping, values[i], false, isInputAutoMapping);
                                 recordList.add(rec);
                             }
