@@ -298,7 +298,9 @@ public class DataSetJSONJournalEditorService extends JSONJournalEditorService
                     appendName(buf, propSchema.getName());
                     buf.append(PROPERTY_SEPARATOR);
                 }
-                if(prop == null){
+                if(isSecretProperty(propSchema.getName())){
+                    appendValue(buf, finder, null, secretString, stack);
+                }else if(prop == null){
                     appendValue(buf, finder, propSchema.getType(), null, stack);
                 }else{
                     Class propType = propSchema.getType();
