@@ -5620,7 +5620,7 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
 
         public StepContext invokeStep(FlowContext context) throws Exception{
             coverage.cover();
-            final StepContext inStepContext = context.current;
+            StepContext inStepContext = context.current;
             StepContext stepContext = null;
             Journal journal = getJournal(CatchMetaData.this);
             try{
@@ -5638,6 +5638,12 @@ public class BeanFlowInvokerAccessImpl2 extends MetaData implements BeanFlowInvo
                         Step step = (Step)itr.next();
                         stepContext = step.invokeStep(context);
                         if(stepContext == null){
+                            if(context.current != null){
+                                if(inStepContext == null){
+                                    inStepContext = new StepContext();
+                                }
+                                inStepContext.result = context.current.result;
+                            }
                             return null;
                         }else if(stepContext.isContinue || stepContext.isBreak){
                             return stepContext;
