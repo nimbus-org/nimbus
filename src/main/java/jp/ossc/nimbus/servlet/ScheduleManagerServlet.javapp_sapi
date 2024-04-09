@@ -64,6 +64,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import jp.ossc.nimbus.beans.ServiceNameEditor;
 import jp.ossc.nimbus.beans.StringArrayEditor;
+import jp.ossc.nimbus.beans.dataset.DataSet;
+import jp.ossc.nimbus.beans.dataset.Record;
+import jp.ossc.nimbus.beans.dataset.RecordList;
 import jp.ossc.nimbus.core.ServiceManagerFactory;
 import jp.ossc.nimbus.core.ServiceName;
 import jp.ossc.nimbus.io.CSVReader;
@@ -533,7 +536,7 @@ import jp.ossc.nimbus.util.converter.StringStreamConverter;
  *     </pre></code></td></tr>
  *     <tr><td>action</td><td>makeSchedule</td></tr>
  *     <tr><td>date</td><td>日付。yyyyMMdd。指定しない場合は、現在日付。</td></tr>
- *     <tr><td rowspan="6">17</td><td rowspan="6"><nobr>スケジュール作成の判定</nobr></td><td>responseType</td><td>json</td><td rowspan="6">
+ *     <tr><td rowspan="7">17</td><td rowspan="7"><nobr>スケジュール作成の判定</nobr></td><td>responseType</td><td>json</td><td rowspan="7">
  *     <code><pre>
  *{
  *    "result": [
@@ -541,26 +544,28 @@ import jp.ossc.nimbus.util.converter.StringStreamConverter;
  *            "result": [
  *                {
  *                    "isMake": true,
- *                    "date": "20150615000000000"
+ *                    "date": "20150615"
  *                },
  *                {
  *                    "isMake": true,
- *                    "date": "20150616000000000"
+ *                    "date": "20150616"
  *                }
  *            ],
+ *            "isTemplate": true,
  *            "masterId": "Schedule1"
  *        },
  *        {
  *            "result": [
  *                {
  *                    "isMake": true,
- *                    "date": "20150615000000000"
+ *                    "date": "20150615"
  *                },
  *                {
  *                    "isMake": true,
- *                    "date": "20150616000000000"
+ *                    "date": "20150616"
  *                }
  *            ],
+ *            "isTemplate": false,
  *            "masterId": "Schedule2"
  *        }
  *    ]
@@ -571,6 +576,7 @@ import jp.ossc.nimbus.util.converter.StringStreamConverter;
  *     <tr><td>date</td><td>日付。yyyyMMdd。指定しない場合は、現在日付。</td></tr>
  *     <tr><td>from</td><td>開始日付。yyyyMMdd。toを指定していて、fromを指定しない場合は、現在日付。</td></tr>
  *     <tr><td>to</td><td>終了日付。yyyyMMdd。fromを指定していて、toを指定しない場合は、現在日付。</td></tr>
+ *     <tr><td>template</td><td>テンプレートのスケジュールを含むかどうか。1を指定した場合は、含む。デフォルトは含まない。</td></tr>
  *     <tr><td rowspan="2">18</td><td rowspan="2"><nobr>実行種別の取得</nobr></td><td>responseType</td><td>json</td><td rowspan="2"><code><pre>{"executorType": ["BEANFLOW","COMMAND"]}</pre></code></td></tr>
  *     <tr><td>action</td><td>executorType</td></tr>
  *     <tr><td rowspan="2">19</td><td rowspan="2"><nobr>スケジュール投入の停止</nobr></td><td>responseType</td><td>json</td><td rowspan="2"><code><pre>{}</pre></code></td></tr>
@@ -1080,6 +1086,14 @@ public class ScheduleManagerServlet extends HttpServlet{
             result[i] = params[i] == null ? (defaultIsNow ? now : null) : dateFormat.parse(params[i]);
         }
         return result;
+    }
+    
+    private int getIntParameterValue(HttpServletRequest req, String name) throws NumberFormatException{
+        String param = getParameter(req, name);
+        if(param == null){
+            return 0;
+        }
+        return Integer.parseInt(param);
     }
     
     private int[] getIntParameterValues(HttpServletRequest req, String name) throws NumberFormatException{
@@ -2447,21 +2461,48 @@ public class ScheduleManagerServlet extends HttpServlet{
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Parameter 'to' is illegal." + e.toString());
             return;
         }
+        boolean containsTemplate = false;
+        try{
+            containsTemplate = getIntParameterValue(req, "template") != 0;
+        }catch(NumberFormatException e){
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Parameter 'template' is illegal." + e.toString());
+            return;
+        }
+        
         Exception exception = null;
         boolean isMake = false;
-        Map masterIdDayMap = new TreeMap();
+        DataSet ds = new DataSet();
+        ds.setNestedRecordListSchema(
+            "Result",
+            ":date,java.util.Date,,DateFormatConverter{Format=yyyyMMdd;ConvertType=DATE_TO_STRING}"
+            + "\n:isMake,boolean"
+        );
+        ds.setRecordListSchema(
+            ":masterId,java.lang.String,,,,1"
+            + "\n:isTemplate,boolean"
+            + "\nLIST:result,Result"
+        );
+        RecordList masterRecordList = ds.getRecordList();
         try{
             if(masterId != null){
                 ScheduleMaster scheduleMaster = scheduleManager.findScheduleMaster(masterId);
                 ScheduleMaker scheduleMaker = scheduleMaster != null ? scheduleManager.getScheduleMaker(scheduleMaster.getScheduleType()) : null;
                 if(scheduleMaster == null){
                     exception = new Exception("scheduleMaster not found. masterId=" + masterId);
-                }else{
-                    Map dayMap = new TreeMap();
-                    masterIdDayMap.put(scheduleMaster.getId(), dayMap);
+                }else if(!scheduleMaster.isTemplate() || containsTemplate){
+                    Record masterRecord = masterRecordList.createRecord();
+                    masterRecord.setProperty("masterId", scheduleMaster.getId());
+                    masterRecord.setProperty("isTemplate", scheduleMaster.isTemplate());
+                    masterRecordList.add(masterRecord);
+                    RecordList resultRecordList = ds.createNestedRecordList("Result");
+                    masterRecord.setProperty("result", resultRecordList);
                     if(from == null && to == null){
                         isMake = scheduleMaker.isMakeSchedule(date, scheduleMaster);
-                        dayMap.put(date, isMake ? Boolean.TRUE : Boolean.FALSE);
+                        Record resultRecord = resultRecordList.createRecord();
+                        resultRecord.setProperty("date", date);
+                        resultRecord.setProperty("datetime", date);
+                        resultRecord.setProperty("isMake", isMake);
+                        resultRecordList.add(resultRecord);
                     }else{
                         if(to == null){
                             to = date;
@@ -2475,7 +2516,10 @@ public class ScheduleManagerServlet extends HttpServlet{
                         while(current.before(toCal) || current.equals(toCal)){
                             Date today = current.getTime();
                             isMake = scheduleMaker.isMakeSchedule(today, scheduleMaster);
-                            dayMap.put(today, isMake ? Boolean.TRUE : Boolean.FALSE);
+                            Record resultRecord = resultRecordList.createRecord();
+                            resultRecord.setProperty("date", today);
+                            resultRecord.setProperty("isMake", isMake);
+                            resultRecordList.add(resultRecord);
                             current.add(Calendar.DAY_OF_YEAR, 1);
                         }
                     }
@@ -2485,14 +2529,21 @@ public class ScheduleManagerServlet extends HttpServlet{
                 if(from == null && to == null){
                     for(int i = 0; i < scheduleMasters.size(); i++){
                         ScheduleMaster scheduleMaster = (ScheduleMaster)scheduleMasters.get(i);
+                        if(scheduleMaster.isTemplate() && !containsTemplate){
+                            continue;
+                        }
+                        Record masterRecord = masterRecordList.createRecord();
+                        masterRecord.setProperty("masterId", scheduleMaster.getId());
+                        masterRecord.setProperty("isTemplate", scheduleMaster.isTemplate());
+                        masterRecordList.add(masterRecord);
+                        RecordList resultRecordList = ds.createNestedRecordList("Result");
+                        masterRecord.setProperty("result", resultRecordList);
                         ScheduleMaker scheduleMaker = scheduleManager.getScheduleMaker(scheduleMaster.getScheduleType());
                         isMake = scheduleMaker.isMakeSchedule(date, scheduleMaster);
-                        Map map = (Map)masterIdDayMap.get(scheduleMaster.getId());
-                        if(map == null){
-                            map = new TreeMap();
-                            masterIdDayMap.put(scheduleMaster.getId(), map);
-                        }
-                        map.put(date, isMake ? Boolean.TRUE : Boolean.FALSE);
+                        Record resultRecord = resultRecordList.createRecord();
+                        resultRecord.setProperty("date", date);
+                        resultRecord.setProperty("isMake", isMake);
+                        resultRecordList.add(resultRecord);
                     }
                 }else{
                     if(to == null){
@@ -2504,18 +2555,32 @@ public class ScheduleManagerServlet extends HttpServlet{
                     current.setTime(from);
                     Calendar toCal = Calendar.getInstance();
                     toCal.setTime(to);
+                    Record masterKeyRecord = masterRecordList.createRecord();
                     while(current.before(toCal) || current.equals(toCal)){
                         Date today = current.getTime();
                         for(int i = 0; i < scheduleMasters.size(); i++){
                             ScheduleMaster scheduleMaster = (ScheduleMaster)scheduleMasters.get(i);
+                            if(scheduleMaster.isTemplate() && !containsTemplate){
+                                continue;
+                            }
+                            masterKeyRecord.setProperty("masterId", scheduleMaster.getId());
+                            Record masterRecord = masterRecordList.searchByPrimaryKey(masterKeyRecord);
+                            RecordList resultRecordList = null;
+                            if(masterRecord == null){
+                                masterRecord = (Record)masterKeyRecord.cloneRecord();
+                                masterRecord.setProperty("isTemplate", scheduleMaster.isTemplate());
+                                masterRecordList.add(masterRecord);
+                                resultRecordList = ds.createNestedRecordList("Result");
+                                masterRecord.setProperty("result", resultRecordList);
+                            }else{
+                                resultRecordList = (RecordList)masterRecord.getProperty("result");
+                            }
                             ScheduleMaker scheduleMaker = scheduleManager.getScheduleMaker(scheduleMaster.getScheduleType());
                             isMake = scheduleMaker.isMakeSchedule(today, scheduleMaster);
-                            Map map = (Map)masterIdDayMap.get(scheduleMaster.getId());
-                            if(map == null){
-                                map = new TreeMap();
-                                masterIdDayMap.put(scheduleMaster.getId(), map);
-                            }
-                            map.put(today, isMake ? Boolean.TRUE : Boolean.FALSE);
+                            Record resultRecord = resultRecordList.createRecord();
+                            resultRecord.setProperty("date", date);
+                            resultRecord.setProperty("isMake", isMake);
+                            resultRecordList.add(resultRecord);
                         }
                         current.add(Calendar.DAY_OF_YEAR, 1);
                     }
@@ -2524,31 +2589,14 @@ public class ScheduleManagerServlet extends HttpServlet{
         }catch(ScheduleManageException e){
             exception = e;
         }
+        masterRecordList.sort(new String[]{"isTemplate", "masterId"});
         
         final StringBuilder buf = new StringBuilder();
         if("json".equals(responseType)){
             resp.setContentType("application/json;charset=UTF-8");
             Map jsonMap = new HashMap();
             if(exception == null){
-                List result = new ArrayList();
-                Iterator entries = masterIdDayMap.entrySet().iterator();
-                while(entries.hasNext()){
-                    Map.Entry entry = (Map.Entry)entries.next();
-                    Map resultMap = new HashMap(2);
-                    resultMap.put("masterId", entry.getKey());
-                    List resultList = new ArrayList();
-                    Iterator entries2 = ((Map)entry.getValue()).entrySet().iterator();
-                    while(entries2.hasNext()){
-                        Map.Entry entry2 = (Map.Entry)entries2.next();
-                        Map resultMap2 = new HashMap(2);
-                        resultMap2.put("date", entry2.getKey());
-                        resultMap2.put("isMake", entry2.getValue());
-                        resultList.add(resultMap2);
-                    }
-                    resultMap.put("result", resultList);
-                    result.add(resultMap);
-                }
-                jsonMap.put("result", result);
+                jsonMap.put("result", masterRecordList);
             }else{
                 StringWriter sw = new StringWriter();
                 PrintWriter pw = new PrintWriter(sw);
@@ -2567,8 +2615,8 @@ public class ScheduleManagerServlet extends HttpServlet{
                 buf.append("<html>");
                 buf.append(header(HEADER_OTHER));
                 buf.append("<body>");
-                buf.append(scheduleMasterIsMakeCondition(getCurrentPath(req), masterId, from, to));
-                buf.append(scheduleMasterIsMake(getCurrentPath(req), masterIdDayMap));
+                buf.append(scheduleMasterIsMakeCondition(getCurrentPath(req), masterId, from, to, containsTemplate));
+                buf.append(scheduleMasterIsMake(getCurrentPath(req), masterRecordList));
                 buf.append("</body>");
                 buf.append("</html>");
             }
@@ -3324,6 +3372,10 @@ public class ScheduleManagerServlet extends HttpServlet{
         buf.append(td(text("to", null, "", 10)));
         buf.append("</tr>");
         buf.append("<tr>");
+        buf.append(th("Template", "left"));
+        buf.append(td(checkbox("template", 1, null)));
+        buf.append("</tr>");
+        buf.append("<tr>");
         buf.append(td(button("IsMakeSchedule", "javascript:document.getElementById('isMakeSchedule').submit();"), null, 6));
         buf.append("</tr>");
         buf.append(hidden("action", null, "isMakeSchedule"));
@@ -3434,9 +3486,10 @@ public class ScheduleManagerServlet extends HttpServlet{
      * @param action サーブレットパス（FormタグのAction文字列）
      * @param masterId 検索条件値（masterId）
      * @param masterGroupId 検索条件値（masterGroupId）
+     * @param containsTemplate 検索条件値（template）
      * @return スケジュール管理画面HTMLのスケジュールマスタ検索条件部分HTML
      */
-    private String scheduleMasterIsMakeCondition(String action, String masterId, Date from, Date to){
+    private String scheduleMasterIsMakeCondition(String action, String masterId, Date from, Date to, boolean containsTemplate){
         final StringBuilder buf = new StringBuilder();
         buf.append("<form name=\"isMakeSchedule\" id=\"isMakeSchedule\" action=\"" + action + "\" method=\"post\">");
         buf.append("<table border=\"1\">");
@@ -3451,6 +3504,10 @@ public class ScheduleManagerServlet extends HttpServlet{
         buf.append("<tr>");
         buf.append(th("To [yyyyMMdd]", "left"));
         buf.append(td(text("to", null, formatDate(to), 10)));
+        buf.append("</tr>");
+        buf.append("<tr>");
+        buf.append(th("Template", "left"));
+        buf.append(td(checkbox("template", 1, containsTemplate ? new int[]{1} : null)));
         buf.append("</tr>");
         buf.append("<tr>");
         buf.append(td(button("IsMakeSchedule", "javascript:document.getElementById('isMakeSchedule').submit();"), null, 2));
@@ -3468,36 +3525,31 @@ public class ScheduleManagerServlet extends HttpServlet{
      * @param schedules スケジュールオブジェクトのリスト
      * @return スケジュール管理画面HTMLのスケジュールマスタデータ部分HTML
      */
-    private String scheduleMasterIsMake(String action, Map masterIdDayMap){
+    private String scheduleMasterIsMake(String action, RecordList masterRecordList){
         final StringBuilder buf = new StringBuilder();
         buf.append("<table border=\"1\">");
-        buf.append("<tr bgcolor=\"#cccccc\">");
-        buf.append(th("MasterId"));
-        Iterator entries = masterIdDayMap.entrySet().iterator();
-        while(entries.hasNext()) {
-            Map.Entry e = (Map.Entry)entries.next();
-            Map map = (Map)e.getValue();
-            Iterator keys = map.keySet().iterator();
-            while(keys.hasNext()) {
-                Date date = (Date)keys.next();
-                buf.append(th(formatDate(date)));
+        if(masterRecordList.size() > 0){
+            buf.append("<tr bgcolor=\"#cccccc\">");
+            buf.append(th("MasterId"));
+            buf.append(th("isTemplate"));
+            Record masterRecord = (Record)masterRecordList.get(0);
+            Iterator results = ((RecordList)masterRecord.getProperty("result")).iterator();
+            while(results.hasNext()) {
+                Record result = (Record)results.next();
+                buf.append(th((String)result.getFormatProperty("date")));
             }
-            break;
-        }
-        buf.append("</tr>");
-        if(masterIdDayMap != null){
-            entries = masterIdDayMap.entrySet().iterator();
-            while(entries.hasNext()) {
-                Map.Entry e = (Map.Entry)entries.next();
+            buf.append("</tr>");
+            Iterator masters = masterRecordList.iterator();
+            while(masters.hasNext()) {
+                masterRecord = (Record)masters.next();
                 buf.append("<tr>");
-                String masterId = (String)e.getKey();
-                buf.append(th(format(masterId)));
-                Map map = (Map)e.getValue();
-                Iterator values = map.values().iterator();
-                while(values.hasNext()) {
-                    Boolean isMake = (Boolean)values.next();
+                buf.append(th(format((String)masterRecord.getProperty("masterId"))));
+                buf.append(td(masterRecord.getProperty("isTemplate").toString()));
+                results = ((RecordList)masterRecord.getProperty("result")).iterator();
+                while(results.hasNext()) {
+                    Record result = (Record)results.next();
                     final StringBuilder tdBuf = new StringBuilder();
-                    tdBuf.append(isMake);
+                    tdBuf.append(result.getBooleanProperty("isMake"));
                     buf.append(td(tdBuf.toString()));
                 }
                 buf.append("</tr>");
